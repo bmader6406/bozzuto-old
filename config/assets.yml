@@ -1,0 +1,13 @@
+package_assets: on
+embed_assets: off
+compress_assets: off
+javascript_compressor: yui
+
+javascripts:
+  common:
+    - public/javascripts/vendor/jquery-1.4.2.js
+
+stylesheets:
+  common:
+    - public/stylesheets/reset.css
+    - public/stylesheets/screen.css
