@@ -5,3 +5,22 @@
 #   
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
+
+State.create([{ :code => 'CT', :name => 'Connecticut' },
+              { :code => 'MD', :name => 'Maryland' },
+              { :code => 'MA', :name => 'Massachusetts' },
+              { :code => 'NJ', :name => 'New Jersey' },
+              { :code => 'NY', :name => 'New York' },
+              { :code => 'PA', :name => 'Pennsylvania' },
+              { :code => 'VA', :name => 'Virginia' },
+              { :code => 'DC', :name => 'Washington, DC' }])
+
+City.create([{ :name => 'Arlington', :state => State.find_by_code('VA') },
+             { :name => 'Alexandria', :state => State.find_by_code('VA') },
+             { :name => 'Annapolis', :state => State.find_by_code('MD') },
+             { :name => 'Boston', :state => State.find_by_code('MA') },
+             { :name => 'Trenton', :state => State.find_by_code('NJ') },
+             { :name => 'New York', :state => State.find_by_code('NY') },
+             { :name => 'Pittsburgh', :state => State.find_by_code('PA') },
+             { :name => 'Washington', :state => State.find_by_code('DC') },
+             { :name => 'Hartford', :state => State.find_by_code('CT') }])
