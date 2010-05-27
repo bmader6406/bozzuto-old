@@ -1,0 +1,3847 @@
+/*
+Copyright (c) 2009, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.8.0r4
+*/
+html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var,optgroup{font-style:inherit;font-weight:inherit;}del,ins{text-decoration:none;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:baseline;}sub{vertical-align:baseline;}legend{color:#000;}input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}input,button,textarea,select{*font-size:100%;}
+/* End Yahoo! material */
+
+
+
+/* @group =1. Layout */
+
+  .container {
+    width: 960px;
+    margin: 0px auto;
+  }
+  .col {
+    float: left;
+    padding-right: 20px;
+  }
+
+  #main-content .social-updates .message {
+    padding-left: 30px;
+  }
+  #main-content .social-updates .byline {
+    padding-left: 34px;
+  }
+  
+  /* @group -header */
+
+    /* HEADER */
+    #header,
+    #header div.container {
+      height: 236px;
+    }
+    #header div.container {
+      position: relative;
+      width: 770px;
+      padding-left: 190px;
+    }
+    #header #logo,
+    #header #logo a {
+      display: block;
+      width: 170px;
+      height: 75px;
+    }
+    #header #logo {
+      position: absolute;
+      top: 10px; left: 0;
+    }
+    #header div.nav,
+    #header div.section {
+      float: left;
+    }
+    #header div.nav {
+      width: 540px;
+      padding-top: 20px;
+    }
+    #header div.section {
+      width: 230px;
+      padding-top: 25px;
+    }
+    #header div.aside li {
+      display: inline;
+    }
+    #header #main-nav {
+      margin-bottom: 5px;
+    }
+    #header #main-nav li,
+    #header #main-nav li a {
+      display: block;
+    }
+    #header #home-nav li {
+      display: inline;
+    }
+    #header div.aside a,
+    #header #home-nav a {
+      padding: 0 8px 0 6px;
+    }
+  
+  /* @end */
+  
+  /* @group -special-nav */
+
+    /* special-nav */
+    #header #special-nav {
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 230px;
+    }
+    #header #special-nav li {
+      position: relative;
+      width: 230px;
+      border-top: 1px solid #fff;
+    }
+    #header #special-nav li a {
+      display: block;
+      width: 210px;
+      padding: 0 10px;
+    }
+    #header #special-nav div.popup {
+      display: none;
+      position: absolute;
+      bottom: 27px; right: 0;
+      width: 406px;
+      padding: 12px;
+    }
+    #header #find-apartment-form {
+      height: 136px;
+    }
+    #header #find-apartment-form p.advanced-search,
+    #header #find-apartment-form p.submit {
+      position: absolute;
+      bottom: 12px;
+    }
+    #header #find-apartment-form p.advanced-search {
+      left: 212px;
+      width: 100px;
+      padding-left: 6px;
+    }
+    #header #find-apartment-form p.submit {
+      right: 12px;
+    }
+    #header #special-nav #find-apartment-form a {
+      display: inline;
+      padding: 0;
+    }
+    #header #find-apartment-form select {
+      width: 100%;
+    }
+    #header #find-apartment-form div.left-col {
+      float: left;
+      width: 188px;
+    }
+    #header #find-apartment-form div.left-col select {
+      height: 136px;
+    }
+    #header #find-apartment-form div.right-col {
+      float: right;
+      width: 206px;
+    }
+    #header #find-apartment-form p.field {
+      margin-bottom: 0.5em;
+    }
+  
+  /* @end */
+  
+  /* @group -home */
+
+    /* HOME */
+    .home #header #main-nav li,
+    .home #header #main-nav li a {
+      width: 300px;
+      height: 45px;
+    }
+    .home #masthead {
+      border-top: 1px solid #6b6b71;
+    }
+    .home #content {
+      padding: 30px 0 20px 0;
+    }
+    .home #welcome {
+      width: 320px;
+      padding-left: 190px;
+    }
+    .home #welcome a.read-more {
+      padding-left: 6px;
+    }
+    .home #main-content div.social-updates {
+      width: 180px;
+    }
+    .home #main-content div.social-updates div.facebook-update p.byline {
+      margin-bottom: 20px;
+    }
+    .home #featured-property {
+      width: 230px;
+      padding-right: 0;
+    }
+    .home #featured-property h2 {
+      margin-bottom: 10px;
+      border-bottom: 1px solid #000;
+    }
+    .home #featured-property h2 a {
+      display: block;
+      padding: 0 10px;
+    }
+  
+  /* @end   -home */
+  
+  /* @group -news */
+
+    /* news */
+    .home #news {
+      border-top: 1px solid #d5d8dc;
+    }
+    .home #news div.container {
+      width: 940px;
+      padding: 12px 0 12px 20px;
+    }
+    .home #news h2,
+    .home #news div.col,
+    .home #news ul {
+      float: left;
+    }
+    .home #news h2 {
+      width: 170px;
+    }
+    .home #news h3 {
+      padding-right: 8px;
+      border-right: 1px solid #a1a2aa;
+      margin-right: 5px;
+    }
+    .home #news div.col {
+      width: 525px;
+      padding-left: 15px;
+      padding-right: 0;
+    }
+    .home #news h3,
+    .home #news p {
+      display: inline;
+    }
+    .home #news ul {
+      width: 200px;
+      padding-left: 30px;
+    }
+    .home #news ul li {
+      display: inline;
+      padding: 5px 12px 5px 0;
+    }
+    .home #news ul li.rss {
+      padding-left: 22px;
+    }
+    .home #news ul li a {
+      padding-left: 6px;
+    }
+  
+  /* @end */
+  
+  /* @group -secondary */
+    
+    .secondary #header,
+    .secondary #header .container {
+      height: 170px;
+    }
+    
+    /* @group --main nav */
+
+      /* main nav */
+      .secondary #header #main-nav {
+        width: 200px;
+      }
+      .secondary #header #main-nav li,
+      .secondary #header #main-nav li a {
+        width: 200px;
+        height: 30px;
+      }
+      .secondary #header #main-nav li div.dropdown {
+        display: none;
+        position: absolute;
+        top: 0; left: 375px;
+        width: 297px;
+        height: 150px;
+        padding: 20px 0 0 33px;
+      }
+      .secondary #header #main-nav li:hover div.dropdown,
+      .secondary #header #main-nav li.hover div.dropdown {
+        display: block;
+      }
+      .secondary #header #main-nav li ul,
+      .secondary #header #main-nav li ul li {
+        width: 94px;
+      }
+      .secondary #header #main-nav li li,
+      .secondary #header #main-nav li li a {
+        height: auto;
+        background: none;
+        text-indent: 0;
+      }
+      .secondary #header #main-nav li li {
+        border-top: 1px solid #eaecee;
+      }
+      .secondary #header #main-nav li li.first {
+        border-top: none;
+      }
+      .secondary #header #main-nav li .dropdown li a {
+        display: block;
+        width: 86px;
+        padding: 8px 0 8px 8px;
+      }
+      
+    /* @end */    
+  
+    .secondary #main-content {
+      overflow: hidden;
+      padding: 15px 0;
+    }
+    .secondary #sidebar {
+      width: 170px;
+    }
+    .secondary #content {
+      width: 510px;
+      padding-right: 30px;
+    }
+    .secondary #aside {
+      width: 230px;
+      padding-right: 0;
+    }
+    .secondary #main-content h3 {
+      padding: 6px 0 6px 12px;
+      border-top: 1px solid #c1c1c5;
+      border-bottom: 1px solid #c1c1c5;
+    }
+    .secondary #main-content h3 a {
+      display: block;
+    }
+  
+  /* @end  */
+  
+  /* @group -about */
+
+    .about #masthead .container,
+    .homes #masthead .container {
+      position: relative;
+      width: 770px;
+      padding-left: 190px;
+    }
+    .about #masthead .section ,
+    .homes #masthead .section {
+      position: relative;
+      width: 520px;
+      height: 203px;
+      padding: 20px 250px 0 0;
+    }
+    .about #masthead .figure,
+    .about #masthead .figure img,
+    .homes #masthead .figure {
+      display: block;
+      width: 230px;
+      height: 223px;
+    }
+    .about #masthead .figure,
+    .homes #masthead .figure {
+      position: absolute;
+      top: 0; right: 0;
+    }
+    .about #masthead .nav,
+    .homes #masthead .nav {
+      position: absolute;
+      bottom: 0; left: 190px;
+      width: 150px;
+      padding: 8px 0;
+      border-top: 1px solid #e5e5e5;
+    }
+    .about #masthead .nav li,
+    .homes #masthead .nav li {
+      float: left;
+    }
+    .about #masthead .nav li a,
+    .homes #masthead .nav li a {
+      display: block;
+      width: 20px;
+      text-align: center;
+    }
+    .about #secondary-nav ul,
+    .aparments #secondary-nav ul,
+    .homes #secondary-nav ul,
+    .services #secondary-nav ul {
+      position: relative;
+      width: 170px;
+    }
+    .about #secondary-nav li,
+    .apartments #secondary-nav li,
+    .homes #secondary-nav li,
+    .services #secondary-nav li {
+      width: 170px;
+      border-top: 1px solid #eaecee;
+    }
+    .about #secondary-nav li.first,
+    .apartments #secondary-nav li.first,
+    .homes #secondary-nav li.first,
+    .services #secondary-nav li.first {
+      border-top: none;
+    }
+    .about #secondary-nav li a,
+    .apartments #secondary-nav li a,
+    .homes #secondary-nav li a,
+    .services #secondary-nav li a {
+      position: relative;
+      display: block;
+      width: 150px;
+      padding: 6px 0 6px 20px;
+    }
+    .about #secondary-nav li a span,
+    .apartments #secondary-nav li a span,
+    .homes #secondary-nav li a span,
+    .services #secondary-nav li a span {
+      display: block;
+      position: absolute;
+      top: 4px; right: 0;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+    .about #secondary-nav li li
+    .apartments #secondary-nav li li,
+    .homes #secondary-nav li li,
+    .services #secondary-nav li li {
+      border-top: none;
+    }
+    .about #secondary-nav li li a,
+    .apartments #secondary-nav li li a ,
+    .homes #secondary-nav li li a,
+    .services #secondary-nav li li a {
+      width: 140px;
+      padding: 4px 0 4px 30px;
+    }
+    .about #aside {
+      margin-top: 375px;
+    }
+    .about #aside .article,
+    .services #aside .article {
+      width: 218px;
+      padding: 12px 0 0 12px;
+      border-top: 1px solid #fff;
+      border-bottom: 1px solid #fff;
+    }
+    .about #aside .section,
+    .services #aside .section {
+      position: relative;
+      width: 168px;
+      padding: 0 50px 12px 0;
+      margin-bottom: 12px;
+    }
+    .about #aside .section .date,
+    .services #aside .section .date {
+      position: absolute;
+      top: 0; right: 7px;
+      width: 43px;
+    }
+    .about #aside .figure,
+    .services #aside .figure {
+      float: left;
+      padding-right: 12px;
+    }
+    .about #aside .figure img,
+    .services #aside .figure img {
+      display: block;
+    }
+    .about #latest-news .section.first {
+      border-bottom: 1px solid #d1d2d5;
+    }
+    .about #latest-news .section.first .date span {
+      display: block;
+    }
+    .about #latest-news h4 a,
+    .services #latest-news h4 a {
+      padding-right: 6px;
+    }
+    .about #latest-awards h4 a,
+    .services #latest-awards h4 a {
+      padding-left: 6px;
+    }
+    .about #latest-awards .section,
+    .services #latest-awards .section {
+      padding-bottom: 0;
+    }
+  
+  /* @end */
+  
+  /* @group -community */
+
+    .about #breadcrumb,
+    .community #breadcrumb,
+    .services #breadcrumb {
+      border-bottom: 1px solid #858890;
+    }
+    .about #breadcrumb .container,
+    .community #breadcrumb .container,
+    .services #breadcrumb .container {
+      width: 770px;
+      padding-left: 190px;
+    }
+    .about #breadcrumb li,
+    .community #breadcrumb li,
+    .services #breadcrumb li {
+      display: inline;
+    }
+    
+    /* @group --masthead */
+
+      .community #masthead {
+        overflow: hidden;
+        height: 374px;
+        border-bottom: 1px solid #cdd1d5;
+      }
+      .community #masthead .container {
+        position: relative;
+      }
+      .community #masthead .nav {
+        position: relative;
+        z-index: 1;
+        width: 190px;
+        height: 374px;
+      }
+      .community #masthead .nav li {
+        border-bottom: 1px solid #eaecee;
+      }
+      .community #masthead .nav li.last {
+        border-bottom: none;
+      }
+      .community #secondary-nav {
+        position: absolute;
+        z-index: 1;
+        top: 0; left: 0;
+        width: 190px;
+        height: 349px;
+        padding-top: 25px;
+      }
+      .community #secondary-nav a {
+        display: block;
+        padding: 10px 10px 10px 20px;
+      }
+      .community #remote-nav {
+        position: absolute;
+        z-index: 1;
+        bottom: 0; left: 0;
+        width: 190px;
+      }
+      .community #masthead #remote-nav a {
+        display: block;
+        padding: 5px 10px 5px 26px;
+      }
+    
+    /* @end */
+    
+    /* @group --slideshow */
+      
+      .community #slideshow {
+        position: absolute;
+        top: 0; left: 170px;
+        width: 870px;
+        height: 374px;
+      }
+      .community #slideshow div.header,
+      .community #slideshow div.slide,
+      .community #slideshow div.section {
+        position: absolute;
+        top: 0; left: 0;
+      }
+      .community #slideshow div.header {
+        z-index: 2;
+        top: 10px; left: 35px;
+      }
+      .community #slideshow div.header h1 {
+        display: inline;
+        margin-right: 15px;
+      }
+      .community #slideshow div.header a.prev,
+      .community #slideshow div.header a.next {
+        display: inline-block;
+        vertical-align: top;
+        width: 35px;
+        height: 60px;
+      }
+      .community #slideshow div.header a {
+        color: #565c64;
+      }
+      .community #slideshow img {
+        display: block;
+      }
+      .community #slideshow div.section {
+        position: absolute;
+        top: 80px; left: 35px;
+        width: 375px;
+      }
+      .community #slideshow p.watch-video {
+        padding-top: 15px;
+        margin-top: 20px;
+      }
+      .community #slideshow p.watch-video a {
+        display: block;
+        width: 189px;
+        height: 43px;
+      }
+    
+    /* @end */
+    
+    .community #main-content .container {
+      width: 770px;
+      padding-left: 190px;
+    }
+    .community #content {
+      width: 520px;
+      padding-right: 20px;
+    }
+    .community #sidebar {
+      width: 230px;
+      padding-right: 0;
+    }
+    .community #content,
+    .community #overview,
+    .community #content .promo,
+    .community #apartments,
+    .community #recently-viewed,
+    .community #nearby-communities {
+      margin-bottom: 25px;
+    }
+    
+    /* @group --overview */
+
+      .community #overview {
+        position: relative;
+        padding: 0 50px 20px 0;
+        margin-bottom: 20px;
+      }
+      .community #overview ul.community-icons {
+        position: absolute;
+        top: 35px; right: 0px;
+        width: 50px;
+        height: 225px;
+      }
+      .community #overview ul.community-icons li,
+      .community #overview ul.community-icons li a {
+        display: block;
+        width: 50px;
+        height: 45px;
+        margin-left: 0;
+      }
+      .community #overview ul.community-icons li a {
+        position: relative;
+      }
+      .community #overview ul.community-icons li a span {
+        display: none;
+        cursor: pointer;
+      }
+      .community #overview ul.community-icons li a:hover span {
+        display: block;
+        position: absolute;
+        top: 0; right: 5px;
+        width: 285px;
+        height: 43px;
+        border: 1px solid #c2c6ca;
+        padding-left: 7px;
+      }
+    
+    /* @end */   
+    
+     .community #apartments table {
+       width: 100%;
+     }
+     .community #apartments table td {
+       padding: 10px 0;
+       border-bottom: 1px solid #dadadc;
+     }
+     .community #featured-floor-plans .floor-plan {
+       float: left;
+       width: 173px;
+     }
+     .community #featured-floor-plans .floor-plan p {
+       padding-bottom: 12px;
+       margin-bottom: 12px;
+     }
+     .community #community-info ul.nav {
+       border-bottom: 10px solid #fff;
+     }
+     .community #community-info ul.nav li {
+       float: left;
+       width: 76px;
+       height: 47px;
+       border-right: 1px solid #fff;
+     }
+     .community #community-info ul.nav li.last {
+       border-right: none;
+     }
+     .community #community-info ul.nav li a {
+       background-color: #dde0e3;
+     }
+     .community #community-info ul.nav li.current a {
+       background-color: #c2c6ca;
+     }
+     .community #community-info ul.nav li a {
+       display: block;
+       width: 56px;
+       height: 37px;
+       padding: 5px 10px;
+     }
+     .community #community-info .section {
+       padding: 10px;
+     }
+     .community #community-info #map img {
+       display: block;
+       border: 1px solid #959ba1;
+     }
+     .community #community-info p.call-to-action a {
+       display: block;
+       width: 210px;
+       height: 28px;
+     }
+     
+     .community #nearby-communities li a {
+       display: block;
+     }
+     .community #nearby-communities ul,
+     .community #recently-viewed ul {
+       padding: 12px;
+       border-top: 1px solid #fff;
+     }
+     .community #nearby-communities ul {
+       padding-top: 0;
+     }
+     .community #recently-viewed ul {
+       padding-bottom: 0;
+     }
+     .community #recently-viewed ul li {
+       float: left;
+       width: 180px;
+       padding-bottom: 12px;
+       margin-bottom: 12px;
+     }
+     .community #recently-viewed ul li a {
+       display: block;
+     }
+     .community #renting-from-bozzuto {
+       width: 320px;
+       padding-right: 20px;
+     }
+     .community #about-bozzuto {
+       width: 430px;
+       padding-right: 0;
+     }
+     .community #sub-listing {
+       padding-top: 20px;
+       border-top: 1px solid #c1c1c5;
+       margin-top: 25px;
+     }
+     .community #sub-listing li {
+       float: left;
+       width: 150px;
+       padding-right: 20px;
+     }
+     .community #sub-listing li:nth-child(4n) {
+       padding-left: 20px;
+     }
+     .community #sidebar div.facebook-update {
+       padding-bottom: 15px;
+       margin-bottom: 15px;
+     }
+     .community #sidebar p.sharethis {
+       padding-top: 20px;
+       margin-top: 20px;
+     }
+     .community #sidebar p.sharethis a {
+       padding: 5px 0 5px 20px;
+     }
+    
+  /* @end */
+  
+  /* @group -features */
+
+    .features #main-content div.feature {
+      margin-bottom: 25px;
+    }
+
+    .features #main-content div.feature ul {
+      padding-left: 10px;
+    }
+
+    .features #main-content div.feature ul li {
+      font-size: 11px;
+      line-height: 18px;
+      list-style: disc outside url(../images/structure/blt-features.gif);
+      margin: 0 0 4px 0;
+    }
+
+    .features #main-content div.feature ul li a {
+      color: #84848b;
+      font-weight: bold;
+    }
+
+    .features #main-content div.feature ul li a.photo {
+      background: url(../images/structure/ico-photo.gif) right bottom no-repeat;
+      padding-right: 20px;
+    }
+
+    .features #main-content div.feature ul.li_cont1 {
+      margin-right: 11px;
+    }
+  
+  /* @end */
+  
+  /* @group -apartments */
+
+    .apartments #masthead {
+      border-bottom: 1px solid #858890;
+      padding-top: 24px;
+    }
+
+    .apartments #masthead .section {
+      float: left;
+      padding: 0 0 28px 189px;
+      width: 515px;
+    }
+
+    .apartments #masthead .aside {
+      float: right;
+      padding-top: 4px;
+      width: 229px;
+    }
+
+    .apartments #masthead .aside p.call-to-action a {
+      display: block;
+      height: 28px;
+      margin-bottom: 21px;
+      padding-left: 9px;
+      width: 220px; 
+    }
+
+    .apartments #masthead .aside ul {
+      margin-right: -19px;
+      overflow: hidden;
+      width: 250px;
+    }
+
+    .apartments #masthead .aside ul li {
+      float: left;
+    }
+
+    .apartments #masthead .aside ul li a {
+      border-bottom: 1px solid #d1d5d9;
+      display: block;
+      margin-right: 19px;
+      padding-left: 8px;
+      width: 98px;
+    }
+
+    .apartments #masthead .aside ul li.last a {
+      border-bottom: none;
+    }
+
+    .apartments #content div.slideshow {
+      height: 375px;
+      position: relative;
+      top: -15px;
+      width: 848px;
+    }
+
+    .apartments #content ul.slides li {
+      height: 375px;
+      left: 0;
+      overflow: hidden;
+      position: absolute;
+      text-indent: -9999px;
+      top: 0;
+      width: 848px;
+      z-index: 0;
+    }
+
+    .apartments #content ul.slides li {
+      z-index: 1;
+    }
+
+    .apartments #content ul.slides li.on-deck {
+      z-index: 3;
+    }
+
+    .apartments #content ul.slides li.current {
+      z-index: 2;
+    }
+
+    .apartments #content div.row {
+      margin-bottom: 3px;
+      overflow: hidden;
+      width: 768px;
+    }
+
+    .apartments #content ul.slideshow-pagination {
+      border: 1px solid #85898e;
+      bottom: 0;
+      left: 0;
+      padding: 0 8px;
+      position: absolute;
+      z-index: 10;
+    }
+
+    .apartments #content ul.slideshow-pagination li {
+      float: left;
+    }
+
+    .apartments #content ul.slideshow-pagination li a {
+      display: block;
+      width: 19px;
+    }
+
+    .apartments #content ul.slideshow-navigation {
+      position: absolute;
+      right: 67px;
+      top: 6px;
+      z-index: 10;
+    }
+
+    .apartments #content ul.slideshow-navigation li {
+      float: left;
+    }
+
+    .apartments #content ul.slideshow-navigation li a {
+      display: block;
+      height: 57px;
+      overflow: hidden;
+      width: 35px; 
+    }
+
+    .apartments #content div.row div.col {
+      padding-bottom: 3px;
+    }
+
+    .apartments #content #renting-from-bozzuto {
+      float: left;
+      padding-right: 22px;
+      width: 317px;
+    }
+
+    .apartments #content #about-bozzuto {
+      float: right;
+      width: 408px;
+    }
+
+    .apartments #content #renting-from-bozzuto p,
+    .apartments #content #about-bozzuto p {
+      margin-bottom: 11px;
+    }
+  
+  /* @end */
+  
+  /* @group -services */
+
+    .services #masthead,
+    .about #masthead {
+      border-bottom: 1px solid #858890;
+      color: #565c64;
+    }
+    .services #masthead .container,
+    .about #masthead .container {
+      height: 223px;
+      overflow: hidden;
+      position: relative;
+    }
+    .services #masthead .masthead-slideshow li,
+    .about #masthead .masthead-slideshow li {
+      background: #c0c5cb url(../images/structure/bg-masthead.gif) repeat-x;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 960px;
+      z-index: 1;
+    }
+    .services #masthead .masthead-slideshow .current,
+    .about #masthead .masthead-slideshow .current {
+      z-index: 2;
+    }
+    .services #masthead .section,
+    .about #masthead .section {
+      float: left;
+      font-size: 15px;
+      padding: 24px 0 28px 189px;
+      width: 515px;
+    }
+    .services #masthead .section h1 {
+      color: #565c64;
+      font-size: 35px;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+    .services #masthead .section .more,
+    .about #masthead .section .more {
+      background: url(../images/structure/bg-masthead-a-dark.gif) no-repeat 0 50%;
+      color: #565c64;
+      display: inline-block;
+      font-size: 11px;
+      font-weight: bold;
+      margin: 15px 0 0;
+      padding: 0 0 0 6px;
+    }
+    .services #masthead .aside {
+      float: right;
+    }
+    .services #masthead .aside a,
+    .services #masthead .aside img {
+      display: block;
+    }
+    .services #main-content {
+      background: url(../images/structure/bg-apartments-content.gif) left top repeat-x #fff;
+    }
+    .services #content {
+      padding-right: 0;
+      width: 769px;
+    }
+    .services #content .column-main {
+      float: left;
+      width: 519px;
+    }
+    .services #content div.slideshow,
+    .about #content div.slideshow {
+      height: 375px;
+      position: relative;
+      top: -15px;
+      width: 849px;
+    }
+
+    .services #content ul.slides li,
+    .about #content ul.slides li {
+      height: 375px;
+      left: 0;
+      overflow: hidden;
+      position: absolute;
+      text-indent: -9999px;
+      top: 0;
+      width: 848px;
+      z-index: 0;
+    }
+
+    .services #content ul.slides li,
+    .about #content ul.slides li {
+      z-index: 1;
+    }
+
+    .services #content ul.slides li.on-deck,
+    .about #content ul.slides li.on-deck {
+      z-index: 3;
+    }
+
+    .services #content ul.slides li.current,
+    .about #content ul.slides li.current {
+      z-index: 2;
+    }
+
+    .services #content ul.slideshow-pagination,
+    .about #content ul.slideshow-pagination {
+      background: #fff;
+    }
+
+    .services #content ul.slideshow-pagination,
+    .about #content ul.slideshow-pagination {
+      border: 1px solid #85898e;
+      bottom: 0;
+      left: 0;
+      padding: 0 8px;
+      position: absolute;
+      z-index: 10;
+    }
+
+    .services #content ul.slideshow-pagination li,
+    .about #content ul.slideshow-pagination li {
+      float: left;
+    }
+
+    .services #content ul.slideshow-pagination li a,
+    .about #content ul.slideshow-pagination li a {
+      color: #747479;
+      line-height: 21px;
+      text-align: center;
+    }
+
+    .services #content ul.slideshow-pagination li a,
+    .about #content ul.slideshow-pagination li a {
+      display: block;
+      width: 19px;
+    }
+
+    .services #content ul.slideshow-pagination li.current a,
+    .services #content ul.slideshow-pagination li a:hover,
+    .about #content ul.slideshow-pagination li.current a,
+    .about #content ul.slideshow-pagination li a:hover {
+      color: #28283a;
+      text-decoration: none;
+    }
+
+    .services #content ul.slideshow-pagination li.current a,
+    .about #content ul.slideshow-pagination li.current a {
+      font-weight: bold;
+    }
+
+    .services #content ul.slideshow-navigation,
+    .about #content ul.slideshow-navigation {
+      position: absolute;
+      right: 67px;
+      top: 6px;
+      z-index: 10;
+    }
+
+    .services #content ul.slideshow-navigation li,
+    .about #content ul.slideshow-navigation li {
+      float: left;
+    }
+
+    .services #content ul.slideshow-navigation li a,
+    .about #content ul.slideshow-navigation li a {
+      display: block;
+      height: 57px;
+      overflow: hidden;
+      width: 35px; 
+    }
+    .testimonials .read-more,
+    .tips .read-more {
+     display: block;
+     padding-left: 6px; 
+    }
+    .services #aside #featured-projects .article {
+      overflow: hidden;
+      padding: 0;
+      width: 230px;
+    }
+    .services #aside #featured-projects .details {
+      float: left;
+      width: 175px;
+    }
+    .services #aside #featured-projects .details a {
+      display: block;
+      padding-left: 5px;
+    }
+    .services #aside #featured-projects .date {
+      float: right;
+      width: 45px;
+    }
+    .services #aside #featured-projects .view-all {
+      clear: both;
+      display: block;
+      padding-left: 5px;
+    }
+  
+  /* @end */
+  
+  /* @group -project */
+
+    .project #sidebar {
+      padding-right: 0;
+      width: 190px;
+    }
+
+    .project #sidebar #secondary-nav {
+      border-bottom: 1px solid #cdd1d5;
+      padding-bottom: 24px;
+    }
+
+    .project #sidebar h2 {
+      border-bottom: 1px solid #eaecee;
+      margin-bottom: 237px;
+    }
+
+    .project #sidebar h2 a {
+      padding-left: 8px;
+    }
+
+    .project .content {
+      overflow: hidden;
+      width: 770px;
+    }
+
+    .project #main-content .content .main-content {
+      float: left;
+      width: 520px;
+    }
+
+    .project #main-content .content .main-content ul.data {
+      margin-top: 17px;
+      overflow: hidden;
+      padding-bottom: 8px;
+      width: 100%;
+    }
+
+    .project #main-content .content .main-content ul.data li {
+      float: left;
+      height: 46px;
+      margin: 0 4px -2px;
+      padding-top: 14px;
+      width: 165px;
+    }
+
+    .project #main-content .content .main-content ul.data li h3 {
+      border: none;
+      margin-bottom: 4px;
+      padding: 0;
+      width: auto;
+    }
+
+    .project #main-content .content .main-content ul.project-updates {
+      padding: 18px;
+    }
+
+    .project #main-content .content .main-content ul.project-updates li {
+      margin-bottom: 15px;
+      padding-bottom: 18px;
+    }
+
+    .project #main-content .content .main-content ul.project-updates li h3 {
+      border: none;
+      margin-bottom: 7px;
+      padding: 0;
+    }
+
+    .project #main-content .content .main-content ul.project-updates li div {
+      position: relative;
+    }
+
+    .project #main-content .content .main-content ul.project-updates li div p.info-link a {
+      display: block;
+      height: 19px;
+      right: 6px;
+      overflow: hidden;
+      position: absolute;
+      text-indent: -9999px;
+      top: 4px;
+      width: 19px;
+      z-index: 2;
+    }
+
+    .project #main-content .content .main-content ul.project-updates li div div.info-overlay {
+      display: none;
+      height: 178px;
+      left: 0;
+      padding: 18px;
+      position: absolute;
+      top: 0;
+      width: 448px;
+      z-index: 1;
+    }
+
+    .project #main-content .content .main-content ul.project-updates li div div.info-overlay h4 {
+      margin-bottom: 12px;
+      width: 360px;
+    }
+
+    .project #main-content .content .main-content ul.project-updates li div div.info-overlay p {
+      padding-bottom: 17px;
+      width: 360px;
+    }
+
+    .project #main-content .content .main-content ul.pagination {
+      margin: 25px 0 16px;
+      overflow: hidden;
+      padding-top: 13px;
+      width: 100%;
+    }
+
+    .project #main-content .content .main-content ul.pagination li {
+      float: left;
+      margin: 0 6px;
+    }
+
+    .project #main-content .content .main-content ul.pagination li.first a,
+    .project #main-content .content .main-content ul.pagination li.last a {
+      padding-left: 6px;
+    }
+
+    .project #main-content .content .main-content ul.pagination li.first {
+      margin: 0 10px 0 0;
+    }
+
+    .project #main-content .content .main-content ul.pagination li.last {
+      margin: 0 0 0 10px;
+    }
+
+    .project #main-content .content .sub-content {
+      float: right;
+      width: 230px;
+    }
+
+    .project #main-content .content .sub-content .section {
+      background: #f2f4f5;
+      margin-bottom: 9px;
+    }
+
+    .project #main-content .content .sub-content .section p {
+      padding: 15px 12px;
+    }
+
+    .project #main-content .content .sub-content h4 {
+      margin-bottom: 1px;
+    }
+
+    .project #main-content .content .sub-content h4 a {
+      display: block;
+      font-size: 15px;
+      height: 29px;
+      line-height: 29px;
+      padding-left: 12px;
+      width: 230px;
+    }
+
+    .project #main-content .content .sub-content .similar-projects li {
+      margin-bottom: 16px;
+    }
+
+    .project #main-content .content .sub-content .similar-projects li p {
+      width: 175px;
+    }
+
+    .project #main-content .content .sub-content .similar-projects li p.photo a {
+      background: none;
+      padding-left: 0;
+    }
+
+    .project #main-content .content .sub-content .map {
+      overflow: hidden;
+      margin-bottom: 9px;
+      padding: 10px;
+      width: 210px;
+    }
+
+    .project #main-content .content .sub-content .map div img {
+      border: 1px solid #969ba1;
+      margin-bottom: -3px;
+    }
+
+    .project #main-content .content .sub-content .similar-projects p a {
+      padding-left: 6px;
+    }
+
+    .project #main-content .content .sub-content .similar-projects ul {
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+    }
+
+    .project #main-content .content .sub-content .similar-projects li p.date {
+      float: right;
+      margin: 1px 10px 0 0;
+      width: 35px;
+    }
+  
+  /* @end */
+  
+  /* @group -homes */
+
+    .homes #masthead p.call-to-action {
+    	margin-top: 12px;
+    }
+
+    .homes #masthead p.call-to-action a {
+    	padding-left: 7px;
+    }
+
+    .homes #masthead p.figure a {
+    	display: block;
+    	height: 223px;
+    	overflow: hidden;
+    	text-indent: -9999px;
+    	width: 230px;
+    }
+
+    .homes #masthead .section .quote { 
+    	width: 447px;
+    }
+
+    .homes #masthead .section .citation {
+    	margin-top: 9px;
+    }
+
+    .homes #content {
+    	padding-right: 0;
+    	width: 770px;
+    }
+
+    .homes #content div.header,
+    .search #content div.header {
+    	margin-bottom: 19px;
+    	overflow: hidden;
+    	width: 100%;
+    }
+
+    .homes #content div.header ul li,
+    .search #content div.header ul li {
+    	float: left;
+    }
+
+    .homes #content div.header ul li a,
+    .search #content div.header ul li a {
+    	display: block;
+    	height: 38px;
+    }
+
+    .homes #content div.header ul li a.list,
+    .search #content div.header ul li a.list {
+    	padding: 6px 95px 3px 10px;
+    	width: 47px;
+    }
+
+    .homes #content div.header ul li a.map,
+    .search #content div.header ul li a.map {
+    	padding: 6px 90px 3px 10px;
+    	width: 48px;
+    }
+
+    .homes #content div.header ul li a.directory,
+    .search #content div.header ul li a.directory {
+    	padding: 6px 55px 3px 10px;
+    	width: 84px;
+    }
+
+    .homes #content div.header p,
+    .search #content div.header p {
+    	float: right;
+    	margin-right: 58px;
+    }
+
+    .homes #content #view-as-list ul li,
+    .homes #content #view-as-list ul li {
+    	margin-bottom: 14px;
+    	overflow: hidden;
+    	position: relative;
+    	width: 100%;
+    }
+
+    .homes #content #view-as-list div.content {
+    	width: 600px;
+    	float: right;
+    }
+
+    .homes #content #view-as-list div.content div {
+    	float: left;
+    	width: 351px;
+    }
+
+    .homes #content #view-as-list div.content div.learn-more {
+    	float: right;
+    	width: 230px;
+    }
+
+
+    .homes #content #view-as-list h2 {
+    	border-bottom: 1px solid #c1c1c5;
+    	border-top: 1px solid #c1c1c5;
+    	float: left;
+    	margin-bottom: 8px;
+    	padding: 0 68px 0 12px;
+    	width: 271px;
+    }
+
+    .homes #content #view-as-list p.intro {
+    	margin-bottom: 12px;
+    	padding: 0 0 12px 12px;
+    }
+
+    .homes #content #view-as-list div p {
+    	padding-left: 12px;
+    }
+
+    .homes #content #view-as-list div p.call-to-action {
+    	margin-top: 10px;
+    }
+
+    .homes #content #view-as-list div p.call-to-action a {
+    	padding-left: 7px;
+    }
+
+    .homes #content #view-as-list div.learn-more {
+    	background: #f1f4f5;
+    }
+
+    .homes #content #view-as-list div.learn-more h2,
+    .search #content div.learn-more h2 {
+    	float: right;
+    	height: 40px;
+    	margin-bottom: 8px;
+    	padding: 0;
+    	width: 230px;
+    }
+
+    .homes #content #view-as-list div.learn-more h2 a,
+    .search #content div.learn-more h2 a {
+    	display: block;
+    	height: 40px;
+    	padding-left: 15px;
+    	width: 215px;
+    }
+
+    .homes #content #view-as-list div.learn-more h2 a:hover,
+    .search #content div.learn-more h2 a:hover {
+    	text-decoration: none;
+    }
+
+    .homes #content #view-as-list div.learn-more p {
+    	margin-bottom: 12px;
+    	padding-bottom: 12px;	
+    }
+
+    .homes #content #view-as-list div.learn-more ul {
+    	margin-bottom: 6px;
+    	overflow: hidden;
+    	width: 195px;
+    }
+
+
+    .homes #content #view-as-list div.photos {
+    	clear: left;
+    	float: left;
+    	margin-right: 19px;
+    	width: 151px;
+    }
+
+    .homes #content #view-as-list div.photos p {
+    	margin-bottom: 5px;
+    	padding-left: 0;
+    }
+  
+  /* @end */
+  
+  /* @group -search results */
+
+    .search #breadcrumb {
+    	border-bottom: 1px solid #858890;
+    	height: 81px;
+    	margin-bottom: 27px;
+    }
+
+    .search #breadcrumb .container {
+    	height: 68px;
+    	padding: 13px 0 0 185px;
+    	position: relative;
+    	width: 770px;	
+    }
+
+    .search #breadcrumb .container p.promo {
+    	position: absolute;
+    	right: 0;
+    	top: 0;
+    } 
+
+    .search #breadcrumb .container ul li {
+    	float: left;
+    }
+
+    .search #breadcrumb .container ul li a {
+    	margin-right: 6px;
+    	padding-right: 6px;
+    }
+
+    .search #sidebar h2 {
+    	padding-left: 13px;
+    }
+
+    .search #sidebar h3 {
+    	margin-bottom: 10px;
+    }
+
+    .search #sidebar fieldset {
+    	margin-bottom: 16px;
+    	padding-bottom: 15px;
+    }
+
+    .search #sidebar fieldset ul {
+    	padding-left: 13px;
+    }
+
+    .search #sidebar fieldset ul li {
+    	margin-bottom: 6px;
+    	overflow: hidden;
+    }
+
+    .search #sidebar ul li input {
+    	background: none;
+    	border: none;
+    	width: auto;
+    }
+
+    .search #sidebar  ul li label {
+    	padding-left: 5px;
+    	position: relative;
+    	top: -5px;
+    }
+
+    .search #sidebar fieldset ul li select {
+    	width: 155px;
+    }
+
+    .search #sidebar #special_promotion ul li input {
+    	display: block;
+    	float: left;
+    }
+
+    .search #sidebar #special_promotion ul li label {
+    	display: block;
+    	float: right;
+    	margin-bottom: -16px;
+    	padding-left: 16px;
+    	top: -16px;
+    	width: 135px;
+    }
+
+    .search #content {
+    	padding-right: 0;
+    	width: 770px;
+    }
+
+    .search #content ul.results {
+    	border-top: 1px solid #c1c1c1;
+    }
+
+    .search #content ul.results li div.header {
+    	border: 1px solid #c1c1c5;
+    	border-bottom: none;
+    	border-top: none;
+    	cursor: pointer;
+    	height: 54px;
+    	margin-bottom: 0;
+    	overflow: hidden;
+    	width: 768px;
+    }
+
+    .search #content ul.results li div.header:hover h2 {
+      text-decoration: underline;
+    }
+
+    .search #content ul.results li.closed {
+    	border-bottom: 1px solid #c1c1c5;
+    }
+
+    .search #content ul.results li div.header h2 {
+    	float: left;
+    	line-height: 54px;
+    	padding-left: 24px;
+    	text-transform: uppercase;
+    	width: 185px;
+    }
+
+    .search #content ul.results li div.header p {
+    	float: none;
+    }
+
+    .search #content ul.results li ul.location-filters {
+    	border: 1px solid #c1c1c5;
+    	border-top: none;
+    }
+
+    .search #content ul.results li ul.location-filters li {
+    	border-top: 1px solid #c1c1c5;
+    	width: 768px;
+    }
+
+    .search #content ul.results li ul.location-filters div.header {
+    	border: none;
+    	height: 29px;
+    }
+
+    .search #content ul.results li ul.location-filters li h3 {
+    	border: none;
+    	padding: 0 0 0 24px;
+    }
+
+    .search #content ul.results li ul.location-filters li ul {
+      background: #f5f6f7;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .js .search #content ul.results li ul.location-filters li ul { display: none; }
+
+    .search #content ul.results li ul.location-filters li li {
+      background: none;
+      border-top-color: #e8e8e8;
+      float: left;
+      margin: 0 14px 0 0;
+      width: 181px;
+    }
+
+    .search #content ul.results li ul.location-filters li .alt {
+      margin-right: 0;
+    }
+
+    .search #content ul.results li ul.location-filters ul a {
+      background: url(../images/structure/bg-search-results-pagination-a.gif) no-repeat 9px 50%;
+      color: #64676c;
+      display: block;
+      float: left;
+      overflow: hidden;
+      padding: 6px 6px 6px 16px;
+      width: 159px;
+    }
+    .search #content ul.results li ul.location-filters ul a:hover strong, 
+    .search #content ul.results li ul.location-filters ul a:hover em { 
+      text-decoration: underline;
+    }
+    .search #content ul.results li ul.location-filters ul a strong {
+      display: block;
+      float: left;
+      font-weight: normal;
+      text-transform: uppercase;
+    }
+
+    .search #content ul.results li ul.location-filters ul a em {
+      color: #919191;
+      display: block;
+      float: right;
+      font-style: normal;
+    }
+
+    .search #content div.results {
+    	margin-top: 22px;
+    }
+
+    .search #content div.results ul li {
+    	margin-bottom: 14px;
+    	overflow: hidden;
+    	width: 100%;
+    }
+
+    .search #content div.results ul li p.photos {
+    	float: left;
+    }
+
+    .search #content div.results ul li div.info {
+    	float: right;
+    	overflow: hidden;
+    	width: 600px;
+    }
+
+    .search #content div.results ul li div.info div {
+    	float: left;
+    	width: 351px;
+    }
+
+    .search #content div.results ul li div.info div h2 {
+    	border-bottom: 1px solid #c1c1c5;
+    	border-top: 1px solid #c1c1c5;
+    	margin-bottom: 11px;
+    	padding-left: 13px;
+    }
+
+    .search #content div.results ul li div.info p.intro {
+    	float: left;
+    	margin-bottom: 11px;
+    	padding: 0 0 12px 12px;
+    	width: 140px;
+    }
+
+    .search #content div.results ul li div.info ul {
+    	float: left;
+    	padding-left: 12px;
+    	width: 140px;
+    }
+
+    .search #content div.results ul li div.info ul li {
+    	font-size: 11px;
+    	line-height: 16px;
+    	margin-bottom: 0;
+    }
+
+    .search #content div.results ul li div.info p.address-info {
+    	margin: 0 10px;
+    	padding-bottom: 8px;
+    }
+
+    .search #content div.results ul li div.info p.description {
+    	clear: right;
+    	float: right;
+    	padding-left: 7px;
+    	width: 174px;
+    }
+
+    .search #content div.results ul li div.info div.learn-more {
+    	float: right;
+    	width: 230px;
+    }
+
+
+    .search #content div.results ul li div.info div.learn-more h2,
+    .homes #content #view-as-list div.learn-more h2 {
+    	border: none;
+    	padding-left: 0;
+    }
+
+    .search #content div.results ul li div.info div.learn-more p,
+    .search #content div.results ul li div.info div.learn-more ul,
+    .homes #content #view-as-list div.learn-more ul {
+    	padding-left: 12px;
+    }
+
+    .search #content div.results ul li div.info div.learn-more p {
+    	margin-bottom: 9px;
+    	padding-bottom: 8px;
+    }
+
+    .search #content div.results ul li div.info div.learn-more p a,
+    .homes #content #view-as-list div.learn-more p a {
+    	padding-left: 6px;
+    }
+
+    .search #content div.results ul li div.info div.learn-more ul {
+    	margin-bottom: 14px;
+    	overflow: hidden;
+    	width: 195px;
+    }
+
+    .search #content div.results ul li div.info div.learn-more ul li,
+    .homes #content #view-as-list div.learn-more ul li {
+    	display: block;
+    	height: 33px;
+    	margin-right: 8px;
+    	overflow: hidden;
+    	text-indent: -9999px;
+    	float: left;
+    	width: 34px;
+    }
+
+    .search #content div.results ul li div.info div.learn-more ul li {
+      margin-bottom: 8px;
+    }
+
+    .search #content div.results ul.pagination {
+    	margin: 17px 0 16px;
+    	overflow: hidden;
+    	padding: 13px 0 16px;
+    	width: 100%;
+    }
+
+    .search #content div.results ul.pagination li {
+    	float: left;
+    	margin-right: 13px;
+    	width: auto;
+    }
+
+    .search #content div.results ul.pagination li a.first,
+    .search #content div.results ul.pagination li a.last {
+    	padding-left: 6px;
+    }
+
+    .search #sub-content {
+    	margin-top: 16px;
+    	overflow: hidden;
+    	margin-bottom: 5px;
+    	padding-left: 190px;
+    	width: 770px;
+    }
+
+    .search #sub-content p.call-to-action {
+    	margin-top: 14px;
+    	padding-bottom: 14px;
+    }
+
+    .search #sub-content p.call-to-action a {
+    	padding-left: 6px;
+    }
+
+    .search #sub-content #renting-from-bozzuto {
+    	float: left;
+    	padding-right: 0;
+    	width: 320px;
+    }
+
+    .search #sub-content #about-bozzuto {
+    	float: right;
+    	padding-right: 0;
+    	width: 430px;
+    }
+
+    .search #search-results-map {
+    	height: 600px;
+    	width: 100%;
+    }
+  
+  /* @end */
+  
+  /* @group -services */
+
+    .testimonials li,
+    .services #aside #featured-projects .details,
+    .tips {
+      padding-bottom: 1.454545455em;
+      margin-bottom: 0.727272727em;
+    }
+    .testimonials blockquote,
+    .tips ul {
+      margin-bottom: 0.727272727em;
+    }
+    .testimonials .read-more,
+    .tips .read-more {
+      padding-left: 6px;
+    }
+    .tips ul {
+      margin-right: 20px;
+    }
+    .tips li {
+      margin-bottom: 4px;
+      padding-left: 7px;
+    }
+    .services #aside #featured-projects .view-all {
+      margin-bottom: 0.727272727em;
+    }
+  
+  /* @end */
+  
+  /* @group -leadership */
+
+    .leadership #masthead .section {
+      padding: 0 0 28px 0;
+    }
+  
+    .leadership #breadcrumb {
+      border: none;
+    }
+  
+    .aside-quote cite {
+      display: block;
+    }
+  
+    .partners {
+      overflow: hidden;
+      padding: 15px 0 0;
+    }
+  
+    .partners li {
+      float: left;
+      padding-right: 20px;
+      height: 105px;
+      width: 150px;
+    }
+    
+    .partners a, .partners span {
+      display: block;
+    }
+    
+    .aside-quote p {
+       padding: 20px 20px 0;
+     }
+
+     .aside-quote cite {
+       padding: 10px 20px;
+     }
+        
+    .partners .partner-name {
+      border-top: 1px solid #c1c1c5;
+      border-bottom: 1px solid #c1c1c5;
+      height: 30px;
+      margin-bottom: 10px;
+      padding: 0 25px 0 0;
+    }
+    
+    .partner-group {
+      border-bottom: 1px solid #e5e5e5;
+      overflow: visible;
+      padding-bottom: 10px;
+      width: 20px;
+    }
+    
+    /* @group --portrait */
+
+      .partner-portrait {
+        position: relative;
+        top: -15px;
+      }
+
+      .partner-portrait, .partner-portrait-screen, .partner-portrait-images li {
+        height: 375px;
+        width: 849px;
+      }
+      
+      .partner-portrait-screen, .partner-portrait li, .partner-portrait a {
+        left: 0;
+        position: absolute;
+        top: 0;
+      }
+      
+      .partner-portrait-screen, .partner-portrait-images li {
+        opacity: 0;
+        -moz-opacity: 0;
+        filter:alpha(opacity=0);
+      }
+      
+      .partner-portrait-images a {
+        display: none;
+      }
+            
+      .partner-portrait-links span {
+        cursor: pointer;
+        display: block;
+        height: 50px;
+        position: absolute;
+        text-indent: -9999px;
+        width: 50px;
+      }
+      
+      .partner-portrait-links .portrait-steve-s   .hit1 { height: 375px; width: 120px; left:  0px;  top:   0px; }
+      .partner-portrait-links .portrait-john-b    .hit1 { height: 375px; width: 100px; left: 120px; top:   0px; }
+      .partner-portrait-links .portrait-john-b    .hit2 { height: 200px; width: 120px; left: 60px;  top: 175px; }
+      .partner-portrait-links .portrait-thomas-a  .hit1 { height: 375px; width: 120px; left: 220px; top:   0px; }
+      .partner-portrait-links .portrait-thomas-s  .hit1 { height: 375px; width: 120px; left: 340px; top:   0px; }
+      .partner-portrait-links .portrait-thomas-s  .hit2 { height: 210px; width: 120px; left: 260px; top: 165px; }
+      .partner-portrait-links .portrait-daniel-c  .hit1 { height: 100px; width:  80px; left: 390px; top:   0px; }
+      .partner-portrait-links .portrait-daniel-c  .hit2 { height: 175px; width:  60px; left: 390px; top:   0px; }
+      .partner-portrait-links .portrait-toby-s    .hit1 { height: 375px; width:  95px; left: 455px; top:   0px; }
+      .partner-portrait-links .portrait-ryan-o    .hit1 { height: 180px; width:  80px; left: 510px; top:   0px; }
+      .partner-portrait-links .portrait-julie-a   .hit1 { height: 375px; width:  75px; left: 590px; top:   0px; }
+      .partner-portrait-links .portrait-julie-a   .hit2 { height: 195px; width:  40px; left: 550px; top: 180px; }
+      .partner-portrait-links .portrait-richard-l .hit1 { height: 375px; width: 155px; left: 665px; top:   0px; }
+      .partner-portrait-links .portrait-richard-l .hit2 { height: 145px; width:  65px; left: 600px; top: 230px; }
+      .partner-portrait-links .portrait-michael-a .hit1 { height: 375px; width:  26px; left: 820px; top:   0px; }
+      .partner-portrait-links .portrait-michael-a .hit2 { height: 135px; width: 110px; left: 710px; top:   0px; }
+      .partner-portrait-links .portrait-michael-a .hit3 { height: 115px; width:  90px; left: 730px; top: 135px; }
+    
+    /* @end */
+  
+  /* @end */
+  
+  /* @group -footer */
+
+    #footer {
+      border-top: 1px solid #676a6e;
+    }
+    #footer .container,
+    #copyright .container {
+      width: 940px;
+      padding: 20px 0 20px 20px;
+    }
+    #footer .col {
+      float: left;
+      width: 150px;
+      padding-right: 20px;
+    }
+    #footer .col.wide {
+      width: 230px;
+      padding-left: 20px;
+      padding-right: 0;
+    }
+    #footer h4 {
+      padding-bottom: 6px;
+      border-bottom: 1px solid #bebec1;
+      margin-bottom: 10px;
+    }
+    #footer a {
+      padding-left: 6px;
+    }
+    #footer li.facebook,
+    #footer li.twitter {
+      line-height: 2.7;
+      padding-left: 28px;
+    }
+    #copyright p {
+      float: left;
+      width: 150px;
+    }
+    #copyright p.links {
+      float: left;
+      width: 460px;
+    }
+    #copyright p.links a {
+      padding: 0 5px;
+    }
+    #copyright #eho {
+      float: right;
+      width: 280px;
+      padding-left: 25px;
+    }
+  
+  /* @end */
+
+/* @end */
+
+/* @group =2. Typography */
+
+  body {
+    font-size: 0.75em; /* 12px base */
+    line-height: 1.5;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    color: #84848b;
+  }
+  h1 {
+    font-family: "Arial Narrow", "Arial", sans-serif;
+  }
+  em { font-style: italic; }
+  strong { font-weight: bold; }
+  a {
+    text-decoration: none;
+    color: #080812;
+  }
+  a:hover { text-decoration: underline; }
+
+  #main-content .social-updates .message {
+    line-height: 1.363636364em;
+    margin-bottom: 1em;
+  }
+  #main-content .social-updates .byline {
+    font-size: 11px;
+    line-height: 2;
+    margin-bottom: 0;
+    font-weight: bold;
+    letter-spacing: -0.090909091em;
+    color: #fff;
+  }
+  #main-content .social-updates .byline em {
+    font-style: normal;
+    margin-left: 5px;
+  }
+  #main-content .facebook-update .byline em {
+    color: #d0d8e6;
+  }
+  #main-content .twitter-update .byline em {
+    color: #d5e9ea;
+  }
+
+  /* @group -header */
+
+    #header .aside a,
+    #header #home-nav a {
+      font-size: 11px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #636972;
+    }
+    #header .aside a:hover,
+    #header #home-nav a:hover {
+      color: #2e2e39;
+      text-decoration: none;
+    }
+  
+  /* @end   -header */
+
+  /* @group -special-nav */
+
+    #header #special-nav a {
+      font-size: 15px;
+      line-height: 26px;
+    }
+    #header #special-nav a:hover {
+      text-decoration: none;
+    }
+    #header #special-nav label {
+      font-size: 11px;
+      color: #565c64;
+    }
+    #header #find-apartment-form .advanced-search a {
+      font-size: 11px;
+      font-weight: bold;
+      color: #636972;
+    }
+  
+  /* @end */
+  
+  /* @group -home */
+
+    .home #masthead {
+      height: 380px;
+    }
+    .home #masthead .container {
+      text-indent: -9999px;
+    }
+    .home h1 {
+      font-size: 27px;
+      text-transform: uppercase;
+    }
+    .home #content p {
+      font-size: 11px;
+      line-height: 1.636363636;
+      margin-bottom: 1em;
+    }
+    .home #welcome a.read-more {
+      font-weight: bold;
+      color: #636972;
+    }
+    .home #featured-property h2 a {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+  
+  /* @end */
+  
+  /* @group -news */
+
+    #news h2 {
+      font-size: 15px;
+      line-height: 1.333333333;
+      color: #000;
+    }
+    #news h3 {
+      font-weight: bold;
+    }
+    #news .col,
+    #news ul li {
+      font-size: 11px;
+      line-height: 1.818181818em;
+    }
+    #news ul li a {
+      font-weight: bold;
+      color: #656571;
+    }
+  
+  /* @end */
+  
+  /* @group -secondary */
+
+    .secondary #header #main-nav li li a {
+      font-size: 11px;
+      line-height: 1;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #949498;
+    }
+    .secondary #main-content h2 {
+      font-size: 22px;
+      line-height: 1.833333333;
+      color: #84848b;
+    }
+    .secondary #main-content h3 {
+      font-size: 15px;
+      line-height: 1;
+      color: #080812;
+    }
+    .secondary #main-content h3 a:hover {
+      text-decoration: none;
+    }
+    .secondary #main-content p {
+      font-size: 11px;
+      line-height: 1.636363636;
+    }
+  
+  /* @end */
+  
+  /* @group -about */
+
+    .about #masthead .section,
+    .homes #masthead .section {
+      color: #565c64;
+    }
+    .about #masthead .section h1,
+    .homes #masthead .section h1 {
+      font-size: 35px;
+      letter-spacing: -0.028571429em;
+      line-height: 1.285714286;
+      text-transform: uppercase;
+    }
+    .about #masthead .section p,
+    .homes #masthead .section p {
+      font-size: 15px;
+      line-height: 1.466666667;
+    }
+    .about #masthead .nav li a,
+    .homes #masthead .nav li a {
+      font-size: 13px;
+      text-align: center;
+      color: #747479;
+    }
+    .about #masthead .nav li.current a,
+    .homes #masthead .nav li.current a {
+      font-weight: bold;
+      color: #28283a;
+    }
+    .about #masthead .nav li a:hover,
+    .homes #masthead .nav li a:hover {
+      text-decoration: none;
+    }
+    .about #secondary-nav li a,
+    .apartments #secondary-nav li a,
+    .homes #secondary-nav li a,
+    .services #secondary-nav li a {
+      font-size: 11px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #636972;
+    }
+    .about #secondary-nav li a span,
+    .apartments #secondary-nav li a span,
+    .homes #secondary-nav li a span,
+    .services #secondary-nav li a span {
+      line-height: 20px;
+      font-weight: normal;
+      text-align: center;
+      color: #636972;
+    }
+    .about #secondary-nav li a:hover,
+    .apartments #secondary-nav li a:hover,
+    .home #secondary-nav li a:hover,
+    .services #secondary-nav li a:hover,
+    .about #secondary-nav .active a,
+    .apartments #secondary-nav .active a,
+    .home #secondary-nav .active a,
+    .services #secondary-nav .active a  {
+      text-decoration: none;
+      color: #2e2e39;
+    }
+    .about #secondary-nav li li a,
+    .apartments #secondary-nav li li a,
+    .home #secondary-nav li li a,
+    .services #secondary-nav li li a {
+      font-size: 10px;
+      font-weight: normal;
+      color: #92929b;
+    }
+    .about #content p {
+      padding-bottom: 1.454545455em;
+      margin-bottom: 0.727272727em;
+    }
+    .about #aside .section h4,
+    .about #aside .section p,
+    .services #aside .section h4,
+    .services #aside .section p {
+      font-size: 11px;
+      line-height: 1.272727273;
+      color: #747479;
+    }
+    .about #aside .section h4 a,
+    .services #aside .section h4 a {
+      font-weight: bold;
+      color: #747479;
+    }
+    .about #aside .section .date,
+    .services #aside .section .date {
+      font-size: 12px;
+      font-weight: bold;
+      text-align: right;
+      color: #67676f;
+    }
+    .about #latest-news .section.first .date span {
+      font-size: 27px;
+      line-height: 0.925925926;
+      font-weight: normal;
+    }
+  
+  /* @end */
+  
+  /* @group -community */
+
+    .about #breadcrumb li,
+    .about #breadcrumb li a,
+    .community #breadcrumb li,
+    .community #breadcrumb li a,
+    .services #breadcrumb li,
+    .services #breadcrumb li a {
+      font-size: 12px;
+      line-height: 3.5;
+      color: #565c64;
+    }
+    .about #breadcrumb li,
+    .community #breadcrumb li,
+    .services #breadcrumb li {
+      padding-right: 9px;
+      margin-right: 4px;
+    }
+    .about #breadcrumb li.last,
+    .community #breadcrumb li.last,
+    .services #breadcrumb li.last {
+      padding-right: 0;
+      margin-right: 0;
+    }
+    .about #breadcrumb li a,
+    .community #breadcrumb li a,
+    .services #breadcrumb li a {
+      text-decoration: underline;
+    }
+    .about #breadcrumb li a:hover,
+    .community #breadcrumb li a:hover,
+    .services #breadcrumb li a:hover {
+      text-decoration: none;
+    }
+    
+    /* @group --masthead */
+
+      .community #secondary-nav a {
+        font-size: 15px;
+        line-height: 15px;
+        color: #84848b;
+      }
+      .community #secondary-nav a:hover,
+      .community #secondary-nav li.current a {
+        color: #000;
+        text-decoration: none;
+      }
+      .community #masthead #remote-nav a {
+        font-size: 11px;
+        color: #636972;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+          
+    /* @end */
+    
+    /* @group --slideshow */
+
+      .community #slideshow .header {
+        font-size: 65px;
+        line-height: 1;
+        text-transform: uppercase;
+        color: #fff;
+      }
+      .community #slideshow .section {
+        font-size: 15px;
+        line-height: 1.133333333;
+        color: #fff;
+      }
+    
+    /* @end */
+    
+    .community #main-content {
+      font-size: 11px;
+    }
+    .community #overview p.intro {
+      font-size: 15px;
+      line-height: 1.466666667;
+      margin-bottom: 0.8em;
+    }
+    .community #overview ul {
+      margin-bottom: 1.090909091em;
+    }
+    .community #overview ul li {
+      line-height: 2;
+      margin-left: 15px;
+      list-style-type: disc;
+    }
+    .community #overview a,
+    .community #apartments a,
+    .community #featured-floor-plans a,
+    .community #nearby-communities a,
+    .community .social-updates a,
+    .community #recently-viewed a,
+    .community #renting-from-bozzuto a,
+    .community #about-bozzuto a,
+    .community #sub-listing a,
+    .apartments #about-bozzuto a,
+    .apartments #renting-from-bozzuto a {
+      padding-left: 6px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #636972;
+    }
+    .community #overview a {
+      text-transform: none;
+    }
+    .community #overview ul.community-icons li a {
+      text-decoration: none;
+    }
+    .community #overview ul.community-icons li a:hover span {
+      font-size: 15px;
+      line-height: 43px;
+      color: #000;
+      font-weight: normal;
+      text-decoration: none;
+    }
+
+    .community #apartments table td {
+      line-height: 1;
+    }
+    .community #apartments table td.availability {
+      text-align: right;
+    }
+    .community #main-content .social-updates .byline {
+      letter-spacing: 0;
+    }
+    .community #nearby-communities li a {
+      line-height: 3;
+    }
+    .community #sub-listing li a {
+      font-size: 10px;
+      line-height: 2;
+      font-weight: normal;
+      color: #84848b;
+    }
+    .community #community-info {
+      background: #c2c6ca;
+      margin-bottom: 10px;
+    }
+    .community #community-info .nav li a {
+      font-size: 15px;
+      line-height: 1.2;
+      color: #000;
+    }
+    .community #community-info .nav li a:hover {
+      text-decoration: none;
+    }
+    .community #community-info p.call-to-action a {
+      font-size: 15px;
+      line-height: 28px;
+      color: #000;
+    }
+    .community #community-info p.call-to-action a:hover {
+      text-decoration: none;
+    }
+    .community #renting-from-bozzuto p,
+    .community #about-bozzuto p {
+      margin-bottom: 1.666666667em;
+    }
+    .community .social-updates p.sharethis a {
+      font-size: 12px;
+      font-weight: normal;
+      text-transform: none;
+      color: #4496ae;
+    }
+    .community #sidebar div.facebook-update p.message {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      margin-bottom: 0;
+    }
+  
+  /* @end */
+  
+  /* @group -project */
+
+    .project #sidebar #secondary-nav a {
+      color: #84848b;
+    } 
+
+    .project #sidebar h2 a {
+      color: #84848b;
+      font-size: 15px;
+    }
+
+    .project #main-content .content .main-content p.intro {
+      font-size: 15px;
+      line-height: 22px;
+    }
+
+    .project #main-content .content .main-content ul.data li h3 {
+      color: #84848b;
+      font-size: 11px;
+    }
+
+    .project #main-content .content .main-content ul.data li p {
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .project #main-content .content .main-content ul.project-updates li h3 {
+      color: #84848b;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .project #main-content .content .main-content ul.project-updates li div div.info-overlay {
+      color: #fff;
+    }
+
+    .project #main-content .content .main-content ul.project-updates li div div.info-overlay h4 {
+      font-size: 15px;
+      font-weight: bold;
+      line-height: 18px;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.45);
+    }
+
+    .project #main-content .content .main-content ul.project-updates li div div.info-overlay p {
+      font-size: 11px;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.45);
+    }
+
+    .project #main-content .content .main-content ul.pagination li {
+      color: #28283a;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    .project #main-content .content .main-content ul.pagination li a {
+      color: #747479; 
+    }
+
+    .project #main-content .content .sub-content h4 a:hover {
+      text-decoration: none;
+    }
+
+    .project #main-content .content .sub-content .similar-projects p a {
+      color: #656571;
+      font-weight: bold;
+    }
+
+    .project #main-content .content .sub-content .similar-projects li p.date {
+      color: #656571;
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 15px;
+    }
+  
+  /* @end */
+  
+  /* @group -apartments */
+
+    .apartments #masthead {
+      color: #565c64;
+    }
+
+    .apartments #masthead .section h1 {
+      font-size: 35px;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .apartments #masthead .section p {
+      font-size: 15px;
+      line-height: 22px;
+    }
+
+    .apartments #masthead .aside p.call-to-action a {
+      color: #000;
+      font-size: 15px;
+      line-height: 28px;
+    }
+
+    .apartments #masthead .aside p.call-to-action a:hover {
+      text-decoration: none;
+    }
+
+    .apartments #masthead .aside ul li {
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    .apartments #masthead .aside ul li a {
+      color: #565c64;
+      line-height: 28px;
+    }
+
+    .apartments #masthead .aside ul li a:hover {
+      text-decoration: none;
+    }
+
+    .apartments #content ul.slideshow-pagination li a {
+      color: #747479;
+      line-height: 21px;
+      text-align: center;
+    }
+
+    .apartments #content ul.slideshow-pagination li.current a,
+    .apartments #content ul.slideshow-pagination li a:hover {
+      color: #28283a;
+      text-decoration: none;
+    }
+
+    .apartments #content ul.slideshow-pagination li.current a {
+      font-weight: bold;
+    }
+
+    .apartments #content div.row p a {
+      text-transform: none;
+    }
+  
+  /* @end */
+  
+  /* @group -homes */
+
+    .homes #masthead .section p.figure {
+      font-size: 13px;
+    }
+
+    .homes #masthead .section p.figure img {
+    	margin-bottom: 6px;
+    }
+
+    .homes #masthead p.call-to-action {
+    	font-size: 11px;
+    }
+
+    .homes #masthead p.call-to-action a {
+    	color: #565c64;
+    }
+
+    .homes #masthead .section .citation {
+    	font-weight: bold;
+    	line-height: 14px;
+    }
+
+    .homes #masthead .section .citation em {
+    	font-size: 11px;
+    	font-style: italic;
+    	font-weight: normal;
+    }
+
+    .homes #content div.header ul li a,
+    .search #content div.header ul li a {
+    	font-size: 15px;
+    	line-height: 18px;
+    }
+
+    .homes #content div.header ul li a:hover,
+    .search #content div.header ul li a:hover {
+    	text-decoration: none;
+    }
+
+    .homes #content div.header p,
+    .search #content div.header p {
+    	line-height: 47px;
+    }
+
+    .homes #content #view-as-list h2 {
+    	color: #000;
+    	font-size: 22px;
+    	line-height: 37px;
+    }
+
+    .homes #content #view-as-list div.learn-more h2 a,
+    .search #content div.learn-more h2 a {
+    	font-size: 15px;
+    	line-height: 40px;
+    }
+
+    .homes #content #view-as-list p.intro {
+    	font-size: 15px;
+    	font-style: italic;
+    	line-height: 17px;
+    }
+
+    .homes #content #view-as-list p.address-info {
+    	font-size: 11px;
+    	line-height: 15px;
+    }
+
+    .homes #content #view-as-list p.intro strong {
+    	color: #000;
+    	font-weight: normal;
+    }
+
+    .homes #content #view-as-list p.call-to-action a {
+    	color: #636972;
+    	font-size: 11px;
+    	font-weight: bold;
+    }
+
+    .search #breadcrumb .container h1 {
+    	color: #565c64;
+    	font-size: 35px;
+    	line-height: 1;
+    	text-transform: uppercase;
+    }
+
+    .search #breadcrumb .container ul li {
+    	color: #565c64;
+    	font-size: 11px;
+    }
+
+    .search #breadcrumb .container ul li a {
+    	color: #565c64;
+    	text-decoration: underline;
+    }
+
+    .search #sidebar fieldset ul li {
+    	font-size: 11px;
+    	text-transform: uppercase;
+    }
+
+    .search #content ul.results li div.header h2 {
+    	color: #000;
+    	font-size: 15px;
+    	line-height: 54px;
+    	text-transform: uppercase;
+    }
+
+    .search #content ul.results li div.header p {
+    	line-height: 54px;
+    }
+
+    .search #content ul.results li ul.location-filters li h3 {
+    	font-size: 15px;
+    	line-height: 29px;
+    	text-transform: uppercase;
+    }
+
+    .search #content div.results ul li div.info div h2 {
+    	color: #000;
+    	font-size: 22px;
+    	line-height: 38px;
+    }
+
+    .search #content div.results ul li div.info p.intro {
+    	font-size: 15px;
+    	font-style: italic;
+    	line-height: 17px;
+    }
+
+    .search #content div.results ul li div.info div.learn-more p a,
+    .homes #content #view-as-list div.learn-more p a {
+    	color: #636972;
+    	font-size: 11px;
+    	font-weight: bold;
+    	text-transform: uppercase;
+    }
+
+    .search #content div.results ul.pagination {
+    	font-size: 11px;
+    	text-transform: uppercase;
+    }
+
+    .search #content div.results ul.pagination li {
+    	color: #000;
+    }
+
+    .search #content div.results ul.pagination li a {
+    	color: #636972;
+    }
+
+    .search #sub-content p.call-to-action a {
+    	color: #636972;
+    	font-weight: bold;
+    }
+  
+  /* @end */
+  
+  /* @group -services */
+
+    .testimonials ul {
+      font-size: 11px;
+    }
+    .testimonials .read-more,
+    .tips .read-more {
+      color: #636972;
+      font-size: 11px;
+      font-weight: bold;
+    }
+    .tips ul {
+      font-size: 11px;
+    }
+    .services #aside #featured-projects .details {
+      line-height: 1.4;
+    }
+    .services #aside #featured-projects .details a {
+      color: #747479;
+      font-weight: bold;
+    }
+    .services #aside #featured-projects .date {
+      color: #656571;
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+    .services #aside #featured-projects .view-all {
+      color: #565c64;
+      font-size: 11px;
+      font-weight: bold;
+    }
+  
+  /* @end */
+  
+  /* @group -leadership */
+
+    .leadership #breadcrumb li, .leadership #breadcrumb li a {
+      font-size: 11px;
+    }
+  
+    .aside-quote p {
+      font-size: 15px;
+      line-height: 22px;
+    }
+    
+    .aside-quote cite {
+      font-style: italic;
+    }
+
+    .aside-quote strong {
+      font-style: normal;
+    }
+  
+    .partner-group {
+      white-space: nowrap;
+    }
+    
+    .partners a, .partners span {
+      display: block;
+      color: #84848b;
+      font-size: 11px;
+    }
+    
+    .partners a:hover {
+      text-decoration: none;
+    }
+
+    .partners a:hover .partner-name {
+      text-decoration: underline;
+    }
+
+    .partners .partner-name {
+      color: #080812;
+      font-size: 13px;
+      line-height: 30px;
+    }
+  
+  /* @end */
+  
+  /* @group -footer */
+
+    #footer,
+    #footer a {
+      color: #92929b;
+    }
+    #footer a:hover {
+      text-decoration: none;
+      color: #484852;
+    }
+    #footer h4 {
+      font-size: 15px;
+      color: #080812;
+    }
+    #footer p,
+    #footer label,
+    #footer li {
+      font-size: 10px;
+      line-height: 2;
+      text-transform: uppercase;
+    }
+    #footer p {
+      margin-bottom: 2em;
+    }
+    #footer label {
+      text-transform: none;
+    }
+    #copyright p {
+      font-size: 11px;
+      line-height: 2.181818182;
+    }
+    #copyright p.links {
+      font-size: 10px;
+      line-height: 2.4;
+    }
+    #copyright,
+    #copyright a {
+      color: #c5c7d3;
+    }
+    #copyright a {
+      text-transform: uppercase;
+    }
+  
+  /* @end */
+
+/* @end */
+
+/* @group =3. Backgrounds */
+
+  input {
+    background: #fff url(../images/structure/bg-input.gif) no-repeat 0 0;
+  }
+  button {
+    background: #fff;
+  }
+  button:hover {
+    background: #d5d8dc;
+  }
+
+  #main-content .social-updates .byline {
+    background: transparent url(../images/structure/bg-social-byline.png) no-repeat 0 0;
+  }
+  #main-content .facebook-update .message {
+    background: transparent url(../images/structure/ico-facebook.gif) no-repeat 0 2px;
+  }
+  #main-content .facebook-update .byline {
+    background-color: #8592a7;
+  }
+  #main-content .twitter-update .message {
+    background: transparent url(../images/structure/ico-twitter.gif) no-repeat 0 2px;
+  }
+  #main-content .twitter-update .byline {
+    background-color: #85a5a7;
+  }
+
+  /* @group -header */
+
+    #header .aside a,
+    #header #home-nav a {
+      background: transparent url(../images/structure/bg-header-a.gif) no-repeat center left;
+    }
+    #header #special-nav a {
+      background: #dde0e3 url(../images/structure/bg-right-arrow.png) no-repeat 215px center;
+    }
+    #header #special-nav a:hover,
+    #header #special-nav li:hover a {
+      background-color: #c2c6ca;
+    }
+    #header #special-nav li.open a {
+      background: #c2c6ca url(../images/structure/bg-up-arrow.png) no-repeat 210px center;
+    }
+    .community #header #special-nav a {
+      background: #dde0e3 url(../images/structure/bg-special-nav.gif) no-repeat top right;
+    }
+    .community #header #special-nav a:hover,
+    .community #header #special-nav li:hover a {
+      background-color: #c2c6ca;
+    }
+    .community #header #special-nav li.open a {
+      background: #c2c6ca url(../images/structure/bg-special-nav.gif) no-repeat 100% -26px;
+    }
+
+    #header #special-nav div.popup {
+      background-color: #c2c6ca;
+      -webkit-box-shadow: -1px 1px 2px #eee;
+      -moz-box-shadow: -1px 1px 2px #eee;
+    }
+    #header #special-nav #find-apartment-form .advanced-search {
+      background: transparent url(../images/structure/bg-news-a.gif) no-repeat center left;
+    }
+    #header #special-nav #find-apartment-form .advanced-search a {
+      background: none;
+    }
+  
+  /* @end */
+  
+  /* @group -home */
+
+    .home #masthead {
+      background: transparent url(../images/masthead.jpg) no-repeat top center;
+    }
+    .home #welcome a.read-more {
+      background: transparent url(../images/structure/bg-header-a.gif) no-repeat center left;
+    }
+    .home #featured-property h2 a {
+      background-color: #dde0e3;
+    }
+  
+  /* @end  */
+  
+  /* @group -news */
+
+    .home #news {
+      background: url(../images/structure/bg-news.gif) repeat-y top center;
+    }
+    .home #news h2 {
+      background: transparent url(../images/structure/bg-right-arrow.png) no-repeat 150px center;
+    }
+    .home #news ul li.rss {
+      background: transparent url(../images/structure/ico-rss.gif) no-repeat center left;
+    }
+    .home #news li a {
+      background: transparent url(../images/structure/bg-news-a.gif) no-repeat center left;
+    }
+  
+  /* @end */
+  
+  /* @group -secondary */
+
+    .secondary #header #main-nav li .dropdown {
+      background: transparent url(../images/structure/bg-main-nav-dropdown.gif) no-repeat 0 -5px;
+    }
+    .secondary #header #main-nav li .dropdown li a,
+    .secondary #header #main-nav li .dropdown li a:hover {
+      background: transparent url(../images/structure/bg-header-a.gif) no-repeat 1px center;
+    }
+    .about #secondary-nav li a,
+    .apartments #secondary-nav li a,
+    .homes #secondary-nav li a,
+    .services #secondary-nav li a {
+      background: transparent url(../images/structure/bg-header-a.gif) no-repeat 12px center;
+    }
+    .about #secondary-nav li li a,
+    .apartments #secondary-nav li li a,
+    .homes #secondary-nav li li a,
+    .services #secondary-nav li li a {
+      background-position: 22px center;
+    }
+  
+  /* @end */
+  
+  /* @group -about */
+
+    .about #masthead,
+    .homes #masthead,
+    .services #masthead {
+      background: #c0c5cb url(../images/structure/bg-masthead.gif) repeat-x 0 0;
+    }
+    .about #content p {
+      background: transparent url(../images/structure/bg-about-content-p.gif) no-repeat bottom left;
+    }
+    .about #content .slideshow p {
+      background: none;
+    }
+    .about #aside .article,
+    .services #aside .article {
+      background-color: #f2f4f5;
+    }
+    .about #aside h3,
+    .services #aside h3 {
+      background: transparent url(../images/structure/bg-aside-h3.gif) no-repeat 0 0;
+    }
+    .about #aside h3 a,
+    .services #aside h3 a {
+      background: transparent url(../images/structure/bg-right-arrow.png) no-repeat 205px center;
+    }
+    .about #latest-news .section,
+    .services #latest-news .section {
+      background: transparent url(../images/structure/bg-about-sidebar-section.gif) no-repeat bottom left;
+    }
+    .about #latest-news .section.first {
+      background: none;
+    }
+    .about #latest-news h4 a,
+    .about #latest-awards h4 a,
+    .services #latest-news h4 a,
+    .services #latest-awards h4 a {
+      background: transparent url(../images/structure/bg-news-a.gif) no-repeat center right;
+    }
+    .about #latest-awards h4 a,
+    .services #latest-awards h4 a {
+      background-position: center left;
+    }
+  
+  /* @end */
+  
+  /* @group -community */
+
+    .about #breadcrumb,
+    .community #breadcrumb,
+    .services #breadcrumb {
+      background: #c0c5cb url(../images/structure/bg-masthead.gif) repeat-x 0 0;
+    }
+    .about #breadcrumb li,
+    .community #breadcrumb li,
+    .services #breadcrumb li {
+      background: transparent url(../images/structure/bg-masthead-a.gif) no-repeat center right;
+    }
+    .about #breadcrumb li.last,
+    .community #breadcrumb li.last,
+    .services #breadcrumb li.last {
+      background: none;
+    }
+    .community #secondary-nav {
+      background: transparent url(../images/structure/bg-community-secondary-nav.png) no-repeat right center;
+    }
+    .community #secondary-nav.current-1 { background-position: right -351px; }
+    .community #secondary-nav.current-2 { background-position: right -315px; }
+    .community #secondary-nav.current-3 { background-position: right -279px; }
+    .community #secondary-nav.current-4 { background-position: right -243px; }
+    .community #secondary-nav.current-5 { background-position: right -207px; }
+    .community #secondary-nav.current-6 { background-position: right -171px; }
+    .community #secondary-nav.current-7 { background-position: right -130px; }
+
+    .community #secondary-nav .phone-number {
+      display: block;
+      font-size: 11px;
+      margin: -5px 0 0 0;
+      padding: 0 0 0 20px;
+    }
+
+    .community #slideshow p.watch-video {
+      background: transparent url(../images/structure/bg-divider-white.gif) no-repeat 0 0;
+    }
+    .community #masthead #remote-nav a,
+    .community #overview a,
+    .community #apartments a,
+    .community #featured-floor-plans a,
+    .community #nearby-communities a,
+    .community .social-updates a,
+    .community #recently-viewed a,
+    .community #renting-from-bozzuto a,
+    .community #about-bozzuto a,
+    .community #sub-listing a,
+    .apartments #renting-from-bozzuto p a,
+    .apartments #about-bozzuto p a {
+      background: transparent url(../images/structure/bg-header-a.gif) no-repeat center left;
+    }
+    .community #masthead #remote-nav a {
+      background-position: 20px center;
+    }
+    .community #nearby-communities ul,
+    .community #recently-viewed ul {
+      background-color: #f2f4f5;
+    }
+    .community #overview,
+    .community #featured-floor-plans li.floor-plan p,
+    .community #nearby-communities li,
+    .community #recently-viewed li,
+    .community #sidebar p.sharethis,
+    .community #sidebar div.facebook-update,
+    .community #renting-from-bozzuto,
+    .community #about-bozzuto,
+    .apartments div.row div.col {
+      background: transparent url(../images/structure/bg-about-sidebar-section.gif) no-repeat bottom left;
+    }
+    .community #overview ul.community-icons li a span {
+      background: transparent url(../images/structure/bg-community-icons-span.gif) no-repeat 0 0;
+    }
+    .community #sidebar div.facebook-update p.message {
+      background-position: left center !important;
+    }
+    .community #sidebar p.sharethis {
+      background-position: 0 0;
+    }
+    .community #sidebar p.sharethis a {
+      background: transparent url(../images/structure/ico-sharethis.gif) no-repeat center left;
+    }
+
+    .community #community-info .nav li a {
+      background-image: url(../images/structure/bg-community-info-tabs.gif);
+      background-position: right 0px;
+    }
+    .community #community-info .nav li.current a {
+      background-position: right -47px;
+    }
+
+    .community #community-info p.call-to-action a {
+      background: transparent url(../images/structure/bg-apartments-masthead-aside-a.gif) no-repeat right 0;
+    }
+    .community #community-info p.call-to-action a:hover {
+      background-position: right -28px;
+    }
+  
+  /* @end */
+  
+  /* @group -project */
+
+    .project #sidebar h2 a {
+      background: url(../images/structure/bg-header-a.gif) left center no-repeat;
+    }
+
+    .project #main-content .content .main-content ul.data li {
+      background: url(../images/structure/bg-projects-data.gif) left top no-repeat;
+    }
+
+    .project #main-content .content .main-content ul.project-updates {
+      background: #f2f4f5;
+    }
+
+    .project #main-content .content .main-content ul.project-updates li {
+      background: url(../images/structure/bg-about-content-p.gif) left bottom no-repeat;
+    }
+
+    .project #main-content .content .main-content ul.project-updates li div p.info-link a {
+      background: url(../images/structure/bg-project-update-info-link.png) left top no-repeat;
+    }
+
+    .project #main-content .content .main-content ul.project-updates li div p.info-link a.active {
+      background-position: left bottom;
+    }
+
+    .project #main-content .content .main-content ul.project-updates li div div.info-overlay {
+      background: url(../images/structure/bg-project-update-info-overlay.png) left top no-repeat;
+    }
+
+    .project #main-content .content .main-content ul.project-updates li div div.info-overlay p {
+      background: url(../images/structure/bg-project-update-info-overlay-p.gif) left bottom no-repeat;
+    }
+
+    .project #main-content .content .main-content ul.pagination {
+      background: url(../images/structure/bg-apartments-content.gif) left top repeat-x;
+    }
+
+    .project #main-content .content .main-content ul.pagination li.first a,
+    .project #main-content .content .main-content ul.pagination li.last a {
+      background: url(../images/structure/bg-news-a.gif) left center no-repeat; 
+    }
+
+    .project #main-content .content .sub-content h4 a {
+      background: url(../images/structure/bg-project-sub-content-h4.gif) left top no-repeat;
+    }
+
+    .project #main-content .content .sub-content h4 a:hover {
+      background-position: left bottom;
+    }
+
+    .project #main-content .content .sub-content .map {
+      background: #c2c6ca;
+    }
+
+    .project #main-content .content .sub-content .similar-projects p a {
+      background: url(../images/structure/bg-news-a.gif) left center no-repeat; 
+    }
+
+    .project #main-content .content .sub-content .similar-projects ul {
+      background: url(../images/structure/bg-about-content-p.gif) left bottom no-repeat;
+    }
+  
+  /* @end */
+  
+  /* @group -apartments */
+
+    .apartments #masthead {
+      background: url('../images/structure/bg-masthead.gif') left top repeat-x #c0c5cb;
+    }
+
+    .apartments #masthead .aside p.call-to-action a {
+      background: url(../images/structure/bg-apartments-masthead-aside-a.gif) left top no-repeat;
+    }
+
+    .apartments #masthead .aside p.call-to-action a:hover {
+      background-position: left bottom;
+    }
+
+    .apartments #masthead .aside ul li a {
+      background: url(../images/structure/bg-apartments-masthead-aside-list-a.gif) 1px 10px no-repeat;
+    }
+
+    .apartments #main-content {
+      background: url(../images/structure/bg-apartments-content.gif) left top repeat-x #fff;
+    }
+
+    .apartments #content ul.slides li {
+      background: left top no-repeat #fff;
+    }
+
+    .apartments #content ul.slideshow-pagination {
+      background: #fff;
+    }
+  
+  /* @end */
+  
+  /* @group -homes */
+
+    .homes #masthead p.call-to-action a {
+    	background: url(../images/structure/bg-masthead-a.gif) left center no-repeat;
+    }
+
+    .homes #masthead p.figure a {
+    	background: left top no-repeat;
+    }
+
+    .homes #content div.header,
+    .search #content div.header {
+    	background: url(../images/structure/bg-homes-content-header.gif) left bottom repeat-x #fff;
+    }
+
+    .homes #content div.header ul li a,
+    .search #content div.header ul li a {
+    	background: url(../images/structure/bg-homes-content-header-tabs.gif) no-repeat;
+    }
+
+    .homes #content div.header ul li a.list,
+    .search #content div.header ul li a.list {
+    	background-position: 0 -47px;
+    }
+
+    .homes #content div.header ul li.current a.list,
+    .search #content div.header ul li.current a.list {
+    	background-position: 0 0;
+    }
+
+    .homes #content div.header ul li a.map,
+    .search #content div.header ul li a.map {
+    	background-position: -152px 0;
+    }
+
+    .homes #content div.header ul li.current a.map,
+    .search #content div.header ul li.current a.map {
+    	background-position: -152px -47px;
+    }
+
+    .homes #content div.header ul li a.directory,
+    .search #content div.header ul li a.directory {
+    	background-position: -300px 0;
+    }
+
+    .homes #content div.header ul li.current a.directory,
+    .search #content div.header ul li.current a.directory {
+    	background-position: -300px -47px;
+    }
+
+    .homes #content #view-as-list p.share a {
+    	background: url(../images/structure/bg-homes-share.gif) no-repeat;
+    }
+
+    .homes #content #view-as-list p.share a.facebook {
+    	background-position: left top;
+    }
+
+    .homes #content #view-as-list p.share a.twitter {
+    	background-position: right top;
+    }
+
+    .homes #content #view-as-list div.learn-more h2 a,
+    .search #content div.learn-more h2 a {
+    	background: url(../images/structure/bg-homes-content-header-learn-more.gif) left top no-repeat;
+    }
+
+    .homes #content #view-as-list div.learn-more h2 a:hover,
+    .search #content div.learn-more h2 a:hover {
+    	background-position: left bottom;
+    }
+
+    .homes #content #view-as-list p.intro {
+    	background: url(../images/structure/bg-about-content-p.gif) 12px bottom no-repeat;
+    }
+
+    .homes #content #view-as-list p.address-info {
+    	background: url(../images/structure/bg-about-content-p.gif) 12px bottom no-repeat;
+    }
+
+    .homes #content #view-as-list p.call-to-action a {
+    	background: url(../images/structure/bg-header-a.gif) left center no-repeat;
+    }
+
+    .homes #content #view-as-list .quick-links li a {
+    	background: url(../images/structure/bg-homes-quick-links.gif) no-repeat;
+    }
+
+    .homes #content #view-as-list .quick-links li a.save {
+    	background-position: left top;
+    }
+
+    .homes #content #view-as-list .quick-links li a.go {
+    	background-position: left bottom;
+    }
+  
+  /* @end */
+  
+  /* @group -search results */
+
+    .search #breadcrumb {
+    	background: #c0c5cb url(../images/structure/bg-masthead.gif) left top repeat-x;
+    }
+
+    .search #breadcrumb .container ul li a {
+    	background: url(../images/structure/bg-masthead-a.gif) right center no-repeat;
+    }
+
+    .search #sidebar fieldset {
+    	background: url(../images/structure/bg-about-content-p.gif) 13px bottom no-repeat;
+    }
+
+    .search #content ul.results li {
+    	background: url(../images/structure/bg-search-results-headers.gif) 0 -83px repeat-x;
+    }
+
+    .search #content ul.results li.closed {
+    	background: url(../images/structure/bg-search-results-headers.gif) 0 -29px repeat-x;
+    }
+
+    .search #content ul.results li div.header {
+    	background: url(../images/structure/bg-search-results-header.gif) right 0 no-repeat;
+    }
+
+    .search #content ul.results li.closed div.header {
+    	background: url(../images/structure/bg-search-results-header.gif) right -84px no-repeat;
+    }
+
+    .search #content ul.results li ul.location-filters li {
+    	background: url(../images/structure/bg-search-results-headers.gif) 0 -0px repeat-x;
+    }
+
+    .search #content ul.results li ul.location-filters li h3 {
+    	background: url(../images/structure/bg-search-results-header.gif) right -55px no-repeat;
+    }
+
+    .search #content ul.results ul.location-filters li.open div.header h3 { 
+      background-position: 100% -168px;
+    }
+
+    .search #content div.results ul li {
+    	background: none;
+    }
+
+    .search #content div.results ul li div.info p.intro {
+    	background: url(../images/structure/bg-about-content-p.gif) 12px bottom no-repeat;
+    }
+
+    .search #content div.results ul li div.info p.description {
+    	background: url(../images/structure/blt-features.gif) left 7px no-repeat;
+    }
+
+    .search #content div.results ul li div.info div.learn-more {
+    	background: #f2f4f5;
+    }
+
+    .search #content div.results ul li div.info div.learn-more p,
+    .homes #content #view-as-list div.learn-more p {
+    	background: url(../images/structure/bg-search-results-learn-more-p.gif) 12px bottom no-repeat;
+    }
+
+    .search #content div.results ul li div.info div.learn-more p a,
+    .homes #content #view-as-list div.learn-more p a {
+    	background: url(../images/structure/bg-header-a.gif) left center no-repeat;
+    }
+
+    .search #content div.results ul li div.info div.learn-more ul li,
+    .homes #content #view-as-list div.learn-more ul li {
+    	background: url(../images/structure/bg-search-results-learn-more-features.gif) no-repeat;
+    }
+
+    .search #content div.results ul li div.info div.learn-more ul li.smartshare,
+    .homes #content #view-as-list div.learn-more ul li.smartshare {
+    	background-position: 0 0;
+    }
+
+    .search #content div.results ul li div.info div.learn-more ul li.elite,
+    .homes #content #view-as-list div.learn-more ul li.elite  {
+    	background-position: -34px 0;
+    }
+
+    .search #content div.results ul li div.info div.learn-more ul li.smartrent,
+    .homes #content #view-as-list div.learn-more ul li.smartrent {
+    	background-position: -68px 0 ;
+    }
+
+    .search #content div.results ul li div.info div.learn-more ul li.green,
+    .homes #content #view-as-list div.learn-more ul li.green {
+    	background-position: -102px 0;
+    }
+
+    .search #content div.results ul li div.info div.learn-more ul li.no-smoking,
+    .homes #content #view-as-list div.learn-more ul li.no-smoking {
+    	background-position: -136px 0;
+    }
+
+    .search #content div.results ul.pagination {
+    	background: url(../images/structure/bg-search-results-pagination.gif) left top repeat-x;
+    }
+
+    .search #content div.results ul.pagination li a.first,
+    .search #content div.results ul.pagination li a.last {
+    	background: url(../images/structure/bg-search-results-pagination-a.gif) left center no-repeat;
+    }
+
+    .search #sub-content p.call-to-action {
+    	background: url(../images/structure/bg-about-content-p.gif) left bottom no-repeat;
+    }
+
+    .search #sub-content p.call-to-action a {
+    	background: url(../images/structure/bg-header-a.gif) left center no-repeat;
+    }
+
+  /* @end */
+  
+  /* @group -services */
+
+    .testimonials li,
+    .services #aside #featured-projects .details,
+    .tips {
+      background: url(../images/structure/bg-about-content-p.gif) no-repeat 0 100%;
+    }
+    .services #aside #featured-projects .article {
+      background-color: #fff;
+    }
+    .services #aside #featured-projects .details a,
+    .services #aside #featured-projects .view-all {
+      background: url(../images/structure/bg-news-a.gif) no-repeat 0 50%;
+    }
+    .tips li {
+      background: url(../images/structure/blt-features.gif) no-repeat 0 0.5em;
+    }
+  
+  /* @end */
+  
+  /* @group -leadership */
+
+    .aside-quote .figure{
+      background: #dde0e3 url(../images/structure/bg-aside-quote-figure.gif) 0 0 no-repeat;
+    }
+    
+    .partners .partner-name {
+      background: url(../images/structure/bg-partner-name.gif) top right no-repeat;
+    }
+    
+    .partners a:hover .partner-name {
+      background-position: right -60px; 
+    }
+    
+    .partner-portrait, .partner-portrait-images li, .partner-portrait-screen {
+      background: #F2F4F5 url(../images/structure/bg-partner-portrait.jpg) 0 0 no-repeat;
+    }
+
+    .partner-portrait-screen {
+      background-position: 0 -375px; 
+    }
+    
+    .partner-portrait-images .portrait-steve-s   { background-position: 0  -750px; }
+    .partner-portrait-images .portrait-john-b    { background-position: 0 -1125px; }
+    .partner-portrait-images .portrait-thomas-a  { background-position: 0 -1500px; }
+    .partner-portrait-images .portrait-thomas-s  { background-position: 0 -1875px; }
+    .partner-portrait-images .portrait-daniel-c  { background-position: 0 -2250px; }
+    .partner-portrait-images .portrait-toby-s    { background-position: 0 -2625px; }
+    .partner-portrait-images .portrait-ryan-o    { background-position: 0 -3000px; }
+    .partner-portrait-images .portrait-julie-a   { background-position: 0 -3375px; }
+    .partner-portrait-images .portrait-richard-l { background-position: 0 -3750px; }
+    .partner-portrait-images .portrait-michael-a { background-position: 0 -4125px; }
+                              
+  /* @end */
+  
+  /* @group -footer */
+
+    #footer {
+      background: #ecedee url(../images/structure/bg-footer.gif) repeat-x 0 0;
+    }
+    #footer li.facebook {
+      background: transparent url(../images/structure/ico-facebook.gif) no-repeat center left;
+    }
+    #footer li.twitter {
+      background: transparent url(../images/structure/ico-twitter.gif) no-repeat center left;
+    }
+    #footer a {
+      background: url(../images/structure/bg-footer-a.gif) no-repeat center left;
+    }
+    #copyright {
+      background: #080812;
+    }
+    #copyright #eho {
+      background: transparent url(../images/structure/bg-copyright-eho.gif) no-repeat center left;
+    }
+  
+  /* @end */
+
+/* @end */
+
+/* @group =4. Image replacement */
+
+  #header #logo a,
+  #header #main-nav li a,
+  #header form.search-form button,
+  .community #slideshow div.header a.prev,
+  .community #slideshow div.header a.next,
+  .community #slideshow p.watch-video a,
+  .apartments #content ul.slideshow-navigation li a,
+  .services #content ul.slideshow-navigation li a,
+  .about #content ul.slideshow-navigation li a {
+    overflow: hidden;
+    text-align: left;
+    text-indent: -9999px;
+  }
+
+  /* @group -search */
+
+    #header .search-form button {
+      background: transparent url(../images/structure/btn-header-search.gif) no-repeat 0 0;
+    }
+    #header .search-form button:hover {
+      background-position: 0 -22px;
+    }
+  
+  /* @end */
+  
+  /* @group -header */
+
+    #header #logo a {
+      background: transparent url(../images/structure/bg-logo.gif) no-repeat 0 0;
+    }
+    #header #main-nav li a {
+      background: transparent url(../images/structure/bg-main-nav.gif) no-repeat 0 0;
+    }
+  
+  /* @end */
+  
+  /* @group -header */
+
+    .home #header #main-nav li.apartments-nav a {
+      background-position: 0 0;
+    }
+    .home #header #main-nav li.apartments-nav a:hover {
+      background-position: -300px 0;
+    }
+    .home #header #main-nav li.homes-nav a {
+      background-position: 0 -45px;
+    }
+    .home #header #main-nav li.homes-nav a:hover {
+      background-position: -300px -45px;
+    }
+    .home #header #main-nav li.about-nav a {
+      background-position: 0 -90px;
+    }
+    .home #header #main-nav li.about-nav a:hover {
+      background-position: -300px -90px;
+    }
+    .home #header #main-nav li.services-nav a {
+      background-position: 0 -135px;
+    }
+    .home #header #main-nav li.services-nav a:hover {
+      background-position: -300px -135px;
+    }
+  
+  /* @end */
+  
+  /* @group -secondary */
+
+    .secondary #header #main-nav li.apartments-nav a {
+      background-position: -600px 0;
+    }
+    .community #header #main-nav li.apartments-nav a,
+    .secondary #header #main-nav li.apartments-nav a:hover {
+      background-position: -800px 0;
+    }
+    .secondary #header #main-nav li.homes-nav a {
+      background-position: -600px -30px;
+    }
+    .homes #header #main-nav li.homes-nav a,
+    .secondary #header #main-nav li.homes-nav a:hover {
+      background-position: -800px -30px;
+    }
+    .secondary #header #main-nav li.about-nav a {
+      background-position: -600px -60px;
+    }
+    .about #header #main-nav li.about-nav a,
+    .secondary #header #main-nav li.about-nav a:hover {
+      background-position: -800px -60px;
+    }
+    .apartments #header #main-nav li.apartments-nav a,
+    .secondary #header #main-nav li.apartments-nav a:hover ,
+    .search #header #main-nav li.apartments-nav a {
+      background-position: -800px 0px;
+    }
+    .secondary #header #main-nav li.services-nav a {
+      background-position: -600px -90px;
+    }
+    .services #header #main-nav li.services-nav a,
+    .secondary #header #main-nav li.services-nav a:hover {
+      background-position: -800px -90px;
+    }
+  
+  /* @end */
+  
+  /* @group -community */
+
+    .community #slideshow .header a.prev,
+    .community #slideshow .header a.next {
+      background: transparent url(../images/structure/bg-apartments-slideshow-navigation.png) no-repeat 0 0;
+    }
+    .community #slideshow .header a.prev {
+      background-position: center left;
+    }
+    .community #slideshow .header a.next {
+      background-position: center right;
+    }
+    .community #slideshow p.watch-video a {
+      background: transparent url(../images/structure/bg-watch-video.png) no-repeat 0 0;
+    }
+
+    .community #slideshow p.watch-video a:hover {
+      background-position: 0 -43px;
+    }
+    .community #overview ul.community-icons li a {
+      background: transparent url(../images/structure/bg-community-icons.gif) no-repeat 0 0;
+    }
+    .community #overview ul.community-icons li.elite a {
+      background-position: 5px 0;
+    }
+    .community #overview ul.community-icons li.smartshare a {
+      background-position: 5px -43px;
+    }
+    .community #overview ul.community-icons li.smartrent a {
+      background-position: 5px -86px;
+    }
+    .community #overview ul.community-icons li.green a {
+      background-position: 5px -129px;
+    }
+    .community #overview ul.community-icons li.no-smoking a {
+      background-position: 5px -172px;
+    }
+  
+  /* @end */
+  
+  /* @group -apartments */
+
+    .apartments #content ul.slideshow-navigation li a {
+      background: url(../images/structure/bg-apartments-slideshow-navigation.png) no-repeat transparent;
+    }
+    .apartments #content ul.slideshow-navigation li a.prev {
+      background-position: left top;
+    }
+    .apartments #content ul.slideshow-navigation li a.next {
+      background-position: right top;
+    }
+  
+  /* @end */
+  
+  /* @group -services */
+
+    .services #content ul.slideshow-navigation li a,
+    .about #content ul.slideshow-navigation li a {
+      background: url(../images/structure/bg-apartments-slideshow-navigation.png) no-repeat transparent;
+    }
+    .services #content ul.slideshow-navigation li a.prev,
+    .about #content ul.slideshow-navigation li a.prev {
+      background-position: left top;
+    }
+    .services #content ul.slideshow-navigation li a.next,
+    .about #content ul.slideshow-navigation li a.next {
+      background-position: right top;
+    }
+    .testimonials .read-more,
+    .tips .read-more {
+      background: url(../images/structure/bg-header-a.gif) no-repeat 0 50%;
+    }
+  
+  /* @end */
+  
+  /* @group -search */
+
+    .search #search-results-map {
+    	background: #dde0e3;
+    }
+  
+  /* @end */
+  
+/* @end */
+
+/* @group =5. Misc */
+
+  .container:after,
+  .row:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    overflow: hidden;
+  }
+
+  .apartments #content ul.slides li:hover {
+    cursor: pointer;
+  }
+  .screen-reader {
+    display: block;
+    left: -9999px;
+    position: absolute;
+    top: -9999px;
+  }
+
+
+/* @end */
+
+/* @group =6. Forms */
+
+  input,
+  button {
+    outline: 0;
+    border: 1px solid #9ba2ad;
+    margin: 0;
+    color: #595e71;
+  }
+  input {
+    width: 168px;
+    height: 16px;
+    padding: 6px 0 0 5px;
+    font-size: 11px;
+    line-height: 11px;
+  }
+  button {
+    overflow: visible;
+    vertical-align: top;
+    height: 24px;
+    padding: 0 5px;
+    cursor: pointer;
+    font-size: 0.833333333em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  form p.fields {
+    position: relative;
+    height: 24px;
+  }
+  form p.fields input {
+    position: absolute;
+    top: 0; left: 0;
+  }
+  form p.fields button {
+    position: absolute;
+    top: 0; right: 0;
+    height: 24px;
+  }
+
+  /* header */
+  #header .search-form input {
+    width: 194px;
+  }
+  #header .search-form button {
+    width: 25px;
+    height: 24px;
+    padding: 0;
+  }
+  .community #special-nav input {
+    width: 350px;
+  }
+
+/* @end   forms */
+

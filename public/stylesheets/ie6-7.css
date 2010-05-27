@@ -1,0 +1,72 @@
+/***
+  1. Layout
+***/
+.container,
+.row {
+  display: inline-block;
+}
+* html .container,
+* html .row {
+  height: 1%;
+}
+
+* html .apartments #masthead {
+	height: 200px;
+}
+
+* html .apartments #content {
+	width: 710px;
+	overflow: hidden;
+}
+
+* html .services #content {
+  overflow: hidden;
+  width: 769px;
+}
+
+* html .about #content {
+  overflow: hidden;
+}
+
+* html .tips .li_cont3  {
+  margin-right: 0;
+}
+
+* html .apartments #content ul.slideshow-pagination {
+	bottom: -1px;
+}
+
+* html .homes #content #view-as-list .quick-links {
+	right: -460px;
+}
+
+*:first-child+html .search #sidebar #special_promotion ul li label {
+	width: 130px;
+}
+
+* html .project #main-content .content .main-content ul.project-updates li div p.info-link a {
+  right: 25px;
+}
+
+* html .project #main-content .content .sub-content .similar-projects li p.date {
+  margin-right: 5px;
+}
+
+ 
+/***
+  2. Typography
+***/
+ 
+ 
+/***
+  3. Backgrounds
+***/
+* html #header #finder li.open a {
+  background: #c2c6ca url(../images/structure/bg-right-arrow.png) no-repeat 215px center;
+}
+.about #latest-news h4 a {
+  background: none;
+}
+.community #secondary-nav {
+  background: #fff;
+}
