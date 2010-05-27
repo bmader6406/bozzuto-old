@@ -57,8 +57,8 @@ module Admin::TableHelper
         # Only shown is the user can destroy/unrelate items.
         #
 
-        trash = "<div class=\"sprite trash\">Trash</div>"
-        unrelate = "<div class=\"sprite unrelate\">Unrelate</div>"
+        trash = "<div class=\"sprite trash\">Trash</div>".html_safe
+        unrelate = "<div class=\"sprite unrelate\">Unrelate</div>".html_safe
 
         case params[:action]
         when 'index'
@@ -128,7 +128,7 @@ module Admin::TableHelper
 
               end
 
-    headers << "&nbsp;" if @current_user.can?('delete', model)
+    headers << "&nbsp;".html_safe if @current_user.can?('delete', model)
 
     render "admin/helpers/table_header", 
            :headers => headers
