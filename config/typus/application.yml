@@ -11,7 +11,7 @@ City:
   relationships: communities, state
   filters: 
   search: name
-  application: bozzuto
+  application: Community
 
 Community:
   fields:
@@ -22,7 +22,7 @@ Community:
   relationships: city, floor_plans, links, pages, photos
   filters: 
   search: title
-  application: bozzuto
+  application: Bozzuto
 
 CommunityLink:
   fields:
@@ -33,7 +33,7 @@ CommunityLink:
   relationships: community
   filters: 
   search: title
-  application: bozzuto
+  application: Community
 
 CommunityPage:
   fields:
@@ -44,7 +44,7 @@ CommunityPage:
   relationships: community
   filters: 
   search: title
-  application: bozzuto
+  application: Community
 
 FloorPlan:
   fields:
@@ -55,7 +55,7 @@ FloorPlan:
   relationships: community
   filters: 
   search: 
-  application: bozzuto
+  application: Community
 
 Photo:
   fields:
@@ -66,7 +66,7 @@ Photo:
   relationships: community
   filters: 
   search: 
-  application: bozzuto
+  application: Community
 
 State:
   fields:
@@ -77,5 +77,5 @@ State:
   relationships: cities
   filters: 
   search: name
-  application: bozzuto
+  application: Community
 
