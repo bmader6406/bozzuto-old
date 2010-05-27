@@ -17,10 +17,7 @@ class CreateCommunities < ActiveRecord::Migration
       t.string :facebook_url
       t.string :twitter_handle
 
-      t.string :promo_image_file_name
-      t.string :promo_image_content_type
-      t.integer :promo_image_file_size
-      t.datetime :promo_image_updated_at
+      t.string :promo_image
       t.string :promo_url
       
       t.float :latitude

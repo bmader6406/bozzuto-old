@@ -5,7 +5,8 @@ gem 'mysql'
 gem 'erubis'
 gem 'jammit'
 
-gem 'paperclip'
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :test do
   gem 'phocus'
