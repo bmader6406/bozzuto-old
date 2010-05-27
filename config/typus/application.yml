@@ -1,0 +1,81 @@
+# Typus Models Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+City:
+  fields:
+    default: name, state
+    list: name, state
+    form: name, state
+  order_by: 
+  relationships: communities, state
+  filters: 
+  search: name
+  application: bozzuto
+
+Community:
+  fields:
+    default: title, subtitle, elite, smart_share, smart_rent, green, non_smoking, video_url, facebook_url, twitter_handle, promo_image, promo_url, latitude, longitude, street_address, city
+    list: title, subtitle, elite, smart_share, smart_rent, green, non_smoking, video_url, facebook_url, twitter_handle, promo_image, promo_url, latitude, longitude, street_address, city
+    form: title, subtitle, elite, smart_share, smart_rent, green, non_smoking, video_url, facebook_url, twitter_handle, promo_image, promo_url, latitude, longitude, street_address, overview_text, apartment_features, community_amenties, environmental_features, contact_info, city
+  order_by: 
+  relationships: city, floor_plans, links, pages, photos
+  filters: 
+  search: title
+  application: bozzuto
+
+CommunityLink:
+  fields:
+    default: title, url, position, community
+    list: title, url, position, community
+    form: title, url, community
+  order_by: position
+  relationships: community
+  filters: 
+  search: title
+  application: bozzuto
+
+CommunityPage:
+  fields:
+    default: title, position, community
+    list: title, position, community
+    form: title, content, community
+  order_by: position
+  relationships: community
+  filters: 
+  search: title
+  application: bozzuto
+
+FloorPlan:
+  fields:
+    default: image, category, bedrooms, bathrooms, square_feet, price, position, community
+    list: image, category, bedrooms, bathrooms, square_feet, price, position, community
+    form: image, category, bedrooms, bathrooms, square_feet, price, community
+  order_by: position
+  relationships: community
+  filters: 
+  search: 
+  application: bozzuto
+
+Photo:
+  fields:
+    default: image, caption, community
+    list: image, caption, community
+    form: image, caption, community
+  order_by: 
+  relationships: community
+  filters: 
+  search: 
+  application: bozzuto
+
+State:
+  fields:
+    default: code, name
+    list: code, name
+    form: code, name
+  order_by: 
+  relationships: cities
+  filters: 
+  search: name
+  application: bozzuto
+
