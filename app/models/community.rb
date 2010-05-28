@@ -7,5 +7,5 @@ class Community < ActiveRecord::Base
 
   validates_presence_of :title, :subtitle, :city
 
-  mount_uploader :promo, ImageUploader
+  mount_uploader :promo_image, ImageUploader
 end

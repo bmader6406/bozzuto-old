@@ -15,8 +15,8 @@ City:
 
 Community:
   fields:
-    default: title, subtitle, elite, smart_share, smart_rent, green, non_smoking, video_url, facebook_url, twitter_handle, promo_image, promo_url, latitude, longitude, street_address, city
-    list: title, subtitle, elite, smart_share, smart_rent, green, non_smoking, video_url, facebook_url, twitter_handle, promo_image, promo_url, latitude, longitude, street_address, city
+    default: title, street_address, city
+    list: title, street_address, city
     form: title, subtitle, elite, smart_share, smart_rent, green, non_smoking, video_url, facebook_url, twitter_handle, promo_image, promo_url, latitude, longitude, street_address, overview_text, apartment_features, community_amenties, environmental_features, contact_info, city
   order_by: 
   relationships: city, floor_plans, links, pages, photos
