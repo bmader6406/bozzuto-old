@@ -3705,16 +3705,16 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .community #overview ul.community-icons li.elite a {
       background-position: 5px 0;
     }
-    .community #overview ul.community-icons li.smartshare a {
+    .community #overview ul.community-icons li.smart-share a {
       background-position: 5px -43px;
     }
-    .community #overview ul.community-icons li.smartrent a {
+    .community #overview ul.community-icons li.smart-rent a {
       background-position: 5px -86px;
     }
     .community #overview ul.community-icons li.green a {
       background-position: 5px -129px;
     }
-    .community #overview ul.community-icons li.no-smoking a {
+    .community #overview ul.community-icons li.non-smoking a {
       background-position: 5px -172px;
     }
   

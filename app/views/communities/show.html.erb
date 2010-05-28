@@ -1,0 +1,327 @@
+<% content_for :body_class do %>community<% end %>
+
+<div id="breadcrumb">
+  <div class="container">
+    <ul>
+      <li><a href="#">Apartments</a></li>
+      <li><a href="#">Find an Apartment</a></li>
+      <li><a href="#">Virginia</a></li>
+      <li><a href="#">Arlington</a></li>
+      <li class="last"><%= @community.title %></li>
+    </ul>
+  </div>
+</div>
+
+<div id="masthead">
+  <div class="container">
+    <div class="nav">
+      <ul id="secondary-nav" class="current-1">
+        <li class="current"><%= link_to @community.title, @community %></li>
+        <li><a href="features.html">Features &amp; Amenities</a></li>
+        <li><a href="#">Videos &amp; Photos</a></li>
+        <li><a href="#">Floor Plans</a></li>
+        <li><a href="#">Additional Info</a></li>
+        <li><a href="#">Special Promotions</a></li>
+        <li class="last">
+          <a href="#">Contact Info<br />&amp; Office Hours</a>
+          <span class="phone-number">301-220-0100</span>
+        </li>
+      </ul>
+
+      <ul id="remote-nav">
+        <li><a href="#">Visit Website</a></li>
+        <li class="last"><a href="#">Download E-Brochure</a></li>
+      </ul>
+    </div>
+
+    <div id="slideshow">
+      <div class="header">
+        <h1><%= @community.title %></h1><a href="#" class="prev">‹</a><a href="#" class="next">›</a>
+      </div>
+
+      <div class="slide">
+        <img src="/images/community-slide-1.jpg" />
+        <div class="section">
+          <p>
+            <strong><%= @community.city %></strong>
+            <%= @community.subtitle %>
+          </p>
+
+          <p class="watch-video">
+            <a href="#">Watch Video</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="main-content">
+  <div class="container">
+    <div class="row">
+      <div id="content" class="col">
+        <div id="overview">
+          <%= community_icons %>
+
+          <%= @community.overview_text %>
+
+          <p>
+            <!-- TODO: go to features page -->
+            <a href="#">Read More</a>
+          </p>
+        </div>
+
+        <% if @community.promo_image? %>
+          <div class="promo">
+            <p><%= link_to @community.promo_url, image_tag(@community.promo_image) %></p>
+          </div>
+        <% end %>
+
+        <div id="apartments">
+          <h2>Apartments</h2>
+
+          <table>
+            <tbody>
+              <% @community.floor_plans do |plan| %>
+                <tr>
+                  <td><a href="#">Studio</a></td>
+                  <td>1 Floor Plan</td>
+                  <td>542 Sq Ft</td>
+                  <td>From $1,500</td>
+                  <td class="availability"><a href="#">Availability</a></td>
+                </tr>
+              <% end %>
+              <tr>
+                <td><a href="#">1 Bedroom</a></td>
+                <td>4 Floor Plans</td>
+                <td>666-864 Sq Ft</td>
+                <td>From $1,500</td>
+                <td class="availability"><a href="#">Availability</a></td>
+              </tr>
+              <tr>
+                <td><a href="#">2 Bedrooms</a></td>
+                <td>2 Floor Plan</td>
+                <td>1,138-1,300 Sq Ft</td>
+                <td>From $1,500</td>
+                <td class="availability"><a href="#">Availability</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div id="featured-floor-plans" class="row">
+          <h2>Featured Floor Plans</h2>
+          <ul>
+            <li class="floor-plan">
+              <h4>Studio</h4>
+              <p>
+                542 Sq Ft | $XXXX<br />
+                <a href="#">Reserve</a>
+              </p>
+              <img src="/images/floor-plan-studio.png" />
+            </li>
+
+            <li class="floor-plan">
+              <h4>1 Bedroom w/Den</h4>
+              <p>
+                830 Sq Ft | $XXXX<br />
+                <a href="#">Reserve</a>
+              </p>
+              <img src="/images/floor-plan-1-br.png" />
+            </li>
+
+            <li class="floor-plan">
+              <h4>2 Bedrooms</h4>
+              <p>
+                542 Sq Ft | $XXXX<br />
+                <a href="#">Reserve</a>
+              </p>
+              <img src="/images/floor-plan-2-br.png" />
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" class="col">
+        <div id="community-info" class="article row">
+          <ul class="nav row">
+            <li><a href="#map">View Map</a></li>
+            <li><a href="#walk-score">Walk Score&trade;</a></li>
+            <li class="last"><a href="#local-info">Local News</a></li>
+          </ul>
+
+          <div id="map" class="section">
+            <img src="/images/community-map.png" />
+            <p class="call-to-action"><a href="#">Get Directions</a></p>
+          </div>
+
+          <div id="walk-score" class="section">
+            <p>Walk score</p>
+          </div>
+
+          <div id="local-info" class="section">
+            <p>Local info</p>
+          </div>
+        </div>
+
+
+        <div id="nearby-communities">
+          <h3>Nearby Apartment Communities</h3>
+          <ul>
+            <li><a href="#">220 Twentieth Street</a></li>
+            <li><a href="#">Concord</a></li>
+            <li><a href="#">Halstead Arlington</a></li>
+            <li><a href="#">London/Normandy House</a></li>
+            <li><a href="#">River House</a></li>
+            <li><a href="#">The Palatine</a></li>
+          </ul>
+        </div>
+
+        <div class="social-updates">
+          <div class="facebook-update">
+            <p class="message"><a href="#">Become a fan on Facebook</a></p>
+          </div>
+
+          <div class="twitter-update">
+            <p class="message">Siena Park lorem ipsum dolor sit amet sinsectutor dolorum ipsum lorem ipsum dolor sit amet sinsectut dolorum ipsum sin sit amet.</p>
+            <p class="byline">SienaPark <em>Mar 12</em></p>
+          </div>
+
+          <p class="sharethis">
+            <a href="#">ShareThis</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="sub-content" class="row">
+      <div id="recently-viewed">
+        <h3>Recently Viewed</h3>
+        <ul class="row">
+          <li>
+            <a href="#">220 Twentieth Street</a>
+            Arlington, VA
+          </li>
+          <li>
+            <a href="#">Halstead Arlington</a>
+            Arlington, VA
+          </li>
+          <li>
+            <a href="#">Halstead Arlington</a>
+            Arlington, VA
+          </li>
+          <li>
+            <a href="#">Halstead Arlington</a>
+            Arlington, VA
+          </li>
+          <li>
+            <a href="#">Concord</a>
+            Arlington, VA
+          </li>
+          <li>
+            <a href="#">Normandy House</a>
+            Arlington, VA
+          </li>
+          <li>
+            <a href="#">London/Normandy House</a>
+            Arlington, VA
+          </li>
+          <li>
+            <a href="#">London/Normandy House</a>
+            Arlington, VA
+          </li>
+        </ul>
+      </div>
+
+      <div class="row">
+        <div id="renting-from-bozzuto" class="col">
+          <h2>Renting From Bozzuto</h2>
+
+          <p>
+            <strong>Our goal is to provide you with an unparalleled living experience</strong> during your stay at a Bozzuto Community. We want you to relax and enjoy your new home while leaving the heavy lifting to us.
+          </p>
+
+          <p>
+            <a href="#">Read More</a>
+          </p>
+        </div>
+
+        <div id="about-bozzuto" class="col">
+          <h2>About Bozzuto Management Company</h2>
+
+          <p>
+            <strong>Recognized by the National Association of Home Builders</strong> in both 2009 and 200 as the nation&rsquo;s best residential management company, Bozzuto Management has assembled a portfolio of apartment communities and commercial properties in locations throughout the East Coast.
+          </p>
+
+          <p>
+            <a href="#">Learn More About Bozzuto Management</a>
+          </p>
+        </div>
+      </div>
+
+      <div id="sub-listing">
+        <ul>
+          <li><a href="#">Arlington Apartments</a></li>
+          <li><a href="#">Arlington Apartments</a></li>
+          <li><a href="#">Arlington Apartments</a></li>
+          <li><a href="#">Arlington Apartments</a></li>
+          <li><a href="#">Alexandria Apartments</a></li>
+          <li><a href="#">Alexandria Apartments</a></li>
+          <li><a href="#">Alexandria Apartments</a></li>
+          <li><a href="#">Ashburn Apartments</a></li>
+          <li><a href="#">Ashburn Apartments</a></li>
+          <li><a href="#">Ashburn Apartments</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :special_nav do %>
+  <ul id="special-nav">
+    <li>
+      <a href="#">Send to Friend</a>
+      <div class="popup">
+        <form>
+          <p>
+          <label><strong>Input your friend&rsquo;s email address</strong> to lorem ipsum dolor sit dolor sinsectutor.</label>
+          </p>
+          <p class="fields">
+          <input type="text" name="friend_email" />
+          <button type="submit">Send</button>
+          </p>
+        </form>
+      </div>
+    </li>
+    <li>
+      <a href="#">Send to Phone</a>
+      <div class="popup">
+        <form>
+          <p>
+          <label><strong>Input your phone number</strong> to lorem ipsum dolor sit dolor sinsectutor.</label>
+          </p>
+          <p class="fields">
+          <input type="text" name="phone_number" />
+          <button type="submit">Send</button>
+          </p>
+        </form>
+      </div>
+    </li>
+    <li>
+      <a href="#">Join our Mailing List</a>
+      <div class="popup">
+        <form>
+          <p>
+          <label><strong>Input your email address</strong> to lorem ipsum dolor sit dolor sinsectutor.</label>
+          </p>
+          <p class="fields">
+          <input type="text" name="mailing_list_email" />
+          <button type="submit">Send</button>
+          </p>
+        </form>
+      </div>
+    </li>
+  </ul>
+<% end %>

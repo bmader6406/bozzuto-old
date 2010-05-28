@@ -2,4 +2,11 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      community:
+        elite: Elite Community
+        smart_share: Bozzuto SmartShare Program
+        smart_rent: Bozzuto SmartRent Program
+        green: Bozzuto Green Program
+        non_smoking: No Smoking
