@@ -74,6 +74,8 @@ module Typus
 
           if respond_to?(:attachment_definitions) && attachment_definitions.try(:has_key?, field)
             attribute_type = :file
+          elsif respond_to?(:uploaders) && uploaders.try(:has_key?, field.to_sym)
+            attribute_type = :file
           end
 
           # And finally insert the field and the attribute_type

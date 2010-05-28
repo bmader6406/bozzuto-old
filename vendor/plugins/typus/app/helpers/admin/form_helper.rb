@@ -445,5 +445,5 @@ module Admin::FormHelper
     end
   end
   
-  include Typus::FormHelperExtensions rescue nil
+  include Typus::FormHelperExtensions
 end
