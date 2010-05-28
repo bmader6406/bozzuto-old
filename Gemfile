@@ -9,8 +9,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 group :test do
+  gem 'shoulda'
   gem 'phocus'
-  gem 'contest'
   gem 'machinist'
   gem 'faker'
   gem 'rr'  
