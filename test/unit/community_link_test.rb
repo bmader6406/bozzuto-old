@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class CommunityLinkTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  context "A community link" do
+    should_belong_to :community
+
+    should_validate_presence_of :title, :url, :community
   end
 end
