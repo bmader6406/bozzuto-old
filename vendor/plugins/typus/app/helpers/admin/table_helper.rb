@@ -218,7 +218,7 @@ module Admin::TableHelper
       end
     end
 
-    content = html_position.join(' / ')
+    content = html_position.join(' / ').html_safe
     return content_tag(:td, content)
 
   end
