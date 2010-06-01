@@ -19,7 +19,7 @@ Community:
     list: title, street_address, city
     form: title, subtitle, elite, smart_share, smart_rent, green, non_smoking, video_url, facebook_url, twitter_handle, promo_image, promo_url, latitude, longitude, street_address, overview_text, apartment_features, community_amenties, environmental_features, contact_info, city
   order_by: 
-  relationships: city, floor_plans, links, pages, photos
+  relationships: city, floor_plan_groups, links, pages, photos
   filters: 
   search: title
   application: Bozzuto
@@ -48,10 +48,10 @@ CommunityPage:
 
 FloorPlanGroup:
   fields:
-    default: community, name, position
+    default: name, position
     list: community, name, position
     form: community, name
-  order_by: community, position
+  order_by: community_id, position
   relationships: community
   search: name
   application: Community
