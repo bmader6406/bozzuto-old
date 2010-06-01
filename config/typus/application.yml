@@ -46,13 +46,23 @@ CommunityPage:
   search: title
   application: Community
 
+FloorPlanGroup:
+  fields:
+    default: community, name, position
+    list: community, name, position
+    form: community, name
+  order_by: community, position
+  relationships: community
+  search: name
+  application: Community
+
 FloorPlan:
   fields:
-    default: image, category, bedrooms, bathrooms, square_feet, price, position, community
-    list: image, category, bedrooms, bathrooms, square_feet, price, position, community
-    form: image, category, bedrooms, bathrooms, square_feet, price, community
+    default: image, category, bedrooms, bathrooms, square_feet, price, position, floor_plan_group
+    list: image, category, bedrooms, bathrooms, square_feet, price, position, floor_plan_group
+    form: image, category, bedrooms, bathrooms, square_feet, price, floor_plan_group
   order_by: position
-  relationships: community
+  relationships: floor_plan_group
   filters: 
   search: 
   application: Community

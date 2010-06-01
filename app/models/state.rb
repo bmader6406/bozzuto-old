@@ -3,4 +3,5 @@ class State < ActiveRecord::Base
 
   validates_presence_of :code, :name
   validates_length_of :code, :is => 2
+  validates_uniqueness_of :code, :name
 end

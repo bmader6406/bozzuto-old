@@ -8,7 +8,7 @@ class CreateFloorPlans < ActiveRecord::Migration
         n.decimal :bathrooms, :precision => 3, :scale => 1
         n.integer :square_feet
         n.integer :price
-        n.integer :community_id
+        n.integer :floor_plan_group_id
       end
       t.integer :position
 

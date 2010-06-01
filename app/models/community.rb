@@ -3,7 +3,8 @@ class Community < ActiveRecord::Base
   has_many :photos
   has_many :pages, :class_name => "CommunityPage"
   has_many :links, :class_name => "CommunityLink"
-  has_many :floor_plans
+  has_many :floor_plan_groups
+  has_many :floor_plans, :through => :floor_plan_groups
 
   validates_presence_of :title, :subtitle, :city
 
