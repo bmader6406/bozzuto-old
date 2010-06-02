@@ -77,37 +77,35 @@
           </div>
         <% end %>
 
-        <div id="apartments">
-          <h2>Apartments</h2>
+        <% unless @community.floor_plan_groups.empty? %>
+          <div id="apartments">
+            <h2>Apartments</h2>
 
-          <table>
-            <tbody>
-              <%# @community.floor_plans do |plan| %>
-                <tr>
-                  <td><a href="#">Studio</a></td>
-                  <td>1 Floor Plan</td>
-                  <td>542 Sq Ft</td>
-                  <td>From $1,500</td>
-                  <td class="availability"><a href="#">Availability</a></td>
-                </tr>
-              <%# end %>
-              <tr>
-                <td><a href="#">1 Bedroom</a></td>
-                <td>4 Floor Plans</td>
-                <td>666-864 Sq Ft</td>
-                <td>From $1,500</td>
-                <td class="availability"><a href="#">Availability</a></td>
-              </tr>
-              <tr>
-                <td><a href="#">2 Bedrooms</a></td>
-                <td>2 Floor Plan</td>
-                <td>1,138-1,300 Sq Ft</td>
-                <td>From $1,500</td>
-                <td class="availability"><a href="#">Availability</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            <table>
+              <tbody>
+                <% @community.floor_plan_groups.each do |group| %>
+                  <tr>
+                    <td>
+                      <%= link_to group.name, "#" %>
+                    </td>
+                    <td>
+                      <%= pluralize(group.floor_plans.count, 'Floor Plan') %>
+                    </td>
+                    <td>
+                      542 Sq Ft
+                    </td>
+                    <td>
+                      <% unless group.floor_plans.empty? %>
+                        From <%= floor_plan_price(group.floor_plans.cheapest) %>
+                      <% end %>
+                    </td>
+                    <td class="availability"><a href="#">Availability</a></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        <% end %>
 
         <div id="featured-floor-plans" class="row">
           <h2>Featured Floor Plans</h2>

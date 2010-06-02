@@ -13,4 +13,8 @@ module CommunitiesHelper
       end.html_safe
     end
   end
+
+  def floor_plan_price(plan)
+    number_to_currency(plan.price / 100)
+  end
 end
