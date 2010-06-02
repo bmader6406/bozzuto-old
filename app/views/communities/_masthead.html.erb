@@ -14,7 +14,7 @@
         <li>
           <%= link_to 'Floor Plans', '#' %>
         </li>
-        <li>
+        <li class="<%= current_if params[:action] == 'neighborhood' %>">
           <%= link_to 'Neighborhood', neighborhood_community_path(@community) %>
         </li>
         <li>
