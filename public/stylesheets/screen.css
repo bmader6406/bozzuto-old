@@ -331,13 +331,13 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       padding: 20px 250px 0 0;
     }
     .about #masthead .figure,
-    .about #masthead .figure img {
+    .about #masthead .figure img,
+    .homes-search #masthead .figure {
       display: block;
       width: 230px;
       height: 223px;
     }
-    .about #masthead .figure,
-    .homes #masthead .figure {
+    .about #masthead .figure {
       position: absolute;
       top: 0; right: 0;
     }
@@ -1337,11 +1337,28 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       border-bottom: 1px solid #858890;
       padding-top: 24px;
     }
+    
+    .homes-search #masthead p.call-to-action {
+      margin-top: 12px;
+    }
+    
+    .homes #masthead p.call-to-action a {
+      padding-left: 7px;
+    }
+    
+    .homes-search #masthead .container {
+      position: relative;
+    }
   
     .homes #masthead .aside {
       float: right;
       padding-top: 4px;
       width: 229px;
+    }
+    
+    .homes #masthead .figure {
+      position: absolute;
+      top: -24px; right: 0;
     }
 
     .homes #masthead .aside p.call-to-action a {
@@ -1356,6 +1373,10 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       float: left;
       padding: 0 0 28px 189px;
       width: 515px;
+    }
+    
+    .homes-search #masthead .section {
+      height: 183px;
     }
 
     .homes #masthead .section .quote { 
@@ -2737,6 +2758,18 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   
   /* @group -homes */
 
+    .homes #masthead .section p.call-to-action a {
+      color: #565C64;
+    }
+
+    .homes #masthead .section p.figure {
+      font-size: 13px;      
+    }
+    
+    .homes-search #masthead p.call-to-action {
+      font-size: 11px;
+    }
+
     .homes #masthead .aside p.call-to-action a {
       color: #000;
       font-size: 15px;
@@ -3388,6 +3421,10 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   /* @end */
   
   /* @group -homes */
+
+    .homes-search #masthead .section p.call-to-action a {
+      background: url(../images/structure/bg-masthead-a.gif) left center no-repeat;
+    }    
 
     .homes #masthead .aside p.call-to-action a {
       background: url(../images/structure/bg-apartments-masthead-aside-a.gif) left top no-repeat;
