@@ -8,6 +8,7 @@
     //$(".about #masthead .container").slideshow();
 
     $("#community-info").communityInfoTabs();
+    $('.community .social-updates .twitter-update').latestTwitterUpdate();
     
     $(".apartments div.slideshow").featuredSlideshow();
     
@@ -452,5 +453,45 @@
 		}
 	};
 
+  ////
+  // fetch and insert the latest twitter update
+  $.fn.latestTwitterUpdate = function() {
+    $(this).each(function() {
+      var container = $(this),
+          username = $(this).attr('data-twitter-username'),
+          url = "http://twitter.com/statuses/user_timeline/" + username + ".json?callback=?";
+
+      if (username == '') {
+        return;
+      }
+
+      $.getJSON(url, { 'count': 1 }, function(data) {
+        if ($.isArray(data) && data.length > 0) {
+          var tweet = data[0];
+
+          container.append(
+            $('<p class="message">').text(tweet.text)
+          ).append(
+            $('<p class="byline">')
+              .text(tweet.user.screen_name)
+              .append(
+                $('<em>').text(formatTimestamp(tweet.created_at))
+              )
+          );
+        }
+      });
+    });
+
+    return this;
+
+    function formatTimestamp(timestamp) {
+      var time = new Date(timestamp);
+      return $.fn.latestTwitterUpdate.monthNames[time.getMonth()] +
+        " " +
+        time.getDate();
+    }
+  };
+
+  $.fn.latestTwitterUpdate.monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 })(jQuery);

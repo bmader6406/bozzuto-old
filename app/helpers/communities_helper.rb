@@ -21,4 +21,10 @@ module CommunitiesHelper
   def square_feet(plan)
     "#{plan.square_feet} Sq Ft"
   end
+
+  def twitter_data_attr(handle)
+    if handle.present?
+      "data-twitter-username=\"#{handle}\"".html_safe
+    end
+  end
 end

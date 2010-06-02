@@ -34,5 +34,12 @@ class CommunitiesHelperTest < ActionView::TestCase
         assert_equal "#{@plan.square_feet} Sq Ft", square_feet(@plan)
       end
     end
+
+    context "#twitter_data_attr" do
+      should "return the twitter username data attribute" do
+        assert_equal 'data-twitter-username="vigetlabs"',
+          twitter_data_attr('vigetlabs')
+      end
+    end
   end
 end

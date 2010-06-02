@@ -189,10 +189,9 @@
             </div>
           <% end %>
 
-          <div class="twitter-update">
-            <p class="message">Siena Park lorem ipsum dolor sit amet sinsectutor dolorum ipsum lorem ipsum dolor sit amet sinsectut dolorum ipsum sin sit amet.</p>
-            <p class="byline">SienaPark <em>Mar 12</em></p>
-          </div>
+          <% if @community.twitter_handle.present? %>
+            <div class="twitter-update" <%= twitter_data_attr(@community.twitter_handle) %>></div>
+          <% end %>
 
           <p class="sharethis">
             <a href="#">ShareThis</a>
