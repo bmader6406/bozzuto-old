@@ -319,22 +319,19 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   
   /* @group -about */
 
-    .about #masthead .container,
-    .homes #masthead .container {
+    .about #masthead .container {
       position: relative;
       width: 770px;
       padding-left: 190px;
     }
-    .about #masthead .section ,
-    .homes #masthead .section {
+    .about #masthead .section {
       position: relative;
       width: 520px;
       height: 203px;
       padding: 20px 250px 0 0;
     }
     .about #masthead .figure,
-    .about #masthead .figure img,
-    .homes #masthead .figure {
+    .about #masthead .figure img {
       display: block;
       width: 230px;
       height: 223px;
@@ -838,14 +835,16 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       border-bottom: none;
     }
 
-    .apartments #content div.slideshow {
+    .apartments #content div.slideshow,
+    .homes #content div.slideshow {
       height: 375px;
       position: relative;
       top: -15px;
       width: 848px;
     }
 
-    .apartments #content ul.slides li {
+    .apartments #content ul.slides li,
+    .homes #content ul.slides li {
       height: 375px;
       left: 0;
       overflow: hidden;
@@ -856,15 +855,18 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       z-index: 0;
     }
 
-    .apartments #content ul.slides li {
+    .apartments #content ul.slides li,
+    .homes #content ul.slides li {
       z-index: 1;
     }
 
-    .apartments #content ul.slides li.on-deck {
+    .apartments #content ul.slides li.on-deck,
+    .homes #content ul.slides li.on-deck {
       z-index: 3;
     }
 
-    .apartments #content ul.slides li.current {
+    .apartments #content ul.slides li.current,
+    .homes #content ul.slides li.current {
       z-index: 2;
     }
 
@@ -1331,20 +1333,29 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   
   /* @group -homes */
 
-    .homes #masthead p.call-to-action {
-    	margin-top: 12px;
+    .homes #masthead {
+      border-bottom: 1px solid #858890;
+      padding-top: 24px;
+    }
+  
+    .homes #masthead .aside {
+      float: right;
+      padding-top: 4px;
+      width: 229px;
     }
 
-    .homes #masthead p.call-to-action a {
-    	padding-left: 7px;
+    .homes #masthead .aside p.call-to-action a {
+      display: block;
+      height: 28px;
+      margin-bottom: 21px;
+      padding-left: 9px;
+      width: 220px; 
     }
-
-    .homes #masthead p.figure a {
-    	display: block;
-    	height: 223px;
-    	overflow: hidden;
-    	text-indent: -9999px;
-    	width: 230px;
+    
+    .homes #masthead .section {
+      float: left;
+      padding: 0 0 28px 189px;
+      width: 515px;
     }
 
     .homes #masthead .section .quote { 
@@ -1425,7 +1436,6 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	width: 230px;
     }
 
-
     .homes #content #view-as-list h2 {
     	border-bottom: 1px solid #c1c1c5;
     	border-top: 1px solid #c1c1c5;
@@ -1489,7 +1499,6 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	width: 195px;
     }
 
-
     .homes #content #view-as-list div.photos {
     	clear: left;
     	float: left;
@@ -1500,6 +1509,22 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .homes #content #view-as-list div.photos p {
     	margin-bottom: 5px;
     	padding-left: 0;
+    }
+  
+    .homes #content #renting-from-bozzuto {
+      float: left;
+      padding-right: 22px;
+      width: 317px;
+    }
+
+    .homes #content #about-bozzuto {
+      float: right;
+      width: 408px;
+    }
+
+    .homes #content #renting-from-bozzuto p,
+    .homes #content #about-bozzuto p {
+      margin-bottom: 11px;
     }
   
   /* @end */
@@ -2001,29 +2026,26 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     /* @group --bios */
 
       .js #partner-bios {
-        display: none;
+        height: 0;
+        left: -9999px;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        width: 0;
       }
-    
-    /* @end */
-    
-    /* @group --bio overlay */
-
+  
       .js .partner-bio-outer {
-        background: transparent url(../images/structure/bg-partner-bio.png) no-repeat right 0;
-        font-size: 11px;
-        line-height: 18px;
         padding: 20px 0 0;     
         width: 800px;
       }
       
       .js .partner-bio-inner {
-        background: transparent url(../images/structure/bg-partner-bio.png) no-repeat 0 bottom;
         min-height: 215px;
         padding: 30px 50px 50px 300px;
       }
       
       .ie7 .partner-bio-inner {
-        height: 500px;
+        height: 215px;
       }
       
       .ie6 .partner-bio-outer {
@@ -2059,7 +2081,6 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       }
       
       .partner-close {
-        background: transparent url(../images/structure/bg-partner-close.png) no-repeat 0 0;
         display: block;
         height: 40px;
         position: absolute;
@@ -2497,7 +2518,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .community #about-bozzuto a,
     .community #sub-listing a,
     .apartments #about-bozzuto a,
-    .apartments #renting-from-bozzuto a {
+    .apartments #renting-from-bozzuto a,
+    .homes #about-bozzuto a,
+    .homes #renting-from-bozzuto a {
       padding-left: 6px;
       font-weight: bold;
       text-transform: uppercase;
@@ -2714,33 +2737,16 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   
   /* @group -homes */
 
-    .homes #masthead .section p.figure {
-      font-size: 13px;
+    .homes #masthead .aside p.call-to-action a {
+      color: #000;
+      font-size: 15px;
+      line-height: 28px;
     }
 
-    .homes #masthead .section p.figure img {
-    	margin-bottom: 6px;
+    .homes #masthead .aside p.call-to-action a:hover {
+      text-decoration: none;
     }
-
-    .homes #masthead p.call-to-action {
-    	font-size: 11px;
-    }
-
-    .homes #masthead p.call-to-action a {
-    	color: #565c64;
-    }
-
-    .homes #masthead .section .citation {
-    	font-weight: bold;
-    	line-height: 14px;
-    }
-
-    .homes #masthead .section .citation em {
-    	font-size: 11px;
-    	font-style: italic;
-    	font-weight: normal;
-    }
-
+  
     .homes #content div.header ul li a,
     .search #content div.header ul li a {
     	font-size: 15px;
@@ -2868,6 +2874,10 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	font-weight: bold;
     }
   
+    .homes #content div.row p a {
+      text-transform: none;
+    }
+  
   /* @end */
   
   /* @group -services */
@@ -2948,6 +2958,16 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       font-size: 13px;
       line-height: 30px;
     }
+  
+    /* @group --bios */
+
+      .js .partner-bio-outer {
+        font-size: 11px;
+        line-height: 18px;
+      }
+    
+    /* @end */
+    
   
   /* @end */
   
@@ -3216,7 +3236,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .community #about-bozzuto a,
     .community #sub-listing a,
     .apartments #renting-from-bozzuto p a,
-    .apartments #about-bozzuto p a {
+    .apartments #about-bozzuto p a,
+    .homes #renting-from-bozzuto p a,
+    .homes #about-bozzuto p a {
       background: transparent url(../images/structure/bg-header-a.gif) no-repeat center left;
     }
     .community #masthead #remote-nav a {
@@ -3234,7 +3256,8 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .community #sidebar div.facebook-update,
     .community #renting-from-bozzuto,
     .community #about-bozzuto,
-    .apartments div.row div.col {
+    .apartments div.row div.col,
+    .homes div.row div.col {
       background: transparent url(../images/structure/bg-about-sidebar-section.gif) no-repeat bottom left;
     }
     .community #overview ul.community-icons li a span {
@@ -3366,12 +3389,12 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   
   /* @group -homes */
 
-    .homes #masthead p.call-to-action a {
-    	background: url(../images/structure/bg-masthead-a.gif) left center no-repeat;
+    .homes #masthead .aside p.call-to-action a {
+      background: url(../images/structure/bg-apartments-masthead-aside-a.gif) left top no-repeat;
     }
 
-    .homes #masthead p.figure a {
-    	background: left top no-repeat;
+    .homes #masthead .aside p.call-to-action a:hover {
+      background-position: left bottom;
     }
 
     .homes #content div.header,
@@ -3631,6 +3654,22 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .partner-portrait-images .portrait-julie-a   { background-position: 0 -3375px; }
     .partner-portrait-images .portrait-richard-l { background-position: 0 -3750px; }
     .partner-portrait-images .portrait-michael-a { background-position: 0 -4125px; }
+                
+    /* @group --bios */
+
+      .js .partner-bio-outer {
+        background: transparent url(../images/structure/bg-partner-bio.png) no-repeat right 0;
+      }
+      
+      .js .partner-bio-inner {
+        background: transparent url(../images/structure/bg-partner-bio.png) no-repeat 0 bottom;
+      }
+
+      .partner-close {
+        background: transparent url(../images/structure/bg-partner-close.png) no-repeat 0 0;
+      }
+
+    /* @end */
                               
   /* @end */
   
