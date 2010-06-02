@@ -179,9 +179,13 @@
         </div>
 
         <div class="social-updates">
-          <div class="facebook-update">
-            <p class="message"><a href="#">Become a fan on Facebook</a></p>
-          </div>
+          <% if @community.facebook_url.present? %>
+            <div class="facebook-update">
+              <p class="message">
+                <%= link_to "Become a fan on Facebook", @community.facebook_url %>
+              </p>
+            </div>
+          <% end %>
 
           <div class="twitter-update">
             <p class="message">Siena Park lorem ipsum dolor sit amet sinsectutor dolorum ipsum lorem ipsum dolor sit amet sinsectut dolorum ipsum sin sit amet.</p>
