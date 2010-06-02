@@ -1,11 +1,11 @@
 <div id="masthead">
   <div class="container">
     <div class="nav">
-      <ul id="secondary-nav" class="current-1">
-        <li class="current">
+      <ul id="secondary-nav">
+        <li class="<%= current_if params[:action] == 'show' %>">
           <%= link_to @community.title, @community %>
         </li>
-        <li>
+        <li class="<%= current_if params[:action] == 'features' %>">
           <%= link_to 'Features & Amenities', features_community_path(@community) %>
         </li>
         <li>
