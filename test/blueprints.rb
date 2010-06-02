@@ -1,24 +1,31 @@
 require 'machinist/active_record'
 require 'sham'
 
+Sham.define do
+  city          { Faker::Address.city }
+  us_state_code { Faker::Address.us_state_abbr }
+  us_state      { Faker::Address.us_state }
+  company_name  { Faker::Company.name }
+end
+
 City.blueprint do
-  name { Faker::Address.city }
+  name { Sham.city }
   state
 end
 
 State.blueprint do
-  name { Faker::Address.us_state }
-  code { Faker::Address.us_state_abbr }
+  name { Sham.us_state }
+  code { Sham.us_state_code }
 end
 
 Community.blueprint do
-  title    { Faker::Company.name }
+  title    { Sham.company_name }
   subtitle { Faker::Company.catch_phrase }
   city
 end
 
 FloorPlanGroup.blueprint do
-  name { Faker::Company.name }
+  name { Faker::Lorem.words(1) }
   community
 end
 
