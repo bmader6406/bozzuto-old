@@ -20,8 +20,18 @@ class CommunitiesHelperTest < ActionView::TestCase
         @plan = FloorPlan.make(:price => 60000)
       end
 
-      should "return a floor plan's formatted price" do
+      should "return the floor plan's formatted price" do
         assert_equal "$600.00", floor_plan_price(@plan)
+      end
+    end
+
+    context "#square_feet" do
+      setup do
+        @plan = FloorPlan.make(:square_feet => 550)
+      end
+
+      should "return the floor plan's formatted square footage" do
+        assert_equal "#{@plan.square_feet} Sq Ft", square_feet(@plan)
       end
     end
   end

@@ -3,6 +3,10 @@ class FloorPlanGroup < ActiveRecord::Base
     def cheapest
       first(:order => 'price ASC')
     end
+
+    def largest
+      first(:order => 'square_feet DESC')
+    end
   end
 
   belongs_to :community

@@ -92,14 +92,18 @@
                       <%= pluralize(group.floor_plans.count, 'Floor Plan') %>
                     </td>
                     <td>
-                      542 Sq Ft
+                      <% unless group.floor_plans.empty? %>
+                        <%= square_feet(group.floor_plans.largest) %>
+                      <% end %>
                     </td>
                     <td>
                       <% unless group.floor_plans.empty? %>
                         From <%= floor_plan_price(group.floor_plans.cheapest) %>
                       <% end %>
                     </td>
-                    <td class="availability"><a href="#">Availability</a></td>
+                    <td class="availability">
+                      <%= link_to "Availability", "#" %>
+                    </td>
                   </tr>
                 <% end %>
               </tbody>

@@ -17,4 +17,8 @@ module CommunitiesHelper
   def floor_plan_price(plan)
     number_to_currency(plan.price / 100)
   end
+
+  def square_feet(plan)
+    "#{plan.square_feet} Sq Ft"
+  end
 end
