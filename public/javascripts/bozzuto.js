@@ -53,6 +53,8 @@
     
     $('.partner-portrait').portrait();
     
+    $('.partner-portrait-links a, .partners a').leaderLightbox();
+    
   });
   
   ////
@@ -262,6 +264,39 @@
         initialized = true;
         
       }
+      
+    });
+  };
+  
+  ////
+  // leadership lightbox
+  $.fn.leaderLightbox = function() {
+    return this.each(function() {
+      
+      var $this  = $(this),
+          $bio   = $($this.attr('href')).children();
+      
+      if (!$bio.data('closeAdded')){
+        $('<a href="#" class="partner-close">Close</a>').appendTo($bio.children());        
+        $bio.data('closeAdded',true);         
+      }
+          
+      $this.click(function(e){
+        
+        e.preventDefault();
+        
+        $bio.lightbox_me({
+          appearEffect: 'fadeIn',
+          destroyOnClose: true,
+          lightboxSpeed: 'slow',
+          centered: true,
+          closeSelector: '.partner-close',
+          overlayCSS:	{
+            opacity: 0.01
+          }
+        });
+        
+      });
       
     });
   };

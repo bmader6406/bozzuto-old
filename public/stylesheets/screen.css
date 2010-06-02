@@ -1998,6 +1998,90 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     
     /* @end */
   
+    /* @group --bios */
+
+      .js #partner-bios {
+        display: none;
+      }
+    
+    /* @end */
+    
+    /* @group --bio overlay */
+
+      .js .partner-bio-outer {
+        background: transparent url(../images/structure/bg-partner-bio.png) no-repeat right 0;
+        font-size: 11px;
+        line-height: 18px;
+        padding: 20px 0 0;     
+        width: 800px;
+      }
+      
+      .js .partner-bio-inner {
+        background: transparent url(../images/structure/bg-partner-bio.png) no-repeat 0 bottom;
+        min-height: 215px;
+        padding: 30px 50px 50px 300px;
+      }
+      
+      .ie7 .partner-bio-inner {
+        height: 500px;
+      }
+      
+      .ie6 .partner-bio-outer {
+        background: #fff;
+        padding: 0;
+        width: 760px;
+      }
+      
+      .ie6 .partner-bio-inner {
+        background: none;
+        height: auto;
+        padding: 30px;
+      }
+      
+      .partner-bio-inner h3 {
+        font-size: 21px;
+        line-height: 21px;
+        margin-bottom: 3px;
+      }
+      
+      .partner-bio-inner .partner-title,
+      .partner-bio-inner .partner-group {
+        display: block;
+        font-weight: bold;
+      }
+      
+      .partner-bio-inner .partner-title {
+        margin-bottom: 0;      
+      }
+      
+      .partner-bio-inner .partner-group {
+        margin-bottom: 12px;
+      }
+      
+      .partner-close {
+        background: transparent url(../images/structure/bg-partner-close.png) no-repeat 0 0;
+        display: block;
+        height: 40px;
+        position: absolute;
+        right: 20px;
+        text-indent: -9999px;
+        top: 20px;
+        width: 40px;
+      }
+      
+      .partner-close:hover {
+        opacity: 0.5;
+        -moz-opacity: 0.5;
+        filter:alpha(opacity=50);
+      }
+      
+      .partner-pic {
+        float: left;
+        margin: 0 0 0 -250px;
+      }
+
+    /* @end */
+  
   /* @end */
   
   /* @group -footer */
