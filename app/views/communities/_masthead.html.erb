@@ -1,0 +1,59 @@
+<div id="masthead">
+  <div class="container">
+    <div class="nav">
+      <ul id="secondary-nav" class="current-1">
+        <li class="current">
+          <%= link_to @community.title, @community %>
+        </li>
+        <li>
+          <%= link_to 'Features & Amenities', features_community_path(@community) %>
+        </li>
+        <li>
+          <%= link_to 'Videos & Photos', media_community_path(@community) %>
+        </li>
+        <li>
+          <%= link_to 'Floor Plans', '#' %>
+        </li>
+        <li>
+          <%= link_to 'Neighborhood', neighborhood_community_path(@community) %>
+        </li>
+        <li>
+          <%= link_to 'Special Promotions', promotions_community_path(@community) %>
+        </li>
+        <li class="last">
+          <%= link_to 'Contact Info<br />&amp; Office Hours'.html_safe, contact_community_path(@community) %>
+          <span class="phone-number">301-220-0100</span>
+        </li>
+      </ul>
+
+      <ul id="remote-nav">
+        <% if @community.website_url.present? %>
+          <li><%= link_to 'Visit Website', @community.website_url %></li>
+        <% end %>
+        <li class="last">
+          <a href="#">Download E-Brochure</a>
+        </li>
+      </ul>
+    </div>
+
+    <div id="slideshow">
+      <div class="header">
+        <h1><%= @community.title %></h1><a href="#" class="prev">‹</a><a href="#" class="next">›</a>
+      </div>
+
+      <div class="slide">
+        <img src="/images/community-slide-1.jpg" />
+        <div class="section">
+          <p>
+            <strong><%= @community.city %></strong>
+            <%= @community.subtitle %>
+          </p>
+
+          <p class="watch-video">
+            <a href="#">Watch Video</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

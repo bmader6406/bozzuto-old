@@ -1,0 +1,11 @@
+<div id="breadcrumb">
+  <div class="container">
+    <ul>
+      <li><%= link_to "Apartments", "#" %></li>
+      <li><%= link_to "Find an Apartment", "#" %></li>
+      <li><%= link_to @community.city.state.name, "#" %></li>
+      <li><%= link_to @community.city.name, "#" %></li>
+      <li class="last"><%= @community.title %></li>
+    </ul>
+  </div>
+</div>

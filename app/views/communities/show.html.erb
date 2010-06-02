@@ -1,62 +1,8 @@
 <% content_for :body_class do %>community<% end %>
 
-<div id="breadcrumb">
-  <div class="container">
-    <ul>
-      <li><%= link_to "Apartments", "#" %></li>
-      <li><%= link_to "Find an Apartment", "#" %></li>
-      <li><%= link_to @community.city.state.name, "#" %></li>
-      <li><%= link_to @community.city.name, "#" %></li>
-      <li class="last"><%= @community.title %></li>
-    </ul>
-  </div>
-</div>
+<%= render :partial => 'breadcrumb' %>
 
-<div id="masthead">
-  <div class="container">
-    <div class="nav">
-      <ul id="secondary-nav" class="current-1">
-        <li class="current"><%= link_to @community.title, @community %></li>
-        <li><a href="features.html">Features &amp; Amenities</a></li>
-        <li><a href="#">Videos &amp; Photos</a></li>
-        <li><a href="#">Floor Plans</a></li>
-        <li><a href="#">Additional Info</a></li>
-        <li><a href="#">Special Promotions</a></li>
-        <li class="last">
-          <a href="#">Contact Info<br />&amp; Office Hours</a>
-          <span class="phone-number">301-220-0100</span>
-        </li>
-      </ul>
-
-      <ul id="remote-nav">
-        <% if @community.website_url.present? %>
-          <li><%= link_to "Visit Website", @community.website_url %></li>
-        <% end %>
-        <li class="last"><a href="#">Download E-Brochure</a></li>
-      </ul>
-    </div>
-
-    <div id="slideshow">
-      <div class="header">
-        <h1><%= @community.title %></h1><a href="#" class="prev">‹</a><a href="#" class="next">›</a>
-      </div>
-
-      <div class="slide">
-        <img src="/images/community-slide-1.jpg" />
-        <div class="section">
-          <p>
-            <strong><%= @community.city %></strong>
-            <%= @community.subtitle %>
-          </p>
-
-          <p class="watch-video">
-            <a href="#">Watch Video</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render :partial => 'masthead' %>
 
 <div id="main-content">
   <div class="container">
@@ -75,7 +21,9 @@
 
         <% if @community.promo_image? %>
           <div class="promo">
-            <p><%= link_to @community.promo_url, image_tag(@community.promo_image) %></p>
+            <p>
+              <%= link_to @community.promo_url, image_tag(@community.promo_image) %>
+            </p>
           </div>
         <% end %>
 
