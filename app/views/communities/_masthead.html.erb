@@ -17,7 +17,7 @@
         <li class="<%= current_if params[:action] == 'neighborhood' %>">
           <%= link_to 'Neighborhood', neighborhood_community_path(@community) %>
         </li>
-        <li>
+        <li class="<%= current_if params[:action] == 'promotions' %>">
           <%= link_to 'Special Promotions', promotions_community_path(@community) %>
         </li>
         <li class="last <%= current_if params[:action] == 'contact' %>">
