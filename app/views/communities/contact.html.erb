@@ -1,0 +1,15 @@
+<% content_for :body_class do %>community features<% end %>
+
+<%= render :partial => 'breadcrumb' %>
+
+<%= render :partial => 'masthead' %>
+
+<div id="main-content">
+  <div class="container">
+    <%= @community.contact_text.try(:html_safe) %>
+
+    <%= render :partial => 'sub_content' %>
+  </div>
+</div>
+
+<%= render :partial => 'special_nav' %>

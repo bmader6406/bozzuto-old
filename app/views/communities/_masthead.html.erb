@@ -20,7 +20,7 @@
         <li>
           <%= link_to 'Special Promotions', promotions_community_path(@community) %>
         </li>
-        <li class="last">
+        <li class="last <%= current_if params[:action] == 'contact' %>">
           <%= link_to 'Contact Info<br />&amp; Office Hours'.html_safe, contact_community_path(@community) %>
           <span class="phone-number">301-220-0100</span>
         </li>
