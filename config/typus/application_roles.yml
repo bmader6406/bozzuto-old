@@ -5,8 +5,6 @@
 admin:
   City: create, read, update, delete
   Community: create, read, update, delete
-  CommunityLink: create, read, update, delete
-  CommunityPage: create, read, update, delete
   FloorPlanGroup: create, read, update, delete
   FloorPlan: create, read, update, delete
   Photo: create, read, update, delete

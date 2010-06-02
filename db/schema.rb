@@ -19,14 +19,15 @@ ActiveRecord::Schema.define(:version => 20100528204027) do
   end
 
   create_table "communities", :force => true do |t|
-    t.string   "title",                                     :null => false
-    t.string   "subtitle",                                  :null => false
-    t.integer  "city_id",                                   :null => false
-    t.boolean  "elite",                  :default => false, :null => false
-    t.boolean  "smart_share",            :default => false, :null => false
-    t.boolean  "smart_rent",             :default => false, :null => false
-    t.boolean  "green",                  :default => false, :null => false
-    t.boolean  "non_smoking",            :default => false, :null => false
+    t.string   "title",                                :null => false
+    t.string   "subtitle",                             :null => false
+    t.integer  "city_id",                              :null => false
+    t.boolean  "elite",             :default => false, :null => false
+    t.boolean  "smart_share",       :default => false, :null => false
+    t.boolean  "smart_rent",        :default => false, :null => false
+    t.boolean  "green",             :default => false, :null => false
+    t.boolean  "non_smoking",       :default => false, :null => false
+    t.string   "website_url"
     t.string   "video_url"
     t.string   "facebook_url"
     t.string   "twitter_handle"
@@ -36,28 +37,10 @@ ActiveRecord::Schema.define(:version => 20100528204027) do
     t.float    "longitude"
     t.string   "street_address"
     t.text     "overview_text"
-    t.text     "apartment_features"
-    t.text     "community_amenties"
-    t.text     "environmental_features"
-    t.text     "contact_info"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "community_links", :force => true do |t|
-    t.string   "title",        :null => false
-    t.string   "url",          :null => false
-    t.integer  "community_id", :null => false
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "community_pages", :force => true do |t|
-    t.string   "title",        :null => false
-    t.text     "content",      :null => false
-    t.integer  "community_id", :null => false
-    t.integer  "position"
+    t.text     "features_text"
+    t.text     "neighborhood_text"
+    t.text     "promotions_text"
+    t.text     "contact_text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

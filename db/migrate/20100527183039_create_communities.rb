@@ -6,12 +6,14 @@ class CreateCommunities < ActiveRecord::Migration
         n.string :subtitle
         n.integer :city_id
 
-        n.boolean :elite, :default => false
+        n.boolean :elite,       :default => false
         n.boolean :smart_share, :default => false
-        n.boolean :smart_rent, :default => false
-        n.boolean :green, :default => false
+        n.boolean :smart_rent,  :default => false
+        n.boolean :green,       :default => false
         n.boolean :non_smoking, :default => false
       end
+
+      t.string :website_url
 
       t.string :video_url
       t.string :facebook_url
@@ -25,10 +27,10 @@ class CreateCommunities < ActiveRecord::Migration
       t.string :street_address
        
       t.text :overview_text
-      t.text :apartment_features
-      t.text :community_amenties
-      t.text :environmental_features
-      t.text :contact_info
+      t.text :features_text
+      t.text :neighborhood_text
+      t.text :promotions_text
+      t.text :contact_text
 
       t.timestamps
     end

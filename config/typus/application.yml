@@ -17,34 +17,12 @@ Community:
   fields:
     default: title, street_address, city
     list: title, street_address, city
-    form: title, subtitle, elite, smart_share, smart_rent, green, non_smoking, video_url, facebook_url, twitter_handle, promo_image, promo_url, latitude, longitude, street_address, overview_text, apartment_features, community_amenties, environmental_features, contact_info, city
+    form: title, subtitle, elite, smart_share, smart_rent, green, non_smoking, website_url, video_url, facebook_url, twitter_handle, promo_image, promo_url, latitude, longitude, street_address, overview_text, features_text, neighborhood_text, promotions_text, contact_text, city
   order_by: 
-  relationships: city, floor_plan_groups, links, pages, photos
+  relationships: city, floor_plan_groups, photos
   filters: 
   search: title
   application: Bozzuto
-
-CommunityLink:
-  fields:
-    default: title, url, position, community
-    list: title, url, position, community
-    form: title, url, community
-  order_by: position
-  relationships: community
-  filters: 
-  search: title
-  application: Community
-
-CommunityPage:
-  fields:
-    default: title, position, community
-    list: title, position, community
-    form: title, content, community
-  order_by: position
-  relationships: community
-  filters: 
-  search: title
-  application: Community
 
 FloorPlanGroup:
   fields:
