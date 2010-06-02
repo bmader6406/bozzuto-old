@@ -1,0 +1,92 @@
+<% content_for :body_class do %>community features<% end %>
+
+<%= render :partial => 'breadcrumb' %>
+
+<%= render :partial => 'masthead' %>
+
+<div id="main-content">
+  <div class="container">
+    <%= @community.features_text.try(:html_safe) %>
+
+    <div id="sub-content" class="row">
+      <div id="recently-viewed">
+        <h3>Recently Viewed</h3>
+        <ul class="row">
+          <li>
+            <a href="#">220 Twentieth Street</a>
+            Arlington, VA
+          </li>
+          <li>
+            <a href="#">Halstead Arlington</a>
+            Arlington, VA
+          </li>
+          <li>
+            <a href="#">Halstead Arlington</a>
+            Arlington, VA
+          </li>
+          <li>
+            <a href="#">Halstead Arlington</a>
+            Arlington, VA
+          </li>
+          <li>
+            <a href="#">Concord</a>
+            Arlington, VA
+          </li>
+          <li>
+            <a href="#">Normandy House</a>
+            Arlington, VA
+          </li>
+          <li>
+            <a href="#">London/Normandy House</a>
+            Arlington, VA
+          </li>
+          <li>
+            <a href="#">London/Normandy House</a>
+            Arlington, VA
+          </li>
+        </ul>
+      </div>
+
+      <div class="row">
+        <div id="renting-from-bozzuto" class="col">
+          <h2>Renting From Bozzuto</h2>
+
+          <p>
+            <strong>Our goal is to provide you with an unparalleled living experience</strong> during your stay at a Bozzuto Community. We want you to relax and enjoy your new home while leaving the heavy lifting to us.
+          </p>
+
+          <p>
+            <a href="#">Read More</a>
+          </p>
+        </div>
+
+        <div id="about-bozzuto" class="col">
+          <h2>About Bozzuto Management Company</h2>
+
+          <p>
+            <strong>Recognized by the National Association of Home Builders</strong> in both 2009 and 200 as the nation&rsquo;s best residential management company, Bozzuto Management has assembled a portfolio of apartment communities and commercial properties in locations throughout the East Coast.
+          </p>
+
+          <p>
+            <a href="#">Learn More About Bozzuto Management</a>
+          </p>
+        </div>
+      </div>
+
+      <div id="sub-listing">
+        <ul>
+          <li><a href="#">Arlington Apartments</a></li>
+          <li><a href="#">Arlington Apartments</a></li>
+          <li><a href="#">Arlington Apartments</a></li>
+          <li><a href="#">Arlington Apartments</a></li>
+          <li><a href="#">Alexandria Apartments</a></li>
+          <li><a href="#">Alexandria Apartments</a></li>
+          <li><a href="#">Alexandria Apartments</a></li>
+          <li><a href="#">Ashburn Apartments</a></li>
+          <li><a href="#">Ashburn Apartments</a></li>
+          <li><a href="#">Ashburn Apartments</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
