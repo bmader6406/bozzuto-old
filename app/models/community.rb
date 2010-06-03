@@ -7,4 +7,8 @@ class Community < ActiveRecord::Base
   validates_presence_of :title, :subtitle, :city
 
   mount_uploader :promo_image, ImageUploader
+
+  def address
+    "#{street_address}, #{city}"
+  end
 end

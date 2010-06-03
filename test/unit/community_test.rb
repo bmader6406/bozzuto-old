@@ -8,5 +8,16 @@ class CommunityTest < ActiveSupport::TestCase
     should_have_many :floor_plans, :through => :floor_plan_groups
 
     should_validate_presence_of :title, :subtitle, :city
+
+    context "#address" do
+      setup do
+        @address = '202 Rigsbee Ave'
+        @community = Community.make(:street_address => @address)
+      end
+
+      should "return the formatted address" do
+        assert_equal "#{@address}, #{@community.city}", @community.address
+      end
+    end
   end
 end
