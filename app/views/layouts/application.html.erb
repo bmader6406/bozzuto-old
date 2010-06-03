@@ -74,14 +74,9 @@
       <h4>We Work In</h4>
 
       <ul>
-        <li><a href="#">Connecticut</a></li>
-        <li><a href="#">Maryland</a></li>
-        <li><a href="#">Massachusetts</a></li>
-        <li><a href="#">New Jersey</a></li>
-        <li><a href="#">New York</a></li>
-        <li><a href="#">Pennsylvania</a></li>
-        <li><a href="#">Virginia</a></li>
-        <li><a href="#">Washington, DC</a></li>
+        <% State.all.each do |state| %>
+          <li><%= link_to state.name, '#' %></li>
+        <% end %>
       </ul>
     </div>
 
