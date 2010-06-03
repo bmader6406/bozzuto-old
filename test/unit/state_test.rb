@@ -3,7 +3,7 @@ require 'test_helper'
 class StateTest < ActiveSupport::TestCase
   context "A State" do
     setup do
-      @state = State.make
+      @state = State.make(:code => 'ZZ')
     end
 
     subject { @state }

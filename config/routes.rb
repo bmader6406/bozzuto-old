@@ -5,10 +5,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :communities,
     :only => :show,
     :member => {
-      :features     => :get,
-      :media        => :get,
-      :neighborhood => :get,
-      :promotions   => :get,
-      :contact      => :get
+      :features       => :get,
+      :media          => :get,
+      :neighborhood   => :get,
+      :promotions     => :get,
+      :contact        => :get,
+      :send_to_friend => :post
     }
 end

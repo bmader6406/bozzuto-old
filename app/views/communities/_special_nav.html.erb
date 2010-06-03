@@ -3,15 +3,17 @@
     <li>
       <a href="#">Send to Friend</a>
       <div class="popup">
-        <form>
+        <% form_tag send_to_friend_community_path(@community) do %>
           <p>
-          <label><strong>Input your friend&rsquo;s email address</strong> to lorem ipsum dolor sit dolor sinsectutor.</label>
+            <label>
+              <strong>Input your friend&rsquo;s email address</strong> to lorem ipsum dolor sit dolor sinsectutor.
+            </label>
           </p>
           <p class="fields">
-          <input type="text" name="friend_email" />
-          <button type="submit">Send</button>
+            <%= text_field_tag :email %>
+            <button type="submit">Send</button>
           </p>
-        </form>
+        <% end %>
       </div>
     </li>
     <li>
