@@ -41,5 +41,22 @@ class CommunitiesHelperTest < ActionView::TestCase
           twitter_data_attr('vigetlabs')
       end
     end
+
+    context "#walkscore_map_script" do
+      setup do
+        @community = Community.make(:street_address => '123 Test Dr')
+      end
+
+      should "return the javascript code" do
+        assert_match /#{@community.address}/,
+          walkscore_map_script(@community)
+
+        assert_match /var ws_width = '500';/,
+          walkscore_map_script(@community, :width => 500)
+
+        assert_match /var ws_height = '700';/,
+          walkscore_map_script(@community, :height => 700)
+      end
+    end
   end
 end

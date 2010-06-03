@@ -685,6 +685,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
      .community #community-info .section {
        padding: 10px;
      }
+     .community #community-info #walk-score {
+       padding: 10px 2px;
+     }
      .community #community-info #map img {
        display: block;
        border: 1px solid #959ba1;
