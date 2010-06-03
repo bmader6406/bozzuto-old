@@ -3,8 +3,8 @@ require 'sham'
 
 Sham.define do
   city          { Faker::Address.city }
-  us_state_code { Faker::Address.us_state_abbr }
-  us_state      { Faker::Address.us_state }
+  us_state_code { |i| "%2s" % i.to_s(36) }
+  us_state      { |i| "#{Faker::Address.us_state} #{i}" }
   company_name  { Faker::Company.name }
 end
 
