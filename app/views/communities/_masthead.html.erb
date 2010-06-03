@@ -8,7 +8,7 @@
         <li class="<%= current_if params[:action] == 'features' %>">
           <%= link_to 'Features & Amenities', features_community_path(@community) %>
         </li>
-        <li>
+        <li class="<%= current_if params[:action] == 'media' %>">
           <%= link_to 'Videos & Photos', media_community_path(@community) %>
         </li>
         <li>
