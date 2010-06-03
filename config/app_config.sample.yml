@@ -1,0 +1,8 @@
+development:
+  walkscore_wsid: 'YOUR-WSID-HERE'
+
+production:
+  walkscore_wsid: 'YOUR-WSID-HERE'
+
+test:
+  walkscore_wsid: 'YOUR-WSID-HERE'

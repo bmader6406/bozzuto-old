@@ -1,4 +1,5 @@
 .DS_Store
 config/database.yml
+config/app_config.yml
 public/assets
 test/fixtures/*.yml
