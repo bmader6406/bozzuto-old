@@ -1,5 +1,25 @@
 <% content_for :body_class do %>community<% end %>
 
+<% content_for :javascript do %>
+  <%= google_maps_javascript_tag %>
+
+  <script type="text/javascript">
+    (function($) {
+      $(document).ready(function() {
+        if (GBrowserIsCompatible()) {
+          var point = new GLatLng(<%= @community.latitude %>, <%= @community.longitude %>);
+          var map = new GMap2(document.getElementById("map-canvas"));
+          map.setCenter(point, 13);
+          map.setUIToDefault();
+          map.addOverlay(new GMarker(point));
+        }
+      });
+    })(jQuery);
+  </script>
+<% end %>
+
+<%= render :partial => 'special_nav' %>
+
 <%= render :partial => 'breadcrumb' %>
 
 <%= render :partial => 'masthead' %>
@@ -104,8 +124,10 @@
           </ul>
 
           <div id="map" class="section">
-            <img src="/images/community-map.png" />
-            <p class="call-to-action"><a href="#">Get Directions</a></p>
+            <div id="map-canvas"></div>
+            <p class="call-to-action">
+              <%= link_to 'Get Directions', '#' %>
+            </p>
           </div>
 
           <div id="walk-score" class="section">
@@ -153,5 +175,3 @@
     <%= render :partial => 'sub_content' %>
   </div>
 </div>
-
-<%= render :partial => 'special_nav' %>

@@ -688,8 +688,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
      .community #community-info #walk-score {
        padding: 10px 2px;
      }
-     .community #community-info #map img {
-       display: block;
+     .community #community-info #map #map-canvas {
+       width: 208px;
+       height: 280px;
        border: 1px solid #959ba1;
      }
      .community #community-info p.call-to-action a {
