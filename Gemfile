@@ -4,6 +4,7 @@ gem 'rails', '2.3.8'
 gem 'mysql'
 gem 'erubis'
 gem 'jammit'
+gem 'geokit'
 
 gem 'carrierwave'
 gem 'mini_magick'

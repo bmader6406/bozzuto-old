@@ -6,6 +6,9 @@ class Community < ActiveRecord::Base
 
   validates_presence_of :title, :subtitle, :city
 
+  acts_as_mappable :lat_column_name => :latitude,
+                   :lng_column_name => :longitude
+
   mount_uploader :promo_image, ImageUploader
 
   def address
