@@ -118,9 +118,9 @@
       <div id="sidebar" class="col">
         <div id="community-info" class="article row">
           <ul class="nav row">
-            <li><a href="#map">View Map</a></li>
-            <li><a href="#walk-score">Walk Score&trade;</a></li>
-            <li class="last"><a href="#local-info">Local News</a></li>
+            <li><%= link_to 'View Map', '#map' %></li>
+            <li><%= link_to 'Walk Score&trade;'.html_safe, '#walk-score' %></li>
+            <li class="last"><%= link_to 'Local News', '#local-news' %></li>
           </ul>
 
           <div id="map" class="section">
@@ -134,23 +134,22 @@
             <%= walkscore_map_script(@community) %>
           </div>
 
-          <div id="local-info" class="section">
-            <p>Local info</p>
+          <div id="local-news" class="section">
+            <p>Local News</p>
           </div>
         </div>
 
 
-        <div id="nearby-communities">
-          <h3>Nearby Apartment Communities</h3>
-          <ul>
-            <li><a href="#">220 Twentieth Street</a></li>
-            <li><a href="#">Concord</a></li>
-            <li><a href="#">Halstead Arlington</a></li>
-            <li><a href="#">London/Normandy House</a></li>
-            <li><a href="#">River House</a></li>
-            <li><a href="#">The Palatine</a></li>
-          </ul>
-        </div>
+        <% unless @community.nearby_communities.empty? %>
+          <div id="nearby-communities">
+            <h3>Nearby Apartment Communities</h3>
+            <ul>
+              <% @community.nearby_communities.each do |community| %>
+                <li><%= link_to community.title, community %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
         <div class="social-updates">
           <% if @community.facebook_url.present? %>
