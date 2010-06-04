@@ -9,6 +9,6 @@ class Community < ActiveRecord::Base
   mount_uploader :promo_image, ImageUploader
 
   def address
-    "#{street_address}, #{city}"
+    [street_address, city].compact.join(', ')
   end
 end
