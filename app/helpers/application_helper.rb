@@ -1,6 +1,6 @@
 module ApplicationHelper
-  def current_if(predicate)
-    'current' if predicate
+  def current_if(action)
+    'current' if params[:action] == action
   end
 
   def google_maps_javascript_tag

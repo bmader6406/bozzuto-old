@@ -6,7 +6,6 @@ ActionController::Routing::Routes.draw do |map|
     :only => :show,
     :member => {
       :features       => :get,
-      :media          => :get,
       :neighborhood   => :get,
       :promotions     => :get,
       :contact        => :get,

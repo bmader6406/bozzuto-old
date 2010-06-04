@@ -6,7 +6,7 @@ class CommunitiesControllerTest < ActionController::TestCase
       @community = Community.make
     end
 
-    %w(show features media neighborhood promotions contact).each do |action|
+    %w(show features neighborhood promotions contact).each do |action|
       context "a GET to ##{action}" do
         setup do
           get action, :id => @community.id

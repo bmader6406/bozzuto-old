@@ -7,9 +7,6 @@ class CommunitiesController < ApplicationController
   def features
   end
 
-  def media
-  end
-
   def neighborhood
   end
 

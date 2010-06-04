@@ -2,25 +2,25 @@
   <div class="container">
     <div class="nav">
       <ul id="secondary-nav">
-        <li class="<%= current_if params[:action] == 'show' %>">
+        <li class="<%= current_if 'show' %>">
           <%= link_to @community.title, @community %>
         </li>
-        <li class="<%= current_if params[:action] == 'features' %>">
+        <li class="<%= current_if 'features' %>">
           <%= link_to 'Features & Amenities', features_community_path(@community) %>
         </li>
-        <li class="<%= current_if params[:action] == 'media' %>">
-          <%= link_to 'Videos & Photos', media_community_path(@community) %>
+        <li class="<%= current_if 'media' %>">
+          <%= link_to 'Videos & Photos', '#' %>
         </li>
         <li>
           <%= link_to 'Floor Plans', '#' %>
         </li>
-        <li class="<%= current_if params[:action] == 'neighborhood' %>">
+        <li class="<%= current_if 'neighborhood' %>">
           <%= link_to 'Neighborhood', neighborhood_community_path(@community) %>
         </li>
-        <li class="<%= current_if params[:action] == 'promotions' %>">
+        <li class="<%= current_if 'promotions' %>">
           <%= link_to 'Special Promotions', promotions_community_path(@community) %>
         </li>
-        <li class="last <%= current_if params[:action] == 'contact' %>">
+        <li class="last <%= current_if 'contact' %>">
           <%= link_to 'Contact Info<br />&amp; Office Hours'.html_safe, contact_community_path(@community) %>
           <span class="phone-number">301-220-0100</span>
         </li>
@@ -31,7 +31,7 @@
           <li><%= link_to 'Visit Website', @community.website_url %></li>
         <% end %>
         <li class="last">
-          <a href="#">Download E-Brochure</a>
+          <%= link_to 'Download E-Brochure', '#' %>
         </li>
       </ul>
     </div>
@@ -50,7 +50,7 @@
           </p>
 
           <p class="watch-video">
-            <a href="#">Watch Video</a>
+            <%= link_to 'Watch Video', '#' %>
           </p>
         </div>
       </div>

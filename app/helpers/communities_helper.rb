@@ -34,11 +34,10 @@ module CommunitiesHelper
       :height => 360
     })
 
-    script = <<-END
+    <<-END.html_safe
     <script type='text/javascript'>
     var ws_wsid = '#{APP_CONFIG[:walkscore_wsid]}';
     var ws_address = '#{community.address}';var ws_width = '#{opts[:width]}';var ws_height = '#{opts[:height]}';var ws_layout = 'vertical';var ws_background_color = '#fff';</script><style type='text/css'>#ws-walkscore-tile{position:relative;text-align:left;}#ws-walkscore-tile *{float:none;}</style><div id='ws-walkscore-tile'></div><script type='text/javascript' src='http://www.walkscore.com/tile/show-walkscore-tile.php'></script>
     END
-    script.html_safe
   end
 end
