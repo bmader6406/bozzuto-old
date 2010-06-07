@@ -254,7 +254,8 @@ class Admin::MasterController < ApplicationController
 
     attachment = @resource[:class].human_attribute_name(params[:attachment])
 
-    if @item.update_attributes(params[:attachment] => nil)
+    #if @item.update_attributes(params[:attachment] => nil)
+    if @item.send("remove_#{params[:attachment]}!")
       flash[:success] = _("{{attachment}} removed.", 
                           :attachment => attachment)
     else
