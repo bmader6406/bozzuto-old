@@ -84,22 +84,22 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   /* @group -special-nav */
 
     /* special-nav */
-    #header #special-nav {
+    #special-nav {
       position: absolute;
       bottom: 0; right: 0;
       width: 230px;
     }
-    #header #special-nav li {
+    #special-nav li {
       position: relative;
       width: 230px;
       border-top: 1px solid #fff;
     }
-    #header #special-nav li a {
+    #special-nav li a {
       display: block;
       width: 210px;
       padding: 0 10px;
     }
-    #header #special-nav div.popup {
+    #special-nav div.popup {
       display: none;
       position: absolute;
       bottom: 27px; right: 0;
@@ -122,7 +122,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     #header #find-apartment-form p.submit {
       right: 12px;
     }
-    #header #special-nav #find-apartment-form a {
+    #special-nav #find-apartment-form a {
       display: inline;
       padding: 0;
     }
@@ -146,93 +146,24 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   
   /* @end */
   
-  /* @group -home */
+  /* @group -general content */
 
-    /* HOME */
-    .home #header #main-nav li,
-    .home #header #main-nav li a {
-      width: 300px;
-      height: 45px;
-    }
-    .home #masthead {
-      border-top: 1px solid #6b6b71;
-    }
-    .home #content {
-      padding: 30px 0 20px 0;
-    }
-    .home #welcome {
-      width: 320px;
-      padding-left: 190px;
-    }
-    .home #welcome a.read-more {
-      padding-left: 6px;
-    }
-    .home #main-content div.social-updates {
-      width: 180px;
-    }
-    .home #main-content div.social-updates div.facebook-update p.byline {
-      margin-bottom: 20px;
-    }
-    .home #featured-property {
-      width: 230px;
-      padding-right: 0;
-    }
-    .home #featured-property h2 {
-      margin-bottom: 10px;
-      border-bottom: 1px solid #000;
-    }
-    .home #featured-property h2 a {
+    .promo {
+      background: #ebedee;
+      clear: both;
       display: block;
-      padding: 0 10px;
+      line-height: 0;
+      margin: 0 0 30px;
+      padding: 17px;
+      text-align: center;
     }
-  
-  /* @end   -home */
-  
-  /* @group -news */
-
-    /* news */
-    .home #news {
-      border-top: 1px solid #d5d8dc;
+    
+    .landing .promo {
+      width: 506px;
     }
-    .home #news div.container {
-      width: 940px;
-      padding: 12px 0 12px 20px;
-    }
-    .home #news h2,
-    .home #news div.col,
-    .home #news ul {
-      float: left;
-    }
-    .home #news h2 {
-      width: 170px;
-    }
-    .home #news h3 {
-      padding-right: 8px;
-      border-right: 1px solid #a1a2aa;
-      margin-right: 5px;
-    }
-    .home #news div.col {
-      width: 525px;
-      padding-left: 15px;
-      padding-right: 0;
-    }
-    .home #news h3,
-    .home #news p {
-      display: inline;
-    }
-    .home #news ul {
-      width: 200px;
-      padding-left: 30px;
-    }
-    .home #news ul li {
-      display: inline;
-      padding: 5px 12px 5px 0;
-    }
-    .home #news ul li.rss {
-      padding-left: 22px;
-    }
-    .home #news ul li a {
-      padding-left: 6px;
+        
+    .promo img {
+      border: 1px solid #b9bec4;
     }
   
   /* @end */
@@ -316,6 +247,100 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
   
   /* @end  */
+  
+  /* @group -home */
+
+    /* HOME */
+    .home #header #main-nav li,
+    .home #header #main-nav li a,
+    .landing #header #main-nav li,
+    .landing #header #main-nav li a {
+      width: 300px;
+      height: 45px;
+    }
+    .home #masthead,
+    .landing #masthead {
+      border-top: 1px solid #6b6b71;
+    }
+    .home #content {
+      padding: 30px 0 20px 0;
+    }
+    .home #welcome {
+      width: 320px;
+      padding-left: 190px;
+    }
+    .home #welcome a.read-more {
+      padding-left: 6px;
+    }
+    .home #main-content div.social-updates {
+      width: 180px;
+    }
+    .home #main-content div.social-updates div.facebook-update p.byline {
+      margin-bottom: 20px;
+    }
+    .home #featured-property {
+      width: 230px;
+      padding-right: 0;
+    }
+    .home #featured-property h2 {
+      margin-bottom: 10px;
+      border-bottom: 1px solid #000;
+    }
+    .home #featured-property h2 a {
+      display: block;
+      padding: 0 10px;
+    }
+  
+  /* @end   -home */
+  
+  /* @group -news */
+
+    /* news */
+    .home #news {
+      border-top: 1px solid #d5d8dc;
+    }
+    .home #news div.container {
+      width: 940px;
+      padding: 12px 0 12px 20px;
+    }
+    .home #news h2,
+    .home #news div.col,
+    .home #news ul {
+      float: left;
+    }
+    .home #news h2 {
+      width: 170px;
+    }
+    .home #news h3 {
+      padding-right: 8px;
+      border-right: 1px solid #a1a2aa;
+      margin-right: 5px;
+    }
+    .home #news div.col {
+      width: 525px;
+      padding-left: 15px;
+      padding-right: 0;
+    }
+    .home #news h3,
+    .home #news p {
+      display: inline;
+    }
+    .home #news ul {
+      width: 200px;
+      padding-left: 30px;
+    }
+    .home #news ul li {
+      display: inline;
+      padding: 5px 12px 5px 0;
+    }
+    .home #news ul li.rss {
+      padding-left: 22px;
+    }
+    .home #news ul li a {
+      padding-left: 6px;
+    }
+  
+  /* @end */
   
   /* @group -about */
 
@@ -597,7 +622,6 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
     .community #content,
     .community #overview,
-    .community #content .promo,
     .community #apartments,
     .community #recently-viewed,
     .community #nearby-communities {
@@ -709,14 +733,16 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
        display: block;
      }
      .community #nearby-communities ul,
-     .community #recently-viewed ul {
+     .community #recently-viewed ul,
+     .landing .listings ul {
        padding: 12px;
        border-top: 1px solid #fff;
      }
      .community #nearby-communities ul {
        padding-top: 0;
      }
-     .community #recently-viewed ul {
+     .community #recently-viewed ul,
+     .landing .listings ul {
        padding-bottom: 0;
      }
      .community #recently-viewed ul li {
@@ -725,7 +751,8 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
        padding-bottom: 12px;
        margin-bottom: 12px;
      }
-     .community #recently-viewed ul li a {
+     .community #recently-viewed ul li a,
+     .landing .listings a {
        display: block;
      }
      .community #renting-from-bozzuto {
@@ -777,7 +804,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       font-size: 11px;
       line-height: 18px;
       list-style: disc outside url(../images/structure/blt-features.gif);
-      margin: 0 0 4px 0;
+      margin: 0;
     }
 
     .features #main-content div.feature ul li a {
@@ -866,16 +893,19 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
 
     .apartments #content ul.slides li,
+    .homes-search ul.slides li,
     .homes #content ul.slides li {
       z-index: 1;
     }
 
     .apartments #content ul.slides li.on-deck,
+    .homes-search ul.slides li.on-deck,
     .homes #content ul.slides li.on-deck {
       z-index: 3;
     }
 
     .apartments #content ul.slides li.current,
+    .homes-search ul.slides li.current,
     .homes #content ul.slides li.current {
       z-index: 2;
     }
@@ -886,7 +916,8 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       width: 768px;
     }
 
-    .apartments #content ul.slideshow-pagination {
+    .apartments #content ul.slideshow-pagination,
+    .homes-search ul.slideshow-pagination {
       border: 1px solid #85898e;
       bottom: 0;
       left: 0;
@@ -895,11 +926,13 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       z-index: 10;
     }
 
-    .apartments #content ul.slideshow-pagination li {
+    .apartments #content ul.slideshow-pagination li,
+    .homes-search ul.slideshow-pagination li {
       float: left;
     }
 
-    .apartments #content ul.slideshow-pagination li a {
+    .apartments #content ul.slideshow-pagination li a,
+    .homes-search ul.slideshow-pagination li a {
       display: block;
       width: 19px;
     }
@@ -947,17 +980,20 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   /* @group -services */
 
     .services #masthead,
+    .landing #masthead,
     .about #masthead {
       border-bottom: 1px solid #858890;
       color: #565c64;
     }
     .services #masthead .container,
+    .landing #masthead .container,
     .about #masthead .container {
       height: 223px;
       overflow: hidden;
       position: relative;
     }
     .services #masthead .masthead-slideshow li,
+    .landing #masthead .masthead-slideshow li,
     .about #masthead .masthead-slideshow li {
       background: #c0c5cb url(../images/structure/bg-masthead.gif) repeat-x;
       left: 0;
@@ -971,13 +1007,15 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       z-index: 2;
     }
     .services #masthead .section,
+    .landing #masthead .section,
     .about #masthead .section {
       float: left;
       font-size: 15px;
       padding: 24px 0 28px 189px;
       width: 515px;
     }
-    .services #masthead .section h1 {
+    .services #masthead .section h1,
+    .landing #masthead .section h1 {
       color: #565c64;
       font-size: 35px;
       line-height: 1;
@@ -993,9 +1031,12 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       margin: 15px 0 0;
       padding: 0 0 0 6px;
     }
+    .landing #masthead .aside,
     .services #masthead .aside {
       float: right;
     }
+    .landing #masthead .aside a,
+    .landing #masthead .aside img, 
     .services #masthead .aside a,
     .services #masthead .aside img {
       display: block;
@@ -1019,6 +1060,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       width: 849px;
     }
 
+    .homes-search ul.slides li,
     .services #content ul.slides li,
     .about #content ul.slides li {
       height: 375px;
@@ -1031,26 +1073,31 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       z-index: 0;
     }
 
+    .homes-search ul.slides li,
     .services #content ul.slides li,
     .about #content ul.slides li {
       z-index: 1;
     }
 
+    .homes-search ul.slides li.on-deck,
     .services #content ul.slides li.on-deck,
     .about #content ul.slides li.on-deck {
       z-index: 3;
     }
 
+    .homes-search ul.slides li.current,
     .services #content ul.slides li.current,
     .about #content ul.slides li.current {
       z-index: 2;
     }
 
+    .homes-search ul.slideshow-pagination,
     .services #content ul.slideshow-pagination,
     .about #content ul.slideshow-pagination {
       background: #fff;
     }
 
+    .homes-search ul.slideshow-pagination,
     .services #content ul.slideshow-pagination,
     .about #content ul.slideshow-pagination {
       border: 1px solid #85898e;
@@ -1061,11 +1108,13 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       z-index: 10;
     }
 
+    .homes-search ul.slideshow-pagination li,
     .services #content ul.slideshow-pagination li,
     .about #content ul.slideshow-pagination li {
       float: left;
     }
 
+    .homes-search ul.slideshow-pagination li a,
     .services #content ul.slideshow-pagination li a,
     .about #content ul.slideshow-pagination li a {
       color: #747479;
@@ -1073,12 +1122,15 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       text-align: center;
     }
 
+    .homes-search ul.slideshow-pagination li a,
     .services #content ul.slideshow-pagination li a,
     .about #content ul.slideshow-pagination li a {
       display: block;
       width: 19px;
     }
 
+    .homes-search ul.slideshow-pagination li.current a,
+    .homes-search ul.slideshow-pagination li a:hover,
     .services #content ul.slideshow-pagination li.current a,
     .services #content ul.slideshow-pagination li a:hover,
     .about #content ul.slideshow-pagination li.current a,
@@ -1087,6 +1139,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       text-decoration: none;
     }
 
+    .homes-search ul.slideshow-pagination li.current a,
     .services #content ul.slideshow-pagination li.current a,
     .about #content ul.slideshow-pagination li.current a {
       font-weight: bold;
@@ -1403,6 +1456,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
 
     .homes #content div.header,
+    .landing #content div.header,
     .search #content div.header {
     	margin-bottom: 19px;
     	overflow: hidden;
@@ -1410,14 +1464,17 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
 
     .homes #content div.header ul li,
+    .landing #content div.header ul li,
     .search #content div.header ul li {
     	float: left;
     }
 
     .homes #content div.header ul li a,
+    .landing #content div.header ul li a,
     .search #content div.header ul li a {
     	display: block;
     	height: 38px;
+    	zoom: 1;
     }
 
     .homes #content div.header ul li a.list,
@@ -1444,7 +1501,6 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	margin-right: 58px;
     }
 
-    .homes #content #view-as-list ul li,
     .homes #content #view-as-list ul li {
     	margin-bottom: 14px;
     	overflow: hidden;
@@ -1557,6 +1613,21 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .homes #content #about-bozzuto p {
       margin-bottom: 11px;
     }
+    
+    .homes-search ul.slides li {
+      height: 145px;
+      left: 0;
+      position: absolute;
+      text-indent: 0;
+      top: 0;
+      width: auto;
+    }
+    
+    .homes-search .slideshow {
+      height: 145px;
+      margin-bottom: 15px;
+      position: relative;
+    }
   
   /* @end */
   
@@ -1574,12 +1645,6 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	position: relative;
     	width: 770px;	
     }
-
-    .search #breadcrumb .container p.promo {
-    	position: absolute;
-    	right: 0;
-    	top: 0;
-    } 
 
     .search #breadcrumb .container ul li {
     	float: left;
@@ -2136,6 +2201,184 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   
   /* @end */
   
+  /* @group -landing */
+
+    .landing #main-content {
+      padding: 0 0 15px;
+    }
+
+    .landing #content {
+      width: 770px;
+      padding: 0;
+    }
+    
+    .landing #sidebar {
+      padding: 8px 0 0 20px;
+      width: 170px;
+    }
+
+    .areamap {
+      margin-bottom: 30px;
+    }
+
+    .areamap-map {
+      float: left;
+      width: 540px;
+    }
+
+    .areamap-popular-properties {
+      float: right;
+      padding: 0;
+      width: 210px;
+    }
+    
+    .areamap-popular-properties h4 {
+      margin-bottom: 1px;
+    }
+
+    .areamap-popular-properties h4 a {
+      display: block;
+      height: 29px;
+      padding-left: 12px;
+    }
+    
+    .mapkey li {
+      padding: 4px 20px 8px 25px;
+    }
+    
+    .mapkey li span {
+      display: block;
+      padding: 0 0 12px;
+    }
+        
+    .areamap-popular-properties .section {
+      margin-bottom: 30px;
+    }
+    
+    .areamap-popular-properties .section-last {
+      margin-bottom: 0;
+    }
+    
+    .areamap-popular-properties h2 {
+      padding: 8px 0 6px;
+    }
+    
+    #main-content .areamap-popular-properties p {
+      padding: 5px 40px 10px 10px; 
+    }
+
+    body.landing #content div.header ul li a {
+      height: 36px;
+      padding: 6px 40px 5px 8px;
+      width: 103px;
+    }
+    
+    body.landing #content div.header ul li.last a {
+      width: 108px;
+    }
+    
+    .landing #content div.header {
+      position: relative;
+    }
+    
+    .landing #content div.header p {
+      position: absolute;
+      right: 0;  
+      top: 0;
+      width: 315px;
+    }
+
+    .landing #header,
+    .landing #header div.container {
+      height: 236px;
+    }
+    
+    .landing .listings {
+      padding: 10px 0 30px;
+    }
+    
+    .landing .listings .row {
+      padding: 0;
+    }
+    
+    .landing .listings li {
+      border-top: 1px solid #d2d2d5;
+      float: left;
+      margin: 0 20px 0 0;
+      padding: 6px 0 4px 15px;
+      position: relative;
+      width: 132px;
+    }
+    
+    .ie6 .landing .listings li {
+      margin: 0 10px 0 0;
+    }
+    
+    .landing .listings .last {
+      margin: 0;
+    }
+
+    .landing .listings .first li {
+      border-top: 1px solid #e6e6e8;
+    }
+    
+    .landing .listings .last li {
+      border-bottom: 1px solid #e6e6e8;
+    }
+      
+    .landing .listings a {
+      margin-left: -6px;
+      padding-left: 6px;
+    }
+    
+    .ie6 .landing .listings a {
+      margin-left: -6px;
+    }
+    
+    .landing .listings-count li {
+      padding-right: 30px;
+      width: 102px;
+    }
+    
+    .landing .listings .count {
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 5px;
+      width: 20px;
+    }
+    
+    .seo-text {
+      padding: 10px 0 30px;
+      width: 540px;
+    }
+    
+    .seo-text .more {
+      display: inline-block;
+      margin: 15px 0px 0px;
+      padding: 0px 0px 0px 6px;
+    }
+    
+    .seo-links {
+      border-top: 1px solid #c0c1c5;
+      overflow: hidden;
+      padding: 20px 0 10px;
+    }
+    
+    .seo-links ul {
+      float: left;
+      padding: 0 20px 0 0;
+      width: 150px;
+    }
+    
+    .seo-links a {
+      display: block;
+      padding: 0 0 0 5px;
+      zoom: 1;
+    }
+
+  /* @end */
+  
   /* @group -footer */
 
     #footer {
@@ -2251,14 +2494,14 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 
   /* @group -special-nav */
 
-    #header #special-nav a {
+    #special-nav a {
       font-size: 15px;
       line-height: 26px;
     }
-    #header #special-nav a:hover {
+    #special-nav a:hover {
       text-decoration: none;
     }
-    #header #special-nav label {
+    #special-nav label {
       font-size: 11px;
       color: #565c64;
     }
@@ -2551,7 +2794,8 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .apartments #about-bozzuto a,
     .apartments #renting-from-bozzuto a,
     .homes #about-bozzuto a,
-    .homes #renting-from-bozzuto a {
+    .homes #renting-from-bozzuto a,
+    .landing .listings a {
       padding-left: 6px;
       font-weight: bold;
       text-transform: uppercase;
@@ -2744,18 +2988,22 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       text-decoration: none;
     }
 
-    .apartments #content ul.slideshow-pagination li a {
+    .apartments #content ul.slideshow-pagination li a,
+    .homes-search ul.slideshow-pagination li a {
       color: #747479;
       line-height: 21px;
       text-align: center;
     }
 
+    .homes-search ul.slideshow-pagination li.current a,
+    .homes-search ul.slideshow-pagination li a:hover,
     .apartments #content ul.slideshow-pagination li.current a,
     .apartments #content ul.slideshow-pagination li a:hover {
       color: #28283a;
       text-decoration: none;
     }
 
+    .home-search #content ul.slideshow-pagination li.current a,
     .apartments #content ul.slideshow-pagination li.current a {
       font-weight: bold;
     }
@@ -2791,17 +3039,20 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
   
     .homes #content div.header ul li a,
+    .landing #content div.header ul li a,
     .search #content div.header ul li a {
     	font-size: 15px;
     	line-height: 18px;
     }
 
     .homes #content div.header ul li a:hover,
+    .landing #content div.header ul li a:hover,
     .search #content div.header ul li a:hover {
     	text-decoration: none;
     }
 
     .homes #content div.header p,
+    .landing #content div.header p,
     .search #content div.header p {
     	line-height: 47px;
     }
@@ -3014,6 +3265,49 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   
   /* @end */
   
+  /* @group -landing */
+
+    .areamap-popular-properties h4 a {
+      font-size: 15px;
+      line-height: 29px;
+    }
+
+    .mapkey li {
+      font-size: 11px;
+      font-weight: bold;
+      line-height: 14px;
+    }
+    
+    .landing #content div.header p {
+      text-align: center;
+    }
+
+    .landing .listings {
+      font-size: 11px;
+    }
+    
+    .landing .listings a {
+      text-transform: uppercase;
+      color: #636972;
+    }
+    
+    .landing .listings .count {
+      font-size: 12px;
+      text-align: right;
+    }
+    
+    .seo-text .more {
+      color: #565C64;
+    }
+
+    .seo-links a {
+      font-size: 10px;
+      line-height: 21px;
+      text-transform: uppercase;
+    }
+
+  /* @end */
+  
   /* @group -footer */
 
     #footer,
@@ -3095,37 +3389,61 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     #header #home-nav a {
       background: transparent url(../images/structure/bg-header-a.gif) no-repeat center left;
     }
-    #header #special-nav a {
+    #special-nav a {
       background: #dde0e3 url(../images/structure/bg-right-arrow.png) no-repeat 215px center;
     }
-    #header #special-nav a:hover,
-    #header #special-nav li:hover a {
+    #special-nav a:hover,
+    #special-nav li:hover a {
       background-color: #c2c6ca;
     }
-    #header #special-nav li.open a {
+    #special-nav li.open a {
       background: #c2c6ca url(../images/structure/bg-up-arrow.png) no-repeat 210px center;
     }
-    .community #header #special-nav a {
+    .community #special-nav a {
       background: #dde0e3 url(../images/structure/bg-special-nav.gif) no-repeat top right;
     }
-    .community #header #special-nav a:hover,
-    .community #header #special-nav li:hover a {
+    .community #special-nav a:hover,
+    .community #special-nav li:hover a {
       background-color: #c2c6ca;
     }
-    .community #header #special-nav li.open a {
+    .community #special-nav li.open a {
       background: #c2c6ca url(../images/structure/bg-special-nav.gif) no-repeat 100% -26px;
     }
 
-    #header #special-nav div.popup {
+    #special-nav div.popup {
       background-color: #c2c6ca;
       -webkit-box-shadow: -1px 1px 2px #eee;
       -moz-box-shadow: -1px 1px 2px #eee;
     }
-    #header #special-nav #find-apartment-form .advanced-search {
+    #special-nav #find-apartment-form .advanced-search {
       background: transparent url(../images/structure/bg-news-a.gif) no-repeat center left;
     }
-    #header #special-nav #find-apartment-form .advanced-search a {
+    #special-nav #find-apartment-form .advanced-search a {
       background: none;
+    }
+  
+  /* @end */
+  
+  /* @group -secondary */
+
+    .secondary #header #main-nav li .dropdown {
+      background: transparent url(../images/structure/bg-main-nav-dropdown.gif) no-repeat 0 -5px;
+    }
+    .secondary #header #main-nav li .dropdown li a,
+    .secondary #header #main-nav li .dropdown li a:hover {
+      background: transparent url(../images/structure/bg-header-a.gif) no-repeat 1px center;
+    }
+    .about #secondary-nav li a,
+    .apartments #secondary-nav li a,
+    .homes #secondary-nav li a,
+    .services #secondary-nav li a {
+      background: transparent url(../images/structure/bg-header-a.gif) no-repeat 12px center;
+    }
+    .about #secondary-nav li li a,
+    .apartments #secondary-nav li li a,
+    .homes #secondary-nav li li a,
+    .services #secondary-nav li li a {
+      background-position: 22px center;
     }
   
   /* @end */
@@ -3160,36 +3478,13 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
   
   /* @end */
-  
-  /* @group -secondary */
 
-    .secondary #header #main-nav li .dropdown {
-      background: transparent url(../images/structure/bg-main-nav-dropdown.gif) no-repeat 0 -5px;
-    }
-    .secondary #header #main-nav li .dropdown li a,
-    .secondary #header #main-nav li .dropdown li a:hover {
-      background: transparent url(../images/structure/bg-header-a.gif) no-repeat 1px center;
-    }
-    .about #secondary-nav li a,
-    .apartments #secondary-nav li a,
-    .homes #secondary-nav li a,
-    .services #secondary-nav li a {
-      background: transparent url(../images/structure/bg-header-a.gif) no-repeat 12px center;
-    }
-    .about #secondary-nav li li a,
-    .apartments #secondary-nav li li a,
-    .homes #secondary-nav li li a,
-    .services #secondary-nav li li a {
-      background-position: 22px center;
-    }
-  
-  /* @end */
-  
   /* @group -about */
 
     .about #masthead,
     .homes #masthead,
-    .services #masthead {
+    .services #masthead,
+    .landing #masthead {
       background: #c0c5cb url(../images/structure/bg-masthead.gif) repeat-x 0 0;
     }
     .about #content p {
@@ -3283,6 +3578,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .homes #renting-from-bozzuto p a,
     .homes #about-bozzuto p a {
       background: transparent url(../images/structure/bg-header-a.gif) no-repeat center left;
+    }
+    .landing .listings a {
+      background: transparent url(../images/structure/bg-header-a.gif) no-repeat 5px left;    
     }
     .community #masthead #remote-nav a {
       background-position: 20px center;
@@ -3427,6 +3725,10 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .apartments #content ul.slideshow-pagination {
       background: #fff;
     }
+    
+    .homes-search ul.slideshow-pagination {
+      background: #fff url(../images/structure/bg-news-a.gif) no-repeat 5px center;
+    }
   
   /* @end */
   
@@ -3445,11 +3747,13 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
 
     .homes #content div.header,
+    .landing #content div.header,
     .search #content div.header {
     	background: url(../images/structure/bg-homes-content-header.gif) left bottom repeat-x #fff;
     }
 
     .homes #content div.header ul li a,
+    .landing #content div.header ul li a,
     .search #content div.header ul li a {
     	background: url(../images/structure/bg-homes-content-header-tabs.gif) no-repeat;
     }
@@ -3720,6 +4024,63 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
                               
   /* @end */
   
+  /* @group -landing */
+
+    .areamap-popular-properties h4 a {
+      background: url(../images/structure/bg-project-sub-content-h4.gif) top right no-repeat;
+    }
+
+    .areamap-popular-properties h4 a:hover {
+      background-position: bottom right;
+    }
+    
+    .mapkey li, .areamap-popular-properties p {
+      background-image: url(../images/structure/bg-areamap-icon.png);
+      background-repeat: no-repeat;
+    }
+    
+    .mapkey li span {
+      background: url(../images/structure/bg-about-content-p.gif) bottom left no-repeat;
+    }
+    
+    .mapkey .apartments {
+      background-position: 0 0;
+    }
+    
+    .mapkey .homes-condominiums {
+      background-position: 0 -500px;      
+    }
+    
+    .mapkey .upcoming-projects {
+      background-position: 0 -1000px;            
+    }
+    
+    .areamap-popular-properties .apartments p {
+      background-position: right 10px;
+    }
+    
+    .areamap-popular-properties .homes-condominiums p {
+      background-position: right -490px;      
+    }
+    
+    .areamap-popular-properties .upcoming-projects p {
+      background-position: right -990px;            
+    }
+
+    body.landing #content div.header ul li a {
+      background-position: -450px 0;
+    }
+    
+    .seo-text .more {
+      background: url(/images/structure/bg-masthead-a-dark.gif) no-repeat 0px 50%;
+    }
+    
+    .seo-links a {
+      background: transparent url(/images/structure/bg-header-a.gif) no-repeat 0% 50%;
+    }
+
+  /* @end */
+  
   /* @group -footer */
 
     #footer {
@@ -3753,6 +4114,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   .community #slideshow div.header a.prev,
   .community #slideshow div.header a.next,
   .community #slideshow p.watch-video a,
+  .homes-search ul.slideshow-navigation li a,
   .apartments #content ul.slideshow-navigation li a,
   .services #content ul.slideshow-navigation li a,
   .about #content ul.slideshow-navigation li a {
@@ -3779,35 +4141,6 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
     #header #main-nav li a {
       background: transparent url(../images/structure/bg-main-nav.gif) no-repeat 0 0;
-    }
-  
-  /* @end */
-  
-  /* @group -header */
-
-    .home #header #main-nav li.apartments-nav a {
-      background-position: 0 0;
-    }
-    .home #header #main-nav li.apartments-nav a:hover {
-      background-position: -300px 0;
-    }
-    .home #header #main-nav li.homes-nav a {
-      background-position: 0 -45px;
-    }
-    .home #header #main-nav li.homes-nav a:hover {
-      background-position: -300px -45px;
-    }
-    .home #header #main-nav li.about-nav a {
-      background-position: 0 -90px;
-    }
-    .home #header #main-nav li.about-nav a:hover {
-      background-position: -300px -90px;
-    }
-    .home #header #main-nav li.services-nav a {
-      background-position: 0 -135px;
-    }
-    .home #header #main-nav li.services-nav a:hover {
-      background-position: -300px -135px;
     }
   
   /* @end */
@@ -3846,6 +4179,43 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .services #header #main-nav li.services-nav a,
     .secondary #header #main-nav li.services-nav a:hover {
       background-position: -800px -90px;
+    }
+  
+  /* @end */
+  
+  /* @group -header - home and landing */
+
+    .home #header #main-nav li.apartments-nav a,
+    .landing #header #main-nav li.apartments-nav a {
+      background-position: 0 0;
+    }
+    .home #header #main-nav li.apartments-nav a:hover,
+    .landing #header #main-nav li.apartments-nav a:hover {
+      background-position: -300px 0;
+    }
+    .home #header #main-nav li.homes-nav a,
+    .landing #header #main-nav li.homes-nav a {
+      background-position: 0 -45px;
+    }
+    .home #header #main-nav li.homes-nav a:hover,
+    .landing #header #main-nav li.homes-nav a:hover {
+      background-position: -300px -45px;
+    }
+    .home #header #main-nav li.about-nav a,
+    .landing #header #main-nav li.about-nav a {
+      background-position: 0 -90px;
+    }
+    .home #header #main-nav li.about-nav a:hover,
+    .landing #header #main-nav li.about-nav a:hover {
+      background-position: -300px -90px;
+    }
+    .home #header #main-nav li.services-nav a,
+    .landing #header #main-nav li.services-nav a {
+      background-position: 0 -135px;
+    }
+    .home #header #main-nav li.services-nav a:hover,
+    .landing #header #main-nav li.services-nav a:hover {
+      background-position: -300px -135px;
     }
   
   /* @end */

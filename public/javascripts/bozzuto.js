@@ -5,12 +5,10 @@
 
     $(".secondary #secondary-nav").secondaryNav();
 
-    //$(".about #masthead .container").slideshow();
-
-    $("#community-info").communityInfoTabs();
+    $("#community-info, #apartments-by-area, #properties-by-type").onPageTabs();
     $('.community .social-updates .twitter-update').latestTwitterUpdate();
     
-    $(".apartments div.slideshow").featuredSlideshow();
+    $(".apartments div.slideshow, .homes-search .slideshow").featuredSlideshow();
     
     $(".services div.slideshow, .about div.slideshow").featuredSlideshow({
       callback: function(i,transTime) {
@@ -21,6 +19,8 @@
   			});
       }
     });
+    
+    $(".listings .row:last-child").evenUp();
 
     $(".features div.feature ul").makeacolumnlists({cols:2, colWidth:325, equalHeight:false, startN:1});
     
@@ -71,6 +71,7 @@
           
           if($par.hasClass('closed')) {
            $par.removeClass('closed').addClass('open').children(':hidden').slideDown(500);
+           $par.siblings().removeClass('open').addClass('closed').children(':not(.header)').hide();
           } else {
            $par.removeClass('open').addClass('closed').children(':not(.header)').slideUp(250);
           }
@@ -161,8 +162,28 @@
   };
 
   ////
-  // community info tabs
-  $.fn.communityInfoTabs = function() {
+  // even columns
+  $.fn.evenUp = function(){
+    return this.each(function(){
+      var height    = 0,
+          $children = $(this).children();
+      $children.each(function(){
+        var childHeight = $(this).height();
+        if ( childHeight > height ){
+          height = childHeight;
+        }
+      });
+      $children.each(function(){
+        if ( $(this).height() < height ){
+          $(this).css('height', height);
+        }        
+      });
+    });
+  }
+
+  ////
+  // onpage tabs
+  $.fn.onPageTabs = function() {
     return this.each(function() {
       var tabs     = $("ul.nav li", this),
           sections = $(".section", this),
@@ -172,6 +193,7 @@
         // store a reference to this tab's section
         $(this).data("section", sections.eq(i));
       }).find("a").click(function() {
+
         if (!$(this).parent().hasClass("current")) {
           // hide the current section
           current.removeClass("current").data("section").hide();
@@ -188,45 +210,6 @@
     });
   };
 
-  ////
-  // slideshow
-  $.fn.slideshow = function() {
-    return this.each(function() {
-      var slides = $(".section", this),
-          nav    = $('<ul class="nav" />'),
-          navItems,
-          current;
-
-      // insert nav
-      slides.each(function(i) {
-        var li = $("<li />").append(
-          $('<a href="#">' + (i + 1) + '</a>')
-        );
-        li.data("index", i);
-        nav.append(li);
-      });
-      $(this).append(nav);
-      navItems = $("li", nav);
-
-      // nav click handler
-      $("a", nav).click(function() {
-        slides.eq(current).hide();
-        navItems.eq(current).removeClass("current");
-
-        current = $(this).parent().data("index");
-
-        slides.eq(current).show();
-        navItems.eq(current).addClass("current");
-        return false;
-      });
-
-      // setup
-      current = 0;
-      slides.hide().eq(current).show();
-      navItems.eq(current).addClass("current");
-    });
-  };
-  
   ////
   // leadership portrats
   $.fn.portrait = function(){
