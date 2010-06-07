@@ -34,8 +34,7 @@
           <%= @community.overview_text %>
 
           <p>
-            <!-- TODO: go to features page -->
-            <a href="#">Read More</a>
+            <%= link_to 'Read More', features_community_path(@community) %>
           </p>
         </div>
 

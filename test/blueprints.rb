@@ -43,3 +43,7 @@ FloorPlan.blueprint do
   price       { rand(500000) + 40000 }
   floor_plan_group
 end
+
+YelpFeed.blueprint do
+  url { Faker::Internet.domain_name }
+end

@@ -5,6 +5,7 @@ gem 'mysql'
 gem 'erubis'
 gem 'jammit'
 gem 'geokit'
+gem 'httparty'
 
 gem 'carrierwave'
 gem 'mini_magick'

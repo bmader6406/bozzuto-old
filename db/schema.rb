@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100607154248) do
+ActiveRecord::Schema.define(:version => 20100607213211) do
 
   create_table "cities", :force => true do |t|
     t.string   "name",       :null => false
@@ -117,6 +117,19 @@ ActiveRecord::Schema.define(:version => 20100607154248) do
     t.string   "salt",                                :null => false
     t.string   "crypted_password",                    :null => false
     t.string   "preferences"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "yelp_feed_items", :force => true do |t|
+    t.integer  "yelp_feed_id", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "yelp_feeds", :force => true do |t|
+    t.string   "url",        :null => false
+    t.datetime "fetched_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
