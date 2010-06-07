@@ -11,8 +11,8 @@
         <li class="<%= current_if 'media' %>">
           <%= link_to 'Videos & Photos', '#' %>
         </li>
-        <li>
-          <%= link_to 'Floor Plans', '#' %>
+        <li class="<%= current_if :controller => 'floor_plan_groups' %>">
+          <%= link_to 'Floor Plans', community_floor_plan_groups_path(@community) %>
         </li>
         <li class="<%= current_if 'neighborhood' %>">
           <%= link_to 'Neighborhood', neighborhood_community_path(@community) %>
@@ -22,7 +22,6 @@
         </li>
         <li class="last <%= current_if 'contact' %>">
           <%= link_to 'Contact Info<br />&amp; Office Hours'.html_safe, contact_community_path(@community) %>
-          <span class="phone-number">301-220-0100</span>
         </li>
       </ul>
 

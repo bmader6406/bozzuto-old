@@ -650,13 +650,19 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
        padding: 10px 0;
        border-bottom: 1px solid #dadadc;
      }
-     .community #featured-floor-plans .floor-plan {
+     .community .floor-plan {
        float: left;
        width: 173px;
      }
-     .community #featured-floor-plans .floor-plan p {
+     .community .floor-plan p {
        padding-bottom: 12px;
        margin-bottom: 12px;
+     }
+     .community .floor-plan-group {
+       margin-bottom: 25px;
+     }
+     .community .floor-plan-group .row {
+       margin-bottom: 20px;
      }
      .community #community-info ul.nav {
        border-bottom: 10px solid #fff;
@@ -3265,7 +3271,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .community #masthead #remote-nav a,
     .community #overview a,
     .community #apartments a,
-    .community #featured-floor-plans a,
+    .community .floor-plan a,
     .community #nearby-communities a,
     .community .social-updates a,
     .community #recently-viewed a,
@@ -3286,7 +3292,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       background-color: #f2f4f5;
     }
     .community #overview,
-    .community #featured-floor-plans li.floor-plan p,
+    .community .floor-plan p,
     .community #nearby-communities li,
     .community #recently-viewed li,
     .community #sidebar p.sharethis,

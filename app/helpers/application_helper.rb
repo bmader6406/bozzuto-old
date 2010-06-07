@@ -1,6 +1,10 @@
 module ApplicationHelper
-  def current_if(action)
-    'current' if params[:action] == action
+  def current_if(opts)
+    if opts.is_a?(Hash)
+      'current' if opts.all? { |key, val| params[key] == val }
+    else
+      'current' if params[:action] == opts
+    end
   end
 
   def google_maps_javascript_tag

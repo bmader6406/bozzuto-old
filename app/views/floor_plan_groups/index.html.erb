@@ -1,0 +1,39 @@
+<% content_for :body_class do %>community<% end %>
+
+<%= render :partial => 'communities/breadcrumb' %>
+
+<%= render :partial => 'communities/masthead' %>
+
+<div id="main-content">
+  <div class="container">
+    <% @groups.each do |group| %>
+      <div class="floor-plan-group">
+        <h2><%= group.name %></h2>
+
+        <% group.floor_plans.in_groups_of(4) do |plans_group| %>
+          <ul class="row">
+            <% plans_group.compact.each do |plan| %>
+              <li class="floor-plan">
+                <h4>
+                  <%= floor_plan_bedrooms(plan) %>,
+                  <%= floor_plan_bathrooms(plan) %>
+                </h4>
+                <p>
+                  <%= square_feet(plan) %> |
+                  <%= floor_plan_price(plan) %><br />
+                  <%= link_to 'Reserve', '#' %>
+                </p>
+                <%= link_to image_tag(plan.image, :width => 165), '#' %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+      </div>
+    <% end %>
+
+    <%= render :partial => 'communities/sub_content' %>
+  </div>
+</div>
+
+<%= render :partial => 'communities/special_nav' %>

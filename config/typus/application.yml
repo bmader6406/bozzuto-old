@@ -30,7 +30,7 @@ FloorPlanGroup:
     list: community, name, position
     form: community, name
   order_by: community_id, position
-  relationships: community
+  relationships: community, floor_plans
   search: name
   application: Community
 
