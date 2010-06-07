@@ -5,6 +5,17 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
+  around_filter :set_current_queue
+
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+  
+  private
+
+  def set_current_queue
+    session[:recent_queue] ||= []
+    RecentQueue.current_queue = session[:recent_queue]
+    yield
+    session[:recent_queue] = RecentQueue.current_queue
+  end
 end

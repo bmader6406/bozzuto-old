@@ -45,6 +45,24 @@ ActiveRecord::Schema.define(:version => 20100528204027) do
     t.datetime "updated_at"
   end
 
+  create_table "community_links", :force => true do |t|
+    t.string   "title",        :null => false
+    t.string   "url",          :null => false
+    t.integer  "community_id", :null => false
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "community_pages", :force => true do |t|
+    t.string   "title",        :null => false
+    t.text     "content",      :null => false
+    t.integer  "community_id", :null => false
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "floor_plan_groups", :force => true do |t|
     t.string   "name",         :null => false
     t.integer  "community_id", :null => false
