@@ -21,7 +21,7 @@ class RecentQueue
 
   def push(element)
     unless @queue.first == element
-      @queue.push(element)
+      @queue.unshift(element)
       resize_queue
     end
   end

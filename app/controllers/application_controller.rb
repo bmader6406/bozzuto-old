@@ -13,9 +13,10 @@ class ApplicationController < ActionController::Base
   private
 
   def set_current_queue
-    session[:recent_queue] ||= []
-    RecentQueue.current_queue = session[:recent_queue]
+    session[:recent_communities] ||= []
+    RecentQueue.current_queue = session[:recent_communities]
     yield
-    session[:recent_queue] = RecentQueue.current_queue
+    session[:recent_communities] = RecentQueue.current_queue
+    Thread.current[:queue] = nil
   end
 end
