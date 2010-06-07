@@ -6,9 +6,20 @@ City:
   fields:
     default: name, state
     list: name, state
+    form: name, state, county
+  order_by: 
+  relationships: communities, county, state
+  filters: 
+  search: name
+  application: Community
+
+County:
+  fields:
+    default: name, state
+    list: name, state
     form: name, state
   order_by: 
-  relationships: communities, state
+  relationships: state
   filters: 
   search: name
   application: Community

@@ -4,6 +4,7 @@
 
 admin:
   City: create, read, update, delete
+  County: create, read, update, delete
   Community: create, read, update, delete
   FloorPlanGroup: create, read, update, delete
   FloorPlan: create, read, update, delete
