@@ -9,7 +9,7 @@ class CityTest < ActiveSupport::TestCase
     subject { @city }
 
     should_have_many :communities
-    should_belong_to :state
+    should_belong_to :state, :county
 
     should_validate_presence_of :name, :state
     should_validate_uniqueness_of :name, :scoped_to => :state_id

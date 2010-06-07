@@ -8,7 +8,7 @@ class StateTest < ActiveSupport::TestCase
 
     subject { @state }
 
-    should_have_many :cities
+    should_have_many :cities, :counties
 
     should_validate_presence_of :code, :name
     should_ensure_length_is :code, 2

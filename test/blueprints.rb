@@ -13,6 +13,11 @@ City.blueprint do
   state
 end
 
+County.blueprint do
+  name { Sham.city }
+  state
+end
+
 State.blueprint do
   name { Sham.us_state }
   code { Sham.us_state_code }
