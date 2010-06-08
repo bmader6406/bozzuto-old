@@ -11,7 +11,7 @@ City:
   relationships: communities, county, state
   filters: 
   search: name
-  application: Community
+  application: Bozzuto
 
 County:
   fields:
@@ -22,18 +22,18 @@ County:
   relationships: state
   filters: 
   search: name
-  application: Community
+  application: Bozzuto
 
 Community:
   fields:
     default: title, street_address, city
     list: title, street_address, city
-    form: title, subtitle, city, elite, smart_share, smart_rent, green, non_smoking, website_url, video_url, facebook_url, twitter_handle, promo_image, promo_url, latitude, longitude, street_address, overview_text, features_text, neighborhood_text, promotions_text, contact_text
+    form: title, subtitle, city, elite, smart_share, smart_rent, green, non_smoking, website_url, video_url, facebook_url, twitter_handle, promo_image, promo_url, latitude, longitude, street_address, yelp_feed, overview_text, features_text, neighborhood_text, promotions_text, contact_text
   order_by: 
-  relationships: city, floor_plan_groups, photos
+  relationships: city, floor_plan_groups, photos, yelp_feed
   filters: 
   search: title
-  application: Bozzuto
+  application: Community
 
 FloorPlanGroup:
   fields:
@@ -76,5 +76,16 @@ State:
   relationships: cities
   filters: 
   search: name
+  application: Bozzuto
+
+YelpFeed:
+  fields:
+    default: url
+    list: url
+    form: url
+  order_by:
+  relationships: communities
+  filters:
+  search:
   application: Community
 
