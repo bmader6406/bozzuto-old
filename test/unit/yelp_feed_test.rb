@@ -17,6 +17,7 @@ class YelpFeedTest < ActiveSupport::TestCase
     subject { @feed }
 
     should_have_many :items, :dependent => :destroy
+    should_have_many :communities
 
     should_validate_presence_of :url
     should_validate_uniqueness_of :url
@@ -100,8 +101,8 @@ class YelpFeedTest < ActiveSupport::TestCase
           setup do
             stub_request(:get, @url).to_return(
               :status  => 200,
-              :body    => 'blah blah blah',
-              :headers => { 'Content-Type' => 'text/xml' }
+              :body    => 'rss blah blah',
+              :headers => { 'Content-Type' => 'text/plain' }
             )
           end
 

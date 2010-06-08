@@ -4,6 +4,7 @@ class YelpFeed < ActiveRecord::Base
   has_many :items,
     :class_name => 'YelpFeedItem',
     :dependent  => :destroy
+  has_many :communities
 
   validates_presence_of :url
   validates_uniqueness_of :url
@@ -14,7 +15,7 @@ class YelpFeed < ActiveRecord::Base
 
     if @feed_data.code == 404
       errors.add(:url, 'could not be found')
-    elsif @feed_data.nil? || @feed_data['rss'].nil?
+    elsif !valid_rss_feed?
       errors.add(:url, 'is not a valid RSS feed')
     end
   end
@@ -27,7 +28,7 @@ class YelpFeed < ActiveRecord::Base
       raise FeedNotFound, "Could not find feed at #{url}"
     end
 
-    if @feed_data.nil? || @feed_data['rss'].nil?
+    if !valid_rss_feed?
       raise InvalidFeed, 'Not a valid RSS feed'
     end
 
@@ -64,6 +65,10 @@ class YelpFeed < ActiveRecord::Base
 
     def fetch_feed
       @feed_data = YelpFeed.get(url)
+    end
+
+    def valid_rss_feed?
+      @feed_data.is_a?(Hash) && @feed_data['rss'].present?
     end
 
 end
