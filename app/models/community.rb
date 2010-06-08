@@ -36,4 +36,8 @@ class Community < ActiveRecord::Base
   def has_local_reviews?
     yelp_feed.present? && yelp_feed.items.any?
   end
+
+  def county
+    city.county
+  end
 end

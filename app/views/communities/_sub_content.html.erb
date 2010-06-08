@@ -10,7 +10,7 @@
       </p>
 
       <p>
-        <a href="#">Read More</a>
+        <%= link_to 'Read More', '#' %>
       </p>
     </div>
 
@@ -22,23 +22,20 @@
       </p>
 
       <p>
-        <a href="#">Learn More About Bozzuto Management</a>
+        <%= link_to 'Learn More About Bozzuto Management', '#' %>
       </p>
     </div>
   </div>
 
-  <div id="sub-listing">
-    <ul>
-      <li><a href="#">Arlington Apartments</a></li>
-      <li><a href="#">Arlington Apartments</a></li>
-      <li><a href="#">Arlington Apartments</a></li>
-      <li><a href="#">Arlington Apartments</a></li>
-      <li><a href="#">Alexandria Apartments</a></li>
-      <li><a href="#">Alexandria Apartments</a></li>
-      <li><a href="#">Alexandria Apartments</a></li>
-      <li><a href="#">Ashburn Apartments</a></li>
-      <li><a href="#">Ashburn Apartments</a></li>
-      <li><a href="#">Ashburn Apartments</a></li>
-    </ul>
-  </div>
+  <% if @community.county.present? %>
+    <div id="sub-listing">
+      <ul>
+        <% @community.county.cities.each do |city| %>
+          <li>
+            <%= link_to "#{city.name} Apartments", '#' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 </div>
