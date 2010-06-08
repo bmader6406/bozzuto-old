@@ -30,6 +30,10 @@ class Community < ActiveRecord::Base
   end
 
   def local_reviews
-    yelp_feed.present? ? yelp_feed.items : []
+    has_local_reviews? ? yelp_feed.items : []
+  end
+
+  def has_local_reviews?
+    yelp_feed.present? && yelp_feed.items.any?
   end
 end

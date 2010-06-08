@@ -52,6 +52,10 @@ class CommunityTest < ActiveSupport::TestCase
         assert_nil @community.yelp_feed
         assert_equal [], @community.local_reviews
       end
+
+      should 'return false on #has_local_reviews?' do
+        assert !@community.has_local_reviews?
+      end
     end
 
     context 'with a Yelp Feed' do
@@ -71,6 +75,10 @@ class CommunityTest < ActiveSupport::TestCase
         3.times do |i|
           assert_equal @feed.items[i], @community.local_reviews[i]
         end
+      end
+
+      should 'return true on #has_local_reviews?' do
+        assert @community.has_local_reviews?
       end
     end
   end
