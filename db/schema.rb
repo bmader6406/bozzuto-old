@@ -122,6 +122,10 @@ ActiveRecord::Schema.define(:version => 20100607213211) do
   end
 
   create_table "yelp_feed_items", :force => true do |t|
+    t.string   "title",        :null => false
+    t.string   "url",          :null => false
+    t.string   "description",  :null => false
+    t.datetime "published_at", :null => false
     t.integer  "yelp_feed_id", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"

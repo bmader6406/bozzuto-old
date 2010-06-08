@@ -47,3 +47,11 @@ end
 YelpFeed.blueprint do
   url { Faker::Internet.domain_name }
 end
+
+YelpFeedItem.blueprint do
+  title        { Faker::Lorem.sentence }
+  url          { Faker::Internet.domain_name }
+  description  { Faker::Lorem.paragraphs }
+  published_at { Time.now }
+  yelp_feed
+end
