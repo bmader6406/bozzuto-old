@@ -15,5 +15,6 @@ group :test do
   gem 'phocus'
   gem 'machinist'
   gem 'faker'
-  gem 'rr'  
+  gem 'mocha'
+  gem 'webmock'
 end

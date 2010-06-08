@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="http://static1.px.yelpcdn.com/static/200911132019398437/css/rss.min.css" type="text/css" media="screen"?>
+<rss version="2.0" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" >
+	<channel>
+		<copyright>Copyright 2010 Yelp, Inc. All rights reserved.</copyright>
+		<title>Recent Reviews Near Alexandria, VA</title>
+		<link>http://www.yelp.com/alexandria-va</link>
+		<description>Yelp - Recent Reviews Near Alexandria, VA</description>
+		<item>
+			<pubDate>Mon, 07 Jun 2010 13:35:39  PST</pubDate>
+			<title>Patricia S.&#39;s Review of Farmers &amp; Fishers - Washington, DC (3/5) on Yelp</title>
+			<link>http://www.yelp.com/biz/farmers-and-fishers-washington#hrid:pBxAtp0dplZ9otexU_Kqkg</link>
+			<description>It's really 2.5 stars, but I'm giving it the benefit of the doubt.
+
+We went here because of a recommendation from a friend, not knowing what to expect. First of all - I think the area is a bit tacky&amp;#8230;</description>
+			<geo:long>-77.060104</geo:long>	
+			<geo:lat>38.902291</geo:lat>
+		</item>
+		<item>
+			<pubDate>Mon, 07 Jun 2010 13:32:51  PST</pubDate>
+			<title>Marissa O.&#39;s Review of Columbia Pike Farmers Market - Arlington (3/5) on Yelp</title>
+			<link>http://www.yelp.com/biz/columbia-pike-farmers-market-arlington#hrid:_66ucLrPuj5XPkL4eQlZcA</link>
+			<description>3.5.  It's not a huge market and is completely anemic in the winter.  (I actually went to check it out after one of the major snowstorms this year, and there were 4 poor vendors, braving the cold.&amp;#8230;</description>
+			<geo:long>-77.086954</geo:long>	
+			<geo:lat>38.86256</geo:lat>
+		</item>
+		<item>
+			<pubDate>Mon, 07 Jun 2010 13:31:48  PST</pubDate>
+			<title>Grant H.&#39;s Review of Chili&#39;s Grill &amp; Bar - Vienna (4/5) on Yelp</title>
+			<link>http://www.yelp.com/biz/chilis-grill-and-bar-vienna#hrid:l7mbi4W82nYgO_FxMFo4_A</link>
+			<description>The food here is always great, and the margaritas are tasty.
+It is occasionally understaffed in the lounge area. When that happens, the service can be a little slow, which is especially frustrating&amp;#8230;</description>
+			<geo:long>-77.2219009399</geo:long>	
+			<geo:lat>38.9123001099</geo:lat>
+		</item>
+		<item>
+			<pubDate>Mon, 07 Jun 2010 13:26:11  PST</pubDate>
+			<title>Hannah C.&#39;s Review of National Gallery of Art - Washington, DC (5/5) on Yelp</title>
+			<link>http://www.yelp.com/biz/national-gallery-of-art-washington#hrid:gMEuRGLl88h4dnMpf7Fh2w</link>
+			<description>Best way to go to the museum: Alone.
+
+Why: Because nothing that I like is what you will like and vice versa.  Also, this place is so big, I don't want to have to walk around looking at my favorite&amp;#8230;</description>
+			<geo:long>-77.01989</geo:long>	
+			<geo:lat>38.89207</geo:lat>
+		</item>
+		<item>
+			<pubDate>Mon, 07 Jun 2010 13:23:25  PST</pubDate>
+			<title>Brian C.&#39;s Review of Cairo Wine &amp; Liquor - Washington, DC (5/5) on Yelp</title>
+			<link>http://www.yelp.com/biz/cairo-wine-and-liquor-washington#hrid:Pxygh9QZASljqLklXAW0PA</link>
+			<description>AMAZING selection of beer and wine at this place, and the prices are par for the neighborhood.  I haven't found a better beer selection anywhere in the city.</description>
+			<geo:long>-77.0382995605</geo:long>	
+			<geo:lat>38.9117012024</geo:lat>
+		</item>
+	</channel>
+</rss>

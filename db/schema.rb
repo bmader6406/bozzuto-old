@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100608023607) do
+ActiveRecord::Schema.define(:version => 20100608181338) do
 
   create_table "cities", :force => true do |t|
     t.string   "name",       :null => false
@@ -45,24 +45,6 @@ ActiveRecord::Schema.define(:version => 20100608023607) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "yelp_feed_id"
-  end
-
-  create_table "community_links", :force => true do |t|
-    t.string   "title",        :null => false
-    t.string   "url",          :null => false
-    t.integer  "community_id", :null => false
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "community_pages", :force => true do |t|
-    t.string   "title",        :null => false
-    t.text     "content",      :null => false
-    t.integer  "community_id", :null => false
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "counties", :force => true do |t|
@@ -133,8 +115,8 @@ ActiveRecord::Schema.define(:version => 20100608023607) do
   end
 
   create_table "yelp_feeds", :force => true do |t|
-    t.string   "url",        :null => false
-    t.datetime "fetched_at"
+    t.string   "url",          :null => false
+    t.datetime "refreshed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -56,8 +56,11 @@ class CommunityTest < ActiveSupport::TestCase
 
     context 'with a Yelp Feed' do
       setup do
-        @feed = YelpFeed.make
-        3.times { @feed.items << YelpFeedItem.make }
+        @feed = YelpFeed.make_unsaved
+        @feed.expects(:validate_on_create)
+        @feed.save
+
+        3.times { YelpFeedItem.make :yelp_feed => @feed }
         @community.yelp_feed = @feed
         @community.save
       end

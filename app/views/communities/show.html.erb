@@ -119,7 +119,7 @@
           <ul class="nav row">
             <li><%= link_to 'View Map', '#map' %></li>
             <li><%= link_to 'Walk Score&trade;'.html_safe, '#walk-score' %></li>
-            <li class="last"><%= link_to 'Local News', '#local-news' %></li>
+            <li class="last"><%= link_to 'Local Reviews', '#local-reviews' %></li>
           </ul>
 
           <div id="map" class="section">
@@ -133,8 +133,15 @@
             <%= walkscore_map_script(@community) %>
           </div>
 
-          <div id="local-news" class="section">
-            <p>Local News</p>
+          <div id="local-reviews" class="section">
+            <% unless @community.local_reviews.empty? %>
+              <% @community.local_reviews.each do |review| %>
+                <p>
+                  <%= link_to review.title, review.url %><br />
+                  <%= review.description %>
+                </p>
+              <% end %>
+            <% end %>
           </div>
         </div>
 

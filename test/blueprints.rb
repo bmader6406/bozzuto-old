@@ -6,6 +6,7 @@ Sham.define do
   us_state_code { |i| "%2s" % i.to_s(36) }
   us_state      { |i| "#{Faker::Address.us_state} #{i}" }
   company_name  { Faker::Company.name }
+  feed_url      { |i| "http://#{i}.#{Faker::Internet.domain_name}/feed.rss" }
 end
 
 City.blueprint do
@@ -45,7 +46,7 @@ FloorPlan.blueprint do
 end
 
 YelpFeed.blueprint do
-  url { Faker::Internet.domain_name }
+  url { Sham.feed_url }
 end
 
 YelpFeedItem.blueprint do

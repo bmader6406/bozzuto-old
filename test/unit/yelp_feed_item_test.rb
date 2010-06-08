@@ -11,7 +11,10 @@ class YelpFeedItemTest < ActiveSupport::TestCase
       :yelp_feed
 
     should 'order from newest to oldest by default' do
-      @feed = YelpFeed.make
+      @feed = YelpFeed.make_unsaved
+      @feed.expects(:validate_on_create)
+      @feed.save
+
       @item1 = YelpFeedItem.make :published_at => Time.now,
         :yelp_feed => @feed
       @item2 = YelpFeedItem.make :published_at => Time.now - 1.day,
