@@ -3,6 +3,7 @@ class Community < ActiveRecord::Base
   has_many :photos
   has_many :floor_plan_groups
   has_many :floor_plans, :through => :floor_plan_groups
+  belongs_to :yelp_feed
 
   validates_presence_of :title, :subtitle, :city
   validates_numericality_of :latitude, :longitude, :allow_nil => true
@@ -26,5 +27,9 @@ class Community < ActiveRecord::Base
 
   def address
     [street_address, city].compact.join(', ')
+  end
+
+  def local_reviews
+    yelp_feed.present? ? yelp_feed.items : []
   end
 end
