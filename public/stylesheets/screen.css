@@ -122,6 +122,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     #header #find-apartment-form p.submit {
       right: 12px;
     }
+    #header #find-apartment-form p.submit button {
+      height: 21px;
+    }
     #special-nav #find-apartment-form a {
       display: inline;
       padding: 0;
@@ -1486,7 +1489,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .homes #content div.header ul li a.map,
     .search #content div.header ul li a.map {
     	padding: 6px 90px 3px 10px;
-    	width: 48px;
+    	width: 50px;
     }
 
     .homes #content div.header ul li a.directory,
@@ -3021,6 +3024,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 
     .homes #masthead .section p.call-to-action a {
       color: #565C64;
+			font-weight: bold;
     }
 
     .homes #masthead .section p.figure {
@@ -3337,6 +3341,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
     #footer label {
       text-transform: none;
+			font-size: 11px;
     }
     #copyright p {
       font-size: 11px;
@@ -4366,11 +4371,13 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   form p.fields input {
     position: absolute;
     top: 0; left: 0;
+		width: 164px;
   }
   form p.fields button {
     position: absolute;
     top: 0; right: 0;
     height: 24px;
+		font-size: 1em;
   }
 
   /* header */
