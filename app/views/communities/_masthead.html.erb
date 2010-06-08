@@ -9,7 +9,7 @@
           <%= link_to 'Features & Amenities', features_community_path(@community) %>
         </li>
         <li class="<%= current_if 'media' %>">
-          <%= link_to 'Videos & Photos', '#' %>
+          <%= link_to 'Photos & Videos', '#' %>
         </li>
         <li class="<%= current_if :controller => 'floor_plan_groups' %>">
           <%= link_to 'Floor Plans', community_floor_plan_groups_path(@community) %>
