@@ -3,7 +3,7 @@ require 'test_helper'
 class YelpFeedTest < ActiveSupport::TestCase
   context 'A YelpFeed' do
     setup do
-      @fixture = File.read(RAILS_ROOT + '/test/fixtures/yelp.rss')
+      @fixture = load_fixture_file('yelp.rss')
       @rss     = YelpFeed::Parser.call(@fixture, :xml)
       @url     = Sham.feed_url
 

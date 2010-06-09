@@ -9,4 +9,8 @@ class ActiveSupport::TestCase
 
   self.use_transactional_fixtures = true
   self.use_instantiated_fixtures  = false
+
+  def load_fixture_file(file)
+    File.read("#{RAILS_ROOT}/test/fixtures/#{file}")
+  end
 end

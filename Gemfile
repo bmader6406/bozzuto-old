@@ -6,6 +6,7 @@ gem 'erubis'
 gem 'jammit'
 gem 'geokit'
 gem 'httparty'
+gem 'nokogiri'
 
 gem 'carrierwave'
 gem 'mini_magick'
