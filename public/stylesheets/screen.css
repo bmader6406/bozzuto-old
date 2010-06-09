@@ -106,6 +106,12 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       width: 406px;
       padding: 12px;
     }
+		#special-nav optgroup {
+			padding: 5px;
+		}
+		#special-nav option {
+			padding: 0;
+		}
     #header #find-apartment-form {
       height: 136px;
     }
@@ -2510,6 +2516,17 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       font-size: 11px;
       color: #565c64;
     }
+		#special-nav optgroup {
+			font-weight: bold;
+			font-size: 11px;
+			color: #333333;
+		}
+		#special-nav option {
+			font-weight: normal;
+		}
+		#special-nav select {
+			color: #333333;
+		}
     #header #find-apartment-form .advanced-search a {
       font-size: 11px;
       font-weight: bold;
@@ -2592,8 +2609,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       color: #080812;
     }
     .secondary #main-content h3 a:hover {
-      text-decoration: none;
-			color: #636972;
+      text-decoration: underline;
     }
     .secondary #main-content p {
       font-size: 11px;
@@ -2999,6 +3015,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
 
     .apartments #masthead .aside ul li a:hover {
+      color: #2E2E39;
       text-decoration: none;
     }
 
@@ -3405,24 +3422,18 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     #header #home-nav a {
       background: transparent url(../images/structure/bg-header-a.gif) no-repeat center left;
     }
-    #special-nav a {
-      background: #dde0e3 url(../images/structure/bg-right-arrow.png) no-repeat 215px center;
-    }
-    #special-nav a:hover,
-    #special-nav li:hover a {
-      background-color: #c2c6ca;
-    }
-    #special-nav li.open a {
-      background: #c2c6ca url(../images/structure/bg-up-arrow.png) no-repeat 210px center;
-    }
-    .community #special-nav a {
+    #special-nav a,
+		.community #special-nav a {
       background: #dde0e3 url(../images/structure/bg-special-nav.gif) no-repeat top right;
     }
-    .community #special-nav a:hover,
+    #special-nav a:hover,
+    #special-nav li:hover a,
+		.community #special-nav a:hover,
     .community #special-nav li:hover a {
       background-color: #c2c6ca;
     }
-    .community #special-nav li.open a {
+    #special-nav li.open a,
+		.community #special-nav li.open a {
       background: #c2c6ca url(../images/structure/bg-special-nav.gif) no-repeat 100% -26px;
     }
 
@@ -3524,6 +3535,10 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .services #aside h3 {
       background: transparent url(../images/structure/bg-aside-h3.gif) no-repeat 0 0;
     }
+    .about #aside h3:hover,
+    .services #aside h3:hover {
+      background: transparent url() no-repeat 0 0;
+    }
     .about #aside h3 a,
     .services #aside h3 a {
       background: transparent url(../images/structure/bg-right-arrow.png) no-repeat 205px center;
@@ -3531,6 +3546,10 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .about #aside h3 a:hover,
     .services #aside h3 a:hover, {
       background: transparent url(../images/structure/bg-right-arrow.png) no-repeat 205px center;
+    }
+    .about #aside h3:hover,
+    .services #aside h3:hover {
+      background: transparent url(../images/structure/bg-aside-h3.gif) no-repeat 0 bottom;
     }
     .about #latest-news .section,
     .services #latest-news .section {
@@ -3562,7 +3581,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .about #breadcrumb li,
     .community #breadcrumb li,
     .services #breadcrumb li {
-      background: transparent url(../images/structure/bg-masthead-a.gif) no-repeat center right;
+      background: transparent url(../images/structure/bg-masthead-a-dark.gif) no-repeat center right;
     }
     .about #breadcrumb li.last,
     .community #breadcrumb li.last,
@@ -3738,7 +3757,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
 
     .apartments #masthead .aside ul li a {
-      background: url(../images/structure/bg-apartments-masthead-aside-list-a.gif) 1px 10px no-repeat;
+      background: url(../images/structure/bg-masthead-a-dark.gif) 1px 12px no-repeat;
     }
 
     .apartments #main-content {
@@ -3762,7 +3781,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   /* @group -homes */
 
     .homes-search #masthead .section p.call-to-action a {
-      background: url(../images/structure/bg-masthead-a.gif) left center no-repeat;
+      background: url(../images/structure/bg-masthead-a-dark.gif) left center no-repeat;
     }    
 
     .homes #masthead .aside p.call-to-action a {
