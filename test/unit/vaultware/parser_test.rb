@@ -5,6 +5,8 @@ module Vaultware
 class ParserTest < ActiveSupport::TestCase
   context 'A VaultwareParser' do
     setup do
+      create_states
+
       @fixture = load_fixture_file('vaultware.xml')
       @data    = Nokogiri::XML(@fixture)
 
@@ -22,7 +24,7 @@ class ParserTest < ActiveSupport::TestCase
         assert @parser.data.xpath('/PhysicalProperty').present?
       end
 
-      should 'create the missing communities' do
+      should 'create the communities' do
         assert_difference('Community.count', @data.xpath('/PhysicalProperty/Property').count) do
           @parser.parse(@file)
         end

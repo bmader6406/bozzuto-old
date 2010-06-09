@@ -13,4 +13,15 @@ class ActiveSupport::TestCase
   def load_fixture_file(file)
     File.read("#{RAILS_ROOT}/test/fixtures/#{file}")
   end
+
+  def create_states
+    State.create([{ :code => 'CT', :name => 'Connecticut' },
+                  { :code => 'MD', :name => 'Maryland' },
+                  { :code => 'MA', :name => 'Massachusetts' },
+                  { :code => 'NJ', :name => 'New Jersey' },
+                  { :code => 'NY', :name => 'New York' },
+                  { :code => 'PA', :name => 'Pennsylvania' },
+                  { :code => 'VA', :name => 'Virginia' },
+                  { :code => 'DC', :name => 'Washington, DC' }])
+  end
 end

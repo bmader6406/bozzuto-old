@@ -11,25 +11,39 @@ module Vaultware
 
     private
 
-    def process_data
-      data.xpath('/PhysicalProperty/Property', ns).each do |property|
-        process_property(property)
+      def process_data
+        data.xpath('/PhysicalProperty/Property', ns).each do |property|
+          process_property(property)
+        end
       end
-    end
 
-    def process_property(property)
-      info = property.at_xpath('PropertyID/ns:Identification', ns)
+      def process_property(property)
+        info = property.at('./PropertyID/ns:Identification', ns)
+        address = property.at('./PropertyID/ns:Address', ns)
 
-      community = Community.create({
-        :title       => info.at_xpath('ns:MarketingName', ns).content,
-        :subtitle    => 'blah blah blah',
-        :website_url => info.at_xpath('ns:WebSite', ns).content,
-        :city        => City.make
-      })
-    end
+        community = Community.create({
+          :title          => info.at('./ns:MarketingName', ns).content,
+          :website_url    => info.at('./ns:WebSite', ns).content,
+          :street_address => address.at('./ns:Address1', ns).content,
+          :city           => find_city(address),
+          :vaultware_id   => info.at('./ns:PrimaryID', ns).content.to_i
+        })
+      end
 
-    def ns
-      { 'ns' => 'http://my-company.com/namespace' }
-    end
+      def ns
+        { 'ns' => 'http://my-company.com/namespace' }
+      end
+
+      def find_city(address)
+        state_code  = address.at('./ns:State', ns).content
+        city_name   = address.at('./ns:City', ns).content
+        county_name = address.at('./ns:CountyName', ns).content
+
+        # TODO: create the county if it doesn't exist?
+        state = State.find_by_code(state_code)
+        city  = state.cities.find_by_name(city_name)
+
+        city || City.create(:name => city_name, :state => state)
+      end
   end
 end

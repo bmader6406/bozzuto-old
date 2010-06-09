@@ -5,7 +5,7 @@ class Community < ActiveRecord::Base
   has_many :floor_plans, :through => :floor_plan_groups
   belongs_to :yelp_feed
 
-  validates_presence_of :title, :subtitle, :city
+  validates_presence_of :title, :city
   validates_numericality_of :latitude, :longitude, :allow_nil => true
 
   acts_as_mappable :lat_column_name => :latitude,

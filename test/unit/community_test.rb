@@ -14,7 +14,7 @@ class CommunityTest < ActiveSupport::TestCase
     should_have_many :floor_plans, :through => :floor_plan_groups
     should_belong_to :yelp_feed
 
-    should_validate_presence_of :title, :subtitle, :city
+    should_validate_presence_of :title, :city
     should_validate_numericality_of :latitude, :longitude
 
     context "#address" do

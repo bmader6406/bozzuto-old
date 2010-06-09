@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100608181338) do
+ActiveRecord::Schema.define(:version => 20100609192107) do
 
   create_table "cities", :force => true do |t|
     t.string   "name",       :null => false
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20100608181338) do
 
   create_table "communities", :force => true do |t|
     t.string   "title",                                :null => false
-    t.string   "subtitle",                             :null => false
+    t.string   "subtitle"
     t.integer  "city_id",                              :null => false
     t.boolean  "elite",             :default => false, :null => false
     t.boolean  "smart_share",       :default => false, :null => false
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20100608181338) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "yelp_feed_id"
+    t.integer  "vaultware_id"
   end
 
   create_table "counties", :force => true do |t|
