@@ -26,7 +26,7 @@ module Vaultware
         )
         @community.update_attributes({
           :title          => info.at('./ns:MarketingName', ns).content,
-          :website_url    => info.at('./ns:WebSite', ns).content,
+          :website_url    => info.at('./ns:WebSite', ns).try(:content),
           :street_address => address.at('./ns:Address1', ns).content,
           :city           => find_city(address)
         })
