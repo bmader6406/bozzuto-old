@@ -14,8 +14,8 @@ module CommunitiesHelper
     end
   end
 
-  def floor_plan_price(plan)
-    number_to_currency(plan.min_effective_rent)
+  def floor_plan_price(price)
+    number_to_currency(price, :precision => 0)
   end
 
   def square_feet(plan)

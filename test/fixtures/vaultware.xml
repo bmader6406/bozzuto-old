@@ -13,7 +13,6 @@
         <PrimaryID>14201</PrimaryID>
         <SecondaryID>00000088</SecondaryID>
         <MarketingName>The Apartments @ Briarwood</MarketingName>
-        <WebSite>www.apartmentsatbriarwood.com</WebSite>
       </Identification>
       <Address xmlns="http://my-company.com/namespace" Type="property">
         <Address1>9204 Appleford Circle</Address1>

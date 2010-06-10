@@ -67,7 +67,7 @@
                     </td>
                     <td>
                       <% unless group.floor_plans.empty? %>
-                        From <%= floor_plan_price(group.floor_plans.cheapest) %>
+                        From <%= floor_plan_price(group.floor_plans.cheapest.min_rent) %>
                       <% end %>
                     </td>
                     <td class="availability">

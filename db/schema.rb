@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100610144311) do
+ActiveRecord::Schema.define(:version => 20100610195844) do
 
   create_table "cities", :force => true do |t|
     t.string   "name",       :null => false
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20100610144311) do
     t.datetime "updated_at"
     t.integer  "yelp_feed_id"
     t.integer  "vaultware_id"
+    t.boolean  "use_market_prices", :default => false, :null => false
   end
 
   create_table "counties", :force => true do |t|

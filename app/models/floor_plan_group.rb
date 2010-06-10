@@ -1,7 +1,13 @@
 class FloorPlanGroup < ActiveRecord::Base
   has_many :floor_plans do
     def cheapest
-      first(:order => 'min_market_rent ASC')
+      rent_field = if proxy_owner.use_market_prices?
+        'min_market_rent'
+      else
+        'min_effective_rent'
+      end
+
+      first(:order => "#{rent_field} ASC")
     end
 
     def largest
@@ -14,4 +20,8 @@ class FloorPlanGroup < ActiveRecord::Base
   acts_as_list :scope => :community
 
   validates_presence_of :name
+
+  def use_market_prices?
+    community.try(:use_market_prices?) || false
+  end
 end

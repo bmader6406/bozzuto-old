@@ -6,6 +6,7 @@ class Community < ActiveRecord::Base
   belongs_to :yelp_feed
 
   validates_presence_of :title, :city
+  validates_inclusion_of :use_market_prices, :in => [true, false]
   validates_numericality_of :latitude, :longitude, :allow_nil => true
 
   acts_as_mappable :lat_column_name => :latitude,

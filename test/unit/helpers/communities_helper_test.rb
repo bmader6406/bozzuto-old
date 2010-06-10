@@ -21,7 +21,7 @@ class CommunitiesHelperTest < ActionView::TestCase
       end
 
       should "return the floor plan's formatted price" do
-        assert_equal "$600.00", floor_plan_price(@plan)
+        assert_equal "$600", floor_plan_price(@plan.min_effective_rent)
       end
     end
 

@@ -25,8 +25,9 @@ State.blueprint do
 end
 
 Community.blueprint do
-  title    { Sham.company_name }
-  subtitle { Faker::Company.catch_phrase }
+  title             { Sham.company_name }
+  subtitle          { Faker::Company.catch_phrase }
+  use_market_prices { false }
   city
 end
 
