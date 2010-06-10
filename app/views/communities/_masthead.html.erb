@@ -27,7 +27,9 @@
 
       <ul id="remote-nav">
         <% if @community.website_url.present? %>
-          <li><%= link_to 'Visit Website', @community.website_url %></li>
+          <li>
+            <%= link_to 'Visit Website', website_url(@community.website_url) %>
+          </li>
         <% end %>
         <li class="last">
           <%= link_to 'Download E-Brochure', '#' %>

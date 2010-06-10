@@ -22,6 +22,10 @@ module CommunitiesHelper
     "#{plan.min_square_feet} Sq Ft"
   end
 
+  def website_url(url)
+    url =~ /^http/ ? url : "http://#{url}"
+  end
+
   def twitter_data_attr(handle)
     if handle.present?
       "data-twitter-username=\"#{handle}\"".html_safe

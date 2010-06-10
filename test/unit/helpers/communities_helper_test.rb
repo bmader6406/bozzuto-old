@@ -35,6 +35,13 @@ class CommunitiesHelperTest < ActionView::TestCase
       end
     end
 
+    context '#website_url' do
+      should "prepend 'http://' if not present" do
+        assert_equal 'http://google.com', website_url('google.com')
+        assert_equal 'https://yahoo.com', website_url('https://yahoo.com')
+      end
+    end
+
     context "#twitter_data_attr" do
       should "return the twitter username data attribute" do
         assert_equal 'data-twitter-username="vigetlabs"',
