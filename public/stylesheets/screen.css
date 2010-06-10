@@ -518,6 +518,11 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .services #breadcrumb li {
       display: inline;
     }
+		.search #breadcrumb .container h1 {   	
+			clear: left;
+			margin-top: 24px;
+    }
+    
     
     /* @group --masthead */
       
@@ -1673,7 +1678,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   
   /* @group -search results */
 
-    .search #breadcrumb {
+		.search #breadcrumb {
     	border-bottom: 1px solid #858890;
     	height: 81px;
     	margin-bottom: 27px;
@@ -1726,7 +1731,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .search #sidebar  ul li label {
     	padding-left: 5px;
     	position: relative;
-    	top: -5px;
+    	top: -1px;
     }
 
     .search #sidebar fieldset ul li select {
@@ -3845,32 +3850,32 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 
     .homes #content div.header ul li a.list,
     .search #content div.header ul li a.list {
-    	background-position: 0 -47px;
+    	background-position: 0 0;
     }
 
     .homes #content div.header ul li.current a.list,
     .search #content div.header ul li.current a.list {
-    	background-position: 0 0;
+    	background-position: 0 -47px;
     }
 
     .homes #content div.header ul li a.map,
     .search #content div.header ul li a.map {
-    	background-position: -152px 0;
+    	background-position: -302px 0;
     }
 
     .homes #content div.header ul li.current a.map,
     .search #content div.header ul li.current a.map {
-    	background-position: -152px -47px;
+    	background-position: -302px -47px;
     }
 
     .homes #content div.header ul li a.directory,
     .search #content div.header ul li a.directory {
-    	background-position: -300px 0;
+    	background-position: -153px 0;
     }
 
     .homes #content div.header ul li.current a.directory,
     .search #content div.header ul li.current a.directory {
-    	background-position: -300px -47px;
+    	background-position: -153px -47px;
     }
 
     .homes #content #view-as-list p.share a {
@@ -3928,7 +3933,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
 
     .search #breadcrumb .container ul li a {
-    	background: url(../images/structure/bg-masthead-a.gif) right center no-repeat;
+    	background: url(../images/structure/bg-masthead-a-dark.gif) right center no-repeat;
     }
 
     .search #sidebar fieldset {
