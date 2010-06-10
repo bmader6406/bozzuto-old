@@ -3,16 +3,24 @@ class FloorPlan < ActiveRecord::Base
 
   acts_as_list :scope => :floor_plan_group
 
-  validates_presence_of :image,
-    :category,
+  validates_presence_of :name,
+    :availability_url,
     :bedrooms,
     :bathrooms,
-    :square_feet,
-    :price,
+    :min_square_feet,
+    :max_square_feet,
+    :min_market_rent,
+    :max_market_rent,
+    :min_effective_rent,
+    :max_effective_rent,
     :floor_plan_group
   validates_numericality_of :bedrooms,
     :bathrooms,
-    :square_feet,
-    :price,
+    :min_square_feet,
+    :max_square_feet,
+    :min_market_rent,
+    :max_market_rent,
+    :min_effective_rent,
+    :max_effective_rent,
     :minimum => 0
 end

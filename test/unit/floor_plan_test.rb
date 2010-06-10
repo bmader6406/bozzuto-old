@@ -8,7 +8,24 @@ class FloorPlanTest < ActiveSupport::TestCase
 
     should_belong_to :floor_plan_group
 
-    should_validate_presence_of :image, :category, :bedrooms, :bathrooms, :square_feet, :price, :floor_plan_group
-    should_validate_numericality_of :bedrooms, :bathrooms, :square_feet, :price
+    should_validate_presence_of :name,
+      :availability_url,
+      :bedrooms,
+      :bathrooms,
+      :min_square_feet,
+      :max_square_feet,
+      :min_market_rent,
+      :max_market_rent,
+      :min_effective_rent,
+      :max_effective_rent,
+      :floor_plan_group
+    should_validate_numericality_of :bedrooms,
+      :bathrooms,
+      :min_square_feet,
+      :max_square_feet,
+      :min_market_rent,
+      :max_market_rent,
+      :min_effective_rent,
+      :max_effective_rent
   end
 end

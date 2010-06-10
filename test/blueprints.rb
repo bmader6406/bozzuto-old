@@ -36,12 +36,17 @@ FloorPlanGroup.blueprint do
 end
 
 FloorPlan.blueprint do
-  image       { Faker::Lorem.words(1) }
-  category    { Faker::Lorem.words(2) }
-  bedrooms    { rand(5) + 1 }
-  bathrooms   { (rand * 3).round_with_precision(1) + 1 }
-  square_feet { rand(3000) + 500 }
-  price       { rand(500000) + 40000 }
+  name               { Faker::Lorem.words(1) }
+  availability_url   { "http://#{Faker::Internet.domain_name}" }
+  image              { Faker::Lorem.words(1) }
+  bedrooms           { rand(5) + 1 }
+  bathrooms          { (rand * 3).round_with_precision(1) + 1 }
+  min_square_feet    { rand(3000) + 500 }
+  max_square_feet    { rand(3000) + 500 }
+  min_market_rent    { rand(500000) + 40000 }
+  max_market_rent    { rand(500000) + 40000 }
+  min_effective_rent { rand(500000) + 40000 }
+  max_effective_rent { rand(500000) + 40000 }
   floor_plan_group
 end
 

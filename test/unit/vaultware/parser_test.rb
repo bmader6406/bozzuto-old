@@ -78,6 +78,18 @@ class ParserTest < ActiveSupport::TestCase
           assert_nil @community.floor_plan_groups.find_by_name(group.name)
         end
       end
+
+      context 'processing floor plans' do
+        setup do
+          @plans = @property.xpath('Floorplan')
+          @parser.process
+          @community = Community.find_by_vaultware_id(vaultware_id(@property))
+        end
+
+        should 'create the floor plans' do
+          assert_equal @plans.count, @community.floor_plans.count
+        end
+      end
     end
   end
 

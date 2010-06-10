@@ -17,7 +17,7 @@ class CommunitiesHelperTest < ActionView::TestCase
 
     context "#floor_plan_price" do
       setup do
-        @plan = FloorPlan.make(:price => 60000)
+        @plan = FloorPlan.make(:min_effective_rent => 600)
       end
 
       should "return the floor plan's formatted price" do
@@ -27,11 +27,11 @@ class CommunitiesHelperTest < ActionView::TestCase
 
     context "#square_feet" do
       setup do
-        @plan = FloorPlan.make(:square_feet => 550)
+        @plan = FloorPlan.make(:min_square_feet => 550)
       end
 
       should "return the floor plan's formatted square footage" do
-        assert_equal "#{@plan.square_feet} Sq Ft", square_feet(@plan)
+        assert_equal "#{@plan.min_square_feet} Sq Ft", square_feet(@plan)
       end
     end
 

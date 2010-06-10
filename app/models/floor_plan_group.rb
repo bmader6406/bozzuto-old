@@ -1,11 +1,11 @@
 class FloorPlanGroup < ActiveRecord::Base
   has_many :floor_plans do
     def cheapest
-      first(:order => 'price ASC')
+      first(:order => 'min_market_rent ASC')
     end
 
     def largest
-      first(:order => 'square_feet DESC')
+      first(:order => 'max_square_feet DESC')
     end
   end
 

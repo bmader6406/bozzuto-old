@@ -15,11 +15,11 @@ module CommunitiesHelper
   end
 
   def floor_plan_price(plan)
-    number_to_currency(plan.price / 100)
+    number_to_currency(plan.min_effective_rent)
   end
 
   def square_feet(plan)
-    "#{plan.square_feet} Sq Ft"
+    "#{plan.min_square_feet} Sq Ft"
   end
 
   def twitter_data_attr(handle)

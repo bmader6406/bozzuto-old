@@ -10,6 +10,7 @@ module Vaultware
       data.xpath('/PhysicalProperty/Property', ns).each do |property|
         process_property(property)
         process_floor_plan_groups(property.xpath('./Floorplan'))
+        process_floor_plans(property.xpath('./Floorplan'))
       end
     end
 
@@ -40,6 +41,26 @@ module Vaultware
 
         groups.each do |group|
           @community.floor_plan_groups << FloorPlanGroup.new(:name => group)
+        end
+      end
+
+      def process_floor_plans(plans)
+        plans.each do |plan|
+          group = @community.floor_plan_groups.find_by_name(plan.at('./Comment').content)
+
+          group.floor_plans << FloorPlan.new(
+            :name               => plan.at('./Name').content,
+            :availability_url   => plan.at('./FloorplanAvailabilityURL').content,
+            :bedrooms           => plan.at('./Room[@Type="Bedroom"]/Count').content.to_i,
+            :bathrooms          => plan.at('./Room[@Type="Bathroom"]/Count').content.to_f,
+            :min_square_feet    => plan.at('./SquareFeet')['Min'].to_i,
+            :max_square_feet    => plan.at('./SquareFeet')['Max'].to_i,
+            :min_market_rent    => plan.at('./MarketRent')['Min'].to_f,
+            :max_market_rent    => plan.at('./MarketRent')['Max'].to_f,
+            :min_effective_rent => plan.at('./EffectiveRent')['Min'].to_f,
+            :max_effective_rent => plan.at('./EffectiveRent')['Max'].to_f,
+            :image              => plan.at('./File/Src').try(:content)
+          )
         end
       end
 
