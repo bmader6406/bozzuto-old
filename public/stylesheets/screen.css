@@ -520,28 +520,34 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
     
     /* @group --masthead */
-
-      .community #masthead {
+      
+			.community #masthead,
+			.project #masthead {
         overflow: hidden;
         height: 374px;
         border-bottom: 1px solid #cdd1d5;
       }
-      .community #masthead .container {
+      .community #masthead .container,
+ 			.project #masthead .container {
         position: relative;
       }
-      .community #masthead .nav {
+      .community #masthead .nav,
+ 			.project #masthead .nav {
         position: relative;
         z-index: 1;
         width: 190px;
         height: 374px;
       }
-      .community #masthead .nav li {
+      .community #masthead .nav li,
+ 			.project #masthead .nav li {
         border-bottom: 1px solid #eaecee;
       }
-      .community #masthead .nav li.last {
+      .community #masthead .nav li.last,
+ 			.project #masthead .nav li.last {
         border-bottom: none;
       }
-      .community #secondary-nav {
+      .community #secondary-nav,
+ 			.project #secondary-nav {
         position: absolute;
         z-index: 1;
         top: 0; left: 0;
@@ -549,17 +555,23 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         height: 349px;
         padding-top: 25px;
       }
-      .community #secondary-nav a {
+ 			.project #secondary-nav {
+        position: relative;
+      }
+      .community #secondary-nav a,
+ 			.project #secondary-nav a {
         display: block;
         padding: 10px 10px 10px 20px;
       }
-      .community #remote-nav {
+      .community #remote-nav,
+ 			.project #remote-nav {
         position: absolute;
         z-index: 1;
         bottom: 0; left: 0;
         width: 190px;
       }
-      .community #masthead #remote-nav a {
+      .community #masthead #remote-nav a,
+ 			.project #masthead #remote-nav a {
         display: block;
         padding: 5px 10px 5px 26px;
       }
@@ -568,11 +580,15 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     
     /* @group --slideshow */
       
-      .community #slideshow {
+      .community #slideshow,
+ 			.project #slideshow {
         position: absolute;
         top: 0; left: 170px;
         width: 870px;
         height: 374px;
+      }
+ 			.project #slideshow {
+        left: 190px;
       }
       .community #slideshow div.header,
       .community #slideshow div.slide,
@@ -618,7 +634,8 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     
     /* @end */
     
-    .community #main-content .container {
+    .community #main-content .container,
+ 		.project #main-content .container {
       width: 770px;
       padding-left: 190px;
     }
@@ -995,6 +1012,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       border-bottom: 1px solid #858890;
       color: #565c64;
     }
+		.project #masthead {
+      border-bottom: 1px solid #cdd1d5;
+    }
     .services #masthead .container,
     .landing #masthead .container,
     .about #masthead .container {
@@ -1002,6 +1022,12 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       overflow: hidden;
       position: relative;
     }
+    .project #masthead .container {
+      overflow: visible;
+    }
+		.project #masthead .container {
+			height: 372px;
+		}
     .services #masthead .masthead-slideshow li,
     .landing #masthead .masthead-slideshow li,
     .about #masthead .masthead-slideshow li {
@@ -1054,6 +1080,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .services #main-content {
       background: url(../images/structure/bg-apartments-content.gif) left top repeat-x #fff;
     }
+		.project #main-content {
+			background: none;
+		}
     .services #content {
       padding-right: 0;
       width: 769px;
@@ -1219,7 +1248,8 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 
     .project #sidebar h2 {
       border-bottom: 1px solid #eaecee;
-      margin-bottom: 237px;
+      margin-bottom: 217px;
+			margin-top: 20px;
     }
 
     .project #sidebar h2 a {
@@ -2688,6 +2718,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       font-weight: normal;
       color: #92929b;
     }
+		#secondary-nav li.current a {
+			color: #080812;
+		}
     .about #content p,
  		.li_container {
       padding-bottom: 1.454545455em;
@@ -3489,6 +3522,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .home #featured-property h2 {
       background:url("../images/structure/bg-aside-h3.gif") no-repeat scroll 0 0 transparent;
     }
+    .home #featured-property h2:hover {
+      background:url("../images/structure/bg-aside-h3.gif") no-repeat scroll 0 -20px transparent;
+    }
     .home #featured-property h2 a {
       background:url("../images/structure/bg-right-arrow.png") no-repeat scroll 216px center transparent;
     }
@@ -3520,6 +3556,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .landing #masthead {
       background: #c0c5cb url(../images/structure/bg-masthead.gif) repeat-x 0 0;
     }
+		.project #masthead {
+			background: none;
+		}
     .about #content p,
 		.li_container {
       background: transparent url(../images/structure/bg-about-content-p.gif) no-repeat bottom left;

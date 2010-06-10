@@ -211,7 +211,7 @@
   };
 
   ////
-  // leadership portrats
+  // leadership portraits
   $.fn.portrait = function(){
     return this.each(function() {
       
@@ -219,15 +219,17 @@
           initialized = false,
           $imgLoader  = $('<img src="images/structure/bg-partner-portrait.jpg" />').load(init);
                           
-      $imgLoader[0].complete || init();
+      $imgLoader[0].complete && init();
 
       function init(){
         if ( !initialized ){
-        
+
           var $links     = $('.partner-portrait-links'),
               $images    = $('<ul class="partner-portrait-images"></ul>').html( $links.html() ).prependTo($container),
               $screen    = $('<div class="partner-portrait-screen"></div>').prependTo($container),
               mouseLeaveTimer;
+
+
 
           $links.children().each(function(i){
             $(this).find('a').hover(function(){
