@@ -7,23 +7,23 @@
 <div id="main-content">
   <div class="container">
     <% @groups.each do |group| %>
-      <div class="floor-plan-group">
+      <div id="<%= dom_id(group) %>" class="floor-plan-group">
         <h2><%= group.name %></h2>
 
         <% group.floor_plans.in_groups_of(4) do |plans_group| %>
           <ul class="row">
             <% plans_group.compact.each do |plan| %>
               <li class="floor-plan">
-                <h4>
-                  <%= floor_plan_bedrooms(plan) %>,
-                  <%= floor_plan_bathrooms(plan) %>
-                </h4>
+                <h4><%= plan.name %></h4>
+
                 <p>
                   <%= square_feet(plan) %> |
                   <%= floor_plan_price(plan) %><br />
-                  <%= link_to 'Reserve', '#' %>
+                  <%= link_to 'Reserve', plan.availability_url %>
                 </p>
-                <%= link_to image_tag(plan.image, :width => 165), '#' %>
+                <% if plan.image.present? %>
+                  <%= link_to image_tag(plan.image, :width => 160), plan.image %>
+                <% end %>
               </li>
             <% end %>
           </ul>

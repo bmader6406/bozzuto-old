@@ -55,7 +55,7 @@
                 <% @community.floor_plan_groups.each do |group| %>
                   <tr>
                     <td>
-                      <%= link_to group.name, "#" %>
+                      <%= link_to group.name, community_floor_plan_groups_path(@community, :anchor => dom_id(group)) %>
                     </td>
                     <td>
                       <%= pluralize(group.floor_plans.count, 'Floor Plan') %>
