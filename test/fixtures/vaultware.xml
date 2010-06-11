@@ -10,214 +10,6 @@
   <Property ManagementID="55973">
     <PropertyID>
       <Identification xmlns="http://my-company.com/namespace" Type="market rate apt">
-        <PrimaryID>14201</PrimaryID>
-        <SecondaryID>00000088</SecondaryID>
-        <MarketingName>The Apartments @ Briarwood</MarketingName>
-      </Identification>
-      <Address xmlns="http://my-company.com/namespace" Type="property">
-        <Address1>9204 Appleford Circle</Address1>
-        <City>Owings Mills</City>
-        <State>MD</State>
-        <PostalCode>21117</PostalCode>
-        <CountyName>Baltimore</CountyName>
-      </Address>
-      <Phone xmlns="http://my-company.com/namespace" Type="office">
-        <PhoneNumber>410-581-3817</PhoneNumber>
-      </Phone>
-    </PropertyID>
-    <ILS_Identification Type="Unspecified" RentalType="Unspecified"/>
-    <Information>
-      <StructureType>Standard</StructureType>
-      <UnitCount>0</UnitCount>
-      <PropertyAvailabilityURL>http://units.realtydatatrust.com/unittype.aspx?ils=345&amp;propid=14201</PropertyAvailabilityURL>
-    </Information>
-    <Floorplan Id="9524">
-      <Name>Cedar</Name>
-      <Comment>1 Bed/1 Bath</Comment>
-      <UnitCount>48</UnitCount>
-      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=9524</FloorplanAvailabilityURL>
-      <DisplayedUnitsAvailable>2</DisplayedUnitsAvailable>
-      <Room Type="Bedroom">
-        <Count>1</Count>
-        <Comment>Bedrooms</Comment>
-      </Room>
-      <Room Type="Bathroom">
-        <Count>1</Count>
-        <Comment>Bathrooms</Comment>
-      </Room>
-      <SquareFeet Min="673" Max="673"/>
-      <MarketRent Min="906" Max="1011"/>
-      <EffectiveRent Min="906" Max="1011"/>
-    </Floorplan>
-    <Floorplan Id="9525">
-      <Name>Poplar</Name>
-      <Comment>1 Bed/1 Bath</Comment>
-      <UnitCount>36</UnitCount>
-      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=9525</FloorplanAvailabilityURL>
-      <DisplayedUnitsAvailable>2</DisplayedUnitsAvailable>
-      <Room Type="Bedroom">
-        <Count>1</Count>
-        <Comment>Bedrooms</Comment>
-      </Room>
-      <Room Type="Bathroom">
-        <Count>1</Count>
-        <Comment>Bathrooms</Comment>
-      </Room>
-      <SquareFeet Min="775" Max="775"/>
-      <MarketRent Min="1013" Max="1023"/>
-      <EffectiveRent Min="1013" Max="1023"/>
-    </Floorplan>
-    <Floorplan Id="9527">
-      <Name>Chestnut</Name>
-      <Comment>1 Bed/1 Bath Den</Comment>
-      <UnitCount>16</UnitCount>
-      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=9527</FloorplanAvailabilityURL>
-      <DisplayedUnitsAvailable>1</DisplayedUnitsAvailable>
-      <Room Type="Bedroom">
-        <Count>1</Count>
-        <Comment>Bedrooms</Comment>
-      </Room>
-      <Room Type="Bathroom">
-        <Count>1</Count>
-        <Comment>Bathrooms</Comment>
-      </Room>
-      <SquareFeet Min="901" Max="901"/>
-      <MarketRent Min="1105" Max="1105"/>
-      <EffectiveRent Min="1105" Max="1105"/>
-    </Floorplan>
-    <Floorplan Id="9528">
-      <Name>Sequoia</Name>
-      <Comment>2 Bed/2 Bath</Comment>
-      <UnitCount>64</UnitCount>
-      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=9528</FloorplanAvailabilityURL>
-      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
-      <Room Type="Bedroom">
-        <Count>2</Count>
-        <Comment>Bedrooms</Comment>
-      </Room>
-      <Room Type="Bathroom">
-        <Count>2</Count>
-        <Comment>Bathrooms</Comment>
-      </Room>
-      <SquareFeet Min="1040" Max="1040"/>
-      <MarketRent Min="1155" Max="1400"/>
-      <EffectiveRent Min="1155" Max="1400"/>
-    </Floorplan>
-    <Floorplan Id="9529">
-      <Name>Maple</Name>
-      <Comment>2 Bed/2 Bath</Comment>
-      <UnitCount>64</UnitCount>
-      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=9529</FloorplanAvailabilityURL>
-      <DisplayedUnitsAvailable>1</DisplayedUnitsAvailable>
-      <Room Type="Bedroom">
-        <Count>2</Count>
-        <Comment>Bedrooms</Comment>
-      </Room>
-      <Room Type="Bathroom">
-        <Count>2</Count>
-        <Comment>Bathrooms</Comment>
-      </Room>
-      <SquareFeet Min="1083" Max="1083"/>
-      <MarketRent Min="1300" Max="1300"/>
-      <EffectiveRent Min="1300" Max="1300"/>
-    </Floorplan>
-    <Floorplan Id="9530">
-      <Name>Oak</Name>
-      <Comment>3 Bed/2 Bath</Comment>
-      <UnitCount>32</UnitCount>
-      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=9530</FloorplanAvailabilityURL>
-      <DisplayedUnitsAvailable>2</DisplayedUnitsAvailable>
-      <Room Type="Bedroom">
-        <Count>3</Count>
-        <Comment>Bedrooms</Comment>
-      </Room>
-      <Room Type="Bathroom">
-        <Count>2</Count>
-        <Comment>Bathrooms</Comment>
-      </Room>
-      <SquareFeet Min="1204" Max="1204"/>
-      <MarketRent Min="1352" Max="1352"/>
-      <EffectiveRent Min="1352" Max="1352"/>
-      <Concession Active="true">
-        <DescriptionHeader>1.5 month free upfront or prorated. Hurry in to reserve your new home today!</DescriptionHeader>
-      </Concession>
-    </Floorplan>
-    <Floorplan Id="9531">
-      <Name>Juniper - Townhome</Name>
-      <Comment>2 Bed/2.5 Bath Townhouse</Comment>
-      <UnitCount>12</UnitCount>
-      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=9531</FloorplanAvailabilityURL>
-      <DisplayedUnitsAvailable>1</DisplayedUnitsAvailable>
-      <Room Type="Bedroom">
-        <Count>2</Count>
-        <Comment>Bedrooms</Comment>
-      </Room>
-      <Room Type="Bathroom">
-        <Count>2</Count>
-        <Comment>Bathrooms</Comment>
-      </Room>
-      <SquareFeet Min="1310" Max="1310"/>
-      <MarketRent Min="1700" Max="1700"/>
-      <EffectiveRent Min="1700" Max="1700"/>
-    </Floorplan>
-    <Floorplan Id="9532">
-      <Name>Poplar Loft</Name>
-      <Comment>1 Bed/1 Bath Loft</Comment>
-      <UnitCount>12</UnitCount>
-      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=9532</FloorplanAvailabilityURL>
-      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
-      <Room Type="Bedroom">
-        <Count>1</Count>
-        <Comment>Bedrooms</Comment>
-      </Room>
-      <Room Type="Bathroom">
-        <Count>1</Count>
-        <Comment>Bathrooms</Comment>
-      </Room>
-      <SquareFeet Min="920" Max="920"/>
-      <MarketRent Min="1169" Max="1400"/>
-      <EffectiveRent Min="1169" Max="1400"/>
-    </Floorplan>
-    <Floorplan Id="9533">
-      <Name>Sequoia Loft</Name>
-      <Comment>2 Bed/2 Bath Loft</Comment>
-      <UnitCount>16</UnitCount>
-      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=9533</FloorplanAvailabilityURL>
-      <DisplayedUnitsAvailable>1</DisplayedUnitsAvailable>
-      <Room Type="Bedroom">
-        <Count>2</Count>
-        <Comment>Bedrooms</Comment>
-      </Room>
-      <Room Type="Bathroom">
-        <Count>2</Count>
-        <Comment>Bathrooms</Comment>
-      </Room>
-      <SquareFeet Min="1330" Max="1330"/>
-      <MarketRent Min="1550" Max="1550"/>
-      <EffectiveRent Min="1550" Max="1550"/>
-    </Floorplan>
-    <Floorplan Id="41492">
-      <Name>Linden</Name>
-      <Comment>1 Bed/1 Bath Den</Comment>
-      <UnitCount>48</UnitCount>
-      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=41492</FloorplanAvailabilityURL>
-      <DisplayedUnitsAvailable>1</DisplayedUnitsAvailable>
-      <Room Type="Bedroom">
-        <Count>1</Count>
-        <Comment>Bedrooms</Comment>
-      </Room>
-      <Room Type="Bathroom">
-        <Count>1</Count>
-        <Comment>Bathrooms</Comment>
-      </Room>
-      <SquareFeet Min="902" Max="902"/>
-      <MarketRent Min="1183" Max="1183"/>
-      <EffectiveRent Min="1183" Max="1183"/>
-    </Floorplan>
-  </Property>
-  <Property ManagementID="55973">
-    <PropertyID>
-      <Identification xmlns="http://my-company.com/namespace" Type="market rate apt">
         <PrimaryID>14317</PrimaryID>
         <SecondaryID>00000092</SecondaryID>
         <MarketingName>Hunters Glen</MarketingName>
@@ -547,6 +339,214 @@
       <Src>http://my.vaultware.com/ControlPanel3.0/GetImage.aspx?id=13616</Src>
       <Rank/>
     </File>
+  </Property>
+  <Property ManagementID="55973">
+    <PropertyID>
+      <Identification xmlns="http://my-company.com/namespace" Type="market rate apt">
+        <PrimaryID>14201</PrimaryID>
+        <SecondaryID>00000088</SecondaryID>
+        <MarketingName>The Apartments @ Briarwood</MarketingName>
+      </Identification>
+      <Address xmlns="http://my-company.com/namespace" Type="property">
+        <Address1>9204 Appleford Circle</Address1>
+        <City>Owings Mills</City>
+        <State>MD</State>
+        <PostalCode>21117</PostalCode>
+        <CountyName>Baltimore</CountyName>
+      </Address>
+      <Phone xmlns="http://my-company.com/namespace" Type="office">
+        <PhoneNumber>410-581-3817</PhoneNumber>
+      </Phone>
+    </PropertyID>
+    <ILS_Identification Type="Unspecified" RentalType="Unspecified"/>
+    <Information>
+      <StructureType>Standard</StructureType>
+      <UnitCount>0</UnitCount>
+      <PropertyAvailabilityURL>http://units.realtydatatrust.com/unittype.aspx?ils=345&amp;propid=14201</PropertyAvailabilityURL>
+    </Information>
+    <Floorplan Id="9524">
+      <Name>Cedar</Name>
+      <Comment>1 Bed/1 Bath</Comment>
+      <UnitCount>48</UnitCount>
+      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=9524</FloorplanAvailabilityURL>
+      <DisplayedUnitsAvailable>2</DisplayedUnitsAvailable>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Bedrooms</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1</Count>
+        <Comment>Bathrooms</Comment>
+      </Room>
+      <SquareFeet Min="673" Max="673"/>
+      <MarketRent Min="906" Max="1011"/>
+      <EffectiveRent Min="906" Max="1011"/>
+    </Floorplan>
+    <Floorplan Id="9525">
+      <Name>Poplar</Name>
+      <Comment>1 Bed/1 Bath</Comment>
+      <UnitCount>36</UnitCount>
+      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=9525</FloorplanAvailabilityURL>
+      <DisplayedUnitsAvailable>2</DisplayedUnitsAvailable>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Bedrooms</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1</Count>
+        <Comment>Bathrooms</Comment>
+      </Room>
+      <SquareFeet Min="775" Max="775"/>
+      <MarketRent Min="1013" Max="1023"/>
+      <EffectiveRent Min="1013" Max="1023"/>
+    </Floorplan>
+    <Floorplan Id="9527">
+      <Name>Chestnut</Name>
+      <Comment>1 Bed/1 Bath Den</Comment>
+      <UnitCount>16</UnitCount>
+      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=9527</FloorplanAvailabilityURL>
+      <DisplayedUnitsAvailable>1</DisplayedUnitsAvailable>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Bedrooms</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1</Count>
+        <Comment>Bathrooms</Comment>
+      </Room>
+      <SquareFeet Min="901" Max="901"/>
+      <MarketRent Min="1105" Max="1105"/>
+      <EffectiveRent Min="1105" Max="1105"/>
+    </Floorplan>
+    <Floorplan Id="9528">
+      <Name>Sequoia</Name>
+      <Comment>2 Bed/2 Bath</Comment>
+      <UnitCount>64</UnitCount>
+      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=9528</FloorplanAvailabilityURL>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Bedrooms</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2</Count>
+        <Comment>Bathrooms</Comment>
+      </Room>
+      <SquareFeet Min="1040" Max="1040"/>
+      <MarketRent Min="1155" Max="1400"/>
+      <EffectiveRent Min="1155" Max="1400"/>
+    </Floorplan>
+    <Floorplan Id="9529">
+      <Name>Maple</Name>
+      <Comment>2 Bed/2 Bath</Comment>
+      <UnitCount>64</UnitCount>
+      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=9529</FloorplanAvailabilityURL>
+      <DisplayedUnitsAvailable>1</DisplayedUnitsAvailable>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Bedrooms</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2</Count>
+        <Comment>Bathrooms</Comment>
+      </Room>
+      <SquareFeet Min="1083" Max="1083"/>
+      <MarketRent Min="1300" Max="1300"/>
+      <EffectiveRent Min="1300" Max="1300"/>
+    </Floorplan>
+    <Floorplan Id="9530">
+      <Name>Oak</Name>
+      <Comment>3 Bed/2 Bath</Comment>
+      <UnitCount>32</UnitCount>
+      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=9530</FloorplanAvailabilityURL>
+      <DisplayedUnitsAvailable>2</DisplayedUnitsAvailable>
+      <Room Type="Bedroom">
+        <Count>3</Count>
+        <Comment>Bedrooms</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2</Count>
+        <Comment>Bathrooms</Comment>
+      </Room>
+      <SquareFeet Min="1204" Max="1204"/>
+      <MarketRent Min="1352" Max="1352"/>
+      <EffectiveRent Min="1352" Max="1352"/>
+      <Concession Active="true">
+        <DescriptionHeader>1.5 month free upfront or prorated. Hurry in to reserve your new home today!</DescriptionHeader>
+      </Concession>
+    </Floorplan>
+    <Floorplan Id="9531">
+      <Name>Juniper - Townhome</Name>
+      <Comment>2 Bed/2.5 Bath Townhouse</Comment>
+      <UnitCount>12</UnitCount>
+      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=9531</FloorplanAvailabilityURL>
+      <DisplayedUnitsAvailable>1</DisplayedUnitsAvailable>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Bedrooms</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2</Count>
+        <Comment>Bathrooms</Comment>
+      </Room>
+      <SquareFeet Min="1310" Max="1310"/>
+      <MarketRent Min="1700" Max="1700"/>
+      <EffectiveRent Min="1700" Max="1700"/>
+    </Floorplan>
+    <Floorplan Id="9532">
+      <Name>Poplar Loft</Name>
+      <Comment>1 Bed/1 Bath Loft</Comment>
+      <UnitCount>12</UnitCount>
+      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=9532</FloorplanAvailabilityURL>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Bedrooms</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1</Count>
+        <Comment>Bathrooms</Comment>
+      </Room>
+      <SquareFeet Min="920" Max="920"/>
+      <MarketRent Min="1169" Max="1400"/>
+      <EffectiveRent Min="1169" Max="1400"/>
+    </Floorplan>
+    <Floorplan Id="9533">
+      <Name>Sequoia Loft</Name>
+      <Comment>2 Bed/2 Bath Loft</Comment>
+      <UnitCount>16</UnitCount>
+      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=9533</FloorplanAvailabilityURL>
+      <DisplayedUnitsAvailable>1</DisplayedUnitsAvailable>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Bedrooms</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2</Count>
+        <Comment>Bathrooms</Comment>
+      </Room>
+      <SquareFeet Min="1330" Max="1330"/>
+      <MarketRent Min="1550" Max="1550"/>
+      <EffectiveRent Min="1550" Max="1550"/>
+    </Floorplan>
+    <Floorplan Id="41492">
+      <Name>Linden</Name>
+      <Comment>1 Bed/1 Bath Den</Comment>
+      <UnitCount>48</UnitCount>
+      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=41492</FloorplanAvailabilityURL>
+      <DisplayedUnitsAvailable>1</DisplayedUnitsAvailable>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Bedrooms</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1</Count>
+        <Comment>Bathrooms</Comment>
+      </Room>
+      <SquareFeet Min="902" Max="902"/>
+      <MarketRent Min="1183" Max="1183"/>
+      <EffectiveRent Min="1183" Max="1183"/>
+    </Floorplan>
   </Property>
   <Property ManagementID="55973">
     <PropertyID>
