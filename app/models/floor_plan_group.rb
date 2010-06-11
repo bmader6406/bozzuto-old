@@ -1,5 +1,5 @@
 class FloorPlanGroup < ActiveRecord::Base
-  has_many :floor_plans do
+  has_many :floor_plans, :dependent => :destroy do
     def cheapest
       rent_field = if proxy_owner.use_market_prices?
         'min_market_rent'

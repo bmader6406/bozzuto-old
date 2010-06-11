@@ -18,17 +18,19 @@ module Vaultware
     private
 
     def process_property(property)
-      info = property.at('./PropertyID/ns:Identification', ns)
+      ident   = property.at('./PropertyID/ns:Identification', ns)
       address = property.at('./PropertyID/ns:Address', ns)
+      info    = property.at('./Information')
 
       @community = Community.find_or_initialize_by_vaultware_id(
-        info.at('./ns:PrimaryID', ns).content.to_i
+        ident.at('./ns:PrimaryID', ns).content.to_i
       )
       @community.update_attributes({
-        :title          => info.at('./ns:MarketingName', ns).content,
-        :website_url    => info.at('./ns:WebSite', ns).try(:content),
-        :street_address => address.at('./ns:Address1', ns).content,
-        :city           => find_city(address)
+        :title            => ident.at('./ns:MarketingName', ns).content,
+        :website_url      => ident.at('./ns:WebSite', ns).try(:content),
+        :street_address   => address.at('./ns:Address1', ns).content,
+        :city             => find_city(address),
+        :availability_url => info.at('./PropertyAvailabilityURL').content
       })
     end
 
