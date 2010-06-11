@@ -5,9 +5,10 @@ class FloorPlanGroupsController < ApplicationController
     @groups = @community.floor_plan_groups(:include => :floor_plans)
   end
 
+
   private
 
-    def find_community
-      @community = Community.find(params[:community_id])
-    end
+  def find_community
+    @community = Community.find(params[:community_id])
+  end
 end

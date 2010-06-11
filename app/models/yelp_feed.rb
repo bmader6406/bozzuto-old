@@ -63,12 +63,11 @@ class YelpFeed < ActiveRecord::Base
 
   protected
 
-    def fetch_feed
-      @feed_data = YelpFeed.get(url)
-    end
+  def fetch_feed
+    @feed_data = YelpFeed.get(url)
+  end
 
-    def valid_rss_feed?
-      @feed_data.is_a?(Hash) && @feed_data['rss'].present?
-    end
-
+  def valid_rss_feed?
+    @feed_data.is_a?(Hash) && @feed_data['rss'].present?
+  end
 end

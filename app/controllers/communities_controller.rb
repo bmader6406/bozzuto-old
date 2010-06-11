@@ -30,12 +30,12 @@ class CommunitiesController < ApplicationController
 
   private
 
-    def find_community
-      @community = Community.find(params[:id])
+  def find_community
+    @community = Community.find(params[:id])
 
-      @recent_queue = RecentQueue.find
-      @recent_queue.push(@community.id)
-      @recently_viewed = @recent_queue.map { |id| Community.find_by_id(id) }.compact
-    end
+    @recent_queue = RecentQueue.find
+    @recent_queue.push(@community.id)
+    @recently_viewed = @recent_queue.map { |id| Community.find_by_id(id) }.compact
+  end
 
 end
