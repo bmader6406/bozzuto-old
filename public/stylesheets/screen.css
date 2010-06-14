@@ -397,27 +397,31 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .about #secondary-nav ul,
     .aparments #secondary-nav ul,
     .homes #secondary-nav ul,
-    .services #secondary-nav ul {
+    .services #secondary-nav ul,
+ 		.generic #secondary-nav ul {
       position: relative;
       width: 170px;
     }
     .about #secondary-nav li,
     .apartments #secondary-nav li,
     .homes #secondary-nav li,
-    .services #secondary-nav li {
+    .services #secondary-nav li,
+ 		.generic #secondary-nav li {
       width: 170px;
       border-top: 1px solid #eaecee;
     }
     .about #secondary-nav li.first,
     .apartments #secondary-nav li.first,
     .homes #secondary-nav li.first,
-    .services #secondary-nav li.first {
+    .services #secondary-nav li.first,
+ 		.generic #secondary-nav li.first {
       border-top: none;
     }
     .about #secondary-nav li a,
     .apartments #secondary-nav li a,
     .homes #secondary-nav li a,
-    .services #secondary-nav li a {
+    .services #secondary-nav li a,
+ 		.generic #secondary-nav li a {
       position: relative;
       display: block;
       width: 150px;
@@ -426,7 +430,8 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .about #secondary-nav li a span,
     .apartments #secondary-nav li a span,
     .homes #secondary-nav li a span,
-    .services #secondary-nav li a span {
+    .services #secondary-nav li a span,
+ 		.generic #secondary-nav li a span {
       display: block;
       position: absolute;
       top: 4px; right: 0;
@@ -437,13 +442,15 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .about #secondary-nav li li
     .apartments #secondary-nav li li,
     .homes #secondary-nav li li,
-    .services #secondary-nav li li {
+    .services #secondary-nav li li,
+ 		.generic #secondary-nav li li {
       border-top: none;
     }
     .about #secondary-nav li li a,
     .apartments #secondary-nav li li a ,
     .homes #secondary-nav li li a,
-    .services #secondary-nav li li a {
+    .services #secondary-nav li li a,
+ 		.generic #secondary-nav li li a {
       width: 140px;
       padding: 4px 0 4px 30px;
     }
@@ -451,38 +458,48 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       margin-top: 375px;
     }
     .about #aside .article,
-    .services #aside .article {
+    .services #aside .article,
+ 		.generic #aside .article {
       width: 218px;
       padding: 12px 0 0 12px;
       border-top: 1px solid #fff;
       border-bottom: 1px solid #fff;
     }
+		.generic #aside .latest-news .article {
+			margin-bottom: 8px;
+		}
     .about #aside .section,
-    .services #aside .section {
+    .services #aside .section,
+ 		.generic #aside .section {
       position: relative;
       width: 168px;
       padding: 0 50px 12px 0;
       margin-bottom: 12px;
     }
     .about #aside .section .date,
-    .services #aside .section .date {
+    .services #aside .section .date,
+ 		.generic #aside .section .date {
       position: absolute;
       top: 0; right: 7px;
       width: 43px;
     }
     .about #aside .figure,
-    .services #aside .figure {
+    .services #aside .figure,
+ 		.generic #aside .figure {
       float: left;
       padding-right: 12px;
     }
     .about #aside .figure img,
-    .services #aside .figure img {
+    .services #aside .figure img,
+ 		.generic #aside .figure img {
       display: block;
     }
-    .about #latest-news .section.first {
+    .about #latest-news .section.first,
+ 		.generic .latest-news .section.first {
       border-bottom: 1px solid #d1d2d5;
     }
-    .about #latest-news .section.first .date span {
+    .about #latest-news .section.first .date span,
+ 		.generic .latest-news .section.first .date span {
       display: block;
     }
     .about #latest-news h4 a,
@@ -518,7 +535,8 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .services #breadcrumb li {
       display: inline;
     }
-		.search #breadcrumb .container h1 {   	
+		.search #breadcrumb .container h1,
+		.generic #breadcrumb .container h1 {   	
 			clear: left;
 			margin-top: 24px;
     }
@@ -527,15 +545,24 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     /* @group --masthead */
       
 			.community #masthead,
-			.project #masthead {
+			.project #masthead,
+			.generic #masthead {
         overflow: hidden;
-        height: 374px;
         border-bottom: 1px solid #cdd1d5;
+      }
+			.community #masthead,
+			.project #masthead {
+        height: 374px;
       }
       .community #masthead .container,
  			.project #masthead .container {
         position: relative;
       }
+			.generic #montage {
+				margin: -27px 0 -5px;
+				padding: 0;
+				text-align: center;
+			}
       .community #masthead .nav,
  			.project #masthead .nav {
         position: relative;
@@ -1214,27 +1241,37 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
      display: block;
      padding-left: 6px; 
     }
-    .services #aside #featured-projects .article {
+    .services #aside #featured-projects .article,
+ 		.generic #aside .featured .article {
       overflow: hidden;
       padding: 0;
       width: 230px;
     }
-    .services #aside #featured-projects .details {
+    .services #aside #featured-projects .details,
+ 		.generic #aside .featured .details {
       float: left;
       width: 175px;
     }
-    .services #aside #featured-projects .details a {
+    .services #aside #featured-projects .details a,
+ 		.generic #aside .featured .details a {
       display: block;
       padding-left: 5px;
     }
-    .services #aside #featured-projects .date {
+    .services #aside #featured-projects .date,
+ 		.generic #aside .featured .date {
       float: right;
       width: 45px;
     }
-    .services #aside #featured-projects .view-all {
+    .services #aside #featured-projects .view-all,
+ 		.generic #aside .featured .view-all {
       clear: both;
       display: block;
       padding-left: 5px;
+    }
+    .generic #content img {
+      float:left;
+			margin-right: 20px;
+			margin-bottom: 5px;
     }
   
   /* @end */
@@ -1678,24 +1715,28 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   
   /* @group -search results */
 
-		.search #breadcrumb {
+		.search #breadcrumb,
+		.generic #breadcrumb {
     	border-bottom: 1px solid #858890;
     	height: 81px;
     	margin-bottom: 27px;
     }
 
-    .search #breadcrumb .container {
+    .search #breadcrumb .container,
+ 		.generic #breadcrumb .container {
     	height: 68px;
     	padding: 13px 0 0 185px;
     	position: relative;
     	width: 770px;	
     }
 
-    .search #breadcrumb .container ul li {
+    .search #breadcrumb .container ul li,
+ 		.generic #breadcrumb .container ul li {
     	float: left;
     }
 
-    .search #breadcrumb .container ul li a {
+    .search #breadcrumb .container ul li a,
+ 		.generic #breadcrumb .container ul li a {
     	margin-right: 6px;
     	padding-right: 6px;
     }
@@ -2029,12 +2070,12 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 
     .testimonials li,
     .services #aside #featured-projects .details,
+		.generic #aside .featured .details,
     .tips {
       padding-bottom: 1.454545455em;
       margin-bottom: 0.727272727em;
     }
-    .testimonials blockquote,
-    .tips ul {
+    .testimonials blockquote {
       margin-bottom: 0.727272727em;
     }
     .testimonials .read-more,
@@ -2650,6 +2691,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       font-size: 11px;
       line-height: 1.636363636;
     }
+    .secondary #main-content p.first {
+      font-size: 15px;
+    }
   
   /* @end */
   
@@ -2689,7 +2733,8 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .about #secondary-nav li a,
     .apartments #secondary-nav li a,
     .homes #secondary-nav li a,
-    .services #secondary-nav li a {
+    .services #secondary-nav li a,
+ 		.generic #secondary-nav li a {
       font-size: 11px;
       font-weight: bold;
       text-transform: uppercase;
@@ -2698,7 +2743,8 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .about #secondary-nav li a span,
     .apartments #secondary-nav li a span,
     .homes #secondary-nav li a span,
-    .services #secondary-nav li a span {
+    .services #secondary-nav li a span,
+ 		.generic #secondary-nav li a span {
       line-height: 20px;
       font-weight: normal;
       text-align: center;
@@ -2711,23 +2757,25 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .about #secondary-nav .active a,
     .apartments #secondary-nav .active a,
     .home #secondary-nav .active a,
-    .services #secondary-nav .active a  {
+    .services #secondary-nav .active a,
+  	.generic #secondary-nav .active a {
       text-decoration: none;
       color: #2e2e39;
     }
     .about #secondary-nav li li a,
     .apartments #secondary-nav li li a,
     .home #secondary-nav li li a,
-    .services #secondary-nav li li a {
+    .services #secondary-nav li li a,
+ 		.generic #secondary-nav li li a {
       font-size: 10px;
       font-weight: normal;
       color: #92929b;
     }
 		#secondary-nav li.current a {
 			color: #080812;
-		}
+		}		
     .about #content p,
- 		.li_container {
+		.generic #content p {
       padding-bottom: 1.454545455em;
       margin-bottom: 0.727272727em;
     }
@@ -2737,24 +2785,29 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .about #aside .section h4,
     .about #aside .section p,
     .services #aside .section h4,
-    .services #aside .section p {
+    .services #aside .section p,
+ 		.generic #aside .section h4, 
+		.generic #aside .section p {
       font-size: 11px;
       line-height: 1.272727273;
       color: #747479;
     }
     .about #aside .section h4 a,
-    .services #aside .section h4 a {
+    .services #aside .section h4 a,
+ 		.generic #aside .section h4 a {
       font-weight: bold;
       color: #747479;
     }
     .about #aside .section .date,
-    .services #aside .section .date {
+    .services #aside .section .date,
+ 		.generic #aside .section .date {
       font-size: 12px;
       font-weight: bold;
       text-align: right;
       color: #67676f;
     }
-    .about #latest-news .section.first .date span {
+    .about #latest-news .section.first .date span,
+ 		.generic .latest-news .section.first .date span {
       font-size: 27px;
       line-height: 0.925925926;
       font-weight: normal;
@@ -3161,19 +3214,22 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	font-weight: bold;
     }
 
-    .search #breadcrumb .container h1 {
+    .search #breadcrumb .container h1,
+ 		.generic #breadcrumb .container h1 {
     	color: #565c64;
     	font-size: 35px;
     	line-height: 1;
     	text-transform: uppercase;
     }
 
-    .search #breadcrumb .container ul li {
+    .search #breadcrumb .container ul li,
+ 		.generic #breadcrumb .container ul li {
     	color: #565c64;
     	font-size: 11px;
     }
 
-    .search #breadcrumb .container ul li a {
+    .search #breadcrumb .container ul li a,
+ 		.generic #breadcrumb .container ul li a {
     	color: #565c64;
     	text-decoration: underline;
     }
@@ -3258,10 +3314,12 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .tips ul {
       font-size: 11px;
     }
-    .services #aside #featured-projects .details {
+    .services #aside #featured-projects .details,
+ 		.generic #aside .featured .details {
       line-height: 1.4;
     }
-    .services #aside #featured-projects .details a {
+    .services #aside #featured-projects .details a,
+ 		.generic #aside .featured .details a {
       color: #747479;
       font-weight: bold;
     }
@@ -3501,13 +3559,15 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .about #secondary-nav li a,
     .apartments #secondary-nav li a,
     .homes #secondary-nav li a,
-    .services #secondary-nav li a {
+    .services #secondary-nav li a,
+ 		.generic #secondary-nav li a {
       background: transparent url(../images/structure/bg-header-a.gif) no-repeat 12px center;
     }
     .about #secondary-nav li li a,
     .apartments #secondary-nav li li a,
     .homes #secondary-nav li li a,
-    .services #secondary-nav li li a {
+    .services #secondary-nav li li a,
+ 		.generic #secondary-nav li li a {
       background-position: 22px center;
     }
   
@@ -3565,41 +3625,49 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 			background: none;
 		}
     .about #content p,
-		.li_container {
+		.generic #content p.last {
       background: transparent url(../images/structure/bg-about-content-p.gif) no-repeat bottom left;
     }
     .about #content .slideshow p {
       background: none;
     }
     .about #aside .article,
-    .services #aside .article {
+    .services #aside .article,
+ 		.generic #aside .article {
       background-color: #f2f4f5;
     }
     .about #aside h3,
-    .services #aside h3 {
+    .services #aside h3,
+ 		.generic #aside h3 {
       background: transparent url(../images/structure/bg-aside-h3.gif) no-repeat 0 0;
     }
     .about #aside h3:hover,
-    .services #aside h3:hover {
+    .services #aside h3:hover,
+ 		.generic #aside h3:hover {
       background: transparent url() no-repeat 0 0;
     }
     .about #aside h3 a,
-    .services #aside h3 a {
+    .services #aside h3 a,
+ 		.generic #aside h3 a {
       background: transparent url(../images/structure/bg-right-arrow.png) no-repeat 205px center;
     }
     .about #aside h3 a:hover,
-    .services #aside h3 a:hover, {
+    .services #aside h3 a:hover,
+ 		.generic #aside h3 a:hover {
       background: transparent url(../images/structure/bg-right-arrow.png) no-repeat 205px center;
     }
     .about #aside h3:hover,
-    .services #aside h3:hover {
+    .services #aside h3:hover,
+ 		.generic #aside h3:hover {
       background: transparent url(../images/structure/bg-aside-h3.gif) no-repeat 0 bottom;
     }
     .about #latest-news .section,
-    .services #latest-news .section {
+    .services #latest-news .section,
+ 		.generic .latest-news .section {
       background: transparent url(../images/structure/bg-about-sidebar-section.gif) no-repeat bottom left;
     }
-    .about #latest-news .section.first {
+    .about #latest-news .section.first,
+ 		.generic .latest-news .section.first {
       background: none;
     }
     .about #latest-news h4 a,
@@ -3928,11 +3996,13 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   
   /* @group -search results */
 
-    .search #breadcrumb {
+    .search #breadcrumb,
+ 		.generic #breadcrumb {
     	background: #c0c5cb url(../images/structure/bg-masthead.gif) left top repeat-x;
     }
 
-    .search #breadcrumb .container ul li a {
+    .search #breadcrumb .container ul li a,
+ 		.generic #breadcrumb .container ul li a {
     	background: url(../images/structure/bg-masthead-a-dark.gif) right center no-repeat;
     }
 
@@ -4054,11 +4124,14 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .tips {
       background: url(../images/structure/bg-about-content-p.gif) no-repeat 0 100%;
     }
-    .services #aside #featured-projects .article {
+    .services #aside #featured-projects .article,
+ 		.generic #aside .featured .article {
       background-color: #fff;
     }
     .services #aside #featured-projects .details a,
-    .services #aside #featured-projects .view-all {
+    .services #aside #featured-projects .view-all,
+ 		.generic #aside .featured .details a,
+		.generic #aside .featured .view-all {
       background: url(../images/structure/bg-news-a.gif) no-repeat 0 50%;
     }
     .tips li {

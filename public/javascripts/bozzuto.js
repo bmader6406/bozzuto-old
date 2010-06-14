@@ -24,7 +24,7 @@
 
     $(".features div.feature ul").makeacolumnlists({cols:2, colWidth:325, equalHeight:false, startN:1});
     
-    $(".services div.tips ul").makeacolumnlists({cols:3, colWidth:150, equalHeight:false, startN:1});
+    $(".services div.tips ul, .generic div.tips ul").makeacolumnlists({cols:3, colWidth:150, equalHeight:false, startN:1});
     
     //Collapse items by default on search results
     $('.search #content > ul.results').find('.closed > :not(.header)').hide();
