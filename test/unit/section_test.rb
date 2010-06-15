@@ -12,5 +12,6 @@ class SectionTest < ActiveSupport::TestCase
     should_validate_uniqueness_of :title
 
     should_have_one :service
+    should_have_many :news_posts
   end
 end
