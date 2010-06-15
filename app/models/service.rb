@@ -3,6 +3,8 @@ class Service < ActiveRecord::Base
 
   slugify
 
+  default_scope :order => 'position ASC'
+
   belongs_to :section
 
   validates_presence_of :title, :section
