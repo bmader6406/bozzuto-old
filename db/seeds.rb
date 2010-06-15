@@ -24,3 +24,11 @@ City.create([{ :name => 'Arlington', :state => State.find_by_code('VA') },
              { :name => 'Pittsburgh', :state => State.find_by_code('PA') },
              { :name => 'Washington', :state => State.find_by_code('DC') },
              { :name => 'Hartford', :state => State.find_by_code('CT') }])
+
+Section.create([{ :title => 'Acquisitions' },
+                { :title => 'Construction'},
+                { :title => 'Development'},
+                { :title => 'Homes'},
+                { :title => 'Land'},
+                { :title => 'Management'},
+                { :title => 'About' }])
