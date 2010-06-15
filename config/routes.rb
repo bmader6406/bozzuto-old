@@ -15,4 +15,7 @@ ActionController::Routing::Routes.draw do |map|
       :as => :floor_plans,
       :only => :index
   end
+
+  map.resources :services, :only => [:index, :show] do |service|
+  end
 end

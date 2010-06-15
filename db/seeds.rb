@@ -25,10 +25,9 @@ City.create([{ :name => 'Arlington', :state => State.find_by_code('VA') },
              { :name => 'Washington', :state => State.find_by_code('DC') },
              { :name => 'Hartford', :state => State.find_by_code('CT') }])
 
-Section.create([{ :title => 'Acquisitions' },
-                { :title => 'Construction'},
-                { :title => 'Development'},
-                { :title => 'Homes'},
-                { :title => 'Land'},
-                { :title => 'Management'},
-                { :title => 'About' }])
+
+%w(Acquisitions Construction Development Homes Land Management).each do |title|
+  section = Section.create(:title => title)
+  Service.create(:title => title, :section => section)
+end
+Section.create(:title => 'About')

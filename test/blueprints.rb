@@ -67,3 +67,8 @@ end
 Section.blueprint do
   title { Sham.section_title }
 end
+
+Service.blueprint do
+  title { Sham.section_title }
+  section
+end
