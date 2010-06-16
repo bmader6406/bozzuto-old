@@ -18,4 +18,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :services, :only => [:index, :show] do |service|
   end
+
+  map.resources :states, :only => :show
 end
