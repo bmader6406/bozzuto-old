@@ -517,6 +517,31 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   
   /* @end */
   
+  /* @group -careers */
+    
+    .careers #masthead .container {
+      padding-left: 0;
+      width: 960px;
+    }
+    
+    .careers #content .column-main {
+      float: left;
+      width: 519px;
+    }
+    
+    .careers #aside {
+      margin-top: 0;
+      padding-right: 0;
+      width: 230px;
+    }
+    
+    .careers #content {
+      padding-right: 0;
+      width: 769px;
+    }
+  
+  /* @end */
+  
   /* @group -community */
 
     .about #breadcrumb,
@@ -539,6 +564,11 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 		.generic #breadcrumb .container h1 {   	
 			clear: left;
 			margin-top: 24px;
+    }
+    .search #breadcrumb .aside {
+      position: absolute;
+      right: 0;
+      top: 0;
     }
     
     
@@ -566,7 +596,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       .community #masthead .nav,
  			.project #masthead .nav {
         position: relative;
-        z-index: 1;
+        z-index: 10;
         width: 190px;
         height: 374px;
       }
@@ -618,6 +648,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         top: 0; left: 170px;
         width: 870px;
         height: 374px;
+        z-index: 1;
       }
  			.project #slideshow {
         left: 190px;
@@ -629,7 +660,8 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         top: 0; left: 0;
       }
       .community #slideshow div.header {
-        z-index: 2;
+        position: relative;
+        z-index: 10;
         top: 10px; left: 35px;
       }
       .community #slideshow div.header h1 {
@@ -846,6 +878,11 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
      .community #sidebar p.sharethis a {
        padding: 5px 0 5px 20px;
      }
+     .community .slide {
+       left: 0;
+       position: absolute;
+       top: 0;
+     }
     
   /* @end */
   
@@ -932,6 +969,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
 
     .apartments #content div.slideshow,
+    .home #content div.slideshow,
     .homes #content div.slideshow {
       height: 375px;
       position: relative;
@@ -951,18 +989,24 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       z-index: 0;
     }
 
+    .features ul.slides li,
+    .home #content ul.slides li,
     .apartments #content ul.slides li,
     .homes-search ul.slides li,
     .homes #content ul.slides li {
       z-index: 1;
     }
 
+    .features ul.slides li.on-deck,
+    .home ul.slides li.on-deck,
     .apartments #content ul.slides li.on-deck,
     .homes-search ul.slides li.on-deck,
     .homes #content ul.slides li.on-deck {
       z-index: 3;
     }
 
+    .features ul.slides li.current,
+    .home #content ul.slides li.current,
     .apartments #content ul.slides li.current,
     .homes-search ul.slides li.current,
     .homes #content ul.slides li.current {
@@ -976,6 +1020,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
 
     .apartments #content ul.slideshow-pagination,
+    .home #content ul.slideshow-pagination,
     .homes-search ul.slideshow-pagination {
       border: 1px solid #85898e;
       bottom: 0;
@@ -986,11 +1031,13 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
 
     .apartments #content ul.slideshow-pagination li,
+    .home #content ul.slideshow-pagination li,
     .homes-search ul.slideshow-pagination li {
       float: left;
     }
 
     .apartments #content ul.slideshow-pagination li a,
+    .home #content ul.slideshow-pagination li a,
     .homes-search ul.slideshow-pagination li a {
       display: block;
       width: 19px;
@@ -1060,9 +1107,10 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 		.project #masthead .container {
 			height: 372px;
 		}
-    .services #masthead .masthead-slideshow li,
-    .landing #masthead .masthead-slideshow li,
-    .about #masthead .masthead-slideshow li {
+    #masthead .masthead-slideshow .slides {
+      z-index: 1;  
+    }
+    #masthead .masthead-slideshow .slides li {
       background: #c0c5cb url(../images/structure/bg-masthead.gif) repeat-x;
       left: 0;
       position: absolute;
@@ -1070,9 +1118,36 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       width: 960px;
       z-index: 1;
     }
-    .services #masthead .masthead-slideshow .current,
-    .about #masthead .masthead-slideshow .current {
+    #masthead .masthead-slideshow .slides .current {
       z-index: 2;
+    }
+    #masthead .masthead-slideshow .slides .on-deck {
+      z-index: 3;    
+    }
+    #masthead .masthead-slideshow .slideshow-pagination {
+      border-top: 1px solid #fff;
+      height: 20px;
+      left: 190px;
+      position: absolute;
+      top: 190px;
+      width: 150px;
+      z-index: 2;
+    }
+    #masthead .masthead-slideshow .slideshow-pagination li {
+      float: left;      
+    }
+    #masthead .masthead-slideshow .slideshow-pagination li a {
+      background: none;
+      color: #717479;
+      display: block;
+      float: left;
+      font-size: 12px;
+      padding: 7px 6px;
+      width: auto;
+    }
+    #masthead .masthead-slideshow .slideshow-pagination li.current a {
+      color: #000;
+      font-weight: bold;    
     }
     .services #masthead .section,
     .landing #masthead .section,
@@ -1131,6 +1206,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       width: 849px;
     }
 
+    .home ul.slides li,
     .homes-search ul.slides li,
     .services #content ul.slides li,
     .about #content ul.slides li {
@@ -1144,30 +1220,37 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       z-index: 0;
     }
 
+    .home ul.slides li,
     .homes-search ul.slides li,
     .services #content ul.slides li,
     .about #content ul.slides li {
       z-index: 1;
     }
 
+    .home ul.slides li.on-deck,
     .homes-search ul.slides li.on-deck,
     .services #content ul.slides li.on-deck,
     .about #content ul.slides li.on-deck {
       z-index: 3;
     }
 
+    .home ul.slides li.current,
     .homes-search ul.slides li.current,
     .services #content ul.slides li.current,
     .about #content ul.slides li.current {
       z-index: 2;
     }
 
+    .home ul.slideshow-pagination,
+    .homes ul.slideshow-pagination,
     .homes-search ul.slideshow-pagination,
     .services #content ul.slideshow-pagination,
     .about #content ul.slideshow-pagination {
       background: #fff;
     }
 
+    .home ul.slideshow-pagination,
+    .homes ul.slideshow-pagination,
     .homes-search ul.slideshow-pagination,
     .services #content ul.slideshow-pagination,
     .about #content ul.slideshow-pagination {
@@ -1179,12 +1262,16 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       z-index: 10;
     }
 
+    .home ul.slideshow-pagination li,
+    .homes ul.slideshow-pagination li,
     .homes-search ul.slideshow-pagination li,
     .services #content ul.slideshow-pagination li,
     .about #content ul.slideshow-pagination li {
       float: left;
     }
 
+    .home ul.slideshow-pagination li a,
+    .homes ul.slideshow-pagination li a,
     .homes-search ul.slideshow-pagination li a,
     .services #content ul.slideshow-pagination li a,
     .about #content ul.slideshow-pagination li a {
@@ -1193,6 +1280,8 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       text-align: center;
     }
 
+    .home ul.slideshow-pagination li a,
+    .homes ul.slideshow-pagination li a,
     .homes-search ul.slideshow-pagination li a,
     .services #content ul.slideshow-pagination li a,
     .about #content ul.slideshow-pagination li a {
@@ -1200,6 +1289,10 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       width: 19px;
     }
 
+    .home ul.slideshow-pagination li.current a,
+    .home ul.slideshow-pagination li a:hover,
+    .homes ul.slideshow-pagination li.current a,
+    .homes ul.slideshow-pagination li a:hover,
     .homes-search ul.slideshow-pagination li.current a,
     .homes-search ul.slideshow-pagination li a:hover,
     .services #content ul.slideshow-pagination li.current a,
@@ -1210,6 +1303,8 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       text-decoration: none;
     }
 
+    .home ul.slideshow-pagination li.current a,
+    .homes ul.slideshow-pagination li.current a,
     .homes-search ul.slideshow-pagination li.current a,
     .services #content ul.slideshow-pagination li.current a,
     .about #content ul.slideshow-pagination li.current a {
@@ -1351,13 +1446,13 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 
     .project #main-content .content .main-content ul.project-updates li div p.info-link a {
       display: block;
-      height: 19px;
-      right: 6px;
+      height: 60px;
+      right: -10px;
       overflow: hidden;
       position: absolute;
       text-indent: -9999px;
-      top: 4px;
-      width: 19px;
+      top: -12px;
+      width: 60px;
       z-index: 2;
     }
 
@@ -1696,6 +1791,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       margin-bottom: 11px;
     }
     
+    .home ul.slides li,
     .homes-search ul.slides li {
       height: 145px;
       left: 0;
@@ -1705,10 +1801,12 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       width: auto;
     }
     
+    .home #content div.slideshow,
     .homes-search .slideshow {
       height: 145px;
       margin-bottom: 15px;
       position: relative;
+      width: auto;
     }
   
   /* @end */
@@ -1766,6 +1864,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .search #sidebar ul li input {
     	background: none;
     	border: none;
+    	height: auto;
     	width: auto;
     }
 
@@ -1776,12 +1875,11 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
 
     .search #sidebar fieldset ul li select {
+      font-family: Helvetica, Arial, sans-serif;
+      font-weight: bold;
+      height: 15px;
+      text-transform: none;
     	width: 155px;
-    }
-
-    .search #sidebar #special_promotion ul li input {
-    	display: block;
-    	float: left;
     }
 
     .search #sidebar #special_promotion ul li label {
@@ -3110,6 +3208,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       text-decoration: none;
     }
 
+    .home #content ul.slideshow-pagination li a,
     .apartments #content ul.slideshow-pagination li a,
     .homes-search ul.slideshow-pagination li a {
       color: #747479;
@@ -3117,6 +3216,8 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       text-align: center;
     }
 
+    .home ul.slideshow-pagination li.current a,
+    .home ul.slideshow-pagination li a:hover,
     .homes-search ul.slideshow-pagination li.current a,
     .homes-search ul.slideshow-pagination li a:hover,
     .apartments #content ul.slideshow-pagination li.current a,
@@ -3125,6 +3226,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       text-decoration: none;
     }
 
+    .home #content ul.slideshow-pagination li.current a,
     .home-search #content ul.slideshow-pagination li.current a,
     .apartments #content ul.slideshow-pagination li.current a {
       font-weight: bold;
@@ -3478,6 +3580,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
     #copyright a {
       text-transform: uppercase;
+    }
+    #copyright #eho {
+      text-transform: none;
     }
   
   /* @end */
@@ -3880,10 +3985,12 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       background: left top no-repeat #fff;
     }
 
+    .home #content ul.slideshow-pagination,
     .apartments #content ul.slideshow-pagination {
       background: #fff;
     }
     
+    .home ul.slideshow-pagination,
     .homes-search ul.slideshow-pagination {
       background: #fff url(../images/structure/bg-news-a.gif) no-repeat 5px center;
     }
@@ -4010,7 +4117,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	background: url(../images/structure/bg-about-content-p.gif) 13px bottom no-repeat;
     }
 
-    .search #content ul.results li {
+    .search #content ul.results li, .search #content ul.results li.closed:hover {
     	background: url(../images/structure/bg-search-results-headers.gif) 0 -83px repeat-x;
     }
 
@@ -4032,6 +4139,10 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 
     .search #content ul.results li ul.location-filters li h3 {
     	background: url(../images/structure/bg-search-results-header.gif) right -55px no-repeat;
+    }
+    
+    .search #content ul.results li.closed:hover div.header {
+    	background: url(../images/structure/bg-search-results-header.gif) right -198px no-repeat;      
     }
 
     .search #content ul.results ul.location-filters li.open div.header h3 { 

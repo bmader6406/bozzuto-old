@@ -1,5 +1,97 @@
 <% content_for :body_class do %>home<% end %>
 
+<div id="header" class="header">
+  <div class="container">
+    <div id="logo">
+      <a href="home.html">Bozzuto</a>
+    </div>
+
+    <div>
+      <div class="nav">
+        <ul id="main-nav">
+          <li class="apartments-nav"><a href="#">Apartments</a></li>
+          <li class="homes-nav"><a href="#">New Homes</a></li>
+          <li class="about-nav"><a href="about.html">About Us</a></li>
+          <li class="services-nav"><a href="#">Our Services</a></li>
+        </ul>
+
+        <ul id="home-nav">
+          <li><a href="#">Management</a></li>
+          <li><a href="#">Homebuilding</a></li>
+          <li><a href="#">Development</a></li>
+          <li><a href="#">Acquisitions</a></li>
+          <li><a href="#">Land</a></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <form action="search-results.html" class="search-form">
+          <p class="fields">
+            <input type="text" name="q" />
+            <button type="submit">Submit</button>
+          </p>
+        </form>
+
+        <div class="aside">
+          <ul>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <ul id="special-nav">
+      <li>
+        <a href="#" class="find-apartment-link">Lease an Apartment</a>
+        <div id="find-apartment-form" class="popup">
+          <form>
+            <div class="left-col">
+              <p class="field">
+                <select multiple="multiple" name="location">
+                  <optgroup label="Choose Location">
+                    <option>Anywhere</option>
+                    <option>Alexandria City</option>
+                    <option>Fairfax County</option>
+                    <option>Arlington County</option>
+                    <option>Loudoun County</option>
+                    <option>Prince William County</option>
+                    <option>Prince Georges County</option>
+                  </optgroup>
+                </select>
+              </p>
+            </div>
+
+            <div class="right-col">
+              <p class="field">
+                <select name="min_price">
+                  <option value="">Choose Minimum Price&hellip;</option>
+                </select>
+              </p>
+
+              <p class="field">
+                <select name="max_price">
+                  <option value="">Choose Maximum Price&hellip;</option>
+                </select>
+              </p>
+
+              <p class="advanced-search">
+                <a href="#">Advanced Search</a>
+              </p>
+
+              <p class="submit">
+                <button type="submit">Search</button>
+              </p>
+            </div>
+          </form>
+        </div>
+      </li>
+      <li><a href="#">Buy a Home</a></li>
+    </ul>
+    
+  </div>
+</div>
+
 <div id="masthead">
   <div id="masthead-fg">
     <div class="container">
@@ -39,9 +131,19 @@
 
       <div id="featured-property" class="col">
         <h2><a href="#">Featured Property</a></h2>
-        <p>
-          <img src="images/featured-property.jpg" />
-        </p>
+				<div class="slideshow">
+          <ul class="slides">
+            <li class="current" id="slide-1">
+              <img src="/images/fpo/homes-search-slideshow-1.jpg" />
+            </li>
+            <li id="slide-2">
+              <img src="/images/fpo/homes-search-slideshow-2.jpg" />              
+            </li>
+            <li id="slide-3">
+              <img src="/images/fpo/homes-search-slideshow-3.jpg" />              
+            </li>
+          </ul>
+        </div>
         <p>
           <strong>360 State Street, New Haven, CT</strong><br />
           Luxury apartments in a LEED&reg;<br />
@@ -66,5 +168,102 @@
       <li><a href="#">Read More</a></li>
       <li class="rss"><a href="#">Get RSS Feed</a></li>
     </ul>
+  </div>
+</div>
+
+<div id="footer" class="footer">
+  <div class="container">
+    <div class="col">
+      <h4>About Us</h4>
+
+      <ul>
+        <li><a href="#">Overview</a></li>
+        <li><a href="#">Our Work</a></li>
+        <li><a href="#">Awards</a></li>
+        <li><a href="#">News &amp; Press</a></li>
+        <li><a href="#">Leadership</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div class="col">
+      <h4>Our Services</h4>
+
+      <ul>
+        <li><a href="#">Management</a></li>
+        <li><a href="#">Homebuilding</a></li>
+        <li><a href="#">Development</a></li>
+        <li><a href="#">Acquisitions</a></li>
+        <li><a href="#">Land</a></li>
+      </ul>
+    </div>
+
+    <div class="col">
+      <h4>Places We Work</h4>
+
+      <ul>
+        <li><a href="#">Connecticut</a></li>
+        <li><a href="#">Maryland</a></li>
+        <li><a href="#">Massachusetts</a></li>
+        <li><a href="#">New Jersey</a></li>
+        <li><a href="#">New York</a></li>
+        <li><a href="#">Pennsylvania</a></li>
+        <li><a href="#">Virginia</a></li>
+        <li><a href="#">Washington, DC</a></li>
+      </ul>
+    </div>
+
+    <div class="col">
+      <h4>Get in Touch</h4>
+
+      <p>
+        301.220.0100
+        <a href="mailto:feedback@bozzuto.com">feedback@bozzuto.com</a>
+      </p>
+
+      <p>
+        7850 Walker Dr.<br />
+        Suite 400<br />
+        Greenbelt, MD 20770
+      </p>
+    </div>
+
+    <div class="col wide">
+      <h4>Connect with Us</h4>
+
+      <form class="search-form">
+        <label for="search-input">Enter your email address to stay connected.</label>
+        <p class="fields">
+          <input type="text" name="q" id="search-input" />
+          <button type="submit">Submit</button>
+        </p>
+      </form>
+
+      <ul>
+        <li class="facebook"><a href="#">Follow us on Facebook</a></li>
+        <li class="twitter"><a href="#">Follow us on Twitter</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="copyright">
+  <div class="container">
+    <p>
+      &copy; 2010 Bozzuto
+    </p>
+
+    <p class="links">
+      <a href="#">Privacy Policy</a>
+      |
+      <a href="#">Website Disclaimer</a>
+      |
+      <a href="#">Employee Login</a>
+    </p>
+
+    <a href="#" id="eho">
+      Equal Housing Opportunity
+    </a>
   </div>
 </div>

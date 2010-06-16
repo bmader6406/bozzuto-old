@@ -8,19 +8,19 @@
     $("#community-info, #apartments-by-area, #properties-by-type").onPageTabs();
     $('.community .social-updates .twitter-update').latestTwitterUpdate();
     
-    $(".apartments div.slideshow, .homes-search .slideshow").featuredSlideshow();
+    $(".apartments div.slideshow, .homes-search .slideshow, .home .slideshow").featuredSlideshow();
     
-    $(".services div.slideshow, .about div.slideshow").featuredSlideshow({
-      callback: function(i,transTime) {
-        $('#masthead ul.masthead-slideshow .current').animate({ opacity: 0 }, transTime);
-  			$('#masthead ul.masthead-slideshow li:eq('+i+')').animate({ opacity: 1}, transTime, function() {
-  				$(this).siblings('.current').removeClass('current');
-  				$(this).addClass('current');
-  			});
-      }
+    $(".services div.slideshow, .about div.slideshow").featuredSlideshow();
+    
+    $(".community #slideshow").featuredSlideshow({
+      'dynamicPagination' : false
     });
     
+    $(".masthead-slideshow").featuredSlideshow();
+    
     $(".listings .row:last-child").evenUp();
+    
+    $(".secondaryNav").secondaryNav();
 
     $(".features div.feature ul").makeacolumnlists({cols:2, colWidth:325, equalHeight:false, startN:1});
     
@@ -296,19 +296,17 @@
 			return this.each(function() {
 				var $this = $(this);
 				var o = $.meta ? $.extend({}, opts, $this.data()) : opts;
-				
-				if($('ul.slides li').size() > 1) {
+
+				if($('ul.slides li', $this).length > 1) {
 					if(o.dynamicPagination) {
 
 						var pagination = $('<ul class="slideshow-pagination"></ul>');
-
 						$('ul.slides li', $this).each(function(i) {
 							$('<li><a href="#'+$(this).attr('id')+'">'+(i+1)+'</a></li>').appendTo(pagination);
 						});
-
 						$('li:first', pagination).addClass('current');
-
 						pagination.appendTo($this);
+						
 					}
 
 					if(o.autoAdvance) {
@@ -320,25 +318,26 @@
 							hoverInterval = autoAdvance($this, o);
 						});
 
-					}
+					} 
 
 					$('ul.slideshow-pagination li a', $this).click(function() {
 						$.fn.featuredSlideshow.advance($('ul.slides li:eq('+($(this).parent().prevAll().size())+')'), o);
 						return false;
 					});
-					$('ul.slideshow-navigation li a.prev', $this).click(function() {
+					$('.prev', $this).click(function() {
 						var prev = $('ul.slides li.current', $this).prev().size() == 0 ? $('ul.slides li:last', $this) : $('ul.slides li.current', $this).prev();
 						$.fn.featuredSlideshow.advance(prev, o);
 						return false;
 					});
-					$('ul.slideshow-navigation li a.next', $this).click(function() {
+					$('.next', $this).click(function() {
 						var next = $('ul.slides li.current', $this).next().size() == 0 ? $('ul.slides li:first', $this) : $('ul.slides li.current', $this).next();
 						$.fn.featuredSlideshow.advance(next, o);
 						return false;
 					});
 					
-				}
-				
+				} else {
+  			  $('ul.slideshow-navigation, .prev, .next', $this).hide();
+  			}				
 
 			});
 		};
@@ -353,16 +352,12 @@
 		//public
 		$.fn.featuredSlideshow.advance = function($slide, o) {
 			var paginationIndex = $slide.prevAll().size();
-			$slide.stop().parent().parent().find('.slideshow-pagination li:eq('+paginationIndex+')').addClass('current').siblings().removeClass('current');
 			$slide.animate({ opacity: 0 }, 1, function() {
 				$(this).addClass('on-deck');
 			});
 			$slide.animate({ opacity: 1}, o.transitionTime, function() {
 				$(this).siblings('.current').removeClass('current');
 				$(this).addClass('current').removeClass('on-deck');
-				if(o.callback !== '') {
-				  o.callback(paginationIndex,o.transitionTime);
-				}
 			});
 		};
 
@@ -370,8 +365,7 @@
 			dynamicPagination: true,
 			autoAdvance: true,
 			autoAdvanceInterval: 10000,
-			transitionTime: 450,
-			callback: ''
+			transitionTime: 450
 		};
 
 	})(jQuery);
