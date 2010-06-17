@@ -42,7 +42,17 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
         end
 
         should_respond_with :redirect
+        should_redirect_to('the thank you page') { thank_you_contact_path }
       end
+    end
+
+    context 'a GET to #thank_you' do
+      setup do
+        get :thank_you
+      end
+
+      should_respond_with :success
+      should_render_template :thank_you
     end
   end
 end

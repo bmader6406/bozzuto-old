@@ -30,5 +30,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :contact,
     :controller => 'contact_submissions',
-    :only       => [:show, :create]
+    :only       => [:show, :create],
+    :member     => { :thank_you => :get }
 end

@@ -7,9 +7,12 @@ class ContactSubmissionsController < ApplicationController
     @submission = ContactSubmission.new(params[:contact_submission])
 
     if @submission.valid?
-      redirect_to 'http://google.com'
+      redirect_to thank_you_contact_path
     else
       render :action => :show
     end
+  end
+
+  def thank_you
   end
 end
