@@ -4,7 +4,7 @@ class CreateNewsPosts < ActiveRecord::Migration
       t.string   :title, :null => false
       t.text     :body
       t.boolean  :published, :default => false, :null => false
-      t.datetime :published
+      t.datetime :published_at
       t.integer  :section_id, :null => false
 
       t.timestamps

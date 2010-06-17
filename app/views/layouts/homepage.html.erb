@@ -6,7 +6,7 @@
 <div id="header" class="header">
   <div class="container">
     <div id="logo">
-      <a href="home.html">Bozzuto</a>
+      <%= link_to 'Bozzuto', '/' %>
     </div>
 
     <div>
@@ -19,11 +19,9 @@
         </ul>
 
         <ul id="home-nav">
-          <li><a href="#">Management</a></li>
-          <li><a href="#">Homebuilding</a></li>
-          <li><a href="#">Development</a></li>
-          <li><a href="#">Acquisitions</a></li>
-          <li><a href="#">Land</a></li>
+          <% Service.all.each do |service| %>
+            <li><%= link_to service.title, service %></li>
+          <% end %>
         </ul>
       </div>
 

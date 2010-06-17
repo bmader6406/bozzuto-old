@@ -1,0 +1,96 @@
+<% content_for :body_class do %>generic<% end %>
+
+<div id="masthead">
+  <div id="breadcrumb">
+    <div class="container">
+      <ul>
+        <li><%= link_to 'Our Services', services_path %></li>
+        <li><%= link_to @service.title, @service %></li>
+        <li>News</li>
+      </ul>
+      <h1>News</h1>
+    </div>
+  </div>
+  <div id="montage">
+    <img src="/images/fpo/generic-montage-1.jpg" alt="" height="148" width="251" /><img src="/images/fpo/generic-montage-2.jpg" alt="" height="148" width="540" /><img src="/images/fpo/generic-montage-3.jpg" alt="" height="148" width="309" />
+  </div>
+</div>
+
+<div id="main-content">
+  <div class="container">
+    <div id="sidebar" class="col">
+      <ul id="secondary-nav">
+        <li class="first"><a href="#">Awards</a></li>
+        <li>
+          <a href="#">Careers</a>
+          <ul>
+            <li><a href="#">Search Jobs</a></li>
+            <li><a href="#">Internships</a></li>
+            <li><a href="#">En Español</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Leadership</a></li>
+        <li>
+          <a href="#">News &amp; Press</a>
+          <ul>
+            <li><a href="#">Lorem Ipsum Dolor</a></li>
+            <li><a href="#">Lorem Ipsum Dolor</a></li>
+            <li><a href="#">Lorem Ipsum Dolor</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Partnerships</a></li>
+      </ul>
+    </div>
+
+    <div id="content" class="col">
+      <h2>Latest <%= @service.title %> News</h2>
+
+      <% @news_posts.each do |post| %>
+        <h3>
+          <%= link_to post.title, service_news_path(@service, post) %>
+        </h3>
+
+        <a href="#"><img src="/images/fpo/generic-content-1.jpg" alt="" height="150" width="150" /></a>
+
+        <%= post.body %>
+      <% end %>
+
+      <%= will_paginate @news_posts %>
+    </div>
+
+    <div id="aside" class="col">
+      <div class="featured">
+        <h3><a href="#">Search Jobs at Bozzuto</a></h3>
+        <div class="article">
+          <a href="#"><img src="/images/fpo/generic-aside-1.jpg" alt="" height="144" width="230" /></a>
+          <p class="details"><a href="#">Featured Bozzuto Job</a>
+          Lorem ipsum dolor sit amet lorem sinsectutor dolorum ipsum sin sit.</p>
+        </div>
+      </div>
+
+      <div class="latest-news">
+        <h3><a href="#">Training &amp; Development</a></h3>
+
+        <div class="article">
+          <div class="news-post section first">
+            <p>Lorem ipsum dolor sit amet lorem sinsectutor dolorum ipsum sin sit sinsectutor dolor slorem. Lorem ipsum dolor sit amet lorem sinsectutor dolor sinsectutor alorum adipscing lorem.</p>
+          </div>
+
+          <% @recent_posts.each do |post| %>
+            <div class="news-post section">
+              <h4>
+                <%= link_to post.title, service_news_path(@service, post) %>
+              </h4>
+
+              <p class="date"><%= month_and_day(post.published_at) %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

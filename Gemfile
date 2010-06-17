@@ -5,14 +5,15 @@ gem 'mysql'
 gem 'erubis'
 gem 'jammit'
 gem 'geokit'
-gem 'httparty'
+gem 'httparty', '0.5.2'
 gem 'nokogiri'
+gem 'will_paginate'
 
 gem 'carrierwave'
 gem 'mini_magick'
 
 group :test do
-  gem 'shoulda'
+  gem 'shoulda', '2.10.3'
   gem 'phocus'
   gem 'machinist'
   gem 'faker'

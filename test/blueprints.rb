@@ -72,3 +72,16 @@ Service.blueprint do
   title { Sham.section_title }
   section
 end
+
+NewsPost.blueprint do
+  title        { Faker::Lorem.sentence }
+  body         { Faker::Lorem.paragraphs(2) }
+  published    { true }
+  published_at { Time.now - 1.day }
+  section
+end
+
+NewsPost.blueprint(:unpublished) do
+  published    { false }
+  published_at { nil }
+end

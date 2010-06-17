@@ -84,10 +84,11 @@ ActiveRecord::Schema.define(:version => 20100615191046) do
   end
 
   create_table "news_posts", :force => true do |t|
-    t.string   "title",      :null => false
+    t.string   "title",                           :null => false
     t.text     "body"
-    t.boolean  "published"
-    t.integer  "section_id", :null => false
+    t.boolean  "published",    :default => false, :null => false
+    t.datetime "published_at"
+    t.integer  "section_id",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
