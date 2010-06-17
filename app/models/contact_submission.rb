@@ -18,4 +18,9 @@ class ContactSubmission < ActiveRecord::Base
   ]
   
   validates_presence_of :name, :email, :topic, :message
+
+
+  def formatted_topic
+    TOPICS.rassoc(topic).first
+  end
 end

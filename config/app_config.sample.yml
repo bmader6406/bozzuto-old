@@ -1,6 +1,15 @@
 development:
   walkscore_wsid: 'YOUR-WSID-HERE'
   google_maps_api_key: 'ABQIAAAA7txTDQDFqeDYcgMQiou82BS4HyMuMWnF1gYqzj4uDbvuvSLR0RQG2OmrjDwO9korkAMlXnDyKPNeTw' # key for bozzuto.local
+  contact_emails:
+    general_inquiry:
+    apartments:
+    new_homes:
+    acquisitions:
+    construction:
+    development:
+    homebuilding:
+    land:
 
 production:
   walkscore_wsid: 'YOUR-WSID-HERE'
@@ -8,3 +17,12 @@ production:
 test:
   walkscore_wsid: 'YOUR-WSID-HERE'
   google_maps_api_key: 'ABQIAAAA7txTDQDFqeDYcgMQiou82BS4HyMuMWnF1gYqzj4uDbvuvSLR0RQG2OmrjDwO9korkAMlXnDyKPNeTw' # key for bozzuto.local
+  contact_emails:
+    general_inquiry:
+    apartments:
+    new_homes:
+    acquisitions:
+    construction:
+    development:
+    homebuilding:
+    land:

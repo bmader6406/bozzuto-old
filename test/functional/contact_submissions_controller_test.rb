@@ -28,7 +28,9 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
     context 'a POST to #create' do
       context 'with missing fields' do
         setup do
-          post :create, :contact_submission => {}
+          assert_no_difference('ActionMailer::Base.deliveries.count') do
+            post :create, :contact_submission => {}
+          end
         end
 
         should_respond_with :success
@@ -38,7 +40,10 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
       context 'with all fields present' do
         setup do
           @submission = ContactSubmission.make_unsaved
-          post :create, :contact_submission => @submission.attributes
+
+          assert_difference('ActionMailer::Base.deliveries.count', 1) do
+            post :create, :contact_submission => @submission.attributes
+          end
         end
 
         should_respond_with :redirect

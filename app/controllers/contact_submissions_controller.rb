@@ -7,6 +7,7 @@ class ContactSubmissionsController < ApplicationController
     @submission = ContactSubmission.new(params[:contact_submission])
 
     if @submission.valid?
+      ContactMailer.deliver_contact_form_submission(@submission)
       redirect_to thank_you_contact_path
     else
       render :action => :show
