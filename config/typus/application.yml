@@ -84,7 +84,7 @@ Section:
     list: name
     form: name
   order_by:
-  relationships: news_posts
+  relationships: news_posts, testimonials
   filters:
   search:
   application: Bozzuto
@@ -97,6 +97,17 @@ State:
   order_by: 
   relationships: cities
   filters: 
+  search: name
+  application: Bozzuto
+
+Testimonial:
+  fields:
+    default: name, title, quote
+    list: name, title, quote
+    form: name, title, quote, section
+  order_by:
+  relationships: section
+  filters:
   search: name
   application: Bozzuto
 

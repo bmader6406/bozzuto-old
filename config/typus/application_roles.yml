@@ -12,4 +12,5 @@ admin:
   Photo: create, read, update, delete
   Section: read
   State: create, read, update, delete
+  Testimonial: create, read, update, delete
   YelpFeed: create, read, update, delete

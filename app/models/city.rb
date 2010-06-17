@@ -11,4 +11,5 @@ class City < ActiveRecord::Base
   def to_s
     "#{name}, #{state.code}"
   end
+  alias :typus_name :to_s
 end

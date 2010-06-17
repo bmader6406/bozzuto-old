@@ -85,3 +85,10 @@ NewsPost.blueprint(:unpublished) do
   published    { false }
   published_at { nil }
 end
+
+Testimonial.blueprint do
+  name  { Faker::Name.name }
+  title { Faker::Lorem.sentence }
+  quote { Faker::Lorem.paragraphs}
+  section
+end

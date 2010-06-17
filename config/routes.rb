@@ -17,7 +17,13 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.resources :services, :only => [:index, :show] do |service|
-    service.resources :news, :controller => 'service_news', :only => [:index, :show]
+    service.resources :news,
+      :controller => 'service_news',
+      :only       => [:index, :show]
+
+    service.resources :testimonials,
+      :controller => 'service_testimonials',
+      :only       => :index
   end
 
   map.resources :states, :only => :show

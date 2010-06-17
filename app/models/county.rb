@@ -7,4 +7,9 @@ class County < ActiveRecord::Base
   validates_uniqueness_of :name, :scope => :state_id
 
   named_scope :ordered_by_name, :order => 'name ASC'
+
+  def to_s
+    "#{name}, #{state.code}"
+  end
+  alias :typus_name :to_s
 end

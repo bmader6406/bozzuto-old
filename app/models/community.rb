@@ -22,6 +22,10 @@ class Community < ActiveRecord::Base
     end
   }
 
+  def typus_name
+    title
+  end
+
   def nearby_communities(limit = 6)
     @nearby_communities ||= city.communities.near(self).all(:limit => limit)
   end
