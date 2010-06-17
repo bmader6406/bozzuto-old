@@ -89,6 +89,13 @@ end
 Testimonial.blueprint do
   name  { Faker::Name.name }
   title { Faker::Lorem.sentence }
-  quote { Faker::Lorem.paragraphs}
+  quote { Faker::Lorem.paragraphs }
   section
+end
+
+ContactSubmission.blueprint do
+  name    { Faker::Name.name }
+  email   { Faker::Internet.email }
+  topic   { ContactSubmission::TOPICS.rand[1] }
+  message { Faker::Lorem.paragraphs }
 end

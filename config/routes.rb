@@ -27,4 +27,8 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.resources :states, :only => :show
+
+  map.resource :contact,
+    :controller => 'contact_submissions',
+    :only       => [:show, :create]
 end

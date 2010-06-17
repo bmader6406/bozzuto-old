@@ -31,3 +31,5 @@ City.create([{ :name => 'Arlington', :state => State.find_by_code('VA') },
   Service.create(:title => title, :section => section)
 end
 Section.create(:title => 'About')
+Section.create(:title => 'Apartments')
+Section.create(:title => 'New Homes')

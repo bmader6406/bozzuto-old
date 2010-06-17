@@ -1,0 +1,115 @@
+<% content_for :body_class do %>generic<% end %>
+
+<div id="masthead">
+  <div id="breadcrumb">
+    <div class="container">
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li>Contact</li>
+      </ul>
+      <h1>Contact</h1>
+    </div>
+  </div>
+  <div id="montage">
+    <img src="/images/fpo/generic-montage-1.jpg" alt="" height="148" width="251" /><img src="/images/fpo/generic-montage-2.jpg" alt="" height="148" width="540" /><img src="/images/fpo/generic-montage-3.jpg" alt="" height="148" width="309" />
+  </div>
+</div>
+
+<div id="main-content">
+  <div class="container">
+    <div id="sidebar" class="col">
+      <ul id="secondary-nav">
+        <li class="first"><a href="#">Awards</a></li>
+        <li class="current">
+          <a href="#">Careers</a>
+          <ul>
+            <li><a href="#">Search Jobs</a></li>
+            <li><a href="#">Internships</a></li>
+            <li><a href="#">En Español</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Leadership</a></li>
+        <li>
+          <a href="#">News &amp; Press</a>
+          <ul>
+            <li><a href="#">Lorem Ipsum Dolor</a></li>
+            <li><a href="#">Lorem Ipsum Dolor</a></li>
+            <li><a href="#">Lorem Ipsum Dolor</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Partnerships</a></li>
+      </ul>
+    </div>
+
+    <div id="content" class="col">
+      <h2>Contact Bozzuto</h2>
+
+      <%= error_messages_for :submission %>
+
+      <% form_for @submission, :url => contact_path do |f| %>
+        <p>
+          <%= f.label :name %><br />
+          <%= f.text_field :name %>
+        </p>
+
+        <p>
+          <%= f.label :email %><br />
+          <%= f.text_field :email %>
+        </p>
+
+        <p>
+          <%= f.label :topic, 'What would you like to ask us about?' %><br />
+          <%= f.select :topic, ContactSubmission::TOPICS %>
+        </p>
+
+        <p>
+          <%= f.label :message %><br />
+          <%= f.text_area :message, :rows => 20, :cols => 60 %>
+        </p>
+        
+        <p>
+          <button type="submit">Submit</button>
+        </p>
+      <% end %>
+    </div>
+
+    <div id="aside" class="col">
+      <div class="featured">
+        <h3><a href="#">Search Jobs at Bozzuto</a></h3>
+        <div class="article">
+          <a href="#"><img src="/images/fpo/generic-aside-1.jpg" alt="" height="144" width="230" /></a>
+          <p class="details"><a href="#">Featured Bozzuto Job</a>
+          Lorem ipsum dolor sit amet lorem sinsectutor dolorum ipsum sin sit.</p>
+        </div>
+      </div>
+
+      <div class="latest-news">
+        <h3><a href="#">Training &amp; Development</a></h3>
+
+        <div class="article">
+          <div class="news-post section first">
+            <p>Lorem ipsum dolor sit amet lorem sinsectutor dolorum ipsum sin sit sinsectutor dolor slorem. Lorem ipsum dolor sit amet lorem sinsectutor dolor sinsectutor alorum adipscing lorem.</p>
+          </div>
+          <div class="news-post section">
+            <h4><a href="#">This is the headline of a recent news story</a></h4>
+            <p class="date"><span class="month">04.</span><span class="day">27.</span></p>
+          </div>
+
+          <div class="news-post section">
+            <h4><a href="#">This is the headline of a recent news story</a></h4>
+            <p class="date"><span class="month">04.</span><span class="day">27.</span></p>
+          </div>
+
+          <div class="news-post section last">
+            <h4><a href="#">This is the headline of a recent news story</a></h4>
+            <p class="date"><span class="month">04.</span><span class="day">27.</span></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
