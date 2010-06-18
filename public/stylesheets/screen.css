@@ -1090,6 +1090,52 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   
   /* @end */
   
+  /* @group -floorplans */
+
+    .floor-plans .floor-plan {
+      width: 180px;
+    }
+    
+    .community .floor-plan a.floor-plan-view {
+      background: none;
+      display: block;
+      position: relative;
+    }
+    
+    .community .floor-plan a.floor-plan-view:hover {
+      text-decoration: none;
+    }
+    
+    .floor-plan-view-full {
+      background: #D5D8DC;
+      border: 1px solid #9BA2AD;
+      color: #595E71;
+      display: block;
+      font-size: 0.833333em;
+      height: 24px;
+      left: 40px;
+      line-height: 24px;
+      overflow: visible;
+      padding: 0px 5px;
+      position: absolute;
+      text-align: center;
+      text-transform: uppercase;
+      top: 75px;
+      width: 90px;      
+    }
+        
+    .lb_overlay {
+      background-color: transparent !important;
+    }
+    
+    .floor-plan-overlay {
+      opacity: 0;
+      -moz-opacity: 0;
+      filter:alpha(opacity=0);
+    }
+      
+  /* @end */  
+  
   /* @group -services */
 
     .services #masthead,
@@ -1449,6 +1495,20 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 
     .project #main-content .content .main-content ul.project-updates li div {
       position: relative;
+    }
+
+    p.photo-wrapper {
+      position: relative;
+    }
+
+    p.info-link {
+      cursor: pointer;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 100;
     }
 
     .project #main-content .content .main-content ul.project-updates li div p.info-link a {
@@ -2324,6 +2384,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       .js .partner-bio-outer {
         padding: 20px 0 0;     
         width: 800px;
+        opacity: 0;
+        -moz-opacity: 0;
+        filter:alpha(opacity=0);
       }
       
       .js .partner-bio-inner {
@@ -3010,7 +3073,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
     .community #overview a,
     .community #apartments a,
-    .community #featured-floor-plans a,
+    .floor-plan a,
     .community #nearby-communities a,
     .community .social-updates a,
     .community #recently-viewed a,

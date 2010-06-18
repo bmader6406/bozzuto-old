@@ -7,39 +7,39 @@
 
     $("#community-info, #apartments-by-area, #properties-by-type").onPageTabs();
     $('.community .social-updates .twitter-update').latestTwitterUpdate();
-    
+
     $(".apartments div.slideshow, .homes-search .slideshow, .home .slideshow").featuredSlideshow();
-    
+
     $(".services div.slideshow, .about div.slideshow").featuredSlideshow();
-    
+
     $(".community #slideshow").featuredSlideshow({
       'dynamicPagination' : false
     });
-    
+
     $(".masthead-slideshow").featuredSlideshow();
-    
+
     $(".listings .row:last-child").evenUp();
-    
+
     $(".secondaryNav").secondaryNav();
 
     $(".features div.feature ul").makeacolumnlists({cols:2, colWidth:325, equalHeight:false, startN:1});
-    
+
     $(".services div.tips ul, .generic div.tips ul").makeacolumnlists({cols:3, colWidth:150, equalHeight:false, startN:1});
-    
+
     //Collapse items by default on search results
     $('.search #content > ul.results').find('.closed > :not(.header)').hide();
     $('.search #content > ul.results').find('ul.location-filters > li').addClass('closed');
-    
+
     $('.search #content > ul.results > li > .header').searchExpandCollapse();
     $('.search #content > ul.results ul.location-filters .header').searchExpandCollapse({
       par: 'ul.location-filters'
     });
 
-    $('.project ul.project-updates li .info-link a').hover(function() {
+    $('.project ul.project-updates li .info-link').hover(function() {
       if($.browser.msie) {
-        $(this).addClass('active').closest('div').find('.info-overlay').show();
+        $(this).find('a').addClass('active').closest('div').find('.info-overlay').show();
       } else {
-        $(this).addClass('active').closest('div').find('.info-overlay').fadeIn('fast');
+        $(this).find('a').addClass('active').closest('div').find('.info-overlay').fadeIn('fast');
       }
       return false;
     }, function() {
@@ -50,13 +50,16 @@
       }
       return false;
     });
-    
+
     $('.partner-portrait').portrait();
-    
+
     $('.partner-portrait-links a, .partners a').leaderLightbox();
-    
+
+    $('.floor-plan-view').floorPlanOverlay();
+
+
   });
-  
+
   ////
   // Expanding/collapsing on search results
   (function() {
@@ -64,28 +67,28 @@
       var opts = $.extend({}, $.fn.searchExpandCollapse.defaults, options);
       return this.each(function() {
         var $this = $(this);
-        
+
         $this.bind('click', function() {
-          
+
           var $par = $this.parentsUntil(opts.par).last();
-          
+
           if($par.hasClass('closed')) {
            $par.removeClass('closed').addClass('open').children(':hidden').slideDown(500);
            $par.siblings().removeClass('open').addClass('closed').children(':not(.header)').hide();
           } else {
            $par.removeClass('open').addClass('closed').children(':not(.header)').slideUp(250);
           }
-          
+
           //TODO: ADD AJAX FILTERING/PAGINATION
-          
+
         });
       });
     };
-    
+
     $.fn.searchExpandCollapse.defaults = {
       par: 'ul.results'
 		};
-		
+
   })(jQuery);
 
   ////
@@ -137,13 +140,13 @@
       $("li:has(ul) > a", this).append(
         $('<span class="switch" />').html("+")
       );
-      
+
       // switch handler
       $("a span", this).bind("click", function() {
         var $this = $(this),
             state = $this.html(),
             $targetList = $this.closest("li").find("ul");
-  
+
         if(state === "+") {
           $targetList.slideDown();
           $this.html("&ndash;");
@@ -151,10 +154,10 @@
           $targetList.slideUp();
           $this.html("+");
         }
-        
+
         return false;
       });
-      
+
       // setup
       $("li:not(.active) ul", this).hide();
       $("li.active").find("span.switch").html("&ndash;");
@@ -176,7 +179,7 @@
       $children.each(function(){
         if ( $(this).height() < height ){
           $(this).css('height', height);
-        }        
+        }
       });
     });
   }
@@ -214,11 +217,11 @@
   // leadership portraits
   $.fn.portrait = function(){
     return this.each(function() {
-      
+
       var $container  = $(this),
           initialized = false,
-          $imgLoader  = $('<img src="images/structure/bg-partner-portrait.jpg" />').load(init);
-                          
+          $imgLoader  = $('<img src="/images/structure/bg-partner-portrait.jpg" />').load(init);
+
       $imgLoader[0].complete && init();
 
       function init(){
@@ -229,8 +232,6 @@
               $screen    = $('<div class="partner-portrait-screen"></div>').prependTo($container),
               mouseLeaveTimer;
 
-
-
           $links.children().each(function(i){
             $(this).find('a').hover(function(){
               clearTimeout(mouseLeaveTimer);
@@ -239,56 +240,112 @@
             }, function(){
               $images.children().eq(i).stop().fadeTo(250, 0);
               mouseLeaveTimer = setTimeout(function(){
-                $screen.fadeTo(1000, 0);            
+                $screen.fadeTo(1000, 0);
               }, 250)
             });
           });
 
         }
-                
+
         initialized = true;
-        
+
       }
-      
+
     });
   };
-  
+
   ////
   // leadership lightbox
   $.fn.leaderLightbox = function() {
     return this.each(function() {
-      
+
       var $this  = $(this),
           $bio   = $($this.attr('href')).children();
-      
+
       if (!$bio.data('closeAdded')){
-        $('<a href="#" class="partner-close">Close</a>').appendTo($bio.children());        
-        $bio.data('closeAdded',true);         
+        $('<a href="#" class="partner-close">Close</a>').appendTo($bio.children());
+        $bio.data('closeAdded',true);
       }
-          
+
       $this.click(function(e){
-        
+
         e.preventDefault();
-        
+
         $bio.lightbox_me({
-          appearEffect: 'fadeIn',
-          destroyOnClose: true,
-          lightboxSpeed: 'slow',
-          centered: true,
           closeSelector: '.partner-close',
-          overlayCSS:	{
-            opacity: 0.01
+          appearEffect: 'show',
+          overlaySpeed: 0,          
+          destroyOnClose: true,
+          centered: true,
+          onLoad:	function() {
+            $('.partner-bio-outer').fadeTo(100,1)
+          },
+          onClose: function() {
+            $('.partner-bio-outer').css({
+              'opacity' : 0
+            })
           }
         });
-        
+
       });
-      
+
     });
   };
-  
+
+  ////
+  // Floor plan overlay
+  $.fn.floorPlanOverlay = function() {
+    return this.each(function(){
+
+      var $link   = $(this),
+          $image  = $('<img src="' + $link.attr('href') + '" class="floor-plan-overlay" />'),
+          $button = $('<span class="floor-plan-view-full">View Full-Size</span>')
+                       .appendTo($link)
+                       .css({
+                         'display' : 'none',
+                         'top'     : ( $link.find('img').height() / 2 ) - 12
+                       });
+                       
+      $link.bind({
+
+        'mouseenter' : function(){
+          $button.fadeIn();
+        },
+
+        'mouseleave' : function(){
+          $button.fadeOut();
+        },
+
+        'click' : function(e){
+
+          e.preventDefault();
+
+          $image.lightbox_me({
+            appearEffect: 'show',
+            overlaySpeed: 0,
+            closeClick: true,
+            destroyOnClose: true,
+            lightboxSpeed: 'slow',
+            centered: true,
+            onLoad:	function() {
+              $image.fadeTo(150,1)
+            },
+            onClose: function() {
+              $image.css({
+                'opacity' : 0
+              })
+            }
+          });
+
+        }
+
+      })
+
+    });
+  };
+
 	////
 	// alternate slideshow for apartments page
-
 	(function() {
 
 		$.fn.featuredSlideshow = function(options) {
@@ -306,7 +363,7 @@
 						});
 						$('li:first', pagination).addClass('current');
 						pagination.appendTo($this);
-						
+
 					}
 
 					if(o.autoAdvance) {
@@ -318,7 +375,7 @@
 							hoverInterval = autoAdvance($this, o);
 						});
 
-					} 
+					}
 
 					$('ul.slideshow-pagination li a', $this).click(function() {
 						$.fn.featuredSlideshow.advance($('ul.slides li:eq('+($(this).parent().prevAll().size())+')'), o);
@@ -334,10 +391,10 @@
 						$.fn.featuredSlideshow.advance(next, o);
 						return false;
 					});
-					
+
 				} else {
   			  $('ul.slideshow-navigation, .prev, .next', $this).hide();
-  			}				
+  			}
 
 			});
 		};
@@ -369,21 +426,21 @@
 		};
 
 	})(jQuery);
-	
-	/** 
-	#  * Copyright (c) 2008 Pasyuk Sergey (www.codeasily.com) 
-	#  * Licensed under the MIT License: 
-	#  * http://www.opensource.org/licenses/mit-license.php 
-	#  *  
-	#  * Splits a <ul>/<ol>-list into equal-sized columns. 
-	#  *  
-	#  * Requirements:  
-	#  * <ul> 
-	#  * <li>"ul" or "ol" element must be styled with margin</li> 
-	#  * </ul> 
-	#  *  
-	#  * @see http://www.codeasily.com/jquery/multi-column-list-with-jquery 
-	#  */  
+
+	/**
+	#  * Copyright (c) 2008 Pasyuk Sergey (www.codeasily.com)
+	#  * Licensed under the MIT License:
+	#  * http://www.opensource.org/licenses/mit-license.php
+	#  *
+	#  * Splits a <ul>/<ol>-list into equal-sized columns.
+	#  *
+	#  * Requirements:
+	#  * <ul>
+	#  * <li>"ul" or "ol" element must be styled with margin</li>
+	#  * </ul>
+	#  *
+	#  * @see http://www.codeasily.com/jquery/multi-column-list-with-jquery
+	#  */
 	jQuery.fn.makeacolumnlists = function(settings){
 		settings = jQuery.extend({
 			cols: 3,		// set number of columns
@@ -395,7 +452,7 @@
 		if(jQuery('> li', this)) {
 			this.each(function(y) {
 				var y=jQuery('.li_container').size(),
-			    	height = 0, 
+			    	height = 0,
 			        maxHeight = 0,
 					t = jQuery(this),
 					classN = t.attr('class'),
@@ -410,7 +467,7 @@
 					mr = parseInt(t.css('marginRight'),10),
 					col_Width = Math.floor((contW - (settings.cols-1)*(bl+br+pl+pr+ml+mr))/settings.cols);
 				if (settings.colWidth) {
-					col_Width = settings.colWidth; 
+					col_Width = settings.colWidth;
 				}
 				var colnum=1,
 					percol2=percol;
