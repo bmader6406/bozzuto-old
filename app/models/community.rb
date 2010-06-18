@@ -45,4 +45,8 @@ class Community < ActiveRecord::Base
   def county
     city.county
   end
+
+  def state
+    city.state
+  end
 end

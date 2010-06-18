@@ -39,6 +39,17 @@ class CommunityTest < ActiveSupport::TestCase
       end
     end
 
+    context '#state' do
+      setup do
+        @state = State.make
+        @community = Community.make(:city => City.make(:state => @state))
+      end
+
+      should "return the city's state" do
+        assert_equal @state, @community.state
+      end
+    end
+
     context "#nearby_communities" do
       setup do
         @city = City.make

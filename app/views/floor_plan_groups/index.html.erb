@@ -10,9 +10,9 @@
       <div id="<%= dom_id(group) %>" class="floor-plan-group">
         <h2><%= group.name %></h2>
 
-        <% group.floor_plans.in_groups_of(4) do |plans_group| %>
+        <% group.floor_plans.in_groups_of(4, false) do |plans_group| %>
           <ul class="row">
-            <% plans_group.compact.each do |plan| %>
+            <% plans_group.each do |plan| %>
               <li class="floor-plan">
                 <h4><%= plan.name %></h4>
 
