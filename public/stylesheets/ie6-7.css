@@ -52,6 +52,10 @@
   margin-right: 5px;
 }
 
+* html .community #overview ul.community-icons li a h4 {
+  padding-right: 15px;
+  width: auto;
+}
  
 /***
   2. Typography

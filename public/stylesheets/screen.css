@@ -742,18 +742,38 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       .community #overview ul.community-icons li a {
         position: relative;
       }
-      .community #overview ul.community-icons li a span {
+      .community #overview ul.community-icons li a div {
+        background-color: #fff;
+        -moz-box-shadow: 0 0 20px rgba(255,255,255,.4);
+        -webkit-box-shadow: 0 0 20px rgba(255,255,255,.4);
+        box-shadow: 0 0 20px rgba(255,255,255,.4);
+        color: #84848B;
         display: none;
-        cursor: pointer;
-      }
-      .community #overview ul.community-icons li a:hover span {
-        display: block;
+        font-weight: normal;
         position: absolute;
-        top: 0; right: 5px;
-        width: 285px;
-        height: 43px;
+        top: 0; 
+        right: 60px;
+        width: 197px;
         border: 1px solid #c2c6ca;
-        padding-left: 7px;
+        padding: 0 0 10px;
+      }
+      .community #overview ul.community-icons li a h4 {
+        background: transparent url(../images/structure/bg-community-icons-h4.gif) no-repeat 0 0;
+        color: #080812;
+        font-size: 15px;
+        left: -1px;
+        line-height: 20px;
+        margin-bottom: 0;
+        padding: 15px 50px 10px 15px;
+        position: relative;
+        top: -1px;
+        width: 180px;
+      }
+      .community #overview ul.community-icons li a p {
+        border-top: 1px solid #d0d0d2;
+        margin: -1px 15px 0px;
+        padding-top: 10px;
+        zoom: 1;
       }
     
     /* @end */   
@@ -1123,11 +1143,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       top: 75px;
       width: 90px;      
     }
-        
-    .lb_overlay {
-      background-color: transparent !important;
-    }
-    
+            
     .floor-plan-overlay {
       opacity: 0;
       -moz-opacity: 0;
@@ -3096,14 +3112,6 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .community #overview ul.community-icons li a {
       text-decoration: none;
     }
-    .community #overview ul.community-icons li a:hover span {
-      font-size: 15px;
-      line-height: 43px;
-      color: #000;
-      font-weight: normal;
-      text-decoration: none;
-    }
-
     .community #apartments table td {
       line-height: 1;
     }
@@ -3934,9 +3942,6 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .apartments div.row div.col,
     .homes div.row div.col {
       background: transparent url(../images/structure/bg-about-sidebar-section.gif) no-repeat bottom left;
-    }
-    .community #overview ul.community-icons li a span {
-      background: transparent url(../images/structure/bg-community-icons-span.gif) no-repeat 0 0;
     }
     .community #sidebar div.facebook-update p.message {
       background-position: left center !important;

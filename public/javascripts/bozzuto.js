@@ -57,6 +57,11 @@
 
     $('.floor-plan-view').floorPlanOverlay();
 
+    $('.community-icons a').hover(function(){
+      $(this).find('div').fadeIn(100);
+    }, function(){
+      $(this).find('div').fadeOut(100);
+    });
 
   });
 
@@ -277,8 +282,12 @@
           overlaySpeed: 0,          
           destroyOnClose: true,
           centered: true,
+          overlayCSS: {
+            'background': '#fff',
+            'opacity': .01
+          },
           onLoad:	function() {
-            $('.partner-bio-outer').fadeTo(100,1)
+            $('.partner-bio-outer').fadeTo(250,1)
           },
           onClose: function() {
             $('.partner-bio-outer').css({
@@ -327,8 +336,12 @@
             destroyOnClose: true,
             lightboxSpeed: 'slow',
             centered: true,
+            overlayCSS: {
+              'background': '#fff',
+              'opacity': .01
+            },
             onLoad:	function() {
-              $image.fadeTo(150,1)
+              $image.fadeTo(250,1)
             },
             onClose: function() {
               $image.css({
@@ -336,7 +349,11 @@
               })
             }
           });
-
+          
+          $image.click(function(){
+            $image.trigger('close');
+          })
+          
         }
 
       })
