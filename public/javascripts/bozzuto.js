@@ -3,7 +3,7 @@
   $(function() {
     $("#special-nav").specialNavPopups();
 
-    $(".secondary #secondary-nav").secondaryNav();
+    $("#secondary-nav").secondaryNav();
 
     $("#community-info, #apartments-by-area, #properties-by-type").onPageTabs();
     $('.community .social-updates .twitter-update').latestTwitterUpdate();

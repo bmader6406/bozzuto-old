@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100621011022) do
+ActiveRecord::Schema.define(:version => 20100621135015) do
 
   create_table "cities", :force => true do |t|
     t.string   "name",       :null => false
@@ -89,6 +89,18 @@ ActiveRecord::Schema.define(:version => 20100621011022) do
     t.boolean  "published",    :default => false, :null => false
     t.datetime "published_at"
     t.integer  "section_id",                      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pages", :force => true do |t|
+    t.string   "title",       :null => false
+    t.string   "cached_slug"
+    t.text     "body"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "section_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

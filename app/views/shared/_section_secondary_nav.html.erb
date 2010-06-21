@@ -1,19 +1,7 @@
 <div id="sidebar" class="col">
   <ul id="secondary-nav">
-    <li class="first"><a href="#">Awards</a></li>
-    <li>
-      <a href="#">Careers</a>
-      <ul>
-        <li><a href="#">Search Jobs</a></li>
-        <li><a href="#">Internships</a></li>
-        <li><a href="#">En Español</a></li>
-        <li><a href="#">Events</a></li>
-        <li><a href="#">FAQ</a></li>
-      </ul>
-    </li>
-    <li><a href="#">Leadership</a></li>
-    <li><a href="#">Projects</a></li>
-    <li><a href="#">Partnerships</a></li>
+    <%= pages_tree(@section.pages) %>
+
     <% unless @section.news_posts.count.zero? %>
       <li class="<%= current_if :controller => 'news' %>">
         <%= link_to 'News & Press', service_news_posts_path(@section) %>
