@@ -68,11 +68,6 @@ Section.blueprint do
   title { Sham.section_title }
 end
 
-Service.blueprint do
-  title { Sham.section_title }
-  section
-end
-
 NewsPost.blueprint do
   title        { Faker::Lorem.sentence }
   body         { Faker::Lorem.paragraphs(2) }

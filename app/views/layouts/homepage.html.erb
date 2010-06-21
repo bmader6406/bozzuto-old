@@ -19,9 +19,12 @@
         </ul>
 
         <ul id="home-nav">
-          <% Service.all.each do |service| %>
-            <li><%= link_to service.title, service %></li>
-          <% end %>
+          <li><%= link_to 'Acquisitions', '#' %></li>
+          <li><%= link_to 'Construction', '#' %></li>
+          <li><%= link_to 'Development', '#' %></li>
+          <li><%= link_to 'Homebuilding', '#' %></li>
+          <li><%= link_to 'Land', '#' %></li>
+          <li><%= link_to 'Management', '#' %></li>
         </ul>
       </div>
 

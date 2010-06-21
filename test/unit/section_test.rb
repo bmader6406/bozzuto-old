@@ -11,7 +11,6 @@ class SectionTest < ActiveSupport::TestCase
     should_validate_presence_of :title
     should_validate_uniqueness_of :title
 
-    should_have_one :service
     should_have_many :news_posts, :testimonials
 
     context 'when quering news posts' do

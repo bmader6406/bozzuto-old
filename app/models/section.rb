@@ -1,5 +1,4 @@
 class Section < ActiveRecord::Base
-  has_one :service
   has_many :news_posts,
     :conditions => { :published => true },
     :order      => 'published_at DESC'
