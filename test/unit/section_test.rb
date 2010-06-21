@@ -13,6 +13,7 @@ class SectionTest < ActiveSupport::TestCase
 
     should_have_many :news_posts, :testimonials
 
+
     context 'when quering news posts' do
       setup do
         2.times { NewsPost.make :section => @section }

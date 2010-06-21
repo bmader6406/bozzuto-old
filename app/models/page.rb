@@ -4,4 +4,10 @@ class Page < ActiveRecord::Base
   has_friendly_id :title, :use_slug => true
 
   belongs_to :section
+
+  validates_presence_of :title
+
+  def path
+    self_and_ancestors.map { |page| page.cached_slug }
+  end
 end

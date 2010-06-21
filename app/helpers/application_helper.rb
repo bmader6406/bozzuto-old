@@ -25,7 +25,6 @@ module ApplicationHelper
   end
 
   def pages_tree(pages)
-    open_uls = 0
     level    = 0
     output   = ''
 
@@ -33,12 +32,10 @@ module ApplicationHelper
       # open new level
       if page_level > level
         output << '<ul>'
-        open_uls += 1
 
       # close level
       elsif page_level < level
         output << '</li></ul>'
-        open_uls -= 1
 
       # same level, close li
       else
@@ -46,13 +43,13 @@ module ApplicationHelper
       end
 
       output << '<li>'
-      output << link_to(page.title, '#')
+      output << link_to(page.title, section_page_path(page.section, page.path))
 
       level = page_level
     end
 
-    # walked off the end with an open ul
-    output += '</li></ul>' * open_uls unless open_uls.zero?
+    # walked off the end with open uls
+    output += '</li></ul>' * level unless level.zero?
     output.html_safe
   end
 end

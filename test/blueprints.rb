@@ -66,6 +66,11 @@ end
 
 Section.blueprint do
   title { Sham.section_title }
+  service { false }
+end
+
+Section.blueprint(:service) do
+  service { true }
 end
 
 NewsPost.blueprint do
@@ -93,4 +98,10 @@ ContactSubmission.blueprint do
   email   { Faker::Internet.email }
   topic   { ContactSubmission::TOPICS.rand[1] }
   message { Faker::Lorem.paragraphs }
+end
+
+Page.blueprint do
+  title { Faker::Lorem.sentence }
+  body  { Faker::Lorem.paragraphs(3) }
+  section
 end

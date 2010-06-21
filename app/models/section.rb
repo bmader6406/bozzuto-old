@@ -9,6 +9,7 @@ class Section < ActiveRecord::Base
 
   validates_presence_of :title
   validates_uniqueness_of :title
+  validates_inclusion_of :service, :in => [true, false]
 
 
   def typus_name
@@ -17,20 +18,12 @@ class Section < ActiveRecord::Base
 
   alias_method :related_news_posts, :news_posts
   def news_posts
-    if aggregate?
-      NewsPost.published
-    else
-      related_news_posts
-    end
+    aggregate? ? NewsPost.published : related_news_posts
   end
 
   alias_method :related_testimonials, :testimonials
   def testimonials
-    if aggregate?
-      Testimonial.all
-    else
-      related_testimonials
-    end
+    aggregate? ? Testimonial.all : related_testimonials
   end
 
   def aggregate?

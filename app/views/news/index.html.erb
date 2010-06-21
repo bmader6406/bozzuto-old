@@ -26,7 +26,7 @@
 
       <% @news_posts.each do |post| %>
         <h3>
-          <%= link_to post.title, service_news_post_path(@section, post) %>
+          <%= link_to post.title, section_news_post_path(@section, post) %>
         </h3>
 
         <a href="#"><img src="/images/fpo/generic-content-1.jpg" alt="" height="150" width="150" /></a>
@@ -59,7 +59,7 @@
           <% @recent_posts.each do |post| %>
             <div class="news-post section">
               <h4>
-                <%= link_to post.title, service_news_post_path(@section, post) %>
+                <%= link_to post.title, section_news_post_path(@section, post) %>
               </h4>
 
               <p class="date"><%= month_and_day(post.published_at) %></p>
