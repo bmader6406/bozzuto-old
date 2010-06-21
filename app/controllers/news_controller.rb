@@ -12,10 +12,6 @@ class NewsController < ApplicationController
 
   private
 
-  def find_section
-    @section = Section.find(params[:section])
-  end
-
   def find_recent_posts
     @recent_posts = @section.news_posts.recent(3)
   end

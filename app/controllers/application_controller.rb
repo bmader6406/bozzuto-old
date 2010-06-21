@@ -20,4 +20,8 @@ class ApplicationController < ActionController::Base
   def render_404
     render :text => 'Not found', :status => 404
   end
+
+  def find_section
+    @section = Section.find(params[:section])
+  end
 end

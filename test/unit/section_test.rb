@@ -37,5 +37,29 @@ class SectionTest < ActiveSupport::TestCase
         end
       end
     end
+
+    context 'when quering testimonials' do
+      setup do
+        2.times { Testimonial.make :section => @section }
+        2.times { Testimonial.make :section => Section.make }
+      end
+
+      context 'and in the about section' do
+        setup do
+          @section = Section.make :title => 'About'
+        end
+
+        should 'return all testimonials' do
+          assert_equal Testimonial.all, @section.testimonials
+        end
+      end
+
+      context 'and not in the about section' do
+        should "return this section's testimonials" do
+          @testimonials = Testimonial.find_all_by_section_id(@section.id)
+          assert_equal @testimonials, @section.testimonials
+        end
+      end
+    end
   end
 end

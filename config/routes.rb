@@ -17,9 +17,6 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.resources :services, :only => [:index, :show] do |service|
-    service.resources :testimonials,
-      :controller => :service_testimonials,
-      :only       => :index
   end
 
   map.resources :states, :only => :show
@@ -30,11 +27,17 @@ ActionController::Routing::Routes.draw do |map|
     :member     => { :thank_you => :get }
 
 
-  map.with_options :controller => :news do |news|
-    news.service_news_posts '/services/:section/news'
-    news.service_news_post '/services/:section/news/:news_post_id', :action => :show
+  map.with_options :controller => :testimonials do |map|
+    map.service_testimonials '/services/:section/testimonials'
 
-    news.news_posts '/:section/news'
-    news.news_post '/:section/news/:news_post_id', :action => :show
+    map.testimonials '/:section/testimonials'
+  end
+
+  map.with_options :controller => :news do |map|
+    map.service_news_posts '/services/:section/news'
+    map.service_news_post '/services/:section/news/:news_post_id', :action => :show
+
+    map.news_posts '/:section/news'
+    map.news_post '/:section/news/:news_post_id', :action => :show
   end
 end

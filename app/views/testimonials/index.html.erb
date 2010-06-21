@@ -5,7 +5,7 @@
     <div class="container">
       <ul>
         <li><%= link_to 'Our Services', services_path %></li>
-        <li><%= link_to @service.title, @service %></li>
+        <li><%= link_to @section.title, '#' %></li>
         <li>Testimonials</li>
       </ul>
 
@@ -48,7 +48,7 @@
     </div>
 
     <div id="content" class="col">
-      <h2><%= @service.title %> Testimonials</h2>
+      <h2><%= @section.title %> Testimonials</h2>
 
       <ul class="testimonials">
         <% @testimonials.each do |testimonial| %>

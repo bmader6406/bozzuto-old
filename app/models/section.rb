@@ -17,10 +17,23 @@ class Section < ActiveRecord::Base
 
   alias_method :related_news_posts, :news_posts
   def news_posts
-    if cached_slug == 'about'
+    if aggregate?
       NewsPost.published
     else
       related_news_posts
     end
+  end
+
+  alias_method :related_testimonials, :testimonials
+  def testimonials
+    if aggregate?
+      Testimonial.all
+    else
+      related_testimonials
+    end
+  end
+
+  def aggregate?
+    cached_slug == 'about'
   end
 end
