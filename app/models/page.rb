@@ -10,6 +10,13 @@ class Page < ActiveRecord::Base
 
   alias_attribute :typus_name, :title
 
+  def self.find_by_path(path)
+    path = path.split('/')
+    page = find(path.last)
+
+    page.path == path ? page : (raise ActiveRecord::RecordNotFound)
+  end
+
   def path
     self_and_ancestors.map { |page| page.cached_slug }
   end

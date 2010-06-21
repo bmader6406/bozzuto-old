@@ -40,7 +40,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.with_options :controller => :pages, :action => :show do |page|
     page.services '/services', :template => 'services'
-    page.service_section_page '/services/:section/*pages'
-    page.section_page '/:section/*pages'
+    page.service_section_page '/services/:section/*page'
+    page.section_page '/:section/*page'
   end
 end
