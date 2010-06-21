@@ -4,13 +4,13 @@
 
     <% unless @section.news_posts.count.zero? %>
       <li class="<%= current_if :controller => 'news' %>">
-        <%= link_to 'News & Press', section_news_posts_path(@section) %>
+        <%= link_to 'News & Press', news_posts_path(@section) %>
       </li>
     <% end %>
 
     <% unless @section.testimonials.count.zero? %>
       <li class="<%= current_if :controller => 'testimonials' %>">
-        <%= link_to 'Testimonials', section_testimonials_path(@section) %>
+        <%= link_to 'Testimonials', testimonials_path(@section) %>
       </li>
     <% end %>
   </ul>

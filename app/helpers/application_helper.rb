@@ -43,7 +43,7 @@ module ApplicationHelper
       end
 
       output << '<li>'
-      output << link_to(page.title, section_page_path(page.section, page.path))
+      output << link_to(page.title, page_path(page.section, page))
 
       level = page_level
     end

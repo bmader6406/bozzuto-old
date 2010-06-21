@@ -5,7 +5,7 @@
         <li><%= link_to 'Our Services', '#' %></li>
       <% end %>
 
-      <li><%= link_to @section.title, section_page_path(@section) %></li>
+      <li><%= link_to @section.title, page_path(@section) %></li>
 
       <%= yield :breadcrumb %>
     </ul>
