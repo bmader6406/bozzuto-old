@@ -13,5 +13,29 @@ class SectionTest < ActiveSupport::TestCase
 
     should_have_one :service
     should_have_many :news_posts, :testimonials
+
+    context 'when quering news posts' do
+      setup do
+        2.times { NewsPost.make :section => @section }
+        2.times { NewsPost.make :section => Section.make }
+      end
+
+      context 'and in the about section' do
+        setup do
+          @section = Section.make :title => 'About'
+        end
+
+        should 'return all news posts' do
+          assert_equal NewsPost.all, @section.news_posts
+        end
+      end
+
+      context 'and not in the about section' do
+        should "return this section's news posts" do
+          @news_posts = NewsPost.find_all_by_section_id(@section.id)
+          assert_equal @news_posts, @section.news_posts
+        end
+      end
+    end
   end
 end
