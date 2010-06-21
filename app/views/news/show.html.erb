@@ -6,9 +6,10 @@
       <ul>
         <li><a href="#">About Us</a></li>
         <li><a href="#">Careers</a></li>
-        <li>Events</li>
+        <li>News &amp; Press</li>
       </ul>
-      <h1>Events</h1>
+
+      <h1>News &amp; Press</h1>
     </div>
   </div>
   <div id="montage">
@@ -21,45 +22,13 @@
     <%= render :partial => 'shared/section_secondary_nav' %>
 
     <div id="content" class="col">
-        
-      <h2>Why Work at Bozzuto</h2>
-      <a href="#"><img src="/images/fpo/generic-content-1.jpg" alt="" height="150" width="150" /></a>
-      <p class="first"><strong>Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu.</strong> Vivamus rutrum nunc non neque consectetur quis placerat neque lobortis. Nam vestibulum, arcu sodales feugiat consectetur, nisl orci bibendum elit, eu euismod magna sapien ut nibh.</p>
-      <p class="last">Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu. Vivamus rutrum nunc non neque consectetur quis placerat neque lobortis. Nam vestibulum, arcu sodales feugiat consectetur, nisl orci bibendum elit, eu euismod magna sapien ut nibh. Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed.</p>
+      <h2><%= @news_post.title %></h2>
+
+      <p>
+        <%= @news_post.published_at.to_formatted_s(:month_day_year) %>
+      </p>
       
-      <h2>Who We Are</h2>
-      <a href="#"><img src="/images/fpo/generic-content-1.jpg" alt="" height="150" width="150" /></a>
-      <p><strong>Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu.</strong> Vivamus rutrum nunc non neque consectetur quis placerat neque lobortis. Nam vestibulum, arcu sodales feugiat consectetur, nisl orci bibendum elit, eu euismod magna sapien ut nibh.</p>
-      <p class="last">Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu. Vivamus rutrum nunc non neque consectetur quis placerat neque lobortis. Nam vestibulum, arcu sodales feugiat consectetur, nisl orci bibendum elit, eu euismod magna sapien ut nibh. Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed.</p>
-      
-      <h2>Values &amp; Beliefs</h2>
-
-      <p class="last"><strong>Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu. Vivamus rutrum nunc non neque consectetur quis placerat neque lobortis.</strong> Nam vestibulum, arcu sodales feugiat consectetur, nisl orci bibendum elit, eu euismod magna sapien ut nibh. Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed.</p>
-
-      <h2>Our Hiring Process</h2>
-
-      <p class="last"><strong>Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu. Vivamus rutrum nunc non neque consectetur quis placerat neque lobortis.</strong> Nam vestibulum, arcu sodales feugiat consectetur, nisl orci bibendum elit, eu euismod magna sapien ut nibh. Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed.</p>
-
-      <div class="tips">
-        <h2>Benefits</h2>
-        <div>
-          <ul>
-            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
-            <li>Consectetur adipisicing elit, sed do eiusmod tempor.</li>
-            <li>Lorem ipsum dolor sit amet, consectetur ad.</li>
-            <li>Lorem ipsum dolor sit amet, consectetur ad.</li>
-            <li>Lorem ipsum dolor sit amet, consectetur ad.</li>
-            <li>Lorem ipsum dolor sit amet, consectetur ad.</li>
-            <li>Lorem ipsum dolor sit amet, consectetur ad.</li>
-            <li>Lorem ipsum dolor sit amet, consectetur ad.</li>
-            <li>Lorem ipsum dolor sit amet, consectetur ad.</li>
-            <li>Lorem ipsum dolor sit amet, consectetur ad.</li>
-            <li>Lorem ipsum dolor sit.</li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
-          </ul>
-        </div>
-      </div>
-
+      <%= @news_post.body %>
     </div>
 
     <div id="aside" class="col">
@@ -71,6 +40,7 @@
           Lorem ipsum dolor sit amet lorem sinsectutor dolorum ipsum sin sit.</p>
         </div>
       </div>
+
       <div class="latest-news">
         <h3><a href="#">Training &amp; Development</a></h3>
 
@@ -94,6 +64,7 @@
           </div>
         </div>
       </div>
+
       <div class="featured">
         <h3><a href="#">Find Internships at Bozzuto</a></h3>
         <div class="article">
@@ -102,6 +73,7 @@
           Lorem ipsum dolor sit amet lorem sinsectutor dolorum ipsum sin sit.</p>
         </div>
       </div>
+
       <div class="latest-news">
         <h3><a href="#">Students &amp; Recent Grads</a></h3>
 

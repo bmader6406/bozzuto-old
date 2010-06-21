@@ -15,15 +15,14 @@
     <li><a href="#">Projects</a></li>
     <li><a href="#">Partnerships</a></li>
     <% unless @section.news_posts.count.zero? %>
-      <li>
+      <li class="<%= current_if :controller => 'news' %>">
         <%= link_to 'News & Press', service_news_posts_path(@section) %>
       </li>
     <% end %>
     <% unless @section.testimonials.count.zero? %>
-      <li>
+      <li class="<%= current_if :controller => 'testimonials' %>">
         <%= link_to 'Testimonials', service_testimonials_path(@section) %>
       </li>
     <% end %>
   </ul>
 </div>
-
