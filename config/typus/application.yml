@@ -67,6 +67,17 @@ NewsPost:
   search:
   application: Bozzuto
 
+Page:
+  fields:
+    default: title, cached_slug, section, parent
+    list: title, cached_slug, section, parent
+    form: title, cached_slug, body, section, parent
+  order_by: 
+  relationships: children, parent, section, slugs
+  filters: 
+  search: title
+  application: Bozzuto
+
 Photo:
   fields:
     default: image, caption, community

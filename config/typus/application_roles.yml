@@ -9,6 +9,7 @@ admin:
   FloorPlanGroup: create, read, update, delete
   FloorPlan: create, read, update, delete
   NewsPost: create, read, update, delete
+  Page: create, read, update, delete
   Photo: create, read, update, delete
   Section: read
   State: create, read, update, delete

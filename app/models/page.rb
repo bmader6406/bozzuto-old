@@ -7,6 +7,9 @@ class Page < ActiveRecord::Base
 
   validates_presence_of :title
 
+
+  alias_attribute :typus_name, :title
+
   def path
     self_and_ancestors.map { |page| page.cached_slug }
   end
