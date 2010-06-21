@@ -1,17 +1,18 @@
 <% content_for :body_class do %>generic<% end %>
 
-<div id="masthead">
-  <div id="breadcrumb">
-    <div class="container">
-      <ul>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Careers</a></li>
-        <li>News &amp; Press</li>
-      </ul>
+<% content_for :breadcrumb do %>
+  <li><%= link_to 'News', section_news_posts_path(@section) %></li>
+  <li><%= @news_post.title %></li>
+<% end %>
 
-      <h1>News &amp; Press</h1>
-    </div>
-  </div>
+<% content_for :breadcrumb_title do %>
+  <%= @news_post.title %>
+<% end %>
+
+
+<div id="masthead">
+  <%= render :partial => 'pages/breadcrumb' %>
+
   <div id="montage">
     <img src="/images/fpo/generic-montage-1.jpg" alt="" height="148" width="251" /><img src="/images/fpo/generic-montage-2.jpg" alt="" height="148" width="540" /><img src="/images/fpo/generic-montage-3.jpg" alt="" height="148" width="309" />
   </div>
@@ -19,7 +20,7 @@
 
 <div id="main-content">
   <div class="container">
-    <%= render :partial => 'shared/section_secondary_nav' %>
+    <%= render :partial => 'pages/secondary_nav' %>
 
     <div id="content" class="col">
       <h2><%= @news_post.title %></h2>

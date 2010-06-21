@@ -1,0 +1,17 @@
+<div id="breadcrumb">
+  <div class="container">
+    <ul>
+      <% if @section.service? %>
+        <li><%= link_to 'Our Services', '#' %></li>
+      <% end %>
+
+      <li><%= link_to @section.title, section_page_path(@section) %></li>
+
+      <%= yield :breadcrumb %>
+    </ul>
+
+    <h1>
+      <%= yield(:breadcrumb_title) || @page.try(:title) %>
+    </h1>
+  </div>
+</div>

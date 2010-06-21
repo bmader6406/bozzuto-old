@@ -1,17 +1,16 @@
 <% content_for :body_class do %>generic<% end %>
 
-<div id="masthead">
-  <div id="breadcrumb">
-    <div class="container">
-      <ul>
-        <li><%= link_to 'Our Services', '#' %></li>
-        <li><%= link_to @section.title, '#' %></li>
-        <li>Testimonials</li>
-      </ul>
+<% content_for :breadcrumb do %>
+  <li>Testimonials</li>
+<% end %>
 
-      <h1>Testimonials</h1>
-    </div>
-  </div>
+<% content_for :breadcrumb_title do %>
+  Testimonials
+<% end %>
+
+
+<div id="masthead">
+  <%= render :partial => 'pages/breadcrumb' %>
 
   <div id="montage">
     <img src="/images/fpo/generic-montage-1.jpg" alt="" height="148" width="251" /><img src="/images/fpo/generic-montage-2.jpg" alt="" height="148" width="540" /><img src="/images/fpo/generic-montage-3.jpg" alt="" height="148" width="309" />
@@ -20,7 +19,7 @@
 
 <div id="main-content">
   <div class="container">
-    <%= render :partial => 'shared/section_secondary_nav' %>
+    <%= render :partial => 'pages/secondary_nav' %>
 
     <div id="content" class="col">
       <h2><%= @section.title %> Testimonials</h2>
