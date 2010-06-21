@@ -1,7 +1,12 @@
 class PagesController < ApplicationController
-  before_filter :find_section, :find_pages
-
   def show
+    if params[:template]
+      @page = Page.find 'services'
+      render :template => "pages/#{params[:template]}"
+    else
+      find_section
+      find_pages
+    end
   end
 
 

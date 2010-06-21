@@ -69,11 +69,11 @@ NewsPost:
 
 Page:
   fields:
-    default: title, cached_slug, section, parent
-    list: title, cached_slug, section, parent
-    form: title, cached_slug, body, section, parent
+    default: title, section, parent
+    list: title, section, lft, rgt, parent
+    form: title, body, section, parent
   order_by: 
-  relationships: children, parent, section, slugs
+  relationships: parent, section
   filters: 
   search: title
   application: Bozzuto
