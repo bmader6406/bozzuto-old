@@ -11,6 +11,8 @@ class Section < ActiveRecord::Base
   validates_uniqueness_of :title
   validates_inclusion_of :service, :in => [true, false]
 
+  named_scope :services, :conditions => { :service => true }
+
 
   def typus_name
     title

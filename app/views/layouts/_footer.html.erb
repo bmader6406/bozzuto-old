@@ -4,13 +4,9 @@
       <h4>About Us</h4>
 
       <ul>
-        <li><a href="#">Overview</a></li>
-        <li><a href="#">Our Work</a></li>
-        <li><a href="#">Awards</a></li>
-        <li><a href="#">News &amp; Press</a></li>
-        <li><a href="#">Leadership</a></li>
-        <li><a href="#">Careers</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <% Section.find('about').pages.roots.each do |page| %>
+          <li><%= link_to page.title, page_path(page.section, page) %></li>
+        <% end %>
       </ul>
     </div>
 
@@ -18,12 +14,9 @@
       <h4>Our Services</h4>
 
       <ul>
-        <li><%= link_to 'Acquisitions', '#' %></li>
-        <li><%= link_to 'Construction', '#' %></li>
-        <li><%= link_to 'Development', '#' %></li>
-        <li><%= link_to 'Homebuilding', '#' %></li>
-        <li><%= link_to 'Land', '#' %></li>
-        <li><%= link_to 'Management', '#' %></li>
+        <% Section.services.each do |service| %>
+          <li><%= link_to service.title, page_path(service) %></li>
+        <% end %>
       </ul>
     </div>
 
