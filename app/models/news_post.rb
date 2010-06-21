@@ -7,6 +7,7 @@ class NewsPost < ActiveRecord::Base
   validates_presence_of :title, :body, :section
   validates_inclusion_of :published, :in => [true, false]
 
+  default_scope :order => 'published_at DESC'
   named_scope :published, :conditions => { :published => true }
   named_scope :recent, lambda { |limit|
     { :limit => limit }

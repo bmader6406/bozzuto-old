@@ -13,4 +13,13 @@ class Section < ActiveRecord::Base
   def typus_name
     title
   end
+
+  alias_method :related_news_posts, :news_posts
+  def news_posts
+    if cached_slug == 'about'
+      NewsPost.published
+    else
+      related_news_posts
+    end
+  end
 end

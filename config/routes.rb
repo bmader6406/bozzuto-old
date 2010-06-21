@@ -18,14 +18,23 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :services, :only => [:index, :show] do |service|
     service.resources :testimonials,
-      :controller => 'service_testimonials',
+      :controller => :service_testimonials,
       :only       => :index
   end
 
   map.resources :states, :only => :show
 
   map.resource :contact,
-    :controller => 'contact_submissions',
+    :controller => :contact_submissions,
     :only       => [:show, :create],
     :member     => { :thank_you => :get }
+
+
+  map.with_options :controller => :news do |news|
+    news.service_news_posts '/services/:section/news'
+    news.service_news_post '/services/:section/news/:news_post_id', :action => :show
+
+    news.news_posts '/:section/news'
+    news.news_post '/:section/news/:news_post_id', :action => :show
+  end
 end
