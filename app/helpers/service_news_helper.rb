@@ -1,2 +1,0 @@
-module ServiceNewsHelper
-end
