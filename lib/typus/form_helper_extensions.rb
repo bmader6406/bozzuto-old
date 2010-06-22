@@ -15,8 +15,34 @@ module Typus
             :href => href, 
             :item => item
         end
+
+        # override to make current page and any children disabled
+        def expand_tree_into_select_field(items, attribute)
+          returning(String.new) do |html|
+            items.each do |item|
+              selected = "selected" if @item.send(attribute) == item.id
+              disabled = 'disabled="disabled"' if @item == item || item.ancestors.include?(@item)
+
+              html << %{<option #{selected} #{disabled} value="#{item.id}">#{"&nbsp;" * item.ancestors.size * 2} &#8627; #{item.to_label}</option>\n}
+              html << expand_tree_into_select_field(item.children, attribute) unless item.children.empty?
+            end
+          end
+        end
+
+        alias_method_chain :typus_tree_field, :page
       end
     end
 
+    def typus_tree_field_with_page(attribute, *args)
+      options = args.extract_options!
+
+      # scope page tree to section
+      if @resource[:class] == Page
+        section = @item.section
+        options[:items] = section.present? ? section.pages.roots : []
+      end
+
+      typus_tree_field_without_page(attribute, options)
+    end
   end
 end

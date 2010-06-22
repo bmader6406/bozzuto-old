@@ -84,10 +84,11 @@ ActiveRecord::Schema.define(:version => 20100621165337) do
   end
 
   create_table "news_posts", :force => true do |t|
-    t.string   "title",      :null => false
+    t.string   "title",                           :null => false
     t.text     "body"
-    t.boolean  "published"
-    t.integer  "section_id", :null => false
+    t.boolean  "published",    :default => false, :null => false
+    t.datetime "published_at"
+    t.integer  "section_id",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -121,15 +122,6 @@ ActiveRecord::Schema.define(:version => 20100621165337) do
   end
 
   add_index "sections", ["cached_slug"], :name => "index_sections_on_cached_slug"
-
-  create_table "services", :force => true do |t|
-    t.string   "title",      :null => false
-    t.string   "slug",       :null => false
-    t.integer  "position",   :null => false
-    t.integer  "section_id", :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "slugs", :force => true do |t|
     t.string   "name"
