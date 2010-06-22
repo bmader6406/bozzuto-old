@@ -366,10 +366,14 @@
 	(function() {
 
 		$.fn.featuredSlideshow = function(options) {
+		  
 			var opts = $.extend({}, $.fn.featuredSlideshow.defaults, options);
+			
 			return this.each(function() {
 				var $this = $(this);
 				var o = $.meta ? $.extend({}, opts, $this.data()) : opts;
+
+			  $('ul.slides li:eq(0)', $this).addClass('current');
 
 				if($('ul.slides li', $this).length > 1) {
 					if(o.dynamicPagination) {
@@ -384,8 +388,8 @@
 					}
 
 					if(o.autoAdvance) {
+					  
 						var hoverInterval = autoAdvance($this, o);
-
 						$this.hover(function() {
 							clearInterval(hoverInterval);
 						}, function() {
@@ -393,6 +397,19 @@
 						});
 
 					}
+					
+					$('.set-slideshow').each(function(){
+					  
+					  $(this).click(function(e){
+					    e.preventDefault();
+					    $slide = $( $(this).attr('href') );
+					    $this.featuredSlideshow.advance($slide, o);
+					    if ( $(window).scrollTop() > $slide.offset().top + 100){
+					      $(window).scrollTo( $slide, 800 );					      
+					    }
+					  });
+					  
+					});
 
 					$('ul.slideshow-pagination li a', $this).click(function() {
 						$.fn.featuredSlideshow.advance($('ul.slides li:eq('+($(this).parent().prevAll().size())+')'), o);
@@ -426,13 +443,15 @@
 		//public
 		$.fn.featuredSlideshow.advance = function($slide, o) {
 			var paginationIndex = $slide.prevAll().size();
-			$slide.animate({ opacity: 0 }, 1, function() {
-				$(this).addClass('on-deck');
-			});
-			$slide.animate({ opacity: 1}, o.transitionTime, function() {
-				$(this).siblings('.current').removeClass('current');
-				$(this).addClass('current').removeClass('on-deck');
-			});
+			if(!$slide.hasClass('current')){
+  			$slide.animate({ opacity: 0 }, 1, function() {
+  				$(this).addClass('on-deck');
+  			});
+  			$slide.animate({ opacity: 1}, o.transitionTime, function() {
+  				$(this).siblings('.current').removeClass('current');
+  				$(this).addClass('current').removeClass('on-deck');
+  			});			  
+			}
 		};
 
 		$.fn.featuredSlideshow.defaults = {

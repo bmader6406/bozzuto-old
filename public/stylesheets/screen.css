@@ -675,13 +675,6 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         display: inline;
         margin-right: 15px;
       }
-      .community #slideshow div.header a.prev,
-      .community #slideshow div.header a.next {
-        display: inline-block;
-        vertical-align: top;
-        width: 35px;
-        height: 60px;
-      }
       .community #slideshow div.header a {
         color: #565c64;
       }
@@ -1024,7 +1017,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       z-index: 0;
     }
 
-    .features ul.slides li,
+    .community ul.slides li,
     .home #content ul.slides li,
     .apartments #content ul.slides li,
     .homes-search ul.slides li,
@@ -1032,7 +1025,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       z-index: 1;
     }
 
-    .features ul.slides li.on-deck,
+    .community ul.slides li.on-deck,
     .home ul.slides li.on-deck,
     .apartments #content ul.slides li.on-deck,
     .homes-search ul.slides li.on-deck,
@@ -1040,7 +1033,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       z-index: 3;
     }
 
-    .features ul.slides li.current,
+    .community ul.slides li.current,
     .home #content ul.slides li.current,
     .apartments #content ul.slides li.current,
     .homes-search ul.slides li.current,
@@ -1084,11 +1077,12 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       right: 67px;
       top: 6px;
       z-index: 10;
+      width: 70px;
     }
 
     .community #slideshow ul.slideshow-navigation li,
     .apartments #content ul.slideshow-navigation li {
-      float: left;
+      float: left;      
     }
 
     .community #slideshow ul.slideshow-navigation li a,
@@ -1096,7 +1090,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       display: block;
       height: 57px;
       overflow: hidden;
-      width: 35px; 
+      width: 35px;       
     }
 
     .apartments #content div.row div.col {
@@ -1162,6 +1156,66 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
       
   /* @end */  
+  
+  /* @group -videos-and-floorplans */
+
+    .slideshow-caption {
+      background: #fff;
+      bottom: 0;
+      left: 20px;
+      opacity: .9;
+      -moz-opacity: 0.9;
+      filter:alpha(opacity=90);
+      padding: 10px 25px;
+      position: absolute;
+      text-align: center;
+      width: 800px;
+      z-index: 2;
+    }
+    
+    .slideshow-counter {
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+
+    .media-group {
+      border-bottom: 1px solid #eaecee;
+      padding: 0 0 0 170px;
+      margin: 15px 0 0;
+    }
+    
+    .media-group-last {
+      border: none;
+      margin-bottom: 20px;
+    }
+    
+    .secondary #main-content .media-group h2 {
+      float: left;
+      line-height: 1.4;
+      margin: 0 0 0 -170px;
+      width: 150px;
+    }
+    
+    * html .secondary #main-content .media-group h2 {
+      margin: 0 0 0 -85px;    
+    }
+
+    .media-link {
+      float: left;
+    }
+
+    .media-link a {
+      display: block;
+      padding: 0 15px 15px 0;
+      width: 55px;
+      zoom: 1;
+    }
+    
+    .media-link-last a {
+      padding: 0 0;
+    }
+  
+  /* @end */
   
   /* @group -services */
 
