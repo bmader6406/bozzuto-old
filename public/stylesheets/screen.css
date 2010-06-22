@@ -598,6 +598,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 				margin: -27px 0 -5px;
 				padding: 0;
 				text-align: center;
+				white-space: nowrap;
 			}
       .community #masthead .nav,
  			.project #masthead .nav {
