@@ -1,5 +1,5 @@
 class ContactSubmission < ActiveRecord::Base
-  include Tableless
+  has_no_table
 
   column :name,    :string
   column :email,   :string
