@@ -13,6 +13,8 @@ gem 'friendly_id', '~> 2.3'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem 'rcov'
+
 group :test do
   gem 'shoulda', '2.10.3'
   gem 'phocus'
