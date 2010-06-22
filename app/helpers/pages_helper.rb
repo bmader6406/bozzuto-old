@@ -30,4 +30,33 @@ module PagesHelper
       section_testimonials_path(section)
     end
   end
+
+  def pages_tree(pages)
+    level    = 0
+    output   = ''
+
+    Page.each_with_level(pages) do |page, page_level|
+      # open new level
+      if page_level > level
+        output << '<ul>'
+
+      # close level
+      elsif page_level < level
+        output << '</li></ul>'
+
+      # same level, close li
+      else
+        output << '</li>'
+      end
+
+      output << '<li>'
+      output << link_to(page.title, page_path(page.section, page))
+
+      level = page_level
+    end
+
+    # walked off the end with open uls
+    output += '</li></ul>' * level unless level.zero?
+    output.html_safe
+  end
 end
