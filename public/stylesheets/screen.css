@@ -13,11 +13,16 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     width: 960px;
     margin: 0px auto;
   }
+  .narrowPage .container {
+    margin: 0 0 0 10px;
+  }
+  .narrowPage {
+    overflow-x: hidden;
+  }
   .col {
     float: left;
     padding-right: 20px;
   }
-
   #main-content .social-updates .message {
     padding-left: 30px;
   }
@@ -595,10 +600,13 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         position: relative;
       }
 			.generic #montage {
+			  height: 148px;
 				margin: -27px 0 -5px;
+				overflow: hidden;
 				padding: 0;
 				text-align: center;
 				white-space: nowrap;
+				width: 100%;
 			}
       .community #masthead .nav,
  			.project #masthead .nav {
@@ -659,6 +667,19 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       }
  			.project #slideshow {
         left: 190px;
+      }
+      .project #slideshow .section,
+      .project #slideshow img {
+        position: absolute;
+        top: 0px;
+        left: 0px;        
+      }
+      
+      .project #slideshow .section {
+        z-index: 1;
+      }
+      .project #slideshow img {
+        z-index: 2;
       }
       .community #slideshow div.header,
       .community #slideshow div.slide,
@@ -1041,6 +1062,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       z-index: 2;
     }
 
+    .homes #content div.row,
     .apartments #content div.row {
       margin-bottom: 3px;
       overflow: hidden;
@@ -1074,7 +1096,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .community #slideshow ul.slideshow-navigation,
     .apartments #content ul.slideshow-navigation {
       position: absolute;
-      right: 67px;
+      right: 0;
       top: 6px;
       z-index: 10;
       width: 70px;
@@ -1097,17 +1119,21 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       padding-bottom: 3px;
     }
 
+    .homes #content #renting-from-bozzuto,
     .apartments #content #renting-from-bozzuto {
       float: left;
       padding-right: 22px;
       width: 317px;
     }
 
+    .homes #content #about-bozzuto,
     .apartments #content #about-bozzuto {
-      float: right;
+      float: left;
       width: 408px;
     }
 
+    .homes #content #renting-from-bozzuto p,
+    .homes #content #about-bozzuto p,
     .apartments #content #renting-from-bozzuto p,
     .apartments #content #about-bozzuto p {
       margin-bottom: 11px;
@@ -1146,13 +1172,16 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       text-align: center;
       text-transform: uppercase;
       top: 75px;
-      width: 90px;      
+      width: 90px;
     }
             
     .floor-plan-overlay {
       opacity: 0;
       -moz-opacity: 0;
       filter:alpha(opacity=0);
+      -moz-box-shadow: 0 0 30px rgba(0,0,0,0.1);
+      -webkit-box-shadow: 0 0 30px rgba(0,0,0,0.1);
+      box-shadow: 0 0 30px rgba(0,0,0,0.1);
     }
       
   /* @end */  
@@ -1196,10 +1225,6 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       width: 150px;
     }
     
-    * html .secondary #main-content .media-group h2 {
-      margin: 0 0 0 -85px;    
-    }
-
     .media-link {
       float: left;
     }
@@ -1775,11 +1800,6 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	margin-top: 9px;
     }
 
-    .homes #content {
-    	padding-right: 0;
-    	width: 770px;
-    }
-
     .homes #content div.header,
     .landing #content div.header,
     .search #content div.header {
@@ -1922,23 +1942,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	margin-bottom: 5px;
     	padding-left: 0;
     }
-  
-    .homes #content #renting-from-bozzuto {
-      float: left;
-      padding-right: 22px;
-      width: 317px;
-    }
-
-    .homes #content #about-bozzuto {
-      float: right;
-      width: 408px;
-    }
-
-    .homes #content #renting-from-bozzuto p,
-    .homes #content #about-bozzuto p {
-      margin-bottom: 11px;
-    }
-    
+      
     .home ul.slides li,
     .homes-search ul.slides li {
       height: 145px;
@@ -2474,23 +2478,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         min-height: 215px;
         padding: 30px 50px 50px 300px;
       }
-      
-      .ie7 .partner-bio-inner {
-        height: 215px;
-      }
-      
-      .ie6 .partner-bio-outer {
-        background: #fff;
-        padding: 0;
-        width: 760px;
-      }
-      
-      .ie6 .partner-bio-inner {
-        background: none;
-        height: auto;
-        padding: 30px;
-      }
-      
+                  
       .partner-bio-inner h3 {
         font-size: 21px;
         line-height: 21px;
@@ -3127,6 +3115,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         line-height: 1;
         text-transform: uppercase;
         color: #fff;
+        width: 815px;
       }
       .community #slideshow .section {
         font-size: 15px;
@@ -3218,6 +3207,13 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .community #renting-from-bozzuto p,
     .community #about-bozzuto p {
       margin-bottom: 1.666666667em;
+    }
+    .apartments #renting-from-bozzuto h2,
+    .apartments #about-bozzuto h2,
+    .homes #renting-from-bozzuto h2,
+    .homes #about-bozzuto h2 {
+      line-height: 1.2;
+      padding: 10px 0 5px;
     }
     .community .social-updates p.sharethis a {
       font-size: 12px;
@@ -4430,7 +4426,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       .js .partner-bio-outer {
         background: transparent url(../images/structure/bg-partner-bio.png) no-repeat right 0;
       }
-      
+            
       .js .partner-bio-inner {
         background: transparent url(../images/structure/bg-partner-bio.png) no-repeat 0 bottom;
       }

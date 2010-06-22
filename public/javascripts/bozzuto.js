@@ -1,6 +1,13 @@
 (function($) {
 
   $(function() {
+
+    changePageAlign();
+    
+    $(window).resize(function(){
+      changePageAlign();
+    });
+    
     $("#special-nav").specialNavPopups();
 
     $("#secondary-nav").secondaryNav();
@@ -600,5 +607,15 @@
   };
 
   $.fn.latestTwitterUpdate.monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+  function changePageAlign(){
+    var windowWidth = $(window).width();
+    // if( windowWidth < 1200 && windowWidth > 980){
+    if( windowWidth < 1130 && windowWidth > 980){
+      $(document.documentElement).addClass('narrowPage');
+    } else {
+      $(document.documentElement).removeClass('narrowPage');      
+    }
+  }
 
 })(jQuery);

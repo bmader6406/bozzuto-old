@@ -10,13 +10,31 @@
   height: 1%;
 }
 
+* html .homes #masthead,
 * html .apartments #masthead {
 	height: 200px;
 }
 
+* html .homes #content,
 * html .apartments #content {
 	width: 710px;
 	overflow: hidden;
+	padding: 0;
+}
+* html .search #breadcrumb .container h1,
+* html .generic #breadcrumb .container h1 {
+  margin: 0;
+}
+* html .search #breadcrumb .container ul,
+* html .generic #breadcrumb .container ul {
+  margin: 0 0 5px;
+}
+
+* html .homes #content #about-bozzuto,
+* html .apartments #content #about-bozzuto,
+* html .homes #content #renting-from-bozzuto,
+* html .apartments #content #renting-from-bozzuto {
+	width: 300px;
 }
 
 * html .services #content {
@@ -28,11 +46,16 @@
   overflow: hidden;
 }
 
+* html .secondary #main-content .media-group h2 {
+  margin: 0 0 0 -85px;    
+}
+
 * html .tips .li_cont3  {
   margin-right: 0;
 }
 
-* html .apartments #content ul.slideshow-pagination {
+* html .apartments #content ul.slideshow-pagination,
+* html .home #content ul.slideshow-pagination {
 	bottom: -1px;
 }
 
@@ -56,6 +79,27 @@
   padding-right: 15px;
   width: auto;
 }
+
+.js .partner-bio-inner {
+  height: 215px;
+}
+
+* html .partner-bio-outer {
+  background: #fff !important;
+  border: 1px solid #fff;
+  padding: 0;
+  width: 760px;
+}
+
+* html .partner-bio-inner {
+  background: #fff !important;
+  border: 1px solid #fff;
+}
+
+* html .partner-close:hover {
+  filter:alpha(opacity=100);
+}
+
  
 /***
   2. Typography
