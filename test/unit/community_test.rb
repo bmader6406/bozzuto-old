@@ -28,6 +28,12 @@ class CommunityTest < ActiveSupport::TestCase
       end
     end
 
+    context '#typus_name' do
+      should 'return the title' do
+        assert_equal @community.title, @community.typus_name
+      end
+    end
+
     context '#county' do
       setup do
         @county = County.make
