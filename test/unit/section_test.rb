@@ -14,6 +14,34 @@ class SectionTest < ActiveSupport::TestCase
     should_have_many :news_posts, :testimonials
 
 
+    context '#typus_name' do
+      should 'return the title' do
+        assert_equal @section.title, @section.typus_name
+      end
+    end
+
+    context '#aggregate?' do
+      context "when slug is 'about'" do
+        setup do
+          @section.update_attributes :title => 'About'
+        end
+
+        should 'be true' do
+          assert @section.aggregate?
+        end
+      end
+
+      context "when slug is anything else" do
+        setup do
+          @section.update_attributes :title => 'Booya'
+        end
+
+        should 'be false' do
+          assert !@section.aggregate?
+        end
+      end
+    end
+
     context 'when quering news posts' do
       setup do
         2.times { NewsPost.make :section => @section }

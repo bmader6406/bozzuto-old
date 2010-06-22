@@ -18,15 +18,15 @@ class Section < ActiveRecord::Base
     title
   end
 
-  alias_method :related_news_posts, :news_posts
-  def news_posts
-    aggregate? ? NewsPost.published : related_news_posts
+  def news_posts_with_aggregation
+    aggregate? ? NewsPost.published : news_posts_without_aggregation
   end
+  alias_method_chain :news_posts, :aggregation
 
-  alias_method :related_testimonials, :testimonials
-  def testimonials
-    aggregate? ? Testimonial.all : related_testimonials
+  def testimonials_with_aggregation
+    aggregate? ? Testimonial.all : testimonials_without_aggregation
   end
+  alias_method_chain :testimonials, :aggregation
 
   def aggregate?
     cached_slug == 'about'
