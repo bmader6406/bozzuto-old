@@ -27,8 +27,7 @@ City.create([{ :name => 'Arlington', :state => State.find_by_code('VA') },
 
 
 %w(Acquisitions Construction Development Homes Land Management).each do |title|
-  section = Section.create(:title => title)
-  Service.create(:title => title, :section => section, :service => true)
+  section = Section.create(:title => title, :service => true)
 end
 Section.create(:title => 'About')
 Section.create(:title => 'Apartments')
