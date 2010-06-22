@@ -7,9 +7,9 @@ City:
     default: name, state
     list: name, state
     form: name, state, county
-  order_by: 
+  order_by:
   relationships: communities, county, state
-  filters: 
+  filters:
   search: name
   application: Bozzuto
 
@@ -18,9 +18,9 @@ County:
     default: name, state
     list: name, state
     form: name, state
-  order_by: 
+  order_by:
   relationships: state
-  filters: 
+  filters:
   search: name
   application: Bozzuto
 
@@ -29,9 +29,9 @@ Community:
     default: title, street_address, city
     list: title, street_address, city
     form: title, subtitle, city, elite, smart_share, smart_rent, green, non_smoking, website_url, video_url, facebook_url, twitter_handle, promo_image, promo_url, latitude, longitude, street_address, yelp_feed, overview_text, features_text, neighborhood_text, promotions_text, contact_text
-  order_by: 
+  order_by:
   relationships: city, floor_plan_groups, photos, yelp_feed
-  filters: 
+  filters:
   search: title
   application: Community
 
@@ -52,8 +52,8 @@ FloorPlan:
     form: image, availability_url, bedrooms, bathrooms, min_market_rent, max_market_rent, min_effective_rent, max_effective_rent, min_square_feet, max_square_feet, floor_plan_group
   order_by: position
   relationships: floor_plan_group
-  filters: 
-  search: 
+  filters:
+  search:
   application: Community
 
 NewsPost:
@@ -72,9 +72,9 @@ Page:
     default: title, section, parent
     list: title, section, lft, rgt, parent
     form: title, body, section, parent
-  order_by: 
+  order_by:
   relationships: parent, section
-  filters: 
+  filters:
   search: title
   application: Bozzuto
 
@@ -83,17 +83,17 @@ Photo:
     default: image, caption, community
     list: image, caption, community
     form: image, caption, community
-  order_by: 
+  order_by:
   relationships: community
-  filters: 
-  search: 
+  filters:
+  search:
   application: Community
 
 Section:
   fields:
-    default: name
-    list: name
-    form: name
+    default: title
+    list: title
+    form: title
   order_by:
   relationships: news_posts, testimonials
   filters:
@@ -105,9 +105,9 @@ State:
     default: code, name
     list: code, name
     form: code, name
-  order_by: 
+  order_by:
   relationships: cities
-  filters: 
+  filters:
   search: name
   application: Bozzuto
 
