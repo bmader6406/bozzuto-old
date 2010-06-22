@@ -31,32 +31,42 @@ module PagesHelper
     end
   end
 
-  def pages_tree(pages)
-    level    = 0
-    output   = ''
+  def pages_tree(pages, ul_wrapper = false, current_level = 0)
+    formatted_pages = []
 
-    Page.each_with_level(pages) do |page, page_level|
-      # open new level
-      if page_level > level
-        output << '<ul>'
-
-      # close level
-      elsif page_level < level
-        output << '</li></ul>'
-
-      # same level, close li
-      else
-        output << '</li>'
-      end
-
-      output << '<li>'
-      output << link_to(page.title, page_path(page.section, page))
-
-      level = page_level
+    Page.each_with_level(pages) do |page, level|
+      formatted_pages << {
+        :page  => page,
+        :level => level
+      }
     end
 
-    # walked off the end with open uls
-    output += '</li></ul>' * level unless level.zero?
+    pages_tree_helper(formatted_pages)
+  end
+
+  def pages_tree_helper(pages, ul_wrapper = false, current_level = 0)
+    return '' if pages.empty?
+
+    output = ''
+    output << '<ul>' if ul_wrapper
+
+    pages.each_with_index do |page_hash, i|
+      page, level = page_hash[:page], page_hash[:level]
+
+      if level == current_level
+        output << '<li>'
+
+        output << link_to(page.title, page_path(page.section, page))
+
+        if pages[i + 1].present? && pages[i + 1][:level] > current_level
+          output << pages_tree_helper(pages.drop(i + 1), true, current_level + 1)
+        end
+
+        output << '</li>'
+      end
+    end
+
+    output << '</ul>' if ul_wrapper
     output.html_safe
   end
 end

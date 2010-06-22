@@ -3,7 +3,9 @@ class Section < ActiveRecord::Base
     :conditions => { :published => true },
     :order      => 'published_at DESC'
   has_many :testimonials
-  has_many :pages
+  has_many :pages,
+    :order     => 'lft ASC',
+    :dependent => :destroy
 
   has_friendly_id :title, :use_slug => true
 

@@ -150,7 +150,7 @@
       $("a span", this).bind("click", function() {
         var $this = $(this),
             state = $this.html(),
-            $targetList = $this.closest("li").find("ul");
+            $targetList = $this.closest("li").find("> ul");
 
         if(state === "+") {
           $targetList.slideDown();
@@ -165,7 +165,7 @@
 
       // setup
       $("li:not(.active) ul", this).hide();
-      $("li.active").find("span.switch").html("&ndash;");
+      $("li.active", this).find("span.switch").html("&ndash;");
     });
   };
 
