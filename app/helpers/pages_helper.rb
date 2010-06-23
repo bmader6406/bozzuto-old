@@ -31,6 +31,14 @@ module PagesHelper
     end
   end
 
+  def render_aside
+    partial = "pages/#{@section.cached_slug.gsub(/-/, '_')}_aside"
+    render :partial => partial
+  rescue ActionView::MissingTemplate
+    Rails.logger.debug "Couldn't find partial #{partial}"
+    nil
+  end
+
   def breadcrumb_item(item)
     content_for :breadcrumb do
       content_tag(:li) { item }.html_safe

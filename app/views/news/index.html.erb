@@ -19,36 +19,3 @@
 <% end %>
 
 <%= will_paginate @news_posts %>
-
-
-<% content_for :aside do %>
-  <div class="featured">
-    <h3><a href="#">Search Jobs at Bozzuto</a></h3>
-    <div class="article">
-      <a href="#"><img src="/images/fpo/generic-aside-1.jpg" alt="" height="144" width="230" /></a>
-      <p class="details"><a href="#">Featured Bozzuto Job</a>
-      Lorem ipsum dolor sit amet lorem sinsectutor dolorum ipsum sin sit.</p>
-    </div>
-  </div>
-
-  <div class="latest-news">
-    <h3><a href="#">Training &amp; Development</a></h3>
-
-    <div class="article">
-      <div class="news-post section first">
-        <p>Lorem ipsum dolor sit amet lorem sinsectutor dolorum ipsum sin sit sinsectutor dolor slorem. Lorem ipsum dolor sit amet lorem sinsectutor dolor sinsectutor alorum adipscing lorem.</p>
-      </div>
-
-      <% @recent_posts.each do |post| %>
-        <div class="news-post section">
-          <h4>
-            <%= link_to post.title, section_news_post_path(@section, post) %>
-          </h4>
-
-          <p class="date"><%= month_and_day(post.published_at) %></p>
-        </div>
-      <% end %>
-    </div>
-  </div>
-<% end %>
-
