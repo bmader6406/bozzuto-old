@@ -5,7 +5,7 @@
 <% end %>
 <% breadcrumb_item(@page.title) %>
 
-<% breadcrumb_title(@page.title) %>
+<% breadcrumb_title(@page.first? ? @section.title : @page.title) %>
 
 
 <%= simple_format(@page.body) %>

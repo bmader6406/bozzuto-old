@@ -22,6 +22,22 @@ class PageTest < ActiveSupport::TestCase
       end
     end
 
+    context '#first?' do
+      setup do
+        @section = Section.make
+        @page1 = Page.make :section => @section
+        @page2 = Page.make :section => @section
+      end
+
+      should 'return true if first' do
+        assert @page1.first?
+      end
+
+      should 'return false otherwise' do
+        assert !@page2.first?
+      end
+    end
+
     context '#path' do
       setup do
         @section = Section.make

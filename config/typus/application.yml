@@ -94,6 +94,8 @@ Section:
     default: title
     list: title
     form: title
+  options:
+    read_only: title
   order_by: title
   relationships: pages, news_posts, testimonials
   filters:

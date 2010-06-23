@@ -30,4 +30,8 @@ class Page < ActiveRecord::Base
   def path
     self_and_ancestors.map { |page| page.cached_slug }
   end
+
+  def first?
+    lft == 1
+  end
 end
