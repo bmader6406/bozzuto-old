@@ -31,6 +31,16 @@ module PagesHelper
     end
   end
 
+  def breadcrumb_item(item)
+    content_for :breadcrumb do
+      content_tag(:li) { item }.html_safe
+    end
+  end
+
+  def breadcrumb_title(title)
+    content_for(:breadcrumb_title) { title }
+  end
+
   def pages_tree(pages, ul_wrapper = false, current_level = 0)
     formatted_pages = []
 

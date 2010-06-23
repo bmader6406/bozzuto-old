@@ -10,8 +10,9 @@
       <%= yield :breadcrumb %>
     </ul>
 
-    <h1>
-      <%= yield(:breadcrumb_title) || @page.try(:title) %>
-    </h1>
+
+    <% if yield(:breadcrumb_title).present? %>
+      <h1><%= yield :breadcrumb_title %></h1>
+    <% end %>
   </div>
 </div>

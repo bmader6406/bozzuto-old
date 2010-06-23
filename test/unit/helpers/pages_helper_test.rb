@@ -2,6 +2,18 @@ require 'test_helper'
 
 class PagesHelperTest < ActionView::TestCase
   context 'PagesHelper' do
+    context '#breacrumb_item' do
+      should 'return the argument wrapped in an li' do
+        assert_equal '<li>blah</li>', breadcrumb_item('blah')
+      end
+    end
+
+    context '#breadcrumb_title' do
+      should 'output the argument' do
+        assert_equal 'blah', breadcrumb_title('blah')
+      end
+    end
+
     context '#pages_tree' do
       setup do
         @section = Section.make
@@ -104,5 +116,9 @@ class PagesHelperTest < ActionView::TestCase
       end
 
     end
+  end
+
+  def content_for(name)
+    yield
   end
 end

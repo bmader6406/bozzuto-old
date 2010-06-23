@@ -1,12 +1,7 @@
 <% content_for :body_class do %>generic<% end %>
 
-<% content_for :breadcrumb do %>
-  <li>Testimonials</li>
-<% end %>
-
-<% content_for :breadcrumb_title do %>
-  Testimonials
-<% end %>
+<% breadcrumb_item('Testimonials') %>
+<% breadcrumb_title('Testimonials') %>
 
 
 <h2><%= @section.title %> Testimonials</h2>

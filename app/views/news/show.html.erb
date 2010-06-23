@@ -1,13 +1,9 @@
 <% content_for :body_class do %>generic<% end %>
 
-<% content_for :breadcrumb do %>
-  <li><%= link_to 'News', section_news_posts_path(@section) %></li>
-  <li><%= @news_post.title %></li>
-<% end %>
+<% breadcrumb_item link_to('News', section_news_posts_path(@section)) %>
+<% breadcrumb_item(@news_post.title) %>
 
-<% content_for :breadcrumb_title do %>
-  <%= @news_post.title %>
-<% end %>
+<% breadcrumb_title(@news_post.title) %>
 
 
 <h2><%= @news_post.title %></h2>
