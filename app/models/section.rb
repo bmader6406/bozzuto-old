@@ -4,6 +4,7 @@ class Section < ActiveRecord::Base
   has_many :pages,
     :order     => 'lft ASC',
     :dependent => :destroy
+  has_many :awards, :order => 'published_at DESC'
 
   has_friendly_id :title, :use_slug => true
 

@@ -9,7 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100621165337) do
+ActiveRecord::Schema.define(:version => 20100623214614) do
+
+  create_table "awards", :force => true do |t|
+    t.string   "title",                           :null => false
+    t.text     "body"
+    t.integer  "section_id"
+    t.boolean  "published",    :default => false, :null => false
+    t.datetime "published_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "cities", :force => true do |t|
     t.string   "name",       :null => false
