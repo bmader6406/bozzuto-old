@@ -30,7 +30,9 @@ class Section < ActiveRecord::Base
   end
   alias_method_chain :testimonials, :aggregation
 
-  def aggregate?
+  def about?
     cached_slug == 'about'
   end
+
+  alias :aggregate? :about?
 end

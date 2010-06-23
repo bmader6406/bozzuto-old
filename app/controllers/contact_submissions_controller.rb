@@ -1,4 +1,6 @@
 class ContactSubmissionsController < ApplicationController
+  layout 'page'
+
   before_filter :find_section
 
   def show

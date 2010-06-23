@@ -12,4 +12,10 @@
       <%= link_to 'Testimonials', testimonials_path(@section) %>
     </li>
   <% end %>
+
+  <% if @section.about? %>
+    <li class="<%= current_if :controller => 'contact_submissions' %>">
+      <%= link_to 'Contact', contact_path %>
+    </li>
+  <% end %>
 </ul>

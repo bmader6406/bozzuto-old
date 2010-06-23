@@ -20,8 +20,30 @@ class SectionTest < ActiveSupport::TestCase
       end
     end
 
-    context '#aggregate?' do
+    context '#about?' do
       context "when slug is 'about'" do
+        setup do
+          @section.update_attributes :title => 'About'
+        end
+
+        should 'be true' do
+          assert @section.about?
+        end
+      end
+
+      context "when slug is anything else" do
+        setup do
+          @section.update_attributes :title => 'Booya'
+        end
+
+        should 'be false' do
+          assert !@section.about?
+        end
+      end
+    end
+
+    context '#aggregate?' do
+      context "when About section" do
         setup do
           @section.update_attributes :title => 'About'
         end
@@ -31,7 +53,7 @@ class SectionTest < ActiveSupport::TestCase
         end
       end
 
-      context "when slug is anything else" do
+      context "when any other section" do
         setup do
           @section.update_attributes :title => 'Booya'
         end
