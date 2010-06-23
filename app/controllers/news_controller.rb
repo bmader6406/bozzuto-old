@@ -15,14 +15,14 @@ class NewsController < ApplicationController
   private
 
   def find_recent_posts
-    @recent_posts = @section.news_posts.recent(3)
+    @recent_posts = @section.section_news.published.recent(3)
   end
 
   def find_posts
-    @news_posts = @section.news_posts.paginate(:page => params[:page])
+    @news_posts = @section.section_news.published.paginate(:page => params[:page])
   end
 
   def find_post
-    @news_post = @section.news_posts.find(params[:news_post_id])
+    @news_post = @section.section_news.published.find(params[:news_post_id])
   end
 end

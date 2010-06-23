@@ -11,6 +11,6 @@ class TestimonialsController < ApplicationController
   private
 
   def find_testimonials
-    @testimonials = @section.testimonials
+    @testimonials = @section.section_testimonials
   end
 end

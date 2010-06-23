@@ -11,14 +11,15 @@ class NewsControllerTest < ActionController::TestCase
         5.times do
           NewsPost.make :section => @section
         end
-        @news_posts = @section.news_posts
+        NewsPost.make(:unpublished, :section => @section)
+        @news = @section.section_news
 
         get :index, :section => @section.to_param
       end
 
       should_respond_with :success
       should_render_template :index
-      should_assign_to(:news_posts) { @news_posts }
+      should_assign_to(:news_posts) { @news.published }
     end
 
     context 'a GET to #show' do

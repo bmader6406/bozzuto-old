@@ -1,7 +1,5 @@
 class Section < ActiveRecord::Base
-  has_many :news_posts,
-    :conditions => { :published => true },
-    :order      => 'published_at DESC'
+  has_many :news_posts, :order => 'published_at DESC'
   has_many :testimonials
   has_many :pages,
     :order     => 'lft ASC',
@@ -20,19 +18,16 @@ class Section < ActiveRecord::Base
     title
   end
 
-  def news_posts_with_aggregation
-    aggregate? ? NewsPost.published : news_posts_without_aggregation
+  def section_news
+    aggregate? ? NewsPost.all : news_posts
   end
-  alias_method_chain :news_posts, :aggregation
 
-  def testimonials_with_aggregation
-    aggregate? ? Testimonial.all : testimonials_without_aggregation
+  def section_testimonials
+    aggregate? ? Testimonial.all : testimonials
   end
-  alias_method_chain :testimonials, :aggregation
 
   def about?
     cached_slug == 'about'
   end
-
   alias :aggregate? :about?
 end
