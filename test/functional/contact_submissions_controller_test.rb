@@ -2,6 +2,10 @@ require 'test_helper'
 
 class ContactSubmissionsControllerTest < ActionController::TestCase
   context 'ContactSubmissionsController' do
+    setup do
+      @section = Section.make :title => 'About'
+    end
+
     context 'a GET to #show' do
       context 'with no topic param' do
         setup do
@@ -11,6 +15,7 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
         should_respond_with :success
         should_render_template :show
         should_assign_to :submission
+        should_assign_to(:section) { @section }
       end
 
       context 'with a topic param' do
@@ -35,6 +40,7 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
 
         should_respond_with :success
         should_render_template :show
+        should_assign_to(:section) { @section }
       end
 
       context 'with all fields present' do
@@ -48,6 +54,7 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
 
         should_respond_with :redirect
         should_redirect_to('the thank you page') { thank_you_contact_path }
+        should_assign_to(:section) { @section }
       end
     end
 
@@ -58,6 +65,7 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
 
       should_respond_with :success
       should_render_template :thank_you
+      should_assign_to(:section) { @section }
     end
   end
 end

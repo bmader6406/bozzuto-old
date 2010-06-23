@@ -21,9 +21,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :states, :only => :show
 
   map.resource :contact,
-    :controller => :contact_submissions,
-    :only       => [:show, :create],
-    :member     => { :thank_you => :get }
+    :path_prefix => :about,
+    :controller  => :contact_submissions,
+    :only        => [:show, :create],
+    :member      => { :thank_you => :get }
 
 
   map.with_options :controller => :testimonials do |testimonial|

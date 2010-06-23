@@ -1,4 +1,6 @@
 class ContactSubmissionsController < ApplicationController
+  before_filter :find_section
+
   def show
     @submission = ContactSubmission.new(:topic => params[:topic])
   end
@@ -15,5 +17,12 @@ class ContactSubmissionsController < ApplicationController
   end
 
   def thank_you
+  end
+
+  
+  private
+
+  def find_section
+    @section = Section.find 'about'
   end
 end
