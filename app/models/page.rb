@@ -19,6 +19,14 @@ class Page < ActiveRecord::Base
     page.path == path ? page : (raise ActiveRecord::RecordNotFound)
   end
 
+  def formatted_title
+    if ancestors.size == 0
+      title
+    else
+      "#{'&nbsp;' * ancestors.size * 3}&#8627; #{title}".html_safe
+    end
+  end
+
   def path
     self_and_ancestors.map { |page| page.cached_slug }
   end

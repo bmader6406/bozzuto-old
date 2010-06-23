@@ -6,6 +6,22 @@ class PageTest < ActiveSupport::TestCase
 
     should_validate_presence_of :title
 
+    context '#formatted_title' do
+      setup do
+        @section = Section.make
+        @page1 = Page.make :section => @section
+        @page2 = Page.make :section => @section
+
+        @page2.move_to_child_of(@page1)
+      end
+
+      should 'return formatted string' do
+        assert_equal @page1.title, @page1.formatted_title
+        assert_equal "&nbsp;&nbsp;&nbsp;&#8627; #{@page2.title}",
+          @page2.formatted_title
+      end
+    end
+
     context '#path' do
       setup do
         @section = Section.make
