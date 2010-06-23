@@ -24,4 +24,11 @@ class ApplicationController < ActionController::Base
   def find_section
     @section = Section.find(params[:section])
   end
+
+  def about_root_pages
+    Section.about.pages.roots
+  rescue ActiveRecord::RecordNotFound
+    []
+  end
+  helper_method :about_root_pages
 end

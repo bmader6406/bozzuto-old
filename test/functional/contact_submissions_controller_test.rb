@@ -3,7 +3,7 @@ require 'test_helper'
 class ContactSubmissionsControllerTest < ActionController::TestCase
   context 'ContactSubmissionsController' do
     setup do
-      @section = Section.make :title => 'About'
+      @section = Section.make(:about)
     end
 
     context 'a GET to #show' do

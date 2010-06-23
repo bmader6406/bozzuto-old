@@ -25,6 +25,6 @@ class ContactSubmissionsController < ApplicationController
   private
 
   def find_section
-    @section = Section.find 'about'
+    @section = Section.about
   end
 end

@@ -73,6 +73,10 @@ Section.blueprint(:service) do
   service { true }
 end
 
+Section.blueprint(:about) do
+  title { 'About' }
+end
+
 NewsPost.blueprint do
   title        { Faker::Lorem.sentence }
   body         { Faker::Lorem.paragraphs(2) }

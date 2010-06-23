@@ -14,6 +14,10 @@ class Section < ActiveRecord::Base
   named_scope :services, :conditions => { :service => true }
 
 
+  def self.about
+    find('about')
+  end
+
   def typus_name
     title
   end

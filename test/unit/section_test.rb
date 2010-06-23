@@ -20,6 +20,16 @@ class SectionTest < ActiveSupport::TestCase
       end
     end
 
+    context 'self#about' do
+      setup do
+        @section = Section.make(:about)
+      end
+
+      should 'return the About section' do
+        assert_equal @section, Section.about
+      end
+    end
+
     context '#about?' do
       context "when slug is 'about'" do
         setup do
@@ -72,7 +82,7 @@ class SectionTest < ActiveSupport::TestCase
 
       context 'and in the about section' do
         setup do
-          @section = Section.make :title => 'About'
+          @section = Section.make(:about)
         end
 
         should 'return all news posts' do
@@ -96,7 +106,7 @@ class SectionTest < ActiveSupport::TestCase
 
       context 'and in the about section' do
         setup do
-          @section = Section.make :title => 'About'
+          @section = Section.make(:about)
         end
 
         should 'return all testimonials' do
