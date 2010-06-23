@@ -7,65 +7,51 @@
 <% content_for :breadcrumb_title do %>News<% end %>
 
 
-<div id="masthead">
-  <%= render :partial => 'pages/breadcrumb' %>
+<h2>Latest <%= @section.title %> News</h2>
 
-  <div id="montage">
-    <img src="/images/fpo/generic-montage-1.jpg" alt="" height="148" width="251" /><img src="/images/fpo/generic-montage-2.jpg" alt="" height="148" width="540" /><img src="/images/fpo/generic-montage-3.jpg" alt="" height="148" width="309" />
+<% @news_posts.each do |post| %>
+  <div class="news-post row">
+    <h3>
+      <%= link_to post.title, section_news_post_path(@section, post) %>
+    </h3>
+
+    <a href="#"><img src="/images/fpo/generic-content-1.jpg" alt="" height="150" width="150" /></a>
+
+    <%= simple_format(truncate(post.body, :length => 600)) %>
   </div>
-</div>
+<% end %>
 
-<div id="main-content">
-  <div class="container">
-    <%= render :partial => 'pages/secondary_nav' %>
+<%= will_paginate @news_posts %>
 
-    <div id="content" class="col">
-      <h2>Latest <%= @section.title %> News</h2>
 
-      <% @news_posts.each do |post| %>
-        <h3>
-          <%= link_to post.title, section_news_post_path(@section, post) %>
-        </h3>
+<% content_for :aside do %>
+  <div class="featured">
+    <h3><a href="#">Search Jobs at Bozzuto</a></h3>
+    <div class="article">
+      <a href="#"><img src="/images/fpo/generic-aside-1.jpg" alt="" height="144" width="230" /></a>
+      <p class="details"><a href="#">Featured Bozzuto Job</a>
+      Lorem ipsum dolor sit amet lorem sinsectutor dolorum ipsum sin sit.</p>
+    </div>
+  </div>
 
-        <a href="#"><img src="/images/fpo/generic-content-1.jpg" alt="" height="150" width="150" /></a>
+  <div class="latest-news">
+    <h3><a href="#">Training &amp; Development</a></h3>
 
-        <%= post.body %>
+    <div class="article">
+      <div class="news-post section first">
+        <p>Lorem ipsum dolor sit amet lorem sinsectutor dolorum ipsum sin sit sinsectutor dolor slorem. Lorem ipsum dolor sit amet lorem sinsectutor dolor sinsectutor alorum adipscing lorem.</p>
+      </div>
+
+      <% @recent_posts.each do |post| %>
+        <div class="news-post section">
+          <h4>
+            <%= link_to post.title, section_news_post_path(@section, post) %>
+          </h4>
+
+          <p class="date"><%= month_and_day(post.published_at) %></p>
+        </div>
       <% end %>
-
-      <%= will_paginate @news_posts %>
-    </div>
-
-
-    <div id="aside" class="col">
-      <div class="featured">
-        <h3><a href="#">Search Jobs at Bozzuto</a></h3>
-        <div class="article">
-          <a href="#"><img src="/images/fpo/generic-aside-1.jpg" alt="" height="144" width="230" /></a>
-          <p class="details"><a href="#">Featured Bozzuto Job</a>
-          Lorem ipsum dolor sit amet lorem sinsectutor dolorum ipsum sin sit.</p>
-        </div>
-      </div>
-
-      <div class="latest-news">
-        <h3><a href="#">Training &amp; Development</a></h3>
-
-        <div class="article">
-          <div class="news-post section first">
-            <p>Lorem ipsum dolor sit amet lorem sinsectutor dolorum ipsum sin sit sinsectutor dolor slorem. Lorem ipsum dolor sit amet lorem sinsectutor dolor sinsectutor alorum adipscing lorem.</p>
-          </div>
-
-          <% @recent_posts.each do |post| %>
-            <div class="news-post section">
-              <h4>
-                <%= link_to post.title, section_news_post_path(@section, post) %>
-              </h4>
-
-              <p class="date"><%= month_and_day(post.published_at) %></p>
-            </div>
-          <% end %>
-        </div>
-      </div>
-
     </div>
   </div>
-</div>
+<% end %>
+

@@ -1,4 +1,6 @@
 class TestimonialsController < ApplicationController
+  layout 'page'
+
   before_filter :find_section
   before_filter :find_testimonials, :only => :index
 

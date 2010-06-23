@@ -9,56 +9,41 @@
 <% end %>
 
 
-<div id="masthead">
-  <%= render :partial => 'pages/breadcrumb' %>
+<h2><%= @section.title %> Testimonials</h2>
 
-  <div id="montage">
-    <img src="/images/fpo/generic-montage-1.jpg" alt="" height="148" width="251" /><img src="/images/fpo/generic-montage-2.jpg" alt="" height="148" width="540" /><img src="/images/fpo/generic-montage-3.jpg" alt="" height="148" width="309" />
-  </div>
-</div>
+<ul class="testimonials">
+  <% @testimonials.each do |testimonial| %>
+    <li>
+      <blockquote>
+        <%= simple_format(testimonial.quote) %>
+      </blockquote>
 
-<div id="main-content">
-  <div class="container">
-    <%= render :partial => 'pages/secondary_nav' %>
+      <p class="author">
+        <strong><%= testimonial.name %></strong>
+        <em>&ndash; <%= testimonial.title %></em>
+      </p>
+    </li>
+  <% end %>
+</ul>
 
-    <div id="content" class="col">
-      <h2><%= @section.title %> Testimonials</h2>
 
-      <ul class="testimonials">
-        <% @testimonials.each do |testimonial| %>
-          <li>
-            <blockquote>
-              <%= testimonial.quote %>
-            </blockquote>
-            <p class="author">
-              <strong><%= testimonial.name %></strong>
-              <em>&ndash; <%= testimonial.title %></em>
-            </p>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div id="aside" class="col">
-      <div class="featured">
-        <h3><a href="#">Search Jobs at Bozzuto</a></h3>
-        <div class="article">
-          <a href="#"><img src="/images/fpo/generic-aside-1.jpg" alt="" height="144" width="230" /></a>
-          <p class="details"><a href="#">Featured Bozzuto Job</a>
-          Lorem ipsum dolor sit amet lorem sinsectutor dolorum ipsum sin sit.</p>
-        </div>
-      </div>
-
-      <div class="latest-news">
-        <h3><a href="#">Training &amp; Development</a></h3>
-
-        <div class="article">
-          <div class="news-post section first">
-            <p>Lorem ipsum dolor sit amet lorem sinsectutor dolorum ipsum sin sit sinsectutor dolor slorem. Lorem ipsum dolor sit amet lorem sinsectutor dolor sinsectutor alorum adipscing lorem.</p>
-          </div>
-        </div>
-      </div>
-
+<% content_for :aside do %>
+  <div class="featured">
+    <h3><a href="#">Search Jobs at Bozzuto</a></h3>
+    <div class="article">
+      <a href="#"><img src="/images/fpo/generic-aside-1.jpg" alt="" height="144" width="230" /></a>
+      <p class="details"><a href="#">Featured Bozzuto Job</a>
+      Lorem ipsum dolor sit amet lorem sinsectutor dolorum ipsum sin sit.</p>
     </div>
   </div>
-</div>
+
+  <div class="latest-news">
+    <h3><a href="#">Training &amp; Development</a></h3>
+
+    <div class="article">
+      <div class="news-post section first">
+        <p>Lorem ipsum dolor sit amet lorem sinsectutor dolorum ipsum sin sit sinsectutor dolor slorem. Lorem ipsum dolor sit amet lorem sinsectutor dolor sinsectutor alorum adipscing lorem.</p>
+      </div>
+    </div>
+  </div>
+<% end %>

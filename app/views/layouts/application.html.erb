@@ -1,57 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
-<%= render :partial => 'layouts/header' %>
+<%= render :partial => 'layouts/head' %>
 <body class="secondary <%= yield :body_class %>">
-  
-<div id="header" class="header">
-  <div class="container">
-    <div id="logo">
-      <%= link_to 'Bozzuto', '#' %>
-    </div>
-
-    <div>
-      <div class="nav">
-        <ul id="main-nav">
-          <li class="apartments-nav">
-            <%= link_to 'Apartments', '/apartments' %>
-          </li>
-          <li class="homes-nav">
-            <%= link_to 'Apartments', '/new-homes' %>
-          </li>
-          <li class="about-nav">
-            <%= link_to 'About Us', '/about' %>
-          </li>
-          <li class="services-nav">
-            <%= link_to 'Our Services', services_path %>
-          </li>
-        </ul>
-      </div>
-
-      <div class="section">
-        <form action="search-results.html" class="search-form">
-          <p class="fields">
-            <input type="text" name="q" />
-            <button type="submit">Submit</button>
-          </p>
-        </form>
-
-        <div class="aside">
-          <ul>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Contact Us</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <%= yield :special_nav %>
-    
-  </div>
-</div>
-
-<%= yield %>
-
-<%= render :partial => 'layouts/footer' %>
-
+  <%= render :partial => 'layouts/header' %>
+  <%= yield %>
+  <%= render :partial => 'layouts/footer' %>
 </body>
 </html>

@@ -1,16 +1,45 @@
-<head>
-  <title>The Bozzuto Group</title>
+<div id="header" class="header">
+  <div class="container">
+    <div id="logo">
+      <%= link_to 'Bozzuto', '#' %>
+    </div>
 
-  <meta charset="utf-8" />
+    <div>
+      <div class="nav">
+        <ul id="main-nav">
+          <li class="apartments-nav">
+            <%= link_to 'Apartments', '/apartments' %>
+          </li>
+          <li class="homes-nav">
+            <%= link_to 'Apartments', '/new-homes' %>
+          </li>
+          <li class="about-nav">
+            <%= link_to 'About Us', '/about' %>
+          </li>
+          <li class="services-nav">
+            <%= link_to 'Our Services', services_path %>
+          </li>
+        </ul>
+      </div>
 
-  <%= stylesheet_link_tag 'screen', :media => 'screen' %> 
-  <!--[if lte IE 7]>
-    <%= stylesheet_link_tag 'ie6-7', :media => 'screen' %> 
-  <![endif]--> 
-  
-  <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+      <div class="section">
+        <form action="search-results.html" class="search-form">
+          <p class="fields">
+            <input type="text" name="q" />
+            <button type="submit">Submit</button>
+          </p>
+        </form>
 
-  <link rel="icon" href="/favicon.png" type="image/png" />
-  <link rel="shortcut icon" href="/favicon.ico" />
+        <div class="aside">
+          <ul>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-</head>
+    <%= yield :special_nav %>
+    
+  </div>
+</div>

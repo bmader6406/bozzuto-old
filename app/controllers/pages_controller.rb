@@ -1,8 +1,10 @@
 class PagesController < ApplicationController
+  layout 'page'
+
   def show
     if params[:template]
       @page = Page.find('services')
-      render :template => "pages/#{params[:template]}"
+      render :template => "pages/#{params[:template]}", :layout => 'application'
     else
       find_section
       find_page

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<%= render :partial => 'layouts/head' %>
+<body class="secondary <%= yield :body_class %>">
+  <%= render :partial => 'layouts/header' %>
+
+  <div id="masthead">
+    <%= render :partial => 'pages/breadcrumb' %>
+
+    <div id="montage">
+      <img src="/images/fpo/generic-montage-1.jpg" alt="" height="148" width="251" /><img src="/images/fpo/generic-montage-2.jpg" alt="" height="148" width="540" /><img src="/images/fpo/generic-montage-3.jpg" alt="" height="148" width="309" />
+    </div>
+  </div>
+
+  <div id="main-content">
+    <div class="container">
+      <div id="sidebar" class="col">
+        <%= render :partial => 'pages/secondary_nav' %>
+      </div>
+
+      <div id="content" class="col">
+        <%= yield %>
+      </div>
+
+      <div id="aside" class="col">
+        <%= yield :aside %>
+      </div>
+    </div>
+  </div>
+
+  <%= render :partial => 'layouts/footer' %>
+</body>
+</html>
