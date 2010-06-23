@@ -171,8 +171,8 @@
       });
 
       // setup
-      $("li:not(.active) ul", this).hide();
-      $("li.active", this).find("span.switch").html("&ndash;");
+      $("li:not(.current) ul:not(:has(li.current))", this).hide();
+      $("li.current", this).find("span.switch").html("&ndash;");
     });
   };
 

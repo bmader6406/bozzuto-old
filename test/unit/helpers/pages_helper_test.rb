@@ -23,6 +23,8 @@ class PagesHelperTest < ActionView::TestCase
 
         @page3.move_to_child_of(@page2)
         @page2.move_to_child_of(@page1)
+
+        stubs(:params).returns({})
       end
 
       should 'return a tree of unordered lists' do

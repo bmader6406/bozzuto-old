@@ -64,7 +64,13 @@ module PagesHelper
       page, level = page_hash[:page], page_hash[:level]
 
       if level == current_level
-        output << '<li>'
+        css_classes = []
+        css_classes << 'first' if level == 0 and i == 0
+        css_classes << 'current' if params[:page] == page.path
+
+        css_class = %{class="#{css_classes.join(' ')}"} if css_classes.any?
+
+        output << "<li #{css_class}>"
 
         output << link_to(page.title, page_path(page.section, page))
 
