@@ -1,8 +1,4 @@
-class ContactSubmissionsController < ApplicationController
-  layout 'page'
-
-  before_filter :find_section
-
+class ContactSubmissionsController < SectionContentController
   def show
     @submission = ContactSubmission.new(:topic => params[:topic])
   end

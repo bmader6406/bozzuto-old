@@ -1,5 +1,5 @@
-class PagesController < ApplicationController
-  layout 'page'
+class PagesController < SectionContentController
+  skip_before_filter :find_section
 
   def show
     if params[:template]
