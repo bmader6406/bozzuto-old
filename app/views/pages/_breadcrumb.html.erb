@@ -2,7 +2,7 @@
   <div class="container">
     <ul>
       <% if @section.service? %>
-        <li><%= link_to 'Our Services', '#' %></li>
+        <li><%= link_to 'Our Services', '/services' %></li>
       <% end %>
 
       <li><%= link_to @section.title, page_path(@section) %></li>
