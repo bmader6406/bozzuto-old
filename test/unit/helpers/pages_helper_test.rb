@@ -65,6 +65,42 @@ class PagesHelperTest < ActionView::TestCase
         end
       end
 
+      context '#awards_path' do
+        context 'when section is a service' do
+          should 'return the service path' do
+            assert_equal service_section_awards_path(@service),
+              awards_path(@service)
+          end
+        end
+
+        context 'when section is not a service' do
+          should 'return the section path' do
+            assert_equal section_awards_path(@section),
+              awards_path(@section)
+          end
+        end
+      end
+
+      context '#award_path' do
+        context 'when section is a service' do
+          setup { @award = Award.make(:section => @service) }
+
+          should 'return the service path' do
+            assert_equal service_section_award_path(@service, @award),
+              award_path(@service, @award)
+          end
+        end
+
+        context 'when section is not a service' do
+          setup { @award = Award.make(:section => @section) }
+
+          should 'return the section path' do
+            assert_equal section_award_path(@section, @award),
+              award_path(@section, @award)
+          end
+        end
+      end
+
       context '#news_posts_path' do
         context 'when section is a service' do
           should 'return the service path' do

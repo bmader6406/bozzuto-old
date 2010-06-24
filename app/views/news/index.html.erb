@@ -9,7 +9,7 @@
 <% @news_posts.each do |post| %>
   <div class="news-post row">
     <h3>
-      <%= link_to post.title, section_news_post_path(@section, post) %>
+      <%= link_to post.title, news_post_path(@section, post) %>
     </h3>
 
     <a href="#"><img src="/images/fpo/generic-content-1.jpg" alt="" height="150" width="150" /></a>

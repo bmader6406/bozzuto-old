@@ -3,6 +3,7 @@
 # Use the README file as a reference to customize settings.
 
 admin:
+  Award: create, read, update, delete
   City: create, read, update, delete
   County: create, read, update, delete
   Community: create, read, update, delete

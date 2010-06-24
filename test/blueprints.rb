@@ -10,6 +10,19 @@ Sham.define do
   section_title { |i| "#{Faker::Lorem.words} #{i}" }
 end
 
+Award.blueprint do
+  title        { Faker::Lorem.sentence }
+  body         { Faker::Lorem.paragraphs }
+  published    { true }
+  published_at { Time.now }
+  section
+end
+
+Award.blueprint(:unpublished) do
+  published    { false }
+  published_at { nil }
+end
+
 City.blueprint do
   name { Sham.city }
   state

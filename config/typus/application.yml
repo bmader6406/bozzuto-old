@@ -1,6 +1,17 @@
 # Typus Models Configuration File
 #
 # Use the README file as a reference to customize settings.
+#
+Award:
+  fields:
+    default: title, published, published_at, section
+    list: title, published, published_at, section
+    form: title, body, published, published_at, section
+  order_by: 
+  relationships: section
+  filters: 
+  search: title
+  application: Bozzuto
 
 City:
   fields:
@@ -97,7 +108,7 @@ Section:
   options:
     read_only: title
   order_by: title
-  relationships: pages, news_posts, testimonials
+  relationships: pages, news_posts, testimonials, awards
   filters:
   search:
   application: Bozzuto

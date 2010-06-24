@@ -39,6 +39,13 @@ ActionController::Routing::Routes.draw do |map|
     news.section_news_posts '/:section/news'
   end
 
+  map.with_options :controller => :awards do |award|
+    award.service_section_award '/services/:section/awards/:award_id', :action => :show
+    award.service_section_awards '/services/:section/awards'
+    award.section_award '/:section/awards/:award_id', :action => :show
+    award.section_awards '/:section/awards'
+  end
+
   map.with_options :controller => :pages, :action => :show do |page|
     page.services '/services', :template => 'services'
     page.service_section_page '/services/:section/*page'

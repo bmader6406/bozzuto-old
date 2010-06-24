@@ -23,6 +23,22 @@ module PagesHelper
     end
   end
 
+  def awards_path(section)
+    if section.service?
+      service_section_awards_path(section)
+    else
+      section_awards_path(section)
+    end
+  end
+
+  def award_path(section, award)
+    if section.service?
+      service_section_award_path(section, award)
+    else
+      section_award_path(section, award)
+    end
+  end
+
   def testimonials_path(section)
     if section.service?
       service_section_testimonials_path(section)

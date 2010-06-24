@@ -1,0 +1,21 @@
+<% content_for :body_class do %>generic<% end %>
+
+<% breadcrumb_item('Awards') %>
+<% breadcrumb_title('Awards') %>
+
+
+<h2><%= @section.title %> Awards</h2>
+
+<% @awards.each do |award| %>
+  <div class="award row">
+    <h3>
+      <%= link_to award.title, award_path(@section, award) %>
+    </h3>
+
+    <a href="#"><img src="/images/fpo/generic-content-1.jpg" alt="" height="150" width="150" /></a>
+
+    <%= simple_format(truncate(award.body, :length => 600)) %>
+  </div>
+<% end %>
+
+<%= will_paginate @awards %>
