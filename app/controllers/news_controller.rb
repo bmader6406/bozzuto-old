@@ -1,7 +1,4 @@
-class NewsController < ApplicationController
-  layout 'page'
-
-  before_filter :find_section, :find_recent_posts
+class NewsController < SectionContentController
   before_filter :find_posts, :only => :index
   before_filter :find_post, :only => :show
 
@@ -14,15 +11,11 @@ class NewsController < ApplicationController
 
   private
 
-  def find_recent_posts
-    @recent_posts = @section.section_news.published.recent(3)
-  end
-
   def find_posts
-    @news_posts = @section.section_news.published.paginate(:page => params[:page])
+    @news_posts = section_news_posts.paginate(:page => params[:page])
   end
 
   def find_post
-    @news_post = @section.section_news.published.find(params[:news_post_id])
+    @news_post = section_news_posts.find(params[:news_post_id])
   end
 end

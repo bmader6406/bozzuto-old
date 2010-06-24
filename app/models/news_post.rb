@@ -1,15 +1,12 @@
 class NewsPost < ActiveRecord::Base
+  include Bozzuto::Publishable
+
   cattr_reader :per_page
   @@per_page = 10
   
   belongs_to :section
 
-  validates_presence_of :title, :body, :section
-  validates_inclusion_of :published, :in => [true, false]
-
   default_scope :order => 'published_at DESC'
-  named_scope :published, :conditions => { :published => true }
-  named_scope :recent, lambda { |limit|
-    { :limit => limit }
-  }
+
+  validates_presence_of :title, :body, :section
 end

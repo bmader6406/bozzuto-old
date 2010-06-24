@@ -1,7 +1,4 @@
-class AwardsController < ApplicationController
-  layout 'page'
-
-  before_filter :find_section
+class AwardsController < SectionContentController
   before_filter :find_awards, :only => :index
   before_filter :find_award, :only => :show
 
@@ -15,10 +12,10 @@ class AwardsController < ApplicationController
   private
 
   def find_awards
-    @awards = @section.section_awards.published.paginate(:page => params[:page])
+    @awards = section_awards.paginate(:page => params[:page])
   end
 
   def find_award
-    @award = @section.section_awards.published.find(params[:award_id])
+    @award = section_awards.find(params[:award_id])
   end
 end

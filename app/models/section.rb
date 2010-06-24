@@ -23,18 +23,6 @@ class Section < ActiveRecord::Base
     title
   end
 
-  def section_news
-    aggregate? ? NewsPost.scoped({}) : news_posts
-  end
-
-  def section_testimonials
-    aggregate? ? Testimonial.scoped({}) : testimonials
-  end
-
-  def section_awards
-    aggregate? ? Award.scoped({}) : awards
-  end
-
   def about?
     cached_slug == 'about'
   end

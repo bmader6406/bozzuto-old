@@ -12,7 +12,7 @@ class NewsControllerTest < ActionController::TestCase
           NewsPost.make :section => @section
         end
         NewsPost.make(:unpublished, :section => @section)
-        @news = @section.section_news
+        @news = @section.news_posts
 
         get :index, :section => @section.to_param
       end

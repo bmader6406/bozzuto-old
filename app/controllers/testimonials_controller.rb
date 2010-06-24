@@ -1,7 +1,4 @@
-class TestimonialsController < ApplicationController
-  layout 'page'
-
-  before_filter :find_section
+class TestimonialsController < SectionContentController
   before_filter :find_testimonials, :only => :index
 
   def index
@@ -11,6 +8,6 @@ class TestimonialsController < ApplicationController
   private
 
   def find_testimonials
-    @testimonials = @section.section_testimonials
+    @testimonials = section_testimonials.all
   end
 end

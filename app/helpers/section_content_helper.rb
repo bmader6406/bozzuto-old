@@ -1,0 +1,2 @@
+module SectionContentHelper
+end

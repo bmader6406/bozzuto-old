@@ -73,53 +73,5 @@ class SectionTest < ActiveSupport::TestCase
         end
       end
     end
-
-    context 'when querying news posts' do
-      setup do
-        2.times { NewsPost.make :section => @section }
-        2.times { NewsPost.make :section => Section.make }
-      end
-
-      context 'and in the about section' do
-        setup do
-          @section = Section.make(:about)
-        end
-
-        should 'return all news posts' do
-          assert_equal NewsPost.all, @section.section_news
-        end
-      end
-
-      context 'and not in the about section' do
-        should "return this section's news posts" do
-          @news_posts = NewsPost.find_all_by_section_id(@section.id)
-          assert_equal @news_posts, @section.section_news
-        end
-      end
-    end
-
-    context 'when querying testimonials' do
-      setup do
-        2.times { Testimonial.make :section => @section }
-        2.times { Testimonial.make :section => Section.make }
-      end
-
-      context 'and in the about section' do
-        setup do
-          @section = Section.make(:about)
-        end
-
-        should 'return all testimonials' do
-          assert_equal Testimonial.all, @section.section_testimonials
-        end
-      end
-
-      context 'and not in the about section' do
-        should "return this section's testimonials" do
-          @testimonials = Testimonial.find_all_by_section_id(@section.id)
-          assert_equal @testimonials, @section.section_testimonials
-        end
-      end
-    end
   end
 end
