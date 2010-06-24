@@ -38,6 +38,11 @@ State.blueprint do
   code { Sham.us_state_code }
 end
 
+Property.blueprint do
+  title { Sham.company_name }
+  city
+end
+
 Community.blueprint do
   title             { Sham.company_name }
   subtitle          { Faker::Company.catch_phrase }

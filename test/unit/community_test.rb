@@ -8,53 +8,10 @@ class CommunityTest < ActiveSupport::TestCase
 
     subject { @community }
 
-    should_belong_to :city
     should_have_many :photos
     should_have_many :floor_plan_groups
     should_have_many :floor_plans, :through => :floor_plan_groups
     should_belong_to :yelp_feed
-
-    should_validate_presence_of :title, :city
-    should_validate_numericality_of :latitude, :longitude
-
-    context "#address" do
-      setup do
-        @address = '202 Rigsbee Ave'
-        @community = Community.make(:street_address => @address)
-      end
-
-      should "return the formatted address" do
-        assert_equal "#{@address}, #{@community.city}", @community.address
-      end
-    end
-
-    context '#typus_name' do
-      should 'return the title' do
-        assert_equal @community.title, @community.typus_name
-      end
-    end
-
-    context '#county' do
-      setup do
-        @county = County.make
-        @community = Community.make(:city => City.make(:county => @county))
-      end
-
-      should "return the city's county" do
-        assert_equal @county, @community.county
-      end
-    end
-
-    context '#state' do
-      setup do
-        @state = State.make
-        @community = Community.make(:city => City.make(:state => @state))
-      end
-
-      should "return the city's state" do
-        assert_equal @state, @community.state
-      end
-    end
 
     context "#nearby_communities" do
       setup do

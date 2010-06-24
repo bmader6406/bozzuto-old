@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100623214614) do
+ActiveRecord::Schema.define(:version => 20100624182721) do
 
   create_table "awards", :force => true do |t|
     t.string   "title",                           :null => false
@@ -27,37 +27,6 @@ ActiveRecord::Schema.define(:version => 20100623214614) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "county_id"
-  end
-
-  create_table "communities", :force => true do |t|
-    t.string   "title",                                :null => false
-    t.string   "subtitle"
-    t.integer  "city_id",                              :null => false
-    t.boolean  "elite",             :default => false, :null => false
-    t.boolean  "smart_share",       :default => false, :null => false
-    t.boolean  "smart_rent",        :default => false, :null => false
-    t.boolean  "green",             :default => false, :null => false
-    t.boolean  "non_smoking",       :default => false, :null => false
-    t.string   "website_url"
-    t.string   "video_url"
-    t.string   "facebook_url"
-    t.string   "twitter_handle"
-    t.string   "promo_image"
-    t.string   "promo_url"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.string   "street_address"
-    t.text     "overview_text"
-    t.text     "features_text"
-    t.text     "neighborhood_text"
-    t.text     "promotions_text"
-    t.text     "contact_text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "yelp_feed_id"
-    t.integer  "vaultware_id"
-    t.boolean  "use_market_prices", :default => false, :null => false
-    t.string   "availability_url"
   end
 
   create_table "counties", :force => true do |t|
@@ -121,6 +90,38 @@ ActiveRecord::Schema.define(:version => 20100623214614) do
     t.string   "caption",      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "properties", :force => true do |t|
+    t.string   "title",                                :null => false
+    t.string   "subtitle"
+    t.integer  "city_id",                              :null => false
+    t.boolean  "elite",             :default => false, :null => false
+    t.boolean  "smart_share",       :default => false, :null => false
+    t.boolean  "smart_rent",        :default => false, :null => false
+    t.boolean  "green",             :default => false, :null => false
+    t.boolean  "non_smoking",       :default => false, :null => false
+    t.string   "website_url"
+    t.string   "video_url"
+    t.string   "facebook_url"
+    t.string   "twitter_handle"
+    t.string   "promo_image"
+    t.string   "promo_url"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "street_address"
+    t.text     "overview_text"
+    t.text     "features_text"
+    t.text     "neighborhood_text"
+    t.text     "promotions_text"
+    t.text     "contact_text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "yelp_feed_id"
+    t.integer  "vaultware_id"
+    t.boolean  "use_market_prices", :default => false, :null => false
+    t.string   "availability_url"
+    t.string   "type"
   end
 
   create_table "sections", :force => true do |t|
