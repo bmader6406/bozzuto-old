@@ -1,0 +1,20 @@
+<% unless latest_news_posts.empty? %>
+  <div class="latest-news">
+    <h3><%= link_to 'Latest News', news_posts_path(@section) %></h3>
+
+    <div class="article">
+      <% latest_news_posts.each_with_index do |post, i| %>
+        <div class="news-post section <%= 'first' if i == 0 %>">
+          <h4>
+            <%= link_to post.title, news_post_path(@section, post) %>
+          </h4>
+          <p class="date">
+            <%= month_and_day(post.published_at) %>
+          </p>
+
+          <%= simple_format(truncate(post.body, :length => 200)) if i == 0 %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
