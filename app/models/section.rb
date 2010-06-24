@@ -24,11 +24,15 @@ class Section < ActiveRecord::Base
   end
 
   def section_news
-    aggregate? ? NewsPost.all : news_posts
+    aggregate? ? NewsPost.scoped({}) : news_posts
   end
 
   def section_testimonials
-    aggregate? ? Testimonial.all : testimonials
+    aggregate? ? Testimonial.scoped({}) : testimonials
+  end
+
+  def section_awards
+    aggregate? ? Award.scoped({}) : awards
   end
 
   def about?
