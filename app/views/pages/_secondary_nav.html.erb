@@ -1,19 +1,25 @@
 <ul id="secondary-nav">
   <%= pages_tree(@section.pages) %>
 
-  <% unless @section.news_posts.count.zero? %>
+  <% unless section_projects.count.zero? %>
+    <li class="<%= current_if :controller => 'projects' %>">
+      <%= link_to 'Our Work', projects_path(@section) %>
+    </li>
+  <% end %>
+
+  <% unless section_news_posts.count.zero? %>
     <li class="<%= current_if :controller => 'news' %>">
       <%= link_to 'News & Press', news_posts_path(@section) %>
     </li>
   <% end %>
 
-  <% unless @section.testimonials.count.zero? %>
+  <% unless section_testimonials.count.zero? %>
     <li class="<%= current_if :controller => 'testimonials' %>">
       <%= link_to 'Testimonials', testimonials_path(@section) %>
     </li>
   <% end %>
 
-  <% unless @section.awards.count.zero? %>
+  <% unless section_awards.count.zero? %>
     <li class="<%= current_if :controller => 'awards' %>">
       <%= link_to 'Awards', awards_path(@section) %>
     </li>

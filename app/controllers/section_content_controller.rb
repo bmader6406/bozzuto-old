@@ -20,16 +20,20 @@ class SectionContentController < ApplicationController
   def section_news_posts
     @section.aggregate? ? NewsPost.published : @section.news_posts.published
   end
+  helper_method :section_news_posts
 
   def section_testimonials
     @section.aggregate? ? Testimonial.scoped({}) : @section.testimonials
   end
+  helper_method :section_testimonials
 
   def section_awards
     @section.aggregate? ? Award.published : @section.awards.published
   end
+  helper_method :section_awards
 
   def section_projects
     @section.aggregate? ? Project.scoped({}) : @section.projects
   end
+  helper_method :section_projects
 end
