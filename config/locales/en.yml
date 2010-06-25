@@ -3,6 +3,8 @@
 
 en:
   activerecord:
+    models:
+      project_data_point: Data Point
     attributes:
       community:
         elite: Elite Community

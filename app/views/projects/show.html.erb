@@ -23,34 +23,24 @@
   <% end %>
 <% end %>
 
+
 <h2>Lorem Bozzuto Construction Ipsum</h2>
 
 <div class="intro">
   <%= simple_format(@project.overview_text) %>
 </div>
 
-<ul class="data">
-  <li>
-    <h3>Architects</h3>
-    <p>Design Collective</p>
-  </li>
-  <li>
-    <h3>Construction Type</h3>
-    <p>New Construction</p>
-  </li>
-  <li>
-    <h3>Owners</h3>
-    <p>The Bozzuto Group</p>
-  </li>
-  <li>
-    <h3>Completion Date</h3>
-    <p>Fall 2010</p>
-  </li>
-  <li>
-    <h3>Product Size</h3>
-    <p>280 Apartment Units</p>
-  </li>
-</ul>
+
+<% unless @project.data_points.empty? %>
+  <ul class="data">
+    <% @project.data_points.each do |point| %>
+      <li>
+        <h3><%= point.name %></h3>
+        <p><%= point.data %></p>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
 
 
 <h2>Project Updates</h2>
