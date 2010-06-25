@@ -100,6 +100,17 @@ Photo:
   search:
   application: Community
 
+Project:
+  fields:
+    default: title, street_address, city
+    list: title, street_address, city
+    form: title, subtitle, section, website_url, video_url, latitude, longitude, street_address, overview_text, city
+  order_by: 
+  relationships: city, section
+  filters: 
+  search: title
+  application: Bozzuto
+
 Section:
   fields:
     default: title

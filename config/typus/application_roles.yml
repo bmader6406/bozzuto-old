@@ -12,6 +12,7 @@ admin:
   NewsPost: create, read, update, delete
   Page: create, read, update, delete
   Photo: create, read, update, delete
+  Project: create, read, update, delete
   Section: read, update
   State: create, read, update, delete
   Testimonial: create, read, update, delete
