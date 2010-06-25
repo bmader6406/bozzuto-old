@@ -43,6 +43,12 @@ Property.blueprint do
   city
 end
 
+ProjectDataPoint.blueprint do
+  name { Faker::Lorem.words(1) }
+  data { Faker::Lorem.sentence }
+  project
+end
+
 Community.blueprint do
   title             { Sham.company_name }
   subtitle          { Faker::Company.catch_phrase }
