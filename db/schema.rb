@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100624182721) do
+ActiveRecord::Schema.define(:version => 20100624213805) do
 
   create_table "awards", :force => true do |t|
     t.string   "title",                           :null => false
@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(:version => 20100624182721) do
     t.boolean  "use_market_prices", :default => false, :null => false
     t.string   "availability_url"
     t.string   "type"
+    t.integer  "section_id"
   end
 
   create_table "sections", :force => true do |t|
