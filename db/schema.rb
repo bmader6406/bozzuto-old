@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100625182634) do
+ActiveRecord::Schema.define(:version => 20100625190023) do
 
   create_table "awards", :force => true do |t|
     t.string   "title",                           :null => false
@@ -97,6 +97,15 @@ ActiveRecord::Schema.define(:version => 20100625182634) do
     t.string   "data",       :null => false
     t.integer  "project_id", :null => false
     t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "project_updates", :force => true do |t|
+    t.text     "body",                            :null => false
+    t.integer  "project_id",                      :null => false
+    t.boolean  "published",    :default => false, :null => false
+    t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

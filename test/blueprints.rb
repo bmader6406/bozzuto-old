@@ -38,17 +38,6 @@ State.blueprint do
   code { Sham.us_state_code }
 end
 
-Property.blueprint do
-  title { Sham.company_name }
-  city
-end
-
-ProjectDataPoint.blueprint do
-  name { Faker::Lorem.words(1) }
-  data { Faker::Lorem.sentence }
-  project
-end
-
 Community.blueprint do
   title             { Sham.company_name }
   subtitle          { Faker::Company.catch_phrase }
@@ -59,6 +48,24 @@ end
 Project.blueprint do
   title    { Sham.company_name }
   subtitle { Faker::Company.catch_phrase }
+  city
+end
+
+ProjectDataPoint.blueprint do
+  name { Faker::Lorem.words(1) }
+  data { Faker::Lorem.sentence }
+  project
+end
+
+ProjectUpdate.blueprint do
+  body         { Faker::Lorem.paragraphs(4) }
+  published    { true }
+  published_at { Time.now }
+  project
+end
+
+Property.blueprint do
+  title { Sham.company_name }
   city
 end
 
