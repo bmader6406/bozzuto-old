@@ -50,6 +50,12 @@ Community.blueprint do
   city
 end
 
+Project.blueprint do
+  title    { Sham.company_name }
+  subtitle { Faker::Company.catch_phrase }
+  city
+end
+
 FloorPlanGroup.blueprint do
   name { Faker::Lorem.words(1) }
   community

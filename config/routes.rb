@@ -27,28 +27,35 @@ ActionController::Routing::Routes.draw do |map|
     :member      => { :thank_you => :get }
 
 
-  map.with_options :controller => :testimonials do |testimonial|
-    testimonial.service_section_testimonials '/services/:section/testimonials'
-    testimonial.section_testimonials '/:section/testimonials'
+  map.with_options :controller => :testimonials do |m|
+    m.service_section_testimonials '/services/:section/testimonials'
+    m.section_testimonials '/:section/testimonials'
   end
 
-  map.with_options :controller => :news do |news|
-    news.service_section_news_post '/services/:section/news/:news_post_id', :action => :show
-    news.service_section_news_posts '/services/:section/news'
-    news.section_news_post '/:section/news/:news_post_id', :action => :show
-    news.section_news_posts '/:section/news'
+  map.with_options :controller => :projects do |m|
+    m.service_section_project '/services/:section/projects/:project_id', :action => :show
+    m.service_section_projects '/services/:section/projects'
+    m.section_project '/:section/projects/:project_id', :action => :show
+    m.section_project '/:section/projects'
   end
 
-  map.with_options :controller => :awards do |award|
-    award.service_section_award '/services/:section/awards/:award_id', :action => :show
-    award.service_section_awards '/services/:section/awards'
-    award.section_award '/:section/awards/:award_id', :action => :show
-    award.section_awards '/:section/awards'
+  map.with_options :controller => :news do |m|
+    m.service_section_news_post '/services/:section/news/:news_post_id', :action => :show
+    m.service_section_news_posts '/services/:section/news'
+    m.section_news_post '/:section/news/:news_post_id', :action => :show
+    m.section_news_posts '/:section/news'
   end
 
-  map.with_options :controller => :pages, :action => :show do |page|
-    page.services '/services', :template => 'services'
-    page.service_section_page '/services/:section/*page'
-    page.section_page '/:section/*page'
+  map.with_options :controller => :awards do |m|
+    m.service_section_award '/services/:section/awards/:award_id', :action => :show
+    m.service_section_awards '/services/:section/awards'
+    m.section_award '/:section/awards/:award_id', :action => :show
+    m.section_awards '/:section/awards'
+  end
+
+  map.with_options :controller => :pages, :action => :show do |m|
+    m.services '/services', :template => 'services'
+    m.service_section_page '/services/:section/*page'
+    m.section_page '/:section/*page'
   end
 end

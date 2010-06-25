@@ -1,0 +1,14 @@
+<% content_for :body_class do %>generic<% end %>
+
+<% breadcrumb_item('Projects') %>
+<% breadcrumb_title('Projects') %>
+
+<h2><%= @section.title %> Projects</h2>
+
+<% @projects.each do |project| %>
+  <div class="section project">
+    <h3>
+      <%= link_to project.title, service_section_project_path(@section, project) %>
+    </h3>
+  </div>
+<% end %>

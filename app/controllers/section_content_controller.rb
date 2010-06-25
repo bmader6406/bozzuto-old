@@ -28,4 +28,8 @@ class SectionContentController < ApplicationController
   def section_awards
     @section.aggregate? ? Award.published : @section.awards.published
   end
+
+  def section_projects
+    @section.aggregate? ? Project.scoped({}) : @section.projects
+  end
 end
