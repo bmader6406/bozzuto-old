@@ -1,16 +1,33 @@
 <% content_for :body_class do %>services project<% end %>
 
-<% breadcrumb_item(link_to 'Projects', '#') %>
+<% breadcrumb_item(link_to 'Projects', projects_path(@section)) %>
 <% breadcrumb_item(@project.title) %>
+
+<% if @project.mappable? %>
+  <% content_for :javascript do %>
+    <%= google_maps_javascript_tag %>
+
+    <script type="text/javascript">
+      (function($) {
+        $(document).ready(function() {
+          if (GBrowserIsCompatible()) {
+            var point = new GLatLng(<%= @project.latitude %>, <%= @project.longitude %>);
+            var map = new GMap2(document.getElementById("map-canvas"));
+            map.setCenter(point, 13);
+            map.setUIToDefault();
+            map.addOverlay(new GMarker(point));
+          }
+        });
+      })(jQuery);
+    </script>
+  <% end %>
+<% end %>
 
 <h2>Lorem Bozzuto Construction Ipsum</h2>
 
-<p class="intro">
-  <strong>This project is comprised of 280 dwelling units</strong> separated into 2 structures bordered 
-  by an 8-story, 1250 space pre-cast parking garage. South Bldg: 4-story, wood-framed apartments over 
-  retail/amenity/apt concrete podium structure with 2 centralized courtyards. West Bldg: non-combustible, 
-  6-story strip building above a concrete podium.
-</p>
+<div class="intro">
+  <%= simple_format(@project.overview_text) %>
+</div>
 
 <ul class="data">
   <li>

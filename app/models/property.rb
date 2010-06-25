@@ -30,4 +30,8 @@ class Property < ActiveRecord::Base
   def state
     city.state
   end
+
+  def mappable?
+    latitude.present? && longitude.present?
+  end
 end

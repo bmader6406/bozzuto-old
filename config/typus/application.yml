@@ -119,7 +119,7 @@ Section:
   options:
     read_only: title
   order_by: title
-  relationships: pages, news_posts, testimonials, awards
+  relationships: pages, news_posts, testimonials, awards, projects
   filters:
   search:
   application: Bozzuto

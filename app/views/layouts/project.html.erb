@@ -6,30 +6,7 @@
 
   <%= render :partial => 'pages/breadcrumb' %>
 
-  <div id="masthead">
-    <div class="container">
-      <div id="sidebar" class="col">
-        <h2><%= link_to 'Work With Bozzuto', contact_path %></h2>
-
-        <ul id="secondary-nav">
-          <li class="first"><a href="#">Visit Website</a></li>
-          <li><a href="#">Download E-Brochure</a></li>
-        </ul>
-      </div>
-
-        <div id="slideshow">
-        <div class="slide">
-          <img src="/images/project-featured.jpg" />
-          <div class="section">
-            <h2><%= @project.try(:title) %></h2>
-            <p>
-              Baltimore, MD Lorem ipsum dolor sit amet sinsectutor dolorum ipsum sin sit amet lorem dislpla
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render :partial => 'masthead' %>
 
   <div id="main-content">
     <div class="container">

@@ -1,17 +1,18 @@
 <div class="section">
-  <h4>
-    <a href="#">Work With Bozzuto</a>
-  </h4>
+  <h4><%= link_to 'Work With Bozzuto', contact_path %></h4>
+
   <p>
     Interested in the work we did on this project? We’d love to hear more from you. 
-    <a href="#">Contact Us</a> about working with Bozzuto.
+    <%= link_to 'Contact Us', contact_path %> about working with Bozzuto.
   </p>
 </div>
-<div class="map">
-  <div>
-    <img src="/images/project-map.jpg" alt="FPO" />
+
+<% if @project.mappable? %>
+  <div class="map">
+    <div id="map-canvas"></div>
   </div>
-</div>
+<% end %>
+
 <div class="similar-projects">
   <h4>
     <a href="#">Similar Projects</a>

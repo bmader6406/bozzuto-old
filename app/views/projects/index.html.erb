@@ -8,7 +8,7 @@
 <% @projects.each do |project| %>
   <div class="section project">
     <h3>
-      <%= link_to project.title, service_section_project_path(@section, project) %>
+      <%= link_to project.title, project_path(@section, project) %>
     </h3>
   </div>
 <% end %>

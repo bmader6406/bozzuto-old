@@ -850,7 +850,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
      .community #community-info #walk-score {
        padding: 10px 2px;
      }
-     .community #community-info #map #map-canvas {
+     .community #community-info #map-canvas {
        width: 208px;
        height: 280px;
        border: 1px solid #959ba1;
@@ -1721,6 +1721,11 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       padding: 10px;
       width: 210px;
     }
+     .project #main-content .content .sub-content #map-canvas {
+       width: 208px;
+       height: 280px;
+       border: 1px solid #959ba1;
+     }
 
     .project #main-content .content .sub-content .map div img {
       border: 1px solid #969ba1;
@@ -3240,7 +3245,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       font-size: 15px;
     }
 
-    .project #main-content .content .main-content p.intro {
+    .project #main-content .content .main-content .intro p {
       font-size: 15px;
       line-height: 22px;
     }

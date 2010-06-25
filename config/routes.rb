@@ -36,7 +36,7 @@ ActionController::Routing::Routes.draw do |map|
     m.service_section_project '/services/:section/projects/:project_id', :action => :show
     m.service_section_projects '/services/:section/projects'
     m.section_project '/:section/projects/:project_id', :action => :show
-    m.section_project '/:section/projects'
+    m.section_projects '/:section/projects'
   end
 
   map.with_options :controller => :news do |m|

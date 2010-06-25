@@ -13,6 +13,26 @@ class PropertyTest < ActiveSupport::TestCase
     should_validate_presence_of :title, :city
     should_validate_numericality_of :latitude, :longitude
 
+    context '#mappable?' do
+      setup do
+        @property.latitude = 10
+        @property.longitude = 10
+      end
+
+      should 'return true if latitude and longitude are both present' do
+        assert @property.mappable?
+      end
+
+      should "return false if latitude or longitude isn't present" do
+        @property.latitude = nil
+        assert !@property.mappable?
+
+        @property.latitude = 10
+        @property.longitude = nil
+        assert !@property.mappable?
+      end
+    end
+
     context "#address" do
       setup do
         @address = '202 Rigsbee Ave'

@@ -1,0 +1,32 @@
+<div id="masthead">
+  <div class="container">
+    <div id="sidebar" class="col">
+      <h2><%= link_to 'Work With Bozzuto', contact_path %></h2>
+
+      <ul id="secondary-nav">
+        <% if @project.website_url.present? %>
+          <li class="first">
+            <%= link_to 'Visit Website', website_url(@project.website_url) %>
+          </li>
+        <% end %>
+        <li>
+          <a href="#">Download E-Brochure</a>
+        </li>
+      </ul>
+    </div>
+
+    <div id="slideshow">
+      <div class="slide">
+        <img src="/images/project-featured.jpg" />
+        <div class="section">
+          <h2><%= @project.title %></h2>
+
+          <p>
+            <strong><%= @project.city %></strong>
+            <%= @project.subtitle %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
