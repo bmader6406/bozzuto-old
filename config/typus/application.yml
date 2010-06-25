@@ -106,7 +106,7 @@ Project:
     list: title, street_address, city
     form: title, subtitle, section, website_url, video_url, latitude, longitude, street_address, overview_text, city
   order_by: 
-  relationships: city, section, data_points
+  relationships: city, section, data_points, updates
   filters: 
   search: title
   application: Bozzuto
@@ -120,6 +120,17 @@ ProjectDataPoint:
   relationships: project
   filters: 
   search: name
+  application: 
+
+ProjectUpdate:
+  fields:
+    default: published_at, published
+    list: published_at, published
+    form: body, published, published_at, project
+  order_by: 
+  relationships: project
+  filters: 
+  search: 
   application: 
 
 Section:
