@@ -44,98 +44,16 @@
 
 
 <h2>Project Updates</h2>
-<ul class="project-updates">
-  <li>
-    <h3>01.14.2009.</h3>
-    <p>
-      The Bozzuto Group is deeply committed to supporting the communities we serve. We demonstrate this 
-      commitment in a variety of ways—through donations of time, energy and funding, as well as active 
-      involvement in non-proﬁt, industry and government-sponsored.
-    </p>
-  </li>
-  <li>
-    <h3>01.14.2009.</h3>
-    <div class="photo-wrapper">
-      <p class="photo">
-        <img src="/images/project-updates.jpg" alt="FPO" />
-      </p>
-      <div class="info-overlay">
-        <h4>Lorem ipsum dolor sit amet sinsectutor dolorum ipsum alips dipscing</h4>
-        <p>
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-          consequat. Duis aute irure dolor in reprehenderit
-        </p>
-      </div>
-      <p class="info-link">
-        <a href="#">Info</a>
-      </p>                
-    </div>
-  </li>
-  <li>
-    <h3>01.14.2009.</h3>
-    <p>
-      The Bozzuto Group is deeply committed to supporting the communities we serve. We demonstrate this 
-      commitment in a variety of ways—through donations of time, energy and funding, as well as active 
-      involvement in non-proﬁt, industry and government-sponsored.
-    </p>
-  </li>
-  <li>
-    <h3>01.14.2009.</h3>
-    <p>
-      The Bozzuto Group is deeply committed to supporting the communities we serve. We demonstrate this 
-      commitment in a variety of ways—through donations of time, energy and funding, as well as active 
-      involvement in non-proﬁt, industry and government-sponsored.
-    </p>
-  </li>
-  <li>
-    <h3>01.14.2009.</h3>
-    <div>
-      <p class="photo">
-        <img src="/images/project-updates.jpg" alt="FPO" />
-      </p>
-      <div class="info-overlay">
-        <h4>Lorem ipsum dolor sit amet sinsectutor dolorum ipsum alips dipscing</h4>
-        <p>
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-          consequat. Duis aute irure dolor in reprehenderit
-        </p>
-      </div>
-      <p class="info-link">
-        <a href="#">Info</a>
-      </p>                
-    </div>
-  </li>
-  <li>
-    <h3>01.14.2009.</h3>
-    <p>
-      The Bozzuto Group is deeply committed to supporting the communities we serve. We demonstrate this 
-      commitment in a variety of ways—through donations of time, energy and funding, as well as active 
-      involvement in non-proﬁt, industry and government-sponsored.
-    </p>
-  </li>
-</ul>
 
-<ul class="pagination">
-  <li class="first">
-    <a href="#">First</a>
-  </li>
-  <li>1</li>
-  <li>
-    <a href="#">2</a>
-  </li>
-  <li>
-    <a href="#">3</a>
-  </li>
-  <li>
-    <a href="#">4</a>
-  </li>
-  <li>
-    <a href="#">5</a>
-  </li>
-  <li>
-    <a href="#">6</a>
-  </li>
-  <li class="last">
-    <a href="#">Last</a>
-  </li>
-</ul>
+<% unless @updates.empty? %>
+  <ul class="project-updates">
+    <% @updates.each do |update| %>
+      <li>
+        <h3><%= update.published_at.to_formatted_s(:project_update) %></h3>
+        <%= simple_format(update.body) %>
+      </li>
+    <% end %>
+  </ul>
+<% end%>
+
+<%= will_paginate(@updates) %>
