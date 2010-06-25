@@ -20,6 +20,14 @@
             <%= link_to 'Our Services', services_path %>
           </li>
         </ul>
+
+        <% if home? %>
+          <ul id="home-nav">
+            <% Section.services.each do |service| %>
+              <li><%= link_to service.title, page_path(service) %></li>
+            <% end %>
+          </ul>
+        <% end %>
       </div>
 
       <div class="section">
@@ -32,8 +40,12 @@
 
         <div class="aside">
           <ul>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li>
+              <%= link_to 'Careers', section_page_path('about', 'careers') %>
+            </li>
+            <li>
+              <%= link_to 'Contact Us', contact_path %>
+            </li>
           </ul>
         </div>
       </div>

@@ -2,6 +2,20 @@ require 'test_helper'
 
 class ApplicationHelperTest < ActionView::TestCase
   context "ApplicationHelper" do
+    context '#home?' do
+      should 'return true if controller is HomeController' do
+        expects(:params).returns(:controller => 'home')
+
+        assert home?
+      end
+
+      should 'return false otherwise' do
+        expects(:params).returns(:controller => 'blah')
+
+        assert !home?
+      end
+    end
+
     context '#current_if' do
       context 'when calling with a hash' do
         setup do

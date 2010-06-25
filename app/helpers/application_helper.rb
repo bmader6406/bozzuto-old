@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def home?
+    params[:controller] == 'home'
+  end
+
   def current_if(opts)
     if opts.is_a?(Hash)
       'current' if opts.all? { |key, val| params[key] == val }

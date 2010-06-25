@@ -2,6 +2,8 @@ ActionController::Routing::Routes.draw do |map|
   Typus::Routes.draw(map)
   Jammit::Routes.draw(map)
 
+  map.root :controller => :home
+
   community_options = {
     :only   => :show,
     :member => {

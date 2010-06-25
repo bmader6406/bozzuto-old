@@ -1,0 +1,84 @@
+<% content_for :body_class do %>home<% end %>
+
+<%= render :partial => 'special_nav' %>
+
+<div id="masthead">
+  <div id="masthead-fg">
+    <div class="container">
+      It&rsquo;s the idea of a place.
+      And the place itself.
+    </div>
+  </div>
+</div>
+
+<div id="main-content">
+  <div class="container">
+
+    <div id="content" class="row">
+      <div id="welcome" class="col">
+        <h1>We are the Bozzuto Group</h1>
+
+        <p><strong>We are six companies in one: The Bozzuto Group</strong>, a privately held real estate services organization. Together we create quality homes and extraordinary communities&mdash;some 31,000 residences to date. We pride ourselves on providing outstanding service and consistent value for customers and partners alike.</p>
+
+        <p><strong>We are founded on values</strong>. In 1988, founding partners Tom Bozzuto, John Slidell, Rick Mostyn, and the late Bernard Lubcher formed The Bozzuto Group to build and manage</p>
+
+        <p><a href="#" class="read-more">Read More</a></p>
+      </div>
+
+      <div class="social-updates col">
+        <p class="facebook">
+          <a href="#">
+            Follow us on Facebook
+          </a>          
+        </p>
+        
+        <div class="twitter-update">
+          <p class="message">Tom Bozzuto tapped to keynote 2010 Apartment Finance Today Conference <a href="#">http://bit.ly/bkdKSD</a> <a href="#">http://bit.ly/ceqzKh</a></p>
+
+          <p class="byline">TheBozzutoGroup <em>Mar 12</em></p>
+        </div>
+      </div>
+
+      <div id="featured-property" class="col">
+        <h2><a href="#">Featured Property</a></h2>
+				<div class="slideshow">
+          <ul class="slides">
+            <li class="current" id="slide-1">
+              <img src="/images/fpo/homes-search-slideshow-1.jpg" />
+            </li>
+            <li id="slide-2">
+              <img src="/images/fpo/homes-search-slideshow-2.jpg" />              
+            </li>
+            <li id="slide-3">
+              <img src="/images/fpo/homes-search-slideshow-3.jpg" />              
+            </li>
+          </ul>
+        </div>
+        <p>
+          <strong>360 State Street, New Haven, CT</strong><br />
+          Luxury apartments in a LEED&reg;<br />
+          Platinum building. 
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="news">
+  <div class="container">
+    <h2>Latest Bozzuto News</h2>
+
+    <div class="col">
+      <h3><%= @latest_news.published_at.to_formatted_s(:home_news) %></h3>
+      <p><%= @latest_news.title %></p>
+    </div>
+
+    <ul>
+      <li>
+        <%= link_to 'Read More', section_news_post_path('about', @latest_news) %>
+      </li>
+      <li class="rss"><a href="#">Get RSS Feed</a></li>
+    </ul>
+  </div>
+</div>
