@@ -14,7 +14,7 @@
       <h4>Our Services</h4>
 
       <ul>
-        <% Section.services.each do |service| %>
+        <% services.each do |service| %>
           <li><%= link_to service.title, page_path(service) %></li>
         <% end %>
       </ul>
@@ -24,7 +24,7 @@
       <h4>We Work In</h4>
 
       <ul>
-        <% State.all.each do |state| %>
+        <% states.each do |state| %>
           <li><%= link_to state.name, state %></li>
         <% end %>
       </ul>

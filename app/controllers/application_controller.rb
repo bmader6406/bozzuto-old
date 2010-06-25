@@ -31,4 +31,14 @@ class ApplicationController < ActionController::Base
     []
   end
   helper_method :about_root_pages
+
+  def states
+    @states ||= State.ordered_by_name
+  end
+  helper_method :states
+
+  def services
+    @services ||= Section.services.ordered_by_title
+  end
+  helper_method :services
 end

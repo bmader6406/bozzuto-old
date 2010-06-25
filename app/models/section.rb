@@ -14,6 +14,7 @@ class Section < ActiveRecord::Base
   validates_inclusion_of :service, :in => [true, false]
 
   named_scope :services, :conditions => { :service => true }
+  named_scope :ordered_by_title, :order => 'title ASC'
 
 
   def self.about
