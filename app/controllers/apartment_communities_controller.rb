@@ -1,4 +1,4 @@
-class CommunitiesController < ApplicationController
+class ApartmentCommunitiesController < ApplicationController
 
   before_filter :find_community
 
@@ -31,11 +31,11 @@ class CommunitiesController < ApplicationController
   private
 
   def find_community
-    @community = Community.find(params[:id])
+    @community = ApartmentCommunity.find(params[:id])
 
     @recent_queue = RecentQueue.find
     @recent_queue.push(@community.id)
-    @recently_viewed = @recent_queue.map { |id| Community.find_by_id(id) }.compact
+    @recently_viewed = @recent_queue.map { |id| ApartmentCommunity.find_by_id(id) }.compact
   end
 
 end

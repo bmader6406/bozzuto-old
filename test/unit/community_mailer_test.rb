@@ -3,7 +3,7 @@ require 'test_helper'
 class CommunityMailerTest < ActionMailer::TestCase
   context "CommunityMailer" do
     setup do
-      @community = Community.make
+      @community = ApartmentCommunity.make
     end
 
     context "#send_to_friend" do

@@ -3,12 +3,12 @@ require 'test_helper'
 class FloorPlanGroupsControllerTest < ActionController::TestCase
   context "FloorPlanGroupsController" do
     setup do
-      @community = Community.make
+      @community = ApartmentCommunity.make
     end
 
     context "a GET to #index" do
       setup do
-        get :index, :community_id => @community.id
+        get :index, :apartment_community_id => @community.id
       end
 
       should_respond_with :success

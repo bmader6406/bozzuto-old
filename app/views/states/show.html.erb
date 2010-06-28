@@ -95,7 +95,7 @@
               </li>
             </ul>
             <p>
-              <%= @state.communities.count %> Apartment Communities
+              <%= @state.apartment_communities.count %> Apartment Communities
             </p>
           </div>
           
@@ -231,7 +231,7 @@
               </li>
             </ul>
             <p>
-              <%= @state.communities.count %> Apartment Communities
+              <%= @state.apartment_communities.count %> Apartment Communities
             </p>
           </div>
 
@@ -243,7 +243,7 @@
                 <% cities.each do |city| %>
                   <li>
                     <%= link_to city.name, '#' %>
-                    <span class="count"><%= city.communities.count %></span>
+                    <span class="count"><%= city.apartment_communities.count %></span>
                   </li>
                 <% end %>
               </ul>
@@ -258,7 +258,7 @@
                 <% counties.each do |county| %>
                   <li>
                     <%= link_to county.name, '#' %>
-                    <span class="count"><%= county.communities.count %></span>
+                    <span class="count"><%= county.apartment_communities.count %></span>
                   </li>
                 <% end %>
               </ul>

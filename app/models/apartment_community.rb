@@ -1,4 +1,4 @@
-class Community < Property
+class ApartmentCommunity < Property
   has_many :photos
   has_many :floor_plan_groups
   has_many :floor_plans, :through => :floor_plan_groups
@@ -9,7 +9,7 @@ class Community < Property
   mount_uploader :promo_image, ImageUploader
 
   def nearby_communities(limit = 6)
-    @nearby_communities ||= city.communities.near(self).all(:limit => limit)
+    @nearby_communities ||= city.apartment_communities.near(self).all(:limit => limit)
   end
 
   def local_reviews

@@ -34,7 +34,7 @@
           <%= @community.overview_text %>
 
           <p>
-            <%= link_to 'Read More', features_community_path(@community) %>
+            <%= link_to 'Read More', features_apartment_community_path(@community) %>
           </p>
         </div>
 
@@ -55,7 +55,7 @@
                 <% @community.floor_plan_groups.each do |group| %>
                   <tr>
                     <td>
-                      <%= link_to group.name, community_floor_plan_groups_path(@community, :anchor => dom_id(group)) %>
+                      <%= link_to group.name, apartment_community_floor_plan_groups_path(@community, :anchor => dom_id(group)) %>
                     </td>
                     <td>
                       <%= pluralize(group.floor_plans.count, 'Floor Plan') %>

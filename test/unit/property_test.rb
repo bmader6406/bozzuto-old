@@ -53,7 +53,7 @@ class PropertyTest < ActiveSupport::TestCase
     context '#county' do
       setup do
         @county = County.make
-        @property = Community.make(:city => City.make(:county => @county))
+        @property = Property.make(:city => City.make(:county => @county))
       end
 
       should "return the city's county" do

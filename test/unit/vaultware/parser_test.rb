@@ -28,11 +28,11 @@ class ParserTest < ActiveSupport::TestCase
       end
 
       should 'create the communities' do
-        assert_difference('Community.count', @properties.count) do
+        assert_difference('ApartmentCommunity.count', @properties.count) do
           @parser.process
         end
 
-        community = Community.find_by_vaultware_id(vaultware_id(@property))
+        community = ApartmentCommunity.find_by_vaultware_id(vaultware_id(@property))
         attrs = community_attributes(@property)
 
         community_fields.each do |field|
@@ -43,11 +43,11 @@ class ParserTest < ActiveSupport::TestCase
       context 'a community already exists with a vaultware id' do
         setup do
           @vaultware_id = vaultware_id(@property)
-          @community = Community.make :vaultware_id => @vaultware_id
+          @community = ApartmentCommunity.make :vaultware_id => @vaultware_id
         end
 
         should 'update the existing community' do
-          assert_difference('Community.count', @properties.count - 1) do
+          assert_difference('ApartmentCommunity.count', @properties.count - 1) do
             @parser.process
           end
 
@@ -63,7 +63,7 @@ class ParserTest < ActiveSupport::TestCase
             plan.at('./Comment').try(:content)
           }.compact.uniq.sort
 
-          @community = Community.make :vaultware_id => vaultware_id(@property)
+          @community = ApartmentCommunity.make :vaultware_id => vaultware_id(@property)
         end
 
         should 'create the floor plan groups' do
@@ -90,7 +90,7 @@ class ParserTest < ActiveSupport::TestCase
         setup do
           @plans = @property.xpath('Floorplan')
           @parser.process
-          @community = Community.find_by_vaultware_id(vaultware_id(@property))
+          @community = ApartmentCommunity.find_by_vaultware_id(vaultware_id(@property))
         end
 
         should 'create the floor plans' do

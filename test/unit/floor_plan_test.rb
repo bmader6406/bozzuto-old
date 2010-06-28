@@ -30,8 +30,8 @@ class FloorPlanTest < ActiveSupport::TestCase
 
     context 'when asking for min and max rents' do
       setup do
-        @community = Community.make
-        @group = FloorPlanGroup.make :community => @community
+        @community = ApartmentCommunity.make
+        @group = FloorPlanGroup.make :apartment_community => @community
         @plan = FloorPlan.make(
           :min_market_rent    => 100,
           :max_market_rent    => 200,

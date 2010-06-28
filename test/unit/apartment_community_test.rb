@@ -1,9 +1,9 @@
 require 'test_helper'
 
-class CommunityTest < ActiveSupport::TestCase
-  context "A community" do
+class ApartmentCommunityTest < ActiveSupport::TestCase
+  context 'ApartmentCommunity' do
     setup do
-      @community = Community.make
+      @community = ApartmentCommunity.make
     end
 
     subject { @community }
@@ -19,7 +19,7 @@ class CommunityTest < ActiveSupport::TestCase
         @communities = []
 
         3.times do |i|
-          @communities << Community.make(:latitude => i, :longitude => i, :city => @city)
+          @communities << ApartmentCommunity.make(:latitude => i, :longitude => i, :city => @city)
         end
       end
 

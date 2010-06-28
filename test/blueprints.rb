@@ -38,7 +38,7 @@ State.blueprint do
   code { Sham.us_state_code }
 end
 
-Community.blueprint do
+ApartmentCommunity.blueprint do
   title             { Sham.company_name }
   subtitle          { Faker::Company.catch_phrase }
   use_market_prices { false }
@@ -71,7 +71,7 @@ end
 
 FloorPlanGroup.blueprint do
   name { Faker::Lorem.words(1) }
-  community
+  apartment_community
 end
 
 FloorPlan.blueprint do

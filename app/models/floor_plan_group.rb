@@ -15,13 +15,13 @@ class FloorPlanGroup < ActiveRecord::Base
     end
   end
 
-  belongs_to :community
+  belongs_to :apartment_community
 
-  acts_as_list :scope => :community
+  acts_as_list :scope => :apartment_community
 
   validates_presence_of :name
 
   def use_market_prices?
-    community.try(:use_market_prices?) || false
+    apartment_community.try(:use_market_prices?) || false
   end
 end

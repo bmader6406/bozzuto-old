@@ -1,7 +1,7 @@
 class State < ActiveRecord::Base
   has_many :cities
   has_many :counties
-  has_many :communities, :through => :cities
+  has_many :apartment_communities, :through => :cities
 
   named_scope :ordered_by_name, :order => 'name ASC'
 

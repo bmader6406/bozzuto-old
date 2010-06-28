@@ -4,7 +4,7 @@ class YelpFeed < ActiveRecord::Base
   has_many :items,
     :class_name => 'YelpFeedItem',
     :dependent  => :destroy
-  has_many :communities
+  has_many :communities, :class_name => 'ApartmentCommunity'
 
   validates_presence_of :url
   validates_uniqueness_of :url

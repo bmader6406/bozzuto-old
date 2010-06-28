@@ -9,6 +9,6 @@ class FloorPlanGroupsController < ApplicationController
   private
 
   def find_community
-    @community = Community.find(params[:community_id])
+    @community = ApartmentCommunity.find(params[:apartment_community_id])
   end
 end

@@ -7,7 +7,7 @@ class FloorPlanGroupTest < ActiveSupport::TestCase
     end
 
     should_have_many :floor_plans
-    should_belong_to :community
+    should_belong_to :apartment_community
 
     should_validate_presence_of :name
 

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100625190023) do
+ActiveRecord::Schema.define(:version => 20100628190653) do
 
   create_table "awards", :force => true do |t|
     t.string   "title",                           :null => false
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(:version => 20100625190023) do
   end
 
   create_table "floor_plan_groups", :force => true do |t|
-    t.string   "name",         :null => false
-    t.integer  "community_id", :null => false
+    t.string   "name",                   :null => false
+    t.integer  "apartment_community_id", :null => false
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -85,9 +85,9 @@ ActiveRecord::Schema.define(:version => 20100625190023) do
   end
 
   create_table "photos", :force => true do |t|
-    t.string   "image",        :null => false
-    t.integer  "community_id", :null => false
-    t.string   "caption",      :null => false
+    t.string   "image",                  :null => false
+    t.integer  "apartment_community_id", :null => false
+    t.string   "caption",                :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

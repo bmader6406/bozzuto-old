@@ -1,5 +1,5 @@
 class City < ActiveRecord::Base
-  has_many :communities
+  has_many :apartment_communities
   belongs_to :state
   belongs_to :county
 

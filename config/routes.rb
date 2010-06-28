@@ -5,6 +5,7 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => :home
 
   community_options = {
+    :as     => :communities,
     :only   => :show,
     :member => {
       :features       => :get,
@@ -14,7 +15,7 @@ ActionController::Routing::Routes.draw do |map|
       :send_to_friend => :post
     }
   }
-  map.resources :communities, community_options do |community|
+  map.resources :apartment_communities, community_options do |community|
     community.resources :floor_plan_groups,
       :as   => :floor_plans,
       :only => :index
