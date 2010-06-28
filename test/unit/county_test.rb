@@ -11,6 +11,7 @@ class CountyTest < ActiveSupport::TestCase
     should_belong_to :state
     should_have_many :cities
     should_have_many :apartment_communities, :through => :cities
+    should_have_many :home_communities, :through => :cities
 
     should_validate_presence_of :name, :state
     should_validate_uniqueness_of :name, :scoped_to => :state_id

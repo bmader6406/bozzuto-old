@@ -1,0 +1,2 @@
+class HomeCommunity < Property
+end

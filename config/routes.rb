@@ -5,8 +5,9 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => :home
 
   community_options = {
-    :as     => :communities,
-    :only   => :show,
+    :as          => :communities,
+    :path_prefix => :apartments,
+    :only        => :show,
     :member => {
       :features       => :get,
       :neighborhood   => :get,
