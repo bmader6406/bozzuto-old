@@ -3,6 +3,10 @@ class NewsController < SectionContentController
   before_filter :find_post, :only => :show
 
   def index
+    respond_to do |format|
+      format.html
+      format.rss { render :layout => false }
+    end
   end
 
   def show

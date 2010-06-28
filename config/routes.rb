@@ -45,7 +45,7 @@ ActionController::Routing::Routes.draw do |map|
     m.service_section_news_post '/services/:section/news/:news_post_id', :action => :show
     m.service_section_news_posts '/services/:section/news'
     m.section_news_post '/:section/news/:news_post_id', :action => :show
-    m.section_news_posts '/:section/news'
+    m.section_news_posts '/:section/news.:format'
   end
 
   map.with_options :controller => :awards do |m|

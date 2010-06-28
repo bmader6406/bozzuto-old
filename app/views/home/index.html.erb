@@ -78,7 +78,9 @@
       <li>
         <%= link_to 'Read More', section_news_post_path('about', @latest_news) %>
       </li>
-      <li class="rss"><a href="#">Get RSS Feed</a></li>
+      <li class="rss">
+        <%= link_to 'Get RSS Feed', section_news_posts_path('about', :format => :rss) %>
+      </li>
     </ul>
   </div>
 </div>

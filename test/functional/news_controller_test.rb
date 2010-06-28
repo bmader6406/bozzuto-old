@@ -13,13 +13,29 @@ class NewsControllerTest < ActionController::TestCase
         end
         NewsPost.make(:unpublished, :section => @section)
         @news = @section.news_posts
-
-        get :index, :section => @section.to_param
       end
 
-      should_respond_with :success
-      should_render_template :index
-      should_assign_to(:news_posts) { @news.published }
+      context 'requesting HTML' do
+        setup do
+          get :index, :section => @section.to_param
+        end
+
+        should_respond_with :success
+        should_render_template :index
+        should_assign_to(:news_posts) { @news.published }
+      end
+
+      context 'requesting RSS' do
+        setup do
+          get :index, :section => @section.to_param, :format => 'rss'
+        end
+
+        should_respond_with :success
+        should_render_template :index
+        should_render_without_layout
+        should_respond_with_content_type :rss
+        should_assign_to(:news_posts) { @news.published }
+      end
     end
 
     context 'a GET to #show' do
