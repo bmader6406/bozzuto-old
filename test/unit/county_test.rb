@@ -9,7 +9,7 @@ class CountyTest < ActiveSupport::TestCase
     subject { @county }
 
     should_belong_to :state
-    should_have_many :cities
+    should_have_and_belong_to_many :cities
     should_have_many :apartment_communities, :through => :cities
     should_have_many :home_communities, :through => :cities
 

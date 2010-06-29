@@ -2,6 +2,7 @@ class City < ActiveRecord::Base
   has_many :apartment_communities
   has_many :home_communities
   belongs_to :state
+  has_and_belongs_to_many :counties
   belongs_to :county
 
   validates_presence_of :name, :state
