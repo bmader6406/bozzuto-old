@@ -1,14 +1,14 @@
 require 'test_helper'
 
 class CityTest < ActiveSupport::TestCase
-  context "A city" do
+  context 'City' do
     setup do
       @city = City.make
     end
 
     subject { @city }
 
-    should_have_many :communities
+    should_have_many :apartment_communities, :home_communities
     should_belong_to :state, :county
 
     should_validate_presence_of :name, :state

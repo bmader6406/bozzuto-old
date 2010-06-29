@@ -38,10 +38,16 @@ State.blueprint do
   code { Sham.us_state_code }
 end
 
-Community.blueprint do
+ApartmentCommunity.blueprint do
   title             { Sham.company_name }
   subtitle          { Faker::Company.catch_phrase }
   use_market_prices { false }
+  city
+end
+
+HomeCommunity.blueprint do
+  title             { Sham.company_name }
+  subtitle          { Faker::Company.catch_phrase }
   city
 end
 
@@ -71,7 +77,6 @@ end
 
 FloorPlanGroup.blueprint do
   name { Faker::Lorem.words(1) }
-  community
 end
 
 FloorPlan.blueprint do
@@ -87,6 +92,7 @@ FloorPlan.blueprint do
   min_effective_rent { rand(500000) + 40000 }
   max_effective_rent { rand(500000) + 40000 }
   floor_plan_group
+  apartment_community
 end
 
 YelpFeed.blueprint do

@@ -1,0 +1,126 @@
+<% content_for :body_class do %>homes homes-search<% end %>
+
+<div id="masthead">
+  <div class="container">
+    <div class="section">
+      <h1>Home Lorem Ipsum</h1>
+
+      <div class="figure">
+				
+				<div class="slideshow">
+          <ul class="slides">
+            <li class="current" id="slide-1">
+              <img src="/images/fpo/homes-search-slideshow-1.jpg" />
+            </li>
+            <li id="slide-2">
+              <img src="/images/fpo/homes-search-slideshow-2.jpg" />              
+            </li>
+            <li id="slide-3">
+              <img src="/images/fpo/homes-search-slideshow-3.jpg" />              
+            </li>
+          </ul>
+        </div>
+				
+        <strong>360 State Street, New Haven, CT</strong><br />
+        Luxury apartments in a LEED&reg;<br />
+        Platinum building. 
+      </div>
+
+      <p>
+        <strong>Duis aute irure dolor in reprehenderit</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </p>
+      <p class="call-to-action">
+        <a href="#">Learn More About Bozzuto Homes</a>
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<div id="main-content">
+  <div class="container">
+    <div id="sidebar" class="col">
+      <ul id="secondary-nav">
+        <li class="first"><a href="#">Homebuying Tools</a></li>
+        <li><a href="#">Green Standards</a></li>
+        <li><a href="#">Special Offers</a></li>
+        <li><a href="#">Brokers</a></li>
+        <li><a href="#">Salesmark</a></li>
+      </ul>
+    </div>
+
+    <div id="content" class="col">
+      <div class="header">
+        <ul>
+          <li class="current">
+            <a href="#view-as-list" class="list">View as List</a>
+          </li>
+          <li>
+            <a href="#view-as-map" class="map">View on Map</a>
+          </li>
+        </ul>
+        <p>
+          4 Home Communities in Maryland
+        </p>
+      </div>
+      
+      <div id="view-as-list">
+        <ul>
+          <% @communities.each do |community| %>
+            <li>
+              <div class="photos">
+                <p>
+                  <img src="/images/homes-fpo.jpg" alt="FPO" />
+                </p>
+
+                <p>
+                  <img src="/images/homes-promo.jpg" alt="PROMO" />
+                </p>
+              </div>
+              
+              <div class="content">
+                <div>
+                  <h2><%= community.title %></h2>
+
+                  <p class="intro">
+                    Destinctively crafted three-story townhomes<br/>
+                    <strong>from the mid-$400's</strong>
+                  </p>
+
+                  <p>
+                    <strong>Inspired by living</strong>. Designed for life. Shipley's Grant embodies the art of the village. Today, the very best of village living has been carefully designed at Shipley's Grant, from the native Maryland plants used for our landscaping to the natural stone and brick faces of our homes. The streets are made for walking to a clubhouse and pool with modern amenities, or to the quaint retail village for coffee, ice cream, casual dining or a bottle of wine.
+                  </p>
+
+                  <p class="call-to-action">
+                    <%= link_to 'Read More', home_community_path(community) %>
+                  </p>
+                </div>
+
+                <div class="learn-more">
+                  <h2>
+                    <%= link_to 'Read More', home_community_path(community) %>
+                  </h2>
+
+                  <p>
+                    <a href="#">Watch Video</a>
+                  </p>
+
+                  <p class="last">
+                    <a href="#">SmartRent</a>
+                  </p>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+
+        <%= will_paginate(@communities) %>
+      </div>
+      
+      <div id="view-as-map">
+        
+      </div>
+    </div>
+    
+  </div>
+</div>

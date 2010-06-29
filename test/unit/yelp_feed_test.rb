@@ -17,7 +17,7 @@ class YelpFeedTest < ActiveSupport::TestCase
     subject { @feed }
 
     should_have_many :items, :dependent => :destroy
-    should_have_many :communities
+    should_have_many :properties
 
     should_validate_presence_of :url
     should_validate_uniqueness_of :url

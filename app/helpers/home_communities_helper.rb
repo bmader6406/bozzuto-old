@@ -1,0 +1,2 @@
+module HomeCommunitiesHelper
+end

@@ -24,4 +24,12 @@ class ActiveSupport::TestCase
                   { :code => 'VA', :name => 'Virginia' },
                   { :code => 'DC', :name => 'Washington, DC' }])
   end
+
+  setup do
+    FloorPlanGroup.create :name => 'Studio'
+    FloorPlanGroup.create :name => '1 Bedroom'
+    FloorPlanGroup.create :name => '2 Bedrooms'
+    FloorPlanGroup.create :name => '3 or More Bedrooms'
+    FloorPlanGroup.create :name => 'Penthouse'
+  end
 end

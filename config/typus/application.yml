@@ -2,6 +2,17 @@
 #
 # Use the README file as a reference to customize settings.
 #
+ApartmentCommunity:
+  fields:
+    default: title, street_address, city
+    list: title, street_address, city
+    form: title, subtitle, city, elite, smart_share, smart_rent, green, non_smoking, website_url, video_url, facebook_url, twitter_handle, promo_image, promo_url, latitude, longitude, street_address, yelp_feed, overview_text, features_text, neighborhood_text, promotions_text, contact_text
+  order_by:
+  relationships: city, floor_plans, yelp_feed
+  filters:
+  search: title
+  application: Properties
+
 Award:
   fields:
     default: title, published, published_at, section
@@ -11,7 +22,7 @@ Award:
   relationships: section
   filters: 
   search: title
-  application: Bozzuto
+  application: Content
 
 City:
   fields:
@@ -19,10 +30,10 @@ City:
     list: name, state
     form: name, state, county
   order_by:
-  relationships: communities, county, state
+  relationships: apartment_communities, county, state
   filters:
   search: name
-  application: Bozzuto
+  application: Properties
 
 County:
   fields:
@@ -33,28 +44,17 @@ County:
   relationships: state
   filters:
   search: name
-  application: Bozzuto
-
-Community:
-  fields:
-    default: title, street_address, city
-    list: title, street_address, city
-    form: title, subtitle, city, elite, smart_share, smart_rent, green, non_smoking, website_url, video_url, facebook_url, twitter_handle, promo_image, promo_url, latitude, longitude, street_address, yelp_feed, overview_text, features_text, neighborhood_text, promotions_text, contact_text
-  order_by:
-  relationships: city, floor_plan_groups, photos, yelp_feed
-  filters:
-  search: title
-  application: Community
+  application: Properties
 
 FloorPlanGroup:
   fields:
     default: name, position
-    list: community, name, position
-    form: community, name
-  order_by: community_id, position
-  relationships: community, floor_plans
+    list: apartment_community, name, position
+    form: apartment_community, name
+  order_by: apartment_community_id, position
+  relationships: apartment_community, floor_plans
   search: name
-  application: Community
+  application: 
 
 FloorPlan:
   fields:
@@ -65,7 +65,18 @@ FloorPlan:
   relationships: floor_plan_group
   filters:
   search:
-  application: Community
+  application: 
+
+HomeCommunity:
+  fields:
+    default: title, street_address, city
+    list: title, street_address, city
+    form: title, subtitle, elite, smart_share, smart_rent, green, non_smoking, website_url, video_url, facebook_url, twitter_handle, promo_image, promo_url, latitude, longitude, street_address, overview_text, features_text, neighborhood_text, promotions_text, contact_text, yelp_feed_id, availability_url, section_id, city
+  order_by: 
+  relationships: city
+  filters: 
+  search: title
+  application: Properties
 
 NewsPost:
   fields:
@@ -76,7 +87,7 @@ NewsPost:
   relationships: section
   filters:
   search:
-  application: Bozzuto
+  application: Content
 
 Page:
   fields:
@@ -87,18 +98,18 @@ Page:
   relationships: parent, section
   filters:
   search: title
-  application: Bozzuto
+  application: Content
 
 Photo:
   fields:
-    default: image, caption, community
-    list: image, caption, community
-    form: image, caption, community
+    default: image, caption, apartment_community
+    list: image, caption, apartment_community
+    form: image, caption, apartment_community
   order_by:
-  relationships: community
+  relationships: apartment_community
   filters:
   search:
-  application: Community
+  application: 
 
 Project:
   fields:
@@ -109,7 +120,7 @@ Project:
   relationships: city, section, data_points, updates
   filters: 
   search: title
-  application: Bozzuto
+  application: Properties
 
 ProjectDataPoint:
   fields:
@@ -144,7 +155,7 @@ Section:
   relationships: pages, news_posts, testimonials, awards, projects
   filters:
   search:
-  application: Bozzuto
+  application: Content
 
 State:
   fields:
@@ -155,7 +166,7 @@ State:
   relationships: cities
   filters:
   search: name
-  application: Bozzuto
+  application: Properties
 
 Testimonial:
   fields:
@@ -166,7 +177,7 @@ Testimonial:
   relationships: section
   filters:
   search: name
-  application: Bozzuto
+  application: Content
 
 YelpFeed:
   fields:
@@ -174,8 +185,8 @@ YelpFeed:
     list: url
     form: url
   order_by:
-  relationships: communities
+  relationships: apartment_communities
   filters:
   search:
-  application: Community
+  application: Properties
 

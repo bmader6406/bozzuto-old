@@ -18,11 +18,11 @@
   </script>
 <% end %>
 
-<%= render :partial => 'special_nav' %>
+<%#= render :partial => 'special_nav' %>
 
-<%= render :partial => 'breadcrumb' %>
+<%#= render :partial => 'breadcrumb' %>
 
-<%= render :partial => 'masthead' %>
+<%#= render :partial => 'masthead' %>
 
 <div id="main-content">
   <div class="container">
@@ -34,7 +34,7 @@
           <%= @community.overview_text %>
 
           <p>
-            <%= link_to 'Read More', features_community_path(@community) %>
+            <%= link_to 'Read More', features_apartment_community_path(@community) %>
           </p>
         </div>
 
@@ -46,39 +46,16 @@
           </div>
         <% end %>
 
-        <% unless @community.floor_plan_groups.empty? %>
+        <%# unless @community.floor_plan_groups.empty? %>
           <div id="apartments">
             <h2>Apartments</h2>
 
             <table>
               <tbody>
-                <% @community.floor_plan_groups.each do |group| %>
-                  <tr>
-                    <td>
-                      <%= link_to group.name, community_floor_plan_groups_path(@community, :anchor => dom_id(group)) %>
-                    </td>
-                    <td>
-                      <%= pluralize(group.floor_plans.count, 'Floor Plan') %>
-                    </td>
-                    <td>
-                      <% unless group.floor_plans.empty? %>
-                        <%= square_feet(group.floor_plans.largest) %>
-                      <% end %>
-                    </td>
-                    <td>
-                      <% unless group.floor_plans.empty? %>
-                        From <%= floor_plan_price(group.floor_plans.cheapest.min_rent) %>
-                      <% end %>
-                    </td>
-                    <td class="availability">
-                      <%= link_to "Availability", @community.availability_url %>
-                    </td>
-                  </tr>
-                <% end %>
               </tbody>
             </table>
           </div>
-        <% end %>
+        <%# end %>
 
         <div id="featured-floor-plans">
           <h2>Featured Floor Plans</h2>
@@ -191,6 +168,6 @@
       </div>
     </div>
 
-    <%= render :partial => 'sub_content' %>
+    <%#= render :partial => 'sub_content' %>
   </div>
 </div>

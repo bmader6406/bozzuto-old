@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100625190023) do
+ActiveRecord::Schema.define(:version => 20100629041139) do
 
   create_table "awards", :force => true do |t|
     t.string   "title",                           :null => false
@@ -37,8 +37,7 @@ ActiveRecord::Schema.define(:version => 20100625190023) do
   end
 
   create_table "floor_plan_groups", :force => true do |t|
-    t.string   "name",         :null => false
-    t.integer  "community_id", :null => false
+    t.string   "name",       :null => false
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -46,20 +45,23 @@ ActiveRecord::Schema.define(:version => 20100625190023) do
 
   create_table "floor_plans", :force => true do |t|
     t.string   "image"
-    t.integer  "bedrooms",                                          :null => false
-    t.decimal  "bathrooms",           :precision => 3, :scale => 1, :null => false
-    t.integer  "floor_plan_group_id",                               :null => false
+    t.integer  "bedrooms",                                             :null => false
+    t.decimal  "bathrooms",              :precision => 3, :scale => 1, :null => false
+    t.integer  "floor_plan_group_id",                                  :null => false
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name",                                              :null => false
-    t.string   "availability_url",                                  :null => false
-    t.integer  "min_square_feet",                                   :null => false
-    t.integer  "max_square_feet",                                   :null => false
-    t.decimal  "min_market_rent",     :precision => 6, :scale => 2, :null => false
-    t.decimal  "max_market_rent",     :precision => 6, :scale => 2, :null => false
-    t.decimal  "min_effective_rent",  :precision => 6, :scale => 2, :null => false
-    t.decimal  "max_effective_rent",  :precision => 6, :scale => 2, :null => false
+    t.string   "name",                                                 :null => false
+    t.string   "availability_url",                                     :null => false
+    t.integer  "min_square_feet",                                      :null => false
+    t.integer  "max_square_feet",                                      :null => false
+    t.decimal  "min_market_rent",        :precision => 6, :scale => 2, :null => false
+    t.decimal  "max_market_rent",        :precision => 6, :scale => 2, :null => false
+    t.decimal  "min_effective_rent",     :precision => 6, :scale => 2, :null => false
+    t.decimal  "max_effective_rent",     :precision => 6, :scale => 2, :null => false
+    t.integer  "apartment_community_id",                               :null => false
+    t.decimal  "min_rent",               :precision => 6, :scale => 2, :null => false
+    t.decimal  "max_rent",               :precision => 6, :scale => 2, :null => false
   end
 
   create_table "news_posts", :force => true do |t|
@@ -85,9 +87,9 @@ ActiveRecord::Schema.define(:version => 20100625190023) do
   end
 
   create_table "photos", :force => true do |t|
-    t.string   "image",        :null => false
-    t.integer  "community_id", :null => false
-    t.string   "caption",      :null => false
+    t.string   "image",                  :null => false
+    t.integer  "apartment_community_id", :null => false
+    t.string   "caption",                :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

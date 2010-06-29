@@ -3404,6 +3404,11 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       text-decoration: none;
     }
   
+    .homes #content {
+      width: 770px;
+      padding-right: 0;
+    }
+
     .homes #content div.header ul li a,
     .landing #content div.header ul li a,
     .search #content div.header ul li a {

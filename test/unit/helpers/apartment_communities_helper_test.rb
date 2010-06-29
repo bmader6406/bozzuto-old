@@ -1,10 +1,10 @@
 require 'test_helper'
 
-class CommunitiesHelperTest < ActionView::TestCase
-  context "CommunitiesHelper" do
+class ApartmentCommunitiesHelperTest < ActionView::TestCase
+  context "ApartmentCommunitiesHelper" do
     context "#community_icons" do
       setup do
-        @community = Community.make(:elite => true, :non_smoking => true)
+        @community = ApartmentCommunity.make(:elite => true, :non_smoking => true)
       end
 
       should "emit icons for true flags on the community" do
@@ -51,7 +51,7 @@ class CommunitiesHelperTest < ActionView::TestCase
 
     context "#walkscore_map_script" do
       setup do
-        @community = Community.make(:street_address => '123 Test Dr')
+        @community = ApartmentCommunity.make(:street_address => '123 Test Dr')
       end
 
       should "return the javascript code" do

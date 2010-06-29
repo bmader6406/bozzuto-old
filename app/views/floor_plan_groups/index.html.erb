@@ -1,39 +1,44 @@
-<% content_for :body_class do %>community<% end %>
+<% content_for :body_class do %>community floor-plans<% end %>
 
-<%= render :partial => 'communities/breadcrumb' %>
+<%= render :partial => 'apartment_communities/breadcrumb' %>
 
-<%= render :partial => 'communities/masthead' %>
+<%= render :partial => 'apartment_communities/masthead' %>
 
 <div id="main-content">
   <div class="container">
     <% @groups.each do |group| %>
-      <div id="<%= dom_id(group) %>" class="floor-plan-group">
-        <h2><%= group.name %></h2>
+      <% plans_in_group = @community.floor_plans.in_group(group) %>
 
-        <% group.floor_plans.in_groups_of(4, false) do |plans_group| %>
-          <ul class="row">
-            <% plans_group.each do |plan| %>
-              <li class="floor-plan">
-                <h4><%= plan.name %></h4>
+      <% unless plans_in_group.empty? %>
+        <div id="<%= dom_id(group) %>" class="floor-plan-group">
+          <h2><%= group.name %></h2>
 
-                <p>
-                  <%= square_feet(plan) %> |
-                  <%= floor_plan_price(plan.min_rent) %><br />
-                  <%= link_to 'Reserve', plan.availability_url %>
-                </p>
-                <% if plan.image.present? %>
-                  <%= link_to image_tag(plan.image, :width => 160), plan.image %>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
-        <% end %>
+          <% plans_in_group.in_groups_of(4, false) do |plans_group| %>
+            <ul class="row">
+              <% plans_group.each do |plan| %>
+                <li class="floor-plan">
+                  <h4><%= plan.name %></h4>
 
-      </div>
+                  <p>
+                    <%= square_feet(plan) %> |
+                    <%= floor_plan_price(plan.min_rent) %><br />
+                    <%= link_to 'Reserve', plan.availability_url %>
+                  </p>
+
+                  <% if plan.image.present? %>
+                    <%= link_to image_tag(plan.image, :width => 160), plan.image, :class => 'floor-plan-view' %>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+
+        </div>
+      <% end %>
     <% end %>
 
-    <%= render :partial => 'communities/sub_content' %>
+    <%= render :partial => 'apartment_communities/sub_content' %>
   </div>
 </div>
 
-<%= render :partial => 'communities/special_nav' %>
+<%= render :partial => 'apartment_communities/special_nav' %>

@@ -1,9 +1,9 @@
 require 'test_helper'
 
-class CommunitiesControllerTest < ActionController::TestCase
-  context "CommunitiesController" do
+class ApartmentCommunitiesControllerTest < ActionController::TestCase
+  context "ApartmentCommunitiesController" do
     setup do
-      @community = Community.make
+      @community = ApartmentCommunity.make
     end
 
     %w(show features neighborhood promotions contact).each do |action|
@@ -28,7 +28,7 @@ class CommunitiesControllerTest < ActionController::TestCase
         end
 
         should_set_the_flash_to /must submit a valid email address/i
-        should_redirect_to("#show") { community_path(@community) }
+        should_redirect_to("#show") { apartment_community_path(@community) }
       end
 
       context "with an email address" do
@@ -45,7 +45,7 @@ class CommunitiesControllerTest < ActionController::TestCase
           @email = ActionMailer::Base.deliveries.last
         end
 
-        should_redirect_to("#show") { community_path(@community) }
+        should_redirect_to("#show") { apartment_community_path(@community) }
 
         should "send the email" do
           assert_equal [@to], @email.to
