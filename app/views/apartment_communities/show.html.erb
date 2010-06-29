@@ -53,27 +53,29 @@
             <tbody>
               <% FloorPlanGroup.all.each do |group| %>
                 <% plans_in_group = @community.floor_plans.in_group(group) %>
-                <tr>
-                  <td>
-                    <%= link_to group.name, apartment_community_floor_plan_groups_path(@community, :anchor => dom_id(group)) %>
-                  </td>
-                  <td>
-                    <%= pluralize(plans_in_group.count, 'Floor Plan') %>
-                  </td>
-                  <td>
-                    <% unless plans_in_group.empty? %>
-                      <%= square_feet(plans_in_group.largest) %>
-                    <% end %>
-                  </td>
-                  <td>
-                    <% unless plans_in_group.empty? %>
-                      From <%= floor_plan_price(plans_in_group.cheapest.min_rent) %>
-                    <% end %>
-                  </td>
-                  <td class="availability">
-                    <%= link_to "Availability", @community.availability_url %>
-                  </td>
-                </tr>
+                <% unless plans_in_group.empty? %>
+                  <tr>
+                    <td>
+                      <%= link_to group.name, apartment_community_floor_plan_groups_path(@community, :anchor => dom_id(group)) %>
+                    </td>
+                    <td>
+                      <%= pluralize(plans_in_group.count, 'Floor Plan') %>
+                    </td>
+                    <td>
+                      <% unless plans_in_group.empty? %>
+                        <%= square_feet(plans_in_group.largest.first) %>
+                      <% end %>
+                    </td>
+                    <td>
+                      <% unless plans_in_group.empty? %>
+                        From <%= floor_plan_price(plans_in_group.cheapest.first.min_rent) %>
+                      <% end %>
+                    </td>
+                    <td class="availability">
+                      <%= link_to "Availability", @community.availability_url %>
+                    </td>
+                  </tr>
+                <% end %>
               <% end %>
             </tbody>
           </table>

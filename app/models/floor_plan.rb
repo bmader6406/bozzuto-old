@@ -52,6 +52,8 @@ class FloorPlan < ActiveRecord::Base
     else
       max_effective_rent
     end
+
+    true
   end
 
 

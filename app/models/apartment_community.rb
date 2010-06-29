@@ -18,6 +18,7 @@ class ApartmentCommunity < Community
 
   def mark_dirty_floor_plan_prices
     @set_floor_plan_prices = use_market_prices_changed?
+    true
   end
 
   def update_floor_plan_prices
@@ -28,5 +29,6 @@ class ApartmentCommunity < Community
       end
     end
     @set_floor_plan_prices = nil
+    true
   end
 end
