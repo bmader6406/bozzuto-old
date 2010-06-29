@@ -1,5 +1,4 @@
 class ApartmentCommunitiesController < ApplicationController
-
   before_filter :find_community
 
   def show

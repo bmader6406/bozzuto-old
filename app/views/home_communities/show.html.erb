@@ -1,0 +1,173 @@
+<% content_for :body_class do %>community<% end %>
+
+<% content_for :javascript do %>
+  <%= google_maps_javascript_tag %>
+
+  <script type="text/javascript">
+    (function($) {
+      $(document).ready(function() {
+        if (GBrowserIsCompatible()) {
+          var point = new GLatLng(<%= @community.latitude %>, <%= @community.longitude %>);
+          var map = new GMap2(document.getElementById("map-canvas"));
+          map.setCenter(point, 13);
+          map.setUIToDefault();
+          map.addOverlay(new GMarker(point));
+        }
+      });
+    })(jQuery);
+  </script>
+<% end %>
+
+<%#= render :partial => 'special_nav' %>
+
+<%#= render :partial => 'breadcrumb' %>
+
+<%#= render :partial => 'masthead' %>
+
+<div id="main-content">
+  <div class="container">
+    <div class="row">
+      <div id="content" class="col">
+        <div id="overview">
+          <%= community_icons %>
+
+          <%= @community.overview_text %>
+
+          <p>
+            <%= link_to 'Read More', features_apartment_community_path(@community) %>
+          </p>
+        </div>
+
+        <% if @community.promo_image? %>
+          <div class="promo">
+            <p>
+              <%= link_to @community.promo_url, image_tag(@community.promo_image) %>
+            </p>
+          </div>
+        <% end %>
+
+        <%# unless @community.floor_plan_groups.empty? %>
+          <div id="apartments">
+            <h2>Apartments</h2>
+
+            <table>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        <%# end %>
+
+        <div id="featured-floor-plans">
+          <h2>Featured Floor Plans</h2>
+          <ul class="row">
+            <li class="floor-plan">
+              <h4>Studio</h4>
+              <p>
+                542 Sq Ft | $XXXX<br />
+                <a href="#">Reserve</a>
+              </p>
+              <img src="/images/floor-plan-studio.png" />
+            </li>
+
+            <li class="floor-plan">
+              <h4>1 Bedroom w/Den</h4>
+              <p>
+                830 Sq Ft | $XXXX<br />
+                <a href="#">Reserve</a>
+              </p>
+              <img src="/images/floor-plan-1-br.png" />
+            </li>
+
+            <li class="floor-plan">
+              <h4>2 Bedrooms</h4>
+              <p>
+                542 Sq Ft | $XXXX<br />
+                <a href="#">Reserve</a>
+              </p>
+              <img src="/images/floor-plan-2-br.png" />
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" class="col">
+        <div id="community-info" class="article row">
+          <ul class="nav row">
+            <li>
+              <%= link_to 'View Map', '#map' %>
+            </li>
+            <li>
+              <%= link_to 'Walk Score&trade;'.html_safe, '#walk-score' %>
+            </li>
+            <% if @community.has_local_reviews? %>
+              <li class="last">
+                <%= link_to 'Local Reviews', '#local-reviews' %>
+              </li>
+            <% end %>
+          </ul>
+
+          <div id="map" class="section">
+            <div id="map-canvas"></div>
+            <p class="call-to-action">
+              <%= link_to 'Get Directions', '#' %>
+            </p>
+          </div>
+
+          <div id="walk-score" class="section">
+            <%= walkscore_map_script(@community) %>
+          </div>
+
+          <% if @community.has_local_reviews? %>
+            <div id="local-reviews" class="section">
+              <% @community.local_reviews.take(6).each do |review| %>
+                <div class="local-review">
+                  <h4><%= link_to review.title.gsub(/on Yelp$/, ''), review.url %></h4>
+
+                  <p class="date">
+                    <%= review.published_at.to_formatted_s(:month_day_year) %>
+                  </p>
+                  <p>
+                    <%= review.description.html_safe %>
+                  </p>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+
+
+        <% unless @community.nearby_communities.empty? %>
+          <div id="nearby-communities">
+            <h3>Nearby Apartment Communities</h3>
+            <ul>
+              <% @community.nearby_communities.each do |community| %>
+                <li><%= link_to community.title, community %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="social-updates">
+          <% if @community.facebook_url.present? %>
+            <div class="facebook-update">
+              <p class="message">
+                <%= link_to "Become a fan on Facebook", @community.facebook_url %>
+              </p>
+            </div>
+          <% end %>
+
+          <% if @community.twitter_handle.present? %>
+            <div class="twitter-update" <%= twitter_data_attr(@community.twitter_handle) %>></div>
+          <% end %>
+
+          <p class="sharethis">
+            <a href="#">ShareThis</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <%#= render :partial => 'sub_content' %>
+  </div>
+</div>

@@ -11,9 +11,8 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
     should_have_many :photos
     should_have_many :floor_plan_groups
     should_have_many :floor_plans, :through => :floor_plan_groups
-    should_belong_to :yelp_feed
 
-    context "#nearby_communities" do
+    context '#nearby_communities' do
       setup do
         @city = City.make
         @communities = []
@@ -28,42 +27,6 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
         assert_equal 2, nearby.length
         assert_equal @communities[1], nearby[0]
         assert_equal @communities[2], nearby[1]
-      end
-    end
-
-
-    context 'with no Yelp Feed' do
-      should 'return an empty array on #local_reviews' do
-        assert_nil @community.yelp_feed
-        assert_equal [], @community.local_reviews
-      end
-
-      should 'return false on #has_local_reviews?' do
-        assert !@community.has_local_reviews?
-      end
-    end
-
-    context 'with a Yelp Feed' do
-      setup do
-        @feed = YelpFeed.make_unsaved
-        @feed.expects(:validate_on_create)
-        @feed.save
-
-        3.times { YelpFeedItem.make :yelp_feed => @feed }
-        @community.yelp_feed = @feed
-        @community.save
-      end
-
-      should 'return the feed items on #local_reviews' do
-        assert_equal 3, @community.local_reviews.length
-
-        3.times do |i|
-          assert_equal @feed.items[i], @community.local_reviews[i]
-        end
-      end
-
-      should 'return true on #has_local_reviews?' do
-        assert @community.has_local_reviews?
       end
     end
   end

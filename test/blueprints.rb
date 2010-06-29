@@ -45,6 +45,12 @@ ApartmentCommunity.blueprint do
   city
 end
 
+HomeCommunity.blueprint do
+  title             { Sham.company_name }
+  subtitle          { Faker::Company.catch_phrase }
+  city
+end
+
 Project.blueprint do
   title    { Sham.company_name }
   subtitle { Faker::Company.catch_phrase }
