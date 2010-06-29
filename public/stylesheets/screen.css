@@ -3190,9 +3190,12 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       margin-bottom: 10px;
     }
     .community #community-info .nav li a {
-      font-size: 15px;
-      line-height: 1.2;
+      font-size: 13px;
+      line-height: 1.4;
       color: #000;
+    }
+    .community #community-info .local-review {
+      color: #636363;
     }
     .community #community-info .nav li a:hover {
       text-decoration: none;
