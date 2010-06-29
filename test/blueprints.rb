@@ -77,7 +77,6 @@ end
 
 FloorPlanGroup.blueprint do
   name { Faker::Lorem.words(1) }
-  apartment_community
 end
 
 FloorPlan.blueprint do
@@ -93,6 +92,7 @@ FloorPlan.blueprint do
   min_effective_rent { rand(500000) + 40000 }
   max_effective_rent { rand(500000) + 40000 }
   floor_plan_group
+  apartment_community
 end
 
 YelpFeed.blueprint do

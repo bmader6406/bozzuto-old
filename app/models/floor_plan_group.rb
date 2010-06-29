@@ -1,27 +1,16 @@
 class FloorPlanGroup < ActiveRecord::Base
+  STUDIO = find_by_name 'Studio'
+  ONEBED = find_by_name '1 Bedroom'
+  TWOBED = find_by_name '2 Bedrooms'
+  THREEBED = find_by_name '3 or More Bedrooms'
+  PENTHOUSE = find_by_name 'Penthouse'
+
   has_many :floor_plans, :dependent => :destroy do
-    def cheapest
-      rent_field = if proxy_owner.use_market_prices?
-        'min_market_rent'
-      else
-        'min_effective_rent'
-      end
-
-      first(:order => "#{rent_field} ASC")
-    end
-
-    def largest
-      first(:order => 'max_square_feet DESC')
-    end
   end
 
-  belongs_to :apartment_community
+  default_scope :order => 'position ASC'
 
-  acts_as_list :scope => :apartment_community
+  acts_as_list
 
   validates_presence_of :name
-
-  def use_market_prices?
-    apartment_community.try(:use_market_prices?) || false
-  end
 end

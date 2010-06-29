@@ -14,7 +14,7 @@ class FloorPlanGroupsControllerTest < ActionController::TestCase
       should_respond_with :success
       should_render_template :index
       should_assign_to(:community) { @community }
-      should_assign_to(:groups) { @community.floor_plan_groups }
+      should_assign_to(:groups) { FloorPlanGroup.all }
     end
   end
 end

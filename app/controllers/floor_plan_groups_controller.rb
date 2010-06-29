@@ -2,7 +2,7 @@ class FloorPlanGroupsController < ApplicationController
   before_filter :find_community
 
   def index
-    @groups = @community.floor_plan_groups(:include => :floor_plans)
+    @groups = FloorPlanGroup.all
   end
 
 
