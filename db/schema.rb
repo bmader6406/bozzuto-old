@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100629174309) do
+ActiveRecord::Schema.define(:version => 20100629175241) do
 
   create_table "awards", :force => true do |t|
     t.string   "title",                           :null => false
@@ -147,6 +147,7 @@ ActiveRecord::Schema.define(:version => 20100629174309) do
     t.string   "availability_url"
     t.string   "type"
     t.integer  "section_id"
+    t.integer  "county_id"
   end
 
   create_table "sections", :force => true do |t|

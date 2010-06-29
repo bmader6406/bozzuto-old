@@ -8,7 +8,7 @@ class PropertyTest < ActiveSupport::TestCase
 
     subject { @property }
 
-    should_belong_to :city
+    should_belong_to :city, :county
 
     should_validate_presence_of :title, :city
     should_validate_numericality_of :latitude, :longitude
@@ -47,17 +47,6 @@ class PropertyTest < ActiveSupport::TestCase
     context '#typus_name' do
       should 'return the title' do
         assert_equal @property.title, @property.typus_name
-      end
-    end
-
-    context '#county' do
-      setup do
-        @county = County.make
-        @property = Property.make(:city => City.make(:county => @county))
-      end
-
-      should "return the city's county" do
-        assert_equal @county, @property.county
       end
     end
 

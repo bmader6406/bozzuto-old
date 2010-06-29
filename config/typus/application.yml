@@ -6,9 +6,9 @@ ApartmentCommunity:
   fields:
     default: title, street_address, city
     list: title, street_address, city
-    form: title, subtitle, city, elite, smart_share, smart_rent, green, non_smoking, website_url, video_url, facebook_url, twitter_handle, promo_image, promo_url, latitude, longitude, street_address, yelp_feed, overview_text, features_text, neighborhood_text, promotions_text, contact_text
+    form: title, subtitle, street_address, city, county, elite, smart_share, smart_rent, green, non_smoking, website_url, video_url, facebook_url, twitter_handle, promo_image, promo_url, latitude, longitude, yelp_feed, overview_text, features_text, neighborhood_text, promotions_text, contact_text
   order_by:
-  relationships: city, floor_plans, yelp_feed
+  relationships: city, county, floor_plans, yelp_feed
   filters:
   search: title
   application: Properties
@@ -40,7 +40,7 @@ County:
     default: name, state
     list: name, state
     form: name, state
-  order_by:
+  order_by: name
   relationships: state
   filters:
   search: name

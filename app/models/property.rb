@@ -1,5 +1,6 @@
 class Property < ActiveRecord::Base
   belongs_to :city
+  belongs_to :county
 
   validates_presence_of :title, :city
   validates_numericality_of :latitude, :longitude, :allow_nil => true
@@ -21,10 +22,6 @@ class Property < ActiveRecord::Base
 
   def address
     [street_address, city].compact.join(', ')
-  end
-
-  def county
-    city.county
   end
 
   def state

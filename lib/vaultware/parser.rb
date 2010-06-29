@@ -35,6 +35,7 @@ module Vaultware
         :website_url      => ident.at('./ns:WebSite', ns).try(:content),
         :street_address   => address.at('./ns:Address1', ns).content,
         :city             => find_city(address),
+        :county           => find_county(address),
         :availability_url => info.at('./PropertyAvailabilityURL').content
       })
     end
@@ -109,12 +110,27 @@ module Vaultware
       state_code  = address.at('./ns:State', ns).content
       city_name   = address.at('./ns:City', ns).content
       county_name = address.at('./ns:CountyName', ns).content
+      state       = State.find_by_code(state_code)
 
-      # TODO: create the county if it doesn't exist?
-      state = State.find_by_code(state_code)
-      city  = state.cities.find_by_name(city_name)
+      city = state.cities.find_or_create_by_name(city_name)
 
-      city || City.create(:name => city_name, :state => state)
+      city
+    end
+
+    def find_county(address)
+      state_code  = address.at('./ns:State', ns).content
+      city_name   = address.at('./ns:City', ns).content
+      county_name = address.at('./ns:CountyName', ns).content
+      state       = State.find_by_code(state_code)
+
+      city = state.cities.find_or_create_by_name(city_name)
+      county = state.counties.find_or_create_by_name(county_name)
+
+      unless city.counties.include?(county)
+        city.counties << county
+      end
+
+      county
     end
 
     def ns
