@@ -2,7 +2,7 @@ class ChangeFloorPlanGroupFields < ActiveRecord::Migration
   def self.up
     remove_column :floor_plan_groups, :apartment_community_id
 
-    FloroPlan.all.each { |plan| plan.delete }
+    FloorPlan.all.each { |plan| plan.delete }
     FloorPlanGroup.all.each { |group| group.delete }
 
     FloorPlanGroup.create :name => 'Studio'
