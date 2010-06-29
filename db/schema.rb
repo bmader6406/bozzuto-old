@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100629175241) do
+ActiveRecord::Schema.define(:version => 20100629190348) do
 
   create_table "awards", :force => true do |t|
     t.string   "title",                           :null => false
@@ -151,11 +151,14 @@ ActiveRecord::Schema.define(:version => 20100629175241) do
   end
 
   create_table "sections", :force => true do |t|
-    t.string   "title",                          :null => false
+    t.string   "title",                                             :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cached_slug"
-    t.boolean  "service",     :default => false, :null => false
+    t.boolean  "service",                        :default => false, :null => false
+    t.string   "left_montage_image_file_name"
+    t.string   "middle_montage_image_file_name"
+    t.string   "right_montage_image_file_name"
   end
 
   add_index "sections", ["cached_slug"], :name => "index_sections_on_cached_slug"

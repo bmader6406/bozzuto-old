@@ -1,4 +1,5 @@
 development:
+  paperclip_command_path: /usr/local/bin
   walkscore_wsid: 'YOUR-WSID-HERE'
   google_maps_api_key: 'ABQIAAAA7txTDQDFqeDYcgMQiou82BS4HyMuMWnF1gYqzj4uDbvuvSLR0RQG2OmrjDwO9korkAMlXnDyKPNeTw' # key for bozzuto.local
   contact_emails:

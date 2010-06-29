@@ -7,9 +7,11 @@
   <div id="masthead">
     <%= render :partial => 'pages/breadcrumb' %>
 
-    <div id="montage">
-      <img src="/images/fpo/generic-montage-1.jpg" alt="" height="148" width="251" /><img src="/images/fpo/generic-montage-2.jpg" alt="" height="148" width="540" /><img src="/images/fpo/generic-montage-3.jpg" alt="" height="148" width="309" />
-    </div>
+    <% if @section.montage? %>
+      <div id="montage">
+          <%= image_tag @section.left_montage_image.url %><%= image_tag @section.middle_montage_image.url %><%= image_tag @section.right_montage_image.url %>
+      </div>
+    <% end %>
   </div>
 
   <div id="main-content">

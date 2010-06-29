@@ -5,3 +5,4 @@ public/assets
 test/fixtures/*.yml
 coverage/*
 TODO
+public/system/*

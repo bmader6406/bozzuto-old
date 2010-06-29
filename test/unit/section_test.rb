@@ -13,6 +13,10 @@ class SectionTest < ActiveSupport::TestCase
 
     should_have_many :news_posts, :testimonials, :awards, :projects
 
+    should_have_attached_file :left_montage_image
+    should_have_attached_file :middle_montage_image
+    should_have_attached_file :right_montage_image
+
 
     context '#typus_name' do
       should 'return the title' do
@@ -70,6 +74,32 @@ class SectionTest < ActiveSupport::TestCase
 
         should 'be false' do
           assert !@section.aggregate?
+        end
+      end
+    end
+
+    context '#montage?' do
+      context 'when all montage images are present' do
+        setup do
+          @section.expects(:left_montage_image?).returns(true)
+          @section.expects(:middle_montage_image?).returns(true)
+          @section.expects(:right_montage_image?).returns(true)
+        end
+
+        should 'return true' do
+          assert @section.montage?
+        end
+      end
+
+      context 'when any montage images are missing' do
+        setup do
+          @section.expects(:left_montage_image?).returns(false)
+          @section.stubs(:middle_montage_image?).returns(true)
+          @section.stubs(:right_montage_image?).returns(true)
+        end
+
+        should 'return true' do
+          assert !@section.montage?
         end
       end
     end

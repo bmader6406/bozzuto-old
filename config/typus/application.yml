@@ -148,7 +148,7 @@ Section:
   fields:
     default: title
     list: title
-    form: title
+    form: title, left_montage_image, middle_montage_image, right_montage_image
   options:
     read_only: title
   order_by: title
