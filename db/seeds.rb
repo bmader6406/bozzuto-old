@@ -15,20 +15,17 @@ State.create([{ :code => 'CT', :name => 'Connecticut' },
               { :code => 'VA', :name => 'Virginia' },
               { :code => 'DC', :name => 'Washington, DC' }])
 
-City.create([{ :name => 'Arlington', :state => State.find_by_code('VA') },
-             { :name => 'Alexandria', :state => State.find_by_code('VA') },
-             { :name => 'Annapolis', :state => State.find_by_code('MD') },
-             { :name => 'Boston', :state => State.find_by_code('MA') },
-             { :name => 'Trenton', :state => State.find_by_code('NJ') },
-             { :name => 'New York', :state => State.find_by_code('NY') },
-             { :name => 'Pittsburgh', :state => State.find_by_code('PA') },
-             { :name => 'Washington', :state => State.find_by_code('DC') },
-             { :name => 'Hartford', :state => State.find_by_code('CT') }])
-
-
 %w(Acquisitions Construction Development Homes Land Management).each do |title|
   section = Section.create(:title => title, :service => true)
 end
 Section.create(:title => 'About')
 Section.create(:title => 'Apartments')
 Section.create(:title => 'New Homes')
+
+['Studio', '1 Bedroom', '2 Bedrooms', '3 or More Bedrooms', 'Penthouse'].each do |group|
+  FloorPlanGroup.find_or_create_by_name(group)
+end
+
+parser = Vaultware::Parser.new
+parser.parse(RAILS_ROOT + '/db/seeds/vaultware.xml')
+parser.process
