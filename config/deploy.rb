@@ -21,6 +21,7 @@ set(:previous_revision) {
 after 'multistage:ensure', 'config:defaults'
 after 'deploy:update_code', 'app:bundle_gems'
 after 'deploy:update_code', 'app:package_assets'
+after 'deploy:update_code', 'app:clear_asset_caches'
 
 namespace :deploy do
   task :start do ; end
@@ -92,6 +93,12 @@ namespace :app do
   desc 'Bundle gems'
   task :bundle_gems do
     run "cd #{release_path} && bundle install"
+  end
+
+  desc "Remove asset caches"
+  task :clear_asset_caches do
+    run "rm -f #{release_path}/public/javascripts/all.js"
+    run "rm -f #{release_path}/public/stylesheets/all.css"
   end
 end
 
