@@ -69,18 +69,20 @@
   <div class="container">
     <h2>Latest Bozzuto News</h2>
 
-    <div class="col">
-      <h3><%= @latest_news.published_at.to_formatted_s(:home_news) %></h3>
-      <p><%= @latest_news.title %></p>
-    </div>
+    <% if @news_post.present? %>
+      <div class="col">
+        <h3><%= @latest_news.published_at.to_formatted_s(:home_news) %></h3>
+        <p><%= @latest_news.title %></p>
+      </div>
 
-    <ul>
-      <li>
-        <%= link_to 'Read More', section_news_post_path('about', @latest_news) %>
-      </li>
-      <li class="rss">
-        <%= link_to 'Get RSS Feed', section_news_posts_path('about', :format => :rss) %>
-      </li>
-    </ul>
+      <ul>
+        <li>
+          <%= link_to 'Read More', section_news_post_path('about', @latest_news) %>
+        </li>
+        <li class="rss">
+          <%= link_to 'Get RSS Feed', section_news_posts_path('about', :format => :rss) %>
+        </li>
+      </ul>
+    <% end %>
   </div>
 </div>

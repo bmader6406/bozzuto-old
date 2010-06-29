@@ -15,7 +15,7 @@ State.create([{ :code => 'CT', :name => 'Connecticut' },
               { :code => 'VA', :name => 'Virginia' },
               { :code => 'DC', :name => 'Washington, DC' }])
 
-%w(Acquisitions Construction Development Homes Land Management).each do |title|
+%w(Acquisitions Construction Development Homebuilding Land Management).each do |title|
   section = Section.create(:title => title, :service => true)
 end
 Section.create(:title => 'About')
