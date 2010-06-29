@@ -11,9 +11,7 @@ gem 'will_paginate'
 gem 'friendly_id', '~> 2.3'
 gem 'activerecord-tableless', :require => 'tableless'
 
-gem 'carrierwave'
-gem 'mini_magick'
-
+gem 'paperclip'
 gem 'rcov'
 
 group :test do
