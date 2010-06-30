@@ -85,14 +85,11 @@
       <div id="content" class="col">
         <div class="header">
           <ul>
-            <li class="current">
-              <a href="#view-as-list" class="list">View as List</a>
+            <li class="<%= 'current' if @partial_template == 'search' %>">
+              <%= link_to 'View as List', apartment_communities_path(:search => params[:search]), :class => 'list' %>
             </li>
-            <li>
-              <a href="#view-as-directory" class="directory">View as Directory</a>
-            </li>
-            <li>
-              <a href="#view-as-map" class="map">View on Map</a>
+            <li class="<%= 'current' if @partial_template == 'map' %>">
+              <%= link_to 'View on Map', map_apartment_communities_path(:search => params[:search]), :class => 'map' %>
             </li>
           </ul>
           <p>

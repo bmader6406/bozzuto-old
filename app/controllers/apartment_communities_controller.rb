@@ -2,10 +2,9 @@ class ApartmentCommunitiesController < ApplicationController
   before_filter :find_community, :except => :index
 
   def index
-    # search/browse communities
     @partial_template = params[:template] || 'search'
     @search = ApartmentCommunity.search(params[:search])
-    @communities = @search.all
+    @communities = @search.all.group_by {|c| c.state.name}
   end
 
   def show
