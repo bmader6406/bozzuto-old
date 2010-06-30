@@ -22,6 +22,11 @@ class YelpFeedTest < ActiveSupport::TestCase
     should_validate_presence_of :url
     should_validate_uniqueness_of :url
 
+    context '#typus_name' do
+      should 'return the url' do
+        assert_equal @feed.url, @feed.typus_name
+      end
+    end
 
     context 'when validating on create' do
       setup do

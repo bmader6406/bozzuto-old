@@ -20,6 +20,10 @@ class YelpFeed < ActiveRecord::Base
     end
   end
 
+  def typus_name
+    url
+  end
+
 
   def refresh
     fetch_feed
