@@ -8,9 +8,9 @@ ApartmentCommunity:
     list: title, street_address, city
     form: title, subtitle, street_address, city, county, elite, smart_share, smart_rent, green, non_smoking, website_url, video_url, facebook_url, twitter_handle, listing_image, listing_title, listing_text, promo_image, promo_url, latitude, longitude, yelp_feed, overview_text, features_text, neighborhood_text, promotions_text, contact_text, fitness_center, metro_access, pet_friendly, washer_and_dryer, brand_new
   order_by:
-  relationships: city, county, floor_plans, yelp_feed
+  relationships: city, county, yelp_feed, slideshow, floor_plans
   filters:
-  search: title
+  search: title, street_address
   application: Properties
 
 Award:
@@ -165,6 +165,39 @@ ProjectUpdate:
   filters:
   search:
   application:
+
+Property:
+  fields:
+    default:
+    list:
+    form:
+  order_by:
+  relationships: slideshow
+  filters:
+  search:
+  application:
+
+PropertySlide:
+  fields:
+    default: image, position, property_slideshow
+    list: image, position, property_slideshow
+    form: image, caption, property_slideshow
+  order_by: position
+  relationships: property_slideshow
+  filters: 
+  search: 
+  application: 
+
+PropertySlideshow:
+  fields:
+    default: name, property
+    list: name, property
+    form: name, property
+  order_by: 
+  relationships: property, slides
+  filters: 
+  search: name
+  application: 
 
 Section:
   fields:

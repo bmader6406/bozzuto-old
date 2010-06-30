@@ -1,7 +1,8 @@
 class Property < ActiveRecord::Base
   belongs_to :city
   belongs_to :county
-  has_one :property_slideshow
+
+  has_one :slideshow, :class_name => 'PropertySlideshow'
 
   validates_presence_of :title, :city
   validates_numericality_of :latitude, :longitude, :allow_nil => true
