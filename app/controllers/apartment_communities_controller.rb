@@ -1,5 +1,10 @@
 class ApartmentCommunitiesController < ApplicationController
-  before_filter :find_community
+  before_filter :find_community, :except => :index
+
+  def index
+    # search/browse communities
+    @partial_template = params[:template] || 'search'
+  end
 
   def show
   end
