@@ -49,10 +49,10 @@ County:
 FloorPlanGroup:
   fields:
     default: name, position
-    list: apartment_community, name, position
-    form: apartment_community, name
-  order_by: apartment_community_id, position
-  relationships: apartment_community, floor_plans
+    list: name, position
+    form: name
+  order_by: position
+  relationships: floor_plans
   search: name
   application: 
 

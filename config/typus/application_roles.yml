@@ -7,7 +7,7 @@ admin:
   Award: create, read, update, delete
   City: create, read, update, delete
   County: create, read, update, delete
-  FloorPlanGroup: create, read, update, delete
+  FloorPlanGroup: read
   FloorPlan: create, read, update, delete
   Home: create, read, update, delete
   HomeCommunity: create, read, update, delete
