@@ -9,6 +9,7 @@ class HomeCommunityTest < ActiveSupport::TestCase
     subject { @community }
 
     should_have_many :homes
+    should_have_many :featured_homes
 
     context '#nearby_communities' do
       setup do

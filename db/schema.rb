@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100630035227) do
+ActiveRecord::Schema.define(:version => 20100630051423) do
 
   create_table "awards", :force => true do |t|
     t.string   "title",                           :null => false
@@ -79,13 +79,14 @@ ActiveRecord::Schema.define(:version => 20100630035227) do
   end
 
   create_table "homes", :force => true do |t|
-    t.string   "name",                                            :null => false
-    t.integer  "bedrooms",                                        :null => false
-    t.decimal  "bathrooms",         :precision => 3, :scale => 1, :null => false
-    t.integer  "home_community_id",                               :null => false
+    t.string   "name",                                                               :null => false
+    t.integer  "bedrooms",                                                           :null => false
+    t.decimal  "bathrooms",         :precision => 3, :scale => 1,                    :null => false
+    t.integer  "home_community_id",                                                  :null => false
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "featured",                                        :default => false, :null => false
   end
 
   create_table "news_posts", :force => true do |t|

@@ -3,6 +3,9 @@ class HomeCommunity < Community
   @@per_page = 4
 
   has_many :homes
+  has_many :featured_homes,
+    :class_name => 'Home',
+    :conditions => { :featured => true }
 
   named_scope :ordered_by_title, :order => 'title ASC'
 

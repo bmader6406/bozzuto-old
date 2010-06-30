@@ -61,7 +61,7 @@
                       <%= bedrooms(home) %> / <%= bathrooms(home) %>
                     </td>
                     <td class="availability">
-                      <%= link_to 'View Floor Plan', '#' %>
+                      <%= link_to 'View Floor Plan', home_community_homes_path(@community, :anchor => dom_id(home)) %>
                     </td>
                   </tr>
                 <% end %>
@@ -70,37 +70,31 @@
           </div>
         <% end %>
 
-        <div id="featured-floor-plans">
-          <h2>Featured Home</h2>
-          <ul class="row">
-            <li class="floor-plan">
-              <h4>Studio</h4>
-              <p>
-                542 Sq Ft | $XXXX<br />
-                <a href="#">Reserve</a>
-              </p>
-              <img src="/images/floor-plan-studio.png" />
-            </li>
+        <% unless @community.featured_homes.empty? %>
+          <% home = @community.featured_homes.first %>
 
-            <li class="floor-plan">
-              <h4>1 Bedroom w/Den</h4>
-              <p>
-                830 Sq Ft | $XXXX<br />
-                <a href="#">Reserve</a>
-              </p>
-              <img src="/images/floor-plan-1-br.png" />
-            </li>
+          <div id="featured-floor-plans">
+            <h2>Featured Home</h2>
 
-            <li class="floor-plan">
-              <h4>2 Bedrooms</h4>
-              <p>
-                542 Sq Ft | $XXXX<br />
-                <a href="#">Reserve</a>
-              </p>
-              <img src="/images/floor-plan-2-br.png" />
-            </li>
-          </ul>
-        </div>
+            <h3><%= home.name %></h3>
+
+            <p>
+              <%= bedrooms(home) %> | <%= bathrooms(home) %>
+            </p>
+
+            <% home.floor_plans.in_groups_of(3, false) do |plans| %>
+              <ul class="row">
+                <% plans.each do |plan| %>
+                  <li class="floor-plan">
+                    <h4><%= plan.name %></h4>
+
+                    <%= link_to image_tag(plan.image.url, :width => 160), plan.image.url, :class => 'floor-plan-view' %>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
+        <% end %>
       </div>
 
 

@@ -69,9 +69,9 @@ FloorPlan:
 
 Home:
   fields:
-    default: name, bedrooms, bathrooms, position
+    default: name, bedrooms, bathrooms, featured, position
     list: name, bedrooms, bathrooms, home_community, position
-    form: name, bedrooms, bathrooms, home_community
+    form: name, bedrooms, bathrooms, featured, home_community
   order_by: position
   relationships: home_community, floor_plans
   filters: 
