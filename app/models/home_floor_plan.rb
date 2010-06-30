@@ -8,7 +8,8 @@ class HomeFloorPlan < ActiveRecord::Base
   validates_presence_of :name
 
   has_attached_file :image,
-    :url => '/system/:class/:id/:style.:extension'
+    :url => '/system/:class/:id/:style.:extension',
+    :styles => { :thumb => '160' }
 
   validates_attachment_presence :image
 end

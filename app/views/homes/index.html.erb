@@ -21,7 +21,7 @@
                 <h4><%= plan.name %></h4>
 
                 <% if plan.image.present? %>
-                  <%= link_to image_tag(plan.image.url, :width => 160), plan.image.url, :class => 'floor-plan-view' %>
+                  <%= link_to image_tag(plan.image.url(:thumb), :width => 160), plan.image.url, :class => 'floor-plan-view' %>
                 <% end %>
               </li>
             <% end %>
