@@ -4,10 +4,9 @@
   <div class="container">
     <ul>
       <li><a href="#">Apartments</a></li>
-      <li><a href="#">Find an Apartment</a></li>
-      <li>Maryland</li>
+      <li>Find an Apartment</li>
     </ul>
-    <h1>Find an Apartment in Maryland</h1>
+    <h1>Find an Apartment/h1>
     <img class="aside" src="/images/search-results-masthead.jpg" />
   </div>
 </div>
@@ -93,7 +92,7 @@
             </li>
           </ul>
           <p>
-            <%= pluralize(@communities.count, 'Apartment Community') %>
+            <%= pluralize(@communities.sum {|state, communities| communities.count}, 'Apartment Community') %>
           </p>
         </div>
 
