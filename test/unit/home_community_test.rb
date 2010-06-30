@@ -8,6 +8,8 @@ class HomeCommunityTest < ActiveSupport::TestCase
 
     subject { @community }
 
+    should_have_many :homes
+
     context '#nearby_communities' do
       setup do
         @city = City.make

@@ -10,6 +10,17 @@ Sham.define do
   section_title { |i| "#{Faker::Lorem.words} #{i}" }
 end
 
+Sham.bedrooms(:unique => false)  { rand(5) + 1 }
+Sham.bathrooms(:unique => false) { (rand * 3).round_with_precision(1) + 1 }
+
+
+ApartmentCommunity.blueprint do
+  title             { Sham.company_name }
+  subtitle          { Faker::Company.catch_phrase }
+  use_market_prices { false }
+  city
+end
+
 Award.blueprint do
   title        { Faker::Lorem.sentence }
   body         { Faker::Lorem.paragraphs }
@@ -28,27 +39,62 @@ City.blueprint do
   state
 end
 
+ContactSubmission.blueprint do
+  name    { Faker::Name.name }
+  email   { Faker::Internet.email }
+  topic   { ContactSubmission::TOPICS.rand[1] }
+  message { Faker::Lorem.paragraphs }
+end
+
 County.blueprint do
   name { Sham.city }
   state
 end
 
-State.blueprint do
-  name { Sham.us_state }
-  code { Sham.us_state_code }
+FloorPlanGroup.blueprint do
+  name { Faker::Lorem.words(1) }
 end
 
-ApartmentCommunity.blueprint do
-  title             { Sham.company_name }
-  subtitle          { Faker::Company.catch_phrase }
-  use_market_prices { false }
-  city
+FloorPlan.blueprint do
+  name               { Faker::Lorem.words(1) }
+  availability_url   { "http://#{Faker::Internet.domain_name}" }
+  image              { Faker::Lorem.words(1) }
+  bedrooms           { Sham.bedrooms }
+  bathrooms          { Sham.bathrooms }
+  min_square_feet    { rand(3000) + 500 }
+  max_square_feet    { rand(3000) + 500 }
+  min_market_rent    { rand(500000) + 40000 }
+  max_market_rent    { rand(500000) + 40000 }
+  min_effective_rent { rand(500000) + 40000 }
+  max_effective_rent { rand(500000) + 40000 }
+  floor_plan_group
+  apartment_community
+end
+
+Home.blueprint do
+  name      { Faker::Lorem.words(3) }
+  bedrooms  { Sham.bedrooms }
+  bathrooms { Sham.bathrooms }
+  home_community
 end
 
 HomeCommunity.blueprint do
   title             { Sham.company_name }
   subtitle          { Faker::Company.catch_phrase }
   city
+end
+
+NewsPost.blueprint do
+  title        { Faker::Lorem.sentence }
+  body         { Faker::Lorem.paragraphs(2) }
+  published    { true }
+  published_at { Time.now - 1.day }
+  section
+end
+
+NewsPost.blueprint(:unpublished) do
+  published    { false }
+  published_at { nil }
 end
 
 Project.blueprint do
@@ -75,36 +121,10 @@ Property.blueprint do
   city
 end
 
-FloorPlanGroup.blueprint do
-  name { Faker::Lorem.words(1) }
-end
-
-FloorPlan.blueprint do
-  name               { Faker::Lorem.words(1) }
-  availability_url   { "http://#{Faker::Internet.domain_name}" }
-  image              { Faker::Lorem.words(1) }
-  bedrooms           { rand(5) + 1 }
-  bathrooms          { (rand * 3).round_with_precision(1) + 1 }
-  min_square_feet    { rand(3000) + 500 }
-  max_square_feet    { rand(3000) + 500 }
-  min_market_rent    { rand(500000) + 40000 }
-  max_market_rent    { rand(500000) + 40000 }
-  min_effective_rent { rand(500000) + 40000 }
-  max_effective_rent { rand(500000) + 40000 }
-  floor_plan_group
-  apartment_community
-end
-
-YelpFeed.blueprint do
-  url { Sham.feed_url }
-end
-
-YelpFeedItem.blueprint do
-  title        { Faker::Lorem.sentence }
-  url          { Faker::Internet.domain_name }
-  description  { Faker::Lorem.paragraphs }
-  published_at { Time.now }
-  yelp_feed
+Page.blueprint do
+  title { Faker::Lorem.sentence }
+  body  { Faker::Lorem.paragraphs(3) }
+  section
 end
 
 Section.blueprint do
@@ -120,17 +140,9 @@ Section.blueprint(:about) do
   title { 'About' }
 end
 
-NewsPost.blueprint do
-  title        { Faker::Lorem.sentence }
-  body         { Faker::Lorem.paragraphs(2) }
-  published    { true }
-  published_at { Time.now - 1.day }
-  section
-end
-
-NewsPost.blueprint(:unpublished) do
-  published    { false }
-  published_at { nil }
+State.blueprint do
+  name { Sham.us_state }
+  code { Sham.us_state_code }
 end
 
 Testimonial.blueprint do
@@ -140,15 +152,14 @@ Testimonial.blueprint do
   section
 end
 
-ContactSubmission.blueprint do
-  name    { Faker::Name.name }
-  email   { Faker::Internet.email }
-  topic   { ContactSubmission::TOPICS.rand[1] }
-  message { Faker::Lorem.paragraphs }
+YelpFeed.blueprint do
+  url { Sham.feed_url }
 end
 
-Page.blueprint do
-  title { Faker::Lorem.sentence }
-  body  { Faker::Lorem.paragraphs(3) }
-  section
+YelpFeedItem.blueprint do
+  title        { Faker::Lorem.sentence }
+  url          { Faker::Internet.domain_name }
+  description  { Faker::Lorem.paragraphs }
+  published_at { Time.now }
+  yelp_feed
 end
