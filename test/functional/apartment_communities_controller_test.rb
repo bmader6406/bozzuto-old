@@ -6,6 +6,26 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
       @community = ApartmentCommunity.make
     end
 
+    context 'get #index' do
+      context 'for the search view' do
+        setup do
+          get :index
+        end
+
+        should_respond_with :success
+        should_render_template :index
+      end
+
+      context 'for the map view' do
+        setup do
+          get :index, :template => 'map'
+        end
+
+        should_respond_with :success
+        should_render_template :index
+      end
+    end
+
     %w(show features neighborhood promotions contact).each do |action|
       context "a GET to ##{action}" do
         setup do

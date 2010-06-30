@@ -11,6 +11,14 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
     should_have_many :photos
     should_have_many :floor_plans
 
+    should 'respond to named scopes' do
+      assert_nothing_raised do
+        ApartmentCommunity.with_floor_plan_groups(1).all
+        ApartmentCommunity.with_min_price(0).all
+        ApartmentCommunity.with_max_price(1000).all
+      end
+    end
+
     context '#nearby_communities' do
       setup do
         @city = City.make

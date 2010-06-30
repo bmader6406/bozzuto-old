@@ -6,7 +6,7 @@ ApartmentCommunity:
   fields:
     default: title, street_address, city
     list: title, street_address, city
-    form: title, subtitle, street_address, city, county, elite, smart_share, smart_rent, green, non_smoking, website_url, video_url, facebook_url, twitter_handle, listing_image, listing_title, listing_text, promo_image, promo_url, latitude, longitude, yelp_feed, overview_text, features_text, neighborhood_text, promotions_text, contact_text
+    form: title, subtitle, street_address, city, county, elite, smart_share, smart_rent, green, non_smoking, website_url, video_url, facebook_url, twitter_handle, listing_image, listing_title, listing_text, promo_image, promo_url, latitude, longitude, yelp_feed, overview_text, features_text, neighborhood_text, promotions_text, contact_text, fitness_center, metro_access, pet_friendly, washer_and_dryer, brand_new
   order_by:
   relationships: city, county, floor_plans, yelp_feed
   filters:
@@ -18,9 +18,9 @@ Award:
     default: title, published, published_at, section
     list: title, published, published_at, section
     form: title, body, published, published_at, section
-  order_by: 
+  order_by:
   relationships: section
-  filters: 
+  filters:
   search: title
   application: Content
 
@@ -54,7 +54,7 @@ FloorPlanGroup:
   order_by: position
   relationships: floor_plans
   search: name
-  application: 
+  application:
 
 FloorPlan:
   fields:
@@ -65,7 +65,7 @@ FloorPlan:
   relationships: floor_plan_group
   filters:
   search:
-  application: 
+  application:
 
 Home:
   fields:
@@ -74,18 +74,18 @@ Home:
     form: name, bedrooms, bathrooms, featured, home_community
   order_by: position
   relationships: home_community, floor_plans
-  filters: 
+  filters:
   search: name
-  application: 
+  application:
 
 HomeCommunity:
   fields:
     default: title, street_address, city
     list: title, street_address, city
     form: title, subtitle, street_address, city, county, elite, smart_share, smart_rent, green, non_smoking, website_url, video_url, facebook_url, twitter_handle, listing_image, listing_title, listing_text, promo_image, promo_url, latitude, longitude, overview_text, features_text, neighborhood_text, promotions_text, contact_text, yelp_feed
-  order_by: 
+  order_by:
   relationships: city, county, homes, yelp_feed
-  filters: 
+  filters:
   search: title
   application: Properties
 
@@ -96,9 +96,9 @@ HomeFloorPlan:
     form: name, image, home
   order_by: position
   relationships: home
-  filters: 
+  filters:
   search: name
-  application: 
+  application:
 
 NewsPost:
   fields:
@@ -131,16 +131,16 @@ Photo:
   relationships: apartment_community
   filters:
   search:
-  application: 
+  application:
 
 Project:
   fields:
     default: title, street_address, city
     list: title, street_address, city
     form: title, subtitle, section, street_address, city, county, website_url, video_url, latitude, longitude, listing_image, listing_title, listing_text, overview_text
-  order_by: 
+  order_by:
   relationships: city, section, data_points, updates
-  filters: 
+  filters:
   search: title
   application: Properties
 
@@ -151,20 +151,20 @@ ProjectDataPoint:
     form: name, data, project
   order_by: position
   relationships: project
-  filters: 
+  filters:
   search: name
-  application: 
+  application:
 
 ProjectUpdate:
   fields:
     default: published_at, published
     list: published_at, published
     form: body, published, published_at, project
-  order_by: 
+  order_by:
   relationships: project
-  filters: 
-  search: 
-  application: 
+  filters:
+  search:
+  application:
 
 Section:
   fields:
@@ -210,5 +210,5 @@ YelpFeed:
   relationships: apartment_communities
   filters:
   search:
-  application: 
+  application:
 
