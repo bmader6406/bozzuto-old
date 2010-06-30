@@ -11,8 +11,8 @@
         <li class="<%= current_if 'media' %>">
           <%= link_to 'Photos & Videos', '#' %>
         </li>
-        <li class="<%= current_if :controller => 'floor_plan_groups' %>">
-          <%= link_to 'Floor Plans', '#' %>
+        <li class="<%= current_if :controller => 'homes' %>">
+          <%= link_to 'Homes', home_community_homes_path(@community) %>
         </li>
         <li class="<%= current_if 'neighborhood' %>">
           <%= link_to 'Neighborhood', '#' %>

@@ -25,7 +25,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :home_communities,
     :as          => :communities,
     :path_prefix => 'new-homes',
-    :only        => [:index, :show]
+    :only        => [:index, :show] do |community|
+    community.resources :homes, :only => :index
+  end
 
   map.resources :states, :only => :show
 

@@ -1,0 +1,38 @@
+<% content_for :body_class do %>community floor-plans<% end %>
+
+<%= render :partial => 'home_communities/breadcrumb' %>
+
+<%= render :partial => 'home_communities/masthead' %>
+
+<div id="main-content">
+  <div class="container">
+    <% @community.homes(:include => :floor_plans).each do |home| %>
+      <div id="<%= dom_id(home) %>" class="floor-plan-group">
+        <h2><%= home.name %></h2>
+
+        <p>
+          <%= bedrooms(home) %> | <%= bathrooms(home) %>
+        </p>
+
+        <% home.floor_plans.in_groups_of(4, false) do |plans| %>
+          <ul class="row">
+            <% plans.each do |plan| %>
+              <li class="floor-plan">
+                <h4><%= plan.name %></h4>
+
+                <% if plan.image.present? %>
+                  <%= link_to image_tag(plan.image.url, :width => 160), plan.image.url, :class => 'floor-plan-view' %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+      </div>
+    <% end %>
+
+    <%= render :partial => 'home_communities/sub_content' %>
+  </div>
+</div>
+
+<%= render :partial => 'apartment_communities/special_nav' %>
