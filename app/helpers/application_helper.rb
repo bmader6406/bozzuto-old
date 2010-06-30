@@ -27,4 +27,17 @@ module ApplicationHelper
 <script src="http://maps.google.com/maps?file=api&v=2&key=#{APP_CONFIG[:google_maps_api_key]}" type="text/javascript"></script>
     END
   end
+
+  def bedrooms(record)
+    pluralize(record.bedrooms, 'Bedroom')
+  end
+
+  def bathrooms(record)
+    bathrooms = if record.bathrooms.frac.to_f == 0.0
+      record.bathrooms.to_i
+    else
+      record.bathrooms.to_f
+    end
+    pluralize(bathrooms, 'Bathroom')
+  end
 end

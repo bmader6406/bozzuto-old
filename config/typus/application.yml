@@ -67,13 +67,24 @@ FloorPlan:
   search:
   application: 
 
+Home:
+  fields:
+    default: name, bedrooms, bathrooms, position
+    list: name, bedrooms, bathrooms, home_community, position
+    form: name, bedrooms, bathrooms, home_community
+  order_by: position
+  relationships: home_community
+  filters: 
+  search: name
+  application: 
+
 HomeCommunity:
   fields:
     default: title, street_address, city
     list: title, street_address, city
     form: title, subtitle, street_address, city, county, elite, smart_share, smart_rent, green, non_smoking, website_url, video_url, facebook_url, twitter_handle, promo_image, promo_url, latitude, longitude, overview_text, features_text, neighborhood_text, promotions_text, contact_text, yelp_feed_id, availability_url
   order_by: 
-  relationships: city, county
+  relationships: city, county, homes
   filters: 
   search: title
   application: Properties

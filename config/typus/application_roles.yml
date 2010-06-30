@@ -9,6 +9,7 @@ admin:
   County: create, read, update, delete
   FloorPlanGroup: create, read, update, delete
   FloorPlan: create, read, update, delete
+  Home: create, read, update, delete
   HomeCommunity: create, read, update, delete
   NewsPost: create, read, update, delete
   Page: create, read, update, delete

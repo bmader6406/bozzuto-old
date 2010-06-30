@@ -2,6 +2,26 @@ require 'test_helper'
 
 class ApplicationHelperTest < ActionView::TestCase
   context "ApplicationHelper" do
+    context '#bedrooms' do
+      should 'properly pluralize the bedrooms count' do
+        @plan = FloorPlan.new :bedrooms => 1
+        assert_equal '1 Bedroom', bedrooms(@plan)
+
+        @plan.bedrooms = 2
+        assert_equal '2 Bedrooms', bedrooms(@plan)
+      end
+    end
+
+    context '#bathrooms' do
+      should 'properly pluralize the bathrooms count' do
+        @plan = FloorPlan.new :bathrooms => 1
+        assert_equal '1 Bathroom', bathrooms(@plan)
+
+        @plan.bathrooms = 2.5
+        assert_equal '2.5 Bathrooms', bathrooms(@plan)
+      end
+    end
+
     context '#home?' do
       should 'return true if controller is HomeController' do
         expects(:params).returns(:controller => 'home')

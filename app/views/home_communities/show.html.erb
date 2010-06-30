@@ -46,16 +46,29 @@
           </div>
         <% end %>
 
-        <%# unless @community.floor_plan_groups.empty? %>
+        <% unless @community.homes.empty? %>
           <div id="apartments">
             <h2>Homes</h2>
 
             <table>
               <tbody>
+                <% @community.homes.each do |home| %>
+                  <tr>
+                    <td>
+                      <%= home.name %>
+                    </td>
+                    <td>
+                      <%= bedrooms(home) %> / <%= bathrooms(home) %>
+                    </td>
+                    <td class="availability">
+                      <%= link_to 'View Floor Plan', '#' %>
+                    </td>
+                  </tr>
+                <% end %>
               </tbody>
             </table>
           </div>
-        <%# end %>
+        <% end %>
 
         <div id="featured-floor-plans">
           <h2>Featured Home</h2>
@@ -168,6 +181,6 @@
       </div>
     </div>
 
-    <%= render :partial => 'apartment_communities/sub_content' %>
+    <%= render :partial => 'sub_content' %>
   </div>
 </div>
