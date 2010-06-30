@@ -4,6 +4,8 @@ class ApartmentCommunitiesController < ApplicationController
   def index
     # search/browse communities
     @partial_template = params[:template] || 'search'
+    @search = ApartmentCommunity.search(params[:search])
+    @communities = @search.all
   end
 
   def show
