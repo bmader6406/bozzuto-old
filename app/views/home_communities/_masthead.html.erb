@@ -1,0 +1,60 @@
+<div id="masthead">
+  <div class="container">
+    <div class="nav">
+      <ul id="secondary-nav">
+        <li class="<%= current_if 'show' %>">
+          <%= link_to @community.title, @community %>
+        </li>
+        <li class="<%= current_if 'features' %>">
+          <%= link_to 'Features & Amenities', '#' %>
+        </li>
+        <li class="<%= current_if 'media' %>">
+          <%= link_to 'Photos & Videos', '#' %>
+        </li>
+        <li class="<%= current_if :controller => 'floor_plan_groups' %>">
+          <%= link_to 'Floor Plans', '#' %>
+        </li>
+        <li class="<%= current_if 'neighborhood' %>">
+          <%= link_to 'Neighborhood', '#' %>
+        </li>
+        <li class="<%= current_if 'promotions' %>">
+          <%= link_to 'Special Promotions', '#' %>
+        </li>
+        <li class="last <%= current_if 'contact' %>">
+          <%= link_to 'Contact Info<br />&amp; Office Hours'.html_safe, '#' %>
+        </li>
+      </ul>
+
+      <ul id="remote-nav">
+        <% if @community.website_url.present? %>
+          <li>
+            <%= link_to 'Visit Website', website_url(@community.website_url) %>
+          </li>
+        <% end %>
+        <li class="last">
+          <%= link_to 'Download E-Brochure', '#' %>
+        </li>
+      </ul>
+    </div>
+
+    <div id="slideshow">
+      <div class="header">
+        <h1><%= @community.title %></h1><a href="#" class="prev">‹</a><a href="#" class="next">›</a>
+      </div>
+
+      <div class="slide">
+        <img src="/images/community-slide-1.jpg" />
+        <div class="section">
+          <p>
+            <strong><%= @community.city %></strong>
+            <%= @community.subtitle %>
+          </p>
+
+          <p class="watch-video">
+            <%= link_to 'Watch Video', '#' %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

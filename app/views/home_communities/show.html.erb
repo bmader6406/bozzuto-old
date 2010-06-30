@@ -18,11 +18,11 @@
   </script>
 <% end %>
 
-<%#= render :partial => 'special_nav' %>
+<%= render :partial => 'apartment_communities/special_nav' %>
 
-<%#= render :partial => 'breadcrumb' %>
+<%= render :partial => 'breadcrumb' %>
 
-<%#= render :partial => 'masthead' %>
+<%= render :partial => 'masthead' %>
 
 <div id="main-content">
   <div class="container">
@@ -48,7 +48,7 @@
 
         <%# unless @community.floor_plan_groups.empty? %>
           <div id="apartments">
-            <h2>Apartments</h2>
+            <h2>Homes</h2>
 
             <table>
               <tbody>
@@ -58,7 +58,7 @@
         <%# end %>
 
         <div id="featured-floor-plans">
-          <h2>Featured Floor Plans</h2>
+          <h2>Featured Home</h2>
           <ul class="row">
             <li class="floor-plan">
               <h4>Studio</h4>
@@ -139,7 +139,7 @@
 
         <% unless @community.nearby_communities.empty? %>
           <div id="nearby-communities">
-            <h3>Nearby Apartment Communities</h3>
+            <h3>Other Bozzuto Communities</h3>
             <ul>
               <% @community.nearby_communities.each do |community| %>
                 <li><%= link_to community.title, community %></li>
@@ -168,6 +168,6 @@
       </div>
     </div>
 
-    <%#= render :partial => 'sub_content' %>
+    <%= render :partial => 'apartment_communities/sub_content' %>
   </div>
 </div>
