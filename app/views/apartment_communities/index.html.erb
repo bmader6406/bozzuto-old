@@ -34,14 +34,10 @@
             <h3>Price</h3>
             <ul>
               <li>
-                <select name="price_min" id="price_min">
-                  <option>Choose Minimum...</option>
-                </select>
+                <%= f.select :with_min_price, ['Choose Minimum...','250','500','750','1000','1250','1500','1750','2000','2500','3000','4000','5000','6000','7000','8000','9000','10000'] %>
               </li>
               <li>
-                <select name="price_max" id="price_max">
-                  <option>Choose Maximum...</option>
-                </select>
+                <%= f.select :with_max_price, ['Choose Maximum...','250','500','750','1000','1250','1500','1750','2000','2500','3000','4000','5000','6000','7000','8000','9000','10000'] %>
               </li>
             </ul>
           </fieldset>
@@ -60,23 +56,23 @@
             <h3>Most Searched Features &amp; Amenities</h3>
             <ul>
               <li>
-                <%= f.check_box :fitness_center %>
+                <%= f.check_box :fitness_center, {}, '1', nil %>
                 <%= f.label :fitness_center, 'Fitness Center' %>
               </li>
               <li>
-                <%= f.check_box :metro_access %>
+                <%= f.check_box :metro_access, {}, '2', nil %>
                 <%= f.label :metro_access, 'Metro Access' %>
               </li>
               <li>
-                <%= f.check_box :pet_friendly %>
+                <%= f.check_box :pet_friendly, {}, '3', nil %>
                 <%= f.label :pet_friendly, 'Pet-Friendly' %>
               </li>
               <li>
-                <%= f.check_box :washer_and_dryer %>
+                <%= f.check_box :washer_and_dryer, {}, '4', nil %>
                 <%= f.label :washer_and_dryer, 'Washer &amp; Dryer' %>
               </li>
               <li>
-                <%= f.check_box :brand_new %>
+                <%= f.check_box :brand_new, {}, '5', nil %>
                 <%= f.label :brand_new, 'Brand New' %>
               </li>
             </ul>

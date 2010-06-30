@@ -10,6 +10,12 @@ class ApartmentCommunity < Community
   named_scope :with_floor_plan_groups, lambda {|ids|
     {:conditions => ["properties.id IN (SELECT apartment_community_id FROM floor_plans WHERE floor_plan_group_id IN (?))", ids]}
   }
+  named_scope :with_min_price, lambda {|price|
+    {:conditions => ['properties.id IN (SELECT apartment_community_id FROM floor_plans WHERE min_rent >= ?)', price.to_i]}
+  }
+  named_scope :with_max_price, lambda {|price|
+    {:conditions => ['properties.id IN (SELECT apartment_community_id FROM floor_plans WHERE max_rent <= ?)', price.to_i]} if price.to_i > 0
+  }
 
   include FlagShihTzu
   has_flags :column => 'features',
