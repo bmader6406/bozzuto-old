@@ -28,9 +28,9 @@ City:
   fields:
     default: name, state
     list: name, state
-    form: name, state, county
+    form: name, state
   order_by:
-  relationships: apartment_communities, county, state
+  relationships: apartment_communities, counties, state
   filters:
   search: name
   application: Properties
@@ -41,7 +41,7 @@ County:
     list: name, state
     form: name, state
   order_by: name
-  relationships: state
+  relationships: state, cities
   filters:
   search: name
   application: Properties
@@ -73,7 +73,7 @@ Home:
     list: name, bedrooms, bathrooms, home_community, position
     form: name, bedrooms, bathrooms, home_community
   order_by: position
-  relationships: home_community
+  relationships: home_community, floor_plans
   filters: 
   search: name
   application: 
@@ -88,6 +88,17 @@ HomeCommunity:
   filters: 
   search: title
   application: Properties
+
+HomeFloorPlan:
+  fields:
+    default: name, image, position
+    list: name, position
+    form: name, image, home
+  order_by: position
+  relationships: home
+  filters: 
+  search: name
+  application: 
 
 NewsPost:
   fields:
@@ -174,7 +185,7 @@ State:
     list: code, name
     form: code, name
   order_by:
-  relationships: cities
+  relationships: cities, counties
   filters:
   search: name
   application: Properties
@@ -199,5 +210,5 @@ YelpFeed:
   relationships: apartment_communities
   filters:
   search:
-  application: Properties
+  application: 
 

@@ -7,6 +7,8 @@ class CreateHomeFloorPlans < ActiveRecord::Migration
         n.integer :home_id
       end
 
+      t.string :image_content_type
+
       t.integer :position
 
       t.timestamps

@@ -69,9 +69,10 @@ ActiveRecord::Schema.define(:version => 20100630035227) do
   end
 
   create_table "home_floor_plans", :force => true do |t|
-    t.string   "name",            :null => false
-    t.string   "image_file_name", :null => false
-    t.integer  "home_id",         :null => false
+    t.string   "name",               :null => false
+    t.string   "image_file_name",    :null => false
+    t.integer  "home_id",            :null => false
+    t.string   "image_content_type"
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
