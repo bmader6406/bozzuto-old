@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100630031741) do
+ActiveRecord::Schema.define(:version => 20100630035227) do
 
   create_table "awards", :force => true do |t|
     t.string   "title",                           :null => false
@@ -66,6 +66,15 @@ ActiveRecord::Schema.define(:version => 20100630031741) do
     t.integer  "apartment_community_id",                               :null => false
     t.decimal  "min_rent",               :precision => 6, :scale => 2, :null => false
     t.decimal  "max_rent",               :precision => 6, :scale => 2, :null => false
+  end
+
+  create_table "home_floor_plans", :force => true do |t|
+    t.string   "name",            :null => false
+    t.string   "image_file_name", :null => false
+    t.integer  "home_id",         :null => false
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "homes", :force => true do |t|

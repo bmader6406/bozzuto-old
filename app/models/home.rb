@@ -2,6 +2,7 @@ class Home < ActiveRecord::Base
   acts_as_list :scope => :home_community
 
   belongs_to :home_community
+  has_many :floor_plans, :class_name => 'HomeFloorPlan'
 
   default_scope :order => 'position ASC'
 

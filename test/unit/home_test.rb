@@ -9,6 +9,7 @@ class HomeTest < ActiveSupport::TestCase
     subject { @home }
 
     should_belong_to :home_community
+    should_have_many :floor_plans
 
     should_validate_presence_of :home_community,
       :bedrooms,
