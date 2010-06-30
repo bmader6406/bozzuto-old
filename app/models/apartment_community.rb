@@ -7,10 +7,13 @@ class ApartmentCommunity < Community
 
   validates_inclusion_of :use_market_prices, :in => [true, false]
 
+  named_scope :with_floor_plan_groups, lambda {|ids|
+    {:conditions => ["properties.id IN (SELECT apartment_community_id FROM floor_plans WHERE floor_plan_group_id IN (?))", ids]}
+  }
+
   def nearby_communities(limit = 6)
     @nearby_communities ||= city.apartment_communities.near(self).all(:limit => limit)
   end
-
 
   private
 

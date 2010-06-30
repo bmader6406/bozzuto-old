@@ -21,26 +21,12 @@
           <fieldset id="bedrooms" class="">
             <h3>Bedrooms</h3>
             <ul>
-              <li>
-                <input type="checkbox" name="studio" value="" id="studio" />
-                <label for="studio">Studio</label>
-              </li>
-              <li>
-                <input type="checkbox" name="1_bedroom" value="" id="1_bedroom" />
-                <label for="1_bedroom">1 Bedroom</label>
-              </li>
-              <li>
-                <input type="checkbox" name="2_bedroom" value="" id="2_bedroom" />
-                <label for="2_bedroom">2 Bedroom</label>
-              </li>
-              <li>
-                <input type="checkbox" name="3_or_more_bedrooms" value="" id="3_or_more_bedrooms" />
-                <label for="3_or_more_bedrooms">3 or more Bedrooms</label>
-              </li>
-              <li>
-                <input type="checkbox" name="penthouses" value="" id="penthouses" />
-                <label for="penthouses">Penthouses</label>
-              </li>
+              <% FloorPlanGroup.all.each do |fpg| %>
+                <li>
+                  <%= f.check_box :with_floor_plan_groups, {:name => 'search[with_floor_plan_groups][]', :id => fpg.name.tableize}, fpg.id.to_s, nil %>
+                  <label for="<%= fpg.name.tableize %>"><%= fpg.name %></label>
+                </li>
+              <% end %>
             </ul>
           </fieldset>
 
@@ -64,8 +50,8 @@
             <h3>Special Promotion</h3>
             <ul>
               <li>
-                <input type="checkbox" name="special_promotions" value="" id="special_promotions" />
-                <label for="special_promotions">Show only properties that have special promotions</label>
+                <%= f.check_box :promotions_text_not_null, :id => 'search_special_promotions' %>
+                <%= f.label :special_promotions, 'Show only properties that have special promotions' %>
               </li>
             </ul>
           </fieldset>
@@ -96,6 +82,7 @@
             </ul>
           </fieldset>
 
+          <%= f.submit %>
         <% end %>
       </div>
 
