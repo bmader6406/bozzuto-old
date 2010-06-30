@@ -4,10 +4,12 @@ ActionController::Routing::Routes.draw do |map|
 
   map.root :controller => :home
 
+  map.map_apartment_communities 'apartments/communities/map', :controller => 'apartment_communities', :action => 'index', :template => 'map'
+  map.browse_apartment_communities 'apartments/communities/browse', :controller => 'apartment_communities', :action => 'index', :template => 'browse'
   community_options = {
     :as          => :communities,
     :path_prefix => :apartments,
-    :only        => :show,
+    :only        => [:index, :show],
     :member => {
       :features       => :get,
       :neighborhood   => :get,
