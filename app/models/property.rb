@@ -8,6 +8,11 @@ class Property < ActiveRecord::Base
   acts_as_mappable :lat_column_name => :latitude,
                    :lng_column_name => :longitude
 
+  has_attached_file :listing_image,
+    :url           => '/system/:class/:id/:style.:extension',
+    :styles        => { :square => '150x150#' },
+    :default_style => :square
+
   named_scope :near, lambda { |loc|
     returning({}) do |opts|
       opts[:origin]     = loc

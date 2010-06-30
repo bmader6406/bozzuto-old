@@ -6,7 +6,7 @@ ApartmentCommunity:
   fields:
     default: title, street_address, city
     list: title, street_address, city
-    form: title, subtitle, street_address, city, county, elite, smart_share, smart_rent, green, non_smoking, website_url, video_url, facebook_url, twitter_handle, promo_image, promo_url, latitude, longitude, yelp_feed, overview_text, features_text, neighborhood_text, promotions_text, contact_text
+    form: title, subtitle, street_address, city, county, elite, smart_share, smart_rent, green, non_smoking, website_url, video_url, facebook_url, twitter_handle, listing_image, promo_image, promo_url, latitude, longitude, yelp_feed, overview_text, features_text, neighborhood_text, promotions_text, contact_text
   order_by:
   relationships: city, county, floor_plans, yelp_feed
   filters:
@@ -82,7 +82,7 @@ HomeCommunity:
   fields:
     default: title, street_address, city
     list: title, street_address, city
-    form: title, subtitle, street_address, city, county, elite, smart_share, smart_rent, green, non_smoking, website_url, video_url, facebook_url, twitter_handle, promo_image, promo_url, latitude, longitude, overview_text, features_text, neighborhood_text, promotions_text, contact_text, yelp_feed
+    form: title, subtitle, street_address, city, county, elite, smart_share, smart_rent, green, non_smoking, website_url, video_url, facebook_url, twitter_handle, listing_image, promo_image, promo_url, latitude, longitude, overview_text, features_text, neighborhood_text, promotions_text, contact_text, yelp_feed
   order_by: 
   relationships: city, county, homes, yelp_feed
   filters: 
@@ -137,7 +137,7 @@ Project:
   fields:
     default: title, street_address, city
     list: title, street_address, city
-    form: title, subtitle, section, website_url, video_url, latitude, longitude, street_address, overview_text, city
+    form: title, subtitle, section, street_address, city, county, website_url, video_url, latitude, longitude, listing_image, overview_text
   order_by: 
   relationships: city, section, data_points, updates
   filters: 

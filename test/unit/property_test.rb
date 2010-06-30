@@ -13,6 +13,8 @@ class PropertyTest < ActiveSupport::TestCase
     should_validate_presence_of :title, :city
     should_validate_numericality_of :latitude, :longitude
 
+    should_have_attached_file :listing_image
+
     context '#mappable?' do
       setup do
         @property.latitude = 10

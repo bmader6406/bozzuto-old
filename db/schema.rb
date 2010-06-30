@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100630051423) do
+ActiveRecord::Schema.define(:version => 20100630053741) do
 
   create_table "awards", :force => true do |t|
     t.string   "title",                           :null => false
@@ -138,14 +138,14 @@ ActiveRecord::Schema.define(:version => 20100630051423) do
   end
 
   create_table "properties", :force => true do |t|
-    t.string   "title",                                :null => false
+    t.string   "title",                                         :null => false
     t.string   "subtitle"
-    t.integer  "city_id",                              :null => false
-    t.boolean  "elite",             :default => false, :null => false
-    t.boolean  "smart_share",       :default => false, :null => false
-    t.boolean  "smart_rent",        :default => false, :null => false
-    t.boolean  "green",             :default => false, :null => false
-    t.boolean  "non_smoking",       :default => false, :null => false
+    t.integer  "city_id",                                       :null => false
+    t.boolean  "elite",                      :default => false, :null => false
+    t.boolean  "smart_share",                :default => false, :null => false
+    t.boolean  "smart_rent",                 :default => false, :null => false
+    t.boolean  "green",                      :default => false, :null => false
+    t.boolean  "non_smoking",                :default => false, :null => false
     t.string   "website_url"
     t.string   "video_url"
     t.string   "facebook_url"
@@ -164,11 +164,13 @@ ActiveRecord::Schema.define(:version => 20100630051423) do
     t.datetime "updated_at"
     t.integer  "yelp_feed_id"
     t.integer  "vaultware_id"
-    t.boolean  "use_market_prices", :default => false, :null => false
+    t.boolean  "use_market_prices",          :default => false, :null => false
     t.string   "availability_url"
     t.string   "type"
     t.integer  "section_id"
     t.integer  "county_id"
+    t.string   "listing_image_file_name"
+    t.string   "listing_image_content_type"
   end
 
   create_table "sections", :force => true do |t|
