@@ -60,24 +60,24 @@
             <h3>Most Searched Features &amp; Amenities</h3>
             <ul>
               <li>
-                <input type="checkbox" name="fitness_center" value="" id="fitness_center" />
-                <label for="fitness_center">Fitness Center</label>
+                <%= f.check_box :fitness_center %>
+                <%= f.label :fitness_center, 'Fitness Center' %>
               </li>
               <li>
-                <input type="checkbox" name="metro_access" value="" id="metro_access" />
-                <label for="metro_access">Metro Access</label>
+                <%= f.check_box :metro_access %>
+                <%= f.label :metro_access, 'Metro Access' %>
               </li>
               <li>
-                <input type="checkbox" name="pet-friendly" value="" id="pet-friendly" />
-                <label for="pet-friendly">Pet-Friendly</label>
+                <%= f.check_box :pet_friendly %>
+                <%= f.label :pet_friendly, 'Pet-Friendly' %>
               </li>
               <li>
-                <input type="checkbox" name="washer_and_dryer" value="" id="washer_and_dryer" />
-                <label for="washer_and_dryer">Washer &amp; Dryer</label>
+                <%= f.check_box :washer_and_dryer %>
+                <%= f.label :washer_and_dryer, 'Washer &amp; Dryer' %>
               </li>
               <li>
-                <input type="checkbox" name="brand_new" value="" id="brand_new" />
-                <label for="brand_new">Brand New</label>
+                <%= f.check_box :brand_new %>
+                <%= f.label :brand_new, 'Brand New' %>
               </li>
             </ul>
           </fieldset>

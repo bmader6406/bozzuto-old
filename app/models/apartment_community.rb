@@ -11,6 +11,14 @@ class ApartmentCommunity < Community
     {:conditions => ["properties.id IN (SELECT apartment_community_id FROM floor_plans WHERE floor_plan_group_id IN (?))", ids]}
   }
 
+  include FlagShihTzu
+  has_flags :column => 'features',
+                  1 => :fitness_center,
+                  2 => :metro_access,
+                  3 => :pet_friendly,
+                  4 => :washer_and_dryer,
+                  5 => :brand_new
+
   def nearby_communities(limit = 6)
     @nearby_communities ||= city.apartment_communities.near(self).all(:limit => limit)
   end
