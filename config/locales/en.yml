@@ -4,7 +4,7 @@ en:
       apartment_community: Apartment Community
       home_community: Home Community
       home_floor_plan: Floor Plan
-      news_post: News Post
+      news_post: News
       project_data_point: Data Point
     attributes:
       community:

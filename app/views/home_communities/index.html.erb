@@ -59,9 +59,10 @@
             <a href="#view-as-map" class="map">View on Map</a>
           </li>
         </ul>
-        <p>
+
+        <!--p>
           4 Home Communities in Maryland
-        </p>
+        </p-->
       </div>
       
       <div id="view-as-list">
@@ -82,14 +83,13 @@
                 <div>
                   <h2><%= community.title %></h2>
 
-                  <p class="intro">
-                    Destinctively crafted three-story townhomes<br/>
-                    <strong>from the mid-$400's</strong>
-                  </p>
+                  <% if community.listing_title.present? %>
+                    <p class="intro">
+                      <%= community.listing_title.try(:html_safe) %>
+                    </p>
+                  <% end %>
 
-                  <p>
-                    <strong>Inspired by living</strong>. Designed for life. Shipley's Grant embodies the art of the village. Today, the very best of village living has been carefully designed at Shipley's Grant, from the native Maryland plants used for our landscaping to the natural stone and brick faces of our homes. The streets are made for walking to a clubhouse and pool with modern amenities, or to the quaint retail village for coffee, ice cream, casual dining or a bottle of wine.
-                  </p>
+                  <%= community.listing_text %>
 
                   <p class="call-to-action">
                     <%= link_to 'Read More', home_community_path(community) %>
