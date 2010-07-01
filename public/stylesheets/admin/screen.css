@@ -276,7 +276,17 @@ fieldset.inputs { }
     margin: 0 0 5px 0 !important;
   }
 
-fieldset.buttons { }
+  fieldset.buttons { 
+    text-align: center;
+  }
+
+  .commit {
+    display: inline-block;
+    font-size: 15px;
+    height: 40px;
+    margin: 0 0 40px;
+    width: 350px;
+  }
 
 /* @end */
 
@@ -453,9 +463,22 @@ input.date_input { border: 1px solid #999; margin-bottom: 1em;}
 
 /* @end */
 
-/* @group Clean Me */
+/* @group Relationships */
 
-.box_relationships { border-top: 1px dotted #D3D3D3; padding: 2em 0; }
+.box_relationships {
+  background-color: #eee;
+  border-radius: 5px;  
+  -moz-border-radius: 5px;  
+  -webkit-border-radius: 5px;  
+  border: 1px solid #D3D3D3; 
+  margin: 0 0 1em;
+  padding: 2em;
+}
+
+#content .box_relationships table.typus td,
+#content .box_relationships table.typus th {
+  font-size: 12px;
+}
 
 /* @end */
 
