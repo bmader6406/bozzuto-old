@@ -10,7 +10,7 @@ en:
       project_data_point: Data Point
       project_update: Update
       property_slide: Slide
-      property_slideshow: Slideshow
+      property_slideshow: Property Slideshow
       typus_user: Typus User
       yelp_feed: Yelp Feed
     attributes:
@@ -52,14 +52,14 @@ en:
         listing_text: Listing Text
         neighborhood_text: Neighborhood Text
         overview_text: Overview Text
-        slideshow: Slideshow
+        slideshow: Property Slideshow
         street_address: Street Address
         twitter_handle: Twitter Handle
         video_url: Video URL
         website_url: Website URL
         yelp_feed: Yelp Feed
       property_slide:
-        property_slideshow: Slideshow
+        property_slideshow: Property Slideshow
       section:
         left_montage_image: Left Montage Image
         middle_montage_image: Middle Montage Image
