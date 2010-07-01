@@ -33,6 +33,13 @@ function setSearchFormState() {
     $(".property #slideshow").featuredSlideshow({
       'dynamicPagination' : false
     });
+    
+    setTimeout(function(){
+      $(".property #slideshow").each(function(){
+        var height = $(this).find('h1').height();
+        $('.section', $(this)).css('top', height+10).show();
+      })
+    }, 250)
 
     $(".masthead-slideshow").featuredSlideshow();
 

@@ -694,8 +694,8 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         top: 10px; left: 35px;
       }
       .property #slideshow div.header h1 {
-        display: inline;
-        margin-right: 15px;
+        display: block;
+        margin-right: 110px;
       }
       .property #slideshow div.header a {
         color: #565c64;
@@ -704,6 +704,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         display: block;
       }
       .property #slideshow div.section {
+        display: none;
         position: absolute;
         top: 80px; left: 35px;
         width: 375px;
