@@ -40,25 +40,26 @@
       </div>
 
       <div id="featured-property" class="col">
-        <h2><a href="#">Featured Property</a></h2>
-				<div class="slideshow">
-          <ul class="slides">
-            <li class="current" id="slide-1">
-              <img src="/images/fpo/homes-search-slideshow-1.jpg" />
-            </li>
-            <li id="slide-2">
-              <img src="/images/fpo/homes-search-slideshow-2.jpg" />              
-            </li>
-            <li id="slide-3">
-              <img src="/images/fpo/homes-search-slideshow-3.jpg" />              
-            </li>
-          </ul>
-        </div>
-        <p>
-          <strong>360 State Street, New Haven, CT</strong><br />
-          Luxury apartments in a LEED&reg;<br />
-          Platinum building. 
-        </p>
+        <h2>
+          <a href="#">Featured Property</a>
+        </h2>
+
+        <% if @property.present? %>
+          <div class="slideshow">
+            <ul class="slides">
+              <% @property.mini_slideshow.slides.each_with_index do |slide, i| %>
+                <li <% if i == 0 %>class="current"<% end %> id="slide-<%= i %>">
+                  <%= image_tag slide.image.url %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+
+          <p>
+            <strong><%= @property.address %></strong><br />
+            <%= @property.subtitle.try(:html_safe) %>
+          </p>
+        <% end %>
       </div>
     </div>
   </div>
