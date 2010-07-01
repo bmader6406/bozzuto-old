@@ -58,6 +58,8 @@ en:
         video_url: Video URL
         website_url: Website URL
         yelp_feed: Yelp Feed
+      property_slide:
+        property_slideshow: Slideshow
       section:
         left_montage_image: Left Montage Image
         middle_montage_image: Middle Montage Image
@@ -68,3 +70,10 @@ en:
         password_confirmation: Password Confirmation
       yelp_feed:
         url: Feed URL
+    tips:
+      property_slide:
+        image: Image dimensions should be 870x375
+      section:
+        left_montage_image: Image dimensions should be 250x148
+        middle_montage_image: Image dimensions should be 540x148
+        right_montage_image: Image dimensions should be 310x148

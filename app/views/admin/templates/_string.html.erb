@@ -17,5 +17,6 @@
 
 <li>
   <%= form.label attribute, label_text.html_safe %>
+  <%= render_tip(attribute) %>
   <%= form.text_field attribute, options %>
 </li>

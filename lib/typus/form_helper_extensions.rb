@@ -44,5 +44,13 @@ module Typus
 
       typus_tree_field_without_page(attribute, options)
     end
+
+    def render_tip(attribute)
+      tip = @resource[:class].human_tip_text(attribute)
+
+      if tip.present?
+        content_tag(:em, :class => 'tip') { tip }.html_safe
+      end
+    end
   end
 end

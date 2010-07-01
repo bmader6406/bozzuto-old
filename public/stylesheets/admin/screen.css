@@ -267,6 +267,10 @@ fieldset.inputs { }
 
   fieldset.inputs textarea:focus { background: #FFFCE1; }
   fieldset.inputs label.inline_label { display: inline; }
+  fieldset.inputs em.tip {
+    display: block;
+    margin: 0 0 5px 0 !important;
+  }
 
 fieldset.buttons { }
 
