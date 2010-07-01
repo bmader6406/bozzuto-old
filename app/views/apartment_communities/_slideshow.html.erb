@@ -1,0 +1,34 @@
+<% if property.slideshow.present? %>
+  <div id="slideshow">
+    <div class="header">
+      <h1><%= property.title %></h1>
+
+      <ul class="slideshow-navigation">
+        <li>
+          <a class="prev" href="#">Previous</a>
+        </li>
+        <li>
+          <a class="next" href="#">Next</a>
+        </li>
+      </ul>
+    </div>
+
+    <ul class="slides">
+      <% property.slideshow.slides.each do |slide| %>
+        <li class="slide">
+          <%= image_tag slide.image.url %>
+
+          <div class="section">
+            <%= slide.caption.html_safe %>
+
+            <% if property.video_url.present? %>
+              <p class="watch-video">
+                <%= link_to 'Watch Video', property.video_url %>
+              </p>
+            <% end %>
+          </div>
+        </li> 
+      <% end %>
+    </ul>
+  </div>
+<% end %>

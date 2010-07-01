@@ -37,40 +37,6 @@
       </ul>
     </div>
 
-    <% if @community.slideshow.present? %>
-      <div id="slideshow">
-        <div class="header">
-          <h1><%= @community.title %></h1>
-
-          <ul class="slideshow-navigation">
-            <li>
-              <a class="prev" href="#">Previous</a>
-            </li>
-            <li>
-              <a class="next" href="#">Next</a>
-            </li>
-          </ul>
-        </div>
-
-        <ul class="slides">
-          <% @community.slideshow.slides.each do |slide| %>
-            <li class="slide">
-              <%= image_tag slide.image.url %>
-
-              <div class="section">
-                <%= slide.caption.html_safe %>
-
-                <% if @community.video_url.present? %>
-                  <p class="watch-video">
-                    <%= link_to 'Watch Video', @community.video_url %>
-                  </p>
-                <% end %>
-              </div>
-            </li> 
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
+    <%= render :partial => 'apartment_communities/slideshow', :locals => { :property => @community } %>
   </div>
 </div>

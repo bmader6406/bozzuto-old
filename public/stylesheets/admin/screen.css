@@ -255,6 +255,10 @@ fieldset.inputs { }
     background: #FFFCE1;
   }
 
+  fieldset.inputs input[type='checkbox'] {
+    margin-right: 5px;
+  }
+
   fieldset.inputs textarea {
     border: 1px solid #999;
     font-family: "Courier";

@@ -19,7 +19,7 @@
 
     $(".services div.slideshow, .about div.slideshow").featuredSlideshow();
 
-    $(".community #slideshow").featuredSlideshow({
+    $(".property #slideshow").featuredSlideshow({
       'dynamicPagination' : false
     });
 

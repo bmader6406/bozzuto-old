@@ -681,37 +681,37 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       .project #slideshow img {
         z-index: 2;
       }
-      .community #slideshow div.header,
-      .community #slideshow div.slide,
-      .community #slideshow div.section {
+      .property #slideshow div.header,
+      .property #slideshow div.slide,
+      .property #slideshow div.section {
         position: absolute;
         top: 0; left: 0;
       }
-      .community #slideshow div.header {
+      .property #slideshow div.header {
         position: relative;
         z-index: 10;
         top: 10px; left: 35px;
       }
-      .community #slideshow div.header h1 {
+      .property #slideshow div.header h1 {
         display: inline;
         margin-right: 15px;
       }
-      .community #slideshow div.header a {
+      .property #slideshow div.header a {
         color: #565c64;
       }
-      .community #slideshow img {
+      .property #slideshow img {
         display: block;
       }
-      .community #slideshow div.section {
+      .property #slideshow div.section {
         position: absolute;
         top: 80px; left: 35px;
         width: 375px;
       }
-      .community #slideshow p.watch-video {
+      .property #slideshow p.watch-video {
         padding-top: 15px;
         margin-top: 20px;
       }
-      .community #slideshow p.watch-video a {
+      .property #slideshow p.watch-video a {
         display: block;
         width: 189px;
         height: 43px;
@@ -1093,7 +1093,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       width: 19px;
     }
 
-    .community #slideshow ul.slideshow-navigation,
+    .property #slideshow ul.slideshow-navigation,
     .apartments #content ul.slideshow-navigation {
       position: absolute;
       right: 0;
@@ -1102,12 +1102,12 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       width: 70px;
     }
 
-    .community #slideshow ul.slideshow-navigation li,
+    .property #slideshow ul.slideshow-navigation li,
     .apartments #content ul.slideshow-navigation li {
       float: left;      
     }
 
-    .community #slideshow ul.slideshow-navigation li a,
+    .property #slideshow ul.slideshow-navigation li a,
     .apartments #content ul.slideshow-navigation li a {
       display: block;
       height: 57px;
@@ -3111,14 +3111,14 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     
     /* @group --slideshow */
 
-      .community #slideshow .header {
+      .property #slideshow .header {
         font-size: 65px;
         line-height: 1;
         text-transform: uppercase;
         color: #fff;
         width: 815px;
       }
-      .community #slideshow .section {
+      .property #slideshow .section {
         font-size: 15px;
         line-height: 1.133333333;
         color: #fff;
@@ -3974,7 +3974,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       padding: 0 0 0 20px;
     }
 
-    .community #slideshow p.watch-video {
+    .property #slideshow p.watch-video {
       background: transparent url(../images/structure/bg-divider-white.gif) no-repeat 0 0;
     }
     .community #masthead #remote-nav a,
@@ -4533,9 +4533,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   #header #logo a,
   #header #main-nav li a,
   #header form.search-form button,
-  .community #slideshow div.header a.prev,
-  .community #slideshow div.header a.next,
-  .community #slideshow p.watch-video a,
+  .property #slideshow div.header a.prev,
+  .property #slideshow div.header a.next,
+  .property #slideshow p.watch-video a,
   .community ul.slideshow-navigation li a,
   .homes-search ul.slideshow-navigation li a,
   .apartments #content ul.slideshow-navigation li a,
@@ -4645,17 +4645,17 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   
   /* @group -community */
 
-    .community #slideshow .header a.prev {
+    .property #slideshow .header a.prev {
       background-position: center left;
     }
-    .community #slideshow .header a.next {
+    .property #slideshow .header a.next {
       background-position: center right;
     }
-    .community #slideshow p.watch-video a {
+    .property #slideshow p.watch-video a {
       background: transparent url(../images/structure/bg-watch-video.png) no-repeat 0 0;
     }
 
-    .community #slideshow p.watch-video a:hover {
+    .property #slideshow p.watch-video a:hover {
       background-position: 0 -43px;
     }
     .community #overview ul.community-icons li a {
@@ -4681,15 +4681,15 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   
   /* @group -apartments */
 
-    .community #slideshow ul.slideshow-navigation li a,
+    .property #slideshow ul.slideshow-navigation li a,
     .apartments #content ul.slideshow-navigation li a {
       background: url(../images/structure/bg-apartments-slideshow-navigation.png) no-repeat transparent;
     }
-    .community #slideshow ul.slideshow-navigation li a.prev,
+    .property #slideshow ul.slideshow-navigation li a.prev,
     .apartments #content ul.slideshow-navigation li a.prev {
       background-position: left top;
     }
-    .community #slideshow ul.slideshow-navigation li a.next,
+    .property #slideshow ul.slideshow-navigation li a.next,
     .apartments #content ul.slideshow-navigation li a.next {
       background-position: right top;
     }

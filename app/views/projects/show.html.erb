@@ -1,4 +1,4 @@
-<% content_for :body_class do %>services project<% end %>
+<% content_for :body_class do %>services project property<% end %>
 
 <% breadcrumb_item(link_to 'Projects', projects_path(@section)) %>
 <% breadcrumb_item(@project.title) %>
@@ -27,7 +27,7 @@
 <h2>Lorem Bozzuto Construction Ipsum</h2>
 
 <div class="intro">
-  <%= simple_format(@project.overview_text) %>
+  <%= @project.overview_text.html_safe %>
 </div>
 
 
@@ -50,7 +50,7 @@
     <% @updates.each do |update| %>
       <li>
         <h3><%= update.published_at.to_formatted_s(:project_update) %></h3>
-        <%= simple_format(update.body) %>
+        <%= update.body.html_safe %>
       </li>
     <% end %>
   </ul>

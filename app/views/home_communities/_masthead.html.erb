@@ -37,24 +37,6 @@
       </ul>
     </div>
 
-    <div id="slideshow">
-      <div class="header">
-        <h1><%= @community.title %></h1><a href="#" class="prev">‹</a><a href="#" class="next">›</a>
-      </div>
-
-      <div class="slide">
-        <img src="/images/community-slide-1.jpg" />
-        <div class="section">
-          <p>
-            <strong><%= @community.city %></strong>
-            <%= @community.subtitle %>
-          </p>
-
-          <p class="watch-video">
-            <%= link_to 'Watch Video', '#' %>
-          </p>
-        </div>
-      </div>
-    </div>
+    <%= render :partial => 'apartment_communities/slideshow', :locals => { :property => @community } %>
   </div>
 </div>
