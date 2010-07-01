@@ -27,7 +27,7 @@
 <h2>Lorem Bozzuto Construction Ipsum</h2>
 
 <div class="intro">
-  <%= @project.overview_text.html_safe %>
+  <%= @project.overview_text.try(:html_safe) %>
 </div>
 
 
@@ -50,7 +50,7 @@
     <% @updates.each do |update| %>
       <li>
         <h3><%= update.published_at.to_formatted_s(:project_update) %></h3>
-        <%= update.body.html_safe %>
+        <%= update.body.try(:html_safe) %>
       </li>
     <% end %>
   </ul>

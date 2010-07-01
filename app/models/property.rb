@@ -3,6 +3,7 @@ class Property < ActiveRecord::Base
   belongs_to :county
 
   has_one :slideshow, :class_name => 'PropertySlideshow'
+  has_one :mini_slideshow, :class_name => 'PropertyMiniSlideshow'
 
   validates_presence_of :title, :city
   validates_numericality_of :latitude, :longitude, :allow_nil => true

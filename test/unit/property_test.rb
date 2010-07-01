@@ -9,7 +9,7 @@ class PropertyTest < ActiveSupport::TestCase
     subject { @property }
 
     should_belong_to :city, :county
-    should_have_one :slideshow
+    should_have_one :slideshow, :mini_slideshow
 
     should_validate_presence_of :title, :city
     should_validate_numericality_of :latitude, :longitude
