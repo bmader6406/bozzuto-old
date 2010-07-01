@@ -1,9 +1,13 @@
 module ActiveRecord
   class Base
     def self.human_tip_text(attribute_key_name, options = {})
-      key = :"#{self.name.underscore}.#{attribute_key_name}"
-
-      I18n.translate(key, options.merge(:default => '', :scope => [:activerecord, :tips]))
+      defaults = self_and_descendants_from_active_record.map do |klass|
+        :"#{klass.name.underscore}.#{attribute_key_name}"
+      end
+      defaults << options[:default] if options[:default]
+      defaults << ''
+      defaults.flatten!
+      I18n.translate(defaults.shift, options.merge(:default => defaults, :scope => [:activerecord, :tips]))
     end
   end
 end

@@ -71,6 +71,8 @@ en:
       yelp_feed:
         url: Feed URL
     tips:
+      property:
+        listing_image: Image dimensions should be 150x150
       property_slide:
         image: Image dimensions should be 870x375
       section:

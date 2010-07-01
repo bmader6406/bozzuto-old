@@ -6,7 +6,7 @@ ApartmentCommunity:
   fields:
     default: title, street_address, city
     list: title, street_address, city
-    form: title, subtitle, street_address, city, county, latitude, longitude, website_url, video_url, facebook_url, twitter_handle, yelp_feed, elite, smart_share, smart_rent, green, non_smoking, fitness_center, metro_access, pet_friendly, washer_and_dryer, brand_new, listing_image, listing_title, listing_text, overview_text, features_text, neighborhood_text, contact_text
+    form: title, street_address, city, county, latitude, longitude, website_url, video_url, facebook_url, twitter_handle, yelp_feed, elite, smart_share, smart_rent, green, non_smoking, fitness_center, metro_access, pet_friendly, washer_and_dryer, brand_new, listing_image, listing_title, listing_text, overview_text, features_text, neighborhood_text, contact_text
     options:
       ckeditor: listing_text, overview_text, features_text, neighborhood_text, contact_text
   order_by:
@@ -86,12 +86,12 @@ HomeCommunity:
   fields:
     default: title, street_address, city
     list: title, street_address, city
-    form: title, subtitle, street_address, city, county, latitude, longitude, website_url, video_url, facebook_url, twitter_handle, yelp_feed, elite, smart_share, smart_rent, green, non_smoking, listing_image, listing_title, listing_text, latitude, longitude, overview_text, features_text, neighborhood_text, contact_text
+    form: title, street_address, city, county, latitude, longitude, website_url, video_url, facebook_url, twitter_handle, yelp_feed, elite, smart_share, smart_rent, green, non_smoking, listing_image, listing_title, listing_text, latitude, longitude, overview_text, features_text, neighborhood_text, contact_text
     options:
       ckeditor: listing_text, overview_text, features_text, neighborhood_text, contact_text
   order_by: 
-  relationships: city, county, homes, yelp_feed
-  filters:
+  relationships: city, county, slideshow, homes, yelp_feed
+  filters: 
   search: title
   application: Properties
 
@@ -151,8 +151,8 @@ Project:
     options:
       ckeditor: listing_text, overview_text
   order_by: 
-  relationships: city, section, data_points, updates
-  filters:
+  relationships: city, section, slideshow, data_points, updates
+  filters: 
   search: title
   application: Properties
 
