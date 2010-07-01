@@ -6,7 +6,9 @@
   <%= filters %>
 <% end %>
 
-<h2><%= @resource[:pluralized] %> <%= remove_filter_link %></h2>
+<% content_for :breadcrumb do %>
+  <%= @resource[:pluralized] %> <%= remove_filter_link %>
+<% end %>
 
 <%= typus_block :location => @resource[:self], :partial => 'index' %>
 

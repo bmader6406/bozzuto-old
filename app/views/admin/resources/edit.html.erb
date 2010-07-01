@@ -4,10 +4,12 @@
   <%= search %>
 <% end %>
 
-<%= display_link_to_previous if params[:back_to] %>
+<% content_for :breadcrumb do %>
+  <%= link_to @resource[:pluralized], :action => 'index' %> &rsaquo;
+  <span><%= _("Edit") %></span>
+<% end %>
 
-<h2><%= link_to @resource[:pluralized], :action => 'index' %> &rsaquo;
-    <span><%= _("Edit") %></span></h2>
+<%= display_link_to_previous if params[:back_to] %>
 
 <%= typus_block :location => @resource[:self], :partial => 'edit' %>
 

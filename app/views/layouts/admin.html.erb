@@ -45,6 +45,7 @@
     <div id="content_wrapper">
 
       <div id="content">
+        <h2 class="breadcrumb"><%= yield :breadcrumb %></h2>
         <%= display_flash_message %>
         <%= yield %>
       </div>

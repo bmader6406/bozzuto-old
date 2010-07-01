@@ -116,6 +116,8 @@ Page:
     default: formatted_title
     list: formatted_title, section
     form: title, body, section, parent
+    options:
+      ckeditor: body
   order_by: section_id, lft
   relationships: parent, section
   filters:

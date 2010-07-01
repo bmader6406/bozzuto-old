@@ -4,8 +4,10 @@
   <%= search %>
 <% end %>
 
-<h2><%= link_to @resource[:pluralized], :action => 'index' %> &rsaquo; 
-    <%= _("Show") %></h2>
+<% content_for :breadcrumb do %>
+  <%= link_to @resource[:pluralized], :action => 'index' %> &rsaquo; 
+  <%= _("Show") %>
+<% end %>
 
 <%= typus_block :location => @resource[:self], :partial => 'show' %>
 

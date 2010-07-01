@@ -1,6 +1,10 @@
 <%
   custom = { :rows => @resource[:class].typus_options_for(:form_rows) }
   options = options.merge!(custom)
+
+  if @resource[:class].typus_field_options_for(:ckeditor).to_s.include?(attribute)
+    options[:class] = 'use-ckeditor'
+  end
 %>
 
 <li>

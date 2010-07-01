@@ -96,14 +96,18 @@ a.on { color: #333; font-weight: bold; text-decoration: underline; }
 
 #content h2 { 
   color: #565c64;
-  font-size: 15px;  
-  margin: 0 0 45px 0; 
+  font-size: 16px;  
+  margin: 0 0 1.5em 0; 
   text-transform: uppercase;
+}
+#content h2.breadcrumb { 
+  font-size: 15px;
+  margin: 0 0 45px 0; 
 }
 #content h2 a {
   color: #565c64;
 }
-#content h2 small { font-size: 0.75em; }
+#content h2 small { font-size: 0.75em; padding-left: 10px; }
 #content h2 small a { color: #666; }
 #content h3 { font-size: 1.25em; font-weight: bold; margin: 1em 0; }
 #content h4 { margin: 1em 0; }
@@ -233,8 +237,8 @@ a.on { color: #333; font-weight: bold; text-decoration: underline; }
 
 fieldset { margin: 0; padding: 0; }
 fieldset ol { margin: 0!important; }
-fieldset ol li { list-style: none!important; margin: 1em 0!important; }
-fieldset small { font-size: 0.9em; font-weight: normal; }
+fieldset ol li { list-style: none !important; margin: 0 0 2em 0 !important; }
+fieldset small { font-size: 0.8em; font-weight: normal; padding-left: 10px; }
 
 fieldset.inputs { }
 
@@ -275,11 +279,13 @@ fieldset.buttons { }
 #content table.typus th { 
   border-bottom: 1px solid #84848b; 
   color: #858890; 
-  font-size: 18px; 
+  font-size: 16px; 
   font-weight: normal; 
   padding: 4px; 
 }
-#content table.typus th a { color: #FFF!important; }
+#content table.typus th a {
+  color: #858890 !important;
+}
 #content table.typus td.right { text-align: right; }
 #content table.typus tr.even { background: #FFF!important; }
 #content table.typus tr.even:hover,
@@ -288,6 +294,7 @@ fieldset.buttons { }
 #content table.typus tr.odd:hover a { color: #FFF!important; }
 #content table.typus tr.odd { background: #F5F5F5; }
 #content table.typus span.inactive { color: #888; }
+#content table.typus tr:hover span.inactive { color: #aaa; }
 #content table.typus td { border: none; font-size: 14px; font-weight: normal; padding: 8px 8px; vertical-align: top; }
 
 /* @end */
@@ -440,7 +447,7 @@ input.date_input { border: 1px solid #999; margin-bottom: 1em;}
 
 /* @group Clean Me */
 
-.box_relationships { border-top: 1px dotted #D3D3D3; padding: 1.5em 0; }
+.box_relationships { border-top: 1px dotted #D3D3D3; padding: 2em 0; }
 
 /* @end */
 

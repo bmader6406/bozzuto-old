@@ -67,7 +67,7 @@ module Admin::FormHelper
         options = { :include_blank => true }
         html_options = { :disabled => attribute_disabled?(attribute) }
         label_text = @resource[:class].human_attribute_name(attribute)
-        html << <<-HTML
+        html << <<-HTML.html_safe
 <li>
   #{form.label related_fk, "#{label_text} <small>#{message}</small>".html_safe}
   #{form.select related_fk, values, options, html_options }

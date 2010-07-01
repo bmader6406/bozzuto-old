@@ -1,0 +1,11 @@
+<% content_for :sidebar do %>
+  <%= typus_block :location => 'dashboard', :partial => 'sidebar' %>
+<% end %>
+
+<% content_for :breadcrumb do %>
+  <%= _("Dashboard") %>
+<% end %>
+
+<%= resources %>
+
+<%= applications %>
