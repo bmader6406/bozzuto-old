@@ -65,7 +65,7 @@ a.on { color: #333; font-weight: bold; text-decoration: underline; }
 #header a { color: #676a71; font-weight: bold; }
 #header .left { float: left; }
 #header .right { float: right; margin-top: 1em; }
-#header .left ul { display: block; float: left; margin-top: 1em; }
+#header .left ul { display: block; float: left; margin-top: 25px; }
 #header .left li, #header .right li { display: inline; padding-left: 0.5em; }
 
 /* @end */
@@ -107,7 +107,7 @@ a.on { color: #333; font-weight: bold; text-decoration: underline; }
 #content h2 a {
   color: #565c64;
 }
-#content h2 small { font-size: 0.75em; padding-left: 10px; }
+#content h2 small { font-size: 0.75em; padding-left: 5px; }
 #content h2 small a { color: #666; }
 #content h3 { font-size: 1.25em; font-weight: bold; margin: 1em 0; }
 #content h4 { margin: 1em 0; }
@@ -238,7 +238,7 @@ a.on { color: #333; font-weight: bold; text-decoration: underline; }
 fieldset { margin: 0; padding: 0; }
 fieldset ol { margin: 0!important; }
 fieldset ol li { list-style: none !important; margin: 0 0 2em 0 !important; }
-fieldset small { font-size: 0.8em; font-weight: normal; padding-left: 10px; }
+fieldset small { font-size: 0.8em; font-weight: normal; padding-left: 5px; }
 
 fieldset.inputs { }
 

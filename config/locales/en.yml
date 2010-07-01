@@ -2,18 +2,69 @@ en:
   activerecord:
     models:
       apartment_community: Apartment Community
+      floor_plan: Floor Plan
+      floor_plan_group: Floor Plan Type
       home_community: Home Community
       home_floor_plan: Floor Plan
       news_post: News
       project_data_point: Data Point
+      project_update: Update
+      property_slide: Slide
+      property_slideshow: Slideshow
+      typus_user: Typus User
+      yelp_feed: Yelp Feed
     attributes:
+      award:
+        published_at: Published At
       community:
         elite: Elite Community
         smart_share: Bozzuto SmartShare Program
         smart_rent: Bozzuto SmartRent Program
         green: Bozzuto Green Program
         non_smoking: No Smoking
+      floor_plan:
+        availability_url: Availability URL
+        bathrooms: Bath
+        bedrooms: Bed
+        floor_plan_group: Floor Plan Type
+        max_market_rent: Maximum Market Rent
+        min_market_rent: Minimum Market Rent
+        max_effective_rent: Maximum Effective Rent
+        min_effective_rent: Minimum Effective Rent
+        max_square_feet: Maximum Square Feet
+        min_square_feet: Minimum Square Feet
+      home:
+        bathrooms: Bath
+        bedrooms: Bed
+        home_community: Home Community
+      news_post:
+        published_at: Published At
       page:
         formatted_title: Title
-      home:
-        home_community: Home Community
+      project_update:
+        published_at: Published At
+      property:
+        contact_text: Contact Text
+        facebook_url: Facebook URL
+        features_text: Features Text
+        listing_image: Listing Image
+        listing_title: Listing Title
+        listing_text: Listing Text
+        neighborhood_text: Neighborhood Text
+        overview_text: Overview Text
+        slideshow: Slideshow
+        street_address: Street Address
+        twitter_handle: Twitter Handle
+        video_url: Video URL
+        website_url: Website URL
+        yelp_feed: Yelp Feed
+      section:
+        left_montage_image: Left Montage Image
+        middle_montage_image: Middle Montage Image
+        right_montage_image: Right Montage Image
+      typus_user:
+        first_name: First Name
+        last_name: Last Name
+        password_confirmation: Password Confirmation
+      yelp_feed:
+        url: Feed URL

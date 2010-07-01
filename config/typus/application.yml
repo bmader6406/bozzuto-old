@@ -6,7 +6,9 @@ ApartmentCommunity:
   fields:
     default: title, street_address, city
     list: title, street_address, city
-    form: title, subtitle, street_address, city, county, elite, smart_share, smart_rent, green, non_smoking, website_url, video_url, facebook_url, twitter_handle, listing_image, listing_title, listing_text, promo_image, promo_url, latitude, longitude, yelp_feed, overview_text, features_text, neighborhood_text, promotions_text, contact_text, fitness_center, metro_access, pet_friendly, washer_and_dryer, brand_new
+    form: title, subtitle, street_address, city, county, latitude, longitude, website_url, video_url, facebook_url, twitter_handle, yelp_feed, elite, smart_share, smart_rent, green, non_smoking, fitness_center, metro_access, pet_friendly, washer_and_dryer, brand_new, listing_image, listing_title, listing_text, overview_text, features_text, neighborhood_text, contact_text
+    options:
+      ckeditor: listing_text, overview_text, features_text, neighborhood_text, contact_text
   order_by:
   relationships: city, county, yelp_feed, slideshow, floor_plans
   filters:
@@ -18,7 +20,9 @@ Award:
     default: title, published, published_at, section
     list: title, published, published_at, section
     form: title, body, published, published_at, section
-  order_by:
+    options:
+      ckeditor: body
+  order_by: 
   relationships: section
   filters:
   search: title
@@ -60,8 +64,8 @@ FloorPlan:
   fields:
     default: image, bedrooms, bathrooms, min_square_feet, max_square_feet, position
     list: image, bedrooms, bathrooms, min_square_feet, max_square_feet, position
-    form: image, availability_url, bedrooms, bathrooms, min_market_rent, max_market_rent, min_effective_rent, max_effective_rent, min_square_feet, max_square_feet, floor_plan_group
-  order_by: position
+    form: image, availability_url, bedrooms, bathrooms, min_square_feet, max_square_feet, min_market_rent, max_market_rent, min_effective_rent, max_effective_rent, floor_plan_group
+  order_by: floor_plan_group_id, position
   relationships: floor_plan_group
   filters:
   search:
@@ -82,8 +86,10 @@ HomeCommunity:
   fields:
     default: title, street_address, city
     list: title, street_address, city
-    form: title, subtitle, street_address, city, county, elite, smart_share, smart_rent, green, non_smoking, website_url, video_url, facebook_url, twitter_handle, listing_image, listing_title, listing_text, promo_image, promo_url, latitude, longitude, overview_text, features_text, neighborhood_text, promotions_text, contact_text, yelp_feed
-  order_by:
+    form: title, subtitle, street_address, city, county, latitude, longitude, website_url, video_url, facebook_url, twitter_handle, yelp_feed, elite, smart_share, smart_rent, green, non_smoking, listing_image, listing_title, listing_text, latitude, longitude, overview_text, features_text, neighborhood_text, contact_text
+    options:
+      ckeditor: listing_text, overview_text, features_text, neighborhood_text, contact_text
+  order_by: 
   relationships: city, county, homes, yelp_feed
   filters:
   search: title
@@ -105,6 +111,8 @@ NewsPost:
     default: title, published, published_at
     list: title, published, published_at
     form: title, body, published, published_at, section
+    options:
+      ckeditor: body
   order_by: -published_at
   relationships: section
   filters:
@@ -139,8 +147,10 @@ Project:
   fields:
     default: title, street_address, city
     list: title, street_address, city
-    form: title, subtitle, section, street_address, city, county, website_url, video_url, latitude, longitude, listing_image, listing_title, listing_text, overview_text
-  order_by:
+    form: title, section, street_address, city, county, latitude, longitude, website_url, video_url, listing_image, listing_title, listing_text, overview_text
+    options:
+      ckeditor: listing_text, overview_text
+  order_by: 
   relationships: city, section, data_points, updates
   filters:
   search: title
@@ -162,7 +172,9 @@ ProjectUpdate:
     default: published_at, published
     list: published_at, published
     form: body, published, published_at, project
-  order_by:
+    options:
+      ckeditor: body
+  order_by: 
   relationships: project
   filters:
   search:
@@ -184,6 +196,8 @@ PropertySlide:
     default: image, position, property_slideshow
     list: image, position, property_slideshow
     form: image, caption, property_slideshow
+    options:
+      ckeditor: caption
   order_by: position
   relationships: property_slideshow
   filters: 
@@ -216,10 +230,10 @@ Section:
 
 State:
   fields:
-    default: code, name
-    list: code, name
-    form: code, name
-  order_by:
+    default: name, code
+    list: name, code
+    form: name, code
+  order_by: name
   relationships: cities, counties
   filters:
   search: name
@@ -230,6 +244,8 @@ Testimonial:
     default: name, title, quote
     list: name, title, quote
     form: name, title, quote, section
+    options:
+      ckeditor: quote
   order_by:
   relationships: section
   filters:
