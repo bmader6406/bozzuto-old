@@ -748,12 +748,11 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         position: relative;
         padding: 0 50px 20px 0;
         margin-bottom: 20px;
+        overflow: hidden;
       }
       .community #overview ul.community-icons {
-        position: absolute;
-        top: 35px; right: 0px;
-        width: 50px;
-        height: 225px;
+        float: right;
+        margin: 39px -50px 0 0;
       }
       .community #overview ul.community-icons li,
       .community #overview ul.community-icons li a {
@@ -761,6 +760,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         width: 50px;
         height: 45px;
         margin-left: 0;
+        text-indent: -9999px;
       }
       .community #overview ul.community-icons li a {
         position: relative;
