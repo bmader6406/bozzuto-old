@@ -25,6 +25,10 @@ en:
         green: Bozzuto Green Program
         non_smoking: No Smoking
       floor_plan:
+        image_file: Image File
+        image_type: Image Type
+        image_url: Image URL
+        full_image: Image
         availability_url: Availability URL
         bathrooms: Bath
         bedrooms: Bed

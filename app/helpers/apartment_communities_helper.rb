@@ -18,6 +18,22 @@ module ApartmentCommunitiesHelper
     number_to_currency(price, :precision => 0)
   end
 
+  def floor_plan_image(plan)
+    image, thumb = nil, nil
+
+    if plan.uses_image_url?
+      image = plan.image_url
+      thumb = image
+    else
+      image = plan.image.url
+      thumb = plan.image.url(:thumb)
+    end
+
+    if image.present?
+      link_to image_tag(thumb, :width => 160), image, :class => 'floor-plan-view'
+    end
+  end
+
   def square_feet(plan)
     "#{plan.min_square_feet} Sq Ft"
   end

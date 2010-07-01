@@ -56,7 +56,7 @@ module Vaultware
         else
           files.each do |file|
             @community.floor_plans << FloorPlan.new(attrs.merge(
-              :image => file.at('./Src').try(:content)
+              :image_url => file.at('./Src').try(:content)
             ))
           end
         end
@@ -69,7 +69,7 @@ module Vaultware
       plans.each do |plan|
         attrs = floor_plan_attributes(plan)
         @community.floor_plans << FloorPlan.new(attrs.merge(
-          :image => plan.at('./File/Src').try(:content)
+          :image_url => plan.at('./File/Src').try(:content)
         ))
       end
     end

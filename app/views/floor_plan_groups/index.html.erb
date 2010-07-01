@@ -25,9 +25,7 @@
                     <%= link_to 'Reserve', plan.availability_url %>
                   </p>
 
-                  <% if plan.image.present? %>
-                    <%= link_to image_tag(plan.image, :width => 160), plan.image, :class => 'floor-plan-view' %>
-                  <% end %>
+                  <%= floor_plan_image(plan) %>
                 </li>
               <% end %>
             </ul>

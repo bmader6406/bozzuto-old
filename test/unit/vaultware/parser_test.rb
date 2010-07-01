@@ -221,7 +221,7 @@ class ParserTest < ActiveSupport::TestCase
       :max_market_rent,
       :min_effective_rent,
       :max_effective_rent,
-      :image
+      :image_url
     ]
   end
  
@@ -237,7 +237,7 @@ class ParserTest < ActiveSupport::TestCase
       :max_market_rent    => plan.at('./MarketRent')['Max'].to_f,
       :min_effective_rent => plan.at('./EffectiveRent')['Min'].to_f,
       :max_effective_rent => plan.at('./EffectiveRent')['Max'].to_f,
-      :image              => plan.at('./File/Src').try(:content)
+      :image_url          => plan.at('./File/Src').try(:content)
     }
   end
 

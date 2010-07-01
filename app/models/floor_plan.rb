@@ -1,4 +1,11 @@
 class FloorPlan < ActiveRecord::Base
+  IMAGE_TYPE = [
+    ['Enter a URL', 0],
+    ['Upload a file', 1]
+  ]
+  USE_IMAGE_URL = 0
+  USE_IMAGE_FILE = 1
+
   before_validation :set_rent_prices
 
   belongs_to :floor_plan_group
@@ -7,7 +14,6 @@ class FloorPlan < ActiveRecord::Base
   acts_as_list
 
   validates_presence_of :name,
-    :availability_url,
     :bedrooms,
     :bathrooms,
     :min_square_feet,
@@ -33,12 +39,27 @@ class FloorPlan < ActiveRecord::Base
     :max_rent,
     :minimum => 0
 
+  has_attached_file :image,
+    :url => '/system/:class/:id/:style.:extension',
+    :styles => { :thumb => '160' }
+
   named_scope :in_group, lambda { |group|
     { :conditions => { :floor_plan_group_id => group.id } }
   }
   named_scope :cheapest, :order => 'min_rent ASC', :limit => 1
   named_scope :largest, :order => 'max_square_feet DESC', :limit => 1
 
+  def uses_image_url?
+    image_type == USE_IMAGE_URL
+  end
+
+  def uses_image_file?
+    image_type == USE_IMAGE_FILE
+  end
+
+  def full_image
+    uses_image_file? ? image.url : image_url
+  end
 
   def set_rent_prices
     self.min_rent = if apartment_community.try(:use_market_prices?)

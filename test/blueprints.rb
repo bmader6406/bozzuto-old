@@ -57,8 +57,9 @@ end
 
 FloorPlan.blueprint do
   name               { Faker::Lorem.words(1) }
+  image_type         { FloorPlan::USE_IMAGE_URL }
+  image_url          { Faker::Lorem.words(1) }
   availability_url   { "http://#{Faker::Internet.domain_name}" }
-  image              { Faker::Lorem.words(1) }
   bedrooms           { Sham.bedrooms }
   bathrooms          { Sham.bathrooms }
   min_square_feet    { rand(3000) + 500 }

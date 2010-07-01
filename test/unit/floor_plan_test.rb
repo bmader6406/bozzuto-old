@@ -9,7 +9,6 @@ class FloorPlanTest < ActiveSupport::TestCase
     should_belong_to :floor_plan_group, :apartment_community
 
     should_validate_presence_of :name,
-      :availability_url,
       :bedrooms,
       :bathrooms,
       :min_square_feet,
@@ -33,6 +32,50 @@ class FloorPlanTest < ActiveSupport::TestCase
       :max_effective_rent,
       :min_rent,
       :max_rent
+
+    context '#uses_image_url?' do
+      context 'when image_type is USE_IMAGE_URL' do
+        setup do
+          @plan.image_type = FloorPlan::USE_IMAGE_URL
+        end
+
+        should 'return true' do
+          assert @plan.uses_image_url?
+        end
+      end
+
+      context 'when image_type is USE_IMAGE_FILE' do
+        setup do
+          @plan.image_type = FloorPlan::USE_IMAGE_FILE
+        end
+
+        should 'return false' do
+          assert !@plan.uses_image_url?
+        end
+      end
+    end
+
+    context '#uses_image_file?' do
+      context 'when image_type is USE_IMAGE_URL' do
+        setup do
+          @plan.image_type = FloorPlan::USE_IMAGE_URL
+        end
+
+        should 'return false' do
+          assert !@plan.uses_image_file?
+        end
+      end
+
+      context 'when image_type is USE_IMAGE_FILE' do
+        setup do
+          @plan.image_type = FloorPlan::USE_IMAGE_FILE
+        end
+
+        should 'return true' do
+          assert @plan.uses_image_file?
+        end
+      end
+    end
 
     context '#scope_condition' do
       should 'scope by community id and floor plan group id' do
