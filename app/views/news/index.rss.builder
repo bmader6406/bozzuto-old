@@ -8,7 +8,7 @@ xml.rss :version => "2.0" do
     @news_posts.each do |post|
       xml.item do
         xml.title post.title
-        xml.description simple_format(post.body)
+        xml.description post.body.try(:html_safe)
         xml.pubDate post.published_at.to_s(:rfc822)
         xml.link section_news_post_url('about', post)
       end

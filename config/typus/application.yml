@@ -33,7 +33,7 @@ City:
     default: name, state
     list: name, state
     form: name, state
-  order_by:
+  order_by: name
   relationships: apartment_communities, counties, state
   filters:
   search: name

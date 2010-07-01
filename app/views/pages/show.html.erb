@@ -8,4 +8,4 @@
 <% breadcrumb_title(@page.first? ? @section.title : @page.title) %>
 
 
-<%= simple_format(@page.body) %>
+<%= @page.body.try(:html_safe) %>

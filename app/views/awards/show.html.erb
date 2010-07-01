@@ -10,4 +10,4 @@
 
 <p><%= @award.published_at.to_formatted_s(:month_day_year) %></p>
 
-<%= simple_format(@award.body) %>
+<%= @award.body.try(:html_safe) %>

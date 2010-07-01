@@ -10,7 +10,7 @@
   <% @testimonials.each do |testimonial| %>
     <li>
       <blockquote>
-        <%= simple_format(testimonial.quote) %>
+        <%= testimonial.quote.try(:html_safe) %>
       </blockquote>
 
       <p class="author">

@@ -10,4 +10,4 @@
 
 <p><%= @news_post.published_at.to_formatted_s(:month_day_year) %></p>
 
-<%= simple_format(@news_post.body) %>
+<%= @news_post.body.try(:html_safe) %>

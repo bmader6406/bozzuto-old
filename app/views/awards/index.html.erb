@@ -14,7 +14,7 @@
 
     <a href="#"><img src="/images/fpo/generic-content-1.jpg" alt="" height="150" width="150" /></a>
 
-    <%= simple_format(truncate(award.body, :length => 600)) %>
+    <%= truncate(award.body.try(:html_safe), :length => 600) %>
   </div>
 <% end %>
 
