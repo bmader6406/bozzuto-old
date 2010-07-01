@@ -104,6 +104,10 @@
   height: 25px;
 }
 
+* html .community #overview ul.community-icons {
+  margin-right: -25px;
+}
+
  
 /***
   2. Typography
