@@ -9,6 +9,8 @@ en:
       news_post: News
       project_data_point: Data Point
       project_update: Update
+      property_mini_slide: Slide
+      property_mini_slideshow: Mini Slideshow
       property_slide: Slide
       property_slideshow: Property Slideshow
       typus_user: Typus User
@@ -58,6 +60,8 @@ en:
         video_url: Video URL
         website_url: Website URL
         yelp_feed: Yelp Feed
+      property_mini_slide:
+        property_mini_slideshow: Mini Slideshow
       property_slide:
         property_slideshow: Property Slideshow
       section:

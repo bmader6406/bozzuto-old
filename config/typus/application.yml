@@ -10,7 +10,7 @@ ApartmentCommunity:
     options:
       ckeditor: listing_text, overview_text, features_text, neighborhood_text, contact_text
   order_by:
-  relationships: city, county, yelp_feed, slideshow, floor_plans
+  relationships: city, county, yelp_feed, slideshow, mini_slideshow, floor_plans
   filters:
   search: title, street_address
   application: Properties
@@ -90,7 +90,7 @@ HomeCommunity:
     options:
       ckeditor: listing_text, overview_text, features_text, neighborhood_text, contact_text
   order_by: 
-  relationships: city, county, slideshow, homes, yelp_feed
+  relationships: city, county, slideshow, mini_slideshow, homes, yelp_feed
   filters: 
   search: title
   application: Properties
@@ -151,7 +151,7 @@ Project:
     options:
       ckeditor: listing_text, overview_text
   order_by: 
-  relationships: city, section, slideshow, data_points, updates
+  relationships: city, section, slideshow, mini_slideshow, data_points, updates
   filters: 
   search: title
   application: Properties
@@ -186,10 +186,32 @@ Property:
     list:
     form:
   order_by:
-  relationships: slideshow
+  relationships: slideshow, mini_slideshow
   filters:
   search:
   application:
+
+PropertyMiniSlide:
+  fields:
+    default: image, position, property_mini_slideshow
+    list: image, position, property_mini_slideshow
+    form: image, property_mini_slideshow
+  order_by: position
+  relationships: property_mini_slideshow
+  filters: 
+  search: 
+  application: 
+
+PropertyMiniSlideshow:
+  fields:
+    default: name, property
+    list: name, property
+    form: name, property
+  order_by: 
+  relationships: property, slides
+  filters: 
+  search: 
+  application: 
 
 PropertySlide:
   fields:

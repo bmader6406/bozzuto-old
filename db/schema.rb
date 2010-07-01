@@ -177,10 +177,10 @@ ActiveRecord::Schema.define(:version => 20100701111356) do
   end
 
   create_table "property_mini_slides", :force => true do |t|
-    t.string   "image_file_name",       :null => false
-    t.string   "image_content_type",    :null => false
+    t.string   "image_file_name",            :null => false
+    t.string   "image_content_type",         :null => false
     t.integer  "position"
-    t.integer  "property_slideshow_id"
+    t.integer  "property_mini_slideshow_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

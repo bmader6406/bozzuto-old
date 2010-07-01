@@ -4,7 +4,7 @@ class CreatePropertyMiniSlides < ActiveRecord::Migration
       t.string  :image_file_name, :null => false
       t.string  :image_content_type, :null => false
       t.integer :position
-      t.integer :property_slideshow_id
+      t.integer :property_mini_slideshow_id
 
       t.timestamps
     end
