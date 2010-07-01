@@ -62,8 +62,8 @@ FloorPlanGroup:
 
 FloorPlan:
   fields:
-    default: full_image, bedrooms, bathrooms, min_square_feet, max_square_feet, position
-    list: full_image, bedrooms, bathrooms, min_square_feet, max_square_feet, position
+    default: actual_image, bedrooms, bathrooms, min_square_feet, max_square_feet, position
+    list: actual_image, bedrooms, bathrooms, min_square_feet, max_square_feet, position
     form: image_type, image_url, image, availability_url, bedrooms, bathrooms, min_square_feet, max_square_feet, min_market_rent, max_market_rent, min_effective_rent, max_effective_rent, floor_plan_group
     options:
       selectors: image_type

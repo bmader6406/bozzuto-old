@@ -77,6 +77,36 @@ class FloorPlanTest < ActiveSupport::TestCase
       end
     end
 
+    context '#actual_image' do
+      setup do
+        @url = 'http://viget.com/booya.jpg'
+        @file = '/blah.jpg'
+
+        @plan.image_url = @url
+      end
+
+      context 'when image_type is USE_IMAGE_URL' do
+        setup do
+          @plan.image_type = FloorPlan::USE_IMAGE_URL
+        end
+
+        should 'return the image url' do
+          assert_equal @url, @plan.actual_image
+        end
+      end
+
+      context 'when image_type is USE_IMAGE_FILE' do
+        setup do
+          @plan.image_type = FloorPlan::USE_IMAGE_FILE
+          @plan.image.expects(:url).returns(@file)
+        end
+
+        should 'return the image file' do
+          assert_equal @file, @plan.actual_image
+        end
+      end
+    end
+
     context '#scope_condition' do
       should 'scope by community id and floor plan group id' do
         condition = "apartment_community_id = #{@plan.apartment_community_id} AND floor_plan_group_id = #{@plan.floor_plan_group_id}"

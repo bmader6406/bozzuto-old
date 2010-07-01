@@ -49,6 +49,7 @@ class FloorPlan < ActiveRecord::Base
   named_scope :cheapest, :order => 'min_rent ASC', :limit => 1
   named_scope :largest, :order => 'max_square_feet DESC', :limit => 1
 
+
   def uses_image_url?
     image_type == USE_IMAGE_URL
   end
@@ -57,7 +58,7 @@ class FloorPlan < ActiveRecord::Base
     image_type == USE_IMAGE_FILE
   end
 
-  def full_image
+  def actual_image
     uses_image_file? ? image.url : image_url
   end
 

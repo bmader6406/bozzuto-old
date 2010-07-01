@@ -25,14 +25,14 @@ en:
         green: Bozzuto Green Program
         non_smoking: No Smoking
       floor_plan:
-        image_file: Image File
-        image_type: Image Type
-        image_url: Image URL
-        full_image: Image
+        actual_image: Image
         availability_url: Availability URL
         bathrooms: Bath
         bedrooms: Bed
         floor_plan_group: Floor Plan Type
+        image_file: Image File
+        image_type: Image Type
+        image_url: Image URL
         max_market_rent: Maximum Market Rent
         min_market_rent: Minimum Market Rent
         max_effective_rent: Maximum Effective Rent
