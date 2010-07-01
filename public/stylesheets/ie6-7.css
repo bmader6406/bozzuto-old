@@ -100,6 +100,10 @@
   filter:alpha(opacity=100);
 }
 
+* html #main-content .social-updates .message {
+  height: 25px;
+}
+
  
 /***
   2. Typography

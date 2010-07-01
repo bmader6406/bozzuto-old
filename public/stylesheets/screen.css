@@ -25,6 +25,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   }
   #main-content .social-updates .message {
     padding-left: 30px;
+    min-height: 25px;
   }
   #main-content .social-updates .byline {
     padding-left: 34px;
@@ -917,7 +918,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
        margin-bottom: 15px;
      }     
      .community #sidebar p.sharethis {
-       padding-top: 20px;
+       padding: 20px 0 10px;
        margin-top: 20px;
      }
      .community #sidebar p.sharethis a {
