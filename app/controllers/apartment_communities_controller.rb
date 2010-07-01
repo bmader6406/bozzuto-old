@@ -5,6 +5,11 @@ class ApartmentCommunitiesController < ApplicationController
     @partial_template = params[:template] || 'search'
     @search = ApartmentCommunity.search(params[:search])
     @communities = @search.all.group_by {|c| c.state.name}
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show

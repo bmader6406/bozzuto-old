@@ -1,13 +1,24 @@
+//Collapse items by default on search results
+function setSearchFormState() {
+  $('.search #content > ul.results').find('.closed > :not(.header)').hide();
+  $('.search #content > ul.results').find('ul.location-filters > li').addClass('closed');
+
+  $('.search #content > ul.results > li > .header').searchExpandCollapse();
+  $('.search #content > ul.results ul.location-filters .header').searchExpandCollapse({
+    par: 'ul.location-filters'
+  });
+}
+
 (function($) {
 
   $(function() {
 
     changePageAlign();
-    
+
     $(window).resize(function(){
       changePageAlign();
     });
-    
+
     $("#special-nav").specialNavPopups();
 
     $("#secondary-nav").secondaryNav();
@@ -33,14 +44,7 @@
 
     $(".services div.tips ul, .generic div.tips ul").makeacolumnlists({cols:3, colWidth:150, equalHeight:false, startN:1});
 
-    //Collapse items by default on search results
-    $('.search #content > ul.results').find('.closed > :not(.header)').hide();
-    $('.search #content > ul.results').find('ul.location-filters > li').addClass('closed');
-
-    $('.search #content > ul.results > li > .header').searchExpandCollapse();
-    $('.search #content > ul.results ul.location-filters .header').searchExpandCollapse({
-      par: 'ul.location-filters'
-    });
+    setSearchFormState();
 
     $('.project ul.project-updates li .info-link').hover(function() {
       if($.browser.msie) {
@@ -286,7 +290,7 @@
         $bio.lightbox_me({
           closeSelector: '.partner-close',
           appearEffect: 'show',
-          overlaySpeed: 0,          
+          overlaySpeed: 0,
           destroyOnClose: true,
           centered: true,
           overlayCSS: {
@@ -321,7 +325,7 @@
                          'display' : 'none',
                          'top'     : ( $link.find('img').height() / 2 ) - 12
                        });
-                       
+
       $link.bind({
 
         'mouseenter' : function(){
@@ -356,11 +360,11 @@
               })
             }
           });
-          
+
           $image.click(function(){
             $image.trigger('close');
           })
-          
+
         }
 
       })
@@ -373,9 +377,9 @@
 	(function() {
 
 		$.fn.featuredSlideshow = function(options) {
-		  
+
 			var opts = $.extend({}, $.fn.featuredSlideshow.defaults, options);
-			
+
 			return this.each(function() {
 				var $this = $(this);
 				var o = $.meta ? $.extend({}, opts, $this.data()) : opts;
@@ -395,7 +399,7 @@
 					}
 
 					if(o.autoAdvance) {
-					  
+
 						var hoverInterval = autoAdvance($this, o);
 						$this.hover(function() {
 							clearInterval(hoverInterval);
@@ -404,18 +408,18 @@
 						});
 
 					}
-					
+
 					$('.set-slideshow').each(function(){
-					  
+
 					  $(this).click(function(e){
 					    e.preventDefault();
 					    $slide = $( $(this).attr('href') );
 					    $this.featuredSlideshow.advance($slide, o);
 					    if ( $(window).scrollTop() > $slide.offset().top + 100){
-					      $(window).scrollTo( $slide, 800 );					      
+					      $(window).scrollTo( $slide, 800 );
 					    }
 					  });
-					  
+
 					});
 
 					$('ul.slideshow-pagination li a', $this).click(function() {
@@ -457,7 +461,7 @@
   			$slide.animate({ opacity: 1}, o.transitionTime, function() {
   				$(this).siblings('.current').removeClass('current');
   				$(this).addClass('current').removeClass('on-deck');
-  			});			  
+  			});
 			}
 		};
 
@@ -614,8 +618,21 @@
     if( windowWidth < 1130 && windowWidth > 980){
       $(document.documentElement).addClass('narrowPage');
     } else {
-      $(document.documentElement).removeClass('narrowPage');      
+      $(document.documentElement).removeClass('narrowPage');
     }
   }
+
+  $().ajaxSend(
+    function(a,xhr,s){
+      xhr.setRequestHeader("Accept","text/javascript, text/html, application/xml, text/xml, */*")
+    }
+  );
+  jQuery.fn.attachSearchForm = function() {
+    this.submit(function() {
+      $.get(this.action, $(this).serialize(), null, "script");
+      return false;
+    })
+    return this;
+  };
 
 })(jQuery);

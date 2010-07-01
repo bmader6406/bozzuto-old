@@ -1,3 +1,18 @@
+<div id="content" class="col">
+<div class="header">
+  <ul>
+    <li>
+      <%= link_to 'View as List', apartment_communities_path(:search => params[:search]), :class => 'list' %>
+    </li>
+    <li class="current">
+      <%= link_to 'View on Map', map_apartment_communities_path(:search => params[:search]), :class => 'map' %>
+    </li>
+  </ul>
+  <p>
+    <%= pluralize(@communities.sum {|state, communities| communities.count}, 'Apartment Community') %>
+  </p>
+</div>
+
 <% content_for :javascript do %>
   <%= google_maps_javascript_tag %>
 
@@ -45,3 +60,4 @@
 <% end %>
 
 <div id="search-results-map"></div>
+</div>

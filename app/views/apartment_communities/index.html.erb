@@ -16,7 +16,7 @@
     <div class="row">
       <div id="sidebar" class="col">
         <h2>Search By</h2>
-        <% form_for @search do |f| %>
+        <% form_for @search, :html => { :id => 'apartment-search-form' } do |f| %>
           <fieldset id="bedrooms" class="">
             <h3>Bedrooms</h3>
             <ul>
@@ -81,23 +81,7 @@
         <% end %>
       </div>
 
-      <div id="content" class="col">
-        <div class="header">
-          <ul>
-            <li class="<%= 'current' if @partial_template == 'search' %>">
-              <%= link_to 'View as List', apartment_communities_path(:search => params[:search]), :class => 'list' %>
-            </li>
-            <li class="<%= 'current' if @partial_template == 'map' %>">
-              <%= link_to 'View on Map', map_apartment_communities_path(:search => params[:search]), :class => 'map' %>
-            </li>
-          </ul>
-          <p>
-            <%= pluralize(@communities.sum {|state, communities| communities.count}, 'Apartment Community') %>
-          </p>
-        </div>
-
-        <%= render :partial => "apartment_communities/#{@partial_template}" %>
-      </div>
+      <%= render :partial => "apartment_communities/#{@partial_template}" %>
 
     </div>
 
@@ -131,3 +115,10 @@
     </div>
   </div>
 </div>
+
+<% content_for :javascript do %>
+
+  <script type="text/javascript">
+   $('#apartment-search-form').attachSearchForm();
+  </script>
+<% end %>
