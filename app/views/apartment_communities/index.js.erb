@@ -1,3 +1,21 @@
 $('#content').html("<%= escape_javascript(render(:partial => "apartment_communities/#{@partial_template}")) %>");
 
+<% if @partial_template == 'search' %>
 setSearchFormState();
+<% else %>
+var markers = new Array();
+
+<% @communities.each do |state, communities| %>
+  <% communities.each do |community| %>
+    <% if community.latitude.present? %>
+      markers.push({
+        latlng: new GLatLng(<%= community.latitude %>, <%= community.longitude %>),
+        title: "<%= h community.title %>",
+        url: "<%= apartment_community_path(community) %>"
+      });
+    <% end %>
+  <% end %>
+<% end %>
+
+initialize();
+<% end %>

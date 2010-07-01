@@ -17,23 +17,24 @@
   <%= google_maps_javascript_tag %>
 
   <script type="text/javascript">
+    var markers = new Array();
+    <% @communities.each do |state, communities| %>
+      <% communities.each do |community| %>
+        <% if community.latitude.present? %>
+          markers.push({
+            latlng: new GLatLng(<%= community.latitude %>, <%= community.longitude %>),
+            title: "<%= h community.title %>",
+            url: "<%= apartment_community_path(community) %>"
+          });
+        <% end %>
+      <% end %>
+    <% end %>
+
     function initialize() {
       if (GBrowserIsCompatible()) {
         var map = new GMap2(document.getElementById("search-results-map"));
         map.setCenter(new GLatLng(39.740986, -75.673828), 6);
 
-        var markers = new Array();
-        <% @communities.each do |state, communities| %>
-          <% communities.each do |community| %>
-            <% if community.latitude.present? %>
-              markers.push({
-                latlng: new GLatLng(<%= community.latitude %>, <%= community.longitude %>),
-                title: "<%= h community.title %>",
-                url: "<%= apartment_community_path(community) %>"
-              });
-            <% end %>
-          <% end %>
-        <% end %>
 
         $.each(markers, function(index, marker) {
           var new_marker = new GMarker(marker.latlng, {
