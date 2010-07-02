@@ -80,12 +80,6 @@ window.bozzuto = {};
 
     $('.floor-plan-view').floorPlanOverlay();
 
-    $('.community-icons a').hover(function(){
-      $(this).find('div').fadeIn(100);
-    }, function(){
-      $(this).find('div').fadeOut(100);
-    });
-
   });
 
   ////
@@ -211,35 +205,65 @@ window.bozzuto = {};
       });
     });
   }
-
+  
   ////
   // tooltips on icon hovers
+  var tooltime = 'inactive', $tooltip, $tooltipArrow, $tooltipContents;
   $.fn.toolTip = function(){
 
     return this.each(function(){
-      
+
       var $this    = $(this),
-          content  = $this.find('div').html();
-      
-      if(!window.bozzuto.$tooltip){
-        window.bozzuto.$tooltip = $('div.tooltip').html(content).appendTo('body');
+          content  = $this.find('div').html(),
+          isSearch = $('body').hasClass('search'),
+          left     = (isSearch) ? 162 : 156,
+          top      = (isSearch) ? 47 : 55;
+
+      if(!$tooltip){
+        $tooltip        = $('<div class="tooltip"></div>')
+                            .appendTo('body');
+        $tooltipContent = $('<div>' + content +'</div>')
+                            .appendTo($tooltip);;
+        $tooltipArrow   = $('<span class="tooltip-arrow"></span>')
+                            .appendTo($tooltip);
       }
       
       $this.hover(function(){
-        clearTimeout(window.bozzuto.tooltime);
-        window.bozzuto.$tooltip
-          .html(content)
-          .css({
-            'top'     : $this.offset().top,
-            'left'    : $this.offset().left,
-            'display' : 'block',
-            'opacity' : '.01'
-          })
-          .fadeTo(1, 1000);
+        
+        $tooltipContent.html(content);
+        $tooltip.css({
+          'top'     : $this.offset().top + top,
+          'left'    : $this.offset().left - left
+        });
+        
+        if(tooltime != 'inactive'){
+          clearTimeout(tooltime);
+        } else {
+          
+          $tooltip
+            .css({
+              'display' : 'block',
+              'opacity' : '.01'
+            })
+            .fadeTo(250, 1); 
+                     
+          $tooltipArrow.animate({
+            'top'    : "-7",
+            'height' : 7
+          }, 250);
+        }
+        
       }, function(){
-        window.bozzuto.tooltime = timeout(function(){
-          window.bozzuto.$tooltip.fadeOut();
+        
+        tooltime = setTimeout(function(){
+          $tooltip.fadeOut(250);
+          $tooltipArrow.css({
+            'top'    : 0,
+            'height' : 0
+          })
+          tooltime = 'inactive';
         }, 500)
+        
       });
       
     });

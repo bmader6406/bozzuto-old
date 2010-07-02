@@ -75,11 +75,6 @@
   margin-right: 5px;
 }
 
-* html .community #overview ul.community-icons li a h4 {
-  padding-right: 15px;
-  width: auto;
-}
-
 .js .partner-bio-inner {
   height: 215px;
 }
@@ -107,7 +102,6 @@
 * html .community #overview ul.community-icons {
   margin-right: -35px;
 }
-
  
 /***
   2. Typography
@@ -125,4 +119,7 @@
 }
 .community #secondary-nav {
   background: #fff;
+}
+* html .tooltip-arrow {
+  display: none;
 }

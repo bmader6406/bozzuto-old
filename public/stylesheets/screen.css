@@ -758,7 +758,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       .community #overview ul.community-icons li,
       .community #overview ul.community-icons li a {
         display: block;
-        width: 50px;
+        width: 45px;
         height: 45px;
         margin-left: 0;
       }
@@ -767,41 +767,48 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       }
       .community #overview ul.community-icons li a div {
         display: none;
-      }
+        border: 1px solid red;
+      } 
       div.tooltip {
         background-color: #fff;
         -moz-box-shadow: 0 0 20px rgba(255,255,255,.4);
         -webkit-box-shadow: 0 0 20px rgba(255,255,255,.4);
+        border: 1px solid #c2c6ca;
         box-shadow: 0 0 20px rgba(255,255,255,.4);
+        display: none;
         color: #84848B;
         font-weight: normal;
-        position: absolute;
-        top: 0;
-        right: 60px;
-        width: 197px;
-        border: 1px solid #c2c6ca;
-        padding: 0 0 10px;
+        left: 0px;
+        padding: 10px;
         position: absolute;
         top: 0px;
-        left: 0px;
+        width: 178px;
+        z-index: 1000;
       }
       div.tooltip h4 {
-        background: transparent url(../images/structure/bg-community-icons-h4.gif) no-repeat 0 0;
-        color: #080812;
-        font-size: 15px;
+        color: #636972;
+        font-size: 12px;
+        font-weight: bold;
         left: -1px;
-        line-height: 20px;
-        margin-bottom: 0;
-        padding: 15px 50px 10px 15px;
+        line-height: 16px;
+        padding-bottom: 3px;
         position: relative;
+        text-transform: uppercase;
         top: -1px;
-        width: 180px;
       }
       div.tooltip p {
-        border-top: 1px solid #d0d0d2;
-        margin: -1px 15px 0px;
-        padding-top: 10px;
+        font-size: 11px;
         zoom: 1;
+      }
+      .tooltip-arrow {
+        background: url(../images/structure/bg-tooltip-arrow.png) 0 0 no-repeat;
+        display: block;
+        height: 0;
+        line-height: 0;
+        position: absolute;
+        top: 0;
+        right: 13px;
+        width: 15px;
       }
 
     /* @end */
