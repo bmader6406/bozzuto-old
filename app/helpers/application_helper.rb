@@ -1,6 +1,6 @@
 module ApplicationHelper
   def home?
-    params[:controller] == 'home'
+    params[:controller] == 'home_pages'
   end
 
   def current_if(opts)

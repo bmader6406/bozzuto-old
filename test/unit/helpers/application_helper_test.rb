@@ -24,7 +24,7 @@ class ApplicationHelperTest < ActionView::TestCase
 
     context '#home?' do
       should 'return true if controller is HomeController' do
-        expects(:params).returns(:controller => 'home')
+        expects(:params).returns(:controller => 'home_pages')
 
         assert home?
       end

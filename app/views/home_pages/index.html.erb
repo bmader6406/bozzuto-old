@@ -45,16 +45,16 @@
         <div class="twitter-update" <%= twitter_data_attr('TheBozzutoGroup') %>></div>
       </div>
 
-      <% if @property.present? %>
+      <% if @featured_property.present? %>
         <div id="featured-property" class="col">
           <h2>
-            <%= link_to 'Featured Property', @property %>
+            <%= link_to 'Featured Property', @featured_property %>
           </h2>
 
-          <% if @property.mini_slideshow.present? %>
+          <% if @featured_property.mini_slideshow.present? %>
             <div class="slideshow">
               <ul class="slides">
-                <% @property.mini_slideshow.slides.each_with_index do |slide, i| %>
+                <% @featured_property.mini_slideshow.slides.each_with_index do |slide, i| %>
                   <li <% if i == 0 %>class="current"<% end %> id="slide-<%= i %>">
                     <%= image_tag slide.image.url %>
                   </li>
@@ -63,8 +63,8 @@
             </div>
 
             <p>
-              <strong><%= @property.address %></strong><br />
-              <%= @property.subtitle.try(:html_safe) %>
+              <strong><%= @featured_property.address %></strong><br />
+              <%= @featured_property.subtitle.try(:html_safe) %>
             </p>
           <% end %>
         </div>
