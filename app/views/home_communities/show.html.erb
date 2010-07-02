@@ -18,7 +18,7 @@
   </script>
 <% end %>
 
-<%= render :partial => 'apartment_communities/special_nav' %>
+<%= render :partial => 'properties/special_nav' %>
 
 <%= render :partial => 'breadcrumb' %>
 
@@ -175,6 +175,6 @@
       </div>
     </div>
 
-    <%= render :partial => 'sub_content' %>
+    <%= render :partial => 'properties/sub_content', :locals => { :property => @community } %>
   </div>
 </div>

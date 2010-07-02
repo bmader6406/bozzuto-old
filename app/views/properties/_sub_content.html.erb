@@ -1,5 +1,5 @@
 <div id="sub-content" class="row">
-  <%= render :partial => 'apartment_communities/recently_viewed' %>
+  <%= render :partial => 'properties/recently_viewed' %>
 
   <div class="row">
     <div id="renting-from-bozzuto" class="col">
@@ -18,7 +18,7 @@
       <h2>About Bozzuto Management Company</h2>
 
       <p>
-        <strong>Recognized by the National Association of Home Builders</strong> in both 2009 and 2008 as the nation&rsquo;s best residential management company, Bozzuto Management has assembled a portfolio of apartment communities and commercial properties in locations throughout the East Coast.
+        <strong>Recognized by the National Association of Home Builders</strong> in both 2009 and 200 as the nation&rsquo;s best residential management company, Bozzuto Management has assembled a portfolio of apartment communities and commercial properties in locations throughout the East Coast.
       </p>
 
       <p>
@@ -26,4 +26,16 @@
       </p>
     </div>
   </div>
+
+  <% if property.county.present? %>
+    <div id="sub-listing">
+      <ul>
+        <% property.county.cities.each do |city| %>
+          <li>
+          <%= link_to "#{city.name} #{property.is_a?(ApartmentCommunity) ? 'Apartments' : 'Homes'}", property %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 </div>
