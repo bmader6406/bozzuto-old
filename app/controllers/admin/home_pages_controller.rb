@@ -6,7 +6,7 @@ class Admin::HomePagesController < Admin::MasterController
   private
 
   def initialize_and_redirect_to_edit
-    @home_page = HomePage.first || HomePage.new.save(false)
+    @home_page = HomePage.first || (HomePage.new.save(false) && HomePage.first)
     redirect_to :action => :edit, :id => @home_page.id
   end
 end
