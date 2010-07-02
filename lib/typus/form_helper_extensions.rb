@@ -22,8 +22,13 @@ module Typus
             items.each do |item|
               selected = "selected" if @item.send(attribute) == item.id
               disabled = 'disabled="disabled"' if @item == item || item.ancestors.include?(@item)
+              inner = if item.ancestors.empty?
+                item.to_label
+              else
+                "#{'&nbsp;' * item.ancestors.size * 2}&#8627; #{item.to_label}"
+              end
 
-              html << %{<option #{selected} #{disabled} value="#{item.id}">#{"&nbsp;" * item.ancestors.size * 2} &#8627; #{item.to_label}</option>\n}
+              html << %{<option #{selected} #{disabled} value="#{item.id}">#{inner}</option>\n}
               html << expand_tree_into_select_field(item.children, attribute) unless item.children.empty?
             end
           end

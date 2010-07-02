@@ -147,8 +147,8 @@ NewsPost:
 
 Page:
   fields:
-    default: formatted_title
-    list: formatted_title, section
+    default: formatted_title, position
+    list: formatted_title, section, position
     form: title, body, section, parent
     options:
       ckeditor: body
