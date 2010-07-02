@@ -3833,11 +3833,8 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 
   /* @group -home */
 
-    .home #masthead {
-      background: transparent url(../images/bg-masthead.png) repeat-x top center;
-    }
-    .home #masthead-fg {
-      background: transparent url(../images/masthead.jpg) no-repeat top center;
+    .home #main-content {
+      background: transparent url(../images/structure/bg-home-main-content.gif) repeat-x top left;
     }
     .home #welcome a.read-more {
       background: transparent url(../images/structure/bg-header-a.gif) no-repeat center left;
