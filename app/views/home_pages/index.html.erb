@@ -3,12 +3,28 @@
 <%= render :partial => 'special_nav' %>
 
 <div id="masthead">
-  <div id="masthead-fg">
-    <div class="container">
-      It&rsquo;s the idea of a place.
-      And the place itself.
+  <% if @home_page.slides.any? %>
+    <div id="slideshow">
+      <div class="header">
+        <ul class="slideshow-navigation">
+          <li>
+            <a class="prev" href="#">Previous</a>
+          </li>
+          <li>
+            <a class="next" href="#">Next</a>
+          </li>
+        </ul>
+      </div>
+
+      <ul>
+        <% @home_page.slides.each do |slide| %>
+          <li>
+            <%= image_tag slide.image.url %>
+          </li> 
+        <% end %>
+      </ul>
     </div>
-  </div>
+  <% end %>
 </div>
 
 <div id="main-content">
@@ -16,13 +32,7 @@
 
     <div id="content" class="row">
       <div id="welcome" class="col">
-        <h1>We are the Bozzuto Group</h1>
-
-        <p><strong>We are six companies in one: The Bozzuto Group</strong>, a privately held real estate services organization. Together we create quality homes and extraordinary communities&mdash;some 31,000 residences to date. We pride ourselves on providing outstanding service and consistent value for customers and partners alike.</p>
-
-        <p><strong>We are founded on values</strong>. In 1988, founding partners Tom Bozzuto, John Slidell, Rick Mostyn, and the late Bernard Lubcher formed The Bozzuto Group to build and manage</p>
-
-        <p><a href="#" class="read-more">Read More</a></p>
+        <%= @home_page.body.try(:html_safe) %>
       </div>
 
       <div class="social-updates col">
@@ -35,28 +45,30 @@
         <div class="twitter-update" <%= twitter_data_attr('TheBozzutoGroup') %>></div>
       </div>
 
-      <div id="featured-property" class="col">
-        <h2>
-          <a href="#">Featured Property</a>
-        </h2>
+      <% if @property.present? %>
+        <div id="featured-property" class="col">
+          <h2>
+            <%= link_to 'Featured Property', @property %>
+          </h2>
 
-        <% if @property.present? %>
-          <div class="slideshow">
-            <ul class="slides">
-              <% @property.mini_slideshow.slides.each_with_index do |slide, i| %>
-                <li <% if i == 0 %>class="current"<% end %> id="slide-<%= i %>">
-                  <%= image_tag slide.image.url %>
-                </li>
-              <% end %>
-            </ul>
-          </div>
+          <% if @property.mini_slideshow.present? %>
+            <div class="slideshow">
+              <ul class="slides">
+                <% @property.mini_slideshow.slides.each_with_index do |slide, i| %>
+                  <li <% if i == 0 %>class="current"<% end %> id="slide-<%= i %>">
+                    <%= image_tag slide.image.url %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
 
-          <p>
-            <strong><%= @property.address %></strong><br />
-            <%= @property.subtitle.try(:html_safe) %>
-          </p>
-        <% end %>
-      </div>
+            <p>
+              <strong><%= @property.address %></strong><br />
+              <%= @property.subtitle.try(:html_safe) %>
+            </p>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

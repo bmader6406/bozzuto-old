@@ -1,0 +1,14 @@
+<% form_for @item, :url  => options, :html => { :multipart => true } do |form| %>
+  <%= hidden_field :home_page_slide, :home_page_id, :value => (@item.home_page_id || params[:home_page_id]) %>
+
+  <fieldset class="inputs">
+    <ol>
+      <%= build_form(@fields, form) %>
+    </ol>
+  </fieldset>
+  <fieldset class="buttons">
+    <ol>
+      <li><%= submit_tag button , :class => 'commit' %></li>
+    </ol>
+  </fieldset>
+<% end %>

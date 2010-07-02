@@ -12,6 +12,8 @@ admin:
   Home: create, read, update, delete
   HomeCommunity: create, read, update, delete
   HomeFloorPlan: create, read, update, delete
+  HomePage: read, update
+  HomePageSlide: create, read, update, delete
   NewsPost: create, read, update, delete
   Page: create, read, update, delete
   Photo: create, read, update, delete

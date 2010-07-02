@@ -6,6 +6,10 @@ en:
       floor_plan_group: Floor Plan Type
       home_community: Home Community
       home_floor_plan: Floor Plan
+      home_page:
+        one: Home Page
+        many: Home Page
+      home_page_slide: Slide
       news_post: News
       project_data_point: Data Point
       project_update: Update
@@ -43,6 +47,8 @@ en:
         bathrooms: Bath
         bedrooms: Bed
         home_community: Home Community
+      home_page:
+        featured_property: Featured Property
       news_post:
         published_at: Published At
       page:
@@ -79,8 +85,8 @@ en:
       yelp_feed:
         url: Feed URL
     tips:
-      home_page:
-        banner_image: Image dimensions should be 1100x375
+      home_page_slide:
+        image: Image dimensions should be 1100x375
       property:
         listing_image: Image dimensions should be 150x150
       property_mini_slide:

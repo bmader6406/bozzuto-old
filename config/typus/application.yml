@@ -108,6 +108,30 @@ HomeFloorPlan:
   search: name
   application:
 
+HomePage:
+  fields:
+    default: featured_property
+    list: featured_property
+    form: body, featured_property
+    options:
+      ckeditor: body
+  order_by: 
+  relationships: featured_property, slides
+  filters: 
+  search: 
+  application: Content
+
+HomePageSlide:
+  fields:
+    default: image, position
+    list: image, position
+    form: image
+  order_by: position
+  relationships: home_page
+  filters: 
+  search: 
+  application: 
+
 NewsPost:
   fields:
     default: title, published, published_at
