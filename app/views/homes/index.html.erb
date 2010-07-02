@@ -31,8 +31,8 @@
       </div>
     <% end %>
 
-    <%= render :partial => 'home_communities/sub_content' %>
+    <%= render :partial => 'properties/sub_content', :locals => { :property => @community } %>
   </div>
 </div>
 
-<%= render :partial => 'apartment_communities/special_nav' %>
+<%= render :partial => 'properties/special_nav' %>
