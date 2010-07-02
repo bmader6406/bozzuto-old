@@ -62,4 +62,12 @@ module OverriddenPathsHelper
       section_testimonials_path(section)
     end
   end
+
+  def property_path(property)
+    if property.is_a?(Project)
+      project_path(property.section, property)
+    else
+      property
+    end
+  end
 end

@@ -48,7 +48,7 @@
       <% if @featured_property.present? %>
         <div id="featured-property" class="col">
           <h2>
-            <%= link_to 'Featured Property', @featured_property %>
+            <%= link_to 'Featured Property', property_path(@featured_property) %>
           </h2>
 
           <% if @featured_property.mini_slideshow.present? %>

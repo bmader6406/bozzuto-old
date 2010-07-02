@@ -150,9 +150,30 @@ class OverriddenPathsHelperTest < ActionView::TestCase
         end
       end
     end
-  end
 
-  def content_for(name)
-    yield
+    context '#property_path' do
+      [ApartmentCommunity, HomeCommunity].each do |klass|
+        context "when property is #{klass}" do
+          setup do
+            @property = klass.make
+          end
+
+          should 'return the property' do
+            assert_equal @property, property_path(@property)
+          end
+        end
+      end
+
+      context 'when property is Project' do
+        setup do
+          @project = Project.make(:section => @section)
+        end
+
+        should 'return project_path' do
+          assert_equal project_path(@project.section, @project),
+            property_path(@project)
+        end
+      end
+    end
   end
 end
