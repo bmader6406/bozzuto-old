@@ -9,6 +9,9 @@ function setSearchFormState() {
   });
 }
 
+// object for storing global vars
+window.bozzuto = {};
+
 (function($) {
 
   $(function() {
@@ -39,7 +42,9 @@ function setSearchFormState() {
         var height = $(this).find('h1').height();
         $('.section', $(this)).css('top', height+10).show();
       })
-    }, 250)
+    }, 250);
+    
+    $(".community-icons a").toolTip();
 
     $(".masthead-slideshow").featuredSlideshow();
 
@@ -205,6 +210,40 @@ function setSearchFormState() {
         }
       });
     });
+  }
+
+  ////
+  // tooltips on icon hovers
+  $.fn.toolTip = function(){
+
+    return this.each(function(){
+      
+      var $this    = $(this),
+          content  = $this.find('div').html();
+      
+      if(!window.bozzuto.$tooltip){
+        window.bozzuto.$tooltip = $('div.tooltip').html(content).appendTo('body');
+      }
+      
+      $this.hover(function(){
+        clearTimeout(window.bozzuto.tooltime);
+        window.bozzuto.$tooltip
+          .html(content)
+          .css({
+            'top'     : $this.offset().top,
+            'left'    : $this.offset().left,
+            'display' : 'block',
+            'opacity' : '.01'
+          })
+          .fadeTo(1, 1000);
+      }, function(){
+        window.bozzuto.tooltime = timeout(function(){
+          window.bozzuto.$tooltip.fadeOut();
+        }, 500)
+      });
+      
+    });
+    
   }
 
   ////

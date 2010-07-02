@@ -746,14 +746,14 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 
       .community #overview {
         position: relative;
-        padding: 0 50px 20px 0;
+        padding: 0 70px 20px 0;
         margin-bottom: 20px;
         overflow: hidden;
         zoom: 1;
       }
       .community #overview ul.community-icons {
         float: right;
-        margin: 39px -50px 0 0;
+        margin: 39px -70px 0 0;
       }
       .community #overview ul.community-icons li,
       .community #overview ul.community-icons li a {
@@ -761,18 +761,19 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         width: 50px;
         height: 45px;
         margin-left: 0;
-        text-indent: -9999px;
       }
       .community #overview ul.community-icons li a {
         position: relative;
       }
       .community #overview ul.community-icons li a div {
+        display: none;
+      }
+      div.tooltip {
         background-color: #fff;
         -moz-box-shadow: 0 0 20px rgba(255,255,255,.4);
         -webkit-box-shadow: 0 0 20px rgba(255,255,255,.4);
         box-shadow: 0 0 20px rgba(255,255,255,.4);
         color: #84848B;
-        display: none;
         font-weight: normal;
         position: absolute;
         top: 0;
@@ -780,8 +781,11 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         width: 197px;
         border: 1px solid #c2c6ca;
         padding: 0 0 10px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
       }
-      .community #overview ul.community-icons li a h4 {
+      div.tooltip h4 {
         background: transparent url(../images/structure/bg-community-icons-h4.gif) no-repeat 0 0;
         color: #080812;
         font-size: 15px;
@@ -793,7 +797,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         top: -1px;
         width: 180px;
       }
-      .community #overview ul.community-icons li a p {
+      div.tooltip p {
         border-top: 1px solid #d0d0d2;
         margin: -1px 15px 0px;
         padding-top: 10px;
