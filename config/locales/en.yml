@@ -79,6 +79,8 @@ en:
       yelp_feed:
         url: Feed URL
     tips:
+      home_page:
+        banner_image: Image dimensions should be 1100x375
       property:
         listing_image: Image dimensions should be 150x150
       property_mini_slide:

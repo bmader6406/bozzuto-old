@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100701115615) do
+ActiveRecord::Schema.define(:version => 20100702151538) do
 
   create_table "awards", :force => true do |t|
     t.string   "title",                           :null => false
@@ -77,6 +77,15 @@ ActiveRecord::Schema.define(:version => 20100701115615) do
     t.integer  "home_id",            :null => false
     t.string   "image_content_type"
     t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "home_pages", :force => true do |t|
+    t.string   "banner_image_file_name"
+    t.string   "banner_image_content_type"
+    t.text     "body"
+    t.integer  "featured_property_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
