@@ -30,7 +30,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   #main-content .social-updates .byline {
     padding-left: 34px;
   }
-  
+
   /* @group -header */
 
     /* HEADER */
@@ -82,9 +82,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     #header #home-nav a {
       padding: 0 4px 0 6px;
     }
-  
+
   /* @end */
-  
+
   /* @group -special-nav */
 
     /* special-nav */
@@ -156,9 +156,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     #header #find-apartment-form p.field {
       margin-bottom: 0.5em;
     }
-  
+
   /* @end */
-  
+
   /* @group -general content */
 
     .promo {
@@ -170,24 +170,24 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       padding: 17px;
       text-align: center;
     }
-    
+
     .landing .promo {
       width: 506px;
     }
-        
+
     .promo img {
       border: 1px solid #b9bec4;
     }
-  
+
   /* @end */
-  
+
   /* @group -secondary */
-    
+
     .secondary #header,
     .secondary #header .container {
       height: 170px;
     }
-    
+
     /* @group --main nav */
 
       /* main nav */
@@ -232,9 +232,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         width: 86px;
         padding: 8px 0 8px 8px;
       }
-      
-    /* @end */    
-  
+
+    /* @end */
+
     .secondary #main-content {
       overflow: hidden;
       padding: 15px 0;
@@ -258,9 +258,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .secondary #main-content h3 a {
       display: block;
     }
-  
+
   /* @end  */
-  
+
   /* @group -home */
 
     /* HOME */
@@ -298,7 +298,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       padding: 11px 0 15px 36px;
       background: transparent url(../images/structure/bg-header-a.gif) no-repeat 30px 16px;
     }
-    
+
     .home #featured-property {
       width: 230px;
       padding-right: 0;
@@ -312,9 +312,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 			border-top:1px solid #C1C1C5;
 			padding:6px 0 6px 12px;
     }
-  
+
   /* @end   -home */
-  
+
   /* @group -news */
 
     /* news */
@@ -361,9 +361,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .home #news ul li a {
       padding-left: 6px;
     }
-  
+
   /* @end */
-  
+
   /* @group -about */
 
     .about #masthead .container {
@@ -526,34 +526,34 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .services #latest-awards .section {
       padding-bottom: 0;
     }
-  
+
   /* @end */
-  
+
   /* @group -careers */
-    
+
     .careers #masthead .container {
       padding-left: 0;
       width: 960px;
     }
-    
+
     .careers #content .column-main {
       float: left;
       width: 519px;
     }
-    
+
     .careers #aside {
       margin-top: 0;
       padding-right: 0;
       width: 230px;
     }
-    
+
     .careers #content {
       padding-right: 0;
       width: 769px;
     }
-  
+
   /* @end */
-  
+
   /* @group -community */
 
     .about #breadcrumb,
@@ -573,7 +573,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       display: inline;
     }
 		.search #breadcrumb .container h1,
-		.generic #breadcrumb .container h1 {   	
+		.generic #breadcrumb .container h1 {
 			clear: left;
 			margin-top: 24px;
     }
@@ -582,10 +582,10 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       right: 0;
       top: 0;
     }
-    
-    
+
+
     /* @group --masthead */
-      
+
 			.community #masthead,
 			.project #masthead,
 			.generic #masthead {
@@ -653,11 +653,11 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         display: block;
         padding: 5px 10px 5px 26px;
       }
-    
+
     /* @end */
-    
+
     /* @group --slideshow */
-      
+
       .community #slideshow,
  			.project #slideshow {
         position: absolute;
@@ -673,9 +673,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       .project #slideshow img {
         position: absolute;
         top: 0px;
-        left: 0px;        
+        left: 0px;
       }
-      
+
       .project #slideshow .section {
         z-index: 1;
       }
@@ -718,9 +718,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         width: 189px;
         height: 43px;
       }
-    
+
     /* @end */
-    
+
     .community #main-content .container,
  		.project #main-content .container {
       width: 770px;
@@ -741,7 +741,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .community #nearby-communities {
       margin-bottom: 25px;
     }
-    
+
     /* @group --overview */
 
       .community #overview {
@@ -775,7 +775,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         display: none;
         font-weight: normal;
         position: absolute;
-        top: 0; 
+        top: 0;
         right: 60px;
         width: 197px;
         border: 1px solid #c2c6ca;
@@ -799,9 +799,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         padding-top: 10px;
         zoom: 1;
       }
-    
-    /* @end */   
-    
+
+    /* @end */
+
      .community #apartments table {
        width: 100%;
      }
@@ -863,7 +863,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
        width: 210px;
        height: 28px;
      }
-     
+
      .community #nearby-communities li a {
        display: block;
      }
@@ -918,7 +918,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
      .community #sidebar div.facebook-like {
        padding-bottom: 5px;
        margin-bottom: 15px;
-     }     
+     }
      .community #sidebar p.sharethis {
        padding: 20px 0 10px;
        margin-top: 20px;
@@ -931,9 +931,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
        position: absolute;
        top: 0;
      }
-    
+
   /* @end */
-  
+
   /* @group -features */
 
     .features #main-content div.feature {
@@ -964,9 +964,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .features #main-content div.feature ul.li_cont1 {
       margin-right: 11px;
     }
-  
+
   /* @end */
-  
+
   /* @group -apartments */
 
     .apartments #masthead {
@@ -991,7 +991,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       height: 28px;
       margin-bottom: 21px;
       padding-left: 9px;
-      width: 220px; 
+      width: 220px;
     }
 
     .apartments #masthead .aside ul {
@@ -1024,9 +1024,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       top: -15px;
       width: 848px;
     }
-    
+
     .home #content div.slideshow {
-      top: -10px;    
+      top: -10px;
     }
 
     .apartments #content ul.slides li,
@@ -1107,7 +1107,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 
     .property #slideshow ul.slideshow-navigation li,
     .apartments #content ul.slideshow-navigation li {
-      float: left;      
+      float: left;
     }
 
     .property #slideshow ul.slideshow-navigation li a,
@@ -1115,7 +1115,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       display: block;
       height: 57px;
       overflow: hidden;
-      width: 35px;       
+      width: 35px;
     }
 
     .apartments #content div.row div.col {
@@ -1141,25 +1141,25 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .apartments #content #about-bozzuto p {
       margin-bottom: 11px;
     }
-  
+
   /* @end */
-  
+
   /* @group -floorplans */
 
     .floor-plans .floor-plan {
       width: 180px;
     }
-    
+
     .community .floor-plan a.floor-plan-view {
       background: none;
       display: block;
       position: relative;
     }
-    
+
     .community .floor-plan a.floor-plan-view:hover {
       text-decoration: none;
     }
-    
+
     .floor-plan-view-full {
       background: #D5D8DC;
       border: 1px solid #9BA2AD;
@@ -1177,7 +1177,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       top: 75px;
       width: 90px;
     }
-            
+
     .floor-plan-overlay {
       opacity: 0;
       -moz-opacity: 0;
@@ -1186,9 +1186,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       -webkit-box-shadow: 0 0 30px rgba(0,0,0,0.1);
       box-shadow: 0 0 30px rgba(0,0,0,0.1);
     }
-      
-  /* @end */  
-  
+
+  /* @end */
+
   /* @group -videos-and-floorplans */
 
     .slideshow-caption {
@@ -1204,7 +1204,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       width: 800px;
       z-index: 2;
     }
-    
+
     .slideshow-counter {
       font-size: 10px;
       text-transform: uppercase;
@@ -1215,19 +1215,19 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       padding: 0 0 0 170px;
       margin: 15px 0 0;
     }
-    
+
     .media-group-last {
       border: none;
       margin-bottom: 20px;
     }
-    
+
     .secondary #main-content .media-group h2 {
       float: left;
       line-height: 1.4;
       margin: 0 0 0 -170px;
       width: 150px;
     }
-    
+
     .media-link {
       float: left;
     }
@@ -1238,13 +1238,13 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       width: 55px;
       zoom: 1;
     }
-    
+
     .media-link-last a {
       padding: 0 0;
     }
-  
+
   /* @end */
-  
+
   /* @group -services */
 
     .services #masthead,
@@ -1270,7 +1270,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 			height: 372px;
 		}
     #masthead .masthead-slideshow .slides {
-      z-index: 1;  
+      z-index: 1;
     }
     #masthead .masthead-slideshow .slides li {
       background: #c0c5cb url(../images/structure/bg-masthead.gif) repeat-x;
@@ -1284,7 +1284,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       z-index: 2;
     }
     #masthead .masthead-slideshow .slides .on-deck {
-      z-index: 3;    
+      z-index: 3;
     }
     #masthead .masthead-slideshow .slideshow-pagination {
       border-top: 1px solid #fff;
@@ -1296,7 +1296,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       z-index: 2;
     }
     #masthead .masthead-slideshow .slideshow-pagination li {
-      float: left;      
+      float: left;
     }
     #masthead .masthead-slideshow .slideshow-pagination li a {
       background: none;
@@ -1309,7 +1309,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
     #masthead .masthead-slideshow .slideshow-pagination li.current a {
       color: #000;
-      font-weight: bold;    
+      font-weight: bold;
     }
     .services #masthead .section,
     .landing #masthead .section,
@@ -1341,7 +1341,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       float: right;
     }
     .landing #masthead .aside a,
-    .landing #masthead .aside img, 
+    .landing #masthead .aside img,
     .services #masthead .aside a,
     .services #masthead .aside img {
       display: block;
@@ -1491,12 +1491,12 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       display: block;
       height: 57px;
       overflow: hidden;
-      width: 35px; 
+      width: 35px;
     }
     .testimonials .read-more,
     .tips .read-more {
      display: block;
-     padding-left: 6px; 
+     padding-left: 6px;
     }
     .services #aside #featured-projects .article,
  		.generic #aside .featured .article {
@@ -1530,9 +1530,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 			margin-right: 20px;
 			margin-bottom: 5px;
     }
-  
+
   /* @end */
-  
+
   /* @group -project */
 
     .project #sidebar {
@@ -1745,34 +1745,34 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       margin: 1px 10px 0 0;
       width: 35px;
     }
-  
+
   /* @end */
-  
+
   /* @group -homes */
 
     .homes #masthead {
       border-bottom: 1px solid #858890;
       padding-top: 24px;
     }
-    
+
     .homes-search #masthead p.call-to-action {
       margin-top: 12px;
     }
-    
+
     .homes #masthead p.call-to-action a {
       padding-left: 7px;
     }
-    
+
     .homes-search #masthead .container {
       position: relative;
     }
-  
+
     .homes #masthead .aside {
       float: right;
       padding-top: 4px;
       width: 229px;
     }
-    
+
     .homes #masthead .figure {
       position: absolute;
       top: -24px; right: 0;
@@ -1783,20 +1783,20 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       height: 28px;
       margin-bottom: 21px;
       padding-left: 9px;
-      width: 220px; 
+      width: 220px;
     }
-    
+
     .homes #masthead .section {
       float: left;
       padding: 0 0 28px 189px;
       width: 515px;
     }
-    
+
     .homes-search #masthead .section {
       height: 183px;
     }
 
-    .homes #masthead .section .quote { 
+    .homes #masthead .section .quote {
     	width: 447px;
     }
 
@@ -1926,7 +1926,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 
     .homes #content #view-as-list div.learn-more p {
     	margin-bottom: 12px;
-    	padding-bottom: 12px;	
+    	padding-bottom: 12px;
     }
 
     .homes #content #view-as-list div.learn-more ul {
@@ -1946,7 +1946,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	margin-bottom: 5px;
     	padding-left: 0;
     }
-      
+
     .home ul.slides li,
     .homes-search ul.slides li {
       height: 145px;
@@ -1956,7 +1956,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       top: 0;
       width: auto;
     }
-    
+
     .home #content div.slideshow,
     .homes-search .slideshow {
       height: 145px;
@@ -1964,9 +1964,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       position: relative;
       width: auto;
     }
-  
+
   /* @end */
-  
+
   /* @group -search results */
 
 		.search #breadcrumb,
@@ -1981,7 +1981,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	height: 68px;
     	padding: 13px 0 0 185px;
     	position: relative;
-    	width: 770px;	
+    	width: 770px;
     }
 
     .search #breadcrumb .container ul li,
@@ -2127,7 +2127,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       margin-right: 0;
     }
 
-    .search #content ul.results li ul.location-filters ul a {
+    .search #content ul.results li ul.location-filters ul a, .search #content ul.results li ul.location-filters ul span {
       background: url(../images/structure/bg-search-results-pagination-a.gif) no-repeat 9px 50%;
       color: #64676c;
       display: block;
@@ -2136,18 +2136,19 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       padding: 6px 6px 6px 16px;
       width: 159px;
     }
-    .search #content ul.results li ul.location-filters ul a:hover strong, 
-    .search #content ul.results li ul.location-filters ul a:hover em { 
+    .search #content ul.results li ul.location-filters ul a:hover strong,
+    .search #content ul.results li ul.location-filters ul a:hover em {
       text-decoration: underline;
     }
-    .search #content ul.results li ul.location-filters ul a strong {
+    .search #content ul.results li ul.location-filters ul a strong,
+    .search #content ul.results li ul.location-filters ul span strong {
       display: block;
       float: left;
       font-weight: normal;
       text-transform: uppercase;
     }
 
-    .search #content ul.results li ul.location-filters ul a em {
+    .search #content ul.results li ul.location-filters ul a em, .search #content ul.results li ul.location-filters ul span em {
       color: #919191;
       display: block;
       float: right;
@@ -2317,9 +2318,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	height: 600px;
     	width: 100%;
     }
-  
+
   /* @end */
-  
+
   /* @group -services */
 
     .testimonials li,
@@ -2346,39 +2347,39 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .services #aside #featured-projects .view-all {
       margin-bottom: 0.727272727em;
     }
-  
+
   /* @end */
-  
+
   /* @group -leadership */
 
     .leadership #masthead .section {
       padding: 0 0 28px 0;
     }
-  
+
     .leadership #breadcrumb {
       border: none;
     }
-  
+
     .aside-quote cite {
       display: block;
     }
-  
+
     .partners {
       overflow: hidden;
       padding: 15px 0 0;
     }
-  
+
     .partners li {
       float: left;
       padding-right: 20px;
       height: 105px;
       width: 150px;
     }
-    
+
     .partners a, .partners span {
       display: block;
     }
-    
+
     .aside-quote p {
        padding: 20px 20px 0;
      }
@@ -2386,7 +2387,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
      .aside-quote cite {
        padding: 10px 20px;
      }
-        
+
     .partners .partner-name {
       border-top: 1px solid #c1c1c5;
       border-bottom: 1px solid #c1c1c5;
@@ -2394,14 +2395,14 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       margin-bottom: 10px;
       padding: 0 25px 0 0;
     }
-    
+
     .partner-group {
       border-bottom: 1px solid #e5e5e5;
       overflow: visible;
       padding-bottom: 10px;
       width: 20px;
     }
-    
+
     /* @group --portrait */
 
       .partner-portrait {
@@ -2413,23 +2414,23 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         height: 375px;
         width: 849px;
       }
-      
+
       .partner-portrait-screen, .partner-portrait li, .partner-portrait a {
         left: 0;
         position: absolute;
         top: 0;
       }
-      
+
       .partner-portrait-screen, .partner-portrait-images li {
         opacity: 0;
         -moz-opacity: 0;
         filter:alpha(opacity=0);
       }
-      
+
       .partner-portrait-images a {
         display: none;
       }
-            
+
       .partner-portrait-links span {
         cursor: pointer;
         display: block;
@@ -2438,7 +2439,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         text-indent: -9999px;
         width: 50px;
       }
-      
+
       .partner-portrait-links .portrait-steve-s   .hit1 { height: 375px; width: 120px; left:  0px;  top:   0px; }
       .partner-portrait-links .portrait-john-b    .hit1 { height: 375px; width: 100px; left: 120px; top:   0px; }
       .partner-portrait-links .portrait-john-b    .hit2 { height: 200px; width: 120px; left: 60px;  top: 175px; }
@@ -2456,9 +2457,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       .partner-portrait-links .portrait-michael-a .hit1 { height: 375px; width:  26px; left: 820px; top:   0px; }
       .partner-portrait-links .portrait-michael-a .hit2 { height: 135px; width: 110px; left: 710px; top:   0px; }
       .partner-portrait-links .portrait-michael-a .hit3 { height: 115px; width:  90px; left: 730px; top: 135px; }
-    
+
     /* @end */
-  
+
     /* @group --bios */
 
       .js #partner-bios {
@@ -2469,40 +2470,40 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         top: 0;
         width: 0;
       }
-  
+
       .js .partner-bio-outer {
-        padding: 20px 0 0;     
+        padding: 20px 0 0;
         width: 800px;
         opacity: 0;
         -moz-opacity: 0;
         filter:alpha(opacity=0);
       }
-      
+
       .js .partner-bio-inner {
         min-height: 215px;
         padding: 30px 50px 50px 300px;
       }
-                  
+
       .partner-bio-inner h3 {
         font-size: 21px;
         line-height: 21px;
         margin-bottom: 3px;
       }
-      
+
       .partner-bio-inner .partner-title,
       .partner-bio-inner .partner-group {
         display: block;
         font-weight: bold;
       }
-      
+
       .partner-bio-inner .partner-title {
-        margin-bottom: 0;      
+        margin-bottom: 0;
       }
-      
+
       .partner-bio-inner .partner-group {
         margin-bottom: 12px;
       }
-      
+
       .partner-close {
         display: block;
         height: 40px;
@@ -2512,22 +2513,22 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         top: 20px;
         width: 40px;
       }
-      
+
       .partner-close:hover {
         opacity: 0.5;
         -moz-opacity: 0.5;
         filter:alpha(opacity=50);
       }
-      
+
       .partner-pic {
         float: left;
         margin: 0 0 0 -250px;
       }
 
     /* @end */
-  
+
   /* @end */
-  
+
   /* @group -landing */
 
     .landing #main-content {
@@ -2538,7 +2539,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       width: 770px;
       padding: 0;
     }
-    
+
     .landing #sidebar {
       padding: 8px 0 0 20px;
       width: 170px;
@@ -2558,7 +2559,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       padding: 0;
       width: 210px;
     }
-    
+
     .areamap-popular-properties h4 {
       margin-bottom: 1px;
     }
@@ -2568,30 +2569,30 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       height: 29px;
       padding-left: 12px;
     }
-    
+
     .mapkey li {
       padding: 4px 20px 8px 25px;
     }
-    
+
     .mapkey li span {
       display: block;
       padding: 0 0 12px;
     }
-        
+
     .areamap-popular-properties .section {
       margin-bottom: 30px;
     }
-    
+
     .areamap-popular-properties .section-last {
       margin-bottom: 0;
     }
-    
+
     .areamap-popular-properties h2 {
       padding: 8px 0 6px;
     }
-    
+
     #main-content .areamap-popular-properties p {
-      padding: 5px 40px 10px 10px; 
+      padding: 5px 40px 10px 10px;
     }
 
     body.landing #content div.header ul li a {
@@ -2599,18 +2600,18 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       padding: 6px 40px 5px 8px;
       width: 103px;
     }
-    
+
     body.landing #content div.header ul li.last a {
       width: 108px;
     }
-    
+
     .landing #content div.header {
       position: relative;
     }
-    
+
     .landing #content div.header p {
       position: absolute;
-      right: 0;  
+      right: 0;
       top: 0;
       width: 315px;
     }
@@ -2619,15 +2620,15 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .landing #header div.container {
       height: 236px;
     }
-    
+
     .landing .listings {
       padding: 10px 0 30px;
     }
-    
+
     .landing .listings .row {
       padding: 0;
     }
-    
+
     .landing .listings li {
       border-top: 1px solid #d2d2d5;
       float: left;
@@ -2636,11 +2637,11 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       position: relative;
       width: 132px;
     }
-    
+
     .ie6 .landing .listings li {
       margin: 0 10px 0 0;
     }
-    
+
     .landing .listings .last {
       margin: 0;
     }
@@ -2648,25 +2649,25 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .landing .listings .first li {
       border-top: 1px solid #e6e6e8;
     }
-    
+
     .landing .listings .last li {
       border-bottom: 1px solid #e6e6e8;
     }
-      
+
     .landing .listings a {
       margin-left: -6px;
       padding-left: 6px;
     }
-    
+
     .ie6 .landing .listings a {
       margin-left: -6px;
     }
-    
+
     .landing .listings-count li {
       padding-right: 30px;
       width: 102px;
     }
-    
+
     .landing .listings .count {
       display: block;
       position: absolute;
@@ -2674,30 +2675,30 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       top: 5px;
       width: 20px;
     }
-    
+
     .seo-text {
       padding: 10px 0 30px;
       width: 540px;
     }
-    
+
     .seo-text .more {
       display: inline-block;
       margin: 15px 0px 0px;
       padding: 0px 0px 0px 6px;
     }
-    
+
     .seo-links {
       border-top: 1px solid #c0c1c5;
       overflow: hidden;
       padding: 20px 0 10px;
     }
-    
+
     .seo-links ul {
       float: left;
       padding: 0 20px 0 0;
       width: 150px;
     }
-    
+
     .seo-links a {
       display: block;
       padding: 0 0 0 5px;
@@ -2705,7 +2706,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
 
   /* @end */
-  
+
   /* @group -footer */
 
     #footer {
@@ -2756,7 +2757,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       width: 280px;
       padding-left: 25px;
     }
-  
+
   /* @end */
 
 /* @end */
@@ -2817,7 +2818,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       color: #2e2e39;
       text-decoration: none;
     }
-  
+
   /* @end   -header */
 
   /* @group -special-nav */
@@ -2849,9 +2850,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       font-weight: bold;
       color: #636972;
     }
-  
+
   /* @end */
-  
+
   /* @group -home */
 
     .home #masthead-fg {
@@ -2881,9 +2882,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 			font-size: 15px;
 			line-height: 1;
     }
-  
+
   /* @end */
-  
+
   /* @group -news */
 
     #news h2 {
@@ -2903,9 +2904,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       font-weight: bold;
       color: #656571;
     }
-  
+
   /* @end */
-  
+
   /* @group -secondary */
 
     .secondary #header #main-nav li li a {
@@ -2935,9 +2936,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .secondary #main-content p.first {
       font-size: 15px;
     }
-  
+
   /* @end */
-  
+
   /* @group -about */
 
     .about #masthead .section,
@@ -3014,7 +3015,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
 		#secondary-nav li.current a {
 			color: #080812;
-		}		
+		}
     .about #content p,
 		.generic #content p {
       padding-bottom: 1.454545455em;
@@ -3027,7 +3028,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .about #aside .section p,
     .services #aside .section h4,
     .services #aside .section p,
- 		.generic #aside .section h4, 
+ 		.generic #aside .section h4,
 		.generic #aside .section p {
       font-size: 11px;
       line-height: 1.272727273;
@@ -3053,9 +3054,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       line-height: 0.925925926;
       font-weight: normal;
     }
-  
+
   /* @end */
-  
+
   /* @group -community */
 
     .about #breadcrumb li,
@@ -3090,7 +3091,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .services #breadcrumb li a:hover {
       text-decoration: none;
     }
-    
+
     /* @group --masthead */
 
       .community #secondary-nav a {
@@ -3109,9 +3110,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         font-weight: bold;
         text-transform: uppercase;
       }
-          
+
     /* @end */
-    
+
     /* @group --slideshow */
 
       .property #slideshow .header {
@@ -3126,9 +3127,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         line-height: 1.133333333;
         color: #fff;
       }
-    
+
     /* @end */
-    
+
     .community #main-content {
       font-size: 11px;
     }
@@ -3233,14 +3234,14 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       padding-bottom: 5px;
       margin-bottom: 0;
     }
-  
+
   /* @end */
-  
+
   /* @group -project */
 
     .project #sidebar #secondary-nav a {
       color: #84848b;
-    } 
+    }
 
     .project #sidebar h2 a {
       color: #84848b;
@@ -3292,7 +3293,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
 
     .project #main-content .content .main-content .pagination a {
-      color: #747479; 
+      color: #747479;
     }
 
     .project #main-content .content .sub-content h4 a:hover {
@@ -3310,9 +3311,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       font-weight: bold;
       line-height: 15px;
     }
-  
+
   /* @end */
-  
+
   /* @group -apartments */
 
     .apartments #masthead {
@@ -3382,9 +3383,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .apartments #content div.row p a {
       text-transform: none;
     }
-  
+
   /* @end */
-  
+
   /* @group -homes */
 
     .homes #masthead .section p.call-to-action a {
@@ -3393,9 +3394,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
 
     .homes #masthead .section p.figure {
-      font-size: 13px;      
+      font-size: 13px;
     }
-    
+
     .homes-search #masthead p.call-to-action {
       font-size: 11px;
     }
@@ -3409,7 +3410,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .homes #masthead .aside p.call-to-action a:hover {
       text-decoration: none;
     }
-  
+
     .homes #content {
       width: 770px;
       padding-right: 0;
@@ -3547,13 +3548,13 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	color: #636972;
     	font-weight: bold;
     }
-  
+
     .homes #content div.row p a {
       text-transform: none;
     }
-  
+
   /* @end */
-  
+
   /* @group -services */
 
     .testimonials ul {
@@ -3589,20 +3590,20 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       font-size: 11px;
       font-weight: bold;
     }
-  
+
   /* @end */
-  
+
   /* @group -leadership */
 
     .leadership #breadcrumb li, .leadership #breadcrumb li a {
       font-size: 11px;
     }
-  
+
     .aside-quote p {
       font-size: 15px;
       line-height: 22px;
     }
-    
+
     .aside-quote cite {
       font-style: italic;
     }
@@ -3610,17 +3611,17 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .aside-quote strong {
       font-style: normal;
     }
-  
+
     .partner-group {
       white-space: nowrap;
     }
-    
+
     .partners a, .partners span {
       display: block;
       color: #84848b;
       font-size: 11px;
     }
-    
+
     .partners a:hover {
       text-decoration: none;
     }
@@ -3634,19 +3635,19 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       font-size: 13px;
       line-height: 30px;
     }
-  
+
     /* @group --bios */
 
       .js .partner-bio-outer {
         font-size: 11px;
         line-height: 18px;
       }
-    
+
     /* @end */
-    
-  
+
+
   /* @end */
-  
+
   /* @group -landing */
 
     .areamap-popular-properties h4 a {
@@ -3659,7 +3660,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       font-weight: bold;
       line-height: 14px;
     }
-    
+
     .landing #content div.header p {
       text-align: center;
     }
@@ -3667,17 +3668,17 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .landing .listings {
       font-size: 11px;
     }
-    
+
     .landing .listings a {
       text-transform: uppercase;
       color: #636972;
     }
-    
+
     .landing .listings .count {
       font-size: 12px;
       text-align: right;
     }
-    
+
     .seo-text .more {
       color: #565C64;
     }
@@ -3689,7 +3690,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
 
   /* @end */
-  
+
   /* @group -footer */
 
     #footer,
@@ -3736,7 +3737,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     #copyright #eho {
       text-transform: none;
     }
-  
+
   /* @end */
 
 /* @end */
@@ -3801,9 +3802,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     #special-nav #find-apartment-form .advanced-search a {
       background: none;
     }
-  
+
   /* @end */
-  
+
   /* @group -secondary */
 
     .secondary #header #main-nav li .dropdown {
@@ -3827,9 +3828,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
  		.generic #secondary-nav li li a {
       background-position: 22px center;
     }
-  
+
   /* @end */
-  
+
   /* @group -home */
 
     .home #masthead {
@@ -3850,9 +3851,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .home #featured-property h2 a {
       background:url("../images/structure/bg-right-arrow.png") no-repeat scroll 216px center transparent;
     }
-  
+
   /* @end  */
-  
+
   /* @group -news */
 
     .home #news {
@@ -3867,7 +3868,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .home #news li a {
       background: transparent url(../images/structure/bg-news-a.gif) no-repeat center left;
     }
-  
+
   /* @end */
 
   /* @group -about */
@@ -3937,9 +3938,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .services #latest-awards h4 a {
       background-position: center left;
     }
-  
+
   /* @end */
-  
+
   /* @group -community */
 
     .about #breadcrumb,
@@ -3997,7 +3998,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       background: transparent url(../images/structure/bg-header-a.gif) no-repeat center left;
     }
     .landing .listings a {
-      background: transparent url(../images/structure/bg-header-a.gif) no-repeat 5px left;    
+      background: transparent url(../images/structure/bg-header-a.gif) no-repeat 5px left;
     }
     .community #masthead #remote-nav a {
       background-position: 20px center;
@@ -4043,9 +4044,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .community #community-info p.call-to-action a:hover {
       background-position: right -28px;
     }
-  
+
   /* @end */
-  
+
   /* @group -project */
 
     .project #sidebar h2 a {
@@ -4097,15 +4098,15 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
 
     .project #main-content .content .sub-content .similar-projects p a {
-      background: url(../images/structure/bg-news-a.gif) left center no-repeat; 
+      background: url(../images/structure/bg-news-a.gif) left center no-repeat;
     }
 
     .project #main-content .content .sub-content .similar-projects ul {
       background: url(../images/structure/bg-about-content-p.gif) left bottom no-repeat;
     }
-  
+
   /* @end */
-  
+
   /* @group -apartments */
 
     .apartments #masthead {
@@ -4136,19 +4137,19 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .apartments #content ul.slideshow-pagination {
       background: #fff;
     }
-    
+
     .home ul.slideshow-pagination,
     .homes-search ul.slideshow-pagination {
       background: #fff url(../images/structure/bg-news-a.gif) no-repeat 5px center;
     }
-  
+
   /* @end */
-  
+
   /* @group -homes */
 
     .homes-search #masthead .section p.call-to-action a {
       background: url(../images/structure/bg-masthead-a-dark.gif) left center no-repeat;
-    }    
+    }
 
     .homes #masthead .aside p.call-to-action a {
       background: url(../images/structure/bg-apartments-masthead-aside-a.gif) left top no-repeat;
@@ -4245,9 +4246,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .homes #content #view-as-list .quick-links li a.go {
     	background-position: left bottom;
     }
-  
+
   /* @end */
-  
+
   /* @group -search results */
 
     .search #breadcrumb,
@@ -4287,12 +4288,12 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .search #content ul.results li ul.location-filters li h3 {
     	background: url(../images/structure/bg-search-results-header.gif) right -55px no-repeat;
     }
-    
+
     .search #content ul.results li.closed:hover div.header {
-    	background: url(../images/structure/bg-search-results-header.gif) right -198px no-repeat;      
+    	background: url(../images/structure/bg-search-results-header.gif) right -198px no-repeat;
     }
 
-    .search #content ul.results ul.location-filters li.open div.header h3 { 
+    .search #content ul.results ul.location-filters li.open div.header h3 {
       background-position: 100% -168px;
     }
 
@@ -4374,7 +4375,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
 
   /* @end */
-  
+
   /* @group -services */
 
     .testimonials li,
@@ -4395,31 +4396,31 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .tips li {
       background: url(../images/structure/blt-features.gif) no-repeat 0 0.5em;
     }
-  
+
   /* @end */
-  
+
   /* @group -leadership */
 
     .aside-quote .figure{
       background: #dde0e3 url(../images/structure/bg-aside-quote-figure.gif) 0 0 no-repeat;
     }
-    
+
     .partners .partner-name {
       background: url(../images/structure/bg-partner-name.gif) top right no-repeat;
     }
-    
+
     .partners a:hover .partner-name {
-      background-position: right -60px; 
+      background-position: right -60px;
     }
-    
+
     .partner-portrait, .partner-portrait-images li, .partner-portrait-screen {
       background: #F2F4F5 url(../images/structure/bg-partner-portrait.jpg) 0 0 no-repeat;
     }
 
     .partner-portrait-screen {
-      background-position: 0 -375px; 
+      background-position: 0 -375px;
     }
-    
+
     .partner-portrait-images .portrait-steve-s   { background-position: 0  -750px; }
     .partner-portrait-images .portrait-john-b    { background-position: 0 -1125px; }
     .partner-portrait-images .portrait-thomas-a  { background-position: 0 -1500px; }
@@ -4430,13 +4431,13 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .partner-portrait-images .portrait-julie-a   { background-position: 0 -3375px; }
     .partner-portrait-images .portrait-richard-l { background-position: 0 -3750px; }
     .partner-portrait-images .portrait-michael-a { background-position: 0 -4125px; }
-                
+
     /* @group --bios */
 
       .js .partner-bio-outer {
         background: transparent url(../images/structure/bg-partner-bio.png) no-repeat right 0;
       }
-            
+
       .js .partner-bio-inner {
         background: transparent url(../images/structure/bg-partner-bio.png) no-repeat 0 bottom;
       }
@@ -4446,9 +4447,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       }
 
     /* @end */
-                              
+
   /* @end */
-  
+
   /* @group -landing */
 
     .areamap-popular-properties h4 a {
@@ -4458,54 +4459,54 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .areamap-popular-properties h4 a:hover {
       background-position: bottom right;
     }
-    
+
     .mapkey li, .areamap-popular-properties p {
       background-image: url(../images/structure/bg-areamap-icon.png);
       background-repeat: no-repeat;
     }
-    
+
     .mapkey li span {
       background: url(../images/structure/bg-about-content-p.gif) bottom left no-repeat;
     }
-    
+
     .mapkey .apartments {
       background-position: 0 0;
     }
-    
+
     .mapkey .homes-condominiums {
-      background-position: 0 -500px;      
+      background-position: 0 -500px;
     }
-    
+
     .mapkey .upcoming-projects {
-      background-position: 0 -1000px;            
+      background-position: 0 -1000px;
     }
-    
+
     .areamap-popular-properties .apartments p {
       background-position: right 10px;
     }
-    
+
     .areamap-popular-properties .homes-condominiums p {
-      background-position: right -490px;      
+      background-position: right -490px;
     }
-    
+
     .areamap-popular-properties .upcoming-projects p {
-      background-position: right -990px;            
+      background-position: right -990px;
     }
 
     body.landing #content div.header ul li a {
       background-position: -450px 0;
     }
-    
+
     .seo-text .more {
       background: url(/images/structure/bg-masthead-a-dark.gif) no-repeat 0px 50%;
     }
-    
+
     .seo-links a {
       background: transparent url(/images/structure/bg-header-a.gif) no-repeat 0% 50%;
     }
 
   /* @end */
-  
+
   /* @group -footer */
 
     #footer {
@@ -4526,7 +4527,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     #copyright #eho {
       background: transparent url(../images/structure/bg-copyright-eho.gif) no-repeat center left;
     }
-  
+
   /* @end */
 
 /* @end */
@@ -4557,9 +4558,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     #header .search-form button:hover {
       background-position: 0 -22px;
     }
-  
+
   /* @end */
-  
+
   /* @group -header */
 
     #header #logo a {
@@ -4568,9 +4569,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     #header #main-nav li a {
       background: transparent url(../images/structure/bg-main-nav.gif) no-repeat 0 0;
     }
-  
+
   /* @end */
-  
+
   /* @group -secondary */
 
     .secondary #header #main-nav li.apartments-nav a {
@@ -4606,9 +4607,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .secondary #header #main-nav li.services-nav a:hover {
       background-position: -800px -90px;
     }
-  
+
   /* @end */
-  
+
   /* @group -header - home and landing */
 
     .home #header #main-nav li.apartments-nav a,
@@ -4643,9 +4644,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .landing #header #main-nav li.services-nav a:hover {
       background-position: -300px -135px;
     }
-  
+
   /* @end */
-  
+
   /* @group -community */
 
     .property #slideshow .header a.prev {
@@ -4679,9 +4680,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .community #overview ul.community-icons li.non-smoking a {
       background-position: 5px -172px;
     }
-  
+
   /* @end */
-  
+
   /* @group -apartments */
 
     .property #slideshow ul.slideshow-navigation li a,
@@ -4696,9 +4697,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .apartments #content ul.slideshow-navigation li a.next {
       background-position: right top;
     }
-  
+
   /* @end */
-  
+
   /* @group -services */
 
     .services #content ul.slideshow-navigation li a,
@@ -4717,17 +4718,17 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .tips .read-more {
       background: url(../images/structure/bg-header-a.gif) no-repeat 0 50%;
     }
-  
+
   /* @end */
-  
+
   /* @group -search */
 
     .search #search-results-map {
     	background: #dde0e3;
     }
-  
+
   /* @end */
-  
+
 /* @end */
 
 /* @group =5. Misc */

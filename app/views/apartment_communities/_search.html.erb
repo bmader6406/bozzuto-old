@@ -14,34 +14,38 @@
 </div>
 
 <ul class="results">
-  <% @communities.keys.sort.each do |state| %>
-    <% communities = @communities[state] %>
-    <li class="<%= 'closed' unless state == @communities.keys.sort.first %>">
+  <% State.all.each do |state| %>
+    <% communities = @communities[state.name] || [] %>
+    <li class="<%= 'closed' unless state.name == @communities.keys.sort.first %>">
       <div class="header">
-        <h2><%= state %></h2>
+        <h2><%= state.name %></h2>
         <p><%= pluralize communities.count, 'Apartment Community' %></p>
       </div>
       <ul class="location-filters">
-        <li>
+        <li class="<%= 'open' if params[:search][:city_id].present? %>">
           <div class="header">
             <h3>Cities</h3>
           </div>
           <ul>
-            <li><a href="#"><strong>Annapolis</strong> <em>4</em></a></li>
-            <li><a href="#"><strong>Annapolis</strong> <em>4</em></a></li>
-            <li><a href="#"><strong>Annapolis</strong> <em>4</em></a></li>
-            <li class="alt"><a href="#"><strong>Annapolis</strong> <em>4</em></a></li>
+            <% state.cities.ordered_by_name.each_with_index do |city, index| %>
+              <li class="<%= 'alt' if (index+1)%4 == 0 %>">
+                <% count = communities.select {|c| c.city_id == city.id}.count %>
+                <%= count > 0 ? link_to(raw("<strong>#{city.name}</strong> <em>#{count}</em>"), apartment_communities_path(:search => params[:search].merge({:city_id => city.id, :county_id => nil}))) : raw("<span><strong>#{city.name}</strong> <em>#{count}</em></span>") %>
+              </li>
+            <% end %>
           </ul>
         </li>
-        <li>
+        <li class="<%= 'open' if params[:search][:county_id].present? %>">
           <div class="header">
             <h3>Counties</h3>
           </div>
           <ul>
-            <li><a href="#"><strong>Annapolis</strong> <em>4</em></a></li>
-            <li><a href="#"><strong>Annapolis</strong> <em>4</em></a></li>
-            <li><a href="#"><strong>Annapolis</strong> <em>4</em></a></li>
-            <li class="alt"><a href="#"><strong>Annapolis</strong> <em>4</em></a></li>
+            <% state.counties.ordered_by_name.each_with_index do |county, index| %>
+              <li class="<%= 'alt' if (index+1)%4 == 0 %>">
+                <% count = communities.select {|c| c.county_id == county.id}.count %>
+                <%= count > 0 ? link_to(raw("<strong>#{county.name}</strong> <em>#{count}</em>"), apartment_communities_path(:search => params[:search].merge({:county_id => county.id, :city_id => nil}))) : raw("<span><strong>#{county.name}</strong> <em>#{count}</em></span>") %>
+              </li>
+            <% end %>
           </ul>
         </li>
       </ul>
