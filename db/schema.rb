@@ -82,8 +82,6 @@ ActiveRecord::Schema.define(:version => 20100702151538) do
   end
 
   create_table "home_pages", :force => true do |t|
-    t.string   "banner_image_file_name"
-    t.string   "banner_image_content_type"
     t.text     "body"
     t.integer  "featured_property_id"
     t.datetime "created_at"
