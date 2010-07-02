@@ -7,7 +7,7 @@ class PropertyMiniSlide < ActiveRecord::Base
 
   has_attached_file :image,
     :url => '/system/:class/:id/:style.:extension',
-    :styles => { :slide => '230x144#' },
+    :styles => { :slide => '230x145#' },
     :default_style => :slide
 
   validates_attachment_presence :image

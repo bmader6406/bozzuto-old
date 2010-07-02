@@ -24,7 +24,7 @@ function setSearchFormState() {
     $("#secondary-nav").secondaryNav();
 
     $("#community-info, #apartments-by-area, #properties-by-type").onPageTabs();
-    $('.community .social-updates .twitter-update').latestTwitterUpdate();
+    $('.twitter-update').latestTwitterUpdate();
 
     $(".apartments div.slideshow, .homes-search .slideshow, .home .slideshow").featuredSlideshow();
 

@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   Typus::Routes.draw(map)
   Jammit::Routes.draw(map)
 
-  map.root :controller => :home
+  map.root :controller => :home_pages
 
   map.map_apartment_communities 'apartments/communities/map', :controller => 'apartment_communities', :action => 'index', :template => 'map'
   community_options = {

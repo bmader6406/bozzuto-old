@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class HomeControllerTest < ActionController::TestCase
+class HomePagesControllerTest < ActionController::TestCase
   context 'HomeController' do
     context 'a GET to #index' do
       setup do
