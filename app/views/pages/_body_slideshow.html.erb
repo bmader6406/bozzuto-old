@@ -1,0 +1,27 @@
+<div class="slideshow">
+  <ul class="slides">
+    <% slideshow.slides.each_with_index do |slide, i| %>
+      <li id="slide-<%= i + 1 %>" class="section">
+        <%= image_tag slide.image.url, :width => 840, :height => 375 %>
+      </li>
+    <% end %>
+  </ul>
+
+  <ul class="slideshow-navigation">
+    <li>
+      <a href="#" class="prev">Previous</a>
+    </li>
+    <li>
+      <a href="#" class="next">Next</a>
+    </li>
+  </ul>
+  <ul class="slideshow-pagination">
+    <li class="current">
+      <a href="#slide-1">1</a>
+    </li>
+    <li>
+      <a href="#slide-2">2</a>
+    </li>
+  </ul>
+</div>
+

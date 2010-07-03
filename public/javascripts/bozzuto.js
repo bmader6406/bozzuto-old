@@ -29,9 +29,7 @@ window.bozzuto = {};
     $("#community-info, #apartments-by-area, #properties-by-type").onPageTabs();
     $('.twitter-update').latestTwitterUpdate();
 
-    $(".apartments div.slideshow, .homes-search .slideshow, .home .slideshow").featuredSlideshow();
-
-    $(".services div.slideshow, .about div.slideshow").featuredSlideshow();
+    $(".page div.slideshow").featuredSlideshow();
 
     $(".property #slideshow").featuredSlideshow({
       'dynamicPagination' : false
