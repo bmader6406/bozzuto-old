@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100703225948) do
+ActiveRecord::Schema.define(:version => 20100703231026) do
 
   create_table "awards", :force => true do |t|
     t.string   "title",                           :null => false
@@ -122,6 +122,20 @@ ActiveRecord::Schema.define(:version => 20100703225948) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "featured",                                        :default => false, :null => false
+  end
+
+  create_table "masthead_slides", :force => true do |t|
+    t.text     "body",                                 :null => false
+    t.integer  "slide_type",            :default => 0, :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.string   "image_link"
+    t.text     "sidebar_text"
+    t.integer  "featured_property_id"
+    t.integer  "masthead_slideshow_id"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "masthead_slideshows", :force => true do |t|

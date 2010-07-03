@@ -1,10 +1,11 @@
 class FloorPlan < ActiveRecord::Base
-  IMAGE_TYPE = [
-    ['Enter a URL', 0],
-    ['Upload a file', 1]
-  ]
   USE_IMAGE_URL = 0
   USE_IMAGE_FILE = 1
+
+  IMAGE_TYPE = [
+    ['Enter a URL',   USE_IMAGE_URL],
+    ['Upload a file', USE_IMAGE_FILE]
+  ]
 
   before_validation :set_rent_prices
 
