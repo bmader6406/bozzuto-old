@@ -2,7 +2,7 @@ require 'test_helper'
 
 class BodySlideTest < ActiveSupport::TestCase
   context 'BodySlide' do
-    should_belong_to :slideshow
+    should_belong_to :body_slideshow
 
     should_have_attached_file :image
 

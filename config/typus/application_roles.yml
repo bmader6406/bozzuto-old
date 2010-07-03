@@ -5,6 +5,8 @@
 admin:
   ApartmentCommunity: create, read, update, delete
   Award: create, read, update, delete
+  BodySlide: create, read, update, delete
+  BodySlideshow: create, read, update, delete
   City: create, read, update, delete
   County: create, read, update, delete
   FloorPlanGroup: read

@@ -4,7 +4,7 @@ class CreateBodySlides < ActiveRecord::Migration
       t.with_options :null => false do |n|
         t.string  :image_file_name
         t.string  :image_content_type
-        t.integer :slideshow_id
+        t.integer :body_slideshow_id
       end
       t.integer :position
 

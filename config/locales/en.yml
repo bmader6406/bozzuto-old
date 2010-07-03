@@ -2,6 +2,8 @@ en:
   activerecord:
     models:
       apartment_community: Apartment Community
+      body_slide: Slide
+      body_slideshow: Page Body Slideshow
       floor_plan: Floor Plan
       floor_plan_group: Floor Plan Type
       home_community: Home Community
@@ -17,11 +19,13 @@ en:
       property_mini_slideshow: Mini Slideshow
       property_slide: Slide
       property_slideshow: Property Slideshow
-      typus_user: Typus User
+      typus_user: User
       yelp_feed: Yelp Feed
     attributes:
       award:
         published_at: Published At
+      body_slide:
+        body_slideshow: Slideshow
       community:
         elite: Elite Community
         smart_share: Bozzuto SmartShare Program

@@ -28,6 +28,28 @@ Award:
   search: title
   application: Content
 
+BodySlide:
+  fields:
+    default: image, position
+    list: image, position
+    form: image, body_slideshow
+  order_by: position
+  relationships: body_slideshow
+  filters: 
+  search: 
+  application: 
+
+BodySlideshow:
+  fields:
+    default: name
+    list: name, page
+    form: name, page
+  order_by: 
+  relationships: page, slides
+  filters: 
+  search: name
+  application: 
+
 City:
   fields:
     default: name, state
@@ -153,7 +175,7 @@ Page:
     options:
       ckeditor: body
   order_by: section_id, lft
-  relationships: parent, section
+  relationships: parent, section, body_slideshow
   filters:
   search: title
   application: Content
