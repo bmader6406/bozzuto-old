@@ -7,7 +7,7 @@ module Typus
     end
 
     def typus_table_position_field_with_nested_set(attribute, item)
-      unless @resource[:class].respond_to?(:acts_as_nested_set_options)
+      unless item.class.respond_to?(:acts_as_nested_set_options)
         return typus_table_position_field_without_nested_set(attribute, item)
       end
 
