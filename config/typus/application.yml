@@ -154,6 +154,31 @@ HomePageSlide:
   search: 
   application: 
 
+MastheadSlide:
+  fields:
+    default: image, image_link, position
+    list: image, image_link, position
+    form: body, slide_type, image, image_link, sidebar_text, featured_property, masthead_slideshow
+    options:
+      ckeditor: body, sidebar_text
+      selectors: slide_type
+  order_by: position
+  relationships: featured_property, masthead_slideshow
+  filters: 
+  search: 
+  application: 
+
+MastheadSlideshow:
+  fields:
+    default: name
+    list: name, page
+    form: name, page
+  order_by: 
+  relationships: page, slides
+  filters: 
+  search: name
+  application: 
+
 NewsPost:
   fields:
     default: title, published, published_at
@@ -175,7 +200,7 @@ Page:
     options:
       ckeditor: body
   order_by: section_id, lft
-  relationships: parent, section, body_slideshow
+  relationships: parent, section, masthead_slideshow, body_slideshow
   filters:
   search: title
   application: Content

@@ -12,6 +12,8 @@ en:
         one: Home Page
         many: Home Page
       home_page_slide: Slide
+      masthead_slide: Slide
+      masthead_slideshow: Masthead Slideshow
       news_post: News
       project_data_point: Data Point
       project_update: Update
@@ -53,6 +55,13 @@ en:
         home_community: Home Community
       home_page:
         featured_property: Featured Property
+      masthead_slide:
+        body: Body Text
+        featured_property: Featured Property
+        image_link: Image Link
+        masthead_slideshow: Masthead Slideshow
+        sidebar_text: Sidebar Text
+        slide_type: Slide Type
       news_post:
         published_at: Published At
       page:
