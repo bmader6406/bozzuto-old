@@ -8,19 +8,63 @@ $(function() {
     $.each(data, function(i) { CKEDITOR.replace(data[i].id); });
   }
 
-  var imageUrl  = $('input#floor_plan_image_url').parent(),
-      imageFile = $('input#floor_plan_image').parent();
+  // floor plan form
+  (function() {
+    var imageUrl  = $('input#floor_plan_image_url').parent(),
+        imageFile = $('input#floor_plan_image').parent();
 
-  $('select#floor_plan_image_type').change(function() {
-    var selected = $(':selected', this).val();
+    $('select#floor_plan_image_type').change(function() {
+      var selected = parseInt($(':selected', this).val()),
+          usesUrl  = 0,
+          usesFile = 1;
 
-    if (selected == 0) {
-      imageFile.hide();
-      imageUrl.show();
-    } else {
-      imageFile.show();
-      imageUrl.hide();
-    }
-  }).change();
+      switch (selected) {
+        case usesUrl:
+          imageFile.hide();
+          imageUrl.show();
+          break;
+        case usesFile:
+          imageFile.show();
+          imageUrl.hide();
+          break;
+      }
+    }).change();
+  })();
+
+  // masthead slideshow form
+  (function() {
+    var imageFile   = $('input#masthead_slide_image').parent(),
+        imageLink   = $('input#masthead_slide_image_link').parent(),
+        sidebarText = $('textarea#masthead_slide_sidebar_text').parent(),
+        property    = $('select#masthead_slide_featured_property_id').parent();
+
+    $('select#masthead_slide_slide_type').change(function() {
+      var selected     = parseInt($(':selected', this).val()),
+          usesImage    = 0,
+          usesText     = 1,
+          usesProperty = 2
+
+      switch (selected) {
+        case usesImage:
+          imageFile.show();
+          imageLink.show();
+          property.hide();
+          sidebarText.hide();
+          break;
+        case usesText:
+          imageFile.hide();
+          imageLink.hide();
+          property.hide();
+          sidebarText.show();
+          break;
+        case usesProperty:
+          imageFile.hide();
+          imageLink.hide();
+          property.show();
+          sidebarText.hide();
+          break;
+      }
+    }).change();
+  })();
 });
 
