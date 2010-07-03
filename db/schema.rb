@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100703175749) do
+ActiveRecord::Schema.define(:version => 20100703180519) do
 
   create_table "awards", :force => true do |t|
     t.string   "title",                           :null => false
@@ -17,6 +17,15 @@ ActiveRecord::Schema.define(:version => 20100703175749) do
     t.integer  "section_id"
     t.boolean  "published",    :default => false, :null => false
     t.datetime "published_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "body_slides", :force => true do |t|
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "slideshow_id"
+    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
