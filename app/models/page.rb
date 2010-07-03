@@ -6,6 +6,7 @@ class Page < ActiveRecord::Base
     :scope    => :section
 
   belongs_to :section
+  has_one :body_slideshow
 
   validates_presence_of :title
 
