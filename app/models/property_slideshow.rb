@@ -8,5 +8,6 @@ class PropertySlideshow < ActiveRecord::Base
 
   has_many :slides,
     :class_name => 'PropertySlide',
-    :dependent  => :destroy
+    :dependent  => :destroy,
+    :order      => 'position ASC'
 end
