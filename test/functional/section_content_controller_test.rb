@@ -99,8 +99,8 @@ class SectionContentControllerTest < ActionController::TestCase
           @controller.instance_variable_set(:@section, @section)
         end
 
-        should 'return all awards' do
-          assert_equal Project.all,
+        should "return this section's projects" do
+          assert_equal @section.projects.all,
             @controller.send(:section_projects)
         end
       end

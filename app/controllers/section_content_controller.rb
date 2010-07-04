@@ -33,7 +33,7 @@ class SectionContentController < ApplicationController
   helper_method :section_awards
 
   def section_projects
-    @section.aggregate? ? Project.scoped({}) : @section.projects
+    @section.projects
   end
   helper_method :section_projects
 end
