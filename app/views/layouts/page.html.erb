@@ -4,15 +4,11 @@
 <body class="secondary page <%= yield :body_class %>">
   <%= render :partial => 'layouts/header' %>
 
-  <div id="masthead">
-    <%= render :partial => 'pages/breadcrumb' %>
-
-    <% if @section.montage? %>
-      <div id="montage">
-          <%= image_tag @section.left_montage_image.url %><%= image_tag @section.middle_montage_image.url %><%= image_tag @section.right_montage_image.url %>
-      </div>
-    <% end %>
-  </div>
+  <% if @page.present? && @page.masthead_slideshow.try(:present?) %>
+    <%= render :partial => 'pages/masthead_slideshow', :locals => { :slideshow => @page.masthead_slideshow } %>
+  <% else %>
+    <%= render :partial => 'pages/masthead' %>
+  <% end %>
 
   <div id="main-content">
     <div class="container">

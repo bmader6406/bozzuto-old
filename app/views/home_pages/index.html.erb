@@ -52,20 +52,7 @@
           </h2>
 
           <% if @featured_property.mini_slideshow.present? %>
-            <div class="slideshow">
-              <ul class="slides">
-                <% @featured_property.mini_slideshow.slides.each_with_index do |slide, i| %>
-                  <li <% if i == 0 %>class="current"<% end %> id="slide-<%= i %>">
-                    <%= image_tag slide.image.url %>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-
-            <p>
-              <strong><%= @featured_property.address %></strong><br />
-              <%= @featured_property.subtitle.try(:html_safe) %>
-            </p>
+            <%= render :partial => 'properties/mini_slideshow', :locals => { :slideshow => @featured_property.mini_slideshow } %>
           <% end %>
         </div>
       <% end %>

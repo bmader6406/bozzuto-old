@@ -609,6 +609,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 				white-space: nowrap;
 				width: 100%;
 			}
+			.page #montage {
+        background-color: #fff;
+      }
       .community #masthead .nav,
  			.project #masthead .nav {
         position: relative;
@@ -1258,6 +1261,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 
   /* @group -services */
 
+    .page #masthead,
     .services #masthead,
     .landing #masthead,
     .about #masthead {
@@ -1267,6 +1271,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 		.project #masthead {
       border-bottom: 1px solid #cdd1d5;
     }
+    .page #masthead .container,
     .services #masthead .container,
     .landing #masthead .container,
     .about #masthead .container {
@@ -1280,24 +1285,30 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 		.project #masthead .container {
 			height: 372px;
 		}
-    #masthead .masthead-slideshow .slides {
+    #masthead .masthead-slideshow {
+      height: 223px;
+    }
+    #masthead .masthead-slideshow ul.slides {
+      height: 223px;
       z-index: 1;
     }
-    #masthead .masthead-slideshow .slides li {
+    #masthead .masthead-slideshow ul.slides li {
+      text-indent: 0;
       background: #c0c5cb url(../images/structure/bg-masthead.gif) repeat-x;
+      height: 223px;
       left: 0;
       position: absolute;
       top: 0;
       width: 960px;
       z-index: 1;
     }
-    #masthead .masthead-slideshow .slides .current {
+    #masthead .masthead-slideshow ul.slides .current {
       z-index: 2;
     }
-    #masthead .masthead-slideshow .slides .on-deck {
+    #masthead .masthead-slideshow ul.slides .on-deck {
       z-index: 3;
     }
-    #masthead .masthead-slideshow .slideshow-pagination {
+    #masthead .masthead-slideshow ul.slideshow-pagination {
       border-top: 1px solid #fff;
       height: 20px;
       left: 190px;
@@ -1306,10 +1317,10 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       width: 150px;
       z-index: 2;
     }
-    #masthead .masthead-slideshow .slideshow-pagination li {
+    #masthead .masthead-slideshow ul.slideshow-pagination li {
       float: left;
     }
-    #masthead .masthead-slideshow .slideshow-pagination li a {
+    #masthead .masthead-slideshow ul.slideshow-pagination li a {
       background: none;
       color: #717479;
       display: block;
@@ -1318,10 +1329,11 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       padding: 7px 6px;
       width: auto;
     }
-    #masthead .masthead-slideshow .slideshow-pagination li.current a {
+    #masthead .masthead-slideshow ul.slideshow-pagination li.current a {
       color: #000;
       font-weight: bold;
     }
+    .page #masthead .section,
     .services #masthead .section,
     .landing #masthead .section,
     .about #masthead .section {
@@ -1330,6 +1342,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       padding: 24px 0 28px 189px;
       width: 515px;
     }
+    .page #masthead .section h1,
     .services #masthead .section h1,
     .landing #masthead .section h1 {
       color: #565c64;
@@ -1337,6 +1350,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       line-height: 1;
       text-transform: uppercase;
     }
+    .page #masthead .section .more,
     .services #masthead .section .more,
     .about #masthead .section .more {
       background: url(../images/structure/bg-masthead-a-dark.gif) no-repeat 0 50%;
@@ -1347,10 +1361,14 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       margin: 15px 0 0;
       padding: 0 0 0 6px;
     }
+    .page #masthead .aside,
     .landing #masthead .aside,
     .services #masthead .aside {
       float: right;
     }
+
+    .page #masthead .aside a,
+    .page #masthead .aside img,
     .landing #masthead .aside a,
     .landing #masthead .aside img,
     .services #masthead .aside a,
@@ -3913,6 +3931,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 
   /* @group -about */
 
+    .page #masthead,
     .about #masthead,
     .homes #masthead,
     .services #masthead,
@@ -4865,10 +4884,79 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 
 
 .page #content {
-  width: 770px;
   padding-right: 0;
+  width: 770px;
 }
 .page #content .column-main {
   float: left;
   width: 520px;
+}
+.page #masthead .aside,
+.page #masthead .figure {
+  float: right;
+  height: 223px;
+  position: relative;
+  width: 230px;
+}
+.page #masthead .aside {
+  float: right;
+  height: 193px;
+  padding-top: 30px;
+  width: 230px;
+}
+.page #masthead .aside p.call-to-action a {
+  display: block;
+  height: 28px;
+  margin-bottom: 21px;
+  padding-left: 9px;
+  width: 220px;
+}
+.page #masthead .aside p.call-to-action a {
+  background: url(../images/structure/bg-apartments-masthead-aside-a.gif) left top no-repeat;
+}
+
+.page #masthead .aside p.call-to-action a:hover {
+  background-position: left bottom;
+}
+
+.page #masthead .aside ul li a {
+  background: url(../images/structure/bg-masthead-a-dark.gif) 1px 12px no-repeat;
+}
+.page #masthead .aside ul {
+  margin-right: -19px;
+  overflow: hidden;
+  width: 250px;
+}
+.page #masthead .aside ul li {
+  float: left;
+}
+.page #masthead .aside ul li a {
+  border-bottom: 1px solid #d1d5d9;
+  display: block;
+  margin-right: 19px;
+  padding-left: 8px;
+  width: 98px;
+}
+.page #masthead .aside ul li.last a {
+  border-bottom: none;
+}
+.page #masthead .aside p.call-to-action a {
+  color: #000;
+  font-size: 15px;
+  line-height: 28px;
+}
+.page #masthead .aside p.call-to-action a:hover {
+  text-decoration: none;
+}
+.page #masthead .aside ul li {
+  font-size: 11px;
+  text-transform: uppercase;
+}
+.page #masthead .aside ul li a {
+  color: #565c64;
+  line-height: 28px;
+}
+.page #masthead .aside ul li a:hover {
+  color: #2E2E39;
+  text-decoration: none;
 }

@@ -1,0 +1,9 @@
+<div id="masthead">
+  <%= render :partial => 'pages/breadcrumb' %>
+
+  <% if @section.montage? %>
+    <div id="montage">
+        <%= image_tag @section.left_montage_image.url %><%= image_tag @section.middle_montage_image.url %><%= image_tag @section.right_montage_image.url %>
+    </div>
+  <% end %>
+</div>
