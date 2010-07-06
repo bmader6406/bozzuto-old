@@ -10,6 +10,7 @@ class PropertyTest < ActiveSupport::TestCase
 
     should_belong_to :city, :county
     should_have_one :slideshow, :mini_slideshow
+    should_have_and_belong_to_many :property_features
 
     should_validate_presence_of :title, :city
     should_validate_numericality_of :latitude, :longitude

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100706184912) do
+ActiveRecord::Schema.define(:version => 20100706195127) do
 
   create_table "awards", :force => true do |t|
     t.string   "title",                           :null => false
@@ -236,6 +236,21 @@ ActiveRecord::Schema.define(:version => 20100706184912) do
     t.string   "overview_bullet_2"
     t.string   "overview_bullet_3"
     t.boolean  "published",                  :default => false, :null => false
+  end
+
+  create_table "properties_property_features", :id => false, :force => true do |t|
+    t.integer "property_id"
+    t.integer "property_feature_id"
+  end
+
+  create_table "property_features", :force => true do |t|
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.string   "name"
+    t.text     "description"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "property_mini_slides", :force => true do |t|
