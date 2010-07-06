@@ -207,6 +207,7 @@ window.bozzuto = {};
   ////
   // tooltips on icon hovers
   var tooltime = 'inactive', $tooltip, $tooltipArrow, $tooltipContents;
+  
   $.fn.toolTip = function(){
 
     return this.each(function(){
