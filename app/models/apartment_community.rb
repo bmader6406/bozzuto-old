@@ -29,6 +29,7 @@ class ApartmentCommunity < Community
     @nearby_communities ||= city.apartment_communities.near(self).all(:limit => limit)
   end
 
+
   private
 
   def mark_dirty_floor_plan_prices

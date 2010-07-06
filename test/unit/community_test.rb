@@ -10,6 +10,20 @@ class CommunityTest < ActiveSupport::TestCase
 
     should_belong_to :yelp_feed
 
+    context '#has_overview_bullets?' do
+      should 'return false if all bullets are empty' do
+        (1..3).each do |i|
+          assert_nil @community.send("overview_bullet_#{i}")
+        end
+        assert !@community.has_overview_bullets?
+      end
+
+      should 'return true if any bullets are present' do
+        @community.overview_bullet_2 = 'Blah blah blah'
+        assert @community.has_overview_bullets?
+      end
+    end
+
     context 'with no Yelp Feed' do
       should 'return an empty array on #local_reviews' do
         assert_nil @community.yelp_feed

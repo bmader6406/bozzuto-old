@@ -6,7 +6,7 @@ ApartmentCommunity:
   fields:
     default: title, street_address, city
     list: title, street_address, city
-    form: title, street_address, city, county, latitude, longitude, website_url, video_url, facebook_url, twitter_handle, yelp_feed, listing_image, listing_title, listing_text, overview_text, features_text, neighborhood_text, contact_text
+    form: title, street_address, city, county, latitude, longitude, website_url, video_url, facebook_url, twitter_handle, yelp_feed, listing_image, listing_title, listing_text, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, features_text, neighborhood_text, contact_text
     options:
       ckeditor: listing_text, overview_text, features_text, neighborhood_text, contact_text
   order_by:
@@ -110,7 +110,7 @@ HomeCommunity:
   fields:
     default: title, street_address, city
     list: title, street_address, city
-    form: title, street_address, city, county, latitude, longitude, website_url, video_url, facebook_url, twitter_handle, yelp_feed, listing_image, listing_title, listing_text, latitude, longitude, overview_text, features_text, neighborhood_text, contact_text
+    form: title, street_address, city, county, latitude, longitude, website_url, video_url, facebook_url, twitter_handle, yelp_feed, listing_image, listing_title, listing_text, latitude, longitude, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, features_text, neighborhood_text, contact_text
     options:
       ckeditor: listing_text, overview_text, features_text, neighborhood_text, contact_text
   order_by: 

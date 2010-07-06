@@ -1,33 +1,11 @@
 module ApartmentCommunitiesHelper
-  def community_icons
-    content_tag :ul, :class => "community-icons" do
-      %w(elite smart_share smart_rent green non_smoking).inject("") do |html, flag|
-        if @community.send("#{flag}?")
-          html << content_tag(:li, :class => flag.gsub(/_/, '-')) do
-            link_to "#" do
-              content_tag(:span) { ApartmentCommunity.human_attribute_name(flag) }
-            end
-          end
-        end
-        html
-      end.html_safe
-    end
-  end
-
   def floor_plan_price(price)
     number_to_currency(price, :precision => 0)
   end
 
   def floor_plan_image(plan)
-    image, thumb = nil, nil
-
-    if plan.uses_image_url?
-      image = plan.image_url
-      thumb = image
-    else
-      image = plan.image.url
-      thumb = plan.image.url(:thumb)
-    end
+    image = plan.actual_image
+    thumb = plan.actual_thumb
 
     if image.present?
       link_to image_tag(thumb, :width => 160), image, :class => 'floor-plan-view'

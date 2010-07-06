@@ -29,9 +29,17 @@
     <div class="row">
       <div id="content" class="col">
         <div id="overview">
-          <%= community_icons %>
+          <%= property_icons %>
 
-          <%= @community.overview_text.try(:html_safe) %>
+          <% if @community.overview_title.present? %>
+            <h2><%= @community.overview_title %></h2>
+          <% end %>
+
+          <div class="intro">
+            <%= @community.overview_text.try(:html_safe) %>
+          </div>
+
+          <%= property_bullets %>
 
           <p>
             <%= link_to 'Read More', features_apartment_community_path(@community) %>

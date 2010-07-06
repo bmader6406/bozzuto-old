@@ -69,14 +69,18 @@ en:
       project_update:
         published_at: Published At
       property:
-        contact_text: Contact Text
+        contact_text: Contact Copy
         facebook_url: Facebook URL
-        features_text: Features Text
+        features_text: Features Copy
         listing_image: Listing Image
         listing_title: Listing Title
-        listing_text: Listing Text
-        neighborhood_text: Neighborhood Text
-        overview_text: Overview Text
+        listing_text: Listing Copy
+        neighborhood_text: Neighborhood Copy
+        overview_bullet_1: 'Overview Bullet #1'
+        overview_bullet_2: 'Overview Bullet #2'
+        overview_bullet_3: 'Overview Bullet #3'
+        overview_text: Overview Copy
+        overview_title: Overview Title
         slideshow: Property Slideshow
         street_address: Street Address
         twitter_handle: Twitter Handle

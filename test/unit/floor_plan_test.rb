@@ -81,28 +81,48 @@ class FloorPlanTest < ActiveSupport::TestCase
       setup do
         @url = 'http://viget.com/booya.jpg'
         @file = '/blah.jpg'
-
         @plan.image_url = @url
       end
 
       context 'when image_type is USE_IMAGE_URL' do
-        setup do
-          @plan.image_type = FloorPlan::USE_IMAGE_URL
-        end
-
         should 'return the image url' do
+          @plan.image_type = FloorPlan::USE_IMAGE_URL
+
           assert_equal @url, @plan.actual_image
         end
       end
 
       context 'when image_type is USE_IMAGE_FILE' do
-        setup do
+        should 'return the image file' do
           @plan.image_type = FloorPlan::USE_IMAGE_FILE
           @plan.image.expects(:url).returns(@file)
-        end
 
-        should 'return the image file' do
           assert_equal @file, @plan.actual_image
+        end
+      end
+    end
+
+    context '#actual_thumb' do
+      setup do
+        @url = 'http://viget.com/booya.jpg'
+        @file = '/blah.jpg'
+        @plan.image_url = @url
+      end
+
+      context 'when image_type is USE_IMAGE_URL' do
+        should 'return the image url' do
+          @plan.image_type = FloorPlan::USE_IMAGE_URL
+
+          assert_equal @url, @plan.actual_thumb
+        end
+      end
+
+      context 'when image_type is USE_IMAGE_FILE' do
+        should 'return the image file' do
+          @plan.image_type = FloorPlan::USE_IMAGE_FILE
+          @plan.image.expects(:url).with(:thumb).returns(@file)
+
+          assert_equal @file, @plan.actual_thumb
         end
       end
     end

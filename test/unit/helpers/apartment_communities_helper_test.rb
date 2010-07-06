@@ -2,19 +2,6 @@ require 'test_helper'
 
 class ApartmentCommunitiesHelperTest < ActionView::TestCase
   context "ApartmentCommunitiesHelper" do
-    context "#community_icons" do
-      setup do
-        @community = ApartmentCommunity.make(:elite => true, :non_smoking => true)
-      end
-
-      should "emit icons for true flags on the community" do
-        icons = HTML::Document.new(community_icons)
-        assert_select icons.root, "ul.community-icons"
-        assert_select icons.root, "li.elite"
-        assert_select icons.root, "li.non-smoking"
-      end
-    end
-
     context "#floor_plan_price" do
       setup do
         @plan = FloorPlan.make(:min_effective_rent => 600)
@@ -22,6 +9,18 @@ class ApartmentCommunitiesHelperTest < ActionView::TestCase
 
       should "return the floor plan's formatted price" do
         assert_equal "$600", floor_plan_price(@plan.min_effective_rent)
+      end
+    end
+
+    context '#floor_plan_image' do
+      setup do
+        @plan = FloorPlan.make :image_url => 'http://bozzuto.com/blah.jpg'
+      end
+
+      should 'return the link' do
+        link = HTML::Document.new(floor_plan_image(@plan))
+        assert_select link.root, 'a', :count => 1, :href => @plan
+        assert_select link.root, 'img', :count => 1, :src => @plan
       end
     end
 

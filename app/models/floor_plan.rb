@@ -63,6 +63,10 @@ class FloorPlan < ActiveRecord::Base
     uses_image_file? ? image.url : image_url
   end
 
+  def actual_thumb
+    uses_image_file? ? image.url(:thumb) : image_url
+  end
+
   def set_rent_prices
     self.min_rent = if apartment_community.try(:use_market_prices?)
       min_market_rent

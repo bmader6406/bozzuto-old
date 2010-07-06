@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100703231026) do
+ActiveRecord::Schema.define(:version => 20100706153227) do
 
   create_table "awards", :force => true do |t|
     t.string   "title",                           :null => false
@@ -230,6 +230,10 @@ ActiveRecord::Schema.define(:version => 20100703231026) do
     t.string   "listing_title"
     t.text     "listing_text"
     t.integer  "features"
+    t.string   "overview_title"
+    t.string   "overview_bullet_1"
+    t.string   "overview_bullet_2"
+    t.string   "overview_bullet_3"
   end
 
   create_table "property_mini_slides", :force => true do |t|
