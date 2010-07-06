@@ -759,59 +759,14 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         margin: 39px -70px 0 0;
       }
       .community #overview ul.community-icons li,
+      .search #content div.results ul li div.info ul.community-icons a, 
+      .homes #content #view-as-list ul.community-icons a,
       .community #overview ul.community-icons li a {
         display: block;
         width: 45px;
         height: 45px;
         margin-left: 0;
-      }
-      .community #overview ul.community-icons li a {
-        position: relative;
-      }
-      .community #overview ul.community-icons li a div {
-        display: none;
-        border: 1px solid red;
-      } 
-      div.tooltip {
-        background-color: #fff;
-        -moz-box-shadow: 0 0 20px rgba(255,255,255,.4);
-        -webkit-box-shadow: 0 0 20px rgba(255,255,255,.4);
-        border: 1px solid #c2c6ca;
-        box-shadow: 0 0 20px rgba(255,255,255,.4);
-        display: none;
-        color: #84848B;
-        font-weight: normal;
-        left: 0px;
-        padding: 10px;
-        position: absolute;
-        top: 0px;
-        width: 178px;
-        z-index: 1000;
-      }
-      div.tooltip h4 {
-        color: #636972;
-        font-size: 12px;
-        font-weight: bold;
-        left: -1px;
-        line-height: 16px;
-        padding-bottom: 3px;
-        position: relative;
-        text-transform: uppercase;
-        top: -1px;
-      }
-      div.tooltip p {
-        font-size: 11px;
-        zoom: 1;
-      }
-      .tooltip-arrow {
-        background: url(../images/structure/bg-tooltip-arrow.png) 0 0 no-repeat;
-        display: block;
-        height: 0;
-        line-height: 0;
-        position: absolute;
-        top: 0;
-        right: 13px;
-        width: 15px;
+        text-indent: -9999px;
       }
 
     /* @end */
@@ -2764,6 +2719,63 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 
   /* @end */
 
+  /* @group -icons & tooltips */
+
+    .js #icon-tooltips {
+      display: none; 
+    }
+    
+    #icon-tooltips li {
+      margin: 0 0 10px;
+    }
+    
+    div.tooltip {
+      background-color: #fff;
+      -moz-box-shadow: 0 0 20px rgba(255,255,255,.4);
+      -webkit-box-shadow: 0 0 20px rgba(255,255,255,.4);
+      border: 1px solid #c2c6ca;
+      box-shadow: 0 0 20px rgba(255,255,255,.4);
+      display: none;
+      color: #84848B;
+      font-weight: normal;
+      left: 0px;
+      padding: 10px;
+      position: absolute;
+      top: 0px;
+      width: 178px;
+      z-index: 1000;
+    }
+    
+    div.tooltip h4 {
+      color: #636972;
+      font-size: 12px;
+      font-weight: bold;
+      left: -1px;
+      line-height: 16px;
+      padding-bottom: 3px;
+      position: relative;
+      text-transform: uppercase;
+      top: -1px;
+    }
+    
+    div.tooltip p {
+      font-size: 11px;
+      zoom: 1;
+    }
+    
+    .tooltip-arrow {
+      background: url(../images/structure/bg-tooltip-arrow.png) 0 0 no-repeat;
+      display: block;
+      height: 0;
+      line-height: 0;
+      position: absolute;
+      top: 0;
+      right: 13px;
+      width: 15px;
+    }
+  
+  /* @end */  
+
   /* @group -footer */
 
     #footer {
@@ -3224,9 +3236,6 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
     .community #overview a {
       text-transform: none;
-    }
-    .community #overview ul.community-icons li a {
-      text-decoration: none;
     }
     .community #apartments table td {
       line-height: 1;
@@ -4393,7 +4402,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	background: url(../images/structure/bg-search-results-learn-more-features.gif) no-repeat;
     }
 
-    .search #content div.results ul li div.info div.learn-more ul li.smartshare,
+    .search #content div.results ul li div.info div.learn-more ul li.smart-share,
     .homes #content #view-as-list div.learn-more ul li.smartshare {
     	background-position: 0 0;
     }
@@ -4403,7 +4412,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	background-position: -34px 0;
     }
 
-    .search #content div.results ul li div.info div.learn-more ul li.smartrent,
+    .search #content div.results ul li div.info div.learn-more ul li.smart-rent,
     .homes #content #view-as-list div.learn-more ul li.smartrent {
     	background-position: -68px 0 ;
     }
@@ -4413,8 +4422,8 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	background-position: -102px 0;
     }
 
-    .search #content div.results ul li div.info div.learn-more ul li.no-smoking,
-    .homes #content #view-as-list div.learn-more ul li.no-smoking {
+    .search #content div.results ul li div.info div.learn-more ul li.non-smoking,
+    .homes #content #view-as-list div.learn-more ul li.non-smoking {
     	background-position: -136px 0;
     }
 

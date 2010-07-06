@@ -213,7 +213,7 @@ window.bozzuto = {};
     return this.each(function(){
 
       var $this    = $(this),
-          content  = $this.find('div').html(),
+          content  = $($this.attr('href')),
           isSearch = $('body').hasClass('search'),
           left     = (isSearch) ? 162 : 156,
           top      = (isSearch) ? 47 : 55;
@@ -228,7 +228,7 @@ window.bozzuto = {};
       }
       
       $this.hover(function(){
-        
+
         $tooltipContent.html(content);
         $tooltip.css({
           'top'     : $this.offset().top + top,
@@ -263,6 +263,8 @@ window.bozzuto = {};
           tooltime = 'inactive';
         }, 500)
         
+      }).click(function(e){
+        e.preventDefault();
       });
       
     });
