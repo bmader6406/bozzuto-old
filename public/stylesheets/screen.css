@@ -615,6 +615,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       .community #masthead .nav,
  			.project #masthead .nav {
         position: relative;
+        overflow: hidden;
         z-index: 10;
         width: 190px;
         height: 374px;
@@ -633,8 +634,8 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         z-index: 1;
         top: 0; left: 0;
         width: 190px;
-        height: 349px;
-        padding-top: 25px;
+        border-top: 25px solid #fff;
+        border-bottom: 500px solid #fff;
       }
  			.project #secondary-nav {
         position: relative;
@@ -655,6 +656,8 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
  			.project #masthead #remote-nav a {
         display: block;
         padding: 5px 10px 5px 26px;
+        zoom: 1;
+        position: relative;
       }
 
     /* @end */
@@ -668,6 +671,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         width: 870px;
         height: 374px;
         z-index: 1;
+        overflow: hidden;
       }
  			.project #slideshow {
         left: 190px;
@@ -841,6 +845,12 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
      .landing .listings ul {
        padding: 12px;
        border-top: 1px solid #fff;
+     }
+     .community #nearby-communities ul + ul,
+     .community #recently-viewed ul + ul,
+     .landing .listings ul + ul{
+       border-top: none;
+       padding-top: 0;
      }
      .community #nearby-communities ul {
        padding-top: 0;
@@ -3167,11 +3177,15 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         font-size: 15px;
         line-height: 15px;
         color: #84848b;
+        background: #fff;
       }
       .community #secondary-nav a:hover,
       .community #secondary-nav li.current a {
         color: #000;
         text-decoration: none;
+      }
+      .community #secondary-nav li.current a {
+        background: transparent url(../images/structure/bg-community-secondary-nav.png) no-repeat right bottom;
       }
       .community #masthead #remote-nav a {
         font-size: 11px;
@@ -4026,19 +4040,6 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .services #breadcrumb li.last {
       background: none;
     }
-    .community #secondary-nav {
-      /* TODO: fix this later? */
-      /*background: transparent url(../images/structure/bg-community-secondary-nav.png) no-repeat right center;*/
-      background-color: #fff;
-    }
-    /*.community #secondary-nav.current-1 { background-position: right -351px; }
-    .community #secondary-nav.current-2 { background-position: right -315px; }
-    .community #secondary-nav.current-3 { background-position: right -279px; }
-    .community #secondary-nav.current-4 { background-position: right -243px; }
-    .community #secondary-nav.current-5 { background-position: right -207px; }
-    .community #secondary-nav.current-6 { background-position: right -171px; }
-    .community #secondary-nav.current-7 { background-position: right -130px; }*/
-
     .community #secondary-nav .phone-number {
       display: block;
       font-size: 11px;

@@ -102,6 +102,9 @@
 * html .community #overview ul.community-icons {
   margin-right: -35px;
 }
+* .community #secondary-nav li.current a {
+  background: #fff;
+}
  
 /***
   2. Typography

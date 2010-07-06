@@ -1,13 +1,15 @@
 <% if @recently_viewed.present? -%>
 <div id="recently-viewed">
   <h3>Recently Viewed</h3>
-  <ul class="row">
-    <% @recently_viewed.each do |community| -%>
-      <li>
-        <%= link_to community.title, community %>
-        <%= community.city %>
-      </li>
-    <% end -%>
-  </ul>
+  <% @recently_viewed.in_groups_of(4, false) do |communities| %>
+    <ul class="row">
+      <% communities.each do |community| -%>
+        <li>
+          <%= link_to community.title, community %>
+          <%= community.city %>
+        </li>
+      <% end -%>
+    </ul>
+  <% end %>
 </div>
 <% end -%>
