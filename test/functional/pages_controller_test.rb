@@ -44,7 +44,7 @@ class PagesControllerTest < ActionController::TestCase
           3.times { Page.make :section => @section }
           @page = @section.pages.last
 
-          get :show, :section => @section.to_param, :page => @page.path
+          get :show, :section => @section.to_param, :page => @page.path.split('/')
         end
 
         should_respond_with :success

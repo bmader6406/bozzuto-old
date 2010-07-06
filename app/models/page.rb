@@ -5,6 +5,8 @@ class Page < ActiveRecord::Base
     :use_slug => true,
     :scope    => :section
 
+  after_save :set_path
+
   belongs_to :section
 
   has_one :masthead_slideshow, :dependent => :destroy
@@ -12,15 +14,9 @@ class Page < ActiveRecord::Base
 
   validates_presence_of :title
 
+  attr_protected :path
 
   alias_attribute :typus_name, :title
-
-  def self.find_by_path(path)
-    path = path.split('/')
-    page = find(path.last)
-
-    page.path == path ? page : (raise ActiveRecord::RecordNotFound)
-  end
 
   def formatted_title
     if ancestors.size == 0
@@ -30,11 +26,16 @@ class Page < ActiveRecord::Base
     end
   end
 
-  def path
-    self_and_ancestors.map { |page| page.cached_slug }
-  end
-
   def first?
     lft == 1
+  end
+
+
+  protected
+
+  def set_path
+    self.path = self_and_ancestors.map { |page| page.cached_slug }.join('/')
+    update_without_callbacks
+    descendants.each(&:set_path)
   end
 end
