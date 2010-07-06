@@ -33,7 +33,7 @@ class SectionContentController < ApplicationController
   helper_method :section_awards
 
   def section_projects
-    @section.projects
+    @section.projects.published
   end
   helper_method :section_projects
 end

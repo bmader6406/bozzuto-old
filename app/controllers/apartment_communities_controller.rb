@@ -4,7 +4,7 @@ class ApartmentCommunitiesController < ApplicationController
   def index
     params[:search] ||= {}
     @partial_template = params[:template] || 'search'
-    @search = ApartmentCommunity.search(params[:search])
+    @search = ApartmentCommunity.published.search(params[:search])
     @communities = @search.all.group_by {|c| c.state.name}
 
     respond_to do |format|
@@ -42,7 +42,7 @@ class ApartmentCommunitiesController < ApplicationController
   private
 
   def find_community
-    @community = ApartmentCommunity.find(params[:id])
+    @community = ApartmentCommunity.published.find(params[:id])
 
     @recent_queue = RecentQueue.find
     @recent_queue.push(@community.id)

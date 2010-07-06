@@ -2,11 +2,11 @@ class HomeCommunitiesController < SectionContentController
   layout 'application'
 
   def index
-    @communities = HomeCommunity.ordered_by_title.paginate(:page => params[:page])
+    @communities = HomeCommunity.published.ordered_by_title.paginate(:page => params[:page])
   end
 
   def show
-    @community = HomeCommunity.find(params[:id])
+    @community = HomeCommunity.published.find(params[:id])
   end
 
 

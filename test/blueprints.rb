@@ -18,7 +18,12 @@ ApartmentCommunity.blueprint do
   title             { Sham.company_name }
   subtitle          { Faker::Company.catch_phrase }
   use_market_prices { false }
+  published         { true }
   city
+end
+
+ApartmentCommunity.blueprint(:unpublished) do
+  published { false }
 end
 
 Award.blueprint do
@@ -80,9 +85,14 @@ Home.blueprint do
 end
 
 HomeCommunity.blueprint do
-  title             { Sham.company_name }
-  subtitle          { Faker::Company.catch_phrase }
+  title     { Sham.company_name }
+  subtitle  { Faker::Company.catch_phrase }
+  published { true }
   city
+end
+
+HomeCommunity.blueprint(:unpublished) do
+  published { false }
 end
 
 NewsPost.blueprint do
@@ -99,9 +109,14 @@ NewsPost.blueprint(:unpublished) do
 end
 
 Project.blueprint do
-  title    { Sham.company_name }
-  subtitle { Faker::Company.catch_phrase }
+  title     { Sham.company_name }
+  subtitle  { Faker::Company.catch_phrase }
+  published { true }
   city
+end
+
+Project.blueprint(:unpublished) do
+  published { false }
 end
 
 ProjectDataPoint.blueprint do

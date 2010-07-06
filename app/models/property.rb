@@ -1,4 +1,6 @@
 class Property < ActiveRecord::Base
+  include Bozzuto::Publishable
+
   belongs_to :city
   belongs_to :county
 
