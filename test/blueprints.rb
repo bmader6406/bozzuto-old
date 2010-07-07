@@ -28,6 +28,27 @@ ApartmentCommunity.blueprint(:unpublished) do
   published { false }
 end
 
+ApartmentFloorPlan.blueprint do
+  name               { Faker::Lorem.words(1) }
+  image_type         { ApartmentFloorPlan::USE_IMAGE_URL }
+  image_url          { Faker::Lorem.words(1) }
+  availability_url   { "http://#{Faker::Internet.domain_name}" }
+  bedrooms           { Sham.bedrooms }
+  bathrooms          { Sham.bathrooms }
+  min_square_feet    { rand(3000) + 500 }
+  max_square_feet    { rand(3000) + 500 }
+  min_market_rent    { rand(500000) + 40000 }
+  max_market_rent    { rand(500000) + 40000 }
+  min_effective_rent { rand(500000) + 40000 }
+  max_effective_rent { rand(500000) + 40000 }
+  floor_plan_group
+  apartment_community
+end
+
+ApartmentFloorPlanGroup.blueprint do
+  name { Faker::Lorem.words(1) }
+end
+
 Award.blueprint do
   title        { Faker::Lorem.sentence }
   body         { Faker::Lorem.paragraphs }
@@ -69,27 +90,6 @@ FeedItem.blueprint do
   description  { Faker::Lorem.paragraphs }
   published_at { Time.now }
   feed
-end
-
-FloorPlanGroup.blueprint do
-  name { Faker::Lorem.words(1) }
-end
-
-ApartmentFloorPlan.blueprint do
-  name               { Faker::Lorem.words(1) }
-  image_type         { ApartmentFloorPlan::USE_IMAGE_URL }
-  image_url          { Faker::Lorem.words(1) }
-  availability_url   { "http://#{Faker::Internet.domain_name}" }
-  bedrooms           { Sham.bedrooms }
-  bathrooms          { Sham.bathrooms }
-  min_square_feet    { rand(3000) + 500 }
-  max_square_feet    { rand(3000) + 500 }
-  min_market_rent    { rand(500000) + 40000 }
-  max_market_rent    { rand(500000) + 40000 }
-  min_effective_rent { rand(500000) + 40000 }
-  max_effective_rent { rand(500000) + 40000 }
-  floor_plan_group
-  apartment_community
 end
 
 Home.blueprint do

@@ -30,6 +30,16 @@ ApartmentFloorPlan:
   search:
   application:
 
+ApartmentFloorPlanGroup:
+  fields:
+    default: name, position
+    list: name, position
+    form: name
+  order_by: position
+  relationships: floor_plans
+  search: name
+  application:
+
 Award:
   fields:
     default: title, published, published_at, section
@@ -96,16 +106,6 @@ Feed:
   relationships: 
   filters:
   search:
-  application:
-
-FloorPlanGroup:
-  fields:
-    default: name, position
-    list: name, position
-    form: name
-  order_by: position
-  relationships: floor_plans
-  search: name
   application:
 
 Home:

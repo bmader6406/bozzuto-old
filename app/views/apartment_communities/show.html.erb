@@ -61,7 +61,7 @@
 
           <table>
             <tbody>
-              <% FloorPlanGroup.all.each do |group| %>
+              <% ApartmentFloorPlanGroup.all.each do |group| %>
                 <% plans_in_group = @community.floor_plans.in_group(group) %>
                 <% unless plans_in_group.empty? %>
                   <tr>

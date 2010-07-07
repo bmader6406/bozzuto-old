@@ -9,7 +9,7 @@ class ApartmentFloorPlan < ActiveRecord::Base
 
   before_validation :set_rent_prices
 
-  belongs_to :floor_plan_group
+  belongs_to :floor_plan_group, :class_name => 'ApartmentFloorPlanGroup'
   belongs_to :apartment_community
 
   acts_as_list

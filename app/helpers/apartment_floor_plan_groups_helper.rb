@@ -1,0 +1,2 @@
+module ApartmentFloorPlanGroupsHelper
+end

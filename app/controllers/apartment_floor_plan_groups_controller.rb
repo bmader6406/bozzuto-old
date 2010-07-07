@@ -1,8 +1,8 @@
-class FloorPlanGroupsController < ApplicationController
+class ApartmentFloorPlanGroupsController < ApplicationController
   before_filter :find_community
 
   def index
-    @groups = FloorPlanGroup.all
+    @groups = ApartmentFloorPlanGroup.all
   end
 
 

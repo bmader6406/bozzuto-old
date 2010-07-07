@@ -9,7 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100707174439) do
+ActiveRecord::Schema.define(:version => 20100707181013) do
+
+  create_table "apartment_floor_plan_groups", :force => true do |t|
+    t.string   "name",       :null => false
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "apartment_floor_plans", :force => true do |t|
     t.string   "image_url"
@@ -96,13 +103,6 @@ ActiveRecord::Schema.define(:version => 20100707174439) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name",         :null => false
-  end
-
-  create_table "floor_plan_groups", :force => true do |t|
-    t.string   "name",       :null => false
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "home_floor_plans", :force => true do |t|
@@ -323,6 +323,15 @@ ActiveRecord::Schema.define(:version => 20100707174439) do
   end
 
   add_index "sections", ["cached_slug"], :name => "index_sections_on_cached_slug"
+
+  create_table "services", :force => true do |t|
+    t.string   "title",      :null => false
+    t.string   "slug",       :null => false
+    t.integer  "position",   :null => false
+    t.integer  "section_id", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "slugs", :force => true do |t|
     t.string   "name"

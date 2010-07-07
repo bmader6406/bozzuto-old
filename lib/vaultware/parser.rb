@@ -78,15 +78,15 @@ module Vaultware
       bedrooms = plan.at('./Room[@Type="Bedroom"]/Count').content.to_i
 
       if plan.at('./Comment').content =~ /penthouse/i
-        FloorPlanGroup.penthouse
+        ApartmentFloorPlanGroup.penthouse
       elsif bedrooms == 0
-        FloorPlanGroup.studio
+        ApartmentFloorPlanGroup.studio
       elsif bedrooms == 1
-        FloorPlanGroup.one_bedroom
+        ApartmentFloorPlanGroup.one_bedroom
       elsif bedrooms == 2
-        FloorPlanGroup.two_bedrooms
+        ApartmentFloorPlanGroup.two_bedrooms
       else bedrooms == 3
-        FloorPlanGroup.three_bedrooms
+        ApartmentFloorPlanGroup.three_bedrooms
       end
     end
 

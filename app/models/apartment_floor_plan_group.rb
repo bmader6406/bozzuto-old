@@ -1,7 +1,8 @@
-class FloorPlanGroup < ActiveRecord::Base
+class ApartmentFloorPlanGroup < ActiveRecord::Base
   has_many :floor_plans,
-    :class_name => 'ApartmentFloorPlan',
-    :dependent => :destroy
+    :class_name  => 'ApartmentFloorPlan',
+    :foreign_key => :floor_plan_group_id,
+    :dependent   => :destroy
 
 
   default_scope :order => 'position ASC'

@@ -1,7 +1,7 @@
 require 'test_helper'
 
-class FloorPlanGroupsControllerTest < ActionController::TestCase
-  context "FloorPlanGroupsController" do
+class ApartmentFloorPlanGroupsControllerTest < ActionController::TestCase
+  context "ApartmentFloorPlanGroupsController" do
     setup do
       @community = ApartmentCommunity.make
     end
@@ -14,7 +14,7 @@ class FloorPlanGroupsControllerTest < ActionController::TestCase
       should_respond_with :success
       should_render_template :index
       should_assign_to(:community) { @community }
-      should_assign_to(:groups) { FloorPlanGroup.all }
+      should_assign_to(:groups) { ApartmentFloorPlanGroup.all }
     end
   end
 end

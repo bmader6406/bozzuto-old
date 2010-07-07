@@ -84,40 +84,40 @@ class ParserTest < ActiveSupport::TestCase
         should 'return penthouse when comment is penthouse' do
           @plan = mock_floor_plan(2, 'Penthouse')
 
-          assert_equal FloorPlanGroup.penthouse,
+          assert_equal ApartmentFloorPlanGroup.penthouse,
             @parser.send(:floor_plan_group, @plan)
         end
 
         should 'return studio when bedrooms is 0' do
           @plan = mock_floor_plan(0, '')
 
-          assert_equal FloorPlanGroup.studio,
+          assert_equal ApartmentFloorPlanGroup.studio,
             @parser.send(:floor_plan_group, @plan)
         end
 
         should 'return one bedroom when bedrooms is 1' do
           @plan = mock_floor_plan(1, '')
 
-          assert_equal FloorPlanGroup.one_bedroom,
+          assert_equal ApartmentFloorPlanGroup.one_bedroom,
             @parser.send(:floor_plan_group, @plan)
         end
 
         should 'return two bedrooms when bedrooms is 2' do
           @plan = mock_floor_plan(2, '')
 
-          assert_equal FloorPlanGroup.two_bedrooms,
+          assert_equal ApartmentFloorPlanGroup.two_bedrooms,
             @parser.send(:floor_plan_group, @plan)
         end
 
         should 'return three bedrooms when bedrooms is 3 or more' do
           @plan = mock_floor_plan(3, '')
 
-          assert_equal FloorPlanGroup.three_bedrooms,
+          assert_equal ApartmentFloorPlanGroup.three_bedrooms,
             @parser.send(:floor_plan_group, @plan)
 
           @plan = mock_floor_plan(5, '')
 
-          assert_equal FloorPlanGroup.three_bedrooms,
+          assert_equal ApartmentFloorPlanGroup.three_bedrooms,
             @parser.send(:floor_plan_group, @plan)
         end
       end
