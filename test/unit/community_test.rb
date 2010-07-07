@@ -8,7 +8,7 @@ class CommunityTest < ActiveSupport::TestCase
 
     subject { @community }
 
-    should_belong_to :yelp_feed
+    should_belong_to :local_info_feed
 
     context '#has_overview_bullets?' do
       should 'return false if all bullets are empty' do
@@ -24,38 +24,38 @@ class CommunityTest < ActiveSupport::TestCase
       end
     end
 
-    context 'with no Yelp Feed' do
-      should 'return an empty array on #local_reviews' do
-        assert_nil @community.yelp_feed
-        assert_equal [], @community.local_reviews
+    context 'with no Feed' do
+      should 'return an empty array on #local_info' do
+        assert_nil @community.local_info_feed
+        assert_equal [], @community.local_info
       end
 
       should 'return false on #has_local_reviews?' do
-        assert !@community.has_local_reviews?
+        assert !@community.has_local_info?
       end
     end
 
     context 'with a Yelp Feed' do
       setup do
-        @feed = YelpFeed.make_unsaved
+        @feed = Feed.make_unsaved
         @feed.expects(:validate_on_create)
         @feed.save
 
-        3.times { YelpFeedItem.make :yelp_feed => @feed }
-        @community.yelp_feed = @feed
+        3.times { FeedItem.make :feed => @feed }
+        @community.local_info_feed = @feed
         @community.save
       end
 
-      should 'return the feed items on #local_reviews' do
-        assert_equal 3, @community.local_reviews.length
+      should 'return the feed items on #local_info' do
+        assert_equal 3, @community.local_info.length
 
         3.times do |i|
-          assert_equal @feed.items[i], @community.local_reviews[i]
+          assert_equal @feed.items[i], @community.local_info[i]
         end
       end
 
-      should 'return true on #has_local_reviews?' do
-        assert @community.has_local_reviews?
+      should 'return true on #has_local_info?' do
+        assert @community.has_local_info?
       end
     end
   end

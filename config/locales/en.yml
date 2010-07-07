@@ -23,7 +23,7 @@ en:
       property_slide: Slide
       property_slideshow: Property Slideshow
       typus_user: User
-      yelp_feed: Yelp Feed
+      feed: Feed
     attributes:
       award:
         published_at: Published At
@@ -76,6 +76,7 @@ en:
         listing_image: Listing Image
         listing_title: Listing Title
         listing_text: Listing Copy
+        local_info_feed: Local Info Feed
         neighborhood_text: Neighborhood Copy
         overview_bullet_1: 'Overview Bullet #1'
         overview_bullet_2: 'Overview Bullet #2'
@@ -87,7 +88,6 @@ en:
         twitter_handle: Twitter Handle
         video_url: Video URL
         website_url: Website URL
-        yelp_feed: Yelp Feed
       property_mini_slide:
         property_mini_slideshow: Mini Slideshow
       property_slide:
@@ -100,7 +100,7 @@ en:
         first_name: First Name
         last_name: Last Name
         password_confirmation: Password Confirmation
-      yelp_feed:
+      feed:
         url: Feed URL
     tips:
       body_slide:

@@ -9,6 +9,7 @@ admin:
   BodySlideshow: create, read, update, delete
   City: create, read, update, delete
   County: create, read, update, delete
+  Feed: create, read, update, delete
   FloorPlanGroup: read
   FloorPlan: create, read, update, delete
   Home: create, read, update, delete
@@ -32,4 +33,3 @@ admin:
   Section: read, update
   State: create, read, update, delete
   Testimonial: create, read, update, delete
-  YelpFeed: create, read, update, delete

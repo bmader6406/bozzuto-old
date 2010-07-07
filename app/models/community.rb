@@ -1,5 +1,5 @@
 class Community < Property
-  belongs_to :yelp_feed
+  belongs_to :local_info_feed, :class_name => 'Feed'
 
   def has_overview_bullets?
     (1..3).any? do |i|
@@ -7,11 +7,11 @@ class Community < Property
     end
   end
 
-  def local_reviews
-    has_local_reviews? ? yelp_feed.items : []
+  def local_info
+    has_local_info? ? local_info_feed.items : []
   end
 
-  def has_local_reviews?
-    yelp_feed.present? && yelp_feed.items.any?
+  def has_local_info?
+    local_info_feed.present? && local_info_feed.items.any?
   end
 end

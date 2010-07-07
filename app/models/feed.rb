@@ -1,10 +1,10 @@
-class YelpFeed < ActiveRecord::Base
+class Feed < ActiveRecord::Base
   include HTTParty
 
   has_many :items,
-    :class_name => 'YelpFeedItem',
+    :class_name => 'FeedItem',
     :dependent  => :destroy
-  has_many :properties
+  has_many :properties, :foreign_key => :local_info_feed_id
 
   validates_presence_of :url
   validates_uniqueness_of :url
@@ -39,7 +39,7 @@ class YelpFeed < ActiveRecord::Base
     items.destroy_all
 
     @feed_data['rss']['channel']['item'].each do |item|
-      items << YelpFeedItem.new({
+      items << FeedItem.new({
         :title        => item['title'],
         :description  => item['description'],
         :url          => item['link'],
@@ -68,7 +68,7 @@ class YelpFeed < ActiveRecord::Base
   protected
 
   def fetch_feed
-    @feed_data = YelpFeed.get(url)
+    @feed_data = Feed.get(url)
   end
 
   def valid_rss_feed?

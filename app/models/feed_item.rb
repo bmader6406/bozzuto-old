@@ -1,5 +1,5 @@
-class YelpFeedItem < ActiveRecord::Base
-  belongs_to :yelp_feed
+class FeedItem < ActiveRecord::Base
+  belongs_to :feed
 
   default_scope :order => 'published_at DESC'
 
@@ -7,5 +7,5 @@ class YelpFeedItem < ActiveRecord::Base
     :url,
     :description,
     :published_at,
-    :yelp_feed
+    :feed
 end

@@ -134,9 +134,9 @@
             <li>
               <%= link_to 'Walk Score&trade;'.html_safe, '#walk-score' %>
             </li>
-            <% if @community.has_local_reviews? %>
+            <% if @community.has_local_info? %>
               <li class="last">
-                <%= link_to 'Local Reviews', '#local-reviews' %>
+                <%= link_to 'Local Info', '#local-info' %>
               </li>
             <% end %>
           </ul>
@@ -155,10 +155,10 @@
             <%= walkscore_map_script(@community) %>
           </div>
 
-          <% if @community.has_local_reviews? %>
-            <div id="local-reviews" class="section">
-              <% @community.local_reviews.take(6).each do |review| %>
-                <div class="local-review">
+          <% if @community.has_local_info? %>
+            <div id="local-info" class="section">
+              <% @community.local_info.take(6).each do |review| %>
+                <div class="local-info">
                   <h4><%= link_to review.title.gsub(/on Yelp$/, ''), review.url %></h4>
 
                   <p class="date">

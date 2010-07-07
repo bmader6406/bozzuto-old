@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100706195127) do
+ActiveRecord::Schema.define(:version => 20100707015815) do
 
   create_table "awards", :force => true do |t|
     t.string   "title",                           :null => false
@@ -52,6 +52,23 @@ ActiveRecord::Schema.define(:version => 20100706195127) do
   create_table "counties", :force => true do |t|
     t.string   "name",       :null => false
     t.integer  "state_id",   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "feed_items", :force => true do |t|
+    t.string   "title",        :null => false
+    t.string   "url",          :null => false
+    t.string   "description",  :null => false
+    t.datetime "published_at", :null => false
+    t.integer  "feed_id",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "feeds", :force => true do |t|
+    t.string   "url",          :null => false
+    t.datetime "refreshed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -219,7 +236,7 @@ ActiveRecord::Schema.define(:version => 20100706195127) do
     t.text     "contact_text"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "yelp_feed_id"
+    t.integer  "local_info_feed_id"
     t.integer  "vaultware_id"
     t.boolean  "use_market_prices",          :default => false, :null => false
     t.string   "availability_url"
@@ -337,23 +354,6 @@ ActiveRecord::Schema.define(:version => 20100706195127) do
     t.string   "salt",                                :null => false
     t.string   "crypted_password",                    :null => false
     t.string   "preferences"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "yelp_feed_items", :force => true do |t|
-    t.string   "title",        :null => false
-    t.string   "url",          :null => false
-    t.string   "description",  :null => false
-    t.datetime "published_at", :null => false
-    t.integer  "yelp_feed_id", :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "yelp_feeds", :force => true do |t|
-    t.string   "url",          :null => false
-    t.datetime "refreshed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

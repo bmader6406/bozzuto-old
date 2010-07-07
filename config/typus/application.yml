@@ -6,13 +6,13 @@ ApartmentCommunity:
   fields:
     default: title, published, street_address, city
     list: title, published, street_address, city
-    form: title, street_address, city, county, latitude, longitude, website_url, video_url, facebook_url, twitter_handle, yelp_feed, listing_image, listing_title, listing_text, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, features_text, neighborhood_text, contact_text, published
+    form: title, street_address, city, county, latitude, longitude, website_url, video_url, facebook_url, twitter_handle, local_info_feed, listing_image, listing_title, listing_text, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, features_text, neighborhood_text, contact_text, published
     options:
       ckeditor: listing_text, overview_text, features_text, neighborhood_text, contact_text
       booleans:
         published: ['Yes', 'No']
   order_by:
-  relationships: property_features, city, county, yelp_feed, slideshow, mini_slideshow, floor_plans
+  relationships: property_features, city, county, local_info_feed, slideshow, mini_slideshow, floor_plans
   filters:
   search: title, street_address
   application: Properties
@@ -74,6 +74,17 @@ County:
   search: name
   application: Geography
 
+Feed:
+  fields:
+    default: url
+    list: url
+    form: url
+  order_by:
+  relationships: 
+  filters:
+  search:
+  application:
+
 FloorPlanGroup:
   fields:
     default: name, position
@@ -112,13 +123,13 @@ HomeCommunity:
   fields:
     default: title, published, street_address, city
     list: title, published, street_address, city
-    form: title, street_address, city, county, latitude, longitude, website_url, video_url, facebook_url, twitter_handle, yelp_feed, listing_image, listing_title, listing_text, latitude, longitude, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, features_text, neighborhood_text, contact_text, published
+    form: title, street_address, city, county, latitude, longitude, website_url, video_url, facebook_url, twitter_handle, local_info_feed, listing_image, listing_title, listing_text, latitude, longitude, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, features_text, neighborhood_text, contact_text, published
     options:
       ckeditor: listing_text, overview_text, features_text, neighborhood_text, contact_text
       booleans:
         published: ['Yes', 'No']
   order_by: 
-  relationships: city, county, slideshow, mini_slideshow, homes, yelp_feed
+  relationships: city, county, slideshow, mini_slideshow, homes, local_info_feed
   filters: 
   search: title
   application: Properties
@@ -361,15 +372,3 @@ Testimonial:
   filters:
   search: name
   application: Content
-
-YelpFeed:
-  fields:
-    default: url
-    list: url
-    form: url
-  order_by:
-  relationships: apartment_communities
-  filters:
-  search:
-  application:
-

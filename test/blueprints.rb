@@ -176,14 +176,14 @@ Testimonial.blueprint do
   section
 end
 
-YelpFeed.blueprint do
+Feed.blueprint do
   url { Sham.feed_url }
 end
 
-YelpFeedItem.blueprint do
+FeedItem.blueprint do
   title        { Faker::Lorem.sentence }
   url          { Faker::Internet.domain_name }
   description  { Faker::Lorem.paragraphs }
   published_at { Time.now }
-  yelp_feed
+  feed
 end

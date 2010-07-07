@@ -1,17 +1,17 @@
 require 'test_helper'
 
-class YelpFeedTest < ActiveSupport::TestCase
-  context 'A YelpFeed' do
+class FeedTest < ActiveSupport::TestCase
+  context 'Feed' do
     setup do
       @fixture = load_fixture_file('yelp.rss')
-      @rss     = YelpFeed::Parser.call(@fixture, :xml)
+      @rss     = Feed::Parser.call(@fixture, :xml)
       @url     = Sham.feed_url
 
       stub_request(:get, @url).to_return(
         :body    => @fixture,
         :headers => { 'Content-Type' => 'text/xml' }
       )
-      @feed = YelpFeed.make :url => @url
+      @feed = Feed.make :url => @url
     end
 
     subject { @feed }
@@ -31,7 +31,7 @@ class YelpFeedTest < ActiveSupport::TestCase
     context 'when validating on create' do
       setup do
         @url = Sham.feed_url
-        @feed = YelpFeed.new :url => @url
+        @feed = Feed.new :url => @url
       end
 
       context 'and url cannot be found' do
@@ -71,7 +71,7 @@ class YelpFeedTest < ActiveSupport::TestCase
         end
 
         should 'raise a FeedNotFound exception' do
-          assert_raise(YelpFeed::FeedNotFound) { @feed.refresh }
+          assert_raise(Feed::FeedNotFound) { @feed.refresh }
         end
       end
 
@@ -112,7 +112,7 @@ class YelpFeedTest < ActiveSupport::TestCase
           end
 
           should 'raise an InvalidFeed exception' do
-            assert_raise(YelpFeed::InvalidFeed) { @feed.refresh }
+            assert_raise(Feed::InvalidFeed) { @feed.refresh }
           end
         end
       end
