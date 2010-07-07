@@ -4,6 +4,7 @@ class HomeCommunitiesControllerTest < ActionController::TestCase
   context 'HomeCommunitiesControllerTest' do
     setup do
       @section = Section.make :title => 'New Homes'
+      @community = HomeCommunity.make
     end
 
     context 'a GET to #index' do
@@ -20,16 +21,16 @@ class HomeCommunitiesControllerTest < ActionController::TestCase
       should_assign_to(:communities) { @communities }
     end
 
-    context 'a GET to #show' do
-      setup do
-        @community = HomeCommunity.make
-        get :show, :id => @community.id
-      end
+    %w(show features neighborhood promotions contact).each do |action|
+      context "a GET to ##{action}" do
+        setup do
+          get action, :id => @community.id
+        end
 
-      should_respond_with :success
-      should_render_template :show
-      should_assign_to(:section) { @section }
-      should_assign_to(:community) { @community }
+        should_assign_to(:community) { @community }
+        should_respond_with :success
+        should_render_template action
+      end
     end
   end
 end

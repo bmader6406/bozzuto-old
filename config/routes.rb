@@ -5,9 +5,9 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => :home_pages
 
   map.map_apartment_communities 'apartments/communities/map', :controller => 'apartment_communities', :action => 'index', :template => 'map'
+
   community_options = {
     :as          => :communities,
-    :path_prefix => :apartments,
     :only        => [:index, :show],
     :member => {
       :features       => :get,
@@ -17,16 +17,13 @@ ActionController::Routing::Routes.draw do |map|
       :send_to_friend => :post
     }
   }
-  map.resources :apartment_communities, community_options do |community|
+  map.resources :apartment_communities, community_options.merge(:path_prefix => :apartments) do |community|
     community.resources :floor_plan_groups,
       :as   => :floor_plans,
       :only => :index
   end
 
-  map.resources :home_communities,
-    :as          => :communities,
-    :path_prefix => 'new-homes',
-    :only        => [:index, :show] do |community|
+  map.resources :home_communities, community_options.merge(:path_prefix => 'new-homes') do |community|
     community.resources :homes, :only => :index
   end
 
