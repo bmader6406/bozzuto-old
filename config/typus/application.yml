@@ -12,7 +12,7 @@ ApartmentCommunity:
       booleans:
         published: ['Yes', 'No']
   order_by:
-  relationships: city, county, yelp_feed, slideshow, mini_slideshow, floor_plans
+  relationships: property_features, city, county, yelp_feed, slideshow, mini_slideshow, floor_plans
   filters:
   search: title, street_address
   application: Properties
@@ -269,6 +269,17 @@ Property:
   filters:
   search:
   application:
+
+PropertyFeature:
+  fields:
+    default: name, icon, position
+    list: name, icon, position
+    form: name, icon, description
+  order_by: position
+  relationships: 
+  filters: 
+  search: name
+  application: Properties
 
 PropertyMiniSlide:
   fields:
