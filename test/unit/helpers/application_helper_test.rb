@@ -83,5 +83,14 @@ class ApplicationHelperTest < ActionView::TestCase
           google_maps_javascript_tag
       end
     end
+
+    context '#share_this_link' do
+      should 'output p.sharethis and javascript code' do
+        sharethis = HTML::Document.new(share_this_link)
+
+        assert_select sharethis.root, 'p.sharethis'
+        assert_select sharethis.root, 'script'
+      end
+    end
   end
 end
