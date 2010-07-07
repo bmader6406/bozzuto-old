@@ -3,7 +3,7 @@ require 'test_helper'
 class FeedTest < ActiveSupport::TestCase
   context 'Feed' do
     setup do
-      @fixture = load_fixture_file('yelp.rss')
+      @fixture = load_fixture_file('pipes.rss')
       @rss     = Feed::Parser.call(@fixture, :xml)
       @url     = Sham.feed_url
 
@@ -19,12 +19,12 @@ class FeedTest < ActiveSupport::TestCase
     should_have_many :items, :dependent => :destroy
     should_have_many :properties
 
-    should_validate_presence_of :url
+    should_validate_presence_of :name, :url
     should_validate_uniqueness_of :url
 
     context '#typus_name' do
-      should 'return the url' do
-        assert_equal @feed.url, @feed.typus_name
+      should 'return the name' do
+        assert_equal @feed.name, @feed.typus_name
       end
     end
 
@@ -87,7 +87,11 @@ class FeedTest < ActiveSupport::TestCase
               assert_equal item['title'], @feed.items[i].title
               assert_equal item['description'], @feed.items[i].description
               assert_equal item['link'], @feed.items[i].url
-              assert_equal Time.parse(item['pubDate']), @feed.items[i].published_at
+              unless item['pubDate'].blank?
+                # must send #to_s here for Yahoo Pipes janky RSS feed
+                assert_equal Time.parse(item['pubDate'].to_s).rfc822,
+                  @feed.items[i].published_at.rfc822
+              end
             end
           end
 

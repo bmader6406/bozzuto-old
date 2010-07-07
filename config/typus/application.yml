@@ -76,9 +76,9 @@ County:
 
 Feed:
   fields:
-    default: url
-    list: url
-    form: url
+    default: name, url
+    list: name, url
+    form: name, url
   order_by:
   relationships: 
   filters:

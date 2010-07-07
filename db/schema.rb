@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100707015815) do
+ActiveRecord::Schema.define(:version => 20100707021603) do
 
   create_table "awards", :force => true do |t|
     t.string   "title",                           :null => false
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20100707015815) do
     t.datetime "refreshed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name",         :null => false
   end
 
   create_table "floor_plan_groups", :force => true do |t|
@@ -184,6 +185,8 @@ ActiveRecord::Schema.define(:version => 20100707015815) do
     t.datetime "updated_at"
     t.string   "path"
   end
+
+  add_index "pages", ["path"], :name => "index_pages_on_path"
 
   create_table "photos", :force => true do |t|
     t.string   "image",                  :null => false
@@ -315,6 +318,15 @@ ActiveRecord::Schema.define(:version => 20100707015815) do
   end
 
   add_index "sections", ["cached_slug"], :name => "index_sections_on_cached_slug"
+
+  create_table "services", :force => true do |t|
+    t.string   "title",      :null => false
+    t.string   "slug",       :null => false
+    t.integer  "position",   :null => false
+    t.integer  "section_id", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "slugs", :force => true do |t|
     t.string   "name"

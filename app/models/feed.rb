@@ -6,7 +6,7 @@ class Feed < ActiveRecord::Base
     :dependent  => :destroy
   has_many :properties, :foreign_key => :local_info_feed_id
 
-  validates_presence_of :url
+  validates_presence_of :name, :url
   validates_uniqueness_of :url
 
 
@@ -21,7 +21,7 @@ class Feed < ActiveRecord::Base
   end
 
   def typus_name
-    url
+    name
   end
 
 
@@ -43,7 +43,7 @@ class Feed < ActiveRecord::Base
         :title        => item['title'],
         :description  => item['description'],
         :url          => item['link'],
-        :published_at => item['pubDate']
+        :published_at => item['pubDate'] || Time.now
       })
     end
 

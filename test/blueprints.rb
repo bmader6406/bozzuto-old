@@ -9,7 +9,7 @@ Sham.define do
   feed_url      { |i| "http://#{i}.#{Faker::Internet.domain_name}/feed.rss" }
   section_title { |i| "#{Faker::Lorem.words} #{i}" }
   file_name     { |i| "/image#{i}.jpg" }
-  feature_name  { |i| "#{Faker::Lorem.words(2)} #{i}" }
+  unique_name  { |i| "#{Faker::Lorem.words(2)} #{i}" }
 end
 
 Sham.bedrooms(:unique => false)  { rand(5) + 1 }
@@ -56,6 +56,19 @@ end
 County.blueprint do
   name { Sham.city }
   state
+end
+
+Feed.blueprint do
+  name { Sham.unique_name }
+  url  { Sham.feed_url }
+end
+
+FeedItem.blueprint do
+  title        { Faker::Lorem.sentence }
+  url          { Faker::Internet.domain_name }
+  description  { Faker::Lorem.paragraphs }
+  published_at { Time.now }
+  feed
 end
 
 FloorPlanGroup.blueprint do
@@ -141,7 +154,7 @@ end
 
 PropertyFeature.blueprint do
   icon_file_name { Sham.file_name }
-  name           { Sham.feature_name }
+  name           { Sham.unique_name }
   description    { Faker::Lorem.paragraphs(1) }
 end
 
@@ -174,16 +187,4 @@ Testimonial.blueprint do
   title { Faker::Lorem.sentence }
   quote { Faker::Lorem.paragraphs }
   section
-end
-
-Feed.blueprint do
-  url { Sham.feed_url }
-end
-
-FeedItem.blueprint do
-  title        { Faker::Lorem.sentence }
-  url          { Faker::Internet.domain_name }
-  description  { Faker::Lorem.paragraphs }
-  published_at { Time.now }
-  feed
 end
