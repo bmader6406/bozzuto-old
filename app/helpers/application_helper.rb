@@ -34,6 +34,12 @@ module ApplicationHelper
     end
   end
 
+  def facebook_like_link
+    content_tag :div, :class => 'facebook-like' do
+      '<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Flocalhost%3A3000%2Fmockup%2Ffeatures&amp;layout=standard&amp;show_faces=false&amp;width=230&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:230px; height:35px;" allowTransparency="true"></iframe>'.html_safe
+    end
+  end
+
   def bedrooms(record)
     pluralize(record.bedrooms, 'Bedroom')
   end

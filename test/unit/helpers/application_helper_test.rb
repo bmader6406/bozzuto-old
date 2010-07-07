@@ -92,5 +92,14 @@ class ApplicationHelperTest < ActionView::TestCase
         assert_select sharethis.root, 'script'
       end
     end
+
+    context '#facebook_like_link' do
+      should 'output div.facebook-like and iframe' do
+        facebook = HTML::Document.new(facebook_like_link)
+
+        assert_select facebook.root, 'div.facebook-like'
+        assert_select facebook.root, 'iframe'
+      end
+    end
   end
 end
