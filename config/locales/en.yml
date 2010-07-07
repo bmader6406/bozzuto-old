@@ -110,6 +110,8 @@ en:
         image: Image dimensions should be 230x223
       property:
         listing_image: Image dimensions should be 150x150
+      property_feature:
+        icon: Image dimensions should be 35x35
       property_mini_slide:
         image: Image dimensions should be 230x145
       property_slide:

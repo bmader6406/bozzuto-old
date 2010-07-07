@@ -9,8 +9,9 @@ class PropertyFeature < ActiveRecord::Base
 
   has_attached_file :icon,
     :url => '/system/:class/:id/icon_:style.:extension',
-    :styles => { :resized => '34x34#' },
+    :styles => { :resized => '35x35#' },
     :default_style => :resized
 
+  validates_uniqueness_of :name
   validates_attachment_presence :icon
 end
