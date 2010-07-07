@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100707021603) do
+ActiveRecord::Schema.define(:version => 20100707125920) do
 
   create_table "awards", :force => true do |t|
     t.string   "title",                           :null => false
@@ -233,7 +233,7 @@ ActiveRecord::Schema.define(:version => 20100707021603) do
     t.float    "longitude"
     t.string   "street_address"
     t.text     "overview_text"
-    t.text     "features_text"
+    t.text     "features_1_text"
     t.text     "neighborhood_text"
     t.text     "promotions_text"
     t.text     "contact_text"
@@ -256,6 +256,11 @@ ActiveRecord::Schema.define(:version => 20100707021603) do
     t.string   "overview_bullet_2"
     t.string   "overview_bullet_3"
     t.boolean  "published",                  :default => false, :null => false
+    t.string   "features_1_title"
+    t.string   "features_2_title"
+    t.text     "features_2_text"
+    t.string   "features_3_title"
+    t.text     "features_3_text"
   end
 
   create_table "properties_property_features", :id => false, :force => true do |t|
@@ -318,15 +323,6 @@ ActiveRecord::Schema.define(:version => 20100707021603) do
   end
 
   add_index "sections", ["cached_slug"], :name => "index_sections_on_cached_slug"
-
-  create_table "services", :force => true do |t|
-    t.string   "title",      :null => false
-    t.string   "slug",       :null => false
-    t.integer  "position",   :null => false
-    t.integer  "section_id", :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "slugs", :force => true do |t|
     t.string   "name"

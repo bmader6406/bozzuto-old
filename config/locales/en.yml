@@ -72,7 +72,12 @@ en:
       property:
         contact_text: Contact Copy
         facebook_url: Facebook URL
-        features_text: Features Copy
+        features_1_title: 'Features Section #1 Title'
+        features_1_text: 'Features Section #1 Copy'
+        features_2_title: 'Features Section #2 Title'
+        features_2_text: 'Features Section #2 Copy'
+        features_3_title: 'Features Section #3 Title'
+        features_3_text: 'Features Section #3 Copy'
         listing_image: Listing Image
         listing_title: Listing Title
         listing_text: Listing Copy
@@ -110,6 +115,9 @@ en:
       masthead_slide:
         image: Image dimensions should be 230x223
       property:
+        features_1_text: Use a single bulleted list. Content will be automatically formatted into two columns.
+        features_2_text: Use a single bulleted list. Content will be automatically formatted into two columns.
+        features_3_text: Use a single bulleted list. Content will be automatically formatted into two columns.
         listing_image: Image dimensions should be 150x150
       property_feature:
         icon: Image dimensions should be 35x35
