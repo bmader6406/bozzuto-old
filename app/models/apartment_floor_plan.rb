@@ -1,4 +1,4 @@
-class FloorPlan < ActiveRecord::Base
+class ApartmentFloorPlan < ActiveRecord::Base
   USE_IMAGE_URL = 0
   USE_IMAGE_FILE = 1
 

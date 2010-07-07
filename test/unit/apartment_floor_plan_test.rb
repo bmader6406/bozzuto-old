@@ -1,9 +1,9 @@
 require 'test_helper'
 
-class FloorPlanTest < ActiveSupport::TestCase
-  context "A floor plan" do
+class ApartmentFloorPlanTest < ActiveSupport::TestCase
+  context "ApartmentFloorPlan" do
     setup do
-      @plan = FloorPlan.new
+      @plan = ApartmentFloorPlan.new
     end
 
     should_belong_to :floor_plan_group, :apartment_community
@@ -36,7 +36,7 @@ class FloorPlanTest < ActiveSupport::TestCase
     context '#uses_image_url?' do
       context 'when image_type is USE_IMAGE_URL' do
         setup do
-          @plan.image_type = FloorPlan::USE_IMAGE_URL
+          @plan.image_type = ApartmentFloorPlan::USE_IMAGE_URL
         end
 
         should 'return true' do
@@ -46,7 +46,7 @@ class FloorPlanTest < ActiveSupport::TestCase
 
       context 'when image_type is USE_IMAGE_FILE' do
         setup do
-          @plan.image_type = FloorPlan::USE_IMAGE_FILE
+          @plan.image_type = ApartmentFloorPlan::USE_IMAGE_FILE
         end
 
         should 'return false' do
@@ -58,7 +58,7 @@ class FloorPlanTest < ActiveSupport::TestCase
     context '#uses_image_file?' do
       context 'when image_type is USE_IMAGE_URL' do
         setup do
-          @plan.image_type = FloorPlan::USE_IMAGE_URL
+          @plan.image_type = ApartmentFloorPlan::USE_IMAGE_URL
         end
 
         should 'return false' do
@@ -68,7 +68,7 @@ class FloorPlanTest < ActiveSupport::TestCase
 
       context 'when image_type is USE_IMAGE_FILE' do
         setup do
-          @plan.image_type = FloorPlan::USE_IMAGE_FILE
+          @plan.image_type = ApartmentFloorPlan::USE_IMAGE_FILE
         end
 
         should 'return true' do
@@ -86,7 +86,7 @@ class FloorPlanTest < ActiveSupport::TestCase
 
       context 'when image_type is USE_IMAGE_URL' do
         should 'return the image url' do
-          @plan.image_type = FloorPlan::USE_IMAGE_URL
+          @plan.image_type = ApartmentFloorPlan::USE_IMAGE_URL
 
           assert_equal @url, @plan.actual_image
         end
@@ -94,7 +94,7 @@ class FloorPlanTest < ActiveSupport::TestCase
 
       context 'when image_type is USE_IMAGE_FILE' do
         should 'return the image file' do
-          @plan.image_type = FloorPlan::USE_IMAGE_FILE
+          @plan.image_type = ApartmentFloorPlan::USE_IMAGE_FILE
           @plan.image.expects(:url).returns(@file)
 
           assert_equal @file, @plan.actual_image
@@ -111,7 +111,7 @@ class FloorPlanTest < ActiveSupport::TestCase
 
       context 'when image_type is USE_IMAGE_URL' do
         should 'return the image url' do
-          @plan.image_type = FloorPlan::USE_IMAGE_URL
+          @plan.image_type = ApartmentFloorPlan::USE_IMAGE_URL
 
           assert_equal @url, @plan.actual_thumb
         end
@@ -119,7 +119,7 @@ class FloorPlanTest < ActiveSupport::TestCase
 
       context 'when image_type is USE_IMAGE_FILE' do
         should 'return the image file' do
-          @plan.image_type = FloorPlan::USE_IMAGE_FILE
+          @plan.image_type = ApartmentFloorPlan::USE_IMAGE_FILE
           @plan.image.expects(:url).with(:thumb).returns(@file)
 
           assert_equal @file, @plan.actual_thumb
@@ -138,7 +138,7 @@ class FloorPlanTest < ActiveSupport::TestCase
     context 'before validating' do
       setup do
         @community = ApartmentCommunity.make
-        @plan = FloorPlan.make(
+        @plan = ApartmentFloorPlan.make(
           :min_market_rent     => 100,
           :max_market_rent     => 200,
           :min_effective_rent  => 300,

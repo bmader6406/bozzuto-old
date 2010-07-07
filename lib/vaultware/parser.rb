@@ -52,10 +52,10 @@ module Vaultware
         files = plan.xpath('./File')
 
         if files.empty?
-          @community.floor_plans << FloorPlan.new(attrs)
+          @community.floor_plans << ApartmentFloorPlan.new(attrs)
         else
           files.each do |file|
-            @community.floor_plans << FloorPlan.new(attrs.merge(
+            @community.floor_plans << ApartmentFloorPlan.new(attrs.merge(
               :image_url => file.at('./Src').try(:content)
             ))
           end
@@ -68,7 +68,7 @@ module Vaultware
 
       plans.each do |plan|
         attrs = floor_plan_attributes(plan)
-        @community.floor_plans << FloorPlan.new(attrs.merge(
+        @community.floor_plans << ApartmentFloorPlan.new(attrs.merge(
           :image_url => plan.at('./File/Src').try(:content)
         ))
       end

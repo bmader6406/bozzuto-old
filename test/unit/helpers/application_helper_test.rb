@@ -4,7 +4,7 @@ class ApplicationHelperTest < ActionView::TestCase
   context "ApplicationHelper" do
     context '#bedrooms' do
       should 'properly pluralize the bedrooms count' do
-        @plan = FloorPlan.new :bedrooms => 1
+        @plan = ApartmentFloorPlan.new :bedrooms => 1
         assert_equal '1 Bedroom', bedrooms(@plan)
 
         @plan.bedrooms = 2
@@ -14,7 +14,7 @@ class ApplicationHelperTest < ActionView::TestCase
 
     context '#bathrooms' do
       should 'properly pluralize the bathrooms count' do
-        @plan = FloorPlan.new :bathrooms => 1
+        @plan = ApartmentFloorPlan.new :bathrooms => 1
         assert_equal '1 Bathroom', bathrooms(@plan)
 
         @plan.bathrooms = 2.5

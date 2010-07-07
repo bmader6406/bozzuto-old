@@ -75,9 +75,9 @@ FloorPlanGroup.blueprint do
   name { Faker::Lorem.words(1) }
 end
 
-FloorPlan.blueprint do
+ApartmentFloorPlan.blueprint do
   name               { Faker::Lorem.words(1) }
-  image_type         { FloorPlan::USE_IMAGE_URL }
+  image_type         { ApartmentFloorPlan::USE_IMAGE_URL }
   image_url          { Faker::Lorem.words(1) }
   availability_url   { "http://#{Faker::Internet.domain_name}" }
   bedrooms           { Sham.bedrooms }

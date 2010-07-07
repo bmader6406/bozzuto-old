@@ -39,7 +39,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
     context 'when changing use_market_prices' do
       setup do
-        @plan = FloorPlan.make(
+        @plan = ApartmentFloorPlan.make(
           :min_effective_rent  => 100,
           :min_market_rent     => 200,
           :max_effective_rent  => 300,
