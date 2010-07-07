@@ -50,6 +50,8 @@ window.bozzuto = {};
 
     $(".secondaryNav").secondaryNav();
 
+    $(".features div.feature a").featurePhotoPopup();
+
     $(".features div.feature ul").makeacolumnlists({cols:2, colWidth:325, equalHeight:false, startN:1});
 
     $(".services div.tips ul, .generic div.tips ul").makeacolumnlists({cols:3, colWidth:150, equalHeight:false, startN:1});
@@ -110,6 +112,45 @@ window.bozzuto = {};
 		};
 
   })(jQuery);
+
+  $.fn.featurePhotoPopup = function() {
+    this.each(function() {
+      if ($(this).attr('href').match(/(jpe?g|gif|png)$/)) {
+        var image  = $('<img src="' + $(this).attr('href') + '" />');
+
+        $(this).addClass('photo');
+
+        $(this).click(function(e){
+          e.preventDefault();
+
+          image.lightbox_me({
+            appearEffect: 'show',
+            overlaySpeed: 0,
+            closeClick: true,
+            destroyOnClose: true,
+            lightboxSpeed: 'slow',
+            centered: true,
+            overlayCSS: {
+              'background': '#fff',
+              'opacity': .01
+            },
+            onLoad:	function() {
+              image.fadeTo(250,1)
+            },
+            onClose: function() {
+              image.css({
+                'opacity' : 0
+              })
+            }
+          });
+
+          image.click(function(){
+            image.trigger('close');
+          })
+        });
+      }
+    });
+  };
 
   ////
   // special nav popups
