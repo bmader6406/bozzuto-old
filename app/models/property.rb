@@ -7,7 +7,7 @@ class Property < ActiveRecord::Base
   has_one :slideshow, :class_name => 'PropertySlideshow'
   has_one :mini_slideshow, :class_name => 'PropertyMiniSlideshow'
 
-  has_and_belongs_to_many :property_features
+  has_and_belongs_to_many :property_features, :order => 'position ASC'
 
   validates_presence_of :title, :city
   validates_numericality_of :latitude, :longitude, :allow_nil => true

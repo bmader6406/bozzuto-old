@@ -763,13 +763,14 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         margin: 39px -70px 0 0;
       }
       .community #overview ul.community-icons li,
+      .community #overview ul.community-icons li a,
       .search #content div.results ul li div.info ul.community-icons a, 
-      .homes #content #view-as-list ul.community-icons a,
-      .community #overview ul.community-icons li a {
+      .homes #content #view-as-list ul.community-icons a {
         display: block;
         width: 45px;
         height: 45px;
         margin-left: 0;
+        padding-left: 0;
         text-indent: -9999px;
       }
 
@@ -4736,22 +4737,8 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       background-position: 0 -43px;
     }
     .community #overview ul.community-icons li a {
-      background: transparent url(../images/structure/bg-community-icons.gif) no-repeat 0 0;
-    }
-    .community #overview ul.community-icons li.elite a {
-      background-position: 5px 0;
-    }
-    .community #overview ul.community-icons li.smart-share a {
-      background-position: 5px -43px;
-    }
-    .community #overview ul.community-icons li.smart-rent a {
-      background-position: 5px -86px;
-    }
-    .community #overview ul.community-icons li.green a {
-      background-position: 5px -129px;
-    }
-    .community #overview ul.community-icons li.non-smoking a {
-      background-position: 5px -172px;
+      background-image: none;
+      background-position: center center;
     }
 
   /* @end */

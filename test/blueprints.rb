@@ -8,6 +8,8 @@ Sham.define do
   company_name  { Faker::Company.name }
   feed_url      { |i| "http://#{i}.#{Faker::Internet.domain_name}/feed.rss" }
   section_title { |i| "#{Faker::Lorem.words} #{i}" }
+  file_name     { |i| "/image#{i}.jpg" }
+  feature_name  { |i| "#{Faker::Lorem.words(2)} #{i}" }
 end
 
 Sham.bedrooms(:unique => false)  { rand(5) + 1 }
@@ -135,6 +137,12 @@ end
 Property.blueprint do
   title { Sham.company_name }
   city
+end
+
+PropertyFeature.blueprint do
+  icon_file_name { Sham.file_name }
+  name           { Sham.feature_name }
+  description    { Faker::Lorem.paragraphs(1) }
 end
 
 Page.blueprint do

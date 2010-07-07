@@ -1,16 +1,24 @@
 module PropertiesHelper
   def property_icons
-    content_tag :ul, :class => "community-icons" do
-      %w(elite smart_share smart_rent green non_smoking).inject("") do |html, flag|
-        if @community.send("#{flag}?")
-          html << content_tag(:li, :class => flag.gsub(/_/, '-')) do
-            link_to "#" do
-              content_tag(:span) { ApartmentCommunity.human_attribute_name(flag) }
-            end
-          end
+    content_tag :ul, :class => 'community-icons' do
+      @community.property_features.inject('') do |output, feature|
+        output << content_tag(:li) do
+          link_to feature.name, "##{dom_id(feature)}", :style => "background-image: url(#{feature.icon.url});"
         end
-        html
-      end.html_safe
+        output.html_safe
+      end
+    end
+  end
+
+  def property_icon_descriptions
+    content_tag :ul, :id => 'icon-tooltips' do
+      @community.property_features.inject('') do |output, feature|
+        output << content_tag(:li, :id => dom_id(feature)) do
+          content_tag(:h4) { feature.name } + 
+            content_tag(:p) { feature.description }
+        end
+        output.html_safe
+      end
     end
   end
 
@@ -18,7 +26,7 @@ module PropertiesHelper
     if @community.has_overview_bullets?
       content_tag :ul do
         (1..3).inject('') do |output, i|
-          output += if @community.send("overview_bullet_#{i}").present?
+          output << if @community.send("overview_bullet_#{i}").present?
             content_tag(:li) { @community.send("overview_bullet_#{i}") }
           end
           output.html_safe

@@ -2,16 +2,42 @@ require 'test_helper'
 
 class PropertiesHelperTest < ActionView::TestCase
   context "PropertiesHelper" do
-    context "#property_icons" do
-      setup do
-        @community = ApartmentCommunity.make(:elite => true, :non_smoking => true)
+    context 'icons' do
+      context "#property_icons" do
+        setup do
+          @community = ApartmentCommunity.make
+          3.times { @community.property_features << PropertyFeature.make }
+        end
+
+        should "emit icons for the community's features" do
+          icons = HTML::Document.new(property_icons)
+
+          assert_select icons.root, "ul.community-icons"
+
+          @community.property_features.each do |feature|
+            assert_select icons.root, "a",
+              :href => "##{dom_id(feature)}",
+              :text => feature.name
+          end
+        end
       end
 
-      should "emit icons for true flags on the community" do
-        icons = HTML::Document.new(property_icons)
-        assert_select icons.root, "ul.community-icons"
-        assert_select icons.root, "li.elite"
-        assert_select icons.root, "li.non-smoking"
+      context "#property_icon_descriptions" do
+        setup do
+          @community = ApartmentCommunity.make
+          3.times { @community.property_features << PropertyFeature.make }
+        end
+
+        should "emit icons for the community's features" do
+          icons = HTML::Document.new(property_icon_descriptions)
+
+          assert_select icons.root, "ul#icon-tooltips"
+
+          @community.property_features.each do |feature|
+            assert_select icons.root, "li##{dom_id(feature)}"
+            assert_select icons.root, "li h4", feature.name
+          end
+        end
       end
     end
 
