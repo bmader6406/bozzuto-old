@@ -1,4 +1,6 @@
 development:
+  flickr_username: Bozzuto Group
+  flickr_api_key: '8042a247ce230ca6fe328406b416b7a2' # Bozzuto's API key
   paperclip_command_path: /usr/local/bin
   walkscore_wsid: 'YOUR-WSID-HERE'
   google_maps_api_key: 'ABQIAAAA7txTDQDFqeDYcgMQiou82BS4HyMuMWnF1gYqzj4uDbvuvSLR0RQG2OmrjDwO9korkAMlXnDyKPNeTw' # key for bozzuto.local
