@@ -9,6 +9,6 @@ class Photo < ActiveRecord::Base
 
   has_attached_file :image,
     :url => '/system/:class/:id/photo_:id_:style.:extension',
-    :styles => { :resized => '870x375#', :thumb => '150x150#' },
+    :styles => { :resized => '870x375#', :thumb => '55x55#' },
     :default_style => :resized
 end

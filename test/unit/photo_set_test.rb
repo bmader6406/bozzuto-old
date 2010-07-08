@@ -16,7 +16,7 @@ class PhotoSetTest < ActiveSupport::TestCase
     context 'before validating' do
       setup do
         @flickr_set = FlickrSet.new('123', 'Test title')
-        PhotoSet.flickr_user.expects(:sets).returns([@flickr_set])
+        PhotoSet.flickr_user.stubs(:sets).returns([@flickr_set])
       end
 
       context 'if the set exists' do
