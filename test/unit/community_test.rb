@@ -10,6 +10,7 @@ class CommunityTest < ActiveSupport::TestCase
 
     should_belong_to :local_info_feed
     should_have_one :photo_set
+    should_have_many :videos
 
     context '#has_overview_bullets?' do
       should 'return false if all bullets are empty' do

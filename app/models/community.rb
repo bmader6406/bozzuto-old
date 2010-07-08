@@ -2,7 +2,10 @@ class Community < Property
   include Bozzuto::SMSAble
 
   belongs_to :local_info_feed, :class_name => 'Feed'
-  has_one :photo_set, :foreign_key => 'community_id'
+  has_one :photo_set, :foreign_key => :community_id
+  has_many :videos,
+    :foreign_key => :community_id,
+    :order       => 'position ASC'
 
   def has_overview_bullets?
     (1..3).any? do |i|

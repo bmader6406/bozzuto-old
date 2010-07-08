@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100708172736) do
+ActiveRecord::Schema.define(:version => 20100708202151) do
 
   create_table "apartment_floor_plan_groups", :force => true do |t|
     t.string   "name",       :null => false
@@ -389,6 +389,16 @@ ActiveRecord::Schema.define(:version => 20100708172736) do
     t.string   "salt",                                :null => false
     t.string   "crypted_password",                    :null => false
     t.string   "preferences"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "videos", :force => true do |t|
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.string   "url",                :null => false
+    t.integer  "community_id"
+    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
