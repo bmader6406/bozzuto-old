@@ -33,6 +33,10 @@ end
   PhotoGroup.find_or_create_by_title(attrs)
 end
 
+if HomePage.count.zero?
+  HomePage.new.save(false)
+end
+
 parser = Vaultware::Parser.new
 parser.parse(RAILS_ROOT + '/db/seeds/vaultware.xml')
 parser.process

@@ -34,6 +34,10 @@ ActionController::Routing::Routes.draw do |map|
     community.resources :homes, :only => :index
 
     community.resource :info_message, :only => :create # send sms
+
+    community.resources :media,
+      :controller => :community_media,
+      :only       => :index
   end
 
   map.resources :states, :only => :show

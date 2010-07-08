@@ -8,8 +8,8 @@
         <li class="<%= current_if 'features' %>">
           <%= link_to 'Features & Amenities', features_home_community_path(@community) %>
         </li>
-        <li class="<%= current_if 'media' %>">
-          <%= link_to 'Photos & Videos', '#' %>
+        <li class="<%= current_if :controller => 'community_media' %>">
+          <%= link_to 'Photos & Videos', home_community_media_path(@community) %>
         </li>
         <li class="<%= current_if :controller => 'homes' %>">
           <%= link_to 'Homes', home_community_homes_path(@community) %>
@@ -37,6 +37,10 @@
       </ul>
     </div>
 
-    <%= render :partial => 'properties/slideshow', :locals => { :property => @community } %>
+    <% if params[:controller] == 'community_media' %>
+      <%= render :partial => 'community_media/slideshow' %>
+    <% else %>
+      <%= render :partial => 'properties/slideshow', :locals => { :property => @community } %>
+    <% end %>
   </div>
 </div>

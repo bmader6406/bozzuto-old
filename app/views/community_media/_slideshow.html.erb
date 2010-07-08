@@ -1,33 +1,35 @@
-<div id="slideshow">
-  <div class="header">
-    <ul class="slideshow-navigation">
-      <li>
-        <a class="prev" href="#">Previous</a>
-      </li>
-      <li>
-        <a class="next" href="#">Next</a>
-      </li>
-    </ul>
-  </div>
+<% unless @community.photo_set.nil? %>
+  <div id="slideshow">
+    <div class="header">
+      <ul class="slideshow-navigation">
+        <li>
+          <a class="prev" href="#">Previous</a>
+        </li>
+        <li>
+          <a class="next" href="#">Next</a>
+        </li>
+      </ul>
+    </div>
 
-  <ul class="slides">
-    <% slide_index = 1 %>
-    <% PhotoGroup.all.each do |group| %>
-      <% photos = group.photos.in_set(@community.photo_set) %>
+    <ul class="slides">
+      <% slide_index = 1 %>
+      <% PhotoGroup.all.each do |group| %>
+        <% photos = group.photos.in_set(@community.photo_set) %>
 
-      <% unless photos.empty? %>
-        <% photos.each do |photo| %>
-          <li id="slideshow-slide-<%= slide_index %>" class="slide">
-            <%= image_tag(photo.image.url) %>
-            <div class="slideshow-caption">
-              <p class="slideshow-counter"></p>
-              <p><%= photo.title %></p>
-            </div>
-          </li>
+        <% unless photos.empty? %>
+          <% photos.each do |photo| %>
+            <li id="slideshow-slide-<%= slide_index %>" class="slide">
+              <%= image_tag(photo.image.url) %>
+              <div class="slideshow-caption">
+                <p class="slideshow-counter"></p>
+                <p><%= photo.title %></p>
+              </div>
+            </li>
 
-          <% slide_index += 1 %>
+            <% slide_index += 1 %>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
-  </ul>
-</div>
+    </ul>
+  </div>
+<% end %>

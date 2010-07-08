@@ -8,6 +8,6 @@ class CommunityMediaController < ApplicationController
   private
 
   def find_community
-    @community = ApartmentCommunity.find(params[:apartment_community_id])
+    @community = Property.find(params[:apartment_community_id] || params[:home_community_id])
   end
 end

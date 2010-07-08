@@ -1,30 +1,38 @@
 <% content_for :body_class do %>community property videos-and-photos<% end %>
 
-<%= render :partial => 'apartment_communities/breadcrumb' %>
-
-<%= render :partial => 'apartment_communities/masthead' %>
+<% if @community.is_a?(ApartmentCommunity) %>
+  <%= render :partial => 'apartment_communities/breadcrumb' %>
+  <%= render :partial => 'apartment_communities/masthead' %>
+<% else %>
+  <%= render :partial => 'home_communities/breadcrumb' %>
+  <%= render :partial => 'home_communities/masthead' %>
+<% end %>
 
 <div id="main-content">
   <div class="container">
-    <% slide_index = 1 %>
-    <% PhotoGroup.all.each do |group| %>
-      <% photos = group.photos.in_set(@community.photo_set) %>
+    <% unless @community.photo_set.nil? %>
 
-      <% unless photos.empty? %>
-        <div class="media-group">
-          <h2><%= group.title %></h2>
+      <% slide_index = 1 %>
+      <% PhotoGroup.all.each do |group| %>
+        <% photos = group.photos.in_set(@community.photo_set) %>
 
-          <ul class="row">
-            <% photos.each do |photo| %>
-              <li class="media-link">
-              <%= link_to image_tag(photo.image.url(:thumb)), "#slideshow-slide-#{slide_index}", :class => 'set-slideshow' %>
-              </li>
+        <% unless photos.empty? %>
+          <div class="media-group">
+            <h2><%= group.title %></h2>
 
-              <% slide_index += 1 %>
-            <% end %>
-          </ul>
-        </div>
+            <ul class="row">
+              <% photos.each do |photo| %>
+                <li class="media-link">
+                <%= link_to image_tag(photo.image.url(:thumb)), "#slideshow-slide-#{slide_index}", :class => 'set-slideshow' %>
+                </li>
+
+                <% slide_index += 1 %>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
       <% end %>
+
     <% end %>
 
     <%= render :partial => 'properties/sub_content', :locals => { :property => @community } %>
