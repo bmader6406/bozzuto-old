@@ -17,7 +17,8 @@
 			".apartments .slideshow-navigation a",
 			".slideshow-navigation a",
 			".project #main-content .content .main-content ul.project-updates li div p.info-link a",
-			".project #main-content .content .main-content ul.project-updates li div div.info-overlay"
+			".project #main-content .content .main-content ul.project-updates li div div.info-overlay",
+			".property #slideshow .overlay"
     ];
     DD_belatedPNG.fix(pngFix.join(", "));
 

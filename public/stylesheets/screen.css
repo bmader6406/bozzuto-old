@@ -710,11 +710,21 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       .property #slideshow img {
         display: block;
       }
+      .property #slideshow .overlay {
+        background: url(../images/structure/bg-slideshow-overlay.png) no-repeat;
+        display: block;
+        height: 100%;
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        z-index: 10;
+      }
       .property #slideshow div.section {
         display: none;
         position: absolute;
         top: 80px; left: 35px;
         width: 375px;
+        z-index: 11;
       }
       .property #slideshow p.watch-video {
         padding-top: 15px;
