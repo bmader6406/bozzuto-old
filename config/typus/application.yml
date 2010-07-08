@@ -19,11 +19,13 @@ ApartmentCommunity:
 
 ApartmentFloorPlan:
   fields:
-    default: actual_image, bedrooms, bathrooms, min_square_feet, max_square_feet, position
-    list: actual_image, bedrooms, bathrooms, min_square_feet, max_square_feet, position
-    form: image_type, image_url, image, availability_url, bedrooms, bathrooms, min_square_feet, max_square_feet, min_market_rent, max_market_rent, min_effective_rent, max_effective_rent, floor_plan_group
+    default: name, bedrooms, bathrooms, featured, position
+    list: actual_image, bedrooms, bathrooms, position
+    form: name, featured, image_type, image_url, image, availability_url, bedrooms, bathrooms, min_square_feet, max_square_feet, min_market_rent, max_market_rent, min_effective_rent, max_effective_rent, floor_plan_group
     options:
       selectors: image_type
+      booleans:
+        featured: ['Yes', 'No']
   order_by: floor_plan_group_id, position
   relationships: floor_plan_group
   filters:

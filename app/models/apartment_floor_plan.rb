@@ -40,6 +40,8 @@ class ApartmentFloorPlan < ActiveRecord::Base
     :max_rent,
     :minimum => 0
 
+  validates_inclusion_of :featured, :in => [true, false]
+
   has_attached_file :image,
     :url => '/system/:class/:id/:style.:extension',
     :styles => { :thumb => '160' }

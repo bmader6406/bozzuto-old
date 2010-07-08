@@ -4,6 +4,10 @@ class ApartmentCommunity < Community
 
   has_many :photos
   has_many :floor_plans, :class_name => 'ApartmentFloorPlan'
+  has_many :featured_floor_plans,
+    :class_name => 'ApartmentFloorPlan',
+    :conditions => { :featured => true },
+    :order      => 'bedrooms ASC, position ASC'
 
   validates_inclusion_of :use_market_prices, :in => [true, false]
 
