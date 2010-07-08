@@ -10,11 +10,15 @@ module Vaultware
       data.xpath('/PhysicalProperty/Property', ns).each do |property|
         process_property(property)
 
-        plans = property.xpath('./Floorplan')
-        if aggregate_floor_plans?(plans)
-          process_aggregate_floor_plans(plans)
-        else
-          process_single_floor_plans(plans)
+        property.xpath('./Floorplan').each do |plan|
+          # Floorplan elements that have more than one File child
+          # should be treated as separate floor plans, one for
+          # each File
+          if aggregate_floor_plan?(plan)
+            process_aggregate_floor_plan(plan)
+          else
+            process_single_floor_plan(plan)
+          end
         end
       end
     end
@@ -40,54 +44,68 @@ module Vaultware
       })
     end
 
-    def aggregate_floor_plans?(plans)
-      plans.any? { |plan| plan.xpath('./File').count > 1 }
+    def aggregate_floor_plan?(plan)
+      plan.xpath('./File').count > 1
     end
 
-    def process_aggregate_floor_plans(plans)
-      @community.floor_plans.destroy_all
+    def process_aggregate_floor_plan(plan)
+      attrs = floor_plan_attributes(plan)
+      files = plan.xpath('./File')
 
-      plans.each do |plan|
-        attrs = floor_plan_attributes(plan)
-        files = plan.xpath('./File')
-
-        if files.empty?
-          @community.floor_plans << FloorPlan.new(attrs)
-        else
-          files.each do |file|
-            @community.floor_plans << FloorPlan.new(attrs.merge(
-              :image_url => file.at('./Src').try(:content)
-            ))
-          end
-        end
+      # create one floor plan for each file
+      files.each do |file|
+        create_or_update_floor_plan(attrs.merge(
+          :vaultware_file_id => file['Id'].to_i,
+          :image_url => file.at('./Src').content
+        ))
       end
     end
 
-    def process_single_floor_plans(plans)
-      @community.floor_plans.destroy_all
+    def process_single_floor_plan(plan)
+      attrs = floor_plan_attributes(plan)
+      file = plan.at('./File')
 
-      plans.each do |plan|
-        attrs = floor_plan_attributes(plan)
-        @community.floor_plans << FloorPlan.new(attrs.merge(
-          :image_url => plan.at('./File/Src').try(:content)
-        ))
+      if file.present?
+        attrs.merge!({
+          :vaultware_file_id => file['Id'].to_i,
+          :image_url         => file.at('./Src').content
+        })
+      end
+
+      create_or_update_floor_plan(attrs)
+    end
+
+    def create_or_update_floor_plan(attrs)
+      find_conditions = {
+        :conditions => {
+          :vaultware_floor_plan_id => attrs[:vaultware_floor_plan_id],
+          :vaultware_file_id       => attrs[:vaultware_file_id]
+        }
+      }
+
+      if plan = @community.floor_plans.find(:first, find_conditions)
+        plan.update_attributes(attrs)
+      else
+        @community.floor_plans << ApartmentFloorPlan.new(attrs)
       end
     end
 
     def floor_plan_group(plan)
       bedrooms = plan.at('./Room[@Type="Bedroom"]/Count').content.to_i
 
-      if plan.at('./Comment').content =~ /penthouse/i
-        FloorPlanGroup.penthouse
+      message = if plan.at('./Comment').content =~ /penthouse/i
+        :penthouse
       elsif bedrooms == 0
-        FloorPlanGroup.studio
+        :studio
       elsif bedrooms == 1
-        FloorPlanGroup.one_bedroom
+        :one_bedroom
       elsif bedrooms == 2
-        FloorPlanGroup.two_bedrooms
+        :two_bedrooms
       else bedrooms == 3
-        FloorPlanGroup.three_bedrooms
+        :three_bedrooms
       end
+
+      ApartmentFloorPlanGroup.send(message)
     end
 
     def floor_plan_attributes(plan)
@@ -102,7 +120,8 @@ module Vaultware
         :min_market_rent    => plan.at('./MarketRent')['Min'].to_f,
         :max_market_rent    => plan.at('./MarketRent')['Max'].to_f,
         :min_effective_rent => plan.at('./EffectiveRent')['Min'].to_f,
-        :max_effective_rent => plan.at('./EffectiveRent')['Max'].to_f
+        :max_effective_rent => plan.at('./EffectiveRent')['Max'].to_f,
+        :vaultware_floor_plan_id => plan['Id'].to_i
       }
     end
 

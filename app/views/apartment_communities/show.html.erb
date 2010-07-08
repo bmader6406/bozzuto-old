@@ -61,7 +61,7 @@
 
           <table>
             <tbody>
-              <% FloorPlanGroup.all.each do |group| %>
+              <% ApartmentFloorPlanGroup.all.each do |group| %>
                 <% plans_in_group = @community.floor_plans.in_group(group) %>
                 <% unless plans_in_group.empty? %>
                   <tr>
@@ -91,37 +91,30 @@
           </table>
         </div>
 
-        <div id="featured-floor-plans">
-          <h2>Featured Floor Plans</h2>
-          <ul class="row">
-            <li class="floor-plan">
-              <h4>Studio</h4>
-              <p>
-                542 Sq Ft | $XXXX<br />
-                <a href="#">Reserve</a>
-              </p>
-              <img src="/images/floor-plan-studio.png" />
-            </li>
+        <% if @community.featured_floor_plans.any? %>
+          <div id="featured-floor-plans">
+            <h2>Featured Floor Plans</h2>
 
-            <li class="floor-plan">
-              <h4>1 Bedroom w/Den</h4>
-              <p>
-                830 Sq Ft | $XXXX<br />
-                <a href="#">Reserve</a>
-              </p>
-              <img src="/images/floor-plan-1-br.png" />
-            </li>
+            <ul class="row">
+              <% @community.featured_floor_plans.take(3).each do |plan| %>
+                <li class="floor-plan">
+                  <h4><%= plan.name %></h4>
+                  <p>
+                    <%= square_feet(plan) %> |
+                    <%= floor_plan_price(plan.min_rent) %>
 
-            <li class="floor-plan">
-              <h4>2 Bedrooms</h4>
-              <p>
-                542 Sq Ft | $XXXX<br />
-                <a href="#">Reserve</a>
-              </p>
-              <img src="/images/floor-plan-2-br.png" />
-            </li>
-          </ul>
-        </div>
+                    <% if plan.availability_url.present? %>
+                      <br />
+                      <%= link_to 'Reserve', plan.availability_url %>
+                    <% end %>
+                  </p>
+
+                  <%= floor_plan_image(plan) %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
       </div>
 
 

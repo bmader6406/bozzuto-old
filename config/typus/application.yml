@@ -6,7 +6,7 @@ ApartmentCommunity:
   fields:
     default: title, published, street_address, city
     list: title, published, street_address, city
-    form: title, street_address, city, county, latitude, longitude, website_url, video_url, twitter_handle, local_info_feed, listing_image, listing_title, listing_text, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, features_1_title, features_1_text, features_2_title, features_2_text, features_3_title, features_3_text, neighborhood_text, contact_text, published
+    form: title, street_address, city, county, latitude, longitude, website_url, video_url, facebook_url, twitter_handle, local_info_feed, listing_image, listing_title, listing_text, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, features_1_title, features_1_text, features_2_title, features_2_text, features_3_title, features_3_text, neighborhood_text, contact_text, published
     options:
       ckeditor: listing_text, overview_text, features_1_text, features_2_text, features_3_text, neighborhood_text, contact_text
       booleans:
@@ -16,6 +16,31 @@ ApartmentCommunity:
   filters:
   search: title, street_address
   application: Properties
+
+ApartmentFloorPlan:
+  fields:
+    default: name, bedrooms, bathrooms, featured, position
+    list: actual_image, bedrooms, bathrooms, position
+    form: name, featured, image_type, image_url, image, availability_url, bedrooms, bathrooms, min_square_feet, max_square_feet, min_market_rent, max_market_rent, min_effective_rent, max_effective_rent, floor_plan_group
+    options:
+      selectors: image_type
+      booleans:
+        featured: ['Yes', 'No']
+  order_by: floor_plan_group_id, position
+  relationships: floor_plan_group
+  filters:
+  search:
+  application:
+
+ApartmentFloorPlanGroup:
+  fields:
+    default: name, position
+    list: name, position
+    form: name
+  order_by: position
+  relationships: floor_plans
+  search: name
+  application:
 
 Award:
   fields:
@@ -85,29 +110,6 @@ Feed:
   search:
   application:
 
-FloorPlanGroup:
-  fields:
-    default: name, position
-    list: name, position
-    form: name
-  order_by: position
-  relationships: floor_plans
-  search: name
-  application:
-
-FloorPlan:
-  fields:
-    default: actual_image, bedrooms, bathrooms, min_square_feet, max_square_feet, position
-    list: actual_image, bedrooms, bathrooms, min_square_feet, max_square_feet, position
-    form: image_type, image_url, image, availability_url, bedrooms, bathrooms, min_square_feet, max_square_feet, min_market_rent, max_market_rent, min_effective_rent, max_effective_rent, floor_plan_group
-    options:
-      selectors: image_type
-  order_by: floor_plan_group_id, position
-  relationships: floor_plan_group
-  filters:
-  search:
-  application:
-
 Home:
   fields:
     default: name, bedrooms, bathrooms, featured, position
@@ -123,7 +125,7 @@ HomeCommunity:
   fields:
     default: title, published, street_address, city
     list: title, published, street_address, city
-    form: title, street_address, city, county, latitude, longitude, website_url, video_url, twitter_handle, local_info_feed, listing_image, listing_title, listing_text, latitude, longitude, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, features_1_title, features_1_text, features_2_title, features_2_text, features_3_title, features_3_text, neighborhood_text, contact_text, published
+    form: title, street_address, city, county, latitude, longitude, website_url, video_url, facebook_url, twitter_handle, local_info_feed, listing_image, listing_title, listing_text, latitude, longitude, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, features_1_title, features_1_text, features_2_title, features_2_text, features_3_title, features_3_text, neighborhood_text, contact_text, published
     options:
       ckeditor: listing_text, overview_text, features_1_text, features_2_text, features_3_text, neighborhood_text, contact_text
       booleans:

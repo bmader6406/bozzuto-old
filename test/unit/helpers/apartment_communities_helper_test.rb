@@ -4,7 +4,7 @@ class ApartmentCommunitiesHelperTest < ActionView::TestCase
   context "ApartmentCommunitiesHelper" do
     context "#floor_plan_price" do
       setup do
-        @plan = FloorPlan.make(:min_effective_rent => 600)
+        @plan = ApartmentFloorPlan.make(:min_effective_rent => 600)
       end
 
       should "return the floor plan's formatted price" do
@@ -14,7 +14,7 @@ class ApartmentCommunitiesHelperTest < ActionView::TestCase
 
     context '#floor_plan_image' do
       setup do
-        @plan = FloorPlan.make :image_url => 'http://bozzuto.com/blah.jpg'
+        @plan = ApartmentFloorPlan.make :image_url => 'http://bozzuto.com/blah.jpg'
       end
 
       should 'return the link' do
@@ -26,7 +26,7 @@ class ApartmentCommunitiesHelperTest < ActionView::TestCase
 
     context "#square_feet" do
       setup do
-        @plan = FloorPlan.make(:min_square_feet => 550)
+        @plan = ApartmentFloorPlan.make(:min_square_feet => 550)
       end
 
       should "return the floor plan's formatted square footage" do

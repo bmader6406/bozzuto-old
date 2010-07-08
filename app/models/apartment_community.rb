@@ -3,18 +3,22 @@ class ApartmentCommunity < Community
   after_update :update_floor_plan_prices
 
   has_many :photos
-  has_many :floor_plans
+  has_many :floor_plans, :class_name => 'ApartmentFloorPlan'
+  has_many :featured_floor_plans,
+    :class_name => 'ApartmentFloorPlan',
+    :conditions => { :featured => true },
+    :order      => 'bedrooms ASC, position ASC'
 
   validates_inclusion_of :use_market_prices, :in => [true, false]
 
   named_scope :with_floor_plan_groups, lambda {|ids|
-    {:conditions => ["properties.id IN (SELECT apartment_community_id FROM floor_plans WHERE floor_plan_group_id IN (?))", ids]}
+    {:conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE floor_plan_group_id IN (?))", ids]}
   }
   named_scope :with_min_price, lambda {|price|
-    {:conditions => ['properties.id IN (SELECT apartment_community_id FROM floor_plans WHERE min_rent >= ?)', price.to_i]}
+    {:conditions => ['properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE min_rent >= ?)', price.to_i]}
   }
   named_scope :with_max_price, lambda {|price|
-    {:conditions => ['properties.id IN (SELECT apartment_community_id FROM floor_plans WHERE max_rent <= ?)', price.to_i]} if price.to_i > 0
+    {:conditions => ['properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE max_rent <= ?)', price.to_i]} if price.to_i > 0
   }
 
   include FlagShihTzu

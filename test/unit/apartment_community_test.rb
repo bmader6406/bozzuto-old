@@ -9,7 +9,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
     subject { @community }
 
     should_have_many :photos
-    should_have_many :floor_plans
+    should_have_many :floor_plans, :featured_floor_plans
 
     should 'respond to named scopes' do
       assert_nothing_raised do
@@ -39,7 +39,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
     context 'when changing use_market_prices' do
       setup do
-        @plan = FloorPlan.make(
+        @plan = ApartmentFloorPlan.make(
           :min_effective_rent  => 100,
           :min_market_rent     => 200,
           :max_effective_rent  => 300,

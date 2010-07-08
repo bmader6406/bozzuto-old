@@ -10,10 +10,10 @@ $(function() {
 
   // floor plan form
   (function() {
-    var imageUrl  = $('input#floor_plan_image_url').parent(),
-        imageFile = $('input#floor_plan_image').parent();
+    var imageUrl  = $('input[id$=floor_plan_image_url]').parent(),
+        imageFile = $('input[id$=floor_plan_image]').parent();
 
-    $('select#floor_plan_image_type').change(function() {
+    $('select#[id$=floor_plan_image_type]').change(function() {
       var selected = parseInt($(':selected', this).val()),
           usesUrl  = 0,
           usesFile = 1;

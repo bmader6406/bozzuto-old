@@ -2,10 +2,10 @@ en:
   activerecord:
     models:
       apartment_community: Apartment Community
+      apartment_floor_plan: Floor Plan
+      apartment_floor_plan_group: Floor Plan Type
       body_slide: Slide
       body_slideshow: Page Body Slideshow
-      floor_plan: Floor Plan
-      floor_plan_group: Floor Plan Type
       home_community: Home Community
       home_floor_plan: Floor Plan
       home_page:
@@ -25,17 +25,7 @@ en:
       typus_user: User
       feed: Feed
     attributes:
-      award:
-        published_at: Published At
-      body_slide:
-        body_slideshow: Slideshow
-      community:
-        elite: Elite Community
-        smart_share: Bozzuto SmartShare Program
-        smart_rent: Bozzuto SmartRent Program
-        green: Bozzuto Green Program
-        non_smoking: No Smoking
-      floor_plan:
+      apartment_floor_plan:
         actual_image: Image
         availability_url: Availability URL
         bathrooms: Bath
@@ -50,6 +40,16 @@ en:
         min_effective_rent: Minimum Effective Rent
         max_square_feet: Maximum Square Feet
         min_square_feet: Minimum Square Feet
+      award:
+        published_at: Published At
+      body_slide:
+        body_slideshow: Slideshow
+      community:
+        elite: Elite Community
+        smart_share: Bozzuto SmartShare Program
+        smart_rent: Bozzuto SmartRent Program
+        green: Bozzuto Green Program
+        non_smoking: No Smoking
       home:
         bathrooms: Bath
         bedrooms: Bed

@@ -4,14 +4,14 @@
 
 admin:
   ApartmentCommunity: create, read, update, delete
+  ApartmentFloorPlan: create, read, update, delete
+  ApartmentFloorPlanGroup: read
   Award: create, read, update, delete
   BodySlide: create, read, update, delete
   BodySlideshow: create, read, update, delete
   City: create, read, update, delete
   County: create, read, update, delete
   Feed: create, read, update, delete
-  FloorPlanGroup: read
-  FloorPlan: create, read, update, delete
   Home: create, read, update, delete
   HomeCommunity: create, read, update, delete
   HomeFloorPlan: create, read, update, delete

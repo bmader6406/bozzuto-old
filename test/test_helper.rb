@@ -26,10 +26,10 @@ class ActiveSupport::TestCase
   end
 
   setup do
-    FloorPlanGroup.create :name => 'Studio'
-    FloorPlanGroup.create :name => '1 Bedroom'
-    FloorPlanGroup.create :name => '2 Bedrooms'
-    FloorPlanGroup.create :name => '3 or More Bedrooms'
-    FloorPlanGroup.create :name => 'Penthouse'
+    ApartmentFloorPlanGroup.create :name => 'Studio'
+    ApartmentFloorPlanGroup.create :name => '1 Bedroom'
+    ApartmentFloorPlanGroup.create :name => '2 Bedrooms'
+    ApartmentFloorPlanGroup.create :name => '3 or More Bedrooms'
+    ApartmentFloorPlanGroup.create :name => 'Penthouse'
   end
 end

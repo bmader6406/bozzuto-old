@@ -1,4 +1,4 @@
-class FloorPlan < ActiveRecord::Base
+class ApartmentFloorPlan < ActiveRecord::Base
   USE_IMAGE_URL = 0
   USE_IMAGE_FILE = 1
 
@@ -9,7 +9,7 @@ class FloorPlan < ActiveRecord::Base
 
   before_validation :set_rent_prices
 
-  belongs_to :floor_plan_group
+  belongs_to :floor_plan_group, :class_name => 'ApartmentFloorPlanGroup'
   belongs_to :apartment_community
 
   acts_as_list
@@ -39,6 +39,8 @@ class FloorPlan < ActiveRecord::Base
     :min_rent,
     :max_rent,
     :minimum => 0
+
+  validates_inclusion_of :featured, :in => [true, false]
 
   has_attached_file :image,
     :url => '/system/:class/:id/:style.:extension',

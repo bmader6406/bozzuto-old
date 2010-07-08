@@ -19,8 +19,9 @@ ActionController::Routing::Routes.draw do |map|
   }
   map.resources :apartment_communities, community_options.merge(:path_prefix => :apartments) do |community|
     community.resources :floor_plan_groups,
-      :as   => :floor_plans,
-      :only => :index
+      :controller => :apartment_floor_plan_groups,
+      :as         => :floor_plans,
+      :only       => :index
   end
 
   map.resources :home_communities, community_options.merge(:path_prefix => 'new-homes') do |community|
