@@ -496,3 +496,45 @@ input.date_input { border: 1px solid #999; margin-bottom: 1em;}
 .unrelate { background-position: -145px -129px; height: 15px; width: 15px; }
 
 /* @end */
+
+/* @group Override WYSIWYG Editor */
+.cke_skin_kama .cke_dialog_body a.cke_dialog_ui_button,
+.cke_skin_kama .cke_dialog_body a:hover.cke_dialog_ui_button,
+.cke_skin_kama .cke_dialog_body a:focus.cke_dialog_ui_button,
+.cke_skin_kama .cke_dialog_body a:active.cke_dialog_ui_button {
+  background: #c0c5cb;
+  width: auto;
+}
+.cke_skin_kama .cke_dialog_body a.cke_dialog_ui_button_cancel {
+  background: #dedede;
+}
+.cke_skin_kama .cke_dialog_body a.cke_dialog_ui_button span {
+  background: none;
+  font-weight: bold;
+  width: auto;
+}
+.cke_skin_kama .cke_dialog_body a.cke_dialog_ui_button_cancel span {
+  font-weight: normal;
+}
+.cke_skin_kama .cke_dialog .cke_dialog_body .cke_dialog_close_button {
+  background: none !important;
+}
+.cke_skin_kama .cke_dialog .cke_dialog_body .cke_dialog_close_button span {
+  display: block;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+}
+.cke_skin_kama .cke_dialog a.cke_dialog_tab {
+  background: #dedede !important;
+  margin: 0 1px 0 0;
+  outline: none;
+}
+.cke_skin_kama .cke_dialog a.cke_dialog_tab_selected {
+  background: #ebebeb !important;
+}
+.cke_skin_kama .cke_dialog .cke_dialog_contents {
+  margin-top: 32px;
+}
+
+/* @end */
