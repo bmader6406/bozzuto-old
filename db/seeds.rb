@@ -23,7 +23,7 @@ Section.create(:title => 'Apartments')
 Section.create(:title => 'New Homes')
 
 ['Studio', '1 Bedroom', '2 Bedrooms', '3 or More Bedrooms', 'Penthouse'].each do |group|
-  FloorPlanGroup.find_or_create_by_name(group)
+  ApartmentFloorPlanGroup.find_or_create_by_name(group)
 end
 
 parser = Vaultware::Parser.new
