@@ -2,6 +2,7 @@ class Photo < ActiveRecord::Base
   acts_as_list :scope => :photo_set
 
   belongs_to :photo_set
+  has_and_belongs_to_many :photo_groups
 
   validates_presence_of :title, :flickr_photo_id
 

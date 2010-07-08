@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100708141517) do
+ActiveRecord::Schema.define(:version => 20100708172736) do
 
   create_table "apartment_floor_plan_groups", :force => true do |t|
     t.string   "name",       :null => false
@@ -190,6 +190,19 @@ ActiveRecord::Schema.define(:version => 20100708141517) do
   end
 
   add_index "pages", ["path"], :name => "index_pages_on_path"
+
+  create_table "photo_groups", :force => true do |t|
+    t.string   "title",            :null => false
+    t.string   "flickr_raw_title", :null => false
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "photo_groups_photos", :id => false, :force => true do |t|
+    t.integer "photo_group_id"
+    t.integer "photo_id"
+  end
 
   create_table "photo_sets", :force => true do |t|
     t.string   "title",         :null => false

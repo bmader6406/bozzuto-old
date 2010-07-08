@@ -28,11 +28,13 @@ class PhotoSet < ActiveRecord::Base
 
       flickr_set.photos.each do |photo|
         file = choose_size(photo).save_to(RAILS_ROOT + '/tmp')
+        groups = groups_for_photo(photo)
 
         self.photos << Photo.new(
           :title           => photo.title,
           :image           => File.open(file.path),
-          :flickr_photo_id => photo.id
+          :flickr_photo_id => photo.id,
+          :photo_groups    => groups
         )
 
         File.delete(file.path)
@@ -63,5 +65,11 @@ class PhotoSet < ActiveRecord::Base
     else
       photo.original
     end
+  end
+
+  def groups_for_photo(photo)
+    photo.tags.inject([]) do |array, tag|
+      array << PhotoGroup.find_by_flickr_raw_title(tag.raw)
+    end.compact.uniq
   end
 end

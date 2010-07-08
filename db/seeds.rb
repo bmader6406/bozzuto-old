@@ -26,6 +26,13 @@ Section.create(:title => 'New Homes')
   ApartmentFloorPlanGroup.find_or_create_by_name(group)
 end
 
+[{ :title => 'Neighborhood', :flickr_raw_title => 'neighborhood' },
+ { :title => 'Community Amenities', :flickr_raw_title => 'community-amenities' },
+ { :title => 'Views', :flickr_raw_title => 'views' },
+ { :title => 'Apartment Features', :flickr_raw_title => 'apartment-features' }].each do |attrs|
+  PhotoGroup.find_or_create_by_title(attrs)
+end
+
 parser = Vaultware::Parser.new
 parser.parse(RAILS_ROOT + '/db/seeds/vaultware.xml')
 parser.process
