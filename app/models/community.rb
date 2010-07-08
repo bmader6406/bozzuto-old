@@ -1,4 +1,6 @@
 class Community < Property
+  include Bozzuto::SMSAble
+
   belongs_to :local_info_feed, :class_name => 'Feed'
 
   def has_overview_bullets?
@@ -13,5 +15,10 @@ class Community < Property
 
   def has_local_info?
     local_info_feed.present? && local_info_feed.items.any?
+  end
+
+  # used by sms
+  def phone_message
+    "#{title}\n#{street_address}, #{city.name}, #{city.state.name}\n#{website_url}"
   end
 end

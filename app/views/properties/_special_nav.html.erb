@@ -19,15 +19,15 @@
     <li>
       <a href="#">Send to Phone</a>
       <div class="popup">
-        <form>
-          <p>
-          <label><strong>Input your phone number</strong> to lorem ipsum dolor sit dolor sinsectutor.</label>
-          </p>
+        <% form_tag info_messages_url(@community) do %>
+          <% content_tag :label, :for => 'phone_number' do %>
+            <strong>Input your phone number</strong> to <%=h @community.title %>.
+          <% end %>
           <p class="fields">
-          <input type="text" name="phone_number" />
-          <button type="submit">Send</button>
+            <%= text_field_tag 'phone_number' %>
+            <button type="submit">Send</button>
           </p>
-        </form>
+        <% end %>
       </div>
     </li>
     <li>
