@@ -1,0 +1,34 @@
+<% content_for :body_class do %>community property videos-and-photos<% end %>
+
+<%= render :partial => 'apartment_communities/breadcrumb' %>
+
+<%= render :partial => 'apartment_communities/masthead' %>
+
+<div id="main-content">
+  <div class="container">
+    <% slide_index = 1 %>
+    <% PhotoGroup.all.each do |group| %>
+      <% photos = group.photos.in_set(@community.photo_set) %>
+
+      <% unless photos.empty? %>
+        <div class="media-group">
+          <h2><%= group.title %></h2>
+
+          <ul class="row">
+            <% photos.each do |photo| %>
+              <li class="media-link">
+              <%= link_to image_tag(photo.image.url(:thumb)), "#slideshow-slide-#{slide_index}", :class => 'set-slideshow' %>
+              </li>
+
+              <% slide_index += 1 %>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+
+    <%= render :partial => 'properties/sub_content', :locals => { :property => @community } %>
+  </div>
+</div>
+
+<%= render :partial => 'properties/special_nav' %>

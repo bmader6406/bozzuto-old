@@ -27,17 +27,20 @@ class PhotoSet < ActiveRecord::Base
       photos.destroy_all
 
       flickr_set.photos.each do |photo|
-        file = choose_size(photo).save_to(RAILS_ROOT + '/tmp')
         groups = groups_for_photo(photo)
 
-        self.photos << Photo.new(
-          :title           => photo.title,
-          :image           => File.open(file.path),
-          :flickr_photo_id => photo.id,
-          :photo_groups    => groups
-        )
+        unless groups.empty?
+          file = choose_size(photo).save_to(RAILS_ROOT + '/tmp')
 
-        File.delete(file.path)
+          self.photos << Photo.new(
+            :title           => photo.title,
+            :image           => File.open(file.path),
+            :flickr_photo_id => photo.id,
+            :photo_groups    => groups
+          )
+
+          File.delete(file.path)
+        end
       end
     end
     true

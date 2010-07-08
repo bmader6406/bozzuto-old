@@ -1,0 +1,2 @@
+module CommunityMediaHelper
+end

@@ -531,10 +531,20 @@ window.bozzuto = {};
 			return this.each(function() {
 				var $this = $(this);
 				var o = $.meta ? $.extend({}, opts, $this.data()) : opts;
+        var slideCount = $('ul.slides li', $this).length;
 
 			  $('ul.slides li:eq(0)', $this).addClass('current');
 
-				if($('ul.slides li', $this).length > 1) {
+        // add slide counter
+        if ($('ul.slides li p.slideshow-counter', $this).length > 0) {
+          $('ul.slides li', $this).each(function(i) {
+            $('p.slideshow-counter', $(this)).html(
+              (i + 1) + ' of ' + slideCount + ' Photos'
+            );
+          });
+        }
+
+				if(slideCount > 1) {
 					if(o.dynamicPagination) {
 
 						var pagination = $('<ul class="slideshow-pagination"></ul>');

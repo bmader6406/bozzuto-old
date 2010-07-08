@@ -24,6 +24,10 @@ ActionController::Routing::Routes.draw do |map|
       :only       => :index
 
     community.resource :info_message, :only => :create # send sms
+
+    community.resources :media,
+      :controller => :community_media,
+      :only       => :index
   end
 
   map.resources :home_communities, community_options.merge(:path_prefix => 'new-homes') do |community|

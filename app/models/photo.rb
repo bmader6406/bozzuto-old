@@ -8,6 +8,10 @@ class Photo < ActiveRecord::Base
 
   default_scope :order => 'position ASC'
 
+  named_scope :in_set, lambda { |set|
+    { :conditions => { :photo_set_id => set.id } }
+  }
+
   has_attached_file :image,
     :url => '/system/:class/:id/photo_:id_:style.:extension',
     :styles => { :resized => '870x375#', :thumb => '55x55#' },
