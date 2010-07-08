@@ -29,3 +29,7 @@ end
 parser = Vaultware::Parser.new
 parser.parse(RAILS_ROOT + '/db/seeds/vaultware.xml')
 parser.process
+
+['Studio', '1 Bedroom', '2 Bedrooms', '3 or More Bedrooms', 'Penthouse'].each do |name|
+  ApartmentFloorPlanGroup.find_or_create_by_name(name)
+end
