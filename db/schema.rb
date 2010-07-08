@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100708140651) do
+ActiveRecord::Schema.define(:version => 20100708141517) do
 
   create_table "apartment_floor_plan_groups", :force => true do |t|
     t.string   "name",       :null => false
@@ -193,18 +193,21 @@ ActiveRecord::Schema.define(:version => 20100708140651) do
 
   create_table "photo_sets", :force => true do |t|
     t.string   "title",         :null => false
-    t.integer  "flickr_set_id", :null => false
+    t.string   "flickr_set_id", :null => false
     t.integer  "community_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "photos", :force => true do |t|
-    t.string   "image",                  :null => false
-    t.integer  "apartment_community_id", :null => false
-    t.string   "caption",                :null => false
+    t.string   "image_file_name"
+    t.string   "title",              :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_content_type"
+    t.string   "flickr_photo_id",    :null => false
+    t.integer  "photo_set_id"
+    t.integer  "position"
   end
 
   create_table "project_data_points", :force => true do |t|
