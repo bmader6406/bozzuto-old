@@ -4,23 +4,27 @@
 
 <div id="masthead">
   <% if @home_page.slides.any? %>
-    <div id="slideshow">
-      <div class="header">
-        <ul class="slideshow-navigation">
-          <li>
-            <a class="prev" href="#">Previous</a>
-          </li>
-          <li>
-            <a class="next" href="#">Next</a>
-          </li>
-        </ul>
-      </div>
+    <div id="masthead-fg">
+      <div class="container">
+        <div id="slideshow">
+          <div class="header">
+            <ul class="slideshow-navigation">
+              <li>
+                <a class="prev" href="#">Previous</a>
+              </li>
+              <li>
+                <a class="next" href="#">Next</a>
+              </li>
+            </ul>
+          </div>
 
-      <ul class="slides">
-        <% @home_page.slides.each do |slide| %>
-          <li><%= image_tag slide.image.url %></li> 
-        <% end %>
-      </ul>
+          <ul class="slides">
+            <% @home_page.slides.each do |slide| %>
+              <li><%= image_tag slide.image.url %></li> 
+            <% end %>
+          </ul>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>

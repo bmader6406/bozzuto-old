@@ -31,7 +31,7 @@ window.bozzuto = {};
 
     $(".page div.slideshow").featuredSlideshow();
 
-    $(".property #slideshow").featuredSlideshow({
+    $(".property #slideshow, .home div#slideshow").featuredSlideshow({
       'dynamicPagination' : false
     });
 

@@ -1087,21 +1087,28 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
 
     .property #slideshow ul.slideshow-navigation,
-    .apartments #content ul.slideshow-navigation {
+    .apartments #content ul.slideshow-navigation,
+    .home #masthead #slideshow ul.slideshow-navigation {
       position: absolute;
       right: 0;
       top: 6px;
       z-index: 10;
       width: 70px;
     }
+    .home #masthead #slideshow ul.slideshow-navigation {
+      top: 15px;
+      right: 19px;
+    }
 
     .property #slideshow ul.slideshow-navigation li,
-    .apartments #content ul.slideshow-navigation li {
+    .apartments #content ul.slideshow-navigation li,
+    .home #masthead #slideshow ul.slideshow-navigation li {
       float: left;
     }
 
     .property #slideshow ul.slideshow-navigation li a,
-    .apartments #content ul.slideshow-navigation li a {
+    .apartments #content ul.slideshow-navigation li a,
+    .home #masthead #slideshow ul.slideshow-navigation a {
       display: block;
       height: 57px;
       overflow: hidden;
@@ -1989,7 +1996,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       top: 0;
       width: auto;
     }
-
+    
     .home #content div.slideshow,
     .homes-search .slideshow {
       height: 145px;
@@ -2946,10 +2953,16 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   /* @group -home */
 
     .home #masthead-fg {
-      height: 380px;
+      height: 375px;
+      margin: 0 auto;
+      position: relative;
+      width: 1100px;
     }
     .home #masthead .container {
       text-indent: -9999px;
+    }
+    .home #masthead ul.slides li {
+      height: 375px;
     }
     .home h1 {
       font-size: 27px;
@@ -4625,7 +4638,8 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   .page #content ul.slideshow-navigation li a,
   .apartments #content ul.slideshow-navigation li a,
   .services #content ul.slideshow-navigation li a,
-  .about #content ul.slideshow-navigation li a {
+  .about #content ul.slideshow-navigation li a,
+  .home #masthead #slideshow ul.slideshow-navigation li a {
     overflow: hidden;
     text-align: left;
     text-indent: -9999px;
@@ -4754,17 +4768,20 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 
     .page #slideshow ul.slideshow-navigation li a,
     .property #slideshow ul.slideshow-navigation li a,
-    .apartments #content ul.slideshow-navigation li a {
+    .apartments #content ul.slideshow-navigation li a,
+    .home #masthead #slideshow ul.slideshow-navigation li a {
       background: url(../images/structure/bg-apartments-slideshow-navigation.png) no-repeat transparent;
     }
     .page #slideshow ul.slideshow-navigation li a.prev,
     .property #slideshow ul.slideshow-navigation li a.prev,
-    .apartments #content ul.slideshow-navigation li a.prev {
+    .apartments #content ul.slideshow-navigation li a.prev,
+    .home #masthead #slideshow ul.slideshow-navigation li a.prev {
       background-position: left top;
     }
     .page #slideshow ul.slideshow-navigation li a.next,
     .property #slideshow ul.slideshow-navigation li a.next,
-    .apartments #content ul.slideshow-navigation li a.next {
+    .apartments #content ul.slideshow-navigation li a.next,
+    .home #masthead #slideshow ul.slideshow-navigation li a.next {
       background-position: right top;
     }
 
