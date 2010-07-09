@@ -11,6 +11,7 @@ gem 'will_paginate'
 gem 'friendly_id', '~> 2.3'
 gem 'activerecord-tableless', :require => 'tableless'
 gem 'searchlogic'
+gem 'truncate_html'
 
 
 gem 'paperclip'
