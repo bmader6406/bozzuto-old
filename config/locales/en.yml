@@ -6,6 +6,7 @@ en:
       apartment_floor_plan_group: Floor Plan Type
       body_slide: Slide
       body_slideshow: Page Body Slideshow
+      feed: Feed
       home_community: Home Community
       home_floor_plan: Floor Plan
       home_page:
@@ -15,6 +16,7 @@ en:
       masthead_slide: Slide
       masthead_slideshow: Masthead Slideshow
       news_post: News
+      photo_set: Flickr Photo Set
       project_data_point: Data Point
       project_update: Update
       property_feature: Property Feature
@@ -23,7 +25,6 @@ en:
       property_slide: Slide
       property_slideshow: Property Slideshow
       typus_user: User
-      feed: Feed
     attributes:
       apartment_floor_plan:
         actual_image: Image
@@ -50,6 +51,8 @@ en:
         smart_rent: Bozzuto SmartRent Program
         green: Bozzuto Green Program
         non_smoking: No Smoking
+      feed:
+        url: Feed URL
       home:
         bathrooms: Bath
         bedrooms: Bed
@@ -67,6 +70,8 @@ en:
         published_at: Published At
       page:
         formatted_title: Title
+      photo_set:
+        flickr_set_number: 'Flickr Set ID#'
       project_update:
         published_at: Published At
       property:
@@ -105,8 +110,8 @@ en:
         first_name: First Name
         last_name: Last Name
         password_confirmation: Password Confirmation
-      feed:
-        url: Feed URL
+      video:
+        url: URL
     tips:
       body_slide:
         image: Image dimensions should be 840x375

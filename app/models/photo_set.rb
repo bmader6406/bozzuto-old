@@ -2,20 +2,22 @@ class PhotoSet < ActiveRecord::Base
   before_validation :set_title
   after_create :update_photos
 
-  belongs_to :community, :class_name => 'Community'
+  belongs_to :property
+  belongs_to :apartment_community, :foreign_key => :property_id
+  belongs_to :home_community, :foreign_key => :property_id
   has_many :photos, :order => 'position ASC'
 
-  validates_presence_of :title, :flickr_set_id
+  validates_presence_of :title, :flickr_set_number
 
 
   def validate
     if flickr_set.nil?
-      errors.add(:flickr_set_id, 'cannot be found')
+      errors.add(:flickr_set_number, 'cannot be found')
     end
   end
 
   def self.flickr_user
-    @user ||= Fleakr.user(APP_CONFIG[:flickr_username])
+    @user ||= Fleakr.user(APP_CONFIG[:flickr]['username'])
   end
 
   def flickr_user
@@ -33,10 +35,10 @@ class PhotoSet < ActiveRecord::Base
           file = choose_size(photo).save_to(RAILS_ROOT + '/tmp')
 
           self.photos << Photo.new(
-            :title           => photo.title,
-            :image           => File.open(file.path),
-            :flickr_photo_id => photo.id,
-            :photo_groups    => groups
+            :title               => photo.title,
+            :image               => File.open(file.path),
+            :flickr_photo_number => photo.id,
+            :photo_groups        => groups
           )
 
           File.delete(file.path)
@@ -47,10 +49,10 @@ class PhotoSet < ActiveRecord::Base
   end
 
   def flickr_set
-    @flickr_set ||= if flickr_set_id.nil?
+    @flickr_set ||= if flickr_set_number.nil?
       nil
     else
-      flickr_user.sets.find { |set| set.id == flickr_set_id }
+      flickr_user.sets.find { |set| set.id == flickr_set_number }
     end
   end
 

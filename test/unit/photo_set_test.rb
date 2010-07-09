@@ -9,9 +9,11 @@ class PhotoSetTest < ActiveSupport::TestCase
       @set = PhotoSet.new
     end
 
-    should_belong_to :community
+    should_belong_to :property
+    should_belong_to :apartment_community
+    should_belong_to :home_community
 
-    should_validate_presence_of :title, :flickr_set_id
+    should_validate_presence_of :title, :flickr_set_number
 
     context 'before validating' do
       setup do
@@ -21,12 +23,12 @@ class PhotoSetTest < ActiveSupport::TestCase
 
       context 'if the set exists' do
         setup do
-          @set.flickr_set_id = @flickr_set.id
+          @set.flickr_set_number = @flickr_set.id
           assert @set.valid?
         end
 
-        should 'not have error messages on flickr_set_id' do
-          assert_nil @set.errors.on(:flickr_set_id)
+        should 'not have error messages on flickr_set_number' do
+          assert_nil @set.errors.on(:flickr_set_number)
         end
 
         should 'set the title' do
@@ -36,13 +38,13 @@ class PhotoSetTest < ActiveSupport::TestCase
 
       context 'if the set does not exist' do
         setup do
-          @set.flickr_set_id = '456'
+          @set.flickr_set_number = '456'
           assert !@set.valid?
         end
 
-        should 'have error message on flickr_set_id' do
-          assert @set.errors.on(:flickr_set_id).any?
-          assert @set.errors.on(:flickr_set_id).include?('cannot be found')
+        should 'have error message on flickr_set_number' do
+          assert @set.errors.on(:flickr_set_number).any?
+          assert @set.errors.on(:flickr_set_number).include?('cannot be found')
         end
 
         should 'not set the title' do

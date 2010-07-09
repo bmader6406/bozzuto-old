@@ -4,7 +4,7 @@ class CreateVideos < ActiveRecord::Migration
       t.string :image_file_name
       t.string :image_content_type
       t.string :url, :null => false
-      t.integer :community_id
+      t.integer :property_id
       t.integer :position
 
       t.timestamps

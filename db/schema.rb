@@ -205,9 +205,9 @@ ActiveRecord::Schema.define(:version => 20100708202151) do
   end
 
   create_table "photo_sets", :force => true do |t|
-    t.string   "title",         :null => false
-    t.string   "flickr_set_id", :null => false
-    t.integer  "community_id"
+    t.string   "title",             :null => false
+    t.string   "flickr_set_number", :null => false
+    t.integer  "property_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -397,7 +397,7 @@ ActiveRecord::Schema.define(:version => 20100708202151) do
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.string   "url",                :null => false
-    t.integer  "community_id"
+    t.integer  "property_id"
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"

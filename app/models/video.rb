@@ -1,7 +1,9 @@
 class Video < ActiveRecord::Base
-  acts_as_list :scope => :community
+  acts_as_list :scope => :property
 
-  belongs_to :community, :class_name => 'Community'
+  belongs_to :property
+  belongs_to :apartment_community, :foreign_key => :property_id
+  belongs_to :home_community, :foreign_key => :property_id
 
   default_scope :order => 'position ASC'
 

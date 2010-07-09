@@ -12,7 +12,7 @@ ApartmentCommunity:
       booleans:
         published: ['Yes', 'No']
   order_by:
-  relationships: property_features, city, county, local_info_feed, slideshow, mini_slideshow, floor_plans
+  relationships: property_features, city, county, local_info_feed, slideshow, mini_slideshow, videos, photo_set, floor_plans
   filters:
   search: title, street_address
   application: Properties
@@ -233,6 +233,19 @@ Photo:
   search:
   application:
 
+PhotoSet:
+  fields:
+    default: title, flickr_set_number
+    list: title, flickr_set_number, property
+    form: title, flickr_set_number, property
+    options:
+      read_only: title
+  order_by: 
+  relationships: property
+  filters: 
+  search: title
+  application: 
+
 Project:
   fields:
     default: title, published, street_address, city
@@ -277,8 +290,8 @@ Property:
     default:
     list:
     form:
-  order_by:
-  relationships: slideshow, mini_slideshow
+  order_by: title
+  relationships: slideshow, mini_slideshow, video, photo_set
   filters:
   search:
   application:
@@ -374,3 +387,14 @@ Testimonial:
   filters:
   search: name
   application: Content
+
+Video:
+  fields:
+    default: url, position
+    list: image, url, position, property
+    form: image, url, property
+  order_by: position
+  relationships: property
+  filters: 
+  search: 
+  application: 
