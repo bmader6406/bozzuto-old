@@ -22,10 +22,14 @@ ActionController::Routing::Routes.draw do |map|
       :controller => :apartment_floor_plan_groups,
       :as         => :floor_plans,
       :only       => :index
+
+    community.resource :info_message, :only => :create # send sms
   end
 
   map.resources :home_communities, community_options.merge(:path_prefix => 'new-homes') do |community|
     community.resources :homes, :only => :index
+
+    community.resource :info_message, :only => :create # send sms
   end
 
   map.resources :states, :only => :show

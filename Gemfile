@@ -21,7 +21,7 @@ group :test do
   gem 'phocus'
   gem 'machinist'
   gem 'faker'
-  gem 'mocha'
+  gem 'jferris-mocha', :require => false
   gem 'webmock'
   gem 'ruby-debug'
 end

@@ -58,5 +58,37 @@ class CommunityTest < ActiveSupport::TestCase
         assert @community.has_local_info?
       end
     end
+
+    context "with SMSAble mixed in" do
+      setup do
+        @community.title = "Pearson Square"
+        @community.street_address = "410 S. Maple Ave"
+        @community.city = City.new(:name => "Falls Church", :state => State.new(:name => "Virginia"))
+        @community.website_url = "http://bozzuto.com/pearson"
+      end
+
+      should "have a phone message for sms" do
+        message = "Pearson Square\n410 S. Maple Ave, Falls Church, Virginia\nhttp://bozzuto.com/pearson"
+        assert_equal message, @community.phone_message
+      end
+
+      should "have attributes including phone number" do
+        @community.stubs(:phone_message).returns("this is a message")
+        params = @community.phone_params('1234567890')
+
+        ["to=1234567890", "username=#{APP_CONFIG[:sms]['username']}",
+          "pword=#{APP_CONFIG[:sms]['password']}", "sender=#{APP_CONFIG[:sms]['sender']}",
+          "message=this+is+a+message"].each do |qs|
+
+          assert params.include?(qs)
+        end
+      end
+
+      should "send a message to i2sms via get" do
+        @community.stubs(:phone_params).returns("params")
+        HTTParty.expects(:get).with("#{Bozzuto::SMSAble::URL}?params")
+        @community.send_info_message_to('1234567890')
+      end
+    end
   end
 end
