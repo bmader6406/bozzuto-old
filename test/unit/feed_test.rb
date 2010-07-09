@@ -85,7 +85,8 @@ class FeedTest < ActiveSupport::TestCase
 
             @rss['rss']['channel']['item'].each_with_index do |item, i|
               assert_equal item['title'], @feed.items[i].title
-              assert_equal item['description'], @feed.items[i].description
+              assert_equal Nokogiri::HTML(item['description']).content,
+                @feed.items[i].description
               assert_equal item['link'], @feed.items[i].url
               unless item['pubDate'].blank?
                 # must send #to_s here for Yahoo Pipes janky RSS feed

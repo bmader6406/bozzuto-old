@@ -41,7 +41,7 @@ class Feed < ActiveRecord::Base
     @feed_data['rss']['channel']['item'].each do |item|
       items << FeedItem.new({
         :title        => item['title'],
-        :description  => item['description'],
+        :description  => Nokogiri::HTML(item['description']).content,
         :url          => item['link'],
         :published_at => item['pubDate'] || Time.now
       })

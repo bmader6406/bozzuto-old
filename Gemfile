@@ -12,6 +12,7 @@ gem 'friendly_id', '~> 2.3'
 gem 'activerecord-tableless', :require => 'tableless'
 gem 'searchlogic'
 gem 'fleakr'
+gem 'truncate_html'
 gem 'paperclip'
 gem 'rcov'
 
