@@ -79,8 +79,44 @@ window.bozzuto = {};
     $('.partner-portrait-links a, .partners a').leaderLightbox();
 
     $('.floor-plan-view').floorPlanOverlay();
+    
+    $('.watch-video a').videoLightbox();
 
   });
+  
+  //Video lightbox
+  (function($) {
+    $.fn.videoLightbox = function(options) {
+      var opts = $.extend({}, $.fn.videoLightbox.defaults, options);
+
+      return this.each(function() {
+        var $this = $(this);
+
+        // Support for the Metadata Plugin.
+        var o = $.meta ? $.extend({}, opts, $this.data()) : opts;
+        
+        $this.bind('click', function(e) {
+          var $videoLightbox = $('<div id="video-lightbox"></div>');
+          $videoLightbox.appendTo('body').append('<iframe src="'+ $(this).attr('href') +'" height="'+o.height+'" scrolling="no" width="'+o.width+'"></iframe>');
+          $videoLightbox.lightbox_me({
+            onClose: function() {
+              $videoLightbox.remove();
+            }
+          });
+          e.preventDefault();
+        });
+
+      });
+    };
+
+    // default options
+    $.fn.videoLightbox.defaults = {
+      height: 372,
+      width: 700
+    };
+
+  })(jQuery);
+  
 
   ////
   // Expanding/collapsing on search results
