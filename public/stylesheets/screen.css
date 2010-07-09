@@ -713,11 +713,15 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       .property #slideshow .overlay {
         background: url(../images/structure/bg-slideshow-overlay.png) no-repeat;
         display: block;
+        filter:alpha(opacity=50);
         height: 100%;
+        -moz-opacity: 0.5;
+        opacity: 0.5;
         position: absolute;
         top: 0; left: 0;
         width: 100%;
         z-index: 10;
+
       }
       .property #slideshow div.section {
         display: none;
