@@ -15,6 +15,8 @@ module Bozzuto
     end
 
     def send_info_message_to(phone_number)
+      phone_number = "1" + phone_number unless (phone_number.first == '1')
+
       HTTParty.get([URL, phone_params(phone_number)].join('?'))
     end
   end

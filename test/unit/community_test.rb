@@ -89,6 +89,22 @@ class CommunityTest < ActiveSupport::TestCase
         HTTParty.expects(:get).with("#{Bozzuto::SMSAble::URL}?params")
         @community.send_info_message_to('1234567890')
       end
+
+      should "prefix a one to phone number if none is present" do
+        HTTParty.stubs(:get)
+        @community.stubs(:phone_params).returns("params")
+
+        @community.send_info_message_to('5551234567')
+        assert_received(@community, :phone_params) {|e| e.with('15551234567')}
+      end
+
+      should "no prefix a one to phone numbers starting with a one" do
+        HTTParty.stubs(:get)
+        @community.stubs(:phone_params).returns("params")
+
+        @community.send_info_message_to('15550987654')
+        assert_received(@community, :phone_params) {|e| e.with('15550987654')}
+      end
     end
   end
 end
