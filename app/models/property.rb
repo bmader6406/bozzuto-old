@@ -11,6 +11,7 @@ class Property < ActiveRecord::Base
 
   validates_presence_of :title, :city
   validates_numericality_of :latitude, :longitude, :allow_nil => true
+  validates_length_of :short_title, :maximum => 22, :allow_nil => true
 
   acts_as_mappable :lat_column_name => :latitude,
                    :lng_column_name => :longitude

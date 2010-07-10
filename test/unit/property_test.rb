@@ -14,6 +14,7 @@ class PropertyTest < ActiveSupport::TestCase
 
     should_validate_presence_of :title, :city
     should_validate_numericality_of :latitude, :longitude
+    should_ensure_length_in_range :short_title, (0..22)
 
     should_have_attached_file :listing_image
 

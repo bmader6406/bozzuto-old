@@ -93,6 +93,7 @@ en:
         overview_bullet_3: 'Overview Bullet #3'
         overview_text: Overview Copy
         overview_title: Overview Title
+        short_title: Short Title
         slideshow: Property Slideshow
         street_address: Street Address
         twitter_handle: Twitter Handle
@@ -126,6 +127,7 @@ en:
         features_2_text: Use a single bulleted list. Content will be automatically formatted into two columns.
         features_3_text: Use a single bulleted list. Content will be automatically formatted into two columns.
         listing_image: Image dimensions should be 150x150
+        short_title: Shown as the title in the main slideshow, must be shorter than 22 characters
       property_feature:
         icon: Image dimensions should be 40x40
       property_mini_slide:
