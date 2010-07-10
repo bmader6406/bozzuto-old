@@ -119,6 +119,8 @@ en:
         image: Image dimensions should be 1100x375
       masthead_slide:
         image: Image dimensions should be 230x223
+      photo_set:
+        flickr_set_number: It will take up to 2 hours for photos to be synced from Flickr
       property:
         features_1_text: Use a single bulleted list. Content will be automatically formatted into two columns.
         features_2_text: Use a single bulleted list. Content will be automatically formatted into two columns.
