@@ -10,6 +10,21 @@
 
 <div id="main-content">
   <div class="container">
+    <% unless @community.videos.empty? %>
+      <div class="media-group">
+        <h2>Videos</h2>
+
+        <ul class="row">
+          <% @community.videos.each do |video| %>
+            <li class="media-link">
+              <%= link_to image_tag(video.image.url), video.url %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
     <% unless @community.photo_set.nil? %>
 
       <% slide_index = 1 %>
