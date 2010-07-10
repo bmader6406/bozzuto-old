@@ -14,16 +14,17 @@ CKEDITOR.editorConfig = function( config )
 {
   config.height = '250px';
   config.width = '690px';
+  config.uiColor = '#ddd';
 
   config.toolbar = 'Easy';
   config.toolbar_Easy =
     [
-        ['Source','-','Templates', '-', 'Cut','Copy','Paste','PasteText','PasteFromWord',],
-        ['Maximize'],
+        ['Source','-','-', 'Cut','Copy','Paste','PasteText','PasteFromWord',],
         ['Undo','Redo','-','SelectAll','RemoveFormat'],
-        ['Link','Unlink','Anchor', '-', 'Image','Embed'], 
-        ['Styles','Format', 'Bold','Italic','Underline','Strike','-', 'TextColor'],
-        ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
+        ['Link','Unlink','-','Embed'], 
+        '/',
+        ['Format', 'Bold','Italic','Underline','Strike','-', 'TextColor'],
+        ['NumberedList','BulletedList','-'],
         ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
     ];
 
