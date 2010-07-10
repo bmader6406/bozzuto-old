@@ -3201,19 +3201,21 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 
     /* @group --masthead */
 
+      .community #secondary-nav li {
+        background: #fff;
+      }
+      .community #secondary-nav li.current {
+        background: transparent url(../images/structure/bg-community-secondary-nav.png) no-repeat right bottom;
+      }
       .community #secondary-nav a {
         font-size: 15px;
         line-height: 15px;
         color: #84848b;
-        background: #fff;
       }
       .community #secondary-nav a:hover,
       .community #secondary-nav li.current a {
         color: #000;
         text-decoration: none;
-      }
-      .community #secondary-nav li.current a {
-        background: transparent url(../images/structure/bg-community-secondary-nav.png) no-repeat right bottom;
       }
       .community #masthead #remote-nav a {
         font-size: 11px;
