@@ -22,6 +22,7 @@ after 'multistage:ensure', 'config:defaults'
 after 'deploy:update_code', 'app:bundle_gems'
 after 'deploy:update_code', 'app:package_assets'
 after 'deploy:update_code', 'app:clear_asset_caches'
+after 'deploy:update_code', 'app:update_crontab'
 
 namespace :deploy do
   task :start do ; end
@@ -100,6 +101,12 @@ namespace :app do
     run "rm -f #{release_path}/public/javascripts/all.js"
     run "rm -f #{release_path}/public/stylesheets/all.css"
   end
+
+  desc "Update the crontab file"
+  task :update_crontab do
+    env = fetch(:rails_env)
+    run "cd #{release_path}; whenever --set environment=#{env}; whenever --update-crontab #{application + '_' + env} --set cron_log=#{release_path}/log/cron.log"
+  end
 end
 
 namespace :config do
@@ -108,3 +115,4 @@ namespace :config do
     set :rails_env, fetch(:stage).to_s
   end
 end
+

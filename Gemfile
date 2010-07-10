@@ -15,6 +15,7 @@ gem 'fleakr'
 gem 'truncate_html'
 gem 'paperclip'
 gem 'rcov'
+gem 'whenever'
 
 group :test do
   gem 'shoulda', '2.10.3'
