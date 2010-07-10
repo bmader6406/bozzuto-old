@@ -11,4 +11,5 @@ class PropertySlide < ActiveRecord::Base
     :default_style => :slide
 
   validates_attachment_presence :image
+  validates_length_of :caption, :maximum => 128, :allow_nil => true
 end

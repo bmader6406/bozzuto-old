@@ -334,8 +334,6 @@ PropertySlide:
     default: image, position, property_slideshow
     list: image, position, property_slideshow
     form: image, caption, property_slideshow
-    options:
-      ckeditor: caption
   order_by: position
   relationships: property_slideshow
   filters: 

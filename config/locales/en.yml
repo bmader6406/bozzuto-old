@@ -135,6 +135,7 @@ en:
         image: Image dimensions should be 230x145
       property_slide:
         image: Image dimensions should be 870x375
+        caption: Must be fewer than 128 characters
       section:
         left_montage_image: Image dimensions should be 250x148
         middle_montage_image: Image dimensions should be 540x148

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100710232713) do
+ActiveRecord::Schema.define(:version => 20100710234717) do
 
   create_table "apartment_floor_plan_groups", :force => true do |t|
     t.string   "name",       :null => false
@@ -325,7 +325,7 @@ ActiveRecord::Schema.define(:version => 20100710232713) do
   end
 
   create_table "property_slides", :force => true do |t|
-    t.text     "caption"
+    t.string   "caption"
     t.string   "image_file_name",       :null => false
     t.string   "image_content_type",    :null => false
     t.integer  "position"

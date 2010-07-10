@@ -19,7 +19,9 @@
           <%= image_tag slide.image.url %>
 
           <div class="section">
-            <%= slide.caption.html_safe %>
+            <% if slide.caption.present? %>
+              <p><%= slide.caption %></p>
+            <% end %>
 
             <% if property.video_url.present? %>
               <p class="watch-video">
