@@ -1,13 +1,17 @@
 class PhotoSet < ActiveRecord::Base
   before_validation :set_title
-  after_create :update_photos
+  before_save :mark_as_needing_sync
 
   belongs_to :property
   belongs_to :apartment_community, :foreign_key => :property_id
   belongs_to :home_community, :foreign_key => :property_id
-  has_many :photos, :order => 'position ASC'
+  has_many :photos,
+    :order     => 'position ASC',
+    :dependent => :destroy
 
   validates_presence_of :title, :flickr_set_number
+
+  named_scope :needs_sync, :conditions => { :needs_sync => true }
 
 
   def validate
@@ -24,7 +28,7 @@ class PhotoSet < ActiveRecord::Base
     self.class.flickr_user
   end
 
-  def update_photos
+  def sync_photos
     if flickr_set.present?
       photos.destroy_all
 
@@ -35,23 +39,25 @@ class PhotoSet < ActiveRecord::Base
           file = choose_size(photo).save_to(RAILS_ROOT + '/tmp')
 
           self.photos << Photo.new(
-            :title               => photo.title,
-            :image               => File.open(file.path),
-            :flickr_photo_number => photo.id,
-            :photo_groups        => groups
+            :title           => photo.title,
+            :image           => File.open(file.path),
+            :flickr_photo_id => photo.id,
+            :photo_groups    => groups
           )
 
           File.delete(file.path)
         end
       end
+
+      self.needs_sync = false
+      self.save
+    else
+      false
     end
-    true
   end
 
   def flickr_set
-    @flickr_set ||= if flickr_set_number.nil?
-      nil
-    else
+    @flickr_set ||= if flickr_set_number.present? && flickr_user.present?
       flickr_user.sets.find { |set| set.id == flickr_set_number }
     end
   end
@@ -76,5 +82,9 @@ class PhotoSet < ActiveRecord::Base
     photo.tags.inject([]) do |array, tag|
       array << PhotoGroup.find_by_flickr_raw_title(tag.raw)
     end.compact.uniq
+  end
+
+  def mark_as_needing_sync
+    self.needs_sync = true if flickr_set_number_changed?
   end
 end
