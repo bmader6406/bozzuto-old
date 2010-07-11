@@ -851,6 +851,9 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
        width: 210px;
        height: 28px;
      }
+     .community #zillow-mortgage-calculator {
+       margin-bottom: 10px;
+     }
 
      .community #nearby-communities li a {
        display: block;
