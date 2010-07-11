@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100711181922) do
+ActiveRecord::Schema.define(:version => 20100711185132) do
 
   create_table "apartment_floor_plan_groups", :force => true do |t|
     t.string   "name",       :null => false
@@ -291,6 +291,11 @@ ActiveRecord::Schema.define(:version => 20100711181922) do
     t.text     "features_3_text"
     t.string   "short_title"
     t.string   "phone_number"
+    t.integer  "brochure_type",              :default => 0,     :null => false
+    t.string   "brochure_link_text"
+    t.string   "brochure_file_name"
+    t.string   "brochure_content_type"
+    t.string   "brochure_url"
   end
 
   create_table "properties_property_features", :id => false, :force => true do |t|

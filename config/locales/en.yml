@@ -75,6 +75,10 @@ en:
       project_update:
         published_at: Published At
       property:
+        brochure: Brochure File
+        brochure_link_text: Brochure Link Text
+        brochure_type: Brochure Type
+        brochure_url: Brochure URL
         contact_text: Contact Copy
         facebook_url: Facebook URL
         features_1_title: 'Features Section #1 Title'

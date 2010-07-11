@@ -66,5 +66,29 @@ $(function() {
       }
     }).change();
   })();
+
+  // brochure
+  (function() {
+    var brochureUrl  = $('input[id$=_brochure_url]').parent(),
+        brochureFile = $('input[id$=_brochure]').parent();
+
+    $('select#[id$=_brochure_type]').change(function() {
+      var selected = parseInt($(':selected', this).val()),
+          usesUrl  = 0,
+          usesFile = 1;
+
+      switch (selected) {
+        case usesUrl:
+          brochureFile.hide();
+          brochureUrl.show();
+          break;
+        case usesFile:
+          brochureFile.show();
+          brochureUrl.hide();
+          break;
+      }
+    }).change();
+  })();
 });
+
 

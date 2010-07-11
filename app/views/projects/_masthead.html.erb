@@ -9,9 +9,11 @@
             <%= link_to 'Visit Website', website_url(@project.website_url) %>
           </li>
         <% end %>
-        <li>
-          <a href="#">Download E-Brochure</a>
-        </li>
+        <% if brochure_link(@project) %>
+          <li>
+            <%= brochure_link(@project) %>
+          </li>
+        <% end %>
       </ul>
     </div>
 

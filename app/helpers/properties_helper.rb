@@ -1,4 +1,18 @@
 module PropertiesHelper
+  def brochure_link(property)
+    if property.brochure_link_text.present?
+      url = if property.uses_brochure_url?
+        property.brochure_url
+      else
+        property.brochure.url
+      end
+      
+      if url.present?
+        link_to property.brochure_link_text, url
+      end
+    end
+  end
+
   def property_icons
     content_tag :ul, :class => 'community-icons' do
       @community.property_features.inject('') do |output, feature|

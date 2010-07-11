@@ -17,6 +17,7 @@ class PropertyTest < ActiveSupport::TestCase
     should_ensure_length_in_range :short_title, (0..22)
 
     should_have_attached_file :listing_image
+    should_have_attached_file :brochure
 
     context '#mappable?' do
       setup do
@@ -66,5 +67,48 @@ class PropertyTest < ActiveSupport::TestCase
       end
     end
 
+    context '#uses_brochure_url?' do
+      context 'when brochure_type is USE_BROCHURE_URL' do
+        setup do
+          @property.brochure_type = Property::USE_BROCHURE_URL
+        end
+
+        should 'return true' do
+          assert @property.uses_brochure_url?
+        end
+      end
+
+      context 'when brochure_type is USE_BROCHURE_FILE' do
+        setup do
+          @property.brochure_type = Property::USE_BROCHURE_FILE
+        end
+
+        should 'return false' do
+          assert !@property.uses_brochure_url?
+        end
+      end
+    end
+
+    context '#uses_brochure_file?' do
+      context 'when brochure_type is USE_BROCHURE_URL' do
+        setup do
+          @property.brochure_type = Property::USE_BROCHURE_URL
+        end
+
+        should 'return false' do
+          assert !@property.uses_brochure_file?
+        end
+      end
+
+      context 'when brochure_type is USE_BROCHURE_FILE' do
+        setup do
+          @property.brochure_type = Property::USE_BROCHURE_FILE
+        end
+
+        should 'return true' do
+          assert @property.uses_brochure_file?
+        end
+      end
+    end
   end
 end

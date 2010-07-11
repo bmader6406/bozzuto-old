@@ -1,6 +1,14 @@
 class Property < ActiveRecord::Base
   include Bozzuto::Publishable
 
+  USE_BROCHURE_URL = 0
+  USE_BROCHURE_FILE = 1
+
+  BROCHURE_TYPE = [
+    ['Enter a URL',   USE_BROCHURE_URL],
+    ['Upload a file', USE_BROCHURE_FILE]
+  ]
+
   belongs_to :city
   belongs_to :county
 
@@ -12,6 +20,7 @@ class Property < ActiveRecord::Base
   validates_presence_of :title, :city
   validates_numericality_of :latitude, :longitude, :allow_nil => true
   validates_length_of :short_title, :maximum => 22, :allow_nil => true
+  validates_inclusion_of :brochure_type, :in => [USE_BROCHURE_URL, USE_BROCHURE_FILE]
 
   acts_as_mappable :lat_column_name => :latitude,
                    :lng_column_name => :longitude
@@ -20,6 +29,9 @@ class Property < ActiveRecord::Base
     :url           => '/system/:class/:id/:style.:extension',
     :styles        => { :square => '150x150#' },
     :default_style => :square
+
+  has_attached_file :brochure,
+    :url => '/system/:class/:id/brochure.:extension'
 
   named_scope :near, lambda { |loc|
     returning({}) do |opts|
@@ -43,5 +55,13 @@ class Property < ActiveRecord::Base
 
   def mappable?
     latitude.present? && longitude.present?
+  end
+
+  def uses_brochure_url?
+    brochure_type == USE_BROCHURE_URL
+  end
+
+  def uses_brochure_file?
+    brochure_type == USE_BROCHURE_FILE
   end
 end

@@ -2,6 +2,49 @@ require 'test_helper'
 
 class PropertiesHelperTest < ActionView::TestCase
   context "PropertiesHelper" do
+    context '#brochure_link' do
+      setup do
+        @link_text = 'Click me'
+        @property = Property.new :brochure_link_text => @link_text
+      end
+
+      context 'when the property has no brochure_link_text' do
+        should 'return nil' do
+          assert_nil brochure_link(@property)
+        end
+      end
+
+      context 'when the property uses brochure url' do
+        setup do
+          @url = 'http://viget.com'
+          @property.brochure_url = @url
+        end
+
+        should 'return a link with the brochure url' do
+          link = HTML::Document.new(brochure_link(@property))
+          assert_select link.root, 'a',
+            :href => @url,
+            :text => @link_text
+        end
+      end
+
+      context 'when the property uses brochure file' do
+        setup do
+          @file = 'http://viget.com/file.jpg'
+          @property.brochure_type = Property::USE_BROCHURE_FILE
+          @property.brochure = mock()
+          @property.brochure.expects(:url).returns(@file)
+        end
+
+        should 'return a link with the brochure file url' do
+          link = HTML::Document.new(brochure_link(@property))
+          assert_select link.root, 'a',
+            :href => @file,
+            :text => @link_text
+        end
+      end
+    end
+
     context 'icons' do
       context "#property_icons" do
         setup do

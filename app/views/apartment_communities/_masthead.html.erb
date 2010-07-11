@@ -34,9 +34,11 @@
             <%= link_to 'Visit Website', website_url(@community.website_url) %>
           </li>
         <% end %>
-        <li class="last">
-          <%= link_to 'Download E-Brochure', '#' %>
-        </li>
+        <% if brochure_link(@community) %>
+          <li class="last">
+            <%= brochure_link(@community) %>
+          </li>
+        <% end %>
       </ul>
     </div>
 
