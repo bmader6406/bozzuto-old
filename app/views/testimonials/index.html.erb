@@ -13,10 +13,14 @@
         <%= testimonial.quote.try(:html_safe) %>
       </blockquote>
 
-      <p class="author">
-        <strong><%= testimonial.name %></strong>
-        <em>&ndash; <%= testimonial.title %></em>
-      </p>
+      <% if testimonial.name.present? %>
+        <p class="author">
+          <strong><%= testimonial.name %></strong>
+          <% if testimonial.title.present? %>
+            <em>&ndash; <%= testimonial.title %></em>
+          <% end %>
+        </p>
+      <% end %>
     </li>
   <% end %>
 </ul>

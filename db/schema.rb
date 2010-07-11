@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100710234717) do
+ActiveRecord::Schema.define(:version => 20100711181922) do
 
   create_table "apartment_floor_plan_groups", :force => true do |t|
     t.string   "name",       :null => false
@@ -374,8 +374,8 @@ ActiveRecord::Schema.define(:version => 20100710234717) do
   end
 
   create_table "testimonials", :force => true do |t|
-    t.string   "name",       :null => false
-    t.string   "title",      :null => false
+    t.string   "name"
+    t.string   "title"
     t.text     "quote",      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
