@@ -6,7 +6,7 @@ ApartmentCommunity:
   fields:
     default: title, published, street_address, city
     list: title, published, street_address, city
-    form: title, short_title, street_address, city, county, phone_number, latitude, longitude, website_url, video_url, facebook_url, twitter_handle, brochure_link_text, brochure_type, brochure, brochure_url, local_info_feed, listing_image, listing_title, listing_text, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, features_1_title, features_1_text, features_2_title, features_2_text, features_3_title, features_3_text, neighborhood_text, contact_text, published
+    form: title, short_title, meta_title, meta_description, meta_keywords, street_address, city, county, phone_number, latitude, longitude, website_url, video_url, facebook_url, twitter_handle, brochure_link_text, brochure_type, brochure, brochure_url, local_info_feed, listing_image, listing_title, listing_text, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, features_1_title, features_1_text, features_2_title, features_2_text, features_3_title, features_3_text, neighborhood_text, contact_text, published
     options:
       ckeditor: listing_text, overview_text, features_1_text, features_2_text, features_3_text, neighborhood_text, contact_text
       booleans:
@@ -126,7 +126,7 @@ HomeCommunity:
   fields:
     default: title, published, street_address, city
     list: title, published, street_address, city
-    form: title, short_title, street_address, city, county, phone_number, latitude, longitude, website_url, video_url, facebook_url, twitter_handle, brochure_link_text, brochure_type, brochure, brochure_url, local_info_feed, listing_image, listing_title, listing_text, latitude, longitude, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, features_1_title, features_1_text, features_2_title, features_2_text, features_3_title, features_3_text, neighborhood_text, contact_text, published
+    form: title, short_title, meta_title, meta_description, meta_keywords, street_address, city, county, phone_number, latitude, longitude, website_url, video_url, facebook_url, twitter_handle, brochure_link_text, brochure_type, brochure, brochure_url, local_info_feed, listing_image, listing_title, listing_text, latitude, longitude, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, features_1_title, features_1_text, features_2_title, features_2_text, features_3_title, features_3_text, neighborhood_text, contact_text, published
     options:
       ckeditor: listing_text, overview_text, features_1_text, features_2_text, features_3_text, neighborhood_text, contact_text
       booleans:
@@ -153,7 +153,7 @@ HomePage:
   fields:
     default: featured_property
     list: featured_property
-    form: body, featured_property
+    form: meta_title, meta_description, meta_keywords, body, featured_property
     options:
       ckeditor: body
   order_by: 
@@ -202,7 +202,7 @@ NewsPost:
   fields:
     default: title, published, published_at
     list: title, published, published_at
-    form: title, body, published, published_at, section
+    form: title, meta_title, meta_description, meta_keywords, body, published, published_at, section
     options:
       ckeditor: body
   order_by: -published_at
@@ -215,7 +215,7 @@ Page:
   fields:
     default: formatted_title, position
     list: formatted_title, section, position
-    form: title, body, section, parent
+    form: title, meta_title, meta_description, meta_keywords, body, section, parent
     options:
       ckeditor: body
   order_by: section_id, lft
@@ -252,7 +252,7 @@ Project:
   fields:
     default: title, published, street_address, city
     list: title, published, street_address, city
-    form: title, short_title, section, street_address, city, county, latitude, longitude, website_url, video_url, brochure_link_text, brochure_type, brochure, brochure_url, listing_image, listing_title, listing_text, overview_text, published
+    form: title, short_title, meta_title, meta_description, meta_keywords, section, street_address, city, county, latitude, longitude, website_url, video_url, brochure_link_text, brochure_type, brochure, brochure_url, listing_image, listing_title, listing_text, overview_text, published
     options:
       ckeditor: listing_text, overview_text
       booleans:

@@ -59,6 +59,9 @@ en:
         home_community: Home Community
       home_page:
         featured_property: Featured Property
+        meta_description: Meta Description
+        meta_keywords: Meta Keywords
+        meta_title: Meta Title
       masthead_slide:
         body: Body Text
         featured_property: Featured Property
@@ -67,9 +70,15 @@ en:
         sidebar_text: Sidebar Text
         slide_type: Slide Type
       news_post:
+        meta_description: Meta Description
+        meta_keywords: Meta Keywords
+        meta_title: Meta Title
         published_at: Published At
       page:
         formatted_title: Title
+        meta_description: Meta Description
+        meta_keywords: Meta Keywords
+        meta_title: Meta Title
       photo_set:
         flickr_set_number: 'Flickr Set ID#'
       project_update:
@@ -91,6 +100,9 @@ en:
         listing_title: Listing Title
         listing_text: Listing Copy
         local_info_feed: Local Info Feed
+        meta_description: Meta Description
+        meta_keywords: Meta Keywords
+        meta_title: Meta Title
         neighborhood_text: Neighborhood Copy
         overview_bullet_1: 'Overview Bullet #1'
         overview_bullet_2: 'Overview Bullet #2'

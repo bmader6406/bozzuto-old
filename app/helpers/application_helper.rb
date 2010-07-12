@@ -3,6 +3,10 @@ module ApplicationHelper
     params[:controller] == 'home_pages'
   end
 
+  def render_meta(item)
+    render :partial => 'layouts/seo_meta', :locals => { :item => item }
+  end
+
   def current_if(opts)
     if opts.is_a?(Hash)
       'current' if opts.all? { |key, val| params[key] == val }

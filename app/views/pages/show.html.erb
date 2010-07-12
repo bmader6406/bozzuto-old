@@ -1,4 +1,5 @@
 <% content_for :body_class do %>generic<% end %>
+<% render_meta(@page) %>
 
 <% @page.ancestors.each do |page| %>
   <% breadcrumb_item(link_to page.title, page_path(@section, page)) %>

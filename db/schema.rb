@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100712120548) do
+ActiveRecord::Schema.define(:version => 20100712182140) do
 
   create_table "apartment_floor_plan_groups", :force => true do |t|
     t.string   "name",       :null => false
@@ -132,6 +132,9 @@ ActiveRecord::Schema.define(:version => 20100712120548) do
     t.integer  "featured_property_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "meta_title"
+    t.string   "meta_description"
+    t.string   "meta_keywords"
   end
 
   create_table "homes", :force => true do |t|
@@ -167,17 +170,20 @@ ActiveRecord::Schema.define(:version => 20100712120548) do
   end
 
   create_table "news_posts", :force => true do |t|
-    t.string   "title",                           :null => false
+    t.string   "title",                               :null => false
     t.text     "body"
-    t.boolean  "published",    :default => false, :null => false
+    t.boolean  "published",        :default => false, :null => false
     t.datetime "published_at"
-    t.integer  "section_id",                      :null => false
+    t.integer  "section_id",                          :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "meta_title"
+    t.string   "meta_description"
+    t.string   "meta_keywords"
   end
 
   create_table "pages", :force => true do |t|
-    t.string   "title",       :null => false
+    t.string   "title",            :null => false
     t.string   "cached_slug"
     t.text     "body"
     t.integer  "parent_id"
@@ -187,6 +193,9 @@ ActiveRecord::Schema.define(:version => 20100712120548) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "path"
+    t.string   "meta_title"
+    t.string   "meta_description"
+    t.string   "meta_keywords"
   end
 
   add_index "pages", ["path"], :name => "index_pages_on_path"
@@ -297,6 +306,9 @@ ActiveRecord::Schema.define(:version => 20100712120548) do
     t.string   "brochure_content_type"
     t.string   "brochure_url"
     t.string   "cached_slug"
+    t.string   "meta_title"
+    t.string   "meta_description"
+    t.string   "meta_keywords"
   end
 
   create_table "properties_property_features", :id => false, :force => true do |t|
