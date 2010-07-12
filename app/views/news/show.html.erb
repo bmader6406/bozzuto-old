@@ -1,8 +1,8 @@
 <% content_for :body_class do %>generic<% end %>
+<% render_meta(@news_post) %>
 
 <% breadcrumb_item link_to('News', news_posts_path(@section)) %>
 <% breadcrumb_item(@news_post.title) %>
-
 <% breadcrumb_title(@news_post.title) %>
 
 

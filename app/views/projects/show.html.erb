@@ -1,4 +1,5 @@
 <% content_for :body_class do %>services project property<% end %>
+<% render_meta(@project) %>
 
 <% breadcrumb_item(link_to 'Projects', projects_path(@section)) %>
 <% breadcrumb_item(@project.title) %>
