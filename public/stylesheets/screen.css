@@ -31,6 +31,58 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     padding-left: 34px;
   }
 
+  /* @group -base styles */
+
+    .column-main {
+      font-size: 11px;
+      line-height: 1.63636;
+    }
+    
+    .column-main h1 {
+      color: #84848B;
+      font-size: 27px;
+      line-height: 1.83333;
+    }
+    
+    .colun-main h4 {
+      color: #080812;
+      font-size: 15px;
+      line-height: 1;
+    }
+    
+    .column-main p, 
+    .column-main ul, 
+    .column-main ol,
+    .community #overview ul {
+      margin: 0 0 15px;
+    } 
+    
+    .column-main ul, 
+    .column-main ol,
+    .community #overview ul {
+      margin-left: 10px;
+    }
+    
+    .column-main li,
+    .community #overview ul li {
+      margin: 0 0 7.5px;
+    }
+
+    .column-main ul li,
+    .community #overview ul li {
+      font-size: 11px;
+      line-height: 18px;
+      list-style: disc outside url(../images/structure/blt-features.gif);
+      margin: 0px;
+    }
+    
+    .column-main ol li {
+      list-style: decimal;
+      margin-left: 15px;
+    }
+  
+  /* @end */
+
   /* @group -header */
 
     /* HEADER */
@@ -697,7 +749,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       }
       .property #slideshow div.header {
         position: relative;
-        z-index: 10;
+        z-index: 100;
         top: 10px; left: 35px;
       }
       .property #slideshow div.header h1 {
@@ -1872,7 +1924,8 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	display: block;
     	height: 38px;
     	zoom: 1;
-    }
+    	margin-left: 1px;
+    } 
 
     .homes #content div.header ul li a.list,
     .search #content div.header ul li a.list {
@@ -1898,6 +1951,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	margin-right: 58px;
     }
 
+    .landing #content .listing-large ul li,
     .homes #content #view-as-list ul li {
     	margin-bottom: 14px;
     	overflow: hidden;
@@ -1905,21 +1959,25 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	width: 100%;
     }
 
+    .landing #content .listing-large div.content,
     .homes #content #view-as-list div.content {
     	width: 600px;
     	float: right;
     }
 
+    .landing #content .listing-large div.content div,
     .homes #content #view-as-list div.content div {
     	float: left;
     	width: 351px;
     }
 
+    .landing #content .listing-large div.content div.learn-more,
     .homes #content #view-as-list div.content div.learn-more {
     	float: right;
     	width: 230px;
     }
 
+    .landing #content .listing-large h2,
     .homes #content #view-as-list h2 {
     	border-bottom: 1px solid #c1c1c5;
     	border-top: 1px solid #c1c1c5;
@@ -1929,27 +1987,33 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	width: 271px;
     }
 
+    .landing #content .listing-large p.intro,
     .homes #content #view-as-list p.intro {
     	margin-bottom: 12px;
     	padding: 0 0 12px 12px;
     }
 
+    .landing #content .listing-large div p,
     .homes #content #view-as-list div p {
     	padding-left: 12px;
     }
 
+    .landing #content .listing-large div p.call-to-action,
     .homes #content #view-as-list div p.call-to-action {
     	margin-top: 10px;
     }
 
+    .landing #content .listing-large div p.call-to-action a,
     .homes #content #view-as-list div p.call-to-action a {
     	padding-left: 7px;
     }
 
+    .landing #content .listing-large div.learn-more,
     .homes #content #view-as-list div.learn-more {
     	background: #f1f4f5;
     }
 
+    .landing #content .listing-large div.learn-more h2,
     .homes #content #view-as-list div.learn-more h2,
     .search #content div.learn-more h2 {
     	float: right;
@@ -1959,6 +2023,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	width: 230px;
     }
 
+    .landing #content .listing-large div.learn-more h2 a,
     .homes #content #view-as-list div.learn-more h2 a,
     .search #content div.learn-more h2 a {
     	display: block;
@@ -1967,22 +2032,27 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	width: 215px;
     }
 
+    .landing #content .listing-large div.learn-more h2 a:hover,
     .homes #content #view-as-list div.learn-more h2 a:hover,
     .search #content div.learn-more h2 a:hover {
     	text-decoration: none;
     }
 
+    .landing #content .listing-large div.learn-more p,
     .homes #content #view-as-list div.learn-more p {
+      clear: both;
     	margin-bottom: 12px;
     	padding-bottom: 12px;
     }
 
+    .landing #content .listing-large div.learn-more ul,
     .homes #content #view-as-list div.learn-more ul {
     	margin-bottom: 6px;
     	overflow: hidden;
     	width: 195px;
     }
 
+    .landing #content .listing-large div.photos,
     .homes #content #view-as-list div.photos {
     	clear: left;
     	float: left;
@@ -1990,6 +2060,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	width: 151px;
     }
 
+    .landing #content .listing-large div.photos p,
     .homes #content #view-as-list div.photos p {
     	margin-bottom: 5px;
     	padding-left: 0;
@@ -2273,6 +2344,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 
 
     .search #content div.results ul li div.info div.learn-more h2,
+    .landing #content .listing-large div.learn-more h2,
     .homes #content #view-as-list div.learn-more h2 {
     	border: none;
     	padding-left: 0;
@@ -2280,6 +2352,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 
     .search #content div.results ul li div.info div.learn-more p,
     .search #content div.results ul li div.info div.learn-more ul,
+    .landing #content .listing-large div.learn-more ul,
     .homes #content #view-as-list div.learn-more ul {
     	padding-left: 12px;
     }
@@ -2289,11 +2362,6 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	padding-bottom: 8px;
     }
 
-    .search #content div.results ul li div.info div.learn-more p a,
-    .homes #content #view-as-list div.learn-more p a {
-    	padding-left: 6px;
-    }
-
     .search #content div.results ul li div.info div.learn-more ul {
     	margin-bottom: 14px;
     	overflow: hidden;
@@ -2301,6 +2369,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
 
     .search #content div.results ul li div.info div.learn-more ul li,
+    .landing #content .listing-large div.learn-more ul li,
     .homes #content #view-as-list div.learn-more ul li {
     	display: block;
     	height: 33px;
@@ -2370,13 +2439,18 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
   /* @end */
 
   /* @group -services */
-
-    .testimonials li,
+    
+    ul.testimonials {
+      margin-left: 0;
+    }
+    ul.testimonials li,
     .services #aside #featured-projects .details,
 		.generic #aside .featured .details,
     .tips {
+      list-style: none;
       padding-bottom: 1.454545455em;
       margin-bottom: 0.727272727em;
+      margin-left: 0;
     }
     .testimonials blockquote {
       margin-bottom: 0.727272727em;
@@ -2384,13 +2458,6 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .testimonials .read-more,
     .tips .read-more {
       padding-left: 6px;
-    }
-    .tips ul {
-      margin-right: 20px;
-    }
-    .tips li {
-      margin-bottom: 4px;
-      padding-left: 7px;
     }
     .services #aside #featured-projects .view-all {
       margin-bottom: 0.727272727em;
@@ -2646,11 +2713,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     body.landing #content div.header ul li a {
       height: 36px;
       padding: 6px 40px 5px 8px;
-      width: 103px;
-    }
-
-    body.landing #content div.header ul li.last a {
-      width: 108px;
+      width: 99px;
     }
 
     .landing #content div.header {
@@ -2876,7 +2939,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     color: #84848b;
   }
   h1 {
-    font-family: "Arial Narrow", "Arial", sans-serif;
+    font-family: "Arial Narrow", "Arial", sans-serif;    
   }
   em { font-style: italic; }
   strong { font-weight: bold; }
@@ -3259,14 +3322,6 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       line-height: 1.466666667;
       margin-bottom: 0.8em;
     }
-    .community #overview ul {
-      margin-bottom: 1.090909091em;
-    }
-    .community #overview ul li {
-      line-height: 2;
-      margin-left: 15px;
-      list-style-type: disc;
-    }
     .community #overview a,
     .community #apartments a,
     .floor-plan a,
@@ -3559,34 +3614,40 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	line-height: 47px;
     }
 
+    .landing #content .listing-large h2,
     .homes #content #view-as-list h2 {
     	color: #000;
     	font-size: 22px;
     	line-height: 37px;
     }
 
+    .landing #content .listing-large div.learn-more h2 a,
     .homes #content #view-as-list div.learn-more h2 a,
     .search #content div.learn-more h2 a {
     	font-size: 15px;
     	line-height: 40px;
     }
 
+    .landing #content .listing-large p.intro,
     .homes #content #view-as-list p.intro {
     	font-size: 15px;
     	font-style: italic;
     	line-height: 17px;
     }
 
+    .landing #content .listing-large p.address-info,
     .homes #content #view-as-list p.address-info {
     	font-size: 11px;
     	line-height: 15px;
     }
 
+    .landing #content .listing-large p.intro strong,
     .homes #content #view-as-list p.intro strong {
     	color: #000;
     	font-weight: normal;
     }
 
+    .landing #content .listing-large p.call-to-action a,
     .homes #content #view-as-list p.call-to-action a {
     	color: #636972;
     	font-size: 11px;
@@ -3645,14 +3706,6 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	font-size: 15px;
     	font-style: italic;
     	line-height: 17px;
-    }
-
-    .search #content div.results ul li div.info div.learn-more p a,
-    .homes #content #view-as-list div.learn-more p a {
-    	color: #636972;
-    	font-size: 11px;
-    	font-weight: bold;
-    	text-transform: uppercase;
     }
 
     .search #content div.results ul.pagination {
@@ -4004,7 +4057,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 		.project #masthead {
 			background: none;
 		}
-    .about #content p,
+    .about #content p.last,
 		.generic #content p.last {
       background: transparent url(../images/structure/bg-about-content-p.gif) no-repeat bottom left;
     }
@@ -4278,14 +4331,20 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .homes #content div.header ul li a,
     .landing #content div.header ul li a,
     .search #content div.header ul li a {
-    	background: url(../images/structure/bg-homes-content-header-tabs.gif) no-repeat;
+    	background: url(../images/structure/bg-homes-content-header-tabs.gif) no-repeat -456px 0px;
+    }
+
+    .homes #content div.header ul li.current a,
+    .landing #content div.header ul li.current a,
+    .search #content div.header ul li.current a {
+    	background: url(../images/structure/bg-homes-content-header-tabs.gif) no-repeat -456px -47px;
     }
 
     .homes #content div.header ul li a.list,
     .search #content div.header ul li a.list {
     	background-position: 0 0;
     }
-
+  
     .homes #content div.header ul li.current a.list,
     .search #content div.header ul li.current a.list {
     	background-position: 0 -47px;
@@ -4311,48 +4370,59 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     	background-position: -153px -47px;
     }
 
+    .landing #content .listing-large p.share a,
     .homes #content #view-as-list p.share a {
     	background: url(../images/structure/bg-homes-share.gif) no-repeat;
     }
 
+    .landing #content .listing-large p.share a.facebook,
     .homes #content #view-as-list p.share a.facebook {
     	background-position: left top;
     }
 
+    .landing #content .listing-large p.share a.twitter,
     .homes #content #view-as-list p.share a.twitter {
     	background-position: right top;
     }
 
+    .landing #content .listing-large div.learn-more h2 a,
     .homes #content #view-as-list div.learn-more h2 a,
     .search #content div.learn-more h2 a {
     	background: url(../images/structure/bg-homes-content-header-learn-more.gif) left top no-repeat;
     }
 
+    .landing #content .listing-large div.learn-more h2 a:hover,
     .homes #content #view-as-list div.learn-more h2 a:hover,
     .search #content div.learn-more h2 a:hover {
     	background-position: left bottom;
     }
 
+    .landing #content .listing-large p.intro,
     .homes #content #view-as-list p.intro {
     	background: url(../images/structure/bg-about-content-p.gif) 12px bottom no-repeat;
     }
 
+    .landing #content .listing-large p.address-info,
     .homes #content #view-as-list p.address-info {
     	background: url(../images/structure/bg-about-content-p.gif) 12px bottom no-repeat;
     }
 
+    .landing #content .listing-large p.call-to-action a,
     .homes #content #view-as-list p.call-to-action a {
     	background: url(../images/structure/bg-header-a.gif) left center no-repeat;
     }
 
+    .landing #content .listing-large .quick-links li a,
     .homes #content #view-as-list .quick-links li a {
     	background: url(../images/structure/bg-homes-quick-links.gif) no-repeat;
     }
 
+    .landing #content .listing-large .quick-links li a.save,
     .homes #content #view-as-list .quick-links li a.save {
     	background-position: left top;
     }
 
+    .landing #content .listing-large .quick-links li a.go,
     .homes #content #view-as-list .quick-links li a.go {
     	background-position: left bottom;
     }
@@ -4424,17 +4494,27 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     }
 
     .search #content div.results ul li div.info div.learn-more p,
+    .landing #content .listing-large div.learn-more p,
     .homes #content #view-as-list div.learn-more p {
     	background: url(../images/structure/bg-search-results-learn-more-p.gif) 12px bottom no-repeat;
     }
+    .search #content div.results ul li div.info div.learn-more p.last,
+    .landing #content .listing-large div.learn-more p.last,
     .homes #content #view-as-list div.learn-more p.last {
     	background: none;
 			margin-bottom: 0;
     }
 
+    .landing #content .listing-large div.learn-more p a,
     .search #content div.results ul li div.info div.learn-more p a,
     .homes #content #view-as-list div.learn-more p a {
     	background: url(../images/structure/bg-header-a.gif) left center no-repeat;
+    	color: #636972;
+    	display: block;
+    	font-size: 11px;
+    	font-weight: bold;
+    	padding-left: 6px;
+    	text-transform: uppercase;
     }
 
     .search #content div.results ul li div.info div.learn-more ul li,
@@ -4502,9 +4582,6 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
  		.generic #aside .featured .details a,
 		.generic #aside .featured .view-all {
       background: url(../images/structure/bg-news-a.gif) no-repeat 0 50%;
-    }
-    .tips li {
-      background: url(../images/structure/blt-features.gif) no-repeat 0 0.5em;
     }
 
   /* @end */
@@ -4601,10 +4678,6 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 
     .areamap-popular-properties .upcoming-projects p {
       background-position: right -990px;
-    }
-
-    body.landing #content div.header ul li a {
-      background-position: -450px 0;
     }
 
     .seo-text .more {
@@ -4771,10 +4844,6 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 
     .property #slideshow p.watch-video a:hover {
       background-position: 0 -43px;
-    }
-    .community #overview ul.community-icons li a {
-      background-image: none;
-      background-position: center center;
     }
 
   /* @end */
