@@ -1,0 +1,23 @@
+<%= render :partial => 'communities/special_nav' %>
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<%= render :partial => 'layouts/head' %>
+<body class="<% unless home? %>secondary<% end %> <%= yield :body_class %>">
+
+  <%= render :partial => 'layouts/header' %>
+
+  <%= render :partial => "#{@community.class.to_s.tableize}/breadcrumb" %>
+  <%= render :partial => "#{@community.class.to_s.tableize}/masthead" %>
+
+  <div id="main-content">
+    <div class="container">
+      <%= yield %>
+
+      <%= render :partial => 'properties/sub_content', :locals => { :property => @community } %>
+    </div>
+  </div>
+
+  <%= render :partial => 'layouts/footer' %>
+</body>
+</html>

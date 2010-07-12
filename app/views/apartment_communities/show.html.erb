@@ -1,196 +1,95 @@
 <% content_for :body_class do %>community property<% end %>
 
-<% content_for :javascript do %>
-  <%= google_maps_javascript_tag %>
+<div class="row">
+  <div id="content" class="col">
+    <div id="overview">
+      <%= property_icons %>
 
-  <script type="text/javascript">
-    (function($) {
-      $(document).ready(function() {
-        if (GBrowserIsCompatible()) {
-          var point = new GLatLng(<%= @community.latitude %>, <%= @community.longitude %>);
-          var map = new GMap2(document.getElementById("map-canvas"));
-          map.setCenter(point, 13);
-          map.setUIToDefault();
-          map.addOverlay(new GMarker(point));
-        }
-      });
-    })(jQuery);
-  </script>
-<% end %>
+      <% if @community.overview_title.present? %>
+        <h2><%= @community.overview_title %></h2>
+      <% end %>
 
-<%= render :partial => 'properties/special_nav' %>
-
-<%= render :partial => 'breadcrumb' %>
-
-<%= render :partial => 'masthead' %>
-
-<div id="main-content">
-  <div class="container">
-    <div class="row">
-      <div id="content" class="col">
-        <div id="overview">
-          <%= property_icons %>
-
-          <% if @community.overview_title.present? %>
-            <h2><%= @community.overview_title %></h2>
-          <% end %>
-
-          <div class="intro">
-            <%= @community.overview_text.try(:html_safe) %>
-          </div>
-
-          <%= property_bullets %>
-
-          <p>
-            <%= link_to 'Read More', features_apartment_community_path(@community) %>
-          </p>
-
-          <%= property_icon_descriptions %>
-        </div>
-
-        <% if @community.promo_image? %>
-          <div class="promo">
-            <p>
-              <%= link_to @community.promo_url, image_tag(@community.promo_image) %>
-            </p>
-          </div>
-        <% end %>
-
-        <div id="apartments">
-          <h2>Apartments</h2>
-
-          <table>
-            <tbody>
-              <% ApartmentFloorPlanGroup.all.each do |group| %>
-                <% plans_in_group = @community.floor_plans.in_group(group) %>
-                <% unless plans_in_group.empty? %>
-                  <tr>
-                    <td>
-                      <%= link_to group.name, apartment_community_floor_plan_groups_path(@community, :anchor => dom_id(group)) %>
-                    </td>
-                    <td>
-                      <%= pluralize(plans_in_group.count, 'Floor Plan') %>
-                    </td>
-                    <td>
-                      <% unless plans_in_group.empty? %>
-                        <%= square_feet(plans_in_group.largest.first) %>
-                      <% end %>
-                    </td>
-                    <td>
-                      <% unless plans_in_group.empty? %>
-                        From <%= floor_plan_price(plans_in_group.cheapest.first.min_rent) %>
-                      <% end %>
-                    </td>
-                    <td class="availability">
-                      <%= link_to "Availability", @community.availability_url %>
-                    </td>
-                  </tr>
-                <% end %>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-
-        <% if @community.featured_floor_plans.any? %>
-          <div id="featured-floor-plans">
-            <h2>Featured Floor Plans</h2>
-
-            <ul class="row">
-              <% @community.featured_floor_plans.take(3).each do |plan| %>
-                <li class="floor-plan">
-                  <h4><%= plan.name %></h4>
-                  <p>
-                    <%= square_feet(plan) %> |
-                    <%= floor_plan_price(plan.min_rent) %>
-
-                    <% if plan.availability_url.present? %>
-                      <br />
-                      <%= link_to 'Reserve', plan.availability_url %>
-                    <% end %>
-                  </p>
-
-                  <%= floor_plan_image(plan) %>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
+      <div class="intro">
+        <%= @community.overview_text.try(:html_safe) %>
       </div>
 
+      <%= property_bullets %>
 
-      <div id="sidebar" class="col">
-        <div id="community-info" class="article row">
-          <ul class="nav row">
-            <li>
-              <%= link_to 'View Map', '#map' %>
-            </li>
-            <li>
-              <%= link_to 'Walk Score&trade;'.html_safe, '#walk-score' %>
-            </li>
-            <% if @community.has_local_info? %>
-              <li class="last">
-                <%= link_to 'Local Info', '#local-info' %>
-              </li>
-            <% end %>
-          </ul>
+      <p>
+        <%= link_to 'Read More', features_apartment_community_path(@community) %>
+      </p>
 
-          <div id="map" class="section">
-            <div id="map-canvas"></div>
-            <p class="call-to-action">
-              <%= link_to 'View Larger', '#', :id => 'map-lightbox' %>
-            </p>
-            <p class="call-to-action">
-              <%= link_to 'Get Directions', '#' %>
-            </p>
-          </div>
-
-          <div id="walk-score" class="section">
-            <%= walkscore_map_script(@community) %>
-          </div>
-
-          <% if @community.has_local_info? %>
-            <div id="local-info" class="section">
-              <% @community.local_info.take(5).each do |info| %>
-                <div class="local-info">
-                  <h4><%= link_to info.title.gsub(/on Yelp$/, ''), info.url %></h4>
-
-                  <p class="date">
-                    <%= info.published_at.to_formatted_s(:month_day_year) %>
-                  </p>
-                  <p>
-                    <%= truncate_html(raw(info.description), :length => 250) %>
-                  </p>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-
-        <% unless @community.nearby_communities.empty? %>
-          <div id="nearby-communities">
-            <h3>Nearby Apartment Communities</h3>
-            <% @community.nearby_communities.in_groups_of(4, false) do |communities| %>
-              <ul>
-                <% communities.each do |community| %>
-                  <li><%= link_to community.title, community %></li>
-                <% end -%>
-              </ul>            
-            <% end %>
-          </div>
-        <% end %>
-
-        <div class="social-updates">
-          <%= facebook_like_link %>
-
-          <% if @community.twitter_handle.present? %>
-            <div class="twitter-update" <%= twitter_data_attr(@community.twitter_handle) %>></div>
-          <% end %>
-
-          <%= share_this_link %>
-        </div>
-      </div>
+      <%= property_icon_descriptions %>
     </div>
 
-    <%= render :partial => 'properties/sub_content', :locals => { :property => @community } %>
+    <% if @community.promo_image? %>
+      <div class="promo">
+        <p>
+          <%= link_to @community.promo_url, image_tag(@community.promo_image) %>
+        </p>
+      </div>
+    <% end %>
+
+    <div id="apartments">
+      <h2>Apartments</h2>
+
+      <table>
+        <tbody>
+          <% ApartmentFloorPlanGroup.all.each do |group| %>
+            <% plans_in_group = @community.floor_plans.in_group(group) %>
+            <% unless plans_in_group.empty? %>
+              <tr>
+                <td>
+                  <%= link_to group.name, apartment_community_floor_plan_groups_path(@community, :anchor => dom_id(group)) %>
+                </td>
+                <td>
+                  <%= pluralize(plans_in_group.count, 'Floor Plan') %>
+                </td>
+                <td>
+                  <% unless plans_in_group.empty? %>
+                    <%= square_feet(plans_in_group.largest.first) %>
+                  <% end %>
+                </td>
+                <td>
+                  <% unless plans_in_group.empty? %>
+                    From <%= floor_plan_price(plans_in_group.cheapest.first.min_rent) %>
+                  <% end %>
+                </td>
+                <td class="availability">
+                  <%= link_to "Availability", @community.availability_url %>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <% if @community.featured_floor_plans.any? %>
+      <div id="featured-floor-plans">
+        <h2>Featured Floor Plans</h2>
+
+        <ul class="row">
+          <% @community.featured_floor_plans.take(3).each do |plan| %>
+            <li class="floor-plan">
+              <h4><%= plan.name %></h4>
+              <p>
+                <%= square_feet(plan) %> |
+                <%= floor_plan_price(plan.min_rent) %>
+
+                <% if plan.availability_url.present? %>
+                  <br />
+                  <%= link_to 'Reserve', plan.availability_url %>
+                <% end %>
+              </p>
+
+              <%= floor_plan_image(plan) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   </div>
+
+  <%= render :partial => 'sidebar' %>
 </div>

@@ -1,29 +1,30 @@
 class HomeCommunitiesController < SectionContentController
-  layout 'application'
+  layout 'community', :except => :index
 
   before_filter :find_community, :except => :index
 
   def index
     @communities = HomeCommunity.published.ordered_by_title.paginate(:page => params[:page])
+    render :action => :index, :layout => 'application'
   end
 
   def show
   end
 
   def features
-    render :template => 'apartment_communities/features'
+    render :template => 'communities/features'
   end
 
   def neighborhood
-    render :template => 'apartment_communities/neighborhood'
+    render :template => 'communities/neighborhood'
   end
 
   def promotions
-    render :template => 'apartment_communities/promotions'
+    render :template => 'communities/promotions'
   end
 
   def contact
-    render :template => 'apartment_communities/contact'
+    render :template => 'communities/contact'
   end
 
 

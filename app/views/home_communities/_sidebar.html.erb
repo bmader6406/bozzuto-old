@@ -1,0 +1,20 @@
+<% content_for :sidebar do %>
+  <div id="zillow-mortgage-calculator">
+    <%= zillow_mortgage_calculator %>
+  </div>
+
+  <% unless @community.nearby_communities.empty? %>
+    <div id="nearby-communities">
+      <h3>Other Bozzuto Communities</h3>
+      <% @community.nearby_communities.in_groups_of(4, false) do |communities| %>
+        <ul>
+          <% communities.each do |community| %>
+            <li><%= link_to community.title, community %></li>
+          <% end -%>
+        </ul>            
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+<%= render :partial => 'communities/sidebar' %>

@@ -1,38 +1,26 @@
 <% content_for :body_class do %>community floor-plans<% end %>
 
-<%= render :partial => 'home_communities/breadcrumb' %>
+<% @community.homes(:include => :floor_plans).each do |home| %>
+  <div id="<%= dom_id(home) %>" class="floor-plan-group">
+    <h2><%= home.name %></h2>
 
-<%= render :partial => 'home_communities/masthead' %>
+    <p>
+      <%= bedrooms(home) %> | <%= bathrooms(home) %>
+    </p>
 
-<div id="main-content">
-  <div class="container">
-    <% @community.homes(:include => :floor_plans).each do |home| %>
-      <div id="<%= dom_id(home) %>" class="floor-plan-group">
-        <h2><%= home.name %></h2>
+    <% home.floor_plans.in_groups_of(4, false) do |plans| %>
+      <ul class="row">
+        <% plans.each do |plan| %>
+          <li class="floor-plan">
+            <h4><%= plan.name %></h4>
 
-        <p>
-          <%= bedrooms(home) %> | <%= bathrooms(home) %>
-        </p>
-
-        <% home.floor_plans.in_groups_of(4, false) do |plans| %>
-          <ul class="row">
-            <% plans.each do |plan| %>
-              <li class="floor-plan">
-                <h4><%= plan.name %></h4>
-
-                <% if plan.image.present? %>
-                  <%= link_to image_tag(plan.image.url(:thumb), :width => 160), plan.image.url, :class => 'floor-plan-view' %>
-                <% end %>
-              </li>
+            <% if plan.image.present? %>
+              <%= link_to image_tag(plan.image.url(:thumb), :width => 160), plan.image.url, :class => 'floor-plan-view' %>
             <% end %>
-          </ul>
+          </li>
         <% end %>
-
-      </div>
+      </ul>
     <% end %>
 
-    <%= render :partial => 'properties/sub_content', :locals => { :property => @community } %>
   </div>
-</div>
-
-<%= render :partial => 'properties/special_nav' %>
+<% end %>

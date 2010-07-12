@@ -22,6 +22,9 @@
         </li>
         <li class="last <%= current_if 'contact' %>">
           <%= link_to raw('Contact Info<br />&amp; Office Hours'), contact_home_community_path(@community) %>
+          <% if @community.phone_number.present? %>
+            <span class="phone-number"><%= @community.phone_number %></span>
+          <% end %>
         </li>
       </ul>
 
