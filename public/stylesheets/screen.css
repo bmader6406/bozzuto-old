@@ -846,7 +846,8 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
        height: 280px;
        border: 1px solid #959ba1;
      }
-     .community #community-info p.call-to-action a {
+     .community #community-info p.call-to-action a,
+     .project #content p.call-to-action a {
        display: block;
        width: 210px;
        height: 28px;
@@ -3321,12 +3322,14 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     .community #community-info .nav li a:hover {
       text-decoration: none;
     }
-    .community #community-info p.call-to-action a {
+    .community #community-info p.call-to-action a,
+    .project #content p.call-to-action a {
       font-size: 15px;
       line-height: 28px;
       color: #000;
     }
-    .community #community-info p.call-to-action a:hover {
+    .community #community-info p.call-to-action a:hover,
+    .project #content p.call-to-action a:hover {
       text-decoration: none;
     }
     .community #renting-from-bozzuto p,
@@ -4141,10 +4144,12 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       background-position: right -47px;
     }
 
-    .community #community-info p.call-to-action a {
+    .community #community-info p.call-to-action a,
+    .project #content p.call-to-action a {
       background: transparent url(../images/structure/bg-apartments-masthead-aside-a.gif) no-repeat right 0;
     }
-    .community #community-info p.call-to-action a:hover {
+    .community #community-info p.call-to-action a:hover,
+    .project #content p.call-to-action a:hover {
       background-position: right -28px;
     }
 

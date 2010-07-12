@@ -3,26 +3,6 @@
 <% breadcrumb_item(link_to 'Projects', projects_path(@section)) %>
 <% breadcrumb_item(@project.title) %>
 
-<% if @project.mappable? %>
-  <% content_for :javascript do %>
-    <%= google_maps_javascript_tag %>
-
-    <script type="text/javascript">
-      (function($) {
-        $(document).ready(function() {
-          if (GBrowserIsCompatible()) {
-            var point = new GLatLng(<%= @project.latitude %>, <%= @project.longitude %>);
-            var map = new GMap2(document.getElementById("map-canvas"));
-            map.setCenter(point, 13);
-            map.setUIToDefault();
-            map.addOverlay(new GMarker(point));
-          }
-        });
-      })(jQuery);
-    </script>
-  <% end %>
-<% end %>
-
 
 <h2>Lorem Bozzuto Construction Ipsum</h2>
 
