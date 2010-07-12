@@ -313,7 +313,7 @@ fieldset.inputs { }
 #content table.typus tr.odd { background: #F5F5F5; }
 #content table.typus span.inactive { color: #888; }
 #content table.typus tr:hover span.inactive { color: #aaa; }
-#content table.typus td { border: none; font-size: 14px; font-weight: normal; padding: 8px 8px; vertical-align: top; }
+#content table.typus td { color: #000; border: none; font-size: 14px; font-weight: normal; padding: 8px 8px; vertical-align: top; }
 
 /* @end */
 
