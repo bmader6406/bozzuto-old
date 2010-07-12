@@ -48,7 +48,7 @@
 
     <% if @community.has_local_info? %>
       <div id="local-info" class="section">
-        <% @community.local_info.take(4).each do |info| %>
+        <% @community.local_info.take(5).each do |info| %>
           <div class="local-info">
             <h4><%= link_to info.title.gsub(/on Yelp$/, ''), info.url %></h4>
 
@@ -56,7 +56,7 @@
               <%= info.published_at.to_formatted_s(:month_day_year) %>
             </p>
             <p>
-              <%= truncate_html(raw(info.description), :length => 250) %>
+              <%= truncate_html(raw(info.description), :length => 75) %>
             </p>
           </div>
         <% end %>
