@@ -3128,6 +3128,10 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 		}
     .about #content p,
 		.generic #content p {
+      margin-bottom: 0.727272727em;
+    }
+    .about #content p.last,
+		.generic #content p.last {
       padding-bottom: 1.454545455em;
       margin-bottom: 0.727272727em;
     }
