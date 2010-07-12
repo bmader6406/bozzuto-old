@@ -204,19 +204,21 @@ module Vaultware
 
             context 'when syncing with a floor plan that already exists' do
               setup do
+                @penthouse = ApartmentFloorPlanGroup.penthouse
                 @plan = @plans.first
                 @community.floor_plans << ApartmentFloorPlan.make_unsaved(
                   :vaultware_floor_plan_id => @plan['Id'].to_i,
                   :apartment_community     => @community,
-                  :image_url               => nil
+                  :image_url               => nil,
+                  :floor_plan_group        => @penthouse
                 )
-              end
 
-              should 'update the existing floor plan' do
                 assert_difference('@community.floor_plans.count', @plans.count - 1) do
                   @parser.process
                 end
+              end
 
+              should 'update the existing floor plan' do
                 assert_equal @plans.count, @community.floor_plans.count
 
                 @plans_attrs.each_with_index do |attrs, i|
@@ -225,6 +227,11 @@ module Vaultware
                       @community.floor_plans[i].send(field)
                   end
                 end
+              end
+
+              should 'not update the floor plan group' do
+                @community.reload
+                assert_equal @penthouse, @community.floor_plans.first.floor_plan_group
               end
             end
           end

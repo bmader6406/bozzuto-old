@@ -84,7 +84,10 @@ module Vaultware
       }
 
       if plan = @community.floor_plans.find(:first, find_conditions)
-        plan.update_attributes(attrs)
+        # don't change floor plan group on update -- penthouse doesn't come
+        # over in the feed, so admins need to be able to change group
+        # and have it persist
+        plan.update_attributes(attrs.delete_if { |k, v| k == :floor_plan_group })
       else
         @community.floor_plans << ApartmentFloorPlan.new(attrs)
       end
