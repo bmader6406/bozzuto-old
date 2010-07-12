@@ -1,4 +1,6 @@
 class ChangeCommunitiesToPropertiesWithSti < ActiveRecord::Migration
+  class Property < ActiveRecord::Base; end
+
   def self.up
     rename_table :communities, :properties
     add_column :properties, :type, :string
