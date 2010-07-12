@@ -1,4 +1,6 @@
 class ApartmentFloorPlanGroupsController < ApplicationController
+  layout 'community'
+
   before_filter :find_community
 
   def index

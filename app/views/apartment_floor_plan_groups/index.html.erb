@@ -1,42 +1,30 @@
 <% content_for :body_class do %>community property floor-plans<% end %>
 
-<%= render :partial => 'apartment_communities/breadcrumb' %>
+<% @groups.each do |group| %>
+  <% plans_in_group = @community.floor_plans.in_group(group) %>
 
-<%= render :partial => 'apartment_communities/masthead' %>
+  <% unless plans_in_group.empty? %>
+    <div id="<%= dom_id(group) %>" class="floor-plan-group">
+      <h2><%= group.name %></h2>
 
-<div id="main-content">
-  <div class="container">
-    <% @groups.each do |group| %>
-      <% plans_in_group = @community.floor_plans.in_group(group) %>
+      <% plans_in_group.in_groups_of(4, false) do |plans_group| %>
+        <ul class="row">
+          <% plans_group.each do |plan| %>
+            <li class="floor-plan">
+              <h4><%= plan.name %></h4>
 
-      <% unless plans_in_group.empty? %>
-        <div id="<%= dom_id(group) %>" class="floor-plan-group">
-          <h2><%= group.name %></h2>
+              <p>
+                <%= square_feet(plan) %> |
+                <%= floor_plan_price(plan.min_rent) %><br />
+                <%= link_to 'Reserve', plan.availability_url %>
+              </p>
 
-          <% plans_in_group.in_groups_of(4, false) do |plans_group| %>
-            <ul class="row">
-              <% plans_group.each do |plan| %>
-                <li class="floor-plan">
-                  <h4><%= plan.name %></h4>
-
-                  <p>
-                    <%= square_feet(plan) %> |
-                    <%= floor_plan_price(plan.min_rent) %><br />
-                    <%= link_to 'Reserve', plan.availability_url %>
-                  </p>
-
-                  <%= floor_plan_image(plan) %>
-                </li>
-              <% end %>
-            </ul>
+              <%= floor_plan_image(plan) %>
+            </li>
           <% end %>
-
-        </div>
+        </ul>
       <% end %>
-    <% end %>
 
-    <%= render :partial => 'properties/sub_content', :locals => { :property => @community } %>
-  </div>
-</div>
-
-<%= render :partial => 'properties/special_nav' %>
+    </div>
+  <% end %>
+<% end %>

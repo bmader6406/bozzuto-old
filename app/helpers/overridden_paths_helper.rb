@@ -70,4 +70,12 @@ module OverriddenPathsHelper
       property
     end
   end
+
+  def send_to_friend_path(community)
+    if community.is_a?(ApartmentCommunity)
+      send_to_friend_apartment_community_path(community)
+    else
+      send_to_friend_home_community_path(community)
+    end
+  end
 end

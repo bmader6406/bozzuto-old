@@ -1,6 +1,8 @@
 class ApartmentCommunitiesController < ApplicationController
   before_filter :find_community, :except => :index
 
+  layout 'community', :except => :index
+
   def index
     params[:search] ||= {}
     @partial_template = params[:template] || 'search'
@@ -8,7 +10,9 @@ class ApartmentCommunitiesController < ApplicationController
     @communities = @search.all.group_by {|c| c.state.name}
 
     respond_to do |format|
-      format.html
+      format.html do
+        render :action => :index, :layout => 'application'
+      end
       format.js
     end
   end
@@ -17,15 +21,19 @@ class ApartmentCommunitiesController < ApplicationController
   end
 
   def features
+    render :template => 'communities/features'
   end
 
   def neighborhood
+    render :template => 'communities/neighborhood'
   end
 
   def promotions
+    render :template => 'communities/promotions'
   end
 
   def contact
+    render :template => 'communities/contact'
   end
 
   def send_to_friend
