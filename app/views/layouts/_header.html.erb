@@ -6,7 +6,7 @@
 
     <div>
       <div class="nav">
-        <ul id="main-nav">
+        <ul id="main-nav" class="<%= request.path.split('/')[1] %>">
           <li class="apartments-nav">
             <%= link_to 'Apartments', '/apartments' %>
           </li>

@@ -83,24 +83,6 @@ ActiveRecord::Schema.define(:version => 20100712120548) do
     t.integer "county_id"
   end
 
-  create_table "community_links", :force => true do |t|
-    t.string   "title",        :null => false
-    t.string   "url",          :null => false
-    t.integer  "community_id", :null => false
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "community_pages", :force => true do |t|
-    t.string   "title",        :null => false
-    t.text     "content",      :null => false
-    t.integer  "community_id", :null => false
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "counties", :force => true do |t|
     t.string   "name",       :null => false
     t.integer  "state_id",   :null => false
@@ -377,15 +359,6 @@ ActiveRecord::Schema.define(:version => 20100712120548) do
   end
 
   add_index "sections", ["cached_slug"], :name => "index_sections_on_cached_slug"
-
-  create_table "services", :force => true do |t|
-    t.string   "title",      :null => false
-    t.string   "slug",       :null => false
-    t.integer  "position",   :null => false
-    t.integer  "section_id", :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "slugs", :force => true do |t|
     t.string   "name"

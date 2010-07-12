@@ -4679,45 +4679,42 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
     #header #logo a {
       background: transparent url(../images/structure/bg-logo.gif) no-repeat 0 0;
     }
-    #header #main-nav li a {
+    #main-nav li a {
       background: transparent url(../images/structure/bg-main-nav.gif) no-repeat 0 0;
     }
 
   /* @end */
 
   /* @group -secondary */
-
-    .secondary #header #main-nav li.apartments-nav a {
+    #main-nav li.apartments-nav a {
       background-position: -600px 0;
     }
-    .community #header #main-nav li.apartments-nav a,
-    .secondary #header #main-nav li.apartments-nav a:hover {
+    #main-nav.apartments li.apartments-nav a,
+    #main-nav.apartments li.apartments-nav a:hover {
       background-position: -800px 0;
     }
-    .secondary #header #main-nav li.homes-nav a {
+
+    #main-nav li.homes-nav a {
       background-position: -600px -30px;
     }
-    .homes #header #main-nav li.homes-nav a,
-    .secondary #header #main-nav li.homes-nav a:hover {
+    #main-nav.new-homes li.homes-nav a,
+    #main-nav.new-homes li.homes-nav a:hover {
       background-position: -800px -30px;
     }
-    .secondary #header #main-nav li.about-nav a {
+
+    #main-nav li.about-nav a {
       background-position: -600px -60px;
     }
-    .about #header #main-nav li.about-nav a,
-    .secondary #header #main-nav li.about-nav a:hover {
+    #main-nav.about li.about-nav a,
+    #main-nav.about li.about-nav a:hover {
       background-position: -800px -60px;
     }
-    .apartments #header #main-nav li.apartments-nav a,
-    .secondary #header #main-nav li.apartments-nav a:hover ,
-    .search #header #main-nav li.apartments-nav a {
-      background-position: -800px 0px;
-    }
-    .secondary #header #main-nav li.services-nav a {
+
+    #main-nav li.services-nav a {
       background-position: -600px -90px;
     }
-    .services #header #main-nav li.services-nav a,
-    .secondary #header #main-nav li.services-nav a:hover {
+    #main-nav.services li.services-nav a,
+    #main-nav.services li.services-nav a:hover {
       background-position: -800px -90px;
     }
 
