@@ -734,18 +734,15 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
         top: 0px;
         left: 0px;
       }
-
       .project #slideshow .section {
         z-index: 1;
-      }
-      .project #slideshow img {
-        z-index: 2;
       }
       .property #slideshow div.header,
       .property #slideshow div.slide,
       .property #slideshow div.section {
         position: absolute;
         top: 0; left: 0;
+        padding: 0;
       }
       .property #slideshow div.header {
         position: relative;
@@ -761,14 +758,13 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       }
       .property #slideshow img {
         display: block;
+        position: relative;
+        z-index: 2;
       }
       .property #slideshow .overlay {
         background: url(../images/structure/bg-slideshow-overlay.png) no-repeat;
         display: block;
-        filter:alpha(opacity=50);
         height: 100%;
-        -moz-opacity: 0.5;
-        opacity: 0.5;
         position: absolute;
         top: 0; left: 0;
         width: 100%;
@@ -976,6 +972,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
      .community #sidebar p.sharethis a {
        padding-left: 20px;
      }
+     .property .slide,
      .community .slide {
        left: 0;
        position: absolute;
@@ -1091,6 +1088,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       z-index: 0;
     }
 
+    .property ul.slides li,
     .community ul.slides li,
     .home #content ul.slides li,
     .apartments #content ul.slides li,
@@ -1099,6 +1097,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       z-index: 1;
     }
 
+    .property ul.slides li.on-deck,
     .community ul.slides li.on-deck,
     .home ul.slides li.on-deck,
     .apartments #content ul.slides li.on-deck,
@@ -1107,6 +1106,7 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
       z-index: 3;
     }
 
+    .property ul.slides li.current,
     .community ul.slides li.current,
     .home #content ul.slides li.current,
     .apartments #content ul.slides li.current,
