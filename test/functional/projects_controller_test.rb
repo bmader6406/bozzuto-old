@@ -22,7 +22,7 @@ class ProjectsControllerTest < ActionController::TestCase
     context 'a GET to #show' do
       setup do
         @project = Project.make :section => @section
-        get :show, :section => @section.to_param, :project_id => @project.id
+        get :show, :section => @section.to_param, :project_id => @project.to_param
       end
 
       should_respond_with :success

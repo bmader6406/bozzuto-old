@@ -29,7 +29,7 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
     %w(show features neighborhood promotions contact).each do |action|
       context "a GET to ##{action}" do
         setup do
-          get action, :id => @community.id
+          get action, :id => @community.to_param
         end
 
         should_assign_to(:community) { @community }
@@ -43,7 +43,7 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
       context "with a missing email address" do
         setup do
           assert_no_difference("ActionMailer::Base.deliveries.count") do
-            post :send_to_friend, { :id => @community.id }
+            post :send_to_friend, { :id => @community.to_param }
           end
         end
 
@@ -57,7 +57,7 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
 
           assert_difference("ActionMailer::Base.deliveries.count", 1) do
             post :send_to_friend, {
-              :id    => @community.id,
+              :id    => @community.to_param,
               :email => @to
             }
           end

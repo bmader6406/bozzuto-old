@@ -9,6 +9,10 @@ class Property < ActiveRecord::Base
     ['Upload a file', USE_BROCHURE_FILE]
   ]
 
+  has_friendly_id :id_and_title,
+    :use_slug => true,
+    :scope => :type
+
   belongs_to :city
   belongs_to :county
 
@@ -63,5 +67,12 @@ class Property < ActiveRecord::Base
 
   def uses_brochure_file?
     brochure_type == USE_BROCHURE_FILE
+  end
+
+
+  private
+
+  def id_and_title
+    "#{id} #{title}"
   end
 end
