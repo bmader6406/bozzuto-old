@@ -6,6 +6,17 @@
 
 <h2>Latest <%= @section.title %> News</h2>
 
+<% if params[:page].nil? || params[:page] == 1 %>
+  <p>
+    Lauren McDonald<br />
+    Manager, Corporate Communications<br />
+    301.623.1579 Phone<br />
+    877.602.9872 Fax<br />
+    <a href="mailto:LMcDonald@bozzuto.com">LMcDonald@bozzuto.com</a>
+  </p>
+<% end %>
+
+
 <% @news_posts.each do |post| %>
   <div class="news-post row">
     <h3>
