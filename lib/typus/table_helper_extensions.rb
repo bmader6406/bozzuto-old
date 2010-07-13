@@ -55,7 +55,7 @@ module Typus
           :title => _("Remove"),
           :confirm => _("Remove entry?")
       else
-        typus_table_remove_action_without_config(model, fields, item)
+        typus_table_remove_action_without_config(related_model, fields, item)
       end
     end
   end
