@@ -6,7 +6,7 @@
 
     <ul class="row">
       <% @community.videos.each do |video| %>
-        <li class="media-link">
+        <li class="media-link watch-video">
           <%= link_to image_tag(video.image.url), video.url %>
         </li>
       <% end %>
