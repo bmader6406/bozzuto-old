@@ -12,6 +12,7 @@ ApartmentCommunity:
       booleans:
         published: ['Yes', 'No']
       selectors: brochure_type
+      destroy_related: PropertySlideshow, PropertyMiniSlideshow, Video, PhotoSet, ApartmentFloorPlan
   order_by:
   relationships: property_features, city, county, local_info_feed, slideshow, mini_slideshow, videos, photo_set, floor_plans
   filters:
@@ -116,6 +117,8 @@ Home:
     default: name, bedrooms, bathrooms, featured, position
     list: name, bedrooms, bathrooms, home_community, position
     form: name, bedrooms, bathrooms, featured, home_community
+    options:
+      destroy_related: HomeFloorPlan
   order_by: position
   relationships: home_community, floor_plans
   filters:
@@ -132,6 +135,7 @@ HomeCommunity:
       booleans:
         published: ['Yes', 'No']
       selectors: brochure_type
+      destroy_related: PropertySlideshow, PropertyMiniSlideshow, Home
   order_by: 
   relationships: city, county, slideshow, mini_slideshow, homes, local_info_feed
   filters: 
@@ -156,6 +160,7 @@ HomePage:
     form: meta_title, meta_description, meta_keywords, body, featured_property
     options:
       ckeditor: body
+      destroy_related: HomePageSlide
   order_by: 
   relationships: featured_property, slides
   filters: 
@@ -218,11 +223,13 @@ Page:
     form: title, meta_title, meta_description, meta_keywords, body, section, parent
     options:
       ckeditor: body
+      destroy_related: MastheadSlideshow, BodySlideshow
   order_by: section_id, lft
   relationships: parent, section, masthead_slideshow, body_slideshow
   filters:
   search: title
-  application: Content
+  application: 
+  options:
 
 Photo:
   fields:
@@ -258,6 +265,7 @@ Project:
       booleans:
         published: ['Yes', 'No']
       selectors: brochure_type
+      destroy_related: PropertySlideshow, PropertyMiniSlideshow, ProjectDataPoint, ProjectUpdate
   order_by: 
   relationships: city, section, slideshow, mini_slideshow, data_points, updates
   filters: 
@@ -328,6 +336,8 @@ PropertyMiniSlideshow:
     default: name, property
     list: name, property
     form: name, property
+    options:
+      destroy_related: PropertyMiniSlide
   order_by: 
   relationships: property, slides
   filters: 
@@ -350,6 +360,8 @@ PropertySlideshow:
     default: name, property
     list: name, property
     form: name, property
+    options:
+      destroy_related: PropertySlide
   order_by: 
   relationships: property, slides
   filters: 
@@ -363,6 +375,7 @@ Section:
     form: title, left_montage_image, middle_montage_image, right_montage_image
     options:
       read_only: title
+      destroy_related: Page, NewsPost, Testimonial, Project, Award
   order_by: title
   relationships: pages, news_posts, testimonials, awards, projects
   filters:

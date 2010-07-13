@@ -3,6 +3,7 @@ module Typus
     def self.included(base)
       base.class_eval do
         alias_method_chain :typus_table_position_field, :nested_set
+        alias_method_chain :typus_table_remove_action, :config
       end
     end
 
@@ -30,6 +31,32 @@ module Typus
 
       content = html_position.join(' / ').html_safe
       return content_tag(:td, content)
+    end
+
+
+    def typus_table_remove_action_with_config(related_model, fields, item)
+      trash = '<div class="sprite trash">Trash</div>'.html_safe
+      model = @resource[:class]
+
+      destroy = model.typus_field_options_for(:destroy_related).include?(related_model.to_s.to_sym)
+
+      condition = if related_model.typus_user_id? && @current_user.is_not_root?
+        item.owned_by?(@current_user)
+      else
+        @current_user.can?('destroy', related_model)
+      end
+
+      if params[:action] =='edit' && condition && destroy
+        link_to trash, {
+            :controller => related_model.to_s.tableize,
+            :action => 'destroy',
+            :id => item.id
+          },
+          :title => _("Remove"),
+          :confirm => _("Remove entry?")
+      else
+        typus_table_remove_action_without_config(model, fields, item)
+      end
     end
   end
 end
