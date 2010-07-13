@@ -21,6 +21,7 @@ module Vaultware
           end
         end
       end
+      true
     end
 
 
@@ -140,19 +141,24 @@ module Vaultware
     end
 
     def find_county(address)
-      state_code  = address.at('./ns:State', ns).content
-      city_name   = address.at('./ns:City', ns).content
-      county_name = address.at('./ns:CountyName', ns).content
-      state       = State.find_by_code(state_code)
+      county_name = address.at('./ns:CountyName', ns).try(:content)
 
-      city = state.cities.find_or_create_by_name(city_name)
-      county = state.counties.find_or_create_by_name(county_name)
+      if county_name.present?
+        state_code  = address.at('./ns:State', ns).content
+        city_name   = address.at('./ns:City', ns).content
+        state       = State.find_by_code(state_code)
 
-      unless city.counties.include?(county)
-        city.counties << county
+        city = state.cities.find_or_create_by_name(city_name)
+        county = state.counties.find_or_create_by_name(county_name)
+
+        unless city.counties.include?(county)
+          city.counties << county
+        end
+
+        county
+      else
+        nil
       end
-
-      county
     end
 
     def ns
