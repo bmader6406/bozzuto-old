@@ -222,10 +222,10 @@ class Admin::MasterController < ApplicationController
        reflect_on_association(resource_class.table_name.singularize.to_sym).
        try(:macro) == :has_one
       attribute = resource_tableized.singularize
-      saved_succesfully = @item.update_attribute attribute, nil
+      unrelate_success = @item.update_attribute attribute, nil
     else
       attribute = resource_tableized
-      saved_successfully =  if @item.respond_to?(attribute)
+      unrelate_success =  if @item.respond_to?(attribute)
                               @item.send(attribute).delete(resource)
                             elsif @item.respond_to?("related_#{attribute}")
                               @item.relationships.detect {|rel| 
@@ -235,7 +235,7 @@ class Admin::MasterController < ApplicationController
                             end
     end
 
-    if saved_succesfully
+    if unrelate_success
       flash[:success] = _("{{model_a}} unrelated from {{model_b}}.", 
                           :model_a => resource_class.typus_human_name, 
                           :model_b => @resource[:human_name])
