@@ -5,7 +5,7 @@ set :scm, :git
 
 set :use_sudo, false
 
-set :stages, %w(integration staging)
+set :stages, %w(integration staging production)
 set :default_stage, "integration"
 
 set(:latest_release) { fetch(:current_path) }
