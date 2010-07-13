@@ -195,7 +195,7 @@
         background-position: -600px 0;
       }
       #main-nav.apartments li.apartments-nav a,
-      #main-nav.apartments li.apartments-nav a:hover {
+      #main-nav li.apartments-nav a:hover {
         background-position: -800px 0;
       }
 
@@ -203,7 +203,7 @@
         background-position: -600px -30px;
       }
       #main-nav.new-homes li.homes-nav a,
-      #main-nav.new-homes li.homes-nav a:hover {
+      #main-nav li.homes-nav a:hover {
         background-position: -800px -30px;
       }
 
@@ -211,7 +211,7 @@
         background-position: -600px -60px;
       }
       #main-nav.about li.about-nav a,
-      #main-nav.about li.about-nav a:hover {
+      #main-nav li.about-nav a:hover {
         background-position: -800px -60px;
       }
 
@@ -219,7 +219,7 @@
         background-position: -600px -90px;
       }
       #main-nav.services li.services-nav a,
-      #main-nav.services li.services-nav a:hover {
+      #main-nav li.services-nav a:hover {
         background-position: -800px -90px;
       }
       
