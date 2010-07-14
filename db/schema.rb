@@ -182,6 +182,18 @@ ActiveRecord::Schema.define(:version => 20100714143838) do
     t.boolean  "featured",                                        :default => false, :null => false
   end
 
+  create_table "landing_pages", :force => true do |t|
+    t.string   "title",                       :null => false
+    t.string   "cached_slug"
+    t.text     "masthead_body"
+    t.string   "masthead_image_file_name"
+    t.string   "masthead_image_content_type"
+    t.string   "secondary_title"
+    t.text     "secondary_body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "masthead_slides", :force => true do |t|
     t.text     "body",                                 :null => false
     t.integer  "slide_type",            :default => 0, :null => false

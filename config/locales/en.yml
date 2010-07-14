@@ -13,6 +13,7 @@ en:
         one: Home Page
         many: Home Page
       home_page_slide: Slide
+      landing_page: Landing Page
       masthead_slide: Slide
       masthead_slideshow: Masthead Slideshow
       news_post: News
@@ -62,6 +63,11 @@ en:
         meta_description: Meta Description
         meta_keywords: Meta Keywords
         meta_title: Meta Title
+      landing_page:
+        masthead_body: Masthead Body
+        masthead_image: Masthead Image
+        secondary_body: Secondary Body
+        secondary_title: Secondary Title
       masthead_slide:
         body: Body Text
         featured_property: Featured Property
@@ -135,6 +141,8 @@ en:
         image: Image dimensions should be 840x375
       home_page_slide:
         image: Image dimensions should be 1100x375
+      landing_page:
+        masthead_image: Image dimensions should be 230x222
       masthead_slide:
         image: Image dimensions should be 230x223
       photo_set:
