@@ -1,0 +1,39 @@
+<li>
+  <div class="photos">
+    <p>
+      <%= image_tag community.listing_image.url %>
+    </p>
+  </div>
+  
+  <div class="content">
+    <div>
+      <h2><%= community.title %></h2>
+
+      <% if community.listing_title.present? %>
+        <p class="intro">
+          <%= community.listing_title.try(:html_safe) %>
+        </p>
+      <% end %>
+
+      <%= raw(community.listing_text) %>
+
+      <p class="call-to-action">
+        <%= link_to 'Read More', home_community_path(community) %>
+      </p>
+    </div>
+
+    <div class="learn-more">
+      <h2>
+        <%= link_to 'Read More', home_community_path(community) %>
+      </h2>
+
+      <% if community.video_url.present? %>
+        <p class="watch-video">
+          <%= link_to 'Watch Video', community.video_url %>
+        </p>
+      <% end %>
+
+      <%= property_icons(community) %>
+    </div>
+  </div>
+</li>

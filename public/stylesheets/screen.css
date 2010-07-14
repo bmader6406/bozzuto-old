@@ -1821,13 +1821,21 @@
     .search #content div.results ul li div.info div.learn-more ul li,
     .landing #content .listing-large div.learn-more ul li,
     .homes #content #view-as-list div.learn-more ul li {
-    	display: block;
-    	height: 33px;
+    	height: 45px;
     	margin-right: 8px;
     	overflow: hidden;
-    	text-indent: -9999px;
     	float: left;
-    	width: 34px;
+    	width: 45px;
+    }
+    .search #content div.results ul li div.info div.learn-more ul li a,
+    .landing #content .listing-large div.learn-more ul li a,
+    .homes #content #view-as-list div.learn-more ul li a {
+      background-position: 0 0;
+    	display: block;
+    	height: 45px;
+    	overflow: hidden;
+    	text-indent: -9999px;
+    	width: 45px;
     }
     
     .search #content div.results ul li div.info div.learn-more p,
@@ -4704,15 +4712,15 @@
         background-position: 0 -1000px;
       }
 
-      .areamap-popular-properties .apartments p {
+      .areamap-popular-properties .apartment-community p {
         background-position: right 10px;
       }
 
-      .areamap-popular-properties .homes-condominiums p {
+      .areamap-popular-properties .home-community p {
         background-position: right -490px;
       }
 
-      .areamap-popular-properties .upcoming-projects p {
+      .areamap-popular-properties .project p {
         background-position: right -990px;
       }
     
