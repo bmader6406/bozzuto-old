@@ -3,5 +3,6 @@ class LandingPagesController < ApplicationController
 
   def show
     @page = LandingPage.find(params[:id])
+    @state = @page.state
   end
 end
