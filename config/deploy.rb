@@ -18,6 +18,9 @@ set(:previous_revision) {
   capture("cd #{current_path}; git rev-parse --short HEAD@{1}").strip 
 }
 
+set :sync_directories, ["public/system"]
+set :sync_backups, 3
+
 after 'multistage:ensure', 'config:defaults'
 after 'deploy:update_code', 'app:bundle_gems'
 after 'deploy:update_code', 'app:package_assets'
