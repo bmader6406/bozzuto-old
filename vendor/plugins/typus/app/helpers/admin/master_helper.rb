@@ -43,14 +43,14 @@ module Admin::MasterHelper
   # display, this will be used, otherwise we use a default table which 
   # it's build from the options defined on the yaml configuration file.
   #
-  def build_list(model, fields, items, resource = @resource[:self], link_options = {}, association = nil)
+  def build_list(model, fields, items, resource = @resource[:self], link_options = {}, association = nil, field = nil)
 
     template = "app/views/admin/#{resource}/_#{resource.singularize}.html.erb"
 
     if File.exist?(template)
       render :partial => template.gsub('/_', '/'), :collection => items, :as => :item
     else
-      build_typus_table(model, fields, items, link_options, association).html_safe
+      build_typus_table(model, fields, items, link_options, association, field).html_safe
     end
 
   end

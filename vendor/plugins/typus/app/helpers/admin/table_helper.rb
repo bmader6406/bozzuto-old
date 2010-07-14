@@ -1,7 +1,7 @@
 module Admin::TableHelper
 
   # OPTIMIZE: Move html code to partial & refactor.
-  def build_typus_table(model, fields, items, link_options = {}, association = nil)
+  def build_typus_table(model, fields, items, link_options = {}, association = nil, field = nil)
 
     returning(String.new) do |html|
 
@@ -50,7 +50,7 @@ module Admin::TableHelper
         HTML
 
         html << <<-HTML
-<td width="10px">#{typus_table_remove_action(model, fields, item)}</td>
+<td width="10px">#{typus_table_remove_action(model, fields, item, field)}</td>
 </tr>
         HTML
 
@@ -209,7 +209,7 @@ module Admin::TableHelper
 
   end
 
-  def typus_table_remove_action(model, fields, item)
+  def typus_table_remove_action(model, fields, item, field)
     ##
     # This controls the action to perform. If we are on a model list we 
     # will remove the entry, but if we inside a model we will remove the 
@@ -232,7 +232,7 @@ module Admin::TableHelper
                                  :confirm => _("Remove entry?") if condition
     when 'edit'
       # If we are editing content, we can relate and unrelate always!
-      perform = link_to unrelate, { :action => 'unrelate', :id => params[:id], :resource => model, :resource_id => item.id }, 
+      perform = link_to unrelate, { :action => 'unrelate', :id => params[:id], :resource => model, :resource_id => item.id, :field => field }, 
                                     :title => _("Unrelate"), 
                                     :confirm => _("Unrelate {{unrelate_model}} from {{unrelate_model_from}}?", 
                                                   :unrelate_model => model.typus_human_name, 

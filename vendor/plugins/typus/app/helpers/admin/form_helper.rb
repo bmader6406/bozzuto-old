@@ -292,7 +292,8 @@ module Admin::FormHelper
                            @items, 
                            model_to_relate_as_resource, 
                            {}, 
-                           association)
+                           association,
+                           field)
         html << pagination(:anchor => model_to_relate.name.tableize) unless pagination.nil?
       else
         message = _("There are no {{records}}.", 

@@ -34,7 +34,7 @@ module Typus
     end
 
 
-    def typus_table_remove_action_with_config(related_model, fields, item)
+    def typus_table_remove_action_with_config(related_model, fields, item, field)
       trash = '<div class="sprite trash">Trash</div>'.html_safe
       model = @resource[:class]
 
@@ -55,7 +55,7 @@ module Typus
           :title => _("Remove"),
           :confirm => _("Remove entry?")
       else
-        typus_table_remove_action_without_config(related_model, fields, item)
+        typus_table_remove_action_without_config(related_model, fields, item, field)
       end
     end
   end
