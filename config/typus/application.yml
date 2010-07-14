@@ -422,7 +422,7 @@ Testimonial:
 Video:
   fields:
     default: url, position
-    list: image, url, position, property
+    list: image, position, property
     form: image, url, property
   order_by: position
   relationships: property
