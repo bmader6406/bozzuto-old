@@ -137,7 +137,7 @@ HomeCommunity:
       selectors: brochure_type
       destroy_related: PropertySlideshow, PropertyMiniSlideshow, Home
   order_by: 
-  relationships: city, county, slideshow, mini_slideshow, homes, local_info_feed
+  relationships: property_features, city, county, slideshow, mini_slideshow, homes, local_info_feed
   filters: 
   search: title
   application: Properties
@@ -311,7 +311,7 @@ ProjectUpdate:
 
 Property:
   fields:
-    default:
+    default: title, street_address, city
     list:
     form:
     options:
@@ -324,8 +324,8 @@ Property:
 
 PropertyFeature:
   fields:
-    default: name, icon, position
-    list: name, icon, position
+    default: name, icon
+    list: name, icon
     form: name, icon, description
   order_by: position
   relationships: 

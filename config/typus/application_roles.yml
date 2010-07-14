@@ -27,6 +27,7 @@ admin:
   Project: create, read, update, delete
   ProjectDataPoint: create, read, update, delete
   ProjectUpdate: create, read, update, delete
+  Property: create, read, update, delete
   PropertyFeature: create, read, update, delete
   PropertyMiniSlide: create, read, update, delete
   PropertyMiniSlideshow: create, read, update, delete
