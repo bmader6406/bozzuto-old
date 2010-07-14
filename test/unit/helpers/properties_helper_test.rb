@@ -53,7 +53,7 @@ class PropertiesHelperTest < ActionView::TestCase
         end
 
         should "emit icons for the community's features" do
-          icons = HTML::Document.new(property_icons)
+          icons = HTML::Document.new(property_icons(@community))
 
           assert_select icons.root, "ul.community-icons"
 
@@ -67,8 +67,8 @@ class PropertiesHelperTest < ActionView::TestCase
 
       context "#property_icon_descriptions" do
         setup do
-          @community = ApartmentCommunity.make
-          3.times { @community.property_features << PropertyFeature.make }
+          3.times { PropertyFeature.make }
+          @features = PropertyFeature.all
         end
 
         should "emit icons for the community's features" do
@@ -76,7 +76,7 @@ class PropertiesHelperTest < ActionView::TestCase
 
           assert_select icons.root, "ul#icon-tooltips"
 
-          @community.property_features.each do |feature|
+          @features.each do |feature|
             assert_select icons.root, "li##{dom_id(feature)}"
             assert_select icons.root, "li h4", feature.name
           end

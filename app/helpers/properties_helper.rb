@@ -13,9 +13,9 @@ module PropertiesHelper
     end
   end
 
-  def property_icons
+  def property_icons(community)
     content_tag :ul, :class => 'community-icons' do
-      @community.property_features.inject('') do |output, feature|
+      community.property_features.inject('') do |output, feature|
         output << content_tag(:li) do
           link_to feature.name, "##{dom_id(feature)}", :style => "background-image: url(#{feature.icon.url});"
         end
@@ -26,7 +26,7 @@ module PropertiesHelper
 
   def property_icon_descriptions
     content_tag :ul, :id => 'icon-tooltips' do
-      @community.property_features.inject('') do |output, feature|
+      PropertyFeature.all.inject('') do |output, feature|
         output << content_tag(:li, :id => dom_id(feature)) do
           content_tag(:h4) { feature.name } + 
             content_tag(:p) { feature.description }
