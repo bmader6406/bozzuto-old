@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100712182140) do
+ActiveRecord::Schema.define(:version => 20100714143838) do
 
   create_table "apartment_floor_plan_groups", :force => true do |t|
     t.string   "name",       :null => false
@@ -67,6 +67,22 @@ ActiveRecord::Schema.define(:version => 20100712182140) do
   create_table "body_slideshows", :force => true do |t|
     t.string   "name",       :null => false
     t.integer  "page_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "buzzes", :force => true do |t|
+    t.string   "email",        :null => false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "street1"
+    t.string   "street2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
+    t.string   "phone"
+    t.string   "buzzes",       :null => false
+    t.string   "affiliations", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -241,12 +257,12 @@ ActiveRecord::Schema.define(:version => 20100712182140) do
   end
 
   create_table "photos", :force => true do |t|
-    t.string   "image_file_name"
-    t.string   "title",              :null => false
+    t.string   "image_file_name",    :default => ""
+    t.string   "title",              :default => "", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_content_type"
-    t.string   "flickr_photo_id",    :null => false
+    t.string   "flickr_photo_id",                    :null => false
     t.integer  "photo_set_id"
     t.integer  "position"
   end
@@ -419,9 +435,9 @@ ActiveRecord::Schema.define(:version => 20100712182140) do
   end
 
   create_table "testimonials", :force => true do |t|
-    t.string   "name"
-    t.string   "title"
-    t.text     "quote",      :null => false
+    t.string   "name",       :default => ""
+    t.string   "title",      :default => ""
+    t.text     "quote",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "section_id"

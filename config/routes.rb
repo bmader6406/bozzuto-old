@@ -75,6 +75,12 @@ ActionController::Routing::Routes.draw do |map|
     m.section_awards '/:section/awards'
   end
 
+  map.with_options :controller => :buzzes, :section => 'about' do |m|
+    m.buzz '/bozzuto-buzz', :action => 'new', :conditions => { :method => :get }
+    m.connect '/bozzuto-buzz', :action => 'create', :conditions => { :method => :post }
+    m.connect '/bozzuto-buzz/thank-you', :action => 'thank_you'
+  end
+
   map.with_options :controller => :pages, :action => :show do |m|
     m.services '/services', :template => 'services'
     m.service_section_page '/services/:section/*page'

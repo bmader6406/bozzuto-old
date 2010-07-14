@@ -1,0 +1,92 @@
+<% content_for :body_class, "generic" -%>
+<% breadcrumb_item("Bozzuto Buzz") -%>
+<% breadcrumb_title("Bozzuto Buzz") -%>
+
+<h2>Bozzuto Buzz</h2>
+
+<%= error_messages_for :buzz %>
+
+<% form_for @buzz, :url => buzz_path, :method => :post do |f| -%>
+  <p>
+  <%= f.label :email %><br />
+  <%= f.text_field :email %>
+  </p>
+
+  <p>
+  <%= f.label :first_name %><br />
+  <%= f.text_field :first_name %>
+  </p>
+
+  <p>
+  <%= f.label :last_name %><br />
+  <%= f.text_field :last_name %>
+  </p>
+
+  <p>
+  <%= f.label :street1, "Street 1" %><br />
+  <%= f.text_field :street1 %>
+  </p>
+
+  <p>
+  <%= f.label :street2, "Street 2" %><br />
+  <%= f.text_field :street2 %>
+  </p>
+
+  <p>
+  <%= f.label :city %><br />
+  <%= f.text_field :city %>
+  </p>
+
+  <p>
+  <%= f.label :state %><br />
+  <%= f.text_field :state %>
+  </p>
+
+  <p>
+  <%= f.label :zip_code, "ZIP Code" %><br />
+  <%= f.text_field :zip_code %>
+  </p>
+
+  <p>
+  <%= f.label :phone %><br />
+  <%= f.text_field :phone %>
+  </p>
+
+  <p>
+  What buzz would you like to hear?
+  </p>
+
+  <p>
+  <% f.fields_for :buzzes do |b| -%>
+    <%= serialized_check_box(b, @buzz.buzzes, :apartments) %>
+    <%= serialized_check_box(b, @buzz.buzzes, :new_homes) %>
+    <%= serialized_check_box(b, @buzz.buzzes, :management) %>
+    <%= serialized_check_box(b, @buzz.buzzes, :homebuilding) %>
+    <%= serialized_check_box(b, @buzz.buzzes, :construction) %>
+    <%= serialized_check_box(b, @buzz.buzzes, :development) %>
+    <%= serialized_check_box(b, @buzz.buzzes, :acquisition) %>
+    <%= serialized_check_box(b, @buzz.buzzes, :land) %>
+  <% end -%>
+  </p>
+
+  <p>
+  How are you affiliated with Bozzuto?
+  </p>
+
+  <p>
+  <% f.fields_for :affiliations do |a| -%>
+    <%= serialized_check_box a, @buzz.affiliations, :prospective_homeowner %>
+    <%= serialized_check_box a, @buzz.affiliations, :prospective_resident %>
+    <%= serialized_check_box a, @buzz.affiliations, :current_homeowner %>
+    <%= serialized_check_box a, @buzz.affiliations, :current_resident %>
+    <%= serialized_check_box a, @buzz.affiliations, :contractor %>
+    <%= serialized_check_box a, @buzz.affiliations, :vendor %>
+    <%= serialized_check_box a, @buzz.affiliations, :press %>
+    <%= serialized_check_box a, @buzz.affiliations, :employee %>
+  <% end -%>
+  </p>
+
+  <p>
+  <button type="submit">Sign up for Bozzuto Buzz</button>
+  </p>
+<% end -%>
