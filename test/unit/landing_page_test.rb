@@ -3,12 +3,19 @@ require 'test_helper'
 class LandingPageTest < ActiveSupport::TestCase
   context 'LandingPage' do
     setup do
-      @page = LandingPage.create :title => 'Baltimore'
+      @page = LandingPage.make
     end
 
     subject { @page }
 
-    should_validate_presence_of :title
+    should_have_and_belong_to_many :apartment_communities,
+      :featured_apartment_communities,
+      :home_communities,
+      :popular_properties,
+      :projects
+    should_belong_to :state
+
+    should_validate_presence_of :title, :state
     should_validate_uniqueness_of :title
     should_have_attached_file :masthead_image
   end

@@ -142,7 +142,7 @@ en:
       home_page_slide:
         image: Image dimensions should be 1100x375
       landing_page:
-        masthead_image: Image dimensions should be 230x222
+        masthead_image: Image dimensions should be 230x223
       masthead_slide:
         image: Image dimensions should be 230x223
       photo_set:

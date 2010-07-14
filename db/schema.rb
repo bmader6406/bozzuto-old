@@ -9,7 +9,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100714143838) do
+ActiveRecord::Schema.define(:version => 20100714142726) do
+
+  create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
+    t.integer "landing_page_id"
+    t.integer "apartment_community_id"
+  end
 
   create_table "apartment_floor_plan_groups", :force => true do |t|
     t.string   "name",       :null => false
@@ -99,29 +104,16 @@ ActiveRecord::Schema.define(:version => 20100714143838) do
     t.integer "county_id"
   end
 
-  create_table "community_links", :force => true do |t|
-    t.string   "title",        :null => false
-    t.string   "url",          :null => false
-    t.integer  "community_id", :null => false
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "community_pages", :force => true do |t|
-    t.string   "title",        :null => false
-    t.text     "content",      :null => false
-    t.integer  "community_id", :null => false
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "counties", :force => true do |t|
     t.string   "name",       :null => false
     t.integer  "state_id",   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "featured_apartment_communities_landing_pages", :id => false, :force => true do |t|
+    t.integer "landing_page_id"
+    t.integer "apartment_community_id"
   end
 
   create_table "feed_items", :force => true do |t|
@@ -140,6 +132,11 @@ ActiveRecord::Schema.define(:version => 20100714143838) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name",         :null => false
+  end
+
+  create_table "home_communities_landing_pages", :id => false, :force => true do |t|
+    t.integer "landing_page_id"
+    t.integer "home_community_id"
   end
 
   create_table "home_floor_plans", :force => true do |t|
@@ -193,6 +190,18 @@ ActiveRecord::Schema.define(:version => 20100714143838) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "landing_pages_popular_properties", :id => false, :force => true do |t|
+    t.integer "landing_page_id"
+    t.integer "property_id"
+  end
+
+  create_table "landing_pages_projects", :id => false, :force => true do |t|
+    t.integer "landing_page_id"
+    t.integer "project_id"
+  end
+
+  add_index "landing_pages_projects", ["landing_page_id", "project_id"], :name => "index_landing_pages_projects_on_landing_page_id_and_project_id"
 
   create_table "masthead_slides", :force => true do |t|
     t.text     "body",                                 :null => false
@@ -417,15 +426,6 @@ ActiveRecord::Schema.define(:version => 20100714143838) do
   end
 
   add_index "sections", ["cached_slug"], :name => "index_sections_on_cached_slug"
-
-  create_table "services", :force => true do |t|
-    t.string   "title",      :null => false
-    t.string   "slug",       :null => false
-    t.integer  "position",   :null => false
-    t.integer  "section_id", :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "slugs", :force => true do |t|
     t.string   "name"

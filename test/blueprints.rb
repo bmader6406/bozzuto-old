@@ -110,6 +110,11 @@ HomeCommunity.blueprint(:unpublished) do
   published { false }
 end
 
+LandingPage.blueprint do
+  title { Faker::Lorem.words(3) }
+  state
+end
+
 NewsPost.blueprint do
   title        { Faker::Lorem.sentence }
   body         { Faker::Lorem.paragraphs(2) }
