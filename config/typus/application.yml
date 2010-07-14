@@ -178,6 +178,19 @@ HomePageSlide:
   search: 
   application: 
 
+LandingPage:
+  fields:
+    default: title
+    list: title
+    form: title, masthead_body, masthead_image, secondary_title, secondary_body
+    options:
+      ckeditor: masthead_body, secondary_body
+  order_by: 
+  relationships: slugs
+  filters: 
+  search: title
+  application: Geography
+
 MastheadSlide:
   fields:
     default: image, image_link, position

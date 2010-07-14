@@ -17,6 +17,7 @@ admin:
   HomeFloorPlan: create, read, update, delete
   HomePage: read, update
   HomePageSlide: create, read, update, delete
+  LandingPage: create, read, update, delete
   MastheadSlide: create, read, update, delete
   MastheadSlideshow: create, read, update, delete
   NewsPost: create, read, update, delete
