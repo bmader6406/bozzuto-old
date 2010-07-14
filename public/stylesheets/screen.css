@@ -972,7 +972,7 @@
     .services #masthead .container,
     .landing #masthead .container,
     .about #masthead .container {
-      height: 223px;
+      height: 222px;
       overflow: hidden;
       position: relative;
     }

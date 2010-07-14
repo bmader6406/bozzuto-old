@@ -42,6 +42,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :states, :only => :show
 
+  map.resources :landing_pages, :as => :regions, :only => :show
+
   map.resource :contact,
     :path_prefix => :about,
     :controller  => :contact_submissions,
