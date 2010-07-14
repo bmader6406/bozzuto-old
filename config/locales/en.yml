@@ -66,6 +66,9 @@ en:
       landing_page:
         masthead_body: Masthead Body
         masthead_image: Masthead Image
+        meta_description: Meta Description
+        meta_keywords: Meta Keywords
+        meta_title: Meta Title
         secondary_body: Secondary Body
         secondary_title: Secondary Title
       masthead_slide:

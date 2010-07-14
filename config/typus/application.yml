@@ -180,13 +180,13 @@ HomePageSlide:
 
 LandingPage:
   fields:
-    default: title
-    list: title
-    form: title, masthead_body, masthead_image, secondary_title, secondary_body
+    default: title, state
+    list: title, state
+    form: title, state, meta_title, meta_description, meta_keywords, masthead_body, masthead_image, secondary_title, secondary_body
     options:
       ckeditor: masthead_body, secondary_body
   order_by: 
-  relationships: slugs
+  relationships: state, popular_properties, apartment_communities, featured_apartment_communities, home_communities, projects
   filters: 
   search: title
   application: Geography

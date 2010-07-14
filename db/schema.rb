@@ -181,7 +181,11 @@ ActiveRecord::Schema.define(:version => 20100714142726) do
 
   create_table "landing_pages", :force => true do |t|
     t.string   "title",                       :null => false
+    t.string   "meta_title"
+    t.string   "meta_description"
+    t.string   "meta_keywords"
     t.string   "cached_slug"
+    t.integer  "state_id",                    :null => false
     t.text     "masthead_body"
     t.string   "masthead_image_file_name"
     t.string   "masthead_image_content_type"
