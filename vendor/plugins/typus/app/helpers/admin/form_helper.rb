@@ -248,9 +248,9 @@ module Admin::FormHelper
 
       html << <<-HTML
 <a name="#{field}"></a>
-<div class="box_relationships" id="#{model_to_relate_as_resource}">
+<div class="box_relationships" id="#{field}">
   <h2>
-  #{link_to model_to_relate.typus_human_name.pluralize, :controller => "admin/#{model_to_relate_as_resource}"}
+  #{link_to @resource[:class].human_attribute_name(field), :controller => "admin/#{model_to_relate_as_resource}"}
   #{add_new unless through}
   </h2>
       HTML
