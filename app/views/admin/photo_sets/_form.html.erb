@@ -4,10 +4,9 @@
 </p>
 
 <ul>
-  <li>neighborhood</li>
-  <li>community-amenities</li>
-  <li>views</li>
-  <li>apartment-features</li>
+  <% PhotoGroup.all.each do |group| %>
+    <li><%= group.flickr_raw_title %></li>
+  <% end %>
 </ul>
 
 <br />
