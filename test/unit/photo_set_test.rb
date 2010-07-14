@@ -21,7 +21,7 @@ class PhotoSetTest < ActiveSupport::TestCase
     should_belong_to :apartment_community
     should_belong_to :home_community
 
-    should_validate_presence_of :title, :flickr_set_number
+    should_validate_presence_of :flickr_set_number
 
     context 'before validating' do
       context 'if the set exists' do

@@ -259,9 +259,7 @@ PhotoSet:
   fields:
     default: title, flickr_set_number
     list: title, flickr_set_number, property
-    form: title, flickr_set_number, property
-    options:
-      read_only: title
+    form: flickr_set_number, property
   order_by: 
   relationships: property
   filters: 

@@ -9,7 +9,7 @@ class PhotoSet < ActiveRecord::Base
     :order     => 'position ASC',
     :dependent => :destroy
 
-  validates_presence_of :title, :flickr_set_number
+  validates_presence_of :flickr_set_number
 
   named_scope :needs_sync, :conditions => { :needs_sync => true }
 
