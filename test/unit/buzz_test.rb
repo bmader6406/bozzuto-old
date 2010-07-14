@@ -7,13 +7,13 @@ class BuzzTest < ActiveSupport::TestCase
     should "save buzzes correctly" do
       buzz = Buzz.new
       buzz.buzzes = {:hello => '1', :hi => '0', :hola => '1'}
-      assert_equal(["hello", "hola"], buzz.buzzes)
+      assert_same_elements(["hello", "hola"], buzz.buzzes)
     end
     
     should "save affiliations correctly" do
       buzz = Buzz.new
       buzz.affiliations = {:hello => '1', :hi => '0', :hola => '1'}
-      assert_equal(["hello", "hola"], buzz.affiliations)
+      assert_same_elements(["hello", "hola"], buzz.affiliations)
     end
   end
 end

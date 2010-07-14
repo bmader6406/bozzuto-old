@@ -283,9 +283,9 @@ ActiveRecord::Schema.define(:version => 20100714143838) do
 
   create_table "photos", :force => true do |t|
     t.string   "image_file_name"
+    t.string   "title",              :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title",              :null => false
     t.string   "image_content_type"
     t.string   "flickr_photo_id",    :null => false
     t.integer  "photo_set_id"
