@@ -2559,6 +2559,7 @@
       }
       .property #slideshow .section {
         z-index: 1;
+        padding-left: 0;
       }
       .property #slideshow div.header,
       .property #slideshow div.slide,
