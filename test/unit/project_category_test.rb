@@ -8,6 +8,8 @@ class ProjectCategoryTest < ActiveSupport::TestCase
 
     subject { @category }
 
+    should_have_and_belong_to_many :projects
+
     should_validate_presence_of :title
     should_validate_uniqueness_of :title
   end
