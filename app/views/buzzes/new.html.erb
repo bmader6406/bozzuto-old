@@ -6,6 +6,12 @@
 
 <%= error_messages_for :buzz %>
 
+<p>
+  The Bozzuto Buzz is a periodic e-newsletter that delivers select company and
+  industry news as well as special offers, events, discounts and giveaways, all
+  exclusive to Buzz subscribers.
+</p>
+
 <% form_for @buzz, :url => buzz_path, :method => :post do |f| -%>
   <p>
   <%= f.label :email %><br />
