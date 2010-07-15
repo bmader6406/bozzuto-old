@@ -18,6 +18,17 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
       end
     end
 
+    should "require lead_2_lease email if show_lead_2_lease is true" do
+      @community.show_lead_2_lease = true
+      @community.lead_2_lease_email = nil
+      assert !@community.valid?
+      assert @community.errors.on(:lead_2_lease_email).present?
+
+      @community.lead_2_lease_email = 'test@example.com'
+      @community.valid?
+      assert @community.errors.on(:lead_2_lease_email).blank?
+    end
+
     context '#nearby_communities' do
       setup do
         @city = City.make
