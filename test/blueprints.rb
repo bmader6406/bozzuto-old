@@ -144,6 +144,10 @@ Project.blueprint(:unpublished) do
   published { false }
 end
 
+ProjectCategory.blueprint do
+  title { Sham.section_title }
+end
+
 ProjectDataPoint.blueprint do
   name { Faker::Lorem.words(1) }
   data { Faker::Lorem.sentence }

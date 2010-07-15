@@ -12,5 +12,11 @@ class ProjectCategoryTest < ActiveSupport::TestCase
 
     should_validate_presence_of :title
     should_validate_uniqueness_of :title
+
+    context '#typus_name' do
+      should 'return the title' do
+        assert_equal @category.title, @category.typus_name
+      end
+    end
   end
 end

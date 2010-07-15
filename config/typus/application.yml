@@ -278,7 +278,18 @@ Project:
       selectors: brochure_type
       destroy_related: PropertySlideshow, PropertyMiniSlideshow, ProjectDataPoint, ProjectUpdate
   order_by: 
-  relationships: city, section, slideshow, mini_slideshow, data_points, updates
+  relationships: city, section, slideshow, mini_slideshow, data_points, updates, project_categories
+  filters: 
+  search: title
+  application: Properties
+
+ProjectCategory:
+  fields:
+    default: title
+    list: title, position
+    form: title
+  order_by: position
+  relationships: projects
   filters: 
   search: title
   application: Properties

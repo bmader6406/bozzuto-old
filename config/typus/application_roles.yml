@@ -25,6 +25,7 @@ admin:
   Photo: create, read, update, delete
   PhotoSet: create, read, update, delete
   Project: create, read, update, delete
+  ProjectCategory: create, read, update, delete
   ProjectDataPoint: create, read, update, delete
   ProjectUpdate: create, read, update, delete
   Property: create, read, update, delete
