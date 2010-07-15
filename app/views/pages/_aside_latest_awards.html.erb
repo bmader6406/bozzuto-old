@@ -13,7 +13,7 @@
 
           <p class="date"><%= month_and_day(award.published_at) %></p>
 
-          <%= simple_format(truncate(award.body, :length => 50)) %>
+          <%= truncate_html(raw(award.body), :length => 50) %>
         </div>
       <% end %>
     </div>

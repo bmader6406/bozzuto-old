@@ -1,25 +1,41 @@
 <div id="masthead">
   <div class="container">
-    <div class="masthead-slideshow">
+    <div id="masthead-slideshow">
       <ul class="slides">
         <% slideshow.slides.each do |slide| %>
-          <li>
+          <li class="slide">
             <div class="section">
               <%= raw(slide.body) %>
             </div>
 
             <% if slide.uses_image? %>
+
               <div class="figure">
                 <%= link_to image_tag(slide.image.url), slide.image_link %>
               </div>
+
             <% elsif slide.uses_text? %>
+
               <div class="aside">
                 <%= raw(slide.sidebar_text) %>
               </div>
+
             <% elsif slide.uses_featured_property? %>
+
+              <% property = slide.featured_property %>
               <div class="figure">
-                <%= render :partial => 'properties/mini_slideshow', :locals => { :slideshow => slide.featured_property.mini_slideshow } %>
+                <% if property.mini_slideshow.present? %>
+                  <p>
+                    <%= link_to image_tag(property.mini_slideshow.slides.first.image.url), property_path(property) %>
+                  </p>
+
+                  <p>
+                    <strong><%= property.address %></strong><br />
+                    <%= raw(property.subtitle) %>
+                  </p>
+                <% end %>
               </div>
+
             <% end %>
           </li>
         <% end %>

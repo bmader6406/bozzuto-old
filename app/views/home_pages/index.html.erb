@@ -21,7 +21,7 @@
 
           <ul class="slides">
             <% @home_page.slides.each do |slide| %>
-              <li><%= image_tag slide.image.url %></li> 
+              <li class="slide"><%= image_tag slide.image.url %></li> 
             <% end %>
           </ul>
         </div>

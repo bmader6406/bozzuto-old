@@ -29,9 +29,7 @@ window.bozzuto = {};
     $("#community-info, #apartments-by-area, #properties-by-type").onPageTabs();
     $('.twitter-update').latestTwitterUpdate();
 
-    $(".page div.slideshow").featuredSlideshow();
-
-    $(".property #slideshow, .home div#slideshow").featuredSlideshow({
+    $(".property #slideshow, .home #slideshow").featuredSlideshow({
       'dynamicPagination' : false
     });
 
@@ -41,10 +39,10 @@ window.bozzuto = {};
         $('.section', $(this)).css('top', height+10).show();
       })
     }, 250);
+
+    $("#masthead-slideshow").featuredSlideshow();
     
     $(".community-icons a").toolTip();
-
-    $(".masthead-slideshow").featuredSlideshow();
 
     $(".listings .row:last-child").evenUp();
 
@@ -565,15 +563,15 @@ window.bozzuto = {};
 			var opts = $.extend({}, $.fn.featuredSlideshow.defaults, options);
 
 			return this.each(function() {
-				var $this = $(this);
+				var $slideshow = $(this);
 				var o = $.meta ? $.extend({}, opts, $this.data()) : opts;
-        var slideCount = $('ul.slides li', $this).length;
+        var slideCount = $('ul.slides li.slide', $slideshow).length;
 
-			  $('ul.slides li:eq(0)', $this).addClass('current');
+			  $('ul.slides li.slide:eq(0)', $slideshow).addClass('current');
 
         // add slide counter
-        if ($('ul.slides li p.slideshow-counter', $this).length > 0) {
-          $('ul.slides li', $this).each(function(i) {
+        if ($('ul.slides li.slide p.slideshow-counter', $slideshow).length > 0) {
+          $('ul.slides li.slide', slideshow).each(function(i) {
             $('p.slideshow-counter', $(this)).html(
               (i + 1) + ' of ' + slideCount + ' Photos'
             );
@@ -584,55 +582,62 @@ window.bozzuto = {};
 					if(o.dynamicPagination) {
 
 						var pagination = $('<ul class="slideshow-pagination"></ul>');
-						$('ul.slides li', $this).each(function(i) {
-							$('<li><a href="#'+$(this).attr('id')+'">'+(i+1)+'</a></li>').appendTo(pagination);
+						$('ul.slides li.slide', $slideshow).each(function(i) {
+							$('<li><a href="#' + $(this).attr('id') + '">' + (i+1) + '</a></li>').appendTo(pagination);
 						});
 						$('li:first', pagination).addClass('current');
-						pagination.appendTo($this);
+						pagination.appendTo($slideshow);
 
 					}
 
 					if(o.autoAdvance) {
 
-						var hoverInterval = autoAdvance($this, o);
-						$this.hover(function() {
+						var hoverInterval = autoAdvance($slideshow, o);
+						$slideshow.hover(function() {
 							clearInterval(hoverInterval);
 						}, function() {
-							hoverInterval = autoAdvance($this, o);
+							hoverInterval = autoAdvance($slideshow, o);
 						});
 
 					}
 
-					$('.set-slideshow').each(function(){
-
+					$('.set-slideshow', $slideshow).each(function(){
 					  $(this).click(function(e){
 					    e.preventDefault();
 					    $slide = $( $(this).attr('href') );
-					    $this.featuredSlideshow.advance($slide, o);
+					    $this.featuredSlideshow.advance($slideshow, $slide, o);
 					    if ( $(window).scrollTop() > $slide.offset().top + 100){
 					      $(window).scrollTo( $slide, 800 );
 					    }
 					  });
-
 					});
 
-					$('ul.slideshow-pagination li a', $this).click(function() {
-						$.fn.featuredSlideshow.advance($('ul.slides li:eq('+($(this).parent().prevAll().size())+')'), o);
+					$('ul.slideshow-pagination li a', $slideshow).click(function() {
+            var nextIndex = $('ul.slides li.slide:eq(' + ($(this).parent().prevAll().size()) + ')', $slideshow);
+						$.fn.featuredSlideshow.advance($slideshow, nextIndex, o);
 						return false;
 					});
-					$('.prev', $this).click(function() {
-						var prev = $('ul.slides li.current', $this).prev().size() == 0 ? $('ul.slides li:last', $this) : $('ul.slides li.current', $this).prev();
-						$.fn.featuredSlideshow.advance(prev, o);
+					$('.prev', $slideshow).click(function() {
+            if ($('ul.slides li.slide.current', $slideshow).prev().size() == 0) {
+              var prev = $('ul.slides li.slide:last', $slideshow);
+            } else {
+              var prev = $('ul.slides li.slide.current', $slideshow).prev();
+            }
+						$.fn.featuredSlideshow.advance($slideshow, prev, o);
 						return false;
 					});
-					$('.next', $this).click(function() {
-						var next = $('ul.slides li.current', $this).next().size() == 0 ? $('ul.slides li:first', $this) : $('ul.slides li.current', $this).next();
-						$.fn.featuredSlideshow.advance(next, o);
+					$('.next', $slideshow).click(function() {
+            if ($('ul.slides li.slide.current', $slideshow).next().size() == 0) {
+              var next = $('ul.slides li.slide:first', $slideshow);
+            } else {
+              var next = $('ul.slides li.slide.current', $slideshow).next();
+            }
+						$.fn.featuredSlideshow.advance($slideshow, next, o);
 						return false;
 					});
 
 				} else {
-  			  $('ul.slideshow-navigation, .prev, .next', $this).hide();
+  			  $('ul.slideshow-navigation, .prev, .next', $slideshow).hide();
   			}
 
 			});
@@ -641,22 +646,32 @@ window.bozzuto = {};
 		// private
 		function autoAdvance($this, o) {
 			return setInterval(function() {
-				$.fn.featuredSlideshow.advance($('ul.slides li.current', $this).next().size() == 0 ? $('ul.slides li:first', $this) : $('ul.slides li.current', $this).next(), o);
+        if ($('ul.slides li.slide.current', $this).next().size() == 0) {
+          var next = $('ul.slides li.slide:first', $this);
+        } else {
+          var next = $('ul.slides li.slide.current', $this).next();
+        }
+				$.fn.featuredSlideshow.advance($this, next, o);
 			}, o.autoAdvanceInterval);
 		};
 
 		//public
-		$.fn.featuredSlideshow.advance = function($slide, o) {
-			var paginationIndex = $slide.prevAll().size();
-			if(!$slide.hasClass('current')){
+		$.fn.featuredSlideshow.advance = function($slideshow, $slide, o) {
+			var slideIndex = $slide.prevAll().size(),
+          $pagination = $('ul.slideshow-pagination', $slideshow);
+
+			if(!$slide.hasClass('current')) {
   			$slide.animate({ opacity: 0 }, 1, function() {
   				$(this).addClass('on-deck');
   			});
-  			$slide.animate({ opacity: 1}, o.transitionTime, function() {
+  			$slide.animate({ opacity: 1 }, o.transitionTime, function() {
   				$(this).siblings('.current').removeClass('current');
   				$(this).addClass('current').removeClass('on-deck');
   			});
 			}
+
+      $('li.current', $pagination).removeClass('current');
+      $('li:eq(' + slideIndex + ')', $pagination).addClass('current');
 		};
 
 		$.fn.featuredSlideshow.defaults = {

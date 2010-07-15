@@ -1,7 +1,7 @@
-<div class="slideshow">
+<div id="slideshow" class="slideshow">
   <ul class="slides">
     <% slideshow.slides.each_with_index do |slide, i| %>
-      <li id="slide-<%= i + 1 %>" class="section">
+      <li id="slide-<%= i + 1 %>" class="section slide">
         <%= image_tag slide.image.url, :width => 840, :height => 375 %>
       </li>
     <% end %>

@@ -6,7 +6,7 @@ class MastheadSlide < ActiveRecord::Base
   SLIDE_TYPE = [
     ['Upload a file', USE_IMAGE],
     ['Enter text', USE_TEXT],
-    ['Show a property slideshow', USE_PROPERTY]
+    ['Show a featured property', USE_PROPERTY]
   ]
 
   acts_as_list :scope => :masthead_slideshow

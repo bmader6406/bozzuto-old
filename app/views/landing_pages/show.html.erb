@@ -3,17 +3,23 @@
 
 <div id="masthead">
   <div class="container">
-    <div class="section">
-      <h1><%= @page.title %></h1>
+    <div id="masthead-slideshow">
+      <ul class="slides">
+        <li class="slide">
+          <div class="section">
+            <h1><%= @page.title %></h1>
 
-      <%= raw(@page.masthead_body) %>
+            <%= raw(@page.masthead_body) %>
+          </div>
+
+          <% if @page.masthead_image? %>
+            <div class="figure">
+              <%= link_to image_tag(@page.masthead_image.url), '#' %>
+            </div>
+          <% end %>
+        </li>
+      </ul>
     </div>
-
-    <% if @page.masthead_image? %>
-      <div class="aside">
-        <%= link_to image_tag(@page.masthead_image.url), '#' %>
-      </div>
-    <% end %>
   </div>
 </div>
 
