@@ -1,0 +1,20 @@
+First Name: <%= @submission.first_name %>
+Last Name: <%= @submission.last_name %>
+Address: <%= @submission.address_1 %>
+Address2: <%= @submission.address_2 %>
+City: <%= @submission.city %>
+State: <%= @submission.state %>
+Zip: <%= @submission.zip_code %>
+Home Phone: <%= @submission.primary_phone %>
+Cell Phone: <%= @submission.secondary_phone %>
+Work Phone:
+Lead Channel: bozzuto.com
+Lead Priority: 4
+Desired Move In: <%= @submission.move_in_date.strftime("%m/%d/%Y") %>
+Desired Lease Term:
+Desired Unit Type:
+Desired Bedrooms: <%= @submission.bedrooms %>
+Desired Bathrooms: <%= @submission.bathrooms %>
+Pets: <%= @submission.pets ? 'yes' : 'no' %>
+Pet Types:
+Comments: <%= @submission.comments.gsub(/[\r|\n]+/, " ") %>

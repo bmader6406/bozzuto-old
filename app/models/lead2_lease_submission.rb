@@ -1,0 +1,22 @@
+class Lead2LeaseSubmission < ActiveRecord::Base
+  has_no_table
+
+  column :first_name, :string
+  column :last_name, :string
+  column :address_1, :string
+  column :address_2, :string
+  column :city, :string
+  column :state, :string
+  column :zip_code, :string
+  column :primary_phone, :string
+  column :secondary_phone, :string
+  column :email, :string
+  column :move_in_date, :date
+  column :bedrooms, :integer
+  column :bathrooms, :integer
+  column :pets, :boolean
+  column :comments, :text
+
+  validates_presence_of :first_name, :last_name, :primary_phone, :email, :move_in_date
+  validates_email_format_of :email
+end

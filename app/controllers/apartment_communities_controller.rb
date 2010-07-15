@@ -1,7 +1,5 @@
 class ApartmentCommunitiesController < ApplicationController
-  before_filter :find_community, :except => :index
-
-  layout 'community', :except => :index
+  include CommunityBehavior
 
   def index
     params[:search] ||= {}
@@ -17,25 +15,6 @@ class ApartmentCommunitiesController < ApplicationController
     end
   end
 
-  def show
-  end
-
-  def features
-    render :template => 'communities/features'
-  end
-
-  def neighborhood
-    render :template => 'communities/neighborhood'
-  end
-
-  def promotions
-    render :template => 'communities/promotions'
-  end
-
-  def contact
-    render :template => 'communities/contact'
-  end
-
   def send_to_friend
     if params[:email].blank?
       flash[:error] = 'You must submit a valid email address.'
@@ -45,7 +24,6 @@ class ApartmentCommunitiesController < ApplicationController
 
     redirect_to @community
   end
-
 
   private
 
