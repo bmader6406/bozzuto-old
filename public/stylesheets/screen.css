@@ -4599,10 +4599,16 @@
       .areamap {
         margin-bottom: 30px;
       }
-
+      
       .areamap-map {
         float: left;
+        height: 403px;
+        padding-right: 0px;
         width: 540px;
+      }
+
+      #map-properties {
+        display: none;
       }
 
       .areamap-popular-properties {

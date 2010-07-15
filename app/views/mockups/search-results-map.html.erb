@@ -1,8 +1,6 @@
 <% content_for :body_class do %>search<% end %>
 
 <% content_for :javascript do %>
-  <%= google_maps_javascript_tag %>
-
   <script type="text/javascript">
     function initialize() {
       if (GBrowserIsCompatible()) {

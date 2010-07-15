@@ -14,8 +14,6 @@
 </div>
 
 <% content_for :javascript do %>
-  <%= google_maps_javascript_tag %>
-
   <script type="text/javascript">
     var markers = new Array();
     <% @communities.each do |state, communities| %>

@@ -69,6 +69,12 @@ class Property < ActiveRecord::Base
     brochure_type == USE_BROCHURE_FILE
   end
 
+  def to_jmapping
+    <<-JS.html_safe
+      { id: #{id}, point: { lat: #{latitude || 'null'}, lng: #{longitude || 'null'} }, category: '#{self.class}' }
+    JS
+  end
+
 
   private
 

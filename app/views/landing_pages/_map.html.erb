@@ -1,0 +1,15 @@
+<div id="landing-map" class="col areamap-map">
+  <div id="map-properties">
+    <% @page.all_properties.each do |property| %>
+      <div class="property" data-jmapping="<%= property.to_jmapping %>">
+        <div class="info-box">
+          <p><%= link_to property.title, property_path(property) %></p>
+          <% if property.subtitle.present? %>
+            <p><%= property.subtitle %></p>
+          <% end %>
+          <p><%= link_to 'Learn More', property_path(property) %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

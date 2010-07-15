@@ -82,7 +82,43 @@ window.bozzuto = {};
     
     $('.watch-video a').videoLightbox();
 
+    $('#landing-map').landingMap();
   });
+
+  (function($) {
+    $.fn.landingMap = function() {
+      if (this.length > 0) {
+        var baseIcon = new GIcon(G_DEFAULT_ICON);
+        baseIcon.iconSize = new GSize(40, 36);
+        baseIcon.iconAnchor = new GPoint(14, 36);
+        baseIcon.infoWindowAnchor = new GPoint(14, 0);
+        baseIcon.shadow = '/images/structure/gicon-shadow.png';
+        baseIcon.shadowSize = new GSize(40, 36);
+
+        var apartmentIcon = new GIcon(baseIcon),
+            homeIcon = new GIcon(baseIcon),
+            projectIcon = new GIcon(baseIcon);
+        apartmentIcon.image = '/images/structure/gicon-apartment.png';
+        homeIcon.image = '/images/structure/gicon-home.png';
+        projectIcon.image = '/images/structure/gicon-project.png';
+
+        this.jMapping({
+          side_bar_selector: '#map-properties:first',
+          location_selector: '.property',
+          category_icon_options: {
+            'ApartmentCommunity': new GIcon(apartmentIcon),
+            'HomeCommunity':      new GIcon(homeIcon),
+            'Project':            new GIcon(projectIcon)
+          },
+          map_config: function(map) {
+            map.addControl(new GLargeMapControl3D());
+          }
+        });
+      }
+
+      return this;
+    };
+  })(jQuery);
   
   //Video lightbox
   (function($) {

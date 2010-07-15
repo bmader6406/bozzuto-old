@@ -32,9 +32,7 @@
 
       <div id="content" class="col">
         <div class="areamap row">
-          <div class="col areamap-map">
-            <img src="/images/landing/landing-map.jpg" width="540" height="403" />            
-          </div>
+          <%= render :partial => 'map' %>
           
           <% if @page.popular_properties.any? %>
             <div class="col areamap-popular-properties">

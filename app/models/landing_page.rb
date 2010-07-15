@@ -21,4 +21,9 @@ class LandingPage < ActiveRecord::Base
     :url => '/system/:class/:id/masthead_:style.:extension',
     :styles => { :resized => '230x223#' },
     :default_style => :resized
+
+
+  def all_properties
+    @all_properties ||= [apartment_communities, home_communities, featured_apartment_communities, popular_properties, projects].flatten.uniq
+  end
 end
