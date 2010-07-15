@@ -2,7 +2,7 @@ class ProjectsController < SectionContentController
   layout 'project'
 
   def index
-    @projects = section_projects
+    @categories = ProjectCategory.all
     render :action => :index, :layout => 'page'
   end
 

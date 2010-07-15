@@ -8,15 +8,12 @@ class ProjectsControllerTest < ActionController::TestCase
 
     context 'a GET to #index' do
       setup do
-        4.times { Project.make :section => @section }
-        @projects = @section.projects
-
         get :index, :section => @section.to_param
       end
 
       should_respond_with :success
       should_assign_to(:section) { @section }
-      should_assign_to(:projects) { @projects }
+      should_assign_to(:categories) { ProjectCategory.all }
     end
 
     context 'a GET to #show' do
