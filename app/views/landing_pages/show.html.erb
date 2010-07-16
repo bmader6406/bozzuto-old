@@ -145,7 +145,7 @@
           <div class="section listings">
             <h2>Upcoming Projects in <%= @state.name %></h2>
 
-            <% @page.projects.in_groups_of(4, false) do |projects| %>
+            <% @page.projects.order_by_completion_date.in_groups_of(4, false) do |projects| %>
               <ul class="row">
                 <% projects.each do |project| %>
                   <li>
