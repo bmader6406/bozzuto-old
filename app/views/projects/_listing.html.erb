@@ -1,0 +1,37 @@
+<li class="property-listing project-listing">
+  <div class="photos">
+    <% if project.listing_image? %>
+      <p><%= image_tag project.listing_image.url %></p>
+    <% end %>
+  </div>
+  
+  <div class="info">
+    <div class="overview">
+      <h2><%= project.title %></h2>
+
+      <% if project.listing_title.present? %>
+        <p class="intro">
+          <%= project.listing_title.try(:html_safe) %>
+        </p>
+      <% end %>
+
+      <%= raw(project.listing_text) %>
+
+      <p class="call-to-action">
+        <%= link_to 'Read More', project_path(@section, project) %>
+      </p>
+    </div>
+
+    <div class="learn-more">
+      <h2>
+        <%= link_to 'Read More', project_path(@section, project) %>
+      </h2>
+
+      <!--<% if project.video_url.present? %>
+        <p class="watch-video">
+          <%= link_to 'Watch Video', project.video_url %>
+        </p>
+      <% end %>-->
+    </div>
+  </div>
+</li>

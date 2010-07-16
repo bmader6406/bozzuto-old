@@ -1,4 +1,4 @@
-<% content_for :body_class do %>generic<% end %>
+<% content_for :body_class do %>projects<% end %>
 
 <% breadcrumb_item('Projects') %>
 <% breadcrumb_title('Projects') %>
@@ -8,34 +8,7 @@
     <h2><%= category.title %></h2>
 
     <ul class="projects-listing">
-      <% category.projects.in_section(@section).each do |project| %>
-
-        <li>
-          <div class="photos">
-            <p>
-              <%= image_tag project.listing_image.url %>
-            </p>
-          </div>
-          
-          <div class="content">
-            <div>
-              <h3><%= link_to project.title, project_path(@section, project) %></h3>
-
-              <%= raw(project.listing_text) %>
-
-              <p class="call-to-action">
-                <%= link_to 'Read More', project_path(@section, project) %>
-              </p>
-            </div>
-
-            <div class="learn-more">
-              <h2>
-                <%= link_to 'Read More', project_path(@section, project) %>
-              </h2>
-            </div>
-          </div>
-        </li>
-      <% end %>
+      <%= render :partial => 'listing', :collection => category.projects.in_section(@section), :as => :project %>
     </ul>
   <% end %>
 <% end %>

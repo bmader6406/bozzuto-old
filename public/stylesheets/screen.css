@@ -3541,11 +3541,19 @@
     border-top: 1px solid #c1c1c5;
   }
   #content .property-listing div.info p.intro {
+    background: url(../images/structure/bg-about-content-p.gif) 12px bottom no-repeat;
     font-size: 15px;
     font-style: italic;
     line-height: 17px;
     margin-bottom: 11px;
     padding: 0 0 12px 12px;
+  }
+  #content .property-listing div.info p.intro strong {
+    color: #000;
+    font-weight: normal;
+  }
+  #content .property-listing div.info p {
+    padding-left: 12px;
   }
   #content .property-listing div.info ul {
     float: left;
@@ -3640,29 +3648,27 @@
     padding-left: 6px;
     text-transform: uppercase;
   }
-/* @end */
-
-/* @group home listing */
-  #content .home-listing div.info p.intro {
-    background: url(../images/structure/bg-about-content-p.gif) 12px bottom no-repeat;
-    font-size: 15px;
-    font-style: italic;
-    line-height: 17px;
-    margin-bottom: 12px;
-    padding: 0 0 12px 12px;
-  }
-  #content .home-listing div.info p.intro strong {
-    color: #000;
-    font-weight: normal;
-  }
-  #content .home-listing p.call-to-action {
+  #content .property-listing p.call-to-action {
     margin-top: 10px;
   }
-  #content .home-listing p.call-to-action a {
+  #content .property-listing p.call-to-action a {
     background: url(../images/structure/bg-header-a.gif) left center no-repeat;
     color: #636972;
     font-size: 11px;
     font-weight: bold;
     padding-left: 7px;
+  }
+/* @end */
+
+/* @group projects listing */
+  .projects #content .column-main {
+    padding-right: 0;
+    width: 770px;
+  }
+  .projects #content #aside {
+    display: none;
+  }
+  .projects #content ul.projects-listing {
+    margin-left: 0;
   }
 /* @end */

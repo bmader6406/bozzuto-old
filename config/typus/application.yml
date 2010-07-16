@@ -277,7 +277,7 @@ Project:
         published: ['Yes', 'No']
       selectors: brochure_type
       destroy_related: PropertySlideshow, PropertyMiniSlideshow, ProjectDataPoint, ProjectUpdate
-  order_by: 
+  order_by: title
   relationships: city, section, slideshow, mini_slideshow, data_points, updates, project_categories
   filters: 
   search: title
