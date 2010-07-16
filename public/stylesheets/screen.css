@@ -899,12 +899,16 @@
       width: 140px;
     }
     .secondary #secondary-nav li a:hover,
-    .secondary #secondary-nav .active a {
+    .secondary #secondary-nav .active a,
+    .secondary #secondary-nav li.current li a:hover {
       text-decoration: none;
       color: #2e2e39;
     }
     .secondary #secondary-nav li.current a {
       color: #080812;
+    }
+    .secondary #secondary-nav li.current li a {
+      color: #92929b;
     }
   /* @end */
 /* @end */
