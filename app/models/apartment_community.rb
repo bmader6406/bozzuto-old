@@ -10,6 +10,8 @@ class ApartmentCommunity < Community
 
   validates_inclusion_of :use_market_prices, :in => [true, false]
 
+  validates_presence_of :lead_2_lease_email, :if => lambda { |community| community.show_lead_2_lease }
+
   named_scope :with_floor_plan_groups, lambda {|ids|
     {:conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE floor_plan_group_id IN (?))", ids]}
   }

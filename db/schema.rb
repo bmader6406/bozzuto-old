@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100715024619) do
+ActiveRecord::Schema.define(:version => 20100715151928) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -282,12 +282,12 @@ ActiveRecord::Schema.define(:version => 20100715024619) do
   end
 
   create_table "photos", :force => true do |t|
-    t.string   "image_file_name"
-    t.string   "title",              :null => false
+    t.string   "image_file_name",    :default => ""
+    t.string   "title",              :default => "", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_content_type"
-    t.string   "flickr_photo_id",    :null => false
+    t.string   "flickr_photo_id",                    :null => false
     t.integer  "photo_set_id"
     t.integer  "position"
   end
@@ -383,6 +383,8 @@ ActiveRecord::Schema.define(:version => 20100715024619) do
     t.string   "meta_title"
     t.string   "meta_description"
     t.string   "meta_keywords"
+    t.boolean  "show_lead_2_lease",          :default => false, :null => false
+    t.string   "lead_2_lease_email"
   end
 
   create_table "properties_property_features", :id => false, :force => true do |t|
@@ -466,9 +468,9 @@ ActiveRecord::Schema.define(:version => 20100715024619) do
   end
 
   create_table "testimonials", :force => true do |t|
-    t.string   "name"
-    t.string   "title"
-    t.text     "quote",      :null => false
+    t.string   "name",       :default => ""
+    t.string   "title",      :default => ""
+    t.text     "quote",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "section_id"

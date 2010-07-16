@@ -13,7 +13,7 @@ ActionController::Routing::Routes.draw do |map|
       :features       => :get,
       :neighborhood   => :get,
       :promotions     => :get,
-      :contact        => :get,
+      :contact        => [:get, :post],      
       :send_to_friend => :post
     }
   }

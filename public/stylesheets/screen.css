@@ -32,6 +32,11 @@
     color: #080812;
   }
   a:hover { text-decoration: underline; }
+
+  .notice {
+    font-size: 1.25em;
+    font-weight: bold;
+  }
   
   /* @group forms */
 
