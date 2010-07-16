@@ -1685,6 +1685,9 @@
       float: right;
       margin: 39px -70px 0 0;
     }
+    .community #overview ul.community-icons li {
+      margin-bottom: 10px;
+    }
     .community #overview ul.community-icons li,
     .community #overview ul.community-icons li a,
     .homes #content #view-as-list ul.community-icons a {
@@ -3608,7 +3611,6 @@
   }
 
   #content .property-listing div.info div.learn-more ul.community-icons li {
-    background: url(../images/structure/bg-search-results-learn-more-features.gif) no-repeat;
     float: left;
     height: 45px;
     margin-right: 8px;
