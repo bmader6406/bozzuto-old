@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100715151928) do
+ActiveRecord::Schema.define(:version => 20100716040931) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -444,8 +444,10 @@ ActiveRecord::Schema.define(:version => 20100715151928) do
     t.string   "left_montage_image_file_name"
     t.string   "middle_montage_image_file_name"
     t.string   "right_montage_image_file_name"
+    t.boolean  "about",                          :default => false, :null => false
   end
 
+  add_index "sections", ["about"], :name => "index_sections_on_about"
   add_index "sections", ["cached_slug"], :name => "index_sections_on_cached_slug"
 
   create_table "slugs", :force => true do |t|

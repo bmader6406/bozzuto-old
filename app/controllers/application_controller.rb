@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 
   def about_root_pages
     Section.about.pages.roots
-  rescue ActiveRecord::RecordNotFound
+  rescue
     []
   end
   helper_method :about_root_pages

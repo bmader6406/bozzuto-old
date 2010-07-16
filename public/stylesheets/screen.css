@@ -208,7 +208,7 @@
       #main-nav li.about-nav a {
         background-position: -600px -60px;
       }
-      #main-nav.about li.about-nav a,
+      #main-nav.about-us li.about-nav a,
       #main-nav li.about-nav a:hover {
         background-position: -800px -60px;
       }

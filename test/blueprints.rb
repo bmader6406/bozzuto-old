@@ -188,7 +188,8 @@ Section.blueprint(:service) do
 end
 
 Section.blueprint(:about) do
-  title { 'About' }
+  title { 'About Us' }
+  about { true }
 end
 
 State.blueprint do

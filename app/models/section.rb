@@ -33,17 +33,16 @@ class Section < ActiveRecord::Base
 
 
   def self.about
-    find('about')
+    find(:first, :conditions => { :about => true })
   end
 
   def typus_name
     title
   end
 
-  def about?
-    cached_slug == 'about'
+  def aggregate?
+    about?
   end
-  alias :aggregate? :about?
 
   def montage?
     left_montage_image? && middle_montage_image? && right_montage_image?

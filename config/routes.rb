@@ -45,7 +45,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :landing_pages, :as => :regions, :only => :show
 
   map.resource :contact,
-    :path_prefix => :about,
+    :path_prefix => 'about-us',
     :controller  => :contact_submissions,
     :only        => [:show, :create],
     :member      => { :thank_you => :get }
@@ -77,7 +77,7 @@ ActionController::Routing::Routes.draw do |map|
     m.section_awards '/:section/awards'
   end
 
-  map.with_options :controller => :buzzes, :section => 'about' do |m|
+  map.with_options :controller => :buzzes, :section => 'about-us' do |m|
     m.buzz '/bozzuto-buzz', :action => 'new', :conditions => { :method => :get }
     m.connect '/bozzuto-buzz', :action => 'create', :conditions => { :method => :post }
     m.connect '/bozzuto-buzz/thank-you', :action => 'thank_you'
