@@ -33,6 +33,8 @@ window.bozzuto = {};
       'dynamicPagination' : false
     });
 
+    $('.mini-slideshow').featuredSlideshow();
+
     setTimeout(function(){
       $(".property #slideshow").each(function(){
         var height = $(this).find('h1').height();
@@ -40,7 +42,7 @@ window.bozzuto = {};
       })
     }, 250);
 
-    $("#masthead-slideshow").featuredSlideshow();
+    $("#masthead-slideshow, .slideshow").featuredSlideshow();
     
     $(".community-icons a").toolTip();
 

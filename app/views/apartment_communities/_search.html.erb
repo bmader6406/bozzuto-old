@@ -1,76 +1,76 @@
 <div id="content" class="col">
-<div class="header">
-  <ul>
-    <li class="current">
-      <%= link_to 'View as List', apartment_communities_path(:search => params[:search]), :class => 'list' %>
-    </li>
-    <li>
-      <%= link_to 'View on Map', map_apartment_communities_path(:search => params[:search]), :class => 'map' %>
-    </li>
-  </ul>
-  <p>
-    <%= pluralize(@communities.sum {|state, communities| communities.count}, 'Apartment Community') %>
-  </p>
-</div>
+  <div class="header">
+    <ul>
+      <li class="current">
+        <%= link_to 'View as List', apartment_communities_path(:search => params[:search]), :class => 'list' %>
+      </li>
+      <li>
+        <%= link_to 'View on Map', map_apartment_communities_path(:search => params[:search]), :class => 'map' %>
+      </li>
+    </ul>
+    <p>
+      <%= pluralize(@communities.sum {|state, communities| communities.count}, 'Apartment Community') %>
+    </p>
+  </div>
 
-<ul class="results">
-  <% State.all.each do |state| %>
-    <% communities = @communities[state.name] || [] %>
-    <li class="<%= 'closed' unless state.name == @communities.keys.sort.first %>">
-      <div class="header">
-        <h2><%= state.name %></h2>
-        <p><%= pluralize communities.count, 'Apartment Community' %></p>
-      </div>
-      <ul class="location-filters">
-        <li class="<%= 'open' if params[:search][:city_id].present? %>">
-          <div class="header">
-            <h3>Cities</h3>
-          </div>
-          <ul>
-            <% state.cities.ordered_by_name.each_with_index do |city, index| %>
-              <li class="<%= 'alt' if (index+1)%4 == 0 %>">
-                <% count = communities.select {|c| c.city_id == city.id}.count %>
-                <%= count > 0 ? link_to(raw("<strong>#{city.name}</strong> <em>#{count}</em>"), apartment_communities_path(:search => params[:search].merge({:city_id => city.id, :county_id => nil}))) : raw("<span><strong>#{city.name}</strong> <em>#{count}</em></span>") %>
-              </li>
-            <% end %>
-          </ul>
-        </li>
-        <li class="<%= 'open' if params[:search][:county_id].present? %>">
-          <div class="header">
-            <h3>Counties</h3>
-          </div>
-          <ul>
-            <% state.counties.ordered_by_name.each_with_index do |county, index| %>
-              <li class="<%= 'alt' if (index+1)%4 == 0 %>">
-                <% count = communities.select {|c| c.county_id == county.id}.count %>
-                <%= count > 0 ? link_to(raw("<strong>#{county.name}</strong> <em>#{count}</em>"), apartment_communities_path(:search => params[:search].merge({:county_id => county.id, :city_id => nil}))) : raw("<span><strong>#{county.name}</strong> <em>#{count}</em></span>") %>
-              </li>
-            <% end %>
-          </ul>
-        </li>
-      </ul>
-      <div class="results">
-        <ul>
-          <%= render :partial => 'detail', :collection => communities, :as => :community %>
+  <ul class="results">
+    <% State.all.each do |state| %>
+      <% communities = @communities[state.name] || [] %>
+      <li class="<%= 'closed' unless state.name == @communities.keys.sort.first %>">
+        <div class="header">
+          <h2><%= state.name %></h2>
+          <p><%= pluralize communities.count, 'Apartment Community' %></p>
+        </div>
+        <ul class="location-filters">
+          <li class="<%= 'open' if params[:search][:city_id].present? %>">
+            <div class="header">
+              <h3>Cities</h3>
+            </div>
+            <ul>
+              <% state.cities.ordered_by_name.each_with_index do |city, index| %>
+                <li class="<%= 'alt' if (index+1)%4 == 0 %>">
+                  <% count = communities.select {|c| c.city_id == city.id}.count %>
+                  <%= count > 0 ? link_to(raw("<strong>#{city.name}</strong> <em>#{count}</em>"), apartment_communities_path(:search => params[:search].merge({:city_id => city.id, :county_id => nil}))) : raw("<span><strong>#{city.name}</strong> <em>#{count}</em></span>") %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+          <li class="<%= 'open' if params[:search][:county_id].present? %>">
+            <div class="header">
+              <h3>Counties</h3>
+            </div>
+            <ul>
+              <% state.counties.ordered_by_name.each_with_index do |county, index| %>
+                <li class="<%= 'alt' if (index+1)%4 == 0 %>">
+                  <% count = communities.select {|c| c.county_id == county.id}.count %>
+                  <%= count > 0 ? link_to(raw("<strong>#{county.name}</strong> <em>#{count}</em>"), apartment_communities_path(:search => params[:search].merge({:county_id => county.id, :city_id => nil}))) : raw("<span><strong>#{county.name}</strong> <em>#{count}</em></span>") %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
         </ul>
+        <div class="results">
+          <ul>
+            <%= render :partial => 'listing', :collection => communities, :as => :community %>
+          </ul>
 
-        <!-- <ul class="pagination">
-          <li><a href="#" class="first">First</a></li>
-          <li>1</li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-          <li><a href="#">6</a></li>
-          <li><a href="#">7</a></li>
-          <li><a href="#">8</a></li>
-          <li><a href="#">9</a></li>
-          <li><a href="#">10</a></li>
-          <li><a href="#">11</a></li>
-          <li><a href="#" class="last">Last</a></li>
-        </ul> -->
-      </div>
-    </li>
-  <% end %>
-</ul>
+          <!-- <ul class="pagination">
+            <li><a href="#" class="first">First</a></li>
+            <li>1</li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">6</a></li>
+            <li><a href="#">7</a></li>
+            <li><a href="#">8</a></li>
+            <li><a href="#">9</a></li>
+            <li><a href="#">10</a></li>
+            <li><a href="#">11</a></li>
+            <li><a href="#" class="last">Last</a></li>
+          </ul> -->
+        </div>
+      </li>
+    <% end %>
+  </ul>
 </div>

@@ -937,7 +937,10 @@
     background: none;
   }
 
-  /* big slideshow */
+/* @end */
+
+/* @group slideshow */
+  /* @group -big slideshow */
   #slideshow {
     height: 375px;
     position: relative;
@@ -964,8 +967,6 @@
   }
   #slideshow ul.slideshow-pagination {
     background: #fff;
-  }
-  #slideshow ul.slideshow-pagination {
     border: 1px solid #85898e;
     bottom: 0;
     left: 0;
@@ -1022,11 +1023,49 @@
   #slideshow ul.slideshow-navigation li a.next {
     background-position: right top;
   }
-/* @end */
 
-
-/* @group -page, about, home, landing */
-
+  /* @group mini slideshow */
+    .mini-slideshow,
+    .mini-slideshow ul.slides,
+    .mini-slideshow ul.slides li.slide {
+      height: 145px;
+      width: 230px;
+    }
+    .mini-slideshow {
+      margin-bottom: 15px;
+      position: relative;
+    }
+    .mini-slideshow ul.slides li.slide {
+      position: absolute;
+    }
+    .mini-slideshow ul.slides li.current {
+      z-index: 2;
+    }
+    .mini-slideshow ul.slideshow-pagination {
+      background: #fff;
+      border: 1px solid #85898e;
+      bottom: 0;
+      left: 0;
+      padding: 0 8px;
+      position: absolute;
+      z-index: 10;
+    }
+    .mini-slideshow ul.slideshow-pagination li {
+      float: left;
+    }
+    .mini-slideshow ul.slideshow-pagination li a {
+      color: #747479;
+      display: block;
+      font-size: 11px;
+      line-height: 20px;
+      text-align: center;
+      width: 18px;
+    }
+    .mini-slideshow ul.slideshow-pagination li.current a {
+      color: #000;
+      font-weight: bold;
+    }
+  /* @end */
 /* @end */
 
 /* @group -about, community */
@@ -1154,139 +1193,14 @@
     line-height: 47px;
   }
 
-  .landing #content .listing-large h2,
-  .homes #content #view-as-list h2 {
-    color: #000;
-    font-size: 22px;
-    line-height: 37px;
-  }
 
-  .landing #content .listing-large div.learn-more h2 a,
-  .homes #content #view-as-list div.learn-more h2 a,
-  .search #content div.learn-more h2 a {
-    font-size: 15px;
-    line-height: 40px;
-  }
 
-  .landing #content .listing-large p.intro,
-  .homes #content #view-as-list p.intro {
-    font-size: 15px;
-    font-style: italic;
-    line-height: 17px;
-  }
-
-  .landing #content .listing-large p.address-info,
-  .homes #content #view-as-list p.address-info {
-    font-size: 11px;
-    line-height: 15px;
-  }
-
-  .landing #content .listing-large p.intro strong,
-  .homes #content #view-as-list p.intro strong {
-    color: #000;
-    font-weight: normal;
-  }
-
-  .landing #content .listing-large p.call-to-action a,
-  .homes #content #view-as-list p.call-to-action a {
-    color: #636972;
-    font-size: 11px;
-    font-weight: bold;
-  }
-  
-  .landing #content .listing-large ul li,
-  .homes #content #view-as-list ul li {
-    margin-bottom: 14px;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-  }
-
-  .landing #content .listing-large div.content,
-  .homes #content #view-as-list div.content {
-    width: 600px;
-    float: right;
-  }
-
-  .landing #content .listing-large div.content div,
-  .homes #content #view-as-list div.content div {
-    float: left;
-    width: 351px;
-  }
-
-  .landing #content .listing-large div.content div.learn-more,
-  .homes #content #view-as-list div.content div.learn-more {
-    float: right;
-    width: 230px;
-  }
-
-  .landing #content .listing-large h2,
-  .homes #content #view-as-list h2 {
-    border-bottom: 1px solid #c1c1c5;
-    border-top: 1px solid #c1c1c5;
-    float: left;
-    margin-bottom: 8px;
-    padding: 0 68px 0 12px;
-    width: 271px;
-  }
-
-  .landing #content .listing-large p.intro,
-  .homes #content #view-as-list p.intro {
-    margin-bottom: 12px;
-    padding: 0 0 12px 12px;
-  }
 
   .landing #content .listing-large div p,
   .homes #content #view-as-list div p {
     padding-left: 12px;
   }
 
-  .landing #content .listing-large div p.call-to-action,
-  .homes #content #view-as-list div p.call-to-action {
-    margin-top: 10px;
-  }
-
-  .landing #content .listing-large div p.call-to-action a,
-  .homes #content #view-as-list div p.call-to-action a {
-    padding-left: 7px;
-  }
-
-  .landing #content .listing-large div.learn-more,
-  .homes #content #view-as-list div.learn-more {
-    background: #f1f4f5;
-  }
-
-  .landing #content .listing-large div.learn-more h2,
-  .homes #content #view-as-list div.learn-more h2,
-  .search #content div.learn-more h2 {
-    float: right;
-    height: 40px;
-    margin-bottom: 8px;
-    padding: 0;
-    width: 230px;
-  }
-
-  .landing #content .listing-large div.learn-more h2 a,
-  .homes #content #view-as-list div.learn-more h2 a,
-  .search #content div.learn-more h2 a {
-    display: block;
-    height: 40px;
-    padding-left: 15px;
-    width: 215px;
-  }
-
-  .landing #content .listing-large div.learn-more h2 a:hover,
-  .homes #content #view-as-list div.learn-more h2 a:hover,
-  .search #content div.learn-more h2 a:hover {
-    text-decoration: none;
-  }
-
-  .landing #content .listing-large div.learn-more p,
-  .homes #content #view-as-list div.learn-more p {
-    clear: both;
-    margin-bottom: 12px;
-    padding-bottom: 12px;
-  }
   .landing #content .listing-large div.learn-more ul,
   .homes #content #view-as-list div.learn-more ul {
     margin-bottom: 6px;
@@ -1356,27 +1270,19 @@
   .homes #content #view-as-list p.share a.twitter {
     background-position: right top;
   }
+
   .landing #content .listing-large div.learn-more h2 a,
   .homes #content #view-as-list div.learn-more h2 a,
   .search #content div.learn-more h2 a {
-    background: url(../images/structure/bg-homes-content-header-learn-more.gif) left top no-repeat;
   }
   .landing #content .listing-large div.learn-more h2 a:hover,
   .homes #content #view-as-list div.learn-more h2 a:hover,
   .search #content div.learn-more h2 a:hover {
     background-position: left bottom;
   }
-  .landing #content .listing-large p.intro,
-  .homes #content #view-as-list p.intro {
-    background: url(../images/structure/bg-about-content-p.gif) 12px bottom no-repeat;
-  }
   .landing #content .listing-large p.address-info,
   .homes #content #view-as-list p.address-info {
     background: url(../images/structure/bg-about-content-p.gif) 12px bottom no-repeat;
-  }
-  .landing #content .listing-large p.call-to-action a,
-  .homes #content #view-as-list p.call-to-action a {
-    background: url(../images/structure/bg-header-a.gif) left center no-repeat;
   }
   .landing #content .listing-large .quick-links li a,
   .homes #content #view-as-list .quick-links li a {
@@ -1390,105 +1296,25 @@
   .homes #content #view-as-list .quick-links li a.go {
     background-position: left bottom;
   }
-  .search #content div.results ul li div.info div.learn-more h2,
-  .landing #content .listing-large div.learn-more h2,
-  .homes #content #view-as-list div.learn-more h2 {
-    border: none;
-    padding-left: 0;
-  }
-  .search #content div.results ul li div.info div.learn-more p,
-  .search #content div.results ul li div.info div.learn-more ul,
-  .landing #content .listing-large div.learn-more ul,
-  .homes #content #view-as-list div.learn-more ul {
-    padding-left: 12px;
-  }
-  .search #content div.results ul li div.info div.learn-more ul li,
-  .landing #content .listing-large div.learn-more ul li,
-  .homes #content #view-as-list div.learn-more ul li {
-    height: 45px;
-    margin-right: 8px;
-    overflow: hidden;
-    float: left;
-    width: 45px;
-  }
-  .search #content div.results ul li div.info div.learn-more ul li a,
-  .landing #content .listing-large div.learn-more ul li a,
-  .homes #content #view-as-list div.learn-more ul li a {
-    background-position: 0 0;
-    display: block;
-    height: 45px;
-    overflow: hidden;
-    text-indent: -9999px;
-    width: 45px;
-  }
-  .search #content div.results ul li div.info div.learn-more p,
-  .landing #content .listing-large div.learn-more p,
-  .homes #content #view-as-list div.learn-more p {
-    background: url(../images/structure/bg-search-results-learn-more-p.gif) 12px bottom no-repeat;
-  }
-  .search #content div.results ul li div.info div.learn-more p.last,
-  .landing #content .listing-large div.learn-more p.last,
-  .homes #content #view-as-list div.learn-more p.last {
-    background: none;
-    margin-bottom: 0;
-  }
-  .landing #content .listing-large div.learn-more p a,
-  .search #content div.results ul li div.info div.learn-more p a,
-  .homes #content #view-as-list div.learn-more p a {
-    background: url(../images/structure/bg-header-a.gif) left center no-repeat;
-    color: #636972;
-    display: block;
-    font-size: 11px;
-    font-weight: bold;
-    padding-left: 6px;
-    text-transform: uppercase;
-  }
-  .search #content div.results ul li div.info div.learn-more ul li,
-  .homes #content #view-as-list div.learn-more ul li {
-    background: url(../images/structure/bg-search-results-learn-more-features.gif) no-repeat;
-  }
-  .search #content div.results ul li div.info div.learn-more ul li.smart-share,
-  .homes #content #view-as-list div.learn-more ul li.smartshare {
-    background-position: 0 0;
-  }
-  .search #content div.results ul li div.info div.learn-more ul li.elite,
-  .homes #content #view-as-list div.learn-more ul li.elite  {
-    background-position: -34px 0;
-  }
-  .search #content div.results ul li div.info div.learn-more ul li.smart-rent,
-  .homes #content #view-as-list div.learn-more ul li.smartrent {
-    background-position: -68px 0 ;
-  }
-  .search #content div.results ul li div.info div.learn-more ul li.green,
-  .homes #content #view-as-list div.learn-more ul li.green {
-    background-position: -102px 0;
-  }
-  .search #content div.results ul li div.info div.learn-more ul li.non-smoking,
-  .homes #content #view-as-list div.learn-more ul li.non-smoking {
-    background-position: -136px 0;
-  }
 /* @end */
 /* @end */
 
 /* @group pages */
   /* @group -home */
     /* @group --masthea */
-      .home #masthead .container {
+      .home #masthead .container,
+      .home #slideshow,
+      .home #masthead-fg,
+      .home #slideshow ul.slides li.slide {
+        height: 380px;
         width: 1100px;
       }
       .home #masthead-fg {
-        height: 375px;
         margin: 0 auto;
         position: relative;
-        width: 1100px;
       }
       .home #slideshow {
         top: 0;
-        width: 1100px;
-      }
-      .home #slideshow ul.slides li.slide {
-        width: 1100px;
-        height: 375px;
       }
     /* @end */
     .home #content {
@@ -1517,9 +1343,6 @@
     .home #featured-property {
       width: 230px;
       padding-right: 0;
-    }
-    .home #featured-property h2 {
-      margin-bottom: 10px;
     }
     .home #featured-property h2 a {
       display: block;
@@ -1861,7 +1684,6 @@
     }
     .community #overview ul.community-icons li,
     .community #overview ul.community-icons li a,
-    .search #content div.results ul li div.info ul.community-icons a, 
     .homes #content #view-as-list ul.community-icons a {
       display: block;
       width: 45px;
@@ -2041,7 +1863,6 @@
     }
   /* @end */
 /* @end */
-
 
 /* @group -project */
   .project #sidebar #property-nav {
@@ -2867,66 +2688,6 @@
       overflow: hidden;
       width: 100%;
     }
-    .search #content div.results ul li p.photos {
-      float: left;
-    }
-    .search #content div.results ul li div.info {
-      float: right;
-      overflow: hidden;
-      width: 600px;
-    }
-    .search #content div.results ul li div.info div {
-      float: left;
-      width: 351px;
-    }
-    .search #content div.results ul li div.info div h2 {
-      border-bottom: 1px solid #c1c1c5;
-      border-top: 1px solid #c1c1c5;
-      margin-bottom: 11px;
-      padding-left: 13px;
-    }
-    .search #content div.results ul li div.info p.intro {
-      float: left;
-      margin-bottom: 11px;
-      padding: 0 0 12px 12px;
-      width: 140px;
-    }
-    .search #content div.results ul li div.info ul {
-      float: left;
-      padding-left: 12px;
-      width: 140px;
-    }
-    .search #content div.results ul li div.info ul li {
-      font-size: 11px;
-      line-height: 16px;
-      margin-bottom: 0;
-    }
-    .search #content div.results ul li div.info p.address-info {
-      margin: 0 10px;
-      padding-bottom: 8px;
-    }
-    .search #content div.results ul li div.info p.description {
-      clear: right;
-      float: right;
-      padding-left: 7px;
-      width: 174px;
-    }
-    .search #content div.results ul li div.info div.learn-more {
-      float: right;
-      width: 230px;
-    }
-    .search #content div.results ul li div.info div.learn-more p {
-      margin-bottom: 9px;
-      padding-bottom: 8px;
-    }
-    .search #content div.results ul li div.info div.learn-more ul {
-      margin-bottom: 14px;
-      overflow: hidden;
-      width: 195px;
-    }
-    .search #content div.results ul li div.info div.learn-more ul li {
-      margin-bottom: 8px;
-    }
     .search #content div.results ul.pagination {
       margin: 17px 0 16px;
       overflow: hidden;
@@ -2955,16 +2716,6 @@
       font-size: 15px;
       line-height: 29px;
       text-transform: uppercase;
-    }
-    .search #content div.results ul li div.info div h2 {
-      color: #000;
-      font-size: 22px;
-      line-height: 38px;
-    }
-    .search #content div.results ul li div.info p.intro {
-      font-size: 15px;
-      font-style: italic;
-      line-height: 17px;
     }
     .search #content div.results ul.pagination {
       font-size: 11px;
@@ -3002,15 +2753,6 @@
     }
     .search #content div.results ul li {
       background: none;
-    }
-    .search #content div.results ul li div.info p.intro {
-      background: url(../images/structure/bg-about-content-p.gif) 12px bottom no-repeat;
-    }
-    .search #content div.results ul li div.info p.description {
-      background: url(../images/structure/blt-features.gif) left 7px no-repeat;
-    }
-    .search #content div.results ul li div.info div.learn-more {
-      background: #f2f4f5;
     }
     .search #content div.results ul.pagination {
       background: url(../images/structure/bg-search-results-pagination.gif) left top repeat-x;
@@ -3755,4 +3497,167 @@
       margin-bottom: 1.454545455em;
     }
   /* @end */
+/* @end */
+
+/* @group property listing */
+  #content .property-listing {
+    margin-bottom: 14px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+  #content .property-listing p.photos {
+    float: left;
+  }
+  #content .property-listing div.info {
+    float: right;
+    overflow: hidden;
+    width: 600px;
+  }
+  #content .property-listing div.info div.overview {
+    float: left;
+    width: 350px;
+  }
+  #content .property-listing h2 {
+    color: #000;
+    margin-bottom: 8px;
+    padding: 0 68px 0 12px;
+    width: 271px;
+  }
+  #content .property-listing div.info h2 {
+    font-size: 22px;
+    line-height: 38px;
+    margin-bottom: 11px;
+    padding-left: 13px;
+  }
+  #content .property-listing div.info div.overview h2 {
+    border-bottom: 1px solid #c1c1c5;
+    border-top: 1px solid #c1c1c5;
+  }
+  #content .property-listing div.info p.intro {
+    font-size: 15px;
+    font-style: italic;
+    line-height: 17px;
+    margin-bottom: 11px;
+    padding: 0 0 12px 12px;
+  }
+  #content .property-listing div.info ul {
+    float: left;
+    padding-left: 12px;
+    width: 140px;
+  }
+  #content .property-listing div.info ul li {
+    font-size: 11px;
+    line-height: 16px;
+    margin-bottom: 0;
+  }
+  #content .property-listing div.info p.address-info {
+    font-size: 11px;
+    line-height: 15px;
+    margin: 0 10px;
+    padding-bottom: 8px;
+  }
+  #content .property-listing div.info p.description {
+    background: url(../images/structure/blt-features.gif) left 7px no-repeat;
+    clear: right;
+    float: right;
+    padding-left: 7px;
+    width: 174px;
+  }
+  #content .property-listing div.info div.learn-more {
+    background: #f1f4f5;
+    float: right;
+    width: 230px;
+  }
+  #content .property-listing div.learn-more h2 {
+    height: 40px;
+    margin-bottom: 8px;
+    padding: 0;
+    width: 230px;
+  }
+  #content .property-listing div.learn-more h2 a {
+    background: url(../images/structure/bg-homes-content-header-learn-more.gif) left top no-repeat;
+    display: block;
+    font-size: 15px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 15px;
+    width: 215px;
+  }
+  #content .property-listing div.info div.learn-more h2 a:hover {
+    text-decoration: none;
+  }
+  #content .property-listing div.info div.learn-more p,
+  #content .property-listing div.info div.learn-more ul {
+    padding-left: 12px;
+  }
+  #content .property-listing div.info div.learn-more p {
+    margin-bottom: 9px;
+    padding-bottom: 8px;
+  }
+  #content .property-listing div.info div.learn-more ul {
+    margin-bottom: 14px;
+    overflow: hidden;
+    width: 195px;
+  }
+  #content .property-listing div.info div.learn-more ul li {
+    margin-bottom: 8px;
+  }
+
+  #content .property-listing div.info div.learn-more ul.community-icons li {
+    background: url(../images/structure/bg-search-results-learn-more-features.gif) no-repeat;
+    float: left;
+    height: 45px;
+    margin-right: 8px;
+    overflow: hidden;
+    width: 45px;
+  }
+  #content .property-listing div.info div.learn-more ul.community-icons li a {
+    background-position: 0 0;
+    display: block;
+    height: 45px;
+    overflow: hidden;
+    text-indent: -9999px;
+    width: 45px;
+  }
+  #content .property-listing div.info div.learn-more p {
+    background: url(../images/structure/bg-search-results-learn-more-p.gif) 12px bottom no-repeat;
+  }
+  #content .property-listing div.info div.learn-more p.last { background: none;
+    margin-bottom: 0;
+  }
+  #content .property-listing div.info div.learn-more p a {
+    background: url(../images/structure/bg-header-a.gif) left center no-repeat;
+    color: #636972;
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    padding-left: 6px;
+    text-transform: uppercase;
+  }
+/* @end */
+
+/* @group home listing */
+  #content .home-listing div.info p.intro {
+    background: url(../images/structure/bg-about-content-p.gif) 12px bottom no-repeat;
+    font-size: 15px;
+    font-style: italic;
+    line-height: 17px;
+    margin-bottom: 12px;
+    padding: 0 0 12px 12px;
+  }
+  #content .home-listing div.info p.intro strong {
+    color: #000;
+    font-weight: normal;
+  }
+  #content .home-listing p.call-to-action {
+    margin-top: 10px;
+  }
+  #content .home-listing p.call-to-action a {
+    background: url(../images/structure/bg-header-a.gif) left center no-repeat;
+    color: #636972;
+    font-size: 11px;
+    font-weight: bold;
+    padding-left: 7px;
+  }
 /* @end */

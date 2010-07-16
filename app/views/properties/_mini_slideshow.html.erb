@@ -1,8 +1,8 @@
 <% if slideshow.present? %>
-  <div class="slideshow">
+  <div class="mini-slideshow">
     <ul class="slides">
       <% slideshow.slides.each_with_index do |slide, i| %>
-        <li <% if i == 0 %>class="current"<% end %> id="slide-<%= i %>">
+        <li id="slide-<%= i %>" class="slide <%= 'current' if i == 0 %>">
           <%= image_tag slide.image.url %>
         </li>
       <% end %>

@@ -1,33 +1,40 @@
-<li>
-  <p class="photos">
-    <img src="/images/search-results-fpo.jpg" alt="FPO" />
-  </p>
+<li class="property-listing apartment-listing">
+  <% if community.listing_image? %>
+    <p class="photos">
+      <%= image_tag community.listing_image.url %>
+    </p>
+  <% end %>
+
   <div class="info">
-    <div>
+    <div class="overview">
       <h2><%= community.title %></h2>
       <p class="address-info">
         <%= community.address %><br />
-        phone number
+        <%= community.phone_number %>
       </p>
+
       <ul>
         <li><strong>1 Bedrooms</strong> from $XXXX</li>
         <li><strong>2 Bedrooms</strong> from $XXXX</li>
         <li><strong>3 Bedrooms</strong> from $XXXX</li>
       </ul>
-      <p class="description">
-        Description
-      </p>
+
+      <% if community.overview_bullet_1.present? %>
+        <p class="description"><%= community.overview_bullet_1 %></p>
+      <% end %>
     </div>
+
     <div class="learn-more">
       <h2>
         <%= link_to 'Learn More', community %>
       </h2>
-      <p>
-        <a href="#">Availability</a>
-      </p>
-      <p>
-        <a href="#">Special Offers</a>
-      </p>
+
+      <% if community.availability_url.present? %>
+        <p><%= link_to 'Availability', community.availability_url %></p>
+      <% end %>
+
+      <!--p><a href="#">Special Offers</a></p-->
+
       <ul class="features">
         <li class="elite">Elite Community</li>
         <li class="smartshare">Bozzuto SmartShare Program</li>

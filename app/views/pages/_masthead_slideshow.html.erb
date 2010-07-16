@@ -8,7 +8,7 @@
               <%= raw(slide.body) %>
             </div>
 
-            <% if slide.uses_image? %>
+            <% if slide.uses_image? && slide.image? %>
 
               <div class="figure">
                 <%= link_to image_tag(slide.image.url), slide.image_link %>
