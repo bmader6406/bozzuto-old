@@ -45,4 +45,8 @@ class SectionContentHelperTest < ActionView::TestCase
   def content_for(name)
     yield
   end
+
+  def current_page_path
+    'yay/hooray'
+  end
 end

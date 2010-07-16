@@ -6,6 +6,18 @@ class PagesControllerTest < ActionController::TestCase
       @section = Section.make
     end
 
+    context '#current_page_path' do
+      context 'when the page param is populated' do
+        setup do
+          get :show, :section => @section.to_param, :page => ['yay', 'hooray']
+        end
+
+        should 'return the path string' do
+          assert_equal 'yay/hooray', @controller.send(:current_page_path)
+        end
+      end
+    end
+
     context 'a GET to #show' do
       context 'with no pages in the section' do
         setup do

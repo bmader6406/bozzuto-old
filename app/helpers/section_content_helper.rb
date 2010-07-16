@@ -34,7 +34,7 @@ module SectionContentHelper
       if level == current_level
         css_classes = []
         css_classes << 'first' if level == 0 and i == 0
-        css_classes << 'current' if params[:page] == page.path
+        css_classes << 'current' if current_page_path == page.path
 
         css_class = %{class="#{css_classes.join(' ')}"} if css_classes.any?
 

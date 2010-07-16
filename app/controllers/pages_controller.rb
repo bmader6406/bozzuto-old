@@ -9,11 +9,16 @@ class PagesController < SectionContentController
 
   def find_page
     @page = if params[:page].any?
-      @section.pages.find_by_path(params[:page].join('/'))
+      @section.pages.find_by_path(current_page_path)
     else
       @section.pages.first
     end
 
     render_404 if @page.nil?
   end
+
+  def current_page_path
+    params[:page].join('/')
+  end
+  helper_method :current_page_path
 end
