@@ -84,7 +84,6 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.with_options :controller => :pages, :action => :show do |m|
-    m.services '/services', :template => 'services'
     m.service_section_page '/services/:section/*page'
     m.section_page '/:section/*page'
   end
