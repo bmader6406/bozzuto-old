@@ -16,9 +16,4 @@ class PagesController < SectionContentController
 
     render_404 if @page.nil?
   end
-
-  def current_page_path
-    params[:page].join('/')
-  end
-  helper_method :current_page_path
 end

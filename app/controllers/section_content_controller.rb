@@ -36,4 +36,11 @@ class SectionContentController < ApplicationController
     @section.projects.published
   end
   helper_method :section_projects
+
+  def current_page_path
+    if params[:page].present?
+      params[:page].join('/')
+    end
+  end
+  helper_method :current_page_path
 end

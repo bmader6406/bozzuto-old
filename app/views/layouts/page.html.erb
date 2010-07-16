@@ -13,7 +13,7 @@
   <div id="main-content">
     <div class="container">
       <div id="sidebar" class="col">
-        <% if request.path =~ /\/services\/?/ %>
+        <% if request.path =~ /^\/services\/?$/ %>
           <%= render :partial => 'pages/services_nav' %>
         <% else %>
           <%= render :partial => 'pages/secondary_nav' %>
