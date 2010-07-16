@@ -13,7 +13,7 @@ ApartmentCommunity:
         published: ['Yes', 'No']
       selectors: brochure_type
       destroy_related: PropertySlideshow, PropertyMiniSlideshow, Video, PhotoSet, ApartmentFloorPlan
-  order_by:
+  order_by: title
   relationships: property_features, city, county, local_info_feed, slideshow, mini_slideshow, videos, photo_set, floor_plans
   filters:
   search: title, street_address
@@ -136,7 +136,7 @@ HomeCommunity:
         published: ['Yes', 'No']
       selectors: brochure_type
       destroy_related: PropertySlideshow, PropertyMiniSlideshow, Home
-  order_by: 
+  order_by: title
   relationships: property_features, city, county, slideshow, mini_slideshow, homes, local_info_feed
   filters: 
   search: title
