@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   around_filter :set_current_queue
 
-  # rescue_from ActiveRecord::RecordNotFound, :with => :render_404
+  rescue_from ActiveRecord::RecordNotFound, :with => :render_404
 
 
   private

@@ -21,7 +21,7 @@
           <%= link_to 'Special Offers', promotions_home_community_path(@community) %>
         </li>
         <li class="last <%= current_if 'contact' %>">
-          <%= link_to raw('Contact Info<br />&amp; Office Hours'), contact_home_community_path(@community) %>
+          <%= link_to 'Contact Info', contact_home_community_path(@community) %>
           <% if @community.phone_number.present? %>
             <span class="phone-number"><%= @community.phone_number %></span>
           <% end %>
