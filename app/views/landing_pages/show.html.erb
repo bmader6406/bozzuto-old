@@ -1,4 +1,4 @@
-<% content_for :body_class do %>landing secondary<% end %>
+<% content_for :body_class do %>secondary landing<% end %>
 <% render_meta(@page) %>
 
 <div id="masthead">
@@ -47,13 +47,11 @@
               <% @page.popular_properties.take(3).each do |property| %>
                 <div class="section <%= popular_property_class(property) %>">
                   <h4>
-                    <%= link_to property.title, property_path(property) %>
+                    <%= link_to property.short_title || property.title, property_path(property) %>
                   </h4>
-                  <p>
-                    <strong>Just minutes from</strong> the Lorem 
-                    Capitol Heights, MD<br />
-                    Starting from the $XXXs
-                  </p>
+                  <% if property.listing_title.present? %>
+                    <p><%= property.listing_title %></p>
+                  <% end %>
                 </div>
               <% end %>
             </div>
@@ -64,25 +62,19 @@
           <div class="header">
             <ul class="nav">
               <% if @page.home_communities.any? %>
-                <li>
-                  <a href="#homes-condominiums">Homes &amp; Condominiums</a>
-                </li>
+                <li><a href="#homes-condominiums">Homes &amp; Condominiums</a></li>
               <% end %>
               <% if @page.apartment_communities.any? %>
-                <li>
-                  <a href="#apartments-for-rent">Apartments For Rent</a>
-                </li>
+                <li><a href="#apartments-for-rent">Apartments For Rent</a></li>
               <% end %>
               <% if @page.featured_apartment_communities.any? %>
-                <li>
-                  <a href="#featured-apartments">Featured Apartments</a>
-                </li>
+                <li><a href="#featured-apartments">Featured Apartments</a></li>
               <% end %>
             </ul>
           </div>
           
           <% if @page.home_communities.any? %>
-            <div class="section listing-large" id="homes-condominiums">
+            <div id="homes-condominiums" class="section">
               <ul>
                 <%= render :partial => 'home_communities/listing', :collection => @page.home_communities, :as => :community %>
               </ul>
@@ -90,32 +82,18 @@
           <% end %>
           
           <% if @page.apartment_communities.any? %>
-            <div class="section listings" id="apartments-for-rent">
-              <% @page.apartment_communities.in_groups_of(4, false) do |communities| %>
-                <ul class="row">
-                  <% communities.each do |community| %>
-                    <li>
-                      <%= link_to community.title, property_path(community) %>
-                      <%= community.city %>
-                    </li>
-                  <% end %>
-                </ul>
-              <% end %>
+            <div id="apartments-for-rent" class="section">
+              <ul>
+                <%= render :partial => 'apartment_communities/listing', :collection => @page.apartment_communities, :as => :community %>
+              </ul>
             </div>
           <% end %>
 
           <% if @page.featured_apartment_communities.any? %>
-            <div class="section listings" id="featured-apartments">
-              <% @page.featured_apartment_communities.in_groups_of(4, false) do |communities| %>
-                <ul class="row">
-                  <% communities.each do |community| %>
-                    <li>
-                      <%= link_to community.title, property_path(community) %>
-                      <%= community.city %>
-                    </li>
-                  <% end %>
-                </ul>
-              <% end %>
+            <div id="featured-apartments" class="section">
+              <ul>
+                <%= render :partial => 'apartment_communities/listing', :collection => @page.featured_apartment_communities, :as => :community %>
+              </ul>
             </div>          
           <% end %>
         </div>

@@ -3,10 +3,12 @@
     <% @page.all_properties.each do |property| %>
       <div class="property" data-jmapping="<%= property.to_jmapping %>">
         <div class="info-box">
-          <p><%= link_to property.title, property_path(property) %></p>
-          <% if property.subtitle.present? %>
-            <p><%= property.subtitle %></p>
+          <h4><%= link_to property.title, property_path(property) %></h4>
+
+          <% if property.listing_title.present? %>
+            <p><%= property.listing_title %></p>
           <% end %>
+
           <p><%= link_to 'Learn More', property_path(property) %></p>
         </div>
       </div>

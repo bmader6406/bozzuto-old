@@ -1,9 +1,9 @@
 <li class="property-listing apartment-listing">
-  <% if community.listing_image? %>
-    <p class="photos">
+  <p class="photos">
+    <% if community.listing_image? %>
       <%= image_tag community.listing_image.url %>
-    </p>
-  <% end %>
+    <% end %>
+  </p>
 
   <div class="info">
     <div class="overview">

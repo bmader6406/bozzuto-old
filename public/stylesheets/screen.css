@@ -3076,6 +3076,9 @@
     .landing #content div.header p {
       text-align: center;
     }
+    .landing #properties-by-type {
+      margin-bottom: 35px;
+    }
     .areamap-popular-properties h4 a {
       background: url(../images/structure/bg-project-sub-content-h4.gif) top right no-repeat;
     }
@@ -3204,14 +3207,14 @@
   /* @end */
 
   /* @group -masthead-slideshow */
-    .page #masthead-slideshow {
+    #masthead-slideshow {
       height: 223px;
     }
-    .page #masthead-slideshow ul.slides {
+    #masthead-slideshow ul.slides {
       height: 223px;
       z-index: 1;
     }
-    .page #masthead-slideshow ul.slides li.slide {
+    #masthead-slideshow ul.slides li.slide {
       text-indent: 0;
       background: #c0c5cb url(../images/structure/bg-masthead.gif) repeat-x;
       height: 223px;
@@ -3221,13 +3224,13 @@
       width: 960px;
       z-index: 1;
     }
-    .page #masthead-slideshow ul.slides li.current {
+    #masthead-slideshow ul.slides li.current {
       z-index: 2;
     }
-    .page #masthead-slideshow ul.slides li.on-deck {
+    #masthead-slideshow ul.slides li.on-deck {
       z-index: 3;
     }
-    .page #masthead-slideshow ul.slideshow-pagination {
+    #masthead-slideshow ul.slideshow-pagination {
       border-top: 1px solid #fff;
       height: 20px;
       left: 190px;
@@ -3236,10 +3239,10 @@
       width: 150px;
       z-index: 4;
     }
-    .page #masthead-slideshow ul.slideshow-pagination li {
+    #masthead-slideshow ul.slideshow-pagination li {
       float: left;
     }
-    .page #masthead-slideshow ul.slideshow-pagination li a {
+    #masthead-slideshow ul.slideshow-pagination li a {
       background: none;
       color: #717479;
       display: block;
@@ -3248,25 +3251,25 @@
       padding: 7px 6px;
       width: auto;
     }
-    .page #masthead-slideshow ul.slideshow-pagination li.current a {
+    #masthead-slideshow ul.slideshow-pagination li.current a {
       color: #000;
       font-weight: bold;
     }
-    .page #masthead-slideshow ul.slideshow-pagination li a:hover {
+    #masthead-slideshow ul.slideshow-pagination li a:hover {
       text-decoration: none;
     }
-    .page #masthead-slideshow .aside,
-    .page #masthead-slideshow .figure {
+    #masthead-slideshow .aside,
+    #masthead-slideshow .figure {
       float: right;
       height: 223px;
       position: relative;
       width: 230px;
     }
-    .page #masthead-slideshow .aside {
+    #masthead-slideshow .aside {
       height: 193px;
       padding-top: 30px;
     }
-    .page #masthead-slideshow .aside p.call-to-action a {
+    #masthead-slideshow .aside p.call-to-action a {
       background: url(../images/structure/bg-apartments-masthead-aside-a.gif) left top no-repeat;
       color: #000;
       display: block;
@@ -3277,21 +3280,21 @@
       padding-left: 9px;
       width: 220px;
     }
-    .page #masthead-slideshow .aside p.call-to-action a:hover {
+    #masthead-slideshow .aside p.call-to-action a:hover {
       background-position: left bottom;
       text-decoration: none;
     }
-    .page #masthead-slideshow .aside ul {
+    #masthead-slideshow .aside ul {
       margin-right: -19px;
       overflow: hidden;
       width: 250px;
     }
-    .page #masthead-slideshow .aside ul li {
+    #masthead-slideshow .aside ul li {
       float: left;
       font-size: 11px;
       text-transform: uppercase;
     }
-    .page #masthead-slideshow .aside ul li a {
+    #masthead-slideshow .aside ul li a {
       background: url(../images/structure/bg-masthead-a-dark.gif) 1px 12px no-repeat;
       border-bottom: 1px solid #d1d5d9;
       color: #565c64;
@@ -3301,11 +3304,11 @@
       padding-left: 8px;
       width: 98px;
     }
-    .page #masthead-slideshow .aside ul li a:hover {
+    #masthead-slideshow .aside ul li a:hover {
       color: #2E2E39;
       text-decoration: none;
     }
-    .page #masthead-slideshow .aside ul li.last a {
+    #masthead-slideshow .aside ul li.last a {
       border-bottom: none;
     }
   /* @end */
@@ -3570,7 +3573,6 @@
   #content .property-listing div.info p.address-info {
     font-size: 11px;
     line-height: 15px;
-    margin: 0 10px;
     padding-bottom: 8px;
   }
   #content .property-listing div.info p.description {
