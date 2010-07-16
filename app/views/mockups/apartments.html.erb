@@ -1,39 +1,45 @@
-<% content_for :body_class do %>apartments<% end %>
+<% content_for :body_class do %>page<% end %>
 
 <div id="masthead">
   <div class="container">
-    <div class="section">
-      <h1>Apartments</h1>
-      <p><strong>Lorem ipsum dolor sit amet</strong>, consectetur adipisicing elit, sed do eiusmod tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitati ullamco laboris ut aliquip ex ea commodo consequat. Officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet sinse ctutorex ea commodo consequat consectetur adipisicing elit, sed do eiusmod tempor incidid ut labore et dolore magna aliqua.</p>
-    </div>
-    <div class="aside">
-      <p class="call-to-action">
-        <a href="#">Find an Apartment</a>
-      </p>
-      <ul>
-        <li>
-          <a href="#">Maryland</a>
-        </li>
-        <li>
-          <a href="#">New Jersey</a>
-        </li>
-        <li>
-          <a href="#">Virginia</a>
-        </li>
-        <li>
-          <a href="#">Massachusetts</a>
-        </li>
-        <li>
-          <a href="#">Washington, DC</a>
-        </li>
-        <li>
-          <a href="#">Connecticut</a>
-        </li>
-        <li class="last">
-          <a href="#">Pennsylvania</a>
-        </li>
-        <li class="last">
-          <a href="#">New York</a>
+    <div id="masthead-slideshow">
+      <ul class="slides">
+        <li class="slide">
+          <div class="section">
+            <h1>Apartments</h1>
+            <p><strong>Lorem ipsum dolor sit amet</strong>, consectetur adipisicing elit, sed do eiusmod tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitati ullamco laboris ut aliquip ex ea commodo consequat. Officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet sinse ctutorex ea commodo consequat consectetur adipisicing elit, sed do eiusmod tempor incidid ut labore et dolore magna aliqua.</p>
+          </div>
+          <div class="aside">
+            <p class="call-to-action">
+              <a href="#">Find an Apartment</a>
+            </p>
+            <ul>
+              <li>
+                <a href="#">Maryland</a>
+              </li>
+              <li>
+                <a href="#">New Jersey</a>
+              </li>
+              <li>
+                <a href="#">Virginia</a>
+              </li>
+              <li>
+                <a href="#">Massachusetts</a>
+              </li>
+              <li>
+                <a href="#">Washington, DC</a>
+              </li>
+              <li>
+                <a href="#">Connecticut</a>
+              </li>
+              <li class="last">
+                <a href="#">Pennsylvania</a>
+              </li>
+              <li class="last">
+                <a href="#">New York</a>
+              </li>
+            </ul>
+          </div>
         </li>
       </ul>
     </div>
@@ -68,19 +74,13 @@
     </div>
 
     <div id="content" class="col">
-      <div class="slideshow">
+      <div id="slideshow">
         <ul class="slides">
-          <li class="section current" style="background-image: url(/images/apartments-featured.jpg);" id="slide-1">
-            <h2>Rent the most impressive apartments in town</h2>
-            <p>
-              <a href="#"><strong>Visit Senate Square</strong> lorem ipsum dolor sit amet lorem.</a>
-            </p>
+          <li id="slide-1" class="section slide current">
+            <img src="/images/apartments-featured.jpg" />
           </li>
-          <li class="section" style="background-image: url(/images/apartments-featured-2.jpg);" id="slide-2">
-            <h2>Living in the city has never been better</h2>
-            <p>
-              <a href="#"><strong>Visit Senate Square</strong> lorem ipsum dolor sit amet lorem.</a>
-            </p>
+          <li id="slide-2" class="section slide">
+            <img src="/images/apartments-featured-2.jpg" />
           </li>
         </ul>
         <ul class="slideshow-navigation">
@@ -118,7 +118,6 @@
           </p>
         </div>
       </div>
-      
     </div>
   </div>
 </div>

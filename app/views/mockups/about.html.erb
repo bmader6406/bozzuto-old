@@ -1,29 +1,24 @@
-<% content_for :body_class do %>about<% end %>
+<% content_for :body_class do %>page<% end %>
 
 <div id="masthead">
   <div class="container">
-    
-    <div class="masthead-slideshow">
+    <div id="masthead-slideshow">
       <ul class="slides">
-        <li class="current">
+        <li class="slide current">
           <div class="section">
             <h1>We Are The Bozzuto Group</h1>
             <p><strong>We are six companies in one:</strong> The Bozzuto Group, a privately held real estate services organization. Together we create quality homes and extraordinary communities&mdash;some 31,000 residences to date. We pride ourselves on providing outstanding service and consistent value for customers and partners alike.</p>
           </div>
-          <div class="aside">
-            <p class="figure">
-              <img src="/images/about-masthead-1.jpg" />
-            </p>
+          <div class="figure">
+            <p><img src="/images/about-masthead-1.jpg" /></p>
           </div>
         </li>
-        <li>
+        <li class="slide">
           <div class="section">
             <p><strong>We are founded on values.</strong> In 1988, founding partners Tom Bozzuto, John Slidell, Rick Mostyn, and the late Bernard Lubcher formed The Bozzuto Group to build and manage apartment homes. They established the core values that continue to guide the company today: concern for the people whose lives we touch, as well as for the environment we share. Creativity and passion in every aspect of business. And a belief that perfection, while rarely attained, is always worth pursuing.</p>
           </div>
-          <div class="aside">
-            <p class="figure">
-              <img src="/images/about-masthead-2.jpg" />
-            </p>
+          <div class="figure">
+            <p><img src="/images/about-masthead-2.jpg" /></p>
           </div>
         </li>
       </ul>
@@ -58,81 +53,77 @@
     </div>
 
     <div id="content" class="col">
-      
-      <div class="slideshow">
+      <div id="slideshow">
         <ul class="slides">
-          <li class="section current" style="background-image: url(/images/services-featured-1.jpg);" id="slide-1">
-            <h2>The Bozzuto Group</h2>
+          <li id="slide-1" class="section slide current">
+            <img src="/images/services-featured-1.jpg" />
           </li>
-          <li class="section" style="background-image: url(/images/services-featured-2.jpg);" id="slide-2">
-            <h2>Living in the city has never been better</h2>
-            <p>
-              <a href="#"><strong>Visit Senate Square</strong> lorem ipsum dolor sit amet lorem.</a>
-            </p>
+          <li id="slide-2" class="section slide">
+            <img src="/images/services-featured-2.jpg" />
           </li>
         </ul>
         <ul class="slideshow-navigation">
-          <li>
-            <a href="#" class="prev">Previous</a>
-          </li>
-          <li>
-            <a href="#" class="next">Next</a>
-          </li>
+          <li><a href="#" class="prev">Previous</a></li>
+          <li><a href="#" class="next">Next</a></li>
         </ul>
       </div>
-      
-      <h2>Green Initiative</h2>
+        
+      <div class="row">
+        <div class="column-main col">
+          <h2>Green Initiative</h2>
 
-      <p><strong>The Bozzuto Group and its companies</strong> are committed to operating as an environmental steward in each project we undertake. As a builder, developer, owner and manager, we recognize that our day-to-day work has a profound impact on the world around us, and that we have the opportunity to be a leader in sustainable use of the Earth's resources. We also realize that in the long run, we can actually create more value with less environmental impact.</p>
+          <p><strong>The Bozzuto Group and its companies</strong> are committed to operating as an environmental steward in each project we undertake. As a builder, developer, owner and manager, we recognize that our day-to-day work has a profound impact on the world around us, and that we have the opportunity to be a leader in sustainable use of the Earth's resources. We also realize that in the long run, we can actually create more value with less environmental impact.</p>
 
-      <h2>Community Involvement</h2>
+          <h2>Community Involvement</h2>
 
-      <p><strong>The Bozzuto Group is deeply committed</strong> to supporting the communities we serve. We demonstrate this commitment in a variety of ways&mdash;through donations of time, energy, and funding, as well as active involvement in non-profit, industry and government-sponsored programs and organizations.</p>
+          <p><strong>The Bozzuto Group is deeply committed</strong> to supporting the communities we serve. We demonstrate this commitment in a variety of ways&mdash;through donations of time, energy, and funding, as well as active involvement in non-profit, industry and government-sponsored programs and organizations.</p>
 
-      <h2>Housing For All</h2>
+          <h2>Housing For All</h2>
 
-      <p><strong>The companies of The Bozzuto Group</strong> have included affordable housing in their portfolios since their earliest days. To better address the growing need for such housing, we created a team within Bozzuto Development specifically dedicated to identify affordable housing solutions. Through partnerships with non-profit&hellip;</p>
-    </div>
-
-    <div id="aside" class="col">
-      <div id="latest-news">
-        <h3><a href="#">Latest Bozzuto News</a></h3>
-
-        <div class="article">
-          <div class="news-post section first">
-            <h4><a href="#">This is the headline of a recent news story</a></h4>
-            <p class="date"><span class="month">03.</span><span class="day">30.</span></p>
-            <p>Lorem ipsum dolor sit amet lorem sinsectutor dolorum ipsum sin sit sinsectutor dolor slorem. Lorem ipsum dolor sit amet lorem sinsectutor dolor sinsectutor alorum adipscing lorem.</p>
-          </div>
-
-          <div class="news-post section">
-            <h4><a href="#">This is the headline of a recent news story</a></h4>
-            <p class="date"><span class="month">03.</span><span class="day">24.</span></p>
-          </div>
-
-          <div class="news-post section last">
-            <h4><a href="#">This is the headline of a recent news story</a></h4>
-            <p class="date"><span class="month">03.</span><span class="day">24.</span></p>
-          </div>
+          <p><strong>The companies of The Bozzuto Group</strong> have included affordable housing in their portfolios since their earliest days. To better address the growing need for such housing, we created a team within Bozzuto Development specifically dedicated to identify affordable housing solutions. Through partnerships with non-profit&hellip;</p>
         </div>
-      </div>
 
-      <div id="latest-awards">
-        <h3><a href="#">Latest Awards</a></h3>
+        <div id="aside" class="col">
+          <div id="latest-news">
+            <h3><a href="#">Latest Bozzuto News</a></h3>
 
-        <div class="article">
-          <div class="award section row first">
-            <p class="figure"><img src="/images/about-award.jpg" /></p>
-            <h4><a href="#">The Fitzgerald</a></h4>
-            <p class="date"><span class="month">03.</span><span class="day">24.</span></p>
-            <p>2009 Multifamily Executive Magazine Awards</p>
+            <div class="article">
+              <div class="news-post section first">
+                <h4><a href="#">This is the headline of a recent news story</a></h4>
+                <p class="date"><span class="month">03.</span><span class="day">30.</span></p>
+                <p>Lorem ipsum dolor sit amet lorem sinsectutor dolorum ipsum sin sit sinsectutor dolor slorem. Lorem ipsum dolor sit amet lorem sinsectutor dolor sinsectutor alorum adipscing lorem.</p>
+              </div>
+
+              <div class="news-post section">
+                <h4><a href="#">This is the headline of a recent news story</a></h4>
+                <p class="date"><span class="month">03.</span><span class="day">24.</span></p>
+              </div>
+
+              <div class="news-post section last">
+                <h4><a href="#">This is the headline of a recent news story</a></h4>
+                <p class="date"><span class="month">03.</span><span class="day">24.</span></p>
+              </div>
+            </div>
           </div>
 
-          <div class="award section row last">
-            <p class="figure"><img src="/images/about-award.jpg" /></p>
-            <h4><a href="#">The Fitzgerald</a></h4>
-            <p class="date"><span class="month">03.</span><span class="day">24.</span></p>
-            <p>2009 Multifamily Executive Magazine Awards</p>
+          <div id="latest-awards">
+            <h3><a href="#">Latest Awards</a></h3>
+
+            <div class="article">
+              <div class="award section row first">
+                <p class="figure"><img src="/images/about-award.jpg" /></p>
+                <h4><a href="#">The Fitzgerald</a></h4>
+                <p class="date"><span class="month">03.</span><span class="day">24.</span></p>
+                <p>2009 Multifamily Executive Magazine Awards</p>
+              </div>
+
+              <div class="award section row last">
+                <p class="figure"><img src="/images/about-award.jpg" /></p>
+                <h4><a href="#">The Fitzgerald</a></h4>
+                <p class="date"><span class="month">03.</span><span class="day">24.</span></p>
+                <p>2009 Multifamily Executive Magazine Awards</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
