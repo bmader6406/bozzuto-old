@@ -240,6 +240,11 @@
     /* @end */
 
     /* @group --special nav */
+      #special-nav {
+        position: absolute;
+        bottom: 0; right: 0;
+        width: 230px;
+      }
       #special-nav a {
         background: #dde0e3 url(../images/structure/bg-special-nav.gif) no-repeat top right;
         font-size: 15px;
@@ -253,21 +258,11 @@
       #special-nav li.open a {
         background: #c2c6ca url(../images/structure/bg-special-nav.gif) no-repeat 100% -26px;
       }
-      #special-nav div.popup {
-        background-color: #c2c6ca;
-        -webkit-box-shadow: -1px 1px 2px #eee;
-        -moz-box-shadow: -1px 1px 2px #eee;
-      }
       #special-nav #find-apartment-form .advanced-search {
         background: transparent url(../images/structure/bg-news-a.gif) no-repeat center left;
       }
       #special-nav #find-apartment-form .advanced-search a {
         background: none;
-      }
-      #special-nav {
-        position: absolute;
-        bottom: 0; right: 0;
-        width: 230px;
       }
       #special-nav label {
         font-size: 11px;
@@ -284,28 +279,35 @@
         padding: 0 10px;
       }
       #special-nav div.popup {
-        display: none;
-        position: absolute;
+        background-color: #c2c6ca;
         bottom: 27px; right: 0;
-        width: 406px;
+        display: none;
         padding: 12px;
-      }
-      #special-nav optgroup {
-        padding: 5px;
-      }
-       #special-nav option {
-        padding: 0;
-      }
-      #special-nav optgroup {
-        font-weight: bold;
-        font-size: 11px;
-        color: #333333;
+        position: absolute;
+        width: 406px;
+        -webkit-box-shadow: -1px 1px 2px #eee;
+        -moz-box-shadow: -1px 1px 2px #eee;
       }
       #special-nav option {
         font-weight: normal;
+        padding: 0;
+      }
+      #special-nav optgroup {
+        color: #333333;
+        font-weight: bold;
+        font-size: 11px;
+        padding: 5px;
       }
       #special-nav select {
         color: #333333;
+      }
+      .community #special-nav input {
+        width: 350px;
+      }
+      .community #special-nav button {
+        position: absolute;
+        right: 0;
+        top: 0;
       }
       #header #find-apartment-form {
         height: 136px;
@@ -351,9 +353,6 @@
         font-size: 11px;
         font-weight: bold;
         color: #636972;
-      }
-      .community #special-nav input {
-        width: 350px;
       }
     /* @end */
 

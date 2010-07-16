@@ -1,12 +1,12 @@
 <% content_for :special_nav do %>
   <ul id="special-nav">
     <li>
-      <a href="#">Send to Friend</a>
+      <a href="#">Send to friend</a>
       <div class="popup">
         <% form_tag send_to_friend_path(@community) do %>
           <p>
             <label>
-              <strong>Input your friend&rsquo;s email address</strong> to lorem ipsum dolor sit dolor sinsectutor.
+              <strong>Input your friend&rsquo;s email address</strong> to send <%= @community.short_title || @community.title %> info
             </label>
           </p>
           <p class="fields">
@@ -17,11 +17,11 @@
       </div>
     </li>
     <li>
-      <a href="#">Send to Phone</a>
+      <a href="#">Send to phone</a>
       <div class="popup">
         <% form_tag info_messages_url(@community) do %>
           <% content_tag :label, :for => 'phone_number' do %>
-            <strong>Input your phone number</strong> to <%=h @community.title %>.
+            <strong>Input your phone number</strong> for <%= @community.short_title || @community.title %> info. Std msg rates apply.
           <% end %>
           <p class="fields">
             <%= text_field_tag 'phone_number' %>
@@ -31,15 +31,15 @@
       </div>
     </li>
     <li>
-      <a href="#">Join our Mailing List</a>
+      <a href="#">Send me updates</a>
       <div class="popup">
         <form>
-          <p>
-          <label><strong>Input your email address</strong> to lorem ipsum dolor sit dolor sinsectutor.</label>
-          </p>
+          <label>
+            <strong>Input your email address</strong> to stay informed about <%= @community.short_title || @community.title %> incentives and events.
+          </label>
           <p class="fields">
-          <input type="text" name="mailing_list_email" />
-          <button type="submit">Send</button>
+            <input type="text" name="mailing_list_email" />
+            <button type="submit">Send</button>
           </p>
         </form>
       </div>
