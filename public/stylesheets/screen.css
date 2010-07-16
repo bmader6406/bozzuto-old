@@ -3631,6 +3631,7 @@
   }
   #content .property-listing div.info div.learn-more ul.community-icons li a {
     background-position: 0 0;
+    background-repeat: no-repeat;
     display: block;
     height: 45px;
     overflow: hidden;
