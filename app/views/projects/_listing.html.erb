@@ -27,10 +27,12 @@
         <%= link_to 'Read More', project_path(@section, project) %>
       </h2>
 
-      <p>
-        <strong>Completion Date</strong>:
-        <%= project.completion_date.to_formatted_s(:month_year) %>
-      </p>
+      <% if project.completion_date.present? %>
+        <p>
+          <strong>Completion Date</strong>:
+          <%= project.completion_date.to_formatted_s(:month_year) %>
+        </p>
+      <% end %>
     </div>
   </div>
 </li>

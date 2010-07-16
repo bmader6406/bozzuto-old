@@ -44,9 +44,11 @@
             </p>
           <% end %>
 
-          <p class="date">
-            <%= project.completion_date.to_formatted_s(:related_project).upcase %>
-          </p>
+          <% if project.completion_date.present? %>
+            <p class="date">
+              <%= project.completion_date.to_formatted_s(:related_project).upcase %>
+            </p>
+          <% end %>
 
           <p>
             <% link_to project_path(@section, project) do %>
