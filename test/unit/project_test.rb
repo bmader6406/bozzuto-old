@@ -12,6 +12,8 @@ class ProjectTest < ActiveSupport::TestCase
     should_belong_to :section
     should_have_and_belong_to_many :project_categories
 
+    should_validate_presence_of :completion_date
+
     context 'in_section named scope' do
       setup do
         @section = Section.make

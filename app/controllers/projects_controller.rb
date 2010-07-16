@@ -9,5 +9,6 @@ class ProjectsController < SectionContentController
   def show
     @project = section_projects.find(params[:project_id])
     @updates = @project.updates.published.paginate(:page => params[:page])
+    @related_projects = @project.related_projects
   end
 end

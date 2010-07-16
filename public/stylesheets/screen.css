@@ -1649,12 +1649,14 @@
   /* @end */
 
   /* @group --sidebar */
-    .property #sidebar p.call-to-action a {
+    .property #sidebar p.call-to-action a,
+    .project #content p.call-to-action a {
       font-size: 15px;
       line-height: 28px;
       color: #000;
     }
-    .property #sidebar p.call-to-action a:hover {
+    .property #sidebar p.call-to-action a:hover,
+    .project #content p.call-to-action a:hover {
       text-decoration: none;
     }
   /* @end */

@@ -98,6 +98,7 @@ en:
         brochure_link_text: Brochure Link Text
         brochure_type: Brochure Type
         brochure_url: Brochure URL
+        completion_date: Completion Date
         contact_text: Contact Copy
         facebook_url: Facebook URL
         features_1_title: 'Features Section #1 Title'
@@ -157,7 +158,7 @@ en:
         features_1_text: Use a single bulleted list. Content will be automatically formatted into two columns.
         features_2_text: Use a single bulleted list. Content will be automatically formatted into two columns.
         features_3_text: Use a single bulleted list. Content will be automatically formatted into two columns.
-        listing_image: Image dimensions should be 150x150
+        listing_image: Image will be resized to 230x145 and 150x150
         short_title: Shown as the title in the main slideshow, must be shorter than 22 characters
       property_feature:
         icon: Image dimensions should be 44x44

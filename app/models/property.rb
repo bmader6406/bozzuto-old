@@ -31,7 +31,7 @@ class Property < ActiveRecord::Base
 
   has_attached_file :listing_image,
     :url           => '/system/:class/:id/:style.:extension',
-    :styles        => { :square => '150x150#' },
+    :styles        => { :square => '150x150#', :rect => '230x145#' },
     :default_style => :square
 
   has_attached_file :brochure,

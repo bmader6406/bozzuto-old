@@ -32,69 +32,34 @@
   </div>
 <% end %>
 
-<div class="similar-projects">
-  <h4>
-    <a href="#">Similar Projects</a>
-  </h4>
-  <ul>
-    <li>
-      <p class="photo">
-        <a href="#"><img src="/images/project-adtl.jpg" alt="FPO" /></a>
-      </p>
-      <p class="date">
-        MAR. 2010
-      </p>
-      <p>
-        <a href="#">Meropointe, Wheaton, MD</a>
-      </p>
-      <p>
-        275 apartment homes with 20,000 sf ground floor retail space.
-      </p>
-    </li>
-    <li>
-      <p class="photo">
-        <a href="#"><img src="/images/project-adtl.jpg" alt="FPO" /></a>
-      </p>
-      <p class="date">
-        MAR. 2010
-      </p>
-      <p>
-        <a href="#">Meropointe, Wheaton, MD</a>
-      </p>
-      <p>
-        275 apartment homes with 20,000 sf ground floor retail space.
-      </p>
-    </li>
-    <li>
-      <p class="photo">
-        <a href="#"><img src="/images/project-adtl.jpg" alt="FPO" /></a>
-      </p>
-      <p class="date">
-        MAR. 2010
-      </p>
-      <p>
-        <a href="#">Meropointe, Wheaton, MD</a>
-      </p>
-      <p>
-        275 apartment homes with 20,000 sf ground floor retail space.
-      </p>
-    </li>
-    <li>
-      <p class="photo">
-        <a href="#"><img src="/images/project-adtl.jpg" alt="FPO" /></a>
-      </p>
-      <p class="date">
-        MAR. 2010
-      </p>
-      <p>
-        <a href="#">Meropointe, Wheaton, MD</a>
-      </p>
-      <p>
-        275 apartment homes with 20,000 sf ground floor retail space.
-      </p>
-    </li>
-  </ul>
-  <p>
-    <a href="#">View More</a>
-  </p>
-</div>
+<% if @related_projects.any? %>
+  <div class="similar-projects">
+    <h4><%= link_to 'Similar Projects', projects_path(@section) %></h4>
+    <ul>
+      <% @related_projects.each do |project| %>
+        <li>
+          <% if project.listing_image? %>
+            <p class="photo">
+              <%= link_to image_tag(project.listing_image.url(:rect)), project_path(@section, project) %>
+            </p>
+          <% end %>
+
+          <p class="date">
+            <%= project.completion_date.to_formatted_s(:related_project).upcase %>
+          </p>
+
+          <p>
+            <% link_to project_path(@section, project) do %>
+              <%= project.short_title || project.title %>, <%= project.city %>
+            <% end %>
+          </p>
+          <% if project.listing_title.present? %>
+            <p><%= project.listing_title %></p>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+
+    <p><%= link_to 'View More', projects_path(@section) %></p>
+  </div>
+<% end %>
