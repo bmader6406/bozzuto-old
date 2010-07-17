@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PhysicalProperty xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Management Id="55973">
+    <PropertyContacts>
+      <CompanyInfo xmlns="http://my-company.com/namespace" Type="manager">
+        <ContactName>BOZZUTO MANAGEMENT COMPANY</ContactName>
+      </CompanyInfo>
+    </PropertyContacts>
+  </Management>
+  <Property ManagementID="55973">
+    <PropertyID>
+      <Identification xmlns="http://my-company.com/namespace" Type="market rate apt">
+        <PrimaryID>14317</PrimaryID>
+        <SecondaryID>00000092</SecondaryID>
+        <MarketingName>Hunters Glen</MarketingName>
+        <WebSite>http://www.huntersglenaparts.com</WebSite>
+      </Identification>
+      <Address xmlns="http://my-company.com/namespace" Type="property">
+        <Address1>14210 Slidell Court</Address1>
+        <City>Upper Marlboro</City>
+        <State>MD</State>
+        <PostalCode>20772</PostalCode>
+        <CountyName>Prince George's</CountyName>
+        <Email>huntersglen@bozzuto.com</Email>
+      </Address>
+      <Phone xmlns="http://my-company.com/namespace" Type="office">
+        <PhoneNumber>301-627-0941</PhoneNumber>
+      </Phone>
+    </PropertyID>
+    <ILS_Identification Type="Unspecified" RentalType="Unspecified"/>
+    <Information>
+      <StructureType>Standard</StructureType>
+      <UnitCount>0</UnitCount>
+      <OfficeHour>
+        <OpenTime>09:00 AM</OpenTime>
+        <CloseTime>06:00 PM</CloseTime>
+        <Day>Monday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>09:00 AM</OpenTime>
+        <CloseTime>06:00 PM</CloseTime>
+        <Day>Tuesday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>09:00 AM</OpenTime>
+        <CloseTime>06:00 PM</CloseTime>
+        <Day>Wednesday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>09:00 AM</OpenTime>
+        <CloseTime>06:00 PM</CloseTime>
+        <Day>Thursday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>08:00 AM</OpenTime>
+        <CloseTime>05:00 PM</CloseTime>
+        <Day>Friday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>10:00 AM</OpenTime>
+        <CloseTime>05:00 PM</CloseTime>
+        <Day>Saturday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>12:00 PM</OpenTime>
+        <CloseTime>05:00 PM</CloseTime>
+        <Day>Sunday</Day>
+      </OfficeHour>
+      <ShortDescription>Hunters Glen is located in the planned community of the village of Marlborough &amp; excudes a certain small town charm.  You'll never run out of things to do from the clubhouse with a fitness center, pool, or even the 18 hold golf course &amp; country club nearby.  You won't ever want to leave!</ShortDescription>
+      <LongDescription>Hunters Glen is located in the planned community of the Villages of Marlborough, and exudes a certain small town charm. Historic Upper Marlboro, Maryland, provides a scenic backdrop. Northern Virginia and Washington, DC, are short commutes away, while historic Annapolis and the Chesapeake Bay are close by. You'll never run out of things to do at Hunters Glen. There's a fully equipped exercise room, as well as biking and jogging paths. There's even an 18-hole golf course next door. Come home to Hunters Glen and you'll find well-equipped kitchens, mini blinds and full-size washer dryer in every apartment. There are private balconies and patios, and some apartments have vaulted ceilings. A fireplace is optional as well. Garages are available for a monthly charge. No wonder Hunters Glen is the ideal location for those who want the best of everything.</LongDescription>
+      <PropertyAvailabilityURL>http://units.realtydatatrust.com/unittype.aspx?ils=345&amp;propid=14317</PropertyAvailabilityURL>
+    </Information>
+    <Amenity Type="Other">
+      <Description>Air Conditioning</Description>
+      <Rank>1</Rank>
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>18 hole golf course next door </Description>
+      <Rank>2</Rank>
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Car care area</Description>
+      <Rank>3</Rank>
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Clubhouse</Description>
+      <Rank>4</Rank>
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Dishwasher</Description>
+      <Rank>5</Rank>
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>English garden</Description>
+      <Rank>6</Rank>
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Fitness Center</Description>
+      <Rank>7</Rank>
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Garage</Description>
+      <Rank>8</Rank>
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>House-Sitting Service</Description>
+      <Rank>9</Rank>
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>On-Site Laundry</Description>
+      <Rank>10</Rank>
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>On-Site Maintenance</Description>
+      <Rank>11</Rank>
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>On-Site Management</Description>
+      <Rank>12</Rank>
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Package Receiving</Description>
+      <Rank>13</Rank>
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Parking Spaces</Description>
+      <Rank>14</Rank>
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Playground</Description>
+      <Rank>15</Rank>
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Pool(s)</Description>
+      <Rank>16</Rank>
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Sand volleyball court</Description>
+      <Rank>17</Rank>
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Storgae Spaces</Description>
+      <Rank>18</Rank>
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Washer/Dryer</Description>
+      <Rank>19</Rank>
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Wheelchair Access</Description>
+      <Rank>20</Rank>
+    </Amenity>
+    <Floorplan Id="9797">
+      <Name>1 Bedroom 1 Bath</Name>
+      <Comment>1 Bedroom/1 Bath</Comment>
+      <UnitCount>34</UnitCount>
+      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=9797</FloorplanAvailabilityURL>
+      <DisplayedUnitsAvailable>2</DisplayedUnitsAvailable>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Bedrooms</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1</Count>
+        <Comment>Bathrooms</Comment>
+      </Room>
+      <SquareFeet Min="780" Max="788"/>
+      <MarketRent Min="1375" Max="1445"/>
+      <EffectiveRent Min="1375" Max="1445"/>
+      <File Id="13607" Active="true">
+        <Type>Floorplan</Type>
+        <Description/>
+        <Name/>
+        <Caption/>
+        <Format>image/pjpeg</Format>
+        <Src>http://my.vaultware.com/ControlPanel3.0/GetImage.aspx?id=13607</Src>
+        <Rank/>
+      </File>
+      <File Id="13610" Active="true">
+        <Type>Floorplan</Type>
+        <Description/>
+        <Name/>
+        <Caption/>
+        <Format>image/pjpeg</Format>
+        <Src>http://my.vaultware.com/ControlPanel3.0/GetImage.aspx?id=13610</Src>
+        <Rank>1</Rank>
+      </File>
+    </Floorplan>
+    <Floorplan Id="9798">
+      <Name>1 Bedroom W/Den, 1 Bath</Name>
+      <Comment>1 Bedroom/1 Bath Den</Comment>
+      <UnitCount>16</UnitCount>
+      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=9798</FloorplanAvailabilityURL>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Bedrooms</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1</Count>
+        <Comment>Bathrooms</Comment>
+      </Room>
+      <SquareFeet Min="881" Max="881"/>
+      <MarketRent Min="1465" Max="1540"/>
+      <EffectiveRent Min="1465" Max="1540"/>
+      <File Id="13606" Active="true">
+        <Type>Floorplan</Type>
+        <Description/>
+        <Name/>
+        <Caption/>
+        <Format>image/pjpeg</Format>
+        <Src>http://my.vaultware.com/ControlPanel3.0/GetImage.aspx?id=13606</Src>
+        <Rank>1</Rank>
+      </File>
+    </Floorplan>
+    <Floorplan Id="9799">
+      <Name>1 Bedroom W/Loft, 1 Bath</Name>
+      <Comment>1 Bedroom/1 Bath Loft</Comment>
+      <UnitCount>14</UnitCount>
+      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=9799</FloorplanAvailabilityURL>
+      <DisplayedUnitsAvailable>1</DisplayedUnitsAvailable>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Bedrooms</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1</Count>
+        <Comment>Bathrooms</Comment>
+      </Room>
+      <SquareFeet Min="951" Max="951"/>
+      <MarketRent Min="1595" Max="1595"/>
+      <EffectiveRent Min="1595" Max="1595"/>
+      <File Id="13609" Active="true">
+        <Type>Floorplan</Type>
+        <Description/>
+        <Name/>
+        <Caption/>
+        <Format>image/pjpeg</Format>
+        <Src>http://my.vaultware.com/ControlPanel3.0/GetImage.aspx?id=13609</Src>
+        <Rank>1</Rank>
+      </File>
+    </Floorplan>
+    <Floorplan Id="9800">
+      <Name>2 Bedroom 2 Bath</Name>
+      <Comment>2 Bedroom/2 Bath</Comment>
+      <UnitCount>63</UnitCount>
+      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=9800</FloorplanAvailabilityURL>
+      <DisplayedUnitsAvailable>4</DisplayedUnitsAvailable>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Bedrooms</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2</Count>
+        <Comment>Bathrooms</Comment>
+      </Room>
+      <SquareFeet Min="971" Max="1005"/>
+      <MarketRent Min="1580" Max="1660"/>
+      <EffectiveRent Min="1580" Max="1660"/>
+    </Floorplan>
+    <Floorplan Id="9801">
+      <Name>3 Bedroom 2 Bath</Name>
+      <Comment>3 Bedroom/2 Bath</Comment>
+      <UnitCount>27</UnitCount>
+      <FloorplanAvailabilityURL>http://units.realtydatatrust.com/unitavailability.aspx?ils=345&amp;fid=9801</FloorplanAvailabilityURL>
+      <DisplayedUnitsAvailable>1</DisplayedUnitsAvailable>
+      <Room Type="Bedroom">
+        <Count>3</Count>
+        <Comment>Bedrooms</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2</Count>
+        <Comment>Bathrooms</Comment>
+      </Room>
+      <SquareFeet Min="1154" Max="1154"/>
+      <MarketRent Min="1850" Max="1850"/>
+      <EffectiveRent Min="1850" Max="1850"/>
+    </Floorplan>
+    <File Id="13608" Active="true">
+      <Type>Photo</Type>
+      <Description>Clubhouse</Description>
+      <Name>Clubhouse</Name>
+      <Caption>Clubhouse</Caption>
+      <Format>image/pjpeg</Format>
+      <Src>http://my.vaultware.com/ControlPanel3.0/GetImage.aspx?id=13608</Src>
+      <Rank/>
+    </File>
+    <File Id="13611" Active="true">
+      <Type>Photo</Type>
+      <Description>Courtyard</Description>
+      <Name>Courtyard</Name>
+      <Caption>Courtyard</Caption>
+      <Format>image/pjpeg</Format>
+      <Src>http://my.vaultware.com/ControlPanel3.0/GetImage.aspx?id=13611</Src>
+      <Rank/>
+    </File>
+    <File Id="13612" Active="true">
+      <Type>Photo</Type>
+      <Description>Fitness Center</Description>
+      <Name>Fitness Center</Name>
+      <Caption>Fitness Center</Caption>
+      <Format>image/pjpeg</Format>
+      <Src>http://my.vaultware.com/ControlPanel3.0/GetImage.aspx?id=13612</Src>
+      <Rank/>
+    </File>
+    <File Id="13613" Active="true">
+      <Type>Photo</Type>
+      <Description>Living Room</Description>
+      <Name>Living Room</Name>
+      <Caption>Living Room</Caption>
+      <Format>image/pjpeg</Format>
+      <Src>http://my.vaultware.com/ControlPanel3.0/GetImage.aspx?id=13613</Src>
+      <Rank/>
+    </File>
+    <File Id="13614" Active="true">
+      <Type>Photo</Type>
+      <Description>Exterior</Description>
+      <Name>Exterior</Name>
+      <Caption>Exterior</Caption>
+      <Format>image/pjpeg</Format>
+      <Src>http://my.vaultware.com/ControlPanel3.0/GetImage.aspx?id=13614</Src>
+      <Rank>1</Rank>
+    </File>
+    <File Id="13615" Active="true">
+      <Type>Photo</Type>
+      <Description>Kitchen</Description>
+      <Name>Kitchen</Name>
+      <Caption>Kitchen</Caption>
+      <Format>image/pjpeg</Format>
+      <Src>http://my.vaultware.com/ControlPanel3.0/GetImage.aspx?id=13615</Src>
+      <Rank/>
+    </File>
+    <File Id="13616" Active="true">
+      <Type>Photo</Type>
+      <Description>Pool</Description>
+      <Name>Pool</Name>
+      <Caption>Pool</Caption>
+      <Format>image/pjpeg</Format>
+      <Src>http://my.vaultware.com/ControlPanel3.0/GetImage.aspx?id=13616</Src>
+      <Rank/>
+    </File>
+  </Property>
+</PhysicalProperty>

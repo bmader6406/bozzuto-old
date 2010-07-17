@@ -9,17 +9,7 @@ module Vaultware
     def process
       data.xpath('/PhysicalProperty/Property', ns).each do |property|
         process_property(property)
-
-        property.xpath('./Floorplan').each do |plan|
-          # Floorplan elements that have more than one File child
-          # should be treated as separate floor plans, one for
-          # each File
-          if aggregate_floor_plan?(plan)
-            process_aggregate_floor_plan(plan)
-          else
-            process_single_floor_plan(plan)
-          end
-        end
+        process_floor_plans(property)
       end
       true
     end
@@ -45,49 +35,43 @@ module Vaultware
       })
     end
 
-    def aggregate_floor_plan?(plan)
-      plan.xpath('./File').count > 1
+    def rolled_up?(property)
+      # a rolled up property has one or more floor plans elements with
+      # two or more file children
+      property.xpath('./Floorplan').any? { |plan|
+        plan.xpath('./File').count > 1
+      }
     end
 
-    def process_aggregate_floor_plan(plan)
-      attrs = floor_plan_attributes(plan)
-      files = plan.xpath('./File')
+    def process_floor_plans(property)
+      # rolled up floor plans use the File with a rank of 1
+      # unrolled floor plans just use the first File
+      file_selector = rolled_up?(property) ? './File[Rank=1]' : './File'
 
-      # create one floor plan for each file
-      files.each do |file|
-        create_or_update_floor_plan(attrs.merge(
-          :vaultware_file_id => file['Id'].to_i,
-          :image_url => file.at('./Src').content
-        ))
+      property.xpath('./Floorplan').each do |plan|
+        attrs = floor_plan_attributes(plan)
+        file = plan.at(file_selector)
+
+        attrs.merge!(
+          :vaultware_file_id => (file['Id'].to_i rescue nil),
+          :image_url         => (file.at('./Src').content rescue nil)
+        )
+
+        create_or_update_floor_plan(attrs)
       end
-    end
-
-    def process_single_floor_plan(plan)
-      attrs = floor_plan_attributes(plan)
-      file = plan.at('./File')
-
-      if file.present?
-        attrs.merge!({
-          :vaultware_file_id => file['Id'].to_i,
-          :image_url         => file.at('./Src').content
-        })
-      end
-
-      create_or_update_floor_plan(attrs)
     end
 
     def create_or_update_floor_plan(attrs)
+      # don't change floor plan group on update -- penthouse doesn't come
+      # over in the feed, so admins need to be able to change group
+      # and have it persist
       find_conditions = {
         :conditions => {
-          :vaultware_floor_plan_id => attrs[:vaultware_floor_plan_id],
-          :vaultware_file_id       => attrs[:vaultware_file_id]
+          :vaultware_floor_plan_id => attrs[:vaultware_floor_plan_id]
         }
       }
 
       if plan = @community.floor_plans.find(:first, find_conditions)
-        # don't change floor plan group on update -- penthouse doesn't come
-        # over in the feed, so admins need to be able to change group
-        # and have it persist
         plan.update_attributes(attrs.delete_if { |k, v| k == :floor_plan_group })
       else
         @community.floor_plans << ApartmentFloorPlan.new(attrs)
@@ -164,6 +148,5 @@ module Vaultware
     def ns
       { 'ns' => 'http://my-company.com/namespace' }
     end
-
   end
 end
