@@ -1,4 +1,5 @@
 <% content_for :body_class do %>community floor-plans<% end %>
+<% render_meta(@community, :floor_plans) %>
 
 <% @community.homes(:include => :floor_plans).each do |home| %>
   <div id="<%= dom_id(home) %>" class="floor-plan-group">

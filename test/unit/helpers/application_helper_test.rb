@@ -3,12 +3,38 @@ require 'test_helper'
 class ApplicationHelperTest < ActionView::TestCase
   context "ApplicationHelper" do
     context '#render_meta' do
-      setup { @page = Page.new }
+      context 'with no prefix' do
+        setup do
+          @page = Page.new(
+            :meta_title       => 'Title!',
+            :meta_description => 'Description!',
+            :meta_keywords    => 'Keywords!'
+          )
+          expects(:content_for).with(:meta_title, @page.meta_title)
+          expects(:content_for).with(:meta_description, @page.meta_description)
+          expects(:content_for).with(:meta_keywords, @page.meta_keywords)
+        end
 
-      should 'render layouts/seo_meta' do
-        opts = render_meta(@page)
-        assert_equal 'layouts/seo_meta', opts[:partial]
-        assert_equal @page, opts[:locals][:item]
+        should 'send the data to content_for' do
+          render_meta(@page)
+        end
+      end
+
+      context 'with a prefix' do
+        setup do
+          @community = ApartmentCommunity.new(
+            :features_meta_title       => 'Title!',
+            :features_meta_description => 'Description!',
+            :features_meta_keywords    => 'Keywords!'
+          )
+          expects(:content_for).with(:meta_title, @community.features_meta_title)
+          expects(:content_for).with(:meta_description, @community.features_meta_description)
+          expects(:content_for).with(:meta_keywords, @community.features_meta_keywords)
+        end
+
+        should 'send the data to content_for' do
+          render_meta(@community, :features)
+        end
       end
     end
 
@@ -111,9 +137,5 @@ class ApplicationHelperTest < ActionView::TestCase
         assert_select facebook.root, 'iframe'
       end
     end
-  end
-
-  def render(opts)
-    opts
   end
 end

@@ -1,4 +1,5 @@
 <% content_for :body_class do %>community property floor-plans<% end %>
+<% render_meta(@community, :floor_plans) %>
 
 <% @groups.each do |group| %>
   <% plans_in_group = @community.floor_plans.in_group(group) %>

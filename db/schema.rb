@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100716143952) do
+ActiveRecord::Schema.define(:version => 20100718211626) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -326,14 +326,14 @@ ActiveRecord::Schema.define(:version => 20100716143952) do
   end
 
   create_table "properties", :force => true do |t|
-    t.string   "title",                                         :null => false
+    t.string   "title",                                            :null => false
     t.string   "subtitle"
-    t.integer  "city_id",                                       :null => false
-    t.boolean  "elite",                      :default => false, :null => false
-    t.boolean  "smart_share",                :default => false, :null => false
-    t.boolean  "smart_rent",                 :default => false, :null => false
-    t.boolean  "green",                      :default => false, :null => false
-    t.boolean  "non_smoking",                :default => false, :null => false
+    t.integer  "city_id",                                          :null => false
+    t.boolean  "elite",                         :default => false, :null => false
+    t.boolean  "smart_share",                   :default => false, :null => false
+    t.boolean  "smart_rent",                    :default => false, :null => false
+    t.boolean  "green",                         :default => false, :null => false
+    t.boolean  "non_smoking",                   :default => false, :null => false
     t.string   "website_url"
     t.string   "video_url"
     t.string   "facebook_url"
@@ -352,7 +352,7 @@ ActiveRecord::Schema.define(:version => 20100716143952) do
     t.datetime "updated_at"
     t.integer  "local_info_feed_id"
     t.integer  "vaultware_id"
-    t.boolean  "use_market_prices",          :default => false, :null => false
+    t.boolean  "use_market_prices",             :default => false, :null => false
     t.string   "availability_url"
     t.string   "type"
     t.integer  "section_id"
@@ -366,7 +366,7 @@ ActiveRecord::Schema.define(:version => 20100716143952) do
     t.string   "overview_bullet_1"
     t.string   "overview_bullet_2"
     t.string   "overview_bullet_3"
-    t.boolean  "published",                  :default => false, :null => false
+    t.boolean  "published",                     :default => false, :null => false
     t.string   "features_1_title"
     t.string   "features_2_title"
     t.text     "features_2_text"
@@ -374,7 +374,7 @@ ActiveRecord::Schema.define(:version => 20100716143952) do
     t.text     "features_3_text"
     t.string   "short_title"
     t.string   "phone_number"
-    t.integer  "brochure_type",              :default => 0,     :null => false
+    t.integer  "brochure_type",                 :default => 0,     :null => false
     t.string   "brochure_link_text"
     t.string   "brochure_file_name"
     t.string   "brochure_content_type"
@@ -383,9 +383,27 @@ ActiveRecord::Schema.define(:version => 20100716143952) do
     t.string   "meta_title"
     t.string   "meta_description"
     t.string   "meta_keywords"
-    t.boolean  "show_lead_2_lease",          :default => false, :null => false
+    t.boolean  "show_lead_2_lease",             :default => false, :null => false
     t.string   "lead_2_lease_email"
     t.date     "completion_date"
+    t.string   "features_meta_title"
+    t.string   "features_meta_description"
+    t.string   "features_meta_keywords"
+    t.string   "media_meta_title"
+    t.string   "media_meta_description"
+    t.string   "media_meta_keywords"
+    t.string   "floor_plans_meta_title"
+    t.string   "floor_plans_meta_description"
+    t.string   "floor_plans_meta_keywords"
+    t.string   "neighborhood_meta_title"
+    t.string   "neighborhood_meta_description"
+    t.string   "neighborhood_meta_keywords"
+    t.string   "promotions_meta_title"
+    t.string   "promotions_meta_description"
+    t.string   "promotions_meta_keywords"
+    t.string   "contact_meta_title"
+    t.string   "contact_meta_description"
+    t.string   "contact_meta_keywords"
   end
 
   create_table "properties_property_features", :id => false, :force => true do |t|

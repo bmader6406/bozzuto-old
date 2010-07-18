@@ -3,8 +3,13 @@ module ApplicationHelper
     params[:controller] == 'home_pages'
   end
 
-  def render_meta(item)
-    render :partial => 'layouts/seo_meta', :locals => { :item => item }
+  def render_meta(object, prefix = nil)
+    prefix = "#{prefix}_" if prefix.present?
+
+    %w(meta_title meta_description meta_keywords).each do |field|
+      meta = object.send("#{prefix}#{field}")
+      content_for(field.to_sym, meta) if meta.present?
+    end
   end
 
   def current_if(opts)

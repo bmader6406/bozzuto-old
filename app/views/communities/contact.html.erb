@@ -1,4 +1,5 @@
 <% content_for :body_class do %>community property features<% end %>
+<% render_meta(@community, :contact) %>
 
 <% if flash[:email_sent] -%>
 <div class="notice">

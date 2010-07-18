@@ -1,4 +1,5 @@
 <% content_for :body_class do %>community property videos-and-photos<% end %>
+<% render_meta(@community, :media) %>
 
 <% unless @community.videos.empty? %>
   <div class="media-group">
