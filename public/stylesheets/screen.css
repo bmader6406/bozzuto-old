@@ -699,7 +699,13 @@
 
 /* @group wysiwyg style resets */
 
+div.wysiwyg ul {
+  margin-left: 25px;
+}
 
+div.wysiwyg ul li {
+  list-style: disc;
+}
 
 /* @end */
 
@@ -2125,7 +2131,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
         width: 100%;
-        
+        white-
       }
       .project #main-content .content .main-content ul.project-updates li h3 {
         color: #84848b;
