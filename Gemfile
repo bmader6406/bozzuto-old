@@ -16,6 +16,7 @@ gem 'truncate_html'
 gem 'paperclip'
 gem 'rcov'
 gem 'whenever'
+gem 'hoptoad_notifier'
 
 group :test do
   gem 'shoulda', '2.10.3'
