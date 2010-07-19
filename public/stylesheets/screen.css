@@ -3719,3 +3719,48 @@ div.wysiwyg ul li {
     margin-left: 0;
   }
 /* @end */
+
+/* @group community contact forms */
+
+#community-contact-form form {
+  margin: 15px 0;
+}
+
+#community-contact-form form h3 {
+  margin-bottom: 1em;
+}
+
+#community-contact-form form p {
+  margin-bottom: 1.5em;
+  overflow: hidden;
+  width: 100%;
+}
+
+#community-contact-form form label {
+  display: block;
+  float: left;
+  font-size: 14px;
+  margin-right: 15px;
+  text-align: right;
+  width: 175px;
+}
+
+#community-contact-form form input {
+  width: 315px;
+}
+
+#community-contact-form form fieldset {
+  margin-bottom: 2em;
+}
+
+#community-contact-form form p.submit {
+  padding-left: 190px;
+}
+
+#community-contact-form form p.submit input {
+  background: #c0c5cb;
+  font-size: 16px;
+}
+
+
+/* @end */

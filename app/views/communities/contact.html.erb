@@ -17,23 +17,53 @@
     
     <% form_for :submission, :url => contact_apartment_community_path do |f| -%>      
       <fieldset>
-        <legend>Contact Information</legend>
-        <%= f.text_input :first_name %>
-        <%= f.text_input :last_name %>
-        <%= f.text_input :address_1 %>
-        <%= f.text_input :address_2 %>
-        <%= f.text_input :city %>
-        <%= f.text_input :state %>
-        <%= f.text_input :zip_code, :label => "ZIP Code" %>
-        <%= f.text_input :primary_phone, :label => "Primary Phone" %>
-        <%= f.text_input :secondary_phone, :label => "Secondary Phone" %>
-        <%= f.text_input :email %>
+        <h3>Contact Information</h3>
+        <p>
+          <%= f.label :first_name, "First Name" %>
+          <%= f.text_field :first_name %>
+        </p>
+        <p>
+          <%= f.label :last_name, "Last Name" %>
+          <%= f.text_field :last_name %>
+        </p>
+        <p>
+          <%= f.label :address_1, "Address" %>
+          <%= f.text_field :address_1 %>
+        </p>
+        <p>
+          <%= f.label :address_2, "Address (cont.)" %>
+          <%= f.text_field :address_2 %>
+        </p>
+        <p>
+          <%= f.label :city, "City" %>
+          <%= f.text_field :city %>
+        </p>
+        <p>
+          <%= f.label :state, "State" %>
+          <%= f.text_field :state %>
+        </p>
+        <p>
+          <%= f.label :zip_code, "Zip Code" %>
+          <%= f.text_field :zip_code %>
+        </p>
+        <p>
+          <%= f.label :primary_phone, "Primary Phone" %>
+          <%= f.text_field :primary_phone %>
+        </p>
+        <p>
+          <%= f.label :secondary_phone, "Secondary Phone" %>
+          <%= f.text_field :secondary_phone %>
+        </p>
+        <p>
+          <%= f.label :email, "E-Mail" %>
+          <%= f.text_field :email %>
+        </p>
       </fieldset>
 
       <fieldset>
-        <legend>Move In Information</legend>
+        <h3>Move In Information</h3>
         <p>
-          <%= f.label :move_in_date, "Desired Move-In Date" %><br />
+          <%= f.label :move_in_date, "Desired Move-In Date" %>
           <%= f.date_select :move_in_date %>
         </p>
 
@@ -53,14 +83,14 @@
         </p>
 
         <p>
-          <%= f.label :comments %><br />
-          <%= f.text_area :comments %>
-        </p>
-
-        <p>
-          <%= f.submit %>
+          <%= f.label :comments %>
+          <%= f.text_area :comments, :cols => 60, :rows => 7 %>
         </p>
       </fieldset>
+      
+      <p class="submit">
+        <%= submit_tag 'Submit' %>
+      </p>
 
     <% end -%>
   </div>
