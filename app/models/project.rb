@@ -27,6 +27,14 @@ class Project < Property
   }
 
   def related_projects(limit = 4)
-    self.class.in_section(section).in_categories(project_category_ids).order_by_completion_date.limit(limit).all(:select => 'DISTINCT properties.id, properties.*')
+    self.class.
+      in_section(section).
+      in_categories(project_category_ids).
+      limit(limit).
+      all(
+        :select     => 'DISTINCT properties.id, properties.*',
+        :conditions => ['properties.id != ?', id],
+        :order      => 'properties.position ASC'
+      )
   end
 end
