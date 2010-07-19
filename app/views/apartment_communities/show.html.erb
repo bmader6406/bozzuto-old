@@ -12,7 +12,9 @@
 
       <div class="intro">
         <p>
-          <%= truncate(@community.overview_text.gsub(/<\/?[^>]*>/,  ""), :length => 300, :omission => "&hellip;").try(:html_safe) %>
+          <% if @community.overview_text.present? -%>
+            <%= truncate(@community.overview_text.gsub(/<\/?[^>]*>/,  ""), :length => 300, :omission => "&hellip;").try(:html_safe) %>
+          <% end -%>
         </p>
       </div>
 
