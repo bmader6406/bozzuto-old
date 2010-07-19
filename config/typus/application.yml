@@ -73,6 +73,8 @@ BodySlideshow:
     default: name
     list: name, page
     form: name, page
+    options:
+      destroy_related: BodySlide
   order_by: 
   relationships: page, slides
   filters: 
