@@ -651,25 +651,57 @@
       position: absolute;
       top: -9999px;
     }
-    .promo {
-      background: #ebedee;
-      clear: both;
-      display: block;
-      line-height: 0;
-      margin: 0 0 30px;
-      padding: 17px;
-      text-align: center;
+
+    div.promo {
+      background: url(/images/bg-promo.png) left top repeat-x #706e7c;
+      color: #fff;
+      height: 104px;
+      overflow: hidden;
     }
-    .landing .promo {
-      width: 506px;
+    
+    div.promo h4,
+    div.promo p {
+      padding-left: 20px;
+      overflow: hidden;
     }
-    .promo img {
-      border: 1px solid #b9bec4;
+    
+    div.promo p {
+      font-size: 13px !important;
+      margin-bottom: 12px;      
     }
+    
+    div.promo h4 {
+      color: #ff9000;
+      font-size: 34px;
+      line-height: 1;
+      margin-bottom: 1px;
+      padding-top: 14px;
+      text-transform: uppercase;
+    }
+    
+    div.promo p a {
+      background: url(/images/bg-promo-a.png) left center no-repeat;
+      color: #fff;
+      float: right;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 0 15px 0 8px;
+    }
+    
+    div.promo p.image {
+      float: left; 
+      margin: 1px 0 0 1px;
+      padding-left: 0;
+    }
+
   /* @end */
 /* @end */
 
+/* @group wysiwyg style resets */
 
+
+
+/* @end */
 
 /* SPECIFIC PAGES =============================================== */
 

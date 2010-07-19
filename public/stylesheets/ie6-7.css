@@ -105,6 +105,10 @@
 * .community #secondary-nav li.current a {
   background: #fff;
 }
+
+* html div.promo p.image {
+  margin-right: 20px;
+}
  
 /***
   2. Typography
