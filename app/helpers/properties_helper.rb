@@ -8,7 +8,7 @@ module PropertiesHelper
       end
       
       if url.present?
-        link_to property.brochure_link_text, url
+        link_to property.brochure_link_text, url, :target => "_blank"
       end
     end
   end

@@ -6,7 +6,7 @@
       <ul id="secondary-nav">
         <% if @project.website_url.present? %>
           <li class="first">
-            <%= link_to 'Visit Website', website_url(@project.website_url) %>
+            <%= link_to 'Visit Website', website_url(@project.website_url), :target => '_blank' %>
           </li>
         <% end %>
         <% if brochure_link(@project) %>
