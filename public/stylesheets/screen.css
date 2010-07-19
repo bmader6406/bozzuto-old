@@ -53,7 +53,7 @@
       font-size: 11px;
       line-height: 11px;
     }
-    button {
+    input[type=submit], button {
       background: #fff;
       overflow: visible;
       vertical-align: top;

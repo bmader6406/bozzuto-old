@@ -15,8 +15,11 @@
   <div class="container">
     <div class="row">
       <div id="sidebar" class="col">
-        <h2>Search By</h2>
-        <% form_for @search, :html => { :id => 'apartment-search-form' } do |f| %>
+        <h2>
+          Search By
+          <%= image_tag 'spinner.gif', :style => 'display: none', :id => 'spinner' %>
+        </h2>
+        <% form_for @search, :method => :get, :html => { :id => 'apartment-search-form' } do |f| %>
           <fieldset id="bedrooms" class="">
             <h3>Bedrooms</h3>
             <ul>
