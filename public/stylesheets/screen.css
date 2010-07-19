@@ -1766,6 +1766,15 @@ div.wysiwyg ul li {
     .community .floor-plan-group .row {
       margin-bottom: 20px;
     }
+    .community .floor-plan-group h2 em a {
+      font-size: 12px;
+      font-style: normal;
+      margin-left: 5px;
+      text-decoration: underline;
+    }
+    .community .floor-plan-group h2 em a:hover {
+      text-decoration: none;
+    }
     .community #community-info ul.nav {
       border-bottom: 10px solid #fff;
     }

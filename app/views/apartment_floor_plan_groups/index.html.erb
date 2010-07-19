@@ -4,11 +4,16 @@
 <% @groups.each do |group| %>
   <% plans_in_group = @community.floor_plans.in_group(group) %>
 
-  <% unless plans_in_group.empty? %>
+  <% if plans_in_group.any? %>
     <div id="<%= dom_id(group) %>" class="floor-plan-group">
-      <h2><%= group.name %></h2>
+      <h2>
+        <%= group.name %>
+        <% if @community.availability_url.present? && plans_in_group.count > ApartmentFloorPlanGroup::DISPLAY_LIMIT %>
+          <em><%= link_to 'View More', @community.availability_url %></em>
+        <% end %>
+      </h2>
 
-      <% plans_in_group.in_groups_of(4, false) do |plans_group| %>
+      <% plans_in_group.take(ApartmentFloorPlanGroup::DISPLAY_LIMIT).in_groups_of(4, false) do |plans_group| %>
         <ul class="row">
           <% plans_group.each do |plan| %>
             <li class="floor-plan">
