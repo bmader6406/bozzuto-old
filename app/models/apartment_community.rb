@@ -15,6 +15,9 @@ class ApartmentCommunity < Community
   named_scope :with_floor_plan_groups, lambda {|ids|
     {:conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE floor_plan_group_id IN (?))", ids]}
   }
+  named_scope :with_property_features, lambda { |ids|
+    {:conditions => ["properties.id IN (SELECT property_id FROM properties_property_features WHERE property_feature_id IN (?))", ids]}
+  }
   named_scope :with_min_price, lambda {|price|
     {:conditions => ['properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE min_rent >= ?)', price.to_i]}
   }
@@ -22,18 +25,9 @@ class ApartmentCommunity < Community
     {:conditions => ['properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE max_rent <= ?)', price.to_i]} if price.to_i > 0
   }
 
-  include FlagShihTzu
-  has_flags :column => 'features',
-                  1 => :fitness_center,
-                  2 => :metro_access,
-                  3 => :pet_friendly,
-                  4 => :washer_and_dryer,
-                  5 => :brand_new
-
   def nearby_communities(limit = 6)
     @nearby_communities ||= city.apartment_communities.near(self).all(:limit => limit)
   end
-
 
   private
 

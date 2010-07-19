@@ -56,27 +56,13 @@
 
           <fieldset id="features_amenities" class="">
             <h3>Most Searched Features &amp; Amenities</h3>
-            <ul>
-              <li>
-                <%= f.check_box :fitness_center, {}, '1', nil %>
-                <%= f.label :fitness_center, 'Fitness Center' %>
-              </li>
-              <li>
-                <%= f.check_box :metro_access, {}, '2', nil %>
-                <%= f.label :metro_access, 'Metro Access' %>
-              </li>
-              <li>
-                <%= f.check_box :pet_friendly, {}, '3', nil %>
-                <%= f.label :pet_friendly, 'Pet-Friendly' %>
-              </li>
-              <li>
-                <%= f.check_box :washer_and_dryer, {}, '4', nil %>
-                <%= f.label :washer_and_dryer, 'Washer & Dryer' %>
-              </li>
-              <li>
-                <%= f.check_box :brand_new, {}, '5', nil %>
-                <%= f.label :brand_new, 'Brand New' %>
-              </li>
+            <ul>              
+              <% PropertyFeature.all.each do |feature| -%>
+                <li>
+                  <%= f.check_box :with_property_features, {:name => 'search[with_property_features][]', :id => feature.name.tableize}, feature.id.to_s, nil %>
+                  <label for="<%= feature.name.tableize %>"><%= feature.name %></label>                  
+                </li>
+              <% end -%>
             </ul>
           </fieldset>
 
