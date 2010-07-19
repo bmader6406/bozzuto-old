@@ -61,7 +61,7 @@ BodySlide:
   fields:
     default: image, position
     list: image, position
-    form: image, body_slideshow
+    form: image, link_url, body_slideshow
   order_by: position
   relationships: body_slideshow
   filters: 

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100719172000) do
+ActiveRecord::Schema.define(:version => 20100719211538) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20100719172000) do
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "link_url"
   end
 
   create_table "body_slideshows", :force => true do |t|
