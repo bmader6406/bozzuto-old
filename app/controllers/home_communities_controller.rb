@@ -1,10 +1,17 @@
 class HomeCommunitiesController < SectionContentController
   include CommunityBehavior
+
+  before_filter :find_communities, :only => [:index, :map]
   
   def index
-    @communities = HomeCommunity.published.ordered_by_title.paginate(:page => params[:page])
+    @communities = @communities.paginate(:page => params[:page])
     render :action => :index, :layout => 'application'
   end
+
+  def map
+    render :action => :map, :layout => 'application'
+  end
+
 
   private
 
@@ -14,5 +21,9 @@ class HomeCommunitiesController < SectionContentController
 
   def find_community
     @community = HomeCommunity.published.find(params[:id])
+  end
+
+  def find_communities
+    @communities = HomeCommunity.published.ordered_by_title
   end
 end

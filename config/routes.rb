@@ -30,7 +30,12 @@ ActionController::Routing::Routes.draw do |map|
       :only       => :index
   end
 
-  map.resources :home_communities, community_options.merge(:path_prefix => 'new-homes') do |community|
+
+  home_community_options = community_options.merge(
+    :path_prefix => 'new-homes',
+    :collection  => { :map => :get }
+  )
+  map.resources :home_communities, home_community_options do |community|
     community.resources :homes, :only => :index
 
     community.resource :info_message, :only => :create # send sms

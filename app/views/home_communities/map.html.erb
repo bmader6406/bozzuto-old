@@ -40,28 +40,34 @@
     <div id="content" class="col">
       <div class="header">
         <ul>
-          <li class="current">
+          <li>
             <%= link_to 'View as List', home_communities_path, :class => 'list' %>
           </li>
-          <li>
+          <li class="current">
             <%= link_to 'View on Map', map_home_communities_path, :class => 'map' %>
           </li>
         </ul>
       </div>
       
-      <div id="view-as-list">
-        <ul>
-          <%= render :partial => 'listing', :collection => @communities, :as => :community %>
-        </ul>
-        <%= property_icon_descriptions %>
-
-        <%= will_paginate(@communities) %>
-      </div>
-      
       <div id="view-as-map">
-        
+        <div id="homes-map" style="width: 100%; height: 600px;"></div>
+
+        <div id="map-properties">
+          <% @communities.each do |community| %>
+            <div class="property" data-jmapping="<%= community.to_jmapping %>">
+              <div class="info-box">
+                <h4><%= link_to community.title, property_path(community) %></h4>
+
+                <% if community.listing_title.present? %>
+                  <p><%= community.listing_title %></p>
+                <% end %>
+
+                <p><%= link_to 'Learn More', property_path(community) %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
-    
   </div>
 </div>

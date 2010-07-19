@@ -10,13 +10,26 @@ class HomeCommunitiesControllerTest < ActionController::TestCase
     context 'a GET to #index' do
       setup do
         5.times { HomeCommunity.make }
-        @communities = HomeCommunity.ordered_by_title.all(:limit => 4)
+        @communities = HomeCommunity.published.ordered_by_title.all(:limit => 4)
 
         get :index
       end
 
       should_respond_with :success
       should_render_template :index
+      should_assign_to(:section) { @section }
+      should_assign_to(:communities) { @communities }
+    end
+
+    context 'a GET to #map' do
+      setup do
+        5.times { HomeCommunity.make }
+        @communities = HomeCommunity.published.ordered_by_title.all
+        get :map
+      end
+
+      should_respond_with :success
+      should_render_template :map
       should_assign_to(:section) { @section }
       should_assign_to(:communities) { @communities }
     end

@@ -1,8 +1,8 @@
 module CommunityBehavior
   def self.included(base)
     base.class_eval do
-      before_filter :find_community, :except => :index
-      layout 'community', :except => :index      
+      before_filter :find_community, :except => [:index, :map]
+      layout 'community', :except => [:index, :map]
     end
   end
 

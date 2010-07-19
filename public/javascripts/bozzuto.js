@@ -82,11 +82,12 @@ window.bozzuto = {};
     
     $('.watch-video a').videoLightbox();
 
-    $('#landing-map').landingMap();
+    $('#landing-map, #homes-map').bozzutoMap();
   });
 
+  // map with custom markers
   (function($) {
-    $.fn.landingMap = function() {
+    $.fn.bozzutoMap = function() {
       if (this.length > 0) {
         var baseIcon = new GIcon(G_DEFAULT_ICON);
         baseIcon.iconSize = new GSize(40, 36);
@@ -119,7 +120,7 @@ window.bozzuto = {};
       return this;
     };
   })(jQuery);
-  
+
   //Video lightbox
   (function($) {
     $.fn.videoLightbox = function(options) {
