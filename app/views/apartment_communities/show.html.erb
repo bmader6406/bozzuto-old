@@ -11,7 +11,9 @@
       <% end %>
 
       <div class="intro">
-        <%= @community.overview_text.try(:html_safe) %>
+        <p>
+          <%= truncate(@community.overview_text.gsub(/<\/?[^>]*>/,  ""), :length => 300, :omission => "&hellip;").try(:html_safe) %>
+        </p>
       </div>
 
       <%= property_bullets %>
