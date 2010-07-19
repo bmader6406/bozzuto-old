@@ -1,4 +1,5 @@
 class ApartmentFloorPlanGroup < ActiveRecord::Base
+  DISPLAY_LIMIT = 8
   has_many :floor_plans,
     :class_name  => 'ApartmentFloorPlan',
     :foreign_key => :floor_plan_group_id,

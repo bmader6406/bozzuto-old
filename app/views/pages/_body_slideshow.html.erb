@@ -2,7 +2,12 @@
   <ul class="slides">
     <% slideshow.slides.each_with_index do |slide, i| %>
       <li id="slide-<%= i + 1 %>" class="section slide">
-        <%= image_tag slide.image.url, :width => 840, :height => 375 %>
+        <% img = image_tag slide.image.url, :width => 840, :height => 375 %>
+        <% if slide.link_url.present? %>
+          <%= link_to raw(img), slide.link_url %>
+        <% else %>
+          <%= raw(img) %>
+        <% end %>
       </li>
     <% end %>
   </ul>

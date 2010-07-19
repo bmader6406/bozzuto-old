@@ -51,6 +51,7 @@ en:
         published_at: Published At
       body_slide:
         body_slideshow: Slideshow
+        link_url: Link URL
       community:
         elite: Elite Community
         smart_share: Bozzuto SmartShare Program
