@@ -2389,26 +2389,11 @@ div.wysiwyg ul li {
 /* @end */
 
 /* @group -homes */
-  .homes #masthead {
-    border-bottom: 1px solid #858890;
-  }
   .homes-search #masthead p.call-to-action {
     margin-top: 12px;
   }
   .homes #masthead p.call-to-action a {
     padding-left: 7px;
-  }
-  .homes-search #masthead .container {
-    position: relative;
-  }
-  .homes #masthead .aside {
-    float: right;
-    padding-top: 4px;
-    width: 229px;
-  }
-  .homes #masthead .figure {
-    position: absolute;
-    top: -24px; right: 0;
   }
   .homes #masthead .aside p.call-to-action a {
     display: block;
@@ -2416,20 +2401,6 @@ div.wysiwyg ul li {
     margin-bottom: 21px;
     padding-left: 9px;
     width: 220px;
-  }
-  .homes #masthead .section {
-    float: left;
-    padding: 0 0 28px 189px;
-    width: 515px;
-  }
-  .homes-search #masthead .section {
-    height: 183px;
-  }
-  .homes #masthead .section .quote {
-    width: 447px;
-  }
-  .homes #masthead .section .citation {
-    margin-top: 9px;
   }
   .homes #content div.header,
   .landing #content div.header,
