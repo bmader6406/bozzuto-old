@@ -20,7 +20,7 @@
               <h4><%= plan.name %></h4>
 
               <p>
-                <%= square_feet(plan) %> |
+                Starting from <%= square_feet(plan) %> |
                 <%= floor_plan_price(plan.min_rent) %><br />
                 <%= link_to 'Reserve', plan.availability_url %>
               </p>
