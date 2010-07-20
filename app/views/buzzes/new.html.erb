@@ -12,12 +12,12 @@
   exclusive to Buzz subscribers.
 </p>
 
-<% form_for @buzz, :url => buzz_path, :method => :post do |f| -%>
+<% form_for @buzz, :url => buzz_path, :method => :post, :html => { :class => "required-form" } do |f| -%>
   <fieldset>
     <h3>Contact Information</h3>
     <p>
     <%= f.label :email %>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, :class => "required email" %>
     </p>
 
     <p>

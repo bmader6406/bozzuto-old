@@ -76,6 +76,11 @@
       top: 0; left: 0;
       width: 164px;
     }
+    .error {
+      color: #500;
+      display: block;
+      margin-left: 190px;
+    }
   /* @end  */
 /* @end */
 
@@ -3713,14 +3718,16 @@ div.wysiwyg ul li {
 }
 
 #community-contact-form form p,
-#new_buzz p {
+#new_buzz p,
+.contact .column-main form p {
   margin-bottom: 1.5em;
   overflow: hidden;
   width: 100%;
 }
 
 #community-contact-form form label,
-#new_buzz label {
+#new_buzz label,
+.contact .column-main label {
   display: block;
   float: left;
   font-size: 14px;
@@ -3730,7 +3737,8 @@ div.wysiwyg ul li {
 }
 
 #community-contact-form form input,
-#new_buzz input {
+#new_buzz input,
+.contact .column-main input {
   width: 315px;
 }
 
@@ -3757,12 +3765,14 @@ div.wysiwyg ul li {
 }
 
 #community-contact-form form p.submit,
-#new_buzz p.submit {
+#new_buzz p.submit,
+.contact .column-main p.submit {
   padding-left: 190px;
 }
 
 #community-contact-form form p.submit input,
-#new_buzz p.submit input {
+#new_buzz p.submit input,
+.contact .column-main p.submit input {
   background: #c0c5cb;
   font-size: 16px;
 }

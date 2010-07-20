@@ -90,6 +90,10 @@ window.bozzuto = {};
     $('#spinner').ajaxStop(function () {
       $(this).hide();
     });
+    
+    $('form.required-form').validate({
+      errorElement: 'em'
+    });
   });
 
   // map with custom markers

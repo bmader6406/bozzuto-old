@@ -15,16 +15,16 @@
   <div id="community-contact-form">
     <%= error_messages_for :submission %>
     
-    <% form_for :submission, :url => contact_apartment_community_path do |f| -%>      
+    <% form_for :submission, :url => contact_apartment_community_path, :html => { :class => "required-form" } do |f| -%>      
       <fieldset>
         <h3>Contact Information</h3>
         <p>
           <%= f.label :first_name, "First Name" %>
-          <%= f.text_field :first_name %>
+          <%= f.text_field :first_name, :class =>"required" %>
         </p>
         <p>
           <%= f.label :last_name, "Last Name" %>
-          <%= f.text_field :last_name %>
+          <%= f.text_field :last_name, :class =>"required" %>
         </p>
         <p>
           <%= f.label :address_1, "Address" %>
@@ -48,7 +48,7 @@
         </p>
         <p>
           <%= f.label :primary_phone, "Primary Phone" %>
-          <%= f.text_field :primary_phone %>
+          <%= f.text_field :primary_phone, :class =>"required" %>
         </p>
         <p>
           <%= f.label :secondary_phone, "Secondary Phone" %>
@@ -56,7 +56,7 @@
         </p>
         <p>
           <%= f.label :email, "E-Mail" %>
-          <%= f.text_field :email %>
+          <%= f.text_field :email, :class =>"required email" %>
         </p>
       </fieldset>
 

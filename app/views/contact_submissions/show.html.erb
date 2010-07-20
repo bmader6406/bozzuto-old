@@ -1,4 +1,4 @@
-<% content_for :body_class do %>generic<% end %>
+<% content_for :body_class do %>generic contact<% end %>
 
 <% breadcrumb_item('Contact') %>
 <% breadcrumb_title('Contact') %>
@@ -7,29 +7,29 @@
 
 <%= error_messages_for :submission %>
 
-<% form_for @submission, :url => contact_path do |f| %>
+<% form_for @submission, :url => contact_path, :html => { :class => "required-form" } do |f| %>
   <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.label :name %>
+    <%= f.text_field :name, :class => "required" %>
   </p>
 
   <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
+    <%= f.label :email %>
+    <%= f.text_field :email, :class => "required email" %>
   </p>
 
   <p>
-    <%= f.label :topic, 'What would you like to ask us about?' %><br />
+    <%= f.label :topic, 'What would you like to ask us about?' %>
     <%= f.select :topic, ContactSubmission::TOPICS %>
   </p>
 
   <p>
-    <%= f.label :message %><br />
-    <%= f.text_area :message, :rows => 20, :cols => 60 %>
+    <%= f.label :message %>
+    <%= f.text_area :message, :rows => 20, :cols => 60, :class => "required" %>
   </p>
   
-  <p>
-    <button type="submit">Submit</button>
+  <p class="submit">
+    <input type="submit" value="Submit" />
   </p>
 <% end %>
 
