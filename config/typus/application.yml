@@ -137,9 +137,9 @@ HomeCommunity:
       booleans:
         published: ['Yes', 'No']
       selectors: brochure_type
-      destroy_related: PropertySlideshow, PropertyMiniSlideshow, Home
+      destroy_related: PropertySlideshow, PropertyMiniSlideshow, Home, Video, PhotoSet
   order_by: title
-  relationships: property_features, city, county, slideshow, mini_slideshow, homes, local_info_feed
+  relationships: property_features, city, county, slideshow, mini_slideshow, videos, photo_set, homes, local_info_feed
   filters: 
   search: title
   application: Properties
