@@ -2343,6 +2343,7 @@ div.wysiwyg ul li {
     -moz-box-shadow: 0 0 30px rgba(0,0,0,0.1);
     -webkit-box-shadow: 0 0 30px rgba(0,0,0,0.1);
     box-shadow: 0 0 30px rgba(0,0,0,0.1);
+    max-width: 960px;
   }
 /* @end */
 
