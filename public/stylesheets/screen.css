@@ -2391,7 +2391,6 @@ div.wysiwyg ul li {
 /* @group -homes */
   .homes #masthead {
     border-bottom: 1px solid #858890;
-    padding-top: 24px;
   }
   .homes-search #masthead p.call-to-action {
     margin-top: 12px;
@@ -3267,6 +3266,7 @@ div.wysiwyg ul li {
       z-index: 1;
     }
     #masthead-slideshow ul.slides li.slide {
+      background: #c0c5cb url(../images/structure/bg-masthead.gif) repeat-x 0 0;
       text-indent: 0;
       height: 223px;
       left: 0;

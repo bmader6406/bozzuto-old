@@ -1,4 +1,4 @@
-<% content_for :body_class do %>community floor-plans<% end %>
+<% content_for :body_class do %>property community floor-plans<% end %>
 <% render_meta(@community, :floor_plans) %>
 
 <% @community.homes(:include => :floor_plans).each do |home| %>
