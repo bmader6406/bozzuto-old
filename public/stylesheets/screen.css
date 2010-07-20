@@ -3401,12 +3401,12 @@ div.wysiwyg ul li {
     .page #aside .latest-news .article {
       margin-bottom: 8px;
     }
-    .page #aside .latest-news .section.first .date span {
+    /*.page #aside .latest-news .section.first .date span {
       display: block;
       font-size: 27px;
       font-weight: normal;
       line-height: 0.925925926;
-    }
+    }*/
     .page #aside .latest-awards .section {
       background: transparent url(../images/structure/bg-about-sidebar-section.gif) no-repeat bottom left;
       padding-bottom: 0;
