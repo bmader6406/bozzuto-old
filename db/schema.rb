@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100720234321) do
+ActiveRecord::Schema.define(:version => 20100721145825) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -219,6 +219,27 @@ ActiveRecord::Schema.define(:version => 20100720234321) do
   end
 
   add_index "landing_pages_projects", ["landing_page_id", "project_id"], :name => "index_landing_pages_projects_on_landing_page_id_and_project_id"
+
+  create_table "leaders", :force => true do |t|
+    t.string   "name",                :null => false
+    t.string   "title",               :null => false
+    t.string   "company",             :null => false
+    t.integer  "leadership_group_id", :null => false
+    t.text     "bio",                 :null => false
+    t.integer  "position"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "leadership_groups", :force => true do |t|
+    t.string   "name",       :null => false
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "masthead_slides", :force => true do |t|
     t.text     "body",                                 :null => false

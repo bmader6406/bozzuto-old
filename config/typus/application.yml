@@ -193,6 +193,24 @@ LandingPage:
   search: title
   application: Geography
 
+Leader:
+  fields:
+    default: name, title, company
+    list: name, title, company, leadership_group, position
+    relationship: name, title, company, position
+    form: leadership_group, name, title, company, bio, image
+  order_by: leadership_group_id, position
+  relationships: leadership_group
+  application: Leaders
+
+LeadershipGroup:
+  fields:
+    default: name
+    list: name, position
+  order_by: position
+  relationships: leaders
+  application: Leaders
+
 MastheadSlide:
   fields:
     default: image, image_link, position
