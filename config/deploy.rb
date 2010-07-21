@@ -1,11 +1,11 @@
 set :application, "bozzuto_app"
-set :repository,  "git@viget.unfuddle.com:viget/bozzuto.git"
+set :repository, "git@viget.unfuddle.com:viget/bozzuto.git"
 set :branch, 'origin/master'
 set :scm, :git
 
 set :use_sudo, false
 
-set :stages, %w(integration staging production)
+set :stages, %w( integration staging production )
 set :default_stage, "integration"
 
 set(:latest_release) { fetch(:current_path) }
@@ -14,8 +14,8 @@ set(:current_release) { fetch(:current_path) }
 
 set(:current_revision) { capture("cd #{current_path}; git rev-parse --short HEAD").strip }
 set(:latest_revision) { capture("cd #{current_path}; git rev-parse --short HEAD").strip }
-set(:previous_revision) { 
-  capture("cd #{current_path}; git rev-parse --short HEAD@{1}").strip 
+set(:previous_revision) {
+  capture("cd #{current_path}; git rev-parse --short HEAD@{1}").strip
 }
 
 set :sync_directories, ["public/system"]
@@ -28,12 +28,16 @@ after 'deploy:update_code', 'app:clear_asset_caches'
 after 'deploy:update_code', 'app:update_crontab'
 
 namespace :deploy do
-  task :start do ; end
-  task :stop do ; end
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+  task :start do
+    ;
   end
-  
+  task :stop do
+    ;
+  end
+  task :restart, :roles => :app, :except => {:no_release => true} do
+    run "#{try_sudo} touch #{File.join(current_path, 'tmp', 'restart.txt')}"
+  end
+
   desc "Deploy"
   task :default do
     update
@@ -41,7 +45,7 @@ namespace :deploy do
   end
 
   desc "Setup a GitHub-style deployment."
-  task :setup, :except => { :no_release => true } do
+  task :setup, :except => {:no_release => true} do
     dirs = [deploy_to, shared_path]
     dirs += shared_children.map { |d| File.join(shared_path, d) }
     run "#{try_sudo} mkdir -p #{dirs.join(' ')} && #{try_sudo} chmod g+w #{dirs.join(' ')}"
@@ -56,7 +60,7 @@ namespace :deploy do
   end
 
   desc "Update the deployed code."
-  task :update_code, :except => { :no_release => true } do
+  task :update_code, :except => {:no_release => true} do
     run "cd #{current_path}; git fetch origin; git reset --hard #{branch}"
     finalize_update
   end
@@ -70,13 +74,13 @@ namespace :deploy do
 
   namespace :rollback do
     desc "Moves the repo back to the previous version of HEAD"
-    task :repo, :except => { :no_release => true } do
+    task :repo, :except => {:no_release => true} do
       set :branch, "HEAD@{1}"
       deploy.default
     end
 
     desc "Rewrite reflog so HEAD@{1} will continue to point to at the next previous release."
-    task :cleanup, :except => { :no_release => true } do
+    task :cleanup, :except => {:no_release => true} do
       run "cd #{current_path}; git reflog delete --rewrite HEAD@{1}; git reflog delete --rewrite HEAD@{1}"
     end
 
@@ -119,7 +123,10 @@ namespace :config do
   end
 end
 
-
+desc 'watch logs'
+task :logs, :roles => :app do
+  stream "tail -n 0 -f #{shared_path}/log/*.log"
+end
 
 Dir[File.join(File.dirname(__FILE__), '..', 'vendor', 'gems', 'hoptoad_notifier-*')].each do |vendored_notifier|
   $: << File.join(vendored_notifier, 'lib')
