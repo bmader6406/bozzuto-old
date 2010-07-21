@@ -614,7 +614,7 @@ window.bozzuto = {};
 
         // add slide counter
         if ($('ul.slides li.slide p.slideshow-counter', $slideshow).length > 0) {
-          $('ul.slides li.slide', slideshow).each(function(i) {
+          $('ul.slides li.slide', $slideshow).each(function(i) {
             $('p.slideshow-counter', $(this)).html(
                 (i + 1) + ' of ' + slideCount + ' Photos'
                 );
@@ -623,31 +623,28 @@ window.bozzuto = {};
 
         if (slideCount > 1) {
           if (o.dynamicPagination) {
-
             var pagination = $('<ul class="slideshow-pagination"></ul>');
             $('ul.slides li.slide', $slideshow).each(function(i) {
               $('<li><a href="#' + $(this).attr('id') + '">' + (i + 1) + '</a></li>').appendTo(pagination);
             });
             $('li:first', pagination).addClass('current');
             pagination.appendTo($slideshow);
-
           }
 
           if (o.autoAdvance) {
-
             var hoverInterval = autoAdvance($slideshow, o);
             $slideshow.hover(function() {
               clearInterval(hoverInterval);
             }, function() {
               hoverInterval = autoAdvance($slideshow, o);
             });
-
           }
 
-          $('.set-slideshow', $slideshow).each(function() {
+          $('.set-slideshow').each(function() {
             $(this).click(function(e) {
+              var $this = $(this);
               e.preventDefault();
-              $slide = $($(this).attr('href'));
+              $slide = $($this.attr('href'));
               $this.featuredSlideshow.advance($slideshow, $slide, o);
               if ($(window).scrollTop() > $slide.offset().top + 100) {
                 $(window).scrollTo($slide, 800);
