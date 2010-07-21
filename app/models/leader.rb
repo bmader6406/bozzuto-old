@@ -5,6 +5,8 @@ class Leader < ActiveRecord::Base
 
   validates_presence_of :name, :title, :company, :leadership_group, :bio
 
+  has_friendly_id :name, :use_slug => true  
+
   has_attached_file :image,
                     :url           => '/system/:class/:id/:style.:extension',
                     :styles        => {:rect => '230x220#'},

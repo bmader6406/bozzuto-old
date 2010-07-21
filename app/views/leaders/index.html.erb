@@ -1,0 +1,114 @@
+<% content_for :body_class do %>about leadership<% end %>
+
+<div id="masthead">
+  <div class="container">
+    <div id="breadcrumb">
+      <ul>
+        <li><a href="/about-us">About Us</a></li>
+        <li class="last">Leadership</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h1>Bozzuto Leadership</h1>
+      <p><strong>Lorem ipsum dolor sit amet</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ligula leo, gravida eu euismod quis, lacinia non sapien. Ut pharetra suscipit risus, vitae tristique turpis dignissim nec. Suspendisse adipiscing aliquet leo ut egestas. Donec purus libero, tristique pulvinar consequat dictum, accumsan ut dui&hellip;</p>
+    </div>
+    <div class="aside aside-quote">
+      <blockquote class="figure">
+        <p><strong>Lorem ipsum dolor sit amet,</strong> consectetur adipisici elit, sed do eiusmod tempor
+          incidid ut labore et dolore magna aliqua.</p>
+        <cite>
+          <strong>Thomas S. Bozzuto</strong><br />
+          CEO<br />
+          Bozzuto Group
+        </cite>
+      </blockquote>
+    </div>
+  </div>
+</div>
+
+<div id="main-content">
+  <div class="container">
+    <div id="sidebar" class="col">
+      <%= render :partial => 'pages/secondary_nav' %>
+    </div>
+
+    <div id="content" class="col">
+      <div class="partner-portrait">
+        <ul class="partner-portrait-links">
+          <li class="portrait-steve-s">
+            <a href="#steve-strazzella"><span class="hit1">Steve Strazzella</span></a>
+          </li>
+          <li class="portrait-john-b">
+            <a href="#john-b-slidell"><span class="hit1">John B. Slidell</span><span class="hit2"></span></a>
+          </li>
+          <li class="portrait-thomas-a">
+            <a href="#thomas-a-baum"><span class="hit1">Thomas A. Baum</span></a>
+          </li>
+          <li class="portrait-thomas-s">
+            <a href="#thomas-s-bozzuto"><span class="hit1">Thomas S. Bozzuto</span><span class="hit2"></span></a>
+          </li>
+          <li class="portrait-daniel-c">
+            <a href="#daniel-c-murphy"><span class="hit1">Daniel C. Murphy</span><span class="hit2"></span></a>
+          </li>
+          <li class="portrait-toby-s">
+            <a href="#toby-s-bozzuto"><span class="hit1">Toby S. Bozzuto</span></a>
+          </li>
+          <li class="portrait-ryan-o">
+            <a href="#ryan-ogden"><span class="hit1">Ryan Ogden</span></a>
+            </li>
+          <li class="portrait-julie-a">
+            <a href="#julie-a-smith"><span class="hit1">Julie A. Smith</span><span class="hit2"></span></a>
+          </li>
+          <li class="portrait-richard-l">
+            <a href="#richard-l-mostyn"><span class="hit1">Richard L. Mostyn</span><span class="hit2"></span></a>
+          </li>
+          <li class="portrait-michael-a">
+            <a href="#michael-a-schlegel">
+              <span class="hit1">Michael A. Schlegel</span>
+              <span class="hit2"></span>
+              <span class="hit3"></span>
+            </a>
+          </li>
+        </ul>
+
+      </div>
+
+      <% @leadership_groups.each do |group| -%>
+        <h2><%= group.name %></h2>
+        <ul class="partners">
+          <% group.leaders.each do |partner| -%>
+            <li>
+              <a href="#<%= partner.to_param %>">
+                <span class="partner-name"><%= partner.name %></span>
+                <span class="partner-title"><%= partner.title %></span>
+                <span class="partner-group"><%= partner.company %></span>
+              </a>
+            </li>
+          <% end -%>
+        </ul>
+      <% end -%>
+
+      <div id="partner-bios">
+        <h3>Partner Bios</h3>
+
+        <ul>
+          <% @leaders.each do |partner| -%>
+            <li id="<%= partner.to_param %>">
+              <div class="partner-bio-outer">
+                <div class="partner-bio-inner">
+                  <img class="partner-pic" src="<%= partner.image.url %>" />
+                  <h3 class="partner-name"><%= partner.name %></h3>
+                  <span class="partner-title"><%= partner.title %></span>
+                  <span class="partner-group"><%= partner.company %></span>
+                  <p>
+                    <%= partner.bio %>
+                  </p>
+                </div>  
+              </div>
+            </li>
+          <% end -%>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

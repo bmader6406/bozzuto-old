@@ -82,6 +82,8 @@ ActionController::Routing::Routes.draw do |map|
     m.section_awards '/:section/awards'
   end
 
+  map.leadership '/:section/leadership', :controller => :leaders, :action => :index
+
   map.with_options :controller => :buzzes, :section => 'about-us' do |m|
     m.buzz '/bozzuto-buzz', :action => 'new', :conditions => { :method => :get }
     m.connect '/bozzuto-buzz', :action => 'create', :conditions => { :method => :post }
