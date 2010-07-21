@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   Typus::Routes.draw(map)
   Jammit::Routes.draw(map)
+  Ckeditor::Routes.draw(map)
 
   map.root :controller => :home_pages
 

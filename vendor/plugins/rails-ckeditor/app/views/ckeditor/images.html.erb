@@ -1,5 +1,5 @@
 <script type="text/javascript">	  
-  var upload_path = "<%= new_attachment_path_with_session_information(:image) %>";
+  var upload_path = "<%= url_for(:controller => 'ckeditor', :action => 'create', :kind => 'image') %>";
   
   function setUrl(url) 
   {  

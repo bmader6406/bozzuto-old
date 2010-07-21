@@ -2,7 +2,6 @@
 class Admin::HomePagesController < Admin::MasterController
   before_filter :initialize_and_redirect_to_edit, :only => [:index, :new]
 
-
   private
 
   def initialize_and_redirect_to_edit
