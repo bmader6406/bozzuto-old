@@ -9,7 +9,9 @@
       <h2>
         <%= group.name %>
         <% if @community.availability_url.present? && plans_in_group.count > ApartmentFloorPlanGroup::DISPLAY_LIMIT %>
-          <em><%= link_to 'View More', @community.availability_url %></em>
+          <em>
+            <%= floor_plan_group_link(@community, group, plans_in_group.first.bedrooms) %>
+          </em>
         <% end %>
       </h2>
 
