@@ -1,14 +1,19 @@
 <%
   custom = { :rows => @resource[:class].typus_options_for(:form_rows) }
-  options = options.merge!(custom)
+  options.merge!(custom)
 
   if @resource[:class].typus_field_options_for(:ckeditor).to_s.include?(attribute)
-    options[:class] = 'use-ckeditor'
+    ckeditor = true
+    options.merge!(:swf_params=>{:typus_user_id=>@current_user.id})
   end
 %>
 
 <li>
   <%= form.label attribute, label_text %>
   <%= render_tip(attribute) %>
-  <%= form.text_area attribute, options %>
+  <% if ckeditor -%>
+    <%= form.cktext_area attribute, options %>
+  <% else -%>
+    <%= form.text_area attribute, options %>
+  <% end -%>
 </li>
