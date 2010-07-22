@@ -61,4 +61,8 @@ module ApplicationHelper
     end
     pluralize(bathrooms, 'Bathroom')
   end
+
+  def phone_number(number)
+    %Q{<script type="text/javascript">replaceNumber("#{number.gsub(/[^\d]/, '')}","xxx.xxx.xxxx","1081055");</script>}.html_safe
+  end
 end
