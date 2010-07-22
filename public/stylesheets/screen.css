@@ -1182,6 +1182,10 @@ div.wysiwyg ul li {
 
 /* @group -community + landing */
 
+  .community #recently-viewed {
+    margin-top: 25px;
+  }
+
   .community #nearby-communities ul,
   .community #recently-viewed ul,
   .landing .listings ul {
