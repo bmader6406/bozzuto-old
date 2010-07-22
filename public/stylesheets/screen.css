@@ -896,6 +896,7 @@ div.wysiwyg ul li {
 
   /* @group -secondary nav */
     .secondary #secondary-nav ul {
+      display: none;
       position: relative;
       width: 170px;
     }
