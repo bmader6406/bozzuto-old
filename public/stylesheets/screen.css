@@ -2349,6 +2349,22 @@ div.wysiwyg ul li {
     box-shadow: 0 0 30px rgba(0,0,0,0.1);
     max-width: 960px;
   }
+
+  #featured-floor-plans h3 {
+    margin-bottom: 1em;
+  }
+  
+  #featured-floor-plans ul {
+    margin-top: 1em;
+  }
+  
+  #featured-floor-plans li.floor-plan {
+    margin-top: 15px;
+  }
+
+  #featured-floor-plans li.floor-plan p {
+    margin-top: 25px;
+  }
 /* @end */
 
 /* @group -videos-and-floorplans */
