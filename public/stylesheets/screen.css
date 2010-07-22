@@ -1012,6 +1012,12 @@ div.wysiwyg ul li {
   #slideshow ul.slides li.current {
     z-index: 2;
   }
+  
+  #slideshow ul.slides li.slide img {
+    background: #fff;
+    display: block;
+  }
+  
   #slideshow ul.slideshow-pagination {
     background: #fff;
     border: 1px solid #85898e;
@@ -1972,9 +1978,8 @@ div.wysiwyg ul li {
       width: 100%;
     }
     .project #main-content .content .main-content ul.data li {
-      background: url(../images/structure/bg-projects-data.gif) left top no-repeat;
+      background: url(../images/structure/bg-projects-data.gif) left -58px no-repeat;
       float: left;
-      height: 46px;
       margin: 0 4px -2px;
       padding-top: 14px;
       width: 165px;
@@ -2144,10 +2149,8 @@ div.wysiwyg ul li {
         font-size: 11px;
       }
       .project #main-content .content .main-content ul.data li p {
-        height: 23px;
         font-size: 15px;
         font-weight: bold;
-        overflow: hidden;
         text-overflow: ellipsis;
         width: 100%;
         white-

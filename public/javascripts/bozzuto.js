@@ -98,6 +98,8 @@ window.bozzuto = {};
     $('#masthead-slideshow .aside ul').equalHeight({
       find: 'li > a'
     });
+
+    $('.project .data').equalHeight();
   });
 
   ;
