@@ -425,6 +425,17 @@ Section:
   search:
   application: Content
 
+Snippet:
+  fields:
+    default: name
+    list: name
+    form: name, body
+    options:
+      ckeditor: body
+  order_by: name
+  search: name, body
+  application: Content
+
 State:
   fields:
     default: name, code

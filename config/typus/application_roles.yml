@@ -37,6 +37,7 @@ admin:
   PropertySlide: create, read, update, delete
   PropertySlideshow: create, read, update, delete
   Section: read, update
+  Snippet: create, read, update, delete
   State: create, read, update, delete
   Testimonial: create, read, update, delete
   Video: create, read, update, delete

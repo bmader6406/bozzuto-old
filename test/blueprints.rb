@@ -193,6 +193,11 @@ Section.blueprint(:about) do
   about { true }
 end
 
+Snippet.blueprint do
+  name { Sham.unique_name }
+  body { Faker::Lorem.paragraphs }
+end
+
 State.blueprint do
   name { Sham.us_state }
   code { Sham.us_state_code }

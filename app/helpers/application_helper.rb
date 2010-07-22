@@ -65,4 +65,19 @@ module ApplicationHelper
   def phone_number(number)
     %Q{<script type="text/javascript">replaceNumber("#{number.gsub(/[^\d]/, '')}","xxx.xxx.xxxx","1081055");</script>}.html_safe
   end
+
+  def snippet(name)
+    snippet = Snippet.find_by_name(name)
+    if snippet.present?
+      snippet.body.html_safe
+    else
+      content_tag :p do
+        %Q{This area should be filled in by snippet "#{name}," which does not exist.
+            #{link_to("Click here to create the snippet.", {:controller => 'admin/snippets',
+                                                            :action => 'new',
+                                                            "name" => name})}
+        }.html_safe
+      end
+    end
+  end
 end
