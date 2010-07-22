@@ -18,9 +18,17 @@ development:
     development:
     homebuilding:
     land:
+  sms:
+    username: mkilmurry
+    password: 120012
+    sender: 39044      
 
 production:
   walkscore_wsid: 'YOUR-WSID-HERE'
+  sms:
+    username: mkilmurry
+    password: 120012
+    sender: 39044
 
 test:
   sms:
@@ -41,3 +49,7 @@ test:
     development:
     homebuilding:
     land:
+  sms:
+    username: tester
+    password: 12345
+    sender: 333333
