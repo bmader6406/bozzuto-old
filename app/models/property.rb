@@ -9,6 +9,12 @@ class Property < ActiveRecord::Base
     ['Upload a file', USE_BROCHURE_FILE]
   ]
 
+  PROPERTY_TYPE = [
+      ['Apartment Community', 'ApartmentCommunity'],
+      ['Home Community', 'HomeCommunity'],
+      ['Project', 'Project']
+  ]
+
   has_friendly_id :id_and_title,
     :use_slug => true,
     :scope => :type
@@ -73,6 +79,14 @@ class Property < ActiveRecord::Base
     <<-JS.html_safe
       { id: #{id}, point: { lat: #{latitude || 'null'}, lng: #{longitude || 'null'} }, category: '#{self.class}' }
     JS
+  end
+
+  def property_type
+    read_attribute(:type)
+  end
+
+  def property_type=(type)
+    write_attribute(:type, type)
   end
 
 

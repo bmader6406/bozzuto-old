@@ -343,9 +343,9 @@ Property:
   fields:
     default: title, street_address, city
     list:
-    form:
+    form: property_type, title, street_address, city
     options:
-      selectors: brochure_type
+      selectors: brochure_type, property_type
   order_by: title
   relationships: slideshow, mini_slideshow, video, photo_set
   filters:
