@@ -969,6 +969,9 @@ div.wysiwyg ul li {
   .landing #masthead {
     border-top: 1px solid #6b6b71;
   }
+  .home #header #main-nav .dropdown {
+    display: none;
+  }
 /* @end */
 
 
