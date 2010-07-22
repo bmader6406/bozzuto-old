@@ -90,38 +90,39 @@ window.bozzuto = {};
     $('#spinner').ajaxStop(function () {
       $(this).hide();
     });
-    
+
     $('form.required-form').validate({
       errorElement: 'em'
     });
-    
+
     $('#masthead-slideshow .aside ul').equalHeight({
       find: 'li > a'
     });
   });
-  
-  ;(function($) {
-  	// Equal height items
-  	$.fn.equalHeight = function(options) {
-  		var opts = $.extend({}, $.fn.equalHeight.defaults, options);
 
-  		return this.each(function() {
-  			var $this = $(this),
-  					o = $.meta ? $.extend({}, opts, $this.data()) : opts,
-  					maxHeight = 0;
-        
+  ;
+  (function($) {
+    // Equal height items
+    $.fn.equalHeight = function(options) {
+      var opts = $.extend({}, $.fn.equalHeight.defaults, options);
+
+      return this.each(function() {
+        var $this = $(this),
+            o = $.meta ? $.extend({}, opts, $this.data()) : opts,
+            maxHeight = 0;
+
         $this.find(o.find).each(function() {
           var $this = $(this),
               elemHeight = $this.height();
           maxHeight = (elemHeight > maxHeight) ? elemHeight : maxHeight;
         }).height(maxHeight);
-  		});
-  	};
+      });
+    };
 
-  	// default options
-  	$.fn.equalHeight.defaults = {
-  		find: 'li'
-  	};
+    // default options
+    $.fn.equalHeight.defaults = {
+      find: 'li'
+    };
   })(jQuery);
 
   // map with custom markers
@@ -883,6 +884,7 @@ window.bozzuto = {};
         xhr.setRequestHeader("Accept", "text/javascript, text/html, application/xml, text/xml, */*")
       }
       );
+
   jQuery.fn.attachSearchForm = function() {
     var form = this;
     this.find("input, select").bind('change', function () {

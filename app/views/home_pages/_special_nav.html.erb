@@ -3,18 +3,14 @@
     <li>
       <a href="#" class="find-apartment-link">Lease an Apartment</a>
       <div id="find-apartment-form" class="popup">
-        <form>
+        <% form_for :search, :url => apartment_communities_path, :html => {:method => :get} do |form| -%>
           <div class="left-col">
             <p class="field">
-              <select multiple="multiple" name="location">
+              <select multiple="multiple" name="location[]">
                 <optgroup label="Choose Location">
-                  <option>Anywhere</option>
-                  <option>Alexandria City</option>
-                  <option>Fairfax County</option>
-                  <option>Arlington County</option>
-                  <option>Loudoun County</option>
-                  <option>Prince William County</option>
-                  <option>Prince Georges County</option>
+                  <% State.all.each do |state| -%>
+                    <option value="<%= state.id %>"><%= state.name %></option>
+                  <% end -%>
                 </optgroup>
               </select>
             </p>
@@ -22,15 +18,11 @@
 
           <div class="right-col">
             <p class="field">
-              <select name="min_price">
-                <option value="">Choose Minimum Price&hellip;</option>
-              </select>
+              <%= form.select :with_min_price, ['Choose Minimum Price...','250','500','750','1000','1250','1500','1750','2000','2500','3000','4000','5000','6000','7000','8000','9000','10000'] %>
             </p>
 
             <p class="field">
-              <select name="max_price">
-                <option value="">Choose Maximum Price&hellip;</option>
-              </select>
+              <%= form.select :with_max_price, ['Choose Maximum Price...','250','500','750','1000','1250','1500','1750','2000','2500','3000','4000','5000','6000','7000','8000','9000','10000'] %>              
             </p>
 
             <p class="advanced-search">
@@ -41,7 +33,7 @@
               <button type="submit">Search</button>
             </p>
           </div>
-        </form>
+        <% end -%>        
       </div>
     </li>
     <li>

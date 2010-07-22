@@ -20,7 +20,7 @@ class Property < ActiveRecord::Base
     :scope => :type
 
   belongs_to :city
-  belongs_to :county
+  belongs_to :county  
 
   has_one :slideshow, :class_name => 'PropertySlideshow'
   has_one :mini_slideshow, :class_name => 'PropertyMiniSlideshow'
