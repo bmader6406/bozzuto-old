@@ -100,123 +100,42 @@
           </div>
           
           <div class="section listings" id="homes-condominiums">
-
-            <ul class="row first">
-              <li>
-                <a href="#">Concord</a>
-                Arlington, VA
-              </li>
-              <li>
-                <a href="#">Normandy House</a>
-                Arlington, VA
-              </li>
-              <li>
-                <a href="#">London/Normandy</a>
-                Arlington, VA
-              </li>
-              <li class="last">
-                <a href="#">London/Normandy</a>
-                Arlington, VA
-              </li>          
-            </ul>
-            <ul class="row">
-              <li>
-                <a href="#">Concord</a>
-                Arlington, VA
-              </li>
-              <li>
-                <a href="#">Normandy House</a>
-                Arlington, VA
-              </li>
-              <li>
-                <a href="#">London/Normandy House</a>
-                Arlington, VA
-              </li>
-              <li class="last">
-                <a href="#">London/Normandy House</a>
-                Arlington, VA
-              </li>          
-            </ul>
-            <ul class="row">
-              <li>
-                <a href="#">Concord</a>
-                Arlington, VA
-              </li>
-              <li>
-                <a href="#">Normandy House</a>
-                Arlington, VA
-              </li>
-              <li>
-                <a href="#">London/Normandy House</a>
-                Arlington, VA
-              </li>
-              <li class="last">
-                <a href="#">London/Normandy House</a>
-                Arlington, VA
-              </li>          
-            </ul>
-            <ul class="row">
-              <li>
-                <a href="#">Concord</a>
-                Arlington, VA
-              </li>
-              <li>
-                <a href="#">Normandy House</a>
-                Arlington, VA
-              </li>
-              <li>
-                <a href="#">London/Normandy House</a>
-                Arlington, VA
-              </li>
-              <li class="last">
-                <a href="#">London/Normandy House</a>
-                Arlington, VA
-              </li>          
-            </ul>
-            <ul class="row">
-              <li>
-                <a href="#">Concord</a>
-                Arlington, VA
-              </li>
-              <li>
-                <a href="#">Normandy House</a>
-                Arlington, VA
-              </li>
-              <li>
-                <a href="#">London/Normandy</a>
-                Arlington, VA
-              </li>
-              <li class="last">
-                <a href="#">London/Normandy</a>
-                Arlington, VA
-              </li>          
-            </ul>
-            <ul class="row last">
-              <li>
-                <a href="#">Concord</a>
-                Arlington, VA
-              </li>
-              <li>
-                <a href="#">Normandy House</a>
-                Arlington, VA
-              </li>
-              <li>
-                <a href="#">London/Normandy House</a>
-                Arlington, VA
-              </li>
-              <li class="last">
-                <a href="#">London/Normandy House</a>
-                Arlington, VA
-              </li>          
-            </ul>
+            <% @state.home_communities.in_groups_of(4, false).each_with_index do |communities, idx| %>
+              <ul class="row <%= "first" if idx == 0 %> <%= "last" if idx == (@state.home_communities.count / 4) %>">                
+                <% communities.each_with_index do |community, idx| %>
+                  <li class="<%= "last" if idx == (communities.count - 1) %>">
+                    <%= link_to community.title, apartment_community_path(community.to_param) %>
+                    <%= community.city %>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
           </div>
           
           <div class="section listings" id="apartments-for-rent">
-            Apartments for rent
+           <% @state.apartment_communities.in_groups_of(4, false).each_with_index do |communities, idx| %>
+              <ul class="row <%= "first" if idx == 0 %> <%= "last" if idx == (@state.apartment_communities.count / 4) %>">
+                <% communities.each_with_index do |community, idx| %>
+                  <li class="<%= "last" if idx == (communities.count - 1) %>">
+                    <%= link_to community.title, apartment_community_path(community.to_param) %>
+                    <%= community.city %>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
           </div>
 
           <div class="section listings" id="featured-apartments">
-            Featured
+            <% @state.apartment_communities.featured.in_groups_of(4, false).each_with_index do |communities, idx| %>
+              <ul class="row <%= "first" if idx == 0 %> <%= "last" if idx == (@state.apartment_communities.featured.count / 4) %>">
+                <% communities.each_with_index do |community, idx| %>
+                  <li class="<%= "last" if idx == (communities.count - 1) %>">
+                    <%= link_to community.title, apartment_community_path(community.to_param) %>
+                    <%= community.city %>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
           </div>          
         </div>
 
@@ -242,7 +161,7 @@
               <ul class="row">
                 <% cities.each do |city| %>
                   <li>
-                    <%= link_to city.name, '#' %>
+                    <%= link_to city.name, apartment_communities_path("search[city_id]" => city.id) %>
                     <span class="count"><%= city.apartment_communities.published.count %></span>
                   </li>
                 <% end %>
@@ -257,7 +176,7 @@
               <ul class="row">
                 <% counties.each do |county| %>
                   <li>
-                    <%= link_to county.name, '#' %>
+                    <%= link_to county.name, apartment_communities_path("search[county_id]" => county.id) %>
                     <span class="count"><%= county.apartment_communities.published.count %></span>
                   </li>
                 <% end %>

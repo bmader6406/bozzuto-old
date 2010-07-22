@@ -24,6 +24,7 @@ class ApartmentCommunity < Community
   named_scope :with_max_price, lambda {|price|
     {:conditions => ['properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE max_rent <= ?)', price.to_i]} if price.to_i > 0
   }
+  named_scope :featured, :conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE featured = ?)", true]
 
   def nearby_communities(limit = 6)
     @nearby_communities ||= city.apartment_communities.near(self).all(:limit => limit)
