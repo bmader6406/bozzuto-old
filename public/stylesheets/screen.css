@@ -1001,6 +1001,7 @@ div.wysiwyg ul li {
     height: 375px;
   }
   #slideshow ul.slides li.slide {
+    background: #fff;
     height: 375px;
     left: 0;
     overflow: hidden;
@@ -1009,18 +1010,15 @@ div.wysiwyg ul li {
     width: 840px;
     z-index: 1;
   }
-  #slideshow ul.slides li.on-deck {
-    z-index: 3;
-  }
-  #slideshow ul.slides li.current {
+  #slideshow ul.slides li.slide:first-child {
     z-index: 2;
   }
-  
-  #slideshow ul.slides li.slide img {
-    background: #fff;
-    display: block;
+  #slideshow ul.slides li.on-deck {
+    z-index: 4;
   }
-  
+  #slideshow ul.slides li.current {
+    z-index: 3 !important;
+  }
   #slideshow ul.slideshow-pagination {
     background: #fff;
     border: 1px solid #85898e;
