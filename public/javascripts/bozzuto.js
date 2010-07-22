@@ -862,10 +862,8 @@ window.bozzuto = {};
     return this;
 
     function formatTimestamp(timestamp) {
-      var time = new Date(timestamp);
-      return $.fn.latestTwitterUpdate.monthNames[time.getMonth()] +
-             " " +
-             time.getDate();
+      var time = timestamp.split(" ");
+      return time[1] + " " + time[2];
     }
   };
 
