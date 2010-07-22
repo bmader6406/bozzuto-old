@@ -34,7 +34,7 @@
             </p>
 
             <p class="advanced-search">
-              <a href="#">Advanced Search</a>
+              <%= link_to "Advanced Search", apartment_communities_path %>
             </p>
 
             <p class="submit">
@@ -44,6 +44,8 @@
         </form>
       </div>
     </li>
-    <li><a href="#">Buy a Home</a></li>
+    <li>
+      <%= link_to "Buy a Home", home_communities_path %>
+    </li>
   </ul>
 <% end %>
