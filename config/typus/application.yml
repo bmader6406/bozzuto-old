@@ -358,8 +358,8 @@ Property:
 PropertyFeature:
   fields:
     default: name, icon
-    list: name, icon
-    form: name, icon, description
+    list: name, icon, position
+    form: name, icon, description, show_on_search_page
   order_by: position
   relationships: 
   filters: 
