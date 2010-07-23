@@ -900,6 +900,10 @@ div.wysiwyg ul li {
       position: relative;
       width: 170px;
     }
+    .secondary #secondary-nav li.current ul {
+      display: block;
+    }
+    
     .secondary #secondary-nav li {
       width: 170px;
       border-top: 1px solid #eaecee;
