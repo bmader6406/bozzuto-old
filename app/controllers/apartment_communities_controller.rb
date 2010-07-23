@@ -15,16 +15,6 @@ class ApartmentCommunitiesController < ApplicationController
     end
   end
 
-  def send_to_friend
-    if params[:email].blank?
-      flash[:error] = 'You must submit a valid email address.'
-    else
-      CommunityMailer.deliver_send_to_friend(params[:email], @community)
-    end
-
-    redirect_to @community
-  end
-
   private
 
   def find_community
