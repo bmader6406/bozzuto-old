@@ -88,4 +88,11 @@ module ApplicationHelper
   def county_path(county)
     apartment_communities_path("search[county_id]" => county.id)
   end
+
+  def community_url(community)
+    case community
+    when ApartmentCommunity then apartment_community_url(community)
+    when HomeCommunity then home_community_url(community)
+    end
+  end
 end
