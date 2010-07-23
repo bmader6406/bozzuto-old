@@ -57,7 +57,7 @@
           <fieldset id="features_amenities" class="">
             <h3>Most Searched Features &amp; Amenities</h3>
             <ul>              
-              <% PropertyFeature.all.each do |feature| -%>
+              <% PropertyFeature.all(:conditions => {:show_on_search_page => true}).each do |feature| -%>
                 <li>
                   <%= f.check_box :with_property_features, {:name => 'search[with_property_features][]', :id => feature.name.tableize}, feature.id.to_s, nil %>
                   <label for="<%= feature.name.tableize %>"><%= feature.name %></label>                  
