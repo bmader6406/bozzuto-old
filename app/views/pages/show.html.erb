@@ -7,5 +7,4 @@
 
 <% breadcrumb_title(@page.first? ? @section.title : @page.title) %>
 
-
 <%= @page.body.try(:html_safe) %>
