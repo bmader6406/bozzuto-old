@@ -2355,19 +2355,23 @@ div.wysiwyg ul li {
     max-width: 960px;
   }
 
-  #featured-floor-plans h3 {
+  #featured-floor-plans h3,
+  .floor-plan-group h3 {
     margin-bottom: 1em;
   }
   
-  #featured-floor-plans ul {
+  #featured-floor-plans ul,
+  .floor-plan-group ul {
     margin-top: 1em;
   }
   
-  #featured-floor-plans li.floor-plan {
+  #featured-floor-plans li.floor-plan,
+  .floor-plan-group li.floor-plan {
     margin-top: 15px;
   }
 
-  #featured-floor-plans li.floor-plan p {
+  #featured-floor-plans li.floor-plan p,
+  .floor-plan-group li.floor-plan p {
     margin-top: 25px;
   }
 /* @end */

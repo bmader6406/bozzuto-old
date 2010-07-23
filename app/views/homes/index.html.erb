@@ -14,10 +14,11 @@
         <% plans.each do |plan| %>
           <li class="floor-plan">
             <h4><%= plan.name %></h4>
-
-            <% if plan.image.present? %>
-              <%= link_to image_tag(plan.image.url(:thumb), :width => 160), plan.image.url, :class => 'floor-plan-view' %>
-            <% end %>
+            <p>
+              <% if plan.image.present? %>
+                <%= link_to image_tag(plan.image.url(:thumb), :width => 160), plan.image.url, :class => 'floor-plan-view' %>
+              <% end %>
+            </p>
           </li>
         <% end %>
       </ul>
