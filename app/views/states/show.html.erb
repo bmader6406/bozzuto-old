@@ -221,7 +221,7 @@
             <ul>
               <% counties.each do |county| %>
                 <li>
-                  <%= link_to "#{county.name} Apartments", '#' %>
+                  <%= link_to "#{county.name} Apartments", apartment_communities_path("search[county_id]" => county.id) %>
                 </li>
               <% end %>
             </ul>

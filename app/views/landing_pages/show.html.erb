@@ -14,7 +14,7 @@
 
           <% if @page.masthead_image? %>
             <div class="figure">
-              <%= link_to image_tag(@page.masthead_image.url), '#' %>
+              <%= link_to image_tag(@page.masthead_image.url), "#" %>
             </div>
           <% end %>
         </li>
@@ -117,7 +117,7 @@
               <ul class="row">
                 <% cities.each do |city| %>
                   <li>
-                    <%= link_to city.name, '#' %>
+                    <%= link_to city.name, apartment_communities_path("search[city_id]" => city.id) %>
                     <span class="count"><%= city.apartment_communities.published.count %></span>
                   </li>
                 <% end %>
@@ -132,7 +132,7 @@
               <ul class="row">
                 <% counties.each do |county| %>
                   <li>
-                    <%= link_to county.name, '#' %>
+                    <%= link_to county.name, apartment_communities_path("search[county_id]" => county.id) %>
                     <span class="count"><%= county.apartment_communities.published.count %></span>
                   </li>
                 <% end %>
