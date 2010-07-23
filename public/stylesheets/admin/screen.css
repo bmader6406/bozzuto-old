@@ -496,8 +496,8 @@ input.date_input { border: 1px solid #999; margin-bottom: 1em;}
 /* @group Sprite */
 
 .sprite { background: url(../../images/admin/ui-icons.png) no-repeat; text-indent: -10000px; }
-.trash { background-position: -177px -97px; height: 15px; width: 15px; }
-.unrelate { background-position: -145px -129px; height: 15px; width: 15px; }
+.trash, .unrelate { background-position: -177px -97px; height: 15px; width: 15px; }
+/*.unrelate { background-position: -145px -129px; height: 15px; width: 15px; }*/
 
 /* @end */
 

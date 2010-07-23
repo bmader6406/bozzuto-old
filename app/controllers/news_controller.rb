@@ -12,7 +12,6 @@ class NewsController < SectionContentController
   def show
   end
 
-
   private
 
   def find_posts

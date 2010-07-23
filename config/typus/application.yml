@@ -230,6 +230,8 @@ MastheadSlideshow:
     default: name
     list: name, page
     form: name, page
+    options:
+      destroy_related: MastheadSlide
   order_by: 
   relationships: page, slides
   filters: 
