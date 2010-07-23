@@ -158,6 +158,7 @@ function replaceNumber(numberToReplace, format, account, customer, campaign, ads
         fontweight = getStyle(scriptTag, 'fontWeight');
     }
     var servletRequest = 'http://'+callsourceServer+'/simplelookup/Lookup?ctd_ac='+account+'&ctd_co='+customer+'&ctx_name='+campaign+'&ct_Ad%20Source='+adsource+'&fmt='+format+'&number='+numberToReplace+'&referrer='+referrerHost+'&textcolor='+textcolor+'&fontfamily='+fontfamily+'&fontsize='+fontsize+'&fontstyle='+fontstyle+'&fontweight='+fontweight;
+    servletRequest = servletRequest.replace(/\"/g, "'");
     var iframe = '<iframe allowtransparency="true" frameborder=0 marginwidth=0 marginheight=0 scrolling="no" width="'+frameWidth+'" height="'+frameHeight+'" src="'+servletRequest+'"></iframe>';
     document.write(iframe);
 }
