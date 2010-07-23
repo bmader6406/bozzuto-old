@@ -4,7 +4,7 @@
       <li><%= link_to "Apartments", "#" %></li>
       <li><%= link_to "Find an Apartment", "#" %></li>
       <li><%= link_to @community.state.name, @community.state %></li>
-      <li><%= link_to @community.city.name, "#" %></li>
+      <li><%= link_to @community.city.name, city_path(@community.city) %></li>
       <li class="last"><%= @community.title %></li>
     </ul>
   </div>

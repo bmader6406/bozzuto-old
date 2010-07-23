@@ -80,4 +80,12 @@ module ApplicationHelper
       end
     end
   end
+
+  def city_path(city)
+    apartment_communities_path("search[city_id]" => city.id)
+  end
+
+  def county_path(county)
+    apartment_communities_path("search[county_id]" => county.id)
+  end
 end
