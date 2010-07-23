@@ -239,10 +239,11 @@ MastheadSlideshow:
 NewsPost:
   fields:
     default: title, published, published_at
-    list: title, published, published_at
-    form: title, meta_title, meta_description, meta_keywords, body, published, published_at, section
+    list: title, category, section, published, published_at
+    form: title, section, category, meta_title, meta_description, meta_keywords, body, published, published_at
     options:
       ckeditor: body
+      selectors: category
   order_by: -published_at
   relationships: section
   filters:

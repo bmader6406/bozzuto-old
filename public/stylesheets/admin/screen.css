@@ -319,7 +319,10 @@ fieldset.inputs { }
 
 /* @group Rails Errors */
 
-.fieldWithErrors input { background: #FBE3E4; border: 1px solid #8A1F11!important; }
+.fieldWithErrors input, .fieldWithErrors select, .fieldWithErrors textarea {
+  background: #FBE3E4;
+  border: 1px solid #8A1F11 !important; 
+}
 
 .errorExplanation {
   background: #FBE3E4;
