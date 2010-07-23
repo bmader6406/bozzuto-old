@@ -81,6 +81,9 @@
       display: block;
       margin-left: 190px;
     }
+    textarea.contact {
+      width: 318px;
+    }
   /* @end  */
 /* @end */
 
