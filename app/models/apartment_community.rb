@@ -2,7 +2,7 @@ class ApartmentCommunity < Community
   before_update :mark_dirty_floor_plan_prices
   after_update :update_floor_plan_prices
 
-  has_many :floor_plans, :class_name => 'ApartmentFloorPlan'
+  has_many :floor_plans, :class_name => 'ApartmentFloorPlan'  
   has_many :featured_floor_plans,
     :class_name => 'ApartmentFloorPlan',
     :conditions => { :featured => true },

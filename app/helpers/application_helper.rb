@@ -63,7 +63,7 @@ module ApplicationHelper
   end
 
   def phone_number(number)
-    %Q{<span class="phone-number">#{number}</span>}
+    %Q{<span class="phone-number">#{number}</span>}.html_safe
   end
 
   def snippet(name)

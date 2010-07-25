@@ -8,15 +8,21 @@
   <div class="info">
     <div class="overview">
       <h2><%= community.title %></h2>
+
       <p class="address-info">
-        <%= community.address %><br />
+        <%= community.address %><br/>
         <%= phone_number(community.phone_number) %>
       </p>
 
       <ul>
-        <li><strong>1 Bedrooms</strong> from $XXXX</li>
-        <li><strong>2 Bedrooms</strong> from $XXXX</li>
-        <li><strong>3 Bedrooms</strong> from $XXXX</li>
+        <% ApartmentFloorPlanGroup.all.each do |group| %>
+          <% plans_in_group = community.floor_plans.in_group(group) %>
+          <% unless plans_in_group.empty? %>
+            <li>
+              <strong><%= group.name %></strong> from <%= floor_plan_price(plans_in_group.cheapest.first.min_rent) %>
+            </li>
+          <% end %>
+        <% end %>
       </ul>
 
       <% if community.overview_bullet_1.present? %>
