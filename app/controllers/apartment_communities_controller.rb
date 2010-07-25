@@ -3,6 +3,7 @@ class ApartmentCommunitiesController < ApplicationController
 
   def index
     params[:search] ||= {}
+
     @partial_template = params[:template] || 'search'
     @search = ApartmentCommunity.published.search(params[:search])
     @communities = @search.all.group_by {|c| c.state.name}

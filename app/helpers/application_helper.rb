@@ -63,7 +63,7 @@ module ApplicationHelper
   end
 
   def phone_number(number)
-    %Q{<script type="text/javascript">replaceNumber("#{number.gsub(/[^\d]/, '')}","xxx.xxx.xxxx","1081055");</script>}.html_safe
+    %Q{<span class="phone-number">#{number}</span>}
   end
 
   def snippet(name)
