@@ -6,7 +6,7 @@ module ApplicationHelper
   def render_meta(object, prefix = nil)
     prefix = "#{prefix}_" if prefix.present?
 
-    %w(meta_title meta_description meta_keywords).each do |field|
+    %w( meta_title meta_description meta_keywords ).each do |field|
       meta = object.send("#{prefix}#{field}")
       content_for(field.to_sym, meta) if meta.present?
     end
@@ -33,7 +33,7 @@ module ApplicationHelper
 
   def google_maps_javascript_tag
     <<-END.html_safe
-<script src="http://maps.google.com/maps?file=api&v=2&key=#{APP_CONFIG[:google_maps_api_key]}" type="text/javascript"></script>
+<script src="http://maps.google.com/maps?file=api&v=2&key= #{APP_CONFIG[:google_maps_api_key]} " type="text/javascript"></script>
     END
   end
 
@@ -81,18 +81,36 @@ module ApplicationHelper
     end
   end
 
-  def city_path(city)
+  def state_apartment_search_path(state)
+    apartment_communities_path("search[in_state]" => state.id)
+  end
+
+  def city_apartment_search_path(city)
     apartment_communities_path("search[city_id]" => city.id)
   end
 
-  def county_path(county)
+  def county_apartment_search_path(county)
     apartment_communities_path("search[county_id]" => county.id)
+  end
+
+  def state_home_search_path(state)
+    home_communities_path("search[in_state]" => state.id)
+  end
+
+  def city_home_search_path(city)
+    home_communities_path("search[city_id]" => city.id)
+  end
+
+  def county_home_search_path(county)
+    home_communities_path("search[county_id]" => county.id)
   end
 
   def community_url(community)
     case community
-    when ApartmentCommunity then apartment_community_url(community)
-    when HomeCommunity then home_community_url(community)
+    when ApartmentCommunity then
+      apartment_community_url(community)
+    when HomeCommunity then
+      home_community_url(community)
     end
   end
 end
