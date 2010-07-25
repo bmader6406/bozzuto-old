@@ -8,8 +8,24 @@
           map.setCenter(point, 13);
           map.setUIToDefault();
           map.addOverlay(new GMarker(point));
+
+          $('<div id="map-large">').appendTo("body").css({width: '80%', height: '80%'}).hide();
+          var largeMap = new GMap2(document.getElementById("map-large"));
+          largeMap.setCenter(point, 13);
+          largeMap.setUIToDefault();
+          largeMap.addOverlay(new GMarker(point));
+
+          $("#map-lightbox").click(function (e) {
+            e.preventDefault();
+            $("#map-large").lightbox_me({
+              onLoad: function () {
+                largeMap.checkResize();
+                largeMap.setCenter(point, 13);                                                
+              }
+            });
+          });
         }
-      });
+      })
     })(jQuery);
   </script>
 <% end %>
@@ -50,6 +66,7 @@
             <p class="date">
               <%= info.published_at.to_formatted_s(:month_day_year) %>
             </p>
+
             <p>
               <%= truncate_html(raw(info.description), :length => 75) %>
             </p>
