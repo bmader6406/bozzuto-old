@@ -722,7 +722,7 @@ window.bozzuto = {};
     $.fn.featuredSlideshow.defaults = {
       dynamicPagination: true,
       autoAdvance: true,
-      autoAdvanceInterval: 10000,
+      autoAdvanceInterval: 4000,
       transitionTime: 450
     };
 
