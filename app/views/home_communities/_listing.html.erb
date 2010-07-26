@@ -18,18 +18,31 @@
       <%= raw(community.listing_text) %>
 
       <p class="call-to-action">
-        <%= link_to 'Read More', home_community_path(community) %>
+        <%= link_to 'Learn More', home_community_path(community) %>
       </p>
     </div>
 
     <div class="learn-more">
       <h2>
-        <%= link_to 'Read More', home_community_path(community) %>
+        <%= link_to 'Learn More', home_community_path(community) %>
       </h2>
 
       <% if community.video_url.present? %>
         <p class="watch-video">
           <%= link_to 'Watch Video', community.video_url %>
+        </p>
+      <% end %>
+
+      <p>
+        <% if community.street_address.present? %>
+          <%= community.street_address %><br />
+        <% end %>
+        <%= community.city %>
+      </p>
+
+      <% if community.phone_number.present? %>
+        <p>
+          <%= community.phone_number %>
         </p>
       <% end %>
 
