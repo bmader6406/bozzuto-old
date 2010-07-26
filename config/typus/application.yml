@@ -48,7 +48,7 @@ Award:
   fields:
     default: title, published, published_at, section
     list: title, published, published_at, section
-    form: title, body, published, published_at, section
+    form: title, image, body, published, published_at, section
     options:
       ckeditor: body
   order_by: 

@@ -179,6 +179,8 @@ en:
       video:
         url: URL
     tips:
+      award:
+        image: Image dimensions should be 150x150
       body_slide:
         image: Image dimensions should be 840x375
       home_page_slide:

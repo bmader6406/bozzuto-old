@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100726222622) do
+ActiveRecord::Schema.define(:version => 20100726225423) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -63,13 +63,15 @@ ActiveRecord::Schema.define(:version => 20100726222622) do
   add_index "assets", ["typus_user_id"], :name => "index_assets_on_typus_user_id"
 
   create_table "awards", :force => true do |t|
-    t.string   "title",                           :null => false
+    t.string   "title",                                 :null => false
     t.text     "body"
     t.integer  "section_id"
-    t.boolean  "published",    :default => false, :null => false
+    t.boolean  "published",          :default => false, :null => false
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
   end
 
   create_table "body_slides", :force => true do |t|
