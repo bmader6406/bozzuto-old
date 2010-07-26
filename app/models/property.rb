@@ -51,6 +51,8 @@ class Property < ActiveRecord::Base
     end
   }
 
+  named_scope :mappable, :conditions => ['latitude IS NOT NULL AND longitude IS NOT NULL']
+
   named_scope :in_state, lambda { |state_id|    
     {:conditions => ['city_id IN (SELECT id FROM cities WHERE cities.state_id = ?)', state_id]}
   }

@@ -120,6 +120,7 @@ NewsPost.blueprint do
   body         { Faker::Lorem.paragraphs(2) }
   published    { true }
   published_at { Time.now - 1.day }
+  category     { NewsPost::CATEGORY.rand }
   section
 end
 

@@ -10,6 +10,6 @@ class HomeCommunity < Community
   named_scope :ordered_by_title, :order => 'title ASC'
 
   def nearby_communities(limit = 6)
-    @nearby_communities ||= HomeCommunity.near(self).all(:limit => limit)
+    @nearby_communities ||= HomeCommunity.mappable.near(self).all(:limit => limit)
   end
 end
