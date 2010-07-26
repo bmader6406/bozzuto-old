@@ -15,22 +15,15 @@
           var largeMap = new GMap2(document.getElementById("map-large"));
           largeMap.setCenter(point, 13);
           largeMap.setUIToDefault();
-          largeMap.addOverlay(new GMarker(point));
-          
-          var icons = [];
-          
-          // Create our "restaurant" marker icon
-          icons['restaurant'] = new GIcon();
-          icons['restaurant'].image = "http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=restaurant|AAAAFF";
-          icons['restaurant'].shadow = "http://chart.apis.google.com/chart?chst=d_map_pin_shadow";
-          icons['restaurant'].iconAnchor = new GPoint(6, 20);
-          icons['restaurant'].infoWindowAnchor = new GPoint(5, 1);
-
-          icons['school'] = new GIcon();
-          icons['school'].image = "http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=school|AAAAFF";
-          icons['school'].shadow = "http://chart.apis.google.com/chart?chst=d_map_pin_shadow";
-          icons['school'].iconAnchor = new GPoint(6, 20);
-          icons['school'].infoWindowAnchor = new GPoint(5, 1);          
+          var icon = new GIcon();
+          icon.image = 'http://google-maps-icons.googlecode.com/files/home.png';
+          icon.iconAnchor = new GPoint(18, 32);
+          icon.infoWindowAnchor = new GPoint(10, 10);
+          var marker = new GMarker(point, {icon: icon});
+          largeMap.addOverlay(marker);
+          GEvent.addListener(marker, 'click', function() {
+                  marker.openInfoWindowHtml("<h4><%= @community.title %></h4>");
+                });
 
           var populateMapFunction = function (search) {
             return function (data) {
@@ -46,34 +39,41 @@
               });
             }
           }
-          
-          window.populateMap_restaurant = populateMapFunction('restaurant');
-          window.populateMap_school = populateMapFunction('school');
 
-          $.getScript("http://local.yahooapis.com/LocalSearchService/V3/localSearch?" + $.param({
-            appid: <%= raw(APP_CONFIG[:yahoo_api_key].inspect) %>,
-            latitude: latitude,
-            longitude: longitude,
-            query: 'restaurant',
-            output: 'json',
-            callback: 'window.populateMap_restaurant'
-          }));
+          var queries = {
+            restaurant: 'http://google-maps-icons.googlecode.com/files/restaurant.png',
+            school: 'http://google-maps-icons.googlecode.com/files/school.png'
+          }
+          var icons = [];
 
-          $.getScript("http://local.yahooapis.com/LocalSearchService/V3/localSearch?" + $.param({
-            appid: <%= raw(APP_CONFIG[:yahoo_api_key].inspect) %>,
-            latitude: latitude,
-            longitude: longitude,
-            query: 'school',
-            output: 'json',
-            callback: 'window.populateMap_school'
-          }));
+          for (var query in queries) {
+            window["populateMap_" + query] = populateMapFunction(query);
+            icons[query] = new GIcon();
+            icons[query].image = queries[query];
+          }
+
+          for (var icon in icons) {
+            icons[icon].iconAnchor = new GPoint(18, 32);
+            icons[icon].infoWindowAnchor = new GPoint(10, 10);
+          }
+
+          for (var query in queries) {
+            $.getScript("http://local.yahooapis.com/LocalSearchService/V3/localSearch?" + $.param({
+              appid: <%= raw(APP_CONFIG[:yahoo_api_key].inspect) %>,
+              latitude: latitude,
+              longitude: longitude,
+              query: query,
+              output: 'json',
+              callback: 'window.populateMap_' + query
+            }));
+          }
 
           $("#map-lightbox").click(function (e) {
             e.preventDefault();
             $("#map-large").lightbox_me({
               onLoad: function () {
                 largeMap.checkResize();
-                largeMap.setCenter(point, 13);                                                
+                largeMap.setCenter(point, 13);
               }
             });
           });
