@@ -5,6 +5,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.root :controller => :home_pages
 
+  map.search '/search', :controller => :searches, :action => :index
+
   map.map_apartment_communities 'apartments/communities/map', :controller => 'apartment_communities', :action => 'index', :template => 'map'
 
   community_options = {

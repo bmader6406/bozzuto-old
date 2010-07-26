@@ -55,9 +55,9 @@
       </div>
 
       <div class="section">
-        <form action="search-results.html" class="search-form">
+        <form action="/search" class="search-form">
           <p class="fields">
-            <input type="text" name="q" />
+            <input type="text" name="q" value="<%= params[:q] %>"/>
             <button type="submit">Submit</button>
           </p>
         </form>

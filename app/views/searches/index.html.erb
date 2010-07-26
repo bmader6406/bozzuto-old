@@ -1,0 +1,57 @@
+<% content_for :body_class do %>search
+<% end %>
+
+<div id="breadcrumb">
+  <div class="container">
+    <ul>
+      <li><%= link_to 'Bozzuto', '/' %></li>
+      <li>Search</li>
+    </ul>
+    <h1>Search Results for "<%= @query %>"</h1>
+  </div>
+</div>
+
+<div id="main-content">
+  <div class="container">
+    <div class="row">
+      <div id="sidebar" class="col">
+        &nbsp;
+      </div>
+
+      <div id="content" class="col">
+        <% if @search.results.present? -%>
+
+          <div class="header">
+            <p>
+              Showing <%= @search.start.to_i + 1 %>-<%= @search.start.to_i + @search.count.to_i %>
+              of <%= @search.totalhits %>
+              results
+            </p>
+          </div>
+
+          <div class="results">
+            <ul>
+              <% @search.results.each do |result| -%>
+                <li>
+                  <h4><%= link_to raw(result.title), result.url %></h4>
+
+                  <p><%= raw(result.abstract) %></p>
+                </li>
+              <% end -%>
+            </ul>
+
+            <p>
+              <%= paginate_search(@search) %>
+            </p>
+          </div>
+        <% else -%>
+          <div class="results">
+            <p>
+              There were no results for the search term "<%= @query %>."
+            </p>
+          </div>
+        <% end -%>
+      </div>
+    </div>
+  </div>
+</div>

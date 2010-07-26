@@ -17,6 +17,7 @@ gem 'paperclip'
 gem 'rcov'
 gem 'whenever'
 gem 'hoptoad_notifier'
+gem 'bossman'
 
 group :test do
   gem 'shoulda', '2.10.3'
