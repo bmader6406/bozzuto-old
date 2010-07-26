@@ -664,6 +664,7 @@
       color: #fff;
       margin-bottom: 25px;
       overflow: hidden;
+      width: 520px;
     }
     div.promo .promo-header {
       background: url(/images/bg-promo.png) left bottom repeat-x #706e7c;
@@ -2364,7 +2365,10 @@ div.wysiwyg ul li {
 
   #featured-floor-plans h3,
   .floor-plan-group h3 {
-    margin-bottom: 1em;
+    border: none !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0em;
+    padding: 0 !important;
   }
   
   #featured-floor-plans ul,
