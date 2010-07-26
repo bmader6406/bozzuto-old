@@ -4,9 +4,19 @@
   <div class="container">
     <ul>
       <li><%= link_to 'Apartments', '/apartments' %></li>
-      <li>Find an Apartment</li>
+      <% if @geographic_filter -%>
+        <li><%= link_to "Find an Apartment", apartment_communities_path %></li>
+        <li><%= @geographic_filter.name %> <%= "County" if @geographic_filter.is_a?(County) %></li>
+      <% else -%>
+        <li>Find an Apartment</li>
+      <% end -%>
     </ul>
-    <h1>Find an Apartment</h1>
+    <h1>
+      Find an Apartment
+      <% if @geographic_filter -%>
+        in <%= @geographic_filter.name %> <%= "County" if @geographic_filter.is_a?(County) %>
+      <% end -%>
+    </h1>
   </div>
 </div>
 
