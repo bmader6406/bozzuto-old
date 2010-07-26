@@ -21,7 +21,8 @@
         <% if community.latitude.present? %>
           markers.push({
             latlng: new GLatLng(<%= community.latitude %>, <%= community.longitude %>),
-            title: "<%= h (community.listing_title || community.title) %>",
+            title: "<%= h(community.listing_title || community.title) %>",
+            text: "<%= h(community.overview_bullet_1) %>",
             url: "<%= apartment_community_path(community) %>"
           });
         <% end %>
@@ -42,7 +43,8 @@
           });
 
           GEvent.addListener(new_marker, 'click', function() {
-            new_marker.openInfoWindowHtml('<h4><a href="' + marker.url + '">' + marker.title + '</a></h4>');
+            new_marker.openInfoWindowHtml('<h4><a href="' + marker.url + '">' + marker.title + '</a></h4>' +
+                '<p>' + marker.text + '</p>' + '<p><a href="' + marker.url + '">Learn More</a></p>');
           });
 
           map.addOverlay(new_marker);
