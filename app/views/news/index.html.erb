@@ -17,16 +17,26 @@
 <% end %>
 
 
-<% @news_posts.each do |post| %>
-  <div class="news-post row">
-    <h3>
-      <%= link_to post.title, news_post_path(@section, post) %>
-    </h3>
+<div class="news-posts">
+  <% @news_posts.each do |post| %>
+    <div class="news-post row">
+      <h3>
+        <%= link_to post.title, news_post_path(@section, post) %>
+      </h3>
 
-    <a href="#"><img src="/images/fpo/generic-content-1.jpg" alt="" height="150" width="150" /></a>
+      <p class="news-post-date">
+        <%= post.published_at.to_formatted_s(:month_day_year) %>
+      </p>
 
-    <%= simple_format(truncate(post.body, :length => 600)) %>
-  </div>
-<% end %>
+      <% if post.image? %>
+        <p class="figure">
+          <%= link_to image_tag(post.image.url), news_post_path(@section, post) %>
+        </p>
+      <% end %>
 
-<%= will_paginate @news_posts %>
+      <%= truncate_html(post.body, :length => 600, :omission => "&hellip; #{link_to('Continue reading', news_post_path(@section, post))}") %>
+    </div>
+  <% end %>
+
+  <%= will_paginate @news_posts %>
+</div>

@@ -3439,6 +3439,24 @@ div.wysiwyg ul li {
     }
   /* @end */
 
+  /* @group -news */
+    .page #content .news-posts {
+      padding-top: 25px;
+    }
+    .page #content .news-post {
+      margin-bottom: 30px;
+    }
+    .page #content .news-post h3 {
+      border: none;
+      line-height: 1.5;
+      padding: 0;
+    }
+    .page #content .news-post .news-post-date {
+      font-size: 12px;
+      font-style: italic;
+    }
+  /* @end */
+
   /* @group -aside */
     .page #aside .article {
       background-color: #f2f4f5;

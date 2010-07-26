@@ -201,6 +201,8 @@ en:
         icon: Image dimensions should be 44x44. If icon image is not present, icon will not be shown in listings.
       mini_slide:
         image: Image dimensions should be 230x145
+      news_post:
+        image: Image dimensions should be 150x150
       property_slide:
         image: Image dimensions should be 870x375
         caption: Must be fewer than 128 characters

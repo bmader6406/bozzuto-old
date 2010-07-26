@@ -242,10 +242,12 @@ NewsPost:
   fields:
     default: title, published, published_at
     list: title, category, section, published, published_at
-    form: title, section, category, meta_title, meta_description, meta_keywords, body, published, published_at
+    form: title, section, category, meta_title, meta_description, meta_keywords, image, body, published, published_at
     options:
       ckeditor: body
       selectors: category
+      booleans:
+        published: ['Yes', 'No']
   order_by: -published_at
   relationships: section
   filters:
