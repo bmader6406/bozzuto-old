@@ -1,12 +1,12 @@
-class PropertyMiniSlide < ActiveRecord::Base
-  belongs_to :property_mini_slideshow
+class MiniSlide < ActiveRecord::Base
+  belongs_to :mini_slideshow
 
-  acts_as_list :scope => :property_mini_slideshow
+  acts_as_list :scope => :mini_slideshow
 
   default_scope :order => 'position ASC'
 
   has_attached_file :image,
-    :url => '/system/:class/:id/:style.:extension',
+    :url => '/system/property_mini_slides/:id/:style.:extension',
     :styles => { :slide => '230x145#' },
     :default_style => :slide
 

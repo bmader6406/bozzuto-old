@@ -1,5 +1,5 @@
 class HomePage < ActiveRecord::Base
-  belongs_to :featured_property, :class_name => 'Property'
+  belongs_to :mini_slideshow
   has_many :slides,
     :class_name => 'HomePageSlide',
     :order      => 'position ASC'

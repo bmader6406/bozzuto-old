@@ -23,7 +23,6 @@ class Property < ActiveRecord::Base
   belongs_to :county  
 
   has_one :slideshow, :class_name => 'PropertySlideshow'
-  has_one :mini_slideshow, :class_name => 'PropertyMiniSlideshow'
 
   has_and_belongs_to_many :property_features, :order => 'position ASC'
 

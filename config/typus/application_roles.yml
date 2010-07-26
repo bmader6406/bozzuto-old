@@ -22,6 +22,8 @@ admin:
   LeadershipGroup: create, read, update, delete
   MastheadSlide: create, read, update, delete
   MastheadSlideshow: create, read, update, delete
+  MiniSlide: create, read, update, delete
+  MiniSlideshow: create, read, update, delete
   NewsPost: create, read, update, delete
   Page: create, read, update, delete
   Photo: create, read, update, delete
@@ -33,8 +35,6 @@ admin:
   Promo: create, read, update, delete
   Property: create, read, update, delete
   PropertyFeature: create, read, update, delete
-  PropertyMiniSlide: create, read, update, delete
-  PropertyMiniSlideshow: create, read, update, delete
   PropertySlide: create, read, update, delete
   PropertySlideshow: create, read, update, delete
   Section: read, update

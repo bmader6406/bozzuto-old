@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100726160729) do
+ActiveRecord::Schema.define(:version => 20100726180905) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -173,12 +173,12 @@ ActiveRecord::Schema.define(:version => 20100726160729) do
 
   create_table "home_pages", :force => true do |t|
     t.text     "body"
-    t.integer  "featured_property_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "meta_title"
     t.string   "meta_description"
     t.string   "meta_keywords"
+    t.integer  "mini_slideshow_id"
   end
 
   create_table "homes", :force => true do |t|
@@ -252,11 +252,11 @@ ActiveRecord::Schema.define(:version => 20100726160729) do
     t.string   "image_content_type"
     t.string   "image_link"
     t.text     "sidebar_text"
-    t.integer  "featured_property_id"
     t.integer  "masthead_slideshow_id"
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "mini_slideshow_id"
   end
 
   create_table "masthead_slideshows", :force => true do |t|
@@ -264,6 +264,23 @@ ActiveRecord::Schema.define(:version => 20100726160729) do
     t.integer  "page_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "mini_slides", :force => true do |t|
+    t.string   "image_file_name",    :null => false
+    t.string   "image_content_type", :null => false
+    t.integer  "position"
+    t.integer  "mini_slideshow_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mini_slideshows", :force => true do |t|
+    t.string   "title",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "subtitle"
+    t.string   "link_url"
   end
 
   create_table "news_posts", :force => true do |t|
@@ -469,22 +486,6 @@ ActiveRecord::Schema.define(:version => 20100726160729) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "show_on_search_page", :default => false, :null => false
-  end
-
-  create_table "property_mini_slides", :force => true do |t|
-    t.string   "image_file_name",            :null => false
-    t.string   "image_content_type",         :null => false
-    t.integer  "position"
-    t.integer  "property_mini_slideshow_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "property_mini_slideshows", :force => true do |t|
-    t.string   "name",        :null => false
-    t.integer  "property_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "property_slides", :force => true do |t|

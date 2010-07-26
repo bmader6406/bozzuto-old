@@ -17,14 +17,14 @@ en:
       leadership_group: Leadership Group
       masthead_slide: Slide
       masthead_slideshow: Masthead Slideshow
+      mini_slide: Slide
+      mini_slideshow: Mini Slideshow
       news_post: News
       photo_set: Flickr Photo Set
       project_category: Project Category
       project_data_point: Data Point
       project_update: Update
       property_feature: Property Feature
-      property_mini_slide: Slide
-      property_mini_slideshow: Mini Slideshow
       property_slide: Slide
       property_slideshow: Property Slideshow
       typus_user: User
@@ -84,9 +84,9 @@ en:
         secondary_title: Secondary Title
       masthead_slide:
         body: Body Text
-        featured_property: Featured Property
         image_link: Image Link
         masthead_slideshow: Masthead Slideshow
+        mini_slideshow: Mini Slideshow
         sidebar_text: Sidebar Text
         slide_type: Slide Type
       news_post:
@@ -157,8 +157,10 @@ en:
         twitter_handle: Twitter Handle
         video_url: Video URL
         website_url: Website URL
-      property_mini_slide:
-        property_mini_slideshow: Mini Slideshow
+      mini_slide:
+        mini_slideshow: Mini Slideshow
+      mini_slideshow:
+        link_url: Link URL
       property_slide:
         property_slideshow: Property Slideshow
       section:
@@ -192,7 +194,7 @@ en:
         short_title: Shown as the title in the main slideshow, must be shorter than 22 characters
       property_feature:
         icon: Image dimensions should be 44x44
-      property_mini_slide:
+      mini_slide:
         image: Image dimensions should be 230x145
       property_slide:
         image: Image dimensions should be 870x375

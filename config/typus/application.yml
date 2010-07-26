@@ -14,7 +14,7 @@ ApartmentCommunity:
       selectors: brochure_type
       destroy_related: PropertySlideshow, PropertyMiniSlideshow, Video, PhotoSet, ApartmentFloorPlan
   order_by: title
-  relationships: property_features, city, county, local_info_feed, slideshow, mini_slideshow, videos, photo_set, floor_plans, promo
+  relationships: property_features, city, county, local_info_feed, slideshow, videos, photo_set, floor_plans, promo
   filters:
   search: title, street_address
   application: Properties
@@ -139,7 +139,7 @@ HomeCommunity:
       selectors: brochure_type
       destroy_related: PropertySlideshow, PropertyMiniSlideshow, Home, Video, PhotoSet
   order_by: title
-  relationships: property_features, city, county, slideshow, mini_slideshow, videos, photo_set, homes, local_info_feed, promo
+  relationships: property_features, city, county, slideshow, videos, photo_set, homes, local_info_feed, promo
   filters: 
   search: title
   application: Properties
@@ -157,14 +157,14 @@ HomeFloorPlan:
 
 HomePage:
   fields:
-    default: featured_property
-    list: featured_property
-    form: meta_title, meta_description, meta_keywords, body, featured_property
+    default: 
+    list: 
+    form: meta_title, meta_description, meta_keywords, body, mini_slideshow
     options:
       ckeditor: body
       destroy_related: HomePageSlide
   order_by: 
-  relationships: featured_property, slides
+  relationships: slides, mini_slideshow
   filters: 
   search: 
   application: Content
@@ -215,12 +215,12 @@ MastheadSlide:
   fields:
     default: image, image_link, position
     list: image, image_link, position
-    form: body, slide_type, image, image_link, sidebar_text, featured_property, masthead_slideshow
+    form: body, slide_type, image, image_link, sidebar_text, mini_slideshow, masthead_slideshow
     options:
       ckeditor: body, sidebar_text
       selectors: slide_type
   order_by: position
-  relationships: featured_property, masthead_slideshow
+  relationships: mini_slideshow, masthead_slideshow
   filters: 
   search: 
   application: 
@@ -302,7 +302,7 @@ Project:
       selectors: brochure_type
       destroy_related: PropertySlideshow, PropertyMiniSlideshow, ProjectDataPoint, ProjectUpdate
   order_by: section_id, position
-  relationships: city, section, slideshow, mini_slideshow, data_points, updates, project_categories
+  relationships: city, section, slideshow, data_points, updates, project_categories
   filters: 
   search: title
   application: Properties
@@ -361,7 +361,7 @@ Property:
     options:
       selectors: brochure_type, property_type
   order_by: title
-  relationships: slideshow, mini_slideshow, video, photo_set
+  relationships: slideshow, video, photo_set
   filters:
   search:
   application:
@@ -377,26 +377,26 @@ PropertyFeature:
   search: name
   application: Properties
 
-PropertyMiniSlide:
+MiniSlide:
   fields:
-    default: image, position, property_mini_slideshow
-    list: image, position, property_mini_slideshow
-    form: image, property_mini_slideshow
+    default: image, position
+    list: image, position
+    form: image, mini_slideshow
   order_by: position
-  relationships: property_mini_slideshow
+  relationships: mini_slideshow
   filters: 
   search: 
   application: 
 
-PropertyMiniSlideshow:
+MiniSlideshow:
   fields:
-    default: name, property
-    list: name, property
-    form: name, property
+    default: title
+    list: title
+    form: title, subtitle, link_url
     options:
-      destroy_related: PropertyMiniSlide
+      destroy_related: MiniSlide
   order_by: 
-  relationships: property, slides
+  relationships: slides
   filters: 
   search: 
   application: 

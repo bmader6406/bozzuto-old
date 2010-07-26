@@ -34,32 +34,32 @@ $(function() {
   (function() {
     var imageFile   = $('input#masthead_slide_image').parent(),
         imageLink   = $('input#masthead_slide_image_link').parent(),
-        sidebarText = $('textarea#masthead_slide_sidebar_text').parent(),
-        property    = $('select#masthead_slide_featured_property_id').parent();
+        sidebarText = $('textarea#masthead_slide_sidebar_text_editor').parent(),
+        mini        = $('select#masthead_slide_mini_slideshow_id').parent();
 
     $('select#masthead_slide_slide_type').change(function() {
       var selected     = parseInt($(':selected', this).val()),
           usesImage    = 0,
           usesText     = 1,
-          usesProperty = 2
+          usesMini     = 2;
 
       switch (selected) {
         case usesImage:
           imageFile.show();
           imageLink.show();
-          property.hide();
+          mini.hide();
           sidebarText.hide();
           break;
         case usesText:
           imageFile.hide();
           imageLink.hide();
-          property.hide();
+          mini.hide();
           sidebarText.show();
           break;
-        case usesProperty:
+        case usesMini:
           imageFile.hide();
           imageLink.hide();
-          property.show();
+          mini.show();
           sidebarText.hide();
           break;
       }

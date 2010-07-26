@@ -1,0 +1,15 @@
+<% if mini_slideshow.present? %>
+  <div class="mini-slideshow">
+    <ul class="slides">
+      <% mini_slideshow.slides.each_with_index do |slide, i| %>
+        <li id="slide-<%= i %>" class="slide <%= 'current' if i == 0 %>">
+          <%= raw(link_to(image_tag(slide.image.url), mini_slideshow.link_url)) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <% if mini_slideshow.subtitle.present? %>
+    <p><strong><%= mini_slideshow.subtitle %></strong></p>
+  <% end %>
+<% end %>

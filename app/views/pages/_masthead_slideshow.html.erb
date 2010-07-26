@@ -20,19 +20,18 @@
                 <%= raw(slide.sidebar_text) %>
               </div>
 
-            <% elsif slide.uses_featured_property? %>
+            <% elsif slide.uses_mini_slideshow? %>
 
-              <% property = slide.featured_property %>
+              <% mini = slide.mini_slideshow %>
               <div class="figure">
-                <% if property.mini_slideshow.present? %>
+                <% if mini.present? %>
                   <p>
-                    <%= link_to image_tag(property.mini_slideshow.slides.first.image.url), property_path(property) %>
+                    <%= link_to image_tag(mini.slides.first.image.url), mini.link_url %>
                   </p>
 
-                  <p>
-                    <strong><%= property.address %></strong><br />
-                    <%= raw(property.subtitle) %>
-                  </p>
+                  <% if mini.subtitle.present? %>
+                    <p><strong><%= mini.subtitle %></strong></p>
+                  <% end %>
                 <% end %>
               </div>
 
