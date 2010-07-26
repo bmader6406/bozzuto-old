@@ -14,9 +14,13 @@
   </div>
 
   <ul class="results">
-    <% State.all.each do |state| %>
+    <% first = true %>
+    <% State.all.sort { |a, b|
+      (@communities[b.name].try(:count) || 0) <=> (@communities[a.name].try(:count) || 0) 
+    }.each do |state| %>
       <% communities = @communities[state.name] || [] %>
-      <li class="<%= 'closed' unless state.name == @communities.keys.sort.first %>">
+      <li class="<%= 'closed' unless first && communities.count > 0 %>">
+        <% first = false -%>
         <div class="header">
           <h2><%= state.name %></h2>
           <p><%= pluralize communities.count, 'Apartment Community' %></p>
