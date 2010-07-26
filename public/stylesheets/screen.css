@@ -1286,7 +1286,8 @@ div.wysiwyg ul li {
   .landing .listings a {
     display: block;
   }
-  .community #renting-from-bozzuto {
+  .community #renting-from-bozzuto,
+  .community #why-buy-from-bozzuto {
     width: 320px;
     padding-right: 20px;
   }

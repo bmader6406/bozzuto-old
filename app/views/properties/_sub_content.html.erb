@@ -2,16 +2,23 @@
   <%= render :partial => 'properties/recently_viewed' %>
 
   <div class="row">
-    <div id="renting-from-bozzuto" class="col">
-      <h2>Renting From Bozzuto</h2>
+    <% if property.is_a?(ApartmentCommunity) -%>
+      <div id="renting-from-bozzuto" class="col">
+        <h2>Renting From Bozzuto</h2>
 
-      <%= snippet("Renting From Bozzuto") %>
-    </div>
+        <%= snippet("Renting From Bozzuto") %>
+      </div>
+    <% else -%>
+      <div id="why-buy-from-bozzuto" class="col">
+        <h2>Why Buy from Bozzuto?</h2>
+        <%= snippet("Why Buy from Bozzuto?") %>
+      </div>
+    <% end -%>
 
     <div id="about-bozzuto" class="col">
       <h2>About Bozzuto Management Company</h2>
 
-      <%= snippet("About Bozzuto Management Company") %>      
+      <%= snippet("About Bozzuto Management Company") %>
     </div>
   </div>
 
@@ -20,7 +27,7 @@
       <ul>
         <% property.county.cities.each do |city| %>
           <li>
-          <%= link_to "#{city.name} #{property.is_a?(ApartmentCommunity) ? 'Apartments' : 'Homes'}", property %>
+            <%= link_to "#{city.name} #{property.is_a?(ApartmentCommunity) ? 'Apartments' : 'Homes'}", property %>
           </li>
         <% end %>
       </ul>
