@@ -57,6 +57,10 @@
             </div>
           <% end %>
         </div>
+
+        <% if @page.promo.present? %>
+          <%= render :partial => 'shared/promo', :object => @page.promo %>
+        <% end %>
         
         <div id="properties-by-type">
           <div class="header">

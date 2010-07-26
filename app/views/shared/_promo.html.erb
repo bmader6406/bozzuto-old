@@ -1,0 +1,12 @@
+<div class="promo">
+  <div class="promo-header">
+    <h4><%= promo.title %></h4>
+    <p><%= promo.subtitle %></p>
+  </div>
+
+  <% if promo.link_url.present? %>
+    <p class="promo-link">
+      <%= link_to 'Learn More', promo.link_url %>
+    </p>
+  <% end %>
+</div>
