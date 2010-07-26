@@ -87,6 +87,10 @@ en:
         image_link: Image Link
         masthead_slideshow: Masthead Slideshow
         mini_slideshow: Mini Slideshow
+        quote: Quote
+        quote_attribution: Quote By
+        quote_company: Quote Company
+        quote_job_title: Quote Job Title
         sidebar_text: Sidebar Text
         slide_type: Slide Type
       news_post:

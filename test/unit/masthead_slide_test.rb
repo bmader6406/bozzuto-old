@@ -58,5 +58,21 @@ class MastheadSlideTest < ActiveSupport::TestCase
         end
       end
     end
+
+    context '#uses_quote?' do
+      context 'when slide_type is USE_QUOTE' do
+        should 'return true' do
+          @slide.slide_type = MastheadSlide::USE_QUOTE
+          assert @slide.uses_quote?
+        end
+      end
+
+      context 'when slide_type is not USE_QUOTE' do
+        should 'return false' do
+          @slide.slide_type = MastheadSlide::USE_IMAGE
+          assert !@slide.uses_quote?
+        end
+      end
+    end
   end
 end

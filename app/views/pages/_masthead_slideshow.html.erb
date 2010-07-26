@@ -35,6 +35,28 @@
                 <% end %>
               </div>
 
+            <% elsif slide.uses_quote? %>
+
+              <div class="quote">
+                <blockquote>
+                  <%= raw(slide.quote) %>
+
+                  <cite>
+                    <% if slide.quote_attribution.present? %>
+                      <strong><%= slide.quote_attribution %></strong>
+                    <% end %>
+
+                    <% if slide.quote_job_title.present? %>
+                      <br /><%= slide.quote_job_title %>
+                    <% end %>
+
+                    <% if slide.quote_company.present? %>
+                      <br /><%= slide.quote_company %>
+                    <% end %>
+                  </cite>
+                </blockquote>
+              </div>
+
             <% end %>
           </li>
         <% end %>

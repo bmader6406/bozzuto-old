@@ -215,9 +215,9 @@ MastheadSlide:
   fields:
     default: image, image_link, position
     list: image, image_link, position
-    form: body, slide_type, image, image_link, sidebar_text, mini_slideshow, masthead_slideshow
+    form: body, slide_type, image, image_link, sidebar_text, mini_slideshow, quote, quote_attribution, quote_job_title, quote_company, masthead_slideshow
     options:
-      ckeditor: body, sidebar_text
+      ckeditor: body, sidebar_text, quote
       selectors: slide_type
   order_by: position
   relationships: mini_slideshow, masthead_slideshow

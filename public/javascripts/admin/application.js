@@ -32,16 +32,21 @@ $(function() {
 
   // masthead slideshow form
   (function() {
-    var imageFile   = $('input#masthead_slide_image').parent(),
-        imageLink   = $('input#masthead_slide_image_link').parent(),
-        sidebarText = $('textarea#masthead_slide_sidebar_text_editor').parent(),
-        mini        = $('select#masthead_slide_mini_slideshow_id').parent();
+    var imageFile    = $('input#masthead_slide_image').parent(),
+        imageLink    = $('input#masthead_slide_image_link').parent(),
+        sidebarText  = $('textarea#masthead_slide_sidebar_text_editor').parent(),
+        mini         = $('select#masthead_slide_mini_slideshow_id').parent(),
+        quote        = $('textarea[id$=quote_editor]').parent(),
+        quoteBy      = $('input[id$=quote_attribution]').parent(),
+        quoteJob     = $('input[id$=quote_job_title]').parent(),
+        quoteCompany = $('input[id$=quote_company]').parent();
 
     $('select#masthead_slide_slide_type').change(function() {
       var selected     = parseInt($(':selected', this).val()),
           usesImage    = 0,
           usesText     = 1,
-          usesMini     = 2;
+          usesMini     = 2,
+          usesQuote    = 3;
 
       switch (selected) {
         case usesImage:
@@ -49,18 +54,40 @@ $(function() {
           imageLink.show();
           mini.hide();
           sidebarText.hide();
+          quote.hide();
+          quoteBy.hide();
+          quoteJob.hide();
+          quoteCompany.hide();
           break;
         case usesText:
           imageFile.hide();
           imageLink.hide();
           mini.hide();
           sidebarText.show();
+          quote.hide();
+          quoteBy.hide();
+          quoteJob.hide();
+          quoteCompany.hide();
           break;
         case usesMini:
           imageFile.hide();
           imageLink.hide();
           mini.show();
           sidebarText.hide();
+          quote.hide();
+          quoteBy.hide();
+          quoteJob.hide();
+          quoteCompany.hide();
+          break;
+        case usesQuote:
+          imageFile.hide();
+          imageLink.hide();
+          mini.hide();
+          sidebarText.hide();
+          quote.show();
+          quoteBy.show();
+          quoteJob.show();
+          quoteCompany.show();
           break;
       }
     }).change();

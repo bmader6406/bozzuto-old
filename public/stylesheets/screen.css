@@ -2849,19 +2849,6 @@ div.wysiwyg ul li {
 
 /* @group -leadership */
   /* @group --content */
-    .leadership #masthead .section {
-      margin-right: 15px;
-      padding: 0 0 28px 0;
-      width: 500px;
-    }
-    .leadership #breadcrumb {
-      border: none;
-    }
-    .aside-quote cite {
-      display: block;
-      font-style: italic;
-      padding: 10px 20px;
-    }
     .partners {
       overflow: hidden;
       padding: 15px 0 0;
@@ -2878,14 +2865,6 @@ div.wysiwyg ul li {
       color: #84848b;
       font-size: 11px;
     }
-    .aside-quote p {
-       padding: 20px 20px 0;
-       font-size: 15px;
-       line-height: 22px;
-     }
-     .aside-quote strong {
-       font-style: normal;
-     }
     .partners .partner-name {
       border-top: 1px solid #c1c1c5;
       border-bottom: 1px solid #c1c1c5;
@@ -2912,9 +2891,6 @@ div.wysiwyg ul li {
       color: #080812;
       font-size: 13px;
       line-height: 30px;
-    }
-    .aside-quote .figure{
-/*      background: #dde0e3 url(../images/structure/bg-aside-quote-figure.gif) 0 0 no-repeat;*/
     }
   /* @end */
 
@@ -3336,7 +3312,8 @@ div.wysiwyg ul li {
       text-decoration: none;
     }
     #masthead-slideshow .aside,
-    #masthead-slideshow .figure {
+    #masthead-slideshow .figure,
+    #masthead-slideshow .quote {
       float: right;
       height: 223px;
       position: relative;
@@ -3387,6 +3364,22 @@ div.wysiwyg ul li {
     }
     #masthead-slideshow .aside ul li.last a {
       border-bottom: none;
+    }
+    #masthead-slideshow .quote cite {
+      display: block;
+      font-style: italic;
+      padding: 10px 20px;
+    }
+    #masthead-slideshow .quote p {
+      padding: 20px 20px 0;
+      font-size: 15px;
+      line-height: 22px;
+    }
+    #masthead-slideshow .quote strong {
+      font-style: normal;
+    }
+    #masthead-slideshow .quote {
+      background: #dde0e3 url(../images/structure/bg-aside-quote-figure.gif) 0 0 no-repeat;
     }
   /* @end */
 
