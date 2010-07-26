@@ -3,11 +3,10 @@
 <div id="breadcrumb">
   <div class="container">
     <ul>
-      <li><a href="#">Apartments</a></li>
+      <li><%= link_to 'Apartments', '/apartments' %></li>
       <li>Find an Apartment</li>
     </ul>
     <h1>Find an Apartment</h1>
-    <!--img class="aside" src="/images/search-results-masthead.jpg" /-->
   </div>
 </div>
 
@@ -48,7 +47,7 @@
             <h3>Special Promotions</h3>
             <ul>
               <li>
-                <%= f.check_box :promotions_text_not_blank, :id => 'search_special_promotions' %>
+                <%= f.check_box :promo_id_not_blank, :id => 'search_special_promotions' %>
                 <%= f.label :special_promotions, 'Show only properties that have special promotions' %>
               </li>
             </ul>
@@ -93,7 +92,7 @@
           <h2>About Bozzuto Management Company</h2>
 
           <p>
-            <strong>Recognized by the National Association of Home Builders</strong> in both 2009 and 200 as the nation&rsquo;s best residential management company, Bozzuto Management has assembled a portfolio of apartment communities and commercial properties in locations throughout the East Coast.
+            <strong>Recognized by the National Association of Home Builders</strong> in both 2009 and 2008 as the nation&rsquo;s best residential management company, Bozzuto Management has assembled a portfolio of apartment communities and commercial properties in locations throughout the East Coast.
           </p>
 
           <p class="call-to-action">
