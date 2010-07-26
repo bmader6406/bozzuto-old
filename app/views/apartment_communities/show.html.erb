@@ -11,11 +11,9 @@
       <% end %>
 
       <div class="intro">
-        <p>
-          <% if @community.overview_text.present? -%>
-            <%= truncate(@community.overview_text.gsub(/<\/?[^>]*>/,  ""), :length => 300, :omission => "&hellip;").try(:html_safe) %>
-          <% end -%>
-        </p>
+        <% if @community.overview_text.present? -%>
+          <%= truncate_html(@community.overview_text, :length => 350, :omission => "&hellip;").try(:html_safe) %>
+        <% end -%>
       </div>
 
       <p>

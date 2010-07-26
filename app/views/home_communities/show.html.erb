@@ -10,7 +10,9 @@
       <% end %>
 
       <div class="intro">
-        <%= @community.overview_text.try(:html_safe) %>
+        <% if @community.overview_text.present? -%>
+          <%= truncate_html(@community.overview_text, :length => 350, :omission => "&hellip;").try(:html_safe) %>
+        <% end -%>
       </div>
 
       <%= property_bullets %>
