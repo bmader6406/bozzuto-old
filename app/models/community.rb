@@ -24,6 +24,6 @@ class Community < Property
 
   # used by sms
   def phone_message
-    "#{title}\n#{street_address}, #{city.name}, #{city.state.name}\n#{website_url}"
+    "#{title} #{street_address}, #{city.name}, #{city.state.name} #{phone_number} Call for specials! #{website_url}"
   end
 end

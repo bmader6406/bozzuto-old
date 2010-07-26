@@ -66,11 +66,12 @@ class CommunityTest < ActiveSupport::TestCase
         @community.title = "Pearson Square"
         @community.street_address = "410 S. Maple Ave"
         @community.city = City.new(:name => "Falls Church", :state => State.new(:name => "Virginia"))
+        @community.phone_number = '888-478-8640'
         @community.website_url = "http://bozzuto.com/pearson"
       end
 
       should "have a phone message for sms" do
-        message = "Pearson Square\n410 S. Maple Ave, Falls Church, Virginia\nhttp://bozzuto.com/pearson"
+        message = "Pearson Square 410 S. Maple Ave, Falls Church, Virginia 888-478-8640 Call for specials! http://bozzuto.com/pearson"
         assert_equal message, @community.phone_message
       end
 
