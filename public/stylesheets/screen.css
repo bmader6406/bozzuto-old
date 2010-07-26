@@ -782,6 +782,10 @@ div.wysiwyg ul li {
   }
 
   /* @group -main nav */
+    #home-nav {
+      position: relative;
+      z-index: 2;
+    }
     .secondary #header #main-nav {
       width: 200px;
     }
@@ -797,6 +801,7 @@ div.wysiwyg ul li {
       width: 297px;
       height: 150px;
       padding: 20px 0 0 33px;
+      z-index: 1;
     }
     .secondary #header #main-nav li:hover div.dropdown,
     .secondary #header #main-nav li.hover div.dropdown {
