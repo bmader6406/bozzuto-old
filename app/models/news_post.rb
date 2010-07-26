@@ -11,4 +11,9 @@ class NewsPost < ActiveRecord::Base
   default_scope :order => 'published_at DESC'
 
   validates_presence_of :title, :body, :section, :category
+
+  has_attached_file :image,
+    :url => '/system/:class/:id/:id_:style.:extension',
+    :styles => { :thumb => '150x150#' },
+    :default_style => :thumb
 end

@@ -5,5 +5,7 @@ class NewsPostTest < ActiveSupport::TestCase
     should_validate_presence_of :title, :body, :section, :category
 
     should_belong_to :section
+
+    should_have_attached_file :image
   end
 end

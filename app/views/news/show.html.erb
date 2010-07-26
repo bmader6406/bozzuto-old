@@ -6,8 +6,18 @@
 <% breadcrumb_title(@news_post.title) %>
 
 
-<h2><%= @news_post.title %></h2>
+<div class="news-post">
+  <h2><%= @news_post.title %></h2>
 
-<p><%= @news_post.published_at.to_formatted_s(:month_day_year) %></p>
+  <p class="news-post-date">
+    <%= @news_post.published_at.to_formatted_s(:month_day_year) %>
+  </p>
 
-<%= @news_post.body.try(:html_safe) %>
+  <% if @news_post.image? %>
+    <p class="figure">
+      <%= image_tag(@news_post.image.url) %>
+    </p>
+  <% end %>
+
+  <%= @news_post.body.try(:html_safe) %>
+</div>
