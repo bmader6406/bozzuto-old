@@ -2,20 +2,21 @@
 
 <div id="masthead">
   <div class="container">
-    <div id="breadcrumb">
-      <ul>
-        <li><a href="/about-us">About Us</a></li>
-        <li class="last">Leadership</li>
+    <div id="masthead-slideshow">
+      <ul class="slides">
+        <li class="slide">
+          <div class="section">
+            <h1>Bozzuto Leadership</h1>
+            <%= snippet("Leadership Text") %>
+          </div>
+
+          <div class="quote">
+            <blockquote>
+              <%= snippet("Leadership Quote") %>
+            </blockquote>
+          </div>
+        </li>
       </ul>
-    </div>
-    <div class="section">
-      <h1>Bozzuto Leadership</h1>
-      <%= snippet("Leadership Text") %>      
-    </div>
-    <div class="aside aside-quote">
-      <blockquote class="figure">
-        <%= snippet("Leadership Quote") %>        
-      </blockquote>
     </div>
   </div>
 </div>
