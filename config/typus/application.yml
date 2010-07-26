@@ -348,7 +348,7 @@ Promo:
     list: title
     form: title, subtitle, link_url
   order_by: title
-  relationships: 
+  relationships: apartment_communities, home_communities, landing_pages
   filters: 
   search: title, subtitle, link_url
   application: Content
