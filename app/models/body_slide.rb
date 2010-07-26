@@ -4,11 +4,12 @@ class BodySlide < ActiveRecord::Base
   default_scope :order => 'position ASC'
 
   belongs_to :body_slideshow
+  belongs_to :property
 
-   has_attached_file :image,
-     :url => '/system/:class/:id/slide_:id_:style.:extension',
-     :styles => { :resized => '840x375#' },
-     :default_style => :resized
+  has_attached_file :image,
+    :url => '/system/:class/:id/slide_:id_:style.:extension',
+    :styles => { :resized => '840x375#' },
+    :default_style => :resized
 
-   validates_attachment_presence :image
+  validates_attachment_presence :image
 end
