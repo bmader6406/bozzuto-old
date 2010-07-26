@@ -30,6 +30,7 @@ admin:
   ProjectCategory: create, read, update, delete
   ProjectDataPoint: create, read, update, delete
   ProjectUpdate: create, read, update, delete
+  Promo: create, read, update, delete
   Property: create, read, update, delete
   PropertyFeature: create, read, update, delete
   PropertyMiniSlide: create, read, update, delete

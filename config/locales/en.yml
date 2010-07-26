@@ -103,6 +103,8 @@ en:
         flickr_set_number: 'Flickr Set ID#'
       project_update:
         published_at: Published At
+      promo:
+        link_url: Link URL
       property:
         brochure: Brochure File
         brochure_link_text: Brochure Link Text
@@ -180,6 +182,8 @@ en:
         image: Image dimensions should be 230x223
       photo_set:
         flickr_set_number: It will take up to 2 hours for photos to be synced from Flickr
+      promo:
+        link_url: If no URL is entered, 'Learn More' link will not be displayed
       property:
         features_1_text: Use a single bulleted list. Content will be automatically formatted into two columns.
         features_2_text: Use a single bulleted list. Content will be automatically formatted into two columns.

@@ -342,6 +342,17 @@ ProjectUpdate:
   search:
   application:
 
+Promo:
+  fields:
+    default: title
+    list: title
+    form: title, subtitle, link_url
+  order_by: title
+  relationships: 
+  filters: 
+  search: title, subtitle, link_url
+  application: Content
+
 Property:
   fields:
     default: title, street_address, city
