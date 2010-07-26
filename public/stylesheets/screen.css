@@ -2846,7 +2846,9 @@ div.wysiwyg ul li {
 /* @group -leadership */
   /* @group --content */
     .leadership #masthead .section {
+      margin-right: 15px;
       padding: 0 0 28px 0;
+      width: 500px;
     }
     .leadership #breadcrumb {
       border: none;
@@ -2908,7 +2910,7 @@ div.wysiwyg ul li {
       line-height: 30px;
     }
     .aside-quote .figure{
-      background: #dde0e3 url(../images/structure/bg-aside-quote-figure.gif) 0 0 no-repeat;
+/*      background: #dde0e3 url(../images/structure/bg-aside-quote-figure.gif) 0 0 no-repeat;*/
     }
   /* @end */
 
