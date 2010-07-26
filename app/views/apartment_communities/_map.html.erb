@@ -21,7 +21,7 @@
         <% if community.latitude.present? %>
           markers.push({
             latlng: new GLatLng(<%= community.latitude %>, <%= community.longitude %>),
-            title: "<%= h community.title %>",
+            title: "<%= h (community.listing_title || community.title) %>",
             url: "<%= apartment_community_path(community) %>"
           });
         <% end %>
@@ -33,7 +33,6 @@
         var map = new GMap2(document.getElementById("search-results-map"));
         map.setCenter(new GLatLng(39.740986, -75.673828), 6);
 
-
         $.each(markers, function(index, marker) {
           var new_marker = new GMarker(marker.latlng, {
             clickable: true,
@@ -43,7 +42,7 @@
           });
 
           GEvent.addListener(new_marker, 'click', function() {
-            location.href = marker.url;
+            new_marker.openInfoWindowHtml('<h4><a href="' + marker.url + '">' + marker.title + '</a></h4>');
           });
 
           map.addOverlay(new_marker);
