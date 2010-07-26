@@ -3,7 +3,9 @@
     (function($) {
       $(document).ready(function() {
         if (GBrowserIsCompatible()) {
-          var point = new GLatLng(<%= @community.latitude %>, <%= @community.longitude %>);
+          var latitude = <%= @community.latitude %>;
+          var longitude = <%= @community.longitude %>;
+          var point = new GLatLng(latitude, longitude);
           var map = new GMap2(document.getElementById("map-canvas"));
           map.setCenter(point, 13);
           map.setUIToDefault();
@@ -14,6 +16,57 @@
           largeMap.setCenter(point, 13);
           largeMap.setUIToDefault();
           largeMap.addOverlay(new GMarker(point));
+          
+          var icons = [];
+          
+          // Create our "restaurant" marker icon
+          icons['restaurant'] = new GIcon();
+          icons['restaurant'].image = "http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=restaurant|AAAAFF";
+          icons['restaurant'].shadow = "http://chart.apis.google.com/chart?chst=d_map_pin_shadow";
+          icons['restaurant'].iconAnchor = new GPoint(6, 20);
+          icons['restaurant'].infoWindowAnchor = new GPoint(5, 1);
+
+          icons['school'] = new GIcon();
+          icons['school'].image = "http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=school|AAAAFF";
+          icons['school'].shadow = "http://chart.apis.google.com/chart?chst=d_map_pin_shadow";
+          icons['school'].iconAnchor = new GPoint(6, 20);
+          icons['school'].infoWindowAnchor = new GPoint(5, 1);          
+
+          var populateMapFunction = function (search) {
+            return function (data) {
+              $(data.ResultSet.Result).each(function () {
+                var result = this;
+                var point = new GLatLng(result.Latitude, result.Longitude);
+                var marker = new GMarker(point, {icon: icons[search]});
+                GEvent.addListener(marker, 'click', function() {
+                  marker.openInfoWindowHtml('<h4><a href="' + result.BusinessUrl + '">' + result.Title + '</a></h4>' +
+                      '<p>' + result.Distance + ' miles<br />' + result.Address + '<br />' + result.City + ', ' + result.State + '</p>');
+                });
+                largeMap.addOverlay(marker);
+              });
+            }
+          }
+          
+          window.populateMap_restaurant = populateMapFunction('restaurant');
+          window.populateMap_school = populateMapFunction('school');
+
+          $.getScript("http://local.yahooapis.com/LocalSearchService/V3/localSearch?" + $.param({
+            appid: <%= raw(APP_CONFIG[:yahoo_api_key].inspect) %>,
+            latitude: latitude,
+            longitude: longitude,
+            query: 'restaurant',
+            output: 'json',
+            callback: 'window.populateMap_restaurant'
+          }));
+
+          $.getScript("http://local.yahooapis.com/LocalSearchService/V3/localSearch?" + $.param({
+            appid: <%= raw(APP_CONFIG[:yahoo_api_key].inspect) %>,
+            latitude: latitude,
+            longitude: longitude,
+            query: 'school',
+            output: 'json',
+            callback: 'window.populateMap_school'
+          }));
 
           $("#map-lightbox").click(function (e) {
             e.preventDefault();
