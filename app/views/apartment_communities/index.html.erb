@@ -35,10 +35,10 @@
             <h3>Price</h3>
             <ul>
               <li>
-                <%= f.select :with_min_price, ['Choose Minimum...','250','500','750','1000','1250','1500','1750','2000','2500','3000','4000','5000','6000','7000','8000','9000','10000'] %>
+                <%= f.select :with_min_price, [['Choose Minimum...', '']] + search_prices %>
               </li>
               <li>
-                <%= f.select :with_max_price, ['Choose Maximum...','250','500','750','1000','1250','1500','1750','2000','2500','3000','4000','5000','6000','7000','8000','9000','10000'] %>
+                <%= f.select :with_max_price, [['Choose Maximum...', '']] + search_prices %>
               </li>
             </ul>
           </fieldset>

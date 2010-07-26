@@ -38,4 +38,10 @@ module ApartmentCommunitiesHelper
     var ws_address = '#{community.address}';var ws_width = '#{opts[:width]}';var ws_height = '#{opts[:height]}';var ws_layout = 'vertical';var ws_background_color = '#fff';</script><style type='text/css'>#ws-walkscore-tile{position:relative;text-align:left;}#ws-walkscore-tile *{float:none;}</style><div id='ws-walkscore-tile'></div><script type='text/javascript' src='http://www.walkscore.com/tile/show-walkscore-tile.php'></script>
     END
   end
+
+  def search_prices
+    ['250','500','750','1000','1250','1500','1750','2000','2500','3000','4000','5000','6000','7000','8000','9000','10000'].map do |price|
+      [number_to_currency(price), price]
+    end
+  end
 end
