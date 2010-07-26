@@ -1027,6 +1027,61 @@ div.wysiwyg ul li {
   #slideshow ul.slides li.current {
     z-index: 3 !important;
   }
+  #slideshow ul.slides li.slide div.featured-property {
+    background-color: #c0c5cb;
+    color: #fff;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  #slideshow ul.slides li.slide div.featured-property,
+  #slideshow ul.slides li.slide div.featured-property a {
+    display: block;
+    height: 375px;
+    width: 300px;
+  }
+  #slideshow ul.slides li.slide div.featured-property a:hover {
+    text-decoration: none;
+  }
+  #slideshow ul.slides li.slide div.featured-property a img {
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 0;
+  }
+  #slideshow ul.slides li.slide div.featured-property div.aside {
+    padding: 15px;
+    position: relative;
+    z-index: 2;
+  }
+  #slideshow ul.slides li.slide div.featured-property a h2,
+  #slideshow ul.slides li.slide div.featured-property a p {
+    color: #fff;
+  }
+  #slideshow ul.slides li.slide div.featured-property a h2 {
+    background: transparent url(../images/structure/bg-divider-white.gif) no-repeat bottom left;
+    line-height: 1;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+  #slideshow ul.slides li.slide div.featured-property a p {
+    background: transparent url(../images/structure/bg-body-slide-arrow.gif) no-repeat 0 0.5em;
+    font-size: 14px;
+    padding-left: 10px;
+    width: 200px;
+  }
+  #slideshow .overlay {
+    background: url(../images/structure/bg-slideshow-overlay.png) no-repeat;
+    display: block;
+    height: 375px;
+    position: absolute;
+    top: 0; left: 0;
+    width: 300px;
+    z-index: 1;
+  }
+
+  /* pagination */
   #slideshow ul.slideshow-pagination {
     background: #fff;
     border: 1px solid #85898e;
@@ -1054,6 +1109,8 @@ div.wysiwyg ul li {
   #slideshow ul.slideshow-pagination li.current a {
     font-weight: bold;
   }
+
+  /* navigation */
   #slideshow ul.slideshow-navigation {
     position: absolute;
     right: 67px;
@@ -1065,8 +1122,6 @@ div.wysiwyg ul li {
     top: 15px;
     right: 19px;
     width: 70px;
-  }
-  #slideshow ul.slideshow-navigation {
   }
   #slideshow ul.slideshow-navigation li {
     float: left;

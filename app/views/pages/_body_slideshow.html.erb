@@ -8,18 +8,36 @@
         <% else %>
           <%= raw(img) %>
         <% end %>
+
+        <% if slide.property && slide.property.slideshow.present? %>
+          <% property = slide.property %>
+          <div class="featured-property">
+            <% link_to property_path(property) do %>
+              <%= image_tag property.slideshow.slides.first.image.url %>
+              <div class="aside">
+                <h2>
+                  Featured 
+                  <%= property.is_a?(Project) ? 'Project' : 'Property' %>
+                </h2>
+
+                <p>
+                  <strong><%= property.title %></strong>
+                  <% if property.overview_bullet_1.present? %>
+                    <br /><%= property.overview_bullet_1 %>
+                  <% end %>
+                </p>
+              </div>
+              <span class="overlay"></span>
+            <% end %>
+          </div>
+        <% end %>
       </li>
     <% end %>
   </ul>
 
   <ul class="slideshow-navigation">
-    <li>
-      <a href="#" class="prev">Previous</a>
-    </li>
-    <li>
-      <a href="#" class="next">Next</a>
-    </li>
+    <li><a href="#" class="prev">Previous</a></li>
+    <li><a href="#" class="next">Next</a></li>
   </ul>
-  <ul class="slideshow-pagination"></ul>
 </div>
 
