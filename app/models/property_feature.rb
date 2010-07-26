@@ -15,5 +15,4 @@ class PropertyFeature < ActiveRecord::Base
     :default_style => :resized
 
   validates_uniqueness_of :name
-  validates_attachment_presence :icon
 end

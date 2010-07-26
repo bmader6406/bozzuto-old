@@ -14,8 +14,6 @@ class PropertyFeatureTest < ActiveSupport::TestCase
 
     should_have_attached_file :icon
 
-    should_validate_attachment_presence :icon
-
     should_validate_uniqueness_of :name
   end
 end

@@ -16,8 +16,10 @@ module PropertiesHelper
   def property_icons(community)
     content_tag :ul, :class => 'community-icons' do
       community.property_features.inject('') do |output, feature|
-        output << content_tag(:li) do
-          link_to feature.name, "##{dom_id(feature)}", :style => "background-image: url(#{feature.icon.url});"
+        if feature.icon?
+          output << content_tag(:li) do
+            link_to feature.name, "##{dom_id(feature)}", :style => "background-image: url(#{feature.icon.url});"
+          end
         end
         output.html_safe
       end

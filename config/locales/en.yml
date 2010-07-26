@@ -198,7 +198,7 @@ en:
         listing_image: Image will be resized to 230x145 and 150x150
         short_title: Shown as the title in the main slideshow, must be shorter than 22 characters
       property_feature:
-        icon: Image dimensions should be 44x44
+        icon: Image dimensions should be 44x44. If icon image is not present, icon will not be shown in listings.
       mini_slide:
         image: Image dimensions should be 230x145
       property_slide:
