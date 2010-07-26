@@ -13,7 +13,7 @@ class LandingPageTest < ActiveSupport::TestCase
       :home_communities,
       :popular_properties,
       :projects
-    should_belong_to :state
+    should_belong_to :state, :promo
 
     should_validate_presence_of :title, :state
     should_validate_uniqueness_of :title

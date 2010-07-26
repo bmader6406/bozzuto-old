@@ -11,6 +11,7 @@ class LandingPage < ActiveRecord::Base
     :join_table => :landing_pages_popular_properties
   has_and_belongs_to_many :projects
   belongs_to :state
+  belongs_to :promo
 
   validates_presence_of :title, :state
   validates_uniqueness_of :title

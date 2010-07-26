@@ -8,7 +8,7 @@ class CommunityTest < ActiveSupport::TestCase
 
     subject { @community }
 
-    should_belong_to :local_info_feed
+    should_belong_to :local_info_feed, :promo
     should_have_one :photo_set
     should_have_many :videos
 
