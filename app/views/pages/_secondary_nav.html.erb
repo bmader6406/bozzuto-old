@@ -13,12 +13,6 @@
     </li>
   <% end %>
 
-  <% if @section.title == "About Us"-%>
-    <li class="<%= current_if :controller => 'leaders' %>">
-      <%= link_to 'Leadership', leadership_path(@section) %>
-    </li>
-  <% end -%>
-
   <% unless section_testimonials.count.zero? %>
     <li class="<%= current_if :controller => 'testimonials' %>">
       <%= link_to 'Testimonials', testimonials_path(@section) %>

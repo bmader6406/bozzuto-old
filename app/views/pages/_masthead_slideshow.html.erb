@@ -1,66 +1,68 @@
 <div id="masthead">
   <div class="container">
-    <div id="masthead-slideshow">
-      <ul class="slides">
-        <% slideshow.slides.each do |slide| %>
-          <li class="slide">
-            <div class="section">
-              <%= raw(slide.body) %>
-            </div>
-
-            <% if slide.uses_image? && slide.image? %>
-
-              <div class="figure">
-                <%= link_to image_tag(slide.image.url), slide.image_link %>
+    <% if slideshow.present? %>
+      <div id="masthead-slideshow">
+        <ul class="slides">
+          <% slideshow.slides.each do |slide| %>
+            <li class="slide">
+              <div class="section">
+                <%= raw(slide.body) %>
               </div>
 
-            <% elsif slide.uses_text? %>
+              <% if slide.uses_image? && slide.image? %>
 
-              <div class="aside">
-                <%= raw(slide.sidebar_text) %>
-              </div>
+                <div class="figure">
+                  <%= link_to image_tag(slide.image.url), slide.image_link %>
+                </div>
 
-            <% elsif slide.uses_mini_slideshow? %>
+              <% elsif slide.uses_text? %>
 
-              <% mini = slide.mini_slideshow %>
-              <div class="figure">
-                <% if mini.present? %>
-                  <p>
-                    <%= link_to image_tag(mini.slides.first.image.url), mini.link_url %>
-                  </p>
+                <div class="aside">
+                  <%= raw(slide.sidebar_text) %>
+                </div>
 
-                  <% if mini.subtitle.present? %>
-                    <p><strong><%= mini.subtitle %></strong></p>
+              <% elsif slide.uses_mini_slideshow? %>
+
+                <% mini = slide.mini_slideshow %>
+                <div class="figure">
+                  <% if mini.present? %>
+                    <p>
+                      <%= link_to image_tag(mini.slides.first.image.url), mini.link_url %>
+                    </p>
+
+                    <% if mini.subtitle.present? %>
+                      <p><strong><%= mini.subtitle %></strong></p>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </div>
+                </div>
 
-            <% elsif slide.uses_quote? %>
+              <% elsif slide.uses_quote? %>
 
-              <div class="quote">
-                <blockquote>
-                  <%= raw(slide.quote) %>
+                <div class="quote">
+                  <blockquote>
+                    <%= raw(slide.quote) %>
 
-                  <cite>
-                    <% if slide.quote_attribution.present? %>
-                      <strong><%= slide.quote_attribution %></strong>
-                    <% end %>
+                    <cite>
+                      <% if slide.quote_attribution.present? %>
+                        <strong><%= slide.quote_attribution %></strong>
+                      <% end %>
 
-                    <% if slide.quote_job_title.present? %>
-                      <br /><%= slide.quote_job_title %>
-                    <% end %>
+                      <% if slide.quote_job_title.present? %>
+                        <br /><%= slide.quote_job_title %>
+                      <% end %>
 
-                    <% if slide.quote_company.present? %>
-                      <br /><%= slide.quote_company %>
-                    <% end %>
-                  </cite>
-                </blockquote>
-              </div>
+                      <% if slide.quote_company.present? %>
+                        <br /><%= slide.quote_company %>
+                      <% end %>
+                    </cite>
+                  </blockquote>
+                </div>
 
-            <% end %>
-          </li>
-        <% end %>
-      </ul>      
-    </div>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>      
+      </div>
+    <% end %>
   </div>
 </div>
