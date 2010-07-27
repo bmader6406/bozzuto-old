@@ -1,35 +1,6 @@
 <% content_for :body_class do %>homes homes-search<% end %>
 
-<div id="masthead">
-  <div class="container">
-    <div id="masthead-slideshow">
-      <ul class="slides">
-        <li class="slide">
-          <div class="section">
-            <h1>Home Lorem Ipsum</h1>
-
-            <p>
-              <strong>Duis aute irure dolor in reprehenderit</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p class="call-to-action">
-              <a href="#">Learn More About Bozzuto Homes</a>
-            </p>
-          </div>
-
-          <div class="figure">
-            <p><img src="/images/fpo/homes-search-slideshow-1.jpg" /></p>
-            
-            <p>
-              <strong>360 State Street, New Haven, CT</strong><br />
-              Luxury apartments in a LEED&reg;<br />
-              Platinum building. 
-            </p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+<%= render :partial => 'pages/masthead_slideshow', :locals => { :slideshow => @page.masthead_slideshow } %>
 
 <div id="main-content">
   <div class="container">
