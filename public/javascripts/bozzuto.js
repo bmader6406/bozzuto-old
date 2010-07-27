@@ -15,7 +15,6 @@ window.bozzuto = {};
 (function($) {
 
   $(function() {
-
     changePageAlign();
 
     $(window).resize(function() {
@@ -100,6 +99,10 @@ window.bozzuto = {};
     });
 
     $('.project .data').equalHeight();
+
+    $('a[rel=external]').each(function() {
+      $(this).attr('target', '_blank');
+    });
   });
 
   ;
