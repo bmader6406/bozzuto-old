@@ -20,7 +20,11 @@ class HomeCommunitiesController < SectionContentController
   end
 
   def find_page
-    @page = @section.pages.find 'communities'
+    @page = begin
+      @section.pages.find 'communities'
+    rescue ActiveRecord::RecordNotFound
+      nil
+    end
   end
 
   def find_community

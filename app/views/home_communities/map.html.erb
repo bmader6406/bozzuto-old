@@ -1,6 +1,10 @@
 <% content_for :body_class do %>homes homes-search<% end %>
 
-<%= render :partial => 'pages/masthead_slideshow', :locals => { :slideshow => @page.masthead_slideshow } %>
+<% if @page.present? %>
+  <% render_meta(@page) %>
+
+  <%= render :partial => 'pages/masthead_slideshow', :locals => { :slideshow => @page.masthead_slideshow } %>
+<% end %>
 
 <div id="main-content">
   <div class="container">
