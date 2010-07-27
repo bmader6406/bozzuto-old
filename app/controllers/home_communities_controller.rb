@@ -1,7 +1,7 @@
 class HomeCommunitiesController < SectionContentController
   include CommunityBehavior
 
-  before_filter :find_communities, :only => [:index, :map]
+  before_filter :find_communities, :find_page, :only => [:index, :map]
   
   def index
     @communities = @communities.paginate(:page => params[:page])
@@ -17,6 +17,14 @@ class HomeCommunitiesController < SectionContentController
 
   def find_section
     @section = Section.find 'new-homes'
+  end
+
+  def find_page
+    @page = begin
+      @section.pages.find 'communities'
+    rescue ActiveRecord::RecordNotFound
+      nil
+    end
   end
 
   def find_community

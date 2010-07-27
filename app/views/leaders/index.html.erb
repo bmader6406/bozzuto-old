@@ -1,25 +1,9 @@
 <% content_for :body_class do %>about leadership<% end %>
 
-<div id="masthead">
-  <div class="container">
-    <div id="masthead-slideshow">
-      <ul class="slides">
-        <li class="slide">
-          <div class="section">
-            <h1>Bozzuto Leadership</h1>
-            <%= snippet("Leadership Text") %>
-          </div>
-
-          <div class="quote">
-            <blockquote>
-              <%= snippet("Leadership Quote") %>
-            </blockquote>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+<% if @page.present? %>
+  <% render_meta(@page) %>
+  <%= render :partial => 'pages/masthead_slideshow', :locals => { :slideshow => @page.masthead_slideshow } %>
+<% end %>
 
 <div id="main-content">
   <div class="container">

@@ -1804,7 +1804,6 @@ div.wysiwyg ul li {
       position: relative;
       padding: 0 70px 20px 0;
       margin-bottom: 20px;
-      overflow: hidden;
       zoom: 1;
     }
     .community #overview ul.community-icons {
@@ -2656,7 +2655,6 @@ div.wysiwyg ul li {
     }
     .search #sidebar fieldset ul li select {
       font-family: Helvetica, Arial, sans-serif;
-      font-weight: bold;
       height: 15px;
       text-transform: none;
       width: 155px;

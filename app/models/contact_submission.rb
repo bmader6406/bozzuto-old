@@ -14,7 +14,8 @@ class ContactSubmission < ActiveRecord::Base
     ['Construction',    'construction'],
     ['Development',     'development'],
     ['Homebuilding',    'homebuilding'],
-    ['Land Management', 'land']
+    ['Land',            'land'],
+    ['Management',      'management']
   ]
   
   validates_presence_of :name, :email, :topic, :message

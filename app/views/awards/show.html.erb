@@ -10,4 +10,6 @@
 
 <p><%= @award.published_at.to_formatted_s(:month_day_year) %></p>
 
+<p class="figure"><%= image_tag @award.image.url %></p>
+
 <%= @award.body.try(:html_safe) %>

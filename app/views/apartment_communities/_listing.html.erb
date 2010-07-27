@@ -36,7 +36,7 @@
       </h2>
 
       <% if community.availability_url.present? %>
-        <p><%= link_to 'Availability', community.availability_url %></p>
+        <p><%= link_to 'Availability', community.availability_url, :rel => 'external' %></p>
       <% end %>
 
       <%= property_icons(community) %>

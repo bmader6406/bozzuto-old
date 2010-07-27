@@ -48,7 +48,7 @@ Award:
   fields:
     default: title, published, published_at, section
     list: title, published, published_at, section
-    form: title, body, published, published_at, section
+    form: title, image, body, published, published_at, section
     options:
       ckeditor: body
   order_by: 
@@ -335,10 +335,12 @@ ProjectUpdate:
   fields:
     default: published_at, published
     list: published_at, published
-    form: body, published, published_at, project
+    form: image, image_title, image_description, body, published, published_at, project
     options:
       ckeditor: body
-  order_by: 
+      booleans:
+        published: ['Yes', 'No']
+  order_by: -published_at
   relationships: project
   filters:
   search:

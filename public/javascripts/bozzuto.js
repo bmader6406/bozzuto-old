@@ -15,7 +15,6 @@ window.bozzuto = {};
 (function($) {
 
   $(function() {
-
     changePageAlign();
 
     $(window).resize(function() {
@@ -100,6 +99,10 @@ window.bozzuto = {};
     });
 
     $('.project .data').equalHeight();
+
+    $('a[rel=external]').each(function() {
+      $(this).attr('target', '_blank');
+    });
   });
 
   ;
@@ -335,7 +338,7 @@ window.bozzuto = {};
       });
 
       // setup
-      $("li:not(.current) ul:not(:has(li.current))", this).hide();
+      $("li:not(.current) ul:has(li.current)", this).show();
       $("li.current", this).find("span.switch").html("&ndash;");
     });
   };

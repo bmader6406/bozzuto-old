@@ -1,0 +1,25 @@
+<li>
+  <h3><%= update.published_at.to_formatted_s(:project_update) %></h3>
+
+  <% if update.image? %>
+    <div>
+      <p class="photo"><%= image_tag update.image.url %></p>
+
+      <% if update.image_title.present? || update.image_description.present? %>
+        <div class="info-overlay" style="display: none; ">
+          <% if update.image_title.present? %>
+            <h4><%= update.image_title %></h4>
+          <% end %>
+
+          <% if update.image_description %>
+            <p><%= update.image_description %></p>
+          <% end %>
+        </div>
+
+        <p class="info-link"><a href="#" class="active">Info</a></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= update.body.try(:html_safe) %>
+</li>

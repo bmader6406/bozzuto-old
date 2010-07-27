@@ -55,7 +55,7 @@
                   <% end %>
                 </td>
                 <td class="availability">
-                  <%= link_to "Availability", @community.availability_url %>
+                  <%= link_to "Availability", @community.availability_url, :rel => 'external' %>
                 </td>
               </tr>
             <% end %>
@@ -78,7 +78,7 @@
 
                 <% if plan.availability_url.present? %>
                   <br />
-                  <%= link_to 'Reserve', plan.availability_url %>
+                  <%= link_to 'Reserve', plan.availability_url, :rel => 'external' %>
                 <% end %>
               </p>
 

@@ -39,7 +39,9 @@ class SectionContentController < ApplicationController
 
   def current_page_path
     # TODO This is a hack to get around pagination issues.
-    if params[:page].present? && params[:page].respond_to?(:join)
+    if @page.present? && @page.path.present?
+      @page.path
+    elsif params[:page].present? && params[:page].respond_to?(:join)
       params[:page].join('/')
     end
   end

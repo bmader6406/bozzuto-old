@@ -5,7 +5,11 @@
     <div class="article">
       <% latest_awards.each_with_index do |award, i| %>
         <div class="award section row <%= 'first' if i == 0 %>">
-          <p class="figure"><img src="/images/about-award.jpg"></p>
+          <% if award.image? %>
+            <p class="figure">
+              <%= link_to image_tag(award.image.url(:thumb)), award_path(@section, award) %>
+            </p>
+          <% end %>
 
           <h4>
             <%= link_to award.title, award_path(@section, award) %>

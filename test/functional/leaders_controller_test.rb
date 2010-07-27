@@ -3,7 +3,7 @@ require 'test_helper'
 class LeadersControllerTest < ActionController::TestCase
   context 'LeadersController' do
     setup do
-      @section = Section.make
+      @section = Section.make(:about)
     end
 
     context 'a GET to #index' do
