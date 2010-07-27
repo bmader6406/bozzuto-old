@@ -24,7 +24,7 @@
               <p>
                 Starting from <%= square_feet(plan) %> |
                 <%= floor_plan_price(plan.min_rent) %><br />
-                <%= link_to 'Reserve', plan.availability_url %>
+                <%= link_to 'Reserve', plan.availability_url, :rel => 'external' %>
               </p>
 
               <%= floor_plan_image(plan) %>
