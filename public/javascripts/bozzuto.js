@@ -338,7 +338,7 @@ window.bozzuto = {};
       });
 
       // setup
-      $("li:not(.current) ul:not(:has(li.current))", this).hide();
+      $("li:not(.current) ul:has(li.current)", this).show();
       $("li.current", this).find("span.switch").html("&ndash;");
     });
   };
