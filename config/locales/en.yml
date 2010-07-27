@@ -107,6 +107,8 @@ en:
       photo_set:
         flickr_set_number: 'Flickr Set ID#'
       project_update:
+        image_description: Image Description
+        image_title: Image Title
         published_at: Published At
       promo:
         link_url: Link URL
@@ -205,6 +207,8 @@ en:
         image: Image dimensions should be 230x145
       news_post:
         image: Image dimensions should be 150x150
+      project_update:
+        image: Image dimensions should be 484x214
       property_slide:
         image: Image dimensions should be 870x375
         caption: Must be fewer than 128 characters

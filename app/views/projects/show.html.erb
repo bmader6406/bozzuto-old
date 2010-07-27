@@ -28,13 +28,9 @@
   <h2>Project Updates</h2>
 
   <ul class="project-updates">
-    <% @updates.each do |update| %>
-      <li>
-        <h3><%= update.published_at.to_formatted_s(:project_update) %></h3>
-        <%= update.body.try(:html_safe) %>
-      </li>
-    <% end %>
+    <%= render :partial => 'projects/update', :collection => @updates %>
   </ul>
+
+  <%= will_paginate(@updates) %>
 <% end%>
 
-<%= will_paginate(@updates) %>
