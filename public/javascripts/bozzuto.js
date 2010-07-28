@@ -88,6 +88,9 @@ window.bozzuto = {};
     });
     $('#spinner').ajaxStop(function () {
       $(this).hide();
+      $('.phone-number').replaceWith(function () {
+        return getDNRiFrame(this, "xxx.xxx.xxxx", "1081055");
+      });
     });
 
     $('form.required-form').validate({
@@ -102,6 +105,10 @@ window.bozzuto = {};
 
     $('a[rel=external]').each(function() {
       $(this).attr('target', '_blank');
+    });
+
+    $('.phone-number').replaceWith(function () {
+      return getDNRiFrame(this, "xxx.xxx.xxxx", "1081055");
     });
   });
 
