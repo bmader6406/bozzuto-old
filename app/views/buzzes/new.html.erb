@@ -15,6 +15,7 @@
 <% form_for @buzz, :url => buzz_path, :method => :post, :html => { :class => "required-form" } do |f| -%>
   <fieldset>
     <h3>Contact Information</h3>
+
     <p>
     <%= f.label :email %>
     <%= f.text_field :email, :class => "required email" %>
@@ -59,8 +60,6 @@
     <%= f.label :phone %>
     <%= f.text_field :phone %>
     </p>
-  
-  
   </fieldset>
   
   <fieldset>
@@ -91,9 +90,9 @@
       <%= serialized_check_box a, @buzz.affiliations, :vendor %>
       <%= serialized_check_box a, @buzz.affiliations, :press %>
       <%= serialized_check_box a, @buzz.affiliations, :employee %>
+      <%= serialized_check_box a, @buzz.affiliations, :broker %>
     <% end -%>
     </p>
-      
   </fieldset>
 
 
