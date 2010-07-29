@@ -106,6 +106,7 @@ en:
         meta_title: SEO Title
       photo_set:
         flickr_set_number: 'Flickr Set ID#'
+        needs_sync: Refresh This Set
       project_update:
         image_description: Image Description
         image_title: Image Title
@@ -193,6 +194,7 @@ en:
         image: Image dimensions should be 230x223
       photo_set:
         flickr_set_number: It will take up to 2 hours for photos to be synced from Flickr
+        needs_sync: Once checked, it will take up to 2 hours to refresh this set from Flickr
       promo:
         link_url: If no URL is entered, 'Learn More' link will not be displayed
       property:

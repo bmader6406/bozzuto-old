@@ -286,7 +286,10 @@ PhotoSet:
   fields:
     default: title, flickr_set_number
     list: title, flickr_set_number, property
-    form: flickr_set_number, property
+    form: flickr_set_number, needs_sync, property
+    options:
+      booleans:
+        needs_sync: ['Yes', 'No']
   order_by: 
   relationships: property
   filters: 
