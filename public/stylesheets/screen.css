@@ -3737,9 +3737,11 @@ div.wysiwyg ul li {
   }
   #content .property-listing div.info h2 {
     font-size: 22px;
-    line-height: 38px;
+    line-height: 24px;
     margin-bottom: 11px;
     padding-left: 13px;
+    padding-top: 7px;
+    padding-bottom: 7px;
   }
   #content .property-listing div.info div.overview h2 {
     border-bottom: 1px solid #c1c1c5;
