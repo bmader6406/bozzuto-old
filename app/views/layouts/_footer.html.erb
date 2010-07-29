@@ -40,7 +40,9 @@
 
       <ul>
         <% states.each do |state| %>
-          <li><%= link_to state.name, state %></li>
+          <li>
+            <%= link_to state.name, state_apartment_search_path(state) %>
+          </li>
         <% end %>
       </ul>
     </div>

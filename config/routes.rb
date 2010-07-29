@@ -48,8 +48,6 @@ ActionController::Routing::Routes.draw do |map|
       :only       => :index
   end
 
-  map.resources :states, :only => :show
-
   map.resources :landing_pages, :as => :regions, :only => :show
 
   map.resource :contact,
