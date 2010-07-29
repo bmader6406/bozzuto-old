@@ -15,6 +15,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
         ApartmentCommunity.with_floor_plan_groups(1).all
         ApartmentCommunity.with_min_price(0).all
         ApartmentCommunity.with_max_price(1000).all
+        ApartmentCommunity.with_property_features([1, 2, 3]).all
       end
     end
 
