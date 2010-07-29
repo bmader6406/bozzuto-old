@@ -18,6 +18,7 @@ development:
     development:
     homebuilding:
     land:
+    management:
   sms:
     username: mkilmurry
     password: 120012
@@ -49,6 +50,7 @@ test:
     development:
     homebuilding:
     land:
+    management:
   sms:
     username: tester
     password: 12345

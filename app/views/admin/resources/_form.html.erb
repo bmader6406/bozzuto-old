@@ -6,7 +6,10 @@
   </fieldset>
   <fieldset class="buttons">
     <ol>
-      <li><%= submit_tag button , :class => 'commit' %></li>
+      <li>
+        <%= submit_tag button , :class => 'commit' %>
+        <%= link_to 'Cancel', :back %>
+      </li>
     </ol>
   </fieldset>
 <% end %>

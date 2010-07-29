@@ -280,12 +280,12 @@ fieldset.inputs { }
     text-align: center;
   }
 
-  .commit {
+  fieldset.buttons .commit {
     display: inline-block;
     font-size: 15px;
     height: 40px;
-    margin: 0 0 40px;
-    width: 350px;
+    margin: 0 10px 40px 0;
+    width: 250px;
   }
 
 /* @end */

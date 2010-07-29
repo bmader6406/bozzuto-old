@@ -51,7 +51,9 @@ Award:
     form: title, image, body, published, published_at, section
     options:
       ckeditor: body
-  order_by: 
+      booleans:
+        published: ['Yes', 'No']
+  order_by: -published_at
   relationships: section
   filters:
   search: title
