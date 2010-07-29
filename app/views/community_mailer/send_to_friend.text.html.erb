@@ -1,10 +1,330 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<title>Bozzuto - <%= @community.short_title || @community.title %></title>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
+
 </head>
-<body>
-  <p>A friend of yours sent you a link to this Bozzuto community:</p>
-  <p><%= link_to @community.title, apartment_community_url(@community) %></p>
+<body marginheight="0" topmargin="0" marginwidth="0" style="color: #84848b; font-family: Arial, sans-serif;" leftmargin="0" bgcolor="#FFFFFF">
+<!-- Save for Web Slices (Bozz_Eblast_SendToFriend_38525.psd) -->
+<table cellspacing="0" border="0" height="1001" cellpadding="0" width="701">
+	<tr>
+		<td rowspan="7" colspan="2">
+      <%= image_tag 'send_to_friend/email_01.jpg', :border => 0, :width => 50, :height => 488 %>
+		</td>
+		<td colspan="8">
+      <!-- Logo -->
+      <%= image_tag 'send_to_friend/email_02.jpg', :border => 0, :width => 600, :height => 91 %>
+		</td>
+		<td rowspan="18">
+      <%= image_tag 'send_to_friend/email_03.jpg', :border => 0, :width => 50, :height => 999 %>
+		</td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 91 %>
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan="2">
+      <%= image_tag 'send_to_friend/email_04.jpg', :border => 0, :width => 22, :height => 31 %>
+		</td>
+		<td class="header" height="31" style="font-size: 30px;" width="578" colspan="6">
+      <%= @community.short_title || @community.title %>
+		</td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 31 %>
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan="2">
+      <%= image_tag 'send_to_friend/email_06.jpg', :border => 0, :width => 22, :height => 41 %>
+		</td>
+		<td class="tagline" style="font-size: 15px; padding: 0 0 10px;" colspan="5">
+			This email was sent to you through the "Send to friend" feature on Bozzuto.com.
+		</td>
+		<td>
+      <%= image_tag 'send_to_friend/email_08.jpg', :border => 0 %>
+		</td>
+		<td>
+      <%= image_tag 'send_to_friend/email_08.jpg', :border => 0 %>
+		</td>
+	</tr>
+
+  <% if @community.slideshow.present? && @community.slideshow.slides.first.present? %>
+    <tr>
+      <td colspan="8">
+        <!-- Banner image -->
+        <%= image_tag @community.slideshow.slides.first.image.url, :border => 0, :width => 600, :height => 258 %>
+      </td>
+      <td>
+        <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 258 %>
+      </td>
+    </tr>
+  <% end %>
+
+	<tr>
+		<td colspan="8">
+      <%= image_tag 'send_to_friend/email_10.jpg', :border => 0, :width => 600, :height => 22 %>
+		</td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 22 %>
+		</td>
+	</tr>
+
+	<tr>
+		<td class="content-header" style="color: #acacb2; font-size: 22px; padding-left: 18px;" colspan="8">
+      <%= @community.title %>
+		</td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 22 %>
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan="8">
+      <%= image_tag 'send_to_friend/email_12.jpg', :border => 0, :width => 600, :height => 16 %>
+		</td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 16 %>
+		</td>
+	</tr>
+
+	<tr>
+		<td rowspan="12">
+      <%= image_tag 'send_to_friend/email_13.jpg', :border => 0, :width => 49, :height => 512 %>
+		</td>
+		<td rowspan="7" colspan="2">
+      <%= image_tag 'send_to_friend/email_14.jpg', :border => 0, :width => 21, :height => 241 %>
+		</td>
+		<td class="content-intro" rowspan="7" style="color: #acacb2; font-size: 15px; line-height: 22px;" colspan="4">
+      <% if @community.overview_text.present? -%>
+        <%= raw(truncate_html(@community.overview_text, :length => 200, :omission => "&hellip;")) %>
+      <% end -%>
+
+      <% if @community.has_overview_bullets? %>
+        <ul style="font-size: 11px; padding-left: 20px;">
+          <% (1..3).each do |i| %>
+            <% if (bullet = @community.send("overview_bullet_#{i}")).present? %>
+              <li><%= bullet %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      <% end %>
+
+			<p class="contact" style="font-size: 11px; line-height: 18px;">
+        <% @community.address %>
+        <% if @community.phone_number.present? %>
+          <br />
+          <%= @community.phone_number %>
+        <% end %>
+			</p>
+		</td>
+		<td colspan="3">
+      <% link_to community_url(@community) do %>
+        <%= image_tag 'send_to_friend/email_16.jpg', :border => 0, :width => 201, :height => 33, :alt => 'Visit Website' %>
+      <% end %>
+		</td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 33 %>
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan="3">
+      <% if @community.street_address.present? %>
+        <% link_to "http://maps.google.com/maps?q=#{@community.address}" do %>
+          <%= image_tag 'send_to_friend/email_17.jpg', :border => 0, :width => 201, :height => 30, :alt => 'Click for Directions' %>
+        <% end %>
+      <% end %>
+		</td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 30 %>
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan="3">
+      <% link_to floor_plans_url(@community) do %>
+        <%= image_tag 'send_to_friend/email_18.jpg', :border => 0, :width => 201, :height => 27, :alt => 'View Pricing and Availability' %>
+      <% end %>
+		</td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 27 %>
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan="3">
+      <% link_to buzz_url do %>
+        <%= image_tag 'send_to_friend/email_19.jpg', :border => 0, :width => 201, :height => 29, :alt => 'Sign up for special offers' %>
+      <% end %>
+		</td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 29 %>
+		</td>
+	</tr>
+
+  <tr>
+    <td colspan="3">
+      <% if @community.facebook_url.present? %>
+        <% link_to @community.facebook_url do %>
+          <%= image_tag 'send_to_friend/email_20.jpg', :border => 0, :width => 201, :height => 45, :alt => 'Follow on Facebook' %>
+        <% end %>
+      <% end %>
+    </td>
+    <td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 45 %>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="3">
+      <% if @community.twitter_handle.present? %>
+        <% link_to "http://twitter.com/#{@community.twitter_handle}" do %>
+          <%= image_tag 'send_to_friend/email_21.jpg', :border => 0, :width => 201, :height => 44, :alt => 'Follow on Twitter' %>
+        <% end %>
+      <% end %>
+    </td>
+    <td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 44 %>
+    </td>
+  </tr>
+
+	<tr>
+		<td colspan="3">
+      <%= image_tag 'send_to_friend/email_22.jpg', :border => 0, :width => 201, :height => 33 %>
+		</td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 33 %>
+		</td>
+	</tr>
+
+	<tr>
+		<td rowspan="6">
+      <%= image_tag 'send_to_friend/email_23.jpg', :border => 0, :width => 1, :height => 271 %>
+    </td>
+		<td colspan="3" rowspan="2">
+      <% link_to apartment_communities_url do %>
+        <%= image_tag 'send_to_friend/email_24.jpg', :border => 0, :width => 200, :height => 65, :alt => 'Find more Bozzuto Communities' %>
+      <% end %>
+    </td>
+		<td colspan="4">
+      <% link_to 'http://www.facebook.com/TheBozzutoGroup' do %>
+        <%= image_tag 'send_to_friend/email_25.jpg', :border => 0, :width => 201, :height => 33, :alt => 'Follow us on Facebook' %>
+      <% end %>
+    </td>
+		<td colspan="2" rowspan="2">
+      <% link_to contact_url do %>
+        <%= image_tag 'send_to_friend/email_26.jpg', :border => 0, :width => 199, :height => 65, :alt => 'Contact Us' %>
+      <% end %>
+    </td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 33 %>
+    </td>
+	</tr>
+
+	<tr>
+		<td colspan="3">
+      <% link_to 'http://twitter.com/TheBozzutoGroup' do %>
+        <%= image_tag 'send_to_friend/email_27.jpg', :border => 0, :width => 200, :height => 32, :alt => 'Follow us on Twitter' %>
+      <% end %>
+    </td>
+		<td>
+      <%= image_tag 'send_to_friend/email_28.jpg', :border => 0, :width => 1, :height => 32 %>
+    </td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 32 %>
+    </td>
+	</tr>
+
+	<tr>
+		<td colspan="7">
+      <%= image_tag 'send_to_friend/email_29.jpg', :border => 0, :width => 401, :height => 48 %>
+    </td>
+		<td colspan="2">
+      <%= image_tag 'send_to_friend/email_30.jpg', :border => 0, :width => 199, :height => 48 %>
+    </td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 48 %>
+    </td>
+	</tr>
+
+	<tr>
+		<td colspan="2" rowspan="3">
+      <%= image_tag 'send_to_friend/email_31.jpg', :border => 0, :width => 22, :height => 158 %>
+    </td>
+		<td colspan="2">
+      <%= image_tag 'send_to_friend/email_32.jpg', :border => 0, :width => 368, :height => 16 %>
+    </td>
+		<td colspan="5" rowspan="3">
+      <%= image_tag 'send_to_friend/email_33.jpg', :border => 0, :width => 210, :height => 158 %>
+    </td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 16 %>
+    </td>
+	</tr>
+
+	<tr>
+		<td class="footer" rowspan="2" style="color: #acacb2; font-size: 10px; vertical-align: top;" colspan="2">
+			<p>You are receiving this email because your friend thought it would be of interest to you. This email address has not been added to a database and will not receive future emails.</p>
+      <p>If you would like additional updates on this or other Bozzuto properties, <%= link_to 'please click here', '#', :style => 'color: #84848b;' %>.</p>
+      <!-- TODO: set href for this link to UFollowUp form -->
+		</td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 141 %>
+    </td>
+	</tr>
+
+	<tr>
+		<td>
+      <%= image_tag 'send_to_friend/email_35.jpg', :border => 0, :width => 50, :height => 1 %>
+    </td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 1 %>
+    </td>
+	</tr>
+
+	<tr>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 49, :height => 1 %>
+    </td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 1 %>
+    </td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 20, :height => 1 %>
+    </td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 2, :height => 1 %>
+    </td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 178, :height => 1 %>
+    </td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 190, :height => 1 %>
+    </td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 9, :height => 1 %>
+    </td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 1 %>
+    </td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 1 %>
+    </td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 179, :height => 1 %>
+    </td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 20, :height => 1 %>
+    </td>
+		<td>
+      <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 50, :height => 1 %>
+    </td>
+		<td></td>
+	</tr>
+</table>
+
+<!-- End Save for Web Slices -->
 </body>
 </html>
