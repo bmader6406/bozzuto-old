@@ -2583,12 +2583,12 @@ div.wysiwyg ul li {
   .homes #content div.header ul li a.list,
   .search #content div.header ul li a.list {
     padding: 6px 95px 3px 10px;
-    width: 47px;
+    width: 45px;
   }
   .homes #content div.header ul li a.map,
   .search #content div.header ul li a.map {
-    padding: 6px 90px 3px 10px;
-    width: 50px;
+    padding: 6px 80px 3px 10px;
+    width: 60px;
   }
   .homes #content div.header ul li a.directory,
   .search #content div.header ul li a.directory {
