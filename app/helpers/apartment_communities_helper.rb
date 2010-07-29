@@ -1,6 +1,26 @@
 module ApartmentCommunitiesHelper
   def floor_plan_price(price)
-    number_to_currency(price, :precision => 0)
+    number_to_currency(price, :precision => 0) unless price.nil?
+  end
+
+  def cheapest_floor_plan_price_in_group(group)
+    if (cheapest = group.cheapest.first).present?
+      "From #{floor_plan_price(cheapest.min_rent)}".html_safe
+    else
+      ''
+    end
+  end
+
+  def square_feet(plan)
+    "#{plan.min_square_feet} Sq Ft"
+  end
+
+  def largest_floor_plan_square_feet_in_group(group)
+    if (largest = group.largest.first).present?
+      square_feet(largest)
+    else
+      ''
+    end
   end
 
   def floor_plan_image(plan)
@@ -10,10 +30,6 @@ module ApartmentCommunitiesHelper
     if image.present?
       link_to image_tag(thumb, :width => 160), image, :class => 'floor-plan-view'
     end
-  end
-
-  def square_feet(plan)
-    "#{plan.min_square_feet} Sq Ft"
   end
 
   def website_url(url)

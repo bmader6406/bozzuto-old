@@ -22,9 +22,21 @@
               <h4><%= plan.name %></h4>
 
               <p>
-                Starting from <%= square_feet(plan) %> |
-                <%= floor_plan_price(plan.min_rent) %><br />
-                <%= link_to 'Reserve', plan.availability_url, :rel => 'external' %>
+                <% if (sq_ft = plan.min_square_feet).present? %>
+                  Starting from <%= square_feet(plan) %>
+                <% end %>
+
+                <% if (min_rent = plan.min_rent).present? %>
+                  | <%= floor_plan_price(min_rent) %>
+                <% end %>
+
+                <% if sq_ft || min_rent %>
+                  <br />
+                <% end %>
+
+                <% if plan.availability_url.present? %>
+                  <%= link_to 'Reserve', plan.availability_url, :rel => 'external' %>
+                <% end %>
               </p>
 
               <%= floor_plan_image(plan) %>

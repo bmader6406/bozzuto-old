@@ -45,14 +45,10 @@
                   <%= pluralize(plans_in_group.count, 'Floor Plan') %>
                 </td>
                 <td>
-                  <% unless plans_in_group.empty? %>
-                    <%= square_feet(plans_in_group.largest.first) %>
-                  <% end %>
+                  <%= largest_floor_plan_square_feet_in_group(plans_in_group) %>
                 </td>
                 <td>
-                  <% unless plans_in_group.empty? %>
-                    From <%= floor_plan_price(plans_in_group.cheapest.first.min_rent) %>
-                  <% end %>
+                  <%= cheapest_floor_plan_price_in_group(plans_in_group) %>
                 </td>
                 <td class="availability">
                   <%= link_to "Availability", @community.availability_url, :rel => 'external' %>

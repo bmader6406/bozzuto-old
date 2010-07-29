@@ -19,7 +19,8 @@
           <% plans_in_group = community.floor_plans.in_group(group) %>
           <% unless plans_in_group.empty? %>
             <li>
-              <strong><%= group.name %></strong> from <%= floor_plan_price(plans_in_group.cheapest.first.min_rent) %>
+              <strong><%= group.name %></strong>
+              <%= cheapest_floor_plan_price_in_group(plans_in_group).downcase %>
             </li>
           <% end %>
         <% end %>

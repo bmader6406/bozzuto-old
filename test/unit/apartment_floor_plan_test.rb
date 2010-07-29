@@ -9,16 +9,6 @@ class ApartmentFloorPlanTest < ActiveSupport::TestCase
     should_belong_to :floor_plan_group, :apartment_community
 
     should_validate_presence_of :name,
-      :bedrooms,
-      :bathrooms,
-      :min_square_feet,
-      :max_square_feet,
-      :min_market_rent,
-      :max_market_rent,
-      :min_effective_rent,
-      :max_effective_rent,
-      :min_rent,
-      :max_rent,
       :floor_plan_group,
       :apartment_community
 
@@ -29,9 +19,7 @@ class ApartmentFloorPlanTest < ActiveSupport::TestCase
       :min_market_rent,
       :max_market_rent,
       :min_effective_rent,
-      :max_effective_rent,
-      :min_rent,
-      :max_rent
+      :max_effective_rent
 
     context '#uses_image_url?' do
       context 'when image_type is USE_IMAGE_URL' do

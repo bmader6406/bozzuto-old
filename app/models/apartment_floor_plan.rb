@@ -15,16 +15,6 @@ class ApartmentFloorPlan < ActiveRecord::Base
   acts_as_list
 
   validates_presence_of :name,
-    :bedrooms,
-    :bathrooms,
-    :min_square_feet,
-    :max_square_feet,
-    :min_market_rent,
-    :max_market_rent,
-    :min_effective_rent,
-    :max_effective_rent,
-    :min_rent,
-    :max_rent,
     :floor_plan_group,
     :apartment_community
 
@@ -38,7 +28,8 @@ class ApartmentFloorPlan < ActiveRecord::Base
     :max_effective_rent,
     :min_rent,
     :max_rent,
-    :minimum => 0
+    :minimum => 0,
+    :allow_nil => true
 
   validates_inclusion_of :featured, :in => [true, false]
 
@@ -49,8 +40,14 @@ class ApartmentFloorPlan < ActiveRecord::Base
   named_scope :in_group, lambda { |group|
     { :conditions => { :floor_plan_group_id => group.id } }
   }
-  named_scope :cheapest, :order => 'min_rent ASC', :limit => 1
-  named_scope :largest, :order => 'max_square_feet DESC', :limit => 1
+  named_scope :cheapest,
+    :conditions => 'min_rent IS NOT NULL',
+    :order      => 'min_rent ASC',
+    :limit      => 1
+  named_scope :largest,
+    :conditions => 'max_square_feet IS NOT NULL',
+    :order      => 'max_square_feet DESC',
+    :limit      => 1
 
 
   def uses_image_url?

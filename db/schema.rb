@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100727031705) do
+ActiveRecord::Schema.define(:version => 20100729190456) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -25,23 +25,23 @@ ActiveRecord::Schema.define(:version => 20100727031705) do
 
   create_table "apartment_floor_plans", :force => true do |t|
     t.string   "image_url"
-    t.integer  "bedrooms",                                                                 :null => false
-    t.decimal  "bathrooms",               :precision => 3, :scale => 1,                    :null => false
+    t.integer  "bedrooms"
+    t.decimal  "bathrooms",               :precision => 3, :scale => 1
     t.integer  "floor_plan_group_id",                                                      :null => false
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name",                                                                     :null => false
-    t.string   "availability_url",                                                         :null => false
-    t.integer  "min_square_feet",                                                          :null => false
-    t.integer  "max_square_feet",                                                          :null => false
-    t.decimal  "min_market_rent",         :precision => 6, :scale => 2,                    :null => false
-    t.decimal  "max_market_rent",         :precision => 6, :scale => 2,                    :null => false
-    t.decimal  "min_effective_rent",      :precision => 6, :scale => 2,                    :null => false
-    t.decimal  "max_effective_rent",      :precision => 6, :scale => 2,                    :null => false
+    t.string   "availability_url"
+    t.integer  "min_square_feet"
+    t.integer  "max_square_feet"
+    t.decimal  "min_market_rent",         :precision => 6, :scale => 2
+    t.decimal  "max_market_rent",         :precision => 6, :scale => 2
+    t.decimal  "min_effective_rent",      :precision => 6, :scale => 2
+    t.decimal  "max_effective_rent",      :precision => 6, :scale => 2
     t.integer  "apartment_community_id",                                                   :null => false
-    t.decimal  "min_rent",                :precision => 6, :scale => 2,                    :null => false
-    t.decimal  "max_rent",                :precision => 6, :scale => 2,                    :null => false
+    t.decimal  "min_rent",                :precision => 6, :scale => 2
+    t.decimal  "max_rent",                :precision => 6, :scale => 2
     t.integer  "image_type",                                            :default => 0,     :null => false
     t.string   "image_file_name"
     t.string   "image_content_type"
