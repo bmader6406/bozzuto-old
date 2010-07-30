@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100729190456) do
+ActiveRecord::Schema.define(:version => 20100730144131) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -355,6 +355,18 @@ ActiveRecord::Schema.define(:version => 20100729190456) do
     t.string   "flickr_photo_id",                    :null => false
     t.integer  "photo_set_id"
     t.integer  "position"
+  end
+
+  create_table "press_releases", :force => true do |t|
+    t.string   "title",                               :null => false
+    t.text     "body"
+    t.boolean  "published",        :default => false, :null => false
+    t.datetime "published_at"
+    t.string   "meta_title"
+    t.string   "meta_description"
+    t.string   "meta_keywords"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "project_categories", :force => true do |t|
