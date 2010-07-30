@@ -54,7 +54,6 @@ Award.blueprint do
   body         { Faker::Lorem.paragraphs }
   published    { true }
   published_at { Time.now }
-  section
 end
 
 Award.blueprint(:unpublished) do
@@ -120,8 +119,6 @@ NewsPost.blueprint do
   body         { Faker::Lorem.paragraphs(2) }
   published    { true }
   published_at { Time.now - 1.day }
-  category     { NewsPost::CATEGORY.rand }
-  section
 end
 
 NewsPost.blueprint(:unpublished) do
