@@ -3,6 +3,8 @@ class NewsPost < ActiveRecord::Base
 
   cattr_reader :per_page
   @@per_page = 10
+
+  has_and_belongs_to_many :sections
   
   default_scope :order => 'published_at DESC'
 
@@ -12,4 +14,8 @@ class NewsPost < ActiveRecord::Base
     :url => '/system/:class/:id/:id_:style.:extension',
     :styles => { :thumb => '150x150#' },
     :default_style => :thumb
+
+  def typus_name
+    title
+  end
 end

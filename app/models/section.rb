@@ -1,10 +1,11 @@
 class Section < ActiveRecord::Base
-  has_many :news_posts, :order => 'published_at DESC'
   has_many :testimonials
   has_many :pages,
     :order     => 'lft ASC',
     :dependent => :destroy
-  has_many :awards, :order => 'published_at DESC'
+  has_and_belongs_to_many :awards, :order => 'published_at DESC'
+  has_and_belongs_to_many :news_posts, :order => 'published_at DESC'
+  has_and_belongs_to_many :press_releases, :order => 'published_at DESC'
   has_many :projects
 
   has_friendly_id :title, :use_slug => true

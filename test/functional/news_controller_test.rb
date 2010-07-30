@@ -9,9 +9,9 @@ class NewsControllerTest < ActionController::TestCase
     context 'a GET to #index' do
       setup do
         5.times do
-          NewsPost.make :section => @section
+          NewsPost.make :sections => [@section]
         end
-        NewsPost.make(:unpublished, :section => @section)
+        NewsPost.make(:unpublished, :sections => [@section])
         @news = @section.news_posts
       end
 
@@ -40,7 +40,7 @@ class NewsControllerTest < ActionController::TestCase
 
     context 'a GET to #show' do
       setup do
-        @news_post = NewsPost.make :section => @section
+        @news_post = NewsPost.make :sections => [@section]
 
         get :show, :section => @section.to_param, :news_post_id => @news_post.id
       end

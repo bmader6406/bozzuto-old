@@ -8,8 +8,8 @@ class AwardsControllerTest < ActionController::TestCase
 
     context 'a GET to #index' do
       setup do
-        5.times { Award.make(:section => @section) }
-        Award.make(:unpublished, :section => @section)
+        5.times { Award.make(:sections => [@section]) }
+        Award.make(:unpublished, :sections => [@section])
         @awards = @section.awards
 
         get :index, :section => @section.to_param
@@ -22,7 +22,7 @@ class AwardsControllerTest < ActionController::TestCase
 
     context 'a GET to #show' do
       setup do
-        @award = Award.make :section => @section
+        @award = Award.make :sections => [@section]
 
         get :show, :section => @section.to_param, :award_id => @award.id
       end

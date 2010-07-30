@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100730152455) do
+ActiveRecord::Schema.define(:version => 20100730153620) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -72,6 +72,14 @@ ActiveRecord::Schema.define(:version => 20100730152455) do
     t.string   "image_file_name"
     t.string   "image_content_type"
   end
+
+  create_table "awards_sections", :id => false, :force => true do |t|
+    t.integer "award_id"
+    t.integer "section_id"
+  end
+
+  add_index "awards_sections", ["award_id", "section_id"], :name => "index_awards_sections_on_award_id_and_section_id"
+  add_index "awards_sections", ["section_id", "award_id"], :name => "index_awards_sections_on_section_id_and_award_id"
 
   create_table "body_slides", :force => true do |t|
     t.string   "image_file_name"
@@ -303,6 +311,14 @@ ActiveRecord::Schema.define(:version => 20100730152455) do
     t.string   "image_content_type"
   end
 
+  create_table "news_posts_sections", :id => false, :force => true do |t|
+    t.integer "news_post_id"
+    t.integer "section_id"
+  end
+
+  add_index "news_posts_sections", ["news_post_id", "section_id"], :name => "index_news_posts_sections_on_news_post_id_and_section_id"
+  add_index "news_posts_sections", ["section_id", "news_post_id"], :name => "index_news_posts_sections_on_section_id_and_news_post_id"
+
   create_table "pages", :force => true do |t|
     t.string   "title",            :null => false
     t.string   "cached_slug"
@@ -365,6 +381,14 @@ ActiveRecord::Schema.define(:version => 20100730152455) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "press_releases_sections", :id => false, :force => true do |t|
+    t.integer "press_release_id"
+    t.integer "section_id"
+  end
+
+  add_index "press_releases_sections", ["press_release_id", "section_id"], :name => "index_press_releases_sections_on_press_release_id_and_section_id"
+  add_index "press_releases_sections", ["section_id", "press_release_id"], :name => "index_press_releases_sections_on_section_id_and_press_release_id"
 
   create_table "project_categories", :force => true do |t|
     t.string   "title",       :null => false

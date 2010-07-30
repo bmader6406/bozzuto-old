@@ -45,7 +45,7 @@ class OverriddenPathsHelperTest < ActionView::TestCase
 
     context '#award_path' do
       context 'when section is a service' do
-        setup { @award = Award.make(:section => @service) }
+        setup { @award = Award.make(:sections => [@service]) }
 
         should 'return the service path' do
           assert_equal service_section_award_path(@service, @award),
@@ -54,7 +54,7 @@ class OverriddenPathsHelperTest < ActionView::TestCase
       end
 
       context 'when section is not a service' do
-        setup { @award = Award.make(:section => @section) }
+        setup { @award = Award.make(:sections => [@section]) }
 
         should 'return the section path' do
           assert_equal section_award_path(@section, @award),
@@ -117,7 +117,7 @@ class OverriddenPathsHelperTest < ActionView::TestCase
 
     context '#news_post_path' do
       context 'when section is a service' do
-        setup { @post = NewsPost.make(:section => @service) }
+        setup { @post = NewsPost.make(:sections => [@service]) }
 
         should 'return the service path' do
           assert_equal service_section_news_post_path(@service, @post),
@@ -126,7 +126,7 @@ class OverriddenPathsHelperTest < ActionView::TestCase
       end
 
       context 'when section is not a service' do
-        setup { @post = NewsPost.make(:section => @section) }
+        setup { @post = NewsPost.make(:sections => [@section]) }
 
         should 'return the section path' do
           assert_equal section_news_post_path(@section, @post),

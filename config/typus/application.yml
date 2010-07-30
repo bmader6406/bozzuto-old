@@ -46,15 +46,15 @@ ApartmentFloorPlanGroup:
 
 Award:
   fields:
-    default: title, published, published_at, section
-    list: title, published, published_at, section
-    form: title, image, body, published, published_at, section
+    default: title, published, published_at
+    list: title, published, published_at
+    form: title, image, body, published, published_at
     options:
       ckeditor: body
       booleans:
         published: ['Yes', 'No']
   order_by: -published_at
-  relationships: section
+  relationships: sections
   filters:
   search: title
   application: News & Press
@@ -243,15 +243,14 @@ MastheadSlideshow:
 NewsPost:
   fields:
     default: title, published, published_at
-    list: title, category, section, published, published_at
-    form: title, section, category, meta_title, meta_description, meta_keywords, image, body, published, published_at
+    list: title, published, published_at
+    form: title, meta_title, meta_description, meta_keywords, image, body, published, published_at
     options:
       ckeditor: body
-      selectors: category
       booleans:
         published: ['Yes', 'No']
   order_by: -published_at
-  relationships: section
+  relationships: sections
   filters:
   search:
   application: News & Press
@@ -306,7 +305,7 @@ PressRelease:
       booleans:
         published: ['Yes', 'No']
   order_by: -published_at
-  relationships: 
+  relationships: sections
   filters: 
   search: title, body
   application: News & Press
@@ -456,9 +455,9 @@ Section:
     form: title, left_montage_image, middle_montage_image, right_montage_image
     options:
       read_only: title
-      destroy_related: Page, NewsPost, Testimonial, Project, Award
+      destroy_related: Page, NewsPost, Testimonial, Project, Award, PressRelease
   order_by: title
-  relationships: pages, news_posts, testimonials, awards, projects
+  relationships: pages, projects, testimonials, awards, news_posts, press_releases
   filters:
   search:
   application: Content

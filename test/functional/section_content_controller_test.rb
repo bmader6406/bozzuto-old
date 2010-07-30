@@ -9,9 +9,9 @@ class SectionContentControllerTest < ActionController::TestCase
 
     context '#section_news_posts' do
       setup do
-        2.times { NewsPost.make :section => @section }
-        2.times { NewsPost.make(:unpublished, :section => @section) }
-        2.times { NewsPost.make :section => Section.make }
+        2.times { NewsPost.make :sections => [@section] }
+        2.times { NewsPost.make(:unpublished, :sections => [@section]) }
+        2.times { NewsPost.make :sections => [Section.make] }
       end
 
       context 'and in the about section' do
@@ -62,9 +62,9 @@ class SectionContentControllerTest < ActionController::TestCase
 
     context '#section_awards' do
       setup do
-        2.times { Award.make :section => @section }
-        2.times { Award.make(:unpublished, :section => @section) }
-        2.times { Award.make :section => Section.make }
+        2.times { Award.make :sections => [@section] }
+        2.times { Award.make(:unpublished, :sections => [@section]) }
+        2.times { Award.make :sections => [Section.make] }
       end
 
       context 'and in the about section' do
@@ -115,7 +115,7 @@ class SectionContentControllerTest < ActionController::TestCase
 
     context '#latest_news_posts' do
       setup do
-        4.times { NewsPost.make :section => @section }
+        4.times { NewsPost.make :sections => [@section] }
         @posts = @controller.send(:latest_news_posts, 2)
       end
 
@@ -127,7 +127,7 @@ class SectionContentControllerTest < ActionController::TestCase
 
     context '#latest_awards' do
       setup do
-        4.times { Award.make :section => @section }
+        4.times { Award.make :sections => [@section] }
         @awards = @controller.send(:latest_awards, 2)
       end
 
