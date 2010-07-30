@@ -18,6 +18,26 @@
             map.setCenter(point, 13);
             map.setUIToDefault();
             map.addOverlay(new GMarker(point));
+
+            $('<div id="map-large">').appendTo("body").css({width: '80%', height: '80%'}).hide();
+            var largeMap = new GMap2(document.getElementById("map-large"));
+            largeMap.setCenter(point, 13);
+            largeMap.setUIToDefault();
+            var marker = new GMarker(point);
+            largeMap.addOverlay(marker);
+            GEvent.addListener(marker, 'click', function() {
+              marker.openInfoWindowHtml("<h4><%= @project.title %></h4>");
+            });
+
+            $("#map-lightbox").click(function (e) {
+              e.preventDefault();
+              $("#map-large").lightbox_me({
+                onLoad: function () {
+                  largeMap.checkResize();
+                  largeMap.setCenter(point, 13);
+                }
+              });
+            });            
           }
         });
       })(jQuery);
