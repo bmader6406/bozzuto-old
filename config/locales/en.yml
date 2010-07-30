@@ -171,6 +171,7 @@ en:
         twitter_handle: Twitter Handle
         video_url: Video URL
         website_url: Website URL
+        ufollowup_id: uFollowUp ID
       mini_slide:
         mini_slideshow: Mini Slideshow
       mini_slideshow:
