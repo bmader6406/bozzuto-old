@@ -28,6 +28,7 @@ admin:
   Page: create, read, update, delete
   Photo: create, read, update, delete
   PhotoSet: create, read, update, delete
+  PressRelease: create, read, update, delete
   Project: create, read, update, delete
   ProjectCategory: create, read, update, delete
   ProjectDataPoint: create, read, update, delete

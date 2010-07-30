@@ -57,7 +57,7 @@ Award:
   relationships: section
   filters:
   search: title
-  application: Content
+  application: News & Press
 
 BodySlide:
   fields:
@@ -254,7 +254,7 @@ NewsPost:
   relationships: section
   filters:
   search:
-  application: Content
+  application: News & Press
 
 Page:
   fields:
@@ -295,6 +295,21 @@ PhotoSet:
   filters: 
   search: title
   application: 
+
+PressRelease:
+  fields:
+    default: title, published, published_at
+    list: title, published, published_at
+    form: title, body, published, published_at, meta_title, meta_description, meta_keywords
+    options:
+      ckeditor: body
+      booleans:
+        published: ['Yes', 'No']
+  order_by: -published_at
+  relationships: 
+  filters: 
+  search: title, body
+  application: News & Press
 
 Project:
   fields:

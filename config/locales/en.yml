@@ -21,6 +21,7 @@ en:
       mini_slideshow: Mini Slideshow
       news_post: News
       photo_set: Flickr Photo Set
+      press_release: Press Release
       project_category: Project Category
       project_data_point: Data Point
       project_update: Update
@@ -107,6 +108,11 @@ en:
       photo_set:
         flickr_set_number: 'Flickr Set ID#'
         needs_sync: Refresh This Set
+      press_release:
+        meta_description: Meta Description
+        meta_keywords: Meta Keywords
+        meta_title: Meta Title
+        published_at: Published At
       project_update:
         image_description: Image Description
         image_title: Image Title
