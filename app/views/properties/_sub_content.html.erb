@@ -3,10 +3,9 @@
 
   <div class="row">
     <% if property.is_a?(ApartmentCommunity) -%>
-      <div id="renting-from-bozzuto" class="col">
-        <h2>Renting From Bozzuto</h2>
-
-        <%= snippet("Renting From Bozzuto") %>
+      <div id="why-is-bozzuto-the-leader" class="col">
+        <h2>Why is Bozzuto the Leader?</h2>
+        <%= snippet("Why is Bozzuto the Leader?") %>
       </div>
     <% else -%>
       <div id="why-buy-from-bozzuto" class="col">
@@ -14,12 +13,6 @@
         <%= snippet("Why Buy from Bozzuto?") %>
       </div>
     <% end -%>
-
-    <div id="about-bozzuto" class="col">
-      <h2>About Bozzuto Management Company</h2>
-
-      <%= snippet("About Bozzuto Management Company") %>
-    </div>
   </div>
 
   <% if property.county.present? %>

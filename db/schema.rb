@@ -347,12 +347,12 @@ ActiveRecord::Schema.define(:version => 20100729190456) do
   end
 
   create_table "photos", :force => true do |t|
-    t.string   "image_file_name"
-    t.string   "title",              :null => false
+    t.string   "image_file_name",    :default => ""
+    t.string   "title",              :default => "", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_content_type"
-    t.string   "flickr_photo_id",    :null => false
+    t.string   "flickr_photo_id",                    :null => false
     t.integer  "photo_set_id"
     t.integer  "position"
   end
@@ -560,9 +560,9 @@ ActiveRecord::Schema.define(:version => 20100729190456) do
   end
 
   create_table "testimonials", :force => true do |t|
-    t.string   "name"
-    t.string   "title"
-    t.text     "quote",      :null => false
+    t.string   "name",       :default => ""
+    t.string   "title",      :default => ""
+    t.text     "quote",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "section_id"
