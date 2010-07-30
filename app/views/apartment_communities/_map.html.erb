@@ -1,63 +1,43 @@
 <div id="content" class="col">
-<div class="header">
-  <ul>
-    <li>
-      <%= link_to 'View as List', apartment_communities_path(:search => params[:search]), :class => 'list' %>
-    </li>
-    <li class="current">
-      <%= link_to 'View on Map', map_apartment_communities_path(:search => params[:search]), :class => 'map' %>
-    </li>
-  </ul>
-  <p>
-    <%= pluralize(@communities.sum {|state, communities| communities.count}, 'Apartment Community') %>
-  </p>
-</div>
+  <div class="header">
+    <ul>
+      <li>
+        <%= link_to 'View as List', apartment_communities_path(:search => params[:search]), :class => 'list' %>
+      </li>
+      <li class="current">
+        <%= link_to 'View on Map', map_apartment_communities_path(:search => params[:search]), :class => 'map' %>
+      </li>
+    </ul>
+    <p>
+      <%= pluralize(@communities.sum { |state, communities| communities.count }, 'Apartment Community') %>
+    </p>
+  </div>
 
-<% content_for :javascript do %>
-  <script type="text/javascript">
-    var markers = new Array();
-    <% @communities.each do |state, communities| %>
-      <% communities.each do |community| %>
-        <% if community.latitude.present? %>
-          markers.push({
-            latlng: new GLatLng(<%= community.latitude %>, <%= community.longitude %>),
-            title: "<%= h(community.listing_title || community.title) %>",
-            text: "<%= h(community.overview_bullet_1) %>",
-            url: "<%= apartment_community_path(community) %>"
-          });
+  <% content_for :javascript do %>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("#search-results-map").bozzutoMap();
+      });
+    </script>
+  <% end %>
+
+  <div id="search-results-map">
+    <div id="map-properties">
+      <% @communities.each do |state, communities| %>
+        <% communities.each do |community| %>
+          <div class="property" data-jmapping="<%= community.to_jmapping %>">
+            <div class="info-box">
+              <h4><%= link_to community.title, property_path(community) %></h4>
+
+              <% if community.listing_title.present? %>
+                <p><%= community.listing_title %></p>
+              <% end %>
+
+              <p><%= link_to 'Learn More', property_path(community) %></p>
+            </div>
+          </div>
         <% end %>
-      <% end %>
-    <% end %>
-
-    function initialize() {
-      if (GBrowserIsCompatible()) {
-        var map = new GMap2(document.getElementById("search-results-map"));
-        map.setCenter(new GLatLng(39.740986, -75.673828), 6);
-
-        $.each(markers, function(index, marker) {
-          var new_marker = new GMarker(marker.latlng, {
-            clickable: true,
-            map: map,
-            flat: true,
-            title: marker.title
-          });
-
-          GEvent.addListener(new_marker, 'click', function() {
-            new_marker.openInfoWindowHtml('<h4><a href="' + marker.url + '">' + marker.title + '</a></h4>' +
-                '<p>' + marker.text + '</p>' + '<p><a href="' + marker.url + '">Learn More</a></p>');
-          });
-
-          map.addOverlay(new_marker);
-        });
-
-        map.setUIToDefault();
-
-      }
-    }
-
-    document.body.onload = initialize();
-  </script>
-<% end %>
-
-<div id="search-results-map"></div>
+      <% end -%>
+    </div>
+  </div>
 </div>
