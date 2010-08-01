@@ -17,9 +17,9 @@
         <li class="<%= current_if 'neighborhood' %>">
           <%= link_to 'Neighborhood', neighborhood_home_community_path(@community) %>
         </li>
-        <li class="<%= current_if 'promotions' %>">
+        <!--li class="<%= current_if 'promotions' %>">
           <%= link_to 'Special Offers', promotions_home_community_path(@community) %>
-        </li>
+        </li-->
         <li class="last <%= current_if 'contact' %>">
           <%= link_to 'Contact Info', contact_home_community_path(@community) %>
           <% if @community.phone_number.present? %>
