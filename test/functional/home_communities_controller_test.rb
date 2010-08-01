@@ -10,7 +10,7 @@ class HomeCommunitiesControllerTest < ActionController::TestCase
     context 'a GET to #index' do
       setup do
         5.times { HomeCommunity.make }
-        @communities = HomeCommunity.published.ordered_by_title.all(:limit => 4)
+        @communities = HomeCommunity.published.ordered_by_title.all(:limit => 6)
 
         get :index
       end

@@ -1,6 +1,6 @@
 class HomeCommunity < Community
   cattr_reader :per_page
-  @@per_page = 4
+  @@per_page = 6
 
   has_many :homes, :dependent => :destroy
   has_many :featured_homes,
