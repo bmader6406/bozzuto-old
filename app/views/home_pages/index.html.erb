@@ -68,7 +68,7 @@
   <div class="container">
     <h2>Latest Bozzuto News</h2>
 
-    <% if @news_post.present? %>
+    <% if @latest_news.present? %>
       <div class="col">
         <h3><%= @latest_news.published_at.to_formatted_s(:home_news) %></h3>
         <p><%= @latest_news.title %></p>

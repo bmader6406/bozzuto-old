@@ -1521,7 +1521,8 @@ div.wysiwyg ul li {
     }
 
     /* @group --news */
-      .home #news {
+      .home #news,
+      .home #news .container {
         background: url(../images/structure/bg-news.gif) repeat-y top center;
       }
       .home #news h2 {
