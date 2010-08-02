@@ -18,6 +18,6 @@ class NewsAndPressController < SectionContentController
       @news_section.pages.first
     end
 
-    render_404 if @page.nil?
+    redirect_home if @page.nil?
   end
 end

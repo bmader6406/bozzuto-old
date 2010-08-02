@@ -24,7 +24,7 @@ class NewsAndPressControllerTest < ActionController::TestCase
           get :show, :section => @about.to_param, :page => []
         end
 
-        should_respond_with :not_found
+        should_respond_with :redirect
       end
 
       context 'with a page param' do
