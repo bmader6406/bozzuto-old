@@ -552,7 +552,7 @@
     }
     .column-main ul li,
     .community #overview ul li {
-      font-size: 11px;
+      font-size: 12px;
       line-height: 18px;
       list-style: disc outside url(../images/structure/blt-features.gif);
       margin: 0px;
@@ -1939,6 +1939,9 @@ div.wysiwyg ul li {
       font-size: 15px;
       line-height: 1.466666667;
       margin-bottom: 0.8em;
+    }
+    .community #overview .intro-link {
+      margin-bottom: 15px
     }
     .community #overview .intro-link,
     .community #overview #intro-partial {
