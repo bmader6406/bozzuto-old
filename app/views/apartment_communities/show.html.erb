@@ -10,15 +10,25 @@
         <h2><%= @community.overview_title %></h2>
       <% end %>
 
-      <div class="intro">
+      <div class="intro" id="intro-partial">
         <% if @community.overview_text.present? -%>
           <%= truncate_html(@community.overview_text, :length => 350, :omission => "&hellip;").try(:html_safe) %>
         <% end -%>
       </div>
+      
+      <% if @community.overview_text.length > 350 %>
+            
+      <div class="intro" id="intro-full">
+        <% if @community.overview_text.present? -%>
+          <%= @community.overview_text.try(:html_safe) %>
+        <% end -%>        
+      </div>
 
-      <p>
-        <%= link_to 'Read More', features_apartment_community_path(@community) %>
+      <p class="intro-link">
+        <a href="#intro-full" class="expand-and-disappear" data-toHide="#intro-partial">Read More</a>
       </p>
+      
+      <% end %>
 
       <%= property_bullets %>
 

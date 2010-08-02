@@ -73,6 +73,8 @@ window.bozzuto = {};
       return false;
     });
 
+    $('.expand-and-disappear').expandAndDisappear();
+    
     $('.partner-portrait').portrait();
 
     $('.partner-portrait-links a, .partners a').leaderLightbox();
@@ -237,6 +239,41 @@ window.bozzuto = {};
     };
 
   })(jQuery);
+
+  ////
+  // Read more links expand existing text
+  $.fn.expandAndDisappear = function() {
+    return this.each(function(){
+      
+      // define all our vars
+      var $this    = $(this),
+          $toshow  = $( $this.attr('href') ),
+          $tohide  = $( $this.attr('data-toHide') ),
+          $all     = $toshow.add( $tohide ),
+          $wrapper = $all.wrapAll('<div class="expand-wrapper"></div>').parent();
+
+      // wrap both items in a div with relative positioning and a fixed height
+      $wrapper.css('height', $wrapper.outerHeight() );
+
+      // set both internal elements to position: absolute
+      $all.css('width', $wrapper.width() ).css({
+        'left' : '0',
+        'position' : 'absolute',
+        'top' : '0'
+      });
+                    
+      $this.bind('click', function(e){
+        e.preventDefault();
+        $this.fadeOut(100);
+        $tohide.hide();
+        $toshow.show();
+        $wrapper.animate({
+          'height' : $toshow.outerHeight()
+        })
+      });
+      
+    });
+  }
 
   $.fn.featurePhotoPopup = function() {
     this.each(function() {

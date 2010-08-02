@@ -1928,6 +1928,21 @@ div.wysiwyg ul li {
       line-height: 1.466666667;
       margin-bottom: 0.8em;
     }
+    .community #overview .intro-link,
+    .community #overview #intro-partial {
+      display: none;
+    }
+    .js .community #overview #intro-full {
+      display: none;      
+    }
+    .js .community #overview .intro-link,
+    .js .community #overview #intro-partial {
+      display: block;
+    }
+    .expand-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
     .community #overview a {
       text-transform: none;
     }
