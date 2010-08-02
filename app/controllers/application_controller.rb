@@ -4,8 +4,7 @@ class ApplicationController < ActionController::Base
 
   around_filter :set_current_queue
 
-  rescue_from ActiveRecord::RecordNotFound, :with => :render_404
-
+  rescue_from ActiveRecord::RecordNotFound, :with => :redirect_home
 
   private
 
@@ -17,8 +16,8 @@ class ApplicationController < ActionController::Base
     Thread.current[:queue] = nil
   end
 
-  def render_404
-    render :text => 'Not found', :status => 404
+  def redirect_home
+    redirect_to root_url
   end
 
   def find_section
