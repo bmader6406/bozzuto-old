@@ -2,7 +2,7 @@
   <div class="container">
     <% if slideshow.present? %>
       <div id="masthead-slideshow">
-        <ul class="slides">
+        <ul class="slides" <% if @page == @section.pages.first %>data-sync="true"<% end %> >
           <% slideshow.slides.each do |slide| %>
             <li class="slide">
               <div class="section">

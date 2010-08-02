@@ -595,9 +595,16 @@
     }
     #main-content .twitter-update .message {
       background: transparent url(../images/structure/ico-twitter.gif) no-repeat 0 2px;
+      cursor: pointer;
+    }
+    #main-content .twitter-update .message p {
+      cursor: text;
+      padding: 0;
     }
     #main-content .twitter-update .byline {
       background-color: #85a5a7;
+      display: block;
+      text-transform: none;
     }
   /* @end */
 
@@ -1020,6 +1027,8 @@ div.wysiwyg ul li {
   }
   #slideshow ul.slides {
     height: 375px;
+    margin: 0 auto;
+    width: 1100px;
   }
   #slideshow ul.slides li.slide {
     background: #fff;
@@ -1439,14 +1448,15 @@ div.wysiwyg ul li {
       .home #slideshow,
       .home #masthead-fg,
       .home #slideshow ul.slides li.slide {
-        height: 375px;
+        height: 374px;
         width: 1100px;
+      }
+      .home #slideshow ul.slides li.slide {
+        height: 375px;
       }
       .home #masthead .container,
       .home #slideshow {
         height: 374px;
-      }
-      
       }
       .home #masthead-fg {
         margin: 0 auto;

@@ -672,8 +672,15 @@ window.bozzuto = {};
         var $slideshow = $(this);
         var o = $.meta ? $.extend({}, opts, $this.data()) : opts;
         var slideCount = $('ul.slides li.slide', $slideshow).length;
+        
         $slideshow.advanceInterval;
         $slideshow.advancing = true;
+        if ( ! $slideshow.isSister ) {
+          $slideshow.sister = $('.slides[data-sync=true]').eq(1).isSister = true;          
+        }
+        
+        console.log($slideshow.sister)
+                
         $slideshow.stopadvancing = function(){
           if ( o.autoAdvance ) {
             $slideshow.advancing = false;
@@ -916,17 +923,20 @@ window.bozzuto = {};
 
       $.getJSON(url, { 'count': 1 }, function(data) {
         if ($.isArray(data) && data.length > 0) {
-          var tweet = data[0];
-
-          container.append(
-              $('<p class="message">').text(tweet.text)
-              ).append(
-              $('<p class="byline">')
-                  .text(tweet.user.screen_name)
-                  .append(
-                  $('<em>').text(formatTimestamp(tweet.created_at))
-                  )
-              );
+          var tweet = data[0],
+              link = 'http://www.twitter.com/' + tweet.user.screen_name,
+              $message = $('<div class="message">')
+                .html('<p>' + tweet.text + '</p>')
+                .bind('click', function(){
+                  window.location.href = link;
+                }).appendTo( container );
+              $byline =   $('<a class="byline" href="' + link + '">')
+                .html(tweet.user.screen_name + ' <em>' + formatTimestamp(tweet.created_at) + '</em>')
+                .appendTo( container);
+                
+              $message.find('p').click(function(e){
+                e.stopPropagation();
+              });
         }
       });
     });
