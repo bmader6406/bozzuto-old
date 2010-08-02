@@ -675,16 +675,25 @@ window.bozzuto = {};
         
         $slideshow.advanceInterval;
         $slideshow.advancing = true;
-        if ( ! $slideshow.isSister ) {
-          $slideshow.sister = $('.slides[data-sync=true]').eq(1).isSister = true;          
-        }
         
-        console.log($slideshow.sister)
-                
-        $slideshow.stopadvancing = function(){
+        if ( $slideshow.find('ul').attr('data-sync') == 'true') {
+          $slideshow.data('linked', true);
+          if ( $slideshow.attr('id') == 'masthead-slideshow' ) {
+            $slideshow.data('master', true);
+            $slideshow.sister = $('#slideshow');
+            window.bozzuto.$masterslideshow = $slideshow;
+          } else {
+            $slideshow.sister = $('#masthead-slideshow');
+          }
+        }
+                        
+        $slideshow.stopadvancing = function( isCommand ){
           if ( o.autoAdvance ) {
             $slideshow.advancing = false;
             clearInterval( $slideshow.advanceInterval );
+            if ( $slideshow.data('linked') == true && isCommand != true ) {
+              $slideshow.sister.trigger('stop');
+            }
           }
         }
 
@@ -712,11 +721,13 @@ window.bozzuto = {};
           if (o.autoAdvance) {
             $slideshow.advanceInterval = autoAdvance($slideshow, o);
             $slideshow.hover(function() {
-              clearInterval($slideshow.advanceInterval);
+              clearInterval( $slideshow.advanceInterval );
+              clearInterval( $slideshow.sister.trigger('clearInterval') );
             }, function() {
               if ( $slideshow.advancing ){
                 $slideshow.advanceInterval = autoAdvance($slideshow, o);                
               }
+              clearInterval( $slideshow.sister.trigger('startInterval') );
             });
           }
 
@@ -760,6 +771,24 @@ window.bozzuto = {};
             return false;
           });
 
+          $slideshow.bind({
+           'advance' : function( e, slideindex, isCommand ){
+             var $slide = $slideshow.find('li.slide').eq( slideindex );
+             $.fn.featuredSlideshow.advance( $slideshow, $slide, o, false, true )
+            },
+            'clearInterval' : function(){
+              clearInterval( $slideshow.advanceInterval );
+            },
+            'startInterval' : function(){
+              if ( $slideshow.advancing ){
+                $slideshow.advanceInterval = autoAdvance($slideshow, o);                
+              }          
+            },
+            'stop' : function(){
+              $slideshow.stopadvancing(true);
+            }
+          });
+
         } else {
           $('ul.slideshow-navigation, .prev, .next', $slideshow).hide();
         }
@@ -769,20 +798,34 @@ window.bozzuto = {};
 
     // private
     function autoAdvance($this, o) {
-      return setInterval(function() {
-        if ($('ul.slides li.slide.current', $this).next().size() == 0) {
-          var next = $('ul.slides li.slide:first', $this);
-        } else {
-          var next = $('ul.slides li.slide.current', $this).next();
-        }
-        $.fn.featuredSlideshow.advance($this, next, o);
-      }, o.autoAdvanceInterval);
+
+      if ( $this.data('linked') != true || $this.data('master') == true ) {
+
+        return setInterval(function() {
+          if ($('ul.slides li.slide.current', $this).next().size() == 0) {
+            var next = $('ul.slides li.slide:first', $this);
+          } else {
+            var next = $('ul.slides li.slide.current', $this).next();
+          }
+          $.fn.featuredSlideshow.advance( $this, next, o, true );
+        }, o.autoAdvanceInterval);
+        
+      }
+      
     }
 
     //public
-    $.fn.featuredSlideshow.advance = function($slideshow, $slide, o) {
+    $.fn.featuredSlideshow.advance = function($slideshow, $slide, o, auto, isCommand ) {
+
+      if ( $slideshow.data('linked') && auto != true || $slideshow.data('master') ) {
+        var slideindex = $slide.prevAll().length;
+        if ( ! isCommand ) {
+          $slideshow.sister.trigger('advance', [ slideindex ] );                  
+        }
+      }
+      
       var slideIndex = $slide.prevAll().size(),
-          $pagination = $('ul.slideshow-pagination', $slideshow);
+          $pagination = $('ul.slideshow-pagination', $slideshow); 
 
       if (!$slide.hasClass('current')) {
         $slide.animate({ opacity: 0 }, 1, function() {
