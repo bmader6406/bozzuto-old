@@ -35,65 +35,22 @@
         <% end %>
       </div>
     </li>
-    <% if @community.ufollowup_id.present? -%>
-      <li>
-        <a href="#">Send me updates</a>
 
-        <div class="popup">
-          <form action="http://www.ufollowup.com/webFormScreen.html" method="POST">
-            <input type="hidden" name="webform_id" value="0"/>
-            <input type="hidden" name="company_id" value="339"/>
-            <input type="hidden" name="QId1" value=""/>
-            <input type="hidden" name="QId2" value=""/>
-            <input type="hidden" name="QId3" value=""/>
-            <input type="hidden" name="hChk1" value=""/>
-            <input type="hidden" name="hChk2" value=""/>
-            <input type="hidden" name="hChk3" value=""/>
-            <input type="hidden" name="hCtlType1" value="TB"/>
-            <input type="hidden" name="hCtlType2" value="DL"/>
-            <input type="hidden" name="hCtlType3" value="TB"/>
-            <input type="hidden" name="hDtlNo1" value="0"/>
-            <input type="hidden" name="hDtlNo2" value="52"/>
-            <input type="hidden" name="hDtlNo3" value="0"/>
-            <input type="hidden" name="hId1" value="6002"/>
-            <input type="hidden" name="hId2" value="6003"/>
-            <input type="hidden" name="hId3" value="6004"/>
-            <input type="hidden" name="hQid1" value="4"/>
-            <input type="hidden" name="hQid2" value="5"/>
-            <input type="hidden" name="hQid3" value="6"/>
-            <input type="hidden" name="hQst1" value="City"/>
-            <input type="hidden" name="hQst2" value="State"/>
-            <input type="hidden" name="hQst3" value="Zip"/>
-            <input type="hidden" name="hQuestions" value="3"/>
-            <input type="hidden" name="hReqdQId1" value=""/>
-            <input type="hidden" name="hReqdQId2" value=""/>
-            <input type="hidden" name="hReqdQId3" value=""/>
-            <input type="hidden" name="hValidQst1" value="0"/>
-            <input type="hidden" name="hValidQst2" value="0"/>
-            <input type="hidden" name="hValidQst3" value="0"/>
-            <input type="hidden" name="hValidVal1" value="0"/>
-            <input type="hidden" name="hValidVal2" value="0"/>
-            <input type="hidden" name="hValidVal3" value="0"/>
-            <input type="hidden" name="hcommsize" value="2"/>
-            <input type="hidden" name="hcommsizelen" value="100"/>
-            <input type="hidden" name="hexColor" value="#FFFFFF"/>
-            <input type="hidden" name="method" value="valuesSaved"/>
-            <input type="hidden" name="community" value="<%= @community.ufollowup_id %>"/>
-            <input type="hidden" name="prospectForm.firstName" value=""/>
-            <input type="hidden" name="prospectForm.lastName" value=""/>
+    <li>
+      <a href="#">Send me updates</a>
+      <div class="popup">
+        <% form_tag ufollowup_path(@community), :method => 'get' do -%>
+          <label>
+            <strong>Input your email address</strong> to stay informed
+            about <%= @community.short_title || @community.title %> incentives and events.
+          </label>
 
-            <label>
-              <strong>Input your email address</strong> to stay informed
-              about <%= @community.short_title || @community.title %> incentives and events.
-            </label>
-
-            <p class="fields">
-              <input type="text" name="prospectForm.email1"/>
-              <button type="submit">Send</button>
-            </p>
-          </form>
-        </div>
-      </li>
-    <% end -%>
+          <p class="fields">
+            <%= text_field_tag :email %>            
+            <button type="submit">Send</button>
+          </p>
+        <% end -%>
+      </div>
+    </li>
   </ul>
 <% end %>

@@ -1,0 +1,130 @@
+<% content_for :body_class, "community property" %>
+<% render_meta(@community) %>
+
+<div class="row">
+  <div id="content" class="col">
+    <h2>Send Me Updates</h2>
+    
+    <form action="http://www.ufollowup.com/webFormScreen.html" method="POST" id="ufollowup-form">
+      <fieldset>
+      <input type='hidden' name="company_id" value="339"/>
+      <input type='hidden' name='webform_id' value="0"/>
+      <input type='hidden' name='hexColor' value="#FFFFFF"/>
+      <input type="hidden" name="method" value="valuesSaved"/>
+      <input type="hidden" name="hcommsize" value="2"/>
+      <input type="hidden" name="hcommsizelen" value="100"/>
+      <input type="hidden" name="community" value="<%= @community.ufollowup_id %>"/>
+
+      <div>
+        <label for="email">Email</label><br />
+        <input type="text" name="prospectForm.email1" id="email" value="<%= @email %>"/>  
+      </div>
+
+      <div>
+        <label for="firstName">First Name</label><br />
+        <input type="text" name="prospectForm.firstName" id="firstName"/>
+      </div>
+
+      <div>
+        <label for="middleName">Middle Name</label><br />
+        <input type="text" name="prospectForm.middleName" id="middleName"/>
+      </div>
+
+      <div>
+        <label for="lastName">Last Name</label><br />
+        <input type="text" name="prospectForm.lastName" id="lastName"/>
+      </div>
+
+      <div>
+        <label for="salutation">Salutation</label><br />
+        <select name="prospectForm.salutation" id="salutation">
+          <option value="" selected>Select A Title...</option>
+          <option value="Mr.">Mr.</option>
+          <option value="Ms.">Ms.</option>
+          <option value="Mrs.">Mrs.</option>
+          <option value="Mr & Mrs.">Mr & Mrs.</option>
+          <option value="Dr.">Dr.</option>
+        </select>
+      </div>
+
+      <div class="checkboxes">
+        What are you interested in?
+
+        <ul>
+          <li>
+            <input type="checkbox" name="community" id="community_1063" value="1063"/>
+            <label for="community_1063">Bozzuto People</label>
+          </li>
+          <% ApartmentCommunity.ufollowup_id_not_null.each do |community| -%>
+            <li>
+              <input type="checkbox"
+                     name="community" id="community_<%= community.ufollowup_id %>"
+                     value="<%= community.ufollowup_id %>"
+                     <%= "checked" if community == @community %> />
+              <label id="community_<%= community.ufollowup_id %>"><%= community.title %></label>
+            </li>
+          <% end -%>
+        </ul>
+      </div>
+
+      <div>
+        <label for="city">City</label><br />
+        <input type="text" id="city" name="QId1" value=""/>
+        <input type="hidden" name="hQst1" value="City"/>
+        <input type="hidden" name="hQid1" value="4"/>
+        <input type="hidden" name="hReqdQId1" value=""/>
+        <input type="hidden" name="hCtlType1" value="TB"/>
+        <input type="hidden" name="hDtlNo1" value="0"/>
+        <input type="hidden" name="hValidQst1" value="0"/>
+        <input type="hidden" name="hValidVal1" value="0"/>
+        <input type="hidden" name="hId1" value="6002"/>
+        <input type="hidden" name="hChk1"/>
+      </div>
+
+      <div>
+        <label for="state">State</label><br />
+        <select id="state" name="QId2" class="ufformcopy">
+          <option value="">Select one...</option>
+          <option value="None Selected">None Selected</option>
+          <% ActionView::Helpers::States::US.each do |state| -%>
+            <option><%= state %></option>
+          <% end -%>
+        </select>
+        <input type="hidden" name="hQst2" value="State"/>
+        <input type="hidden" name="hQid2" value="5"/>
+        <input type="hidden" name="hReqdQId2" value=""/>
+        <input type="hidden" name="hCtlType2" value="DL"/>
+        <input type="hidden" name="hDtlNo2" value="52"/>
+        <input type="hidden" name="hValidQst2" value="0"/>
+        <input type="hidden" name="hValidVal2" value="0"/>
+        <input type="hidden" name="hId2" value="6003"/>
+        <input type="hidden" name="hChk2"/>
+      </div>
+
+      <div>
+        <label for="zip">Zip</label><br />
+        <input type="text" name="QId3" maxlength="10" size="25" class="ufformcopy" value=""/>
+        <input type="hidden" name="hQst3" value="Zip"/>
+        <input type="hidden" name="hQid3" value="6"/>
+        <input type="hidden" name="hReqdQId3" value=""/>
+        <input type="hidden" name="hCtlType3" value="TB"/>
+        <input type="hidden" name="hDtlNo3" value="0"/>
+        <input type="hidden" name="hValidQst3" value="0"/>
+        <input type="hidden" name="hValidVal3" value="0"/>
+        <input type="hidden" name="hId3" value="6004"/>
+        <input type="hidden" name="hChk3"/>
+      </div>
+
+      <input type="hidden" name="hQuestions" value="3"/>
+
+      <div>
+        <label for="comments">Comments/Questions</label><br />
+        <textarea name="prospectForm.prospectComments" id="comments"></textarea>
+      </div>
+
+      </fieldset>
+
+      <input type="submit" name="method.valuesSaved" value="Submit" id="submit1" class="button" alt="Submit"/>
+    </form>
+  </div>
+</div>

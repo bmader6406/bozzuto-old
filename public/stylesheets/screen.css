@@ -75,11 +75,11 @@
     button:hover {
       background: #d5d8dc;
     }
-    form p.fields {
+    form .fields {
       position: relative;
       height: 24px;
     }
-    form p.fields input {
+    form .fields input {
       position: absolute;
       top: 0; left: 0;
       width: 164px;
@@ -3908,19 +3908,22 @@ div.wysiwyg ul li {
 }
 
 #community-contact-form form p.checkboxes input,
-#new_buzz p.checkboxes input {
+#new_buzz p.checkboxes input,
+#ufollowup-form div.checkboxes input {
   margin-right: 15px;
   width: auto;
 }
 
 #community-contact-form form p.checkboxes label,
-#new_buzz p.checkboxes label {
+#new_buzz p.checkboxes label,
+#ufollowup-form div.checkboxes label {
   display: inline;
   float: none;
 }
 
 #community-contact-form form fieldset,
-#new_buzz fieldset {
+#new_buzz fieldset,
+#ufollowup-form fieldset {
   margin-bottom: 2em;
 }
 

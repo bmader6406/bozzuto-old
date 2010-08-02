@@ -16,7 +16,7 @@ ActionController::Routing::Routes.draw do |map|
       :features       => :get,
       :neighborhood   => :get,
       :promotions     => :get,
-      :contact        => [:get, :post],      
+      :contact        => [:get, :post],
       :send_to_friend => :post
     }
   }
@@ -33,6 +33,7 @@ ActionController::Routing::Routes.draw do |map|
       :only       => :index
   end
 
+  map.ufollowup 'apartments/communities/:id/ufollowup', :controller => 'ufollowup', :action => 'show'
 
   home_community_options = community_options.merge(
     :path_prefix => 'new-homes',
