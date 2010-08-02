@@ -3693,8 +3693,9 @@ div.wysiwyg ul li {
   }
   #content .property-listing h2 {
     color: #000;
+    line-height: 30px;
     margin-bottom: 8px;
-    padding: 0 68px 0 12px;
+    padding: 5px 68px 5px 12px;
     width: 271px;
   }
   #content .property-listing div.info h2 {
