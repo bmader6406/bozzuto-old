@@ -265,7 +265,7 @@ window.bozzuto = {};
       $this.bind('click', function(e){
         e.preventDefault();
         $this.fadeOut(100);
-        $tohide.hide();
+        $tohide.textFade();
         $toshow.show();
         $wrapper.animate({
           'height' : $toshow.outerHeight()
@@ -273,6 +273,19 @@ window.bozzuto = {};
       });
       
     });
+  }
+
+  ////
+  // workaround IE's bad text opacity issues
+  $.fn.textFade = function( time ) {
+    return this.each(function(){
+      var time = ( time ) ? time : 350;
+      if ($.browser.msie) {      
+        $(this).hide();
+      } else {
+        $(this).fadeOut( time );
+      }
+    });    
   }
 
   $.fn.featurePhotoPopup = function() {
