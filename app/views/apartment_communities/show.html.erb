@@ -47,7 +47,9 @@
             <% unless plans_in_group.empty? %>
               <tr>
                 <td>
-                  <%= link_to group.name, apartment_community_floor_plan_groups_path(@community, :anchor => dom_id(group)) %>
+                  <% link_to apartment_community_floor_plan_groups_path(@community, :anchor => dom_id(group)) do %>
+                    <%= floor_plan_group_pluralize(plans_in_group.count, group.name) %>
+                  <% end %>
                 </td>
                 <td>
                   <%= pluralize(plans_in_group.count, 'Floor Plan') %>

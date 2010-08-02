@@ -9,4 +9,8 @@ module ApartmentFloorPlanGroupsHelper
     end
     link_to 'View More', url
   end
+
+  def floor_plan_group_pluralize(count, name)
+    count == 1 ? name.singularize : name.pluralize
+  end
 end
