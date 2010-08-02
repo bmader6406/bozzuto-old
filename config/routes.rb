@@ -63,23 +63,39 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.with_options :controller => :projects do |m|
-    m.service_section_project '/services/:section/projects/:project_id', :action => :show
+    m.service_section_project '/services/:section/projects/:project_id',
+      :action => :show
     m.service_section_projects '/services/:section/projects'
-    m.section_project '/:section/projects/:project_id', :action => :show
+
+    m.section_project '/:section/projects/:project_id',
+      :action => :show
     m.section_projects '/:section/projects'
   end
 
+  map.with_options :controller => :news_and_press do |m|
+    m.service_section_news_and_press '/services/:section/news-and-press',
+      :action => :index
+    m.section_news_and_press '/:section/news-and-press',
+      :action => :index
+  end
+
   map.with_options :controller => :news_posts do |m|
-    m.service_section_news_post '/services/:section/news/:news_post_id', :action => :show
-    m.service_section_news_posts '/services/:section/news'
-    m.section_news_post '/:section/news/:news_post_id', :action => :show
-    m.section_news_posts '/:section/news.:format'
+    m.service_section_news_post '/services/:section/news-and-press/news/:news_post_id',
+      :action => :show
+    m.service_section_news_posts '/services/:section/news-and-press/news'
+
+    m.section_news_post '/:section/news-and-press/news/:news_post_id',
+      :action => :show
+    m.section_news_posts '/:section/news-and-press/news.:format'
   end
 
   map.with_options :controller => :awards do |m|
-    m.service_section_award '/services/:section/awards/:award_id', :action => :show
+    m.service_section_award '/services/:section/awards/:award_id',
+      :action => :show
     m.service_section_awards '/services/:section/awards'
-    m.section_award '/:section/awards/:award_id', :action => :show
+
+    m.section_award '/:section/awards/:award_id',
+      :action => :show
     m.section_awards '/:section/awards'
   end
 

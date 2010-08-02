@@ -22,6 +22,11 @@ class SectionContentController < ApplicationController
   end
   helper_method :section_news_posts
 
+  def section_press_releases
+    @section.aggregate? ? PressRelease.published : @section.press_releases.published
+  end
+  helper_method :section_press_releases
+
   def section_testimonials
     @section.aggregate? ? Testimonial.scoped({}) : @section.testimonials
   end

@@ -3477,19 +3477,19 @@ div.wysiwyg ul li {
     }
   /* @end */
 
-  /* @group -news */
-    .page #content .news-posts {
+  /* @group -news and press */
+    .page #content .press-listing {
       padding-top: 25px;
     }
-    .page #content .news-post {
+    .page #content .press-item {
       margin-bottom: 30px;
     }
-    .page #content .news-post h3 {
+    .page #content .press-item h3 {
       border: none;
       line-height: 1.5;
       padding: 0;
     }
-    .page #content .news-post .news-post-date {
+    .page #content .press-item-date {
       font-size: 12px;
       font-style: italic;
     }

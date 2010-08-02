@@ -53,7 +53,7 @@ window.bozzuto = {};
 
     $(".features div.feature ul").makeacolumnlists({cols:2, colWidth:325, equalHeight:false, startN:1});
 
-    $(".services div.tips ul, .generic div.tips ul").makeacolumnlists({cols:3, colWidth:150, equalHeight:false, startN:1});
+    $(".services div.tips ul, .page div.tips ul").makeacolumnlists({cols:3, colWidth:150, equalHeight:false, startN:1});
 
     setSearchFormState();
 

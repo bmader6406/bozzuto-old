@@ -18,7 +18,7 @@ State.create([{ :code => 'CT', :name => 'Connecticut' },
 end
 
 # sections
-['Apartments', 'New Homes', 'Services'].each do |section|
+['Apartments', 'New Homes', 'Services', 'News & Press'].each do |section|
   Section.create(:title => section)
 end
 Section.create(:title => 'About Us', :about => true)

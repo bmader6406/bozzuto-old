@@ -35,6 +35,16 @@ class SectionTest < ActiveSupport::TestCase
       end
     end
 
+    context 'self#news_and_press' do
+      setup do
+        @section = Section.make(:news_and_press)
+      end
+
+      should 'return the News & Press section' do
+        assert_equal @section, Section.news_and_press
+      end
+    end
+
     context '#about?' do
       context "when about flag is true" do
         setup { @section.about = true }

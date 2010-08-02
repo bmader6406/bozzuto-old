@@ -37,6 +37,10 @@ class Section < ActiveRecord::Base
     find(:first, :conditions => { :about => true })
   end
 
+  def self.news_and_press
+    find 'news-press'
+  end
+
   def typus_name
     title
   end

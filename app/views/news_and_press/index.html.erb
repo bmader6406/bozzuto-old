@@ -1,0 +1,28 @@
+<% breadcrumb_item('News & Press') %>
+<% breadcrumb_title('News & Press') %>
+
+
+<% unless @latest_news.empty? %>
+  <h2>Latest News</h2>
+
+  <% @latest_news.each do |post| %>
+    <p>
+      <%= link_to post.title, news_post_path(@section, post) %>
+      &ndash;
+      <em><%= post.published_at.to_formatted_s(:month_day_year) %></em>
+    </p>
+  <% end %>
+<% end %>
+
+
+<% unless @latest_press.empty? %>
+  <h2>Latest Press Releases</h2>
+
+  <% @latest_press.each do |press_release| %>
+    <p>
+      <%= link_to press_release.title, '#' %>
+      &ndash;
+      <em><%= press_release.published_at.to_formatted_s(:month_day_year) %></em>
+    </p>
+  <% end %>
+<% end %>

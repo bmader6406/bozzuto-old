@@ -1,15 +1,15 @@
-<% content_for :body_class do %>generic<% end %>
 <% render_meta(@news_post) %>
 
+<% breadcrumb_item link_to('News & Press', news_and_press_path(@section)) %>
 <% breadcrumb_item link_to('News', news_posts_path(@section)) %>
 <% breadcrumb_item(@news_post.title) %>
 <% breadcrumb_title(@news_post.title) %>
 
 
-<div class="news-post">
+<div class="press-item">
   <h2><%= @news_post.title %></h2>
 
-  <p class="news-post-date">
+  <p class="press-item-date">
     <%= @news_post.published_at.to_formatted_s(:month_day_year) %>
   </p>
 

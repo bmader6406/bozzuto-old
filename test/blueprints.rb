@@ -191,6 +191,11 @@ Section.blueprint(:about) do
   about { true }
 end
 
+Section.blueprint(:news_and_press) do
+  title { 'News & Press' }
+  about { true }
+end
+
 Snippet.blueprint do
   name { Sham.unique_name }
   body { Faker::Lorem.paragraphs }

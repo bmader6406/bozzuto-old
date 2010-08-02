@@ -1,5 +1,4 @@
-<% content_for :body_class do %>generic<% end %>
-
+<% breadcrumb_item(link_to 'News & Press', news_and_press_path(@section)) %>
 <% breadcrumb_item('News') %>
 <% breadcrumb_title('News') %>
 
@@ -17,14 +16,14 @@
 <% end %>
 
 
-<div class="news-posts">
+<div class="press-listing">
   <% @news_posts.each do |post| %>
-    <div class="news-post row">
+    <div class="press-item row">
       <h3>
         <%= link_to post.title, news_post_path(@section, post) %>
       </h3>
 
-      <p class="news-post-date">
+      <p class="press-item-date">
         <%= post.published_at.to_formatted_s(:month_day_year) %>
       </p>
 
