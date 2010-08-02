@@ -44,9 +44,10 @@ module Vaultware
     end
 
     def process_floor_plans(property)
+      rolled_up = rolled_up?(property)
       # rolled up floor plans use the File with a rank of 1
       # unrolled floor plans just use the first File
-      file_selector = rolled_up?(property) ? './File[Rank=1]' : './File'
+      file_selector = rolled_up ? './File[Rank=1]' : './File'
 
       property.xpath('./Floorplan').each do |plan|
         attrs = floor_plan_attributes(plan)
@@ -54,7 +55,8 @@ module Vaultware
 
         attrs.merge!(
           :vaultware_file_id => (file['Id'].to_i rescue nil),
-          :image_url         => (file.at('./Src').content rescue nil)
+          :image_url         => (file.at('./Src').content rescue nil),
+          :rolled_up         => rolled_up
         )
 
         create_or_update_floor_plan(attrs)

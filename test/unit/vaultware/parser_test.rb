@@ -342,12 +342,14 @@ module Vaultware
       file = plan.at('./File[Rank=1]')
       attrs[:vaultware_file_id] = file['Id'].to_i rescue nil
       attrs[:image_url] = file.at('./Src').content rescue nil
+      attrs[:rolled_up] = true
       attrs
     end
 
     def floor_plan_attributes(plan)
       {
         :name               => plan.at('./Name').content,
+        :rolled_up          => false,
         :availability_url   => plan.at('./FloorplanAvailabilityURL').content,
         :bedrooms           => plan.at('./Room[@Type="Bedroom"]/Count').content.to_i,
         :bathrooms          => plan.at('./Room[@Type="Bathroom"]/Count').content.to_f,

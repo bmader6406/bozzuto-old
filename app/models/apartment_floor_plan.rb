@@ -31,7 +31,7 @@ class ApartmentFloorPlan < ActiveRecord::Base
     :minimum => 0,
     :allow_nil => true
 
-  validates_inclusion_of :featured, :in => [true, false]
+  validates_inclusion_of :featured, :rolled_up, :in => [true, false]
 
   has_attached_file :image,
     :url => '/system/:class/:id/:style.:extension',

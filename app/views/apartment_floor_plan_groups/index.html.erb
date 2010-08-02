@@ -23,7 +23,10 @@
 
               <p>
                 <% if (sq_ft = plan.min_square_feet).present? %>
-                  Starting from <%= square_feet(plan) %>
+                  <% if plan.rolled_up? %>
+                    Starting from
+                  <% end %>
+                  <%= square_feet(plan) %>
                 <% end %>
 
                 <% if (min_rent = plan.min_rent).present? %>

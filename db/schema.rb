@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100730154244) do
+ActiveRecord::Schema.define(:version => 20100802033408) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20100730154244) do
     t.integer  "vaultware_floor_plan_id"
     t.integer  "vaultware_file_id"
     t.boolean  "featured",                                              :default => false, :null => false
+    t.boolean  "rolled_up",                                             :default => false, :null => false
   end
 
   create_table "assets", :force => true do |t|
