@@ -72,13 +72,9 @@ ActionController::Routing::Routes.draw do |map|
     m.section_projects '/:section/projects'
   end
 
-  map.with_options :controller => :news_and_press do |m|
-    m.service_section_news_and_press '/services/:section/news-and-press',
-      :action => :index
-    m.section_news_and_press '/:section/news-and-press',
-      :action => :index
-  end
 
+  ###
+  # News & Press
   map.with_options :controller => :news_posts do |m|
     m.service_section_news_post '/services/:section/news-and-press/news/:news_post_id',
       :action => :show
@@ -89,15 +85,36 @@ ActionController::Routing::Routes.draw do |map|
     m.section_news_posts '/:section/news-and-press/news.:format'
   end
 
-  map.with_options :controller => :awards do |m|
-    m.service_section_award '/services/:section/awards/:award_id',
+  map.with_options :controller => :press_releases do |m|
+    m.service_section_press_release '/services/:section/news-and-press/press-releases/:press_release_id',
       :action => :show
-    m.service_section_awards '/services/:section/awards'
+    m.service_section_press_releases '/services/:section/news-and-press/press-releases'
 
-    m.section_award '/:section/awards/:award_id',
+    m.section_press_release '/:section/news-and-press/press-releases/:press_release_id',
       :action => :show
-    m.section_awards '/:section/awards'
+    m.section_press_releases '/:section/news-and-press/press-releases'
   end
+
+  map.with_options :controller => :awards do |m|
+    m.service_section_award '/services/:section/news-and-press/awards/:award_id',
+      :action => :show
+    m.service_section_awards '/services/:section/news-and-press/awards'
+
+    m.section_award '/:section/news-and-press/awards/:award_id',
+      :action => :show
+    m.section_awards '/:section/news-and-press/awards'
+  end
+
+  map.with_options :controller => :news_and_press do |m|
+    m.service_section_news_and_press '/services/:section/news-and-press',
+      :action => :index
+    m.section_news_and_press '/:section/news-and-press',
+      :action => :index
+    m.news_and_press_page '/about-us/news-and-press/*page',
+      :section => 'about-us',
+      :action => :show
+  end
+
 
   map.leadership '/:section/leadership', :controller => :leaders, :action => :index
 

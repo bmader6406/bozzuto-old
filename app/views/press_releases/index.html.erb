@@ -1,0 +1,17 @@
+<% breadcrumb_item(link_to 'News & Press', news_and_press_path(@section)) %>
+<% breadcrumb_item('Press Releases') %>
+<% breadcrumb_title('Press Releases') %>
+
+
+<h2>Latest Press</h2>
+
+
+<% @press_releases.each do |press_release| %>
+  <p>
+    <%= link_to press_release.title, press_release_path(@section, press_release) %>
+    &ndash;
+    <em><%= press_release.published_at.to_formatted_s(:month_day_year) %></em>
+  </p>
+<% end %>
+
+<%= will_paginate @press_releases %>

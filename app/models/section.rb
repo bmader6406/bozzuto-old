@@ -39,6 +39,8 @@ class Section < ActiveRecord::Base
 
   def self.news_and_press
     find 'news-press'
+  rescue
+    nil
   end
 
   def typus_name

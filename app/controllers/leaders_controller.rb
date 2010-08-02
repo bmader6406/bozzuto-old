@@ -12,7 +12,7 @@ class LeadersController < SectionContentController
   private
 
   def find_section
-    @section = Section.find 'about-us'
+    @section = Section.about
   end
 
   def find_page

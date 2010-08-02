@@ -7,21 +7,11 @@
     </li>
   <% end %>
 
-  <% unless section_news_posts.count.zero? %>
-    <li class="<%= current_if :controller => 'news' %>">
-      <%= link_to 'News & Press', news_posts_path(@section) %>
-    </li>
-  <% end %>
+  <%= news_and_press_secondary_nav(@section, @news_section) %>
 
   <% unless section_testimonials.count.zero? %>
     <li class="<%= current_if :controller => 'testimonials' %>">
       <%= link_to 'Testimonials', testimonials_path(@section) %>
-    </li>
-  <% end %>
-
-  <% unless section_awards.count.zero? %>
-    <li class="<%= current_if :controller => 'awards' %>">
-      <%= link_to 'Awards', awards_path(@section) %>
     </li>
   <% end %>
 

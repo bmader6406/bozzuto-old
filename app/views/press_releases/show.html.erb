@@ -1,0 +1,17 @@
+<% render_meta(@press_release) %>
+
+<% breadcrumb_item link_to('News & Press', news_and_press_path(@section)) %>
+<% breadcrumb_item link_to('Press Releases', press_releases_path(@section)) %>
+<% breadcrumb_item(@press_release.title) %>
+<% breadcrumb_title(@press_release.title) %>
+
+
+<div class="press-item">
+  <h2><%= @press_release.title %></h2>
+
+  <p class="press-item-date">
+    <%= @press_release.published_at.to_formatted_s(:month_day_year) %>
+  </p>
+
+  <%= @press_release.body.try(:html_safe) %>
+</div>

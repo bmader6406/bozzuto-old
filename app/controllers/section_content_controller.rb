@@ -1,10 +1,18 @@
 class SectionContentController < ApplicationController
   layout 'page'
 
-  before_filter :find_section
+  before_filter :find_section, :find_news_and_press_section
 
 
   private
+
+  def find_news_and_press_section
+    @news_section = if @section.about?
+      Section.news_and_press
+    else
+      nil
+    end
+  end
 
   def latest_news_posts(limit = 3)
     @latest_news_posts ||= section_news_posts.latest(limit).all

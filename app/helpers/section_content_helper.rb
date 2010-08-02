@@ -53,4 +53,51 @@ module SectionContentHelper
     output << '</ul>' if ul_wrapper
     output.html_safe
   end
+
+  def news_and_press_secondary_nav(section, news_section)
+    if section_news_posts.any? || section_press_releases.any? || (news_section.present? && news_section.pages.any?)
+      current = 'current' if params[:controller] == 'news_and_press' && params[:action] == 'index'
+
+      content_tag :li, :class => current do
+        returning('') do |li|
+          li << link_to('News & Press', news_and_press_path(section))
+
+          subnav = []
+
+          # pages
+          if news_section.present? && news_section.pages.any?
+            subnav << pages_tree(news_section.pages).html_safe
+          end
+
+          # news
+          if section_news_posts.any?
+            current = params[:controller] == 'news_posts' ? 'current' : nil
+            subnav << content_tag(:li, :class => current) do
+              link_to('News', news_posts_path(section))
+            end
+          end
+
+          # awards
+          if section_awards.any?
+            current = params[:controller] == 'awards' ? 'current' : nil
+            subnav << content_tag(:li, :class => current) do
+              link_to 'Awards', awards_path(section)
+            end
+          end
+
+          # press releases
+          if section_press_releases.any?
+            current = params[:controller] == 'press_releases' ? 'current' : nil
+            subnav << content_tag(:li, :class => current) do
+              link_to('Press Releases', press_releases_path(section), :class => current)
+            end
+          end
+
+          if subnav.any?
+            li << content_tag(:ul) { subnav.join.html_safe }
+          end
+        end.html_safe
+      end
+    end
+  end
 end

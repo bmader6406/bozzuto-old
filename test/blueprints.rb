@@ -131,6 +131,13 @@ PhotoSet.blueprint do
   flickr_set_number { (rand(50000000) + 50000000).to_s }
 end
 
+PressRelease.blueprint do
+  title        { Faker::Lorem.sentence }
+  body         { Faker::Lorem.paragraphs(2) }
+  published    { true }
+  published_at { Time.now - 1.day }
+end
+
 Project.blueprint do
   title     { Sham.company_name }
   subtitle  { Faker::Company.catch_phrase }

@@ -1,19 +1,23 @@
 class NewsAndPressController < SectionContentController
-  before_filter :find_section, :find_news_section
-
   def index
     @latest_news = section_news_posts.latest(10)
     @latest_press = section_press_releases.latest(10)
   end
 
+  def show
+    find_page
+  end
+
 
   private
 
-  def find_news_section
-    @news_section = if @section.about?
-      Section.news_and_press
+  def find_page
+    @page = if params[:page].any?
+      @news_section.pages.find_by_path(current_page_path)
     else
-      nil
+      @news_section.pages.first
     end
+
+    render_404 if @page.nil?
   end
 end
