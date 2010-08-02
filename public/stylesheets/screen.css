@@ -37,6 +37,14 @@
     font-weight: bold;
   }
   
+  .divider {
+    font-size: 0;
+    border-bottom: 1px solid #C1C1C5;
+    height: 0;
+    line-height: 0;
+    margin: 20px 0;
+  }
+  
   /* @group forms */
     input,
     button {
@@ -3846,6 +3854,10 @@ div.wysiwyg ul li {
 #community-contact-form form,
 #new_buzz {
   margin: 15px 0;
+}
+
+.secondary #main-content #community-contact-note {
+  font-size: 12px;
 }
 
 #community-contact-form form h3,
