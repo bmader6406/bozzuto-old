@@ -1442,6 +1442,12 @@ div.wysiwyg ul li {
         height: 375px;
         width: 1100px;
       }
+      .home #masthead .container,
+      .home #slideshow {
+        height: 374px;
+      }
+      
+      }
       .home #masthead-fg {
         margin: 0 auto;
         position: relative;
