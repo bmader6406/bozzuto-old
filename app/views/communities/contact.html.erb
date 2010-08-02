@@ -7,11 +7,11 @@
 </div>
 <% end -%>
 
-<div id="community-contact-text">
-  <%= @community.contact_text.try(:html_safe) %>  
-</div>
-
 <% if @community.show_lead_2_lease? -%>
+  <h2>Ready to speak with a leasing consultant?</h2>
+
+  <p>Fill out the form below for availability and specials.</p>
+
   <div id="community-contact-form">
     <%= error_messages_for :submission %>
     
@@ -95,3 +95,7 @@
     <% end -%>
   </div>
 <% end -%>
+
+<div id="community-contact-text">
+  <%= @community.contact_text.try(:html_safe) %>  
+</div>
