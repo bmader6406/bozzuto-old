@@ -1,4 +1,5 @@
 development:
+  vaultware_feed_file: /path/to/vaultware/feed/bozzutocom.xml
   sms:
     username:
     password:
@@ -27,6 +28,7 @@ development:
     sender: 39044      
 
 production:
+  vaultware_feed_file: /path/to/vaultware/feed/bozzutocom.xml
   walkscore_wsid: 'YOUR-WSID-HERE'
   google_maps_api_key: 'ABQIAAAA7txTDQDFqeDYcgMQiou82BS4HyMuMWnF1gYqzj4uDbvuvSLR0RQG2OmrjDwO9korkAMlXnDyKPNeTw' # key for bozzuto.local
   yahoo_api_key: 'll53sBfV34EbzLw1ECmKvRRAIhNfQgSxxxBX480.eRzCf5S7s_L1Y6ZzyaxnAqSW3A--'
@@ -37,6 +39,7 @@ production:
     sender: 39044
 
 test:
+  vaultware_feed_file: /path/to/vaultware/feed/bozzutocom.xml
   sms:
     username:
     password:
