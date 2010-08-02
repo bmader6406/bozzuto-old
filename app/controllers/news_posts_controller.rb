@@ -1,4 +1,4 @@
-class NewsController < SectionContentController
+class NewsPostsController < SectionContentController
   before_filter :find_posts, :only => :index
   before_filter :find_post, :only => :show
 

@@ -1,7 +1,7 @@
 require 'test_helper'
 
-class NewsControllerTest < ActionController::TestCase
-  context 'NewsController' do
+class NewsPostsControllerTest < ActionController::TestCase
+  context 'NewsPostsController' do
     setup do
       @section = Section.make
     end

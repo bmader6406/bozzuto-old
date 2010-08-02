@@ -69,7 +69,7 @@ ActionController::Routing::Routes.draw do |map|
     m.section_projects '/:section/projects'
   end
 
-  map.with_options :controller => :news do |m|
+  map.with_options :controller => :news_posts do |m|
     m.service_section_news_post '/services/:section/news/:news_post_id', :action => :show
     m.service_section_news_posts '/services/:section/news'
     m.section_news_post '/:section/news/:news_post_id', :action => :show
