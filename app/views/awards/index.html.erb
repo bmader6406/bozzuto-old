@@ -6,16 +6,26 @@
 
 <h2>Awards</h2>
 
-<% @awards.each do |award| %>
-  <div class="award row">
-    <h3>
-      <%= link_to award.title, award_path(@section, award) %>
-    </h3>
+<div class="press-listing">
+  <% @awards.each do |award| %>
+    <div class="press-item row">
+      <% if award.image? %>
+        <% link_to award_path(@section, award) do %>
+          <%= image_tag(award.image.url, :width => 100, :height => 100) %>
+        <% end %>
+      <% end %>
 
-    <a href="#"><img src="/images/fpo/generic-content-1.jpg" alt="" height="150" width="150" /></a>
+      <h3>
+        <%= link_to award.title, award_path(@section, award) %>
+      </h3>
 
-    <%= truncate(award.body.try(:html_safe), :length => 600) %>
-  </div>
-<% end %>
+      <p class="press-item-date">
+        <%= award.published_at.to_formatted_s(:month_day_year) %>
+      </p>
 
-<%= will_paginate @awards %>
+      <%= truncate_html(award.body, :length => 600).try(:html_safe) %>
+    </div>
+  <% end %>
+
+  <%= will_paginate @awards %>
+</div>

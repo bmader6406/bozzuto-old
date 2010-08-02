@@ -8,8 +8,14 @@
 
 <h2><%= @award.title %></h2>
 
-<p><%= @award.published_at.to_formatted_s(:month_day_year) %></p>
+<p class="press-item-date">
+  <%= @award.published_at.to_formatted_s(:month_day_year) %>
+</p>
 
-<p class="figure"><%= image_tag @award.image.url %></p>
+<% if @award.image? %>
+  <p class="figure">
+    <%= image_tag @award.image.url %>
+  </p>
+<% end %>
 
 <%= @award.body.try(:html_safe) %>
