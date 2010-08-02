@@ -1038,7 +1038,7 @@ div.wysiwyg ul li {
     z-index: 2;
   }
   #slideshow ul.slides li.on-deck {
-    z-index: 4;
+    z-index: 4 !important;
   }
   #slideshow ul.slides li.current {
     z-index: 3 !important;
