@@ -39,11 +39,14 @@
       <h4>We Work In</h4>
 
       <ul>
-        <% states.each do |state| %>
-          <li>
-            <%= link_to state.name, state_apartment_search_path(state) %>
-          </li>
-        <% end %>
+        <li><%= link_to 'Connecticut', '/regions/connecticut' %></li>
+        <li><%= link_to 'Maryland', '/regions/maryland' %></li>
+        <li><%= link_to 'Massachusetts', '/regions/massachusetts' %></li>
+        <li><%= link_to 'New Jersey', '/regions/new-jersey' %></li>
+        <li><%= link_to 'New York', '/regions/new-york' %></li>
+        <li><%= link_to 'Pennsylvania', '/regions/pennsylvania' %></li>
+        <li><%= link_to 'Virginia', '/regions/virginia' %></li>
+        <li><%= link_to 'Washington, DC', '/regions/washington-dc' %></li>
       </ul>
     </div>
 
