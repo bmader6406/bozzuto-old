@@ -5,29 +5,34 @@ RAILS_GEM_VERSION = '2.3.8' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
+require 'rack-rewrite'
 
 Rails::Initializer.run do |config|
-  # Add additional load paths for your own custom dirs
-  # config.load_paths += %W( #{RAILS_ROOT}/extras )
-
-  # Only load the plugins named here, in the order given (default is alphabetical).
-  # :all can be used as a placeholder for all plugins not explicitly named
-  # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
-
-  # Skip frameworks you're not going to use. To use Rails without a database,
-  # you must remove the Active Record framework.
-  # config.frameworks -= [ :active_record, :active_resource, :action_mailer ]
-
-  # Activate observers that should always be running
-  # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
-
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.
   config.time_zone = 'Eastern Time (US & Canada)'
 
-  # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-  # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
-  # config.i18n.default_locale = :de
+  config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
+    r301 %r'/cs/bozzuto_homes/housing_for_all/?', '/about-us/housing-for-all'
+    r301 %r'/cs/root/corporate/rent_a_home/overview/?', '/apartments'
+    r301 %r'/cs/root/corporate/homes/?', '/new-homes'
+    r301 %r'/cs/_corporate/about_us/?', '/about-us'
+    r301 %r'/cs/_corporate/acquisitions/?', '/services/acquisitions'
+    r301 %r'/cs/_corporate/construction/?', '/services/construction'
+    r301 %r'/cs/root/corporate/development/?', '/services/development'
+    r301 %r'/cs/bozzuto_homes/?', '/services/homebuilding'
+    r301 %r'/cs/land/land_home/?', '/services/land'
+    r301 %r'/cs/root/corporate/management/?', '/services/management'
+    r301 %r'/cs/root/corporate/contact_us/?', '/about-us/contact'
+    r301 %r'/cs/_corporate/about_us/housing_for_all/?', '/about-us/housing-for-all'
+    r301 %r'/cs/BozzutoElite/?', '/apartments/bozzuto-elite'
+    r301 %r'/cs/BozzutoSmartRent/?', '/apartments/smartrent'
+    r301 %r'/cs/root/corporate/rent_a_home/awards/?', '/about-us/awards'
+    r301 %r'/cs/root/corporate/rent_a_home/news/?', '/about-us/news'
+    r301 %r'/cs/root/corporate/careers/?', '/about-us/careers'
+    r301 %r'/cs/search_properties/?', '/apartments/communities'
+    r301 %r'/property/?', '/apartments'
+  end
 end
 
 ActionView::Base.default_form_builder = Bozzuto::FormBuilder

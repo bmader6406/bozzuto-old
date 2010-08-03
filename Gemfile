@@ -18,6 +18,7 @@ gem 'rcov'
 gem 'whenever'
 gem 'hoptoad_notifier'
 gem 'bossman'
+gem 'rack-rewrite', '~> 0.2.0'
 
 group :test do
   gem 'shoulda', '2.10.3'
