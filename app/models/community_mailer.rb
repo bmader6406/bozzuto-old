@@ -7,7 +7,7 @@ class CommunityMailer < ActionMailer::Base
     from       "donotreply@bozzuto.com"
     subject    community.title
     sent_on    Time.now
-    body       :community => community
+    body       :community => community, :to => to_address
   end
 
 

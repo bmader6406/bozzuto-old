@@ -267,7 +267,7 @@
 	<tr>
 		<td class="footer" rowspan="2" style="color: #acacb2; font-size: 10px; vertical-align: top;" colspan="2">
 			<p>You are receiving this email because your friend thought it would be of interest to you. This email address has not been added to a database and will not receive future emails.</p>
-      <p>If you would like additional updates on this or other Bozzuto properties, <%= link_to 'please click here', '#', :style => 'color: #84848b;' %>.</p>
+      <p>If you would like additional updates on this or other Bozzuto properties, <%= link_to 'please click here', ufollowup_url(@community, :email => @to), :style => 'color: #84848b;' %>.</p>
       <!-- TODO: set href for this link to UFollowUp form -->
 		</td>
 		<td>
