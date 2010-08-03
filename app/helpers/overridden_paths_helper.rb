@@ -104,4 +104,12 @@ module OverriddenPathsHelper
       send_to_friend_home_community_path(community)
     end
   end
+
+  def section_contact_path(section)
+    if section.contact_topic.present?
+      contact_path(:topic => @section.contact_topic)
+    else
+      contact_path
+    end
+  end
 end
