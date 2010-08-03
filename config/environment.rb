@@ -6,6 +6,7 @@ RAILS_GEM_VERSION = '2.3.8' unless defined? RAILS_GEM_VERSION
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 require 'rack-rewrite'
+require 'redirectotron'
 
 Rails::Initializer.run do |config|
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
@@ -33,6 +34,8 @@ Rails::Initializer.run do |config|
     r301 %r{^/cs/search_properties/?}, '/apartments/communities'
     r301 %r{^/property/?}, '/apartments'
   end
+
+  config.middleware.use Redirectotron
 end
 
 ActionView::Base.default_form_builder = Bozzuto::FormBuilder
