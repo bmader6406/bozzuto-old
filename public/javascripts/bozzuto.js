@@ -90,9 +90,6 @@ window.bozzuto = {};
     });
     $('#spinner').ajaxStop(function () {
       $(this).hide();
-      $('.phone-number').replaceWith(function () {
-        return getDNRiFrame(this, "xxx.xxx.xxxx", "1081055");
-      });
     });
 
     $('form.required-form').validate({
@@ -1004,17 +1001,14 @@ window.bozzuto = {};
     }
   }
 
-  $().ajaxSend(
-      function(a, xhr, s) {
-        xhr.setRequestHeader("Accept", "text/javascript, text/html, application/xml, text/xml, */*")
-      }
-      );
+  $().ajaxSend(function(a, xhr, s) {
+    xhr.setRequestHeader("Accept", "text/javascript, text/html, application/xml, text/xml, */*")
+  });
 
   jQuery.fn.attachSearchForm = function() {
     var form = this;
     this.find("input, select").bind('change', function () {
       $.get(form.action, $(form).serialize(), null, "script");
-      return false;
     });
     return this;
   };
