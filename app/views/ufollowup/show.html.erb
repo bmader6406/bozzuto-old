@@ -38,13 +38,13 @@
             <input type="checkbox" name="community" id="community_1063" value="1063" checked/>
             <label for="community_1063">Bozzuto Buzz</label>
           </li>
-          <% ApartmentCommunity.ufollowup_id_not_null.each do |community| -%>
+          <% if @community.ufollowup_id.present? -%>
             <li>
               <input type="checkbox"
-                     name="community" id="community_<%= community.ufollowup_id %>"
-                     value="<%= community.ufollowup_id %>"
-                     <%= "checked" if community == @community %> />
-              <label id="community_<%= community.ufollowup_id %>"><%= community.title %></label>
+                     name="community" id="community_<%= @community.ufollowup_id %>"
+                     value="<%= @community.ufollowup_id %>"
+                     checked />                     
+              <label id="community_<%= @community.ufollowup_id %>"><%= @community.title %></label>
             </li>
           <% end -%>
         </ul>

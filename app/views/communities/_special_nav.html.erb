@@ -39,16 +39,18 @@
     <li>
       <a href="#">Send me updates</a>
       <div class="popup">
-        <% form_tag ufollowup_path(@community), :method => 'get' do -%>
-          <label>
-            <strong>Input your email address</strong> to stay informed
-            about <%= @community.short_title || @community.title %> incentives and events.
-          </label>
+        <% if @community.ufollowup_id.present? %>
+          <% form_tag ufollowup_path(@community), :method => 'get' do -%>
+            <label>
+              <strong>Input your email address</strong> to stay informed
+              about <%= @community.short_title || @community.title %> incentives and events.
+            </label>
 
-          <p class="fields">
-            <%= text_field_tag :email %>            
-            <button type="submit">Send</button>
-          </p>
+            <p class="fields">
+              <%= text_field_tag :email %>            
+              <button type="submit">Send</button>
+            </p>
+          <% end -%>
         <% end -%>
       </div>
     </li>
