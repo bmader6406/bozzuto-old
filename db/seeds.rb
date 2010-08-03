@@ -18,7 +18,7 @@ State.create([{ :code => 'CT', :name => 'Connecticut' },
 end
 
 # sections
-['Apartments', 'New Homes', 'Services', 'News & Press'].each do |section|
+['Apartments', 'New Homes', 'Services', 'News & Press', 'Pages'].each do |section|
   Section.create(:title => section)
 end
 Section.create(:title => 'About Us', :about => true)
@@ -43,10 +43,3 @@ end
 if HomePage.count.zero?
   HomePage.new.save(false)
 end
-
-
-###
-# Seed with XML data
-parser = Vaultware::Parser.new
-parser.parse(RAILS_ROOT + '/db/seeds/vaultware.xml')
-parser.process

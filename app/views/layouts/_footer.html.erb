@@ -78,10 +78,10 @@
 
       <ul>
         <li class="facebook">
-          <a href="http://www.facebook.com/TheBozzutoGroup">Follow us on Facebook</a>
+          <%= link_to 'Follow us on Facebook', 'http://www.facebook.com/TheBozzutoGroup' %>
         </li>
         <li class="twitter">
-          <a href="http://twitter.com/TheBozzutoGroup">Follow us on Twitter</a>
+          <%= link_to 'Follow us on Twitter', 'http://twitter.com/TheBozzutoGroup' %>
         </li>
       </ul>
     </div>
@@ -95,11 +95,11 @@
     </p>
 
     <p class="links">
-      <a href="#">Privacy Policy</a>
+      <%= link_to 'Privacy Policy', '/pages/privacy-policy' %>
       |
-      <a href="#">Website Disclaimer</a>
+      <%= link_to 'Website Disclaimer', '/pages/website-disclaimer' %>
       |
-      <a href="#">Employee Login</a>
+      <%= link_to 'Employee Login', 'http://intranet.bozzuto.com:8095/sites/intranet/Pages/Default.aspx' %>
     </p>
 
     <%= link_to 'Equal Housing Opportunity', '/about-us/housing-for-all', :id => 'eho' %>
