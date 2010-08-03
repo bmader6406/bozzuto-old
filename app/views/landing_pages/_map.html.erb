@@ -5,8 +5,8 @@
         <div class="info-box">
           <h4><%= link_to property.title, property_path(property) %></h4>
 
-          <% if property.listing_title.present? %>
-            <p><%= property.listing_title %></p>
+          <% if property.overview_bullet_1.present? %>
+            <p><%= property.overview_bullet_1 %></p>
           <% end %>
 
           <p><%= link_to 'Learn More', property_path(property) %></p>

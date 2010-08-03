@@ -33,8 +33,8 @@
               <div class="info-box">
                 <h4><%= link_to community.title, property_path(community) %></h4>
 
-                <% if community.listing_title.present? %>
-                  <p><%= community.listing_title %></p>
+                <% if community.overview_bullet_1.present? %>
+                  <p><%= community.overview_bullet_1 %></p>
                 <% end %>
 
                 <p><%= link_to 'Learn More', property_path(community) %></p>
