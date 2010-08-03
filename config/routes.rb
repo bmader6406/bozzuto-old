@@ -64,13 +64,13 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.with_options :controller => :projects do |m|
-    m.service_section_project '/services/:section/projects/:project_id',
+    m.service_section_project '/services/:section/our-work/:project_id',
       :action => :show
-    m.service_section_projects '/services/:section/projects'
+    m.service_section_projects '/services/:section/our-work'
 
-    m.section_project '/:section/projects/:project_id',
+    m.section_project '/:section/our-work/:project_id',
       :action => :show
-    m.section_projects '/:section/projects'
+    m.section_projects '/:section/our-work'
   end
 
 

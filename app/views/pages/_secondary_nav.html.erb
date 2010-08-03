@@ -1,12 +1,6 @@
 <ul id="secondary-nav">
   <%= pages_tree(@section.pages) %>
 
-  <% unless section_projects.count.zero? %>
-    <li class="<%= current_if :controller => 'projects' %>">
-      <%= link_to 'Our Work', projects_path(@section) %>
-    </li>
-  <% end %>
-
   <%= news_and_press_secondary_nav(@section, @news_section) %>
 
   <% unless section_testimonials.count.zero? %>

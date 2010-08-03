@@ -1,7 +1,7 @@
 <% content_for :body_class do %>projects<% end %>
 
-<% breadcrumb_item('Projects') %>
-<% breadcrumb_title('Projects') %>
+<% breadcrumb_item('Our Work') %>
+<% breadcrumb_title('Our Work') %>
 
 <% @categories.each do |category| %>
   <% if category.projects.in_section(@section).any? %>
