@@ -6,6 +6,7 @@ en:
       apartment_floor_plan_group: Floor Plan Type
       body_slide: Slide
       body_slideshow: Page Body Slideshow
+      contact_topic: Contact Form Topic
       feed: Feed
       home_community: Home Community
       home_floor_plan: Floor Plan
@@ -194,6 +195,9 @@ en:
         image: Image dimensions should be 150x150
       body_slide:
         image: Image dimensions should be 840x375
+      contact_topic:
+        recipients: Comma-separated list of email addresses
+        section_id: When in this section, contact links will include this topic automatically
       home_page_slide:
         image: Image dimensions should be 1100x375
       landing_page:

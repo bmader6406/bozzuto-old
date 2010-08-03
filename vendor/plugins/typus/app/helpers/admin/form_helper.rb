@@ -70,6 +70,7 @@ module Admin::FormHelper
         html << <<-HTML.html_safe
 <li>
   #{form.label related_fk, "#{label_text} <small>#{message}</small>".html_safe}
+  #{render_tip(related_fk)}
   #{form.select related_fk, values, options, html_options }
 </li>
         HTML

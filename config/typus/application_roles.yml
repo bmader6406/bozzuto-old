@@ -10,6 +10,7 @@ admin:
   BodySlide: create, read, update, delete
   BodySlideshow: create, read, update, delete
   City: create, read, update, delete
+  ContactTopic: create, read, update, delete
   County: create, read, update, delete
   Feed: create, read, update, delete
   Home: create, read, update, delete

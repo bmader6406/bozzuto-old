@@ -13,6 +13,7 @@ class SectionTest < ActiveSupport::TestCase
 
     should_have_many :testimonials, :projects
     should_have_and_belong_to_many :awards, :news_posts, :press_releases
+    should_have_one :contact_topic
 
     should_have_attached_file :left_montage_image
     should_have_attached_file :middle_montage_image

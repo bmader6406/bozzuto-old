@@ -7,6 +7,7 @@ class Section < ActiveRecord::Base
   has_and_belongs_to_many :news_posts, :order => 'published_at DESC'
   has_and_belongs_to_many :press_releases, :order => 'published_at DESC'
   has_many :projects
+  has_one :contact_topic
 
   has_friendly_id :title, :use_slug => true
 

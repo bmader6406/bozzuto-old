@@ -94,6 +94,19 @@ City:
   search: name
   application: Geography
 
+ContactTopic:
+  fields:
+    default: topic, position
+    list: topic, position
+    form: topic, body, recipients, section
+    options:
+      ckeditor: body
+  order_by: position
+  relationships: 
+  filters: 
+  search: 
+  application: Content
+
 County:
   fields:
     default: name, state
