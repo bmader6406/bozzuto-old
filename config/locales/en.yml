@@ -139,7 +139,7 @@ en:
         features_meta_description: Features SEO Description
         features_meta_keywords: Features SEO Keywords
         features_meta_title: Features SEO Title
-        show_lead_2_lease: Show Lead2Lease Form
+        has_completion_date: Has Completion Date
         lead_2_lease_email: Lead2Lease Email
         listing_image: Listing Image
         listing_title: Listing Title
@@ -166,6 +166,7 @@ en:
         promotions_meta_title: Promotions SEO Title
         promotions_text: Promotions Copy
         short_title: Short Title
+        show_lead_2_lease: Show Lead2Lease Form
         slideshow: Property Slideshow
         street_address: Street Address
         twitter_handle: Twitter Handle

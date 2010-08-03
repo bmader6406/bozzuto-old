@@ -98,7 +98,7 @@ $(function() {
     var brochureUrl  = $('input[id$=_brochure_url]').parent(),
         brochureFile = $('input[id$=_brochure]').parent();
 
-    $('select#[id$=_brochure_type]').change(function() {
+    $('select[id$=_brochure_type]').change(function() {
       var selected = parseInt($(':selected', this).val()),
           usesUrl  = 0,
           usesFile = 1;
@@ -112,6 +112,19 @@ $(function() {
           brochureFile.show();
           brochureUrl.hide();
           break;
+      }
+    }).change();
+  })();
+
+  // project completion date
+  (function() {
+    var completionDate = $('select[id$=project_completion_date_1i]').parent();
+
+    $('input[id=project_has_completion_date]').change(function() {
+      if ($(this).is(':checked')) {
+        completionDate.show();
+      } else {
+        completionDate.hide();
       }
     }).change();
   })();

@@ -11,6 +11,7 @@ class Project < Property
   has_and_belongs_to_many :project_categories, :order => 'position ASC'
 
   validates_presence_of :completion_date
+  validates_inclusion_of :has_completion_date, :in => [true, false]
 
   named_scope :in_section, lambda { |section|
     { :conditions => { :section_id => section.id } }
