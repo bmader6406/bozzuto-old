@@ -818,6 +818,12 @@ div.wysiwyg ul li {
       padding: 20px 0 0 33px;
       z-index: 1;
     }
+    .home #header #main-nav li div.dropdown,
+    .landing #header #main-nav li div.dropdown,
+    .home #header #main-nav li:hover div.dropdown,
+    .landing #header #main-nav li:hover div.dropdown {
+      display: none !important;
+    }
     .secondary #header #main-nav li:hover div.dropdown,
     .secondary #header #main-nav li.hover div.dropdown {
       display: block;
