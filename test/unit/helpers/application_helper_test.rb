@@ -131,7 +131,7 @@ class ApplicationHelperTest < ActionView::TestCase
 
     context '#facebook_like_link' do
       should 'output div.facebook-like and iframe' do
-        facebook = HTML::Document.new(facebook_like_link)
+        facebook = HTML::Document.new(facebook_like_link('http://viget.com'))
 
         assert_select facebook.root, 'div.facebook-like'
         assert_select facebook.root, 'iframe'

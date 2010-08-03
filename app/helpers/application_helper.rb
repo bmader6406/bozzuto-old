@@ -43,10 +43,10 @@ module ApplicationHelper
     end
   end
 
-  def facebook_like_link
+  def facebook_like_link(url)
     content_tag :div, :class => 'facebook-like' do
       <<-END.html_safe
-      <iframe src="http://www.facebook.com/plugins/like.php?href=#{CGI::escape(request.url)}&amp;layout=standard&amp;show_faces=false&amp;width=230&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:230px; height:35px;" allowTransparency="true"></iframe>
+      <iframe src="http://www.facebook.com/plugins/like.php?href=#{CGI::escape(url)}&amp;layout=standard&amp;show_faces=false&amp;width=230&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:230px; height:35px;" allowTransparency="true"></iframe>
       END
     end
   end

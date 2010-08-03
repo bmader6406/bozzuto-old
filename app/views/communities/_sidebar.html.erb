@@ -132,7 +132,7 @@
   <%= yield :sidebar %>
 
   <div class="social-updates">
-    <%= facebook_like_link %>
+    <%= facebook_like_link(request.url) %>
 
     <% if @community.twitter_handle.present? %>
       <div class="twitter-update" <%= twitter_data_attr(@community.twitter_handle) %>></div>
