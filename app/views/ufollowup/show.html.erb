@@ -26,25 +26,8 @@
       </div>
 
       <div>
-        <label for="middleName">Middle Name</label><br />
-        <input type="text" name="prospectForm.middleName" id="middleName"/>
-      </div>
-
-      <div>
         <label for="lastName">Last Name</label><br />
         <input type="text" name="prospectForm.lastName" id="lastName"/>
-      </div>
-
-      <div>
-        <label for="salutation">Salutation</label><br />
-        <select name="prospectForm.salutation" id="salutation">
-          <option value="" selected>Select A Title...</option>
-          <option value="Mr.">Mr.</option>
-          <option value="Ms.">Ms.</option>
-          <option value="Mrs.">Mrs.</option>
-          <option value="Mr & Mrs.">Mr & Mrs.</option>
-          <option value="Dr.">Dr.</option>
-        </select>
       </div>
 
       <div class="checkboxes">
@@ -52,8 +35,8 @@
 
         <ul>
           <li>
-            <input type="checkbox" name="community" id="community_1063" value="1063"/>
-            <label for="community_1063">Bozzuto People</label>
+            <input type="checkbox" name="community" id="community_1063" value="1063" checked/>
+            <label for="community_1063">Bozzuto Buzz</label>
           </li>
           <% ApartmentCommunity.ufollowup_id_not_null.each do |community| -%>
             <li>
@@ -119,7 +102,7 @@
 
       <div>
         <label for="comments">Comments/Questions</label><br />
-        <textarea name="prospectForm.prospectComments" id="comments"></textarea>
+        <textarea name="prospectForm.prospectComments" id="comments" rows="10" cols="40"></textarea>
       </div>
 
       </fieldset>
