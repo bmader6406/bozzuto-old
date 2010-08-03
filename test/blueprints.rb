@@ -69,8 +69,14 @@ end
 ContactSubmission.blueprint do
   name    { Faker::Name.name }
   email   { Faker::Internet.email }
-  topic   { ContactSubmission::TOPICS.rand[1] }
   message { Faker::Lorem.paragraphs }
+  topic   { ContactTopic.make }
+end
+
+ContactTopic.blueprint do
+  topic      { Sham.unique_name }
+  body       { Faker::Lorem.paragraphs }
+  recipients { Faker::Internet.email }
 end
 
 County.blueprint do

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100803053347) do
+ActiveRecord::Schema.define(:version => 20100803151358) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -126,6 +126,16 @@ ActiveRecord::Schema.define(:version => 20100803053347) do
   create_table "cities_counties", :id => false, :force => true do |t|
     t.integer "city_id"
     t.integer "county_id"
+  end
+
+  create_table "contact_topics", :force => true do |t|
+    t.string   "topic",      :null => false
+    t.text     "body"
+    t.string   "recipients", :null => false
+    t.integer  "section_id"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "counties", :force => true do |t|
@@ -361,12 +371,12 @@ ActiveRecord::Schema.define(:version => 20100803053347) do
   end
 
   create_table "photos", :force => true do |t|
-    t.string   "image_file_name"
-    t.string   "title",              :null => false
+    t.string   "image_file_name",    :default => ""
+    t.string   "title",              :default => "", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_content_type"
-    t.string   "flickr_photo_id",    :null => false
+    t.string   "flickr_photo_id",                    :null => false
     t.integer  "photo_set_id"
     t.integer  "position"
   end
@@ -596,9 +606,9 @@ ActiveRecord::Schema.define(:version => 20100803053347) do
   end
 
   create_table "testimonials", :force => true do |t|
-    t.string   "name"
-    t.string   "title"
-    t.text     "quote",      :null => false
+    t.string   "name",       :default => ""
+    t.string   "title",      :default => ""
+    t.text     "quote",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "section_id"

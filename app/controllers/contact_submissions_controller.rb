@@ -1,6 +1,8 @@
 class ContactSubmissionsController < SectionContentController
+  before_filter :find_topic, :only => [:show, :create]
+
   def show
-    @submission = ContactSubmission.new(:topic => params[:topic])
+    @submission = ContactSubmission.new(:topic => @topic)
   end
 
   def create
@@ -17,10 +19,18 @@ class ContactSubmissionsController < SectionContentController
   def thank_you
   end
 
-  
+
   private
 
   def find_section
     @section = Section.about
+  end
+
+  def find_topic
+    @topic = begin
+      ContactTopic.find(params[:topic])
+    rescue
+      ContactTopic.first
+    end
   end
 end

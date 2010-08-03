@@ -4,6 +4,7 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
   context 'ContactSubmissionsController' do
     setup do
       @section = Section.make(:about)
+      @topic = ContactTopic.make
     end
 
     context 'a GET to #show' do
@@ -20,8 +21,7 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
 
       context 'with a topic param' do
         setup do
-          @topic = 'construction'
-          get :show, :topic => @topic
+          get :show, :topic => @topic.to_param
         end
 
         should 'set the topic on the submission' do
@@ -45,10 +45,12 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
 
       context 'with all fields present' do
         setup do
-          @submission = ContactSubmission.make_unsaved
+          @submission = ContactSubmission.make_unsaved :topic => @topic
 
           assert_difference('ActionMailer::Base.deliveries.count', 1) do
-            post :create, :contact_submission => @submission.attributes
+            post :create,
+              :contact_submission => @submission.attributes,
+              :topic              => @topic.to_param
           end
         end
 

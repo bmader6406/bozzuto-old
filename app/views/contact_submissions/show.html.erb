@@ -1,13 +1,17 @@
-<% content_for :body_class do %>generic contact<% end %>
+<% content_for :body_class do %>contact<% end %>
 
 <% breadcrumb_item('Contact') %>
 <% breadcrumb_title('Contact') %>
 
 <h2>Contact Bozzuto</h2>
 
+<% if @topic.present? %>
+  <%= raw(@topic.body) %>
+<% end %>
+
 <%= error_messages_for :submission %>
 
-<% form_for @submission, :url => contact_path, :html => { :class => "required-form" } do |f| %>
+<% form_for @submission, :url => contact_path(:topic => @topic), :html => { :class => "required-form" } do |f| %>
   <p>
     <%= f.label :name %>
     <%= f.text_field :name, :class => "required" %>
@@ -19,8 +23,8 @@
   </p>
 
   <p>
-    <%= f.label :topic, 'What would you like to ask us about?' %>
-    <%= f.select :topic, ContactSubmission::TOPICS %>
+    <%= f.label :topic_id, 'What would you like to ask us about?' %>
+    <%= f.select :topic_id, ContactTopic.all.map { |topic| [topic.topic, topic.id] } %>
   </p>
 
   <p>
@@ -31,31 +35,4 @@
   <p class="submit">
     <input type="submit" value="Submit" />
   </p>
-<% end %>
-
-
-<% content_for :aside do %>
-  <div class="latest-news">
-    <h3><a href="#">Training &amp; Development</a></h3>
-
-    <div class="article">
-      <div class="news-post section first">
-        <p>Lorem ipsum dolor sit amet lorem sinsectutor dolorum ipsum sin sit sinsectutor dolor slorem. Lorem ipsum dolor sit amet lorem sinsectutor dolor sinsectutor alorum adipscing lorem.</p>
-      </div>
-      <div class="news-post section">
-        <h4><a href="#">This is the headline of a recent news story</a></h4>
-        <p class="date"><span class="month">04.</span><span class="day">27.</span></p>
-      </div>
-
-      <div class="news-post section">
-        <h4><a href="#">This is the headline of a recent news story</a></h4>
-        <p class="date"><span class="month">04.</span><span class="day">27.</span></p>
-      </div>
-
-      <div class="news-post section last">
-        <h4><a href="#">This is the headline of a recent news story</a></h4>
-        <p class="date"><span class="month">04.</span><span class="day">27.</span></p>
-      </div>
-    </div>
-  </div>
 <% end %>

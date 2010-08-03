@@ -4,7 +4,6 @@ class ContactMailerTest < ActionMailer::TestCase
   context "ContactMailer" do
     setup do
       @submission = ContactSubmission.make_unsaved
-      @to = APP_CONFIG[:contact_emails][@submission.topic]
     end
 
     context "#contact_form_submission" do
@@ -15,11 +14,12 @@ class ContactMailerTest < ActionMailer::TestCase
       end
 
       should "deliver the message" do
-        assert_equal [@to], @email.to
+        assert_equal [@submission.topic.recipients], @email.to
       end
 
       should "have a subject" do
-        assert_equal "Message from #{@submission.name}", @email.subject
+        assert_equal "[Bozzuto.com] Message from #{@submission.name}",
+          @email.subject
       end
 
       should "have the user's name and email in the body" do
@@ -27,8 +27,8 @@ class ContactMailerTest < ActionMailer::TestCase
           @email.body
       end
       
-      should "have the formatted topic in the body" do
-        assert_match /Topic: #{@submission.formatted_topic}/, @email.body
+      should "have the topic in the body" do
+        assert_match /Topic: #{@submission.topic.topic}/, @email.body
       end
     end
   end

@@ -23,6 +23,11 @@ end
 end
 Section.create(:title => 'About Us', :about => true)
 
+# contact topics
+['General Inquiry', 'Apartments', 'New Homes', 'Acquisitions', 'Construction', 'Development', 'Homebuilding', 'Land', 'Management'].each do |topic|
+  ContactTopic.create(:topic => topic, :recipients => 'contact@bozzuto.com')
+end
+
 
 ###
 # Apartment Floor Plan Groups
