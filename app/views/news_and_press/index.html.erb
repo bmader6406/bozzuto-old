@@ -20,7 +20,7 @@
 
   <% @latest_press.each do |press_release| %>
     <p>
-      <%= link_to press_release.title, '#' %>
+      <%= link_to press_release.title, press_release_path(@section, press_release) %>
       &ndash;
       <em><%= press_release.published_at.to_formatted_s(:month_day_year) %></em>
     </p>
