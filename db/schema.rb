@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100803151358) do
+ActiveRecord::Schema.define(:version => 20100804032343) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -123,6 +123,8 @@ ActiveRecord::Schema.define(:version => 20100803151358) do
     t.datetime "updated_at"
   end
 
+  add_index "cities", ["state_id"], :name => "index_cities_on_state_id"
+
   create_table "cities_counties", :id => false, :force => true do |t|
     t.integer "city_id"
     t.integer "county_id"
@@ -144,6 +146,8 @@ ActiveRecord::Schema.define(:version => 20100803151358) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "counties", ["state_id"], :name => "index_counties_on_state_id"
 
   create_table "featured_apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"

@@ -41,4 +41,9 @@ class ApplicationController < ActionController::Base
     @services ||= Section.services.ordered_by_title
   end
   helper_method :services
+
+  def apartment_floor_plan_groups
+    @apartment_floor_plan_groups ||= ApartmentFloorPlanGroup.all
+  end
+  helper_method :apartment_floor_plan_groups
 end

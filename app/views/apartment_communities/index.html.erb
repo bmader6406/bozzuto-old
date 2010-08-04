@@ -33,7 +33,7 @@
           <fieldset id="bedrooms" class="">
             <h3>Bedrooms</h3>
             <ul>
-              <% ApartmentFloorPlanGroup.all.each do |fpg| %>
+              <% apartment_floor_plan_groups.each do |fpg| %>
                 <li>
                   <%= f.check_box :with_floor_plan_groups, {:name => 'search[with_floor_plan_groups][]', :id => fpg.name.tableize}, fpg.id.to_s, nil %>
                   <label for="<%= fpg.name.tableize %>"><%= fpg.name %></label>
@@ -59,7 +59,7 @@
             <ul>
               <li>
                 <%= f.check_box :promo_id_not_blank, :id => 'search_special_promotions' %>
-                <%= f.label :special_promotions, 'Show only properties that have special promotions' %>
+                <%= f.label :special_promotions, 'Show only properties that have special promotions', :for => 'search_special_promotions' %>
               </li>
             </ul>
           </fieldset>
