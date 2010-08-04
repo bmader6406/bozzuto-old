@@ -131,7 +131,8 @@ class ApartmentFloorPlanTest < ActiveSupport::TestCase
           :max_market_rent     => 200,
           :min_effective_rent  => 300,
           :max_effective_rent  => 400,
-          :apartment_community => @community
+          :apartment_community => @community,
+          :floor_plan_group    => ApartmentFloorPlanGroup.studio
         )
         @community.reload
       end

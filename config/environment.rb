@@ -13,6 +13,8 @@ Rails::Initializer.run do |config|
   # Run "rake -D time" for a list of tasks for finding time zone names.
   config.time_zone = 'Eastern Time (US & Canada)'
 
+  config.active_record.observers = :apartment_floor_plan_observer
+
   config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
     r301 %r{^/cs/bozzuto_homes/housing_for_all/?}, '/about-us/housing-for-all'
     r301 %r{^/cs/root/corporate/rent_a_home/overview/?}, '/apartments'

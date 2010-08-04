@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100804033506) do
+ActiveRecord::Schema.define(:version => 20100804044547) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -35,13 +35,13 @@ ActiveRecord::Schema.define(:version => 20100804033506) do
     t.string   "availability_url"
     t.integer  "min_square_feet"
     t.integer  "max_square_feet"
-    t.decimal  "min_market_rent",         :precision => 6, :scale => 2
-    t.decimal  "max_market_rent",         :precision => 6, :scale => 2
-    t.decimal  "min_effective_rent",      :precision => 6, :scale => 2
-    t.decimal  "max_effective_rent",      :precision => 6, :scale => 2
+    t.decimal  "min_market_rent",         :precision => 8, :scale => 2
+    t.decimal  "max_market_rent",         :precision => 8, :scale => 2
+    t.decimal  "min_effective_rent",      :precision => 8, :scale => 2
+    t.decimal  "max_effective_rent",      :precision => 8, :scale => 2
     t.integer  "apartment_community_id",                                                   :null => false
-    t.decimal  "min_rent",                :precision => 6, :scale => 2
-    t.decimal  "max_rent",                :precision => 6, :scale => 2
+    t.decimal  "min_rent",                :precision => 8, :scale => 2
+    t.decimal  "max_rent",                :precision => 8, :scale => 2
     t.integer  "image_type",                                            :default => 0,     :null => false
     t.string   "image_file_name"
     t.string   "image_content_type"
@@ -375,12 +375,12 @@ ActiveRecord::Schema.define(:version => 20100804033506) do
   end
 
   create_table "photos", :force => true do |t|
-    t.string   "image_file_name",    :default => ""
-    t.string   "title",              :default => "", :null => false
+    t.string   "image_file_name"
+    t.string   "title",              :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_content_type"
-    t.string   "flickr_photo_id",                    :null => false
+    t.string   "flickr_photo_id",    :null => false
     t.integer  "photo_set_id"
     t.integer  "position"
   end
@@ -533,6 +533,11 @@ ActiveRecord::Schema.define(:version => 20100804033506) do
     t.integer  "promo_id"
     t.integer  "ufollowup_id"
     t.boolean  "has_completion_date",           :default => true,  :null => false
+    t.string   "cheapest_studio_price"
+    t.string   "cheapest_1_bedroom_price"
+    t.string   "cheapest_2_bedroom_price"
+    t.string   "cheapest_3_bedroom_price"
+    t.string   "cheapest_penthouse_price"
   end
 
   create_table "properties_property_features", :id => false, :force => true do |t|
@@ -612,9 +617,9 @@ ActiveRecord::Schema.define(:version => 20100804033506) do
   end
 
   create_table "testimonials", :force => true do |t|
-    t.string   "name",       :default => ""
-    t.string   "title",      :default => ""
-    t.text     "quote",                      :null => false
+    t.string   "name"
+    t.string   "title"
+    t.text     "quote",      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "section_id"

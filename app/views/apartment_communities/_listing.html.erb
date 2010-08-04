@@ -15,12 +15,12 @@
       </p>
 
       <ul>
-        <% ApartmentFloorPlanGroup.all.each do |group| %>
-          <% plans_in_group = community.floor_plans.in_group(group) %>
-          <% unless plans_in_group.empty? %>
+        <% [['Studio', 'studio'], ['1 Bedrooms', '1_bedroom'], ['2 Bedrooms', '2_bedroom'], ['3 or More Bedrooms', '3_bedroom'], ['Penthouses', 'penthouse']].each do |group| %>
+          <% if community.send("cheapest_#{group[1]}_price").present? %>
             <li>
-              <strong><%= group.name %></strong>
-              <%= cheapest_floor_plan_price_in_group(plans_in_group).downcase %>
+              <strong><%= group[0] %></strong>
+              from
+              <%= floor_plan_price(community.send("cheapest_#{group[1]}_price")) %>
             </li>
           <% end %>
         <% end %>
