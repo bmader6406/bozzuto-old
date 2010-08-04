@@ -24,7 +24,7 @@ class PagesControllerTest < ActionController::TestCase
           get :show, :section => @section.to_param, :page => []
         end
 
-        should_respond_with :redirect
+        should_respond_with :not_found
       end
 
       context 'with no page params' do
