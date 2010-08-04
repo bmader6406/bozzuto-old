@@ -4,7 +4,6 @@ class PagesController < SectionContentController
   def show
   end
 
-
   private
 
   def find_page
@@ -14,6 +13,6 @@ class PagesController < SectionContentController
       @section.pages.first
     end
 
-    redirect_home if @page.nil?
+    render_404 if @page.nil?
   end
 end
