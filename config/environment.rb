@@ -36,6 +36,7 @@ Rails::Initializer.run do |config|
     r301 %r{^/cs/root/corporate/careers/?}, '/about-us/careers'
     r301 %r{^/cs/search_properties/?}, '/apartments/communities'
     r301 %r{^/property/?}, '/apartments'
+    r301 %r{^/smartrent/?}, '/apartments/smartrent'
   end
 
   config.middleware.use Redirectotron if Rails.env.production?
