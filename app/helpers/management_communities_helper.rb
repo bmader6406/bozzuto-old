@@ -1,0 +1,2 @@
+module ManagementCommunitiesHelper
+end

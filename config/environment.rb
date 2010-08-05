@@ -38,7 +38,7 @@ Rails::Initializer.run do |config|
     r301 %r{^/property/?}, '/apartments'
   end
 
-  config.middleware.use Redirectotron
+  config.middleware.use Redirectotron if Rails.env.production?
 end
 
 ActionView::Base.default_form_builder = Bozzuto::FormBuilder

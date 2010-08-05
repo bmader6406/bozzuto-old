@@ -1,0 +1,20 @@
+<% if @page.present? %>
+  <% render_meta(@page) %>
+<% end%>
+
+<% breadcrumb_item('Communities') %>
+<% breadcrumb_title('Communities') %>
+
+<% if @page.present? %>
+  <%= raw(@page.body) %>
+<% end %>
+
+<div class="row">
+  <% @communities.in_groups(2, false).each do |group| %>
+    <ul class="col">
+      <% group.each do |community| %>
+        <li style="list-style: none;"><%= link_to community.title, community %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

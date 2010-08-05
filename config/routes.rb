@@ -57,6 +57,9 @@ ActionController::Routing::Routes.draw do |map|
     :only        => [:show, :create],
     :member      => { :thank_you => :get }
 
+  map.management_communities '/services/management/communities',
+    :controller => :management_communities,
+    :section    => 'management'
 
   map.with_options :controller => :testimonials do |m|
     m.service_section_testimonials '/services/:section/testimonials'

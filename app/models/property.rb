@@ -56,6 +56,8 @@ class Property < ActiveRecord::Base
     {:conditions => ['city_id IN (SELECT id FROM cities WHERE cities.state_id = ?)', state_id]}
   }
 
+  named_scope :ordered_by_title, :order => 'properties.title ASC'
+
   def typus_name
     title
   end
