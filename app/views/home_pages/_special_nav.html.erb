@@ -6,7 +6,7 @@
         <% form_for :search, :url => apartment_communities_path, :html => {:method => :get} do |form| -%>
           <div class="left-col">
             <p class="field">
-              <select multiple="multiple" name="location[]">
+              <select multiple="multiple" name="search[in_state]">
                 <optgroup label="Choose Location">
                   <% State.all.each do |state| -%>
                     <option value="<%= state.id %>"><%= state.name %></option>
