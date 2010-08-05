@@ -28,6 +28,7 @@ Rails::Initializer.run do |config|
     r301 %r{^/cs/root/corporate/management/?}, '/services/management'
     r301 %r{^/cs/root/corporate/contact_us/?}, '/about-us/contact'
     r301 %r{^/cs/_corporate/about_us/housing_for_all/?}, '/about-us/housing-for-all'
+    r301 %r{^/cs/corporate/aboutus/housing_for_all/?}, '/about-us/housing-for-all'
     r301 %r{^/cs/BozzutoElite/?}, '/apartments/bozzuto-elite'
     r301 %r{^/cs/BozzutoSmartRent/?}, '/apartments/smartrent'
     r301 %r{^/cs/root/corporate/rent_a_home/awards/?}, '/about-us/awards'
