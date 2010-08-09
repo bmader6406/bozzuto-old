@@ -266,6 +266,9 @@
         font-size: 15px;
         line-height: 26px;
       }
+      #special-nav .arrow a {
+        background-image: url(../images/structure/bg-special-nav-arrow.png);
+      }
       #special-nav a:hover,
       #special-nav li:hover a {
         background-color: #c2c6ca;
