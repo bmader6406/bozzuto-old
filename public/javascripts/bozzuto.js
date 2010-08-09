@@ -633,8 +633,8 @@ window.bozzuto = {};
             lightboxSpeed: 'slow',
             centered: true,
             overlayCSS: {
-              'background': '#fff',
-              'opacity': .01
+              'background': '#000',
+              'opacity': .50
             },
             onLoad:    function() {
               $image.fadeTo(250, 1)
