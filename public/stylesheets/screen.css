@@ -2783,6 +2783,16 @@ div.wysiwyg ul li {
   /* @end */
   
   /* @group --results */
+    .search #content #no-results {
+      margin-top: 80px;
+      text-align: center;
+    }
+    .search #content #no-results p {
+      font-size: 16px;
+    }
+    .search #content #no-results a {
+      display: block;
+    }
     .search #content ul.results {
       border-top: 1px solid #c1c1c1;
     }

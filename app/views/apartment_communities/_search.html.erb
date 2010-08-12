@@ -13,65 +13,76 @@
     </p>
   </div>
 
-  <ul class="results">
-    <% first = true %>
-    <% State.all.sort { |a, b|
-      (@communities[b.name].try(:count) || 0) <=> (@communities[a.name].try(:count) || 0)
-    }.each do |state| %>
-      <% communities = @communities[state.name] || [] %>
-      <% unless @geographic_filter && communities.count == 0 -%>
-        <li class="<%= 'closed' unless first && communities.count > 0 %>">
-          <% first = false -%>
-          <div class="header">
-            <h2><%= state.name %></h2>
+  <% if @search.empty? %>
+    <div id="no-results">
+      <p>
+        We&rsquo;re sorry, there aren&rsquo;t any properties matching those criteria.
+        <% link_to apartment_communities_path do %>
+          Click here to start a new search.
+        <% end %>
+      </p>
+    </div>
+  <% else %>
+    <ul class="results">
+      <% first = true %>
+      <% State.all.sort { |a, b|
+        (@communities[b.name].try(:count) || 0) <=> (@communities[a.name].try(:count) || 0)
+      }.each do |state| %>
+        <% communities = @communities[state.name] || [] %>
+        <% unless @geographic_filter && communities.count == 0 -%>
+          <li class="<%= 'closed' unless first && communities.count > 0 %>">
+            <% first = false -%>
+            <div class="header">
+              <h2><%= state.name %></h2>
 
-            <p><%= pluralize communities.count, 'Apartment Community' %></p>
-          </div>
-          <ul class="location-filters">
-            <li class="<%= 'open' if params[:search][:city_id].present? %>">
-              <div class="header">
-                <h3>Cities</h3>
-              </div>
-              <ul>
-                <% index = 0 -%>
-                <% state.cities.ordered_by_name.each do |city| %>
-                  <% count = communities.select { |c| c.city_id == city.id }.count %>
-                  <% if count > 0 -%>
-                    <li class="<%= 'alt' if (index+1)%4 == 0 %>">
-                      <%= link_to(raw("<strong>#{city.name}</strong> <em>#{count}</em>"), apartment_communities_path(:search => params[:search].merge({:city_id => city.id, :county_id => nil}))) %>
-                    </li>
-                    <% index += 1 -%>
-                  <% end -%>
-                <% end %>
-              </ul>
-            </li>
-            <li class="<%= 'open' if params[:search][:county_id].present? %>">
-              <div class="header">
-                <h3>Counties</h3>
-              </div>
-              <ul>
-                <% index = 0 -%>
-                <% state.counties.ordered_by_name.each do |county| %>
-                  <% count = communities.select { |c| c.county_id == county.id }.count %>
-                  <% if count > 0 -%>
-                    <li class="<%= 'alt' if (index+1)%4 == 0 %>">
-                      <%= count > 0 ? link_to(raw("<strong>#{county.name}</strong> <em>#{count}</em>"), apartment_communities_path(:search => params[:search].merge({:county_id => county.id, :city_id => nil}))) : raw("<span><strong>#{county.name}</strong> <em>#{count}</em></span>") %>
-                    </li>
-                    <% index += 1 -%>
-                  <% end -%>
-                <% end %>
-              </ul>
-            </li>
-          </ul>
-          <div class="results">
-            <ul>
-              <%= render :partial => 'listing', :collection => communities, :as => :community %>
+              <p><%= pluralize communities.count, 'Apartment Community' %></p>
+            </div>
+            <ul class="location-filters">
+              <li class="<%= 'open' if params[:search][:city_id].present? %>">
+                <div class="header">
+                  <h3>Cities</h3>
+                </div>
+                <ul>
+                  <% index = 0 -%>
+                  <% state.cities.ordered_by_name.each do |city| %>
+                    <% count = communities.select { |c| c.city_id == city.id }.count %>
+                    <% if count > 0 -%>
+                      <li class="<%= 'alt' if (index+1)%4 == 0 %>">
+                        <%= link_to(raw("<strong>#{city.name}</strong> <em>#{count}</em>"), apartment_communities_path(:search => params[:search].merge({:city_id => city.id, :county_id => nil}))) %>
+                      </li>
+                      <% index += 1 -%>
+                    <% end -%>
+                  <% end %>
+                </ul>
+              </li>
+              <li class="<%= 'open' if params[:search][:county_id].present? %>">
+                <div class="header">
+                  <h3>Counties</h3>
+                </div>
+                <ul>
+                  <% index = 0 -%>
+                  <% state.counties.ordered_by_name.each do |county| %>
+                    <% count = communities.select { |c| c.county_id == county.id }.count %>
+                    <% if count > 0 -%>
+                      <li class="<%= 'alt' if (index+1)%4 == 0 %>">
+                        <%= count > 0 ? link_to(raw("<strong>#{county.name}</strong> <em>#{count}</em>"), apartment_communities_path(:search => params[:search].merge({:county_id => county.id, :city_id => nil}))) : raw("<span><strong>#{county.name}</strong> <em>#{count}</em></span>") %>
+                      </li>
+                      <% index += 1 -%>
+                    <% end -%>
+                  <% end %>
+                </ul>
+              </li>
             </ul>
-          </div>
-        </li>
-      <% end -%>
-    <% end %>
-  </ul>
+            <div class="results">
+              <ul>
+                <%= render :partial => 'listing', :collection => communities, :as => :community %>
+              </ul>
+            </div>
+          </li>
+        <% end -%>
+      <% end %>
+    </ul>
+  <% end %>
 </div>
 
 <%= property_icon_descriptions %>
