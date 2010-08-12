@@ -24,4 +24,11 @@ class ProjectsController < SectionContentController
       nil
     end
   end
+
+  def categories_with_projects
+    @categories_with_projects ||= @categories.select do |category|
+      true if category.projects.in_section(@section).order_by_completion_date.any?
+    end
+  end
+  helper_method :categories_with_projects
 end

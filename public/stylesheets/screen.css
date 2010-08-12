@@ -3888,6 +3888,9 @@ div.wysiwyg ul li {
   .projects #content #aside {
     display: none;
   }
+  .projects #content #project-categories-nav ul {
+    width: 200px;
+  }
   .projects #content ul.projects-listing {
     margin-left: 0;
   }

@@ -3,12 +3,24 @@
 <% breadcrumb_item('Our Work') %>
 <% breadcrumb_title('Our Work') %>
 
-<% @categories.each do |category| %>
-  <% if category.projects.in_section(@section).any? %>
+<%= raw(@page.try(:body)) %>
+
+<div id="project-categories-nav" class="row">
+  <% categories_with_projects.in_groups(2, false).each do |categories| %>
+    <ul class="col">
+      <% categories.each do |category| %>
+        <li><%= link_to category.title, :anchor => category.cached_slug %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+<% categories_with_projects.each do |category| %>
+  <div id="<%= category.cached_slug %>">
     <h2><%= category.title %></h2>
 
     <ul class="projects-listing">
       <%= render :partial => 'listing', :collection => category.projects.in_section(@section).order_by_completion_date, :as => :project %>
     </ul>
-  <% end %>
+  </div>
 <% end %>
