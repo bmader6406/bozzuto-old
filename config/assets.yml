@@ -1,13 +1,25 @@
 package_assets: on
 embed_assets: off
-compress_assets: off
+compress_assets: on
 javascript_compressor: yui
 
 javascripts:
-  common:
-    - public/javascripts/vendor/jquery-1.4.2.js
+  bozzuto:
+    - public/javascripts/vendor/jquery.min.js
+    - public/javascripts/vendor/jquery.lightbox_me.js
+    - public/javascripts/vendor/jquery.scrollTo-min.js
+    - public/javascripts/vendor/mapiconmaker.js
+    - public/javascripts/vendor/markermanager.js
+    - public/javascripts/vendor/jquery.metadata.js
+    - public/javascripts/vendor/jquery.jmapping.min.js
+    - public/javascripts/vendor/jquery.validate.js
+    - public/javascripts/vendor/jquery.makecolumnlists.js
+    - public/javascripts/vendor/cufon.js
+    - public/javascripts/font.js
+    - public/javascripts/bozzuto.js
+  lookup:
+    - public/javascripts/vendor/lookup.js
 
 stylesheets:
-  common:
-    - public/stylesheets/reset.css
+  bozzuto:
     - public/stylesheets/screen.css

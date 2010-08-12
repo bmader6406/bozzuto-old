@@ -12,20 +12,13 @@
     })();
   </script>
 <% end -%>
-<%= javascript_include_tag 'vendor/jquery.min',
-                           'vendor/jquery.lightbox_me',
-                           'vendor/jquery.scrollTo-min',
-                           'vendor/cufon',
-                           'vendor/mapiconmaker',
-                           'vendor/markermanager',
-                           'vendor/jquery.metadata',
-                           'vendor/jquery.jmapping.min',
-                           'font',
-                           'jquery.validate',
-                           'bozzuto', :cache => true %>
+
+<%= include_javascripts :bozzuto %>
 
 <script type="text/javascript">Cufon.replace("h1"); Cufon.now();</script>
+
 <%= yield :javascript %>
+
 <!--[if IE 6]>
   <%= javascript_include_tag 'vendor/belatedpng.js', 'ie6', :cache => 'ie6' %>
 <![endif]-->
