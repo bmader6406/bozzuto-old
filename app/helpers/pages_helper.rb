@@ -6,4 +6,10 @@ module PagesHelper
     Rails.logger.debug "Couldn't find partial #{partial}"
     nil
   end
+
+  def slideshow_sync
+    if ['about-us', 'services'].include?(@section.cached_slug) && @page == @section.pages.first
+      raw('data-sync="true"')
+    end
+  end
 end
