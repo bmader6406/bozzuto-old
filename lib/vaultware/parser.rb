@@ -27,7 +27,6 @@ module Vaultware
       )
       @community.update_attributes({
         :title            => ident.at('./ns:MarketingName', ns).content,
-        :website_url      => ident.at('./ns:WebSite', ns).try(:content),
         :street_address   => address.at('./ns:Address1', ns).content,
         :city             => find_city(address),
         :county           => find_county(address),

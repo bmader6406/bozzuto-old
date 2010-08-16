@@ -296,7 +296,6 @@ module Vaultware
     def community_fields
       [
         :title,
-        :website_url,
         :street_address,
         :availability_url
       ]
@@ -309,7 +308,6 @@ module Vaultware
    
       {
         :title            => ident.at('./ns:MarketingName', ns).content,
-        :website_url      => ident.at('./ns:WebSite', ns).try(:content),
         :street_address   => address.at('./ns:Address1', ns).content,
         :availability_url => info.at('./PropertyAvailabilityURL').content,
         :vaultware_id     => vaultware_id(property)
