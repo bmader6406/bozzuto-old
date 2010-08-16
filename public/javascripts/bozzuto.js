@@ -859,13 +859,14 @@ window.bozzuto = {};
                 .bind('click', function(){
                   window.location.href = link;
                 }).appendTo( container );
-              $byline =   $('<a class="byline" href="' + link + '" target="_blank">')
-                .html(tweet.user.screen_name + ' <em>' + formatTimestamp(tweet.created_at) + '</em>')
-                .appendTo( container);
+
+          $byline = $('<a class="byline" href="' + link + '" target="_blank">')
+            .html(tweet.user.screen_name + ' <em>' + formatTimestamp(tweet.created_at) + '</em>')
+            .appendTo( container);
                 
-              $message.find('p').click(function(e){
-                e.stopPropagation();
-              });
+          $message.find('p').click(function(e){
+            e.stopPropagation();
+          });
         }
       });
     });

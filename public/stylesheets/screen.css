@@ -1251,20 +1251,28 @@ div.wysiwyg ul li {
   .community .floor-plan p,
   .community #nearby-communities li,
   .community #recently-viewed li,
+  .community #sidebar p.facebook-link,
+  .community #sidebar div.twitter-update,
   .community #sidebar p.sharethis,
-  .community #sidebar div.facebook-update,
-  .community #sidebar div.facebook-like,
   .community #renting-from-bozzuto,
   .community #about-bozzuto,
   .apartments div.row div.col,
   .homes div.row div.col {
     background: transparent url(../images/structure/bg-about-sidebar-section.gif) no-repeat bottom left;
   }
-  .community #sidebar div.facebook-update p.message {
-    background-position: left center !important;
-  }
+
+  .community #sidebar p.facebook-link,
+  .community #sidebar div.twitter-update,
   .community #sidebar p.sharethis {
     background-position: 0 0;
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+
+  .community #sidebar p.facebook-link a {
+    background: url(../images/structure/ico-facebook.gif) no-repeat center left;
+    line-height: 1;
+    padding: 8px 0 8px 30px;
   }
 
   .community #community-info .nav li a {
@@ -2043,10 +2051,6 @@ div.wysiwyg ul li {
   /* @group --sidebar */
     .community #sidebar div.facebook-update {
       padding-bottom: 15px;
-      margin-bottom: 15px;
-    }
-    .community #sidebar div.facebook-like {
-      padding-bottom: 5px;
       margin-bottom: 15px;
     }
     .community #sidebar p.sharethis {

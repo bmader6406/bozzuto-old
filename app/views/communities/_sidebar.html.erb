@@ -134,6 +134,12 @@
   <div class="social-updates">
     <%= facebook_like_link(request.url) %>
 
+    <% if @community.facebook_url.present? %>
+      <p class="facebook-link">
+        <%= link_to 'Follow on Facebook', @community.facebook_url %>
+      </p>
+    <% end %>
+
     <% if @community.twitter_handle.present? %>
       <div class="twitter-update" <%= twitter_data_attr(@community.twitter_handle) %>></div>
     <% end %>
