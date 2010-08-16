@@ -136,7 +136,7 @@
 
     <% if @community.facebook_url.present? %>
       <p class="facebook-link">
-        <%= link_to 'Follow on Facebook', @community.facebook_url %>
+        <%= link_to 'Follow on Facebook', @community.facebook_url, :rel => 'external' %>
       </p>
     <% end %>
 
