@@ -24,7 +24,7 @@
 					  errorMsg = (errorMsgType > -1 ) ? errorMsg = o.errorText.replace('{label}',labelText) : errorMsg = o.errorText;
 						hasError = true;
 					} else if($input.hasClass('email')) {
-					  if(!(/^([_a-z0-9-]+)(\.[_a-z0-9-]+)*@([a-z0-9-]+)(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/.test(fieldValue))) {
+					  if(!(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/.test(fieldValue))) {
 					    errorMsg = (errorMsgType > -1 ) ? errorMsg = o.emailErrorText.replace('{label}',labelText) : errorMsg = o.emailErrorText;
 					    hasError = true;
 					  }
