@@ -30,38 +30,18 @@
         <input type="text" name="prospectForm.lastName" id="lastName"/>
       </div>
 
-      <div class="checkboxes">
-        What are you interested in?
-
-        <ul>
-          <li>
-            <input type="checkbox" name="community" id="community_1063" value="1063" checked/>
-            <label for="community_1063">Bozzuto Buzz</label>
-          </li>
-          <% if @community.ufollowup_id.present? -%>
-            <li>
-              <input type="checkbox"
-                     name="community" id="community_<%= @community.ufollowup_id %>"
-                     value="<%= @community.ufollowup_id %>"
-                     checked />                     
-              <label id="community_<%= @community.ufollowup_id %>"><%= @community.title %></label>
-            </li>
-          <% end -%>
-        </ul>
-      </div>
-
       <div>
         <label for="city">City</label><br />
-        <input type="text" id="city" name="QId1" value=""/>
-        <input type="hidden" name="hQst1" value="City"/>
-        <input type="hidden" name="hQid1" value="4"/>
-        <input type="hidden" name="hReqdQId1" value=""/>
-        <input type="hidden" name="hCtlType1" value="TB"/>
-        <input type="hidden" name="hDtlNo1" value="0"/>
-        <input type="hidden" name="hValidQst1" value="0"/>
-        <input type="hidden" name="hValidVal1" value="0"/>
-        <input type="hidden" name="hId1" value="6002"/>
-        <input type="hidden" name="hChk1"/>
+        <input type="text" id="city" name="QId1" value="" />
+        <input type="hidden" name="hQst1" value="City" />
+        <input type="hidden" name="hQid1" value="4" />
+        <input type="hidden" name="hReqdQId1" value="" />
+        <input type="hidden" name="hCtlType1" value="TB" />
+        <input type="hidden" name="hDtlNo1" value="0" />
+        <input type="hidden" name="hValidQst1" value="0" />
+        <input type="hidden" name="hValidVal1" value="0" />
+        <input type="hidden" name="hId1" value="6002" />
+        <input type="hidden" name="hChk1" />
       </div>
 
       <div>
@@ -97,6 +77,160 @@
         <input type="hidden" name="hId3" value="6004"/>
         <input type="hidden" name="hChk3"/>
       </div>
+
+      <div class="checkboxes">
+        <p>What are you interested in?</p>
+
+        <ul>
+          <li>
+            <input type="checkbox" name="community" id="community_1063" value="1063" checked/>
+            <label for="community_1063">Bozzuto Buzz</label>
+          </li>
+          <% if @community.ufollowup_id.present? -%>
+            <li>
+              <input type="checkbox"
+                     name="community" id="community_<%= @community.ufollowup_id %>"
+                     value="<%= @community.ufollowup_id %>"
+                     checked />                     
+              <label for="community_<%= @community.ufollowup_id %>"><%= @community.title %></label>
+            </li>
+          <% end -%>
+        </ul>
+      </div>
+
+
+      <div class="checkboxes row">
+        <p>What other areas are you interested in?</p>
+
+        <ul class="col">
+          <li>
+            <label>
+              <input type="checkbox" name="QId4" value="Baltimore City" />
+              Baltimore City
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="QId4" value="Annapolis" />
+              Annapolis
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="QId4" value="Owings Mills" />
+              Owings Mills
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="QId4" value="Howard County" />
+              Howard County
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="QId4" value="Laurel" />
+              Laurel
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="QId4" value="Upper Marlboro/Prince Frederick" />
+              Upper Marlboro/Prince Frederick
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="QId4" value="Bethesda/Rockville" />
+              Bethesda/Rockville
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="QId4" value="North Bethesda/Wheaton" />
+              North Bethesda/Wheaton
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="QId4" value="Gaithersburg, Germantown, Frederick" />
+              Gaithersburg, Germantown, Frederick
+            </label>
+          </li>
+        </ul>
+
+        <ul class="col">
+          <li>
+            <label>
+              <input type="checkbox" name="QId4" value="Richmond" />
+              Richmond
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="QId4" value="Alexandria/Reston/Herndon/Centreville" />
+              Alexandria/Reston/Herndon/Centreville
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="QId4" value="Manassas" />
+              Manassas
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="QId4" value="Arlington" />
+              Arlington
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="QId4" value="Fairfax, Falls Church, Reston" />
+              Fairfax, Falls Church, Reston
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="QId4" value="Washington, DC" />
+              Washington, DC
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="QId4" value="New Jersey/New York" />
+              New Jersey/New York
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="QId4" value="Connecticut" />
+              Connecticut
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="QId4" value="Philadelphia and Surrounding Suburbs" />
+              Philadelphia and Surrounding Suburbs
+            </label>
+          </li>
+        </ul>
+
+        <input type="hidden" name="QId4" value="off" />
+        <input type="hidden" name="hQst4" value="What other areas are you interested in?"/>
+        <input type="hidden" name="hQid4" value="31" />
+        <input type="hidden" name="hReqdQId4" value="" />
+        <input type="hidden" name="hCtlType4" value="CB" />
+        <input type="hidden" name="hDtlNo4" value="18" />
+
+        <input type="hidden" name="hValidQst4" value="0" />
+        <input type="hidden" name="hValidVal4" value="0" />
+        <input type="hidden" name="hId4" value="6343" />
+        <input type="hidden" name="hChk4" />
+        <input type="hidden" name="hQuestions" value="4" />
+      </div>
+
+
 
       <input type="hidden" name="hQuestions" value="3"/>
 

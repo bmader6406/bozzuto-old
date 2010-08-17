@@ -22,7 +22,7 @@
     color: #84848b;
   }
   h1 {
-    font-family: "Arial Narrow", "Arial", sans-serif;    
+    font-family: "Arial Narrow", "Arial", sans-serif;
   }
   em { font-style: italic; }
   strong { font-weight: bold; }
@@ -181,7 +181,7 @@
         display: inline;
       }
     /* @end */
-    
+
     /* @group --main-nav */
       #header #main-nav {
         margin-bottom: 5px;
@@ -236,7 +236,7 @@
         background-position: -800px -90px;
       }
     /* @end */
-    
+
     /* @group --search */
       #header .search-form input {
         width: 194px;
@@ -3949,6 +3949,7 @@ div.wysiwyg ul li {
 #community-contact-form form p.checkboxes input,
 #new_buzz p.checkboxes input,
 #ufollowup-form div.checkboxes input {
+  height: auto;
   margin-right: 15px;
   width: auto;
 }
