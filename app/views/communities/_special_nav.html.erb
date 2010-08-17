@@ -36,10 +36,10 @@
       </div>
     </li>
 
-    <li>
-      <a href="#">Send me updates</a>
-      <div class="popup">
-        <% if @community.ufollowup_id.present? %>
+    <% if @community.ufollowup_id.present? %>
+      <li>
+        <a href="#">Send me updates</a>
+        <div class="popup">
           <% form_tag ufollowup_path(@community), :method => 'get' do -%>
             <label>
               <strong>Input your email address</strong> to stay informed
@@ -51,8 +51,8 @@
               <button type="submit">Send</button>
             </p>
           <% end -%>
-        <% end -%>
-      </div>
-    </li>
+        </div>
+      </li>
+    <% end -%>
   </ul>
 <% end %>
