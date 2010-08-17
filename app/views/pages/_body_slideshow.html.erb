@@ -1,5 +1,5 @@
 <div id="slideshow" class="slideshow">
-  <ul class="slides" <%= slideshow_sync %>>
+  <ul class="slides" <%= about_and_services_slideshow_attrs %>>
     <% slideshow.slides.each_with_index do |slide, i| %>
       <li id="slide-<%= i + 1 %>" class="section slide">
         <% img = image_tag slide.image.url, :width => 840, :height => 375 %>

@@ -7,9 +7,9 @@ module PagesHelper
     nil
   end
 
-  def slideshow_sync
+  def about_and_services_slideshow_attrs
     if ['about-us', 'services'].include?(@section.cached_slug) && @page == @section.pages.first
-      raw('data-sync="true"')
+      raw(%{data-sync="true" data-interval="8000"})
     end
   end
 end

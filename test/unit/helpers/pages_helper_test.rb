@@ -14,7 +14,15 @@ class PagesHelperTest < ActionView::TestCase
       end
     end
 
-    context '#slideshow_sync' do
+
+  #def about_and_services_slideshow_attrs
+  #  if ['about-us', 'services'].include?(@section.cached_slug) && @page == @section.pages.first
+  #    raw(%{data-sync="true" data-interval="8000"})
+  #  end
+  #end
+
+
+    context '#about_and_services_slideshow_attrs' do
       ['About Us', 'Services'].each do |name|
         context "in the '#{name}' section" do
           setup do
@@ -23,7 +31,7 @@ class PagesHelperTest < ActionView::TestCase
           end
 
           should 'return the data attribute' do
-            assert_equal raw('data-sync="true"'), slideshow_sync
+            assert_equal raw('data-sync="true" data-interval="8000"'), about_and_services_slideshow_attrs
           end
         end
       end
@@ -35,7 +43,7 @@ class PagesHelperTest < ActionView::TestCase
         end
 
         should 'return nil' do
-          assert_nil slideshow_sync
+          assert_nil about_and_services_slideshow_attrs
         end
       end
     end

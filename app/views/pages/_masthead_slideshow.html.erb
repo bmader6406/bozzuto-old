@@ -2,7 +2,7 @@
   <div class="container">
     <% if slideshow.present? %>
       <div id="masthead-slideshow">
-        <ul class="slides" <%= slideshow_sync %>>
+        <ul class="slides" <%= about_and_services_slideshow_attrs %>>
           <% slideshow.slides.each do |slide| %>
             <li class="slide">
               <div class="section">

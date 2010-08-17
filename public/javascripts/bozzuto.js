@@ -44,6 +44,12 @@ window.bozzuto = {};
     $(".property #slideshow").featuredSlideshow({
       dynamicPagination: false
     });
+    setTimeout(function() {
+      $(".property #slideshow").each(function() {
+        var height = $(this).find('h1').height();
+        $('.section', $(this)).css('top', height + 10).show();
+      })
+    }, 250);
 
     $(".home #slideshow").featuredSlideshow({
       dynamicPagination: false,
@@ -55,13 +61,6 @@ window.bozzuto = {};
     });
 
     $('.mini-slideshow').featuredSlideshow();
-
-    setTimeout(function() {
-      $(".property #slideshow").each(function() {
-        var height = $(this).find('h1').height();
-        $('.section', $(this)).css('top', height + 10).show();
-      })
-    }, 250);
 
     $("#masthead-slideshow, .slideshow").featuredSlideshow();
 
@@ -661,6 +660,11 @@ window.bozzuto = {};
       var $slideshow = $(this);
       var o = $.meta ? $.extend({}, opts, $this.data()) : opts;
       var slideCount = $('ul.slides li.slide', $slideshow).length;
+      var interval = $slideshow.find('ul').attr('data-interval');
+
+      if (interval != undefined) {
+        o.autoAdvanceInterval = parseInt(interval);
+      }
 
       $slideshow.advancing = true;
       $slideshow.onAdvance = opts.onAdvance;
@@ -832,7 +836,7 @@ window.bozzuto = {};
   $.fn.featuredSlideshow.defaults = {
     dynamicPagination:   true,
     autoAdvance:         true,
-    autoAdvanceInterval: 4000,
+    autoAdvanceInterval: 5000,
     transitionTime:      450,
     onAdvance:           null
   };
