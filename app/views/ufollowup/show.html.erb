@@ -13,7 +13,6 @@
         <input type="hidden" name="method" value="valuesSaved"/>
         <input type="hidden" name="hcommsize" value="2"/>
         <input type="hidden" name="hcommsizelen" value="100"/>
-        <input type="hidden" name="community" value="<%= @community.ufollowup_id %>"/>
 
         <div class="field row">
           <label for="ufollowup_email">Email</label>
@@ -50,7 +49,7 @@
             <option value="">Select one...</option>
             <option value="None Selected">None Selected</option>
             <% ActionView::Helpers::States::US.each do |state| -%>
-              <option><%= state %></option>
+              <option value="<%= state %>"><%= state %></option>
             <% end -%>
           </select>
           <input type="hidden" name="hQst2" value="State"/>
