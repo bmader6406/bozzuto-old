@@ -98,4 +98,8 @@ jQuery.fn.makeacolumnlists = function(settings) {
       jQuery('#li_container' + y).append('<div style="clear:both; overflow:hidden; height:0px;"></div>');
     });
   }
+
+  // added by Doug Avery, because good plugins return jQuery objects
+  return this;    
+  
 };

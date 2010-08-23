@@ -3719,7 +3719,9 @@ div.wysiwyg ul li {
     .page .tips {
       background: url(../images/structure/bg-about-content-p.gif) no-repeat 0 100%;
     }
-
+    .li_container {
+      margin-bottom: 20px;
+    }
     #li_container3 {
       margin-bottom: 1.454545455em;
     }
