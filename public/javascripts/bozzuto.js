@@ -59,7 +59,7 @@ window.bozzuto = {};
         }
       }
     });
-
+    
     $('.mini-slideshow').featuredSlideshow();
 
     $("#masthead-slideshow, .slideshow").featuredSlideshow();
@@ -503,7 +503,7 @@ window.bozzuto = {};
   $.fn.toolTip = function() {
     return this.each(function() {
       var $this = $(this),
-          content = $($this.attr('href')),
+          content = $($this.attr('href')).html(),
           isSearch = $('body').hasClass('search'),
           left = (isSearch) ? 162 : 156,
           top = (isSearch) ? 47 : 55;
@@ -527,12 +527,8 @@ window.bozzuto = {};
         if (tooltime != 'inactive') {
           clearTimeout(tooltime);
         } else {
-          $tooltip
-            .css({
-              'display' : 'block',
-              'opacity' : '.01'
-            })
-            .fadeTo(250, 1);
+          
+          $tooltip.show();
 
           $tooltipArrow.animate({
             'top'    : "-7",

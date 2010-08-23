@@ -618,7 +618,7 @@
     #icon-tooltips li {
       margin: 0 0 10px;
     }
-    div.tooltip {
+    .tooltip {
       background-color: #fff;
       -moz-box-shadow: 0 0 20px rgba(255,255,255,.4);
       -webkit-box-shadow: 0 0 20px rgba(255,255,255,.4);
@@ -630,11 +630,12 @@
       left: 0px;
       padding: 10px;
       position: absolute;
+      overflow: visible !important;
       top: 0px;
       width: 178px;
       z-index: 1000;
     }
-    div.tooltip h4 {
+    .tooltip h4 {
       color: #636972;
       font-size: 12px;
       font-weight: bold;
