@@ -378,8 +378,8 @@ window.bozzuto = {};
             lightboxSpeed: 'slow',
             centered: true,
             overlayCSS: {
-              'background': '#fff',
-              'opacity': .01
+              'background': '#000',
+              'opacity': .5
             },
             onLoad:    function() {
               image.fadeTo(250, 1)
@@ -634,20 +634,13 @@ window.bozzuto = {};
         $bio.lightbox_me({
           closeSelector: '.partner-close',
           appearEffect: 'show',
+          disappearEffect: 'show',
           overlaySpeed: 0,
           destroyOnClose: true,
           centered: true,
           overlayCSS: {
             'background': '#fff',
             'opacity': .01
-          },
-          onLoad:    function() {
-            $('.partner-bio-outer').fadeTo(250, 1)
-          },
-          onClose: function() {
-            $('.partner-bio-outer').css({
-              'opacity' : 0
-            })
           }
         });
       });

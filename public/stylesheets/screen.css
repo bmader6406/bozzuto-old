@@ -3107,9 +3107,6 @@ div.wysiwyg ul li {
       background: transparent url(../images/structure/bg-partner-bio.png) no-repeat right 0;
       padding: 20px 0 0;
       width: 800px;
-      opacity: 0;
-      -moz-opacity: 0;
-      filter:alpha(opacity=0);
       font-size: 11px;
       line-height: 18px;
     }
@@ -3117,6 +3114,7 @@ div.wysiwyg ul li {
       background: transparent url(../images/structure/bg-partner-bio.png) no-repeat 0 bottom;
       min-height: 215px;
       padding: 30px 50px 50px 300px;
+      width: 450px;
     }
     .partner-bio-inner h3 {
       font-size: 21px;
