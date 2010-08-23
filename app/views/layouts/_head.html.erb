@@ -25,7 +25,11 @@
 
   <script type="text/javascript">
     (function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)
+    
+    function align(f){var b=document,e=" narrowPage",a=b.body;if(!window.innerWidth){w=(f.clientWidth==0)?a.clientWidth:f.clientWidth}else{w=window.innerWidth}addClass(f,w,e)}function addClass(g,a,f){var e=g.className,b=e.indexOf(f)!=-1,d=a<1130&&a>980;if(d&&b==false){g.className=e+f}else{if(!d&&b){g.className=e.replace(f,"")}}}align(document.documentElement);
+    
   </script>
+  
   <%= include_javascripts :lookup %>
 
   <link rel="icon" href="/favicon.png" type="image/png" />

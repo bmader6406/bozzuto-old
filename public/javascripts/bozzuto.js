@@ -1,3 +1,39 @@
+// original, unminified header script
+// immediately sets a "narrowPage" class on the HTML tag if a page is narrow
+
+/* 
+function align(de) {
+  
+  var d  = document,
+      c  = ' narrowPage',
+      db = d.body;
+      
+      if ( ! window.innerWidth) {
+        w = ( de.clientWidth == 0 ) ? db.clientWidth : de.clientWidth;
+      } else {
+        w = window.innerWidth;            
+      }
+  addClass( de, w, c );
+}
+
+function addClass( de, w, c ){
+  
+  var cn = de.className,
+      hc = cn.indexOf(c) != -1,
+      n  = w < 1130 && w > 980;
+
+  if ( n && hc == false ) {
+    de.className = cn + c;
+  } else if ( !n && hc ){
+    de.className = cn.replace(c, '');
+  }
+  
+}
+
+align(document.documentElement);
+*/
+
+
 
 //Collapse items by default on search results
 function setSearchFormState() {
@@ -18,22 +54,10 @@ window.bozzuto = {};
     xhr.setRequestHeader("Accept", "text/javascript, text/html, application/xml, text/xml, */*")
   });
 
-  function changePageAlign() {
-    var windowWidth = $(window).width();
-    // if( windowWidth < 1200 && windowWidth > 980){
-    if (windowWidth < 1130 && windowWidth > 980) {
-      $(document.documentElement).addClass('narrowPage');
-    } else {
-      $(document.documentElement).removeClass('narrowPage');
-    }
-  }
-
   $(function() {
 
-    changePageAlign();
-
     $(window).resize(function() {
-      changePageAlign();
+      align(document.documentElement);
     });
 
     $("#special-nav").specialNavPopups();

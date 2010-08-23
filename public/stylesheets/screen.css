@@ -135,7 +135,7 @@
     .narrowPage .container {
       margin: 0 0 0 10px;
     }
-    .narrowPage {
+    .narrowPage body {
       overflow-x: hidden;
     }
     .col {
