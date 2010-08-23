@@ -1,3 +1,4 @@
+
 //Collapse items by default on search results
 function setSearchFormState() {
   $('.search #content > ul.results').find('.closed > :not(.header)').hide();
@@ -28,6 +29,7 @@ window.bozzuto = {};
   }
 
   $(function() {
+
     changePageAlign();
 
     $(window).resize(function() {

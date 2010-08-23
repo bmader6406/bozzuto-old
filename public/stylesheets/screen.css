@@ -557,7 +557,8 @@
     .community #overview ul li {
       font-size: 12px;
       line-height: 18px;
-      list-style: disc outside url(../images/structure/blt-features.gif);
+      background: 0 7px url(../images/structure/blt-features.gif) no-repeat;
+      padding-left: 15px;
       margin: 0px;
     }
     .column-main ol li {
@@ -2199,7 +2200,7 @@ div.wysiwyg ul li {
       background: #c2c6ca;
     }
     .project #main-content .content .sub-content .similar-projects p a {
-      background: url(../images/structure/bg-news-a.gif) left center no-repeat;
+      background: url(../images/structure/bg-news-a.gif) 0 6px no-repeat;
     }
     .project #main-content .content .sub-content .similar-projects ul {
       background: url(../images/structure/bg-about-content-p.gif) left bottom no-repeat;
@@ -2254,6 +2255,7 @@ div.wysiwyg ul li {
         margin-bottom: -3px;
       }
       .project #main-content .content .sub-content .similar-projects p a {
+        display: block;
         padding-left: 6px;
       }
       .project #main-content .content .sub-content .similar-projects ul {
@@ -3729,8 +3731,10 @@ div.wysiwyg ul li {
 
 /* @group property listing */
   #content .property-listing {
+    background: none;
     margin-bottom: 14px;
     overflow: hidden;
+    padding: 0;
     position: relative;
     width: 100%;
   }
@@ -3896,9 +3900,7 @@ div.wysiwyg ul li {
   .projects #content #project-categories-nav ul {
     width: 200px;
   }
-  .projects #content ul.projects-listing {
-    margin-left: 0;
-  }
+
 /* @end */
 
 /* @group community contact forms */
