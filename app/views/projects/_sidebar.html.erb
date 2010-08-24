@@ -66,7 +66,7 @@
             </p>
           <% end %>
 
-          <% if project.completion_date.present? %>
+          <% if project.has_completion_date? && project.completion_date.present? %>
             <p class="date">
               <%= project.completion_date.to_formatted_s(:related_project).upcase %>
             </p>
