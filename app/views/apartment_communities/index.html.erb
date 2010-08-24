@@ -36,7 +36,7 @@
               <% apartment_floor_plan_groups.each do |fpg| %>
                 <li>
                   <%= f.check_box :with_floor_plan_groups, {:name => 'search[with_floor_plan_groups][]', :id => fpg.name.tableize}, fpg.id.to_s, nil %>
-                  <label for="<%= fpg.name.tableize %>"><%= fpg.name %></label>
+                  <label for="<%= fpg.name.tableize %>"><%= fpg.name.pluralize %></label>
                 </li>
               <% end %>
             </ul>
