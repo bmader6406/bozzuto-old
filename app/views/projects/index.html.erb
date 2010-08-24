@@ -20,7 +20,7 @@
     <h2><%= category.title %></h2>
 
     <ul class="projects-listing">
-      <%= render :partial => 'listing', :collection => category.projects.in_section(@section).order_by_completion_date, :as => :project %>
+      <%= render :partial => 'listing', :collection => category.projects.in_section(@section), :as => :project %>
     </ul>
   </div>
 <% end %>

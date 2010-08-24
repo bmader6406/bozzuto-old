@@ -8,6 +8,7 @@ class HomeCommunity < Community
     :conditions => { :featured => true }
 
   named_scope :ordered_by_title, :order => 'title ASC'
+  default_scope :order => 'title ASC'
 
   def nearby_communities(limit = 6)
     @nearby_communities ||= HomeCommunity.mappable.near(self).all(:limit => limit)

@@ -27,6 +27,8 @@ class Project < Property
     { :limit => limit }
   }
 
+  default_scope :order => 'title ASC'
+
   def related_projects(limit = 4)
     self.class.
       in_section(section).
