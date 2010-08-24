@@ -3741,6 +3741,10 @@ div.wysiwyg ul li {
   #content .property-listing p.photos {
     float: left;
   }
+  #content .column-main ul.projects-listing {
+    margin-left: 0;
+  }
+  
   #content .property-listing div.info {
     float: right;
     overflow: hidden;
