@@ -13,10 +13,10 @@ function align(de) {
       } else {
         w = window.innerWidth;            
       }
-  addClass( de, w, c );
+  a( de, w, c );
 }
 
-function addClass( de, w, c ){
+function a( de, w, c ){
   
   var cn = de.className,
       hc = cn.indexOf(c) != -1,
