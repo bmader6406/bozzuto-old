@@ -5,28 +5,28 @@
   <div id="content" class="col">
     <h2>Send Me Updates</h2>
     
-    <form action="http://www.ufollowup.com/webFormScreen.html" method="POST" id="ufollowup-form">
+    <form action="http://www.ufollowup.com/webFormScreen.html?company_id=339" method="POST" id="ufollowup-form">
       <fieldset>
         <input type='hidden' name="company_id" value="339"/>
         <input type='hidden' name='webform_id' value="0"/>
         <input type='hidden' name='hexColor' value="#FFFFFF"/>
         <input type="hidden" name="method" value="valuesSaved"/>
         <input type="hidden" name="hcommsize" value="2"/>
-        <input type="hidden" name="hcommsizelen" value="100"/>
+        <input type="hidden" name="hcommsizelen" value="2"/>
 
         <div class="field row">
-          <label for="ufollowup_email">Email</label>
-          <input type="text" name="prospectForm.email1" id="ufollowup_email" value="<%= @email %>"/>
+          <label for="email1">Email</label>
+          <input type="text" name="prospectForm.email1" id="email1" value="<%= @email %>"/>
         </div>
 
         <div class="field row">
-          <label for="firstName">First Name</label>
-          <input type="text" name="prospectForm.firstName" id="firstName"/>
+          <label for="fname">First Name</label>
+          <input type="text" name="prospectForm.firstName" id="fname"/>
         </div>
 
         <div class="field row">
-          <label for="lastName">Last Name</label>
-          <input type="text" name="prospectForm.lastName" id="lastName"/>
+          <label for="lname">Last Name</label>
+          <input type="text" name="prospectForm.lastName" id="lname"/>
         </div>
 
         <div class="field row">
@@ -82,16 +82,17 @@
 
           <ul>
             <li>
-              <input type="checkbox" name="community" id="community_1063" value="1063" checked/>
-              <label for="community_1063">Bozzuto Buzz</label>
+              <label>
+                <input type="checkbox" name="community" value="1063" checked/>
+                Bozzuto Buzz
+              </label>
             </li>
             <% if @community.ufollowup_id.present? -%>
               <li>
-                <input type="checkbox"
-                       name="community" id="community_<%= @community.ufollowup_id %>"
-                       value="<%= @community.ufollowup_id %>"
-                       checked />
-                <label for="community_<%= @community.ufollowup_id %>"><%= @community.title %></label>
+                <label>
+                  <input type="checkbox" name="community" value="<%= @community.ufollowup_id %>" checked />
+                  <%= @community.title %>
+                </label>
               </li>
             <% end -%>
           </ul>
@@ -241,3 +242,222 @@
     </form>
   </div>
 </div>
+
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    <% unless Rails.env.production? -%>
+    /* ⚡ Danger ⚡ */
+    /* js provided by ufollowup, unsuckified by viget */
+    <% end -%>
+
+    (function($, form) {
+      if (form.hcommsize.value == 1){
+        form.community.checked = true;
+      }
+
+      function checkFields() {
+        if (trimText(form.email1.value) == "") {
+          alert("Please enter your Email Address");
+          form.email1.focus();
+          return false;
+        }
+
+        if (trimText(form.fname.value) == "") {
+          alert("Please enter your First Name");
+          form.fname.focus();
+          return false;
+        }
+
+        if (trimText(form.lname.value) == "") {
+          alert("Please enter your Last Name");
+          form.lname.focus();
+          return false;
+        }
+
+        if (echeck(form.email1.value) == false) {
+          form.email1.value = "";
+          form.email1.focus();
+          return false;
+        }
+
+        if (form.hcommsize.value == 1) {
+          if (form.community.checked == false) {
+            alert("Please select a community");
+            return false;
+          }
+        }
+
+        if (form.hcommsize.value == 2) {
+          var chkcount=0;
+          for (i = 0; i < form.hcommsizelen.value; i++) {
+            if (form.community[i].checked==true) {
+              chkcount = chkcount + 1;
+            }
+          }
+
+          if (chkcount == 0) {
+            alert("Please select at least one community");
+            return false;
+          }
+        }
+
+        if (form.hQuestions.value > 0 ) {
+          for(i=1;i<=form.hQuestions.value;i++) {
+            if (eval("form.hReqdQId" + i + ".value") == "Required"){
+              if (eval("form.QId" + i + ".value") == "" && ( eval("form.hCtlType" + i + ".value") == "TB" || eval("form.hCtlType" + i + ".value") == "DL" || eval("form.hCtlType" + i + ".value") == "TA") ) {
+                if (eval("form.hCtlType" + i + ".value") == "DL"){
+                  alert("Please select a value for " + eval("form.hQst" + i + ".value"));
+                } else {
+                  alert("Please enter a value for " + eval("form.hQst" + i + ".value"));
+                }
+                eval("form.QId" + i + ".focus()")
+                return false;
+              }
+
+              if (eval("form.hCtlType" + i + ".value") == "RB" || eval("form.hCtlType" + i + ".value") == "CB") {
+                var nItems = eval("form.hDtlNo" + i + ".value")
+                var bFlag  = 0
+
+                for(j=0;j<nItems;j++) {
+                  if (eval("form.QId" + i + "(" + j + ").checked")) {
+                    bFlag  = 1
+                    break;
+                  }
+                }
+
+                if ( bFlag  == 0 ) {
+                  alert("Please select a value for " + eval("form.hQst" + i + ".value")); 
+                  return false;
+                }
+              }
+            }
+          }
+
+          for(i=1;i<=form.hQuestions.value;i++) {
+            if (eval("form.hValidQst" + i + ".value") != 0 && eval("form.hValidVal" + i + ".value") != 0){
+              var ValidVal = eval("form.hValidVal" + i + ".value");
+              var ValidQst = eval("form.hValidQst" + i + ".value");
+
+              for(j=1;j<=form.hQuestions.value;j++) {
+                if (eval("form.hId" + j + ".value") == ValidQst){
+                  if (eval("form.hCtlType" + j + ".value") == "DL"){
+                    if (eval("form.QId" + j + ".selectedIndex") == ValidVal && eval("form.QId" + i + ".value") == "") {
+                      eval("form.QId" + i + ".focus()");
+                      alert("Please enter a value");
+                      return false;
+                    }
+                  }
+
+                  if (eval("form.hCtlType" + j + ".value") == "RB" || eval("form.hCtlType" + j + ".value") == "CB") {
+                    var vOpt = 0;
+                    for(k=0;k<eval("form.QId" + j + ".length");k++){
+                      if (eval("form.QId" + j + "[" + k + "].checked")) 
+                        vOpt = k + 1;
+                    }
+       
+                    if (vOpt == ValidVal && eval("form.QId" + i + ".value") == "") {
+       
+                      eval("form.QId" + i + ".focus()");
+                      alert("Please enter a value");
+                      return false;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          for(i=1;i<=form.hQuestions.value;i++) {
+            var chkStr = "";
+            if (eval("form.hCtlType" + i + ".value") == "CB") {
+              for(k=0;k<eval("form.QId" + i + ".length");k++) {
+                if (eval("form.QId" + i + "[" + k + "].checked"))
+                  chkStr = chkStr + String.fromCharCode(15) + eval("form.QId" + i + "[" + k + "].value");
+              }
+              chkStr = chkStr.substring(1,chkStr.length);
+              eval("form.hChk" + i + ".value=chkStr");
+            }
+          }
+        }
+        form.submit1.disabled=true;
+        return true;
+      }
+
+      function echeck(str) {
+        var at="@"
+        var dot="."
+        var lat=str.indexOf(at)
+        var lstr=str.length
+        var ldot=str.indexOf(dot)
+
+        if (str.indexOf(at)==-1){
+          alert("Invalid E-mail ID")
+          return false
+        }
+
+        if (str.indexOf(at)==-1 || str.indexOf(at)==0 || str.indexOf(at)==lstr){
+          alert("Invalid E-mail ID")
+          return false
+        }
+
+        if (str.indexOf(dot)==-1 || str.indexOf(dot)==0 || str.indexOf(dot)==lstr) {
+          alert("Invalid E-mail ID")
+          return false
+        }
+
+        if (str.indexOf(at,(lat+1))!=-1){
+          alert("Invalid E-mail ID")
+          return false
+        }
+
+        if (str.substring(lat-1,lat)==dot || str.substring(lat+1,lat+2)==dot){
+          alert("Invalid E-mail ID")
+          return false
+        }
+
+        if (str.indexOf(dot,(lat+2))==-1){
+           alert("Invalid E-mail ID")
+           return false
+        }
+
+        if (str.indexOf(" ")!=-1){
+           alert("Invalid E-mail ID")
+           return false
+        }
+      }
+
+      function trimText(sString) { 
+        while (sString.substring(0,1) == ' ') {
+          sString = sString.substring(1, sString.length); 
+        }
+        while (sString.substring(sString.length-1, sString.length) == ' ') {
+          sString = sString.substring(0,sString.length-1); 
+        }
+        return sString; 
+      }
+
+      function trimText(sString) { 
+        while (sString.substring(0,1) == ' ') {
+          sString = sString.substring(1, sString.length);
+        }
+
+        while (sString.substring(sString.length-1, sString.length) == ' ') {
+          sString = sString.substring(0,sString.length-1); 
+        }
+        return sString;
+      }
+
+      function disablebutton(obj) {
+        alert("hi");
+        obj.disabled=true;
+        form.submit();
+      }
+
+      $(document).ready(function() {
+        $(form).submit(function() {
+          return checkFields();
+        });
+      });
+    })(jQuery, document.getElementById('ufollowup-form'));
+  </script>
+<% end %>
