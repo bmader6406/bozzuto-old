@@ -23,6 +23,11 @@ class CommunityMailer < ActionMailer::Base
   end
   helper_method :community_url
 
+  def offers_url(community, opts = {})
+    ufollowup_url(community.id, opts)
+  end
+  helper_method :offers_url
+
   def floor_plans_url(community)
     case community
     when ApartmentCommunity

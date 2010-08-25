@@ -54,7 +54,9 @@
     <tr>
       <td colspan="8">
         <!-- Banner image -->
-        <%= image_tag @community.slideshow.slides.first.image.url, :border => 0, :width => 600, :height => 258 %>
+        <% link_to community_url(@community) do %>
+          <%= image_tag @community.slideshow.slides.first.image.url, :border => 0, :width => 600, :height => 258 %>
+        <% end %>
       </td>
       <td>
         <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 258 %>
@@ -155,8 +157,10 @@
 
 	<tr>
 		<td colspan="3">
-      <% link_to buzz_url do %>
-        <%= image_tag 'send_to_friend/email_19.jpg', :border => 0, :width => 201, :height => 29, :alt => 'Sign up for special offers' %>
+      <% if @community.is_a?(ApartmentCommunity) && @community.ufollowup_id.present? %>
+        <% link_to offers_url(@community, :email => @to) do %>
+          <%= image_tag 'send_to_friend/email_19.jpg', :border => 0, :width => 201, :height => 29, :alt => 'Sign up for special offers' %>
+        <% end %>
       <% end %>
 		</td>
 		<td>
@@ -267,7 +271,10 @@
 	<tr>
 		<td class="footer" rowspan="2" style="color: #acacb2; font-size: 10px; vertical-align: top;" colspan="2">
 			<p>You are receiving this email because your friend thought it would be of interest to you. This email address has not been added to a database and will not receive future emails.</p>
-      <p>If you would like additional updates on this or other Bozzuto properties, <%= link_to 'please click here', ufollowup_url(@community, :email => @to), :style => 'color: #84848b;' %>.</p>
+
+      <% if @community.is_a?(ApartmentCommunity) && @community.ufollowup_id.present? %>
+        <p>If you would like additional updates on this or other Bozzuto properties, <%= link_to 'please click here', offers_url(@community, :email => @to), :style => 'color: #84848b;' %>.</p>
+      <% end %>
 		</td>
 		<td>
       <%= image_tag 'send_to_friend/spacer.gif', :border => 0, :width => 1, :height => 141 %>
