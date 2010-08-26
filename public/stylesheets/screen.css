@@ -3999,6 +3999,9 @@ div.wysiwyg ul li {
   position: static;
   width: auto;
 }
+#ufollowup-form div.checkboxes h4 {
+  font-size: 16px;
+}
 
 #community-contact-form form p.submit,
 #new_buzz p.submit,

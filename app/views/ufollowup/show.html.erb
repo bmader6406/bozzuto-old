@@ -45,22 +45,71 @@
 
         <div class="field row">
           <label for="state">State</label>
-          <select id="state" name="QId2" class="ufformcopy">
+          <select id="state" name="QId2">
             <option value="">Select one...</option>
             <option value="None Selected">None Selected</option>
-            <% ActionView::Helpers::States::US.each do |state| -%>
-              <option value="<%= state %>"><%= state %></option>
-            <% end -%>
+            <option value="Alabama">Alabama</option>
+            <option value="Alaska">Alaska</option>
+            <option value="Arizona">Arizona</option>
+            <option value="Arkansas">Arkansas</option>
+            <option value="California">California</option>
+            <option value="Colorado">Colorado</option>
+            <option value="Connecticut">Connecticut</option>
+            <option value="Delaware">Delaware</option>
+            <option value="District of Columbia">District of Columbia</option>
+            <option value="Florida">Florida</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Hawaii">Hawaii</option>
+            <option value="Idaho">Idaho</option>
+            <option value="Illinois">Illinois</option>
+            <option value="Indiana">Indiana</option>
+            <option value="Iowa">Iowa</option>
+            <option value="Kansas">Kansas</option>
+            <option value="Kentucky">Kentucky</option>
+            <option value="Louisiana">Louisiana</option>
+            <option value="Maine">Maine</option>
+            <option value="Maryland">Maryland</option>
+            <option value="Massachusetts">Massachusetts</option>
+            <option value="Michigan">Michigan</option>
+            <option value="Minnesota">Minnesota</option>
+            <option value="Mississippi">Mississippi</option>
+            <option value="Missouri">Missouri</option>
+            <option value="Montana">Montana</option>
+            <option value="Nebraska">Nebraska</option>
+            <option value="Nevada">Nevada</option>
+            <option value="New Hampshire">New Hampshire</option>
+            <option value="New Jersey">New Jersey</option>
+            <option value="New Mexico">New Mexico</option>
+            <option value="New York">New York</option>
+            <option value="North Carolina">North Carolina</option>
+            <option value="North Dakota">North Dakota</option>
+            <option value="Ohio">Ohio</option>
+            <option value="Oklahoma">Oklahoma</option>
+            <option value="Oregon">Oregon</option>
+            <option value="Pennsylvania">Pennsylvania</option>
+            <option value="Rhode Island">Rhode Island</option>
+            <option value="South Carolina">South Carolina</option>
+            <option value="South Dakota">South Dakota</option>
+            <option value="Tennessee">Tennessee</option>
+            <option value="Texas">Texas</option>
+            <option value="Utah">Utah</option>
+            <option value="Vermont">Vermont</option>
+            <option value="Virginia">Virginia</option>
+            <option value="Washington">Washington</option>
+            <option value="West Virginia">West Virginia</option>
+            <option value="Wisconsin">Wisconsin</option>
+            <option value="Wyoming">Wyoming</option>
           </select>
-          <input type="hidden" name="hQst2" value="State"/>
-          <input type="hidden" name="hQid2" value="5"/>
-          <input type="hidden" name="hReqdQId2" value=""/>
-          <input type="hidden" name="hCtlType2" value="DL"/>
-          <input type="hidden" name="hDtlNo2" value="52"/>
-          <input type="hidden" name="hValidQst2" value="0"/>
-          <input type="hidden" name="hValidVal2" value="0"/>
-          <input type="hidden" name="hId2" value="6003"/>
-          <input type="hidden" name="hChk2"/>
+
+          <input type="hidden" name="hQst2" value="State" />
+          <input type="hidden" name="hQid2" value="5" />
+          <input type="hidden" name="hReqdQId2" value="" />
+          <input type="hidden" name="hCtlType2" value="DL" />
+          <input type="hidden" name="hDtlNo2" value="52" />
+          <input type="hidden" name="hValidQst2" value="0" />
+          <input type="hidden" name="hValidVal2" value="0" />
+          <input type="hidden" name="hId2" value="6003" />
+          <input type="hidden" name="hChk2" />
         </div>
 
         <div class="field row">
@@ -101,14 +150,9 @@
 
         <div class="field checkboxes row">
           <p class="label">What other areas<br />are you interested in?</p>
-
+ 
+          <h4>Maryland</h4>
           <ul>
-            <li>
-              <label>
-                <input type="checkbox" name="QId4" value="Baltimore City" />
-                Baltimore City
-              </label>
-            </li>
             <li>
               <label>
                 <input type="checkbox" name="QId4" value="Annapolis" />
@@ -117,8 +161,20 @@
             </li>
             <li>
               <label>
-                <input type="checkbox" name="QId4" value="Owings Mills" />
-                Owings Mills
+                <input type="checkbox" name="QId4" value="Baltimore City" />
+                Baltimore City
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" name="QId4" value="Bethesda/Rockville" />
+                Bethesda/Rockville
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" name="QId4" value="Gaithersburg, Germantown, Frederick" />
+                Gaithersburg, Germantown, Frederick
               </label>
             </li>
             <li>
@@ -135,44 +191,31 @@
             </li>
             <li>
               <label>
-                <input type="checkbox" name="QId4" value="Upper Marlboro/Prince Frederick" />
-                Upper Marlboro/Prince Frederick
-              </label>
-            </li>
-            <li>
-              <label>
-                <input type="checkbox" name="QId4" value="Bethesda/Rockville" />
-                Bethesda/Rockville
-              </label>
-            </li>
-            <li>
-              <label>
                 <input type="checkbox" name="QId4" value="North Bethesda/Wheaton" />
                 North Bethesda/Wheaton
               </label>
             </li>
             <li>
               <label>
-                <input type="checkbox" name="QId4" value="Gaithersburg, Germantown, Frederick" />
-                Gaithersburg, Germantown, Frederick
+                <input type="checkbox" name="QId4" value="Owings Mills" />
+                Owings Mills
               </label>
             </li>
             <li>
               <label>
-                <input type="checkbox" name="QId4" value="Richmond" />
-                Richmond
+                <input type="checkbox" name="QId4" value="Upper Marlboro/Prince Frederick" />
+                Upper Marlboro/Prince Frederick
               </label>
             </li>
+          </ul>
+          <br />
+
+          <h4>Virginia</h4>
+          <ul>
             <li>
               <label>
                 <input type="checkbox" name="QId4" value="Alexandria/Reston/Herndon/Centreville" />
                 Alexandria/Reston/Herndon/Centreville
-              </label>
-            </li>
-            <li>
-              <label>
-                <input type="checkbox" name="QId4" value="Manassas" />
-                Manassas
               </label>
             </li>
             <li>
@@ -189,8 +232,30 @@
             </li>
             <li>
               <label>
+                <input type="checkbox" name="QId4" value="Manassas" />
+                Manassas
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" name="QId4" value="Richmond" />
+                Richmond
+              </label>
+            </li>
+          </ul>
+          <br />
+
+          <ul>
+            <li>
+              <label>
                 <input type="checkbox" name="QId4" value="Washington, DC" />
                 Washington, DC
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" name="QId4" value="Philadelphia and Surrounding Suburbs" />
+                Philadelphia and Surrounding Suburbs
               </label>
             </li>
             <li>
@@ -203,12 +268,6 @@
               <label>
                 <input type="checkbox" name="QId4" value="Connecticut" />
                 Connecticut
-              </label>
-            </li>
-            <li>
-              <label>
-                <input type="checkbox" name="QId4" value="Philadelphia and Surrounding Suburbs" />
-                Philadelphia and Surrounding Suburbs
               </label>
             </li>
           </ul>
