@@ -9,6 +9,14 @@ ActionController::Routing::Routes.draw do |map|
 
   map.map_apartment_communities 'apartments/communities/map', :controller => 'apartment_communities', :action => 'index', :template => 'map'
 
+
+  map.ufollowup 'apartments/communities/:id/ufollowup',
+    :controller => 'ufollowup',
+    :action     => 'show'
+  map.ufollowup_thank_you 'apartments/communities/ufollowup_thank_you',
+    :controller => :ufollowup,
+    :action     => :thank_you
+
   community_options = {
     :as          => :communities,
     :only        => [:index, :show],
@@ -32,8 +40,6 @@ ActionController::Routing::Routes.draw do |map|
       :controller => :community_media,
       :only       => :index
   end
-
-  map.ufollowup 'apartments/communities/:id/ufollowup', :controller => 'ufollowup', :action => 'show'
 
   home_community_options = community_options.merge(
     :path_prefix => 'new-homes',
