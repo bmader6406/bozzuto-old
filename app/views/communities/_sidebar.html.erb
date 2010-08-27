@@ -47,7 +47,7 @@ $(document).ready(function() {
       <div id="map-canvas"></div>
       <div id="map-side-bar" style="display:none;">
         <div class="map-location" data-jmapping="{id:1, point: {lat:<%= @community.latitude %>, lng:<%= @community.longitude %>}}">
-          <div id="info-box">
+          <div class="info-box">
           <h4><%= h @community.title %></h4>
           </div>
         </div>
@@ -172,7 +172,7 @@ $(document).ready(function() {
 
       <div id="large-map-side-bar" style="display:none;">
         <div class="map-location" data-jmapping="{id:1, point: {lat:<%= @community.latitude %>, lng:<%= @community.longitude %>}}">
-          <div id="info-box">
+          <div class="info-box">
             <h4><%= h @community.title %></h4>
           </div>
         </div>
