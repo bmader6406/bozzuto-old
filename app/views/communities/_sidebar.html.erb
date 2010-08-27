@@ -6,6 +6,23 @@ $(document).ready(function() {
   $('#map-canvas').jMapping({
     default_zoom_level: 13
   });
+
+  $("#map-lightbox").click(function (e) {
+    e.preventDefault();
+    $("#large-map-container").lightbox_me({
+      onLoad: function () {
+        $('#large-map').css({height:'420px',width:'100%'});
+        $('#large-map').jMapping({
+          category_icon_options: function(category) {
+            return 'http://google-maps-icons.googlecode.com/files/home.png';
+          },
+          default_zoom_level: 13,
+          side_bar_selector: '#large-map-side-bar:first'
+        });
+      }
+    });
+  });
+
 });
 </script>
 <% end %>
@@ -151,6 +168,14 @@ $(document).ready(function() {
             </label>
           </li>
         </ul>
+      </div>
+
+      <div id="large-map-side-bar" style="display:none;">
+        <div class="map-location" data-jmapping="{id:1, point: {lat:<%= @community.latitude %>, lng:<%= @community.longitude %>}}">
+          <div id="info-box">
+            <h4><%= h @community.title %></h4>
+          </div>
+        </div>
       </div>
     </div>
   </div>
