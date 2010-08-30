@@ -2050,6 +2050,30 @@ div.wysiwyg ul li {
     }
   /* @end */
   
+  /* @group --large map overlay */
+  
+    #large-map-container {
+      background: #fff;
+      display: none;
+      height: 65%;
+      position: relative;
+      width: 80%;
+    }
+
+    #large-map-controls {
+      background: #fff;
+      bottom: 0;
+      position: absolute;
+      left: 0;
+      width: 100%;
+    }
+
+    #large-map-controls input {
+      width: auto;
+    }
+
+  /* @end */
+  
   /* @group --sidebar */
     .community #sidebar div.facebook-update {
       padding-bottom: 15px;
