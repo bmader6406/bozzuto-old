@@ -1,86 +1,13 @@
 <% content_for :javascript do %>
-  <script type="text/javascript">
-    (function($) {
-      $(document).ready(function() {
-        if (GBrowserIsCompatible()) {
-          var latitude = <%= @community.latitude %>;
-          var longitude = <%= @community.longitude %>;
-          var point = new GLatLng(latitude, longitude);
-          var map = new GMap2(document.getElementById("map-canvas"));
-          map.setCenter(point, 13);
-          map.setUIToDefault();
-          map.addOverlay(new GMarker(point));
+<%= javascript_include_tag 'jmapping/jquery.jmapping.min', 'jmapping/jquery.metadata', 'jmapping/mapiconmaker', 'jmapping/markermanager' %>
 
-          $('<div id="map-large">').appendTo("body").css({width: '80%', height: '80%'}).hide();
-          var largeMap = new GMap2(document.getElementById("map-large"));
-          largeMap.setCenter(point, 13);
-          largeMap.setUIToDefault();
-          var icon = new GIcon();
-          icon.image = 'http://google-maps-icons.googlecode.com/files/home.png';
-          icon.iconAnchor = new GPoint(18, 32);
-          icon.infoWindowAnchor = new GPoint(10, 10);
-          var marker = new GMarker(point, {icon: icon});
-          largeMap.addOverlay(marker);
-          GEvent.addListener(marker, 'click', function() {
-                  marker.openInfoWindowHtml("<h4><%= @community.title %></h4>");
-                });
-
-          var populateMapFunction = function (search) {
-            return function (data) {
-              $(data.ResultSet.Result).each(function () {
-                var result = this;
-                var point = new GLatLng(result.Latitude, result.Longitude);
-                var marker = new GMarker(point, {icon: icons[search]});
-                GEvent.addListener(marker, 'click', function() {
-                  marker.openInfoWindowHtml('<h4><a href="' + result.BusinessUrl + '">' + result.Title + '</a></h4>' +
-                      '<p>' + result.Distance + ' miles<br />' + result.Address + '<br />' + result.City + ', ' + result.State + '</p>');
-                });
-                largeMap.addOverlay(marker);
-              });
-            }
-          }
-
-          var queries = {
-            restaurant: 'http://google-maps-icons.googlecode.com/files/restaurant.png',
-            school: 'http://google-maps-icons.googlecode.com/files/school.png'
-          }
-          var icons = [];
-
-          for (var query in queries) {
-            window["populateMap_" + query] = populateMapFunction(query);
-            icons[query] = new GIcon();
-            icons[query].image = queries[query];
-          }
-
-          for (var icon in icons) {
-            icons[icon].iconAnchor = new GPoint(18, 32);
-            icons[icon].infoWindowAnchor = new GPoint(10, 10);
-          }
-
-          for (var query in queries) {
-            $.getScript("http://local.yahooapis.com/LocalSearchService/V3/localSearch?" + $.param({
-              appid: <%= raw(APP_CONFIG[:yahoo_api_key].inspect) %>,
-              latitude: latitude,
-              longitude: longitude,
-              query: query,
-              output: 'json',
-              callback: 'window.populateMap_' + query
-            }));
-          }
-
-          $("#map-lightbox").click(function (e) {
-            e.preventDefault();
-            $("#map-large").lightbox_me({
-              onLoad: function () {
-                largeMap.checkResize();
-                largeMap.setCenter(point, 13);
-              }
-            });
-          });
-        }
-      })
-    })(jQuery);
-  </script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#map-canvas').jMapping({
+    default_zoom_level: 13
+  });
+});
+</script>
 <% end %>
 
 <div id="sidebar" class="col">
@@ -101,6 +28,13 @@
 
     <div id="map" class="section">
       <div id="map-canvas"></div>
+      <div id="map-side-bar" style="display:none;">
+        <div class="map-location" data-jmapping="{id:1, point: {lat:<%= @community.latitude %>, lng:<%= @community.longitude %>}}">
+          <div id="info-box">
+          <h4><%= h @community.title %></h4>
+          </div>
+        </div>
+      </div>
       <p class="call-to-action">
         <%= link_to 'View Larger', "#", :id => 'map-lightbox' %>
       </p>
@@ -147,3 +81,78 @@
     <%= share_this_link %>
   </div>
 </div>
+
+<% content_for :end_of_body do %>
+
+  <div id="large-map-container">
+    <div id="large-map">
+
+    </div>
+    <div id="large-map-controls">
+      <h3>Points of Interest</h3>
+      <div class="row">
+        <ul class="col">
+          <li>
+            <label>
+              <input type="checkbox" />
+              Point of interest
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" />
+              Point of interest
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" />
+              Point of interest
+            </label>
+          </li>
+        </ul>
+        <ul class="col">
+          <li>
+            <label>
+              <input type="checkbox" />
+              Point of interest
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" />
+              Point of interest
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" />
+              Point of interest
+            </label>
+          </li>
+        </ul>
+        <ul class="col">
+          <li>
+            <label>
+              <input type="checkbox" />
+              Point of interest
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" />
+              Point of interest
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" />
+              Point of interest
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<% end %>
