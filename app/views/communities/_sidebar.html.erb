@@ -2,37 +2,79 @@
 <%= javascript_include_tag 'jmapping/jquery.jmapping.min', 'jmapping/jquery.metadata', 'jmapping/mapiconmaker', 'jmapping/markermanager' %>
 
 <script type="text/javascript">
+function updateMap() {
+  console.log($('#large-map-side-bar div.map-location').html());
+  $('#large-map').data('jMapping').update();
+}
+
+function search(categories) {
+  var returned = 0;
+  $.each(categories, function(category_index, category) {
+    $.get('http://api.yelp.com/business_review_search?' +
+      $.param({
+        category: category,
+        ywsid: '<%= APP_CONFIG[:yelp_api_key] %>',
+        lat: <%= @community.latitude %>,
+        long: <%= @community.longitude %>,
+        limit: 10,
+        radius: 10
+      }), {},
+      function(data, status) {
+        template = '<div class="map-location biz" data-jmapping=\'{{json}}\'><div class="info-box"><h4>{{name}}</h4></div></div>';
+        $.each(data.businesses, function(index, biz) {
+          var div = template;
+          biz_object = {
+            category: category,
+            id: ((category_index*1000)+(index)+2),
+            point: {
+              lat: biz.latitude,
+              lng: biz.longitude
+            },
+          };
+          div = div.replace('{{json}}', JSON.stringify(biz_object));
+          div = div.replace('{{name}}', biz.name);
+
+          $('#large-map-side-bar').append(div);
+        });
+        updateMap();
+      }, 'jsonp'
+    );
+  });
+}
+
 $(document).ready(function() {
   $('#map-canvas').jMapping({
     default_zoom_level: 13
   });
-
-
-  var search = function(categories) {
-    console.log('In search');
-    $.get('http://api.yelp.com/business_review_search?' +
-      'category='+categories.join('+') + '&' +
-      $.param({
-        ywsid: '<%= APP_CONFIG[:yelp_api_key] %>',
-        lat: <%= @community.latitude %>,
-        long: <%= @community.longitude %>
-      }), {},
-      function(data, status) {
-        // add HTML
-        // reload icons
-
-        console.log('in callback');
-        console.log(data);
-        console.log(status);
-      }, 'jsonp'
-    );
-  }
 
   $("#map-lightbox").click(function (e) {
     e.preventDefault();
     $("#large-map-container").lightbox_me({
       onLoad: function () {
         $('#large-map').css({height:'420px',width:'100%'});
+
+        $('#large-map').jMapping({
+          category_icon_options: function(category) {
+            switch(category) {
+              case 'restaurants':
+                return 'http://google-maps-icons.googlecode.com/files/restaurant.png';
+                break;
+              case 'nightlife':
+                return 'http://google-maps-icons.googlecode.com/files/cocktail.png';
+                break;
+              case 'childcare':
+                return 'http://google-maps-icons.googlecode.com/files/daycare.png';
+                break;
+              case 'arts':
+                return 'http://google-maps-icons.googlecode.com/files/theater.png';
+                break;
+              default:
+                return 'http://google-maps-icons.googlecode.com/files/home.png';
+            }
+          },
+          default_zoom_level: 13,
+          side_bar_selector: '#large-map-side-bar:first'
+        });
 
         var categories = new Array;
         $('#large-map-controls input[name=categories]:checked').map(function() {
@@ -41,20 +83,13 @@ $(document).ready(function() {
         search(categories);
 
         $('#large-map-controls input').click(function(e) {
+          $('#large-map-side-bar .biz').remove();
           categories = new Array;
           $('#large-map-controls input[name=categories]:checked').map(function() {
             categories.push($(this).val());
           });
 
           search(categories);
-        });
-
-        $('#large-map').jMapping({
-          category_icon_options: function(category) {
-            return 'http://google-maps-icons.googlecode.com/files/home.png';
-          },
-          default_zoom_level: 13,
-          side_bar_selector: '#large-map-side-bar:first'
         });
       }
     });
@@ -177,7 +212,7 @@ $(document).ready(function() {
         </ul>
       </div>
 
-      <div id="large-map-side-bar" style="display:none;">
+      <div id="large-map-side-bar">
         <div class="map-location" data-jmapping="{id:1, point: {lat:<%= @community.latitude %>, lng:<%= @community.longitude %>}}">
           <div class="info-box">
             <h4><%= h @community.title %></h4>
