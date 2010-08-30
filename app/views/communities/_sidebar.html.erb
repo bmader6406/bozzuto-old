@@ -7,21 +7,54 @@ $(document).ready(function() {
     default_zoom_level: 13
   });
 
+
+  var search = function(categories) {
+    console.log('In search');
+    $.get('http://api.yelp.com/business_review_search?' +
+      'category='+categories.join('+') + '&' +
+      $.param({
+        ywsid: '<%= APP_CONFIG[:yelp_api_key] %>',
+        lat: <%= @community.latitude %>,
+        long: <%= @community.longitude %>
+      }), {},
+      function(data, status) {
+        // add HTML
+        // reload icons
+
+        console.log('in callback');
+        console.log(data);
+        console.log(status);
+      }, 'jsonp'
+    );
+  }
+
   $("#map-lightbox").click(function (e) {
     e.preventDefault();
     $("#large-map-container").lightbox_me({
       onLoad: function () {
         $('#large-map').css({height:'420px',width:'100%'});
+
+        var categories = new Array;
+        $('#large-map-controls input[name=categories]:checked').map(function() {
+          categories.push($(this).val());
+        });
+        search(categories);
+
+        $('#large-map-controls input').click(function(e) {
+          categories = new Array;
+          $('#large-map-controls input[name=categories]:checked').map(function() {
+            categories.push($(this).val());
+          });
+
+          search(categories);
+        });
+
         $('#large-map').jMapping({
           category_icon_options: function(category) {
             return 'http://google-maps-icons.googlecode.com/files/home.png';
           },
           default_zoom_level: 13,
           side_bar_selector: '#large-map-side-bar:first'
-        });
-
-        $('#large-map-controls input').click(function(e) {
-
         });
       }
     });
@@ -115,15 +148,21 @@ $(document).ready(function() {
         <ul class="col">
           <li>
             <label>
-              <input type="checkbox" value="restaurants" />
+              <input type="checkbox" name="categories" value="restaurants" checked="checked" />
               Restaurants
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="categories" value="arts" checked="checked" />
+              Arts &amp; Entertainment
             </label>
           </li>
         </ul>
         <ul class="col">
           <li>
             <label>
-              <input type="checkbox" value="daycare" />
+              <input type="checkbox" name="categories" value="childcare" checked="checked" />
               Daycare
             </label>
           </li>
@@ -131,7 +170,7 @@ $(document).ready(function() {
         <ul class="col">
           <li>
             <label>
-              <input type="checkbox" value="nightlife" />
+              <input type="checkbox" name="categories" value="nightlife" checked="checked" />
               Nightlife
             </label>
           </li>
