@@ -10,11 +10,11 @@
 <% end %>
 
 <div class="row">
-  <% @communities.in_groups(2, false).each do |group| %>
-    <ul class="col">
-      <% group.each do |community| %>
-        <li style="list-style: none;"><%= link_to community.title, community %></li>
-      <% end %>
-    </ul>
-  <% end %>
+  <ul class="col">
+    <% @communities.in_groups(2, false).each do |group| %>
+        <% group.each do |community| %>
+          <li style="list-style: none;"><%= link_to community.title, community %></li>
+        <% end %>
+    <% end %>
+  </ul>
 </div>

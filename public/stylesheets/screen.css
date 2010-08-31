@@ -1870,6 +1870,19 @@ div.wysiwyg ul li {
       padding-left: 0;
       text-indent: -9999px;
     }
+    .community #overview ul.community-icons li,
+    .community #overview ul.community-icons li a,
+    .homes #content #view-as-list ul.community-icons a {
+      display: block;
+      width: 45px;
+      height: 45px;
+      margin-left: 0;
+      padding-left: 0;
+      text-indent: -9999px;
+    }
+		.community #overview ul li {
+			background: none;
+		}
   /* @end */
 
   /* @group --content */
@@ -3603,7 +3616,7 @@ div.wysiwyg ul li {
     /* latest news & awards */
     .page #aside .latest-news h4 a,
     .page #aside .latest-awards h4 a {
-      background: transparent url(../images/structure/bg-news-a.gif) no-repeat center right;
+      background: transparent url(../images/structure/bg-news-a.gif) no-repeat scroll 0 0 transparent;
     }
     .page #aside .latest-news h4 a {
       padding-right: 6px;
