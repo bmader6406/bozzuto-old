@@ -1873,6 +1873,8 @@ div.wysiwyg ul li {
     .community #overview ul.community-icons li,
     .community #overview ul.community-icons li a,
     .homes #content #view-as-list ul.community-icons a {
+      background: none;
+      background-repeat: no-repeat;
       display: block;
       width: 45px;
       height: 45px;
@@ -1880,9 +1882,6 @@ div.wysiwyg ul li {
       padding-left: 0;
       text-indent: -9999px;
     }
-		.community #overview ul li {
-			background: none;
-		}
   /* @end */
 
   /* @group --content */
