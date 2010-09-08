@@ -14,7 +14,7 @@
         <div class="intro" id="intro-partial">
           <%= truncate_html(@community.overview_text, :length => 350, :omission => "&hellip;").try(:html_safe) %>
         </div>
-        
+
         <% if @community.overview_text.length > 350 %>
           <div class="intro" id="intro-full">
             <% if @community.overview_text.present? -%>
@@ -61,7 +61,7 @@
                   <%= cheapest_floor_plan_price_in_group(plans_in_group) %>
                 </td>
                 <td class="availability">
-                  <%= link_to "Availability", @community.availability_url, :rel => 'external' %>
+                  <%= link_to "Availability", (@community.availability_url.present? ? @community.availability_url : contact_apartment_community_path(@community)), :rel => 'external' %>
                 </td>
               </tr>
             <% end %>
