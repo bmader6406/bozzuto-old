@@ -7,6 +7,11 @@ class HomeCommunity < Community
     :class_name => 'Home',
     :conditions => { :featured => true }
 
+  has_attached_file :promo,
+    :url => '/system/:class/:id/:class_:id_:style.:extension',
+    :styles => { :display => '151x54#' },
+    :default_style => :display
+
   named_scope :ordered_by_title, :order => 'title ASC'
   default_scope :order => 'title ASC'
 
