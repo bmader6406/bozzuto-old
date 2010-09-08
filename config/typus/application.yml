@@ -66,9 +66,9 @@ BodySlide:
     form: image, link_url, property, body_slideshow
   order_by: position
   relationships: body_slideshow, property
-  filters: 
-  search: 
-  application: 
+  filters:
+  search:
+  application:
 
 BodySlideshow:
   fields:
@@ -77,11 +77,11 @@ BodySlideshow:
     form: name, page
     options:
       destroy_related: BodySlide
-  order_by: 
+  order_by:
   relationships: page, slides
-  filters: 
+  filters:
   search: name
-  application: 
+  application:
 
 Buzz:
   fields:
@@ -113,9 +113,9 @@ ContactTopic:
     options:
       ckeditor: body
   order_by: position
-  relationships: 
-  filters: 
-  search: 
+  relationships:
+  filters:
+  search:
   application: Content
 
 County:
@@ -135,7 +135,7 @@ Feed:
     list: name, url
     form: name, url
   order_by:
-  relationships: 
+  relationships:
   filters:
   search:
   application:
@@ -166,7 +166,7 @@ HomeCommunity:
       destroy_related: PropertySlideshow, PropertyMiniSlideshow, Home, Video, PhotoSet
   order_by: title
   relationships: property_features, city, county, slideshow, videos, photo_set, homes, local_info_feed, promo
-  filters: 
+  filters:
   search: title
   application: Properties
 
@@ -183,16 +183,16 @@ HomeFloorPlan:
 
 HomePage:
   fields:
-    default: 
-    list: 
+    default:
+    list:
     form: meta_title, meta_description, meta_keywords, body, mini_slideshow
     options:
       ckeditor: body
       destroy_related: HomePageSlide
-  order_by: 
+  order_by:
   relationships: slides, mini_slideshow
-  filters: 
-  search: 
+  filters:
+  search:
   application: Content
 
 HomePageSlide:
@@ -202,9 +202,9 @@ HomePageSlide:
     form: image
   order_by: position
   relationships: home_page
-  filters: 
-  search: 
-  application: 
+  filters:
+  search:
+  application:
 
 LandingPage:
   fields:
@@ -213,9 +213,9 @@ LandingPage:
     form: title, state, meta_title, meta_description, meta_keywords, masthead_body, masthead_image, promo, secondary_title, secondary_body
     options:
       ckeditor: masthead_body, secondary_body
-  order_by: 
+  order_by:
   relationships: state, popular_properties, apartment_communities, featured_apartment_communities, home_communities, projects, promo
-  filters: 
+  filters:
   search: title
   application: Geography
 
@@ -247,9 +247,9 @@ MastheadSlide:
       selectors: slide_type
   order_by: position
   relationships: mini_slideshow, masthead_slideshow
-  filters: 
-  search: 
-  application: 
+  filters:
+  search:
+  application:
 
 MastheadSlideshow:
   fields:
@@ -258,11 +258,11 @@ MastheadSlideshow:
     form: name, page
     options:
       destroy_related: MastheadSlide
-  order_by: 
+  order_by:
   relationships: page, slides
-  filters: 
+  filters:
   search: name
-  application: 
+  application:
 
 NewsPost:
   fields:
@@ -291,7 +291,7 @@ Page:
   relationships: parent, section, masthead_slideshow, body_slideshow
   filters:
   search: title
-  application: 
+  application:
   options:
 
 Photo:
@@ -313,11 +313,11 @@ PhotoSet:
     options:
       booleans:
         needs_sync: ['Yes', 'No']
-  order_by: 
+  order_by:
   relationships: property
-  filters: 
+  filters:
   search: title
-  application: 
+  application:
 
 PressRelease:
   fields:
@@ -330,7 +330,7 @@ PressRelease:
         published: ['Yes', 'No']
   order_by: -published_at
   relationships: sections
-  filters: 
+  filters:
   search: title, body
   application: News & Press
 
@@ -346,9 +346,11 @@ Project:
         published: ['Yes', 'No']
       selectors: brochure_type
       destroy_related: PropertySlideshow, PropertyMiniSlideshow, ProjectDataPoint, ProjectUpdate
+  options:
+    start_year: 1990
   order_by: section_id, position
   relationships: city, section, slideshow, data_points, updates, project_categories
-  filters: 
+  filters:
   search: title
   application: Properties
 
@@ -359,7 +361,7 @@ ProjectCategory:
     form: title
   order_by: position
   relationships: projects
-  filters: 
+  filters:
   search: title
   application: Properties
 
@@ -396,7 +398,7 @@ Promo:
     form: title, subtitle, link_url
   order_by: title
   relationships: apartment_communities, home_communities, landing_pages
-  filters: 
+  filters:
   search: title, subtitle, link_url
   application: Content
 
@@ -419,8 +421,8 @@ PropertyFeature:
     list: name, icon, position
     form: name, icon, description, show_on_search_page
   order_by: position
-  relationships: 
-  filters: 
+  relationships:
+  filters:
   search: name
   application: Properties
 
@@ -431,9 +433,9 @@ MiniSlide:
     form: image, mini_slideshow
   order_by: position
   relationships: mini_slideshow
-  filters: 
-  search: 
-  application: 
+  filters:
+  search:
+  application:
 
 MiniSlideshow:
   fields:
@@ -442,11 +444,11 @@ MiniSlideshow:
     form: title, subtitle, link_url
     options:
       destroy_related: MiniSlide
-  order_by: 
+  order_by:
   relationships: slides
-  filters: 
-  search: 
-  application: 
+  filters:
+  search:
+  application:
 
 PropertySlide:
   fields:
@@ -455,9 +457,9 @@ PropertySlide:
     form: image, caption, property_slideshow
   order_by: position
   relationships: property_slideshow
-  filters: 
-  search: 
-  application: 
+  filters:
+  search:
+  application:
 
 PropertySlideshow:
   fields:
@@ -466,11 +468,11 @@ PropertySlideshow:
     form: name, property
     options:
       destroy_related: PropertySlide
-  order_by: 
+  order_by:
   relationships: property, slides
-  filters: 
+  filters:
   search: name
-  application: 
+  application:
 
 Section:
   fields:
@@ -528,6 +530,6 @@ Video:
     form: image, url, property
   order_by: position
   relationships: property
-  filters: 
-  search: 
-  application: 
+  filters:
+  search:
+  application:
