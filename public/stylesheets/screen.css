@@ -3591,24 +3591,12 @@ div.wysiwyg ul li {
     /* latest news & awards */
     .page #aside .latest-news h4 a,
     .page #aside .latest-awards h4 a {
-      background: transparent url(../images/structure/bg-news-a.gif) no-repeat scroll 0 0 transparent;
-    }
-    .page #aside .latest-news h4 a {
-      padding-right: 6px;
-    }
-    .page #aside .latest-awards h4 a {
-      background-position: center left;
+      background: transparent url(../images/structure/bg-news-a.gif) no-repeat 0 4px;
       padding-left: 6px;
     }
     .page #aside .latest-news .article {
       margin-bottom: 8px;
     }
-    /*.page #aside .latest-news .section.first .date span {
-      display: block;
-      font-size: 27px;
-      font-weight: normal;
-      line-height: 0.925925926;
-    }*/
     .page #aside .latest-awards .section {
       background: transparent url(../images/structure/bg-about-sidebar-section.gif) no-repeat bottom left;
       padding-bottom: 0;
