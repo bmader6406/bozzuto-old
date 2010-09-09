@@ -3703,6 +3703,13 @@ div.wysiwyg ul li {
       margin-bottom: 0.727272727em;
     }
 
+    .page #content .community-listing ul.col {
+      width: 230px;
+    }
+    .page #content .community-listing li {
+      list-style: none;
+    }
+
     .page ul.testimonials {
       margin-left: 0;
     }
