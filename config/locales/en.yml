@@ -72,6 +72,7 @@ en:
         floor_plans_meta_description: Homes SEO Description
         floor_plans_meta_keywords: Homes SEO Keywords
         floor_plans_meta_title: Homes SEO Title
+        listing_promo: Listing Promo Image
       home_page:
         featured_property: Featured Property
         meta_description: SEO Description
@@ -198,6 +199,8 @@ en:
       contact_topic:
         recipients: Comma-separated list of email addresses
         section_id: When in this section, contact links will include this topic automatically
+      home_community:
+        listing_promo: Image dimensions should be 151x54
       home_page_slide:
         image: Image dimensions should be 1100x375
       landing_page:

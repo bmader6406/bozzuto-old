@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100908111038) do
+ActiveRecord::Schema.define(:version => 20100910153502) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -538,9 +538,9 @@ ActiveRecord::Schema.define(:version => 20100908111038) do
     t.string   "cheapest_2_bedroom_price"
     t.string   "cheapest_3_bedroom_price"
     t.string   "cheapest_penthouse_price"
-    t.string   "promo_file_name"
-    t.string   "promo_content_type"
-    t.integer  "promo_file_size"
+    t.string   "listing_promo_file_name"
+    t.string   "listing_promo_content_type"
+    t.integer  "listing_promo_file_size"
   end
 
   create_table "properties_property_features", :id => false, :force => true do |t|

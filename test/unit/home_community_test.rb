@@ -10,6 +10,7 @@ class HomeCommunityTest < ActiveSupport::TestCase
 
     should_have_many :homes
     should_have_many :featured_homes
+    should_have_attached_file :listing_promo
 
     context '#nearby_communities' do
       setup do
