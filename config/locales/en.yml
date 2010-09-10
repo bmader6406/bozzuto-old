@@ -56,6 +56,14 @@ en:
         body_slideshow: Slideshow
         link_url: Link URL
         property: Featured Property
+      buzz:
+        first_name: First Name
+        formatted_affiliations: Affiliations
+        formatted_buzzes: Buzzes
+        last_name: Last Name
+        street1: Street Address 1
+        street2: Street Address 2
+        zip_code: ZIP Code
       community:
         elite: Elite Community
         smart_share: Bozzuto SmartShare Program

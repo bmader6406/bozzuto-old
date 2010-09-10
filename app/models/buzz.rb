@@ -7,6 +7,10 @@ class Buzz < ActiveRecord::Base
       read_attribute(field).to_s.split(",")
     end
 
+    define_method("formatted_#{field}") do
+      send(field).join(', ').gsub(/_/, ' ')
+    end
+
     define_method("#{field}=") do |value|
       write_attribute(field, convert_checkboxes_to_string(value))
     end

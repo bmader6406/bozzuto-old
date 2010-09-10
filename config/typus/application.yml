@@ -83,6 +83,17 @@ BodySlideshow:
   search: name
   application: 
 
+Buzz:
+  fields:
+    default: email, first_name, last_name, street1, street2, city, state, zip_code, phone, formatted_buzzes, formatted_affiliations
+    list: first_name, last_name, email, phone, city, state
+    form: 
+  order_by: 
+  relationships: 
+  filters: 
+  search: 
+  application: Contact
+
 City:
   fields:
     default: name, state
