@@ -2064,27 +2064,61 @@ div.wysiwyg ul li {
   /* @end */
   
   /* @group --large map overlay */
-  
     #large-map-container {
       background: #fff;
       display: none;
-      height: 65%;
+      height: 520px;
       position: relative;
-      width: 80%;
+      width: 850px;
     }
 
     #large-map-controls {
       background: #fff;
       bottom: 0;
-      position: absolute;
+      height: 70px;
       left: 0;
-      width: 100%;
+      padding: 20px 30px 10px 30px;
+      position: absolute;
+      width: 790px;
+    }
+
+    #large-map-controls h3 {
+      font-size: 16px;
+      line-height: 1;
+      margin-bottom: 1em;
+    }
+
+    #large-map-controls label {
+      font-size: 13px;
+      padding-right: 25px;
     }
 
     #large-map-controls input {
+      vertical-align: middle;
       width: auto;
     }
+    
+    #large-map h4 {
+      font-size: 13px;
+      margin-bottom: 0.5em;
+    }
 
+    #large-map h4 a {
+      text-decoration: underline;
+    }
+
+    #large-map h4 a:hover {
+      text-decoration: none;
+    }
+
+    #large-map .info-photo {
+      float: left;
+      width: 50px;
+    }
+
+    #large-map .info-content {
+      float: left;
+    }
   /* @end */
   
   /* @group --sidebar */

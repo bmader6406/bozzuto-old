@@ -1,100 +1,146 @@
 <% content_for :javascript do %>
-<%= javascript_include_tag 'jmapping/jquery.jmapping.min', 'jmapping/jquery.metadata', 'jmapping/mapiconmaker', 'jmapping/markermanager' %>
 
 <script type="text/javascript">
-function updateMap() {
-  $('#large-map').data('jMapping').update();
-}
+(function() {
+  var template =
+    '<div class="map-location biz" data-jmapping=\'{{json}}\'>' +
+      '<div class="info-box clearfix">' + 
+        '<h4><a href="{{url}}">{{name}}</a></h4>' +
+        '<div class="info-photo"><a href="{{url}}"><img src="{{photo_img}}" /></a></div>' +
+        '<div class="info-content"><img src="{{rating_img}}" /><p>{{address}}</p></div>' +
+      '</div>' +
+    '</div>';
 
-function search(categories) {
-  var returned = 0;
-  $.each(categories, function(category_index, category) {
-    $.get('http://api.yelp.com/business_review_search?' +
-      $.param({
-        category: category,
-        ywsid: '<%= APP_CONFIG[:yelp_api_key] %>',
-        lat: <%= @community.latitude %>,
-        long: <%= @community.longitude %>,
-        limit: 10,
-        radius: 10
-      }), {},
-      function(data, status) {
-        template = '<div class="map-location biz" data-jmapping=\'{{json}}\'><div class="info-box"><h4>{{name}}</h4></div></div>';
-        $.each(data.businesses, function(index, biz) {
-          var div = template;
-          biz_object = {
-            category: category,
-            id: ((category_index*1000)+(index)+2),
-            point: {
-              lat: biz.latitude,
-              lng: biz.longitude
+  function updateMap() {
+    $('#large-map').data('jMapping').update();
+  }
+
+  function formatPhone(phone) {
+    if (phone.length == 10) {
+      return '('+phone.substr(0, 3)+') '+phone.substr(3, 3)+'-'+phone.substr(6, 4);
+    } else {
+      return phone;
+    }
+  }
+
+  function search(categories) {
+    var returned = 0;
+
+    if (categories.length == 0) {
+      updateMap();
+      return;
+    }
+
+    $.each(categories, function(category_index, category) {
+      $.get('http://api.yelp.com/business_review_search?' +
+        $.param({
+          category: category,
+          ywsid: '<%= APP_CONFIG[:yelp_api_key] %>',
+          lat: <%= @community.latitude %>,
+          long: <%= @community.longitude %>,
+          limit: 10,
+          radius: 10
+        }), {},
+        function(data, status) {
+          $.each(data.businesses, function(index, biz) {
+            var div = template;
+            biz_object = {
+              category: category,
+              id: ((category_index*1000)+(index)+2),
+              point: {
+                lat: biz.latitude,
+                lng: biz.longitude
+              },
+            };
+            console.log(biz);
+
+            var address = [biz.address1, biz.address2, biz.address3, biz.city + ', ' + biz.state_code + ' ' + biz.zip, formatPhone(biz.phone)];
+            address = $.map(address, function(e) {
+              if (e != "") {
+                return e;
+              }
+            });
+
+            div = div.replace('{{json}}', JSON.stringify(biz_object));
+            div = div.replace('{{name}}', biz.name);
+            div = div.replace('{{url}}', biz.url);
+            div = div.replace('{{rating_img}}', biz.rating_img_url_small);
+            div = div.replace('{{photo_img}}', biz.photo_url_small);
+            div = div.replace('{{address}}', address.join('<br />'));
+
+            $('#large-map-side-bar').append(div);
+          });
+          updateMap();
+        }, 'jsonp'
+      );
+    });
+  }
+
+  $(document).ready(function() {
+    $('#map-canvas').jMapping({
+      default_zoom_level: 13
+    });
+
+    $("#map-lightbox").click(function (e) {
+      e.preventDefault();
+      $("#large-map-container").lightbox_me({
+        onLoad: function () {
+          var baseIcon = new GIcon(G_DEFAULT_ICON);
+          baseIcon.iconSize = new GSize(32, 37);
+          baseIcon.iconAnchor = new GPoint(16, 37);
+          baseIcon.infoWindowAnchor = new GPoint(16, 0);
+          baseIcon.shadow = null;
+
+          $('#large-map').css({ height: '420px', width: '850px' });
+
+          $('#large-map').jMapping({
+            category_icon_options: function(category) {
+              var icon = new GIcon(baseIcon);
+
+              switch(category) {
+                case 'restaurants':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/restaurant.png';
+                  break;
+                case 'nightlife':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/cocktail.png';
+                  break;
+                case 'childcare':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/daycare.png';
+                  break;
+                case 'arts':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/theater.png';
+                  break;
+                default:
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/home.png';
+              }
+
+              return icon;
             },
-          };
-          div = div.replace('{{json}}', JSON.stringify(biz_object));
-          div = div.replace('{{name}}', biz.name);
+            default_zoom_level: 13,
+            side_bar_selector: '#large-map-side-bar:first'
+          });
 
-          $('#large-map-side-bar').append(div);
-        });
-        updateMap();
-      }, 'jsonp'
-    );
-  });
-}
-
-$(document).ready(function() {
-  $('#map-canvas').jMapping({
-    default_zoom_level: 13
-  });
-
-  $("#map-lightbox").click(function (e) {
-    e.preventDefault();
-    $("#large-map-container").lightbox_me({
-      onLoad: function () {
-        $('#large-map').css({height:'420px',width:'100%'});
-
-        $('#large-map').jMapping({
-          category_icon_options: function(category) {
-            switch(category) {
-              case 'restaurants':
-                return 'http://google-maps-icons.googlecode.com/files/restaurant.png';
-                break;
-              case 'nightlife':
-                return 'http://google-maps-icons.googlecode.com/files/cocktail.png';
-                break;
-              case 'childcare':
-                return 'http://google-maps-icons.googlecode.com/files/daycare.png';
-                break;
-              case 'arts':
-                return 'http://google-maps-icons.googlecode.com/files/theater.png';
-                break;
-              default:
-                return 'http://google-maps-icons.googlecode.com/files/home.png';
-            }
-          },
-          default_zoom_level: 13,
-          side_bar_selector: '#large-map-side-bar:first'
-        });
-
-        var categories = new Array;
-        $('#large-map-controls input[name=categories]:checked').map(function() {
-          categories.push($(this).val());
-        });
-        search(categories);
-
-        $('#large-map-controls input').click(function(e) {
-          $('#large-map-side-bar .biz').remove();
-          categories = new Array;
+          var categories = new Array;
           $('#large-map-controls input[name=categories]:checked').map(function() {
             categories.push($(this).val());
           });
-
           search(categories);
-        });
-      }
-    });
-  });
 
-});
+          $('#large-map-controls input').click(function(e) {
+            $('#large-map-side-bar .biz').remove();
+            categories = new Array;
+            $('#large-map-controls input[name=categories]:checked').map(function() {
+              categories.push($(this).val());
+            });
+
+            search(categories);
+          });
+        }
+      });
+    });
+
+  });
+})();
 </script>
 <% end %>
 
@@ -178,38 +224,26 @@ $(document).ready(function() {
     </div>
     <div id="large-map-controls">
       <h3>Points of Interest</h3>
-      <div class="row">
-        <ul class="col">
-          <li>
-            <label>
-              <input type="checkbox" name="categories" value="restaurants" checked="checked" />
-              Restaurants
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" name="categories" value="arts" checked="checked" />
-              Arts &amp; Entertainment
-            </label>
-          </li>
-        </ul>
-        <ul class="col">
-          <li>
-            <label>
-              <input type="checkbox" name="categories" value="childcare" checked="checked" />
-              Daycare
-            </label>
-          </li>
-        </ul>
-        <ul class="col">
-          <li>
-            <label>
-              <input type="checkbox" name="categories" value="nightlife" checked="checked" />
-              Nightlife
-            </label>
-          </li>
-        </ul>
-      </div>
+
+      <label>
+        <input type="checkbox" name="categories" value="restaurants" checked="checked" />
+        Restaurants
+      </label>
+
+      <label>
+        <input type="checkbox" name="categories" value="arts" checked="checked" />
+        Arts &amp; Entertainment
+      </label>
+
+      <label>
+        <input type="checkbox" name="categories" value="childcare" checked="checked" />
+        Daycare
+      </label>
+
+      <label>
+        <input type="checkbox" name="categories" value="nightlife" checked="checked" />
+        Nightlife
+      </label>
 
       <div id="large-map-side-bar">
         <div class="map-location" data-jmapping="{id:1, point: {lat:<%= @community.latitude %>, lng:<%= @community.longitude %>}}">
