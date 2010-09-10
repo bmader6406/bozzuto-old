@@ -7,7 +7,7 @@ class HomeCommunity < Community
     :class_name => 'Home',
     :conditions => { :featured => true }
 
-  has_attached_file :promo,
+  has_attached_file :listing_promo,
     :url => '/system/:class/:id/:class_:id_:style.:extension',
     :styles => { :display => '151x54#' },
     :default_style => :display

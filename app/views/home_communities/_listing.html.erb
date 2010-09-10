@@ -3,7 +3,7 @@
     <% if community.listing_image? %>
       <%= content_tag :p, image_tag(community.listing_image.url) %>
     <% end %>
-    <%= content_tag :p, link_to(image_tag(community.promo.url), home_community_path(community)) if community.promo? %>
+    <%= content_tag :p, link_to(image_tag(community.listing_promo.url), home_community_path(community)) if community.listing_promo? %>
   </div>
 
   <div class="info">
