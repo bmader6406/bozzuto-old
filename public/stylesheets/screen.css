@@ -1033,6 +1033,7 @@ div.wysiwyg ul li {
   /* @group -big slideshow */
   #slideshow {
     height: 375px;
+    overflow: hidden;
     position: relative;
     top: -15px;
     width: 840px;
