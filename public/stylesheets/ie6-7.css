@@ -16,11 +16,13 @@
 }
 
 * html .homes #content,
-* html .apartments #content {
-	width: 710px;
+* html .apartments #content,
+* html .page #content {
+	width: 770px;
 	overflow: hidden;
 	padding: 0;
 }
+
 * html .search #breadcrumb .container h1,
 * html .generic #breadcrumb .container h1 {
   margin: 0;
