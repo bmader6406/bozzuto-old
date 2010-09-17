@@ -16,7 +16,9 @@
 }
 
 * html .homes #content,
-* html .apartments #content,
+* html .apartments #content {
+  
+}
 * html .page #content {
 	width: 770px;
 	overflow: hidden;
