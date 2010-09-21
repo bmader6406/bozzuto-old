@@ -35,6 +35,8 @@ en:
         floor_plans_meta_description: Floor Plans SEO Description
         floor_plans_meta_keywords: Floor Plans SEO Keywords
         floor_plans_meta_title: Floor Plans SEO Title
+        resident_link_text: Resident Link Text
+        resident_link_url: Resident Link URL
       apartment_floor_plan:
         actual_image: Image
         availability_url: Availability URL
@@ -56,6 +58,14 @@ en:
         body_slideshow: Slideshow
         link_url: Link URL
         property: Featured Property
+      buzz:
+        first_name: First Name
+        formatted_affiliations: Affiliations
+        formatted_buzzes: Buzzes
+        last_name: Last Name
+        street1: Street Address 1
+        street2: Street Address 2
+        zip_code: ZIP Code
       community:
         elite: Elite Community
         smart_share: Bozzuto SmartShare Program

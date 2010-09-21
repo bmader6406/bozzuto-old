@@ -9,6 +9,9 @@
   </title>
 
   <meta charset="utf-8" />
+  <% if Rails.env.production? %>
+    <meta name="google-site-verification" content="z8aGriUyw1rozhnubJxR1pNhX2yL-QwTujrkif6shaU" />
+  <% end %>
   <% if yield(:meta_description).present? %>
     <meta name="description" content="<%= yield :meta_description %>" />
   <% end %>

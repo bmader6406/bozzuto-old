@@ -23,12 +23,17 @@
         <li class="last <%= current_if 'contact' %>">
           <%= link_to 'Contact Us', contact_apartment_community_path(@community) %>
           <% if @community.phone_number.present? %>
-            <span class="phone-number"><%= phone_number(@community.phone_number) %></span>
+            <%= phone_number(@community.phone_number) %>
           <% end %>
         </li>
       </ul>
 
       <ul id="remote-nav">
+        <% if @community.resident_link_text.present? && @community.resident_link_url.present? %>
+          <li>
+            <%= link_to @community.resident_link_text, website_url(@community.resident_link_url), :target => "_blank" %>
+          </li>
+        <% end %>
         <% if @community.website_url.present? %>
           <li>
             <%= link_to 'Visit Community Website', website_url(@community.website_url), :target => "_blank" %>

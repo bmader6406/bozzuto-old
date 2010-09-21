@@ -930,7 +930,7 @@ window.bozzuto = {};
         return;
       }
 
-      $.getJSON(url, { 'count': 1 }, function(data) {
+      $.getJSON(url, function(data) {
         if ($.isArray(data) && data.length > 0) {
           var tweet = data[0],
               link = 'http://www.twitter.com/' + tweet.user.screen_name,

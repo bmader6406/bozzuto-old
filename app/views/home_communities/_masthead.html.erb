@@ -23,7 +23,7 @@
         <li class="last <%= current_if 'contact' %>">
           <%= link_to 'Contact Info', contact_home_community_path(@community) %>
           <% if @community.phone_number.present? %>
-            <span class="phone-number"><%= phone_number(@community.phone_number) %></span>
+            <%= phone_number(@community.phone_number) %>
           <% end %>
         </li>
       </ul>

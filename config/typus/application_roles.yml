@@ -9,6 +9,7 @@ admin:
   Award: create, read, update, delete
   BodySlide: create, read, update, delete
   BodySlideshow: create, read, update, delete
+  Buzz: read, delete
   City: create, read, update, delete
   ContactTopic: create, read, update, delete
   County: create, read, update, delete

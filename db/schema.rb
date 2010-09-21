@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100910153502) do
+ActiveRecord::Schema.define(:version => 20100921213420) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -541,6 +541,8 @@ ActiveRecord::Schema.define(:version => 20100910153502) do
     t.string   "listing_promo_file_name"
     t.string   "listing_promo_content_type"
     t.integer  "listing_promo_file_size"
+    t.string   "resident_link_text"
+    t.string   "resident_link_url"
   end
 
   create_table "properties_property_features", :id => false, :force => true do |t|
