@@ -35,6 +35,8 @@ en:
         floor_plans_meta_description: Floor Plans SEO Description
         floor_plans_meta_keywords: Floor Plans SEO Keywords
         floor_plans_meta_title: Floor Plans SEO Title
+        resident_link_text: Resident Link Text
+        resident_link_url: Resident Link URL
       apartment_floor_plan:
         actual_image: Image
         availability_url: Availability URL

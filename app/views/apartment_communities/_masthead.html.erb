@@ -29,6 +29,11 @@
       </ul>
 
       <ul id="remote-nav">
+        <% if @community.resident_link_text.present? && @community.resident_link_url.present? %>
+          <li>
+            <%= link_to @community.resident_link_text, website_url(@community.resident_link_url), :target => "_blank" %>
+          </li>
+        <% end %>
         <% if @community.website_url.present? %>
           <li>
             <%= link_to 'Visit Community Website', website_url(@community.website_url), :target => "_blank" %>
