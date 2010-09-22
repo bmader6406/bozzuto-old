@@ -9,20 +9,18 @@
 * html .row {
   height: 1%;
 }
-
 * html .homes #masthead,
 * html .apartments #masthead {
 	height: 200px;
-}
-
-* html .homes #content,
-* html .apartments #content {
-  
 }
 * html .page #content {
 	width: 770px;
 	overflow: hidden;
 	padding: 0;
+}
+* html .page #content .column-main{
+	width: 520px;
+	overflow: hidden;
 }
 
 * html .search #breadcrumb .container h1,
@@ -136,3 +134,15 @@
 * html .tooltip-arrow {
   display: none;
 }
+
+/* @group bozzuto buzz */
+
+  #community-contact-form form p.submit input,
+  #new_buzz p.submit input,
+  .contact .column-main p.submit input {
+    padding: 8px;
+  }
+
+/* INSERT RULES HERE */
+
+/* @end */
