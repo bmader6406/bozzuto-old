@@ -3997,6 +3997,10 @@ div.wysiwyg ul li {
   width: 100%;
 }
 
+#main-content #community-contact-form form p {
+  font-size: 14px;
+}
+
 #community-contact-form form label,
 #new_buzz label,
 .contact .column-main label {
@@ -4013,6 +4017,11 @@ div.wysiwyg ul li {
 .contact .column-main input,
 #ufollowup-form input {
   width: 315px;
+}
+
+#community-contact-form form input.checkbox {
+  height: auto;
+  width: auto;
 }
 
 #community-contact-form form p.checkboxes,
