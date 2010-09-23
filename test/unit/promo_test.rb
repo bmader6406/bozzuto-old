@@ -47,4 +47,24 @@ class PromoTest < ActiveSupport::TestCase
       should_validate_presence_of :expiration_date
     end
   end
+
+  context 'named scopes' do
+    setup do
+      @promo   = Promo.make
+      @active  = Promo.make :active
+      @expired = Promo.make :expired
+    end
+
+    context '#active' do
+      should 'return promos with no expiration date or date in the future' do
+        assert_same_elements [@promo, @active], Promo.active
+      end
+    end
+
+    context '#expired' do
+      should 'return promos with expiration date in the past' do
+        assert_equal [@expired], Promo.expired
+      end
+    end
+  end
 end
