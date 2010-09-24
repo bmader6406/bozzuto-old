@@ -393,9 +393,9 @@ ProjectUpdate:
 
 Promo:
   fields:
-    default: title
-    list: title
-    form: title, subtitle, link_url
+    default: title, expired_string
+    list: title, expired_string
+    form: title, subtitle, link_url, has_expiration_date, expiration_date
   order_by: title
   relationships: apartment_communities, home_communities, landing_pages
   filters:

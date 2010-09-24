@@ -128,6 +128,17 @@ $(function() {
       }
     }).change();
   })();
+
+  // project completion date
+  (function() {
+    var expirationDate = $('select[id$=promo_expiration_date_1i]').parent();
+
+    $('input[id=promo_has_expiration_date]').change(function() {
+      if ($(this).is(':checked')) {
+        expirationDate.show();
+      } else {
+        expirationDate.hide();
+      }
+    }).change();
+  })();
 });
-
-

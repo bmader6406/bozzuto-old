@@ -130,6 +130,9 @@ en:
         image_title: Image Title
         published_at: Published At
       promo:
+        expiration_date: Expiration Date
+        expired_string: Expired?
+        has_expiration_date: Has Expiration Date
         link_url: Link URL
       property:
         brochure: Brochure File

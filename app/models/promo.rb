@@ -15,7 +15,19 @@ class Promo < ActiveRecord::Base
   before_validation :nullify_expiration_date
 
   def typus_name
-    title
+    expired? ? "#{title} (expired)" : title
+  end
+
+  def active?
+    !has_expiration_date? or expiration_date > Time.now
+  end
+
+  def expired?
+    !active?
+  end
+
+  def expired_string
+    expired? ? 'Yes' : ''
   end
 
 
