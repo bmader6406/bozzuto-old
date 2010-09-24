@@ -9,7 +9,7 @@ Sham.define do
   feed_url      { |i| "http://#{i}.#{Faker::Internet.domain_name}/feed.rss" }
   section_title { |i| "#{Faker::Lorem.words} #{i}" }
   file_name     { |i| "/image#{i}.jpg" }
-  unique_name  { |i| "#{Faker::Lorem.words(2)} #{i}" }
+  unique_name   { |i| "#{Faker::Lorem.words(2)} #{i}" }
 end
 
 Sham.bedrooms(:unique => false)  { rand(5) + 1 }
@@ -171,6 +171,22 @@ ProjectUpdate.blueprint do
   published    { true }
   published_at { Time.now }
   project
+end
+
+Promo.blueprint do
+  title               { Sham.unique_name }
+  subtitle            { Sham.unique_name }
+  has_expiration_date { false }
+end
+
+Promo.blueprint(:active) do
+  has_expiration_date { true }
+  expiration_date     { Time.now + 1.day }
+end
+
+Promo.blueprint(:expired) do
+  has_expiration_date { true }
+  expiration_date     { Time.now - 1.day }
 end
 
 Property.blueprint do

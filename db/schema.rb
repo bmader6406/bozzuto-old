@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100921213420) do
+ActiveRecord::Schema.define(:version => 20100923201948) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -443,11 +443,13 @@ ActiveRecord::Schema.define(:version => 20100921213420) do
   end
 
   create_table "promos", :force => true do |t|
-    t.string   "title",      :null => false
+    t.string   "title",                                  :null => false
     t.string   "subtitle"
     t.string   "link_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "has_expiration_date", :default => false
+    t.datetime "expiration_date"
   end
 
   create_table "properties", :force => true do |t|

@@ -33,7 +33,7 @@
       <%= property_icon_descriptions %>
     </div>
 
-    <% if @community.promo.present? %>
+    <% if @community.promo.present? && @community.promo.active? %>
       <%= render :partial => 'shared/promo', :object => @community.promo %>
     <% end %>
 
