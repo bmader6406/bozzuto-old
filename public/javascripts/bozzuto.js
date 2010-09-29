@@ -345,7 +345,7 @@ window.bozzuto = {};
       // define all our vars
       var $this    = $(this),
           $toshow  = $( $this.attr('href') ),
-          $tohide  = $( $this.attr('data-toHide') ),
+          $tohide  = $( $this.attr('data-to-hide') ),
           $all     = $toshow.add( $tohide ),
           $wrapper = $all.wrapAll('<div class="expand-wrapper"></div>').parent();
 
@@ -362,7 +362,7 @@ window.bozzuto = {};
       $this.bind('click', function(e){
         e.preventDefault();
         $this.fadeOut(100);
-        $tohide.textFade();
+        $tohide.hide();
         $toshow.show();
         $wrapper.animate({
           'height' : $toshow.outerHeight()
