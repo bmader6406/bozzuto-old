@@ -2067,7 +2067,7 @@ div.wysiwyg ul li {
     #large-map-container {
       background: #fff;
       display: none;
-      height: 520px;
+      height: 610px;
       position: relative;
       width: 850px;
     }
@@ -2075,7 +2075,7 @@ div.wysiwyg ul li {
     #large-map-controls {
       background: #fff;
       bottom: 0;
-      height: 70px;
+      height: 160px;
       left: 0;
       overflow: hidden;
       padding: 20px 100px 10px 30px;
@@ -2101,6 +2101,7 @@ div.wysiwyg ul li {
       font-size: 13px;
       height: 20px;
       padding: 0 25px 10px 0;
+      width: 155px;
     }
 
     #large-map-controls input {

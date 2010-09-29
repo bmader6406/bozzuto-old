@@ -35,11 +35,11 @@
       $.get('http://api.yelp.com/business_review_search?' +
         $.param({
           category: category,
-          ywsid: '<%= APP_CONFIG[:yelp_api_key] %>',
+          ywsid: <%= APP_CONFIG[:yelp_api_key].inspect.html_safe %>,
           lat: <%= @community.latitude %>,
           long: <%= @community.longitude %>,
-          limit: 10,
-          radius: 10
+          limit: 8,
+          radius: 5
         }), {},
         function(data, status) {
           $.each(data.businesses, function(index, biz) {
@@ -98,20 +98,54 @@
               var icon = new GIcon(baseIcon);
 
               switch(category) {
+                case 'fitness':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/fitnesscenter.png';
+                  break;
+                case 'parks':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/park-urban.png';
+                  break;
+                case 'arts':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/music-classical.png';
+                  break;
+                case 'beautysvc':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/aestheticscenter.png';
+                  break;
+                case 'education':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/school.png';
+                  break;
+                case 'coffee':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/coffee.png';
+                  break;
+                case 'grocery':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/grocery.png';
+                  break;
+                case 'hospitals':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/hospital.png';
+                  break;
+                case 'transport':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/bus.png';
+                  break;
+                case 'hotels':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/hotel.png';
+                  break;
+                case 'drycleaninglaundry':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/clothes.png';
+                  break;
+                case 'bars':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/bar.png';
+                  break;
+                case 'petservices':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/pets.png';
+                  break;
                 case 'restaurants':
                   icon.image = 'http://google-maps-icons.googlecode.com/files/restaurant.png';
                   break;
-                case 'nightlife':
-                  icon.image = 'http://google-maps-icons.googlecode.com/files/cocktail.png';
-                  break;
-                case 'childcare':
-                  icon.image = 'http://google-maps-icons.googlecode.com/files/daycare.png';
-                  break;
-                case 'arts':
-                  icon.image = 'http://google-maps-icons.googlecode.com/files/theater.png';
+                case 'shopping':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/shoppingmall.png';
                   break;
                 default:
                   icon.image = 'http://google-maps-icons.googlecode.com/files/home.png';
+                  break;
               }
 
               return icon;
@@ -223,12 +257,77 @@
 
     </div>
     <div id="large-map-controls">
-      
+
       <a href="http://www.yelp.com/" id="large-map-yelp-logo">
         <img src="/images/structure/yelp_logo_50x25.png" width="50" height="25">
       </a>
-      
+
       <h3>Points of Interest</h3>
+
+      <label>
+        <input type="checkbox" name="categories" value="fitness" checked="checked" />
+        Fitness and Instruction
+      </label>
+
+      <label>
+        <input type="checkbox" name="categories" value="parks" checked="checked" />
+        Parks
+      </label>
+
+      <label>
+        <input type="checkbox" name="categories" value="arts" checked="checked" />
+        Arts and Entertainment
+      </label>
+
+      <label>
+        <input type="checkbox" name="categories" value="beautysvc" checked="checked" />
+        Beauty and Spas
+      </label>
+
+      <label>
+        <input type="checkbox" name="categories" value="education" checked="checked" />
+        Education
+      </label>
+
+      <label>
+        <input type="checkbox" name="categories" value="coffee" checked="checked" />
+        Coffee and Tea
+      </label>
+
+      <label>
+        <input type="checkbox" name="categories" value="grocery" checked="checked" />
+        Grocery
+      </label>
+
+      <label>
+        <input type="checkbox" name="categories" value="hospitals" checked="checked" />
+        Hospitals
+      </label>
+
+      <label>
+        <input type="checkbox" name="categories" value="transport" checked="checked" />
+        Transportation
+      </label>
+
+      <label>
+        <input type="checkbox" name="categories" value="hotels" checked="checked" />
+        Hotels
+      </label>
+
+      <label>
+        <input type="checkbox" name="categories" value="drycleaninglaundry" checked="checked" />
+        Dry Cleaning / Laundry
+      </label>
+
+      <label>
+        <input type="checkbox" name="categories" value="bars" checked="checked" />
+        Bars
+      </label>
+
+      <label>
+        <input type="checkbox" name="categories" value="petservices" checked="checked" />
+        Pet Services
+      </label>
 
       <label>
         <input type="checkbox" name="categories" value="restaurants" checked="checked" />
@@ -236,18 +335,8 @@
       </label>
 
       <label>
-        <input type="checkbox" name="categories" value="arts" checked="checked" />
-        Arts &amp; Entertainment
-      </label>
-
-      <label>
-        <input type="checkbox" name="categories" value="childcare" checked="checked" />
-        Daycare
-      </label>
-
-      <label>
-        <input type="checkbox" name="categories" value="nightlife" checked="checked" />
-        Nightlife
+        <input type="checkbox" name="categories" value="shopping" checked="checked" />
+        Shopping
       </label>
 
       <div id="large-map-side-bar">
