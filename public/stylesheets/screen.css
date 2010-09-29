@@ -2077,9 +2077,16 @@ div.wysiwyg ul li {
       bottom: 0;
       height: 70px;
       left: 0;
-      padding: 20px 30px 10px 30px;
+      overflow: hidden;
+      padding: 20px 100px 10px 30px;
       position: absolute;
-      width: 790px;
+      width: 720px;
+    }
+    
+    #large-map-yelp-logo {
+      position: absolute;
+      right: 30px;
+      top: 20px;
     }
 
     #large-map-controls h3 {
@@ -2089,8 +2096,11 @@ div.wysiwyg ul li {
     }
 
     #large-map-controls label {
+      display: block;
+      float: left;
       font-size: 13px;
-      padding-right: 25px;
+      height: 20px;
+      padding: 0 25px 10px 0;
     }
 
     #large-map-controls input {
