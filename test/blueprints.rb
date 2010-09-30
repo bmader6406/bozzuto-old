@@ -103,6 +103,15 @@ FeedItem.blueprint do
   feed
 end
 
+Lead2LeaseSubmission.blueprint do
+  first_name    { Faker::Name.first_name }
+  last_name     { Faker::Name.last_name }
+  primary_phone { Faker::PhoneNumber.phone_number }
+  email         { Faker::Internet.email }
+  move_in_date  { Date.today }
+  comments      { '' }
+end
+
 Home.blueprint do
   name      { Faker::Lorem.words(3) }
   bedrooms  { Sham.bedrooms }
