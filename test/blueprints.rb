@@ -147,6 +147,11 @@ NewsPost.blueprint(:unpublished) do
   published_at { nil }
 end
 
+Photo.blueprint do
+  title           { Faker::Lorem.words(3) }
+  flickr_photo_id { (rand(50000000) + 50000000).to_s }
+end
+
 PhotoSet.blueprint do
   title             { Faker::Lorem.words(3) }
   flickr_set_number { (rand(50000000) + 50000000).to_s }
