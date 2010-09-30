@@ -61,6 +61,12 @@ Award.blueprint(:unpublished) do
   published_at { nil }
 end
 
+Buzz.blueprint do
+  email        { Faker::Internet.email }
+  affiliations { '' }
+  buzzes       { '' }
+end
+
 City.blueprint do
   name { Sham.city }
   state

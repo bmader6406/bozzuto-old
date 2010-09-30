@@ -16,6 +16,7 @@ class Buzz < ActiveRecord::Base
     end
   end
 
+
   private
 
   def convert_checkboxes_to_string(value)

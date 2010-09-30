@@ -130,8 +130,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.with_options :controller => :buzzes, :section => 'about-us' do |m|
     m.buzz '/bozzuto-buzz', :action => 'new', :conditions => { :method => :get }
-    m.connect '/bozzuto-buzz', :action => 'create', :conditions => { :method => :post }
-    m.connect '/bozzuto-buzz/thank-you', :action => 'thank_you'
+    m.create_buzz '/bozzuto-buzz', :action => 'create', :conditions => { :method => :post }
+    m.thank_you_buzz '/bozzuto-buzz/thank-you', :action => 'thank_you'
   end
 
   map.with_options :controller => :pages, :action => :show do |m|
