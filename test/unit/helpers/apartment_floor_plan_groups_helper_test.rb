@@ -28,4 +28,20 @@ class ApartmentFloorPlanGroupsHelperTest < ActionView::TestCase
       end
     end
   end
+  
+  context '#floor_plan_group_pluralize' do
+    setup { @name = '2 Bedrooms' }
+
+    context 'when count is 1' do
+      should 'send #singularize' do
+        assert_equal @name.singularize, floor_plan_group_pluralize(1, @name)
+      end
+    end
+
+    context 'when count is greater than 1' do
+      should 'send #pluralize' do
+        assert_equal @name.pluralize, floor_plan_group_pluralize(2, @name)
+      end
+    end
+  end
 end
