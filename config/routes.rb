@@ -24,7 +24,6 @@ ActionController::Routing::Routes.draw do |map|
     :member => {
       :features       => :get,
       :neighborhood   => :get,
-      :promotions     => :get,
       :send_to_friend => :post
     }
   }
@@ -54,6 +53,10 @@ ActionController::Routing::Routes.draw do |map|
     community.resources :homes, :only => :index
 
     community.resource :info_message, :only => :create # send sms
+
+    community.resource :lasso_submissions,
+      :as   => :contact,
+      :only => :show
 
     community.resources :media,
       :controller => :community_media,
