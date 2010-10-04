@@ -7,95 +7,74 @@
   </div>
 <% end -%>
 
-<% if @community.show_lead_2_lease? -%>
+<%# if @community.show_lead_2_lease? -%>
   <h2>Ready to speak with a leasing consultant?</h2>
 
   <p id="community-contact-note">Fill out the form below for availability and specials.</p>
 
+      <p><em>* required</em></p>
+
   <div id="community-contact-form">
     <%= error_messages_for :submission %>
     
-    <% form_for :submission, :url => contact_apartment_community_path, :html => { :class => "required-form" } do |f| -%>      
+    <form method="post" class="required-form" action="http://www.mylasso.com/registrant_signup.php">
+      <%= hidden_field_tag 'LassoUID', @community.lasso_uid %>
+      <%= hidden_field_tag 'ClientID', @community.lasso_client_id %>
+      <%= hidden_field_tag 'ProjectID', @community.lasso_project_id %>
+
       <fieldset>
-        <h3>Contact Information</h3>
         <p>
-          <%= f.label :first_name, "First Name" %>
-          <%= f.text_field :first_name, :class =>"required" %>
+          <%= label_tag 'FirstName', 'First Name*' %>
+          <%= text_field_tag 'FirstName', nil, :class => 'required' %>
         </p>
+
         <p>
-          <%= f.label :last_name, "Last Name" %>
-          <%= f.text_field :last_name, :class =>"required" %>
+          <%= label_tag 'LastName', 'Last Name*' %>
+          <%= text_field_tag 'LastName', nil, :class => 'required' %>
         </p>
+
         <p>
-          <%= f.label :address_1, "Address" %>
-          <%= f.text_field :address_1 %>
+          <%= label_tag 'Emails[Primary]', 'Email Address*' %>
+          <%= text_field_tag 'Emails[Primary]', nil, :class => 'required' %>
         </p>
+
         <p>
-          <%= f.label :address_2, "Address (cont.)" %>
-          <%= f.text_field :address_2 %>
+          <%= label_tag 'Address', 'Address' %>
+          <%= text_field_tag 'Address' %>
         </p>
+
         <p>
-          <%= f.label :city, "City" %>
-          <%= f.text_field :city %>
+          <%= label_tag 'City', 'City' %>
+          <%= text_field_tag 'City' %>
         </p>
+
         <p>
-          <%= f.label :state, "State" %>
-          <%= f.text_field :state %>
+          <%= label_tag 'Province', 'State' %>
+          <%= text_field_tag 'Province' %>
         </p>
+
         <p>
-          <%= f.label :zip_code, "Zip Code" %>
-          <%= f.text_field :zip_code %>
+          <%= label_tag 'PostalCode', 'ZIP Code' %>
+          <%= text_field_tag 'PostalCode' %>
         </p>
+
         <p>
-          <%= f.label :primary_phone, "Primary Phone" %>
-          <%= f.text_field :primary_phone, :class =>"required" %>
+          <%= label_tag 'Phones[Home]', 'Phone Number*' %>
+          <%= text_field_tag 'Phones[Home]', nil, :class => 'required' %>
         </p>
+
         <p>
-          <%= f.label :secondary_phone, "Secondary Phone" %>
-          <%= f.text_field :secondary_phone %>
-        </p>
-        <p>
-          <%= f.label :email, "E-Mail" %>
-          <%= f.text_field :email, :class =>"required email" %>
+          <%= label_tag 'Comments', 'Comments' %>
+          <%= text_area_tag 'Comments', nil, :rows => 10, :cols => 50 %>
         </p>
       </fieldset>
 
-      <fieldset>
-        <h3>Move In Information</h3>
-        <p>
-          <%= f.label :move_in_date, "Desired Move-In Date" %>
-          <%= f.date_select :move_in_date %>
-        </p>
-
-        <p>
-          <%= f.label :bedrooms, "Number of Bedrooms" %>
-          <%= f.select :bedrooms, (1..5) %>
-        </p>
-        
-        <p>
-          <%= f.label :bathrooms, "Number of Bathrooms" %>
-          <%= f.select :bathrooms, (1..5) %>
-        </p>
-
-        <p>
-          <%= f.label :pets, "Will you have pets?" %>
-          <%= f.check_box :pets, :class => 'checkbox' %>
-          Yes
-        </p>
-
-        <p>
-          <%= f.label :comments %>
-          <%= f.text_area :comments, :cols => 60, :rows => 7 %>
-        </p>
-      </fieldset>
-      
       <p class="submit">
         <%= submit_tag 'Submit' %>
       </p>
-
-    <% end -%>
+    </form>
   </div>
-<% end -%>
+<%# end -%>
 
 <div id="community-contact-text">
   <%= @community.contact_text.try(:html_safe) %>  
