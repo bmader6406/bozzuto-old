@@ -30,7 +30,7 @@ class HomeCommunityTest < ActiveSupport::TestCase
       end
     end
 
-    context '#has_lasso_form?' do
+    context '#show_lasso_form?' do
       context 'all three lasso fields are present' do
         setup do
           @community.lasso_uid        = 'blah'
@@ -39,7 +39,7 @@ class HomeCommunityTest < ActiveSupport::TestCase
         end
 
         should 'return true' do
-          assert @community.has_lasso_form?
+          assert @community.show_lasso_form?
         end
       end
 
@@ -47,7 +47,7 @@ class HomeCommunityTest < ActiveSupport::TestCase
         setup { @community.lasso_uid = 'blah' }
 
         should 'return false' do
-          assert !@community.has_lasso_form?
+          assert !@community.show_lasso_form?
         end
       end
     end

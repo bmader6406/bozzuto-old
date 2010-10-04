@@ -7,7 +7,7 @@
   </div>
 <% end -%>
 
-<%# if @community.show_lead_2_lease? -%>
+<% if @community.show_lasso_form? -%>
   <h2>Ready to speak with a leasing consultant?</h2>
 
   <p id="community-contact-note">Fill out the form below for availability and specials.</p>
@@ -74,7 +74,7 @@
       </p>
     </form>
   </div>
-<%# end -%>
+<% end -%>
 
 <div id="community-contact-text">
   <%= @community.contact_text.try(:html_safe) %>  

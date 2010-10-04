@@ -19,7 +19,7 @@ class HomeCommunity < Community
     @nearby_communities ||= HomeCommunity.mappable.near(self).all(:limit => limit)
   end
 
-  def has_lasso_form?
+  def show_lasso_form?
     [:uid, :client_id, :project_id].all? { |field| send("lasso_#{field}").present? }
   end
 end
