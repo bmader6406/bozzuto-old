@@ -17,6 +17,7 @@ class ApartmentCommunitiesController < ApplicationController
     end
   end
 
+
   private
 
   def find_community

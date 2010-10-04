@@ -17,6 +17,7 @@ ActionController::Routing::Routes.draw do |map|
     :controller => :ufollowup,
     :action     => :thank_you
 
+
   community_options = {
     :as          => :communities,
     :only        => [:index, :show],
@@ -24,7 +25,6 @@ ActionController::Routing::Routes.draw do |map|
       :features       => :get,
       :neighborhood   => :get,
       :promotions     => :get,
-      :contact        => [:get, :post],
       :send_to_friend => :post
     }
   }
@@ -36,10 +36,15 @@ ActionController::Routing::Routes.draw do |map|
 
     community.resource :info_message, :only => :create # send sms
 
+    community.resource :lead2_lease_submissions,
+      :as   => :contact,
+      :only => [:show, :create]
+
     community.resources :media,
       :controller => :community_media,
       :only       => :index
   end
+
 
   home_community_options = community_options.merge(
     :path_prefix => 'new-homes',

@@ -1,0 +1,2 @@
+module Lead2LeaseSubmissionsHelper
+end

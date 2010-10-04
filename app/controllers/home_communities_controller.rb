@@ -12,6 +12,9 @@ class HomeCommunitiesController < SectionContentController
     render :action => :map, :layout => 'application'
   end
 
+  def contact
+  end
+
 
   private
 
