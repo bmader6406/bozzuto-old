@@ -74,11 +74,10 @@ module ApplicationHelper
       snippet.body.html_safe
     else
       content_tag :p do
-        %Q{This area should be filled in by snippet "#{name}," which does not exist.
+        raw(%Q{This area should be filled in by snippet "#{name}," which does not exist.
             #{link_to("Click here to create the snippet.", {:controller => 'admin/snippets',
                                                             :action => 'new',
-                                                            "name" => name})}
-        }.html_safe
+                                                            "name" => name})}})
       end
     end
   end

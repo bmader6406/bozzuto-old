@@ -137,5 +137,61 @@ class ApplicationHelperTest < ActionView::TestCase
         assert_select facebook.root, 'iframe'
       end
     end
+
+    context '#snippet' do
+      context 'with missing name' do
+        setup { @body = snippet(:not_found) }
+
+        should 'return error message' do
+          assert_match /This area should be filled in by snippet "not_found,"/, @body
+        end
+      end
+
+      context 'with existing name' do
+        setup do
+          @snippet = Snippet.create :name => 'found', :body => 'hooray'
+        end
+
+        should 'return the snippet body' do
+          assert_equal @snippet.body, snippet(@snippet.name)
+        end
+      end
+    end
+
+    context '#county_apartment_search_path' do
+      setup { @county = County.make }
+
+      should 'return apartment_communities_path with search[county_id]' do
+        assert_equal apartment_communities_path('search[county_id]' => @county.id),
+          county_apartment_search_path(@county)
+      end
+    end
+
+    context '#county_home_search_path' do
+      setup { @county = County.make }
+
+      should 'return home_communities_path with search[county_id]' do
+        assert_equal home_communities_path('search[county_id]' => @county.id),
+          county_home_search_path(@county)
+      end
+    end
+
+    context '#community_url' do
+      context 'with an apartment community' do
+        setup { @community = ApartmentCommunity.make }
+
+        should 'return apartment_community_url' do
+          assert_equal apartment_community_url(@community), community_url(@community)
+        end
+      end
+
+      context 'with a home community' do
+        setup { @community = HomeCommunity.make }
+
+        should 'return home_community_url' do
+          assert_equal home_community_url(@community), community_url(@community)
+        end
+      end
+    end
   end
 end
