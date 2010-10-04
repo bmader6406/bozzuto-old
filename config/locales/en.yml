@@ -82,6 +82,9 @@ en:
         floor_plans_meta_description: Homes SEO Description
         floor_plans_meta_keywords: Homes SEO Keywords
         floor_plans_meta_title: Homes SEO Title
+        lasso_client_id: Lasso Client ID
+        lasso_project_id: Lasso Project ID
+        lasso_uid: Lasso UID
         listing_promo: Listing Promo Image
       home_page:
         featured_property: Featured Property
