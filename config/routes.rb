@@ -21,31 +21,24 @@ ActionController::Routing::Routes.draw do |map|
   community_options = {
     :as          => :communities,
     :only        => [:index, :show],
-    :member => {
-      :features       => :get,
-      :send_to_friend => :post
-    }
+    :member => { :send_to_friend => :post }
   }
   map.resources :apartment_communities, community_options.merge(:path_prefix => :apartments) do |community|
     community.resources :floor_plan_groups,
       :controller => :apartment_floor_plan_groups,
       :as         => :floor_plans,
       :only       => :index
-
+    community.resource :features, :only => :show
     community.resource :neighborhood, :only => :show
-
     community.resource :info_message, :only => :create # send sms
-
     community.resource :lead2_lease_submissions,
       :as     => :contact,
       :only   => [:show, :create],
       :member => { :thank_you => :get }
-
     community.resources :media,
       :controller => :community_media,
       :only       => :index
   end
-
 
   home_community_options = community_options.merge(
     :path_prefix => 'new-homes',
@@ -53,16 +46,13 @@ ActionController::Routing::Routes.draw do |map|
   )
   map.resources :home_communities, home_community_options do |community|
     community.resources :homes, :only => :index
-
+    community.resource :features, :only => :show
     community.resource :neighborhood, :only => :show
-
     community.resource :info_message, :only => :create # send sms
-
     community.resource :lasso_submissions,
       :as     => :contact,
       :only   => :show,
       :member => { :thank_you => :get }
-
     community.resources :media,
       :controller => :community_media,
       :only       => :index

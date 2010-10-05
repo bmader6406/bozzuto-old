@@ -5,8 +5,8 @@
         <li class="<%= current_if :controller => 'home_communities', :action => 'show' %>">
           <%= link_to @community.title, @community %>
         </li>
-        <li class="<%= current_if 'features' %>">
-          <%= link_to 'Features & Amenities', features_home_community_path(@community) %>
+        <li class="<%= current_if :controller => 'features' %>">
+          <%= link_to 'Features & Amenities', home_community_features_path(@community) %>
         </li>
         <li class="<%= current_if :controller => 'community_media' %>">
           <%= link_to 'Photos & Videos', home_community_media_path(@community) %>
