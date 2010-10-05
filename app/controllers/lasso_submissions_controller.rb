@@ -6,6 +6,9 @@ class LassoSubmissionsController < ApplicationController
   def show
   end
 
+  def thank_you
+  end
+
 
   private
 

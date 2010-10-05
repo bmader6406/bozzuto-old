@@ -21,6 +21,7 @@
       <%= hidden_field_tag 'LassoUID', @community.lasso_uid %>
       <%= hidden_field_tag 'ClientID', @community.lasso_client_id %>
       <%= hidden_field_tag 'ProjectID', @community.lasso_project_id %>
+      <%= hidden_field_tag 'SignupThankyouLink', thank_you_home_community_lasso_submissions_path(@community) %>
 
       <fieldset>
         <p>

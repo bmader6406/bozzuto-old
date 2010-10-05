@@ -13,10 +13,13 @@ class Lead2LeaseSubmissionsController < ApplicationController
     if @submission.valid?
       Lead2LeaseMailer.deliver_submission(@community, @submission)
       flash[:email_sent] = true
-      redirect_to :action => :show
+      redirect_to :action => :thank_you
     else
       render :action => :show
     end
+  end
+
+  def thank_you
   end
 
 

@@ -42,11 +42,21 @@ class Lead2LeaseSubmissionsControllerTest < ActionController::TestCase
 
         should_respond_with :redirect
         should_redirect_to('the contact path') {
-          apartment_community_lead2_lease_submissions_path(@community)
+          thank_you_apartment_community_lead2_lease_submissions_path(@community)
         }
         should_assign_to :submission
         should_change('mail deliveries', :by => 1) { ActionMailer::Base.deliveries.count }
       end
+    end
+
+    context 'a GET to #thank_you' do
+      setup do
+        get :thank_you, :apartment_community_id => @community.to_param
+      end
+
+      should_respond_with :success
+      should_render_template :thank_you
+      should_assign_to :community
     end
   end
 end

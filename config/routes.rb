@@ -36,8 +36,9 @@ ActionController::Routing::Routes.draw do |map|
     community.resource :info_message, :only => :create # send sms
 
     community.resource :lead2_lease_submissions,
-      :as   => :contact,
-      :only => [:show, :create]
+      :as     => :contact,
+      :only   => [:show, :create],
+      :member => { :thank_you => :get }
 
     community.resources :media,
       :controller => :community_media,
@@ -55,8 +56,9 @@ ActionController::Routing::Routes.draw do |map|
     community.resource :info_message, :only => :create # send sms
 
     community.resource :lasso_submissions,
-      :as   => :contact,
-      :only => :show
+      :as     => :contact,
+      :only   => :show,
+      :member => { :thank_you => :get }
 
     community.resources :media,
       :controller => :community_media,
