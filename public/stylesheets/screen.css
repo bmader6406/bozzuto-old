@@ -2061,6 +2061,12 @@ div.wysiwyg ul li {
       padding-bottom: 5px;
       margin-bottom: 0;
     }
+
+    .community #thank-you-text p {
+      font-size: 12px;
+      line-height: 1.636363636;
+      margin-bottom: 1.5em;
+    }
   /* @end */
   
   /* @group --large map overlay */
