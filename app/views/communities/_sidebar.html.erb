@@ -32,47 +32,45 @@
     }
 
     $.each(categories, function(category_index, category) {
-      $.get('http://api.yelp.com/business_review_search?' +
-        $.param({
-          category: category,
-          ywsid: <%= APP_CONFIG[:yelp_api_key].inspect.html_safe %>,
-          lat: <%= @community.latitude %>,
-          long: <%= @community.longitude %>,
-          limit: 8,
-          radius: 5
-        }), {},
-        function(data, status) {
-          $.each(data.businesses, function(index, biz) {
-            var div = template;
-            biz_object = {
-              category: category,
-              id: ((category_index*1000)+(index)+2),
-              point: {
-                lat: biz.latitude,
-                lng: biz.longitude
-              },
-            };
-            console.log(biz);
+      var url = 'http://api.yelp.com/business_review_search?' + $.param({
+        category: category,
+        ywsid: <%= APP_CONFIG[:yelp_api_key].inspect.html_safe %>,
+        lat: <%= @community.latitude %>,
+        long: <%= @community.longitude %>,
+        limit: 8,
+        radius: 5
+      });
 
-            var address = [biz.address1, biz.address2, biz.address3, biz.city + ', ' + biz.state_code + ' ' + biz.zip, formatPhone(biz.phone)];
-            address = $.map(address, function(e) {
-              if (e != "") {
-                return e;
-              }
-            });
+      $.get(url, {}, function(data, status) {
+        $.each(data.businesses, function(index, biz) {
+          var div = template;
+          var biz_object = {
+            category: category,
+            id:       ((category_index*1000)+(index)+2),
+            point:    {
+              lat: biz.latitude,
+              lng: biz.longitude
+            }
+          };
 
-            div = div.replace('{{json}}', JSON.stringify(biz_object));
-            div = div.replace('{{name}}', biz.name);
-            div = div.replace('{{url}}', biz.url);
-            div = div.replace('{{rating_img}}', biz.rating_img_url_small);
-            div = div.replace('{{photo_img}}', biz.photo_url_small);
-            div = div.replace('{{address}}', address.join('<br />'));
-
-            $('#large-map-side-bar').append(div);
+          var address = [biz.address1, biz.address2, biz.address3, biz.city + ', ' + biz.state_code + ' ' + biz.zip, formatPhone(biz.phone)];
+          address = $.map(address, function(e) {
+            if (e != "") {
+              return e;
+            }
           });
-          updateMap();
-        }, 'jsonp'
-      );
+
+          div = div.replace('{{json}}', JSON.stringify(biz_object));
+          div = div.replace('{{name}}', biz.name);
+          div = div.replace('{{url}}', biz.url);
+          div = div.replace('{{rating_img}}', biz.rating_img_url_small);
+          div = div.replace('{{photo_img}}', biz.photo_url_small);
+          div = div.replace('{{address}}', address.join('<br />'));
+
+          $('#large-map-side-bar').append(div);
+        });
+        updateMap();
+      }, 'jsonp');
     });
   }
 
