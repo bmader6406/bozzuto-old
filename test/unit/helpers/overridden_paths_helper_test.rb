@@ -135,6 +135,58 @@ class OverriddenPathsHelperTest < ActionView::TestCase
       end
     end
 
+    context '#press_releases_path' do
+      context 'when section is a service' do
+        should 'return the service path' do
+          assert_equal service_section_press_releases_path(@service),
+            press_releases_path(@service)
+        end
+      end
+
+      context 'when section is not a service' do
+        should 'return the section path' do
+          assert_equal section_press_releases_path(@section),
+            press_releases_path(@section)
+        end
+      end
+    end
+
+    context '#press_release_path' do
+      context 'when section is a service' do
+        setup { @press = PressRelease.make(:sections => [@service]) }
+
+        should 'return the service path' do
+          assert_equal service_section_press_release_path(@service, @press),
+            press_release_path(@service, @press)
+        end
+      end
+
+      context 'when section is not a service' do
+        setup { @press = PressRelease.make(:sections => [@section]) }
+
+        should 'return the section path' do
+          assert_equal section_press_release_path(@section, @press),
+            press_release_path(@section, @press)
+        end
+      end
+    end
+
+    context '#news_and_press_path' do
+      context 'when section is a service' do
+        should 'return the service path' do
+          assert_equal service_section_news_and_press_path(@service),
+            news_and_press_path(@service)
+        end
+      end
+
+      context 'when section is not a service' do
+        should 'return the section path' do
+          assert_equal section_news_and_press_path(@section),
+            news_and_press_path(@section)
+        end
+      end
+    end
+
     context '#testimonials_path' do
       context 'when section is a service' do
         should 'return the service path' do
@@ -192,6 +244,23 @@ class OverriddenPathsHelperTest < ActionView::TestCase
         should 'return the send_to_friend_apartment_community_path' do
           assert_equal send_to_friend_apartment_community_path(@property),
             send_to_friend_path(@property)
+        end
+      end
+    end
+
+    context '#section_contact_path' do
+      context 'when section has a contact topic' do
+        setup { ContactTopic.make :section => @section }
+
+        should 'return the service path with topic set' do
+          assert_equal contact_path(:topic => @section.contact_topic),
+            section_contact_path(@section)
+        end
+      end
+
+      context 'when section does not have a contact topic' do
+        should 'return the section path' do
+          assert_equal contact_path, section_contact_path(@section)
         end
       end
     end
