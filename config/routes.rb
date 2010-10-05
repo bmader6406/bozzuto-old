@@ -23,7 +23,6 @@ ActionController::Routing::Routes.draw do |map|
     :only        => [:index, :show],
     :member => {
       :features       => :get,
-      :neighborhood   => :get,
       :send_to_friend => :post
     }
   }
@@ -32,6 +31,8 @@ ActionController::Routing::Routes.draw do |map|
       :controller => :apartment_floor_plan_groups,
       :as         => :floor_plans,
       :only       => :index
+
+    community.resource :neighborhood, :only => :show
 
     community.resource :info_message, :only => :create # send sms
 
@@ -52,6 +53,8 @@ ActionController::Routing::Routes.draw do |map|
   )
   map.resources :home_communities, home_community_options do |community|
     community.resources :homes, :only => :index
+
+    community.resource :neighborhood, :only => :show
 
     community.resource :info_message, :only => :create # send sms
 

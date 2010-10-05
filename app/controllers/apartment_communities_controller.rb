@@ -1,6 +1,9 @@
 class ApartmentCommunitiesController < ApplicationController
   include CommunityBehavior
 
+  layout 'community', :except => [:index, :map]
+  before_filter :find_community, :except => [:index, :map]
+
   def index
     params[:search] ||= {}
 
@@ -15,6 +18,9 @@ class ApartmentCommunitiesController < ApplicationController
       end
       format.js
     end
+  end
+
+  def show
   end
 
 

@@ -1,11 +1,16 @@
 class HomeCommunitiesController < SectionContentController
   include CommunityBehavior
 
+  layout 'community', :except => [:index, :map]
+  before_filter :find_community, :except => [:index, :map]
   before_filter :find_communities, :find_page, :only => [:index, :map]
   
   def index
     @communities = @communities.paginate(:page => params[:page])
     render :action => :index, :layout => 'application'
+  end
+
+  def show
   end
 
   def map

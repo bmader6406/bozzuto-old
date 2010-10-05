@@ -34,7 +34,7 @@ class HomeCommunitiesControllerTest < ActionController::TestCase
       should_assign_to(:communities) { @communities }
     end
 
-    %w(show features neighborhood).each do |action|
+    %w(show features).each do |action|
       context "a GET to ##{action}" do
         setup do
           get action, :id => @community.to_param

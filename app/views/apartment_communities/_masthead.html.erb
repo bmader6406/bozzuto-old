@@ -14,8 +14,8 @@
         <li class="<%= current_if :controller => 'apartment_floor_plan_groups' %>">
           <%= link_to 'Floor Plans', apartment_community_floor_plan_groups_path(@community) %>
         </li>
-        <li class="<%= current_if 'neighborhood' %>">
-          <%= link_to 'Neighborhood', neighborhood_apartment_community_path(@community) %>
+        <li class="<%= current_if :controller => 'neighborhoods' %>">
+          <%= link_to 'Neighborhood', apartment_community_neighborhood_path(@community) %>
         </li>
         <li class="last <%= current_if :controller => 'lead2_lease_submissions' %>">
           <%= link_to 'Contact Us', apartment_community_lead2_lease_submissions_path(@community) %>
