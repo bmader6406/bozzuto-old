@@ -14,8 +14,6 @@ javascripts:
     - public/javascripts/vendor/jquery.jmapping.min.js
     - public/javascripts/vendor/jquery.validate.js
     - public/javascripts/vendor/jquery.makecolumnlists.js
-    - public/javascripts/vendor/cufon.js
-    - public/javascripts/font.js
     - public/javascripts/bozzuto.js
   lookup:
     - public/javascripts/vendor/lookup.js
