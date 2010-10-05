@@ -1,12 +1,6 @@
 <% content_for :body_class do %>community property features<% end %>
 <% render_meta(@community, :contact) %>
 
-<% if flash[:email_sent] -%>
-  <div class="notice">
-    Thanks for contacting us about <%= @community.title %>! We will reply to you soon.  
-  </div>
-<% end -%>
-
 <% if @community.show_lasso_form? -%>
   <h2>Ready to speak with a leasing consultant?</h2>
 
