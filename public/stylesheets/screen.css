@@ -44,6 +44,10 @@
 }
 
 /* @group base */
+  img {
+    -ms-interpolation-mode: bicubic;
+  }
+
   body {
     font-size: 0.75em; /* 12px base */
     line-height: 1.5;
@@ -2113,9 +2117,9 @@ div.wysiwyg ul li {
       height: 160px;
       left: 0;
       overflow: hidden;
-      padding: 20px 100px 10px 30px;
+      padding: 20px 30px 10px 30px;
       position: absolute;
-      width: 720px;
+      width: 790px;
     }
     
     #large-map-yelp-logo {
@@ -2132,16 +2136,27 @@ div.wysiwyg ul li {
 
     #large-map-controls label {
       display: block;
+      cursor: pointer;
       float: left;
-      font-size: 13px;
-      height: 20px;
-      padding: 0 25px 10px 0;
-      width: 155px;
+      font-size: 12px;
+      height: 28px;
+      line-height: 28px;
+      padding: 0 10px 0 0;
+      width: 185px;
     }
 
     #large-map-controls input {
+      background: none;
+      border: none;
+      height: 28px;
+      margin: 0 2px;
+      padding: 0;
       vertical-align: middle;
       width: auto;
+    }
+
+    #large-map-controls label img {
+      vertical-align: middle;
     }
     
     #large-map h4 {

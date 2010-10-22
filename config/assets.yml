@@ -8,6 +8,7 @@ javascripts:
     - public/javascripts/vendor/jquery.min.js
     - public/javascripts/vendor/jquery.lightbox_me.js
     - public/javascripts/vendor/jquery.scrollTo-min.js
+    - public/javascripts/vendor/jquery.json.js
     - public/javascripts/vendor/mapiconmaker.js
     - public/javascripts/vendor/markermanager.js
     - public/javascripts/vendor/jquery.metadata.js
