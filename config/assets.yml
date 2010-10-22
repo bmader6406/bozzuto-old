@@ -16,6 +16,7 @@ javascripts:
     - public/javascripts/vendor/jquery.validate.js
     - public/javascripts/vendor/jquery.makecolumnlists.js
     - public/javascripts/bozzuto.js
+    - public/javascripts/yelp-map.js
   lookup:
     - public/javascripts/vendor/lookup.js
 
