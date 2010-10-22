@@ -22,7 +22,6 @@ set :sync_directories, ["public/system"]
 set :sync_backups, 3
 
 after 'multistage:ensure', 'config:defaults'
-after 'deploy:update_code', 'app:bundle_gems'
 after 'deploy:update_code', 'app:package_assets'
 after 'deploy:update_code', 'app:clear_asset_caches'
 after 'deploy:update_code', 'app:update_crontab'
@@ -96,11 +95,6 @@ namespace :app do
   desc "Package assets for the live site"
   task :package_assets do
     run "cd #{current_path}; bundle exec jammit"
-  end
-
-  desc 'Bundle gems'
-  task :bundle_gems do
-    run "cd #{release_path} && bundle install"
   end
 
   desc "Remove asset caches"
