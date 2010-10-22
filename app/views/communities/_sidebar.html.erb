@@ -37,8 +37,8 @@
         ywsid: <%= APP_CONFIG[:yelp_api_key].inspect.html_safe %>,
         lat: <%= @community.latitude %>,
         long: <%= @community.longitude %>,
-        limit: 5,
-        radius: 1.5
+        limit: 6,
+        radius: 0.5
       });
 
       $.get(url, {}, function(data, status) {
