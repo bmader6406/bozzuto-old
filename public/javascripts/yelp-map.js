@@ -31,18 +31,19 @@
     }
 
     $.each(categories, function(category_index, category) {
-      var url = 'http://api.yelp.com/business_review_search?' + $.param({
-        category: category,
-        ywsid:    bozzuto.yelpApiKey,
-        lat:      bozzuto.communityLatitude,
-        long:     bozzuto.communityLongitude,
-        limit:    6,
-        radius:   0.75
-      });
+      var url = 'http://api.yelp.com/business_review_search',
+          params = $.param({
+            'category': category,
+            'ywsid':    bozzuto.yelpApiKey,
+            'lat':      bozzuto.communityLatitude,
+            'long':     bozzuto.communityLongitude,
+            'limit':    6,
+            'radius':   0.75
+          });
 
-      $.get(url, {}, function(data, status) {
+      $.get(url, params, function(data, status) {
         $.each(data.businesses, function(index, biz) {
-          var div     = template
+          var div     = template,
               bizJSON = {
                 category: category,
                 id:       ((category_index*1000)+(index)+2),
@@ -59,7 +60,11 @@
             biz.city + ', ' + biz.state_code + ' ' + biz.zip,
             formatPhone(biz.phone)
           ];
-          address = $.map(address, function(e) { if (e != "") return e; });
+          address = $.map(address, function(e) {
+            if (e != "") {
+              return e;
+            }
+          });
 
           div = div.replace('{{json}}',       $.toJSON(bizJSON));
           div = div.replace('{{name}}',       biz.name);
