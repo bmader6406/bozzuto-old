@@ -2,9 +2,7 @@ require 'test_helper'
 
 class ApartmentCommunitiesControllerTest < ActionController::TestCase
   context "ApartmentCommunitiesController" do
-    setup do
-      @community = ApartmentCommunity.make
-    end
+    setup { @community = ApartmentCommunity.make }
 
     context 'get #index' do
       context 'for the search view' do
@@ -26,16 +24,14 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
       end
     end
 
-    %w(show features neighborhood promotions contact).each do |action|
-      context "a GET to ##{action}" do
-        setup do
-          get action, :id => @community.to_param
-        end
-
-        should_assign_to(:community) { @community }
-        should_respond_with :success
-        should_render_template action
+    context "a GET to #show" do
+      setup do
+        get :show, :id => @community.to_param
       end
+
+      should_assign_to(:community) { @community }
+      should_respond_with :success
+      should_render_template :show
     end
 
 

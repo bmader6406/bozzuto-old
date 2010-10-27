@@ -1,0 +1,132 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    aaronh-chronic (0.3.9)
+    abstract (1.0.0)
+    actionmailer (2.3.8)
+      actionpack (= 2.3.8)
+    actionpack (2.3.8)
+      activesupport (= 2.3.8)
+      rack (~> 1.1.0)
+    activerecord (2.3.8)
+      activesupport (= 2.3.8)
+    activerecord-tableless (0.1.0)
+      activerecord
+    activeresource (2.3.8)
+      activesupport (= 2.3.8)
+    activesupport (2.3.8)
+    addressable (2.2.1)
+    bossman (0.4.1)
+      activesupport (>= 2.1.0)
+    capistrano (2.5.19)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.0.0)
+    capistrano-ext (1.2.1)
+      capistrano (>= 1.0.0)
+    closure-compiler (0.3.2)
+    columnize (0.3.1)
+    crack (0.1.6)
+    erubis (2.6.6)
+      abstract (>= 1.0.0)
+    faker (0.3.1)
+    fleakr (0.6.3)
+      activesupport (>= 2.0)
+      hpricot (>= 0.6.164)
+      loggable (>= 0.2.0)
+    friendly_id (2.3.4)
+      activerecord (>= 2.2)
+      activesupport (>= 2.2)
+    geokit (1.5.0)
+    highline (1.6.1)
+    hoptoad_notifier (2.3.7)
+      activesupport
+    hpricot (0.8.2)
+    httparty (0.5.2)
+      crack (= 0.1.6)
+    jammit (0.5.3)
+      closure-compiler (>= 0.1.0)
+      yui-compressor (>= 0.9.1)
+    jferris-mocha (0.9.8.20100526112143)
+      rake
+    linecache (0.43)
+    loggable (0.3.0)
+    machinist (1.0.6)
+    mysql (2.8.1)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.0.23)
+    net-ssh-gateway (1.0.1)
+      net-ssh (>= 1.99.1)
+    nokogiri (1.4.3.1)
+    paperclip (2.3.3)
+      activerecord
+      activesupport
+    phocus (1.1)
+    rack (1.1.0)
+    rack-rewrite (0.2.1)
+    rack-test (0.5.4)
+      rack (>= 1.0)
+    rails (2.3.8)
+      actionmailer (= 2.3.8)
+      actionpack (= 2.3.8)
+      activerecord (= 2.3.8)
+      activeresource (= 2.3.8)
+      activesupport (= 2.3.8)
+      rake (>= 0.8.3)
+    rake (0.8.7)
+    rcov (0.9.9)
+    ruby-debug (0.10.3)
+      columnize (>= 0.1)
+      ruby-debug-base (~> 0.10.3.0)
+    ruby-debug-base (0.10.3)
+      linecache (>= 0.3)
+    searchlogic (2.4.26)
+      activerecord (>= 2.0.0)
+    shoulda (2.10.3)
+    truncate_html (0.4.0)
+    webmock (1.2.2)
+      addressable (>= 2.1.1)
+    whenever (0.5.2)
+      aaronh-chronic (>= 0.3.9)
+      activesupport (>= 2.3.4)
+    will_paginate (2.3.15)
+    yui-compressor (0.9.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  activerecord-tableless
+  bossman
+  capistrano
+  capistrano-ext
+  erubis
+  faker
+  fleakr
+  friendly_id (~> 2.3)
+  geokit
+  hoptoad_notifier
+  httparty (= 0.5.2)
+  jammit
+  jferris-mocha
+  machinist
+  mysql
+  nokogiri
+  paperclip
+  phocus
+  rack-rewrite (~> 0.2.0)
+  rack-test
+  rails (= 2.3.8)
+  rcov
+  ruby-debug
+  searchlogic
+  shoulda (= 2.10.3)
+  truncate_html
+  webmock
+  whenever
+  will_paginate

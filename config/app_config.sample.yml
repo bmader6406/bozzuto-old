@@ -12,20 +12,13 @@ development:
   google_maps_api_key: 'ABQIAAAA7txTDQDFqeDYcgMQiou82BS4HyMuMWnF1gYqzj4uDbvuvSLR0RQG2OmrjDwO9korkAMlXnDyKPNeTw' # key for bozzuto.local
   yahoo_api_key: 'll53sBfV34EbzLw1ECmKvRRAIhNfQgSxxxBX480.eRzCf5S7s_L1Y6ZzyaxnAqSW3A--'
   yelp_api_key: 'VcEBpYz_2oabrTXqgzFX_Q'
-  contact_emails:
-    general_inquiry:
-    apartments:
-    new_homes:
-    acquisitions:
-    construction:
-    development:
-    homebuilding:
-    land:
-    management:
   sms:
     username: mkilmurry
     password: 120012
     sender: 39044      
+  callsource:
+    apartment: 1081055
+    home: 2891386
 
 production:
   vaultware_feed_file: /path/to/vaultware/feed/bozzutocom.xml
@@ -37,6 +30,9 @@ production:
     username: mkilmurry
     password: 120012
     sender: 39044
+  callsource:
+    apartment: 1081055
+    home: 2891386
 
 test:
   vaultware_feed_file: /path/to/vaultware/feed/bozzutocom.xml
@@ -49,17 +45,10 @@ test:
     api_key: '8042a247ce230ca6fe328406b416b7a2' # Bozzuto's API key
   walkscore_wsid: 'YOUR-WSID-HERE'
   google_maps_api_key: 'ABQIAAAA7txTDQDFqeDYcgMQiou82BS4HyMuMWnF1gYqzj4uDbvuvSLR0RQG2OmrjDwO9korkAMlXnDyKPNeTw' # key for bozzuto.local
-  contact_emails:
-    general_inquiry:
-    apartments:
-    new_homes:
-    acquisitions:
-    construction:
-    development:
-    homebuilding:
-    land:
-    management:
   sms:
     username: tester
     password: 12345
     sender: 333333
+  callsource:
+    apartment: 1081055
+    home: 2891386

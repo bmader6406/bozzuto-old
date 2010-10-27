@@ -20,7 +20,7 @@ options: &options
   
   file_manager_image_upload_uri: "/ckeditor/create?kind=image"
   file_manager_image_uri: "/ckeditor/images"
-  
+
 integration:
   <<: *options
 
@@ -29,6 +29,6 @@ staging:
 
 development:
   <<: *options
-  
+
 production:
   <<: *options

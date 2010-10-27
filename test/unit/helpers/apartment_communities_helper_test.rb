@@ -64,5 +64,53 @@ class ApartmentCommunitiesHelperTest < ActionView::TestCase
           walkscore_map_script(@community, :height => 700)
       end
     end
+
+    context '#price_of_cheapest_floor_plan' do
+      setup { @group = ApartmentFloorPlanGroup.make }
+
+      context 'there are no floor plans' do
+        should 'return empty string' do
+          assert_equal '', price_of_cheapest_floor_plan(@group.floor_plans)
+        end
+      end
+
+      context 'there are floor plans' do
+        setup do
+          @cheapest = ApartmentFloorPlan.make :floor_plan_group => @group,
+            :min_effective_rent => 1000
+          @expensive = ApartmentFloorPlan.make :floor_plan_group => @group,
+            :min_effective_rent => 2000
+        end
+
+        should 'return the price of the cheapest' do
+          assert_equal "From #{floor_plan_price(@cheapest.min_rent)}",
+            price_of_cheapest_floor_plan(@group.floor_plans)
+        end
+      end
+    end
+
+    context '#square_feet_of_largest_floor_plan' do
+      setup { @group = ApartmentFloorPlanGroup.make }
+
+      context 'there are no floor plans' do
+        should 'return empty string' do
+          assert_equal '', square_feet_of_largest_floor_plan(@group.floor_plans)
+        end
+      end
+
+      context 'there are floor plans' do
+        setup do
+          @largest = ApartmentFloorPlan.make :floor_plan_group => @group,
+            :max_square_feet => 2000
+          @smallest = ApartmentFloorPlan.make :floor_plan_group => @group,
+            :max_square_feet => 1000
+        end
+
+        should 'return the price of the cheapest' do
+          assert_equal square_feet(@largest),
+            square_feet_of_largest_floor_plan(@group.floor_plans)
+        end
+      end
+    end
   end
 end

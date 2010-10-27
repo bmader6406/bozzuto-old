@@ -3,8 +3,10 @@ module ApartmentCommunitiesHelper
     number_to_currency(price, :precision => 0) unless price.nil?
   end
 
-  def cheapest_floor_plan_price_in_group(group)
-    if (cheapest = group.cheapest.first).present?
+  def price_of_cheapest_floor_plan(plans)
+    cheapest = plans.cheapest.first
+
+    if cheapest.present?
       "From #{floor_plan_price(cheapest.min_rent)}".html_safe
     else
       ''
@@ -15,8 +17,10 @@ module ApartmentCommunitiesHelper
     "#{plan.min_square_feet} Sq Ft"
   end
 
-  def largest_floor_plan_square_feet_in_group(group)
-    if (largest = group.largest.first).present?
+  def square_feet_of_largest_floor_plan(plans)
+    largest = plans.largest.first
+
+    if largest.present?
       square_feet(largest)
     else
       ''

@@ -29,5 +29,27 @@ class HomeCommunityTest < ActiveSupport::TestCase
         assert_equal @communities[2], nearby[1]
       end
     end
+
+    context '#show_lasso_form?' do
+      context 'all three lasso fields are present' do
+        setup do
+          @community.lasso_uid        = 'blah'
+          @community.lasso_client_id  = 'blah'
+          @community.lasso_project_id = 'blah'
+        end
+
+        should 'return true' do
+          assert @community.show_lasso_form?
+        end
+      end
+
+      context 'some lasso fields are not present' do
+        setup { @community.lasso_uid = 'blah' }
+
+        should 'return false' do
+          assert !@community.show_lasso_form?
+        end
+      end
+    end
   end
 end

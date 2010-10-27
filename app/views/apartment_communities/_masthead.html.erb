@@ -2,11 +2,11 @@
   <div class="container">
     <div class="nav">
       <ul id="property-nav">
-        <li class="<%= current_if 'show' %>">
+        <li class="<%= current_if :controller => 'apartment_communities', :action => 'show' %>">
           <%= link_to @community.title, @community %>
         </li>
-        <li class="<%= current_if 'features' %>">
-          <%= link_to 'Features & Amenities', features_apartment_community_path(@community) %>
+        <li class="<%= current_if :controller => 'features' %>">
+          <%= link_to 'Features & Amenities', apartment_community_features_path(@community) %>
         </li>
         <li class="<%= current_if :controller => 'community_media' %>">
           <%= link_to 'Photos & Videos', apartment_community_media_path(@community) %>
@@ -14,16 +14,13 @@
         <li class="<%= current_if :controller => 'apartment_floor_plan_groups' %>">
           <%= link_to 'Floor Plans', apartment_community_floor_plan_groups_path(@community) %>
         </li>
-        <li class="<%= current_if 'neighborhood' %>">
-          <%= link_to 'Neighborhood', neighborhood_apartment_community_path(@community) %>
+        <li class="<%= current_if :controller => 'neighborhoods' %>">
+          <%= link_to 'Neighborhood', apartment_community_neighborhood_path(@community) %>
         </li>
-        <!--li class="<%= current_if 'promotions' %>">
-          <%= link_to 'Special Offers', promotions_apartment_community_path(@community) %>
-        </li-->
-        <li class="last <%= current_if 'contact' %>">
-          <%= link_to 'Contact Us', contact_apartment_community_path(@community) %>
+        <li class="last <%= current_if :controller => 'lead2_lease_submissions' %>">
+          <%= link_to 'Contact Us', apartment_community_lead2_lease_submissions_path(@community) %>
           <% if @community.phone_number.present? %>
-            <%= phone_number(@community.phone_number) %>
+            <%= phone_number(@community) %>
           <% end %>
         </li>
       </ul>

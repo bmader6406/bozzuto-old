@@ -157,8 +157,8 @@ window.bozzuto = {};
       $(this).attr('target', '_blank');
     });
 
-    $('.phone-number').replaceWith(function () {
-      return getDNRiFrame(this, "xxx.xxx.xxxx", "1081055");
+    $('.phone-number[data-dnr-account]').replaceWith(function () {
+      return getDNRiFrame(this, "xxx.xxx.xxxx", $(this).attr('data-dnr-account'));
     });
   });
 

@@ -1,0 +1,76 @@
+<% content_for :body_class do %>community property features<% end %>
+<% render_meta(@community, :contact) %>
+
+<% if @community.show_lasso_form? -%>
+  <h2>Ready to speak with a leasing consultant?</h2>
+
+  <p id="community-contact-note">Fill out the form below for availability and specials.</p>
+
+      <p><em>* required</em></p>
+
+  <div id="community-contact-form">
+    <%= error_messages_for :submission %>
+    
+    <form method="post" class="required-form" action="http://www.mylasso.com/registrant_signup.php">
+      <%= hidden_field_tag 'LassoUID', @community.lasso_uid %>
+      <%= hidden_field_tag 'ClientID', @community.lasso_client_id %>
+      <%= hidden_field_tag 'ProjectID', @community.lasso_project_id %>
+      <%= hidden_field_tag 'SignupThankyouLink', thank_you_home_community_lasso_submissions_url(@community) %>
+
+      <fieldset>
+        <p>
+          <%= label_tag 'FirstName', 'First Name*' %>
+          <%= text_field_tag 'FirstName', nil, :class => 'required' %>
+        </p>
+
+        <p>
+          <%= label_tag 'LastName', 'Last Name*' %>
+          <%= text_field_tag 'LastName', nil, :class => 'required' %>
+        </p>
+
+        <p>
+          <%= label_tag 'Emails[Primary]', 'Email Address*' %>
+          <%= text_field_tag 'Emails[Primary]', nil, :class => 'required' %>
+        </p>
+
+        <p>
+          <%= label_tag 'Address', 'Address' %>
+          <%= text_field_tag 'Address' %>
+        </p>
+
+        <p>
+          <%= label_tag 'City', 'City' %>
+          <%= text_field_tag 'City' %>
+        </p>
+
+        <p>
+          <%= label_tag 'Province', 'State' %>
+          <%= text_field_tag 'Province' %>
+        </p>
+
+        <p>
+          <%= label_tag 'PostalCode', 'ZIP Code' %>
+          <%= text_field_tag 'PostalCode' %>
+        </p>
+
+        <p>
+          <%= label_tag 'Phones[Home]', 'Phone Number*' %>
+          <%= text_field_tag 'Phones[Home]', nil, :class => 'required' %>
+        </p>
+
+        <p>
+          <%= label_tag 'Comments', 'Comments' %>
+          <%= text_area_tag 'Comments', nil, :rows => 10, :cols => 50 %>
+        </p>
+      </fieldset>
+
+      <p class="submit">
+        <%= submit_tag 'Submit' %>
+      </p>
+    </form>
+  </div>
+<% end -%>
+
+<div id="community-contact-text">
+  <%= @community.contact_text.try(:html_safe) %>  
+</div>

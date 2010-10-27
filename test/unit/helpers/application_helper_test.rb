@@ -2,6 +2,38 @@ require 'test_helper'
 
 class ApplicationHelperTest < ActionView::TestCase
   context "ApplicationHelper" do
+    context '#phone_number' do
+      context 'with a home community' do
+        setup do
+          @community = HomeCommunity.make
+          @html = HTML::Document.new(phone_number(@community))
+        end
+
+        should 'create a span with the phone number' do
+          assert_select @html.root, 'span.phone-number', @community.phone_number
+        end
+
+        should 'insert the account number' do
+          assert_select @html.root, 'span[data-dnr-account=?]', APP_CONFIG[:callsource]['home'].to_s
+        end
+      end
+
+      context 'with an apartment community' do
+        setup do
+          @community = ApartmentCommunity.make
+          @html = HTML::Document.new(phone_number(@community))
+        end
+
+        should 'create a span with the phone number' do
+          assert_select @html.root, 'span.phone-number', @community.phone_number
+        end
+
+        should 'insert the account number' do
+          assert_select @html.root, 'span[data-dnr-account=?]', APP_CONFIG[:callsource]['apartment'].to_s
+        end
+      end
+    end
+
     context '#render_meta' do
       context 'with no prefix' do
         setup do
@@ -135,6 +167,62 @@ class ApplicationHelperTest < ActionView::TestCase
 
         assert_select facebook.root, 'div.facebook-like'
         assert_select facebook.root, 'iframe'
+      end
+    end
+
+    context '#snippet' do
+      context 'with missing name' do
+        setup { @body = snippet(:not_found) }
+
+        should 'return error message' do
+          assert_match /This area should be filled in by snippet "not_found,"/, @body
+        end
+      end
+
+      context 'with existing name' do
+        setup do
+          @snippet = Snippet.create :name => 'found', :body => 'hooray'
+        end
+
+        should 'return the snippet body' do
+          assert_equal @snippet.body, snippet(@snippet.name)
+        end
+      end
+    end
+
+    context '#county_apartment_search_path' do
+      setup { @county = County.make }
+
+      should 'return apartment_communities_path with search[county_id]' do
+        assert_equal apartment_communities_path('search[county_id]' => @county.id),
+          county_apartment_search_path(@county)
+      end
+    end
+
+    context '#county_home_search_path' do
+      setup { @county = County.make }
+
+      should 'return home_communities_path with search[county_id]' do
+        assert_equal home_communities_path('search[county_id]' => @county.id),
+          county_home_search_path(@county)
+      end
+    end
+
+    context '#community_url' do
+      context 'with an apartment community' do
+        setup { @community = ApartmentCommunity.make }
+
+        should 'return apartment_community_url' do
+          assert_equal apartment_community_url(@community), community_url(@community)
+        end
+      end
+
+      context 'with a home community' do
+        setup { @community = HomeCommunity.make }
+
+        should 'return home_community_url' do
+          assert_equal home_community_url(@community), community_url(@community)
+        end
       end
     end
   end

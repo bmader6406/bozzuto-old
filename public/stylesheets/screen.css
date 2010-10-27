@@ -14,7 +14,40 @@
 
 /* @end */
 
+/*
+ * Web Fonts from fontspring.com
+ *
+ * All OpenType features and all extended glyphs have been removed.
+ * Fully installable fonts can be purchased at http://www.fontspring.com
+ *
+ * The fonts included in this stylesheet are subject to the End User License you purchased
+ * from Fontspring. The fonts are protected under domestic and international trademark and 
+ * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
+ * distributing this font software.
+ *
+ * (c) 2010 Fontspring
+ *
+ * The fonts included are copyrighted by the vendor listed below.
+ *
+ * Vendor:      FontSite Inc.
+ * License URL: http://www.fontspring.com/fflicense/fontsite
+ */
+@font-face {
+	font-family: 'FontSite Sans';
+	src: url('FontSiteSans-LightCd-webfont.eot');
+	src: local('☺'),
+    url('FontSiteSans-LightCd-webfont.woff') format('woff'),
+    url('FontSiteSans-LightCd-webfont.ttf') format('truetype'),
+    url('FontSiteSans-LightCd-webfont.svg#webfont2X6HCJ0U') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
 /* @group base */
+  img {
+    -ms-interpolation-mode: bicubic;
+  }
+
   body {
     font-size: 0.75em; /* 12px base */
     line-height: 1.5;
@@ -22,7 +55,7 @@
     color: #84848b;
   }
   h1 {
-    font-family: "Arial Narrow", "Arial", sans-serif;
+    font-family: 'FontSite Sans', 'Arial Narrow', 'Arial', sans-serif;
   }
   em { font-style: italic; }
   strong { font-weight: bold; }
@@ -2060,6 +2093,104 @@ div.wysiwyg ul li {
       padding-top: 5px;
       padding-bottom: 5px;
       margin-bottom: 0;
+    }
+
+    .community #thank-you-text p {
+      font-size: 12px;
+      line-height: 1.636363636;
+      margin-bottom: 1.5em;
+    }
+  /* @end */
+  
+  /* @group --large map overlay */
+    #large-map-container {
+      background: #fff;
+      display: none;
+      height: 610px;
+      position: relative;
+      width: 850px;
+    }
+
+    #large-map-controls {
+      background: #fff;
+      bottom: 0;
+      height: 160px;
+      left: 0;
+      overflow: hidden;
+      padding: 20px 30px 10px 30px;
+      position: absolute;
+      width: 790px;
+    }
+    
+    #large-map-yelp-logo {
+      position: absolute;
+      right: 30px;
+      top: 20px;
+    }
+
+    #large-map-controls p.select-links {
+      font-size: 13px;
+      left: 228px;
+      position: absolute;
+      top: 21px;
+    }
+
+    #large-map-controls p.select-links a {
+      display: inline;
+      padding-left: 10px;
+    }
+
+    #large-map-controls h3 {
+      font-size: 16px;
+      line-height: 1;
+      margin-bottom: 1em;
+    }
+
+    #large-map-controls label {
+      display: block;
+      cursor: pointer;
+      float: left;
+      font-size: 12px;
+      height: 28px;
+      line-height: 28px;
+      padding: 0 10px 0 0;
+      width: 185px;
+    }
+
+    #large-map-controls input {
+      background: none;
+      border: none;
+      height: 28px;
+      margin: 0 2px;
+      padding: 0;
+      vertical-align: middle;
+      width: auto;
+    }
+
+    #large-map-controls label img {
+      vertical-align: middle;
+    }
+    
+    #large-map h4 {
+      font-size: 13px;
+      margin-bottom: 0.5em;
+    }
+
+    #large-map h4 a {
+      text-decoration: underline;
+    }
+
+    #large-map h4 a:hover {
+      text-decoration: none;
+    }
+
+    #large-map .info-photo {
+      float: left;
+      width: 50px;
+    }
+
+    #large-map .info-content {
+      float: left;
     }
   /* @end */
   

@@ -26,24 +26,30 @@
 <div id="main-content">
   <div class="container">
     <div class="row">
-      
+
       <div id="sidebar" class="col">
         <h2>Map Key</h2>
         <ul class="mapkey">
+          <% if @page.apartment_communities.any? %>
           <li class="apartments"><span>Apartments for Rent</span></li>
+          <% end %>
+          <% if @page.home_communities.any? %>
           <li class="homes-condominiums"><span>Homes &amp; Condominiums</span></li>
+          <% end %>
+          <% if @page.projects.any? %>
           <li class="upcoming-projects"><span>Upcoming Projects</span></li>
+          <% end %>
         </ul>
       </div>
 
       <div id="content" class="col">
         <div class="areamap row">
           <%= render :partial => 'map' %>
-          
+
           <% if @page.popular_properties.any? %>
             <div class="col areamap-popular-properties">
               <h2>Popular Properties</h2>
-              
+
               <% @page.popular_properties.take(3).each do |property| %>
                 <div class="section <%= popular_property_class(property) %>">
                   <h4>
@@ -61,7 +67,7 @@
         <% if @page.promo.present? %>
           <%= render :partial => 'shared/promo', :object => @page.promo %>
         <% end %>
-        
+
         <div id="properties-by-type">
           <div class="header">
             <ul class="nav">
@@ -76,7 +82,7 @@
               <% end %>
             </ul>
           </div>
-          
+
           <% if @page.home_communities.any? %>
             <div id="homes-condominiums" class="section">
               <ul>
@@ -84,7 +90,7 @@
               </ul>
             </div>
           <% end %>
-          
+
           <% if @page.apartment_communities.any? %>
             <div id="apartments-for-rent" class="section">
               <ul>
@@ -98,7 +104,7 @@
               <ul>
                 <%= render :partial => 'apartment_communities/listing', :collection => @page.featured_apartment_communities, :as => :community %>
               </ul>
-            </div>          
+            </div>
           <% end %>
         </div>
 
@@ -142,9 +148,9 @@
                 <% end %>
               </ul>
             <% end %>
-          </div>          
+          </div>
         </div>
-        
+
         <% if @page.projects.any? %>
           <div class="section listings">
             <h2>Upcoming Projects in <%= @state.name %></h2>
@@ -165,7 +171,7 @@
         <% if @page.secondary_title.present? %>
           <div class="section seo-text">
             <h2><%= @page.secondary_title %></h2>
-            
+
             <%= raw(@page.secondary_body) %>
           </div>
         <% end %>

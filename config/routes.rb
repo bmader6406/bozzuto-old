@@ -17,25 +17,24 @@ ActionController::Routing::Routes.draw do |map|
     :controller => :ufollowup,
     :action     => :thank_you
 
+
   community_options = {
     :as          => :communities,
     :only        => [:index, :show],
-    :member => {
-      :features       => :get,
-      :neighborhood   => :get,
-      :promotions     => :get,
-      :contact        => [:get, :post],
-      :send_to_friend => :post
-    }
+    :member => { :send_to_friend => :post }
   }
   map.resources :apartment_communities, community_options.merge(:path_prefix => :apartments) do |community|
     community.resources :floor_plan_groups,
       :controller => :apartment_floor_plan_groups,
       :as         => :floor_plans,
       :only       => :index
-
+    community.resource :features, :only => :show
+    community.resource :neighborhood, :only => :show
     community.resource :info_message, :only => :create # send sms
-
+    community.resource :lead2_lease_submissions,
+      :as     => :contact,
+      :only   => [:show, :create],
+      :member => { :thank_you => :get }
     community.resources :media,
       :controller => :community_media,
       :only       => :index
@@ -47,9 +46,13 @@ ActionController::Routing::Routes.draw do |map|
   )
   map.resources :home_communities, home_community_options do |community|
     community.resources :homes, :only => :index
-
+    community.resource :features, :only => :show
+    community.resource :neighborhood, :only => :show
     community.resource :info_message, :only => :create # send sms
-
+    community.resource :lasso_submissions,
+      :as     => :contact,
+      :only   => :show,
+      :member => { :thank_you => :get }
     community.resources :media,
       :controller => :community_media,
       :only       => :index
@@ -130,8 +133,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.with_options :controller => :buzzes, :section => 'about-us' do |m|
     m.buzz '/bozzuto-buzz', :action => 'new', :conditions => { :method => :get }
-    m.connect '/bozzuto-buzz', :action => 'create', :conditions => { :method => :post }
-    m.connect '/bozzuto-buzz/thank-you', :action => 'thank_you'
+    m.create_buzz '/bozzuto-buzz', :action => 'create', :conditions => { :method => :post }
+    m.thank_you_buzz '/bozzuto-buzz/thank-you', :action => 'thank_you'
   end
 
   map.with_options :controller => :pages, :action => :show do |m|

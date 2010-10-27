@@ -26,8 +26,8 @@ class BuzzTest < ActiveSupport::TestCase
         end
 
         should 'join the keys with comma' do
-          assert_same_elements @data.keys.join(','), 
-            @buzz.send(:convert_checkboxes_to_string, @data)
+          assert_same_elements @data.keys.map(&:to_s), 
+            @buzz.send(:convert_checkboxes_to_string, @data).split(',')
         end
       end
 

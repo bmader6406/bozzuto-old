@@ -21,6 +21,7 @@ ApartmentCommunity.blueprint do
   subtitle          { Faker::Company.catch_phrase }
   use_market_prices { false }
   published         { true }
+  phone_number      { Faker::PhoneNumber.phone_number }
   city
 end
 
@@ -61,6 +62,12 @@ Award.blueprint(:unpublished) do
   published_at { nil }
 end
 
+Buzz.blueprint do
+  email        { Faker::Internet.email }
+  affiliations { '' }
+  buzzes       { '' }
+end
+
 City.blueprint do
   name { Sham.city }
   state
@@ -97,6 +104,15 @@ FeedItem.blueprint do
   feed
 end
 
+Lead2LeaseSubmission.blueprint do
+  first_name    { Faker::Name.first_name }
+  last_name     { Faker::Name.last_name }
+  primary_phone { Faker::PhoneNumber.phone_number }
+  email         { Faker::Internet.email }
+  move_in_date  { Date.today }
+  comments      { '' }
+end
+
 Home.blueprint do
   name      { Faker::Lorem.words(3) }
   bedrooms  { Sham.bedrooms }
@@ -105,9 +121,10 @@ Home.blueprint do
 end
 
 HomeCommunity.blueprint do
-  title     { Sham.company_name }
-  subtitle  { Faker::Company.catch_phrase }
-  published { true }
+  title        { Sham.company_name }
+  subtitle     { Faker::Company.catch_phrase }
+  published    { true }
+  phone_number { Faker::PhoneNumber.phone_number }
   city
 end
 
@@ -130,6 +147,11 @@ end
 NewsPost.blueprint(:unpublished) do
   published    { false }
   published_at { nil }
+end
+
+Photo.blueprint do
+  title           { Faker::Lorem.words(3) }
+  flickr_photo_id { (rand(50000000) + 50000000).to_s }
 end
 
 PhotoSet.blueprint do

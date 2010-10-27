@@ -64,8 +64,16 @@ module ApplicationHelper
     pluralize(bathrooms, 'Bathroom')
   end
 
-  def phone_number(number)
-    %Q{<span class="phone-number">#{number}</span>}.html_safe
+  def phone_number(community)
+    number = community.phone_number
+
+    account = if community.is_a?(ApartmentCommunity)
+      APP_CONFIG[:callsource]['apartment']
+    elsif community.is_a?(HomeCommunity)
+      APP_CONFIG[:callsource]['home']
+    end
+
+    %Q{<span class="phone-number" data-dnr-account="#{account}">#{number}</span>}.html_safe
   end
 
   def snippet(name)
@@ -74,11 +82,10 @@ module ApplicationHelper
       snippet.body.html_safe
     else
       content_tag :p do
-        %Q{This area should be filled in by snippet "#{name}," which does not exist.
+        raw(%Q{This area should be filled in by snippet "#{name}," which does not exist.
             #{link_to("Click here to create the snippet.", {:controller => 'admin/snippets',
                                                             :action => 'new',
-                                                            "name" => name})}
-        }.html_safe
+                                                            "name" => name})}})
       end
     end
   end

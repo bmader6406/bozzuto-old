@@ -20,17 +20,26 @@
   <% end %>
 
   <%= include_stylesheets :bozzuto, :media => 'screen' %>
-  <%#= stylesheet_link_tag 'screen', :media => 'screen' %> 
   <!--[if lte IE 7]>
     <%= stylesheet_link_tag 'ie6-7', :media => 'screen' %> 
   <![endif]-->
-
 
   <script type="text/javascript">
     (function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)
     
     function align(g){var e=document,f=" narrowPage",b=e.body;if(!window.innerWidth){w=(g.clientWidth==0)?b.clientWidth:g.clientWidth}else{w=window.innerWidth}a(g,w,f)}function a(h,b,g){var f=h.className,d=f.indexOf(g)!=-1,e=b<1130&&b>980;if(e&&d==false){h.className=f+g}else{if(!e&&d){h.className=f.replace(g,"")}}}align(document.documentElement);
-    
+
+    (function(){
+      // if firefox 3.5+, hide content till load (or 3 seconds) to prevent FOUT
+      var d = document, e = d.documentElement, s = d.createElement('style');
+      if (e.style.MozTransform === ''){ // gecko 1.9.1 inference
+        s.textContent = 'body{visibility:hidden}';
+        e.firstChild.appendChild(s);
+        function f(){ s.parentNode && s.parentNode.removeChild(s); }
+        addEventListener('load',f,false);
+        setTimeout(f,3000); 
+      }
+    })();
   </script>
   
   <%= include_javascripts :lookup %>

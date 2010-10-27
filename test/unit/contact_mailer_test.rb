@@ -8,10 +8,10 @@ class ContactMailerTest < ActionMailer::TestCase
 
     context "#contact_form_submission" do
       setup do
-        assert_difference('ActionMailer::Base.deliveries.count', 1) do
-          @email = ContactMailer.deliver_contact_form_submission(@submission)
-        end
+        @email = ContactMailer.deliver_contact_form_submission(@submission)
       end
+
+      should_change('deliveries', :by => 1) { ActionMailer::Base.deliveries.count }
 
       should "deliver the message" do
         assert_equal [@submission.topic.recipients], @email.to
