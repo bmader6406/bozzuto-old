@@ -64,8 +64,16 @@ module ApplicationHelper
     pluralize(bathrooms, 'Bathroom')
   end
 
-  def phone_number(number)
-    %Q{<span class="phone-number">#{number}</span>}.html_safe
+  def phone_number(community)
+    number = community.phone_number
+
+    account = if community.is_a?(ApartmentCommunity)
+      APP_CONFIG[:callsource]['apartment']
+    elsif community.is_a?(HomeCommunity)
+      APP_CONFIG[:callsource]['home']
+    end
+
+    %Q{<span class="phone-number" data-dnr-account="#{account}">#{number}</span>}.html_safe
   end
 
   def snippet(name)

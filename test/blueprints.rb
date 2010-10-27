@@ -21,6 +21,7 @@ ApartmentCommunity.blueprint do
   subtitle          { Faker::Company.catch_phrase }
   use_market_prices { false }
   published         { true }
+  phone_number      { Faker::PhoneNumber.phone_number }
   city
 end
 
@@ -120,9 +121,10 @@ Home.blueprint do
 end
 
 HomeCommunity.blueprint do
-  title     { Sham.company_name }
-  subtitle  { Faker::Company.catch_phrase }
-  published { true }
+  title        { Sham.company_name }
+  subtitle     { Faker::Company.catch_phrase }
+  published    { true }
+  phone_number { Faker::PhoneNumber.phone_number }
   city
 end
 
