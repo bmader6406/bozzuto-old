@@ -1,132 +1,235 @@
-GEM
-  remote: http://rubygems.org/
-  specs:
-    aaronh-chronic (0.3.9)
-    abstract (1.0.0)
-    actionmailer (2.3.8)
-      actionpack (= 2.3.8)
-    actionpack (2.3.8)
-      activesupport (= 2.3.8)
-      rack (~> 1.1.0)
-    activerecord (2.3.8)
-      activesupport (= 2.3.8)
-    activerecord-tableless (0.1.0)
-      activerecord
-    activeresource (2.3.8)
-      activesupport (= 2.3.8)
-    activesupport (2.3.8)
-    addressable (2.2.1)
-    bossman (0.4.1)
-      activesupport (>= 2.1.0)
-    capistrano (2.5.19)
-      highline
-      net-scp (>= 1.0.0)
-      net-sftp (>= 2.0.0)
-      net-ssh (>= 2.0.14)
-      net-ssh-gateway (>= 1.0.0)
-    capistrano-ext (1.2.1)
-      capistrano (>= 1.0.0)
-    closure-compiler (0.3.2)
-    columnize (0.3.1)
-    crack (0.1.6)
-    erubis (2.6.6)
-      abstract (>= 1.0.0)
-    faker (0.3.1)
-    fleakr (0.6.3)
-      activesupport (>= 2.0)
-      hpricot (>= 0.6.164)
-      loggable (>= 0.2.0)
-    friendly_id (2.3.4)
-      activerecord (>= 2.2)
-      activesupport (>= 2.2)
-    geokit (1.5.0)
-    highline (1.6.1)
-    hoptoad_notifier (2.3.7)
-      activesupport
-    hpricot (0.8.2)
-    httparty (0.5.2)
-      crack (= 0.1.6)
-    jammit (0.5.3)
-      closure-compiler (>= 0.1.0)
-      yui-compressor (>= 0.9.1)
-    jferris-mocha (0.9.8.20100526112143)
-      rake
-    linecache (0.43)
-    loggable (0.3.0)
-    machinist (1.0.6)
-    mysql (2.8.1)
-    net-scp (1.0.4)
-      net-ssh (>= 1.99.1)
-    net-sftp (2.0.5)
-      net-ssh (>= 2.0.9)
-    net-ssh (2.0.23)
-    net-ssh-gateway (1.0.1)
-      net-ssh (>= 1.99.1)
-    nokogiri (1.4.3.1)
-    paperclip (2.3.3)
-      activerecord
-      activesupport
-    phocus (1.1)
-    rack (1.1.0)
-    rack-rewrite (0.2.1)
-    rack-test (0.5.4)
-      rack (>= 1.0)
-    rails (2.3.8)
-      actionmailer (= 2.3.8)
-      actionpack (= 2.3.8)
-      activerecord (= 2.3.8)
-      activeresource (= 2.3.8)
-      activesupport (= 2.3.8)
-      rake (>= 0.8.3)
-    rake (0.8.7)
-    rcov (0.9.9)
-    ruby-debug (0.10.3)
-      columnize (>= 0.1)
-      ruby-debug-base (~> 0.10.3.0)
-    ruby-debug-base (0.10.3)
-      linecache (>= 0.3)
-    searchlogic (2.4.26)
-      activerecord (>= 2.0.0)
-    shoulda (2.10.3)
-    truncate_html (0.4.0)
-    webmock (1.2.2)
-      addressable (>= 2.1.1)
-    whenever (0.5.2)
-      aaronh-chronic (>= 0.3.9)
-      activesupport (>= 2.3.4)
-    will_paginate (2.3.15)
-    yui-compressor (0.9.1)
+--- 
+dependencies: 
+  faker: 
+    group: 
+    - :test
+    version: ">= 0"
+  ruby-debug: 
+    group: 
+    - :test
+    version: ">= 0"
+  phocus: 
+    group: 
+    - :test
+    version: ">= 0"
+  rails: 
+    group: 
+    - :default
+    version: = 2.3.8
+  httparty: 
+    group: 
+    - :default
+    version: = 0.5.2
+  searchlogic: 
+    group: 
+    - :default
+    version: ">= 0"
+  mysql: 
+    group: 
+    - :default
+    version: ">= 0"
+  bossman: 
+    group: 
+    - :default
+    version: ">= 0"
+  jferris-mocha: 
+    group: 
+    - :test
+    version: ">= 0"
+    require: []
 
-PLATFORMS
-  ruby
-
-DEPENDENCIES
-  activerecord-tableless
-  bossman
-  capistrano
-  capistrano-ext
-  erubis
-  faker
-  fleakr
-  friendly_id (~> 2.3)
-  geokit
-  hoptoad_notifier
-  httparty (= 0.5.2)
-  jammit
-  jferris-mocha
-  machinist
-  mysql
-  nokogiri
-  paperclip
-  phocus
-  rack-rewrite (~> 0.2.0)
-  rack-test
-  rails (= 2.3.8)
-  rcov
-  ruby-debug
-  searchlogic
-  shoulda (= 2.10.3)
-  truncate_html
-  webmock
-  whenever
-  will_paginate
+  shoulda: 
+    group: 
+    - :test
+    version: = 2.10.3
+  machinist: 
+    group: 
+    - :test
+    version: ">= 0"
+  rack-rewrite: 
+    group: 
+    - :default
+    version: ~> 0.2.0
+  truncate_html: 
+    group: 
+    - :default
+    version: ">= 0"
+  whenever: 
+    group: 
+    - :default
+    version: ">= 0"
+  geokit: 
+    group: 
+    - :default
+    version: ">= 0"
+  capistrano-ext: 
+    group: 
+    - :default
+    version: ">= 0"
+  rcov: 
+    group: 
+    - :default
+    version: ">= 0"
+  friendly_id: 
+    group: 
+    - :default
+    version: ~> 2.3
+  erubis: 
+    group: 
+    - :default
+    version: ">= 0"
+  jammit: 
+    group: 
+    - :default
+    version: ">= 0"
+  will_paginate: 
+    group: 
+    - :default
+    version: ">= 0"
+  activerecord-tableless: 
+    group: 
+    - :default
+    version: ">= 0"
+    require: 
+    - tableless
+  paperclip: 
+    group: 
+    - :default
+    version: ">= 0"
+  rack-test: 
+    group: 
+    - :test
+    version: ">= 0"
+    require: 
+    - rack/test
+  hoptoad_notifier: 
+    group: 
+    - :default
+    version: ">= 0"
+  fleakr: 
+    group: 
+    - :default
+    version: ">= 0"
+  webmock: 
+    group: 
+    - :test
+    version: ">= 0"
+  nokogiri: 
+    group: 
+    - :default
+    version: ">= 0"
+  capistrano: 
+    group: 
+    - :default
+    version: ">= 0"
+specs: 
+- rake: 
+    version: 0.8.7
+- aaronh-chronic: 
+    version: 0.3.9
+- abstract: 
+    version: 1.0.0
+- activesupport: 
+    version: 2.3.8
+- rack: 
+    version: 1.1.0
+- actionpack: 
+    version: 2.3.8
+- actionmailer: 
+    version: 2.3.8
+- activerecord: 
+    version: 2.3.8
+- activerecord-tableless: 
+    version: 0.1.0
+- activeresource: 
+    version: 2.3.8
+- addressable: 
+    version: 2.2.2
+- bossman: 
+    version: 0.4.1
+- builder: 
+    version: 2.1.2
+- highline: 
+    version: 1.6.1
+- net-ssh: 
+    version: 2.0.23
+- net-scp: 
+    version: 1.0.4
+- net-sftp: 
+    version: 2.0.5
+- net-ssh-gateway: 
+    version: 1.0.1
+- capistrano: 
+    version: 2.5.19
+- capistrano-ext: 
+    version: 1.2.1
+- closure-compiler: 
+    version: 0.3.3
+- columnize: 
+    version: 0.3.1
+- crack: 
+    version: 0.1.6
+- erubis: 
+    version: 2.6.6
+- faker: 
+    version: 0.3.1
+- hpricot: 
+    version: 0.8.2
+- loggable: 
+    version: 0.3.0
+- fleakr: 
+    version: 0.6.3
+- friendly_id: 
+    version: 2.3.4
+- geokit: 
+    version: 1.5.0
+- hoptoad_notifier: 
+    version: 2.3.11
+- httparty: 
+    version: 0.5.2
+- yui-compressor: 
+    version: 0.9.1
+- jammit: 
+    version: 0.5.3
+- jferris-mocha: 
+    version: 0.9.8.20100526112143
+- linecache: 
+    version: "0.43"
+- machinist: 
+    version: 1.0.6
+- mysql: 
+    version: 2.8.1
+- nokogiri: 
+    version: 1.4.3.1
+- paperclip: 
+    version: 2.3.5
+- phocus: 
+    version: "1.1"
+- rack-rewrite: 
+    version: 0.2.1
+- rack-test: 
+    version: 0.5.6
+- rails: 
+    version: 2.3.8
+- rcov: 
+    version: 0.9.9
+- ruby-debug-base: 
+    version: 0.10.3
+- ruby-debug: 
+    version: 0.10.3
+- searchlogic: 
+    version: 2.4.27
+- shoulda: 
+    version: 2.10.3
+- truncate_html: 
+    version: 0.4.0
+- webmock: 
+    version: 1.2.2
+- whenever: 
+    version: 0.6.2
+- will_paginate: 
+    version: 2.3.15
+hash: 076d296edfc9b5f6026e06c216b7ec2680cbb84c
+sources: 
+- Rubygems: 
+    uri: http://rubygems.org
