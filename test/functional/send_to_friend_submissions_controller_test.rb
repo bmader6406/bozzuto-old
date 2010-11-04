@@ -5,10 +5,11 @@ class SendToFriendSubmissionsControllerTest < ActionController::TestCase
     context "for a HomeCommunity" do
       setup do
         @community = HomeCommunity.make
+        @email = Faker::Internet.email
 
         post :create,
           :home_community_id => @community.id,
-          :email             => Faker::Internet.email
+          :email             => @email
       end
 
       should_redirect_to('thank you page') {
@@ -16,15 +17,20 @@ class SendToFriendSubmissionsControllerTest < ActionController::TestCase
       }
 
       should_change('the number of emails', :by => 1) { ActionMailer::Base.deliveries.count }
+
+      should 'save the email address in the flash' do
+        assert_equal @email, flash[:send_to_friend_email]
+      end
     end
 
     context "for an ApartmentCommunity" do
       setup do
         @community = ApartmentCommunity.make
+        @email = Faker::Internet.email
 
         post :create,
           :apartment_community_id => @community.id,
-          :email                  => Faker::Internet.email
+          :email                  => @email
       end
 
       should_redirect_to('thank you page') {
@@ -32,6 +38,10 @@ class SendToFriendSubmissionsControllerTest < ActionController::TestCase
       }
 
       should_change('the number of emails', :by => 1) { ActionMailer::Base.deliveries.count }
+
+      should 'save the email address in the flash' do
+        assert_equal @email, flash[:send_to_friend_email]
+      end
     end
 
     context "without an email address" do

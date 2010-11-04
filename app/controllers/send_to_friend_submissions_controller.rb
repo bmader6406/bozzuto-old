@@ -6,6 +6,7 @@ class SendToFriendSubmissionsController < ApplicationController
   def create
     if params[:email].present?
       CommunityMailer.deliver_send_to_friend(params[:email], @community)
+      flash[:send_to_friend_email] = params[:email]
       redirect_to thank_you_page
     else
       flash[:send_to_friend_errors] = true

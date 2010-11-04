@@ -109,13 +109,51 @@ class PropertiesHelperTest < ActionView::TestCase
       end
 
       context 'with an apartment community' do
-        setup { @community = ApartmentCommunity.make }
+        setup do
+          @community = ApartmentCommunity.make
+          @mediaplex_id = CGI.escape("#{@community.id}-#{@time.to_i}")
+        end
 
         should 'return the correct iframe' do
           code = send_to_phone_mediaplex_code(@community)
 
-          assert_match /Apartments_Send_to_Friend/, code
+          assert_match /Apartments_Send_to_Phone/, code
           assert_match /#{@community.id}-#{@time.to_i}/, code
+        end
+      end
+
+      context 'with a home community' do
+        setup do
+          @community = HomeCommunity.make
+          @mediaplex_id = CGI.escape("#{@community.id}-#{@time.to_i}")
+        end
+
+        should 'return the correct iframe' do
+          code = send_to_phone_mediaplex_code(@community)
+
+          assert_match /Bozzuto_Homes_Send_To_Phone/, code
+          assert_match /#{@mediaplex_id}/, code
+        end
+      end
+    end
+
+    context '#send_to_friend_mediaplex_code' do
+      setup do
+        @email        = Faker::Internet.email
+        @time         = Time.new
+        @mediaplex_id = CGI.escape("#{@email}-#{@time.to_i}")
+
+        Time.stubs(:new).returns(@time)
+      end
+
+      context 'with an apartment community' do
+        setup { @community = ApartmentCommunity.make }
+
+        should 'return the correct iframe' do
+          code = send_to_friend_mediaplex_code(@community, @email)
+
+          assert_match /Apartments_Send_to_Friend/, code
+          assert_match /#{@mediaplex_id}/, code
         end
       end
 
@@ -123,10 +161,10 @@ class PropertiesHelperTest < ActionView::TestCase
         setup { @community = HomeCommunity.make }
 
         should 'return the correct iframe' do
-          code = send_to_phone_mediaplex_code(@community)
+          code = send_to_friend_mediaplex_code(@community, @email)
 
-          assert_match /Bozzuto_Homes_Send_To_Phone/, code
-          assert_match /#{@community.id}-#{@time.to_i}/, code
+          assert_match /Bozzuto_Homes_Send_To_Friend/, code
+          assert_match /#{@mediaplex_id}/, code
         end
       end
     end
