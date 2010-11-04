@@ -101,5 +101,34 @@ class PropertiesHelperTest < ActionView::TestCase
         assert_select bullets.root, 'li', :text => @bullet_2
       end
     end
+
+    context '#send_to_phone_mediaplex_code' do
+      setup do
+        @time = Time.new
+        Time.stubs(:new).returns(@time)
+      end
+
+      context 'with an apartment community' do
+        setup { @community = ApartmentCommunity.make }
+
+        should 'return the correct iframe' do
+          code = send_to_phone_mediaplex_code(@community)
+
+          assert_match /Apartments_Send_to_Friend/, code
+          assert_match /#{@community.id}-#{@time.to_i}/, code
+        end
+      end
+
+      context 'with a home community' do
+        setup { @community = HomeCommunity.make }
+
+        should 'return the correct iframe' do
+          code = send_to_phone_mediaplex_code(@community)
+
+          assert_match /Bozzuto_Homes_Send_To_Phone/, code
+          assert_match /#{@community.id}-#{@time.to_i}/, code
+        end
+      end
+    end
   end
 end

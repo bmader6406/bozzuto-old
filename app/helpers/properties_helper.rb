@@ -50,4 +50,18 @@ module PropertiesHelper
       end.html_safe
     end
   end
+
+  def send_to_phone_mediaplex_code(community)
+    mediaplex_id = "#{community.id}-#{Time.new.to_i}"
+
+    if community.is_a? HomeCommunity
+      <<-END.html_safe
+        <iframe src="http://img-cdn.mediaplex.com/0/16797/universal.html?page_name=bozzuto_homes_send_to_phone&Bozzuto_Homes_Send_To_Phone=1&mpuid=#{mediaplex_id}" HEIGHT=1 WIDTH=1 FRAMEBORDER=0></iframe>
+      END
+    elsif community.is_a? ApartmentCommunity
+      <<-END.html_safe
+        <iframe src="http://img-cdn.mediaplex.com/0/16798/universal.html?page_name=apartments_send_to_friend&Apartments_Send_to_Friend=1&mpuid=#{mediaplex_id}" HEIGHT=1 WIDTH=1 FRAMEBORDER=0></iframe>
+      END
+    end
+  end
 end
