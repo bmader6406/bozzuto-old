@@ -450,6 +450,10 @@ window.bozzuto = {};
         }
         return false;
       });
+
+      $('form.errors', lis).each(function() {
+        $(this).closest('li').find('> a').click();
+      });
     });
 
     function isOpen(elem) {

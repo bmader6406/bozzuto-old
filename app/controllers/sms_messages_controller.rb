@@ -1,12 +1,19 @@
 class SmsMessagesController < ApplicationController
   before_filter :find_community
 
-  def create
-    if params[:phone_number]
-      @community.send_info_message_to(params[:phone_number])
-    end
+  layout 'community'
 
-    redirect_to (home? ? home_community_url(@community) : apartment_community_url(@community))
+  def create
+    if params[:phone_number].present?
+      @community.send_info_message_to(params[:phone_number])
+      redirect_to thank_you_page
+    else
+      flash[:sms_missing_phone_number] = true
+      redirect_to @community
+    end
+  end
+
+  def thank_you
   end
 
 
@@ -18,6 +25,14 @@ class SmsMessagesController < ApplicationController
 
   def apartment?
     params.has_key?(:apartment_community_id)
+  end
+
+  def thank_you_page
+    if apartment?
+      thank_you_apartment_community_sms_message_path(@community)
+    else
+      thank_you_home_community_sms_message_path(@community)
+    end
   end
 
   def find_community
