@@ -4,7 +4,7 @@
       <a href="#">Send to friend</a>
 
       <div class="popup">
-        <% form_tag send_to_friend_path(@community) do %>
+        <% form_tag send_to_friend_path(@community), :class => (flash[:send_to_friend_errors] ? 'errors' : nil) do %>
           <p>
             <label>
               <strong>Input your friend&rsquo;s email address</strong> to
@@ -23,7 +23,7 @@
       <a href="#">Send to phone</a>
 
       <div class="popup">
-        <% form_tag send_me_updates_path(@community), :class => (flash[:sms_missing_phone_number] ? 'errors' : nil) do %>
+        <% form_tag send_me_updates_path(@community), :class => (flash[:send_to_phone_errors] ? 'errors' : nil) do %>
           <% content_tag :label, :for => 'phone_number' do %>
             <strong>Input your phone number</strong> for <%= @community.short_title || @community.title %> info. Std msg
             rates apply.

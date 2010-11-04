@@ -99,9 +99,9 @@ module OverriddenPathsHelper
 
   def send_to_friend_path(community)
     if community.is_a?(ApartmentCommunity)
-      send_to_friend_apartment_community_path(community)
+      apartment_community_send_to_friend_submissions_path(community)
     else
-      send_to_friend_home_community_path(community)
+      home_community_send_to_friend_submissions_path(community)
     end
   end
 

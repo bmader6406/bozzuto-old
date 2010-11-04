@@ -56,7 +56,7 @@ class SmsMessagesControllerTest < ActionController::TestCase
         should_redirect_to('main community page') { home_community_path(@community) }
 
         should 'set an error in the flash' do
-          assert flash[:sms_missing_phone_number]
+          assert flash[:send_to_phone_errors]
         end
       end
     end

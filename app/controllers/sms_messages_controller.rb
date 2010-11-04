@@ -8,7 +8,7 @@ class SmsMessagesController < ApplicationController
       @community.send_info_message_to(params[:phone_number])
       redirect_to thank_you_page
     else
-      flash[:sms_missing_phone_number] = true
+      flash[:send_to_phone_errors] = true
       redirect_to @community
     end
   end

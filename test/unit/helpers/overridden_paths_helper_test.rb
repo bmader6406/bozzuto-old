@@ -233,7 +233,7 @@ class OverriddenPathsHelperTest < ActionView::TestCase
         setup { @property = HomeCommunity.make }
 
         should 'return the send_to_friend_home_community_path' do
-          assert_equal send_to_friend_home_community_path(@property),
+          assert_equal home_community_send_to_friend_submissions_path(@property),
             send_to_friend_path(@property)
         end
       end
@@ -242,7 +242,7 @@ class OverriddenPathsHelperTest < ActionView::TestCase
         setup { @property = ApartmentCommunity.make }
 
         should 'return the send_to_friend_apartment_community_path' do
-          assert_equal send_to_friend_apartment_community_path(@property),
+          assert_equal apartment_community_send_to_friend_submissions_path(@property),
             send_to_friend_path(@property)
         end
       end

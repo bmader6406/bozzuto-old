@@ -19,29 +19,40 @@ ActionController::Routing::Routes.draw do |map|
 
 
   community_options = {
+    :path_prefix => :apartments,
     :as          => :communities,
-    :only        => [:index, :show],
-    :member => { :send_to_friend => :post }
+    :only        => [:index, :show]
   }
-  map.resources :apartment_communities, community_options.merge(:path_prefix => :apartments) do |community|
+  map.resources :apartment_communities, community_options do |community|
     community.resources :floor_plan_groups,
       :controller => :apartment_floor_plan_groups,
       :as         => :floor_plans,
       :only       => :index
+
     community.resource :features, :only => :show
+
     community.resource :neighborhood, :only => :show
+
+    community.resource :send_to_friend_submissions,
+      :as     => :send_to_friend,
+      :only   => :create,
+      :member => { :thank_you => :get }
+
     community.resource :sms_message,
       :as     => :send_to_phone,
       :only   => :create,
       :member => { :thank_you => :get }
+
     community.resource :lead2_lease_submissions,
       :as     => :contact,
       :only   => [:show, :create],
       :member => { :thank_you => :get }
+
     community.resources :media,
       :controller => :community_media,
       :only       => :index
   end
+
 
   home_community_options = community_options.merge(
     :path_prefix => 'new-homes',
@@ -49,16 +60,26 @@ ActionController::Routing::Routes.draw do |map|
   )
   map.resources :home_communities, home_community_options do |community|
     community.resources :homes, :only => :index
+
     community.resource :features, :only => :show
+
     community.resource :neighborhood, :only => :show
+
+    community.resource :send_to_friend_submissions,
+      :as     => :send_to_friend,
+      :only   => :create,
+      :member => { :thank_you => :get }
+
     community.resource :sms_message,
       :as     => :send_to_phone,
       :only   => :create,
       :member => { :thank_you => :get }
+
     community.resource :lasso_submissions,
       :as     => :contact,
       :only   => :show,
       :member => { :thank_you => :get }
+
     community.resources :media,
       :controller => :community_media,
       :only       => :index

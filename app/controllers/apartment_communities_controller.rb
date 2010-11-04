@@ -1,8 +1,7 @@
 class ApartmentCommunitiesController < ApplicationController
-  include CommunityBehavior
+  before_filter :find_community, :except => :index
 
   layout 'community', :except => :index
-  before_filter :find_community, :except => :index
 
   def index
     params[:search] ||= {}
