@@ -23,7 +23,7 @@
       <a href="#">Send to phone</a>
 
       <div class="popup">
-        <% form_tag info_messages_url(@community) do %>
+        <% form_tag send_me_updates_path(@community) do %>
           <% content_tag :label, :for => 'phone_number' do %>
             <strong>Input your phone number</strong> for <%= @community.short_title || @community.title %> info. Std msg
             rates apply.

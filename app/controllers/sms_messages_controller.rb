@@ -1,5 +1,5 @@
-class InfoMessagesController < ApplicationController
-  before_filter :assign_community
+class SmsMessagesController < ApplicationController
+  before_filter :find_community
 
   def create
     if params[:phone_number]
@@ -9,7 +9,9 @@ class InfoMessagesController < ApplicationController
     redirect_to (home? ? home_community_url(@community) : apartment_community_url(@community))
   end
 
+
   private
+
   def home?
     params.has_key?(:home_community_id)
   end
@@ -18,7 +20,7 @@ class InfoMessagesController < ApplicationController
     params.has_key?(:apartment_community_id)
   end
 
-  def assign_community
+  def find_community
     @community = if apartment?
       ApartmentCommunity.find(params[:apartment_community_id])
     elsif home?

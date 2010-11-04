@@ -30,7 +30,9 @@ ActionController::Routing::Routes.draw do |map|
       :only       => :index
     community.resource :features, :only => :show
     community.resource :neighborhood, :only => :show
-    community.resource :info_message, :only => :create # send sms
+    community.resource :sms_message,
+      :only   => :create,
+      :member => { :thank_you => :get }
     community.resource :lead2_lease_submissions,
       :as     => :contact,
       :only   => [:show, :create],
@@ -48,7 +50,9 @@ ActionController::Routing::Routes.draw do |map|
     community.resources :homes, :only => :index
     community.resource :features, :only => :show
     community.resource :neighborhood, :only => :show
-    community.resource :info_message, :only => :create # send sms
+    community.resource :sms_message,
+      :only   => :create,
+      :member => { :thank_you => :get }
     community.resource :lasso_submissions,
       :as     => :contact,
       :only   => :show,

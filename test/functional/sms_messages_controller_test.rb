@@ -1,7 +1,7 @@
 require 'test_helper'
 
-class InfoMessagesControllerTest < ActionController::TestCase
-  context "the InfoMessages controller" do
+class SmsMessagesControllerTest < ActionController::TestCase
+  context "the SmsMessages controller" do
     context "on POST to create" do
       context "for a HomeCommunity" do
         setup do

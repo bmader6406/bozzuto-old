@@ -112,4 +112,12 @@ module OverriddenPathsHelper
       contact_path
     end
   end
+
+  def send_me_updates_path(community)
+    if community.is_a?(ApartmentCommunity)
+      apartment_community_sms_message_path(community)
+    else
+      home_community_sms_message_path(community)
+    end
+  end
 end

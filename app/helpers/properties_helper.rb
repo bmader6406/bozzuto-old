@@ -50,12 +50,4 @@ module PropertiesHelper
       end.html_safe
     end
   end
-
-  def info_messages_url(community)
-    if community.is_a?(HomeCommunity)
-      home_community_info_message_url(community)
-    else
-      apartment_community_info_message_url(community)
-    end
-  end
 end

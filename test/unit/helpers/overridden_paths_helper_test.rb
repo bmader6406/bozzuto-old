@@ -264,5 +264,25 @@ class OverriddenPathsHelperTest < ActionView::TestCase
         end
       end
     end
+
+    context '#send_me_updates_path' do
+      context "when property is HomeCommunity" do
+        setup { @property = HomeCommunity.make }
+
+        should 'return the send_to_friend_home_community_path' do
+          assert_equal home_community_sms_message_path(@property),
+            send_me_updates_path(@property)
+        end
+      end
+
+      context "when property is ApartmentCommunity" do
+        setup { @property = ApartmentCommunity.make }
+
+        should 'return the send_to_friend_apartment_community_path' do
+          assert_equal apartment_community_sms_message_path(@property),
+            send_me_updates_path(@property)
+        end
+      end
+    end
   end
 end
