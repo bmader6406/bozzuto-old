@@ -11,7 +11,7 @@
   <div id="community-contact-form">
     <%= error_messages_for :submission %>
     
-    <form method="post" class="required-form" action="http://www.mylasso.com/registrant_signup.php">
+    <form method="post" id="lasso-form" class="required-form" action="http://www.mylasso.com/registrant_signup.php">
       <%= hidden_field_tag 'LassoUID', @community.lasso_uid %>
       <%= hidden_field_tag 'ClientID', @community.lasso_client_id %>
       <%= hidden_field_tag 'ProjectID', @community.lasso_project_id %>

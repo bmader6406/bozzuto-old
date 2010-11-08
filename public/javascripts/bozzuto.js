@@ -160,6 +160,14 @@ window.bozzuto = {};
     $('.phone-number[data-dnr-account]').replaceWith(function () {
       return getDNRiFrame(this, "xxx.xxx.xxxx", $(this).attr('data-dnr-account'));
     });
+
+    $('form#lasso-form').submit(storeLassoEmailInCookie);
+
+    function storeLassoEmailInCookie() {
+      var email = $('input[name=Emails\[Primary\]]', this).val();
+
+      document.cookie = 'lasso_email=' + email + '; path=/';
+    }
   });
 
 

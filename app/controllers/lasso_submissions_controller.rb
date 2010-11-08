@@ -7,6 +7,7 @@ class LassoSubmissionsController < ApplicationController
   end
 
   def thank_you
+    @email = cookies.delete('lasso_email')
   end
 
 
