@@ -161,12 +161,17 @@ window.bozzuto = {};
       return getDNRiFrame(this, "xxx.xxx.xxxx", $(this).attr('data-dnr-account'));
     });
 
-    $('form#lasso-form').submit(storeLassoEmailInCookie);
 
-    function storeLassoEmailInCookie() {
-      var email = $('input[name=Emails\[Primary\]]', this).val();
+    $('form#lasso-form').submit(function() {
+      setCookie('lasso_email', $('input[name=Emails\[Primary\]]', this).val());
+    });
+    $('form#ufollowup-form').submit(function() {
+      setCookie('ufollowup_email', $('input[name=prospectForm.email1]', this).val());
+    });
 
-      document.cookie = 'lasso_email=' + email + '; path=/';
+
+    function setCookie(name, value) {
+      document.cookie = name + '=' + value + '; path=/';
     }
   });
 

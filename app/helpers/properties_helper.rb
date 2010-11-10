@@ -81,6 +81,15 @@ module PropertiesHelper
     end
   end
 
+  def send_me_updates_mediaplex_code(email)
+    mediaplex_id = [email, Time.new.to_i.to_s].compact.join('-')
+    mediaplex_id = CGI::escape(mediaplex_id)
+
+    <<-END.html_safe
+      <iframe src="http://img-cdn.mediaplex.com/0/16798/universal.html?page_name=apartments_send_me_updates&Apartments_Send_Me_Updates=1&mpuid=#{mediaplex_id}" HEIGHT=1 WIDTH=1 FRAMEBORDER=0></iframe>
+    END
+  end
+
   def home_contact_form_mediaplex_code(email)
     mediaplex_id = [email, Time.new.to_i.to_s].compact.join('-')
     mediaplex_id = CGI::escape(mediaplex_id)

@@ -10,6 +10,7 @@ class UfollowupController < SectionContentController
   end
 
   def thank_you
+    @email = cookies.delete('ufollowup_email')
     render :thank_you, :layout => 'page'
   end
 

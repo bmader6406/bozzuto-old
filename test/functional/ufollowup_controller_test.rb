@@ -33,11 +33,34 @@ class UfollowupControllerTest < ActionController::TestCase
     setup do
       @section = Section.make :title => 'Apartments'
       @page = Page.make :section => @section
-      get :thank_you
     end
 
-    should_respond_with :success
-    should_render_template :thank_you
-    should_assign_to(:section) { @section }
+    context 'with an email in the ufollowup cookie' do
+      setup do
+        @email = Faker::Internet.email
+        @request.cookies['ufollowup_email'] = @email
+        get :thank_you
+      end
+
+      should_respond_with :success
+      should_render_template :thank_you
+      should_assign_to(:section) { @section }
+      should_assign_to(:email) { @email }
+
+      should 'erase the lasso cookie' do
+        assert_nil cookies['ufollowup_email']
+      end
+    end
+
+    context 'without an email in the ufollowup cookie' do
+      setup do
+        get :thank_you
+      end
+
+      should_respond_with :success
+      should_render_template :thank_you
+      should_assign_to(:section) { @section }
+      should_not_assign_to(:email)
+    end
   end
 end

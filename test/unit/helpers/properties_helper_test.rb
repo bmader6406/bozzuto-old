@@ -169,6 +169,41 @@ class PropertiesHelperTest < ActionView::TestCase
       end
     end
 
+    context '#send_me_updates_mediaplex_code' do
+      setup do
+        @time = Time.new
+        Time.stubs(:new).returns(@time)
+      end
+
+      context 'with an email address' do
+        setup do
+          @email        = Faker::Internet.email
+          @mediaplex_id = CGI.escape("#{@email}-#{@time.to_i}")
+        end
+
+        should 'return the correct iframe' do
+          code = send_me_updates_mediaplex_code(@email)
+
+          assert_match /Apartments_Send_Me_Updates/, code
+          assert_match /mpuid=#{@mediaplex_id}/, code
+        end
+      end
+
+      context 'without an email address' do
+        setup do
+          @email        = nil
+          @mediaplex_id = CGI.escape("#{@time.to_i}")
+        end
+
+        should 'return the correct iframe' do
+          code = send_me_updates_mediaplex_code(@email)
+
+          assert_match /Apartments_Send_Me_Updates/, code
+          assert_match /mpuid=#{@mediaplex_id}/, code
+        end
+      end
+    end
+
     context '#home_contact_form_mediaplex_code' do
       setup do
         @time = Time.new
