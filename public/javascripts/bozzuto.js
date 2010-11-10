@@ -157,9 +157,13 @@ window.bozzuto = {};
       $(this).attr('target', '_blank');
     });
 
-    $('.phone-number[data-dnr-account]').replaceWith(function () {
-      return getDNRiFrame(this, "xxx.xxx.xxxx", $(this).attr('data-dnr-account'));
-    });
+    var phoneNumbers = $('.phone-number[data-dnr-account]');
+
+    if (phoneNumbers.length > 0) {
+      phoneNumbers.replaceWith(function () {
+        return getDNRiFrame(this, "xxx.xxx.xxxx", $(this).attr('data-dnr-account'));
+      });
+    }
 
 
     $('form#lasso-form').submit(function() {
