@@ -59,9 +59,37 @@
   }
 
   /* @group Global */
+  body {
+    color: #606060;
+    font-family: "Helvetica Neue", "Droid Sans", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 17px;
+  }
   .btn {
-    background: url(/images/mobile/structure/button-sprites.png) 0 0 no-repeat;
-    text-indent: -9999px;
+    background: url(/images/mobile/structure/button-sprites.png) 0 -25px no-repeat;
+    color: #fff;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 34px;
+    margin-bottom: 4px;
+    padding-left: 16px;
+    text-decoration: none;
+    text-shadow: 0px -.7px 0px #000;
+    height: 34px;
+    width: 274px;
+  }
+  .main-content {
+    margin: 0 auto;
+    padding: 20px 0;
+    width: 280px;
+  }
+  h2 { 
+    color: #1d4739; 
+    font-size: 16px;
+  }
+  .section {
+    padding-bottom: 20px;
   }
   /* @end Global */
   /* @group Header */
@@ -79,11 +107,41 @@
     width: 132px;
   }
   .header a.btn {
+    background-position: 0 0;
     float: right;
     height: 25px;
+    padding: 0;
+    text-indent: -9999px;
     width: 84px;
   }
   /* @end Header */
-
+  /* @group Home */
+  .main {
+    border-bottom: 1px solid #D9DADB;
+  }
+  .main .intro h2 {
+    margin: 22px 0 18px;
+  }
+  .intro {
+    margin-bottom: 30px;
+  }
+  .lead-in {
+    font-weight: bold;
+  }
+  .nav {
+    margin-top: 20px;
+  }
+  .nav .btn {
+    color: #4c4c4c;
+    font-weight: normal;
+    text-shadow: 0 .7px 0 #fff;
+  }
+  .nav .btn span {
+    font-weight: bold;
+  }
+  .nav .directions { background-position: 0 -59px }
+  .nav .call-us { background-position: 0 -59px }
+  .nav .email-us { background-position: 0 -127px }
+  /* @end Home */
   </style>
 </head>
