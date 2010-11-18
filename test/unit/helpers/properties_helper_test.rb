@@ -111,21 +111,21 @@ class PropertiesHelperTest < ActionView::TestCase
       context 'with an apartment community' do
         setup do
           @community = ApartmentCommunity.make
-          @mediaplex_id = CGI.escape("#{@community.id}-#{@time.to_i}")
+          @mediaplex_id = CGI.escape("#{@time.to_i};#{@community.id}")
         end
 
         should 'return the correct iframe' do
           code = send_to_phone_mediaplex_code(@community)
 
           assert_match /Apartments_Send_to_Phone/, code
-          assert_match /#{@community.id}-#{@time.to_i}/, code
+          assert_match /#{@mediaplex_id}/, code
         end
       end
 
       context 'with a home community' do
         setup do
           @community = HomeCommunity.make
-          @mediaplex_id = CGI.escape("#{@community.id}-#{@time.to_i}")
+          @mediaplex_id = CGI.escape("#{@time.to_i};#{@community.id}")
         end
 
         should 'return the correct iframe' do
@@ -141,7 +141,7 @@ class PropertiesHelperTest < ActionView::TestCase
       setup do
         @email        = Faker::Internet.email
         @time         = Time.new
-        @mediaplex_id = CGI.escape("#{@email}-#{@time.to_i}")
+        @mediaplex_id = CGI.escape("#{@time.to_i};#{@email}")
 
         Time.stubs(:new).returns(@time)
       end
@@ -178,7 +178,7 @@ class PropertiesHelperTest < ActionView::TestCase
       context 'with an email address' do
         setup do
           @email        = Faker::Internet.email
-          @mediaplex_id = CGI.escape("#{@email}-#{@time.to_i}")
+          @mediaplex_id = CGI.escape("#{@time.to_i};#{@email}")
         end
 
         should 'return the correct iframe' do
@@ -214,7 +214,7 @@ class PropertiesHelperTest < ActionView::TestCase
       context 'with an email address' do
         setup do
           @email        = Faker::Internet.email
-          @mediaplex_id = CGI.escape("#{@community.id}-#{@email}-#{@time.to_i}")
+          @mediaplex_id = CGI.escape("#{@time.to_i};#{@email};#{@community.id}")
         end
 
         should 'return the correct iframe' do
@@ -228,7 +228,7 @@ class PropertiesHelperTest < ActionView::TestCase
       context 'without an email address' do
         setup do
           @email        = nil
-          @mediaplex_id = CGI.escape("#{@community.id}-#{@time.to_i}")
+          @mediaplex_id = CGI.escape("#{@time.to_i};#{@community.id}")
         end
 
         should 'return the correct iframe' do

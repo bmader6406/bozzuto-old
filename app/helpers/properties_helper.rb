@@ -52,7 +52,7 @@ module PropertiesHelper
   end
 
   def send_to_phone_mediaplex_code(community)
-    mediaplex_id = CGI::escape("#{community.id}-#{Time.new.to_i}")
+    mediaplex_id = CGI::escape("#{Time.new.to_i};#{community.id}")
 
     if community.is_a? HomeCommunity
       <<-END.html_safe
@@ -66,7 +66,7 @@ module PropertiesHelper
   end
 
   def send_to_friend_mediaplex_code(community, email)
-    mediaplex_id = CGI::escape("#{email}-#{Time.new.to_i}")
+    mediaplex_id = CGI::escape("#{Time.new.to_i};#{email}")
 
     if email.present?
       if community.is_a? HomeCommunity
@@ -82,7 +82,7 @@ module PropertiesHelper
   end
 
   def send_me_updates_mediaplex_code(email)
-    mediaplex_id = [email, Time.new.to_i.to_s].compact.join('-')
+    mediaplex_id = [Time.new.to_i.to_s, email].compact.join(';')
     mediaplex_id = CGI::escape(mediaplex_id)
 
     <<-END.html_safe
@@ -91,7 +91,7 @@ module PropertiesHelper
   end
 
   def home_contact_form_mediaplex_code(community, email)
-    mediaplex_id = [community.id, email, Time.new.to_i.to_s].compact.join('-')
+    mediaplex_id = [Time.new.to_i.to_s, email, community.id].compact.join(';')
     mediaplex_id = CGI::escape(mediaplex_id)
 
     <<-END.html_safe
