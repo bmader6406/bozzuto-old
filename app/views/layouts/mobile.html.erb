@@ -1,0 +1,12 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.2//EN"
+"http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd">
+<html lang="en">
+  <%= render :partial => "layouts/mobile/head" %>
+<body>
+  <%= render :partial => "layouts/mobile/header" %>
+  <div class="main-content">
+    <%= yield %>
+  </div>
+  <%= render :partial => "layouts/mobile/footer" %>
+</body>
+</html>

@@ -52,7 +52,7 @@ module PropertiesHelper
   end
 
   def send_to_phone_mediaplex_code(community)
-    mediaplex_id = CGI::escape("#{Time.new.to_i};#{community.id}")
+    mediaplex_id = "#{Time.new.to_i};#{community.id}"
 
     if community.is_a? HomeCommunity
       <<-END.html_safe
@@ -66,7 +66,7 @@ module PropertiesHelper
   end
 
   def send_to_friend_mediaplex_code(community, email)
-    mediaplex_id = CGI::escape("#{Time.new.to_i};#{email}")
+    mediaplex_id = "#{Time.new.to_i};#{email}"
 
     if email.present?
       if community.is_a? HomeCommunity
@@ -83,7 +83,6 @@ module PropertiesHelper
 
   def send_me_updates_mediaplex_code(email)
     mediaplex_id = [Time.new.to_i.to_s, email].compact.join(';')
-    mediaplex_id = CGI::escape(mediaplex_id)
 
     <<-END.html_safe
       <iframe src="http://img-cdn.mediaplex.com/0/16798/universal.html?page_name=apartments_send_me_updates&Apartments_Send_Me_Updates=1&mpuid=#{mediaplex_id}" HEIGHT=1 WIDTH=1 FRAMEBORDER=0></iframe>
@@ -92,7 +91,6 @@ module PropertiesHelper
 
   def home_contact_form_mediaplex_code(community, email)
     mediaplex_id = [Time.new.to_i.to_s, email, community.id].compact.join(';')
-    mediaplex_id = CGI::escape(mediaplex_id)
 
     <<-END.html_safe
       <iframe src="http://img-cdn.mediaplex.com/0/16797/universal.html?page_name=bozzuto_homes_lead&Bozzuto_Homes_Lead=1&mpuid=#{mediaplex_id}" HEIGHT=1 WIDTH=1 FRAMEBORDER=0></iframe>
