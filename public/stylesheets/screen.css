@@ -3883,7 +3883,8 @@ div.wysiwyg ul li {
     position: relative;
     width: 100%;
   }
-  #content .property-listing p.photos {
+  #content .property-listing p.photos,
+  #content .property-listing div.photos {
     float: left;
   }
   #content .column-main ul.projects-listing {
