@@ -4,8 +4,9 @@ compress_assets: on
 javascript_compressor: yui
 
 javascripts:
-  bozzuto:
+  jquery:
     - public/javascripts/vendor/jquery.min.js
+  bozzuto:
     - public/javascripts/vendor/jquery.lightbox_me.js
     - public/javascripts/vendor/jquery.scrollTo-min.js
     - public/javascripts/vendor/jquery.json.js
