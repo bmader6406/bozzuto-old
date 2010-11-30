@@ -19,8 +19,20 @@
         </li>
         <li class="last <%= current_if :controller => 'lasso_submissions' %>">
           <%= link_to 'Contact Info', home_community_lasso_submissions_path(@community) %>
-          <% if @community.phone_number.present? %>
-            <%= phone_number(@community) %>
+          <% if @community.id == 81 %>
+            <span id="phone-number-81" class="phone-number">88832060824</span>
+            <script type="text/javascript">
+              $(function() {
+                $('span#phone-number-81').replaceWith(function() {
+                  return getDNRiFrame(this, "xxx.xxx.xxxx", "2891386", "2891488", "Bozzuto.com", "Bozzuto.com");
+                });
+              });
+            </script>
+          </span>
+          <% else %>
+            <% if @community.phone_number.present? %>
+              <%= phone_number(@community) %>
+            <% end %>
           <% end %>
         </li>
       </ul>

@@ -1,7 +1,12 @@
 <% content_for :body_class do %>community property features<% end %>
 <% render_meta(@community, :neighborhood) %>
 
-<div class="wysiwyg">
-	<%= @community.neighborhood_text.try(:html_safe) %>
-</div>
+<div class="row">
+  <div id="content" class="col">
+    <div class="wysiwyg">
+      <%= @community.neighborhood_text.try(:html_safe) %>
+    </div>
+  </div>
 
+  <%= render :partial => 'sidebar' %>
+</div>
