@@ -1,4 +1,6 @@
-<% content_for :sidebar do %>
+<div id="sidebar" class="col">
+  <%= render :partial => 'communities/sidebar_community_info' %>
+
   <% unless @community.nearby_communities.empty? %>
     <div id="nearby-communities">
       <h3>Nearby Apartment Communities</h3>
@@ -9,6 +11,6 @@
       </ul>            
     </div>
   <% end %>
-<% end %>
 
-<%= render :partial => 'communities/sidebar' %>
+  <%= render :partial => 'communities/sidebar_social_links' %>
+</div>

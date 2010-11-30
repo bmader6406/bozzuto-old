@@ -1,4 +1,6 @@
-<% content_for :sidebar do %>
+<div id="sidebar" class="col">
+  <%= render :partial => 'communities/sidebar_community_info' %>
+
   <div id="zillow-mortgage-calculator">
     <%= zillow_mortgage_calculator %>
   </div>
@@ -15,6 +17,6 @@
       <% end %>
     </div>
   <% end %>
-<% end %>
 
-<%= render :partial => 'communities/sidebar' %>
+  <%= render :partial => 'communities/sidebar_social_links' %>
+</div>
