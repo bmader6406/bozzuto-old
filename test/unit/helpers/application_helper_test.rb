@@ -2,34 +2,28 @@ require 'test_helper'
 
 class ApplicationHelperTest < ActionView::TestCase
   context "ApplicationHelper" do
-    context '#phone_number' do
+    context '#dnr_phone_number' do
       context 'with a home community' do
-        setup do
-          @community = HomeCommunity.make
-          @html = HTML::Document.new(phone_number(@community))
-        end
+        setup { @community = HomeCommunity.make }
 
-        should 'create a span with the phone number' do
-          assert_select @html.root, 'span.phone-number', @community.phone_number
-        end
+        should 'output the replaceNumber function call' do
+          number  = @community.phone_number.gsub(/\D/, '').inspect
+          account = APP_CONFIG[:callsource]['home'].to_s.inspect
 
-        should 'insert the account number' do
-          assert_select @html.root, 'span[data-dnr-account=?]', APP_CONFIG[:callsource]['home'].to_s
+          assert_match %r{replaceNumber\(#{number}, "xxx.xxx.xxxx", #{account}\);},
+            dnr_phone_number(@community)
         end
       end
 
       context 'with an apartment community' do
-        setup do
-          @community = ApartmentCommunity.make
-          @html = HTML::Document.new(phone_number(@community))
-        end
+        setup { @community = ApartmentCommunity.make }
 
-        should 'create a span with the phone number' do
-          assert_select @html.root, 'span.phone-number', @community.phone_number
-        end
+        should 'output the replaceNumber function call' do
+          number  = @community.phone_number.gsub(/\D/, '').inspect
+          account = APP_CONFIG[:callsource]['apartment'].to_s.inspect
 
-        should 'insert the account number' do
-          assert_select @html.root, 'span[data-dnr-account=?]', APP_CONFIG[:callsource]['apartment'].to_s
+          assert_match %r{replaceNumber\(#{number}, "xxx.xxx.xxxx", #{account}\);},
+            dnr_phone_number(@community)
         end
       end
     end

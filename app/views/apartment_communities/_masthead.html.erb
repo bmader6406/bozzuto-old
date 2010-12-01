@@ -20,7 +20,7 @@
         <li class="last <%= current_if :controller => 'lead2_lease_submissions' %>">
           <%= link_to 'Contact Us', apartment_community_lead2_lease_submissions_path(@community) %>
           <% if @community.phone_number.present? %>
-            <%= phone_number(@community) %>
+            <%= dnr_phone_number(@community) %>
           <% end %>
         </li>
       </ul>
