@@ -1,5 +1,7 @@
-var backwardsCompatible = true; // leaving true fixes IE cookie problem in old version
+var backwardsCompatible = false; // leaving true fixes IE cookie problem in old version
                                  // setting to false improves performance of new version
+var urlOverridesFunction = true;   // Set to true for URL arguments to override replaceNumber arguments
+                                   // Set to false if replaceNumber should override URL arguments
 var callsourceServer = 'reporting.callsource.com'; // for production
 //var callsourceServer = 'budev08.callsource.com'; // uncomment and edit for testing
 var referrerString = document.referrer;
@@ -66,8 +68,16 @@ if (urlString.indexOf("ctd_ac") > -1 && urlString.indexOf("ctd_co") > -1) {
                 customerParam = getParameter("ctd_co", redirectURL);
                 campaignParam = getParameter("ctx_name", redirectURL);
                 adsourceParam = getParameter("ct_Ad%20Source", redirectURL);
+                if (adsourceParam.length == 0) {
+                    adsourceParam = getParameter("ctx_Ad%20Source", redirectURL);
+                }
+                if (adsourceParam.length == 0) {
+                    adsourceParam = getParameter("ct_Ad\\+Source", redirectURL);
+                }
+                if (adsourceParam.length == 0) {
+                    adsourceParam = getParameter("ctx_Ad\\+Source", redirectURL);
+                }
             }
-            
         }
     }
 }
@@ -114,18 +124,34 @@ function setSize(width, height) {
 }
 
 function replaceNumber(numberToReplace, format, account, customer, campaign, adsource) {
-    //use parameters from url if not defined for function
-    if ((account == null || account == "undefined") && accountParam.length > 0) {
-        account = accountParam;
+    //use parameters from url if given:
+    if (urlOverridesFunction) {
+        if (accountParam.length > 0) {
+            account = accountParam;
+        }
+        if (customerParam.length > 0) {
+            customer = customerParam;
+        }
+        if (campaignParam.length > 0) {
+            campaign = campaignParam;
+        }
+        if (adsourceParam.length > 0) {
+            adsource = adsourceParam;
+        }
     }
-    if ((customer == null || customer == "undefined") && customerParam.length > 0) {
-        customer = customerParam;
-    }
-    if ((campaign == null || campaign == "undefined") && campaignParam.length > 0) {
-        campaign = campaignParam;
-    }
-    if ((adsource == null || adsource == "undefined") && adsourceParam.length > 0) {
-        adsource = adsourceParam;
+    else {
+        if ((account == null || account == "undefined") && accountParam.length > 0) {
+            account = accountParam;
+        }
+        if ((customer == null || customer == "undefined") && customerParam.length > 0) {
+            customer = customerParam;
+        }
+        if ((campaign == null || campaign == "undefined") && campaignParam.length > 0) {
+            campaign = campaignParam;
+        }
+        if ((adsource == null || adsource == "undefined") && adsourceParam.length > 0) {
+            adsource = adsourceParam;
+        }
     }
     // set defaults
     if (format == null || format == "undefined") {
@@ -158,7 +184,7 @@ function replaceNumber(numberToReplace, format, account, customer, campaign, ads
         fontweight = getStyle(scriptTag, 'fontWeight');
     }
     var servletRequest = 'http://'+callsourceServer+'/simplelookup/Lookup?ctd_ac='+account+'&ctd_co='+customer+'&ctx_name='+campaign+'&ct_Ad%20Source='+adsource+'&fmt='+format+'&number='+numberToReplace+'&referrer='+referrerHost+'&textcolor='+textcolor+'&fontfamily='+fontfamily+'&fontsize='+fontsize+'&fontstyle='+fontstyle+'&fontweight='+fontweight;
-    servletRequest = servletRequest.replace(/\"/g, "'");
+    servletRequest = encodeUrl(servletRequest);
     var iframe = '<iframe allowtransparency="true" frameborder=0 marginwidth=0 marginheight=0 scrolling="no" width="'+frameWidth+'" height="'+frameHeight+'" src="'+servletRequest+'"></iframe>';
     document.write(iframe);
 }
@@ -201,3 +227,25 @@ function toHex(N) {
     return "0123456789ABCDEF".charAt((N-N%16)/16)
       + "0123456789ABCDEF".charAt(N%16);
 }
+
+function encodeUrl(url) {
+    if (url.indexOf("?")>0) {
+        encodedParams = "?";
+        parts = url.split("?");
+        params = parts[1].split("&");
+        for(i = 0; i < params.length; i++) {
+            if (i > 0) {
+                encodedParams += "&"; 
+            }
+            if (params[i].indexOf("=")>0) { //Avoid null values
+                p = params[i].split("=");
+                encodedParams += (p[0] + "=" + escape(encodeURI(p[1])));
+            } else  {
+                encodedParams += params[i];
+            }
+        }
+        url = parts[0] + encodedParams;
+    }
+    return url;
+}
+
