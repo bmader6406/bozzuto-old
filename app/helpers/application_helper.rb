@@ -64,16 +64,20 @@ module ApplicationHelper
     pluralize(bathrooms, 'Bathroom')
   end
 
-  def phone_number(community)
-    number = community.phone_number
+  def dnr_phone_number(community)
+    number = community.phone_number.gsub(/\D/, '')
 
     account = if community.is_a?(ApartmentCommunity)
       APP_CONFIG[:callsource]['apartment']
     elsif community.is_a?(HomeCommunity)
       APP_CONFIG[:callsource]['home']
-    end
+    end.to_s
 
-    %Q{<span class="phone-number" data-dnr-account="#{account}">#{number}</span>}.html_safe
+    <<-SCRIPT.html_safe
+      <script type="text/javascript">
+        replaceNumber(#{number.inspect}, "xxx.xxx.xxxx", #{account.inspect});
+      </script>
+    SCRIPT
   end
 
   def snippet(name)
