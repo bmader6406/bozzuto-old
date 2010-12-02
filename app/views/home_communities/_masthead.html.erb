@@ -19,15 +19,8 @@
         </li>
         <li class="last <%= current_if :controller => 'lasso_submissions' %>">
           <%= link_to 'Contact Info', home_community_lasso_submissions_path(@community) %>
-          <% if @community.id == 81 %>
-            <script type="text/javascript">
-              replaceNumber("8883060824", "xxx.xxx.xxxx", "2891386", "2891488", "Bozzuto.com", "Bozzuto.com"); 
-            </script>
-          </span>
-          <% else %>
-            <% if @community.phone_number.present? %>
-              <%= dnr_phone_number(@community) %>
-            <% end %>
+          <% if @community.phone_number.present? %>
+            <%= dnr_phone_number(@community) %>
           <% end %>
         </li>
       </ul>
