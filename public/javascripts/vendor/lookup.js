@@ -32,7 +32,7 @@ if (referrerHost != null && thisHost.indexOf(referrerHost) == -1 && referrerHost
 // alert (referrerHost); // uncomment to test persistence of referrer
 
 // Check for parameters in URL.
-if (urlString.indexOf("ctd_ac") > -1 && urlString.indexOf("ctd_co") > -1) {
+if (urlString.indexOf("ctd_ac") > -1) {
     var cookieValue = readCookie("CTTrackRef");
     // Create cookie of it does not exist.
     if (cookieValue == null) {
