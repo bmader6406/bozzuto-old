@@ -157,14 +157,6 @@ window.bozzuto = {};
       $(this).attr('target', '_blank');
     });
 
-    var phoneNumbers = $('.phone-number[data-dnr-account]');
-
-    if (phoneNumbers.length > 0) {
-      phoneNumbers.replaceWith(function () {
-        return getDNRiFrame(this, "xxx.xxx.xxxx", $(this).attr('data-dnr-account'));
-      });
-    }
-
 
     $('form#lasso-form').submit(function() {
       setCookie('lasso_email', $('input[name=Emails\[Primary\]]', this).val());
