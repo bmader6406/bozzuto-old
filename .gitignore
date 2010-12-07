@@ -8,3 +8,4 @@ coverage/*
 TODO
 public/system/*
 database.*
+.rvmrc
