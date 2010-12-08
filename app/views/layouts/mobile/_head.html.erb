@@ -217,13 +217,51 @@
     .at-a-glance li { margin-bottom: 5px; }
     /* @end At a Glance */
 
+    /* @group Property List, Floor Plans */
+    .property-list .content, .floor-plans .content { width: 300px; }
+    .property-list li, .property,
+    .floor-plans li, .floor-plan {
+      background: #d6dde7 url(/images/mobile/structure/btn-big.png) top left no-repeat;
+      width: 300px;
+    }
+    .property-list li, .floor-plans li {
+      background-position: top left;
+      margin-bottom: 8px;
+      padding-top: 10px;
+    }
+    .property, .floor-plan {
+      background-position: bottom right;
+      color: #606060;
+      display: block;
+      overflow: hidden;
+      text-decoration: none;
+      padding-bottom: 10px;
+    }
+    .property .thumbnail, .property .info,
+    .floor-plan .info { 
+      float: left;
+      margin-left: 11px;
+    }
+    .property .info {
+      width: 225px;
+    }
+    .info span { display: block; line-height: 15px;}
+    .property .address { margin-bottom: 2px; }
+    .property .name, .property .address, .floor-plan .name { font-weight: bold; }
+    .property .address, .property .floorplans, .property .price,
+    .floor-plan .pricing { font-size: 11px; }
+    .floor-plan .price { display: inline }
+    .floor-plan .price:before { content: "|"; padding-right: 5px }
+    /* @end Property List, Floor Plans */
+
     /* @group Community Overview */
     .community-overview .address { font-size: 11px; margin-bottom: 20px; }
     /* @end Community Overview */
 
-    /* @group Floor Plan */
-    .floor-plan img { margin-bottom: 16px; }
-    /* @end Floor Plan */ 
+    /* @group Floor Plan Detail */
+    .floor-plan-detail img { margin-bottom: 16px; }
+    /* @end Floor Plan Detail */ 
+
 
   /* @end Sections */
   </style>
