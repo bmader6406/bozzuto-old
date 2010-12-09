@@ -30,27 +30,18 @@
           </li>
           <li class="services-nav">
             <%= link_to 'Our Services', '/services' %>
-          </li>
-        </ul>
-
-        <ul id="home-nav">
-          <li>
-            <%= link_to 'Management', '/services/management' %>
-          </li>
-          <li>
-            <%= link_to 'Homebuilding', '/services/homebuilding' %>
-          </li>
-          <li>
-            <%= link_to 'Construction', '/services/construction' %>
-          </li>
-          <li>
-            <%= link_to 'Development', '/services/development' %>
-          </li>
-          <li>
-            <%= link_to 'Acquisitions', '/services/acquisitions' %>
-          </li>
-          <li>
-            <%= link_to 'Land', '/services/land' %>
+            <div class="dropdown">
+              <ul class="col">
+                <li class="first"><%= link_to 'Management', '/services/management' %></li>
+                <li><%= link_to 'Homebuilding', '/services/homebuilding' %></li>
+                <li><%= link_to 'Construction', '/services/construction' %></li>
+              </ul>
+              <ul class="col">
+                <li class="first"><%= link_to 'Development', '/services/development' %></li>
+                <li><%= link_to 'Acquisitions', '/services/acquisitions' %></li>
+                <li><%= link_to 'Land', '/services/land' %></li>
+              </ul>
+            </div>
           </li>
         </ul>
       </div>

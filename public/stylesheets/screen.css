@@ -832,8 +832,11 @@ div.wysiwyg ul li {
   .secondary #main-content p.first {
     font-size: 15px;
   }
-  .secondary #header #main-nav li .dropdown {
-    background: transparent url(../images/structure/bg-main-nav-dropdown.gif) no-repeat 0 -5px;
+  .secondary #header #main-nav li.about-nav .dropdown {
+    background: transparent url(../images/structure/bg-main-nav-dropdown.gif) no-repeat 0 -30px;
+  }
+  .secondary #header #main-nav li.services-nav .dropdown {
+    background: transparent url(../images/structure/bg-main-nav-dropdown.gif) no-repeat 0 2px;
   }
   .secondary #header #main-nav li .dropdown li a,
   .secondary #header #main-nav li .dropdown li a:hover {
@@ -874,7 +877,7 @@ div.wysiwyg ul li {
     }
     .secondary #header #main-nav li ul,
     .secondary #header #main-nav li ul li {
-      width: 94px;
+      width: 105px;
     }
     .secondary #header #main-nav li li,
     .secondary #header #main-nav li li a {
@@ -890,7 +893,7 @@ div.wysiwyg ul li {
     }
     .secondary #header #main-nav li .dropdown li a {
       display: block;
-      width: 86px;
+      width: 97px;
       padding: 8px 0 8px 8px;
     }
   /* @end */
