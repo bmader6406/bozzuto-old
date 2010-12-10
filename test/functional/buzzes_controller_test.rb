@@ -33,14 +33,19 @@ class BuzzesControllerTest < ActionController::TestCase
 
       context 'with a valid buzz' do
         setup do
+          @buzz = Buzz.make_unsaved
+
           post :create,
             :section => 'about-us',
-            :buzz => Buzz.make_unsaved.attributes
+            :buzz    => @buzz.attributes
         end
 
         should_respond_with :redirect
         should_redirect_to('the thank you page') { thank_you_buzz_path }
         should_change('the buzz count', :by => 1) { Buzz.count }
+        should 'save the buzz email in the flash' do
+          assert_equal @buzz.email, flash[:buzz_email]
+        end
       end
     end
 
