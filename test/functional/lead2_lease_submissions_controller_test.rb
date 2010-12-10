@@ -46,6 +46,9 @@ class Lead2LeaseSubmissionsControllerTest < ActionController::TestCase
         }
         should_assign_to :submission
         should_change('mail deliveries', :by => 1) { ActionMailer::Base.deliveries.count }
+        should 'save the email in the flash' do
+          assert_equal @submission.email, flash[:lead_2_lease_email]
+        end
       end
     end
 

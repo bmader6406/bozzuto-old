@@ -159,4 +159,40 @@ class MediaplexHelperTest < ActionView::TestCase
       assert_match /mpuid=#{@mediaplex_id}/, code
     end
   end
+
+
+  context '#lead_2_lease_mediaplex_code' do
+    setup do
+      @time = Time.new
+      @email = Faker::Internet.email
+      @mediaplex_id = "#{@time.to_i};#{@email}"
+
+      Time.stubs(:new).returns(@time)
+    end
+
+    should 'return the correct iframe' do
+      code = lead_2_lease_mediaplex_code(@email)
+
+      assert_match /Bozzuto\.com_Apartments_Lead/, code
+      assert_match /mpuid=#{@mediaplex_id}/, code
+    end
+  end
+
+
+  context '#contact_mediaplex_code' do
+    setup do
+      @time = Time.new
+      @email = Faker::Internet.email
+      @mediaplex_id = "#{@time.to_i};#{@email}"
+
+      Time.stubs(:new).returns(@time)
+    end
+
+    should 'return the correct iframe' do
+      code = contact_mediaplex_code(@email)
+
+      assert_match /Contact_Us/, code
+      assert_match /mpuid=#{@mediaplex_id}/, code
+    end
+  end
 end

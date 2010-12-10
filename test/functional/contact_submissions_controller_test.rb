@@ -57,6 +57,9 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
         should_respond_with :redirect
         should_redirect_to('the thank you page') { thank_you_contact_path }
         should_assign_to(:section) { @section }
+        should 'save the email in the flash' do
+          assert_equal @submission.email, flash[:contact_submission_email]
+        end
       end
     end
 

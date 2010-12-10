@@ -52,4 +52,20 @@ module MediaplexHelper
       <iframe src="http://img-cdn.mediaplex.com/0/16798/universal.html?page_name=bozzutobuzz&BozzutoBuzz=1&mpuid=#{mediaplex_id}" HEIGHT=1 WIDTH=1 FRAMEBORDER=0></iframe>
     END
   end
+
+  def lead_2_lease_mediaplex_code(email)
+    mediaplex_id = [Time.new.to_i.to_s, email].compact.join(';')
+
+    <<-END.html_safe
+      <iframe src="http://img-cdn.mediaplex.com/0/16798/universal.html?page_name=bozzuto.com_apartments_lead&Bozzuto.com_Apartments_Lead=1&mpuid=#{mediaplex_id}" HEIGHT=1 WIDTH=1 FRAMEBORDER=0></iframe>
+    END
+  end
+
+  def contact_mediaplex_code(email)
+    mediaplex_id = [Time.new.to_i.to_s, email].compact.join(';')
+
+    <<-END.html_safe
+      <iframe src="http://img-cdn.mediaplex.com/0/16798/universal.html?page_name=contact_us&Contact_Us=1&mpuid=#{mediaplex_id}" HEIGHT=1 WIDTH=1 FRAMEBORDER=0></iframe>
+    END
+  end
 end

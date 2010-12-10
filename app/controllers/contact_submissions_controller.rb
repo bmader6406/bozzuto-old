@@ -10,6 +10,7 @@ class ContactSubmissionsController < SectionContentController
 
     if @submission.valid?
       ContactMailer.deliver_contact_form_submission(@submission)
+      flash[:contact_submission_email] = @submission.email
       redirect_to thank_you_contact_path
     else
       render :action => :show
