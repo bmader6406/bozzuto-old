@@ -71,11 +71,13 @@ module ApplicationHelper
       APP_CONFIG[:callsource]['apartment']
     elsif community.is_a?(HomeCommunity)
       APP_CONFIG[:callsource]['home']
-    end.to_s
+    end
+
+    args = [number, 'xxx.xxx.xxxx', account, community.dnr_customer_code].select(&:present?).map { |arg| "'#{arg}'" }
 
     <<-SCRIPT.html_safe
       <script type="text/javascript">
-        replaceNumber(#{number.inspect}, "xxx.xxx.xxxx", #{account.inspect});
+        replaceNumber(#{args.join(', ')});
       </script>
     SCRIPT
   end
