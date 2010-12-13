@@ -175,20 +175,6 @@
     /* @group Main */
     .main {
     }
-    .go-back {
-      display: block;
-      float: left;
-    }
-    .go-back:before {
-      content: "\00AB"
-    }
-    .page-title h2 {
-      float: right;
-    }
-    .page-title {
-      overflow: hidden;
-      padding-bottom: 20px;
-    }
     .main .intro h2 {
       margin-bottom: 18px;
     }
@@ -203,6 +189,26 @@
       font-weight: bold;
     }
     /* @end Main */
+
+    /* @group Page Title */
+    .go-back {
+      background: url(/images/mobile/structure/bg-go-back-arrow.png) 0 2px no-repeat;
+      color: #1d4739; 
+      display: block;
+      float: left;
+      font-size: 16px;
+      font-weight: bold;
+      padding-left: 16px;
+      text-decoration: none;
+    }
+    .page-title h2 {
+      float: right;
+    }
+    .page-title {
+      overflow: hidden;
+      padding-bottom: 20px;
+    }
+    /* @end Page Title */
 
     /* @group Browse */
     .browse .btn { font-weight: normal }
