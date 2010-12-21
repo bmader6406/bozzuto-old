@@ -91,6 +91,12 @@ County.blueprint do
   state
 end
 
+DnrConfiguration.blueprint do
+  customer_code { (rand(3000) + 500).to_s }
+  campaign      { (rand(3000) + 500).to_s }
+  ad_source     { (rand(500000) + 40000).to_s }
+end
+
 Feed.blueprint do
   name { Sham.unique_name }
   url  { Sham.feed_url }

@@ -73,7 +73,16 @@ module ApplicationHelper
       APP_CONFIG[:callsource]['home']
     end
 
-    args = [number, 'xxx.xxx.xxxx', account, community.dnr_customer_code].select(&:present?).map { |arg| "'#{arg}'" }
+    dnr = community.dnr_configuration
+
+    args = [
+      number,
+      'xxx.xxx.xxxx',
+      account,
+      dnr.try(:customer_code) || 'undefined',
+      dnr.try(:campaign) || 'undefined',
+      dnr.try(:ad_source) || 'undefined',
+    ].map { |arg| "'#{arg}'" }
 
     <<-SCRIPT.html_safe
       <script type="text/javascript">
