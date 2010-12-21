@@ -15,7 +15,7 @@
     <% end -%>
   </div>
 
-  <% if property.county.present? %>
+  <% if !property.is_a?(HomeCommunity) && property.county.present? %>
     <div id="sub-listing">
       <% property.county.cities.in_groups_of(4, false).each do |city_groups| %>
         <ul class="row">
