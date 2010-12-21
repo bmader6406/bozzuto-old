@@ -1,14 +1,16 @@
 <li class="property-listing home-listing">
   <div class="photos">
     <% if community.listing_image? %>
-      <%= content_tag :p, image_tag(community.listing_image.url) %>
+      <p>
+        <%= link_to image_tag(community.listing_image.url), home_community_path(community) %>
+      </p>
     <% end %>
     <%= content_tag :p, link_to(image_tag(community.listing_promo.url), home_community_path(community)) if community.listing_promo? %>
   </div>
 
   <div class="info">
     <div class="overview">
-      <h2><%= community.title %></h2>
+      <h2><%= link_to community.title, home_community_path(community) %></h2>
 
       <% if community.listing_title.present? %>
         <p class="intro">

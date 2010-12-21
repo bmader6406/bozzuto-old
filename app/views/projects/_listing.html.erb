@@ -1,13 +1,13 @@
 <li class="property-listing project-listing">
   <div class="photos">
     <% if project.listing_image? %>
-      <p><%= image_tag project.listing_image.url %></p>
+      <p><%= link_to image_tag(project.listing_image.url), project_path(@section, project) %></p>
     <% end %>
   </div>
   
   <div class="info">
     <div class="overview">
-      <h2><%= project.title %></h2>
+      <h2><%= link_to project.title, project_path(@section, project) %></h2>
 
       <% if project.listing_title.present? %>
         <p class="intro">

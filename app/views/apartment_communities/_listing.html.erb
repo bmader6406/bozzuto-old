@@ -1,13 +1,13 @@
 <li class="property-listing apartment-listing" data-jmapping="<%= community.to_jmapping %>">
   <p class="photos">
     <% if community.listing_image? %>
-      <%= image_tag community.listing_image.url %>
+      <%= link_to image_tag(community.listing_image.url), community %>
     <% end %>
   </p>
 
   <div class="info">
     <div class="overview">
-      <h2><%= community.title %></h2>
+      <h2><%= link_to community.title, community %></h2>
 
       <p class="address-info">
         <%= community.address %><br/>
