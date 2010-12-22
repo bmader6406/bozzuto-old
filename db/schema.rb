@@ -557,7 +557,6 @@ ActiveRecord::Schema.define(:version => 20101221201256) do
     t.string   "lasso_uid"
     t.string   "lasso_client_id"
     t.string   "lasso_project_id"
-    t.string   "dnr_customer_code"
     t.boolean  "featured",                      :default => false, :null => false
     t.integer  "featured_position"
   end
