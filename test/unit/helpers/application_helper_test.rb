@@ -6,15 +6,18 @@ class ApplicationHelperTest < ActionView::TestCase
       context 'with a home community' do
         setup { @community = HomeCommunity.make }
 
-        context 'that has a customer code' do
-          setup { @community.dnr_customer_code = rand(10000000).to_i.to_s }
+        context 'that has DNR configured' do
+          setup do
+            @dnr = DnrConfiguration.make_unsaved
+            @community.dnr_configuration = @dnr
+            @community.save
+          end
 
           should 'output the replaceNumber function call' do
             number  = @community.phone_number.gsub(/\D/, '')
             account = APP_CONFIG[:callsource]['home'].to_s
-            dnr     = @community.dnr_customer_code.to_s
 
-            assert_match %r{replaceNumber\('#{number}', 'xxx.xxx.xxxx', '#{account}', '#{dnr}'\);},
+            assert_match %r{replaceNumber\('#{number}', 'xxx.xxx.xxxx', '#{account}', '#{@dnr.customer_code}', '#{@dnr.campaign}', '#{@dnr.ad_source}'\);},
               dnr_phone_number(@community)
           end
         end
@@ -24,7 +27,7 @@ class ApplicationHelperTest < ActionView::TestCase
             number  = @community.phone_number.gsub(/\D/, '')
             account = APP_CONFIG[:callsource]['home'].to_s
 
-            assert_match %r{replaceNumber\('#{number}', 'xxx.xxx.xxxx', '#{account}'\);},
+            assert_match %r{replaceNumber\('#{number}', 'xxx.xxx.xxxx', '#{account}', 'undefined', 'undefined', 'undefined'\);},
               dnr_phone_number(@community)
           end
         end
@@ -33,15 +36,18 @@ class ApplicationHelperTest < ActionView::TestCase
       context 'with an apartment community' do
         setup { @community = ApartmentCommunity.make }
 
-        context 'that has a customer code' do
-          setup { @community.dnr_customer_code = rand(10000000).to_i.to_s }
+        context 'that has DNR configured' do
+          setup do
+            @dnr = DnrConfiguration.make_unsaved
+            @community.dnr_configuration = @dnr
+            @community.save
+          end
 
           should 'output the replaceNumber function call' do
             number  = @community.phone_number.gsub(/\D/, '')
             account = APP_CONFIG[:callsource]['apartment'].to_s
-            dnr     = @community.dnr_customer_code.to_s
 
-            assert_match %r{replaceNumber\('#{number}', 'xxx.xxx.xxxx', '#{account}', '#{dnr}'\);},
+            assert_match %r{replaceNumber\('#{number}', 'xxx.xxx.xxxx', '#{account}', '#{@dnr.customer_code}', '#{@dnr.campaign}', '#{@dnr.ad_source}'\);},
               dnr_phone_number(@community)
           end
         end
@@ -51,7 +57,7 @@ class ApplicationHelperTest < ActionView::TestCase
             number  = @community.phone_number.gsub(/\D/, '')
             account = APP_CONFIG[:callsource]['apartment'].to_s
 
-            assert_match %r{replaceNumber\('#{number}', 'xxx.xxx.xxxx', '#{account}'\);},
+            assert_match %r{replaceNumber\('#{number}', 'xxx.xxx.xxxx', '#{account}', 'undefined', 'undefined', 'undefined'\);},
               dnr_phone_number(@community)
           end
         end

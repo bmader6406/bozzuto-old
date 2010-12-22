@@ -7,6 +7,7 @@ en:
       body_slide: Slide
       body_slideshow: Page Body Slideshow
       contact_topic: Contact Form Topic
+      dnr_configuration: DNR Configuration
       feed: Feed
       home_community: Home Community
       home_floor_plan: Floor Plan
@@ -32,6 +33,7 @@ en:
       typus_user: User
     attributes:
       apartment_community:
+        dnr_configuration: DNR Configuration
         floor_plans_meta_description: Floor Plans SEO Description
         floor_plans_meta_keywords: Floor Plans SEO Keywords
         floor_plans_meta_title: Floor Plans SEO Title
@@ -66,12 +68,10 @@ en:
         street1: Street Address 1
         street2: Street Address 2
         zip_code: ZIP Code
-      community:
-        elite: Elite Community
-        smart_share: Bozzuto SmartShare Program
-        smart_rent: Bozzuto SmartRent Program
-        green: Bozzuto Green Program
-        non_smoking: No Smoking
+      dnr_configuration:
+        customer_code: Customer Code
+        campaign: Campaign
+        ad_source: Ad Source
       feed:
         url: Feed URL
       home:

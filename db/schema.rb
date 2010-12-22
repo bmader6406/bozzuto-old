@@ -149,6 +149,15 @@ ActiveRecord::Schema.define(:version => 20101221201256) do
 
   add_index "counties", ["state_id"], :name => "index_counties_on_state_id"
 
+  create_table "dnr_configurations", :force => true do |t|
+    t.string   "customer_code"
+    t.string   "campaign"
+    t.string   "ad_source"
+    t.integer  "property_id",   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "featured_apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
     t.integer "apartment_community_id"

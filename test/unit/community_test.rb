@@ -11,6 +11,7 @@ class CommunityTest < ActiveSupport::TestCase
     should_belong_to :local_info_feed, :promo
     should_have_one :photo_set
     should_have_many :videos
+    should_have_one :dnr_configuration
     
     should 'acts_as_list' do
       assert Community.included_modules.include?(ActsAsList::InstanceMethods)

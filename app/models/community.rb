@@ -5,7 +5,11 @@ class Community < Property
 
   belongs_to :local_info_feed, :class_name => 'Feed'
   belongs_to :promo
-  has_one :photo_set, :foreign_key => :property_id
+  has_one :photo_set,
+    :foreign_key => :property_id
+  has_one :dnr_configuration,
+    :dependent   => :destroy,
+    :foreign_key => :property_id
   has_many :videos,
     :foreign_key => :property_id,
     :order       => 'position ASC'
