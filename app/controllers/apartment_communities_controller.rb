@@ -7,7 +7,7 @@ class ApartmentCommunitiesController < ApplicationController
     params[:search] ||= {}
 
     @partial_template = params[:template] || 'search'
-    @search = ApartmentCommunity.published.ordered_by_title.search(params[:search])
+    @search = ApartmentCommunity.published.featured_order.search(params[:search])
     @geographic_filter = geographic_filter
     @communities = @search.all.group_by {|c| c.state.name}
 

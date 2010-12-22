@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101210143016) do
+ActiveRecord::Schema.define(:version => 20101221201256) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -549,6 +549,8 @@ ActiveRecord::Schema.define(:version => 20101210143016) do
     t.string   "lasso_client_id"
     t.string   "lasso_project_id"
     t.string   "dnr_customer_code"
+    t.boolean  "featured",                      :default => false, :null => false
+    t.integer  "featured_position"
   end
 
   create_table "properties_property_features", :id => false, :force => true do |t|

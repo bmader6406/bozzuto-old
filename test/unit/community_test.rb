@@ -11,6 +11,11 @@ class CommunityTest < ActiveSupport::TestCase
     should_belong_to :local_info_feed, :promo
     should_have_one :photo_set
     should_have_many :videos
+    
+    should 'acts_as_list' do
+      assert Community.included_modules.include?(ActsAsList::InstanceMethods)
+      assert Community.column_names.include?('featured_position')
+    end
 
     context '#has_overview_bullets?' do
       should 'return false if all bullets are empty' do

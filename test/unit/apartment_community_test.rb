@@ -16,6 +16,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
         ApartmentCommunity.with_min_price(0).all
         ApartmentCommunity.with_max_price(1000).all
         ApartmentCommunity.with_property_features([1, 2, 3]).all
+        ApartmentCommunity.featured_order
       end
     end
 
@@ -28,6 +29,25 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
       @community.lead_2_lease_email = 'test@example.com'
       @community.valid?
       assert @community.errors.on(:lead_2_lease_email).blank?
+    end
+    
+    should 'set featured_position when changed to being featured' do
+      @community.featured = true
+      @community.save!
+      assert @community.featured_position.present?
+    end
+    
+    context 'that is featured' do
+      setup do
+        @community.featured = true
+        @community.save!
+      end
+      
+      should 'remove the featured position when they lose their featured status' do
+        @community.featured = false
+        @community.save!
+        assert @community.featured_position.nil?
+      end
     end
 
     context '#nearby_communities' do

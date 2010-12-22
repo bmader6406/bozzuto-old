@@ -190,7 +190,10 @@ module Admin::FormHelper
                     { Typus.user_fk => @current_user }
                   end
 
-      options = { :order => model_to_relate.typus_order_by, :conditions => conditions }
+      options = { :conditions => conditions }
+      if reflection.options[:order].blank?
+        options[:order] = model_to_relate.typus_order_by 
+      end
       items_count = @resource[:class].find(params[:id]).send(field).count(:conditions => conditions)
       items_per_page = model_to_relate.typus_options_for(:per_page).to_i
 
@@ -275,8 +278,11 @@ module Admin::FormHelper
       conditions = if model_to_relate.typus_options_for(:only_user_items) && @current_user.is_not_root?
                     { Typus.user_fk => @current_user }
                   end
-
-      options = { :order => model_to_relate.typus_order_by, :conditions => conditions }
+      
+      options = { :conditions => conditions }
+      if reflection.options[:order].blank?
+        options[:order] = model_to_relate.typus_order_by 
+      end
       items_count = @resource[:class].find(params[:id]).send(field).count(:conditions => conditions)
       items_per_page = model_to_relate.typus_options_for(:per_page).to_i
 
