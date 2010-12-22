@@ -112,12 +112,30 @@
           <div class="header">
             <ul class="nav">
               <li class="current">
+                <a href="#apartments-by-region">Apartments By Region</a>
+              </li>
+              <li>
                 <a href="#apartments-by-city">Apartments By City</a>
               </li>
               <li class="last">
                 <a href="#apartments-by-county">Apartments By County</a>
               </li>
             </ul>
+          </div>
+          
+          <div id="apartments-by-region" class="section listings listings-count">
+            <h2>Apartments for Rent By Region</h2>
+
+            <% LandingPage.ascend_by_title.in_groups_of(4, false) do |regions| %>
+              <ul class="row">
+                <% regions.each do |region| %>
+                  <li>
+                    <%= link_to region.title, landing_page_path(region) %>
+                    <span class="count"><%= region.apartment_communities.published.count %></span>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
           </div>
 
           <div id="apartments-by-city" class="section listings listings-count">
