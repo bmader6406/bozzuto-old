@@ -13,6 +13,7 @@ admin:
   City: create, read, update, delete
   ContactTopic: create, read, update, delete
   County: create, read, update, delete
+  DnrConfiguration: create, read, update, delete
   Feed: create, read, update, delete
   Home: create, read, update, delete
   HomeCommunity: create, read, update, delete
