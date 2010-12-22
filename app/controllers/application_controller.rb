@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   helper :all
   protect_from_forgery
 
+  before_filter :detect_mobile_user_agent
   around_filter :set_current_queue
 
   rescue_from ActiveRecord::RecordNotFound, :with => :render_404
@@ -46,4 +47,13 @@ class ApplicationController < ActionController::Base
     @apartment_floor_plan_groups ||= ApartmentFloorPlanGroup.all
   end
   helper_method :apartment_floor_plan_groups
+
+  def detect_mobile_user_agent
+    request.format = :mobile if request.env["HTTP_USER_AGENT"] =~ /(Mobile\/.+Safari)/
+  end
+
+  def mobile?
+    request.format.to_sym == :mobile
+  end
+  helper_method :mobile?
 end
