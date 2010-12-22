@@ -203,11 +203,18 @@ module Admin::FormHelper
       end
 
       @items = @pager.page(params[:page])
+      
+      typus_config = Typus::Configuration.config[@resource[:class].name]
+      if typus_config['relationship_fields'].present?
+        fields_for_name = (typus_config['relationship_fields'][field.to_s] || :relationship).to_sym
+      else
+        fields_for_name = :relationship
+      end
 
       unless @items.empty?
         options = { :back_to => "#{@back_to}##{field}", :resource => @resource[:self], :resource_id => @item.id }
         html << build_list(model_to_relate, 
-                           model_to_relate.typus_fields_for(:relationship), 
+                           model_to_relate.typus_fields_for(fields_for_name), 
                            @items, 
                            model_to_relate_as_resource, 
                            options, 
@@ -292,7 +299,14 @@ module Admin::FormHelper
       end
 
       @items = @pager.page(params[:page])
-
+      
+      typus_config = Typus::Configuration.config[@resource[:class].name]
+      if typus_config['relationship_fields'].present?
+        fields_for_name = (typus_config['relationship_fields'][field.to_s] || :relationship).to_sym
+      else
+        fields_for_name = :relationship
+      end
+      
       unless @items.empty?
         html << build_list(model_to_relate, 
                            model_to_relate.typus_fields_for(:relationship), 
