@@ -123,50 +123,11 @@
             </ul>
           </div>
           
-          <div id="apartments-by-region" class="section listings listings-count">
-            <h2>Apartments for Rent By Region</h2>
-
-            <% LandingPage.ascend_by_title.in_groups_of(4, false) do |regions| %>
-              <ul class="row">
-                <% regions.each do |region| %>
-                  <li>
-                    <%= link_to region.title, landing_page_path(region) %>
-                    <span class="count"><%= region.apartment_communities.published.count %></span>
-                  </li>
-                <% end %>
-              </ul>
-            <% end %>
-          </div>
-
-          <div id="apartments-by-city" class="section listings listings-count">
-            <h2>Apartments for Rent in <%= @state.name %> By City</h2>
-
-            <% @state.cities.ordered_by_name.in_groups_of(4, false) do |cities| %>
-              <ul class="row">
-                <% cities.each do |city| %>
-                  <li>
-                    <%= link_to city.name, apartment_communities_path("search[city_id]" => city.id) %>
-                    <span class="count"><%= city.apartment_communities.published.count %></span>
-                  </li>
-                <% end %>
-              </ul>
-            <% end %>
-          </div>
-
-          <div id="apartments-by-county" class="section listings listings-count">
-            <h2>Apartments for Rent in <%= @state.name %> By County</h2>
-
-            <% @state.counties.ordered_by_name.in_groups_of(4, false) do |counties| %>
-              <ul class="row">
-                <% counties.each do |county| %>
-                  <li>
-                    <%= link_to county.name, apartment_communities_path("search[county_id]" => county.id) %>
-                    <span class="count"><%= county.apartment_communities.published.count %></span>
-                  </li>
-                <% end %>
-              </ul>
-            <% end %>
-          </div>
+          <%= apartments_by_region %>
+          
+          <%= apartments_by('City') %>
+          
+          <%= apartments_by('County') %>
         </div>
 
         <% if @page.projects.any? %>

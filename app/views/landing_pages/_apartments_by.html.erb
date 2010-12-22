@@ -1,0 +1,14 @@
+<div id="apartments-by-<%= id_name %>" class="section listings listings-count">
+  <h2>Apartments for Rent <%= title %></h2>
+
+  <%- records.in_groups_of(4, false) do |items| -%>
+    <ul class="row">
+      <% items.each do |item| %>
+        <li>
+          <%= list_item_link[item] %>
+          <span class="count"><%= item.apartment_communities.published.count %></span>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
