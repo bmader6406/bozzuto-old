@@ -46,11 +46,7 @@ class ApartmentCommunitiesController < ApplicationController
   end
 
   def detect_mobile_layout
-    if mobile? || params[:action] == :index
-      'application'
-    else
-      'community'
-    end
+    mobile? ? 'application' : 'community'
   end
 
 end
