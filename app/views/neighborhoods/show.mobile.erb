@@ -1,0 +1,16 @@
+<% render_meta(@community, :neighborhood) %>
+
+<div class="section page-title">
+  <div class="content">
+    <h2>Neighborhoods</h2>
+    <%= link_to @community.title, community_url(@community), :class => 'go-back' %>
+  </div>
+</div>
+
+<div class="section">
+  <div class="content">
+    <div class="wysiwyg">
+      <%= @community.neighborhood_text.try(:html_safe) %>
+    </div>
+  </div>
+</div>
