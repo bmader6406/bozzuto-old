@@ -7,7 +7,10 @@ class PropertySlide < ActiveRecord::Base
 
   has_attached_file :image,
     :url => '/system/:class/:id/:style.:extension',
-    :styles => { :slide => '870x375#' },
+    :styles => {
+      :slide        => '870x375#',
+      :mobile_thumb => '280x85#'
+    },
     :default_style => :slide
 
   validates_attachment_presence :image
