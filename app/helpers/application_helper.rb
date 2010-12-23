@@ -81,10 +81,8 @@ module ApplicationHelper
 
   def phone_number_uri(number)
     pn = sanitize_phone_number(number)
-    pn = '1' << pn if pn.length == 10
 
-    case pn.length
-    when 10
+    if pn.length == 10
       "tel:+1#{pn}"
     else
       "tel:+#{pn}"
