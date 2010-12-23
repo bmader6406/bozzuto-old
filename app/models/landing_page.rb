@@ -5,10 +5,8 @@ class LandingPage < ActiveRecord::Base
     :association_foreign_key => :apartment_community_id,
     :class_name => 'ApartmentCommunity',
     :join_table => :featured_apartment_communities_landing_pages
-  has_and_belongs_to_many :popular_properties,
-    :association_foreign_key => :property_id,
-    :class_name => 'Property',
-    :join_table => :landing_pages_popular_properties
+  has_many :popular_properties, :class_name => 'LandingPagePopularProperty',
+    :order => 'position ASC', :include => :property
   has_and_belongs_to_many :projects
   belongs_to :state
   belongs_to :promo
@@ -25,6 +23,8 @@ class LandingPage < ActiveRecord::Base
 
 
   def all_properties
-    @all_properties ||= [apartment_communities, home_communities, featured_apartment_communities, popular_properties, projects].flatten.uniq
+    @all_properties ||= [apartment_communities, home_communities, 
+      featured_apartment_communities, popular_properties.map(&:property),
+      projects].flatten.uniq
   end
 end

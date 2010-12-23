@@ -1,0 +1,25 @@
+<% form_tag :action => 'relate', :id => @item.id do %>
+  <%= hidden_field :related, :relation, :value => 'popular_properties' %>
+  <%= hidden_field :related, :model, :value => LandingPagePopularProperty %>
+  <p>
+    <%= select :related, :id, items_to_relate.collect { |f| [f.to_label, f.id] }.sort_by { |e| e.first } %>
+    &nbsp;
+    <%= submit_tag _("Add"), :class => 'button' %>
+  </p>
+<% end %>
+
+<table class="typus">
+  <%= typus_table_header(LandingPagePopularProperty, fields).html_safe %>
+  <%- items.each do |item| -%>
+    <tr class="<%= cycle('even', 'odd') %> <%= item.class.name.underscore %>" id="<%= item.to_dom %>" name="item_<%= item.id %>">
+      <%= render_table_fields(item, fields, link_options).html_safe %>
+      <td width="10px"><%= link_to _('Edit'), :controller => "admin/#{item.property.class.name.tableize}", 
+          :action => 'edit', :id => item.property.id %></td>
+      <td width="10px">
+        <%= link_to '<div class="sprite unrelate">Unrelate</div>'.html_safe, 
+                { :controller =>  'admin/landing_page_popular_properties',:action => 'destroy', :id => item.id }, 
+                :title => _("Unrelate"), 
+                :confirm => _("Remove entry?") %>
+      </td>
+  <%- end -%>
+</table>

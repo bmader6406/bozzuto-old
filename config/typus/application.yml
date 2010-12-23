@@ -233,6 +233,15 @@ LandingPage:
   search: title
   application: Geography
 
+LandingPagePopularProperty:
+  fields:
+    default: title, position, street_address, city
+  order_by: position
+  relationships: property
+  application:
+  filters:
+  search:
+
 Leader:
   fields:
     default: name, title, company
