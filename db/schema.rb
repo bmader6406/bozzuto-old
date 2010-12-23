@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101222210245) do
+ActiveRecord::Schema.define(:version => 20101223164130) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -233,12 +233,12 @@ ActiveRecord::Schema.define(:version => 20101222210245) do
   end
 
   create_table "landing_pages", :force => true do |t|
-    t.string   "title",                       :null => false
+    t.string   "title",                                             :null => false
     t.string   "meta_title"
     t.string   "meta_description"
     t.string   "meta_keywords"
     t.string   "cached_slug"
-    t.integer  "state_id",                    :null => false
+    t.integer  "state_id",                                          :null => false
     t.text     "masthead_body"
     t.string   "masthead_image_file_name"
     t.string   "masthead_image_content_type"
@@ -247,6 +247,7 @@ ActiveRecord::Schema.define(:version => 20101222210245) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "promo_id"
+    t.boolean  "custom_sort_popular_properties", :default => false, :null => false
   end
 
   create_table "landing_pages_projects", :id => false, :force => true do |t|

@@ -6,10 +6,12 @@ class LandingPage < ActiveRecord::Base
     :class_name => 'ApartmentCommunity',
     :join_table => :featured_apartment_communities_landing_pages
   has_many :popular_properties, :class_name => 'LandingPagePopularProperty',
-    :order => 'position ASC', :include => :property
+    :order => 'position ASC, RAND(NOW())', :include => :property
   has_and_belongs_to_many :projects
   belongs_to :state
   belongs_to :promo
+  
+  after_save :set_positions_of_popular_properties
 
   validates_presence_of :title, :state
   validates_uniqueness_of :title
@@ -26,5 +28,21 @@ class LandingPage < ActiveRecord::Base
     @all_properties ||= [apartment_communities, home_communities, 
       featured_apartment_communities, popular_properties.map(&:property),
       projects].flatten.uniq
+  end
+  
+  protected
+  
+  def set_positions_of_popular_properties
+    if custom_sort_popular_properties_changed?
+      if custom_sort_popular_properties?
+        popular_properties.each do |property|
+          property.insert_at
+        end
+      else
+        popular_properties.each do |property|
+          property.update_attribute(:position, nil)
+        end
+      end
+    end
   end
 end

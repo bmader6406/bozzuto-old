@@ -8,6 +8,7 @@ module Typus
     
     def build_list_with_special_cases(model, fields, items, resource = @resource[:self], link_options = {}, association = nil, field = nil)
       if resource == 'landing_page_popular_properties'
+        fields.delete('position') if !@item.custom_sort_popular_properties?
         items_to_relate = (Property.all - @item.popular_properties.map(&:property))
         render :partial => 'admin/landing_page_popular_properties/table', :locals => {
           :fields => fields,
