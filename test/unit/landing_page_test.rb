@@ -14,6 +14,7 @@ class LandingPageTest < ActiveSupport::TestCase
       :projects
     should_belong_to :state, :promo
     should_have_many :popular_properties
+    should_have_many :popular_properties_properties, :through => :popular_properties
 
     should_validate_presence_of :title, :state
     should_validate_uniqueness_of :title

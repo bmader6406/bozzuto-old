@@ -7,6 +7,8 @@ class LandingPage < ActiveRecord::Base
     :join_table => :featured_apartment_communities_landing_pages
   has_many :popular_properties, :class_name => 'LandingPagePopularProperty',
     :order => 'position ASC, RAND(NOW())', :include => :property
+  has_many :popular_properties_properties, :class_name => 'Property',
+    :through => :popular_properties, :source => :property
   has_and_belongs_to_many :projects
   belongs_to :state
   belongs_to :promo
