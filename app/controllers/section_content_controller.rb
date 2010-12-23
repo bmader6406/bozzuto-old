@@ -1,10 +1,14 @@
 class SectionContentController < ApplicationController
-  layout 'page'
+  layout :detect_mobile_layout
 
   before_filter :find_section, :find_news_and_press_section
 
 
   private
+
+  def detect_mobile_layout
+    mobile? ? 'application' : 'page'
+  end
 
   def find_news_and_press_section
     @news_section = if @section.about?
