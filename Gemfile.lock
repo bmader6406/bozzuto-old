@@ -15,7 +15,7 @@ dependencies:
   rails: 
     group: 
     - :default
-    version: = 2.3.8
+    version: = 2.3.10
   httparty: 
     group: 
     - :default
@@ -130,19 +130,19 @@ specs:
 - abstract: 
     version: 1.0.0
 - activesupport: 
-    version: 2.3.8
+    version: 2.3.10
 - rack: 
     version: 1.1.0
 - actionpack: 
-    version: 2.3.8
+    version: 2.3.10
 - actionmailer: 
-    version: 2.3.8
+    version: 2.3.10
 - activerecord: 
-    version: 2.3.8
+    version: 2.3.10
 - activerecord-tableless: 
     version: 0.1.0
 - activeresource: 
-    version: 2.3.8
+    version: 2.3.10
 - addressable: 
     version: 2.2.2
 - bossman: 
@@ -171,8 +171,10 @@ specs:
     version: 0.1.6
 - erubis: 
     version: 2.6.6
+- i18n: 
+    version: 0.5.0
 - faker: 
-    version: 0.3.1
+    version: 0.9.2
 - hpricot: 
     version: 0.8.3
 - loggable: 
@@ -202,7 +204,7 @@ specs:
 - nokogiri: 
     version: 1.4.4
 - paperclip: 
-    version: 2.3.6
+    version: 2.3.8
 - phocus: 
     version: "1.1"
 - rack-rewrite: 
@@ -210,7 +212,7 @@ specs:
 - rack-test: 
     version: 0.5.6
 - rails: 
-    version: 2.3.8
+    version: 2.3.10
 - rcov: 
     version: 0.9.9
 - ruby-debug-base: 
@@ -229,7 +231,7 @@ specs:
     version: 0.6.2
 - will_paginate: 
     version: 2.3.15
-hash: 076d296edfc9b5f6026e06c216b7ec2680cbb84c
+hash: a996833fd0b4126f8e597c999d056870ae2746a6
 sources: 
 - Rubygems: 
     uri: http://rubygems.org

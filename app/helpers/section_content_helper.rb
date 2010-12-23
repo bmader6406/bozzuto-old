@@ -59,7 +59,7 @@ module SectionContentHelper
       current = 'current' if params[:controller] == 'news_and_press' && params[:action] == 'index'
 
       content_tag :li, :class => current do
-        returning('') do |li|
+        ''.tap do |li|
           li << link_to('News & Press', news_and_press_path(section))
 
           subnav = []

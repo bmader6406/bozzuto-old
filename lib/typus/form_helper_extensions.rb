@@ -18,7 +18,7 @@ module Typus
 
         # override to make current page and any children disabled
         def expand_tree_into_select_field(items, attribute)
-          returning(String.new) do |html|
+          String.new.tap do |html|
             items.each do |item|
               selected = "selected" if @item.send(attribute) == item.id
               disabled = 'disabled="disabled"' if @item == item || item.ancestors.include?(@item)
