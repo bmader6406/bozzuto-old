@@ -309,7 +309,7 @@ module Admin::FormHelper
       
       unless @items.empty?
         html << build_list(model_to_relate, 
-                           model_to_relate.typus_fields_for(:relationship), 
+                           model_to_relate.typus_fields_for(fields_for_name), 
                            @items, 
                            model_to_relate_as_resource, 
                            {}, 
