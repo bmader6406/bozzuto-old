@@ -59,5 +59,7 @@ module Admin::MasterHelper
     @options = args.extract_options!
     render "admin/helpers/pagination" if @items.prev || @items.next
   end
-
+  
+  
+  include Typus::MasterHelperExtensions
 end

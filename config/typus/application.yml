@@ -224,7 +224,7 @@ LandingPage:
   fields:
     default: title, state
     list: title, state
-    form: title, state, meta_title, meta_description, meta_keywords, masthead_body, masthead_image, promo, secondary_title, secondary_body
+    form: title, state, meta_title, meta_description, meta_keywords, masthead_body, masthead_image, promo, secondary_title, secondary_body, custom_sort_popular_properties
     options:
       ckeditor: masthead_body, secondary_body
   order_by:
@@ -232,6 +232,15 @@ LandingPage:
   filters:
   search: title
   application: Geography
+
+LandingPagePopularProperty:
+  fields:
+    default: title, position, street_address, city
+  order_by: position
+  relationships: property
+  application:
+  filters:
+  search:
 
 Leader:
   fields:
