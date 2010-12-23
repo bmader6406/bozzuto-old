@@ -1,0 +1,69 @@
+<% render_meta(@community) %>
+
+<div class="section page-title">
+  <div class="content">
+    <h2><%= @community.title %></h2>
+    <%= link_to @community.city.name, '#', :class => 'go-back' %>
+  </div>
+</div>
+
+<div class="section community-overview">
+  <div class="content">
+    <% if @community.slideshow.present? %>
+      <%= image_tag @community.slideshow.slides.first.image.url(:mobile_thumb) %>
+    <% end %>
+
+    <p class="address"><%= @community.address %></p>
+
+    <ul class="contact contact-list">
+      <li>
+        <!-- TODO: link me -->
+        <% link_to '#', :class => 'btn directions' do %>
+          <span>Directions</span> <%= @community.city %>
+        <% end %>
+      </li>
+      <li>
+        <% link_to phone_number_uri(@community.phone_number), :class => 'btn call-us' do %>
+          <span>Call Us</span> <%= format_phone_number(@community.phone_number) %>
+        <% end %>
+      </li>
+      <li>
+        <!-- TODO: link me -->
+        <% link_to '#', :class => 'btn call-back' do %>
+          <span>Request a Call Back</span>
+        <% end %>
+      </li>
+      <li>
+        <!-- TODO: link me -->
+        <% link_to '#', :class => 'btn text-me' do %>
+          <span>Text Me Community Info</span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="section community-info">
+  <div class="content">
+    <h3>Community Info</h3>
+
+    <ul>
+      <li>
+        <!-- TODO: link me -->
+        <%= link_to 'Office Hours', '#', :class => 'btn' %>
+      </li>
+      <li>
+        <%= link_to 'Features & Amenities', apartment_community_features_path(@community), :class => 'btn' %>
+      </li>
+      <li>
+        <%= link_to 'Photos', apartment_community_media_path(@community), :class => 'btn' %>
+      </li>
+      <li>
+        <%= link_to 'Floor Plans', apartment_community_floor_plan_groups_path(@community), :class => 'btn' %>
+      </li>
+      <li>
+        <%= link_to 'Neighborhood', apartment_community_neighborhood_path(@community), :class => 'btn' %>
+      </li>
+    </ul>
+  </div>
+</div>
