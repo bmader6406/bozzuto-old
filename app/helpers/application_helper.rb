@@ -1,4 +1,6 @@
 module ApplicationHelper
+  def black_hole; end
+
   def home?
     params[:controller] == 'home_pages'
   end
@@ -86,6 +88,21 @@ module ApplicationHelper
       "tel:+1#{pn}"
     else
       "tel:+#{pn}"
+    end
+  end
+
+  def link_to_phone_number(*args, &block)
+    if block_given?
+      number       = args.first
+      html_options = args.second || {}
+
+      link_to(phone_number_uri(number), html_options, &block)
+    else
+      name         = args.first
+      number       = args.second || {}
+      html_options = args.third || {}
+
+      link_to(name, phone_number_uri(number), html_options)
     end
   end
 

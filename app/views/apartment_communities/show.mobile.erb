@@ -23,7 +23,7 @@
         <% end %>
       </li>
       <li>
-        <% link_to phone_number_uri(@community.phone_number), :class => 'btn call-us' do %>
+        <% link_to_phone_number @community.phone_number, :class => 'btn call-us' do %>
           <span>Call Us</span> <%= format_phone_number(@community.phone_number) %>
         <% end %>
       </li>

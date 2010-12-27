@@ -51,6 +51,23 @@ class ApplicationHelperTest < ActionView::TestCase
       end
     end
 
+    context '#link_to_phone_number' do
+      context 'with a block' do
+        should 'generate a link with the phone number URI' do
+          link = link_to_phone_number('1 (234) 567-8900', :class => 'yay') { 'Yay!' }
+
+          assert_equal '<a href="tel:+12345678900" class="yay">Yay!</a>', link
+        end
+      end
+
+      context 'without a block' do
+        should 'generate a link with the phone number URI' do
+          assert_equal '<a href="tel:+12345678900" class="yay">Yay!</a>',
+            link_to_phone_number('Yay!', '1 (234) 567-8900', :class => 'yay')
+        end
+      end
+    end
+
     context '#dnr_phone_number' do
       context 'with a home community' do
         setup { @community = HomeCommunity.make }
