@@ -41,13 +41,15 @@ class MediaplexHelperTest < ActionView::TestCase
     setup do
       @email        = Faker::Internet.email
       @time         = Time.new
-      @mediaplex_id = "#{@time.to_i};#{@email}"
 
       Time.stubs(:new).returns(@time)
     end
 
     context 'with an apartment community' do
-      setup { @community = ApartmentCommunity.make }
+      setup do
+        @community = ApartmentCommunity.make
+        @mediaplex_id = "#{@time.to_i};#{@email};#{@community.id}"
+      end
 
       should 'return the correct iframe' do
         code = send_to_friend_mediaplex_code(@community, @email)
@@ -58,7 +60,10 @@ class MediaplexHelperTest < ActionView::TestCase
     end
 
     context 'with a home community' do
-      setup { @community = HomeCommunity.make }
+      setup do
+        @community = HomeCommunity.make
+        @mediaplex_id = "#{@time.to_i};#{@email};#{@community.id}"
+      end
 
       should 'return the correct iframe' do
         code = send_to_friend_mediaplex_code(@community, @email)
@@ -165,13 +170,14 @@ class MediaplexHelperTest < ActionView::TestCase
     setup do
       @time = Time.new
       @email = Faker::Internet.email
-      @mediaplex_id = "#{@time.to_i};#{@email}"
+      @community = ApartmentCommunity.make
+      @mediaplex_id = "#{@time.to_i};#{@email};#{@community.id}"
 
       Time.stubs(:new).returns(@time)
     end
 
     should 'return the correct iframe' do
-      code = lead_2_lease_mediaplex_code(@email)
+      code = lead_2_lease_mediaplex_code(@community, @email)
 
       assert_match /Bozzuto\.com_Apartments_Lead/, code
       assert_match /mpuid=#{@mediaplex_id}/, code

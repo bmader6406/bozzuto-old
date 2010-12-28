@@ -1,6 +1,6 @@
 module MediaplexHelper
   def send_to_phone_mediaplex_code(community)
-    mediaplex_id = "#{Time.new.to_i};#{community.id}"
+    mediaplex_id = [Time.new.to_i, community.id].compact.join(';')
 
     if community.is_a? HomeCommunity
       <<-END.html_safe
@@ -14,7 +14,7 @@ module MediaplexHelper
   end
 
   def send_to_friend_mediaplex_code(community, email)
-    mediaplex_id = "#{Time.new.to_i};#{email}"
+    mediaplex_id = [Time.new.to_i, email, community.id].compact.join(';')
 
     if email.present?
       if community.is_a? HomeCommunity
@@ -53,8 +53,8 @@ module MediaplexHelper
     END
   end
 
-  def lead_2_lease_mediaplex_code(email)
-    mediaplex_id = [Time.new.to_i.to_s, email].compact.join(';')
+  def lead_2_lease_mediaplex_code(community, email)
+    mediaplex_id = [Time.new.to_i.to_s, email, community.id].compact.join(';')
 
     <<-END.html_safe
       <iframe src="http://img-cdn.mediaplex.com/0/16798/universal.html?page_name=bozzuto.com_apartments_lead&Bozzuto.com_Apartments_Lead=1&mpuid=#{mediaplex_id}" HEIGHT=1 WIDTH=1 FRAMEBORDER=0></iframe>
