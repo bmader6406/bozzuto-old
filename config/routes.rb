@@ -27,7 +27,12 @@ ActionController::Routing::Routes.draw do |map|
     community.resources :floor_plan_groups,
       :controller => :apartment_floor_plan_groups,
       :as         => :floor_plans,
-      :only       => :index
+      :only       => :index do |group|
+
+      group.resources :layouts,
+        :controller => :apartment_floor_plans,
+        :only => [:index, :show]
+    end
 
     community.resource :features, :only => :show
 

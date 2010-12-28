@@ -13,7 +13,7 @@ class ActiveSupport::TestCase
   self.use_instantiated_fixtures  = false
 
   def load_fixture_file(file)
-    File.read("#{RAILS_ROOT}/test/fixtures/#{file}")
+    File.read("#{Rails.root}/test/fixtures/#{file}")
   end
 
   def create_states

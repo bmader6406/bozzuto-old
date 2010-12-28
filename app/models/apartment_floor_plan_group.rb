@@ -13,23 +13,25 @@ class ApartmentFloorPlanGroup < ActiveRecord::Base
   validates_presence_of :name
 
 
-  def self.studio
-    @studio ||= find_by_name 'Studio'
-  end
+  class << self
+    def studio
+      find_by_name 'Studio'
+    end
 
-  def self.one_bedroom
-    @one_bedroom ||= find_by_name '1 Bedroom'
-  end
+    def one_bedroom
+      find_by_name '1 Bedroom'
+    end
 
-  def self.two_bedrooms
-    @two_bedroom ||= find_by_name '2 Bedrooms'
-  end
+    def two_bedrooms
+      find_by_name '2 Bedrooms'
+    end
 
-  def self.three_bedrooms
-    @three_bedrooms = find_by_name '3 or More Bedrooms'
-  end
+    def three_bedrooms
+      find_by_name '3 or More Bedrooms'
+    end
 
-  def self.penthouse
-    @penthouse = find_by_name 'Penthouse'
+    def penthouse
+      find_by_name 'Penthouse'
+    end
   end
 end
