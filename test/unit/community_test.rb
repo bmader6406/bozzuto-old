@@ -13,6 +13,10 @@ class CommunityTest < ActiveSupport::TestCase
     should_have_many :videos
     should_have_one :dnr_configuration
     
+    should 'report the correct fields for ApartmentCommunity state fields' do
+      assert_equal :position, ApartmentCommunity.typus_fields_for('state')['featured_position']
+    end
+    
     should 'acts_as_list' do
       assert Community.included_modules.include?(ActsAsList::InstanceMethods)
       assert Community.column_names.include?('featured_position')

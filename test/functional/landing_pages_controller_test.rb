@@ -5,6 +5,8 @@ class LandingPagesControllerTest < ActionController::TestCase
     context 'a GET to #show' do
       setup do
         @page = LandingPage.make
+        @city = City.make(:state => @page.state)
+        @community = ApartmentCommunity.make(:city => @city)
         get :show, :id => @page.to_param
       end
 
