@@ -113,19 +113,24 @@ module Admin::FormHelper
         association = @resource[:class].reflect_on_association(relationship.to_sym)
 
         next if @current_user.cannot?('read', association.class_name.constantize)
-
-        macro = association.through_reflection ? :has_and_belongs_to_many : association.macro
-        case macro
-        when :has_and_belongs_to_many
-          html << typus_form_has_and_belongs_to_many(relationship)
-        when :has_many
-          if association.options[:through]
-            # Here we will shot the relationship. Better this than raising an error.
-          else
-            html << typus_form_has_many(relationship)
+        
+        template = "#{controller.controller_path}/_#{relationship}.html.erb"
+        if File.exist?(Rails.root + 'app/views' + template)
+          html << render(:partial => template.gsub('/_', '/').gsub(/\.html\.erb$/, ''))
+        else
+          macro = association.through_reflection ? :has_and_belongs_to_many : association.macro
+          case macro
+          when :has_and_belongs_to_many
+            html << typus_form_has_and_belongs_to_many(relationship)
+          when :has_many
+            if association.options[:through]
+              # Here we will shot the relationship. Better this than raising an error.
+            else
+              html << typus_form_has_many(relationship)
+            end
+          when :has_one
+            html << typus_form_has_one(relationship)
           end
-        when :has_one
-          html << typus_form_has_one(relationship)
         end
 
       end
