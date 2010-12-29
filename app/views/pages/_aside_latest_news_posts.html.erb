@@ -5,14 +5,17 @@
     <div class="article">
       <% latest_news_posts.each_with_index do |post, i| %>
         <div class="news-post section <%= 'first' if i == 0 %>">
-          <h4>
-            <%= link_to post.title, news_post_path(@section, post) %>
-          </h4>
+          <h4><%= link_to post.title, news_post_path(@section, post) %></h4>
+
           <p class="date">
             <%= month_and_day(post.published_at) %>
           </p>
 
-          <%= simple_format(truncate(post.body, :length => 200)) if i == 0 %>
+          <% if i == 0 %>
+            <div class="excerpt">
+              <%= truncate_html(post.body, :length => 200) %>
+            </div>
+          <% end %>
         </div>
       <% end %>
     </div>

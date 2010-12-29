@@ -3746,6 +3746,10 @@ div.wysiwyg ul li {
       border-bottom: 1px solid #d1d2d5;
     }
 
+    .page #aside .latest-news .first .excerpt {
+      margin-top: 10px;
+    }
+
     /* featured projects & callout */
     .page #aside #featured-projects .article,
     .page #aside .featured .article {
