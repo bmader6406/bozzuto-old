@@ -22,7 +22,7 @@ module Typus
     end
     
     def render_table_fields(item, fields, link_options)
-      returning(String.new) do |html|
+      String.new.tap do |html|
         fields.each do |key, value|
           case value
           when :boolean then           html << typus_table_boolean_field(key, item)

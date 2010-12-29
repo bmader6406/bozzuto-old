@@ -44,6 +44,8 @@ module PropertiesHelper
         (1..3).inject('') do |output, i|
           output << if @community.send("overview_bullet_#{i}").present?
             content_tag(:li) { @community.send("overview_bullet_#{i}") }
+          else
+            ''
           end
           output.html_safe
         end

@@ -43,9 +43,9 @@ class Property < ActiveRecord::Base
     :url => '/system/:class/:id/brochure.:extension'
 
   named_scope :near, lambda { |loc|
-    returning({}) do |opts|
+    {}.tap do |opts|
       opts[:origin]     = loc
-      opts[:conditions] = ['id != ?', loc.id] if loc.is_a?(self)
+      opts[:conditions] = ['id != ?', loc.id] if loc.is_a?(Property)
       opts[:order]      = 'distance ASC'
     end
   }
