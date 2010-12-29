@@ -1,4 +1,6 @@
 class Section < ActiveRecord::Base
+  include Montage
+  
   has_many :testimonials
   has_many :pages,
     :order     => 'lft ASC',
@@ -10,21 +12,6 @@ class Section < ActiveRecord::Base
   has_one :contact_topic
 
   has_friendly_id :title, :use_slug => true
-
-  has_attached_file :left_montage_image,
-    :url => '/system/:class/:id/montage/:style_left_montage_image.:extension',
-    :styles => { :normal => '250x148#' },
-    :default_style => :normal
-
-  has_attached_file :middle_montage_image,
-    :url => '/system/:class/:id/montage/:style_middle_montage_image.:extension',
-    :styles => { :normal => '540x148#' },
-    :default_style => :normal
-
-  has_attached_file :right_montage_image,
-    :url => '/system/:class/:id/montage/:style_right_montage_image.:extension',
-    :styles => { :normal => '310x148#' },
-    :default_style => :normal
 
   validates_presence_of :title
   validates_uniqueness_of :title
@@ -51,8 +38,5 @@ class Section < ActiveRecord::Base
   def aggregate?
     about?
   end
-
-  def montage?
-    left_montage_image? && middle_montage_image? && right_montage_image?
-  end
+  
 end

@@ -346,7 +346,7 @@ ActiveRecord::Schema.define(:version => 20101229155602) do
   add_index "news_posts_sections", ["section_id", "news_post_id"], :name => "index_news_posts_sections_on_section_id_and_news_post_id"
 
   create_table "pages", :force => true do |t|
-    t.string   "title",            :null => false
+    t.string   "title",                          :null => false
     t.string   "cached_slug"
     t.text     "body"
     t.integer  "parent_id"
@@ -359,6 +359,9 @@ ActiveRecord::Schema.define(:version => 20101229155602) do
     t.string   "meta_title"
     t.string   "meta_description"
     t.string   "meta_keywords"
+    t.string   "left_montage_image_file_name"
+    t.string   "middle_montage_image_file_name"
+    t.string   "right_montage_image_file_name"
   end
 
   add_index "pages", ["path"], :name => "index_pages_on_path"

@@ -306,7 +306,7 @@ Page:
   fields:
     default: formatted_title, position
     list: formatted_title, section, position
-    form: title, meta_title, meta_description, meta_keywords, body, section, parent
+    form: title, meta_title, meta_description, meta_keywords, body, section, parent, left_montage_image, middle_montage_image, right_montage_image
     options:
       ckeditor: body
       destroy_related: MastheadSlideshow, BodySlideshow

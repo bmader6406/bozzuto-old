@@ -1,4 +1,6 @@
 class Page < ActiveRecord::Base
+  include Montage
+  
   acts_as_nested_set :scope => :section
 
   has_friendly_id :title,
