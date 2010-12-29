@@ -11,7 +11,11 @@
 
       <p class="address-info">
         <%= community.address %><br/>
-        <%= community.phone_number %>
+        <% if use_dnr %>
+          <%= dnr_phone_number(community) %>
+        <% else %>
+          <%= community.phone_number %>
+        <% end %>
       </p>
 
       <ul>

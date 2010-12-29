@@ -1,4 +1,17 @@
 module ApartmentCommunitiesHelper
+  def render_apartments_listings(communities, locals = {})
+    options = {
+      :partial    => "apartment_communities/listing",
+      :collection => communities,
+      :as         => :community,
+      :locals     => locals.reverse_merge({
+        :use_dnr => false
+      })
+    }
+
+    render options
+  end
+
   def floor_plan_price(price)
     number_to_currency(price, :precision => 0) unless price.nil?
   end

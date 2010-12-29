@@ -34,6 +34,7 @@ en:
     attributes:
       apartment_community:
         dnr_configuration: DNR Configuration
+        featured_position: Position
         floor_plans_meta_description: Floor Plans SEO Description
         floor_plans_meta_keywords: Floor Plans SEO Keywords
         floor_plans_meta_title: Floor Plans SEO Title

@@ -26,7 +26,7 @@
       
       <div id="view-as-list">
         <ul>
-          <%= render :partial => 'listing', :collection => @communities, :as => :community %>
+          <%= render_homes_listings(@communities) %>
         </ul>
         <%= property_icon_descriptions %>
 

@@ -86,7 +86,7 @@
           <% if @page.home_communities.any? %>
             <div id="homes-condominiums" class="section">
               <ul>
-                <%= render :partial => 'home_communities/listing', :collection => @page.home_communities, :as => :community %>
+                <%= render_homes_listings @page.home_communities, :use_dnr => true %>
               </ul>
             </div>
           <% end %>
@@ -94,7 +94,7 @@
           <% if @page.apartment_communities.any? %>
             <div id="apartments-for-rent" class="section">
               <ul>
-                <%= render :partial => 'apartment_communities/listing', :collection => @page.apartment_communities, :as => :community %>
+                <%= render_apartments_listings @page.apartment_communities, :use_dnr => true %>
               </ul>
             </div>
           <% end %>
@@ -102,7 +102,7 @@
           <% if @page.featured_apartment_communities.any? %>
             <div id="featured-apartments" class="section">
               <ul>
-                <%= render :partial => 'apartment_communities/listing', :collection => @page.featured_apartment_communities, :as => :community %>
+                <%= render_apartments_listings @page.featured_apartment_communities, :use_dnr => true %>
               </ul>
             </div>
           <% end %>

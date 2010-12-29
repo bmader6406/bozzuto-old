@@ -2,6 +2,35 @@ require 'test_helper'
 
 class ApartmentCommunitiesHelperTest < ActionView::TestCase
   context "ApartmentCommunitiesHelper" do
+    context '#render_apartments_listings' do
+      setup do
+        @communities = [ApartmentCommunity.make, ApartmentCommunity.make]
+        @options = {
+          :partial    => 'apartment_communities/listing',
+          :collection => @communities,
+          :as         => :community,
+          :locals     => { :use_dnr => false }
+        }
+      end
+
+      context 'and :use_dnr option is not set' do
+        should 'call render with the correct options' do
+          expects(:render).with(@options)
+
+          render_apartments_listings(@communities)
+        end
+      end
+
+      context 'and :use_dnr option is true' do
+        should 'call render with the correct options' do
+          @options[:locals][:use_dnr] = true
+          expects(:render).with(@options)
+
+          render_apartments_listings(@communities, :use_dnr => true)
+        end
+      end
+    end
+
     context "#floor_plan_price" do
       setup do
         @plan = ApartmentFloorPlan.make(:min_effective_rent => 600)

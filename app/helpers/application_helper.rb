@@ -85,9 +85,12 @@ module ApplicationHelper
     ].map { |arg| "'#{arg}'" }
 
     <<-SCRIPT.html_safe
-      <script type="text/javascript">
-        replaceNumber(#{args.join(', ')});
-      </script>
+      <span class="phone-number">
+        #{number}
+        <script type="text/javascript-dnr">
+          replaceNumber(#{args.join(', ')});
+        </script>
+      </span>
     SCRIPT
   end
 

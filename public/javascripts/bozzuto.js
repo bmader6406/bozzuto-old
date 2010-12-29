@@ -166,10 +166,54 @@ window.bozzuto = {};
     });
 
 
+    $('span.phone-number:has(script[type="text/javascript-dnr"])').replaceUsingDNR();
+
+
     function setCookie(name, value) {
       document.cookie = name + '=' + value + '; path=/';
     }
   });
+
+
+  ////
+  // This plugin wraps Callsource DNR number replacement. It does the following:
+  //   - sleeps initially for 1s to give other scripts and requests a chance to finish
+  //   - sleeps for 300ms after each number is replaced, to prevent queuing up too
+  //     many iframe requests and freezing the browser
+  //   - set the font size
+  //
+  //  To achieve this, lookup.js was changed so replaceNumber returns a string
+  //  instead of writing an iframe
+  //
+  $.fn.replaceUsingDNR = function() {
+    var $set = $(this);
+
+    if ($set.length > 0) {
+      setTimeout(function() {
+        processDnrScript($set);
+      }, 1000);
+    }
+
+    function processDnrScript($numbers) {
+      var $head    = $numbers.eq(0),
+          $tail    = $numbers.slice(1),
+          $script  = $('script[type="text/javascript-dnr"]', $head),
+          fontSize = $head.css('font-size'),
+          iframe   = '';
+
+      iframe = eval($script.html())
+        .replace(/fontsize=[^&]+/, 'fontsize=' + fontSize)
+        .replace(/fontfamily=[^&]+/, 'fontfamily=Arial');
+
+      $head.html(iframe);
+
+      if ($tail.length > 0) {
+        setTimeout(function() {
+          processDnrScript($tail);
+        }, 300);
+      }
+    }
+  };
 
 
   // Equal height items
