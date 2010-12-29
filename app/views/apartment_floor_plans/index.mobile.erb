@@ -14,8 +14,7 @@
       <% @plans.each do |plan| %>
         <li>
           <div class="floor-plan">
-            <%# TODO: Link to single floor plan %>
-            <% link_to '#', :class => 'info' do %>
+            <% link_to apartment_community_floor_plan_group_layout_path(@community, @group, plan), :class => 'info' do %>
               <span class="name"><%= plan.name %></span>
               <span class="pricing">
                 Starting from <%= square_feet_of_largest_floor_plan(@plans) %>
@@ -31,37 +30,14 @@
   </div>
 </div>
 
-<div class="section floor-plans">
-  <div class="content">
-    <h3>More Floor Plans</h3>
-    <ul>
-      <li>
-        <div class="floor-plan">
-          <a href="#" class="info">
-            <span class="name">Studios</span>
-            <span class="pricing">Starting from 650 Sq Ft <span class="price">$1,935</span></span>
-          </a>
-          <a href="tel:18005555555" class="tel">1-800-555-5555</a>
-        </div>
-      </li>
-      <li>
-        <div class="floor-plan">
-          <a href="#" class="info">
-            <span class="name">2 Bedrooms</span>
-            <span class="pricing">Starting from 650 Sq Ft <span class="price">$1,935</span></span>
-          </a>
-          <a href="tel:18005555555" class="tel">1-800-555-5555</a>
-        </div>
-      </li>
-      <li>
-        <div class="floor-plan">
-          <a href="#" class="info">
-            <span class="name">3 Bedrooms</span>
-            <span class="pricing">Starting from 650 Sq Ft <span class="price">$1,935</span></span>
-          </a>
-          <a href="tel:18005555555" class="tel">1-800-555-5555</a>
-        </div>
-      </li>
-    </ul>
+<% groups = ApartmentFloorPlanGroup.except(@group) %>
+<% if groups.any? %>
+  <div class="section floor-plans">
+    <div class="content">
+      <h3>More Floor Plans</h3>
+      <ul>
+        <%= render_floor_plan_group_mobile_listings(groups, @community) %>
+      </ul>
+    </div>
   </div>
-</div>
+<% end %>

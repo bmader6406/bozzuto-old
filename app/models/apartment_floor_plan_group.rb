@@ -8,6 +8,10 @@ class ApartmentFloorPlanGroup < ActiveRecord::Base
 
   default_scope :order => 'position ASC'
 
+  named_scope :except, lambda { |group|
+    { :conditions => ['id != ?', group.id] }
+  }
+
   acts_as_list
 
   validates_presence_of :name
