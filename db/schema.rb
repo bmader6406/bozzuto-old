@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101223164130) do
+ActiveRecord::Schema.define(:version => 20101229155602) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -362,6 +362,7 @@ ActiveRecord::Schema.define(:version => 20101223164130) do
   end
 
   add_index "pages", ["path"], :name => "index_pages_on_path"
+  add_index "pages", ["section_id"], :name => "index_pages_on_section_id"
 
   create_table "photo_groups", :force => true do |t|
     t.string   "title",            :null => false
