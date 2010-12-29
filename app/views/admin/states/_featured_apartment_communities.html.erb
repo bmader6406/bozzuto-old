@@ -17,7 +17,7 @@
   <% end %>
   
   <%- if @item.featured_apartment_communities.count > 0 -%>
-    <%= build_list(ApartmentCommunity, ApartmentCommunity.typus_fields_for(:relationship),
+    <%= build_list(ApartmentCommunity, ApartmentCommunity.typus_fields_for(:state),
           @item.featured_apartment_communities, ApartmentCommunity.name.tableize,
           {}, :has_many, 'featured_apartment_communities') %>
   <%- else -%>
