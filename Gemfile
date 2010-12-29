@@ -26,7 +26,7 @@ group :test do
   gem 'shoulda', '2.10.3'
   gem 'phocus'
   gem 'machinist'
-  gem 'faker'
+  gem 'faker', '0.3.1'
   gem 'jferris-mocha', :require => false
   gem 'webmock'
   gem 'ruby-debug'
