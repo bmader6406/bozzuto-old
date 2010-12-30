@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActiveRecord::RecordNotFound, :with => :render_404
 
+  attr_accessor :device
+  helper_method :device
+
 
   private
 
@@ -49,7 +52,14 @@ class ApplicationController < ActionController::Base
   helper_method :apartment_floor_plan_groups
 
   def detect_mobile_user_agent
-    request.format = :mobile if request.env["HTTP_USER_AGENT"] =~ /(Mobile\/.+Safari)/
+    self.device = case request.env["HTTP_USER_AGENT"]
+    when /iPhone/     then :iphone
+    when /BlackBerry/ then :blackberry
+    when /Android/    then :android
+    else                   :browser
+    end
+
+    request.format = :mobile if device != :browser
   end
 
   def mobile?
