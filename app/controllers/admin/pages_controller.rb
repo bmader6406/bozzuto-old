@@ -11,4 +11,9 @@ class Admin::PagesController < Admin::MasterController
 
     redirect_to request.referer || admin_dashboard_path
   end
+  
+  def preview
+    find_item
+    redirect_to page_url(@item.section, @item)
+  end
 end

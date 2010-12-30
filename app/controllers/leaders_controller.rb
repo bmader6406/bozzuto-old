@@ -17,7 +17,7 @@ class LeadersController < SectionContentController
 
   def find_page
     @page = begin
-      @section.pages.find 'leadership'
+      @section.pages.published.find 'leadership'
     rescue
       nil
     end

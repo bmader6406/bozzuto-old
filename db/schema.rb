@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101229190836) do
+ActiveRecord::Schema.define(:version => 20101230200702) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -450,7 +450,7 @@ ActiveRecord::Schema.define(:version => 20101229190836) do
   add_index "news_posts_sections", ["section_id", "news_post_id"], :name => "index_news_posts_sections_on_section_id_and_news_post_id"
 
   create_table "pages", :force => true do |t|
-    t.string   "title",                          :null => false
+    t.string   "title",                                             :null => false
     t.string   "cached_slug"
     t.text     "body"
     t.integer  "parent_id"
@@ -466,6 +466,7 @@ ActiveRecord::Schema.define(:version => 20101229190836) do
     t.string   "left_montage_image_file_name"
     t.string   "middle_montage_image_file_name"
     t.string   "right_montage_image_file_name"
+    t.boolean  "published",                      :default => false, :null => false
   end
 
   add_index "pages", ["path"], :name => "index_pages_on_path"

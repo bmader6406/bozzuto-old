@@ -229,8 +229,9 @@ PropertyFeature.blueprint do
 end
 
 Page.blueprint do
-  title { Faker::Lorem.sentence }
-  body  { Faker::Lorem.paragraphs(3) }
+  title     { Faker::Lorem.sentence }
+  body      { Faker::Lorem.paragraphs(3) }
+  published { true }
   section
 end
 

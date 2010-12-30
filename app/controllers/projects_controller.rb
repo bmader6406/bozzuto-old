@@ -19,7 +19,7 @@ class ProjectsController < SectionContentController
 
   def find_our_work_page
     @page = begin
-      @section.pages.find 'our-work'
+      @section.pages.published.find 'our-work'
     rescue
       nil
     end

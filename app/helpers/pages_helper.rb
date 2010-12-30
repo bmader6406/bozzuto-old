@@ -8,7 +8,7 @@ module PagesHelper
   end
 
   def about_and_services_slideshow_attrs
-    if ['about-us', 'services'].include?(@section.cached_slug) && @page == @section.pages.first
+    if ['about-us', 'services'].include?(@section.cached_slug) && @page == @section.pages.published.first
       raw(%{data-sync="true" data-interval="8000"})
     end
   end

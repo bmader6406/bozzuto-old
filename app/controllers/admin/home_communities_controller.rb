@@ -17,4 +17,9 @@ class Admin::HomeCommunitiesController < Admin::MasterController
       format.html
     end
   end
+  
+  def preview
+    find_item
+    redirect_to home_community_url(@item)
+  end
 end

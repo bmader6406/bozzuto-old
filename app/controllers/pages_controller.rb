@@ -8,9 +8,11 @@ class PagesController < SectionContentController
 
   def find_page
     @page = if params[:page].any?
-      @section.pages.find_by_path(current_page_path)
+      typus_user ?
+        @section.pages.find_by_path(current_page_path) :
+        @section.pages.published.find_by_path(current_page_path)
     else
-      @section.pages.first
+      @section.pages.published.first
     end
 
     render_404 if @page.nil?

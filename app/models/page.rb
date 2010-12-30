@@ -1,5 +1,6 @@
 class Page < ActiveRecord::Base
   include Montage
+  include Bozzuto::Publishable
   
   acts_as_nested_set :scope => :section
 

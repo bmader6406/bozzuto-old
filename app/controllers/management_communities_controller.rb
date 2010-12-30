@@ -10,7 +10,7 @@ class ManagementCommunitiesController < SectionContentController
 
   def find_page
     @page = begin
-      @section.pages.find 'communities'
+      @section.pages.published.find 'communities'
     rescue
       nil
     end

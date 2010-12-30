@@ -17,4 +17,9 @@ class Admin::ApartmentCommunitiesController < Admin::MasterController
       format.html
     end
   end
+  
+  def preview
+    find_item
+    redirect_to apartment_community_url(@item)
+  end
 end
