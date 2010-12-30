@@ -25,13 +25,29 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
     end
 
     context "a GET to #show" do
-      setup do
-        get :show, :id => @community.to_param
+      browser_context do
+        setup do
+          get :show, :id => @community.to_param
+        end
+
+        should_assign_to(:community) { @community }
+        should_respond_with :success
+        should_render_with_layout :community
+        should_render_template :show
       end
 
-      should_assign_to(:community) { @community }
-      should_respond_with :success
-      should_render_template :show
+      mobile_context do
+        setup do
+          get :show,
+            :id => @community.to_param,
+            :format => :mobile
+        end
+
+        should_assign_to(:community) { @community }
+        should_respond_with :success
+        should_render_with_layout :application
+        should_render_template :show
+      end
     end
   end
 end

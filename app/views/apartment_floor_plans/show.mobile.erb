@@ -1,0 +1,47 @@
+<% render_meta(@community, :floor_plans) %>
+
+
+<div class="section page-title">
+  <div class="content">
+    <h2><%= @plan.name %></h2>
+
+    <% link_to apartment_community_floor_plan_group_layouts_path(@community, @group), :class => 'go-back' do %>
+      <%= floor_plan_group_pluralize(2, @group.name) %>
+    <% end %>
+  </div>
+</div>
+
+<div class="section floor-plan-detail">
+  <div class="content">
+    <% sq_ft = @plan.min_square_feet %>
+    <% min_rent = @plan.min_rent %>
+
+    <% if sq_ft || min_rent %>
+      <h3>
+        <% if sq_ft.present? %>
+          <% if @plan.rolled_up? %>
+            Starting from
+          <% end %>
+          <%= square_feet(@plan) %>
+        <% end %>
+
+        <% if min_rent.present? %>
+          <span class="price"><%= floor_plan_price(min_rent) %></span>
+        <% end %>
+      </h3>
+    <% end %>
+
+
+    <%= image_tag @plan.actual_image, :width => 280, :alt => "#{@plan.name} floor plan" %>
+
+    <% if @plan.availability_url? %>
+      <% link_to @plan.availability_url, :class => 'btn' do %>
+        <span>Check Availability</span>
+      <% end %>
+
+      <% link_to @community.availability_url, :class => 'btn submit' do %>
+        <span>Reserve Now</span>
+      <% end %>
+    <% end %>
+  </div>
+</div>

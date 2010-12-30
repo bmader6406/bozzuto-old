@@ -38,4 +38,14 @@ class ActiveSupport::TestCase
   def set_mobile_user_agent!
     @request.env['HTTP_USER_AGENT'] = 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_2_1 like Mac OS X; da-dk) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8C148 Safari/6533.18.5'
   end
+
+  class << self
+    def mobile_context(&block)
+      context('from a mobile device', &block)
+    end
+
+    def browser_context(&block)
+      context('from a web browser', &block)
+    end
+  end
 end
