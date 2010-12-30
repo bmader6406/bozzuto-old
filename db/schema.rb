@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101229155602) do
+ActiveRecord::Schema.define(:version => 20101229190836) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -50,6 +50,110 @@ ActiveRecord::Schema.define(:version => 20101229155602) do
     t.boolean  "featured",                                              :default => false, :null => false
     t.boolean  "rolled_up",                                             :default => false, :null => false
   end
+
+  create_table "archived_properties", :id => false, :force => true do |t|
+    t.integer  "id",                            :default => 0,     :null => false
+    t.string   "title",                                            :null => false
+    t.string   "subtitle"
+    t.integer  "city_id",                                          :null => false
+    t.boolean  "elite",                         :default => false, :null => false
+    t.boolean  "smart_share",                   :default => false, :null => false
+    t.boolean  "smart_rent",                    :default => false, :null => false
+    t.boolean  "green",                         :default => false, :null => false
+    t.boolean  "non_smoking",                   :default => false, :null => false
+    t.string   "website_url"
+    t.string   "video_url"
+    t.string   "facebook_url"
+    t.string   "twitter_handle"
+    t.string   "promo_image"
+    t.string   "promo_url"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "street_address"
+    t.text     "overview_text"
+    t.text     "features_1_text"
+    t.text     "neighborhood_text"
+    t.text     "promotions_text"
+    t.text     "contact_text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "local_info_feed_id"
+    t.integer  "vaultware_id"
+    t.boolean  "use_market_prices",             :default => false, :null => false
+    t.string   "availability_url"
+    t.string   "type"
+    t.integer  "section_id"
+    t.integer  "county_id"
+    t.string   "listing_image_file_name"
+    t.string   "listing_image_content_type"
+    t.string   "listing_title"
+    t.text     "listing_text"
+    t.integer  "features"
+    t.string   "overview_title"
+    t.string   "overview_bullet_1"
+    t.string   "overview_bullet_2"
+    t.string   "overview_bullet_3"
+    t.boolean  "published",                     :default => false, :null => false
+    t.string   "features_1_title"
+    t.string   "features_2_title"
+    t.text     "features_2_text"
+    t.string   "features_3_title"
+    t.text     "features_3_text"
+    t.string   "short_title"
+    t.string   "phone_number"
+    t.integer  "brochure_type",                 :default => 0,     :null => false
+    t.string   "brochure_link_text"
+    t.string   "brochure_file_name"
+    t.string   "brochure_content_type"
+    t.string   "brochure_url"
+    t.string   "cached_slug"
+    t.string   "meta_title"
+    t.string   "meta_description"
+    t.string   "meta_keywords"
+    t.boolean  "show_lead_2_lease",             :default => false, :null => false
+    t.string   "lead_2_lease_email"
+    t.date     "completion_date"
+    t.string   "features_meta_title"
+    t.string   "features_meta_description"
+    t.string   "features_meta_keywords"
+    t.string   "media_meta_title"
+    t.string   "media_meta_description"
+    t.string   "media_meta_keywords"
+    t.string   "floor_plans_meta_title"
+    t.string   "floor_plans_meta_description"
+    t.string   "floor_plans_meta_keywords"
+    t.string   "neighborhood_meta_title"
+    t.string   "neighborhood_meta_description"
+    t.string   "neighborhood_meta_keywords"
+    t.string   "promotions_meta_title"
+    t.string   "promotions_meta_description"
+    t.string   "promotions_meta_keywords"
+    t.string   "contact_meta_title"
+    t.string   "contact_meta_description"
+    t.string   "contact_meta_keywords"
+    t.integer  "position"
+    t.integer  "promo_id"
+    t.integer  "ufollowup_id"
+    t.boolean  "has_completion_date",           :default => true,  :null => false
+    t.string   "cheapest_studio_price"
+    t.string   "cheapest_1_bedroom_price"
+    t.string   "cheapest_2_bedroom_price"
+    t.string   "cheapest_3_bedroom_price"
+    t.string   "cheapest_penthouse_price"
+    t.string   "listing_promo_file_name"
+    t.string   "listing_promo_content_type"
+    t.integer  "listing_promo_file_size"
+    t.string   "resident_link_text"
+    t.string   "resident_link_url"
+    t.string   "lasso_uid"
+    t.string   "lasso_client_id"
+    t.string   "lasso_project_id"
+    t.boolean  "featured",                      :default => false, :null => false
+    t.integer  "featured_position"
+    t.datetime "deleted_at"
+  end
+
+  add_index "archived_properties", ["id"], :name => "index_archived_properties_on_id"
 
   create_table "assets", :force => true do |t|
     t.string   "data_file_name"

@@ -1,0 +1,34 @@
+<% content_for :sidebar do %>
+  <%= typus_block :location => @resource[:self], :partial => 'sidebar' %>
+  <%= actions %>
+  <%= export %>
+<% end %>
+
+<% content_for :breadcrumb do %>
+  <%= @resource[:pluralized] %>
+<% end %>
+
+<%= typus_block :location => @resource[:self], :partial => 'index' %>
+
+<% unless @items.count.zero? -%>
+  <table class="typus">
+    <%= typus_table_header(@resource[:class], @fields) %>
+    <% @items.each do |item| %>
+      <tr class="<%= cycle('even', 'odd') %> <%= @resource[:class].name.underscore %>" id="<%= item.to_dom %>" name="item_<%= item.id %>">
+        <% @fields.each do |attribute, attr_type| %>
+          <%= render_item_table_field(attribute, attr_type, item) %>
+        <% end %>
+        <td>
+          <%= link_to 'Recover', {:controller => 'admin/properties', :action => 'recover', :id => item.id},
+                :title => _("Recover"), 
+                :confirm => _("Recover entry?") if @current_user.can?('recover', Property) %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <%= pagination %>
+<% else %>
+  <div id="flash" class="notice">
+    <p><%= _("There are no {{records}}.", :records => "archived #{@resource[:human_name].pluralize.downcase}") %></p>
+  </div>
+<% end %>

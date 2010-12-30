@@ -21,6 +21,7 @@ gem 'bossman'
 gem 'rack-rewrite', '~> 0.2.0'
 gem 'capistrano'
 gem 'capistrano-ext'
+gem 'brianjlandau-acts_as_archive'
 
 group :test do
   gem 'shoulda', '2.10.3'

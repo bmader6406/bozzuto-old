@@ -4,6 +4,10 @@ dependencies:
     group: 
     - :test
     version: = 0.3.1
+  brianjlandau-acts_as_archive: 
+    group: 
+    - :default
+    version: ">= 0"
   ruby-debug: 
     group: 
     - :test
@@ -12,15 +16,15 @@ dependencies:
     group: 
     - :test
     version: ">= 0"
-  rails: 
-    group: 
-    - :default
-    version: = 2.3.10
   httparty: 
     group: 
     - :default
     version: = 0.5.2
-  searchlogic: 
+  rails: 
+    group: 
+    - :default
+    version: = 2.3.10
+  bossman: 
     group: 
     - :default
     version: ">= 0"
@@ -28,7 +32,7 @@ dependencies:
     group: 
     - :default
     version: ">= 0"
-  bossman: 
+  searchlogic: 
     group: 
     - :default
     version: ">= 0"
@@ -46,43 +50,23 @@ dependencies:
     group: 
     - :test
     version: ">= 0"
-  rack-rewrite: 
-    group: 
-    - :default
-    version: ~> 0.2.0
-  truncate_html: 
-    group: 
-    - :default
-    version: ">= 0"
   whenever: 
     group: 
     - :default
     version: ">= 0"
+  truncate_html: 
+    group: 
+    - :default
+    version: ">= 0"
+  rack-rewrite: 
+    group: 
+    - :default
+    version: ~> 0.2.0
   geokit: 
     group: 
     - :default
     version: ">= 0"
-  capistrano-ext: 
-    group: 
-    - :default
-    version: ">= 0"
-  rcov: 
-    group: 
-    - :default
-    version: ">= 0"
-  friendly_id: 
-    group: 
-    - :default
-    version: ~> 2.3
-  erubis: 
-    group: 
-    - :default
-    version: ">= 0"
-  jammit: 
-    group: 
-    - :default
-    version: ">= 0"
-  will_paginate: 
+  paperclip: 
     group: 
     - :default
     version: ">= 0"
@@ -92,7 +76,27 @@ dependencies:
     version: ">= 0"
     require: 
     - tableless
-  paperclip: 
+  will_paginate: 
+    group: 
+    - :default
+    version: ">= 0"
+  jammit: 
+    group: 
+    - :default
+    version: ">= 0"
+  erubis: 
+    group: 
+    - :default
+    version: ">= 0"
+  friendly_id: 
+    group: 
+    - :default
+    version: ~> 2.3
+  rcov: 
+    group: 
+    - :default
+    version: ">= 0"
+  capistrano-ext: 
     group: 
     - :default
     version: ">= 0"
@@ -114,11 +118,11 @@ dependencies:
     group: 
     - :test
     version: ">= 0"
-  nokogiri: 
+  capistrano: 
     group: 
     - :default
     version: ">= 0"
-  capistrano: 
+  nokogiri: 
     group: 
     - :default
     version: ">= 0"
@@ -147,6 +151,10 @@ specs:
     version: 2.2.2
 - bossman: 
     version: 0.4.1
+- require: 
+    version: 0.2.7
+- brianjlandau-acts_as_archive: 
+    version: 0.2.8
 - builder: 
     version: 3.0.0
 - highline: 
@@ -229,7 +237,7 @@ specs:
     version: 0.6.2
 - will_paginate: 
     version: 2.3.15
-hash: 3430200a3425f470088280d02a63d8293e91915e
+hash: 58b0f969d859bc5bee1244624bdbe900f0dfb37b
 sources: 
 - Rubygems: 
     uri: http://rubygems.org

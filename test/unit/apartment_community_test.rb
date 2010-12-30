@@ -19,6 +19,17 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
         ApartmentCommunity.featured_order
       end
     end
+    
+    should 'be archivable' do
+      assert ApartmentCommunity.acts_as_archive?
+      assert_nothing_raised do
+        ApartmentCommunity::Archive
+      end
+      assert defined?(ApartmentCommunity::Archive)
+      assert ApartmentCommunity::Archive.ancestors.include?(ActiveRecord::Base)
+      assert ApartmentCommunity::Archive.ancestors.include?(Property::Archive)
+      assert ApartmentCommunity::Archive.ancestors.include?(Community::Archive)
+    end
 
     should "require lead_2_lease email if show_lead_2_lease is true" do
       @community.show_lead_2_lease = true

@@ -13,6 +13,16 @@ class CommunityTest < ActiveSupport::TestCase
     should_have_many :videos
     should_have_one :dnr_configuration
     
+    should 'be archivable' do
+      assert Community.acts_as_archive?
+      assert_nothing_raised do
+        Community::Archive
+      end
+      assert defined?(Community::Archive)
+      assert Community::Archive.ancestors.include?(ActiveRecord::Base)
+      assert Community::Archive.ancestors.include?(Property::Archive)
+    end
+    
     should 'report the correct fields for ApartmentCommunity state fields' do
       assert_equal :position, ApartmentCommunity.typus_fields_for('state')['featured_position']
     end

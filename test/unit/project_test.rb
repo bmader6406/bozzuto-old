@@ -13,6 +13,16 @@ class ProjectTest < ActiveSupport::TestCase
     should_have_and_belong_to_many :project_categories
 
     should_validate_presence_of :completion_date
+    
+    should 'be archivable' do
+      assert Project.acts_as_archive?
+      assert_nothing_raised do
+        Project::Archive
+      end
+      assert defined?(Project::Archive)
+      assert Project::Archive.ancestors.include?(ActiveRecord::Base)
+      assert Project::Archive.ancestors.include?(Property::Archive)
+    end
 
     context 'in_section named scope' do
       setup do

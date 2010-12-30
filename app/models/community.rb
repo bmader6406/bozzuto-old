@@ -1,6 +1,8 @@
 class Community < Property
   include Bozzuto::SMSAble
   
+  acts_as_archive :indexes => [:id]
+  
   acts_as_list :column => 'featured_position'
 
   belongs_to :local_info_feed, :class_name => 'Feed'

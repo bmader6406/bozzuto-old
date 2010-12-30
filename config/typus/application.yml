@@ -20,6 +20,8 @@ ApartmentCommunity:
   filters:
   search: title, street_address
   application: Properties
+  actions:
+    index: list_deleted
 
 ApartmentFloorPlan:
   fields:
@@ -183,6 +185,8 @@ HomeCommunity:
   filters:
   search: title
   application: Properties
+  actions:
+    index: list_deleted
 
 HomeFloorPlan:
   fields:
@@ -376,6 +380,8 @@ Project:
   filters:
   search: title
   application: Properties
+  actions:
+    index: list_deleted
 
 ProjectCategory:
   fields:

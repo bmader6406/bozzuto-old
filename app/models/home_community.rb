@@ -1,6 +1,8 @@
 class HomeCommunity < Community
   cattr_reader :per_page
   @@per_page = 6
+  
+  acts_as_archive :indexes => [:id]
 
   has_many :homes, :dependent => :destroy
   has_many :featured_homes,

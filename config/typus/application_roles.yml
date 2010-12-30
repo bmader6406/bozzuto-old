@@ -3,7 +3,7 @@
 # Use the README file as a reference to customize settings.
 
 admin:
-  ApartmentCommunity: create, read, update, delete
+  ApartmentCommunity: create, read, update, delete, list_deleted
   ApartmentFloorPlan: create, read, update, delete
   ApartmentFloorPlanGroup: read
   Award: create, read, update, delete
@@ -16,7 +16,7 @@ admin:
   DnrConfiguration: create, read, update, delete
   Feed: create, read, update, delete
   Home: create, read, update, delete
-  HomeCommunity: create, read, update, delete
+  HomeCommunity: create, read, update, delete, list_deleted
   HomeFloorPlan: create, read, update, delete
   HomePage: read, update
   HomePageSlide: create, read, update, delete
@@ -32,12 +32,12 @@ admin:
   Photo: create, read, update, delete
   PhotoSet: create, read, update, delete
   PressRelease: create, read, update, delete
-  Project: create, read, update, delete
+  Project: create, read, update, delete, list_deleted
   ProjectCategory: create, read, update, delete
   ProjectDataPoint: create, read, update, delete
   ProjectUpdate: create, read, update, delete
   Promo: create, read, update, delete
-  Property: create, read, update, delete
+  Property: create, read, update, delete, recover
   PropertyFeature: create, read, update, delete
   PropertySlide: create, read, update, delete
   PropertySlideshow: create, read, update, delete
