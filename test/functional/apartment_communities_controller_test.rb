@@ -2,7 +2,9 @@ require 'test_helper'
 
 class ApartmentCommunitiesControllerTest < ActionController::TestCase
   context "ApartmentCommunitiesController" do
-    setup { @community = ApartmentCommunity.make }
+    setup do
+      @community = ApartmentCommunity.make :latitude => rand, :longitude => rand
+    end
 
     context 'get #index' do
       context 'for the search view' do
@@ -30,10 +32,10 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
           get :show, :id => @community.to_param
         end
 
-        should_assign_to(:community) { @community }
         should_respond_with :success
         should_render_with_layout :community
         should_render_template :show
+        should_assign_to(:community) { @community }
       end
 
       mobile_context do
@@ -43,10 +45,29 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
             :format => :mobile
         end
 
-        should_assign_to(:community) { @community }
         should_respond_with :success
         should_render_with_layout :application
         should_render_template :show
+        should_assign_to(:community) { @community }
+      end
+
+      context 'for KML format' do
+        setup do
+          get :show,
+            :id => @community.to_param,
+            :format => :kml
+        end
+
+        should_respond_with :success
+        should_render_without_layout
+        should_render_template :show
+        should_assign_to(:community) { @community }
+
+        should 'render the KML XML' do
+          assert_match /<name>#{@community.title}<\/name>/, @response.body
+          assert_match /<coordinates>#{@community.latitude},#{@community.longitude},0<\/coordinates>/,
+            @response.body
+        end
       end
     end
   end

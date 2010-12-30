@@ -73,11 +73,11 @@ module OverriddenPathsHelper
     end
   end
 
-  def project_path(section, project)
+  def project_path(section, project, options = nil)
     if section.service?
-      service_section_project_path(section, project)
+      service_section_project_path(section, project, options)
     else
-      section_project_path(section, project)
+      section_project_path(section, project, options)
     end
   end
 
@@ -89,11 +89,14 @@ module OverriddenPathsHelper
     end
   end
 
-  def property_path(property)
-    if property.is_a?(Project)
-      project_path(property.section, property)
-    else
-      property
+  def property_path(property, options = nil)
+    case property
+    when Project
+      project_path(property.section, property, options)
+    when ApartmentCommunity
+      apartment_community_path(property, options)
+    when HomeCommunity
+      home_community_path(property, options)
     end
   end
 

@@ -17,8 +17,7 @@
 
     <ul class="contact contact-list">
       <li>
-        <%# TODO: Link 'Directions' button %>
-        <% link_to '#', :class => 'btn directions' do %>
+        <% link_to mobile_map_url(@community), :class => 'btn directions' do %>
           <span>Directions</span> <%= @community.city %>
         <% end %>
       </li>
