@@ -7,7 +7,7 @@ class NeighborhoodsControllerTest < ActionController::TestCase
         @community = HomeCommunity.make
       end
 
-      context 'from a browser' do
+      browser_context do
         setup do
           get :show, :home_community_id => @community.to_param
         end
@@ -18,10 +18,11 @@ class NeighborhoodsControllerTest < ActionController::TestCase
         should_assign_to(:community) { @community }
       end
 
-      context 'from a mobile device' do
+      mobile_context do
         setup do
-          set_mobile_user_agent!
-          get :show, :home_community_id => @community.to_param
+          get :show,
+            :home_community_id => @community.to_param,
+            :format => :mobile
         end
 
         should_respond_with :success
@@ -37,7 +38,7 @@ class NeighborhoodsControllerTest < ActionController::TestCase
         @community = ApartmentCommunity.make
       end
 
-      context 'from a browser' do
+      browser_context do
         setup do
           get :show, :apartment_community_id => @community.to_param
         end
@@ -48,10 +49,11 @@ class NeighborhoodsControllerTest < ActionController::TestCase
         should_assign_to(:community) { @community }
       end
 
-      context 'from a mobile device' do
+      mobile_context do
         setup do
-          set_mobile_user_agent!
-          get :show, :apartment_community_id => @community.to_param
+          get :show,
+            :apartment_community_id => @community.to_param,
+            :format => :mobile
         end
 
         should_respond_with :success
