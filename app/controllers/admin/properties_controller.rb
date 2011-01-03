@@ -18,7 +18,7 @@ class Admin::PropertiesController < Admin::MasterController
     if (@property.is_a?(Community) && @property.featured?) || @property.is_a?(Project)
       @property.send(:assume_bottom_position)
     end
-    flash[:success] = _("{{model}} successfully recovered.", 
+    flash[:success] = _("%{model} successfully recovered.", 
                         :model => @resource[:human_name])
     redirect_to request.referer || admin_dashboard_path
   end

@@ -29,6 +29,6 @@
   <%= pagination %>
 <% else %>
   <div id="flash" class="notice">
-    <p><%= _("There are no {{records}}.", :records => "archived #{@resource[:human_name].pluralize.downcase}") %></p>
+    <p><%= _("There are no %{records}.", :records => "archived #{@resource[:human_name].pluralize.downcase}") %></p>
   </div>
 <% end %>

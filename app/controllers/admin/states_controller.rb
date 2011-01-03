@@ -4,11 +4,11 @@ class Admin::StatesController < Admin::MasterController
     if params[:related] && params[:related][:relation] == 'featured_apartment_communities'
       @community = ApartmentCommunity.find(params[:related][:id])
       if @community.update_attribute(:featured, true)
-        flash[:success] = _("{{model_a}} related to {{model_b}}.", 
+        flash[:success] = _("%{model_a} related to %{model_b}.", 
                           :model_a => ApartmentCommunity.typus_human_name, 
                           :model_b => @resource[:human_name])
       else
-        flash[:error] = _("{{model_a}} cannot be related to {{model_b}}.", 
+        flash[:error] = _("%{model_a} cannot be related to %{model_b}.", 
                           :model_a => ApartmentCommunity.typus_human_name, 
                           :model_b => @resource[:human_name])
       end
@@ -22,11 +22,11 @@ class Admin::StatesController < Admin::MasterController
     if params[:field] == 'featured_apartment_communities'
       @community = ApartmentCommunity.find(params[:resource_id])
       if @community.update_attribute(:featured, false)
-        flash[:success] = _("{{model_a}} unrelated from {{model_b}}.", 
+        flash[:success] = _("%{model_a} unrelated from %{model_b}.", 
                             :model_a => ApartmentCommunity.typus_human_name, 
                             :model_b => @resource[:human_name])
       else
-        flash[:error] = _("{{model_a}} cannot be unrelated to {{model_b}}.", 
+        flash[:error] = _("%{model_a} cannot be unrelated to %{model_b}.", 
                           :model_a => ApartmentCommunity.typus_human_name, 
                           :model_b => @resource[:human_name])
       end
