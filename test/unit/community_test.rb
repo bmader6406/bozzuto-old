@@ -46,6 +46,36 @@ class CommunityTest < ActiveSupport::TestCase
       end
     end
 
+    context '#has_active_promo?' do
+      setup do
+        @active_promo  = Promo.make :active
+        @expired_promo = Promo.make :expired
+      end
+
+      context 'when promo is not present' do
+        should 'return false' do
+          assert @community.promo.nil?
+          assert !@community.has_active_promo?
+        end
+      end
+
+      context 'when promo is present and not active' do
+        setup { @community.promo = @expired_promo }
+
+        should 'return false' do
+          assert !@community.has_active_promo?
+        end
+      end
+
+      context 'when promo is present and active' do
+        setup { @community.promo = @active_promo }
+
+        should 'return true' do
+          assert @community.has_active_promo?
+        end
+      end
+    end
+
     context 'with no Feed' do
       should 'return an empty array on #local_info' do
         assert_nil @community.local_info_feed

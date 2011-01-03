@@ -42,6 +42,10 @@ class Community < Property
     local_info_feed.present? && local_info_feed.items.any?
   end
 
+  def has_active_promo?
+    promo.present? && promo.active?
+  end
+
   # used by sms
   def phone_message
     "#{title} #{street_address}, #{city.name}, #{city.state.name} #{phone_number} Call for specials! #{website_url}"
