@@ -97,7 +97,10 @@ class Property < ActiveRecord::Base
   def property_type=(type)
     write_attribute(:type, type)
   end
-
+  
+  def destroy_attached_files
+    # no-op this because we need to keep attachments arround
+  end
 
   private
 

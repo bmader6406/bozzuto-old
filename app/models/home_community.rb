@@ -4,7 +4,7 @@ class HomeCommunity < Community
   
   acts_as_archive :indexes => [:id]
 
-  has_many :homes, :dependent => :destroy
+  has_many :homes
   has_many :featured_homes,
     :class_name => 'Home',
     :conditions => { :featured => true }
