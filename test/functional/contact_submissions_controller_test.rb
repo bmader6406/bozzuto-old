@@ -110,13 +110,25 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #thank_you' do
-      setup do
-        get :thank_you
+      browser_context do
+        setup do
+          get :thank_you
+        end
+
+        should_respond_with :success
+        should_render_template :thank_you
+        should_assign_to(:section) { @section }
       end
 
-      should_respond_with :success
-      should_render_template :thank_you
-      should_assign_to(:section) { @section }
+      mobile_context do
+        setup do
+          get :thank_you, :format => :mobile
+        end
+
+        should_respond_with :success
+        should_render_template :thank_you
+        should_assign_to(:section) { @section }
+      end
     end
   end
 end
