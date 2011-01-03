@@ -28,9 +28,9 @@ class ContactSubmissionsController < SectionContentController
   end
 
   def find_topic
-    @topic = begin
+    @topic = if params[:topic].present?
       ContactTopic.find(params[:topic])
-    rescue
+    else
       ContactTopic.first
     end
   end

@@ -8,24 +8,70 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #show' do
-      context 'with no topic param' do
+      browser_context do
+        context 'with no topic param' do
+          setup do
+            get :show
+          end
+
+          should_respond_with :success
+          should_render_template :show
+          should_assign_to :submission
+          should_assign_to(:section) { @section }
+        end
+
+        context 'with a topic param' do
+          setup do
+            get :show, :topic => @topic.to_param
+          end
+
+          should 'set the topic on the submission' do
+            assert_equal @topic, assigns(:submission).topic
+          end
+        end
+      end
+
+      mobile_context do
+        context 'with no topic param' do
+          setup do
+            get :show, :format => :mobile
+          end
+
+          should_respond_with :success
+          should_render_template :show
+          should_assign_to :submission
+          should_assign_to(:section) { @section }
+        end
+
+        context 'with a topic param' do
+          setup do
+            get :show,
+              :topic  => @topic.to_param,
+              :format => :mobile
+          end
+
+          should 'set the topic on the submission' do
+            assert_equal @topic, assigns(:submission).topic
+          end
+        end
+      end
+
+      context 'for KML format' do
         setup do
-          get :show
+          get :show, :format => :kml
         end
 
         should_respond_with :success
+        should_render_without_layout
         should_render_template :show
-        should_assign_to :submission
-        should_assign_to(:section) { @section }
-      end
 
-      context 'with a topic param' do
-        setup do
-          get :show, :topic => @topic.to_param
-        end
-
-        should 'set the topic on the submission' do
-          assert_equal @topic, assigns(:submission).topic
+        should 'render the KML XML' do
+          assert_match /<name>Bozzuto Corporate Office<\/name>/,
+            @response.body
+          assert_match /<description>7850 Walker Dr\., Suite 400, Greenbelt, MD 20770<\/description>/,
+            @response.body
+          assert_match /<coordinates>38.999647,-76.89595,0<\/coordinates>/,
+            @response.body
         end
       end
     end
