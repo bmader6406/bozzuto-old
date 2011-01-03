@@ -43,6 +43,28 @@ class NewsAndPressControllerTest < ActionController::TestCase
         should_assign_to(:news_section) { @news_and_press }
         should_assign_to(:page) { @page }
       end
+      
+      context 'logged in as a typus user' do
+        setup do
+          @user = TypusUser.make
+          login_typus_user @user
+        end
+        
+        context 'with a page param for an unpublished page' do
+          setup do
+            3.times { Page.make :section => @news_and_press, :published => false }
+            @page = @news_and_press.pages.last
+
+            get :show, :section => @about.to_param, :page => @page.path.split('/')
+          end
+
+          should_respond_with :success
+          should_render_template :show
+          should_assign_to(:section) { @about }
+          should_assign_to(:news_section) { @news_and_press }
+          should_assign_to(:page) { @page }
+        end
+      end
     end
   end
 end

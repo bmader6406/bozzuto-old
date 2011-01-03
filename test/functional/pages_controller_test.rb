@@ -52,6 +52,28 @@ class PagesControllerTest < ActionController::TestCase
         should_assign_to(:section) { @section }
         should_assign_to(:page) { @page }
       end
+      
+      context 'logged in as a typus user' do
+        setup do
+          @user = TypusUser.make
+          login_typus_user @user
+        end
+        
+        context 'with a page param for an unpublished page' do
+          setup do
+            3.times { Page.make :section => @section, :published => false }
+            @page = @section.pages.last
+
+            get :show, :section => @section.to_param, :page => @page.path.split('/')
+          end
+
+          should_respond_with :success
+          should_render_template :show
+          should_assign_to(:section) { @section }
+          should_assign_to(:page) { @page }
+        end
+      end
+      
     end
   end
 end

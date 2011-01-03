@@ -2,7 +2,10 @@ require 'test_helper'
 
 class ApartmentCommunitiesControllerTest < ActionController::TestCase
   context "ApartmentCommunitiesController" do
-    setup { @community = ApartmentCommunity.make }
+    setup do
+      @community = ApartmentCommunity.make
+      @unpublished_community = ApartmentCommunity.make(:published => false)
+    end
 
     context 'get #index' do
       context 'for the search view' do
@@ -32,6 +35,23 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
       should_assign_to(:community) { @community }
       should_respond_with :success
       should_render_template :show
+    end
+    
+    context 'logged in to typus' do
+      setup do
+        @user = TypusUser.make
+        login_typus_user @user
+      end
+      
+      context "a GET to #show for an upublished community" do
+        setup do
+          get :show, :id => @unpublished_community.to_param
+        end
+
+        should_assign_to(:community) { @unpublished_community }
+        should_respond_with :success
+        should_render_template :show
+      end
     end
   end
 end
