@@ -270,3 +270,12 @@ Testimonial.blueprint do
   quote { Faker::Lorem.paragraphs }
   section
 end
+
+TypusUser.blueprint do
+  email       { Faker::Internet.email }
+  role        { 'admin' }
+  password    { 'password' }
+  password_confirmation { 'password' }
+  status      { true }
+  preferences { {:locale => 'en'} }
+end
