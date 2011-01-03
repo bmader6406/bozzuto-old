@@ -722,15 +722,6 @@ ActiveRecord::Schema.define(:version => 20101230200702) do
   add_index "sections", ["about"], :name => "index_sections_on_about"
   add_index "sections", ["cached_slug"], :name => "index_sections_on_cached_slug"
 
-  create_table "services", :force => true do |t|
-    t.string   "title",      :null => false
-    t.string   "slug",       :null => false
-    t.integer  "position",   :null => false
-    t.integer  "section_id", :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "slugs", :force => true do |t|
     t.string   "name"
     t.integer  "sluggable_id"

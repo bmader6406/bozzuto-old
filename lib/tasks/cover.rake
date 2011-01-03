@@ -3,7 +3,15 @@ require 'vendor/plugins/cover/init'
 # Basic task to enable checking for code coverage
 Cover::Task.new('db:migrate') do |t|
   t.threshold = 90
-  t.exclude << ['.gem', '.bundle', 'vendor', 'lib/typus', 'app/controllers/admin', 'app/models/asset', 'app/models/picture']
+  t.exclude << ['.gem',
+    '.bundle',
+    'vendor',
+    'lib/typus',
+    'app/controllers/admin',
+    'app/helpers/admin_helper',
+    'app/models/asset',
+    'app/models/picture'
+  ]
 end
 
 # If you need to configure the task further, you can:
