@@ -1,0 +1,15 @@
+<% render_meta(@community) %>
+
+<div class="section page-title">
+  <div class="content">
+    <h2>Specials</h2>
+    <%= link_to @community.title, community_url(@community), :class => 'go-back' %>
+  </div>
+</div>
+
+<div class="section">
+  <div class="content">
+    <h3><%= @promo.title %></h3>
+    <p><%= @promo.subtitle %></p>
+  </div>
+</div>

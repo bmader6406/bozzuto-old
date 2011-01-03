@@ -63,6 +63,11 @@
       <li>
         <%= link_to 'Neighborhood', apartment_community_neighborhood_path(@community), :class => 'btn' %>
       </li>
+      <% if @community.has_active_promo? %>
+        <li>
+          <%= link_to 'Specials', apartment_community_specials_path(@community), :class => 'btn' %>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>
