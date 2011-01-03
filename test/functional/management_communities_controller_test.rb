@@ -25,7 +25,7 @@ class ManagementCommunitiesControllerTest < ActionController::TestCase
 
       context 'and a page is present' do
         setup do
-          @page = @section.pages.create(:title => 'Communities')
+          @page = @section.pages.create(:title => 'Communities', :published => true)
           get :index, :section => 'management'
         end
 

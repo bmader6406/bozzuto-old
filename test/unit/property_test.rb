@@ -18,6 +18,15 @@ class PropertyTest < ActiveSupport::TestCase
 
     should_have_attached_file :listing_image
     should_have_attached_file :brochure
+    
+    should 'be archivable' do
+      assert Property.acts_as_archive?
+      assert_nothing_raised do
+        Property::Archive
+      end
+      assert defined?(Property::Archive)
+      assert Property::Archive.ancestors.include?(ActiveRecord::Base)
+    end
 
     context '#mappable?' do
       setup do

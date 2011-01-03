@@ -7,7 +7,7 @@ module Typus
 
           href = item.send(attribute).url
 
-          content = _("View {{attribute}}", :attribute => @item.class.human_attribute_name(attribute).downcase)
+          content = _("View %{attribute}", :attribute => @item.class.human_attribute_name(attribute).downcase)
 
           render "admin/helpers/preview", 
             :attribute => attribute, 

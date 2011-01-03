@@ -1,4 +1,6 @@
 class ApartmentCommunity < Community
+  acts_as_archive :indexes => [:id]
+  
   before_update :mark_dirty_floor_plan_prices
   after_update :update_floor_plan_prices
 

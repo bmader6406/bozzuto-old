@@ -1,10 +1,9 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'test_help'
-
 require 'mocha'
-
 require File.expand_path(File.dirname(__FILE__) + "/blueprints")
+require Rails.root+"vendor/plugins/typus/lib/extensions/object"
 
 class ActiveSupport::TestCase
   include WebMock
@@ -47,5 +46,13 @@ class ActiveSupport::TestCase
     def browser_context(&block)
       context('from a web browser', &block)
     end
+  end
+end
+
+class ActionController::TestCase
+  protected
+  
+  def login_typus_user(user)
+    session[:typus_user_id] = user.id
   end
 end

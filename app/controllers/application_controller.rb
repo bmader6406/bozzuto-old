@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   end
 
   def about_root_pages
-    Section.about.pages.roots
+    Section.about.pages.published.roots
   rescue
     []
   end
@@ -66,4 +66,19 @@ class ApplicationController < ActionController::Base
     request.format.to_sym == :mobile
   end
   helper_method :mobile?
+  
+  def page_url(section, page = nil)
+    if section.service?
+      service_section_page_url(section, page.try(:path))
+    elsif section == Section.news_and_press
+      news_and_press_page_url(page.try(:path))
+    else
+      section_page_url(section, page.try(:path))
+    end
+  end
+  helper_method :page_url
+  
+  def typus_user
+    @typus_user ||= Typus.user_class.find_by_id(session[:typus_user_id])
+  end
 end

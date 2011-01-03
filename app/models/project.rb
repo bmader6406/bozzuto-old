@@ -1,4 +1,6 @@
 class Project < Property
+  acts_as_archive :indexes => [:id]
+  
   acts_as_list :scope => :section
 
   has_many :data_points,

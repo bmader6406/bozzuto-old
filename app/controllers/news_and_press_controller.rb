@@ -13,9 +13,11 @@ class NewsAndPressController < SectionContentController
 
   def find_page
     @page = if params[:page].any?
-      @news_section.pages.find_by_path(current_page_path)
+      typus_user ?
+        @news_section.pages.find_by_path(current_page_path) :
+        @news_section.pages.published.find_by_path(current_page_path)
     else
-      @news_section.pages.first
+      @news_section.pages.published.first
     end
 
     render_404 if @page.nil?

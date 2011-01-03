@@ -13,6 +13,16 @@ class CommunityTest < ActiveSupport::TestCase
     should_have_many :videos
     should_have_one :dnr_configuration
     
+    should 'be archivable' do
+      assert Community.acts_as_archive?
+      assert_nothing_raised do
+        Community::Archive
+      end
+      assert defined?(Community::Archive)
+      assert Community::Archive.ancestors.include?(ActiveRecord::Base)
+      assert Community::Archive.ancestors.include?(Property::Archive)
+    end
+    
     should 'report the correct fields for ApartmentCommunity state fields' do
       assert_equal :position, ApartmentCommunity.typus_fields_for('state')['featured_position']
     end
@@ -33,6 +43,36 @@ class CommunityTest < ActiveSupport::TestCase
       should 'return true if any bullets are present' do
         @community.overview_bullet_2 = 'Blah blah blah'
         assert @community.has_overview_bullets?
+      end
+    end
+
+    context '#has_active_promo?' do
+      setup do
+        @active_promo  = Promo.make :active
+        @expired_promo = Promo.make :expired
+      end
+
+      context 'when promo is not present' do
+        should 'return false' do
+          assert @community.promo.nil?
+          assert !@community.has_active_promo?
+        end
+      end
+
+      context 'when promo is present and not active' do
+        setup { @community.promo = @expired_promo }
+
+        should 'return false' do
+          assert !@community.has_active_promo?
+        end
+      end
+
+      context 'when promo is present and active' do
+        setup { @community.promo = @active_promo }
+
+        should 'return true' do
+          assert @community.has_active_promo?
+        end
       end
     end
 

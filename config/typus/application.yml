@@ -20,6 +20,10 @@ ApartmentCommunity:
   filters:
   search: title, street_address
   application: Properties
+  actions:
+    index: list_deleted
+    show: preview
+    edit: preview
 
 ApartmentFloorPlan:
   fields:
@@ -183,6 +187,10 @@ HomeCommunity:
   filters:
   search: title
   application: Properties
+  actions:
+    index: list_deleted
+    show: preview
+    edit: preview
 
 HomeFloorPlan:
   fields:
@@ -304,9 +312,10 @@ NewsPost:
 
 Page:
   fields:
-    default: formatted_title, position
-    list: formatted_title, section, position
-    form: title, meta_title, meta_description, meta_keywords, body, section, parent, left_montage_image, middle_montage_image, right_montage_image
+    default: formatted_title, published, position
+    show: title, published, section, parent, body, left_montage_image, middle_montage_image, right_montage_image
+    list: formatted_title, published, section, position
+    form: title, meta_title, meta_description, meta_keywords, body, section, parent, published, left_montage_image, middle_montage_image, right_montage_image
     options:
       ckeditor: body
       destroy_related: MastheadSlideshow, BodySlideshow
@@ -316,6 +325,9 @@ Page:
   search: title
   application:
   options:
+  actions:
+    show: preview
+    edit: preview
 
 Photo:
   fields:
@@ -376,6 +388,8 @@ Project:
   filters:
   search: title
   application: Properties
+  actions:
+    index: list_deleted
 
 ProjectCategory:
   fields:

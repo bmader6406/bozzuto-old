@@ -1,5 +1,5 @@
 <ul id="secondary-nav">
-  <%= pages_tree(@section.pages) %>
+  <%= pages_tree(@section.pages.published) %>
 
   <%= news_and_press_secondary_nav(@section, @news_section) %>
 

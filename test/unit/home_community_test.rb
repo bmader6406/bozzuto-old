@@ -11,6 +11,17 @@ class HomeCommunityTest < ActiveSupport::TestCase
     should_have_many :homes
     should_have_many :featured_homes
     should_have_attached_file :listing_promo
+    
+    should 'be archivable' do
+      assert HomeCommunity.acts_as_archive?
+      assert_nothing_raised do
+        HomeCommunity::Archive
+      end
+      assert defined?(HomeCommunity::Archive)
+      assert HomeCommunity::Archive.ancestors.include?(ActiveRecord::Base)
+      assert HomeCommunity::Archive.ancestors.include?(Property::Archive)
+      assert HomeCommunity::Archive.ancestors.include?(Community::Archive)
+    end
 
     context '#nearby_communities' do
       setup do

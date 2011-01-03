@@ -229,8 +229,9 @@ PropertyFeature.blueprint do
 end
 
 Page.blueprint do
-  title { Faker::Lorem.sentence }
-  body  { Faker::Lorem.paragraphs(3) }
+  title     { Faker::Lorem.sentence }
+  body      { Faker::Lorem.paragraphs(3) }
+  published { true }
   section
 end
 
@@ -268,4 +269,13 @@ Testimonial.blueprint do
   title { Faker::Lorem.sentence }
   quote { Faker::Lorem.paragraphs }
   section
+end
+
+TypusUser.blueprint do
+  email       { Faker::Internet.email }
+  role        { 'admin' }
+  password    { 'password' }
+  password_confirmation { 'password' }
+  status      { true }
+  preferences { {:locale => 'en'} }
 end

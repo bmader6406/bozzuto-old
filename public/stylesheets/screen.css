@@ -739,7 +739,8 @@
     }
     div.promo h4 {
       color: #ff9000;
-      font-size: 34px;
+      font-family: 'FontSite Sans', 'Arial Narrow', Arial, sans-serif;
+      font-size: 35px;
       line-height: 1;
       margin-bottom: 1px;
       text-transform: uppercase;

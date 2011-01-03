@@ -55,7 +55,7 @@ module SectionContentHelper
   end
 
   def news_and_press_secondary_nav(section, news_section)
-    if section_news_posts.any? || section_press_releases.any? || (news_section.present? && news_section.pages.any?)
+    if section_news_posts.any? || section_press_releases.any? || (news_section.present? && news_section.pages.published.any?)
       current = 'current' if params[:controller] == 'news_and_press' && params[:action] == 'index'
 
       content_tag :li, :class => current do
@@ -65,8 +65,8 @@ module SectionContentHelper
           subnav = []
 
           # pages
-          if news_section.present? && news_section.pages.any?
-            subnav << pages_tree(news_section.pages).html_safe
+          if news_section.present? && news_section.pages.published.any?
+            subnav << pages_tree(news_section.pages.published).html_safe
           end
 
           # news

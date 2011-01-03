@@ -26,11 +26,15 @@ class ApartmentCommunitiesController < ApplicationController
   private
 
   def find_community
-    @community = ApartmentCommunity.published.find(params[:id])
-
-    @recent_queue = RecentQueue.find
-    @recent_queue.push(@community.id)
-    @recently_viewed = @recent_queue.map { |id| ApartmentCommunity.find_by_id(id) }.compact
+    @community = typus_user ?
+      ApartmentCommunity.find(params[:id]) :
+      ApartmentCommunity.published.find(params[:id])
+    
+    if @community.published?
+      @recent_queue = RecentQueue.find
+      @recent_queue.push(@community.id)
+      @recently_viewed = @recent_queue.map { |id| ApartmentCommunity.find_by_id(id) }.compact
+    end
   end
 
   def geographic_filter

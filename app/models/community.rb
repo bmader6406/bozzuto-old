@@ -1,6 +1,8 @@
 class Community < Property
   include Bozzuto::SMSAble
   
+  acts_as_archive :indexes => [:id]
+  
   acts_as_list :column => 'featured_position'
 
   belongs_to :local_info_feed, :class_name => 'Feed'
@@ -38,6 +40,10 @@ class Community < Property
 
   def has_local_info?
     local_info_feed.present? && local_info_feed.items.any?
+  end
+
+  def has_active_promo?
+    promo.present? && promo.active?
   end
 
   # used by sms

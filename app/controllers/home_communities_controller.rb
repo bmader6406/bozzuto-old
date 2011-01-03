@@ -28,14 +28,16 @@ class HomeCommunitiesController < SectionContentController
 
   def find_page
     @page = begin
-      @section.pages.find 'communities'
+      @section.pages.published.find 'communities'
     rescue ActiveRecord::RecordNotFound
       nil
     end
   end
 
   def find_community
-    @community = HomeCommunity.published.find(params[:id])
+    @community = typus_user ?
+      HomeCommunity.find(params[:id]) :
+      HomeCommunity.published.find(params[:id])
   end
 
   def find_communities

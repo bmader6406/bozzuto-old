@@ -18,6 +18,8 @@ class Property < ActiveRecord::Base
   has_friendly_id :id_and_title,
     :use_slug => true,
     :scope => :type
+    
+  acts_as_archive :indexes => [:id]
 
   belongs_to :city
   belongs_to :county  
