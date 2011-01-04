@@ -85,7 +85,7 @@
 
     if ($mapCanvas.length > 0) {
       $mapCanvas.jMapping({
-        default_zoom_level: 13
+        default_zoom_level: 14
       });
 
       $("#map-lightbox").click(function (e) {
