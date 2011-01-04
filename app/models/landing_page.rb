@@ -29,7 +29,7 @@ class LandingPage < ActiveRecord::Base
   def all_properties
     @all_properties ||= [apartment_communities, home_communities, 
       featured_apartment_communities, popular_properties.map(&:property),
-      projects].flatten.uniq
+      projects].flatten.compact.uniq
   end
   
   protected
