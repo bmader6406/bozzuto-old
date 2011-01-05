@@ -30,7 +30,7 @@ class MigrateToFeaturesPages < ActiveRecord::Migration
     say "Migrating Features from PropertyFeaturesPage to Property..."
     Community.all.each do |community|
       if community.features_page.present?
-        say_with_time "Migrating Property #{community.id} #{community.title.inspect}"
+        say "Migrating Property #{community.id} #{community.title.inspect}"
         community.update_attributes({
           :features_1_text => community.features_page.text_1,
           :features_1_title => community.features_page.title_1,

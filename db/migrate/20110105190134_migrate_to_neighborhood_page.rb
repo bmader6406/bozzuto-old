@@ -25,7 +25,7 @@ class MigrateToNeighborhoodPage < ActiveRecord::Migration
     say "Migrating Neighborhood from PropertyNeighborhoodPage to Property..."
     Community.all.each do |community|
       if community.neighborhood_page.present?
-        say_with_time "Migrating Property #{community.id} #{community.title.inspect}"
+        say "Migrating Property #{community.id} #{community.title.inspect}"
         community.update_attributes({
           :neighborhood_text => community.neighborhood_page.content,
           :neighborhood_meta_title => community.neighborhood_page.meta_title,
