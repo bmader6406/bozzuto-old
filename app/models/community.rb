@@ -47,6 +47,10 @@ class Community < Property
   def has_active_promo?
     promo.present? && promo.active?
   end
+  
+  def features_page?
+    features_page.present?
+  end
 
   # used by sms
   def phone_message

@@ -46,6 +46,21 @@ class CommunityTest < ActiveSupport::TestCase
         assert @community.has_overview_bullets?
       end
     end
+    
+    context '#features_page?' do
+      setup do
+        @community = ApartmentCommunity.make
+      end
+      
+      should 'return false if there is no features page attached' do
+        assert !@community.features_page?
+      end
+
+      should 'return true if there is a features page attached' do
+        @page = PropertyFeaturesPage.make(:property => @community)
+        assert @community.features_page?
+      end
+    end
 
     context '#has_active_promo?' do
       setup do
