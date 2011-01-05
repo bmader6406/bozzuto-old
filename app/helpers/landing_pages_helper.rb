@@ -13,7 +13,7 @@ module LandingPagesHelper
   end
   
   def apartments_by_region
-    apartments_by_section('region', 'By Region', LandingPage.published.ascend_by_title) do |region|
+    apartments_by_section('region', 'By Region', LandingPage.published.visible_for_list.ascend_by_title) do |region|
       link_to region.title, landing_page_path(region)
     end
   end
