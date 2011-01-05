@@ -15,10 +15,15 @@ class Community < Property
   has_many :videos,
     :foreign_key => :property_id,
     :order       => 'position ASC'
-  has_one :features_page, :class_name => 'PropertyFeaturesPage',
-    :foreign_key => :property_id
-  has_one :neighborhood_page, :class_name => 'PropertyNeighborhoodPage',
-    :foreign_key => :property_id
+    
+  [:features_page, :neighborhood_page].each do |page_type|
+    has_one page_type, :class_name => "Property#{page_type.to_s.classify}",
+      :foreign_key => :property_id
+    
+    define_method("#{page_type}?") do
+      self.send(page_type).present?
+    end
+  end
     
   before_save :set_featured_postion
   
@@ -48,14 +53,6 @@ class Community < Property
 
   def has_active_promo?
     promo.present? && promo.active?
-  end
-  
-  def features_page?
-    features_page.present?
-  end
-  
-  def neighborhood_page?
-    neighborhood_page.present?
   end
 
   # used by sms
