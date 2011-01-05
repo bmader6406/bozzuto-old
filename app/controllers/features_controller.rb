@@ -4,6 +4,10 @@ class FeaturesController < ApplicationController
   before_filter :find_community
 
   def show
+    @page = @community.features_page
+    if @page.blank?
+      render_404
+    end
   end
 
 

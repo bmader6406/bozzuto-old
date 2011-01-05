@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.float    "longitude"
     t.string   "street_address"
     t.text     "overview_text"
-    t.text     "features_1_text"
     t.text     "neighborhood_text"
     t.text     "promotions_text"
     t.text     "contact_text"
@@ -94,11 +93,6 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.string   "overview_bullet_2"
     t.string   "overview_bullet_3"
     t.boolean  "published",                     :default => false, :null => false
-    t.string   "features_1_title"
-    t.string   "features_2_title"
-    t.text     "features_2_text"
-    t.string   "features_3_title"
-    t.text     "features_3_text"
     t.string   "short_title"
     t.string   "phone_number"
     t.integer  "brochure_type",                 :default => 0,     :null => false
@@ -113,9 +107,6 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.boolean  "show_lead_2_lease",             :default => false, :null => false
     t.string   "lead_2_lease_email"
     t.date     "completion_date"
-    t.string   "features_meta_title"
-    t.string   "features_meta_description"
-    t.string   "features_meta_keywords"
     t.string   "media_meta_title"
     t.string   "media_meta_description"
     t.string   "media_meta_keywords"
@@ -593,7 +584,6 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.float    "longitude"
     t.string   "street_address"
     t.text     "overview_text"
-    t.text     "features_1_text"
     t.text     "neighborhood_text"
     t.text     "promotions_text"
     t.text     "contact_text"
@@ -616,11 +606,6 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.string   "overview_bullet_2"
     t.string   "overview_bullet_3"
     t.boolean  "published",                     :default => false, :null => false
-    t.string   "features_1_title"
-    t.string   "features_2_title"
-    t.text     "features_2_text"
-    t.string   "features_3_title"
-    t.text     "features_3_text"
     t.string   "short_title"
     t.string   "phone_number"
     t.integer  "brochure_type",                 :default => 0,     :null => false
@@ -635,9 +620,6 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.boolean  "show_lead_2_lease",             :default => false, :null => false
     t.string   "lead_2_lease_email"
     t.date     "completion_date"
-    t.string   "features_meta_title"
-    t.string   "features_meta_description"
-    t.string   "features_meta_keywords"
     t.string   "media_meta_title"
     t.string   "media_meta_description"
     t.string   "media_meta_keywords"
@@ -692,6 +674,23 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.boolean  "show_on_search_page", :default => false, :null => false
   end
 
+  create_table "property_features_pages", :force => true do |t|
+    t.integer  "property_id",      :null => false
+    t.text     "text_1"
+    t.string   "title_1"
+    t.string   "title_2"
+    t.text     "text_2"
+    t.string   "title_3"
+    t.text     "text_3"
+    t.string   "meta_title"
+    t.string   "meta_description"
+    t.string   "meta_keywords"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "property_features_pages", ["property_id"], :name => "index_property_features_pages_on_property_id"
+
   create_table "property_slides", :force => true do |t|
     t.string   "caption"
     t.string   "image_file_name",       :null => false
@@ -723,6 +722,15 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
 
   add_index "sections", ["about"], :name => "index_sections_on_about"
   add_index "sections", ["cached_slug"], :name => "index_sections_on_cached_slug"
+
+  create_table "services", :force => true do |t|
+    t.string   "title",      :null => false
+    t.string   "slug",       :null => false
+    t.integer  "position",   :null => false
+    t.integer  "section_id", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "slugs", :force => true do |t|
     t.string   "name"

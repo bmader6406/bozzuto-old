@@ -229,6 +229,16 @@ PropertyFeature.blueprint do
   description    { Faker::Lorem.paragraphs(1) }
 end
 
+PropertyFeaturesPage.blueprint do
+  property
+  text_1 { Faker::Lorem.paragraphs(2) }
+  title_1 { Faker::Lorem.words(5) }
+  text_2 { Faker::Lorem.paragraph }
+  title_2 { Faker::Lorem.words(5) }
+  meta_title { Faker::Lorem.words(4) }
+  meta_keywords { Faker::Lorem.words(6) }
+end
+
 Page.blueprint do
   title     { Faker::Lorem.sentence }
   body      { Faker::Lorem.paragraphs(3) }

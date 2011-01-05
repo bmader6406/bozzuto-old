@@ -15,6 +15,8 @@ class Community < Property
   has_many :videos,
     :foreign_key => :property_id,
     :order       => 'position ASC'
+  has_one :features_page, :class_name => 'PropertyFeaturesPage',
+    :foreign_key => :property_id
     
   before_save :set_featured_postion
   

@@ -12,6 +12,7 @@ class CommunityTest < ActiveSupport::TestCase
     should_have_one :photo_set
     should_have_many :videos
     should_have_one :dnr_configuration
+    should_have_one :features_page
     
     should 'be archivable' do
       assert Community.acts_as_archive?

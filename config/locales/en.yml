@@ -151,15 +151,6 @@ en:
         contact_text: Contact Copy
         dnr_customer_code: DNR Customer Code
         facebook_url: Facebook URL
-        features_1_title: 'Features Section #1 Title'
-        features_1_text: 'Features Section #1 Copy'
-        features_2_title: 'Features Section #2 Title'
-        features_2_text: 'Features Section #2 Copy'
-        features_3_title: 'Features Section #3 Title'
-        features_3_text: 'Features Section #3 Copy'
-        features_meta_description: Features SEO Description
-        features_meta_keywords: Features SEO Keywords
-        features_meta_title: Features SEO Title
         has_completion_date: Has Completion Date
         lead_2_lease_email: Lead2Lease Email
         listing_image: Listing Image
@@ -194,6 +185,16 @@ en:
         video_url: Video URL
         website_url: Website URL
         ufollowup_id: uFollowUp ID
+      property_features_page:
+        title_1: 'Section #1 Title'
+        text_1: 'Section #1 Copy'
+        title_2: 'Section #2 Title'
+        text_2: 'Section #2 Copy'
+        title_3: 'Section #3 Title'
+        text_3: 'Section #3 Copy'
+        meta_description: SEO Description
+        meta_keywords: SEO Keywords
+        meta_title: SEO Title
       mini_slide:
         mini_slideshow: Mini Slideshow
       mini_slideshow:
