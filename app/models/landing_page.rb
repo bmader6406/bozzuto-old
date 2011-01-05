@@ -1,4 +1,6 @@
 class LandingPage < ActiveRecord::Base
+  include Bozzuto::Publishable
+  
   has_and_belongs_to_many :apartment_communities
   has_and_belongs_to_many :home_communities, :order => 'title ASC'
   has_and_belongs_to_many :featured_apartment_communities,

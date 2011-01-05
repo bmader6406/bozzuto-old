@@ -141,6 +141,7 @@ end
 LandingPage.blueprint do
   title { Faker::Lorem.words(3) }
   state
+  published { true }
 end
 
 NewsPost.blueprint do

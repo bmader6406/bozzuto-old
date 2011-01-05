@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101230200702) do
+ActiveRecord::Schema.define(:version => 20110105194708) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -352,6 +352,7 @@ ActiveRecord::Schema.define(:version => 20101230200702) do
     t.datetime "updated_at"
     t.integer  "promo_id"
     t.boolean  "custom_sort_popular_properties", :default => false, :null => false
+    t.boolean  "published",                      :default => false, :null => false
   end
 
   create_table "landing_pages_projects", :id => false, :force => true do |t|
