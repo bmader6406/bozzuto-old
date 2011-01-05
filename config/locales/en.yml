@@ -163,10 +163,6 @@ en:
         meta_description: Overview SEO Description
         meta_keywords: Overview SEO Keywords
         meta_title: Overview SEO Title
-        neighborhood_meta_description: Neighborhood SEO Description
-        neighborhood_meta_keywords: Neighborhood SEO Keywords
-        neighborhood_meta_title: Neighborhood SEO Title
-        neighborhood_text: Neighborhood Copy
         overview_bullet_1: 'Overview Bullet #1'
         overview_bullet_2: 'Overview Bullet #2'
         overview_bullet_3: 'Overview Bullet #3'
@@ -195,6 +191,11 @@ en:
         meta_description: SEO Description
         meta_keywords: SEO Keywords
         meta_title: SEO Title
+      property_neighborhood_page:
+        meta_description: SEO Description
+        meta_keywords: SEO Keywords
+        meta_title: SEO Title
+        content: Copy
       mini_slide:
         mini_slideshow: Mini Slideshow
       mini_slideshow:

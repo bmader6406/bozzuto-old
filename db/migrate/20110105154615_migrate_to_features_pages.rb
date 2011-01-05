@@ -25,6 +25,8 @@ class MigrateToFeaturesPages < ActiveRecord::Migration
   end
 
   def self.down
+    ApartmentCommunity
+    HomeCommunity
     say "Migrating Features from PropertyFeaturesPage to Property..."
     Community.all.each do |community|
       if community.features_page.present?

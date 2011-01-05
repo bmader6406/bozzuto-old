@@ -4,6 +4,10 @@ class NeighborhoodsController < ApplicationController
   before_filter :find_community
 
   def show
+    @page = @community.neighborhood_page
+    if @page.blank?
+      render_404
+    end
   end
 
 

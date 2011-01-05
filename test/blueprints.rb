@@ -239,6 +239,13 @@ PropertyFeaturesPage.blueprint do
   meta_keywords { Faker::Lorem.words(6) }
 end
 
+PropertyNeighborhoodPage.blueprint do
+  property
+  content { Faker::Lorem.paragraphs(2) }
+  meta_title { Faker::Lorem.words(4) }
+  meta_keywords { Faker::Lorem.words(6) }
+end
+
 Page.blueprint do
   title     { Faker::Lorem.sentence }
   body      { Faker::Lorem.paragraphs(3) }

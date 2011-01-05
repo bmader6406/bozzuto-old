@@ -17,6 +17,8 @@ class Community < Property
     :order       => 'position ASC'
   has_one :features_page, :class_name => 'PropertyFeaturesPage',
     :foreign_key => :property_id
+  has_one :neighborhood_page, :class_name => 'PropertyNeighborhoodPage',
+    :foreign_key => :property_id
     
   before_save :set_featured_postion
   
@@ -50,6 +52,10 @@ class Community < Property
   
   def features_page?
     features_page.present?
+  end
+  
+  def neighborhood_page?
+    neighborhood_page.present?
   end
 
   # used by sms

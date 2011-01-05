@@ -52,15 +52,15 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
   end
 
   create_table "archived_properties", :id => false, :force => true do |t|
-    t.integer  "id",                            :default => 0,     :null => false
-    t.string   "title",                                            :null => false
+    t.integer  "id",                           :default => 0,     :null => false
+    t.string   "title",                                           :null => false
     t.string   "subtitle"
-    t.integer  "city_id",                                          :null => false
-    t.boolean  "elite",                         :default => false, :null => false
-    t.boolean  "smart_share",                   :default => false, :null => false
-    t.boolean  "smart_rent",                    :default => false, :null => false
-    t.boolean  "green",                         :default => false, :null => false
-    t.boolean  "non_smoking",                   :default => false, :null => false
+    t.integer  "city_id",                                         :null => false
+    t.boolean  "elite",                        :default => false, :null => false
+    t.boolean  "smart_share",                  :default => false, :null => false
+    t.boolean  "smart_rent",                   :default => false, :null => false
+    t.boolean  "green",                        :default => false, :null => false
+    t.boolean  "non_smoking",                  :default => false, :null => false
     t.string   "website_url"
     t.string   "video_url"
     t.string   "facebook_url"
@@ -71,14 +71,13 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.float    "longitude"
     t.string   "street_address"
     t.text     "overview_text"
-    t.text     "neighborhood_text"
     t.text     "promotions_text"
     t.text     "contact_text"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "local_info_feed_id"
     t.integer  "vaultware_id"
-    t.boolean  "use_market_prices",             :default => false, :null => false
+    t.boolean  "use_market_prices",            :default => false, :null => false
     t.string   "availability_url"
     t.string   "type"
     t.integer  "section_id"
@@ -92,10 +91,10 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.string   "overview_bullet_1"
     t.string   "overview_bullet_2"
     t.string   "overview_bullet_3"
-    t.boolean  "published",                     :default => false, :null => false
+    t.boolean  "published",                    :default => false, :null => false
     t.string   "short_title"
     t.string   "phone_number"
-    t.integer  "brochure_type",                 :default => 0,     :null => false
+    t.integer  "brochure_type",                :default => 0,     :null => false
     t.string   "brochure_link_text"
     t.string   "brochure_file_name"
     t.string   "brochure_content_type"
@@ -104,7 +103,7 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.string   "meta_title"
     t.string   "meta_description"
     t.string   "meta_keywords"
-    t.boolean  "show_lead_2_lease",             :default => false, :null => false
+    t.boolean  "show_lead_2_lease",            :default => false, :null => false
     t.string   "lead_2_lease_email"
     t.date     "completion_date"
     t.string   "media_meta_title"
@@ -113,9 +112,6 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.string   "floor_plans_meta_title"
     t.string   "floor_plans_meta_description"
     t.string   "floor_plans_meta_keywords"
-    t.string   "neighborhood_meta_title"
-    t.string   "neighborhood_meta_description"
-    t.string   "neighborhood_meta_keywords"
     t.string   "promotions_meta_title"
     t.string   "promotions_meta_description"
     t.string   "promotions_meta_keywords"
@@ -125,7 +121,7 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.integer  "position"
     t.integer  "promo_id"
     t.integer  "ufollowup_id"
-    t.boolean  "has_completion_date",           :default => true,  :null => false
+    t.boolean  "has_completion_date",          :default => true,  :null => false
     t.string   "cheapest_studio_price"
     t.string   "cheapest_1_bedroom_price"
     t.string   "cheapest_2_bedroom_price"
@@ -139,7 +135,7 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.string   "lasso_uid"
     t.string   "lasso_client_id"
     t.string   "lasso_project_id"
-    t.boolean  "featured",                      :default => false, :null => false
+    t.boolean  "featured",                     :default => false, :null => false
     t.integer  "featured_position"
     t.datetime "deleted_at"
   end
@@ -566,14 +562,14 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
   end
 
   create_table "properties", :force => true do |t|
-    t.string   "title",                                            :null => false
+    t.string   "title",                                           :null => false
     t.string   "subtitle"
-    t.integer  "city_id",                                          :null => false
-    t.boolean  "elite",                         :default => false, :null => false
-    t.boolean  "smart_share",                   :default => false, :null => false
-    t.boolean  "smart_rent",                    :default => false, :null => false
-    t.boolean  "green",                         :default => false, :null => false
-    t.boolean  "non_smoking",                   :default => false, :null => false
+    t.integer  "city_id",                                         :null => false
+    t.boolean  "elite",                        :default => false, :null => false
+    t.boolean  "smart_share",                  :default => false, :null => false
+    t.boolean  "smart_rent",                   :default => false, :null => false
+    t.boolean  "green",                        :default => false, :null => false
+    t.boolean  "non_smoking",                  :default => false, :null => false
     t.string   "website_url"
     t.string   "video_url"
     t.string   "facebook_url"
@@ -584,14 +580,13 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.float    "longitude"
     t.string   "street_address"
     t.text     "overview_text"
-    t.text     "neighborhood_text"
     t.text     "promotions_text"
     t.text     "contact_text"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "local_info_feed_id"
     t.integer  "vaultware_id"
-    t.boolean  "use_market_prices",             :default => false, :null => false
+    t.boolean  "use_market_prices",            :default => false, :null => false
     t.string   "availability_url"
     t.string   "type"
     t.integer  "section_id"
@@ -605,10 +600,10 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.string   "overview_bullet_1"
     t.string   "overview_bullet_2"
     t.string   "overview_bullet_3"
-    t.boolean  "published",                     :default => false, :null => false
+    t.boolean  "published",                    :default => false, :null => false
     t.string   "short_title"
     t.string   "phone_number"
-    t.integer  "brochure_type",                 :default => 0,     :null => false
+    t.integer  "brochure_type",                :default => 0,     :null => false
     t.string   "brochure_link_text"
     t.string   "brochure_file_name"
     t.string   "brochure_content_type"
@@ -617,7 +612,7 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.string   "meta_title"
     t.string   "meta_description"
     t.string   "meta_keywords"
-    t.boolean  "show_lead_2_lease",             :default => false, :null => false
+    t.boolean  "show_lead_2_lease",            :default => false, :null => false
     t.string   "lead_2_lease_email"
     t.date     "completion_date"
     t.string   "media_meta_title"
@@ -626,9 +621,6 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.string   "floor_plans_meta_title"
     t.string   "floor_plans_meta_description"
     t.string   "floor_plans_meta_keywords"
-    t.string   "neighborhood_meta_title"
-    t.string   "neighborhood_meta_description"
-    t.string   "neighborhood_meta_keywords"
     t.string   "promotions_meta_title"
     t.string   "promotions_meta_description"
     t.string   "promotions_meta_keywords"
@@ -638,7 +630,7 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.integer  "position"
     t.integer  "promo_id"
     t.integer  "ufollowup_id"
-    t.boolean  "has_completion_date",           :default => true,  :null => false
+    t.boolean  "has_completion_date",          :default => true,  :null => false
     t.string   "cheapest_studio_price"
     t.string   "cheapest_1_bedroom_price"
     t.string   "cheapest_2_bedroom_price"
@@ -652,7 +644,7 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.string   "lasso_uid"
     t.string   "lasso_client_id"
     t.string   "lasso_project_id"
-    t.boolean  "featured",                      :default => false, :null => false
+    t.boolean  "featured",                     :default => false, :null => false
     t.integer  "featured_position"
   end
 
@@ -690,6 +682,18 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
   end
 
   add_index "property_features_pages", ["property_id"], :name => "index_property_features_pages_on_property_id"
+
+  create_table "property_neighborhood_pages", :force => true do |t|
+    t.integer  "property_id",      :null => false
+    t.text     "content"
+    t.string   "meta_title"
+    t.string   "meta_description"
+    t.string   "meta_keywords"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "property_neighborhood_pages", ["property_id"], :name => "index_property_neighborhood_pages_on_property_id"
 
   create_table "property_slides", :force => true do |t|
     t.string   "caption"

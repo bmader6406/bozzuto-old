@@ -13,6 +13,7 @@ class CommunityTest < ActiveSupport::TestCase
     should_have_many :videos
     should_have_one :dnr_configuration
     should_have_one :features_page
+    should_have_one :neighborhood_page
     
     should 'be archivable' do
       assert Community.acts_as_archive?
@@ -59,6 +60,21 @@ class CommunityTest < ActiveSupport::TestCase
       should 'return true if there is a features page attached' do
         @page = PropertyFeaturesPage.make(:property => @community)
         assert @community.features_page?
+      end
+    end
+    
+    context '#neighborhood_page?' do
+      setup do
+        @community = ApartmentCommunity.make
+      end
+      
+      should 'return false if there is no neighborhood page attached' do
+        assert !@community.neighborhood_page?
+      end
+
+      should 'return true if there is a neighborhood page attached' do
+        @page = PropertyNeighborhoodPage.make(:property => @community)
+        assert @community.neighborhood_page?
       end
     end
 

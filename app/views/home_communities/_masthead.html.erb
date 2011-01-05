@@ -16,9 +16,11 @@
         <li class="<%= current_if :controller => 'homes' %>">
           <%= link_to 'Homes', home_community_homes_path(@community) %>
         </li>
-        <li class="<%= current_if :controller => 'neighborhoods' %>">
-          <%= link_to 'Neighborhood', home_community_neighborhood_path(@community) %>
-        </li>
+        <%- if @community.neighborhood_page? -%>
+          <li class="<%= current_if :controller => 'neighborhoods' %>">
+            <%= link_to 'Neighborhood', home_community_neighborhood_path(@community) %>
+          </li>
+        <%- end -%>
         <li class="last <%= current_if :controller => 'lasso_submissions' %>">
           <%= link_to 'Contact Info', home_community_lasso_submissions_path(@community) %>
           <% if @community.phone_number.present? %>

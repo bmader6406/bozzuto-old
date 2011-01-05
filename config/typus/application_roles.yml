@@ -40,6 +40,7 @@ admin:
   Property: create, read, update, delete, recover
   PropertyFeature: create, read, update, delete
   PropertyFeaturesPage: create, read, update, delete
+  PropertyNeighborhoodPage: create, read, update, delete
   PropertySlide: create, read, update, delete
   PropertySlideshow: create, read, update, delete
   Section: read, update
