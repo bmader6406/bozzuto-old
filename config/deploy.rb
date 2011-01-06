@@ -1,6 +1,5 @@
 set :application, "bozzuto_app"
 set :repository, "git@viget.unfuddle.com:viget/bozzuto.git"
-set :branch, 'origin/master'
 set :scm, :git
 
 set :use_sudo, false
