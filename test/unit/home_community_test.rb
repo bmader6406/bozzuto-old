@@ -11,6 +11,7 @@ class HomeCommunityTest < ActiveSupport::TestCase
     should_have_many :homes
     should_have_many :featured_homes
     should_have_attached_file :listing_promo
+    should_have_one :lasso_account
     
     should 'be archivable' do
       assert HomeCommunity.acts_as_archive?
@@ -42,11 +43,13 @@ class HomeCommunityTest < ActiveSupport::TestCase
     end
 
     context '#show_lasso_form?' do
-      context 'all three lasso fields are present' do
+      context 'lasso account relationship is present' do
         setup do
-          @community.lasso_uid        = 'blah'
-          @community.lasso_client_id  = 'blah'
-          @community.lasso_project_id = 'blah'
+          @community.create_lasso_account({
+            :uid        => 'blah',
+            :client_id  => 'blah',
+            :project_id => 'blah'
+          })
         end
 
         should 'return true' do
@@ -54,9 +57,7 @@ class HomeCommunityTest < ActiveSupport::TestCase
         end
       end
 
-      context 'some lasso fields are not present' do
-        setup { @community.lasso_uid = 'blah' }
-
+      context 'lasso account relationship is not present' do
         should 'return false' do
           assert !@community.show_lasso_form?
         end

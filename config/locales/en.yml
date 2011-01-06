@@ -83,9 +83,6 @@ en:
         floor_plans_meta_description: Homes SEO Description
         floor_plans_meta_keywords: Homes SEO Keywords
         floor_plans_meta_title: Homes SEO Title
-        lasso_client_id: Lasso Client ID
-        lasso_project_id: Lasso Project ID
-        lasso_uid: Lasso UID
         listing_promo: Listing Promo Image
       home_page:
         featured_property: Featured Property
@@ -101,6 +98,10 @@ en:
         secondary_body: Secondary Body
         secondary_title: Secondary Title
         hide_from_list: Hide from "Apartments for Rent By Region" List
+      lasso_account:
+        client_id: Lasso Client ID
+        project_id: Lasso Project ID
+        uid: Lasso UID
       masthead_slide:
         body: Body Text
         image_link: Image Link

@@ -3,10 +3,11 @@ require 'test_helper'
 class LassoSubmissionsControllerTest < ActionController::TestCase
   context 'LassoSubmissionsController' do
     setup do
-      @community = HomeCommunity.make({
-        :lasso_uid => 'auid',
-        :lasso_client_id => 'my_client_id',
-        :lasso_project_id => 'my_project_id'
+      @community = HomeCommunity.make
+      @community.create_lasso_account({
+        :uid              => 'auid',
+        :client_id  => 'my_client_id',
+        :project_id => 'my_project_id'
       })
       @page = PropertyContactPage.make(:property => @community)
     end

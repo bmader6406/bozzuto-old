@@ -175,15 +175,15 @@ HomeCommunity:
   fields:
     default: title, published, street_address, city
     list: title, published, street_address, city
-    form: title, short_title, street_address, city, county, phone_number, latitude, longitude, ufollowup_id, website_url, video_url, facebook_url, twitter_handle, brochure_link_text, brochure_type, brochure, brochure_url, local_info_feed, listing_image, listing_promo, listing_title, listing_text, latitude, longitude, meta_title, meta_description, meta_keywords, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, media_meta_title, media_meta_description, media_meta_keywords, media_meta_description, floor_plans_meta_title, floor_plans_meta_description, floor_plans_meta_keywords, lasso_uid, lasso_client_id, lasso_project_id, published, promo
+    form: title, short_title, street_address, city, county, phone_number, latitude, longitude, ufollowup_id, website_url, video_url, facebook_url, twitter_handle, brochure_link_text, brochure_type, brochure, brochure_url, local_info_feed, listing_image, listing_promo, listing_title, listing_text, latitude, longitude, meta_title, meta_description, meta_keywords, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, media_meta_title, media_meta_description, media_meta_keywords, media_meta_description, floor_plans_meta_title, floor_plans_meta_description, floor_plans_meta_keywords, published, promo
     options:
       ckeditor: listing_text, overview_text, promotions_text
       booleans:
         published: ['Yes', 'No']
       selectors: brochure_type
-      destroy_related: DnrConfiguration, PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyContactPage, PropertySlideshow, PropertyMiniSlideshow, Home, Video, PhotoSet
+      destroy_related: DnrConfiguration, PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyContactPage, LassoAccount, PropertySlideshow, PropertyMiniSlideshow, Home, Video, PhotoSet
   order_by: title
-  relationships: dnr_configuration, property_features, city, county, features_page, neighborhood_page, contact_page, slideshow, videos, photo_set, homes, local_info_feed, promo
+  relationships: dnr_configuration, property_features, city, county, features_page, neighborhood_page, contact_page, lasso_account, slideshow, videos, photo_set, homes, local_info_feed, promo
   filters:
   search: title
   application: Properties
@@ -252,6 +252,17 @@ LandingPagePopularProperty:
   application:
   filters:
   search:
+
+LassoAccount:
+  fields:
+    default: property, uid, client_id, project_id
+    list: property, uid, client_id, project_id
+    form: uid, client_id, project_id, property
+  order_by:
+  relationships:
+  filters:
+  search:
+  application:
 
 Leader:
   fields:

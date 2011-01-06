@@ -21,6 +21,7 @@ admin:
   HomePage: read, update
   HomePageSlide: create, read, update, delete
   LandingPage: create, read, update, delete
+  LassoAccount: create, read, update, delete
   Leader: create, read, update, delete
   LeadershipGroup: create, read, update, delete
   MastheadSlide: create, read, update, delete
