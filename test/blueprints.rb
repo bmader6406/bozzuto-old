@@ -304,3 +304,8 @@ TypusUser.blueprint do
   status      { true }
   preferences { {:locale => 'en'} }
 end
+
+Video.blueprint do
+  property
+  url { "http://#{Faker::Internet.domain_name}/my_video" }
+end

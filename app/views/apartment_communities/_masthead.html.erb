@@ -10,9 +10,11 @@
             <%= link_to 'Features & Amenities', apartment_community_features_path(@community) %>
           </li>
         <%- end -%>
-        <li class="<%= current_if :controller => 'community_media' %>">
-          <%= link_to 'Photos & Videos', apartment_community_media_path(@community) %>
-        </li>
+        <%- if @community.has_media? -%>
+          <li class="<%= current_if :controller => 'community_media' %>">
+            <%= link_to 'Photos & Videos', apartment_community_media_path(@community) %>
+          </li>
+        <%- end -%>
         <li class="<%= current_if :controller => 'apartment_floor_plan_groups' %>">
           <%= link_to 'Floor Plans', apartment_community_floor_plan_groups_path(@community) %>
         </li>
