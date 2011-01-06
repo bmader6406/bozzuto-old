@@ -38,7 +38,12 @@ class Feed < ActiveRecord::Base
 
     items.destroy_all
 
-    @feed_data['rss']['channel']['item'].each do |item|
+    rss_items = @feed_data['rss']['channel']['item']
+    if rss_items.is_a? Hash
+      rss_items = [rss_items]
+    end
+
+    rss_items.each do |item|
       items << FeedItem.new({
         :title        => item['title'],
         :description  => Nokogiri::HTML(item['description']).content,

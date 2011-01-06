@@ -230,11 +230,14 @@ HomePageSlide:
 
 LandingPage:
   fields:
-    default: title, state
-    list: title, state
-    form: title, state, meta_title, meta_description, meta_keywords, masthead_body, masthead_image, promo, secondary_title, secondary_body, custom_sort_popular_properties
+    default: title, state, published
+    list: title, state, published
+    form: title, state, meta_title, meta_description, meta_keywords, masthead_body, masthead_image, promo, secondary_title, secondary_body, custom_sort_popular_properties, published, hide_from_list
     options:
       ckeditor: masthead_body, secondary_body
+      booleans:
+        published: ['Yes', 'No']
+        hide_from_list: ['Yes', 'No']
   order_by:
   relationships: state, popular_properties, apartment_communities, featured_apartment_communities, home_communities, projects, promo
   filters:

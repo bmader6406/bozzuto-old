@@ -27,6 +27,8 @@ class Property < ActiveRecord::Base
   has_one :slideshow, :class_name => 'PropertySlideshow'
 
   has_and_belongs_to_many :property_features, :order => 'position ASC'
+  
+  has_many :landing_page_popular_properties, :dependent => :destroy
 
   validates_presence_of :title, :city
   validates_numericality_of :latitude, :longitude, :allow_nil => true
@@ -97,7 +99,10 @@ class Property < ActiveRecord::Base
   def property_type=(type)
     write_attribute(:type, type)
   end
-
+  
+  def destroy_attached_files
+    # no-op this because we need to keep attachments arround
+  end
 
   private
 

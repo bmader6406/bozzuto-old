@@ -1,4 +1,6 @@
 class LandingPage < ActiveRecord::Base
+  include Bozzuto::Publishable
+  
   has_and_belongs_to_many :apartment_communities
   has_and_belongs_to_many :home_communities, :order => 'title ASC'
   has_and_belongs_to_many :featured_apartment_communities,
@@ -17,6 +19,8 @@ class LandingPage < ActiveRecord::Base
 
   validates_presence_of :title, :state
   validates_uniqueness_of :title
+  
+  named_scope :visible_for_list, :conditions => {:hide_from_list => false}
 
   has_friendly_id :title, :use_slug => true
 
@@ -29,7 +33,7 @@ class LandingPage < ActiveRecord::Base
   def all_properties
     @all_properties ||= [apartment_communities, home_communities, 
       featured_apartment_communities, popular_properties.map(&:property),
-      projects].flatten.uniq
+      projects].flatten.compact.uniq
   end
   
   protected

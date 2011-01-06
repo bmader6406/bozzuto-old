@@ -74,5 +74,40 @@ class ApplicationControllerTest < ActionController::TestCase
         end
       end
     end
+  
+    context '#page_url method' do
+      setup do
+        @section = Section.make
+        @service = Section.make(:service)
+        @news_press = Section.make(:title => 'News & Press')
+      end
+
+      context 'when section is a service' do
+        setup { @page = Page.make(:section => @service) }
+
+        should 'return the service path' do
+          assert_equal service_section_page_url(@service, @page),
+            @controller.send(:page_url, @service, @page)
+        end
+      end
+
+      context 'when section is not a service' do
+        setup { @page = Page.make(:section => @section) }
+
+        should 'return the section path' do
+          assert_equal section_page_url(@section, @page),
+            @controller.send(:page_url, @section, @page)
+        end
+      end
+      
+      context 'when section is news & press' do
+        setup { @page = Page.make(:section => @news_press) }
+
+        should 'return the section path' do
+          assert_equal news_and_press_page_url(@page),
+            @controller.send(:page_url, @news_press, @page)
+        end
+      end
+    end
   end
 end

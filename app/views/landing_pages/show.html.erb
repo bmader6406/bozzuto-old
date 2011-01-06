@@ -50,7 +50,7 @@
             <div class="col areamap-popular-properties">
               <h2>Popular Properties</h2>
 
-              <% @page.popular_properties.take(3).map(&:property).each do |property| %>
+              <% @page.popular_properties.take(3).map(&:property).compact.each do |property| %>
                 <div class="section <%= popular_property_class(property) %>">
                   <h4>
                     <%= link_to property.short_title || property.title, property_path(property) %>

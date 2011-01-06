@@ -70,5 +70,23 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
         end
       end
     end
+    
+    context 'logged in to typus' do
+      setup do
+        @unpublished_community = ApartmentCommunity.make(:published => false)
+        @user = TypusUser.make
+        login_typus_user @user
+      end
+      
+      context "a GET to #show for an upublished community" do
+        setup do
+          get :show, :id => @unpublished_community.to_param
+        end
+
+        should_assign_to(:community) { @unpublished_community }
+        should_respond_with :success
+        should_render_template :show
+      end
+    end
   end
 end
