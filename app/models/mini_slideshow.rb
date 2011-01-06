@@ -4,8 +4,6 @@ class MiniSlideshow < ActiveRecord::Base
     :dependent  => :destroy,
     :order      => 'position ASC'
 
-  has_one :home_page
-
   validates_presence_of :title, :link_url
 
   def typus_name

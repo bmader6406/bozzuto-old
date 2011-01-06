@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110106162209) do
+ActiveRecord::Schema.define(:version => 20110106204224) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -296,7 +296,8 @@ ActiveRecord::Schema.define(:version => 20110106162209) do
     t.string   "meta_title"
     t.string   "meta_description"
     t.string   "meta_keywords"
-    t.integer  "mini_slideshow_id"
+    t.integer  "apartment_mini_slideshow_id"
+    t.integer  "home_mini_slideshow_id"
   end
 
   create_table "homes", :force => true do |t|
