@@ -15,9 +15,11 @@
             <%= link_to 'Photos & Videos', home_community_media_path(@community) %>
           </li>
         <%- end -%>
-        <li class="<%= current_if :controller => 'homes' %>">
-          <%= link_to 'Homes', home_community_homes_path(@community) %>
-        </li>
+        <%- if @community.homes.present? -%>
+          <li class="<%= current_if :controller => 'homes' %>">
+            <%= link_to 'Homes', home_community_homes_path(@community) %>
+          </li>
+        <%- end -%>
         <%- if @community.neighborhood_page? -%>
           <li class="<%= current_if :controller => 'neighborhoods' %>">
             <%= link_to 'Neighborhood', home_community_neighborhood_path(@community) %>

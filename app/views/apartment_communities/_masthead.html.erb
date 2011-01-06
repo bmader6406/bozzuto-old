@@ -15,9 +15,11 @@
             <%= link_to 'Photos & Videos', apartment_community_media_path(@community) %>
           </li>
         <%- end -%>
-        <li class="<%= current_if :controller => 'apartment_floor_plan_groups' %>">
-          <%= link_to 'Floor Plans', apartment_community_floor_plan_groups_path(@community) %>
-        </li>
+        <%- if @community.floor_plans.present? -%>
+          <li class="<%= current_if :controller => 'apartment_floor_plan_groups' %>">
+            <%= link_to 'Floor Plans', apartment_community_floor_plan_groups_path(@community) %>
+          </li>
+        <%- end -%>
         <%- if @community.neighborhood_page? -%>
           <li class="<%= current_if :controller => 'neighborhoods' %>">
             <%= link_to 'Neighborhood', apartment_community_neighborhood_path(@community) %>
