@@ -194,6 +194,7 @@ en:
         video_url: Video URL
         website_url: Website URL
         ufollowup_id: uFollowUp ID
+        zip_code: ZIP Code
       mini_slide:
         mini_slideshow: Mini Slideshow
       mini_slideshow:

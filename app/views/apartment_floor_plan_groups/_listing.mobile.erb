@@ -1,0 +1,17 @@
+<% plans_in_group = @community.floor_plans.in_group(group) %>
+
+<% unless plans_in_group.empty? %>
+  <li>
+    <div class="floor-plan">
+      <% link_to apartment_community_floor_plan_group_layouts_path(@community, group), :class => 'info' do %>
+        <span class="name"><%= floor_plan_group_pluralize(2, group.name) %></span>
+        <span class="pricing">
+          Starting from <%= square_feet_of_largest_floor_plan(plans_in_group) %>
+          <span class="price"><%= price_of_cheapest_floor_plan(plans_in_group) %></span>
+        </span>
+      <% end %>
+
+      <%= link_to_phone_number(format_phone_number(@community.phone_number), @community.phone_number, :class => 'tel') %>
+    </div>
+  </li>
+<% end %>

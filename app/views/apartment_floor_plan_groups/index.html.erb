@@ -22,14 +22,16 @@
               <h4><%= plan.name %></h4>
 
               <p>
-                <% if (sq_ft = plan.min_square_feet).present? %>
+                <% sq_ft = plan.min_square_feet %>
+                <% if sq_ft.present? %>
                   <% if plan.rolled_up? %>
                     Starting from
                   <% end %>
                   <%= square_feet(plan) %>
                 <% end %>
 
-                <% if (min_rent = plan.min_rent).present? %>
+                <% min_rent = plan.min_rent %>
+                <% if min_rent.present? %>
                   | <%= floor_plan_price(min_rent) %>
                 <% end %>
 

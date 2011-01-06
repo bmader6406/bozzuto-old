@@ -1,0 +1,43 @@
+<% render_meta(@community, :floor_plans) %>
+
+
+<div class="section page-title">
+  <div class="content">
+    <h2><%= @group.name %></h2>
+    <%= link_to 'Floor Plans', apartment_community_floor_plan_groups_path(@community), :class => 'go-back' %>
+  </div>
+</div>
+
+<div class="section floor-plans">
+  <div class="content">
+    <ul>
+      <% @plans.each do |plan| %>
+        <li>
+          <div class="floor-plan">
+            <% link_to apartment_community_floor_plan_group_layout_path(@community, @group, plan), :class => 'info' do %>
+              <span class="name"><%= plan.name %></span>
+              <span class="pricing">
+                Starting from <%= square_feet_of_largest_floor_plan(@plans) %>
+                <span class="price"><%= price_of_cheapest_floor_plan(@plans) %></span>
+              </span>
+            <% end %>
+
+            <%= link_to_phone_number(format_phone_number(@community.phone_number), @community.phone_number, :class => 'tel') %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<% groups = ApartmentFloorPlanGroup.except(@group) %>
+<% if groups.any? %>
+  <div class="section floor-plans">
+    <div class="content">
+      <h3>More Floor Plans</h3>
+      <ul>
+        <%= render_floor_plan_group_mobile_listings(groups, @community) %>
+      </ul>
+    </div>
+  </div>
+<% end %>

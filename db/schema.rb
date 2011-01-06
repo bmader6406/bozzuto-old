@@ -151,6 +151,7 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.boolean  "featured",                      :default => false, :null => false
     t.integer  "featured_position"
     t.datetime "deleted_at"
+    t.string   "zip_code"
   end
 
   add_index "archived_properties", ["id"], :name => "index_archived_properties_on_id"
@@ -672,6 +673,7 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.string   "lasso_project_id"
     t.boolean  "featured",                      :default => false, :null => false
     t.integer  "featured_position"
+    t.string   "zip_code"
   end
 
   create_table "properties_property_features", :id => false, :force => true do |t|

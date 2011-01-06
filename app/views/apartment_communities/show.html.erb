@@ -58,7 +58,10 @@
                   <%= square_feet_of_largest_floor_plan(plans_in_group) %>
                 </td>
                 <td>
-                  <%= price_of_cheapest_floor_plan(plans_in_group) %>
+                  <% cheapest_price = price_of_cheapest_floor_plan(plans_in_group) %>
+                  <% if cheapest_price.present? %>
+                    From <%= cheapest_price %>
+                  <% end %>
                 </td>
                 <td class="availability">
                   <%= link_to "Availability", (@community.availability_url.present? ? @community.availability_url : apartment_community_lead2_lease_submissions_path(@community)), :rel => 'external' %>

@@ -1,6 +1,24 @@
 require 'test_helper'
 
 class ApartmentFloorPlanGroupsHelperTest < ActionView::TestCase
+  context '#render_floor_plan_group_mobile_listings' do
+    setup do
+      @groups = ApartmentFloorPlanGroup.all
+      @community = ApartmentCommunity.make
+    end
+
+    should 'render the partial with the correct options' do
+      expects(:render).with({
+        :partial    => 'apartment_floor_plan_groups/listing',
+        :collection => @groups,
+        :as         => :group,
+        :locals     => { :community => @community }
+      })
+
+      render_floor_plan_group_mobile_listings(@groups, @community)
+    end
+  end
+
   context '#floor_plan_group_link' do
     setup do
       @community = ApartmentCommunity.make :availability_url => 'http://viget.com/'

@@ -204,15 +204,23 @@ class OverriddenPathsHelperTest < ActionView::TestCase
     end
 
     context '#property_path' do
-      [ApartmentCommunity, HomeCommunity].each do |klass|
-        context "when property is #{klass}" do
-          setup do
-            @property = klass.make
-          end
+      context "when property is ApartmentCommunity" do
+        setup do
+          @property = ApartmentCommunity.make
+        end
 
-          should 'return the property' do
-            assert_equal @property, property_path(@property)
-          end
+        should 'return the property' do
+          assert_equal apartment_community_path(@property), property_path(@property)
+        end
+      end
+
+      context "when property is HomeCommunity" do
+        setup do
+          @property = HomeCommunity.make
+        end
+
+        should 'return the property' do
+          assert_equal home_community_path(@property), property_path(@property)
         end
       end
 

@@ -1,5 +1,5 @@
 class NeighborhoodsController < ApplicationController
-  layout 'community'
+  layout :detect_mobile_layout
 
   before_filter :find_community
 
@@ -15,5 +15,9 @@ class NeighborhoodsController < ApplicationController
     else
       HomeCommunity.find(params[:home_community_id])
     end
+  end
+
+  def detect_mobile_layout
+    mobile? ? 'application' : 'community'
   end
 end

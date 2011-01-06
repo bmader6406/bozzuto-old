@@ -20,7 +20,7 @@ module ApartmentCommunitiesHelper
     cheapest = plans.cheapest.first
 
     if cheapest.present?
-      "From #{floor_plan_price(cheapest.min_rent)}".html_safe
+      raw(floor_plan_price(cheapest.min_rent))
     else
       ''
     end

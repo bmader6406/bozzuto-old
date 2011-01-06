@@ -1,0 +1,16 @@
+<% render_meta(@community, :floor_plans) %>
+
+<div class="section page-title">
+  <div class="content">
+    <h2>Floor Plans</h2>
+    <%= link_to @community.title, apartment_community_url(@community), :class => 'go-back' %>
+  </div>
+</div>
+
+<div class="section floor-plans">
+  <div class="content">
+    <ul>
+      <%= render_floor_plan_group_mobile_listings(ApartmentFloorPlanGroup.all, @community) %>
+    </ul>
+  </div>
+</div>

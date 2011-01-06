@@ -3,8 +3,7 @@ require 'test_helper'
 class ApartmentCommunitiesControllerTest < ActionController::TestCase
   context "ApartmentCommunitiesController" do
     setup do
-      @community = ApartmentCommunity.make
-      @unpublished_community = ApartmentCommunity.make(:published => false)
+      @community = ApartmentCommunity.make :latitude => rand, :longitude => rand
     end
 
     context 'get #index' do
@@ -28,17 +27,53 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
     end
 
     context "a GET to #show" do
-      setup do
-        get :show, :id => @community.to_param
+      browser_context do
+        setup do
+          get :show, :id => @community.to_param
+        end
+
+        should_respond_with :success
+        should_render_with_layout :community
+        should_render_template :show
+        should_assign_to(:community) { @community }
       end
 
-      should_assign_to(:community) { @community }
-      should_respond_with :success
-      should_render_template :show
+      mobile_context do
+        setup do
+          get :show,
+            :id => @community.to_param,
+            :format => :mobile
+        end
+
+        should_respond_with :success
+        should_render_with_layout :application
+        should_render_template :show
+        should_assign_to(:community) { @community }
+      end
+
+      context 'for KML format' do
+        setup do
+          get :show,
+            :id => @community.to_param,
+            :format => :kml
+        end
+
+        should_respond_with :success
+        should_render_without_layout
+        should_render_template :show
+        should_assign_to(:community) { @community }
+
+        should 'render the KML XML' do
+          assert_match /<name>#{@community.title}<\/name>/, @response.body
+          assert_match /<coordinates>#{@community.latitude},#{@community.longitude},0<\/coordinates>/,
+            @response.body
+        end
+      end
     end
     
     context 'logged in to typus' do
       setup do
+        @unpublished_community = ApartmentCommunity.make(:published => false)
         @user = TypusUser.make
         login_typus_user @user
       end

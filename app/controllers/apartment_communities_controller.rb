@@ -1,7 +1,7 @@
 class ApartmentCommunitiesController < ApplicationController
   before_filter :find_community, :except => :index
 
-  layout 'community', :except => :index
+  layout :detect_mobile_layout
 
   def index
     params[:search] ||= {}
@@ -47,6 +47,10 @@ class ApartmentCommunitiesController < ApplicationController
     elsif search[:city_id].present?
       City.find_by_id(search[:city_id])
     end
+  end
+
+  def detect_mobile_layout
+    mobile? ? 'application' : 'community'
   end
 
 end

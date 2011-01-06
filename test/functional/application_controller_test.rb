@@ -56,6 +56,24 @@ class ApplicationControllerTest < ActionController::TestCase
         end
       end
     end
+
+    context '#mobile? helper method' do
+      context 'when request format is not :mobile' do
+        setup { @controller.request.format = :html }
+
+        should 'return false' do
+          assert !@controller.send(:mobile?)
+        end
+      end
+
+      context 'when request format is :mobile' do
+        setup { @controller.request.format = :mobile }
+
+        should 'return true' do
+          assert @controller.send(:mobile?)
+        end
+      end
+    end
   
     context '#page_url method' do
       setup do

@@ -1,4 +1,18 @@
 module PropertiesHelper
+  def mobile_map_url(property)
+    lat = property.latitude
+    lon = property.longitude
+
+    case device
+    when :android
+      "geo:#{lat},#{lon}"
+    when :blackberry
+      property_path(property, :format => :kml)
+    else
+      "http://maps.google.com/maps?q=#{lat},#{lon}"
+    end
+  end
+
   def brochure_link(property)
     if property.brochure_link_text.present?
       url = if property.uses_brochure_url?

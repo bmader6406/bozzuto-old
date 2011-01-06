@@ -112,7 +112,7 @@ class ApartmentCommunitiesHelperTest < ActionView::TestCase
         end
 
         should 'return the price of the cheapest' do
-          assert_equal "From #{floor_plan_price(@cheapest.min_rent)}",
+          assert_equal floor_plan_price(@cheapest.min_rent),
             price_of_cheapest_floor_plan(@group.floor_plans)
         end
       end

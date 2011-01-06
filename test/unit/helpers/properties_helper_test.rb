@@ -1,7 +1,42 @@
 require 'test_helper'
 
 class PropertiesHelperTest < ActionView::TestCase
+  include OverriddenPathsHelper
+
   context "PropertiesHelper" do
+    context '#mobile_map_url' do
+      setup do
+        @community = ApartmentCommunity.make :latitude => rand, :longitude => rand
+      end
+
+      context 'on an iPhone' do
+        should 'return the map url' do
+          url = "http://maps.google.com/maps?q=#{@community.latitude},#{@community.longitude}"
+          stubs(:device).returns(:iphone)
+
+          assert_equal url, mobile_map_url(@community)
+        end
+      end
+
+      context 'on Android' do
+        should 'return the map url' do
+          url = "geo:#{@community.latitude},#{@community.longitude}"
+          stubs(:device).returns(:android)
+
+          assert_equal url, mobile_map_url(@community)
+        end
+      end
+
+      context 'on BlackBerry' do
+        should 'return the map url' do
+          url = apartment_community_path(@community, :format => :kml)
+          stubs(:device).returns(:blackberry)
+
+          assert_equal url, mobile_map_url(@community)
+        end
+      end
+    end
+
     context '#brochure_link' do
       setup do
         @link_text = 'Click me'
