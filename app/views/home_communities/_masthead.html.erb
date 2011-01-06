@@ -21,12 +21,14 @@
             <%= link_to 'Neighborhood', home_community_neighborhood_path(@community) %>
           </li>
         <%- end -%>
-        <li class="last <%= current_if :controller => 'lasso_submissions' %>">
-          <%= link_to 'Contact Info', home_community_lasso_submissions_path(@community) %>
-          <% if @community.phone_number.present? %>
-            <%= dnr_phone_number(@community) %>
-          <% end %>
-        </li>
+        <%- if @community.contact_page? || @community.show_lasso_form? -%>
+          <li class="last <%= current_if :controller => 'lasso_submissions' %>">
+            <%= link_to 'Contact Info', home_community_lasso_submissions_path(@community) %>
+            <% if @community.phone_number.present? %>
+              <%= dnr_phone_number(@community) %>
+            <% end %>
+          </li>
+        <%- end -%>
       </ul>
 
       <ul id="remote-nav">

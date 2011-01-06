@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110105200354) do
+ActiveRecord::Schema.define(:version => 20110106041323) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -72,7 +72,6 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.string   "street_address"
     t.text     "overview_text"
     t.text     "promotions_text"
-    t.text     "contact_text"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "local_info_feed_id"
@@ -115,9 +114,6 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.string   "promotions_meta_title"
     t.string   "promotions_meta_description"
     t.string   "promotions_meta_keywords"
-    t.string   "contact_meta_title"
-    t.string   "contact_meta_description"
-    t.string   "contact_meta_keywords"
     t.integer  "position"
     t.integer  "promo_id"
     t.integer  "ufollowup_id"
@@ -581,7 +577,6 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.string   "street_address"
     t.text     "overview_text"
     t.text     "promotions_text"
-    t.text     "contact_text"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "local_info_feed_id"
@@ -624,9 +619,6 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
     t.string   "promotions_meta_title"
     t.string   "promotions_meta_description"
     t.string   "promotions_meta_keywords"
-    t.string   "contact_meta_title"
-    t.string   "contact_meta_description"
-    t.string   "contact_meta_keywords"
     t.integer  "position"
     t.integer  "promo_id"
     t.integer  "ufollowup_id"
@@ -654,6 +646,18 @@ ActiveRecord::Schema.define(:version => 20110105200354) do
   end
 
   add_index "properties_property_features", ["property_id"], :name => "index_properties_property_features_on_property_id"
+
+  create_table "property_contact_pages", :force => true do |t|
+    t.integer  "property_id",      :null => false
+    t.text     "content"
+    t.string   "meta_title"
+    t.string   "meta_description"
+    t.string   "meta_keywords"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "property_contact_pages", ["property_id"], :name => "index_property_contact_pages_on_property_id"
 
   create_table "property_features", :force => true do |t|
     t.string   "icon_file_name"

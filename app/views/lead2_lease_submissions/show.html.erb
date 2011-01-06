@@ -1,5 +1,5 @@
 <% content_for :body_class do %>community property features<% end %>
-<% render_meta(@community, :contact) %>
+<% render_meta(@page) if @page %>
 
 <% if flash[:email_sent] -%>
   <div class="notice">
@@ -98,5 +98,5 @@
 <% end -%>
 
 <div id="community-contact-text">
-  <%= @community.contact_text.try(:html_safe) %>  
+  <%= @page.content.try(:html_safe) if @page %>  
 </div>

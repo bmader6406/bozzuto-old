@@ -1,5 +1,5 @@
 <% content_for :body_class do %>community property features<% end %>
-<% render_meta(@community, :contact) %>
+<% render_meta(@community.contact_page) if @community.contact_page %>
 
 <div id="thank-you-text">
   <%= snippet('Send To Friend Thank You Text') %>

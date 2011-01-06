@@ -16,7 +16,7 @@ class Community < Property
     :foreign_key => :property_id,
     :order       => 'position ASC'
     
-  [:features_page, :neighborhood_page].each do |page_type|
+  [:features_page, :neighborhood_page, :contact_page].each do |page_type|
     has_one page_type, :class_name => "Property#{page_type.to_s.classify}",
       :foreign_key => :property_id
     

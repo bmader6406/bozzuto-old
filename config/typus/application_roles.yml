@@ -38,6 +38,7 @@ admin:
   ProjectUpdate: create, read, update, delete
   Promo: create, read, update, delete
   Property: create, read, update, delete, recover
+  PropertyContactPage: create, read, update, delete
   PropertyFeature: create, read, update, delete
   PropertyFeaturesPage: create, read, update, delete
   PropertyNeighborhoodPage: create, read, update, delete

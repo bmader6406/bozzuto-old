@@ -14,6 +14,7 @@ class CommunityTest < ActiveSupport::TestCase
     should_have_one :dnr_configuration
     should_have_one :features_page
     should_have_one :neighborhood_page
+    should_have_one :contact_page
     
     should 'be archivable' do
       assert Community.acts_as_archive?
@@ -75,6 +76,21 @@ class CommunityTest < ActiveSupport::TestCase
       should 'return true if there is a neighborhood page attached' do
         @page = PropertyNeighborhoodPage.make(:property => @community)
         assert @community.neighborhood_page?
+      end
+    end
+    
+    context '#contact_page?' do
+      setup do
+        @community = ApartmentCommunity.make
+      end
+      
+      should 'return false if there is no contact page attached' do
+        assert !@community.contact_page?
+      end
+
+      should 'return true if there is a contact page attached' do
+        @page = PropertyContactPage.make(:property => @community)
+        assert @community.contact_page?
       end
     end
 
