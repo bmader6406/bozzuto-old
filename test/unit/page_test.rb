@@ -11,6 +11,15 @@ class PageTest < ActiveSupport::TestCase
     should_have_attached_file :left_montage_image
     should_have_attached_file :middle_montage_image
     should_have_attached_file :right_montage_image
+    
+    should 'be archivable' do
+      assert Page.acts_as_archive?
+      assert_nothing_raised do
+        Page::Archive
+      end
+      assert defined?(Page::Archive)
+      assert_equal ActiveRecord::Base, Page::Archive.superclass
+    end
 
     context '#formatted_title' do
       setup do

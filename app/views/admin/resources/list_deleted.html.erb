@@ -19,9 +19,9 @@
           <%= render_item_table_field(attribute, attr_type, item) %>
         <% end %>
         <td>
-          <%= link_to 'Recover', {:controller => 'admin/properties', :action => 'recover', :id => item.id},
+          <%= link_to 'Recover', {:controller => recover_controller, :action => 'recover', :id => item.id},
                 :title => _("Recover"), 
-                :confirm => _("Recover entry?") if @current_user.can?('recover', Property) %>
+                :confirm => _(recover_confirm) if @current_user.can?('recover', recover_model) %>
         </td>
       </tr>
     <% end %>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110106204224) do
+ActiveRecord::Schema.define(:version => 20110107152124) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -50,6 +50,31 @@ ActiveRecord::Schema.define(:version => 20110106204224) do
     t.boolean  "featured",                                              :default => false, :null => false
     t.boolean  "rolled_up",                                             :default => false, :null => false
   end
+
+  create_table "archived_pages", :id => false, :force => true do |t|
+    t.integer  "id",                             :default => 0,     :null => false
+    t.string   "title",                                             :null => false
+    t.string   "cached_slug"
+    t.text     "body"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "section_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "path"
+    t.string   "meta_title"
+    t.string   "meta_description"
+    t.string   "meta_keywords"
+    t.string   "left_montage_image_file_name"
+    t.string   "middle_montage_image_file_name"
+    t.string   "right_montage_image_file_name"
+    t.boolean  "published",                      :default => false, :null => false
+    t.datetime "deleted_at"
+  end
+
+  add_index "archived_pages", ["cached_slug"], :name => "index_archived_pages_on_cached_slug"
+  add_index "archived_pages", ["id"], :name => "index_archived_pages_on_id"
 
   create_table "archived_properties", :id => false, :force => true do |t|
     t.integer  "id",                           :default => 0,     :null => false

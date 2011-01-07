@@ -327,6 +327,7 @@ NewsPost:
 Page:
   fields:
     default: formatted_title, published, position
+    list_deleted: title, section_title
     show: title, published, section, parent, body, left_montage_image, middle_montage_image, right_montage_image
     list: formatted_title, published, section, position
     form: title, meta_title, meta_description, meta_keywords, body, section, parent, published, left_montage_image, middle_montage_image, right_montage_image
@@ -340,6 +341,7 @@ Page:
   application:
   options:
   actions:
+    index: list_deleted
     show: preview
     edit: preview
 

@@ -29,7 +29,7 @@ admin:
   MiniSlide: create, read, update, delete
   MiniSlideshow: create, read, update, delete
   NewsPost: create, read, update, delete
-  Page: create, read, update, delete, preview
+  Page: create, read, update, delete, preview, list_deleted, recover
   Photo: create, read, update, delete
   PhotoSet: create, read, update, delete
   PressRelease: create, read, update, delete

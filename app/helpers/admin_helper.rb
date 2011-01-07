@@ -17,4 +17,24 @@ module AdminHelper
       typus_table_string_field(field, item, {})
     end
   end
+  
+  def recover_controller
+    @resource[:class].ancestors.include?(Property) ? 
+      'admin/properties' :
+      params[:controller]
+  end
+  
+  def recover_model
+    @resource[:class].ancestors.include?(Property) ?
+      Property :
+      @resource[:class]
+  end
+  
+  def recover_confirm
+    if @resource[:self] == 'pages'
+      "Recover entry?\nRemember, none of the heirchy associated with this page will be restored."
+    else
+      "Recover entry?"
+    end
+  end
 end

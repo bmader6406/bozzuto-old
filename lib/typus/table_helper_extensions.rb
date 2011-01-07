@@ -37,7 +37,7 @@ module Typus
     def typus_table_remove_action_with_config(related_model, fields, item, field)
       trash = '<div class="sprite trash">Trash</div>'.html_safe
       model = @resource[:class]
-
+      
       destroy = model.typus_field_options_for(:destroy_related).include?(related_model.to_s.to_sym)
 
       condition = if related_model.typus_user_id? && @current_user.is_not_root?
@@ -45,17 +45,35 @@ module Typus
       else
         @current_user.can?('destroy', related_model)
       end
-
-      if params[:action] =='edit' && condition && destroy
-        link_to trash, {
-            :controller => related_model.to_s.tableize,
-            :action => 'destroy',
-            :id => item.id
-          },
-          :title => _("Remove"),
-          :confirm => _("Remove entry?")
+      
+      if related_model == Page
+        confirm_message = "Remove entry?\nDoing so will also Remove all children, and the heirarchy will not be preserved."
+        if params[:action] =='edit' && condition && destroy
+          link_to trash, { :action => 'destroy', :id => item.id }, 
+                                     :title => _("Remove"), 
+                                     :confirm => _(confirm_message)
+        else
+          link_to trash, {
+              :controller => related_model.to_s.tableize,
+              :action => 'destroy',
+              :id => item.id
+            },
+            :title => _("Remove"),
+            :confirm => _(confirm_message) if condition
+        end
       else
-        typus_table_remove_action_without_config(related_model, fields, item, field)
+
+        if params[:action] =='edit' && condition && destroy
+          link_to trash, {
+              :controller => related_model.to_s.tableize,
+              :action => 'destroy',
+              :id => item.id
+            },
+            :title => _("Remove"),
+            :confirm => _("Remove entry?")
+        else
+          typus_table_remove_action_without_config(related_model, fields, item, field)
+        end
       end
     end
   end
