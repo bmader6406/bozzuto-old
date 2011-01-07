@@ -28,6 +28,16 @@ class Community < Property
   before_save :set_featured_postion
   
   named_scope :featured_order, {:order => 'featured DESC, featured_position ASC, title ASC'}
+  
+  named_scope :sort_for, lambda { |landing_page|
+    if landing_page.respond_to?(:randomize_property_listings?)
+      landing_page.randomize_property_listings? ?
+        {:order => 'RAND(NOW())'} :
+        {:order => 'properties.title ASC'}
+    else
+      {}
+    end
+  }
 
   def self.typus_fields_for(filter)
     result = super
