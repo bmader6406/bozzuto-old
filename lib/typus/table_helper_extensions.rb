@@ -49,7 +49,7 @@ module Typus
       if related_model == Page
         confirm_message = "Remove entry?\nDoing so will also Remove all children, and the heirarchy will not be preserved."
         if params[:action] =='edit' && condition && destroy
-          link_to trash, { :action => 'destroy', :id => item.id }, 
+          link_to trash, { :action => 'destroy', :id => item.id, :controller => related_model.to_s.tableize }, 
                                      :title => _("Remove"), 
                                      :confirm => _(confirm_message)
         else
