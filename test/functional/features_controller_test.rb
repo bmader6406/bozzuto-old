@@ -3,62 +3,118 @@ require 'test_helper'
 class FeaturesControllerTest < ActionController::TestCase
   context 'a GET to #show' do
     context 'with a home community' do
-      setup do
-        @community = HomeCommunity.make
-      end
+      setup { @community = HomeCommunity.make }
 
-      browser_context do
+      context 'that has a page' do
         setup do
-          get :show, :home_community_id => @community.to_param
+          @page = PropertyFeaturesPage.make(:property => @community)
         end
 
-        should_respond_with :success
-        should_render_with_layout :community
-        should_render_template :show
-        should_assign_to(:community) { @community }
-      end
+        browser_context do
+          setup do
+            get :show, :home_community_id => @community.to_param
+          end
 
-      mobile_context do
-        setup do
-          get :show,
-            :home_community_id => @community.to_param,
-            :format => :mobile
+          should_respond_with :success
+          should_render_with_layout :community
+          should_render_template :show
+          should_assign_to(:community) { @community }
+          should_assign_to(:page) { @page }
         end
 
-        should_respond_with :success
-        should_render_with_layout :application
-        should_render_template :show
-        should_assign_to(:community) { @community }
+        mobile_context do
+          setup do
+            get :show,
+              :home_community_id => @community.to_param,
+              :format => :mobile
+          end
+
+          should_respond_with :success
+          should_render_with_layout :application
+          should_render_template :show
+          should_assign_to(:community) { @community }
+          should_assign_to(:page) { @page }
+        end
+      end
+
+      context 'that does not have a page' do
+        browser_context do
+          setup do
+            get :show, :home_community_id => @community.to_param
+          end
+
+          should_respond_with :not_found
+          should_assign_to(:community) { @community }
+        end
+
+        mobile_context do
+          setup do
+            get :show,
+              :home_community_id => @community.to_param,
+              :format => :mobile
+          end
+
+          should_respond_with :not_found
+          should_assign_to(:community) { @community }
+        end
       end
     end
 
     context 'with an apartment community' do
-      setup do
-        @community = ApartmentCommunity.make
-      end
+      setup { @community = ApartmentCommunity.make }
 
-      browser_context do
+      context 'that has a page' do
         setup do
-          get :show, :apartment_community_id => @community.to_param
+          @page  = PropertyFeaturesPage.make(:property => @community)
         end
 
-        should_respond_with :success
-        should_render_with_layout :community
-        should_render_template :show
-        should_assign_to(:community) { @community }
-      end
+        browser_context do
+          setup do
+            get :show, :apartment_community_id => @community.to_param
+          end
 
-      mobile_context do
-        setup do
-          get :show,
-            :apartment_community_id => @community.to_param,
-            :format => :mobile
+          should_respond_with :success
+          should_render_with_layout :community
+          should_render_template :show
+          should_assign_to(:community) { @community }
+          should_assign_to(:page) { @page }
         end
 
-        should_respond_with :success
-        should_render_with_layout :application
-        should_render_template :show
-        should_assign_to(:community) { @community }
+        mobile_context do
+          setup do
+            get :show,
+              :apartment_community_id => @community.to_param,
+              :format => :mobile
+          end
+
+          should_respond_with :success
+          should_render_with_layout :application
+          should_render_template :show
+          should_assign_to(:community) { @community }
+          should_assign_to(:page) { @page }
+        end
+      end
+      
+      context 'that does not have a page' do
+        browser_context do
+          setup do
+            get :show, :apartment_community_id => @community.to_param
+          end
+
+          should_respond_with :not_found
+          should_assign_to(:community) { @community }
+        end
+
+        mobile_context do
+          setup do
+            get :show,
+              :apartment_community_id => @community.to_param,
+              :format => :mobile
+          end
+
+          should_respond_with :not_found
+          should_assign_to(:community) { @community }
+        end
       end
     end
   end

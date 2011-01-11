@@ -8,6 +8,7 @@ class HomeCommunity < Community
   has_many :featured_homes,
     :class_name => 'Home',
     :conditions => { :featured => true }
+  has_one :lasso_account, :foreign_key => :property_id
 
   has_attached_file :listing_promo,
     :url => '/system/:class/:id/:class_:id_:style.:extension',
@@ -22,6 +23,6 @@ class HomeCommunity < Community
   end
 
   def show_lasso_form?
-    [:uid, :client_id, :project_id].all? { |field| send("lasso_#{field}").present? }
+    lasso_account.present?
   end
 end

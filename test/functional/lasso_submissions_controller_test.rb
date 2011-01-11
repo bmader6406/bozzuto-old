@@ -2,10 +2,29 @@ require 'test_helper'
 
 class LassoSubmissionsControllerTest < ActionController::TestCase
   context 'LassoSubmissionsController' do
-    setup { @community = HomeCommunity.make }
+    setup do
+      @community = HomeCommunity.make
+      @community.create_lasso_account({
+        :uid              => 'auid',
+        :client_id  => 'my_client_id',
+        :project_id => 'my_project_id'
+      })
+      @page = PropertyContactPage.make(:property => @community)
+    end
 
     context 'a GET to #show' do
       setup do
+        get :show, :home_community_id => @community.to_param
+      end
+
+      should_respond_with :success
+      should_render_template :show
+      should_assign_to :community
+    end
+    
+    context 'a GET to #show without page' do
+      setup do
+        @page.destroy
         get :show, :home_community_id => @community.to_param
       end
 

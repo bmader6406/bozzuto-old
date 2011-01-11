@@ -7,16 +7,16 @@ ApartmentCommunity:
     default: title, published, featured, street_address, city
     state: title, published, featured, featured_position, city
     list: title, published, featured, street_address, city
-    form: title, short_title, street_address, city, county, zip_code, phone_number, latitude, longitude, ufollowup_id, website_url, resident_link_text, resident_link_url, video_url, facebook_url, twitter_handle, brochure_link_text, brochure_type, brochure, brochure_url, local_info_feed, listing_image, listing_title, listing_text, meta_title, meta_description, meta_keywords, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, promo, features_meta_title, features_meta_description, features_meta_keywords, features_1_title, features_1_text, features_2_title, features_2_text, features_3_title, features_3_text, media_meta_title, media_meta_description, media_meta_keywords, floor_plans_meta_title, floor_plans_meta_description, floor_plans_meta_keywords, neighborhood_meta_title, neighborhood_meta_description, neighborhood_meta_keywords, neighborhood_text, contact_meta_title, contact_meta_description, contact_meta_keywords, contact_text, show_lead_2_lease, lead_2_lease_email, published, featured
+    form: title, short_title, street_address, city, county, zip_code, phone_number, latitude, longitude, ufollowup_id, website_url, resident_link_text, resident_link_url, video_url, facebook_url, twitter_handle, brochure_link_text, brochure_type, brochure, brochure_url, local_info_feed, listing_image, listing_title, listing_text, meta_title, meta_description, meta_keywords, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, promo, media_meta_title, media_meta_description, media_meta_keywords, floor_plans_meta_title, floor_plans_meta_description, floor_plans_meta_keywords, show_lead_2_lease, lead_2_lease_email, published, featured
     options:
-      ckeditor: listing_text, overview_text, features_1_text, features_2_text, features_3_text, neighborhood_text, promotions_text, contact_text
+      ckeditor: listing_text, overview_text, promotions_text
       booleans:
         published: ['Yes', 'No']
         featured: ['Yes', 'No']
       selectors: brochure_type
-      destroy_related: DnrConfiguration, PropertySlideshow, PropertyMiniSlideshow, Video, PhotoSet, ApartmentFloorPlan
+      destroy_related: DnrConfiguration, PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyContactPage, PropertySlideshow, PropertyMiniSlideshow, Video, PhotoSet, ApartmentFloorPlan
   order_by: title
-  relationships: dnr_configuration, property_features, city, county, local_info_feed, slideshow, videos, photo_set, floor_plans, promo
+  relationships: dnr_configuration, property_features, city, county, local_info_feed, features_page, neighborhood_page, contact_page, slideshow, videos, photo_set, floor_plans, promo
   filters:
   search: title, street_address
   application: Properties
@@ -175,15 +175,15 @@ HomeCommunity:
   fields:
     default: title, published, street_address, city
     list: title, published, street_address, city
-    form: title, short_title, street_address, city, county, zip_code, phone_number, latitude, longitude, ufollowup_id, website_url, video_url, facebook_url, twitter_handle, brochure_link_text, brochure_type, brochure, brochure_url, local_info_feed, listing_image, listing_promo, listing_title, listing_text, latitude, longitude, meta_title, meta_description, meta_keywords, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, features_meta_title, features_meta_description, features_meta_keywords, features_1_title, features_1_text, features_2_title, features_2_text, features_3_title, features_3_text, media_meta_title, media_meta_description, media_meta_keywords, media_meta_description, floor_plans_meta_title, floor_plans_meta_description, floor_plans_meta_keywords, neighborhood_meta_title, neighborhood_meta_description, neighborhood_meta_keywords, neighborhood_text, contact_meta_title, contact_meta_description, contact_meta_keywords, lasso_uid, lasso_client_id, lasso_project_id, contact_text, published, promo
+    form: title, short_title, street_address, city, county, zip_code, phone_number, latitude, longitude, ufollowup_id, website_url, video_url, facebook_url, twitter_handle, brochure_link_text, brochure_type, brochure, brochure_url, local_info_feed, listing_image, listing_promo, listing_title, listing_text, latitude, longitude, meta_title, meta_description, meta_keywords, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, media_meta_title, media_meta_description, media_meta_keywords, media_meta_description, floor_plans_meta_title, floor_plans_meta_description, floor_plans_meta_keywords, published, promo
     options:
-      ckeditor: listing_text, overview_text, features_1_text, features_2_text, features_3_text, neighborhood_text, promotions_text, contact_text
+      ckeditor: listing_text, overview_text, promotions_text
       booleans:
         published: ['Yes', 'No']
       selectors: brochure_type
-      destroy_related: DnrConfiguration, PropertySlideshow, PropertyMiniSlideshow, Home, Video, PhotoSet
+      destroy_related: DnrConfiguration, PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyContactPage, LassoAccount, PropertySlideshow, PropertyMiniSlideshow, Home, Video, PhotoSet
   order_by: title
-  relationships: dnr_configuration, property_features, city, county, slideshow, videos, photo_set, homes, local_info_feed, promo
+  relationships: dnr_configuration, property_features, city, county, features_page, neighborhood_page, contact_page, lasso_account, slideshow, videos, photo_set, homes, local_info_feed, promo
   filters:
   search: title
   application: Properties
@@ -207,12 +207,12 @@ HomePage:
   fields:
     default:
     list:
-    form: meta_title, meta_description, meta_keywords, body, mini_slideshow
+    form: meta_title, meta_description, meta_keywords, body, home_mini_slideshow, apartment_mini_slideshow
     options:
       ckeditor: body
       destroy_related: HomePageSlide
   order_by:
-  relationships: slides, mini_slideshow
+  relationships: slides, apartment_mini_slideshow, home_mini_slideshow
   filters:
   search:
   application: Content
@@ -232,7 +232,7 @@ LandingPage:
   fields:
     default: title, state, published
     list: title, state, published
-    form: title, state, meta_title, meta_description, meta_keywords, masthead_body, masthead_image, promo, secondary_title, secondary_body, custom_sort_popular_properties, published, hide_from_list
+    form: title, state, meta_title, meta_description, meta_keywords, masthead_body, masthead_image, promo, secondary_title, secondary_body, custom_sort_popular_properties, randomize_property_listings, published, hide_from_list
     options:
       ckeditor: masthead_body, secondary_body
       booleans:
@@ -252,6 +252,17 @@ LandingPagePopularProperty:
   application:
   filters:
   search:
+
+LassoAccount:
+  fields:
+    default: property, uid, client_id, project_id
+    list: property, uid, client_id, project_id
+    form: uid, client_id, project_id, property
+  order_by:
+  relationships:
+  filters:
+  search:
+  application:
 
 Leader:
   fields:
@@ -316,6 +327,7 @@ NewsPost:
 Page:
   fields:
     default: formatted_title, published, position
+    list_deleted: title, section_title
     show: title, published, section, parent, body, left_montage_image, middle_montage_image, right_montage_image
     list: formatted_title, published, section, position
     form: title, meta_title, meta_description, meta_keywords, body, section, parent, published, left_montage_image, middle_montage_image, right_montage_image
@@ -329,6 +341,7 @@ Page:
   application:
   options:
   actions:
+    index: list_deleted
     show: preview
     edit: preview
 
@@ -460,6 +473,19 @@ Property:
   search:
   application:
 
+PropertyContactPage:
+  fields:
+    default: property, meta_title
+    list: property, meta_title
+    form: content, meta_title, meta_description, meta_keywords, property
+    options:
+      ckeditor: content
+  order_by:
+  relationships:
+  filters:
+  search:
+  application:
+
 PropertyFeature:
   fields:
     default: name, icon
@@ -470,6 +496,32 @@ PropertyFeature:
   filters:
   search: name
   application: Properties
+
+PropertyFeaturesPage:
+  fields:
+    default: property, title_1, meta_title
+    list: property, title_1, meta_title
+    form: title_1, text_1, title_2, text_2, title_3, text_3, meta_title, meta_description, meta_keywords, property
+    options:
+      ckeditor: text_1, text_2, text_3
+  order_by:
+  relationships:
+  filters:
+  search:
+  application:
+
+PropertyNeighborhoodPage:
+  fields:
+    default: property, meta_title
+    list: property, meta_title
+    form: content, meta_title, meta_description, meta_keywords, property
+    options:
+      ckeditor: content
+  order_by:
+  relationships:
+  filters:
+  search:
+  application:
 
 MiniSlide:
   fields:

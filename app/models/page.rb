@@ -2,7 +2,14 @@ class Page < ActiveRecord::Base
   include Montage
   include Bozzuto::Publishable
   
-  acts_as_nested_set :scope => :section
+  acts_as_archive :indexes => [:id, :cached_slug]
+  class Archive < ActiveRecord::Base
+    def section_title
+      ::Section.find(self.section_id).title
+    end
+  end
+  
+  acts_as_nested_set :scope => :section, :dependent => :destroy
 
   has_friendly_id :title,
     :use_slug => true,
@@ -12,8 +19,8 @@ class Page < ActiveRecord::Base
 
   belongs_to :section
 
-  has_one :masthead_slideshow, :dependent => :destroy
-  has_one :body_slideshow, :dependent => :destroy
+  has_one :masthead_slideshow
+  has_one :body_slideshow
 
   validates_presence_of :title
 

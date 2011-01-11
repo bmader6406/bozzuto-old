@@ -151,17 +151,17 @@ class ApplicationHelperTest < ActionView::TestCase
       context 'with a prefix' do
         setup do
           @community = ApartmentCommunity.new(
-            :features_meta_title       => 'Title!',
-            :features_meta_description => 'Description!',
-            :features_meta_keywords    => 'Keywords!'
+            :floor_plans_meta_title       => 'Title!',
+            :floor_plans_meta_description => 'Description!',
+            :floor_plans_meta_keywords    => 'Keywords!'
           )
-          expects(:content_for).with(:meta_title, @community.features_meta_title)
-          expects(:content_for).with(:meta_description, @community.features_meta_description)
-          expects(:content_for).with(:meta_keywords, @community.features_meta_keywords)
+          expects(:content_for).with(:meta_title, @community.floor_plans_meta_title)
+          expects(:content_for).with(:meta_description, @community.floor_plans_meta_description)
+          expects(:content_for).with(:meta_keywords, @community.floor_plans_meta_keywords)
         end
 
         should 'send the data to content_for' do
-          render_meta(@community, :features)
+          render_meta(@community, :floor_plans)
         end
       end
     end

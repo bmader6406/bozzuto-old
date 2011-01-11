@@ -83,9 +83,6 @@ en:
         floor_plans_meta_description: Homes SEO Description
         floor_plans_meta_keywords: Homes SEO Keywords
         floor_plans_meta_title: Homes SEO Title
-        lasso_client_id: Lasso Client ID
-        lasso_project_id: Lasso Project ID
-        lasso_uid: Lasso UID
         listing_promo: Listing Promo Image
       home_page:
         featured_property: Featured Property
@@ -101,6 +98,10 @@ en:
         secondary_body: Secondary Body
         secondary_title: Secondary Title
         hide_from_list: Hide from "Apartments for Rent By Region" List
+      lasso_account:
+        client_id: Lasso Client ID
+        project_id: Lasso Project ID
+        uid: Lasso UID
       masthead_slide:
         body: Body Text
         image_link: Image Link
@@ -151,15 +152,6 @@ en:
         contact_text: Contact Copy
         dnr_customer_code: DNR Customer Code
         facebook_url: Facebook URL
-        features_1_title: 'Features Section #1 Title'
-        features_1_text: 'Features Section #1 Copy'
-        features_2_title: 'Features Section #2 Title'
-        features_2_text: 'Features Section #2 Copy'
-        features_3_title: 'Features Section #3 Title'
-        features_3_text: 'Features Section #3 Copy'
-        features_meta_description: Features SEO Description
-        features_meta_keywords: Features SEO Keywords
-        features_meta_title: Features SEO Title
         has_completion_date: Has Completion Date
         lead_2_lease_email: Lead2Lease Email
         listing_image: Listing Image
@@ -172,10 +164,6 @@ en:
         meta_description: Overview SEO Description
         meta_keywords: Overview SEO Keywords
         meta_title: Overview SEO Title
-        neighborhood_meta_description: Neighborhood SEO Description
-        neighborhood_meta_keywords: Neighborhood SEO Keywords
-        neighborhood_meta_title: Neighborhood SEO Title
-        neighborhood_text: Neighborhood Copy
         overview_bullet_1: 'Overview Bullet #1'
         overview_bullet_2: 'Overview Bullet #2'
         overview_bullet_3: 'Overview Bullet #3'
@@ -195,6 +183,21 @@ en:
         website_url: Website URL
         ufollowup_id: uFollowUp ID
         zip_code: ZIP Code
+      property_features_page:
+        title_1: 'Section #1 Title'
+        text_1: 'Section #1 Copy'
+        title_2: 'Section #2 Title'
+        text_2: 'Section #2 Copy'
+        title_3: 'Section #3 Title'
+        text_3: 'Section #3 Copy'
+        meta_description: SEO Description
+        meta_keywords: SEO Keywords
+        meta_title: SEO Title
+      property_neighborhood_page:
+        meta_description: SEO Description
+        meta_keywords: SEO Keywords
+        meta_title: SEO Title
+        content: Copy
       mini_slide:
         mini_slideshow: Mini Slideshow
       mini_slideshow:

@@ -1,0 +1,2 @@
+class PropertyFeaturesPage < PropertyPage
+end

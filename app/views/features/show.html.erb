@@ -1,12 +1,12 @@
 <% content_for :body_class do %>community property features<% end %>
-<% render_meta(@community, :features) %>
+<% render_meta(@page) %>
 
 <% (1..3).each do |i| %>
-  <% if @community.send("features_#{i}_title").present? %>
+  <% if @page.send("title_#{i}").present? %>
     <div class="row feature">
-      <h2><%= @community.send("features_#{i}_title") %></h2>
+      <h2><%= @page.send("title_#{i}") %></h2>
 
-      <%= raw(@community.send("features_#{i}_text")) %>
+      <%= raw(@page.send("text_#{i}")) %>
     </div>
   <% end %>
 <% end %>

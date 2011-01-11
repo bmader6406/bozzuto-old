@@ -1,4 +1,4 @@
-<% render_meta(@community, :neighborhood) %>
+<% render_meta(@page) %>
 
 <div class="section page-title">
   <div class="content">
@@ -10,7 +10,7 @@
 <div class="section">
   <div class="content">
     <div class="wysiwyg">
-      <%= @community.neighborhood_text.try(:html_safe) %>
+      <%= @page.content.try(:html_safe) %>
     </div>
   </div>
 </div>

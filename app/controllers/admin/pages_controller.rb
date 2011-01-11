@@ -12,6 +12,33 @@ class Admin::PagesController < Admin::MasterController
     redirect_to request.referer || admin_dashboard_path
   end
   
+  def list_deleted
+    set_fields
+    items_count = Page::Archive.count
+    items_per_page = Page.typus_options_for(:per_page).to_i
+
+    @pager = ::Paginator.new(items_count, items_per_page) do |offset, per_page|
+      Page::Archive.find(:all, :limit => per_page, :offset => offset, :order => 'title ASC')
+    end
+
+    @items = @pager.page(params[:page])
+    
+    respond_to do |format|
+      format.html
+    end
+  end
+  
+  def recover
+    Page.restore_all(["id = ?", params[:id]])
+    @page = Page.find(params[:id])
+    @page.move_to_root
+    @page.send(:set_default_left_and_right)
+    @page.save
+    flash[:success] = _("%{model} successfully recovered.", 
+                        :model => @resource[:human_name])
+    redirect_to request.referer || admin_dashboard_path
+  end
+  
   def preview
     find_item
     redirect_to page_url(@item.section, @item)

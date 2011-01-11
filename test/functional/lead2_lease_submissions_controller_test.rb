@@ -2,10 +2,26 @@ require 'test_helper'
 
 class Lead2LeaseSubmissionsControllerTest < ActionController::TestCase
   context 'Lead2LeaseSubmissionsController' do
-    setup { @community = ApartmentCommunity.make }
+    setup do
+      @community = ApartmentCommunity.make({
+        :show_lead_2_lease => true,
+        :lead_2_lease_email => Faker::Internet.email })
+      @page = PropertyContactPage.make(:property => @community)
+    end
 
     context 'a GET to #show' do
       setup do
+        get :show, :apartment_community_id => @community.to_param
+      end
+
+      should_respond_with :success
+      should_render_template :show
+      should_assign_to :submission
+    end
+    
+    context 'a GET to #show without a contact page' do
+      setup do
+        @page.destroy
         get :show, :apartment_community_id => @community.to_param
       end
 

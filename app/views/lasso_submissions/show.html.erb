@@ -1,5 +1,5 @@
 <% content_for :body_class do %>community property features<% end %>
-<% render_meta(@community, :contact) %>
+<% render_meta(@page) if @page %>
 
 <% if @community.show_lasso_form? -%>
   <h2>Ready to speak with a sales consultant?</h2>
@@ -12,9 +12,9 @@
     <%= error_messages_for :submission %>
     
     <form method="post" id="lasso-form" class="required-form" action="http://www.mylasso.com/registrant_signup.php">
-      <%= hidden_field_tag 'LassoUID', @community.lasso_uid %>
-      <%= hidden_field_tag 'ClientID', @community.lasso_client_id %>
-      <%= hidden_field_tag 'ProjectID', @community.lasso_project_id %>
+      <%= hidden_field_tag 'LassoUID', @community.lasso_account.uid %>
+      <%= hidden_field_tag 'ClientID', @community.lasso_account.client_id %>
+      <%= hidden_field_tag 'ProjectID', @community.lasso_account.project_id %>
       <%= hidden_field_tag 'SignupThankyouLink', thank_you_home_community_lasso_submissions_url(@community) %>
 
       <fieldset>
@@ -72,5 +72,5 @@
 <% end -%>
 
 <div id="community-contact-text">
-  <%= @community.contact_text.try(:html_safe) %>  
+  <%= @page.content.try(:html_safe) if @page %>  
 </div>

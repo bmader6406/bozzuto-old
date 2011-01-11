@@ -21,6 +21,7 @@ admin:
   HomePage: read, update
   HomePageSlide: create, read, update, delete
   LandingPage: create, read, update, delete
+  LassoAccount: create, read, update, delete
   Leader: create, read, update, delete
   LeadershipGroup: create, read, update, delete
   MastheadSlide: create, read, update, delete
@@ -28,7 +29,7 @@ admin:
   MiniSlide: create, read, update, delete
   MiniSlideshow: create, read, update, delete
   NewsPost: create, read, update, delete
-  Page: create, read, update, delete, preview
+  Page: create, read, update, delete, preview, list_deleted, recover
   Photo: create, read, update, delete
   PhotoSet: create, read, update, delete
   PressRelease: create, read, update, delete
@@ -38,7 +39,10 @@ admin:
   ProjectUpdate: create, read, update, delete
   Promo: create, read, update, delete
   Property: create, read, update, delete, recover
+  PropertyContactPage: create, read, update, delete
   PropertyFeature: create, read, update, delete
+  PropertyFeaturesPage: create, read, update, delete
+  PropertyNeighborhoodPage: create, read, update, delete
   PropertySlide: create, read, update, delete
   PropertySlideshow: create, read, update, delete
   Section: read, update

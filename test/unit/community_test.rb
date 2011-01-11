@@ -1,6 +1,9 @@
 require 'test_helper'
+require 'flickr_mocks'
 
 class CommunityTest < ActiveSupport::TestCase
+  include Bozzuto::FlickrMocks
+  
   context 'Community' do
     setup do
       @community = Community.new
@@ -12,6 +15,15 @@ class CommunityTest < ActiveSupport::TestCase
     should_have_one :photo_set
     should_have_many :videos
     should_have_one :dnr_configuration
+    should_have_one :features_page
+    should_have_one :neighborhood_page
+    should_have_one :contact_page
+    
+    should_have_named_scope 'sort_for(LandingPage.make(:randomize_property_listings => true))',
+      :order => 'RAND(NOW())'
+    should_have_named_scope 'sort_for(LandingPage.make(:randomize_property_listings => false))',
+      :order => 'properties.title ASC'
+    should_have_named_scope 'sort_for(Page.make)', {}
     
     should 'be archivable' do
       assert Community.acts_as_archive?
@@ -43,6 +55,88 @@ class CommunityTest < ActiveSupport::TestCase
       should 'return true if any bullets are present' do
         @community.overview_bullet_2 = 'Blah blah blah'
         assert @community.has_overview_bullets?
+      end
+    end
+    
+    context '#features_page?' do
+      setup do
+        @community = ApartmentCommunity.make
+      end
+      
+      should 'return false if there is no features page attached' do
+        assert !@community.features_page?
+      end
+
+      should 'return true if there is a features page attached' do
+        @page = PropertyFeaturesPage.make(:property => @community)
+        assert @community.features_page?
+      end
+    end
+    
+    context '#neighborhood_page?' do
+      setup do
+        @community = ApartmentCommunity.make
+      end
+      
+      should 'return false if there is no neighborhood page attached' do
+        assert !@community.neighborhood_page?
+      end
+
+      should 'return true if there is a neighborhood page attached' do
+        @page = PropertyNeighborhoodPage.make(:property => @community)
+        assert @community.neighborhood_page?
+      end
+    end
+    
+    context '#contact_page?' do
+      setup do
+        @community = ApartmentCommunity.make
+      end
+      
+      should 'return false if there is no contact page attached' do
+        assert !@community.contact_page?
+      end
+
+      should 'return true if there is a contact page attached' do
+        @page = PropertyContactPage.make(:property => @community)
+        assert @community.contact_page?
+      end
+    end
+    
+    context '#has_media?' do
+      setup do
+        @community = ApartmentCommunity.make
+      end
+      
+      context 'without any media' do
+        should 'return false' do
+          assert !@community.has_media?
+        end
+      end
+      
+      context 'with a photo set' do
+        setup do
+          @flickr_set1 = FlickrSet.new('123', 'Title')
+          @flickr_user = mock
+          @flickr_user.stubs(:sets).returns([@flickr_set1])
+          PhotoSet.stubs(:flickr_user).returns(@flickr_user)
+          
+          PhotoSet.make(:property => @community, :flickr_set_number => @flickr_set1.id)
+        end
+        
+        should 'return true' do
+          assert @community.has_media?
+        end
+      end
+      
+      context 'with a video' do
+        setup do
+          Video.make(:property => @community)
+        end
+        
+        should 'return true' do
+          assert @community.has_media?
+        end
       end
     end
 

@@ -16,9 +16,28 @@ class Community < Property
     :foreign_key => :property_id,
     :order       => 'position ASC'
     
+  [:features_page, :neighborhood_page, :contact_page].each do |page_type|
+    has_one page_type, :class_name => "Property#{page_type.to_s.classify}",
+      :foreign_key => :property_id
+    
+    define_method("#{page_type}?") do
+      self.send(page_type).present?
+    end
+  end
+    
   before_save :set_featured_postion
   
   named_scope :featured_order, {:order => 'featured DESC, featured_position ASC, title ASC'}
+  
+  named_scope :sort_for, lambda { |landing_page|
+    if landing_page.respond_to?(:randomize_property_listings?)
+      landing_page.randomize_property_listings? ?
+        {:order => 'RAND(NOW())'} :
+        {:order => 'properties.title ASC'}
+    else
+      {}
+    end
+  }
 
   def self.typus_fields_for(filter)
     result = super
@@ -44,6 +63,10 @@ class Community < Property
 
   def has_active_promo?
     promo.present? && promo.active?
+  end
+  
+  def has_media?
+    photo_set.present? || videos.present?
   end
 
   # used by sms

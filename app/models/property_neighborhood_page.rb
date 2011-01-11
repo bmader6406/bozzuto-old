@@ -1,0 +1,2 @@
+class PropertyNeighborhoodPage < PropertyPage
+end

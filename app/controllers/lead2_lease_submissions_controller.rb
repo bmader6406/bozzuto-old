@@ -28,5 +28,6 @@ class Lead2LeaseSubmissionsController < ApplicationController
 
   def find_community
     @community = ApartmentCommunity.find(params[:apartment_community_id])
+    @page = @community.contact_page
   end
 end
