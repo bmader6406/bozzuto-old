@@ -3,21 +3,13 @@ require 'test_helper'
 class ApartmentFloorPlanGroupsHelperTest < ActionView::TestCase
   context '#render_floor_plan_group_mobile_listings' do
     setup do
-      @groups = ApartmentFloorPlanGroup.all
       @community = ApartmentCommunity.make
+      ApartmentFloorPlan.make(:apartment_community => @community)
     end
 
     should 'render the partial with the correct options' do
-      @community.floor_plans_by_group.each do |group, plans_in_group|
-        expects(:render).with({
-          :partial    => 'apartment_floor_plan_groups/listing',
-          :locals     => { 
-            :community => @community,
-            :group => group,
-            :plans_in_group => plans_in_group
-          }
-        })
-      end
+      expects(:render).with(has_entry(:partial => 'apartment_floor_plan_groups/listing')).
+        with(has_key(:locals)).times(@community.floor_plan_groups.count)
 
       render_floor_plan_group_mobile_listings(@community)
     end
