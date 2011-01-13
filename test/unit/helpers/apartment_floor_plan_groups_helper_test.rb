@@ -8,8 +8,16 @@ class ApartmentFloorPlanGroupsHelperTest < ActionView::TestCase
     end
 
     should 'render the partial with the correct options' do
-      expects(:render).with(has_entry(:partial => 'apartment_floor_plan_groups/listing')).
-        with(has_key(:locals)).times(@community.floor_plan_groups.count)
+      @community.floor_plans_by_group.each do |group, plans_in_group|
+        expects(:render).with({
+          :partial    => 'apartment_floor_plan_groups/listing',
+          :locals     => { 
+            :community => @community,
+            :group => group,
+            :plans_in_group => plans_in_group
+          }
+        })
+      end
 
       render_floor_plan_group_mobile_listings(@community)
     end
