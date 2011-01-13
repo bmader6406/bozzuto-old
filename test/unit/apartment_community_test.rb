@@ -9,6 +9,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
     subject { @community }
 
     should_have_many :floor_plans, :featured_floor_plans
+    should_have_many :floor_plan_groups, :through => :floor_plans
 
     should 'respond to named scopes' do
       assert_nothing_raised do

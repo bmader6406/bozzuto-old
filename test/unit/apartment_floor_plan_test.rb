@@ -191,30 +191,6 @@ class ApartmentFloorPlanTest < ActiveSupport::TestCase
       should "be able to find the largest floor plan" do
         assert_equal @largest, @community.floor_plans.largest.first
       end
- 
-      context 'when not using market prices' do
-        setup do
-          @community.use_market_prices = false
-          @community.save
-          @community.floor_plans.reload
-        end
-
-        should 'be able to find the cheapest floor plan by effective rent' do
-          assert_equal @cheapest_effective, @community.floor_plans.cheapest.first
-        end
-      end
- 
-      context 'when using market prices' do
-        setup do
-          @community.use_market_prices = true
-          @community.save
-          @community.reload
-        end
- 
-        should 'be able to find the cheapest floor plan by market rent' do
-          assert_equal @cheapest_market, @community.floor_plans.cheapest.first
-        end
-      end
     end
   end
 end

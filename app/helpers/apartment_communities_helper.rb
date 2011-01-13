@@ -17,10 +17,10 @@ module ApartmentCommunitiesHelper
   end
 
   def price_of_cheapest_floor_plan(plans)
-    cheapest = plans.cheapest.first
+    cheapest_rent = plans.minimum(:min_rent)
 
-    if cheapest.present?
-      raw(floor_plan_price(cheapest.min_rent))
+    if cheapest_rent.present?
+      raw(floor_plan_price(cheapest_rent))
     else
       ''
     end

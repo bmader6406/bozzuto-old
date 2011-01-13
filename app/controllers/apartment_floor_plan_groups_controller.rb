@@ -3,10 +3,7 @@ class ApartmentFloorPlanGroupsController < ApplicationController
 
   before_filter :find_community
 
-  def index
-    @groups = ApartmentFloorPlanGroup.all
-  end
-
+  def index; end
 
   private
 

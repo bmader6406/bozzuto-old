@@ -24,7 +24,7 @@ class ApartmentFloorPlanObserver < ActiveRecord::Observer
     end
     field = "cheapest_#{group_name}_price"
 
-    cheapest_price = community.floor_plans.in_group(group).cheapest.first.try(:min_rent)
+    cheapest_price = community.floor_plans.in_group(group).minimum(:min_rent)
 
     community.update_attributes(field => cheapest_price)
   end
