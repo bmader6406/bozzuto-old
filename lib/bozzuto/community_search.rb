@@ -24,12 +24,20 @@ module Bozzuto
       all_results.size
     end
     
+    def results?
+      all_results.size > 0
+    end
+    
     def all_results
       if search_type == :zip
         results
       else
         (results[:city] + results[:title]).uniq
       end
+    end
+    
+    def type
+      @type_inquirer ||= ActiveSupport::StringInquirer.new(search_type.to_s)
     end
     
     private

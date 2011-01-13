@@ -1,0 +1,33 @@
+<div class="section page-title">
+  <div class="content">
+    <h2><%= @search.query %></h2>
+    <%= link_to 'Search Communities', community_search_path, :class => 'go-back' %>
+  </div>
+</div>
+
+<div class="section property-list">
+  <div class="content">
+    <%- if @search.type.zip? -%>
+      <ul>
+        <%= render :partial => 'community', :collection => @search.results %>
+      </ul>
+    <%- else -%>
+      <%- if @search.results[:city].present? && @search.results[:title].present? -%>
+        <h3>Closest Matches</h3>
+        <ul>
+          <%= render :partial => 'community', :collection => @search.results[:title] %>
+        </ul>
+        
+        <h3>More Results</h3>
+        <ul>
+          <%= render :partial => 'community', :collection => @search.results[:city] %>
+        </ul>
+      <%- else -%>
+        <ul>
+          <%= render :partial => 'community', 
+                :collection => [@search.results[:city], @search.results[:title]].detect(&:present?) %>
+        </ul>
+      <%- end -%>
+    <%- end -%>
+  </div>
+</div>

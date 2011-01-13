@@ -16,6 +16,10 @@ class CommunitySearchTest < ActiveSupport::TestCase
         assert_equal :zip, @search.search_type
       end
       
+      should 'report a type of zip' do
+        assert @search.type.zip?
+      end
+      
       should 'correctly report the query' do
         assert_equal '22301', @search.query
       end
@@ -52,6 +56,10 @@ class CommunitySearchTest < ActiveSupport::TestCase
         assert_equal :name, @search.search_type
       end
       
+      should 'report a type of name' do
+        assert @search.type.name?
+      end
+      
       should 'correctly report the query' do
         assert_equal 'Metro', @search.query
       end
@@ -85,6 +93,10 @@ class CommunitySearchTest < ActiveSupport::TestCase
       
       should 'report a search type of :name' do
         assert_equal :name, @search.search_type
+      end
+      
+      should 'report a type of name' do
+        assert @search.type.name?
       end
       
       should 'correctly report the query' do
