@@ -4,7 +4,9 @@ class ApartmentCommunity < Community
   before_update :mark_dirty_floor_plan_prices
   after_update :update_floor_plan_prices
 
-  has_many :floor_plans, :class_name => 'ApartmentFloorPlan'  
+  has_many :floor_plans, :class_name => 'ApartmentFloorPlan'
+  has_many :floor_plan_groups, :class_name => 'ApartmentFloorPlanGroup', 
+    :through => :floor_plans, :uniq => true
   has_many :featured_floor_plans,
     :class_name => 'ApartmentFloorPlan',
     :conditions => { :featured => true },
@@ -30,6 +32,20 @@ class ApartmentCommunity < Community
 
   def nearby_communities(limit = 6)
     @nearby_communities ||= city.apartment_communities.near(self).all(:limit => limit)
+  end
+  
+  def cheapest_rent
+    floor_plans.minimum(:min_rent)
+  end
+  
+  def max_rent
+    floor_plans.maximum(:max_rent)
+  end
+  
+  def floor_plans_by_group
+    floor_plan_groups.map do |group|
+      [group, floor_plans.in_group(group)]
+    end
   end
 
   private

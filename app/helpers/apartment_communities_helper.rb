@@ -17,13 +17,25 @@ module ApartmentCommunitiesHelper
   end
 
   def price_of_cheapest_floor_plan(plans)
-    cheapest = plans.cheapest.first
+    cheapest_rent = plans.minimum(:min_rent)
 
-    if cheapest.present?
-      raw(floor_plan_price(cheapest.min_rent))
+    if cheapest_rent.present?
+      raw(floor_plan_price(cheapest_rent))
     else
       ''
     end
+  end
+  
+  def apartment_community_price_range(community)
+    [ number_to_currency(community.cheapest_rent, :precision => 0),
+      number_to_currency(community.max_rent, :precision => 0)
+    ].join(' to ').html_safe
+  end
+  
+  def list_of_floor_plan_group_names_for(community)
+    community.floor_plan_groups.map(&:list_name).to_sentence(
+      :two_words_connector => ' &amp; ', :last_word_connector => ', &amp; '
+    ).html_safe
   end
 
   def square_feet(plan)

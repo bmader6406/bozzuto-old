@@ -1,0 +1,34 @@
+<div class="section page-title">
+  <div class="content">
+    <h2>Search Communities</h2>
+  </div>
+</div>
+
+<div class="section search">
+  <div class="content">
+    <%- if @search && !@search.results? -%>
+      <div class="flash">
+        <h4>No Results for "<%= @search.query %>"</h4>
+        <p>Please check the spelling and search again or browse by state below.</p>
+      </div>
+    <%- end -%>
+    <% form_tag community_search_path, :method => :get do %>
+      <%= text_field_tag 'q', params[:q], :class => 'search-zip',
+            :placeholder => 'Enter City, Zip, or Community Name' %>
+      <%= submit_tag 'Search Now', :name => 'search-submit', :class => 'submit search-submit' %>
+    <% end %>
+  </div>
+</div>
+
+<div class="section browse">
+  <div class="content">
+    <h3>Browse by State</h3>
+    <ul class="browse states">
+      <%- State.all.each do |state| -%>
+        <li>
+          <%= link_to "<span>#{state.name}</span> (#{state.communities.count})".html_safe, '#', :class => 'btn' %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

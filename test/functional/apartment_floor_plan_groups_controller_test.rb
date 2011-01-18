@@ -14,7 +14,6 @@ class ApartmentFloorPlanGroupsControllerTest < ActionController::TestCase
         should_render_with_layout :community
         should_render_template :index
         should_assign_to(:community) { @community }
-        should_assign_to(:groups) { ApartmentFloorPlanGroup.all }
       end
 
       mobile_context do
@@ -28,7 +27,6 @@ class ApartmentFloorPlanGroupsControllerTest < ActionController::TestCase
         should_render_with_layout :application
         should_render_template :index
         should_assign_to(:community) { @community }
-        should_assign_to(:groups) { ApartmentFloorPlanGroup.all }
       end
     end
   end

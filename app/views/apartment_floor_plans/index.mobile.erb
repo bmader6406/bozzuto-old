@@ -30,14 +30,11 @@
   </div>
 </div>
 
-<% groups = ApartmentFloorPlanGroup.except(@group) %>
-<% if groups.any? %>
-  <div class="section floor-plans">
-    <div class="content">
-      <h3>More Floor Plans</h3>
-      <ul>
-        <%= render_floor_plan_group_mobile_listings(groups, @community) %>
-      </ul>
-    </div>
+<div class="section floor-plans">
+  <div class="content">
+    <h3>More Floor Plans</h3>
+    <ul>
+      <%= render_floor_plan_group_mobile_listings(@community, @group) %>
+    </ul>
   </div>
-<% end %>
+</div>

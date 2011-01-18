@@ -8,7 +8,7 @@ class CityTest < ActiveSupport::TestCase
 
     subject { @city }
 
-    should_have_many :apartment_communities, :home_communities
+    should_have_many :apartment_communities, :home_communities, :communities
     should_belong_to :state
     should_have_and_belong_to_many :counties
 

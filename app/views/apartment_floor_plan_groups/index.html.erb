@@ -1,55 +1,50 @@
 <% content_for :body_class do %>community property floor-plans<% end %>
 <% render_meta(@community, :floor_plans) %>
 
-<% @groups.each do |group| %>
-  <% plans_in_group = @community.floor_plans.in_group(group) %>
-
-  <% if plans_in_group.any? %>
-    <div id="<%= dom_id(group) %>" class="floor-plan-group">
-      <h2>
-        <%= floor_plan_group_pluralize(plans_in_group.count, group.name) %>
-        <% if @community.availability_url.present? && plans_in_group.count > ApartmentFloorPlanGroup::DISPLAY_LIMIT %>
-          <em>
-            <%= floor_plan_group_link(@community, group, plans_in_group.first.bedrooms) %>
-          </em>
-        <% end %>
-      </h2>
-
-      <% plans_in_group.take(ApartmentFloorPlanGroup::DISPLAY_LIMIT).in_groups_of(4, false) do |plans_group| %>
-        <ul class="row">
-          <% plans_group.each do |plan| %>
-            <li class="floor-plan">
-              <h4><%= plan.name %></h4>
-
-              <p>
-                <% sq_ft = plan.min_square_feet %>
-                <% if sq_ft.present? %>
-                  <% if plan.rolled_up? %>
-                    Starting from
-                  <% end %>
-                  <%= square_feet(plan) %>
-                <% end %>
-
-                <% min_rent = plan.min_rent %>
-                <% if min_rent.present? %>
-                  | <%= floor_plan_price(min_rent) %>
-                <% end %>
-
-                <% if sq_ft || min_rent %>
-                  <br />
-                <% end %>
-
-                <% if plan.availability_url.present? %>
-                  <%= link_to 'Reserve', plan.availability_url, :rel => 'external' %>
-                <% end %>
-              </p>
-
-              <%= floor_plan_image(plan) %>
-            </li>
-          <% end %>
-        </ul>
+<% @community.floor_plans_by_group.each do |group, plans_in_group| %>
+  <div id="<%= dom_id(group) %>" class="floor-plan-group">
+    <h2>
+      <%= floor_plan_group_pluralize(plans_in_group.count, group.name) %>
+      <% if @community.availability_url.present? && plans_in_group.count > ApartmentFloorPlanGroup::DISPLAY_LIMIT %>
+        <em>
+          <%= floor_plan_group_link(@community, group, plans_in_group.first.bedrooms) %>
+        </em>
       <% end %>
+    </h2>
 
-    </div>
-  <% end %>
+    <% plans_in_group.take(ApartmentFloorPlanGroup::DISPLAY_LIMIT).in_groups_of(4, false) do |plans_group| %>
+      <ul class="row">
+        <% plans_group.each do |plan| %>
+          <li class="floor-plan">
+            <h4><%= plan.name %></h4>
+
+            <p>
+              <% sq_ft = plan.min_square_feet %>
+              <% if sq_ft.present? %>
+                <% if plan.rolled_up? %>
+                  Starting from
+                <% end %>
+                <%= square_feet(plan) %>
+              <% end %>
+
+              <% min_rent = plan.min_rent %>
+              <% if min_rent.present? %>
+                | <%= floor_plan_price(min_rent) %>
+              <% end %>
+
+              <% if sq_ft || min_rent %>
+                <br />
+              <% end %>
+
+              <% if plan.availability_url.present? %>
+                <%= link_to 'Reserve', plan.availability_url, :rel => 'external' %>
+              <% end %>
+            </p>
+
+            <%= floor_plan_image(plan) %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
 <% end %>

@@ -14,14 +14,18 @@ module ApartmentFloorPlanGroupsHelper
     count == 1 ? name.singularize : name.pluralize
   end
 
-  def render_floor_plan_group_mobile_listings(groups, community = nil)
-    options = {
-      :partial    => 'apartment_floor_plan_groups/listing',
-      :collection => groups,
-      :as         => :group,
-      :locals     => { :community => community }
-    }
-
-    render options
+  def render_floor_plan_group_mobile_listings(community, exclude_group = nil)
+    ''.tap { |output|
+      community.floor_plans_by_group.each do |group, plans_in_group|
+        unless exclude_group && group == exclude_group
+          output << render(:partial => 'apartment_floor_plan_groups/listing',
+            :locals => { 
+              :community => community,
+              :group => group,
+              :plans_in_group => plans_in_group
+          }).to_s
+        end
+      end
+    }.html_safe
   end
 end

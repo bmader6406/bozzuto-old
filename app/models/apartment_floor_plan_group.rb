@@ -15,7 +15,14 @@ class ApartmentFloorPlanGroup < ActiveRecord::Base
   acts_as_list
 
   validates_presence_of :name
-
+  
+  def list_name
+    if name =~ /^(\d+) .*Bedroom/i
+      "#{$1}BR"
+    else
+      name.pluralize
+    end
+  end
 
   class << self
     def studio
