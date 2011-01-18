@@ -57,6 +57,8 @@ ActionController::Routing::Routes.draw do |map|
       :as     => :contact,
       :only   => [:show, :create],
       :member => { :thank_you => :get }
+    
+    community.resource :office_hours, :only => :show
 
     community.resources :media,
       :controller => :community_media,
@@ -97,6 +99,8 @@ ActionController::Routing::Routes.draw do |map|
       :as     => :contact,
       :only   => :show,
       :member => { :thank_you => :get }
+    
+    community.resource :office_hours, :only => :show
 
     community.resources :media,
       :controller => :community_media,

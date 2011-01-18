@@ -46,10 +46,11 @@
     <h3>Community Info</h3>
 
     <ul>
-      <li>
-        <%# TODO: Link 'Office Hours' button %>
-        <%= link_to 'Office Hours', '#', :class => 'btn' %>
-      </li>
+      <%- if @community.contact_page? -%>
+        <li>
+          <%= link_to 'Office Hours', home_community_office_hours_path(@community), :class => 'btn' %>
+        </li>
+      <%- end -%>
       <li>
         <%= link_to 'Features & Amenities', home_community_features_path(@community), :class => 'btn' %>
       </li>
