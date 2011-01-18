@@ -14,4 +14,8 @@ class City < ActiveRecord::Base
     "#{name}, #{state.code}"
   end
   alias :typus_name :to_s
+  
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
 end
