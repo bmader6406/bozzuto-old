@@ -1,7 +1,7 @@
 class Lead2LeaseSubmissionsController < ApplicationController
   before_filter :find_community
 
-  layout 'community'
+  layout :detect_mobile_layout
 
   def show
     @submission = Lead2LeaseSubmission.new
@@ -29,5 +29,9 @@ class Lead2LeaseSubmissionsController < ApplicationController
   def find_community
     @community = ApartmentCommunity.find(params[:apartment_community_id])
     @page = @community.contact_page
+  end
+
+  def detect_mobile_layout
+    mobile? ? 'application' : 'community'
   end
 end
