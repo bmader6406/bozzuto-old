@@ -1,0 +1,35 @@
+<% render_meta(@community, :floor_plans) %>
+
+<div class="section page-title">
+  <div class="content">
+    <h2><%= @home.name %></h2>
+    <%= link_to 'Homes', home_community_homes_path(@community), :class => 'go-back' %>
+  </div>
+</div>
+
+<div class="section homes floor-plans">
+  <div class="content">
+    <ul>
+      <% @plans.each do |plan| %>
+        <li>
+          <div class="floor-plan">
+            <% link_to home_community_home_floor_plan_path(@community, @home, plan), :class => 'info' do %>
+              <span class="name"><%= plan.name %></span>
+            <% end %>
+
+            <%= link_to_phone_number(format_phone_number(@community.phone_number), @community.phone_number, :class => 'tel') %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="section homes">
+  <div class="content">
+    <h3>More Homes</h3>
+    <ul>
+      <%= render_homes_mobile_listings(@community, @home) %>
+    </ul>
+  </div>
+</div>

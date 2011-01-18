@@ -1,0 +1,40 @@
+<% render_meta(@page) if @page %>
+
+<div class="section page-title">
+  <div class="content">
+    <h2>Email Us</h2>
+    <%= link_to @community.title, community_url(@community), :class => 'go-back' %>
+  </div>
+</div>
+
+<div class="section">
+  <div class="content">
+    <% if flash[:email_sent] -%>
+      <div class="notice">
+        <p>Thanks for contacting us about <%= @community.title %>! We will reply to you soon.</p>
+      </div>
+    <% end -%>
+
+    <h3>Ready to speak with a leasing consultant?</h3>
+
+    <p>Fill out the form below for availability and specials.</p>
+
+    <%= error_messages_for :submission %>
+
+    <% form_for :submission do |f| -%>      
+      <h3>Contact Information</h3>
+      <%= f.text_field :first_name, :placeholder => 'Your First Name' %>
+      <%= f.text_field :last_name, :placeholder => 'Your Last Name' %>
+      <%= f.text_field :email, :placeholder => 'Your Email' %>
+      <%= f.text_field :primary_phone, :placeholder => 'Your Phone Number' %>
+
+      <h3>Move-In Date</h3>
+      <%= f.date_select :move_in_date, :order => [:month, :day, :year] %>
+
+      <h3>Comments</h3>
+      <%= f.text_area :comments, :rows => 8, :cols => 37, :placeholder => 'Your Message' %>
+
+      <input type="submit" name="contact-submit" class="submit contact-submit" value="Submit" />
+    <% end -%>
+  </div>
+</div>

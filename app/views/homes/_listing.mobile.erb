@@ -1,0 +1,12 @@
+<li>
+  <div class="home">
+    <% link_to home_community_home_floor_plans_path(community, home), :class => 'info' do %>
+      <span class="name"><%= home.name %></span>
+      <span class="pricing">
+        <%= bedrooms(home) %> | <%= bathrooms(home) %>
+      </span>
+    <% end %>
+
+    <%= link_to_phone_number(format_phone_number(@community.phone_number), @community.phone_number, :class => 'tel') %>
+  </div>
+</li>

@@ -1,0 +1,2 @@
+module HomeFloorPlansHelper
+end

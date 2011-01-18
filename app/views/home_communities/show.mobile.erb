@@ -27,7 +27,7 @@
         <% end %>
       </li>
       <li>
-        <% link_to apartment_community_lead2_lease_submissions_path(@community), :class => 'btn email-us' do %>
+        <% link_to home_community_lasso_submissions_path(@community), :class => 'btn email-us' do %>
           <span>Email Us</span>
         <% end %>
       </li>
@@ -51,20 +51,20 @@
         <%= link_to 'Office Hours', '#', :class => 'btn' %>
       </li>
       <li>
-        <%= link_to 'Features & Amenities', apartment_community_features_path(@community), :class => 'btn' %>
+        <%= link_to 'Features & Amenities', home_community_features_path(@community), :class => 'btn' %>
       </li>
       <li>
-        <%= link_to 'Photos', apartment_community_media_path(@community), :class => 'btn' %>
+        <%= link_to 'Photos', home_community_media_path(@community), :class => 'btn' %>
       </li>
       <li>
-        <%= link_to 'Floor Plans', apartment_community_floor_plan_groups_path(@community), :class => 'btn' %>
+        <%= link_to 'Homes', home_community_homes_path(@community), :class => 'btn' %>
       </li>
       <li>
-        <%= link_to 'Neighborhood', apartment_community_neighborhood_path(@community), :class => 'btn' %>
+        <%= link_to 'Neighborhood', home_community_neighborhood_path(@community), :class => 'btn' %>
       </li>
       <% if @community.has_active_promo? %>
         <li>
-          <%= link_to 'Specials', apartment_community_specials_path(@community), :class => 'btn' %>
+          <%= link_to 'Specials', home_community_specials_path(@community), :class => 'btn' %>
         </li>
       <% end %>
     </ul>

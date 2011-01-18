@@ -1,0 +1,19 @@
+<% render_meta(@page) if @page %>
+
+<div class="section page-title">
+  <div class="content">
+    <h2>Thank You</h2>
+    <%= link_to @community.title, community_url(@community), :class => 'go-back' %>
+  </div>
+</div>
+
+<div class="section">
+  <div class="content">
+    <div id="thank-you-text">
+      <%= snippet('Apartments Thank You Text') %>
+    </div>
+
+    <%= lead_2_lease_mediaplex_code(@community, flash[:lead_2_lease_email]) %>
+  </div>
+</div>
+
