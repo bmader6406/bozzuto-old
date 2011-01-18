@@ -1,0 +1,16 @@
+<% render_meta(@community, :floor_plans) %>
+
+<div class="section page-title">
+  <div class="content">
+    <h2>Homes</h2>
+    <%= link_to @community.title, home_community_url(@community), :class => 'go-back' %>
+  </div>
+</div>
+
+<div class="section homes">
+  <div class="content">
+    <ul>
+      <%= render_homes_mobile_listings(@community) %>
+    </ul>
+  </div>
+</div>
