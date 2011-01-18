@@ -69,7 +69,11 @@ ActionController::Routing::Routes.draw do |map|
     :collection  => { :map => :get }
   )
   map.resources :home_communities, home_community_options do |community|
-    community.resources :homes, :only => :index
+    community.resources :homes, :only => :index do |home|
+      home.resources :floor_plans,
+        :controller => :home_floor_plans,
+        :only => [:index, :show]
+    end
 
     community.resource :features, :only => :show
 
