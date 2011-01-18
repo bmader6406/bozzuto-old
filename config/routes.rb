@@ -104,6 +104,12 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.resources :landing_pages, :as => :regions, :only => :show
+  
+  map.resources :states, :only => :show do |states|
+    states.resources :counties, :only => :index
+  end
+  map.resources :counties, :only => :show
+  map.resources :cities, :only => :show
 
   map.resource :contact,
     :path_prefix => 'about-us',

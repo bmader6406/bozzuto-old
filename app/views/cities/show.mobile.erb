@@ -1,0 +1,14 @@
+<div class="section page-title">
+  <div class="content">
+    <h2><%= @city.name %></h2>
+    <%= link_to @city.state.name, state_path(@city.state), :class => 'go-back' %>
+  </div>
+</div>
+
+<div class="section property-list">
+  <div class="content">
+    <ul>
+      <%= render :partial => 'community_searches/community', :collection => @city.apartment_communities %>
+    </ul>
+  </div>
+</div>
