@@ -1,7 +1,7 @@
 class LassoSubmissionsController < ApplicationController
   before_filter :find_community
 
-  layout 'community'
+  layout :detect_mobile_layout
 
   def show
   end
@@ -16,5 +16,9 @@ class LassoSubmissionsController < ApplicationController
   def find_community
     @community = HomeCommunity.find(params[:home_community_id])
     @page = @community.contact_page
+  end
+
+  def detect_mobile_layout
+    mobile? ? 'application' : 'community'
   end
 end

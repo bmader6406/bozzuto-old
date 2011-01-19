@@ -89,6 +89,9 @@ en:
         meta_description: SEO Description
         meta_keywords: SEO Keywords
         meta_title: SEO Title
+        mobile_banner_image: Mobile Banner Image
+        mobile_body: Mobile Body
+        mobile_title: Mobile Title
       landing_page:
         masthead_body: Masthead Body
         masthead_image: Masthead Image
@@ -202,6 +205,15 @@ en:
         mini_slideshow: Mini Slideshow
       mini_slideshow:
         link_url: Link URL
+      page:
+        left_montage_image: Left Montage Image
+        meta_description: SEO Description
+        meta_keywords: SEO Keywords
+        meta_title: SEO Title
+        middle_montage_image: Middle Montage Image
+        mobile_body: Mobile Body
+        mobile_body_extra: Mobile Body (Extra)
+        right_montage_image: Right Montage Image
       property_slide:
         property_slideshow: Property Slideshow
       section:
@@ -224,12 +236,24 @@ en:
         section_id: When in this section, contact links will include this topic automatically
       home_community:
         listing_promo: Image dimensions should be 151x54
+      home_page:
+        body: Shown when viewing the page from a web browser
+        mobile_banner_image: Image dimensions should be 280x85
+        mobile_body: Shown when viewing the page from a mobile device
+        mobile_title: Title of the page, shown when viewing from a mobile device
       home_page_slide:
         image: Image dimensions should be 1100x375
       landing_page:
         masthead_image: Image dimensions should be 230x223
       masthead_slide:
         image: Image dimensions should be 230x223
+      page:
+        body: Shown when viewing the page from a web browser
+        left_montage_image: Image dimensions should be 250x148
+        middle_montage_image: Image dimensions should be 540x148
+        mobile_body: Shown when viewing the page from a mobile device
+        mobile_body_extra: Extra content shown below the Mobile Body
+        right_montage_image: Image dimensions should be 310x148
       photo_set:
         flickr_set_number: It will take up to 2 hours for photos to be synced from Flickr
         needs_sync: Once checked, it will take up to 2 hours to refresh this set from Flickr

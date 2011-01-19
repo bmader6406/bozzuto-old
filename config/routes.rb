@@ -57,6 +57,8 @@ ActionController::Routing::Routes.draw do |map|
       :as     => :contact,
       :only   => [:show, :create],
       :member => { :thank_you => :get }
+    
+    community.resource :office_hours, :only => :show
 
     community.resources :media,
       :controller => :community_media,
@@ -69,7 +71,11 @@ ActionController::Routing::Routes.draw do |map|
     :collection  => { :map => :get }
   )
   map.resources :home_communities, home_community_options do |community|
-    community.resources :homes, :only => :index
+    community.resources :homes, :only => :index do |home|
+      home.resources :floor_plans,
+        :controller => :home_floor_plans,
+        :only => [:index, :show]
+    end
 
     community.resource :features, :only => :show
 
@@ -93,6 +99,8 @@ ActionController::Routing::Routes.draw do |map|
       :as     => :contact,
       :only   => :show,
       :member => { :thank_you => :get }
+    
+    community.resource :office_hours, :only => :show
 
     community.resources :media,
       :controller => :community_media,
@@ -100,6 +108,12 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.resources :landing_pages, :as => :regions, :only => :show
+  
+  map.resources :states, :only => :show do |states|
+    states.resources :counties, :only => :index
+  end
+  map.resources :counties, :only => :show
+  map.resources :cities, :only => :show
 
   map.resource :contact,
     :path_prefix => 'about-us',

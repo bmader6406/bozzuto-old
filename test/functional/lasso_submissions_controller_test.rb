@@ -12,55 +12,137 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
       @page = PropertyContactPage.make(:property => @community)
     end
 
+
     context 'a GET to #show' do
-      setup do
-        get :show, :home_community_id => @community.to_param
+      browser_context do
+        context 'with a page' do
+          setup do
+            get :show, :home_community_id => @community.to_param
+          end
+
+          should_respond_with :success
+          should_render_with_layout :community
+          should_render_template :show
+          should_assign_to :community
+        end
+
+        context 'without page' do
+          setup do
+            @page.destroy
+            get :show, :home_community_id => @community.to_param
+          end
+
+          should_respond_with :success
+          should_render_with_layout :community
+          should_render_template :show
+          should_assign_to :community
+        end
       end
 
-      should_respond_with :success
-      should_render_template :show
-      should_assign_to :community
+      mobile_context do
+        context 'with a page' do
+          setup do
+            get :show,
+              :home_community_id => @community.to_param,
+              :format => :mobile
+          end
+
+          should_respond_with :success
+          should_render_with_layout :application
+          should_render_template :show
+          should_assign_to :community
+        end
+
+        context 'without page' do
+          setup do
+            @page.destroy
+            get :show,
+              :home_community_id => @community.to_param,
+              :format => :mobile
+          end
+
+          should_respond_with :success
+          should_render_with_layout :application
+          should_render_template :show
+          should_assign_to :community
+        end
+      end
     end
     
-    context 'a GET to #show without page' do
-      setup do
-        @page.destroy
-        get :show, :home_community_id => @community.to_param
-      end
-
-      should_respond_with :success
-      should_render_template :show
-      should_assign_to :community
-    end
 
     context 'a GET to #thank_you' do
-      context 'with an email in the lasso cookie' do
-        setup do
-          @email = Faker::Internet.email
-          @request.cookies['lasso_email'] = @email
+      browser_context do
+        context 'with an email in the lasso cookie' do
+          setup do
+            @email = Faker::Internet.email
+            @request.cookies['lasso_email'] = @email
 
-          get :thank_you, :home_community_id => @community.to_param
-        end
+            get :thank_you, :home_community_id => @community.to_param
+          end
 
-        should_respond_with :success
-        should_render_template :thank_you
-        should_assign_to :community
-        should_assign_to(:email) { @email }
+          should_respond_with :success
+          should_render_with_layout :community
+          should_render_template :thank_you
+          should_assign_to :community
+          should_assign_to(:email) { @email }
 
-        should 'erase the lasso cookie' do
-          assert_nil cookies['lasso_email']
+          should 'erase the lasso cookie' do
+            assert_nil cookies['lasso_email']
+          end
         end
       end
 
-      context 'without an email in the lasso cookie' do
-        setup do
-          get :thank_you, :home_community_id => @community.to_param
-        end
+      mobile_context do
+        context 'with an email in the lasso cookie' do
+          setup do
+            @email = Faker::Internet.email
+            @request.cookies['lasso_email'] = @email
 
-        should_respond_with :success
-        should_render_template :thank_you
-        should_assign_to :community
-        should_not_assign_to(:email)
+            get :thank_you,
+              :home_community_id => @community.to_param,
+              :format => :mobile
+          end
+
+          should_respond_with :success
+          should_render_with_layout :application
+          should_render_template :thank_you
+          should_assign_to :community
+          should_assign_to(:email) { @email }
+
+          should 'erase the lasso cookie' do
+            assert_nil cookies['lasso_email']
+          end
+        end
+      end
+
+      browser_context do
+        context 'without an email in the lasso cookie' do
+          setup do
+            get :thank_you, :home_community_id => @community.to_param
+          end
+
+          should_respond_with :success
+          should_render_with_layout :community
+          should_render_template :thank_you
+          should_assign_to :community
+          should_not_assign_to(:email)
+        end
+      end
+
+      mobile_context do
+        context 'without an email in the lasso cookie' do
+          setup do
+            get :thank_you,
+              :home_community_id => @community.to_param,
+              :format => :mobile
+          end
+
+          should_respond_with :success
+          should_render_with_layout :application
+          should_render_template :thank_you
+          should_assign_to :community
+          should_not_assign_to(:email)
+        end
       end
     end
   end

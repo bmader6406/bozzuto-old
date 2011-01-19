@@ -1,0 +1,14 @@
+<div class="section page-title">
+  <div class="content">
+    <h2><%= @county.name %></h2>
+    <%= link_to "Browse By County", state_counties_path(@county.state), :class => 'go-back' %>
+  </div>
+</div>
+
+<div class="section property-list">
+  <div class="content">
+    <ul>
+      <%= render :partial => 'apartment_communities/listing', :collection => @county.apartment_communities, :as => :community %>
+    </ul>
+  </div>
+</div>

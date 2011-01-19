@@ -1,19 +1,28 @@
 <div class="section main">
   <div class="content">
     <div class="intro">
-      <h2>Bozzuto Brings You Home</h2>
-      <img src="/images/mobile/content/living-rm.png" alt="Living room of a Bozzuto property" />
-      <p><span class="lead-in">We are six companies in one: The Bozzuto Group</span>, a privately held, integrated real estate services organization. Together we create quality homes and extraordinary communities.</p>
-    </div><!--/.intro-->
+      <% if @home_page.mobile_title? %>
+        <h2><%= @home_page.mobile_title %></h2>
+      <% end %>
+
+      <% if @home_page.mobile_banner_image? %>
+        <%= image_tag @home_page.mobile_banner_image.url, :width => 280, :height => 85 %>
+      <% end %>
+
+      <% if @home_page.mobile_body? %>
+        <%= @home_page.mobile_body.try(:html_safe) %>
+      <% end %>
+    </div>
+
     <ul class="starting-points">
       <li>
-        <a href="#" class="btn apartments">Lease an Apartment</a>
+        <%= link_to 'Lease an Apartment', '/apartments', :class => 'btn apartments' %>
       </li>
       <li>
-        <a href="#" class="btn new-homes">Buy a Home</a>
+        <%= link_to 'Buy a Home', home_communities_path, :class => 'btn new-homes' %>
       </li>
       <li>
-        <a href="#" class="btn about-us">About Us</a>
+        <%= link_to 'About Us', '/about-us', :class => 'btn about-us' %>
       </li>
       <li>
         <%= link_to 'Our Services', '/services', :class => 'btn about-us' %>

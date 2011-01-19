@@ -1,0 +1,18 @@
+<% render_meta(@community, :floor_plans) %>
+
+
+<div class="section page-title">
+  <div class="content">
+    <h2><%= @plan.name %></h2>
+
+    <% link_to home_community_home_floor_plans_path(@community, @home), :class => 'go-back' do %>
+      <%= @home.name %>
+    <% end %>
+  </div>
+</div>
+
+<div class="section floor-plan-detail">
+  <div class="content">
+    <%= image_tag @plan.image.url, :width => 280, :alt => "#{@home.name} #{@plan.name} plan" %>
+  </div>
+</div>

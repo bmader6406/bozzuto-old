@@ -207,9 +207,9 @@ HomePage:
   fields:
     default:
     list:
-    form: meta_title, meta_description, meta_keywords, body, home_mini_slideshow, apartment_mini_slideshow
+    form: meta_title, meta_description, meta_keywords, body, home_mini_slideshow, apartment_mini_slideshow, mobile_title, mobile_banner_image, mobile_body
     options:
-      ckeditor: body
+      ckeditor: body, mobile_body
       destroy_related: HomePageSlide
   order_by:
   relationships: slides, apartment_mini_slideshow, home_mini_slideshow
@@ -330,9 +330,9 @@ Page:
     list_deleted: title, section_title
     show: title, published, section, parent, body, left_montage_image, middle_montage_image, right_montage_image
     list: formatted_title, published, section, position
-    form: title, meta_title, meta_description, meta_keywords, body, section, parent, published, left_montage_image, middle_montage_image, right_montage_image
+    form: title, section, parent, published, meta_title, meta_description, meta_keywords, body, mobile_body, mobile_body_extra, left_montage_image, middle_montage_image, right_montage_image
     options:
-      ckeditor: body
+      ckeditor: body, mobile_body, mobile_body_extra
       destroy_related: MastheadSlideshow, BodySlideshow
   order_by: section_id, lft
   relationships: parent, section, masthead_slideshow, body_slideshow

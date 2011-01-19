@@ -36,13 +36,31 @@ class HomeCommunitiesControllerTest < ActionController::TestCase
     end
 
     context "a GET to #show" do
-      setup do
-        get :show, :id => @community.to_param
-      end
+      context 'when not logged in to typus' do
+        browser_context do
+          setup do
+            get :show, :id => @community.to_param
+          end
 
-      should_assign_to(:community) { @community }
-      should_respond_with :success
-      should_render_template :show
+          should_assign_to(:community) { @community }
+          should_render_with_layout :community
+          should_respond_with :success
+          should_render_template :show
+        end
+
+        mobile_context do
+          setup do
+            get :show,
+              :id => @community.to_param,
+              :format => :mobile
+          end
+
+          should_assign_to(:community) { @community }
+          should_render_with_layout :application
+          should_respond_with :success
+          should_render_template :show
+        end
+      end
     end
     
     context 'logged in to typus' do
@@ -56,9 +74,9 @@ class HomeCommunitiesControllerTest < ActionController::TestCase
           get :show, :id => @unpublished_community.to_param
         end
 
-        should_assign_to(:community) { @unpublished_community }
         should_respond_with :success
         should_render_template :show
+        should_assign_to(:community) { @unpublished_community }
       end
     end
   end

@@ -27,9 +27,8 @@
         <% end %>
       </li>
       <li>
-        <%# TODO: Link 'Request a Call Back' button %>
-        <% link_to '#', :class => 'btn call-back' do %>
-          <span>Request a Call Back</span>
+        <% link_to apartment_community_lead2_lease_submissions_path(@community), :class => 'btn email-us' do %>
+          <span>Email Us</span>
         <% end %>
       </li>
       <li>
@@ -47,10 +46,11 @@
     <h3>Community Info</h3>
 
     <ul>
-      <li>
-        <%# TODO: Link 'Office Hours' button %>
-        <%= link_to 'Office Hours', '#', :class => 'btn' %>
-      </li>
+      <%- if @community.contact_page? -%>
+        <li>
+          <%= link_to 'Office Hours', apartment_community_office_hours_path(@community), :class => 'btn' %>
+        </li>
+      <%- end -%>
       <li>
         <%= link_to 'Features & Amenities', apartment_community_features_path(@community), :class => 'btn' %>
       </li>

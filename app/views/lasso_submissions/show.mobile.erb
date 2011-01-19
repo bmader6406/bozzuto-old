@@ -1,0 +1,41 @@
+<% render_meta(@page) if @page %>
+
+<div class="section page-title">
+  <div class="content">
+    <h2>Email Us</h2>
+    <%= link_to @community.title, community_url(@community), :class => 'go-back' %>
+  </div>
+</div>
+
+<div class="section">
+  <div class="content">
+    <% if @community.show_lasso_form? -%>
+      <h3>Ready to speak with a sales consultant?</h3>
+
+      <p id="community-contact-note">Fill out the form below for availability and specials.</p>
+
+      <p><em>* required</em></p>
+
+      <div id="community-contact-form">
+        <form method="post" id="lasso-form" class="required-form" action="http://www.mylasso.com/registrant_signup.php">
+          <%= hidden_field_tag 'LassoUID', @community.lasso_account.uid %>
+          <%= hidden_field_tag 'ClientID', @community.lasso_account.client_id %>
+          <%= hidden_field_tag 'ProjectID', @community.lasso_account.project_id %>
+          <%= hidden_field_tag 'SignupThankyouLink', thank_you_home_community_lasso_submissions_url(@community) %>
+
+          <%= text_field_tag 'FirstName', nil, :placeholder => '* Your First Name' %>
+          <%= text_field_tag 'LastName', nil, :placeholder => '* Your Last Name' %>
+          <%= text_field_tag 'Emails[Primary]', nil, :placeholder => '* Your Email' %>
+          <%= text_field_tag 'Address', nil, :placeholder => 'Your Address' %>
+          <%= text_field_tag 'City', nil, :placeholder => 'Your City' %>
+          <%= text_field_tag 'Province', nil, :placeholder => 'Your State' %>
+          <%= text_field_tag 'PostalCode', nil, :placeholder => 'Your ZIP Code' %>
+          <%= text_field_tag 'Phones[Home]', nil, :placeholder => 'Your Phone Number' %>
+          <%= text_area_tag 'Comments', nil, :rows => 8, :cols => 37, :placeholder => 'Your Comments' %>
+
+          <input type="submit" name="contact-submit" class="submit contact-submit" value="Submit" />
+        </form>
+      </div>
+    <% end -%>
+  </div>
+</div>

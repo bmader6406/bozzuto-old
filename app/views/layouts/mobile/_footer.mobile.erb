@@ -2,8 +2,14 @@
   <div class="content">
     <ul class="disclaimers">
       <li class="full-site">
-        <%= link_to 'Full Site', '/' %>
+        <%= link_to 'Full Site', root_path(:full_site => 1) %>
       </li>
+      <li class="contact-us">
+        <%= link_to 'Contact Us', contact_path %>
+      </li>
+    </ul>
+
+    <ul class="disclaimers">
       <li class="privacy-policy">
         <%= link_to 'Privacy Policy', '/pages/privacy-policy' %>
       </li>
@@ -12,8 +18,8 @@
       </li>
     </ul>
     <div class="copy-and-eho">
-      <span class="copyright">&copy; 2010 Bozzuto</span>
-      <span class="eho">Equal Housing Opportunity</span>
+      <span class="copyright">&copy; <%= Time.now.year %> Bozzuto</span>
+      <%= link_to 'Equal Housing Opportunity', '/about-us/housing-for-all', :class => 'eho' %>
     </div>
   </div>
 </div>

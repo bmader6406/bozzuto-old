@@ -9,23 +9,22 @@
   <div class="content">
     <%- if @search.type.zip? -%>
       <ul>
-        <%= render :partial => 'community', :collection => @search.results %>
+        <%= render_search_results(@search.results) %>
       </ul>
     <%- else -%>
       <%- if @search.results[:city].present? && @search.results[:title].present? -%>
         <h3>Closest Matches</h3>
         <ul>
-          <%= render :partial => 'community', :collection => @search.results[:title] %>
+          <%= render_search_results(@search.results[:title]) %>
         </ul>
         
         <h3>More Results</h3>
         <ul>
-          <%= render :partial => 'community', :collection => @search.results[:city] %>
+          <%= render_search_results(@search.results[:city]) %>
         </ul>
       <%- else -%>
         <ul>
-          <%= render :partial => 'community', 
-                :collection => [@search.results[:city], @search.results[:title]].detect(&:present?) %>
+          <%= render_search_results([@search.results[:city], @search.results[:title]].detect(&:present?)) %>
         </ul>
       <%- end -%>
     <%- end -%>

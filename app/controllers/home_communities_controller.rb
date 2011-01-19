@@ -2,11 +2,15 @@ class HomeCommunitiesController < SectionContentController
   before_filter :find_community, :except => [:index, :map]
   before_filter :find_communities, :find_page, :only => [:index, :map]
 
-  layout 'community', :except => [:index, :map]
+  layout :detect_mobile_layout
   
   def index
     @communities = @communities.paginate(:page => params[:page])
-    render :action => :index, :layout => 'application'
+
+    respond_to do |format|
+      format.html { render :action => :index, :layout => 'application' }
+      format.mobile
+    end
   end
 
   def show
@@ -42,5 +46,9 @@ class HomeCommunitiesController < SectionContentController
 
   def find_communities
     @communities = HomeCommunity.published.ordered_by_title
+  end
+
+  def detect_mobile_layout
+    mobile? ? 'application' : 'community'
   end
 end

@@ -26,7 +26,8 @@
     <ul class="browse states">
       <%- State.all.each do |state| -%>
         <li>
-          <%= link_to "<span>#{state.name}</span> (#{state.communities.count})".html_safe, '#', :class => 'btn' %>
+          <%= link_to "<span>#{state.name}</span> (#{state.apartment_communities.count})".html_safe, 
+                state_path(state), :class => 'btn' %>
         </li>
       <% end %>
     </ul>

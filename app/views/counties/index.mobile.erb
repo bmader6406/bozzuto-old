@@ -1,0 +1,20 @@
+<div class="section page-title">
+  <div class="content">
+    <h2>Browse by County</h2>
+    <%= link_to @state.name, state_path(@state), :class => 'go-back' %>
+  </div>
+</div>
+
+<div class="section browse">
+  <div class="content">
+    <h3>Browse by County</h3>
+    <ul class="browse city">
+      <%- @state.counties.each do |county| -%>
+        <li>
+          <%= link_to "<span>#{county.name}</span> (#{county.apartment_communities.count})".html_safe, 
+                county_path(county), :class => 'btn' %>
+        </li>
+      <%- end -%>
+    </ul>
+  </div>
+</div>
