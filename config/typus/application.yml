@@ -207,9 +207,9 @@ HomePage:
   fields:
     default:
     list:
-    form: meta_title, meta_description, meta_keywords, body, home_mini_slideshow, apartment_mini_slideshow
+    form: meta_title, meta_description, meta_keywords, body, home_mini_slideshow, apartment_mini_slideshow, mobile_title, mobile_banner_image, mobile_body
     options:
-      ckeditor: body
+      ckeditor: body, mobile_body
       destroy_related: HomePageSlide
   order_by:
   relationships: slides, apartment_mini_slideshow, home_mini_slideshow

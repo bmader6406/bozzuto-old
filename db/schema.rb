@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110119193817) do
+ActiveRecord::Schema.define(:version => 20110119210924) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -326,6 +326,10 @@ ActiveRecord::Schema.define(:version => 20110119193817) do
     t.string   "meta_keywords"
     t.integer  "apartment_mini_slideshow_id"
     t.integer  "home_mini_slideshow_id"
+    t.string   "mobile_title"
+    t.string   "mobile_banner_image_file_name"
+    t.string   "mobile_banner_image_content_type"
+    t.text     "mobile_body"
   end
 
   create_table "homes", :force => true do |t|

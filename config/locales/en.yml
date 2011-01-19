@@ -89,6 +89,9 @@ en:
         meta_description: SEO Description
         meta_keywords: SEO Keywords
         meta_title: SEO Title
+        mobile_banner_image: Mobile Banner Image
+        mobile_body: Mobile Body
+        mobile_title: Mobile Title
       landing_page:
         masthead_body: Masthead Body
         masthead_image: Masthead Image
@@ -233,6 +236,11 @@ en:
         section_id: When in this section, contact links will include this topic automatically
       home_community:
         listing_promo: Image dimensions should be 151x54
+      home_page:
+        body: Shown when viewing the page from a web browser
+        mobile_banner_image: Image dimensions should be 280x85
+        mobile_body: Shown when viewing the page from a mobile device
+        mobile_title: Title of the page, shown when viewing from a mobile device
       home_page_slide:
         image: Image dimensions should be 1100x375
       landing_page:
@@ -240,10 +248,10 @@ en:
       masthead_slide:
         image: Image dimensions should be 230x223
       page:
-        body: Shown when the user views the page from a web browser
+        body: Shown when viewing the page from a web browser
         left_montage_image: Image dimensions should be 250x148
         middle_montage_image: Image dimensions should be 540x148
-        mobile_body: Shown when the user views the page from a mobile device
+        mobile_body: Shown when viewing the page from a mobile device
         mobile_body_extra: Extra content shown below the Mobile Body
         right_montage_image: Image dimensions should be 310x148
       photo_set:
