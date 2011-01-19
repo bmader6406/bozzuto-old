@@ -1,59 +1,37 @@
   <script type="text/javascript">
   var bzCookies = {
     init: function(){
-      var form = document.getElementById("lasso-form"),
-      
-      this.registerEvents(form,
-                          "submit",
-                          setCookie( "lasso_email",this.getEmail(form) )
-                          );
-    },
-
-    getForm: function(formClass){
-      var forms = document.forms,
-          formCount = forms.length,
-          form;
-
-      while (formCount > 0){
-        form = forms[formCount];
-        if (form.getAttribute("class") == formClass)
-          return form;
-        formCount--;
-      }
-    },
-
-    getEmail: function(form){
-      var inputs = form.getElementsByTagName("input"),
-          inputCount = inputs.length,
-          input;
-
-      while (inputCount > 0){
-        input = inputs[inputCount];
-        if (input.name == "Emails[Primary]")
-          return input.value;
-        inputCount--;
-      }
-    },
-
-    registerEvents: function(el,eventType,cb){
-      var onEvent = "on" + eventType;
-
-      if (el.addEventListener)
-        el.addEventListener(eventType,cb);
-      else if (el.attachEvent)
-        el.attachEvent(onEvent,cb);
+      var form = document.getElementById("lasso-form");
+      if (form)
+        this.registerEvents(form,"submit");
       else
-        el[onEvent] = cb();
+        console.log("no form")
     },
 
-    setCookie: function(cookieName,cookieVal){
+    registerEvents: function(el,eventType){
+      var onEvent = "on" + eventType,
+          input = document.getElementById("Emails_Primary"),
+          cookieName = "lasso_email";
+
+      if (el.addEventListener){
+        el.addEventListener(eventType,function(e){
+          bzCookies.setCookie(cookieName,input.value); 
+        },false);
+      } else if (el.attachEvent){
+        el.attachEvent(onEvent,function(){
+          bzCookies.setCookie(cookieName,input.value); 
+        });
+      } else {
+        el[onEvent] = bzCookies.setCookie(cookieName,input.value); 
+      }
+    },
+
+    setCookie: function(cookieName,cookieVal){ 
       document.cookie = cookieName + '=' + cookieVal + '; path=/';
     }
   }
 
-  bzCookies.init();
-
-  var prettyHeaders = (function(){
+  var prettyHeaders = function(){
     var divs = document.getElementsByTagName("div"),
     MAX_LENGTH = 30,
     getTitleContainer, titleContainer, h2, a;
@@ -77,11 +55,16 @@
 
     titleContainer = getTitleContainer();
     
-    h2 = titleContainer.getElementsByTagName("h2")[0];
-    a = titleContainer.getElementsByTagName("a")[0];
+    if (titleContainer){
+      h2 = titleContainer.getElementsByTagName("h2")[0];
+      a = titleContainer.getElementsByTagName("a")[0];
 
-    if (a.innerText.length + h2.innerText.length > MAX_LENGTH){
-      h2.style.float = "none";
+      if (a.innerText.length + h2.innerText.length > MAX_LENGTH){
+        h2.style.float = "none";
+      }
     }
-  })();
+  };
+
+  prettyHeaders();
+  bzCookies.init();
   </script>
