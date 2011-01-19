@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   helper :all
   protect_from_forgery
 
+  before_filter :maintain_force_mobile_session_value
   before_filter :detect_mobile_user_agent
   around_filter :set_current_queue
 
@@ -52,6 +53,10 @@ class ApplicationController < ActionController::Base
     @apartment_floor_plan_groups ||= ApartmentFloorPlanGroup.all
   end
   helper_method :apartment_floor_plan_groups
+  
+  def maintain_force_mobile_session_value
+    session[:force_full_site] = params[:full_site] if params[:full_site].present?
+  end
 
   def detect_mobile_user_agent
     self.device = case request.env["HTTP_USER_AGENT"]
@@ -60,14 +65,24 @@ class ApplicationController < ActionController::Base
     when /Android/    then :android
     else                   :browser
     end
-
-    request.format = :mobile if device != :browser
+    
+    if (device != :browser && !force_normal?) || force_mobile?
+      request.format = :mobile
+    end
   end
 
   def mobile?
     request.format.to_sym == :mobile
   end
   helper_method :mobile?
+  
+  def force_mobile?
+    session[:force_full_site] == "0"
+  end
+
+  def force_normal?
+    session[:force_full_site] == "1"
+  end
   
   def page_url(section, page = nil)
     if section.service?
