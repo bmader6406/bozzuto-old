@@ -53,7 +53,6 @@ namespace :sync do
   declared in the sync_backups variable and defaults to 5.
     DESC
     task :db, :roles => :db, :only => { :primary => true } do
-
       filename = "database.#{stage}.#{Time.now.strftime '%Y-%m-%d_%H:%M:%S'}.sql.bz2"
       on_rollback { delete "#{shared_path}/sync/#{filename}" }
 
@@ -119,6 +118,9 @@ namespace :sync do
   declared in the sync_backups variable and defaults to 5.
     DESC
     task :db, :roles => :db, :only => { :primary => true } do
+      if fetch(:stage).to_s == 'production'
+        raise CommandError.new 'ERROR: cannot sync db up to production'
+      end
 
       filename = "database.#{stage}.#{Time.now.strftime '%Y-%m-%d_%H:%M:%S'}.sql.bz2"
 
@@ -157,6 +159,9 @@ namespace :sync do
   variable. The path is relative to the rails root.
     DESC
     task :fs, :roles => :web, :once => true do
+      if fetch(:stage).to_s == 'production'
+        raise CommandError.new 'ERROR: cannot sync fs up to production'
+      end
 
       server, port = host_and_port
       Array(fetch(:sync_directories, [])).each do |syncdir|
