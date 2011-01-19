@@ -1,4 +1,58 @@
   <script type="text/javascript">
+  var bzCookies = {
+    init: function(){
+      var form = document.getElementById("lasso-form"),
+      
+      this.registerEvents(form,
+                          "submit",
+                          setCookie( "lasso_email",this.getEmail(form) )
+                          );
+    },
+
+    getForm: function(formClass){
+      var forms = document.forms,
+          formCount = forms.length,
+          form;
+
+      while (formCount > 0){
+        form = forms[formCount];
+        if (form.getAttribute("class") == formClass)
+          return form;
+        formCount--;
+      }
+    },
+
+    getEmail: function(form){
+      var inputs = form.getElementsByTagName("input"),
+          inputCount = inputs.length,
+          input;
+
+      while (inputCount > 0){
+        input = inputs[inputCount];
+        if (input.name == "Emails[Primary]")
+          return input.value;
+        inputCount--;
+      }
+    },
+
+    registerEvents: function(el,eventType,cb){
+      var onEvent = "on" + eventType;
+
+      if (el.addEventListener)
+        el.addEventListener(eventType,cb);
+      else if (el.attachEvent)
+        el.attachEvent(onEvent,cb);
+      else
+        el[onEvent] = cb();
+    },
+
+    setCookie: function(cookieName,cookieVal){
+      document.cookie = cookieName + '=' + cookieVal + '; path=/';
+    }
+  }
+
+  bzCookies.init();
+
   var prettyHeaders = (function(){
     var divs = document.getElementsByTagName("div"),
     MAX_LENGTH = 30,
