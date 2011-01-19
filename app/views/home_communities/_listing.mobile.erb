@@ -1,0 +1,15 @@
+<li>
+  <div class="property">
+    <% link_to community, :class => 'info' do %>
+      <span class="name"><%=h community.title %></span>
+
+      <span class="address"><%= community.address %></span>
+
+      <% if community.listing_title? %>
+        <span class="sub-title"><%= community.listing_title %></span>
+      <% end %>
+    <% end %>
+
+    <%= link_to_phone_number(format_phone_number(community.phone_number), community.phone_number, :class => 'tel') %>
+  </div>
+</li>

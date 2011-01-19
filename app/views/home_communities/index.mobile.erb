@@ -1,0 +1,16 @@
+<% render_meta(@page) if @page.present? %>
+
+
+<div class="section page-title">
+  <div class="content">
+    <h2>Buy a Home</h2>
+  </div>
+</div>
+
+<div class="section property-list">
+  <div class="content">
+    <ul>
+      <%= render :partial => 'home_communities/listing', :collection => @communities, :as => :community %>
+    </ul>
+  </div>
+</div>

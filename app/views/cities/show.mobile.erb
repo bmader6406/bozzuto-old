@@ -8,7 +8,7 @@
 <div class="section property-list">
   <div class="content">
     <ul>
-      <%= render :partial => 'community_searches/community', :collection => @city.apartment_communities %>
+    <%= render :partial => 'apartment_communities/listing', :collection => @city.apartment_communities, :as => :community %>
     </ul>
   </div>
 </div>

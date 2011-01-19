@@ -6,7 +6,11 @@ class HomeCommunitiesController < SectionContentController
   
   def index
     @communities = @communities.paginate(:page => params[:page])
-    render :action => :index, :layout => 'application'
+
+    respond_to do |format|
+      format.html { render :action => :index, :layout => 'application' }
+      format.mobile
+    end
   end
 
   def show
