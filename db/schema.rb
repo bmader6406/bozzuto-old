@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110107202554) do
+ActiveRecord::Schema.define(:version => 20110119193817) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(:version => 20110107202554) do
     t.string   "right_montage_image_file_name"
     t.boolean  "published",                      :default => false, :null => false
     t.datetime "deleted_at"
+    t.text     "mobile_body"
+    t.text     "mobile_body_extra"
   end
 
   add_index "archived_pages", ["cached_slug"], :name => "index_archived_pages_on_cached_slug"
@@ -488,6 +490,8 @@ ActiveRecord::Schema.define(:version => 20110107202554) do
     t.string   "middle_montage_image_file_name"
     t.string   "right_montage_image_file_name"
     t.boolean  "published",                      :default => false, :null => false
+    t.text     "mobile_body"
+    t.text     "mobile_body_extra"
   end
 
   add_index "pages", ["path"], :name => "index_pages_on_path"

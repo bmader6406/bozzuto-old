@@ -202,6 +202,15 @@ en:
         mini_slideshow: Mini Slideshow
       mini_slideshow:
         link_url: Link URL
+      page:
+        left_montage_image: Left Montage Image
+        meta_description: SEO Description
+        meta_keywords: SEO Keywords
+        meta_title: SEO Title
+        middle_montage_image: Middle Montage Image
+        mobile_body: Mobile Body
+        mobile_body_extra: Mobile Body (Extra)
+        right_montage_image: Right Montage Image
       property_slide:
         property_slideshow: Property Slideshow
       section:
@@ -230,6 +239,13 @@ en:
         masthead_image: Image dimensions should be 230x223
       masthead_slide:
         image: Image dimensions should be 230x223
+      page:
+        body: Shown when the user views the page from a web browser
+        left_montage_image: Image dimensions should be 250x148
+        middle_montage_image: Image dimensions should be 540x148
+        mobile_body: Shown when the user views the page from a mobile device
+        mobile_body_extra: Extra content shown below the Mobile Body
+        right_montage_image: Image dimensions should be 310x148
       photo_set:
         flickr_set_number: It will take up to 2 hours for photos to be synced from Flickr
         needs_sync: Once checked, it will take up to 2 hours to refresh this set from Flickr

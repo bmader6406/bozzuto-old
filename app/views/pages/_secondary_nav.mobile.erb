@@ -1,0 +1,7 @@
+<ul>
+  <% @section.pages.root.siblings.each do |page| %>
+    <li>
+      <%= link_to page.title, page_path(@section, page), :class => 'btn' %>
+    </li>
+  <% end %>
+</ul>
