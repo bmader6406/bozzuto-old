@@ -1,5 +1,5 @@
 class CommunityMediaController < ApplicationController
-  layout 'community'
+  layout :detect_mobile_layout
 
   before_filter :find_community
 

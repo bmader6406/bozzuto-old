@@ -19,9 +19,7 @@
 <% unless @community.photo_set.nil? %>
 
   <% slide_index = 1 %>
-  <% PhotoGroup.all.each do |group| %>
-    <% photos = group.photos.in_set(@community.photo_set) %>
-
+  <% @community.photo_groups_and_photos.each do |group, photos| %>
     <% unless photos.empty? %>
       <div class="media-group">
         <h2><%= group.title %></h2>
