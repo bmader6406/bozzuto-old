@@ -32,8 +32,7 @@
         <% end %>
       </li>
       <li>
-        <%# TODO: Link 'Text Me Community Info' button %>
-        <% link_to '#', :class => 'btn text-me' do %>
+        <% link_to new_apartment_community_sms_message_path(@community), :class => 'btn text-me' do %>
           <span>Text Me Community Info</span>
         <% end %>
       </li>

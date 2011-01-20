@@ -1,15 +1,29 @@
 class SmsMessagesController < ApplicationController
   before_filter :find_community
 
-  layout 'community'
+  layout :detect_mobile_layout
+  
+  def new; end
 
   def create
-    if params[:phone_number].present?
-      @community.send_info_message_to(params[:phone_number])
-      redirect_to thank_you_page
-    else
-      flash[:send_to_phone_errors] = true
-      redirect_to @community
+    respond_to do |format|
+      format.html {
+        if params[:phone_number].present?
+          @community.send_info_message_to(params[:phone_number])
+          redirect_to thank_you_page
+        else
+          flash[:send_to_phone_errors] = true
+          redirect_to @community
+        end
+      }
+      format.mobile {
+        if params[:phone_number].present?
+          @community.send_info_message_to(params[:phone_number])
+          render :thank_you
+        else
+          render :new
+        end
+      }
     end
   end
 

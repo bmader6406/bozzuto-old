@@ -50,7 +50,7 @@ ActionController::Routing::Routes.draw do |map|
 
     community.resource :sms_message,
       :as     => :send_to_phone,
-      :only   => :create,
+      :only   => [:new, :create],
       :member => { :thank_you => :get }
 
     community.resource :lead2_lease_submissions,
@@ -92,7 +92,7 @@ ActionController::Routing::Routes.draw do |map|
 
     community.resource :sms_message,
       :as     => :send_to_phone,
-      :only   => :create,
+      :only   => [:new, :create],
       :member => { :thank_you => :get }
 
     community.resource :lasso_submissions,
