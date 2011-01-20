@@ -49,8 +49,4 @@ class ApartmentCommunitiesController < ApplicationController
     end
   end
 
-  def detect_mobile_layout
-    mobile? ? 'application' : 'community'
-  end
-
 end
