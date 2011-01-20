@@ -3,7 +3,7 @@
 <div class="section page-title">
   <div class="content">
     <h2><%= @community.title %></h2>
-    <%= link_to @community.city.name, '#', :class => 'go-back' %>
+    <%= link_to @community.city.name, city_path(@community.city), :class => 'go-back' %>
   </div>
 </div>
 
@@ -16,24 +16,25 @@
     <p class="address"><%= @community.address %></p>
 
     <ul class="contact contact-list">
-      <li>
-        <% link_to mobile_map_url(@community), :class => 'btn directions' do %>
-          <span>Directions</span> <%= @community.city %>
-        <% end %>
-      </li>
-      <li>
+			<li>
         <% link_to_phone_number @community.phone_number, :class => 'btn call-us' do %>
           <span>Call Us</span> <%= format_phone_number(@community.phone_number) %>
         <% end %>
       </li>
       <li>
-        <% link_to apartment_community_lead2_lease_submissions_path(@community), :class => 'btn email-us' do %>
-          <span>Email Us</span>
+        <% link_to mobile_map_url(@community), :class => 'btn directions' do %>
+          <span>Directions</span> <%= @community.city %>
         <% end %>
       </li>
+			<%- if @community.show_lead_2_lease? -%>
+	      <li>
+	        <% link_to apartment_community_lead2_lease_submissions_path(@community), :class => 'btn email-us' do %>
+	          <span>Email Us</span>
+	        <% end %>
+	      </li>
+			<%- end -%>
       <li>
-        <%# TODO: Link 'Text Me Community Info' button %>
-        <% link_to '#', :class => 'btn text-me' do %>
+        <% link_to new_apartment_community_sms_message_path(@community), :class => 'btn text-me' do %>
           <span>Text Me Community Info</span>
         <% end %>
       </li>
@@ -46,23 +47,31 @@
     <h3>Community Info</h3>
 
     <ul>
+			<%- if @community.features_page? -%>
+				<li>
+	        <%= link_to 'Features & Amenities', apartment_community_features_path(@community), :class => 'btn' %>
+	      </li>
+			<%- end -%>
+			<%- if @community.photo_set.present? -%>
+				<li>
+	        <%= link_to 'Photos', apartment_community_media_path(@community), :class => 'btn' %>
+	      </li>
+			<%- end -%>
+			<%- if @community.floor_plans.present? -%>
+				<li>
+	        <%= link_to 'Floor Plans', apartment_community_floor_plan_groups_path(@community), :class => 'btn' %>
+	      </li>
+			<%- end -%>
+			<%- if @community.neighborhood_page? -%>
+	      <li>
+	        <%= link_to 'Neighborhood', apartment_community_neighborhood_path(@community), :class => 'btn' %>
+	      </li>
+			<%- end -%>
       <%- if @community.contact_page? -%>
         <li>
           <%= link_to 'Office Hours', apartment_community_office_hours_path(@community), :class => 'btn' %>
         </li>
       <%- end -%>
-      <li>
-        <%= link_to 'Features & Amenities', apartment_community_features_path(@community), :class => 'btn' %>
-      </li>
-      <li>
-        <%= link_to 'Photos', apartment_community_media_path(@community), :class => 'btn' %>
-      </li>
-      <li>
-        <%= link_to 'Floor Plans', apartment_community_floor_plan_groups_path(@community), :class => 'btn' %>
-      </li>
-      <li>
-        <%= link_to 'Neighborhood', apartment_community_neighborhood_path(@community), :class => 'btn' %>
-      </li>
       <% if @community.has_active_promo? %>
         <li>
           <%= link_to 'Specials', apartment_community_specials_path(@community), :class => 'btn' %>

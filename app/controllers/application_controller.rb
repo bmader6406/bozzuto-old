@@ -98,4 +98,8 @@ class ApplicationController < ActionController::Base
   def typus_user
     @typus_user ||= Typus.user_class.find_by_id(session[:typus_user_id])
   end
+  
+  def detect_mobile_layout
+    mobile? ? 'application' : 'community'
+  end
 end

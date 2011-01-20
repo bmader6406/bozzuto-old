@@ -12,8 +12,4 @@ class OfficeHoursController < ApplicationController
   def find_community
     @community = Property.find(params[:apartment_community_id] || params[:home_community_id])
   end
-  
-  def detect_mobile_layout
-    mobile? ? 'application' : 'community'
-  end
 end

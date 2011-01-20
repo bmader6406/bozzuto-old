@@ -161,6 +161,11 @@ Photo.blueprint do
   flickr_photo_id { (rand(50000000) + 50000000).to_s }
 end
 
+PhotoGroup.blueprint do
+  title            { Faker::Lorem.words(3) }
+  flickr_raw_title { Faker::Lorem.words(1) }
+end
+
 PhotoSet.blueprint do
   title             { Faker::Lorem.words(3) }
   flickr_set_number { (rand(50000000) + 50000000).to_s }

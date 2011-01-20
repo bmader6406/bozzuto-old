@@ -10,8 +10,4 @@ class ApartmentFloorPlanGroupsController < ApplicationController
   def find_community
     @community = ApartmentCommunity.find(params[:apartment_community_id])
   end
-
-  def detect_mobile_layout
-    mobile? ? 'application' : 'community'
-  end
 end

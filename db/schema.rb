@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110119210924) do
+ActiveRecord::Schema.define(:version => 20110120025856) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -514,6 +514,9 @@ ActiveRecord::Schema.define(:version => 20110119210924) do
     t.integer "photo_id"
   end
 
+  add_index "photo_groups_photos", ["photo_group_id"], :name => "index_photo_groups_photos_on_photo_group_id"
+  add_index "photo_groups_photos", ["photo_id"], :name => "index_photo_groups_photos_on_photo_id"
+
   create_table "photo_sets", :force => true do |t|
     t.string   "title",                                :null => false
     t.string   "flickr_set_number",                    :null => false
@@ -522,6 +525,8 @@ ActiveRecord::Schema.define(:version => 20110119210924) do
     t.datetime "updated_at"
     t.boolean  "needs_sync",        :default => false, :null => false
   end
+
+  add_index "photo_sets", ["property_id"], :name => "index_photo_sets_on_property_id"
 
   create_table "photos", :force => true do |t|
     t.string   "image_file_name",    :default => ""
@@ -533,6 +538,8 @@ ActiveRecord::Schema.define(:version => 20110119210924) do
     t.integer  "photo_set_id"
     t.integer  "position"
   end
+
+  add_index "photos", ["photo_set_id"], :name => "index_photos_on_photo_set_id"
 
   create_table "press_releases", :force => true do |t|
     t.string   "title",                               :null => false

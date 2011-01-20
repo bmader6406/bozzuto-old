@@ -1,0 +1,19 @@
+<% render_meta(@community, :media) %>
+
+<div class="section page-title">
+  <div class="content">
+    <h2>Photos</h2>
+    <%= link_to @community.title, @community, :class => 'go-back' %>
+  </div>
+</div>
+
+<div class="section mobile-photos">
+  <div class="content">
+    <%- @community.photos.for_mobile.each do |photo| -%>
+      <div class="photo">
+        <h3><%= photo.title %></h3>
+        <%= link_to image_tag(photo.image.url(:mobile), :alt => photo.title), photo.image.url %>
+      </div>
+    <%- end -%>
+  </div>
+</div>

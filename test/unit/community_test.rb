@@ -18,6 +18,7 @@ class CommunityTest < ActiveSupport::TestCase
     should_have_one :features_page
     should_have_one :neighborhood_page
     should_have_one :contact_page
+    should_have_many :photos, :through => :photo_set
     
     should_have_named_scope 'sort_for(LandingPage.make(:randomize_property_listings => true))',
       :order => 'RAND(NOW())'
@@ -42,6 +43,33 @@ class CommunityTest < ActiveSupport::TestCase
     should 'acts_as_list' do
       assert Community.included_modules.include?(ActsAsList::InstanceMethods)
       assert Community.column_names.include?('featured_position')
+    end
+    
+    context 'with photo set' do
+      setup do
+        @community = ApartmentCommunity.make
+        @set = PhotoSet.make_unsaved(:property => @community)
+        @set.stubs(:flickr_set).returns(OpenStruct.new(:title => 'photo set'))
+        @set.save
+
+        @photo = Photo.make :photo_set => @set
+        @photo_group = PhotoGroup.make
+        @photo_group.photos << @photo
+        @photo_group_not_part_of_community = PhotoGroup.make
+      end
+      
+      context '#photo groups' do
+        should 'correctly report groups that have photos for this community' do
+          assert_contains @community.photo_groups, @photo_group
+          assert_does_not_contain @community.photo_groups, @photo_group_not_part_of_community
+        end
+      end
+      
+      context '#photo_groups_and_photos' do
+        should 'return photo groups and photos in that groups' do
+          assert_contains @community.photo_groups_and_photos.first.last, @photo
+        end
+      end
     end
 
     context '#has_overview_bullets?' do

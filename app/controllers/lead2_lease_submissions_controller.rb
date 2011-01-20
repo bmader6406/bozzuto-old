@@ -30,8 +30,4 @@ class Lead2LeaseSubmissionsController < ApplicationController
     @community = ApartmentCommunity.find(params[:apartment_community_id])
     @page = @community.contact_page
   end
-
-  def detect_mobile_layout
-    mobile? ? 'application' : 'community'
-  end
 end
