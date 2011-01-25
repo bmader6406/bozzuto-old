@@ -60,7 +60,10 @@
       a = titleContainer.getElementsByTagName("a")[0];
 
       if (a.innerText.length + h2.innerText.length > MAX_LENGTH){
-        h2.style.float = "none";
+        if (h2.setAttribute)
+          h2.setAttribute("class","wrap");
+        else 
+          h2.style.float = "none";
       }
     }
   };
@@ -68,3 +71,4 @@
   prettyHeaders();
   bzCookies.init();
   </script>
+

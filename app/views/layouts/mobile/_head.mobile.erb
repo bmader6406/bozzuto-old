@@ -69,7 +69,7 @@
     border-bottom: 1px solid #D9DADB;
   }
   .btn, .submit {
-    background: url(/images/mobile/structure/button-sprites.png) 0 -25px no-repeat;
+    background: url(/images/mobile/structure/button-sprites.png) 0 -161px no-repeat;
     color: #fff;
     display: block;
     font-size: 14px;
@@ -109,7 +109,7 @@
     width: 278px;
   }
   .submit {
-    background-position: 0 -161px;
+    background-position: 0 -25px;
     border: 0;
     padding: 0 0 0 16px;
     text-align: left;
@@ -130,7 +130,7 @@
   /* @end Forms */
   /* @group Header */
   .header {
-    background: url(/images/mobile/structure/bg-header.png) 0 0 repeat-x;
+    background: #fff;
     height: 23px;
     padding: 25px 22px;
   }
@@ -153,7 +153,7 @@
   /* @end Header */
   /* @group Footer */
   .footer {
-    background: #6f6f6f url(/images/mobile/structure/bg-footer.png) 0 0 repeat-x;
+    background: #8c8b8b url(/images/mobile/structure/bg-footer.png) 0 0 repeat-x;
     font-size: 11px;
   }
   .footer, .footer a { color: #fff; }
@@ -167,6 +167,8 @@
   .full-site:after, .privacy-policy:after { 
     content: "|"; padding: 0 9px;
   }
+  .full-site { margin-left: 82px }
+  .privacy-policy { margin-left: 50px }
   .copy-and-eho {
     clear: left;
     color: #ccc;
@@ -230,7 +232,9 @@
     .page-title h2 {
       float: right;
     }
+    .page-title h2.wrap { float: none; margin-bottom: 10px; }
     .page-title {
+      background: #ebedee url(/images/mobile/structure/bg-page-title.png) top left repeat-x;
       overflow: hidden;
       padding-bottom: 20px;
     }
@@ -280,7 +284,9 @@
       padding: 10px 20px 10px 0;
       text-decoration: none;
     }
-    .floor-plan .info, .home .info { padding-right: 0px; width: 245px }
+    .floor-plan .info { border-right: none }
+    .property .info, .home .info { padding-right: 0px; width: 245px }
+    .property .info { height: 60px }
     .info span { display: block; line-height: 15px;}
     .property .address { margin-bottom: 2px; }
     .property .name, .property .address, .floor-plan .name, .home .name { font-weight: bold; }
@@ -297,6 +303,7 @@
       text-indent: -999px;
       width: 43px;
     }
+    .row { margin-bottom: 12px }
     /* @end Property List, Floor Plans */
 
     /* @group Community Overview */
@@ -319,5 +326,9 @@
     /* @end SMS Form */
 
   /* @end Sections */
+
+  /* @group WYSIWYG */
+  .wysiwyg p { margin-bottom: 8px }
+  /* @end WYSIWYG */
   </style>
 </head>
