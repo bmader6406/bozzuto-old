@@ -12,9 +12,6 @@
 <div class="section main">
   <div class="content">
     <%= @page.mobile_body.try(:html_safe) %>
-    <% if @page.section.cached_slug == 'apartments' && @page.first? %>
-      <%= link_to  %>
-    <% end %>
   </div>
 </div>
 
