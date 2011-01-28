@@ -1,11 +1,14 @@
 class CitiesController < ApplicationController
-  before_filter :load_city
+  before_filter :find_city
   
-  def show; end
+  def show
+    @apartment_communities = @city.apartment_communities.published
+  end
   
+
   private
   
-  def load_city
+  def find_city
     @city = City.find(params[:id])
   end
 end
