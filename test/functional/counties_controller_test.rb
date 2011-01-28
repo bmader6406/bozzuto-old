@@ -9,25 +9,47 @@ class CountiesControllerTest < ActionController::TestCase
       @county = County.make(:state => @state)
       @county.cities << @city
     end
-    
-    context '#index for mobile' do
-      setup do
-        get :index, :state_id => @state.to_param, :format => 'mobile'
+
+    context 'a GET to #index' do
+      browser_context do
+        setup do
+          get :index, :state_id => @state.to_param
+        end
+
+        should_respond_with :redirect
+        should_redirect_to('the apartment communities page') { apartment_communities_url }
       end
-      
-      should_respond_with :success
-      should_render_template :index
-      should_assign_to(:state){ @state }
+
+      mobile_context do
+        setup do
+          get :index, :state_id => @state.to_param, :format => 'mobile'
+        end
+
+        should_respond_with :success
+        should_render_template :index
+        should_assign_to(:state){ @state }
+      end
     end
-    
-    context '#show for mobile' do
-      setup do
-        get :show, :id => @county.to_param, :format => 'mobile'
+
+    context 'a GET to #show' do
+      browser_context do
+        setup do
+          get :show, :id => @county.to_param
+        end
+
+        should_respond_with :redirect
+        should_redirect_to('the apartment communities page') { apartment_communities_url }
       end
-      
-      should_respond_with :success
-      should_render_template :show
-      should_assign_to(:county){ @county }
+
+      mobile_context do
+        setup do
+          get :show, :id => @county.to_param, :format => 'mobile'
+        end
+
+        should_respond_with :success
+        should_render_template :show
+        should_assign_to(:county){ @county }
+      end
     end
   end
 end

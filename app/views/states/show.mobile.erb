@@ -18,10 +18,12 @@
     <h3>Browse by City</h3>
     <ul class="browse city">
       <%- @state.cities.each do |city| -%>
-        <% if city.apartment_communities.count > 0 %>
+        <% count = city.apartment_communities.published.count %>
+
+        <% if count > 0 %>
           <li>
             <% link_to city_path(city), :class => 'btn' do %>
-              <span><%= city.name %></span> (<%= city.apartment_communities.count %>)
+              <span><%= city.name %></span> (<%= count %>)
             <% end %>
           </li>
         <% end %>
