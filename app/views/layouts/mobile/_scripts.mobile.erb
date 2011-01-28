@@ -31,44 +31,6 @@
     }
   }
 
-  var prettyHeaders = function(){
-    var divs = document.getElementsByTagName("div"),
-    MAX_LENGTH = 30,
-    getTitleContainer, titleContainer, h2, a;
-
-    getTitleContainer = function(){
-      var div, children, i, len, container; 
-      
-      for (var i=0,len=divs.length; i<len; i++){
-        div = divs[i];
-
-        if (div.getAttribute("class") == "section page-title"){
-          children = div.childNodes;
-          container = children[0].nodeName == "DIV" ?
-            children[0] :
-            children[1];
-          break;
-        }
-      }
-      return container;
-    }
-
-    titleContainer = getTitleContainer();
-    
-    if (titleContainer){
-      h2 = titleContainer.getElementsByTagName("h2")[0];
-      a = titleContainer.getElementsByTagName("a")[0];
-
-      if (a.innerText.length + h2.innerText.length > MAX_LENGTH){
-        if (h2.setAttribute)
-          h2.setAttribute("class","wrap");
-        else 
-          h2.style.float = "none";
-      }
-    }
-  };
-
-  prettyHeaders();
   bzCookies.init();
   </script>
 
