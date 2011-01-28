@@ -21,8 +21,6 @@
                 <span class="price"><%= price_of_cheapest_floor_plan(@plans) %></span>
               </span>
             <% end %>
-
-            <%= link_to_phone_number(format_phone_number(@community.phone_number), @community.phone_number, :class => 'tel') %>
           </div>
         </li>
       <% end %>
