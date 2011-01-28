@@ -31,8 +31,9 @@
       </h3>
     <% end %>
 
-
-    <%= image_tag @plan.actual_image, :width => 280, :alt => "#{@plan.name} floor plan" %>
+    <% if @plan.actual_image.present? %>
+      <%= image_tag @plan.actual_image, :width => 280, :alt => "#{@plan.name} floor plan" %>
+    <% end %>
 
     <% if @plan.availability_url? %>
       <% link_to @plan.availability_url, :class => 'btn' do %>
