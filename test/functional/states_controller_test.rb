@@ -3,11 +3,9 @@ require 'test_helper'
 class StatesControllerTest < ActionController::TestCase
   context 'StatesController' do
     setup do
-      @community = ApartmentCommunity.make
-      @city = @community.city
-      @state = @city.state
-      @county = County.make(:state => @state)
-      @county.cities << @city
+      @state     = State.make
+      @city      = City.make :state => @state
+      @community = ApartmentCommunity.make :city => @city
     end
 
     context 'a GET to #show' do
@@ -27,7 +25,8 @@ class StatesControllerTest < ActionController::TestCase
 
         should_respond_with :success
         should_render_template :show
-        should_assign_to(:state){ @state }
+        should_assign_to(:state) { @state }
+        should_assign_to(:cities) { @state.cities.ordered_by_name }
       end
     end
   end

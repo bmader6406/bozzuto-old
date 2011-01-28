@@ -2,7 +2,7 @@ class CitiesController < ApplicationController
   before_filter :find_city, :mobile_only
   
   def show
-    @apartment_communities = @city.apartment_communities.published
+    @apartment_communities = @city.apartment_communities.published.ordered_by_title
   end
   
 

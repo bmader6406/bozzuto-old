@@ -1,11 +1,13 @@
 class StatesController < ApplicationController
   before_filter :find_state, :mobile_only
-  
-  def show; end
-  
+
+  def show
+    @cities = @state.cities.ordered_by_name
+  end
+
 
   private
-  
+
   def find_state
     @state = State.find_by_code!(params[:id])
   end
