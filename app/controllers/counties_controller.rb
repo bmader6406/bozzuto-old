@@ -1,5 +1,5 @@
 class CountiesController < ApplicationController
-  before_filter :load_county, :except => :index
+  before_filter :find_county, :except => :index
   
   def index
     @state = State.find_by_code!(params[:state_id])
@@ -7,9 +7,10 @@ class CountiesController < ApplicationController
   
   def show; end
   
+
   private
   
-  def load_county
+  def find_county
     @county = County.find(params[:id])
   end
 end

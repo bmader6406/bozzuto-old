@@ -1,11 +1,12 @@
 class StatesController < ApplicationController
-  before_filter :load_state
+  before_filter :find_state
   
   def show; end
   
+
   private
   
-  def load_state
+  def find_state
     @state = State.find_by_code!(params[:id])
   end
 end

@@ -7,7 +7,9 @@
 
 <div class="section browse">
   <div class="content">
-    <%= link_to '<span>Browse by County</span>'.html_safe, state_counties_path(@state), :class => 'btn submit' %>
+    <% link_to state_counties_path(@state), :class => 'btn submit' do %>
+      <span>Browse by County</span>
+    <% end %>
   </div>
 </div>
 
@@ -16,10 +18,13 @@
     <h3>Browse by City</h3>
     <ul class="browse city">
       <%- @state.cities.each do |city| -%>
-        <li>
-          <%= link_to "<span>#{city.name}</span> (#{city.apartment_communities.count})".html_safe,
-                city_path(city), :class => 'btn' %>
-        </li>
+        <% if city.apartment_communities.count > 0 %>
+          <li>
+            <% link_to city_path(city), :class => 'btn' do %>
+              <span><%= city.name %></span> (<%= city.apartment_communities.count %>)
+            <% end %>
+          </li>
+        <% end %>
       <%- end -%>
     </ul>
   </div>

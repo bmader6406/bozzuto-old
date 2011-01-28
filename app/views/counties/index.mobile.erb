@@ -10,10 +10,13 @@
     <h3>Browse by County</h3>
     <ul class="browse city">
       <%- @state.counties.each do |county| -%>
-        <li>
-          <%= link_to "<span>#{county.name}</span> (#{county.apartment_communities.count})".html_safe, 
-                county_path(county), :class => 'btn' %>
-        </li>
+        <% if county.apartment_communities.count > 0 %>
+          <li>
+            <% link_to county_path(county), :class => 'btn' do %>
+              <span><%= county.name %></span> (<%= county.apartment_communities.count %>)
+            <% end %>
+          </li>
+        <% end %>
       <%- end -%>
     </ul>
   </div>
