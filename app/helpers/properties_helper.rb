@@ -7,7 +7,11 @@ module PropertiesHelper
     when :android
       "geo:#{lat},#{lon}"
     when :blackberry
-      property_path(property, :format => :kml)
+      if property.is_a?(HomeCommunity)
+        home_community_office_hours_path(property)
+      else
+        apartment_community_office_hours_path(property)
+      end
     else
       "http://maps.google.com/maps?q=#{lat},#{lon}"
     end

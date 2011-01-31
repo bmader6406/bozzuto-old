@@ -28,11 +28,26 @@ class PropertiesHelperTest < ActionView::TestCase
       end
 
       context 'on BlackBerry' do
-        should 'return the map url' do
-          url = apartment_community_path(@community, :format => :kml)
-          stubs(:device).returns(:blackberry)
+        context 'with a home community' do
+          setup { @community = HomeCommunity.make }
 
-          assert_equal url, mobile_map_url(@community)
+          should 'return the home community office hours url' do
+            url = home_community_office_hours_path(@community)
+            stubs(:device).returns(:blackberry)
+
+            assert_equal url, mobile_map_url(@community)
+          end
+        end
+
+        context 'with an apartment community' do
+          setup { @community = ApartmentCommunity.make }
+
+          should 'return the apartment community office hours url' do
+            url = apartment_community_office_hours_path(@community)
+            stubs(:device).returns(:blackberry)
+
+            assert_equal url, mobile_map_url(@community)
+          end
         end
       end
     end
