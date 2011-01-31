@@ -12,6 +12,7 @@ class NewsPostsController < SectionContentController
   def show
   end
 
+
   private
 
   def find_posts
@@ -20,5 +21,9 @@ class NewsPostsController < SectionContentController
 
   def find_post
     @news_post = section_news_posts.find(params[:news_post_id])
+  end
+
+  def force_browser?
+    true
   end
 end

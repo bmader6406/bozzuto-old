@@ -7,29 +7,41 @@ class AwardsControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #index' do
-      setup do
-        5.times { Award.make(:sections => [@section]) }
-        Award.make(:unpublished, :sections => [@section])
-        @awards = @section.awards
+      %w(browser mobile).each do |device|
+        send("#{device}_context") do
+          setup do
+            set_mobile_user_agent! if device == 'mobile'
 
-        get :index, :section => @section.to_param
+            5.times { Award.make(:sections => [@section]) }
+            Award.make(:unpublished, :sections => [@section])
+            @awards = @section.awards
+
+            get :index, :section => @section.to_param
+          end
+
+          should_respond_with :success
+          should_render_template :index
+          should_assign_to(:awards) { @awards.published }
+        end
       end
-
-      should_respond_with :success
-      should_render_template :index
-      should_assign_to(:awards) { @awards.published }
     end
 
     context 'a GET to #show' do
-      setup do
-        @award = Award.make :sections => [@section]
+      %w(browser mobile).each do |device|
+        send("#{device}_context") do
+          setup do
+            set_mobile_user_agent! if device == 'mobile'
 
-        get :show, :section => @section.to_param, :award_id => @award.id
+            @award = Award.make :sections => [@section]
+
+            get :show, :section => @section.to_param, :award_id => @award.id
+          end
+
+          should_respond_with :success
+          should_render_template :show
+          should_assign_to(:award) { @award }
+        end
       end
-
-      should_respond_with :success
-      should_render_template :show
-      should_assign_to(:award) { @award }
     end
   end
 end

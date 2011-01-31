@@ -18,4 +18,8 @@ class AwardsController < SectionContentController
   def find_award
     @award = section_awards.find(params[:award_id])
   end
+
+  def force_browser?
+    true
+  end
 end

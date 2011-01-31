@@ -70,7 +70,7 @@ class ApplicationController < ActionController::Base
       else                   :browser
       end
 
-      if (device != :browser && !force_normal?) || force_mobile?
+      if (device != :browser && !force_browser?) || force_mobile?
         request.format = :mobile
       end
     end
@@ -85,7 +85,7 @@ class ApplicationController < ActionController::Base
     session[:force_full_site] == "0"
   end
 
-  def force_normal?
+  def force_browser?
     session[:force_full_site] == "1"
   end
 

@@ -22,4 +22,8 @@ class NewsAndPressController < SectionContentController
 
     render_404 if @page.nil?
   end
+
+  def force_browser?
+    true
+  end
 end
