@@ -12,8 +12,13 @@
 <div class="section main">
   <div class="content">
     <%= @page.mobile_body.try(:html_safe) %>
+
     <% if @page.section.cached_slug == 'apartments' && @page.first? %>
       <%= link_to 'Find an Apartment', community_search_path, :class => 'btn submit find-an-apartment' %>
+    <% end %>
+
+    <% if @page.section.cached_slug == 'new-homes' && @page.first? %>
+      <%= link_to 'Buy a Home', home_communities_path, :class => 'btn submit buy-a-home' %>
     <% end %>
   </div>
 </div>
