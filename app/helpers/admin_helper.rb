@@ -37,4 +37,8 @@ module AdminHelper
       "Recover entry?"
     end
   end
+
+  def typus_required_badge
+    '<span class="required">*</span>'
+  end
 end

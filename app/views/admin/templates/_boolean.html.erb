@@ -1,5 +1,11 @@
+<%
+  if @resource[:class].typus_field_options_for(:required).to_s.include?(attribute)
+    label_text << " #{typus_required_badge}"
+  end
+%>
+
 <li>
   <%= form.check_box attribute, options %>
-  <%= form.label attribute, label_text, :class => 'inline_label' %>
+  <%= form.label attribute, label_text.html_safe, :class => 'inline_label' %>
   <%= render_tip(attribute) %>
 </li>

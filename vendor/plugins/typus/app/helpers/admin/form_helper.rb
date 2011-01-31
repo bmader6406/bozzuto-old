@@ -35,6 +35,10 @@ module Admin::FormHelper
 
     form = options[:form]
 
+    required = if @resource[:class].typus_field_options_for(:required).to_s.include?(attribute)
+      typus_required_badge
+    end
+
     ##
     # We only can pass parameters to 'new' and 'edit', so this hack makes
     # the work to replace the current action.
@@ -69,7 +73,7 @@ module Admin::FormHelper
         label_text = @resource[:class].human_attribute_name(attribute)
         html << <<-HTML.html_safe
 <li>
-  #{form.label related_fk, "#{label_text} <small>#{message}</small>".html_safe}
+  #{form.label related_fk, "#{label_text} #{required} <small>#{message}</small>".html_safe}
   #{render_tip(related_fk)}
   #{form.select related_fk, values, options, html_options }
 </li>

@@ -6,10 +6,14 @@
     ckeditor = true
     options.merge!(:swf_params=>{:typus_user_id=>@current_user.id})
   end
+
+  if @resource[:class].typus_field_options_for(:required).to_s.include?(attribute)
+    label_text << " #{typus_required_badge}"
+  end
 %>
 
 <li>
-  <%= form.label attribute, label_text %>
+  <%= form.label attribute, label_text.html_safe %>
   <%= render_tip(attribute) %>
   <% if ckeditor -%>
     <%= form.cktext_area attribute, options %>

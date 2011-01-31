@@ -1,10 +1,14 @@
 <%
   custom = { :include_blank => false }
   options.merge!(custom)
+
+  if @resource[:class].typus_field_options_for(:required).to_s.include?(attribute)
+    label_text << " #{typus_required_badge}"
+  end
 %>
 
 <li>
-  <%= form.label attribute, label_text %>
+  <%= form.label attribute, label_text.html_safe %>
   <%= render_tip(attribute) %>
   <%= form.datetime_select attribute, options, html_options %>
 </li>

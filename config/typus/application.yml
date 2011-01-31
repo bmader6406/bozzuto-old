@@ -13,6 +13,7 @@ ApartmentCommunity:
       booleans:
         published: ['Yes', 'No']
         featured: ['Yes', 'No']
+      required: title, city
       selectors: brochure_type
       destroy_related: DnrConfiguration, PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyContactPage, PropertySlideshow, PropertyMiniSlideshow, Video, PhotoSet, ApartmentFloorPlan
   order_by: title

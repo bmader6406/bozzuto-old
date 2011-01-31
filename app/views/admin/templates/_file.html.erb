@@ -1,4 +1,7 @@
 <%
+  if @resource[:class].typus_field_options_for(:required).to_s.include?(attribute)
+    label_text << " #{typus_required_badge}"
+  end
 
   if @item.send("#{attribute}?")
     message = _("Remove %{attribute}", :attribute => @item.class.human_attribute_name(attribute).downcase)
@@ -9,7 +12,6 @@
                              :confirm => _("Are you sure?")}</small>
     HTML
   end
-
 %>
 
 <li>

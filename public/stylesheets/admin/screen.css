@@ -240,6 +240,10 @@ fieldset ol { margin: 0!important; }
 fieldset ol li { list-style: none !important; margin: 0 0 2em 0 !important; }
 fieldset small { font-size: 0.8em; font-weight: normal; padding-left: 5px; }
 
+fieldset .required {
+  color: #8A1F11;
+}
+
 fieldset.inputs { }
 
   fieldset.inputs input[type='text'], 
