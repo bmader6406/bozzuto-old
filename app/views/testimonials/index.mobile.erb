@@ -1,0 +1,54 @@
+<div class="section page-title">
+  <div class="content">
+    <h2>Testimonials</h2>
+
+    <%= link_to @section.title, page_path(@section), :class => 'go-back' %>
+  </div>
+</div>
+
+<div class="section main">
+  <div class="content">
+    <ul class="testimonials">
+      <% @testimonials.each do |testimonial| %>
+        <li class="testimonial <%= 'last' if testimonial == @testimonials.last %>">
+          <blockquote>
+            <%= testimonial.quote.try(:html_safe) %>
+          </blockquote>
+
+          <% if testimonial.name.present? %>
+            <p class="author">
+              <strong><%= testimonial.name %></strong>
+
+              <% if testimonial.title.present? %>
+                <em>&ndash; <%= testimonial.title %></em>
+              <% end %>
+            </p>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!--
+<h2>Testimonials</h2>
+
+<ul class="testimonials">
+  <% @testimonials.each do |testimonial| %>
+    <li>
+      <blockquote>
+        <%= testimonial.quote.try(:html_safe) %>
+      </blockquote>
+
+      <% if testimonial.name.present? %>
+        <p class="author">
+          <strong><%= testimonial.name %></strong>
+          <% if testimonial.title.present? %>
+            <em>&ndash; <%= testimonial.title %></em>
+          <% end %>
+        </p>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+-->

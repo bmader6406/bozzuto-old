@@ -7,18 +7,37 @@ class TestimonialsControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #index' do
-      setup do
-        5.times do
-          Testimonial.make :section => @section
-        end
-        @testimonials = @section.testimonials
+      browser_context do
+        setup do
+          5.times do
+            Testimonial.make :section => @section
+          end
+          @testimonials = @section.testimonials
 
-        get :index, :section => @section.to_param
+          get :index, :section => @section.to_param
+        end
+
+        should_respond_with :success
+        should_render_with_layout :page
+        should_render_template :index
+        should_assign_to(:testimonials) { @testimonials }
       end
 
-      should_respond_with :success
-      should_render_template :index
-      should_assign_to(:testimonials) { @testimonials }
+      mobile_context do
+        setup do
+          5.times do
+            Testimonial.make :section => @section
+          end
+          @testimonials = @section.testimonials
+
+          get :index, :section => @section.to_param, :format => 'mobile'
+        end
+
+        should_respond_with :success
+        should_render_with_layout :application
+        should_render_template :index
+        should_assign_to(:testimonials) { @testimonials }
+      end
     end
   end
 end
