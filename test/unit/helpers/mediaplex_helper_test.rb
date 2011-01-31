@@ -168,12 +168,10 @@ class MediaplexHelperTest < ActionView::TestCase
 
   context '#lead_2_lease_mediaplex_code' do
     setup do
-      @time = Time.new
       @email = Faker::Internet.email
-      @community = ApartmentCommunity.make
-      @mediaplex_id = "#{@time.to_i};#{@email};#{@community.id}"
+      @community = ApartmentCommunity.make :lead_2_lease_id => rand
 
-      Time.stubs(:new).returns(@time)
+      @mediaplex_id = "#{@email};#{@community.lead_2_lease_id}"
     end
 
     should 'return the correct iframe' do

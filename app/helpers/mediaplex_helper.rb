@@ -54,7 +54,7 @@ module MediaplexHelper
   end
 
   def lead_2_lease_mediaplex_code(community, email)
-    mediaplex_id = [Time.new.to_i.to_s, email, community.id].compact.join(';')
+    mediaplex_id = [email, community.lead_2_lease_id].compact.join(';')
 
     <<-END.html_safe
       <iframe src="http://img-cdn.mediaplex.com/0/16798/universal.html?page_name=bozzuto.com_apartments_lead&Bozzuto.com_Apartments_Lead=1&mpuid=#{mediaplex_id}" HEIGHT=1 WIDTH=1 FRAMEBORDER=0></iframe>

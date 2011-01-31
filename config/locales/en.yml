@@ -157,6 +157,7 @@ en:
         facebook_url: Facebook URL
         has_completion_date: Has Completion Date
         lead_2_lease_email: Lead2Lease Email
+        lead_2_lease_id: Lead2Lease Location ID
         listing_image: Listing Image
         listing_title: Listing Title
         listing_text: Listing Copy
