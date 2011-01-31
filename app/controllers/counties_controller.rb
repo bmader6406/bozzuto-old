@@ -4,9 +4,12 @@ class CountiesController < ApplicationController
 
   def index
     @state = State.find_by_code!(params[:state_id])
+    @counties = @state.counties.ordered_by_name
   end
 
-  def show; end
+  def show
+    @apartment_communities = @county.apartment_communities.ordered_by_title
+  end
 
 
   private

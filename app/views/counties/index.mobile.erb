@@ -9,7 +9,7 @@
   <div class="content">
     <h3>Browse by County</h3>
     <ul class="browse city">
-      <%- @state.counties.each do |county| -%>
+      <%- @counties.each do |county| -%>
         <% count = county.apartment_communities.published.count %>
 
         <% if count > 0 %>
