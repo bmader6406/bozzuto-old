@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :maintain_force_mobile_session_value
   before_filter :detect_mobile_user_agent
+
   around_filter :set_current_queue
 
   rescue_from ActiveRecord::RecordNotFound, :with => :render_404
@@ -53,21 +54,25 @@ class ApplicationController < ActionController::Base
     @apartment_floor_plan_groups ||= ApartmentFloorPlanGroup.all
   end
   helper_method :apartment_floor_plan_groups
-  
+
   def maintain_force_mobile_session_value
     session[:force_full_site] = params[:full_site] if params[:full_site].present?
   end
 
   def detect_mobile_user_agent
-    self.device = case request.env["HTTP_USER_AGENT"]
-    when /iPhone/     then :iphone
-    when /BlackBerry/ then :blackberry
-    when /Android/    then :android
-    else                   :browser
-    end
-    
-    if (device != :browser && !force_normal?) || force_mobile?
-      request.format = :mobile
+    if Rails.env.production?
+      self.device = :browser
+    else
+      self.device = case request.env["HTTP_USER_AGENT"]
+      when /iPhone/     then :iphone
+      when /BlackBerry/ then :blackberry
+      when /Android/    then :android
+      else                   :browser
+      end
+
+      if (device != :browser && !force_normal?) || force_mobile?
+        request.format = :mobile
+      end
     end
   end
 
@@ -75,7 +80,7 @@ class ApplicationController < ActionController::Base
     request.format.to_sym == :mobile
   end
   helper_method :mobile?
-  
+
   def force_mobile?
     session[:force_full_site] == "0"
   end
@@ -83,7 +88,7 @@ class ApplicationController < ActionController::Base
   def force_normal?
     session[:force_full_site] == "1"
   end
-  
+
   def page_url(section, page = nil)
     if section.service?
       service_section_page_url(section, page.try(:path))
@@ -94,11 +99,11 @@ class ApplicationController < ActionController::Base
     end
   end
   helper_method :page_url
-  
+
   def typus_user
     @typus_user ||= Typus.user_class.find_by_id(session[:typus_user_id])
   end
-  
+
   def detect_mobile_layout
     mobile? ? 'application' : 'community'
   end
