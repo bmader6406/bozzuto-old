@@ -1530,14 +1530,12 @@ div.wysiwyg ul li {
         top: 0;
       }
     /* @end */
-    .home #main-content .container {
-      width: 1050px;
-    }
     .home #content {
       padding: 30px 0 20px 0;
     }
     .home #welcome {
       width: 320px;
+      padding-left: 190px;
     }
     .home #welcome a.read-more {
       padding-left: 6px;
@@ -1555,10 +1553,11 @@ div.wysiwyg ul li {
       padding: 11px 0 15px 36px;
       background: transparent url(../images/structure/bg-header-a.gif) no-repeat 30px 16px;
     }
-    .home .featured-property {
+    .home #featured-property {
       width: 230px;
+      padding-right: 0;
     }
-    .home .featured-property h2 a {
+    .home #featured-property h2 a {
       display: block;
       border-bottom: 1px solid #C1C1C5;
       border-top: 1px solid #C1C1C5;
@@ -1589,7 +1588,7 @@ div.wysiwyg ul li {
       line-height: 1.636363636;
       margin-bottom: 1em;
     }
-    .home .featured-property p {
+    .home #featured-property p {
       line-height: 1.36364;
     }
     .home #welcome a.read-more {
@@ -1602,13 +1601,13 @@ div.wysiwyg ul li {
     .home #welcome a.read-more {
       background: transparent url(../images/structure/bg-header-a.gif) no-repeat center left;
     }
-    .home .featured-property h2 {
+    .home #featured-property h2 {
       background:url("../images/structure/bg-aside-h3.gif") no-repeat scroll 0 0 transparent;
     }
-    .home .featured-property h2:hover {
+    .home #featured-property h2:hover {
       background:url("../images/structure/bg-aside-h3.gif") no-repeat scroll 0 -20px transparent;
     }
-    .home .featured-property h2 a {
+    .home #featured-property h2 a {
       background:url("../images/structure/bg-right-arrow.png") no-repeat scroll 216px center transparent;
     }
 

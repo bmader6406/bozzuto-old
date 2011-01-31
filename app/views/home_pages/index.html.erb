@@ -47,27 +47,15 @@
         
         <div class="twitter-update" <%= twitter_data_attr('TheBozzutoGroup') %>></div>
       </div>
-      
-      <% if @home_page.home_mini_slideshow.present? %>
-        <div class="featured-property col">
+
+      <% if @home_page.mini_slideshow.present? %>
+        <div id="featured-property" class="col">
           <h2>
-            <%= link_to @home_page.home_mini_slideshow.title, @home_page.home_mini_slideshow.link_url %>
+            <%= link_to @home_page.mini_slideshow.title, @home_page.mini_slideshow.link_url %>
           </h2>
 
-          <% if @home_page.home_mini_slideshow.present? %>
-            <%= render :partial => 'shared/mini_slideshow', :object => @home_page.home_mini_slideshow %>
-          <% end %>
-        </div>
-      <% end %>
-
-      <% if @home_page.apartment_mini_slideshow.present? %>
-        <div class="featured-property col">
-          <h2>
-            <%= link_to @home_page.apartment_mini_slideshow.title, @home_page.apartment_mini_slideshow.link_url %>
-          </h2>
-
-          <% if @home_page.apartment_mini_slideshow.present? %>
-            <%= render :partial => 'shared/mini_slideshow', :object => @home_page.apartment_mini_slideshow %>
+          <% if @home_page.mini_slideshow.present? %>
+            <%= render :partial => 'shared/mini_slideshow', :object => @home_page.mini_slideshow %>
           <% end %>
         </div>
       <% end %>

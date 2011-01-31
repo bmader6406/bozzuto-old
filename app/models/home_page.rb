@@ -1,6 +1,5 @@
 class HomePage < ActiveRecord::Base
-  belongs_to :apartment_mini_slideshow, :class_name => 'MiniSlideshow'
-  belongs_to :home_mini_slideshow, :class_name => 'MiniSlideshow'
+  belongs_to :mini_slideshow
   has_many :slides,
     :class_name => 'HomePageSlide',
     :order      => 'position ASC'
