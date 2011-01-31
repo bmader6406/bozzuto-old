@@ -27,17 +27,13 @@
 <% end %>
 
 <% if @page.section.cached_slug == 'services' && @page.first? %>
-  <div class="section services">
-    <div class="content">
-      <%= render 'services_nav' %>
-    </div>
-  </div>
+  <%= render 'services_nav' %>
 <% end %>
 
 <% if @page.section.cached_slug == 'apartments' && @page.first? %>
-  <div class="section nav">
-    <div class="content">
-      <%= render 'secondary_nav' %>
-    </div>
-  </div>
+  <%= render 'apartments_secondary_nav' %>
+<% end %>
+
+<% if @page.section.cached_slug == 'new-homes' && @page.first? %>
+  <%= render 'homes_secondary_nav' %>
 <% end %>
