@@ -648,17 +648,37 @@ window.bozzuto = {};
       }).find("a").click(function() {
         if (!$(this).parent().hasClass("current")) {
           // hide the current section
-          current.removeClass("current").data("section").hide();
+          current.removeClass("current");
+          hide(current.data("section"));
+
           // show new section
-          $(this).parent().addClass("current").data("section").show();
           current = $(this).parent();
+          current.addClass("current")
+          show(current.data("section"));
         }
         return false;
       });
 
       // setup
-      $(".section", this).hide().eq(0).show();
+      hide(sections);
+      show(sections.eq(0));
       current = tabs.eq(0).addClass("current");
+
+      function show(elements) {
+        return elements.css({
+          'position': 'static',
+          'left':     '0px',
+          'top':      '0px'
+        });
+      }
+
+      function hide(elements) {
+        return elements.css({
+          'position': 'absolute',
+          'left':     '-9999px',
+          'top':      '-9999px'
+        });
+      }
     });
   };
 

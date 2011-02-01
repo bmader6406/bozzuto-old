@@ -8,7 +8,7 @@ development:
     username: Bozzuto Group
     api_key: '8042a247ce230ca6fe328406b416b7a2' # Bozzuto's API key
   paperclip_command_path: /usr/local/bin
-  walkscore_wsid: 'YOUR-WSID-HERE'
+  walkscore_wsid: '0bb8a5be9206e6c08c6cea73863f5e3f' # id for bozzuto.local
   google_maps_api_key: 'ABQIAAAA7txTDQDFqeDYcgMQiou82BS4HyMuMWnF1gYqzj4uDbvuvSLR0RQG2OmrjDwO9korkAMlXnDyKPNeTw' # key for bozzuto.local
   yahoo_api_key: 'll53sBfV34EbzLw1ECmKvRRAIhNfQgSxxxBX480.eRzCf5S7s_L1Y6ZzyaxnAqSW3A--'
   yelp_api_key: 'VcEBpYz_2oabrTXqgzFX_Q'
@@ -22,7 +22,7 @@ development:
 
 production:
   vaultware_feed_file: /path/to/vaultware/feed/bozzutocom.xml
-  walkscore_wsid: 'YOUR-WSID-HERE'
+  walkscore_wsid: '0bb8a5be9206e6c08c6cea73863f5e3f' # id for bozzuto.local
   google_maps_api_key: 'ABQIAAAA7txTDQDFqeDYcgMQiou82BS4HyMuMWnF1gYqzj4uDbvuvSLR0RQG2OmrjDwO9korkAMlXnDyKPNeTw' # key for bozzuto.local
   yahoo_api_key: 'll53sBfV34EbzLw1ECmKvRRAIhNfQgSxxxBX480.eRzCf5S7s_L1Y6ZzyaxnAqSW3A--'
   yelp_api_key: 'VcEBpYz_2oabrTXqgzFX_Q'
@@ -43,7 +43,7 @@ test:
   flickr:
     username: Bozzuto Group
     api_key: '8042a247ce230ca6fe328406b416b7a2' # Bozzuto's API key
-  walkscore_wsid: 'YOUR-WSID-HERE'
+  walkscore_wsid: '0bb8a5be9206e6c08c6cea73863f5e3f' # id for bozzuto.local
   google_maps_api_key: 'ABQIAAAA7txTDQDFqeDYcgMQiou82BS4HyMuMWnF1gYqzj4uDbvuvSLR0RQG2OmrjDwO9korkAMlXnDyKPNeTw' # key for bozzuto.local
   sms:
     username: tester

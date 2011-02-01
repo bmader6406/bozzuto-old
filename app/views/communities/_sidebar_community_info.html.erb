@@ -8,7 +8,7 @@
     </li>
     <% if @community.has_local_info? %>
       <li class="last">
-        <%= link_to 'Local Info', '#local-info' %>
+        <%= link_to raw('Local<br />Info'), '#local-info' %>
       </li>
     <% end %>
   </ul>
