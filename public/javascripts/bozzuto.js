@@ -165,14 +165,32 @@ window.bozzuto = {};
       setCookie('ufollowup_email', $('input[name=prospectForm.email1]', this).val());
     });
 
+    viewMoreFloorPlanGroups($('.floor-plans .floor-plan-group'));
 
     $('span.phone-number:has(script[type="text/javascript-dnr"])').replaceUsingDNR();
-
 
     function setCookie(name, value) {
       document.cookie = name + '=' + value + '; path=/';
     }
   });
+
+  function viewMoreFloorPlanGroups($set) {
+    return $set.each(function() {
+      var self      = $(this),
+          $rows     = $('ul.row', self),
+          $viewMore = $('<a href="#">View More</a>');
+
+      if ($rows.length > 2) {
+        self.append($('<p class="view-more" />').append($viewMore));
+      }
+
+      $viewMore.bind('click', function() {
+        $rows.slice(2).fadeIn();
+        $viewMore.remove();
+        return false;
+      });
+    });
+  }
 
 
   ////

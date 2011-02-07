@@ -3,17 +3,10 @@
 
 <% @community.floor_plans_by_group.each do |group, plans_in_group| %>
   <div id="<%= dom_id(group) %>" class="floor-plan-group">
-    <h2>
-      <%= floor_plan_group_pluralize(plans_in_group.count, group.name) %>
-      <% if @community.availability_url.present? && plans_in_group.count > ApartmentFloorPlanGroup::DISPLAY_LIMIT %>
-        <em>
-          <%= floor_plan_group_link(@community, group, plans_in_group.first.bedrooms) %>
-        </em>
-      <% end %>
-    </h2>
+    <h2><%= floor_plan_group_pluralize(plans_in_group.count, group.name) %></h2>
 
-    <% plans_in_group.take(ApartmentFloorPlanGroup::DISPLAY_LIMIT).in_groups_of(4, false) do |plans_group| %>
-      <ul class="row">
+    <% plans_in_group.in_groups_of(4, false).each_with_index do |plans_group, i| %>
+      <ul class="row" <% if i >= 2 %> style="display: none;" <% end %>>
         <% plans_group.each do |plan| %>
           <li class="floor-plan">
             <h4><%= plan.name %></h4>

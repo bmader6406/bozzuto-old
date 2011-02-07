@@ -1980,6 +1980,24 @@ div.wysiwyg ul li {
     .community .floor-plan-group h2 em a:hover {
       text-decoration: none;
     }
+    .community .floor-plan-group .view-more {
+      padding: 15px 0;
+      text-align: center;
+    }
+
+    .community .floor-plan-group .view-more a {
+      background: #D5D8DC;
+      border: 1px solid #9BA2AD;
+      color: #595E71;
+      display: inline-block;
+      height: 24px;
+      line-height: 24px;
+      padding: 0px 5px;
+      text-align: center;
+      text-transform: uppercase;
+      width: 90px;
+    }
+
     .community #community-info ul.nav {
       border-bottom: 10px solid #fff;
     }
