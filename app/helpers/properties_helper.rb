@@ -17,6 +17,10 @@ module PropertiesHelper
     end
   end
 
+  def directions_url(address)
+    "http://maps.google.com/maps?daddr=#{URI.encode(address)}"
+  end
+
   def brochure_link(property)
     if property.brochure_link_text.present?
       url = if property.uses_brochure_url?

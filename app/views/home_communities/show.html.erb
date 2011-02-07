@@ -9,6 +9,12 @@
         <h2><%= @community.overview_title %></h2>
       <% end %>
 
+      <% if @community.phone_number.present? %>
+        <p class="phone-number">
+          <%= dnr_phone_number(@community) %>
+        </p>
+      <% end %>
+
       <% if @community.overview_text.present? %>
         <div class="intro" id="intro-partial">
           <%= truncate_html(@community.overview_text, :length => 350, :omission => "&hellip;").try(:html_safe) %>

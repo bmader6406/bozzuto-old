@@ -100,6 +100,14 @@ module OverriddenPathsHelper
     end
   end
 
+  def contact_community_path(property)
+    if property.is_a?(ApartmentCommunity)
+      apartment_community_lead2_lease_submissions_path(property)
+    else
+      home_community_lasso_submissions_path(property)
+    end
+  end
+
   def send_to_friend_path(community)
     if community.is_a?(ApartmentCommunity)
       apartment_community_send_to_friend_submissions_path(community)

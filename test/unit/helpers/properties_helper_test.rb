@@ -52,6 +52,21 @@ class PropertiesHelperTest < ActionView::TestCase
       end
     end
 
+    context '#directions_url' do
+      setup do
+        @address = [
+          Faker::Address.street_address,
+          Faker::Address.city,
+          Faker::Address.us_state
+        ].join(' ,')
+      end
+
+      should 'return a Google Maps link with destination address' do
+        assert_equal "http://maps.google.com/maps?daddr=#{URI.escape(@address)}",
+          directions_url(@address)
+      end
+    end
+
     context '#brochure_link' do
       setup do
         @link_text = 'Click me'

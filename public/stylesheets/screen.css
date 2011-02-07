@@ -1329,15 +1329,6 @@ div.wysiwyg ul li {
     background-position: right -47px;
   }
 
-  .community #community-info p.call-to-action a,
-  .project #content p.call-to-action a {
-    background: transparent url(../images/structure/bg-apartments-masthead-aside-a.gif) no-repeat right 0;
-  }
-  .community #community-info p.call-to-action a:hover,
-  .project #content p.call-to-action a:hover {
-    background-position: right -28px;
-  }
-
 /* @end */
 
 /* @group -community + landing */
@@ -1865,13 +1856,29 @@ div.wysiwyg ul li {
   /* @group --sidebar */
     .property #sidebar p.call-to-action a,
     .project #content p.call-to-action a {
-      font-size: 15px;
-      line-height: 28px;
+      background: transparent url(../images/structure/bg-apartments-masthead-aside-a.png) no-repeat right 0;
+      border-bottom: 1px solid #e2e4e7;
+      border-top: 1px solid #e2e4e7;
       color: #000;
+      display: block;
+      font-size: 15px;
+      height: 26px;
+      line-height: 26px;
+      width: 210px;
+    }
+    .property #sidebar p.call-to-action.directions a,
+    .project #content p.call-to-action.directions a {
+      border-top: none;
     }
     .property #sidebar p.call-to-action a:hover,
     .project #content p.call-to-action a:hover {
+      background-position: right -26px;
       text-decoration: none;
+    }
+    .property #sidebar p.call-to-action a em,
+    .project #content p.call-to-action a em {
+      font-size: 11px;
+      font-style: normal;
     }
   /* @end */
 /* @end */
@@ -1924,6 +1931,17 @@ div.wysiwyg ul li {
       margin-left: 0;
       padding-left: 0;
       text-indent: -9999px;
+    }
+
+    .community #overview p.phone-number {
+      background: url(../images/structure/bg-header-a.gif) no-repeat 0 14px;
+      font-size: 13px;
+      font-weight: normal;
+      line-height: 1.2;
+      padding: 10px 0 10px 10px;
+    }
+    .community #overview p.phone-number span {
+      display: block;
     }
   /* @end */
 
@@ -1996,12 +2014,6 @@ div.wysiwyg ul li {
       width: 208px;
       height: 280px;
       border: 1px solid #959ba1;
-    }
-    .community #community-info p.call-to-action a,
-    .project #content p.call-to-action a {
-      display: block;
-      width: 210px;
-      height: 28px;
     }
     .community #zillow-mortgage-calculator {
       margin-bottom: 10px;
@@ -2774,16 +2786,6 @@ div.wysiwyg ul li {
   .homes-search #masthead p.call-to-action {
     font-size: 11px;
   }
-  .homes #masthead .aside p.call-to-action a {
-    background: url(../images/structure/bg-apartments-masthead-aside-a.gif) left top no-repeat;
-    color: #000;
-    font-size: 15px;
-    line-height: 28px;
-  }
-  .homes #masthead .aside p.call-to-action a:hover {
-    background-position: left bottom;
-    text-decoration: none;
-  }
   .homes #content {
     width: 770px;
     padding-right: 0;
@@ -2806,16 +2808,6 @@ div.wysiwyg ul li {
   .apartments #masthead .section p {
     font-size: 15px;
     line-height: 22px;
-  }
-  .apartments #masthead .aside p.call-to-action a {
-    color: #000;
-    font-size: 15px;
-    line-height: 28px;
-    background: url(../images/structure/bg-apartments-masthead-aside-a.gif) left top no-repeat;
-  }
-  .apartments #masthead .aside p.call-to-action a:hover {
-    background-position: left bottom;
-    text-decoration: none;
   }
   .apartments #masthead .aside ul li {
     font-size: 11px;
@@ -3606,12 +3598,14 @@ div.wysiwyg ul li {
       padding-top: 30px;
     }
     #masthead-slideshow .aside p.call-to-action a {
-      background: url(../images/structure/bg-apartments-masthead-aside-a.gif) left top no-repeat;
+      background: url(../images/structure/bg-apartments-masthead-aside-a.png) left top no-repeat;
+      border-bottom: 1px solid #e2e4e7;
+      border-top: 1px solid #e2e4e7;
       color: #000;
       display: block;
       font-size: 15px;
-      height: 28px;
-      line-height: 28px;
+      height: 26px;
+      line-height: 26px;
       margin-bottom: 21px;
       padding-left: 9px;
       width: 220px;

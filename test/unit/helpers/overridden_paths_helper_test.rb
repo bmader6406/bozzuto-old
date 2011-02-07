@@ -236,6 +236,26 @@ class OverriddenPathsHelperTest < ActionView::TestCase
       end
     end
 
+    context '#contact_community_path' do
+      context 'when community is an ApartmentCommunity' do
+        setup { @community = ApartmentCommunity.make }
+
+        should 'return the correct contact link' do
+          assert_equal apartment_community_lead2_lease_submissions_path(@community),
+            contact_community_path(@community)
+        end
+      end
+
+      context 'when community is a HomeCommunity' do
+        setup { @community = HomeCommunity.make }
+
+        should 'return the correct contact link' do
+          assert_equal home_community_lasso_submissions_path(@community),
+            contact_community_path(@community)
+        end
+      end
+    end
+
     context '#send_to_friend_path' do
       context "when property is HomeCommunity" do
         setup { @property = HomeCommunity.make }

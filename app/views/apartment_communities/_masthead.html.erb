@@ -28,9 +28,6 @@
         <%- if @community.contact_page? || @community.show_lead_2_lease? -%>
           <li class="last <%= current_if :controller => 'lead2_lease_submissions' %>">
             <%= link_to 'Contact Us', apartment_community_lead2_lease_submissions_path(@community) %>
-            <% if @community.phone_number.present? %>
-              <%= dnr_phone_number(@community) %>
-            <% end %>
           </li>
         <%- end -%>
       </ul>

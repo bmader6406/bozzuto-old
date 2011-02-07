@@ -14,6 +14,10 @@
   </ul>
 
   <div id="map" class="section">
+    <p class="call-to-action">
+      <%= link_to 'Schedule a Tour', contact_community_path(@community) %>
+    </p>
+
     <div id="map-canvas"></div>
     <div id="map-side-bar" style="display:none;">
       <div class="map-location" data-jmapping="{id:1, point: {lat:<%= @community.latitude %>, lng:<%= @community.longitude %>}}">
@@ -22,8 +26,15 @@
         </div>
       </div>
     </div>
+
     <p class="call-to-action">
-      <%= link_to 'View Interactive Map', "#", :id => 'map-lightbox' %>
+      <%= link_to 'View Interactive Map', '#', :id => 'map-lightbox' %>
+    </p>
+
+    <p class="call-to-action directions">
+      <% link_to directions_url(@community.address) do %>
+        Directions <em>(using Google Maps)</em>
+      <% end %>
     </p>
   </div>
 
