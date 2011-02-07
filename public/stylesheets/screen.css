@@ -3893,7 +3893,32 @@ div.wysiwyg ul li {
   #content .property-listing p.photos,
   #content .property-listing div.photos {
     float: left;
+    width: 150px;
   }
+  #content .property-listing p.photos a,
+  #content .property-listing p.photos img,
+  #content .property-listing p.photos strong,
+  #content .property-listing div.photos a,
+  #content .property-listing div.photos img,
+  #content .property-listing div.photos strong {
+    display: block;
+  }
+  #content .property-listing p.photos a:hover,
+  #content .property-listing div.photos a:hover {
+    text-decoration: none;
+  }
+  #content .property-listing p.photos strong,
+  #content .property-listing div.photos strong {
+    background: #807e8c url(../images/structure/bg-listing-featured.png) repeat-x 0 0;
+    color: #ff9c1c;
+    font-weight: normal;
+    letter-spacing: 2px;
+    line-height: 1;
+    padding: 4px 0 5px 0;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
   #content .column-main ul.projects-listing {
     margin-left: 0;
   }
