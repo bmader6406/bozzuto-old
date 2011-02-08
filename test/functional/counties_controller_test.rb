@@ -56,7 +56,7 @@ class CountiesControllerTest < ActionController::TestCase
         should_render_template :show
         should_assign_to(:county) { @county }
         should_assign_to(:apartment_communities) {
-          @county.apartment_communities.ordered_by_title
+          @county.apartment_communities.published.ordered_by_title
         }
       end
     end

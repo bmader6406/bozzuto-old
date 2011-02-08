@@ -8,7 +8,7 @@ class CountiesController < ApplicationController
   end
 
   def show
-    @apartment_communities = @county.apartment_communities.ordered_by_title
+    @apartment_communities = @county.apartment_communities.published.ordered_by_title
   end
 
 
