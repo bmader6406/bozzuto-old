@@ -5,4 +5,11 @@ class LandingPagesController < ApplicationController
     @page = LandingPage.published.find(params[:id])
     @state = @page.state
   end
+
+
+  private
+
+  def force_browser?
+    true
+  end
 end
