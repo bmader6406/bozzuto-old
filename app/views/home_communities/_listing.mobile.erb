@@ -10,6 +10,8 @@
       <% end %>
     <% end %>
 
-    <%= link_to_phone_number(format_phone_number(community.phone_number), community.phone_number, :class => 'tel') %>
+    <% if community.phone_number? %>
+      <%= link_to_phone_number(format_phone_number(community.phone_number), community.phone_number, :class => 'tel') %>
+    <% end %>
   </div>
 </li>

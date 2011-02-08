@@ -1,8 +1,8 @@
 class Community < Property
   include Bozzuto::SMSAble
-  
+
   acts_as_archive :indexes => [:id]
-  
+
   acts_as_list :column => 'featured_position'
 
   belongs_to :local_info_feed, :class_name => 'Feed'
@@ -16,20 +16,20 @@ class Community < Property
   has_many :videos,
     :foreign_key => :property_id,
     :order       => 'position ASC'
-    
+
   [:features_page, :neighborhood_page, :contact_page].each do |page_type|
     has_one page_type, :class_name => "Property#{page_type.to_s.classify}",
       :foreign_key => :property_id
-    
+
     define_method("#{page_type}?") do
       self.send(page_type).present?
     end
   end
-    
+
   before_save :set_featured_postion
-  
+
   named_scope :featured_order, {:order => 'featured DESC, featured_position ASC, title ASC'}
-  
+
   named_scope :sort_for, lambda { |landing_page|
     if landing_page.respond_to?(:randomize_property_listings?)
       landing_page.randomize_property_listings? ?
@@ -53,11 +53,11 @@ class Community < Property
       send("overview_bullet_#{i}").present?
     end
   end
-  
+
   def photo_groups
     @photo_groups ||= PhotoGroup.for_community(self)
   end
-  
+
   def photo_groups_and_photos
     photo_groups.map do |photo_group|
       [photo_group, photo_group.photos.in_set(self.photo_set)]
@@ -75,7 +75,7 @@ class Community < Property
   def has_active_promo?
     promo.present? && promo.active?
   end
-  
+
   def has_media?
     photo_set.present? || videos.present?
   end
@@ -84,13 +84,13 @@ class Community < Property
   def phone_message
     "#{title} #{street_address}, #{city.name}, #{city.state.name} #{phone_number} Call for specials! #{website_url}"
   end
-  
+
   protected
-  
+
   def scope_condition
     "properties.city_id IN (SELECT id FROM cities WHERE cities.state_id = #{city.state_id}) AND properties.featured = 1"
   end
-  
+
   def set_featured_postion
     if featured_changed?
       if featured?

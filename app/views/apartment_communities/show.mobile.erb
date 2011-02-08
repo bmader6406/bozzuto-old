@@ -16,11 +16,13 @@
     <p class="address"><%= @community.address %></p>
 
     <ul class="contact contact-list">
-			<li>
-        <% link_to_phone_number @community.phone_number, :class => 'btn call-us' do %>
-          <span>Call Us</span> <%= format_phone_number(@community.phone_number) %>
-        <% end %>
-      </li>
+      <% if @community.phone_number? %>
+        <li>
+          <% link_to_phone_number @community.phone_number, :class => 'btn call-us' do %>
+            <span>Call Us</span> <%= format_phone_number(@community.phone_number) %>
+          <% end %>
+        </li>
+      <% end %>
       <li>
         <% link_to mobile_map_url(@community), :class => 'btn directions' do %>
           <span>Directions</span> <%= @community.city %>
