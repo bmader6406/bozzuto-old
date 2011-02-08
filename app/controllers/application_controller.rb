@@ -60,21 +60,17 @@ class ApplicationController < ActionController::Base
   end
 
   def detect_mobile_user_agent
-    if Rails.env.production?
-      self.device = :browser
+    ua  = request.env['HTTP_USER_AGENT'] || ''
+    key = MOBILE_USER_AGENTS.keys.detect { |user_agent_key| ua.match(user_agent_key).present? }
+
+    self.device = if key.present?
+      MOBILE_USER_AGENTS[key]
     else
-      ua  = request.env['HTTP_USER_AGENT'] || ''
-      key = MOBILE_USER_AGENTS.keys.detect { |user_agent_key| ua.match(user_agent_key).present? }
+      :browser
+    end
 
-      self.device = if key.present?
-        MOBILE_USER_AGENTS[key]
-      else
-        :browser
-      end
-
-      if (device != :browser && !force_browser?) || force_mobile?
-        request.format = :mobile
-      end
+    if (device != :browser && !force_browser?) || force_mobile?
+      request.format = :mobile
     end
   end
 
