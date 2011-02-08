@@ -63,11 +63,13 @@ class ApplicationController < ActionController::Base
     if Rails.env.production?
       self.device = :browser
     else
-      self.device = case request.env["HTTP_USER_AGENT"]
-      when /iPhone/     then :iphone
-      when /BlackBerry/ then :blackberry
-      when /Android/    then :android
-      else                   :browser
+      ua  = request.env['HTTP_USER_AGENT'] || ''
+      key = MOBILE_USER_AGENTS.keys.detect { |user_agent_key| ua.match(user_agent_key).present? }
+
+      self.device = if key.present?
+        MOBILE_USER_AGENTS[key]
+      else
+        :browser
       end
 
       if (device != :browser && !force_browser?) || force_mobile?
