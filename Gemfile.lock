@@ -23,7 +23,7 @@ dependencies:
   rails: 
     group: 
     - :default
-    version: = 2.3.10
+    version: = 2.3.11
   bossman: 
     group: 
     - :default
@@ -134,21 +134,21 @@ specs:
 - abstract: 
     version: 1.0.0
 - activesupport: 
-    version: 2.3.10
+    version: 2.3.11
 - rack: 
     version: 1.1.0
 - actionpack: 
-    version: 2.3.10
+    version: 2.3.11
 - actionmailer: 
-    version: 2.3.10
+    version: 2.3.11
 - activerecord: 
-    version: 2.3.10
+    version: 2.3.11
 - activerecord-tableless: 
     version: 0.1.0
 - activeresource: 
-    version: 2.3.10
+    version: 2.3.11
 - addressable: 
-    version: 2.2.2
+    version: 2.2.4
 - bossman: 
     version: 0.4.1
 - require: 
@@ -160,7 +160,7 @@ specs:
 - highline: 
     version: 1.6.1
 - net-ssh: 
-    version: 2.0.23
+    version: 2.1.0
 - net-scp: 
     version: 1.0.4
 - net-sftp: 
@@ -172,7 +172,7 @@ specs:
 - capistrano-ext: 
     version: 1.2.1
 - closure-compiler: 
-    version: 0.3.3
+    version: 1.0.0
 - columnize: 
     version: 0.3.2
 - crack: 
@@ -186,19 +186,19 @@ specs:
 - loggable: 
     version: 0.3.0
 - fleakr: 
-    version: 0.6.3
+    version: 0.7.1
 - friendly_id: 
     version: 2.3.4
 - geokit: 
     version: 1.5.0
 - hoptoad_notifier: 
-    version: 2.3.12
+    version: 2.4.5
 - httparty: 
     version: 0.5.2
 - yui-compressor: 
-    version: 0.9.1
+    version: 0.9.3
 - jammit: 
-    version: 0.5.4
+    version: 0.6.0
 - jferris-mocha: 
     version: 0.9.8.20100526112143
 - linecache: 
@@ -216,9 +216,9 @@ specs:
 - rack-rewrite: 
     version: 0.2.1
 - rack-test: 
-    version: 0.5.6
+    version: 0.5.7
 - rails: 
-    version: 2.3.10
+    version: 2.3.11
 - rcov: 
     version: 0.9.9
 - ruby-debug-base: 
@@ -230,14 +230,14 @@ specs:
 - shoulda: 
     version: 2.10.3
 - truncate_html: 
-    version: 0.4.0
+    version: 0.5.0
 - webmock: 
     version: 1.2.2
 - whenever: 
     version: 0.6.2
 - will_paginate: 
     version: 2.3.15
-hash: 58b0f969d859bc5bee1244624bdbe900f0dfb37b
+hash: 40ee708a9262e8297b56ca3b34335729d8867f5f
 sources: 
 - Rubygems: 
     uri: http://rubygems.org
