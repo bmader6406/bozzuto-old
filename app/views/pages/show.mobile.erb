@@ -23,10 +23,10 @@
   </div>
 </div>
 
-<% if @page.mobile_body_extra.present? %>
+<% if @page.mobile_body_extra.present? && @page.mobile_body_extra.length > 15 %>
   <div class="section at-a-glance">
     <div class="content">
-      <%= @page.mobile_body_extra.try(:html_safe) %>
+      <%= raw(@page.mobile_body_extra) %>
     </div>
   </div>
 <% end %>
