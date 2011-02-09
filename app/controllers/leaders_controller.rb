@@ -22,4 +22,8 @@ class LeadersController < SectionContentController
       nil
     end
   end
+
+  def force_browser?
+    true
+  end
 end

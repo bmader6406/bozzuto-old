@@ -7,12 +7,18 @@ class LeadersControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #index' do
-      setup do
-        get :index, :section => @section.to_param
-      end
+      %w(browser mobile).each do |device|
+        send("#{device}_context") do
+          setup do
+            set_mobile_user_agent! if device == 'mobile'
 
-      should_respond_with :success
-      should_render_template :index      
+            get :index, :section => @section.to_param
+          end
+
+          should_respond_with :success
+          should_render_template :index
+        end
+      end
     end
   end
 end
