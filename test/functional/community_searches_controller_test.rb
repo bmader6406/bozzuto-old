@@ -2,6 +2,14 @@ require 'test_helper'
 
 class CommunitySearchesControllerTest < ActionController::TestCase
   context 'CommunitySearchesController' do
+    context 'get to #show' do
+      browser_context do
+        setup { get :show }
+
+        should_redirect_to('the apartment communities page') { apartment_communities_url}
+      end
+    end
+
     context 'get #show with no query' do
       setup do
         get :show, :format => :mobile
