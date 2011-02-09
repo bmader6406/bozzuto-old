@@ -31,4 +31,8 @@ class ProjectsController < SectionContentController
     end
   end
   helper_method :categories_with_projects
+
+  def force_browser?
+    true
+  end
 end

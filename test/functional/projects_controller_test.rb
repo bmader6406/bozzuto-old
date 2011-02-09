@@ -7,24 +7,36 @@ class ProjectsControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #index' do
-      setup do
-        get :index, :section => @section.to_param
-      end
+      %w(browser mobile).each do |device|
+        send("#{device}_context") do
+          setup do
+            set_mobile_user_agent! if device == 'mobile'
 
-      should_respond_with :success
-      should_assign_to(:section) { @section }
-      should_assign_to(:categories) { ProjectCategory.all }
+            get :index, :section => @section.to_param
+          end
+
+          should_respond_with :success
+          should_assign_to(:section) { @section }
+          should_assign_to(:categories) { ProjectCategory.all }
+        end
+      end
     end
 
     context 'a GET to #show' do
-      setup do
-        @project = Project.make :section => @section
-        get :show, :section => @section.to_param, :project_id => @project.to_param
-      end
+      %w(browser mobile).each do |device|
+        send("#{device}_context") do
+          setup do
+            set_mobile_user_agent! if device == 'mobile'
 
-      should_respond_with :success
-      should_assign_to(:section) { @section }
-      should_assign_to(:project) { @project }
+            @project = Project.make :section => @section
+            get :show, :section => @section.to_param, :project_id => @project.to_param
+          end
+
+          should_respond_with :success
+          should_assign_to(:section) { @section }
+          should_assign_to(:project) { @project }
+        end
+      end
     end
   end
 end
