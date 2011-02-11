@@ -9,16 +9,29 @@ class OfficeHoursControllerTest < ActionController::TestCase
         @page = PropertyContactPage.make(:property => @community)
       end
 
-      context 'a GET to #show for mobile' do
-        setup do
-          get :show, :apartment_community_id => @community.to_param, :format => 'mobile'
+      context 'a GET to #show' do
+        browser_context do
+          setup do
+            get :show, :apartment_community_id => @community.to_param
+          end
+
+          should_respond_with :redirect
+          should_redirect_to('the contact page') {
+            apartment_community_lead2_lease_submissions_url(@community)
+          }
         end
 
-        should_respond_with :success
-        should_render_with_layout :application
-        should_render_template :show
-        should_assign_to(:page){ @page }
-        should_assign_to(:community){ @community }
+        mobile_context do
+          setup do
+            get :show, :apartment_community_id => @community.to_param, :format => 'mobile'
+          end
+
+          should_respond_with :success
+          should_render_with_layout :application
+          should_render_template :show
+          should_assign_to(:page){ @page }
+          should_assign_to(:community){ @community }
+        end
       end
     end
     
@@ -29,15 +42,28 @@ class OfficeHoursControllerTest < ActionController::TestCase
       end
 
       context 'a GET to #show for mobile' do
-        setup do
-          get :show, :home_community_id => @community.to_param, :format => 'mobile'
+        browser_context do
+          setup do
+            get :show, :home_community_id => @community.to_param
+          end
+
+          should_respond_with :redirect
+          should_redirect_to('the contact page') {
+            home_community_lasso_submissions_url(@community)
+          }
         end
 
-        should_respond_with :success
-        should_render_with_layout :application
-        should_render_template :show
-        should_assign_to(:page){ @page }
-        should_assign_to(:community){ @community }
+        mobile_context do
+          setup do
+            get :show, :home_community_id => @community.to_param, :format => 'mobile'
+          end
+
+          should_respond_with :success
+          should_render_with_layout :application
+          should_render_template :show
+          should_assign_to(:page){ @page }
+          should_assign_to(:community){ @community }
+        end
       end
     end
   end

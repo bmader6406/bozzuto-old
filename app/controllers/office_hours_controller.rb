@@ -1,5 +1,5 @@
 class OfficeHoursController < ApplicationController
-  before_filter :find_community
+  before_filter :find_community, :mobile_only
   
   layout :detect_mobile_layout
   
@@ -11,5 +11,9 @@ class OfficeHoursController < ApplicationController
   
   def find_community
     @community = Property.find(params[:apartment_community_id] || params[:home_community_id])
+  end
+
+  def mobile_only
+    redirect_to contact_community_path(@community) unless mobile?
   end
 end

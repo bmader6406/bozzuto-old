@@ -100,11 +100,13 @@ module OverriddenPathsHelper
     end
   end
 
-  def contact_community_path(property)
-    if property.is_a?(ApartmentCommunity)
-      apartment_community_lead2_lease_submissions_path(property)
-    else
-      home_community_lasso_submissions_path(property)
+  %w(url path).each do |type|
+    define_method "contact_community_#{type}" do |property|
+      if property.is_a?(ApartmentCommunity)
+        send("apartment_community_lead2_lease_submissions_#{type}", property)
+      else
+        send("home_community_lasso_submissions_#{type}", property)
+      end
     end
   end
 
