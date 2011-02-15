@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110215210420) do
+ActiveRecord::Schema.define(:version => 20110215211135) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -210,12 +210,16 @@ ActiveRecord::Schema.define(:version => 20110215210420) do
     t.integer  "property_id"
   end
 
+  add_index "body_slides", ["body_slideshow_id"], :name => "index_body_slides_on_body_slideshow_id"
+
   create_table "body_slideshows", :force => true do |t|
     t.string   "name",       :null => false
     t.integer  "page_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "body_slideshows", ["page_id"], :name => "index_body_slideshows_on_page_id"
 
   create_table "buzzes", :force => true do |t|
     t.string   "email",        :null => false
@@ -336,6 +340,8 @@ ActiveRecord::Schema.define(:version => 20110215210420) do
     t.text     "mobile_body"
   end
 
+  add_index "home_pages", ["mini_slideshow_id"], :name => "index_home_pages_on_mini_slideshow_id"
+
   create_table "homes", :force => true do |t|
     t.string   "name",                                                               :null => false
     t.integer  "bedrooms",                                                           :null => false
@@ -434,12 +440,17 @@ ActiveRecord::Schema.define(:version => 20110215210420) do
     t.string   "quote_company"
   end
 
+  add_index "masthead_slides", ["masthead_slideshow_id"], :name => "index_masthead_slides_on_masthead_slideshow_id"
+  add_index "masthead_slides", ["mini_slideshow_id"], :name => "index_masthead_slides_on_mini_slideshow_id"
+
   create_table "masthead_slideshows", :force => true do |t|
     t.string   "name",       :null => false
     t.integer  "page_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "masthead_slideshows", ["page_id"], :name => "index_masthead_slideshows_on_page_id"
 
   create_table "mini_slides", :force => true do |t|
     t.string   "image_file_name",    :null => false
@@ -449,6 +460,8 @@ ActiveRecord::Schema.define(:version => 20110215210420) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "mini_slides", ["mini_slideshow_id"], :name => "index_mini_slides_on_mini_slideshow_id"
 
   create_table "mini_slideshows", :force => true do |t|
     t.string   "title",      :null => false
@@ -764,12 +777,16 @@ ActiveRecord::Schema.define(:version => 20110215210420) do
     t.datetime "updated_at"
   end
 
+  add_index "property_slides", ["property_slideshow_id"], :name => "index_property_slides_on_property_slideshow_id"
+
   create_table "property_slideshows", :force => true do |t|
     t.string   "name",        :null => false
     t.integer  "property_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "property_slideshows", ["property_id"], :name => "index_property_slideshows_on_property_id"
 
   create_table "sections", :force => true do |t|
     t.string   "title",                                             :null => false
