@@ -2529,6 +2529,9 @@ div.wysiwyg ul li {
   .features #main-content div.feature {
     margin-bottom: 0;
   }
+  .features #main-content div.feature p {
+    margin-bottom: 1em;
+  }
   .features #main-content div.feature ul {
     padding-left: 10px;
   }

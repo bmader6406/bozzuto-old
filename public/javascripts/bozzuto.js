@@ -85,7 +85,7 @@ window.bozzuto = {};
         }
       }
     });
-    
+
     $('.mini-slideshow').featuredSlideshow();
 
     $("#masthead-slideshow, .slideshow").featuredSlideshow();
@@ -98,13 +98,12 @@ window.bozzuto = {};
 
     $(".features div.feature a").featurePhotoPopup();
 
-    $(".features div.feature ul")
-      .makeacolumnlists({cols:2, colWidth:325, equalHeight:false, startN:1})
-      .sortContentsByHeight();
-
-    $(".services div.tips ul, .page div.tips ul")
-      .makeacolumnlists({cols:3, colWidth:150, equalHeight:false, startN:1})
-      .sortContentsByHeight();
+    $(".features div.feature ul").makeacolumnlists({
+      cols:        2,
+      colWidth:    325,
+      equalHeight: false,
+      startN:      1
+    });
 
     setSearchFormState();
 
@@ -256,63 +255,6 @@ window.bozzuto = {};
     find: 'li'
   };
   
-  
-  // sort LIs into lists based on height
-  $.fn.sortContentsByHeight = function() {
-
-    return this.each(function(){
-      
-      var $lists          = $.fn.sortContentsByHeight.getEachList( this ),
-          list_count      = $lists.length,
-          $all_items      = $lists.find('li'),
-          $current_list   = $lists.eq(0),
-          total_height    = $.fn.sortContentsByHeight.getTotalHeight( $all_items )
-          max_list_height = total_height / list_count,
-          height_counter  = 0;
-          
-      $all_items.each(function(){
-
-        var $this = $(this),
-            this_height = $this.data('height');
-                                    
-        // if the height of this element, 
-        //   plus the current list's height counter,
-        //   is over the "max height" for the list, 
-        //   put item in the next ul
-        if ( height_counter > max_list_height ) {
-          $current_list = $current_list.next();
-          height_counter = 0;
-        }
-        
-        // increment the height counter, so we now how "tall" the current UL is
-        height_counter += this_height;
-                
-        $this.detach().appendTo( $current_list );
-        
-      });
-      
-    });
-  }
-  
-  $.fn.sortContentsByHeight.getEachList = function( obj ) {
-    return $(obj).add( $(obj).siblings() );
-  }
-
-  $.fn.sortContentsByHeight.getTotalHeight = function( $all_items ){
-    
-    var total_height = 0;
-    
-    $all_items.each(function(){
-      var $this = $(this);
-      $this.data('height', $this.height() );
-      total_height += $this.data('height');
-    });
-    
-    return total_height;
-    
-  }
-
-
 
   // map with custom markers
   $.fn.bozzutoMap = function() {
