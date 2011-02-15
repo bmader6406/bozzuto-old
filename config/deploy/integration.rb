@@ -1,6 +1,6 @@
 set :user, 'apache'
 set :deploy_to,  "/var/www/html/#{application}/integration"
-set :branch, 'origin/staging'
+set :branch, 'origin/master'
 
 role :web, "pottsville.lab.viget.com"
 role :app, "pottsville.lab.viget.com"
