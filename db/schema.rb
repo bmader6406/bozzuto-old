@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110131210201) do
+ActiveRecord::Schema.define(:version => 20110215184434) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -160,6 +160,7 @@ ActiveRecord::Schema.define(:version => 20110131210201) do
     t.datetime "deleted_at"
     t.string   "zip_code"
     t.string   "lead_2_lease_id"
+    t.string   "mobile_phone_number"
   end
 
   add_index "archived_properties", ["id"], :name => "index_archived_properties_on_id"
@@ -688,6 +689,7 @@ ActiveRecord::Schema.define(:version => 20110131210201) do
     t.integer  "featured_position"
     t.string   "zip_code"
     t.string   "lead_2_lease_id"
+    t.string   "mobile_phone_number"
   end
 
   create_table "properties_property_features", :id => false, :force => true do |t|

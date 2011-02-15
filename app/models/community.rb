@@ -85,6 +85,11 @@ class Community < Property
     "#{title} #{street_address}, #{city.name}, #{city.state.name} #{phone_number} Call for specials! #{website_url}"
   end
 
+  def mobile_phone_number
+    self[:mobile_phone_number] || phone_number
+  end
+
+
   protected
 
   def scope_condition

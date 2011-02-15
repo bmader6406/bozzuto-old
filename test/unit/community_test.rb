@@ -44,6 +44,32 @@ class CommunityTest < ActiveSupport::TestCase
       assert Community.included_modules.include?(ActsAsList::InstanceMethods)
       assert Community.column_names.include?('featured_position')
     end
+
+    context 'when querying the mobile phone number field' do
+      setup do
+        @phone_number = '1 (111) 111-1111'
+        @community = ApartmentCommunity.make :phone_number => @phone_number
+      end
+
+      context 'and no mobile phone number is set' do
+        setup { @community.mobile_phone_number = nil }
+
+        should 'return the phone number' do
+          assert_equal @phone_number, @community.mobile_phone_number
+        end
+      end
+
+      context 'and mobile phone number is set' do
+        setup do
+          @mobile_phone_number = '1 (234) 567-8900'
+          @community.mobile_phone_number = @mobile_phone_number
+        end
+
+        should 'return the mobile phone number' do
+          assert_equal @mobile_phone_number, @community.mobile_phone_number
+        end
+      end
+    end
     
     context 'with photo set' do
       setup do
