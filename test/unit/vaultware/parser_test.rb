@@ -11,7 +11,7 @@ module Vaultware
       context '#process' do
         setup do
           load_vaultware_fixture_file('unrolled.xml')
-          @parser.parse(RAILS_ROOT + '/test/fixtures/unrolled.xml')
+          @parser.parse(File.join(Rails.root, 'test', 'files', 'unrolled.xml'))
         end
 
         should 'load the file' do
@@ -120,8 +120,10 @@ module Vaultware
         context 'for a rolled up property' do
           setup do
             load_vaultware_fixture_file('rolled_up.xml')
-            @parser.parse(RAILS_ROOT + '/test/fixtures/rolled_up.xml')
+            @parser.parse(File.join(Rails.root, 'test', 'files', 'rolled_up.xml'))
+
             @plans = @property.xpath('./Floorplan')
+
             @community = ApartmentCommunity.make(
               :vaultware_id => vaultware_id(@property)
             )
@@ -181,7 +183,7 @@ module Vaultware
         context 'for an unrolled property' do
           setup do
             load_vaultware_fixture_file('unrolled.xml')
-            @parser.parse(RAILS_ROOT + '/test/fixtures/unrolled.xml')
+            @parser.parse(File.join(Rails.root, 'test', 'files', 'unrolled.xml'))
 
             @community = ApartmentCommunity.make(
               :vaultware_id => vaultware_id(@property)
@@ -248,7 +250,7 @@ module Vaultware
       context 'testing a full load' do
         setup do
           load_vaultware_fixture_file('vaultware.xml')
-          @parser.parse(RAILS_ROOT + '/test/fixtures/vaultware.xml')
+          @parser.parse(File.join(Rails.root, 'test', 'files', 'vaultware.xml'))
         end
 
         should 'load all the properties and floor plans' do

@@ -2,8 +2,9 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'test_help'
 require 'mocha'
-require File.expand_path(File.dirname(__FILE__) + "/blueprints")
-require Rails.root+"vendor/plugins/typus/lib/extensions/object"
+
+require File.join(Rails.root, 'test', 'blueprints')
+require File.join(Rails.root, 'vendor', 'plugins', 'typus', 'lib', 'extensions', 'object')
 
 class ActiveSupport::TestCase
   include WebMock
@@ -12,7 +13,7 @@ class ActiveSupport::TestCase
   self.use_instantiated_fixtures  = false
 
   def load_fixture_file(file)
-    File.read("#{Rails.root}/test/fixtures/#{file}")
+    File.read("#{Rails.root}/test/files/#{file}")
   end
 
   def create_states
