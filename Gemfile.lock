@@ -16,15 +16,15 @@ dependencies:
     group: 
     - :test
     version: ">= 0"
-  httparty: 
-    group: 
-    - :default
-    version: = 0.5.2
   rails: 
     group: 
     - :default
     version: = 2.3.11
-  bossman: 
+  httparty: 
+    group: 
+    - :default
+    version: = 0.5.2
+  searchlogic: 
     group: 
     - :default
     version: ">= 0"
@@ -32,7 +32,7 @@ dependencies:
     group: 
     - :default
     version: ">= 0"
-  searchlogic: 
+  bossman: 
     group: 
     - :default
     version: ">= 0"
@@ -50,23 +50,43 @@ dependencies:
     group: 
     - :test
     version: ">= 0"
-  whenever: 
-    group: 
-    - :default
-    version: ">= 0"
-  truncate_html: 
-    group: 
-    - :default
-    version: ">= 0"
   rack-rewrite: 
     group: 
     - :default
     version: ~> 0.2.0
+  truncate_html: 
+    group: 
+    - :default
+    version: ">= 0"
+  whenever: 
+    group: 
+    - :default
+    version: ">= 0"
   geokit: 
     group: 
     - :default
     version: ">= 0"
-  paperclip: 
+  capistrano-ext: 
+    group: 
+    - :default
+    version: ">= 0"
+  rcov: 
+    group: 
+    - :default
+    version: ">= 0"
+  friendly_id: 
+    group: 
+    - :default
+    version: ~> 2.3
+  erubis: 
+    group: 
+    - :default
+    version: ">= 0"
+  jammit: 
+    group: 
+    - :default
+    version: ">= 0"
+  will_paginate: 
     group: 
     - :default
     version: ">= 0"
@@ -76,27 +96,7 @@ dependencies:
     version: ">= 0"
     require: 
     - tableless
-  will_paginate: 
-    group: 
-    - :default
-    version: ">= 0"
-  jammit: 
-    group: 
-    - :default
-    version: ">= 0"
-  erubis: 
-    group: 
-    - :default
-    version: ">= 0"
-  friendly_id: 
-    group: 
-    - :default
-    version: ~> 2.3
-  rcov: 
-    group: 
-    - :default
-    version: ">= 0"
-  capistrano-ext: 
+  paperclip: 
     group: 
     - :default
     version: ">= 0"
@@ -118,11 +118,15 @@ dependencies:
     group: 
     - :test
     version: ">= 0"
-  capistrano: 
+  twitter: 
     group: 
     - :default
     version: ">= 0"
   nokogiri: 
+    group: 
+    - :default
+    version: ">= 0"
+  capistrano: 
     group: 
     - :default
     version: ">= 0"
@@ -181,6 +185,12 @@ specs:
     version: 2.6.6
 - faker: 
     version: 0.3.1
+- multipart-post: 
+    version: 1.1.0
+- faraday: 
+    version: 0.5.6
+- faraday_middleware: 
+    version: 0.3.2
 - hpricot: 
     version: 0.8.3
 - loggable: 
@@ -191,8 +201,10 @@ specs:
     version: 2.3.4
 - geokit: 
     version: 1.5.0
+- hashie: 
+    version: 1.0.0
 - hoptoad_notifier: 
-    version: 2.4.5
+    version: 2.4.6
 - httparty: 
     version: 0.5.2
 - yui-compressor: 
@@ -205,6 +217,10 @@ specs:
     version: "0.43"
 - machinist: 
     version: 1.0.6
+- multi_json: 
+    version: 0.0.5
+- multi_xml: 
+    version: 0.2.1
 - mysql: 
     version: 2.8.1
 - nokogiri: 
@@ -229,15 +245,19 @@ specs:
     version: 2.4.27
 - shoulda: 
     version: 2.10.3
+- simple_oauth: 
+    version: 0.1.4
 - truncate_html: 
     version: 0.5.0
+- twitter: 
+    version: 1.1.2
 - webmock: 
     version: 1.2.2
 - whenever: 
     version: 0.6.2
 - will_paginate: 
     version: 2.3.15
-hash: 40ee708a9262e8297b56ca3b34335729d8867f5f
+hash: eb91e0bf9c6d7cc2c1603c0455176bcb2eb1ee80
 sources: 
 - Rubygems: 
     uri: http://rubygems.org

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110215211135) do
+ActiveRecord::Schema.define(:version => 20110216161757) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -837,6 +837,15 @@ ActiveRecord::Schema.define(:version => 20110215211135) do
     t.datetime "updated_at"
     t.integer  "section_id"
   end
+
+  create_table "twitter_accounts", :force => true do |t|
+    t.string   "username",   :null => false
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "twitter_accounts", ["username"], :name => "index_twitter_accounts_on_username"
 
   create_table "typus_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false

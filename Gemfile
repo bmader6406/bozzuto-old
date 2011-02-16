@@ -22,6 +22,7 @@ gem 'rack-rewrite', '~> 0.2.0'
 gem 'capistrano'
 gem 'capistrano-ext'
 gem 'brianjlandau-acts_as_archive'
+gem 'twitter'
 
 group :test do
   gem 'shoulda', '2.10.3'

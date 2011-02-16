@@ -2,14 +2,15 @@ require 'machinist/active_record'
 require 'sham'
 
 Sham.define do
-  city          { Faker::Address.city }
-  us_state_code { |i| "%2s" % i.to_s(36) }
-  us_state      { |i| "#{Faker::Address.us_state} #{i}" }
-  company_name  { Faker::Company.name }
-  feed_url      { |i| "http://#{i}.#{Faker::Internet.domain_name}/feed.rss" }
-  section_title { |i| "#{Faker::Lorem.words} #{i}" }
-  file_name     { |i| "/image#{i}.jpg" }
-  unique_name   { |i| "#{Faker::Lorem.words(2)} #{i}" }
+  city             { Faker::Address.city }
+  us_state_code    { |i| "%2s" % i.to_s(36) }
+  us_state         { |i| "#{Faker::Address.us_state} #{i}" }
+  company_name     { Faker::Company.name }
+  feed_url         { |i| "http://#{i}.#{Faker::Internet.domain_name}/feed.rss" }
+  section_title    { |i| "#{Faker::Lorem.words} #{i}" }
+  file_name        { |i| "/image#{i}.jpg" }
+  unique_name      { |i| "#{Faker::Lorem.words(2)} #{i}" }
+  twitter_username { |i| "user#{i}" }
 end
 
 Sham.bedrooms(:unique => false)  { rand(5) + 1 }
@@ -299,6 +300,11 @@ Testimonial.blueprint do
   title { Faker::Lorem.sentence }
   quote { Faker::Lorem.paragraphs }
   section
+end
+
+TwitterAccount.blueprint do
+  name     { Faker::Name.name }
+  username { Sham.twitter_username }
 end
 
 TypusUser.blueprint do
