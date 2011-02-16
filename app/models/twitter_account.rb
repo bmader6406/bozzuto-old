@@ -3,6 +3,7 @@ class TwitterAccount < ActiveRecord::Base
 
   validates_presence_of :username
   validates_uniqueness_of :username
+  validates_format_of :username, :with => /^[^@]/, :message => 'should not include the @ symbol'
 
   validate :username_exists
 

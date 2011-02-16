@@ -37,6 +37,18 @@ class TwitterAccountTest < ActiveSupport::TestCase
           assert_nil @account.errors.on(:username)
         end
       end
+
+      context 'that has an @ at the start of the username' do
+        setup do
+          @account.stubs(:username_exists)
+          @account.username = '@yaychris'
+        end
+
+        should 'have an error on username' do
+          assert !@account.valid?
+          assert_match /should not include the @ symbol/, @account.errors.on(:username)
+        end
+      end
     end
 
     context 'when syncing' do
