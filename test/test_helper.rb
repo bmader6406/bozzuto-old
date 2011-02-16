@@ -27,12 +27,22 @@ class ActiveSupport::TestCase
                   { :code => 'DC', :name => 'Washington, DC' }])
   end
 
-  setup do
+  def setup
     ApartmentFloorPlanGroup.create :name => 'Studio'
     ApartmentFloorPlanGroup.create :name => '1 Bedroom'
     ApartmentFloorPlanGroup.create :name => '2 Bedrooms'
     ApartmentFloorPlanGroup.create :name => '3 or More Bedrooms'
     ApartmentFloorPlanGroup.create :name => 'Penthouse'
+
+    stub_request(:get, 'https://api.twitter.com/1/users/show.json?screen_name=TheBozzutoGroup').to_return(
+      :body => load_fixture_file('twitter_user.json')
+    )
+
+    stub_request(:get, 'https://api.twitter.com/1/statuses/user_timeline.json?screen_name=TheBozzutoGroup').to_return(
+      :body => load_fixture_file('twitter_user_timeline.json')
+    )
+
+    super
   end
 
   def set_mobile_user_agent!

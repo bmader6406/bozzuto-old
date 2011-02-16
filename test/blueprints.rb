@@ -10,7 +10,6 @@ Sham.define do
   section_title    { |i| "#{Faker::Lorem.words} #{i}" }
   file_name        { |i| "/image#{i}.jpg" }
   unique_name      { |i| "#{Faker::Lorem.words(2)} #{i}" }
-  twitter_username { |i| "user#{i}" }
 end
 
 Sham.bedrooms(:unique => false)  { rand(5) + 1 }
@@ -302,9 +301,16 @@ Testimonial.blueprint do
   section
 end
 
+Tweet.blueprint do
+  text      { Faker::Lorem.sentence }
+  posted_at { Time.now }
+  tweet_id  { ActiveSupport::SecureRandom.hex }
+  twitter_account
+end
+
 TwitterAccount.blueprint do
   name     { Faker::Name.name }
-  username { Sham.twitter_username }
+  username { 'TheBozzutoGroup' }
 end
 
 TypusUser.blueprint do
