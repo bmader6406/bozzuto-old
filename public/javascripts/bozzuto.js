@@ -960,47 +960,17 @@ window.bozzuto = {};
   $.fn.latestTwitterUpdate = function() {
     $(this).each(function() {
       var $container = $(this),
-          username = $(this).attr('data-twitter-username'),
-          url = "http://twitter.com/statuses/user_timeline/" + username + ".json?callback=?";
+          $link      = $('a.byline', $container);
 
-      if (username) {
-        $.getJSON(url, function(data) {
-          if ($.isArray(data) && data.length > 0) {
-            var tweet = data[0],
-                link = 'http://www.twitter.com/' + tweet.user.screen_name,
-                $message = $('<div class="message">')
-                  .html('<p>' + tweet.text + '</p>')
-                  .appendTo($container);
-
-            $byline = $('<a class="byline" href="' + link + '" target="_blank">')
-              .html(tweet.user.screen_name + ' <em>' + formatTimestamp(tweet.created_at) + '</em>')
-              .appendTo($container);
-                  
-            $message.find('p').click(function(e){
-              e.stopPropagation();
-            });
-          }
-        });
-      }
-
-      $('.message', $container).bind('click', function() {
-        var url = $('a.byline', $container).attr('href');
-
-        if (url) {
-          window.location.href = url;
+      $('.message', $container).bind('click', function(e) {
+        if (e.target == this) {
+          window.location.href = $link.attr('href');
         }
       });
     });
 
     return this;
-
-    function formatTimestamp(timestamp) {
-      var time = timestamp.split(" ");
-      return time[1] + " " + time[2];
-    }
   };
-
-  $.fn.latestTwitterUpdate.monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 
   jQuery.fn.attachSearchForm = function() {

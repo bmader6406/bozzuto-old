@@ -65,12 +65,6 @@ module ApartmentCommunitiesHelper
     url =~ /^http/ ? url : "http://#{url}"
   end
 
-  def twitter_data_attr(handle)
-    if handle.present?
-      "data-twitter-username=\"#{handle}\"".html_safe
-    end
-  end
-
   def walkscore_map_script(community, opts = {})
     opts.reverse_merge!({
       :width  => 226,

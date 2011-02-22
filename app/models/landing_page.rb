@@ -36,6 +36,7 @@ class LandingPage < ActiveRecord::Base
       projects].flatten.compact.uniq
   end
   
+
   protected
   
   def set_positions_of_popular_properties

@@ -70,13 +70,6 @@ class ApartmentCommunitiesHelperTest < ActionView::TestCase
       end
     end
 
-    context "#twitter_data_attr" do
-      should "return the twitter username data attribute" do
-        assert_equal 'data-twitter-username="vigetlabs"',
-          twitter_data_attr('vigetlabs')
-      end
-    end
-
     context "#walkscore_map_script" do
       setup do
         @community = ApartmentCommunity.make(:street_address => '123 Test Dr')
