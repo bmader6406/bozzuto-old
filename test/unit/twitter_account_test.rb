@@ -11,6 +11,12 @@ class TwitterAccountTest < ActiveSupport::TestCase
     should_validate_presence_of :username
     should_validate_uniqueness_of :username
 
+    context '#typus_name' do
+      should 'return the username' do
+        assert_equal @account.username, @account.typus_name
+      end
+    end
+
     context 'with a username' do
       context 'that is not a Twitter user' do
         setup do

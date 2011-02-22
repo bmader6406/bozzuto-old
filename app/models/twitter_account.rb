@@ -27,6 +27,10 @@ class TwitterAccount < ActiveRecord::Base
     end
   end
 
+  def typus_name
+    username
+  end
+
 
   private
 

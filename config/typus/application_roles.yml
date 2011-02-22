@@ -49,5 +49,6 @@ admin:
   Snippet: create, read, update, delete
   State: create, read, update, delete
   Testimonial: create, read, update, delete
+  TwitterAccount: create, read, update, delete
   Video: create, read, update, delete
   LandingPagePopularProperty : read, update, delete

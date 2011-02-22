@@ -69,6 +69,8 @@ en:
         street1: Street Address 1
         street2: Street Address 2
         zip_code: ZIP Code
+      community:
+        twitter_account: Twitter Account
       dnr_configuration:
         customer_code: Customer Code
         campaign: Campaign
@@ -283,3 +285,5 @@ en:
         left_montage_image: Image dimensions should be 250x148
         middle_montage_image: Image dimensions should be 540x148
         right_montage_image: Image dimensions should be 310x148
+      twitter_account:
+        username: Do not include the @ symbol

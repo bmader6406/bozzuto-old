@@ -309,7 +309,6 @@ Tweet.blueprint do
 end
 
 TwitterAccount.blueprint do
-  name     { Faker::Name.name }
   username { 'TheBozzutoGroup' }
 end
 

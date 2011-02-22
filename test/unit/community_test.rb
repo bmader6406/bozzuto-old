@@ -328,4 +328,18 @@ class CommunityTest < ActiveSupport::TestCase
       end
     end
   end
+
+  context 'The Community class' do
+    context 'when searching for communities with a twitter account' do
+      setup do
+        @account   = TwitterAccount.make
+        @community = ApartmentCommunity.make(:twitter_account => @account)
+        @other     = ApartmentCommunity.make
+      end
+
+      should 'return only the communities with a twitter account' do
+        assert_equal [@community], ApartmentCommunity.with_twitter_account
+      end
+    end
+  end
 end

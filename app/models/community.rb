@@ -41,6 +41,8 @@ class Community < Property
     end
   }
 
+  named_scope :with_twitter_account, :conditions => 'twitter_account_id > 0'
+
   delegate :tweets, :to => :twitter_account, :allow_nil => true
 
 

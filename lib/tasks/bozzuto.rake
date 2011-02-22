@@ -1,5 +1,5 @@
 namespace :bozzuto do
-  desc "Sync photos from Flickr"
+  desc 'Sync photos from Flickr'
   task :sync_photo_sets => :environment do
     PhotoSet.needs_sync.each do |set|
       message = set.sync_photos ? 'Success' : 'Error!'
@@ -7,9 +7,9 @@ namespace :bozzuto do
     end
   end
 
-  desc "Load latest feed from Vaultware"
+  desc 'Load latest feed from Vaultware'
   task :load_vaultware_feed => :environment do
-    puts "Loading Vaultware feed ..."
+    puts 'Loading Vaultware feed ...'
 
     begin
       file = APP_CONFIG[:vaultware_feed_file]
@@ -22,11 +22,19 @@ namespace :bozzuto do
     end
   end
 
-  desc "Refresh Local Info feeds"
+  desc 'Refresh Local Info feeds'
   task :refresh_local_info_feeds => :environment do
     Feed.all.each do |feed|
       puts "Refreshing #{feed.name} feed (#{feed.url})"
       feed.refresh
+    end
+  end
+
+  desc 'Sync Twitter accounts'
+  task :sync_twitter_accounts => :environment do
+    TwitterAccount.all.each do |account|
+      puts "Refreshing @#{account.username}"
+      account.sync
     end
   end
 end
