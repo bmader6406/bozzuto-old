@@ -29,6 +29,23 @@ class PropertyTest < ActiveSupport::TestCase
       assert Property::Archive.ancestors.include?(ActiveRecord::Base)
     end
 
+    context 'when querying property type' do
+      setup { @property = ApartmentCommunity.make }
+
+      should 'return the type' do
+        assert_equal @property.class.to_s, @property.property_type
+      end
+    end
+
+    context 'when setting property type' do
+      setup { @property = ApartmentCommunity.make }
+
+      should 'set the type' do
+        @property.property_type = 'HomeCommunity'
+        assert_equal 'HomeCommunity', @property.property_type
+      end
+    end
+
     context '#mappable?' do
       setup do
         @property.latitude = 10
@@ -131,6 +148,26 @@ class PropertyTest < ActiveSupport::TestCase
         assert_match /lat: #{@property.latitude}/, @property.to_jmapping
         assert_match /lng: #{@property.longitude}/, @property.to_jmapping
         assert_match /category: '#{@property.class}'/, @property.to_jmapping
+      end
+    end
+  end
+
+  context 'The Property class' do
+    context 'when querying for properties in a state' do
+      setup do
+        @state = State.make
+        @city1 = City.make :state => @state
+        @city2 = City.make :state => State.make
+
+        @properties = (1..3).inject([]) { |array, i|
+          array << Property.make(:city => @city1)
+        }
+
+        @other = Property.make :city => @city2
+      end
+
+      should 'return the properties' do
+        assert_equal @properties, Property.in_state(@state)
       end
     end
   end
