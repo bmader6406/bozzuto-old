@@ -3544,6 +3544,65 @@ div.wysiwyg ul li {
       text-transform: uppercase;
     }
   /* @end */
+
+  /* @group -twitter updates */
+    .local-update {
+      float: left;
+      height: 170px;
+      margin: 0 40px 30px 0;
+      width: 365px;
+    }
+
+    .local-update.alt {
+      margin-right: 0;
+    }
+
+    .local-update h2 {
+      margin-bottom: 5px;
+    }
+
+    .local-update h2 a {
+      background: url(../images/structure/bg-homes-content-header-learn-more.gif) right -40px no-repeat;
+      display: block;
+      font-size: 16px !important;
+      height: 40px;
+      line-height: 40px;
+      padding: 0 10px;
+    }
+
+    .local-update h2 a:hover {
+      background-position: right top;
+      text-decoration: none;
+    }
+
+    .local-update .twitter-update .message {
+      height: 60px;
+      padding-left: 34px;
+    }
+
+    .local-update .twitter-update .byline {
+      background: url(../images/structure/bg-social-byline.png) no-repeat 0 0;
+      color: #fff;
+      display: block;
+      font-weight: bold;
+      line-height: 2;
+      padding-left: 34px;
+    }
+
+    .local-update .twitter-update .byline em {
+      font-style: normal;
+      margin-left: 5px;
+    }
+
+    .local-update .facebook {
+      color: #636972;
+      display: block;
+      font-weight: bold;
+      margin-top: 10px;
+      padding: 11px 0 15px 34px;
+      background: transparent url(../images/structure/ico-facebook.gif) no-repeat 0 9px;
+    }
+  /* @end */
 /* @end */
 
 /* @group page */
@@ -4015,7 +4074,7 @@ div.wysiwyg ul li {
     width: 230px;
   }
   #content .property-listing div.learn-more h2 a {
-    background: url(../images/structure/bg-homes-content-header-learn-more.gif) left top no-repeat;
+    background: url(../images/structure/bg-homes-content-header-learn-more.gif) right top no-repeat;
     display: block;
     font-size: 15px;
     height: 40px;
@@ -4024,6 +4083,7 @@ div.wysiwyg ul li {
     width: 215px;
   }
   #content .property-listing div.info div.learn-more h2 a:hover {
+    background-position: 100% -40px;
     text-decoration: none;
   }
   #content .property-listing div.info div.learn-more p,

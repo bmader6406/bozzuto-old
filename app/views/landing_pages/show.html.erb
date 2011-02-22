@@ -71,6 +71,8 @@
         <div id="properties-by-type">
           <div class="header">
             <ul class="nav">
+              <li><a href="#local-updates">Local<br />Updates</a></li>
+
               <% if @page.home_communities.any? %>
                 <li><a href="#homes-condominiums">Homes &amp; Condominiums</a></li>
               <% end %>
@@ -79,6 +81,24 @@
               <% end %>
               <% if @page.featured_apartment_communities.any? %>
                 <li><a href="#featured-apartments">Featured Apartments</a></li>
+              <% end %>
+            </ul>
+          </div>
+
+          <div id="local-updates" class="section">
+            <ul class="local-updates">
+              <% (@page.apartment_communities + @page.home_communities).sort_by(&:title).each do |community| %>
+                <% community.tweets.try(:first).if_present? do |tweet| %>
+                  <li class="local-update <%= cycle('', 'alt') %>">
+                    <h2><%= link_to community.title, community %></h2>
+
+                    <%= render :partial => 'shared/tweet', :object => tweet %>
+
+                    <% if community.facebook_url? %>
+                      <%= link_to 'Follow on Facebook', community.facebook_url, :class => 'facebook' %>
+                    <% end %>
+                  </li>
+                <% end %>
               <% end %>
             </ul>
           </div>
