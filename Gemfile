@@ -23,6 +23,7 @@ gem 'capistrano'
 gem 'capistrano-ext'
 gem 'brianjlandau-acts_as_archive'
 gem 'twitter'
+gem 'twitter-text'
 
 group :test do
   gem 'shoulda', '2.10.3'

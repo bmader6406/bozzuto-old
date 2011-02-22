@@ -640,6 +640,12 @@
       background: transparent url(../images/structure/ico-twitter.gif) no-repeat 0 2px;
       cursor: pointer;
     }
+    #main-content .twitter-update .message a {
+      text-decoration: underline;
+    }
+    #main-content .twitter-update .message a:hover {
+      text-decoration: none;
+    }
     #main-content .twitter-update .message p {
       cursor: text;
       padding: 0;

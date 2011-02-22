@@ -1,6 +1,6 @@
 <div class="twitter-update">
   <div class="message">
-    <p><%= tweet.text %></p>
+    <p><%= auto_link(tweet.text).html_safe rescue tweet.text %></p>
   </div>
 
   <% link_to twitter_url(tweet.username), :class => 'byline', :target => '_blank' do %>

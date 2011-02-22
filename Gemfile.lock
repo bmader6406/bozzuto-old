@@ -16,15 +16,19 @@ dependencies:
     group: 
     - :test
     version: ">= 0"
-  rails: 
-    group: 
-    - :default
-    version: = 2.3.11
   httparty: 
     group: 
     - :default
     version: = 0.5.2
-  searchlogic: 
+  rails: 
+    group: 
+    - :default
+    version: = 2.3.11
+  twitter-text: 
+    group: 
+    - :default
+    version: ">= 0"
+  bossman: 
     group: 
     - :default
     version: ">= 0"
@@ -32,7 +36,7 @@ dependencies:
     group: 
     - :default
     version: ">= 0"
-  bossman: 
+  searchlogic: 
     group: 
     - :default
     version: ">= 0"
@@ -50,43 +54,23 @@ dependencies:
     group: 
     - :test
     version: ">= 0"
-  rack-rewrite: 
-    group: 
-    - :default
-    version: ~> 0.2.0
-  truncate_html: 
-    group: 
-    - :default
-    version: ">= 0"
   whenever: 
     group: 
     - :default
     version: ">= 0"
+  truncate_html: 
+    group: 
+    - :default
+    version: ">= 0"
+  rack-rewrite: 
+    group: 
+    - :default
+    version: ~> 0.2.0
   geokit: 
     group: 
     - :default
     version: ">= 0"
-  capistrano-ext: 
-    group: 
-    - :default
-    version: ">= 0"
-  rcov: 
-    group: 
-    - :default
-    version: ">= 0"
-  friendly_id: 
-    group: 
-    - :default
-    version: ~> 2.3
-  erubis: 
-    group: 
-    - :default
-    version: ">= 0"
-  jammit: 
-    group: 
-    - :default
-    version: ">= 0"
-  will_paginate: 
+  paperclip: 
     group: 
     - :default
     version: ">= 0"
@@ -96,7 +80,27 @@ dependencies:
     version: ">= 0"
     require: 
     - tableless
-  paperclip: 
+  will_paginate: 
+    group: 
+    - :default
+    version: ">= 0"
+  jammit: 
+    group: 
+    - :default
+    version: ">= 0"
+  erubis: 
+    group: 
+    - :default
+    version: ">= 0"
+  friendly_id: 
+    group: 
+    - :default
+    version: ~> 2.3
+  rcov: 
+    group: 
+    - :default
+    version: ">= 0"
+  capistrano-ext: 
     group: 
     - :default
     version: ">= 0"
@@ -118,7 +122,7 @@ dependencies:
     group: 
     - :test
     version: ">= 0"
-  twitter: 
+  capistrano: 
     group: 
     - :default
     version: ">= 0"
@@ -126,7 +130,7 @@ dependencies:
     group: 
     - :default
     version: ">= 0"
-  capistrano: 
+  twitter: 
     group: 
     - :default
     version: ">= 0"
@@ -208,7 +212,7 @@ specs:
 - httparty: 
     version: 0.5.2
 - yui-compressor: 
-    version: 0.9.3
+    version: 0.9.4
 - jammit: 
     version: 0.6.0
 - jferris-mocha: 
@@ -251,13 +255,15 @@ specs:
     version: 0.5.0
 - twitter: 
     version: 1.1.2
+- twitter-text: 
+    version: 1.3.1
 - webmock: 
     version: 1.2.2
 - whenever: 
     version: 0.6.2
 - will_paginate: 
     version: 2.3.15
-hash: eb91e0bf9c6d7cc2c1603c0455176bcb2eb1ee80
+hash: 7a81e66a96df591597fb65e45be52d2343e57522
 sources: 
 - Rubygems: 
     uri: http://rubygems.org

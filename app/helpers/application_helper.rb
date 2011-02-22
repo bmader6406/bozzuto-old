@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Twitter::Autolink
+
   def black_hole; end
 
   def twitter_url(username)
