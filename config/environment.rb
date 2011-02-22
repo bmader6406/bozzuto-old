@@ -41,5 +41,3 @@ Rails::Initializer.run do |config|
 
   config.middleware.use Redirectotron if Rails.env.production?
 end
-
-ActionView::Base.default_form_builder = Bozzuto::FormBuilder
