@@ -11,7 +11,7 @@ class CommunityTest < ActiveSupport::TestCase
 
     subject { @community }
 
-    should_belong_to :local_info_feed, :promo
+    should_belong_to :local_info_feed, :promo, :twitter_account
     should_have_one :photo_set
     should_have_many :videos
     should_have_one :dnr_configuration
@@ -67,6 +67,26 @@ class CommunityTest < ActiveSupport::TestCase
 
         should 'return the mobile phone number' do
           assert_equal @mobile_phone_number, @community.mobile_phone_number
+        end
+      end
+    end
+
+    context '#twitter_handle' do
+      context 'when there is a twitter account' do
+        setup do
+          TwitterAccount.any_instance.stubs(:username_exists)
+          @account = TwitterAccount.make
+          @community.twitter_account = @account
+        end
+
+        should 'return the twitter username' do
+          assert_equal @account.username, @community.twitter_handle
+        end
+      end
+
+      context 'when there is not a twitter account' do
+        should 'return nil' do
+          assert_nil @community.twitter_handle
         end
       end
     end

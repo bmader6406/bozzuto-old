@@ -5,12 +5,12 @@ class Tweet < ActiveRecord::Base
     :posted_at,
     :tweet_id,
     :twitter_account
-
   validates_uniqueness_of :tweet_id
 
   named_scope :recent, :limit => 10
-
   default_scope :order => 'posted_at DESC'
+
+  delegate :username, :to => :twitter_account
 
   def self.latest
     recent.first

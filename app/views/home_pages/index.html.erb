@@ -45,7 +45,9 @@
           </a>          
         </p>
         
-        <div class="twitter-update" <%= twitter_data_attr('TheBozzutoGroup') %>></div>
+        <% @home_page.tweets.try(:first).if_present? do |tweet| %>
+          <%= render :partial => 'shared/tweet', :object => tweet %>
+        <% end %>
       </div>
 
       <% if @home_page.mini_slideshow.present? %>

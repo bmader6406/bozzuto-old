@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110216182847) do
+ActiveRecord::Schema.define(:version => 20110222185306) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -94,7 +94,6 @@ ActiveRecord::Schema.define(:version => 20110216182847) do
     t.string   "website_url"
     t.string   "video_url"
     t.string   "facebook_url"
-    t.string   "twitter_handle"
     t.string   "promo_image"
     t.string   "promo_url"
     t.float    "latitude"
@@ -164,6 +163,7 @@ ActiveRecord::Schema.define(:version => 20110216182847) do
     t.string   "zip_code"
     t.string   "lead_2_lease_id"
     t.string   "mobile_phone_number"
+    t.integer  "twitter_account_id"
   end
 
   add_index "archived_properties", ["id"], :name => "index_archived_properties_on_id"
@@ -338,6 +338,7 @@ ActiveRecord::Schema.define(:version => 20110216182847) do
     t.string   "mobile_banner_image_file_name"
     t.string   "mobile_banner_image_content_type"
     t.text     "mobile_body"
+    t.integer  "twitter_account_id"
   end
 
   add_index "home_pages", ["mini_slideshow_id"], :name => "index_home_pages_on_mini_slideshow_id"
@@ -546,12 +547,12 @@ ActiveRecord::Schema.define(:version => 20110216182847) do
   add_index "photo_sets", ["property_id"], :name => "index_photo_sets_on_property_id"
 
   create_table "photos", :force => true do |t|
-    t.string   "image_file_name",    :default => ""
-    t.string   "title",              :default => "", :null => false
+    t.string   "image_file_name"
+    t.string   "title",              :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_content_type"
-    t.string   "flickr_photo_id",                    :null => false
+    t.string   "flickr_photo_id",    :null => false
     t.integer  "photo_set_id"
     t.integer  "position"
   end
@@ -637,7 +638,6 @@ ActiveRecord::Schema.define(:version => 20110216182847) do
     t.string   "website_url"
     t.string   "video_url"
     t.string   "facebook_url"
-    t.string   "twitter_handle"
     t.string   "promo_image"
     t.string   "promo_url"
     t.float    "latitude"
@@ -706,6 +706,7 @@ ActiveRecord::Schema.define(:version => 20110216182847) do
     t.string   "zip_code"
     t.string   "lead_2_lease_id"
     t.string   "mobile_phone_number"
+    t.integer  "twitter_account_id"
   end
 
   create_table "properties_property_features", :id => false, :force => true do |t|
@@ -830,9 +831,9 @@ ActiveRecord::Schema.define(:version => 20110216182847) do
   end
 
   create_table "testimonials", :force => true do |t|
-    t.string   "name",       :default => ""
-    t.string   "title",      :default => ""
-    t.text     "quote",                      :null => false
+    t.string   "name"
+    t.string   "title"
+    t.text     "quote",      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "section_id"
@@ -852,7 +853,6 @@ ActiveRecord::Schema.define(:version => 20110216182847) do
 
   create_table "twitter_accounts", :force => true do |t|
     t.string   "username",   :null => false
-    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

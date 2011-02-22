@@ -3,16 +3,27 @@ class TwitterAccount < ActiveRecord::Base
 
   validates_presence_of :username
   validates_uniqueness_of :username
-  validates_format_of :username, :with => /^[^@]/, :message => 'should not include the @ symbol'
+  validates_length_of :username, :in => 1..15,
+    :too_short => 'must be more than %{count} characters',
+    :too_long  => 'must be %{count} or fewer characters'
+  validates_format_of :username,
+    :with    => /^[_A-Za-z0-9]{1,15}$/,
+    :message => 'should only contain letters, numbers, and underscore. Do not include the @ symbol before the username'
 
   validate :username_exists
 
   def sync
-    Twitter.user_timeline(username).each do |attrs|
-      tweets.find_or_create_by_tweet_id(attrs.id_str) do |tweet|
-        tweet.text      = attrs.text
-        tweet.posted_at = attrs.created_at
+    begin
+      Twitter.user_timeline(username).each do |attrs|
+        tweets.find_or_create_by_tweet_id(attrs.id_str) do |tweet|
+          tweet.text      = attrs.text
+          tweet.posted_at = attrs.created_at
+        end
       end
+
+      true
+    rescue Twitter::NotFound
+      false
     end
   end
 

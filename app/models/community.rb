@@ -7,6 +7,7 @@ class Community < Property
 
   belongs_to :local_info_feed, :class_name => 'Feed'
   belongs_to :promo
+  belongs_to :twitter_account
   has_one :photo_set,
     :foreign_key => :property_id
   has_many :photos, :through => :photo_set
@@ -39,6 +40,9 @@ class Community < Property
       {}
     end
   }
+
+  delegate :tweets, :to => :twitter_account, :allow_nil => true
+
 
   def self.typus_fields_for(filter)
     result = super
@@ -87,6 +91,10 @@ class Community < Property
 
   def mobile_phone_number
     self[:mobile_phone_number] || phone_number
+  end
+
+  def twitter_handle
+    twitter_account.try(:username)
   end
 
 

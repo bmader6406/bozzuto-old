@@ -2,6 +2,12 @@ require 'test_helper'
 
 class ApplicationHelperTest < ActionView::TestCase
   context "ApplicationHelper" do
+    context '#twitter_url' do
+      should 'return the twitter url' do
+        assert_equal 'http://twitter.com/yaychris', twitter_url('yaychris')
+      end
+    end
+
     context '#sanitize_phone_number' do
       should 'return just the digits' do
         ['1 (234) 567-8900', '1.234.567.8900', '1 234 567-8900'].each do |number|

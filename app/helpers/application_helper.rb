@@ -1,6 +1,10 @@
 module ApplicationHelper
   def black_hole; end
 
+  def twitter_url(username)
+    "http://twitter.com/#{username}".html_safe
+  end
+
   def home?
     params[:controller] == 'home_pages'
   end

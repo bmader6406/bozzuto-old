@@ -7,8 +7,8 @@
     </p>
   <% end %>
 
-  <% if @community.twitter_handle.present? %>
-    <div class="twitter-update" <%= twitter_data_attr(@community.twitter_handle) %>></div>
+  <% @community.tweets.try(:first).if_present? do |tweet| %>
+    <%= render :partial => 'shared/tweet', :object => tweet %>
   <% end %>
 
   <%= share_this_link %>

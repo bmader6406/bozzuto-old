@@ -46,7 +46,35 @@ class TwitterAccountTest < ActiveSupport::TestCase
 
         should 'have an error on username' do
           assert !@account.valid?
-          assert_match /should not include the @ symbol/, @account.errors.on(:username)
+          assert_match /Do not include the @ symbol/,
+            @account.errors.on(:username)
+        end
+      end
+
+      context 'that has invalid characters' do
+        setup do
+          @account.stubs(:username_exists)
+          @account.username = '!@#$ -=":>'
+        end
+
+        should 'have an error on username' do
+          assert !@account.valid?
+          assert_match /should only contain letters, numbers, and underscore/,
+            @account.errors.on(:username)
+        end
+      end
+
+      context 'that has more than 15 characters' do
+        setup do
+          @account.stubs(:username_exists)
+          @account.username = 'a' * 16
+        end
+
+        should 'have an error on username' do
+          assert !@account.valid?
+          assert @account.errors.on(:username).detect { |e|
+            e =~ /must be 15 or fewer characters/
+          }
         end
       end
     end
@@ -88,6 +116,22 @@ class TwitterAccountTest < ActiveSupport::TestCase
             assert_equal expected.text, actual.text
             assert_equal expected.id_str, actual.tweet_id
           end
+        end
+      end
+
+      context 'and the username is invalid' do
+        setup do
+          url = 'https://api.twitter.com/1/statuses/user_timeline.json?screen_name=doh'
+          stub_request(:get, url).to_return(
+            :status => 404,
+            :body   => '{"request":"\/1\/users\/show.json?screen_name=doh","error":"Not found"}'
+          )
+
+          @account.username = 'doh'
+        end
+
+        should 'return false' do
+          assert !@account.sync
         end
       end
     end

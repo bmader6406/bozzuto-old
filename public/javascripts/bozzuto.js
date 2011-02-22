@@ -959,31 +959,35 @@ window.bozzuto = {};
   // fetch and insert the latest twitter update
   $.fn.latestTwitterUpdate = function() {
     $(this).each(function() {
-      var container = $(this),
+      var $container = $(this),
           username = $(this).attr('data-twitter-username'),
           url = "http://twitter.com/statuses/user_timeline/" + username + ".json?callback=?";
 
-      if (username == '') {
-        return;
+      if (username) {
+        $.getJSON(url, function(data) {
+          if ($.isArray(data) && data.length > 0) {
+            var tweet = data[0],
+                link = 'http://www.twitter.com/' + tweet.user.screen_name,
+                $message = $('<div class="message">')
+                  .html('<p>' + tweet.text + '</p>')
+                  .appendTo($container);
+
+            $byline = $('<a class="byline" href="' + link + '" target="_blank">')
+              .html(tweet.user.screen_name + ' <em>' + formatTimestamp(tweet.created_at) + '</em>')
+              .appendTo($container);
+                  
+            $message.find('p').click(function(e){
+              e.stopPropagation();
+            });
+          }
+        });
       }
 
-      $.getJSON(url, function(data) {
-        if ($.isArray(data) && data.length > 0) {
-          var tweet = data[0],
-              link = 'http://www.twitter.com/' + tweet.user.screen_name,
-              $message = $('<div class="message">')
-                .html('<p>' + tweet.text + '</p>')
-                .bind('click', function(){
-                  window.location.href = link;
-                }).appendTo( container );
+      $('.message', $container).bind('click', function() {
+        var url = $('a.byline', $container).attr('href');
 
-          $byline = $('<a class="byline" href="' + link + '" target="_blank">')
-            .html(tweet.user.screen_name + ' <em>' + formatTimestamp(tweet.created_at) + '</em>')
-            .appendTo( container);
-                
-          $message.find('p').click(function(e){
-            e.stopPropagation();
-          });
+        if (url) {
+          window.location.href = url;
         }
       });
     });
