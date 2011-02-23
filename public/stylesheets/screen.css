@@ -3552,6 +3552,10 @@ div.wysiwyg ul li {
   /* @end */
 
   /* @group -twitter updates */
+    .local-updates {
+      margin-bottom: 30px;
+    }
+
     .local-update {
       float: left;
       height: 170px;
@@ -3607,6 +3611,24 @@ div.wysiwyg ul li {
       margin-top: 10px;
       padding: 11px 0 15px 34px;
       background: transparent url(../images/structure/ico-facebook.gif) no-repeat 0 9px;
+    }
+
+    .local-info-feed li {
+      margin-bottom: 20px;
+    }
+
+    .local-info-feed h3 {
+      border: none !important;
+      line-height: 1.333333333 !important;
+      padding: 0 !important;
+    }
+
+    .local-info-feed p {
+      font-size: 12px !important;
+    }
+
+    .local-info-feed .date {
+      font-style: italic;
     }
   /* @end */
 /* @end */

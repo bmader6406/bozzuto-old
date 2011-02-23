@@ -22,4 +22,25 @@ class FeedItemTest < ActiveSupport::TestCase
       assert_equal @item2, @feed.items[1]
     end
   end
+
+  context 'The FeedItem class' do
+    context 'when searching for recent items' do
+      setup do
+        @feed = Feed.make_unsaved
+        @feed.expects(:validate_on_create)
+        @feed.save
+
+        @items = (1..15).inject([]) do |array, i|
+          array << FeedItem.make(
+            :published_at => Time.now - i.days,
+            :feed         => @feed
+          )
+        end
+      end
+
+      should 'return the 10 most recent' do
+        assert_equal @items.take(10), @feed.items.recent
+      end
+    end
+  end
 end

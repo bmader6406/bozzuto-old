@@ -1,0 +1,30 @@
+<ul class="local-updates row">
+  <% (@page.apartment_communities + @page.home_communities).sort_by(&:title).each do |community| %>
+    <% community.tweets.try(:first).if_present? do |tweet| %>
+      <li class="local-update <%= cycle('', 'alt') %>">
+        <h2><%= link_to community.title, community %></h2>
+
+        <%= render :partial => 'shared/tweet', :object => tweet %>
+
+        <% if community.facebook_url? %>
+          <%= link_to 'Follow on Facebook', community.facebook_url, :class => 'facebook' %>
+        <% end %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<% @page.local_info_feed.if_present? do |feed| %>
+  <ul class="local-info-feed">
+    <% feed.items.recent.each do |item| %>
+      <li>
+        <h3><%= link_to item.title, item.url %></h3>
+        <p class="date">
+          <%= item.published_at.to_formatted_s(:month_day_year) %>
+        </p>
+
+        <p><%= truncate(item.description, :length => 130) %></p>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
