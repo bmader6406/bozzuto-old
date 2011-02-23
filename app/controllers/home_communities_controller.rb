@@ -14,6 +14,9 @@ class HomeCommunitiesController < SectionContentController
   end
 
   def show
+    scavenger_hunt = { 220 => 57 }
+
+    @code = scavenger_hunt[@community.id]
   end
 
   def map

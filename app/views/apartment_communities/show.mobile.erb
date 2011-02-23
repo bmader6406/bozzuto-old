@@ -10,7 +10,15 @@
 <div class="section community-overview">
   <div class="content">
     <% if @community.slideshow.present? %>
-      <%= image_tag @community.slideshow.slides.first.image.url(:mobile_thumb) %>
+      <div class="banner <%= 'scavenger-hunt' if @code.present? %>">
+        <%= image_tag @community.slideshow.slides.first.image.url(:mobile_thumb) %>
+
+        <% if @code.present? %>
+          <span class="icon icon-<%= @code %>">
+            <%= @code %>
+          </span>
+        <% end %>
+      </div>
     <% end %>
 
     <p class="address"><%= @community.address %></p>

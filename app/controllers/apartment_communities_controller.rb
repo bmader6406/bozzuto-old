@@ -20,6 +20,12 @@ class ApartmentCommunitiesController < ApplicationController
   end
 
   def show
+    scavenger_hunt = {
+      223 => 27,
+      114 => 82,
+      115 => 33
+    }
+    @code = scavenger_hunt[@community.id]
   end
 
 
