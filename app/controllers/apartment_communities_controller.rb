@@ -25,7 +25,8 @@ class ApartmentCommunitiesController < ApplicationController
       114 => 82,
       115 => 33
     }
-    @code = scavenger_hunt[@community.id]
+
+    @code = scavenger_hunt[@community.id] if Time.now < Time.zone.local(2011, 3, 14)
   end
 
 
