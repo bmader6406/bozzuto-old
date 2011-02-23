@@ -6,15 +6,8 @@
 <h2>Latest News</h2>
 
 <% if params[:page].nil? || params[:page] == 1 %>
-  <p>
-    Lauren McDonald<br />
-    Manager, Corporate Communications<br />
-    301.623.1579 Phone<br />
-    877.602.9872 Fax<br />
-    <a href="mailto:LMcDonald@bozzuto.com">LMcDonald@bozzuto.com</a>
-  </p>
+  <%= render :partial => 'shared/news_contact_info' %>
 <% end %>
-
 
 <div class="press-listing">
   <% @news_posts.each do |post| %>

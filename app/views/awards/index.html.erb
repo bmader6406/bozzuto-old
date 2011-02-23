@@ -6,6 +6,10 @@
 
 <h2>Awards</h2>
 
+<% if params[:page].nil? || params[:page] == 1 %>
+  <%= render :partial => 'shared/news_contact_info' %>
+<% end %>
+
 <div class="press-listing">
   <% @awards.each do |award| %>
     <div class="press-item row">
