@@ -4,12 +4,13 @@ module Bozzuto
     
     def self.search(query)
       load_community_classes
+
       if query =~ /\A\d{5}(?:-\d{4})?\Z/
-        new(:zip, query, Community.zip_code_begins_with(query))
+        new(:zip, query, base_scope.zip_code_begins_with(query))
       else
         new(:name, query, {
-          :city => Community.city_name_begins_with(query),
-          :title => Community.title_like(query)
+          :city  => base_scope.city_name_begins_with(query),
+          :title => base_scope.title_like(query)
         })
       end
     end
@@ -40,7 +41,12 @@ module Bozzuto
       @type_inquirer ||= ActiveSupport::StringInquirer.new(search_type.to_s)
     end
     
+
     private
+
+    def self.base_scope
+      Community.published
+    end
     
     def self.load_community_classes
       ApartmentCommunity

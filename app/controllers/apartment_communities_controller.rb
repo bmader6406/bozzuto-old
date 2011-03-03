@@ -33,9 +33,11 @@ class ApartmentCommunitiesController < ApplicationController
   private
 
   def find_community
-    @community = typus_user ?
-      ApartmentCommunity.find(params[:id]) :
+    @community = if typus_user
+      ApartmentCommunity.find(params[:id])
+    else
       ApartmentCommunity.published.find(params[:id])
+    end
     
     if @community.published?
       @recent_queue = RecentQueue.find

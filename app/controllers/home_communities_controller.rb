@@ -42,9 +42,11 @@ class HomeCommunitiesController < SectionContentController
   end
 
   def find_community
-    @community = typus_user ?
-      HomeCommunity.find(params[:id]) :
+    @community = if typus_user
+      HomeCommunity.find(params[:id])
+    else
       HomeCommunity.published.find(params[:id])
+    end
   end
 
   def find_communities

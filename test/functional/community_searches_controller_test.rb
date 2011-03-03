@@ -68,5 +68,21 @@ class CommunitySearchesControllerTest < ActionController::TestCase
       should_render_template :results
       should_assign_to :search, :class => Bozzuto::CommunitySearch
     end
+
+    context 'get #show with name query for unpublished community' do
+      setup do
+        ApartmentCommunity.make(:unpublished, :title => 'Swing City')
+        get :show, :format => 'mobile', :q => 'Swing'
+      end
+
+      should_respond_with :success
+      should_render_template :show
+      should_assign_to :search, :class => Bozzuto::CommunitySearch
+
+      should 'return no results' do
+        assert_equal({ :title => [], :city => [] },
+          @controller.instance_variable_get('@search').results)
+      end
+    end
   end
 end
