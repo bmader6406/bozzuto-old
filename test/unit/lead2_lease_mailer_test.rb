@@ -26,6 +26,10 @@ class Lead2LeaseMailerTest < ActionMailer::TestCase
         assert_equal "--New Email Lead For #{@community.title}--",
           @email.subject
       end
+
+      should 'contain the email address' do
+        assert_match /Email Address: #{@lead.email}/, @email.body
+      end
     end
   end
 end
