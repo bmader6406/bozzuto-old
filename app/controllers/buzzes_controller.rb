@@ -16,4 +16,11 @@ class BuzzesController < SectionContentController
   def thank_you
     render
   end
+
+
+  private
+
+  def force_browser?
+    true
+  end
 end
