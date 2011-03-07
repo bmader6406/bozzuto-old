@@ -144,6 +144,14 @@ LandingPage.blueprint do
   published { true }
 end
 
+LassoAccount.blueprint do
+  uid          { '123' }
+  client_id    { '456' }
+  project_id   { '789' }
+  analytics_id { 'LAS-123456' }
+  property     { HomeCommunity.make }
+end
+
 NewsPost.blueprint do
   title        { Faker::Lorem.sentence }
   body         { Faker::Lorem.paragraphs(2) }
