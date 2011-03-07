@@ -1,18 +1,13 @@
 class ApplicationController < ActionController::Base
+  include Bozzuto::Mobile
   include OverriddenPathsHelper
-  
+
   helper :all
   protect_from_forgery
-
-  before_filter :maintain_force_mobile_session_value
-  before_filter :detect_mobile_user_agent
 
   around_filter :set_current_queue
 
   rescue_from ActiveRecord::RecordNotFound, :with => :render_404
-
-  attr_accessor :device
-  helper_method :device
 
 
   private
@@ -54,38 +49,6 @@ class ApplicationController < ActionController::Base
     @apartment_floor_plan_groups ||= ApartmentFloorPlanGroup.all
   end
   helper_method :apartment_floor_plan_groups
-
-  def maintain_force_mobile_session_value
-    session[:force_full_site] = params[:full_site] if params[:full_site].present?
-  end
-
-  def detect_mobile_user_agent
-    ua  = request.env['HTTP_USER_AGENT'] || ''
-    key = MOBILE_USER_AGENTS.keys.detect { |user_agent_key| ua.match(user_agent_key).present? }
-
-    self.device = if key.present?
-      MOBILE_USER_AGENTS[key]
-    else
-      :browser
-    end
-
-    if (device != :browser && !force_browser?) || force_mobile?
-      request.format = :mobile
-    end
-  end
-
-  def mobile?
-    request.format.to_sym == :mobile
-  end
-  helper_method :mobile?
-
-  def force_mobile?
-    session[:force_full_site] == "0"
-  end
-
-  def force_browser?
-    session[:force_full_site] == "1"
-  end
 
   def page_url(section, page = nil)
     if section.service?

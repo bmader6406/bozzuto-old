@@ -1,4 +1,6 @@
 class ManagementCommunitiesController < SectionContentController
+  browser_only!
+
   before_filter :find_page
 
   def index
@@ -14,9 +16,5 @@ class ManagementCommunitiesController < SectionContentController
     rescue
       nil
     end
-  end
-
-  def force_browser?
-    true
   end
 end

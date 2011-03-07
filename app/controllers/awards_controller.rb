@@ -1,4 +1,6 @@
 class AwardsController < SectionContentController
+  browser_only!
+
   before_filter :find_awards, :only => :index
   before_filter :find_award, :only => :show
 
@@ -17,9 +19,5 @@ class AwardsController < SectionContentController
 
   def find_award
     @award = section_awards.find(params[:award_id])
-  end
-
-  def force_browser?
-    true
   end
 end

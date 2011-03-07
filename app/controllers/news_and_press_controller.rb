@@ -1,4 +1,6 @@
 class NewsAndPressController < SectionContentController
+  browser_only!
+
   def index
     @latest_news = section_news_posts.latest(10)
     @latest_press = section_press_releases.latest(10)
@@ -21,9 +23,5 @@ class NewsAndPressController < SectionContentController
     end
 
     render_404 if @page.nil?
-  end
-
-  def force_browser?
-    true
   end
 end

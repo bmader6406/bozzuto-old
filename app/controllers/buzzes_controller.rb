@@ -1,4 +1,6 @@
 class BuzzesController < SectionContentController
+  browser_only!
+
   def new
     @buzz = Buzz.new(:email => params[:email])
   end
@@ -15,12 +17,5 @@ class BuzzesController < SectionContentController
 
   def thank_you
     render
-  end
-
-
-  private
-
-  def force_browser?
-    true
   end
 end

@@ -1,4 +1,6 @@
 class LeadersController < SectionContentController
+  browser_only!
+
   layout "application"
 
   before_filter :find_section, :find_page, :only => :index
@@ -21,9 +23,5 @@ class LeadersController < SectionContentController
     rescue
       nil
     end
-  end
-
-  def force_browser?
-    true
   end
 end

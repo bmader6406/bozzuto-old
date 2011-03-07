@@ -1,4 +1,6 @@
 class ProjectsController < SectionContentController
+  browser_only!
+
   layout 'project'
 
   before_filter :find_our_work_page
@@ -31,8 +33,4 @@ class ProjectsController < SectionContentController
     end
   end
   helper_method :categories_with_projects
-
-  def force_browser?
-    true
-  end
 end

@@ -1,4 +1,6 @@
 class PressReleasesController < SectionContentController
+  browser_only!
+
   before_filter :find_section
 
   def index
@@ -7,12 +9,5 @@ class PressReleasesController < SectionContentController
 
   def show
     @press_release = section_press_releases.find(params[:press_release_id])
-  end
-
-
-  private
-
-  def force_browser?
-    true
   end
 end
