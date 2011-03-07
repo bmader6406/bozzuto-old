@@ -258,7 +258,9 @@ LassoAccount:
   fields:
     default: property, uid, client_id, project_id
     list: property, uid, client_id, project_id
-    form: uid, client_id, project_id, property
+    form: uid, client_id, project_id, analytics_id, property
+    options:
+      required: property, uid, client_id, project_id
   order_by:
   relationships:
   filters:

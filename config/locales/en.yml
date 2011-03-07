@@ -105,6 +105,7 @@ en:
         secondary_title: Secondary Title
         hide_from_list: Hide from "Apartments for Rent By Region" List
       lasso_account:
+        analytics_id: Lasso Analytics ID
         client_id: Lasso Client ID
         project_id: Lasso Project ID
         uid: Lasso UID

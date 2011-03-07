@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110222214048) do
+ActiveRecord::Schema.define(:version => 20110307201548) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -390,12 +390,13 @@ ActiveRecord::Schema.define(:version => 20110222214048) do
   add_index "landing_pages_projects", ["landing_page_id", "project_id"], :name => "index_landing_pages_projects_on_landing_page_id_and_project_id"
 
   create_table "lasso_accounts", :force => true do |t|
-    t.integer  "property_id", :null => false
-    t.string   "uid",         :null => false
-    t.string   "client_id",   :null => false
-    t.string   "project_id",  :null => false
+    t.integer  "property_id",  :null => false
+    t.string   "uid",          :null => false
+    t.string   "client_id",    :null => false
+    t.string   "project_id",   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "analytics_id"
   end
 
   add_index "lasso_accounts", ["property_id"], :name => "index_lasso_accounts_on_property_id"
