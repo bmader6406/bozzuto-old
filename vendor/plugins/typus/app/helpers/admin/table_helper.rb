@@ -65,31 +65,36 @@ module Admin::TableHelper
   def typus_table_header(model, fields)
 
     headers = fields.map do |key, value|
+      content = if key.end_with?('_id') && model.reflect_on_association(key.to_s.sub(/_id$/, '').to_sym).present?
+        key
+      else
+        model.human_attribute_name(key)
+      end
 
-                content = key.end_with?('_id') ? key : model.human_attribute_name(key)
+      if (model.model_fields.map(&:first).collect { |i| i.to_s }.include?(key) || model.reflect_on_all_associations(:belongs_to).map(&:name).include?(key.to_sym)) && params[:action] == 'index'
+        sort_order = case params[:sort_order]
+        when 'asc'
+          ['desc', '&darr;']
+        when 'desc'
+          ['asc', '&uarr;']
+        else
+          [nil, nil]
+        end
 
-                if (model.model_fields.map(&:first).collect { |i| i.to_s }.include?(key) || model.reflect_on_all_associations(:belongs_to).map(&:name).include?(key.to_sym)) && params[:action] == 'index'
-                  sort_order = case params[:sort_order]
-                               when 'asc'   then ['desc', '&darr;']
-                               when 'desc'  then ['asc', '&uarr;']
-                               else
-                                 [nil, nil]
-                               end
-                  order_by = model.reflect_on_association(key.to_sym).primary_key_name rescue key
-                  switch = sort_order.last if params[:order_by].eql?(order_by)
-                  options = { :order_by => order_by, :sort_order => sort_order.first }
-                  content = link_to "#{content} #{switch}".html_safe, params.merge(options)
-                end
+        order_by = model.reflect_on_association(key.to_sym).primary_key_name rescue key
+        switch   = sort_order.last if params[:order_by].eql?(order_by)
+        options  = { :order_by => order_by, :sort_order => sort_order.first }
+        content  = link_to "#{content} #{switch}".html_safe, params.merge(options)
+      end
 
-                content
+      content
+    end
 
-              end
+    if @current_user.can?('delete', model)
+      headers << "&nbsp;".html_safe
+    end
 
-    headers << "&nbsp;".html_safe if @current_user.can?('delete', model)
-
-    render "admin/helpers/table_header", 
-           :headers => headers
-
+    render "admin/helpers/table_header", :headers => headers
   end
 
   # OPTIMIZE: Refactor (Remove rescue)
