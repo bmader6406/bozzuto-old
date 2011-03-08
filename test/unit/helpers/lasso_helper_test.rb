@@ -7,6 +7,13 @@ class LassoHelperTest < ActionView::TestCase
       @lasso     = LassoAccount.make(:property => @community)
     end
 
+    context '#lasso_tracking_js' do
+      should 'return the tracking code' do
+        js = lasso_tracking_js(@community)
+        assert_match /var tracker = new LassoAnalytics\(#{@lasso.analytics_id.inspect}\);/, js
+      end
+    end
+
     context '#lasso_hidden_fields' do
       context 'when analytics_id is blank' do
         setup do
@@ -52,6 +59,14 @@ class LassoHelperTest < ActionView::TestCase
             assert_select @html.root, "input[name=#{name}]", :value => value
           end
         end
+      end
+    end
+
+    context '#lasso_contact_js' do
+      should 'return the contact code' do
+        js = lasso_contact_js(@community)
+        assert_match /<script type="text\/javascript">/, js
+        assert_match /document\.getElementById\('lasso-form'\)/, js
       end
     end
   end

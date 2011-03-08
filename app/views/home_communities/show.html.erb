@@ -1,5 +1,9 @@
 <% content_for :body_class do %>community property<% end %>
 
+<% content_for :javascript do %>
+  <%= lasso_tracking_js(@community) %>
+<% end %>
+
 <div class="row">
   <div id="content" class="col">
     <div id="overview">

@@ -1,4 +1,9 @@
 <% content_for :body_class do %>property community floor-plans<% end %>
+
+<% content_for :javascript do %>
+  <%= lasso_tracking_js(@community) %>
+<% end %>
+
 <% render_meta(@community, :floor_plans) %>
 
 <% @community.homes(:include => :floor_plans).each do |home| %>

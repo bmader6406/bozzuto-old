@@ -1,4 +1,9 @@
 <% content_for :body_class do %>community property features<% end %>
+
+<% content_for :javascript do %>
+  <%= lasso_tracking_js(@community) %>
+<% end %>
+
 <% render_meta(@page) %>
 
 <% (1..3).each do |i| %>
