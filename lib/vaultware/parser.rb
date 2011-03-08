@@ -90,7 +90,7 @@ module Vaultware
         :one_bedroom
       elsif bedrooms == 2
         :two_bedrooms
-      else bedrooms == 3
+      else
         :three_bedrooms
       end
 
