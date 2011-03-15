@@ -1,5 +1,10 @@
 <% render_meta(@page) if @page %>
 
+<% content_for :javascript do %>
+  <%= lasso_tracking_js(@community) %>
+  <%= lasso_contact_js(@community) %>
+<% end %>
+
 <div class="section page-title">
   <div class="content">
     <h2>Email Us</h2>
@@ -18,10 +23,7 @@
 
       <div id="community-contact-form">
         <form method="post" id="lasso-form" class="required-form" action="http://www.mylasso.com/registrant_signup.php">
-          <%= hidden_field_tag 'LassoUID', @community.lasso_account.uid %>
-          <%= hidden_field_tag 'ClientID', @community.lasso_account.client_id %>
-          <%= hidden_field_tag 'ProjectID', @community.lasso_account.project_id %>
-          <%= hidden_field_tag 'SignupThankyouLink', thank_you_home_community_lasso_submissions_url(@community) %>
+          <%= lasso_hidden_fields(@community) %>
 
           <%= text_field_tag 'FirstName', nil, :placeholder => '* Your First Name' %>
           <%= text_field_tag 'LastName', nil, :placeholder => '* Your Last Name' %>

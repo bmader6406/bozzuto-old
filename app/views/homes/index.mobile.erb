@@ -1,5 +1,9 @@
 <% render_meta(@community, :floor_plans) %>
 
+<% content_for :javascript do %>
+  <%= lasso_tracking_js(@community) %>
+<% end %>
+
 <div class="section page-title">
   <div class="content">
     <h2>Homes</h2>
