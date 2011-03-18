@@ -212,15 +212,27 @@ window.bozzuto = {};
     }
 
     function processDnrScript($numbers) {
-      var $head    = $numbers.eq(0),
-          $tail    = $numbers.slice(1),
-          $script  = $('script[type="text/javascript-dnr"]', $head),
-          fontSize = $head.css('font-size'),
-          iframe   = '';
+      var $head     = $numbers.eq(0),
+          $tail     = $numbers.slice(1),
+          $script   = $('script[type="text/javascript-dnr"]', $head),
+          fontSize  = $head.css('font-size'),
+          color     = convertFromRGBToHex($head.css('color')),
+          width     = parseInt($script.attr('-data-width')),
+          height    = parseInt($script.attr('-data-height')),
+          oldWidth  = frameWidth,
+          oldHeight = frameHeight,
+          iframe    = '';
+
+      if (!isNaN(width) && !isNaN(height)) {
+        setSize(width, height);
+      }
 
       iframe = eval($script.html())
         .replace(/fontsize=[^&]+/, 'fontsize=' + fontSize)
-        .replace(/fontfamily=[^&]+/, 'fontfamily=Arial');
+        .replace(/fontfamily=[^&]+/, 'fontfamily=Arial')
+        .replace(/textcolor=[^&]+/, 'textcolor=' + color);
+
+      setSize(oldWidth, oldHeight);
 
       $head.html(iframe);
 
@@ -229,6 +241,27 @@ window.bozzuto = {};
           processDnrScript($tail);
         }, 300);
       }
+    }
+
+    function convertFromRGBToHex(color) {
+      var matches = color.match(/rgb\((\d+),\s*(\d+),\s*(\d+)(,\s*\d+)?\)/);
+
+      if (matches != null) {
+        return RGBtoHex(matches[1], matches[2], matches[3]);
+      } else {
+        return color.substr(1);
+      }
+
+      return color;
+    }
+
+    function RGBtoHex(R,G,B) {return toHex(R)+toHex(G)+toHex(B)}
+    function toHex(N) {
+     if (N==null) return "00";
+     N=parseInt(N); if (N==0 || isNaN(N)) return "00";
+     N=Math.max(0,N); N=Math.min(N,255); N=Math.round(N);
+     return "0123456789ABCDEF".charAt((N-N%16)/16)
+          + "0123456789ABCDEF".charAt(N%16);
     }
   };
 

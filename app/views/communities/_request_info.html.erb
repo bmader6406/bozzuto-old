@@ -1,0 +1,8 @@
+<p class="request-info">
+  <%= link_to 'Request Info', contact_community_path(community)  %>
+
+  <% if community.phone_number.present? %>
+    Call Us
+    <%= dnr_phone_number(community, :height => 21) %>
+  <% end %>
+</p>

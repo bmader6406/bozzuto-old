@@ -3,17 +3,13 @@
 
 <div class="row">
   <div id="content" class="col">
+    <%= render 'communities/request_info', :community => @community %>
+
     <div id="overview">
       <%= property_icons(@community) %>
 
       <% if @community.overview_title.present? %>
         <h2><%= @community.overview_title %></h2>
-      <% end %>
-
-      <% if @community.phone_number.present? %>
-        <p class="phone-number">
-          <%= dnr_phone_number(@community) %>
-        </p>
       <% end %>
 
       <% if @community.overview_text.present? %>

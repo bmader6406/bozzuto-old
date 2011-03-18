@@ -2068,6 +2068,36 @@ div.wysiwyg ul li {
     .community #main-content {
       font-size: 11px;
     }
+
+    .community #content p.request-info {
+      border-bottom: 1px solid #dadadc;
+      border-top: 1px solid #dadadc;
+      color: #84848b;
+      font-size: 22px;
+      line-height: 35px;
+      margin-bottom: 20px;
+      padding: 10px 0;
+    }
+    .community #content p.request-info a {
+      background: url(../images/structure/bg-request-info.png) no-repeat 0 0;
+      display: block;
+      float: left;
+      height: 35px;
+      margin-right: 20px;
+      overflow: hidden;
+      padding: 0;
+      text-indent: -9999px;
+      width: 163px;
+    }
+    .community #content p.request-info a:hover {
+      background-position: 0 -35px;
+    }
+    .community #content p.request-info .phone-number {
+      color: #000;
+      position: relative;
+      top: 1px;
+    }
+
     .community #overview .intro p {
       font-size: 15px;
       line-height: 1.466666667;

@@ -112,7 +112,9 @@ module ApplicationHelper
     end
   end
 
-  def dnr_phone_number(community)
+  def dnr_phone_number(community, opts = {})
+    opts.reverse_merge!(:width => 150, :height => 17)
+
     number = sanitize_phone_number(community.phone_number)
 
     account = if community.is_a?(ApartmentCommunity)
@@ -135,7 +137,7 @@ module ApplicationHelper
     <<-SCRIPT.html_safe
       <span class="phone-number">
         #{number}
-        <script type="text/javascript-dnr">
+        <script type="text/javascript-dnr" -data-width="#{opts[:width]}" -data-height="#{opts[:height]}">
           replaceNumber(#{args.join(', ')});
         </script>
       </span>
