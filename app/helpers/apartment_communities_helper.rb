@@ -25,17 +25,20 @@ module ApartmentCommunitiesHelper
       ''
     end
   end
-  
+
   def apartment_community_price_range(community)
-    [ number_to_currency(community.cheapest_rent, :precision => 0),
+    prices = [
+      number_to_currency(community.cheapest_rent, :precision => 0),
       number_to_currency(community.max_rent, :precision => 0)
-    ].join(' to ').html_safe
+    ]
+
+    prices.join(' to ').html_safe
   end
-  
+
   def list_of_floor_plan_group_names_for(community)
-    community.floor_plan_groups.map(&:list_name).to_sentence(
-      :two_words_connector => ' &amp; ', :last_word_connector => ', &amp; '
-    ).html_safe
+    opts = { :two_words_connector => ' &amp; ', :last_word_connector => ', &amp; ' }
+
+    community.floor_plan_groups.map(&:list_name).to_sentence(opts).html_safe
   end
 
   def square_feet(plan)

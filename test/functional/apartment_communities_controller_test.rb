@@ -16,6 +16,41 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
         should_render_template :index
       end
 
+      context 'with search params' do
+        context 'and :in_state is present' do
+          setup do
+            @state = State.make
+            get :index, :search => { :in_state => @state.id }
+          end
+
+          should_respond_with :success
+          should_render_template :index
+          should_assign_to(:geographic_filter) { @state }
+        end
+
+        context 'and :county_id is present' do
+          setup do
+            @county = County.make
+            get :index, :search => { :county_id => @county.id }
+          end
+
+          should_respond_with :success
+          should_render_template :index
+          should_assign_to(:geographic_filter) { @county }
+        end
+
+        context 'and :city_id is present' do
+          setup do
+            @city = City.make
+            get :index, :search => { :city_id => @city.id }
+          end
+
+          should_respond_with :success
+          should_render_template :index
+          should_assign_to(:geographic_filter) { @city }
+        end
+      end
+
       context 'for the map view' do
         setup do
           get :index, :template => 'map'
