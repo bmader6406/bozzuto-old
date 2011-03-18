@@ -106,10 +106,17 @@ class Community < Property
     "properties.city_id IN (SELECT id FROM cities WHERE cities.state_id = #{city.state_id}) AND properties.featured = 1"
   end
 
+  def add_to_list_bottom
+    # no-op. this is called after the before_save #set_featured_position callback
+    # on create, which causes a featured_position of 1 to be set by default.
+    # override here to prevent that from happening
+  end
+
   def set_featured_postion
-    if featured_changed?
+    if featured_changed? || new_record?
       if featured?
-        self.featured_position = bottom_position_in_list(self).to_i + 1
+        except = new_record? ? nil : self
+        self.featured_position = bottom_position_in_list(except).to_i + 1
       else
         self.featured_position = nil
       end

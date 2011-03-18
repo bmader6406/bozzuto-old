@@ -45,6 +45,32 @@ class CommunityTest < ActiveSupport::TestCase
       assert Community.column_names.include?('featured_position')
     end
 
+    context 'when creating a new record' do
+      setup { @community = ApartmentCommunity.make_unsaved }
+
+      context 'and featured is false' do
+        setup { assert !@community.featured? }
+
+        should 'have a default featured_position of nil' do
+          @community.save
+          assert_nil @community.featured_position
+        end
+      end
+
+      context 'and featured is true' do
+        setup do
+          @community.featured = true
+          assert @community.featured?
+        end
+
+        should 'have a default featured_position of 1' do
+          #debugger
+          @community.save
+          assert_equal 1, @community.featured_position
+        end
+      end
+    end
+
     context 'when querying the mobile phone number field' do
       setup do
         @phone_number = '1 (111) 111-1111'
