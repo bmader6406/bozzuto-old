@@ -5,6 +5,7 @@ class PageTest < ActiveSupport::TestCase
     should_belong_to :section
     should_have_one :body_slideshow
     should_have_one :masthead_slideshow
+    should_have_one :carousel
 
     should_validate_presence_of :title
     

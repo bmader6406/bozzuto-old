@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110307201548) do
+ActiveRecord::Schema.define(:version => 20110322142519) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -233,6 +233,13 @@ ActiveRecord::Schema.define(:version => 20110307201548) do
     t.string   "phone"
     t.string   "buzzes",       :null => false
     t.string   "affiliations", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "carousels", :force => true do |t|
+    t.string   "name",       :null => false
+    t.integer  "page_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
