@@ -101,6 +101,30 @@ Buzz:
   search: 
   application: Contact
 
+Carousel:
+  fields:
+    default: name
+    list: name
+    form: name, page
+    options:
+      destroy_related: CarouselPanel
+  order_by: 
+  relationships: page, panels
+  filters:
+  search:
+  application:
+
+CarouselPanel:
+  fields:
+    default: image, position
+    list: image, position
+    form: image, link_url, heading, caption, carousel
+  order_by: position
+  relationships: 
+  filters:
+  search: 
+  application:
+
 City:
   fields:
     default: name, state
@@ -338,7 +362,7 @@ Page:
       ckeditor: body, mobile_body, mobile_body_extra
       destroy_related: MastheadSlideshow, BodySlideshow
   order_by: section_id, lft
-  relationships: parent, section, masthead_slideshow, body_slideshow
+  relationships: parent, section, masthead_slideshow, body_slideshow, carousel
   filters:
   search: title
   application:

@@ -10,6 +10,8 @@ admin:
   BodySlide: create, read, update, delete
   BodySlideshow: create, read, update, delete
   Buzz: read, delete
+  Carousel: create, read, update, delete
+  CarouselPanel: create, read, update, delete
   City: create, read, update, delete
   ContactTopic: create, read, update, delete
   County: create, read, update, delete

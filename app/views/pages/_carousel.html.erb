@@ -1,0 +1,20 @@
+<div class="carousel">
+  <div class="slides">
+    <ul>
+      <% carousel.panels.each do |panel| %>
+        <li>
+          <% link_to panel.link_url do %>
+            <%= image_tag panel.image.url %>
+
+            <% if panel.heading? && panel.caption? %>
+              <span class="caption">
+                <strong><%= panel.heading %></strong>
+                <%= panel.caption %>
+              </span>
+            <% end %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

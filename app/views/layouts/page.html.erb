@@ -21,43 +21,13 @@
       </div>
 
       <div id="content" class="col">
-        <% if @page.present? && @page.body_slideshow.try(:present?) %>
+        <% if @page.present? && @page.body_slideshow.present? %>
           <%= render 'pages/body_slideshow', :slideshow => @page.body_slideshow %>
         <% end %>
 
-        <div class="carousel">
-          <div class="slides">
-            <ul>
-              <% 4.times do %>
-                <li>
-                  <% link_to '#' do %>
-                    <%= image_tag 'carousel-1.jpg' %>
-
-                    <span class="caption">
-                      <strong>Lorem Ipsum</strong>
-                      Aenean commodo ligula eget dolor. Aenean massa. 
-                    </span>
-                  <% end %>
-                </li>
-                <li>
-                  <% link_to '#' do %>
-                    <%= image_tag 'carousel-2.jpg' %>
-                  <% end %>
-                </li>
-                <li>
-                  <% link_to '#' do %>
-                    <%= image_tag 'carousel-1.jpg' %>
-
-                    <span class="caption">
-                      <strong>Dolor sit amet</strong>
-                      Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo.
-                    </span>
-                  <% end %>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
+        <% if @page.present? && @page.carousel.present? && @page.carousel.panels.any? %>
+          <%= render 'pages/carousel', :carousel => @page.carousel %>
+        <% end %>
 
         <div class="row">
           <div class="column-main col">

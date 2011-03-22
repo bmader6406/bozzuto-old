@@ -6,6 +6,7 @@ en:
       apartment_floor_plan_group: Floor Plan Type
       body_slide: Slide
       body_slideshow: Page Body Slideshow
+      carousel_panel: Carousel Panel
       contact_topic: Contact Form Topic
       dnr_configuration: DNR Configuration
       feed: Feed
@@ -69,6 +70,8 @@ en:
         street1: Street Address 1
         street2: Street Address 2
         zip_code: ZIP Code
+      carousel_panel:
+        link_url: Link URL
       community:
         twitter_account: Twitter Account
       dnr_configuration:
@@ -237,6 +240,10 @@ en:
         image: Image dimensions should be 150x150
       body_slide:
         image: Image dimensions should be 840x375
+      carousel_panel:
+        caption: Required if Heading is set
+        heading: Required if Caption is set
+        image: Image dimensions should be 245x210
       contact_topic:
         recipients: Comma-separated list of email addresses
         section_id: When in this section, contact links will include this topic automatically
