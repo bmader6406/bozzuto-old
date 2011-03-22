@@ -60,14 +60,15 @@ window.bozzuto = {};
       align(document.documentElement);
     });
 
-    $("#special-nav").specialNavPopups();
+    $('#special-nav').specialNavPopups();
 
-    $("#secondary-nav").secondaryNav();
+    $('#secondary-nav').secondaryNav();
 
-    $("#community-info, #apartments-by-area, #properties-by-type").onPageTabs();
+    $('#community-info, #apartments-by-area, #properties-by-type').onPageTabs();
+
     $('.twitter-update').latestTwitterUpdate();
 
-    $(".property #slideshow").featuredSlideshow({
+    $('.property #slideshow').featuredSlideshow({
       dynamicPagination: false
     });
     setTimeout(function() {
@@ -77,7 +78,7 @@ window.bozzuto = {};
       })
     }, 250);
 
-    $(".home #slideshow").featuredSlideshow({
+    $('.home #slideshow').featuredSlideshow({
       dynamicPagination: false,
       onAdvance: function() {
         if (window._gaq != undefined) {
@@ -88,17 +89,19 @@ window.bozzuto = {};
 
     $('.mini-slideshow').featuredSlideshow();
 
-    $("#masthead-slideshow, .slideshow").featuredSlideshow();
+    $('#masthead-slideshow, .slideshow').featuredSlideshow();
 
-    $(".community-icons a").toolTip();
+    $('.carousel').carousel();
 
-    $(".listings .row:last-child").evenUp();
+    $('.community-icons a').toolTip();
 
-    $(".secondaryNav").secondaryNav();
+    $('.listings .row:last-child').evenUp();
 
-    $(".features div.feature a").featurePhotoPopup();
+    $('.secondaryNav').secondaryNav();
 
-    $(".features div.feature ul").makeacolumnlists({
+    $('.features div.feature a').featurePhotoPopup();
+
+    $('.features div.feature ul').makeacolumnlists({
       cols:        2,
       colWidth:    325,
       equalHeight: false,
@@ -1006,11 +1009,76 @@ window.bozzuto = {};
   };
 
 
-  jQuery.fn.attachSearchForm = function() {
+  $.fn.attachSearchForm = function() {
     var form = this;
     this.find("input, select").bind('change', function () {
       $.get(form.action, $(form).serialize(), null, "script");
     });
     return this;
   };
+
+  $.fn.carousel = function() {
+    return $(this).each(function() {
+      var $carousel  = $(this),
+          $container = $('.slides ul', $carousel),
+          $prev      = $('<a href="#" class="prev">Previous Slide</a>'),
+          $next      = $('<a href="#" class="next">Next Slide</a>'),
+          slideCount = $('> li', $container).size(),
+          offset     = $('> li', $container).first().outerWidth(true),
+          setOffset  = offset * 3,
+          setCount   = Math.ceil(slideCount / 3),
+          currentSet = 1;
+
+      $carousel.bind({
+        'carousel:setup': function() {
+          $carousel.append($prev, $next);
+
+          $container.css('width', slideCount * offset + 'px');
+
+          $prev.bind('click', function(e) {
+            e.preventDefault();
+            $carousel.trigger('carousel:prev');
+          });
+
+          $next.bind('click', function(e) {
+            e.preventDefault();
+            $carousel.trigger('carousel:next');
+          });
+
+          $prev.hide();
+
+          if (setCount <= 1) {
+            $next.hide();
+          }
+        },
+
+        'carousel:prev': function() {
+          $container.animate({ 'left': '+=' + setOffset + 'px' }, 750);
+
+          $next.show();
+
+          currentSet--;
+
+          if (currentSet == 1) {
+            $prev.hide();
+          }
+        },
+
+        'carousel:next': function() {
+          $container.animate({ 'left': '-=' + setOffset + 'px' }, 750);
+
+          $prev.show();
+
+          currentSet++;
+
+          if (currentSet == setCount) {
+            $next.hide();
+          }
+        }
+      });
+
+      $carousel.trigger('carousel:setup');
+    });
+  };
+
 })(jQuery);

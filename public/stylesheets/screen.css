@@ -4359,3 +4359,90 @@ div.wysiwyg ul li {
 }
 
 /* @end */
+
+/* @group carousel */
+  .carousel {
+    border-bottom: 1px solid #cdcdd1;
+    height: 212px;
+    margin-bottom: 25px;
+    padding: 0 31px 20px 32px;
+    position: relative;
+    width: 777px;
+  }
+
+  .carousel a.prev,
+  .carousel a.next {
+    background: url(../images/structure/bg-carousel-nav.png) no-repeat 0 0;
+    display: block;
+    height: 212px;
+    overflow: hidden;
+    position: absolute;
+    text-indent: -9999px;
+    top: 0;
+    width: 32px;
+  }
+
+  .carousel a.prev {
+    background-position: 0 65px;
+    left: 0;
+  }
+  .carousel a.next {
+    background-position: -32px 65px;
+    right: -1px;
+  }
+
+  .carousel .slides {
+    height: 212px;
+    overflow: hidden;
+    position: relative;
+    width: 777px;
+  }
+
+  .carousel .slides ul {
+    height: 212px;
+    left: 0;
+    position: relative;
+    width: 795px;
+  }
+
+  .carousel .slides li {
+    border: 1px solid #85898e;
+    float: left;
+    margin-right: 18px;
+  }
+
+  .carousel .slides img {
+    float: none !important;
+    margin: 0 !important;
+  }
+
+  .carousel .slides a {
+    display: block;
+    height: 210px;
+    position: relative;
+    width: 245px;
+  }
+
+  .carousel .slides a:hover {
+    text-decoration: none;
+  }
+
+  .carousel .slides .caption {
+    background: url(../images/structure/bg-carousel-caption.png) repeat 0 0;
+    bottom: 0;
+    color: #84848b;
+    font-size: 13px;
+    left: 0;
+    line-height: 1.2;
+    padding: 10px 12px;
+    position: absolute;
+    width: 221px;
+  }
+
+  .carousel .slides .caption strong {
+    color: #636972;
+    display: block;
+    margin-bottom: 0.3em;
+    text-transform: uppercase;
+  }
+/* @end */

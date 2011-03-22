@@ -1,29 +1,63 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
-<%= render :partial => 'layouts/head' %>
+<%= render 'layouts/head' %>
 <body class="secondary page <%= yield :body_class %>">
-  <%= render :partial => 'layouts/header' %>
+  <%= render 'layouts/header' %>
 
   <% if @page.present? && @page.masthead_slideshow.try(:present?) %>
-    <%= render :partial => 'pages/masthead_slideshow', :locals => { :slideshow => @page.masthead_slideshow } %>
+    <%= render 'pages/masthead_slideshow', :slideshow => @page.masthead_slideshow %>
   <% else %>
-    <%= render :partial => 'pages/masthead' %>
+    <%= render 'pages/masthead' %>
   <% end %>
 
   <div id="main-content">
     <div class="container">
       <div id="sidebar" class="col">
         <% if request.path =~ /^\/services\/?$/ %>
-          <%= render :partial => 'pages/services_nav' %>
+          <%= render 'pages/services_nav' %>
         <% else %>
-          <%= render :partial => 'pages/secondary_nav' %>
+          <%= render 'pages/secondary_nav' %>
         <% end %>
       </div>
 
       <div id="content" class="col">
         <% if @page.present? && @page.body_slideshow.try(:present?) %>
-          <%= render :partial => 'pages/body_slideshow', :locals => { :slideshow => @page.body_slideshow } %>
+          <%= render 'pages/body_slideshow', :slideshow => @page.body_slideshow %>
         <% end %>
+
+        <div class="carousel">
+          <div class="slides">
+            <ul>
+              <% 4.times do %>
+                <li>
+                  <% link_to '#' do %>
+                    <%= image_tag 'carousel-1.jpg' %>
+
+                    <span class="caption">
+                      <strong>Lorem Ipsum</strong>
+                      Aenean commodo ligula eget dolor. Aenean massa. 
+                    </span>
+                  <% end %>
+                </li>
+                <li>
+                  <% link_to '#' do %>
+                    <%= image_tag 'carousel-2.jpg' %>
+                  <% end %>
+                </li>
+                <li>
+                  <% link_to '#' do %>
+                    <%= image_tag 'carousel-1.jpg' %>
+
+                    <span class="caption">
+                      <strong>Dolor sit amet</strong>
+                      Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo.
+                    </span>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
 
         <div class="row">
           <div class="column-main col">
@@ -38,6 +72,6 @@
     </div>
   </div>
 
-  <%= render :partial => 'layouts/footer' %>
+  <%= render 'layouts/footer' %>
 </body>
 </html>
