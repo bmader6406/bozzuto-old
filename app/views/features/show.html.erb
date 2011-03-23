@@ -6,6 +6,8 @@
 
 <% render_meta(@page) %>
 
+<%= community_contact_callout(@community) %>
+
 <% (1..3).each do |i| %>
   <% if @page.send("title_#{i}").present? %>
     <div class="row feature">

@@ -1,6 +1,8 @@
 <% content_for :body_class do %>community property floor-plans<% end %>
 <% render_meta(@community, :floor_plans) %>
 
+<%= community_contact_callout(@community) %>
+
 <% @community.floor_plans_by_group.each do |group, plans_in_group| %>
   <div id="<%= dom_id(group) %>" class="floor-plan-group">
     <h2><%= floor_plan_group_pluralize(plans_in_group.count, group.name) %></h2>

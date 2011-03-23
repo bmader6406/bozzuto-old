@@ -6,7 +6,7 @@
 
 <div class="row">
   <div id="content" class="col">
-    <%= render 'communities/request_info', :community => @community %>
+    <%= community_contact_callout(@community) %>
 
     <div id="overview">
       <%= property_icons(@community) %>

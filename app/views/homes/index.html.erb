@@ -6,6 +6,8 @@
 
 <% render_meta(@community, :floor_plans) %>
 
+<%= community_contact_callout(@community) %>
+
 <% @community.homes(:include => :floor_plans).each do |home| %>
   <div id="<%= dom_id(home) %>" class="floor-plan-group">
     <h2><%= home.name %></h2>
