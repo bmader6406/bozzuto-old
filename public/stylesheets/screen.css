@@ -1554,14 +1554,16 @@ div.wysiwyg ul li {
       width: 230px;
       padding-right: 0;
     }
-    .home #featured-property h2 a {
-      display: block;
+    .home #featured-property h2 {
       border-bottom: 1px solid #C1C1C5;
       border-top: 1px solid #C1C1C5;
-      padding: 6px 0 6px 12px;
+    }
+    .home #featured-property h2 a {
+      display: block;
+      padding: 6px 37px 6px 12px;
       color: #080812;
       font-size: 15px;
-      line-height: 1;
+      line-height: 1.2;
     }
     #header #logo a {
       background: transparent url(../images/structure/bg-logo.gif) no-repeat 0 0;
@@ -1599,13 +1601,13 @@ div.wysiwyg ul li {
       background: transparent url(../images/structure/bg-header-a.gif) no-repeat center left;
     }
     .home #featured-property h2 {
-      background:url("../images/structure/bg-aside-h3.gif") no-repeat scroll 0 0 transparent;
+      background: url(../images/structure/bg-home-featured-property-h2.gif) no-repeat top left;
     }
     .home #featured-property h2:hover {
-      background:url("../images/structure/bg-aside-h3.gif") no-repeat scroll 0 -20px transparent;
+      background: url(../images/structure/bg-home-featured-property-h2.gif) no-repeat bottom right;
     }
     .home #featured-property h2 a {
-      background:url("../images/structure/bg-right-arrow.png") no-repeat scroll 216px center transparent;
+      background: url(../images/structure/bg-right-arrow.png) no-repeat scroll 216px center transparent;
     }
 
     /* @group --news */
