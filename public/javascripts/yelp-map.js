@@ -81,116 +81,108 @@
   }
 
   $(document).ready(function() {
-    var $mapCanvas = $('#map-canvas');
+    $("#map-lightbox").click(function (e) {
+      e.preventDefault();
 
-    if ($mapCanvas.length > 0) {
-      $mapCanvas.jMapping({
-        default_zoom_level: 14
-      });
+      $("#large-map-container").lightbox_me({
+        onLoad: function () {
+          var $largeMap = $('#large-map');
+          var baseIcon = new GIcon(G_DEFAULT_ICON);
+          baseIcon.iconSize = new GSize(32, 37);
+          baseIcon.iconAnchor = new GPoint(16, 37);
+          baseIcon.infoWindowAnchor = new GPoint(16, 0);
+          baseIcon.shadow = null;
 
-      $("#map-lightbox").click(function (e) {
-        e.preventDefault();
+          $largeMap.css({ height: '420px', width: '850px' });
 
-        $("#large-map-container").lightbox_me({
-          onLoad: function () {
-            var $largeMap = $('#large-map');
-            var baseIcon = new GIcon(G_DEFAULT_ICON);
-            baseIcon.iconSize = new GSize(32, 37);
-            baseIcon.iconAnchor = new GPoint(16, 37);
-            baseIcon.infoWindowAnchor = new GPoint(16, 0);
-            baseIcon.shadow = null;
+          $largeMap.jMapping({
+            category_icon_options: function(category) {
+              var icon = new GIcon(baseIcon);
 
-            $largeMap.css({ height: '420px', width: '850px' });
+              switch(category) {
+                case 'fitness':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/fitnesscenter.png';
+                  break;
+                case 'parks':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/park-urban.png';
+                  break;
+                case 'arts':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/music-classical.png';
+                  break;
+                case 'beautysvc':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/aestheticscenter.png';
+                  break;
+                case 'education':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/school.png';
+                  break;
+                case 'coffee':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/coffee.png';
+                  break;
+                case 'grocery':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/grocery.png';
+                  break;
+                case 'hospitals':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/hospital.png';
+                  break;
+                case 'transport':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/bus.png';
+                  break;
+                case 'hotels':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/hotel.png';
+                  break;
+                case 'drycleaninglaundry':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/clothes.png';
+                  break;
+                case 'bars':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/bar.png';
+                  break;
+                case 'petservices':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/pets.png';
+                  break;
+                case 'restaurants':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/restaurant.png';
+                  break;
+                case 'shopping':
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/shoppingmall.png';
+                  break;
+                default:
+                  icon.image = 'http://google-maps-icons.googlecode.com/files/home.png';
+                  break;
+              }
 
-            $largeMap.jMapping({
-              category_icon_options: function(category) {
-                var icon = new GIcon(baseIcon);
+              return icon;
+            },
+            default_zoom_level: 13,
+            side_bar_selector: '#large-map-side-bar:first'
+          });
 
-                switch(category) {
-                  case 'fitness':
-                    icon.image = 'http://google-maps-icons.googlecode.com/files/fitnesscenter.png';
-                    break;
-                  case 'parks':
-                    icon.image = 'http://google-maps-icons.googlecode.com/files/park-urban.png';
-                    break;
-                  case 'arts':
-                    icon.image = 'http://google-maps-icons.googlecode.com/files/music-classical.png';
-                    break;
-                  case 'beautysvc':
-                    icon.image = 'http://google-maps-icons.googlecode.com/files/aestheticscenter.png';
-                    break;
-                  case 'education':
-                    icon.image = 'http://google-maps-icons.googlecode.com/files/school.png';
-                    break;
-                  case 'coffee':
-                    icon.image = 'http://google-maps-icons.googlecode.com/files/coffee.png';
-                    break;
-                  case 'grocery':
-                    icon.image = 'http://google-maps-icons.googlecode.com/files/grocery.png';
-                    break;
-                  case 'hospitals':
-                    icon.image = 'http://google-maps-icons.googlecode.com/files/hospital.png';
-                    break;
-                  case 'transport':
-                    icon.image = 'http://google-maps-icons.googlecode.com/files/bus.png';
-                    break;
-                  case 'hotels':
-                    icon.image = 'http://google-maps-icons.googlecode.com/files/hotel.png';
-                    break;
-                  case 'drycleaninglaundry':
-                    icon.image = 'http://google-maps-icons.googlecode.com/files/clothes.png';
-                    break;
-                  case 'bars':
-                    icon.image = 'http://google-maps-icons.googlecode.com/files/bar.png';
-                    break;
-                  case 'petservices':
-                    icon.image = 'http://google-maps-icons.googlecode.com/files/pets.png';
-                    break;
-                  case 'restaurants':
-                    icon.image = 'http://google-maps-icons.googlecode.com/files/restaurant.png';
-                    break;
-                  case 'shopping':
-                    icon.image = 'http://google-maps-icons.googlecode.com/files/shoppingmall.png';
-                    break;
-                  default:
-                    icon.image = 'http://google-maps-icons.googlecode.com/files/home.png';
-                    break;
-                }
-
-                return icon;
-              },
-              default_zoom_level: 13,
-              side_bar_selector: '#large-map-side-bar:first'
+          function checkedCategories() {
+            var categories = [];
+            $('#large-map-controls input[name=categories]:checked').map(function() {
+              categories.push($(this).val());
             });
-
-            function checkedCategories() {
-              var categories = [];
-              $('#large-map-controls input[name=categories]:checked').map(function() {
-                categories.push($(this).val());
-              });
-              return categories;
-            }
-
-            search(checkedCategories());
-
-            $('#large-map-controls input').click(function(e) {
-              search(checkedCategories());
-            });
-
-            $('#large-map-container a.select-all').click(function(e) {
-              $('#large-map-controls input').attr('checked', 'checked');
-              search(checkedCategories());
-              return false;
-            });
-
-            $('#large-map-container a.select-none').click(function(e) {
-              $('#large-map-controls input').attr('checked', '');
-              search(checkedCategories());
-              return false;
-            });
+            return categories;
           }
-        });
+
+          search(checkedCategories());
+
+          $('#large-map-controls input').click(function(e) {
+            search(checkedCategories());
+          });
+
+          $('#large-map-container a.select-all').click(function(e) {
+            $('#large-map-controls input').attr('checked', 'checked');
+            search(checkedCategories());
+            return false;
+          });
+
+          $('#large-map-container a.select-none').click(function(e) {
+            $('#large-map-controls input').attr('checked', '');
+            search(checkedCategories());
+            return false;
+          });
+        }
       });
-    }
+    });
   });
 })();

@@ -174,6 +174,15 @@ window.bozzuto = {};
     function setCookie(name, value) {
       document.cookie = name + '=' + value + '; path=/';
     }
+
+
+    var $mapCanvas = $('#map-canvas');
+
+    if ($mapCanvas.length > 0) {
+      $mapCanvas.jMapping({
+        default_zoom_level: 14
+      });
+    }
   });
 
   function viewMoreFloorPlanGroups($set) {

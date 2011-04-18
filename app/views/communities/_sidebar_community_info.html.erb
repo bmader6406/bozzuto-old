@@ -20,9 +20,9 @@
 
     <div id="map-canvas"></div>
     <div id="map-side-bar" style="display:none;">
-      <div class="map-location" data-jmapping="{id:1, point: {lat:<%= @community.latitude %>, lng:<%= @community.longitude %>}}">
+      <div class="map-location" data-jmapping="<%= @community.to_jmapping %>">
         <div class="info-box">
-        <h4><%= h @community.title %></h4>
+          <h4><%= h @community.title %></h4>
         </div>
       </div>
     </div>
