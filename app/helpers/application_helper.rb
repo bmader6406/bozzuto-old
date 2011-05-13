@@ -73,7 +73,7 @@ module ApplicationHelper
   end
 
   def sanitize_phone_number(number)
-    number.gsub(/\D/, '')
+    (number || '').gsub(/\D/, '')
   end
 
   def format_phone_number(number)
@@ -114,6 +114,8 @@ module ApplicationHelper
 
   def dnr_phone_number(community, opts = {})
     opts.reverse_merge!(:width => 150, :height => 17)
+
+    return '' unless community.phone_number.present?
 
     number = sanitize_phone_number(community.phone_number)
 
