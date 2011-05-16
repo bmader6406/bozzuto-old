@@ -113,7 +113,6 @@ module Admin::FormHelper
 
     String.new.tap do |html|
       @resource[:class].typus_defaults_for(:relationships).each do |relationship|
-
         association = @resource[:class].reflect_on_association(relationship.to_sym)
 
         next if @current_user.cannot?('read', association.class_name.constantize)
@@ -145,7 +144,6 @@ module Admin::FormHelper
   # OPTIMIZE: Move html code to partial.
   def typus_form_has_many(field)
     String.new.tap do |html|
-
       model_to_relate = @resource[:class].reflect_on_association(field.to_sym).class_name.constantize
       model_to_relate_as_resource = model_to_relate.name.tableize
 
@@ -199,10 +197,19 @@ module Admin::FormHelper
                     { Typus.user_fk => @current_user }
                   end
 
+      #debugger if field == 'popular_properties'
+
       options = { :conditions => conditions }
-      if reflection.options[:order].blank?
-        options[:order] = model_to_relate.typus_order_by 
+      options[:order] = if model_to_relate.typus_order_by.present?
+        model_to_relate.typus_order_by
+      else
+        reflection.options[:order]
       end
+
+      #if reflection.options[:order].blank?
+      #  options[:order] = model_to_relate.typus_order_by
+      #end
+
       items_count = @resource[:class].find(params[:id]).send(field).count(:conditions => conditions)
       items_per_page = model_to_relate.typus_options_for(:per_page).to_i
 
@@ -220,7 +227,7 @@ module Admin::FormHelper
         fields_for_name = :relationship
       end
 
-      unless @items.empty?
+      if @items.any? || model_to_relate.typus_field_options_for(:always_show_relationship_table)
         options = { :back_to => "#{@back_to}##{field}", :resource => @resource[:self], :resource_id => @item.id }
         html << build_list(model_to_relate, 
                            model_to_relate.typus_fields_for(fields_for_name), 

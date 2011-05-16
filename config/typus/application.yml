@@ -271,7 +271,9 @@ LandingPage:
 
 LandingPagePopularProperty:
   fields:
-    default: title, position, street_address, city
+    default: title, street_address, city, position
+    options:
+      always_show_relationship_table: true
   order_by: position
   relationships: property
   application:
