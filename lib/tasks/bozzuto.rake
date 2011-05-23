@@ -32,9 +32,13 @@ namespace :bozzuto do
 
   desc 'Sync Twitter accounts'
   task :sync_twitter_accounts => :environment do
-    TwitterAccount.all.each do |account|
-      puts "Refreshing @#{account.username}"
-      account.sync
+    TwitterAccount.all(:order => 'updated_at ASC').each do |account|
+      begin
+        puts "Refreshing @#{account.username}"
+        account.sync
+      rescue Twitter::BadRequest => e
+        puts " --> error syncing: #{e.message}"
+      end
     end
   end
 end
