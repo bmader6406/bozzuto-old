@@ -10,4 +10,6 @@ class PropertySlideshow < ActiveRecord::Base
     :class_name => 'PropertySlide',
     :dependent  => :destroy,
     :order      => 'position ASC'
+
+  alias_attribute :property_slides, :slides
 end
