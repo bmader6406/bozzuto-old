@@ -10,6 +10,8 @@ module CommunitySearchesHelper
 
         output << render(:partial => partial, :locals => { :community => result })
       end
+    #:nocov:
     end.html_safe
+    #:nocov:
   end
 end

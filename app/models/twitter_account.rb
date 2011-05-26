@@ -24,6 +24,8 @@ class TwitterAccount < ActiveRecord::Base
       true
     rescue Twitter::NotFound
       false
+    rescue Twitter::BadRequest => e
+      log_bad_request('could not sync tweets')
     end
   end
 
@@ -39,6 +41,22 @@ class TwitterAccount < ActiveRecord::Base
       Twitter.user(username) if username?
     rescue Twitter::NotFound
       errors.add(:username, 'is not a valid Twitter user')
+    rescue Twitter::BadRequest => e
+      log_bad_request("could not validate username #{username} exists", e)
     end
+  end
+
+  def log_bad_request(message, e)
+    #:nocov:
+    Rails.logger.debug <<-END
+======
+  Error: #{message}
+
+  Exception: #{e.message}
+
+  Backtrace: #{e.backtrace}
+======
+    END
+    #:nocov:
   end
 end

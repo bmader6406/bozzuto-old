@@ -1,4 +1,5 @@
 module SearchesHelper
+  #:nocov:
   def paginate_search(search)
     totalhits = search.totalhits.to_i
     count = 10 # search.count.to_i
@@ -18,4 +19,5 @@ module SearchesHelper
       links.join("&nbsp;").html_safe
     end
   end
+  #:nocov:
 end

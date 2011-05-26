@@ -18,6 +18,19 @@ class TwitterAccountTest < ActiveSupport::TestCase
     end
 
     context 'with a username' do
+      context 'and Twitter API is rate limited' do
+        setup do
+          Twitter.expects(:user).raises(Twitter::BadRequest)
+          @account.expects(:log_bad_request)
+
+          @account.username = 'doh'
+        end
+
+        should 'catch the error' do
+          assert_nothing_raised { @account.valid? }
+        end
+      end
+
       context 'that is not a Twitter user' do
         setup do
           url = 'https://api.twitter.com/1/users/show.json?screen_name=doh'
@@ -140,6 +153,20 @@ class TwitterAccountTest < ActiveSupport::TestCase
           assert !@account.sync
         end
       end
+
+      context 'and Twitter API is rate limited' do
+        setup do
+          Twitter.expects(:user_timeline).raises(Twitter::BadRequest)
+          @account.expects(:log_bad_request)
+
+          @account.username = 'doh'
+        end
+
+        should 'catch the error' do
+          assert_nothing_raised { @account.sync }
+        end
+      end
+
     end
   end
 end
