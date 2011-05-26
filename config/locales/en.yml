@@ -98,6 +98,7 @@ en:
         mobile_body: Mobile Body
         mobile_title: Mobile Title
       landing_page:
+        hide_from_list: Hide from "Apartments for Rent By Region" List
         local_info_feed: Local Info Feed
         masthead_body: Masthead Body
         masthead_image: Masthead Image
@@ -106,7 +107,7 @@ en:
         meta_title: SEO Title
         secondary_body: Secondary Body
         secondary_title: Secondary Title
-        hide_from_list: Hide from "Apartments for Rent By Region" List
+        show_apartments_by_area: Show the 'Apartments By Region/City/County' section
       lasso_account:
         analytics_id: Lasso Analytics ID
         client_id: Lasso Client ID

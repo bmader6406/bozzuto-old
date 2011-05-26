@@ -115,27 +115,29 @@
           </div>
         </div>
 
-        <div id="apartments-by-area">
-          <div class="header">
-            <ul class="nav">
-              <li class="current">
-                <a href="#apartments-by-region">Apartments By Region</a>
-              </li>
-              <li>
-                <a href="#apartments-by-city">Apartments By City</a>
-              </li>
-              <li class="last">
-                <a href="#apartments-by-county">Apartments By County</a>
-              </li>
-            </ul>
+        <% if @page.show_apartments_by_area? %>
+          <div id="apartments-by-area">
+            <div class="header">
+              <ul class="nav">
+                <li class="current">
+                  <a href="#apartments-by-region">Apartments By Region</a>
+                </li>
+                <li>
+                  <a href="#apartments-by-city">Apartments By City</a>
+                </li>
+                <li class="last">
+                  <a href="#apartments-by-county">Apartments By County</a>
+                </li>
+              </ul>
+            </div>
+
+            <%= apartments_by_region %>
+
+            <%= apartments_by('City') %>
+
+            <%= apartments_by('County') %>
           </div>
-          
-          <%= apartments_by_region %>
-          
-          <%= apartments_by('City') %>
-          
-          <%= apartments_by('County') %>
-        </div>
+        <% end %>
 
         <% if @page.projects.any? %>
           <div class="section listings">
