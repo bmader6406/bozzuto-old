@@ -38,15 +38,20 @@ module SectionContentHelper
 
         css_class = %{class="#{css_classes.join(' ')}"} if css_classes.any?
 
-        output << "<li #{css_class}>"
+        output << ''.tap do |li|
+          li << "<li #{css_class}>"
+          li << link_to(page.title, page_path(page.section, page))
 
-        output << link_to(page.title, page_path(page.section, page))
+          if pages[i + 1].present? && pages[i + 1][:level] > current_level
+            next_level = pages.drop(i + 1).take_while { |hash|
+              hash[:level] > current_level
+            }
 
-        if pages[i + 1].present? && pages[i + 1][:level] > current_level
-          output << pages_tree_helper(pages.drop(i + 1), true, current_level + 1)
+            li << pages_tree_helper(next_level, true, current_level + 1)
+          end
+
+          li << '</li>'
         end
-
-        output << '</li>'
       end
     end
 

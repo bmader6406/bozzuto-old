@@ -19,12 +19,21 @@ class SectionContentHelperTest < ActionView::TestCase
     context '#pages_tree' do
       setup do
         @section = Section.make
-        @page1 = Page.make :section => @section
-        @page2 = Page.make :section => @section
-        @page3 = Page.make :section => @section
 
-        @page3.move_to_child_of(@page2)
-        @page2.move_to_child_of(@page1)
+        @page1 = Page.make(
+          :title   => 'Page 1',
+          :section => @section
+        )
+        @page2 = Page.make(
+          :title   => 'Page 2',
+          :section => @section,
+          :parent  => @page1
+        )
+        @page3 = Page.make(
+          :title   => 'Page 3',
+          :section => @section,
+          :parent  => @page2
+        )
 
         stubs(:params).returns({})
       end
@@ -34,8 +43,10 @@ class SectionContentHelperTest < ActionView::TestCase
 
         assert_select list.root, '> li > a',
           :href => page_path(@section, @page1)
+
         assert_select list.root, '> li > ul > li > a',
           :href => page_path(@section, @page2)
+
         assert_select list.root, 'li ul li ul li a',
           :href => page_path(@section, @page3)
       end

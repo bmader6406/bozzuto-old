@@ -558,7 +558,7 @@ window.bozzuto = {};
 
       // setup
       $("li:not(.current) ul:has(li.current)", this).show();
-      $("li.current", this).find("span.switch").html("&ndash;");
+      $("> li:has(li.current)", this).find("span.switch").html("&ndash;");
     });
   };
 
