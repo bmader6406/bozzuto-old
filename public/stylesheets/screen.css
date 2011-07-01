@@ -2036,11 +2036,18 @@ div.wysiwyg ul li {
     .community #community-info #walk-score {
       padding: 10px 2px;
     }
+
     .community #community-info #map-canvas {
       width: 208px;
       height: 280px;
       border: 1px solid #959ba1;
     }
+
+    .community-map-point h4 {
+      color: #000;
+      font-size: 14px;
+    }
+
     .community #zillow-mortgage-calculator {
       margin-bottom: 10px;
     }

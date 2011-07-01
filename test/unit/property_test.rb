@@ -72,8 +72,16 @@ class PropertyTest < ActiveSupport::TestCase
         @property = Property.make(:street_address => @address)
       end
 
-      should "return the formatted address" do
-        assert_equal "#{@address}, #{@property.city}", @property.address
+      context 'with no separator parameter' do
+        should "return the formatted address, separated by ', '" do
+          assert_equal "#{@address}, #{@property.city}", @property.address
+        end
+      end
+
+      context 'with separator parameter' do
+        should "return the formatted address, separated by the provided separator" do
+          assert_equal "#{@address}<br />#{@property.city}", @property.address('<br />')
+        end
       end
     end
 

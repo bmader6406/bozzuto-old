@@ -66,8 +66,8 @@ class Property < ActiveRecord::Base
     title
   end
 
-  def address
-    [street_address, city].compact.join(', ')
+  def address(separator = ', ')
+    [street_address, city].compact.join(separator)
   end
 
   def state
