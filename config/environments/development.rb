@@ -22,8 +22,9 @@ config.action_mailer.default_url_options = {
 
 config.action_controller.asset_host = 'http://bozzuto.local'
 
-# mocksmtp settings
 config.action_mailer.delivery_method = :smtp
+
+# mocksmtp settings
 config.action_mailer.smtp_settings = {
  :address => 'localhost',
  :port    => 1025,

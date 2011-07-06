@@ -3,8 +3,8 @@ class CommunityMailer < ActionMailer::Base
   helper_method :truncate_html
 
   def send_to_friend(to_address, community)
+    from       BOZZUTO_EMAIL_ADDRESS
     recipients to_address
-    from       "donotreply@bozzuto.com"
     subject    community.title
     sent_on    Time.now
     body       :community => community, :to => to_address
@@ -23,10 +23,12 @@ class CommunityMailer < ActionMailer::Base
   end
   helper_method :community_url
 
+
   def offers_url(community, opts = {})
     ufollowup_url(community.id, opts)
   end
   helper_method :offers_url
+
 
   def floor_plans_url(community)
     case community

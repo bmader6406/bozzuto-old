@@ -27,8 +27,19 @@ config.action_view.cache_template_loading            = true
 # Enable threaded mode
 # config.threadsafe!
 
+config.action_controller.asset_host = 'http://bozzuto.com'
+
 config.action_mailer.default_url_options = {
   :host => 'bozzuto.com'
 }
 
-config.action_controller.asset_host = 'http://bozzuto.com'
+config.action_mailer.smtp_settings = {
+  :address              => 'mail.bozzuto.com',
+  :domain               => 'bozzuto.com',
+  :port                 => 25,
+  :user_name            => 'inquiries',
+  :password             => 'Bozzuto22',
+  :authentication       => :login,
+  :enable_starttls_auto => false
+}
+
