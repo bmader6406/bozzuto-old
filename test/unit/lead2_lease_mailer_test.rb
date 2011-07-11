@@ -18,8 +18,8 @@ class Lead2LeaseMailerTest < ActionMailer::TestCase
         assert_equal [@community.lead_2_lease_email], @email.to
       end
 
-      should 'send from the submission email' do
-        assert_equal [@lead.email], @email.from
+      should 'use the submission email as the reply to' do
+        assert_equal [@lead.email], @email.reply_to
       end
 
       should 'have a subject' do

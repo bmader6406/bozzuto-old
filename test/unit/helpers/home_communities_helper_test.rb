@@ -40,4 +40,41 @@ class HomeCommunitiesHelperTest < ActionView::TestCase
       assert zillow_mortgage_calculator.html_safe?
     end
   end
+
+
+  context '#tracking_pixels' do
+    context 'when tracking a community that is not a home community' do
+      setup do
+        @community = ApartmentCommunity.make_unsaved
+      end
+
+      should 'return nil' do
+        assert_nil tracking_pixels(@community)
+      end
+    end
+
+    context 'when tracking a community that is a home community' do
+      [79, 81, 220].each do |id|
+        context "that has id #{id}" do
+          setup do
+            @community = HomeCommunity.make_unsaved :id => id
+          end
+
+          should 'return the tracking pixels' do
+            assert_match /<img.*<img/, tracking_pixels(@community)
+          end
+        end
+      end
+
+      context 'and home community does not have tracking pixels' do
+        setup do
+          @community = HomeCommunity.make_unsaved :id => 1000
+        end
+
+        should 'return an empty string' do
+          assert_equal '', tracking_pixels(@community)
+        end
+      end
+    end
+  end
 end
