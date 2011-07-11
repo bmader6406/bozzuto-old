@@ -89,6 +89,9 @@ en:
         floor_plans_meta_keywords: Homes SEO Keywords
         floor_plans_meta_title: Homes SEO Title
         listing_promo: Listing Promo Image
+        contact_mediamind_id: MediaMind Activity ID for &ldquo;Contact&rdquo; Page
+        send_to_friend_mediamind_id: MediaMind Activity ID for &ldquo;Send to Friend&rdquo; Thank You Page
+        send_to_phone_mediamind_id: MediaMind Activity ID for &ldquo;Send to Phone&rdquo; Thank You Page
       home_page:
         featured_property: Featured Property
         meta_description: SEO Description

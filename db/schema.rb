@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110526161111) do
+ActiveRecord::Schema.define(:version => 20110711175200) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -164,6 +164,9 @@ ActiveRecord::Schema.define(:version => 20110526161111) do
     t.string   "lead_2_lease_id"
     t.string   "mobile_phone_number"
     t.integer  "twitter_account_id"
+    t.string   "send_to_friend_mediamind_id"
+    t.string   "send_to_phone_mediamind_id"
+    t.string   "contact_mediamind_id"
   end
 
   add_index "archived_properties", ["id"], :name => "index_archived_properties_on_id"
@@ -242,9 +245,9 @@ ActiveRecord::Schema.define(:version => 20110526161111) do
     t.integer  "carousel_id",        :null => false
     t.string   "image_file_name"
     t.string   "image_content_type"
+    t.string   "link_url",           :null => false
     t.string   "heading"
     t.string   "caption"
-    t.string   "link_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -399,7 +402,6 @@ ActiveRecord::Schema.define(:version => 20110526161111) do
     t.boolean  "hide_from_list",                 :default => false, :null => false
     t.boolean  "randomize_property_listings"
     t.integer  "local_info_feed_id"
-    t.integer  "page_type",                      :default => 0,     :null => false
     t.boolean  "show_apartments_by_area",        :default => true
   end
 
@@ -730,6 +732,9 @@ ActiveRecord::Schema.define(:version => 20110526161111) do
     t.string   "lead_2_lease_id"
     t.string   "mobile_phone_number"
     t.integer  "twitter_account_id"
+    t.string   "send_to_friend_mediamind_id"
+    t.string   "send_to_phone_mediamind_id"
+    t.string   "contact_mediamind_id"
   end
 
   create_table "properties_property_features", :id => false, :force => true do |t|

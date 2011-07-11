@@ -1,6 +1,14 @@
 <% content_for :body_class do %>community property features<% end %>
 <% render_meta(@community.contact_page) if @community.contact_page %>
 
+
+<% if @community.send_to_friend_mediamind_id.present? %>
+  <% content_for :end_of_body do %>
+    <%= mediamind_activity_code(@community.send_to_friend_mediamind_id) %>
+  <% end %>
+<% end %>
+
+
 <div id="thank-you-text">
   <%= snippet('Send To Friend Thank You Text') %>
 </div>
