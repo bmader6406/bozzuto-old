@@ -54,7 +54,7 @@ module Typus
       tip = @resource[:class].human_tip_text(attribute)
 
       if tip.present?
-        content_tag(:em, :class => 'tip') { tip }.html_safe
+        content_tag(:em, :class => 'tip') { tip.html_safe }.html_safe
       end
     end
   end

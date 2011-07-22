@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110711175200) do
+ActiveRecord::Schema.define(:version => 20110722144113) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -279,6 +279,19 @@ ActiveRecord::Schema.define(:version => 20110711175200) do
     t.string   "recipients", :null => false
     t.integer  "section_id"
     t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "conversion_configurations", :force => true do |t|
+    t.string   "name"
+    t.string   "google_send_to_friend_label"
+    t.string   "google_send_to_phone_label"
+    t.string   "google_contact_label"
+    t.string   "bing_send_to_friend_action_id"
+    t.string   "bing_send_to_phone_action_id"
+    t.string   "bing_contact_action_id"
+    t.integer  "property_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

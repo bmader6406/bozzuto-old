@@ -74,6 +74,13 @@ en:
         link_url: Link URL
       community:
         twitter_account: Twitter Account
+      conversion_configuration:
+        bing_contact_action_id: Bing Action ID for &ldquo;Contact&rdquo; Page
+        bing_send_to_friend_action_id: Bing Action ID for &ldquo;Send to Friend&rdquo; Page
+        bing_send_to_phone_action_id: Bing Action ID for &ldquo;Send to Phone&rdquo; Page
+        google_contact_label: Google Conversion Label for &ldquo;Contact&rdquo; Page
+        google_send_to_friend_label: Google Conversion Label for &ldquo;Send to Friend&rdquo; Page
+        google_send_to_phone_label: Google Conversion Label for &ldquo;Send to Phone&rdquo; Page
       dnr_configuration:
         customer_code: Customer Code
         campaign: Campaign
@@ -251,6 +258,16 @@ en:
       contact_topic:
         recipients: Comma-separated list of email addresses
         section_id: When in this section, contact links will include this topic automatically
+
+      conversion_configuration:
+        bing_contact_action_id: 'This value is in the JavaScript embed code: <code>...domainId:"1280858",type:"1",actionid:"<strong class="highlight">31442</strong>"...</code>'
+        bing_send_to_friend_action_id: 'This value is in the JavaScript embed code: <code>...domainId:"1280858",type:"1",actionid:"<strong class="highlight">31440</strong>"...</code>'
+        bing_send_to_phone_action_id: 'This value is in the JavaScript embed code: <code>...domainId:"1280858",type:"1",actionid:"<strong class="highlight">31441</strong>"...</code>'
+
+        google_contact_label: 'This value is in the JavaScript embed code: <code>...var google_conversion_label = "<strong class="highlight">-ls7CIKl4QIQ7oKvzwM</strong>";...</code>'
+        google_send_to_friend_label: 'This value is in the JavaScript embed code: <code>...var google_conversion_label = "<strong class="highlight">9-naCJqi4QIQ7oKvzwM</strong>";...</code>'
+        google_send_to_phone_label: 'This value is in the JavaScript embed code: <code>...var google_conversion_label = "<strong class="highlight">OVtTCJKj4QIQ7oKvzwM</strong>";...</code>'
+
       home_community:
         listing_promo: Image dimensions should be 151x54
       home_page:

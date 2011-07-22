@@ -18,6 +18,7 @@ class CommunityTest < ActiveSupport::TestCase
     should_have_one :features_page
     should_have_one :neighborhood_page
     should_have_one :contact_page
+    should_have_one :conversion_configuration
     should_have_many :photos, :through => :photo_set
     
     should_have_named_scope 'sort_for(LandingPage.make(:randomize_property_listings => true))',

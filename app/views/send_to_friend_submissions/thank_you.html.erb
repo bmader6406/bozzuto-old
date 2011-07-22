@@ -8,6 +8,18 @@
   <% end %>
 <% end %>
 
+<% @community.conversion_configuration.try(:google_send_to_friend_label).if_present? do |code| %>
+  <% content_for :end_of_body do %>
+    <%= google_conversion_code(code) %>
+  <% end %>
+<% end %>
+
+<% @community.conversion_configuration.try(:bing_send_to_friend_action_id).if_present? do |action_id| %>
+  <% content_for :end_of_body do %>
+    <%= bing_conversion_code(action_id) %>
+  <% end %>
+<% end %>
+
 
 <div id="thank-you-text">
   <%= snippet('Send To Friend Thank You Text') %>

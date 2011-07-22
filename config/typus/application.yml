@@ -160,6 +160,18 @@ County:
   search: name
   application: Geography
 
+ConversionConfiguration:
+  fields:
+    default: name
+    list: name
+    form: name, property, google_send_to_friend_label, google_send_to_phone_label, google_contact_label, bing_send_to_friend_action_id, bing_send_to_phone_action_id, bing_contact_action_id
+    options:
+      required: property, name
+  order_by: 
+  relationships:
+  search: name
+  application:
+
 DnrConfiguration:
   fields:
     default: customer_code, campaign, ad_source
@@ -206,9 +218,9 @@ HomeCommunity:
       booleans:
         published: ['Yes', 'No']
       selectors: brochure_type
-      destroy_related: DnrConfiguration, PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyContactPage, LassoAccount, PropertySlideshow, PropertyMiniSlideshow, Home, Video, PhotoSet
+      destroy_related: DnrConfiguration, ConversionConfiguration, PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyContactPage, LassoAccount, PropertySlideshow, PropertyMiniSlideshow, Home, Video, PhotoSet
   order_by: title
-  relationships: dnr_configuration, property_features, city, county, features_page, neighborhood_page, contact_page, lasso_account, slideshow, videos, photo_set, homes, local_info_feed, promo
+  relationships: dnr_configuration, conversion_configuration, property_features, city, county, features_page, neighborhood_page, contact_page, lasso_account, slideshow, videos, photo_set, homes, local_info_feed, promo
   filters:
   search: title
   application: Properties

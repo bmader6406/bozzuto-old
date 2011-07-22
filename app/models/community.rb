@@ -5,21 +5,34 @@ class Community < Property
 
   acts_as_list :column => 'featured_position'
 
+
   belongs_to :local_info_feed, :class_name => 'Feed'
+
   belongs_to :promo
+
   belongs_to :twitter_account
+
   has_one :photo_set,
     :foreign_key => :property_id
+
   has_many :photos, :through => :photo_set
+
   has_one :dnr_configuration,
     :dependent   => :destroy,
     :foreign_key => :property_id
+
   has_many :videos,
     :foreign_key => :property_id,
     :order       => 'position ASC'
 
+  has_one :conversion_configuration,
+    :dependent   => :destroy,
+    :foreign_key => :property_id
+
+
   [:features_page, :neighborhood_page, :contact_page].each do |page_type|
-    has_one page_type, :class_name => "Property#{page_type.to_s.classify}",
+    has_one page_type,
+      :class_name  => "Property#{page_type.to_s.classify}",
       :foreign_key => :property_id
 
     define_method("#{page_type}?") do
@@ -27,15 +40,16 @@ class Community < Property
     end
   end
 
+
   before_save :set_featured_postion
 
-  named_scope :featured_order, {:order => 'featured DESC, featured_position ASC, title ASC'}
+  named_scope :featured_order, :order => 'featured DESC, featured_position ASC, title ASC'
 
   named_scope :sort_for, lambda { |landing_page|
     if landing_page.respond_to?(:randomize_property_listings?)
       landing_page.randomize_property_listings? ?
-        {:order => 'RAND(NOW())'} :
-        {:order => 'properties.title ASC'}
+        { :order => 'RAND(NOW())' } :
+        { :order => 'properties.title ASC' }
     else
       {}
     end
