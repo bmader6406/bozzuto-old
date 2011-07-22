@@ -59,6 +59,14 @@ module ApplicationHelper
     end
   end
 
+  def google_plus_one_button
+    content_for(:end_of_body, '<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>'.html_safe)
+
+    content_tag :div, :class => 'google-plus-one' do
+      '<g:plusone size="medium"></g:plusone>'.html_safe
+    end
+  end
+
   def bedrooms(record)
     pluralize(record.bedrooms, 'Bedroom')
   end

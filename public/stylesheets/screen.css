@@ -1321,6 +1321,10 @@ div.wysiwyg ul li {
     padding-top: 20px;
   }
 
+  .community #sidebar div.google-plus-one {
+    margin-top: 10px;
+  }
+
   .community #sidebar p.facebook-link a {
     background: url(../images/structure/ico-facebook.gif) no-repeat center left;
     line-height: 1;

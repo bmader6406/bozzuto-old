@@ -1,6 +1,10 @@
 <div class="social-updates">
   <%= facebook_like_link(request.url) %>
 
+  <% if @community.is_a?(ApartmentCommunity) %>
+    <%= google_plus_one_button %>
+  <% end %>
+
   <% if @community.facebook_url.present? %>
     <p class="facebook-link">
       <%= link_to 'Follow on Facebook', @community.facebook_url, :rel => 'external' %>

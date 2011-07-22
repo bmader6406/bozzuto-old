@@ -272,6 +272,16 @@ class ApplicationHelperTest < ActionView::TestCase
       end
     end
 
+    context '#google_plus_one_button' do
+      setup do
+        expects(:content_for).with(:end_of_body, '<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>'.html_safe)
+      end
+
+      should 'return the google html tag' do
+        assert_equal '<div class="google-plus-one"><g:plusone size="medium"></g:plusone></div>', google_plus_one_button
+      end
+    end
+
     context '#snippet' do
       context 'with missing name' do
         setup { @body = snippet(:not_found) }
