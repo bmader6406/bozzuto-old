@@ -53,7 +53,7 @@ module PropertiesHelper
       PropertyFeature.all.inject('') do |output, feature|
         output << content_tag(:li, :id => dom_id(feature)) do
           content_tag(:h4) { feature.name } + 
-            content_tag(:p) { feature.description }
+            content_tag(:p) { raw(feature.description) }
         end
         output.html_safe
       end

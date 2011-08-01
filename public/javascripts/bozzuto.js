@@ -626,12 +626,14 @@ window.bozzuto = {};
       }, function() {
         tooltime = setTimeout(function() {
           $tooltip.fadeOut(250);
-          $tooltipArrow.css({
+
+          $tooltipArrow.animate({
             'top'    : 0,
             'height' : 0
-          })
+          }, 250);
+
           tooltime = 'inactive';
-        }, 500)
+        }, 750)
       }).click(function(e) {
         e.preventDefault();
       });
