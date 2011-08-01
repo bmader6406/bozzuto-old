@@ -1,5 +1,6 @@
 .DS_Store
 .idea
+config.ru
 config/database.yml
 config/app_config.yml
 public/assets
