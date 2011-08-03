@@ -31,6 +31,7 @@
   </div>
 <% end %>
 
+
 <% if @page.section.cached_slug == 'services' && @page.first? %>
   <%= render 'services_nav' %>
 <% end %>
@@ -41,4 +42,8 @@
 
 <% if @page.section.cached_slug == 'new-homes' && @page.first? %>
   <%= render 'homes_secondary_nav' %>
+<% end %>
+
+<% if @page.section.cached_slug == 'about-us' && @page.first? %>
+  <%= render 'about_secondary_nav' %>
 <% end %>
