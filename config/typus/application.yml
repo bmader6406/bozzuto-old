@@ -371,7 +371,7 @@ Page:
     list_deleted: title, section_title
     show: title, published, section, parent, body, left_montage_image, middle_montage_image, right_montage_image
     list: formatted_title, published, section, position
-    form: title, section, parent, published, meta_title, meta_description, meta_keywords, body, mobile_body, mobile_body_extra, left_montage_image, middle_montage_image, right_montage_image
+    form: title, section, parent, published, show_sidebar, meta_title, meta_description, meta_keywords, body, mobile_body, mobile_body_extra, left_montage_image, middle_montage_image, right_montage_image
     options:
       ckeditor: body, mobile_body, mobile_body_extra
       destroy_related: MastheadSlideshow, BodySlideshow

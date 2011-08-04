@@ -34,9 +34,11 @@
             <%= yield %>
           </div>
 
-          <div id="aside" class="col">
-            <%= render_aside %>
-          </div>
+          <% if @page.try(:show_sidebar?) %>
+            <div id="aside" class="col">
+              <%= render_aside %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
