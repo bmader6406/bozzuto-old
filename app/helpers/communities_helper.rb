@@ -24,7 +24,7 @@ module CommunitiesHelper
     return '' unless conversion_label.present?
 
     <<-END.html_safe
-      <!-- Google Code for Maple Lawn - Send to a Friend Conversion Page --> <script type="text/javascript">
+      <script type="text/javascript">
       /* <![CDATA[ */
       var google_conversion_id = 971751790;
       var google_conversion_language = "en";
