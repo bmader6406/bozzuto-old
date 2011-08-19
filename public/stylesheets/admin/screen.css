@@ -434,17 +434,54 @@ input.date_input { border: 1px solid #999; margin-bottom: 1em;}
 /* @group Success, notice and error boxes */
 
 .error,
+.alert,
 .notice, 
-.success { border: 1px solid #CCC; font-weight: bold; margin: 0 0 1em 0; }
+.success {
+  border: 1px solid #CCC;
+  font-weight: bold;
+  margin: 0 0 1em 0;
+}
+
 .error p,
+.alert p,
 .notice p, 
-.success p { font-weight: bold; margin: 0!important; padding: 1em; }
-.error { background: #FBE3E4; border-color: #FBC2C4; color: #8A1F11; }
-.error a { color: #8A1F11; }
-.notice { background: #FFF6BF; border-color: #FFD324; color: #514721; }
-.notice a { color: #514721; }
-.success { background: #E6EFC2; border-color: #C6D880; color: #264409; }
-.success a { color: #264409; }
+.success p {
+  font-weight: bold;
+  margin: 0 !important;
+  padding: 1em;
+}
+
+.error,
+.alert {
+  background: #FBE3E4;
+  border-color: #FBC2C4;
+  color: #8A1F11;
+}
+
+.error a,
+.alert a {
+  color: #8A1F11;
+}
+
+.notice {
+  background: #FFF6BF;
+  border-color: #FFD324;
+  color: #514721;
+}
+
+.notice a {
+  color: #514721;
+}
+
+.success {
+  background: #E6EFC2;
+  border-color: #C6D880;
+  color: #264409;
+}
+
+.success a {
+  color: #264409;
+}
 
 /* @end */
 
@@ -560,6 +597,23 @@ input.date_input { border: 1px solid #999; margin-bottom: 1em;}
 }
 .cke_skin_kama .cke_dialog .cke_dialog_contents {
   margin-top: 32px;
+}
+
+/* @end */
+
+/* @group Vaultware Feed refresh */
+
+#sidebar .vaultware-message {
+  text-transform: none;
+  font-size: 12px;
+}
+
+#sidebar .vaultware-message.please-wait {
+  display: none;
+}
+
+#sidebar .vaultware-message.please-wait img {
+  vertical-align: middle;
 }
 
 /* @end */

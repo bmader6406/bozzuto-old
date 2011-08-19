@@ -141,4 +141,17 @@ $(function() {
       }
     }).change();
   })();
+
+  // vaultware feed refresh
+  (function() {
+    var $link    = $('a#refresh-vaultware-feed'),
+        $message = $('span.vaultware-message.please-wait');
+
+    if ($link.length > 0) {
+      $link.bind('click', function() {
+        $link.hide();
+        $message.show();
+      });
+    }
+  })();
 });

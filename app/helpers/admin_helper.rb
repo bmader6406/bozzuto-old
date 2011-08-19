@@ -41,4 +41,22 @@ module AdminHelper
   def typus_required_badge
     '<span class="required">*</span>'
   end
+
+  def can_refresh_vaultware_feed?
+    last_refreshed_at = refreshed_vaultware_feed_at
+
+    if !last_refreshed_at || last_refreshed_at <= (Time.now - VAULTWARE_REFRESH_INTERVAL)
+      true
+    else
+      false
+    end
+  end
+
+  def refreshed_vaultware_feed_at
+    if File.exists?(VAULTWARE_TMP_FILE)
+      File.new(VAULTWARE_TMP_FILE).mtime
+    else
+      return nil
+    end
+  end
 end
