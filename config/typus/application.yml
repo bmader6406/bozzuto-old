@@ -93,9 +93,10 @@ BodySlideshow:
 Buzz:
   fields:
     default: email, first_name, last_name, street1, street2, city, state, zip_code, phone, formatted_buzzes, formatted_affiliations
-    list: first_name, last_name, email, phone, city, state
+    list: first_name, last_name, email, city, state
     form: 
   order_by: -updated_at
+  export: csv
   relationships: 
   filters: 
   search: 
