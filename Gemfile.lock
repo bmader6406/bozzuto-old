@@ -32,6 +32,10 @@ dependencies:
     group: 
     - :default
     version: = 2.4.27
+  rake: 
+    group: 
+    - :default
+    version: = 0.8.7
   mysql: 
     group: 
     - :default
@@ -140,7 +144,7 @@ dependencies:
     version: = 2.5.19
 specs: 
 - rake: 
-    version: 0.9.2
+    version: 0.8.7
 - Platform: 
     version: 0.4.0
 - open4: 
@@ -277,7 +281,7 @@ specs:
     version: 0.6.2
 - will_paginate: 
     version: 2.3.15
-hash: 78fa08a855fc3d59a9dfeff523508172f7097783
+hash: 7ca64c774ad690784f5fcb9036590d7816de323e
 sources: 
 - Rubygems: 
     uri: http://rubygems.org

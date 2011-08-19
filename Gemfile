@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem 'rake', '0.8.7'
 gem 'rails', '2.3.11'
 gem 'mysql', '2.8.1'
 gem 'erubis', '2.6.6'
