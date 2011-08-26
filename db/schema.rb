@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110804170711) do
+ActiveRecord::Schema.define(:version => 20110826150922) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -587,12 +587,12 @@ ActiveRecord::Schema.define(:version => 20110804170711) do
   add_index "photo_sets", ["property_id"], :name => "index_photo_sets_on_property_id"
 
   create_table "photos", :force => true do |t|
-    t.string   "image_file_name"
-    t.string   "title",              :null => false
+    t.string   "image_file_name",    :default => ""
+    t.string   "title",              :default => "", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_content_type"
-    t.string   "flickr_photo_id",    :null => false
+    t.string   "flickr_photo_id",                    :null => false
     t.integer  "photo_set_id"
     t.integer  "position"
   end
@@ -832,6 +832,40 @@ ActiveRecord::Schema.define(:version => 20110804170711) do
 
   add_index "property_slideshows", ["property_id"], :name => "index_property_slideshows_on_property_id"
 
+  create_table "publications", :force => true do |t|
+    t.string   "name",                                  :null => false
+    t.text     "description"
+    t.integer  "position"
+    t.string   "image_file_name",                       :null => false
+    t.string   "image_content_type",                    :null => false
+    t.boolean  "published",          :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publications", ["published", "position"], :name => "index_publications_on_published_and_position"
+
+  create_table "rank_categories", :force => true do |t|
+    t.string   "name",           :null => false
+    t.integer  "position"
+    t.integer  "publication_id", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rank_categories", ["publication_id", "position"], :name => "index_rank_categories_on_publication_id_and_position"
+
+  create_table "ranks", :force => true do |t|
+    t.integer  "rank_number",      :null => false
+    t.integer  "year",             :null => false
+    t.string   "description"
+    t.integer  "rank_category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ranks", ["rank_category_id", "year"], :name => "index_ranks_on_rank_category_id_and_year"
+
   create_table "sections", :force => true do |t|
     t.string   "title",                                             :null => false
     t.datetime "created_at"
@@ -874,9 +908,9 @@ ActiveRecord::Schema.define(:version => 20110804170711) do
   end
 
   create_table "testimonials", :force => true do |t|
-    t.string   "name"
-    t.string   "title"
-    t.text     "quote",      :null => false
+    t.string   "name",       :default => ""
+    t.string   "title",      :default => ""
+    t.text     "quote",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "section_id"
