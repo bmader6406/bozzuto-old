@@ -31,6 +31,7 @@ en:
       property_feature: Property Feature
       property_slide: Slide
       property_slideshow: Property Slideshow
+      rank_category: Rank Category
       typus_user: User
     attributes:
       apartment_community:
@@ -311,6 +312,8 @@ en:
       property_slide:
         image: Image dimensions should be 870x375
         caption: Must be fewer than 128 characters
+      publication:
+        image: Image width should be 110px
       section:
         left_montage_image: Image dimensions should be 250x148
         middle_montage_image: Image dimensions should be 540x148
