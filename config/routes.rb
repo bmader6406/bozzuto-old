@@ -183,8 +183,13 @@ ActionController::Routing::Routes.draw do |map|
       :action => :show
   end
 
+  map.rankings '/about-us/rankings',
+    :controller => :rankings,
+    :action     => :index
 
-  map.leadership '/:section/leadership', :controller => :leaders, :action => :index
+  map.leadership '/:section/leadership',
+    :controller => :leaders,
+    :action     => :index
 
   map.with_options :controller => :buzzes, :section => 'about-us' do |m|
     m.buzz '/bozzuto-buzz', :action => 'new', :conditions => { :method => :get }

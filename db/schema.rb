@@ -836,8 +836,8 @@ ActiveRecord::Schema.define(:version => 20110826150922) do
     t.string   "name",                                  :null => false
     t.text     "description"
     t.integer  "position"
-    t.string   "image_file_name",                       :null => false
-    t.string   "image_content_type",                    :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
     t.boolean  "published",          :default => false
     t.datetime "created_at"
     t.datetime "updated_at"

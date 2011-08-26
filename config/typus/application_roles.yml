@@ -48,6 +48,9 @@ admin:
   PropertyNeighborhoodPage: create, read, update, delete
   PropertySlide: create, read, update, delete
   PropertySlideshow: create, read, update, delete
+  Publication: create, read, update, delete
+  RankCategory: create, read, update, delete
+  Rank: create, read, update, delete
   Section: read, update
   Snippet: create, read, update, delete
   State: create, read, update, delete

@@ -4461,3 +4461,45 @@ div.wysiwyg ul li {
     text-transform: uppercase;
   }
 /* @end */
+
+/* @group Publications/Rankings */
+  .publication {
+    margin-bottom: 25px;
+  }
+
+  .publication h3 {
+    line-height: 1.25 !important;
+  }
+
+  .publication img {
+    margin: 0 !important;
+  }
+
+  .publication .rank-category {
+    padding-left: 120px;
+    margin-bottom: 10px;
+  }
+
+  .publication .description {
+    margin-bottom: 15px;
+  }
+
+  .publication .rankings {
+    margin-left: 0 !important;
+  }
+
+  .publication .rankings li {
+    background: none;
+    margin-left: 0;
+  }
+
+  .publication .rankings strong {
+    margin-right: 5px;
+    width: 50px;
+  }
+
+  .publication h3 {
+    border-top: none;
+    margin-bottom: 5px;
+  }
+/* @end */

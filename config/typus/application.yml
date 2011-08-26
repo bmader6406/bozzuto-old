@@ -613,6 +613,43 @@ PropertySlideshow:
   search: name
   application:
 
+Publication:
+  fields:
+    default: name, position
+    list: 
+    form: name, description, image, published
+    options:
+      ckeditor: description
+  order_by: position
+  relationships: rank_categories
+  filters:
+  search:
+  application: News & Press
+
+Rank:
+  fields:
+    default: year, rank_number, description
+    list: 
+    form: year, rank_number, description, rank_category
+    options:
+      selectors: year, rank_number
+  order_by: -year
+  relationships: 
+  filters:
+  search:
+  application: 
+
+RankCategory:
+  fields:
+    default: name, position
+    list: name, publication
+    form: name, publication
+  order_by: position
+  relationships: ranks
+  filters:
+  search:
+  application: 
+
 Section:
   fields:
     default: title

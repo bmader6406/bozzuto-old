@@ -1,0 +1,47 @@
+<% render_meta(@page) %>
+
+<% @page.ancestors.each do |page| %>
+  <% breadcrumb_item(link_to page.title, page_path(@section, page)) %>
+<% end %>
+
+<% breadcrumb_item(@page.title) %>
+
+<% breadcrumb_title(@page.title) %>
+
+<%= @page.body.try(:html_safe) %>
+
+<div class="publications">
+  <% @publications.each do |publication| %>
+    <% if publication.rank_categories.any? %>
+      <div class="publication row">
+        <h2><%= publication.name %></h2>
+
+        <% if publication.description? %>
+          <div class="description">
+            <%= raw(publication.description) %>
+          </div>
+        <% end %>
+
+        <%= image_tag publication.image.url %>
+
+        <% publication.rank_categories.each do |category| %>
+          <% if category.ranks.any? %>
+            <div class="rank-category">
+              <h3><%= category.name %></h3>
+
+              <ul class="rankings">
+                <% category.ranks.each do |rank| %>
+                  <li>
+                    <strong><%= rank.year %></strong>
+                    #<%= rank.rank_number %>
+                    <%= rank.description if rank.description? %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

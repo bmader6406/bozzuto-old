@@ -5,8 +5,8 @@ class CreatePublications < ActiveRecord::Migration
       t.text    :description
       t.integer :position
 
-      t.string  :image_file_name, :null => false
-      t.string  :image_content_type, :null => false
+      t.string  :image_file_name
+      t.string  :image_content_type
 
       t.boolean :published, :default => false
 
