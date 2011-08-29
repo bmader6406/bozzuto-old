@@ -98,6 +98,14 @@ module SectionContentHelper
             end
           end
 
+          # rankings
+          if @section == Section.about
+            current = params[:controller] == 'rankings' ? 'current' : nil
+            subnav << content_tag(:li, :class => current) do
+              link_to('Rankings', rankings_path, :class => current)
+            end
+          end
+
           if subnav.any?
             li << content_tag(:ul) { subnav.join.html_safe }
           end

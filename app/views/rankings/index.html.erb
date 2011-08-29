@@ -1,14 +1,10 @@
-<% render_meta(@page) %>
+<% content_for :body_class do %>generic<% end %>
 
-<% @page.ancestors.each do |page| %>
-  <% breadcrumb_item(link_to page.title, page_path(@section, page)) %>
-<% end %>
+<% breadcrumb_item(link_to 'News & Press', news_and_press_path(@section)) %>
+<% breadcrumb_item('Rankings') %>
 
-<% breadcrumb_item(@page.title) %>
+<% breadcrumb_title('Rankings') %>
 
-<% breadcrumb_title(@page.title) %>
-
-<%= @page.body.try(:html_safe) %>
 
 <div class="publications">
   <% @publications.each do |publication| %>

@@ -143,6 +143,10 @@ ActionController::Routing::Routes.draw do |map|
 
   ###
   # News & Press
+  map.rankings '/about-us/news-and-press/rankings',
+    :controller => :rankings,
+    :action     => :index
+
   map.with_options :controller => :news_posts do |m|
     m.service_section_news_post '/services/:section/news-and-press/news/:news_post_id',
       :action => :show
@@ -182,10 +186,6 @@ ActionController::Routing::Routes.draw do |map|
       :section => 'about-us',
       :action => :show
   end
-
-  map.rankings '/about-us/rankings',
-    :controller => :rankings,
-    :action     => :index
 
   map.leadership '/:section/leadership',
     :controller => :leaders,
