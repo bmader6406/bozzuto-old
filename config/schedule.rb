@@ -1,4 +1,4 @@
-every 30.minutes do
+every 1.hour do
   rake 'bozzuto:sync_twitter_accounts'
 end
 

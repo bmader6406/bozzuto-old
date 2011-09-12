@@ -25,7 +25,7 @@ class TwitterAccount < ActiveRecord::Base
     rescue Twitter::NotFound
       false
     rescue Twitter::BadRequest => e
-      log_bad_request('could not sync tweets')
+      log_bad_request('could not sync tweets', e)
     end
   end
 
@@ -48,8 +48,10 @@ class TwitterAccount < ActiveRecord::Base
 
   def log_bad_request(message, e)
     #:nocov:
-    Rails.logger.debug <<-END
+    Rails.logger.error <<-END
 ======
+TwitterAccount#sync error
+------
   Error: #{message}
 
   Exception: #{e.message}
