@@ -59,6 +59,22 @@ module ApplicationHelper
     end
   end
 
+  def facebook_like_box(facebook_url)
+    content_tag :div, :class => 'facebook-like-box' do
+      <<-END.html_safe
+        <div id="fb-root"></div>
+        <script>(function(d){
+          var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+          js = d.createElement('script'); js.id = id; js.async = true;
+          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+          d.getElementsByTagName('head')[0].appendChild(js);
+        }(document));</script>
+        <div class="fb-like-box" data-href="#{facebook_url}" data-width="230" data-show-faces="true" data-stream="true" data-header="true"></div>
+      END
+    end
+  end
+
+
   def google_plus_one_button
     content_for(:end_of_body, '<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>'.html_safe)
 

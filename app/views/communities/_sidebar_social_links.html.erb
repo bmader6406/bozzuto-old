@@ -1,15 +1,19 @@
 <div class="social-updates">
-  <%= facebook_like_link(request.url) %>
+  <%#= facebook_like_link(request.url) %>
+
+  <% if @community.facebook_url.present? %>
+    <%= facebook_like_box(@community.facebook_url) %>
+  <% end %>
 
   <% if @community.is_a?(ApartmentCommunity) %>
     <%= google_plus_one_button %>
   <% end %>
 
-  <% if @community.facebook_url.present? %>
-    <p class="facebook-link">
-      <%= link_to 'Follow on Facebook', @community.facebook_url, :rel => 'external' %>
-    </p>
-  <% end %>
+  <%# if @community.facebook_url.present? %>
+    <!--p class="facebook-link">
+      <%#= link_to 'Follow on Facebook', @community.facebook_url, :rel => 'external' %>
+    </p-->
+  <%# end %>
 
   <% @community.tweets.try(:first).if_present? do |tweet| %>
     <%= render :partial => 'shared/tweet', :object => tweet %>

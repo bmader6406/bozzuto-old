@@ -1307,8 +1307,9 @@ div.wysiwyg ul li {
   .community .floor-plan p,
   .community #nearby-communities li,
   .community #recently-viewed li,
-  .community #sidebar p.facebook-link,
+  .community #sidebar div.google-plus-one,
   .community #sidebar div.twitter-update,
+  .community #sidebar p.facebook-link,
   .community #sidebar p.sharethis,
   .community #renting-from-bozzuto,
   .community #about-bozzuto,
@@ -1318,15 +1319,12 @@ div.wysiwyg ul li {
   }
 
   .community #sidebar p.facebook-link,
+  .community #sidebar div.google-plus-one,
   .community #sidebar div.twitter-update,
   .community #sidebar p.sharethis {
     background-position: 0 0;
     margin-top: 20px;
     padding-top: 20px;
-  }
-
-  .community #sidebar div.google-plus-one {
-    margin-top: 10px;
   }
 
   .community #sidebar p.facebook-link a {

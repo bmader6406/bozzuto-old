@@ -272,6 +272,14 @@ class ApplicationHelperTest < ActionView::TestCase
       end
     end
 
+    context '#facebook_like_box' do
+      should 'output div.facebook-like-box and html/js' do
+        code = facebook_like_box('http://facebook.com/batman')
+
+        assert_match /data-href="http:\/\/facebook.com\/batman"/m, code
+      end
+    end
+
     context '#google_plus_one_button' do
       setup do
         expects(:content_for).with(:end_of_body, '<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>'.html_safe)
