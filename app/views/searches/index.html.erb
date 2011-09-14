@@ -1,5 +1,4 @@
-<% content_for :body_class do %>search
-<% end %>
+<% content_for :body_class do %>search boss-search<% end %>
 
 <div id="breadcrumb">
   <div class="container">
@@ -19,19 +18,18 @@
       </div>
 
       <div id="content" class="col">
-        <% if @search.results.present? -%>
-
+        <% if @results.any? -%>
           <div class="header">
             <p>
-              Showing <%= @search.start.to_i + 1 %>-<%= @search.start.to_i + @search.count.to_i %>
-              of <%= @search.totalhits %>
+              Showing <%= @search.start + 1 %>-<%= @search.start + @search.count %>
+              of <%= @search.totalresults %>
               results
             </p>
           </div>
 
           <div class="results">
             <ul>
-              <% @search.results.each do |result| -%>
+              <% @results.each do |result| -%>
                 <li>
                   <h4><%= link_to raw(result.title), result.url %></h4>
 
@@ -40,14 +38,16 @@
               <% end -%>
             </ul>
 
-            <p>
-              <%= paginate_search(@search) %>
-            </p>
+            <div class="boss-pagination">
+              <p>
+                <%= paginate_search(@search) %>
+              </p>
+            </div>
           </div>
         <% else -%>
           <div class="results">
             <p>
-              There were no results for the search term "<%= @query %>."
+              There were no results for the search term <strong><%= @query %></strong>.
             </p>
           </div>
         <% end -%>

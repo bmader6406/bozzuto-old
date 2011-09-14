@@ -1,22 +1,30 @@
 module SearchesHelper
   #:nocov:
   def paginate_search(search)
-    totalhits = search.totalhits.to_i
-    count = 10 # search.count.to_i
+    count         = 10
     current_start = search.start.to_i
+    total_results = search.totalresults.to_i
+    total_pages   = (total_results.to_f / count).ceil
 
-    if current_start > 0 || totalhits > count
+    # cap total number of pages to 100
+    if (total_pages - 1) * count > 1000
+      total_pages = 100
+    end
+
+    if current_start > 0 || total_results > count
       links = []
-      1.upto((totalhits.to_f / count).ceil).each do |i|
+
+      1.upto(total_pages).each do |i|
         start = (i - 1) * count
+
         if start == current_start
-          links << i
+          links << content_tag(:span, i, :class => 'current')
         else
           links << link_to(i, search_path(:q => @query, :start => start))
         end
       end
 
-      links.join("&nbsp;").html_safe
+      links.join(' ').html_safe
     end
   end
   #:nocov:

@@ -10,7 +10,10 @@ development:
   paperclip_command_path: /usr/local/bin
   walkscore_wsid: '0bb8a5be9206e6c08c6cea73863f5e3f' # id for bozzuto.local
   google_maps_api_key: 'ABQIAAAA7txTDQDFqeDYcgMQiou82BS4HyMuMWnF1gYqzj4uDbvuvSLR0RQG2OmrjDwO9korkAMlXnDyKPNeTw' # key for bozzuto.local
-  yahoo_api_key: 'll53sBfV34EbzLw1ECmKvRRAIhNfQgSxxxBX480.eRzCf5S7s_L1Y6ZzyaxnAqSW3A--'
+  yahoo_boss:
+    application_id: xrMMSM7e
+    consumer_key: 'dj0yJmk9eU5tWHl4UmdmRnBTJmQ9WVdrOWVISk5UVk5OTjJVbWNHbzlNVFU1TkRneE1USTJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD03NA--'
+    consumer_secret: '1fa5c8446e0be7cdd7e87e6e1c816c1e27a0738a'
   yelp_api_key: 'VcEBpYz_2oabrTXqgzFX_Q'
   sms:
     username: mkilmurry
@@ -24,7 +27,10 @@ production:
   vaultware_feed_file: /path/to/vaultware/feed/bozzutocom.xml
   walkscore_wsid: '0bb8a5be9206e6c08c6cea73863f5e3f' # id for bozzuto.local
   google_maps_api_key: 'ABQIAAAA7txTDQDFqeDYcgMQiou82BS4HyMuMWnF1gYqzj4uDbvuvSLR0RQG2OmrjDwO9korkAMlXnDyKPNeTw' # key for bozzuto.local
-  yahoo_api_key: 'll53sBfV34EbzLw1ECmKvRRAIhNfQgSxxxBX480.eRzCf5S7s_L1Y6ZzyaxnAqSW3A--'
+  yahoo_boss:
+    application_id: xrMMSM7e
+    consumer_key: 'dj0yJmk9eU5tWHl4UmdmRnBTJmQ9WVdrOWVISk5UVk5OTjJVbWNHbzlNVFU1TkRneE1USTJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD03NA--'
+    consumer_secret: '1fa5c8446e0be7cdd7e87e6e1c816c1e27a0738a'
   yelp_api_key: 'VcEBpYz_2oabrTXqgzFX_Q'
   sms:
     username: mkilmurry
@@ -45,6 +51,10 @@ test:
     api_key: '8042a247ce230ca6fe328406b416b7a2' # Bozzuto's API key
   walkscore_wsid: '0bb8a5be9206e6c08c6cea73863f5e3f' # id for bozzuto.local
   google_maps_api_key: 'ABQIAAAA7txTDQDFqeDYcgMQiou82BS4HyMuMWnF1gYqzj4uDbvuvSLR0RQG2OmrjDwO9korkAMlXnDyKPNeTw' # key for bozzuto.local
+  yahoo_boss:
+    application_id: xrMMSM7e
+    consumer_key: 'dj0yJmk9eU5tWHl4UmdmRnBTJmQ9WVdrOWVISk5UVk5OTjJVbWNHbzlNVFU1TkRneE1USTJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD03NA--'
+    consumer_secret: '1fa5c8446e0be7cdd7e87e6e1c816c1e27a0738a'
   sms:
     username: tester
     password: 12345
