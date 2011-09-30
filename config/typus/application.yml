@@ -185,6 +185,18 @@ DnrConfiguration:
   search: 
   application: 
 
+DnrReferrer:
+  fields:
+    default: domain_name
+    list: domain_name
+    form: domain_name
+    options:
+  order_by: domain_name
+  relationships: 
+  filters:
+  search: 
+  application: System
+
 Feed:
   fields:
     default: name, url

@@ -9,6 +9,7 @@ en:
       carousel_panel: Carousel Panel
       contact_topic: Contact Form Topic
       dnr_configuration: DNR Configuration
+      dnr_referrer: DNR Referrer
       feed: Feed
       home_community: Home Community
       home_floor_plan: Floor Plan
@@ -86,6 +87,8 @@ en:
         customer_code: Customer Code
         campaign: Campaign
         ad_source: Ad Source
+      dnr_referrer:
+        domain_name: Domain Name
       feed:
         url: Feed URL
       home:
@@ -269,6 +272,8 @@ en:
         google_send_to_friend_label: 'This value is in the JavaScript embed code: <code>...var google_conversion_label = "<strong class="highlight">9-naCJqi4QIQ7oKvzwM</strong>";...</code>'
         google_send_to_phone_label: 'This value is in the JavaScript embed code: <code>...var google_conversion_label = "<strong class="highlight">OVtTCJKj4QIQ7oKvzwM</strong>";...</code>'
 
+      dnr_referrer:
+        domain_name: "The domain name to match the referrer against. If the referrer's domain (including subdomains) matches this domain name, then this domain name will be sent as the <strong>campaign</strong> and <strong>ad source</strong> parameters in all DNR-replaced phone numbers. <strong>Include only the domain. Do not include http://</strong>.<br /><br />Examples: apartments.com, rent.com, trulia.com"
       home_community:
         listing_promo: Image dimensions should be 151x54
       home_page:
