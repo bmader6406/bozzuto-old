@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110930182136) do
+ActiveRecord::Schema.define(:version => 20111010150812) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -424,6 +424,7 @@ ActiveRecord::Schema.define(:version => 20110930182136) do
     t.boolean  "randomize_property_listings"
     t.integer  "local_info_feed_id"
     t.boolean  "show_apartments_by_area",        :default => true
+    t.string   "masthead_image_url"
   end
 
   create_table "landing_pages_projects", :id => false, :force => true do |t|

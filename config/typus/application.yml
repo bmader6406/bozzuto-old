@@ -282,7 +282,7 @@ LandingPage:
   fields:
     default: title, state, published
     list: title, state, published
-    form: title, state, meta_title, meta_description, meta_keywords, masthead_body, masthead_image, promo, local_info_feed, secondary_title, secondary_body, published, hide_from_list, show_apartments_by_area, custom_sort_popular_properties, randomize_property_listings
+    form: title, state, meta_title, meta_description, meta_keywords, masthead_body, masthead_image, masthead_image_url, promo, local_info_feed, secondary_title, secondary_body, published, hide_from_list, show_apartments_by_area, custom_sort_popular_properties, randomize_property_listings
     options:
       ckeditor: masthead_body, secondary_body
       booleans:

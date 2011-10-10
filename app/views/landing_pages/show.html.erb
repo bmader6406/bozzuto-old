@@ -14,7 +14,11 @@
 
           <% if @page.masthead_image? %>
             <div class="figure">
-              <%= image_tag(@page.masthead_image.url) %>
+              <% if @page.masthead_image_url.present? %>
+                <%= link_to image_tag(@page.masthead_image.url), @page.masthead_image_url, :rel => 'external' %>
+              <% else %>
+                <%= image_tag(@page.masthead_image.url) %>
+              <% end %>
             </div>
           <% end %>
         </li>

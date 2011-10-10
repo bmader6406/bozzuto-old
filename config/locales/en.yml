@@ -116,6 +116,7 @@ en:
         local_info_feed: Local Info Feed
         masthead_body: Masthead Body
         masthead_image: Masthead Image
+        masthead_image_url: Masthead Image URL
         meta_description: SEO Description
         meta_keywords: SEO Keywords
         meta_title: SEO Title
