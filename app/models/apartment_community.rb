@@ -1,12 +1,27 @@
 class ApartmentCommunity < Community
+  VAULTWARE_ATTRIBUTES = [
+    :title,
+    :street_address,
+    :city,
+    :county,
+    :availability_url,
+    :floor_plans
+  ]
+
   acts_as_archive :indexes => [:id]
   
   before_update :mark_dirty_floor_plan_prices
   after_update :update_floor_plan_prices
 
-  has_many :floor_plans, :class_name => 'ApartmentFloorPlan'
-  has_many :floor_plan_groups, :class_name => 'ApartmentFloorPlanGroup', 
-    :through => :floor_plans, :uniq => true
+  has_many :floor_plans,
+    :class_name => 'ApartmentFloorPlan',
+    :dependent  => :destroy
+
+  has_many :floor_plan_groups,
+    :class_name => 'ApartmentFloorPlanGroup',
+    :through    => :floor_plans,
+    :uniq       => true
+
   has_many :featured_floor_plans,
     :class_name => 'ApartmentFloorPlan',
     :conditions => { :featured => true },
@@ -15,6 +30,7 @@ class ApartmentCommunity < Community
   validates_inclusion_of :use_market_prices, :in => [true, false]
 
   validates_presence_of :lead_2_lease_email, :if => lambda { |community| community.show_lead_2_lease }
+
 
   named_scope :with_floor_plan_groups, lambda {|ids|
     {:conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE floor_plan_group_id IN (?))", ids]}
@@ -29,6 +45,9 @@ class ApartmentCommunity < Community
     {:conditions => ['properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE max_rent <= ?)', price.to_i]} if price.to_i > 0
   }
   named_scope :featured, :conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE featured = ?)", true]
+
+  named_scope :managed_by_vaultware, :conditions => 'vaultware_id IS NOT NULL'
+
 
   def nearby_communities(limit = 6)
     @nearby_communities ||= city.apartment_communities.near(self).all(:limit => limit)
@@ -47,6 +66,31 @@ class ApartmentCommunity < Community
       [group, floor_plans.in_group(group)]
     end
   end
+
+  def managed_by_vaultware?
+    vaultware_id.present?
+  end
+
+  def merge(other_community)
+    raise 'Receiver must not be a Vaultware-managed community' if managed_by_vaultware?
+    raise 'Argument must be a Vaultware-managed community' unless other_community.managed_by_vaultware?
+
+    self.vaultware_id = other_community.vaultware_id
+    self.floor_plans  = other_community.floor_plans
+
+    # copy other community's Vaultware attributes
+    attrs = VAULTWARE_ATTRIBUTES.reject { |attr| attr == :floor_plans }
+    attrs.each { |attr|
+      self.send("#{attr}=", other_community.send(attr))
+    }
+
+    save
+
+    # reload floor plans to clear other_community's cache so it doesn't delete them
+    other_community.floor_plans(true)
+    other_community.destroy
+  end
+
 
   private
 

@@ -1,0 +1,89 @@
+<% content_for :breadcrumb do %>
+  <%= link_to @resource[:pluralized], :action => 'index' %> &rsaquo;
+  <span><%= _("Merge with Vaultware community") %></span>
+<% end %>
+
+<div id="flash" class="notice">
+  <p style="line-height: 1.5;">
+    You're merging &ldquo;<%= @item.title %>&rdquo; with a Vaultware community.
+    <br />
+    <%= link_to 'Do you want to cancel?', url_for_action(:edit) %>
+  </p>
+</div>
+
+
+<p>
+  Here's what will happen:
+</p>
+
+<ol>
+  <li>
+    The Vaultware-managed community (<em>V</em>) properties will be copied to this apartment community (<em>A</em>)
+  </li>
+  <li>
+    <em>A</em> will be changed to a Vaultware-managed community
+  </li>
+  <li>
+    <em>V</em> will be deleted from the CMS
+  </li>
+</ol>
+
+<p>
+  The following properties will be changed:
+</p>
+
+<table class="merge-table">
+  <thead>
+    <tr>
+      <th class="property" scope="col">Property</th>
+      <th class="old-value" scope="col">Old Value</th>
+      <th class="new-value" scope="col">New Value</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% ApartmentCommunity::VAULTWARE_ATTRIBUTES.reject { |a| a == :floor_plans }.each do |attr| %>
+      <tr>
+        <td class="property"><%= ApartmentCommunity.human_attribute_name(attr) %></td>
+
+        <td class="old-value"><%= @item.send(attr) %></td>
+
+        <td class="new-value"><%= @vaultware_community.send(attr) %></td>
+      </tr>
+    <% end %>
+
+    <tr>
+      <td class="property">Floor Plans</td>
+
+      <td class="old-value">
+        <% @item.floor_plans.each do |plan| %>
+          <%= plan.name %>
+        <% end %>
+      </td>
+
+      <td class="new-value">
+        <% @vaultware_community.floor_plans.each do |plan| %>
+          <%= plan.name %><br />
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<% form_tag url_for_action(:end_merge) do %>
+  <%= hidden_field_tag 'vaultware_community_id', @vaultware_community.id %>
+
+  <p>
+    Are you sure you want to merge these communities?
+  </p>
+
+  <p>
+    <%= submit_tag 'Merge' %>
+    &nbsp;
+    or
+    &nbsp;
+    <%= link_to 'Cancel', url_for_action(:edit) %>
+  </p>
+<% end %>
+

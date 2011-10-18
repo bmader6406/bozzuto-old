@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ApartmentCommunityTest < ActiveSupport::TestCase
-  context 'ApartmentCommunity' do
+  context 'An Apartment Community' do
     setup do
       @community = ApartmentCommunity.make
     end
@@ -10,16 +10,6 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
     should_have_many :floor_plans, :featured_floor_plans
     should_have_many :floor_plan_groups, :through => :floor_plans
-
-    should 'respond to named scopes' do
-      assert_nothing_raised do
-        ApartmentCommunity.with_floor_plan_groups(1).all
-        ApartmentCommunity.with_min_price(0).all
-        ApartmentCommunity.with_max_price(1000).all
-        ApartmentCommunity.with_property_features([1, 2, 3]).all
-        ApartmentCommunity.featured_order
-      end
-    end
     
     should 'be archivable' do
       assert ApartmentCommunity.acts_as_archive?
@@ -80,6 +70,24 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
       end
     end
 
+    context '#managed_by_vaultware?' do
+      setup { @community = ApartmentCommunity.make }
+
+      context 'when community is managed by Vaultware' do
+        setup { @community.vaultware_id = 123 }
+
+        should 'be true' do
+          assert @community.managed_by_vaultware?
+        end
+      end
+
+      context 'when community is not managed by Vaultware' do
+        should 'be false' do
+          assert !@community.managed_by_vaultware?
+        end
+      end
+    end
+
     context 'when changing use_market_prices' do
       setup do
         @plan = ApartmentFloorPlan.make(
@@ -100,6 +108,132 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
         assert_equal @plan.min_market_rent, @plan.min_rent
         assert_equal @plan.max_market_rent, @plan.max_rent
+      end
+    end
+
+    context '#merge' do
+      context 'when receiver is a vaultware-managed community' do
+        setup { @community.vaultware_id = 123 }
+
+        should 'raise an exception' do
+          begin
+            @community.merge(nil)
+            assert false, 'Expected an exception'
+          rescue RuntimeError => e
+            assert_equal 'Receiver must not be a Vaultware-managed community', e.message
+          end
+        end
+      end
+
+      context 'when receiver is not a vaultware-managed community' do
+        setup do
+          @community = ApartmentCommunity.make
+          @other     = ApartmentCommunity.make
+        end
+
+        context 'and other community is not Vaultware-managed' do
+          should 'raise an exception' do
+            begin
+              @community.merge(@other)
+              assert false, 'Expected an exception'
+            rescue RuntimeError => e
+              assert_equal 'Argument must be a Vaultware-managed community', e.message
+            end
+          end
+        end
+
+        context 'and other community is Vaultware-managed' do
+          setup do
+            #configure community
+            @community = ApartmentCommunity.make(
+              :title            => 'Receiver',
+              :street_address   => '123 Test Dr',
+              :city             => City.make,
+              :county           => County.make,
+              :availability_url => 'http://google.com'
+            )
+
+            @community_floor_plans = [
+              ApartmentFloorPlan.make(:apartment_community => @community),
+              ApartmentFloorPlan.make(:apartment_community => @community)
+            ]
+
+
+            # configure other community
+            @other = ApartmentCommunity.make(
+              :title            => 'Vaultware-managed',
+              :street_address   => '456 Test Dr',
+              :city             => City.make,
+              :county           => County.make,
+              :availability_url => 'http://yahoo.com',
+              :vaultware_id     => 123
+            )
+
+            @other_floor_plans = [
+              ApartmentFloorPlan.make(:apartment_community => @other),
+              ApartmentFloorPlan.make(:apartment_community => @other),
+              ApartmentFloorPlan.make(:apartment_community => @other)
+            ]
+
+            # raise "community: #{@community.id} / other: #{@other.id}"
+            @community.merge(@other)
+            @community.reload
+          end
+
+          should "update the receiver's attributes" do
+            attrs = ApartmentCommunity::VAULTWARE_ATTRIBUTES.reject { |attr| attr == :floor_plans }
+
+            attrs.each { |attr| assert_equal @other.send(attr), @community.send(attr) }
+          end
+
+          should 'set the Vaultware ID of the receiver' do
+            assert_equal @other.vaultware_id, @community.vaultware_id
+          end
+
+          should "delete the receiver's floor plans" do
+            @community_floor_plans.each { |plan|
+              assert_nil ApartmentFloorPlan.find_by_id(plan.id)
+            }
+          end
+
+          should "not delete other's floor plans" do
+            @other_floor_plans.each { |plan|
+              assert ApartmentFloorPlan.find_by_id(plan.id)
+            }
+          end
+
+          should 'assign the floor plans to the receiver' do
+            assert_equal @other_floor_plans, @community.floor_plans(true)
+          end
+
+          should 'destroy the other record' do
+            assert @other.destroyed?
+          end
+        end
+      end
+    end
+
+  end
+
+  context 'The ApartmentCommunity class' do
+    should 'respond to named scopes' do
+      assert_nothing_raised do
+        ApartmentCommunity.with_floor_plan_groups(1).all
+        ApartmentCommunity.with_min_price(0).all
+        ApartmentCommunity.with_max_price(1000).all
+        ApartmentCommunity.with_property_features([1, 2, 3]).all
+        ApartmentCommunity.featured_order
+      end
+    end
+
+    context 'managed_by_vaultware named scope' do
+      setup do
+        @managed     = ApartmentCommunity.make(:vaultware_id => 123)
+        @non_managed = ApartmentCommunity.make
+      end
+
+      should 'return only the managed communities' do
+        assert_equal [@managed], ApartmentCommunity.managed_by_vaultware.all
       end
     end
   end

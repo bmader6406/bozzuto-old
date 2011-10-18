@@ -1,0 +1,16 @@
+<div class="module">
+  <h2>Vaultware</h2>
+
+  <ul>
+    <li>
+      <% if @item.managed_by_vaultware? %>
+        <span class="vaultware-message">
+          This property is currently managed by Vaultware
+        </span>
+      <% else %>
+        <%= link_to 'Merge with Vaultware property', { :controller => 'admin/apartment_communities', :action => :merge, :id => @item.id } %>
+
+      <% end %>
+    </li>
+  </ul>
+</div>

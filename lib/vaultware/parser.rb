@@ -50,7 +50,7 @@ module Vaultware
 
       property.xpath('./Floorplan').each do |plan|
         attrs = floor_plan_attributes(plan)
-        file = plan.at(file_selector)
+        file  = plan.at(file_selector)
 
         attrs.merge!(
           :vaultware_file_id => (file['Id'].to_i rescue nil),
@@ -72,7 +72,9 @@ module Vaultware
         }
       }
 
-      if plan = @community.floor_plans.find(:first, find_conditions)
+      plan = @community.floor_plans.find(:first, find_conditions)
+
+      if plan.present?
         plan.update_attributes(attrs.delete_if { |k, v| k == :floor_plan_group })
       else
         @community.floor_plans << ApartmentFloorPlan.new(attrs)
@@ -82,13 +84,14 @@ module Vaultware
     def floor_plan_group(plan)
       bedrooms = plan.at('./Room[@Type="Bedroom"]/Count').content.to_i
 
-      message = if plan.at('./Comment').content =~ /penthouse/i
+      message = case
+      when plan.at('./Comment').content =~ /penthouse/i
         :penthouse
-      elsif bedrooms == 0
+      when bedrooms == 0
         :studio
-      elsif bedrooms == 1
+      when bedrooms == 1
         :one_bedroom
-      elsif bedrooms == 2
+      when bedrooms == 2
         :two_bedrooms
       else
         :three_bedrooms

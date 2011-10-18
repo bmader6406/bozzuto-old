@@ -1,0 +1,31 @@
+<% content_for :breadcrumb do %>
+  <%= link_to @resource[:pluralized], :action => 'index' %> &rsaquo;
+  <span><%= _("Merge with Vaultware community") %></span>
+<% end %>
+
+<div id="flash" class="notice">
+  <p style="line-height: 1.5;">
+    You're merging &ldquo;<%= @item.title %>&rdquo; with a Vaultware community.
+    <br />
+    <%= link_to 'Do you want to cancel?', url_for_action(:edit) %>
+  </p>
+</div>
+
+
+<% form_tag url_for_action(:begin_merge), :method => :get do %>
+  <p>
+    Please select a community from the list of Vaultware-managed communities:
+  </p>
+
+  <p>
+    <select name="vaultware_community_id">
+      <option value="">Please select a community</option>
+      <%= options_for_select @vaultware_communities.collect {|p| [ p.title, p.id ] } %>
+    </select>
+  </p>
+
+  <p>
+    <%= submit_tag 'Continue' %>
+  </p>
+<% end %>
+

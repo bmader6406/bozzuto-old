@@ -617,3 +617,39 @@ input.date_input { border: 1px solid #999; margin-bottom: 1em;}
 }
 
 /* @end */
+
+
+/* @group Vaultware Merge Table */
+
+.merge-table {
+  width: 100%;
+  margin: 20px 0 20px 0;
+}
+
+.merge-table th,
+.merge-table td {
+  padding: 8px 8px;
+}
+
+.merge-table th {
+  background-color: #f6f6f6;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.merge-table td {
+  border-bottom: 1px solid #ccc;
+}
+
+.merge-table th.property,
+.merge-table td.property {
+  width: 150px;
+}
+
+.merge-table td.property {
+  font-weight: bold;
+}
+
+/* @end */

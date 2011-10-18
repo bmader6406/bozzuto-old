@@ -11,7 +11,7 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
       @community1.destroy
     end
     
-    context 'get #list_deleted' do
+    context 'GET to #list_deleted' do
       setup do
         get :list_deleted
       end
@@ -19,6 +19,135 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
       should_respond_with :success
       should_render_template :list_deleted
       should_assign_to :items
+    end
+
+    context 'GET to #merge' do
+      context 'with a Vaultware managed community' do
+        setup do
+          @community = ApartmentCommunity.make(:vaultware_id => 123)
+          get :merge, :id => @community.id
+        end
+
+        should_respond_with :redirect
+        should_redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
+        should_assign_to(:item) { @community }
+      end
+
+      context 'with a non-Vaultware managed community' do
+        setup do
+          @community = ApartmentCommunity.make
+          get :merge, :id => @community.id
+        end
+
+        should_respond_with :success
+        should_assign_to(:item) { @community }
+        should_assign_to :vaultware_communities
+      end
+    end
+
+    context 'GET to #begin_merge' do
+      context 'with a Vaultware managed community' do
+        setup do
+          @community = ApartmentCommunity.make(:vaultware_id => 123)
+          get :begin_merge, :id => @community.id
+        end
+
+        should_respond_with :redirect
+        should_redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
+        should_assign_to(:item) { @community }
+      end
+
+      context 'with a non-Vaultware managed community' do
+        setup { @community = ApartmentCommunity.make }
+
+        context 'and with no Vaultware community selected' do
+          setup do
+            get :begin_merge, :id => @community.id
+          end
+
+          should_respond_with :redirect
+          should_redirect_to('the merge page') { "/admin/apartment_communities/merge/#{@community.id}" }
+          should_assign_to(:item) { @community }
+        end
+
+        context 'and community selected that is not Vaultware-managed' do
+          setup do
+            @vaultware = ApartmentCommunity.make
+
+            get :begin_merge, :id => @community.id, :vaultware_community_id => @vaultware.id
+          end
+
+          should_respond_with :redirect
+          should_redirect_to('the merge page') { "/admin/apartment_communities/merge/#{@community.id}" }
+          should_assign_to(:item) { @community }
+        end
+
+        context 'with Vaultware community selected' do
+          setup do
+            @vaultware = ApartmentCommunity.make(:vaultware_id => 123)
+
+            get :begin_merge, :id => @community.id, :vaultware_community_id => @vaultware.id
+          end
+
+          should_respond_with :success
+          should_assign_to(:item) { @community }
+          should_assign_to(:vaultware_community) { @vaultware }
+        end
+      end
+    end
+
+    context 'POST to #end_merge' do
+      context 'with a Vaultware managed community' do
+        setup do
+          @community = ApartmentCommunity.make(:vaultware_id => 123)
+          post :end_merge, :id => @community.id
+        end
+
+        should_respond_with :redirect
+        should_redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
+        should_assign_to(:item) { @community }
+      end
+
+      context 'with a non-Vaultware managed community' do
+        setup { @community = ApartmentCommunity.make }
+
+        context 'and with no Vaultware community selected' do
+          setup do
+            post :end_merge, :id => @community.id
+          end
+
+          should_respond_with :redirect
+          should_redirect_to('the merge page') { "/admin/apartment_communities/merge/#{@community.id}" }
+          should_assign_to(:item) { @community }
+        end
+
+        context 'and community selected that is not Vaultware-managed' do
+          setup do
+            @vaultware = ApartmentCommunity.make
+
+            post :end_merge, :id => @community.id, :vaultware_community_id => @vaultware.id
+          end
+
+          should_respond_with :redirect
+          should_redirect_to('the merge page') { "/admin/apartment_communities/merge/#{@community.id}" }
+          should_assign_to(:item) { @community }
+        end
+
+        context 'with Vaultware community selected' do
+          setup do
+            @vaultware = ApartmentCommunity.make(:vaultware_id => 123)
+
+            ApartmentCommunity.any_instance.expects(:merge).with(@vaultware).once
+
+            post :end_merge, :id => @community.id, :vaultware_community_id => @vaultware.id
+          end
+
+          should_respond_with :redirect
+          should_redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
+          should_assign_to(:item) { @community }
+          should_assign_to(:vaultware_community) { @vaultware }
+        end
+      end
     end
   end
 end
