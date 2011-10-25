@@ -644,7 +644,7 @@ Rank:
     list: 
     form: year, rank_number, description, rank_category
     options:
-      selectors: year, rank_number
+      selectors: year
   order_by: -year
   relationships: 
   filters:
