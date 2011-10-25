@@ -64,6 +64,7 @@ en:
         body_slideshow: Slideshow
         link_url: Link URL
         property: Featured Property
+        video_url: Video URL
       buzz:
         first_name: First Name
         formatted_affiliations: Affiliations

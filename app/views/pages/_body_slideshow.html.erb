@@ -31,6 +31,12 @@
             <% end %>
           </div>
         <% end %>
+
+        <% if slide.video_url.present? %>
+          <p class="watch-video">
+            <%= link_to 'Watch Video', slide.video_url %>
+          </p>
+        <% end %>
       </li>
     <% end %>
   </ul>

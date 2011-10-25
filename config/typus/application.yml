@@ -70,7 +70,7 @@ BodySlide:
   fields:
     default: image, position
     list: image, position
-    form: image, link_url, property, body_slideshow
+    form: image, link_url, video_url, property, body_slideshow
   order_by: position
   relationships: body_slideshow, property
   filters:

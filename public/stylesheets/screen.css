@@ -1870,7 +1870,7 @@ div.wysiwyg ul li {
       padding-top: 15px;
       margin-top: 20px;
     }
-    .property #slideshow p.watch-video a {
+    #slideshow p.watch-video a {
       background: transparent url(../images/structure/bg-watch-video.png) no-repeat 0 0;
       display: block;
       height: 43px;
@@ -1878,8 +1878,14 @@ div.wysiwyg ul li {
       text-indent: -9999px;
       width: 189px;
     }
-    .property #slideshow p.watch-video a:hover {
+    #slideshow p.watch-video a:hover {
       background-position: 0 -43px;
+    }
+
+    .page #slideshow p.watch-video {
+      left: 10px;
+      position: absolute;
+      top: 165px;
     }
   /* @end */
 
