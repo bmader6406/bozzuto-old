@@ -45,6 +45,14 @@
           <span>Text Me Community Info</span>
         <% end %>
       </li>
+
+      <% if @community.availability_url.present? %>
+        <li>
+          <% link_to @community.availability_url, :class => 'btn availability' do %>
+            <span>Check Availability</span>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>
