@@ -2,14 +2,14 @@ require 'machinist/active_record'
 require 'sham'
 
 Sham.define do
-  city             { Faker::Address.city }
-  us_state_code    { |i| "%2s" % i.to_s(36) }
-  us_state         { |i| "#{Faker::Address.us_state} #{i}" }
-  company_name     { Faker::Company.name }
-  feed_url         { |i| "http://#{i}.#{Faker::Internet.domain_name}/feed.rss" }
-  section_title    { |i| "#{Faker::Lorem.words} #{i}" }
-  file_name        { |i| "/image#{i}.jpg" }
-  unique_name      { |i| "#{Faker::Lorem.words(2)} #{i}" }
+  city          { Faker::Address.city }
+  us_state_code { |i| "%2s" % i.to_s(36) }
+  us_state      { |i| "#{Faker::Address.us_state} #{i}" }
+  company_name  { Faker::Company.name }
+  feed_url      { |i| "http://#{i}.#{Faker::Internet.domain_name}/feed.rss" }
+  section_title { |i| "#{Faker::Lorem.words} #{i}" }
+  file_name     { |i| "/image#{i}.jpg" }
+  unique_name   { |i| "#{Faker::Lorem.words(2)} #{i}" }
 end
 
 Sham.bedrooms(:unique => false)  { rand(5) + 1 }
@@ -187,9 +187,9 @@ PressRelease.blueprint do
 end
 
 Project.blueprint do
-  title     { Sham.company_name }
-  subtitle  { Faker::Company.catch_phrase }
-  published { true }
+  title           { Sham.company_name }
+  subtitle        { Faker::Company.catch_phrase }
+  published       { true }
   completion_date { Time.now + (rand(10)).days }
   city
 end
@@ -244,25 +244,33 @@ end
 
 PropertyContactPage.blueprint do
   property
-  content { Faker::Lorem.paragraphs(2) }
-  meta_title { Faker::Lorem.words(4) }
+  content       { Faker::Lorem.paragraphs(2) }
+  meta_title    { Faker::Lorem.words(4) }
   meta_keywords { Faker::Lorem.words(6) }
 end
 
 PropertyFeaturesPage.blueprint do
   property
-  text_1 { Faker::Lorem.paragraphs(2) }
-  title_1 { Faker::Lorem.words(5) }
-  text_2 { Faker::Lorem.paragraph }
-  title_2 { Faker::Lorem.words(5) }
-  meta_title { Faker::Lorem.words(4) }
+  text_1        { Faker::Lorem.paragraphs(2) }
+  title_1       { Faker::Lorem.words(5) }
+  text_2        { Faker::Lorem.paragraph }
+  title_2       { Faker::Lorem.words(5) }
+  meta_title    { Faker::Lorem.words(4) }
   meta_keywords { Faker::Lorem.words(6) }
 end
 
 PropertyNeighborhoodPage.blueprint do
   property
-  content { Faker::Lorem.paragraphs(2) }
-  meta_title { Faker::Lorem.words(4) }
+  content       { Faker::Lorem.paragraphs(2) }
+  meta_title    { Faker::Lorem.words(4) }
+  meta_keywords { Faker::Lorem.words(6) }
+end
+
+PropertyToursPage.blueprint do
+  property
+  title         { Faker::Lorem.words(3) }
+  content       { Faker::Lorem.paragraphs(2) }
+  meta_title    { Faker::Lorem.words(4) }
   meta_keywords { Faker::Lorem.words(6) }
 end
 
@@ -321,12 +329,12 @@ TwitterAccount.blueprint do
 end
 
 TypusUser.blueprint do
-  email       { Faker::Internet.email }
-  role        { 'admin' }
-  password    { 'password' }
+  email                 { Faker::Internet.email }
+  role                  { 'admin' }
+  password              { 'password' }
   password_confirmation { 'password' }
-  status      { true }
-  preferences { {:locale => 'en'} }
+  status                { true }
+  preferences           { { :locale => 'en' } }
 end
 
 Video.blueprint do

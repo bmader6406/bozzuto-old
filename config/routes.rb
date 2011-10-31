@@ -39,6 +39,8 @@ ActionController::Routing::Routes.draw do |map|
 
     community.resource :neighborhood, :only => :show
 
+    community.resource :tours, :only => :show
+
     community.resources :specials,
       :only       => :index,
       :controller => :promos
@@ -80,6 +82,8 @@ ActionController::Routing::Routes.draw do |map|
     community.resource :features, :only => :show
 
     community.resource :neighborhood, :only => :show
+
+    community.resource :tours, :only => :show
 
     community.resources :specials,
       :only       => :index,

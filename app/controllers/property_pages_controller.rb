@@ -5,9 +5,8 @@ class PropertyPagesController < ApplicationController
 
   def show
     @page = @community.send("#{property_page_type}_page")
-    if @page.blank?
-      render_404
-    end
+
+    render_404 if @page.blank?
   end
 
 

@@ -1,0 +1,13 @@
+<% content_for :body_class do %>community property features<% end %>
+
+<% content_for :javascript do %>
+  <%= lasso_tracking_js(@community) %>
+<% end %>
+
+<% render_meta(@page) %>
+
+<%= community_contact_callout(@community) %>
+
+<div class="wysiwyg">
+  <%= @page.content.try(:html_safe) %>
+</div>
