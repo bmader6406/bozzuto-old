@@ -7,6 +7,7 @@ RAILS_GEM_VERSION = '2.3.11' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 require 'rack-rewrite'
 require 'redirectotron'
+require 'bozzuto/missing_images'
 
 Rails::Initializer.run do |config|
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
@@ -38,6 +39,8 @@ Rails::Initializer.run do |config|
     r301 %r{^/property/?}, '/apartments'
     r301 %r{^/smartrent/?}, '/apartments/smartrent'
   end
+
+  config.middleware.insert_before(Rack::Lock, Bozzuto::MissingImages)
 
   config.middleware.use Redirectotron if Rails.env.production?
 end

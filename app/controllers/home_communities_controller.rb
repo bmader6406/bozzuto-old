@@ -1,4 +1,6 @@
 class HomeCommunitiesController < SectionContentController
+  has_mobile_actions :index, :show, :map, :contact
+
   before_filter :find_community, :except => [:index, :map]
   before_filter :find_communities, :find_page, :only => [:index, :map]
 

@@ -1,4 +1,6 @@
 class ApartmentFloorPlansController < ApplicationController
+  has_mobile_actions :index, :show
+
   layout 'application'
 
   before_filter :find_community, :find_floor_plan_group, :mobile_only

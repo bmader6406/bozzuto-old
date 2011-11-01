@@ -6,6 +6,13 @@ module Bozzuto
           define_method("force_browser?") { true }
         end
 
+        class_attribute :mobile_actions
+        self.mobile_actions = []
+
+        def self.has_mobile_actions(*actions)
+          self.mobile_actions = actions.map(&:to_sym)
+        end
+
         attr_accessor :device
         helper_method :device
 
@@ -13,7 +20,12 @@ module Bozzuto
 
         before_filter :maintain_force_mobile_session_value
         before_filter :detect_mobile_user_agent
+        before_filter :require_mobile_action
       end
+    end
+
+    def has_mobile_action?(action)
+      self.class.mobile_actions.include?(action.to_sym)
     end
 
     def maintain_force_mobile_session_value
@@ -49,6 +61,12 @@ module Bozzuto
 
     def force_browser?
       session[:force_full_site] == "1"
+    end
+
+    def require_mobile_action
+      if mobile? && !has_mobile_action?(params[:action].to_sym)
+        render_404
+      end
     end
   end
 end

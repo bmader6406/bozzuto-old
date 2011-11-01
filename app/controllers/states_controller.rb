@@ -1,4 +1,6 @@
 class StatesController < ApplicationController
+  has_mobile_actions :show
+
   before_filter :find_state, :mobile_only
 
   def show

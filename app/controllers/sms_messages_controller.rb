@@ -1,4 +1,6 @@
 class SmsMessagesController < ApplicationController
+  has_mobile_actions :new, :create, :thank_you
+
   before_filter :find_community
 
   layout :detect_mobile_layout

@@ -1,4 +1,6 @@
 class OfficeHoursController < ApplicationController
+  has_mobile_actions :show
+
   before_filter :find_community, :mobile_only
   
   layout :detect_mobile_layout

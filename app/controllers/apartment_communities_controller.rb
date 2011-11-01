@@ -1,4 +1,6 @@
 class ApartmentCommunitiesController < ApplicationController
+  has_mobile_actions :index, :show
+
   before_filter :find_community, :except => :index
 
   layout :detect_mobile_layout

@@ -1,4 +1,6 @@
 class CountiesController < ApplicationController
+  has_mobile_actions :index, :show
+
   before_filter :find_county, :except => :index
   before_filter :mobile_only
 

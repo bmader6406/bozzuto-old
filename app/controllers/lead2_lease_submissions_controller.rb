@@ -1,4 +1,6 @@
 class Lead2LeaseSubmissionsController < ApplicationController
+  has_mobile_actions :show, :create, :thank_you
+
   before_filter :find_community
 
   layout :detect_mobile_layout

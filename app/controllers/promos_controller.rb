@@ -1,4 +1,6 @@
 class PromosController < ApplicationController
+  has_mobile_actions :index
+
   layout 'application'
 
   before_filter :find_community, :find_promo, :mobile_only

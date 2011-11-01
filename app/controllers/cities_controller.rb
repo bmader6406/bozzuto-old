@@ -1,4 +1,6 @@
 class CitiesController < ApplicationController
+  has_mobile_actions :show
+
   before_filter :find_city, :mobile_only
   
   def show

@@ -3,67 +3,69 @@
 
 <%= render :partial => 'special_nav' %>
 
-<div id="masthead">
-  <% if @home_page.slides.any? %>
-    <div id="masthead-fg">
-      <div class="container">
-        <div id="slideshow">
-          <div class="header">
-            <ul class="slideshow-navigation">
-              <li>
-                <a class="prev" href="#">Previous</a>
-              </li>
-              <li>
-                <a class="next" href="#">Next</a>
-              </li>
+<% if @home_page %>
+  <div id="masthead">
+    <% if @home_page.slides.any? %>
+      <div id="masthead-fg">
+        <div class="container">
+          <div id="slideshow">
+            <div class="header">
+              <ul class="slideshow-navigation">
+                <li>
+                  <a class="prev" href="#">Previous</a>
+                </li>
+                <li>
+                  <a class="next" href="#">Next</a>
+                </li>
+              </ul>
+            </div>
+
+            <ul class="slides">
+              <% @home_page.slides.each do |slide| %>
+                <li class="slide"><%= image_tag slide.image.url %></li> 
+              <% end %>
             </ul>
           </div>
-
-          <ul class="slides">
-            <% @home_page.slides.each do |slide| %>
-              <li class="slide"><%= image_tag slide.image.url %></li> 
-            <% end %>
-          </ul>
         </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
-<div id="main-content">
-  <div class="container">
+  <div id="main-content">
+    <div class="container">
 
-    <div id="content" class="row">
-      <div id="welcome" class="col">
-        <%= @home_page.body.try(:html_safe) %>
-      </div>
+      <div id="content" class="row">
+        <div id="welcome" class="col">
+          <%= @home_page.body.try(:html_safe) %>
+        </div>
 
-      <div class="social-updates col">
-        <p class="facebook">
-          <a href="http://www.facebook.com/TheBozzutoGroup" rel="external">
-            Follow us on Facebook
-          </a>          
-        </p>
-        
-        <% @home_page.tweets.try(:first).if_present? do |tweet| %>
-          <%= render :partial => 'shared/tweet', :object => tweet %>
-        <% end %>
-      </div>
-
-      <% if @home_page.mini_slideshow.present? %>
-        <div id="featured-property" class="col">
-          <h2>
-            <%= link_to @home_page.mini_slideshow.title, @home_page.mini_slideshow.link_url %>
-          </h2>
-
-          <% if @home_page.mini_slideshow.present? %>
-            <%= render :partial => 'shared/mini_slideshow', :object => @home_page.mini_slideshow %>
+        <div class="social-updates col">
+          <p class="facebook">
+            <a href="http://www.facebook.com/TheBozzutoGroup" rel="external">
+              Follow us on Facebook
+            </a>          
+          </p>
+          
+          <% @home_page.tweets.try(:first).if_present? do |tweet| %>
+            <%= render :partial => 'shared/tweet', :object => tweet %>
           <% end %>
         </div>
-      <% end %>
+
+        <% if @home_page.mini_slideshow.present? %>
+          <div id="featured-property" class="col">
+            <h2>
+              <%= link_to @home_page.mini_slideshow.title, @home_page.mini_slideshow.link_url %>
+            </h2>
+
+            <% if @home_page.mini_slideshow.present? %>
+              <%= render :partial => 'shared/mini_slideshow', :object => @home_page.mini_slideshow %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
 
 
 <div id="news">

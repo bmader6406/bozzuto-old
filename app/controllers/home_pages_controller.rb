@@ -1,4 +1,6 @@
 class HomePagesController < ApplicationController
+  has_mobile_actions :index
+
   layout :detect_mobile_layout
 
   def index

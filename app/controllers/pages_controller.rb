@@ -1,4 +1,6 @@
 class PagesController < SectionContentController
+  has_mobile_actions :show
+
   before_filter :find_page
 
   def show

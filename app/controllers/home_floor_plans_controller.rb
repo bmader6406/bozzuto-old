@@ -1,4 +1,6 @@
 class HomeFloorPlansController < ApplicationController
+  has_mobile_actions :index, :show
+
   layout 'application'
 
   before_filter :find_community, :find_home, :mobile_only

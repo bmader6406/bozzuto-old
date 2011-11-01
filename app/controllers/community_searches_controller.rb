@@ -1,4 +1,6 @@
 class CommunitySearchesController < ApplicationController
+  has_mobile_actions :show
+
   before_filter :mobile_only
 
   def show

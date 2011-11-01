@@ -1,4 +1,6 @@
 class ContactSubmissionsController < SectionContentController
+  has_mobile_actions :show, :create, :thank_you
+
   before_filter :find_topic, :only => [:show, :create]
 
   def show
