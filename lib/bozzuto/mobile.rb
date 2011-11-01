@@ -17,6 +17,7 @@ module Bozzuto
         helper_method :device
 
         helper_method :mobile?
+        helper_method :mobile_device?
 
         before_filter :maintain_force_mobile_session_value
         before_filter :detect_mobile_user_agent
@@ -53,6 +54,10 @@ module Bozzuto
 
     def mobile?
       request.format.to_sym == :mobile
+    end
+
+    def mobile_device?
+      device != :browser
     end
 
     def force_mobile?
