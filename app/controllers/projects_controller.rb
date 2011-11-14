@@ -1,6 +1,4 @@
 class ProjectsController < SectionContentController
-  browser_only!
-
   layout 'project'
 
   before_filter :find_our_work_page

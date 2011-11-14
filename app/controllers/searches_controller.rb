@@ -1,6 +1,4 @@
 class SearchesController < ApplicationController  
-  browser_only!
-
   def index
     search_params = { :sites => 'bozzuto.com' }
     search_params[:start] = params[:start] if params[:start].present?

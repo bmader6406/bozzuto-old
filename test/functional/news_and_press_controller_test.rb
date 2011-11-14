@@ -8,44 +8,66 @@ class NewsAndPressControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #index' do
-      %w(browser mobile).each do |device|
-        send("#{device}_context") do
-          setup do
-            set_mobile_user_agent! if device == 'mobile'
-            get :index, :section => @about.to_param
-          end
-
-          should_respond_with :success
-          should_render_template :index
-          should_assign_to :latest_news
-          should_assign_to :latest_press
+      browser_context do
+        setup do
+          get :index, :section => @about.to_param
         end
+
+        should_respond_with :success
+        should_render_template :index
+        should_assign_to :latest_news
+        should_assign_to :latest_press
+      end
+
+      mobile_context do
+        setup do
+          set_mobile_user_agent!
+          get :index, :section => @about.to_param
+        end
+
+        should_redirect_to_home_page
       end
     end
 
     context 'a GET to #show' do
-      %w(browser mobile).each do |device|
-        send("#{device}_context") do
+      browser_context do
+        context 'with no pages in the section' do
           setup do
-            set_mobile_user_agent! if device == 'mobile'
+            get :show, :section => @about.to_param, :page => []
           end
 
-          context 'with no pages in the section' do
-            setup do
-              get :show, :section => @about.to_param, :page => []
-            end
+          should_respond_with :not_found
+        end
 
-            should_respond_with :not_found
+        context 'with a page param' do
+          setup do
+            3.times { Page.make :section => @news_and_press }
+            @page = @news_and_press.pages.last
+
+            get :show,
+              :section => @about.to_param,
+              :page => @page.path.split('/')
           end
 
-          context 'with a page param' do
+          should_respond_with :success
+          should_render_template :show
+          should_assign_to(:section) { @about }
+          should_assign_to(:news_section) { @news_and_press }
+          should_assign_to(:page) { @page }
+        end
+        
+        context 'logged in as a typus user' do
+          setup do
+            @user = TypusUser.make
+            login_typus_user @user
+          end
+          
+          context 'with a page param for an unpublished page' do
             setup do
-              3.times { Page.make :section => @news_and_press }
+              3.times { Page.make :section => @news_and_press, :published => false }
               @page = @news_and_press.pages.last
 
-              get :show,
-                :section => @about.to_param,
-                :page => @page.path.split('/')
+              get :show, :section => @about.to_param, :page => @page.path.split('/')
             end
 
             should_respond_with :success
@@ -54,29 +76,16 @@ class NewsAndPressControllerTest < ActionController::TestCase
             should_assign_to(:news_section) { @news_and_press }
             should_assign_to(:page) { @page }
           end
-          
-          context 'logged in as a typus user' do
-            setup do
-              @user = TypusUser.make
-              login_typus_user @user
-            end
-            
-            context 'with a page param for an unpublished page' do
-              setup do
-                3.times { Page.make :section => @news_and_press, :published => false }
-                @page = @news_and_press.pages.last
-
-                get :show, :section => @about.to_param, :page => @page.path.split('/')
-              end
-
-              should_respond_with :success
-              should_render_template :show
-              should_assign_to(:section) { @about }
-              should_assign_to(:news_section) { @news_and_press }
-              should_assign_to(:page) { @page }
-            end
-          end
         end
+      end
+
+      mobile_context do
+        setup do
+          set_mobile_user_agent!
+          get :show, :section => @about.to_param, :page => []
+        end
+
+        should_redirect_to_home_page
       end
     end
   end

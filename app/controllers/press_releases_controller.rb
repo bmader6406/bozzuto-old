@@ -1,6 +1,4 @@
 class PressReleasesController < SectionContentController
-  browser_only!
-
   before_filter :find_section
 
   def index

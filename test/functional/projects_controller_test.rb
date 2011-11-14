@@ -7,35 +7,48 @@ class ProjectsControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #index' do
-      %w(browser mobile).each do |device|
-        send("#{device}_context") do
-          setup do
-            set_mobile_user_agent! if device == 'mobile'
-
-            get :index, :section => @section.to_param
-          end
-
-          should_respond_with :success
-          should_assign_to(:section) { @section }
-          should_assign_to(:categories) { ProjectCategory.all }
+      browser_context do
+        setup do
+          get :index, :section => @section.to_param
         end
+
+        should_respond_with :success
+        should_assign_to(:section) { @section }
+        should_assign_to(:categories) { ProjectCategory.all }
+      end
+
+      mobile_context do
+        setup do
+          set_mobile_user_agent!
+
+          get :index, :section => @section.to_param
+        end
+
+        should_redirect_to_home_page
       end
     end
 
     context 'a GET to #show' do
-      %w(browser mobile).each do |device|
-        send("#{device}_context") do
-          setup do
-            set_mobile_user_agent! if device == 'mobile'
-
-            @project = Project.make :section => @section
-            get :show, :section => @section.to_param, :project_id => @project.to_param
-          end
-
-          should_respond_with :success
-          should_assign_to(:section) { @section }
-          should_assign_to(:project) { @project }
+      browser_context do
+        setup do
+          @project = Project.make :section => @section
+          get :show, :section => @section.to_param, :project_id => @project.to_param
         end
+
+        should_respond_with :success
+        should_assign_to(:section) { @section }
+        should_assign_to(:project) { @project }
+      end
+
+      mobile_context do
+        setup do
+          set_mobile_user_agent!
+
+          @project = Project.make :section => @section
+          get :show, :section => @section.to_param, :project_id => @project.to_param
+        end
+
+        should_redirect_to_home_page
       end
     end
   end

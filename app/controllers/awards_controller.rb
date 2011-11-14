@@ -1,6 +1,4 @@
 class AwardsController < SectionContentController
-  browser_only!
-
   before_filter :find_awards, :only => :index
   before_filter :find_award, :only => :show
 

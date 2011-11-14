@@ -1,6 +1,4 @@
 class RankingsController < SectionContentController
-  browser_only!
-
   # layout 'page'
 
   before_filter :find_section, :only => :index

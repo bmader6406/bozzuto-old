@@ -2,10 +2,6 @@ module Bozzuto
   module Mobile
     def self.included(base)
       base.class_eval do
-        def self.browser_only!
-          define_method("force_browser?") { true }
-        end
-
         class_attribute :mobile_actions
         self.mobile_actions = []
 
@@ -70,7 +66,7 @@ module Bozzuto
 
     def require_mobile_action
       if mobile? && !has_mobile_action?(params[:action].to_sym)
-        render_404
+        redirect_to root_path
       end
     end
   end

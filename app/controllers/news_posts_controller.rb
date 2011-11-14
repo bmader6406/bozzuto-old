@@ -1,6 +1,4 @@
 class NewsPostsController < SectionContentController
-  browser_only!
-
   before_filter :find_posts, :only => :index
   before_filter :find_post, :only => :show
 

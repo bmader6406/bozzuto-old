@@ -1,6 +1,4 @@
 class LandingPagesController < ApplicationController
-  browser_only!
-
   layout 'homepage'
 
   before_filter :find_page, :only => :show

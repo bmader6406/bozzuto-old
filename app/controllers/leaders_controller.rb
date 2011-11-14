@@ -1,6 +1,4 @@
 class LeadersController < SectionContentController
-  browser_only!
-
   layout "application"
 
   before_filter :find_section, :find_page, :only => :index

@@ -1,6 +1,4 @@
 class ManagementCommunitiesController < SectionContentController
-  browser_only!
-
   before_filter :find_page
 
   def index

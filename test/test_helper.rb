@@ -50,6 +50,11 @@ class ActiveSupport::TestCase
   end
 
   class << self
+    def should_redirect_to_home_page
+      should_respond_with :redirect
+      should_redirect_to('the home page') { root_path }
+    end
+
     def mobile_context(&block)
       context('from a mobile device', &block)
     end

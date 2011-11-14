@@ -8,36 +8,50 @@ class PressReleasesControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #index' do
-      %w(browser mobile).each do |device|
-        send("#{device}_context") do
-          setup do
-            set_mobile_user_agent! if device == 'mobile'
-
-            get :index, :section => @about.to_param
-          end
-
-          should_respond_with :success
-          should_render_template :index
-          should_assign_to(:press_releases) { [@press_release] }
+      browser_context do
+        setup do
+          get :index, :section => @about.to_param
         end
+
+        should_respond_with :success
+        should_render_template :index
+        should_assign_to(:press_releases) { [@press_release] }
+      end
+
+      mobile_context do
+        setup do
+          set_mobile_user_agent!
+
+          get :index, :section => @about.to_param
+        end
+
+        should_redirect_to_home_page
       end
     end
 
     context 'a GET to #show' do
-      %w(browser mobile).each do |device|
-        send("#{device}_context") do
-          setup do
-            set_mobile_user_agent! if device == 'mobile'
-
-            get :show,
-              :section => @about.to_param,
-              :press_release_id => @press_release.id
-          end
-
-          should_respond_with :success
-          should_render_template :show
-          should_assign_to(:press_release) { @press_release }
+      mobile_context do
+        setup do
+          get :show,
+            :section => @about.to_param,
+            :press_release_id => @press_release.id
         end
+
+        should_respond_with :success
+        should_render_template :show
+        should_assign_to(:press_release) { @press_release }
+      end
+
+      mobile_context do
+        setup do
+          set_mobile_user_agent!
+
+          get :show,
+            :section => @about.to_param,
+            :press_release_id => @press_release.id
+        end
+
+        should_redirect_to_home_page
       end
     end
   end

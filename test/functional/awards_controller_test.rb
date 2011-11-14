@@ -7,40 +7,53 @@ class AwardsControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #index' do
-      %w(browser mobile).each do |device|
-        send("#{device}_context") do
-          setup do
-            set_mobile_user_agent! if device == 'mobile'
+      browser_context do
+        setup do
+          5.times { Award.make(:sections => [@section]) }
+          Award.make(:unpublished, :sections => [@section])
+          @awards = @section.awards
 
-            5.times { Award.make(:sections => [@section]) }
-            Award.make(:unpublished, :sections => [@section])
-            @awards = @section.awards
-
-            get :index, :section => @section.to_param
-          end
-
-          should_respond_with :success
-          should_render_template :index
-          should_assign_to(:awards) { @awards.published }
+          get :index, :section => @section.to_param
         end
+
+        should_respond_with :success
+        should_render_template :index
+        should_assign_to(:awards) { @awards.published }
+      end
+
+      mobile_context do
+        setup do
+          set_mobile_user_agent!
+          get :index, :section => @section.to_param
+        end
+
+        should_redirect_to_home_page
       end
     end
 
     context 'a GET to #show' do
-      %w(browser mobile).each do |device|
-        send("#{device}_context") do
-          setup do
-            set_mobile_user_agent! if device == 'mobile'
+      browser_context do
+        setup do
+          @award = Award.make :sections => [@section]
 
-            @award = Award.make :sections => [@section]
-
-            get :show, :section => @section.to_param, :award_id => @award.id
-          end
-
-          should_respond_with :success
-          should_render_template :show
-          should_assign_to(:award) { @award }
+          get :show, :section => @section.to_param, :award_id => @award.id
         end
+
+        should_respond_with :success
+        should_render_template :show
+        should_assign_to(:award) { @award }
+      end
+
+      mobile_context do
+        setup do
+          set_mobile_user_agent!
+
+          @award = Award.make :sections => [@section]
+
+          get :show, :section => @section.to_param, :award_id => @award.id
+        end
+
+        should_redirect_to_home_page
       end
     end
   end
