@@ -50,7 +50,7 @@ class ApartmentCommunity < Community
 
 
   def nearby_communities(limit = 6)
-    @nearby_communities ||= city.apartment_communities.near(self).all(:limit => limit)
+    @nearby_communities ||= city.apartment_communities.published.near(self).all(:limit => limit)
   end
   
   def cheapest_rent
