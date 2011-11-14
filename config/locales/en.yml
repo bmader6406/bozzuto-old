@@ -140,6 +140,10 @@ en:
         quote_job_title: Quote Job Title
         sidebar_text: Sidebar Text
         slide_type: Slide Type
+      mini_slide:
+        mini_slideshow: Mini Slideshow
+      mini_slideshow:
+        link_url: Link URL
       news_post:
         meta_description: SEO Description
         meta_keywords: SEO Keywords
@@ -147,9 +151,14 @@ en:
         published_at: Published At
       page:
         formatted_title: Title
+        left_montage_image: Left Montage Image
         meta_description: SEO Description
         meta_keywords: SEO Keywords
         meta_title: SEO Title
+        middle_montage_image: Middle Montage Image
+        mobile_body: Mobile Body
+        mobile_body_extra: Mobile Body (Extra)
+        right_montage_image: Right Montage Image
       photo_set:
         flickr_set_number: 'Flickr Set ID#'
         needs_sync: Refresh This Set
@@ -168,6 +177,7 @@ en:
         has_expiration_date: Has Expiration Date
         link_url: Link URL
       property:
+        availability_url: Availability URL
         brochure: Brochure File
         brochure_link_text: Brochure Link Text
         brochure_type: Brochure Type
@@ -227,21 +237,9 @@ en:
         meta_keywords: SEO Keywords
         meta_title: SEO Title
         content: Copy
-      mini_slide:
-        mini_slideshow: Mini Slideshow
-      mini_slideshow:
-        link_url: Link URL
-      page:
-        left_montage_image: Left Montage Image
-        meta_description: SEO Description
-        meta_keywords: SEO Keywords
-        meta_title: SEO Title
-        middle_montage_image: Middle Montage Image
-        mobile_body: Mobile Body
-        mobile_body_extra: Mobile Body (Extra)
-        right_montage_image: Right Montage Image
       property_slide:
         property_slideshow: Property Slideshow
+        video_url: Video URL
       section:
         left_montage_image: Left Montage Image
         middle_montage_image: Middle Montage Image

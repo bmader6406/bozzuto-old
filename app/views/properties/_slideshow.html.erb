@@ -23,12 +23,13 @@
               <p><%= slide.caption %></p>
             <% end %>
 
-            <% if property.video_url.present? %>
+            <% if slide.video_url.present? %>
               <p class="watch-video">
-                <%= link_to 'Watch Video', property.video_url %>
+                <%= link_to 'Watch Video', slide.video_url %>
               </p>
             <% end %>
           </div>
+
           <span class="overlay"></span>
         </li> 
       <% end %>

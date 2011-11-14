@@ -618,7 +618,7 @@ PropertySlide:
   fields:
     default: image, position, property_slideshow
     list: image, position, property_slideshow
-    form: image, caption, property_slideshow
+    form: image, caption, video_url, property_slideshow
   order_by: position
   relationships: property_slideshow
   filters:
