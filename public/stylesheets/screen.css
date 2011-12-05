@@ -480,7 +480,8 @@
     }
     #footer li.facebook,
     #footer li.twitter,
-    #footer li.tom-blog {
+    #footer li.tom-blog,
+    #footer li.bozzuto-beat-blog {
       line-height: 2.7;
       padding-left: 28px;
       letter-spacing: -0.05em;
@@ -491,7 +492,8 @@
     #footer li.twitter {
       background: transparent url(../images/structure/ico-twitter.gif) no-repeat center left;
     }
-    #footer li.tom-blog {
+    #footer li.tom-blog,
+    #footer li.bozzuto-beat-blog {
       background: transparent url(../images/structure/ico-rss-large.gif) no-repeat center left;
     }
     #footer .buzz-form button {
