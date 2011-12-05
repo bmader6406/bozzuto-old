@@ -183,6 +183,19 @@ window.bozzuto = {};
         default_zoom_level: 14
       });
     }
+
+
+    var installedWalkScore = false;
+
+    $('li#walk-score-tab a').click(function() {
+      if (!installedWalkScore) {
+        installedWalkScore = true;
+
+        var walkscoreJS = '<script type="text/javascript" src="http://www.walkscore.com/tile/show-walkscore-tile.php"></script>';
+
+        $('div#walk-score').append(walkscoreJS);
+      }
+    });
   });
 
   function viewMoreFloorPlanGroups($set) {

@@ -84,8 +84,7 @@ module ApartmentCommunitiesHelper
       var ws_background_color = '#fff';
     </script>
     <style type="text/css">#ws-walkscore-tile{position:relative;text-align:left;}#ws-walkscore-tile *{float:none;}</style>
-    <div id='ws-walkscore-tile'></div>
-    <script type="text/javascript" src="http://www.walkscore.com/tile/show-walkscore-tile.php"></script>
+    <div id="ws-walkscore-tile"></div>
     END
   end
 
