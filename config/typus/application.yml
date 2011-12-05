@@ -55,7 +55,7 @@ Award:
   fields:
     default: title, published, published_at
     list: title, published, published_at
-    form: title, image, body, published, published_at
+    form: title, published, published_at, featured, image, body
     options:
       ckeditor: body
       booleans:
@@ -367,7 +367,7 @@ NewsPost:
   fields:
     default: title, published, published_at
     list: title, published, published_at
-    form: title, meta_title, meta_description, meta_keywords, image, body, published, published_at
+    form: title, published, published_at, featured, meta_title, meta_description, meta_keywords, image, body
     options:
       ckeditor: body
       booleans:
@@ -428,7 +428,7 @@ PressRelease:
   fields:
     default: title, published, published_at
     list: title, published, published_at
-    form: title, body, published, published_at, meta_title, meta_description, meta_keywords
+    form: title, published, published_at, featured, body, meta_title, meta_description, meta_keywords
     options:
       ckeditor: body
       booleans:
