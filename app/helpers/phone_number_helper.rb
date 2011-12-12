@@ -39,12 +39,6 @@ module PhoneNumberHelper
     end
   end
 
-  def referrer_host
-    URI.parse(request.referrer).host
-  rescue URI::InvalidURIError
-    nil
-  end
-
   def dnr_phone_number(community, opts = {})
     return '' unless community.phone_number.present?
 
@@ -60,7 +54,7 @@ module PhoneNumberHelper
 
     dnr = community.dnr_configuration
 
-    matching_referrer = DnrReferrer.matching(referrer_host)
+    matching_referrer = dnr_referrer
 
     args = [
       number,

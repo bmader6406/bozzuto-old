@@ -85,6 +85,7 @@ module ApartmentCommunitiesHelper
     </script>
     <style type="text/css">#ws-walkscore-tile{position:relative;text-align:left;}#ws-walkscore-tile *{float:none;}</style>
     <div id="ws-walkscore-tile"></div>
+    <!-- WalkScore JS is embedded dynamically, when the WalkScore tab is clicked -->
     END
   end
 

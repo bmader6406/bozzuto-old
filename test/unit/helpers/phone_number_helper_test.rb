@@ -2,6 +2,7 @@ require 'test_helper'
 
 class PhoneNumberHelperTest < ActionView::TestCase
   context 'PhoneNumberHelper' do
+
     context '#sanitize_phone_number' do
       should 'return just the digits' do
         ['1 (234) 567-8900', '1.234.567.8900', '1 234 567-8900'].each do |number|
@@ -68,48 +69,6 @@ class PhoneNumberHelperTest < ActionView::TestCase
       end
     end
 
-    context '#referrer_host' do
-      context 'request.referrer returns a URL' do
-        setup do
-          stubs(:request).returns(stub(:referrer => 'http://yay.com/hooray.html'))
-        end
-
-        should 'return the host' do
-          assert_equal 'yay.com', referrer_host
-        end
-      end
-
-      context 'request.referrer returns a URL with sub-domain' do
-        setup do
-          stubs(:request).returns(stub(:referrer => 'http://booya.yay.com/hooray.html'))
-        end
-
-        should 'return the host' do
-          assert_equal 'booya.yay.com', referrer_host
-        end
-      end
-
-      context 'request.referrer returns /' do
-        setup do
-          stubs(:request).returns(stub(:referrer => '/'))
-        end
-
-        should 'return nil' do
-          assert_nil referrer_host
-        end
-      end
-
-      context 'request.referrer returns nil' do
-        setup do
-          stubs(:request).returns(stub(:referrer => nil))
-        end
-
-        should 'return nil' do
-          assert_nil referrer_host
-        end
-      end
-    end
-
     context '#dnr_phone_number' do
       context 'with a home community' do
         setup do
@@ -120,7 +79,7 @@ class PhoneNumberHelperTest < ActionView::TestCase
 
         context 'that does not have a customer code' do
           setup do
-            stubs(:request).returns(stub(:referrer => '/'))
+            stubs(:dnr_referrer).returns(nil)
           end
 
           should 'output the replaceNumber function call' do
@@ -131,7 +90,7 @@ class PhoneNumberHelperTest < ActionView::TestCase
 
         context 'that has DNR configured' do
           setup do
-            stubs(:request).returns(stub(:referrer => '/'))
+            stubs(:dnr_referrer).returns(nil)
 
             @dnr = DnrConfiguration.make_unsaved
             @community.dnr_configuration = @dnr
@@ -146,8 +105,7 @@ class PhoneNumberHelperTest < ActionView::TestCase
 
         context 'referrer matches an existing DNR Referrer' do
           setup do
-            DnrReferrer.create :domain_name => 'apartments.com'
-            stubs(:request).returns(stub(:referrer => 'http://blah.apartments.com'))
+            stubs(:dnr_referrer).returns('apartments.com')
           end
 
           should 'output the replaceNumber function call with the domain as campaign and ad source' do
@@ -158,8 +116,7 @@ class PhoneNumberHelperTest < ActionView::TestCase
 
         context 'that has DNR configured and referrer matches an existing DNR Referrer' do
           setup do
-            DnrReferrer.create :domain_name => 'apartments.com'
-            stubs(:request).returns(stub(:referrer => 'http://blah.apartments.com'))
+            stubs(:dnr_referrer).returns('apartments.com')
 
             @dnr = DnrConfiguration.make_unsaved
             @community.dnr_configuration = @dnr
@@ -182,7 +139,7 @@ class PhoneNumberHelperTest < ActionView::TestCase
 
         context 'that does not have a customer code' do
           setup do
-            stubs(:request).returns(stub(:referrer => '/'))
+            stubs(:dnr_referrer).returns(nil)
           end
 
           should 'output the replaceNumber function call' do
@@ -193,7 +150,7 @@ class PhoneNumberHelperTest < ActionView::TestCase
 
         context 'that has DNR configured' do
           setup do
-            stubs(:request).returns(stub(:referrer => '/'))
+            stubs(:dnr_referrer).returns(nil)
 
             @dnr = DnrConfiguration.make_unsaved
             @community.dnr_configuration = @dnr
@@ -208,9 +165,7 @@ class PhoneNumberHelperTest < ActionView::TestCase
 
         context 'referrer matches an existing DNR Referrer' do
           setup do
-            stubs(:request).returns(stub(:referrer => 'http://blah.rent.com'))
-
-            DnrReferrer.create :domain_name => 'rent.com'
+            stubs(:dnr_referrer).returns('rent.com')
           end
 
           should 'output the replaceNumber function call with the domain as campaign and ad source' do
@@ -221,9 +176,7 @@ class PhoneNumberHelperTest < ActionView::TestCase
 
         context 'that has DNR configured and referrer matches an existing DNR Referrer' do
           setup do
-            stubs(:request).returns(stub(:referrer => 'http://blah.rent.com'))
-
-            DnrReferrer.create :domain_name => 'rent.com'
+            stubs(:dnr_referrer).returns('rent.com')
 
             @dnr = DnrConfiguration.make_unsaved
             @community.dnr_configuration = @dnr

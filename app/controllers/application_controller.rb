@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Callsource::Referrer
   include Bozzuto::Mobile
   include OverriddenPathsHelper
 

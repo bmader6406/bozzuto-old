@@ -97,6 +97,10 @@ DnrConfiguration.blueprint do
   ad_source     { (rand(500000) + 40000).to_s }
 end
 
+DnrReferrer.blueprint do
+  domain_name { Faker::Internet.domain_name }
+end
+
 Feed.blueprint do
   name { Sham.unique_name }
   url  { Sham.feed_url }
