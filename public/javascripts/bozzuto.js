@@ -360,17 +360,36 @@ window.bozzuto = {};
       var o = $.meta ? $.extend({}, opts, $this.data()) : opts;
 
       $this.bind('click', function(e) {
-        var $videoLightbox = $('<div id="video-lightbox"></div>');
-        $videoLightbox.appendTo('body').append('<iframe src="' + $(this).attr('href') + '" height="' + o.height + '" scrolling="no" width="' + o.width + '"></iframe>');
+        var $videoLightbox = $('<div id="video-lightbox"></div>'),
+            href           = $(this).attr('href');
+
+        $videoLightbox
+          .append(iframeCode(href, o))
+          .appendTo('body');
+
         $videoLightbox.lightbox_me({
           onClose: function() {
             $videoLightbox.remove();
           }
         });
+
         e.preventDefault();
       });
 
     });
+
+    function iframeCode(url, opts) {
+      var isYouTubeVideo = url.match(/youtube\.com/),
+          youTubeMatches = url.match(/v=([A-Za-z0-9]+)/);
+
+      if (isYouTubeVideo && youTubeMatches.length == 2) {
+        var height = opts.width * 0.75;
+
+        return '<iframe src="http://www.youtube.com/embed/' + youTubeMatches[1] + '" height="' + height + '" scrolling="no" width="' + opts.width + '" frameborder="0" allowfullscreen></iframe>';
+      } else {
+        return '<iframe src="' + url + '" height="' + opts.height + '" scrolling="no" width="' + opts.width + '"></iframe>';
+      }
+    }
   };
 
   // default options
