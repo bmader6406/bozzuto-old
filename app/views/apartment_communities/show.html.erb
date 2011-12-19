@@ -77,7 +77,7 @@
         <h2>Featured Floor Plans</h2>
 
         <ul class="row">
-          <% @community.featured_floor_plans.take(3).each do |plan| %>
+          <% @community.featured_floor_plans.has_min_rent.take(3).each do |plan| %>
             <li class="floor-plan">
               <h4><%= plan.name %></h4>
               <p>

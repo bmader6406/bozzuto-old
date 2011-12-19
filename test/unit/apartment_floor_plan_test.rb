@@ -192,5 +192,25 @@ class ApartmentFloorPlanTest < ActiveSupport::TestCase
         assert_equal @largest, @community.floor_plans.largest.first
       end
     end
+
+    context '#has_min_rent named scope' do
+      setup do
+        @community = ApartmentCommunity.make
+
+        @no_rent = @community.floor_plans.make({
+          :min_market_rent    => 0,
+          :min_effective_rent => 0
+        })
+
+        @has_rent = @community.floor_plans.make({
+          :min_market_rent    => 2000,
+          :min_effective_rent => 2000
+        })
+      end
+
+      should 'return only the plans that have rent' do
+        assert_equal [@has_rent], @community.floor_plans.has_min_rent
+      end
+    end
   end
 end
