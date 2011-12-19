@@ -8,6 +8,7 @@ require File.join(File.dirname(__FILE__), 'boot')
 require 'rack-rewrite'
 require 'redirectotron'
 require 'bozzuto/missing_images'
+require 'bozzuto/www_redirector'
 
 Rails::Initializer.run do |config|
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
@@ -40,7 +41,13 @@ Rails::Initializer.run do |config|
     r301 %r{^/smartrent/?}, '/apartments/smartrent'
   end
 
+  if Rails.env.production? || Rails.env.test?
+    config.middleware.insert_before(Rack::Lock, Bozzuto::WwwRedirector)
+  end
+
   config.middleware.insert_before(Rack::Lock, Bozzuto::MissingImages)
 
-  config.middleware.use Redirectotron if Rails.env.production?
+  if Rails.env.production?
+    config.middleware.use Redirectotron
+  end
 end
