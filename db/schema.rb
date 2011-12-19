@@ -173,6 +173,7 @@ ActiveRecord::Schema.define(:version => 20111227183310) do
     t.integer  "plan_count_2_bedroom",         :default => 0
     t.integer  "plan_count_3_bedroom",         :default => 0
     t.integer  "plan_count_penthouse",         :default => 0
+    t.boolean  "featured_mobile",              :default => false
   end
 
   add_index "archived_properties", ["id"], :name => "index_archived_properties_on_id"
@@ -772,6 +773,7 @@ ActiveRecord::Schema.define(:version => 20111227183310) do
     t.integer  "plan_count_2_bedroom",         :default => 0
     t.integer  "plan_count_3_bedroom",         :default => 0
     t.integer  "plan_count_penthouse",         :default => 0
+    t.boolean  "featured_mobile",              :default => false
   end
 
   create_table "properties_property_features", :id => false, :force => true do |t|

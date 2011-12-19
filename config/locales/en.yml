@@ -167,6 +167,8 @@ en:
         meta_keywords: Meta Keywords
         meta_title: Meta Title
         published_at: Published At
+      project:
+        featured_mobile: Featured Mobile Project
       project_update:
         image_description: Image Description
         image_title: Image Title
@@ -312,6 +314,8 @@ en:
         image: Image dimensions should be 230x145
       news_post:
         image: Image dimensions should be 150x150
+      project:
+        featured_mobile: Featured mobile projects are shown on the mobile version of the site
       project_update:
         image: Image dimensions should be 484x214
       property_slide:
