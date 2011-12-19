@@ -20,6 +20,10 @@
     <% if @page.section.cached_slug == 'new-homes' && @page.first? %>
       <%= link_to 'Buy a Home', home_communities_path, :class => 'btn submit buy-a-home' %>
     <% end %>
+
+    <% if @page.section.cached_slug == 'services' && @page.first? %>
+      <%= link_to 'Featured Projects', '#', :class => 'btn submit buy-a-home' %>
+    <% end %>
   </div>
 </div>
 
