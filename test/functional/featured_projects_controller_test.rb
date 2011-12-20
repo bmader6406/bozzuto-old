@@ -37,5 +37,27 @@ class FeaturedProjectsControllerTest < ActionController::TestCase
         should_assign_to(:projects) { [@project1, @project2] }
       end
     end
+
+    context 'GET to #show' do
+      browser_context do
+        setup { get :show, :id => @project1.cached_slug }
+
+        should_respond_with :redirect
+        should_redirect_to('the services page') { section_page_path('services') }
+      end
+
+      mobile_context do
+        setup do
+          get :show,
+            :id     => @project1.cached_slug,
+            :format => :mobile
+        end
+
+        should_respond_with :success
+        should_render_with_layout :application
+        should_render_template :show
+        should_assign_to(:project) { @project1 }
+      end
+    end
   end
 end
