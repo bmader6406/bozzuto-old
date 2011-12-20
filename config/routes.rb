@@ -125,6 +125,12 @@ ActionController::Routing::Routes.draw do |map|
     :only        => [:show, :create],
     :member      => { :thank_you => :get }
 
+  map.resources :featured_projects,
+    :path_prefix => 'services',
+    :as          => 'featured-projects',
+    :controller  => :featured_projects,
+    :only        => [:index, :show]
+
   map.management_communities '/services/management/communities',
     :controller => :management_communities,
     :section    => 'management'

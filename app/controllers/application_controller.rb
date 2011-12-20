@@ -8,7 +8,9 @@ class ApplicationController < ActionController::Base
 
   around_filter :set_current_queue
 
-  rescue_from ActiveRecord::RecordNotFound, :with => :render_404
+  unless Rails.env.development?
+    rescue_from ActiveRecord::RecordNotFound, :with => :render_404
+  end
 
 
   private

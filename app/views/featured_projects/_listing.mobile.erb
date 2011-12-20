@@ -1,0 +1,17 @@
+<li>
+  <div class="property project">
+    <% link_to featured_project_path(project), :class => 'info' do %>
+      <span class="name">
+        <%=h project.title %>
+      </span>
+
+      <% if project.street_address || project.city %>
+        <span class="address"><%= project.address('<br />').html_safe %></span>
+      <% end %>
+
+      <% if project.section.present? %>
+        <span class="type">Project Type: <%= project.section.title %></span>
+      <% end %>
+    <% end %>
+  </div>
+</li>

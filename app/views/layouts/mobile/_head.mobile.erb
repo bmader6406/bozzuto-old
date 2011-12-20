@@ -261,27 +261,43 @@
     /* @end At a Glance */
 
     /* @group Property List, Floor Plans */
-    .property-list .content, .floor-plans .content, .homes .content { width: 300px; }
-    .property-list li, .property,
-    .floor-plans li, .floor-plan,
-    .homes li, .home {
+    .property-list .content,
+    .floor-plans .content,
+    .homes .content {
+      width: 300px;
+    }
+    .property-list li,
+    .property,
+    .floor-plans li,
+    .floor-plan,
+    .homes li,
+    .home {
       background: #d6dde7 url(/images/mobile/structure/btn-big.png) top left no-repeat;
       width: 300px;
     }
-    .property-list li, .floor-plans li, .homes li {
+    .property-list li,
+    .floor-plans li,
+    .homes li {
       background-position: top left;
       margin-bottom: 8px;
     }
-    .property, .floor-plan, .home {
+    .property,
+    .floor-plan,
+    .home {
       background-color: transparent;
       background-position: bottom right;
       display: block;
       overflow: hidden;
       width: 300px;
     }
-    .floor-plan, .home { height: 50px; }
-    .property .thumbnail, .property .info,
-    .floor-plan .info, .home .info { 
+    .floor-plan,
+    .home {
+      height: 50px;
+    }
+    .property .thumbnail,
+    .property .info,
+    .floor-plan .info,
+    .home .info { 
       border-right: 1px solid #aaa;
       color: #606060;
       float: left;
@@ -289,16 +305,50 @@
       padding: 10px 20px 10px 0;
       text-decoration: none;
     }
-    .floor-plan .info { border-right: none }
-    .property .info, .home .info { padding-right: 0px; width: 245px }
-    .info span { display: block; line-height: 15px;}
-    .property .address { margin-bottom: 2px; }
-    .property .name, .property .address, .floor-plan .name, .home .name { font-weight: bold; }
-    .homes .floor-plan .name { line-height: 30px; }
-    .property .address, .property .floorplans, .property .price, .property .sub-title,
-    .floor-plan .pricing, .home .pricing { font-size: 11px; }
-    .floor-plan .price { display: inline }
-    .floor-plan .price:before { content: "|"; padding-right: 5px }
+    .floor-plan .info,
+    .project .info {
+      border-right: none
+    }
+    .property .info,
+    .home .info {
+      padding-right: 0px;
+      width: 245px;
+    }
+    .project .info {
+      width: auto;
+    }
+    .info span {
+      display: block;
+      line-height: 15px;
+    }
+    .property .address {
+      margin-bottom: 2px;
+    }
+    .property .name,
+    .property .address,
+    .floor-plan .name,
+    .home .name {
+      font-weight: bold;
+    }
+    .homes .floor-plan .name {
+      line-height: 30px;
+    }
+    .property .address,
+    .property .floorplans,
+    .property .price,
+    .property .sub-title,
+    .floor-plan .pricing,
+    .home .pricing,
+    .project .type {
+      font-size: 11px;
+    }
+    .floor-plan .price {
+      display: inline;
+    }
+    .floor-plan .price:before {
+      content: "|";
+      padding-right: 5px;
+    }
     .tel {
       background: url(/images/mobile/structure/icn-phone.png) 50% 50% no-repeat;
       display: block;
@@ -307,7 +357,9 @@
       text-indent: -999px;
       width: 43px;
     }
-    .row { margin-bottom: 12px }
+    .row {
+      margin-bottom: 12px;
+    }
     /* @end Property List, Floor Plans */
 
     /* @group Community Overview */

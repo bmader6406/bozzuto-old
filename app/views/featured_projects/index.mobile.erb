@@ -1,0 +1,18 @@
+<div class="section page-title">
+  <div class="content">
+    <h2>Featured Projects</h2>
+    <%= link_to 'Our Services', section_page_path('services'), :class => 'go-back' %>
+  </div>
+</div>
+
+<div class="section property-list">
+  <div class="content">
+    <% if @projects.any? %>
+      <ul>
+        <%= render :partial => 'featured_projects/listing', :collection => @projects, :as => :project %>
+      </ul>
+    <% else %>
+      <p>Sorry, there are no featured projects. Please check again later.</p>
+    <% end %>
+  </div>
+</div>

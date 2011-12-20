@@ -22,7 +22,7 @@
     <% end %>
 
     <% if @page.section.cached_slug == 'services' && @page.first? %>
-      <%= link_to 'Featured Projects', '#', :class => 'btn submit buy-a-home' %>
+      <%= link_to 'Featured Projects', featured_projects_path, :class => 'btn submit featured-projects' %>
     <% end %>
   </div>
 </div>

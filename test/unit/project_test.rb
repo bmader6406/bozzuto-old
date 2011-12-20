@@ -34,5 +34,18 @@ class ProjectTest < ActiveSupport::TestCase
         assert_equal [@project1], Project.in_section(@section)
       end
     end
+
+    context '#featured_mobile named scope' do
+      setup do
+        @section = Section.make
+
+        @featured     = Project.make :section => @section, :featured_mobile => true
+        @not_featured = Project.make :section => @section, :featured_mobile => false
+      end
+
+      should 'return only featured projects' do
+        assert_equal [@featured], Project.featured_mobile
+      end
+    end
   end
 end
