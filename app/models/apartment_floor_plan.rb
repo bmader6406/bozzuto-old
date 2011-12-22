@@ -45,7 +45,7 @@ class ApartmentFloorPlan < ActiveRecord::Base
     :order      => 'max_square_feet DESC',
     :limit      => 1
 
-  named_scope :has_min_rent, :conditions => 'min_rent > 0'
+  named_scope :non_zero_min_rent, :conditions => 'min_rent > 0 OR min_rent IS NULL'
 
 
   def uses_image_url?

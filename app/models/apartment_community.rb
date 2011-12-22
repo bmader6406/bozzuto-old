@@ -63,7 +63,7 @@ class ApartmentCommunity < Community
   
   def floor_plans_by_group
     floor_plan_groups.map do |group|
-      [group, floor_plans.in_group(group).has_min_rent]
+      [group, floor_plans.in_group(group).non_zero_min_rent]
     end
   end
 

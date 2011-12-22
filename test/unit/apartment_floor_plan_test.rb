@@ -193,11 +193,16 @@ class ApartmentFloorPlanTest < ActiveSupport::TestCase
       end
     end
 
-    context '#has_min_rent named scope' do
+    context '#non_zero_min_rent named scope' do
       setup do
         @community = ApartmentCommunity.make
 
         @no_rent = @community.floor_plans.make({
+          :min_market_rent    => nil,
+          :min_effective_rent => nil
+        })
+
+        @zero_rent = @community.floor_plans.make({
           :min_market_rent    => 0,
           :min_effective_rent => 0
         })
@@ -208,8 +213,8 @@ class ApartmentFloorPlanTest < ActiveSupport::TestCase
         })
       end
 
-      should 'return only the plans that have rent' do
-        assert_equal [@has_rent], @community.floor_plans.has_min_rent
+      should 'return only the plans that have non-zero min rent' do
+        assert_equal [@no_rent, @has_rent], @community.floor_plans.non_zero_min_rent
       end
     end
   end
