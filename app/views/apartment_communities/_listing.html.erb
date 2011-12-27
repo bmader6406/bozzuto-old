@@ -25,12 +25,14 @@
       </p>
 
       <ul>
-        <% [['Studio', 'studio'], ['1 Bedrooms', '1_bedroom'], ['2 Bedrooms', '2_bedroom'], ['3 or More Bedrooms', '3_bedroom'], ['Penthouses', 'penthouse']].each do |group| %>
-          <% if community.send("cheapest_#{group[1]}_price").present? %>
+        <% ApartmentFloorPlanGroup.all.each do |group| %>
+          <% if community.plan_count_in_group(group) > 0 %>
             <li>
-              <strong><%= group[0] %></strong>
-              from
-              <%= floor_plan_price(community.send("cheapest_#{group[1]}_price")) %>
+              <strong><%= group.name %></strong>
+              <% community.cheapest_price_in_group(group).if_present? do |price| %>
+                from
+                <%= floor_plan_price(price) %>
+              <% end %>
             </li>
           <% end %>
         <% end %>

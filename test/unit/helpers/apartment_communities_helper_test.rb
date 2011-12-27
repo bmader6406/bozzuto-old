@@ -88,7 +88,7 @@ class ApartmentCommunitiesHelperTest < ActionView::TestCase
     end
 
     context '#price_of_cheapest_floor_plan' do
-      setup { @group = ApartmentFloorPlanGroup.make }
+      setup { @group = ApartmentFloorPlanGroup.studio }
 
       context 'there are no floor plans' do
         should 'return empty string' do
@@ -112,7 +112,7 @@ class ApartmentCommunitiesHelperTest < ActionView::TestCase
     end
 
     context '#square_feet_of_largest_floor_plan' do
-      setup { @group = ApartmentFloorPlanGroup.make }
+      setup { @group = ApartmentFloorPlanGroup.studio }
 
       context 'there are no floor plans' do
         should 'return empty string' do

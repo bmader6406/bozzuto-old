@@ -42,12 +42,30 @@ ApartmentFloorPlan.blueprint do
   max_market_rent    { rand(500000) + 40000 }
   min_effective_rent { rand(500000) + 40000 }
   max_effective_rent { rand(500000) + 40000 }
-  floor_plan_group
+  floor_plan_group   { ApartmentFloorPlanGroup.studio }
   apartment_community
 end
 
-ApartmentFloorPlanGroup.blueprint do
-  name { Faker::Lorem.words(1) }
+ApartmentFloorPlanGroup.blueprint do; end
+
+ApartmentFloorPlanGroup.blueprint(:studio) do
+  name { 'Studio' }
+end
+
+ApartmentFloorPlanGroup.blueprint(:one_bedroom) do
+  name { '1 Bedroom' }
+end
+
+ApartmentFloorPlanGroup.blueprint(:two_bedroom) do
+  name { '2 Bedrooms' }
+end
+
+ApartmentFloorPlanGroup.blueprint(:three_bedroom) do
+  name { '3 or More Bedrooms' }
+end
+
+ApartmentFloorPlanGroup.blueprint(:penthouse) do
+  name { 'Penthouse' }
 end
 
 Award.blueprint do

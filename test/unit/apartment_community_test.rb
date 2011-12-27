@@ -229,6 +229,27 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
       end
     end
 
+    context '#cheapest_price_in_group' do
+      setup do
+        @group = ApartmentFloorPlanGroup.studio
+        @community.cheapest_studio_price = '100'
+      end
+
+      should 'return the cheapest price' do
+        assert_equal '100', @community.cheapest_price_in_group(@group)
+      end
+    end
+
+    context '#plan_count_in_group' do
+      setup do
+        @group = ApartmentFloorPlanGroup.studio
+        @community.plan_count_studio = 25
+      end
+
+      should 'return the plan count' do
+        assert_equal 25, @community.plan_count_in_group(@group)
+      end
+    end
   end
 
   context 'The ApartmentCommunity class' do

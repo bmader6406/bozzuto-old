@@ -24,6 +24,18 @@ class ApartmentFloorPlanGroup < ActiveRecord::Base
     end
   end
 
+  def name_for_cache
+    case self
+    when self.class.studio         then 'studio'
+    when self.class.one_bedroom    then '1_bedroom'
+    when self.class.two_bedrooms   then '2_bedroom'
+    when self.class.three_bedrooms then '3_bedroom'
+    when self.class.penthouse      then 'penthouse'
+    else
+      raise "Unknown group: #{self}"
+    end
+  end
+
   class << self
     def studio
       find_by_name 'Studio'

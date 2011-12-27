@@ -40,6 +40,7 @@ class ApartmentFloorPlan < ActiveRecord::Base
   named_scope :in_group, lambda { |group|
     { :conditions => { :floor_plan_group_id => group.id } }
   }
+
   named_scope :largest,
     :conditions => 'max_square_feet IS NOT NULL',
     :order      => 'max_square_feet DESC',

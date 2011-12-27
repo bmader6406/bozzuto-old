@@ -91,6 +91,14 @@ class ApartmentCommunity < Community
     other_community.destroy
   end
 
+  def cheapest_price_in_group(group)
+    send("cheapest_#{group.name_for_cache}_price")
+  end
+
+  def plan_count_in_group(group)
+    send("plan_count_#{group.name_for_cache}")
+  end
+
 
   private
 
