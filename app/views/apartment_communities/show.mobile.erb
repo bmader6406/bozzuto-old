@@ -53,6 +53,14 @@
           <% end %>
         </li>
       <% end %>
+
+      <% if @community.video_url.present? %>
+        <li>
+          <% link_to @community.video_url, :class => 'btn watch-video' do %>
+            <span>Watch Video</span>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>
