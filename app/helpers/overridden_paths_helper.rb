@@ -1,11 +1,13 @@
 module OverriddenPathsHelper
   def page_path(section, page = nil)
+    path = page.is_a?(String) ? page : page.try(:path)
+
     if section.service?
-      service_section_page_path(section, page.try(:path))
+      service_section_page_path(section, page)
     elsif section == Section.news_and_press
-      news_and_press_page_path(page.try(:path))
+      news_and_press_page_path(page)
     else
-      section_page_path(section, page.try(:path))
+      section_page_path(section, page)
     end
   end
 

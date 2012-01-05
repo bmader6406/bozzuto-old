@@ -1,11 +1,17 @@
 class ProjectsController < SectionContentController
-  layout 'project'
+  has_mobile_actions :index, :show
+
+  layout :detect_mobile_layout
 
   before_filter :find_our_work_page
 
   def index
     @categories = ProjectCategory.all
-    render :action => :index, :layout => 'page'
+
+    respond_to do |format|
+      format.html { render :action => :index, :layout => 'page' }
+      format.mobile
+    end
   end
 
   def show
@@ -27,8 +33,15 @@ class ProjectsController < SectionContentController
 
   def categories_with_projects
     @categories_with_projects ||= @categories.select do |category|
-      true if category.projects.in_section(@section).order_by_completion_date.any?
+      category.projects.in_section(@section).order_by_completion_date.any?
     end
   end
   helper_method :categories_with_projects
+
+  def detect_mobile_layout
+  end
+
+  def detect_mobile_layout
+    mobile? ? 'application' : 'project'
+  end
 end

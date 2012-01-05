@@ -1,0 +1,53 @@
+<div class="section community-overview">
+  <div class="content">
+    <% if project.slideshow.present? %>
+      <div class="banner">
+        <%= image_tag project.slideshow.slides.first.image.url(:mobile_thumb) %>
+      </div>
+    <% end %>
+
+    <p class="address"><%= raw(project.address('<br />')) %></p>
+
+    <ul class="contact contact-list">
+      <% if project.mappable? && device != :blackberry %>
+        <li>
+          <% link_to mobile_map_url(project), :class => 'btn directions' do %>
+            <span>Directions</span> <%= project.city %>
+          <% end %>
+        </li>
+      <% end %>
+
+      <% if project.video_url.present? %>
+        <li>
+          <% link_to project.video_url, :class => 'btn watch-video' do %>
+            <span>Watch Video</span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="section project-details">
+  <div class="content">
+    <h3>Project Details</h3>
+
+    <%= raw(project.listing_text) %>
+
+    <ul class="project-data">
+      <% if project.section.present? %>
+        <li>
+          <strong>Project Type:</strong>
+          <%= project.section.title %>
+        </li>
+      <% end %>
+
+      <% project.data_points.each do |point| %>
+        <li>
+          <strong><%= point.name %>:</strong>
+          <%= point.data %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

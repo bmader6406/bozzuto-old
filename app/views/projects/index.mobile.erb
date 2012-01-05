@@ -1,0 +1,21 @@
+<div class="section page-title">
+  <div class="content">
+    <h2>Our Work</h2>
+    <%= link_to @section.title, page_path(@section), :class => 'go-back' %>
+  </div>
+</div>
+
+<div class="section property-list">
+  <div class="content">
+    <% if section_projects.any? %>
+      <ul>
+        <%= render :partial    => 'projects/listing',
+                   :collection => section_projects,
+                   :as         => :project,
+                   :locals     => { :path => lambda { |p| service_section_project_path(@section, p) } } %>
+      </ul>
+    <% else %>
+      <p>Sorry, there are no projects. Please check again later.</p>
+    <% end %>
+  </div>
+</div>

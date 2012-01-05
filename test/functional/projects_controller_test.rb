@@ -24,14 +24,18 @@ class ProjectsControllerTest < ActionController::TestCase
           get :index, :section => @section.to_param
         end
 
-        should_redirect_to_home_page
+        should_respond_with :success
+        should_assign_to(:section) { @section }
       end
     end
 
     context 'a GET to #show' do
+      setup do
+        @project = Project.make :section => @section
+      end
+
       browser_context do
         setup do
-          @project = Project.make :section => @section
           get :show, :section => @section.to_param, :project_id => @project.to_param
         end
 
@@ -44,11 +48,13 @@ class ProjectsControllerTest < ActionController::TestCase
         setup do
           set_mobile_user_agent!
 
-          @project = Project.make :section => @section
           get :show, :section => @section.to_param, :project_id => @project.to_param
         end
 
-        should_redirect_to_home_page
+
+        should_respond_with :success
+        should_assign_to(:section) { @section }
+        should_assign_to(:project) { @project }
       end
     end
   end
