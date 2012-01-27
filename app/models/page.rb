@@ -41,6 +41,10 @@ class Page < ActiveRecord::Base
     lft == 1
   end
 
+  def to_param
+    path
+  end
+
 
   protected
 

@@ -54,6 +54,21 @@ class PageTest < ActiveSupport::TestCase
       end
     end
 
+    context '#to_param' do
+      setup do
+        @section = Section.make
+        @page1 = Page.make :section => @section
+        @page2 = Page.make :section => @section
+        @page2.move_to_child_of(@page1)
+        @page2.save
+      end
+
+      should 'return the path' do
+        assert_equal @page1.cached_slug, @page1.to_param
+        assert_equal "#{@page1.cached_slug}/#{@page2.cached_slug}", @page2.to_param
+      end
+    end
+
     context 'when saving' do
       setup do
         @section = Section.make
