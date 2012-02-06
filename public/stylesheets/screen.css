@@ -4306,6 +4306,10 @@ div.wysiwyg ul li {
   width: 175px;
 }
 
+#ufollowup-form {
+  margin-top: 1.5em;
+}
+
 #community-contact-form form input,
 #new_buzz input,
 .contact .column-main input,

@@ -4,6 +4,8 @@
 <div class="row">
   <div id="content" class="col">
     <h2>Send Me Updates</h2>
+
+    <p><em>* required</em></p>
     
     <form action="http://www.ufollowup.com/webFormScreen.html?company_id=339" method="POST" id="ufollowup-form">
       <fieldset>
@@ -15,17 +17,17 @@
         <input type="hidden" name="hcommsizelen" value="2"/>
 
         <div class="field row">
-          <label for="email1">Email</label>
+          <label for="email1">Email *</label>
           <input type="text" name="prospectForm.email1" id="email1" value="<%= @email %>"/>
         </div>
 
         <div class="field row">
-          <label for="fname">First Name</label>
+          <label for="fname">First Name *</label>
           <input type="text" name="prospectForm.firstName" id="fname"/>
         </div>
 
         <div class="field row">
-          <label for="lname">Last Name</label>
+          <label for="lname">Last Name *</label>
           <input type="text" name="prospectForm.lastName" id="lname"/>
         </div>
 
@@ -127,7 +129,9 @@
         </div>
 
         <div class="field checkboxes">
-          <p class="label">What are you<br />interested in?</p>
+          <p class="label">
+            What are you<br />interested in? *
+          </p>
 
           <ul>
             <li>
