@@ -34,6 +34,7 @@ en:
       property_slideshow: Property Slideshow
       rank_category: Rank Category
       typus_user: User
+      under_construction_lead: Under-Construction Lead
     attributes:
       apartment_community:
         dnr_configuration: DNR Configuration

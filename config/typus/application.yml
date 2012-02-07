@@ -737,6 +737,19 @@ TwitterAccount:
   search: username
   application: 
 
+UnderConstructionLead:
+  fields:
+    default: apartment_community, first_name, last_name, address, address_2, city, state, zip_code, email, phone_number
+    list: apartment_community, first_name, last_name, email
+    form: 
+    csv: apartment_community_title, first_name, last_name, address, address_2, city, state, zip_code, email, phone_number
+  order_by: -updated_at
+  export: csv
+  relationships: 
+  filters: 
+  search: 
+  application: Contact
+
 Video:
   fields:
     default: url, position
