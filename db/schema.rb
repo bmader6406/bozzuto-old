@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111227183310) do
+ActiveRecord::Schema.define(:version => 20120206211913) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -987,6 +987,23 @@ ActiveRecord::Schema.define(:version => 20111227183310) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "under_construction_leads", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
+    t.string   "phone_number"
+    t.string   "email"
+    t.integer  "apartment_community_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "under_construction_leads", ["apartment_community_id"], :name => "index_under_construction_leads_on_apartment_community_id"
 
   create_table "videos", :force => true do |t|
     t.string   "image_file_name"

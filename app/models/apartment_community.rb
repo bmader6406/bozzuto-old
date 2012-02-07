@@ -27,6 +27,9 @@ class ApartmentCommunity < Community
     :conditions => { :featured => true },
     :order      => 'bedrooms ASC, position ASC'
 
+  has_many :under_construction_leads,
+    :order => 'created_at DESC'
+
   validates_inclusion_of :use_market_prices, :in => [true, false]
 
   validates_presence_of :lead_2_lease_email, :if => lambda { |community| community.show_lead_2_lease }
