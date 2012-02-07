@@ -1,0 +1,54 @@
+<h2>This community is under construction.</h2>
+
+<p id="community-contact-note">Sign up below to be the first to know when this community is ready to accept tennants.</p>
+
+<div id="community-contact-form">
+  <%= error_messages_for :submission %>
+  
+  <% form_for :submission, :html => { :class => "required-form" } do |f| -%>
+    <fieldset>
+      <h3>Contact Information</h3>
+      <p>
+        <%= f.label :first_name, 'First Name*' %>
+        <%= f.text_field :first_name, :class => 'required' %>
+      </p>
+      <p>
+        <%= f.label :last_name, 'Last Name*' %>
+        <%= f.text_field :last_name, :class => 'required' %>
+      </p>
+      <p>
+        <%= f.label :address, 'Address' %>
+        <%= f.text_field :address %>
+      </p>
+      <p>
+        <%= f.label :address_2, 'Address (cont.)' %>
+        <%= f.text_field :address_2 %>
+      </p>
+      <p>
+        <%= f.label :city, 'City' %>
+        <%= f.text_field :city %>
+      </p>
+      <p>
+        <%= f.label :state, 'State' %>
+        <%= f.text_field :state %>
+      </p>
+      <p>
+        <%= f.label :zip_code, 'Zip Code' %>
+        <%= f.text_field :zip_code %>
+      </p>
+      <p>
+        <%= f.label :phone_number, 'Phone Number*' %>
+        <%= f.text_field :phone_number, :class => 'required' %>
+      </p>
+      <p>
+        <%= f.label :email, 'E-Mail*' %>
+        <%= f.text_field :email, :class => 'required email' %>
+      </p>
+    </fieldset>
+
+    <p class="submit">
+      <%= submit_tag 'Submit' %>
+    </p>
+
+  <% end -%>
+</div>

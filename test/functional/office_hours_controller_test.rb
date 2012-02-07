@@ -17,7 +17,7 @@ class OfficeHoursControllerTest < ActionController::TestCase
 
           should_respond_with :redirect
           should_redirect_to('the contact page') {
-            apartment_community_lead2_lease_submissions_url(@community)
+            apartment_community_contact_url(@community)
           }
         end
 
@@ -49,7 +49,7 @@ class OfficeHoursControllerTest < ActionController::TestCase
 
           should_respond_with :redirect
           should_redirect_to('the contact page') {
-            home_community_lasso_submissions_url(@community)
+            home_community_contact_url(@community)
           }
         end
 

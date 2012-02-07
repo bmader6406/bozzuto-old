@@ -43,6 +43,7 @@ en:
         floor_plans_meta_title: Floor Plans SEO Title
         resident_link_text: Resident Link Text
         resident_link_url: Resident Link URL
+        under_construction: Under Construction
       apartment_floor_plan:
         actual_image: Image
         availability_url: Availability URL
@@ -253,6 +254,8 @@ en:
       video:
         url: URL
     tips:
+      apartment_community:
+        under_construction: Communities that are under construction show the "Under Construction" contact form instead of the "Lead2Lease" contact form.
       award:
         image: Image dimensions should be 150x150
       body_slide:

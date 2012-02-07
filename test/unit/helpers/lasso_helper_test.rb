@@ -28,7 +28,7 @@ class LassoHelperTest < ActionView::TestCase
             'LassoUID'           => @lasso.uid,
             'ClientID'           => @lasso.client_id,
             'ProjectID'          => @lasso.project_id,
-            'SignupThankyouLink' => thank_you_home_community_lasso_submissions_url(@community)
+            'SignupThankyouLink' => thank_you_home_community_contact_url(@community)
           }.each do |name, value|
             assert_select @html.root, "input[name=#{name}]", :value => value
           end
@@ -52,7 +52,7 @@ class LassoHelperTest < ActionView::TestCase
             'LassoUID'           => @lasso.uid,
             'ClientID'           => @lasso.client_id,
             'ProjectID'          => @lasso.project_id,
-            'SignupThankyouLink' => thank_you_home_community_lasso_submissions_url(@community),
+            'SignupThankyouLink' => thank_you_home_community_contact_url(@community),
             'domainAccountId'    => @lasso.analytics_id,
             'guid'               => ''
           }.each do |name, value|

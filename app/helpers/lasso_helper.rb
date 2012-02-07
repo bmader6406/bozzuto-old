@@ -33,7 +33,7 @@ module LassoHelper
       fields << hidden_field_tag('LassoUID', lasso.uid)
       fields << hidden_field_tag('ClientID', lasso.client_id)
       fields << hidden_field_tag('ProjectID', lasso.project_id)
-      fields << hidden_field_tag('SignupThankyouLink', thank_you_home_community_lasso_submissions_url(community))
+      fields << hidden_field_tag('SignupThankyouLink', thank_you_home_community_contact_url(community))
 
       if lasso.analytics_id.present?
         fields << hidden_field_tag('domainAccountId', lasso.analytics_id)

@@ -27,7 +27,7 @@
         <%- end -%>
         <%- if @community.contact_page? || @community.show_lasso_form? -%>
           <li class="last <%= current_if :controller => 'lasso_submissions' %>">
-            <%= link_to 'Contact Info', home_community_lasso_submissions_path(@community) %>
+            <%= link_to 'Contact Info', home_community_contact_path(@community) %>
           </li>
         <%- end -%>
       </ul>

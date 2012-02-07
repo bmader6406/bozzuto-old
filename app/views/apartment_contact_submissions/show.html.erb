@@ -1,0 +1,18 @@
+<% content_for :body_class do %>community property features<% end %>
+<% render_meta(@page) if @page %>
+
+<% if flash[:email_sent] -%>
+  <div class="notice">
+    Thanks for contacting us about <%= @community.title %>! We will reply to you soon.  
+  </div>
+<% end -%>
+
+<% if @community.under_construction? %>
+  <%= render :partial => 'under_construction_form' %>
+<% elsif @community.show_lead_2_lease? -%>
+  <%= render :partial => 'lead_2_lease_form' %>
+<% end -%>
+
+<div id="community-contact-text">
+  <%= @page.content.try(:html_safe) if @page %>  
+</div>

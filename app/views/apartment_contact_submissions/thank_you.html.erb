@@ -5,4 +5,6 @@
   <%= snippet('Apartments Thank You Text') %>
 </div>
 
-<%= lead_2_lease_mediaplex_code(@community, flash[:lead_2_lease_email]) %>
+<% if flash[:lead_2_lease_email] %>
+  <%= lead_2_lease_mediaplex_code(@community, flash[:lead_2_lease_email]) %>
+<% end %>

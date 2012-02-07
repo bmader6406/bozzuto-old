@@ -1,0 +1,87 @@
+<h2>Ready to speak with a leasing consultant?</h2>
+
+<p id="community-contact-note">Fill out the form below for availability and specials.</p>
+
+<div id="community-contact-form">
+  <%= error_messages_for :submission %>
+  
+  <% form_for :submission, :html => { :class => "required-form" } do |f| -%>
+    <fieldset>
+      <h3>Contact Information</h3>
+      <p>
+        <%= f.label :first_name, 'First Name*' %>
+        <%= f.text_field :first_name, :class => 'required' %>
+      </p>
+      <p>
+        <%= f.label :last_name, 'Last Name*' %>
+        <%= f.text_field :last_name, :class => 'required' %>
+      </p>
+      <p>
+        <%= f.label :address_1, 'Address' %>
+        <%= f.text_field :address_1 %>
+      </p>
+      <p>
+        <%= f.label :address_2, 'Address (cont.)' %>
+        <%= f.text_field :address_2 %>
+      </p>
+      <p>
+        <%= f.label :city, 'City' %>
+        <%= f.text_field :city %>
+      </p>
+      <p>
+        <%= f.label :state, 'State' %>
+        <%= f.text_field :state %>
+      </p>
+      <p>
+        <%= f.label :zip_code, 'Zip Code' %>
+        <%= f.text_field :zip_code %>
+      </p>
+      <p>
+        <%= f.label :primary_phone, 'Primary Phone*' %>
+        <%= f.text_field :primary_phone, :class => 'required' %>
+      </p>
+      <p>
+        <%= f.label :secondary_phone, 'Secondary Phone' %>
+        <%= f.text_field :secondary_phone %>
+      </p>
+      <p>
+        <%= f.label :email, 'E-Mail*' %>
+        <%= f.text_field :email, :class => 'required email' %>
+      </p>
+    </fieldset>
+
+    <fieldset>
+      <h3>Move In Information</h3>
+      <p>
+        <%= f.label :move_in_date, 'Desired Move-In Date' %>
+        <%= f.date_select :move_in_date %>
+      </p>
+
+      <p>
+        <%= f.label :bedrooms, 'Number of Bedrooms' %>
+        <%= f.select :bedrooms, (1..5) %>
+      </p>
+      
+      <p>
+        <%= f.label :bathrooms, 'Number of Bathrooms' %>
+        <%= f.select :bathrooms, (1..5) %>
+      </p>
+
+      <p>
+        <%= f.label :pets, 'Will you have pets?' %>
+        <%= f.check_box :pets, :class => 'checkbox' %>
+        Yes
+      </p>
+
+      <p>
+        <%= f.label :comments %>
+        <%= f.text_area :comments, :cols => 60, :rows => 7 %>
+      </p>
+    </fieldset>
+    
+    <p class="submit">
+      <%= submit_tag 'Submit' %>
+    </p>
+
+  <% end -%>
+</div>

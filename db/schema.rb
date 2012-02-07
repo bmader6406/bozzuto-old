@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120206211913) do
+ActiveRecord::Schema.define(:version => 20120207162709) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -174,6 +174,7 @@ ActiveRecord::Schema.define(:version => 20120206211913) do
     t.integer  "plan_count_3_bedroom",         :default => 0
     t.integer  "plan_count_penthouse",         :default => 0
     t.boolean  "featured_mobile",              :default => false
+    t.boolean  "under_construction",           :default => false
   end
 
   add_index "archived_properties", ["id"], :name => "index_archived_properties_on_id"
@@ -774,6 +775,7 @@ ActiveRecord::Schema.define(:version => 20120206211913) do
     t.integer  "plan_count_3_bedroom",         :default => 0
     t.integer  "plan_count_penthouse",         :default => 0
     t.boolean  "featured_mobile",              :default => false
+    t.boolean  "under_construction",           :default => false
   end
 
   create_table "properties_property_features", :id => false, :force => true do |t|

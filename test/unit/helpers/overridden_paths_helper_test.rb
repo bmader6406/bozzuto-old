@@ -242,7 +242,7 @@ class OverriddenPathsHelperTest < ActionView::TestCase
           setup { @community = ApartmentCommunity.make }
 
           should 'return the correct contact link' do
-            assert_equal send("apartment_community_lead2_lease_submissions_#{type}", @community),
+            assert_equal send("apartment_community_contact_#{type}", @community),
               send("contact_community_#{type}", @community)
           end
         end
@@ -251,7 +251,7 @@ class OverriddenPathsHelperTest < ActionView::TestCase
           setup { @community = HomeCommunity.make }
 
           should 'return the correct contact link' do
-            assert_equal send("home_community_lasso_submissions_#{type}", @community),
+            assert_equal send("home_community_contact_#{type}", @community),
               send("contact_community_#{type}", @community)
           end
         end

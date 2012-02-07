@@ -55,10 +55,10 @@ ActionController::Routing::Routes.draw do |map|
       :only   => [:new, :create],
       :member => { :thank_you => :get }
 
-    community.resource :lead2_lease_submissions,
-      :as     => :contact,
-      :only   => [:show, :create],
-      :member => { :thank_you => :get }
+    community.resource :contact,
+      :controller => :apartment_contact_submissions,
+      :only       => [:show, :create],
+      :member     => { :thank_you => :get }
     
     community.resource :office_hours, :only => :show
 
@@ -99,10 +99,10 @@ ActionController::Routing::Routes.draw do |map|
       :only   => [:new, :create],
       :member => { :thank_you => :get }
 
-    community.resource :lasso_submissions,
-      :as     => :contact,
-      :only   => :show,
-      :member => { :thank_you => :get }
+    community.resource :contact,
+      :controller => :lasso_submissions,
+      :only       => :show,
+      :member     => { :thank_you => :get }
     
     community.resource :office_hours, :only => :show
 

@@ -1,0 +1,19 @@
+<h3>This property is under construction.</h3>
+
+<p>Sign up below to be the first to know when this community is ready to accept tennants.</p>
+
+<br />
+
+<%= error_messages_for :submission, :header_message => nil %>
+
+<br />
+
+<% form_for :submission do |f| %>      
+  <h3>Contact Information</h3>
+  <%= f.text_field :first_name, :placeholder => 'Your First Name' %>
+  <%= f.text_field :last_name, :placeholder => 'Your Last Name' %>
+  <%= f.text_field :email, :placeholder => 'Your Email' %>
+  <%= f.text_field :phone_number, :placeholder => 'Your Phone Number' %>
+
+  <input type="submit" name="contact-submit" class="submit contact-submit" value="Submit" />
+<% end %>

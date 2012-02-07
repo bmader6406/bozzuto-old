@@ -32,9 +32,9 @@
         <% end %>
       </li>
 
-			<%- if @community.show_lead_2_lease? -%>
+			<%- if @community.show_lead_2_lease? || @community.under_construction? -%>
 	      <li>
-	        <% link_to apartment_community_lead2_lease_submissions_path(@community), :class => 'btn email-us' do %>
+	        <% link_to apartment_community_contact_path(@community), :class => 'btn email-us' do %>
 	          <span>Email Us</span>
 	        <% end %>
 	      </li>
