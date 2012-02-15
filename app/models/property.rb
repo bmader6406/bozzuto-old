@@ -28,7 +28,7 @@ class Property < ActiveRecord::Base
 
   has_and_belongs_to_many :property_features, :order => 'position ASC'
   
-  has_many :landing_page_popular_properties, :dependent => :destroy
+  has_many :landing_page_popular_orderings, :dependent => :destroy
 
   validates_presence_of :title, :city
   validates_numericality_of :latitude, :longitude, :allow_nil => true

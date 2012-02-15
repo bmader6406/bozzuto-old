@@ -1,4 +1,4 @@
-class LandingPagePopularProperty < ActiveRecord::Base
+class LandingPagePopularOrdering < ActiveRecord::Base
   belongs_to :landing_page
   belongs_to :property
   

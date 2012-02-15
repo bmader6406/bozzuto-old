@@ -10,7 +10,7 @@ class PropertyTest < ActiveSupport::TestCase
 
     should_belong_to :city, :county
     should_have_one :slideshow
-    should_have_many :landing_page_popular_properties
+    should_have_many :landing_page_popular_orderings
     should_have_and_belong_to_many :property_features
 
     should_validate_presence_of :title, :city

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120207162709) do
+ActiveRecord::Schema.define(:version => 20120215173744) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -406,7 +406,7 @@ ActiveRecord::Schema.define(:version => 20120207162709) do
     t.boolean  "featured",                                        :default => false, :null => false
   end
 
-  create_table "landing_page_popular_properties", :force => true do |t|
+  create_table "landing_page_popular_orderings", :force => true do |t|
     t.integer "landing_page_id"
     t.integer "property_id"
     t.integer "position"
@@ -508,6 +508,17 @@ ActiveRecord::Schema.define(:version => 20120207162709) do
   end
 
   add_index "masthead_slideshows", ["page_id"], :name => "index_masthead_slideshows_on_page_id"
+
+  create_table "mediaplex_tags", :force => true do |t|
+    t.string   "page_name"
+    t.string   "roi_name"
+    t.integer  "trackable_id"
+    t.string   "trackable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "mediaplex_tags", ["trackable_type", "trackable_id"], :name => "index_mediaplex_tags_on_trackable_type_and_trackable_id"
 
   create_table "mini_slides", :force => true do |t|
     t.string   "image_file_name",    :null => false

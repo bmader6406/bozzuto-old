@@ -289,12 +289,12 @@ LandingPage:
         published: ['Yes', 'No']
         hide_from_list: ['Yes', 'No']
   order_by:
-  relationships: state, popular_properties, apartment_communities, featured_apartment_communities, home_communities, projects, promo
+  relationships: state, popular_property_orderings, apartment_communities, featured_apartment_communities, home_communities, projects, promo
   filters:
   search: title
   application: Geography
 
-LandingPagePopularProperty:
+LandingPagePopularOrdering:
   fields:
     default: title, street_address, city, position
     options:

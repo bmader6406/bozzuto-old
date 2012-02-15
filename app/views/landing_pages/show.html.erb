@@ -34,13 +34,15 @@
       <div id="sidebar" class="col">
         <h2>Map Key</h2>
         <ul class="mapkey">
-          <% if @page.apartment_communities.any? %>
+          <% if apartment_communities.any? %>
           <li class="apartments"><span>Apartments for Rent</span></li>
           <% end %>
-          <% if @page.home_communities.any? %>
+
+          <% if home_communities.any? %>
           <li class="homes-condominiums"><span>Homes &amp; Condominiums</span></li>
           <% end %>
-          <% if @page.projects.any? %>
+
+          <% if projects.any? %>
           <li class="upcoming-projects"><span>Upcoming Projects</span></li>
           <% end %>
         </ul>
@@ -50,11 +52,11 @@
         <div class="areamap row">
           <%= render :partial => 'map' %>
 
-          <% if @page.popular_properties.any? %>
+          <% if popular_properties.any? %>
             <div class="col areamap-popular-properties">
               <h2>Popular Properties</h2>
 
-              <% @page.popular_properties.take(3).map(&:property).compact.each do |property| %>
+              <% popular_properties.take(3).compact.each do |property| %>
                 <div class="section <%= popular_property_class(property) %>">
                   <h4>
                     <%= link_to property.short_title || property.title, property_path(property) %>
@@ -75,13 +77,15 @@
         <div id="properties-by-type">
           <div class="header">
             <ul class="nav">
-              <% if @page.home_communities.any? %>
+              <% if home_communities.any? %>
                 <li><a href="#homes-condominiums">Homes &amp; Condominiums</a></li>
               <% end %>
-              <% if @page.apartment_communities.any? %>
+
+              <% if apartment_communities.any? %>
                 <li><a href="#apartments-for-rent">Apartments For Rent</a></li>
               <% end %>
-              <% if @page.featured_apartment_communities.any? %>
+
+              <% if featured_apartment_communities.any? %>
                 <li><a href="#featured-apartments">Featured Apartments</a></li>
               <% end %>
 
@@ -90,26 +94,26 @@
           </div>
 
 
-          <% if @page.home_communities.any? %>
+          <% if home_communities.any? %>
             <div id="homes-condominiums" class="section">
               <ul>
-                <%= render_homes_listings @page.home_communities.sort_for(@page), :use_dnr => true %>
+                <%= render_homes_listings home_communities.sort_for(@page), :use_dnr => true %>
               </ul>
             </div>
           <% end %>
 
-          <% if @page.apartment_communities.any? %>
+          <% if apartment_communities.any? %>
             <div id="apartments-for-rent" class="section">
               <ul>
-                <%= render_apartments_listings @page.apartment_communities.sort_for(@page), :use_dnr => true %>
+                <%= render_apartments_listings apartment_communities.sort_for(@page), :use_dnr => true %>
               </ul>
             </div>
           <% end %>
 
-          <% if @page.featured_apartment_communities.any? %>
+          <% if featured_apartment_communities.any? %>
             <div id="featured-apartments" class="section">
               <ul>
-                <%= render_apartments_listings @page.featured_apartment_communities.sort_for(@page), :use_dnr => true %>
+                <%= render_apartments_listings featured_apartment_communities.sort_for(@page), :use_dnr => true %>
               </ul>
             </div>
           <% end %>
