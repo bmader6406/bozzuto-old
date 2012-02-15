@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+	<Document>
+		<name>Bozzuto Communities Locations</name>
+		<atom:link rel="related" href="http://www.bozzuto.com" />
+		<Folder>
+			<Placemark>
+				<name><![CDATA[Liberty Towers]]></name>
+				<address><![CDATA[33 Hudson Street, Jersey City, NJ, 07302, United States]]></address>
+				<description><![CDATA[Jersey City, NJ apartments with spectacular views of the Statue of Liberty and the Manhattan skyline. Pet friendly apartments are located near rapid transit and feature Zipcar rentals and a concierge.]]></description>
+				<Point>
+					<coordinates>-74.0353525,40.7133296,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name><![CDATA[Observer Park]]></name>
+				<address><![CDATA[51 Garden Street, Hoboken, NJ, 07030, United States]]></address>
+				<description><![CDATA[Pet-friendly Hoboken, New Jersey apartments near rapid transit, restaurants, parks and shops, and just minutes from NYC. Apartments feature great views of Manhattan, large closets and hardwood floors. ]]></description>
+				<Point>
+					<coordinates>-74.0329724,40.7365031,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name><![CDATA[The Brownstones at Englewood South]]></name>
+				<address><![CDATA[73 Brownstone Way, Englewood, NJ, 07631, United States]]></address>
+				<description><![CDATA[Englewood, NJ pet-friendly apartments just minutes from NYC. Apartments feature stainless steel appliances, granite countertops, designer cabinetry, wood flooring, walk-in closets, and washer/dryers. ]]></description>
+				<Point>
+					<coordinates>-73.9847739,40.8828565,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name><![CDATA[Sterling Parc]]></name>
+				<address><![CDATA[2101 Glen Drive, Cedar Knolls, NJ, 07927, United States]]></address>
+				<description><![CDATA[Pet-friendly Cedar Knolls, NJ apartments in Morris County near restaurants, a movie theater and performing arts center. Apartments feature private entrance/patios, spacious kitchens and washer/dryers. ]]></description>
+				<Point>
+					<coordinates>-74.446607,40.8242754,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+	</Document>
+</kml>
