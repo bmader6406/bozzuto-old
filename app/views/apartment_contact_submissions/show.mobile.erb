@@ -10,7 +10,7 @@
 <% if @community.under_construction? || @community.show_lead_2_lease? %>
   <div class="section">
     <div class="content">
-      <% if flash[:email_sent] -%>
+      <% if flash[:apartment_contact_email] -%>
         <div class="notice">
           <p>Thanks for contacting us about <%= @community.title %>! We will reply to you soon.</p>
         </div>

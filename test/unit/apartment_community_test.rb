@@ -10,6 +10,8 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
     should_have_many :floor_plans, :featured_floor_plans, :under_construction_leads
     should_have_many :floor_plan_groups, :through => :floor_plans
+
+    should_have_one :mediaplex_tag
     
     should 'be archivable' do
       assert ApartmentCommunity.acts_as_archive?

@@ -127,6 +127,10 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should_redirect_to('the contact path') { thank_you_apartment_community_contact_path(@community) }
             should_change('lead count', :by => 1) { UnderConstructionLead.count }
             should_assign_to :submission
+
+            should 'save the email in the flash' do
+              assert_equal @submission.email, flash[:apartment_contact_email]
+            end
           end
 
           mobile_context do
@@ -143,6 +147,10 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should_redirect_to('the contact path') { thank_you_apartment_community_contact_path(@community) }
             should_assign_to :submission
             should_change('lead count', :by => 1) { UnderConstructionLead.count }
+
+            should 'save the email in the flash' do
+              assert_equal @submission.email, flash[:apartment_contact_email]
+            end
           end
         end
       end
@@ -301,9 +309,9 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should_redirect_to('the contact path') { thank_you_apartment_community_contact_path(@community) }
 
             should_change('mail deliveries', :by => 1) { ActionMailer::Base.deliveries.count }
+
             should 'save the email in the flash' do
-              assert flash[:email_sent]
-              assert_equal @submission.email, flash[:lead_2_lease_email]
+              assert_equal @submission.email, flash[:apartment_contact_email]
             end
           end
 
@@ -322,9 +330,9 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should_redirect_to('the contact path') { thank_you_apartment_community_contact_path(@community) }
 
             should_change('mail deliveries', :by => 1) { ActionMailer::Base.deliveries.count }
+
             should 'save the email in the flash' do
-              assert flash[:email_sent]
-              assert_equal @submission.email, flash[:lead_2_lease_email]
+              assert_equal @submission.email, flash[:apartment_contact_email]
             end
           end
         end

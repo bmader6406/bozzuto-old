@@ -17,7 +17,7 @@ ApartmentCommunity:
       selectors: brochure_type
       destroy_related: DnrConfiguration, PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyToursPage, PropertyContactPage, PropertySlideshow, PropertyMiniSlideshow, Video, PhotoSet, ApartmentFloorPlan
   order_by: title
-  relationships: dnr_configuration, property_features, city, county, local_info_feed, features_page, neighborhood_page, tours_page, contact_page, slideshow, videos, photo_set, floor_plans, promo
+  relationships: dnr_configuration, mediaplex_tag, property_features, city, county, local_info_feed, features_page, neighborhood_page, tours_page, contact_page, slideshow, videos, photo_set, floor_plans, promo
   filters:
   search: title, street_address
   application: Properties
@@ -361,6 +361,18 @@ MastheadSlideshow:
   relationships: page, slides
   filters:
   search: name
+  application:
+
+MediaplexTag:
+  fields:
+    default: page_name, roi_name
+    list: page_name, roi_name
+    form: page_name, roi_name
+    options:
+  order_by:
+  relationships: 
+  filters:
+  search: 
   application:
 
 NewsPost:

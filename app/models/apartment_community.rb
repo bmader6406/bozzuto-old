@@ -30,6 +30,8 @@ class ApartmentCommunity < Community
   has_many :under_construction_leads,
     :order => 'created_at DESC'
 
+  has_one :mediaplex_tag, :as => :trackable
+
   validates_inclusion_of :use_market_prices, :in => [true, false]
 
   validates_presence_of :lead_2_lease_email, :if => lambda { |community| community.show_lead_2_lease }

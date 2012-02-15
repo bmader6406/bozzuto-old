@@ -13,7 +13,10 @@
       <%= snippet('Apartments Thank You Text') %>
     </div>
 
-    <%= lead_2_lease_mediaplex_code(@community, flash[:lead_2_lease_email]) %>
+    <% if flash[:apartment_contact_email] %>
+      <%= lead_2_lease_mediaplex_code(@community, flash[:apartment_contact_email]) %>
+      <%= apartment_contact_mediaplex_code(@community, flash[:apartment_contact_email]) %>
+    <% end %>
   </div>
 </div>
 
