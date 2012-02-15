@@ -1,0 +1,28 @@
+<div class="instructions">
+  <p>
+    To find these values, examine the Mediaplex Tag code. For example:
+  </p>
+
+  <pre style="white-space: pre-wrap;">&lt;iframe src="http://img-cdn.mediaplex.com/0/16798/universal.html?page_name=<span class="highlight">arbors-baltimore_crossroads_lead</span>&amp;<span class="highlight">Arbors_Baltimore_Crsrds_Lead</span>=1&amp;mpuid=" HEIGHT=1 WIDTH=1 FRAMEBORDER=0&gt;&lt;/iframe&gt;</pre>
+
+  <p>
+    Note the two portions highlighted in green. For this mediaplex tag, the <em>Page Name</em> is <code>arbors-baltimore_crossroads_lead</code> and the <em>ROI Name</em> is <code>Arbors_Baltimore_Crsrds_Lead</code>.
+  </p>
+</div>
+
+
+<% form_for @item, :url  => options, :html => { :multipart => true } do |form| %>
+  <fieldset class="inputs">
+    <ol>
+      <%= build_form(@fields, form) %>
+    </ol>
+  </fieldset>
+  <fieldset class="buttons">
+    <ol>
+      <li>
+        <%= submit_tag button , :class => 'commit' %>
+        <%= link_to 'Cancel', :back %>
+      </li>
+    </ol>
+  </fieldset>
+<% end %>

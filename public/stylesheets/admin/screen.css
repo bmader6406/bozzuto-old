@@ -549,6 +549,19 @@ input.date_input { border: 1px solid #999; margin-bottom: 1em;}
   padding-left: 6px;
 }
 
+#content .instructions pre {
+  background-color: #222;
+}
+
+.instructions code {
+  color: #222;
+  font-size: 1.2em;
+}
+
+.instructions .highlight {
+  color: #00b000;
+}
+
 /* @end */
 
 /* @group Sprite */

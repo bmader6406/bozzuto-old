@@ -22,6 +22,7 @@ en:
       leadership_group: Leadership Group
       masthead_slide: Slide
       masthead_slideshow: Masthead Slideshow
+      mediaplex_tag: Mediaplex Tag
       mini_slide: Slide
       mini_slideshow: Mini Slideshow
       news_post: News
@@ -143,6 +144,9 @@ en:
         quote_job_title: Quote Job Title
         sidebar_text: Sidebar Text
         slide_type: Slide Type
+      mediaplex_tag:
+        page_name: Page Name
+        roi_name: ROI Name
       mini_slide:
         mini_slideshow: Mini Slideshow
       mini_slideshow:
