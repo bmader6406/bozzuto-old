@@ -154,4 +154,78 @@ $(function() {
       });
     }
   })();
+
+  // mediaplex tag parser
+  (function() {
+    var $parser = $('#mediaplex-parser');
+
+    if ($parser.length > 0) {
+      var $textarea = $('textarea', $parser),
+          $button   = $('input[type=submit]', $parser),
+          $error    = $('.error', $parser),
+          $pageName = $('input#mediaplex_tag_page_name'),
+          $roiName  = $('input#mediaplex_tag_roi_name');
+
+      $error.hide();
+
+      $button.click(function(e) {
+        e.preventDefault();
+
+        var iframe = $textarea.val();
+        var params = findMediaplexParams(iframe);
+
+        if (params['page_name'] && params['roi_name']) {
+          $pageName.val(params['page_name']);
+          $roiName.val(params['roi_name']);
+
+          $error.hide();
+        } else {
+          $error.show();
+        }
+      });
+    }
+
+    function findMediaplexParams(iframe) {
+      var url    = $(iframe).attr('src'),
+          params = {};
+
+      if (url) {
+        var paramsString = url.split('?')[1];
+
+        $.each(paramsString.split('&'), function(i, param) {
+          var pageName = findPageName(param);
+          if (pageName) {
+            params['page_name'] = pageName;
+          }
+
+          var roiName = findROIName(param);
+          if (roiName) {
+            params['roi_name'] = roiName;
+          }
+        });
+      }
+
+      return params;
+    }
+
+    function findPageName(string) {
+      var results = string.match(/^page_name=(.+)$/) || [];
+
+      if (results.length == 2) {
+        return results[1];
+      } else {
+        return null;
+      }
+    }
+
+    function findROIName(string) {
+      var results = string.match(/^([^=]+)=1$/) || [];
+
+      if (results.length == 2) {
+        return results[1];
+      } else {
+        return null;
+      }
+    }
+  })();
 });
