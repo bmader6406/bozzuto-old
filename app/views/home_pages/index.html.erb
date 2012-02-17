@@ -35,57 +35,88 @@
     <div class="container">
 
       <div id="content" class="row">
-        <div id="welcome" class="col">
-          <%= @home_page.body.try(:html_safe) %>
-        </div>
+        <div class="row">
+          <div id="welcome" class="col">
+            <%= @home_page.body.try(:html_safe) %>
+          </div>
 
-        <div class="social-updates col">
-          <p class="facebook">
-            <a href="http://www.facebook.com/TheBozzutoGroup" rel="external">
-              Follow us on Facebook
-            </a>          
-          </p>
-          
-          <% @home_page.tweets.try(:first).if_present? do |tweet| %>
-            <%= render :partial => 'shared/tweet', :object => tweet %>
+          <% @latest_award.if_present? do |award| %>
+            <div class="latest-award article">
+              <h3><%= link_to 'Latest Awards', awards_path(@section) %></h3>
+
+              <div class="row">
+                <% if award.image? %>
+                  <p class="figure">
+                    <%= link_to image_tag(award.image.url(:thumb)), award_path(@section, award) %>
+                  </p>
+                <% end %>
+
+                <div class="section">
+                  <h4><%= link_to award.title, award_path(@section, award) %></h4>
+
+                  <p class="date"><%= month_and_day(award.published_at) %></p>
+
+                  <%= truncate_html(raw(award.body), :length => 100) %>
+                </div>
+              </div>
+            </div>
           <% end %>
         </div>
 
-        <% if @home_page.mini_slideshow.present? %>
-          <div id="featured-property" class="col">
-            <h2>
-              <%= link_to @home_page.mini_slideshow.title, @home_page.mini_slideshow.link_url %>
-            </h2>
+        <div class="row">
+          <% if @latest_news.present? %>
+            <div class="latest-news article">
+              <h3><%= link_to 'Latest News', news_posts_path(@section) %></h3>
 
-            <% if @home_page.mini_slideshow.present? %>
-              <%= render :partial => 'shared/mini_slideshow', :object => @home_page.mini_slideshow %>
+              <% link_to section_news_post_path(@section, @latest_news), :class => 'post-link' do %>
+                <img src="http://placehold.it/380x150" width="380" height="150" />
+
+                <span class="title"><%= @latest_news.title%></span>
+              <% end %>
+            </div>
+          <% end %>
+
+          <div class="toms-blog article">
+            <h3><%= link_to raw('Tom&rsquo;s Blog'), 'http://tom.bozzuto.com' %></h3>
+
+            <% link_to '#', :class => 'post-link' do %>
+              <img src="http://placehold.it/380x150" width="380" height="150" />
+
+              <span class="title">Lorem ipsum dolor sit amet consectetur</span>
             <% end %>
           </div>
-        <% end %>
+        </div>
       </div>
+
     </div>
   </div>
 <% end %>
 
 
-<div id="news">
+<div id="social">
   <div class="container">
-    <h2>Latest Bozzuto News</h2>
+    <h2>Bozzuto Social</h2>
 
-    <% if @latest_news.present? %>
-      <div class="col">
-        <h3><%= @latest_news.published_at.to_formatted_s(:home_news) %></h3>
-        <p><%= @latest_news.title %></p>
-      </div>
+    <div class="facebook">
+      <div class="fb-like" data-href="http://www.bozzuto.com" data-send="true" data-width="340" data-show-faces="true"></div>
+    </div>
 
-      <ul>
-        <li>
-          <%= link_to 'Read More', section_news_post_path('about', @latest_news) %>
-        </li>
-        <li class="rss">
-          <%= link_to 'Get RSS Feed', section_news_posts_path('about', :format => :rss) %>
-        </li>
-      </ul>
-    <% end %>
+    <div class="twitter">
+      <a href="https://twitter.com/TheBozzutoGroup" class="twitter-follow-button" data-show-count="true">Follow @TheBozzutoGroup</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </div>
+
+    <div class="rss">
+      <p><%= link_to 'Get RSS Feed', section_news_posts_path('about', :format => :rss) %></p>
+    </div>
   </div>
 </div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>

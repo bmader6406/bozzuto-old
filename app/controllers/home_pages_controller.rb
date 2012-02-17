@@ -4,8 +4,10 @@ class HomePagesController < ApplicationController
   layout :detect_mobile_layout
 
   def index
-    @home_page = HomePage.first
-    @latest_news = NewsPost.published.latest(1).first
+    @home_page    = HomePage.first
+    @section      = Section.about
+    @latest_news  = NewsPost.published.latest(1).first
+    @latest_award = @section.present? ? @section.awards.first : nil
   end
 
 
