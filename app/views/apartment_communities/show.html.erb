@@ -64,7 +64,7 @@
                 <% end %>
               </td>
               <td class="availability">
-                <%= link_to "Availability", (@community.availability_url.presence || apartment_contact_path(@community)), :rel => 'external' %>
+                <%= link_to "Availability", (@community.availability_url.presence || apartment_community_contact_path(@community)), :rel => 'external' %>
               </td>
             </tr>
           <% end %>
