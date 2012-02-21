@@ -19,7 +19,7 @@ ApartmentCommunity:
   order_by: title
   relationships: dnr_configuration, mediaplex_tag, property_features, city, county, local_info_feed, features_page, neighborhood_page, tours_page, contact_page, slideshow, videos, photo_set, floor_plans, promo
   filters:
-  search: title, street_address
+  search: properties.title, properties.street_address
   application: Properties
   actions:
     index: list_deleted
