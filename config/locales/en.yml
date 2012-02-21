@@ -35,6 +35,7 @@ en:
       property_slide: Slide
       property_slideshow: Property Slideshow
       rank_category: Rank Category
+      toms_blog_post: "\"Tom's Blog\" Post"
       typus_user: User
       under_construction_lead: Under-Construction Lead
     attributes:
@@ -254,6 +255,10 @@ en:
         left_montage_image: Left Montage Image
         middle_montage_image: Middle Montage Image
         right_montage_image: Right Montage Image
+      toms_blog_post:
+        image: Home Page Image
+        published_at: Published At
+        url: URL
       typus_user:
         first_name: First Name
         last_name: Last Name
@@ -340,5 +345,7 @@ en:
         left_montage_image: Image dimensions should be 250x148
         middle_montage_image: Image dimensions should be 540x148
         right_montage_image: Image dimensions should be 310x148
+      toms_blog_post:
+        image: Image dimensions should be 380x150.<br />This image is shown on the home page when this post appears under &ldquo;Tom&rsquo;s Blog&rdquo;
       twitter_account:
         username: Do not include the @ symbol

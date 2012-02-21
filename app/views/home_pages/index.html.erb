@@ -64,27 +64,29 @@
         </div>
 
         <div class="row">
-          <% if @latest_news.present? %>
+          <% @latest_news.if_present? do |post| %>
             <div class="latest-news article">
               <h3><%= link_to 'Latest News', news_posts_path(@section) %></h3>
 
-              <% link_to section_news_post_path(@section, @latest_news), :class => 'post-link' do %>
-                <%= image_tag @latest_news.home_page_image.url, :width => '380', :height => '150' %>
+              <% link_to section_news_post_path(@section, post), :class => 'post-link' do %>
+                <%= image_tag post.home_page_image.url, :width => '380', :height => '150' %>
 
-                <span class="title"><%= @latest_news.title%></span>
+                <span class="title"><%= post.title%></span>
               <% end %>
             </div>
           <% end %>
 
-          <div class="toms-blog article">
-            <h3><%= link_to raw('Tom&rsquo;s Blog'), 'http://tom.bozzuto.com' %></h3>
+          <% @latest_blog_post.if_present? do |post| %>
+            <div class="toms-blog article">
+              <h3><%= link_to raw('Tom&rsquo;s Blog'), 'http://tom.bozzuto.com' %></h3>
 
-            <% link_to '#', :class => 'post-link' do %>
-              <img src="http://placehold.it/380x150" width="380" height="150" />
+              <% link_to post.url, :class => 'post-link', :rel => 'external' do %>
+                <%= image_tag post.image.url, :width => 380, :height => 150 %>
 
-              <span class="title">Lorem ipsum dolor sit amet consectetur</span>
-            <% end %>
-          </div>
+                <span class="title"><%= post.title %></span>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       </div>
 

@@ -738,6 +738,17 @@ Testimonial:
   search: name
   application: Content
 
+TomsBlogPost:
+  fields:
+    default: title, published_at
+    list: 
+    form: title, url, published_at, image
+  order_by: -published_at
+  relationships: 
+  filters:
+  search: title, url
+  application: News & Press
+
 TwitterAccount:
   fields:
     default: username

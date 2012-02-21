@@ -59,6 +59,7 @@ admin:
   Snippet: create, read, update, delete
   State: create, read, update, delete
   Testimonial: create, read, update, delete
+  TomsBlogPost: create, read, update, delete
   TwitterAccount: create, read, update, delete
   UnderConstructionLead: read, delete
   Video: create, read, update, delete
