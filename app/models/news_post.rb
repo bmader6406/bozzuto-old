@@ -16,6 +16,12 @@ class NewsPost < ActiveRecord::Base
     :styles => { :thumb => '150x150#' },
     :default_style => :thumb
 
+  has_attached_file :home_page_image,
+    :url           => '/system/:class/:id/home_page_image_:style_:id.:extension',
+    :styles        => { :normal => '380x150#' },
+    :default_style => :normal,
+    :default_url   => '/images/home-latest-news-placeholder.jpg'
+
   def typus_name
     title
   end

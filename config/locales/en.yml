@@ -152,6 +152,7 @@ en:
       mini_slideshow:
         link_url: Link URL
       news_post:
+        home_page_image: Home Page Thumbnail
         meta_description: SEO Description
         meta_keywords: SEO Keywords
         meta_title: SEO Title
@@ -298,6 +299,11 @@ en:
         masthead_image: Image dimensions should be 230x223
       masthead_slide:
         image: Image dimensions should be 230x223
+      mini_slide:
+        image: Image dimensions should be 230x145
+      news_post:
+        home_page_image: Image dimensions should be 380x150.<br />This image is shown on the home page when this news post appears under &ldquo;Latest News&rdquo;
+        image: Image dimensions should be 150x150
       page:
         body: Shown when viewing the page from a web browser
         left_montage_image: Image dimensions should be 250x148
@@ -308,6 +314,10 @@ en:
       photo_set:
         flickr_set_number: It will take up to 2 hours for photos to be synced from Flickr
         needs_sync: Once checked, it will take up to 2 hours to refresh this set from Flickr
+      project:
+        featured_mobile: Featured mobile projects are shown on the mobile version of the site
+      project_update:
+        image: Image dimensions should be 484x214
       promo:
         link_url: If no URL is entered, 'Learn More' link will not be displayed
       property:
@@ -319,14 +329,6 @@ en:
         short_title: Shown as the title in the main slideshow, must be shorter than 22 characters
       property_feature:
         icon: Image dimensions should be 44x44. If icon image is not present, icon will not be shown in listings.
-      mini_slide:
-        image: Image dimensions should be 230x145
-      news_post:
-        image: Image dimensions should be 150x150
-      project:
-        featured_mobile: Featured mobile projects are shown on the mobile version of the site
-      project_update:
-        image: Image dimensions should be 484x214
       property_slide:
         image: Image dimensions should be 870x375
         caption: Must be fewer than 128 characters

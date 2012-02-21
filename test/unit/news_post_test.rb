@@ -7,6 +7,7 @@ class NewsPostTest < ActiveSupport::TestCase
     should_have_and_belong_to_many :sections
 
     should_have_attached_file :image
+    should_have_attached_file :home_page_image
 
     context '#typus_name' do
       setup { @news = NewsPost.new(:title => 'Hey ya') }

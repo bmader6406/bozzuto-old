@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120215173744) do
+ActiveRecord::Schema.define(:version => 20120221200213) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -540,9 +540,9 @@ ActiveRecord::Schema.define(:version => 20120215173744) do
   end
 
   create_table "news_posts", :force => true do |t|
-    t.string   "title",                                 :null => false
+    t.string   "title",                                           :null => false
     t.text     "body"
-    t.boolean  "published",          :default => false, :null => false
+    t.boolean  "published",                    :default => false, :null => false
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -551,7 +551,9 @@ ActiveRecord::Schema.define(:version => 20120215173744) do
     t.string   "meta_keywords"
     t.string   "image_file_name"
     t.string   "image_content_type"
-    t.boolean  "featured",           :default => false
+    t.boolean  "featured",                     :default => false
+    t.string   "home_page_image_file_name"
+    t.string   "home_page_image_content_type"
   end
 
   create_table "news_posts_sections", :id => false, :force => true do |t|
