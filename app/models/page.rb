@@ -21,7 +21,7 @@ class Page < ActiveRecord::Base
 
   has_one :masthead_slideshow
   has_one :body_slideshow
-  has_one :carousel
+  has_one :carousel, :as => :content
 
   validates_presence_of :title
 

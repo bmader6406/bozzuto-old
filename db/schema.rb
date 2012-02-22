@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120221203912) do
+ActiveRecord::Schema.define(:version => 20120221215818) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -263,11 +263,14 @@ ActiveRecord::Schema.define(:version => 20120221203912) do
   end
 
   create_table "carousels", :force => true do |t|
-    t.string   "name",       :null => false
-    t.integer  "page_id"
+    t.string   "name",         :null => false
+    t.integer  "content_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "content_type"
   end
+
+  add_index "carousels", ["content_type", "content_id"], :name => "index_carousels_on_content_type_and_content_id"
 
   create_table "cities", :force => true do |t|
     t.string   "name",       :null => false
@@ -385,15 +388,11 @@ ActiveRecord::Schema.define(:version => 20120221203912) do
     t.string   "meta_title"
     t.string   "meta_description"
     t.string   "meta_keywords"
-    t.integer  "mini_slideshow_id"
     t.string   "mobile_title"
     t.string   "mobile_banner_image_file_name"
     t.string   "mobile_banner_image_content_type"
     t.text     "mobile_body"
-    t.integer  "twitter_account_id"
   end
-
-  add_index "home_pages", ["mini_slideshow_id"], :name => "index_home_pages_on_mini_slideshow_id"
 
   create_table "homes", :force => true do |t|
     t.string   "name",                                                               :null => false

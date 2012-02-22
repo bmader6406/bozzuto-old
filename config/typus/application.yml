@@ -106,11 +106,11 @@ Carousel:
   fields:
     default: name
     list: name
-    form: name, page
+    form: name
     options:
       destroy_related: CarouselPanel
   order_by: 
-  relationships: page, panels
+  relationships: panels
   filters:
   search:
   application:
@@ -257,12 +257,12 @@ HomePage:
   fields:
     default:
     list:
-    form: meta_title, meta_description, meta_keywords, body, twitter_account, mini_slideshow, mobile_title, mobile_banner_image, mobile_body
+    form: meta_title, meta_description, meta_keywords, body, mobile_title, mobile_banner_image, mobile_body
     options:
       ckeditor: body, mobile_body
       destroy_related: HomePageSlide
   order_by:
-  relationships: slides, mini_slideshow
+  relationships: slides, carousel
   filters:
   search:
   application: Content

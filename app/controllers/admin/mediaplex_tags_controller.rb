@@ -13,31 +13,5 @@ class Admin::MediaplexTagsController < Admin::MasterController
                         :model_b => resource_class.typus_human_name)
 
     redirect_to params[:back_to]
-
-=begin
-    if params[:resource] && params[:resource_id]
-      resource_class = params[:resource].classify.constantize
-      resource_id = params[:resource_id]
-      resource = resource_class.find(resource_id)
-      association = @resource[:class].reflect_on_association(params[:resource].to_sym).macro rescue :polymorphic
-    else
-      association = :has_many
-    end
-
-    case association
-    when :belongs_to
-      @item.save
-    when :has_and_belongs_to_many
-      @item.save
-      @item.send(params[:resource]) << resource
-    when :has_many
-      @item.save
-      message = _("{{model}} successfully created.", 
-                  :model => @resource[:human_name])
-      path = "#{params[:back_to]}?#{params[:selected]}=#{@item.id}"
-    when :polymorphic
-      resource.mediaplex_tag.create(params[@object_name])
-    end
-=end
   end
 end

@@ -35,6 +35,10 @@
     <div class="container">
 
       <div id="content" class="row">
+        <% if @home_page.carousel.present? && @home_page.carousel.panels.any? %>
+          <%= render 'pages/carousel', :carousel => @home_page.carousel %>
+        <% end %>
+
         <div class="row">
           <div id="welcome" class="col">
             <%= @home_page.body.try(:html_safe) %>

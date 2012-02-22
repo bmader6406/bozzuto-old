@@ -1,5 +1,5 @@
 class Carousel < ActiveRecord::Base
-  belongs_to :page
+  belongs_to :content, :polymorphic => true
 
   has_many :panels,
     :class_name => 'CarouselPanel',
