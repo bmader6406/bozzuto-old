@@ -1060,6 +1060,7 @@ window.bozzuto = {};
     return this;
   };
 
+
   $.fn.carousel = function() {
     return $(this).each(function() {
       var $carousel  = $(this),
@@ -1069,12 +1070,14 @@ window.bozzuto = {};
           $pageLinks = null,
           $prev      = $('<a href="#" class="prev">Previous Slide</a>'),
           $next      = $('<a href="#" class="next">Next Slide</a>'),
-          slideCount = $('> li', $container).size(),
-          offset     = $('> li', $container).first().outerWidth(true),
+          $slides    = $('> li', $container),
+          slideCount = $slides.size(),
+          offset     = $slides.first().outerWidth(true),
           setOffset  = offset * 3,
           setCount   = Math.ceil(slideCount / 3),
           currentSet = -1,
           duration   = 750;
+
 
       $carousel.bind({
         'carousel:setup': function() {
@@ -1104,17 +1107,44 @@ window.bozzuto = {};
 
           $container.css('width', slideCount * offset + 'px');
 
+          // Prev button handler
           $prev.bind('click', function(e) {
             e.preventDefault();
             $carousel.trigger('carousel:prev');
           });
 
+          // Next button handler
           $next.bind('click', function(e) {
             e.preventDefault();
             $carousel.trigger('carousel:next');
           });
 
           $carousel.trigger('carousel:load', 0);
+
+          // Animate slide captions
+          $slides.each(function() {
+            var $slide   = $(this),
+                $caption = $('.caption', $slide),
+                $title   = $('strong', $caption),
+                duration = 250,
+                offset;
+
+            offset = -1 * (
+              $caption.outerHeight() -
+              parseInt($caption.css('padding-top')) -
+              $title.outerHeight(true)
+            );
+
+            $caption.css({ bottom: offset });
+
+            $slide.hover(function() {
+              $caption.animate({ bottom: '0px' }, duration);
+            }, function() {
+              $caption.animate({ bottom: offset }, duration);
+            });
+          });
+
+          $carousel.removeClass('loading');
         },
 
         'carousel:prev': function() {

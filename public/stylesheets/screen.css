@@ -1631,7 +1631,7 @@ div.wysiwyg ul li {
     }
 
     .home .article .post-link .title {
-      background: transparent url(../images/structure/bg-carousel-caption.png) repeat top left;
+      background: transparent url(../images/structure/carousel-caption-hover-bg.png) repeat top left;
       bottom: 0;
       display: block;
       left: 0;
@@ -4484,7 +4484,7 @@ div.wysiwyg ul li {
   }
 
   .carousel .slides ul {
-    height: 212px;
+    height: 210px;
     left: 0;
     position: relative;
     width: 795px;
@@ -4503,6 +4503,7 @@ div.wysiwyg ul li {
   .carousel .slides a {
     display: block;
     height: 210px;
+    overflow: hidden;
     position: relative;
     width: 245px;
   }
@@ -4512,15 +4513,42 @@ div.wysiwyg ul li {
   }
 
   .carousel .slides .caption {
-    background: url(../images/structure/bg-carousel-caption.png) repeat 0 0;
+    background: url(../images/structure/carousel-caption-bg.png) repeat 0 0;
     bottom: 0;
     color: #84848b;
+    color: #565c64;
     font-size: 13px;
     left: 0;
     line-height: 1.2;
     padding: 10px 12px;
     position: absolute;
     width: 221px;
+  }
+
+  .carousel.loading {
+    visibility: hidden;
+  }
+
+
+  .carousel .slides a:hover .caption {
+    background: url(../images/structure/carousel-caption-hover-bg.png) repeat 0 0;
+  }
+
+  .carousel .slides .caption strong {
+    color: #000;
+    display: block;
+    margin-bottom: 8px;
+    padding-right: 15px;
+  }
+
+  .carousel .slides .caption:after {
+    color: #6b6985;
+    content: "+";
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    right: 10px;
+    top: 7px;
   }
 
   .carousel .slides .featured {
@@ -4536,13 +4564,6 @@ div.wysiwyg ul li {
     position: absolute;
     text-transform: uppercase;
     top: 0;
-  }
-
-  .carousel .slides .caption strong {
-    color: #636972;
-    display: block;
-    margin-bottom: 0.3em;
-    text-transform: uppercase;
   }
 
   .carousel .nav {
