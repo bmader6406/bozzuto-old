@@ -12,6 +12,10 @@
                 <%= panel.caption %>
               </span>
             <% end %>
+
+            <% if panel.featured? %>
+              <span class="featured">Featured</span>
+            <% end %>
           <% end %>
         </li>
       <% end %>

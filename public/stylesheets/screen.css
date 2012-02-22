@@ -4523,6 +4523,21 @@ div.wysiwyg ul li {
     width: 221px;
   }
 
+  .carousel .slides .featured {
+    background: #807e8c;
+    border: 1px solid #545458;
+    color: #ff9c1c;
+    color: white;
+    font-size: 11px;
+    left: 0;
+    letter-spacing: 1px;
+    line-height: 1;
+    padding: 5px 6px;
+    position: absolute;
+    text-transform: uppercase;
+    top: 0;
+  }
+
   .carousel .slides .caption strong {
     color: #636972;
     display: block;

@@ -117,9 +117,12 @@ Carousel:
 
 CarouselPanel:
   fields:
-    default: image, position
+    default: image, featured, position
     list: image, position
-    form: image, link_url, heading, caption, carousel
+    form: image, link_url, heading, caption, featured, carousel
+    options:
+      booleans:
+        featured: ['Yes', 'No']
   order_by: position
   relationships: 
   filters:

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120221215818) do
+ActiveRecord::Schema.define(:version => 20120222203248) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -251,15 +251,16 @@ ActiveRecord::Schema.define(:version => 20120221215818) do
   end
 
   create_table "carousel_panels", :force => true do |t|
-    t.integer  "position",           :null => false
-    t.integer  "carousel_id",        :null => false
+    t.integer  "position",                              :null => false
+    t.integer  "carousel_id",                           :null => false
     t.string   "image_file_name"
     t.string   "image_content_type"
-    t.string   "link_url",           :null => false
+    t.string   "link_url",                              :null => false
     t.string   "heading"
     t.string   "caption"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "featured",           :default => false
   end
 
   create_table "carousels", :force => true do |t|
