@@ -1064,17 +1064,43 @@ window.bozzuto = {};
     return $(this).each(function() {
       var $carousel  = $(this),
           $container = $('.slides ul', $carousel),
+          $nav       = $('.nav', $carousel),
+          $pager     = $('<p class="pager"></p>'),
+          $pageLinks = null,
           $prev      = $('<a href="#" class="prev">Previous Slide</a>'),
           $next      = $('<a href="#" class="next">Next Slide</a>'),
           slideCount = $('> li', $container).size(),
           offset     = $('> li', $container).first().outerWidth(true),
           setOffset  = offset * 3,
           setCount   = Math.ceil(slideCount / 3),
-          currentSet = 1;
+          currentSet = -1,
+          duration   = 750;
 
       $carousel.bind({
         'carousel:setup': function() {
-          $carousel.append($prev, $next);
+          // Build pager
+          if (setCount > 1) {
+            $nav.append($pager);
+
+            for (var i = 1; i <= setCount; i++) {
+              $pager.append($('<a href="#" -data-page="' + i + '">' + i + '</a>'));
+            }
+
+            $pager.bind('click', function(e) {
+              var page = $(e.target).attr('-data-page');
+
+              if (page) {
+                $carousel.trigger('carousel:load', parseInt(page) - 1);
+              }
+
+              e.preventDefault();
+            });
+
+            $pageLinks = $pager.find('a');
+          }
+
+          // Add prev/next buttons
+          $nav.append($prev, $next);
 
           $container.css('width', slideCount * offset + 'px');
 
@@ -1088,35 +1114,39 @@ window.bozzuto = {};
             $carousel.trigger('carousel:next');
           });
 
-          $prev.hide();
-
-          if (setCount <= 1) {
-            $next.hide();
-          }
+          $carousel.trigger('carousel:load', 0);
         },
 
         'carousel:prev': function() {
-          $container.animate({ 'left': '+=' + setOffset + 'px' }, 750);
-
-          $next.show();
-
-          currentSet--;
-
-          if (currentSet == 1) {
-            $prev.hide();
-          }
+          $carousel.trigger('carousel:load', currentSet - 1);
         },
 
         'carousel:next': function() {
-          $container.animate({ 'left': '-=' + setOffset + 'px' }, 750);
+          $carousel.trigger('carousel:load', currentSet + 1);
+        },
 
-          $prev.show();
-
-          currentSet++;
-
-          if (currentSet == setCount) {
-            $next.hide();
+        'carousel:load': function(e, set) {
+          if (set > setCount || set < 0 || set == currentSet) {
+            return;
           }
+
+          currentSet = set;
+
+          if (currentSet == setCount - 1) {
+            $next.hide();
+          } else {
+            $next.show();
+          }
+
+          if (currentSet == 0) {
+            $prev.hide();
+          } else {
+            $prev.show();
+          }
+
+          $pageLinks.removeClass('current').eq(currentSet).addClass('current');
+
+          $container.animate({ 'left': (-1 * setOffset * currentSet) + 'px' }, duration);
         }
       });
 

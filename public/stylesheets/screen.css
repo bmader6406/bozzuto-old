@@ -1612,7 +1612,7 @@ div.wysiwyg ul li {
       background-position: 0 bottom;
     }
     .home .article h3 a {
-      background: transparent url(../images/structure/bg-home-article-h3-a.gif) no-repeat top right;
+      background: transparent url(../images/structure/carousel-nav-bar-right-arrow.gif) no-repeat top right;
       display: block;
       padding: 6px 0 6px 12px;
     }
@@ -4470,40 +4470,17 @@ div.wysiwyg ul li {
 
 /* @group carousel */
   .carousel {
-    border-bottom: 1px solid #cdcdd1;
-    height: 212px;
-    margin-bottom: 25px;
-    padding: 0 31px 20px 32px;
+    margin-bottom: 20px;
+    padding: 0 0 20px 0;
     position: relative;
-    width: 777px;
-  }
-
-  .carousel a.prev,
-  .carousel a.next {
-    background: url(../images/structure/bg-carousel-nav.png) no-repeat 0 0;
-    display: block;
-    height: 212px;
-    overflow: hidden;
-    position: absolute;
-    text-indent: -9999px;
-    top: 0;
-    width: 32px;
-  }
-
-  .carousel a.prev {
-    background-position: 0 65px;
-    left: 0;
-  }
-  .carousel a.next {
-    background-position: -32px 65px;
-    right: -1px;
+    width: 770px;
   }
 
   .carousel .slides {
     height: 212px;
     overflow: hidden;
     position: relative;
-    width: 777px;
+    width: 770px;
   }
 
   .carousel .slides ul {
@@ -4514,9 +4491,8 @@ div.wysiwyg ul li {
   }
 
   .carousel .slides li {
-    border: 1px solid #85898e;
     float: left;
-    margin-right: 18px;
+    margin-right: 17px;
   }
 
   .carousel .slides img {
@@ -4552,6 +4528,64 @@ div.wysiwyg ul li {
     display: block;
     margin-bottom: 0.3em;
     text-transform: uppercase;
+  }
+
+  .carousel .nav {
+    background: transparent url(../images/structure/carousel-nav-bar-bg.gif) repeat-x 0 0;
+    border-bottom: 1px solid #c1c1c5;
+    border-top: 1px solid #c1c1c5;
+    height: 28px;
+    margin-top: 15px;
+    position: relative;
+  }
+
+  .carousel a.prev,
+  .carousel a.next {
+    display: block;
+    height: 28px;
+    overflow: hidden;
+    position: absolute;
+    text-indent: -9999px;
+    top: 0;
+    width: 50px;
+  }
+
+  .carousel a.prev {
+    background: transparent url(../images/structure/carousel-nav-bar-left-arrow.gif) no-repeat top left;
+    left: 0;
+  }
+  .carousel a.next {
+    background: transparent url(../images/structure/carousel-nav-bar-right-arrow.gif) no-repeat top right;
+    right: 0;
+  }
+
+  .carousel .pager {
+    height: 100%;
+    text-align: center;
+  }
+
+  .carousel .pager a {
+    background-color: white;
+    color: #747479;
+    display: inline-block;
+    height: 12px;
+    line-height: 12px;
+    padding: 9px 10px 7px 10px;
+  }
+
+  .carousel .pager a:first-child {
+    padding-left: 25px;
+  }
+
+  .carousel .pager a:last-child {
+    padding-right: 25px;
+  }
+
+  .carousel .pager a.current,
+  .carousel .pager a:hover {
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
   }
 /* @end */
 
