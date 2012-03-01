@@ -4609,11 +4609,11 @@ div.wysiwyg ul li {
     padding: 9px 10px 7px 10px;
   }
 
-  .carousel .pager a:first-child {
+  .carousel .pager a.first {
     padding-left: 25px;
   }
 
-  .carousel .pager a:last-child {
+  .carousel .pager a.last {
     padding-right: 25px;
   }
 

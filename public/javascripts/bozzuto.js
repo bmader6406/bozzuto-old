@@ -1086,7 +1086,17 @@ window.bozzuto = {};
             $nav.append($pager);
 
             for (var i = 1; i <= setCount; i++) {
-              $pager.append($('<a href="#" -data-page="' + i + '">' + i + '</a>'));
+							var klass;
+
+							if (i == 1) {
+								klass = 'first';
+							} else if (i == setCount) {
+								klass = 'last';
+							} else {
+								klass = '';
+							}
+
+              $pager.append($('<a href="#" class="' + klass + '" -data-page="' + i + '">' + i + '</a>'));
             }
 
             $pager.bind('click', function(e) {
@@ -1174,7 +1184,9 @@ window.bozzuto = {};
             $prev.show();
           }
 
-          $pageLinks.removeClass('current').eq(currentSet).addClass('current');
+					if ($pageLinks) {
+						$pageLinks.removeClass('current').eq(currentSet).addClass('current');
+					}
 
           $container.animate({ 'left': (-1 * setOffset * currentSet) + 'px' }, duration);
         }
