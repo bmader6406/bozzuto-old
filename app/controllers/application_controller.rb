@@ -31,6 +31,14 @@ class ApplicationController < ActionController::Base
     @section = Section.find(params[:section])
   end
 
+  def find_property(klass, community_id)
+    if typus_user
+      klass.find(community_id)
+    else
+      klass.published.find(community_id)
+    end
+  end
+
   def about_root_pages
     Section.about.pages.published.roots
   rescue

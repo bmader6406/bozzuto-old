@@ -8,6 +8,28 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
       end
 
       context 'GET to #show' do
+        context 'with a community that is not published' do
+          setup { @community.update_attribute(:published, false) }
+
+          browser_context do
+            setup do
+              get :show, :apartment_community_id => @community.to_param
+            end
+
+            should_respond_with :not_found
+          end
+
+          mobile_context do
+            setup do
+              get :show,
+                :apartment_community_id => @community.to_param,
+                :format                 => :mobile
+            end
+
+            should_respond_with :not_found
+          end
+        end
+
         context 'with a contact page' do
           setup do
             @page = PropertyContactPage.make(:property => @community)

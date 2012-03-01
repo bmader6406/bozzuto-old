@@ -25,7 +25,7 @@ class ApartmentContactSubmissionsController < ApplicationController
   private
 
   def find_community
-    @community = ApartmentCommunity.find(params[:apartment_community_id])
+    @community = find_property(ApartmentCommunity, params[:apartment_community_id])
     @page      = @community.contact_page
   end
 

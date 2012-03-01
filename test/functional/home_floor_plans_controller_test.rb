@@ -14,65 +14,118 @@ class HomeFloorPlansControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #index' do
-      browser_context do
-        setup do
-          get :index,
-            :home_community_id => @community.id,
-            :home_id           => @home.id
+      context 'with a community that is not published' do
+        setup { @community.update_attribute(:published, false) }
+
+        browser_context do
+          setup do
+            get :index,
+              :home_community_id => @community.id,
+              :home_id           => @home.id
+          end
+
+          should_respond_with :not_found
         end
 
-        should_redirect_to('the floor plan groups page') do
-          home_community_homes_path(@community)
+        mobile_context do
+          setup do
+            get :index,
+              :home_community_id => @community.id,
+              :home_id           => @home.id,
+              :format            => :mobile
+          end
+
+          should_respond_with :not_found
         end
       end
 
-      mobile_context do
-        setup do
-          get :index,
-            :home_community_id => @community.id,
-            :home_id           => @home.id,
-            :format            => :mobile
+      context 'with a community that is published' do
+        browser_context do
+          setup do
+            get :index,
+              :home_community_id => @community.id,
+              :home_id           => @home.id
+          end
+
+          should_redirect_to('the floor plan groups page') do
+            home_community_homes_path(@community)
+          end
         end
 
-        should_respond_with :success
-        should_render_with_layout :application
-        should_assign_to(:community) { @community }
-        should_assign_to(:home) { @home }
-        should_assign_to(:plans) { [@plan] }
+        mobile_context do
+          setup do
+            get :index,
+              :home_community_id => @community.id,
+              :home_id           => @home.id,
+              :format            => :mobile
+          end
+
+          should_respond_with :success
+          should_render_with_layout :application
+          should_assign_to(:community) { @community }
+          should_assign_to(:home) { @home }
+          should_assign_to(:plans) { [@plan] }
+        end
       end
     end
 
     context 'a GET to #show' do
-      setup do
+      context 'with a community that is not published' do
+        setup { @community.update_attribute(:published, false) }
+
+        browser_context do
+          setup do
+            get :show,
+              :home_community_id  => @community.id,
+              :home_id            => @home.id,
+              :id                 => @plan.id
+          end
+
+          should_respond_with :not_found
+        end
+
+        mobile_context do
+          setup do
+            get :show,
+              :home_community_id  => @community.id,
+              :home_id            => @home.id,
+              :id                 => @plan.id,
+              :format             => :mobile
+          end
+
+          should_respond_with :not_found
+        end
       end
 
-      browser_context do
-        setup do
-          get :show,
-            :home_community_id  => @community.id,
-            :home_id            => @home.id,
-            :id                 => @plan.id
+      context 'with a community that is published' do
+        browser_context do
+          setup do
+            get :show,
+              :home_community_id  => @community.id,
+              :home_id            => @home.id,
+              :id                 => @plan.id
+          end
+
+          should_redirect_to('the floor plan groups page') do
+            home_community_homes_path(@community)
+          end
         end
 
-        should_redirect_to('the floor plan groups page') do
-          home_community_homes_path(@community)
-        end
-      end
+        mobile_context do
+          setup do
+            get :show,
+              :home_community_id  => @community.id,
+              :home_id            => @home.id,
+              :id                 => @plan.id,
+              :format             => :mobile
+          end
 
-      mobile_context do
-        setup do
-          get :show,
-            :home_community_id  => @community.id,
-            :home_id            => @home.id,
-            :id                 => @plan.id,
-            :format             => :mobile
+          should_respond_with :success
+          should_render_with_layout :application
+          should_assign_to(:community) { @community }
+          should_assign_to(:home) { @home }
+          should_assign_to(:plan) { @plan }
         end
-
-        should_respond_with :success
-        should_render_with_layout :application
-        should_assign_to(:community) { @community }
-        should_assign_to(:home) { @home }
-        should_assign_to(:plan) { @plan }
       end
     end
   end

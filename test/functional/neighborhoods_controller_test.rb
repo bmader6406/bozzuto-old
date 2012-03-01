@@ -5,6 +5,26 @@ class NeighborhoodsControllerTest < ActionController::TestCase
     context 'with a home community' do
       setup { @community = HomeCommunity.make }
 
+      context 'that is not published' do
+        setup { @community.update_attribute(:published, false) }
+
+        browser_context do
+          setup do
+            get :show, :home_community_id => @community.to_param
+          end
+
+          should_respond_with :not_found
+        end
+
+        mobile_context do
+          setup do
+            get :show, :home_community_id => @community.to_param, :format => :mobile
+          end
+
+          should_respond_with :not_found
+        end
+      end
+
       context 'that has a neighborhoods page' do
         setup do
           @page = PropertyNeighborhoodPage.make(:property => @community)
@@ -63,6 +83,26 @@ class NeighborhoodsControllerTest < ActionController::TestCase
 
     context 'with an apartment community' do
       setup { @community = ApartmentCommunity.make }
+
+      context 'that is not published' do
+        setup { @community.update_attribute(:published, false) }
+
+        browser_context do
+          setup do
+            get :show, :apartment_community_id => @community.to_param
+          end
+
+          should_respond_with :not_found
+        end
+
+        mobile_context do
+          setup do
+            get :show, :apartment_community_id => @community.to_param, :format => :mobile
+          end
+
+          should_respond_with :not_found
+        end
+      end
 
       context 'that has a neighborhoods page' do
         setup do

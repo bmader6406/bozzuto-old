@@ -12,6 +12,12 @@ class CommunityMediaController < ApplicationController
   private
 
   def find_community
-    @community = Property.find(params[:apartment_community_id] || params[:home_community_id])
+    klass, community_id = if params[:apartment_community_id].present?
+      [ApartmentCommunity, params[:apartment_community_id]]
+    else
+      [HomeCommunity, params[:home_community_id]]
+    end
+
+    @community = find_property(klass, community_id)
   end
 end

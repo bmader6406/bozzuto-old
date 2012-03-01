@@ -14,57 +14,105 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
 
 
     context 'a GET to #show' do
-      browser_context do
-        context 'with a page' do
-          setup do
-            get :show, :home_community_id => @community.to_param
+      context 'with a community that is not published' do
+        setup { @community.update_attribute(:published, false) }
+
+        browser_context do
+          context 'with a page' do
+            setup do
+              get :show, :home_community_id => @community.to_param
+            end
+
+            should_respond_with :not_found
           end
 
-          should_respond_with :success
-          should_render_with_layout :community
-          should_render_template :show
-          should_assign_to :community
+          context 'without page' do
+            setup do
+              @page.destroy
+              get :show, :home_community_id => @community.to_param
+            end
+
+            should_respond_with :not_found
+          end
         end
 
-        context 'without page' do
-          setup do
-            @page.destroy
-            get :show, :home_community_id => @community.to_param
+        mobile_context do
+          context 'with a page' do
+            setup do
+              get :show,
+                :home_community_id => @community.to_param,
+                :format => :mobile
+            end
+
+            should_respond_with :not_found
           end
 
-          should_respond_with :success
-          should_render_with_layout :community
-          should_render_template :show
-          should_assign_to :community
+          context 'without page' do
+            setup do
+              @page.destroy
+              get :show,
+                :home_community_id => @community.to_param,
+                :format => :mobile
+            end
+
+            should_respond_with :not_found
+          end
         end
       end
 
-      mobile_context do
-        context 'with a page' do
-          setup do
-            get :show,
-              :home_community_id => @community.to_param,
-              :format => :mobile
+      context 'with a community that is published' do
+        browser_context do
+          context 'with a page' do
+            setup do
+              get :show, :home_community_id => @community.to_param
+            end
+
+            should_respond_with :success
+            should_render_with_layout :community
+            should_render_template :show
+            should_assign_to :community
           end
 
-          should_respond_with :success
-          should_render_with_layout :application
-          should_render_template :show
-          should_assign_to :community
+          context 'without page' do
+            setup do
+              @page.destroy
+              get :show, :home_community_id => @community.to_param
+            end
+
+            should_respond_with :success
+            should_render_with_layout :community
+            should_render_template :show
+            should_assign_to :community
+          end
         end
 
-        context 'without page' do
-          setup do
-            @page.destroy
-            get :show,
-              :home_community_id => @community.to_param,
-              :format => :mobile
+        mobile_context do
+          context 'with a page' do
+            setup do
+              get :show,
+                :home_community_id => @community.to_param,
+                :format => :mobile
+            end
+
+            should_respond_with :success
+            should_render_with_layout :application
+            should_render_template :show
+            should_assign_to :community
           end
 
-          should_respond_with :success
-          should_render_with_layout :application
-          should_render_template :show
-          should_assign_to :community
+          context 'without page' do
+            setup do
+              @page.destroy
+              get :show,
+                :home_community_id => @community.to_param,
+                :format => :mobile
+            end
+
+            should_respond_with :success
+            should_render_with_layout :application
+            should_render_template :show
+            should_assign_to :community
+          end
         end
       end
     end

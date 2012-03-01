@@ -13,10 +13,12 @@ class PropertyPagesController < ApplicationController
   private
 
   def find_community
-    @community = if params[:apartment_community_id].present?
-      ApartmentCommunity.find(params[:apartment_community_id])
+    klass, community_id = if params[:apartment_community_id].present?
+      [ApartmentCommunity, params[:apartment_community_id]]
     else
-      HomeCommunity.find(params[:home_community_id])
+      [HomeCommunity, params[:home_community_id]]
     end
+
+    @community = find_property(klass, community_id)
   end
 end

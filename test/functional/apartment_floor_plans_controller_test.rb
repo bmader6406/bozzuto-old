@@ -8,30 +8,57 @@ class ApartmentFloorPlansControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #index' do
-      browser_context do
-        setup do
-          get :index,
-            :apartment_community_id => @community.id,
-            :floor_plan_group_id    => @group.id
+      context 'with a community that is not published' do
+        setup { @community.update_attribute(:published, false) }
+
+        browser_context do
+          setup do
+            get :index,
+              :apartment_community_id => @community.id,
+              :floor_plan_group_id    => @group.id
+          end
+
+          should_respond_with :not_found
         end
 
-        should_redirect_to('the floor plan groups page') do
-          apartment_community_floor_plan_groups_path(@community)
+        mobile_context do
+          setup do
+            get :index,
+              :apartment_community_id => @community.id,
+              :floor_plan_group_id    => @group.id,
+              :format                 => :mobile
+          end
+
+          should_respond_with :not_found
         end
       end
 
-      mobile_context do
-        setup do
-          get :index,
-            :apartment_community_id => @community.id,
-            :floor_plan_group_id    => @group.id,
-            :format                 => :mobile
+      context 'with a community that is published' do
+        browser_context do
+          setup do
+            get :index,
+              :apartment_community_id => @community.id,
+              :floor_plan_group_id    => @group.id
+          end
+
+          should_redirect_to('the floor plan groups page') do
+            apartment_community_floor_plan_groups_path(@community)
+          end
         end
 
-        should_respond_with :success
-        should_render_with_layout :application
-        should_assign_to(:community) { @community }
-        should_assign_to(:group) { @group }
+        mobile_context do
+          setup do
+            get :index,
+              :apartment_community_id => @community.id,
+              :floor_plan_group_id    => @group.id,
+              :format                 => :mobile
+          end
+
+          should_respond_with :success
+          should_render_with_layout :application
+          should_assign_to(:community) { @community }
+          should_assign_to(:group) { @group }
+        end
       end
     end
 
@@ -43,33 +70,69 @@ class ApartmentFloorPlansControllerTest < ActionController::TestCase
         )
       end
 
-      browser_context do
-        setup do
-          get :show,
-            :apartment_community_id => @community.id,
-            :floor_plan_group_id    => @group.id,
-            :id                     => @plan.id
+      context 'with a community that is not published' do
+        setup { @community.update_attribute(:published, false) }
+
+        browser_context do
+          setup do
+            get :show,
+              :apartment_community_id => @community.id,
+              :floor_plan_group_id    => @group.id,
+              :id                     => @plan.id
+          end
+
+          should_respond_with :not_found
         end
 
-        should_redirect_to('the floor plan groups page') do
-          apartment_community_floor_plan_groups_path(@community)
+        mobile_context do
+          setup do
+            get :show,
+              :apartment_community_id => @community.id,
+              :floor_plan_group_id    => @group.id,
+              :id                     => @plan.id,
+              :format                 => :mobile
+          end
+
+          should_respond_with :not_found
         end
       end
 
-      mobile_context do
+      context 'with a community that is published' do
         setup do
-          get :show,
-            :apartment_community_id => @community.id,
-            :floor_plan_group_id    => @group.id,
-            :id                     => @plan.id,
-            :format                 => :mobile
+          @plan = ApartmentFloorPlan.make(
+            :apartment_community => @community,
+            :floor_plan_group    => @group
+          )
         end
 
-        should_respond_with :success
-        should_render_with_layout :application
-        should_assign_to(:community) { @community }
-        should_assign_to(:group) { @group }
-        should_assign_to(:plan) { @plan }
+        browser_context do
+          setup do
+            get :show,
+              :apartment_community_id => @community.id,
+              :floor_plan_group_id    => @group.id,
+              :id                     => @plan.id
+          end
+
+          should_redirect_to('the floor plan groups page') do
+            apartment_community_floor_plan_groups_path(@community)
+          end
+        end
+
+        mobile_context do
+          setup do
+            get :show,
+              :apartment_community_id => @community.id,
+              :floor_plan_group_id    => @group.id,
+              :id                     => @plan.id,
+              :format                 => :mobile
+          end
+
+          should_respond_with :success
+          should_render_with_layout :application
+          should_assign_to(:community) { @community }
+          should_assign_to(:group) { @group }
+          should_assign_to(:plan) { @plan }
+        end
       end
     end
   end

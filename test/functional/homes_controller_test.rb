@@ -7,28 +7,52 @@ class HomesControllerTest < ActionController::TestCase
     end
 
     context "a GET to #index" do
-      browser_context do
-        setup do
-          get :index, :home_community_id => @community.id
+      context 'with a community that is not published' do
+        setup { @community.update_attribute(:published, false) }
+
+        browser_context do
+          setup do
+            get :index, :home_community_id => @community.id
+          end
+
+          should_respond_with :not_found
         end
 
-        should_respond_with :success
-        should_render_with_layout :community
-        should_render_template :index
-        should_assign_to(:community) { @community }
+        mobile_context do
+          setup do
+            get :index,
+              :home_community_id => @community.id,
+              :format => :mobile
+          end
+
+          should_respond_with :not_found
+        end
       end
 
-      mobile_context do
-        setup do
-          get :index,
-            :home_community_id => @community.id,
-            :format => :mobile
+      context 'with a community that is published' do
+        browser_context do
+          setup do
+            get :index, :home_community_id => @community.id
+          end
+
+          should_respond_with :success
+          should_render_with_layout :community
+          should_render_template :index
+          should_assign_to(:community) { @community }
         end
 
-        should_respond_with :success
-        should_render_with_layout :application
-        should_render_template :index
-        should_assign_to(:community) { @community }
+        mobile_context do
+          setup do
+            get :index,
+              :home_community_id => @community.id,
+              :format => :mobile
+          end
+
+          should_respond_with :success
+          should_render_with_layout :application
+          should_render_template :index
+          should_assign_to(:community) { @community }
+        end
       end
     end
   end

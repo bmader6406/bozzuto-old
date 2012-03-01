@@ -24,7 +24,7 @@ class ApartmentFloorPlansController < ApplicationController
   end
 
   def find_community
-    @community = ApartmentCommunity.find(params[:apartment_community_id])
+    @community = find_property(ApartmentCommunity, params[:apartment_community_id])
   end
 
   def find_floor_plan_group

@@ -62,28 +62,50 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
     end
 
     context "a GET to #show" do
-      browser_context do
-        setup do
-          get :show, :id => @community.to_param
+      context 'with an unpublished community' do
+        setup { @community.update_attribute(:published, false) }
+
+        browser_context do
+          setup do
+            get :show, :id => @community.to_param
+          end
+
+          should_respond_with :not_found
         end
 
-        should_respond_with :success
-        should_render_with_layout :community
-        should_render_template :show
-        should_assign_to(:community) { @community }
+        mobile_context do
+          setup do
+            get :show, :id => @community.to_param, :format => :mobile
+          end
+
+          should_respond_with :not_found
+        end
       end
 
-      mobile_context do
-        setup do
-          get :show,
-            :id => @community.to_param,
-            :format => :mobile
+      context 'with a published community' do
+        browser_context do
+          setup do
+            get :show, :id => @community.to_param
+          end
+
+          should_respond_with :success
+          should_render_with_layout :community
+          should_render_template :show
+          should_assign_to(:community) { @community }
         end
 
-        should_respond_with :success
-        should_render_with_layout :application
-        should_render_template :show
-        should_assign_to(:community) { @community }
+        mobile_context do
+          setup do
+            get :show,
+              :id => @community.to_param,
+              :format => :mobile
+          end
+
+          should_respond_with :success
+          should_render_with_layout :application
+          should_render_template :show
+          should_assign_to(:community) { @community }
+        end
       end
 
       context 'for KML format' do

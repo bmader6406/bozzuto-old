@@ -24,15 +24,15 @@ class ApartmentCommunitiesController < ApplicationController
   def show
   end
 
+  def the_typus_user
+    typus_user
+  end
+  helper_method :the_typus_user
 
   private
 
   def find_community
-    @community = if typus_user
-      ApartmentCommunity.find(params[:id])
-    else
-      ApartmentCommunity.published.find(params[:id])
-    end
+    @community = find_property(ApartmentCommunity, params[:id])
     
     if @community.published?
       @recent_queue = RecentQueue.find

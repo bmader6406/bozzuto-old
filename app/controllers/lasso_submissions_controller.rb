@@ -16,7 +16,7 @@ class LassoSubmissionsController < ApplicationController
   private
 
   def find_community
-    @community = HomeCommunity.find(params[:home_community_id])
+    @community = find_property(HomeCommunity, params[:home_community_id])
     @page = @community.contact_page
   end
 end

@@ -12,6 +12,6 @@ class HomesController < ApplicationController
   private
 
   def find_community
-    @community = HomeCommunity.find(params[:home_community_id])
+    @community = find_property(HomeCommunity, params[:home_community_id])
   end
 end
