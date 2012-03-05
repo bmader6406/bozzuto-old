@@ -4,7 +4,6 @@
 <html lang="en" class="no-js">
 <%= render 'layouts/head' %>
 <body class="<% unless home? %>secondary<% end %> <%= yield :body_class %>">
-
   <%= render 'layouts/header' %>
   <%= render "#{@community.class.to_s.tableize}/breadcrumb" %>
   <%= render "#{@community.class.to_s.tableize}/masthead" %>
