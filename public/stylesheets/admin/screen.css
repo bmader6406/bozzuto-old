@@ -247,7 +247,9 @@ fieldset .required {
   color: #8A1F11;
 }
 
-fieldset.inputs { }
+fieldset.inputs {
+  width: 700px;
+}
 
   fieldset.inputs input[type='text'], 
   fieldset.inputs input[type='password'] {
