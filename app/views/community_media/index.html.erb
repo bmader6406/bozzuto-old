@@ -15,7 +15,9 @@
     <ul class="row">
       <% @community.videos.each do |video| %>
         <li class="media-link watch-video">
-          <%= link_to image_tag(video.image.url), video.url %>
+          <% link_to video.url do %>
+            <%= image_tag(video.image.url, :width => 55, :height => 55) %>
+          <% end %>
         </li>
       <% end %>
     </ul>
@@ -34,7 +36,9 @@
         <ul class="row">
           <% photos.each do |photo| %>
             <li class="media-link">
-            <%= link_to image_tag(photo.image.url(:thumb)), "#slideshow-slide-#{slide_index}", :class => 'set-slideshow' %>
+              <% link_to "#slideshow-slide-#{slide_index}", :class => 'set-slideshow' do %>
+                <%= image_tag(photo.image.url(:thumb), :width => 55, :height => 55) %>
+              <% end %>
             </li>
 
             <% slide_index += 1 %>

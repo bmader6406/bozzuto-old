@@ -380,9 +380,9 @@ window.bozzuto = {};
 
     function iframeCode(url, opts) {
       var isYouTubeVideo = url.match(/youtube\.com/),
-          youTubeMatches = url.match(/(?:v=)|(?:embed\/)([_A-Za-z0-9]+)/);
+          youTubeMatches = url.match(/(?:(?:v=)|(?:embed\/))([_A-Za-z0-9]+)/);
 
-      if (isYouTubeVideo && youTubeMatches.length == 2) {
+      if (isYouTubeVideo && youTubeMatches && youTubeMatches.length == 2) {
         var height = opts.width * 0.75;
 
         return '<iframe src="http://www.youtube.com/embed/' + youTubeMatches[1] + '" height="' + height + '" scrolling="no" width="' + opts.width + '" frameborder="0" allowfullscreen></iframe>';
