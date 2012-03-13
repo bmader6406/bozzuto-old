@@ -1,5 +1,5 @@
 set :user, 'apache'
-set :deploy_to,  "/var/www/html/#{application}/staging"
+set :deploy_to,  "/var/www/html/bozzuto_app/staging"
 set :branch, 'origin/staging'
 
 set :default_environment, { 'PATH' => '/opt/ree/bin:$PATH' }
