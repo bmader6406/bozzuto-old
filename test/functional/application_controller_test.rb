@@ -109,5 +109,49 @@ class ApplicationControllerTest < ActionController::TestCase
         end
       end
     end
+
+    context '#viget_ip? method' do
+      %w(
+        70.182.186.96
+        70.182.186.99
+        70.182.186.100
+        70.182.186.119
+        70.182.186.120
+        70.182.186.127
+        96.10.0.146
+        96.49.115.54
+        67.176.76.149
+        173.8.242.217
+        50.52.128.102
+      ).each do |valid_ip|
+        context "with valid IP #{valid_ip}" do
+          setup do
+            @controller.stubs(:request).returns(stub(:remote_ip => valid_ip))
+          end
+
+          should 'return true' do
+            assert @controller.send(:viget_ip?)
+          end
+        end
+      end
+
+      %w(
+        192.168.0.1
+        127.0.0.1
+        0.0.0.0
+        123.456.789.123
+      ).each do |invalid_ip|
+        context "with invalid IP #{invalid_ip}" do
+          setup do
+            @controller.stubs(:request).returns(stub(:remote_ip => invalid_ip))
+          end
+
+          should 'return true' do
+            assert !@controller.send(:viget_ip?)
+          end
+        end
+      end
+
+    end
   end
 end

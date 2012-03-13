@@ -79,4 +79,18 @@ class ApplicationController < ActionController::Base
   def detect_mobile_layout
     mobile? ? 'application' : 'community'
   end
+
+  VIGET_IPS = [
+    /^70\.182\.186\.(9[6-9]|1([0-1][0-9]|2[0-7]))$/,
+    /^96\.10\.0\.146$/,
+    /^96\.49\.115\.54$/,
+    /^67\.176\.76\.149$/,
+    /^173\.8\.242\.217$/,
+    /^50\.52\.128\.102$/
+  ]
+
+  def viget_ip?
+    VIGET_IPS.any? { |regex| regex =~ request.remote_ip }
+  end
+  helper_method :viget_ip?
 end
