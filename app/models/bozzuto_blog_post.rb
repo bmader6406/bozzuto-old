@@ -1,10 +1,13 @@
-class TomsBlogPost < ActiveRecord::Base
-  validates_presence_of :title, :url, :published_at
+class BozzutoBlogPost < ActiveRecord::Base
+  validates_presence_of :header_url,
+                        :title,
+                        :url,
+                        :published_at
 
   validates_attachment_presence :image
 
   has_attached_file :image,
-    :url => '/system/:class/toms_blog_thumbnail_:id_:style.:extension',
+    :url => '/system/:class/bozzuto_blog_post_thumbnail_:id_:style.:extension',
     :styles => { :normal => '380x150#' },
     :default_style => :normal
 

@@ -81,8 +81,8 @@
           <% end %>
 
           <% @latest_blog_post.if_present? do |post| %>
-            <div class="toms-blog article">
-              <h3><%= link_to raw('Tom&rsquo;s Blog'), 'http://tom.bozzuto.com' %></h3>
+            <div class="bozzuto-blog article">
+              <h3><%= link_to post.header_title.presence || 'Bozzuto Blog', post.header_url %></h3>
 
               <% link_to post.url, :class => 'post-link', :rel => 'external' do %>
                 <%= image_tag post.image.url, :width => 380, :height => 150 %>

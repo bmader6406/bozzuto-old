@@ -8,7 +8,7 @@ class HomePagesController < ApplicationController
     @section          = Section.about
     @latest_news      = NewsPost.published.latest(1).first
     @latest_award     = @section.present? ? @section.awards.first : nil
-    @latest_blog_post = TomsBlogPost.latest(1).first
+    @latest_blog_post = BozzutoBlogPost.latest(1).first
   end
 
 

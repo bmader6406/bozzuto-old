@@ -6,6 +6,7 @@ en:
       apartment_floor_plan_group: Floor Plan Type
       body_slide: Slide
       body_slideshow: Page Body Slideshow
+      bozzuto_blog_post: Bozzuto Blog Post
       carousel_panel: Carousel Panel
       contact_topic: Contact Form Topic
       dnr_configuration: DNR Configuration
@@ -35,7 +36,6 @@ en:
       property_slide: Slide
       property_slideshow: Property Slideshow
       rank_category: Rank Category
-      toms_blog_post: "\"Tom's Blog\" Post"
       typus_user: User
       under_construction_lead: Under-Construction Lead
     attributes:
@@ -70,6 +70,12 @@ en:
         link_url: Link URL
         property: Featured Property
         video_url: Video URL
+      bozzuto_blog_post:
+        header_title: Header Title
+        header_url: Header URL
+        image: Home Page Image
+        published_at: Published At
+        url: URL
       buzz:
         first_name: First Name
         formatted_affiliations: Affiliations
@@ -255,10 +261,6 @@ en:
         left_montage_image: Left Montage Image
         middle_montage_image: Middle Montage Image
         right_montage_image: Right Montage Image
-      toms_blog_post:
-        image: Home Page Image
-        published_at: Published At
-        url: URL
       typus_user:
         first_name: First Name
         last_name: Last Name
@@ -273,6 +275,12 @@ en:
         image: Image dimensions should be 150x150
       body_slide:
         image: Image dimensions should be 840x375
+      bozzuto_blog_post:
+        header_title: The header text shown above the post on the home page. If this field is blank, &ldquo;Bozzuto Blog&rdquo; will be used.
+        header_url: The URL for the header shown above the post on the home page
+        image: Image dimensions should be 380x150.<br />This image is shown on the home page when this post appears under &ldquo;Tom&rsquo;s Blog&rdquo;
+        title: The post's title
+        url: The post's URL
       carousel_panel:
         caption: Required if Heading is set
         heading: Required if Caption is set
@@ -347,7 +355,5 @@ en:
         left_montage_image: Image dimensions should be 250x148
         middle_montage_image: Image dimensions should be 540x148
         right_montage_image: Image dimensions should be 310x148
-      toms_blog_post:
-        image: Image dimensions should be 380x150.<br />This image is shown on the home page when this post appears under &ldquo;Tom&rsquo;s Blog&rdquo;
       twitter_account:
         username: Do not include the @ symbol

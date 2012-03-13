@@ -90,6 +90,19 @@ BodySlideshow:
   search: name
   application:
 
+BozzutoBlogPost:
+  fields:
+    default: title, published_at
+    list: 
+    form: header_title, header_url, title, url, published_at, image
+    options:
+      required: header_url, title, url, published_at, image
+  order_by: -published_at
+  relationships: 
+  filters:
+  search: title, url
+  application: News & Press
+
 Buzz:
   fields:
     default: email, first_name, last_name, street1, street2, city, state, zip_code, phone, formatted_buzzes, formatted_affiliations
@@ -740,17 +753,6 @@ Testimonial:
   filters:
   search: name
   application: Content
-
-TomsBlogPost:
-  fields:
-    default: title, published_at
-    list: 
-    form: title, url, published_at, image
-  order_by: -published_at
-  relationships: 
-  filters:
-  search: title, url
-  application: News & Press
 
 TwitterAccount:
   fields:

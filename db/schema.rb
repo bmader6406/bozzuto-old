@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120222203248) do
+ActiveRecord::Schema.define(:version => 20120313195436) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -233,6 +233,20 @@ ActiveRecord::Schema.define(:version => 20120222203248) do
   end
 
   add_index "body_slideshows", ["page_id"], :name => "index_body_slideshows_on_page_id"
+
+  create_table "bozzuto_blog_posts", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.datetime "published_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "header_title"
+    t.string   "header_url"
+  end
+
+  add_index "bozzuto_blog_posts", ["published_at"], :name => "index_bozzuto_blog_posts_on_published_at"
 
   create_table "buzzes", :force => true do |t|
     t.string   "email",        :null => false
@@ -968,18 +982,6 @@ ActiveRecord::Schema.define(:version => 20120222203248) do
     t.datetime "updated_at"
     t.integer  "section_id"
   end
-
-  create_table "toms_blog_posts", :force => true do |t|
-    t.string   "title"
-    t.string   "url"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.datetime "published_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "toms_blog_posts", ["published_at"], :name => "index_toms_blog_posts_on_published_at"
 
   create_table "tweets", :force => true do |t|
     t.string   "tweet_id",           :null => false
