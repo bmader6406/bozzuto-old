@@ -2,14 +2,16 @@ require 'machinist/active_record'
 require 'sham'
 
 Sham.define do
-  city          { Faker::Address.city }
-  us_state_code { |i| "%2s" % i.to_s(36) }
-  us_state      { |i| "#{Faker::Address.us_state} #{i}" }
-  company_name  { Faker::Company.name }
-  feed_url      { |i| "http://#{i}.#{Faker::Internet.domain_name}/feed.rss" }
-  section_title { |i| "#{Faker::Lorem.words} #{i}" }
-  file_name     { |i| "/image#{i}.jpg" }
-  unique_name   { |i| "#{Faker::Lorem.words(2)} #{i}" }
+  city             { Faker::Address.city }
+  us_state_code    { |i| "%2s" % i.to_s(36) }
+  us_state         { |i| "#{Faker::Address.us_state} #{i}" }
+  company_name     { Faker::Company.name }
+  feed_url         { |i| "http://#{i}.#{Faker::Internet.domain_name}/feed.rss" }
+  section_title    { |i| "#{Faker::Lorem.words} #{i}" }
+  file_name        { |i| "/image#{i}.jpg" }
+  unique_name      { |i| "#{Faker::Lorem.words(2)} #{i}" }
+  vaultware_id     { |i| i }
+  property_link_id { |i| i }
 end
 
 Sham.bedrooms(:unique => false)  { rand(5) + 1 }
@@ -27,6 +29,16 @@ end
 
 ApartmentCommunity.blueprint(:unpublished) do
   published { false }
+end
+
+ApartmentCommunity.blueprint(:vaultware) do
+  external_cms_id   { Sham.vaultware_id }
+  external_cms_type { 'vaultware' }
+end
+
+ApartmentCommunity.blueprint(:property_link) do
+  external_cms_id   { Sham.property_link_id }
+  external_cms_type { 'property_link' }
 end
 
 ApartmentFloorPlan.blueprint do

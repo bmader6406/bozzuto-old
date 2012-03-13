@@ -1,4 +1,6 @@
 class ApartmentCommunity < Community
+  EXTERNAL_CMS_TYPES = %w(vaultware property_link)
+
   VAULTWARE_ATTRIBUTES = [
     :title,
     :street_address,
@@ -51,7 +53,15 @@ class ApartmentCommunity < Community
   }
   named_scope :featured, :conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE featured = ?)", true]
 
-  named_scope :managed_by_vaultware, :conditions => 'vaultware_id IS NOT NULL'
+
+  EXTERNAL_CMS_TYPES.each do |type|
+    named_scope "managed_by_#{type}",
+      :conditions => ['external_cms_id IS NOT NULL AND external_cms_type = ?', type]
+
+    define_method "managed_by_#{type}?" do
+      external_cms_id.present? && external_cms_type == type
+    end
+  end
 
 
   def nearby_communities(limit = 6)
@@ -72,16 +82,13 @@ class ApartmentCommunity < Community
     end
   end
 
-  def managed_by_vaultware?
-    vaultware_id.present?
-  end
-
   def merge(other_community)
     raise 'Receiver must not be a Vaultware-managed community' if managed_by_vaultware?
     raise 'Argument must be a Vaultware-managed community' unless other_community.managed_by_vaultware?
 
-    self.vaultware_id = other_community.vaultware_id
-    self.floor_plans  = other_community.floor_plans
+    self.external_cms_id   = other_community.external_cms_id
+    self.external_cms_type = other_community.external_cms_type
+    self.floor_plans       = other_community.floor_plans
 
     # copy other community's Vaultware attributes
     attrs = VAULTWARE_ATTRIBUTES.reject { |attr| attr == :floor_plans }

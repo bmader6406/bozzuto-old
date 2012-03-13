@@ -2,9 +2,7 @@ require 'test_helper'
 
 class ApartmentCommunityTest < ActiveSupport::TestCase
   context 'An Apartment Community' do
-    setup do
-      @community = ApartmentCommunity.make
-    end
+    setup { @community = ApartmentCommunity.make }
 
     subject { @community }
 
@@ -12,7 +10,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
     should_have_many :floor_plan_groups, :through => :floor_plans
 
     should_have_one :mediaplex_tag
-    
+
     should 'be archivable' do
       assert ApartmentCommunity.acts_as_archive?
       assert_nothing_raised do
@@ -34,19 +32,19 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
       @community.valid?
       assert @community.errors.on(:lead_2_lease_email).blank?
     end
-    
+
     should 'set featured_position when changed to being featured' do
       @community.featured = true
       @community.save!
       assert @community.featured_position.present?
     end
-    
+
     context 'that is featured' do
       setup do
         @community.featured = true
         @community.save!
       end
-      
+
       should 'remove the featured position when they lose their featured status' do
         @community.featured = false
         @community.save!
@@ -88,24 +86,6 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
       end
     end
 
-    context '#managed_by_vaultware?' do
-      setup { @community = ApartmentCommunity.make }
-
-      context 'when community is managed by Vaultware' do
-        setup { @community.vaultware_id = 123 }
-
-        should 'be true' do
-          assert @community.managed_by_vaultware?
-        end
-      end
-
-      context 'when community is not managed by Vaultware' do
-        should 'be false' do
-          assert !@community.managed_by_vaultware?
-        end
-      end
-    end
-
     context 'when changing use_market_prices' do
       setup do
         @plan = ApartmentFloorPlan.make(
@@ -131,7 +111,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
     context '#merge' do
       context 'when receiver is a vaultware-managed community' do
-        setup { @community.vaultware_id = 123 }
+        setup { @community = ApartmentCommunity.make(:vaultware) }
 
         should 'raise an exception' do
           begin
@@ -144,12 +124,12 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
       end
 
       context 'when receiver is not a vaultware-managed community' do
-        setup do
-          @community = ApartmentCommunity.make
-          @other     = ApartmentCommunity.make
-        end
-
         context 'and other community is not Vaultware-managed' do
+          setup do
+            @community = ApartmentCommunity.make
+            @other     = ApartmentCommunity.make
+          end
+
           should 'raise an exception' do
             begin
               @community.merge(@other)
@@ -178,13 +158,12 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
 
             # configure other community
-            @other = ApartmentCommunity.make(
+            @other = ApartmentCommunity.make(:vaultware,
               :title            => 'Vaultware-managed',
               :street_address   => '456 Test Dr',
               :city             => City.make,
               :county           => County.make,
-              :availability_url => 'http://yahoo.com',
-              :vaultware_id     => 123
+              :availability_url => 'http://yahoo.com'
             )
 
             @other_floor_plans = [
@@ -204,8 +183,12 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
             attrs.each { |attr| assert_equal @other.send(attr), @community.send(attr) }
           end
 
-          should 'set the Vaultware ID of the receiver' do
-            assert_equal @other.vaultware_id, @community.vaultware_id
+          should 'set the external_cms_id of the receiver' do
+            assert_equal @other.external_cms_id, @community.external_cms_id
+          end
+
+          should 'set the external_cms_type of the receiver' do
+            assert_equal @other.external_cms_type, @community.external_cms_type
           end
 
           should "delete the receiver's floor plans" do
@@ -252,6 +235,26 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
         assert_equal 25, @community.plan_count_in_group(@group)
       end
     end
+
+    ApartmentCommunity::EXTERNAL_CMS_TYPES.each do |type|
+      context "#managed_by_#{type}?" do
+        context "when community is managed by #{type.titlecase}" do
+          setup { @community = ApartmentCommunity.make(type.to_sym) }
+
+          should 'be true' do
+            assert @community.send("managed_by_#{type}?")
+          end
+        end
+
+        context "when community is not managed by #{type.titlecase}" do
+          setup { @community = ApartmentCommunity.make }
+
+          should 'be false' do
+            assert !@community.send("managed_by_#{type}?")
+          end
+        end
+      end
+    end
   end
 
   context 'The ApartmentCommunity class' do
@@ -265,14 +268,23 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
       end
     end
 
-    context 'managed_by_vaultware named scope' do
+    context 'managed_by_blank named scope' do
       setup do
-        @managed     = ApartmentCommunity.make(:vaultware_id => 123)
-        @non_managed = ApartmentCommunity.make
+        @vaultware     = ApartmentCommunity.make(:vaultware)
+        @property_link = ApartmentCommunity.make(:property_link)
+        @other         = ApartmentCommunity.make
       end
 
-      should 'return only the managed communities' do
-        assert_equal [@managed], ApartmentCommunity.managed_by_vaultware.all
+      context 'vaultware' do
+        should 'return only the Vaultware communities' do
+          assert_equal [@vaultware], ApartmentCommunity.managed_by_vaultware.all
+        end
+      end
+
+      context 'property_link' do
+        should 'return only the PropertyLink communities' do
+          assert_equal [@property_link], ApartmentCommunity.managed_by_property_link.all
+        end
       end
     end
   end

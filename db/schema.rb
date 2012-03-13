@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120330194304) do
+ActiveRecord::Schema.define(:version => 20120313145205) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(:version => 20120330194304) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "local_info_feed_id"
-    t.integer  "vaultware_id"
+    t.integer  "external_cms_id"
     t.boolean  "use_market_prices",            :default => false, :null => false
     t.string   "availability_url"
     t.string   "type"
@@ -175,6 +175,7 @@ ActiveRecord::Schema.define(:version => 20120330194304) do
     t.integer  "plan_count_3_bedroom",         :default => 0
     t.integer  "plan_count_penthouse",         :default => 0
     t.boolean  "under_construction",           :default => false
+    t.string   "external_cms_type"
   end
 
   add_index "archived_properties", ["id"], :name => "index_archived_properties_on_id"
@@ -734,7 +735,7 @@ ActiveRecord::Schema.define(:version => 20120330194304) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "local_info_feed_id"
-    t.integer  "vaultware_id"
+    t.integer  "external_cms_id"
     t.boolean  "use_market_prices",            :default => false, :null => false
     t.string   "availability_url"
     t.string   "type"
@@ -803,7 +804,11 @@ ActiveRecord::Schema.define(:version => 20120330194304) do
     t.integer  "plan_count_3_bedroom",         :default => 0
     t.integer  "plan_count_penthouse",         :default => 0
     t.boolean  "under_construction",           :default => false
+    t.string   "external_cms_type"
   end
+
+  add_index "properties", ["external_cms_id", "external_cms_type"], :name => "index_properties_on_external_cms_id_and_external_cms_type"
+  add_index "properties", ["external_cms_id"], :name => "index_properties_on_external_cms_id"
 
   create_table "properties_property_features", :id => false, :force => true do |t|
     t.integer "property_id"

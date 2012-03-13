@@ -25,7 +25,7 @@ module Bozzuto
             @loader.process
           end
    
-          community = ApartmentCommunity.find_by_vaultware_id(vaultware_id(@property))
+          community = ApartmentCommunity.find_by_external_cms_id(external_cms_id(@property))
           attrs = community_attributes(@property)
    
           community_fields.each do |field|
@@ -35,8 +35,8 @@ module Bozzuto
    
         context 'a community already exists with a vaultware id' do
           setup do
-            @vaultware_id = vaultware_id(@property)
-            @community = ApartmentCommunity.make :vaultware_id => @vaultware_id
+            @external_cms_id = external_cms_id(@property)
+            @community       = ApartmentCommunity.make(:vaultware, :external_cms_id => @external_cms_id)
           end
    
           should 'update the existing community' do
@@ -124,8 +124,8 @@ module Bozzuto
 
             @plans = @property.xpath('./Floorplan')
 
-            @community = ApartmentCommunity.make(
-              :vaultware_id => vaultware_id(@property)
+            @community = ApartmentCommunity.make(:vaultware,
+              :external_cms_id => external_cms_id(@property)
             )
 
             @plans_attrs = attributes_for_rolled_up_floor_plans(@plans)
@@ -185,8 +185,8 @@ module Bozzuto
             load_vaultware_fixture_file('unrolled.xml')
             @loader.load(File.join(Rails.root, 'test', 'files', 'unrolled.xml'))
 
-            @community = ApartmentCommunity.make(
-              :vaultware_id => vaultware_id(@property)
+            @community = ApartmentCommunity.make(:vaultware,
+              :external_cms_id => external_cms_id(@property)
             )
 
             @plans = @property.xpath('./Floorplan')
@@ -258,7 +258,7 @@ module Bozzuto
 
           @properties.each do |property|
             attrs = community_attributes(property)
-            community = ApartmentCommunity.find_by_vaultware_id(attrs[:vaultware_id])
+            community = ApartmentCommunity.find_by_external_cms_id(attrs[:external_cms_id])
 
             community_fields.each do |field|
               assert_equal attrs[field], community.send(field)
@@ -287,7 +287,7 @@ module Bozzuto
       { 'ns' => 'http://my-company.com/namespace' }
     end
    
-    def vaultware_id(property)
+    def external_cms_id(property)
       property.at('./PropertyID/ns:Identification/ns:PrimaryID', ns).content.to_i
     end
    
@@ -312,7 +312,7 @@ module Bozzuto
         :title            => ident.at('./ns:MarketingName', ns).content,
         :street_address   => address.at('./ns:Address1', ns).content,
         :availability_url => info.at('./PropertyAvailabilityURL').content,
-        :vaultware_id     => vaultware_id(property)
+        :external_cms_id  => external_cms_id(property)
       }
     end
    

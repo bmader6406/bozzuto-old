@@ -22,7 +22,7 @@ module Bozzuto
       address = property.at('./PropertyID/ns:Address', ns)
       info    = property.at('./Information')
 
-      @community = ApartmentCommunity.find_or_initialize_by_external_cms_id(
+      @community = ApartmentCommunity.managed_by_vaultware.find_or_initialize_by_external_cms_id(
         ident.at('./ns:PrimaryID', ns).content.to_i
       )
       @community.update_attributes({

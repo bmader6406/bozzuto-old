@@ -24,7 +24,7 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
     context 'GET to #merge' do
       context 'with a Vaultware managed community' do
         setup do
-          @community = ApartmentCommunity.make(:vaultware_id => 123)
+          @community = ApartmentCommunity.make(:vaultware)
           get :merge, :id => @community.id
         end
 
@@ -48,7 +48,7 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
     context 'GET to #begin_merge' do
       context 'with a Vaultware managed community' do
         setup do
-          @community = ApartmentCommunity.make(:vaultware_id => 123)
+          @community = ApartmentCommunity.make(:vaultware)
           get :begin_merge, :id => @community.id
         end
 
@@ -84,7 +84,7 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
 
         context 'with Vaultware community selected' do
           setup do
-            @vaultware = ApartmentCommunity.make(:vaultware_id => 123)
+            @vaultware = ApartmentCommunity.make(:vaultware)
 
             get :begin_merge, :id => @community.id, :vaultware_community_id => @vaultware.id
           end
@@ -99,7 +99,7 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
     context 'POST to #end_merge' do
       context 'with a Vaultware managed community' do
         setup do
-          @community = ApartmentCommunity.make(:vaultware_id => 123)
+          @community = ApartmentCommunity.make(:vaultware)
           post :end_merge, :id => @community.id
         end
 
@@ -135,7 +135,7 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
 
         context 'with Vaultware community selected' do
           setup do
-            @vaultware = ApartmentCommunity.make(:vaultware_id => 123)
+            @vaultware = ApartmentCommunity.make(:vaultware)
 
             ApartmentCommunity.any_instance.expects(:merge).with(@vaultware).once
 
