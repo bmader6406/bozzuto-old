@@ -1,28 +1,28 @@
 require 'test_helper'
 
-module Vaultware
-  class ParserTest < ActiveSupport::TestCase
-    context 'A VaultwareParser' do
+module Bozzuto
+  class VaultwareFeedLoaderTest < ActiveSupport::TestCase
+    context 'A Vaultware Feed Loader' do
       setup do
         create_states
-        @parser = Vaultware::Parser.new
+        @loader = Bozzuto::VaultwareFeedLoader.new
       end
    
       context '#process' do
         setup do
           load_vaultware_fixture_file('unrolled.xml')
-          @parser.parse(File.join(Rails.root, 'test', 'files', 'unrolled.xml'))
+          @loader.load(File.join(Rails.root, 'test', 'files', 'unrolled.xml'))
         end
 
         should 'load the file' do
-          @parser.process
-          assert @parser.data
-          assert @parser.data.xpath('/PhysicalProperty').present?
+          @loader.process
+          assert @loader.data
+          assert @loader.data.xpath('/PhysicalProperty').present?
         end
    
         should 'create the communities' do
           assert_difference('ApartmentCommunity.count', @properties.count) do
-            @parser.process
+            @loader.process
           end
    
           community = ApartmentCommunity.find_by_vaultware_id(vaultware_id(@property))
@@ -41,7 +41,7 @@ module Vaultware
    
           should 'update the existing community' do
             assert_difference('ApartmentCommunity.count', @properties.count - 1) do
-              @parser.process
+              @loader.process
             end
    
             @community.reload
@@ -58,7 +58,7 @@ module Vaultware
           end
 
           should 'return true' do
-            assert @parser.send(:rolled_up?, @property)
+            assert @loader.send(:rolled_up?, @property)
           end
         end
 
@@ -68,7 +68,7 @@ module Vaultware
           end
 
           should 'return false' do
-            assert !@parser.send(:rolled_up?, @property)
+            assert !@loader.send(:rolled_up?, @property)
           end
         end
       end
@@ -78,40 +78,40 @@ module Vaultware
           @plan = mock_floor_plan(2, 'Penthouse')
 
           assert_equal ApartmentFloorPlanGroup.penthouse,
-            @parser.send(:floor_plan_group, @plan)
+            @loader.send(:floor_plan_group, @plan)
         end
 
         should 'return studio when bedrooms is 0' do
           @plan = mock_floor_plan(0, '')
 
           assert_equal ApartmentFloorPlanGroup.studio,
-            @parser.send(:floor_plan_group, @plan)
+            @loader.send(:floor_plan_group, @plan)
         end
 
         should 'return one bedroom when bedrooms is 1' do
           @plan = mock_floor_plan(1, '')
 
           assert_equal ApartmentFloorPlanGroup.one_bedroom,
-            @parser.send(:floor_plan_group, @plan)
+            @loader.send(:floor_plan_group, @plan)
         end
 
         should 'return two bedrooms when bedrooms is 2' do
           @plan = mock_floor_plan(2, '')
 
           assert_equal ApartmentFloorPlanGroup.two_bedrooms,
-            @parser.send(:floor_plan_group, @plan)
+            @loader.send(:floor_plan_group, @plan)
         end
 
         should 'return three bedrooms when bedrooms is 3 or more' do
           @plan = mock_floor_plan(3, '')
 
           assert_equal ApartmentFloorPlanGroup.three_bedrooms,
-            @parser.send(:floor_plan_group, @plan)
+            @loader.send(:floor_plan_group, @plan)
 
           @plan = mock_floor_plan(5, '')
 
           assert_equal ApartmentFloorPlanGroup.three_bedrooms,
-            @parser.send(:floor_plan_group, @plan)
+            @loader.send(:floor_plan_group, @plan)
         end
       end
 
@@ -120,7 +120,7 @@ module Vaultware
         context 'for a rolled up property' do
           setup do
             load_vaultware_fixture_file('rolled_up.xml')
-            @parser.parse(File.join(Rails.root, 'test', 'files', 'rolled_up.xml'))
+            @loader.load(File.join(Rails.root, 'test', 'files', 'rolled_up.xml'))
 
             @plans = @property.xpath('./Floorplan')
 
@@ -134,7 +134,7 @@ module Vaultware
           context 'when no matching floor plans exist' do
             should 'create the floor plans' do
               assert_difference('@community.floor_plans.count', @plans.count) do
-                @parser.process
+                @loader.process
               end
 
               assert_equal @plans.count, @community.floor_plans.count
@@ -164,7 +164,7 @@ module Vaultware
 
             should 'update the floor plans' do
               assert_difference('@community.floor_plans.count', @plans.count - 1) do
-                @parser.process
+                @loader.process
               end
 
               assert_equal @plans.count, @community.floor_plans.count
@@ -183,7 +183,7 @@ module Vaultware
         context 'for an unrolled property' do
           setup do
             load_vaultware_fixture_file('unrolled.xml')
-            @parser.parse(File.join(Rails.root, 'test', 'files', 'unrolled.xml'))
+            @loader.load(File.join(Rails.root, 'test', 'files', 'unrolled.xml'))
 
             @community = ApartmentCommunity.make(
               :vaultware_id => vaultware_id(@property)
@@ -196,7 +196,7 @@ module Vaultware
           context "when no matching floor plans exist" do
             should 'create the floor plans' do
               assert_difference('@community.floor_plans.count', @plans.count) do
-                @parser.process
+                @loader.process
               end
 
               assert_equal @plans.count, @community.floor_plans.count
@@ -224,7 +224,7 @@ module Vaultware
               )
 
               assert_difference('@community.floor_plans.count', @plans.count - 1) do
-                @parser.process
+                @loader.process
               end
             end
 
@@ -250,11 +250,11 @@ module Vaultware
       context 'testing a full load' do
         setup do
           load_vaultware_fixture_file('vaultware.xml')
-          @parser.parse(File.join(Rails.root, 'test', 'files', 'vaultware.xml'))
+          @loader.load(File.join(Rails.root, 'test', 'files', 'vaultware.xml'))
         end
 
         should 'load all the properties and floor plans' do
-          @parser.process
+          @loader.process
 
           @properties.each do |property|
             attrs = community_attributes(property)
@@ -265,7 +265,7 @@ module Vaultware
             end
 
             plans = property.xpath('./Floorplan')
-            attrs = if @parser.send(:rolled_up?, property)
+            attrs = if @loader.send(:rolled_up?, property)
               attributes_for_rolled_up_floor_plans(plans)
             else
               attributes_for_unrolled_floor_plans(plans)

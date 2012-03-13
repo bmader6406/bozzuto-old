@@ -1,8 +1,8 @@
-module Vaultware
-  class Parser
+module Bozzuto
+  class PropertyFeedLoader
     attr_reader :data
 
-    def parse(file)
+    def load(file)
       @data = Nokogiri::XML(File.read(file))
     end
 
@@ -22,7 +22,7 @@ module Vaultware
       address = property.at('./PropertyID/ns:Address', ns)
       info    = property.at('./Information')
 
-      @community = ApartmentCommunity.find_or_initialize_by_vaultware_id(
+      @community = ApartmentCommunity.find_or_initialize_by_external_cms_id(
         ident.at('./ns:PrimaryID', ns).content.to_i
       )
       @community.update_attributes({

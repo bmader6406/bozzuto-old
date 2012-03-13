@@ -13,8 +13,8 @@ namespace :bozzuto do
 
     begin
       file = APP_CONFIG[:vaultware_feed_file]
-      v = Vaultware::Parser.new
-      v.parse(file)
+      v = Bozzuto::VaultwareFeedLoader.new
+      v.load(file)
       v.process
       puts "Vaultware feed successfully loaded"
     rescue Exception => e
