@@ -4,6 +4,10 @@ class BozzutoBlogPost < ActiveRecord::Base
                         :url,
                         :published_at
 
+  validates_format_of :header_url, :url,
+    :with    => /^https?:\/\//,
+    :message => 'is not a valid URL. Be sure to include http:// at the beginning'
+
   validates_attachment_presence :image
 
   has_attached_file :image,
