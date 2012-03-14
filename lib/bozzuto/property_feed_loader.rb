@@ -22,8 +22,9 @@ module Bozzuto
       address = property.at('./PropertyID/ns:Address', ns)
       info    = property.at('./Information')
 
-      @community = ApartmentCommunity.managed_by_vaultware.find_or_initialize_by_external_cms_id(
-        ident.at('./ns:PrimaryID', ns).content.to_i
+      @community = ApartmentCommunity.find_or_initialize_by_external_cms_id_and_external_cms_type(
+        ident.at('./ns:PrimaryID', ns).content.to_i,
+        'vaultware'
       )
       @community.update_attributes({
         :title            => ident.at('./ns:MarketingName', ns).content,
@@ -53,9 +54,9 @@ module Bozzuto
         file  = plan.at(file_selector)
 
         attrs.merge!(
-          :vaultware_file_id => (file['Id'].to_i rescue nil),
-          :image_url         => (file.at('./Src').content rescue nil),
-          :rolled_up         => rolled_up
+          :external_cms_file_id => (file['Id'].to_i rescue nil),
+          :image_url            => (file.at('./Src').content rescue nil),
+          :rolled_up            => rolled_up
         )
 
         create_or_update_floor_plan(attrs)
@@ -68,7 +69,8 @@ module Bozzuto
       # and have it persist
       find_conditions = {
         :conditions => {
-          :vaultware_floor_plan_id => attrs[:vaultware_floor_plan_id]
+          :external_cms_id   => attrs[:external_cms_id],
+          :external_cms_type => attrs[:external_cms_type]
         }
       }
 
@@ -113,7 +115,8 @@ module Bozzuto
         :max_market_rent    => plan.at('./MarketRent')['Max'].to_f,
         :min_effective_rent => plan.at('./EffectiveRent')['Min'].to_f,
         :max_effective_rent => plan.at('./EffectiveRent')['Max'].to_f,
-        :vaultware_floor_plan_id => plan['Id'].to_i
+        :external_cms_id    => plan['Id'].to_i,
+        :external_cms_type  => 'vaultware'
       }
     end
 

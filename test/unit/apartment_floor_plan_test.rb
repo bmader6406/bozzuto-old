@@ -217,5 +217,47 @@ class ApartmentFloorPlanTest < ActiveSupport::TestCase
         assert_equal [@no_rent, @has_rent], @community.floor_plans.non_zero_min_rent
       end
     end
+
+    ApartmentFloorPlan::EXTERNAL_CMS_TYPES.each do |type|
+      context "#managed_by_#{type}?" do
+        context "when floor plan is managed by #{type.titlecase}" do
+          setup { @plan = ApartmentFloorPlan.make(type.to_sym) }
+
+          should 'be true' do
+            assert @plan.send("managed_by_#{type}?")
+          end
+        end
+
+        context "when floor plan is not managed by #{type.titlecase}" do
+          setup { @plan = ApartmentFloorPlan.make }
+
+          should 'be false' do
+            assert !@plan.send("managed_by_#{type}?")
+          end
+        end
+      end
+    end
+  end
+
+  context 'The ApartmentFloorPlan class' do
+    context 'managed_by_* named scopes' do
+      setup do
+        @vaultware     = ApartmentFloorPlan.make(:vaultware)
+        @property_link = ApartmentFloorPlan.make(:property_link)
+        @other         = ApartmentFloorPlan.make
+      end
+
+      context 'vaultware' do
+        should 'return only the Vaultware communities' do
+          assert_equal [@vaultware], ApartmentFloorPlan.managed_by_vaultware.all
+        end
+      end
+
+      context 'property_link' do
+        should 'return only the PropertyLink communities' do
+          assert_equal [@property_link], ApartmentFloorPlan.managed_by_property_link.all
+        end
+      end
+    end
   end
 end

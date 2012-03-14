@@ -268,7 +268,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
       end
     end
 
-    context 'managed_by_blank named scope' do
+    context 'managed_by_* named scopes' do
       setup do
         @vaultware     = ApartmentCommunity.make(:vaultware)
         @property_link = ApartmentCommunity.make(:property_link)

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120313145205) do
+ActiveRecord::Schema.define(:version => 20120314170433) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -26,32 +26,34 @@ ActiveRecord::Schema.define(:version => 20120313145205) do
   create_table "apartment_floor_plans", :force => true do |t|
     t.string   "image_url"
     t.integer  "bedrooms"
-    t.decimal  "bathrooms",               :precision => 3, :scale => 1
-    t.integer  "floor_plan_group_id",                                                      :null => false
+    t.decimal  "bathrooms",              :precision => 3, :scale => 1
+    t.integer  "floor_plan_group_id",                                                     :null => false
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name",                                                                     :null => false
+    t.string   "name",                                                                    :null => false
     t.string   "availability_url"
     t.integer  "min_square_feet"
     t.integer  "max_square_feet"
-    t.decimal  "min_market_rent",         :precision => 8, :scale => 2
-    t.decimal  "max_market_rent",         :precision => 8, :scale => 2
-    t.decimal  "min_effective_rent",      :precision => 8, :scale => 2
-    t.decimal  "max_effective_rent",      :precision => 8, :scale => 2
-    t.integer  "apartment_community_id",                                                   :null => false
-    t.decimal  "min_rent",                :precision => 8, :scale => 2
-    t.decimal  "max_rent",                :precision => 8, :scale => 2
-    t.integer  "image_type",                                            :default => 0,     :null => false
+    t.decimal  "min_market_rent",        :precision => 8, :scale => 2
+    t.decimal  "max_market_rent",        :precision => 8, :scale => 2
+    t.decimal  "min_effective_rent",     :precision => 8, :scale => 2
+    t.decimal  "max_effective_rent",     :precision => 8, :scale => 2
+    t.integer  "apartment_community_id",                                                  :null => false
+    t.decimal  "min_rent",               :precision => 8, :scale => 2
+    t.decimal  "max_rent",               :precision => 8, :scale => 2
+    t.integer  "image_type",                                           :default => 0,     :null => false
     t.string   "image_file_name"
     t.string   "image_content_type"
-    t.integer  "vaultware_floor_plan_id"
-    t.integer  "vaultware_file_id"
-    t.boolean  "featured",                                              :default => false, :null => false
-    t.boolean  "rolled_up",                                             :default => false, :null => false
+    t.integer  "external_cms_id"
+    t.integer  "external_cms_file_id"
+    t.boolean  "featured",                                             :default => false, :null => false
+    t.boolean  "rolled_up",                                            :default => false, :null => false
+    t.string   "external_cms_type"
   end
 
   add_index "apartment_floor_plans", ["apartment_community_id"], :name => "index_apartment_floor_plans_on_apartment_community_id"
+  add_index "apartment_floor_plans", ["external_cms_id"], :name => "index_apartment_floor_plans_on_external_cms_id"
   add_index "apartment_floor_plans", ["floor_plan_group_id"], :name => "index_apartment_floor_plans_on_floor_plan_group_id"
 
   create_table "archived_pages", :id => false, :force => true do |t|

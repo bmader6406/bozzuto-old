@@ -1,5 +1,5 @@
 class ApartmentCommunity < Community
-  EXTERNAL_CMS_TYPES = %w(vaultware property_link)
+  include Bozzuto::ExternalCMS
 
   VAULTWARE_ATTRIBUTES = [
     :title,
@@ -52,16 +52,6 @@ class ApartmentCommunity < Community
     {:conditions => ['properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE max_rent <= ?)', price.to_i]} if price.to_i > 0
   }
   named_scope :featured, :conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE featured = ?)", true]
-
-
-  EXTERNAL_CMS_TYPES.each do |type|
-    named_scope "managed_by_#{type}",
-      :conditions => ['external_cms_id IS NOT NULL AND external_cms_type = ?', type]
-
-    define_method "managed_by_#{type}?" do
-      external_cms_id.present? && external_cms_type == type
-    end
-  end
 
 
   def nearby_communities(limit = 6)

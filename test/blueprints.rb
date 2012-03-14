@@ -58,6 +58,16 @@ ApartmentFloorPlan.blueprint do
   apartment_community
 end
 
+ApartmentFloorPlan.blueprint(:vaultware) do
+  external_cms_id   { Sham.vaultware_id }
+  external_cms_type { 'vaultware' }
+end
+
+ApartmentFloorPlan.blueprint(:property_link) do
+  external_cms_id   { Sham.property_link_id }
+  external_cms_type { 'property_link' }
+end
+
 ApartmentFloorPlanGroup.blueprint do; end
 
 ApartmentFloorPlanGroup.blueprint(:studio) do

@@ -153,11 +153,11 @@ module Bozzuto
               @plan = @plans.first
               files = @plan.at('./File[Rank=1]')
 
-              @community.floor_plans << ApartmentFloorPlan.make_unsaved(
-                :vaultware_floor_plan_id => @plan['Id'].to_i,
-                :vaultware_file_id       => (file['Id'].to_i rescue nil),
-                :apartment_community     => @community,
-                :image_url               => nil
+              @community.floor_plans << ApartmentFloorPlan.make_unsaved(:vaultware,
+                :external_cms_id      => @plan['Id'].to_i,
+                :external_cms_file_id => (file['Id'].to_i rescue nil),
+                :apartment_community  => @community,
+                :image_url            => nil
               )
               @plans_attrs = attributes_for_rolled_up_floor_plans(@plans)
             end
@@ -216,11 +216,11 @@ module Bozzuto
 
               @plan = @plans.first
 
-              @community.floor_plans << ApartmentFloorPlan.make_unsaved(
-                :vaultware_floor_plan_id => @plan['Id'].to_i,
-                :apartment_community     => @community,
-                :image_url               => nil,
-                :floor_plan_group        => @penthouse
+              @community.floor_plans << ApartmentFloorPlan.make_unsaved(:vaultware,
+                :external_cms_id     => @plan['Id'].to_i,
+                :apartment_community => @community,
+                :image_url           => nil,
+                :floor_plan_group    => @penthouse
               )
 
               assert_difference('@community.floor_plans.count', @plans.count - 1) do
@@ -299,7 +299,9 @@ module Bozzuto
       [
         :title,
         :street_address,
-        :availability_url
+        :availability_url,
+        :external_cms_id,
+        :external_cms_type
       ]
     end
    
@@ -309,10 +311,11 @@ module Bozzuto
       info    = property.at('./Information')
    
       {
-        :title            => ident.at('./ns:MarketingName', ns).content,
-        :street_address   => address.at('./ns:Address1', ns).content,
-        :availability_url => info.at('./PropertyAvailabilityURL').content,
-        :external_cms_id  => external_cms_id(property)
+        :title             => ident.at('./ns:MarketingName', ns).content,
+        :street_address    => address.at('./ns:Address1', ns).content,
+        :availability_url  => info.at('./PropertyAvailabilityURL').content,
+        :external_cms_id   => external_cms_id(property),
+        :external_cms_type => 'vaultware'
       }
     end
    
@@ -332,7 +335,7 @@ module Bozzuto
     def unrolled_floor_plan_attributes(plan)
       attrs = floor_plan_attributes(plan)
       file = plan.at('./File')
-      attrs[:vaultware_file_id] = file['Id'].to_i rescue nil
+      attrs[:external_cms_file_id] = file['Id'].to_i rescue nil
       attrs[:image_url] = file.at('./Src').content rescue nil
       attrs
     end
@@ -340,7 +343,7 @@ module Bozzuto
     def rolled_up_floor_plan_attributes(plan)
       attrs = floor_plan_attributes(plan)
       file = plan.at('./File[Rank=1]')
-      attrs[:vaultware_file_id] = file['Id'].to_i rescue nil
+      attrs[:external_cms_file_id] = file['Id'].to_i rescue nil
       attrs[:image_url] = file.at('./Src').content rescue nil
       attrs[:rolled_up] = true
       attrs
@@ -359,7 +362,8 @@ module Bozzuto
         :max_market_rent    => plan.at('./MarketRent')['Max'].to_f,
         :min_effective_rent => plan.at('./EffectiveRent')['Min'].to_f,
         :max_effective_rent => plan.at('./EffectiveRent')['Max'].to_f,
-        :vaultware_floor_plan_id => plan['Id'].to_i
+        :external_cms_id    => plan['Id'].to_i,
+        :external_cms_type  => 'vaultware'
       }
     end
 
