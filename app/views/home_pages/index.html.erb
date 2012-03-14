@@ -44,7 +44,7 @@
             <%= @home_page.body.try(:html_safe) %>
           </div>
 
-          <% @latest_award.if_present? do |award| %>
+          <% latest_award.if_present? do |award| %>
             <div class="latest-award article">
               <h3><%= link_to 'Latest Awards', awards_path(@section) %></h3>
 
@@ -68,7 +68,7 @@
         </div>
 
         <div class="row">
-          <% @latest_news.if_present? do |post| %>
+          <% latest_news.if_present? do |post| %>
             <div class="latest-news article">
               <h3><%= link_to 'Latest News', news_posts_path(@section) %></h3>
 
@@ -104,7 +104,7 @@
     <h2>Bozzuto Social</h2>
 
     <div class="facebook">
-      <div class="fb-like" data-href="http://www.bozzuto.com" data-send="true" data-width="340" data-show-faces="true"></div>
+      <div class="fb-like" data-href="http://www.facebook.com/TheBozzutoGroup" data-send="true" data-width="340" data-show-faces="true"></div>
     </div>
 
     <div class="twitter">
