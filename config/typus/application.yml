@@ -54,12 +54,13 @@ ApartmentFloorPlanGroup:
 Award:
   fields:
     default: title, published, published_at
-    list: title, published, published_at
+    list: title, featured, published, published_at
     form: title, published, published_at, featured, image, body
     options:
       ckeditor: body
       booleans:
         published: ['Yes', 'No']
+        featured: ['Yes', 'No']
   order_by: -published_at
   relationships: sections
   filters:
@@ -394,12 +395,13 @@ MediaplexTag:
 NewsPost:
   fields:
     default: title, published, published_at
-    list: title, published, published_at
+    list: title, featured, published, published_at
     form: title, published, published_at, featured, meta_title, meta_description, meta_keywords, image, home_page_image, body
     options:
       ckeditor: body
       booleans:
         published: ['Yes', 'No']
+        featured: ['Yes', 'No']
   order_by: -published_at
   relationships: sections
   filters:
