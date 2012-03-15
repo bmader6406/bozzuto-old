@@ -5,9 +5,9 @@ module Bozzuto
     context 'A Vaultware Feed Loader' do
       setup do
         create_states
-        @loader = Bozzuto::VaultwareFeedLoader.new
+        @loader = VaultwareFeedLoader.new
       end
-   
+
       context '#process' do
         setup do
           load_vaultware_fixture_file('unrolled.xml')
@@ -19,38 +19,38 @@ module Bozzuto
           assert @loader.data
           assert @loader.data.xpath('/PhysicalProperty').present?
         end
-   
+
         should 'create the communities' do
           assert_difference('ApartmentCommunity.count', @properties.count) do
             @loader.process
           end
-   
+
           community = ApartmentCommunity.find_by_external_cms_id(external_cms_id(@property))
           attrs = community_attributes(@property)
-   
+
           community_fields.each do |field|
             assert_equal attrs[field], community.send(field)
           end
         end
-   
+
         context 'a community already exists with a vaultware id' do
           setup do
             @external_cms_id = external_cms_id(@property)
             @community       = ApartmentCommunity.make(:vaultware, :external_cms_id => @external_cms_id)
           end
-   
+
           should 'update the existing community' do
             assert_difference('ApartmentCommunity.count', @properties.count - 1) do
               @loader.process
             end
-   
+
             @community.reload
 
             assert_equal title(@property), @community.title
           end
         end
       end
-   
+
       context '#rolled_up?' do
         context 'when any Floorplan node contains more than 1 File node' do
           setup do
@@ -281,20 +281,20 @@ module Bozzuto
         end
       end
     end
-   
-   
+
+
     def ns
-      { 'ns' => 'http://my-company.com/namespace' }
+      VaultwareFeedLoader::NAMESPACE
     end
-   
+
     def external_cms_id(property)
       property.at('./PropertyID/ns:Identification/ns:PrimaryID', ns).content.to_i
     end
-   
+
     def title(property)
       property.at('./PropertyID/ns:Identification/ns:MarketingName', ns).content
     end
-   
+
     def community_fields
       [
         :title,
@@ -304,12 +304,12 @@ module Bozzuto
         :external_cms_type
       ]
     end
-   
+
     def community_attributes(property)
       ident   = property.at('./PropertyID/ns:Identification', ns)
       address = property.at('./PropertyID/ns:Address', ns)
       info    = property.at('./Information')
-   
+
       {
         :title             => ident.at('./ns:MarketingName', ns).content,
         :street_address    => address.at('./ns:Address1', ns).content,
@@ -318,8 +318,8 @@ module Bozzuto
         :external_cms_type => 'vaultware'
       }
     end
-   
-   
+
+
     def attributes_for_unrolled_floor_plans(plans)
       plans.inject([]) do |array, plan|
         array << unrolled_floor_plan_attributes(plan)

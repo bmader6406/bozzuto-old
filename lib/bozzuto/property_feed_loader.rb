@@ -1,5 +1,56 @@
 module Bozzuto
   class PropertyFeedLoader
+    class_attribute :_feed_type
+
+    def self.feed_type(type = nil)
+      if type
+        self._feed_type = type.to_s
+      else
+        self._feed_type
+      end
+    end
+
+    def self.define_feed_attribute(attr)
+      class_attribute "_#{attr}"
+
+      class_eval <<-END
+        def self.#{attr}(selector = nil, opts = {})
+          if selector
+            opts.symbolize_keys!
+            opts[:selector] = selector
+
+            self._#{attr} = opts
+          else
+            self._#{attr}
+          end
+        end
+      END
+    end
+
+    %w(
+      title
+      external_cms_id
+      street_address
+      availability_url
+      state
+      city
+      county
+      floor_plan_name
+      floor_plan_comment
+      floor_plan_availability_url
+      floor_plan_bedroom_count
+      floor_plan_bathroom_count
+      floor_plan_min_square_feet
+      floor_plan_max_square_feet
+      floor_plan_min_market_rent
+      floor_plan_max_market_rent
+      floor_plan_min_effective_rent
+      floor_plan_max_effective_rent
+    ).each do |attr|
+      define_feed_attribute(attr)
+    end
+
+
     attr_reader :data
 
     def load(file)
@@ -7,31 +58,46 @@ module Bozzuto
     end
 
     def process
-      data.xpath('/PhysicalProperty/Property', ns).each do |property|
+      data.xpath('/PhysicalProperty/Property').each do |property|
         process_property(property)
         process_floor_plans(property)
       end
       true
     end
 
+    def value_for(node, attr)
+      config = self.class.send(attr)
+
+      return nil unless config.present?
+
+      final_node = if config[:namespace].present?
+        node.at(config[:selector], config[:namespace])
+      else
+        node.at(config[:selector])
+      end
+
+      if config[:attribute].present?
+        final_node.try(:[], config[:attribute])
+      else
+        final_node.try(:content)
+      end
+    end
+
 
     private
 
     def process_property(property)
-      ident   = property.at('./PropertyID/ns:Identification', ns)
-      address = property.at('./PropertyID/ns:Address', ns)
-      info    = property.at('./Information')
-
       @community = ApartmentCommunity.find_or_initialize_by_external_cms_id_and_external_cms_type(
-        ident.at('./ns:PrimaryID', ns).content.to_i,
-        'vaultware'
+        value_for(property, :external_cms_id).to_i,
+        self.class.feed_type
       )
+
       @community.update_attributes({
-        :title            => ident.at('./ns:MarketingName', ns).content,
-        :street_address   => address.at('./ns:Address1', ns).content,
-        :city             => find_city(address),
-        :county           => find_county(address),
-        :availability_url => info.at('./PropertyAvailabilityURL').content
+        :title            => value_for(property, :title),
+        :street_address   => value_for(property, :street_address),
+        :city             => find_city(property),
+        :county           => find_county(property),
+        :availability_url => value_for(property, :availability_url)
       })
     end
 
@@ -67,14 +133,8 @@ module Bozzuto
       # don't change floor plan group on update -- penthouse doesn't come
       # over in the feed, so admins need to be able to change group
       # and have it persist
-      find_conditions = {
-        :conditions => {
-          :external_cms_id   => attrs[:external_cms_id],
-          :external_cms_type => attrs[:external_cms_type]
-        }
-      }
 
-      plan = @community.floor_plans.find(:first, find_conditions)
+      plan = @community.floor_plans.managed_by_feed(attrs[:external_cms_id], attrs[:external_cms_type]).first
 
       if plan.present?
         plan.update_attributes(attrs.delete_if { |k, v| k == :floor_plan_group })
@@ -84,10 +144,11 @@ module Bozzuto
     end
 
     def floor_plan_group(plan)
-      bedrooms = plan.at('./Room[@Type="Bedroom"]/Count').content.to_i
+      bedrooms = value_for(plan, :floor_plan_bedroom_count).to_i
+      comment  = value_for(plan, :floor_plan_comment)
 
       message = case
-      when plan.at('./Comment').content =~ /penthouse/i
+      when comment.present? && comment =~ /penthouse/i
         :penthouse
       when bedrooms == 0
         :studio
@@ -105,39 +166,40 @@ module Bozzuto
     def floor_plan_attributes(plan)
       {
         :floor_plan_group   => floor_plan_group(plan),
-        :name               => plan.at('./Name').content,
-        :availability_url   => plan.at('./FloorplanAvailabilityURL').content,
-        :bedrooms           => plan.at('./Room[@Type="Bedroom"]/Count').content.to_i,
-        :bathrooms          => plan.at('./Room[@Type="Bathroom"]/Count').content.to_f,
-        :min_square_feet    => plan.at('./SquareFeet')['Min'].to_i,
-        :max_square_feet    => plan.at('./SquareFeet')['Max'].to_i,
-        :min_market_rent    => plan.at('./MarketRent')['Min'].to_f,
-        :max_market_rent    => plan.at('./MarketRent')['Max'].to_f,
-        :min_effective_rent => plan.at('./EffectiveRent')['Min'].to_f,
-        :max_effective_rent => plan.at('./EffectiveRent')['Max'].to_f,
+        :name               => value_for(plan, :floor_plan_name),
+        :availability_url   => value_for(plan, :floor_plan_availability_url),
+        :bedrooms           => (value_for(plan, :floor_plan_bedroom_count) || 0).to_i,
+        :bathrooms          => value_for(plan, :floor_plan_bathroom_count).to_f,
+        :min_square_feet    => value_for(plan, :floor_plan_min_square_feet).to_i,
+        :max_square_feet    => value_for(plan, :floor_plan_max_square_feet).to_i,
+        :min_market_rent    => value_for(plan, :floor_plan_min_market_rent).to_f,
+        :max_market_rent    => value_for(plan, :floor_plan_max_market_rent).to_f,
+        :min_effective_rent => value_for(plan, :floor_plan_min_effective_rent).to_f,
+        :max_effective_rent => value_for(plan, :floor_plan_max_effective_rent).to_f,
         :external_cms_id    => plan['Id'].to_i,
-        :external_cms_type  => 'vaultware'
+        :external_cms_type  => self.class.feed_type
       }
     end
 
-    def find_city(address)
-      state_code  = address.at('./ns:State', ns).content
-      city_name   = address.at('./ns:City', ns).content
-      county_name = address.at('./ns:CountyName', ns).content
-      state       = State.find_by_code(state_code)
+    def find_city(property)
+      state_code  = value_for(property, :state)
+      city_name   = value_for(property, :city)
+
+      state = State.find_by_code(state_code)
 
       city = state.cities.find_or_create_by_name(city_name)
 
       city
     end
 
-    def find_county(address)
-      county_name = address.at('./ns:CountyName', ns).try(:content)
+    def find_county(property)
+      county_name = value_for(property, :county)
 
       if county_name.present?
-        state_code  = address.at('./ns:State', ns).content
-        city_name   = address.at('./ns:City', ns).content
-        state       = State.find_by_code(state_code)
+        state_code  = value_for(property, :state)
+        city_name   = value_for(property, :city)
+
+        state = State.find_by_code(state_code)
 
         city = state.cities.find_or_create_by_name(city_name)
         county = state.counties.find_or_create_by_name(county_name)
@@ -150,10 +212,6 @@ module Bozzuto
       else
         nil
       end
-    end
-
-    def ns
-      { 'ns' => 'http://my-company.com/namespace' }
     end
   end
 end

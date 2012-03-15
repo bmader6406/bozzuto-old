@@ -1,0 +1,4434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PhysicalProperty xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:MITS="http://www.mitsproject.org/namespace">
+  <Management Id="7548">
+    <PropertyContacts>
+      <MITS:CompanyInfo Type="manager">
+        <MITS:CompanyID>7548</MITS:CompanyID>
+        <MITS:ContactDescription />
+        <MITS:ContactName>Bozzuto Management Company</MITS:ContactName>
+        <MITS:WebSite />
+      </MITS:CompanyInfo>
+    </PropertyContacts>
+  </Management>
+  <Property ManagementID="7548">
+    <PropertyID>
+      <MITS:Identification Type="market rate apt">
+        <MITS:PrimaryID>89488</MITS:PrimaryID>
+        <MITS:SecondaryID>2015879</MITS:SecondaryID>
+        <MITS:MarketingName>Red Run</MITS:MarketingName>
+        <MITS:LegalName />
+        <MITS:WebSite>http://www.redrunapts.com/templates/template_concept06/default.asp?w=redrun</MITS:WebSite>
+      </MITS:Identification>
+      <MITS:Address>
+        <MITS:Address1>4300 Flint Hill Drive</MITS:Address1>
+        <MITS:City>Owings Mills</MITS:City>
+        <MITS:State>MD</MITS:State>
+        <MITS:PostalCode>21117</MITS:PostalCode>
+        <MITS:Email>redrun@bozzuto.com</MITS:Email>
+      </MITS:Address>
+      <MITS:Phone Type="office">
+        <MITS:PhoneNumber>4103632105</MITS:PhoneNumber>
+        <MITS:Extension />
+      </MITS:Phone>
+      <MITS:Phone Type="fax">
+        <MITS:PhoneNumber>4103632108</MITS:PhoneNumber>
+        <MITS:Extension />
+      </MITS:Phone>
+    </PropertyID>
+    <ILS_Identification Type="Apartment" RentalType="Unspecified" />
+    <Information>
+      <BuildingCount>0</BuildingCount>
+      <UnitCount>520</UnitCount>
+      <OfficeHour>
+        <OpenTime>12:00 PM</OpenTime>
+        <CloseTime>5:00 PM</CloseTime>
+        <Day>Sunday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Monday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Tuesday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Wednesday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Thursday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>8:00 AM</OpenTime>
+        <CloseTime>5:00 PM</CloseTime>
+        <Day>Friday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>10:00 AM</OpenTime>
+        <CloseTime>5:00 PM</CloseTime>
+        <Day>Saturday</Day>
+      </OfficeHour>
+      <ShortDescription>Welcome to Red Run conveniently situated in beautiful Owings Mills Newtown. Pool, Fitness &amp; Clubroom... Plenty of Parking... Tennis Courts Nearby.</ShortDescription>
+      <LongDescription>At Red Run you will find unique apartment features such as tile foyers, fireplaces, lofts or vaulted ceilings. Each apartment offers a fully equipped kitchen including microwave. You will easily find an apartment home that fits your needs when you choose from nine different floorplans. Red Run is conveniently located in Owings Mills, just moments from I-795 and the Baltimore Beltway in lovely New Town. Please come and take a tour of our brand-new elevator community!</LongDescription>
+      <LeaseLength> We offer multiple lease terms</LeaseLength>
+      <Parking Type="Garage Lot">
+        <Assigned>true</Assigned>
+        <Spaces>0</Spaces>
+        <Comment>Garage Parking for $25.00 per month per space. Call for additional details.</Comment>
+      </Parking>
+      <Parking Type="Covered Lot">
+        <Assigned>true</Assigned>
+        <Spaces>1</Spaces>
+        <Comment>Carports are $75.00 per month. Call for additional details.</Comment>
+      </Parking>
+      <DrivingDirections>Take the Baltimore Beltway (I-695) to Exit 19, I-795. Follow Exit 4 South to Owings Mills Blvd. Right on Lakeside Blvd. to Red Run on the left.</DrivingDirections>
+    </Information>
+    <Accounting />
+    <Payment />
+    <Fee />
+    <Amenity Type="Other">
+      <Description>BBQ/Picnic Areas</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Car wash facility</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Wall-to-wall carpeting</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Fully equipped kitchens w/icemaker</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Washer and dryer</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Gas heat</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Fireplace optional</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Vaulted ceilings optional</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Garage parking optional</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Large Dogs Welcome</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Loft Apartments Available</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Availability24Hours">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="BusinessCenter">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="ClubHouse">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="CoverPark">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="FitnessCenter">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Elevator">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Garage">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="HighSpeed">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="OnSiteMaintenance">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="PackageReceiving">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Pool">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="ShortTermLease">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="TVLounge">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Policy>
+      <Pet Type="cat" Allowed="true">
+        <Comment>$300 refundable deposit. Pet rent is $30 monthly. Please call for additional information.</Comment>
+        <MaxCount>2</MaxCount>
+        <Deposit />
+        <Fee />
+        <Rent />
+        <Restrictions />
+      </Pet>
+      <Pet Type="dog" Allowed="true">
+        <Comment>$300 refundable deposit. Pet rent is $30 per month. Please call for additional information.</Comment>
+        <MaxCount>2</MaxCount>
+        <Deposit />
+        <Fee />
+        <Rent />
+        <Restrictions>Breed Restrictions Apply.</Restrictions>
+      </Pet>
+    </Policy>
+    <Floorplan Id="374284" Type="Internal">
+      <Name>Marley</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="610" Max="610" />
+      <MarketRent Min="851" Max="871" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Patio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Refrigerator">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Satellite">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="374283" Type="Internal">
+      <Name>Stoney I</Name>
+      <UnitCount>2</UnitCount>
+      <UnitsAvailable>2</UnitsAvailable>
+      <DisplayedUnitsAvailable>2</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="755" Max="755" />
+      <MarketRent Min="785" Max="785" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Patio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Refrigerator">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Satellite">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="374285" Type="Internal">
+      <Name>Stoney II</Name>
+      <UnitCount>1</UnitCount>
+      <UnitsAvailable>1</UnitsAvailable>
+      <DisplayedUnitsAvailable>1</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="755" Max="755" />
+      <MarketRent Min="883" Max="938" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Balcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Patio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Refrigerator">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Satellite">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="374286" Type="Internal">
+      <Name>Roland</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="800" Max="800" />
+      <MarketRent Min="974" Max="994" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Balcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Patio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Refrigerator">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Satellite">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="374287" Type="Internal">
+      <Name>Patuxent</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="836" Max="836" />
+      <MarketRent Min="1011" Max="1011" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Balcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Patio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Refrigerator">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Satellite">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="374288" Type="Internal">
+      <Name>Patapsco</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>3</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="942" Max="942" />
+      <MarketRent Min="1101" Max="1117" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Patio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Refrigerator">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Satellite">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="374289" Type="Internal">
+      <Name>Fullerton</Name>
+      <UnitCount>1</UnitCount>
+      <UnitsAvailable>1</UnitsAvailable>
+      <DisplayedUnitsAvailable>1</DisplayedUnitsAvailable>
+      <TotalRoomCount>3</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="967" Max="967" />
+      <MarketRent Min="1164" Max="1164" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Balcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Patio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Refrigerator">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Satellite">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="374290" Type="Internal">
+      <Name>Lochraven I</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>4</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="1167" Max="1167" />
+      <MarketRent Min="1243" Max="1243" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Balcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Patio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Range">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Refrigerator">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Satellite">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="382313" Type="Internal">
+      <Name>Lochraven II</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>4</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="1175" Max="1175" />
+      <MarketRent Min="1263" Max="1324" />
+      <EffectiveRent Min="0" Max="0" />
+    </Floorplan>
+    <Floorplan Id="382314" Type="Internal">
+      <Name>Ashburton</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>4</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="1490" Max="1490" />
+      <MarketRent Min="1492" Max="1492" />
+      <EffectiveRent Min="0" Max="0" />
+    </Floorplan>
+    <Floorplan Id="382315" Type="Internal">
+      <Name>Chesapeake</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>5</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>3</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="1295" Max="1295" />
+      <MarketRent Min="1349" Max="1427" />
+      <EffectiveRent Min="0" Max="0" />
+    </Floorplan>
+    <ILS_Unit Id="924183750" FloorplanID="374283">
+      <Unit>
+        <MITS:Information>
+          <MITS:UnitID>924183750</MITS:UnitID>
+          <MITS:UnitBedrooms>1</MITS:UnitBedrooms>
+          <MITS:UnitBathrooms>1.00</MITS:UnitBathrooms>
+          <MITS:MinSquareFeet>755</MITS:MinSquareFeet>
+          <MITS:MaxSquareFeet>755</MITS:MaxSquareFeet>
+          <MITS:MarketRent>915.0000</MITS:MarketRent>
+          <MITS:UnitOccupancyStatus>vacant</MITS:UnitOccupancyStatus>
+          <MITS:UnitLeasedStatus>available</MITS:UnitLeasedStatus>
+          <MITS:FloorPlanID>374283</MITS:FloorPlanID>
+        </MITS:Information>
+        <MITS:PropertyPrimaryID>89488</MITS:PropertyPrimaryID>
+        <MITS:MarketingName>102</MITS:MarketingName>
+      </Unit>
+      <Comment />
+      <Availability>
+        <VacancyClass>Unoccupied</VacancyClass>
+        <MadeReadyDate Month="10" Day="26" Year="2011" />
+      </Availability>
+    </ILS_Unit>
+    <ILS_Unit Id="924408407" FloorplanID="374283">
+      <Unit>
+        <MITS:Information>
+          <MITS:UnitID>924408407</MITS:UnitID>
+          <MITS:UnitBedrooms>1</MITS:UnitBedrooms>
+          <MITS:UnitBathrooms>1.00</MITS:UnitBathrooms>
+          <MITS:MinSquareFeet>755</MITS:MinSquareFeet>
+          <MITS:MaxSquareFeet>755</MITS:MaxSquareFeet>
+          <MITS:MarketRent>915.0000</MITS:MarketRent>
+          <MITS:UnitOccupancyStatus>vacant</MITS:UnitOccupancyStatus>
+          <MITS:UnitLeasedStatus>available</MITS:UnitLeasedStatus>
+          <MITS:FloorPlanID>374283</MITS:FloorPlanID>
+        </MITS:Information>
+        <MITS:PropertyPrimaryID>89488</MITS:PropertyPrimaryID>
+        <MITS:MarketingName>104</MITS:MarketingName>
+      </Unit>
+      <Comment />
+      <Availability>
+        <VacancyClass>Unoccupied</VacancyClass>
+        <MadeReadyDate Month="10" Day="26" Year="2011" />
+      </Availability>
+    </ILS_Unit>
+    <ILS_Unit Id="924726719" FloorplanID="374285">
+      <Unit>
+        <MITS:Information>
+          <MITS:UnitID>924726719</MITS:UnitID>
+          <MITS:UnitBedrooms>1</MITS:UnitBedrooms>
+          <MITS:UnitBathrooms>1.00</MITS:UnitBathrooms>
+          <MITS:MinSquareFeet>755</MITS:MinSquareFeet>
+          <MITS:MaxSquareFeet>755</MITS:MaxSquareFeet>
+          <MITS:MarketRent>1013.0000</MITS:MarketRent>
+          <MITS:UnitOccupancyStatus>vacant</MITS:UnitOccupancyStatus>
+          <MITS:UnitLeasedStatus>available</MITS:UnitLeasedStatus>
+          <MITS:FloorPlanID>374285</MITS:FloorPlanID>
+        </MITS:Information>
+        <MITS:PropertyPrimaryID>89488</MITS:PropertyPrimaryID>
+        <MITS:MarketingName>408</MITS:MarketingName>
+      </Unit>
+      <Comment />
+      <Availability>
+        <VacancyClass>Unoccupied</VacancyClass>
+        <MadeReadyDate Month="12" Day="7" Year="2011" />
+      </Availability>
+    </ILS_Unit>
+    <ILS_Unit Id="924694413" FloorplanID="374289">
+      <Unit>
+        <MITS:Information>
+          <MITS:UnitID>924694413</MITS:UnitID>
+          <MITS:UnitBedrooms>2</MITS:UnitBedrooms>
+          <MITS:UnitBathrooms>1.00</MITS:UnitBathrooms>
+          <MITS:MinSquareFeet>967</MITS:MinSquareFeet>
+          <MITS:MaxSquareFeet>967</MITS:MaxSquareFeet>
+          <MITS:MarketRent>1140.0000</MITS:MarketRent>
+          <MITS:UnitOccupancyStatus>vacant</MITS:UnitOccupancyStatus>
+          <MITS:UnitLeasedStatus>available</MITS:UnitLeasedStatus>
+          <MITS:FloorPlanID>374289</MITS:FloorPlanID>
+        </MITS:Information>
+        <MITS:PropertyPrimaryID>89488</MITS:PropertyPrimaryID>
+        <MITS:MarketingName>101</MITS:MarketingName>
+      </Unit>
+      <Comment />
+      <Availability>
+        <VacancyClass>Unoccupied</VacancyClass>
+        <MadeReadyDate Month="11" Day="21" Year="2011" />
+      </Availability>
+    </ILS_Unit>
+    <Utility MajorUtility="Some">
+      <AirCon>false</AirCon>
+      <BroadbandInternet>false</BroadbandInternet>
+      <Cable>false</Cable>
+      <Electric>false</Electric>
+      <Gas>false</Gas>
+      <Heat>false</Heat>
+      <HotWater>false</HotWater>
+      <Satellite>false</Satellite>
+      <Sewer>false</Sewer>
+      <Telephone>false</Telephone>
+      <Trash>true</Trash>
+      <Water>false</Water>
+    </Utility>
+    <ILS />
+  </Property>
+  <Property ManagementID="7548">
+    <PropertyID>
+      <MITS:Identification Type="market rate apt">
+        <MITS:PrimaryID>89489</MITS:PrimaryID>
+        <MITS:SecondaryID>02347324723847233</MITS:SecondaryID>
+        <MITS:MarketingName>Riverstone</MITS:MarketingName>
+        <MITS:LegalName />
+        <MITS:WebSite>http://www.riverstoneatowingsmills.com/templates/template_concept04/default.asp?w=riverstoneatowings</MITS:WebSite>
+      </MITS:Identification>
+      <MITS:Address>
+        <MITS:Address1>4700 Riverstone Dr.</MITS:Address1>
+        <MITS:City>Owing Mills</MITS:City>
+        <MITS:State>MD</MITS:State>
+        <MITS:PostalCode>21117</MITS:PostalCode>
+        <MITS:Email>riverstone@bozzuto.com</MITS:Email>
+      </MITS:Address>
+      <MITS:Phone Type="office">
+        <MITS:PhoneNumber>4433943788</MITS:PhoneNumber>
+        <MITS:Extension />
+      </MITS:Phone>
+      <MITS:Phone Type="fax">
+        <MITS:PhoneNumber>4433943789</MITS:PhoneNumber>
+        <MITS:Extension />
+      </MITS:Phone>
+    </PropertyID>
+    <ILS_Identification Type="Apartment" RentalType="Unspecified" />
+    <Information>
+      <BuildingCount>0</BuildingCount>
+      <UnitCount>324</UnitCount>
+      <YearBuilt>2002</YearBuilt>
+      <OfficeHour>
+        <OpenTime>12:00 PM</OpenTime>
+        <CloseTime>5:00 PM</CloseTime>
+        <Day>Sunday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Monday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Tuesday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Wednesday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Thursday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>8:00 AM</OpenTime>
+        <CloseTime>5:00 PM</CloseTime>
+        <Day>Friday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>10:00 AM</OpenTime>
+        <CloseTime>5:00 PM</CloseTime>
+        <Day>Saturday</Day>
+      </OfficeHour>
+      <ShortDescription>Welcome home to Riverstone!</ShortDescription>
+      <LongDescription>Everyone desires a place to call home. Naturally. When you make yourself at home in the refreshingly classic community of Riverstone at Owings Mills, it is natural you would feel content with life behind closed doors. Riverstone shows like a dream home. The custom-tiled entryway opens into a room where light streams in through abundant windows. Gourmet kitchens and master baths with oval soaking tubs offers endless luxury, comfort and style. Your home should be your solace, a stronghold for everything you love about your life. Riverstone at Owings Mills is the natural choice.</LongDescription>
+      <LeaseLength> We offer multiple lease terms</LeaseLength>
+      <Parking Type="Surface Lot">
+        <Assigned>false</Assigned>
+        <Spaces>0</Spaces>
+        <Comment>Direct access garages in select homes.</Comment>
+      </Parking>
+      <DrivingDirections>Take I-695 to I-795 to exit 4, Owings Mills Blvd. Bear left and follow to a left on Red Run Blvd. Turn right onto Painters Mill and follow to our community on the right.</DrivingDirections>
+    </Information>
+    <Accounting />
+    <Payment />
+    <Fee />
+    <Amenity Type="Other">
+      <Description>Verizon FIOS</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Hot Tub</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Accepts Credit Card</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="BusinessCenter">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="ClubHouse">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="FitnessCenter">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="FreeWeights">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Garage">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Gate">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="HighSpeed">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="OnSiteMaintenance">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="OnSiteManagement">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="PackageReceiving">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Pool">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="RecRoom">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Transportation">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Policy>
+      <Pet Type="dog" Allowed="true">
+        <Comment>We welcome pets under 50 pounds. There is a $300 deposit and $25 per month. Please call for pet policy.</Comment>
+        <MaxCount>2</MaxCount>
+        <Deposit />
+        <Fee />
+        <Rent />
+        <Restrictions />
+      </Pet>
+      <Pet Type="cat" Allowed="true">
+        <Comment>We welcome pets. There is a $300 deposit and $25 per month. Please call for pet policy.</Comment>
+        <MaxCount>2</MaxCount>
+        <Deposit />
+        <Fee />
+        <Rent />
+        <Restrictions />
+      </Pet>
+    </Policy>
+    <Floorplan Id="374656" Type="Internal">
+      <Name>The Garrison</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="692" Max="692" />
+      <MarketRent Min="1076" Max="1097" />
+      <EffectiveRent Min="0" Max="0" />
+      <Deposit>
+        <Amount>
+          <Range>
+            <min>300.0000</min>
+            <max>300.0000</max>
+          </Range>
+        </Amount>
+      </Deposit>
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="CeilingFan">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivateBalcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivatePatio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Range">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="374657" Type="Internal">
+      <Name>The Owings</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="797" Max="797" />
+      <MarketRent Min="1075" Max="1424" />
+      <EffectiveRent Min="0" Max="0" />
+      <Deposit>
+        <Amount>
+          <Range>
+            <min>300.0000</min>
+            <max>300.0000</max>
+          </Range>
+        </Amount>
+      </Deposit>
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="CeilingFan">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivateBalcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivatePatio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Range">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="374658" Type="Internal">
+      <Name>The Glyndon</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="813" Max="813" />
+      <MarketRent Min="1098" Max="1484" />
+      <EffectiveRent Min="0" Max="0" />
+      <Deposit>
+        <Amount>
+          <Range>
+            <min>300.0000</min>
+            <max>300.0000</max>
+          </Range>
+        </Amount>
+      </Deposit>
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="CeilingFan">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Disposal">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivateBalcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivatePatio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Range">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="374659" Type="Internal">
+      <Name>The Franklin</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="956" Max="956" />
+      <MarketRent Min="1153" Max="1287" />
+      <EffectiveRent Min="0" Max="0" />
+      <Deposit>
+        <Amount>
+          <Range>
+            <min>300.0000</min>
+            <max>300.0000</max>
+          </Range>
+        </Amount>
+      </Deposit>
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="CeilingFan">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Disposal">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivateBalcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivatePatio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Range">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="374660" Type="Internal">
+      <Name>The Sagamore</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>4</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="1020" Max="1020" />
+      <MarketRent Min="1200" Max="1535" />
+      <EffectiveRent Min="0" Max="0" />
+      <Deposit>
+        <Amount>
+          <Range>
+            <min>300.0000</min>
+            <max>300.0000</max>
+          </Range>
+        </Amount>
+      </Deposit>
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="CeilingFan">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivateBalcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivatePatio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Range">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="374662" Type="Internal">
+      <Name>The Stevenson</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>4</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="1084" Max="1084" />
+      <MarketRent Min="1549" Max="1570" />
+      <EffectiveRent Min="0" Max="0" />
+      <Deposit>
+        <Amount>
+          <Range>
+            <min>300.0000</min>
+            <max>300.0000</max>
+          </Range>
+        </Amount>
+      </Deposit>
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="CeilingFan">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Disposal">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivateBalcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivatePatio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Range">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="374664" Type="Internal">
+      <Name>The Greenspring</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>4</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="1124" Max="1124" />
+      <MarketRent Min="1374" Max="1590" />
+      <EffectiveRent Min="0" Max="0" />
+      <Deposit>
+        <Amount>
+          <Range>
+            <min>300.0000</min>
+            <max>300.0000</max>
+          </Range>
+        </Amount>
+      </Deposit>
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="CeilingFan">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivateBalcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivatePatio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Range">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="374666" Type="Internal">
+      <Name>The Woodholme</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>4</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="1181" Max="1181" />
+      <MarketRent Min="1572" Max="1767" />
+      <EffectiveRent Min="0" Max="0" />
+      <Deposit>
+        <Amount>
+          <Range>
+            <min>300.0000</min>
+            <max>300.0000</max>
+          </Range>
+        </Amount>
+      </Deposit>
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Balcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="CeilingFan">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivateBalcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivatePatio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Range">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="374667" Type="Internal">
+      <Name>The Worthington</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>5</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>3</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="1307" Max="1307" />
+      <MarketRent Min="1819" Max="1915" />
+      <EffectiveRent Min="0" Max="0" />
+      <Deposit>
+        <Amount>
+          <Range>
+            <min>300.0000</min>
+            <max>300.0000</max>
+          </Range>
+        </Amount>
+      </Deposit>
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="CeilingFan">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Disposal">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivateBalcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivatePatio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Range">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="374668" Type="Internal">
+      <Name>The Worthington Valley</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>5</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>3</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="1388" Max="1388" />
+      <MarketRent Min="1829" Max="2140" />
+      <EffectiveRent Min="0" Max="0" />
+      <Deposit>
+        <Amount>
+          <Range>
+            <min>300.0000</min>
+            <max>300.0000</max>
+          </Range>
+        </Amount>
+      </Deposit>
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="CeilingFan">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Disposal">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivateBalcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivatePatio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Range">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Utility MajorUtility="Some">
+      <AirCon>false</AirCon>
+      <BroadbandInternet>false</BroadbandInternet>
+      <Cable>false</Cable>
+      <Electric>false</Electric>
+      <Gas>false</Gas>
+      <Heat>false</Heat>
+      <HotWater>false</HotWater>
+      <Satellite>false</Satellite>
+      <Sewer>false</Sewer>
+      <Telephone>false</Telephone>
+      <Trash>false</Trash>
+      <Water>false</Water>
+    </Utility>
+    <ILS />
+  </Property>
+  <Property ManagementID="7548">
+    <PropertyID>
+      <MITS:Identification Type="market rate apt">
+        <MITS:PrimaryID>89490</MITS:PrimaryID>
+        <MITS:SecondaryID>634248360147239331</MITS:SecondaryID>
+        <MITS:MarketingName>The Estates</MITS:MarketingName>
+        <MITS:LegalName />
+        <MITS:WebSite>http://www.estatesapartments.com/templates/template_concept03/default.asp?w=theestatesapts</MITS:WebSite>
+      </MITS:Identification>
+      <MITS:Address>
+        <MITS:Address1>1601 Hutzler Lane Pikesville</MITS:Address1>
+        <MITS:City>Pikesville</MITS:City>
+        <MITS:State>MD</MITS:State>
+        <MITS:PostalCode>21208</MITS:PostalCode>
+        <MITS:Email>theestatesapartments@bozzuto.com</MITS:Email>
+      </MITS:Address>
+      <MITS:Phone Type="office">
+        <MITS:PhoneNumber>4106530123</MITS:PhoneNumber>
+        <MITS:Extension />
+      </MITS:Phone>
+      <MITS:Phone Type="fax">
+        <MITS:PhoneNumber>4106530017</MITS:PhoneNumber>
+        <MITS:Extension />
+      </MITS:Phone>
+    </PropertyID>
+    <ILS_Identification Type="Apartment" RentalType="Unspecified" />
+    <Information>
+      <BuildingCount>0</BuildingCount>
+      <UnitCount>208</UnitCount>
+      <OfficeHour>
+        <OpenTime>12:00 PM</OpenTime>
+        <CloseTime>5:00 PM</CloseTime>
+        <Day>Sunday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Monday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Tuesday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Wednesday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Thursday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>8:00 AM</OpenTime>
+        <CloseTime>5:00 PM</CloseTime>
+        <Day>Friday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>10:00 AM</OpenTime>
+        <CloseTime>5:00 PM</CloseTime>
+        <Day>Saturday</Day>
+      </OfficeHour>
+      <ShortDescription>Welcome to The Estates ! Our property is located in the Heart of Pikesville's Town Center near 695 Beltway, less than one mile from the Area Metro Train for Easy Downtown Travel</ShortDescription>
+      <LongDescription>The Estates in Pikesville. The Estates will offer you all the comforts of home including a fully equipped modern kitchen, built in microwave. washer/dryer, huge walk-in closets, resort style pool, 24 hour fitness center, an internet caf, and much more. The Estates were built in 1988 but all apartments have been renovated within the last three years. We are a controlled access community that houses 208 apartment homes. Altogether we have 16 buildings that make up the 208 apartment homes. The Estates is a luxury apartment community. Again, we would love to have you here at The Estates as a resident. Should you have any questions or would like to discuss The Estates further, please do not hesitate to give us a call.</LongDescription>
+      <LeaseLength> 12 months</LeaseLength>
+      <Parking Type="Other">
+        <Assigned>false</Assigned>
+        <Spaces>0</Spaces>
+        <Comment>On site parking</Comment>
+      </Parking>
+      <DrivingDirections>The Estates is located on Old Court Road in the heart of Pikesvilles Town Center. From Interstate 695, take Exit 20 and turn right onto Reisterstown Road. Continue to Old Court Road and turn right. The Estates will be 1 and 1/2 blocks on the left.</DrivingDirections>
+    </Information>
+    <Accounting />
+    <Payment />
+    <Fee />
+    <Amenity Type="Other">
+      <Description>BBQ/Gas Grill and Picnic Area</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Walking distance to metro station</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Jacuzzi and sun deck</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Controlled building access</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>24-hour emergency maintenance</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Car wash facilities</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Individually Monitored Individually monitored alarm systems</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Wood burning fireplace/selected units</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>State-of-the-art fitness center</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Private balconies with storage</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="ClubHouse">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="FitnessCenter">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="FreeWeights">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Gate">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="HighSpeed">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="OnSiteMaintenance">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="OnSiteManagement">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="PackageReceiving">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Pool">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Sundeck">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Transportation">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="TVLounge">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Policy>
+      <Pet Type="cat" Allowed="true">
+        <Comment>Pets Allowed</Comment>
+        <MaxCount>2</MaxCount>
+        <Deposit />
+        <Fee />
+        <Rent />
+        <Restrictions>Please call for pet information</Restrictions>
+      </Pet>
+      <Pet Type="dog" Allowed="true">
+        <Comment>Pets allowed</Comment>
+        <MaxCount>2</MaxCount>
+        <Deposit />
+        <Fee />
+        <Rent />
+        <Restrictions>Please call for pet information</Restrictions>
+      </Pet>
+    </Policy>
+    <Floorplan Id="374279" Type="Internal">
+      <Name>The Equestrian Renovated</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="640" Max="640" />
+      <MarketRent Min="1119" Max="1119" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AdditionalStorage">
+        <Rank />
+      </Amenity>
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Alarm">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Balcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="CeilingFan">
+        <Rank />
+      </Amenity>
+      <Amenity Type="ControlledAccess">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Disposal">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Handrails">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Heat">
+        <Rank />
+      </Amenity>
+      <Amenity Type="IndividualClimateControl">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Patio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivateBalcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivatePatio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Range">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Refrigerator">
+        <Rank />
+      </Amenity>
+      <Amenity Type="View">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WheelChair">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WindowCoverings">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="374280" Type="Internal">
+      <Name>The Polo Renovated</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="780" Max="780" />
+      <MarketRent Min="1189" Max="1209" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AdditionalStorage">
+        <Rank />
+      </Amenity>
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Alarm">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Balcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="CeilingFan">
+        <Rank />
+      </Amenity>
+      <Amenity Type="ControlledAccess">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Disposal">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Handrails">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Heat">
+        <Rank />
+      </Amenity>
+      <Amenity Type="IndividualClimateControl">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Patio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivateBalcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivatePatio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Range">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Refrigerator">
+        <Rank />
+      </Amenity>
+      <Amenity Type="View">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WheelChair">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WindowCoverings">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="374281" Type="Internal">
+      <Name>The Preakness Renovated</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>3</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="938" Max="938" />
+      <MarketRent Min="1279" Max="1279" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AdditionalStorage">
+        <Rank />
+      </Amenity>
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Alarm">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Balcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="CeilingFan">
+        <Rank />
+      </Amenity>
+      <Amenity Type="ControlledAccess">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Disposal">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Handrails">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Heat">
+        <Rank />
+      </Amenity>
+      <Amenity Type="IndividualClimateControl">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Patio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivateBalcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivatePatio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Range">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Refrigerator">
+        <Rank />
+      </Amenity>
+      <Amenity Type="View">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WheelChair">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WindowCoverings">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="374282" Type="Internal">
+      <Name>The Squire Renovated</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>4</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="1100" Max="1100" />
+      <MarketRent Min="1399" Max="1419" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AdditionalStorage">
+        <Rank />
+      </Amenity>
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Alarm">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Balcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="CeilingFan">
+        <Rank />
+      </Amenity>
+      <Amenity Type="ControlledAccess">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Disposal">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Handrails">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Heat">
+        <Rank />
+      </Amenity>
+      <Amenity Type="IndividualClimateControl">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Patio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivateBalcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivatePatio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Range">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Refrigerator">
+        <Rank />
+      </Amenity>
+      <Amenity Type="View">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WheelChair">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WindowCoverings">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Utility MajorUtility="Some">
+      <AirCon>false</AirCon>
+      <BroadbandInternet>false</BroadbandInternet>
+      <Cable>false</Cable>
+      <Electric>false</Electric>
+      <Gas>false</Gas>
+      <Heat>false</Heat>
+      <HotWater>false</HotWater>
+      <Satellite>false</Satellite>
+      <Sewer>true</Sewer>
+      <Telephone>false</Telephone>
+      <Trash>true</Trash>
+      <Water>true</Water>
+    </Utility>
+    <ILS />
+  </Property>
+  <Property ManagementID="7548">
+    <PropertyID>
+      <MITS:Identification Type="market rate apt">
+        <MITS:PrimaryID>93389</MITS:PrimaryID>
+        <MITS:SecondaryID>634420274867519325</MITS:SecondaryID>
+        <MITS:MarketingName>Arbors at Fair Lakes</MITS:MarketingName>
+        <MITS:LegalName />
+        <MITS:WebSite />
+      </MITS:Identification>
+      <MITS:Address>
+        <MITS:Address1>4408 Oak Creek Lane</MITS:Address1>
+        <MITS:City>Fairfax</MITS:City>
+        <MITS:State>VA</MITS:State>
+        <MITS:PostalCode>22033</MITS:PostalCode>
+        <MITS:Email>arborsfairlakes@bozzuto.com</MITS:Email>
+      </MITS:Address>
+      <MITS:Phone Type="office">
+        <MITS:PhoneNumber>8665834608</MITS:PhoneNumber>
+        <MITS:Extension />
+      </MITS:Phone>
+    </PropertyID>
+    <ILS_Identification Type="Apartment" RentalType="Unspecified" />
+    <Information>
+      <BuildingCount>0</BuildingCount>
+      <UnitCount>282</UnitCount>
+      <OfficeHour>
+        <OpenTime>12:00 PM</OpenTime>
+        <CloseTime>5:00 PM</CloseTime>
+        <Day>Sunday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Monday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Tuesday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Wednesday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>10:00 AM</OpenTime>
+        <CloseTime>7:00 PM</CloseTime>
+        <Day>Thursday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>8:00 AM</OpenTime>
+        <CloseTime>5:00 PM</CloseTime>
+        <Day>Friday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>5:00 PM</CloseTime>
+        <Day>Saturday</Day>
+      </OfficeHour>
+      <ShortDescription>Welcome home to Arbors at Fair Lakes! Convenient Fairfax location...Minutes from Route 50 and Route 66...Free shuttle to Vienna Metro...</ShortDescription>
+      <LongDescription>A fusion of serenity and urban escape, The Arbors at Fair Lakes is an extraordinary community situated perfectly near the best of Fairfax - the great shopping of Fair Oaks Mall and Fairfax Corner and the tranquil relaxation of Burke Lake Park. Nestled in a lush wooded enclave, but just steps from popular shopping and dining destinations, The Arbors at Fair Lakes gives you the best of both worlds. On top of that, you'll have easy access to I-66 and Route 50 and a complimentary shuttle to the Vienna Orange Line Metro. Come home to The Arbors of Fair Lakes.</LongDescription>
+      <LeaseLength> We offer multiple lease terms</LeaseLength>
+      <Parking Type="Surface Lot">
+        <Assigned>false</Assigned>
+        <Spaces>0</Spaces>
+        <Comment>Please call for parking information.</Comment>
+      </Parking>
+      <Parking Type="Covered Lot">
+        <Assigned>false</Assigned>
+        <Spaces>0</Spaces>
+        <Comment>Please call for parking information.</Comment>
+      </Parking>
+      <DrivingDirections>I-66 west to Route 50 West. Take the second exit for West Ox Road. Make a right on Fair Lakes Parkway. Our property will be just up on the right.</DrivingDirections>
+    </Information>
+    <Accounting />
+    <Payment />
+    <Fee />
+    <Amenity Type="Other">
+      <Description>Complimentary shuttle to Vienna Metro</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Sparkling swimming pool</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>24 Hour Fitness Center</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Children's playscape</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Lighted tennis court</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Running and walking trails</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Car care center</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Parking Space(s)</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Near Area Shopping and Dining</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="BasketballCourt">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="BusinessCenter">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="ClubHouse">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="CoverPark">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="FitnessCenter">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="HighSpeed">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Laundry">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="OnSiteMaintenance">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="OnSiteManagement">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="PackageReceiving">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Pool">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Sundeck">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="TennisCourt">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Transportation">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Policy>
+      <Pet Type="cat" Allowed="true">
+        <Comment>Cats are allowed.</Comment>
+        <MaxCount>2</MaxCount>
+        <Deposit />
+        <Fee />
+        <Rent />
+        <Restrictions>We welcome pets at our community. Deposits and fees may apply, please contact us for additional information.</Restrictions>
+      </Pet>
+      <Pet Type="dog" Allowed="true">
+        <Comment>Dogs are allowed.</Comment>
+        <MaxCount>2</MaxCount>
+        <Deposit />
+        <Fee />
+        <Rent />
+        <Restrictions>We welcome pets at our community. Deposits and fees may apply, please contact us for additional information.</Restrictions>
+      </Pet>
+    </Policy>
+    <Floorplan Id="402898" Type="Internal">
+      <Name>One Bedroom-One Bath-699</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="699" Max="699" />
+      <MarketRent Min="1221" Max="1221" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AdditionalStorage">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivateBalcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivatePatio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="402899" Type="Internal">
+      <Name>One Bedroom-One Bath-792</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="792" Max="792" />
+      <MarketRent Min="1415" Max="1415" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AdditionalStorage">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivateBalcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivatePatio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="402900" Type="Internal">
+      <Name>One Bedroom-One Bath-817</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="817" Max="817" />
+      <MarketRent Min="1411" Max="1411" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AdditionalStorage">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivateBalcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivatePatio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="402901" Type="Internal">
+      <Name>One Bedroom-One Bath with Den-945</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="945" Max="945" />
+      <MarketRent Min="1437" Max="1437" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AdditionalStorage">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivateBalcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivatePatio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="402902" Type="Internal">
+      <Name>Two Bedroom-Two Bath-1059</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>4</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="1059" Max="1059" />
+      <MarketRent Min="1618" Max="1618" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AdditionalStorage">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivateBalcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivatePatio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="402903" Type="Internal">
+      <Name>Two Bedroom-Two Bath-1092</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>4</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="1092" Max="1092" />
+      <MarketRent Min="1504" Max="1504" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AdditionalStorage">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Dryer">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Fireplace">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivateBalcony">
+        <Rank />
+      </Amenity>
+      <Amenity Type="PrivatePatio">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Washer">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Utility MajorUtility="Some">
+      <AirCon>false</AirCon>
+      <BroadbandInternet>false</BroadbandInternet>
+      <Cable>false</Cable>
+      <Electric>false</Electric>
+      <Gas>false</Gas>
+      <Heat>false</Heat>
+      <HotWater>false</HotWater>
+      <Satellite>false</Satellite>
+      <Sewer>false</Sewer>
+      <Telephone>false</Telephone>
+      <Trash>false</Trash>
+      <Water>false</Water>
+    </Utility>
+    <ILS />
+  </Property>
+  <Property ManagementID="7548">
+    <PropertyID>
+      <MITS:Identification Type="market rate apt">
+        <MITS:PrimaryID>93390</MITS:PrimaryID>
+        <MITS:SecondaryID>634420316152697023</MITS:SecondaryID>
+        <MITS:MarketingName>Observer Park</MITS:MarketingName>
+        <MITS:LegalName />
+        <MITS:WebSite>http://observerpark.com/</MITS:WebSite>
+      </MITS:Identification>
+      <MITS:Address>
+        <MITS:Address1>51 Garden Street</MITS:Address1>
+        <MITS:City>Hoboken</MITS:City>
+        <MITS:State>NJ</MITS:State>
+        <MITS:PostalCode>07030</MITS:PostalCode>
+        <MITS:Email>email@email.com</MITS:Email>
+      </MITS:Address>
+      <MITS:Phone Type="office">
+        <MITS:PhoneNumber>2017987007</MITS:PhoneNumber>
+        <MITS:Extension />
+      </MITS:Phone>
+    </PropertyID>
+    <ILS_Identification Type="Apartment" RentalType="Unspecified" />
+    <Information>
+      <BuildingCount>0</BuildingCount>
+      <UnitCount>115</UnitCount>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>7:00 PM</CloseTime>
+        <Day>Monday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Tuesday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Wednesday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Thursday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>5:00 PM</CloseTime>
+        <Day>Friday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>10:00 AM</OpenTime>
+        <CloseTime>5:00 PM</CloseTime>
+        <Day>Saturday</Day>
+      </OfficeHour>
+      <ShortDescription>Welcome home to Observer ParkNew York City at your door ... Convenient Hoboken location ... Just steps from dining, shopping and entertainment ...</ShortDescription>
+      <LongDescription>Situated on a charming tree-lined street, yet close to restaurants, shops and parks, and just minutes from New York City, Observer Park offers the perfect blend of urban and suburban living. Experience the splendor of spectacular city and river views, spacious floorplans, and unparalleled service. Recent renovations and a pet-friendly policy, make Observer Park the ultimate choice for your new home.</LongDescription>
+      <LeaseLength> We offer multiple lease terms</LeaseLength>
+      <Parking Type="Surface Lot">
+        <Assigned>false</Assigned>
+        <Spaces>0</Spaces>
+        <Comment>Please call for parking information.</Comment>
+      </Parking>
+      <Parking Type="Garage Lot">
+        <Assigned>false</Assigned>
+        <Spaces>0</Spaces>
+        <Comment>Please call for parking information.</Comment>
+      </Parking>
+      <DrivingDirections>Please call for driving directions!</DrivingDirections>
+    </Information>
+    <Accounting />
+    <Payment />
+    <Fee />
+    <Amenity Type="Other">
+      <Description>New fitness center</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Controlled building access</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Beautifully landscaped rooftop terrace</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Monthly community events</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Professionally designed lobbies and common areas</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>24-hour emergency maintenance</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Availability24Hours">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="FitnessCenter">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Elevator">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Garage">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Gate">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="HighSpeed">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Laundry">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="OnSiteMaintenance">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="OnSiteManagement">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="PackageReceiving">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="StorageSpace">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Policy>
+      <Pet Type="cat" Allowed="true">
+        <Comment>Cats are allowed.</Comment>
+        <MaxCount>2</MaxCount>
+        <Deposit />
+        <Fee />
+        <Rent />
+        <Restrictions>We welcome pets at our community. Deposits and fees may apply, please contact us for additional information.</Restrictions>
+      </Pet>
+      <Pet Type="dog" Allowed="true">
+        <Comment>Dogs are allowed.</Comment>
+        <MaxCount>2</MaxCount>
+        <Deposit />
+        <Fee />
+        <Rent />
+        <Restrictions>We welcome pets at our community. Deposits and fees may apply, please contact us for additional information.</Restrictions>
+      </Pet>
+    </Policy>
+    <Floorplan Id="402904" Type="Internal">
+      <Name>One Bedroom A</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="630" Max="630" />
+      <MarketRent Min="0" Max="0" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="View">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="402905" Type="Internal">
+      <Name>One Bedroom B</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="630" Max="630" />
+      <MarketRent Min="0" Max="0" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="View">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="402906" Type="Internal">
+      <Name>Two Bedroom A</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>3</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="822" Max="822" />
+      <MarketRent Min="0" Max="0" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="View">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="402907" Type="Internal">
+      <Name>Two Bedroom B</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>3</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="866" Max="866" />
+      <MarketRent Min="0" Max="0" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="View">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="402908" Type="Internal">
+      <Name>Two Bedroom C</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>3</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="936" Max="936" />
+      <MarketRent Min="0" Max="0" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="View">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="402909" Type="Internal">
+      <Name>Three Bedroom</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>5</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>3</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="1013" Max="1013" />
+      <MarketRent Min="0" Max="0" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="View">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Utility MajorUtility="Some">
+      <AirCon>false</AirCon>
+      <BroadbandInternet>false</BroadbandInternet>
+      <Cable>false</Cable>
+      <Electric>false</Electric>
+      <Gas>false</Gas>
+      <Heat>false</Heat>
+      <HotWater>false</HotWater>
+      <Satellite>false</Satellite>
+      <Sewer>false</Sewer>
+      <Telephone>false</Telephone>
+      <Trash>false</Trash>
+      <Water>false</Water>
+    </Utility>
+    <ILS />
+  </Property>
+  <Property ManagementID="7548">
+    <PropertyID>
+      <MITS:Identification Type="market rate apt">
+        <MITS:PrimaryID>93391</MITS:PrimaryID>
+        <MITS:SecondaryID>2430087</MITS:SecondaryID>
+        <MITS:MarketingName>Senate Square</MITS:MarketingName>
+        <MITS:LegalName />
+        <MITS:WebSite>http://senatesquaretowers.com/</MITS:WebSite>
+      </MITS:Identification>
+      <MITS:Address>
+        <MITS:Address1>201 I Street NE</MITS:Address1>
+        <MITS:City>Washington</MITS:City>
+        <MITS:State>DC</MITS:State>
+        <MITS:PostalCode>20002</MITS:PostalCode>
+        <MITS:Email />
+      </MITS:Address>
+      <MITS:Phone Type="office">
+        <MITS:PhoneNumber>2024880969</MITS:PhoneNumber>
+        <MITS:Extension />
+      </MITS:Phone>
+    </PropertyID>
+    <ILS_Identification Type="Apartment" RentalType="Unspecified" />
+    <Information>
+      <BuildingCount>0</BuildingCount>
+      <UnitCount>432</UnitCount>
+      <OfficeHour>
+        <OpenTime>12:00 PM</OpenTime>
+        <CloseTime>5:00 PM</CloseTime>
+        <Day>Sunday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Monday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Tuesday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Wednesday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Thursday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>5:00 PM</CloseTime>
+        <Day>Friday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>10:00 AM</OpenTime>
+        <CloseTime>5:00 PM</CloseTime>
+        <Day>Saturday</Day>
+      </OfficeHour>
+      <ShortDescription>Welcome home to Senate Square! Luxury apartments .... Great Location!</ShortDescription>
+      <LongDescription>The first luxury rental property in the H Street Corridorthe crossroads of Washington, D.C. Your every need has been anticipated from impeccable finishes and state-of-the-art appliances to dynamic city views. Top-notch amenities that include a serene rooftop pool and a first-rate fitness center. Living in the city has never been better.</LongDescription>
+      <LeaseLength> We offer multiple lease terms</LeaseLength>
+      <Parking Type="Surface Lot">
+        <Assigned>false</Assigned>
+        <Spaces>0</Spaces>
+        <Comment>Please call for parking information.</Comment>
+      </Parking>
+      <DrivingDirections>Please call for driving directions.</DrivingDirections>
+    </Information>
+    <Accounting />
+    <Payment />
+    <Fee />
+    <Amenity Type="Other">
+      <Description>Expansive rooftop and pool</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Screening room</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Billiards</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Community room</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Two blocks from Union Station. Hosting both AMTRAK and Metro</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Two rooftop terraces with panoramic views and grilling stations</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>On-Site 24-Hour Concierge</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Valet Dry Cleaning</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Resident Activities and Socials</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>4-Hour Emergency Maintenance</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Availability24Hours">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="BusinessCenter">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="ClubHouse">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Concierge">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="FitnessCenter">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Elevator">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Gate">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="HighSpeed">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="OnSiteMaintenance">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="OnSiteManagement">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="PackageReceiving">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Pool">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="StorageSpace">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Policy>
+      <Pet Type="cat" Allowed="true">
+        <Comment>Cats are allowed.</Comment>
+        <MaxCount>2</MaxCount>
+        <Deposit />
+        <Fee />
+        <Rent />
+        <Restrictions>We welcome pets at our community. Deposits and fees may apply, please contact us for additional information.</Restrictions>
+      </Pet>
+      <Pet Type="dog" Allowed="true">
+        <Comment>Dogs are allowed.</Comment>
+        <MaxCount>2</MaxCount>
+        <Deposit />
+        <Fee />
+        <Rent />
+        <Restrictions>We welcome pets at our community. Deposits and fees may apply, please contact us for additional information.</Restrictions>
+      </Pet>
+    </Policy>
+    <Floorplan Id="402910" Type="Internal">
+      <Name>Studio</Name>
+      <UnitCount>2</UnitCount>
+      <UnitsAvailable>2</UnitsAvailable>
+      <DisplayedUnitsAvailable>2</DisplayedUnitsAvailable>
+      <TotalRoomCount>1</TotalRoomCount>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="426" Max="738" />
+      <MarketRent Min="1799" Max="2189" />
+      <EffectiveRent Min="0" Max="0" />
+    </Floorplan>
+    <Floorplan Id="402911" Type="Internal">
+      <Name>1 Bed/1 Bath</Name>
+      <UnitCount>1</UnitCount>
+      <UnitsAvailable>1</UnitsAvailable>
+      <DisplayedUnitsAvailable>1</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="700" Max="809" />
+      <MarketRent Min="1837" Max="2289" />
+      <EffectiveRent Min="0" Max="0" />
+    </Floorplan>
+    <Floorplan Id="402913" Type="Internal">
+      <Name>1 Bed/Den/1 Bath</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="857" Max="1041" />
+      <MarketRent Min="1837" Max="2345" />
+      <EffectiveRent Min="0" Max="0" />
+    </Floorplan>
+    <Floorplan Id="402912" Type="Internal">
+      <Name>1 Bed/1.5 Bath</Name>
+      <UnitCount>3</UnitCount>
+      <UnitsAvailable>3</UnitsAvailable>
+      <DisplayedUnitsAvailable>3</DisplayedUnitsAvailable>
+      <TotalRoomCount>3</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.50</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="832" Max="960" />
+      <MarketRent Min="1822" Max="2290" />
+      <EffectiveRent Min="0" Max="0" />
+    </Floorplan>
+    <Floorplan Id="402914" Type="Internal">
+      <Name>1 Bed/Den/1.5 Bath</Name>
+      <UnitCount>3</UnitCount>
+      <UnitsAvailable>3</UnitsAvailable>
+      <DisplayedUnitsAvailable>3</DisplayedUnitsAvailable>
+      <TotalRoomCount>3</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.50</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="934" Max="1136" />
+      <MarketRent Min="2320" Max="2473" />
+      <EffectiveRent Min="0" Max="0" />
+    </Floorplan>
+    <Floorplan Id="402915" Type="Internal">
+      <Name>1 Bed/Den/2 Bath</Name>
+      <UnitCount>2</UnitCount>
+      <UnitsAvailable>2</UnitsAvailable>
+      <DisplayedUnitsAvailable>2</DisplayedUnitsAvailable>
+      <TotalRoomCount>3</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="857" Max="1201" />
+      <MarketRent Min="1837" Max="2793" />
+      <EffectiveRent Min="0" Max="0" />
+    </Floorplan>
+    <Floorplan Id="402916" Type="Internal">
+      <Name>2 Bed/1 Bath</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>4</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="896" Max="896" />
+      <MarketRent Min="1837" Max="2536" />
+      <EffectiveRent Min="0" Max="0" />
+    </Floorplan>
+    <Floorplan Id="402917" Type="Internal">
+      <Name>2 Bed/2 Bath</Name>
+      <UnitCount>3</UnitCount>
+      <UnitsAvailable>3</UnitsAvailable>
+      <DisplayedUnitsAvailable>3</DisplayedUnitsAvailable>
+      <TotalRoomCount>4</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="1075" Max="1516" />
+      <MarketRent Min="1837" Max="3311" />
+      <EffectiveRent Min="0" Max="0" />
+    </Floorplan>
+    <Floorplan Id="402918" Type="Internal">
+      <Name>2 Bed/Den/2 Bath</Name>
+      <UnitCount>1</UnitCount>
+      <UnitsAvailable>1</UnitsAvailable>
+      <DisplayedUnitsAvailable>1</DisplayedUnitsAvailable>
+      <TotalRoomCount>4</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="1302" Max="1663" />
+      <MarketRent Min="3742" Max="4227" />
+      <EffectiveRent Min="0" Max="0" />
+    </Floorplan>
+    <Floorplan Id="417821" Type="Internal">
+      <Name>2 Bed/Den/2.5 Bath</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>4</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2.50</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="1831" Max="1852" />
+      <MarketRent Min="4492" Max="4787" />
+      <EffectiveRent Min="0" Max="0" />
+    </Floorplan>
+    <ILS_Unit Id="924741708" FloorplanID="402910">
+      <Unit>
+        <MITS:Information>
+          <MITS:UnitID>924741708</MITS:UnitID>
+          <MITS:UnitBedrooms>0</MITS:UnitBedrooms>
+          <MITS:UnitBathrooms>1.00</MITS:UnitBathrooms>
+          <MITS:MinSquareFeet>738</MITS:MinSquareFeet>
+          <MITS:MaxSquareFeet>738</MITS:MaxSquareFeet>
+          <MITS:MarketRent>1888.0000</MITS:MarketRent>
+          <MITS:UnitOccupancyStatus>vacant</MITS:UnitOccupancyStatus>
+          <MITS:UnitLeasedStatus>available</MITS:UnitLeasedStatus>
+          <MITS:FloorPlanID>402910</MITS:FloorPlanID>
+        </MITS:Information>
+        <MITS:PropertyPrimaryID>93391</MITS:PropertyPrimaryID>
+        <MITS:MarketingName>1-0723</MITS:MarketingName>
+      </Unit>
+      <Comment />
+      <Availability>
+        <VacancyClass>Unoccupied</VacancyClass>
+        <MadeReadyDate Month="12" Day="10" Year="2011" />
+      </Availability>
+    </ILS_Unit>
+    <ILS_Unit Id="924744831" FloorplanID="402910">
+      <Unit>
+        <MITS:Information>
+          <MITS:UnitID>924744831</MITS:UnitID>
+          <MITS:UnitBedrooms>0</MITS:UnitBedrooms>
+          <MITS:UnitBathrooms>1.00</MITS:UnitBathrooms>
+          <MITS:MinSquareFeet>738</MITS:MinSquareFeet>
+          <MITS:MaxSquareFeet>738</MITS:MaxSquareFeet>
+          <MITS:MarketRent>1898.0000</MITS:MarketRent>
+          <MITS:UnitOccupancyStatus>vacant</MITS:UnitOccupancyStatus>
+          <MITS:UnitLeasedStatus>available</MITS:UnitLeasedStatus>
+          <MITS:FloorPlanID>402910</MITS:FloorPlanID>
+        </MITS:Information>
+        <MITS:PropertyPrimaryID>93391</MITS:PropertyPrimaryID>
+        <MITS:MarketingName>1-0823</MITS:MarketingName>
+      </Unit>
+      <Comment />
+      <Availability>
+        <VacancyClass>Unoccupied</VacancyClass>
+        <MadeReadyDate Month="1" Day="27" Year="2012" />
+      </Availability>
+    </ILS_Unit>
+    <ILS_Unit Id="924742524" FloorplanID="402911">
+      <Unit>
+        <MITS:Information>
+          <MITS:UnitID>924742524</MITS:UnitID>
+          <MITS:UnitBedrooms>1</MITS:UnitBedrooms>
+          <MITS:UnitBathrooms>1.00</MITS:UnitBathrooms>
+          <MITS:MinSquareFeet>700</MITS:MinSquareFeet>
+          <MITS:MaxSquareFeet>700</MITS:MaxSquareFeet>
+          <MITS:MarketRent>2105.0000</MITS:MarketRent>
+          <MITS:UnitOccupancyStatus>vacant</MITS:UnitOccupancyStatus>
+          <MITS:UnitLeasedStatus>available</MITS:UnitLeasedStatus>
+          <MITS:FloorPlanID>402911</MITS:FloorPlanID>
+        </MITS:Information>
+        <MITS:PropertyPrimaryID>93391</MITS:PropertyPrimaryID>
+        <MITS:MarketingName>1-0920</MITS:MarketingName>
+      </Unit>
+      <Comment />
+      <Availability>
+        <VacancyClass>Unoccupied</VacancyClass>
+        <MadeReadyDate Month="1" Day="27" Year="2012" />
+      </Availability>
+    </ILS_Unit>
+    <ILS_Unit Id="924744830" FloorplanID="402912">
+      <Unit>
+        <MITS:Information>
+          <MITS:UnitID>924744830</MITS:UnitID>
+          <MITS:UnitBedrooms>1</MITS:UnitBedrooms>
+          <MITS:UnitBathrooms>1.50</MITS:UnitBathrooms>
+          <MITS:MinSquareFeet>936</MITS:MinSquareFeet>
+          <MITS:MaxSquareFeet>936</MITS:MaxSquareFeet>
+          <MITS:MarketRent>2625.0000</MITS:MarketRent>
+          <MITS:UnitOccupancyStatus>vacant</MITS:UnitOccupancyStatus>
+          <MITS:UnitLeasedStatus>available</MITS:UnitLeasedStatus>
+          <MITS:FloorPlanID>402912</MITS:FloorPlanID>
+        </MITS:Information>
+        <MITS:PropertyPrimaryID>93391</MITS:PropertyPrimaryID>
+        <MITS:MarketingName>5-0809</MITS:MarketingName>
+      </Unit>
+      <Comment />
+      <Availability>
+        <VacancyClass>Unoccupied</VacancyClass>
+        <MadeReadyDate Month="12" Day="27" Year="2011" />
+      </Availability>
+    </ILS_Unit>
+    <ILS_Unit Id="924742398" FloorplanID="402912">
+      <Unit>
+        <MITS:Information>
+          <MITS:UnitID>924742398</MITS:UnitID>
+          <MITS:UnitBedrooms>1</MITS:UnitBedrooms>
+          <MITS:UnitBathrooms>1.50</MITS:UnitBathrooms>
+          <MITS:MinSquareFeet>866</MITS:MinSquareFeet>
+          <MITS:MaxSquareFeet>866</MITS:MaxSquareFeet>
+          <MITS:MarketRent>2465.0000</MITS:MarketRent>
+          <MITS:UnitOccupancyStatus>vacant</MITS:UnitOccupancyStatus>
+          <MITS:UnitLeasedStatus>available</MITS:UnitLeasedStatus>
+          <MITS:FloorPlanID>402912</MITS:FloorPlanID>
+        </MITS:Information>
+        <MITS:PropertyPrimaryID>93391</MITS:PropertyPrimaryID>
+        <MITS:MarketingName>1-0503</MITS:MarketingName>
+      </Unit>
+      <Comment />
+      <Availability>
+        <VacancyClass>Unoccupied</VacancyClass>
+        <MadeReadyDate Month="1" Day="27" Year="2012" />
+      </Availability>
+    </ILS_Unit>
+    <ILS_Unit Id="924838390" FloorplanID="402912">
+      <Unit>
+        <MITS:Information>
+          <MITS:UnitID>924838390</MITS:UnitID>
+          <MITS:UnitBedrooms>1</MITS:UnitBedrooms>
+          <MITS:UnitBathrooms>1.50</MITS:UnitBathrooms>
+          <MITS:MinSquareFeet>866</MITS:MinSquareFeet>
+          <MITS:MaxSquareFeet>866</MITS:MaxSquareFeet>
+          <MITS:MarketRent>2445.0000</MITS:MarketRent>
+          <MITS:UnitOccupancyStatus>vacant</MITS:UnitOccupancyStatus>
+          <MITS:UnitLeasedStatus>available</MITS:UnitLeasedStatus>
+          <MITS:FloorPlanID>402912</MITS:FloorPlanID>
+        </MITS:Information>
+        <MITS:PropertyPrimaryID>93391</MITS:PropertyPrimaryID>
+        <MITS:MarketingName>1-0303</MITS:MarketingName>
+      </Unit>
+      <Comment />
+      <Availability>
+        <VacancyClass>Unoccupied</VacancyClass>
+        <MadeReadyDate Month="2" Day="14" Year="2012" />
+      </Availability>
+    </ILS_Unit>
+    <ILS_Unit Id="924742396" FloorplanID="402914">
+      <Unit>
+        <MITS:Information>
+          <MITS:UnitID>924742396</MITS:UnitID>
+          <MITS:UnitBedrooms>1</MITS:UnitBedrooms>
+          <MITS:UnitBathrooms>1.50</MITS:UnitBathrooms>
+          <MITS:MinSquareFeet>1048</MITS:MinSquareFeet>
+          <MITS:MaxSquareFeet>1048</MITS:MaxSquareFeet>
+          <MITS:MarketRent>2850.0000</MITS:MarketRent>
+          <MITS:UnitOccupancyStatus>vacant</MITS:UnitOccupancyStatus>
+          <MITS:UnitLeasedStatus>available</MITS:UnitLeasedStatus>
+          <MITS:FloorPlanID>402914</MITS:FloorPlanID>
+        </MITS:Information>
+        <MITS:PropertyPrimaryID>93391</MITS:PropertyPrimaryID>
+        <MITS:MarketingName>5-1207</MITS:MarketingName>
+      </Unit>
+      <Comment />
+      <Availability>
+        <VacancyClass>Unoccupied</VacancyClass>
+        <MadeReadyDate Month="11" Day="24" Year="2011" />
+      </Availability>
+    </ILS_Unit>
+    <ILS_Unit Id="924813103" FloorplanID="402914">
+      <Unit>
+        <MITS:Information>
+          <MITS:UnitID>924813103</MITS:UnitID>
+          <MITS:UnitBedrooms>1</MITS:UnitBedrooms>
+          <MITS:UnitBathrooms>1.50</MITS:UnitBathrooms>
+          <MITS:MinSquareFeet>1048</MITS:MinSquareFeet>
+          <MITS:MaxSquareFeet>1048</MITS:MaxSquareFeet>
+          <MITS:MarketRent>2840.0000</MITS:MarketRent>
+          <MITS:UnitOccupancyStatus>vacant</MITS:UnitOccupancyStatus>
+          <MITS:UnitLeasedStatus>available</MITS:UnitLeasedStatus>
+          <MITS:FloorPlanID>402914</MITS:FloorPlanID>
+        </MITS:Information>
+        <MITS:PropertyPrimaryID>93391</MITS:PropertyPrimaryID>
+        <MITS:MarketingName>5-1107</MITS:MarketingName>
+      </Unit>
+      <Comment />
+      <Availability>
+        <VacancyClass>Unoccupied</VacancyClass>
+        <MadeReadyDate Month="1" Day="19" Year="2012" />
+      </Availability>
+    </ILS_Unit>
+    <ILS_Unit Id="924836803" FloorplanID="402914">
+      <Unit>
+        <MITS:Information>
+          <MITS:UnitID>924836803</MITS:UnitID>
+          <MITS:UnitBedrooms>1</MITS:UnitBedrooms>
+          <MITS:UnitBathrooms>1.50</MITS:UnitBathrooms>
+          <MITS:MinSquareFeet>1048</MITS:MinSquareFeet>
+          <MITS:MaxSquareFeet>1048</MITS:MaxSquareFeet>
+          <MITS:MarketRent>2830.0000</MITS:MarketRent>
+          <MITS:UnitOccupancyStatus>vacant</MITS:UnitOccupancyStatus>
+          <MITS:UnitLeasedStatus>available</MITS:UnitLeasedStatus>
+          <MITS:FloorPlanID>402914</MITS:FloorPlanID>
+        </MITS:Information>
+        <MITS:PropertyPrimaryID>93391</MITS:PropertyPrimaryID>
+        <MITS:MarketingName>5-1007</MITS:MarketingName>
+      </Unit>
+      <Comment />
+      <Availability>
+        <VacancyClass>Unoccupied</VacancyClass>
+        <MadeReadyDate Month="2" Day="10" Year="2012" />
+      </Availability>
+    </ILS_Unit>
+    <ILS_Unit Id="924742401" FloorplanID="402915">
+      <Unit>
+        <MITS:Information>
+          <MITS:UnitID>924742401</MITS:UnitID>
+          <MITS:UnitBedrooms>1</MITS:UnitBedrooms>
+          <MITS:UnitBathrooms>2.00</MITS:UnitBathrooms>
+          <MITS:MinSquareFeet>1100</MITS:MinSquareFeet>
+          <MITS:MaxSquareFeet>1100</MITS:MaxSquareFeet>
+          <MITS:MarketRent>3170.0000</MITS:MarketRent>
+          <MITS:UnitOccupancyStatus>vacant</MITS:UnitOccupancyStatus>
+          <MITS:UnitLeasedStatus>available</MITS:UnitLeasedStatus>
+          <MITS:FloorPlanID>402915</MITS:FloorPlanID>
+        </MITS:Information>
+        <MITS:PropertyPrimaryID>93391</MITS:PropertyPrimaryID>
+        <MITS:MarketingName>5-0311</MITS:MarketingName>
+      </Unit>
+      <Comment />
+      <Availability>
+        <VacancyClass>Unoccupied</VacancyClass>
+        <MadeReadyDate Month="10" Day="18" Year="2011" />
+      </Availability>
+    </ILS_Unit>
+    <ILS_Unit Id="924742400" FloorplanID="402915">
+      <Unit>
+        <MITS:Information>
+          <MITS:UnitID>924742400</MITS:UnitID>
+          <MITS:UnitBedrooms>1</MITS:UnitBedrooms>
+          <MITS:UnitBathrooms>2.00</MITS:UnitBathrooms>
+          <MITS:MinSquareFeet>1201</MITS:MinSquareFeet>
+          <MITS:MaxSquareFeet>1201</MITS:MaxSquareFeet>
+          <MITS:MarketRent>3300.0000</MITS:MarketRent>
+          <MITS:UnitOccupancyStatus>vacant</MITS:UnitOccupancyStatus>
+          <MITS:UnitLeasedStatus>available</MITS:UnitLeasedStatus>
+          <MITS:FloorPlanID>402915</MITS:FloorPlanID>
+        </MITS:Information>
+        <MITS:PropertyPrimaryID>93391</MITS:PropertyPrimaryID>
+        <MITS:MarketingName>5-0414</MITS:MarketingName>
+      </Unit>
+      <Comment />
+      <Availability>
+        <VacancyClass>Unoccupied</VacancyClass>
+        <MadeReadyDate Month="11" Day="1" Year="2011" />
+      </Availability>
+    </ILS_Unit>
+    <ILS_Unit Id="924793186" FloorplanID="402917">
+      <Unit>
+        <MITS:Information>
+          <MITS:UnitID>924793186</MITS:UnitID>
+          <MITS:UnitBedrooms>2</MITS:UnitBedrooms>
+          <MITS:UnitBathrooms>2.00</MITS:UnitBathrooms>
+          <MITS:MinSquareFeet>1182</MITS:MinSquareFeet>
+          <MITS:MaxSquareFeet>1182</MITS:MaxSquareFeet>
+          <MITS:MarketRent>3265.0000</MITS:MarketRent>
+          <MITS:UnitOccupancyStatus>vacant</MITS:UnitOccupancyStatus>
+          <MITS:UnitLeasedStatus>available</MITS:UnitLeasedStatus>
+          <MITS:FloorPlanID>402917</MITS:FloorPlanID>
+        </MITS:Information>
+        <MITS:PropertyPrimaryID>93391</MITS:PropertyPrimaryID>
+        <MITS:MarketingName>1-0521</MITS:MarketingName>
+      </Unit>
+      <Comment />
+      <Availability>
+        <VacancyClass>Unoccupied</VacancyClass>
+        <MadeReadyDate Month="1" Day="15" Year="2012" />
+      </Availability>
+    </ILS_Unit>
+    <ILS_Unit Id="924828038" FloorplanID="402917">
+      <Unit>
+        <MITS:Information>
+          <MITS:UnitID>924828038</MITS:UnitID>
+          <MITS:UnitBedrooms>2</MITS:UnitBedrooms>
+          <MITS:UnitBathrooms>2.00</MITS:UnitBathrooms>
+          <MITS:MinSquareFeet>1182</MITS:MinSquareFeet>
+          <MITS:MaxSquareFeet>1182</MITS:MaxSquareFeet>
+          <MITS:MarketRent>3225.0000</MITS:MarketRent>
+          <MITS:UnitOccupancyStatus>vacant</MITS:UnitOccupancyStatus>
+          <MITS:UnitLeasedStatus>available</MITS:UnitLeasedStatus>
+          <MITS:FloorPlanID>402917</MITS:FloorPlanID>
+        </MITS:Information>
+        <MITS:PropertyPrimaryID>93391</MITS:PropertyPrimaryID>
+        <MITS:MarketingName>1-0621</MITS:MarketingName>
+      </Unit>
+      <Comment />
+      <Availability>
+        <VacancyClass>Unoccupied</VacancyClass>
+        <MadeReadyDate Month="1" Day="24" Year="2012" />
+      </Availability>
+    </ILS_Unit>
+    <ILS_Unit Id="924836491" FloorplanID="402917">
+      <Unit>
+        <MITS:Information>
+          <MITS:UnitID>924836491</MITS:UnitID>
+          <MITS:UnitBedrooms>2</MITS:UnitBedrooms>
+          <MITS:UnitBathrooms>2.00</MITS:UnitBathrooms>
+          <MITS:MinSquareFeet>1075</MITS:MinSquareFeet>
+          <MITS:MaxSquareFeet>1075</MITS:MaxSquareFeet>
+          <MITS:MarketRent>3190.0000</MITS:MarketRent>
+          <MITS:UnitOccupancyStatus>vacant</MITS:UnitOccupancyStatus>
+          <MITS:UnitLeasedStatus>available</MITS:UnitLeasedStatus>
+          <MITS:FloorPlanID>402917</MITS:FloorPlanID>
+        </MITS:Information>
+        <MITS:PropertyPrimaryID>93391</MITS:PropertyPrimaryID>
+        <MITS:MarketingName>1-0516</MITS:MarketingName>
+      </Unit>
+      <Comment />
+      <Availability>
+        <VacancyClass>Unoccupied</VacancyClass>
+        <MadeReadyDate Month="2" Day="9" Year="2012" />
+      </Availability>
+    </ILS_Unit>
+    <ILS_Unit Id="924836490" FloorplanID="402918">
+      <Unit>
+        <MITS:Information>
+          <MITS:UnitID>924836490</MITS:UnitID>
+          <MITS:UnitBedrooms>2</MITS:UnitBedrooms>
+          <MITS:UnitBathrooms>2.00</MITS:UnitBathrooms>
+          <MITS:MinSquareFeet>1426</MITS:MinSquareFeet>
+          <MITS:MaxSquareFeet>1426</MITS:MaxSquareFeet>
+          <MITS:MarketRent>4155.0000</MITS:MarketRent>
+          <MITS:UnitOccupancyStatus>vacant</MITS:UnitOccupancyStatus>
+          <MITS:UnitLeasedStatus>available</MITS:UnitLeasedStatus>
+          <MITS:FloorPlanID>402918</MITS:FloorPlanID>
+        </MITS:Information>
+        <MITS:PropertyPrimaryID>93391</MITS:PropertyPrimaryID>
+        <MITS:MarketingName>1-0907</MITS:MarketingName>
+      </Unit>
+      <Comment />
+      <Availability>
+        <VacancyClass>Unoccupied</VacancyClass>
+        <MadeReadyDate Month="2" Day="9" Year="2012" />
+      </Availability>
+    </ILS_Unit>
+    <Utility MajorUtility="Some">
+      <AirCon>false</AirCon>
+      <BroadbandInternet>false</BroadbandInternet>
+      <Cable>false</Cable>
+      <Electric>false</Electric>
+      <Gas>false</Gas>
+      <Heat>false</Heat>
+      <HotWater>false</HotWater>
+      <Satellite>false</Satellite>
+      <Sewer>false</Sewer>
+      <Telephone>false</Telephone>
+      <Trash>false</Trash>
+      <Water>false</Water>
+    </Utility>
+    <ILS />
+  </Property>
+  <Property ManagementID="7548">
+    <PropertyID>
+      <MITS:Identification Type="market rate apt">
+        <MITS:PrimaryID>93392</MITS:PrimaryID>
+        <MITS:SecondaryID>634420480820387225</MITS:SecondaryID>
+        <MITS:MarketingName>The Chelsea</MITS:MarketingName>
+        <MITS:LegalName />
+        <MITS:WebSite>http://www.thechelseaapts.com</MITS:WebSite>
+      </MITS:Identification>
+      <MITS:Address>
+        <MITS:Address1>160 West 24th Street</MITS:Address1>
+        <MITS:City>New York</MITS:City>
+        <MITS:State>NY</MITS:State>
+        <MITS:PostalCode>10011</MITS:PostalCode>
+        <MITS:Email>chelsea@bozzuto.com</MITS:Email>
+      </MITS:Address>
+      <MITS:Phone Type="office">
+        <MITS:PhoneNumber>2126278377</MITS:PhoneNumber>
+        <MITS:Extension />
+      </MITS:Phone>
+    </PropertyID>
+    <ILS_Identification Type="Apartment" RentalType="Unspecified" />
+    <Information>
+      <BuildingCount>0</BuildingCount>
+      <UnitCount>204</UnitCount>
+      <OfficeHour>
+        <OpenTime>12:00 PM</OpenTime>
+        <CloseTime>5:00 PM</CloseTime>
+        <Day>Sunday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Monday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Tuesday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Wednesday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>7:00 PM</CloseTime>
+        <Day>Thursday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>8:00 AM</OpenTime>
+        <CloseTime>5:00 PM</CloseTime>
+        <Day>Friday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>10:00 AM</OpenTime>
+        <CloseTime>5:00 PM</CloseTime>
+        <Day>Saturday</Day>
+      </OfficeHour>
+      <ShortDescription>Welcome home to The Chelsea!</ShortDescription>
+      <LongDescription>You know what you want in a Chelsea apartment. Vibrancy. A sense of artistry. The knowledge that youre in a place where self-expression is not only accepted, its expected. At The Chelsea, youll find an apartment close to everything that makes Chelsea what it is and designed to let you be who you want to be. From the unique collection for floor plans that let you express your personal style to the rooftop views that let you know your Manhattan apartment is in the citys best neighborhood, The Chelsea IS Chelsea. Make your mark here.</LongDescription>
+      <LeaseLength> 12 months</LeaseLength>
+      <Parking Type="Surface Lot">
+        <Assigned>false</Assigned>
+        <Spaces>0</Spaces>
+        <Comment>Please call for parking information.</Comment>
+      </Parking>
+      <DrivingDirections>Please call for driving directions.</DrivingDirections>
+    </Information>
+    <Accounting />
+    <Payment />
+    <Fee />
+    <Amenity Type="Other">
+      <Description>24 hour ground floor fitness center with Cybex strength and cardio equipment</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>9th floor sunroom/media room</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>2 rooftop decks with luxurious seating and rooftop kitchen</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Coinless Laundry facilities</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>24 hour emergency maintenance</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>24 hour Front Desk staff</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Availability24Hours">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="FitnessCenter">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Elevator">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="HighSpeed">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Laundry">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="OnSiteMaintenance">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="OnSiteManagement">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="PackageReceiving">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="Sundeck">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="TVLounge">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Policy />
+    <Floorplan Id="402920" Type="Internal">
+      <Name>Studio-O</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>1</TotalRoomCount>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="539" Max="539" />
+      <MarketRent Min="0" Max="0" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="ControlledAccess">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Heat">
+        <Rank />
+      </Amenity>
+      <Amenity Type="IndividualClimateControl">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Range">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Refrigerator">
+        <Rank />
+      </Amenity>
+      <Amenity Type="View">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WheelChair">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WindowCoverings">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="402923" Type="Internal">
+      <Name>1 Bedroom, 1 Bathroom-F</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="663" Max="663" />
+      <MarketRent Min="0" Max="0" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="ControlledAccess">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Heat">
+        <Rank />
+      </Amenity>
+      <Amenity Type="IndividualClimateControl">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Range">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Refrigerator">
+        <Rank />
+      </Amenity>
+      <Amenity Type="View">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WheelChair">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WindowCoverings">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="402921" Type="Internal">
+      <Name>1 Bedroom, 1 Bathroom-B</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="672" Max="672" />
+      <MarketRent Min="0" Max="0" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="ControlledAccess">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Heat">
+        <Rank />
+      </Amenity>
+      <Amenity Type="IndividualClimateControl">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Range">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Refrigerator">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WheelChair">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WindowCoverings">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="402922" Type="Internal">
+      <Name>1 Bedroom, 1 Bathroom-C</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="673" Max="673" />
+      <MarketRent Min="0" Max="0" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="ControlledAccess">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Heat">
+        <Rank />
+      </Amenity>
+      <Amenity Type="IndividualClimateControl">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Range">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Refrigerator">
+        <Rank />
+      </Amenity>
+      <Amenity Type="View">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WheelChair">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WindowCoverings">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="402924" Type="Internal">
+      <Name>1 Bedroom, 1 Bathroom-D</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="740" Max="740" />
+      <MarketRent Min="0" Max="0" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="ControlledAccess">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Heat">
+        <Rank />
+      </Amenity>
+      <Amenity Type="IndividualClimateControl">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Range">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Refrigerator">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WheelChair">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WindowCoverings">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="402925" Type="Internal">
+      <Name>1 Bedroom, 1 Bathroom-E</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="755" Max="755" />
+      <MarketRent Min="0" Max="0" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="ControlledAccess">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Heat">
+        <Rank />
+      </Amenity>
+      <Amenity Type="IndividualClimateControl">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Range">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Refrigerator">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WheelChair">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WindowCoverings">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="402926" Type="Internal">
+      <Name>2 Bedrooms, 2 Bathrooms-N</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>4</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="948" Max="948" />
+      <MarketRent Min="0" Max="0" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="ControlledAccess">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Heat">
+        <Rank />
+      </Amenity>
+      <Amenity Type="IndividualClimateControl">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Range">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Refrigerator">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WheelChair">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WindowCoverings">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Floorplan Id="402927" Type="Internal">
+      <Name>2 Bedrooms, 2 Bathrooms-J</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>4</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="1126" Max="1126" />
+      <MarketRent Min="0" Max="0" />
+      <EffectiveRent Min="0" Max="0" />
+      <Amenity Type="AirConditioner">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Cable">
+        <Rank />
+      </Amenity>
+      <Amenity Type="ControlledAccess">
+        <Rank />
+      </Amenity>
+      <Amenity Type="DishWasher">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Heat">
+        <Rank />
+      </Amenity>
+      <Amenity Type="IndividualClimateControl">
+        <Rank />
+      </Amenity>
+      <Amenity Type="LargeClosets">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Range">
+        <Rank />
+      </Amenity>
+      <Amenity Type="Refrigerator">
+        <Rank />
+      </Amenity>
+      <Amenity Type="View">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WheelChair">
+        <Rank />
+      </Amenity>
+      <Amenity Type="WindowCoverings">
+        <Rank />
+      </Amenity>
+    </Floorplan>
+    <Utility MajorUtility="Some">
+      <AirCon>false</AirCon>
+      <BroadbandInternet>false</BroadbandInternet>
+      <Cable>false</Cable>
+      <Electric>false</Electric>
+      <Gas>false</Gas>
+      <Heat>false</Heat>
+      <HotWater>true</HotWater>
+      <Satellite>false</Satellite>
+      <Sewer>true</Sewer>
+      <Telephone>false</Telephone>
+      <Trash>true</Trash>
+      <Water>true</Water>
+    </Utility>
+    <ILS />
+  </Property>
+  <Property ManagementID="7548">
+    <PropertyID>
+      <MITS:Identification Type="market rate apt">
+        <MITS:PrimaryID>93393</MITS:PrimaryID>
+        <MITS:SecondaryID>634421044309328663</MITS:SecondaryID>
+        <MITS:MarketingName>Sagamore</MITS:MarketingName>
+        <MITS:LegalName />
+        <MITS:WebSite>http://bozzuto.com/apartments/communities/242-the-sagamore</MITS:WebSite>
+      </MITS:Identification>
+      <MITS:Address>
+        <MITS:Address1>189 West 89th Street</MITS:Address1>
+        <MITS:City>New York</MITS:City>
+        <MITS:State>NY</MITS:State>
+        <MITS:PostalCode>10024</MITS:PostalCode>
+        <MITS:Email>sagamore@livebozzuto.com</MITS:Email>
+      </MITS:Address>
+      <MITS:Phone Type="office">
+        <MITS:PhoneNumber>2128758900</MITS:PhoneNumber>
+        <MITS:Extension />
+      </MITS:Phone>
+    </PropertyID>
+    <ILS_Identification Type="Apartment" RentalType="Unspecified" />
+    <Information>
+      <BuildingCount>0</BuildingCount>
+      <UnitCount>265</UnitCount>
+      <OfficeHour>
+        <OpenTime>12:00 PM</OpenTime>
+        <CloseTime>5:00 PM</CloseTime>
+        <Day>Sunday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Monday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Tuesday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Wednesday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Thursday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>9:00 AM</OpenTime>
+        <CloseTime>6:00 PM</CloseTime>
+        <Day>Friday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>10:00 AM</OpenTime>
+        <CloseTime>5:00 PM</CloseTime>
+        <Day>Saturday</Day>
+      </OfficeHour>
+      <ShortDescription>Welcome home to Sagamore!</ShortDescription>
+      <LongDescription>The Sagamore is one of the finest luxury rentals in a long line of great Upper West Side apartments. These elegant pet-friendly Manhattan apartments boast a pre-war look and feel, yet offer a NYC lifestyle that is decidedly twenty-first century. The concierge-attended lobby is finished in wood and marble. The floor plans of these quintessential Upper West Side apartments range from spacious studios to dramatic one and two bedroom residences. Custom finishes include gourmet kitchens with granite countertops and Euro-style cabinetry, pre-war style marble baths, oak parquet floors and customized closets. Select residences offer floor- to-ceiling windows and spacious private terraces. This Upper West Side apartment building also features a childrens playroom, landscaped rooftop sun terrace with BBQ grills and stunning views, entertainment lounge, and a state-of-the-art health and fitness center.</LongDescription>
+      <LeaseLength> We offer multiple lease terms</LeaseLength>
+      <Parking Type="Surface Lot">
+        <Assigned>false</Assigned>
+        <Spaces>0</Spaces>
+        <Comment>Please call for parking information.</Comment>
+      </Parking>
+      <DrivingDirections>Please call for driving directions.</DrivingDirections>
+    </Information>
+    <Accounting />
+    <Payment />
+    <Fee />
+    <Amenity Type="Other">
+      <Description>Elegant concierge-attended lobby finished in wood and marble</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Entertainment lounge featuring an open kitchen and flexible seating options</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Health and fitness center including cardio and strength equipment</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Landscaped courtyard with seating area</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Rooftop sun terrace with lounge chairs</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>BBQ grill provides breathtaking park and city views</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Convenient bicycle storage room</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Children's playroom</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Concierge">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Amenity Type="FitnessCenter">
+      <Description />
+      <Rank />
+    </Amenity>
+    <Policy>
+      <Pet Type="dog" Allowed="true">
+        <Comment>Dogs are allowed.</Comment>
+        <MaxCount>2</MaxCount>
+        <Deposit />
+        <Fee />
+        <Rent />
+        <Restrictions>We welcome pets at our community. Deposits and fees may apply, please contact us for additional information.</Restrictions>
+      </Pet>
+      <Pet Type="cat" Allowed="true">
+        <Comment>Cats are allowed.</Comment>
+        <MaxCount>2</MaxCount>
+        <Deposit />
+        <Fee />
+        <Rent />
+        <Restrictions>We welcome pets at our community. Deposits and fees may apply, please contact us for additional information.</Restrictions>
+      </Pet>
+    </Policy>
+    <Floorplan Id="402929" Type="Internal">
+      <Name>Alcove Studio</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>1</TotalRoomCount>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="1" Max="1" />
+      <MarketRent Min="2595" Max="2595" />
+      <EffectiveRent Min="0" Max="0" />
+    </Floorplan>
+    <Floorplan Id="402930" Type="Internal">
+      <Name>1 Bedroom</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>1</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>1.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="1" Max="1" />
+      <MarketRent Min="3495" Max="3495" />
+      <EffectiveRent Min="0" Max="0" />
+    </Floorplan>
+    <Floorplan Id="402931" Type="Internal">
+      <Name>2 Bedroom</Name>
+      <UnitCount>0</UnitCount>
+      <UnitsAvailable>0</UnitsAvailable>
+      <DisplayedUnitsAvailable>0</DisplayedUnitsAvailable>
+      <TotalRoomCount>4</TotalRoomCount>
+      <Room Type="Bedroom">
+        <Count>2</Count>
+        <Comment>Comment</Comment>
+      </Room>
+      <Room Type="Bathroom">
+        <Count>2.00</Count>
+        <Comment>max</Comment>
+      </Room>
+      <SquareFeet Min="1" Max="1" />
+      <MarketRent Min="5495" Max="5495" />
+      <EffectiveRent Min="0" Max="0" />
+    </Floorplan>
+    <Utility MajorUtility="Some">
+      <AirCon>false</AirCon>
+      <BroadbandInternet>false</BroadbandInternet>
+      <Cable>false</Cable>
+      <Electric>false</Electric>
+      <Gas>false</Gas>
+      <Heat>false</Heat>
+      <HotWater>false</HotWater>
+      <Satellite>false</Satellite>
+      <Sewer>false</Sewer>
+      <Telephone>false</Telephone>
+      <Trash>false</Trash>
+      <Water>false</Water>
+    </Utility>
+    <ILS />
+  </Property>
+</PhysicalProperty>

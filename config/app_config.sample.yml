@@ -1,5 +1,6 @@
 development:
   vaultware_feed_file: /path/to/vaultware/feed/bozzutocom.xml
+  property_link_feed_file: /path/to/property_link/feed/property_link.xml
   sms:
     username:
     password:
@@ -26,6 +27,7 @@ development:
 
 production:
   vaultware_feed_file: /path/to/vaultware/feed/bozzutocom.xml
+  property_link_feed_file: /path/to/property_link/feed/property_link.xml
   walkscore_wsid: '0bb8a5be9206e6c08c6cea73863f5e3f' # id for bozzuto.local
   google_maps_api_key: 'ABQIAAAA7txTDQDFqeDYcgMQiou82BS4HyMuMWnF1gYqzj4uDbvuvSLR0RQG2OmrjDwO9korkAMlXnDyKPNeTw' # key for bozzuto.local
   yahoo_boss:
@@ -43,6 +45,7 @@ production:
 
 test:
   vaultware_feed_file: /path/to/vaultware/feed/bozzutocom.xml
+  property_link_feed_file: /path/to/property_link/feed/property_link.xml
   sms:
     username:
     password:

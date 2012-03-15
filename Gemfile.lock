@@ -1,150 +1,11 @@
 --- 
-dependencies: 
-  faker: 
-    group: 
-    - :test
-    version: = 0.3.1
-  fastercsv: 
-    group: 
-    - :default
-    version: = 1.5.4
-  brianjlandau-acts_as_archive: 
-    group: 
-    - :default
-    version: = 0.2.8
-  ruby-debug: 
-    group: 
-    - :test
-    version: = 0.10.4
-  phocus: 
-    group: 
-    - :test
-    version: = 1.1
-  httparty: 
-    group: 
-    - :default
-    version: = 0.5.2
-  rails: 
-    group: 
-    - :default
-    version: = 2.3.11
-  mysql: 
-    group: 
-    - :default
-    version: = 2.8.1
-  rake: 
-    group: 
-    - :default
-    version: = 0.8.7
-  searchlogic: 
-    group: 
-    - :default
-    version: = 2.4.27
-  twitter-text: 
-    group: 
-    - :default
-    version: = 1.3.1
-  jferris-mocha: 
-    group: 
-    - :test
-    version: = 0.9.8.20100526112143
-    require: []
-
-  shoulda: 
-    group: 
-    - :test
-    version: = 2.10.3
-  machinist: 
-    group: 
-    - :test
-    version: = 1.0.6
-  rack-rewrite: 
-    group: 
-    - :default
-    version: ~> 0.2.0
-  whenever: 
-    group: 
-    - :default
-    version: = 0.6.2
-  truncate_html: 
-    group: 
-    - :default
-    version: = 0.5.0
-  geokit: 
-    group: 
-    - :default
-    version: = 1.5.0
-  capistrano-ext: 
-    group: 
-    - :default
-    version: = 1.2.1
-  paperclip: 
-    group: 
-    - :default
-    version: = 2.3.8
-  activerecord-tableless: 
-    group: 
-    - :default
-    version: = 0.1.0
-    require: 
-    - tableless
-  will_paginate: 
-    group: 
-    - :default
-    version: = 2.3.15
-  jammit: 
-    group: 
-    - :default
-    version: = 0.6.0
-  erubis: 
-    group: 
-    - :default
-    version: = 2.6.6
-  friendly_id: 
-    group: 
-    - :default
-    version: ~> 2.3
-  rcov: 
-    group: 
-    - :default
-    version: = 0.9.9
-  rack-test: 
-    group: 
-    - :test
-    version: = 0.5.7
-    require: 
-    - rack/test
-  hoptoad_notifier: 
-    group: 
-    - :default
-    version: = 2.4.6
-  fleakr: 
-    group: 
-    - :default
-    version: = 0.7.1
-  webmock: 
-    group: 
-    - :test
-    version: = 1.2.2
-  twitter: 
-    group: 
-    - :default
-    version: = 1.1.2
-  nokogiri: 
-    group: 
-    - :default
-    version: = 1.4.4
-  capistrano: 
-    group: 
-    - :default
-    version: = 2.5.19
 specs: 
 - rake: 
     version: 0.8.7
 - Platform: 
     version: 0.4.0
 - open4: 
-    version: 1.1.0
+    version: 1.3.0
 - POpen4: 
     version: 0.1.4
 - aaronh-chronic: 
@@ -154,7 +15,7 @@ specs:
 - activesupport: 
     version: 2.3.11
 - rack: 
-    version: 1.1.2
+    version: 1.1.3
 - actionpack: 
     version: 2.3.11
 - actionmailer: 
@@ -166,7 +27,7 @@ specs:
 - activeresource: 
     version: 2.3.11
 - addressable: 
-    version: 2.2.6
+    version: 2.2.7
 - require: 
     version: 0.2.7
 - brianjlandau-acts_as_archive: 
@@ -174,9 +35,9 @@ specs:
 - builder: 
     version: 3.0.0
 - highline: 
-    version: 1.6.2
+    version: 1.6.11
 - net-ssh: 
-    version: 2.2.1
+    version: 2.3.0
 - net-scp: 
     version: 1.0.4
 - net-sftp: 
@@ -188,9 +49,11 @@ specs:
 - capistrano-ext: 
     version: 1.2.1
 - closure-compiler: 
-    version: 1.1.3
+    version: 1.1.6
+- coderay: 
+    version: 1.0.5
 - columnize: 
-    version: 0.3.4
+    version: 0.3.6
 - crack: 
     version: 0.1.6
 - erubis: 
@@ -198,7 +61,7 @@ specs:
 - faker: 
     version: 0.3.1
 - multipart-post: 
-    version: 1.1.3
+    version: 1.1.5
 - faraday: 
     version: 0.5.7
 - faraday_middleware: 
@@ -206,7 +69,7 @@ specs:
 - fastercsv: 
     version: 1.5.4
 - hpricot: 
-    version: 0.8.4
+    version: 0.8.6
 - loggable: 
     version: 0.3.0
 - fleakr: 
@@ -228,11 +91,13 @@ specs:
 - jferris-mocha: 
     version: 0.9.8.20100526112143
 - rbx-require-relative: 
-    version: 0.0.5
+    version: 0.0.9
 - linecache: 
     version: "0.46"
 - machinist: 
     version: 1.0.6
+- method_source: 
+    version: 0.7.1
 - multi_json: 
     version: 0.0.5
 - multi_xml: 
@@ -245,6 +110,10 @@ specs:
     version: 2.3.8
 - phocus: 
     version: "1.1"
+- slop: 
+    version: 2.4.4
+- pry: 
+    version: 0.9.8.4
 - rack-rewrite: 
     version: 0.2.1
 - rack-test: 
@@ -275,7 +144,150 @@ specs:
     version: 0.6.2
 - will_paginate: 
     version: 2.3.15
-hash: 9c49e1d06d5ca6c0b8a680608ede93e190868740
+hash: 41573eb0330154db1483aaec4f00d2a9c01692a5
 sources: 
 - Rubygems: 
     uri: http://rubygems.org
+dependencies: 
+  jferris-mocha: 
+    require: []
+
+    version: = 0.9.8.20100526112143
+    group: 
+    - :test
+  geokit: 
+    version: = 1.5.0
+    group: 
+    - :default
+  rcov: 
+    version: = 0.9.9
+    group: 
+    - :default
+  paperclip: 
+    version: = 2.3.8
+    group: 
+    - :default
+  capistrano: 
+    version: = 2.5.19
+    group: 
+    - :default
+  whenever: 
+    version: = 0.6.2
+    group: 
+    - :default
+  truncate_html: 
+    version: = 0.5.0
+    group: 
+    - :default
+  fleakr: 
+    version: = 0.7.1
+    group: 
+    - :default
+  faker: 
+    version: = 0.3.1
+    group: 
+    - :test
+  webmock: 
+    version: = 1.2.2
+    group: 
+    - :test
+  erubis: 
+    version: = 2.6.6
+    group: 
+    - :default
+  rails: 
+    version: = 2.3.11
+    group: 
+    - :default
+  shoulda: 
+    version: = 2.10.3
+    group: 
+    - :test
+  hoptoad_notifier: 
+    version: = 2.4.6
+    group: 
+    - :default
+  rake: 
+    version: = 0.8.7
+    group: 
+    - :default
+  capistrano-ext: 
+    version: = 1.2.1
+    group: 
+    - :default
+  rack-test: 
+    require: 
+    - rack/test
+    version: = 0.5.7
+    group: 
+    - :test
+  searchlogic: 
+    version: = 2.4.27
+    group: 
+    - :default
+  httparty: 
+    version: = 0.5.2
+    group: 
+    - :default
+  activerecord-tableless: 
+    require: 
+    - tableless
+    version: = 0.1.0
+    group: 
+    - :default
+  fastercsv: 
+    version: = 1.5.4
+    group: 
+    - :default
+  pry: 
+    version: ">= 0"
+    group: 
+    - :test
+  mysql: 
+    version: = 2.8.1
+    group: 
+    - :default
+  twitter-text: 
+    version: = 1.3.1
+    group: 
+    - :default
+  brianjlandau-acts_as_archive: 
+    version: = 0.2.8
+    group: 
+    - :default
+  nokogiri: 
+    version: = 1.4.4
+    group: 
+    - :default
+  twitter: 
+    version: = 1.1.2
+    group: 
+    - :default
+  ruby-debug: 
+    version: = 0.10.4
+    group: 
+    - :test
+  will_paginate: 
+    version: = 2.3.15
+    group: 
+    - :default
+  rack-rewrite: 
+    version: ~> 0.2.0
+    group: 
+    - :default
+  machinist: 
+    version: = 1.0.6
+    group: 
+    - :test
+  friendly_id: 
+    version: ~> 2.3
+    group: 
+    - :default
+  jammit: 
+    version: = 0.6.0
+    group: 
+    - :default
+  phocus: 
+    version: = 1.1
+    group: 
+    - :test

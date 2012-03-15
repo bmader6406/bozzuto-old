@@ -35,4 +35,5 @@ group :test do
   gem 'webmock', '1.2.2'
   gem 'ruby-debug', '0.10.4'
   gem 'rack-test', '0.5.7', :require => 'rack/test'
+  gem 'pry'
 end

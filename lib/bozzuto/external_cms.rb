@@ -12,6 +12,10 @@ module Bozzuto
             external_cms_id.present? && external_cms_type == type
           end
         end
+
+        named_scope :managed_by_feed, lambda { |cms_id, cms_type|
+          { :conditions => ['external_cms_id = ? AND external_cms_type = ?', cms_id, cms_type] }
+        }
       end
     end
   end
