@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120313195436) do
+ActiveRecord::Schema.define(:version => 20120330194304) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -168,12 +168,12 @@ ActiveRecord::Schema.define(:version => 20120313195436) do
     t.string   "send_to_friend_mediamind_id"
     t.string   "send_to_phone_mediamind_id"
     t.string   "contact_mediamind_id"
+    t.boolean  "featured_mobile",              :default => false
     t.integer  "plan_count_studio",            :default => 0
     t.integer  "plan_count_1_bedroom",         :default => 0
     t.integer  "plan_count_2_bedroom",         :default => 0
     t.integer  "plan_count_3_bedroom",         :default => 0
     t.integer  "plan_count_penthouse",         :default => 0
-    t.boolean  "featured_mobile",              :default => false
     t.boolean  "under_construction",           :default => false
   end
 
@@ -632,12 +632,12 @@ ActiveRecord::Schema.define(:version => 20120313195436) do
   add_index "photo_sets", ["property_id"], :name => "index_photo_sets_on_property_id"
 
   create_table "photos", :force => true do |t|
-    t.string   "image_file_name",    :default => ""
-    t.string   "title",              :default => "", :null => false
+    t.string   "image_file_name"
+    t.string   "title",              :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_content_type"
-    t.string   "flickr_photo_id",                    :null => false
+    t.string   "flickr_photo_id",    :null => false
     t.integer  "photo_set_id"
     t.integer  "position"
   end
@@ -796,12 +796,12 @@ ActiveRecord::Schema.define(:version => 20120313195436) do
     t.string   "send_to_friend_mediamind_id"
     t.string   "send_to_phone_mediamind_id"
     t.string   "contact_mediamind_id"
+    t.boolean  "featured_mobile",              :default => false
     t.integer  "plan_count_studio",            :default => 0
     t.integer  "plan_count_1_bedroom",         :default => 0
     t.integer  "plan_count_2_bedroom",         :default => 0
     t.integer  "plan_count_3_bedroom",         :default => 0
     t.integer  "plan_count_penthouse",         :default => 0
-    t.boolean  "featured_mobile",              :default => false
     t.boolean  "under_construction",           :default => false
   end
 
@@ -975,9 +975,9 @@ ActiveRecord::Schema.define(:version => 20120313195436) do
   end
 
   create_table "testimonials", :force => true do |t|
-    t.string   "name",       :default => ""
-    t.string   "title",      :default => ""
-    t.text     "quote",                      :null => false
+    t.string   "name"
+    t.string   "title"
+    t.text     "quote",      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "section_id"
@@ -1030,6 +1030,7 @@ ActiveRecord::Schema.define(:version => 20120313195436) do
     t.integer  "apartment_community_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "comments"
   end
 
   add_index "under_construction_leads", ["apartment_community_id"], :name => "index_under_construction_leads_on_apartment_community_id"

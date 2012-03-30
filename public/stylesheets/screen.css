@@ -80,7 +80,8 @@
   
   /* @group forms */
     input,
-    button {
+    button,
+    textarea {
       outline: 0;
       border: 1px solid #9ba2ad;
       margin: 0;
@@ -107,6 +108,11 @@
     }
     button:hover {
       background: #d5d8dc;
+    }
+    textarea {
+      font-size: 11px;
+      line-height: 1.5;
+      padding: 10px;
     }
     form .fields {
       position: relative;
@@ -4370,6 +4376,13 @@ div.wysiwyg ul li {
 .contact .column-main input,
 #ufollowup-form input {
   width: 315px;
+}
+
+#community-contact-form textarea {
+  width: 300px;
+  -webkit-box-shadow: 1px 1px 1px rgba(50, 50, 50, 0.50) inset;
+  -moz-box-shadow:    1px 1px 1px rgba(50, 50, 50, 0.50) inset;
+  box-shadow:         1px 1px 1px rgba(50, 50, 50, 0.50) inset;
 }
 
 #community-contact-form form input.checkbox {

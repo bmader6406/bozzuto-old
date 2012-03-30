@@ -769,10 +769,10 @@ TwitterAccount:
 
 UnderConstructionLead:
   fields:
-    default: apartment_community, first_name, last_name, address, address_2, city, state, zip_code, email, phone_number
+    default: apartment_community, first_name, last_name, address, address_2, city, state, zip_code, email, phone_number, comments
     list: apartment_community, first_name, last_name, email
     form: 
-    csv: apartment_community_title, first_name, last_name, address, address_2, city, state, zip_code, email, phone_number
+    csv: apartment_community_title, first_name, last_name, address, address_2, city, state, zip_code, email, phone_number, comments
   order_by: -updated_at
   export: csv
   relationships: 
