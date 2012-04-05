@@ -129,7 +129,7 @@
       margin-left: 190px;
     }
     textarea.contact {
-      width: 318px;
+      width: 300px;
     }
   /* @end  */
 /* @end */
@@ -653,6 +653,7 @@
     #main-content .twitter-update .message {
       background: transparent url(../images/structure/ico-twitter.gif) no-repeat 0 2px;
       cursor: pointer;
+      padding-left: 35px;
     }
     #main-content .twitter-update .message a {
       text-decoration: underline;
@@ -668,6 +669,7 @@
       background-color: #85a5a7;
       display: block;
       text-transform: none;
+      padding-left: 35px;
     }
   /* @end */
 

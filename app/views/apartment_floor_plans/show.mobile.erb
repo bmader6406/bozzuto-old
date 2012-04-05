@@ -36,11 +36,11 @@
     <% end %>
 
     <% if @plan.availability_url? %>
-      <% link_to @plan.availability_url, :class => 'btn' do %>
+      <% link_to @plan.availability_url, :class => 'btn', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Availability" do %>
         <span>Check Availability</span>
       <% end %>
 
-      <% link_to @community.availability_url, :class => 'btn submit' do %>
+      <% link_to @community.availability_url, :class => 'btn submit', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Reserve" do %>
         <span>Reserve Now</span>
       <% end %>
     <% end %>

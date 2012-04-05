@@ -32,7 +32,7 @@
               <% end %>
 
               <% if plan.availability_url.present? %>
-                <%= link_to 'Reserve', plan.availability_url, :rel => 'external' %>
+                <%= link_to 'Reserve', plan.availability_url, :rel => 'external', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Reserve" %>
               <% end %>
             </p>
 

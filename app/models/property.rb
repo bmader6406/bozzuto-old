@@ -104,6 +104,19 @@ class Property < ActiveRecord::Base
     # no-op this because we need to keep attachments arround
   end
 
+  def apartment?
+    type == 'ApartmentCommunity'
+  end
+
+  def home?
+    type == 'HomeCommunity'
+  end
+
+  def project?
+    type == 'Project'
+  end
+
+
   private
 
   def id_and_title

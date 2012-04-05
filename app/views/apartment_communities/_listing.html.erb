@@ -49,7 +49,7 @@
       </h2>
 
       <% if community.availability_url.present? %>
-        <p><%= link_to 'Availability', community.availability_url, :rel => 'external' %></p>
+        <p><%= link_to 'Availability', community.availability_url, :rel => 'external', 'data-track-event' => "Apartments,#{ga_escape(community.title)},Availability" %></p>
       <% end %>
 
       <%= property_icons(community) %>

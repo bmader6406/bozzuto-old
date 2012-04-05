@@ -41,7 +41,7 @@ module ApplicationHelper
 
   def google_maps_javascript_tag
     <<-END.html_safe
-    <script src="http://maps.google.com/maps?file=api&v=2&key= #{APP_CONFIG[:google_maps_api_key]} " type="text/javascript"></script>
+    <script src="http://maps.google.com/maps?file=api&v=2&key=#{APP_CONFIG[:google_maps_api_key]}" type="text/javascript"></script>
     END
   end
 
@@ -81,6 +81,10 @@ module ApplicationHelper
     content_tag :div, :class => 'google-plus-one' do
       '<g:plusone size="medium"></g:plusone>'.html_safe
     end
+  end
+
+  def ga_escape(str)
+    str.gsub(/[,']/, '')
   end
 
   def bedrooms(record)

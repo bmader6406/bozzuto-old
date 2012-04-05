@@ -17,9 +17,13 @@ javascripts:
     - public/javascripts/vendor/jquery.validate.js
     - public/javascripts/vendor/jquery.makecolumnlists.js
     - public/javascripts/bozzuto.js
+    - public/javascripts/analytics.js
     - public/javascripts/yelp-map.js
   lookup:
     - public/javascripts/vendor/lookup.js
+  mobile:
+    - public/javascripts/vendor/jquery.min.js
+    - public/javascripts/analytics.js
 
 stylesheets:
   bozzuto:

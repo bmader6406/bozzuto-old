@@ -10,6 +10,7 @@ development:
   paperclip_command_path: /usr/local/bin
   walkscore_wsid: '0bb8a5be9206e6c08c6cea73863f5e3f' # id for bozzuto.local
   google_maps_api_key: 'ABQIAAAA7txTDQDFqeDYcgMQiou82BS4HyMuMWnF1gYqzj4uDbvuvSLR0RQG2OmrjDwO9korkAMlXnDyKPNeTw' # key for bozzuto.local
+  # google_maps_api_key: 'AIzaSyATO7DqKwnrDkQA6ySkbVc7W5eSGg7pnjE' # for bozzuto.dev
   yahoo_boss:
     application_id: xrMMSM7e
     consumer_key: 'dj0yJmk9eU5tWHl4UmdmRnBTJmQ9WVdrOWVISk5UVk5OTjJVbWNHbzlNVFU1TkRneE1USTJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD03NA--'

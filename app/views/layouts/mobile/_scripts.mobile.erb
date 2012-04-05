@@ -1,34 +1,52 @@
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-1370424-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <%= include_javascripts :mobile %>
+
   <%= yield :javascript %>
 
   <script type="text/javascript">
   var bzCookies = {
-    init: function(){
+    init: function() {
       var form = document.getElementById("lasso-form");
-      if (form)
-        this.registerEvents(form,"submit");
-      else
-        console.log("no form")
-    },
 
-    registerEvents: function(el,eventType){
-      var onEvent = "on" + eventType,
-          input = document.getElementById("Emails_Primary"),
-          cookieName = "lasso_email";
-
-      if (el.addEventListener){
-        el.addEventListener(eventType,function(e){
-          bzCookies.setCookie(cookieName,input.value); 
-        },false);
-      } else if (el.attachEvent){
-        el.attachEvent(onEvent,function(){
-          bzCookies.setCookie(cookieName,input.value); 
-        });
+      if (form) {
+        this.registerEvents(form, "submit");
       } else {
-        el[onEvent] = bzCookies.setCookie(cookieName,input.value); 
+        console.log("no form");
       }
     },
 
-    setCookie: function(cookieName,cookieVal){ 
+    registerEvents: function(el, eventType) {
+      var onEvent    = "on" + eventType,
+          input      = document.getElementById("Emails_Primary"),
+          cookieName = "lasso_email";
+
+      if (el.addEventListener) {
+        el.addEventListener(eventType, function(e) {
+          bzCookies.setCookie(cookieName, input.value); 
+        }, false);
+
+      } else if (el.attachEvent) {
+        el.attachEvent(onEvent, function() {
+          bzCookies.setCookie(cookieName, input.value); 
+        });
+
+      } else {
+        el[onEvent] = bzCookies.setCookie(cookieName, input.value); 
+      }
+    },
+
+    setCookie: function(cookieName, cookieVal) { 
       document.cookie = cookieName + '=' + cookieVal + '; path=/';
     }
   }
