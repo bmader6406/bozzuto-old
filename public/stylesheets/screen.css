@@ -1724,7 +1724,7 @@ div.wysiwyg ul li {
       .home #social,
       .home #social .container {
         background: url(../images/structure/bg-news.gif) repeat-y top center;
-        height: 80px;
+        /* height: 80px; */
       }
       .home #social {
         border-top: 1px solid #d5d8dc;
@@ -1737,7 +1737,6 @@ div.wysiwyg ul li {
         color: #000;
         float: left;
         font-size: 15px;
-        height: 78px;
         line-height: 1.333333333;
         padding-top: 12px;
         width: 170px;
@@ -1749,9 +1748,9 @@ div.wysiwyg ul li {
       }
       .home #social .facebook {
         border-right: 1px solid #9a9da1;
-        height: 68px;
+        min-height: 62px;
+        padding: 12px 0 6px 20px;
         width: 359px;
-        padding: 12px 0 0 20px;
       }
       .home #social .twitter,
       .home #social .rss {
