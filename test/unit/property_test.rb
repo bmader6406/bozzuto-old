@@ -158,6 +158,66 @@ class PropertyTest < ActiveSupport::TestCase
         assert_match /category: '#{@property.class}'/, @property.to_jmapping
       end
     end
+
+    context '#apartment?' do
+      context 'when property is an apartment' do
+        setup { @property = ApartmentCommunity.make }
+
+        should 'be true' do
+          assert @property.apartment?
+        end
+      end
+
+      context 'when propert is not an apartment' do
+        [HomeCommunity, Project].each do |klass|
+          setup { @property = klass.make }
+
+          should 'be false' do
+            assert !@property.apartment?
+          end
+        end
+      end
+    end
+
+    context '#home?' do
+      context 'when property is a home community' do
+        setup { @property = HomeCommunity.make }
+
+        should 'be true' do
+          assert @property.home?
+        end
+      end
+
+      context 'when propert is not a home community' do
+        [ApartmentCommunity, Project].each do |klass|
+          setup { @property = klass.make }
+
+          should 'be false' do
+            assert !@property.home?
+          end
+        end
+      end
+    end
+
+    context '#project?' do
+      context 'when property is a project' do
+        setup { @property = Project.make }
+
+        should 'be true' do
+          assert @property.project?
+        end
+      end
+
+      context 'when propert is not a project' do
+        [ApartmentCommunity, HomeCommunity].each do |klass|
+          setup { @property = klass.make }
+
+          should 'be false' do
+            assert !@property.project?
+          end
+        end
+      end
+    end
   end
 
   context 'The Property class' do
