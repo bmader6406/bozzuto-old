@@ -76,7 +76,7 @@
 			setTimeout(function() {
 				document.location = $this.attr('href');
 			}, 100);
-		},
+		}
 	};
 
 
