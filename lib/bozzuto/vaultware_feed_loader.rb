@@ -1,6 +1,8 @@
 module Bozzuto
-  class VaultwareFeedLoader < PropertyFeedLoader
-    feed_type :vaultware
+  class VaultwareFeedLoader < ExternalFeedLoader
+    self.feed_type = :vaultware
+    self.tmp_file  = Rails.root.join('tmp', 'vaultware')
+    self.lock_file = Rails.root.join('tmp', 'vaultware.lock')
 
     NAMESPACE = {'ns' => 'http://my-company.com/namespace' }
 

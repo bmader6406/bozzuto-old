@@ -21,19 +21,23 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
       should_assign_to :items
     end
 
-    context 'GET to #merge' do
-      context 'with a Vaultware managed community' do
-        setup do
-          @community = ApartmentCommunity.make(:vaultware)
-          get :merge, :id => @community.id
-        end
+    types = Bozzuto::ExternalFeedLoader.feed_types
 
-        should_respond_with :redirect
-        should_redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
-        should_assign_to(:item) { @community }
+    context 'GET to #merge' do
+      types.each do |type|
+        context "with a #{type} community" do
+          setup do
+            @community = ApartmentCommunity.make(type.to_sym)
+            get :merge, :id => @community.id
+          end
+
+          should_respond_with :redirect
+          should_redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
+          should_assign_to(:item) { @community }
+        end
       end
 
-      context 'with a non-Vaultware managed community' do
+      context 'with a non-externally managed community' do
         setup do
           @community = ApartmentCommunity.make
           get :merge, :id => @community.id
@@ -41,26 +45,28 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
 
         should_respond_with :success
         should_assign_to(:item) { @community }
-        should_assign_to :vaultware_communities
       end
     end
 
     context 'GET to #begin_merge' do
-      context 'with a Vaultware managed community' do
-        setup do
-          @community = ApartmentCommunity.make(:vaultware)
-          get :begin_merge, :id => @community.id
-        end
+      types.each do |type|
+        context "with a #{type} community" do
+          setup do
+            @community = ApartmentCommunity.make(type.to_sym)
+            get :begin_merge, :id => @community.id
+          end
 
-        should_respond_with :redirect
-        should_redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
-        should_assign_to(:item) { @community }
+          should_respond_with :redirect
+          should_redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
+          should_assign_to(:item) { @community }
+          should_set_the_flash_to 'This community is already managed externally'
+        end
       end
 
-      context 'with a non-Vaultware managed community' do
+      context 'with a non-externally managed community' do
         setup { @community = ApartmentCommunity.make }
 
-        context 'and with no Vaultware community selected' do
+        context 'and with no externally-managed community selected' do
           setup do
             get :begin_merge, :id => @community.id
           end
@@ -68,50 +74,57 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
           should_respond_with :redirect
           should_redirect_to('the merge page') { "/admin/apartment_communities/merge/#{@community.id}" }
           should_assign_to(:item) { @community }
+          should_set_the_flash_to 'You must select an externally-managed community.'
         end
 
-        context 'and community selected that is not Vaultware-managed' do
+        context 'and community selected that is not externally-managed' do
           setup do
-            @vaultware = ApartmentCommunity.make
+            @other = ApartmentCommunity.make
 
-            get :begin_merge, :id => @community.id, :vaultware_community_id => @vaultware.id
+            get :begin_merge, :id => @community.id, :external_community_id => @other.id
           end
 
           should_respond_with :redirect
           should_redirect_to('the merge page') { "/admin/apartment_communities/merge/#{@community.id}" }
           should_assign_to(:item) { @community }
+          should_set_the_flash_to "Couldn't find that externally-managed community."
         end
 
-        context 'with Vaultware community selected' do
-          setup do
-            @vaultware = ApartmentCommunity.make(:vaultware)
+        types.each do |type|
+          context "with a #{type} community" do
+            setup do
+              @other = ApartmentCommunity.make(type.to_sym)
 
-            get :begin_merge, :id => @community.id, :vaultware_community_id => @vaultware.id
+              get :begin_merge, :id => @community.id, :external_community_id => @other.id
+            end
+
+            should_respond_with :success
+            should_assign_to(:item) { @community }
+            should_assign_to(:external_community) { @other }
           end
-
-          should_respond_with :success
-          should_assign_to(:item) { @community }
-          should_assign_to(:vaultware_community) { @vaultware }
         end
       end
     end
 
     context 'POST to #end_merge' do
-      context 'with a Vaultware managed community' do
-        setup do
-          @community = ApartmentCommunity.make(:vaultware)
-          post :end_merge, :id => @community.id
-        end
+      types.each do |type|
+        context "with a #{type} community" do
+          setup do
+            @community = ApartmentCommunity.make(type.to_sym)
+            post :end_merge, :id => @community.id
+          end
 
-        should_respond_with :redirect
-        should_redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
-        should_assign_to(:item) { @community }
+          should_respond_with :redirect
+          should_redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
+          should_assign_to(:item) { @community }
+          should_set_the_flash_to 'This community is already managed externally'
+        end
       end
 
-      context 'with a non-Vaultware managed community' do
+      context 'with a local community' do
         setup { @community = ApartmentCommunity.make }
 
-        context 'and with no Vaultware community selected' do
+        context 'and with no externally-managed community selected' do
           setup do
             post :end_merge, :id => @community.id
           end
@@ -119,33 +132,38 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
           should_respond_with :redirect
           should_redirect_to('the merge page') { "/admin/apartment_communities/merge/#{@community.id}" }
           should_assign_to(:item) { @community }
+          should_set_the_flash_to 'You must select an externally-managed community.'
         end
 
-        context 'and community selected that is not Vaultware-managed' do
+        context 'and community selected that is not externally-managed' do
           setup do
-            @vaultware = ApartmentCommunity.make
+            @other = ApartmentCommunity.make
 
-            post :end_merge, :id => @community.id, :vaultware_community_id => @vaultware.id
+            post :end_merge, :id => @community.id, :external_community_id => @other.id
           end
 
           should_respond_with :redirect
           should_redirect_to('the merge page') { "/admin/apartment_communities/merge/#{@community.id}" }
           should_assign_to(:item) { @community }
+          should_set_the_flash_to "Couldn't find that externally-managed community."
         end
 
-        context 'with Vaultware community selected' do
-          setup do
-            @vaultware = ApartmentCommunity.make(:vaultware)
+        types.each do |type|
+          context "with a #{type} community selected" do
+            setup do
+              @other = ApartmentCommunity.make(type.to_sym)
 
-            ApartmentCommunity.any_instance.expects(:merge).with(@vaultware).once
+              ApartmentCommunity.any_instance.expects(:merge).with(@other).once
 
-            post :end_merge, :id => @community.id, :vaultware_community_id => @vaultware.id
+              post :end_merge, :id => @community.id, :external_community_id => @other.id
+            end
+
+            should_respond_with :redirect
+            should_redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
+            should_assign_to(:item) { @community }
+            should_assign_to(:external_community) { @other }
+            should_set_the_flash_to 'Successfully merged communities'
           end
-
-          should_respond_with :redirect
-          should_redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
-          should_assign_to(:item) { @community }
-          should_assign_to(:vaultware_community) { @vaultware }
         end
       end
     end

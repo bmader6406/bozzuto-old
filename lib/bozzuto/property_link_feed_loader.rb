@@ -1,6 +1,8 @@
 module Bozzuto
-  class PropertyLinkFeedLoader < PropertyFeedLoader
-    feed_type :property_link
+  class PropertyLinkFeedLoader < ExternalFeedLoader
+    self.feed_type = :property_link
+    self.tmp_file  = Rails.root.join('tmp', 'property_link')
+    self.lock_file = Rails.root.join('tmp', 'property_link.lock')
 
     title                         './PropertyID/MITS:Identification/MITS:MarketingName'
     external_cms_id               './PropertyID/MITS:Identification/MITS:PrimaryID'
@@ -12,7 +14,6 @@ module Bozzuto
     floor_plan_bedroom_count      './Room[@Type="Bedroom"]/Count'
     floor_plan_bathroom_count     './Room[@Type="Bathroom"]/Count'
 
-    # floor_plan_comment            './Comment'
     floor_plan_min_square_feet    './SquareFeet',    :attribute => 'Min'
     floor_plan_max_square_feet    './SquareFeet',    :attribute => 'Max'
     floor_plan_min_market_rent    './MarketRent',    :attribute => 'Min'

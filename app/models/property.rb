@@ -62,6 +62,12 @@ class Property < ActiveRecord::Base
 
   named_scope :ordered_by_title, :order => 'properties.title ASC'
 
+  named_scope :duplicates,
+    :joins      => 'INNER JOIN properties AS other ON properties.title SOUNDS LIKE other.title',
+    :conditions => 'properties.id != other.id AND properties.type = other.type',
+    :order      => 'title ASC'
+
+
   def typus_name
     title
   end

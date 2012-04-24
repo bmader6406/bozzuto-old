@@ -168,8 +168,8 @@ class PropertyTest < ActiveSupport::TestCase
         end
       end
 
-      context 'when propert is not an apartment' do
-        [HomeCommunity, Project].each do |klass|
+      [HomeCommunity, Project].each do |klass|
+        context "when property is #{klass}" do
           setup { @property = klass.make }
 
           should 'be false' do
@@ -188,8 +188,8 @@ class PropertyTest < ActiveSupport::TestCase
         end
       end
 
-      context 'when propert is not a home community' do
-        [ApartmentCommunity, Project].each do |klass|
+      [ApartmentCommunity, Project].each do |klass|
+        context "when property is #{klass}" do
           setup { @property = klass.make }
 
           should 'be false' do
@@ -208,8 +208,8 @@ class PropertyTest < ActiveSupport::TestCase
         end
       end
 
-      context 'when propert is not a project' do
-        [ApartmentCommunity, HomeCommunity].each do |klass|
+      [ApartmentCommunity, HomeCommunity].each do |klass|
+        context "when property is #{klass}" do
           setup { @property = klass.make }
 
           should 'be false' do

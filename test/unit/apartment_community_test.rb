@@ -110,21 +110,25 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
     end
 
     context '#merge' do
-      context 'when receiver is a vaultware-managed community' do
-        setup { @community = ApartmentCommunity.make(:vaultware) }
+      types = Bozzuto::ExternalFeedLoader.feed_types
 
-        should 'raise an exception' do
-          begin
-            @community.merge(nil)
-            assert false, 'Expected an exception'
-          rescue RuntimeError => e
-            assert_equal 'Receiver must not be a Vaultware-managed community', e.message
+      types.each do |type|
+        context "when receiver is a #{type} community" do
+          setup { @community = ApartmentCommunity.make(type.to_sym) }
+
+          should 'raise an exception' do
+            begin
+              @community.merge(nil)
+              assert false, 'Expected an exception'
+            rescue RuntimeError => e
+              assert_equal 'Receiver must not be an externally-managed community', e.message
+            end
           end
         end
       end
 
-      context 'when receiver is not a vaultware-managed community' do
-        context 'and other community is not Vaultware-managed' do
+      context 'when receiver is not an externally-managed community' do
+        context 'and other community is not externally-managed' do
           setup do
             @community = ApartmentCommunity.make
             @other     = ApartmentCommunity.make
@@ -135,80 +139,81 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
               @community.merge(@other)
               assert false, 'Expected an exception'
             rescue RuntimeError => e
-              assert_equal 'Argument must be a Vaultware-managed community', e.message
+              assert_equal 'Argument must be an externally-managed community', e.message
             end
           end
         end
 
-        context 'and other community is Vaultware-managed' do
-          setup do
-            #configure community
-            @community = ApartmentCommunity.make(
-              :title            => 'Receiver',
-              :street_address   => '123 Test Dr',
-              :city             => City.make,
-              :county           => County.make,
-              :availability_url => 'http://google.com'
-            )
+        types.each do |type|
+          context "and other community is #{type}" do
+            setup do
+              #configure community
+              @community = ApartmentCommunity.make(
+                :title            => 'Receiver',
+                :street_address   => '123 Test Dr',
+                :city             => City.make,
+                :county           => County.make,
+                :availability_url => 'http://google.com'
+              )
 
-            @community_floor_plans = [
-              ApartmentFloorPlan.make(:apartment_community => @community),
-              ApartmentFloorPlan.make(:apartment_community => @community)
-            ]
+              @community_floor_plans = [
+                ApartmentFloorPlan.make(:apartment_community => @community),
+                ApartmentFloorPlan.make(:apartment_community => @community)
+              ]
 
 
-            # configure other community
-            @other = ApartmentCommunity.make(:vaultware,
-              :title            => 'Vaultware-managed',
-              :street_address   => '456 Test Dr',
-              :city             => City.make,
-              :county           => County.make,
-              :availability_url => 'http://yahoo.com'
-            )
+              # configure other community
+              @other = ApartmentCommunity.make(type.to_sym,
+                :title            => "#{type} managed",
+                :street_address   => '456 Test Dr',
+                :city             => City.make,
+                :county           => County.make,
+                :availability_url => 'http://yahoo.com'
+              )
 
-            @other_floor_plans = [
-              ApartmentFloorPlan.make(:apartment_community => @other),
-              ApartmentFloorPlan.make(:apartment_community => @other),
-              ApartmentFloorPlan.make(:apartment_community => @other)
-            ]
+              @other_floor_plans = [
+                ApartmentFloorPlan.make(:apartment_community => @other),
+                ApartmentFloorPlan.make(:apartment_community => @other),
+                ApartmentFloorPlan.make(:apartment_community => @other)
+              ]
 
-            # raise "community: #{@community.id} / other: #{@other.id}"
-            @community.merge(@other)
-            @community.reload
-          end
+              @community.merge(@other)
+              @community.reload
+            end
 
-          should "update the receiver's attributes" do
-            attrs = ApartmentCommunity::VAULTWARE_ATTRIBUTES.reject { |attr| attr == :floor_plans }
+            should "update the receiver's attributes" do
+              attrs = ApartmentCommunity.external_cms_attributes.reject { |attr| attr == :floor_plans }
 
-            attrs.each { |attr| assert_equal @other.send(attr), @community.send(attr) }
-          end
+              attrs.each { |attr| assert_equal @other.send(attr), @community.send(attr) }
+            end
 
-          should 'set the external_cms_id of the receiver' do
-            assert_equal @other.external_cms_id, @community.external_cms_id
-          end
+            should 'set the external_cms_id of the receiver' do
+              assert_equal @other.external_cms_id, @community.external_cms_id
+            end
 
-          should 'set the external_cms_type of the receiver' do
-            assert_equal @other.external_cms_type, @community.external_cms_type
-          end
+            should 'set the external_cms_type of the receiver' do
+              assert_equal @other.external_cms_type, @community.external_cms_type
+            end
 
-          should "delete the receiver's floor plans" do
-            @community_floor_plans.each { |plan|
-              assert_nil ApartmentFloorPlan.find_by_id(plan.id)
-            }
-          end
+            should "delete the receiver's floor plans" do
+              @community_floor_plans.each { |plan|
+                assert_nil ApartmentFloorPlan.find_by_id(plan.id)
+              }
+            end
 
-          should "not delete other's floor plans" do
-            @other_floor_plans.each { |plan|
-              assert ApartmentFloorPlan.find_by_id(plan.id)
-            }
-          end
+            should "not delete other's floor plans" do
+              @other_floor_plans.each { |plan|
+                assert ApartmentFloorPlan.find(plan.id)
+              }
+            end
 
-          should 'assign the floor plans to the receiver' do
-            assert_equal @other_floor_plans, @community.floor_plans(true)
-          end
+            should 'assign the floor plans to the receiver' do
+              assert_equal @other_floor_plans, @community.floor_plans(true)
+            end
 
-          should 'destroy the other record' do
-            assert @other.destroyed?
+            should 'destroy the other record' do
+              assert @other.destroyed?
+            end
           end
         end
       end
@@ -236,22 +241,10 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
       end
     end
 
-    ApartmentCommunity::EXTERNAL_CMS_TYPES.each do |type|
-      context "#managed_by_#{type}?" do
-        context "when community is managed by #{type.titlecase}" do
-          setup { @community = ApartmentCommunity.make(type.to_sym) }
-
-          should 'be true' do
-            assert @community.send("managed_by_#{type}?")
-          end
-        end
-
-        context "when community is not managed by #{type.titlecase}" do
-          setup { @community = ApartmentCommunity.make }
-
-          should 'be false' do
-            assert !@community.send("managed_by_#{type}?")
-          end
+    context '#managed_externally?' do
+      context 'when CMS type/id fields are blank' do
+        should 'be false' do
+          assert !@community.managed_externally?
         end
       end
     end
@@ -268,23 +261,15 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
       end
     end
 
-    context 'managed_by_* named scopes' do
+    context 'duplicates scope' do
       setup do
-        @vaultware     = ApartmentCommunity.make(:vaultware)
-        @property_link = ApartmentCommunity.make(:property_link)
-        @other         = ApartmentCommunity.make
+        @property = ApartmentCommunity.make(:title => 'Solaire')
+        @other1   = ApartmentCommunity.make(:title => 'Solar')
+        @other2   = ApartmentCommunity.make(:title => 'Batman')
       end
 
-      context 'vaultware' do
-        should 'return only the Vaultware communities' do
-          assert_equal [@vaultware], ApartmentCommunity.managed_by_vaultware.all
-        end
-      end
-
-      context 'property_link' do
-        should 'return only the PropertyLink communities' do
-          assert_equal [@property_link], ApartmentCommunity.managed_by_property_link.all
-        end
+      should 'return both communities' do
+        assert_same_elements [@property, @other1], ApartmentCommunity.duplicates
       end
     end
   end

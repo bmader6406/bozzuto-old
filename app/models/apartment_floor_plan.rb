@@ -1,5 +1,5 @@
 class ApartmentFloorPlan < ActiveRecord::Base
-  include Bozzuto::ExternalCMS
+  include Bozzuto::ExternalCms
 
   USE_IMAGE_URL = 0
   USE_IMAGE_FILE = 1

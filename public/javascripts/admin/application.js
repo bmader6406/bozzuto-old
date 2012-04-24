@@ -142,17 +142,17 @@ $(function() {
     }).change();
   })();
 
-  // vaultware feed refresh
+  // External Feeds sidebar refresh links
   (function() {
-    var $link    = $('a#refresh-vaultware-feed'),
-        $message = $('span.vaultware-message.please-wait');
+    $('a.refresh-feed').each(function(i, link) {
+			var $link    = $(link),
+					$message = $link.siblings('span.external-cms-message.please-wait');
 
-    if ($link.length > 0) {
-      $link.bind('click', function() {
-        $link.hide();
-        $message.show();
-      });
-    }
+			$link.bind('click', function() {
+				$link.hide();
+				$message.show();
+			});
+		});
   })();
 
   // mediaplex tag parser

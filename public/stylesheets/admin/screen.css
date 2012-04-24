@@ -151,19 +151,19 @@ a.on { color: #333; font-weight: bold; text-decoration: underline; }
   width: 220px;
 }
 
-#sidebar div.module {
+#sidebar .module {
   background: #f2f4f5;
   margin-bottom: 25px;
   padding: 0 0 10px;
 }
 
-#sidebar div.module ul,
-#sidebar div.module p {
+#sidebar .module ul,
+#sidebar .module p {
   padding: 0 9px;
 }
 
 
-#sidebar div.module li {
+#sidebar .module li {
   background: url(/images/admin/bg-sidebar-li.png) left bottom no-repeat;
   color: #656a6d;
   font-size: 11px;
@@ -172,12 +172,12 @@ a.on { color: #333; font-weight: bold; text-decoration: underline; }
   text-transform: uppercase;
 }
 
-#sidebar div.module li:last-child {
+#sidebar .module li:last-child {
   background: none;
   padding-bottom: 0;
 }
 
-#sidebar div.module li a {
+#sidebar .module li a {
   background: url(/images/admin/bg-sidebar-li-a.png) left center no-repeat;
   color: #656a6d;
   display: block;
@@ -185,7 +185,7 @@ a.on { color: #333; font-weight: bold; text-decoration: underline; }
   padding-left: 9px;
 }
 
-#sidebar div.module form input {
+#sidebar .module form input {
   border: 1px solid #c1c1c5;
   margin-bottom: 4px;
   width: 194px;
@@ -616,19 +616,35 @@ input.date_input { border: 1px solid #999; margin-bottom: 1em;}
 
 /* @end */
 
-/* @group Vaultware Feed refresh */
+/* @group External Feeds sidebar */
 
-#sidebar .vaultware-message {
-  text-transform: none;
+#sidebar .external-feeds h3 {
   font-size: 12px;
+  letter-spacing: 1px;
 }
 
-#sidebar .vaultware-message.please-wait {
+#sidebar .external-feeds li {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+#sidebar .external-cms-message {
+  background: url(/images/admin/bg-sidebar-li-a.png) left center no-repeat;
+  font-size: 12px;
+  padding-left: 9px;
+  text-transform: none;
+}
+
+#sidebar .external-cms-message.please-wait {
   display: none;
 }
 
-#sidebar .vaultware-message.please-wait img {
+#sidebar .external-cms-message.please-wait img {
   vertical-align: middle;
+}
+
+#sidebar p.refresh-interval {
+  margin: 2em 0 0 0;
 }
 
 /* @end */

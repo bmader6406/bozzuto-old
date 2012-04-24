@@ -49,6 +49,15 @@ class ActiveSupport::TestCase
     @request.env['HTTP_USER_AGENT'] = 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_2_1 like Mac OS X; da-dk) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8C148 Safari/6533.18.5'
   end
 
+  def rm_feed_loader_tmp_files
+    Bozzuto::ExternalFeedLoader.feed_types.each do |type|
+      loader = Bozzuto::ExternalFeedLoader.loader_for_type(type)
+
+      `rm #{loader.class.tmp_file}` if File.exists?(loader.class.tmp_file)
+      `rm #{loader.class.lock_file}` if File.exists?(loader.class.lock_file)
+    end
+  end
+
   class << self
     def should_redirect_to_home_page
       should_respond_with :redirect

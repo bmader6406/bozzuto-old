@@ -24,10 +24,6 @@ class ApartmentCommunitiesController < ApplicationController
   def show
   end
 
-  def the_typus_user
-    typus_user
-  end
-  helper_method :the_typus_user
 
   private
 

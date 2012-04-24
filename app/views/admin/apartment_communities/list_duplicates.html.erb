@@ -4,10 +4,12 @@
   <%= export %>
   <%= search %>
   <%= filters %>
-  <%= render 'vaultware_feed' %>
 <% end %>
 
-<h2><%= @resource[:pluralized] %> <%= remove_filter_link %></h2>
+<% content_for :breadcrumb do %>
+  <%= link_to @resource[:pluralized], :action => 'index' %> &rsaquo;
+  <span><%= _("Duplicates") %></span>
+<% end %>
 
 <%= typus_block :location => @resource[:self], :partial => 'index' %>
 
@@ -16,7 +18,8 @@
   <%= pagination %>
 <% else %>
   <div id="flash" class="notice">
-    <% message = @resource[:class].count.zero? ? "There are no {{records}}." : "There are no {{records}} under this filter." %>
+    <% message = @resource[:class].count.zero? ? "There are no %{records}." : "There are no %{records} under this filter." %>
     <p><%= _(message, :records => @resource[:human_name].pluralize.downcase) %></p>
   </div>
 <% end %>
+

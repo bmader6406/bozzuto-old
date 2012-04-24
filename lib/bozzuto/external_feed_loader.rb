@@ -1,14 +1,27 @@
 module Bozzuto
-  class PropertyFeedLoader
-    class_attribute :_feed_type
+  class ExternalFeedLoader
+    class_attribute :feed_type
+    class_attribute :tmp_file
+    class_attribute :lock_file
+    class_attribute :load_interval
 
-    def self.feed_type(type = nil)
-      if type
-        self._feed_type = type.to_s
+    self.load_interval = 2.hours
+
+    def self.feed_types
+      %w(vaultware property_link)
+    end
+
+    def self.loader_for_type(type)
+      case type.to_sym
+      when :vaultware
+        VaultwareFeedLoader.new
+      when :property_link
+        PropertyLinkFeedLoader.new
       else
-        self._feed_type
+        raise "Unknown feed type: #{type}"
       end
     end
+
 
     def self.define_feed_attribute(attr)
       class_attribute "_#{attr}"
@@ -51,17 +64,52 @@ module Bozzuto
     end
 
 
-    attr_reader :data
+    attr_accessor :file
 
-    def load(file)
-      @data = Nokogiri::XML(File.read(file))
+
+    def feed_name
+      self.class.feed_type.to_s.classify
     end
 
-    def process
-      data.xpath('/PhysicalProperty/Property').each do |property|
-        process_property(property)
-        process_floor_plans(property)
+    def feed_already_loading?
+      File.exists?(self.class.lock_file)
+    end
+
+    def can_load_feed?
+      if !feed_already_loading? && Time.now >= next_load_time
+        true
+      else
+        false
       end
+    end
+
+    def next_load_time
+      if last_loaded_at
+        last_loaded_at + self.class.load_interval
+      else
+        Time.now - 1.minute
+      end
+    end
+
+    def last_loaded_at
+      if File.exists?(self.class.tmp_file)
+        File.new(self.class.tmp_file).mtime
+      else
+        nil
+      end
+    end
+
+    def load
+      return false unless can_load_feed?
+
+      begin
+        touch_lock_file
+        load_feed
+        touch_tmp_file
+      ensure
+        rm_lock_file
+      end
+
       true
     end
 
@@ -86,10 +134,32 @@ module Bozzuto
 
     private
 
+    def load_feed
+      data = Nokogiri::XML(File.read(file))
+
+      data.xpath('/PhysicalProperty/Property').each do |property|
+        process_property(property)
+        process_floor_plans(property)
+      end
+    end
+
+    def touch_tmp_file
+      system "touch #{self.class.tmp_file}"
+    end
+
+    def touch_lock_file
+      system "touch #{self.class.lock_file}"
+    end
+
+    def rm_lock_file
+      system "rm #{self.class.lock_file}"
+    end
+
+
     def process_property(property)
       @community = ApartmentCommunity.find_or_initialize_by_external_cms_id_and_external_cms_type(
         value_for(property, :external_cms_id).to_i,
-        self.class.feed_type
+        self.class.feed_type.to_s
       )
 
       @community.update_attributes({
@@ -99,6 +169,10 @@ module Bozzuto
         :county           => find_county(property),
         :availability_url => value_for(property, :availability_url)
       })
+
+      Rails.logger.debug "--> #{@community.inspect}"
+      Rails.logger.debug "--> #{@community.valid?}"
+      Rails.logger.debug "--> #{@community.errors.full_messages}"
     end
 
     def rolled_up?(property)
@@ -177,7 +251,7 @@ module Bozzuto
         :min_effective_rent => value_for(plan, :floor_plan_min_effective_rent).to_f,
         :max_effective_rent => value_for(plan, :floor_plan_max_effective_rent).to_f,
         :external_cms_id    => plan['Id'].to_i,
-        :external_cms_type  => self.class.feed_type
+        :external_cms_type  => self.class.feed_type.to_s
       }
     end
 

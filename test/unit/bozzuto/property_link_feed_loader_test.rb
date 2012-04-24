@@ -4,26 +4,25 @@ module Bozzuto
   class PropertyLinkFeedLoaderTest < ActiveSupport::TestCase
     context 'A PropertyLink Feed Loader' do
       setup do
+        rm_feed_loader_tmp_files
         create_states
         @loader = PropertyLinkFeedLoader.new
+
+        @loader.stubs(:touch_tmp_file)
+        @loader.stubs(:touch_lock_file)
+        @loader.stubs(:rm_lock_file)
       end
 
 
       context '#process' do
         setup do
           load_property_link_fixture_file('property_link.xml')
-          @loader.load(File.join(Rails.root, 'test', 'files', 'property_link.xml'))
-        end
-
-        should 'load the file' do
-          @loader.process
-          assert @loader.data
-          assert @loader.data.xpath('/PhysicalProperty').present?
+          @loader.file = File.join(Rails.root, 'test', 'files', 'property_link.xml')
         end
 
         should 'create the communities' do
           assert_difference('ApartmentCommunity.count', @properties.count) do
-            @loader.process
+            @loader.load
           end
 
           community = ApartmentCommunity.managed_by_feed(external_cms_id(@property), 'property_link').first
@@ -42,7 +41,7 @@ module Bozzuto
 
           should 'update the existing community' do
             assert_difference('ApartmentCommunity.count', @properties.count - 1) do
-              @loader.process
+              @loader.load
             end
 
             @community.reload
@@ -92,7 +91,7 @@ module Bozzuto
       context 'processing floor plans' do
         setup do
           load_property_link_fixture_file('property_link.xml')
-          @loader.load(File.join(Rails.root, 'test', 'files', 'property_link.xml'))
+          @loader.file = File.join(Rails.root, 'test', 'files', 'property_link.xml')
 
           @community = ApartmentCommunity.make(:property_link,
             :external_cms_id => external_cms_id(@property)
@@ -105,7 +104,7 @@ module Bozzuto
         context "when no matching floor plans exist" do
           should 'create the floor plans' do
             assert_difference('@community.floor_plans.count', @plans.count) do
-              @loader.process
+              @loader.load
             end
 
             assert_equal @plans.count, @community.floor_plans.count
@@ -133,7 +132,7 @@ module Bozzuto
             )
 
             assert_difference('@community.floor_plans.count', @plans.count - 1) do
-              @loader.process
+              @loader.load
             end
           end
 
@@ -159,11 +158,11 @@ module Bozzuto
       context 'testing a full load' do
         setup do
           load_property_link_fixture_file('property_link.xml')
-          @loader.load(File.join(Rails.root, 'test', 'files', 'property_link.xml'))
+          @loader.file = File.join(Rails.root, 'test', 'files', 'property_link.xml')
         end
 
         should 'load all the properties and floor plans' do
-          @loader.process
+          @loader.load
 
           @properties.each do |property|
             attrs = community_attributes(property)

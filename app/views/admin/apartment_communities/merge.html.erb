@@ -1,11 +1,11 @@
 <% content_for :breadcrumb do %>
   <%= link_to @resource[:pluralized], :action => 'index' %> &rsaquo;
-  <span><%= _("Merge with Vaultware community") %></span>
+  <span><%= _("Merge with external community") %></span>
 <% end %>
 
 <div id="flash" class="notice">
   <p style="line-height: 1.5;">
-    You're merging &ldquo;<%= @item.title %>&rdquo; with a Vaultware community.
+    You're merging &ldquo;<%= @item.title %>&rdquo; with an externally-managed community.
     <br />
     <%= link_to 'Do you want to cancel?', url_for_action(:edit) %>
   </p>
@@ -14,13 +14,12 @@
 
 <% form_tag url_for_action(:begin_merge), :method => :get do %>
   <p>
-    Please select a community from the list of Vaultware-managed communities:
+    Please select a community from the list of externally-managed communities:
   </p>
 
   <p>
-    <select name="vaultware_community_id">
-      <option value="">Please select a community</option>
-      <%= options_for_select @vaultware_communities.collect {|p| [ p.title, p.id ] } %>
+    <select name="external_community_id">
+      <%= raw(grouped_options_for_select(@options, nil, 'Please select a community')) %>
     </select>
   </p>
 

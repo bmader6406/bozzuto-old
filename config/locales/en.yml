@@ -41,6 +41,7 @@ en:
     attributes:
       apartment_community:
         dnr_configuration: DNR Configuration
+        external_cms_name: Managed by
         featured_position: Position
         floor_plans_meta_description: Floor Plans SEO Description
         floor_plans_meta_keywords: Floor Plans SEO Keywords

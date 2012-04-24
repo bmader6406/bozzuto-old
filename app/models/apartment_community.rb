@@ -1,7 +1,7 @@
 class ApartmentCommunity < Community
-  include Bozzuto::ExternalCMS
+  include Bozzuto::ExternalCms
 
-  VAULTWARE_ATTRIBUTES = [
+  self.external_cms_attributes = [
     :title,
     :street_address,
     :city,
@@ -73,16 +73,13 @@ class ApartmentCommunity < Community
   end
 
   def merge(other_community)
-    raise 'Receiver must not be a Vaultware-managed community' if managed_by_vaultware?
-    raise 'Argument must be a Vaultware-managed community' unless other_community.managed_by_vaultware?
+    raise 'Receiver must not be an externally-managed community' if managed_externally?
+    raise 'Argument must be an externally-managed community' unless other_community.managed_externally?
 
     self.external_cms_id   = other_community.external_cms_id
     self.external_cms_type = other_community.external_cms_type
-    self.floor_plans       = other_community.floor_plans
 
-    # copy other community's Vaultware attributes
-    attrs = VAULTWARE_ATTRIBUTES.reject { |attr| attr == :floor_plans }
-    attrs.each { |attr|
+    self.class.external_cms_attributes.each { |attr|
       self.send("#{attr}=", other_community.send(attr))
     }
 

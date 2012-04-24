@@ -218,7 +218,7 @@ class ApartmentFloorPlanTest < ActiveSupport::TestCase
       end
     end
 
-    ApartmentFloorPlan::EXTERNAL_CMS_TYPES.each do |type|
+    Bozzuto::ExternalFeedLoader.feed_types.each do |type|
       context "#managed_by_#{type}?" do
         context "when floor plan is managed by #{type.titlecase}" do
           setup { @plan = ApartmentFloorPlan.make(type.to_sym) }
