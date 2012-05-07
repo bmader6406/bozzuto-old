@@ -29,13 +29,15 @@ class PhotoSet < ActiveRecord::Base
   end
 
   def sync_photos
-    if flickr_set.present?
+    begin
+      return false unless flickr_set.present?
+
       photos.destroy_all
 
       flickr_set.photos.each do |photo|
         groups = groups_for_photo(photo)
 
-        unless groups.empty?
+        if groups.any?
           file = choose_size(photo).save_to(RAILS_ROOT + '/tmp')
 
           self.photos << Photo.new(
@@ -51,7 +53,9 @@ class PhotoSet < ActiveRecord::Base
 
       self.needs_sync = false
       self.save
-    else
+    rescue Exception => e
+      Rails.logger.debug(e)
+      notify_hoptoad(e)
       false
     end
   end
