@@ -55,7 +55,9 @@ class PhotoSet < ActiveRecord::Base
       self.save
     rescue Exception => e
       Rails.logger.debug(e)
-      notify_hoptoad(e)
+
+      HoptoadNotifier.notify(e)
+
       false
     end
   end
