@@ -1674,7 +1674,6 @@ div.wysiwyg ul li {
 
     .home .latest-award .row {
       background-color: #f2f4f5;
-      border-bottom: 1px solid #fff;
       border-top: 1px solid #fff;
       padding: 12px;
     }
@@ -1687,22 +1686,11 @@ div.wysiwyg ul li {
     .home .latest-award .section {
       float: left;
       position: relative;
-      width: 115px;
-    }
-
-    .home .latest-award .date {
-      color: #67676f;
-      font-size: 12px;
-      font-weight: bold;
-      position: absolute;
-      right: -30px;
-      text-align: right;
-      top: 0;
-      width: 43px;
+      width: 136px;
     }
     .home .latest-award h4,
     .home .latest-award p {
-      font-size: 11px;
+      font-size: 12px;
       line-height: 1.454545455;
     }
     .home .latest-award h4 a {

@@ -23,10 +23,15 @@ class HomePagesController < ApplicationController
   end
   helper_method :latest_news
 
-  def latest_award
-    base_scope = Award.published.latest(1)
+  def latest_awards
+    @latest_awards ||= begin
+      base_scope = Award.published
 
-    @latest_award ||= base_scope.featured.first || base_scope.first
+      featured   = base_scope.featured.latest(1).first
+      unfeatured = base_scope.not_featured.latest(2).all
+
+      [featured, unfeatured].compact.flatten.take(2)
+    end
   end
-  helper_method :latest_award
+  helper_method :latest_awards
 end

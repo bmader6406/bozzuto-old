@@ -44,25 +44,23 @@
             <%= @home_page.body.try(:html_safe) %>
           </div>
 
-          <% latest_award.if_present? do |award| %>
+          <% if latest_awards.any? %>
             <div class="latest-award article">
-              <h3><%= link_to 'Latest Awards', awards_path(@section) %></h3>
+              <h3><%= link_to 'Awards', awards_path(@section) %></h3>
 
-              <div class="row">
-                <% if award.image? %>
-                  <p class="figure">
-                    <%= link_to image_tag(award.image.url(:thumb)), award_path(@section, award) %>
-                  </p>
-                <% end %>
+              <% latest_awards.each do |award| %>
+                <div class="row">
+                  <% if award.image? %>
+                    <p class="figure">
+                      <%= link_to image_tag(award.image.url(:thumb)), award_path(@section, award) %>
+                    </p>
+                  <% end %>
 
-                <div class="section">
-                  <h4><%= link_to award.title, award_path(@section, award) %></h4>
-
-                  <p class="date"><%= month_and_day(award.published_at) %></p>
-
-                  <%= truncate_html(raw(award.body), :length => 100) %>
+                  <div class="section">
+                    <h4><%= link_to award.title, award_path(@section, award) %></h4>
+                  </div>
                 </div>
-              </div>
+              <% end %>
             </div>
           <% end %>
         </div>

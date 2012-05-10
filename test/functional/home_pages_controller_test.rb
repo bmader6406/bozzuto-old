@@ -5,20 +5,23 @@ class HomePagesControllerTest < ActionController::TestCase
     context '#latest_award' do
       setup do
         @unpublished = Award.make(:unpublished)
-        @published   = Award.make(:published_at => 3.days.ago)
+        @published1  = Award.make(:published_at => 3.days.ago)
+        @published2  = Award.make(:published_at => 4.days.ago)
       end
 
       context 'with no featured award' do
-        should 'return the published award' do
-          assert_equal @published, @controller.send(:latest_award)
+        should 'return the two most recent unfeatured published awards' do
+          assert_equal [@published1, @published2], @controller.send(:latest_awards)
         end
       end
 
       context 'with a featured award' do
-        setup { @featured = Award.make(:published_at => 3.days.ago, :featured => true) }
+        setup do
+          @featured = Award.make(:published_at => 1.days.ago, :featured => true)
+        end
 
-        should 'return the featured and published award' do
-          assert_equal @featured, @controller.send(:latest_award)
+        should 'return the featured and published awards' do
+          assert_equal [@featured, @published1], @controller.send(:latest_awards)
         end
       end
     end
