@@ -1608,6 +1608,12 @@ div.wysiwyg ul li {
       margin: 25px 0;
       width: 380px;
     }
+
+    .home .latest-news a,
+    .home .bozzuto-blog a {
+      overflow: hidden;
+    }
+
     .home .article h3 {
       background: transparent url(../images/structure/bg-home-article-h3.gif) no-repeat 0 0;
       border-bottom: 1px solid #c1c1c5;

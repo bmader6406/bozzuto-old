@@ -196,6 +196,25 @@ window.bozzuto = {};
         $('div#walk-score').append(walkscoreJS);
       }
     });
+
+
+		// Home page Featured News/Tom's Blog captions
+		$('.home .latest-news, .home .bozzuto-blog').each(function() {
+			var $container = $(this),
+					$title     = $container.find('.title'),
+					duration   = 250,
+					offset;
+
+			offset = -1 * $title.outerHeight(true);
+
+			$title.css({ bottom: offset });
+
+			$container.hover(function() {
+				$title.animate({ bottom: '0px' }, duration);
+			}, function() {
+				$title.animate({ bottom: offset }, duration);
+			});
+		});
   });
 
   function viewMoreFloorPlanGroups($set) {
