@@ -45,10 +45,10 @@ ActionController::Routing::Routes.draw do |map|
       :only       => :index,
       :controller => :promos
 
-    community.resource :send_to_friend_submissions,
-      :as     => :send_to_friend,
-      :only   => :create,
-      :member => { :thank_you => :get }
+    community.resource :email_listing,
+      :controller => :community_listing_emails,
+      :only       => :create,
+      :member     => { :thank_you => :get }
 
     community.resource :sms_message,
       :as     => :send_to_phone,
@@ -68,10 +68,12 @@ ActionController::Routing::Routes.draw do |map|
   end
 
 
-  home_community_options = community_options.merge(
+  home_community_options = {
     :path_prefix => 'new-homes',
+    :as          => :communities,
+    :only        => [:index, :show],
     :collection  => { :map => :get }
-  )
+  }
   map.resources :home_communities, home_community_options do |community|
     community.resources :homes, :only => :index do |home|
       home.resources :floor_plans,
@@ -89,10 +91,10 @@ ActionController::Routing::Routes.draw do |map|
       :only       => :index,
       :controller => :promos
 
-    community.resource :send_to_friend_submissions,
-      :as     => :send_to_friend,
-      :only   => :create,
-      :member => { :thank_you => :get }
+    community.resource :email_listing,
+      :controller => :community_listing_emails,
+      :only       => :create,
+      :member     => { :thank_you => :get }
 
     community.resource :sms_message,
       :as     => :send_to_phone,

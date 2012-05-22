@@ -1,15 +1,18 @@
-class SendToFriendSubmissionsController < ApplicationController
+class CommunityListingEmailsController < ApplicationController
   before_filter :find_community
 
   layout 'community'
 
   def create
     if params[:email].present?
-      CommunityMailer.deliver_send_to_friend(params[:email], @community)
+      CommunityListingMailer.deliver_single_listing(params[:email], @community)
+
       flash[:send_to_friend_email] = params[:email]
-      redirect_to thank_you_page
+
+      redirect_to [:thank_you, @community, :email_listing]
     else
       flash[:send_to_friend_errors] = true
+
       redirect_to @community
     end
   end
@@ -19,14 +22,6 @@ class SendToFriendSubmissionsController < ApplicationController
 
 
   private
-
-  def thank_you_page
-    if @community.is_a? ApartmentCommunity
-      thank_you_apartment_community_send_to_friend_submissions_path(@community)
-    else
-      thank_you_home_community_send_to_friend_submissions_path(@community)
-    end
-  end
 
   def find_community
     @community = if params.has_key?(:apartment_community_id)

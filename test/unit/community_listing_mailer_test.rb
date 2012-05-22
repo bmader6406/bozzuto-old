@@ -1,20 +1,20 @@
 require 'test_helper'
 
-class CommunityMailerTest < ActionMailer::TestCase
+class CommunityListingMailerTest < ActionMailer::TestCase
   include ActionController::UrlWriter
   default_url_options[:host] = 'bozzuto.com'
 
-  context "CommunityMailer" do
+  context "CommunityListingMailer" do
     setup do
       @community = ApartmentCommunity.make
     end
 
-    context "#send_to_friend" do
+    context "#single_listing" do
       setup do
         @to = Faker::Internet.email
 
         assert_difference('ActionMailer::Base.deliveries.count', 1) do
-          @email = CommunityMailer.deliver_send_to_friend(@to, @community)
+          @email = CommunityListingMailer.deliver_single_listing(@to, @community)
         end
       end
 
@@ -27,14 +27,13 @@ class CommunityMailerTest < ActionMailer::TestCase
       end
 
       should "have a link to the community in the body" do
-        assert_match /\/communities\/#{@community.to_param}/,
-          @email.body
+        assert_match /\/communities\/#{@community.to_param}/, @email.body
       end
     end
 
     context 'url helpers' do
       setup do
-        @mailer = CommunityMailer.send(:new)
+        @mailer = CommunityListingMailer.send(:new)
       end
 
       context '#community_url' do
@@ -42,8 +41,7 @@ class CommunityMailerTest < ActionMailer::TestCase
           setup { @community = HomeCommunity.make }
 
           should 'return home_community_url' do
-            assert_equal home_community_url(@community),
-              @mailer.send(:community_url, @community)
+            assert_equal home_community_url(@community), @mailer.send(:community_url, @community)
           end
         end
 
@@ -51,8 +49,7 @@ class CommunityMailerTest < ActionMailer::TestCase
           setup { @community = ApartmentCommunity.make }
 
           should 'return apartment_community_url' do
-            assert_equal apartment_community_url(@community),
-              @mailer.send(:community_url, @community)
+            assert_equal apartment_community_url(@community), @mailer.send(:community_url, @community)
           end
         end
       end
@@ -61,8 +58,7 @@ class CommunityMailerTest < ActionMailer::TestCase
         setup { @community = ApartmentCommunity.make }
 
         should 'return the ufollowup_url' do
-          assert_equal ufollowup_url(@community.id),
-            @mailer.send(:offers_url, @community)
+          assert_equal ufollowup_url(@community.id), @mailer.send(:offers_url, @community)
         end
       end
 
@@ -71,8 +67,7 @@ class CommunityMailerTest < ActionMailer::TestCase
           setup { @community = HomeCommunity.make }
 
           should 'return home_community_homes_url' do
-            assert_equal home_community_homes_url(@community),
-              @mailer.send(:floor_plans_url, @community)
+            assert_equal home_community_homes_url(@community), @mailer.send(:floor_plans_url, @community)
           end
         end
 
@@ -80,8 +75,7 @@ class CommunityMailerTest < ActionMailer::TestCase
           setup { @community = ApartmentCommunity.make }
 
           should 'return apartment_community_floor_plan_groups_url' do
-            assert_equal apartment_community_floor_plan_groups_url(@community),
-              @mailer.send(:floor_plans_url, @community)
+            assert_equal apartment_community_floor_plan_groups_url(@community), @mailer.send(:floor_plans_url, @community)
           end
         end
       end

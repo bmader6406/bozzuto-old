@@ -112,27 +112,11 @@ module OverriddenPathsHelper
     end
   end
 
-  def send_to_friend_path(community)
-    if community.is_a?(ApartmentCommunity)
-      apartment_community_send_to_friend_submissions_path(community)
-    else
-      home_community_send_to_friend_submissions_path(community)
-    end
-  end
-
   def section_contact_path(section)
     if section.contact_topic.present?
       contact_path(:topic => @section.contact_topic)
     else
       contact_path
-    end
-  end
-
-  def send_me_updates_path(community)
-    if community.is_a?(ApartmentCommunity)
-      apartment_community_sms_message_path(community)
-    else
-      home_community_sms_message_path(community)
     end
   end
 end

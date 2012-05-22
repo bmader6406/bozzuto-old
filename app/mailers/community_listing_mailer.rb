@@ -1,8 +1,8 @@
-class CommunityMailer < ActionMailer::Base
+class CommunityListingMailer < ActionMailer::Base
   include TruncateHtmlHelper
   helper_method :truncate_html
 
-  def send_to_friend(to_address, community)
+  def single_listing(to_address, community)
     from       BOZZUTO_EMAIL_ADDRESS
     recipients to_address
     subject    community.title

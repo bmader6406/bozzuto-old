@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SendToFriendSubmissionsControllerTest < ActionController::TestCase
+class CommunityListingEmailsControllerTest < ActionController::TestCase
   context "on POST to create" do
     context "for a HomeCommunity" do
       setup do
@@ -13,7 +13,7 @@ class SendToFriendSubmissionsControllerTest < ActionController::TestCase
       end
 
       should_redirect_to('thank you page') {
-        thank_you_home_community_send_to_friend_submissions_path(@community)
+        thank_you_home_community_email_listing_path(@community)
       }
 
       should_change('the number of emails', :by => 1) { ActionMailer::Base.deliveries.count }
@@ -34,7 +34,7 @@ class SendToFriendSubmissionsControllerTest < ActionController::TestCase
       end
 
       should_redirect_to('thank you page') {
-        thank_you_apartment_community_send_to_friend_submissions_path(@community)
+        thank_you_apartment_community_email_listing_path(@community)
       }
 
       should_change('the number of emails', :by => 1) { ActionMailer::Base.deliveries.count }

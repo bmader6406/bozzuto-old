@@ -8,7 +8,7 @@
 
 <div class="section sms-form">
   <div class="content">
-    <% form_tag send_me_updates_path(@community) do %>
+    <% form_tag [@community, :sms_message] do %>
 			<% content_tag :p, :class => (controller.action_name.to_sym == :create ? 'error' : nil) do %>
 				<%= text_field_tag :phone_number, params[:phone_number], :placeholder => 'Your Phone Number' %>
 				<em class="hint">Std msg rates apply.</em>

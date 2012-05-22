@@ -12,7 +12,7 @@ class SmsMessagesController < ApplicationController
       format.html {
         if params[:phone_number].present?
           @community.send_info_message_to(params[:phone_number])
-          redirect_to thank_you_page
+          redirect_to [:thank_you, @community, :sms_message]
         else
           flash[:send_to_phone_errors] = true
           redirect_to @community
@@ -41,14 +41,6 @@ class SmsMessagesController < ApplicationController
 
   def apartment?
     params.has_key?(:apartment_community_id)
-  end
-
-  def thank_you_page
-    if apartment?
-      thank_you_apartment_community_sms_message_path(@community)
-    else
-      thank_you_home_community_sms_message_path(@community)
-    end
   end
 
   def find_community
