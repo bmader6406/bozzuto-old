@@ -1,24 +1,57 @@
 <% content_for :special_nav do %>
   <ul id="special-nav">
-    <li>
-      <a href="#">Send to friend</a>
+    <% if @community.home? %>
+      <li>
+        <a href="#">Send to friend</a>
 
-      <div class="popup">
-        <% form_tag send_to_friend_path(@community), :class => (flash[:send_to_friend_errors] ? 'errors' : nil) do %>
-          <p>
-            <label>
-              <strong>Input your friend&rsquo;s email address</strong> to
-              send <%= @community.short_title || @community.title %> info
-            </label>
-          </p>
+        <div class="popup">
+          <% form_tag send_to_friend_path(@community), :class => (flash[:send_to_friend_errors] ? 'errors' : nil) do %>
+            <p>
+              <label>
+                <strong>Input your friend&rsquo;s email address</strong> to
+                send <%= @community.short_title || @community.title %> info
+              </label>
+            </p>
 
-          <p class="fields">
-            <%= text_field_tag :email %>
-            <button type="submit">Send</button>
-          </p>
-        <% end %>
-      </div>
-    </li>
+            <p class="fields">
+              <%= text_field_tag :email %>
+              <button type="submit">Send</button>
+            </p>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+
+    <% if @community.apartment? %>
+      <li>
+        <a href="#">Send this property listing</a>
+
+        <div class="popup">
+          <% form_tag '#', :class => (flash[:send_to_friend_errors] ? 'errors' : nil) do %>
+            <p>
+              <label>
+                <strong>
+                  Enter your email address and we will send you the details and contact information for this property.
+                </strong>
+              </label>
+            </p>
+
+            <p class="checkbox">
+              <%= check_box_tag :send_newsletter %>
+              <%= label_tag :send_newsletter, "Sign me up for Bozzuto's e-newsletter" %>
+            </p>
+
+            <p class="fields">
+
+              <%= text_field_tag :email %>
+
+              <button type="submit">Send</button>
+            </p>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+
     <li>
       <a href="#">Send to phone</a>
 

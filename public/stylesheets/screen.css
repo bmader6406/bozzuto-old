@@ -368,6 +368,14 @@
       .community #special-nav input {
         width: 350px;
       }
+      .community #special-nav .checkbox {
+        padding: 5px 0;
+      }
+      .community #special-nav .checkbox input {
+        height: auto;
+        margin-right: 5px;
+        width: auto;
+      }
       .community #special-nav button {
         position: absolute;
         right: 0;
