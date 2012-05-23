@@ -82,7 +82,7 @@
 
           <p>
             <% link_to project_path(@section, project) do %>
-              <%= project.short_title || project.title %>, <%= project.city %>
+              <%= project.short_name %>, <%= project.city %>
             <% end %>
           </p>
           <% if project.listing_title.present? %>

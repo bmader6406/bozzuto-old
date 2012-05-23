@@ -74,6 +74,10 @@ class Community < Property
     end
   end
 
+  def overview_bullets
+    [overview_bullet_1, overview_bullet_2, overview_bullet_3].reject(&:blank?)
+  end
+
   def photo_groups
     @photo_groups ||= PhotoGroup.for_community(self)
   end

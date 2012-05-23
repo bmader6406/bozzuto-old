@@ -5,77 +5,76 @@ class CommunityListingMailerTest < ActionMailer::TestCase
   default_url_options[:host] = 'bozzuto.com'
 
   context "CommunityListingMailer" do
-    setup do
-      @community = ApartmentCommunity.make
-    end
 
     context "#single_listing" do
-      setup do
-        @to = Faker::Internet.email
+      [ApartmentCommunity, HomeCommunity].each do |klass|
+        context "with a #{klass.human_name}" do
+          setup do
+            @to        = Faker::Internet.email
+            @community = klass.make
 
-        assert_difference('ActionMailer::Base.deliveries.count', 1) do
-          @email = CommunityListingMailer.deliver_single_listing(@to, @community)
+            assert_difference('ActionMailer::Base.deliveries.count', 1) do
+              @email = CommunityListingMailer.deliver_single_listing(@to, @community)
+            end
+          end
+
+          should "deliver the message" do
+            assert_equal [@to], @email.to
+          end
+
+          should "have the community title as subject" do
+            assert_equal @community.title, @email.subject
+          end
+
+          should "have a link to the community in the body" do
+            assert_match /\/communities\/#{@community.to_param}/, @email.body
+          end
         end
-      end
-
-      should "deliver the message" do
-        assert_equal [@to], @email.to
-      end
-
-      should "have the community title as subject" do
-        assert_equal @community.title, @email.subject
-      end
-
-      should "have a link to the community in the body" do
-        assert_match /\/communities\/#{@community.to_param}/, @email.body
       end
     end
 
-    context 'url helpers' do
+    context 'helper methods' do
       setup do
         @mailer = CommunityListingMailer.send(:new)
-      end
-
-      context '#community_url' do
-        context 'with a home community' do
-          setup { @community = HomeCommunity.make }
-
-          should 'return home_community_url' do
-            assert_equal home_community_url(@community), @mailer.send(:community_url, @community)
-          end
-        end
-
-        context 'with an apartment community' do
-          setup { @community = ApartmentCommunity.make }
-
-          should 'return apartment_community_url' do
-            assert_equal apartment_community_url(@community), @mailer.send(:community_url, @community)
-          end
-        end
-      end
-
-      context '#offers_url' do
-        setup { @community = ApartmentCommunity.make }
-
-        should 'return the ufollowup_url' do
-          assert_equal ufollowup_url(@community.id), @mailer.send(:offers_url, @community)
-        end
+        @community = ApartmentCommunity.make
       end
 
       context '#floor_plans_url' do
         context 'with a home community' do
-          setup { @community = HomeCommunity.make }
+          setup do
+            @community = HomeCommunity.make
+          end
 
           should 'return home_community_homes_url' do
-            assert_equal home_community_homes_url(@community), @mailer.send(:floor_plans_url, @community)
+            url = home_community_homes_url(@community)
+
+            assert_equal url, @mailer.send(:floor_plans_url, @community)
           end
         end
 
         context 'with an apartment community' do
-          setup { @community = ApartmentCommunity.make }
+          setup do
+            @community = ApartmentCommunity.make
+          end
 
           should 'return apartment_community_floor_plan_groups_url' do
-            assert_equal apartment_community_floor_plan_groups_url(@community), @mailer.send(:floor_plans_url, @community)
+            url = apartment_community_floor_plan_groups_url(@community)
+
+            assert_equal url, @mailer.send(:floor_plans_url, @community)
+          end
+        end
+      end
+
+      context '#tel_url' do
+        context 'a number has non-numeric characters' do
+          should 'strip those from the number' do
+            assert_equal 'tel:+18881234567', @mailer.send(:tel_url, '1 (888) 123-4567')
+          end
+        end
+
+        context 'a number does not have a leading 1' do
+          should 'add the leading 1' do
+            assert_equal 'tel:+18881234567', @mailer.send(:tel_url, '888.123.4567')
           end
         end
       end

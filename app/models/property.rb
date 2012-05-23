@@ -122,6 +122,10 @@ class Property < ActiveRecord::Base
     type == 'Project'
   end
 
+  def short_name
+    short_title.presence || title
+  end
+
 
   private
 

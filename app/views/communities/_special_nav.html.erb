@@ -9,7 +9,7 @@
             <p>
               <label>
                 <strong>Input your friend&rsquo;s email address</strong> to
-                send <%= @community.short_title || @community.title %> info
+                send <%= @community.short_name %> info
               </label>
             </p>
 
@@ -56,7 +56,7 @@
       <div class="popup">
         <% form_tag [@community, :sms_message], :class => (flash[:send_to_phone_errors] ? 'errors' : nil) do %>
           <% content_tag :label, :for => 'phone_number' do %>
-            <strong>Input your phone number</strong> for <%= @community.short_title || @community.title %> info. Std msg
+            <strong>Input your phone number</strong> for <%= @community.short_name %> info. Std msg
             rates apply.
           <% end %>
           <p class="fields">

@@ -13,30 +13,23 @@ class CommunityListingMailer < ActionMailer::Base
 
   private
 
-  def community_url(community)
-    case community
-    when ApartmentCommunity
-      apartment_community_url(community)
-    when HomeCommunity
-      home_community_url(community)
-    end
-  end
-  helper_method :community_url
-
-
-  def offers_url(community, opts = {})
-    ufollowup_url(community.id, opts)
-  end
-  helper_method :offers_url
-
-
   def floor_plans_url(community)
     case community
-    when ApartmentCommunity
-      apartment_community_floor_plan_groups_url(community)
-    when HomeCommunity
-      home_community_homes_url(community)
+    when ApartmentCommunity then apartment_community_floor_plan_groups_url(community)
+    when HomeCommunity then      home_community_homes_url(community)
     end
   end
   helper_method :floor_plans_url
+
+
+  def tel_url(number)
+    number = number.gsub(/\D/, '')
+
+    if number.length == 10
+      number = '1' << number
+    end
+
+    "tel:+#{number}"
+  end
+  helper_method :tel_url
 end
