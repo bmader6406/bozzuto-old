@@ -7,13 +7,11 @@ class CommunityListingEmailsController < ApplicationController
     if params[:email].present?
       CommunityListingMailer.deliver_single_listing(params[:email], @community)
 
-      flash[:send_to_friend_email] = params[:email]
+      save_buzz if params[:newsletter]
 
-      redirect_to [:thank_you, @community, :email_listing]
+      redirect_to [:thank_you, @community, :email_listing], :flash => { :send_listing_email => params[:email] }
     else
-      flash[:send_to_friend_errors] = true
-
-      redirect_to @community
+      redirect_to @community, :flash => { :send_listing_errors => true }
     end
   end
 
@@ -29,5 +27,13 @@ class CommunityListingEmailsController < ApplicationController
     else
       HomeCommunity.find(params[:home_community_id])
     end
+  end
+
+  def save_buzz
+    Buzz.create(
+      :email        => params[:email],
+      :buzzes       => '',
+      :affiliations => ''
+    )
   end
 end

@@ -5,7 +5,7 @@
         <a href="#">Send to friend</a>
 
         <div class="popup">
-          <% form_tag [@community, :email_listing], :class => (flash[:send_to_friend_errors] ? 'errors' : nil) do %>
+          <% form_tag [@community, :email_listing], :class => (flash[:send_listing_errors] ? 'errors' : nil) do %>
             <p>
               <label>
                 <strong>Input your friend&rsquo;s email address</strong> to
@@ -27,7 +27,7 @@
         <a href="#">Send this property listing</a>
 
         <div class="popup">
-          <% form_tag [@community, :email_listing], :class => (flash[:send_to_friend_errors] ? 'errors' : nil) do %>
+          <% form_tag [@community, :email_listing], :class => (flash[:send_listing_errors] ? 'errors' : nil) do %>
             <p>
               <label>
                 <strong>
@@ -37,8 +37,8 @@
             </p>
 
             <p class="checkbox">
-              <%= check_box_tag :send_newsletter %>
-              <%= label_tag :send_newsletter, "Sign me up for Bozzuto's e-newsletter" %>
+              <%= check_box_tag :newsletter %>
+              <%= label_tag :newsletter, "Sign me up for Bozzuto's e-newsletter" %>
             </p>
 
             <p class="fields">
