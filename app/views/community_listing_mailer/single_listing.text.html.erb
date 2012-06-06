@@ -9,7 +9,7 @@
     .ExternalClass {width:100%;}
     .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
     #backgroundTable {margin:0; padding:0 0 50px; width:100% !important; line-height: 100% !important;}
-    #internalTable {box-shadow:0 0 10px #bbbbbb;border:15px solid #ffffff;}
+    #internalTable {box-shadow:0 0 10px #bbbbbb;}
     img {outline:none; text-decoration:none; -ms-interpolation-mode: bicubic;}
     a img {border:none;}
     .image_fix {display:block;}
@@ -63,11 +63,11 @@
 </head>
 <body>
 
-<table cellpadding="0" cellspacing="0" border="0" id="backgroundTable" width="100%" align="center" bgcolor="#e8e8e8">
+<table cellpadding="0" cellspacing="0" border="0" id="backgroundTable" width="100%" align="center" bgcolor="#ffffff">
   <tr>
     <td valign="top" align="center">
 
-      <table cellpadding="0" cellspacing="0" border="15" id="internalTable" bordercolor="#ffffff" width="600" align="center" bgcolor="#ffffff" style="text-align:left;">
+      <table cellpadding="0" cellspacing="0" id="internalTable" width="600" align="center" bgcolor="#ffffff" style="text-align:left;">
         <tr>
           <td style="border-bottom:1px solid #efefef;">
             <h1 style="margin:15px 0 5px;">
@@ -110,8 +110,8 @@
             <table cellpadding="0" cellspacing="0" border="0" width="600" align="center">
               <tr>
                 <td width="20"></td>
-                <td width="380" valign="top" style="line-height:1.6em;">
-                  <div style="font-family:Helvetica,Arial;font-size:15px;line-height:1.6em;color:#7f7b7a;">
+                <td width="360" valign="top" style="line-height:1.3em;">
+                  <div style="font-family:Helvetica,Arial;font-size:14px;line-height:1.3em;color:#7f7b7a;">
                     <% if @community.overview_text.present? -%>
                       <%= raw(truncate_html(@community.overview_text, :length => 200, :omission => "&hellip;")) %>
                     <% end -%>
@@ -127,8 +127,8 @@
 
                   <table cellpadding="0" cellspacing="0" border="0" width="350" style="padding-bottom:10px;border-bottom:1px solid #e1e1e1;margin-bottom:15px;">
                     <tr>
-                      <td colspan="2" style="line-height:1.6em;">
-                        <p style="line-height:1.6em;font-family:Helvetica,Arial;font-size:12px;color:#7f7b7a;">
+                      <td colspan="2" style="line-height:1.3em;">
+                        <p style="line-height:1.3em;font-family:Helvetica,Arial;font-size:12px;color:#7f7b7a;">
                           <%= @community.address %>
                           <br />
                           <%= link_to @community.phone_number, tel_url(@community.phone_number), :style => 'color:#178af8;' %>
@@ -139,10 +139,10 @@
                     <% if @community.apartment? %>
                       <tr>
                         <td width="150" valign="top">
-                          <ul style="margin:0;padding:0 5px 6px 20px;list-style:none;">
+                          <ul style="margin:0;padding:0 5px 6px 14px;list-style:none;">
                             <% ApartmentFloorPlanGroup.all.each do |group| %>
                               <% if @community.plan_count_in_group(group) > 0 %>
-                                <li style="color:#7f7b7a;font-family:Helvetica,Arial;font-size:11px;">
+                                <li style="color:#7f7b7a;font-family:Helvetica,Arial;font-size:12px;">
                                   <strong><%= group.name %></strong>
                                   <% @community.cheapest_price_in_group(group).if_present? do |price| %>
                                     from
@@ -168,43 +168,44 @@
                   </table>
                 </td>
 
-                <td width="220" valign="top" style="line-height:1.6em;">
-                  <ul style="list-style:none;margin:0;padding:0 0 0 20px;">
-                    <li style="border-top:1px solid #e8e8e8;line-height:1.6em;display:block;color:#7f7b7a;font-family:Helvetica,Arial;font-size:11px;">
-                      <% link_to @community, :style => 'font-weight:700;color:#7f7b7a;text-decoration:none;line-height:1.6em;display:block;text-transform:uppercase;' do %>
+                <td width="240" valign="top" style="line-height:1.3em;">
+                  <ul style="list-style:none;margin:0;padding:0 0 0 17px;">
+                    <li style="border-top:1px solid #e8e8e8;line-height:1.3em;display:block;color:#7f7b7a;font-family:Helvetica,Arial;font-size:11px;">
+                      <% link_to @community, :style => 'font-weight:700;color:#7f7b7a;text-decoration:none;line-height:1.3em;display:block;text-transform:uppercase;' do %>
                         <span style="font-size:15px;color:#aaaaaa;padding:0 2px 0 4px;">&rsaquo;</span>
                         Visit Website
                       <% end %>
                     </li>
 
                     <% if @community.street_address.present? %>
-                      <li style="border-top:1px solid #e8e8e8;line-height:1.6em;display:block;color:#7f7b7a;font-family:Helvetica,Arial;font-size:11px;">
-                        <% link_to "http://maps.google.com/maps?q=#{@community.address}", :style => 'font-weight:700;color:#7f7b7a;text-decoration:none;line-height:1.6em;display:block;text-transform:uppercase;' do %>
+                      <li style="border-top:1px solid #e8e8e8;line-height:1.3em;display:block;color:#7f7b7a;font-family:Helvetica,Arial;font-size:11px;">
+                        <% link_to "http://maps.google.com/maps?q=#{@community.address}", :style => 'font-weight:700;color:#7f7b7a;text-decoration:none;line-height:1.3em;display:block;text-transform:uppercase;' do %>
                           <span style="font-size:15px;color:#aaaaaa;padding:0 2px 0 4px;">&rsaquo;</span>
                           Click for Directions
                         <% end %>
                       </li>
                     <% end %>
 
-                    <li style="border-top:1px solid #e8e8e8;line-height:1.6em;display:block;color:#7f7b7a;font-family:Helvetica,Arial;font-size:11px;">
-                      <% link_to floor_plans_url(@community), :style => 'font-weight:700;color:#7f7b7a;text-decoration:none;line-height:1.6em;display:block;text-transform:uppercase;' do %>
+                    <li style="border-top:1px solid #e8e8e8;line-height:1.3em;display:block;color:#7f7b7a;font-family:Helvetica,Arial;font-size:11px;">
+                      <% link_to floor_plans_url(@community), :style => 'font-weight:700;color:#7f7b7a;text-decoration:none;line-height:1.3em;display:block;text-transform:uppercase;' do %>
                         <span style="font-size:15px;color:#aaaaaa;padding:0 2px 0 4px;">&rsaquo;</span>
                         View Pricing &amp; Availability
                       <% end %>
                     </li>
 
                     <% if @community.twitter_handle.present? %>
-                      <li style="border-top:1px solid #e8e8e8;line-height:1.6em;display:block;color:#7f7b7a;font-family:Helvetica,Arial;font-size:11px;">
-                        <% link_to "http://twitter.com/#{@community.twitter_handle}", :style => 'font-weight:700;color:#7f7b7a;text-decoration:none;line-height:1.6em;display:block;text-transform:uppercase;' do %>
+                      <li style="border-top:1px solid #e8e8e8;line-height:1.3em;display:block;color:#7f7b7a;font-family:Helvetica,Arial;font-size:11px;">
+                        <% link_to "http://twitter.com/#{@community.twitter_handle}", :style => 'font-weight:700;color:#7f7b7a;text-decoration:none;line-height:1.3em;display:block;text-transform:uppercase;' do %>
                           <span style="font-size:15px;color:#aaaaaa;padding:0 2px 0 4px;">&rsaquo;</span>
                           Follow on Twitter
+                    			<%= image_tag 'community_listing/ico-twitter.png', :class => 'image_fix', :alt => 'Follow on Twitter', :style => 'position:relative;top:3px;left:3px;', :width => 16, :height => 16 %>
                         <% end %>
                       </li>
                     <% end %>
 
                     <% if @community.phone_number.present? %>
                       <li style="border-top:1px solid #e8e8e8;">
-                        <p style="line-height:1.6em;font-family:Helvetica,Arial;font-size:12px;color:#7f7b7a;">
+                        <p style="line-height:1.3em;font-family:Helvetica,Arial;font-size:12px;color:#7f7b7a;">
                           Call us!
                           <%= link_to @community.phone_number, tel_url(@community.phone_number), :style => 'color:#178af8;' %>
                         </p>
@@ -252,13 +253,13 @@
             <table cellpadding="0" cellspacing="0" border="0" width="600" style="margin-top:1px;border-top:1px solid #e3e4e5;">
               <tr>
                 <td width="300" align="left" valign="middle">
-                  <p style="line-height:1.6em;font-family:Helvetica,Arial;font-size:11px;height:20px;margin-left:20px;color:#999999;">
+                  <p style="line-height:1.3em;font-family:Helvetica,Arial;font-size:11px;height:20px;margin-left:20px;color:#999999;">
                     &copy; <%= Time.now.year %> Bozzuto
                   </p>
                 </td>
 
                 <td width="300" align="right" valign="middle">
-                  <p style="line-height:1.6em;background:url(<%= image_path('community_listing/ico-equal.png') %>)no-repeat 100px 0;font-family:Helvetica,Arial;font-size:12px;height:20px;margin-right:20px;">
+                  <p style="line-height:1.3em;background:url(<%= image_path('community_listing/ico-equal.png') %>)no-repeat 100px 0;font-family:Helvetica,Arial;font-size:12px;height:20px;margin-right:20px;">
                     Equal Housing Opportunity
                   </p>
                 </td>
@@ -269,12 +270,12 @@
 
         <tr>
           <td>
-            <p style="line-height:1.6em;color:#aaaaaa;margin-top:15px;font-family:Helvetica,Arial;font-size:11px;margin:12px 0;">This message was sent by Bozzuto, 7850 Walker Dr., Suite 400, Greenbelt MD, 20770</p>
+            <p style="line-height:1.3em;color:#aaaaaa;margin-top:15px;font-family:Helvetica,Arial;font-size:11px;margin:12px 0;">This message was sent by Bozzuto, 7850 Walker Dr., Suite 400, Greenbelt MD, 20770</p>
 
             <% if @community.apartment? %>
-              <p style="line-height:1.6em;color:#aaaaaa;margin-top:15px;font-family:Helvetica,Arial;font-size:11px;margin:12px 0;">You are receiving this email through the &ldquo;Send property listing&rdquo; feature on Bozzuto.com. This email address has not been added to a database and with not receive future emails.</p>
+              <p style="line-height:1.3em;color:#aaaaaa;margin-top:15px;font-family:Helvetica,Arial;font-size:11px;margin:12px 0;">You are receiving this email through the &ldquo;Send property listing&rdquo; feature on Bozzuto.com. This email address has not been added to a database and with not receive future emails.</p>
             <% elsif @community.home? %>
-              <p style="line-height:1.6em;color:#aaaaaa;margin-top:15px;font-family:Helvetica,Arial;font-size:11px;margin:12px 0;">You are receiving this email because your friend thought it would be of interest to you. This email address has not been added to a database and will not receive future emails.</p>
+              <p style="line-height:1.3em;color:#aaaaaa;margin-top:15px;font-family:Helvetica,Arial;font-size:11px;margin:12px 0;">You are receiving this email because your friend thought it would be of interest to you. This email address has not been added to a database and will not receive future emails.</p>
             <% end %>
 
           </td>
