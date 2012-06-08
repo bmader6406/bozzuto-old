@@ -24,7 +24,7 @@ class LandingPagesController < ApplicationController
   end
 
   def apartment_communities
-    @apartment_communities ||= @page.apartment_communities.published
+    @apartment_communities ||= @page.apartment_communities.published.not_under_construction
   end
   helper_method :apartment_communities
 
@@ -44,7 +44,7 @@ class LandingPagesController < ApplicationController
   helper_method :popular_properties
 
   def projects
-    @projects ||= @page.projects.published
+    @projects ||= @page.projects.published + @page.apartment_communities.published.under_construction
   end
   helper_method :projects
 

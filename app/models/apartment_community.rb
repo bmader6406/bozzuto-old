@@ -53,6 +53,9 @@ class ApartmentCommunity < Community
   }
   named_scope :featured, :conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE featured = ?)", true]
 
+  named_scope :under_construction, :conditions => { :under_construction => true }
+  named_scope :not_under_construction, :conditions => { :under_construction => false }
+
 
   def nearby_communities(limit = 6)
     @nearby_communities ||= city.apartment_communities.published.near(self).all(:limit => limit)
@@ -96,6 +99,10 @@ class ApartmentCommunity < Community
 
   def plan_count_in_group(group)
     send("plan_count_#{group.name_for_cache}")
+  end
+
+  def jmapping_category
+    under_construction? ? 'UpcomingApartment' : super
   end
 
 

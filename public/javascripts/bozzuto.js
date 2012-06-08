@@ -356,7 +356,8 @@ window.bozzuto = {};
         category_icon_options: {
           'ApartmentCommunity': new GIcon(apartmentIcon),
           'HomeCommunity':      new GIcon(homeIcon),
-          'Project':            new GIcon(projectIcon)
+          'Project':            new GIcon(projectIcon),
+          'UpcomingApartment':  new GIcon(projectIcon)
         },
         map_config: function(map) {
           map.addControl(new GLargeMapControl3D());

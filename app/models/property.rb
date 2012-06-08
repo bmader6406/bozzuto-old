@@ -94,8 +94,12 @@ class Property < ActiveRecord::Base
 
   def to_jmapping
     <<-JS.strip.html_safe
-      { id: #{id}, point: { lat: #{latitude || 'null'}, lng: #{longitude || 'null'} }, category: '#{self.class}' }
+      { id: #{id}, point: { lat: #{latitude || 'null'}, lng: #{longitude || 'null'} }, category: '#{jmapping_category}' }
     JS
+  end
+
+  def jmapping_category
+    self.class.to_s
   end
 
   def property_type
