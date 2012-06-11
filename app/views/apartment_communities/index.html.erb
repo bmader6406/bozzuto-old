@@ -54,16 +54,6 @@
             </ul>
           </fieldset>
 
-          <fieldset id="special_promotion" class="">
-            <h3>Special Promotions</h3>
-            <ul>
-              <li>
-                <%= f.check_box :promo_id_not_blank, :id => 'search_special_promotions' %>
-                <%= f.label :special_promotions, 'Show only properties that have special promotions', :for => 'search_special_promotions' %>
-              </li>
-            </ul>
-          </fieldset>
-
           <fieldset id="features_amenities" class="">
             <h3>Most Searched Features &amp; Amenities</h3>
             <ul>
@@ -73,6 +63,20 @@
                   <label for="<%= feature.name.tableize %>"><%= feature.name %></label>
                 </li>
               <% end -%>
+            </ul>
+          </fieldset>
+
+          <fieldset id="special_promotion" class="">
+            <h3>More Filters</h3>
+            <ul>
+              <li>
+                <%= f.check_box :promo_id_not_blank, :id => 'search_special_promotions' %>
+                <%= f.label :special_promotions, 'Special Promotions', :for => 'search_special_promotions' %>
+              </li>
+              <li>
+                <%= f.check_box :under_construction, :id => 'search_upcoming' %>
+                <%= f.label :under_construction, 'Upcoming', :for => 'search_upcoming' %>
+              </li>
             </ul>
           </fieldset>
         <% end %>
