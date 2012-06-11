@@ -4,8 +4,10 @@
       <% link_to community do %>
         <%= image_tag(community.listing_image.url) %>
 
-        <% if community.featured? %>
-          <strong>Featured</strong>
+        <% if community.under_construction? %>
+          <strong class="upcoming">Upcoming</strong>
+        <% elsif community.featured? %>
+          <strong class="featured">Featured</strong>
         <% end %>
       <% end %>
     <% end %>
@@ -23,6 +25,12 @@
           <%= community.phone_number %>
         <% end %>
       </p>
+
+      <% if community.listing_text.present? && community.listing_text.length > 10 %>
+        <div class="listing-text">
+          <%= raw(community.listing_text) %>
+        </div>
+      <% end %>
 
       <ul>
         <% ApartmentFloorPlanGroup.all.each do |group| %>

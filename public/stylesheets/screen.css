@@ -4155,13 +4155,22 @@ div.wysiwyg ul li {
   #content .property-listing p.photos strong,
   #content .property-listing div.photos strong {
     background: #807e8c url(../images/structure/bg-listing-featured.png) repeat-x 0 0;
-    color: #ff9c1c;
     font-weight: normal;
     letter-spacing: 2px;
     line-height: 1;
     padding: 4px 0 5px 0;
     text-align: center;
     text-transform: uppercase;
+  }
+
+  #content .property-listing p.photos strong.featured,
+  #content .property-listing div.photos strong.featured {
+    color: #ff9c1c;
+  }
+
+  #content .property-listing p.photos strong.upcoming,
+  #content .property-listing div.photos strong.upcoming {
+    color: #a0c2c4;
   }
 
   #content .column-main ul.projects-listing {
@@ -4314,6 +4323,10 @@ div.wysiwyg ul li {
     font-size: 11px;
     font-weight: bold;
     padding-left: 7px;
+  }
+
+  #content .property-listing .listing-text {
+    margin-bottom: 1em;
   }
 /* @end */
 
