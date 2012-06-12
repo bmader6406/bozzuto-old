@@ -39,38 +39,40 @@
       <%= render :partial => 'shared/promo', :object => @community.promo %>
     <% end %>
 
-    <div id="apartments">
-      <h2>Apartments</h2>
+    <% if @community.floor_plans_by_group.any? { |group, plans| plans.length > 0 } %>
+      <div id="apartments">
+        <h2>Apartments</h2>
 
-      <table>
-        <tbody>
-          <% @community.floor_plans_by_group.each do |group, plans_in_group| %>
-            <tr>
-              <td>
-                <% link_to apartment_community_floor_plan_groups_path(@community, :anchor => dom_id(group)) do %>
-                  <%= floor_plan_group_pluralize(plans_in_group.count, group.name) %>
-                <% end %>
-              </td>
-              <td>
-                <%= pluralize(plans_in_group.count, 'Floor Plan') %>
-              </td>
-              <td>
-                <%= square_feet_of_largest_floor_plan(plans_in_group) %>
-              </td>
-              <td>
-                <% cheapest_price = price_of_cheapest_floor_plan(plans_in_group) %>
-                <% if cheapest_price.present? %>
-                  From <%= cheapest_price %>
-                <% end %>
-              </td>
-              <td class="availability">
-                <%= link_to "Availability", (@community.availability_url.presence || apartment_community_contact_path(@community)), :rel => 'external', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Availability" %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+        <table>
+          <tbody>
+            <% @community.floor_plans_by_group.each do |group, plans| %>
+              <tr>
+                <td>
+                  <% link_to apartment_community_floor_plan_groups_path(@community, :anchor => dom_id(group)) do %>
+                    <%= floor_plan_group_pluralize(plans.count, group.name) %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= pluralize(plans.count, 'Floor Plan') %>
+                </td>
+                <td>
+                  <%= square_feet_of_largest_floor_plan(plans) %>
+                </td>
+                <td>
+                  <% cheapest_price = price_of_cheapest_floor_plan(plans) %>
+                  <% if cheapest_price.present? %>
+                    From <%= cheapest_price %>
+                  <% end %>
+                </td>
+                <td class="availability">
+                  <%= link_to "Availability", (@community.availability_url.presence || apartment_community_contact_path(@community)), :rel => 'external', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Availability" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
 
     <% if @community.featured_floor_plans.any? %>
       <div id="featured-floor-plans">
