@@ -1,6 +1,12 @@
 <h3>This property is under construction.</h3>
 
-<p>Sign up below to be the first to know when this community is ready to accept residents.</p>
+<% @community.contact_configuration.if_present? do |config| %>
+  <% if config.upcoming_intro_text.present? && config.upcoming_intro_text.length > 10 %>
+    <div id="community-contact-note">
+      <%= raw(config.upcoming_intro_text) %>
+    </div>
+  <% end %>
+<% end %>
 
 <br />
 

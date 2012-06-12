@@ -17,7 +17,7 @@ ApartmentCommunity:
       selectors: brochure_type
       destroy_related: DnrConfiguration, PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyToursPage, PropertyContactPage, PropertySlideshow, PropertyMiniSlideshow, Video, PhotoSet, ApartmentFloorPlan
   order_by: title
-  relationships: dnr_configuration, mediaplex_tag, property_features, city, county, local_info_feed, features_page, neighborhood_page, tours_page, contact_page, slideshow, videos, photo_set, floor_plans, promo
+  relationships: dnr_configuration, mediaplex_tag, property_features, city, county, local_info_feed, features_page, neighborhood_page, tours_page, contact_page, slideshow, videos, photo_set, floor_plans, promo, contact_configuration
   filters: 
   search: properties.title, properties.street_address
   application: Properties
@@ -25,6 +25,17 @@ ApartmentCommunity:
     index: list_deleted, list_duplicates
     show: preview
     edit: preview
+
+ApartmentContactConfiguration:
+  fields:
+    default: upcoming_intro_text, upcoming_thank_you_text
+    list:
+    form: apartment_community, upcoming_intro_text, upcoming_thank_you_text
+    options:
+      ckeditor: upcoming_intro_text, upcoming_thank_you_text
+  filters:
+  search:
+  application:
 
 ApartmentFloorPlan:
   fields:

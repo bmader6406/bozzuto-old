@@ -40,6 +40,7 @@ class ApartmentContactSubmissionsController < ApplicationController
   def process_under_construction_lead
     if @submission.save
       flash[:apartment_contact_email] = @submission.email
+      flash[:contact_form]            = 'under_construction'
 
       redirect_to :action => :thank_you
     else
@@ -52,6 +53,7 @@ class ApartmentContactSubmissionsController < ApplicationController
       Lead2LeaseMailer.deliver_submission(@community, @submission)
 
       flash[:apartment_contact_email] = @submission.email
+      flash[:contact_form]            = 'lead_2_lease'
 
       redirect_to :action => :thank_you
     else

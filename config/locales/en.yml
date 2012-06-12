@@ -2,6 +2,7 @@ en:
   activerecord:
     models:
       apartment_community: Apartment Community
+      apartment_contact_configuration: Contact Configuration
       apartment_floor_plan: Floor Plan
       apartment_floor_plan_group: Floor Plan Type
       body_slide: Slide
@@ -49,6 +50,9 @@ en:
         resident_link_text: Resident Link Text
         resident_link_url: Resident Link URL
         under_construction: Under Construction
+      apartment_contact_configuration:
+        upcoming_intro_text: 'Under Construction Form Intro Text'
+        upcoming_thank_you_text: "Under Construction 'Thank You' Page Text"
       apartment_floor_plan:
         actual_image: Image
         availability_url: Availability URL
@@ -272,6 +276,9 @@ en:
       apartment_community:
         under_construction: Communities that are under construction show the "Under Construction" contact form instead of the "Lead2Lease" contact form.
         video_url: This URL is used on the mobile apartment community listing page. To change the "Watch Video" buttons that appear on the slides on the main listing page, edit the "Slideshow" further down this page.
+      apartment_contact_configuration:
+        upcoming_intro_text: "Text to be shown at the top of the 'Under Construction' lead form."
+        upcoming_thank_you_text: "Text to be shown on the 'Under Construction' lead form 'Thank You' page."
       award:
         image: Image dimensions should be 150x150
       body_slide:

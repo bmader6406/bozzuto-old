@@ -16,23 +16,27 @@ class ApartmentCommunity < Community
   after_update :update_floor_plan_prices
 
   has_many :floor_plans,
-    :class_name => 'ApartmentFloorPlan',
-    :dependent  => :destroy
+           :class_name => 'ApartmentFloorPlan',
+           :dependent  => :destroy
 
   has_many :floor_plan_groups,
-    :class_name => 'ApartmentFloorPlanGroup',
-    :through    => :floor_plans,
-    :uniq       => true
+           :class_name => 'ApartmentFloorPlanGroup',
+           :through    => :floor_plans,
+           :uniq       => true
 
   has_many :featured_floor_plans,
-    :class_name => 'ApartmentFloorPlan',
-    :conditions => { :featured => true },
-    :order      => 'bedrooms ASC, position ASC'
+           :class_name => 'ApartmentFloorPlan',
+           :conditions => { :featured => true },
+           :order      => 'bedrooms ASC, position ASC'
 
   has_many :under_construction_leads,
-    :order => 'created_at DESC'
+           :order => 'created_at DESC'
 
   has_one :mediaplex_tag, :as => :trackable
+
+  has_one :contact_configuration,
+          :class_name => 'ApartmentContactConfiguration'
+
 
   validates_inclusion_of :use_market_prices, :in => [true, false]
 

@@ -9,12 +9,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120330194304) do
+ActiveRecord::Schema.define(:version => 20120611201835) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
     t.integer "apartment_community_id"
   end
+
+  create_table "apartment_contact_configurations", :force => true do |t|
+    t.integer  "apartment_community_id",  :null => false
+    t.text     "upcoming_intro_text"
+    t.text     "upcoming_thank_you_text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "apartment_contact_configurations", ["apartment_community_id"], :name => "index_apartment_contact_configurations_on_apartment_community_id"
 
   create_table "apartment_floor_plan_groups", :force => true do |t|
     t.string   "name",       :null => false

@@ -4,6 +4,7 @@
 
 admin:
   ApartmentCommunity: create, read, update, delete, list_deleted, list_duplicates, preview, merge, begin_merge, end_merge
+  ApartmentContactConfiguration: create, read, update, delete
   ApartmentFloorPlan: create, read, update, delete
   ApartmentFloorPlanGroup: read
   Award: create, read, update, delete

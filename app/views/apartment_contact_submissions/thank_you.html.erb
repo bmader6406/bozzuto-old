@@ -2,7 +2,16 @@
 <% render_meta(@page) if @page %>
 
 <div id="thank-you-text">
-  <%= snippet('Apartments Thank You Text') %>
+  <% config = @community.contact_configuration %>
+
+  <% if flash[:contact_form] == 'under_construction' &&
+        config.present? &&
+        config.upcoming_thank_you_text.present? &&
+        config.upcoming_thank_you_text.length > 10 %>
+    <%= raw(config.upcoming_thank_you_text) %>
+  <% else %>
+    <%= snippet('Apartments Thank You Text') %>
+  <% end %>
 </div>
 
 <% if flash[:apartment_contact_email] %>

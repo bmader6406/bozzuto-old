@@ -153,6 +153,10 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should 'save the email in the flash' do
               assert_equal @submission.email, flash[:apartment_contact_email]
             end
+
+            should 'save the form type in the flash' do
+              assert_equal 'under_construction', flash[:contact_form]
+            end
           end
 
           mobile_context do
@@ -172,6 +176,10 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
 
             should 'save the email in the flash' do
               assert_equal @submission.email, flash[:apartment_contact_email]
+            end
+
+            should 'save the form type in the flash' do
+              assert_equal 'under_construction', flash[:contact_form]
             end
           end
         end
@@ -335,6 +343,10 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should 'save the email in the flash' do
               assert_equal @submission.email, flash[:apartment_contact_email]
             end
+
+            should 'save the form type in the flash' do
+              assert_equal 'lead_2_lease', flash[:contact_form]
+            end
           end
 
           mobile_context do
@@ -355,6 +367,10 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
 
             should 'save the email in the flash' do
               assert_equal @submission.email, flash[:apartment_contact_email]
+            end
+
+            should 'save the form type in the flash' do
+              assert_equal 'lead_2_lease', flash[:contact_form]
             end
           end
         end
