@@ -11,3 +11,4 @@ public/system/*
 database.*
 .rvmrc
 .powenv
+.powrc
