@@ -19,7 +19,7 @@ class HomeCommunity < Community
   default_scope :order => 'title ASC'
 
   def nearby_communities(limit = 6)
-    @nearby_communities ||= HomeCommunity.mappable.near(self).all(:limit => limit)
+    @nearby_communities ||= HomeCommunity.published.mappable.near(self).all(:limit => limit)
   end
 
   def show_lasso_form?

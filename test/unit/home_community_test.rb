@@ -27,18 +27,27 @@ class HomeCommunityTest < ActiveSupport::TestCase
     context '#nearby_communities' do
       setup do
         @city = City.make
-        @communities = []
-
-        3.times do |i|
-          @communities << HomeCommunity.make(:latitude => i, :longitude => i, :city => @city)
+        @communities = 3.times.collect do |i|
+          HomeCommunity.make(:latitude => i, :longitude => i, :city => @city)
         end
+
+        @unpublished = HomeCommunity.make(:unpublished,
+                                          :latitude  => 4,
+                                          :longitude => 1,
+                                          :city      => @city)
+        @communities << @unpublished
+
+        @nearby = @communities[0].nearby_communities
       end
 
       should 'return the closest communities' do
-        nearby = @communities[0].nearby_communities
-        assert_equal 2, nearby.length
-        assert_equal @communities[1], nearby[0]
-        assert_equal @communities[2], nearby[1]
+        assert_equal 2, @nearby.length
+        assert_equal @communities[1], @nearby[0]
+        assert_equal @communities[2], @nearby[1]
+      end
+
+      should 'return only published communities' do
+        assert_does_not_contain @nearby, @unpublished
       end
     end
 
