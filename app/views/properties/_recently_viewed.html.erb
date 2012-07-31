@@ -1,15 +1,47 @@
 <% if @recently_viewed.present? -%>
-<div id="recently-viewed">
-  <h3>Recently Viewed</h3>
-  <% @recently_viewed.in_groups_of(4, false) do |communities| %>
-    <ul class="row">
-      <% communities.each do |community| -%>
-        <li>
-          <%= link_to community.title, community %>
-          <%= community.city %>
-        </li>
-      <% end -%>
+  <div id="recently-viewed">
+    <h3>
+      Recently Viewed
+    </h3>
+
+    <% @recently_viewed.in_groups_of(4, false) do |communities| %>
+      <ul class="row">
+        <% communities.each do |community| -%>
+          <li>
+            <%= link_to community.title, community %>
+            <%= community.city %>
+          </li>
+        <% end -%>
+      </ul>
+    <% end %>
+
+    <ul class="recently-viewed-actions">
+      <li>
+        <a href="#">Email me this property list</a>
+
+        <div class="popup">
+          <% form_tag '#' do %>
+            <p>
+              <label>
+                <strong>
+                  Enter your email address and we will send you the details and contact information for these properties.
+                </strong>
+              </label>
+            </p>
+
+            <p class="fields">
+              <input id="email" name="email" type="text">
+              <button type="submit">Send</button>
+            </p>
+
+            <p class="checkbox">
+              <input id="newsletter" name="newsletter" type="checkbox" value="1">
+              <label for="newsletter">Sign me up for Bozzuto's e-newsletter</label>
+            </p>
+          <% end %>
+        </div>
+      </li>
     </ul>
-  <% end %>
-</div>
+
+  </div>
 <% end -%>

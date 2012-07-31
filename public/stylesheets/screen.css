@@ -365,18 +365,22 @@
       #special-nav select {
         color: #333333;
       }
-      .community #special-nav input {
+      .community #special-nav input,
+      .search #special-nav input {
         width: 350px;
       }
-      .community #special-nav .checkbox {
+      .community #special-nav .checkbox,
+      .search #special-nav .checkbox {
         padding: 5px 0;
       }
-      .community #special-nav .checkbox input {
+      .community #special-nav .checkbox input,
+      .search #special-nav .checkbox input {
         height: auto;
         margin-right: 5px;
         width: auto;
       }
-      .community #special-nav button {
+      .community #special-nav button,
+      .search #special-nav button {
         position: absolute;
         right: 0;
         top: 0;
@@ -1369,6 +1373,10 @@ div.wysiwyg ul li {
     margin-top: 25px;
   }
 
+  .community #recently-viewed h3 {
+    line-height: 2;
+  }
+
   .community #nearby-communities ul,
   .community #recently-viewed ul,
   .landing .listings ul {
@@ -1397,6 +1405,85 @@ div.wysiwyg ul li {
   .community #recently-viewed ul li a,
   .landing .listings a {
     display: block;
+  }
+
+  #recently-viewed {
+    position: relative;
+  }
+
+  #recently-viewed ul.recently-viewed-actions {
+    padding: 0;
+    position: absolute;
+    top: 9px; right: 0;
+    width: 230px;
+  }
+
+  #recently-viewed ul.recently-viewed-actions li {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    width: 230px;
+  }
+
+  #recently-viewed ul.recently-viewed-actions a {
+    background: #dde0e3 url(../images/structure/bg-special-nav.gif) no-repeat top right;
+    color: #080812;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 26px;
+    text-transform: none;
+  }
+
+  #recently-viewed ul.recently-viewed-actions li a:hover,
+  #recently-viewed ul.recently-viewed-actions li:hover a {
+    background-color: #c2c6ca;
+    text-decoration: none;
+  }
+  #recently-viewed ul.recently-viewed-actions li.open a {
+    background: #c2c6ca url(../images/structure/bg-special-nav.gif) no-repeat 100% -26px;
+  }
+
+  #recently-viewed ul.recently-viewed-actions div.popup {
+    background-color: #c2c6ca;
+    bottom: 27px; right: 0;
+    display: none;
+    padding: 12px;
+    position: absolute;
+    width: 406px;
+    -webkit-box-shadow: -1px 1px 2px #eee;
+    -moz-box-shadow: -1px 1px 2px #eee;
+  }
+
+  #recently-viewed ul.recently-viewed-actions p {
+    margin-bottom: 5px;
+  }
+
+  #recently-viewed ul.recently-viewed-actions label strong {
+    color: #565c64;
+  }
+
+  #recently-viewed ul.recently-viewed-actions input {
+    width: 350px;
+  }
+
+  #recently-viewed ul.recently-viewed-actions .checkbox {
+    margin-bottom: 0;
+    padding: 5px 0;
+  }
+
+  #recently-viewed ul.recently-viewed-actions .checkbox input {
+    height: auto;
+    margin-right: 5px;
+    width: auto;
+  }
+
+  #recently-viewed ul.recently-viewed-actions .checkbox label {
+    color: #565c64;
+  }
+
+  #recently-viewed ul.recently-viewed-actions button {
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 
 /* @end */

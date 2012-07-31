@@ -60,7 +60,7 @@ window.bozzuto = {};
       align(document.documentElement);
     });
 
-    $('#special-nav').specialNavPopups();
+    $('#special-nav, .recently-viewed-actions').specialNavPopups();
 
     $('#secondary-nav').secondaryNav();
 

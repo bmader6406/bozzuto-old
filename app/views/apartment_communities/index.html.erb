@@ -1,5 +1,36 @@
-<% content_for :body_class do %>search
+<% content_for :body_class do %>search<% end %>
+
+
+<% content_for :special_nav do %>
+  <ul id="special-nav">
+    <li class="search-results-action">
+      <a href="#">Email these search results</a>
+
+      <div class="popup">
+        <% form_tag '#', :class => (flash[:send_listing_errors] ? 'errors' : nil) do %>
+          <p>
+            <label>
+              <strong>
+                Enter your email address and we will send you the details and contact information for these properties.
+              </strong>
+            </label>
+          </p>
+
+          <p class="checkbox">
+            <%= check_box_tag :newsletter %>
+            <%= label_tag :newsletter, "Sign me up for Bozzuto's e-newsletter" %>
+          </p>
+
+          <p class="fields">
+            <%= text_field_tag :email %>
+            <button type="submit">Send</button>
+          </p>
+        <% end %>
+      </div>
+    </li>
+  </ul>
 <% end %>
+
 
 <div id="breadcrumb">
   <div class="container">
