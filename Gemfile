@@ -25,6 +25,7 @@ gem 'brianjlandau-acts_as_archive', '0.2.8'
 gem 'twitter', '1.1.2'
 gem 'twitter-text', '1.3.1'
 gem 'fastercsv', '1.5.4'
+gem 'uuidtools'
 
 group :test do
   gem 'shoulda', '2.10.3'

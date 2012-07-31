@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120611201835) do
+ActiveRecord::Schema.define(:version => 20120731143508) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -949,6 +949,21 @@ ActiveRecord::Schema.define(:version => 20120611201835) do
   end
 
   add_index "ranks", ["rank_category_id", "year"], :name => "index_ranks_on_rank_category_id_and_year"
+
+  create_table "recurring_emails", :force => true do |t|
+    t.string   "email_address",                       :null => false
+    t.string   "token",                               :null => false
+    t.text     "property_ids"
+    t.boolean  "recurring",     :default => false
+    t.datetime "last_sent_at"
+    t.string   "state",         :default => "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "recurring_emails", ["email_address"], :name => "index_recurring_emails_on_email_address"
+  add_index "recurring_emails", ["state"], :name => "index_recurring_emails_on_state"
+  add_index "recurring_emails", ["token"], :name => "index_recurring_emails_on_token"
 
   create_table "sections", :force => true do |t|
     t.string   "title",                                             :null => false

@@ -325,6 +325,15 @@ Page.blueprint do
   section
 end
 
+RecurringEmail.blueprint do
+  email_address { Faker::Internet.email }
+  recurring     { false }
+end
+
+RecurringEmail.blueprint(:recurring) do
+  recurring { true }
+end
+
 Section.blueprint do
   title { Sham.section_title }
   service { false }
