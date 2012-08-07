@@ -1486,6 +1486,13 @@ div.wysiwyg ul li {
     top: 0;
   }
 
+  #recently-viewed form.errors label strong {
+    color: #b22424;
+  }
+  #recently-viewed form.errors input {
+    border: 1px solid #B22424;
+  }
+
 /* @end */
 
 /* @group -homes, landing, search */
@@ -3865,6 +3872,10 @@ div.wysiwyg ul li {
 
 /* @group page */
   /* @group -breadcrumb */
+      .page #breadcrumb ul {
+        height: 38px;
+      }
+
       .page #breadcrumb li,
       .page #breadcrumb li a {
         font-size: 11px;

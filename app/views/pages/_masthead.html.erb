@@ -1,11 +1,11 @@
 <div id="masthead">
   <%= render :partial => 'pages/breadcrumb' %>
 
-  <%- if @page && @page.montage? -%>
+  <%- if @page.present? && @page.montage? -%>
     <div id="montage">
         <%= image_tag @page.left_montage_image.url %><%= image_tag @page.middle_montage_image.url %><%= image_tag @page.right_montage_image.url %>
     </div>
-  <%- elsif @section.montage? -%>
+  <%- elsif @section.present? && @section.montage? -%>
     <div id="montage">
         <%= image_tag @section.left_montage_image.url %><%= image_tag @section.middle_montage_image.url %><%= image_tag @section.right_montage_image.url %>
     </div>

@@ -8,6 +8,13 @@ ActionController::Routing::Routes.draw do |map|
   map.search '/search', :controller => :searches, :action => :index
   map.resource :community_search, :only => :show
 
+  map.namespace :email do |email|
+    email.resource :recently_viewed,
+                   :controller => 'recently_viewed',
+                   :only       => :create,
+                   :member     => { :thank_you => :get }
+  end
+
   map.map_apartment_communities 'apartments/communities/map', :controller => 'apartment_communities', :action => 'index', :template => 'map'
 
 

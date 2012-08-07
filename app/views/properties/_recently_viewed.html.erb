@@ -20,7 +20,7 @@
         <a href="#">Email me this property list</a>
 
         <div class="popup">
-          <% form_tag '#' do %>
+          <% form_tag email_recently_viewed_path, :class => (flash[:recently_viewed_errors] ? 'errors' : nil) do %>
             <p>
               <label>
                 <strong>
