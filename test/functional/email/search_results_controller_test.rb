@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Email::RecentlyViewedControllerTest < ActionController::TestCase
+class Email::SearchResultsControllerTest < ActionController::TestCase
   context 'POST to #create' do
     context 'with a valid email address' do
       setup do
@@ -9,20 +9,20 @@ class Email::RecentlyViewedControllerTest < ActionController::TestCase
         post :create,
              :recurring_email => {
                :email_address => @address,
-               :property_ids  => [1, 2]
+               :property_ids  => [1, 2, 3]
              }
       end
 
-      should_redirect_to('the thank you page') { thank_you_email_recently_viewed_url }
+      should_redirect_to('the thank you page') { thank_you_email_search_results_url }
 
       should_not_change('the number of buzzes') { Buzz.count }
 
-      should 'create a non-recurring email' do
-        assert !assigns(:email).recurring?
+      should 'create a recurring email' do
+        assert assigns(:email).recurring?
       end
 
       should 'save the recently viewed property ids' do
-        assert_equal [1, 2], assigns(:email).property_ids
+        assert_equal [1, 2, 3], assigns(:email).property_ids
       end
     end
 
@@ -38,7 +38,7 @@ class Email::RecentlyViewedControllerTest < ActionController::TestCase
       should_not_change('the number of buzzes') { Buzz.count }
 
       should 'set the errors flag in the flash' do
-        assert flash[:recently_viewed_errors]
+        assert flash[:search_results_errors]
       end
     end
 
@@ -50,7 +50,7 @@ class Email::RecentlyViewedControllerTest < ActionController::TestCase
                       :bozzuto_buzz    => '1'
       end
 
-      should_redirect_to('the thank you page') { thank_you_email_recently_viewed_url }
+      should_redirect_to('the thank you page') { thank_you_email_search_results_url }
 
       should_change('the number of buzzes', :by => 1) { Buzz.count }
 

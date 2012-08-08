@@ -1,14 +1,14 @@
-class Email::RecentlyViewedController < ApplicationController
+class Email::SearchResultsController < ApplicationController
   def create
     @email = RecurringEmail.new(params[:recurring_email])
-    @email.recurring = false
+    @email.recurring = true
 
     if @email.save
       save_bozzuto_buzz
 
-      redirect_to thank_you_email_recently_viewed_url
+      redirect_to thank_you_email_search_results_url
     else
-      redirect_to :back, :flash => { :recently_viewed_errors => true }
+      redirect_to :back, :flash => { :search_results_errors => true }
     end
   end
 
