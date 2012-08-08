@@ -18,3 +18,18 @@
   <%= lead_2_lease_mediaplex_code(@community, flash[:apartment_contact_email]) %>
   <%= apartment_contact_mediaplex_code(@community, flash[:apartment_contact_email]) %>
 <% end %>
+
+<%- content_for :javascript do -%>
+  <!-- Clickable Conversion Tracking -->
+  <script type="text/javascript">
+    var _cctq = _cctq || [];
+    _cctq.push(['cct_setConversionValue', '0']);
+    _cctq.push(['cct_log', '0420-9Lce7a7d1049282c429f9e6ca039944ae073']);
+    (function() {
+      var cctjs = document.createElement('script'); cctjs.type = 'text/javascript'; cctjs.async = true;
+      cctjs.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cn.clickable.net/js/cct.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(cctjs, s);
+    })();
+  </script>
+  <!-- End Clickable Conversion Tracking -->
+<%- end -%>
