@@ -7,7 +7,7 @@
       <a href="#">Email these search results</a>
 
       <div class="popup">
-        <% form_tag '#', :class => (flash[:send_listing_errors] ? 'errors' : nil) do %>
+        <% form_for RecurringEmail.new, :url => email_search_results_url, :html => { :class => (flash[:search_results_errors] ? 'errors' : nil) } do |f| %>
           <p>
             <label>
               <strong>
@@ -17,14 +17,20 @@
           </p>
 
           <p class="checkbox">
-            <%= check_box_tag :newsletter %>
-            <%= label_tag :newsletter, "Sign me up for Bozzuto's e-newsletter" %>
+            <%= check_box_tag :bozzuto_buzz %>
+            <%= label_tag :bozzuto_buzz, "Sign me up for Bozzuto's e-newsletter" %>
           </p>
 
           <p class="fields">
-            <%= text_field_tag :email %>
+            <%= f.text_field :email_address, :type => :email %>
             <button type="submit">Send</button>
           </p>
+
+          <div class="search-results-hidden-inputs">
+            <% @search.map(&:id).each do |id| %>
+              <%= hidden_field_tag 'recurring_email[property_ids][]', id %>
+            <% end %>
+          </div>
         <% end %>
       </div>
     </li>
@@ -36,17 +42,17 @@
   <div class="container">
     <ul>
       <li><%= link_to 'Apartments', '/apartments' %></li>
-      <% if @geographic_filter -%>
+      <% if geographic_filter -%>
         <li><%= link_to "Find an Apartment", apartment_communities_path %></li>
-        <li><%= @geographic_filter.name %> <%= "County" if @geographic_filter.is_a?(County) %></li>
+        <li><%= geographic_filter.name %> <%= "County" if geographic_filter.is_a?(County) %></li>
       <% else -%>
         <li>Find an Apartment</li>
       <% end -%>
     </ul>
     <h1>
       Find an Apartment
-      <% if @geographic_filter -%>
-        in <%= @geographic_filter.name %> <%= "County" if @geographic_filter.is_a?(County) %>
+      <% if geographic_filter -%>
+        in <%= geographic_filter.name %> <%= "County" if geographic_filter.is_a?(County) %>
       <% end -%>
     </h1>
   </div>

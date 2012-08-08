@@ -25,11 +25,11 @@
   <% else %>
     <ul class="results">
       <% first = true %>
-      <% State.all.sort { |a, b|
-        (@communities[b.name].try(:count) || 0) <=> (@communities[a.name].try(:count) || 0)
-      }.each do |state| %>
+
+      <% @ordered_states.each do |state| %>
         <% communities = @communities[state.name] || [] %>
-        <% unless @geographic_filter && communities.count == 0 -%>
+
+        <% unless geographic_filter && communities.count == 0 -%>
           <li class="<%= 'closed' unless first && communities.count > 0 %>">
             <% first = false -%>
             <div class="header">

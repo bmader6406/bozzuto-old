@@ -9,9 +9,14 @@ class ApartmentCommunitiesController < ApplicationController
     params[:search] ||= {}
 
     @partial_template = params[:template] || 'search'
+
     @search = ApartmentCommunity.published.featured_order.search(params[:search])
-    @geographic_filter = geographic_filter
-    @communities = @search.all(:include => [:property_features, :city]).group_by {|c| c.state.name}
+
+    @communities = @search.all(:include => [:property_features, :city]).group_by { |c| c.state.name }
+
+    @ordered_states = State.all.sort { |a, b|
+      (@communities[b.name].try(:count) || 0) <=> (@communities[a.name].try(:count) || 0)
+    }
 
     respond_to do |format|
       format.html do
@@ -38,15 +43,18 @@ class ApartmentCommunitiesController < ApplicationController
   end
 
   def geographic_filter
-    search = params[:search]
+    @geographic_filter ||= begin
+      search = params[:search]
 
-    if search[:in_state].present?
-      State.find_by_id(search[:in_state])
-    elsif search[:county_id].present?
-      County.find_by_id(search[:county_id])
-    elsif search[:city_id].present?
-      City.find_by_id(search[:city_id])
+      if search[:in_state].present?
+        State.find_by_id(search[:in_state])
+      elsif search[:county_id].present?
+        County.find_by_id(search[:county_id])
+      elsif search[:city_id].present?
+        City.find_by_id(search[:city_id])
+      end
     end
   end
+  helper_method :geographic_filter
 
 end
