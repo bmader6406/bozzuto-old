@@ -6,6 +6,8 @@ class Email::RecentlyViewedController < ApplicationController
     if @email.save
       save_bozzuto_buzz
 
+      @email.send!
+
       redirect_to thank_you_email_recently_viewed_url
     else
       redirect_to :back, :flash => { :recently_viewed_errors => true }

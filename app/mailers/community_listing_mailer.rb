@@ -2,12 +2,27 @@ class CommunityListingMailer < ActionMailer::Base
   include TruncateHtmlHelper
   helper_method :truncate_html
 
+  include ApartmentCommunitiesHelper
+  helper_method :floor_plan_price
+
+  include ActionView::Helpers::NumberHelper
+  helper_method :number_to_currency
+
+
   def single_listing(to_address, community)
     from       BOZZUTO_EMAIL_ADDRESS
     recipients to_address
     subject    community.title
     sent_on    Time.now
     body       :community => community, :to => to_address
+  end
+
+  def recently_viewed_listings(recurring_email)
+    from       BOZZUTO_EMAIL_ADDRESS
+    recipients recurring_email.email_address
+    subject    'Recently Viewed Apartment Communities'
+    sent_on    Time.now
+    body       :recurring_email => recurring_email
   end
 
 

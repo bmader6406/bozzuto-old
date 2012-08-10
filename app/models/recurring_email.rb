@@ -19,6 +19,20 @@ class RecurringEmail < ActiveRecord::Base
     UUIDTools::UUID.random_create
   end
 
+  def properties
+    Property.find_all_by_id(property_ids)
+  end
+
+  def send!
+    if recurring?
+      CommunityListingMailer.deliver_search_results_listings(self)
+      update_attribute(:last_sent_at, Time.now)
+    else
+      CommunityListingMailer.deliver_recently_viewed_listings(self)
+      update_attribute(:state, 'completed')
+    end
+  end
+
 
   private
 

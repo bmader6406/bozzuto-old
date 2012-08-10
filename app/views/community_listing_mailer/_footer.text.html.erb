@@ -1,0 +1,68 @@
+        <tr>
+          <td>
+            <table cellpadding="0" cellspacing="0" border="0" width="600" style="border-bottom:2px solid #bec3c2;">
+              <tr>
+                <td align="center" width="200" valign="top">
+                  <% link_to apartment_communities_url do %>
+                    <%= image_tag 'community_listing/img-find.jpg', :class => 'image_fix', :alt => 'Find more Bozzuto communities', :width => 200, :height => 65 %>
+                  <% end %>
+                </td>
+
+                <td align="center" width="200" valign="top">
+                  <% link_to 'http://www.facebook.com/TheBozzutoGroup' do %>
+                    <%= image_tag 'community_listing/img-facebook.jpg', :class => 'image_fix', :alt => 'Find us on Facebook', :width => 201, :height => 33 %>
+                  <% end %>
+
+                  <% link_to 'http://twitter.com/TheBozzutoGroup' do %>
+                    <%= image_tag 'community_listing/img-twitter.jpg', :class => 'image_fix', :alt => 'Find us on Twitter', :width => 200, :height => 32 %>
+                  <% end %>
+                </td>
+
+                <td align="center" width="200" valign="top">
+                  <% link_to contact_url do %>
+                    <%= image_tag 'community_listing/img-contact.jpg', :class => 'image_fix', :alt => 'Contact us', :width => 199, :height => 65 %>
+                  <% end %>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td bgcolor="#efefef" height="44" valign="top" style="line-height:22px;">
+            <table cellpadding="0" cellspacing="0" border="0" width="600" style="margin-top:1px;border-top:1px solid #e3e4e5;">
+              <tr>
+                <td width="300" align="left" valign="middle">
+                  <p style="line-height:1.3em;font-family:Helvetica,Arial;font-size:11px;height:20px;margin-left:20px;color:#999999;">
+                    &copy; <%= Time.now.year %> Bozzuto
+                  </p>
+                </td>
+
+                <td width="300" align="right" valign="middle">
+                  <p style="line-height:1.3em;background:url(<%= image_path('community_listing/ico-equal.png') %>)no-repeat 100px 0;font-family:Helvetica,Arial;font-size:12px;height:20px;margin-right:20px;">
+                    Equal Housing Opportunity
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p style="line-height:1.3em;color:#aaaaaa;margin-top:15px;font-family:Helvetica,Arial;font-size:11px;margin:12px 0;">This message was sent by Bozzuto, 7850 Walker Dr., Suite 400, Greenbelt MD, 20770</p>
+
+            <p style="line-height:1.3em;color:#aaaaaa;margin-top:15px;font-family:Helvetica,Arial;font-size:11px;margin:12px 0;">
+              <%= footer_text.html_safe %>
+            </p>
+          </td>
+        </tr>
+      </table>
+
+    </td>
+  </tr>
+</table>
+<!-- End of wrapper table -->
+
+</body>
+</html>

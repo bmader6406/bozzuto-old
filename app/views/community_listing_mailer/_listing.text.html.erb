@@ -1,0 +1,55 @@
+<!-- Begin Single Entry -->
+<tr>
+  <td rowspan="2" width="170" valign="top">
+    <%= image_tag property.listing_image.url(:square), :alt => 'Property Image', :width => 150, :height => 150, :class => 'image_fix' %>
+  </td>
+
+  <td style="border-top: 2px solid #ddd;border-bottom: 2px solid #ddd;">
+    <h3 style="color:#000000;font-family:Helvetica,Arial;font-size:26px;font-weight:300;padding-left:15px;margin:12px 0;line-height:26px;"><%= property.title %></h3>
+  </td>
+</tr>
+
+<tr>
+  <td valign="top">
+    <% if property.listing_text.present? && property.listing_text.length > 10 %>
+      <div style="color:#7f7b7a;font-family:Helvetica,Arial;font-size:12px;margin:10px 15px;">
+        <%= raw(property.listing_text) %>
+      </div>
+    <% end %>
+
+    <table cellpadding="0" cellspacing="0" border="0" width="400">
+      <tr>
+        <td width="175" valign="top">
+          <ul style="margin:0;padding:0 5px 0 20px;list-style:none;">
+            <% ApartmentFloorPlanGroup.all.each do |group| %>
+              <% if property.plan_count_in_group(group) > 0 %>
+                <li style="color:#7f7b7a;font-family:Helvetica,Arial;font-size:12px;">
+                  <strong><%= group.name %></strong>
+                  <% property.cheapest_price_in_group(group).if_present? do |price| %>
+                    from
+                    <%= floor_plan_price(price) %>
+                  <% end %>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </td>
+
+        <td width="225" valign="top">
+          <% if property.overview_bullet_1.present? %>
+            <ul style="margin:0;padding:0 20px;">
+              <li style="color:#7f7b7a;font-family:Helvetica,Arial;font-size:12px;">
+                <%= property.overview_bullet_1 %>
+              </li>
+            </ul>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+
+    <p style="font-family:Helvetica,Arial;font-size:12px;margin:5px 20px 20px;">
+      <%= link_to 'View full listing', apartment_community_url(property), :style => 'color:#178af8;' %>
+    </p>
+  </td>
+</tr>
+<!-- End Single Entry -->
