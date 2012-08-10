@@ -59,6 +59,9 @@ module Bozzuto
       floor_plan_max_market_rent
       floor_plan_min_effective_rent
       floor_plan_max_effective_rent
+      office_hour_open_time
+      office_hour_close_time
+      office_hour_day
     ).each do |attr|
       define_feed_attribute(attr)
     end
@@ -142,6 +145,7 @@ module Bozzuto
       data.xpath('/PhysicalProperty/Property').each do |property|
         process_property(property)
         process_floor_plans(property)
+        process_office_hours(property)
       end
     end
 
@@ -288,6 +292,22 @@ module Bozzuto
       else
         nil
       end
+    end
+
+    def office_hour_attributes(hour)
+      {
+        :open_time  => value_for(hour, :office_hour_open_time),
+        :close_time => value_for(hour, :office_hour_close_time),
+        :day        => value_for(hour, :office_hour_day)
+      }
+    end
+
+    def process_office_hours(property)
+      hours = property.xpath('./Information/OfficeHour').collect do |hour|
+        office_hour_attributes(hour)
+      end
+
+      @community.update_attribute(:office_hours, hours)
     end
   end
 end

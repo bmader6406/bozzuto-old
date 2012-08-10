@@ -24,5 +24,9 @@ module Bozzuto
     floor_plan_max_market_rent    './MarketRent',    :attribute => 'Max'
     floor_plan_min_effective_rent './EffectiveRent', :attribute => 'Min'
     floor_plan_max_effective_rent './EffectiveRent', :attribute => 'Max'
+
+    office_hour_open_time         './OpenTime'
+    office_hour_close_time        './CloseTime'
+    office_hour_day               './Day'
   end
 end

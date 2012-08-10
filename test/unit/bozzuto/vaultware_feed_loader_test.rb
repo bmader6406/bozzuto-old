@@ -246,6 +246,27 @@ module Bozzuto
         end
       end
 
+      context "processing hours" do
+        setup do
+          load_vaultware_fixture_file('unrolled.xml')
+          @loader.file = File.join(Rails.root, 'test', 'files', 'unrolled.xml')
+
+          @hours = @property.xpath('./Information/OfficeHour')
+
+          @community = ApartmentCommunity.make(:vaultware,
+            :external_cms_id => external_cms_id(@property)
+          )
+
+          @hour_attrs = attributes_for_office_hours(@hours)
+        end
+
+        should "load all office hours" do
+          @loader.load
+
+          assert_equal @hour_attrs, @community.reload.office_hours
+        end
+      end
+
       context 'testing a full load' do
         setup do
           load_vaultware_fixture_file('vaultware.xml')
@@ -327,6 +348,12 @@ module Bozzuto
       end
     end
 
+    def attributes_for_office_hours(hours)
+      hours.collect do |hour|
+        office_hour_attributes(hour)
+      end
+    end
+
     def unrolled_floor_plan_attributes(plan)
       attrs = floor_plan_attributes(plan)
       file = plan.at('./File')
@@ -359,6 +386,14 @@ module Bozzuto
         :max_effective_rent => plan.at('./EffectiveRent')['Max'].to_f,
         :external_cms_id    => plan['Id'].to_i,
         :external_cms_type  => 'vaultware'
+      }
+    end
+
+    def office_hour_attributes(hour)
+      {
+        :open_time  => hour.at('./OpenTime').content,
+        :close_time => hour.at('./CloseTime').content,
+        :day        => hour.at('./Day').content
       }
     end
 
