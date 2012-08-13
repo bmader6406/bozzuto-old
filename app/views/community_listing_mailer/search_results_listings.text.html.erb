@@ -22,4 +22,4 @@
   </td>
 </tr>
 
-<%= render 'footer', :footer_text => "You are receiving this email through the &ldquo;Email me these search results&rdquo; feature on Bozzuto.com. If you are no longer interested, you can #{link_to('unsubscribe', '#')}" %>
+<%= render 'footer', :footer_text => "You are receiving this email through the &ldquo;Email me these search results&rdquo; feature on Bozzuto.com. If you are no longer interested, you can #{link_to('unsubscribe', email_unsubscribe_url(@recurring_email.token))}" %>

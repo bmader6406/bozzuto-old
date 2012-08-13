@@ -16,8 +16,11 @@ ActionController::Routing::Routes.draw do |map|
                      :only       => :create,
                      :member     => { :thank_you => :get }
     end
-  end
 
+    email.unsubscribe 'unsubscribe/:id',
+                      :controller => 'subscriptions',
+                      :action     => :destroy
+  end
 
   map.map_apartment_communities 'apartments/communities/map', :controller => 'apartment_communities', :action => 'index', :template => 'map'
 

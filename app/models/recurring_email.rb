@@ -14,6 +14,8 @@ class RecurringEmail < ActiveRecord::Base
 
   before_validation :generate_token, :on => :create
 
+  named_scope :recurring, :conditions => { :recurring => true }
+
 
   def self.random_uuid
     UUIDTools::UUID.random_create
@@ -31,6 +33,10 @@ class RecurringEmail < ActiveRecord::Base
       CommunityListingMailer.deliver_recently_viewed_listings(self)
       update_attribute(:state, 'completed')
     end
+  end
+
+  def cancel_recurring!
+    update_attribute(:state, 'unsubscribed')
   end
 
 
