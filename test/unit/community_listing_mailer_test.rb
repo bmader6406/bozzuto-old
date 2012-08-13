@@ -33,6 +33,7 @@ class CommunityListingMailerTest < ActionMailer::TestCase
       end
     end
 
+
     context '#recently_viewed_listings' do
       setup do
         @property_1      = ApartmentCommunity.make
@@ -62,6 +63,38 @@ class CommunityListingMailerTest < ActionMailer::TestCase
         assert_match %r{/apartments/communities/#{@property_2.to_param}}, @email.body
       end
     end
+
+
+    context '#search_results_listings' do
+      setup do
+        @property_1      = ApartmentCommunity.make
+        @property_2      = ApartmentCommunity.make
+        @recurring_email = RecurringEmail.make(:recurring, :property_ids => [@property_1.id, @property_2.id])
+
+        assert_difference('ActionMailer::Base.deliveries.count', 1) do
+          @email = CommunityListingMailer.deliver_search_results_listings(@recurring_email)
+        end
+      end
+
+      should "deliver the message" do
+        assert_equal [@recurring_email.email_address], @email.to
+      end
+
+      should "have the subject" do
+        assert_equal 'Apartment Communities Search Results', @email.subject
+      end
+
+      should "have the property titles in the body" do
+        assert_match /#{@property_1.title}/, @email.body
+        assert_match /#{@property_2.title}/, @email.body
+      end
+
+      should "have a link to the properties in the body" do
+        assert_match %r{/apartments/communities/#{@property_1.to_param}}, @email.body
+        assert_match %r{/apartments/communities/#{@property_2.to_param}}, @email.body
+      end
+    end
+
 
     context 'helper methods' do
       setup do

@@ -15,5 +15,18 @@ class RecurringEmailTest < ActiveSupport::TestCase
         assert @email.token.present?
       end
     end
+
+    context '#properties' do
+      setup do
+        @published   = ApartmentCommunity.make
+        @unpublished = ApartmentCommunity.make :unpublished
+
+        @email = RecurringEmail.make :property_ids => [@published.id, @unpublished.id]
+      end
+
+      should 'only return published properties' do
+        assert_equal [@published], @email.properties
+      end
+    end
   end
 end

@@ -6,6 +6,8 @@ class Email::SearchResultsController < ApplicationController
     if @email.save
       save_bozzuto_buzz
 
+      @email.send!
+
       redirect_to thank_you_email_search_results_url
     else
       redirect_to :back, :flash => { :search_results_errors => true }

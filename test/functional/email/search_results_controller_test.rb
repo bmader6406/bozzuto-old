@@ -24,6 +24,8 @@ class Email::SearchResultsControllerTest < ActionController::TestCase
       should 'save the recently viewed property ids' do
         assert_equal [1, 2, 3], assigns(:email).property_ids
       end
+
+      should_change('the number of deliveries', :by => 1) { ActionMailer::Base.deliveries.count }
     end
 
     context 'without a valid email address' do

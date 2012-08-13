@@ -1,7 +1,7 @@
 <!-- Begin Single Entry -->
 <tr>
   <td rowspan="2" width="170" valign="top">
-    <%= image_tag property.listing_image.url(:square), :alt => 'Property Image', :width => 150, :height => 150, :class => 'image_fix' %>
+    <%= image_tag property.listing_image.url(:square), :alt => 'Property Image', :width => 150, :height => 150, :class => 'image_fix', :style => 'padding-bottom: 15px;' %>
   </td>
 
   <td style="border-top: 2px solid #ddd;border-bottom: 2px solid #ddd;">
@@ -10,9 +10,9 @@
 </tr>
 
 <tr>
-  <td valign="top">
-    <% if property.listing_text.present? && property.listing_text.length > 10 %>
-      <div style="color:#7f7b7a;font-family:Helvetica,Arial;font-size:12px;margin:10px 15px;">
+  <td valign="top" style="padding-top: 10px;">
+    <% if property.listing_text.present? && property.listing_text.length > 15 %>
+      <div style="color:#7f7b7a;font-family:Helvetica,Arial;font-size:12px;margin:0px 15px 10px 15px;">
         <%= raw(property.listing_text) %>
       </div>
     <% end %>

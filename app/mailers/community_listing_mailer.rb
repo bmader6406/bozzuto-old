@@ -25,6 +25,14 @@ class CommunityListingMailer < ActionMailer::Base
     body       :recurring_email => recurring_email
   end
 
+  def search_results_listings(recurring_email)
+    from       BOZZUTO_EMAIL_ADDRESS
+    recipients recurring_email.email_address
+    subject    'Apartment Communities Search Results'
+    sent_on    Time.now
+    body       :recurring_email => recurring_email
+  end
+
 
   private
 
