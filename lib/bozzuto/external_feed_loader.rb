@@ -51,6 +51,7 @@ module Bozzuto
       floor_plan_name
       floor_plan_comment
       floor_plan_availability_url
+      floor_plan_available_units
       floor_plan_bedroom_count
       floor_plan_bathroom_count
       floor_plan_min_square_feet
@@ -248,6 +249,7 @@ module Bozzuto
         :floor_plan_group   => floor_plan_group(plan),
         :name               => value_for(plan, :floor_plan_name),
         :availability_url   => value_for(plan, :floor_plan_availability_url),
+        :available_units    => value_for(plan, :floor_plan_available_units).to_i,
         :bedrooms           => (value_for(plan, :floor_plan_bedroom_count) || 0).to_i,
         :bathrooms          => value_for(plan, :floor_plan_bathroom_count).to_f,
         :min_square_feet    => value_for(plan, :floor_plan_min_square_feet).to_i,

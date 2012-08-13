@@ -376,6 +376,7 @@ module Bozzuto
         :name               => plan.at('./Name').content,
         :rolled_up          => false,
         :availability_url   => plan.at('./FloorplanAvailabilityURL').content,
+        :available_units    => plan.at('./DisplayedUnitsAvailable').content.to_i,
         :bedrooms           => plan.at('./Room[@Type="Bedroom"]/Count').content.to_i,
         :bathrooms          => plan.at('./Room[@Type="Bathroom"]/Count').content.to_f,
         :min_square_feet    => plan.at('./SquareFeet')['Min'].to_i,

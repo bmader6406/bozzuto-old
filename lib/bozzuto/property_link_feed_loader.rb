@@ -11,6 +11,7 @@ module Bozzuto
     city                          './PropertyID/Address/City'
 
     floor_plan_name               './Name'
+    floor_plan_available_units    './DisplayedUnitsAvailable'
     floor_plan_bedroom_count      './Room[@Type="Bedroom"]/Count'
     floor_plan_bathroom_count     './Room[@Type="Bathroom"]/Count'
 

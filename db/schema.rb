@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20121111173026) do
     t.boolean  "featured",                                             :default => false, :null => false
     t.boolean  "rolled_up",                                            :default => false, :null => false
     t.string   "external_cms_type"
+    t.integer  "available_units",                                      :default => 0
   end
 
   add_index "apartment_floor_plans", ["apartment_community_id"], :name => "index_apartment_floor_plans_on_apartment_community_id"
