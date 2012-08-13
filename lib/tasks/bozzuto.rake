@@ -67,4 +67,12 @@ namespace :bozzuto do
       end
     end
   end
+
+  desc 'Send recurring emails'
+  task :send_recurring_emails => :environment do
+    RecurringEmail.needs_sending.each do |email|
+      puts "Sending recurring email to #{email.email_address}"
+      email.send!
+    end
+  end
 end

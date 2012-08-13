@@ -13,3 +13,7 @@ end
 every 1.day, :at => '7:00 am' do
   rake 'bozzuto:refresh_local_info_feeds'
 end
+
+every 1.day, :at => '6:00 am' do
+  rake 'bozzuto:send_recurring_emails'
+end
