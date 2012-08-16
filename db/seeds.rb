@@ -1,31 +1,34 @@
 ###
 # States
-State.create([{ :code => 'CT', :name => 'Connecticut' },
-              { :code => 'MD', :name => 'Maryland' },
-              { :code => 'MA', :name => 'Massachusetts' },
-              { :code => 'NJ', :name => 'New Jersey' },
-              { :code => 'NY', :name => 'New York' },
-              { :code => 'PA', :name => 'Pennsylvania' },
-              { :code => 'VA', :name => 'Virginia' },
-              { :code => 'DC', :name => 'Washington, DC' }])
+
+[['CT', 'Connecticut'],
+ ['MD', 'Maryland'],
+ ['MA', 'Massachusetts'],
+ ['NJ', 'New Jersey'],
+ ['NY', 'New York'],
+ ['PA', 'Pennsylvania'],
+ ['VA', 'Virginia'],
+ ['DC', 'Washington, DC']].each do |code, name|
+  State.find_or_create_by_code(code, :name => name)
+end
 
 ###
 # Sections
 
 # services
 %w(Acquisitions Construction Development Homebuilding Land Management).each do |title|
-  section = Section.create(:title => title, :service => true)
+  section = Section.find_or_create_by_title(title, :service => true)
 end
 
 # sections
-['Apartments', 'New Homes', 'Services', 'News & Press', 'Pages'].each do |section|
-  Section.create(:title => section)
+['Apartments', 'New Homes', 'Services', 'News & Press', 'Pages', 'Careers'].each do |section|
+  Section.find_or_create_by_title(:title => section)
 end
-Section.create(:title => 'About Us', :about => true)
+Section.find_or_create_by_title('About Us', :about => true)
 
 # contact topics
 ['General Inquiry', 'Apartments', 'New Homes', 'Acquisitions', 'Construction', 'Development', 'Homebuilding', 'Land', 'Management'].each do |topic|
-  ContactTopic.create(:topic => topic, :recipients => 'contact@bozzuto.com')
+  ContactTopic.find_or_create_by_topic(topic, :recipients => 'contact@bozzuto.com')
 end
 
 

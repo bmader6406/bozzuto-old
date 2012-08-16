@@ -9,6 +9,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :community_search, :only => :show
 
 
+  map.careers '/careers', :controller => :careers, :section => 'careers'
+
+
   map.namespace :email do |email|
     %w(recently_viewed search_results).each do |type|
       email.resource type,
