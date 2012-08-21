@@ -1,0 +1,81 @@
+<% content_for :body_class do %>about leadership<% end %>
+
+<% if @page.present? %>
+  <% render_meta(@page) %>
+  <%= render :partial => 'pages/masthead_slideshow', :locals => { :slideshow => @page.masthead_slideshow } %>
+<% end %>
+
+<div id="main-content">
+  <div class="container">
+    <div id="sidebar" class="col">
+      <%= render :partial => 'pages/secondary_nav' %>
+    </div>
+
+    <div id="content" class="col">
+      <div class="careers-banner">
+        <div class="careers-header careers-header-base">
+          <h1>Rewarding Work.<br />Rewarding Lives.</h1>
+          <p>Roll over to meet some of our team members</p>
+        </div>
+
+        <ul>
+          <% @entries.each do |entry| %>
+            <li class="careers-employee">
+              <% link_to :anchor => entry.name.parameterize do %>
+                <%= image_tag entry.main_photo.url(:grayscale), :class => 'gray', :'data-color' => entry.main_photo.url %>
+                <span class="careers-employee-name"><%= entry.name %></span>
+                <span class="careers-employee-job-title"><%= entry.job_title %></span>
+                <span class="careers-employee-company"><%= entry.company %></span>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div id="partner-bios">
+        <h3>Career Bios</h3>
+
+        <ul>
+          <% @entries.each do |entry| -%>
+            <li id="<%= entry.name.parameterize %>">
+              <div class="partner-bio-outer">
+                <div class="partner-bio-inner">
+                  <%= image_tag entry.headshot.url, :class => 'partner-pic' %>
+
+                  <h3 class="partner-name"><%= entry.name %></h3>
+
+                  <span class="partner-title"><%= entry.job_title %></span>
+                  <span class="partner-group"><%= entry.company %></span>
+
+                  <p><%= entry.job_description %></p>
+
+                  <% if entry.youtube_url.present? %>
+                    <div class="careers-employee-video">
+                      <iframe width="450" height="253" src="http://www.youtube.com/embed/J9DlV9qwtF0" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                  <% end %>
+                </div>  
+              </div>
+            </li>
+          <% end -%>
+        </ul>
+      </div>
+
+      <div class="row">
+        <div class="column-main col">
+          <% if @page.present? %>
+            <%= @page.body.try(:html_safe) %>
+          <% end %>
+        </div>
+
+        <% if @page.try(:show_sidebar?) %>
+          <div id="aside" class="col">
+            <%= render :partial => 'pages/default_aside' %>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
+

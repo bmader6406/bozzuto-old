@@ -8,6 +8,7 @@ en:
       body_slide: Slide
       body_slideshow: Page Body Slideshow
       bozzuto_blog_post: Bozzuto Blog Post
+      careers_entry: Careers Entry
       carousel_panel: Carousel Panel
       contact_topic: Contact Form Topic
       dnr_configuration: DNR Configuration
@@ -89,6 +90,11 @@ en:
         street1: Street Address 1
         street2: Street Address 2
         zip_code: ZIP Code
+      careers_entry:
+        job_description: Job Description
+        job_title: Job Title
+        main_photo: Main Photo
+        youtube_url: YouTube URL
       carousel_panel:
         link_url: Link URL
       community:
@@ -289,6 +295,8 @@ en:
         image: Image dimensions should be 380x150.<br />This image is shown on the home page when this post appears under &ldquo;Tom&rsquo;s Blog&rdquo;
         title: The post's title
         url: The post's URL
+      careers_entry:
+        main_photo: Image dimensions should be 212x350.<br />Upload a color photo&mdash;the grayscale one will be generated automatically.
       carousel_panel:
         caption: Required if Heading is set
         heading: Required if Caption is set

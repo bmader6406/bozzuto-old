@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120731143508) do
+ActiveRecord::Schema.define(:version => 20120816182713) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -276,6 +276,23 @@ ActiveRecord::Schema.define(:version => 20120731143508) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "careers_entries", :force => true do |t|
+    t.string   "name",                    :null => false
+    t.string   "company",                 :null => false
+    t.string   "job_title",               :null => false
+    t.text     "job_description"
+    t.string   "main_photo_file_name"
+    t.string   "main_photo_content_type"
+    t.string   "headshot_file_name"
+    t.string   "headshot_content_type"
+    t.string   "youtube_url"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "careers_entries", ["position"], :name => "index_careers_entries_on_position"
 
   create_table "carousel_panels", :force => true do |t|
     t.integer  "position",                              :null => false

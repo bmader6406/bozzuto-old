@@ -8,8 +8,10 @@ ActionController::Routing::Routes.draw do |map|
   map.search '/search', :controller => :searches, :action => :index
   map.resource :community_search, :only => :show
 
-
-  map.careers '/careers', :controller => :careers, :section => 'careers'
+  map.with_options :controller => :careers, :action => :index, :section => 'careers' do |m|
+    m.careers '/careers'
+    m.connect '/careers/overview'
+  end
 
 
   map.namespace :email do |email|

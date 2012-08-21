@@ -4793,3 +4793,69 @@ div.wysiwyg ul li {
     margin-bottom: 5px;
   }
 /* @end */
+
+/* @group */
+  .careers-banner {
+    border: 1px solid #4b4951;
+    border-top: none;
+    height: 528px;
+    margin-bottom: 20px;
+    position: relative;
+    top: -15px;
+    width: 848px;
+  }
+
+  .careers-banner ul {
+    bottom: 0;
+    height: 350px;
+    left: 0;
+    position: absolute;
+    width: 848px;
+  }
+
+  .careers-header {
+    left: 15px;
+    position: absolute;
+    top: 15px;
+  }
+
+  .careers-header h1 {
+    color: #4b4951;
+    font-size: 72px;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    text-transform: uppercase;
+  }
+
+  .careers-header p {
+    background: transparent url(../images/structure/bg-careers-banner-line.gif) no-repeat 3px 0;
+    color: #4b4951;
+    font-size: 14px !important;
+    font-weight: bold;
+    padding-left: 3px;
+    padding-top: 8px;
+    margin-top: 8px;
+  }
+
+  .careers-employee {
+    float: left;
+    height: 350px;
+    position: relative;
+    width: 212px;
+  }
+
+  .careers-employee .color {
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  .careers-employee span {
+    display: none;
+  }
+
+  .careers-employee-video {
+    margin-top: 20px;
+  }
+/* @end */

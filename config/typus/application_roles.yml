@@ -12,6 +12,7 @@ admin:
   BodySlideshow: create, read, update, delete
   BozzutoBlogPost: create, read, update, delete
   Buzz: read, delete
+  CareersEntry: create, read, update, delete
   Carousel: create, read, update, delete
   CarouselPanel: create, read, update, delete
   City: create, read, update, delete

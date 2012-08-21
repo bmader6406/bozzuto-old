@@ -127,6 +127,19 @@ Buzz:
   search: 
   application: Contact
 
+CareersEntry:
+  fields:
+    default: name, job_title, position
+    list: 
+    form: name, company, job_title, job_description, youtube_url, main_photo, headshot
+    options:
+      required: name, company, job_title, job_description, main_photo, headshot
+  order_by: position
+  relationships: 
+  filters:
+  search:
+  application: Content
+
 Carousel:
   fields:
     default: name

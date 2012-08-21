@@ -128,9 +128,11 @@ window.bozzuto = {};
 
     $('.expand-and-disappear').expandAndDisappear();
     
+    $('.careers-banner').careersBanner();
+
     $('.partner-portrait').portrait();
 
-    $('.partner-portrait-links a, .partners a').leaderLightbox();
+    $('.partner-portrait-links a, .partners a, .careers-employee a').leaderLightbox();
 
     $('.floor-plan-view').floorPlanOverlay();
 
@@ -783,7 +785,11 @@ window.bozzuto = {};
   $.fn.leaderLightbox = function() {
     return this.each(function() {
       var $this = $(this),
-          $bio = $($this.attr('href')).children();
+					bioId = $this[0].hash,
+          $bio  = $(bioId).children();
+
+			console.log(bioId);
+			console.log($bio);
 
       if (!$bio.data('closeAdded')) {
         $('<a href="#" class="partner-close">Close</a>').appendTo($bio.children());
@@ -1213,6 +1219,69 @@ window.bozzuto = {};
       });
 
       $carousel.trigger('carousel:setup');
+    });
+  };
+
+
+  $.fn.careersBanner = function() {
+		var headerFadeDuration = 150,
+				photoFadeDuration  = 250;
+
+    return this.each(function() {
+			var $container     = $(this),
+					$links         = $container.find('.careers-employee a'),
+					$baseHeader    = $container.find('.careers-header-base'),
+					$currentHeader = $baseHeader;
+
+			$links.each(function() {
+				var $link    = $(this),
+						$gray    = $link.find('img.gray'),
+						$color   = null,
+						timer    = null,
+						$header  = $baseHeader.clone(),
+						name     = $link.find('.careers-employee-name').text(),
+						jobTitle = $link.find('.careers-employee-job-title').text(),
+						company  = $link.find('.careers-employee-company').text();
+
+				// Add color image
+				$link.append('<img src="' + $gray.attr('data-color') + '" class="color" />');
+				$color = $link.find('img.color');
+
+				// Add header
+				$header.removeClass('careers-header-base');
+
+				$header.find('h1').text(name);
+				$header.find('p').html(jobTitle + '<br />' + company);
+				$header.css('display', 'none');
+
+				$container.append($header);
+
+
+				$link.hover(function() {
+					clearTimeout(timer);
+
+					// Fade in color photo
+					$color.fadeIn(photoFadeDuration);
+
+					// Replace header
+					$currentHeader.fadeOut(headerFadeDuration);
+					$header.fadeIn(headerFadeDuration);
+					$currentHeader = $header;
+				}, function() {
+					timer = setTimeout(function() {
+						// Fade out color photo
+						$color.fadeOut(photoFadeDuration);
+
+						// Header hasn't changed to another entry, so revert
+						// back to the base header
+						if ($currentHeader == $header) {
+							$header.fadeOut(headerFadeDuration);
+							$baseHeader.fadeIn(headerFadeDuration);
+							$currentHeader = $baseHeader;
+						}
+					}, 200);
+				});
+			});
     });
   };
 
