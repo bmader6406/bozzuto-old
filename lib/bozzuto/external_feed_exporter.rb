@@ -9,6 +9,16 @@ module Bozzuto
       { :properties => community_data }
     end
 
+    def to_xml
+      builder = Builder::XmlMarkup.new(:indent => 2)
+      builder.instruct! :xml, :version=>"1.0", :encoding=>"UTF-8"
+      builder.PhysicalProperty do |node|
+        data[:properties].each do |property|
+          property_node(node, property)
+        end
+      end
+    end
+
     private
 
     def community_data
@@ -83,22 +93,13 @@ module Bozzuto
           :id                 => floor_plan.id,
           :name               => floor_plan.name,
           :availability_url   => floor_plan.availability_url,
+          :available_units    => floor_plan.available_units,
           :min_square_feet    => floor_plan.min_square_feet,
           :max_square_feet    => floor_plan.max_square_feet,
           :min_market_rent    => floor_plan.min_market_rent,
           :max_market_rent    => floor_plan.max_market_rent,
           :min_effective_rent => floor_plan.min_effective_rent,
-          :max_effective_rent => floor_plan.max_effective_rent,
-          :units              => floor_plan_units(floor_plan)
-        }
-      end
-    end
-
-    def floor_plan_units(floor_plan)
-      floor_plan.units.collect do |unit|
-        {
-          :id               => unit.id,
-          :availability_url => unit.availability_url
+          :max_effective_rent => floor_plan.max_effective_rent
         }
       end
     end
@@ -128,6 +129,153 @@ module Bozzuto
           :id    => nearby_community.id,
           :title => nearby_community.title
         }
+      end
+    end
+
+    def property_node(parent_node, property)
+      parent_node.tag!('Property') do |node|
+        property_id_node(node, property)
+        information_node(node, property)
+
+        property[:features].each do |feature|
+          feature_node(node, feature)
+        end
+
+        property[:featured_buttons].each do |featured_button|
+          featured_button_node(node, featured_button)
+        end
+
+        photo_set_node(node, property[:photo_set])
+
+        property[:nearby_communities].each do |nearby_community|
+          nearby_community_node(node, nearby_community)
+        end
+
+        property[:floorplans].each do |floorplan|
+          floorplan_node(node, floorplan)
+        end
+
+        promotion_node(node, property[:promo])
+      end
+    end
+
+    def property_id_node(parent_node, property)
+      parent_node.tag!('PropertyID') do |node|
+        identification_node(node, property)
+        address_node(node, property)
+        phone_node(node, property)
+      end
+    end
+
+    def identification_node(parent_node, property)
+      parent_node.tag!('Identification') do |node|
+        node.tag! 'PrimaryID', property[:id]
+        node.tag! 'MarketingName', property[:community_name]
+        node.tag! 'WebSite', property[:website_url]
+        node.tag! 'BozzutoURL', property[:bozzuto_url]
+        node.tag! 'Latitude', property[:latitude]
+        node.tag! 'Longitude', property[:longitude]
+      end
+    end
+
+    def address_node(parent_node, property)
+      parent_node.tag!('Address') do |node|
+        node.tag! 'Address1', property[:community_address_1]
+        node.tag! 'City', property[:city]
+        node.tag! 'State', property[:state]
+        node.tag! 'PostalCode', property[:postal_code]
+        node.tag! 'CountyName', property[:county]
+        node.tag! 'Lead2LeaseEmail', property[:lead_2_lease_email]
+      end
+    end
+
+    def phone_node(parent_node, property)
+      parent_node.tag!('Phone', 'Type' => 'office') do |node|
+        node.tag! 'PhoneNumber', property[:phone_number]
+      end
+    end
+
+    def information_node(parent_node, property)
+      parent_node.tag!('Information') do |node|
+        if property[:office_hours]
+          property[:office_hours].each do |office_hour|
+            office_hour_node(node, office_hour)
+          end
+        end
+        node.tag! 'OverviewText', property[:overview_text]
+        node.tag! 'OverviewBullet1', property[:overview_bullet_1]
+        node.tag! 'OverviewBullet2', property[:overview_bullet_2]
+        node.tag! 'OverviewBullet3', property[:overview_bullet_3]
+        node.tag! 'NeighborhoodText', property[:neighborhood_text]
+        node.tag! 'DirectionsURL', property[:directions_url]
+        node.tag! 'LocalInfoRSSURL', property[:local_info_feed]
+        node.tag! 'VideoURL', property[:video_url]
+        node.tag! 'FacebookURL', property[:facebook_url]
+        node.tag! 'TwitterHandle', property[:twitter_handle]
+        node.tag! 'PinterestURL', property[:pinterest_url]
+      end
+    end
+
+    def office_hour_node(parent_node, office_hour)
+      parent_node.tag!('OfficeHour') do |node|
+        node.tag! 'OpenTime', office_hour[:open_time]
+        node.tag! 'CloseTime', office_hour[:close_time]
+        node.tag! 'Day', office_hour[:day]
+      end
+    end
+
+    def feature_node(parent_node, feature)
+      parent_node.tag!('Feature') do |node|
+        node.tag! 'Title', feature[:title]
+        node.tag! 'Description', feature[:text]
+      end
+    end
+
+    def featured_button_node(parent_node, featured_button)
+      parent_node.tag!('FeaturedButton') do |node|
+        node.tag! 'Name', featured_button[:name]
+      end
+    end
+
+    def photo_set_node(parent_node, photo_set)
+      parent_node.tag!('PhotoSet') do |node|
+        node.tag! 'Title', photo_set[:title]
+        node.tag! 'FlickrSetNumber', photo_set[:flickr_set_number]
+      end
+    end
+
+    def nearby_community_node(parent_node, nearby_community)
+      parent_node.tag!('NearbyCommunity', 'Id' => nearby_community[:id]) do |node|
+        node.tag! 'Name', nearby_community[:title]
+      end
+    end
+
+    def floorplan_node(parent_node, floorplan)
+      parent_node.tag!('Floorplan', 'Id' => floorplan[:id]) do |node|
+        node.tag! 'Name', floorplan[:name]
+        node.tag! 'FloorplanAvailabilityURL', floorplan[:availability_url]
+        node.tag! 'DisplayedUnitsAvailable', floorplan[:available_units]
+        node.tag! 'SquareFeet',
+          'Min' => floorplan[:min_square_feet],
+          'Max' => floorplan[:max_square_feet]
+        node.tag! 'MarketRent',
+          'Min' => ('%g' % floorplan[:min_market_rent]),
+          'Max' => ('%g' % floorplan[:max_market_rent])
+        node.tag! 'EffectiveRent',
+          'Min' => ('%g' % floorplan[:min_effective_rent]),
+          'Max' => ('%g' % floorplan[:max_effective_rent])
+      end
+    end
+
+    def promotion_node(parent_node, promo)
+      parent_node.tag!('Promotion') do |node|
+        node.tag! 'Title', promo[:title]
+        node.tag! 'Subtitle', promo[:subtitle]
+        node.tag! 'LinkURL', promo[:link_url]
+        node.tag! 'ExpirationDate',
+          'Month' => promo[:expiration_date].try(:strftime, '%m'),
+          'Day'   => promo[:expiration_date].try(:strftime, '%d'),
+          'Year'  => promo[:expiration_date].try(:strftime, '%Y')
       end
     end
   end

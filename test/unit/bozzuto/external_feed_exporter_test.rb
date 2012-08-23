@@ -46,6 +46,14 @@ module Bozzuto
         local_info_feed.expects(:validate_on_create)
         local_info_feed.save
 
+        @expiration_date = Time.current.advance(:days => 15)
+        promo = Promo.make(:active, {
+          :title           => 'on sale meow',
+          :subtitle        => 'come on down',
+          :link_url        => 'http://buy.now',
+          :expiration_date => @expiration_date
+        })
+
         @community = ApartmentCommunity.make({
           :title              => 'Dolans Hood',
           :street_address     => '100 Gooby Pls',
@@ -66,7 +74,8 @@ module Bozzuto
           :website_url        => 'http://what.up',
           :latitude           => 9001,
           :longitude          => 1337,
-          :local_info_feed    => local_info_feed
+          :local_info_feed    => local_info_feed,
+          :promo_id           => promo.id
         })
 
         ApartmentCommunity.make(
@@ -269,17 +278,13 @@ module Bozzuto
             :apartment_community => @community,
             :name                => 'The Roxy',
             :availability_url    => 'http://lol.wut',
+            :available_units     => 3,
             :min_square_feet     => 1400,
             :max_square_feet     => 1400,
             :min_market_rent     => 2260,
             :max_market_rent     => 2300,
             :min_effective_rent  => 2275,
             :max_effective_rent  => 2295
-          })
-
-          ApartmentUnit.make({
-            :floor_plan       => @floor_plan,
-            :availability_url => 'http://dolan.pls'
           })
 
           @property_export = @exporter.data[:properties].first
@@ -296,6 +301,10 @@ module Bozzuto
 
         should "contain #availability_url" do
           assert_equal 'http://lol.wut', @floor_plan_data[:availability_url]
+        end
+
+        should "contain #available_units" do
+          assert_equal 3, @floor_plan_data[:available_units]
         end
 
         should "contain #min_square_feet" do
@@ -321,20 +330,6 @@ module Bozzuto
         should "contain #max_effective_rent" do
           assert_equal 2295, @floor_plan_data[:max_effective_rent]
         end
-
-        context "with units" do
-          setup do
-            @unit_data = @floor_plan_data[:units].first
-          end
-
-          should "contain unit #id" do
-            assert @unit_data[:id].present?
-          end
-
-          should "contain unit #availability_url" do
-            assert_equal 'http://dolan.pls', @unit_data[:availability_url]
-          end
-        end
       end
 
       should "contain #facebook_url" do
@@ -352,15 +347,6 @@ module Bozzuto
 
       context "with active promo" do
         setup do
-          @expiration_date = Time.current.advance(:days => 15)
-          promo = Promo.make(:active, {
-            :title           => 'on sale meow',
-            :subtitle        => 'come on down',
-            :link_url        => 'http://buy.now',
-            :expiration_date => @expiration_date
-          })
-          @community.update_attributes(:promo_id => promo.id)
-
           @property_export = @exporter.data[:properties].first
           @promo_data = @property_export[:promo]
         end
@@ -471,6 +457,376 @@ module Bozzuto
         end
 
         assert_equal 7, @exporter.data[:properties].size
+      end
+
+      context "formatting XML" do
+        setup do
+          PropertyFeaturesPage.make({
+            :property => @community,
+            :title_1  => 'Features',
+            :text_1   => 'Here lies some features',
+            :title_2  => nil,
+            :text_2   => nil
+          })
+
+          set = PhotoSet.make_unsaved({
+            :property => @community,
+            :flickr_set_number => '91740458'
+          })
+          set.stubs(:flickr_set).returns(OpenStruct.new(:title => 'PHERT SERT'))
+          set.save
+
+          @floor_plan = ApartmentFloorPlan.make({
+            :apartment_community => @community,
+            :name                => 'The Roxy',
+            :availability_url    => 'http://lol.wut',
+            :available_units     => 3,
+            :min_square_feet     => 1400,
+            :max_square_feet     => 1400,
+            :min_market_rent     => 2260,
+            :max_market_rent     => 2300,
+            :min_effective_rent  => 2275,
+            :max_effective_rent  => 2295
+          })
+
+          PropertyFeature.make({
+            :name       => 'Feature Uno',
+            :properties => [@community]
+          })
+
+          PropertyFeature.make({
+            :name       => 'Feature Due',
+            :properties => [@community]
+          })
+
+          @doc = Nokogiri::XML(@exporter.to_xml)
+        end
+
+        should "contain PhysicalProperty node" do
+          assert @doc.xpath("//PhysicalProperty").present?
+        end
+
+        should "contain Property node" do
+          assert @doc.xpath("//PhysicalProperty/Property").present?
+        end
+
+        context "within PropertyID node" do
+          setup do
+            path = '//PhysicalProperty//Property//PropertyID'
+            @property_id_node = @doc.xpath(path)[0]
+          end
+
+          context "within Identification node" do
+            setup do
+              @identification_node = @property_id_node.xpath('Identification')[0]
+            end
+
+            should "contain property id" do
+              actual = @identification_node.xpath('PrimaryID')[0].content.to_i
+              assert_equal @community.id, actual
+            end
+
+            should "contain property title" do
+              actual = @identification_node.xpath('MarketingName')[0].content
+              assert_equal @community.title, actual
+            end
+
+            should "contain property website" do
+              actual = @identification_node.xpath('WebSite')[0].content
+              assert_equal @community.website_url, actual
+            end
+
+            should "contain bozzuto url" do
+              assert_equal "http://bozzuto.com/apartments/communities/#{@community.id}-dolans-hood",
+                @identification_node.xpath('BozzutoURL')[0].content
+            end
+
+            should "contain latitude" do
+              assert_equal '9001.0',
+                @identification_node.xpath('Latitude')[0].content
+            end
+
+            should "contain longitude" do
+              assert_equal '1337.0',
+                @identification_node.xpath('Longitude')[0].content
+            end
+          end
+
+          context "within Address node" do
+            setup do
+              @address_node = @property_id_node.xpath('Address')[0]
+            end
+
+            should "contain property street address" do
+              actual = @address_node.xpath('Address1')[0].content
+              assert_equal @community.street_address, actual
+            end
+
+            should "contain property city" do
+              actual = @address_node.xpath('City')[0].content
+              assert_equal @community.city.name, actual
+            end
+
+            should "contain property state" do
+              actual = @address_node.xpath('State')[0].content
+              assert_equal @community.state.code, actual
+            end
+
+            should "contain property postal code" do
+              actual = @address_node.xpath('PostalCode')[0].content
+              assert_equal @community.zip_code, actual
+            end
+
+            should "contain property county name" do
+              actual = @address_node.xpath('CountyName')[0].content
+              assert_equal @community.county.name, actual
+            end
+
+            should "contain property email" do
+              actual = @address_node.xpath('Lead2LeaseEmail')[0].content
+              assert_equal @community.lead_2_lease_email, actual
+            end
+          end
+
+          should "contain property phone number" do
+            actual = @property_id_node.xpath('Phone[@Type="office"]//PhoneNumber')[0].content
+            assert_equal @community.phone_number, actual
+          end
+        end
+
+        context "with features" do
+          setup do
+            path = '//PhysicalProperty//Property//Feature'
+            @feature_node = @doc.xpath(path)[0]
+          end
+
+          should "contain feature title" do
+            assert_equal 'Features', @feature_node.xpath('Title')[0].content
+          end
+
+          should "contain feature text" do
+            assert_equal 'Here lies some features',
+              @feature_node.xpath('Description')[0].content
+          end
+        end
+
+        context "with feature buttons" do
+          setup do
+            path = '//PhysicalProperty//Property//FeaturedButton'
+            @featured_button_node = @doc.xpath(path)[0]
+          end
+
+          should "contain name" do
+            assert_equal 'Feature Uno',
+              @featured_button_node.xpath('Name')[0].content
+          end
+        end
+
+        context "within Information node" do
+          setup do
+            path = '//PhysicalProperty//Property//Information'
+            @information_node = @doc.xpath(path)[0]
+          end
+
+          context "with office hours" do
+            setup do
+              @office_hour_node = @information_node.xpath('OfficeHour')[0]
+            end
+
+            should "contain open time" do
+              assert_equal '9:00 AM',
+                @office_hour_node.xpath('OpenTime')[0].content
+            end
+
+            should "contain close time" do
+              assert_equal '6:00 PM',
+                @office_hour_node.xpath('CloseTime')[0].content
+            end
+
+            should "contain day" do
+              assert_equal 'Monday',
+                @office_hour_node.xpath('Day')[0].content
+            end
+          end
+
+          should "contain overview text" do
+            assert_equal 'ovrvu text',
+              @information_node.xpath('OverviewText')[0].content
+          end
+
+          1.upto(3) do |n|
+            should "contain overview bullet #{n}" do
+              assert_equal "ovrvu bulet #{n}",
+                @information_node.xpath("OverviewBullet#{n}")[0].content
+            end
+          end
+
+          should "contain neighborhood text" do
+            assert_equal 'wilcum to da hood',
+              @information_node.xpath('NeighborhoodText')[0].content
+          end
+
+          should "contain directions link" do
+            assert_equal 'http://maps.google.com/maps?daddr=100%20Gooby%20Pls,%20Bogsville,%20NC',
+              @information_node.xpath('DirectionsURL')[0].content
+          end
+
+          should "contain local info rss feed" do
+            assert_equal 'http://bozzuto.com/feed',
+              @information_node.xpath('LocalInfoRSSURL')[0].content
+          end
+
+          should "contain video url" do
+            assert_equal 'http://www.videoapt.com/208/LibertyTowers/Default.aspx',
+              @information_node.xpath('VideoURL')[0].content
+          end
+
+          should "contain facebook url" do
+            assert_equal 'http://facebook.com/dafuq',
+              @information_node.xpath('FacebookURL')[0].content
+          end
+
+          should "contain twitter handle" do
+            assert_equal 'TheBozzutoGroup',
+              @information_node.xpath('TwitterHandle')[0].content
+          end
+
+          should "contain pinterest url" do
+            assert_equal 'http://pinterest.com/bozzuto',
+              @information_node.xpath('PinterestURL')[0].content
+          end
+        end
+
+        context "with Nearby Apartment Communities" do
+          setup do
+            @nearby_community = @community.nearby_communities.first
+
+            path = '//PhysicalProperty//Property//NearbyCommunity'
+            @nearby_node = @doc.xpath(path)[0]
+          end
+
+          should "contain id" do
+            assert_equal @nearby_community.id.to_s, @nearby_node['Id']
+          end
+
+          should "contain title" do
+            assert_equal @nearby_community.title,
+              @nearby_node.xpath('Name')[0].content
+          end
+        end
+
+        context "with photo set" do
+          setup do
+            path = '//PhysicalProperty//Property//PhotoSet'
+            @photo_set_node = @doc.xpath(path)[0]
+          end
+
+          should "contain title" do
+            assert_equal 'PHERT SERT', @photo_set_node.xpath('Title')[0].content
+          end
+
+          should "contain flickr set number" do
+            assert_equal '91740458', @photo_set_node.xpath('FlickrSetNumber')[0].content
+          end
+        end
+
+        context "with floor plans" do
+          setup do
+            path = "//PhysicalProperty//Property//Floorplan[@Id=\"#{@floor_plan.id}\"]"
+            @floor_plan_node = @doc.xpath(path)[0]
+          end
+
+          should "contain name" do
+            assert_equal 'The Roxy', @floor_plan_node.xpath('Name')[0].content
+          end
+
+          should "contain minimum market rent" do
+            assert_equal '2260', @floor_plan_node.xpath('MarketRent')[0]['Min']
+          end
+
+          should "contain maximum market rent" do
+            assert_equal '2300', @floor_plan_node.xpath('MarketRent')[0]['Max']
+          end
+
+          should "contain minimum effective rent" do
+            assert_equal '2275',
+              @floor_plan_node.xpath('EffectiveRent')[0]['Min']
+          end
+
+          should "contain maximum effective rent" do
+            assert_equal '2295',
+              @floor_plan_node.xpath('EffectiveRent')[0]['Max']
+          end
+
+          should "contain minimum square footage" do
+            assert_equal '1400', @floor_plan_node.xpath('SquareFeet')[0]['Min']
+          end
+
+          should "contain maximum square footage" do
+            assert_equal '1400', @floor_plan_node.xpath('SquareFeet')[0]['Max']
+          end
+
+          should "contain availability url" do
+            assert_equal 'http://lol.wut',
+              @floor_plan_node.xpath('FloorplanAvailabilityURL')[0].content
+          end
+
+          should "contain available units" do
+            assert_equal '3',
+              @floor_plan_node.xpath('DisplayedUnitsAvailable')[0].content
+          end
+        end
+
+        context "with promotion" do
+          setup do
+            path = '//PhysicalProperty//Property//Promotion'
+            @promotion_node = @doc.xpath(path)[0]
+          end
+
+          should "contain title" do
+            assert_equal 'on sale meow',
+              @promotion_node.xpath('Title')[0].content
+          end
+
+          should "contain subtitle" do
+            assert_equal 'come on down',
+              @promotion_node.xpath('Subtitle')[0].content
+          end
+
+          should "contain link url" do
+            assert_equal 'http://buy.now',
+              @promotion_node.xpath('LinkURL')[0].content
+          end
+
+          context "with expiration date" do
+            setup do
+              @expiration_date_node = @promotion_node.xpath('ExpirationDate')[0]
+            end
+
+            should "contain month" do
+              expected = @expiration_date.strftime('%m')
+              assert_equal expected, @expiration_date_node['Month']
+            end
+
+            should "contain day" do
+              expected = @expiration_date.strftime('%d')
+              assert_equal expected, @expiration_date_node['Day']
+            end
+
+            should "contain year" do
+              expected = @expiration_date.strftime('%Y')
+              assert_equal expected, @expiration_date_node['Year']
+            end
+          end
+        end
+
+        should "render multiple communities" do
+          5.times { |n| ApartmentCommunity.make }
+          path = '//PhysicalProperty//Property'
+          doc = Nokogiri::XML(@exporter.to_xml)
+
+          assert_equal 7, doc.xpath(path).size
+        end
       end
     end
   end
