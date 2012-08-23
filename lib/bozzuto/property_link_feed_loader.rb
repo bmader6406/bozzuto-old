@@ -4,11 +4,11 @@ module Bozzuto
     self.tmp_file  = Rails.root.join('tmp', 'property_link')
     self.lock_file = Rails.root.join('tmp', 'property_link.lock')
 
-    title                         './PropertyID/MITS:Identification/MITS:MarketingName'
-    external_cms_id               './PropertyID/MITS:Identification/MITS:PrimaryID'
-    street_address                './PropertyID/MITS:Address/MITS:Address1'
-    state                         './PropertyID/MITS:Address/MITS:State'
-    city                          './PropertyID/MITS:Address/MITS:City'
+    title                         './PropertyID/Identification/MarketingName'
+    external_cms_id               './PropertyID/Identification/PrimaryID'
+    street_address                './PropertyID/Address/Address1'
+    state                         './PropertyID/Address/State'
+    city                          './PropertyID/Address/City'
 
     floor_plan_name               './Name'
     floor_plan_bedroom_count      './Room[@Type="Bedroom"]/Count'

@@ -282,16 +282,12 @@ module Bozzuto
     end
 
 
-    def ns
-      VaultwareFeedLoader::NAMESPACE
-    end
-
     def external_cms_id(property)
-      property.at('./PropertyID/ns:Identification/ns:PrimaryID', ns).content.to_i
+      property.at('./PropertyID/Identification/PrimaryID').content.to_i
     end
 
     def title(property)
-      property.at('./PropertyID/ns:Identification/ns:MarketingName', ns).content
+      property.at('./PropertyID/Identification/MarketingName').content
     end
 
     def community_fields
@@ -305,13 +301,13 @@ module Bozzuto
     end
 
     def community_attributes(property)
-      ident   = property.at('./PropertyID/ns:Identification', ns)
-      address = property.at('./PropertyID/ns:Address', ns)
+      ident   = property.at('./PropertyID/Identification')
+      address = property.at('./PropertyID/Address')
       info    = property.at('./Information')
 
       {
-        :title             => ident.at('./ns:MarketingName', ns).content,
-        :street_address    => address.at('./ns:Address1', ns).content,
+        :title             => ident.at('./MarketingName').content,
+        :street_address    => address.at('./Address1').content,
         :availability_url  => info.at('./PropertyAvailabilityURL').content,
         :external_cms_id   => external_cms_id(property),
         :external_cms_type => 'vaultware'
@@ -371,8 +367,11 @@ module Bozzuto
     end
 
     def load_vaultware_fixture_file(file)
-      @fixture    = load_fixture_file(file)
-      data        = Nokogiri::XML(@fixture)
+      @fixture = load_fixture_file(file)
+      data     = Nokogiri::XML(@fixture)
+
+      data.remove_namespaces!
+
       @properties = data.xpath('/PhysicalProperty/Property')
       @property   = @properties.first
     end

@@ -137,6 +137,8 @@ module Bozzuto
     def load_feed
       data = Nokogiri::XML(File.read(file))
 
+      data.remove_namespaces!
+
       data.xpath('/PhysicalProperty/Property').each do |property|
         process_property(property)
         process_floor_plans(property)

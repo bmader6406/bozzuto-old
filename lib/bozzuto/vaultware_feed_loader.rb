@@ -4,14 +4,12 @@ module Bozzuto
     self.tmp_file  = Rails.root.join('tmp', 'vaultware')
     self.lock_file = Rails.root.join('tmp', 'vaultware.lock')
 
-    NAMESPACE = {'ns' => 'http://my-company.com/namespace' }
-
-    title                         './PropertyID/ns:Identification/ns:MarketingName', :namespace => NAMESPACE
-    external_cms_id               './PropertyID/ns:Identification/ns:PrimaryID',     :namespace => NAMESPACE
-    street_address                './PropertyID/ns:Address/ns:Address1',             :namespace => NAMESPACE
-    state                         './PropertyID/ns:Address/ns:State',                :namespace => NAMESPACE
-    city                          './PropertyID/ns:Address/ns:City',                 :namespace => NAMESPACE
-    county                        './PropertyID/ns:Address/ns:CountyName',           :namespace => NAMESPACE
+    title                         './PropertyID/Identification/MarketingName'
+    external_cms_id               './PropertyID/Identification/PrimaryID'
+    street_address                './PropertyID/Address/Address1'
+    state                         './PropertyID/Address/State'
+    city                          './PropertyID/Address/City'
+    county                        './PropertyID/Address/CountyName'
     availability_url              './Information/PropertyAvailabilityURL'
 
     floor_plan_name               './Name'
