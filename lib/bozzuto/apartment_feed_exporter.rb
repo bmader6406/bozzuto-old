@@ -1,5 +1,5 @@
 module Bozzuto
-  class ExternalFeedExporter < ExternalFeedLoader
+  class ApartmentFeedExporter
     include ActionController::UrlWriter
     include PropertiesHelper
 

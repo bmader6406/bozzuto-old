@@ -1,11 +1,7 @@
 require 'test_helper'
 
 module Bozzuto
-  class ExternalFeedExporterTest < ActiveSupport::TestCase
-    # TODO: acceptance criteria
-    # * assembles a properly formed xml doc
-    # * writes to a file
-
+  class ApartmentFeedExporterTest < ActiveSupport::TestCase
     context "pulling data" do
       setup do
         @office_hours = [
@@ -90,7 +86,7 @@ module Bozzuto
           :content  => 'wilcum to da hood'
         })
 
-        @exporter = ExternalFeedExporter.new
+        @exporter = ApartmentFeedExporter.new
         @property_export = @exporter.data[:properties].first
       end
 
