@@ -75,4 +75,22 @@ namespace :bozzuto do
       email.send!
     end
   end
+
+  desc "Export apartment data to a feed"
+  task :export_apartment_feed => :environment do
+    puts 'Exporting Apartment data ...'
+
+    begin
+      exporter = Bozzuto::ApartmentFeedExporter.new
+      output_file = APP_CONFIG[:apartment_export_file]
+
+      File.open(output_file, 'w') do |f|
+        f.write(exporter.to_xml)
+      end
+
+    rescue Exception => e
+      puts "Failed to export data: #{e.message}"
+      notify_hoptoad(e)
+    end
+  end
 end
