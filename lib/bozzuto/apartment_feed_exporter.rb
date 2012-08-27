@@ -259,11 +259,11 @@ module Bozzuto
           'Min' => floorplan[:min_square_feet],
           'Max' => floorplan[:max_square_feet]
         node.tag! 'MarketRent',
-          'Min' => ('%g' % floorplan[:min_market_rent]),
-          'Max' => ('%g' % floorplan[:max_market_rent])
+          'Min' => format_float_for_xml(floorplan[:max_market_rent]),
+          'Max' => format_float_for_xml(floorplan[:max_market_rent])
         node.tag! 'EffectiveRent',
-          'Min' => ('%g' % floorplan[:min_effective_rent]),
-          'Max' => ('%g' % floorplan[:max_effective_rent])
+          'Min' => format_float_for_xml(floorplan[:min_effective_rent]),
+          'Max' => format_float_for_xml(floorplan[:max_effective_rent])
       end
     end
 
@@ -276,6 +276,14 @@ module Bozzuto
           'Month' => promo[:expiration_date].try(:strftime, '%m'),
           'Day'   => promo[:expiration_date].try(:strftime, '%d'),
           'Year'  => promo[:expiration_date].try(:strftime, '%Y')
+      end
+    end
+
+    def format_float_for_xml(value)
+      if value.present?
+        '%g' % value.to_f
+      else
+        ''
       end
     end
   end
