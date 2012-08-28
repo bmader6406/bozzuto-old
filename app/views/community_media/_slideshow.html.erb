@@ -18,8 +18,10 @@
           <li id="slideshow-slide-<%= slide_index %>" class="slide">
             <%= image_tag(photo.image.url) %>
             <div class="slideshow-caption">
-              <p class="slideshow-counter"></p>
-              <p><%= photo.title %></p>
+              <p>
+                <span class="slideshow-counter"></span>
+                <%= photo.title %>
+              </p>
             </div>
           </li>
           <% slide_index += 1 %>

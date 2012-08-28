@@ -911,10 +911,10 @@ window.bozzuto = {};
       $('ul.slides li.slide:eq(0)', $slideshow).addClass('current');
 
       // add slide counter
-      if ($('ul.slides li.slide p.slideshow-counter', $slideshow).length > 0) {
+      if ($('ul.slides li.slide span.slideshow-counter', $slideshow).length > 0) {
         $('ul.slides li.slide', $slideshow).each(function(i) {
-          $('p.slideshow-counter', $(this)).html(
-              (i + 1) + ' of ' + slideCount + ' Photos'
+          $('span.slideshow-counter', $(this)).html(
+              (i + 1) + ' of ' + slideCount + ':'
               );
         });
       }
