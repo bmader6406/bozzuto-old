@@ -2,6 +2,9 @@ ActionController::Routing::Routes.draw do |map|
   Typus::Routes.draw(map)
   Jammit::Routes.draw(map)
   Ckeditor::Routes.draw(map)
+  
+  # TEMPORARY WHILE BUILDING OUT
+  map.connect "new-homes/green-homes/green-savings", :controller => "build", :action => "green_savings"
 
   map.root :controller => :home_pages
 
