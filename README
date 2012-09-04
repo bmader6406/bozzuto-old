@@ -1,0 +1,25 @@
+The app needs to be running at bozzuto.local in order for assets to load. The easiest way to do this is by using [POW](http://pow.cx/)
+
+* Create a .powconfig in your home directory with the following:
+
+	export POW_DOMAINS=local,dev
+	
+* Install:
+
+	curl get.pow.cx | sh
+	
+* Setup the Bozzuto app:
+
+	cd ~/.pow
+	ln -s /path/to/bozzuto
+	
+* Create a config.ru in the root of the app with the following:
+
+	require File.dirname(__FILE__) + '/config/environment'
+	run ActionController::Dispatcher.new
+	
+* Add bozzuto.local to your hosts file:
+
+	127.0.0.1	bozzuto.local
+	
+* You may have to turn off web sharing in order for your site to load in a browser
