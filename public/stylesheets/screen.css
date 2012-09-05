@@ -1019,14 +1019,14 @@ div.wysiwyg ul li {
       width: 170px;
       border-top: 1px solid #eaecee;
     }
-	.secondary #secondary-nav li.current ul ul {
+	.secondary #secondary-nav li ul ul {
 		margin-left: 10px;
 		width: 160px;
 	}
-	.secondary #secondary-nav li.current ul ul li {
+	.secondary #secondary-nav li ul ul li {
 		width: 160px;
 	}
-	.secondary #secondary-nav li.current ul ul li a {
+	.secondary #secondary-nav li ul ul li a {
 		width: 130px;
 	}
     .secondary #secondary-nav li.first {
