@@ -259,7 +259,7 @@ module Bozzuto
           'Min' => floorplan[:min_square_feet],
           'Max' => floorplan[:max_square_feet]
         node.tag! 'MarketRent',
-          'Min' => format_float_for_xml(floorplan[:max_market_rent]),
+          'Min' => format_float_for_xml(floorplan[:min_market_rent]),
           'Max' => format_float_for_xml(floorplan[:max_market_rent])
         node.tag! 'EffectiveRent',
           'Min' => format_float_for_xml(floorplan[:min_effective_rent]),
