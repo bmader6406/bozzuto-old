@@ -1015,11 +1015,20 @@ div.wysiwyg ul li {
     .secondary #secondary-nav li.current ul {
       display: block;
     }
-    
     .secondary #secondary-nav li {
       width: 170px;
       border-top: 1px solid #eaecee;
     }
+	.secondary #secondary-nav li.current ul ul {
+		margin-left: 10px;
+		width: 160px;
+	}
+	.secondary #secondary-nav li.current ul ul li {
+		width: 160px;
+	}
+	.secondary #secondary-nav li.current ul ul li a {
+		width: 130px;
+	}
     .secondary #secondary-nav li.first {
       border-top: none;
     }
