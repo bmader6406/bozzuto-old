@@ -1013,7 +1013,7 @@ div.wysiwyg ul li {
       width: 170px;
     }
     .secondary #secondary-nav li.current ul {
-      display: block;
+      display: none;
     }
     .secondary #secondary-nav li {
       width: 170px;
