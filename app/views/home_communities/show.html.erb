@@ -57,6 +57,7 @@
                 </td>
                 <td>
                   <%= bedrooms(home) %> / <%= bathrooms(home) %>
+                  <%= "/ #{home.square_feet} sq. ft." if home.square_feet %>
                 </td>
                 <td class="availability">
                   <%= link_to 'View Floor Plan', home_community_homes_path(@community, :anchor => dom_id(home)) %>
@@ -78,6 +79,7 @@
 
         <p>
           <%= bedrooms(home) %> | <%= bathrooms(home) %>
+          <%= "| #{home.square_feet} sq. ft." if home.square_feet %>
         </p>
 
         <% home.floor_plans.in_groups_of(3, false) do |plans| %>

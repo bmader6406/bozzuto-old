@@ -12,4 +12,8 @@ class Home < ActiveRecord::Base
   validates_inclusion_of :featured, :in => [true, false]
 
   validates_numericality_of :bedrooms, :bathrooms, :minimum => 0
+  validates_numericality_of :square_feet,
+    :minimum      => 0,
+    :only_integer => true,
+    :allow_nil    => true
 end

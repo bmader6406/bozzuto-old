@@ -4,6 +4,7 @@
       <span class="name"><%= home.name %></span>
       <span class="pricing">
         <%= bedrooms(home) %> | <%= bathrooms(home) %>
+        <%= "| #{home.square_feet} sq. ft." if home.square_feet %>
       </span>
     <% end %>
 

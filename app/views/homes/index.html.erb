@@ -14,6 +14,7 @@
 
     <p>
       <%= bedrooms(home) %> | <%= bathrooms(home) %>
+      <%= "| #{home.square_feet} sq. ft." if home.square_feet %>
     </p>
 
     <% home.floor_plans.in_groups_of(4, false) do |plans| %>

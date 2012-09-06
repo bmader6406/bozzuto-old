@@ -253,7 +253,7 @@ Home:
   fields:
     default: name, bedrooms, bathrooms, featured, position
     list: name, bedrooms, bathrooms, home_community, position
-    form: name, bedrooms, bathrooms, featured, home_community
+    form: name, bedrooms, bathrooms, square_feet, featured, home_community
     options:
       destroy_related: HomeFloorPlan
   order_by: position

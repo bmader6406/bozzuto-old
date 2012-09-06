@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120816182713) do
+ActiveRecord::Schema.define(:version => 2012081313174438) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -448,6 +448,7 @@ ActiveRecord::Schema.define(:version => 20120816182713) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "featured",                                        :default => false, :null => false
+    t.integer  "square_feet"
   end
 
   create_table "landing_page_popular_orderings", :force => true do |t|

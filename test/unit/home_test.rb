@@ -16,6 +16,7 @@ class HomeTest < ActiveSupport::TestCase
       :bathrooms
 
     should_validate_numericality_of :bedrooms,
-      :bathrooms
+      :bathrooms,
+      :square_feet
   end
 end
