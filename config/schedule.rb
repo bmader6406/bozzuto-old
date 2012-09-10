@@ -6,14 +6,18 @@ every 2.hours do
   rake 'bozzuto:sync_photo_sets'
 end
 
-every 1.day, :at => '8:30 am' do
-  rake 'bozzuto:load_vaultware_feed'
+every 1.day, :at => '6:00 am' do
+  rake 'bozzuto:send_recurring_emails'
 end
 
 every 1.day, :at => '7:00 am' do
   rake 'bozzuto:refresh_local_info_feeds'
 end
 
-every 1.day, :at => '6:00 am' do
-  rake 'bozzuto:send_recurring_emails'
+every 1.day, :at => '7:30 am' do
+  rake 'bozzuto:load_property_link_feed'
+end
+
+every 1.day, :at => '8:30 am' do
+  rake 'bozzuto:load_vaultware_feed'
 end
