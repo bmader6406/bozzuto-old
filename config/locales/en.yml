@@ -296,8 +296,9 @@ en:
         title: The post's title
         url: The post's URL
       careers_entry:
-        main_photo: Image dimensions should be 212x350.<br />Upload a color photo&mdash;the grayscale one will be generated automatically.
         headshot: Image dimensions should be 230x220.
+        main_photo: Image dimensions should be 212x350.<br />Upload a color photo&mdash;the grayscale one will be generated automatically.
+        youtube_url: You must use the &ldquo;embed&rdquo; URL e.g. http://www.youtube.com/embed/g8evyE9TuYk
       carousel_panel:
         caption: Required if Heading is set
         heading: Required if Caption is set
