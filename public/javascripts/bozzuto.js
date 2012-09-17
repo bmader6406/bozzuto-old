@@ -810,8 +810,8 @@ window.bozzuto = {};
           destroyOnClose: true,
           centered: true,
           overlayCSS: {
-            'background': '#fff',
-            'opacity': .01
+            'background': '#000',
+            'opacity': .6
           }
         });
       });
