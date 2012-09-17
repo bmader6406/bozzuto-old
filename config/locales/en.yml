@@ -297,6 +297,7 @@ en:
         url: The post's URL
       careers_entry:
         main_photo: Image dimensions should be 212x350.<br />Upload a color photo&mdash;the grayscale one will be generated automatically.
+        headshot: Image dimensions should be 230x220.
       carousel_panel:
         caption: Required if Heading is set
         heading: Required if Caption is set

@@ -7,7 +7,7 @@ class CareersEntry < ActiveRecord::Base
                         :job_description
 
   has_attached_file :main_photo,
-                    :url             => '/system/:class/:id/:basename_:style.:extension',
+                    :url             => '/system/:class/:attachment/:id/:basename_:style.:extension',
                     :convert_options => { :grayscale => '-colorspace Gray' },
                     :default_style   => :resized,
                     :styles          => {
@@ -16,7 +16,7 @@ class CareersEntry < ActiveRecord::Base
                     }
 
   has_attached_file :headshot,
-                    :url           => '/system/:class/:id/:basename_:style.:extension',
+                    :url           => '/system/:class/:attachment/:id/:basename_:style.:extension',
                     :styles        => { :resized => '230x220#' },
                     :default_style => :resized
 
