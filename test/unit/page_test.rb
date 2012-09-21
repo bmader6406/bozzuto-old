@@ -22,6 +22,21 @@ class PageTest < ActiveSupport::TestCase
       assert_equal ActiveRecord::Base, Page::Archive.superclass
     end
 
+    context ".for_sidebar_nav" do
+      setup do
+        @hidden_page  = Page.make :show_in_sidebar_nav => false
+        @visible_page = Page.make :show_in_sidebar_nav => true
+      end
+
+      should "return visible page" do
+        assert_contains Page.for_sidebar_nav, @visible_page
+      end
+
+      should "not return hidden page" do
+        assert_does_not_contain Page.for_sidebar_nav, @hidden_page
+      end
+    end
+
     context '#formatted_title' do
       setup do
         @section = Section.make

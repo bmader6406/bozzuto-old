@@ -23,6 +23,9 @@ class Page < ActiveRecord::Base
   has_one :body_slideshow
   has_one :carousel, :as => :content
 
+  named_scope :for_sidebar_nav,
+    :conditions => { :show_in_sidebar_nav => true }
+
   validates_presence_of :title
 
   attr_protected :path

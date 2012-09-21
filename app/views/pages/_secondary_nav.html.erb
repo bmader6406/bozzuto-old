@@ -1,6 +1,6 @@
 <% if @section.present? %>
   <ul id="secondary-nav">
-    <%= pages_tree(@section.pages.published) %>
+    <%= pages_tree(@section.pages.published.for_sidebar_nav) %>
 
     <%= news_and_press_secondary_nav(@section, @news_section) %>
 
