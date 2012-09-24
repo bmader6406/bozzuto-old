@@ -788,11 +788,8 @@ window.bozzuto = {};
   $.fn.leaderLightbox = function() {
     return this.each(function() {
       var $this = $(this),
-					bioId = $this[0].hash,
+					bioId = '#' + $this.attr('href').split('#')[1],
           $bio  = $(bioId).children();
-
-			console.log(bioId);
-			console.log($bio);
 
       if (!$bio.data('closeAdded')) {
         $('<a href="#" class="partner-close">Close</a>').appendTo($bio.children());
