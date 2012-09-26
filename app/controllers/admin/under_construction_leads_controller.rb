@@ -50,24 +50,11 @@ class Admin::UnderConstructionLeadsController < Admin::MasterController
                           'Address2'    => :address_2,
                           'Datelog'     => :created_at }
 
-    require 'csv'
-    if CSV.const_defined?(:Reader)
-      # Old CSV version so we enable faster CSV.
-      begin
-        require 'fastercsv'
-      rescue Exception => error
-        raise error.message
-      end
-      csv = FasterCSV
-    else
-      csv = CSV
-    end
-
     filename = "#{Rails.root}/tmp/export-#{@resource[:self]}-#{Time.now.utc.to_s(:number)}.csv"
 
     options = { :conditions => @conditions, :batch_size => 1000 }
 
-    csv.open(filename, 'w', :col_sep => ',') do |csv|
+    FasterCSV.open(filename, 'w', :col_sep => ',') do |csv|
       csv << fields
       @resource[:class].find_in_batches(options) do |records|
         records.each do |record|
