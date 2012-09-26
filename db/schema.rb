@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120921144045) do
+ActiveRecord::Schema.define(:version => 20120926185041) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -189,6 +189,7 @@ ActiveRecord::Schema.define(:version => 20120921144045) do
     t.boolean  "featured_mobile",              :default => false
     t.boolean  "under_construction",           :default => false
     t.string   "external_cms_type"
+    t.string   "schedule_tour_url"
   end
 
   add_index "archived_properties", ["id"], :name => "index_archived_properties_on_id"
@@ -837,6 +838,7 @@ ActiveRecord::Schema.define(:version => 20120921144045) do
     t.boolean  "featured_mobile",              :default => false
     t.boolean  "under_construction",           :default => false
     t.string   "external_cms_type"
+    t.string   "schedule_tour_url"
   end
 
   add_index "properties", ["external_cms_id", "external_cms_type"], :name => "index_properties_on_external_cms_id_and_external_cms_type"

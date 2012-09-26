@@ -104,7 +104,9 @@ module OverriddenPathsHelper
 
   %w(url path).each do |type|
     define_method "contact_community_#{type}" do |property|
-      if property.is_a?(ApartmentCommunity)
+      if property.schedule_tour_url?
+        property.schedule_tour_url
+      elsif property.is_a?(ApartmentCommunity)
         send("apartment_community_contact_#{type}", property)
       else
         send("home_community_contact_#{type}", property)
