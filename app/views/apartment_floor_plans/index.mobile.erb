@@ -17,8 +17,8 @@
             <% link_to apartment_community_floor_plan_group_layout_path(@community, @group, plan), :class => 'info' do %>
               <span class="name"><%= plan.name %></span>
               <span class="pricing">
-                Starting from <%= square_feet_of_largest_floor_plan(@plans) %>
-                <span class="price"><%= price_of_cheapest_floor_plan(@plans) %></span>
+                <%= square_feet(plan) %>
+                <span class="price"><%= floor_plan_price(plan.min_rent) %></span>
               </span>
             <% end %>
           </div>
