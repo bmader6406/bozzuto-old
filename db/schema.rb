@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120926185041) do
+ActiveRecord::Schema.define(:version => 20121005135611) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -912,6 +912,7 @@ ActiveRecord::Schema.define(:version => 20120926185041) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "video_url"
+    t.string   "link_url"
   end
 
   add_index "property_slides", ["property_slideshow_id"], :name => "index_property_slides_on_property_slideshow_id"

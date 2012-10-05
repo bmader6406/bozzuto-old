@@ -30,7 +30,9 @@
             <% end %>
           </div>
 
-          <span class="overlay"></span>
+          <%= link_to_if slide.link_url?,
+                         content_tag(:span, '', :class => 'overlay'),
+                         slide.link_url %>
         </li> 
       <% end %>
     </ul>
