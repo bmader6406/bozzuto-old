@@ -11,5 +11,11 @@
   <div class="content">
     <h3><%= @promo.title %></h3>
     <p><%= @promo.subtitle %></p>
+
+    <% if @promo.link_url.present? %>
+      <p class="promo-link">
+        <%= link_to 'Learn More', @promo.link_url %>
+      </p>
+    <% end %>
   </div>
 </div>
