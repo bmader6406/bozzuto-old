@@ -3,8 +3,8 @@ class UnderConstructionLead < ActiveRecord::Base
 
   belongs_to :apartment_community
 
-  # Used by the CSV exporter
-  def apartment_community_title
-    apartment_community.try(:title)
-  end
+  delegate :title,
+    :to        => :apartment_community,
+    :prefix    => true,
+    :allow_nil => true
 end

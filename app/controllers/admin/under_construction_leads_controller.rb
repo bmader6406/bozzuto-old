@@ -4,7 +4,8 @@ class Admin::UnderConstructionLeadsController < Admin::MasterController
 
   # Original code found in vendor/plugins/typus/lib/typus/format.rb
   def generate_csv
-    fields = %w(TheID
+    fields = %w(PropertyName
+                TheID
                 PropertyId
                 Address
                 City
@@ -38,17 +39,18 @@ class Admin::UnderConstructionLeadsController < Admin::MasterController
                 LeadSourceConduit
                 Datelog)
 
-    field_to_resource = { 'Address'     => :address,
-                          'City'        => :city,
-                          'State'       => :state,
-                          'Zip'         => :zip_code,
-                          'HomePhone'   => :phone_number,
-                          'Email'       => :email,
-                          'Description' => :comments,
-                          'FirstName'   => :first_name,
-                          'LastName'    => :last_name,
-                          'Address2'    => :address_2,
-                          'Datelog'     => :created_at }
+    field_to_resource = { 'PropertyName' => :apartment_community_title,
+                          'Address'      => :address,
+                          'City'         => :city,
+                          'State'        => :state,
+                          'Zip'          => :zip_code,
+                          'HomePhone'    => :phone_number,
+                          'Email'        => :email,
+                          'Description'  => :comments,
+                          'FirstName'    => :first_name,
+                          'LastName'     => :last_name,
+                          'Address2'     => :address_2,
+                          'Datelog'      => :created_at }
 
     filename = "#{Rails.root}/tmp/export-#{@resource[:self]}-#{Time.now.utc.to_s(:number)}.csv"
 
