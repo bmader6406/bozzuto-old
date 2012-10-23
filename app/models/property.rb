@@ -130,6 +130,9 @@ class Property < ActiveRecord::Base
     short_title.presence || title
   end
 
+  def seo_link?
+    seo_link_text.present? && seo_link_url.present?
+  end
 
   private
 

@@ -50,6 +50,8 @@ en:
         floor_plans_meta_title: Floor Plans SEO Title
         resident_link_text: Resident Link Text
         resident_link_url: Resident Link URL
+        seo_link_text: SEO Link Text
+        seo_link_url: SEO Link URL
         under_construction: Under Construction
       apartment_contact_configuration:
         upcoming_intro_text: 'Under Construction Form Intro Text'

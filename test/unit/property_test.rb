@@ -218,6 +218,37 @@ class PropertyTest < ActiveSupport::TestCase
         end
       end
     end
+
+    context "#seo_link?" do
+      setup do
+        @property = ApartmentCommunity.make
+      end
+
+      context "when seo_link_text is blank" do
+        should "return false" do
+          @property.seo_link_text = ''
+
+          assert !@property.seo_link?
+        end
+      end
+
+      context "when seo_link_url is blank" do
+        should "return false" do
+          @property.seo_link_url = ''
+
+          assert !@property.seo_link?
+        end
+      end
+
+      context "when seo_link_text and seo_link_url are present" do
+        should "return true" do
+          @property.seo_link_text = 'click me'
+          @property.seo_link_url = 'http://bukk.it'
+
+          assert @property.seo_link?
+        end
+      end
+    end
   end
 
   context 'The Property class' do
