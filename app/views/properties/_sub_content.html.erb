@@ -17,7 +17,11 @@
 
   <%- if property.seo_link? -%>
     <div id="sub-listing">
-      <%= link_to property.seo_link_text, property.seo_link_url %>
+      <ul class="row">
+        <li>
+          <%= link_to property.seo_link_text, property.seo_link_url %>
+        </li>
+      </ul>
     </div>
   <%- end -%>
 </div>
