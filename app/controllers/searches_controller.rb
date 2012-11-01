@@ -5,7 +5,7 @@ class SearchesController < ApplicationController
     @query = params[:q]
 
     if @query.present?
-      @search  = BOSSMan::Search.web(@query, search_params)
+      @search  = BOSSMan::Search.web(CGI.escape(@query), search_params)
       @results = @search.results || []
     else
       redirect_to '/'
