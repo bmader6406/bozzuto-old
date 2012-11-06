@@ -26,6 +26,7 @@ after 'multistage:ensure', 'config:defaults'
 after 'deploy:update_code', 'app:package_assets'
 after 'deploy:update_code', 'app:clear_asset_caches'
 after 'deploy:update_code', 'app:update_crontab'
+after "deploy", "refresh_sitemaps"
 
 namespace :deploy do
   task :start do
@@ -121,6 +122,11 @@ end
 desc 'watch logs'
 task :logs, :roles => :app do
   stream "tail -n 0 -f #{shared_path}/log/*.log"
+end
+
+desc "Refresh Sitemaps"
+task :refresh_sitemaps do
+  run "cd #{latest_release} && RAILS_ENV=#{rails_env} rake sitemap:refresh"
 end
 
 Dir[File.join(File.dirname(__FILE__), '..', 'vendor', 'gems', 'hoptoad_notifier-*')].each do |vendored_notifier|
