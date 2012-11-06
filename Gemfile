@@ -26,6 +26,7 @@ gem 'twitter', '1.1.2'
 gem 'twitter-text', '1.3.1'
 gem 'fastercsv', '1.5.4'
 gem 'uuidtools'
+gem 'sitemap_generator', '~> 3.4'
 
 group :test do
   gem 'shoulda', '2.10.3'
