@@ -72,5 +72,25 @@ class HomeCommunityTest < ActiveSupport::TestCase
         end
       end
     end
+
+    context "#apartment_community?" do
+      setup do
+        @community = HomeCommunity.new
+      end
+
+      should "return false" do
+        assert !@community.apartment_community?
+      end
+    end
+
+    context "#home_community?" do
+      setup do
+        @community = HomeCommunity.new
+      end
+
+      should "return true" do
+        assert @community.home_community?
+      end
+    end
   end
 end

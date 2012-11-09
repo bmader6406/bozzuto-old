@@ -25,4 +25,8 @@ class HomeCommunity < Community
   def show_lasso_form?
     lasso_account.present?
   end
+
+  def home_community?
+    true
+  end
 end

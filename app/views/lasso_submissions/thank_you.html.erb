@@ -1,6 +1,6 @@
 <% content_for :body_class do %>community property features<% end %>
 <% render_meta(@page) if @page %>
-
+<%- render_mediaplex_code community_contact_thank_you_mediaplex_code(@community, @email) -%>
 
 <% if @community.contact_mediamind_id.present? %>
   <% content_for :end_of_body do %>

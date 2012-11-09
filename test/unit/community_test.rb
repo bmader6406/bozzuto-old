@@ -242,6 +242,26 @@ class CommunityTest < ActiveSupport::TestCase
       end
     end
 
+    context "#apartment_community?" do
+      setup do
+        @community = Community.new
+      end
+
+      should "return false" do
+        assert !@community.apartment_community?
+      end
+    end
+
+    context "#home_community?" do
+      setup do
+        @community = Community.new
+      end
+
+      should "return false" do
+        assert !@community.home_community?
+      end
+    end
+
     context '#has_active_promo?' do
       setup do
         @active_promo  = Promo.make :active

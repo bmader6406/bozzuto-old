@@ -109,6 +109,9 @@ class ApartmentCommunity < Community
     under_construction? ? 'UpcomingApartment' : super
   end
 
+  def apartment_community?
+    true
+  end
 
   private
 

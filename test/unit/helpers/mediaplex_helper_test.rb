@@ -235,4 +235,95 @@ class MediaplexHelperTest < ActionView::TestCase
       end
     end
   end
+
+  context '#render_mediaplex_code' do
+    setup do
+      @code = '<iframe src="http://lol.wut"></iframe>'
+      expects(:content_for).with(:mediaplex_code, @code)
+    end
+
+    should 'send the data to content_for' do
+      render_mediaplex_code(@code)
+    end
+  end
+
+  context "with uptown home community" do
+    setup do
+      @community = HomeCommunity.make(:id => 273)
+      @time      = 1.hour.ago
+      @mpuid     = "#{@time.to_i};273"
+
+      Time.stubs(:new).returns(@time)
+    end
+
+    context "#community_homepage_mediaplex_code" do
+      should 'return the correct iframe' do
+        code = community_homepage_mediaplex_code(@community)
+
+        assert_match /UptownHomepage/, code
+        assert_match /#{@mpuid}/, code
+      end
+    end
+
+    context "#community_features_mediaplex_code" do
+      should 'return the correct iframe' do
+        code = community_features_mediaplex_code(@community)
+
+        assert_match /UptownFeatures/, code
+        assert_match /#{@mpuid}/, code
+      end
+    end
+
+    context "#community_media_mediaplex_code" do
+      should 'return the correct iframe' do
+        code = community_media_mediaplex_code(@community)
+
+        assert_match /UptownPhotos/, code
+        assert_match /#{@mpuid}/, code
+      end
+    end
+
+    context "#community_homes_mediaplex_code" do
+      should "return the correct iframe" do
+        code = community_homes_mediaplex_code(@community)
+
+        assert_match /UptownHomes/, code
+        assert_match /#{@mpuid}/, code
+      end
+    end
+
+    context "#community_neighborhood_mediaplex_code" do
+      should "return the correct iframe" do
+        code = community_neighborhood_mediaplex_code(@community)
+
+        assert_match /UptownNeighborhood/, code
+        assert_match /#{@mpuid}/, code
+      end
+    end
+
+    context "#community_contact_mediaplex_code" do
+      should "return the correct iframe" do
+        code = community_contact_mediaplex_code(@community)
+
+        assert_match /UptownContact/, code
+        assert_match /#{@mpuid}/, code
+      end
+    end
+
+    context "#community_contact_thank_you_mediaplex_code" do
+      should "return the correct iframe" do
+        code = community_contact_thank_you_mediaplex_code(@community, 'dolan@pls.com')
+        mpuid = "#{@time.to_i};dolan@pls.com;273"
+
+        assert_match /UptownThankYou/, code
+        assert_match /#{mpuid}/, code
+      end
+
+      should "return nil if no email" do
+        code = community_contact_thank_you_mediaplex_code(@community, '')
+
+        assert_nil code
+      end
+    end
+  end
 end

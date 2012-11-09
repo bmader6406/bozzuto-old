@@ -104,6 +104,14 @@ class Community < Property
     photo_set.present? || videos.present?
   end
 
+  def apartment_community?
+    false
+  end
+
+  def home_community?
+    false
+  end
+
   # used by sms
   def phone_message
     "#{title} #{street_address}, #{city.name}, #{city.state.name} #{phone_number} Call for specials! #{website_url}"

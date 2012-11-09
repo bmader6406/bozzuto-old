@@ -249,6 +249,26 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
         end
       end
     end
+
+    context "#apartment_community?" do
+      setup do
+        @community = ApartmentCommunity.new
+      end
+
+      should "return true" do
+        assert @community.apartment_community?
+      end
+    end
+
+    context "#home_community?" do
+      setup do
+        @community = ApartmentCommunity.new
+      end
+
+      should "return false" do
+        assert !@community.home_community?
+      end
+    end
   end
 
   context 'The ApartmentCommunity class' do
