@@ -52,6 +52,7 @@ en:
         resident_link_url: Resident Link URL
         seo_link_text: SEO Link Text
         seo_link_url: SEO Link URL
+        show_rtrk_code: Show RTRK Tracking Code
         under_construction: Under Construction
       apartment_contact_configuration:
         upcoming_intro_text: 'Under Construction Form Intro Text'
@@ -128,6 +129,7 @@ en:
         contact_mediamind_id: MediaMind Activity ID for &ldquo;Contact&rdquo; Page
         send_to_friend_mediamind_id: MediaMind Activity ID for &ldquo;Send to Friend&rdquo; Thank You Page
         send_to_phone_mediamind_id: MediaMind Activity ID for &ldquo;Send to Phone&rdquo; Thank You Page
+        show_rtrk_code: Show RTRK Tracking Code
       home_page:
         featured_property: Featured Property
         meta_description: SEO Description

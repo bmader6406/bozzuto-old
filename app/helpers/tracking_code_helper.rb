@@ -7,6 +7,24 @@ module TrackingCodeHelper
     END
   end
 
+  def rtrk_code(community)
+    if community.show_rtrk_code?
+      <<-END.html_safe
+        <script type="text/javascript" >
+          var reachlocalTRKDOM="rtsys.rtrk.com<http://rtsys.rtrk.com><http://rtsys.rtrk.com/>";
+          (function() {
+          var rlocal_load = document.createElement("script");
+          rlocal_load.type = "text/javascript";
+          rlocal_load.src = document.location.protocol+"//"+reachlocalTRKDOM+"/rct_lct/js/rltrk1.js";
+          rlocal_load.setAttribute('async', 'true');
+          (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild
+          (rlocal_load);
+          })();
+        </script>
+      END
+    end
+  end
+
   private
 
   def random_number_string(length)
