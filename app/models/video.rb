@@ -10,7 +10,8 @@ class Video < ActiveRecord::Base
   validates_presence_of :url
 
   has_attached_file :image,
-    :url => '/system/:class/:id/video_:id_:style.:extension',
-    :styles => { :thumb => '55x55#' },
-    :default_style => :thumb
+    :url             => '/system/:class/:id/video_:id_:style.:extension',
+    :styles          => { :thumb => '55x55#' },
+    :default_style   => :thumb,
+    :convert_options => { :all => '-quality 80 -strip' }
 end

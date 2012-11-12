@@ -13,8 +13,8 @@ class BozzutoBlogPost < ActiveRecord::Base
   has_attached_file :image,
     :url => '/system/:class/bozzuto_blog_post_thumbnail_:id_:style.:extension',
     :styles => { :normal => '380x150#' },
-    :default_style => :normal
-
+    :default_style => :normal,
+    :convert_options => { :all => '-quality 80 -strip' }
 
   default_scope :order => 'published_at DESC'
 

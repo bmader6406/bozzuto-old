@@ -37,7 +37,8 @@ class ApartmentFloorPlan < ActiveRecord::Base
 
   has_attached_file :image,
     :url => '/system/:class/:id/:style.:extension',
-    :styles => { :thumb => '160' }
+    :styles => { :thumb => '160' },
+    :convert_options => { :all => '-quality 80 -strip' }
 
   named_scope :in_group, lambda { |group|
     { :conditions => { :floor_plan_group_id => group.id } }

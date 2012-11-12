@@ -10,9 +10,10 @@ class PropertyFeature < ActiveRecord::Base
     :association_foreign_key => :property_id
 
   has_attached_file :icon,
-    :url => '/system/:class/:id/icon_:style.:extension',
-    :styles => { :resized => '44x44#' },
-    :default_style => :resized
+    :url             => '/system/:class/:id/icon_:style.:extension',
+    :styles          => { :resized => '44x44#' },
+    :default_style   => :resized,
+    :convert_options => { :all => '-quality 80 -strip' }
 
   validates_uniqueness_of :name
 end

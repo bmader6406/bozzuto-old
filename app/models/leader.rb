@@ -8,7 +8,8 @@ class Leader < ActiveRecord::Base
   has_friendly_id :name, :use_slug => true  
 
   has_attached_file :image,
-                    :url           => '/system/:class/:id/:style.:extension',
-                    :styles        => {:rect => '230x220#'},
-                    :default_style => :rect
+                    :url             => '/system/:class/:id/:style.:extension',
+                    :styles          => {:rect => '230x220#'},
+                    :default_style   => :rect,
+                    :convert_options => { :all => '-quality 80 -strip' }
 end

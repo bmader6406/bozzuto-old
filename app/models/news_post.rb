@@ -12,15 +12,17 @@ class NewsPost < ActiveRecord::Base
   validates_presence_of :title, :body
 
   has_attached_file :image,
-    :url => '/system/:class/:id/:id_:style.:extension',
-    :styles => { :thumb => '150x150#' },
-    :default_style => :thumb
+    :url             => '/system/:class/:id/:id_:style.:extension',
+    :styles          => { :thumb => '150x150#' },
+    :default_style   => :thumb,
+    :convert_options => { :all => '-quality 80 -strip' }
 
   has_attached_file :home_page_image,
-    :url           => '/system/:class/:id/home_page_image_:style_:id.:extension',
-    :styles        => { :normal => '380x150#' },
-    :default_style => :normal,
-    :default_url   => '/images/home-latest-news-placeholder.jpg'
+    :url             => '/system/:class/:id/home_page_image_:style_:id.:extension',
+    :styles          => { :normal => '380x150#' },
+    :default_style   => :normal,
+    :default_url     => '/images/home-latest-news-placeholder.jpg',
+    :convert_options => { :all => '-quality 80 -strip' }
 
   def typus_name
     title

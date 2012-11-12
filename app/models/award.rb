@@ -14,7 +14,8 @@ class Award < ActiveRecord::Base
   has_attached_file :image,
     :url => '/system/:class/:id/:class_:id_:style.:extension',
     :styles => { :thumb => '55x55#', :resized => '150x150#' },
-    :default_style => :resized
+    :default_style => :resized,
+    :convert_options => { :all => '-quality 80 -strip' }
 
   def typus_name
     title

@@ -6,9 +6,10 @@ class HomePageSlide < ActiveRecord::Base
   belongs_to :home_page
 
   has_attached_file :image,
-    :url => '/system/:class/slide_:id_:style.:extension',
-    :styles => { :resized => '1100x380#' },
-    :default_style => :resized
+    :url             => '/system/:class/slide_:id_:style.:extension',
+    :styles          => { :resized => '1100x380#' },
+    :default_style   => :resized,
+    :convert_options => { :all => '-quality 80 -strip' }
 
   validates_attachment_presence :image
 end

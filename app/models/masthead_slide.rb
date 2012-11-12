@@ -21,9 +21,10 @@ class MastheadSlide < ActiveRecord::Base
     :in => [USE_IMAGE, USE_TEXT, USE_MINI_SLIDESHOW, USE_QUOTE]
 
   has_attached_file :image,
-    :url => '/system/:class/:id/slide_:id_:style.:extension',
-    :styles => { :resized => '230x223#' },
-    :default_style => :resized
+    :url             => '/system/:class/:id/slide_:id_:style.:extension',
+    :styles          => { :resized => '230x223#' },
+    :default_style   => :resized,
+    :convert_options => { :all => '-quality 80 -strip' }
 
   def uses_image?
     slide_type == USE_IMAGE

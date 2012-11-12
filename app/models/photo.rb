@@ -16,7 +16,8 @@ class Photo < ActiveRecord::Base
     :conditions => 'photo_groups.flickr_raw_title = "mobile"' }
 
   has_attached_file :image,
-    :url => '/system/:class/:id/photo_:id_:style.:extension',
-    :styles => { :resized => '870x375#', :thumb => '55x55#', :mobile => '300>' },
-    :default_style => :resized
+    :url             => '/system/:class/:id/photo_:id_:style.:extension',
+    :styles          => { :resized => '870x375#', :thumb => '55x55#', :mobile => '300>' },
+    :default_style   => :resized,
+    :convert_options => { :all => '-quality 80 -strip' }
 end

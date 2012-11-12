@@ -17,7 +17,8 @@ class Picture < Asset
 
   has_attached_file :data,
                     :url => '/system/assets/:class/:id/:style.:extension',
-                    :styles => {:content => '575>', :thumb => '100x100'}
+                    :styles => {:content => '575>', :thumb => '100x100'},
+                    :convert_options => { :all => '-quality 80 -strip' }
 
   validates_attachment_size :data, :less_than=>2.megabytes
 

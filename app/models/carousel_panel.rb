@@ -4,9 +4,10 @@ class CarouselPanel < ActiveRecord::Base
   belongs_to :carousel
 
   has_attached_file :image,
-    :url => '/system/:class/:id/slide_:id_:style.:extension',
-    :styles => { :resized => '245x210#' },
-    :default_style => :resized
+    :url             => '/system/:class/:id/slide_:id_:style.:extension',
+    :styles          => { :resized => '245x210#' },
+    :default_style   => :resized,
+    :convert_options => { :all => '-quality 80 -strip' }
 
   validates_attachment_presence :image
 

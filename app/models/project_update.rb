@@ -11,7 +11,8 @@ class ProjectUpdate < ActiveRecord::Base
   validates_presence_of :body, :project
 
   has_attached_file :image,
-    :url => '/system/:class/:id/:class_:id_:style.:extension',
-    :styles => { :resized => '484x214#' },
-    :default_style => :resized
+    :url             => '/system/:class/:id/:class_:id_:style.:extension',
+    :styles          => { :resized => '484x214#' },
+    :default_style   => :resized,
+    :convert_options => { :all => '-quality 80 -strip' }
 end

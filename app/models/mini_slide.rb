@@ -6,9 +6,10 @@ class MiniSlide < ActiveRecord::Base
   default_scope :order => 'position ASC'
 
   has_attached_file :image,
-    :url => '/system/property_mini_slides/:id/:style.:extension',
-    :styles => { :slide => '230x145#' },
-    :default_style => :slide
+    :url             => '/system/property_mini_slides/:id/:style.:extension',
+    :styles          => { :slide => '230x145#' },
+    :default_style   => :slide,
+    :convert_options => { :all => '-quality 80 -strip' }
 
   validates_attachment_presence :image
 end

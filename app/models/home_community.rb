@@ -11,9 +11,10 @@ class HomeCommunity < Community
   has_one :lasso_account, :foreign_key => :property_id
 
   has_attached_file :listing_promo,
-    :url => '/system/:class/:id/:class_:id_:style.:extension',
-    :styles => { :display => '151x54#' },
-    :default_style => :display
+    :url             => '/system/:class/:id/:class_:id_:style.:extension',
+    :styles          => { :display => '151x54#' },
+    :default_style   => :display,
+    :convert_options => { :all => '-quality 80 -strip' }
 
   named_scope :ordered_by_title, :order => 'title ASC'
   default_scope :order => 'title ASC'

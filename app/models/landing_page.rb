@@ -38,10 +38,10 @@ class LandingPage < ActiveRecord::Base
   has_friendly_id :title, :use_slug => true
 
   has_attached_file :masthead_image,
-    :url => '/system/:class/:id/masthead_:style.:extension',
-    :styles => { :resized => '230x223#' },
-    :default_style => :resized
-
+    :url             => '/system/:class/:id/masthead_:style.:extension',
+    :styles          => { :resized => '230x223#' },
+    :default_style   => :resized,
+    :convert_options => { :all => '-quality 80 -strip' }
 
   protected
 

@@ -39,9 +39,10 @@ class Property < ActiveRecord::Base
                    :lng_column_name => :longitude
 
   has_attached_file :listing_image,
-    :url           => '/system/:class/:id/:style.:extension',
-    :styles        => { :square => '150x150#', :rect => '230x145#' },
-    :default_style => :square
+    :url             => '/system/:class/:id/:style.:extension',
+    :styles          => { :square => '150x150#', :rect => '230x145#' },
+    :default_style   => :square,
+    :convert_options => { :all => '-quality 80 -strip' }
 
   has_attached_file :brochure,
     :url => '/system/:class/:id/brochure.:extension'
