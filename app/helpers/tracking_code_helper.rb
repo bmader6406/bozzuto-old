@@ -11,7 +11,7 @@ module TrackingCodeHelper
     if community.show_rtrk_code?
       <<-END.html_safe
         <script type="text/javascript" >
-          var reachlocalTRKDOM="rtsys.rtrk.com<http://rtsys.rtrk.com><http://rtsys.rtrk.com/>";
+          var reachlocalTRKDOM="rtsys.rtrk.com";
           (function() {
           var rlocal_load = document.createElement("script");
           rlocal_load.type = "text/javascript";
