@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 2012081313174438) do
+ActiveRecord::Schema.define(:version => 20121111173026) do
 
   create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
@@ -60,32 +60,11 @@ ActiveRecord::Schema.define(:version => 2012081313174438) do
     t.boolean  "featured",                                             :default => false, :null => false
     t.boolean  "rolled_up",                                            :default => false, :null => false
     t.string   "external_cms_type"
-    t.integer  "available_units",                                      :default => 0
   end
 
   add_index "apartment_floor_plans", ["apartment_community_id"], :name => "index_apartment_floor_plans_on_apartment_community_id"
   add_index "apartment_floor_plans", ["external_cms_id"], :name => "index_apartment_floor_plans_on_external_cms_id"
   add_index "apartment_floor_plans", ["floor_plan_group_id"], :name => "index_apartment_floor_plans_on_floor_plan_group_id"
-
-  create_table "apartment_units", :force => true do |t|
-    t.string   "external_cms_type",                                :null => false
-    t.integer  "external_cms_id",                                  :null => false
-    t.integer  "floor_plan_id",                                    :null => false
-    t.string   "availability_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "title"
-    t.integer  "min_square_feet"
-    t.integer  "max_square_feet"
-    t.decimal  "avg_effective_rent", :precision => 6, :scale => 2
-    t.decimal  "min_effective_rent", :precision => 6, :scale => 2
-    t.decimal  "max_effective_rent", :precision => 6, :scale => 2
-    t.date     "vacate_date"
-    t.string   "vacancy_class"
-  end
-
-  add_index "apartment_units", ["external_cms_type", "external_cms_id"], :name => "index_apartment_units_on_external_cms_type_and_external_cms_id"
-  add_index "apartment_units", ["floor_plan_id"], :name => "index_apartment_units_on_floor_plan_id"
 
   create_table "archived_pages", :id => false, :force => true do |t|
     t.integer  "id",                             :default => 0,     :null => false
@@ -211,8 +190,6 @@ ActiveRecord::Schema.define(:version => 2012081313174438) do
     t.boolean  "under_construction",           :default => false
     t.string   "external_cms_type"
     t.string   "schedule_tour_url"
-    t.text     "office_hours"
-    t.string   "pinterest_url"
     t.string   "seo_link_text"
     t.string   "seo_link_url"
     t.boolean  "show_rtrk_code",               :default => false, :null => false
@@ -865,8 +842,6 @@ ActiveRecord::Schema.define(:version => 2012081313174438) do
     t.boolean  "under_construction",           :default => false
     t.string   "external_cms_type"
     t.string   "schedule_tour_url"
-    t.text     "office_hours"
-    t.string   "pinterest_url"
     t.string   "seo_link_text"
     t.string   "seo_link_url"
     t.boolean  "show_rtrk_code",               :default => false, :null => false
