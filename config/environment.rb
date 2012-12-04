@@ -42,6 +42,12 @@ Rails::Initializer.run do |config|
     r301 %r{^/property/?},                               '/apartments'
     r301 %r{^/smartrent/?},                              '/apartments/smartrent'
     r301 %r{^/about-us/careers(.*)},                     '/careers$1'
+    r301 %r{^/regions/arlington-va-washington-dc/?},     '/regions/arlington-apartments'
+    r301 %r{^/regions/bethesda-rockville-apartments/?},  '/regions/bethesda-apartments'
+    r301 %r{^/regions/new-york-apartments/?},            '/regions/new-york-city-apartments'
+    r301 %r{^/regions/dc-metro-apartments/?},            '/regions/washington-dc-apartments'
+    r301 %r{^/regions/dc-nw-apartments/?},               '/regions/washington-dc-apartments'
+    r301 %r{^/regions/washington-dc-ne-se-apartments/?}, '/regions/washington-dc-apartments'
   end
 
   if Rails.env.production? || Rails.env.test?
