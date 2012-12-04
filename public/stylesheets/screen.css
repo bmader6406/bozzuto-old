@@ -2034,6 +2034,13 @@ div.wysiwyg ul li {
       width: 100%;
       z-index: 10;
     }
+    .property #slideshow p.caption a {
+      color: #fff;
+      display: block;
+    }
+    .property #slideshow p.caption a:hover {
+      text-decoration: none;
+    }
     .property #slideshow p.watch-video {
       background: transparent url(../images/structure/bg-divider-white.gif) no-repeat 0 0;
       padding-top: 15px;

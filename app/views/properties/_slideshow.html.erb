@@ -20,7 +20,7 @@
 
           <div class="section">
             <% if slide.caption.present? %>
-              <p><%= slide.caption %></p>
+              <p class="caption"><%= link_to_if slide.link_url?, slide.caption, slide.link_url %></p>
             <% end %>
 
             <% if slide.video_url.present? %>
