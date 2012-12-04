@@ -11,14 +11,12 @@ module TrackingCodeHelper
     if community.show_rtrk_code?
       <<-END.html_safe
         <script type="text/javascript" >
-          var reachlocalTRKDOM="rtsys.rtrk.com";
+          var reachlocalTRKDOM="rtsys.rtrk.com ";
           (function() {
           var rlocal_load = document.createElement("script");
           rlocal_load.type = "text/javascript";
-          rlocal_load.src = document.location.protocol+"//"+reachlocalTRKDOM+"/rct_lct/js/rltrk1.js";
-          rlocal_load.setAttribute('async', 'true');
-          (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild
-          (rlocal_load);
+          rlocal_load.src = document.location.protocol+"//rtsys.rtrk.com/campaign_images/d1035/1035708/rltrk1.js ";
+          (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild (rlocal_load);
           })();
         </script>
       END
