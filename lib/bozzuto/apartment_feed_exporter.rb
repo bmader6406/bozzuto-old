@@ -54,7 +54,8 @@ module Bozzuto
           :directions_url      => directions_url(community.address),
           :local_info_feed     => community.local_info_feed.try(:url),
           :nearby_communities  => nearby_communities(community),
-          :bozzuto_url         => apartment_community_url(community)
+          :bozzuto_url         => apartment_community_url(community),
+          :listing_image       => url_for_image(community.listing_image.url)
         }
       end
     end
@@ -94,6 +95,7 @@ module Bozzuto
           :name               => floor_plan.name,
           :availability_url   => floor_plan.availability_url,
           :available_units    => floor_plan.available_units,
+          :image_url          => (url_for_image(floor_plan.image.url) if floor_plan.image?),
           :min_square_feet    => floor_plan.min_square_feet,
           :max_square_feet    => floor_plan.max_square_feet,
           :min_market_rent    => floor_plan.min_market_rent,
@@ -209,6 +211,7 @@ module Bozzuto
         node.tag! 'NeighborhoodText', property[:neighborhood_text]
         node.tag! 'DirectionsURL', property[:directions_url]
         node.tag! 'LocalInfoRSSURL', property[:local_info_feed]
+        node.tag! 'ListingImageURL', property[:listing_image]
         node.tag! 'VideoURL', property[:video_url]
         node.tag! 'FacebookURL', property[:facebook_url]
         node.tag! 'TwitterHandle', property[:twitter_handle]
@@ -255,6 +258,7 @@ module Bozzuto
         node.tag! 'Name', floorplan[:name]
         node.tag! 'FloorplanAvailabilityURL', floorplan[:availability_url]
         node.tag! 'DisplayedUnitsAvailable', floorplan[:available_units]
+        node.tag! 'ImageURL', floorplan[:image_url] if floorplan[:image_url]
         node.tag! 'SquareFeet',
           'Min' => floorplan[:min_square_feet],
           'Max' => floorplan[:max_square_feet]
@@ -284,6 +288,18 @@ module Bozzuto
         '%g' % value.to_f
       else
         ''
+      end
+    end
+
+    def url_for_image(path, options={})
+      options = default_url_options.merge(options)
+
+      ''.tap do |url|
+        url << (options.delete(:protocol) || 'http')
+        url << '://' unless url.match("://")
+        url << options.delete(:host)
+        url << ":#{options.delete(:port)}" if options.key?(:port)
+        url << path
       end
     end
   end

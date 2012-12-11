@@ -71,7 +71,8 @@ module Bozzuto
           :latitude           => 9001,
           :longitude          => 1337,
           :local_info_feed    => local_info_feed,
-          :promo_id           => promo.id
+          :promo_id           => promo.id,
+          :listing_image      => StringIO.new('.')
         })
 
         ApartmentCommunity.make(
@@ -242,6 +243,11 @@ module Bozzuto
         end
       end
 
+      should "contain listing image" do
+        assert_match %r{http://bozzuto\.com/system/apartment_communities/\d+/square\.txt},
+          @property_export[:listing_image]
+      end
+
       should "contain Video Link" do
         assert_equal 'http://www.videoapt.com/208/LibertyTowers/Default.aspx',
           @property_export[:video_url]
@@ -275,6 +281,7 @@ module Bozzuto
             :name                => 'The Roxy',
             :availability_url    => 'http://lol.wut',
             :available_units     => 3,
+            :image               => StringIO.new('.'),
             :min_square_feet     => 1400,
             :max_square_feet     => 1400,
             :min_market_rent     => 2260,
@@ -301,6 +308,11 @@ module Bozzuto
 
         should "contain #available_units" do
           assert_equal 3, @floor_plan_data[:available_units]
+        end
+
+        should "contain #image url" do
+          assert_match %r{http://bozzuto\.com/system/apartment_floor_plans/\d+/original\.txt},
+            @floor_plan_data[:image_url]
         end
 
         should "contain #min_square_feet" do
@@ -477,6 +489,7 @@ module Bozzuto
             :name                => 'The Roxy',
             :availability_url    => 'http://lol.wut',
             :available_units     => 3,
+            :image               => StringIO.new('.'),
             :min_square_feet     => 1400,
             :max_square_feet     => 1400,
             :min_market_rent     => 2260,
@@ -672,6 +685,11 @@ module Bozzuto
               @information_node.xpath('LocalInfoRSSURL')[0].content
           end
 
+          should "contain property listing image" do
+            actual = @information_node.xpath('ListingImageURL')[0].content
+            assert_match %r{http://bozzuto\.com/system/apartment_communities/\d+/square\.txt}, actual
+          end
+
           should "contain video url" do
             assert_equal 'http://www.videoapt.com/208/LibertyTowers/Default.aspx',
               @information_node.xpath('VideoURL')[0].content
@@ -770,6 +788,11 @@ module Bozzuto
           should "contain available units" do
             assert_equal '3',
               @floor_plan_node.xpath('DisplayedUnitsAvailable')[0].content
+          end
+
+          should "contain image url" do
+            assert_match %r{http://bozzuto\.com/system/apartment_floor_plans/\d+/original\.txt},
+              @floor_plan_node.xpath('ImageURL')[0].content
           end
         end
 
