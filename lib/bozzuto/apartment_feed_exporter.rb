@@ -95,7 +95,7 @@ module Bozzuto
           :name               => floor_plan.name,
           :availability_url   => floor_plan.availability_url,
           :available_units    => floor_plan.available_units,
-          :image_url          => (url_for_image(floor_plan.image.url) if floor_plan.image?),
+          :image_url          => (url_for_image(floor_plan.actual_image) if floor_plan.actual_image.present?),
           :min_square_feet    => floor_plan.min_square_feet,
           :max_square_feet    => floor_plan.max_square_feet,
           :min_market_rent    => floor_plan.min_market_rent,
@@ -295,10 +295,13 @@ module Bozzuto
       options = default_url_options.merge(options)
 
       ''.tap do |url|
-        url << (options.delete(:protocol) || 'http')
-        url << '://' unless url.match("://")
-        url << options.delete(:host)
-        url << ":#{options.delete(:port)}" if options.key?(:port)
+        unless path =~ %r{^https?://}
+          url << (options.delete(:protocol) || 'http')
+          url << '://' unless url.match("://")
+          url << options.delete(:host)
+          url << ":#{options.delete(:port)}" if options.key?(:port)
+        end
+
         url << path
       end
     end
