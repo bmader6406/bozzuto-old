@@ -1,4 +1,6 @@
 class BuzzesController < SectionContentController
+  has_mobile_actions :new, :create, :thank_you
+
   def new
     @buzz = Buzz.new(:email => params[:email])
   end

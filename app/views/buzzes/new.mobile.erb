@@ -1,0 +1,84 @@
+<% content_for :body_class, "generic" -%>
+
+<div class="section">
+  <div class="content">
+    <h2>Bozzuto Buzz</h2>
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="content">
+    <p>
+      The Bozzuto Buzz is a periodic e-newsletter that delivers select company and
+      industry news as well as special offers, events, discounts and giveaways, all
+      exclusive to Buzz subscribers.
+    </p>
+  </div>
+
+  <% form_for @buzz, :url => buzz_path, :method => :post, :html => { :class => "required-form" } do |f| -%>
+    <div class="content">
+      <%= error_messages_for :buzz %>
+
+      <h3>Contact Information</h3>
+
+      <%= f.text_field :email, :class => "required email", :placeholder => 'Email' %>
+
+      <%= f.text_field :first_name, :placeholder => 'First Name' %>
+
+      <%= f.text_field :last_name, :placeholder => 'Last Name' %>
+
+      <%= f.text_field :street1, :placeholder => 'Street 1' %>
+
+      <%= f.text_field :street2, :placeholder => 'Street 2' %>
+
+      <%= f.text_field :city, :placeholder => 'City' %>
+
+      <%= f.text_field :state, :placeholder => 'State' %>
+
+      <%= f.text_field :zip_code, :placeholder => 'ZIP Code' %>
+
+      <%= f.text_field :phone, :placeholder => 'Phone' %>
+    </div>
+
+    <div class="content">
+      <h3>What buzz would you like to hear?</h3>
+
+      <p class="checkboxes">
+        <% f.fields_for :buzzes do |b| -%>
+          <%= mobile_check_box(b, @buzz.buzzes, :apartments) %>
+          <%= mobile_check_box(b, @buzz.buzzes, :new_homes) %>
+          <%= mobile_check_box(b, @buzz.buzzes, :management) %>
+          <%= mobile_check_box(b, @buzz.buzzes, :homebuilding) %>
+          <%= mobile_check_box(b, @buzz.buzzes, :construction) %>
+          <%= mobile_check_box(b, @buzz.buzzes, :development) %>
+          <%= mobile_check_box(b, @buzz.buzzes, :acquisition) %>
+          <%= mobile_check_box(b, @buzz.buzzes, :land) %>
+        <% end -%>
+      </p>
+    </div>
+
+    <div class="content">
+      <h3>How are you affiliated with Bozzuto?</h3>
+      <p class="checkboxes">
+        <% f.fields_for :affiliations do |a| -%>
+          <%= mobile_check_box a, @buzz.affiliations, :prospective_homeowner %>
+          <%= mobile_check_box a, @buzz.affiliations, :prospective_resident %>
+          <%= mobile_check_box a, @buzz.affiliations, :current_homeowner %>
+          <%= mobile_check_box a, @buzz.affiliations, :current_resident %>
+          <%= mobile_check_box a, @buzz.affiliations, :contractor %>
+          <%= mobile_check_box a, @buzz.affiliations, :vendor %>
+          <%= mobile_check_box a, @buzz.affiliations, :press %>
+          <%= mobile_check_box a, @buzz.affiliations, :employee %>
+          <%= mobile_check_box a, @buzz.affiliations, :broker %>
+        <% end -%>
+      </p>
+    </div>
+
+    <div class="content">
+      <p class="submit">
+        <%= f.submit 'Sign up for Bozzuto Buzz', :class => 'submit' %>
+      </p>
+    </div>
+  <%- end -%>
+</div>

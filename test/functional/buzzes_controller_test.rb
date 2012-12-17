@@ -25,7 +25,10 @@ class BuzzesControllerTest < ActionController::TestCase
           get :new, :section => 'about-us'
         end
 
-        should_redirect_to_home_page
+        should_render_with_layout :application
+        should_respond_with :success
+        should_render_template :new
+        should_assign_to :buzz
       end
     end
 
@@ -75,7 +78,13 @@ class BuzzesControllerTest < ActionController::TestCase
               :buzz => {}
           end
 
-          should_redirect_to_home_page
+          should_render_with_layout :application
+          should_respond_with :success
+          should_render_template :new
+          should_not_change('the buzz count') { Buzz.count }
+          should "have errors on buzz" do
+            assert assigns(:buzz).errors.on(:email)
+          end
         end
       end
     end
@@ -97,7 +106,9 @@ class BuzzesControllerTest < ActionController::TestCase
           get :thank_you, :section => 'about-us'
         end
 
-        should_redirect_to_home_page
+        should_render_with_layout :application
+        should_respond_with :success
+        should_render_template :thank_you
       end
     end
   end
