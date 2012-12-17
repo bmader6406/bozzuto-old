@@ -96,6 +96,8 @@ module Bozzuto
           :availability_url   => floor_plan.availability_url,
           :available_units    => floor_plan.available_units,
           :image_url          => (url_for_image(floor_plan.actual_image) if floor_plan.actual_image.present?),
+          :bedrooms           => floor_plan.bedrooms,
+          :bathrooms          => floor_plan.bathrooms,
           :min_square_feet    => floor_plan.min_square_feet,
           :max_square_feet    => floor_plan.max_square_feet,
           :min_market_rent    => floor_plan.min_market_rent,
@@ -259,6 +261,8 @@ module Bozzuto
         node.tag! 'FloorplanAvailabilityURL', floorplan[:availability_url]
         node.tag! 'DisplayedUnitsAvailable', floorplan[:available_units]
         node.tag! 'ImageURL', floorplan[:image_url] if floorplan[:image_url]
+        node.tag! 'Bedrooms', floorplan[:bedrooms]
+        node.tag! 'Bathrooms', floorplan[:bathrooms]
         node.tag! 'SquareFeet',
           'Min' => floorplan[:min_square_feet],
           'Max' => floorplan[:max_square_feet]

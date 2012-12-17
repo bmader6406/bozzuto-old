@@ -283,6 +283,8 @@ module Bozzuto
             :available_units     => 3,
             :image               => StringIO.new('.'),
             :image_type          => ApartmentFloorPlan::USE_IMAGE_FILE,
+            :bedrooms            => 2,
+            :bathrooms           => 1,
             :min_square_feet     => 1400,
             :max_square_feet     => 1400,
             :min_market_rent     => 2260,
@@ -314,6 +316,14 @@ module Bozzuto
         should "contain #image url" do
           assert_match %r{http://bozzuto\.com/system/apartment_floor_plans/\d+/original\.txt},
             @floor_plan_data[:image_url]
+        end
+
+        should "contain number of bedrooms" do
+          assert_equal 2, @floor_plan_data[:bedrooms]
+        end
+
+        should "contain number of bathrooms" do
+          assert_equal 1, @floor_plan_data[:bathrooms]
         end
 
         should "contain #min_square_feet" do
@@ -492,6 +502,8 @@ module Bozzuto
             :available_units     => 3,
             :image               => StringIO.new('.'),
             :image_type          => ApartmentFloorPlan::USE_IMAGE_FILE,
+            :bedrooms            => 3,
+            :bathrooms           => 2,
             :min_square_feet     => 1400,
             :max_square_feet     => 1400,
             :min_market_rent     => 2260,
@@ -795,6 +807,14 @@ module Bozzuto
           should "contain image url" do
             assert_match %r{http://bozzuto\.com/system/apartment_floor_plans/\d+/original\.txt},
               @floor_plan_node.xpath('ImageURL')[0].content
+          end
+
+          should "contain number of bedrooms" do
+            assert_equal '3', @floor_plan_node.xpath('Bedrooms')[0].content
+          end
+
+          should "contain number of bathrooms" do
+            assert_equal '2.0', @floor_plan_node.xpath('Bathrooms')[0].content
           end
         end
 
