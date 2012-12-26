@@ -51,28 +51,28 @@ module Bozzuto
         })
 
         @community = ApartmentCommunity.make({
-          :title              => 'Dolans Hood',
-          :street_address     => '100 Gooby Pls',
-          :city               => city,
-          :zip_code           => '89223',
-          :county             => county,
-          :lead_2_lease_email => 'dolan@pls.org',
-          :phone_number       => '832.382.1337',
-          :video_url          => 'http://www.videoapt.com/208/LibertyTowers/Default.aspx',
-          :office_hours       => @office_hours,
-          :overview_text      => 'ovrvu text',
-          :overview_bullet_1  => 'ovrvu bulet 1',
-          :overview_bullet_2  => 'ovrvu bulet 2',
-          :overview_bullet_3  => 'ovrvu bulet 3',
-          :facebook_url       => 'http://facebook.com/dafuq',
-          :twitter_account    => twitter_account,
-          :pinterest_url      => 'http://pinterest.com/bozzuto',
-          :website_url        => 'http://what.up',
-          :latitude           => 9001,
-          :longitude          => 1337,
-          :local_info_feed    => local_info_feed,
-          :promo_id           => promo.id,
-          :listing_image      => StringIO.new('.')
+          :title                   => 'Dolans Hood',
+          :street_address          => '100 Gooby Pls',
+          :city                    => city,
+          :zip_code                => '89223',
+          :county                  => county,
+          :lead_2_lease_email      => 'dolan@pls.org',
+          :phone_number            => '832.382.1337',
+          :video_url               => 'http://www.videoapt.com/208/LibertyTowers/Default.aspx',
+          :office_hours            => @office_hours,
+          :overview_text           => 'ovrvu text',
+          :overview_bullet_1       => 'ovrvu bulet 1',
+          :overview_bullet_2       => 'ovrvu bulet 2',
+          :overview_bullet_3       => 'ovrvu bulet 3',
+          :facebook_url            => 'http://facebook.com/dafuq',
+          :twitter_account         => twitter_account,
+          :pinterest_url           => 'http://pinterest.com/bozzuto',
+          :website_url             => 'http://what.up',
+          :latitude                => 9001,
+          :longitude               => 1337,
+          :local_info_feed         => local_info_feed,
+          :promo_id                => promo.id,
+          :listing_image_file_name => 'test.jpg'
         })
 
         ApartmentCommunity.make(
@@ -244,7 +244,7 @@ module Bozzuto
       end
 
       should "contain listing image" do
-        assert_match %r{http://bozzuto\.com/system/apartment_communities/\d+/square\.txt},
+        assert_match %r{http://bozzuto\.com/system/apartment_communities/\d+/square\.jpg},
           @property_export[:listing_image]
       end
 
@@ -281,7 +281,7 @@ module Bozzuto
             :name                => 'The Roxy',
             :availability_url    => 'http://lol.wut',
             :available_units     => 3,
-            :image               => StringIO.new('.'),
+            :image_file_name     => 'test.jpg',
             :image_type          => ApartmentFloorPlan::USE_IMAGE_FILE,
             :bedrooms            => 2,
             :bathrooms           => 1,
@@ -314,7 +314,7 @@ module Bozzuto
         end
 
         should "contain #image url" do
-          assert_match %r{http://bozzuto\.com/system/apartment_floor_plans/\d+/original\.txt},
+          assert_match %r{http://bozzuto\.com/system/apartment_floor_plans/\d+/original\.jpg},
             @floor_plan_data[:image_url]
         end
 
@@ -500,7 +500,7 @@ module Bozzuto
             :name                => 'The Roxy',
             :availability_url    => 'http://lol.wut',
             :available_units     => 3,
-            :image               => StringIO.new('.'),
+            :image_file_name     => 'test.jpg',
             :image_type          => ApartmentFloorPlan::USE_IMAGE_FILE,
             :bedrooms            => 3,
             :bathrooms           => 2,
@@ -701,7 +701,7 @@ module Bozzuto
 
           should "contain property listing image" do
             actual = @information_node.xpath('ListingImageURL')[0].content
-            assert_match %r{http://bozzuto\.com/system/apartment_communities/\d+/square\.txt}, actual
+            assert_match %r{http://bozzuto\.com/system/apartment_communities/\d+/square\.jpg}, actual
           end
 
           should "contain video url" do
@@ -805,7 +805,7 @@ module Bozzuto
           end
 
           should "contain image url" do
-            assert_match %r{http://bozzuto\.com/system/apartment_floor_plans/\d+/original\.txt},
+            assert_match %r{http://bozzuto\.com/system/apartment_floor_plans/\d+/original\.jpg},
               @floor_plan_node.xpath('ImageURL')[0].content
           end
 
