@@ -21,7 +21,7 @@ CKEDITOR.editorConfig = function(config)
   config.toolbar_Easy =
   [
     ['Source','-','-','Cut','Copy','Paste','PasteText','PasteFromWord'],
-    ['Undo','Redo','-','SelectAll','RemoveFormat'],
+    ['Undo','Redo','-','SelectAll','RemoveFormat','-','SpellChecker'],
     ['Link','Unlink','-','Embed'],
     '/',
     ['Format','FontSize','Bold','Italic','Underline','Strike','-','TextColor'],
