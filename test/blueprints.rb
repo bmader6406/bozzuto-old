@@ -2,8 +2,13 @@ require 'machinist/active_record'
 require 'sham'
 
 Sham.define do
+  us_state_code(:unique => false) { |i|
+    i = i % (36*36)
+
+    "%2s" % i.to_s(36)
+  }
+
   city             { Faker::Address.city }
-  us_state_code    { |i| "%2s" % i.to_s(36) }
   us_state         { |i| "#{Faker::Address.us_state} #{i}" }
   company_name     { Faker::Company.name }
   feed_url         { |i| "http://#{i}.#{Faker::Internet.domain_name}/feed.rss" }
