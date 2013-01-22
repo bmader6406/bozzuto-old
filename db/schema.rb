@@ -410,6 +410,15 @@ ActiveRecord::Schema.define(:version => 2012081313174438) do
     t.string   "name",         :null => false
   end
 
+  create_table "green_features", :force => true do |t|
+    t.string   "title",              :null => false
+    t.text     "description"
+    t.string   "photo_file_name",    :null => false
+    t.string   "photo_content_type", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "home_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
     t.integer "home_community_id"

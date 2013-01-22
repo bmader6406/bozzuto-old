@@ -249,6 +249,20 @@ Feed:
   search:
   application:
 
+GreenFeature:
+  fields:
+    default: title
+    list: title
+    form: title, description, photo
+    options:
+      ckeditor: description
+      required: title, photo
+  order_by: title
+  relationships: 
+  filters:
+  search:
+  application: Properties
+
 Home:
   fields:
     default: name, bedrooms, bathrooms, featured, position
