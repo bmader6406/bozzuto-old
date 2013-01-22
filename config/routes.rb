@@ -6,6 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   # TEMPORARY WHILE BUILDING OUT
   map.connect "new-homes/green-homes/green-savings", :controller => "build", :action => "green_savings"
 
+
   map.root :controller => :home_pages
 
   map.search '/search', :controller => :searches, :action => :index
@@ -89,6 +90,12 @@ ActionController::Routing::Routes.draw do |map|
       :only       => :index
   end
 
+
+  map.resources :green_homes,
+                :only        => [:index, :show],
+                :path_prefix => 'new-homes',
+                :as          => 'green-homes',
+                :section     => 'new-homes'
 
   home_community_options = {
     :path_prefix => 'new-homes',

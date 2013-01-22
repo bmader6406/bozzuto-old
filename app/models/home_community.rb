@@ -16,8 +16,9 @@ class HomeCommunity < Community
     :default_style   => :display,
     :convert_options => { :all => '-quality 80 -strip' }
 
-  named_scope :ordered_by_title, :order => 'title ASC'
+
   default_scope :order => 'title ASC'
+
 
   def nearby_communities(limit = 6)
     @nearby_communities ||= HomeCommunity.published.mappable.near(self).all(:limit => limit)

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<%= render 'layouts/head' %>
+<body class="secondary page <%= yield :body_class %>">
+  <% if params[:controller] == 'pages' && params[:section] == 'apartments' && params[:page].empty? %>
+    <iframe src="http://img-cdn.mediaplex.com/0/16798/universal.html?page_name=bozzuto_apts_lp&Bozzuto_Apts_LP=1&mpuid=" HEIGHT="1" WIDTH="1" FRAMEBORDER="0"></iframe>
+  <% end %>
+
+  <%= render 'layouts/header' %>
+
+  <% if @page.present? && @page.masthead_slideshow.try(:present?) %>
+    <%= render 'pages/masthead_slideshow', :slideshow => @page.masthead_slideshow %>
+  <% else %>
+    <%= render 'pages/masthead' %>
+  <% end %>
+
+  <div id="main-content">
+    <div class="container">
+      <div id="sidebar" class="col">
+        <% if request.path =~ /^\/services\/?$/ %>
+          <%= render 'pages/services_nav' %>
+        <% else %>
+          <%= render 'pages/secondary_nav' %>
+        <% end %>
+      </div>
+
+      <div id="content" class="col">
+        <% if @page.present? && @page.body_slideshow.present? %>
+          <%= render 'pages/body_slideshow', :slideshow => @page.body_slideshow %>
+        <% end %>
+
+        <% if @page.present? && @page.carousel.present? && @page.carousel.panels.any? %>
+          <%= render 'pages/carousel', :carousel => @page.carousel %>
+        <% end %>
+
+        <div class="row">
+          <div class="column-main col">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= render 'layouts/footer' %>
+</body>
+</html>

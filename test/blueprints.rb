@@ -358,6 +358,10 @@ Section.blueprint(:news_and_press) do
   about { true }
 end
 
+Section.blueprint(:new_homes) do
+  title { 'New Homes' }
+end
+
 Snippet.blueprint do
   name { Sham.unique_name }
   body { Faker::Lorem.paragraphs }
