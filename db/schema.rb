@@ -419,6 +419,20 @@ ActiveRecord::Schema.define(:version => 2012081313174438) do
     t.datetime "updated_at"
   end
 
+  create_table "green_package_items", :force => true do |t|
+    t.integer  "green_package_id",                                                  :null => false
+    t.integer  "green_feature_id",                                                  :null => false
+    t.decimal  "savings",          :precision => 8, :scale => 2, :default => 0.0,   :null => false
+    t.boolean  "optional",                                       :default => false, :null => false
+    t.integer  "x",                                              :default => 0
+    t.integer  "y",                                              :default => 0
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "green_package_items", ["green_package_id"], :name => "index_green_package_items_on_green_package_id"
+
   create_table "green_packages", :force => true do |t|
     t.integer  "home_community_id",  :null => false
     t.string   "photo_file_name",    :null => false

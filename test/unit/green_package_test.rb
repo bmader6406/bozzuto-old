@@ -4,6 +4,8 @@ class GreenPackageTest < ActiveSupport::TestCase
   subject { GreenPackage.new }
 
   should_belong_to(:home_community)
+  should_have_many(:green_package_items, :dependent => :destroy)
+  should_have_many(:green_features, :through => :green_package_items)
 
   should_validate_presence_of(:home_community)
 

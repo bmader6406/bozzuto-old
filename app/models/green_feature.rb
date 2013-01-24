@@ -1,6 +1,10 @@
 class GreenFeature < ActiveRecord::Base
   attr_accessible :title, :description, :photo
 
+  has_many :green_package_items,
+           :inverse_of => :green_feature,
+           :dependent  => :destroy
+
   validates_presence_of :title
 
 

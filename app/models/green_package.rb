@@ -6,6 +6,15 @@ class GreenPackage < ActiveRecord::Base
 
   belongs_to :home_community
 
+  has_many :green_package_items,
+           :inverse_of => :green_package,
+           :order      => 'position ASC',
+           :dependent  => :destroy
+
+  has_many :green_features,
+           :through => :green_package_items,
+           :order   => 'green_package_items.position ASC'
+
 
   has_attached_file :photo,
                     :url             => '/system/:class/:attachment/:id/:basename_:style.:extension',
