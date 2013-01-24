@@ -22,7 +22,7 @@ module Bozzuto
     private
 
     def community_data
-      ApartmentCommunity.all.collect do |community|
+      ApartmentCommunity.published.collect do |community|
         {
           :id                  => community.id,
           :community_name      => community.title,

@@ -82,46 +82,51 @@ module Bozzuto
           :city      => city
         )
 
+        @unpublished = ApartmentCommunity.make(:unpublished, :city => city)
+
         PropertyNeighborhoodPage.make({
           :property => @community,
           :content  => 'wilcum to da hood'
         })
 
-        @exporter = ApartmentFeedExporter.new
-        @property_export = @exporter.data[:properties].first
+        @exporter            = ApartmentFeedExporter.new
+        @first_export        = @exporter.data[:properties].first
+      end
+
+      should "only include published properties" do
+        assert !@exporter.data[:properties].any? { |p| p[:community_name] == @unpublished.title }
       end
 
       should "contain Community Name" do
-        assert_equal 'Dolans Hood', @property_export[:community_name]
+        assert_equal 'Dolans Hood', @first_export[:community_name]
       end
 
       should "contain Community Address 1" do
-        assert_equal '100 Gooby Pls',
-          @property_export[:community_address_1]
+        assert_equal '100 Gooby Pls', @first_export[:community_address_1]
       end
 
       should "contain City" do
-        assert_equal 'Bogsville', @property_export[:city]
+        assert_equal 'Bogsville', @first_export[:city]
       end
 
       should "contain State" do
-        assert_equal 'NC', @property_export[:state]
+        assert_equal 'NC', @first_export[:state]
       end
 
       should "contain Postal Code" do
-        assert_equal '89223', @property_export[:postal_code]
+        assert_equal '89223', @first_export[:postal_code]
       end
 
       should "contain County" do
-        assert_equal 'Dawnguard', @property_export[:county]
+        assert_equal 'Dawnguard', @first_export[:county]
       end
 
       should "contain Lead2Lease Email Address" do
-        assert_equal 'dolan@pls.org', @property_export[:lead_2_lease_email]
+        assert_equal 'dolan@pls.org', @first_export[:lead_2_lease_email]
       end
 
       should "contain Phone Number" do
-        assert_equal '832.382.1337', @property_export[:phone_number]
+        assert_equal '832.382.1337', @first_export[:phone_number]
       end
 
       context "Features and Amenities" do
@@ -137,11 +142,11 @@ module Bozzuto
 
         context "with no title or text" do
           setup do
-            @property_export = @exporter.data[:properties].first
+            @first_export = @exporter.data[:properties].first
           end
 
           should "return empty array for Features" do
-            assert_equal [], @property_export[:features]
+            assert_equal [], @first_export[:features]
           end
         end
 
@@ -152,17 +157,17 @@ module Bozzuto
               :text_1   => 'u r tru frend',
             })
 
-            @property_export = @exporter.data[:properties].first
+            @first_export = @exporter.data[:properties].first
           end
 
           should "return array with one object" do
-            assert_equal 1, @property_export[:features].length
+            assert_equal 1, @first_export[:features].length
           end
 
           should "return correct title and text" do
             expected = [{ :title => 'Gooby pls', :text => 'u r tru frend' }]
 
-            assert_same_elements @property_export[:features], expected
+            assert_same_elements @first_export[:features], expected
           end
         end
 
@@ -175,11 +180,11 @@ module Bozzuto
               :text_2   => 'has two faces'
             })
 
-            @property_export = @exporter.data[:properties].first
+            @first_export = @exporter.data[:properties].first
           end
 
           should "return array with two objects" do
-            assert_equal 2, @property_export[:features].length
+            assert_equal 2, @first_export[:features].length
           end
 
           should "return correct features" do
@@ -188,7 +193,7 @@ module Bozzuto
               { :title => 'Two Face', :text => 'has two faces' }
             ]
 
-            assert_same_elements @property_export[:features], expected
+            assert_same_elements @first_export[:features], expected
           end
         end
 
@@ -203,11 +208,11 @@ module Bozzuto
               :text_3   => 'has red face'
             })
 
-            @property_export = @exporter.data[:properties].first
+            @first_export = @exporter.data[:properties].first
           end
 
           should "return array with three objects" do
-            assert_equal 3, @property_export[:features].length
+            assert_equal 3, @first_export[:features].length
           end
 
           should "return correct features" do
@@ -217,7 +222,7 @@ module Bozzuto
               { :title => 'Red Face', :text => 'has red face' }
             ]
 
-            assert_same_elements @property_export[:features], expected
+            assert_same_elements @first_export[:features], expected
           end
         end
       end
@@ -231,45 +236,45 @@ module Bozzuto
           set.stubs(:flickr_set).returns(OpenStruct.new(:title => 'PHERT SERT'))
           set.save
 
-          @property_export = @exporter.data[:properties].first
+          @first_export = @exporter.data[:properties].first
         end
 
         should "contain title" do
-          assert_equal 'PHERT SERT', @property_export[:photo_set][:title]
+          assert_equal 'PHERT SERT', @first_export[:photo_set][:title]
         end
 
         should "contain flickr set number" do
-          assert_equal '91740458', @property_export[:photo_set][:flickr_set_number]
+          assert_equal '91740458', @first_export[:photo_set][:flickr_set_number]
         end
       end
 
       should "contain listing image" do
         assert_match %r{http://bozzuto\.com/system/apartment_communities/\d+/square\.jpg},
-          @property_export[:listing_image]
+          @first_export[:listing_image]
       end
 
       should "contain Video Link" do
         assert_equal 'http://www.videoapt.com/208/LibertyTowers/Default.aspx',
-          @property_export[:video_url]
+          @first_export[:video_url]
       end
 
       should "contain Neighborhood Text" do
-        assert_equal 'wilcum to da hood', @property_export[:neighborhood_text]
+        assert_equal 'wilcum to da hood', @first_export[:neighborhood_text]
       end
 
       should "contain Office Hours" do
-        assert_same_elements @property_export[:office_hours], @office_hours
+        assert_same_elements @first_export[:office_hours], @office_hours
       end
 
       should "contain Overview Text" do
-        assert_equal 'ovrvu text', @property_export[:overview_text]
+        assert_equal 'ovrvu text', @first_export[:overview_text]
       end
 
       context "contain Three Bullets" do
         1.upto(3) do |n|
           should "contain overview_bullet_#{n}" do
             assert_equal "ovrvu bulet #{n}",
-              @property_export["overview_bullet_#{n}".to_sym]
+              @first_export["overview_bullet_#{n}".to_sym]
           end
         end
       end
@@ -293,8 +298,8 @@ module Bozzuto
             :max_effective_rent  => 2295
           })
 
-          @property_export = @exporter.data[:properties].first
-          @floor_plan_data = @property_export[:floorplans].first
+          @first_export = @exporter.data[:properties].first
+          @floor_plan_data = @first_export[:floorplans].first
         end
 
         should "contain #id" do
@@ -352,22 +357,22 @@ module Bozzuto
       end
 
       should "contain #facebook_url" do
-        assert_equal 'http://facebook.com/dafuq', @property_export[:facebook_url]
+        assert_equal 'http://facebook.com/dafuq', @first_export[:facebook_url]
       end
 
       should "contain twitter_accounts#username" do
-        assert_equal 'TheBozzutoGroup', @property_export[:twitter_handle]
+        assert_equal 'TheBozzutoGroup', @first_export[:twitter_handle]
       end
 
       should "contain #pinterest_url" do
         assert_equal 'http://pinterest.com/bozzuto',
-          @property_export[:pinterest_url]
+          @first_export[:pinterest_url]
       end
 
       context "with active promo" do
         setup do
-          @property_export = @exporter.data[:properties].first
-          @promo_data = @property_export[:promo]
+          @first_export = @exporter.data[:properties].first
+          @promo_data = @first_export[:promo]
         end
 
         should "contain promo#title" do
@@ -393,11 +398,11 @@ module Bozzuto
           promo = Promo.make(:expired)
           @community.update_attributes(:promo_id => promo.id)
 
-          @property_export = @exporter.data[:properties].first
+          @first_export = @exporter.data[:properties].first
         end
 
         should "return empty hash" do
-          assert @property_export[:promo].empty?
+          assert @first_export[:promo].empty?
         end
       end
 
@@ -414,17 +419,17 @@ module Bozzuto
           feature1.properties << @community
           feature2.properties << @community
 
-          @property_export = @exporter.data[:properties].first
+          @first_export = @exporter.data[:properties].first
         end
 
         should "contain feature 1 name" do
-          actual = @property_export[:featured_buttons][0]
+          actual = @first_export[:featured_buttons][0]
 
           assert_equal 'Feature Uno', actual[:name]
         end
 
         should "contain feature 2 name" do
-          actual = @property_export[:featured_buttons][1]
+          actual = @first_export[:featured_buttons][1]
 
           assert_equal 'Feature Due', actual[:name]
         end
@@ -432,17 +437,17 @@ module Bozzuto
 
       should "contain Directions Link" do
         expected = 'http://maps.google.com/maps?daddr=100%20Gooby%20Pls,%20Bogsville,%20NC'
-        assert_equal expected, @property_export[:directions_url]
+        assert_equal expected, @first_export[:directions_url]
       end
 
       should "contain Local Info RSS Feed" do
         assert_equal 'http://bozzuto.com/feed',
-          @property_export[:local_info_feed]
+          @first_export[:local_info_feed]
       end
 
       context "with Nearby Apartment Communities" do
         setup do
-          @nearby_community = @property_export[:nearby_communities].first
+          @nearby_community = @first_export[:nearby_communities].first
         end
 
         should "contain id" do
@@ -455,19 +460,19 @@ module Bozzuto
       end
 
       should "contain #website_url" do
-        assert_equal 'http://what.up', @property_export[:website_url]
+        assert_equal 'http://what.up', @first_export[:website_url]
       end
 
       should "contain Bozzuto.com Address" do
-        assert_equal 'http://bozzuto.com/apartments/communities/dolans-hood', @property_export[:bozzuto_url]
+        assert_equal 'http://bozzuto.com/apartments/communities/dolans-hood', @first_export[:bozzuto_url]
       end
 
       should "contain latitude" do
-        assert_equal 9001, @property_export[:latitude]
+        assert_equal 9001, @first_export[:latitude]
       end
 
       should "contain longitude" do
-        assert_equal 1337, @property_export[:longitude]
+        assert_equal 1337, @first_export[:longitude]
       end
 
       should "handle multiple communities" do
