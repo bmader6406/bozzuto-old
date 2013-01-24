@@ -263,6 +263,19 @@ GreenFeature:
   search:
   application: Properties
 
+GreenPackage:
+  fields:
+    default: home_community_title
+    list: home_community_title
+    form: home_community, photo
+    options:
+      required: home_community, photo
+  order_by: 
+  relationships:
+  filters:
+  search:
+  application: 
+
 Home:
   fields:
     default: name, bedrooms, bathrooms, featured, position
@@ -288,7 +301,7 @@ HomeCommunity:
       selectors: brochure_type
       destroy_related: DnrConfiguration, ConversionConfiguration, PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyToursPage, PropertyContactPage, LassoAccount, PropertySlideshow, PropertyMiniSlideshow, Home, Video, PhotoSet
   order_by: title
-  relationships: dnr_configuration, conversion_configuration, property_features, city, county, features_page, neighborhood_page, tours_page, contact_page, lasso_account, slideshow, videos, photo_set, homes, local_info_feed, promo
+  relationships: dnr_configuration, conversion_configuration, property_features, city, county, features_page, neighborhood_page, tours_page, contact_page, lasso_account, slideshow, videos, photo_set, homes, local_info_feed, promo, green_package
   filters:
   search: title
   application: Properties

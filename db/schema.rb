@@ -419,6 +419,16 @@ ActiveRecord::Schema.define(:version => 2012081313174438) do
     t.datetime "updated_at"
   end
 
+  create_table "green_packages", :force => true do |t|
+    t.integer  "home_community_id",  :null => false
+    t.string   "photo_file_name",    :null => false
+    t.string   "photo_content_type", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "green_packages", ["home_community_id"], :name => "index_green_packages_on_home_community_id", :unique => true
+
   create_table "home_communities_landing_pages", :id => false, :force => true do |t|
     t.integer "landing_page_id"
     t.integer "home_community_id"

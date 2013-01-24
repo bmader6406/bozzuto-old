@@ -4,11 +4,19 @@ class HomeCommunity < Community
   
   acts_as_archive :indexes => [:id]
 
+
   has_many :homes
+
   has_many :featured_homes,
-    :class_name => 'Home',
-    :conditions => { :featured => true }
-  has_one :lasso_account, :foreign_key => :property_id
+           :class_name => 'Home',
+           :conditions => { :featured => true }
+
+  has_one :lasso_account,
+          :foreign_key => :property_id,
+          :dependent   => :destroy
+
+  has_one :green_package, :dependent => :destroy
+
 
   has_attached_file :listing_promo,
     :url             => '/system/:class/:id/:class_:id_:style.:extension',

@@ -15,6 +15,7 @@ en:
       dnr_referrer: DNR Referrer
       feed: Feed
       green_feature: Green Feature
+      green_package: Green Package
       home_community: Home Community
       home_floor_plan: Floor Plan
       home_page:
@@ -118,6 +119,9 @@ en:
         domain_name: Domain Name
       feed:
         url: Feed URL
+      green_package:
+        home_community: Home Community
+        home_community_title: Home Community
       home:
         bathrooms: Bath
         bedrooms: Bed
@@ -327,6 +331,8 @@ en:
         domain_name: "The domain name to match the referrer against. If the referrer's domain (including subdomains) matches this domain name, then this domain name will be sent as the <strong>campaign</strong> and <strong>ad source</strong> parameters in all DNR-replaced phone numbers. <strong>Include only the domain. Do not include http://</strong>.<br /><br />Examples: apartments.com, rent.com, trulia.com"
       green_feature:
         photo: Image dimensions should be 170x170.
+      green_package:
+        photo: Image dimensions should be 498x551.
       home_community:
         listing_promo: Image dimensions should be 151x54
         video_url: This URL is by the "Watch Video" link when many home communities are shown on one page e.g. on <a href="http://www.bozzuto.com/new-homes/communities">this page</a>. To change the "Watch Video" buttons that appear on the slides on the main listing page, edit the "Slideshow" further down this page.

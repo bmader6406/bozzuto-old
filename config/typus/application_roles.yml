@@ -23,6 +23,7 @@ admin:
   DnrReferrer: create, read, update, delete
   Feed: create, read, update, delete
   GreenFeature: create, read, update, delete
+  GreenPackage: create, read, update, delete
   Home: create, read, update, delete
   HomeCommunity: create, read, update, delete, list_deleted, preview
   HomeFloorPlan: create, read, update, delete
