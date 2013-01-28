@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rake', '0.8.7'
-gem 'rails', '2.3.15'
+gem 'rails', '2.3.16'
 gem 'mysql', '2.8.1'
 gem 'erubis', '2.6.6'
 gem 'jammit', '0.6.0'
