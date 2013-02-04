@@ -218,52 +218,60 @@ window.bozzuto = {};
 			});
 		});
 		
-		var $greenFeatures = $('.green-features'),
-			$hotspotTable = $greenFeatures.find('.hotspot-table'),
-			$hotspots = $('#hotspots'),
-			$hotspotDetails = $('#hotspot-details');
-						
-		$hotspotTable.find('tbody').delegate('tr', 'click', function() {
-			var $this = $(this);
+		(function() {
+			var $greenFeatures = $('.green-features'),
+				$hotspotTable = $greenFeatures.find('.hotspot-table'),
+				$hotspots = $('#hotspots'),
+				$hotspotDetails = $('#hotspot-details');
+							
+			$hotspotTable.find('tbody').delegate('tr', 'click', function() {
+				var $this = $(this);
+				
+				if(!$this.hasClass('current')) {
+					changeHotspot($this);
+				}
+			});
 			
-			if(!$this.hasClass('current')) {
-				changeHotspot($this);
+			$hotspots.delegate('a.hotspot', 'click', function(e) {
+				var $this = $(this);
+				
+				if(!$this.hasClass('hover')) {
+					changeHotspot($this);
+				}
+				
+				e.preventDefault();
+			});
+			
+			function changeHotspot($el) {
+				var target = $el.attr('data-hotspot'),
+					$hotspot = $('#hotspot-' + target),
+					$hotspotDetail = $('#hotspot-detail-' + target),
+					$hotspotRow = $('#hotspot-row-' + target);
+
+				$hotspotTable.find('.current').removeClass('current');
+				$hotspotRow.addClass('current');
+
+				$hotspots.find('.hover').removeClass('hover');
+				$hotspot.addClass('hover');
+
+				$hotspotDetails.find('.current').removeClass('current');
+				$hotspotDetail.addClass('current');
 			}
-		});
-		
-		$hotspots.delegate('a.hotspot', 'click', function(e) {
-			var $this = $(this);
 			
-			if(!$this.hasClass('hover')) {
-				changeHotspot($this);
-			}
-			
-			e.preventDefault();
-		});
-		
-		function changeHotspot($el) {
-			var target = $el.attr('data-hotspot'),
-				$hotspot = $('#hotspot-' + target),
-				$hotspotDetail = $('#hotspot-detail-' + target),
-				$hotspotRow = $('#hotspot-row-' + target);
+			$('#ultra-green-package').bind('change', function() {
+				var $this = $(this),
+						$savings = $('.percent-savings');
+				
+				$greenFeatures.toggleClass('ultra-green-active');
+				$hotspotTable.find('tfoot tr:first').toggle();
 
-			$hotspotTable.find('.current').removeClass('current');
-			$hotspotRow.addClass('current');
-
-			$hotspots.find('.hover').removeClass('hover');
-			$hotspot.addClass('hover');
-
-			$hotspotDetails.find('.current').removeClass('current');
-			$hotspotDetail.addClass('current');
-		}
-		
-		$('#ultra-green-package').bind('change', function() {
-			var $this = $(this);
-			
-			$greenFeatures.toggleClass('ultra-green-active');
-			
-			//TODO recalculate
-		});
+				if ($this.is(':checked')) {
+					$savings.text($savings.attr('data-savings-with-ultra-green'));
+				} else {
+					$savings.text($savings.attr('data-savings'));
+				}
+			});
+		})();
   });
 
   function viewMoreFloorPlanGroups($set) {

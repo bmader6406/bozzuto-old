@@ -15,7 +15,16 @@
     <div class="content-left-padded">
       <div class="header row">
         <h2 class="hdr-w-cta">
-          <span class="hdr">Save 30% Annually at</span>
+          <span class="hdr">
+            Save
+            <span class="percent-savings"
+                  data-savings="<%= number_to_percentage(@green_package.annual_savings, :precision => 0) %>"
+                  data-savings-with-ultra-green="<%= number_to_percentage(@green_package.annual_savings_with_ultra_green, :precision => 0) %>">
+              <%= number_to_percentage(@green_package.annual_savings, :precision => 0) %>
+            </span>
+            Annually at
+          </span>
+
           <span class="info-bubble-control">
             <%= link_to @community.title, green_home_path(@community), :class => 'hdr' %>
 
@@ -47,10 +56,12 @@
         <div class="data">
           <h3>Included Green Home Features</h3>
 
-          <div class="form-inline">
-            <input type="checkbox" id="ultra-green-package" />
-            <label for="ultra-green-package">Include optional Ultra Green Package features</label>
-          </div>
+          <% if @green_package.has_ultra_green_features? %>
+            <div class="form-inline">
+              <input type="checkbox" id="ultra-green-package" />
+              <label for="ultra-green-package">Include optional Ultra Green Package features</label>
+            </div>
+          <% end %>
 
           <table class="hotspot-table">
             <thead>
@@ -60,66 +71,26 @@
               </tr>
             </thead>
             <tbody>
-              <tr id="hotspot-row-1" data-hotspot="1">
-                <td>92.1% AFUE Gas Furnace</td>
-                <td class="amount">$147</td>
-              </tr>
-              <tr id="hotspot-row-2" data-hotspot="2">
-                <td>13 SEER Air Conditioning</td>
-                <td class="amount">$110</td>
-              </tr>
-              <tr id="hotspot-row-3" data-hotspot="3">
-                <td>Programmable Thermostat</td>
-                <td class="amount">$28</td>
-              </tr>
-              <tr id="hotspot-row-4" data-hotspot="4">
-                <td>Sealed Ductwork (40% in Attic Only)</td>
-                <td class="amount">$110</td>
-              </tr>
-              <tr id="hotspot-row-5" data-hotspot="5">
-                <td>Duct Insulation</td>
-                <td class="amount">$12</td>
-              </tr>
-              <tr id="hotspot-row-6" data-hotspot="6">
-                <td>Ceiling Insulation</td>
-                <td class="amount">$51</td>
-              </tr>
-              <tr id="hotspot-row-7" data-hotspot="7">
-                <td>Grade 1 Insulation Installation</td>
-                <td class="amount">$66</td>
-              </tr>
-              <tr id="hotspot-row-8" data-hotspot="8">
-                <td>Low-E/Low Solar Heat Gain Windows</td>
-                <td class="amount">$119</td>
-              </tr>
-              <tr id="hotspot-row-9" data-hotspot="9">
-                <td>Energy Efficient Entry Doors</td>
-                <td class="amount">$16</td>
-              </tr>
-              <tr id="hotspot-row-10" data-hotspot="10">
-                <td>CFL Lighting</td>
-                <td class="amount">$62</td>
-              </tr>
-              <tr id="hotspot-row-11" data-hotspot="11">
-                <td>Energy Star Appliances</td>
-                <td class="amount">$75</td>
-              </tr>
-              <tr id="hotspot-row-12" data-hotspot="12">
-                <td>Air Filtration Management</td>
-                <td class="amount">$265</td>
-              </tr>
-              <tr class="ultra-green" id="hotspot-row-13" data-hotspot="13">
-                <td>Air Filtration Management</td>
-                <td class="amount">$265</td>
-              </tr>
-              <tr class="ultra-green" id="hotspot-row-14" data-hotspot="14">
-                <td>Air Filtration Management</td>
-                <td class="amount">$265</td>
-              </tr>
+              <% @green_package.green_package_items.each_with_index do |item, i| %>
+                <tr <%= raw('class="ultra-green"') if item.ultra_green? %> id="hotspot-row-<%= i + 1 %>" data-hotspot="<%= i + 1 %>">
+                  <td><%= item.green_feature %></td>
+                  <td class="amount"><%= number_to_currency(item.savings, :precision => 0) %></td>
+                </tr>
+              <% end %>
             </tbody>
             <tfoot>
-              <td>Total Savings</td>
-              <td class="amount">$926/year*</td>
+              <tr>
+                <td>Total Savings</td>
+                <td class="amount">
+                  <%= number_to_currency(@green_package.total_savings, :precision => 0) %>/year*
+                </td>
+              </tr>
+              <tr class="ultra-green">
+                <td>Total Savings</td>
+                <td class="amount">
+                  <%= number_to_currency(@green_package.total_savings_with_ultra_green, :precision => 0) %>/year*
+                </td>
+              </tr>
             </tfoot>
           </table>
         </div>
@@ -128,32 +99,40 @@
           <%= image_tag('green-features-home-hotspots.jpg', :alt => "", :height => 551, :width => 498) %>
 
           <ul id="hotspots">
-            <% 14.times do |i| %>
-              <li class="<%= 'ultra-green' if i > 11 %>">
-                <a href="BH_TEST" class="hotspot" style="right: <%= i * 25 + 20 %>px; top: <%= i * 40 + 30 %>px;" id="hotspot-<%= i + 1 %>" data-hotspot="<%= i + 1 %>">
-                  <span class="hotspot-name">Air Filtration Management <%= i + 1 %></span>
-                </a>
+            <% @green_package.green_package_items.each_with_index do |item, i| %>
+              <li <%= raw('class="ultra-green"') if item.ultra_green? %>>
+                <% link_to('BH_TEST', :class          => 'hotspot',
+                                      :id             => "hotspot-#{i + 1}",
+                                      :'data-hotspot' => i + 1,
+                                      :style          => "left: #{item.x - 11}px; top: #{item.y - 11}px;") do %>
+                  <span class="hotspot-name">
+                    <%= item.green_feature %>
+                  </span>
+                <% end %>
               </li>
             <% end %>
           </ul>
 
           <div id="hotspot-details">
-            <% 14.times do |i| %>
+            <% @green_package.green_package_items.each_with_index do |item, i| %>
               <div class="hotspot-details" id="hotspot-detail-<%= i + 1 %>">
                 <div class="row">
-                  <img src="http://placehold.it/170">
+                  <%= image_tag item.green_feature.photo.url, :width => 170, :height => 170 %>
 
-                  <h3>Air Filtration Management <%= i + 1 %></h3>
+                  <h3><%= item.green_feature %></h3>
 
-                  <p>Lorem ipsum dolor amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore magna. Duis aute irure dolor in reprehenderit voluptate esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor amet,ing elit, sed eiusmod tempor incididunt ut labore et dolore magna.</p>
+                  <%= raw(item.green_feature.description) %>
                 </div>
 
-                <strong class="savings">Saves $265 annually</strong>
+                <strong class="savings">
+                  Saves <%= number_to_currency(item.savings, :precision => 0) %> annually
+                </strong>
               </div>
             <% end %>
           </div>
         </div>
       </div>
+
 
       <div class="content-box content-box-horiz-padded row">
         <%= image_tag('energy-star.png', :alt => "Energy Star", :class => 'align-left', :height => 81, :width => 80) %>
@@ -163,20 +142,27 @@
         </div>
       </div>
 
-      <div class="content-box content-box-last row">
-        <h3 class="hdr-spaced">Home energy performance (HERS Index)
-          <a href="BH_TEST" class="info-bubble-control"><em class="i">i</em>
-            <div class="info-bubble">
-              <strong>What is HERS?</strong>
-              Lorem ipsum dolor amet, consectet adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore magna. Duis aute irure.
-            </div>
-          </a>
-        </h3>
 
-        <%= image_tag('green-homes-energy-efficiency.png', :alt => "", :height => 294, :width => 948) %>
-      </div>
+      <% if @green_package.has_graph? %>
+        <div class="content-box content-box-last row">
+          <h3 class="hdr-spaced">
+            <%= @green_package.graph_title %>
 
-      <p><em>*Compared to a 10 year old home.</em></p>
+            <% @green_package.graph_tooltip.if_present? do |tooltip| %>
+              <a href="BH_TEST" class="info-bubble-control"><em class="i">i</em>
+                <div class="info-bubble">
+                  <%= tooltip.html_safe %>
+                </div>
+              </a>
+            <% end %>
+          </h3>
+
+          <%= image_tag(@green_package.graph.url, :alt => "", :width => 948, :height => 294) %>
+        </div>
+      <% end %>
+
+
+      <p><em>*<%= @green_package.disclaimer %></em></p>
     </div>
   </div>
 </div>

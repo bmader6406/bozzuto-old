@@ -159,13 +159,29 @@ FeedItem.blueprint do
   feed
 end
 
-Lead2LeaseSubmission.blueprint do
-  first_name    { Faker::Name.first_name }
-  last_name     { Faker::Name.last_name }
-  primary_phone { Faker::PhoneNumber.phone_number }
-  email         { Faker::Internet.email }
-  move_in_date  { Date.today }
-  comments      { '' }
+GreenFeature.blueprint do
+  title              { Sham.unique_name }
+  description        { Faker::Lorem.sentence }
+  photo_file_name    { Sham.file_name }
+  photo_content_type { 'text/jpg' }
+end
+
+GreenPackage.blueprint do
+  photo_file_name    { Sham.file_name }
+  photo_content_type { 'text/jpg' }
+  home_community     { HomeCommunity.make }
+  ten_year_old_cost  { rand(3000) + 500 }
+end
+
+GreenPackageItem.blueprint do
+  savings     { rand(1000) + 30 }
+  ultra_green { false }
+  green_feature
+  green_package
+end
+
+GreenPackageItem.blueprint(:ultra_green) do
+  ultra_green { true }
 end
 
 Home.blueprint do
@@ -199,6 +215,15 @@ LassoAccount.blueprint do
   project_id   { '789' }
   analytics_id { 'LAS-123456' }
   property     { HomeCommunity.make }
+end
+
+Lead2LeaseSubmission.blueprint do
+  first_name    { Faker::Name.first_name }
+  last_name     { Faker::Name.last_name }
+  primary_phone { Faker::PhoneNumber.phone_number }
+  email         { Faker::Internet.email }
+  move_in_date  { Date.today }
+  comments      { '' }
 end
 
 NewsPost.blueprint do

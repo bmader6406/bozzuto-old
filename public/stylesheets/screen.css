@@ -5089,7 +5089,7 @@ div.wysiwyg ul li {
 }
 
 .green-features .hotspot {
-	background: url(../images/structure/btn-hotspots.png) no-repeat;
+	background: url(../images/structure/btn-hotspots.png) no-repeat 0 -23px;
 	display: block;
 	height: 23px;
 	position: absolute;
@@ -5098,7 +5098,7 @@ div.wysiwyg ul li {
 
 .green-features .hotspot:hover,
 .green-features .hotspot.hover {
-	background-position: 0 -23px;
+	background-position: 0 0;
 }
 
 .green-features .hotspot-name {

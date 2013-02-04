@@ -17,5 +17,15 @@ class GreenPackageItem < ActiveRecord::Base
                             :integer_only             => true,
                             :greater_than_or_equal_to => 0
 
-  validates_inclusion_of :optional, :in => [true, false]
+  validates_inclusion_of :ultra_green, :in => [true, false]
+
+
+  named_scope :ultra_green, :conditions => { :ultra_green => true }
+
+  named_scope :include_ultra_green, lambda { |include_ultra_green|
+    { :conditions => { :ultra_green => false } } unless include_ultra_green
+  }
+
+
+  delegate :title, :to => :green_feature, :prefix => :green_feature
 end

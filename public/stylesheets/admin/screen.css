@@ -721,3 +721,28 @@ input.date_input { border: 1px solid #999; margin-bottom: 1em;}
 }
 
 /* @end */
+
+
+/* @group Green Package hotspot selector */
+#green-package-hotspot-selector {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+#green-package-hotspot-selector img {
+  cursor: crosshair;
+}
+
+#green-package-hotspot-selector .hotspot {
+	background: url(../../images/structure/btn-hotspots.png) no-repeat 0 -23px;
+	display: block;
+	height: 23px;
+  pointer-events: none;
+	position: absolute;
+	width: 23px;
+}
+
+#green-package-hotspot-selector .hotspot.current {
+	background: url(../../images/structure/btn-hotspots.png) no-repeat;
+}
+/* @end */

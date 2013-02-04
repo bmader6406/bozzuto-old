@@ -267,9 +267,23 @@ GreenPackage:
   fields:
     default: home_community_title
     list: home_community_title
-    form: home_community, photo
+    form: home_community, photo, ten_year_old_cost, graph_title, graph_tooltip, graph, disclaimer
     options:
-      required: home_community, photo
+      required: home_community, photo, ten_year_old_cost, disclaimer
+      ckeditor: graph_tooltip
+  order_by: 
+  relationships: green_package_items
+  filters:
+  search:
+  application: 
+
+GreenPackageItem:
+  fields:
+    default: position, green_feature_title, savings
+    list: green_feature_title
+    form: green_package, green_feature, ultra_green, savings
+    options:
+      required: green_package, green_feature, savings, x, y
   order_by: 
   relationships:
   filters:

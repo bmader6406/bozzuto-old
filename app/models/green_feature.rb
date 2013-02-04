@@ -16,4 +16,10 @@ class GreenFeature < ActiveRecord::Base
 
 
   validates_attachment_presence :photo
+
+
+  def to_s
+    title
+  end
+  alias_method :typus_name, :to_s
 end

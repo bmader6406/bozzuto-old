@@ -1,0 +1,29 @@
+<% form_for @item, :url  => options, :html => { :multipart => true } do |form| %>
+  <fieldset class="inputs">
+    <ol>
+      <%= build_form(@fields, form) %>
+    </ol>
+  </fieldset>
+
+  <fieldset>
+    <%= form.hidden_field :x %>
+    <%= form.hidden_field :y %>
+
+    <div id="green-package-hotspot-selector">
+      <% @item.green_package.green_package_items.each do |item| %>
+        <%= content_tag(:span, nil, :class          => "hotspot #{'current' if item == @item}",
+                                    :style          => "left: #{item.x - 11}px; top: #{item.y - 11}px;") %>
+      <% end %>
+      <%= image_tag @item.green_package.photo.url %>
+    </div>
+  </fieldset>
+
+  <fieldset class="buttons">
+    <ol>
+      <li>
+        <%= submit_tag button , :class => 'commit' %>
+        <%= link_to 'Cancel', :back %>
+      </li>
+    </ol>
+  </fieldset>
+<% end %>

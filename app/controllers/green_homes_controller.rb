@@ -6,7 +6,8 @@ class GreenHomesController < SectionContentController
   end
 
   def show
-    @community = HomeCommunity.find(params[:id])
+    @community     = HomeCommunity.with_green_package.find(params[:id])
+    @green_package = @community.green_package
 
     render :layout => 'application'
   end
@@ -29,7 +30,7 @@ class GreenHomesController < SectionContentController
   end
 
   def all_home_communities
-    @all_home_communities ||= HomeCommunity.published.ordered_by_title
+    @all_home_communities ||= HomeCommunity.published.with_green_package.ordered_by_title
   end
   helper_method :all_home_communities
 end

@@ -228,4 +228,30 @@ $(function() {
       }
     }
   })();
+
+	// green package item hotspot
+	(function() {
+		var $selector = $('#green-package-hotspot-selector'),
+				$img			= $selector.find('img'),
+				$hotspot  = $selector.find('.hotspot.current'),
+				$xInput   = $('input[name=green_package_item[x]]'),
+				$yInput   = $('input[name=green_package_item[y]]');
+
+		if ($selector.length == 0) {
+			return;
+		}
+
+		$img.bind('click', function(e) {
+			var x = e.pageX - $img.offset().left,
+			    y = e.pageY - $img.offset().top;
+
+			$xInput.val(x);
+			$yInput.val(y);
+
+			$hotspot.css({
+				left: (x - 11) + 'px',
+				top:  (y - 11) + 'px'
+			});
+		});
+	})();
 });

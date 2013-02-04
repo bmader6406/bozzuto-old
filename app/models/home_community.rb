@@ -25,6 +25,9 @@ class HomeCommunity < Community
     :convert_options => { :all => '-quality 80 -strip' }
 
 
+  named_scope :with_green_package,
+    :joins => 'INNER JOIN green_packages ON properties.id = green_packages.home_community_id'
+
   default_scope :order => 'title ASC'
 
 

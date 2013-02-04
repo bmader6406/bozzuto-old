@@ -14,22 +14,26 @@ class GreenHomesControllerTest < ActionController::TestCase
 
       should_respond_with :success
       should_render_template :index
+
       should_assign_to(:section) { @section }
       should_assign_to(:page) { @page }
     end
 
     context 'GET to #show' do
       setup do
-        @community = HomeCommunity.make
+        @community     = HomeCommunity.make
+        @green_package = GreenPackage.make :home_community => @community
 
         get :show, :id => @community.to_param, :section => @section.to_param
       end
 
       should_respond_with :success
       should_render_template :show
-      should_assign_to(:section)   { @section }
-      should_assign_to(:page)      { @page }
-      should_assign_to(:community) { @community }
+
+      should_assign_to(:section)       { @section }
+      should_assign_to(:page)          { @page }
+      should_assign_to(:community)     { @community }
+      should_assign_to(:green_package) { @green_package }
     end
   end
 end

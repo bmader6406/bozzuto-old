@@ -16,6 +16,7 @@ en:
       feed: Feed
       green_feature: Green Feature
       green_package: Green Package
+      green_package_item: Green Package Item
       home_community: Home Community
       home_floor_plan: Floor Plan
       home_page:
@@ -120,8 +121,16 @@ en:
       feed:
         url: Feed URL
       green_package:
+        graph_title: Graph Title
+        graph_tooltip: Graph Tooltip Text
         home_community: Home Community
         home_community_title: Home Community
+        ten_year_old_cost: Annual Cost of 10-Year Old Home
+      green_package_item:
+        green_feature: Green Feature
+        green_feature_title: Green Feature
+        green_package: Green Package
+        ultra_green: Ultra Green Feature
       home:
         bathrooms: Bath
         bedrooms: Bed
@@ -332,7 +341,12 @@ en:
       green_feature:
         photo: Image dimensions should be 170x170.
       green_package:
+        disclaimer: The italicized disclaimer text shown at the very bottom of the page.
+        graph: Image dimensions should be 948x294.
+        graph_title: The title of the graph shown at the bottom of the page.
+        graph_tooltip: The text shown in the tooltip next to the graph's title.
         photo: Image dimensions should be 498x551.
+        ten_year_old_cost: 'This cost will be used to calculate the percent savings:<br><code>( &lt;sum of savings&gt; / &lt;annual cost of 10 year old home&gt; ) * 100</code>'
       home_community:
         listing_promo: Image dimensions should be 151x54
         video_url: This URL is by the "Watch Video" link when many home communities are shown on one page e.g. on <a href="http://www.bozzuto.com/new-homes/communities">this page</a>. To change the "Watch Video" buttons that appear on the slides on the main listing page, edit the "Slideshow" further down this page.

@@ -6,7 +6,7 @@ class CreateGreenPackageItems < ActiveRecord::Migration
 
       t.decimal :savings, :null => false, :precision => 8, :scale => 2, :default => 0
 
-      t.boolean :optional, :default => false, :null => false
+      t.boolean :ultra_green, :default => false, :null => false
 
       t.integer :x, :default => 0
       t.integer :y, :default => 0

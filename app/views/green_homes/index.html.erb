@@ -5,6 +5,6 @@
 
 <%= @page.body.try(:html_safe) %>
 
-<% HomeCommunity.published.ordered_by_title.each do |community| %>
+<% all_home_communities.each do |community| %>
   <%= link_to community.title, green_home_path(community) %><br>
 <% end %>
