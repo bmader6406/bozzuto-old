@@ -93,6 +93,8 @@ window.bozzuto = {};
 
     $('.carousel').carousel();
 
+		$('.green-homes-list li').captionAnimation();
+
     $('.community-icons a').toolTip();
 
     $('.listings .row:last-child').evenUp();
@@ -1212,28 +1214,7 @@ window.bozzuto = {};
 
           $carousel.trigger('carousel:load', 0);
 
-          // Animate slide captions
-          $slides.each(function() {
-            var $slide   = $(this),
-                $caption = $('.caption', $slide),
-                $title   = $('strong', $caption),
-                duration = 250,
-                offset;
-
-            offset = -1 * (
-              $caption.outerHeight() -
-              parseInt($caption.css('padding-top')) -
-              $title.outerHeight(true)
-            );
-
-            $caption.css({ bottom: offset });
-
-            $slide.hover(function() {
-              $caption.animate({ bottom: '0px' }, duration);
-            }, function() {
-              $caption.animate({ bottom: offset }, duration);
-            });
-          });
+					$slides.captionAnimation();
 
           $carousel.removeClass('loading');
         },
@@ -1339,5 +1320,30 @@ window.bozzuto = {};
 			});
     });
   };
+
+
+	$.fn.captionAnimation = function() {
+		return $(this).each(function() {
+			var $slide   = $(this),
+					$caption = $('.caption', $slide),
+					$title   = $('strong', $caption),
+					duration = 250,
+					offset;
+
+			offset = -1 * (
+				$caption.outerHeight() -
+				parseInt($caption.css('padding-top')) -
+				$title.outerHeight(true)
+			);
+
+			$caption.css({ bottom: offset });
+
+			$slide.hover(function() {
+				$caption.animate({ bottom: '0px' }, duration);
+			}, function() {
+				$caption.animate({ bottom: offset }, duration);
+			});
+		});
+	};
 
 })(jQuery);
