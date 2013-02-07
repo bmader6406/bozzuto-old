@@ -96,7 +96,7 @@
         </div>
 
         <div class="interactive">
-          <%= image_tag('green-features-home-hotspots.jpg', :alt => "", :height => 551, :width => 498) %>
+          <%= image_tag(@green_package.photo.url, :alt => "", :height => 551, :width => 498) %>
 
           <ul id="hotspots">
             <% @green_package.green_package_items.each_with_index do |item, i| %>
