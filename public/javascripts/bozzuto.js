@@ -877,37 +877,106 @@ window.bozzuto = {};
   // Floor plan overlay
   $.fn.floorPlanOverlay = function() {
     return this.each(function() {
-      var $link = $(this),
-          $image = $('<img src="' + $link.attr('href') + '" class="floor-plan-overlay" />'),
-          $button = $('<span class="floor-plan-view-full">View Full-Size</span>')
-              .appendTo($link)
-              .css({
-            'display' : 'none',
-            'top'     : ( $link.find('img').height() / 2 ) - 12
-          });
+      var $container            = $(this),
+          $image                = $('img', $container),
+          $link                 = $('.floor-plan-view-full', $container),
+          $span                 = $('span', $link),
+          $pinterest            = $('.pinterest-button', $container),
 
+          // container dimensions
+          containerWidth        = $image.width(),
+          containerHeight       = $image.height(),
+
+          // coordinates for center
+          centerX               = containerWidth / 2,
+          centerY               = containerHeight / 2,
+
+          // span dimensions
+          spanWidth             = $span.outerWidth(),
+          spanHeight            = $span.outerHeight(),
+
+          // pinterest button dimensions
+          pinterestWidth        = $pinterest.outerWidth(),
+          pinterestHeight       = $pinterest.outerHeight(),
+
+          // spacing between buttons
+          buttonSpacing         = 10,
+
+          // flag for hovering over buttons
+          hoveringOverLink      = false,
+          hoveringOverPinterest = false;
+
+
+      $container.addClass('floor-plan-view-js');
+
+      // expand the link to completely cover the image
+      $link.css({
+        'width':  containerWidth + 'px',
+        'height': containerHeight + 'px'
+      });
+
+      // center the span over the image
+      $span.css({
+        'top':  centerY - (spanHeight / 2) + 'px',
+        'left': centerX - (spanWidth / 2) + 'px'
+      });
+      $span.hide();
+
+      // position the pinterest button just below the span
+      $pinterest.css({
+        'top':  centerY + (spanHeight / 2) + buttonSpacing + 'px',
+        'left': centerX - ($pinterest.outerWidth() / 2) + 'px'
+      });
+      $pinterest.hide();
+
+
+      // pinterest button event handlers
+      $pinterest.hover(function() {
+        hoveringOverPinterest = true;
+      }, function() {
+        hoveringOverPinterest = false;
+      });
+
+
+      // link even handlers
       $link.bind({
-        'mouseenter' : function() {
-          $button.fadeIn();
+        'mouseenter': function() {
+          hoveringOverLink = true;
+
+          $span.fadeIn();
+          $pinterest.fadeIn();
         },
-        'mouseleave' : function() {
-          $button.fadeOut();
+
+        'mouseleave': function() {
+          hoveringOverLink = false;
+
+          setTimeout(function() {
+            if (!hoveringOverPinterest && !hoveringOverLink) {
+              $span.fadeOut();
+              $pinterest.fadeOut();
+            }
+          }, 150);
         },
-        'click' : function(e) {
+
+        'click': function(e) {
           e.preventDefault();
 
+          var url    = $(this).attr('href'),
+              $image = $('<img src="' + url + '" class="floor-plan-overlay" />');
+
           $image.lightbox_me({
-            appearEffect: 'show',
-            overlaySpeed: 0,
-            closeClick: true,
+            appearEffect:   'show',
+            overlaySpeed:   0,
+            closeClick:     true,
             destroyOnClose: true,
-            lightboxSpeed: 'slow',
-            centered: true,
+            lightboxSpeed:  'slow',
+            centered:       true,
+
             overlayCSS: {
               'background': '#000',
               'opacity': .50
             },
-            onLoad:    function() {
+            onLoad: function() {
               $image.fadeTo(250, 1)
             },
             onClose: function() {

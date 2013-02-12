@@ -47,9 +47,11 @@ class ApartmentCommunitiesHelperTest < ActionView::TestCase
       end
 
       should 'return the link' do
-        link = HTML::Document.new(floor_plan_image(@plan))
-        assert_select link.root, 'a', :count => 1, :href => @plan
-        assert_select link.root, 'img', :count => 1, :src => @plan
+        html = HTML::Document.new(floor_plan_image(@plan))
+
+        assert_select html.root, 'a', :count => 1, :href => @plan
+        assert_select html.root, 'img', :count => 1, :src => @plan
+        assert_select html.root, 'a span', 'View Full-Size'
       end
     end
 
@@ -76,14 +78,11 @@ class ApartmentCommunitiesHelperTest < ActionView::TestCase
       end
 
       should "return the javascript code" do
-        assert_match /#{@community.address}/,
-          walkscore_map_script(@community)
+        assert_match /#{@community.address}/, walkscore_map_script(@community)
 
-        assert_match /var ws_width = '500';/,
-          walkscore_map_script(@community, :width => 500)
+        assert_match /var ws_width = '500';/, walkscore_map_script(@community, :width => 500)
 
-        assert_match /var ws_height = '700';/,
-          walkscore_map_script(@community, :height => 700)
+        assert_match /var ws_height = '700';/, walkscore_map_script(@community, :height => 700)
       end
     end
 

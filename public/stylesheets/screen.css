@@ -1204,6 +1204,15 @@ div.wysiwyg ul li {
     width: 300px;
     z-index: 1;
   }
+  #slideshow .pinterest-button {
+    bottom: 20px;
+    display: block;
+    height: 20px;
+    position: absolute;
+    right: 20px;
+    width: 40px;
+    z-index: 20;
+  }
 
   /* pagination */
   #slideshow ul.slideshow-pagination {
@@ -1313,7 +1322,7 @@ div.wysiwyg ul li {
   .community #masthead #remote-nav a,
   .community #overview a,
   .community #apartments a,
-  .community .floor-plan a,
+  .community .floor-plan a.floor-plan-reserve,
   .community #nearby-communities a,
   .community .social-updates a,
   .community #recently-viewed a,
@@ -2897,31 +2906,54 @@ div.wysiwyg ul li {
   .floor-plans .floor-plan {
     width: 180px;
   }
-  .community .floor-plan a.floor-plan-view {
+
+  .community .floor-plan .floor-plan-view {
     background: none;
     display: block;
     position: relative;
   }
-  .community .floor-plan a.floor-plan-view:hover {
-    text-decoration: none;
-  }
-  .floor-plan-view-full {
-    background: #D5D8DC;
-    border: 1px solid #9BA2AD;
-    color: #595E71;
+
+	.floor-plan-view-js .floor-plan-view-full {
+		left: 0;
+		position: absolute;
+		top: 0;
+	}
+
+	.floor-plan-view-js .floor-plan-view-full span {
+		margin: 0px;
+		position: absolute;
+	}
+
+	.floor-plan-view-js .pinterest-button {
+		height: 20px;
+		position: absolute;
+		width: 40px;
+	}
+
+  a.floor-plan-view-full {
+		background: transparent !important
+    display: block;
+		padding-left: 0 !important;
+	}
+  .floor-plan-view-full span {
+    background: #d5d8dc !important;
+    border: 1px solid #9ba2ad;
+    color: #595e71;
     display: block;
     font-size: 0.833333em;
     height: 24px;
-    left: 40px;
     line-height: 24px;
+		margin: 10px 0;
     overflow: visible;
-    padding: 0px 5px;
-    position: absolute;
+    padding: 0px 5px !important;
     text-align: center;
     text-transform: uppercase;
-    top: 75px;
     width: 90px;
   }
+  .floor-plan-view-full:hover {
+		text-decoration: none;
+	}
+
   .floor-plan-overlay {
     opacity: 0;
     -moz-opacity: 0;

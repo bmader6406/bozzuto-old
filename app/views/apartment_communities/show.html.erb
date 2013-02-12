@@ -65,6 +65,7 @@
                     From <%= cheapest_price %>
                   <% end %>
                 </td>
+
                 <td class="availability">
                   <%= link_to "Availability", (@community.availability_url.presence || apartment_community_contact_path(@community)), :rel => 'external', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Availability" %>
                 </td>
@@ -83,17 +84,18 @@
           <% @community.featured_floor_plans.non_zero_min_rent.take(3).each do |plan| %>
             <li class="floor-plan">
               <h4><%= plan.name %></h4>
+
               <p>
                 <%= square_feet(plan) %> |
                 <%= floor_plan_price(plan.min_rent) %>
 
                 <% if plan.availability_url.present? %>
                   <br />
-                  <%= link_to 'Reserve', plan.availability_url, :rel => 'external', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Reserve" %>
+									<%= link_to 'Reserve', plan.availability_url, :class => 'floor-plan-reserve', :rel => 'external', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Reserve" %>
                 <% end %>
               </p>
 
-              <%= floor_plan_image(plan) %>
+              <%= floor_plan_image(plan, pinterest_button(request.url, image_path(plan.actual_image))) %>
             </li>
           <% end %>
         </ul>

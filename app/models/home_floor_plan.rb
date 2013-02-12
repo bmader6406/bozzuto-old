@@ -13,4 +13,12 @@ class HomeFloorPlan < ActiveRecord::Base
     :convert_options => { :all => '-quality 80 -strip' }
 
   validates_attachment_presence :image
+
+  def actual_image
+    image.url
+  end
+
+  def actual_thumb
+    image.url(:thumb)
+  end
 end

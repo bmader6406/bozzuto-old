@@ -55,12 +55,22 @@ module ApartmentCommunitiesHelper
     end
   end
 
-  def floor_plan_image(plan)
+  def floor_plan_image(plan, extra = '')
     image = plan.actual_image
     thumb = plan.actual_thumb
 
     if image.present?
-      link_to image_tag(thumb, :width => 160), image, :class => 'floor-plan-view'
+      content_tag(:div, :class => 'floor-plan-view') do
+        ''.tap do |html|
+          html << image_tag(thumb, :width => 160)
+
+          html << link_to(image, :class => 'floor-plan-view-full') do
+            content_tag(:span, 'View Full-Size')
+          end
+
+          html << extra
+        end.html_safe
+      end
     end
   end
 
