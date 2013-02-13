@@ -49,6 +49,10 @@
   <%= render 'homes_secondary_nav' %>
 <% end %>
 
+<% if @section.cached_slug == 'careers' && @page.first? %>
+  <%= render 'pages/careers_secondary_nav' %>
+<% end %>
+
 <% if @section.service? && @page.first? && @section.projects.any? %>
   <div class="section services">
     <div class="content">
