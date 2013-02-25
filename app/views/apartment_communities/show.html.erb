@@ -95,7 +95,9 @@
                 <% end %>
               </p>
 
-              <%= floor_plan_image(plan, pinterest_button(request.url, image_path(plan.actual_image))) %>
+              <% if plan.actual_image.present? %>
+                <%= floor_plan_image(plan, pinterest_button(request.url, image_path(plan.actual_image))) %>
+              <% end %>
             </li>
           <% end %>
         </ul>
