@@ -2931,7 +2931,7 @@ div.wysiwyg ul li {
 	}
 
   a.floor-plan-view-full {
-		background: transparent !important
+		background: transparent !important;
     display: block;
 		padding-left: 0 !important;
 	}

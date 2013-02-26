@@ -1,0 +1,4 @@
+/* Needed in IE8+ to fix link not showing because background is transparent */
+a.floor-plan-view-full {
+  background: url(transparent.gif) !important;
+}
