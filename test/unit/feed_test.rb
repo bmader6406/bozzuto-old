@@ -90,7 +90,7 @@ class FeedTest < ActiveSupport::TestCase
               assert_equal item['link'], @feed.items[i].url
               unless item['pubDate'].blank?
                 # must send #to_s here for Yahoo Pipes janky RSS feed
-                assert_equal Time.parse(item['pubDate'].to_s).rfc822,
+                assert_equal Time.zone.parse(item['pubDate'].to_s).rfc822,
                   @feed.items[i].published_at.rfc822
               end
             end
