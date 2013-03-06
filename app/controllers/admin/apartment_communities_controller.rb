@@ -68,6 +68,10 @@ class Admin::ApartmentCommunitiesController < Admin::MasterController
     redirect_to url_for_action(:edit)
   end
 
+  def export_field_audit
+    csv_string = Bozzuto::ApartmentCommunityFieldAudit.audit_csv
+    send_data csv_string, :filename => "apartment_communities_field_audit.csv", :type => :csv
+  end
 
   private
 

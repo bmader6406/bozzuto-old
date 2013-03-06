@@ -22,7 +22,7 @@ ApartmentCommunity:
   search: properties.title, properties.street_address
   application: Properties
   actions:
-    index: list_deleted, list_duplicates
+    index: list_deleted, list_duplicates, export_field_audit
     show: preview
     edit: preview
 
