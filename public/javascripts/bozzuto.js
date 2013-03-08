@@ -1,23 +1,23 @@
 // original, unminified header script
 // immediately sets a "narrowPage" class on the HTML tag if a page is narrow
 
-/* 
+/*
 function align(de) {
-  
+
   var d  = document,
       c  = ' narrowPage',
       db = d.body;
-      
+
       if ( ! window.innerWidth) {
         w = ( de.clientWidth == 0 ) ? db.clientWidth : de.clientWidth;
       } else {
-        w = window.innerWidth;            
+        w = window.innerWidth;
       }
   a( de, w, c );
 }
 
 function a( de, w, c ){
-  
+
   var cn = de.className,
       hc = cn.indexOf(c) != -1,
       n  = w < 1130 && w > 980;
@@ -27,7 +27,7 @@ function a( de, w, c ){
   } else if ( !n && hc ){
     de.className = cn.replace(c, '');
   }
-  
+
 }
 
 align(document.documentElement);
@@ -93,7 +93,7 @@ window.bozzuto = {};
 
     $('.carousel').carousel();
 
-		$('.green-homes-list li').captionAnimation();
+    $('.green-homes-list li').captionAnimation();
 
     $('.community-icons a').toolTip();
 
@@ -129,7 +129,7 @@ window.bozzuto = {};
     });
 
     $('.expand-and-disappear').expandAndDisappear();
-    
+
     $('.careers-banner').careersBanner();
 
     $('.partner-portrait').portrait();
@@ -202,78 +202,78 @@ window.bozzuto = {};
     });
 
 
-		// Home page Featured News/Tom's Blog captions
-		$('.home .latest-news, .home .bozzuto-blog').each(function() {
-			var $container = $(this),
-					$title     = $container.find('.title'),
-					duration   = 250,
-					offset;
+    // Home page Featured News/Tom's Blog captions
+    $('.home .latest-news, .home .bozzuto-blog').each(function() {
+      var $container = $(this),
+          $title     = $container.find('.title'),
+          duration   = 250,
+          offset;
 
-			offset = -1 * $title.outerHeight(true);
+      offset = -1 * $title.outerHeight(true);
 
-			$title.css({ bottom: offset });
+      $title.css({ bottom: offset });
 
-			$container.hover(function() {
-				$title.animate({ bottom: '0px' }, duration);
-			}, function() {
-				$title.animate({ bottom: offset }, duration);
-			});
-		});
-		
-		(function() {
-			var $greenFeatures = $('.green-features'),
-				$hotspotTable = $greenFeatures.find('.hotspot-table'),
-				$hotspots = $('#hotspots'),
-				$hotspotDetails = $('#hotspot-details');
-							
-			$hotspotTable.find('tbody').delegate('tr', 'click', function() {
-				var $this = $(this);
-				
-				if(!$this.hasClass('current')) {
-					changeHotspot($this);
-				}
-			});
-			
-			$hotspots.delegate('a.hotspot', 'click', function(e) {
-				var $this = $(this);
-				
-				if(!$this.hasClass('hover')) {
-					changeHotspot($this);
-				}
-				
-				e.preventDefault();
-			});
-			
-			function changeHotspot($el) {
-				var target = $el.attr('data-hotspot'),
-					$hotspot = $('#hotspot-' + target),
-					$hotspotDetail = $('#hotspot-detail-' + target),
-					$hotspotRow = $('#hotspot-row-' + target);
+      $container.hover(function() {
+        $title.animate({ bottom: '0px' }, duration);
+      }, function() {
+        $title.animate({ bottom: offset }, duration);
+      });
+    });
 
-				$hotspotTable.find('.current').removeClass('current');
-				$hotspotRow.addClass('current');
+    (function() {
+      var $greenFeatures = $('.green-features'),
+        $hotspotTable = $greenFeatures.find('.hotspot-table'),
+        $hotspots = $('#hotspots'),
+        $hotspotDetails = $('#hotspot-details');
 
-				$hotspots.find('.hover').removeClass('hover');
-				$hotspot.addClass('hover');
+      $hotspotTable.find('tbody').delegate('tr', 'click', function() {
+        var $this = $(this);
 
-				$hotspotDetails.find('.current').removeClass('current');
-				$hotspotDetail.addClass('current');
-			}
-			
-			$('#ultra-green-package').bind('change', function() {
-				var $this = $(this),
-						$savings = $('.percent-savings');
-				
-				$greenFeatures.toggleClass('ultra-green-active');
-				$hotspotTable.find('tfoot tr:first').toggle();
+        if(!$this.hasClass('current')) {
+          changeHotspot($this);
+        }
+      });
 
-				if ($this.is(':checked')) {
-					$savings.text($savings.attr('data-savings-with-ultra-green'));
-				} else {
-					$savings.text($savings.attr('data-savings'));
-				}
-			});
-		})();
+      $hotspots.delegate('a.hotspot', 'click', function(e) {
+        var $this = $(this);
+
+        if(!$this.hasClass('hover')) {
+          changeHotspot($this);
+        }
+
+        e.preventDefault();
+      });
+
+      function changeHotspot($el) {
+        var target = $el.attr('data-hotspot'),
+          $hotspot = $('#hotspot-' + target),
+          $hotspotDetail = $('#hotspot-detail-' + target),
+          $hotspotRow = $('#hotspot-row-' + target);
+
+        $hotspotTable.find('.current').removeClass('current');
+        $hotspotRow.addClass('current');
+
+        $hotspots.find('.hover').removeClass('hover');
+        $hotspot.addClass('hover');
+
+        $hotspotDetails.find('.current').removeClass('current');
+        $hotspotDetail.addClass('current');
+      }
+
+      $('#ultra-green-package').bind('change', function() {
+        var $this = $(this),
+            $savings = $('.percent-savings');
+
+        $greenFeatures.toggleClass('ultra-green-active');
+        $hotspotTable.find('tfoot tr:first').toggle();
+
+        if ($this.is(':checked')) {
+          $savings.text($savings.attr('data-savings-with-ultra-green'));
+        } else {
+          $savings.text($savings.attr('data-savings'));
+        }
+      });
+    })();
   });
 
   function viewMoreFloorPlanGroups($set) {
@@ -385,12 +385,12 @@ window.bozzuto = {};
       }).height(maxHeight);
     });
   };
-  
+
   // default options
   $.fn.equalHeight.defaults = {
     find: 'li'
   };
-  
+
 
   // map with custom markers
   $.fn.bozzutoMap = function() {
@@ -669,10 +669,10 @@ window.bozzuto = {};
 
       // setup
       $("li:not(.current) ul:has(li.current)", this).show();
-	  $("li.current > ul", this).show();
+    $("li.current > ul", this).show();
       $("> li:has(li.current)", this).find("span.switch").html("&ndash;");
       $("> li:has(li.current) li.current", this).find("span.switch").html("+");
-	  $("li.current > a", this).find("span.switch").html("&ndash;");
+    $("li.current > a", this).find("span.switch").html("&ndash;");
     });
   };
 
@@ -729,7 +729,7 @@ window.bozzuto = {};
         if (tooltime != 'inactive') {
           clearTimeout(tooltime);
         } else {
-          
+
           $tooltip.show();
 
           $tooltipArrow.animate({
@@ -845,7 +845,7 @@ window.bozzuto = {};
   $.fn.leaderLightbox = function() {
     return this.each(function() {
       var $this = $(this),
-					bioId = '#' + $this.attr('href').split('#')[1],
+          bioId = '#' + $this.attr('href').split('#')[1],
           $bio  = $(bioId).children();
 
       if (!$bio.data('closeAdded')) {
@@ -877,120 +877,134 @@ window.bozzuto = {};
   // Floor plan overlay
   $.fn.floorPlanOverlay = function() {
     return this.each(function() {
-      var $container            = $(this),
-          $image                = $('img', $container),
-          $link                 = $('.floor-plan-view-full', $container),
-          $span                 = $('span', $link),
-          $pinterest            = $('.pinterest-button', $container),
+      var $container = $(this),
+          $image     = $('img', $container),
+          $link      = $('.floor-plan-view-full', $container),
+          $span      = $('span', $link),
+          $pinterest = $('.pinterest-button', $container);
 
-          // container dimensions
-          containerWidth        = $image.width(),
-          containerHeight       = $image.height(),
-
-          // coordinates for center
-          centerX               = containerWidth / 2,
-          centerY               = containerHeight / 2,
-
-          // span dimensions
-          spanWidth             = $span.outerWidth(),
-          spanHeight            = $span.outerHeight(),
-
-          // pinterest button dimensions
-          pinterestWidth        = $pinterest.outerWidth(),
-          pinterestHeight       = $pinterest.outerHeight(),
-
-          // spacing between buttons
-          buttonSpacing         = 10,
-
-          // flag for hovering over buttons
-          hoveringOverLink      = false,
-          hoveringOverPinterest = false;
-
-
-      $container.addClass('floor-plan-view-js');
-
-      // expand the link to completely cover the image
-      $link.css({
-        'width':  containerWidth + 'px',
-        'height': containerHeight + 'px'
-      });
-
-      // center the span over the image
-      $span.css({
-        'top':  centerY - (spanHeight / 2) + 'px',
-        'left': centerX - (spanWidth / 2) + 'px'
-      });
-      $span.hide();
-
-      // position the pinterest button just below the span
-      $pinterest.css({
-        'top':  centerY + (spanHeight / 2) + buttonSpacing + 'px',
-        'left': centerX - ($pinterest.outerWidth() / 2) + 'px'
-      });
+      $link.hide();
       $pinterest.hide();
 
+      // delay further setup until the image is moused over
+      // this is to allow time for the image to load. if we setup
+      // too early, height may be 0
+      $image.bind('mouseover', function() {
+        // remove this setup handler
+        $image.unbind('mouseover');
 
-      // pinterest button event handlers
-      $pinterest.hover(function() {
-        hoveringOverPinterest = true;
-      }, function() {
-        hoveringOverPinterest = false;
+        $link.show();
+        $pinterest.show();
+
+            // container dimensions
+        var containerWidth        = $image.width(),
+            containerHeight       = $image.height(),
+
+            // coordinates for center
+            centerX               = containerWidth / 2,
+            centerY               = containerHeight / 2,
+
+            // span dimensions
+            spanWidth             = $span.outerWidth(),
+            spanHeight            = $span.outerHeight(),
+
+            // pinterest button dimensions
+            pinterestWidth        = $pinterest.outerWidth(),
+            pinterestHeight       = $pinterest.outerHeight(),
+
+            // spacing between buttons
+            buttonSpacing         = 10,
+
+            // flag for hovering over buttons
+            hoveringOverLink      = false,
+            hoveringOverPinterest = false;
+
+
+        $container.addClass('floor-plan-view-js');
+
+
+        // expand the link to completely cover the image
+        $link.css({
+          'width':  containerWidth + 'px',
+          'height': containerHeight + 'px'
+        });
+
+        // center the span over the image
+        $span.css({
+          'top':  centerY - (spanHeight / 2) + 'px',
+          'left': centerX - (spanWidth / 2) + 'px'
+        });
+        $span.hide();
+
+        // position the pinterest button just below the span
+        $pinterest.css({
+          'top':  centerY + (spanHeight / 2) + buttonSpacing + 'px',
+          'left': centerX - ($pinterest.outerWidth() / 2) + 'px'
+        });
+        $pinterest.hide();
+
+        // pinterest button event handlers
+        $pinterest.hover(function() {
+          hoveringOverPinterest = true;
+        }, function() {
+          hoveringOverPinterest = false;
+        });
+
+
+        // link even handlers
+        $link.bind({
+          'mouseenter': function() {
+            hoveringOverLink = true;
+
+            $span.fadeIn();
+            $pinterest.fadeIn();
+          },
+
+          'mouseleave': function() {
+            hoveringOverLink = false;
+
+            setTimeout(function() {
+              if (!hoveringOverPinterest && !hoveringOverLink) {
+                $span.fadeOut();
+                $pinterest.fadeOut();
+              }
+            }, 150);
+          },
+
+          'click': function(e) {
+            e.preventDefault();
+
+            var url    = $(this).attr('href'),
+                $image = $('<img src="' + url + '" class="floor-plan-overlay" />');
+
+            $image.lightbox_me({
+              appearEffect:   'show',
+              overlaySpeed:   0,
+              closeClick:     true,
+              destroyOnClose: true,
+              lightboxSpeed:  'slow',
+              centered:       true,
+
+              overlayCSS: {
+                'background': '#000',
+                'opacity': .50
+              },
+              onLoad: function() {
+                $image.fadeTo(250, 1)
+              },
+              onClose: function() {
+                $image.css({
+                  'opacity' : 0
+                })
+              }
+            });
+
+            $image.click(function() {
+              $image.trigger('close');
+            })
+          }
+        });
       });
-
-
-      // link even handlers
-      $link.bind({
-        'mouseenter': function() {
-          hoveringOverLink = true;
-
-          $span.fadeIn();
-          $pinterest.fadeIn();
-        },
-
-        'mouseleave': function() {
-          hoveringOverLink = false;
-
-          setTimeout(function() {
-            if (!hoveringOverPinterest && !hoveringOverLink) {
-              $span.fadeOut();
-              $pinterest.fadeOut();
-            }
-          }, 150);
-        },
-
-        'click': function(e) {
-          e.preventDefault();
-
-          var url    = $(this).attr('href'),
-              $image = $('<img src="' + url + '" class="floor-plan-overlay" />');
-
-          $image.lightbox_me({
-            appearEffect:   'show',
-            overlaySpeed:   0,
-            closeClick:     true,
-            destroyOnClose: true,
-            lightboxSpeed:  'slow',
-            centered:       true,
-
-            overlayCSS: {
-              'background': '#000',
-              'opacity': .50
-            },
-            onLoad: function() {
-              $image.fadeTo(250, 1)
-            },
-            onClose: function() {
-              $image.css({
-                'opacity' : 0
-              })
-            }
-          });
-
-          $image.click(function() {
-            $image.trigger('close');
-          })
-        }
-      })
     });
   };
 
@@ -1157,7 +1171,7 @@ window.bozzuto = {};
     }
 
     var slideIndex = $slide.prevAll().size(),
-        $pagination = $('ul.slideshow-pagination', $slideshow); 
+        $pagination = $('ul.slideshow-pagination', $slideshow);
 
     if (!$slide.hasClass('current')) {
       $slide.animate({ opacity: 0 }, 1, function() {
@@ -1238,15 +1252,15 @@ window.bozzuto = {};
             $nav.append($pager);
 
             for (var i = 1; i <= setCount; i++) {
-							var klass;
+              var klass;
 
-							if (i == 1) {
-								klass = 'first';
-							} else if (i == setCount) {
-								klass = 'last';
-							} else {
-								klass = '';
-							}
+              if (i == 1) {
+                klass = 'first';
+              } else if (i == setCount) {
+                klass = 'last';
+              } else {
+                klass = '';
+              }
 
               $pager.append($('<a href="#" class="' + klass + '" -data-page="' + i + '">' + i + '</a>'));
             }
@@ -1283,7 +1297,7 @@ window.bozzuto = {};
 
           $carousel.trigger('carousel:load', 0);
 
-					$slides.captionAnimation();
+          $slides.captionAnimation();
 
           $carousel.removeClass('loading');
         },
@@ -1315,9 +1329,9 @@ window.bozzuto = {};
             $prev.show();
           }
 
-					if ($pageLinks) {
-						$pageLinks.removeClass('current').eq(currentSet).addClass('current');
-					}
+          if ($pageLinks) {
+            $pageLinks.removeClass('current').eq(currentSet).addClass('current');
+          }
 
           $container.animate({ 'left': (-1 * setOffset * currentSet) + 'px' }, duration);
         }
@@ -1329,90 +1343,90 @@ window.bozzuto = {};
 
 
   $.fn.careersBanner = function() {
-		var headerFadeDuration = 150,
-				photoFadeDuration  = 250;
+    var headerFadeDuration = 150,
+        photoFadeDuration  = 250;
 
     return this.each(function() {
-			var $container     = $(this),
-					$links         = $container.find('.careers-employee a'),
-					$baseHeader    = $container.find('.careers-header-base'),
-					$currentHeader = $baseHeader;
+      var $container     = $(this),
+          $links         = $container.find('.careers-employee a'),
+          $baseHeader    = $container.find('.careers-header-base'),
+          $currentHeader = $baseHeader;
 
-			$links.each(function() {
-				var $link    = $(this),
-						$gray    = $link.find('img.gray'),
-						$color   = null,
-						timer    = null,
-						$header  = $baseHeader.clone(),
-						name     = $link.find('.careers-employee-name').text(),
-						jobTitle = $link.find('.careers-employee-job-title').text(),
-						company  = $link.find('.careers-employee-company').text();
+      $links.each(function() {
+        var $link    = $(this),
+            $gray    = $link.find('img.gray'),
+            $color   = null,
+            timer    = null,
+            $header  = $baseHeader.clone(),
+            name     = $link.find('.careers-employee-name').text(),
+            jobTitle = $link.find('.careers-employee-job-title').text(),
+            company  = $link.find('.careers-employee-company').text();
 
-				// Add color image
-				$link.append('<img src="' + $gray.attr('data-color') + '" class="color" />');
-				$color = $link.find('img.color');
+        // Add color image
+        $link.append('<img src="' + $gray.attr('data-color') + '" class="color" />');
+        $color = $link.find('img.color');
 
-				// Add header
-				$header.removeClass('careers-header-base');
+        // Add header
+        $header.removeClass('careers-header-base');
 
-				$header.find('h1').text(name);
-				$header.find('p').html(jobTitle + '<br />' + company);
-				$header.css('display', 'none');
+        $header.find('h1').text(name);
+        $header.find('p').html(jobTitle + '<br />' + company);
+        $header.css('display', 'none');
 
-				$container.append($header);
+        $container.append($header);
 
 
-				$link.hover(function() {
-					clearTimeout(timer);
+        $link.hover(function() {
+          clearTimeout(timer);
 
-					// Fade in color photo
-					$color.fadeIn(photoFadeDuration);
+          // Fade in color photo
+          $color.fadeIn(photoFadeDuration);
 
-					// Replace header
-					$currentHeader.fadeOut(headerFadeDuration);
-					$header.fadeIn(headerFadeDuration);
-					$currentHeader = $header;
-				}, function() {
-					timer = setTimeout(function() {
-						// Fade out color photo
-						$color.fadeOut(photoFadeDuration);
+          // Replace header
+          $currentHeader.fadeOut(headerFadeDuration);
+          $header.fadeIn(headerFadeDuration);
+          $currentHeader = $header;
+        }, function() {
+          timer = setTimeout(function() {
+            // Fade out color photo
+            $color.fadeOut(photoFadeDuration);
 
-						// Header hasn't changed to another entry, so revert
-						// back to the base header
-						if ($currentHeader == $header) {
-							$header.fadeOut(headerFadeDuration);
-							$baseHeader.fadeIn(headerFadeDuration);
-							$currentHeader = $baseHeader;
-						}
-					}, 200);
-				});
-			});
+            // Header hasn't changed to another entry, so revert
+            // back to the base header
+            if ($currentHeader == $header) {
+              $header.fadeOut(headerFadeDuration);
+              $baseHeader.fadeIn(headerFadeDuration);
+              $currentHeader = $baseHeader;
+            }
+          }, 200);
+        });
+      });
     });
   };
 
 
-	$.fn.captionAnimation = function() {
-		return $(this).each(function() {
-			var $slide   = $(this),
-					$caption = $('.caption', $slide),
-					$title   = $('strong', $caption),
-					duration = 250,
-					offset;
+  $.fn.captionAnimation = function() {
+    return $(this).each(function() {
+      var $slide   = $(this),
+          $caption = $('.caption', $slide),
+          $title   = $('strong', $caption),
+          duration = 250,
+          offset;
 
-			offset = -1 * (
-				$caption.outerHeight() -
-				parseInt($caption.css('padding-top')) -
-				$title.outerHeight(true)
-			);
+      offset = -1 * (
+        $caption.outerHeight() -
+        parseInt($caption.css('padding-top')) -
+        $title.outerHeight(true)
+      );
 
-			$caption.css({ bottom: offset });
+      $caption.css({ bottom: offset });
 
-			$slide.hover(function() {
-				$caption.animate({ bottom: '0px' }, duration);
-			}, function() {
-				$caption.animate({ bottom: offset }, duration);
-			});
-		});
-	};
+      $slide.hover(function() {
+        $caption.animate({ bottom: '0px' }, duration);
+      }, function() {
+        $caption.animate({ bottom: offset }, duration);
+      });
+    });
+  };
 
 })(jQuery);
