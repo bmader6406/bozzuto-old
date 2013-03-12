@@ -22,4 +22,9 @@ class Admin::HomeCommunitiesController < Admin::MasterController
     find_item
     redirect_to home_community_url(@item)
   end
+
+  def export_field_audit
+    csv_string = Bozzuto::HomeCommunityFieldAudit.audit_csv
+    send_data csv_string, :filename => "home_communities_field_audit.csv", :type => :csv
+  end
 end

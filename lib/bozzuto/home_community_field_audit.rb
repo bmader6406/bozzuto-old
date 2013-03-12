@@ -1,13 +1,15 @@
 module Bozzuto
-  class ApartmentCommunityFieldAudit < CommunityFieldAudit
+  class HomeCommunityFieldAudit < CommunityFieldAudit
     AUDIT_FIELDS = ActiveSupport::OrderedHash[[
       ['Street Address',             :street_address],
       ['County',                     lambda {|c| c.county.try(:name) }],
       ['Zip Code',                   :zip_code],
       ['Phone Number',               :phone_number],
       ['Mobile Phone Number',        :mobile_phone_number],
+      ['MediaMind Activity ID for "Contact" Page', :contact_mediamind_id],
+      ['MediaMind Activity ID for "Send to Friend" Thank You Page', :send_to_friend_mediamind_id],
+      ['MediaMind Activity ID for "Send to Phone" Thank You Page', :send_to_phone_mediamind_id],
       ['Website URL',                :website_url],
-      ['Availability URL',           :availability_url],
       ['Facebook URL',               :facebook_url],
       ['Twitter Account',            lambda {|c| c.twitter_account.try(:username) }],
       ['Listing Title',              :listing_title],
@@ -20,18 +22,18 @@ module Bozzuto
       ['Overview Bullet #1',         :overview_bullet_1],
       ['Overview Bullet #2',         :overview_bullet_2],
       ['Overview Bullet #3',         :overview_bullet_3],
-      ['Lead2Lease Email',           :lead_2_lease_email],
       ['DNR configuration',          :dnr_configuration],
-      ['Mediaplex Tag',              :mediaplex_tag],
+      ['Conversion Configuration',   :conversion_configuration],
       ['Property Features Page',     :features_page],
       ['Property Neighborhood Page', lambda {|c| c.neighborhood_page.try(:content)}],
       ['Property Contact Page',      lambda {|c| c.contact_page.try(:content)}],
-      ['Floor Plans',                :floor_plans],
+      ['Lasso Account',              :lasso_account],
+      ['Floor Plans'  ,              lambda {|c| c.featured_homes.any?(&:floor_plans)}],
       ['Flickr Photo Set',           :photo_set]
     ]]
 
     def self.community_records
-      ApartmentCommunity.all
+      HomeCommunity.all
     end
     
 

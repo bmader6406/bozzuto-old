@@ -320,7 +320,7 @@ HomeCommunity:
   search: title
   application: Properties
   actions:
-    index: list_deleted
+    index: list_deleted, export_field_audit
     show: preview
     edit: preview
 
