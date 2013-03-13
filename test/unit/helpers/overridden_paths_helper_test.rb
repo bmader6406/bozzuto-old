@@ -256,6 +256,39 @@ class OverriddenPathsHelperTest < ActionView::TestCase
           end
         end
       end
+
+      context "#schedule_tour_community_#{type}" do
+        context "on a community with a schedule_tour_url set" do
+          setup do
+            @community = ApartmentCommunity.make({
+              :schedule_tour_url => 'http://www.example.com/tour'
+            })
+          end
+
+          should "return the correct tour link" do
+            assert_equal 'http://www.example.com/tour',
+              send("schedule_tour_community_#{type}", @community)
+          end
+        end
+
+        context 'when community is an ApartmentCommunity' do
+          setup { @community = ApartmentCommunity.make }
+
+          should 'return the correct contact link' do
+            assert_equal send("apartment_community_contact_#{type}", @community),
+              send("schedule_tour_community_#{type}", @community)
+          end
+        end
+
+        context 'when community is a HomeCommunity' do
+          setup { @community = HomeCommunity.make }
+
+          should 'return the correct contact link' do
+            assert_equal send("home_community_contact_#{type}", @community),
+              send("schedule_tour_community_#{type}", @community)
+          end
+        end
+      end
     end
 
     context '#section_contact_path' do

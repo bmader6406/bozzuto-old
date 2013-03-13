@@ -18,7 +18,7 @@
       <% if @community.tours_page? %>
         <%= link_to @community.tours_page.title, apartment_community_tours_path(@community) %>
       <% else %>
-        <%= link_to 'Schedule a Tour', contact_community_path(@community) %>
+        <%= link_to 'Schedule a Tour', schedule_tour_community_path(@community) %>
       <% end %>
     </p>
 

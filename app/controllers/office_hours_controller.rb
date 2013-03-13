@@ -16,6 +16,6 @@ class OfficeHoursController < ApplicationController
   end
 
   def mobile_only
-    redirect_to contact_community_path(@community) unless mobile?
+    redirect_to schedule_tour_community_url(@community) unless mobile?
   end
 end

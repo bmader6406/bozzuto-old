@@ -103,14 +103,18 @@ module OverriddenPathsHelper
   end
 
   %w(url path).each do |type|
-    define_method "contact_community_#{type}" do |property|
+    define_method "schedule_tour_community_#{type}" do |property|
       if property.schedule_tour_url?
         property.schedule_tour_url
-      elsif property.is_a?(ApartmentCommunity)
-        send("apartment_community_contact_#{type}", property)
       else
-        send("home_community_contact_#{type}", property)
+        send("contact_community_#{type}", property)
       end
+    end
+  end
+
+  %w(url path).each do |type|
+    define_method "contact_community_#{type}" do |property|
+      send("#{property.class.model_name.singular}_contact_#{type}", property)
     end
   end
 
