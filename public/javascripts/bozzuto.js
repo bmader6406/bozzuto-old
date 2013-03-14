@@ -977,31 +977,38 @@ window.bozzuto = {};
             var url    = $(this).attr('href'),
                 $image = $('<img src="' + url + '" class="floor-plan-overlay" />');
 
-            $image.lightbox_me({
-              appearEffect:   'show',
-              overlaySpeed:   0,
-              closeClick:     true,
-              destroyOnClose: true,
-              lightboxSpeed:  'slow',
-              centered:       true,
+            $image.one('load', function() {
+              $image.lightbox_me({
+                appearEffect:   'show',
+                overlaySpeed:   0,
+                closeClick:     true,
+                destroyOnClose: true,
+                lightboxSpeed:  'slow',
+                centered:       true,
 
-              overlayCSS: {
-                'background': '#000',
-                'opacity': .50
-              },
-              onLoad: function() {
-                $image.fadeTo(250, 1)
-              },
-              onClose: function() {
-                $image.css({
-                  'opacity' : 0
-                })
+                overlayCSS: {
+                  'background': '#000',
+                  'opacity': .50
+                },
+                onLoad: function() {
+                  $image.fadeTo(250, 1)
+                },
+                onClose: function() {
+                  $image.css({
+                    'opacity' : 0
+                  })
+                }
+              });
+
+              $image.click(function() {
+                $image.trigger('close');
+              });
+            }).each(function() {
+              // make sure cached images fire the load event
+              if (this.complete) {
+                $(this).load();
               }
             });
-
-            $image.click(function() {
-              $image.trigger('close');
-            })
           }
         });
       });
