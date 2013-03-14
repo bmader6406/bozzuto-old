@@ -110,9 +110,7 @@ module OverriddenPathsHelper
         send("contact_community_#{type}", property)
       end
     end
-  end
 
-  %w(url path).each do |type|
     define_method "contact_community_#{type}" do |property|
       send("#{property.class.model_name.singular}_contact_#{type}", property)
     end
