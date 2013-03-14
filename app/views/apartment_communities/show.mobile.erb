@@ -41,6 +41,12 @@
 			<%- end -%>
 
       <li>
+        <% link_to schedule_tour_community_path(@community), :class => 'btn schedule-tour' do %>
+          <span>Schedule a Tour</span>
+        <% end %>
+      </li>
+
+      <li>
         <% link_to new_apartment_community_sms_message_path(@community), :class => 'btn text-me' do %>
           <span>Text Me Community Info</span>
         <% end %>
