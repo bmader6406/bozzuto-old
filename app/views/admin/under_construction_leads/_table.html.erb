@@ -1,0 +1,22 @@
+<% if items.any? %>
+  <% form_tag :action => "destroy_multiple" do %>
+    <table class="typus">
+      <%= typus_table_header(UnderConstructionLead, fields).html_safe %>
+
+      <%- items.each do |item| -%>
+        <tr class="<%= cycle('even', 'odd') %> <%= item.class.name.underscore %>" id="<%= item.to_dom %>" name="item_<%= item.id %>">
+          <%= render_table_fields(item, fields, link_options).html_safe %>
+
+          <td width="10px">
+            <%= link_to '<div class="sprite trash">Trash</div>'.html_safe, { :action => 'destroy', :id => item.id },
+              :title => _("Remove"), 
+              :confirm => _("Remove entry?") if @current_user.can?('destroy', UnderConstructionLead) %>
+          </td>
+          <td width="10px">
+            <%= check_box_tag "ids[]", item.id %>
+          </td>
+      <%- end -%>
+    </table>
+    <%= submit_tag "Destroy Selected Leads" %>
+  <%- end -%>
+<% end %>

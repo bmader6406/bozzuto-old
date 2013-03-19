@@ -17,6 +17,13 @@ module Typus
           :link_options    => link_options,
           :items_to_relate => items_to_relate
         }
+      elsif resource == "under_construction_leads"
+        render :partial => 'admin/under_construction_leads/table', :locals => {
+          :fields          => fields,
+          :items           => items,
+          :link_options    => link_options,
+          :items_to_relate => items_to_relate
+        }
       else
         build_list_without_special_cases(model, fields, items, resource, link_options, association, field)
       end

@@ -29,5 +29,24 @@ class Admin::UnderConstructionLeadsControllerTest < ActionController::TestCase
         assert_match /123 Awesome Ln/, @output.string
       end
     end
+
+    context "with existing leads" do
+      setup do
+        @lead1 = UnderConstructionLead.make
+        @lead2 = UnderConstructionLead.make
+      end
+
+      context "on POST to :destroy_multiple" do
+        setup do
+          post :destroy_multiple, :ids => [@lead1.id, @lead2.id]
+        end
+
+        should_respond_with :redirect
+
+        should_change 'UnderConstructionLead count', :by => -2 do
+          UnderConstructionLead.count
+        end
+      end
+    end
   end
 end
