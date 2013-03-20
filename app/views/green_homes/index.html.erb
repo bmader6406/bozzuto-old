@@ -6,22 +6,24 @@
 
 
 <% content_for(:green_homes_list) do %>
-  <h2 class="green-hdr">See how Bozzuto green features help you save!</h2>
+  <% if all_green_home_communities.any? %>
+    <h2 class="green-hdr">See how Bozzuto green features help you save!</h2>
 
-  <p class="green-sub-hdr">Select a Bozzuto community to view savings</p>
+    <p class="green-sub-hdr">Select a Bozzuto community to view savings</p>
 
-  <ul class="green-homes-list row">
-    <% all_home_communities.each_with_index do |community, i| %>
-      <li <%= 'class="last-in-row"'.html_safe if i % 3 == 2 %>>
-        <% link_to green_home_path(community) do %>
-          <%= image_tag community.listing_image.url(:rect) %>
+    <ul class="green-homes-list row">
+      <% all_green_home_communities.each_with_index do |community, i| %>
+        <li <%= 'class="last-in-row"'.html_safe if i % 3 == 2 %>>
+          <% link_to green_home_path(community) do %>
+            <%= image_tag community.listing_image.url(:rect) %>
 
-          <span class="caption">
-            <strong><%= community.title %></strong>
-            <%= community.city %>
-          </span>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
+            <span class="caption">
+              <strong><%= community.title %></strong>
+              <%= community.city %>
+            </span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 <% end %>

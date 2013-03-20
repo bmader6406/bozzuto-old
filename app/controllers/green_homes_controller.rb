@@ -2,7 +2,7 @@ class GreenHomesController < SectionContentController
   before_filter :find_page
 
   def index
-    render :layout => 'green_homes'
+    render :layout => (all_green_home_communities.any? ? 'green_homes' : 'page')
   end
 
   def show
@@ -29,8 +29,8 @@ class GreenHomesController < SectionContentController
     render_404 if @page.nil?
   end
 
-  def all_home_communities
-    @all_home_communities ||= HomeCommunity.published.with_green_package.ordered_by_title
+  def all_green_home_communities
+    @all_green_home_communities ||= HomeCommunity.published.with_green_package.ordered_by_title
   end
-  helper_method :all_home_communities
+  helper_method :all_green_home_communities
 end

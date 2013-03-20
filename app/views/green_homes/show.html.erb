@@ -28,13 +28,13 @@
           <span class="info-bubble-control">
             <%= link_to @community.title, green_home_path(@community), :class => 'hdr' %>
 
-            <% if all_home_communities.any? %>
+            <% if all_green_home_communities.any? %>
               <div class="info-bubble">
                 <div class="info-bubble-inner">
                   <strong class="info-bubble-hdr">Select Another Bozzuto Community:</strong>
 
                   <ul class="community-select">
-                    <% all_home_communities.each do |community| %>
+                    <% all_green_home_communities.each do |community| %>
                       <li <%= 'class="current"'.html_safe if @community == community %>>
                         <% link_to green_home_path(community) do %>
                           <strong><%= community.title %></strong>
