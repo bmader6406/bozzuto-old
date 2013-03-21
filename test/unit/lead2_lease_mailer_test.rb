@@ -9,7 +9,7 @@ class Lead2LeaseMailerTest < ActionMailer::TestCase
 
     context '#contact_form_submission' do
       setup do
-        @email = Lead2LeaseMailer.deliver_submission(@community, @lead)
+        @email = Lead2LeaseMailer.deliver_submission(@community, @lead, false)
       end
 
       should_change('deliveries', :by => 1) { ActionMailer::Base.deliveries.count }

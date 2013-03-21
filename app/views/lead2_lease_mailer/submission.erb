@@ -9,7 +9,7 @@ Home Phone: <%= @submission.primary_phone %>
 Cell Phone: <%= @submission.secondary_phone %>
 Work Phone:
 Email Address: <%= @submission.email %>
-Lead Channel: bozzuto.com
+Lead Channel: <%= @mobile ? 'bozzuto.comMobile' : 'bozzuto.com' %>
 Lead Priority: 4
 Desired Move In: <%= @submission.move_in_date.strftime("%m/%d/%Y") %>
 Desired Lease Term:
