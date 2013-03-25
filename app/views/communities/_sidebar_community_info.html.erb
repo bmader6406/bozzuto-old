@@ -16,9 +16,9 @@
   <div id="map" class="section">
     <p class="call-to-action">
       <% if @community.tours_page? %>
-        <%= link_to @community.tours_page.title, apartment_community_tours_path(@community) %>
+        <%= link_to @community.tours_page.title, apartment_community_tours_path(@community), :'data-iframe' => true %>
       <% else %>
-        <%= link_to 'Schedule a Tour', schedule_tour_community_path(@community) %>
+        <%= schedule_tour_link(@community) %>
       <% end %>
     </p>
 

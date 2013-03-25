@@ -52,4 +52,16 @@ module CommunitiesHelper
       <script type="text/javascript"> if (!window.mstag) mstag = {loadTag : function(){},time : (new Date()).getTime()};</script> <script id="mstag_tops" type="text/javascript" src="//flex.atdmt.com/mstag/site/34ffff7a-0581-4108-b1d2-6e5b54282f02/mstag.js"></script> <script type="text/javascript"> mstag.loadTag("analytics", {dedup:"1",domainId:"1280858",type:"1",actionid:#{action_id.inspect}})</script> <noscript> <iframe src="//flex.atdmt.com/mstag/tag/34ffff7a-0581-4108-b1d2-6e5b54282f02/analytics.html?dedup=1&domainId=1280858&type=1&actionid=#{action_id}" frameborder="0" scrolling="no" width="1" height="1" style="visibility:hidden;display:none"> </iframe> </noscript>
     END
   end
+
+  def schedule_tour_link(community)
+    opts = { :class => 'schedule-tour' }
+
+    if community.schedule_tour_url?
+      opts[:'data-iframe'] = 'yes'
+      opts[:'data-width']  = 800
+      opts[:'data-height'] = 600
+    end
+
+    link_to 'Schedule a Tour', schedule_tour_community_path(community), opts
+  end
 end

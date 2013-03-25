@@ -142,6 +142,8 @@ window.bozzuto = {};
 
     $('#landing-map, #homes-map').bozzutoMap();
 
+    $('a.schedule-tour').scheduleTourIframe();
+
     $('#spinner').ajaxStart(function () {
       $(this).show();
     });
@@ -1436,4 +1438,36 @@ window.bozzuto = {};
     });
   };
 
+
+  $.fn.scheduleTourIframe = function() {
+    return $(this).each(function() {
+      var $link = $(this);
+
+      if ($link.attr('data-iframe') == 'yes') {
+        $link.bind('click', function(e) {
+          e.preventDefault();
+
+          var url       = $link.attr('href'),
+              width     = $link.attr('data-width'),
+              height    = $link.attr('data-height'),
+              $lightbox = $('<div id="schedule-tour-lightbox"></div>');
+
+          $lightbox
+            .append(iframeCode(url, width, height))
+            .appendTo('body');
+
+          $lightbox.lightbox_me({
+            onClose: function() {
+              $lightbox.remove();
+            }
+          });
+
+
+          function iframeCode(url, width, height) {
+            return '<iframe src="' + url + '" width="' + width + '" height="' + height + '"></iframe>';
+          }
+        });
+      }
+    });
+  };
 })(jQuery);
