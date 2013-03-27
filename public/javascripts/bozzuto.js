@@ -788,19 +788,11 @@ window.bozzuto = {};
       current = tabs.eq(0).addClass("current");
 
       function show(elements) {
-        return elements.css({
-          'position': 'static',
-          'left':     '0px',
-          'top':      '0px'
-        });
+        return elements.show();
       }
 
       function hide(elements) {
-        return elements.css({
-          'position': 'absolute',
-          'left':     '-9999px',
-          'top':      '-9999px'
-        });
+        return elements.hide();
       }
     });
   };
