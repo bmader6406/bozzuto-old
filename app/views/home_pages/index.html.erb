@@ -22,7 +22,13 @@
 
             <ul class="slides">
               <% @home_page.slides.each do |slide| %>
-                <li class="slide"><%= image_tag slide.image.url %></li> 
+                <li class="slide">
+                  <% if slide.link_url.present? %>
+                    <%= link_to image_tag(slide.image.url), slide.link_url %>
+                  <% else %>
+                    <%= image_tag slide.image.url %>
+                  <% end %>
+                </li>
               <% end %>
             </ul>
           </div>

@@ -152,6 +152,8 @@ en:
         mobile_banner_image: Mobile Banner Image
         mobile_body: Mobile Body
         mobile_title: Mobile Title
+      home_page_slide:
+        link_url: Link URL
       landing_page:
         hide_from_list: Hide from "Apartments for Rent By Region" List
         local_info_feed: Local Info Feed
@@ -357,6 +359,7 @@ en:
         mobile_title: Title of the page, shown when viewing from a mobile device
       home_page_slide:
         image: Image dimensions should be 1100x375
+        link_url: If present, the entire slide will be clickable and will link to this URL.
       landing_page:
         masthead_image: Image dimensions should be 230x223
       masthead_slide:

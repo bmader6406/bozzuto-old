@@ -353,7 +353,7 @@ HomePageSlide:
   fields:
     default: image, position
     list: image, position
-    form: image
+    form: image, link_url
   order_by: position
   relationships: home_page
   filters:

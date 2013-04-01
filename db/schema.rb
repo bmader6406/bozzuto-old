@@ -471,6 +471,7 @@ ActiveRecord::Schema.define(:version => 2012081313174438) do
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "link_url"
   end
 
   create_table "home_pages", :force => true do |t|
