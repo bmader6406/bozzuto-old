@@ -1,8 +1,6 @@
 (function($) {
 	window.bozzuto = window.bozzuto || {};
 
-	var _gaq = window._gaq;
-
 	bozzuto.ga = {
 		debug: false,
 
@@ -31,11 +29,19 @@
 		},
 
 		submitEvent: function(params) {
+			if (bozzuto.ga.debug) {
+				bozzuto.ga.log(params);
+			}
+
 			_gaq.push(['_trackEvent', params[0], params[1], params[2]]);
 			_gaq.push(['t2._trackEvent', params[0], params[1], params[2]]);
 		},
 
 		submitSocial: function(params) {
+			if (bozzuto.ga.debug) {
+				bozzuto.ga.log(params);
+			}
+
 			_gaq.push(['_trackSocial', params[0], params[1], params[2]]);
 			_gaq.push(['t2._trackSocial', params[0], params[1], params[2]]);
 		},
@@ -85,12 +91,6 @@
 	$(function() {
 		if (bozzuto.ga.debug) {
 			bozzuto.ga.warn('Enabled GA tracking debug mode');
-
-			_gaq = {
-				push: function(params) {
-					bozzuto.ga.log(params);
-				}
-			};
 		}
 
 		$('body').delegate('a[data-track-event]', 'click', bozzuto.ga.trackEvent);
