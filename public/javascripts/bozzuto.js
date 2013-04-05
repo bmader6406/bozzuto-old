@@ -83,6 +83,7 @@ window.bozzuto = {};
       onAdvance: function() {
         if (window._gaq != undefined) {
           window._gaq.push(['_trackEvent', 'Slideshows', 'Change Slide', 'Homepage']);
+          window._gaq.push(['t2._trackEvent', 'Slideshows', 'Change Slide', 'Homepage']);
         }
       }
     });
