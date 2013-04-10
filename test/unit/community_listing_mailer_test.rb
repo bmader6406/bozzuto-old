@@ -18,6 +18,10 @@ class CommunityListingMailerTest < ActionMailer::TestCase
             end
           end
 
+          should "set the reply to header" do
+            assert_equal [BOZZUTO_REPLY_TO], @email.reply_to
+          end
+
           should "deliver the message" do
             assert_equal [@to], @email.to
           end
@@ -43,6 +47,10 @@ class CommunityListingMailerTest < ActionMailer::TestCase
         assert_difference('ActionMailer::Base.deliveries.count', 1) do
           @email = CommunityListingMailer.deliver_recently_viewed_listings(@recurring_email)
         end
+      end
+
+      should "set the reply to header" do
+        assert_equal [BOZZUTO_REPLY_TO], @email.reply_to
       end
 
       should "deliver the message" do
@@ -74,6 +82,10 @@ class CommunityListingMailerTest < ActionMailer::TestCase
         assert_difference('ActionMailer::Base.deliveries.count', 1) do
           @email = CommunityListingMailer.deliver_search_results_listings(@recurring_email)
         end
+      end
+
+      should "set the reply to header" do
+        assert_equal [BOZZUTO_REPLY_TO], @email.reply_to
       end
 
       should "deliver the message" do

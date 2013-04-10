@@ -11,6 +11,7 @@ class CommunityListingMailer < ActionMailer::Base
 
   def single_listing(to_address, community)
     from       BOZZUTO_EMAIL_ADDRESS
+    reply_to   BOZZUTO_REPLY_TO
     recipients to_address
     subject    community.title
     sent_on    Time.now
@@ -19,6 +20,7 @@ class CommunityListingMailer < ActionMailer::Base
 
   def recently_viewed_listings(recurring_email)
     from       BOZZUTO_EMAIL_ADDRESS
+    reply_to   BOZZUTO_REPLY_TO
     recipients recurring_email.email_address
     subject    'Recently Viewed Apartment Communities'
     sent_on    Time.now
@@ -27,6 +29,7 @@ class CommunityListingMailer < ActionMailer::Base
 
   def search_results_listings(recurring_email)
     from       BOZZUTO_EMAIL_ADDRESS
+    reply_to   BOZZUTO_REPLY_TO
     recipients recurring_email.email_address
     subject    'Apartment Communities Search Results'
     sent_on    Time.now
