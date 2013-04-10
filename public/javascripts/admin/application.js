@@ -254,4 +254,65 @@ $(function() {
 			});
 		});
 	})();
+
+	// multi-destroy table with checkboxes
+	(function() {
+		$('table.multi-destroy').each(function() {
+			var $table      = $(this),
+					$button     = $table.find('.multi-destroy-button'),
+					$selectAll  = $table.find('.multi-destroy-select-all'),
+					$checkboxes = $table.find('.multi-destroy-checkbox'),
+					$text       = $table.find('.multi-destroy-text');
+
+			$table.bind('multi-destroy:change', function() {
+				// enable/disable 'destroy' button
+				if (checkedCount()) {
+					$button.attr('disabled', '');
+				} else {
+					$button.attr('disabled', 'disabled');
+				}
+
+				// change text to 'Deselect All' if all are checked
+				if (allAreChecked()) {
+					$text.text('Deselect All');
+					$selectAll.attr('checked', 'checked');
+				} else {
+					$text.text('Select All');
+					$selectAll.attr('checked', '');
+				}
+			});
+
+			$checkboxes.bind('click', function() {
+				$table.trigger('multi-destroy:change');
+			});
+
+			$selectAll.bind('change', function() {
+				if (allAreChecked()) {
+					// all are selected, so deselect all
+					$checkboxes.attr('checked', '');
+				} else {
+					// none/some are selected, so select all
+					$checkboxes.attr('checked', 'checked');
+				}
+
+				$table.trigger('multi-destroy:change');
+			});
+
+			// initial setup
+			$table.trigger('multi-destroy:change');
+
+
+			function checked() {
+				return $checkboxes.filter(':checked');
+			}
+
+			function checkedCount() {
+				return checked().length;
+			}
+
+			function allAreChecked() {
+				return checkedCount() == $checkboxes.length;
+			}
+		});
+	})();
 });

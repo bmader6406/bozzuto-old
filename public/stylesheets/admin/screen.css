@@ -746,3 +746,15 @@ input.date_input { border: 1px solid #999; margin-bottom: 1em;}
 	background: url(../../images/structure/btn-hotspots.png) no-repeat;
 }
 /* @end */
+
+
+/* @group multi-destroy */
+.multi-destroy-label {
+  padding: 8px 0;
+}
+
+.multi-destroy-text {
+  color: #000;
+  padding-left: 5px;
+}
+/* @end */
