@@ -2,6 +2,7 @@ class ApartmentCommunitiesController < ApplicationController
   has_mobile_actions :index, :show
 
   before_filter :find_community, :except => :index
+  before_filter :redirect_to_canonical_url, :only => :show
 
   layout :detect_mobile_layout
 
@@ -39,6 +40,15 @@ class ApartmentCommunitiesController < ApplicationController
       @recent_queue = RecentQueue.find
       @recent_queue.push(@community.id)
       @recently_viewed = @recent_queue.map { |id| ApartmentCommunity.find_by_id(id) }.compact
+    end
+  end
+
+  def redirect_to_canonical_url
+    format         = request.parameters[:format]
+    canonical_path = apartment_community_path(@community, :format => format)
+
+    if request.path != canonical_path
+      redirect_to canonical_path, :status => :moved_permanently
     end
   end
 

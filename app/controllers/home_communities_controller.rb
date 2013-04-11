@@ -3,6 +3,7 @@ class HomeCommunitiesController < SectionContentController
 
   before_filter :find_community, :except => [:index, :map]
   before_filter :find_communities, :find_page, :only => [:index, :map]
+  before_filter :redirect_to_canonical_url, :only => :show
 
   layout :detect_mobile_layout
   
@@ -46,6 +47,15 @@ class HomeCommunitiesController < SectionContentController
 
   def find_communities
     @communities = HomeCommunity.published.ordered_by_title
+  end
+
+  def redirect_to_canonical_url
+    format         = request.parameters[:format]
+    canonical_path = home_community_path(@community, :format => format)
+
+    if request.path != canonical_path
+      redirect_to canonical_path, :status => :moved_permanently
+    end
   end
 
   def detect_mobile_layout

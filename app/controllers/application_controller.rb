@@ -32,10 +32,12 @@ class ApplicationController < ActionController::Base
   end
 
   def find_property(klass, community_id)
+    opts = { :scope => klass.to_s }
+
     if typus_user
-      klass.find(community_id)
+      klass.find(community_id, opts)
     else
-      klass.published.find(community_id)
+      klass.published.find(community_id, opts)
     end
   end
 

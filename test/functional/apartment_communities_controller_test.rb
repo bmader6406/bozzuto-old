@@ -62,6 +62,21 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
     end
 
     context "a GET to #show" do
+      context "with a non-canonical URL" do
+        setup do
+          @old_slug = @community.to_param
+          @community.update_attribute(:title, 'Wayne Manor')
+          @canonical_slug = @community.to_param
+
+          assert @old_slug != @canonical_slug
+
+          get :show, :id => @old_slug
+        end
+
+        should_respond_with :redirect
+        should_redirect_to('the canonical URL') { apartment_community_path(@canonical_slug) }
+      end
+
       context 'with an unpublished community' do
         setup { @community.update_attribute(:published, false) }
 
