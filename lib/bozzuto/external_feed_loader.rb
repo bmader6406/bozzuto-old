@@ -265,7 +265,9 @@ module Bozzuto
 
       state = State.find_by_code(state_code)
 
-      state.cities.find_or_create_by_name(city_name) if state
+      city = state.cities.find_or_create_by_name(city_name)
+
+      city
     end
 
     def find_county(property)
