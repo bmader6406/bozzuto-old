@@ -176,10 +176,6 @@ module Bozzuto
         :county           => find_county(property),
         :availability_url => value_for(property, :availability_url)
       })
-
-      Rails.logger.debug "--> #{@community.inspect}"
-      Rails.logger.debug "--> #{@community.valid?}"
-      Rails.logger.debug "--> #{@community.errors.full_messages}"
     end
 
     def rolled_up?(property)
