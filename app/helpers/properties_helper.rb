@@ -21,7 +21,7 @@ module PropertiesHelper
     "http://maps.google.com/maps?daddr=#{URI.encode(address)}"
   end
 
-  def brochure_link(property)
+  def brochure_link(property, opts = {})
     if property.brochure_link_text.present?
       url = if property.uses_brochure_url?
         property.brochure_url
@@ -30,7 +30,7 @@ module PropertiesHelper
       end
       
       if url.present?
-        link_to property.brochure_link_text, url, :target => "_blank"
+        link_to property.brochure_link_text, url, { :rel => 'external' }.merge(opts)
       end
     end
   end

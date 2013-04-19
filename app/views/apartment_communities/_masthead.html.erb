@@ -35,19 +35,26 @@
       <ul id="remote-nav">
         <% if @community.resident_link_text.present? && @community.resident_link_url.present? %>
           <li>
-            <%= link_to @community.resident_link_text, website_url(@community.resident_link_url), :target => "_blank" %>
+            <%= link_to @community.resident_link_text, website_url(@community.resident_link_url), {
+                :rel => 'external'
+              }.merge(double_click_data_attrs(@community.title, 'readp083'))
+            %>
           </li>
         <% end %>
 
         <% if @community.website_url.present? %>
           <li>
-            <%= link_to 'Visit Community Website', website_url(@community.website_url), :rel => 'external', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Visit Community Website" %>
+            <%= link_to 'Visit Community Website', website_url(@community.website_url), {
+                :rel => 'external',
+                :'data-track-event' => "Apartments,#{ga_escape(@community.title)},Visit Community Website"
+              }.merge(double_click_data_attrs(@community.title, 'visit764'))
+            %>
           </li>
         <% end %>
 
-        <% if brochure_link(@community) %>
+        <% brochure_link(@community, double_click_data_attrs(@community.title, 'digit734')).if_present? do |link| %>
           <li class="last">
-            <%= brochure_link(@community) %>
+            <%= link %>
           </li>
         <% end %>
       </ul>

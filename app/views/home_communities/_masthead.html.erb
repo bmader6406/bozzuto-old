@@ -35,12 +35,16 @@
       <ul id="remote-nav">
         <% if @community.website_url.present? %>
           <li>
-            <%= link_to 'Visit Community Website', website_url(@community.website_url), :rel => 'external', 'data-track-event' => "Homes,#{ga_escape(@community.title)},Visit Community Website" %>
+            <%= link_to 'Visit Community Website', website_url(@community.website_url), {
+                :rel               => 'external',
+                'data-track-event' => "Homes,#{ga_escape(@community.title)},Visit Community Website"
+              }.merge(double_click_data_attrs(@community.title, 'visit764')) %>
           </li>
         <% end %>
-        <% if brochure_link(@community) %>
+
+        <% brochure_link(@community, double_click_data_attrs(@community.title, 'digit734')).if_present? do |link| %>
           <li class="last">
-            <%= brochure_link(@community) %>
+            <%= link %>
           </li>
         <% end %>
       </ul>
