@@ -15,6 +15,21 @@ class DoubleClickHelperTest < ActionView::TestCase
     end
   end
 
+  context "#double_click_email_thank_you_script" do
+    setup do
+      @community_1 = ApartmentCommunity.new(:title => 'Yay')
+      @community_2 = ApartmentCommunity.new(:title => 'Hooray')
+    end
+
+    should "return the correct script" do
+      script = double_click_email_thank_you_script([@community_1, @community_2])
+
+      assert_match /u1=Yay,Hooray/, script
+      assert_match /cat=email947/, script
+      assert_match /Email Results/, script
+    end
+  end
+
   context "#double_click_data_attrs" do
     should "return the data attrs" do
       attrs = double_click_data_attrs('Yay Hooray', '123')

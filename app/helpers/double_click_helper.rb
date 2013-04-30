@@ -10,6 +10,12 @@ module DoubleClickHelper
     }
   end
 
+  def double_click_email_thank_you_script(communities)
+    titles = communities.map(&:title).reject(&:blank?).join(',')
+
+    double_click_floodlight_tag(titles, 'email947', 'Email Results')
+  end
+
   private
 
   def double_click_floodlight_tag(name, cat, description)
@@ -26,7 +32,7 @@ module DoubleClickHelper
       <script type="text/javascript">
       var axel = Math.random() + "";
       var a = axel * 10000000000000;
-      document.write('<iframe src="http://4076175.fls.doubleclick.net/activityi;src=4076175;type=conve135;cat=#{cat};u1=#{encoded_name}];ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+      document.write('<iframe src="http://4076175.fls.doubleclick.net/activityi;src=4076175;type=conve135;cat=#{cat};u1=#{encoded_name};ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
       </script>
       <noscript>
       <iframe src="http://4076175.fls.doubleclick.net/activityi;src=4076175;type=conve135;cat=#{cat};u1=#{encoded_name}];ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>

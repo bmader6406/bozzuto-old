@@ -8,6 +8,8 @@ class Email::RecentlyViewedController < ApplicationController
 
       @email.send!
 
+      flash[:recurring_email_id] = @email.id
+
       redirect_to thank_you_email_recently_viewed_url
     else
       redirect_to :back, :flash => { :recently_viewed_errors => true }
@@ -15,6 +17,8 @@ class Email::RecentlyViewedController < ApplicationController
   end
 
   def thank_you
+    @email = RecurringEmail.find_by_id(flash[:recurring_email_id])
+
     render :thank_you, :layout => 'page'
   end
 

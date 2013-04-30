@@ -4,3 +4,7 @@
 <p style="padding-top: 10px; padding-bottom: 30px;">
   Thank you for your interest in these Bozzuto apartment communities.
 </p>
+
+<% if @email.present? %>
+  <%= double_click_email_thank_you_script(@email.properties) %>
+<% end %>

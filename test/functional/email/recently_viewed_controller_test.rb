@@ -25,6 +25,10 @@ class Email::RecentlyViewedControllerTest < ActionController::TestCase
         assert_equal [1, 2], assigns(:email).property_ids
       end
 
+      should "save the recurring email's id in the flash" do
+        assert flash[:recurring_email_id] == assigns(:email).id
+      end
+
       should_change('the number of deliveries', :by => 1) { ActionMailer::Base.deliveries.count }
     end
 
@@ -67,11 +71,26 @@ class Email::RecentlyViewedControllerTest < ActionController::TestCase
   end
 
   context 'GET to #thank_you' do
-    setup do
-      get :thank_you
+    context "without a recurring_email_id in the session" do
+      setup do
+        get :thank_you
+      end
+
+      should_respond_with(:success)
+      should_render_template(:thank_you)
+      should_not_assign_to(:email)
     end
 
-    should_respond_with :success
-    should_render_template :thank_you
+    context "with a recurring_email_id in the session" do
+      setup do
+        @email = RecurringEmail.make
+
+        get :thank_you, nil, nil, { :recurring_email_id => @email.id }
+      end
+
+      should_respond_with(:success)
+      should_render_template(:thank_you)
+      should_assign_to(:email) { @email }
+    end
   end
 end
