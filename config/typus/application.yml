@@ -117,9 +117,12 @@ BozzutoBlogPost:
 
 Buzz:
   fields:
-    default: email, first_name, last_name, street1, street2, city, state, zip_code, phone, formatted_buzzes, formatted_affiliations
-    list: first_name, last_name, email, city, state
+    default: email, first_name, last_name, street1, street2, city, state, zip_code, phone, formatted_buzzes, formatted_affiliations, created_at
+    list: name, email, city, state, created_at
     form: 
+    options:
+      date_formats:
+        created_at: expiration_date
   order_by: -updated_at
   export: csv
   relationships: 

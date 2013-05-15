@@ -16,6 +16,10 @@ class Buzz < ActiveRecord::Base
     end
   end
 
+  def name
+    [first_name, last_name].reject(&:blank?).join(' ')
+  end
+
 
   private
 

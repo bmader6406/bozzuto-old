@@ -89,6 +89,7 @@ en:
         published_at: Published At
         url: URL
       buzz:
+        created_at: 'Submitted At'
         first_name: First Name
         formatted_affiliations: Affiliations
         formatted_buzzes: Buzzes

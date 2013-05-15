@@ -49,5 +49,16 @@ class BuzzTest < ActiveSupport::TestCase
         end
       end
     end
+
+    context "#name" do
+      setup do
+        subject.first_name = 'Bruce'
+        subject.last_name  = 'Wayne'
+      end
+
+      should "return the first name and last name, joined with a space" do
+        assert_equal 'Bruce Wayne', subject.name
+      end
+    end
   end
 end
