@@ -10,10 +10,10 @@ config.action_controller.perform_caching             = true
 config.action_view.cache_template_loading            = true
 
 config.action_mailer.default_url_options = {
-  :host => 'bozzuto.lab.viget.com'
+  :host => 'bozzuto.integration.vigetx.com'
 }
 
-config.action_controller.asset_host = 'http://bozzuto.lab.viget.com'
+config.action_controller.asset_host = 'http://bozzuto.integration.vigetx.com'
 
 # See everything in the log (default is :info)
 # config.log_level = :debug

@@ -1,10 +1,10 @@
-set :user, 'apache'
-set :deploy_to,  "/var/www/html/bozzuto_app/integration"
+set :user, 'www-data'
+set :deploy_to,  "/var/www/bozzuto/integration"
 set :branch, 'origin/master'
 
-set :default_environment, { 'PATH' => '/opt/ree/bin:$PATH' }
+set :default_environment, { 'PATH' => '/opt/ruby/bin:$PATH' }
 
-role :web, "pottsville.lab.viget.com"
-role :app, "pottsville.lab.viget.com"
-role :db,  "pottsville.lab.viget.com", :primary => true
+role :web, "bozzuto.integration.vigetx.com"
+role :app, "bozzuto.integration.vigetx.com"
+role :db,  "bozzuto.integration.vigetx.com", :primary => true
 

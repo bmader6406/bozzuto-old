@@ -1,9 +1,9 @@
-set :user, 'apache'
-set :deploy_to,  "/var/www/html/bozzuto_app/staging"
+set :user, 'www-data'
+set :deploy_to,  "/var/www/bozzuto/staging"
 set :branch, 'origin/staging'
 
-set :default_environment, { 'PATH' => '/opt/ree/bin:$PATH' }
+set :default_environment, { 'PATH' => '/opt/ruby/bin:$PATH' }
 
-role :web, "pottsville.lab.viget.com"
-role :app, "pottsville.lab.viget.com"
-role :db,  "pottsville.lab.viget.com", :primary => true
+role :web, "bozzuto.staging.vigetx.com"
+role :app, "bozzuto.staging.vigetx.com"
+role :db,  "bozzuto.staging.vigetx.com", :primary => true

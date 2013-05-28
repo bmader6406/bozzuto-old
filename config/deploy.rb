@@ -108,7 +108,7 @@ namespace :app do
   desc 'Update the crontab file'
   task :update_crontab do
     env = fetch(:rails_env)
-    run "cd #{release_path}; whenever  --update-crontab #{application + '_' + env} --set 'environment=#{env}&cron_log=#{release_path}/log/cron.log'"
+    run "cd #{release_path}; bundle exec whenever  --update-crontab #{application + '_' + env} --set 'environment=#{env}&cron_log=#{release_path}/log/cron.log'"
   end
 end
 
