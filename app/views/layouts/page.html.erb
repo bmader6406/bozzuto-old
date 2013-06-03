@@ -2,10 +2,6 @@
 <html lang="en" class="no-js">
 <%= render 'layouts/head' %>
 <body class="secondary page <%= yield :body_class %>">
-  <% if params[:controller] == 'pages' && params[:section] == 'apartments' && params[:page].empty? %>
-    <iframe src="http://img-cdn.mediaplex.com/0/16798/universal.html?page_name=bozzuto_apts_lp&Bozzuto_Apts_LP=1&mpuid=" HEIGHT="1" WIDTH="1" FRAMEBORDER="0"></iframe>
-  <% end %>
-
   <%= render 'layouts/header' %>
 
   <% if @page.present? && @page.masthead_slideshow.try(:present?) %>
@@ -39,6 +35,10 @@
 
             <% @page.try(:snippet).if_present? do |snippet| %>
               <%= snippet.body.html_safe %>
+            <% end %>
+
+            <% if params[:controller] == 'pages' && params[:section] == 'apartments' && params[:page].empty? %>
+              <iframe src="http://img-cdn.mediaplex.com/0/16798/universal.html?page_name=bozzuto_apts_lp&Bozzuto_Apts_LP=1&mpuid=" HEIGHT="1" WIDTH="1" FRAMEBORDER="0"></iframe>
             <% end %>
           </div>
 
