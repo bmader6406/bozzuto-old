@@ -377,6 +377,7 @@ en:
         mobile_body: Shown when viewing the page from a mobile device
         mobile_body_extra: Extra content shown below the Mobile Body
         right_montage_image: Image dimensions should be 310x148
+        snippet_id: If present, this snippet will appear at the bottom of the page
       photo_set:
         flickr_set_number: It will take up to 2 hours for photos to be synced from Flickr
         needs_sync: Once checked, it will take up to 2 hours to refresh this set from Flickr

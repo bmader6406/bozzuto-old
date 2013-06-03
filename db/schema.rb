@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(:version => 2012081313174438) do
     t.text     "mobile_body_extra"
     t.boolean  "show_sidebar",                   :default => true
     t.boolean  "show_in_sidebar_nav",            :default => true
+    t.integer  "snippet_id"
   end
 
   add_index "archived_pages", ["cached_slug"], :name => "index_archived_pages_on_cached_slug"
@@ -679,6 +680,7 @@ ActiveRecord::Schema.define(:version => 2012081313174438) do
     t.text     "mobile_body_extra"
     t.boolean  "show_sidebar",                   :default => true
     t.boolean  "show_in_sidebar_nav",            :default => true
+    t.integer  "snippet_id"
   end
 
   add_index "pages", ["path"], :name => "index_pages_on_path"

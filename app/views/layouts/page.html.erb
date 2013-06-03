@@ -36,6 +36,10 @@
         <div class="row">
           <div class="column-main col">
             <%= yield %>
+
+            <% @page.try(:snippet).if_present? do |snippet| %>
+              <%= snippet.body.html_safe %>
+            <% end %>
           </div>
 
           <% if @page.try(:show_sidebar?) %>

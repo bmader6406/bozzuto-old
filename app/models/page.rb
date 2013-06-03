@@ -18,6 +18,7 @@ class Page < ActiveRecord::Base
   after_save :set_path
 
   belongs_to :section
+  belongs_to :snippet
 
   has_one :masthead_slideshow
   has_one :body_slideshow

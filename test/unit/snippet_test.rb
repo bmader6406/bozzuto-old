@@ -8,6 +8,8 @@ class SnippetTest < ActiveSupport::TestCase
 
     subject { @snippet }
 
+    should_have_many :pages
+
     should_validate_presence_of :name, :body
     should_validate_uniqueness_of :name
 
