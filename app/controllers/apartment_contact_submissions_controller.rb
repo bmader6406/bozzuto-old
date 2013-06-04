@@ -19,6 +19,7 @@ class ApartmentContactSubmissionsController < ApplicationController
   end
 
   def thank_you
+    track_urid
   end
 
 

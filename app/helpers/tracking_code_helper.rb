@@ -23,6 +23,30 @@ module TrackingCodeHelper
     end
   end
 
+  def value_click_apartment_thank_you_code
+    '<img src="http://media.fastclick.net/w/roitrack.cgi?aid=1000044195" width=1 height=1 border=0>'.html_safe
+  end
+
+  def facebook_apartment_thank_you_code
+    <<-HTML.html_safe
+      <script type="text/javascript">
+        var fb_param = {};
+        fb_param.pixel_id = '6007551186980';
+        fb_param.value = '0.00';
+        (function(){
+          var fpw = document.createElement('script');
+          fpw.async = true;
+          fpw.src = '//connect.facebook.net/en_US/fp.js';
+          var ref = document.getElementsByTagName('script')[0];
+          ref.parentNode.insertBefore(fpw, ref);
+        })();
+      </script>
+      <noscript>
+        <img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6007551186980&amp;value=0" />
+      </noscript>
+    HTML
+  end
+
   private
 
   def random_number_string(length)

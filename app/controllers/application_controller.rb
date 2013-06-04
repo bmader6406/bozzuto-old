@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include Callsource::Referrer
   include Bozzuto::Mobile
   include OverriddenPathsHelper
+  include MillenialMedia::Controller
 
   helper :all
   protect_from_forgery

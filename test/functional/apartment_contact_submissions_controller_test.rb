@@ -376,7 +376,22 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
         end
       end
 
-      context 'GET to #thank_you' do
+      context "GET to #thank_you" do
+        context "urid is saved in the session" do
+          setup do
+            url = "http://cvt.mydas.mobi/handleConversion?goalid=26148&urid=12345"
+
+            stub_request(:get, url).to_return(:status => 200)
+
+            get :thank_you, { :apartment_community_id => @community.to_param },
+                            { :urid => '12345' }
+          end
+
+          should "clear the urid from the session" do
+            assert_nil session[:urid]
+          end
+        end
+
         browser_context do
           setup do
             get :thank_you, :apartment_community_id => @community.to_param
