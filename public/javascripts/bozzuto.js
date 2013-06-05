@@ -701,29 +701,33 @@ window.bozzuto = {};
   }
 
 
-  ////
-  // tooltips on icon hovers
-  var tooltime = 'inactive', $tooltip, $tooltipArrow, $tooltipContents;
-
+	////
+	// tooltips on icon hovers
   $.fn.toolTip = function() {
+		var tooltime				= 'inactive',
+        $tooltip				= $('<div class="tooltip"></div>').appendTo('body'),
+        $tooltipContent = $('<div></div>').appendTo($tooltip),
+        $tooltipArrow		= $('<span class="tooltip-arrow"></span>').appendTo($tooltip);
+
     return this.each(function() {
-      var $this = $(this),
-          content = $($this.attr('href')).html(),
-          isSearch = $('body').hasClass('search'),
-          left = (isSearch) ? 162 : 156,
-          top = (isSearch) ? 47 : 55;
+      var $this        = $(this),
+
+					name         = $(this).attr('data-name'),
+					description  = $(this).attr('data-description'),
+
+					$name        = $('<h4>' + name + '</h4>'),
+					$description = $('<p>' + description + '</p>'),
+
+          isSearch     = $('body').hasClass('search'),
+          left         = (isSearch) ? 162 : 156,
+          top          = (isSearch) ? 47 : 55;
 
       if (!$tooltip) {
-        $tooltip = $('<div class="tooltip"></div>')
-          .appendTo('body');
-        $tooltipContent = $('<div>' + content + '</div>')
-          .appendTo($tooltip);
-        $tooltipArrow = $('<span class="tooltip-arrow"></span>')
-          .appendTo($tooltip);
       }
 
       $this.hover(function() {
-        $tooltipContent.html(content);
+        $tooltipContent.empty().append($name).append($description);
+
         $tooltip.css({
           'top'     : $this.offset().top + top,
           'left'    : $this.offset().left - left
