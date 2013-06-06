@@ -5411,3 +5411,11 @@ div.wysiwyg ul li {
   top: 7px;
 }
 /* @end */
+
+.hdr-primary .phone-number {
+  color: #000;
+}
+
+.hdr-call-us {
+  padding-left: 30px;
+}
