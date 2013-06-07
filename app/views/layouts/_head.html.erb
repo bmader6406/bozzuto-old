@@ -19,6 +19,8 @@
     <meta name="keywords" content="<%= yield :meta_keywords %>" />
   <% end %>
 
+  <%= yield(:meta) %>
+
   <%= include_stylesheets :bozzuto, :media => 'screen' %>
   <!--[if lte IE 7]>
     <%= stylesheet_link_tag 'ie6-7', :media => 'screen' %> 
