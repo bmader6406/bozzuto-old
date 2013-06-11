@@ -1,6 +1,10 @@
 <% content_for :body_class do %>home<% end %>
 <% render_meta(@home_page) %>
 
+<% content_for :meta do %>
+  <meta property="fb:admins" content="524378309" />
+<% end %>
+
 <%= render :partial => 'special_nav' %>
 
 <% if @home_page %>
