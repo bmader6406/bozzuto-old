@@ -1,10 +1,12 @@
 <h2 class="hdr-primary">
   Ready to speak with a leasing consultant?
 
-  <span class="hdr-call-us">
-    Call Us
-    <%= dnr_phone_number(@community, :height => 21) %>
-  </span>
+  <% if @community.phone_number.present? %>
+    <span class="hdr-call-us">
+      Call Us
+      <%= dnr_phone_number(@community, :height => 21) %>
+    </span>
+  <% end %>
 </h2>
 
 <p id="community-contact-note">Fill out the form below for availability and specials.</p>
