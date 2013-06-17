@@ -16,8 +16,16 @@ module Analytics
       end
 
       def track
-        HTTParty.get(tracking_url)
+        url = tracking_url
+
+        logger.info "==> [Millenial Media] Track: #{url}"
+        HTTParty.get(url)
       end
+
+      def logger
+        Rails.logger
+      end
+
 
       private
 
