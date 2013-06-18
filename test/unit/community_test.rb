@@ -102,13 +102,14 @@ class CommunityTest < ActiveSupport::TestCase
     context '#twitter_handle' do
       context 'when there is a twitter account' do
         setup do
-          TwitterAccount.any_instance.stubs(:username_exists)
-          @account = TwitterAccount.make
+          @account = TwitterAccount.new(:username => 'TheBozzutoGroup')
+          @account.save(false)
+
           @community.twitter_account = @account
         end
 
         should 'return the twitter username' do
-          assert_equal @account.username, @community.twitter_handle
+          assert_equal 'TheBozzutoGroup', @community.twitter_handle
         end
       end
 
@@ -306,7 +307,7 @@ class CommunityTest < ActiveSupport::TestCase
     context 'with a Yelp Feed' do
       setup do
         @feed = Feed.make_unsaved
-        @feed.expects(:validate_on_create)
+        @feed.expects(:valid_feed)
         @feed.save
 
         3.times { FeedItem.make :feed => @feed }
@@ -380,7 +381,9 @@ class CommunityTest < ActiveSupport::TestCase
   context 'The Community class' do
     context 'when searching for communities with a twitter account' do
       setup do
-        @account   = TwitterAccount.make
+        @account = TwitterAccount.new(:username => 'TheBozzutoGroup')
+        @account.save(false)
+
         @community = ApartmentCommunity.make(:twitter_account => @account)
         @other     = ApartmentCommunity.make
       end

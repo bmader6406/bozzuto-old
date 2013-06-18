@@ -6,8 +6,13 @@ require 'mocha'
 require File.join(Rails.root, 'test', 'blueprints')
 require File.join(Rails.root, 'vendor', 'plugins', 'typus', 'lib', 'extensions', 'object')
 
+VCR.configure do |c|
+  c.cassette_library_dir = 'test/vcr_cassettes'
+  c.hook_into :webmock
+end
+
 class ActiveSupport::TestCase
-  include WebMock
+  include WebMock::API
 
   self.use_transactional_fixtures = true
   self.use_instantiated_fixtures  = false
@@ -33,14 +38,6 @@ class ActiveSupport::TestCase
     ApartmentFloorPlanGroup.create :name => '2 Bedrooms'
     ApartmentFloorPlanGroup.create :name => '3 or More Bedrooms'
     ApartmentFloorPlanGroup.create :name => 'Penthouse'
-
-    stub_request(:get, 'https://api.twitter.com/1/users/show.json?screen_name=TheBozzutoGroup').to_return(
-      :body => load_fixture_file('twitter_user.json')
-    )
-
-    stub_request(:get, 'https://api.twitter.com/1/statuses/user_timeline.json?screen_name=TheBozzutoGroup').to_return(
-      :body => load_fixture_file('twitter_user_timeline.json')
-    )
 
     super
   end

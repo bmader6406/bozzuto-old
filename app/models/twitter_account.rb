@@ -14,17 +14,17 @@ class TwitterAccount < ActiveRecord::Base
 
   def sync
     begin
-      Twitter.user_timeline(username).each do |attrs|
-        tweets.find_or_create_by_tweet_id(attrs.id_str) do |tweet|
-          tweet.text      = attrs.text
-          tweet.posted_at = attrs.created_at
+      Twitter.user_timeline(username).each do |remote_tweet|
+        tweets.find_or_create_by_tweet_id(remote_tweet.attrs[:id_str]) do |tweet|
+          tweet.text      = remote_tweet.text
+          tweet.posted_at = remote_tweet.created_at
         end
       end
 
       true
-    rescue Twitter::NotFound
+    rescue Twitter::Error::NotFound
       false
-    rescue Twitter::BadRequest => e
+    rescue Twitter::Error => e
       log_bad_request('could not sync tweets', e)
     end
   end
@@ -38,16 +38,18 @@ class TwitterAccount < ActiveRecord::Base
 
   def username_exists
     begin
-      Twitter.user(username) if username?
-    rescue Twitter::NotFound
-      errors.add(:username, 'is not a valid Twitter user')
-    rescue Twitter::BadRequest => e
+      if username? && errors.on(:username).blank? && !Twitter.user?(username)
+        errors.add(:username, 'is not a valid Twitter user')
+      end
+    rescue Twitter::Error => e
       log_bad_request("could not validate username #{username} exists", e)
     end
   end
 
   def log_bad_request(message, e)
     #:nocov:
+    HoptoadNotifier.notify(e)
+
     Rails.logger.error <<-END
 ======
 TwitterAccount#sync error

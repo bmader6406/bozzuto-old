@@ -12,7 +12,7 @@ class FeedItemTest < ActiveSupport::TestCase
 
     should 'order from newest to oldest by default' do
       @feed = Feed.make_unsaved
-      @feed.expects(:validate_on_create)
+      @feed.expects(:valid_feed)
       @feed.save
 
       @item1 = FeedItem.make :published_at => Time.now, :feed => @feed
@@ -27,7 +27,7 @@ class FeedItemTest < ActiveSupport::TestCase
     context 'when searching for recent items' do
       setup do
         @feed = Feed.make_unsaved
-        @feed.expects(:validate_on_create)
+        @feed.expects(:valid_feed)
         @feed.save
 
         @items = (1..15).inject([]) do |array, i|

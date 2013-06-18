@@ -32,14 +32,13 @@ module Bozzuto
           :counties => [county]
         })
 
-        twitter_account = TwitterAccount.make({
-          :username => 'TheBozzutoGroup'
-        })
+        twitter_account = TwitterAccount.new(:username => 'TheBozzutoGroup')
+        twitter_account.save(false)
 
         local_info_feed = Feed.make_unsaved({
           :url => 'http://bozzuto.com/feed'
         })
-        local_info_feed.expects(:validate_on_create)
+        local_info_feed.expects(:valid_feed)
         local_info_feed.save
 
         @expiration_date = Time.current.advance(:days => 15)

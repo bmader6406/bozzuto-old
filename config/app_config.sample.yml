@@ -25,6 +25,11 @@ development:
   callsource:
     apartment: 1081055
     home: 2891386
+  twitter: # credentials for TheBozzutoGroup
+    consumer_key: 'IvcXyQ5chj0DcwSwQkGObQ'
+    consumer_secret: 'wSGPbjWkg2H5XeN3K9bdJQCn40AhNPIn1iKw65w'
+    access_token: '46745580-U9Uiz9KSTWpdPHWD6icYimCfA4t652zHOjTsbppVe'
+    access_token_secret: 'HtAWQD7kwF8USltXfJucMdNEfJanRILbaTpWRIRFvCA'
 
 production:
   vaultware_feed_file: /path/to/vaultware/feed/bozzutocom.xml
@@ -44,6 +49,11 @@ production:
   callsource:
     apartment: 1081055
     home: 2891386
+  twitter: # credentials for TheBozzutoGroup
+    consumer_key: 'IvcXyQ5chj0DcwSwQkGObQ'
+    consumer_secret: 'wSGPbjWkg2H5XeN3K9bdJQCn40AhNPIn1iKw65w'
+    access_token: '46745580-U9Uiz9KSTWpdPHWD6icYimCfA4t652zHOjTsbppVe'
+    access_token_secret: 'HtAWQD7kwF8USltXfJucMdNEfJanRILbaTpWRIRFvCA'
 
 test:
   vaultware_feed_file: /path/to/vaultware/feed/bozzutocom.xml
@@ -69,3 +79,8 @@ test:
   callsource:
     apartment: 1081055
     home: 2891386
+  twitter: # credentials for TheBozzutoGroup
+    consumer_key: 'IvcXyQ5chj0DcwSwQkGObQ'
+    consumer_secret: 'wSGPbjWkg2H5XeN3K9bdJQCn40AhNPIn1iKw65w'
+    access_token: '46745580-U9Uiz9KSTWpdPHWD6icYimCfA4t652zHOjTsbppVe'
+    access_token_secret: 'HtAWQD7kwF8USltXfJucMdNEfJanRILbaTpWRIRFvCA'

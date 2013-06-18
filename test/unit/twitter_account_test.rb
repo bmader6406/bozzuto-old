@@ -2,7 +2,11 @@ require 'test_helper'
 
 class TwitterAccountTest < ActiveSupport::TestCase
   context 'A TwitterAccount' do
-    setup { @account = TwitterAccount.make }
+    setup do
+      VCR.use_cassette('twitter_user_TheBozzutoGroup') do
+        @account = TwitterAccount.make(:username => 'TheBozzutoGroup')
+      end
+    end
 
     subject { @account }
 
@@ -20,7 +24,7 @@ class TwitterAccountTest < ActiveSupport::TestCase
     context 'with a username' do
       context 'and Twitter API is rate limited' do
         setup do
-          Twitter.expects(:user).raises(Twitter::BadRequest)
+          Twitter.expects(:user?).raises(Twitter::Error)
           @account.expects(:log_bad_request)
 
           @account.username = 'doh'
@@ -33,17 +37,14 @@ class TwitterAccountTest < ActiveSupport::TestCase
 
       context 'that is not a Twitter user' do
         setup do
-          url = 'https://api.twitter.com/1/users/show.json?screen_name=doh'
-          stub_request(:get, url).to_return(
-            :status => 404,
-            :body   => '{"request":"\/1\/users\/show.json?screen_name=doh","error":"Not found"}'
-          )
-
-          @account.username = 'doh'
+          @account.username = '5d234f'
         end
 
         should 'have an error on username' do
-          assert !@account.valid?
+          VCR.use_cassette('twitter_user_5d234f') do
+            assert !@account.valid?
+          end
+
           assert_match /is not a valid Twitter user/, @account.errors.on(:username)
         end
       end
@@ -52,7 +53,10 @@ class TwitterAccountTest < ActiveSupport::TestCase
         setup { @account.username = 'TheBozzutoGroup' }
 
         should 'not have an error' do
-          assert @account.valid?
+          VCR.use_cassette('twitter_user_TheBozzutoGroup') do
+            assert @account.valid?
+          end
+
           assert_nil @account.errors.on(:username)
         end
       end
@@ -100,18 +104,22 @@ class TwitterAccountTest < ActiveSupport::TestCase
 
     context 'when syncing' do
       setup do
-        @tweets = Twitter.user_timeline(@account.username)
+        VCR.use_cassette('twitter_timeline_TheBozzutoGroup') do
+          @tweets = Twitter.user_timeline('TheBozzutoGroup')
+        end
       end
 
       context 'and no tweets exist' do
         should 'create all of the tweets' do
           assert_difference('@account.tweets.count', @tweets.count) {
-            @account.sync
+            VCR.use_cassette('twitter_timeline_TheBozzutoGroup') do
+              @account.sync
+            end
           }
 
           @tweets.zip(@account.tweets).each do |expected, actual|
             assert_equal expected.text, actual.text
-            assert_equal expected.id_str, actual.tweet_id
+            assert_equal expected.attrs[:id_str], actual.tweet_id
           end
         end
       end
@@ -120,7 +128,7 @@ class TwitterAccountTest < ActiveSupport::TestCase
         setup do
           @first = @tweets.first
 
-          @account.tweets.find_or_create_by_tweet_id(@first.id_str) do |tweet|
+          @account.tweets.find_or_create_by_tweet_id(@first.attrs[:id_str]) do |tweet|
             tweet.text      = @first.text
             tweet.posted_at = @first.created_at
           end
@@ -128,35 +136,33 @@ class TwitterAccountTest < ActiveSupport::TestCase
 
         should 'only create the new tweets' do
           assert_difference('@account.tweets.count', @tweets.count - 1) {
-            @account.sync
+            VCR.use_cassette('twitter_timeline_TheBozzutoGroup') do
+              @account.sync
+            end
           }
 
           @tweets.zip(@account.tweets).each do |expected, actual|
             assert_equal expected.text, actual.text
-            assert_equal expected.id_str, actual.tweet_id
+            assert_equal expected.attrs[:id_str], actual.tweet_id
           end
         end
       end
 
       context 'and the username is invalid' do
         setup do
-          url = 'https://api.twitter.com/1/statuses/user_timeline.json?screen_name=doh'
-          stub_request(:get, url).to_return(
-            :status => 404,
-            :body   => '{"request":"\/1\/users\/show.json?screen_name=doh","error":"Not found"}'
-          )
-
-          @account.username = 'doh'
+          @account.username = '5d234f'
         end
 
         should 'return false' do
-          assert !@account.sync
+          VCR.use_cassette('twitter_timeline_5d234f') do
+            assert !@account.sync
+          end
         end
       end
 
       context 'and Twitter API is rate limited' do
         setup do
-          Twitter.expects(:user_timeline).raises(Twitter::BadRequest)
+          Twitter.expects(:user_timeline).raises(Twitter::Error)
           @account.expects(:log_bad_request)
 
           @account.username = 'doh'

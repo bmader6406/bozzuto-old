@@ -2,28 +2,22 @@ class Feed < ActiveRecord::Base
   include HTTParty
 
   has_many :items,
-    :class_name => 'FeedItem',
-    :dependent  => :destroy
+           :class_name => 'FeedItem',
+           :dependent  => :destroy
+
   has_many :properties, :foreign_key => :local_info_feed_id
 
+
   validates_presence_of :name, :url
+
   validates_uniqueness_of :url
 
+  validate :valid_feed, :on => :create
 
-  def validate_on_create
-    fetch_feed
-
-    if @feed_data.code == 404
-      errors.add(:url, 'could not be found')
-    elsif !valid_rss_feed?
-      errors.add(:url, 'is not a valid RSS feed')
-    end
-  end
 
   def typus_name
     name
   end
-
 
   def refresh
     fetch_feed
@@ -78,5 +72,19 @@ class Feed < ActiveRecord::Base
 
   def valid_rss_feed?
     @feed_data.is_a?(Hash) && @feed_data['rss'].present?
+  rescue MultiXml::ParseError
+    false
+  end
+
+  def valid_feed
+    return if url.blank?
+
+    fetch_feed
+
+    if @feed_data.code == 404
+      errors.add(:url, 'could not be found')
+    elsif !valid_rss_feed?
+      errors.add(:url, 'is not a valid RSS feed')
+    end
   end
 end

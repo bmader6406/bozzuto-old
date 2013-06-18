@@ -23,7 +23,7 @@ namespace :bozzuto do
       end
     rescue Exception => e
       puts "Failed to load feed: #{e.message}"
-      notify_hoptoad(e)
+      HoptoadNotifier.notify(e)
     end
   end
 
@@ -43,7 +43,7 @@ namespace :bozzuto do
       end
     rescue Exception => e
       puts "Failed to load feed: #{e.message}"
-      notify_hoptoad(e)
+      HoptoadNotifier.notify(e)
     end
   end
 
@@ -61,9 +61,9 @@ namespace :bozzuto do
       begin
         puts "Refreshing @#{account.username}"
         account.sync
-      rescue Twitter::BadRequest => e
+      rescue Exception => e
         puts " --> error syncing: #{e.message}"
-        notify_hoptoad(e)
+        HoptoadNotifier.notify(e)
       end
     end
   end
@@ -90,7 +90,7 @@ namespace :bozzuto do
 
     rescue Exception => e
       puts "Failed to export data: #{e.message}"
-      notify_hoptoad(e)
+      HoptoadNotifier.notify(e)
     end
   end
 end

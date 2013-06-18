@@ -3,8 +3,10 @@ require 'test_helper'
 class TweetTest < ActiveSupport::TestCase
   context 'A Tweet' do
     setup do
-      @account = TwitterAccount.make
-      @tweet   = Tweet.make :twitter_account => @account
+      @account = TwitterAccount.new(:username => 'TheBozzutoGroup')
+      @account.save(false)
+
+      @tweet = Tweet.make :twitter_account => @account
     end
 
     subject { @tweet }
@@ -21,7 +23,8 @@ class TweetTest < ActiveSupport::TestCase
 
   context 'The Tweet class' do
     setup do
-      @account = TwitterAccount.make
+      @account = TwitterAccount.new(:username => 'TheBozzutoGroup')
+      @account.save(false)
 
       @tweets = (1..12).inject([]) do |array, i|
         array << Tweet.make(
