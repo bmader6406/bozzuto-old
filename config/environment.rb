@@ -50,13 +50,13 @@ Rails::Initializer.run do |config|
     r301 %r{^/regions/washington-dc-ne-se-apartments/?}, '/regions/washington-dc-apartments'
 
     r301 %r{.*},
-         '/apartments/communities/35-strathmore-court-at-white-flint',
+         'http://www.bozzuto.com/apartments/communities/35-strathmore-court-at-white-flint',
          :if => Proc.new { |rack_env|
            rack_env['SERVER_NAME'] =~ /strathmorecourtapts\.com$/
          }
 
     r301 %r{.*},
-         '/apartments/communities/213-timberlawn-crescent',
+         'http://www.bozzuto.com/apartments/communities/213-timberlawn-crescent',
          :if => Proc.new { |rack_env|
            rack_env['SERVER_NAME'] =~ /timberlawncrescent\.com$/
          }
