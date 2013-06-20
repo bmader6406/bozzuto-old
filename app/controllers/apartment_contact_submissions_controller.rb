@@ -19,7 +19,7 @@ class ApartmentContactSubmissionsController < ApplicationController
   end
 
   def thank_you
-    track_millenial_media_urid
+    track_millenial_media_mmurid
   end
 
 

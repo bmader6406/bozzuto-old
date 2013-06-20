@@ -3,21 +3,21 @@ module Analytics
     module Controller
       def self.included(base)
         base.class_eval do
-          before_filter :save_urid_param
+          before_filter :save_mmurid_param
         end
       end
 
-      def save_urid_param
-        if params[:urid].present?
-          session[:urid] = params[:urid]
+      def save_mmurid_param
+        if params[:mmurid].present?
+          session[:mmurid] = params[:mmurid]
         end
       end
 
-      def track_millenial_media_urid
-        if session[:urid].present?
-          ::Analytics::MillenialMedia::Tracker.track_with_urid(session[:urid])
+      def track_millenial_media_mmurid
+        if session[:mmurid].present?
+          ::Analytics::MillenialMedia::Tracker.track_with_mmurid(session[:mmurid])
 
-          session[:urid] = nil
+          session[:mmurid] = nil
         end
       end
     end

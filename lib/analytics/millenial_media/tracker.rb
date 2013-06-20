@@ -5,14 +5,14 @@ module Analytics
 
       BASE_URL = "http://cvt.mydas.mobi/handleConversion"
 
-      attr_reader :urid
+      attr_reader :mmurid
 
-      def self.track_with_urid(urid)
-        new(urid).track
+      def self.track_with_mmurid(mmurid)
+        new(mmurid).track
       end
 
-      def initialize(urid)
-        @urid = urid
+      def initialize(mmurid)
+        @mmurid = mmurid
       end
 
       def track
@@ -31,7 +31,7 @@ module Analytics
 
       def tracking_url
         url    = BASE_URL
-        params = ["goalid=#{TRACKING_ID}", "urid=#{urid}"].join('&')
+        params = ["goalid=#{TRACKING_ID}", "mmurid=#{mmurid}"].join('&')
 
         [url, params].join('?')
       end
