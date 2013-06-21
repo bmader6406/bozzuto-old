@@ -9,6 +9,7 @@ require 'rack-rewrite'
 require 'redirectotron'
 require 'bozzuto/missing_images'
 require 'bozzuto/www_redirector'
+require 'analytics/millenial_media/middleware'
 
 Rails::Initializer.run do |config|
   config.autoload_paths << Rails.root.join('app', 'mailers')
@@ -67,6 +68,8 @@ Rails::Initializer.run do |config|
   end
 
   config.middleware.insert_before(Rack::Lock, Bozzuto::MissingImages)
+
+  config.middleware.insert_after(ActionController::Session::CookieStore, Analytics::MillenialMedia::Middleware)
 
   if Rails.env.production?
     config.middleware.use Redirectotron

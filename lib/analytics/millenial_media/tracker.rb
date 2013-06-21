@@ -18,7 +18,7 @@ module Analytics
       def track
         url = tracking_url
 
-        logger.info "==> [Millenial Media] Track: #{url}"
+        log("Track: #{url}")
         HTTParty.get(url)
       end
 
@@ -26,12 +26,16 @@ module Analytics
         Rails.logger
       end
 
+      def log(message)
+        logger.info "==> [Millenial Media] #{message}"
+      end
+
 
       private
 
       def tracking_url
         url    = BASE_URL
-        params = ["goalid=#{TRACKING_ID}", "mmurid=#{mmurid}"].join('&')
+        params = ["goalid=#{TRACKING_ID}", "urid=#{mmurid}"].join('&')
 
         [url, params].join('?')
       end

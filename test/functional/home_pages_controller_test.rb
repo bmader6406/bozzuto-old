@@ -2,14 +2,6 @@ require 'test_helper'
 
 class HomePagesControllerTest < ActionController::TestCase
   context 'HomePagesController' do
-    context "mmurid param is present" do
-      setup do
-        get :index, :mmurid => '12345'
-      end
-
-      should_set_session(:mmurid) { '12345' }
-    end
-
     context '#latest_award' do
       setup do
         @unpublished = Award.make(:unpublished)

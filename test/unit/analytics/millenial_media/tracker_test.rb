@@ -5,13 +5,15 @@ module Analytics
     class TrackerTest < ActiveSupport::TestCase
       context ".track_with_mmurid" do
         setup do
-          url = "http://cvt.mydas.mobi/handleConversion?goalid=26148&mmurid=12345"
+          url = "http://cvt.mydas.mobi/handleConversion?goalid=26148&urid=12345"
 
-          stub_request(:get, url).to_return(:status => 200)
+          @mm_request = stub_request(:get, url).to_return(:status => 200)
         end
 
         should "hit the correct URL" do
           Tracker.track_with_mmurid('12345')
+
+          assert_requested(@mm_request)
         end
       end
     end

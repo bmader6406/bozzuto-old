@@ -379,15 +379,17 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
       context "GET to #thank_you" do
         context "mmurid is saved in the session" do
           setup do
-            url = "http://cvt.mydas.mobi/handleConversion?goalid=26148&mmurid=12345"
+            url = "http://cvt.mydas.mobi/handleConversion?goalid=26148&urid=batman"
 
-            stub_request(:get, url).to_return(:status => 200)
+            @mm_request = stub_request(:get, url).to_return(:status => 200)
 
             get :thank_you, { :apartment_community_id => @community.to_param },
-                            { :mmurid => '12345' }
+                            { :mmurid => 'batman' }
           end
 
           should "clear the mmurid from the session" do
+            assert_requested(@mm_request)
+
             assert_nil session[:mmurid]
           end
         end
