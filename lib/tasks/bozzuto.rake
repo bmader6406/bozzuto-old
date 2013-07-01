@@ -50,8 +50,13 @@ namespace :bozzuto do
   desc 'Refresh Local Info feeds'
   task :refresh_local_info_feeds => :environment do
     Feed.all.each do |feed|
-      puts "Refreshing #{feed.name} feed (#{feed.url})"
-      feed.refresh
+      begin
+        puts "Refreshing #{feed.name} feed (#{feed.url})"
+        feed.refresh
+      rescue Exception => e
+        puts "Failed to load feed: #{e.message}"
+        HoptoadNotifier.notify(e)
+      end
     end
   end
 
@@ -71,8 +76,13 @@ namespace :bozzuto do
   desc 'Send recurring emails'
   task :send_recurring_emails => :environment do
     RecurringEmail.needs_sending.each do |email|
-      puts "Sending recurring email to #{email.email_address}"
-      email.send!
+      begin
+        puts "Sending recurring email to #{email.email_address}"
+        email.send!
+      rescue Exception => e
+        puts "Failed to send recurring email: #{e.message}"
+        HoptoadNotifier.notify(e)
+      end
     end
   end
 
