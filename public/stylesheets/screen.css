@@ -2926,28 +2926,34 @@ div.wysiwyg ul li {
     position: relative;
   }
 
-	.floor-plan-view-js .floor-plan-view-full {
-		left: 0;
-		position: absolute;
-		top: 0;
-	}
+  .floor-plan-view-js .floor-plan-view-full {
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
 
-	.floor-plan-view-js .floor-plan-view-full span {
-		margin: 0px;
-		position: absolute;
-	}
+  .floor-plan-view-js .floor-plan-view-full span {
+    margin: 0px;
+    position: absolute;
+  }
 
-	.floor-plan-view-js .pinterest-button {
-		height: 20px;
-		position: absolute;
-		width: 40px;
-	}
+  .floor-plan-view-js .pinterest-button {
+    height: 20px;
+    position: absolute;
+    width: 40px;
+  }
 
   a.floor-plan-view-full {
-		background: transparent !important;
+    /*
+      Both of these are required. The rgba one fixes a weird but in IE10 where
+      the element doesn't appear unless a background color is set.
+    */
+    background: transparent;
+    background: rgba(255, 255, 255, 0.0);
+
     display: block;
-		padding-left: 0 !important;
-	}
+    padding-left: 0 !important;
+  }
   .floor-plan-view-full span {
     background: #d5d8dc !important;
     border: 1px solid #9ba2ad;
@@ -2956,7 +2962,7 @@ div.wysiwyg ul li {
     font-size: 0.833333em;
     height: 24px;
     line-height: 24px;
-		margin: 10px 0;
+    margin: 10px 0;
     overflow: visible;
     padding: 0px 5px !important;
     text-align: center;
@@ -2964,8 +2970,8 @@ div.wysiwyg ul li {
     width: 90px;
   }
   .floor-plan-view-full:hover {
-		text-decoration: none;
-	}
+    text-decoration: none;
+  }
 
   .floor-plan-overlay {
     opacity: 0;
