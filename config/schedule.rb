@@ -26,6 +26,12 @@ every 1.day, :at => '8:30 am' do
   rake 'bozzuto:load_vaultware_feed'
 end
 
+if environment == 'production'
+  every 1.day, :at => '9:00 am' do
+    command 'cp /home/vault/bozzutocom.xml /home/bozzuto/'
+  end
+end
+
 every 1.day, :at => ['5:00 am', '5:00 pm'] do
   rake 'bozzuto:export_apartment_feed'
 end
