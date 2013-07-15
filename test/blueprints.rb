@@ -15,8 +15,9 @@ Sham.define do
   section_title    { |i| "#{Faker::Lorem.words} #{i}" }
   file_name        { |i| "/image#{i}.jpg" }
   unique_name      { |i| "#{Faker::Lorem.words(2)} #{i}" }
-  vaultware_id     { |i| i }
-  property_link_id { |i| i }
+  vaultware_id     { |i| i.to_s }
+  property_link_id { |i| i.to_s }
+  rent_cafe_id     { |i| i.to_s }
 end
 
 Sham.bedrooms(:unique => false)  { rand(5) + 1 }
@@ -51,6 +52,11 @@ ApartmentCommunity.blueprint(:property_link) do
   external_cms_type { 'property_link' }
 end
 
+ApartmentCommunity.blueprint(:rent_cafe) do
+  external_cms_id   { Sham.rent_cafe_id }
+  external_cms_type { 'rent_cafe' }
+end
+
 ApartmentFloorPlan.blueprint do
   name               { Faker::Lorem.words(1) }
   image_type         { ApartmentFloorPlan::USE_IMAGE_URL }
@@ -76,6 +82,11 @@ end
 ApartmentFloorPlan.blueprint(:property_link) do
   external_cms_id   { Sham.property_link_id }
   external_cms_type { 'property_link' }
+end
+
+ApartmentFloorPlan.blueprint(:rent_cafe) do
+  external_cms_id   { Sham.rent_cafe_id }
+  external_cms_type { 'rent_cafe' }
 end
 
 ApartmentFloorPlanGroup.blueprint do; end

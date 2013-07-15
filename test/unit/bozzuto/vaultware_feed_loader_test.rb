@@ -153,8 +153,8 @@ module Bozzuto
               files = @plan.at('./File[Rank=1]')
 
               @community.floor_plans << ApartmentFloorPlan.make_unsaved(:vaultware,
-                :external_cms_id      => @plan['Id'].to_i,
-                :external_cms_file_id => (file['Id'].to_i rescue nil),
+                :external_cms_id      => @plan['Id'],
+                :external_cms_file_id => (file['Id'] rescue nil),
                 :apartment_community  => @community,
                 :image_url            => nil
               )
@@ -216,7 +216,7 @@ module Bozzuto
               @plan = @plans.first
 
               @community.floor_plans << ApartmentFloorPlan.make_unsaved(:vaultware,
-                :external_cms_id     => @plan['Id'].to_i,
+                :external_cms_id     => @plan['Id'],
                 :apartment_community => @community,
                 :image_url           => nil,
                 :floor_plan_group    => @penthouse
@@ -304,7 +304,7 @@ module Bozzuto
 
 
     def external_cms_id(property)
-      property.at('./PropertyID/Identification/PrimaryID').content.to_i
+      property.at('./PropertyID/Identification/PrimaryID').content
     end
 
     def title(property)
@@ -357,17 +357,21 @@ module Bozzuto
     def unrolled_floor_plan_attributes(plan)
       attrs = floor_plan_attributes(plan)
       file = plan.at('./File')
-      attrs[:external_cms_file_id] = file['Id'].to_i rescue nil
-      attrs[:image_url] = file.at('./Src').content rescue nil
+
+      attrs[:external_cms_file_id] = (file['Id'] rescue nil)
+      attrs[:image_url]            = (file.at('./Src').content rescue nil)
+
       attrs
     end
 
     def rolled_up_floor_plan_attributes(plan)
       attrs = floor_plan_attributes(plan)
       file = plan.at('./File[Rank=1]')
-      attrs[:external_cms_file_id] = file['Id'].to_i rescue nil
-      attrs[:image_url] = file.at('./Src').content rescue nil
-      attrs[:rolled_up] = true
+
+      attrs[:external_cms_file_id] = (file['Id'] rescue nil)
+      attrs[:image_url]            = (file.at('./Src').content rescue nil)
+      attrs[:rolled_up]            = true
+
       attrs
     end
 
@@ -385,7 +389,7 @@ module Bozzuto
         :max_market_rent    => plan.at('./MarketRent')['Max'].to_f,
         :min_effective_rent => plan.at('./EffectiveRent')['Min'].to_f,
         :max_effective_rent => plan.at('./EffectiveRent')['Max'].to_f,
-        :external_cms_id    => plan['Id'].to_i,
+        :external_cms_id    => plan['Id'],
         :external_cms_type  => 'vaultware'
       }
     end

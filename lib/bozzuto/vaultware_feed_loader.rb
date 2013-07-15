@@ -12,6 +12,7 @@ module Bozzuto
     county                        './PropertyID/Address/CountyName'
     availability_url              './Information/PropertyAvailabilityURL'
 
+    floor_plan_external_cms_id    './Floorplan', :attribute => 'Id'
     floor_plan_name               './Name'
     floor_plan_comment            './Comment'
     floor_plan_availability_url   './FloorplanAvailabilityURL'

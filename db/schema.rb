@@ -63,8 +63,8 @@ ActiveRecord::Schema.define(:version => 2012081313174438) do
     t.integer  "image_type",                                           :default => 0,     :null => false
     t.string   "image_file_name"
     t.string   "image_content_type"
-    t.integer  "external_cms_id"
-    t.integer  "external_cms_file_id"
+    t.string   "external_cms_id"
+    t.string   "external_cms_file_id"
     t.boolean  "featured",                                             :default => false, :null => false
     t.boolean  "rolled_up",                                            :default => false, :null => false
     t.string   "external_cms_type"
@@ -128,7 +128,7 @@ ActiveRecord::Schema.define(:version => 2012081313174438) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "local_info_feed_id"
-    t.integer  "external_cms_id"
+    t.string   "external_cms_id"
     t.boolean  "use_market_prices",            :default => false, :null => false
     t.string   "availability_url"
     t.string   "type"
@@ -817,7 +817,7 @@ ActiveRecord::Schema.define(:version => 2012081313174438) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "local_info_feed_id"
-    t.integer  "external_cms_id"
+    t.string   "external_cms_id"
     t.boolean  "use_market_prices",            :default => false, :null => false
     t.string   "availability_url"
     t.string   "type"

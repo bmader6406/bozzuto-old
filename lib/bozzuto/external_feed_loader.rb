@@ -8,7 +8,7 @@ module Bozzuto
     self.load_interval = 2.hours
 
     def self.feed_types
-      %w(vaultware property_link)
+      %w(vaultware property_link rent_cafe)
     end
 
     def self.loader_for_type(type)
@@ -17,6 +17,8 @@ module Bozzuto
         VaultwareFeedLoader.new
       when :property_link
         PropertyLinkFeedLoader.new
+      when :rent_cafe
+        RentCafeFeedLoader.new
       else
         raise "Unknown feed type: #{type}"
       end
@@ -48,6 +50,7 @@ module Bozzuto
       state
       city
       county
+      floor_plan_external_cms_id
       floor_plan_name
       floor_plan_comment
       floor_plan_availability_url
@@ -165,7 +168,7 @@ module Bozzuto
 
     def process_property(property)
       @community = ApartmentCommunity.find_or_initialize_by_external_cms_id_and_external_cms_type(
-        value_for(property, :external_cms_id).to_i,
+        value_for(property, :external_cms_id),
         self.class.feed_type.to_s
       )
 
@@ -197,7 +200,7 @@ module Bozzuto
         file  = plan.at(file_selector)
 
         attrs.merge!(
-          :external_cms_file_id => (file['Id'].to_i rescue nil),
+          :external_cms_file_id => (file['Id'] rescue nil),
           :image_url            => (file.at('./Src').content rescue nil),
           :rolled_up            => rolled_up
         )
@@ -241,6 +244,8 @@ module Bozzuto
     end
 
     def floor_plan_attributes(plan)
+      external_cms_id_config = self.class.send(:floor_plan_external_cms_id)
+
       {
         :floor_plan_group   => floor_plan_group(plan),
         :name               => value_for(plan, :floor_plan_name),
@@ -254,7 +259,7 @@ module Bozzuto
         :max_market_rent    => value_for(plan, :floor_plan_max_market_rent).to_f,
         :min_effective_rent => value_for(plan, :floor_plan_min_effective_rent).to_f,
         :max_effective_rent => value_for(plan, :floor_plan_max_effective_rent).to_f,
-        :external_cms_id    => plan['Id'].to_i,
+        :external_cms_id    => plan[ external_cms_id_config[:attribute] ],
         :external_cms_type  => self.class.feed_type.to_s
       }
     end

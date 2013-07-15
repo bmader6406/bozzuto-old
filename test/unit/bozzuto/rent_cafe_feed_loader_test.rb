@@ -1,12 +1,12 @@
 require 'test_helper'
 
 module Bozzuto
-  class PropertyLinkFeedLoaderTest < ActiveSupport::TestCase
-    context 'A PropertyLink Feed Loader' do
+  class RentCafeFeedLoaderTest < ActiveSupport::TestCase
+    context 'A RentCafe Feed Loader' do
       setup do
         rm_feed_loader_tmp_files
         create_states
-        @loader = PropertyLinkFeedLoader.new
+        @loader = RentCafeFeedLoader.new
 
         @loader.stubs(:touch_tmp_file)
         @loader.stubs(:touch_lock_file)
@@ -16,8 +16,8 @@ module Bozzuto
 
       context '#process' do
         setup do
-          load_property_link_fixture_file('property_link.xml')
-          @loader.file = File.join(Rails.root, 'test', 'files', 'property_link.xml')
+          load_rent_cafe_fixture_file('rent_cafe.xml')
+          @loader.file = File.join(Rails.root, 'test', 'files', 'rent_cafe.xml')
         end
 
         should 'create the communities' do
@@ -25,7 +25,7 @@ module Bozzuto
             @loader.load
           end
 
-          community = ApartmentCommunity.managed_by_feed(external_cms_id(@property), 'property_link').first
+          community = ApartmentCommunity.managed_by_feed(external_cms_id(@property), 'rent_cafe').first
           attrs = community_attributes(@property)
 
           community_fields.each do |field|
@@ -36,7 +36,7 @@ module Bozzuto
         context 'a community already exists with a CMS id' do
           setup do
             @external_cms_id = external_cms_id(@property)
-            @community       = ApartmentCommunity.make(:property_link, :external_cms_id => @external_cms_id)
+            @community       = ApartmentCommunity.make(:rent_cafe, :external_cms_id => @external_cms_id)
           end
 
           should 'update the existing community' do
@@ -63,37 +63,33 @@ module Bozzuto
         should 'return one bedroom when bedrooms is 1' do
           @plan = mock_floor_plan(1, '')
 
-          assert_equal ApartmentFloorPlanGroup.one_bedroom,
-            @loader.send(:floor_plan_group, @plan)
+          assert_equal ApartmentFloorPlanGroup.one_bedroom, @loader.send(:floor_plan_group, @plan)
         end
 
         should 'return two bedrooms when bedrooms is 2' do
           @plan = mock_floor_plan(2, '')
 
-          assert_equal ApartmentFloorPlanGroup.two_bedrooms,
-            @loader.send(:floor_plan_group, @plan)
+          assert_equal ApartmentFloorPlanGroup.two_bedrooms, @loader.send(:floor_plan_group, @plan)
         end
 
         should 'return three bedrooms when bedrooms is 3 or more' do
           @plan = mock_floor_plan(3, '')
 
-          assert_equal ApartmentFloorPlanGroup.three_bedrooms,
-            @loader.send(:floor_plan_group, @plan)
+          assert_equal ApartmentFloorPlanGroup.three_bedrooms, @loader.send(:floor_plan_group, @plan)
 
           @plan = mock_floor_plan(5, '')
 
-          assert_equal ApartmentFloorPlanGroup.three_bedrooms,
-            @loader.send(:floor_plan_group, @plan)
+          assert_equal ApartmentFloorPlanGroup.three_bedrooms, @loader.send(:floor_plan_group, @plan)
         end
       end
 
 
       context 'processing floor plans' do
         setup do
-          load_property_link_fixture_file('property_link.xml')
-          @loader.file = File.join(Rails.root, 'test', 'files', 'property_link.xml')
+          load_rent_cafe_fixture_file('rent_cafe.xml')
+          @loader.file = File.join(Rails.root, 'test', 'files', 'rent_cafe.xml')
 
-          @community = ApartmentCommunity.make(:property_link,
+          @community = ApartmentCommunity.make(:rent_cafe,
             :external_cms_id => external_cms_id(@property)
           )
 
@@ -124,8 +120,8 @@ module Bozzuto
 
             @plan = @plans.first
 
-            @community.floor_plans << ApartmentFloorPlan.make_unsaved(:property_link,
-              :external_cms_id     => @plan['Id'],
+            @community.floor_plans << ApartmentFloorPlan.make_unsaved(:rent_cafe,
+              :external_cms_id     => @plan['id'].to_i,
               :apartment_community => @community,
               :image_url           => nil,
               :floor_plan_group    => @penthouse
@@ -141,8 +137,7 @@ module Bozzuto
 
             @plans_attrs.each_with_index do |attrs, i|
               attrs.each_key do |field|
-                assert_equal attrs[field],
-                  @community.floor_plans[i].send(field)
+                assert_equal attrs[field], @community.floor_plans[i].send(field)
               end
             end
           end
@@ -154,14 +149,15 @@ module Bozzuto
         end
       end
 
+
       context "processing hours" do
         setup do
-          load_property_link_fixture_file('property_link.xml')
-          @loader.file = File.join(Rails.root, 'test', 'files', 'property_link.xml')
+          load_rent_cafe_fixture_file('rent_cafe.xml')
+          @loader.file = File.join(Rails.root, 'test', 'files', 'rent_cafe.xml')
 
           @hours = @property.xpath('./Information/OfficeHour')
 
-          @community = ApartmentCommunity.make(:property_link,
+          @community = ApartmentCommunity.make(:rent_cafe,
             :external_cms_id => external_cms_id(@property)
           )
 
@@ -177,8 +173,8 @@ module Bozzuto
 
       context 'testing a full load' do
         setup do
-          load_property_link_fixture_file('property_link.xml')
-          @loader.file = File.join(Rails.root, 'test', 'files', 'property_link.xml')
+          load_rent_cafe_fixture_file('rent_cafe.xml')
+          @loader.file = File.join(Rails.root, 'test', 'files', 'rent_cafe.xml')
         end
 
         should 'load all the properties and floor plans' do
@@ -207,11 +203,11 @@ module Bozzuto
 
 
     def external_cms_id(property)
-      property.at('./PropertyID/Identification/PrimaryID').content
+      property.at('./Identification/PrimaryID').content
     end
 
     def title(property)
-      property.at('./PropertyID/Identification/MarketingName').content
+      property.at('./Identification/MarketingName').content
     end
 
     def community_fields
@@ -225,8 +221,8 @@ module Bozzuto
     end
 
     def community_attributes(property)
-      ident   = property.at('./PropertyID/Identification')
-      address = property.at('./PropertyID/Address')
+      ident   = property.at('./Identification')
+      address = property.at('./Identification/Address')
       info    = property.at('./Information')
 
       {
@@ -234,7 +230,7 @@ module Bozzuto
         :street_address    => address.at('./Address1').content,
         :availability_url  => info.at('./PropertyAvailabilityURL').try(:content),
         :external_cms_id   => external_cms_id(property),
-        :external_cms_type => 'property_link'
+        :external_cms_type => 'rent_cafe'
       }
     end
 
@@ -244,17 +240,17 @@ module Bozzuto
           :name               => plan.at('./Name').content,
           :rolled_up          => false,
           :availability_url   => plan.at('./FloorplanAvailabilityURL').try(:content),
-          :available_units    => plan.at('./DisplayedUnitsAvailable').content.to_i,
-          :bedrooms           => (plan.at('./Room[@Type="Bedroom"]/Count').try(:content) || 0).to_i,
-          :bathrooms          => plan.at('./Room[@Type="Bathroom"]/Count').content.to_f,
-          :min_square_feet    => plan.at('./SquareFeet')['Min'].to_i,
-          :max_square_feet    => plan.at('./SquareFeet')['Max'].to_i,
-          :min_market_rent    => plan.at('./MarketRent')['Min'].to_f,
-          :max_market_rent    => plan.at('./MarketRent')['Max'].to_f,
-          :min_effective_rent => plan.at('./EffectiveRent')['Min'].to_f,
-          :max_effective_rent => plan.at('./EffectiveRent')['Max'].to_f,
-          :external_cms_id    => plan['Id'],
-          :external_cms_type  => 'property_link'
+          :available_units    => plan.at('./UnitsAvailable').content.to_i,
+          :bedrooms           => (plan.at('./Room[@type="bedroom"]/Count').try(:content) || 0).to_i,
+          :bathrooms          => plan.at('./Room[@type="bathroom"]/Count').content.to_f,
+          :min_square_feet    => plan.at('./SquareFeet')['min'].to_i,
+          :max_square_feet    => plan.at('./SquareFeet')['max'].to_i,
+          :min_market_rent    => plan.at('./MarketRent')['min'].to_f,
+          :max_market_rent    => plan.at('./MarketRent')['max'].to_f,
+          :min_effective_rent => plan.at('./EffectiveRent')['min'].to_f,
+          :max_effective_rent => plan.at('./EffectiveRent')['max'].to_f,
+          :external_cms_id    => plan['id'],
+          :external_cms_type  => 'rent_cafe'
         }
       end
     end
@@ -274,10 +270,10 @@ module Bozzuto
     end
 
     def mock_floor_plan(bedrooms, comment = '')
-      Nokogiri::XML(%{<Floorplan Id="1234"><Room Type="Bedroom"><Count>#{bedrooms}</Count></Room><Comment>#{comment}</Comment></Floorplan>}).at('./Floorplan')
+      Nokogiri::XML(%{<Floorplan Id="1234"><Room type="bedroom"><Count>#{bedrooms}</Count></Room><Comment>#{comment}</Comment></Floorplan>}).at('./Floorplan')
     end
 
-    def load_property_link_fixture_file(file)
+    def load_rent_cafe_fixture_file(file)
       @fixture = load_fixture_file(file)
       data     = Nokogiri::XML(@fixture)
 
@@ -285,6 +281,8 @@ module Bozzuto
 
       @properties = data.xpath('/PhysicalProperty/Property')
       @property   = @properties.first
+
+      #binding.pry
     end
   end
 end
