@@ -41,7 +41,6 @@ class NewsPostsControllerTest < ActionController::TestCase
 
       mobile_context do
         setup do
-          set_mobile_user_agent!
           get :index, :section => @section.to_param
         end
 
@@ -64,8 +63,6 @@ class NewsPostsControllerTest < ActionController::TestCase
 
       mobile_context do
         setup do
-          set_mobile_user_agent!
-
           @news_post = NewsPost.make :sections => [@section]
 
           get :show, :section => @section.to_param, :news_post_id => @news_post.id

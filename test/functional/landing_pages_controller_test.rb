@@ -49,7 +49,6 @@ class LandingPagesControllerTest < ActionController::TestCase
 
       mobile_context do
         setup do
-          set_mobile_user_agent!
           get :show, :id => @page.to_param
         end
 

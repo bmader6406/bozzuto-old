@@ -23,7 +23,6 @@ class AwardsControllerTest < ActionController::TestCase
 
       mobile_context do
         setup do
-          set_mobile_user_agent!
           get :index, :section => @section.to_param
         end
 
@@ -46,8 +45,6 @@ class AwardsControllerTest < ActionController::TestCase
 
       mobile_context do
         setup do
-          set_mobile_user_agent!
-
           @award = Award.make :sections => [@section]
 
           get :show, :section => @section.to_param, :award_id => @award.id

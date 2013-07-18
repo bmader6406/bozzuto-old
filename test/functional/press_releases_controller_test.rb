@@ -20,8 +20,6 @@ class PressReleasesControllerTest < ActionController::TestCase
 
       mobile_context do
         setup do
-          set_mobile_user_agent!
-
           get :index, :section => @about.to_param
         end
 
@@ -30,11 +28,10 @@ class PressReleasesControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #show' do
-      mobile_context do
+      browser_context do
         setup do
-          get :show,
-            :section => @about.to_param,
-            :press_release_id => @press_release.id
+          get :show, :section          => @about.to_param,
+                     :press_release_id => @press_release.id
         end
 
         should_respond_with :success
@@ -44,11 +41,8 @@ class PressReleasesControllerTest < ActionController::TestCase
 
       mobile_context do
         setup do
-          set_mobile_user_agent!
-
-          get :show,
-            :section => @about.to_param,
-            :press_release_id => @press_release.id
+          get :show, :section          => @about.to_param,
+                     :press_release_id => @press_release.id
         end
 
         should_redirect_to_home_page

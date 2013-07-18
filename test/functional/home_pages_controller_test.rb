@@ -66,41 +66,6 @@ class HomePagesControllerTest < ActionController::TestCase
         should_assign_to(:home_page) { @home_page }
         should_assign_to(:section) { @about }
       end
-      
-      context 'in a browser with full_site set to "0"' do
-        setup do
-          get :index, :full_site => "0"
-        end
-        
-        should_respond_with :success
-        should_render_with_layout :application
-        should_render_template :index
-        should_set_session(:force_full_site){ "0" }
-      end
-
-      mobile_context do
-        setup do
-          get :index, :format => :mobile
-        end
-
-        should_respond_with :success
-        should_render_with_layout :application
-        should_render_template :index
-        should_assign_to(:home_page) { @home_page }
-      end
-      
-      context 'on a mobile device with full_site set to "1"' do
-        setup do
-          set_mobile_user_agent!
-          get :index, :full_site => "1"
-        end
-        
-        should_respond_with :success
-        should_render_with_layout :homepage
-        should_render_template :index
-        should_assign_to(:home_page) { @home_page }
-        should_set_session(:force_full_site){ "1" }
-      end
     end
   end
 end

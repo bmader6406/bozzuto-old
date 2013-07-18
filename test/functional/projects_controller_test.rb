@@ -19,8 +19,6 @@ class ProjectsControllerTest < ActionController::TestCase
 
       mobile_context do
         setup do
-          set_mobile_user_agent!
-
           get :index, :section => @section.to_param
         end
 
@@ -46,8 +44,6 @@ class ProjectsControllerTest < ActionController::TestCase
 
       mobile_context do
         setup do
-          set_mobile_user_agent!
-
           get :show, :section => @section.to_param, :project_id => @project.to_param
         end
 

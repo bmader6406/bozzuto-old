@@ -7,9 +7,10 @@ class CareersController < SectionContentController
     @page    = @section.pages.published.first
     @entries = CareersEntry.all(:limit => 4)
 
-    respond_to do |wants|
-      wants.html   { render :index, :layout => 'application' }
-      wants.mobile { render 'pages/show' }
+    if mobile?
+      render 'pages/show'
+    else
+      render :index, :layout => 'application'
     end
   end
 end

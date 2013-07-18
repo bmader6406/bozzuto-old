@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include Callsource::Referrer
-  include Bozzuto::Mobile
+  include Bozzuto::Mobile::Controller
   include OverriddenPathsHelper
   include Analytics::MillenialMedia::Controller
 

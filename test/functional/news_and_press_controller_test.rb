@@ -21,7 +21,6 @@ class NewsAndPressControllerTest < ActionController::TestCase
 
       mobile_context do
         setup do
-          set_mobile_user_agent!
           get :index, :section => @about.to_param
         end
 
@@ -81,7 +80,6 @@ class NewsAndPressControllerTest < ActionController::TestCase
 
       mobile_context do
         setup do
-          set_mobile_user_agent!
           get :show, :section => @about.to_param, :page => []
         end
 

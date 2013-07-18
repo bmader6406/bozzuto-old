@@ -28,6 +28,10 @@ gem 'fastercsv', '1.5.4'
 gem 'uuidtools'
 gem 'sitemap_generator', '~> 3.4'
 
+group :development, :test do
+  gem 'pry'
+end
+
 group :test do
   gem 'shoulda', '2.10.3'
   gem 'phocus', '1.1'
@@ -37,6 +41,5 @@ group :test do
   gem 'webmock'
   gem 'ruby-debug', '0.10.4'
   gem 'rack-test', '0.5.7', :require => 'rack/test'
-  gem 'pry'
   gem 'vcr'
 end

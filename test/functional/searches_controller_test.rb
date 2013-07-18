@@ -28,7 +28,6 @@ class SearchesControllerTest < ActionController::TestCase
 
     mobile_context do
       setup do
-        set_mobile_user_agent!
         get :index
       end
 

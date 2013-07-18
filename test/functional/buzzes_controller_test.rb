@@ -21,7 +21,6 @@ class BuzzesControllerTest < ActionController::TestCase
 
       mobile_context do
         setup do
-          set_mobile_user_agent!
           get :new, :section => 'about-us'
         end
 
@@ -71,8 +70,6 @@ class BuzzesControllerTest < ActionController::TestCase
       mobile_context do
         context 'with an invalid buzz' do
           setup do
-            set_mobile_user_agent!
-
             post :create,
               :section => 'about-us',
               :buzz => {}
@@ -102,7 +99,6 @@ class BuzzesControllerTest < ActionController::TestCase
 
       mobile_context do
         setup do
-          set_mobile_user_agent!
           get :thank_you, :section => 'about-us'
         end
 

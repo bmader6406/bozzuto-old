@@ -1,6 +1,10 @@
+require 'bozzuto/middleware_helpers'
+
 module Analytics
   module MillenialMedia
     class Middleware
+      include Bozzuto::MiddlewareHelpers
+
       def initialize(app)
         @app = app
       end
@@ -15,15 +19,8 @@ module Analytics
         @app.call(env)
       end
 
+
       private
-
-      def session
-        @env['rack.session']
-      end
-
-      def params
-        Rack::Utils.parse_query(@env['QUERY_STRING'])
-      end
 
       def mmurid
         params['mmurid']

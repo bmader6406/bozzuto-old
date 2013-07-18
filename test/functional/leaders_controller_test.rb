@@ -18,8 +18,6 @@ class LeadersControllerTest < ActionController::TestCase
 
       mobile_context do
         setup do
-          set_mobile_user_agent!
-
           get :index, :section => @section.to_param
         end
 

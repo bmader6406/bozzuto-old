@@ -42,10 +42,6 @@ class ActiveSupport::TestCase
     super
   end
 
-  def set_mobile_user_agent!
-    @request.env['HTTP_USER_AGENT'] = 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_2_1 like Mac OS X; da-dk) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8C148 Safari/6533.18.5'
-  end
-
   def rm_feed_loader_tmp_files
     Bozzuto::ExternalFeedLoader.feed_types.each do |type|
       loader = Bozzuto::ExternalFeedLoader.loader_for_type(type)
@@ -55,6 +51,11 @@ class ActiveSupport::TestCase
     end
   end
 
+  def set_mobile!
+    @request.format = :mobile
+    @request.env['bozzuto.mobile.device'] = :iphone
+  end
+
   class << self
     def should_redirect_to_home_page
       should_respond_with :redirect
@@ -62,7 +63,13 @@ class ActiveSupport::TestCase
     end
 
     def mobile_context(&block)
-      context('from a mobile device', &block)
+      context 'from a mobile device' do
+        setup do
+          set_mobile!
+        end
+
+        context(nil, &block)
+      end
     end
 
     def browser_context(&block)
