@@ -44,7 +44,7 @@ module Bozzuto
       end
 
       def mobile_request?
-        (device != :browser && !force_browser?) || force_mobile?
+        params['format'] == 'mobile' || (device != :browser && !force_browser?) || force_mobile?
       end
 
       def user_agent
@@ -60,7 +60,7 @@ module Bozzuto
       end
 
       def format=(format)
-        self.query_string = [query_string, "format=#{format}"].join('&')
+        append_to_query_string("format=#{format}")
       end
     end
   end
