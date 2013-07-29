@@ -39,30 +39,31 @@ module PhoneNumberHelper
     end
   end
 
-  def dnr_phone_number(community, opts = {})
+  def dnr_phone_number(community, dnr_value = nil, opts = {})
     return '' unless community.phone_number.present?
 
     opts.reverse_merge!(:width => 150, :height => 17)
 
+    # sanitize phone number
     number = sanitize_phone_number(community.phone_number)
 
+    # find account
     account = if community.is_a?(ApartmentCommunity)
       APP_CONFIG[:callsource]['apartment']
     elsif community.is_a?(HomeCommunity)
       APP_CONFIG[:callsource]['home']
     end
 
-    dnr = community.dnr_configuration
-
-    matching_referrer = dnr_referrer
+    # find the community's DNR configuration
+    dnr_config = community.dnr_configuration
 
     args = [
       number,
       'xxx.xxx.xxxx',
       account,
-      dnr.try(:customer_code) || 'undefined',
-      matching_referrer || dnr.try(:campaign) || 'undefined',
-      matching_referrer || dnr.try(:ad_source) || 'undefined',
+      dnr_config.try(:customer_code) || 'undefined',
+      dnr_value.presence || dnr_config.try(:campaign) || 'undefined',
+      dnr_value.presence || dnr_config.try(:ad_source) || 'undefined',
     ].map { |arg| "'#{arg}'" }
 
     <<-SCRIPT.html_safe

@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
-  include Callsource::Referrer
-  include Bozzuto::Mobile::Controller
   include OverriddenPathsHelper
+  include Bozzuto::Mobile::Controller
   include Analytics::MillenialMedia::Controller
+  include Analytics::DnrAndLeadChannel::Controller
 
   helper :all
   protect_from_forgery

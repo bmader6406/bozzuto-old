@@ -78,10 +78,6 @@ class PhoneNumberHelperTest < ActionView::TestCase
         end
 
         context 'that does not have a customer code' do
-          setup do
-            stubs(:dnr_referrer).returns(nil)
-          end
-
           should 'output the replaceNumber function call' do
             assert_match %r{replaceNumber\('#{@number}', 'xxx.xxx.xxxx', '#{@account}', 'undefined', 'undefined', 'undefined'\);},
               dnr_phone_number(@community)
@@ -90,8 +86,6 @@ class PhoneNumberHelperTest < ActionView::TestCase
 
         context 'that has DNR configured' do
           setup do
-            stubs(:dnr_referrer).returns(nil)
-
             @dnr = DnrConfiguration.make_unsaved
             @community.dnr_configuration = @dnr
             @community.save
@@ -103,29 +97,23 @@ class PhoneNumberHelperTest < ActionView::TestCase
           end
         end
 
-        context 'referrer matches an existing DNR Referrer' do
-          setup do
-            stubs(:dnr_referrer).returns('apartments.com')
-          end
-
+        context 'DNR value provided' do
           should 'output the replaceNumber function call with the domain as campaign and ad source' do
-            assert_match %r{replaceNumber\('#{@number}', 'xxx.xxx.xxxx', '#{@account}', 'undefined', 'apartments.com', 'apartments.com'\);},
-              dnr_phone_number(@community)
+            assert_match %r{replaceNumber\('#{@number}', 'xxx.xxx.xxxx', '#{@account}', 'undefined', 'batman', 'batman'\);},
+              dnr_phone_number(@community, 'batman')
           end
         end
 
-        context 'that has DNR configured and referrer matches an existing DNR Referrer' do
+        context 'that has DNR configured and DNR value is provided' do
           setup do
-            stubs(:dnr_referrer).returns('apartments.com')
-
             @dnr = DnrConfiguration.make_unsaved
             @community.dnr_configuration = @dnr
             @community.save
           end
 
           should 'output the replaceNumber function call with the domain as campaign and ad source' do
-            assert_match %r{replaceNumber\('#{@number}', 'xxx.xxx.xxxx', '#{@account}', '#{@dnr.customer_code}', 'apartments.com', 'apartments.com'\);},
-              dnr_phone_number(@community)
+            assert_match %r{replaceNumber\('#{@number}', 'xxx.xxx.xxxx', '#{@account}', '#{@dnr.customer_code}', 'batman', 'batman'\);},
+              dnr_phone_number(@community, 'batman')
           end
         end
       end
@@ -138,10 +126,6 @@ class PhoneNumberHelperTest < ActionView::TestCase
         end
 
         context 'that does not have a customer code' do
-          setup do
-            stubs(:dnr_referrer).returns(nil)
-          end
-
           should 'output the replaceNumber function call' do
             assert_match %r{replaceNumber\('#{@number}', 'xxx.xxx.xxxx', '#{@account}', 'undefined', 'undefined', 'undefined'\);},
               dnr_phone_number(@community)
@@ -150,8 +134,6 @@ class PhoneNumberHelperTest < ActionView::TestCase
 
         context 'that has DNR configured' do
           setup do
-            stubs(:dnr_referrer).returns(nil)
-
             @dnr = DnrConfiguration.make_unsaved
             @community.dnr_configuration = @dnr
             @community.save
@@ -163,29 +145,23 @@ class PhoneNumberHelperTest < ActionView::TestCase
           end
         end
 
-        context 'referrer matches an existing DNR Referrer' do
-          setup do
-            stubs(:dnr_referrer).returns('rent.com')
-          end
-
+        context 'DNR value provided' do
           should 'output the replaceNumber function call with the domain as campaign and ad source' do
-            assert_match %r{replaceNumber\('#{@number}', 'xxx.xxx.xxxx', '#{@account}', 'undefined', 'rent.com', 'rent.com'\);},
-              dnr_phone_number(@community)
+            assert_match %r{replaceNumber\('#{@number}', 'xxx.xxx.xxxx', '#{@account}', 'undefined', 'batman', 'batman'\);},
+              dnr_phone_number(@community, 'batman')
           end
         end
 
-        context 'that has DNR configured and referrer matches an existing DNR Referrer' do
+        context 'that has DNR configured and DNR value is provided' do
           setup do
-            stubs(:dnr_referrer).returns('rent.com')
-
             @dnr = DnrConfiguration.make_unsaved
             @community.dnr_configuration = @dnr
             @community.save
           end
 
           should 'output the replaceNumber function call with the domain as campaign and ad source' do
-            assert_match %r{replaceNumber\('#{@number}', 'xxx.xxx.xxxx', '#{@account}', '#{@dnr.customer_code}', 'rent.com', 'rent.com'\);},
-              dnr_phone_number(@community)
+            assert_match %r{replaceNumber\('#{@number}', 'xxx.xxx.xxxx', '#{@account}', '#{@dnr.customer_code}', 'batman', 'batman'\);},
+              dnr_phone_number(@community, 'batman')
           end
         end
       end

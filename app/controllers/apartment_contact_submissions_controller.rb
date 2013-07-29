@@ -34,7 +34,9 @@ class ApartmentContactSubmissionsController < ApplicationController
     @submission = if @community.under_construction?
       @community.under_construction_leads.build(params[:submission])
     else
-      Lead2LeaseSubmission.new(params[:submission])
+      Lead2LeaseSubmission.new(params[:submission]).tap do |submission|
+        submission.lead_channel = lead_channel_value
+      end
     end
   end
 
@@ -51,7 +53,7 @@ class ApartmentContactSubmissionsController < ApplicationController
 
   def process_lead_2_lease_submission
     if @submission.valid?
-      Lead2LeaseMailer.deliver_submission(@community, @submission, mobile?)
+      Lead2LeaseMailer.deliver_submission(@community, @submission)
 
       flash[:apartment_contact_email] = @submission.email
       flash[:contact_form]            = 'lead_2_lease'

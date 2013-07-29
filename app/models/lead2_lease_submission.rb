@@ -16,6 +16,7 @@ class Lead2LeaseSubmission < ActiveRecord::Base
   column :bathrooms, :integer
   column :pets, :boolean
   column :comments, :text
+  column :lead_channel, :string
 
   validates_presence_of :first_name, :last_name, :primary_phone, :email, :move_in_date
   validates_email_format_of :email

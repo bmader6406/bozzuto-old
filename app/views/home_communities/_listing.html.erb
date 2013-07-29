@@ -46,7 +46,7 @@
       <% if community.phone_number.present? %>
         <p>
           <% if use_dnr %>
-            <%= dnr_phone_number(community) %>
+            <%= dnr_phone_number(community, dnr_value) %>
           <% else %>
             <%= community.phone_number %>
           <% end %>

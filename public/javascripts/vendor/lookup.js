@@ -1,6 +1,6 @@
 var backwardsCompatible = false; // leaving true fixes IE cookie problem in old version
                                  // setting to false improves performance of new version
-var urlOverridesFunction = true;   // Set to true for URL arguments to override replaceNumber arguments
+var urlOverridesFunction = false;  // Set to true for URL arguments to override replaceNumber arguments
                                    // Set to false if replaceNumber should override URL arguments
 var callsourceServer = 'reporting.callsource.com'; // for production
 //var callsourceServer = 'budev08.callsource.com'; // uncomment and edit for testing
