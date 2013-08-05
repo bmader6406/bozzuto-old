@@ -113,6 +113,17 @@ class ApartmentCommunity < Community
     true
   end
 
+  def disconnect_from_external_cms!
+    self.external_cms_id   = nil
+    self.external_cms_type = nil
+
+    floor_plans.each do |plan|
+      plan.disconnect_from_external_cms!
+    end
+
+    save
+  end
+
   private
 
   def mark_dirty_floor_plan_prices

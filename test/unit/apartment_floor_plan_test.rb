@@ -237,6 +237,20 @@ class ApartmentFloorPlanTest < ActiveSupport::TestCase
         end
       end
     end
+
+    context "#disconnect_from_external_cms!" do
+      subject { ApartmentFloorPlan.make(:vaultware) }
+
+      should "reset the external CMS identifiers to nil" do
+        subject.disconnect_from_external_cms!
+
+        subject.reload
+
+        assert_nil subject.external_cms_id
+        assert_nil subject.external_cms_type
+        assert_nil subject.external_cms_file_id
+      end
+    end
   end
 
   context 'The ApartmentFloorPlan class' do

@@ -84,6 +84,14 @@ class ApartmentFloorPlan < ActiveRecord::Base
     true
   end
 
+  def disconnect_from_external_cms!
+    self.external_cms_id      = nil
+    self.external_cms_type    = nil
+    self.external_cms_file_id = nil
+
+    save
+  end
+
 
   private
 

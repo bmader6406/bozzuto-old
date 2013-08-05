@@ -220,6 +220,27 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
       end
     end
 
+    context "#disconnect_from_external_cms!" do
+      subject {
+        ApartmentCommunity.make(:vaultware, :floor_plans => [ApartmentFloorPlan.make_unsaved(:vaultware)])
+      }
+
+      should "reset the external CMS identifiers to nil" do
+        subject.disconnect_from_external_cms!
+
+        subject.reload
+
+        assert_nil subject.external_cms_id
+        assert_nil subject.external_cms_type
+
+        subject.floor_plans.each do |plan|
+          assert_nil subject.external_cms_id
+          assert_nil subject.external_cms_type
+          assert_nil subject.external_cms_file_id
+        end
+      end
+    end
+
     context '#cheapest_price_in_group' do
       setup do
         @group = ApartmentFloorPlanGroup.studio
