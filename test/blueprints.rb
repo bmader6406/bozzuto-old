@@ -23,6 +23,11 @@ Sham.bedrooms(:unique => false)  { rand(5) + 1 }
 Sham.bathrooms(:unique => false) { (rand * 3).round_with_precision(1) + 1 }
 
 
+AdSource.blueprint do
+  domain_name { Faker::Internet.domain_name }
+  value       { 'Value' }
+end
+
 ApartmentCommunity.blueprint do
   title             { Sham.company_name }
   subtitle          { Faker::Company.catch_phrase }
@@ -140,10 +145,6 @@ DnrConfiguration.blueprint do
   customer_code { (rand(3000) + 500).to_s }
   campaign      { (rand(3000) + 500).to_s }
   ad_source     { (rand(500000) + 40000).to_s }
-end
-
-DnrReferrer.blueprint do
-  domain_name { Faker::Internet.domain_name }
 end
 
 Feed.blueprint do

@@ -1,5 +1,5 @@
 module Analytics
-  module DnrAndLeadChannel
+  module AdSource
     module Controller
       def self.included(base)
         base.class_eval do
@@ -8,11 +8,11 @@ module Analytics
       end
 
       def dnr_value
-        request.env['bozzuto.dnr']
+        request.env['bozzuto.ad_source.dnr']
       end
 
       def lead_channel_value
-        request.env['bozzuto.lead_channel']
+        request.env['bozzuto.ad_source.lead_channel']
       end
     end
   end

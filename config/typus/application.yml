@@ -2,6 +2,18 @@
 #
 # Use the README file as a reference to customize settings.
 #
+AdSource:
+  fields:
+    default: domain_name, value
+    list: domain_name, value
+    form: domain_name, value
+    options:
+  order_by: domain_name
+  relationships: 
+  filters:
+  search: 
+  application: System
+
 ApartmentCommunity:
   fields:
     default: title, published, featured, street_address, city
@@ -228,18 +240,6 @@ DnrConfiguration:
   filters:
   search: 
   application: 
-
-DnrReferrer:
-  fields:
-    default: domain_name
-    list: domain_name
-    form: domain_name
-    options:
-  order_by: domain_name
-  relationships: 
-  filters:
-  search: 
-  application: System
 
 Feed:
   fields:

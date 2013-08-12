@@ -11,8 +11,7 @@ require 'bozzuto/missing_images'
 require 'bozzuto/www_redirector'
 require 'bozzuto/mobile/middleware'
 require 'analytics/millenial_media/middleware'
-require 'analytics/dnr_and_lead_channel/middleware'
-require 'analytics/dnr/referrer/middleware'
+require 'analytics/ad_source/middleware'
 
 Rails::Initializer.run do |config|
   config.autoload_paths << Rails.root.join('app', 'mailers')
@@ -73,10 +72,9 @@ Rails::Initializer.run do |config|
   config.middleware.insert_before(Rack::Lock, Bozzuto::MissingImages)
 
   config.middleware.insert_after(ActionController::Session::CookieStore, Bozzuto::Mobile::Middleware)
-  config.middleware.insert_after(Bozzuto::Mobile::Middleware, Analytics::MillenialMedia::Middleware)
-  config.middleware.insert_after(Analytics::MillenialMedia::Middleware, Analytics::DnrAndLeadChannel::Middleware)
 
-  config.middleware.use('Analytics::Dnr::Referrer::Middleware')
+  config.middleware.use(Analytics::MillenialMedia::Middleware)
+  config.middleware.use('Analytics::AdSource::Middleware')
 
   if Rails.env.production?
     config.middleware.use Redirectotron

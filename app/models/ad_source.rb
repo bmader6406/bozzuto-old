@@ -1,16 +1,17 @@
-class DnrReferrer < ActiveRecord::Base
-  validates_presence_of :domain_name
+class AdSource < ActiveRecord::Base
+  validates_presence_of :domain_name, :value
+  validates_uniqueness_of :domain_name
   validate :properly_formatted_uri
   validate :does_not_include_protocol
 
-  attr_accessible :domain_name
+  attr_accessible :domain_name, :value
 
   before_save :write_pattern
 
   def self.matching(domain)
     return nil if domain.blank? || domain == '/'
 
-    all(:conditions => ['? RLIKE pattern', domain]).first.try(:domain_name)
+    all(:conditions => ['? RLIKE pattern', domain]).first
   end
 
 

@@ -1,6 +1,7 @@
 en:
   activerecord:
     models:
+      ad_source: Ad Source
       apartment_community: Apartment Community
       apartment_contact_configuration: Contact Configuration
       apartment_floor_plan: Floor Plan
@@ -12,7 +13,6 @@ en:
       carousel_panel: Carousel Panel
       contact_topic: Contact Form Topic
       dnr_configuration: DNR Configuration
-      dnr_referrer: DNR Referrer
       feed: Feed
       green_feature: Green Feature
       green_package: Green Package
@@ -44,6 +44,9 @@ en:
       typus_user: User
       under_construction_lead: Under-Construction Lead
     attributes:
+      ad_source:
+        domain_name: Domain Name
+        value: Value
       apartment_community:
         dnr_configuration: DNR Configuration
         external_cms_name: Managed by
@@ -117,8 +120,6 @@ en:
         customer_code: Customer Code
         campaign: Campaign
         ad_source: Ad Source
-      dnr_referrer:
-        domain_name: Domain Name
       feed:
         url: Feed URL
       green_package:
@@ -302,6 +303,9 @@ en:
       video:
         url: URL
     tips:
+      ad_source:
+        domain_name: "The domain name to match the referrer against. If the referrer's domain (including subdomains) matches this domain name, then the value below will be set as the ad source. <strong>Include only the domain. Do not include http://</strong>.<br /><br />Example: apartments.com"
+        value: "This value will be used for the 'ad source' param when doing DNR number replacement and as the 'Lead Channel' on Lead 2 Lease submissions."
       apartment_community:
         under_construction: Communities that are under construction show the "Under Construction" contact form instead of the "Lead2Lease" contact form.
         video_url: This URL is used on the mobile apartment community listing page. To change the "Watch Video" buttons that appear on the slides on the main listing page, edit the "Slideshow" further down this page.
@@ -339,8 +343,6 @@ en:
         google_send_to_friend_label: 'This value is in the JavaScript embed code: <code>...var google_conversion_label = "<strong class="highlight">9-naCJqi4QIQ7oKvzwM</strong>";...</code>'
         google_send_to_phone_label: 'This value is in the JavaScript embed code: <code>...var google_conversion_label = "<strong class="highlight">OVtTCJKj4QIQ7oKvzwM</strong>";...</code>'
 
-      dnr_referrer:
-        domain_name: "The domain name to match the referrer against. If the referrer's domain (including subdomains) matches this domain name, then this domain name will be sent as the <strong>campaign</strong> and <strong>ad source</strong> parameters in all DNR-replaced phone numbers. <strong>Include only the domain. Do not include http://</strong>.<br /><br />Examples: apartments.com, rent.com, trulia.com"
       green_feature:
         photo: Image dimensions should be 170x170.
       green_package:
