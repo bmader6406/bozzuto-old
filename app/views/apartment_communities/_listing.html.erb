@@ -20,7 +20,7 @@
       <p class="address-info">
         <%= community.address %><br/>
         <% if use_dnr %>
-          <%= dnr_phone_number(community, dnr_value) %>
+          <%= dnr_phone_number(community, dnr_ad_source) %>
         <% else %>
           <%= community.phone_number %>
         <% end %>

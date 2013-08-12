@@ -39,7 +39,7 @@ module PhoneNumberHelper
     end
   end
 
-  def dnr_phone_number(community, dnr_value = nil, opts = {})
+  def dnr_phone_number(community, dnr_ad_source = nil, opts = {})
     return '' unless community.phone_number.present?
 
     opts.reverse_merge!(:width => 150, :height => 17)
@@ -54,16 +54,13 @@ module PhoneNumberHelper
       APP_CONFIG[:callsource]['home']
     end
 
-    # find the community's DNR configuration
-    dnr_config = community.dnr_configuration
-
     args = [
       number,
       'xxx.xxx.xxxx',
       account,
-      dnr_config.try(:customer_code) || 'undefined',
-      dnr_value.presence || dnr_config.try(:campaign) || 'undefined',
-      dnr_value.presence || dnr_config.try(:ad_source) || 'undefined',
+      'undefined',
+      'undefined',
+      dnr_ad_source.presence || 'undefined',
     ].map { |arg| "'#{arg}'" }
 
     <<-SCRIPT.html_safe

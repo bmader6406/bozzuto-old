@@ -27,9 +27,9 @@ ApartmentCommunity:
         featured: ['Yes', 'No']
       required: title, city
       selectors: brochure_type
-      destroy_related: DnrConfiguration, PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyToursPage, PropertyContactPage, PropertySlideshow, PropertyMiniSlideshow, Video, PhotoSet, ApartmentFloorPlan
+      destroy_related: PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyToursPage, PropertyContactPage, PropertySlideshow, PropertyMiniSlideshow, Video, PhotoSet, ApartmentFloorPlan
   order_by: title
-  relationships: dnr_configuration, mediaplex_tag, property_features, city, county, local_info_feed, features_page, neighborhood_page, tours_page, contact_page, slideshow, videos, photo_set, floor_plans, promo, contact_configuration
+  relationships: mediaplex_tag, property_features, city, county, local_info_feed, features_page, neighborhood_page, tours_page, contact_page, slideshow, videos, photo_set, floor_plans, promo, contact_configuration
   filters: 
   search: properties.title, properties.street_address
   application: Properties
@@ -316,9 +316,9 @@ HomeCommunity:
       booleans:
         published: ['Yes', 'No']
       selectors: brochure_type
-      destroy_related: DnrConfiguration, ConversionConfiguration, PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyToursPage, PropertyContactPage, LassoAccount, PropertySlideshow, PropertyMiniSlideshow, Home, Video, PhotoSet
+      destroy_related: ConversionConfiguration, PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyToursPage, PropertyContactPage, LassoAccount, PropertySlideshow, PropertyMiniSlideshow, Home, Video, PhotoSet
   order_by: title
-  relationships: dnr_configuration, conversion_configuration, property_features, city, county, features_page, neighborhood_page, tours_page, contact_page, lasso_account, slideshow, videos, photo_set, homes, local_info_feed, promo, green_package
+  relationships: conversion_configuration, property_features, city, county, features_page, neighborhood_page, tours_page, contact_page, lasso_account, slideshow, videos, photo_set, homes, local_info_feed, promo, green_package
   filters:
   search: title
   application: Properties

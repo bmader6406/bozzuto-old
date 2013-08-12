@@ -35,7 +35,7 @@ class ApartmentContactSubmissionsController < ApplicationController
       @community.under_construction_leads.build(params[:submission])
     else
       Lead2LeaseSubmission.new(params[:submission]).tap do |submission|
-        submission.lead_channel = lead_channel_value
+        submission.lead_channel = lead_channel
       end
     end
   end

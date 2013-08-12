@@ -77,42 +77,16 @@ class PhoneNumberHelperTest < ActionView::TestCase
           @account   = APP_CONFIG[:callsource]['home'].to_s
         end
 
-        context 'that does not have a customer code' do
+        context 'no DNR value provided' do
           should 'output the replaceNumber function call' do
             assert_match %r{replaceNumber\('#{@number}', 'xxx.xxx.xxxx', '#{@account}', 'undefined', 'undefined', 'undefined'\);},
               dnr_phone_number(@community)
           end
         end
 
-        context 'that has DNR configured' do
-          setup do
-            @dnr = DnrConfiguration.make_unsaved
-            @community.dnr_configuration = @dnr
-            @community.save
-          end
-
-          should 'output the replaceNumber function call' do
-            assert_match %r{replaceNumber\('#{@number}', 'xxx.xxx.xxxx', '#{@account}', '#{@dnr.customer_code}', '#{@dnr.campaign}', '#{@dnr.ad_source}'\);},
-              dnr_phone_number(@community)
-          end
-        end
-
         context 'DNR value provided' do
-          should 'output the replaceNumber function call with the domain as campaign and ad source' do
-            assert_match %r{replaceNumber\('#{@number}', 'xxx.xxx.xxxx', '#{@account}', 'undefined', 'batman', 'batman'\);},
-              dnr_phone_number(@community, 'batman')
-          end
-        end
-
-        context 'that has DNR configured and DNR value is provided' do
-          setup do
-            @dnr = DnrConfiguration.make_unsaved
-            @community.dnr_configuration = @dnr
-            @community.save
-          end
-
-          should 'output the replaceNumber function call with the domain as campaign and ad source' do
-            assert_match %r{replaceNumber\('#{@number}', 'xxx.xxx.xxxx', '#{@account}', '#{@dnr.customer_code}', 'batman', 'batman'\);},
+          should 'output the replaceNumber function call with the value as ad source' do
+            assert_match %r{replaceNumber\('#{@number}', 'xxx.xxx.xxxx', '#{@account}', 'undefined', 'undefined', 'batman'\);},
               dnr_phone_number(@community, 'batman')
           end
         end
@@ -125,47 +99,20 @@ class PhoneNumberHelperTest < ActionView::TestCase
           @account   = APP_CONFIG[:callsource]['apartment'].to_s
         end
 
-        context 'that does not have a customer code' do
+        context 'no DNR value provided' do
           should 'output the replaceNumber function call' do
             assert_match %r{replaceNumber\('#{@number}', 'xxx.xxx.xxxx', '#{@account}', 'undefined', 'undefined', 'undefined'\);},
               dnr_phone_number(@community)
           end
         end
 
-        context 'that has DNR configured' do
-          setup do
-            @dnr = DnrConfiguration.make_unsaved
-            @community.dnr_configuration = @dnr
-            @community.save
-          end
-
-          should 'output the replaceNumber function call' do
-            assert_match %r{replaceNumber\('#{@number}', 'xxx.xxx.xxxx', '#{@account}', '#{@dnr.customer_code}', '#{@dnr.campaign}', '#{@dnr.ad_source}'\);},
-              dnr_phone_number(@community)
-          end
-        end
-
         context 'DNR value provided' do
-          should 'output the replaceNumber function call with the domain as campaign and ad source' do
-            assert_match %r{replaceNumber\('#{@number}', 'xxx.xxx.xxxx', '#{@account}', 'undefined', 'batman', 'batman'\);},
-              dnr_phone_number(@community, 'batman')
-          end
-        end
-
-        context 'that has DNR configured and DNR value is provided' do
-          setup do
-            @dnr = DnrConfiguration.make_unsaved
-            @community.dnr_configuration = @dnr
-            @community.save
-          end
-
-          should 'output the replaceNumber function call with the domain as campaign and ad source' do
-            assert_match %r{replaceNumber\('#{@number}', 'xxx.xxx.xxxx', '#{@account}', '#{@dnr.customer_code}', 'batman', 'batman'\);},
+          should 'output the replaceNumber function call with the value as ad source' do
+            assert_match %r{replaceNumber\('#{@number}', 'xxx.xxx.xxxx', '#{@account}', 'undefined', 'undefined', 'batman'\);},
               dnr_phone_number(@community, 'batman')
           end
         end
       end
-
     end
   end
 end
