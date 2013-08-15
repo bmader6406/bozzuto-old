@@ -52,7 +52,15 @@ class LandingPagesControllerTest < ActionController::TestCase
           get :show, :id => @page.to_param
         end
 
-        should_redirect_to_home_page
+        should_respond_with :success
+        should_render_with_layout :homepage
+        should_render_template :show
+        should_assign_to(:page) { @page }
+        should_assign_to(:state) { @page.state }
+
+        should "set the format to :html" do
+          assert_equal :html, @request.format.to_sym
+        end
       end
     end
   end
