@@ -4,15 +4,9 @@ module Analytics
   class AdSourceTest < ActionController::IntegrationTest
     AD_SOURCE_COOKIE = Analytics::AdSource::Middleware::RequestProcessor::AD_SOURCE_COOKIE
 
-    def self.should_set_lead_channel(value)
-      should "set the lead channel value to '#{value}'" do
-        assert_lead_channel(value)
-      end
-    end
-
-    def self.should_set_dnr(value)
-      should "set the DNR value to '#{value}'" do
-        assert_dnr(value)
+    def self.should_set_ad_source(value)
+      should "set the ad source to '#{value}'" do
+        assert_ad_source(value)
       end
     end
 
@@ -28,8 +22,7 @@ module Analytics
           get '/', nil, { :cookie => "#{AD_SOURCE_COOKIE}=Batman; path=/; expires=#{30.days.from_now}" }
         end
 
-        should_set_lead_channel('Batman')
-        should_set_dnr('Batman')
+        should_set_ad_source('Batman')
       end
 
       context "ad source param is present" do
@@ -37,8 +30,7 @@ module Analytics
           get '/', 'ctx_Ad Source' => 'Two-Face'
         end
 
-        should_set_lead_channel('Two-Face')
-        should_set_dnr('Two-Face')
+        should_set_ad_source('Two-Face')
         should_set_ad_source_cookie('Two-Face')
       end
 
@@ -49,8 +41,7 @@ module Analytics
           get '/', nil, { :referer => 'http://apartments.com' }
         end
 
-        should_set_lead_channel('Apartments')
-        should_set_dnr('Apartments')
+        should_set_ad_source('Apartments')
         should_set_ad_source_cookie('Apartments')
       end
 
@@ -60,8 +51,7 @@ module Analytics
             get '/', nil, { :user_agent => "iPhone" }
           end
 
-          should_set_lead_channel('Bozzuto.comMobile')
-          should_set_dnr(nil)
+          should_set_ad_source('Bozzuto.comMobile')
         end
 
         context "request is not from a mobile device" do
@@ -69,8 +59,7 @@ module Analytics
             get '/'
           end
 
-          should_set_lead_channel('Bozzuto.com')
-          should_set_dnr(nil)
+          should_set_ad_source('Bozzuto.com')
         end
       end
     end
@@ -80,12 +69,13 @@ module Analytics
       @request.env
     end
 
-    def assert_lead_channel(value)
-      assert_equal value, env['bozzuto.ad_source.lead_channel']
+    def assert_ad_source(value)
+      assert_equal value, env['bozzuto.ad_source']
     end
 
-    def assert_dnr(value)
-      assert_equal value, env['bozzuto.ad_source.dnr']
+    def assert_ad_source_cookie(value)
+      assert_cookie(AD_SOURCE_COOKIE, value)
+      assert_cookie_expiration(AD_SOURCE_COOKIE, 30.days.from_now)
     end
 
     def assert_cookie(name, value)
@@ -94,11 +84,6 @@ module Analytics
 
     def assert_cookie_expiration(name, time)
       assert((full_cookies[name]['expires'] - time).abs < 20)
-    end
-
-    def assert_ad_source_cookie(value)
-      assert_cookie(AD_SOURCE_COOKIE, value)
-      assert_cookie_expiration(AD_SOURCE_COOKIE, 30.days.from_now)
     end
   end
 end

@@ -25,7 +25,7 @@ module Analytics
         AD_SOURCE_COOKIE = '_bozzuto_ad_source'
 
         attr_reader :env
-        attr_accessor :lead_channel_value, :dnr_value
+        attr_accessor :ad_source
 
         def initialize(env)
           @env           = env
@@ -34,46 +34,29 @@ module Analytics
 
         def process
           if ad_source_cookie.present?
-            # Set DNR Ad Source to the cookie value
-            self.dnr_value = ad_source_cookie
-
-            # Set Lead Channel to the cookie value
-            self.lead_channel_value = ad_source_cookie
-
+            # Set Ad Source to the cookie value
+            self.ad_source = ad_source_cookie
 
           elsif ad_source_param.present?
-            # Set DNR Ad Source to the cookie value
-            self.dnr_value = ad_source_param
-
-            # Set Lead Channel to the cookie value
-            self.lead_channel_value = ad_source_param
+            # Set Ad Source to the param
+            self.ad_source = ad_source_param
 
             # Save the param value in the ad source cookie, to expire in 30 days
             self.ad_source_cookie = ad_source_param
 
-
           elsif matching_referrer.present?
-            # Set DNR Ad Source to the matching DNR Referrer's value
-            self.dnr_value = matching_referrer_ad_source
-
-            # Set Lead Channel to the matching DNR Referrer's value
-            self.lead_channel_value = matching_referrer_ad_source
+            # Set Ad Source to the matching DNR Referrer's value
+            self.ad_source = matching_referrer_ad_source
 
             # Save the matching DNR Referrer's value in the ad source cookie, to expire in 30 days
             self.ad_source_cookie = matching_referrer_ad_source
 
-
           else
-            # Set DNR Ad Source to nil
-            self.dnr_value = nil
-
-            # Set Lead Channel to Bozzuto.com or Bozzuto.comMobile
-            self.lead_channel_value = mobile? ? 'Bozzuto.comMobile' : 'Bozzuto.com'
-
+            # Set Ad Source to Bozzuto.com or Bozzuto.comMobile
+            self.ad_source = mobile? ? 'Bozzuto.comMobile' : 'Bozzuto.com'
           end
 
-          env['bozzuto.ad_source.dnr']          = dnr_value
-          env['bozzuto.ad_source.lead_channel'] = lead_channel_value
+          env['bozzuto.ad_source'] = ad_source
         end
 
         def write_headers(headers)
