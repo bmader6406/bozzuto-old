@@ -22,6 +22,7 @@
 <% if flash[:apartment_contact_email] %>
   <%= lead_2_lease_mediaplex_code(@community, flash[:apartment_contact_email]) %>
   <%= apartment_contact_mediaplex_code(@community, flash[:apartment_contact_email]) %>
+  <%= master_conversion_mediaplex_code(flash[:apartment_contact_email]) %>
 <% end %>
 
 <%- content_for :javascript do -%>

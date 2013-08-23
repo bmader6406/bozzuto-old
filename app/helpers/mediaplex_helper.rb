@@ -85,6 +85,14 @@ module MediaplexHelper
     end
   end
 
+  def master_conversion_mediaplex_code(email)
+    mpuid = mpuid_with([timestamp, email])
+
+    <<-END.html_safe
+      <iframe src="http://img-cdn.mediaplex.com/0/16798/universal.html?page_name=master_conversion_tag&Leads=1&mpuid=#{mpuid}" HEIGHT=1 WIDTH=1 FRAMEBORDER=0></iframe>
+    END
+  end
+
   def community_homepage_mediaplex_code(community)
     mpuid = mpuid_with([timestamp, community.id])
 

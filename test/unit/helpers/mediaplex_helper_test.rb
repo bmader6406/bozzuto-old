@@ -236,6 +236,23 @@ class MediaplexHelperTest < ActionView::TestCase
     end
   end
 
+  context '#master_conversion_mediaplex_code' do
+    setup do
+      @time      = Time.new
+      @email     = Faker::Internet.email
+      @mpuid     = "#{@time.to_i};#{@email}"
+
+      Time.stubs(:new).returns(@time)
+    end
+
+    should 'return the correct iframe' do
+      code = master_conversion_mediaplex_code(@email)
+
+      assert_match /page_name=master_conversion_tag/, code
+      assert_match /mpuid=#{@mpuid}/, code
+    end
+  end
+
   context '#render_mediaplex_code' do
     setup do
       @code = '<iframe src="http://lol.wut"></iframe>'
