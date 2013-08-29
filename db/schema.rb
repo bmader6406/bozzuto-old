@@ -288,8 +288,8 @@ ActiveRecord::Schema.define(:version => 2012081313174438) do
     t.string   "state"
     t.string   "zip_code"
     t.string   "phone"
-    t.string   "buzzes",       :null => false
-    t.string   "affiliations", :null => false
+    t.string   "buzzes"
+    t.string   "affiliations"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
