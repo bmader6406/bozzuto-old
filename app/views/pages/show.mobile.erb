@@ -15,7 +15,6 @@
 
     <% if @section.cached_slug == 'apartments' && @page.first? %>
       <%= link_to 'Find an Apartment', community_search_path, :class => 'btn submit find-an-apartment' %>
-      <%= link_to 'Win Moving Expenses', 'http://www.bozzuto.com/apartments/sweepstakes/win-moving-expenses', :class => 'btn submit win-moving-expenses' %>
     <% end %>
 
     <% if @section.cached_slug == 'new-homes' && @page.first? %>
