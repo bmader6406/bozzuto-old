@@ -1,0 +1,12 @@
+body {
+  background-color: $tan;
+  font-family: $helvetica;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

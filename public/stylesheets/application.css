@@ -1,0 +1,162 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+.arr-gray-medium:before {
+  color: #92929b;
+  content: '〉';
+  font-size: .55em;
+  font-weight: bold;
+  vertical-align: middle; }
+
+body {
+  background-color: #f5f4f0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+a {
+  text-decoration: none; }
+  a:hover {
+    text-decoration: underline; }
+
+#copyright {
+  background-color: #080812;
+  color: #c5c7d3;
+  line-height: 24px; }
+  #copyright .container {
+    *zoom: 1;
+    margin: 0px auto;
+    padding: 25px 0;
+    width: 960px; }
+    #copyright .container:before, #copyright .container:after {
+      content: " ";
+      display: table; }
+    #copyright .container:after {
+      clear: both; }
+  #copyright a {
+    color: #c5c7d3; }
+
+.cr-copyright {
+  float: left;
+  font-size: 11px;
+  width: 150px; }
+
+.cr-links {
+  float: left;
+  font-size: 10px;
+  width: 460px; }
+  .cr-links a {
+    padding: 0 5px;
+    text-transform: uppercase; }
+
+.cr-eho {
+  float: right;
+  font-size: 12px;
+  width: 305px; }
+  .cr-eho a {
+    background: transparent url(../images/structure/bg-copyright-eho.gif?1377803312) no-repeat center left;
+    display: block;
+    padding-left: 50px; }
+
+footer {
+  *zoom: 1;
+  color: #92929b;
+  font-size: 10px;
+  line-height: 2; }
+  footer:before, footer:after {
+    content: " ";
+    display: table; }
+  footer:after {
+    clear: both; }
+  footer .col {
+    float: left;
+    padding-right: 28px;
+    text-transform: uppercase;
+    width: 150px; }
+  footer .col-wide {
+    padding-left: 20px;
+    padding-right: 0;
+    text-transform: none;
+    width: 228px; }
+  footer a {
+    color: #92929b;
+    text-transform: uppercase; }
+    footer a:hover {
+      color: #484852;
+      text-decoration: none; }
+  footer p {
+    margin-bottom: 2em; }
+
+.f-header {
+  border-bottom: 1px solid #bebec1;
+  color: #080812;
+  font-size: 15px;
+  margin-bottom: 10px;
+  text-transform: none; }
+
+.f-ico {
+  line-height: 2.7;
+  padding-left: 28px;
+  letter-spacing: -0.05em; }
+
+.f-ico-facebook {
+  background: transparent url(/images/structure/ico-facebook.gif) no-repeat center left; }
+
+.f-ico-twitter {
+  background: transparent url(/images/structure/ico-twitter.gif) no-repeat center left; }
+
+.f-ico-pinterest {
+  background: transparent url(/images/structure/ico-pinterest.png) no-repeat center left; }
+
+.f-ico-instagram {
+  background: transparent url(/images/structure/ico-instagram.png) no-repeat center left; }
+
+.f-ico-tom-blog,
+.f-ico-beat-blog {
+  background: transparent url(/images/structure/ico-rss-large.gif) no-repeat center left; }
+
+h1.h-logo {
+  background: url(/images/redesign/bozzuto-logo.png) no-repeat;
+  height: 50px;
+  width: 205px; }
+  h1.h-logo a {
+    color: transparent;
+    font: 0/0 a;
+    text-shadow: none;
+    display: block;
+    height: 50px;
+    width: 205px; }
+
+#site-wrapper {
+  background-color: #fff;
+  border-left: 1px solid #e1e0dc;
+  border-right: 1px solid #e1e0dc;
+  margin: 0px auto;
+  padding: 30px 30px 60px 30px;
+  width: 960px; }

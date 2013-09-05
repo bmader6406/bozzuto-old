@@ -30,6 +30,10 @@ class ApartmentCommunitiesController < ApplicationController
   def show
   end
 
+  def redesign
+    render :layout => false
+  end
+
 
   private
 

@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf8">
+  <title>Bozzuto</title>
+
+  <%= stylesheet_link_tag 'application', :media => 'screen' %>
+  <%= stylesheet_link_tag 'community', :media => 'screen' %>
+</head>
+<body>
+  <div id="site-wrapper">
+    <footer>
+      <div class="col">
+        <h3 class="f-header">About Us</h3>
+
+        <ul>
+          <% about_root_pages.each do |page| %>
+            <li class="arr-gray-medium"><%= link_to page.title, page_path(page.section, page) %></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h3 class="f-header">Our Services</h3>
+
+        <ul>
+          <% %w(Management Homebuilding Construction Development Acquisitions Land).each do |service| %>
+            <li class="arr-gray-medium">
+              <%= link_to service, "/services/#{service.downcase}" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h3 class="f-header">We Work In</h3>
+
+        <ul>
+          <li class="arr-gray-medium"><%= link_to 'Connecticut', '/regions/connecticut' %></li>
+          <li class="arr-gray-medium"><%= link_to 'Maryland', '/regions/maryland' %></li>
+          <li class="arr-gray-medium"><%= link_to 'Massachusetts', '/regions/massachusetts' %></li>
+          <li class="arr-gray-medium"><%= link_to 'New Jersey', '/regions/new-jersey' %></li>
+          <li class="arr-gray-medium"><%= link_to 'New York', '/regions/new-york' %></li>
+          <li class="arr-gray-medium"><%= link_to 'Pennsylvania', '/regions/pennsylvania' %></li>
+          <li class="arr-gray-medium"><%= link_to 'Virginia', '/regions/virginia' %></li>
+          <li class="arr-gray-medium"><%= link_to 'Washington, DC', '/regions/washington-dc' %></li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h3 class="f-header">Get in Touch</h3>
+
+        <p>
+          301.220.0100
+          <%= mail_to 'feedback@bozzuto.com', 'feedback@bozzuto.com', :class => 'arr-gray-medium' %>
+          <%= link_to 'Careers', careers_path, :class => 'arr-gray-medium' %>
+        </p>
+
+        <p>
+          7850 Walker Dr.<br />
+          Suite 400<br />
+          Greenbelt, MD 20770
+        </p>
+      </div>
+
+      <div class="col col-wide">
+        <h3 class="f-header">Connect with Us</h3>
+
+        <form class="buzz-form" action="/bozzuto-buzz" method="GET">
+          <label for="email">Enter your email address to stay connected.</label>
+          <p class="fields">
+            <input type="text" name="email" />
+            <button type="submit">Submit</button>
+          </p>
+        </form>
+
+        <ul>
+          <li class="f-ico f-ico-facebook">
+            <%= link_to 'Follow us on Facebook', 'http://www.facebook.com/TheBozzutoGroup', :rel => 'external', 'data-track-social' => 'Facebook,Outbound Click,Footer', :class => 'arr-gray-medium' %>
+          </li>
+          <li class="f-ico f-ico-twitter">
+            <%= link_to 'Follow us on Twitter', 'http://twitter.com/TheBozzutoGroup', :rel => 'external', 'data-track-social' => 'Twitter,Outbound Click,Footer', :class => 'arr-gray-medium' %>
+          </li>
+          <li class="f-ico f-ico-pinterest">
+            <%= link_to 'Follow us on Pinterest', 'http://pinterest.com/thebozzutogroup/', :rel => 'external', 'data-track-social' => 'Pinterest,Outbound Click,Footer', :class => 'arr-gray-medium' %>
+          </li>
+          <li class="f-ico f-ico-instagram">
+            <%= link_to 'Follow us on Instagram', 'http://instagram.com/thebozzutogroup', :rel => 'external', 'data-track-social' => 'Instagram,Outbound Click,Footer', :class => 'arr-gray-medium' %>
+          </li>
+          <li class="f-ico f-ico-tom-blog">
+            <%= link_to raw('Read Tom Bozzuto&rsquo;s Blog'), 'http://tom.bozzuto.com', :rel => 'external', 'data-track-social' => 'Blog - Tom Bozzuto,Outbound Click,Footer', :class => 'arr-gray-medium' %>
+          </li>
+          <li class="f-ico f-ico-beat-blog">
+            <%= link_to 'Read Bozzuto Beat Blog', 'http://blog.bozzuto.com', :rel => 'external', 'data-track-social' => 'Blog - Bozzuto Beat,Outbound Click,Footer', :class => 'arr-gray-medium' %>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+  <div id="copyright">
+    <div class="container">
+      <p class="cr-copyright">
+        &copy; <%= Time.now.year %> Bozzuto
+      </p>
+
+      <p class="cr-links">
+        <%= link_to 'Privacy Policy', '/pages/privacy-policy' %>
+        |
+        <%= link_to 'Website Disclaimer', '/pages/website-disclaimer' %>
+        |
+        <%= link_to 'Employee Login', 'http://www.bozzutointranet.com/Pages/Home.aspx' %>
+
+        <% if mobile_device? %>
+          |
+          <%= link_to 'Mobile Site', root_path(:full_site => 0) %>
+        <% end %>
+      </p>
+
+      <p class="cr-eho">
+        <%= link_to 'Equal Housing Opportunity', '/about-us/housing-for-all', :id => 'eho' %>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

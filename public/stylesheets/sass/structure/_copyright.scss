@@ -1,0 +1,46 @@
+#copyright {
+  background-color: $black-almost;
+  color: $gray-footer;
+  line-height: 24px;
+
+  .container {
+    @include clearfix;
+
+    margin: 0px auto;
+    padding: 25px 0;
+    width: 960px;
+  }
+
+  a {
+    color: $gray-footer;
+  }
+}
+
+.cr-copyright {
+  float: left;
+  font-size: 11px;
+  width: 150px;
+}
+
+.cr-links {
+  float: left;
+  font-size: 10px;
+  width: 460px;
+
+  a {
+    padding: 0 5px;
+    text-transform: uppercase;
+  }
+}
+
+.cr-eho {
+  float: right;
+  font-size: 12px;
+  width: 305px;
+
+  a {
+    background: transparent url(../images/structure/bg-copyright-eho.gif?1377803312) no-repeat center left;
+    display: block;
+    padding-left: 50px;
+  }
+}

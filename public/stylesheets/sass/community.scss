@@ -1,0 +1,6 @@
+@import "bourbon";
+
+h1 {
+  @include clearfix;
+  color: red;
+}

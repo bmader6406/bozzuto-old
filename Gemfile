@@ -27,6 +27,9 @@ gem 'twitter-text', '1.3.1'
 gem 'fastercsv', '1.5.4'
 gem 'uuidtools'
 gem 'sitemap_generator', '~> 3.4'
+gem 'sass'
+gem 'sass-globbing'
+gem 'bourbon'
 
 group :development, :test do
   gem 'pry'
