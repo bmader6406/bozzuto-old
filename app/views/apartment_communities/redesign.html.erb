@@ -52,7 +52,7 @@
 
         <div class="cty-intro">
           <div class="grid-row">
-            <div class="grid-offset-1 grid-11">
+            <div class="grid-12">
               <h4 class="cty-intro-headline">
                 Crosswinds at Annapolis Towne Centre
               </h4>
@@ -78,6 +78,53 @@
             </div>
           </div>
         </div>
+
+        <div class="cty-features">
+          <div class="grid-row">
+            <div class="grid-10">
+              <h4 class="cty-features-headline">Key Features</h4>
+
+              <ul class="cty-features-list">
+                <li>Great DC location in the NoMa district</li>
+                <li>24-Hour Two Story Fitness Center</li>
+                <li>Sparkling Rooftop Pool</li>
+              </ul>
+            </div>
+
+            <div class="grid-6">
+              <h4 class="cty-features-headline">Watch the Videos</h4>
+
+              <div class="cty-features-videos">
+                <% link_to '#' do %>
+                  <%= image_tag 'http://placekitten.com/g/55/55' %>
+                <% end %>
+
+                <% link_to '#' do %>
+                  <%= image_tag 'http://placekitten.com/g/55/55' %>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="grid-4">
+              <ul>
+                <li>Metro</li>
+                <li>Non-Smoking</li>
+                <li>Pet Friendly</li>
+                <li>Green</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <p class="cty-page-links">
+          <%= link_to 'Apartments Overview', '#', :class => 'current' %>
+          |
+          <%= link_to 'Features & Amenities', '#' %>
+          |
+          <%= link_to 'Floor Plans', '#' %>
+          |
+          <%= link_to 'Request Information', '#' %>
+        </p>
 
         <div class="cty-recent">
           <h4 class="cty-recent-heading">
@@ -145,6 +192,63 @@
           <h4 class="cty-sidebar-heading">
             Local Info
           </h4>
+
+          <div class="cty-sidebar-content">
+            <ul>
+              <li class="cty-local-info-item">
+                <h5 class="cty-local-info-heading">
+                  <% link_to '#' do %>
+                    'Man of Steel,' 'This is the End' and other new movies, reviewed
+                  <% end %>
+                </h5>
+
+                <p class="cty-local-info-date">June 14, 2013</p>
+
+                <p class="cty-local-info-summary">
+                  In this week's new movies, Michael O'Sullivan reviews "Shadow Dancer" &hellip;
+                </p>
+              </li>
+              <li class="cty-local-info-item">
+                <h5 class="cty-local-info-heading">
+                  <% link_to '#' do %>
+                    Laptop-friendly Bar di Bari opening June 21
+                  <% end %>
+                </h5>
+
+                <p class="cty-local-info-date">June 14, 2013</p>
+
+                <p class="cty-local-info-summary">
+                  Fans of the dearly departed Mid City Caffe may finally be able to fill that &hellip;
+                </p>
+              </li>
+              <li class="cty-local-info-item">
+                <h5 class="cty-local-info-heading">
+                  <% link_to '#' do %>
+                    Princess For A Day Ice Cream Social
+                  <% end %>
+                </h5>
+
+                <p class="cty-local-info-date">June 14, 2013</p>
+
+                <p class="cty-local-info-summary">
+                  Sterling, VA. You can be a princess for a day at the Heritage Farm Museum! &hellip;
+                </p>
+              </li>
+              <li class="cty-local-info-item">
+                <h5 class="cty-local-info-heading">
+                  <% link_to '#' do %>
+                    Artsee Featuring Jeremy Flick At Lumen8 Art And Light Festival
+                  <% end %>
+                </h5>
+
+                <p class="cty-local-info-date">June 14, 2013</p>
+
+                <p class="cty-local-info-summary">
+                  The 2nd annual LUMEN8Anacostia Arts &amp; Light Festival is happening June 22 &hellip;
+                </p>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
