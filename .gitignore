@@ -4,6 +4,8 @@ config.ru
 config/database.yml
 config/app_config.yml
 public/assets
+public/stylesheets/application.css
+public/stylesheets/pages/community.css
 test/fixtures/*.yml
 coverage/*
 TODO
