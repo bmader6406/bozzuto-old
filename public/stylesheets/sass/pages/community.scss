@@ -1,0 +1,162 @@
+@import "bourbon";
+
+@import "../variables/*"; //*/
+
+.main-content {
+  @include clearfix;
+
+  margin-bottom: 50px;
+  
+  a {
+    color: $black;
+
+    &:hover {
+      color: $blue;
+    }
+  }
+}
+
+.cty-slideshow {
+  background-color: $black-near;
+  height: 439px;
+  width: 960px;
+}
+
+.cty-breadcrumb {
+  color: $gray-medium-dark;
+  font-size: 11px;
+  padding: 10px 0 25px 0;
+
+  a {
+    color: $gray-medium-dark;
+    padding: 0 3px;
+    text-decoration: underline;
+
+    &:hover {
+      color: $gray-medium-dark;
+      text-decoration: none;
+    }
+  }
+}
+
+.cty-left-col {
+  border-right: 1px solid $gray-lighter;
+  float: left;
+  padding-right: 34px;
+  width: 645px;
+}
+
+.cty-right-col {
+  float: left;
+  padding-left: 25px;
+  width: 315px;
+}
+
+.cty-headline {
+  color: $black;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.cty-intro {
+  margin-bottom: 12px;
+}
+
+.cty-intro-headline {
+  color: $dark-blue;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+  margin-left: -16px;
+
+  &:before {
+    content: '▶';
+    display: inline-block;
+    width: 12px;
+  }
+}
+
+.cty-intro-address {
+  font-size: 13px;
+  line-height: 18px;
+  margin-bottom: 12px;
+}
+
+.cty-intro-links {
+  font-size: 12px;
+
+  a {
+    color: $blue;
+  }
+}
+
+.cty-recent {
+  @include clearfix;
+
+  background-color: $blue-light;
+  padding: 25px 10px;
+}
+
+.cty-recent-heading {
+  border-bottom: 2px solid $gray-lighter;
+  color: $black;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.75;
+  margin-bottom: 30px;
+}
+
+.cty-recent-item {
+  float: left;
+  font-size: 11px;
+  line-height: 18px;
+  text-align: center;
+  width: 147px;
+
+  strong {
+    font-size: 13px;
+  }
+
+  img {
+    border: 1px solid $white;
+    display: block;
+    margin: 0px auto 15px auto;
+  }
+
+}
+
+.cty-sidebar {
+  margin-bottom: 25px;
+}
+
+.cty-sidebar-heading {
+  border-bottom: 2px solid $gray-light;
+  color: $black;
+  font-family: 'Arial Narrow', $helvetica;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.cty-sidebar-content {
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 0 12px;
+}
+
+.cty-map {
+  border: 1px solid $gray-lighter;
+
+  img {
+    display: block;
+  }
+}
+
+.cty-nearby {
+
+  a {
+    font-weight: bold;
+    line-height: 2;
+  }
+}

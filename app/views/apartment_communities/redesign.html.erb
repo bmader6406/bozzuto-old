@@ -5,10 +5,150 @@
   <title>Bozzuto</title>
 
   <%= stylesheet_link_tag 'application', :media => 'screen' %>
-  <%= stylesheet_link_tag 'community', :media => 'screen' %>
+  <%= stylesheet_link_tag 'pages/community', :media => 'screen' %>
 </head>
 <body>
   <div id="site-wrapper">
+    <header>
+      <h1 class="h-logo"><%= link_to 'Bozzuto', '/' %></h1>
+
+      <nav>
+        <ul class="n-main">
+          <li class="n-main-item">
+            <%= link_to 'Apartments', '/apartments', :class => 'n-main-item-link' %>
+          </li>
+          <li class="n-main-item">
+            <%= link_to 'New Homes', '/new-homes', :class => 'n-main-item-link' %>
+          </li>
+          <li class="n-main-item">
+            <%= link_to 'About Us', '/about-us', :class => 'n-main-item-link' %>
+          </li>
+          <li class="n-main-item">
+            <%= link_to 'Our Services', '/services', :class => 'n-main-item-link' %>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="main-content" class="main-content">
+      <div class="cty-slideshow"></div>
+
+      <div class="cty-breadcrumb">
+        <%= link_to 'Apartments', '#' %>
+        &gt;
+        <%= link_to 'Find an Apartment', '#' %>
+        &gt;
+        <%= link_to 'Maryland', '#' %>
+        &gt;
+        <%= link_to 'Annapolis', '#' %>
+        &gt;
+        Crosswinds at Annapolis Towne Centre
+      </div>
+
+      <div class="cty-left-col">
+        <h3 class="cty-headline">
+          Live in the Heart of Modern Annapolis
+        </h3>
+
+        <div class="cty-intro">
+          <div class="grid-row">
+            <div class="grid-offset-1 grid-11">
+              <h4 class="cty-intro-headline">
+                Crosswinds at Annapolis Towne Centre
+              </h4>
+
+              <p class="cty-intro-address">
+                1903 Towne Centre Boulevard<br />
+                Annapolis, MD 21401<br />
+
+                <strong>(888) 251-3403</strong>
+              </p>
+
+              <p class="cty-intro-links">
+                <%= link_to 'Visit the Website', '#' %>
+                |
+                <%= link_to 'Schedule a Tour', '#' %>
+                |
+                <%= link_to 'Read the Blog', '#' %>
+              </p>
+            </div>
+
+            <div class="grid-offset-1 grid-7">
+              <%= link_to 'Request Info', '#' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="cty-recent">
+          <h4 class="cty-recent-heading">
+            Recently Viewed Communities
+          </h4>
+
+          <% 4.times do %>
+            <div class="cty-recent-item">
+              <% link_to '#' do %>
+                <%= image_tag 'http://placekitten.com/55/55' %>
+
+                <strong>Flats at Atlas</strong><br />
+              <% end %>
+              1600 Maryland Avenue<br />
+              Washington, DC<br />
+              (888) 821-6654
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="cty-right-col">
+        <div class="cty-sidebar">
+          <div class="cty-map">
+            <%= image_tag 'http://placekitten.com/288/240' %>
+          </div>
+        </div>
+
+        <div class="cty-sidebar">
+          <h4 class="cty-sidebar-heading">
+            Get Information on this Community
+          </h4>
+        </div>
+
+        <div class="cty-sidebar cty-nearby">
+          <h4 class="cty-sidebar-heading">
+            Nearby Apartment Communities
+          </h4>
+
+          <div class="cty-sidebar-content">
+            <ul>
+              <li>
+                <%= link_to 'The Loree Grand', '#' %>
+              </li>
+              <li>
+                <%= link_to 'Elevation at Washington Gateway', '#' %>
+              </li>
+              <li>
+                <%= link_to 'Senate Square', '#' %>
+              </li>
+              <li>
+                <%= link_to 'Yale West', '#' %>
+              </li>
+              <li>
+                <%= link_to '7th Flats', '#' %>
+              </li>
+              <li>
+                <%= link_to 'City Market at O Street', '#' %>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cty-sidebar">
+          <h4 class="cty-sidebar-heading">
+            Local Info
+          </h4>
+        </div>
+      </div>
+    </div>
+
     <footer>
       <div class="col">
         <h3 class="f-header">About Us</h3>
@@ -36,14 +176,30 @@
         <h3 class="f-header">We Work In</h3>
 
         <ul>
-          <li class="arr-gray-medium"><%= link_to 'Connecticut', '/regions/connecticut' %></li>
-          <li class="arr-gray-medium"><%= link_to 'Maryland', '/regions/maryland' %></li>
-          <li class="arr-gray-medium"><%= link_to 'Massachusetts', '/regions/massachusetts' %></li>
-          <li class="arr-gray-medium"><%= link_to 'New Jersey', '/regions/new-jersey' %></li>
-          <li class="arr-gray-medium"><%= link_to 'New York', '/regions/new-york' %></li>
-          <li class="arr-gray-medium"><%= link_to 'Pennsylvania', '/regions/pennsylvania' %></li>
-          <li class="arr-gray-medium"><%= link_to 'Virginia', '/regions/virginia' %></li>
-          <li class="arr-gray-medium"><%= link_to 'Washington, DC', '/regions/washington-dc' %></li>
+          <li class="arr-gray-medium">
+            <%= link_to 'Connecticut', '/regions/connecticut' %>
+          </li>
+          <li class="arr-gray-medium">
+            <%= link_to 'Maryland', '/regions/maryland' %>
+          </li>
+          <li class="arr-gray-medium">
+            <%= link_to 'Massachusetts', '/regions/massachusetts' %>
+          </li>
+          <li class="arr-gray-medium">
+            <%= link_to 'New Jersey', '/regions/new-jersey' %>
+          </li>
+          <li class="arr-gray-medium">
+            <%= link_to 'New York', '/regions/new-york' %>
+          </li>
+          <li class="arr-gray-medium">
+            <%= link_to 'Pennsylvania', '/regions/pennsylvania' %>
+          </li>
+          <li class="arr-gray-medium">
+            <%= link_to 'Virginia', '/regions/virginia' %>
+          </li>
+          <li class="arr-gray-medium">
+            <%= link_to 'Washington, DC', '/regions/washington-dc' %>
+          </li>
         </ul>
       </div>
 

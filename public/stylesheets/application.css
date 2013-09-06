@@ -36,6 +36,11 @@ table {
   font-weight: bold;
   vertical-align: middle; }
 
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
 body {
   background-color: #f5f4f0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
@@ -44,6 +49,9 @@ a {
   text-decoration: none; }
   a:hover {
     text-decoration: underline; }
+
+strong {
+  font-weight: bold; }
 
 #copyright {
   background-color: #080812;
@@ -98,12 +106,12 @@ footer {
     float: left;
     padding-right: 28px;
     text-transform: uppercase;
-    width: 150px; }
+    width: 178px; }
   footer .col-wide {
     padding-left: 20px;
     padding-right: 0;
     text-transform: none;
-    width: 228px; }
+    width: 248px; }
   footer a {
     color: #92929b;
     text-transform: uppercase; }
@@ -141,22 +149,182 @@ footer {
 .f-ico-beat-blog {
   background: transparent url(/images/structure/ico-rss-large.gif) no-repeat center left; }
 
-h1.h-logo {
+.grid-row {
+  *zoom: 1;
+  *zoom: 1; }
+  .grid-row:before, .grid-row:after {
+    content: " ";
+    display: table; }
+  .grid-row:after {
+    clear: both; }
+
+.grid-1, .grid-2, .grid-3, .grid-4, .grid-5, .grid-6, .grid-7, .grid-8, .grid-9, .grid-10, .grid-11, .grid-12, .grid-13, .grid-14, .grid-15, .grid-16, .grid-17, .grid-18, .grid-19, .grid-20 {
+  display: block;
+  float: left;
+  min-height: 1px; }
+
+.grid-1 {
+  width: 5%; }
+
+.grid-offset-1 {
+  margin-left: 5%; }
+
+.grid-2 {
+  width: 10%; }
+
+.grid-offset-2 {
+  margin-left: 10%; }
+
+.grid-3 {
+  width: 15%; }
+
+.grid-offset-3 {
+  margin-left: 15%; }
+
+.grid-4 {
+  width: 20%; }
+
+.grid-offset-4 {
+  margin-left: 20%; }
+
+.grid-5 {
+  width: 25%; }
+
+.grid-offset-5 {
+  margin-left: 25%; }
+
+.grid-6 {
+  width: 30%; }
+
+.grid-offset-6 {
+  margin-left: 30%; }
+
+.grid-7 {
+  width: 35%; }
+
+.grid-offset-7 {
+  margin-left: 35%; }
+
+.grid-8 {
+  width: 40%; }
+
+.grid-offset-8 {
+  margin-left: 40%; }
+
+.grid-9 {
+  width: 45%; }
+
+.grid-offset-9 {
+  margin-left: 45%; }
+
+.grid-10 {
+  width: 50%; }
+
+.grid-offset-10 {
+  margin-left: 50%; }
+
+.grid-11 {
+  width: 55%; }
+
+.grid-offset-11 {
+  margin-left: 55%; }
+
+.grid-12 {
+  width: 60%; }
+
+.grid-offset-12 {
+  margin-left: 60%; }
+
+.grid-13 {
+  width: 65%; }
+
+.grid-offset-13 {
+  margin-left: 65%; }
+
+.grid-14 {
+  width: 70%; }
+
+.grid-offset-14 {
+  margin-left: 70%; }
+
+.grid-15 {
+  width: 75%; }
+
+.grid-offset-15 {
+  margin-left: 75%; }
+
+.grid-16 {
+  width: 80%; }
+
+.grid-offset-16 {
+  margin-left: 80%; }
+
+.grid-17 {
+  width: 85%; }
+
+.grid-offset-17 {
+  margin-left: 85%; }
+
+.grid-18 {
+  width: 90%; }
+
+.grid-offset-18 {
+  margin-left: 90%; }
+
+.grid-19 {
+  width: 95%; }
+
+.grid-offset-19 {
+  margin-left: 95%; }
+
+.grid-20 {
+  width: 100%; }
+
+.grid-offset-20 {
+  margin-left: 100%; }
+
+header .h-logo {
   background: url(/images/redesign/bozzuto-logo.png) no-repeat;
   height: 50px;
   width: 205px; }
-  h1.h-logo a {
+  header .h-logo a {
     color: transparent;
     font: 0/0 a;
     text-shadow: none;
     display: block;
     height: 50px;
     width: 205px; }
+header nav {
+  background: #080812 url(/images/redesign/main-nav-tile.png) repeat-x;
+  height: 34px;
+  margin-top: 12px; }
+
+.n-main {
+  display: inline-block;
+  height: 34px;
+  margin-left: 130px; }
+
+.n-main-item {
+  display: inline-block; }
+
+.n-main-item-link {
+  color: #707275;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 34px;
+  height: 34px;
+  padding: 0 48px;
+  text-shadow: 1px 1px 2px black;
+  text-transform: uppercase; }
+  .n-main-item-link:hover {
+    color: #898b8f;
+    text-decoration: none; }
 
 #site-wrapper {
   background-color: #fff;
   border-left: 1px solid #e1e0dc;
   border-right: 1px solid #e1e0dc;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.15);
   margin: 0px auto;
   padding: 30px 30px 60px 30px;
-  width: 960px; }
+  width: 1022px; }

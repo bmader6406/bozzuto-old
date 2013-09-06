@@ -1,0 +1,49 @@
+$nav-height: 34px;
+
+header {
+  .h-logo {
+    background: url(/images/redesign/bozzuto-logo.png) no-repeat;
+    height: 50px;
+    width: 205px;
+
+    a {
+      @include hide-text;
+
+      display: block;
+      height: 50px;
+      width: 205px;
+    }
+  }
+
+  nav {
+    background: $black-almost url(/images/redesign/main-nav-tile.png) repeat-x;
+    height: $nav-height;
+    margin-top: 12px;
+  }
+}
+
+.n-main {
+  display: inline-block;
+  height: $nav-height;
+  margin-left: 130px;
+}
+
+.n-main-item {
+  display: inline-block;
+}
+
+.n-main-item-link {
+  color: $gray-dark;
+  display: inline-block;
+  font-size: 12px;
+  line-height: $nav-height;
+  height: $nav-height;
+  padding: 0 48px;
+  text-shadow: 1px 1px 2px $black;
+  text-transform: uppercase;
+
+  &:hover {
+    color: lighten($gray-dark, 10%);
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,23 @@
+.grid-row {
+  @include clearfix;
+
+  *zoom: 1;
+}
+
+%grid-item {
+  display: block;
+  float: left;
+  min-height: 1px;
+}
+
+@for $i from 1 through 20 {
+  .grid-#{$i} {
+    @extend %grid-item;
+
+    width: 5% * $i;
+  }
+
+  .grid-offset-#{$i} {
+    margin-left: 5% * $i;
+  }
+}
