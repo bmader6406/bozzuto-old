@@ -22,9 +22,33 @@
           </li>
           <li class="n-main-item">
             <%= link_to 'About Us', '/about-us', :class => 'n-main-item-link' %>
+            <div class="dropdown">
+              <ul class="col">
+                <li><span><a href="/about-us/values">Values</a></span></li>
+                <li><span><a href="/careers">Careers</a></span></li>
+                <li><span><a href="/about-us/leadership">Leadership</a></span></li>
+              </ul>
+              <ul class="col">
+                <li><span><a href="/about-us/news-and-press">News &amp; Press</a></span></li>
+                <li><span><a href="/about-us/testimonials">Testimonials</a></span></li>
+                <li><span><a href="/about-us/news-and-press/awards">Awards</a></span></li>
+              </ul>
+            </div>
           </li>
           <li class="n-main-item">
             <%= link_to 'Our Services', '/services', :class => 'n-main-item-link' %>
+            <div class="dropdown">
+              <ul class="col">
+                <li class="first"><%= link_to 'Management', '/services/management' %></li>
+                <li><%= link_to 'Homebuilding', '/services/homebuilding' %></li>
+                <li><%= link_to 'Construction', '/services/construction' %></li>
+              </ul>
+              <ul class="col">
+                <li class="first"><%= link_to 'Development', '/services/development' %></li>
+                <li><%= link_to 'Acquisitions', '/services/acquisitions' %></li>
+                <li><%= link_to 'Land', '/services/land' %></li>
+              </ul>
+            </div>
           </li>
         </ul>
       </nav>
@@ -50,6 +74,7 @@
           Live in the Heart of Modern Annapolis
         </h3>
 
+        <!-- Intro Content -->
         <div class="cty-intro">
           <div class="grid-row">
             <div class="grid-12">
@@ -74,11 +99,12 @@
             </div>
 
             <div class="grid-offset-1 grid-7">
-              <%= link_to 'Request Info', '#' %>
+              <%= link_to 'Request Info', '#', :class => 'btn btn-large-blue' %>
             </div>
           </div>
         </div>
 
+        <!-- Key Features -->
         <div class="cty-features">
           <div class="grid-row">
             <div class="grid-10">
@@ -116,6 +142,7 @@
           </div>
         </div>
 
+        <!-- Page Links -->
         <p class="cty-page-links">
           <%= link_to 'Apartments Overview', '#', :class => 'current' %>
           |
@@ -126,6 +153,178 @@
           <%= link_to 'Request Information', '#' %>
         </p>
 
+        <!-- Apartments Overview -->
+        <div class="cty-section">
+          <div class="cty-section-header">
+            <h3 class="hdr-narrow">Apartments Overview</h3>
+          </div>
+
+          <div class="cty-section-content">
+            <table class="cty-table">
+              <tr>
+                <th class="cty-table-bedrooms" scope="col">
+                  Bedrooms
+                </th>
+                <th class="cty-table-floor-plans" scope="col">
+                  Floor Plans
+                </th>
+                <th class="cty-table-size" scope="col">
+                  Size
+                </th>
+                <th class="cty-table-price" scope="col">
+                  Amount
+                </th>
+                <th class="cty-table-avail" scope="col"></th>
+              </tr>
+
+              <tr>
+                <td class="cty-table-bedrooms">
+                  Studios
+                </td>
+                <td class="cty-table-floor-plans">
+                  11 Floor Plans
+                </td>
+                <td class="cty-table-size">
+                  602 Sq Ft
+                </td>
+                <td class="cty-table-price">
+                  From $1,425
+                </td>
+                <td class="cty-table-avail">
+                  <%= link_to 'Check Availability', '#' %>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="cty-table-bedrooms">
+                  1 Bedrooms
+                </td>
+                <td class="cty-table-floor-plans">
+                  30 Floor Plans
+                </td>
+                <td class="cty-table-size">
+                  930 Sq Ft
+                </td>
+                <td class="cty-table-price">
+                  From $1,700
+                </td>
+                <td class="cty-table-avail">
+                  <%= link_to 'Check Availability', '#' %>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="cty-table-bedrooms">
+                  2 Bedrooms
+                </td>
+                <td class="cty-table-floor-plans">
+                  16 Floor Plans
+                </td>
+                <td class="cty-table-size">
+                  1394 Sq Ft
+                </td>
+                <td class="cty-table-price">
+                  From $2,250
+                </td>
+                <td class="cty-table-avail">
+                  <%= link_to 'Check Availability', '#' %>
+                </td>
+              </tr>
+            </table>
+
+            <p>
+              Live in the heart of Modern Annapolis at Crosswinds Apartments in Annapolis Towne Centre. Relax, socialize, shop and exercise without ever having to step foot outside your community. Everything about Crosswinds Apartments embodies luxury, style, and convenience. Fall in love with our designer apartments and unparalleled amenity spaces plus enjoy 25 years of exceptional experience and outstanding resident services from Bozzuto Management Company.
+            </p>
+          </div>
+        </div>
+
+        <!-- Features & Amenities -->
+        <div class="cty-section">
+          <div class="cty-section-header">
+            <h3 class="hdr-narrow">Features &amp; Amenities</h3>
+          </div>
+
+          <div class="cty-section-content">
+            <ul class="cty-amenities-list">
+              <li>Spacious landscaped courtyard and pool</li>
+              <li>Fitness center</li>
+              <li>Club room</li>
+              <li>Resort style lobby</li>
+              <li>Game room</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Floor Plans -->
+        <div class="cty-section">
+          <div class="cty-section-header">
+            <h3 class="hdr-narrow">Floor Plans</h3>
+          </div>
+
+          <div class="cty-section-content">
+            <h4 class="cty-floor-plans-header">Studios</h4>
+
+            <ul class="cty-floor-plans-list">
+              <% 4.times do %>
+                <li class="cty-floor-plan">
+                  <%= image_tag 'http://placekitten.com/g/115/140' %>
+
+                  <h5>Studio - A</h5>
+
+                  <p>
+                    <span class="cty-floor-plan-size">562 Sq Ft</span>
+                    |
+                    <span class="cty-floor-plan-price">$1,425</span>
+                  </p>
+
+                  <%= link_to 'Reserve', '#', :class => 'btn btn-small btn-black' %>
+                </li>
+              <% end %>
+            </ul>
+
+            <h4 class="cty-floor-plans-header">1 Bedrooms</h4>
+
+            <ul class="cty-floor-plans-list">
+              <% 7.times do %>
+                <li class="cty-floor-plan">
+                  <%= image_tag 'http://placekitten.com/g/115/140' %>
+
+                  <h5>Studio - A</h5>
+
+                  <p>
+                    <span class="cty-floor-plan-size">562 Sq Ft</span>
+                    |
+                    <span class="cty-floor-plan-price">$1,425</span>
+                  </p>
+
+                  <%= link_to 'Reserve', '#', :class => 'btn btn-small btn-black' %>
+                </li>
+              <% end %>
+            </ul>
+
+            <h4 class="cty-floor-plans-header">2 Bedrooms</h4>
+
+            <ul class="cty-floor-plans-list">
+              <% 4.times do %>
+                <li class="cty-floor-plan">
+                  <%= image_tag 'http://placekitten.com/g/115/140' %>
+
+                  <h5>Studio - A</h5>
+
+                  <p>
+                    <span class="cty-floor-plan-size">562 Sq Ft</span>
+                    |
+                    <span class="cty-floor-plan-price">$1,425</span>
+                  </p>
+
+                  <%= link_to 'Reserve', '#', :class => 'btn btn-small btn-black' %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Recently Viewed Communities -->
         <div class="cty-recent">
           <h4 class="cty-recent-heading">
             Recently Viewed Communities
@@ -144,6 +343,23 @@
             </div>
           <% end %>
         </div>
+
+        <!-- Bottom Text -->
+        <div class="cty-footer">
+          <h4 class="hdr-tertiary">Bozzuto Brings You Home</h4>
+
+          <p>
+            It&rsquo;s simple. We put our residents first. We work hard each and every day to ensure our resident&rsquo;s complete satisfaction and to make sure our communities are places people are proud to call home. That genuine concern for people who choose to live in a Bozzuto community is a cornerstone of our company.
+          </p>
+
+          <p>
+            With more than 130 communities of all different types in eight states from Virginia to Massachusetts, you're sure to find a Bozzuto apartment home that&rsquo;s just right for you.
+          </p>
+
+          <p>
+            When you choose a Bozzuto community, you&rsquo;re choosing the peace of mind that comes from leasing with a recognized leader in apartment management. In addition to winning myriad local awards, we have been named Property Management Company of the Year twice in the past ten years by the National Association of Home Builders and have been named one of the Best Places to Work in the DC region for the past give consecutive years.
+          </p>
+        </div>
       </div>
 
       <div class="cty-right-col">
@@ -154,13 +370,13 @@
         </div>
 
         <div class="cty-sidebar">
-          <h4 class="cty-sidebar-heading">
+          <h4 class="cty-sidebar-heading hdr-narrow">
             Get Information on this Community
           </h4>
         </div>
 
         <div class="cty-sidebar cty-nearby">
-          <h4 class="cty-sidebar-heading">
+          <h4 class="cty-sidebar-heading hdr-narrow">
             Nearby Apartment Communities
           </h4>
 
@@ -189,7 +405,7 @@
         </div>
 
         <div class="cty-sidebar">
-          <h4 class="cty-sidebar-heading">
+          <h4 class="cty-sidebar-heading hdr-narrow">
             Local Info
           </h4>
 

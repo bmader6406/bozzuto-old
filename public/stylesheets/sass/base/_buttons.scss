@@ -1,0 +1,23 @@
+.btn, .btn:hover {
+  text-decoration: none;
+}
+
+.btn-large-blue {
+  @include button(shiny, $blue-medium);
+
+  color: $white !important;
+}
+
+.btn-black {
+  @include button(shiny, #666);
+
+  color: $white !important;
+
+  &:hover {
+    @include button(shiny, $blue-medium);
+  }
+}
+
+.btn-small {
+  padding: 0 16px !important;
+}

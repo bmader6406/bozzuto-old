@@ -64,7 +64,7 @@
 }
 
 .cty-intro-headline {
-  color: $dark-blue;
+  color: $blue-darker;
   font-size: 14px;
   font-weight: bold;
   line-height: 24px;
@@ -146,10 +146,140 @@
   }
 }
 
+.cty-section {
+  margin-bottom: 35px;
+}
+
+.cty-section-header {
+  border-bottom: 3px solid $black;
+  margin-bottom: 20px;
+}
+
+.cty-section-content {
+  color: $gray-darker;
+  font-size: 13px;
+  line-height: 2;
+}
+
+.cty-table {
+  font-size: 12px;
+  margin: 0 0 20px 20px;
+  width: 570px;
+
+  th, td {
+    padding: 2px 15px;
+    text-align: left;
+  }
+
+  th {
+    border-bottom: 1px solid $gray-lighter;
+    font-weight: bold;
+  }
+
+  td {
+    border-bottom: 1px solid $gray-lighter;
+
+    &.cty-table-bedrooms {
+      border-left: 1px solid $gray-lighter;
+    }
+
+    &.cty-table-avail {
+      border-right: 1px solid $gray-lighter;
+      font-size: 11px;
+      text-align: center;
+
+      a {
+        text-decoration: underline;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  tr {
+    &:nth-child(2n) {
+      background-color: $blue-light;
+    }
+  }
+}
+
+.cty-amenities-list {
+  @include clearfix;
+
+  margin-left: 20px;
+  width: 100%;
+
+  li {
+    float: left;
+    padding-right: 10px;
+    width: 50%;
+
+    &:before {
+      color: $green;
+      content: '✓';
+      font-size: 15px;
+      font-weight: bold;
+      padding-right: 10px;
+    }
+  }
+}
+
+.cty-floor-plans-header {
+  background-color: $gray-lightest;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 2;
+  margin-bottom: 40px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.cty-floor-plans-list {
+  @include clearfix;
+
+  margin: 0 25px;
+}
+
+.cty-floor-plan {
+  float: left;
+  font-size: 11px;
+  margin-bottom: 40px;
+  text-align: center;
+  width: 140px;
+
+  h5 {
+    color: $black;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin-bottom: 10px;
+  }
+
+  .cty-floor-plan-size {
+    padding-right: 5px;
+  }
+
+  .cty-floor-plan-price {
+    padding-left: 5px;
+  }
+
+  .btn {
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+}
+
 .cty-recent {
   @include clearfix;
 
   background-color: $blue-light;
+  margin-bottom: 35px;
   padding: 25px 10px;
 }
 
@@ -178,7 +308,16 @@
     display: block;
     margin: 0px auto 15px auto;
   }
+}
 
+.cty-footer {
+  color: $gray-darker;
+  font-size: 13px;
+  line-height: 2;
+
+  p {
+    margin-bottom: 2em;
+  }
 }
 
 .cty-sidebar {
@@ -187,11 +326,6 @@
 
 .cty-sidebar-heading {
   border-bottom: 2px solid $gray-light;
-  color: $black;
-  font-family: 'Arial Narrow', $helvetica;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 1.5;
   margin-bottom: 18px;
 }
 

@@ -1,0 +1,16 @@
+.hdr-narrow {
+  color: $black;
+  font-family: $narrow-font;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.hdr-tertiary {
+  border-bottom: 2px solid $gray-lighter;
+  color: $black;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
