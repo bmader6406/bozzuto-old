@@ -1,12 +1,13 @@
 @import "bourbon";
 
-@import "../variables/*"; //*/
+@import "../variables/*";
+@import "../mixins/*"; //*/
 
 .main-content {
   @include clearfix;
 
   margin-bottom: 50px;
-  
+
   a {
     color: $black;
 
@@ -18,8 +19,84 @@
 
 .cty-slideshow {
   background-color: $black-near;
-  height: 439px;
+  height: 440px;
+  position: relative;
   width: 960px;
+
+  $cty-slideshow-track-bg: rgba(0, 0, 0, 0.65);
+
+  .cty-slideshow-title {
+    color: $white;
+    font-size: 60px;
+    left: 45px;
+    position: absolute;
+    text-transform: uppercase;
+    top: 45px;
+  }
+
+  .cty-slideshow-track {
+    bottom: 0;
+    height: 75px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+
+    .cty-slideshow-thumbs {
+      background-color: $cty-slideshow-track-bg;
+      height: 100%;
+      margin: 0 43px;
+      padding-top: 10px;
+      width: 874px;
+
+      a {
+        display: block;
+        float: left;
+        height: 55px;
+        margin-right: 8px;
+        width: 55px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+
+    .cty-slideshow-arr {
+      @include icon-font;
+
+      background-color: $cty-slideshow-track-bg;
+      color: $gray-light;
+      display: block;
+      font-size: 30px;
+      height: 100%;
+      line-height: 75px;
+      position: absolute;
+      text-align: center;
+      top: 0;
+      width: 43px;
+
+      &:hover {
+        color: darken($gray-light, 10%);
+        text-decoration: none;
+      }
+
+      &.cty-slideshow-prev {
+        left: 0;
+
+        &:before {
+          content: 'f';
+        }
+      }
+
+      &.cty-slideshow-next {
+        right: 0;
+
+        &:before {
+          content: 'g';
+        }
+      }
+    }
+  }
 }
 
 .cty-breadcrumb {
@@ -71,7 +148,9 @@
   margin-left: -16px;
 
   &:before {
-    content: '▶';
+    @include icon-font;
+
+    content: 'm';
     display: inline-block;
     width: 12px;
   }
@@ -217,8 +296,10 @@
     width: 50%;
 
     &:before {
+      @include icon-font;
+
       color: $green;
-      content: '✓';
+      content: 'a';
       font-size: 15px;
       font-weight: bold;
       padding-right: 10px;
@@ -333,6 +414,51 @@
   font-size: 12px;
   line-height: 1.5;
   padding: 0 12px;
+}
+
+.cty-page-actions {
+  @include clearfix;
+
+  border-right: 1px solid $gray-light;
+  float: left;
+  height: 20px;
+  margin-bottom: 10px;
+
+  a {
+    color: $gray-dark;
+    display: block;
+    float: left;
+    font-size: 11px;
+    margin: -5px 10px 0 0;
+
+    .ico {
+      display: block;
+      float: left;
+      line-height: 30px;
+      padding-right: 6px;
+    }
+
+    &.cty-page-action-print {
+      line-height: 30px;
+
+      .ico {
+        font-size: 18px;
+      }
+    }
+
+    &.cty-page-action-phone {
+      line-height: 15px;
+      width: 72px;
+
+      .ico {
+        font-size: 24px;
+      }
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 .cty-map {

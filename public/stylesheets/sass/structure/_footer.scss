@@ -17,11 +17,14 @@ footer {
     padding-right: 0;
     text-transform: none;
     width: 248px;
+
+    a {
+      text-transform: uppercase;
+    }
   }
 
   a {
     color: $gray-medium;
-    text-transform: uppercase;
 
     &:hover {
       color: $black-near;

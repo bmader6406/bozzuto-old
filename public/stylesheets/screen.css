@@ -34,11 +34,11 @@
  */
 @font-face {
 	font-family: 'FontSite Sans';
-	src: url('FontSiteSans-LightCd-webfont.eot');
+	src: url('fonts/font-sans/FontSiteSans-LightCd-webfont.eot');
 	src: local('☺'),
-    url('FontSiteSans-LightCd-webfont.woff') format('woff'),
-    url('FontSiteSans-LightCd-webfont.ttf') format('truetype'),
-    url('FontSiteSans-LightCd-webfont.svg#webfont2X6HCJ0U') format('svg');
+    url('fonts/font-sans/FontSiteSans-LightCd-webfont.woff') format('woff'),
+    url('fonts/font-sans/FontSiteSans-LightCd-webfont.ttf') format('truetype'),
+    url('fonts/font-sans/FontSiteSans-LightCd-webfont.svg#webfont2X6HCJ0U') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }

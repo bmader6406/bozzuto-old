@@ -55,7 +55,22 @@
     </header>
 
     <div id="main-content" class="main-content">
-      <div class="cty-slideshow"></div>
+      <div class="cty-slideshow">
+        <h2 class="cty-slideshow-title">Crosswinds</h2>
+
+        <%= image_tag 'http://placekitten.com/960/440' %>
+
+        <div class="cty-slideshow-track">
+          <%= link_to '', '#', :class => 'cty-slideshow-arr cty-slideshow-prev' %>
+          <%= link_to '', '#', :class => 'cty-slideshow-arr cty-slideshow-next' %>
+
+          <div class="cty-slideshow-thumbs">
+            <% 14.times do %>
+              <%= link_to image_tag('http://placekitten.com/55/55'), '#' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
 
       <div class="cty-breadcrumb">
         <%= link_to 'Apartments', '#' %>
@@ -364,6 +379,21 @@
 
       <div class="cty-right-col">
         <div class="cty-sidebar">
+          <div class="grid-row">
+            <div class="cty-page-actions">
+              <% link_to '#', :class => 'cty-page-action-print' do %>
+                <i class="ico" aria-hidden="true">c</i> Print
+              <% end %>
+
+              <% link_to '#', :class => 'cty-page-action-phone' do %>
+                <i class="ico" aria-hidden="true">d</i> Send to<br />my phone
+              <% end %>
+            </div>
+
+            <div class="cty-social-actions">
+            </div>
+          </div>
+
           <div class="cty-map">
             <%= image_tag 'http://placekitten.com/288/240' %>
           </div>
@@ -373,6 +403,23 @@
           <h4 class="cty-sidebar-heading hdr-narrow">
             Get Information on this Community
           </h4>
+
+          <form>
+            <p>
+              <%= label_tag :full_name, 'Full Name' %>
+              <%= text_field_tag :full_name %>
+            </p>
+
+            <p>
+              <%= label_tag :email, 'Email' %>
+              <%= text_field_tag :email %>
+            </p>
+
+            <% link_to '/pages/privacy-policy' do %>
+              <i class="ico" aria-hidden="true">b</i>
+              Privacy Policy
+            <% end %>
+          </form>
         </div>
 
         <div class="cty-sidebar cty-nearby">
@@ -475,7 +522,7 @@
 
         <ul>
           <% about_root_pages.each do |page| %>
-            <li class="arr-gray-medium"><%= link_to page.title, page_path(page.section, page) %></li>
+						<li><%= link_to page.title, page_path(page.section, page), :class => 'arr-gray-medium' %></li>
           <% end %>
         </ul>
       </div>
@@ -485,8 +532,8 @@
 
         <ul>
           <% %w(Management Homebuilding Construction Development Acquisitions Land).each do |service| %>
-            <li class="arr-gray-medium">
-              <%= link_to service, "/services/#{service.downcase}" %>
+            <li>
+              <%= link_to service, "/services/#{service.downcase}", :class => 'arr-gray-medium' %>
             </li>
           <% end %>
         </ul>
@@ -496,29 +543,29 @@
         <h3 class="f-header">We Work In</h3>
 
         <ul>
-          <li class="arr-gray-medium">
-            <%= link_to 'Connecticut', '/regions/connecticut' %>
+          <li>
+            <%= link_to 'Connecticut', '/regions/connecticut', :class => 'arr-gray-medium' %>
           </li>
-          <li class="arr-gray-medium">
-            <%= link_to 'Maryland', '/regions/maryland' %>
+          <li>
+            <%= link_to 'Maryland', '/regions/maryland', :class => 'arr-gray-medium' %>
           </li>
-          <li class="arr-gray-medium">
-            <%= link_to 'Massachusetts', '/regions/massachusetts' %>
+          <li>
+            <%= link_to 'Massachusetts', '/regions/massachusetts', :class => 'arr-gray-medium' %>
           </li>
-          <li class="arr-gray-medium">
-            <%= link_to 'New Jersey', '/regions/new-jersey' %>
+          <li>
+            <%= link_to 'New Jersey', '/regions/new-jersey', :class => 'arr-gray-medium' %>
           </li>
-          <li class="arr-gray-medium">
-            <%= link_to 'New York', '/regions/new-york' %>
+          <li>
+            <%= link_to 'New York', '/regions/new-york', :class => 'arr-gray-medium' %>
           </li>
-          <li class="arr-gray-medium">
-            <%= link_to 'Pennsylvania', '/regions/pennsylvania' %>
+          <li>
+            <%= link_to 'Pennsylvania', '/regions/pennsylvania', :class => 'arr-gray-medium' %>
           </li>
-          <li class="arr-gray-medium">
-            <%= link_to 'Virginia', '/regions/virginia' %>
+          <li>
+            <%= link_to 'Virginia', '/regions/virginia', :class => 'arr-gray-medium' %>
           </li>
-          <li class="arr-gray-medium">
-            <%= link_to 'Washington, DC', '/regions/washington-dc' %>
+          <li>
+            <%= link_to 'Washington, DC', '/regions/washington-dc', :class => 'arr-gray-medium' %>
           </li>
         </ul>
       </div>

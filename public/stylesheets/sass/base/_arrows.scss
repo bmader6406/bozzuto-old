@@ -1,7 +1,10 @@
 .arr-gray-medium:before {
+  @include icon-font;
+
   color: $gray-medium;
-  content: '〉';
-  font-size: .55em;
-  font-weight: bold;
+  content: 'g';
+  font-size: 0.55em;
+  opacity: 0.75;
+  padding-right: 0.75em;
   vertical-align: middle;
 }

@@ -1,6 +1,9 @@
 $nav-height: 34px;
 
 header {
+  position: relative;
+  z-index: 1;
+
   .h-logo {
     background: url(/images/redesign/bozzuto-logo.png) no-repeat;
     height: 50px;
@@ -79,7 +82,9 @@ $dropdown-transition-duration: 0.3s;
       text-transform: uppercase;
 
       &:before {
-        content: '▶';
+        @include icon-font;
+
+        content: 'm';
         display: inline-block;
         font-size: 80%;
         width: 14px;
@@ -90,7 +95,7 @@ $dropdown-transition-duration: 0.3s;
         text-decoration: none;
 
         span {
-        text-decoration: underline;
+          text-decoration: underline;
         }
       }
     }
