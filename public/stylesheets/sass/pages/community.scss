@@ -521,9 +521,29 @@
 
 .cty-map {
   border: 1px solid $gray-lighter;
+  margin-bottom: 5px;
 
   img {
     display: block;
+  }
+}
+
+.cty-map-actions {
+  font-size: 12px;
+  line-height: 1.5;
+
+  a {
+    color: $blue;
+  }
+
+  .left-col,
+  .right-col {
+    float: left;
+    width: 50%;
+  }
+
+  .right-col {
+    text-align: right;
   }
 }
 
