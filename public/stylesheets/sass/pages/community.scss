@@ -19,9 +19,10 @@
 
 .cty-slideshow {
   background-color: $black-near;
-  height: 440px;
+  height: 375px + 75px;
+  margin: 25px auto;
   position: relative;
-  width: 960px;
+  width: 870px;
 
   $cty-slideshow-track-bg: rgba(0, 0, 0, 0.65);
 
@@ -40,6 +41,7 @@
     bottom: 0;
     height: 75px;
     left: 0;
+    overflow: hidden;
     position: absolute;
     width: 100%;
 
@@ -48,17 +50,21 @@
       height: 100%;
       margin: 0 43px;
       padding-top: 10px;
-      width: 874px;
+      width: 784px;
 
-      a {
-        display: block;
-        float: left;
-        height: 55px;
-        margin-right: 8px;
-        width: 55px;
+      .cty-slideshow-thumbs-inner {
+        width: 10000px;
 
-        &:last-child {
-          margin-right: 0;
+        a {
+          display: block;
+          float: left;
+          height: 55px;
+          margin-right: 8px;
+          width: 55px;
+
+          &:last-child {
+            margin-right: 0;
+          }
         }
       }
     }
@@ -421,7 +427,7 @@
 .cty-page-actions {
   @include clearfix;
 
-  border-right: 1px solid $gray-light;
+  //border-right: 1px solid $gray-light;
   float: left;
   height: 20px;
   margin-bottom: 10px;

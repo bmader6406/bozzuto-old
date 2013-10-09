@@ -58,16 +58,18 @@
       <div class="cty-slideshow">
         <h2 class="cty-slideshow-title">Crosswinds</h2>
 
-        <%= image_tag 'http://placekitten.com/960/440' %>
+        <%= image_tag 'http://placekitten.com/870/375' %>
 
         <div class="cty-slideshow-track">
           <%= link_to '', '#', :class => 'cty-slideshow-arr cty-slideshow-prev' %>
           <%= link_to '', '#', :class => 'cty-slideshow-arr cty-slideshow-next' %>
 
           <div class="cty-slideshow-thumbs">
-            <% 14.times do %>
-              <%= link_to image_tag('http://placekitten.com/55/55'), '#' %>
-            <% end %>
+            <div class="cty-slideshow-thumbs-inner">
+              <% 14.times do %>
+                <%= link_to image_tag('http://placekitten.com/55/55'), '#' %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
@@ -381,8 +383,10 @@
         <div class="cty-sidebar">
           <div class="grid-row">
             <div class="cty-page-actions">
-              <% link_to '#', :class => 'cty-page-action-print' do %>
-                <i class="ico" aria-hidden="true">c</i> Print
+              <% black_hole do %>
+                <% link_to '#', :class => 'cty-page-action-print' do %>
+                  <i class="ico" aria-hidden="true">c</i> Print
+                <% end %>
               <% end %>
 
               <% link_to '#', :class => 'cty-page-action-phone' do %>
