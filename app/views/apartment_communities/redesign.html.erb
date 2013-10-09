@@ -403,27 +403,28 @@
           </div>
         </div>
 
-        <div class="cty-sidebar">
+        <div class="cty-sidebar cty-get-info">
           <h4 class="cty-sidebar-heading hdr-narrow">
             Get Information on this Community
           </h4>
 
-          <form>
-            <p>
-              <%= label_tag :full_name, 'Full Name' %>
-              <%= text_field_tag :full_name %>
-            </p>
+          <div class="cty-sidebar-content">
+            <form>
+              <p class="in-container">
+                <%= label_tag :email, 'Email', :class => 'in-label' %>
+                <%= text_field_tag :email, nil, :class => 'in-text' %>
+              </p>
 
-            <p>
-              <%= label_tag :email, 'Email' %>
-              <%= text_field_tag :email %>
-            </p>
+              <p>
+                <button type="submit" class="btn btn-small btn-gray">Submit</button>
 
-            <% link_to '/pages/privacy-policy' do %>
-              <i class="ico" aria-hidden="true">b</i>
-              Privacy Policy
-            <% end %>
-          </form>
+                <% link_to '/pages/privacy-policy' do %>
+                  <i class="ico" aria-hidden="true">b</i>
+                  Privacy Policy
+                <% end %>
+              </p>
+            </form>
+          </div>
         </div>
 
         <div class="cty-sidebar cty-nearby">

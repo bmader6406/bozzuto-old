@@ -33,6 +33,7 @@
     font-size: 60px;
     left: 45px;
     position: absolute;
+    text-shadow: 0 0 rgba(0, 0, 0, 0.3);
     text-transform: uppercase;
     top: 45px;
   }
@@ -478,10 +479,40 @@
 }
 
 .cty-nearby {
-
   a {
     font-weight: bold;
     line-height: 2;
+  }
+}
+
+.cty-get-info {
+  p {
+    margin-bottom: 10px;
+    //text-align: center;
+
+    &.in-container {
+      text-align: left;
+    }
+
+    button {
+      font-weight: normal;
+    }
+
+    a {
+      color: $gray-medium-dark;
+      float: right;
+      font-size: 10px;
+      line-height: 2.5;
+
+      &:hover {
+        color: $blue;
+        text-decoration: none;
+      }
+
+      i {
+        font-size: 12px;
+      }
+    }
   }
 }
 

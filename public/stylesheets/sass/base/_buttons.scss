@@ -18,6 +18,14 @@
   }
 }
 
+.btn-gray {
+  @include button(shiny, #fff);
+
+  color: #666 !important;
+  font-family: $helvetica;
+  text-shadow: none;
+}
+
 .btn-small {
-  padding: 0 16px !important;
+  padding: 4px 16px !important;
 }
