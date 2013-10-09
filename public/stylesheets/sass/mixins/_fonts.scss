@@ -1,0 +1,23 @@
+@mixin icon-font {
+  font-family: Icons;
+  font-weight: normal;
+  text-transform: none;
+}
+
+@mixin font-site-sans-light {
+  font-family: FontSiteSansLight;
+  font-weight: normal;
+}
+
+@mixin font-site-sans {
+  font-family: FontSiteSans;
+  font-weight: bold;
+}
+
+.ico {
+  @include icon-font;
+
+  display: inline-block;
+  text-transform: none;
+  vertical-align: middle;
+}

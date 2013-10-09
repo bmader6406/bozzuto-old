@@ -1,4 +1,5 @@
-@include font-face(Icons, '/stylesheets/fonts/icons/icons');
+@include font-face(FontSiteSansLight, '/stylesheets/fonts/FontSiteSans-Light', normal);
+@include font-face(Icons, '/stylesheets/fonts/icons');
 
 .hdr-narrow {
   color: $black;

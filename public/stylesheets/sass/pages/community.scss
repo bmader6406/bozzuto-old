@@ -26,6 +26,8 @@
   $cty-slideshow-track-bg: rgba(0, 0, 0, 0.65);
 
   .cty-slideshow-title {
+    @include font-site-sans-light;
+
     color: $white;
     font-size: 60px;
     left: 45px;
