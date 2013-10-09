@@ -12,6 +12,15 @@
     <header>
       <h1 class="h-logo"><%= link_to 'Bozzuto', '/' %></h1>
 
+      <div class="h-search">
+        <form>
+          <%= text_field_tag :q, params[:q], :class => 'in-text' %>
+          <button type="submit">
+            <i class="ico" aria-hidden="true">p</i> Submit
+          </button>
+        </form>
+      </div>
+
       <nav>
         <ul class="n-main">
           <li class="n-main-item">
@@ -596,8 +605,8 @@
 
         <form class="buzz-form" action="/bozzuto-buzz" method="GET">
           <label for="email">Enter your email address to stay connected.</label>
-          <p class="fields">
-            <input type="text" name="email" />
+          <p class="fields grid-row">
+            <%= text_field_tag :email, nil, :class => 'in-text' %>
             <button type="submit">Submit</button>
           </p>
         </form>

@@ -67,3 +67,23 @@ footer {
 .f-ico-beat-blog {
   background: transparent url(/images/structure/ico-rss-large.gif) no-repeat center left;
 }
+
+.buzz-form {
+  input, button {
+    height: 20px;
+  }
+
+  input {
+    float: left;
+    width: 70%;
+  }
+
+  button {
+    background-color: #fff;
+    border: 1px solid $blue-gray;
+    color: $blue-dark;
+    float: right;
+    font-size: 9px;
+    text-transform: uppercase;
+  }
+}

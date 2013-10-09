@@ -25,6 +25,40 @@ header {
   }
 }
 
+.h-search {
+  height: 25px;
+  position: absolute;
+  right: 0;
+  top: 25px;
+  width: 225px;
+
+  input, button {
+    float: left;
+  }
+
+  input {
+    height: 25px;
+    width: 200px;
+  }
+
+  button {
+    background-color: $black;
+    border: 1px solid $gray-darker;
+    color: #c2c1bb;
+    height: 25px;
+    padding: 0;
+    width: 25px;
+
+    .ico {
+      cursor: pointer;
+      font-size: 18px;
+      height: 25px;
+      line-height: 25px;
+      width: 25px;
+    }
+  }
+}
+
 .n-main {
   display: inline-block;
   height: $nav-height;
