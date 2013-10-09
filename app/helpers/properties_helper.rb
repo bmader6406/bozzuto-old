@@ -52,7 +52,7 @@ module PropertiesHelper
 
   def property_bullets
     if @community.has_overview_bullets?
-      content_tag :ul do
+      content_tag :ul, :class => 'cty-features-list' do
         (1..3).map do |i|
           if @community.send("overview_bullet_#{i}").present?
             content_tag(:li) { @community.send("overview_bullet_#{i}") }

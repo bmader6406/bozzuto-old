@@ -65,9 +65,11 @@
 
     <div id="main-content" class="main-content">
       <div class="cty-slideshow">
-        <h2 class="cty-slideshow-title">Crosswinds</h2>
+        <h2 class="cty-slideshow-title"><%= @community.short_name %></h2>
 
-        <%= image_tag 'http://placekitten.com/870/375' %>
+        <% @community.slideshow.slides.first.tap do |slide| %>
+          <%= image_tag slide.image.url %>
+        <% end %>
 
         <div class="cty-slideshow-track">
           <%= link_to '', '#', :class => 'cty-slideshow-arr cty-slideshow-prev' %>
@@ -75,7 +77,7 @@
 
           <div class="cty-slideshow-thumbs">
             <div class="cty-slideshow-thumbs-inner">
-              <% 14.times do %>
+              <% @community.slideshow.slides.each do |slide| %>
                 <%= link_to image_tag('http://placekitten.com/55/55'), '#' %>
               <% end %>
             </div>
@@ -84,35 +86,40 @@
       </div>
 
       <div class="cty-breadcrumb">
-        <%= link_to 'Apartments', '#' %>
+        <%= link_to "Apartments", "/apartments" %>
         &gt;
-        <%= link_to 'Find an Apartment', '#' %>
+        <%= link_to "Find an Apartment", apartment_communities_path %>
         &gt;
-        <%= link_to 'Maryland', '#' %>
+        <%= link_to @community.state.name, state_apartment_search_path(@community.state) %>
         &gt;
-        <%= link_to 'Annapolis', '#' %>
+        <%= link_to @community.city.name, city_apartment_search_path(@community.city) %>
         &gt;
-        Crosswinds at Annapolis Towne Centre
+        <%= @community.title %>
       </div>
 
       <div class="cty-left-col">
-        <h3 class="cty-headline">
-          Live in the Heart of Modern Annapolis
-        </h3>
+        <% if @community.overview_title.present? %>
+          <h3 class="cty-headline">
+            <%= @community.overview_title %>
+          </h3>
+        <% end %>
 
         <!-- Intro Content -->
         <div class="cty-intro">
           <div class="grid-row">
             <div class="grid-12">
               <h4 class="cty-intro-headline">
-                Crosswinds at Annapolis Towne Centre
+                <%= @community.title %>
               </h4>
 
               <p class="cty-intro-address">
-                1903 Towne Centre Boulevard<br />
-                Annapolis, MD 21401<br />
+                <%= @community.address('<br />').html_safe %>
+                <% @community.zip_code.if_present? do |zip| %>
+                  <%= zip %>
+                <% end %>
+                <br />
 
-                <strong>(888) 251-3403</strong>
+                <strong><%= format_phone_number(@community.phone_number) %></strong>
               </p>
 
               <p class="cty-intro-links">
@@ -136,11 +143,7 @@
             <div class="grid-10">
               <h4 class="cty-features-headline">Key Features</h4>
 
-              <ul class="cty-features-list">
-                <li>Great DC location in the NoMa district</li>
-                <li>24-Hour Two Story Fitness Center</li>
-                <li>Sparkling Rooftop Pool</li>
-              </ul>
+              <%= property_bullets %>
             </div>
 
             <div class="grid-6">
@@ -258,9 +261,9 @@
               </tr>
             </table>
 
-            <p>
-              Live in the heart of Modern Annapolis at Crosswinds Apartments in Annapolis Towne Centre. Relax, socialize, shop and exercise without ever having to step foot outside your community. Everything about Crosswinds Apartments embodies luxury, style, and convenience. Fall in love with our designer apartments and unparalleled amenity spaces plus enjoy 25 years of exceptional experience and outstanding resident services from Bozzuto Management Company.
-            </p>
+            <% if @community.overview_text.present? %>
+              <%= @community.overview_text.html_safe %>
+            <% end %>
           </div>
         </div>
 
@@ -449,97 +452,49 @@
           </div>
         </div>
 
-        <div class="cty-sidebar cty-nearby">
-          <h4 class="cty-sidebar-heading hdr-narrow">
-            Nearby Apartment Communities
-          </h4>
+        <% if @community.nearby_communities.any? %>
+          <div class="cty-sidebar cty-nearby">
+            <h4 class="cty-sidebar-heading hdr-narrow">
+              Nearby Apartment Communities
+            </h4>
 
-          <div class="cty-sidebar-content">
-            <ul>
-              <li>
-                <%= link_to 'The Loree Grand', '#' %>
-              </li>
-              <li>
-                <%= link_to 'Elevation at Washington Gateway', '#' %>
-              </li>
-              <li>
-                <%= link_to 'Senate Square', '#' %>
-              </li>
-              <li>
-                <%= link_to 'Yale West', '#' %>
-              </li>
-              <li>
-                <%= link_to '7th Flats', '#' %>
-              </li>
-              <li>
-                <%= link_to 'City Market at O Street', '#' %>
-              </li>
-            </ul>
+            <div class="cty-sidebar-content">
+              <ul>
+                <% @community.nearby_communities.each do |community| %>
+                  <li><%= link_to community.title, community %></li>
+                <% end %>
+              </ul>
+            </div>
           </div>
-        </div>
+        <% end %>
 
-        <div class="cty-sidebar">
-          <h4 class="cty-sidebar-heading hdr-narrow">
-            Local Info
-          </h4>
+        <% if @community.has_local_info? %>
+          <div class="cty-sidebar">
+            <h4 class="cty-sidebar-heading hdr-narrow">
+              Local Info
+            </h4>
 
-          <div class="cty-sidebar-content">
-            <ul>
-              <li class="cty-local-info-item">
-                <h5 class="cty-local-info-heading">
-                  <% link_to '#' do %>
-                    'Man of Steel,' 'This is the End' and other new movies, reviewed
-                  <% end %>
-                </h5>
+            <div class="cty-sidebar-content">
+              <ul>
+                <% @community.local_info.take(5).each do |info| %>
+                  <li class="cty-local-info-item">
+                    <h5 class="cty-local-info-heading">
+                      <%= link_to info.title.gsub(/on Yelp$/, ''), info.url %>
+                    </h5>
 
-                <p class="cty-local-info-date">June 14, 2013</p>
+                    <p class="cty-local-info-date">
+                      <%= info.published_at.to_formatted_s(:month_day_year) %>
+                    </p>
 
-                <p class="cty-local-info-summary">
-                  In this week's new movies, Michael O'Sullivan reviews "Shadow Dancer" &hellip;
-                </p>
-              </li>
-              <li class="cty-local-info-item">
-                <h5 class="cty-local-info-heading">
-                  <% link_to '#' do %>
-                    Laptop-friendly Bar di Bari opening June 21
-                  <% end %>
-                </h5>
-
-                <p class="cty-local-info-date">June 14, 2013</p>
-
-                <p class="cty-local-info-summary">
-                  Fans of the dearly departed Mid City Caffe may finally be able to fill that &hellip;
-                </p>
-              </li>
-              <li class="cty-local-info-item">
-                <h5 class="cty-local-info-heading">
-                  <% link_to '#' do %>
-                    Princess For A Day Ice Cream Social
-                  <% end %>
-                </h5>
-
-                <p class="cty-local-info-date">June 14, 2013</p>
-
-                <p class="cty-local-info-summary">
-                  Sterling, VA. You can be a princess for a day at the Heritage Farm Museum! &hellip;
-                </p>
-              </li>
-              <li class="cty-local-info-item">
-                <h5 class="cty-local-info-heading">
-                  <% link_to '#' do %>
-                    Artsee Featuring Jeremy Flick At Lumen8 Art And Light Festival
-                  <% end %>
-                </h5>
-
-                <p class="cty-local-info-date">June 14, 2013</p>
-
-                <p class="cty-local-info-summary">
-                  The 2nd annual LUMEN8Anacostia Arts &amp; Light Festival is happening June 22 &hellip;
-                </p>
-              </li>
-            </ul>
+                    <p class="cty-local-info-summary">
+                      <%= truncate_html(raw(info.description), :length => 75) %>
+                    </p>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
 
@@ -549,7 +504,7 @@
 
         <ul>
           <% about_root_pages.each do |page| %>
-						<li><%= link_to page.title, page_path(page.section, page), :class => 'arr-gray-medium' %></li>
+            <li><%= link_to page.title, page_path(page.section, page), :class => 'arr-gray-medium' %></li>
           <% end %>
         </ul>
       </div>
