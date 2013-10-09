@@ -24,6 +24,9 @@ javascripts:
   mobile:
     - public/javascripts/vendor/jquery.min.js
     - public/javascripts/analytics.js
+  redesign:
+    - public/javascripts/redesign/application.js
+    - public/javascripts/redesign/pages/apartment_communities.js
 
 stylesheets:
   bozzuto:

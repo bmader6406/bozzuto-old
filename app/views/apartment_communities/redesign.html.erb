@@ -7,7 +7,7 @@
   <%= stylesheet_link_tag 'application', :media => 'screen' %>
   <%= stylesheet_link_tag 'pages/community', :media => 'screen' %>
 </head>
-<body>
+<body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
   <div id="site-wrapper">
     <header>
       <h1 class="h-logo"><%= link_to 'Bozzuto', '/' %></h1>
@@ -659,5 +659,8 @@
       </p>
     </div>
   </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <%= include_javascripts :redesign %>
 </body>
 </html>

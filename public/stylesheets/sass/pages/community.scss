@@ -241,6 +241,55 @@
 .cty-section-header {
   border-bottom: 3px solid $black;
   margin-bottom: 20px;
+
+  h3 {
+    position: relative;
+  }
+
+  .cty-section-toggle {
+    color: $gray-medium;
+    cursor: pointer;
+    display: block;
+    font-size: 10px;
+    height: 100%;
+    letter-spacing: 2px;
+    position: absolute;
+    text-align: right;
+    text-transform: uppercase;
+    top: 0;
+    width: 100%;
+
+    &:hover {
+      color: $gray-dark;
+      text-decoration: none;
+    }
+
+    .ico:after {
+      color: $black;
+      font-size: 20px;
+      padding-left: 8px;
+    }
+  }
+
+  .cty-section-toggle-hide {
+    &:before {
+      content: '[hide]';
+    }
+
+    .ico:after {
+      content: 'o';
+    }
+  }
+
+  .cty-section-toggle-show {
+    &:before {
+      content: '[show]';
+    }
+
+    .ico:after {
+      content: 'n';
+    }
+  }
 }
 
 .cty-section-content {
