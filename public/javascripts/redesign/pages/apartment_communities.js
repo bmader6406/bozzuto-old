@@ -1,6 +1,8 @@
 BOZ.apartment_communities = {
   redesign: function() {
     this.showHideSections();
+
+    $('.cty-features-content ul').makeacolumnlists({ cols: 2 });
   },
 
   showHideSections: function() {

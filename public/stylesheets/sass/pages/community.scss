@@ -346,25 +346,43 @@
   }
 }
 
-.cty-amenities-list {
-  @include clearfix;
+.cty-features-content {
+  margin-bottom: 20px;
 
-  margin-left: 20px;
-  width: 100%;
+  h2 {
 
-  li {
-    float: left;
-    padding-right: 10px;
-    width: 50%;
+  }
 
-    &:before {
-      @include icon-font;
+  ul {
+    @include clearfix;
 
-      color: $green;
-      content: 'a';
-      font-size: 15px;
-      font-weight: bold;
+    width: 100%;
+
+    &.li_cont1 {
+      padding-left: 20px;
+    }
+
+    &.li_cont2 {
+      padding-right: 20px;
+    }
+
+    li {
+      padding-left: 25px;
       padding-right: 10px;
+      position: relative;
+
+      &:before {
+        @include icon-font;
+
+        color: $green;
+        content: 'a';
+        font-size: 15px;
+        font-weight: bold;
+        left: 0;
+        padding-right: 10px;
+        position: absolute;
+        top: -3px;
+      }
     }
   }
 }
