@@ -1,0 +1,20 @@
+<div class="cty-slideshow">
+  <h2 class="cty-slideshow-title"><%= community.short_name %></h2>
+
+  <% community.slideshow.slides.first.tap do |slide| %>
+    <%= image_tag slide.image.url %>
+  <% end %>
+
+  <div class="cty-slideshow-track">
+    <%= link_to '', '#', :class => 'cty-slideshow-arr cty-slideshow-prev' %>
+    <%= link_to '', '#', :class => 'cty-slideshow-arr cty-slideshow-next' %>
+
+    <div class="cty-slideshow-thumbs">
+      <div class="cty-slideshow-thumbs-inner">
+        <% community.slideshow.slides.each do |slide| %>
+          <%= link_to image_tag('http://placekitten.com/55/55'), '#' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

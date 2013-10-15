@@ -1,0 +1,105 @@
+<div class="cty-sidebar">
+  <div class="grid-row">
+    <div class="cty-page-actions">
+      <% black_hole do %>
+        <% link_to '#', :class => 'cty-page-action-print' do %>
+          <%= icon('c') %> Print
+        <% end %>
+      <% end %>
+
+      <% link_to '#', :class => 'cty-page-action-phone' do %>
+        <%= icon('d') %> Send to<br />my phone
+      <% end %>
+    </div>
+
+    <div class="cty-social-actions">
+    </div>
+  </div>
+
+  <div class="cty-map">
+    <%= image_tag 'http://placekitten.com/288/240' %>
+  </div>
+
+  <div class="cty-map-actions">
+    <div class="grid-row">
+      <div class="left-col">
+        <%= link_to 'Larger Map/Directions', '#' %>
+        <%= link_to 'Walk Score&trade;'.html_safe, '#' %>
+      </div>
+
+      <div class="right-col">
+        <%= link_to 'Points of Interest', '#' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="cty-sidebar cty-get-info">
+  <h4 class="cty-sidebar-heading hdr-narrow">
+    Get Information on this Community
+  </h4>
+
+  <div class="cty-sidebar-content">
+    <form>
+      <p class="in-container">
+        <%= label_tag :email, 'Email', :class => 'in-label' %>
+        <%= text_field_tag :email, nil, :class => 'in-text' %>
+      </p>
+
+      <p>
+        <button type="submit" class="btn btn-small btn-gray">Submit</button>
+
+        <% link_to '/pages/privacy-policy' do %>
+          <%= icon('b') %> Privacy Policy
+        <% end %>
+      </p>
+    </form>
+  </div>
+</div>
+
+
+<% if @community.nearby_communities.any? %>
+  <div class="cty-sidebar cty-nearby">
+    <h4 class="cty-sidebar-heading hdr-narrow">
+      Nearby Apartment Communities
+    </h4>
+
+    <div class="cty-sidebar-content">
+      <ul>
+        <% @community.nearby_communities.each do |community| %>
+          <li><%= link_to community.title, community %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+
+<% if @community.has_local_info? %>
+  <div class="cty-sidebar">
+    <h4 class="cty-sidebar-heading hdr-narrow">
+      Local Info
+    </h4>
+
+    <div class="cty-sidebar-content">
+      <ul>
+        <% @community.local_info.take(5).each do |info| %>
+          <li class="cty-local-info-item">
+            <h5 class="cty-local-info-heading">
+              <%= link_to info.title.gsub(/on Yelp$/, ''), info.url %>
+            </h5>
+
+            <p class="cty-local-info-date">
+              <%= info.published_at.to_formatted_s(:month_day_year) %>
+            </p>
+
+            <p class="cty-local-info-summary">
+              <%= truncate_html(info.description.html_safe, :length => 75) %>
+            </p>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>

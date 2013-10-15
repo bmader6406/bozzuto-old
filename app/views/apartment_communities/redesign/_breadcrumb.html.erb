@@ -1,0 +1,11 @@
+<div class="cty-breadcrumb">
+  <%= link_to "Apartments", "/apartments" %>
+  &gt;
+  <%= link_to "Find an Apartment", apartment_communities_path %>
+  &gt;
+  <%= link_to community.state.name, state_apartment_search_path(community.state) %>
+  &gt;
+  <%= link_to community.city.name, city_apartment_search_path(community.city) %>
+  &gt;
+  <%= community.title %>
+</div>

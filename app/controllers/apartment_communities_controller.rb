@@ -31,7 +31,7 @@ class ApartmentCommunitiesController < ApplicationController
   end
 
   def redesign
-    render :layout => false
+    render :layout => 'redesign'
   end
 
 

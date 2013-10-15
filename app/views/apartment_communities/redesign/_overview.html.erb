@@ -1,0 +1,56 @@
+<!-- Apartments Overview -->
+<div class="cty-section">
+  <div class="cty-section-header">
+    <h3 class="hdr-narrow">Apartments Overview</h3>
+  </div>
+
+  <div class="cty-section-content">
+    <% if community.floor_plans_by_group.any? { |group, plans| plans.length > 0 } %>
+      <table class="cty-table">
+        <tr>
+          <th class="cty-table-bedrooms" scope="col">
+            Bedrooms
+          </th>
+          <th class="cty-table-floor-plans" scope="col">
+            Floor Plans
+          </th>
+          <th class="cty-table-size" scope="col">
+            Size
+          </th>
+          <th class="cty-table-price" scope="col">
+            Amount
+          </th>
+          <th class="cty-table-avail" scope="col"></th>
+        </tr>
+
+        <% community.floor_plans_by_group.each do |group, plans| %>
+          <tr>
+            <td class="cty-table-bedrooms">
+              <% link_to apartment_community_floor_plan_groups_path(community, :anchor => dom_id(group)) do %>
+                <%= floor_plan_group_pluralize(plans.count, group.name) %>
+              <% end %>
+            </td>
+            <td class="cty-table-floor-plans">
+              <%= pluralize(plans.count, 'Floor Plan') %>
+            </td>
+            <td class="cty-table-size">
+              <%= square_feet_of_largest_floor_plan(plans) %>
+            </td>
+            <td class="cty-table-price">
+              <% cheapest_price = price_of_cheapest_floor_plan(plans).if_present? do |price| %>
+                From <%= price %>
+              <% end %>
+            </td>
+            <td class="cty-table-avail">
+              <%= link_to 'Check Availability', (community.availability_url.presence || apartment_community_contact_path(community)) %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+
+    <% if community.overview_text.present? %>
+      <%= community.overview_text.html_safe %>
+    <% end %>
+  </div>
+</div>

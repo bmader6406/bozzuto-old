@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf8">
+  <title>Bozzuto</title>
+
+  <%= stylesheet_link_tag 'application', :media => 'screen' %>
+  <%= stylesheet_link_tag 'pages/community', :media => 'screen' %>
+</head>
+<body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
+  <div id="site-wrapper">
+    <header>
+      <h1 class="h-logo"><%= link_to 'Bozzuto', '/' %></h1>
+
+      <div class="h-search">
+        <form>
+          <%= text_field_tag :q, params[:q], :class => 'in-text' %>
+          <button type="submit">
+            <i class="ico" aria-hidden="true">p</i> Submit
+          </button>
+        </form>
+      </div>
+
+      <nav>
+        <ul class="n-main">
+          <li class="n-main-item">
+            <%= link_to 'Apartments', '/apartments', :class => 'n-main-item-link' %>
+          </li>
+          <li class="n-main-item">
+            <%= link_to 'New Homes', '/new-homes', :class => 'n-main-item-link' %>
+          </li>
+          <li class="n-main-item">
+            <%= link_to 'About Us', '/about-us', :class => 'n-main-item-link' %>
+            <div class="dropdown">
+              <ul class="col">
+                <li><span><a href="/about-us/values">Values</a></span></li>
+                <li><span><a href="/careers">Careers</a></span></li>
+                <li><span><a href="/about-us/leadership">Leadership</a></span></li>
+              </ul>
+              <ul class="col">
+                <li><span><a href="/about-us/news-and-press">News &amp; Press</a></span></li>
+                <li><span><a href="/about-us/testimonials">Testimonials</a></span></li>
+                <li><span><a href="/about-us/news-and-press/awards">Awards</a></span></li>
+              </ul>
+            </div>
+          </li>
+          <li class="n-main-item">
+            <%= link_to 'Our Services', '/services', :class => 'n-main-item-link' %>
+            <div class="dropdown">
+              <ul class="col">
+                <li class="first"><%= link_to 'Management', '/services/management' %></li>
+                <li><%= link_to 'Homebuilding', '/services/homebuilding' %></li>
+                <li><%= link_to 'Construction', '/services/construction' %></li>
+              </ul>
+              <ul class="col">
+                <li class="first"><%= link_to 'Development', '/services/development' %></li>
+                <li><%= link_to 'Acquisitions', '/services/acquisitions' %></li>
+                <li><%= link_to 'Land', '/services/land' %></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="main-content" class="main-content">
+      <%= yield %>
+    </div>
+
+    <footer>
+      <div class="col">
+        <h3 class="f-header">About Us</h3>
+
+        <ul>
+          <% about_root_pages.each do |page| %>
+            <li><%= link_to page.title, page_path(page.section, page), :class => 'arr-gray-medium' %></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h3 class="f-header">Our Services</h3>
+
+        <ul>
+          <% %w(Management Homebuilding Construction Development Acquisitions Land).each do |service| %>
+            <li>
+              <%= link_to service, "/services/#{service.downcase}", :class => 'arr-gray-medium' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h3 class="f-header">We Work In</h3>
+
+        <ul>
+          <li>
+            <%= link_to 'Connecticut', '/regions/connecticut', :class => 'arr-gray-medium' %>
+          </li>
+          <li>
+            <%= link_to 'Maryland', '/regions/maryland', :class => 'arr-gray-medium' %>
+          </li>
+          <li>
+            <%= link_to 'Massachusetts', '/regions/massachusetts', :class => 'arr-gray-medium' %>
+          </li>
+          <li>
+            <%= link_to 'New Jersey', '/regions/new-jersey', :class => 'arr-gray-medium' %>
+          </li>
+          <li>
+            <%= link_to 'New York', '/regions/new-york', :class => 'arr-gray-medium' %>
+          </li>
+          <li>
+            <%= link_to 'Pennsylvania', '/regions/pennsylvania', :class => 'arr-gray-medium' %>
+          </li>
+          <li>
+            <%= link_to 'Virginia', '/regions/virginia', :class => 'arr-gray-medium' %>
+          </li>
+          <li>
+            <%= link_to 'Washington, DC', '/regions/washington-dc', :class => 'arr-gray-medium' %>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h3 class="f-header">Get in Touch</h3>
+
+        <p>
+          301.220.0100
+          <%= mail_to 'feedback@bozzuto.com', 'feedback@bozzuto.com', :class => 'arr-gray-medium' %>
+          <%= link_to 'Careers', careers_path, :class => 'arr-gray-medium' %>
+        </p>
+
+        <p>
+          7850 Walker Dr.<br />
+          Suite 400<br />
+          Greenbelt, MD 20770
+        </p>
+      </div>
+
+      <div class="col col-wide">
+        <h3 class="f-header">Connect with Us</h3>
+
+        <form class="buzz-form" action="/bozzuto-buzz" method="GET">
+          <label for="email">Enter your email address to stay connected.</label>
+          <p class="fields grid-row">
+            <%= text_field_tag :email, nil, :class => 'in-text' %>
+            <button type="submit">Submit</button>
+          </p>
+        </form>
+
+        <ul>
+          <li class="f-ico f-ico-facebook">
+            <%= link_to 'Follow us on Facebook', 'http://www.facebook.com/TheBozzutoGroup', :rel => 'external', 'data-track-social' => 'Facebook,Outbound Click,Footer', :class => 'arr-gray-medium' %>
+          </li>
+          <li class="f-ico f-ico-twitter">
+            <%= link_to 'Follow us on Twitter', 'http://twitter.com/TheBozzutoGroup', :rel => 'external', 'data-track-social' => 'Twitter,Outbound Click,Footer', :class => 'arr-gray-medium' %>
+          </li>
+          <li class="f-ico f-ico-pinterest">
+            <%= link_to 'Follow us on Pinterest', 'http://pinterest.com/thebozzutogroup/', :rel => 'external', 'data-track-social' => 'Pinterest,Outbound Click,Footer', :class => 'arr-gray-medium' %>
+          </li>
+          <li class="f-ico f-ico-instagram">
+            <%= link_to 'Follow us on Instagram', 'http://instagram.com/thebozzutogroup', :rel => 'external', 'data-track-social' => 'Instagram,Outbound Click,Footer', :class => 'arr-gray-medium' %>
+          </li>
+          <li class="f-ico f-ico-tom-blog">
+            <%= link_to raw('Read Tom Bozzuto&rsquo;s Blog'), 'http://tom.bozzuto.com', :rel => 'external', 'data-track-social' => 'Blog - Tom Bozzuto,Outbound Click,Footer', :class => 'arr-gray-medium' %>
+          </li>
+          <li class="f-ico f-ico-beat-blog">
+            <%= link_to 'Read Bozzuto Beat Blog', 'http://blog.bozzuto.com', :rel => 'external', 'data-track-social' => 'Blog - Bozzuto Beat,Outbound Click,Footer', :class => 'arr-gray-medium' %>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+  <div id="copyright">
+    <div class="container">
+      <p class="cr-copyright">
+        &copy; <%= Time.now.year %> Bozzuto
+      </p>
+
+      <p class="cr-links">
+        <%= link_to 'Privacy Policy', '/pages/privacy-policy' %>
+        |
+        <%= link_to 'Website Disclaimer', '/pages/website-disclaimer' %>
+        |
+        <%= link_to 'Employee Login', 'http://www.bozzutointranet.com/Pages/Home.aspx' %>
+
+        <% if mobile_device? %>
+          |
+          <%= link_to 'Mobile Site', root_path(:full_site => 0) %>
+        <% end %>
+      </p>
+
+      <p class="cr-eho">
+        <%= link_to 'Equal Housing Opportunity', '/about-us/housing-for-all', :id => 'eho' %>
+      </p>
+    </div>
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <%= include_javascripts :redesign %>
+</body>
+</html>
