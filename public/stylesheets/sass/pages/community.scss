@@ -441,7 +441,7 @@
 
   background-color: $blue-light;
   margin-bottom: 35px;
-  padding: 25px 10px;
+  padding: 25px 10px 0;
 }
 
 .cty-recent-heading {
@@ -457,8 +457,23 @@
   float: left;
   font-size: 11px;
   line-height: 18px;
+  padding-bottom: 25px;
   text-align: center;
   width: 147px;
+
+  a {
+    display: block;
+
+    &:hover {
+      color: #000000;
+      text-decoration: none;
+
+      strong {
+        color: $blue;
+        text-decoration: underline;
+      }
+    }
+  }
 
   strong {
     font-size: 13px;

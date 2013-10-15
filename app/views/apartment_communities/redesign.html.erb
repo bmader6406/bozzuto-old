@@ -355,25 +355,32 @@
           </div>
         </div>
 
-        <!-- Recently Viewed Communities -->
-        <div class="cty-recent">
-          <h4 class="cty-recent-heading">
-            Recently Viewed Communities
-          </h4>
+        <% if @recently_viewed.any? -%>
+          <!-- Recently Viewed Communities -->
+          <div class="cty-recent">
+            <h4 class="cty-recent-heading">
+              Recently Viewed Communities
+            </h4>
 
-          <% 4.times do %>
-            <div class="cty-recent-item">
-              <% link_to '#' do %>
-                <%= image_tag 'http://placekitten.com/55/55' %>
+            <% @recently_viewed.in_groups_of(4, false) do |communities| %>
+              <div class="grid-row">
+                <% communities.each do |community| %>
+                  <div class="cty-recent-item">
+                    <% link_to community do %>
+                      <%= image_tag 'http://placekitten.com/55/55' %>
 
-                <strong>Flats at Atlas</strong><br />
-              <% end %>
-              1600 Maryland Avenue<br />
-              Washington, DC<br />
-              (888) 821-6654
-            </div>
-          <% end %>
-        </div>
+                      <strong><%= community.title %></strong><br />
+
+                      <%= community.address('<br />').html_safe %>
+                      <br />
+                      <%= format_phone_number(community.phone_number) %>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
 
         <!-- Bottom Text -->
         <div class="cty-footer">
