@@ -14,7 +14,9 @@
         <% plans.each do |plan| %>
           <li class="cty-floor-plan">
             <% if plan.actual_image.present? %>
-              <%= image_tag plan.actual_thumb, :width => 115 %>
+              <% link_to plan.actual_image, :class => 'cty-floor-plan-image-link' do %>
+                <%= image_tag plan.actual_thumb, :width => 115 %>
+              <% end %>
             <% end %>
 
             <h5><%= plan.name %></h5>

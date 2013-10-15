@@ -2,6 +2,9 @@ BOZ.apartment_communities = {
   redesign: function() {
     this.showHideSections();
 
+    this.floorPlanImageOverlay();
+
+    // Split Features & Amenities into two lists
     $('.cty-features-content ul').makeacolumnlists({ cols: 2 });
   },
 
@@ -55,6 +58,31 @@ BOZ.apartment_communities = {
         $toggle.removeClass(showToggleClass);
         $toggle.addClass(hideToggleClass);
       }
+    });
+  },
+
+  floorPlanImageOverlay: function() {
+    $('.cty-floor-plan').each(function() {
+      var $floorPlan = $(this),
+          $link      = $floorPlan.find('.cty-floor-plan-image-link');
+
+      $link.bind('click', function(e) {
+        e.preventDefault();
+
+        var url    = $(this).attr('href'),
+            $image = $('<img src="' + url + '" class="floor-plan-overlay" />');
+
+        $image.one('load', function() {
+          $image.lightbox().bind('click', function() {
+            $image.trigger('close');
+          });
+        }).each(function() {
+          // make sure cached images fire the load event
+          if (this.complete) {
+            $(this).load();
+          }
+        });
+      });
     });
   }
 };

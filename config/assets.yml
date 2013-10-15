@@ -26,6 +26,9 @@ javascripts:
     - public/javascripts/analytics.js
   redesign:
     - public/javascripts/vendor/jquery.makecolumnlists.js
+    - public/javascripts/redesign/vendor/jquery.lightbox_me.js
+    - public/javascripts/redesign/vendor/jquery.browser.js
+    - public/javascripts/redesign/plugins/jquery.lightbox.js
     - public/javascripts/redesign/application.js
     - public/javascripts/redesign/pages/apartment_communities.js
 
