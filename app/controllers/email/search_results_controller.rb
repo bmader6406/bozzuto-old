@@ -1,7 +1,7 @@
 class Email::SearchResultsController < ApplicationController
   def create
     @email = RecurringEmail.new(params[:recurring_email])
-    @email.recurring = true
+    @email.recurring = false
 
     if @email.save
       save_bozzuto_buzz

@@ -17,8 +17,8 @@ class Email::SearchResultsControllerTest < ActionController::TestCase
 
       should_not_change('the number of buzzes') { Buzz.count }
 
-      should 'create a recurring email' do
-        assert assigns(:email).recurring?
+      should 'create a non-recurring email' do
+        assert !assigns(:email).recurring?
       end
 
       should 'save the recently viewed property ids' do
