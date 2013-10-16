@@ -103,3 +103,25 @@
     </div>
   </div>
 <% end %>
+
+
+<!-- Send to Phone modal -->
+<div class="cty-send-to-phone-modal modal modal-padding">
+  <h4 class="hdr-tertiary">Send To My Phone</h4>
+
+  <% form_tag [@community, :sms_message], :class => (flash[:send_to_phone_errors] ? 'errors' : nil) do %>
+    <p class="in-container">
+      <label for="phone_number" class="in-label">
+        Enter your phone number <%= @community.short_name %> info
+      </label>
+
+      <%= text_field_tag 'phone_number', nil, :class => 'in-text' %>
+    </p>
+
+    <p class="in-submit">
+      <button type="submit" class="btn btn-small btn-gray">Send</button>
+
+      <em>Standard messaging rates apply</em>
+    </p>
+  <% end %>
+</div>

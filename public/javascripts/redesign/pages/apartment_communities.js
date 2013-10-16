@@ -2,7 +2,9 @@ BOZ.apartment_communities = {
   redesign: function() {
     this.showHideSections();
 
-    this.floorPlanImageOverlay();
+    this.floorPlanImageModal();
+
+    this.sendToPhoneModal();
 
     // Split Features & Amenities into two lists
     $('.cty-features-content ul').makeacolumnlists({ cols: 2 });
@@ -61,7 +63,7 @@ BOZ.apartment_communities = {
     });
   },
 
-  floorPlanImageOverlay: function() {
+  floorPlanImageModal: function() {
     $('.cty-floor-plan').each(function() {
       var $floorPlan = $(this),
           $link      = $floorPlan.find('.cty-floor-plan-image-link');
@@ -73,7 +75,7 @@ BOZ.apartment_communities = {
             $image = $('<img src="' + url + '" class="floor-plan-overlay" />');
 
         $image.one('load', function() {
-          $image.lightbox().bind('click', function() {
+          $image.lightbox({ destroyOnClose: true }).bind('click', function() {
             $image.trigger('close');
           });
         }).each(function() {
@@ -83,6 +85,16 @@ BOZ.apartment_communities = {
           }
         });
       });
+    });
+  },
+
+  sendToPhoneModal: function() {
+    $('.cty-page-action-phone').bind('click', function(e) {
+      e.preventDefault();
+
+      var $modal = $('.cty-send-to-phone-modal');
+
+      $modal.lightbox();
     });
   }
 };

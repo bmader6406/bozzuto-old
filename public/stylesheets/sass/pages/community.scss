@@ -630,3 +630,28 @@
     font-weight: bold;
   }
 }
+
+.cty-send-to-phone-modal {
+  background-color: $white;
+  width: 400px;
+
+  .in-container {
+    padding: 0 12px;
+    margin-bottom: 10px;
+
+    label {
+      line-height: 2;
+    }
+  }
+
+  .in-submit {
+    text-align: center;
+
+    em {
+      color: $gray-medium-dark;
+      display: block;
+      font-size: 11px;
+      padding-top: 10px;
+    }
+  }
+}

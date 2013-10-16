@@ -1,5 +1,5 @@
 * {
-	@include box-sizing(border-box);
+  @include box-sizing(border-box);
 }
 
 body {
@@ -17,4 +17,12 @@ a {
 
 strong {
   font-weight: bold;
+}
+
+.modal {
+  display: none;
+}
+
+.modal-padding {
+  padding: 35px;
 }
