@@ -557,11 +557,16 @@
 }
 
 .cty-map {
-  border: 1px solid $gray-lighter;
+  border: 1px solid $gray-light;
   margin-bottom: 5px;
 
-  img {
-    display: block;
+  #map-canvas {
+    height: 240px;
+    width: 288px;
+
+    * {
+      box-sizing: content-box;
+    }
   }
 }
 

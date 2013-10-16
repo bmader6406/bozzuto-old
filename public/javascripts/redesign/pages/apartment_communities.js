@@ -6,6 +6,8 @@ BOZ.apartment_communities = {
 
     this.sendToPhoneModal();
 
+    this.map();
+
     // Split Features & Amenities into two lists
     $('.cty-features-content ul').makeacolumnlists({ cols: 2 });
   },
@@ -96,5 +98,15 @@ BOZ.apartment_communities = {
 
       $modal.lightbox();
     });
+  },
+
+  map: function() {
+    var $mapCanvas = $('#map-canvas');
+
+    if ($mapCanvas.length > 0) {
+      $mapCanvas.jMapping({
+        default_zoom_level: 14
+      });
+    }
   }
 };
