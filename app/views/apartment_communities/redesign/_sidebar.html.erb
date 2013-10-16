@@ -41,7 +41,7 @@
   </h4>
 
   <div class="cty-sidebar-content">
-    <form>
+    <% form_tag [@community, :email_listing] do %>
       <p class="in-container">
         <%= label_tag :email, 'Email', :class => 'in-label' %>
         <%= text_field_tag :email, nil, :class => 'in-text' %>
@@ -54,7 +54,7 @@
           <%= icon('b') %> Privacy Policy
         <% end %>
       </p>
-    </form>
+    <% end %>
   </div>
 </div>
 
