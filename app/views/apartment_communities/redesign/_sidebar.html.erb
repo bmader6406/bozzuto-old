@@ -34,7 +34,7 @@
   <div class="cty-map-actions">
     <div class="grid-row">
       <div class="left-col">
-        <%= link_to 'Larger Map/Directions', '#' %>
+        <%= link_to 'Larger Map/Directions', directions_url(@community.address), :rel => 'external' %>
         <%= link_to 'Walk Score&trade;'.html_safe, '#', :class => 'cty-walkscore-action' %>
       </div>
 
