@@ -13,7 +13,7 @@
       <h1 class="h-logo"><%= link_to 'Bozzuto', '/' %></h1>
 
       <div class="h-search">
-        <form>
+        <form action="/search">
           <%= text_field_tag :q, params[:q], :class => 'in-text' %>
           <button type="submit">
             <i class="ico" aria-hidden="true">p</i> Submit
