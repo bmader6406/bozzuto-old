@@ -6,6 +6,8 @@ BOZ.apartment_communities = {
 
     this.sendToPhoneModal();
 
+    this.walkscoreModal();
+
     this.map();
 
     // Split Features & Amenities into two lists
@@ -94,9 +96,17 @@ BOZ.apartment_communities = {
     $('.cty-page-action-phone').bind('click', function(e) {
       e.preventDefault();
 
-      var $modal = $('.cty-send-to-phone-modal');
+      $('.cty-send-to-phone-modal').lightbox();
+    });
+  },
 
-      $modal.lightbox();
+  walkscoreModal: function() {
+    $('.cty-walkscore-action').bind('click', function(e) {
+      e.preventDefault();
+
+      var script = '<script type="text/javascript" src="http://www.walkscore.com/tile/show-walkscore-tile.php"></script>';
+
+      $('.cty-walkscore-modal').append(script).lightbox();
     });
   },
 

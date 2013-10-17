@@ -35,7 +35,7 @@
     <div class="grid-row">
       <div class="left-col">
         <%= link_to 'Larger Map/Directions', '#' %>
-        <%= link_to 'Walk Score&trade;'.html_safe, '#' %>
+        <%= link_to 'Walk Score&trade;'.html_safe, '#', :class => 'cty-walkscore-action' %>
       </div>
 
       <div class="right-col">
@@ -135,4 +135,10 @@
       <em>Standard messaging rates apply</em>
     </p>
   <% end %>
+</div>
+
+
+<!-- Walkscore modal -->
+<div class="cty-walkscore-modal modal">
+  <%= walkscore_map_script(@community, :width => 500, :height => 400) %>
 </div>
