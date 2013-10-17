@@ -35,6 +35,7 @@ javascripts:
     - public/javascripts/redesign/plugins/jquery.lightbox.js
     - public/javascripts/redesign/application.js
     - public/javascripts/redesign/pages/apartment_communities.js
+    - public/javascripts/yelp-map.js
 
 stylesheets:
   bozzuto:

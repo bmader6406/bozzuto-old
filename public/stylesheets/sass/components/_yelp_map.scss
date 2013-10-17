@@ -1,0 +1,114 @@
+#large-map-container {
+  background: #fff;
+  display: none;
+  height: 610px;
+  position: relative;
+  width: 850px;
+}
+
+#large-map {
+  height: 420px;
+  width: 850px;
+
+  * {
+    box-sizing: content-box;
+  }
+}
+
+#large-map-controls {
+  background: #fff;
+  height: 190px;
+  overflow: hidden;
+  padding: 20px 30px 10px 30px;
+  position: relative;
+  width: 850px;
+
+  p.select-links {
+    font-size: 13px;
+    left: 228px;
+    position: absolute;
+    top: 21px;
+  }
+
+  p.select-links {
+    a {
+      color: $blue;
+      display: inline;
+      padding-left: 10px;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  h3 {
+    font-size: 16px;
+    line-height: 1;
+    margin-bottom: 1em;
+  }
+
+  label {
+    display: block;
+    cursor: pointer;
+    float: left;
+    font-size: 12px;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 10px 0 0;
+    width: 195px;
+  }
+
+  input {
+    background: none;
+    border: none;
+    height: 28px;
+    margin: 0 2px;
+    padding: 0;
+    vertical-align: middle;
+    width: auto;
+  }
+
+  label {
+    img {
+      vertical-align: middle;
+    }
+  }
+}
+
+#large-map-yelp-logo {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+}
+
+
+#large-map {
+  h4 {
+    font-size: 13px;
+    margin-bottom: 0.5em;
+
+    a {
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .info-photo {
+    float: left;
+    width: 50px;
+  }
+
+  .info-content {
+    float: left;
+  }
+
+  p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+}

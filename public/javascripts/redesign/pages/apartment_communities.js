@@ -1,4 +1,4 @@
-BOZ.apartment_communities = {
+bozzuto.apartment_communities = {
   redesign: function() {
     this.showHideSections();
 

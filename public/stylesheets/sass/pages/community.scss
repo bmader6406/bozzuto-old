@@ -2,6 +2,7 @@
 
 @import "../variables/*";
 @import "../mixins/*"; //*/
+@import "../components/yelp_map";
 
 .main-content {
   @include clearfix;

@@ -1,22 +1,22 @@
-BOZ = window.BOZ || {};
+bozzuto = window.bozzuto || {};
 
-BOZ.init = function() {
+bozzuto.init = function() {
   var body = document.body;
 
-  var controller = BOZ.controller = body.getAttribute('data-controller').toLowerCase();
-  var action     = BOZ.action     = body.getAttribute('data-action').toLowerCase();
+  var controller = bozzuto.controller = body.getAttribute('data-controller').toLowerCase();
+  var action     = bozzuto.action     = body.getAttribute('data-action').toLowerCase();
 
-  BOZ.common.init();
+  bozzuto.common.init();
 
-  if (controller !== "" && BOZ[controller] && typeof BOZ[controller][action] == "function" ) {
-    BOZ[controller][action]();
+  if (controller !== "" && bozzuto[controller] && typeof bozzuto[controller][action] == "function" ) {
+    bozzuto[controller][action]();
   }
 }
 
-BOZ.common = {
+bozzuto.common = {
   init: function() {
     $('[rel="external"]').attr('target', '_blank');
   }
 }
 
-$(BOZ.init);
+$(bozzuto.init);
