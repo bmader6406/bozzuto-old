@@ -106,12 +106,22 @@ bozzuto.apartment_communities = {
   },
 
   walkscoreModal: function() {
+    var walkscoreInitialized = false;
+
     $('.cty-walkscore-action').bind('click', function(e) {
       e.preventDefault();
 
-      var script = '<script type="text/javascript" src="http://www.walkscore.com/tile/show-walkscore-tile.php"></script>';
+      var $modal = $('.cty-walkscore-modal');
 
-      $('.cty-walkscore-modal').append(script).lightbox();
+      if (!walkscoreInitialized) {
+        var script = '<script type="text/javascript" src="http://www.walkscore.com/tile/show-walkscore-tile.php"></script>';
+
+        $modal.append(script);
+
+        walkscoreInitialized = true;
+      }
+
+      $modal.lightbox();
     });
   },
 
