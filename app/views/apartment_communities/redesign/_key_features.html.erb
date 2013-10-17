@@ -33,6 +33,7 @@
   </div>
 </div>
 
+<% black_hole do %>
 <!-- Page Links -->
 <p class="cty-page-links">
   <%= link_to('Apartments Overview', community, :class => 'current') %>
@@ -49,3 +50,4 @@
     | <%= link_to 'Request Information', apartment_community_contact_path(community) %>
   <% end %>
 </p>
+<% end %>
