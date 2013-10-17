@@ -524,7 +524,7 @@
     display: block;
     float: left;
     font-size: 11px;
-    margin: -5px 10px 0 0;
+    margin-right: 10px;
 
     .ico {
       display: block;
@@ -554,6 +554,10 @@
       text-decoration: none;
     }
   }
+}
+
+.cty-social-actions {
+  float: right;
 }
 
 .cty-map {
