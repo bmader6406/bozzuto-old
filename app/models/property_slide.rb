@@ -7,7 +7,11 @@ class PropertySlide < ActiveRecord::Base
 
   has_attached_file :image,
     :url             => '/system/:class/:id/:style.:extension',
-    :styles          => { :slide => '870x375#', :mobile_thumb => '280x85#' },
+    :styles          => {
+      :slide        => '870x375#',
+      :mobile_thumb => '280x85#',
+      :thumb        => '55x55#'
+    },
     :default_style   => :slide,
     :convert_options => { :all => '-quality 80 -strip' }
 

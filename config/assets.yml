@@ -16,6 +16,7 @@ javascripts:
     - public/javascripts/vendor/jmapping/jquery.jmapping.js
     - public/javascripts/vendor/jquery.validate.js
     - public/javascripts/vendor/jquery.makecolumnlists.js
+    - public/javascripts/plugins/jquery.videoLightbox.js
     - public/javascripts/bozzuto.js
     - public/javascripts/analytics.js
     - public/javascripts/yelp-map.js
@@ -32,6 +33,7 @@ javascripts:
     - public/javascripts/redesign/vendor/jquery.makecolumnlists.js
     - public/javascripts/redesign/vendor/jquery.lightbox_me.js
     - public/javascripts/redesign/vendor/jquery.browser.js
+    - public/javascripts/redesign/plugins/jquery.videoLightbox.js
     - public/javascripts/redesign/plugins/jquery.lightbox.js
     - public/javascripts/redesign/application.js
     - public/javascripts/redesign/pages/apartment_communities.js

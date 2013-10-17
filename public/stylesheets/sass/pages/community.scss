@@ -34,9 +34,22 @@
     font-size: 60px;
     left: 45px;
     position: absolute;
-    text-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
     text-transform: uppercase;
     top: 45px;
+    z-index: 1;
+  }
+
+  .cty-slideshow-images {
+    height: 375px;
+    position: relative;
+    width: 870px;
+
+    img {
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
   }
 
   .cty-slideshow-track {

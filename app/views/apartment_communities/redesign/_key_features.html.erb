@@ -1,25 +1,25 @@
 <!-- Key Features -->
 <div class="cty-features">
   <div class="grid-row">
-    <div class="grid-10">
+    <div class="grid-9 grid-offset-r-1">
       <h4 class="cty-features-headline">Key Features</h4>
 
       <%= property_bullets %>
     </div>
 
-    <div class="grid-6">
-      <h4 class="cty-features-headline">Watch the Videos</h4>
+    <% @community.videos.if_present? do |videos| %>
+      <div class="grid-6">
+        <h4 class="cty-features-headline">Watch the Videos</h4>
 
-      <div class="cty-features-videos">
-        <% link_to '#' do %>
-          <%= image_tag 'http://placekitten.com/g/55/55' %>
-        <% end %>
-
-        <% link_to '#' do %>
-          <%= image_tag 'http://placekitten.com/g/55/55' %>
-        <% end %>
+        <div class="cty-features-videos">
+          <% videos.take(2).each do |video| %>
+            <% link_to video.url, :class => 'video' do %>
+              <%= image_tag video.image.url(:thumb) %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
 
     <% community.property_features.if_present? do |features| %>
       <div class="grid-4">

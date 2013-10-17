@@ -20,4 +20,8 @@
   .grid-offset-#{$i} {
     margin-left: 5% * $i;
   }
+
+  .grid-offset-r-#{$i} {
+    margin-right: 5% * $i;
+  }
 }

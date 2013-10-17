@@ -10,8 +10,13 @@ bozzuto.apartment_communities = {
 
     this.map();
 
+    this.slideshow();
+
     // Split Features & Amenities into two lists
     $('.cty-features-content ul').makeacolumnlists({ cols: 2 });
+
+    // videos
+    $('.video').videoLightbox();
   },
 
   showHideSections: function() {
@@ -118,5 +123,66 @@ bozzuto.apartment_communities = {
         default_zoom_level: 14
       });
     }
+  },
+
+  slideshow: function() {
+    var $slideshow   = $('.cty-slideshow'),
+        $thumbs      = $slideshow.find('.cty-slideshow-thumbs-inner a'),
+        $images      = $slideshow.find('.cty-slideshow-images img'),
+        $prevLink    = $slideshow.find('.cty-slideshow-prev'),
+        $nextLink    = $slideshow.find('.cty-slideshow-next'),
+        currentSlide = 0,
+        totalSlides  = $images.size();
+
+        console.log($images);
+
+    // Thumbnail link
+    $thumbs.bind('click', function(e) {
+      e.preventDefault();
+
+      var index = $(this).index();
+
+      $slideshow.trigger('slideshow:showslide', index);
+    });
+
+    // Previous slide link
+    $prevLink.bind('click', function(e) {
+      e.preventDefault();
+
+      $slideshow.trigger('slideshow:prevslide');
+    });
+
+    // Next slide link
+    $nextLink.bind('click', function(e) {
+      e.preventDefault();
+
+      $slideshow.trigger('slideshow:nextslide');
+    });
+
+    // Slideshow event bindings
+    $slideshow.bind({
+      'slideshow:showslide': function(e, newSlide) {
+        if (newSlide == currentSlide) {
+          return;
+        }
+
+        $images.eq(currentSlide).fadeOut();
+        $images.eq(newSlide).fadeIn();
+
+        currentSlide = newSlide;
+      },
+
+      'slideshow:prevslide': function(e) {
+        var newSlide = currentSlide == 0 ? (totalSlides - 1) : currentSlide - 1;
+
+        $slideshow.trigger('slideshow:showslide', newSlide);
+      },
+
+      'slideshow:nextslide': function(e) {
+        var newSlide = currentSlide == (totalSlides - 1) ? 0 : currentSlide + 1;
+
+        $slideshow.trigger('slideshow:showslide', newSlide);
+      }
+    });
   }
 };
