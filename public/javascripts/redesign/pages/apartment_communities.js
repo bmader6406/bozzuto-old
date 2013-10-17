@@ -144,8 +144,6 @@ bozzuto.apartment_communities = {
         currentSlide = 0,
         totalSlides  = $images.size();
 
-        console.log($images);
-
     // Thumbnail link
     $thumbs.bind('click', function(e) {
       e.preventDefault();
