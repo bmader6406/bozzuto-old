@@ -1,0 +1,3920 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PhysicalProperty xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MITS="http://my-company.com/namespace">
+		<Management id="8131">
+				<Name>Bozzuto Management Company</Name>
+				<Address>
+						<Address1>7850 Walker Drive</Address1>
+						<City>Greenbelt</City>
+						<State>MD</State>
+						<Province>MD</Province>
+						<Zip>20770</Zip>
+						<Country>USA</Country>
+				</Address>
+				<Phone>
+						<Number />
+				</Phone>
+				<Fax>
+						<Number />
+				</Fax>
+				<WebSite>http://www.bozzuto.com</WebSite>
+		</Management>
+		<Property managementID="8131">
+				<Identification type="Apartment" rentalType="market rate">
+						<PrimaryID>p0117760</PrimaryID>
+						<SecondaryID>p0117760</SecondaryID>
+						<MarketingName>Madox</MarketingName>
+						<OwnerLegalName>ownerName</OwnerLegalName>
+						<Address>
+								<Address1>198 Van Vorst Street</Address1>
+								<Address2> </Address2>
+								<City>Jersey City</City>
+								<State>NJ</State>
+								<Zip>07302</Zip>
+								<Country />
+								<PO_Box />
+								<MailingAddress>198 Van Vorst Street,Jersey City,NJ,07302</MailingAddress>
+								<ShippingAddress>198 Van Vorst Street,Jersey City,NJ,07302</ShippingAddress>
+						</Address>
+						<Latitude>40.714189</Latitude>
+						<Longitude>-74.041356</Longitude>
+						<WebSite>www.madoxapts.com</WebSite>
+						<Phone>
+								<Number>(888) 690-4561</Number>
+						</Phone>
+						<Fax>
+								<Number />
+						</Fax>
+						<Email>madox@bozzuto.com</Email>
+				</Identification>
+				<Information>
+						<StructureType>unspecified</StructureType>
+						<UnitCount>0</UnitCount>
+						<OfficeHour>
+								<OpenTime>09:00:00 AM</OpenTime>
+								<CloseTime>06:00:00 PM</CloseTime>
+								<Day>M</Day>
+						</OfficeHour>
+						<OfficeHour>
+								<OpenTime>09:00:00 AM</OpenTime>
+								<CloseTime>06:00:00 PM</CloseTime>
+								<Day>T</Day>
+						</OfficeHour>
+						<OfficeHour>
+								<OpenTime>09:00:00 AM</OpenTime>
+								<CloseTime>06:00:00 PM</CloseTime>
+								<Day>W</Day>
+						</OfficeHour>
+						<OfficeHour>
+								<OpenTime>09:00:00 AM</OpenTime>
+								<CloseTime>06:00:00 PM</CloseTime>
+								<Day>Th</Day>
+						</OfficeHour>
+						<OfficeHour>
+								<OpenTime>08:00:00 AM</OpenTime>
+								<CloseTime>05:00:00 PM</CloseTime>
+								<Day>F</Day>
+						</OfficeHour>
+						<OfficeHour>
+								<OpenTime>10:00:00 AM</OpenTime>
+								<CloseTime>05:00:00 PM</CloseTime>
+								<Day>Sa</Day>
+						</OfficeHour>
+						<LongDescription>Introducing Madox, a brand new LEED certified apartment&amp;nbsp;community in Jersey City, NJ -- just 15 minutes from downtown Manhattan. Please continue to check the page for property updates.</LongDescription>
+				</Information>
+				<Policy>
+						<Pet type="Cat" allowed="true">
+								<Comment />
+								<MaxCount>0</MaxCount>
+								<Deposit>0.00</Deposit>
+								<Fee>500.00</Fee>
+								<Rent>50.00</Rent>
+								<Weight>0.00</Weight>
+								<FeeRange min="500.00" max="500.00" />
+								<Restrictions />
+								<PetCare>0</PetCare>
+						</Pet>
+						<Pet type="Dog" allowed="true">
+								<Comment />
+								<MaxCount>0</MaxCount>
+								<Deposit>0.00</Deposit>
+								<Fee>500.00</Fee>
+								<Rent>50.00</Rent>
+								<Weight>0.00</Weight>
+								<FeeRange min="500.00" max="500.00" />
+								<Restrictions>Breed Restrictions Apply.</Restrictions>
+								<PetCare>0</PetCare>
+						</Pet>
+				</Policy>
+				<Floorplan id="858901">
+						<Name>A1-2</Name>
+						<Comment>1 Bed/1 Bath</Comment>
+						<UnitCount>1</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="735" max="735" />
+						<MarketRent min="2589.00" max="3216.00" />
+						<EffectiveRent min="2589.00" max="3216.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858902">
+						<Name>B3-2</Name>
+						<Comment>2 Bed/2 Bath</Comment>
+						<UnitCount>4</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1057" max="1057" />
+						<MarketRent min="3226.00" max="3800.00" />
+						<EffectiveRent min="3226.00" max="3800.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858903">
+						<Name>A0</Name>
+						<Comment>Studio</Comment>
+						<UnitCount>3</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>0</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="480" max="480" />
+						<MarketRent min="2479.00" max="3079.00" />
+						<EffectiveRent min="2479.00" max="3079.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858904">
+						<Name>A1-1</Name>
+						<Comment>1 Bed/1 Bath</Comment>
+						<UnitCount>5</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="693" max="693" />
+						<MarketRent min="2478.00" max="3035.00" />
+						<EffectiveRent min="2478.00" max="3035.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858905">
+						<Name>A2</Name>
+						<Comment>1 Bed/1 Bath</Comment>
+						<UnitCount>3</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="709" max="709" />
+						<MarketRent min="2401.00" max="2797.00" />
+						<EffectiveRent min="2401.00" max="2797.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858906">
+						<Name>A3-1</Name>
+						<Comment>1 Bed/1 Bath</Comment>
+						<UnitCount>7</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="659" max="659" />
+						<MarketRent min="2366.00" max="2860.00" />
+						<EffectiveRent min="2366.00" max="2860.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858907">
+						<Name>A3-2</Name>
+						<Comment>1 Bed/1 Bath</Comment>
+						<UnitCount>15</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="665" max="665" />
+						<MarketRent min="2781.00" max="3930.00" />
+						<EffectiveRent min="2781.00" max="3930.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858908">
+						<Name>A3-3</Name>
+						<Comment>1 Bed/1 Bath</Comment>
+						<UnitCount>4</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="689" max="689" />
+						<MarketRent min="2453.00" max="3009.00" />
+						<EffectiveRent min="2453.00" max="3009.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858909">
+						<Name>A4</Name>
+						<Comment>1 Bed/1 Bath</Comment>
+						<UnitCount>5</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="818" max="818" />
+						<MarketRent min="2655.00" max="2655.00" />
+						<EffectiveRent min="2655.00" max="2655.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858910">
+						<Name>A5</Name>
+						<Comment>1 Bed/1 Bath</Comment>
+						<UnitCount>6</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="611" max="611" />
+						<MarketRent min="2265.00" max="3269.00" />
+						<EffectiveRent min="2265.00" max="3269.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858911">
+						<Name>A6</Name>
+						<Comment>1 Bed/1 Bath</Comment>
+						<UnitCount>1</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="801" max="801" />
+						<MarketRent min="3688.00" max="5001.00" />
+						<EffectiveRent min="3688.00" max="5001.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858912">
+						<Name>A7</Name>
+						<Comment>1 Bed/1 Bath</Comment>
+						<UnitCount>1</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="729" max="729" />
+						<MarketRent min="2388.00" max="3241.00" />
+						<EffectiveRent min="2388.00" max="3241.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858913">
+						<Name>A8</Name>
+						<Comment>1 Bed/1 Bath</Comment>
+						<UnitCount>1</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="660" max="660" />
+						<MarketRent min="2340.00" max="2808.00" />
+						<EffectiveRent min="2340.00" max="2808.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858914">
+						<Name>A9</Name>
+						<Comment>1 Bed/1 Bath</Comment>
+						<UnitCount>1</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="854" max="854" />
+						<MarketRent min="2700.00" max="3141.00" />
+						<EffectiveRent min="2700.00" max="3141.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858915">
+						<Name>A10</Name>
+						<Comment>1 Bed/1 Bath Den</Comment>
+						<UnitCount>1</UnitCount>
+						<UnitsAvailable>0</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1018" max="1018" />
+						<MarketRent min="2900.00" max="2900.00" />
+						<EffectiveRent min="2900.00" max="2900.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858916">
+						<Name>B1-1</Name>
+						<Comment>2 Bed/2 Bath Den</Comment>
+						<UnitCount>10</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1093" max="1093" />
+						<MarketRent min="3732.00" max="4637.00" />
+						<EffectiveRent min="3732.00" max="4637.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858917">
+						<Name>B1-2</Name>
+						<Comment>2 Bed/2 Bath Den</Comment>
+						<UnitCount>1</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1118" max="1118" />
+						<MarketRent min="3390.00" max="3390.00" />
+						<EffectiveRent min="3390.00" max="3390.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858918">
+						<Name>B10</Name>
+						<Comment>2 Bed/2 Bath Den</Comment>
+						<UnitCount>1</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1312" max="1312" />
+						<MarketRent min="4582.00" max="5312.00" />
+						<EffectiveRent min="4582.00" max="5312.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858919">
+						<Name>B11</Name>
+						<Comment>2 Bed/2 Bath</Comment>
+						<UnitCount>1</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1016" max="1016" />
+						<MarketRent min="3730.00" max="3730.00" />
+						<EffectiveRent min="3730.00" max="3730.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858920">
+						<Name>B12</Name>
+						<Comment>2 Bed/2 Bath</Comment>
+						<UnitCount>1</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1305" max="1305" />
+						<MarketRent min="4321.00" max="5559.00" />
+						<EffectiveRent min="4321.00" max="5559.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858921">
+						<Name>B13</Name>
+						<Comment>2 Bed/2 Bath</Comment>
+						<UnitCount>1</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1385" max="1385" />
+						<MarketRent min="4482.00" max="5764.00" />
+						<EffectiveRent min="4482.00" max="5764.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858922">
+						<Name>B14</Name>
+						<Comment>2 Bed/2 Bath</Comment>
+						<UnitCount>2</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1185" max="1185" />
+						<MarketRent min="4175.00" max="4175.00" />
+						<EffectiveRent min="4175.00" max="4175.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858923">
+						<Name>B15</Name>
+						<Comment>2 Bed/2 Bath</Comment>
+						<UnitCount>1</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1066" max="1066" />
+						<MarketRent min="3925.00" max="3925.00" />
+						<EffectiveRent min="3925.00" max="3925.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858924">
+						<Name>B2</Name>
+						<Comment>2 Bed/2 Bath</Comment>
+						<UnitCount>5</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1073" max="1073" />
+						<MarketRent min="3165.00" max="3648.00" />
+						<EffectiveRent min="3165.00" max="3648.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858925">
+						<Name>B3-1</Name>
+						<Comment>2 Bed/2 Bath</Comment>
+						<UnitCount>2</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1020" max="1020" />
+						<MarketRent min="3556.00" max="4024.00" />
+						<EffectiveRent min="3556.00" max="4024.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858926">
+						<Name>B4-1</Name>
+						<Comment>2 Bed/2 Bath</Comment>
+						<UnitCount>6</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1123" max="1123" />
+						<MarketRent min="3261.00" max="3711.00" />
+						<EffectiveRent min="3261.00" max="3711.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858927">
+						<Name>B4-2</Name>
+						<Comment>2 Bed/2 Bath</Comment>
+						<UnitCount>6</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1182" max="1182" />
+						<MarketRent min="3261.00" max="3691.00" />
+						<EffectiveRent min="3261.00" max="3691.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858928">
+						<Name>B5</Name>
+						<Comment>2 Bed/2 Bath</Comment>
+						<UnitCount>10</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1159" max="1159" />
+						<MarketRent min="3785.00" max="4731.00" />
+						<EffectiveRent min="3785.00" max="4731.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858929">
+						<Name>B6</Name>
+						<Comment>2 Bed/2 Bath</Comment>
+						<UnitCount>8</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1007" max="1007" />
+						<MarketRent min="3608.00" max="4517.00" />
+						<EffectiveRent min="3608.00" max="4517.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858930">
+						<Name>B7-1</Name>
+						<Comment>2 Bed/2 Bath Den</Comment>
+						<UnitCount>4</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1206" max="1206" />
+						<MarketRent min="3400.00" max="3430.00" />
+						<EffectiveRent min="3400.00" max="3430.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858931">
+						<Name>B7-2</Name>
+						<Comment>2 Bed/2 Bath Den</Comment>
+						<UnitCount>1</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1230" max="1230" />
+						<MarketRent min="3874.00" max="5170.00" />
+						<EffectiveRent min="3874.00" max="5170.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858932">
+						<Name>B8-1</Name>
+						<Comment>2 Bed/2 Bath</Comment>
+						<UnitCount>1</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="978" max="978" />
+						<MarketRent min="3400.00" max="3400.00" />
+						<EffectiveRent min="3400.00" max="3400.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858933">
+						<Name>B8-2</Name>
+						<Comment>2 Bed/2 Bath</Comment>
+						<UnitCount>5</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1008" max="1008" />
+						<MarketRent min="3524.00" max="4288.00" />
+						<EffectiveRent min="3524.00" max="4288.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="858934">
+						<Name>B9</Name>
+						<Comment>1 Bed/1 Bath Den</Comment>
+						<UnitCount>7</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="877" max="877" />
+						<MarketRent min="3473.00" max="4390.00" />
+						<EffectiveRent min="3473.00" max="4390.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<ILS_Unit>
+						<UnitID>521</UnitID>
+						<UnitType>297-3782</UnitType>
+						<UnitBedrooms>0</UnitBedrooms>
+						<UnitBathrooms>1.00</UnitBathrooms>
+						<MinSquareFeet>480.00</MinSquareFeet>
+						<MaxSquareFeet>480.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2479.00</UnitRent>
+						<MarketRent>1865.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
+						<FloorplanID>858903</FloorplanID>
+						<FloorplanName>A0</FloorplanName>
+						<PropertyPrimaryID>111537</PropertyPrimaryID>
+						<ExtId>49734</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>816</UnitID>
+						<UnitType>297-3752</UnitType>
+						<UnitBedrooms>1</UnitBedrooms>
+						<UnitBathrooms>1.00</UnitBathrooms>
+						<MinSquareFeet>665.00</MinSquareFeet>
+						<MaxSquareFeet>665.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2781.00</UnitRent>
+						<MarketRent>2550.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Vacant Unrented Not Ready</UnitLeasedStatusDescription>
+						<FloorplanID>858907</FloorplanID>
+						<FloorplanName>A3-2</FloorplanName>
+						<PropertyPrimaryID>111537</PropertyPrimaryID>
+						<ExtId>49793</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>806</UnitID>
+						<UnitType>297-3758</UnitType>
+						<UnitBedrooms>1</UnitBedrooms>
+						<UnitBathrooms>1.00</UnitBathrooms>
+						<MinSquareFeet>801.00</MinSquareFeet>
+						<MaxSquareFeet>801.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>3688.00</UnitRent>
+						<MarketRent>3300.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
+						<FloorplanID>858911</FloorplanID>
+						<FloorplanName>A6</FloorplanName>
+						<PropertyPrimaryID>111537</PropertyPrimaryID>
+						<ExtId>49785</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>721</UnitID>
+						<UnitType>297-3776</UnitType>
+						<UnitBedrooms>2</UnitBedrooms>
+						<UnitBathrooms>2.00</UnitBathrooms>
+						<MinSquareFeet>1385.00</MinSquareFeet>
+						<MaxSquareFeet>1385.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>4482.00</UnitRent>
+						<MarketRent>5580.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Vacant Unrented Not Ready</UnitLeasedStatusDescription>
+						<FloorplanID>858921</FloorplanID>
+						<FloorplanName>B13</FloorplanName>
+						<PropertyPrimaryID>111537</PropertyPrimaryID>
+						<ExtId>49779</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>321</UnitID>
+						<UnitType>297-3764</UnitType>
+						<UnitBedrooms>2</UnitBedrooms>
+						<UnitBathrooms>2.00</UnitBathrooms>
+						<MinSquareFeet>1007.00</MinSquareFeet>
+						<MaxSquareFeet>1007.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>3608.00</UnitRent>
+						<MarketRent>3200.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Vacant Unrented Not Ready</UnitLeasedStatusDescription>
+						<FloorplanID>858929</FloorplanID>
+						<FloorplanName>B6</FloorplanName>
+						<PropertyPrimaryID>111537</PropertyPrimaryID>
+						<ExtId>49689</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>219</UnitID>
+						<UnitType>297-3780</UnitType>
+						<UnitBedrooms>2</UnitBedrooms>
+						<UnitBathrooms>2.00</UnitBathrooms>
+						<MinSquareFeet>1230.00</MinSquareFeet>
+						<MaxSquareFeet>1230.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>3874.00</UnitRent>
+						<MarketRent>3490.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
+						<FloorplanID>858931</FloorplanID>
+						<FloorplanName>B7-2</FloorplanName>
+						<PropertyPrimaryID>111537</PropertyPrimaryID>
+						<ExtId>49669</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>511</UnitID>
+						<UnitType>297-3761</UnitType>
+						<UnitBedrooms>1</UnitBedrooms>
+						<UnitBathrooms>1.00</UnitBathrooms>
+						<MinSquareFeet>877.00</MinSquareFeet>
+						<MaxSquareFeet>877.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>3473.00</UnitRent>
+						<MarketRent>2940.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Vacant Unrented Not Ready</UnitLeasedStatusDescription>
+						<FloorplanID>858934</FloorplanID>
+						<FloorplanName>B9</FloorplanName>
+						<PropertyPrimaryID>111537</PropertyPrimaryID>
+						<ExtId>49724</ExtId>
+				</ILS_Unit>
+				<Amenities>
+						<Community>
+								<BusinessCenter>false</BusinessCenter>
+								<ChildCare>false</ChildCare>
+								<ClubHouse>true</ClubHouse>
+								<CoverPark>false</CoverPark>
+								<FitnessCenter>true</FitnessCenter>
+								<Garage>true</Garage>
+								<Gate>false</Gate>
+								<HighSpeed>false</HighSpeed>
+								<Laundry>false</Laundry>
+								<Pool>false</Pool>
+								<PlayGround>false</PlayGround>
+								<ShortTermLease>false</ShortTermLease>
+								<Spa>false</Spa>
+								<StorageSpace>false</StorageSpace>
+								<Transportation>false</Transportation>
+								<Availability24Hours>true</Availability24Hours>
+								<BasketballCourt>false</BasketballCourt>
+								<ClubDiscount>false</ClubDiscount>
+								<Concierge>false</Concierge>
+								<DoorAttendant>false</DoorAttendant>
+								<Elevator>false</Elevator>
+								<FreeWeights>false</FreeWeights>
+								<HouseSitting>false</HouseSitting>
+								<GroupExcercise>false</GroupExcercise>
+								<GuestRoom>false</GuestRoom>
+								<Housekeeping>false</Housekeeping>
+								<Library>false</Library>
+								<MealService>false</MealService>
+								<NightPatrol>false</NightPatrol>
+								<OnSiteMaintenance>true</OnSiteMaintenance>
+								<OnSiteManagement>true</OnSiteManagement>
+								<PacakageReceiving>false</PacakageReceiving>
+								<Racquetball>false</Racquetball>
+								<RecRoom>false</RecRoom>
+								<Sauna>false</Sauna>
+								<Sundeck>false</Sundeck>
+								<TennisCourt>false</TennisCourt>
+								<TVLounge>false</TVLounge>
+								<Vintage>false</Vintage>
+								<VolleyballCourt>false</VolleyballCourt>
+						</Community>
+						<Floorplan>
+								<AdditionalStorage>false</AdditionalStorage>
+								<AirConditioner>false</AirConditioner>
+								<Balcony>true</Balcony>
+								<CableSat>false</CableSat>
+								<DishWasher>false</DishWasher>
+								<Disposal>false</Disposal>
+								<Fireplace>false</Fireplace>
+								<Furnished>false</Furnished>
+								<IndividualClimateControl>false</IndividualClimateControl>
+								<LargeClosets>false</LargeClosets>
+								<Patio>true</Patio>
+								<Washer>false</Washer>
+								<WheelChair>false</WheelChair>
+								<WD_Hookup>false</WD_Hookup>
+								<Alarm>false</Alarm>
+								<Carport>false</Carport>
+								<CeilingFan>false</CeilingFan>
+								<ControlledAccess>false</ControlledAccess>
+								<Courtyard>true</Courtyard>
+								<Dryer>false</Dryer>
+								<Handrails>false</Handrails>
+								<Microwave>false</Microwave>
+								<PrivateBalcony>false</PrivateBalcony>
+								<PrivatePatio>false</PrivatePatio>
+								<Refrigerator>false</Refrigerator>
+								<Skylight>false</Skylight>
+								<View>true</View>
+								<WindowCoverings>false</WindowCoverings>
+						</Floorplan>
+						<General>
+								<AmenityName>Children’s Play Room</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Community Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>Rooftop Terrace</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Community Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>Theater Room</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Community Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>Valet Parking</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Community Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>4th Floor</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>5th Floor</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>6th Floor</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>7th Floor</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>8th Floor</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>Terrace-3rd Floor</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>Terrace-7th Floor</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>Terrace-8th Floor</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>Terrace-Private</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>Terrace-Small</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>View-Field</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>View-Jersey City</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>View-Marina</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>View-Marina-Partial</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>View-NYC</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>View-Statue of Liberty</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+				</Amenities>
+				<File id="111537_605669" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/3_111537_646423.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="111537_605670" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/3_111537_646424.jpg</Src>
+						<Rank>9</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="111537_605671" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/3_111537_646425.jpg</Src>
+						<Rank>7</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="111537_605676" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/3_111537_646430.jpg</Src>
+						<Rank>8</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="111537_605677" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/3_111537_646431.jpg</Src>
+						<Rank>3</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="111537_605678" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/3_111537_646432.jpg</Src>
+						<Rank>2</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="111537_605679" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/3_111537_646433.jpg</Src>
+						<Rank>6</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="111537_605680" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/3_111537_646434.jpg</Src>
+						<Rank>5</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="111537_605681" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/3_111537_646435.jpg</Src>
+						<Rank>4</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858901" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-81755.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858902" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-81757.jpg</Src>
+						<Rank>2</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858903" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-81759.jpg</Src>
+						<Rank>3</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858904" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82524.jpg</Src>
+						<Rank>4</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858905" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82525.jpg</Src>
+						<Rank>5</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858906" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82526.jpg</Src>
+						<Rank>6</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858907" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82529.jpg</Src>
+						<Rank>7</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858908" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82530.jpg</Src>
+						<Rank>8</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858909" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82531.jpg</Src>
+						<Rank>9</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858910" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82532.jpg</Src>
+						<Rank>10</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858911" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82533.jpg</Src>
+						<Rank>11</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858912" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82534.jpg</Src>
+						<Rank>12</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858913" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82535.jpg</Src>
+						<Rank>13</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858914" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82536.jpg</Src>
+						<Rank>14</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858915" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82537.jpg</Src>
+						<Rank>15</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858916" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82538.jpg</Src>
+						<Rank>16</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858917" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82539.jpg</Src>
+						<Rank>17</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858918" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82540.jpg</Src>
+						<Rank>18</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858919" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82541.jpg</Src>
+						<Rank>19</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858920" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82542.jpg</Src>
+						<Rank>20</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858921" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82543.jpg</Src>
+						<Rank>21</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858922" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82544.jpg</Src>
+						<Rank>22</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858923" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82545.jpg</Src>
+						<Rank>23</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858924" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82546.jpg</Src>
+						<Rank>24</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858925" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82547.jpg</Src>
+						<Rank>25</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858926" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82548.jpg</Src>
+						<Rank>26</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858927" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82549.jpg</Src>
+						<Rank>27</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858928" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82550.jpg</Src>
+						<Rank>28</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858929" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82551.jpg</Src>
+						<Rank>29</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858930" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82552.jpg</Src>
+						<Rank>30</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858931" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82553.jpg</Src>
+						<Rank>31</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858932" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82554.jpg</Src>
+						<Rank>32</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858933" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82555.jpg</Src>
+						<Rank>33</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="858934" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/111537/111537-2-1-82556.jpg</Src>
+						<Rank>34</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+		</Property>
+		<Property managementID="8131">
+				<Identification type="Apartment" rentalType="market rate">
+						<PrimaryID>p0151017</PrimaryID>
+						<SecondaryID>p0151017</SecondaryID>
+						<MarketingName>The Brownstones at Englewood South</MarketingName>
+						<OwnerLegalName>ownerName</OwnerLegalName>
+						<Address>
+								<Address1>73 Brownstone Way</Address1>
+								<Address2> </Address2>
+								<City>Englewood</City>
+								<State>NJ</State>
+								<Zip>07631</Zip>
+								<Country />
+								<PO_Box />
+								<MailingAddress>73 Brownstone Way,Englewood,NJ,07631</MailingAddress>
+								<ShippingAddress>73 Brownstone Way,Englewood,NJ,07631</ShippingAddress>
+						</Address>
+						<Latitude>40.882320</Latitude>
+						<Longitude>-73.985132</Longitude>
+						<WebSite>www.liveatbrownstones.com</WebSite>
+						<Phone>
+								<Number>(888) 566-6302</Number>
+						</Phone>
+						<Fax>
+								<Number />
+						</Fax>
+						<Email>brownstones@bozzuto.com</Email>
+				</Identification>
+				<Information>
+						<StructureType>unspecified</StructureType>
+						<UnitCount>0</UnitCount>
+						<OfficeHour>
+								<OpenTime>09:00:00 AM</OpenTime>
+								<CloseTime>06:00:00 PM</CloseTime>
+								<Day>Th</Day>
+						</OfficeHour>
+						<OfficeHour>
+								<OpenTime>08:00:00 AM</OpenTime>
+								<CloseTime>05:00:00 PM</CloseTime>
+								<Day>F</Day>
+						</OfficeHour>
+						<OfficeHour>
+								<OpenTime>11:00:00 AM</OpenTime>
+								<CloseTime>05:00:00 PM</CloseTime>
+								<Day>Sa</Day>
+						</OfficeHour>
+						<OfficeHour>
+								<OpenTime>09:00:00 AM</OpenTime>
+								<CloseTime>06:00:00 PM</CloseTime>
+								<Day>M</Day>
+						</OfficeHour>
+						<OfficeHour>
+								<OpenTime>09:00:00 AM</OpenTime>
+								<CloseTime>06:00:00 PM</CloseTime>
+								<Day>T</Day>
+						</OfficeHour>
+						<OfficeHour>
+								<OpenTime>09:00:00 AM</OpenTime>
+								<CloseTime>06:00:00 PM</CloseTime>
+								<Day>W</Day>
+						</OfficeHour>
+						<OfficeHour>
+								<OpenTime>12:00:00 AM</OpenTime>
+								<CloseTime>05:00:00 PM</CloseTime>
+								<Day>Su</Day>
+						</OfficeHour>
+						<LongDescription>Minutes from New York City, in exclusive Englewood, New Jersey, a new style of modern living is waiting for you. Achieving the perfect balance between urban and suburban, The Brownstones at Englewood South offers the most intuitive living environment with every detail of design, quality, and lifestyle attended to. Design details include beautifully&amp;hellip;
+
+Enjoy immediate proximity to New York City
+Condominium level finishes including stainless steel appliances and granite countertops
+Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescription>
+				</Information>
+				<Policy>
+						<Pet type="Cat" allowed="true">
+								<Comment />
+								<MaxCount>0</MaxCount>
+								<Deposit>0.00</Deposit>
+								<Fee>500.00</Fee>
+								<Rent>50.00</Rent>
+								<Weight>0.00</Weight>
+								<FeeRange min="0.00" max="0.00" />
+								<Restrictions />
+								<PetCare>0</PetCare>
+						</Pet>
+						<Pet type="Dog" allowed="true">
+								<Comment>Breed restrictions apply.</Comment>
+								<MaxCount>0</MaxCount>
+								<Deposit>0.00</Deposit>
+								<Fee>500.00</Fee>
+								<Rent>50.00</Rent>
+								<Weight>0.00</Weight>
+								<FeeRange min="0.00" max="0.00" />
+								<Restrictions />
+								<PetCare>0</PetCare>
+						</Pet>
+						<Pet type="Pet Friendly" allowed="true">
+								<Comment>2 pets maximum per home.</Comment>
+								<MaxCount>0</MaxCount>
+								<Deposit>0.00</Deposit>
+								<Fee>0.00</Fee>
+								<Rent>0.00</Rent>
+								<Weight>0.00</Weight>
+								<FeeRange min="0.00" max="0.00" />
+								<Restrictions />
+								<PetCare>0</PetCare>
+						</Pet>
+				</Policy>
+				<Floorplan id="937743">
+						<Name>Studio / One Bath - A9</Name>
+						<Comment />
+						<UnitCount>2</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>0</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="659" max="659" />
+						<MarketRent min="1572.00" max="2524.00" />
+						<EffectiveRent min="1572.00" max="2524.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937744">
+						<Name>Studio Loft / One Bath - A9 Loft</Name>
+						<Comment />
+						<UnitCount>2</UnitCount>
+						<UnitsAvailable>0</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>0</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="953" max="953" />
+						<MarketRent min="2233.00" max="2233.00" />
+						<EffectiveRent min="2233.00" max="2233.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937745">
+						<Name>Studio / One Bath - A5</Name>
+						<Comment />
+						<UnitCount>10</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>0</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="664" max="664" />
+						<MarketRent min="1497.00" max="2610.00" />
+						<EffectiveRent min="1497.00" max="2610.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937746">
+						<Name>Studio Loft / One Bath - A5 Loft</Name>
+						<Comment />
+						<UnitCount>6</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>0</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="957" max="957" />
+						<MarketRent min="2035.00" max="3557.00" />
+						<EffectiveRent min="2035.00" max="3557.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937747">
+						<Name>One Bedroom / One Bath - A1</Name>
+						<Comment />
+						<UnitCount>74</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="788" max="788" />
+						<MarketRent min="1873.00" max="2544.00" />
+						<EffectiveRent min="1873.00" max="2544.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937748">
+						<Name>One Bedroom / One Bath Loft - A1 Loft</Name>
+						<Comment />
+						<UnitCount>3</UnitCount>
+						<UnitsAvailable>0</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="952" max="952" />
+						<MarketRent min="2228.00" max="2228.00" />
+						<EffectiveRent min="2228.00" max="2228.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937749">
+						<Name>One Bedroom / One Bath - A4</Name>
+						<Comment />
+						<UnitCount>22</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="812" max="812" />
+						<MarketRent min="1882.00" max="2992.00" />
+						<EffectiveRent min="1882.00" max="2992.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937755">
+						<Name>One Bedroom / One Bath - A2</Name>
+						<Comment />
+						<UnitCount>6</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="881" max="881" />
+						<MarketRent min="2226.00" max="3422.00" />
+						<EffectiveRent min="2226.00" max="3422.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937756">
+						<Name>One Bedroom / One Bath - A3</Name>
+						<Comment />
+						<UnitCount>1</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="790" max="790" />
+						<MarketRent min="2149.00" max="3315.00" />
+						<EffectiveRent min="2149.00" max="3315.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937757">
+						<Name>One Bedroom / One Bath Loft - A3 Loft</Name>
+						<Comment />
+						<UnitCount>1</UnitCount>
+						<UnitsAvailable>0</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1042" max="1042" />
+						<MarketRent min="2435.00" max="2435.00" />
+						<EffectiveRent min="2435.00" max="2435.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937758">
+						<Name>One Bedroom / One Bath - A6</Name>
+						<Comment />
+						<UnitCount>6</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="810" max="810" />
+						<MarketRent min="1996.00" max="2884.00" />
+						<EffectiveRent min="1996.00" max="2884.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937759">
+						<Name>One Bedroom / One Bath - A7</Name>
+						<Comment />
+						<UnitCount>9</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="745" max="745" />
+						<MarketRent min="1762.00" max="2570.00" />
+						<EffectiveRent min="1762.00" max="2570.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937760">
+						<Name>Two Bedroom / Two Bath - B1</Name>
+						<Comment />
+						<UnitCount>63</UnitCount>
+						<UnitsAvailable>5</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1119" max="1119" />
+						<MarketRent min="2203.00" max="3903.00" />
+						<EffectiveRent min="2203.00" max="3903.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937761">
+						<Name>Two Bedroom / Two Bath Loft - B1 Loft</Name>
+						<Comment />
+						<UnitCount>6</UnitCount>
+						<UnitsAvailable>2</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1389" max="1389" />
+						<MarketRent min="2433.00" max="3923.00" />
+						<EffectiveRent min="2433.00" max="3923.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937762">
+						<Name>Two Bedroom / Two Bath - B2</Name>
+						<Comment />
+						<UnitCount>20</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1040" max="1040" />
+						<MarketRent min="2033.00" max="2891.00" />
+						<EffectiveRent min="2033.00" max="2891.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937763">
+						<Name>Two Bedroom / Two Bath Loft - B2 Loft</Name>
+						<Comment />
+						<UnitCount>2</UnitCount>
+						<UnitsAvailable>0</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1295" max="1295" />
+						<MarketRent min="2628.00" max="2628.00" />
+						<EffectiveRent min="2628.00" max="2628.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937764">
+						<Name>Two Bedroom / Two Bath - B3</Name>
+						<Comment />
+						<UnitCount>12</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1179" max="1179" />
+						<MarketRent min="2194.00" max="3080.00" />
+						<EffectiveRent min="2194.00" max="3080.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937765">
+						<Name>Two Bedroom / Two Bath Corner - C1</Name>
+						<Comment />
+						<UnitCount>40</UnitCount>
+						<UnitsAvailable>8</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1265" max="1265" />
+						<MarketRent min="2393.00" max="4031.00" />
+						<EffectiveRent min="2393.00" max="4031.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937766">
+						<Name>Two Bedroom / Two Bath Corner Loft - C1 Loft</Name>
+						<Comment />
+						<UnitCount>4</UnitCount>
+						<UnitsAvailable>0</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1593" max="1593" />
+						<MarketRent min="3228.00" max="3228.00" />
+						<EffectiveRent min="3228.00" max="3228.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937767">
+						<Name>Two Bedroom / Two Bath Corner - C2</Name>
+						<Comment />
+						<UnitCount>9</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1268" max="1268" />
+						<MarketRent min="2449.00" max="4052.00" />
+						<EffectiveRent min="2449.00" max="4052.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937768">
+						<Name>One Bedroom / One Bath - A8</Name>
+						<Comment />
+						<UnitCount>3</UnitCount>
+						<UnitsAvailable>2</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="854" max="854" />
+						<MarketRent min="2241.00" max="3441.00" />
+						<EffectiveRent min="2241.00" max="3441.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937769">
+						<Name>One Bedroom / One Bath Loft - A7 Loft</Name>
+						<Comment />
+						<UnitCount>1</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>1</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1035" max="1035" />
+						<MarketRent min="1598.00" max="2378.00" />
+						<EffectiveRent min="1598.00" max="2378.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937770">
+						<Name>Two Bedroom / Two Bath Corner - C3</Name>
+						<Comment />
+						<UnitCount>3</UnitCount>
+						<UnitsAvailable>0</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1295" max="1295" />
+						<MarketRent min="2833.00" max="2833.00" />
+						<EffectiveRent min="2833.00" max="2833.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937772">
+						<Name>Two Bedroom / Two Bath Corner Loft - C3 Loft</Name>
+						<Comment />
+						<UnitCount>1</UnitCount>
+						<UnitsAvailable>0</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1931" max="1931" />
+						<MarketRent min="3438.00" max="3438.00" />
+						<EffectiveRent min="3438.00" max="3438.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937773">
+						<Name>Two Bedroom / Two Bath Corner - C5</Name>
+						<Comment />
+						<UnitCount>1</UnitCount>
+						<UnitsAvailable>0</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1329" max="1329" />
+						<MarketRent min="2898.00" max="2898.00" />
+						<EffectiveRent min="2898.00" max="2898.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937778">
+						<Name>Two Bedroom / Two Bath Corner Loft - C5 Loft</Name>
+						<Comment />
+						<UnitCount>1</UnitCount>
+						<UnitsAvailable>0</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1860" max="1860" />
+						<MarketRent min="3288.00" max="3288.00" />
+						<EffectiveRent min="3288.00" max="3288.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937779">
+						<Name>Two Bedroom / Two Bath Corner - C6</Name>
+						<Comment />
+						<UnitCount>3</UnitCount>
+						<UnitsAvailable>0</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1215" max="1215" />
+						<MarketRent min="2663.00" max="2663.00" />
+						<EffectiveRent min="2663.00" max="2663.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937780">
+						<Name>Two Bedroom / Three Bath - TH1</Name>
+						<Comment />
+						<UnitCount>1</UnitCount>
+						<UnitsAvailable>0</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>3</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1317" max="1317" />
+						<MarketRent min="2870.00" max="2870.00" />
+						<EffectiveRent min="2870.00" max="2870.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937781">
+						<Name>Two Bedroom / Three Bath (end unit) - TH2</Name>
+						<Comment />
+						<UnitCount>29</UnitCount>
+						<UnitsAvailable>3</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>3</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1317" max="1317" />
+						<MarketRent min="2436.00" max="3726.00" />
+						<EffectiveRent min="2436.00" max="3726.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937784">
+						<Name>Two Bedroom / Three Bath Corner - TH3</Name>
+						<Comment />
+						<UnitCount>1</UnitCount>
+						<UnitsAvailable>0</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>3</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1659" max="1659" />
+						<MarketRent min="3605.00" max="3605.00" />
+						<EffectiveRent min="3605.00" max="3605.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<Floorplan id="937785">
+						<Name>Two Bedroom / Two Bath Corner - C4</Name>
+						<Comment />
+						<UnitCount>8</UnitCount>
+						<UnitsAvailable>1</UnitsAvailable>
+						<Room type="bedroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="bathroom">
+								<Count>2</Count>
+								<Comment>Voyager value</Comment>
+						</Room>
+						<Room type="other">
+								<Count>0</Count>
+								<Comment>Bedroom and Bathroom values not found</Comment>
+						</Room>
+						<SquareFeet min="1333" max="1333" />
+						<MarketRent min="2572.00" max="3812.00" />
+						<EffectiveRent min="2572.00" max="3812.00" />
+						<Deposit type="Security Deposit">
+								<Amount>0</Amount>
+								<Description>Security Deposit</Description>
+								<PercentRefundable>-0.0</PercentRefundable>
+								<PortionRefundable>0.00</PortionRefundable>
+						</Deposit>
+				</Floorplan>
+				<ILS_Unit>
+						<UnitID>09-209</UnitID>
+						<UnitType>297-1562</UnitType>
+						<UnitBedrooms>1</UnitBedrooms>
+						<UnitBathrooms>1.00</UnitBathrooms>
+						<MinSquareFeet>788.00</MinSquareFeet>
+						<MaxSquareFeet>788.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>1873.00</UnitRent>
+						<MarketRent>1933.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
+						<FloorplanID>937747</FloorplanID>
+						<FloorplanName>One Bedroom / One Bath - A1</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24614</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>09-518</UnitID>
+						<UnitType>297-1568</UnitType>
+						<UnitBedrooms>1</UnitBedrooms>
+						<UnitBathrooms>1.00</UnitBathrooms>
+						<MinSquareFeet>881.00</MinSquareFeet>
+						<MaxSquareFeet>881.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2313.00</UnitRent>
+						<MarketRent>2313.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
+						<FloorplanID>937755</FloorplanID>
+						<FloorplanName>One Bedroom / One Bath - A2</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24733</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>09-303</UnitID>
+						<UnitType>297-1567</UnitType>
+						<UnitBedrooms>1</UnitBedrooms>
+						<UnitBathrooms>1.00</UnitBathrooms>
+						<MinSquareFeet>854.00</MinSquareFeet>
+						<MaxSquareFeet>854.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2241.00</UnitRent>
+						<MarketRent>2301.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Vacant Unrented Not Ready</UnitLeasedStatusDescription>
+						<FloorplanID>937768</FloorplanID>
+						<FloorplanName>One Bedroom / One Bath - A8</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24695</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>09-503</UnitID>
+						<UnitType>297-1567</UnitType>
+						<UnitBedrooms>1</UnitBedrooms>
+						<UnitBathrooms>1.00</UnitBathrooms>
+						<MinSquareFeet>854.00</MinSquareFeet>
+						<MaxSquareFeet>854.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2241.00</UnitRent>
+						<MarketRent>2301.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Vacant Unrented Not Ready</UnitLeasedStatusDescription>
+						<FloorplanID>937768</FloorplanID>
+						<FloorplanName>One Bedroom / One Bath - A8</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24698</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>09-104</UnitID>
+						<UnitType>297-1582</UnitType>
+						<UnitBedrooms>2</UnitBedrooms>
+						<UnitBathrooms>3.00</UnitBathrooms>
+						<MinSquareFeet>1317.00</MinSquareFeet>
+						<MaxSquareFeet>1317.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2436.00</UnitRent>
+						<MarketRent>2800.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Vacant Unrented Not Ready</UnitLeasedStatusDescription>
+						<FloorplanID>937781</FloorplanID>
+						<FloorplanName>Two Bedroom / Three Bath (end unit) - TH2</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24921</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>09-105</UnitID>
+						<UnitType>297-1582</UnitType>
+						<UnitBedrooms>2</UnitBedrooms>
+						<UnitBathrooms>3.00</UnitBathrooms>
+						<MinSquareFeet>1317.00</MinSquareFeet>
+						<MaxSquareFeet>1317.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2436.00</UnitRent>
+						<MarketRent>2800.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Vacant Unrented Not Ready</UnitLeasedStatusDescription>
+						<FloorplanID>937781</FloorplanID>
+						<FloorplanName>Two Bedroom / Three Bath (end unit) - TH2</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24922</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>56-107</UnitID>
+						<UnitType>297-1582</UnitType>
+						<UnitBedrooms>2</UnitBedrooms>
+						<UnitBathrooms>3.00</UnitBathrooms>
+						<MinSquareFeet>1317.00</MinSquareFeet>
+						<MaxSquareFeet>1317.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2503.00</UnitRent>
+						<MarketRent>2870.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
+						<FloorplanID>937781</FloorplanID>
+						<FloorplanName>Two Bedroom / Three Bath (end unit) - TH2</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24944</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>09-101</UnitID>
+						<UnitType>297-1575</UnitType>
+						<UnitBedrooms>2</UnitBedrooms>
+						<UnitBathrooms>2.00</UnitBathrooms>
+						<MinSquareFeet>1119.00</MinSquareFeet>
+						<MaxSquareFeet>1119.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2203.00</UnitRent>
+						<MarketRent>2558.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
+						<FloorplanID>937760</FloorplanID>
+						<FloorplanName>Two Bedroom / Two Bath - B1</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24767</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>09-202</UnitID>
+						<UnitType>297-1575</UnitType>
+						<UnitBedrooms>2</UnitBedrooms>
+						<UnitBathrooms>2.00</UnitBathrooms>
+						<MinSquareFeet>1119.00</MinSquareFeet>
+						<MaxSquareFeet>1119.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2265.00</UnitRent>
+						<MarketRent>2578.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Vacant Unrented Not Ready</UnitLeasedStatusDescription>
+						<FloorplanID>937760</FloorplanID>
+						<FloorplanName>Two Bedroom / Two Bath - B1</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24770</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>56-211</UnitID>
+						<UnitType>297-1575</UnitType>
+						<UnitBedrooms>2</UnitBedrooms>
+						<UnitBathrooms>2.00</UnitBathrooms>
+						<MinSquareFeet>1119.00</MinSquareFeet>
+						<MaxSquareFeet>1119.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2203.00</UnitRent>
+						<MarketRent>2558.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
+						<FloorplanID>937760</FloorplanID>
+						<FloorplanName>Two Bedroom / Two Bath - B1</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24814</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>56-319</UnitID>
+						<UnitType>297-1575</UnitType>
+						<UnitBedrooms>2</UnitBedrooms>
+						<UnitBathrooms>2.00</UnitBathrooms>
+						<MinSquareFeet>1119.00</MinSquareFeet>
+						<MaxSquareFeet>1119.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2215.00</UnitRent>
+						<MarketRent>2558.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
+						<FloorplanID>937760</FloorplanID>
+						<FloorplanName>Two Bedroom / Two Bath - B1</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24819</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>72-409</UnitID>
+						<UnitType>297-1575</UnitType>
+						<UnitBedrooms>2</UnitBedrooms>
+						<UnitBathrooms>2.00</UnitBathrooms>
+						<MinSquareFeet>1119.00</MinSquareFeet>
+						<MaxSquareFeet>1119.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2259.00</UnitRent>
+						<MarketRent>2598.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Vacant Unrented Not Ready</UnitLeasedStatusDescription>
+						<FloorplanID>937760</FloorplanID>
+						<FloorplanName>Two Bedroom / Two Bath - B1</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24827</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>41-112</UnitID>
+						<UnitType>297-1573</UnitType>
+						<UnitBedrooms>2</UnitBedrooms>
+						<UnitBathrooms>2.00</UnitBathrooms>
+						<MinSquareFeet>1040.00</MinSquareFeet>
+						<MaxSquareFeet>1040.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2033.00</UnitRent>
+						<MarketRent>2388.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
+						<FloorplanID>937762</FloorplanID>
+						<FloorplanName>Two Bedroom / Two Bath - B2</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24747</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>41-101</UnitID>
+						<UnitType>297-1578</UnitType>
+						<UnitBedrooms>2</UnitBedrooms>
+						<UnitBathrooms>2.00</UnitBathrooms>
+						<MinSquareFeet>1265.00</MinSquareFeet>
+						<MaxSquareFeet>1265.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2515.00</UnitRent>
+						<MarketRent>2788.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Vacant Unrented Not Ready</UnitLeasedStatusDescription>
+						<FloorplanID>937765</FloorplanID>
+						<FloorplanName>Two Bedroom / Two Bath Corner - C1</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24845</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>41-309</UnitID>
+						<UnitType>297-1578</UnitType>
+						<UnitBedrooms>2</UnitBedrooms>
+						<UnitBathrooms>2.00</UnitBathrooms>
+						<MinSquareFeet>1265.00</MinSquareFeet>
+						<MaxSquareFeet>1265.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2433.00</UnitRent>
+						<MarketRent>2788.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
+						<FloorplanID>937765</FloorplanID>
+						<FloorplanName>Two Bedroom / Two Bath Corner - C1</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24854</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>41-310</UnitID>
+						<UnitType>297-1578</UnitType>
+						<UnitBedrooms>2</UnitBedrooms>
+						<UnitBathrooms>2.00</UnitBathrooms>
+						<MinSquareFeet>1265.00</MinSquareFeet>
+						<MaxSquareFeet>1265.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2449.00</UnitRent>
+						<MarketRent>2788.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Vacant Unrented Not Ready</UnitLeasedStatusDescription>
+						<FloorplanID>937765</FloorplanID>
+						<FloorplanName>Two Bedroom / Two Bath Corner - C1</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24855</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>41-318</UnitID>
+						<UnitType>297-1578</UnitType>
+						<UnitBedrooms>2</UnitBedrooms>
+						<UnitBathrooms>2.00</UnitBathrooms>
+						<MinSquareFeet>1265.00</MinSquareFeet>
+						<MaxSquareFeet>1265.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2463.00</UnitRent>
+						<MarketRent>2818.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
+						<FloorplanID>937765</FloorplanID>
+						<FloorplanName>Two Bedroom / Two Bath Corner - C1</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24856</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>41-409</UnitID>
+						<UnitType>297-1578</UnitType>
+						<UnitBedrooms>2</UnitBedrooms>
+						<UnitBathrooms>2.00</UnitBathrooms>
+						<MinSquareFeet>1265.00</MinSquareFeet>
+						<MaxSquareFeet>1265.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2393.00</UnitRent>
+						<MarketRent>2748.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
+						<FloorplanID>937765</FloorplanID>
+						<FloorplanName>Two Bedroom / Two Bath Corner - C1</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24858</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>41-418</UnitID>
+						<UnitType>297-1578</UnitType>
+						<UnitBedrooms>2</UnitBedrooms>
+						<UnitBathrooms>2.00</UnitBathrooms>
+						<MinSquareFeet>1265.00</MinSquareFeet>
+						<MaxSquareFeet>1265.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2469.00</UnitRent>
+						<MarketRent>2788.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Vacant Unrented Not Ready</UnitLeasedStatusDescription>
+						<FloorplanID>937765</FloorplanID>
+						<FloorplanName>Two Bedroom / Two Bath Corner - C1</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24860</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>88-107</UnitID>
+						<UnitType>297-1578</UnitType>
+						<UnitBedrooms>2</UnitBedrooms>
+						<UnitBathrooms>2.00</UnitBathrooms>
+						<MinSquareFeet>1265.00</MinSquareFeet>
+						<MaxSquareFeet>1265.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2459.00</UnitRent>
+						<MarketRent>2798.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
+						<FloorplanID>937765</FloorplanID>
+						<FloorplanName>Two Bedroom / Two Bath Corner - C1</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24879</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>88-207</UnitID>
+						<UnitType>297-1578</UnitType>
+						<UnitBedrooms>2</UnitBedrooms>
+						<UnitBathrooms>2.00</UnitBathrooms>
+						<MinSquareFeet>1265.00</MinSquareFeet>
+						<MaxSquareFeet>1265.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2446.00</UnitRent>
+						<MarketRent>2788.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
+						<FloorplanID>937765</FloorplanID>
+						<FloorplanName>Two Bedroom / Two Bath Corner - C1</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24883</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>09-313</UnitID>
+						<UnitType>297-1585</UnitType>
+						<UnitBedrooms>2</UnitBedrooms>
+						<UnitBathrooms>2.00</UnitBathrooms>
+						<MinSquareFeet>1333.00</MinSquareFeet>
+						<MaxSquareFeet>1333.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2572.00</UnitRent>
+						<MarketRent>2913.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
+						<FloorplanID>937785</FloorplanID>
+						<FloorplanName>Two Bedroom / Two Bath Corner - C4</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24901</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>56-401</UnitID>
+						<UnitType>297-1586</UnitType>
+						<UnitBedrooms>2</UnitBedrooms>
+						<UnitBathrooms>2.00</UnitBathrooms>
+						<MinSquareFeet>1389.00</MinSquareFeet>
+						<MaxSquareFeet>1389.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2433.00</UnitRent>
+						<MarketRent>2788.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
+						<FloorplanID>937761</FloorplanID>
+						<FloorplanName>Two Bedroom / Two Bath Loft - B1 Loft</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24910</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>56-411</UnitID>
+						<UnitType>297-1586</UnitType>
+						<UnitBedrooms>2</UnitBedrooms>
+						<UnitBathrooms>2.00</UnitBathrooms>
+						<MinSquareFeet>1389.00</MinSquareFeet>
+						<MaxSquareFeet>1389.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>2449.00</UnitRent>
+						<MarketRent>2788.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
+						<FloorplanID>937761</FloorplanID>
+						<FloorplanName>Two Bedroom / Two Bath Loft - B1 Loft</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24912</ExtId>
+				</ILS_Unit>
+				<Amenities>
+						<Community>
+								<BusinessCenter>false</BusinessCenter>
+								<ChildCare>false</ChildCare>
+								<ClubHouse>false</ClubHouse>
+								<CoverPark>false</CoverPark>
+								<FitnessCenter>true</FitnessCenter>
+								<Garage>true</Garage>
+								<Gate>true</Gate>
+								<HighSpeed>true</HighSpeed>
+								<Laundry>false</Laundry>
+								<Pool>true</Pool>
+								<PlayGround>false</PlayGround>
+								<ShortTermLease>false</ShortTermLease>
+								<Spa>false</Spa>
+								<StorageSpace>false</StorageSpace>
+								<Transportation>false</Transportation>
+								<Availability24Hours>false</Availability24Hours>
+								<BasketballCourt>false</BasketballCourt>
+								<ClubDiscount>false</ClubDiscount>
+								<Concierge>false</Concierge>
+								<DoorAttendant>false</DoorAttendant>
+								<Elevator>false</Elevator>
+								<FreeWeights>false</FreeWeights>
+								<HouseSitting>false</HouseSitting>
+								<GroupExcercise>false</GroupExcercise>
+								<GuestRoom>false</GuestRoom>
+								<Housekeeping>false</Housekeeping>
+								<Library>false</Library>
+								<MealService>false</MealService>
+								<NightPatrol>false</NightPatrol>
+								<OnSiteMaintenance>true</OnSiteMaintenance>
+								<OnSiteManagement>false</OnSiteManagement>
+								<PacakageReceiving>false</PacakageReceiving>
+								<Racquetball>false</Racquetball>
+								<RecRoom>true</RecRoom>
+								<Sauna>false</Sauna>
+								<Sundeck>false</Sundeck>
+								<TennisCourt>false</TennisCourt>
+								<TVLounge>false</TVLounge>
+								<Vintage>false</Vintage>
+								<VolleyballCourt>false</VolleyballCourt>
+						</Community>
+						<Floorplan>
+								<AdditionalStorage>true</AdditionalStorage>
+								<AirConditioner>true</AirConditioner>
+								<Balcony>true</Balcony>
+								<CableSat>true</CableSat>
+								<DishWasher>false</DishWasher>
+								<Disposal>false</Disposal>
+								<Fireplace>false</Fireplace>
+								<Furnished>false</Furnished>
+								<IndividualClimateControl>false</IndividualClimateControl>
+								<LargeClosets>true</LargeClosets>
+								<Patio>true</Patio>
+								<Washer>true</Washer>
+								<WheelChair>false</WheelChair>
+								<WD_Hookup>false</WD_Hookup>
+								<Alarm>true</Alarm>
+								<Carport>false</Carport>
+								<CeilingFan>false</CeilingFan>
+								<ControlledAccess>true</ControlledAccess>
+								<Courtyard>false</Courtyard>
+								<Dryer>true</Dryer>
+								<Handrails>false</Handrails>
+								<Microwave>false</Microwave>
+								<PrivateBalcony>false</PrivateBalcony>
+								<PrivatePatio>false</PrivatePatio>
+								<Refrigerator>false</Refrigerator>
+								<Skylight>false</Skylight>
+								<View>false</View>
+								<WindowCoverings>false</WindowCoverings>
+						</Floorplan>
+						<General>
+								<AmenityName>Elevator service</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Community Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>FedEx drop box</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Community Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>Neighborhood boutique, retail, and restaurants</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Community Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>THE GYM, the finest fitness center and spa in New Jersey</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Community Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>Visitor parking</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Community Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>1st Floor</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>2nd Floor</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>3rd Floor</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>4th Floor</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>5th Floor</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>Built-in surround-sound speakers</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>Corner Unit</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>Crown Plaza View</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>Dual sinks in select homes*</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>Handicap</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>High-speed Internet access, wired and wireless</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>Keyless building entry</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>Loft and townhouse layouts</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>Oversized breakfast bar</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>Recessed and track lighting</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+						<General>
+								<AmenityName>Sound-absorbing concrete floors in select buildings*</AmenityName>
+								<AmenityCharge>unspecified</AmenityCharge>
+								<AmenityRank>unspecified</AmenityRank>
+								<AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
+						</General>
+				</Amenities>
+				<File id="144341_649234" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_10_09a_1_PhotoGallery.jpg</Src>
+						<Rank>10</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649236" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_11_10_1_PhotoGallery.jpg</Src>
+						<Rank>11</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649238" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_12_11_1_PhotoGallery.jpg</Src>
+						<Rank>12</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649240" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_13_12_1_PhotoGallery.jpg</Src>
+						<Rank>13</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649242" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_14_13_1_PhotoGallery.jpg</Src>
+						<Rank>14</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649244" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_15_14_1_PhotoGallery.jpg</Src>
+						<Rank>15</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649246" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_16_15_1_PhotoGallery.jpg</Src>
+						<Rank>16</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649248" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_17_16_1_PhotoGallery.JPG</Src>
+						<Rank>17</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649250" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_18_17_1_PhotoGallery.jpg</Src>
+						<Rank>18</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649252" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_19_18_1_PhotoGallery.jpg</Src>
+						<Rank>19</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649254" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_1_01_1_PhotoGallery.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649256" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_20_19_1_PhotoGallery.jpg</Src>
+						<Rank>20</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649258" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_21_20_1_PhotoGallery.jpg</Src>
+						<Rank>21</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649260" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_22_20a_1_PhotoGallery.jpg</Src>
+						<Rank>22</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649262" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_23_21_1_PhotoGallery.jpg</Src>
+						<Rank>23</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649264" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_24_22_1_PhotoGallery.jpg</Src>
+						<Rank>24</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649266" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_25_23_1_PhotoGallery.jpg</Src>
+						<Rank>25</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649268" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_26_24_1_PhotoGallery.jpg</Src>
+						<Rank>26</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649270" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_2_02_1_PhotoGallery.jpg</Src>
+						<Rank>2</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649272" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_3_03_1_PhotoGallery.jpg</Src>
+						<Rank>3</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649274" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_4_04_1_PhotoGallery.jpg</Src>
+						<Rank>4</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649276" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_5_05_1_PhotoGallery.jpg</Src>
+						<Rank>5</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649278" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_6_06_1_PhotoGallery.jpg</Src>
+						<Rank>6</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649280" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_7_07_1_PhotoGallery.jpg</Src>
+						<Rank>7</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649282" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_8_08_1_PhotoGallery.jpg</Src>
+						<Rank>8</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="144341_649284" active="true">
+						<Type>photo</Type>
+						<Name />
+						<Caption />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_9_09_1_PhotoGallery.jpg</Src>
+						<Rank>9</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="937743" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/3_144341_729340.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="937744" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/3_144341_729341.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="937745" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_A556202Studio664_2_FloorPlan.jpg</Src>
+						<Rank>0</Rank>
+						<Width>292</Width>
+						<Height>400</Height>
+				</File>
+				<File id="937746" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_A5Loft56408Studio957_2_FloorPlan.jpg</Src>
+						<Rank>0</Rank>
+						<Width>500</Width>
+						<Height>295</Height>
+				</File>
+				<File id="937747" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_A1412061b1b788_2_FloorPlan.jpg</Src>
+						<Rank>0</Rank>
+						<Width>323</Width>
+						<Height>400</Height>
+				</File>
+				<File id="937755" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_A2094161b1b881_2_FloorPlan.jpg</Src>
+						<Rank>0</Rank>
+						<Width>385</Width>
+						<Height>400</Height>
+				</File>
+				<File id="937756" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/3_144341_729342.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="937749" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/3_144341_729343.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="937748" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/3_144341_729347.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="937757" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/3_144341_729348.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="937764" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_b3094092b2b1179_2_FloorPlan.jpg</Src>
+						<Rank>0</Rank>
+						<Width>192</Width>
+						<Height>150</Height>
+				</File>
+				<File id="937760" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_B1563112b2b1119_2_FloorPlan.jpg</Src>
+						<Rank>0</Rank>
+						<Width>474</Width>
+						<Height>400</Height>
+				</File>
+				<File id="937765" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_C1411092b2b1265_2_FloorPlan.jpg</Src>
+						<Rank>0</Rank>
+						<Width>446</Width>
+						<Height>400</Height>
+				</File>
+				<File id="937769" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_A7Loft564061b1b1035_2_FloorPlan.jpg</Src>
+						<Rank>0</Rank>
+						<Width>500</Width>
+						<Height>295</Height>
+				</File>
+				<File id="937758" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/3_144341_729344.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="937759" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/3_144341_729345.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="937768" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/3_144341_729346.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="937762" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/3_144341_729349.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="937767" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/3_144341_729354.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="937766" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/3_144341_729360.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="937761" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/3_144341_729363.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="937763" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/3_144341_729364.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="937781" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/NJ_Englewood_TheBrownStones_p0151017_th2091212b3b1317_2_FloorPlan.jpg</Src>
+						<Rank>0</Rank>
+						<Width>229</Width>
+						<Height>150</Height>
+				</File>
+				<File id="937784" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/3_144341_716545.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="937770" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/3_144341_729355.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="937785" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/3_144341_729357.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="937773" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/3_144341_729358.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="937779" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/3_144341_729359.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="937772" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/3_144341_729361.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="937778" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/3_144341_729362.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+				<File id="937780" active="true">
+						<Type>floorplan</Type>
+						<Name />
+						<Format>image/jpeg</Format>
+						<Src>http://www.rentcafe.com/dmslivecafe/3/144341/3_144341_729365.jpg</Src>
+						<Rank>1</Rank>
+						<Width>0</Width>
+						<Height>0</Height>
+				</File>
+		</Property>
+</PhysicalProperty>

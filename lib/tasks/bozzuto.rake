@@ -47,6 +47,26 @@ namespace :bozzuto do
     end
   end
 
+  desc 'Load latest feed from Rent Cafe'
+  task :load_rent_cafe_feed => :environment do
+    puts 'Loading RentCafe feed ...'
+
+    begin
+      file = APP_CONFIG[:rent_cafe_feed_file]
+      loader = Bozzuto::RentCafeFeedLoader.new
+      loader.file = file
+
+      if loader.load
+        puts "RentCafe feed successfully loaded"
+      else
+        puts "Can't load RentCafe feed. Try again later."
+      end
+    rescue Exception => e
+      puts "Failed to load feed: #{e.message}"
+      HoptoadNotifier.notify(e)
+    end
+  end
+
   desc 'Refresh Local Info feeds'
   task :refresh_local_info_feeds => :environment do
     Feed.all.each do |feed|

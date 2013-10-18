@@ -1,6 +1,7 @@
 development:
   vaultware_feed_file: /path/to/vaultware/feed/bozzutocom.xml
   property_link_feed_file: /path/to/property_link/feed/property_link.xml
+  rent_cafe_feed_file: /path/to/rent_cafe/feed/rent_cafe.xml
   apartment_export_file: /path/to/apartment_export_file.xml
   sms:
     username:

@@ -26,6 +26,10 @@ every 1.day, :at => '8:30 am' do
   rake 'bozzuto:load_vaultware_feed'
 end
 
+every 1.day, :at => '10:00 am' do
+  rake 'bozzuto:load_rent_cafe_feed'
+end
+
 if environment == 'production'
   every 1.day, :at => '9:00 am' do
     command 'cp /home/vault/bozzutocom.xml /home/bozzuto/'
