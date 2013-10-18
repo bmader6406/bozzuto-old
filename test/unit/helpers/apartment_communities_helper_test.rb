@@ -133,5 +133,49 @@ class ApartmentCommunitiesHelperTest < ActionView::TestCase
         end
       end
     end
+
+    context "#availability_link" do
+      context "community is managed by rent cafe" do
+        setup do
+          @community = ApartmentCommunity.make(:rent_cafe)
+        end
+
+        should "return 'Apply Now' as the link text" do
+          assert_match /Apply Now/, availability_link(@community)
+        end
+      end
+
+      context "community is managed by anything else" do
+        setup do
+          @community = ApartmentCommunity.make
+        end
+
+        should "return 'Availability' as the link text" do
+          assert_match /Availability/, availability_link(@community)
+        end
+      end
+    end
+
+    context "#reserve_link" do
+      context "plan is managed by rent cafe" do
+        setup do
+          @plan = ApartmentFloorPlan.make(:rent_cafe)
+        end
+
+        should "return 'Apply Now' as the link text" do
+          assert_match /Apply Now/, reserve_link(@plan)
+        end
+      end
+
+      context "plan is managed by anything else" do
+        setup do
+          @plan = ApartmentFloorPlan.make
+        end
+
+        should "return 'Reserve' as the link text" do
+          assert_match /Reserve/, reserve_link(@plan)
+        end
+      end
+    end
   end
 end

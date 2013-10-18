@@ -65,7 +65,7 @@
                 </td>
 
                 <td class="availability">
-                  <%= link_to "Availability", (@community.availability_url.presence || apartment_community_contact_path(@community)), :rel => 'external', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Availability" %>
+                  <%= availability_link(@community, :rel => 'external', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Availability") %>
                 </td>
               </tr>
             <% end %>
@@ -89,7 +89,7 @@
 
                 <% if plan.availability_url.present? %>
                   <br />
-									<%= link_to 'Reserve', plan.availability_url, :class => 'floor-plan-reserve', :rel => 'external', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Reserve" %>
+                  <%= reserve_link(plan, :class => 'floor-plan-reserve', :rel => 'external', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Reserve") %>
                 <% end %>
               </p>
 

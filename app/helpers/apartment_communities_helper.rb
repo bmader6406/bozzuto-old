@@ -103,5 +103,19 @@ module ApartmentCommunitiesHelper
     ['750', '1000', '1250', '1500', '1750', '2000', '2500', '3000', '4000', '5000', '6000', '7000', '8000', '9000', '10000'].map do |price|
       [number_to_currency(price), price]
     end
-  end  
+  end
+
+  def availability_link(community, opts = {})
+    text = community.managed_by_rent_cafe? ? 'Apply Now' : 'Availability'
+    url  = community.availability_url.presence || apartment_community_contact_path(community)
+
+    link_to(text, url, opts={})
+  end
+
+  def reserve_link(plan, opts = {})
+    text = plan.managed_by_rent_cafe? ? 'Apply Now' : 'Reserve'
+    url  = plan.availability_url
+
+    link_to(text, url, opts)
+  end
 end
