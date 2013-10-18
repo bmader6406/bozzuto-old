@@ -2,7 +2,7 @@ $nav-height: 34px;
 
 header {
   position: relative;
-  z-index: 1;
+  z-index: 10;
 
   .h-logo {
     background: url(/images/redesign/bozzuto-logo.png) no-repeat;
@@ -97,7 +97,7 @@ $dropdown-transition-duration: 0.25s;
     @include clearfix;
 
     background-color: #fff;
-    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
     opacity: 0;
     padding: 20px 30px;
     position: absolute;
