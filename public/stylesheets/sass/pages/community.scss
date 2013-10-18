@@ -448,8 +448,12 @@
     letter-spacing: 1px;
     text-transform: uppercase;
   }
-}
 
+  .cty-floor-plan-image-link {
+    display: block;
+    margin-top: 15px;
+  }
+}
 .cty-recent {
   @include clearfix;
 
