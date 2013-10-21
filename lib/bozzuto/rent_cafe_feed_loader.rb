@@ -26,5 +26,23 @@ module Bozzuto
     office_hour_open_time         './OpenTime'
     office_hour_close_time        './CloseTime'
     office_hour_day               './Day'
+
+    def process_floor_plans(property)
+      # Floor plan images are stored outside of the Floorplan node. This
+      # overrides the floor plan processing logic to fetch the file node
+      # by id
+      property.xpath('./Floorplan').each do |plan|
+        file  = property.xpath("./File[@id=#{plan['id']}]").first
+        attrs = floor_plan_attributes(plan)
+
+        attrs.merge!(
+          :external_cms_file_id => (file['id'] rescue nil),
+          :image_url            => (file.at('./Src').content rescue nil),
+          :rolled_up            => false
+        )
+
+        create_or_update_floor_plan(attrs)
+      end
+    end
   end
 end

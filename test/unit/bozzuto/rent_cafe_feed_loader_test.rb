@@ -236,6 +236,8 @@ module Bozzuto
 
     def floor_plan_attributes(plans)
       plans.map do |plan|
+        file = @property.xpath("./File[@id=#{plan['id']}]").first
+
         {
           :name               => plan.at('./Name').content,
           :rolled_up          => false,
@@ -249,6 +251,7 @@ module Bozzuto
           :max_market_rent    => plan.at('./MarketRent')['max'].to_f,
           :min_effective_rent => plan.at('./EffectiveRent')['min'].to_f,
           :max_effective_rent => plan.at('./EffectiveRent')['max'].to_f,
+          :image_url          => (file.at('./Src').content rescue nil),
           :external_cms_id    => plan['id'],
           :external_cms_type  => 'rent_cafe'
         }
