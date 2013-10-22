@@ -1,6 +1,8 @@
 <div class="cty-slideshow">
   <h2 class="cty-slideshow-title"><%= community.short_name %></h2>
 
+  <div class="cty-slideshow-shadow"></div>
+
   <div class="cty-slideshow-images">
     <% community.slideshow.slides.each_with_index do |slide, i| %>
       <%= image_tag slide.image.url, :style => ("display: none;" unless i == 0) %>

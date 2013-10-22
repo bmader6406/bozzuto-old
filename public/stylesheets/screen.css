@@ -33,12 +33,12 @@
  * License URL: http://www.fontspring.com/fflicense/fontsite
  */
 @font-face {
-	font-family: 'FontSite Sans';
-	src: url('fonts/FontSiteSans-LightCd-webfont.eot');
+	font-family: 'FontSiteSansLightCond';
+	src: url('fonts/FontSiteSans-LightCd.eot');
 	src: local('☺'),
-    url('fonts/FontSiteSans-LightCd-webfont.woff') format('woff'),
-    url('fonts/FontSiteSans-LightCd-webfont.ttf') format('truetype'),
-    url('fonts/FontSiteSans-LightCd-webfont.svg#webfont2X6HCJ0U') format('svg');
+    url('fonts/FontSiteSans-LightCd.woff') format('woff'),
+    url('fonts/FontSiteSans-LightCd.ttf') format('truetype'),
+    url('fonts/FontSiteSans-LightCd.svg#webfont2X6HCJ0U') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -55,7 +55,7 @@
     color: #84848b;
   }
   h1 {
-    font-family: 'FontSite Sans', 'Arial Narrow', 'Arial', sans-serif;
+    font-family: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   }
   em { font-style: italic; }
   strong { font-weight: bold; }
@@ -781,7 +781,7 @@
     }
     div.promo h4 {
       color: #ff9000;
-      font-family: 'FontSite Sans', 'Arial Narrow', Arial, sans-serif;
+      font-family: 'FontSiteSansLightCond', 'Arial Narrow', Arial, sans-serif;
       font-size: 35px;
       line-height: 1;
       margin-bottom: 1px;
@@ -4939,7 +4939,7 @@ div.wysiwyg ul li {
 }
 
 .hdr-w-cta .hdr {
-	font: 35px/1 "FontSite Sans";
+	font: 35px/1 "FontSiteSansLightCond";
 	text-transform: uppercase;
 }
 

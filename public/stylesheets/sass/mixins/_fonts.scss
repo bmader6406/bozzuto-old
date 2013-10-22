@@ -4,14 +4,9 @@
   text-transform: none;
 }
 
-@mixin font-site-sans-light {
-  font-family: FontSiteSansLight;
+@mixin font-site-sans-light-cond {
+  font-family: FontSiteSansLightCond;
   font-weight: normal;
-}
-
-@mixin font-site-sans {
-  font-family: FontSiteSans;
-  font-weight: bold;
 }
 
 .ico {
