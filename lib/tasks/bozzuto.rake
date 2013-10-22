@@ -73,7 +73,7 @@ namespace :bozzuto do
       begin
         puts
         puts "==> Refreshing #{feed.name} feed (#{feed.url})"
-        feed.refresh
+        feed.refresh!
       rescue Exception => e
         puts "Failed to load feed: #{e.message}"
         HoptoadNotifier.notify(e)

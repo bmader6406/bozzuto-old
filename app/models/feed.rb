@@ -1,5 +1,6 @@
 class Feed < ActiveRecord::Base
-  include HTTParty
+  class FeedNotFound < StandardError; end
+  class InvalidFeed < StandardError; end
 
   has_many :items,
            :class_name => 'FeedItem',
@@ -7,37 +8,31 @@ class Feed < ActiveRecord::Base
 
   has_many :properties, :foreign_key => :local_info_feed_id
 
+  before_validation :strip_whitespace
 
   validates_presence_of :name, :url
 
   validates_uniqueness_of :url
 
-  validate :valid_feed, :on => :create
+  validate_on_create :feed_valid?
 
 
   def typus_name
     name
   end
 
-  def refresh
-    fetch_feed
-
-    if @feed_data.code == 404
-      raise FeedNotFound, "Could not find feed at #{url}"
+  def refresh!
+    if !rss_fetcher.found?
+      raise FeedNotFound, "Could not load feed: #{url}"
     end
 
-    if !valid_rss_feed?
-      raise InvalidFeed, 'Not a valid RSS feed'
+    if !rss_fetcher.feed_valid?
+      raise InvalidFeed, "Not a valid RSS feed: #{url}"
     end
 
     items.destroy_all
 
-    rss_items = (@feed_data['rss']['channel']['item'] || [])
-    if rss_items.is_a? Hash
-      rss_items = [rss_items]
-    end
-
-    rss_items.each do |item|
+    rss_fetcher.items.each do |item|
       items << FeedItem.new({
         :title        => item['title'],
         :description  => Nokogiri::HTML(item['description']).content,
@@ -47,44 +42,28 @@ class Feed < ActiveRecord::Base
     end
 
     self.refreshed_at = Time.now
+
     save
   end
 
+  def feed_valid?
+    return if url.blank?
 
-  class FeedNotFound < StandardError; end
-  class InvalidFeed < StandardError; end
-
-  class Parser < HTTParty::Parser
-    SupportedFormats = {
-      'application/rss+xml' => :xml,
-      'text/xml'            => :xml
-    }
+    if !rss_fetcher.found?
+      errors.add(:url, "could not be found")
+    elsif !rss_fetcher.feed_valid?
+      errors.add(:url, 'is not a valid RSS feed')
+    end
   end
-
-  parser Parser
 
 
   protected
 
-  def fetch_feed
-    @feed_data = Feed.get(url)
+  def rss_fetcher
+    @rss_fetcher ||= Bozzuto::RssFetcher.new(url)
   end
 
-  def valid_rss_feed?
-    @feed_data.is_a?(Hash) && @feed_data['rss'].present?
-  rescue MultiXml::ParseError
-    false
-  end
-
-  def valid_feed
-    return if url.blank?
-
-    fetch_feed
-
-    if @feed_data.code == 404
-      errors.add(:url, 'could not be found')
-    elsif !valid_rss_feed?
-      errors.add(:url, 'is not a valid RSS feed')
-    end
+  def strip_whitespace
+    self.url = url.strip if url.present?
   end
 end

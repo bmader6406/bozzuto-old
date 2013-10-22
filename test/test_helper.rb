@@ -78,6 +78,12 @@ class ActiveSupport::TestCase
   end
 end
 
+class Shoulda::Context
+  alias_method :describe, :context
+  alias_method :before,   :setup
+  alias_method :it,       :should
+end
+
 class ActionController::TestCase
   protected
   

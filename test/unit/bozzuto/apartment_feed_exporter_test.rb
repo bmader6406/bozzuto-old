@@ -38,7 +38,7 @@ module Bozzuto
         local_info_feed = Feed.make_unsaved({
           :url => 'http://bozzuto.com/feed'
         })
-        local_info_feed.expects(:valid_feed)
+        local_info_feed.expects(:feed_valid?)
         local_info_feed.save
 
         @expiration_date = Time.current.advance(:days => 15)

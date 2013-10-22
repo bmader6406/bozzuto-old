@@ -66,7 +66,6 @@ class CommunityTest < ActiveSupport::TestCase
         end
 
         should 'have a default featured_position of 1' do
-          #debugger
           @community.save
           assert_equal 1, @community.featured_position
         end
@@ -307,7 +306,7 @@ class CommunityTest < ActiveSupport::TestCase
     context 'with a Yelp Feed' do
       setup do
         @feed = Feed.make_unsaved
-        @feed.expects(:valid_feed)
+        @feed.expects(:feed_valid?)
         @feed.save
 
         3.times { FeedItem.make :feed => @feed }

@@ -2,19 +2,24 @@ require 'test_helper'
 
 class FeedTest < ActiveSupport::TestCase
   context 'Feed' do
-    setup do
-      @fixture = load_fixture_file('pipes.rss')
-      @rss     = Feed::Parser.call(@fixture, :xml)
-      @url     = Sham.feed_url
+    before do
+      @fixture = load_fixture_file('rss_multiple_items.rss')
+      @rss     = Bozzuto::RssFetcher::RssParser.call(@fixture, :xml)
+      @items   = @rss['rss']['channel']['item']
 
-      stub_request(:get, @url).to_return(
-        :body    => @fixture,
-        :headers => { 'Content-Type' => 'text/xml' }
-      )
-      @feed = Feed.make :url => @url
+      @url = Sham.feed_url
+
+      @existing_feed = Feed.make_unsaved.tap do |feed|
+        stub_request(:get, feed.url).to_return(
+          :body    => @fixture,
+          :headers => { 'Content-Type' => 'text/xml' }
+        )
+
+        feed.save
+      end
     end
 
-    subject { @feed }
+    subject { Feed.new }
 
     should_have_many :items, :dependent => :destroy
     should_have_many :properties
@@ -22,106 +27,140 @@ class FeedTest < ActiveSupport::TestCase
     should_validate_presence_of :name, :url
     should_validate_uniqueness_of :url
 
-    context '#typus_name' do
-      should 'return the name' do
-        assert_equal @feed.name, @feed.typus_name
+    describe "#typus_name" do
+      it "returns the name" do
+        subject.name = 'Hooray'
+
+        assert_equal subject.name, subject.typus_name
       end
     end
 
-    context 'when validating on create' do
-      setup do
-        @url = Sham.feed_url
-        @feed = Feed.new :url => @url
+    describe "before validating" do
+      before do
+        subject.url = " \thttp://yay.com\t\t "
+        subject.expects(:feed_valid?)
       end
 
-      context 'and url cannot be found' do
-        setup do
-          stub_request(:get, @url).to_return(:status => 404)
-        end
+      it "strips whitespace" do
+        subject.valid?
 
-        should 'have errors' do
-          assert @feed.invalid?
-          assert @feed.errors.on(:url)
-          assert @feed.errors.on(:url).any? { |err| err =~ /not be found/ }
-        end
+        assert_equal 'http://yay.com', subject.url
+      end
+    end
+
+    describe "validating on create" do
+      before do
+        subject.name = 'The Feed'
+        subject.url  = @url
       end
 
-      context 'and url is not valid RSS' do
-        setup do
-          stub_request(:get, @url).to_return(
-            :status  => 200,
-            :body    => 'blah blah blah',
+      context "feed is not found" do
+        before do
+          stub_request(:get, subject.url).to_return(
+            :status  => 404,
+            :body    => '',
             :headers => { 'Content-Type' => 'text/xml' }
           )
         end
 
-        should 'have errors' do
-          assert @feed.invalid?
-          assert @feed.errors.on(:url)
-          assert_equal 1, @feed.errors.on(:url).grep(/valid RSS/).length
+        it "sets the error message" do
+          assert !subject.valid?
+          assert_equal 'could not be found', subject.errors.on(:url)
+        end
+      end
+
+      context "feed is invalid" do
+        before do
+          stub_request(:get, subject.url).to_return(
+            :body    => '<yay>hooray',
+            :headers => { 'Content-Type' => 'text/xml' }
+          )
+        end
+
+        it "sets the error message" do
+          assert !subject.valid?
+          assert_equal 'is not a valid RSS feed', subject.errors.on(:url)
+        end
+      end
+
+      context "feed is valid" do
+        before do
+          stub_request(:get, subject.url).to_return(
+            :body    => @fixture,
+            :headers => { 'Content-Type' => 'text/xml' }
+          )
+        end
+
+        it "is valid" do
+          assert subject.valid?
+          assert_nil subject.errors.on(:url)
         end
       end
     end
 
+    describe "#refresh!" do
+      before do
+        subject.name = 'The Feed'
+        subject.url  = @url
 
-    context 'on #refresh' do
-      context 'the feed cannot be found' do
-        setup do
-          stub_request(:get, @url).to_return(:status => 404)
+        subject.expects(:feed_valid?).returns(true)
+
+        subject.save
+      end
+
+      context "feed is not found" do
+        before do
+          stub_request(:get, subject.url).to_return(
+            :status  => 404,
+            :body    => '',
+            :headers => { 'Content-Type' => 'text/xml' }
+          )
         end
 
-        should 'raise a FeedNotFound exception' do
-          assert_raise(Feed::FeedNotFound) { @feed.refresh }
+        it "raises an exception" do
+          assert_raises(Feed::FeedNotFound) do
+            subject.refresh!
+          end
         end
       end
 
-      context 'when the feed is found' do
-        context 'and is valid RSS' do
-          should 'load the data' do
-            @feed.refresh
-
-            assert_equal @rss['rss']['channel']['item'].length,
-              @feed.items.length
-
-            @rss['rss']['channel']['item'].each_with_index do |item, i|
-              assert_equal item['title'], @feed.items[i].title
-              assert_equal Nokogiri::HTML(item['description']).content,
-                @feed.items[i].description
-              assert_equal item['link'], @feed.items[i].url
-              unless item['pubDate'].blank?
-                # must send #to_s here for Yahoo Pipes janky RSS feed
-                assert_equal Time.zone.parse(item['pubDate'].to_s).rfc822,
-                  @feed.items[i].published_at.rfc822
-              end
-            end
-          end
-
-          should 'set "refreshed_at"' do
-            time = Time.now - 1.day
-            @feed.refreshed_at = time
-            @feed.save
-            assert_equal time, @feed.refreshed_at
-
-            @feed.refresh
-            assert @feed.refreshed_at != time
-          end
+      context "feed is invalid" do
+        before do
+          stub_request(:get, subject.url).to_return(
+            :body    => '<yay>hooray',
+            :headers => { 'Content-Type' => 'text/xml' }
+          )
         end
 
-        context 'and is not valid RSS' do
-          setup do
-            stub_request(:get, @url).to_return(
-              :status  => 200,
-              :body    => 'rss blah blah',
-              :headers => { 'Content-Type' => 'text/plain' }
-            )
+        it "raises an exception" do
+          assert_raises(Feed::InvalidFeed) do
+            subject.refresh!
           end
+        end
+      end
 
-          should 'raise an InvalidFeed exception' do
-            assert_raise(Feed::InvalidFeed) { @feed.refresh }
+      context "feed is valid" do
+        before do
+          stub_request(:get, subject.url).to_return(
+            :body    => @fixture,
+            :headers => { 'Content-Type' => 'text/xml' }
+          )
+        end
+
+        it "creates all the items" do
+          subject.refresh!
+
+          subject.items.zip(@items).each do |actual, expected|
+            assert_equal expected['title'], actual.title
+            assert_equal expected['link'],  actual.url
+
+            assert_equal Nokogiri::HTML(expected['description']).content, actual.description
+
+            # must send #to_s here for Yahoo Pipes janky RSS feed
+            assert_equal Time.zone.parse(expected['pubDate'].to_s).rfc822, actual.published_at.rfc822
           end
         end
       end
     end
-
   end
 end
