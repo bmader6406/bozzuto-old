@@ -32,7 +32,7 @@ class Feed < ActiveRecord::Base
 
     items.destroy_all
 
-    rss_items = @feed_data['rss']['channel']['item']
+    rss_items = (@feed_data['rss']['channel']['item'] || [])
     if rss_items.is_a? Hash
       rss_items = [rss_items]
     end

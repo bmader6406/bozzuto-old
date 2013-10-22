@@ -71,7 +71,8 @@ namespace :bozzuto do
   task :refresh_local_info_feeds => :environment do
     Feed.all.each do |feed|
       begin
-        puts "Refreshing #{feed.name} feed (#{feed.url})"
+        puts
+        puts "==> Refreshing #{feed.name} feed (#{feed.url})"
         feed.refresh
       rescue Exception => e
         puts "Failed to load feed: #{e.message}"
