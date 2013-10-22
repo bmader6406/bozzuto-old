@@ -19,6 +19,7 @@
 				<WebSite>http://www.bozzuto.com</WebSite>
 		</Management>
 		<Property managementID="8131">
+				<Availability>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537</Availability>
 				<Identification type="Apartment" rentalType="market rate">
 						<PrimaryID>p0117760</PrimaryID>
 						<SecondaryID>p0117760</SecondaryID>
@@ -131,6 +132,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858901</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858902">
 						<Name>B3-2</Name>
@@ -158,6 +162,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858902</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858903">
 						<Name>A0</Name>
@@ -185,6 +192,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858903</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858904">
 						<Name>A1-1</Name>
@@ -212,6 +222,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858904</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858905">
 						<Name>A2</Name>
@@ -239,6 +252,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858905</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858906">
 						<Name>A3-1</Name>
@@ -266,6 +282,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858906</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858907">
 						<Name>A3-2</Name>
@@ -285,14 +304,17 @@
 								<Comment>Bedroom and Bathroom values not found</Comment>
 						</Room>
 						<SquareFeet min="665" max="665" />
-						<MarketRent min="2781.00" max="3930.00" />
-						<EffectiveRent min="2781.00" max="3930.00" />
+						<MarketRent min="2815.00" max="3989.00" />
+						<EffectiveRent min="2815.00" max="3989.00" />
 						<Deposit type="Security Deposit">
 								<Amount>0</Amount>
 								<Description>Security Deposit</Description>
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858907</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858908">
 						<Name>A3-3</Name>
@@ -320,6 +342,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858908</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858909">
 						<Name>A4</Name>
@@ -347,6 +372,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858909</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858910">
 						<Name>A5</Name>
@@ -374,6 +402,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858910</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858911">
 						<Name>A6</Name>
@@ -393,14 +424,17 @@
 								<Comment>Bedroom and Bathroom values not found</Comment>
 						</Room>
 						<SquareFeet min="801" max="801" />
-						<MarketRent min="3688.00" max="5001.00" />
-						<EffectiveRent min="3688.00" max="5001.00" />
+						<MarketRent min="3716.00" max="5035.00" />
+						<EffectiveRent min="3716.00" max="5035.00" />
 						<Deposit type="Security Deposit">
 								<Amount>0</Amount>
 								<Description>Security Deposit</Description>
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858911</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858912">
 						<Name>A7</Name>
@@ -428,6 +462,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858912</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858913">
 						<Name>A8</Name>
@@ -455,6 +492,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858913</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858914">
 						<Name>A9</Name>
@@ -482,6 +522,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858914</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858915">
 						<Name>A10</Name>
@@ -509,6 +552,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858915</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858916">
 						<Name>B1-1</Name>
@@ -536,6 +582,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858916</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858917">
 						<Name>B1-2</Name>
@@ -563,6 +612,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858917</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858918">
 						<Name>B10</Name>
@@ -590,6 +642,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858918</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858919">
 						<Name>B11</Name>
@@ -617,6 +672,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858919</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858920">
 						<Name>B12</Name>
@@ -644,6 +702,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858920</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858921">
 						<Name>B13</Name>
@@ -671,6 +732,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858921</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858922">
 						<Name>B14</Name>
@@ -698,6 +762,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858922</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858923">
 						<Name>B15</Name>
@@ -725,6 +792,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858923</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858924">
 						<Name>B2</Name>
@@ -752,6 +822,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858924</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858925">
 						<Name>B3-1</Name>
@@ -779,6 +852,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858925</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858926">
 						<Name>B4-1</Name>
@@ -806,6 +882,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858926</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858927">
 						<Name>B4-2</Name>
@@ -833,6 +912,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858927</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858928">
 						<Name>B5</Name>
@@ -860,6 +942,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858928</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858929">
 						<Name>B6</Name>
@@ -887,6 +972,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858929</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858930">
 						<Name>B7-1</Name>
@@ -914,6 +1002,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858930</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858931">
 						<Name>B7-2</Name>
@@ -941,6 +1032,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858931</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858932">
 						<Name>B8-1</Name>
@@ -968,6 +1062,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858932</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858933">
 						<Name>B8-2</Name>
@@ -995,6 +1092,9 @@
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858933</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="858934">
 						<Name>B9</Name>
@@ -1014,14 +1114,17 @@
 								<Comment>Bedroom and Bathroom values not found</Comment>
 						</Room>
 						<SquareFeet min="877" max="877" />
-						<MarketRent min="3473.00" max="4390.00" />
-						<EffectiveRent min="3473.00" max="4390.00" />
+						<MarketRent min="3501.00" max="4569.00" />
+						<EffectiveRent min="3501.00" max="4569.00" />
 						<Deposit type="Security Deposit">
 								<Amount>0</Amount>
 								<Description>Security Deposit</Description>
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=111537&amp;floorPlans=858934</General>
+						</Amenities>
 				</Floorplan>
 				<ILS_Unit>
 						<UnitID>521</UnitID>
@@ -1051,7 +1154,7 @@
 						<MinSquareFeet>665.00</MinSquareFeet>
 						<MaxSquareFeet>665.00</MaxSquareFeet>
 						<SquareFootType>Internal</SquareFootType>
-						<UnitRent>2781.00</UnitRent>
+						<UnitRent>2815.00</UnitRent>
 						<MarketRent>2550.00</MarketRent>
 						<UnitEconomicStatus>residential</UnitEconomicStatus>
 						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
@@ -1071,7 +1174,7 @@
 						<MinSquareFeet>801.00</MinSquareFeet>
 						<MaxSquareFeet>801.00</MaxSquareFeet>
 						<SquareFootType>Internal</SquareFootType>
-						<UnitRent>3688.00</UnitRent>
+						<UnitRent>3716.00</UnitRent>
 						<MarketRent>3300.00</MarketRent>
 						<UnitEconomicStatus>residential</UnitEconomicStatus>
 						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
@@ -1151,7 +1254,7 @@
 						<MinSquareFeet>877.00</MinSquareFeet>
 						<MaxSquareFeet>877.00</MaxSquareFeet>
 						<SquareFootType>Internal</SquareFootType>
-						<UnitRent>3473.00</UnitRent>
+						<UnitRent>3501.00</UnitRent>
 						<MarketRent>2940.00</MarketRent>
 						<UnitEconomicStatus>residential</UnitEconomicStatus>
 						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
@@ -1755,6 +1858,7 @@
 				</File>
 		</Property>
 		<Property managementID="8131">
+				<Availability>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341</Availability>
 				<Identification type="Apartment" rentalType="market rate">
 						<PrimaryID>p0151017</PrimaryID>
 						<SecondaryID>p0151017</SecondaryID>
@@ -1887,6 +1991,9 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937743</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937744">
 						<Name>Studio Loft / One Bath - A9 Loft</Name>
@@ -1914,6 +2021,9 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937744</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937745">
 						<Name>Studio / One Bath - A5</Name>
@@ -1941,6 +2051,9 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937745</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937746">
 						<Name>Studio Loft / One Bath - A5 Loft</Name>
@@ -1968,12 +2081,15 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937746</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937747">
 						<Name>One Bedroom / One Bath - A1</Name>
 						<Comment />
 						<UnitCount>74</UnitCount>
-						<UnitsAvailable>1</UnitsAvailable>
+						<UnitsAvailable>2</UnitsAvailable>
 						<Room type="bedroom">
 								<Count>1</Count>
 								<Comment>Voyager value</Comment>
@@ -1987,14 +2103,17 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<Comment>Bedroom and Bathroom values not found</Comment>
 						</Room>
 						<SquareFeet min="788" max="788" />
-						<MarketRent min="1873.00" max="2544.00" />
-						<EffectiveRent min="1873.00" max="2544.00" />
+						<MarketRent min="1815.00" max="2637.00" />
+						<EffectiveRent min="1815.00" max="2637.00" />
 						<Deposit type="Security Deposit">
 								<Amount>0</Amount>
 								<Description>Security Deposit</Description>
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937747</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937748">
 						<Name>One Bedroom / One Bath Loft - A1 Loft</Name>
@@ -2022,6 +2141,9 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937748</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937749">
 						<Name>One Bedroom / One Bath - A4</Name>
@@ -2049,6 +2171,9 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937749</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937755">
 						<Name>One Bedroom / One Bath - A2</Name>
@@ -2076,6 +2201,9 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937755</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937756">
 						<Name>One Bedroom / One Bath - A3</Name>
@@ -2103,6 +2231,9 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937756</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937757">
 						<Name>One Bedroom / One Bath Loft - A3 Loft</Name>
@@ -2130,6 +2261,9 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937757</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937758">
 						<Name>One Bedroom / One Bath - A6</Name>
@@ -2157,6 +2291,9 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937758</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937759">
 						<Name>One Bedroom / One Bath - A7</Name>
@@ -2184,12 +2321,15 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937759</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937760">
 						<Name>Two Bedroom / Two Bath - B1</Name>
 						<Comment />
 						<UnitCount>63</UnitCount>
-						<UnitsAvailable>5</UnitsAvailable>
+						<UnitsAvailable>4</UnitsAvailable>
 						<Room type="bedroom">
 								<Count>2</Count>
 								<Comment>Voyager value</Comment>
@@ -2203,14 +2343,17 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<Comment>Bedroom and Bathroom values not found</Comment>
 						</Room>
 						<SquareFeet min="1119" max="1119" />
-						<MarketRent min="2203.00" max="3903.00" />
-						<EffectiveRent min="2203.00" max="3903.00" />
+						<MarketRent min="2239.00" max="3903.00" />
+						<EffectiveRent min="2239.00" max="3903.00" />
 						<Deposit type="Security Deposit">
 								<Amount>0</Amount>
 								<Description>Security Deposit</Description>
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937760</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937761">
 						<Name>Two Bedroom / Two Bath Loft - B1 Loft</Name>
@@ -2230,14 +2373,17 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<Comment>Bedroom and Bathroom values not found</Comment>
 						</Room>
 						<SquareFeet min="1389" max="1389" />
-						<MarketRent min="2433.00" max="3923.00" />
-						<EffectiveRent min="2433.00" max="3923.00" />
+						<MarketRent min="2449.00" max="3923.00" />
+						<EffectiveRent min="2449.00" max="3923.00" />
 						<Deposit type="Security Deposit">
 								<Amount>0</Amount>
 								<Description>Security Deposit</Description>
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937761</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937762">
 						<Name>Two Bedroom / Two Bath - B2</Name>
@@ -2265,6 +2411,9 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937762</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937763">
 						<Name>Two Bedroom / Two Bath Loft - B2 Loft</Name>
@@ -2292,6 +2441,9 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937763</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937764">
 						<Name>Two Bedroom / Two Bath - B3</Name>
@@ -2319,12 +2471,15 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937764</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937765">
 						<Name>Two Bedroom / Two Bath Corner - C1</Name>
 						<Comment />
 						<UnitCount>40</UnitCount>
-						<UnitsAvailable>8</UnitsAvailable>
+						<UnitsAvailable>7</UnitsAvailable>
 						<Room type="bedroom">
 								<Count>2</Count>
 								<Comment>Voyager value</Comment>
@@ -2338,14 +2493,17 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<Comment>Bedroom and Bathroom values not found</Comment>
 						</Room>
 						<SquareFeet min="1265" max="1265" />
-						<MarketRent min="2393.00" max="4031.00" />
-						<EffectiveRent min="2393.00" max="4031.00" />
+						<MarketRent min="2429.00" max="4031.00" />
+						<EffectiveRent min="2429.00" max="4031.00" />
 						<Deposit type="Security Deposit">
 								<Amount>0</Amount>
 								<Description>Security Deposit</Description>
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937765</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937766">
 						<Name>Two Bedroom / Two Bath Corner Loft - C1 Loft</Name>
@@ -2373,6 +2531,9 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937766</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937767">
 						<Name>Two Bedroom / Two Bath Corner - C2</Name>
@@ -2400,6 +2561,9 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937767</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937768">
 						<Name>One Bedroom / One Bath - A8</Name>
@@ -2419,14 +2583,17 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<Comment>Bedroom and Bathroom values not found</Comment>
 						</Room>
 						<SquareFeet min="854" max="854" />
-						<MarketRent min="2241.00" max="3441.00" />
-						<EffectiveRent min="2241.00" max="3441.00" />
+						<MarketRent min="2183.00" max="3360.00" />
+						<EffectiveRent min="2183.00" max="3360.00" />
 						<Deposit type="Security Deposit">
 								<Amount>0</Amount>
 								<Description>Security Deposit</Description>
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937768</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937769">
 						<Name>One Bedroom / One Bath Loft - A7 Loft</Name>
@@ -2454,6 +2621,9 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937769</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937770">
 						<Name>Two Bedroom / Two Bath Corner - C3</Name>
@@ -2481,6 +2651,9 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937770</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937772">
 						<Name>Two Bedroom / Two Bath Corner Loft - C3 Loft</Name>
@@ -2508,6 +2681,9 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937772</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937773">
 						<Name>Two Bedroom / Two Bath Corner - C5</Name>
@@ -2535,6 +2711,9 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937773</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937778">
 						<Name>Two Bedroom / Two Bath Corner Loft - C5 Loft</Name>
@@ -2562,6 +2741,9 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937778</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937779">
 						<Name>Two Bedroom / Two Bath Corner - C6</Name>
@@ -2589,6 +2771,9 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937779</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937780">
 						<Name>Two Bedroom / Three Bath - TH1</Name>
@@ -2616,12 +2801,15 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937780</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937781">
 						<Name>Two Bedroom / Three Bath (end unit) - TH2</Name>
 						<Comment />
 						<UnitCount>29</UnitCount>
-						<UnitsAvailable>3</UnitsAvailable>
+						<UnitsAvailable>2</UnitsAvailable>
 						<Room type="bedroom">
 								<Count>2</Count>
 								<Comment>Voyager value</Comment>
@@ -2635,14 +2823,17 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<Comment>Bedroom and Bathroom values not found</Comment>
 						</Room>
 						<SquareFeet min="1317" max="1317" />
-						<MarketRent min="2436.00" max="3726.00" />
-						<EffectiveRent min="2436.00" max="3726.00" />
+						<MarketRent min="2514.00" max="3430.00" />
+						<EffectiveRent min="2514.00" max="3430.00" />
 						<Deposit type="Security Deposit">
 								<Amount>0</Amount>
 								<Description>Security Deposit</Description>
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937781</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937784">
 						<Name>Two Bedroom / Three Bath Corner - TH3</Name>
@@ -2670,6 +2861,9 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937784</General>
+						</Amenities>
 				</Floorplan>
 				<Floorplan id="937785">
 						<Name>Two Bedroom / Two Bath Corner - C4</Name>
@@ -2689,14 +2883,17 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 								<Comment>Bedroom and Bathroom values not found</Comment>
 						</Room>
 						<SquareFeet min="1333" max="1333" />
-						<MarketRent min="2572.00" max="3812.00" />
-						<EffectiveRent min="2572.00" max="3812.00" />
+						<MarketRent min="2594.00" max="3812.00" />
+						<EffectiveRent min="2594.00" max="3812.00" />
 						<Deposit type="Security Deposit">
 								<Amount>0</Amount>
 								<Description>Security Deposit</Description>
 								<PercentRefundable>-0.0</PercentRefundable>
 								<PortionRefundable>0.00</PortionRefundable>
 						</Deposit>
+						<Amenities>
+								<General>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341&amp;floorPlans=937785</General>
+						</Amenities>
 				</Floorplan>
 				<ILS_Unit>
 						<UnitID>09-209</UnitID>
@@ -2706,7 +2903,7 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 						<MinSquareFeet>788.00</MinSquareFeet>
 						<MaxSquareFeet>788.00</MaxSquareFeet>
 						<SquareFootType>Internal</SquareFootType>
-						<UnitRent>1873.00</UnitRent>
+						<UnitRent>1815.00</UnitRent>
 						<MarketRent>1933.00</MarketRent>
 						<UnitEconomicStatus>residential</UnitEconomicStatus>
 						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
@@ -2717,6 +2914,26 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 						<FloorplanName>One Bedroom / One Bath - A1</FloorplanName>
 						<PropertyPrimaryID>144341</PropertyPrimaryID>
 						<ExtId>24614</ExtId>
+				</ILS_Unit>
+				<ILS_Unit>
+						<UnitID>41-316</UnitID>
+						<UnitType>297-1562</UnitType>
+						<UnitBedrooms>1</UnitBedrooms>
+						<UnitBathrooms>1.00</UnitBathrooms>
+						<MinSquareFeet>788.00</MinSquareFeet>
+						<MaxSquareFeet>788.00</MaxSquareFeet>
+						<SquareFootType>Internal</SquareFootType>
+						<UnitRent>1815.00</UnitRent>
+						<MarketRent>1933.00</MarketRent>
+						<UnitEconomicStatus>residential</UnitEconomicStatus>
+						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
+						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
+						<UnitLeasedStatus>available</UnitLeasedStatus>
+						<UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
+						<FloorplanID>937747</FloorplanID>
+						<FloorplanName>One Bedroom / One Bath - A1</FloorplanName>
+						<PropertyPrimaryID>144341</PropertyPrimaryID>
+						<ExtId>24640</ExtId>
 				</ILS_Unit>
 				<ILS_Unit>
 						<UnitID>09-518</UnitID>
@@ -2746,7 +2963,7 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 						<MinSquareFeet>854.00</MinSquareFeet>
 						<MaxSquareFeet>854.00</MaxSquareFeet>
 						<SquareFootType>Internal</SquareFootType>
-						<UnitRent>2241.00</UnitRent>
+						<UnitRent>2183.00</UnitRent>
 						<MarketRent>2301.00</MarketRent>
 						<UnitEconomicStatus>residential</UnitEconomicStatus>
 						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
@@ -2766,7 +2983,7 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 						<MinSquareFeet>854.00</MinSquareFeet>
 						<MaxSquareFeet>854.00</MaxSquareFeet>
 						<SquareFootType>Internal</SquareFootType>
-						<UnitRent>2241.00</UnitRent>
+						<UnitRent>2183.00</UnitRent>
 						<MarketRent>2301.00</MarketRent>
 						<UnitEconomicStatus>residential</UnitEconomicStatus>
 						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
@@ -2786,7 +3003,7 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 						<MinSquareFeet>1317.00</MinSquareFeet>
 						<MaxSquareFeet>1317.00</MaxSquareFeet>
 						<SquareFootType>Internal</SquareFootType>
-						<UnitRent>2436.00</UnitRent>
+						<UnitRent>2514.00</UnitRent>
 						<MarketRent>2800.00</MarketRent>
 						<UnitEconomicStatus>residential</UnitEconomicStatus>
 						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
@@ -2806,7 +3023,7 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 						<MinSquareFeet>1317.00</MinSquareFeet>
 						<MaxSquareFeet>1317.00</MaxSquareFeet>
 						<SquareFootType>Internal</SquareFootType>
-						<UnitRent>2436.00</UnitRent>
+						<UnitRent>2514.00</UnitRent>
 						<MarketRent>2800.00</MarketRent>
 						<UnitEconomicStatus>residential</UnitEconomicStatus>
 						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
@@ -2819,26 +3036,6 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 						<ExtId>24922</ExtId>
 				</ILS_Unit>
 				<ILS_Unit>
-						<UnitID>56-107</UnitID>
-						<UnitType>297-1582</UnitType>
-						<UnitBedrooms>2</UnitBedrooms>
-						<UnitBathrooms>3.00</UnitBathrooms>
-						<MinSquareFeet>1317.00</MinSquareFeet>
-						<MaxSquareFeet>1317.00</MaxSquareFeet>
-						<SquareFootType>Internal</SquareFootType>
-						<UnitRent>2503.00</UnitRent>
-						<MarketRent>2870.00</MarketRent>
-						<UnitEconomicStatus>residential</UnitEconomicStatus>
-						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
-						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
-						<UnitLeasedStatus>available</UnitLeasedStatus>
-						<UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
-						<FloorplanID>937781</FloorplanID>
-						<FloorplanName>Two Bedroom / Three Bath (end unit) - TH2</FloorplanName>
-						<PropertyPrimaryID>144341</PropertyPrimaryID>
-						<ExtId>24944</ExtId>
-				</ILS_Unit>
-				<ILS_Unit>
 						<UnitID>09-101</UnitID>
 						<UnitType>297-1575</UnitType>
 						<UnitBedrooms>2</UnitBedrooms>
@@ -2846,7 +3043,7 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 						<MinSquareFeet>1119.00</MinSquareFeet>
 						<MaxSquareFeet>1119.00</MaxSquareFeet>
 						<SquareFootType>Internal</SquareFootType>
-						<UnitRent>2203.00</UnitRent>
+						<UnitRent>2239.00</UnitRent>
 						<MarketRent>2558.00</MarketRent>
 						<UnitEconomicStatus>residential</UnitEconomicStatus>
 						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
@@ -2879,26 +3076,6 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 						<ExtId>24770</ExtId>
 				</ILS_Unit>
 				<ILS_Unit>
-						<UnitID>56-211</UnitID>
-						<UnitType>297-1575</UnitType>
-						<UnitBedrooms>2</UnitBedrooms>
-						<UnitBathrooms>2.00</UnitBathrooms>
-						<MinSquareFeet>1119.00</MinSquareFeet>
-						<MaxSquareFeet>1119.00</MaxSquareFeet>
-						<SquareFootType>Internal</SquareFootType>
-						<UnitRent>2203.00</UnitRent>
-						<MarketRent>2558.00</MarketRent>
-						<UnitEconomicStatus>residential</UnitEconomicStatus>
-						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
-						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
-						<UnitLeasedStatus>available</UnitLeasedStatus>
-						<UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
-						<FloorplanID>937760</FloorplanID>
-						<FloorplanName>Two Bedroom / Two Bath - B1</FloorplanName>
-						<PropertyPrimaryID>144341</PropertyPrimaryID>
-						<ExtId>24814</ExtId>
-				</ILS_Unit>
-				<ILS_Unit>
 						<UnitID>56-319</UnitID>
 						<UnitType>297-1575</UnitType>
 						<UnitBedrooms>2</UnitBedrooms>
@@ -2906,7 +3083,7 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 						<MinSquareFeet>1119.00</MinSquareFeet>
 						<MaxSquareFeet>1119.00</MaxSquareFeet>
 						<SquareFootType>Internal</SquareFootType>
-						<UnitRent>2215.00</UnitRent>
+						<UnitRent>2239.00</UnitRent>
 						<MarketRent>2558.00</MarketRent>
 						<UnitEconomicStatus>residential</UnitEconomicStatus>
 						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
@@ -2939,26 +3116,6 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 						<ExtId>24827</ExtId>
 				</ILS_Unit>
 				<ILS_Unit>
-						<UnitID>41-112</UnitID>
-						<UnitType>297-1573</UnitType>
-						<UnitBedrooms>2</UnitBedrooms>
-						<UnitBathrooms>2.00</UnitBathrooms>
-						<MinSquareFeet>1040.00</MinSquareFeet>
-						<MaxSquareFeet>1040.00</MaxSquareFeet>
-						<SquareFootType>Internal</SquareFootType>
-						<UnitRent>2033.00</UnitRent>
-						<MarketRent>2388.00</MarketRent>
-						<UnitEconomicStatus>residential</UnitEconomicStatus>
-						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
-						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
-						<UnitLeasedStatus>available</UnitLeasedStatus>
-						<UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
-						<FloorplanID>937762</FloorplanID>
-						<FloorplanName>Two Bedroom / Two Bath - B2</FloorplanName>
-						<PropertyPrimaryID>144341</PropertyPrimaryID>
-						<ExtId>24747</ExtId>
-				</ILS_Unit>
-				<ILS_Unit>
 						<UnitID>41-101</UnitID>
 						<UnitType>297-1578</UnitType>
 						<UnitBedrooms>2</UnitBedrooms>
@@ -2977,26 +3134,6 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 						<FloorplanName>Two Bedroom / Two Bath Corner - C1</FloorplanName>
 						<PropertyPrimaryID>144341</PropertyPrimaryID>
 						<ExtId>24845</ExtId>
-				</ILS_Unit>
-				<ILS_Unit>
-						<UnitID>41-309</UnitID>
-						<UnitType>297-1578</UnitType>
-						<UnitBedrooms>2</UnitBedrooms>
-						<UnitBathrooms>2.00</UnitBathrooms>
-						<MinSquareFeet>1265.00</MinSquareFeet>
-						<MaxSquareFeet>1265.00</MaxSquareFeet>
-						<SquareFootType>Internal</SquareFootType>
-						<UnitRent>2433.00</UnitRent>
-						<MarketRent>2788.00</MarketRent>
-						<UnitEconomicStatus>residential</UnitEconomicStatus>
-						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
-						<UnitOccupancyStatus>Vacant</UnitOccupancyStatus>
-						<UnitLeasedStatus>available</UnitLeasedStatus>
-						<UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
-						<FloorplanID>937765</FloorplanID>
-						<FloorplanName>Two Bedroom / Two Bath Corner - C1</FloorplanName>
-						<PropertyPrimaryID>144341</PropertyPrimaryID>
-						<ExtId>24854</ExtId>
 				</ILS_Unit>
 				<ILS_Unit>
 						<UnitID>41-310</UnitID>
@@ -3046,7 +3183,7 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 						<MinSquareFeet>1265.00</MinSquareFeet>
 						<MaxSquareFeet>1265.00</MaxSquareFeet>
 						<SquareFootType>Internal</SquareFootType>
-						<UnitRent>2393.00</UnitRent>
+						<UnitRent>2429.00</UnitRent>
 						<MarketRent>2748.00</MarketRent>
 						<UnitEconomicStatus>residential</UnitEconomicStatus>
 						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
@@ -3106,7 +3243,7 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 						<MinSquareFeet>1265.00</MinSquareFeet>
 						<MaxSquareFeet>1265.00</MaxSquareFeet>
 						<SquareFootType>Internal</SquareFootType>
-						<UnitRent>2446.00</UnitRent>
+						<UnitRent>2469.00</UnitRent>
 						<MarketRent>2788.00</MarketRent>
 						<UnitEconomicStatus>residential</UnitEconomicStatus>
 						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
@@ -3126,7 +3263,7 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 						<MinSquareFeet>1333.00</MinSquareFeet>
 						<MaxSquareFeet>1333.00</MaxSquareFeet>
 						<SquareFootType>Internal</SquareFootType>
-						<UnitRent>2572.00</UnitRent>
+						<UnitRent>2594.00</UnitRent>
 						<MarketRent>2913.00</MarketRent>
 						<UnitEconomicStatus>residential</UnitEconomicStatus>
 						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>
@@ -3146,7 +3283,7 @@ Courtyard with barbecue grills, dining patio and outdoor fireplace</LongDescript
 						<MinSquareFeet>1389.00</MinSquareFeet>
 						<MaxSquareFeet>1389.00</MaxSquareFeet>
 						<SquareFootType>Internal</SquareFootType>
-						<UnitRent>2433.00</UnitRent>
+						<UnitRent>2469.00</UnitRent>
 						<MarketRent>2788.00</MarketRent>
 						<UnitEconomicStatus>residential</UnitEconomicStatus>
 						<UnitEconomicStatusDescription>residential</UnitEconomicStatusDescription>

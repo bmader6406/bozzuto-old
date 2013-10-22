@@ -228,7 +228,7 @@ module Bozzuto
       {
         :title             => ident.at('./MarketingName').content,
         :street_address    => address.at('./Address1').content,
-        :availability_url  => info.at('./PropertyAvailabilityURL').try(:content),
+        :availability_url  => info.at('./Availability').try(:content),
         :external_cms_id   => external_cms_id(property),
         :external_cms_type => 'rent_cafe'
       }
@@ -241,7 +241,7 @@ module Bozzuto
         {
           :name               => plan.at('./Name').content,
           :rolled_up          => false,
-          :availability_url   => plan.at('./FloorplanAvailabilityURL').try(:content),
+          :availability_url   => plan.at('./Amenities/General').try(:content),
           :available_units    => plan.at('./UnitsAvailable').content.to_i,
           :bedrooms           => (plan.at('./Room[@type="bedroom"]/Count').try(:content) || 0).to_i,
           :bathrooms          => plan.at('./Room[@type="bathroom"]/Count').content.to_f,

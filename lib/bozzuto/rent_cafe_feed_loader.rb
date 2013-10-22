@@ -9,10 +9,12 @@ module Bozzuto
     street_address                './Identification/Address/Address1'
     state                         './Identification/Address/State'
     city                          './Identification/Address/City'
+    availability_url              './Availability'
 
     floor_plan_external_cms_id    './Floorplan', :attribute => 'id'
     floor_plan_name               './Name'
     floor_plan_available_units    './UnitsAvailable'
+    floor_plan_availability_url   './Amenities/General'
     floor_plan_bedroom_count      './Room[@type="bedroom"]/Count'
     floor_plan_bathroom_count     './Room[@type="bathroom"]/Count'
 
