@@ -243,6 +243,21 @@
   }
 }
 
+.cty-feature-ico {
+  background-repeat: no-repeat;
+  background-position: center left;
+  line-height: 1.5;
+  padding: 4px 0 4px 28px;
+}
+
+$features: "active-adult", "bozzuto-elite", "brand-new", "concierge", "fitness-center", "green", "military", "move-in-now", "non-smoking", "on-site-retail", "pet-friendly", "rapid-transit", "smartrent", "smartshare", "washer-and-dryer", "zipcar";
+
+@each $feature in $features {
+  .cty-feature-ico-#{$feature} {
+    background-image: url(/images/redesign/ico-#{$feature}.png);
+  }
+}
+
 .cty-page-links {
   font-size: 12px;
   margin-bottom: 30px;

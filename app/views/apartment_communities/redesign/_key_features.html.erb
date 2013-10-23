@@ -25,7 +25,7 @@
       <div class="grid-4">
         <ul>
           <% features.each do |feature| %>
-            <li><%= feature.name %></li>
+            <li class="cty-feature-ico cty-feature-ico-<%= feature.name.parameterize %>"><%= feature.name %></li>
           <% end %>
         </ul>
       </div>
