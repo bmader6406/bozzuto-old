@@ -49,6 +49,10 @@ class Page < ActiveRecord::Base
     path
   end
 
+  def root_level?
+    ancestors.size == 0
+  end
+
 
   protected
 

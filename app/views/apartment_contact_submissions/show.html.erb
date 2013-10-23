@@ -16,3 +16,8 @@
 <div id="community-contact-text">
   <%= @page.content.try(:html_safe) if @page %>  
 </div>
+
+
+<% content_for :javascript do %>
+  <script type="text/javascript" src="http://js.washingtonpost.com/wp-adv/units/wp-plus/895696/Retargeting_1_Shopping_Cart_/tag.js"></script>
+<% end %>
