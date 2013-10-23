@@ -35,7 +35,7 @@
       <ul id="remote-nav">
         <% if @community.website_url.present? %>
           <li>
-            <%= link_to 'Visit Community Website', website_url(@community.website_url), {
+            <%= link_to (@community.website_url_text.presence || 'Visit Community Website'), website_url(@community.website_url), {
                 :rel               => 'external',
                 'data-track-event' => "Homes,#{ga_escape(@community.title)},Visit Community Website"
               }.merge(double_click_data_attrs(@community.title, 'visit764')) %>

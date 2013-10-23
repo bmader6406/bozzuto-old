@@ -205,6 +205,7 @@ ActiveRecord::Schema.define(:version => 2012081313174438) do
     t.boolean  "show_rtrk_code",               :default => false, :null => false
     t.text     "office_hours"
     t.string   "pinterest_url"
+    t.string   "website_url_text"
   end
 
   add_index "archived_properties", ["id"], :name => "index_archived_properties_on_id"
@@ -893,6 +894,7 @@ ActiveRecord::Schema.define(:version => 2012081313174438) do
     t.boolean  "show_rtrk_code",               :default => false, :null => false
     t.text     "office_hours"
     t.string   "pinterest_url"
+    t.string   "website_url_text"
   end
 
   add_index "properties", ["external_cms_id", "external_cms_type"], :name => "index_properties_on_external_cms_id_and_external_cms_type"
