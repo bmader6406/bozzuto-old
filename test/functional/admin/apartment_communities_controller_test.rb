@@ -167,7 +167,7 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
         end
       end
     end
-  
+
     context 'GET to #export_field_audit' do
       setup do
         get :export_field_audit
@@ -179,6 +179,24 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
       should 'respond with the correct Content-Disposition header' do
         assert_equal 'attachment; filename="apartment_communities_field_audit.csv"',
           @response.headers["Content-Disposition"]
+      end
+    end
+
+    context "GET to #disconnect" do
+      setup do
+        @community = ApartmentCommunity.make(:vaultware)
+        get :disconnect, :id => @community.id
+      end
+
+      should_respond_with :redirect
+      should_redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
+      should_assign_to(:item) { @community }
+      should_set_the_flash_to 'Successfully disconnected from Vaultware'
+
+      it "disconnects the feed" do
+        @community.reload
+
+        assert !@community.managed_externally?
       end
     end
   end

@@ -41,15 +41,20 @@
 
     <% if params[:action] == 'edit' %>
       <ul>
-        <li>
-          <% if @item.managed_externally? %>
+        <% if @item.managed_externally? %>
+          <li>
             <span class="external-cms-message">
               Managed by <%= @item.external_cms_name %>.
             </span>
-          <% else %>
-            <%= link_to 'Merge with a feed property', :action => :merge, :id => @item.id %>
-          <% end %>
-        </li>
+          </li>
+          <li>
+            <%= link_to 'Disconnect from feed',
+                        { :action => :disconnect, :id => @item.id },
+                        :confirm => "This community will no longer receive updates from the #{@item.external_cms_name} feed.\n\nAre you sure you want to disconnect it?" %>
+          </li>
+        <% else %>
+          <li><%= link_to 'Merge with a feed property', :action => :merge, :id => @item.id %></li>
+        <% end %>
       </ul>
     <% end %>
   </div>
