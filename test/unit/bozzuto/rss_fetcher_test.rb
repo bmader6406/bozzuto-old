@@ -100,6 +100,19 @@ class Bozzuto::RssFetcherTest < ActiveSupport::TestCase
           assert !subject.feed_valid?
         end
       end
+
+      context "body is text containing the word 'rss'" do
+        before do
+          stub_request(:get, @url).to_return(
+            :body    => '<html><body>rss</body></html>',
+            :headers => { 'Content-Type' => 'text/html' }
+          )
+        end
+
+        it "returns false" do
+          assert !subject.feed_valid?
+        end
+      end
     end
 
     describe "#items" do

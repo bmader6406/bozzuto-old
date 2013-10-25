@@ -28,7 +28,7 @@ module Bozzuto
     end
 
     def feed_valid?
-      parsed_response.present? && parsed_response['rss'].present?
+      parsed_response.is_a?(Hash) && parsed_response['rss'].present?
     end
 
     def found?
