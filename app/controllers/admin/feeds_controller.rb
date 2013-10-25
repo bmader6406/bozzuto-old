@@ -6,6 +6,6 @@ class Admin::FeedsController < Admin::MasterController
   protected
 
   def refresh_feed
-    @item.refresh
+    @item.refresh! unless @item.new_record?
   end
 end
