@@ -2,7 +2,16 @@
 <html>
 <head>
   <meta charset="utf8">
-  <title>Bozzuto</title>
+	<meta name="robots" content="noindex, nofollow">
+
+	<title>
+    <% if yield(:meta_title).present? %>
+      <%= yield(:meta_title) %> -
+    <% elsif yield(:page_title).present? %>
+      <%= yield(:page_title) %> -
+    <% end %>
+		Bozzuto
+	</title>
 
   <%= stylesheet_link_tag 'application', :media => 'screen' %>
   <%= stylesheet_link_tag 'pages/community', :media => 'screen' %>
