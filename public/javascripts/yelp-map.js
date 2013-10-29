@@ -87,70 +87,15 @@
       $("#large-map-container").lightbox_me({
         onLoad: function () {
           var $largeMap = $('#large-map');
-          var baseIcon = new GIcon(G_DEFAULT_ICON);
-          baseIcon.iconSize = new GSize(32, 37);
-          baseIcon.iconAnchor = new GPoint(16, 37);
-          baseIcon.infoWindowAnchor = new GPoint(16, 0);
-          baseIcon.shadow = null;
 
           $largeMap.css({ height: '420px', width: '850px' });
 
           $largeMap.jMapping({
             category_icon_options: function(category) {
-              var icon = new GIcon(baseIcon);
-
-              switch(category) {
-                case 'fitness':
-                  icon.image = 'http://google-maps-icons.googlecode.com/files/fitnesscenter.png';
-                  break;
-                case 'parks':
-                  icon.image = 'http://google-maps-icons.googlecode.com/files/park-urban.png';
-                  break;
-                case 'arts':
-                  icon.image = 'http://google-maps-icons.googlecode.com/files/music-classical.png';
-                  break;
-                case 'beautysvc':
-                  icon.image = 'http://google-maps-icons.googlecode.com/files/aestheticscenter.png';
-                  break;
-                case 'education':
-                  icon.image = 'http://google-maps-icons.googlecode.com/files/school.png';
-                  break;
-                case 'coffee':
-                  icon.image = 'http://google-maps-icons.googlecode.com/files/coffee.png';
-                  break;
-                case 'grocery':
-                  icon.image = 'http://google-maps-icons.googlecode.com/files/grocery.png';
-                  break;
-                case 'hospitals':
-                  icon.image = 'http://google-maps-icons.googlecode.com/files/hospital.png';
-                  break;
-                case 'transport':
-                  icon.image = 'http://google-maps-icons.googlecode.com/files/bus.png';
-                  break;
-                case 'hotels':
-                  icon.image = 'http://google-maps-icons.googlecode.com/files/hotel.png';
-                  break;
-                case 'drycleaninglaundry':
-                  icon.image = 'http://google-maps-icons.googlecode.com/files/clothes.png';
-                  break;
-                case 'bars':
-                  icon.image = 'http://google-maps-icons.googlecode.com/files/bar.png';
-                  break;
-                case 'petservices':
-                  icon.image = 'http://google-maps-icons.googlecode.com/files/pets.png';
-                  break;
-                case 'restaurants':
-                  icon.image = 'http://google-maps-icons.googlecode.com/files/restaurant.png';
-                  break;
-                case 'shopping':
-                  icon.image = 'http://google-maps-icons.googlecode.com/files/shoppingmall.png';
-                  break;
-                default:
-                  icon.image = 'http://google-maps-icons.googlecode.com/files/home.png';
-                  break;
-              }
-
-              return icon;
+              return {
+                size: new google.maps.Size(32, 37),
+                url:  iconImage(category)
+              };
             },
             default_zoom_level: 13,
             side_bar_selector: '#large-map-side-bar:first'
@@ -184,5 +129,27 @@
         }
       });
     });
+
+    var iconImages = {
+      'fitness':            'http://google-maps-icons.googlecode.com/files/fitnesscenter.png',
+      'parks':              'http://google-maps-icons.googlecode.com/files/park-urban.png',
+      'arts':               'http://google-maps-icons.googlecode.com/files/music-classical.png',
+      'beautysvc':          'http://google-maps-icons.googlecode.com/files/aestheticscenter.png',
+      'education':          'http://google-maps-icons.googlecode.com/files/school.png',
+      'coffee':             'http://google-maps-icons.googlecode.com/files/coffee.png',
+      'grocery':            'http://google-maps-icons.googlecode.com/files/grocery.png',
+      'hospitals':          'http://google-maps-icons.googlecode.com/files/hospital.png',
+      'transport':          'http://google-maps-icons.googlecode.com/files/bus.png',
+      'hotels':             'http://google-maps-icons.googlecode.com/files/hotel.png',
+      'drycleaninglaundry': 'http://google-maps-icons.googlecode.com/files/clothes.png',
+      'bars':               'http://google-maps-icons.googlecode.com/files/bar.png',
+      'petservices':        'http://google-maps-icons.googlecode.com/files/pets.png',
+      'restaurants':        'http://google-maps-icons.googlecode.com/files/restaurant.png',
+      'shopping':           'http://google-maps-icons.googlecode.com/files/shoppingmall.png'
+    };
+
+    function iconImage(key) {
+      return iconImages[key] || 'http://google-maps-icons.googlecode.com/files/home.png';
+    }
   });
 })();

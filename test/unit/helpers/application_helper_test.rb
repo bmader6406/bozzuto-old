@@ -2,15 +2,15 @@ require 'test_helper'
 
 class ApplicationHelperTest < ActionView::TestCase
   context "ApplicationHelper" do
-    context '#twitter_url' do
-      should 'return the twitter url' do
-        assert_equal 'http://twitter.com/yaychris', twitter_url('yaychris')
+    describe "#twitter_url" do
+      it "returns the twitter url" do
+        twitter_url('yaychris').should == 'http://twitter.com/yaychris'
       end
     end
 
-    context '#render_meta' do
-      context 'with no prefix' do
-        setup do
+    describe "#render_meta" do
+      context "with no prefix" do
+        before do
           @page = Page.new(
             :meta_title       => 'Title!',
             :meta_description => 'Description!',
@@ -21,13 +21,13 @@ class ApplicationHelperTest < ActionView::TestCase
           expects(:content_for).with(:meta_keywords, @page.meta_keywords)
         end
 
-        should 'send the data to content_for' do
+        it "sends the data to content_for" do
           render_meta(@page)
         end
       end
 
-      context 'with a prefix' do
-        setup do
+      context "with a prefix" do
+        before do
           @community = ApartmentCommunity.new(
             :floor_plans_meta_title       => 'Title!',
             :floor_plans_meta_description => 'Description!',
@@ -38,96 +38,95 @@ class ApplicationHelperTest < ActionView::TestCase
           expects(:content_for).with(:meta_keywords, @community.floor_plans_meta_keywords)
         end
 
-        should 'send the data to content_for' do
+        it "sends the data to content_for" do
           render_meta(@community, :floor_plans)
         end
       end
     end
 
-    context '#bedrooms' do
-      should 'properly pluralize the bedrooms count' do
+    describe "#bedrooms" do
+      it "properly pluralizes the bedrooms count" do
         @plan = ApartmentFloorPlan.new :bedrooms => 1
-        assert_equal '1 Bedroom', bedrooms(@plan)
+        bedrooms(@plan).should == '1 Bedroom'
 
         @plan.bedrooms = 2
-        assert_equal '2 Bedrooms', bedrooms(@plan)
+        bedrooms(@plan).should == '2 Bedrooms'
       end
     end
 
-    context '#bathrooms' do
-      should 'properly pluralize the bathrooms count' do
+    describe "#bathrooms" do
+      it "properly pluralizes the bathrooms count" do
         @plan = ApartmentFloorPlan.new :bathrooms => 1
-        assert_equal '1 Bathroom', bathrooms(@plan)
+        bathrooms(@plan).should == '1 Bathroom'
 
         @plan.bathrooms = 2.5
-        assert_equal '2.5 Bathrooms', bathrooms(@plan)
+        bathrooms(@plan).should == '2.5 Bathrooms'
       end
     end
 
-    context '#home?' do
-      should 'return true if controller is HomeController' do
+    describe "#home?" do
+      it "returns true if controller is HomeController" do
         expects(:params).returns(:controller => 'home_pages')
 
-        assert home?
+        home?.should == true
       end
 
-      should 'return false otherwise' do
+      it "returns false otherwise" do
         expects(:params).returns(:controller => 'blah')
 
-        assert !home?
+        home?.should == false
       end
     end
 
-    context '#current_if' do
-      context 'when calling with a hash' do
-        setup do
+    describe "#current_if" do
+      context "when calling with a hash" do
+        before do
           expects(:params).times(3).returns(:controller => 'services', :id => 2)
         end
 
-        should 'compare with all items in params' do
-          assert_equal 'current', current_if(:controller => 'services')
-          assert_equal 'current', current_if(:id => 2)
-          assert_nil current_if(:post => 'hooray')
+        it "compares with all items in params" do
+          current_if(:controller => 'services').should == 'current'
+          current_if(:id => 2).should == 'current'
+          current_if(:post => 'hooray').should == nil
         end
       end
 
-      context 'when calling with a string' do
-        setup do
+      context "when calling with a string" do
+        before do
           expects(:params).times(2).returns(:action => 'blah')
         end
 
-        should 'compare with the action in params' do
-          assert_equal 'current', current_if('blah')
-          assert_nil current_if('booya')
+        it "compares with the action in params" do
+          current_if('blah').should == 'current'
+          current_if('booya').should == nil
         end
       end
     end
 
-    context '#month_and_day' do
-      setup do
+    describe "#month_and_day" do
+      before do
         @date = Time.now
       end
       
-      should 'return the marked up date and time' do
+      it "returns the marked up date and time" do
         html = HTML::Document.new(month_and_day(@date))
         assert_select html.root, "span.month", "#{@date.strftime('%m')}."
         assert_select html.root, "span.day", "#{@date.strftime('%d')}."
       end
 
-      should 'be marked HTML safe' do
-        assert month_and_day(@date).html_safe?
+      it "marks the return value HTML safe" do
+        month_and_day(@date).should be_html_safe
       end
     end
 
-    context '#google_maps_javascript_tag' do
-      should 'contain the API key' do
-        assert_match /#{APP_CONFIG[:google_maps_api_key]}/,
-          google_maps_javascript_tag
+    describe "#google_maps_javascript_tag" do
+      it "returns the script tag" do
+        google_maps_javascript_tag.should =~ %r{//maps\.googleapis\.com/maps/api/js\?sensor=false}
       end
     end
 
-    context '#share_this_link' do
-      should 'output p.sharethis and javascript code' do
+    describe "#share_this_link" do
+      it "outputs p.sharethis and javascript code" do
         sharethis = HTML::Document.new(share_this_link)
 
         assert_select sharethis.root, 'p.sharethis'
@@ -135,8 +134,8 @@ class ApplicationHelperTest < ActionView::TestCase
       end
     end
 
-    context '#facebook_like_link' do
-      should 'output div.facebook-like and iframe' do
+    describe "#facebook_like_link" do
+      it "outputs div.facebook-like and iframe" do
         facebook = HTML::Document.new(facebook_like_link('http://viget.com'))
 
         assert_select facebook.root, 'div.facebook-like'
@@ -144,76 +143,74 @@ class ApplicationHelperTest < ActionView::TestCase
       end
     end
 
-    context '#facebook_like_box' do
-      should 'output div.facebook-like-box and html/js' do
+    describe "#facebook_like_box" do
+      it "outputs div.facebook-like-box and html/js" do
         code = facebook_like_box('http://facebook.com/batman')
 
-        assert_match /data-href="http:\/\/facebook.com\/batman"/m, code
+        code.should =~ /data-href="http:\/\/facebook.com\/batman"/m
       end
     end
 
-    context '#google_plus_one_button' do
-      setup do
+    describe "#google_plus_one_button" do
+      before do
         expects(:content_for).with(:end_of_body, '<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>'.html_safe)
       end
 
-      should 'return the google html tag' do
-        assert_equal '<div class="google-plus-one"><g:plusone size="medium"></g:plusone></div>', google_plus_one_button
+      it "returns the google html tag" do
+        google_plus_one_button.should == '<div class="google-plus-one"><g:plusone size="medium"></g:plusone></div>'
       end
     end
 
-    context '#snippet' do
-      context 'with missing name' do
-        setup { @body = snippet(:not_found) }
+    describe "#snippet" do
+      context "with missing name" do
+        before { @body = snippet(:not_found) }
 
-        should 'return error message' do
-          assert_match /This area should be filled in by snippet "not_found,"/, @body
+        it "returns error message" do
+          @body.should =~ /This area should be filled in by snippet "not_found,"/
         end
       end
 
-      context 'with existing name' do
-        setup do
+      context "with existing name" do
+        before do
           @snippet = Snippet.create :name => 'found', :body => 'hooray'
         end
 
-        should 'return the snippet body' do
-          assert_equal @snippet.body, snippet(@snippet.name)
+        should "return the snippet body" do
+          snippet(@snippet.name).should == @snippet.body
         end
       end
     end
 
-    context '#county_apartment_search_path' do
-      setup { @county = County.make }
+    describe "#county_apartment_search_path" do
+      before { @county = County.make }
 
-      should 'return apartment_communities_path with search[county_id]' do
-        assert_equal apartment_communities_path('search[county_id]' => @county.id),
-          county_apartment_search_path(@county)
+      should "return apartment_communities_path with search[county_id]" do
+        county_apartment_search_path(@county).should == apartment_communities_path('search[county_id]' => @county.id)
       end
     end
 
-    context '#county_home_search_path' do
-      setup { @county = County.make }
+    describe "#county_home_search_path" do
+      before { @county = County.make }
 
-      should 'return home_communities_path with search[county_id]' do
-        assert_equal home_communities_path('search[county_id]' => @county.id),
-          county_home_search_path(@county)
+      should "return home_communities_path with search[county_id]" do
+        county_home_search_path(@county).should == home_communities_path('search[county_id]' => @county.id)
       end
     end
 
-    context '#community_url' do
-      context 'with an apartment community' do
-        setup { @community = ApartmentCommunity.make }
+    describe "#community_url" do
+      context "with an apartment community" do
+        before { @community = ApartmentCommunity.make }
 
-        should 'return apartment_community_url' do
-          assert_equal apartment_community_url(@community), community_url(@community)
+        should "return apartment_community_url" do
+          community_url(@community).should == apartment_community_url(@community)
         end
       end
 
-      context 'with a home community' do
-        setup { @community = HomeCommunity.make }
+      context "with a home community" do
+        before { @community = HomeCommunity.make }
 
-        should 'return home_community_url' do
-          assert_equal home_community_url(@community), community_url(@community)
+        should "return home_community_url" do
+          community_url(@community).should == home_community_url(@community)
         end
       end
     end

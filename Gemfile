@@ -42,4 +42,5 @@ group :test do
   gem 'ruby-debug', '0.10.4'
   gem 'rack-test', '0.5.7', :require => 'rack/test'
   gem 'vcr'
+  gem 'rspec-expectations'
 end

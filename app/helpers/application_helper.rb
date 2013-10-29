@@ -40,8 +40,13 @@ module ApplicationHelper
   end
 
   def google_maps_javascript_tag
+    js_params = {
+      :sensor => false,
+      :key    => APP_CONFIG[:google_maps_api_key]
+    }.reject { |_, v| v.nil? }
+
     <<-END.html_safe
-    <script src="http://maps.google.com/maps?file=api&v=2&key=#{APP_CONFIG[:google_maps_api_key]}" type="text/javascript"></script>
+      <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?#{js_params.to_param}"></script>
     END
   end
 

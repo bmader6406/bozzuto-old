@@ -2,6 +2,7 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'test_help'
 require 'mocha'
+require 'rspec/expectations'
 
 require File.join(Rails.root, 'test', 'blueprints')
 require File.join(Rails.root, 'vendor', 'plugins', 'typus', 'lib', 'extensions', 'object')
