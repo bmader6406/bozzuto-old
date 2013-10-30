@@ -26,10 +26,11 @@ javascripts:
     - public/javascripts/vendor/jquery.min.js
     - public/javascripts/analytics.js
   redesign:
-    - public/javascripts/redesign/vendor/mapiconmaker.js
-    - public/javascripts/redesign/vendor/markermanager.js
     - public/javascripts/redesign/vendor/jquery.metadata.js
-    - public/javascripts/redesign/vendor/jquery.jmapping.min.js
+    - public/javascripts/redesign/vendor/jquery.json.js
+    - public/javascripts/redesign/vendor/jmapping/StyledMarker.js
+    - public/javascripts/redesign/vendor/jmapping/markermanager.js
+    - public/javascripts/redesign/vendor/jmapping/jquery.jmapping.js
     - public/javascripts/redesign/vendor/jquery.makecolumnlists.js
     - public/javascripts/redesign/vendor/jquery.lightbox_me.js
     - public/javascripts/redesign/vendor/jquery.browser.js
