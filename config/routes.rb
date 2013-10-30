@@ -44,7 +44,7 @@ ActionController::Routing::Routes.draw do |map|
     :as          => :communities,
     :only        => [:index, :show]
   }
-  map.resources :apartment_communities, community_options.merge(:member => { :redesign => :get }) do |community|
+  map.resources :apartment_communities, community_options.merge(:member => { :rentnow => :get }) do |community|
     community.resources :floor_plan_groups,
       :controller => :apartment_floor_plan_groups,
       :as         => :floor_plans,

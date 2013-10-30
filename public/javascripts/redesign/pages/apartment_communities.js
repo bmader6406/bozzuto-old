@@ -1,5 +1,5 @@
 bozzuto.apartment_communities = {
-  redesign: function() {
+  rentnow: function() {
     this.showHideSections();
 
     this.floorPlanImageModal();

@@ -30,8 +30,8 @@ class ApartmentCommunitiesController < ApplicationController
   def show
   end
 
-  def redesign
-    render :layout => 'redesign'
+  def rentnow
+    render :redesign, :layout => 'redesign'
   end
 
 
