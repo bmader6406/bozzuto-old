@@ -18,7 +18,7 @@
       <% if @community.tours_page? %>
         <%= link_to @community.tours_page.title, apartment_community_tours_path(@community), :'data-iframe' => true %>
       <% else %>
-        <%= schedule_tour_link(@community) %>
+        <%= schedule_tour_link(@community, :rel => 'external') %>
       <% end %>
     </p>
 

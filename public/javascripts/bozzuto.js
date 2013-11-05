@@ -143,7 +143,7 @@ window.bozzuto = {};
 
     $('#landing-map, #homes-map').bozzutoMap();
 
-    $('a.schedule-tour').scheduleTourIframe();
+    //$('a.schedule-tour').scheduleTourIframe();
 
     $('#spinner').ajaxStart(function () {
       $(this).show();

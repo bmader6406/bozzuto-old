@@ -53,8 +53,8 @@ module CommunitiesHelper
     END
   end
 
-  def schedule_tour_link(community)
-    opts = { :class => 'schedule-tour' }
+  def schedule_tour_link(community, opts = {})
+    opts.reverse_merge!(:class => 'schedule-tour')
 
     if community.schedule_tour_url?
       opts[:'data-iframe'] = 'yes'
