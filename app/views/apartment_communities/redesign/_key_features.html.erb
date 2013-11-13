@@ -21,7 +21,7 @@
       </div>
     <% end %>
 
-    <% community.property_features.if_present? do |features| %>
+    <% community.property_features.has_icon.take(5).if_present? do |features| %>
       <div class="grid-4">
         <ul>
           <% features.each do |feature| %>

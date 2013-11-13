@@ -16,4 +16,6 @@ class PropertyFeature < ActiveRecord::Base
     :convert_options => { :all => '-quality 80 -strip' }
 
   validates_uniqueness_of :name
+
+  named_scope :has_icon, :conditions => "icon_file_name != ''"
 end
