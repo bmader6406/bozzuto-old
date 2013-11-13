@@ -20,7 +20,8 @@
         <% links = [] %>
 
         <% if community.website_url.present? %>
-          <% links << link_to('Visit the Website', website_url(community.website_url), :rel => 'external') %>
+          <% links << link_to('Visit the Website', website_url(community.website_url),
+                              { :rel => 'external' }.merge(double_click_data_attrs(community.title, 'visit764'))) %>
         <% end %>
 
         <% if community.resident_link_text.present? && community.resident_link_url.present? %>

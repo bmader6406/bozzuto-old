@@ -29,12 +29,12 @@
   <div class="cty-map">
     <div id="map-canvas"></div>
     <div id="map-side-bar" style="display:none;">
-      <div class="map-location" data-jmapping="<%= @community.to_jmapping %>">
+      <div class="map-location" data-jmapping="<%= community.to_jmapping %>">
         <div class="info-box">
           <div class="map-point">
-            <h4 class="hdr-tertiary"><%= h @community.title %></h4>
+            <h4 class="hdr-tertiary"><%= h community.title %></h4>
 
-            <p><%= raw(@community.address('<br />')) %></p>
+            <p><%= raw(community.address('<br />')) %></p>
           </div>
         </div>
       </div>
@@ -44,7 +44,7 @@
   <div class="cty-map-actions">
     <div class="grid-row">
       <div class="left-col">
-        <%= link_to 'Larger Map/Directions', directions_url(@community.address), :rel => 'external' %>
+        <%= link_to 'Larger Map/Directions', directions_url(community.address), :rel => 'external' %>
         <%= link_to 'Walk Score&trade;'.html_safe, '#', :class => 'cty-walkscore-action' %>
       </div>
 
@@ -63,7 +63,7 @@
   </h4>
 
   <div class="cty-sidebar-content">
-    <% form_tag [@community, :email_listing] do %>
+    <% form_tag [community, :email_listing], double_click_data_attrs(community.title, 'short170') do %>
       <p class="in-container">
         <%= label_tag :email, 'Email', :class => 'in-label' %>
         <%= text_field_tag :email, nil, :class => 'in-text' %>
@@ -81,7 +81,7 @@
 </div>
 
 
-<% if @community.nearby_communities.any? %>
+<% if community.nearby_communities.any? %>
   <div class="cty-sidebar cty-nearby">
     <h4 class="cty-sidebar-heading hdr-narrow">
       Nearby Apartment Communities
@@ -89,7 +89,7 @@
 
     <div class="cty-sidebar-content">
       <ul>
-        <% @community.nearby_communities.each do |community| %>
+        <% community.nearby_communities.each do |community| %>
           <li><%= link_to community.title, community %></li>
         <% end %>
       </ul>
@@ -98,7 +98,7 @@
 <% end %>
 
 
-<% if @community.has_local_info? %>
+<% if community.has_local_info? %>
   <div class="cty-sidebar">
     <h4 class="cty-sidebar-heading hdr-narrow">
       Local Info
@@ -106,7 +106,7 @@
 
     <div class="cty-sidebar-content">
       <ul>
-        <% @community.local_info.take(5).each do |info| %>
+        <% community.local_info.take(5).each do |info| %>
           <li class="cty-local-info-item">
             <h5 class="cty-local-info-heading">
               <%= link_to info.title.gsub(/on Yelp$/, ''), info.url %>
@@ -132,10 +132,10 @@
   <div class="cty-send-to-phone-modal modal modal-padding">
     <h4 class="hdr-tertiary">Send To My Phone</h4>
 
-    <% form_tag [@community, :sms_message], :class => (flash[:send_to_phone_errors] ? 'errors' : nil) do %>
+    <% form_tag [community, :sms_message], :class => (flash[:send_to_phone_errors] ? 'errors' : nil) do %>
       <p class="in-container">
         <label for="phone_number" class="in-label">
-          Enter your phone number <%= @community.short_name %> info
+          Enter your phone number <%= community.short_name %> info
         </label>
 
         <%= text_field_tag 'phone_number', nil, :class => 'in-text' %>
@@ -152,6 +152,6 @@
 
   <!-- Walkscore modal -->
   <div class="cty-walkscore-modal modal modal-padding">
-    <%= walkscore_map_script(@community, :width => 500, :height => 400) %>
+    <%= walkscore_map_script(community, :width => 500, :height => 400) %>
   </div>
 <% end %>

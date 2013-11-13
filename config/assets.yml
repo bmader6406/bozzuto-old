@@ -37,6 +37,8 @@ javascripts:
     - public/javascripts/redesign/plugins/jquery.videoLightbox.js
     - public/javascripts/redesign/plugins/jquery.lightbox.js
     - public/javascripts/redesign/application.js
+    - public/javascripts/redesign/common.js
+    - public/javascripts/redesign/analytics.js
     - public/javascripts/redesign/pages/apartment_communities.js
     - public/javascripts/yelp-map.js
 
