@@ -13,16 +13,15 @@
     </div>
 
     <div class="cty-social-actions">
-      <span class='st_sharethis_large' displayText='ShareThis'></span>
-      <span class='st_facebook_large' displayText='Facebook'></span>
-      <span class='st_pinterest_large' displayText='Pinterest'></span>
-      <span class='st_googleplus_large' displayText='Google +'></span>
-      <span class='st_email_large' displayText='Email'></span>
-
+      <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+        <a class="addthis_button_twitter" tw:text="Check out the brand new @CrosswindsATC Luxury Apartments in #Annapolis! http://www.bozzuto.com/apartments/communities/286-crosswinds-at-annapolis-towne-centre/rentnow"></a>
+        <a class="addthis_button_facebook"></a>
+        <a class="addthis_button_google_plusone_share"></a>
+        <a class="addthis_button_email"></a>
+      </div>
       <% content_for :javascript do %>
-        <script type="text/javascript">var switchTo5x=false;</script>
-        <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-        <script type="text/javascript">stLight.options({publisher: "1348f130-9dcb-4c1d-8a9d-bca69699b922", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+        <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-520177a744fb168f"></script>
       <% end %>
     </div>
   </div>
