@@ -53,21 +53,23 @@
               </ul>
             </div>
           </li>
-          <li class="n-main-item">
-            <%= link_to 'Our Services', '/services', :class => 'n-main-item-link' %>
-            <div class="dropdown">
-              <ul class="col">
-                <li class="first"><%= link_to 'Management', '/services/management' %></li>
-                <li><%= link_to 'Homebuilding', '/services/homebuilding' %></li>
-                <li><%= link_to 'Construction', '/services/construction' %></li>
-              </ul>
-              <ul class="col">
-                <li class="first"><%= link_to 'Development', '/services/development' %></li>
-                <li><%= link_to 'Acquisitions', '/services/acquisitions' %></li>
-                <li><%= link_to 'Land', '/services/land' %></li>
-              </ul>
-            </div>
-          </li>
+          <% black_hole do %>
+            <li class="n-main-item">
+              <%= link_to 'Our Services', '/services', :class => 'n-main-item-link' %>
+              <div class="dropdown">
+                <ul class="col">
+                  <li class="first"><%= link_to 'Management', '/services/management' %></li>
+                  <li><%= link_to 'Homebuilding', '/services/homebuilding' %></li>
+                  <li><%= link_to 'Construction', '/services/construction' %></li>
+                </ul>
+                <ul class="col">
+                  <li class="first"><%= link_to 'Development', '/services/development' %></li>
+                  <li><%= link_to 'Acquisitions', '/services/acquisitions' %></li>
+                  <li><%= link_to 'Land', '/services/land' %></li>
+                </ul>
+              </div>
+            </li>
+          <% end %>
         </ul>
       </nav>
     </header>
