@@ -2,16 +2,16 @@
 <html>
 <head>
   <meta charset="utf8">
-	<meta name="robots" content="noindex, nofollow">
+  <meta name="robots" content="noindex, nofollow">
 
-	<title>
+  <title>
     <% if yield(:meta_title).present? %>
       <%= yield(:meta_title) %> -
     <% elsif yield(:page_title).present? %>
       <%= yield(:page_title) %> -
     <% end %>
-		Bozzuto
-	</title>
+    Bozzuto
+  </title>
 
   <%= stylesheet_link_tag 'application', :media => 'screen' %>
   <%= stylesheet_link_tag 'pages/community', :media => 'screen' %>
@@ -25,7 +25,8 @@
         <form action="/search">
           <%= text_field_tag :q, params[:q], :class => 'in-text' %>
           <button type="submit">
-            <i class="ico" aria-hidden="true">p</i> Submit
+            <i class="ico" aria-hidden="true">p</i>
+            <em>Submit</em>
           </button>
         </form>
       </div>

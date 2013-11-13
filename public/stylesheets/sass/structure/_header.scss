@@ -46,14 +46,22 @@ header {
     border: 1px solid $gray-darker;
     color: #c2c1bb;
     height: 25px;
+    overflow: hidden;
     padding: 0;
+    position: relative;
     width: 25px;
 
+    em {
+      margin-left: 100px;
+    }
     .ico {
       cursor: pointer;
       font-size: 18px;
       height: 25px;
+      left: 0;
       line-height: 25px;
+      position: absolute;
+      top: 0;
       width: 25px;
     }
   }
