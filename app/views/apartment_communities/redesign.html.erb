@@ -4,7 +4,11 @@
 <%= render 'apartment_communities/redesign/breadcrumb', :community => @community %>
 
 <div class="cty-left-col">
-  <% if @community.overview_title.present? %>
+  <% if @community.id == 286 %>
+    <h3 class="cty-headline">
+      Live in the Heart of Modern Annapolis
+    </h3>
+  <% elsif @community.overview_title.present? %>
     <h3 class="cty-headline">
       <%= @community.overview_title %>
     </h3>
