@@ -12,7 +12,7 @@
       $this.bind('click', function(e) {
         e.preventDefault();
 
-        var $videoLightbox = $('<div id="video-lightbox"></div>'),
+        var $videoLightbox = $('<div id="video-lightbox" class="modal"></div>'),
             href           = $(this).attr('href');
 
         $videoLightbox

@@ -80,12 +80,15 @@ bozzuto.apartment_communities = {
       $link.bind('click', function(e) {
         e.preventDefault();
 
-        var url    = $(this).attr('href'),
-            $image = $('<img src="' + url + '" class="floor-plan-overlay" />');
+        var url        = $(this).attr('href'),
+            $image     = $('<img src="' + url + '" class="floor-plan-overlay" />'),
+            $container = $('<div class="modal" />');
+
+        $container.append($image);
 
         $image.one('load', function() {
-          $image.lightbox({ destroyOnClose: true }).bind('click', function() {
-            $image.trigger('close');
+          $container.lightbox({ destroyOnClose: true }).bind('click', function() {
+            $container.trigger('close');
           });
         }).each(function() {
           // make sure cached images fire the load event

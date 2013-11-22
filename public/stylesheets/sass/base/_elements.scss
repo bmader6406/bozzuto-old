@@ -21,12 +21,25 @@ strong {
 
 .modal {
   display: none;
+  position: relative;
+
+  &.modal-padding {
+    background-color: $white;
+    padding: 35px;
+  }
+
+  .modal-close {
+    @include hide-text;
+
+    background: url(/images/redesign/modal-close.png) no-repeat top left;
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    top: -18px;
+    right: -20px;
+  }
 }
 
-.modal-padding {
-  background-color: $white;
-  padding: 35px;
-}
 
 .map-point {
   .hdr-tertiary {

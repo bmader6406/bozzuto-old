@@ -40,7 +40,7 @@ javascripts:
     - public/javascripts/redesign/common.js
     - public/javascripts/redesign/analytics.js
     - public/javascripts/redesign/pages/apartment_communities.js
-    - public/javascripts/yelp-map.js
+    - public/javascripts/redesign/yelp_map.js
 
 stylesheets:
   bozzuto:
