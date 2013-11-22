@@ -908,13 +908,14 @@ ActiveRecord::Schema.define(:version => 2012081313174438) do
   add_index "properties_property_features", ["property_id"], :name => "index_properties_property_features_on_property_id"
 
   create_table "property_contact_pages", :force => true do |t|
-    t.integer  "property_id",      :null => false
+    t.integer  "property_id",              :null => false
     t.text     "content"
     t.string   "meta_title"
     t.string   "meta_description"
     t.string   "meta_keywords"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "schedule_appointment_url"
   end
 
   add_index "property_contact_pages", ["property_id"], :name => "index_property_contact_pages_on_property_id"

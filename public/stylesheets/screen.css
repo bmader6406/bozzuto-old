@@ -5422,6 +5422,40 @@ div.wysiwyg ul li {
   color: #000;
 }
 
-.hdr-call-us {
-  padding-left: 30px;
+.cty-contact-hdr-left {
+  float: left;
+  width: 480px;
+  margin-right: 20px;
+}
+
+.cty-contact-hdr-right {
+  float: right;
+  width: 270px;
+}
+
+.cty-contact-hdr-right p {
+  display: block;
+}
+
+.cty-contact-call-us {
+  color: #84848b;
+  font-size: 22px !important;
+  line-height: 1.833333333;
+}
+
+.cty-contact-call-us .phone-number {
+  color: black;
+}
+
+.cty-contact-schedule-appointment {
+  font-size: 18px !important;
+}
+
+.cty-contact-schedule-appointment a {
+  color: black;
+  text-decoration: underline;
+}
+
+.cty-contact-schedule-appointment a:hover {
+  text-decoration: none;
 }

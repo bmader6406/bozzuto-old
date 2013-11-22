@@ -274,6 +274,11 @@ en:
         website_url_text: Website URL Text
         ufollowup_id: uFollowUp ID
         zip_code: ZIP Code
+      property_contact_page:
+        meta_title: Meta Title
+        meta_description: Meta Description
+        meta_keywords: Meta Keywords
+        schedule_appointment_url: Schedule Appointment URL
       property_features_page:
         title_1: 'Section #1 Title'
         text_1: 'Section #1 Copy'

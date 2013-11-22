@@ -1,15 +1,26 @@
-<h2 class="hdr-primary">
-  Ready to speak with a leasing consultant?
+<div class="row">
+  <div class="cty-contact-hdr-left">
+    <h2 class="hdr-primary">Ready to speak with a leasing consultant?</h2>
 
-  <% if @community.phone_number.present? %>
-    <span class="hdr-call-us">
-      Call Us
-      <%= dnr_phone_number(@community, dnr_ad_source, :height => 21) %>
-    </span>
-  <% end %>
-</h2>
+    <p id="community-contact-note">Fill out the form below for availability and specials.</p>
+  </div>
 
-<p id="community-contact-note">Fill out the form below for availability and specials.</p>
+  <div class="cty-contact-hdr-right">
+    <% if @community.phone_number.present? %>
+      <p class="cty-contact-call-us">
+        Call Us
+        <%= dnr_phone_number(@community, dnr_ad_source, :height => 21) %>
+      </p>
+    <% end %>
+
+    <% if @page.schedule_appointment_url.present? %>
+      <p class="cty-contact-schedule-appointment">
+        <%= link_to 'Schedule an Appointment', @page.schedule_appointment_url %>
+      </p>
+    <% end %>
+  </div>
+</div>
+
 
 <div id="community-contact-form">
   <%= error_messages_for :submission %>
