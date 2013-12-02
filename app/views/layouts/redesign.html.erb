@@ -15,6 +15,9 @@
 
   <%= stylesheet_link_tag 'application', :media => 'screen' %>
   <%= stylesheet_link_tag 'pages/community', :media => 'screen' %>
+
+  <!-- Optimizely -->
+  <script src="//cdn.optimizely.com/js/237508485.js"></script>
 </head>
 <body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
   <div id="site-wrapper">
@@ -214,9 +217,6 @@
   <%= google_maps_javascript_tag %>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
   <%= include_javascripts :redesign %>
-
-  <!-- Optimizely -->
-  <script src="//cdn.optimizely.com/js/237508485.js"></script>
 
   <%= yield :javascript %>
 
