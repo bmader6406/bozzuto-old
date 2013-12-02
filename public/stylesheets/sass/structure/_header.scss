@@ -7,14 +7,14 @@ header {
   .h-logo {
     background: url(/images/redesign/bozzuto-logo.png) no-repeat;
     height: 50px;
-    width: 205px;
+    width: 275px;
 
     a {
       @include hide-text;
 
       display: block;
       height: 50px;
-      width: 205px;
+      width: 275px;
     }
   }
 
