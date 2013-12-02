@@ -4,7 +4,7 @@ bozzuto.analytics = {
   },
 
   doubleClick: {
-    debug: true,
+    debug: false,
 
     init: function() {
       if (bozzuto.analytics.doubleClick.debug) {
