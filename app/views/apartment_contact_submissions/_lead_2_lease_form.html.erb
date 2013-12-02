@@ -13,7 +13,7 @@
       </p>
     <% end %>
 
-    <% if @page.schedule_appointment_url.present? %>
+    <% if @page.try(:schedule_appointment_url).present? %>
       <p class="cty-contact-schedule-appointment">
         <%= link_to 'Schedule an Appointment', @page.schedule_appointment_url %>
       </p>
