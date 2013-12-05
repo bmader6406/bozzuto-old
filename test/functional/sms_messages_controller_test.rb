@@ -2,20 +2,22 @@ require 'test_helper'
 
 class SmsMessagesControllerTest < ActionController::TestCase
   context "the SmsMessages controller" do
-    context 'on GET to new for a mobile browser' do
-      setup do
-        @community = HomeCommunity.make
-        get :new, :home_community_id => @community.to_param, :format => 'mobile'
+    context "GET to #new" do
+      mobile_device do
+        setup do
+          @community = HomeCommunity.make
+          get :new, :home_community_id => @community.to_param
+        end
+        
+        should_respond_with :success
+        should_render_template :new
+        should_render_with_layout :application
+        should_assign_to(:community) { @community }
       end
-      
-      should_respond_with :success
-      should_render_template :new
-      should_render_with_layout :application
-      should_assign_to(:community) { @community }
     end
     
     context "on POST to create" do
-      browser_context do
+      desktop_device do
         context "for a HomeCommunity" do
           setup do
             @community = HomeCommunity.make
@@ -75,7 +77,7 @@ class SmsMessagesControllerTest < ActionController::TestCase
         end
       end
       
-      mobile_context do
+      mobile_device do
         context "for a HomeCommunity" do
           setup do
             @community = HomeCommunity.make
@@ -83,9 +85,8 @@ class SmsMessagesControllerTest < ActionController::TestCase
             HomeCommunity.stubs(:find).returns(@community)
 
             post :create,
-              :home_community_id => @community.to_param,
-              :phone_number      => '1234567890',
-              :format => 'mobile'
+                 :home_community_id => @community.to_param,
+                 :phone_number      => '1234567890'
           end
 
           should_respond_with :success
@@ -104,9 +105,8 @@ class SmsMessagesControllerTest < ActionController::TestCase
             ApartmentCommunity.stubs(:find).returns(@community)
 
             post :create,
-              :apartment_community_id => @community.to_param,
-              :phone_number           => '1234567890',
-              :format => 'mobile'
+                 :apartment_community_id => @community.to_param,
+                 :phone_number           => '1234567890'
           end
 
           should_respond_with :success
@@ -125,9 +125,8 @@ class SmsMessagesControllerTest < ActionController::TestCase
             HomeCommunity.stubs(:find).returns(@community)
 
             post :create,
-              :home_community_id => @community.to_param,
-              :phone_number      => '',
-              :format => 'mobile'
+                 :home_community_id => @community.to_param,
+                 :phone_number      => ''
           end
 
           should_respond_with :success

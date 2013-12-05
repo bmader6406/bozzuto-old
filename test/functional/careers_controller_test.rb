@@ -3,7 +3,7 @@ require 'test_helper'
 class CareersControllerTest < ActionController::TestCase
   context 'CareersController' do
     context 'GET to :index' do
-      browser_context do
+      desktop_device do
         setup do
           @section = Section.make :title => 'Careers'
 
@@ -15,7 +15,7 @@ class CareersControllerTest < ActionController::TestCase
         should_assign_to(:section) { @section }
       end
 
-      mobile_context do
+      mobile_device do
         setup do
           @section = Section.make :title => 'Careers'
           @page    = Page.make :section => @section

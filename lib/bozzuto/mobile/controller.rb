@@ -12,12 +12,36 @@ module Bozzuto
 
           helper_method :device, :mobile?, :mobile_device?
 
-          before_filter :require_mobile_action
+          before_filter :detect_full_site_flag
+          before_filter :detect_mobile
+          before_filter :verify_mobile_format
+        end
+      end
+
+      private 
+
+      def detect_full_site_flag
+        value = request.env['bozzuto.mobile.force_full_site']
+
+        if value.present?
+          session[:force_full_site] = value
+        end
+      end
+
+      def detect_mobile
+        if mobile_request?
+          render_mobile_site!
+        end
+      end
+
+      def verify_mobile_format
+        if mobile? && !has_mobile_action?(params[:action])
+          render_full_site!
         end
       end
 
       def device
-        request.env['bozzuto.mobile.device']
+        request.env['bozzuto.mobile.device'] || :browser
       end
 
       def mobile?
@@ -28,14 +52,28 @@ module Bozzuto
         device != :browser
       end
 
+      def render_full_site!
+        request.format = :html
+      end
+
+      def render_mobile_site!
+        request.format = :mobile
+      end
+
       def has_mobile_action?(action)
         self.class.mobile_actions.include?(action.to_sym)
       end
 
-      def require_mobile_action
-        if mobile? && !has_mobile_action?(params[:action].to_sym)
-          redirect_to root_path
-        end
+      def force_mobile?
+        session[:force_full_site] == "0"
+      end
+
+      def force_browser?
+        session[:force_full_site] == "1"
+      end
+
+      def mobile_request?
+        params['format'] == 'mobile' || (device != :browser && !force_browser?) || force_mobile?
       end
     end
   end

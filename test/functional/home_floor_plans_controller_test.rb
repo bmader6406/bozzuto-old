@@ -17,7 +17,7 @@ class HomeFloorPlansControllerTest < ActionController::TestCase
       context 'with a community that is not published' do
         setup { @community.update_attribute(:published, false) }
 
-        browser_context do
+        all_devices do 
           setup do
             get :index,
               :home_community_id => @community.id,
@@ -26,21 +26,10 @@ class HomeFloorPlansControllerTest < ActionController::TestCase
 
           should_respond_with :not_found
         end
-
-        mobile_context do
-          setup do
-            get :index,
-              :home_community_id => @community.id,
-              :home_id           => @home.id,
-              :format            => :mobile
-          end
-
-          should_respond_with :not_found
-        end
       end
 
       context 'with a community that is published' do
-        browser_context do
+        desktop_device do
           setup do
             get :index,
               :home_community_id => @community.id,
@@ -52,12 +41,11 @@ class HomeFloorPlansControllerTest < ActionController::TestCase
           end
         end
 
-        mobile_context do
+        mobile_device do
           setup do
             get :index,
               :home_community_id => @community.id,
-              :home_id           => @home.id,
-              :format            => :mobile
+              :home_id           => @home.id
           end
 
           should_respond_with :success
@@ -73,7 +61,7 @@ class HomeFloorPlansControllerTest < ActionController::TestCase
       context 'with a community that is not published' do
         setup { @community.update_attribute(:published, false) }
 
-        browser_context do
+        all_devices do
           setup do
             get :show,
               :home_community_id  => @community.id,
@@ -83,22 +71,10 @@ class HomeFloorPlansControllerTest < ActionController::TestCase
 
           should_respond_with :not_found
         end
-
-        mobile_context do
-          setup do
-            get :show,
-              :home_community_id  => @community.id,
-              :home_id            => @home.id,
-              :id                 => @plan.id,
-              :format             => :mobile
-          end
-
-          should_respond_with :not_found
-        end
       end
 
       context 'with a community that is published' do
-        browser_context do
+        desktop_device do
           setup do
             get :show,
               :home_community_id  => @community.id,
@@ -111,13 +87,12 @@ class HomeFloorPlansControllerTest < ActionController::TestCase
           end
         end
 
-        mobile_context do
+        mobile_device do
           setup do
             get :show,
               :home_community_id  => @community.id,
               :home_id            => @home.id,
-              :id                 => @plan.id,
-              :format             => :mobile
+              :id                 => @plan.id
           end
 
           should_respond_with :success

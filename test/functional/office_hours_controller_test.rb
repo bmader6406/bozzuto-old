@@ -10,7 +10,7 @@ class OfficeHoursControllerTest < ActionController::TestCase
       end
 
       context 'a GET to #show' do
-        browser_context do
+        desktop_device do
           setup do
             get :show, :apartment_community_id => @community.to_param
           end
@@ -21,9 +21,9 @@ class OfficeHoursControllerTest < ActionController::TestCase
           }
         end
 
-        mobile_context do
+        mobile_device do
           setup do
-            get :show, :apartment_community_id => @community.to_param, :format => 'mobile'
+            get :show, :apartment_community_id => @community.to_param
           end
 
           should_respond_with :success
@@ -41,8 +41,8 @@ class OfficeHoursControllerTest < ActionController::TestCase
         @page = PropertyContactPage.make(:property => @community)
       end
 
-      context 'a GET to #show for mobile' do
-        browser_context do
+      context 'a GET to #show' do
+        desktop_device do
           setup do
             get :show, :home_community_id => @community.to_param
           end
@@ -53,9 +53,9 @@ class OfficeHoursControllerTest < ActionController::TestCase
           }
         end
 
-        mobile_context do
+        mobile_device do
           setup do
-            get :show, :home_community_id => @community.to_param, :format => 'mobile'
+            get :show, :home_community_id => @community.to_param
           end
 
           should_respond_with :success

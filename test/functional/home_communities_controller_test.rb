@@ -52,7 +52,7 @@ class HomeCommunitiesControllerTest < ActionController::TestCase
           should_redirect_to('the canonical URL') { home_community_path(@canonical_slug) }
         end
 
-        browser_context do
+        desktop_device do
           setup do
             get :show, :id => @community.to_param
           end
@@ -63,11 +63,9 @@ class HomeCommunitiesControllerTest < ActionController::TestCase
           should_render_template :show
         end
 
-        mobile_context do
+        mobile_device do
           setup do
-            get :show,
-              :id => @community.to_param,
-              :format => :mobile
+            get :show, :id => @community.to_param
           end
 
           should_assign_to(:community) { @community }

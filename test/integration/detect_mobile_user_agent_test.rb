@@ -9,7 +9,7 @@ class DetectMobileUserAgentTest < ActionController::IntegrationTest
 
   def self.should_set_the_device_to(device)
     should "set the device to #{device}" do
-      assert_equal device.to_sym, @controller.device
+      assert_equal device.to_sym, @controller.send(:device)
     end
   end
 

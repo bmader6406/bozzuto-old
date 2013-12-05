@@ -80,17 +80,9 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
       context "with an unpublished community" do
         before { @community.update_attribute(:published, false) }
 
-        browser_context do
+        all_devices do
           before do
             get :show, :id => @community.to_param
-          end
-
-          should_respond_with :not_found
-        end
-
-        mobile_context do
-          before do
-            get :show, :id => @community.to_param, :format => :mobile
           end
 
           should_respond_with :not_found
@@ -98,7 +90,7 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
       end
 
       context "with a published community" do
-        browser_context do
+        desktop_device do
           before do
             get :show, :id => @community.to_param
           end
@@ -109,11 +101,9 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
           should_assign_to(:community) { @community }
         end
 
-        mobile_context do
+        mobile_device do
           before do
-            get :show,
-              :id => @community.to_param,
-              :format => :mobile
+            get :show, :id => @community.to_param
           end
 
           should_respond_with :success

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class SearchesControllerTest < ActionController::TestCase
   context 'GET to #index' do
-    browser_context do
+    all_devices do
       context 'with query present' do
         setup do
           search = Object.new
@@ -24,14 +24,6 @@ class SearchesControllerTest < ActionController::TestCase
         should_respond_with :redirect
         should_redirect_to(:home_page) { root_path }
       end
-    end
-
-    mobile_context do
-      setup do
-        get :index
-      end
-
-      should_redirect_to_home_page
     end
   end
 end

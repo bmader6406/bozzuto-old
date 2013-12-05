@@ -10,7 +10,7 @@ class FeaturesControllerTest < ActionController::TestCase
           @page = PropertyFeaturesPage.make(:property => @community)
         end
 
-        browser_context do
+        desktop_device do
           setup do
             get :show, :home_community_id => @community.to_param
           end
@@ -22,11 +22,9 @@ class FeaturesControllerTest < ActionController::TestCase
           should_assign_to(:page) { @page }
         end
 
-        mobile_context do
+        mobile_device do
           setup do
-            get :show,
-              :home_community_id => @community.to_param,
-              :format => :mobile
+            get :show, :home_community_id => @community.to_param
           end
 
           should_respond_with :success
@@ -38,20 +36,9 @@ class FeaturesControllerTest < ActionController::TestCase
       end
 
       context 'that does not have a page' do
-        browser_context do
+        all_devices do
           setup do
             get :show, :home_community_id => @community.to_param
-          end
-
-          should_respond_with :not_found
-          should_assign_to(:community) { @community }
-        end
-
-        mobile_context do
-          setup do
-            get :show,
-              :home_community_id => @community.to_param,
-              :format => :mobile
           end
 
           should_respond_with :not_found
@@ -68,7 +55,7 @@ class FeaturesControllerTest < ActionController::TestCase
           @page  = PropertyFeaturesPage.make(:property => @community)
         end
 
-        browser_context do
+        desktop_device do
           setup do
             get :show, :apartment_community_id => @community.to_param
           end
@@ -80,11 +67,9 @@ class FeaturesControllerTest < ActionController::TestCase
           should_assign_to(:page) { @page }
         end
 
-        mobile_context do
+        mobile_device do
           setup do
-            get :show,
-              :apartment_community_id => @community.to_param,
-              :format => :mobile
+            get :show, :apartment_community_id => @community.to_param
           end
 
           should_respond_with :success
@@ -96,7 +81,7 @@ class FeaturesControllerTest < ActionController::TestCase
       end
       
       context 'that does not have a page' do
-        browser_context do
+        desktop_device do
           setup do
             get :show, :apartment_community_id => @community.to_param
           end
@@ -105,11 +90,9 @@ class FeaturesControllerTest < ActionController::TestCase
           should_assign_to(:community) { @community }
         end
 
-        mobile_context do
+        mobile_device do
           setup do
-            get :show,
-              :apartment_community_id => @community.to_param,
-              :format => :mobile
+            get :show, :apartment_community_id => @community.to_param
           end
 
           should_respond_with :not_found

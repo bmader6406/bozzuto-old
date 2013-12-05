@@ -8,7 +8,7 @@ class NewsAndPressControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #index' do
-      browser_context do
+      all_devices do
         setup do
           get :index, :section => @about.to_param
         end
@@ -18,18 +18,10 @@ class NewsAndPressControllerTest < ActionController::TestCase
         should_assign_to :latest_news
         should_assign_to :latest_press
       end
-
-      mobile_context do
-        setup do
-          get :index, :section => @about.to_param
-        end
-
-        should_redirect_to_home_page
-      end
     end
 
     context 'a GET to #show' do
-      browser_context do
+      all_devices do
         context 'with no pages in the section' do
           setup do
             get :show, :section => @about.to_param, :page => []
@@ -76,14 +68,6 @@ class NewsAndPressControllerTest < ActionController::TestCase
             should_assign_to(:page) { @page }
           end
         end
-      end
-
-      mobile_context do
-        setup do
-          get :show, :section => @about.to_param, :page => []
-        end
-
-        should_redirect_to_home_page
       end
     end
   end

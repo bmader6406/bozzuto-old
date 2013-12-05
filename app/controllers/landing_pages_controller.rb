@@ -3,9 +3,6 @@ class LandingPagesController < ApplicationController
 
   layout 'homepage'
 
-  skip_filter   :require_mobile_action
-  before_filter :disable_mobile_format
-
   before_filter :find_page, :only => :show
   before_filter :redirect_to_canonical_url, :only => :show
 
@@ -15,10 +12,6 @@ class LandingPagesController < ApplicationController
 
 
   private
-
-  def disable_mobile_format
-    request.format = :html
-  end
 
   def find_page
     @page = LandingPage.published.find(params[:id])

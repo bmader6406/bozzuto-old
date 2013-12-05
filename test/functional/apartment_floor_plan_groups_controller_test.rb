@@ -8,19 +8,9 @@ class ApartmentFloorPlanGroupsControllerTest < ActionController::TestCase
       context 'with a community that is not published' do
         setup { @community.update_attribute(:published, false) }
 
-        browser_context do
+        all_devices do
           setup do
             get :index, :apartment_community_id => @community.id
-          end
-
-          should_respond_with :not_found
-        end
-
-        mobile_context do
-          setup do
-            get :index,
-              :apartment_community_id => @community.id,
-              :format => :mobile
           end
 
           should_respond_with :not_found
@@ -28,7 +18,7 @@ class ApartmentFloorPlanGroupsControllerTest < ActionController::TestCase
       end
 
       context 'with a community that is published' do
-        browser_context do
+        desktop_device do
           setup do
             get :index, :apartment_community_id => @community.id
           end
@@ -39,7 +29,7 @@ class ApartmentFloorPlanGroupsControllerTest < ActionController::TestCase
           should_assign_to(:community) { @community }
         end
 
-        mobile_context do
+        mobile_device do
           setup do
             get :index,
               :apartment_community_id => @community.id,

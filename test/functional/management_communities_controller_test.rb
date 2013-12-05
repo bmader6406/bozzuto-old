@@ -7,7 +7,7 @@ class ManagementCommunitiesControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #index' do
-      browser_context do
+      all_devices do
         setup do
           @communities = ["alpha", "beta", "gamma"].inject([]) do |array, title|
             array << ApartmentCommunity.make(:title => title)
@@ -33,14 +33,6 @@ class ManagementCommunitiesControllerTest < ActionController::TestCase
           should_assign_to(:communities) { @communities }
           should_assign_to(:page) { @page }
         end
-      end
-
-      mobile_context do
-        setup do
-          get :index, :section => 'management'
-        end
-
-        should_redirect_to_home_page
       end
     end
   end

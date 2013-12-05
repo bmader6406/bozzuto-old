@@ -7,13 +7,16 @@ class TestimonialsControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #index' do
-      browser_context do
-        setup do
-          5.times do
-            Testimonial.make :section => @section
-          end
-          @testimonials = @section.testimonials
+      setup do
+        5.times do
+          Testimonial.make :section => @section
+        end
 
+        @testimonials = @section.testimonials
+      end
+
+      desktop_device do
+        setup do
           get :index, :section => @section.to_param
         end
 
@@ -23,14 +26,9 @@ class TestimonialsControllerTest < ActionController::TestCase
         should_assign_to(:testimonials) { @testimonials }
       end
 
-      mobile_context do
+      mobile_device do
         setup do
-          5.times do
-            Testimonial.make :section => @section
-          end
-          @testimonials = @section.testimonials
-
-          get :index, :section => @section.to_param, :format => 'mobile'
+          get :index, :section => @section.to_param
         end
 
         should_respond_with :success

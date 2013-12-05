@@ -11,19 +11,9 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
         context 'with a community that is not published' do
           setup { @community.update_attribute(:published, false) }
 
-          browser_context do
+          all_devices do
             setup do
               get :show, :apartment_community_id => @community.to_param
-            end
-
-            should_respond_with :not_found
-          end
-
-          mobile_context do
-            setup do
-              get :show,
-                :apartment_community_id => @community.to_param,
-                :format                 => :mobile
             end
 
             should_respond_with :not_found
@@ -35,7 +25,7 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             @page = PropertyContactPage.make(:property => @community)
           end
 
-          browser_context do
+          desktop_device do
             setup do
               get :show, :apartment_community_id => @community.to_param
             end
@@ -47,11 +37,9 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should_assign_to(:page) { @page }
           end
 
-          mobile_context do
+          mobile_device do
             setup do
-              get :show,
-                :apartment_community_id => @community.to_param,
-                :format                 => :mobile
+              get :show, :apartment_community_id => @community.to_param
             end
 
             should_respond_with :success
@@ -63,7 +51,7 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
         end
 
         context 'without a contact page' do
-          browser_context do
+          desktop_device do
             setup do
               get :show, :apartment_community_id => @community.to_param
             end
@@ -75,11 +63,9 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should_not_assign_to :page
           end
 
-          mobile_context do
+          mobile_device do
             setup do
-              get :show,
-                :apartment_community_id => @community.to_param,
-                :format                 => :mobile
+              get :show, :apartment_community_id => @community.to_param
             end
 
             should_respond_with :success
@@ -93,7 +79,7 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
       
       context 'POST to #create' do
         context 'with an invalid submission' do
-          browser_context do
+          desktop_device do
             setup do
               @submission = UnderConstructionLead.new
 
@@ -112,15 +98,14 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             end
           end
 
-          mobile_context do
+          mobile_device do
             context 'with an invalid submission' do
               setup do
                 @submission = UnderConstructionLead.new
 
                 post :create,
                   :apartment_community_id => @community.to_param,
-                  :submission             => @submission.attributes,
-                  :format                 => :mobile
+                  :submission             => @submission.attributes
               end
 
               should_respond_with :success
@@ -136,7 +121,7 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
         end
 
         context 'with a valid submission' do
-          browser_context do
+          desktop_device do
             setup do
               @submission = UnderConstructionLead.make_unsaved
 
@@ -159,14 +144,13 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             end
           end
 
-          mobile_context do
+          mobile_device do
             setup do
               @submission = UnderConstructionLead.make_unsaved
 
               post :create,
                 :apartment_community_id => @community.to_param,
-                :submission             => @submission.attributes,
-                :format                 => :mobile
+                :submission             => @submission.attributes
             end
 
             should_respond_with :redirect
@@ -186,7 +170,7 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
       end
 
       context 'GET to #thank_you' do
-        browser_context do
+        desktop_device do
           setup do
             get :thank_you, :apartment_community_id => @community.to_param
           end
@@ -197,11 +181,9 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
           should_assign_to :community
         end
 
-        mobile_context do
+        mobile_device do
           setup do
-            get :thank_you,
-              :apartment_community_id => @community.to_param,
-              :format                 => :mobile
+            get :thank_you, :apartment_community_id => @community.to_param
           end
 
           should_respond_with :success
@@ -224,7 +206,7 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             @page = PropertyContactPage.make(:property => @community)
           end
 
-          browser_context do
+          desktop_device do
             setup do
               get :show, :apartment_community_id => @community.to_param
             end
@@ -236,11 +218,9 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should_assign_to(:page) { @page }
           end
 
-          mobile_context do
+          mobile_device do
             setup do
-              get :show,
-                :apartment_community_id => @community.to_param,
-                :format                 => :mobile
+              get :show, :apartment_community_id => @community.to_param
             end
 
             should_respond_with :success
@@ -252,7 +232,7 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
         end
 
         context 'without a contact page' do
-          browser_context do
+          desktop_device do
             setup do
               get :show, :apartment_community_id => @community.to_param
             end
@@ -264,11 +244,9 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should_not_assign_to :page
           end
 
-          mobile_context do
+          mobile_device do
             setup do
-              get :show,
-                :apartment_community_id => @community.to_param,
-                :format                 => :mobile
+              get :show, :apartment_community_id => @community.to_param
             end
 
             should_respond_with :success
@@ -282,7 +260,7 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
       
       context 'POST to #create' do
         context 'with an invalid submission' do
-          browser_context do
+          desktop_device do
             setup do
               @submission = Lead2LeaseSubmission.new
 
@@ -301,15 +279,14 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             end
           end
 
-          mobile_context do
+          mobile_device do
             context 'with an invalid submission' do
               setup do
                 @submission = Lead2LeaseSubmission.new
 
                 post :create,
                   :apartment_community_id => @community.to_param,
-                  :submission             => @submission.attributes,
-                  :format                 => :mobile
+                  :submission             => @submission.attributes
               end
 
               should_respond_with :success
@@ -325,7 +302,7 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
         end
 
         context 'with a valid submission' do
-          browser_context do
+          desktop_device do
             setup do
               @submission = Lead2LeaseSubmission.make_unsaved
 
@@ -349,14 +326,13 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             end
           end
 
-          mobile_context do
+          mobile_device do
             setup do
               @submission = Lead2LeaseSubmission.make_unsaved
 
               post :create,
                 :apartment_community_id => @community.to_param,
-                :submission             => @submission.attributes,
-                :format                 => :mobile
+                :submission             => @submission.attributes
             end
 
             should_assign_to :submission
@@ -394,7 +370,7 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
           end
         end
 
-        browser_context do
+        desktop_device do
           setup do
             get :thank_you, :apartment_community_id => @community.to_param
           end
@@ -405,11 +381,10 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
           should_assign_to :community
         end
 
-        mobile_context do
+        mobile_device do
           setup do
             get :thank_you,
-              :apartment_community_id => @community.to_param,
-              :format                 => :mobile
+              :apartment_community_id => @community.to_param
           end
 
           should_respond_with :success

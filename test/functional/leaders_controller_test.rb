@@ -7,21 +7,13 @@ class LeadersControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #index' do
-      browser_context do
+      all_devices do
         setup do
           get :index, :section => @section.to_param
         end
 
         should_respond_with :success
         should_render_template :index
-      end
-
-      mobile_context do
-        setup do
-          get :index, :section => @section.to_param
-        end
-
-        should_redirect_to_home_page
       end
     end
   end

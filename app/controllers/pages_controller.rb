@@ -2,6 +2,7 @@ class PagesController < SectionContentController
   has_mobile_actions :show
 
   before_filter :find_page
+  before_filter :verify_has_mobile_content
 
   def show
   end
@@ -18,5 +19,11 @@ class PagesController < SectionContentController
     end
 
     render_404 if @page.nil?
+  end
+
+  def verify_has_mobile_content
+    if !@page.mobile_content?
+      render_full_site!
+    end
   end
 end

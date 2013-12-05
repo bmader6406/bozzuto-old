@@ -9,7 +9,7 @@ class StatesControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #show' do
-      browser_context do
+      desktop_device do
         setup do
           get :show, :id => @state.to_param
         end
@@ -18,7 +18,7 @@ class StatesControllerTest < ActionController::TestCase
         should_redirect_to('the apartment communities page') { apartment_communities_url }
       end
 
-      mobile_context do
+      mobile_device do
         setup do
           get :show, :id => @state.to_param, :format => 'mobile'
         end

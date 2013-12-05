@@ -9,7 +9,7 @@ class LandingPagesControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #show' do
-      browser_context do
+      all_devices do
         context 'with a canonical URL' do
           setup do
             get :show, :id => @page.to_param
@@ -44,22 +44,6 @@ class LandingPagesControllerTest < ActionController::TestCase
             should_respond_with :redirect
             should_redirect_to('the canonical URL') { landing_page_url(@page) }
           end
-        end
-      end
-
-      mobile_context do
-        setup do
-          get :show, :id => @page.to_param
-        end
-
-        should_respond_with :success
-        should_render_with_layout :homepage
-        should_render_template :show
-        should_assign_to(:page) { @page }
-        should_assign_to(:state) { @page.state }
-
-        should "set the format to :html" do
-          assert_equal :html, @request.format.to_sym
         end
       end
     end

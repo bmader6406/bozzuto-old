@@ -16,7 +16,7 @@ class CountiesControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #index' do
-      browser_context do
+      desktop_device do
         setup do
           get :index, :state_id => @state.to_param
         end
@@ -25,9 +25,9 @@ class CountiesControllerTest < ActionController::TestCase
         should_redirect_to('the apartment communities page') { apartment_communities_url }
       end
 
-      mobile_context do
+      mobile_device do
         setup do
-          get :index, :state_id => @state.to_param, :format => 'mobile'
+          get :index, :state_id => @state.to_param
         end
 
         should_respond_with :success
@@ -38,7 +38,7 @@ class CountiesControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #show' do
-      browser_context do
+      desktop_device do
         setup do
           get :show, :id => @county.to_param
         end
@@ -47,9 +47,9 @@ class CountiesControllerTest < ActionController::TestCase
         should_redirect_to('the apartment communities page') { apartment_communities_url }
       end
 
-      mobile_context do
+      mobile_device do
         setup do
-          get :show, :id => @county.to_param, :format => 'mobile'
+          get :show, :id => @county.to_param
         end
 
         should_respond_with :success

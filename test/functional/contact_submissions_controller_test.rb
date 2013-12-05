@@ -8,7 +8,7 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #show' do
-      browser_context do
+      all_devices do
         context 'with no topic param' do
           setup do
             get :show
@@ -23,31 +23,6 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
         context 'with a topic param' do
           setup do
             get :show, :topic => @topic.to_param
-          end
-
-          should 'set the topic on the submission' do
-            assert_equal @topic, assigns(:submission).topic
-          end
-        end
-      end
-
-      mobile_context do
-        context 'with no topic param' do
-          setup do
-            get :show, :format => :mobile
-          end
-
-          should_respond_with :success
-          should_render_template :show
-          should_assign_to :submission
-          should_assign_to(:section) { @section }
-        end
-
-        context 'with a topic param' do
-          setup do
-            get :show,
-              :topic  => @topic.to_param,
-              :format => :mobile
           end
 
           should 'set the topic on the submission' do
@@ -110,19 +85,9 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #thank_you' do
-      browser_context do
+      all_devices do
         setup do
           get :thank_you
-        end
-
-        should_respond_with :success
-        should_render_template :thank_you
-        should_assign_to(:section) { @section }
-      end
-
-      mobile_context do
-        setup do
-          get :thank_you, :format => :mobile
         end
 
         should_respond_with :success

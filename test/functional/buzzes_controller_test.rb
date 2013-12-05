@@ -8,7 +8,7 @@ class BuzzesControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #new' do
-      browser_context do
+      desktop_device do
         setup do
           get :new, :section => 'about-us'
         end
@@ -19,7 +19,7 @@ class BuzzesControllerTest < ActionController::TestCase
         should_assign_to :buzz
       end
 
-      mobile_context do
+      mobile_device do
         setup do
           get :new, :section => 'about-us'
         end
@@ -32,7 +32,7 @@ class BuzzesControllerTest < ActionController::TestCase
     end
 
     context 'a POST to #create' do
-      browser_context do
+      desktop_device do
         context 'with an invalid buzz' do
           setup do
             post :create,
@@ -67,7 +67,7 @@ class BuzzesControllerTest < ActionController::TestCase
         end
       end
 
-      mobile_context do
+      mobile_device do
         context 'with an invalid buzz' do
           setup do
             post :create,
@@ -87,7 +87,7 @@ class BuzzesControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #thank_you' do
-      browser_context do
+      desktop_device do
         setup do
           get :thank_you, :section => 'about-us'
         end
@@ -97,7 +97,7 @@ class BuzzesControllerTest < ActionController::TestCase
         should_render_template :thank_you
       end
 
-      mobile_context do
+      mobile_device do
         setup do
           get :thank_you, :section => 'about-us'
         end

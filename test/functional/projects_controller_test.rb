@@ -7,7 +7,7 @@ class ProjectsControllerTest < ActionController::TestCase
     end
 
     context 'a GET to #index' do
-      browser_context do
+      desktop_device do
         setup do
           get :index, :section => @section.to_param
         end
@@ -17,7 +17,7 @@ class ProjectsControllerTest < ActionController::TestCase
         should_assign_to(:categories) { ProjectCategory.all }
       end
 
-      mobile_context do
+      mobile_device do
         setup do
           get :index, :section => @section.to_param
         end
@@ -32,21 +32,10 @@ class ProjectsControllerTest < ActionController::TestCase
         @project = Project.make :section => @section
       end
 
-      browser_context do
+      all_devices do
         setup do
           get :show, :section => @section.to_param, :project_id => @project.to_param
         end
-
-        should_respond_with :success
-        should_assign_to(:section) { @section }
-        should_assign_to(:project) { @project }
-      end
-
-      mobile_context do
-        setup do
-          get :show, :section => @section.to_param, :project_id => @project.to_param
-        end
-
 
         should_respond_with :success
         should_assign_to(:section) { @section }

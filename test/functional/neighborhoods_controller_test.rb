@@ -8,7 +8,7 @@ class NeighborhoodsControllerTest < ActionController::TestCase
       context 'that is not published' do
         setup { @community.update_attribute(:published, false) }
 
-        browser_context do
+        desktop_device do
           setup do
             get :show, :home_community_id => @community.to_param
           end
@@ -16,9 +16,9 @@ class NeighborhoodsControllerTest < ActionController::TestCase
           should_respond_with :not_found
         end
 
-        mobile_context do
+        mobile_device do
           setup do
-            get :show, :home_community_id => @community.to_param, :format => :mobile
+            get :show, :home_community_id => @community.to_param
           end
 
           should_respond_with :not_found
@@ -30,7 +30,7 @@ class NeighborhoodsControllerTest < ActionController::TestCase
           @page = PropertyNeighborhoodPage.make(:property => @community)
         end
 
-        browser_context do
+        desktop_device do
           setup do
             get :show, :home_community_id => @community.to_param
           end
@@ -42,11 +42,9 @@ class NeighborhoodsControllerTest < ActionController::TestCase
           should_assign_to(:page) { @page }
         end
 
-        mobile_context do
+        mobile_device do
           setup do
-            get :show,
-              :home_community_id => @community.to_param,
-              :format => :mobile
+            get :show, :home_community_id => @community.to_param
           end
 
           should_respond_with :success
@@ -58,7 +56,7 @@ class NeighborhoodsControllerTest < ActionController::TestCase
       end
 
       context 'that does not have a neighborhoods page' do
-        browser_context do
+        desktop_device do
           setup do
             get :show, :home_community_id => @community.to_param
           end
@@ -67,11 +65,9 @@ class NeighborhoodsControllerTest < ActionController::TestCase
           should_assign_to(:community) { @community }
         end
 
-        mobile_context do
+        mobile_device do
           setup do
-            get :show,
-              :home_community_id => @community.to_param,
-              :format => :mobile
+            get :show, :home_community_id => @community.to_param
           end
 
           should_respond_with :not_found
@@ -87,7 +83,7 @@ class NeighborhoodsControllerTest < ActionController::TestCase
       context 'that is not published' do
         setup { @community.update_attribute(:published, false) }
 
-        browser_context do
+        desktop_device do
           setup do
             get :show, :apartment_community_id => @community.to_param
           end
@@ -95,9 +91,9 @@ class NeighborhoodsControllerTest < ActionController::TestCase
           should_respond_with :not_found
         end
 
-        mobile_context do
+        mobile_device do
           setup do
-            get :show, :apartment_community_id => @community.to_param, :format => :mobile
+            get :show, :apartment_community_id => @community.to_param
           end
 
           should_respond_with :not_found
@@ -109,7 +105,7 @@ class NeighborhoodsControllerTest < ActionController::TestCase
           @page = PropertyNeighborhoodPage.make(:property => @community)
         end
 
-        browser_context do
+        desktop_device do
           setup do
             get :show, :apartment_community_id => @community.to_param
           end
@@ -121,11 +117,9 @@ class NeighborhoodsControllerTest < ActionController::TestCase
           should_assign_to(:page) { @page }
         end
 
-        mobile_context do
+        mobile_device do
           setup do
-            get :show,
-              :apartment_community_id => @community.to_param,
-              :format => :mobile
+            get :show, :apartment_community_id => @community.to_param
           end
 
           should_respond_with :success

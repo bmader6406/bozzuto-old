@@ -11,7 +11,7 @@ class ApartmentFloorPlansControllerTest < ActionController::TestCase
       context 'with a community that is not published' do
         setup { @community.update_attribute(:published, false) }
 
-        browser_context do
+        all_devices do
           setup do
             get :index,
               :apartment_community_id => @community.id,
@@ -20,21 +20,10 @@ class ApartmentFloorPlansControllerTest < ActionController::TestCase
 
           should_respond_with :not_found
         end
-
-        mobile_context do
-          setup do
-            get :index,
-              :apartment_community_id => @community.id,
-              :floor_plan_group_id    => @group.id,
-              :format                 => :mobile
-          end
-
-          should_respond_with :not_found
-        end
       end
 
       context 'with a community that is published' do
-        browser_context do
+        desktop_device do
           setup do
             get :index,
               :apartment_community_id => @community.id,
@@ -46,12 +35,11 @@ class ApartmentFloorPlansControllerTest < ActionController::TestCase
           end
         end
 
-        mobile_context do
+        mobile_device do
           setup do
             get :index,
               :apartment_community_id => @community.id,
-              :floor_plan_group_id    => @group.id,
-              :format                 => :mobile
+              :floor_plan_group_id    => @group.id
           end
 
           should_respond_with :success
@@ -73,24 +61,12 @@ class ApartmentFloorPlansControllerTest < ActionController::TestCase
       context 'with a community that is not published' do
         setup { @community.update_attribute(:published, false) }
 
-        browser_context do
+        all_devices do
           setup do
             get :show,
               :apartment_community_id => @community.id,
               :floor_plan_group_id    => @group.id,
               :id                     => @plan.id
-          end
-
-          should_respond_with :not_found
-        end
-
-        mobile_context do
-          setup do
-            get :show,
-              :apartment_community_id => @community.id,
-              :floor_plan_group_id    => @group.id,
-              :id                     => @plan.id,
-              :format                 => :mobile
           end
 
           should_respond_with :not_found
@@ -105,7 +81,7 @@ class ApartmentFloorPlansControllerTest < ActionController::TestCase
           )
         end
 
-        browser_context do
+        desktop_device do
           setup do
             get :show,
               :apartment_community_id => @community.id,
@@ -118,13 +94,12 @@ class ApartmentFloorPlansControllerTest < ActionController::TestCase
           end
         end
 
-        mobile_context do
+        mobile_device do
           setup do
             get :show,
               :apartment_community_id => @community.id,
               :floor_plan_group_id    => @group.id,
-              :id                     => @plan.id,
-              :format                 => :mobile
+              :id                     => @plan.id
           end
 
           should_respond_with :success

@@ -8,9 +8,10 @@ class PromosControllerTest < ActionController::TestCase
     end
 
     context 'with a home community' do
-      browser_context do
+      desktop_device do
         setup do
           @community = HomeCommunity.make :promo => @active_promo
+
           get :index, :home_community_id => @community.to_param
         end
 
@@ -18,13 +19,12 @@ class PromosControllerTest < ActionController::TestCase
         should_redirect_to('the home community page') { @community }
       end
 
-      mobile_context do
+      mobile_device do
         context 'with an expired promo' do
           setup do
             @community = HomeCommunity.make :promo => @expired_promo
-            get :index,
-              :home_community_id => @community.to_param,
-              :format => :mobile
+
+            get :index, :home_community_id => @community.to_param
           end
 
           should_respond_with :redirect
@@ -34,9 +34,8 @@ class PromosControllerTest < ActionController::TestCase
         context 'with an active promo' do
           setup do
             @community = HomeCommunity.make :promo => @active_promo
-            get :index,
-              :home_community_id => @community.to_param,
-              :format => :mobile
+
+            get :index, :home_community_id => @community.to_param
           end
 
           should_respond_with :success
@@ -48,7 +47,7 @@ class PromosControllerTest < ActionController::TestCase
     end
 
     context 'with an apartment community' do
-      browser_context do
+      desktop_device do
         setup do
           @community = ApartmentCommunity.make :promo => @active_promo
           get :index, :apartment_community_id => @community.to_param
@@ -58,13 +57,12 @@ class PromosControllerTest < ActionController::TestCase
         should_redirect_to('the home community page') { @community }
       end
 
-      mobile_context do
+      mobile_device do
         context 'with an expired promo' do
           setup do
             @community = ApartmentCommunity.make :promo => @expired_promo
-            get :index,
-              :apartment_community_id => @community.to_param,
-              :format => :mobile
+
+            get :index, :apartment_community_id => @community.to_param
           end
 
           should_respond_with :redirect
@@ -74,9 +72,8 @@ class PromosControllerTest < ActionController::TestCase
         context 'with an active promo' do
           setup do
             @community = ApartmentCommunity.make :promo => @active_promo
-            get :index,
-              :apartment_community_id => @community.to_param,
-              :format => :mobile
+
+            get :index, :apartment_community_id => @community.to_param
           end
 
           should_respond_with :success

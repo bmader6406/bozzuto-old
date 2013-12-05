@@ -53,7 +53,6 @@ class ActiveSupport::TestCase
   end
 
   def set_mobile!
-    @request.format = :mobile
     @request.env['bozzuto.mobile.device'] = :iphone
   end
 
@@ -63,7 +62,7 @@ class ActiveSupport::TestCase
       should_redirect_to('the home page') { root_path }
     end
 
-    def mobile_context(&block)
+    def mobile_device(&block)
       context 'from a mobile device' do
         setup do
           set_mobile!
@@ -73,8 +72,13 @@ class ActiveSupport::TestCase
       end
     end
 
-    def browser_context(&block)
-      context('from a web browser', &block)
+    def desktop_device(&block)
+      context('from a desktop device', &block)
+    end
+
+    def all_devices(&block)
+      mobile_device(&block)
+      desktop_device(&block)
     end
   end
 end

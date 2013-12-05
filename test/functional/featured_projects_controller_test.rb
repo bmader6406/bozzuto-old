@@ -19,16 +19,16 @@ class FeaturedProjectsControllerTest < ActionController::TestCase
     end
 
     context 'GET to #index' do
-      browser_context do
+      desktop_device do
         setup { get :index }
 
         should_respond_with :redirect
         should_redirect_to('the services page') { section_page_path('services') }
       end
 
-      mobile_context do
+      mobile_device do
         setup do
-          get :index, :format => :mobile
+          get :index
         end
 
         should_respond_with :success
@@ -39,18 +39,16 @@ class FeaturedProjectsControllerTest < ActionController::TestCase
     end
 
     context 'GET to #show' do
-      browser_context do
+      desktop_device do
         setup { get :show, :id => @project1.cached_slug }
 
         should_respond_with :redirect
         should_redirect_to('the services page') { section_page_path('services') }
       end
 
-      mobile_context do
+      mobile_device do
         setup do
-          get :show,
-            :id     => @project1.cached_slug,
-            :format => :mobile
+          get :show, :id => @project1.cached_slug
         end
 
         should_respond_with :success

@@ -53,6 +53,10 @@ class Page < ActiveRecord::Base
     ancestors.size == 0
   end
 
+  def mobile_content?
+    mobile_body.present? && mobile_body.length > 10
+  end
+
 
   protected
 

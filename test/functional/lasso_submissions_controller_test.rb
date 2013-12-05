@@ -17,7 +17,7 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
       context 'with a community that is not published' do
         setup { @community.update_attribute(:published, false) }
 
-        browser_context do
+        desktop_device do
           context 'with a page' do
             setup do
               get :show, :home_community_id => @community.to_param
@@ -36,12 +36,10 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
           end
         end
 
-        mobile_context do
+        mobile_device do
           context 'with a page' do
             setup do
-              get :show,
-                :home_community_id => @community.to_param,
-                :format => :mobile
+              get :show, :home_community_id => @community.to_param
             end
 
             should_respond_with :not_found
@@ -50,9 +48,8 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
           context 'without page' do
             setup do
               @page.destroy
-              get :show,
-                :home_community_id => @community.to_param,
-                :format => :mobile
+
+              get :show, :home_community_id => @community.to_param
             end
 
             should_respond_with :not_found
@@ -61,7 +58,7 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
       end
 
       context 'with a community that is published' do
-        browser_context do
+        desktop_device do
           context 'with a page' do
             setup do
               get :show, :home_community_id => @community.to_param
@@ -86,12 +83,10 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
           end
         end
 
-        mobile_context do
+        mobile_device do
           context 'with a page' do
             setup do
-              get :show,
-                :home_community_id => @community.to_param,
-                :format => :mobile
+              get :show, :home_community_id => @community.to_param
             end
 
             should_respond_with :success
@@ -103,9 +98,8 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
           context 'without page' do
             setup do
               @page.destroy
-              get :show,
-                :home_community_id => @community.to_param,
-                :format => :mobile
+
+              get :show, :home_community_id => @community.to_param
             end
 
             should_respond_with :success
@@ -119,7 +113,7 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
     
 
     context 'a GET to #thank_you' do
-      browser_context do
+      desktop_device do
         context 'with an email in the lasso cookie' do
           setup do
             @email = Faker::Internet.email
@@ -140,15 +134,13 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
         end
       end
 
-      mobile_context do
+      mobile_device do
         context 'with an email in the lasso cookie' do
           setup do
             @email = Faker::Internet.email
             @request.cookies['lasso_email'] = @email
 
-            get :thank_you,
-              :home_community_id => @community.to_param,
-              :format => :mobile
+            get :thank_you, :home_community_id => @community.to_param
           end
 
           should_respond_with :success
@@ -163,7 +155,7 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
         end
       end
 
-      browser_context do
+      desktop_device do
         context 'without an email in the lasso cookie' do
           setup do
             get :thank_you, :home_community_id => @community.to_param
@@ -177,12 +169,10 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
         end
       end
 
-      mobile_context do
+      mobile_device do
         context 'without an email in the lasso cookie' do
           setup do
-            get :thank_you,
-              :home_community_id => @community.to_param,
-              :format => :mobile
+            get :thank_you, :home_community_id => @community.to_param
           end
 
           should_respond_with :success

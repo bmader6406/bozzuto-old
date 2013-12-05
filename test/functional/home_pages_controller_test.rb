@@ -55,7 +55,7 @@ class HomePagesControllerTest < ActionController::TestCase
         @about = Section.make(:about)
       end
 
-      browser_context do
+      desktop_device do
         setup do
           get :index
         end
