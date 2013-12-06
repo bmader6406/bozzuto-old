@@ -19,7 +19,7 @@ module Analytics
     context "A request" do
       context "ad source cookie is present" do
         setup do
-          get '/', nil, { :cookie => "#{AD_SOURCE_COOKIE}=Batman; path=/; expires=#{30.days.from_now}" }
+          get '/', nil, { :cookie => "#{AD_SOURCE_COOKIE}=Batman" }
         end
 
         should_set_ad_source('Batman')

@@ -15,7 +15,7 @@ module Bozzuto
     end
 
     def cookies
-      @env['rack.request.cookie_hash'] || {}
+      Rack::Request.new(@env).cookies
     end
 
     def save_cookie(headers, key, value)
