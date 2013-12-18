@@ -63,6 +63,7 @@
 
 			_gaq.push(['_trackEvent', params[0], params[1], params[2]]);
 			_gaq.push(['t2._trackEvent', params[0], params[1], params[2]]);
+			_gaq.push(['t3._trackEvent', params[0], params[1], params[2]]);
 		},
 
 		submitSocial: function(params) {
@@ -72,6 +73,7 @@
 
 			_gaq.push(['_trackSocial', params[0], params[1], params[2]]);
 			_gaq.push(['t2._trackSocial', params[0], params[1], params[2]]);
+			_gaq.push(['t3._trackSocial', params[0], params[1], params[2]]);
 		},
 
 		trackEvent: function(e) {
