@@ -1,0 +1,24 @@
+<h3>Ready to speak with a sales consultant?</h3>
+
+<p id="community-contact-note">Fill out the form below for availability and specials.</p>
+
+<p><em>* required</em></p>
+
+<div id="community-contact-form">
+  <form method="post" class="required-form" action="https://www.mbrealinsite.com/mwb/external/captureLead.action;jsessionid=6E152802CE90BDD14C77D46604FFFBB0">
+
+    <%= text_field_tag '2', nil, :placeholder => '* First Name ' %>
+    <%= text_field_tag '3', nil, :placeholder => '* Last Name' %>
+    <%= text_field_tag '12', nil, :placeholder => '* Email Address' %>
+    <%= text_field_tag '4', nil, :placeholder => 'Street Address' %>
+    <%= text_field_tag '5', nil, :placeholder => 'City' %>
+    <%= text_field_tag '7', nil, :placeholder => '* ZIP Code' %>
+    <%= text_field_tag '17', nil, :placeholder => '* Work ZIP' %>
+    <%= text_area_tag '15', nil, :rows => 8, :cols => 37, :placeholder => 'Comments' %>
+
+    <input type="hidden" name="origin" value="WEB" id="origin" />
+    <input type="hidden" name="form" value="147" id="form" />
+
+    <input type="submit" name="contact-submit" class="submit contact-submit" value="Submit" />
+  </form>
+</div>

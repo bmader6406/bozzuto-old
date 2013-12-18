@@ -1,0 +1,67 @@
+<h2 class="hdr-primary">
+	Ready to speak with a sales consultant?
+
+	<% if @community.phone_number.present? %>
+		<span class="hdr-call-us">
+			Call Us
+			<%= dnr_phone_number(@community, dnr_ad_source, :height => 21) %>
+		</span>
+	<% end %>
+</h2>
+
+<p id="community-contact-note">Fill out the form below for availability and specials.</p>
+
+<p><em>* required</em></p>
+
+<div id="community-contact-form">
+	<form method="post" class="required-form" action="https://www.mbrealinsite.com/mwb/external/captureLead.action;jsessionid=6E152802CE90BDD14C77D46604FFFBB0">
+		<fieldset>
+			<p>
+				<%= label_tag '2', 'First Name*' %>
+				<%= text_field_tag '2', nil, :class => 'required' %>
+			</p>
+
+			<p>
+				<%= label_tag '3', 'Last Name*' %>
+				<%= text_field_tag '3', nil, :class => 'required' %>
+			</p>
+
+			<p>
+				<%= label_tag '12', 'Email Address*' %>
+				<%= text_field_tag '12', nil, :class => 'required' %>
+			</p>
+
+			<p>
+				<%= label_tag '4', 'Street Address' %>
+				<%= text_field_tag '4', nil %>
+			</p>
+
+			<p>
+				<%= label_tag '5', 'City' %>
+				<%= text_field_tag '5', nil %>
+			</p>
+
+			<p>
+				<%= label_tag '7', 'ZIP Code*' %>
+				<%= text_field_tag '7', nil, :class => 'required' %>
+			</p>
+
+			<p>
+				<%= label_tag '17', 'Work ZIP*' %>
+				<%= text_field_tag '17', nil, :class => 'required' %>
+			</p>
+
+			<p>
+				<%= label_tag '15', 'Comments' %>
+				<%= text_area_tag '15', nil, :rows => 10, :cols => 50 %>
+			</p>
+		</fieldset>
+
+		<input type="hidden" name="origin" value="WEB" id="origin" />
+		<input type="hidden" name="form" value="147" id="form" />
+
+		<p class="submit">
+			<%= submit_tag 'Submit' %>
+		</p>
+	</form>
+</div>

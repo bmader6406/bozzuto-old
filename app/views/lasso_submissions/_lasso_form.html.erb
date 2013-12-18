@@ -1,0 +1,75 @@
+<% if @community.show_lasso_form? -%>
+  <h2 class="hdr-primary">
+    Ready to speak with a sales consultant?
+
+    <% if @community.phone_number.present? %>
+      <span class="hdr-call-us">
+        Call Us
+        <%= dnr_phone_number(@community, dnr_ad_source, :height => 21) %>
+      </span>
+    <% end %>
+  </h2>
+
+  <p id="community-contact-note">Fill out the form below for availability and specials.</p>
+
+  <p><em>* required</em></p>
+
+  <div id="community-contact-form">
+    <form method="post" id="lasso-form" class="required-form" action="http://www.mylasso.com/registrant_signup.php">
+      <%= lasso_hidden_fields(@community) %>
+
+      <fieldset>
+        <p>
+          <%= label_tag 'FirstName', 'First Name*' %>
+          <%= text_field_tag 'FirstName', nil, :class => 'required' %>
+        </p>
+
+        <p>
+          <%= label_tag 'LastName', 'Last Name*' %>
+          <%= text_field_tag 'LastName', nil, :class => 'required' %>
+        </p>
+
+        <p>
+          <%= label_tag 'Emails[Primary]', 'Email Address*' %>
+          <%= text_field_tag 'Emails[Primary]', nil, :class => 'required' %>
+        </p>
+
+        <p>
+          <%= label_tag 'Address', 'Address' %>
+          <%= text_field_tag 'Address' %>
+        </p>
+
+        <p>
+          <%= label_tag 'City', 'City' %>
+          <%= text_field_tag 'City' %>
+        </p>
+
+        <p>
+          <%= label_tag 'Province', 'State' %>
+          <%= text_field_tag 'Province' %>
+        </p>
+
+        <p>
+          <%= label_tag 'PostalCode', 'ZIP Code' %>
+          <%= text_field_tag 'PostalCode' %>
+        </p>
+
+        <p>
+          <%= label_tag 'Phones[Home]', 'Phone Number*' %>
+          <%= text_field_tag 'Phones[Home]', nil, :class => 'required' %>
+        </p>
+
+        <p>
+          <%= label_tag 'Comments', 'Comments' %>
+          <%= text_area_tag 'Comments', nil, :rows => 10, :cols => 50 %>
+        </p>
+      </fieldset>
+
+      <input type="hidden" name="registrationPageIdentifier" value="Online" />
+
+      <p class="submit">
+        <%= submit_tag 'Submit' %>
+      </p>
+    </form>
+  </div>
+<% end -%>
