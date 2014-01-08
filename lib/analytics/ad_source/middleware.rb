@@ -61,7 +61,7 @@ module Analytics
 
         def write_headers(headers)
           if @write_headers
-            save_cookie(headers, AD_SOURCE_COOKIE, :value => @new_ad_source_cookie, :expires => 30.days.from_now)
+            save_cookie(headers, AD_SOURCE_COOKIE, :value => @new_ad_source_cookie, :expires => 30.days.from_now, :path => '/')
           end
         end
 

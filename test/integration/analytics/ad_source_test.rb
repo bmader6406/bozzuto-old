@@ -76,6 +76,7 @@ module Analytics
     def assert_ad_source_cookie(value)
       assert_cookie(AD_SOURCE_COOKIE, value)
       assert_cookie_expiration(AD_SOURCE_COOKIE, 30.days.from_now)
+      assert_cookie_path(AD_SOURCE_COOKIE, '/')
     end
 
     def assert_cookie(name, value)
@@ -84,6 +85,10 @@ module Analytics
 
     def assert_cookie_expiration(name, time)
       assert((full_cookies[name]['expires'] - time).abs < 20)
+    end
+
+    def assert_cookie_path(name, path)
+      assert_equal path, full_cookies[name]['path']
     end
   end
 end
