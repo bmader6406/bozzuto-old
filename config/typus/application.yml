@@ -29,7 +29,7 @@ ApartmentCommunity:
       selectors: brochure_type
       destroy_related: PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyToursPage, PropertyContactPage, PropertySlideshow, PropertyMiniSlideshow, Video, PhotoSet, ApartmentFloorPlan
   order_by: title
-  relationships: mediaplex_tag, property_features, city, county, local_info_feed, features_page, neighborhood_page, tours_page, contact_page, slideshow, videos, photo_set, floor_plans, promo, contact_configuration
+  relationships: dnr_configuration, mediaplex_tag, property_features, city, county, local_info_feed, features_page, neighborhood_page, tours_page, contact_page, slideshow, videos, photo_set, floor_plans, promo, contact_configuration
   filters: 
   search: properties.title, properties.street_address
   application: Properties
@@ -231,9 +231,9 @@ ConversionConfiguration:
 
 DnrConfiguration:
   fields:
-    default: customer_code, campaign, ad_source
-    list: customer_code, campaign, ad_source
-    form: customer_code, campaign, ad_source, property
+    default: customer_code
+    list: customer_code
+    form: customer_code, property
     options:
   order_by: 
   relationships: 
@@ -318,7 +318,7 @@ HomeCommunity:
       selectors: brochure_type
       destroy_related: ConversionConfiguration, PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyToursPage, PropertyContactPage, LassoAccount, PropertySlideshow, PropertyMiniSlideshow, Home, Video, PhotoSet
   order_by: title
-  relationships: conversion_configuration, property_features, city, county, features_page, neighborhood_page, tours_page, contact_page, lasso_account, slideshow, videos, photo_set, homes, local_info_feed, promo, green_package
+  relationships: dnr_configuration, conversion_configuration, property_features, city, county, features_page, neighborhood_page, tours_page, contact_page, lasso_account, slideshow, videos, photo_set, homes, local_info_feed, promo, green_package
   filters:
   search: title
   application: Properties

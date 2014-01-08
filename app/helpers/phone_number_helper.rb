@@ -54,12 +54,14 @@ module PhoneNumberHelper
       APP_CONFIG[:callsource]['home']
     end
 
+    dnr_config = community.dnr_configuration
+
     args = [
       number,
       'xxx.xxx.xxxx',
       account,
-      'undefined',
-      'undefined',
+      dnr_config.try(:customer_code).presence || 'undefined',
+      dnr_ad_source.presence || 'undefined',
       dnr_ad_source.presence || 'undefined',
     ].map { |arg| "'#{arg}'" }
 
