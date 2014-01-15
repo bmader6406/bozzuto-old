@@ -135,7 +135,7 @@ City.blueprint do
 end
 
 ContactSubmission.blueprint do
-  name    { Faker::Name.name }
+  name    { 'Bruce Wayne' }
   email   { Faker::Internet.email }
   message { Faker::Lorem.paragraphs }
   topic   { ContactTopic.make }

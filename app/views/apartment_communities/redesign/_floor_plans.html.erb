@@ -7,7 +7,7 @@
   <div class="cty-section-content">
     <% community.floor_plans_by_group.each do |group, plans| %>
       <h4 class="cty-floor-plans-header">
-        <%= floor_plan_group_pluralize(plans.count, group.name) %>
+        <%= group.name.pluralize %>
       </h4>
 
       <% plans.in_groups_of(4, false).each do |plans| %>

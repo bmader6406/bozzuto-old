@@ -6,7 +6,7 @@
     <h2><%= @plan.name %></h2>
 
     <% link_to apartment_community_floor_plan_group_layouts_path(@community, @group), :class => 'go-back' do %>
-      <%= floor_plan_group_pluralize(2, @group.name) %>
+      <%= @group.name.pluralize %>
     <% end %>
   </div>
 </div>

@@ -10,10 +10,6 @@ module ApartmentFloorPlanGroupsHelper
     link_to 'View More', url
   end
 
-  def floor_plan_group_pluralize(count, name)
-    count == 1 ? name.singularize : name.pluralize
-  end
-
   def render_floor_plan_group_mobile_listings(community, exclude_group = nil)
     ''.tap { |output|
       community.floor_plans_by_group.each do |group, plans_in_group|

@@ -36,7 +36,7 @@
         <% ApartmentFloorPlanGroup.all.each do |group| %>
           <% if community.plan_count_in_group(group) > 0 %>
             <li>
-              <strong><%= group.name %></strong>
+              <strong><%= group.name.pluralize %></strong>
               <% community.cheapest_price_in_group(group).if_present? do |price| %>
                 from
                 <%= floor_plan_price(price) %>
