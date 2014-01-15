@@ -40,8 +40,8 @@ class CommunityListingMailerTest < ActionMailer::TestCase
 
     context '#recently_viewed_listings' do
       setup do
-        @property_1      = ApartmentCommunity.make
-        @property_2      = ApartmentCommunity.make
+        @property_1      = ApartmentCommunity.make(:title => "My Fake Condos")
+        @property_2      = ApartmentCommunity.make(:title => "Bogus Community")
         @recurring_email = RecurringEmail.make :property_ids => [@property_1.id, @property_2.id]
 
         assert_difference('ActionMailer::Base.deliveries.count', 1) do

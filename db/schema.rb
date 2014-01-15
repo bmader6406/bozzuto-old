@@ -398,7 +398,7 @@ ActiveRecord::Schema.define(:version => 2012081313174438) do
   create_table "feed_items", :force => true do |t|
     t.string   "title",        :null => false
     t.string   "url",          :null => false
-    t.string   "description",  :null => false
+    t.text     "description",  :null => false
     t.datetime "published_at", :null => false
     t.integer  "feed_id",      :null => false
     t.datetime "created_at"
