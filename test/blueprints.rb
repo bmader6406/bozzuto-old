@@ -351,6 +351,17 @@ PropertyNeighborhoodPage.blueprint do
   meta_keywords { Faker::Lorem.words(6) }
 end
 
+PropertySlideshow.blueprint do
+  property
+  name     { Faker::Lorem.words(1) }
+end
+
+PropertySlide.blueprint do
+  property_slideshow
+  image_file_name    { Sham.file_name }
+  image_content_type { 'text/jpg' }
+end
+
 PropertyToursPage.blueprint do
   property
   title         { Faker::Lorem.words(3) }

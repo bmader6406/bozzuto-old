@@ -49,6 +49,14 @@ module Bozzuto
           :expiration_date => @expiration_date
         })
 
+        @overview_text = %q{
+          <p>
+            <em>dolan haev u seen pluto?</em>
+            i jsut find him<br />
+            yay where is he?
+          </p>
+        }
+
         @community = ApartmentCommunity.make({
           :title                   => 'Dolans Hood',
           :street_address          => '100 Gooby Pls',
@@ -59,7 +67,7 @@ module Bozzuto
           :phone_number            => '832.382.1337',
           :video_url               => 'http://www.videoapt.com/208/LibertyTowers/Default.aspx',
           :office_hours            => @office_hours,
-          :overview_text           => 'ovrvu text',
+          :overview_text           => @overview_text,
           :overview_bullet_1       => 'ovrvu bulet 1',
           :overview_bullet_2       => 'ovrvu bulet 2',
           :overview_bullet_3       => 'ovrvu bulet 3',
@@ -247,6 +255,20 @@ module Bozzuto
         end
       end
 
+      context "with Slideshow" do
+        setup do
+          slideshow = PropertySlideshow.make(:property => @community)
+          @slide = PropertySlide.make(:property_slideshow => slideshow)
+
+          @first_export = @exporter.data[:properties].first
+        end
+
+        should "contain an entry for the slide" do
+          assert_equal @slide.image.url(:slide),
+            @first_export[:slideshow_slides].first[:image_url]
+        end
+      end
+
       should "contain listing image" do
         assert_match %r{http://bozzuto\.com/system/apartment_communities/\d+/square\.jpg},
           @first_export[:listing_image]
@@ -266,7 +288,7 @@ module Bozzuto
       end
 
       should "contain Overview Text" do
-        assert_equal 'ovrvu text', @first_export[:overview_text]
+        assert_equal @overview_text, @first_export[:overview_text]
       end
 
       context "contain Three Bullets" do
@@ -499,6 +521,9 @@ module Bozzuto
           set.stubs(:flickr_set).returns(OpenStruct.new(:title => 'PHERT SERT'))
           set.save
 
+          slideshow = PropertySlideshow.make(:property => @community)
+          @slide = PropertySlide.make(:property_slideshow => slideshow)
+
           @floor_plan = ApartmentFloorPlan.make({
             :apartment_community => @community,
             :name                => 'The Roxy',
@@ -677,8 +702,13 @@ module Bozzuto
           end
 
           should "contain overview text" do
-            assert_equal 'ovrvu text',
+            assert_equal @overview_text,
               @information_node.xpath('OverviewText')[0].content
+          end
+
+          should "contain overview text stripped" do
+            assert_equal 'dolan haev u seen pluto? i jsut find him yay where is he?',
+              @information_node.xpath('OverviewTextStripped')[0].content
           end
 
           1.upto(3) do |n|
@@ -759,6 +789,17 @@ module Bozzuto
 
           should "contain flickr set number" do
             assert_equal '91740458', @photo_set_node.xpath('FlickrSetNumber')[0].content
+          end
+        end
+
+        context "with slideshow" do
+          setup do
+            path = '//PhysicalProperty//Property//Slideshow'
+            @slideshow_node = @doc.xpath(path)[0]
+          end
+
+          should "contain an image URL" do
+            assert_equal @slide.image.url(:slide), @slideshow_node.xpath('SlideshowImageURL')[0].content
           end
         end
 

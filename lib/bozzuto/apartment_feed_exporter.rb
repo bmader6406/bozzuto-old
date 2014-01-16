@@ -35,6 +35,7 @@ module Bozzuto
           :phone_number        => community.phone_number,
           :features            => community_features(community),
           :photo_set           => community_photo_set(community),
+          :slideshow_slides    => community_slideshow(community),
           :video_url           => community.video_url,
           :neighborhood_text   => community.neighborhood_page.try(:content),
           :office_hours        => community.office_hours,
@@ -84,6 +85,20 @@ module Bozzuto
         if photo_set
           attrs[:title] = photo_set.title
           attrs[:flickr_set_number] = photo_set.flickr_set_number
+        end
+      end
+    end
+
+    def community_slideshow(community)
+      slideshow = community.slideshow
+
+      [].tap do |slides|
+        if slideshow
+          slideshow.slides.each do |slide|
+            slides << {
+              :image_url => slide.image.url(:slide)
+            }
+          end
         end
       end
     end
@@ -151,6 +166,8 @@ module Bozzuto
 
         photo_set_node(node, property[:photo_set])
 
+        slideshow_node(node, property[:slideshow_slides])
+
         property[:nearby_communities].each do |nearby_community|
           nearby_community_node(node, nearby_community)
         end
@@ -207,6 +224,7 @@ module Bozzuto
           end
         end
         node.tag! 'OverviewText', property[:overview_text]
+        node.tag! 'OverviewTextStripped', strip_tags_and_whitespace(property[:overview_text])
         node.tag! 'OverviewBullet1', property[:overview_bullet_1]
         node.tag! 'OverviewBullet2', property[:overview_bullet_2]
         node.tag! 'OverviewBullet3', property[:overview_bullet_3]
@@ -246,6 +264,14 @@ module Bozzuto
       parent_node.tag!('PhotoSet') do |node|
         node.tag! 'Title', photo_set[:title]
         node.tag! 'FlickrSetNumber', photo_set[:flickr_set_number]
+      end
+    end
+
+    def slideshow_node(parent_node, slideshow_slides)
+      parent_node.tag!('Slideshow') do |node|
+        slideshow_slides.each do |slide|
+          node.tag! 'SlideshowImageURL', slide[:image_url]
+        end
       end
     end
 
@@ -308,6 +334,14 @@ module Bozzuto
 
         url << path
       end
+    end
+
+    def sanitizer
+      @sanitizer ||= HTML::FullSanitizer.new
+    end
+
+    def strip_tags_and_whitespace(html)
+      sanitizer.sanitize(String(html)).gsub(/\s+/, ' ').strip
     end
   end
 end
