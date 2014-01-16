@@ -799,7 +799,8 @@ module Bozzuto
           end
 
           should "contain an image URL" do
-            assert_equal @slide.image.url(:slide), @slideshow_node.xpath('SlideshowImageURL')[0].content
+            assert_equal "http://bozzuto.com#{@slide.image.url(:slide)}",
+              @slideshow_node.xpath('SlideshowImageURL')[0].content
           end
         end
 

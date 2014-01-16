@@ -270,7 +270,7 @@ module Bozzuto
     def slideshow_node(parent_node, slideshow_slides)
       parent_node.tag!('Slideshow') do |node|
         slideshow_slides.each do |slide|
-          node.tag! 'SlideshowImageURL', slide[:image_url]
+          node.tag! 'SlideshowImageURL', "http://#{default_url_options[:host]}#{slide[:image_url]}"
         end
       end
     end
