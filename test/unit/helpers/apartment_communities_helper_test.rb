@@ -1,9 +1,11 @@
 require 'test_helper'
 
 class ApartmentCommunitiesHelperTest < ActionView::TestCase
+  include CurrencyHelper
+
   context "ApartmentCommunitiesHelper" do
-    context '#render_apartments_listings' do
-      setup do
+    describe "#render_apartments_listings" do
+      before do
         @communities = [ApartmentCommunity.make, ApartmentCommunity.make]
         @options = {
           :partial    => 'apartment_communities/listing',
@@ -13,16 +15,16 @@ class ApartmentCommunitiesHelperTest < ActionView::TestCase
         }
       end
 
-      context 'and :use_dnr option is not set' do
-        should 'call render with the correct options' do
+      context "and :use_dnr option is not set" do
+        it "calls render with the correct options" do
           expects(:render).with(@options)
 
           render_apartments_listings(@communities)
         end
       end
 
-      context 'and :use_dnr option is true' do
-        should 'call render with the correct options' do
+      context "and :use_dnr option is true" do
+        it "calls render with the correct options" do
           @options[:locals][:use_dnr] = true
           expects(:render).with(@options)
 
@@ -31,22 +33,12 @@ class ApartmentCommunitiesHelperTest < ActionView::TestCase
       end
     end
 
-    context "#floor_plan_price" do
-      setup do
-        @plan = ApartmentFloorPlan.make(:min_effective_rent => 600)
-      end
-
-      should "return the floor plan's formatted price" do
-        assert_equal "$600", floor_plan_price(@plan.min_effective_rent)
-      end
-    end
-
-    context '#floor_plan_image' do
-      setup do
+    describe "#floor_plan_image" do
+      before do
         @plan = ApartmentFloorPlan.make :image_url => 'http://bozzuto.com/blah.jpg'
       end
 
-      should 'return the link' do
+      it "returns the link" do
         html = HTML::Document.new(floor_plan_image(@plan))
 
         assert_select html.root, 'a', :count => 1, :href => @plan
@@ -55,125 +47,113 @@ class ApartmentCommunitiesHelperTest < ActionView::TestCase
       end
     end
 
-    context "#square_feet" do
-      setup do
-        @plan = ApartmentFloorPlan.make(:min_square_feet => 550)
+    describe "#apartment_community_price_range" do
+      context "prices aren't present" do
+        before do
+          @community = stub(:cheapest_rent => nil, :max_rent => nil)
+        end
+
+        it "returns an empty string" do
+          apartment_community_price_range(@community).should == ''
+        end
       end
 
-      should "return the floor plan's formatted square footage" do
-        assert_equal "#{@plan.min_square_feet} Sq Ft", square_feet(@plan)
+      context "price is 0" do
+        before do
+          @community = stub(:cheapest_rent => 0, :max_rent => 100)
+        end
+
+        it "returns an empty string" do
+          apartment_community_price_range(@community).should == ''
+        end
+      end
+
+      context "prices are present" do
+        before do
+          @community = stub(:cheapest_rent => 100, :max_rent => 200)
+        end
+
+        it "returns an empty string" do
+          apartment_community_price_range(@community).should == '$100 to $200'
+        end
       end
     end
 
-    context '#website_url' do
-      should "prepend 'http://' if not present" do
-        assert_equal 'http://google.com', website_url('google.com')
-        assert_equal 'https://yahoo.com', website_url('https://yahoo.com')
+    describe "#square_feet" do
+      context "value is present" do
+        it "returns the floor plan's formatted square footage" do
+          square_feet(25).should == "25 Sq Ft"
+        end
+      end
+
+      context "value isn't present" do
+        it "returns an empty string" do
+          square_feet(nil).should == ''
+        end
       end
     end
 
-    context "#walkscore_map_script" do
-      setup do
+    describe '#website_url' do
+      it "prepends 'http://' if not present" do
+        website_url('google.com').should == 'http://google.com'
+        website_url('https://yahoo.com').should == 'https://yahoo.com'
+      end
+    end
+
+    describe "#walkscore_map_script" do
+      before do
         @community = ApartmentCommunity.make(:street_address => '123 Test Dr')
       end
 
-      should "return the javascript code" do
-        assert_match /#{@community.address}/, walkscore_map_script(@community)
+      it "returns the javascript code" do
+        walkscore_map_script(@community).should =~ /#{@community.address}/
 
-        assert_match /var ws_width = '500';/, walkscore_map_script(@community, :width => 500)
+        walkscore_map_script(@community, :width => 500).should =~ /var ws_width = '500';/
 
-        assert_match /var ws_height = '700';/, walkscore_map_script(@community, :height => 700)
+        walkscore_map_script(@community, :height => 700).should =~ /var ws_height = '700';/
       end
     end
 
-    context '#price_of_cheapest_floor_plan' do
-      setup { @group = ApartmentFloorPlanGroup.studio }
-
-      context 'there are no floor plans' do
-        should 'return empty string' do
-          assert_equal '', price_of_cheapest_floor_plan(@group.floor_plans)
-        end
-      end
-
-      context 'there are floor plans' do
-        setup do
-          @cheapest = ApartmentFloorPlan.make :floor_plan_group => @group,
-            :min_effective_rent => 1000
-          @expensive = ApartmentFloorPlan.make :floor_plan_group => @group,
-            :min_effective_rent => 2000
-        end
-
-        should 'return the price of the cheapest' do
-          assert_equal floor_plan_price(@cheapest.min_rent),
-            price_of_cheapest_floor_plan(@group.floor_plans)
-        end
-      end
-    end
-
-    context '#square_feet_of_largest_floor_plan' do
-      setup { @group = ApartmentFloorPlanGroup.studio }
-
-      context 'there are no floor plans' do
-        should 'return empty string' do
-          assert_equal '', square_feet_of_largest_floor_plan(@group.floor_plans)
-        end
-      end
-
-      context 'there are floor plans' do
-        setup do
-          @largest = ApartmentFloorPlan.make :floor_plan_group => @group,
-            :max_square_feet => 2000
-          @smallest = ApartmentFloorPlan.make :floor_plan_group => @group,
-            :max_square_feet => 1000
-        end
-
-        should 'return the price of the cheapest' do
-          assert_equal square_feet(@largest),
-            square_feet_of_largest_floor_plan(@group.floor_plans)
-        end
-      end
-    end
-
-    context "#availability_link" do
+    describe "#availability_link" do
       context "community is managed by rent cafe" do
-        setup do
+        before do
           @community = ApartmentCommunity.make(:rent_cafe)
         end
 
-        should "return 'Apply Now' as the link text" do
-          assert_match /Apply Now/, availability_link(@community)
+        it "returns 'Apply Now' as the link text" do
+          availability_link(@community) =~ /Apply Now/
         end
       end
 
       context "community is managed by anything else" do
-        setup do
+        before do
           @community = ApartmentCommunity.make
         end
 
-        should "return 'Availability' as the link text" do
-          assert_match /Availability/, availability_link(@community)
+        it "returns 'Availability' as the link text" do
+          availability_link(@community) =~ /Availability/
         end
       end
     end
 
-    context "#reserve_link" do
+    describe "#reserve_link" do
       context "plan is managed by rent cafe" do
-        setup do
+        before do
           @plan = ApartmentFloorPlan.make(:rent_cafe)
         end
 
-        should "return 'Apply Now' as the link text" do
-          assert_match /Apply Now/, reserve_link(@plan)
+        it "returns 'Apply Now' as the link text" do
+          reserve_link(@plan) =~ /Apply Now/
         end
       end
 
       context "plan is managed by anything else" do
-        setup do
+        before do
           @plan = ApartmentFloorPlan.make
         end
 
-        should "return 'Reserve' as the link text" do
-          assert_match /Reserve/, reserve_link(@plan)
+        it "returns 'Reserve' as the link text" do
+          reserve_link(@plan) =~ /Reserve/
         end
       end
     end

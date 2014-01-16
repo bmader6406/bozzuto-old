@@ -22,11 +22,11 @@
           <% if @plan.rolled_up? %>
             Starting from
           <% end %>
-          <%= square_feet(@plan) %>
+          <%= square_feet(sq_ft) %>
         <% end %>
 
         <% if min_rent.present? %>
-          <span class="price"><%= floor_plan_price(min_rent) %></span>
+          <span class="price"><%= dollars(min_rent) %></span>
         <% end %>
       </h3>
     <% end %>

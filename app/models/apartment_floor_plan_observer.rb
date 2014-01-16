@@ -17,7 +17,11 @@ class ApartmentFloorPlanObserver < ActiveRecord::Observer
     community      = plan.apartment_community
 
     if community
-      cheapest_price = community.floor_plans.in_group(group).non_zero_min_rent.minimum(:min_rent)
+      cheapest_price = community.floor_plans.in_group(group).
+                        available.
+                        non_zero_min_rent.
+                        ordered_by_min_rent.
+                        minimum(:min_rent)
 
       community.update_attributes("cheapest_#{group.name_for_cache}_price" => cheapest_price)
     end
@@ -28,7 +32,10 @@ class ApartmentFloorPlanObserver < ActiveRecord::Observer
     community = plan.apartment_community
 
     if community
-      count     = community.floor_plans.in_group(group).count
+      count = community.floor_plans.in_group(group).
+               available.
+               non_zero_min_rent.
+               count
 
       community.update_attributes("plan_count_#{group.name_for_cache}" => count)
     end

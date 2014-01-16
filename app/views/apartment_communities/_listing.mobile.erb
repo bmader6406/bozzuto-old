@@ -7,7 +7,9 @@
 
       <span class="floorplans"><%= list_of_floor_plan_group_names_for(community) %></span>
 
-      <span class="price">Pricing from <%= apartment_community_price_range(community) %></span>
+      <% apartment_community_price_range(community).if_present? do |range| %>
+        <span class="price">Pricing from <%= range %></span>
+      <% end %>
     <% end %>
 
     <% community.mobile_phone_number.if_present? do |phone_number| %>

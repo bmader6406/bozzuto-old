@@ -1,10 +1,10 @@
 <li>
   <div class="floor-plan">
-    <% link_to apartment_community_floor_plan_group_layouts_path(@community, group), :class => 'info' do %>
+    <% link_to apartment_community_floor_plan_group_layouts_path(community, group), :class => 'info' do %>
       <span class="name"><%= group.name.pluralize %></span>
       <span class="pricing">
-        Starting from <%= plans_in_group.minimum(:max_square_feet) %> Sq Ft
-        <span class="price"><%= price_of_cheapest_floor_plan(plans_in_group) %></span>
+        Starting from <%= square_feet(group.largest_square_footage) %>
+        <span class="price"><%= dollars(group.cheapest_rent) %></span>
       </span>
     <% end %>
   </div>

@@ -11,7 +11,7 @@ class ApartmentCommunity < Community
   ]
 
   acts_as_archive :indexes => [:id]
-  
+
   before_update :mark_dirty_floor_plan_prices
   after_update :update_floor_plan_prices
 
@@ -64,19 +64,21 @@ class ApartmentCommunity < Community
   def nearby_communities(limit = 6)
     @nearby_communities ||= city.apartment_communities.published.near(self).all(:limit => limit)
   end
-  
+
   def cheapest_rent
-    floor_plans.minimum(:min_rent)
+    floor_plans.available.with_cheapest_rent.try(:min_rent)
   end
-  
+
   def max_rent
-    floor_plans.maximum(:max_rent)
+    floor_plans.available.with_max_rent.try(:max_rent)
   end
-  
+
   def floor_plans_by_group
-    floor_plan_groups.map do |group|
-      [group, floor_plans.in_group(group).non_zero_min_rent]
-    end
+    ActiveSupport::OrderedHash[
+      floor_plan_groups.map do |group|
+        [group, floor_plans.in_group(group).available.non_zero_min_rent]
+      end
+    ]
   end
 
   def merge(other_community)

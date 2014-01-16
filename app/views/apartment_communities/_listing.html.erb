@@ -33,21 +33,21 @@
       <% end %>
 
       <ul>
-        <% ApartmentFloorPlanGroup.all.each do |group| %>
-          <% if community.plan_count_in_group(group) > 0 %>
+        <% floor_plan_presenter(community).groups.each do |group| %>
+          <% if group.has_plans? %>
             <li>
-              <strong><%= group.name.pluralize %></strong>
-              <% community.cheapest_price_in_group(group).if_present? do |price| %>
-                from
-                <%= floor_plan_price(price) %>
-              <% end %>
+              <strong><%= group.name %></strong>
+
+							<% group.cheapest_rent.if_present? do |price| %>
+                from <%= dollars(price) %>
+							<% end %>
             </li>
           <% end %>
         <% end %>
       </ul>
 
-      <% if community.overview_bullet_1.present? %>
-        <p class="description"><%= community.overview_bullet_1 %></p>
+      <% community.overview_bullet_1.if_present? do |bullet| %>
+        <p class="description"><%= bullet %></p>
       <% end %>
     </div>
 

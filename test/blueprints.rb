@@ -62,6 +62,7 @@ ApartmentFloorPlan.blueprint do
   image_type         { ApartmentFloorPlan::USE_IMAGE_URL }
   image_url          { Faker::Lorem.words(1) }
   availability_url   { "http://#{Faker::Internet.domain_name}" }
+  available_units    { 10 }
   bedrooms           { Sham.bedrooms }
   bathrooms          { Sham.bathrooms }
   min_square_feet    { rand(3000) + 500 }

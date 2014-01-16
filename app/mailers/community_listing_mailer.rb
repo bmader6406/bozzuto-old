@@ -2,11 +2,8 @@ class CommunityListingMailer < ActionMailer::Base
   include TruncateHtmlHelper
   helper_method :truncate_html
 
-  include ApartmentCommunitiesHelper
-  helper_method :floor_plan_price
-
-  include ActionView::Helpers::NumberHelper
-  helper_method :number_to_currency
+  include CurrencyHelper
+  helper_method :dollars
 
 
   def single_listing(to_address, community)

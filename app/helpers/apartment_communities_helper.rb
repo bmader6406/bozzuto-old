@@ -12,27 +12,19 @@ module ApartmentCommunitiesHelper
     render options
   end
 
-  def floor_plan_price(price)
-    number_to_currency(price, :precision => 0) unless price.nil?
-  end
+  def apartment_community_price_range(community)
+    prices = [
+      community.cheapest_rent,
+      community.max_rent
+    ]
 
-  def price_of_cheapest_floor_plan(plans)
-    cheapest_rent = plans.minimum(:min_rent)
+    prices = prices.reject(&:blank?).reject(&:zero?).map { |p| dollars(p) }
 
-    if cheapest_rent.present?
-      raw(floor_plan_price(cheapest_rent))
+    if prices.length == 2
+      prices.join(' to ').html_safe
     else
       ''
     end
-  end
-
-  def apartment_community_price_range(community)
-    prices = [
-      number_to_currency(community.cheapest_rent, :precision => 0),
-      number_to_currency(community.max_rent, :precision => 0)
-    ]
-
-    prices.join(' to ').html_safe
   end
 
   def list_of_floor_plan_group_names_for(community)
@@ -41,15 +33,9 @@ module ApartmentCommunitiesHelper
     community.floor_plan_groups.map(&:list_name).to_sentence(opts).html_safe
   end
 
-  def square_feet(plan)
-    "#{plan.min_square_feet} Sq Ft"
-  end
-
-  def square_feet_of_largest_floor_plan(plans)
-    largest = plans.largest.first
-
-    if largest.present?
-      square_feet(largest)
+  def square_feet(value)
+    if value.present? 
+      "#{value} Sq Ft"
     else
       ''
     end
@@ -101,7 +87,7 @@ module ApartmentCommunitiesHelper
 
   def search_prices
     ['750', '1000', '1250', '1500', '1750', '2000', '2500', '3000', '4000', '5000', '6000', '7000', '8000', '9000', '10000'].map do |price|
-      [number_to_currency(price), price]
+      [dollars_and_cents(price), price]
     end
   end
 

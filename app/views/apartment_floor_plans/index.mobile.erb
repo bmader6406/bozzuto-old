@@ -17,8 +17,8 @@
             <% link_to apartment_community_floor_plan_group_layout_path(@community, @group, plan), :class => 'info' do %>
               <span class="name"><%= plan.name %></span>
               <span class="pricing">
-                <%= square_feet(plan) %>
-                <span class="price"><%= floor_plan_price(plan.min_rent) %></span>
+                <%= square_feet(plan.min_square_feet) %>
+                <span class="price"><%= dollars(plan.min_rent) %></span>
               </span>
             <% end %>
           </div>

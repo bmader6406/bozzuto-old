@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Bozzuto
   class HomeCommunityFieldAuditTest < ActiveSupport::TestCase
-    context "ApartmentCommunityFieldAudit" do
+    context "HomeCommunityFieldAudit" do
       setup do
         @county = County.make(:name => "Orange")
         @home_community = HomeCommunity.make({

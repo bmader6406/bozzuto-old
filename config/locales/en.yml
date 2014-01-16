@@ -66,6 +66,7 @@ en:
       apartment_floor_plan:
         actual_image: Image
         availability_url: Availability URL
+        available_units: Available Units
         bathrooms: Bath
         bedrooms: Bed
         floor_plan_group: Floor Plan Type

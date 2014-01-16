@@ -5,39 +5,41 @@
   </div>
 
   <div class="cty-section-content">
-    <% community.floor_plans_by_group.each do |group, plans| %>
-      <h4 class="cty-floor-plans-header">
-        <%= group.name.pluralize %>
-      </h4>
+    <% floor_plan_presenter(community).groups.each do |group| %>
+      <% if group.has_plans? %>
+        <h4 class="cty-floor-plans-header">
+          <%= group.name.pluralize %>
+        </h4>
 
-      <% plans.in_groups_of(4, false).each do |plans| %>
-        <ul class="cty-floor-plans-list">
-          <% plans.each do |plan| %>
-            <li class="cty-floor-plan">
-              <h5><%= plan.name %></h5>
+        <% group.plans.in_groups_of(4, false).each do |plans| %>
+          <ul class="cty-floor-plans-list">
+            <% plans.each do |plan| %>
+              <li class="cty-floor-plan">
+                <h5><%= plan.name %></h5>
 
-              <p>
-                <% if plan.min_square_feet.present? %>
-                  <span class="cty-floor-plan-size"><%= square_feet(plan) %></span>
+                <p>
+                  <% if plan.min_square_feet.present? %>
+                    <span class="cty-floor-plan-size"><%= square_feet(plan.min_square_feet) %></span>
+                  <% end %>
+                  |
+                  <% if plan.min_rent.present? %>
+                    <span class="cty-floor-plan-price"><%= dollars(plan.min_rent) %></span>
+                  <% end %>
+                </p>
+
+                <% if plan.availability_url.present? %>
+                  <%= link_to 'Reserve', plan.availability_url, :class => 'btn btn-small btn-black' %>
                 <% end %>
-                |
-                <% if plan.min_rent.present? %>
-                  <span class="cty-floor-plan-price"><%= floor_plan_price(plan.min_rent) %></span>
-                <% end %>
-              </p>
 
-              <% if plan.availability_url.present? %>
-                <%= link_to 'Reserve', plan.availability_url, :class => 'btn btn-small btn-black' %>
-              <% end %>
-
-              <% if plan.actual_image.present? %>
-                <% link_to plan.actual_image, :class => 'cty-floor-plan-image-link' do %>
-                  <%= image_tag plan.actual_thumb, :width => 115 %>
+                <% if plan.actual_image.present? %>
+                  <% link_to plan.actual_image, :class => 'cty-floor-plan-image-link' do %>
+                    <%= image_tag plan.actual_thumb, :width => 115 %>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
       <% end %>
     <% end %>
   </div>

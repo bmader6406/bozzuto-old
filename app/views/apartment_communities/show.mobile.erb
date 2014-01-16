@@ -32,13 +32,13 @@
         <% end %>
       </li>
 
-			<%- if @community.show_lead_2_lease? || @community.under_construction? -%>
-	      <li>
-	        <% link_to apartment_community_contact_path(@community), :class => 'btn email-us' do %>
-	          <span>Email Us</span>
-	        <% end %>
-	      </li>
-			<%- end -%>
+      <%- if @community.show_lead_2_lease? || @community.under_construction? -%>
+        <li>
+          <% link_to apartment_community_contact_path(@community), :class => 'btn email-us' do %>
+            <span>Email Us</span>
+          <% end %>
+        </li>
+      <%- end -%>
 
       <li>
         <% link_to schedule_tour_community_path(@community), :class => 'btn schedule-tour' do %>
@@ -76,26 +76,26 @@
     <h3>Community Info</h3>
 
     <ul>
-			<%- if @community.features_page? -%>
-				<li>
-	        <%= link_to 'Features & Amenities', apartment_community_features_path(@community), :class => 'btn' %>
-	      </li>
-			<%- end -%>
-			<%- if @community.photo_set.present? -%>
-				<li>
-	        <%= link_to 'Photos', apartment_community_media_path(@community), :class => 'btn' %>
-	      </li>
-			<%- end -%>
-			<%- if @community.floor_plans.present? -%>
-				<li>
-	        <%= link_to 'Floor Plans', apartment_community_floor_plan_groups_path(@community), :class => 'btn' %>
-	      </li>
-			<%- end -%>
-			<%- if @community.neighborhood_page? -%>
-	      <li>
-	        <%= link_to 'Neighborhood', apartment_community_neighborhood_path(@community), :class => 'btn' %>
-	      </li>
-			<%- end -%>
+      <%- if @community.features_page? -%>
+        <li>
+        <%= link_to 'Features & Amenities', apartment_community_features_path(@community), :class => 'btn' %>
+        </li>
+      <%- end -%>
+      <%- if @community.photo_set.present? -%>
+        <li>
+        <%= link_to 'Photos', apartment_community_media_path(@community), :class => 'btn' %>
+        </li>
+      <%- end -%>
+      <%- if @community.floor_plans.present? -%>
+        <li>
+        <%= link_to 'Floor Plans', apartment_community_floor_plan_groups_path(@community), :class => 'btn' %>
+        </li>
+      <%- end -%>
+      <%- if @community.neighborhood_page? -%>
+        <li>
+        <%= link_to 'Neighborhood', apartment_community_neighborhood_path(@community), :class => 'btn' %>
+        </li>
+      <%- end -%>
       <%- if @community.contact_page? -%>
         <li>
           <%= link_to 'Office Hours', apartment_community_office_hours_path(@community), :class => 'btn' %>

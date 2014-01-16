@@ -11,17 +11,16 @@ module ApartmentFloorPlanGroupsHelper
   end
 
   def render_floor_plan_group_mobile_listings(community, exclude_group = nil)
-    ''.tap { |output|
-      community.floor_plans_by_group.each do |group, plans_in_group|
-        unless exclude_group && group == exclude_group
+    ''.tap do |output|
+      floor_plan_presenter(community).groups.each do |group|
+        if group.has_plans? && group != exclude_group
           output << render(:partial => 'apartment_floor_plan_groups/listing',
             :locals => { 
               :community => community,
-              :group => group,
-              :plans_in_group => plans_in_group
+              :group     => group
           }).to_s
         end
       end
-    }.html_safe
+    end.html_safe
   end
 end

@@ -17,40 +17,57 @@ class ApartmentFloorPlan < ActiveRecord::Base
   acts_as_list
 
   validates_presence_of :name,
-    :floor_plan_group,
-    :apartment_community
+                        :floor_plan_group,
+                        :apartment_community
 
   validates_numericality_of :bedrooms,
-    :bathrooms,
-    :min_square_feet,
-    :max_square_feet,
-    :min_market_rent,
-    :max_market_rent,
-    :min_effective_rent,
-    :max_effective_rent,
-    :min_rent,
-    :max_rent,
-    :minimum => 0,
-    :allow_nil => true
+                            :bathrooms,
+                            :min_square_feet,
+                            :max_square_feet,
+                            :min_market_rent,
+                            :max_market_rent,
+                            :min_effective_rent,
+                            :max_effective_rent,
+                            :min_rent,
+                            :max_rent,
+                            :minimum => 0,
+                            :allow_nil => true
 
   validates_inclusion_of :featured, :rolled_up, :in => [true, false]
 
   has_attached_file :image,
-    :url => '/system/:class/:id/:style.:extension',
-    :styles => { :thumb => '160' },
-    :convert_options => { :all => '-quality 80 -strip' }
+    :url             => '/system/:class/:id/:style.:extension',
+    :styles          => { :thumb => '160' },
+    :convert_options => { :all   => '-quality 80 -strip' }
 
   named_scope :in_group, lambda { |group|
     { :conditions => { :floor_plan_group_id => group.id } }
   }
 
   named_scope :largest,
-    :conditions => 'max_square_feet IS NOT NULL',
-    :order      => 'max_square_feet DESC',
-    :limit      => 1
+              :conditions => 'max_square_feet IS NOT NULL',
+              :order      => 'max_square_feet DESC',
+              :limit      => 1
 
-  named_scope :non_zero_min_rent, :conditions => 'min_rent > 0 OR min_rent IS NULL'
+  named_scope :non_zero_min_rent, :conditions => 'min_rent > 0'
 
+  named_scope :ordered_by_min_rent, :order => 'min_rent ASC'
+  named_scope :ordered_by_max_rent, :order => 'max_rent DESC'
+
+  named_scope :available, :conditions => 'available_units > 0'
+
+
+  def self.with_cheapest_rent
+    non_zero_min_rent.ordered_by_min_rent.first
+  end
+
+  def self.with_max_rent
+    non_zero_min_rent.ordered_by_max_rent.first
+  end
+
+  def self.with_largest_square_footage
+    largest.first
+  end
 
   def uses_image_url?
     image_type == USE_IMAGE_URL

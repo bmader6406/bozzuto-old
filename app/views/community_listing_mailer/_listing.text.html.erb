@@ -27,7 +27,7 @@
                   <strong><%= group.name %></strong>
                   <% property.cheapest_price_in_group(group).if_present? do |price| %>
                     from
-                    <%= floor_plan_price(price) %>
+                    <%= dollars(price) %>
                   <% end %>
                 </li>
               <% end %>

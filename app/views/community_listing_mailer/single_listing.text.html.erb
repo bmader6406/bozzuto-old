@@ -68,7 +68,7 @@
                           <strong><%= group.name %></strong>
                           <% @community.cheapest_price_in_group(group).if_present? do |price| %>
                             from
-                            <%= number_to_currency(price, :precision => 0) %>
+                            <%= dollars(price) %>
                           <% end %>
                         </li>
                       <% end %>

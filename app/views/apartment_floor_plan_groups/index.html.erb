@@ -3,45 +3,49 @@
 
 <%= community_contact_callout(@community) %>
 
-<% @community.floor_plans_by_group.each do |group, plans_in_group| %>
-  <div id="<%= dom_id(group) %>" class="floor-plan-group">
-    <h2><%= group.name.pluralize %></h2>
+<% floor_plan_presenter(@community).groups.each do |group| %>
+  <% if group.plans.any? %>
+    <div id="<%= dom_id(group) %>" class="floor-plan-group">
+      <h2><%= group.name.pluralize %></h2>
 
-    <% plans_in_group.in_groups_of(4, false).each_with_index do |plans, i| %>
-      <ul class="row" <% if i >= 2 %> style="display: none;" <% end %>>
-        <% plans.each do |plan| %>
-          <li class="floor-plan">
-            <h4><%= plan.name %></h4>
+      <% group.plans.in_groups_of(4, false).each_with_index do |plans, i| %>
+        <ul class="row" <% if i >= 2 %> style="display: none;" <% end %>>
+          <% plans.each do |plan| %>
+            <li class="floor-plan">
+              <h4><%= plan.name %></h4>
 
-            <p>
-              <% sq_ft = plan.min_square_feet %>
-              <% if sq_ft.present? %>
-                <% if plan.rolled_up? %>
-                  Starting from
+              <p>
+                <% sq_ft = plan.min_square_feet %>
+                <% min_rent = plan.min_rent %>
+
+                <% if sq_ft.present? %>
+                  <% if plan.rolled_up? %>
+                    Starting from
+                  <% end %>
+
+                  <%= square_feet(sq_ft) %>
                 <% end %>
-                <%= square_feet(plan) %>
-              <% end %>
 
-              <% min_rent = plan.min_rent %>
-              <% if min_rent.present? %>
-                | <%= floor_plan_price(min_rent) %>
-              <% end %>
+                <% if min_rent.present? %>
+                  | <%= dollars(min_rent) %>
+                <% end %>
 
-              <% if sq_ft || min_rent %>
-                <br />
-              <% end %>
+                <% if sq_ft || min_rent %>
+                  <br />
+                <% end %>
 
-              <% if plan.availability_url.present? %>
-                <%= reserve_link(plan, :class => 'floor-plan-reserve', :rel => 'external', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Reserve") %>
-              <% end %>
-            </p>
+                <% if plan.availability_url.present? %>
+                  <%= reserve_link(plan, :class => 'floor-plan-reserve', :rel => 'external', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Reserve") %>
+                <% end %>
+              </p>
 
-            <% if plan.actual_image.present? %>
-              <%= floor_plan_image(plan, pinterest_button(request.url, image_path(plan.actual_image))) %>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
-  </div>
+              <% if plan.actual_image.present? %>
+                <%= floor_plan_image(plan, pinterest_button(request.url, image_path(plan.actual_image))) %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
