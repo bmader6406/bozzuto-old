@@ -32,7 +32,7 @@ module Bozzuto
       end
 
       def plans
-        @plans ||= community.floor_plans.in_group(group).available.non_zero_min_rent
+        @plans ||= community.available_floor_plans.in_group(group)
       end
 
       def largest_square_footage

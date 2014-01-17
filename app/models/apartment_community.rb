@@ -65,22 +65,6 @@ class ApartmentCommunity < Community
     @nearby_communities ||= city.apartment_communities.published.near(self).all(:limit => limit)
   end
 
-  def cheapest_rent
-    floor_plans.available.with_cheapest_rent.try(:min_rent)
-  end
-
-  def max_rent
-    floor_plans.available.with_max_rent.try(:max_rent)
-  end
-
-  def floor_plans_by_group
-    ActiveSupport::OrderedHash[
-      floor_plan_groups.map do |group|
-        [group, floor_plans.in_group(group).available.non_zero_min_rent]
-      end
-    ]
-  end
-
   def merge(other_community)
     raise 'Receiver must not be an externally-managed community' if managed_externally?
     raise 'Argument must be an externally-managed community' unless other_community.managed_externally?
@@ -97,6 +81,14 @@ class ApartmentCommunity < Community
     # reload floor plans to clear other_community's cache so it doesn't delete them
     other_community.floor_plans(true)
     other_community.destroy
+  end
+
+  def cheapest_rent
+    available_floor_plans.with_cheapest_rent.try(:min_rent)
+  end
+
+  def max_rent
+    available_floor_plans.with_max_rent.try(:max_rent)
   end
 
   def cheapest_price_in_group(group)
@@ -124,6 +116,16 @@ class ApartmentCommunity < Community
     end
 
     save
+  end
+
+  def available_floor_plans(reload = true)
+    @available_floor_plans = nil if reload
+
+    @available_floor_plans ||= if managed_externally?
+      floor_plans.externally_available
+    else
+      floor_plans
+    end
   end
 
   private

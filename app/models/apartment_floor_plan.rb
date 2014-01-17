@@ -58,15 +58,19 @@ class ApartmentFloorPlan < ActiveRecord::Base
 
 
   def self.with_cheapest_rent
-    non_zero_min_rent.ordered_by_min_rent.first
+    ordered_by_min_rent.first
   end
 
   def self.with_max_rent
-    non_zero_min_rent.ordered_by_max_rent.first
+    ordered_by_max_rent.first
   end
 
   def self.with_largest_square_footage
     largest.first
+  end
+
+  def self.externally_available
+    non_zero_min_rent
   end
 
   def uses_image_url?

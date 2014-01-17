@@ -56,51 +56,6 @@ module Bozzuto
           end
         end
 
-        describe "#plans" do
-          context "plan has min_rent of 0" do
-            before do
-              @plan = ApartmentFloorPlan.make(
-                :apartment_community => @community,
-                :floor_plan_group    => @studio,
-                :min_effective_rent  => 0
-              )
-            end
-
-            it "returns an empty array" do
-              subject.plans.should == []
-            end
-          end
-
-          context "plan has no available units" do
-            before do
-              @plan = ApartmentFloorPlan.make(
-                :apartment_community => @community,
-                :floor_plan_group    => @studio,
-                :available_units     => 0
-              )
-            end
-
-            it "returns an empty array" do
-              subject.plans.should == []
-            end
-          end
-
-          context "plan has min_rent > 0 and available units" do
-            before do
-              @plan = ApartmentFloorPlan.make(
-                :apartment_community => @community,
-                :floor_plan_group    => @studio,
-                :min_effective_rent  => 100,
-                :available_units     => 10
-              )
-            end
-
-            it "returns the plan" do
-              subject.plans.should == [@plan]
-            end
-          end
-        end
-
         describe "#largest_square_footage" do
           before do
             @largest = ApartmentFloorPlan.make(

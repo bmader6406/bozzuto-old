@@ -11,10 +11,10 @@ class ApartmentFloorPlanGroupsHelperTest < ActionView::TestCase
       end
 
       it "renders the partial with the correct options" do
-        @community.floor_plans_by_group.each do |group, plans_in_group|
+        floor_plan_presenter(@community).groups.each do |group|
           expects(:render).with({
-            :partial    => 'apartment_floor_plan_groups/listing',
-            :locals     => { 
+            :partial => 'apartment_floor_plan_groups/listing',
+            :locals  => {
               :community => @community,
               :group     => group,
             }
@@ -31,9 +31,11 @@ class ApartmentFloorPlanGroupsHelperTest < ActionView::TestCase
       end
 
       context "when group is a penthouse" do
-        before { @group = ApartmentFloorPlanGroup.penthouse }
+        before do
+          @group = ApartmentFloorPlanGroup.penthouse
+        end
 
-        it 'returns the base availability url' do
+        it "returns the base availability url" do
           link = HTML::Document.new(floor_plan_group_link(@community, @group, 2))
 
           assert_select link.root, 'a', :href => @community.availability_url
@@ -46,7 +48,7 @@ class ApartmentFloorPlanGroupsHelperTest < ActionView::TestCase
           @beds = 2
         end
 
-        it 'returns the availability url with beds param' do
+        it "returns the availability url with beds param" do
           link = HTML::Document.new(floor_plan_group_link(@community, @group, @beds))
 
           assert_select link.root, 'a', :href => "#{@community.availability_url}?beds=#{@beds}"
