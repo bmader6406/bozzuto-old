@@ -71,7 +71,7 @@ ApartmentFloorPlan.blueprint do
   max_market_rent    { rand(500000) + 40000 }
   min_effective_rent { rand(500000) + 40000 }
   max_effective_rent { rand(500000) + 40000 }
-  floor_plan_group   { ApartmentFloorPlanGroup.studio }
+  floor_plan_group   { ApartmentFloorPlanGroup.studio.presence || ApartmentFloorPlanGroup.make(:studio) }
   apartment_community
 end
 

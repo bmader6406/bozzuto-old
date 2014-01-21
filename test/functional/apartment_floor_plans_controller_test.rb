@@ -4,7 +4,7 @@ class ApartmentFloorPlansControllerTest < ActionController::TestCase
   context 'ApartmentFloorPlansController' do
     setup do
       @community = ApartmentCommunity.make
-      @group     = ApartmentFloorPlanGroup.studio
+      @group     = ApartmentFloorPlanGroup.make(:studio)
     end
 
     context 'a GET to #index' do

@@ -6,12 +6,13 @@ class ApartmentFloorPlanObserverTest < ActiveSupport::TestCase
       @community = ApartmentCommunity.make
     end
 
-    groups = [['studio', 'studio'], ['one_bedroom', '1_bedroom'], ['two_bedrooms', '2_bedroom'], ['three_bedrooms', '3_bedroom'], ['penthouse', 'penthouse']]
+    groups = [['studio', 'studio'], ['one_bedroom', '1_bedroom'], ['two_bedroom', '2_bedroom'], ['three_bedroom', '3_bedroom'], ['penthouse', 'penthouse']]
 
     groups.each do |group|
       describe "saving a #{group[0]} floor plan" do
         setup do
-          @group = ApartmentFloorPlanGroup.send(group[0])
+          @group = ApartmentFloorPlanGroup.make(group[0].to_sym)
+
           @plan = ApartmentFloorPlan.make_unsaved(
             :floor_plan_group    => @group,
             :apartment_community => @community

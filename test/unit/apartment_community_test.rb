@@ -334,7 +334,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
     describe "#cheapest_price_in_group" do
       before do
-        @group = ApartmentFloorPlanGroup.studio
+        @group = ApartmentFloorPlanGroup.make(:studio)
         subject.cheapest_studio_price = '100'
       end
 
@@ -345,7 +345,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
     describe "#plan_count_in_group" do
       before do
-        @group = ApartmentFloorPlanGroup.studio
+        @group = ApartmentFloorPlanGroup.make(:studio)
         subject.plan_count_studio = 25
       end
 

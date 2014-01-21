@@ -4,8 +4,8 @@ module Bozzuto
   class ApartmentFloorPlanPresenterTest < ActiveSupport::TestCase
     context "ApartmentFloorPlanPresenter" do
       before do
-        @studio      = ApartmentFloorPlanGroup.send('studio')
-        @one_bedroom = ApartmentFloorPlanGroup.send('one_bedroom')
+        @studio      = ApartmentFloorPlanGroup.make(:studio)
+        @one_bedroom = ApartmentFloorPlanGroup.make(:one_bedroom)
         @community   = ApartmentCommunity.make
       end
 

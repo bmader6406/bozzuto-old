@@ -5,7 +5,10 @@ module Bozzuto
     context 'A Vaultware Feed Loader' do
       setup do
         rm_feed_loader_tmp_files
+
         create_states
+        create_floor_plan_groups
+
         @loader = VaultwareFeedLoader.new
 
         @loader.stubs(:touch_tmp_file)
