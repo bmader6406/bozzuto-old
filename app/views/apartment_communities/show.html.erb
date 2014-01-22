@@ -67,11 +67,9 @@
                     <% end %>
                   </td>
 
-                  <% black_hole do %>
                   <td class="availability">
                     <%= availability_link(@community, :rel => 'external', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Availability") %>
                   </td>
-                  <% end %>
                 </tr>
               <% end %>
             <% end %>
