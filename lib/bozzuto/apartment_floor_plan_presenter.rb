@@ -31,6 +31,10 @@ module Bozzuto
         community.plan_count_in_group(group) > 0
       end
 
+      def name
+        group.plural_name
+      end
+
       def plans
         @plans ||= community.available_floor_plans.in_group(group)
       end

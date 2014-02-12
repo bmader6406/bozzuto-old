@@ -36,6 +36,10 @@ class ApartmentFloorPlanGroup < ActiveRecord::Base
     end
   end
 
+  def plural_name
+    name.pluralize
+  end
+
   class << self
     def studio
       find_by_name 'Studio'
