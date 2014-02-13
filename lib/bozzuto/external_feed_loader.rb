@@ -147,9 +147,12 @@ module Bozzuto
       data.remove_namespaces!
 
       data.xpath('/PhysicalProperty/Property').each do |property|
-        process_property(property)
-        process_floor_plans(property)
-        process_office_hours(property)
+        if process_property(property)
+          # Only process floor plans and office hours if the community
+          # was successfully created or updated
+          process_floor_plans(property)
+          process_office_hours(property)
+        end
       end
     end
 
@@ -172,13 +175,21 @@ module Bozzuto
         self.class.feed_type.to_s
       )
 
-      @community.update_attributes({
-        :title            => value_for(property, :title),
-        :street_address   => value_for(property, :street_address),
-        :city             => find_city(property),
-        :county           => find_county(property),
-        :availability_url => value_for(property, :availability_url)
-      })
+      city = find_city(property)
+
+      # Sometimes Bozzuto adds communities without an address. Our app requires city and state,
+      # so if it's not present, then just skip this property
+      if city.present?
+        @community.update_attributes({
+          :title            => value_for(property, :title),
+          :street_address   => value_for(property, :street_address),
+          :city             => city,
+          :county           => find_county(property),
+          :availability_url => value_for(property, :availability_url)
+        })
+      else
+        false
+      end
     end
 
     def rolled_up?(property)
@@ -270,8 +281,6 @@ module Bozzuto
 
       state = State.find_by_code(state_code)
 
-      # TODO: this is a hack. If an address isn't present, we should handle
-      # that more gracefully than allowing the property creation to silently fail
       if state.present?
         state.cities.find_or_create_by_name(city_name)
       else

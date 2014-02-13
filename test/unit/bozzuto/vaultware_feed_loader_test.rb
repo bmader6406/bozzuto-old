@@ -2,8 +2,8 @@ require 'test_helper'
 
 module Bozzuto
   class VaultwareFeedLoaderTest < ActiveSupport::TestCase
-    context 'A Vaultware Feed Loader' do
-      setup do
+    context "A Vaultware Feed Loader" do
+      before do
         rm_feed_loader_tmp_files
 
         create_states
@@ -16,111 +16,119 @@ module Bozzuto
         @loader.stubs(:rm_lock_file)
       end
 
-      context '#process' do
-        setup do
+      describe "#process" do
+        before do
           load_vaultware_fixture_file('unrolled.xml')
           @loader.file = File.join(Rails.root, 'test', 'files', 'unrolled.xml')
         end
 
-        should 'create the communities' do
-          assert_difference('ApartmentCommunity.count', @properties.count) do
+        it "creates the communities" do
+          expect {
             @loader.load
-          end
+          }.to change { ApartmentCommunity.count }.from(0).to(@properties.count)
 
           community = ApartmentCommunity.find_by_external_cms_id(external_cms_id(@property))
           attrs = community_attributes(@property)
 
           community_fields.each do |field|
-            assert_equal attrs[field], community.send(field)
+            community.send(field).should == attrs[field]
           end
         end
 
-        context 'a community already exists with a vaultware id' do
-          setup do
+        context "community already exists with a vaultware id" do
+          before do
             @external_cms_id = external_cms_id(@property)
             @community       = ApartmentCommunity.make(:vaultware, :external_cms_id => @external_cms_id)
           end
 
-          should 'update the existing community' do
-            assert_difference('ApartmentCommunity.count', @properties.count - 1) do
+          it "updates the existing community" do
+            expect {
               @loader.load
-            end
+            }.to change { ApartmentCommunity.count }.by(@properties.count - 1)
 
             @community.reload
 
-            assert_equal title(@property), @community.title
+            @community.title.should == title(@property)
+          end
+        end
+
+        context "community has no address" do
+          before do
+            @loader.file = File.join(Rails.root, 'test', 'files', 'vaultware_no_address.xml')
+          end
+
+          it "doesn't create anything" do
+            expect {
+              expect {
+                @loader.load
+              }.to_not change { ApartmentFloorPlan.count }
+            }.to_not change { ApartmentCommunity.count }
           end
         end
       end
 
-      context '#rolled_up?' do
-        context 'when any Floorplan node contains more than 1 File node' do
-          setup do
+      describe "#rolled_up?" do
+        context "any Floorplan node contains more than 1 File node" do
+          before do
             load_vaultware_fixture_file('rolled_up.xml')
           end
 
-          should 'return true' do
-            assert @loader.send(:rolled_up?, @property)
+          it "returns true" do
+            @loader.send(:rolled_up?, @property).should == true
           end
         end
 
-        context 'when any Floorplan node contains 0 or 1 file nodes' do
-          setup do
+        context "any Floorplan node contains 0 or 1 file nodes" do
+          before do
             load_vaultware_fixture_file('unrolled.xml')
           end
 
-          should 'return false' do
-            assert !@loader.send(:rolled_up?, @property)
+          it "returns false" do
+            @loader.send(:rolled_up?, @property).should == false
           end
         end
       end
 
-      context '#floor_plan_group' do
-        should 'return penthouse when comment is penthouse' do
+      describe "#floor_plan_group" do
+        it "returns penthouse when comment is penthouse" do
           @plan = mock_floor_plan(2, 'Penthouse')
 
-          assert_equal ApartmentFloorPlanGroup.penthouse,
-            @loader.send(:floor_plan_group, @plan)
+          @loader.send(:floor_plan_group, @plan).should == ApartmentFloorPlanGroup.penthouse
         end
 
-        should 'return studio when bedrooms is 0' do
+        it "returns studio when bedrooms is 0" do
           @plan = mock_floor_plan(0, '')
 
-          assert_equal ApartmentFloorPlanGroup.studio,
-            @loader.send(:floor_plan_group, @plan)
+          @loader.send(:floor_plan_group, @plan).should == ApartmentFloorPlanGroup.studio
         end
 
-        should 'return one bedroom when bedrooms is 1' do
+        it "returns one bedroom when bedrooms is 1" do
           @plan = mock_floor_plan(1, '')
 
-          assert_equal ApartmentFloorPlanGroup.one_bedroom,
-            @loader.send(:floor_plan_group, @plan)
+          @loader.send(:floor_plan_group, @plan).should == ApartmentFloorPlanGroup.one_bedroom
         end
 
-        should 'return two bedrooms when bedrooms is 2' do
+        it "returns two bedrooms when bedrooms is 2" do
           @plan = mock_floor_plan(2, '')
 
-          assert_equal ApartmentFloorPlanGroup.two_bedrooms,
-            @loader.send(:floor_plan_group, @plan)
+          @loader.send(:floor_plan_group, @plan).should == ApartmentFloorPlanGroup.two_bedrooms
         end
 
-        should 'return three bedrooms when bedrooms is 3 or more' do
+        it "returns three bedrooms when bedrooms is 3 or more" do
           @plan = mock_floor_plan(3, '')
 
-          assert_equal ApartmentFloorPlanGroup.three_bedrooms,
-            @loader.send(:floor_plan_group, @plan)
+          @loader.send(:floor_plan_group, @plan).should == ApartmentFloorPlanGroup.three_bedrooms
 
           @plan = mock_floor_plan(5, '')
 
-          assert_equal ApartmentFloorPlanGroup.three_bedrooms,
-            @loader.send(:floor_plan_group, @plan)
+          @loader.send(:floor_plan_group, @plan).should == ApartmentFloorPlanGroup.three_bedrooms
         end
       end
 
 
-      context 'processing floor plans' do
-        context 'for a rolled up property' do
-          setup do
+      describe "processing floor plans" do
+        context "for a rolled up property" do
+          before do
             load_vaultware_fixture_file('rolled_up.xml')
             @loader.file = File.join(Rails.root, 'test', 'files', 'rolled_up.xml')
 
@@ -133,25 +141,24 @@ module Bozzuto
             @plans_attrs = attributes_for_rolled_up_floor_plans(@plans)
           end
 
-          context 'when no matching floor plans exist' do
-            should 'create the floor plans' do
-              assert_difference('@community.floor_plans.count', @plans.count) do
+          context "no matching floor plans exist" do
+            it "creates the floor plans" do
+              expect {
                 @loader.load
-              end
+              }.to change { @community.floor_plans.count }.by(@plans.count)
 
-              assert_equal @plans.count, @community.floor_plans.count
+              @community.floor_plans.count.should == @plans.count
 
               @plans_attrs.each_with_index do |attrs, i|
                 attrs.each_key do |field|
-                  assert_equal attrs[field],
-                    @community.floor_plans[i].send(field)
+                  @community.floor_plans[i].send(field).should == attrs[field]
                 end
               end
             end
           end
 
-          context 'when syncing with a floor plan that already exists' do
-            setup do
+          context "syncing with a floor plan that already exists" do
+            before do
               @plan = @plans.first
               files = @plan.at('./File[Rank=1]')
 
@@ -164,17 +171,16 @@ module Bozzuto
               @plans_attrs = attributes_for_rolled_up_floor_plans(@plans)
             end
 
-            should 'update the floor plans' do
-              assert_difference('@community.floor_plans.count', @plans.count - 1) do
+            it "updates the floor plans" do
+              expect {
                 @loader.load
-              end
+              }.to change { @community.floor_plans.count }.by(@plans.count - 1)
 
-              assert_equal @plans.count, @community.floor_plans.count
+              @community.floor_plans.count.should == @plans.count
 
               @plans_attrs.each_with_index do |attrs, i|
                 attrs.each_key do |field|
-                  assert_equal attrs[field],
-                    @community.floor_plans[i].send(field)
+                  @community.floor_plans[i].send(field).should == attrs[field]
                 end
               end
             end
@@ -182,8 +188,8 @@ module Bozzuto
         end
 
 
-        context 'for an unrolled property' do
-          setup do
+        context "for an unrolled property" do
+          before do
             load_vaultware_fixture_file('unrolled.xml')
             @loader.file = File.join(Rails.root, 'test', 'files', 'unrolled.xml')
 
@@ -195,25 +201,24 @@ module Bozzuto
             @plans_attrs = attributes_for_unrolled_floor_plans(@plans)
           end
 
-          context "when no matching floor plans exist" do
-            should 'create the floor plans' do
-              assert_difference('@community.floor_plans.count', @plans.count) do
+          context "no matching floor plans exist" do
+            it "creates the floor plans" do
+              expect {
                 @loader.load
-              end
+              }.to change { @community.floor_plans.count }.by(@plans.count)
 
-              assert_equal @plans.count, @community.floor_plans.count
+              @community.floor_plans.count.should == @plans.count
 
               @plans_attrs.each_with_index do |attrs, i|
                 attrs.each_key do |field|
-                  assert_equal attrs[field],
-                    @community.floor_plans[i].send(field)
+                  @community.floor_plans[i].send(field).should == attrs[field]
                 end
               end
             end
           end
 
-          context 'when syncing with a floor plan that already exists' do
-            setup do
+          context "syncing with a floor plan that already exists" do
+            before do
               @penthouse = ApartmentFloorPlanGroup.penthouse
 
               @plan = @plans.first
@@ -225,32 +230,31 @@ module Bozzuto
                 :floor_plan_group    => @penthouse
               )
 
-              assert_difference('@community.floor_plans.count', @plans.count - 1) do
+              expect {
                 @loader.load
-              end
+              }.to change { @community.floor_plans.count }.by(@plans.count - 1)
             end
 
-            should 'update the existing floor plan' do
-              assert_equal @plans.count, @community.floor_plans.count
+            it "updates the existing floor plan" do
+              @community.floor_plans.count.should == @plans.count
 
               @plans_attrs.each_with_index do |attrs, i|
                 attrs.each_key do |field|
-                  assert_equal attrs[field],
-                    @community.floor_plans[i].send(field)
+                  @community.floor_plans[i].send(field).should == attrs[field]
                 end
               end
             end
 
-            should 'not update the floor plan group' do
+            it "doesn't update the floor plan group" do
               @community.reload
-              assert_equal @penthouse, @community.floor_plans.first.floor_plan_group
+              @community.floor_plans.first.floor_plan_group.should == @penthouse
             end
           end
         end
       end
 
-      context "processing hours" do
-        setup do
+      describe "processing hours" do
+        before do
           load_vaultware_fixture_file('unrolled.xml')
           @loader.file = File.join(Rails.root, 'test', 'files', 'unrolled.xml')
 
@@ -263,20 +267,20 @@ module Bozzuto
           @hour_attrs = attributes_for_office_hours(@hours)
         end
 
-        should "load all office hours" do
+        it "loads all office hours" do
           @loader.load
 
-          assert_equal @hour_attrs, @community.reload.office_hours
+          @community.reload.office_hours.should == @hour_attrs
         end
       end
 
-      context 'testing a full load' do
-        setup do
+      describe "testing a full load" do
+        before do
           load_vaultware_fixture_file('vaultware.xml')
           @loader.file = File.join(Rails.root, 'test', 'files', 'vaultware.xml')
         end
 
-        should 'load all the properties and floor plans' do
+        it "loads all the properties and floor plans" do
           @loader.load
 
           @properties.each do |property|
@@ -284,7 +288,7 @@ module Bozzuto
             community = ApartmentCommunity.find_by_external_cms_id(attrs[:external_cms_id])
 
             community_fields.each do |field|
-              assert_equal attrs[field], community.send(field)
+              community.send(field).should == attrs[field]
             end
 
             plans = property.xpath('./Floorplan')
@@ -296,8 +300,7 @@ module Bozzuto
 
             attrs.each_with_index do |attrs, i|
               attrs.each_key do |field|
-                assert_equal attrs[field],
-                  community.floor_plans[i].send(field)
+                community.floor_plans[i].send(field).should == attrs[field]
               end
             end
           end
