@@ -270,9 +270,13 @@ module Bozzuto
 
       state = State.find_by_code(state_code)
 
-      city = state.cities.find_or_create_by_name(city_name)
-
-      city
+      # TODO: this is a hack. If an address isn't present, we should handle
+      # that more gracefully than allowing the property creation to silently fail
+      if state.present?
+        state.cities.find_or_create_by_name(city_name)
+      else
+        nil
+      end
     end
 
     def find_county(property)
