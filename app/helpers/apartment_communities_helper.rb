@@ -14,7 +14,7 @@ module ApartmentCommunitiesHelper
 
   def apartment_community_price_range(community)
     prices = [
-      community.cheapest_rent,
+      community.min_rent,
       community.max_rent
     ]
 

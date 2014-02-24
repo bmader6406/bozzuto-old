@@ -50,10 +50,10 @@ class ApartmentCommunity < Community
     {:conditions => ["properties.id IN (SELECT property_id FROM properties_property_features WHERE property_feature_id IN (?))", ids]}
   }
   named_scope :with_min_price, lambda {|price|
-    {:conditions => ['properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE min_rent >= ?)', price.to_i]}
+    {:conditions => ['properties.max_rent >= ?', price.to_i]}
   }
   named_scope :with_max_price, lambda {|price|
-    {:conditions => ['properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE max_rent <= ?)', price.to_i]} if price.to_i > 0
+    {:conditions => ['properties.min_rent <= ?', price.to_i]}
   }
   named_scope :featured, :conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE featured = ?)", true]
 
@@ -81,14 +81,6 @@ class ApartmentCommunity < Community
     # reload floor plans to clear other_community's cache so it doesn't delete them
     other_community.floor_plans(true)
     other_community.destroy
-  end
-
-  def cheapest_rent
-    available_floor_plans.with_cheapest_rent.try(:min_rent)
-  end
-
-  def max_rent
-    available_floor_plans.with_max_rent.try(:max_rent)
   end
 
   def cheapest_price_in_group(group)
@@ -144,5 +136,27 @@ class ApartmentCommunity < Community
     end
     @set_floor_plan_prices = nil
     true
+  end
+
+  def cache_cheapest_price(group)
+    cheapest_price = available_floor_plans.
+                      in_group(group).
+                      with_min_rent.
+                      try(:min_rent)
+
+    update_attribute("cheapest_#{group.name_for_cache}_price", cheapest_price)
+  end
+
+  def cache_plan_count(group)
+    count = available_floor_plans.in_group(group).count
+
+    update_attribute("plan_count_#{group.name_for_cache}", count)
+  end
+
+  def cache_min_and_max_rents
+    update_attributes(
+      :min_rent => available_floor_plans.with_min_rent.try(:min_rent),
+      :max_rent => available_floor_plans.with_max_rent.try(:max_rent)
+    )
   end
 end

@@ -242,7 +242,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
       end
     end
 
-    describe "#cheapest_rent" do
+    describe "#min_rent" do
       context "managed internally" do
         before do
           @plan1 = ApartmentFloorPlan.make(
@@ -257,7 +257,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
         end
 
         it "returns the lowest price, including 0" do
-          subject.cheapest_rent.to_i.should == 0
+          subject.min_rent.to_i.should == 0
         end
       end
 
@@ -282,7 +282,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
         end
 
         it "returns the lowest price > 0" do
-          subject.cheapest_rent.to_i.should == 10
+          subject.min_rent.to_i.should == 10
         end
       end
     end

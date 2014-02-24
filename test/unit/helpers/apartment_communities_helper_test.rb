@@ -50,7 +50,7 @@ class ApartmentCommunitiesHelperTest < ActionView::TestCase
     describe "#apartment_community_price_range" do
       context "prices aren't present" do
         before do
-          @community = stub(:cheapest_rent => nil, :max_rent => nil)
+          @community = stub(:min_rent => nil, :max_rent => nil)
         end
 
         it "returns an empty string" do
@@ -60,7 +60,7 @@ class ApartmentCommunitiesHelperTest < ActionView::TestCase
 
       context "price is 0" do
         before do
-          @community = stub(:cheapest_rent => 0, :max_rent => 100)
+          @community = stub(:min_rent => 0, :max_rent => 100)
         end
 
         it "returns an empty string" do
@@ -70,7 +70,7 @@ class ApartmentCommunitiesHelperTest < ActionView::TestCase
 
       context "prices are present" do
         before do
-          @community = stub(:cheapest_rent => 100, :max_rent => 200)
+          @community = stub(:min_rent => 100, :max_rent => 200)
         end
 
         it "returns an empty string" do
