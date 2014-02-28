@@ -38,6 +38,7 @@ admin:
   MastheadSlide: create, read, update, delete
   MastheadSlideshow: create, read, update, delete
   MediaplexTag: create, read, update, delete
+  Metro: create, read, update, delete
   MiniSlide: create, read, update, delete
   MiniSlideshow: create, read, update, delete
   NewsPost: create, read, update, delete

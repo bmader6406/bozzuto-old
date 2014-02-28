@@ -188,6 +188,9 @@ en:
       mediaplex_tag:
         page_name: Page Name
         roi_name: ROI Name
+      metro:
+        banner_image: Banner Image
+        listing_image: Listing Image
       mini_slide:
         mini_slideshow: Mini Slideshow
       mini_slideshow:
@@ -374,6 +377,9 @@ en:
         masthead_image: Image dimensions should be 230x223
       masthead_slide:
         image: Image dimensions should be 230x223
+      metro:
+        banner_image: 'TODO: determine image dimensions'
+        listing_image: Image dimensions should be 288x237
       mini_slide:
         image: Image dimensions should be 230x145
       news_post:

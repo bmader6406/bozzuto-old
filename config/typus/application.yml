@@ -460,6 +460,23 @@ MediaplexTag:
   search: 
   application:
 
+Metro:
+  fields:
+    default: name
+    list: name
+    form: name, latitude, longitude, banner_image, listing_image
+    options:
+      ckeditor: 
+      booleans:
+      required: name, latitude, longitude, listing_image
+      selectors: 
+      destroy_related: 
+  order_by: position
+  relationships: 
+  filters: 
+  search: metros.name
+  application: Neighborhoods
+
 NewsPost:
   fields:
     default: title, published, published_at
