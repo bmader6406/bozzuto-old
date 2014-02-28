@@ -18,6 +18,9 @@ Sham.define do
   vaultware_id     { |i| i.to_s }
   property_link_id { |i| i.to_s }
   rent_cafe_id     { |i| i.to_s }
+  metro_name       { |i| "Metro ##{i}" }
+  latitude         { rand(180) - 90 }
+  longitude        { rand(360) - 180 }
 end
 
 Sham.bedrooms(:unique => false)  { rand(5) + 1 }
@@ -235,6 +238,13 @@ Lead2LeaseSubmission.blueprint do
   email         { Faker::Internet.email }
   move_in_date  { Date.today }
   comments      { '' }
+end
+
+Metro.blueprint do
+  name                    { Sham.metro_name }
+  latitude                { Sham.latitude }
+  longitude               { Sham.longitude }
+  listing_image_file_name { Sham.file_name }
 end
 
 NewsPost.blueprint do

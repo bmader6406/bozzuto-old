@@ -618,6 +618,20 @@ ActiveRecord::Schema.define(:version => 20140224180605) do
 
   add_index "mediaplex_tags", ["trackable_type", "trackable_id"], :name => "index_mediaplex_tags_on_trackable_type_and_trackable_id"
 
+  create_table "metros", :force => true do |t|
+    t.string   "name",                    :null => false
+    t.string   "cached_slug"
+    t.float    "latitude",                :null => false
+    t.float    "longitude",               :null => false
+    t.integer  "position"
+    t.string   "banner_image_file_name"
+    t.string   "listing_image_file_name", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "metros", ["cached_slug"], :name => "index_metros_on_cached_slug"
+
   create_table "mini_slides", :force => true do |t|
     t.string   "image_file_name",    :null => false
     t.string   "image_content_type", :null => false

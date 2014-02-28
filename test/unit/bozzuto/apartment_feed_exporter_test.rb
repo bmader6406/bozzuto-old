@@ -75,8 +75,8 @@ module Bozzuto
           :twitter_account         => twitter_account,
           :pinterest_url           => 'http://pinterest.com/bozzuto',
           :website_url             => 'http://what.up',
-          :latitude                => 9001,
-          :longitude               => 1337,
+          :latitude                => 0.0,
+          :longitude               => 45.0,
           :local_info_feed         => local_info_feed,
           :promo_id                => promo.id,
           :listing_image_file_name => 'test.jpg'
@@ -84,8 +84,8 @@ module Bozzuto
 
         ApartmentCommunity.make(
           :title     => 'I R Close',
-          :latitude  => 9003,
-          :longitude => 1340,
+          :latitude  => -30.0,
+          :longitude => -100.0,
           :city      => city
         )
 
@@ -489,11 +489,11 @@ module Bozzuto
       end
 
       should "contain latitude" do
-        assert_equal 9001, @first_export[:latitude]
+        assert_equal 0.0, @first_export[:latitude]
       end
 
       should "contain longitude" do
-        assert_equal 1337, @first_export[:longitude]
+        assert_equal 45.0, @first_export[:longitude]
       end
 
       should "handle multiple communities" do
@@ -594,12 +594,12 @@ module Bozzuto
             end
 
             should "contain latitude" do
-              assert_equal '9001.0',
+              assert_equal '0.0',
                 @identification_node.xpath('Latitude')[0].content
             end
 
             should "contain longitude" do
-              assert_equal '1337.0',
+              assert_equal '45.0',
                 @identification_node.xpath('Longitude')[0].content
             end
           end

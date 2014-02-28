@@ -1,4 +1,5 @@
 class Property < ActiveRecord::Base
+  extend Bozzuto::Mappable
   include Bozzuto::Publishable
 
   USE_BROCHURE_URL = 0
@@ -33,12 +34,8 @@ class Property < ActiveRecord::Base
   has_many :landing_page_popular_orderings, :dependent => :destroy
 
   validates_presence_of :title, :city
-  validates_numericality_of :latitude, :longitude, :allow_nil => true
   validates_length_of :short_title, :maximum => 22, :allow_nil => true
   validates_inclusion_of :brochure_type, :in => [USE_BROCHURE_URL, USE_BROCHURE_FILE]
-
-  acts_as_mappable :lat_column_name => :latitude,
-                   :lng_column_name => :longitude
 
   has_attached_file :listing_image,
     :url             => '/system/:class/:id/:style.:extension',
