@@ -61,6 +61,8 @@ ApartmentFloorPlan:
   order_by: floor_plan_group_id, position
   relationships: floor_plan_group
   filters:
+  options:
+    per_page: 9999
   search:
   application:
 
@@ -73,6 +75,26 @@ ApartmentFloorPlanGroup:
   relationships: floor_plans
   search: name
   application:
+
+Area:
+  fields:
+    default: name
+    list: name
+    form: name, metro, latitude, longitude, banner_image, listing_image
+    relationship: name, position
+    options:
+      ckeditor: 
+      booleans:
+      required: name, metro, latitude, longitude, listing_image
+      selectors: 
+      destroy_related: 
+  order_by: position
+  relationships: 
+  filters: 
+  options:
+    per_page: 9999
+  search: areas.name
+  application: Neighborhoods
 
 Award:
   fields:
@@ -472,7 +494,7 @@ Metro:
       selectors: 
       destroy_related: 
   order_by: position
-  relationships: 
+  relationships: areas
   filters: 
   search: metros.name
   application: Neighborhoods
@@ -509,6 +531,7 @@ Page:
   search: title
   application:
   options:
+    per_page: 9999
   actions:
     index: list_deleted
     show: preview

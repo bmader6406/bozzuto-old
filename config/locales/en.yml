@@ -79,6 +79,9 @@ en:
         min_effective_rent: Minimum Effective Rent
         max_square_feet: Maximum Square Feet
         min_square_feet: Minimum Square Feet
+      area:
+        banner_image: Banner Image
+        listing_image: Listing Image
       award:
         published_at: Published At
       body_slide:
@@ -322,6 +325,9 @@ en:
       apartment_contact_configuration:
         upcoming_intro_text: "Text to be shown at the top of the 'Under Construction' lead form."
         upcoming_thank_you_text: "Text to be shown on the 'Under Construction' lead form 'Thank You' page."
+      area:
+        banner_image: 'TODO: determine image dimensions'
+        listing_image: Image dimensions should be 288x237
       award:
         image: Image dimensions should be 150x150
       body_slide:
