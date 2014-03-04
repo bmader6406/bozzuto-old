@@ -198,6 +198,9 @@ en:
         mini_slideshow: Mini Slideshow
       mini_slideshow:
         link_url: Link URL
+      neighborhood:
+        banner_image: Banner Image
+        listing_image: Listing Image
       news_post:
         home_page_image: Home Page Thumbnail
         meta_description: SEO Description
@@ -388,6 +391,9 @@ en:
         listing_image: Image dimensions should be 288x237
       mini_slide:
         image: Image dimensions should be 230x145
+      neighborhood:
+        banner_image: 'TODO: determine image dimensions'
+        listing_image: Image dimensions should be 288x237
       news_post:
         home_page_image: Image dimensions should be 380x150.<br />This image is shown on the home page when this news post appears under &ldquo;Latest News&rdquo;
         image: Image dimensions should be 150x150

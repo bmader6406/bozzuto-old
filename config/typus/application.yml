@@ -89,7 +89,7 @@ Area:
       selectors: 
       destroy_related: 
   order_by: position
-  relationships: 
+  relationships: neighborhoods
   filters: 
   options:
     per_page: 9999
@@ -497,6 +497,26 @@ Metro:
   relationships: areas
   filters: 
   search: metros.name
+  application: Neighborhoods
+
+Neighborhood:
+  fields:
+    default: name
+    list: name
+    form: name, area, state, latitude, longitude, banner_image, listing_image
+    relationship: name, position
+    options:
+      ckeditor: 
+      booleans:
+      required: name, area, state, latitude, longitude, banner_image, listing_image
+      selectors: 
+      destroy_related: 
+  order_by: position
+  relationships: neighborhoods
+  filters: 
+  options:
+    per_page: 9999
+  search: areas.name
   application: Neighborhoods
 
 NewsPost:

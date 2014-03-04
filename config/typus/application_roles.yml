@@ -42,6 +42,7 @@ admin:
   Metro: create, read, update, delete
   MiniSlide: create, read, update, delete
   MiniSlideshow: create, read, update, delete
+  Neighborhood: create, read, update, delete
   NewsPost: create, read, update, delete
   Page: create, read, update, delete, preview, list_deleted, recover
   Photo: create, read, update, delete
