@@ -17,5 +17,6 @@ class NeighborhoodTest < ActiveSupport::TestCase
 
     should_belong_to(:area)
     should_belong_to(:state)
+    should_belong_to(:featured_apartment_community)
   end
 end

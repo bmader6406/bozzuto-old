@@ -4,11 +4,12 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
   context "An Apartment Community" do
     subject { ApartmentCommunity.make }
 
-    should_have_many :floor_plans, :featured_floor_plans, :under_construction_leads
-    should_have_many :floor_plan_groups, :through => :floor_plans
+    should_have_many(:floor_plans, :featured_floor_plans, :under_construction_leads)
+    should_have_many(:floor_plan_groups, :through => :floor_plans)
 
-    should_have_one :mediaplex_tag
-    should_have_one :contact_configuration
+    should_have_one(:mediaplex_tag)
+    should_have_one(:contact_configuration)
+    should_have_one(:neighborhood, :dependent => :nullify)
 
     it "is archivable" do
       assert ApartmentCommunity.acts_as_archive?

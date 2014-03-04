@@ -37,6 +37,10 @@ class ApartmentCommunity < Community
   has_one :contact_configuration,
           :class_name => 'ApartmentContactConfiguration'
 
+  has_one :neighborhood,
+          :foreign_key => :featured_apartment_community_id,
+          :dependent   => :nullify
+
 
   validates_inclusion_of :use_market_prices, :in => [true, false]
 

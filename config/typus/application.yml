@@ -503,7 +503,7 @@ Neighborhood:
   fields:
     default: name
     list: name
-    form: name, area, state, latitude, longitude, banner_image, listing_image
+    form: name, area, state, latitude, longitude, banner_image, listing_image, featured_apartment_community
     relationship: name, position
     options:
       ckeditor: 
@@ -512,7 +512,7 @@ Neighborhood:
       selectors: 
       destroy_related: 
   order_by: position
-  relationships: neighborhoods
+  relationships: featured_apartment_community
   filters: 
   options:
     per_page: 9999

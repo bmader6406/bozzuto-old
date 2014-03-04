@@ -200,6 +200,7 @@ en:
         link_url: Link URL
       neighborhood:
         banner_image: Banner Image
+        featured_apartment_community: Featured Apartment Community
         listing_image: Listing Image
       news_post:
         home_page_image: Home Page Thumbnail

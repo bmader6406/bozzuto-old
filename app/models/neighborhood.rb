@@ -5,6 +5,8 @@ class Neighborhood < ActiveRecord::Base
 
   belongs_to :area
   belongs_to :state
+  belongs_to :featured_apartment_community,
+             :class_name => 'ApartmentCommunity'
 
   validates_presence_of :area, :state
 
