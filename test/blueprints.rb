@@ -115,6 +115,14 @@ ApartmentFloorPlanGroup.blueprint(:penthouse) do
   name { 'Penthouse' }
 end
 
+Area.blueprint do
+  name                    { Sham.metro_name }
+  latitude                { Sham.latitude }
+  longitude               { Sham.longitude }
+  listing_image_file_name { Sham.file_name }
+  metro
+end
+
 Award.blueprint do
   title        { Faker::Lorem.sentence }
   body         { Faker::Lorem.paragraphs }

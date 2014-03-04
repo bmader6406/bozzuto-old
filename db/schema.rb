@@ -212,6 +212,23 @@ ActiveRecord::Schema.define(:version => 20140224180605) do
 
   add_index "archived_properties", ["id"], :name => "index_archived_properties_on_id"
 
+  create_table "areas", :force => true do |t|
+    t.string   "name",                    :null => false
+    t.string   "cached_slug"
+    t.float    "latitude",                :null => false
+    t.float    "longitude",               :null => false
+    t.integer  "metro_id",                :null => false
+    t.integer  "position"
+    t.string   "banner_image_file_name"
+    t.string   "listing_image_file_name", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "areas", ["cached_slug"], :name => "index_areas_on_cached_slug"
+  add_index "areas", ["metro_id"], :name => "index_areas_on_metro_id"
+  add_index "areas", ["name"], :name => "index_areas_on_name", :unique => true
+
   create_table "assets", :force => true do |t|
     t.string   "data_file_name"
     t.string   "data_content_type"
@@ -631,6 +648,7 @@ ActiveRecord::Schema.define(:version => 20140224180605) do
   end
 
   add_index "metros", ["cached_slug"], :name => "index_metros_on_cached_slug"
+  add_index "metros", ["name"], :name => "index_metros_on_name", :unique => true
 
   create_table "mini_slides", :force => true do |t|
     t.string   "image_file_name",    :null => false
