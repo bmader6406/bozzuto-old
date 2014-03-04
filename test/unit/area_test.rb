@@ -13,6 +13,7 @@ class AreaTest < ActiveSupport::TestCase
 
     should_validate_attachment_presence(:listing_image)
 
+    should_have_many(:neighborhoods, :dependent => :destroy)
     should_belong_to(:metro)
   end
 end

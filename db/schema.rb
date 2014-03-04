@@ -669,6 +669,24 @@ ActiveRecord::Schema.define(:version => 20140224180605) do
     t.string   "link_url"
   end
 
+  create_table "neighborhoods", :force => true do |t|
+    t.string   "name",                    :null => false
+    t.string   "cached_slug"
+    t.float    "latitude",                :null => false
+    t.float    "longitude",               :null => false
+    t.string   "banner_image_file_name",  :null => false
+    t.string   "listing_image_file_name", :null => false
+    t.integer  "area_id",                 :null => false
+    t.integer  "position"
+    t.integer  "state_id",                :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "neighborhoods", ["area_id"], :name => "index_neighborhoods_on_area_id"
+  add_index "neighborhoods", ["cached_slug"], :name => "index_neighborhoods_on_cached_slug"
+  add_index "neighborhoods", ["name"], :name => "index_neighborhoods_on_name", :unique => true
+
   create_table "news_posts", :force => true do |t|
     t.string   "title",                                           :null => false
     t.text     "body"

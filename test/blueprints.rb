@@ -255,6 +255,16 @@ Metro.blueprint do
   listing_image_file_name { Sham.file_name }
 end
 
+Neighborhood.blueprint do
+  name                    { Sham.metro_name }
+  latitude                { Sham.latitude }
+  longitude               { Sham.longitude }
+  banner_image_file_name  { Sham.file_name }
+  listing_image_file_name { Sham.file_name }
+  area
+  state
+end
+
 NewsPost.blueprint do
   title        { Faker::Lorem.sentence }
   body         { Faker::Lorem.paragraphs(2) }
