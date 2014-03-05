@@ -8,6 +8,15 @@ class Neighborhood < ActiveRecord::Base
   belongs_to :featured_apartment_community,
              :class_name => 'ApartmentCommunity'
 
+  has_many :neighborhood_memberships,
+           :inverse_of => :neighborhood,
+           :order      => 'neighborhood_memberships.position ASC',
+           :dependent  => :destroy
+
+  has_many :apartment_communities,
+           :through => :neighborhood_memberships,
+           :order   => 'neighborhood_memberships.position ASC'
+
   validates_presence_of :area, :state
 
   validates_attachment_presence :banner_image

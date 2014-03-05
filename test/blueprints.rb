@@ -265,6 +265,11 @@ Neighborhood.blueprint do
   state
 end
 
+NeighborhoodMembership.blueprint do
+  neighborhood
+  apartment_community
+end
+
 NewsPost.blueprint do
   title        { Faker::Lorem.sentence }
   body         { Faker::Lorem.paragraphs(2) }

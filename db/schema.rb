@@ -669,6 +669,16 @@ ActiveRecord::Schema.define(:version => 20140224180605) do
     t.string   "link_url"
   end
 
+  create_table "neighborhood_memberships", :force => true do |t|
+    t.integer  "neighborhood_id",        :null => false
+    t.integer  "apartment_community_id", :null => false
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "neighborhood_memberships", ["neighborhood_id"], :name => "index_neighborhood_memberships_on_neighborhood_id"
+
   create_table "neighborhoods", :force => true do |t|
     t.string   "name",                            :null => false
     t.string   "cached_slug"

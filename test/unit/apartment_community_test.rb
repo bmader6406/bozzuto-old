@@ -10,6 +10,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
     should_have_one(:mediaplex_tag)
     should_have_one(:contact_configuration)
     should_have_one(:neighborhood, :dependent => :nullify)
+    should_have_many(:neighborhood_memberships, :dependent => :destroy)
 
     it "is archivable" do
       assert ApartmentCommunity.acts_as_archive?

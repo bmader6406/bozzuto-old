@@ -41,6 +41,10 @@ class ApartmentCommunity < Community
           :foreign_key => :featured_apartment_community_id,
           :dependent   => :nullify
 
+  has_many :neighborhood_memberships,
+           :inverse_of => :apartment_community,
+           :dependent  => :destroy
+
 
   validates_inclusion_of :use_market_prices, :in => [true, false]
 
