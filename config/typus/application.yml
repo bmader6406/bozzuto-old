@@ -512,12 +512,32 @@ Neighborhood:
       selectors: 
       destroy_related: 
   order_by: position
-  relationships: featured_apartment_community
+  relationships: neighborhood_memberships
   filters: 
   options:
     per_page: 9999
   search: areas.name
   application: Neighborhoods
+
+NeighborhoodMembership:
+  fields:
+    default: 
+    list: name
+    form: neighborhood, apartment_community
+    relationship: apartment_community, position
+    options:
+      ckeditor: 
+      booleans:
+      required: neighborhood, apartment_community
+      selectors: 
+      destroy_related: 
+  order_by: position
+  relationships: 
+  filters: 
+  options:
+    per_page: 9999
+  search: 
+  application: 
 
 NewsPost:
   fields:
