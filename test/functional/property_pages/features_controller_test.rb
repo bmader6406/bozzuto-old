@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class FeaturesControllerTest < ActionController::TestCase
+class PropertyPages::FeaturesControllerTest < ActionController::TestCase
   context 'a GET to #show' do
     context 'with a home community' do
       setup { @community = HomeCommunity.make }

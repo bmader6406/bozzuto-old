@@ -42,49 +42,57 @@ ActionController::Routing::Routes.draw do |map|
   community_options = {
     :path_prefix => :apartments,
     :as          => :communities,
-    :only        => [:index, :show]
+    :only        => [:index, :show],
+    :member      => { :rentnow => :get }
   }
-  map.resources :apartment_communities, community_options.merge(:member => { :rentnow => :get }) do |community|
+  map.resources :apartment_communities, apartment_community_options do |community|
     community.resources :floor_plan_groups,
-      :controller => :apartment_floor_plan_groups,
-      :as         => :floor_plans,
-      :only       => :index do |group|
+                        :controller => :apartment_floor_plan_groups,
+                        :as         => :floor_plans,
+                        :only       => :index do |group|
 
       group.resources :layouts,
-        :controller => :apartment_floor_plans,
-        :only => [:index, :show]
+                      :controller => :apartment_floor_plans,
+                      :only       => [:index, :show]
     end
 
-    community.resource :features, :only => :show
+    community.resource :features,
+                       :controller => 'property_pages/features',
+                       :only       => :show
 
-    community.resource :neighborhood, :only => :show
+    community.resource :neighborhood,
+                       :controller => 'property_pages/neighborhoods',
+                       :only       => :show
 
-    community.resource :tours, :only => :show
+    community.resource :tours,
+                       :controller => 'property_pages/tours',
+                       :only       => :show
 
     community.resources :specials,
-      :only       => :index,
-      :controller => :promos
+                        :only       => :index,
+                        :controller => :promos
 
     community.resource :email_listing,
-      :controller => :community_listing_emails,
-      :only       => :create,
-      :member     => { :thank_you => :get }
+                       :controller => :community_listing_emails,
+                       :only       => :create,
+                       :member     => { :thank_you => :get }
 
     community.resource :sms_message,
-      :as     => :send_to_phone,
-      :only   => [:new, :create],
-      :member => { :thank_you => :get }
+                       :as     => :send_to_phone,
+                       :only   => [:new, :create],
+                       :member => { :thank_you => :get }
 
     community.resource :contact,
-      :controller => :apartment_contact_submissions,
-      :only       => [:show, :create],
-      :member     => { :thank_you => :get }
+                       :controller => :apartment_contact_submissions,
+                       :only       => [:show, :create],
+                       :member     => { :thank_you => :get }
     
-    community.resource :office_hours, :only => :show
+    community.resource :office_hours,
+                       :only => :show
 
     community.resources :media,
-      :controller => :community_media,
-      :only       => :index
+                        :controller => :community_media,
+                        :only       => :index
   end
 
 
@@ -103,40 +111,47 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :home_communities, home_community_options do |community|
     community.resources :homes, :only => :index do |home|
       home.resources :floor_plans,
-        :controller => :home_floor_plans,
-        :only => [:index, :show]
+                     :controller => :home_floor_plans,
+                     :only       => [:index, :show]
     end
 
-    community.resource :features, :only => :show
+    community.resource :features,
+                       :controller => 'property_pages/features',
+                       :only       => :show
 
-    community.resource :neighborhood, :only => :show
+    community.resource :neighborhood,
+                       :controller => 'property_pages/neighborhoods',
+                       :only       => :show
 
-    community.resource :tours, :only => :show
+    community.resource :tours,
+                       :controller => 'property_pages/tours',
+                       :only       => :show
 
     community.resources :specials,
-      :only       => :index,
-      :controller => :promos
+                        :only       => :index,
+                        :controller => :promos
 
     community.resource :email_listing,
-      :controller => :community_listing_emails,
-      :only       => :create,
-      :member     => { :thank_you => :get }
+                       :controller => :community_listing_emails,
+                       :only       => :create,
+                       :member     => { :thank_you => :get }
 
     community.resource :sms_message,
-      :as     => :send_to_phone,
-      :only   => [:new, :create],
-      :member => { :thank_you => :get }
+                       :as     => :send_to_phone,
+                       :only   => [:new, :create],
+                       :member => { :thank_you => :get }
 
     community.resource :contact,
-      :controller => :lasso_submissions,
-      :only       => :show,
-      :member     => { :thank_you => :get }
+                       :controller => :lasso_submissions,
+                       :only       => :show,
+                       :member     => { :thank_you => :get }
     
-    community.resource :office_hours, :only => :show
+    community.resource :office_hours,
+                       :only => :show
 
     community.resources :media,
-      :controller => :community_media,
-      :only       => :index
+                        :controller => :community_media,
+                        :only       => :index
   end
 
   map.resources :landing_pages, :as => :regions, :only => :show

@@ -22,12 +22,6 @@ class CommunityTest < ActiveSupport::TestCase
     should_have_one :conversion_configuration
     should_have_many :photos, :through => :photo_set
     
-    should_have_named_scope 'sort_for(LandingPage.make(:randomize_property_listings => true))',
-      :order => 'RAND(NOW())'
-    should_have_named_scope 'sort_for(LandingPage.make(:randomize_property_listings => false))',
-      :order => 'properties.title ASC'
-    should_have_named_scope 'sort_for(Page.make)', {}
-    
     should 'be archivable' do
       assert Community.acts_as_archive?
       assert_nothing_raised do
