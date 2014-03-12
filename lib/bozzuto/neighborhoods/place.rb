@@ -28,6 +28,12 @@ module Bozzuto
           validates_uniqueness_of :name
 
           validates_attachment_presence :listing_image
+
+          named_scope :positioned, :order => "#{base.to_s.tableize}.position ASC"
+
+          def to_s
+            name
+          end
         end
       end
     end

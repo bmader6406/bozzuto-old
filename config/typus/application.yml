@@ -485,7 +485,7 @@ MediaplexTag:
 Metro:
   fields:
     default: name
-    list: name
+    list: name, position
     form: name, latitude, longitude, banner_image, listing_image
     options:
       ckeditor: 

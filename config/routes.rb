@@ -39,8 +39,34 @@ ActionController::Routing::Routes.draw do |map|
     :action     => :thank_you
 
 
-  community_options = {
-    :path_prefix => :apartments,
+  # Neighborhoods
+  map.with_options :path_prefix => 'apartments/communities' do |m|
+    regex = /[-A-Za-z]+(\d+)?/
+
+    m.metros '',
+             :controller => :metros,
+             :action     => :index
+
+    m.metro ':id',
+            :controller   => :metros,
+            :action       => :show,
+            :requirements => { :id    => regex }
+
+    m.area ':metro_id/:id',
+           :controller   => :areas,
+           :action       => :show,
+           :requirements => { :metro_id => regex, :id => regex }
+
+    m.neighborhood ':metro_id/:area_id/:id',
+                   :controller   => :neighborhoods,
+                   :action       => :show,
+                   :requirements => { :metro_id => regex,
+                                      :area_id  => regex,
+                                      :id       => regex }
+  end
+
+  apartment_community_options = {
+    :path_prefix => 'apartments',
     :as          => :communities,
     :only        => [:index, :show],
     :member      => { :rentnow => :get }

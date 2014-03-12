@@ -1,0 +1,10 @@
+<p>
+	Find An Apartment
+</p>
+
+<p>Metros:</p>
+<ul>
+	<% metros.each do |metro| %>
+		<li><%= link_to metro, metro_path(metro) %></li>
+	<% end %>
+</ul>

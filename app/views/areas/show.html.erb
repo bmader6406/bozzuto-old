@@ -1,0 +1,12 @@
+<p>
+	<%= link_to 'Find An Apartment', metros_path %> >
+	<%= link_to metro, metro_path(metro) %> >
+	<%= area %>
+</p>
+
+<p>Neighborhoods:</p>
+<ul>
+	<% area.neighborhoods.each do |neighborhood| %>
+		<li><%= link_to neighborhood, neighborhood_path(metro, area, neighborhood) %></li>
+	<% end %>
+</ul>
