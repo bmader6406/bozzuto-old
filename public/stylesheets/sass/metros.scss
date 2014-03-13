@@ -1,0 +1,114 @@
+@import "bourbon";
+
+.nh-tile {
+  float: left;
+  margin-right: 30px;
+  padding: 25px 0;
+  width: 300px;
+
+  &:nth-child(3n) {
+    margin-right: 0;
+  }
+}
+
+
+.nh-listing-image {
+  background-color: #f8f8f8;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+  display: block;
+  height: 234px;
+  margin-bottom: 18px;
+  position: relative;
+  width: 300px;
+
+  .nh-tile-title {
+    @include box-sizing(border-box);
+    @include transition(all 0.1s ease-in-out);
+
+    background-color: rgba(0, 0, 0, 0.36);
+    border: 5px solid transparent;
+    color: #fff !important;
+    display: table;
+    font-family: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
+    font-size: 36px !important;
+    font-weight: bold;
+    height: 234px;
+    left: 0;
+    line-height: 1.25 !important;
+    position: absolute;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 1.0);
+    text-transform: uppercase;
+    top: 0;
+    width: 300px;
+
+    span {
+      display: table-cell;
+      padding: 0 10px;
+      text-align: center; 
+      vertical-align: middle; 
+    }
+  }
+
+  &:hover .nh-tile-title {
+    @include transition(all 0.2s ease-in-out);
+
+    border: 5px solid #6591bf;
+    background-color: rgba(0, 0, 0, 0.65);
+  }
+}
+
+.nh-tile-content {
+  padding: 0 4px;
+}
+
+.nh-tile-community-count {
+  color: #6591bf;
+  font-size: 12px !important;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.nh-tile-description {
+  font-size: 15px !important;
+  margin-bottom: 1.5em;
+}
+
+.nh-arrow-list {
+  li {
+    background: url(/images/structure/bg-footer-a.gif) no-repeat center left;
+    padding-left: 10px;
+    line-height: 20px;
+    margin-bottom: 1em;
+  }
+
+  a {
+    color: #84848b;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+.nh-states {
+  border-top: 1px solid #cccccc;
+  margin-top: 40px;
+  padding-top: 60px;
+}
+
+.nh-state {
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 40px;
+  width: 220px;
+
+  &:nth-child(4n) {
+    margin-right: 0;
+  }
+
+  .nh-state-title {
+    border: none !important;
+    font-size: 24px !important;
+    margin-bottom: 18px;
+    padding-left: 10px !important;
+  }
+}

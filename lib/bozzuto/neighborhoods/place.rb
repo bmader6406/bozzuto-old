@@ -17,7 +17,7 @@ module Bozzuto
 
           has_attached_file :listing_image,
                             :url             => '/system/:class/:id/:style.:extension',
-                            :styles          => { :resized => '288x237#' },
+                            :styles          => { :resized => '300x234#' },
                             :default_style   => :resized,
                             :convert_options => { :all => '-quality 80 -strip' }
 

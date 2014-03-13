@@ -475,12 +475,12 @@
     }
     #footer .container,
     #copyright .container {
-      width: 940px;
-      padding: 20px 0 20px 20px;
+      width: 960px;
+      padding: 20px 0;
     }
     #footer .col {
       float: left;
-      width: 150px;
+      width: 155px;
       padding-right: 20px;
     }
     #footer .col.wide {
@@ -983,12 +983,19 @@ div.wysiwyg ul li {
       position: relative;
       width: 770px;
     }
+    .secondary #breadcrumb .container.wide {
+      padding-left: 0;
+      width: 960px;
+    }
     .secondary #breadcrumb .container h1 {
       clear: left;
       color: #565c64;
       font-size: 35px;
       line-height: 1;
       text-transform: uppercase;
+    }
+    .secondary #breadcrumb .container.wide h1 {
+      margin-bottom: 20px;
     }
     .secondary #breadcrumb li,
     .secondary #breadcrumb li a {

@@ -335,7 +335,7 @@ en:
         upcoming_thank_you_text: "Text to be shown on the 'Under Construction' lead form 'Thank You' page."
       area:
         banner_image: 'TODO: determine image dimensions'
-        listing_image: Image dimensions should be 288x237
+        listing_image: Image dimensions should be 300x234
       award:
         image: Image dimensions should be 150x150
       body_slide:
@@ -393,12 +393,12 @@ en:
         image: Image dimensions should be 230x223
       metro:
         banner_image: 'TODO: determine image dimensions'
-        listing_image: Image dimensions should be 288x237
+        listing_image: Image dimensions should be 300x234
       mini_slide:
         image: Image dimensions should be 230x145
       neighborhood:
         banner_image: 'TODO: determine image dimensions'
-        listing_image: Image dimensions should be 288x237
+        listing_image: Image dimensions should be 300x234
       news_post:
         home_page_image: Image dimensions should be 380x150.<br />This image is shown on the home page when this news post appears under &ldquo;Latest News&rdquo;
         image: Image dimensions should be 150x150
