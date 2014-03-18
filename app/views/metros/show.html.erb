@@ -1,11 +1,19 @@
-<p>
-	<%= link_to 'Find An Apartment', metros_path %> >
-	<%= metro %>
-</p>
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag 'metros', :media => 'screen' %>
+<% end %>
 
-<p>Areas:</p>
-<ul>
-	<% metro.areas.each do |area| %>
-		<li><%= link_to area, area_path(metro, area) %></li>
-	<% end %>
-</ul>
+<%= render 'breadcrumb', :title => metro, :items => ["#{metro} Apartments"] %>
+
+<div id="main-content">
+  <div class="container">
+    <div class="nh-tiles row">
+      <% metro.areas.in_groups_of(3, false).each do |group| %>
+        <div class="row">
+          <% group.each do |area| %>
+            <%= render 'areas/listing', :metro => metro, :area => area %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

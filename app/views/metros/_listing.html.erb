@@ -1,0 +1,25 @@
+<div class="nh-tile">
+  <% link_to metro_path(metro), :class => 'nh-listing-image' do %>
+    <h2 class="nh-tile-title"><span><%= metro %></span></h2>
+
+    <%= image_tag metro.listing_image.url, :width => 300, :height => 234 %>
+  <% end %>
+
+  <div class="nh-tile-content">
+    <p class="nh-tile-community-count">
+      <%= pluralize(rand(4) + 1, 'Apartment Community') %>
+    </p>
+
+    <p class="nh-tile-description">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna uia
+    </p>
+
+    <% metro.areas.if_present? do |areas| %>
+      <ul class="nh-arrow-list">
+        <% areas.each do |area| %>
+          <li><%= link_to "#{area} (#{rand(35) + 1})", area_path(metro, area) %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>
