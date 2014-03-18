@@ -2,7 +2,7 @@
   <%= stylesheet_link_tag 'metros', :media => 'screen' %>
 <% end %>
 
-<%= render 'breadcrumb', :title => metro, :items => ["#{metro} Apartments"] %>
+<%= render 'breadcrumb', :title => metro.full_name, :items => [metro] %>
 
 <div id="main-content">
   <div class="container">

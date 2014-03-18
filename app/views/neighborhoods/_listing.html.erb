@@ -1,0 +1,17 @@
+<div class="nh-tile">
+  <% link_to neighborhood_path(metro, area, neighborhood), :class => 'nh-listing-image' do %>
+    <h2 class="nh-tile-title"><span><%= neighborhood %></span></h2>
+
+    <%= image_tag neighborhood.listing_image.url, :width => 300, :height => 234 %>
+  <% end %>
+
+  <div class="nh-tile-content">
+    <p class="nh-tile-community-count">
+      <%= pluralize(rand(4) + 1, 'Apartment Community') %>
+    </p>
+
+    <p class="nh-tile-description">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna uia
+    </p>
+  </div>
+</div>

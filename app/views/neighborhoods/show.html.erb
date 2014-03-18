@@ -1,13 +1,23 @@
-<p>
-	<%= link_to 'Find An Apartment', metros_path %> >
-	<%= link_to metro, metro_path(metro) %> >
-	<%= link_to area, area_path(metro, area) %> >
-	<%= neighborhood %>
-</p>
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag 'metros', :media => 'screen' %>
+<% end %>
 
-<p>Communities:</p>
-<ul>
-	<% neighborhood.apartment_communities.each do |community| %>
-		<li><%= link_to community.title, apartment_community_path(community) %></li>
-	<% end %>
-</ul>
+<%= render 'metros/breadcrumb',
+           :title => neighborhood.full_name,
+					 :items => [link_to(metro, metro_path(metro)),
+											link_to(area, area_path(metro, area)),
+										  neighborhood] %>
+
+<div id="main-content">
+  <div class="container">
+    <div class="nh-tiles row">
+      <% neighborhood.apartment_communities.in_groups_of(3, false).each do |group| %>
+        <div class="row">
+          <% group.each do |community| %>
+            <%= render 'community_listing', :community => community %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

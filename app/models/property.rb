@@ -19,18 +19,18 @@ class Property < ActiveRecord::Base
   has_friendly_id :id_and_title,
     :use_slug => true,
     :scope => :type
-    
+
   acts_as_archive :indexes => [:id]
 
   serialize :office_hours
 
   belongs_to :city
-  belongs_to :county  
+  belongs_to :county
 
   has_one :slideshow, :class_name => 'PropertySlideshow'
 
   has_and_belongs_to_many :property_features, :order => 'position ASC'
-  
+
   has_many :landing_page_popular_orderings, :dependent => :destroy
 
   validates_presence_of :title, :city
@@ -56,7 +56,7 @@ class Property < ActiveRecord::Base
 
   named_scope :mappable, :conditions => ['latitude IS NOT NULL AND longitude IS NOT NULL']
 
-  named_scope :in_state, lambda { |state_id|    
+  named_scope :in_state, lambda { |state_id|
     {:conditions => ['city_id IN (SELECT id FROM cities WHERE cities.state_id = ?)', state_id]}
   }
 
