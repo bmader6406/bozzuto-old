@@ -10,9 +10,11 @@
       <%= pluralize(metro.apartment_communities_count, 'Apartment Community') %>
     </p>
 
-    <p class="nh-tile-description">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna uia
-    </p>
+    <% metro.description.if_present? do |description| %>
+      <p class="nh-tile-description">
+        <%= description.html_safe %>
+      </p>
+    <% end %>
 
     <% metro.areas.if_present? do |areas| %>
       <ul class="nh-arrow-list">

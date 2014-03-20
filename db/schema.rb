@@ -224,6 +224,7 @@ ActiveRecord::Schema.define(:version => 20140224180605) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "apartment_communities_count", :default => 0
+    t.text     "description"
   end
 
   add_index "areas", ["apartment_communities_count"], :name => "index_areas_on_apartment_communities_count"
@@ -648,6 +649,7 @@ ActiveRecord::Schema.define(:version => 20140224180605) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "apartment_communities_count", :default => 0
+    t.text     "description"
   end
 
   add_index "metros", ["apartment_communities_count"], :name => "index_metros_on_apartment_communities_count"
@@ -697,6 +699,7 @@ ActiveRecord::Schema.define(:version => 20140224180605) do
     t.datetime "updated_at"
     t.integer  "featured_apartment_community_id"
     t.integer  "apartment_communities_count",     :default => 0
+    t.text     "description"
   end
 
   add_index "neighborhoods", ["apartment_communities_count"], :name => "index_neighborhoods_on_apartment_communities_count"
