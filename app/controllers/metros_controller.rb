@@ -8,8 +8,13 @@ class MetrosController < ApplicationController
 
   private
 
+  def states
+    @states ||= State.positioned
+  end
+  helper_method :states
+
   def metros
-    @metros ||= Metro.positioned.all
+    @metros ||= Metro.positioned
   end
   helper_method :metros
 

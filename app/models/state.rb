@@ -1,4 +1,6 @@
 class State < ActiveRecord::Base
+  acts_as_list
+
   has_many :cities
   has_many :counties
 
@@ -20,7 +22,8 @@ class State < ActiveRecord::Base
 
   has_many :neighborhoods
 
-  named_scope :ordered_by_name, :order => 'name ASC'
+  named_scope :ordered_by_name, :order => 'states.name ASC'
+  named_scope :positioned,      :order => 'states.position ASC'
 
   validates_presence_of :code, :name
   validates_length_of :code, :is => 2

@@ -881,9 +881,9 @@ Snippet:
 State:
   fields:
     default: name, code
-    list: name, code
+    list: name, code, position
     form: name, code
-  order_by: name
+  order_by: position
   relationships: cities, counties, featured_apartment_communities
   relationship_fields:
     featured_apartment_communities: state

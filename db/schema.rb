@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140320165901) do
+ActiveRecord::Schema.define(:version => 20140320192306) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -1158,7 +1158,10 @@ ActiveRecord::Schema.define(:version => 20140320165901) do
     t.string   "name",       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position"
   end
+
+  add_index "states", ["position"], :name => "index_states_on_position"
 
   create_table "testimonials", :force => true do |t|
     t.string   "name",       :default => ""
