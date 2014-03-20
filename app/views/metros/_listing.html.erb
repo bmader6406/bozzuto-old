@@ -7,7 +7,7 @@
 
   <div class="nh-tile-content">
     <p class="nh-tile-community-count">
-      <%= pluralize(rand(4) + 1, 'Apartment Community') %>
+      <%= pluralize(metro.apartment_communities_count, 'Apartment Community') %>
     </p>
 
     <p class="nh-tile-description">
@@ -17,7 +17,7 @@
     <% metro.areas.if_present? do |areas| %>
       <ul class="nh-arrow-list">
         <% areas.each do |area| %>
-          <li><%= link_to "#{area} (#{rand(35) + 1})", area_path(metro, area) %></li>
+          <li><%= link_to "#{area} (#{area.apartment_communities_count})", area_path(metro, area) %></li>
         <% end %>
       </ul>
     <% end %>

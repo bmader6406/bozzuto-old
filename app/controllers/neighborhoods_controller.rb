@@ -5,18 +5,18 @@ class NeighborhoodsController < ApplicationController
 
   private
 
-  def neighborhood
-    @neighborhood ||= area.neighborhoods.find(params[:id])
+  def metro
+    @metro ||= Metro.find(params[:metro_id])
   end
-  helper_method :neighborhood
+  helper_method :metro
 
   def area
     @area ||= metro.areas.find(params[:area_id])
   end
   helper_method :area
 
-  def metro
-    @metro ||= Metro.find(params[:metro_id])
+  def neighborhood
+    @neighborhood ||= area.neighborhoods.find(params[:id])
   end
-  helper_method :metro
+  helper_method :neighborhood
 end

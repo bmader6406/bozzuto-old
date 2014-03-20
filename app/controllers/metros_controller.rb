@@ -17,4 +17,9 @@ class MetrosController < ApplicationController
     @metro ||= Metro.find(params[:id])
   end
   helper_method :metro
+
+  def areas
+    @areas ||= metro.areas.positioned
+  end
+  helper_method :areas
 end

@@ -213,18 +213,20 @@ ActiveRecord::Schema.define(:version => 20140224180605) do
   add_index "archived_properties", ["id"], :name => "index_archived_properties_on_id"
 
   create_table "areas", :force => true do |t|
-    t.string   "name",                    :null => false
+    t.string   "name",                                       :null => false
     t.string   "cached_slug"
-    t.float    "latitude",                :null => false
-    t.float    "longitude",               :null => false
-    t.integer  "metro_id",                :null => false
+    t.float    "latitude",                                   :null => false
+    t.float    "longitude",                                  :null => false
+    t.integer  "metro_id",                                   :null => false
     t.integer  "position"
     t.string   "banner_image_file_name"
-    t.string   "listing_image_file_name", :null => false
+    t.string   "listing_image_file_name",                    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "apartment_communities_count", :default => 0
   end
 
+  add_index "areas", ["apartment_communities_count"], :name => "index_areas_on_apartment_communities_count"
   add_index "areas", ["cached_slug"], :name => "index_areas_on_cached_slug"
   add_index "areas", ["metro_id"], :name => "index_areas_on_metro_id"
   add_index "areas", ["name"], :name => "index_areas_on_name", :unique => true
@@ -636,17 +638,19 @@ ActiveRecord::Schema.define(:version => 20140224180605) do
   add_index "mediaplex_tags", ["trackable_type", "trackable_id"], :name => "index_mediaplex_tags_on_trackable_type_and_trackable_id"
 
   create_table "metros", :force => true do |t|
-    t.string   "name",                    :null => false
+    t.string   "name",                                       :null => false
     t.string   "cached_slug"
-    t.float    "latitude",                :null => false
-    t.float    "longitude",               :null => false
+    t.float    "latitude",                                   :null => false
+    t.float    "longitude",                                  :null => false
     t.integer  "position"
     t.string   "banner_image_file_name"
-    t.string   "listing_image_file_name", :null => false
+    t.string   "listing_image_file_name",                    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "apartment_communities_count", :default => 0
   end
 
+  add_index "metros", ["apartment_communities_count"], :name => "index_metros_on_apartment_communities_count"
   add_index "metros", ["cached_slug"], :name => "index_metros_on_cached_slug"
   add_index "metros", ["name"], :name => "index_metros_on_name", :unique => true
 
@@ -680,20 +684,22 @@ ActiveRecord::Schema.define(:version => 20140224180605) do
   add_index "neighborhood_memberships", ["neighborhood_id"], :name => "index_neighborhood_memberships_on_neighborhood_id"
 
   create_table "neighborhoods", :force => true do |t|
-    t.string   "name",                            :null => false
+    t.string   "name",                                           :null => false
     t.string   "cached_slug"
-    t.float    "latitude",                        :null => false
-    t.float    "longitude",                       :null => false
-    t.string   "banner_image_file_name",          :null => false
-    t.string   "listing_image_file_name",         :null => false
-    t.integer  "area_id",                         :null => false
+    t.float    "latitude",                                       :null => false
+    t.float    "longitude",                                      :null => false
+    t.string   "banner_image_file_name",                         :null => false
+    t.string   "listing_image_file_name",                        :null => false
+    t.integer  "area_id",                                        :null => false
     t.integer  "position"
-    t.integer  "state_id",                        :null => false
+    t.integer  "state_id",                                       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "featured_apartment_community_id"
+    t.integer  "apartment_communities_count",     :default => 0
   end
 
+  add_index "neighborhoods", ["apartment_communities_count"], :name => "index_neighborhoods_on_apartment_communities_count"
   add_index "neighborhoods", ["area_id"], :name => "index_neighborhoods_on_area_id"
   add_index "neighborhoods", ["cached_slug"], :name => "index_neighborhoods_on_cached_slug"
   add_index "neighborhoods", ["name"], :name => "index_neighborhoods_on_name", :unique => true

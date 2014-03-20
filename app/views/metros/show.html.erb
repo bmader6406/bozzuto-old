@@ -7,7 +7,7 @@
 <div id="main-content">
   <div class="container">
     <div class="nh-tiles row">
-      <% metro.areas.in_groups_of(3, false).each do |group| %>
+      <% areas.in_groups_of(3, false).each do |group| %>
         <div class="row">
           <% group.each do |area| %>
             <%= render 'areas/listing', :metro => metro, :area => area %>

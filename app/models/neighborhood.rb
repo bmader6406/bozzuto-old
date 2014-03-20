@@ -20,4 +20,15 @@ class Neighborhood < ActiveRecord::Base
   validates_presence_of :area, :state
 
   validates_attachment_presence :banner_image
+
+  def parent
+    area
+  end
+
+
+  protected
+
+  def calculate_apartment_communities_count
+    neighborhood_memberships(true).count
+  end
 end

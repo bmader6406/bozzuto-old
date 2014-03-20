@@ -29,7 +29,12 @@ module Bozzuto
 
           validates_attachment_presence :listing_image
 
-          named_scope :positioned, :order => "#{base.to_s.tableize}.position ASC"
+          table_name = base.to_s.tableize
+          named_scope :positioned,       :order => "#{table_name}.position ASC"
+          named_scope :ordered_by_count, :order => "#{table_name}.apartment_communities_count DESC, #{table_name}.name ASC"
+
+          after_save :update_apartment_communities_count
+          after_destroy :update_apartment_communities_count
 
           def to_s
             name
@@ -38,6 +43,31 @@ module Bozzuto
           def full_name
             "#{name} Apartments"
           end
+
+          #:nocov:
+          def parent
+            raise NotImplementedError, "#{self.class} must implemenet #parent"
+          end
+          #:nocov:
+
+
+          protected
+
+          def update_apartment_communities_count
+            if !destroyed?
+              self.apartment_communities_count = calculate_apartment_communities_count
+
+              send(:update_without_callbacks)
+            end
+
+            parent.try(:update_apartment_communities_count)
+          end
+
+          #:nocov:
+          def calculate_apartment_communities_count
+            raise NotImplementedError, "#{self.class} must implemenet #calculate_apartment_communities_count"
+          end
+          #:nocov:
         end
       end
     end

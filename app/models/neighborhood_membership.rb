@@ -10,4 +10,14 @@ class NeighborhoodMembership < ActiveRecord::Base
   validates_presence_of :neighborhood, :apartment_community
 
   validates_uniqueness_of :apartment_community_id, :scope => :neighborhood_id
+
+  after_save :update_apartment_communities_count
+  after_destroy :update_apartment_communities_count
+
+
+  private
+
+  def update_apartment_communities_count
+    neighborhood.send(:update_apartment_communities_count)
+  end
 end

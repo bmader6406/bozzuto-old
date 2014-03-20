@@ -15,5 +15,45 @@ class AreaTest < ActiveSupport::TestCase
 
     should_have_many(:neighborhoods, :dependent => :destroy)
     should_belong_to(:metro)
+
+    describe "managing the apartment communities count" do
+      before do
+        # area
+        #   - neighborhood_1
+        #     - community
+        #     - community
+        #     - community
+        #   -neighborhood_2
+        #     -community
+
+        @neighborhood_1 = Neighborhood.make(:apartment_communities => (1..3).to_a.map { |_| ApartmentCommunity.make })
+        @neighborhood_2 = Neighborhood.make(:apartment_communities => [ApartmentCommunity.make])
+
+        subject.neighborhoods = [@neighborhood_1, @neighborhood_2]
+        subject.save
+      end
+
+      describe "after saving" do
+        it "updates the apartment communities count" do
+          subject.apartment_communities_count.should == 4
+        end
+
+        it "updates the parent metro" do
+          subject.metro.apartment_communities_count.should == 4
+        end
+      end
+
+      describe "after destroying" do
+        it "updates the count on the parent metro" do
+          metro = subject.metro
+          metro.apartment_communities_count.should == 4
+
+          subject.destroy
+
+          metro.reload
+          metro.apartment_communities_count.should == 0
+        end
+      end
+    end
   end
 end
