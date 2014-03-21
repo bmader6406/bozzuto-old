@@ -56,9 +56,11 @@ window.bozzuto = {};
 
   $(function() {
 
+    /*
     $(window).resize(function() {
       align(document.documentElement);
     });
+    */
 
     $('#special-nav, .recently-viewed-actions').specialNavPopups();
 
@@ -649,22 +651,22 @@ window.bozzuto = {};
   }
 
 
-	////
-	// tooltips on icon hovers
+  ////
+  // tooltips on icon hovers
   $.fn.toolTip = function() {
-		var tooltime				= 'inactive',
-        $tooltip				= $('<div class="tooltip"></div>').appendTo('body'),
+    var tooltime        = 'inactive',
+        $tooltip        = $('<div class="tooltip"></div>').appendTo('body'),
         $tooltipContent = $('<div></div>').appendTo($tooltip),
-        $tooltipArrow		= $('<span class="tooltip-arrow"></span>').appendTo($tooltip);
+        $tooltipArrow   = $('<span class="tooltip-arrow"></span>').appendTo($tooltip);
 
     return this.each(function() {
       var $this        = $(this),
 
-					name         = $(this).attr('data-name'),
-					description  = $(this).attr('data-description'),
+          name         = $(this).attr('data-name'),
+          description  = $(this).attr('data-description'),
 
-					$name        = $('<h4>' + name + '</h4>'),
-					$description = $('<p>' + description + '</p>'),
+          $name        = $('<h4>' + name + '</h4>'),
+          $description = $('<p>' + description + '</p>'),
 
           isSearch     = $('body').hasClass('search'),
           left         = (isSearch) ? 162 : 156,

@@ -11,6 +11,17 @@
 	margin-bottom: 12px;
 }
 
+.nh-banner-img {
+	height: 325px;
+	position: relative;
+
+	img {
+		left: -30px;
+		position: absolute;
+		top: 0;
+	}
+}
+
 .nh-tile {
   float: left;
   margin-right: 30px;

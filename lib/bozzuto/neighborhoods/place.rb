@@ -9,10 +9,9 @@ module Bozzuto
 
 
           has_attached_file :banner_image,
-                            :url             => '/system/:class/:id/:style.:extension',
-                            # TODO: determine image dimensions
-                            #:styles          => { :square => '150x150#', :rect => '230x145#' },
-                            #:default_style   => :square,
+                            :url             => '/system/:class/:id/banner_:style.:extension',
+                            :styles          => { :resized => '1020x325#' },
+                            :default_style   => :resized,
                             :convert_options => { :all => '-quality 80 -strip' }
 
           has_attached_file :listing_image,
