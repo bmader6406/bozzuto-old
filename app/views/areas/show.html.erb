@@ -4,7 +4,9 @@
 
 <%= render 'metros/breadcrumb',
            :title => area.full_name,
-           :items => [link_to(metro, metro_path(metro)), area] %>
+           :items => [link_to(metro, metro_path(metro)),
+                      area],
+           :description => area.description %>
 
 <div id="main-content">
   <div class="container">

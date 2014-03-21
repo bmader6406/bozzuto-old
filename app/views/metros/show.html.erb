@@ -2,7 +2,10 @@
   <%= stylesheet_link_tag 'metros', :media => 'screen' %>
 <% end %>
 
-<%= render 'breadcrumb', :title => metro.full_name, :items => [metro] %>
+<%= render 'breadcrumb',
+           :title       => metro.full_name,
+           :items       => [metro],
+           :description => metro.description %>
 
 <div id="main-content">
   <div class="container">

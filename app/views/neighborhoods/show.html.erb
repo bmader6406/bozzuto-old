@@ -4,9 +4,10 @@
 
 <%= render 'metros/breadcrumb',
            :title => neighborhood.full_name,
-					 :items => [link_to(metro, metro_path(metro)),
-											link_to(area, area_path(metro, area)),
-										  neighborhood] %>
+           :items => [link_to(metro, metro_path(metro)),
+                      link_to(area, area_path(metro, area)),
+                      neighborhood],
+           :description => neighborhood.description %>
 
 <div id="main-content">
   <div class="container">

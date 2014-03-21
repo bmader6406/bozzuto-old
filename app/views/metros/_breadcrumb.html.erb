@@ -11,6 +11,10 @@
       <% end %>
     </ul>
 
-    <h1><%= title %></h1>
+    <h1 class="bc-title"><%= title %></h1>
+
+    <% if defined?(description) && description.present? %>
+      <p class="bc-description"><%= description.html_safe %></p>
+    <% end %>
   </div>
 </div>
