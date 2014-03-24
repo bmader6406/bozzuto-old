@@ -41,6 +41,14 @@ module Bozzuto
           end
           #:nocov:
 
+          def name_with_count
+            if apartment_communities_count > 0
+              "#{name} (#{apartment_communities_count})"
+            else
+              name
+            end
+          end
+
 
           protected
 

@@ -41,5 +41,27 @@ class MetroTest < ActiveSupport::TestCase
         subject.apartment_communities_count.should == 3
       end
     end
+
+    describe "#name_with_count" do
+      context "count is greater than 0" do
+        before do
+          subject.apartment_communities_count = 5
+        end
+
+        it "returns the name with the count" do
+          subject.name_with_count.should == "#{subject.name} (5)"
+        end
+      end
+
+      context "count is zero" do
+        before do
+          subject.apartment_communities_count = 0
+        end
+
+        it "returns just the name" do
+          subject.name_with_count.should == subject.name
+        end
+      end
+    end
   end
 end

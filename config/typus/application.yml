@@ -486,7 +486,7 @@ Metro:
   fields:
     default: name
     list: name, position
-    form: name, latitude, longitude, banner_image, listing_image, description
+    form: name, latitude, longitude, banner_image, listing_image
     options:
       ckeditor: 
       booleans:

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140321184716) do
+ActiveRecord::Schema.define(:version => 20140324174618) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -649,7 +649,6 @@ ActiveRecord::Schema.define(:version => 20140321184716) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "apartment_communities_count", :default => 0
-    t.text     "description"
   end
 
   add_index "metros", ["apartment_communities_count"], :name => "index_metros_on_apartment_communities_count"

@@ -25,7 +25,7 @@
 
               <ul class="nh-arrow-list">
                 <% state.neighborhoods.each do |neighborhood| %>
-                  <li><%= link_to "#{neighborhood} (#{neighborhood.apartment_communities_count})", neighborhood_path(neighborhood.area.metro, neighborhood.area, neighborhood) %></li>
+                  <li><%= link_to neighborhood.name_with_count, neighborhood_path(neighborhood.area.metro, neighborhood.area, neighborhood) %></li>
                 <% end %>
               </ul>
             </div>
