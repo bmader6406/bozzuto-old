@@ -19,8 +19,8 @@ Sham.define do
   property_link_id { |i| i.to_s }
   rent_cafe_id     { |i| i.to_s }
   metro_name       { |i| "Metro ##{i}" }
-  latitude         { rand(180) - 90 }
-  longitude        { rand(360) - 180 }
+  latitude         { |i| -90.0 + i/10.0 }
+  longitude        { |i| -180.0 + i/10.0 }
 end
 
 Sham.bedrooms(:unique => false)  { rand(5) + 1 }
@@ -268,6 +268,7 @@ end
 NeighborhoodMembership.blueprint do
   neighborhood
   apartment_community
+  listing_image_file_name { Sham.file_name }
 end
 
 NewsPost.blueprint do

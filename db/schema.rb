@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140320192306) do
+ActiveRecord::Schema.define(:version => 20140321184716) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -676,11 +676,12 @@ ActiveRecord::Schema.define(:version => 20140320192306) do
   end
 
   create_table "neighborhood_memberships", :force => true do |t|
-    t.integer  "neighborhood_id",        :null => false
-    t.integer  "apartment_community_id", :null => false
+    t.integer  "neighborhood_id",         :null => false
+    t.integer  "apartment_community_id",  :null => false
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "listing_image_file_name", :null => false
   end
 
   add_index "neighborhood_memberships", ["neighborhood_id"], :name => "index_neighborhood_memberships_on_neighborhood_id"

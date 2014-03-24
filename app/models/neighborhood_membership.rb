@@ -1,4 +1,6 @@
 class NeighborhoodMembership < ActiveRecord::Base
+  extend Bozzuto::Neighborhoods::ListingImage
+
   acts_as_list :scope => :neighborhood
 
   belongs_to :neighborhood,

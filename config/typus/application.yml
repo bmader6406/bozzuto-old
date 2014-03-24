@@ -522,13 +522,13 @@ Neighborhood:
 NeighborhoodMembership:
   fields:
     default: 
-    list: name
-    form: neighborhood, apartment_community
+    list: apartment_community, neighborhood
+    form: neighborhood, apartment_community, listing_image
     relationship: apartment_community, position
     options:
       ckeditor: 
       booleans:
-      required: neighborhood, apartment_community
+      required: neighborhood, apartment_community, listing_image
       selectors: 
       destroy_related: 
   order_by: position

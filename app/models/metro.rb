@@ -1,5 +1,6 @@
 class Metro < ActiveRecord::Base
   extend Bozzuto::Neighborhoods::Place
+  extend Bozzuto::Neighborhoods::ListingImage
 
   acts_as_list
 

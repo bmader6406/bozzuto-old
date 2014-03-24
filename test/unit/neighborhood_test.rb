@@ -33,7 +33,7 @@ class NeighborhoodTest < ActiveSupport::TestCase
         #   - community
         #   - community
         #   - community
-        subject.apartment_communities = (1..3).to_a.map { |_| ApartmentCommunity.make }
+        subject.neighborhood_memberships = (1..3).to_a.map { |_| NeighborhoodMembership.make }
         subject.save
       end
 

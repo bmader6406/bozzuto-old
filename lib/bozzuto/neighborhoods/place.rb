@@ -14,19 +14,11 @@ module Bozzuto
                             :default_style   => :resized,
                             :convert_options => { :all => '-quality 80 -strip' }
 
-          has_attached_file :listing_image,
-                            :url             => '/system/:class/:id/:style.:extension',
-                            :styles          => { :resized => '300x234#' },
-                            :default_style   => :resized,
-                            :convert_options => { :all => '-quality 80 -strip' }
-
           validates_presence_of :name,
                                 :latitude,
                                 :longitude
 
           validates_uniqueness_of :name
-
-          validates_attachment_presence :listing_image
 
           table_name = base.to_s.tableize
           named_scope :positioned,       :order => "#{table_name}.position ASC"
