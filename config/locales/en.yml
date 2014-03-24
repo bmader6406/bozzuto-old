@@ -210,6 +210,7 @@ en:
         listing_image: Listing Image
       neighborhood_membership:
         apartment_community: Apartment Community
+        description: Listing Description
         listing_image: Listing Image
         neighborhood: Neighborhood
       news_post:
@@ -411,6 +412,7 @@ en:
         detail_description: This text will be shown in the breadcrumb of this Neighborhood's show page.
         listing_image: Image dimensions should be 300x234
       neighborhood_membership:
+        description: This text will be shown below on this Community's listing, below the listing image.
         listing_image: Image dimensions should be 300x234
       news_post:
         home_page_image: Image dimensions should be 380x150.<br />This image is shown on the home page when this news post appears under &ldquo;Latest News&rdquo;

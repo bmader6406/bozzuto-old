@@ -8,8 +8,10 @@
   <% end %>
 
   <div class="nh-tile-content">
-    <p class="nh-tile-description">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna uia
-    </p>
+    <% membership.description.if_present? do |description| %>
+      <p class="nh-tile-description">
+        <%= description %>
+      </p>
+    <% end %>
   </div>
 </div>
