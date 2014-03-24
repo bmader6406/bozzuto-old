@@ -7,7 +7,7 @@
            :items => [link_to(metro, metro_path(metro)),
                       link_to(area, area_path(metro, area)),
                       neighborhood],
-           :description => neighborhood.description %>
+           :description => neighborhood.detail_description %>
 
 <%= render 'metros/banner_image', :place => neighborhood %>
 

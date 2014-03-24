@@ -3,8 +3,9 @@
 <% end %>
 
 <%= render 'breadcrumb',
-           :title => metro.full_name,
-           :items => [metro] %>
+           :title       => metro.full_name,
+           :items       => [metro],
+           :description => metro.detail_description %>
 
 <%= render 'banner_image', :place => metro %>
 

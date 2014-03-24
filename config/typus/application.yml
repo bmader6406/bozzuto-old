@@ -80,7 +80,7 @@ Area:
   fields:
     default: name
     list: name
-    form: name, metro, latitude, longitude, banner_image, listing_image, description
+    form: name, metro, latitude, longitude, banner_image, listing_image, description, detail_description
     relationship: name, position
     options:
       ckeditor: 
@@ -486,7 +486,7 @@ Metro:
   fields:
     default: name
     list: name, position
-    form: name, latitude, longitude, banner_image, listing_image
+    form: name, latitude, longitude, banner_image, listing_image, detail_description
     options:
       ckeditor: 
       booleans:
@@ -503,7 +503,7 @@ Neighborhood:
   fields:
     default: name
     list: name
-    form: name, area, state, latitude, longitude, banner_image, listing_image, description, featured_apartment_community
+    form: name, area, state, latitude, longitude, banner_image, listing_image, description, detail_description, featured_apartment_community
     relationship: name, position
     options:
       ckeditor: 
