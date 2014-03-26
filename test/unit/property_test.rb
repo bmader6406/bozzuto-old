@@ -146,19 +146,6 @@ class PropertyTest < ActiveSupport::TestCase
       end
     end
 
-    context '#to_jmapping' do
-      setup do
-        @property = ApartmentCommunity.make :latitude => 1, :longitude => 2
-      end
-
-      should 'return a string with fields set' do
-        assert_match /id: #{@property.id}/, @property.to_jmapping
-        assert_match /lat: #{@property.latitude}/, @property.to_jmapping
-        assert_match /lng: #{@property.longitude}/, @property.to_jmapping
-        assert_match /category: '#{@property.class}'/, @property.to_jmapping
-      end
-    end
-
     context '#apartment?' do
       context 'when property is an apartment' do
         setup { @property = ApartmentCommunity.make }

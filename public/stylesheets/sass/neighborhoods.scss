@@ -1,25 +1,104 @@
 @import "bourbon";
 
+$narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
+
+#main-content {
+  clear: both;
+}
+
 .bc-title {
-	margin-bottom: 12px !important;
+  margin-bottom: 12px !important;
 }
 
 .bc-description {
-	color: #565c64;
-	font-size: 15px;
-	line-height: 2;
-	margin-bottom: 12px;
+  color: #565c64;
+  font-size: 15px;
+  line-height: 2;
+  margin-bottom: 12px;
 }
 
 .nh-banner-img {
-	height: 325px;
-	position: relative;
+  &.container {
+    width: 1020px;
+  }
 
-	img {
-		left: -30px;
-		position: absolute;
-		top: 0;
-	}
+  height: 325px;
+}
+
+.nh-map {
+  &.container {
+    width: 1020px;
+  }
+
+  .nh-map-canvas {
+    height: 400px;
+  }
+
+  border-top: 1px solid #fff;
+  height: 400px + 50px;
+}
+
+.nh-map-controls {
+  @include box-sizing(border-box);
+
+  background-color: #dde0e3;
+  border-top: 1px solid #fff;
+  height: 50px;
+  padding: 0 30px;
+}
+
+@mixin legend-font {
+  color: #75777e;
+  font-family: $narrow-font;
+  font-size: 18px;
+}
+
+.nh-map-controls-show-all {
+  @include legend-font;
+
+  float: left;
+  height: 50px;
+  line-height: 50px;
+  text-transform: uppercase;
+}
+
+.nh-map-controls-legend {
+  float: right;
+
+  span {
+    @include legend-font;
+
+    display: inline-block;
+    line-height: 50px;
+    padding-left: 15px;
+    text-align: right;
+    text-transform: uppercase;
+
+    img {
+      margin-right: 5px;
+      position: relative;
+      top: 5px;
+    }
+  }
+}
+
+.nh-map-data {
+  display: none;
+}
+
+.nh-map-marker-cty {
+  color: #fff;
+  //opacity: 0.95;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 18px;
+  font-weight: bold;
+
+  &.nh-map-marker-cty-small {
+    font-size: 14px;
+  }
 }
 
 .nh-tile {
@@ -32,7 +111,6 @@
     margin-right: 0;
   }
 }
-
 
 .nh-listing-image {
   background-color: #f8f8f8;
@@ -51,7 +129,7 @@
     border: 5px solid transparent;
     color: #fff !important;
     display: table;
-    font-family: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
+    font-family: $narrow-font;
     font-size: 36px !important;
     font-weight: bold;
     height: 234px;

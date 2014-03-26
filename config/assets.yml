@@ -25,6 +25,9 @@ javascripts:
   mobile:
     - public/javascripts/vendor/jquery.min.js
     - public/javascripts/analytics.js
+  neighborhoods:
+    - public/javascripts/vendor/markerwithlabel.js
+    - public/javascripts/neighborhoods.js
   redesign:
     - public/javascripts/redesign/vendor/jquery.metadata.js
     - public/javascripts/redesign/vendor/jquery.json.js

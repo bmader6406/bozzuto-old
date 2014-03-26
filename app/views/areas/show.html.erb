@@ -1,6 +1,4 @@
-<% content_for :stylesheet do %>
-  <%= stylesheet_link_tag 'metros', :media => 'screen' %>
-<% end %>
+<% neighborhoods_assets %>
 
 <%= render 'metros/breadcrumb',
            :title => area.full_name,
@@ -9,6 +7,8 @@
            :description => area.detail_description %>
 
 <%= render 'metros/banner_image', :place => area %>
+
+<%= render 'metros/map', :places => neighborhoods %>
 
 <div id="main-content">
   <div class="container">

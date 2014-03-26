@@ -12,6 +12,25 @@ module Bozzuto
         validates_numericality_of :longitude, :greater_than_or_equal_to => -180.0,
                                               :less_than_or_equal_to    => 180.0,
                                               :allow_nil                => true
+
+        def as_jmapping
+          {
+            :id       => id,
+            :category => jmapping_category,
+            :point    => jmapping_point
+          }
+        end
+
+        def jmapping_category
+          self.class.to_s
+        end
+
+        def jmapping_point
+          {
+            :lat => latitude || nil,
+            :lng => longitude || nil,
+          }
+        end
       end
     end
   end

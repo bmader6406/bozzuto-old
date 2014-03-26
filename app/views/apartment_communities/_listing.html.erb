@@ -1,4 +1,4 @@
-<li class="property-listing apartment-listing" data-jmapping="<%= community.to_jmapping %>">
+<li class="property-listing apartment-listing" <%= jmapping(community) %>>
   <p class="photos">
     <% if community.listing_image? %>
       <% link_to community do %>

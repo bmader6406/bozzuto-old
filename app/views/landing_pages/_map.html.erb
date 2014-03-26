@@ -1,7 +1,7 @@
 <div id="landing-map" class="col areamap-map">
   <div id="map-properties">
     <% all_properties.each do |property| %>
-      <div class="property" data-jmapping="<%= property.to_jmapping %>">
+      <div class="property" <%= jmapping(property) %>>
         <div class="info-box">
           <h4><%= link_to property.title, property_path(property) %></h4>
 

@@ -125,6 +125,19 @@ class ApplicationHelperTest < ActionView::TestCase
       end
     end
 
+    describe "#jmapping" do
+      subject { Metro.make }
+
+      it "returns the data attribute with JSON" do
+        attr = jmapping(subject)
+
+        attr.should =~ /^data-jmapping='\{.+\}'$/
+        attr.should =~ /"id":#{subject.id}/
+        attr.should =~ /"category":"Metro"/
+        attr.should =~ /"point":\{"lat":#{subject.latitude},"lng":#{subject.longitude}\}/
+      end
+    end
+
     describe "#share_this_link" do
       it "outputs p.sharethis and javascript code" do
         sharethis = HTML::Document.new(share_this_link)

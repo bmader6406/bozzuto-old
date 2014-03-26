@@ -49,6 +49,16 @@ module Bozzuto
             end
           end
 
+          def as_jmapping
+            {
+              :id                          => id,
+              :point                       => jmapping_point,
+              :category                    => jmapping_category,
+              :name                        => name,
+              :apartment_communities_count => apartment_communities_count
+            }
+          end
+
 
           protected
 

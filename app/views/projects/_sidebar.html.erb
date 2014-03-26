@@ -49,7 +49,7 @@
   <div class="map">
     <div id="map-canvas"></div>
     <div id="map-side-bar" style="display:none;">
-      <div class="map-location" data-jmapping="<%= @project.to_jmapping %>">
+      <div class="map-location" <%= jmapping(@project) %>>
         <div class="info-box">
           <h4><%= h @project.title %></h4>
         </div>
