@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rake', '0.8.7'
 gem 'rails', '2.3.17'
 gem 'mysql', '2.8.1'
-gem 'erubis', '2.6.6'
+gem 'erubis', '2.7.0'
 gem 'jammit', '0.6.0'
 gem 'geokit', '1.5.0'
 gem 'httparty'
@@ -30,6 +30,8 @@ gem 'sitemap_generator', '~> 3.4'
 gem 'sass'
 gem 'sass-globbing'
 gem 'bourbon'
+gem 'system_timer'
+gem 'yajl-ruby'
 
 group :development, :test do
   gem 'pry'
@@ -40,7 +42,7 @@ group :test do
   gem 'phocus', '1.1'
   gem 'machinist', '1.0.6'
   gem 'faker', '0.3.1'
-  gem 'jferris-mocha', '0.9.8.20100526112143', :require => false
+  gem 'mocha', '0.9.8', :require => false
   gem 'webmock'
   gem 'ruby-debug', '0.10.4'
   gem 'rack-test', '0.5.7', :require => 'rack/test'
