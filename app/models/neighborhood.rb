@@ -1,6 +1,7 @@
 class Neighborhood < ActiveRecord::Base
-  extend Bozzuto::Neighborhoods::Place
-  extend Bozzuto::Neighborhoods::ListingImage
+  include Bozzuto::Mappable
+  include Bozzuto::Neighborhoods::Place
+  extend  Bozzuto::Neighborhoods::ListingImage
 
   acts_as_list :scope => :area
 
@@ -24,6 +25,14 @@ class Neighborhood < ActiveRecord::Base
 
   def parent
     area
+  end
+
+  def children
+    nil
+  end
+
+  def memberships
+    neighborhood_memberships
   end
 
 

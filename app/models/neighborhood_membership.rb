@@ -16,6 +16,8 @@ class NeighborhoodMembership < ActiveRecord::Base
   after_save :update_apartment_communities_count
   after_destroy :update_apartment_communities_count
 
+  delegate :as_jmapping, :to => :apartment_community
+
 
   private
 

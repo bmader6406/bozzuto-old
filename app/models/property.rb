@@ -1,5 +1,5 @@
 class Property < ActiveRecord::Base
-  extend Bozzuto::Mappable
+  include Bozzuto::Mappable
   include Bozzuto::Publishable
 
   USE_BROCHURE_URL = 0
@@ -67,6 +67,10 @@ class Property < ActiveRecord::Base
     :conditions => 'properties.id != other.id AND properties.type = other.type',
     :order      => 'title ASC'
 
+
+  def as_jmapping
+    super.merge(:name => title)
+  end
 
   def typus_name
     title

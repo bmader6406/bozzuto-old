@@ -6,13 +6,13 @@ class MappableTest < ActiveSupport::TestCase
       subject { Metro.make }
 
       it "returns the hash" do
-        subject.as_jmapping.should == {
-          :id => subject.id,
-          :category => 'Metro',
-          :point => {
-            :lat => subject.latitude,
-            :lng => subject.longitude
-          }
+        hash = subject.as_jmapping
+
+        hash[:id].should == subject.id
+        hash[:category].should == 'Metro'
+        hash[:point].should == {
+          :lat => subject.latitude,
+          :lng => subject.longitude
         }
       end
     end

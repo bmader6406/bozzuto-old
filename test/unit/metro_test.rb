@@ -14,7 +14,7 @@ class MetroTest < ActiveSupport::TestCase
 
     should_have_many(:areas, :dependent => :destroy)
 
-    describe "after saving" do
+    describe "nested structure" do
       before do
         # metro
         #   - area_1
@@ -37,8 +37,28 @@ class MetroTest < ActiveSupport::TestCase
         subject.save
       end
 
-      it "updates the apartment communities count" do
-        subject.apartment_communities_count.should == 3
+      describe "#parent" do
+        it "returns nil" do
+          subject.parent.should == nil
+        end
+      end
+
+      describe "#children" do
+        it "returns the areas" do
+          subject.children.should == [@area_1, @area_2]
+        end
+      end
+
+      describe "#memberships" do
+        it "returns all of the memberships" do
+          subject.memberships.should == @neighborhood_1.memberships + @neighborhood_3.memberships
+        end
+      end
+
+      describe "after saving" do
+        it "updates the apartment communities count" do
+          subject.apartment_communities_count.should == 3
+        end
       end
     end
 

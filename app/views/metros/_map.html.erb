@@ -22,6 +22,10 @@
       <% places.each do |place| %>
         <div class="nh-map-location" <%= jmapping(place) %>></div>
       <% end %>
+
+      <% memberships.each do |membership| %>
+        <div class="nh-map-membership" <%= jmapping(membership) %>></div>
+      <% end %>
     </div>
   </div>
 <% end %>

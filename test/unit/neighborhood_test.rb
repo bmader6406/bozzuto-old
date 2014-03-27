@@ -21,13 +21,7 @@ class NeighborhoodTest < ActiveSupport::TestCase
     should_have_many(:neighborhood_memberships, :dependent => :destroy)
     should_have_many(:apartment_communities, :through => :neighborhood_memberships)
 
-    describe "#parent" do
-      it "returns the area" do
-        subject.parent.should == subject.area
-      end
-    end
-
-    describe "managing the apartment communities count" do
+    describe "nested structure" do
       before do
         # neighborhood
         #   - community
@@ -35,6 +29,24 @@ class NeighborhoodTest < ActiveSupport::TestCase
         #   - community
         subject.neighborhood_memberships = (1..3).to_a.map { |_| NeighborhoodMembership.make }
         subject.save
+      end
+
+      describe "#parent" do
+        it "returns the area" do
+          subject.parent.should == subject.area
+        end
+      end
+
+      describe "#children" do
+        it "returns nil" do
+          subject.children.should == nil
+        end
+      end
+
+      describe "#memberships" do
+        it "returns all of the memberships" do
+          subject.memberships.should == subject.neighborhood_memberships
+        end
       end
 
       describe "after saving" do

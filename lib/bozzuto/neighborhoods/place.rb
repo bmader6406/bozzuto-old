@@ -1,10 +1,8 @@
 module Bozzuto
   module Neighborhoods
     module Place
-      def self.extended(base)
+      def self.included(base)
         base.class_eval do
-          extend Bozzuto::Mappable
-
           has_friendly_id :name, :use_slug => true
 
 
@@ -26,59 +24,67 @@ module Bozzuto
 
           after_save :update_apartment_communities_count
           after_destroy :update_apartment_communities_count
-
-          def to_s
-            name
-          end
-
-          def full_name
-            "#{name} Apartments"
-          end
-
-          #:nocov:
-          def parent
-            raise NotImplementedError, "#{self.class} must implemenet #parent"
-          end
-          #:nocov:
-
-          def name_with_count
-            if apartment_communities_count > 0
-              "#{name} (#{apartment_communities_count})"
-            else
-              name
-            end
-          end
-
-          def as_jmapping
-            {
-              :id                          => id,
-              :point                       => jmapping_point,
-              :category                    => jmapping_category,
-              :name                        => name,
-              :apartment_communities_count => apartment_communities_count
-            }
-          end
-
-
-          protected
-
-          def update_apartment_communities_count
-            if !destroyed?
-              self.apartment_communities_count = calculate_apartment_communities_count
-
-              send(:update_without_callbacks)
-            end
-
-            parent.try(:update_apartment_communities_count)
-          end
-
-          #:nocov:
-          def calculate_apartment_communities_count
-            raise NotImplementedError, "#{self.class} must implemenet #calculate_apartment_communities_count"
-          end
-          #:nocov:
         end
       end
+
+      def to_s
+        name
+      end
+
+      def full_name
+        "#{name} Apartments"
+      end
+
+      #:nocov:
+      def parent
+        raise NotImplementedError, "#{self.class} must implemenet #parent"
+      end
+
+      def children
+        raise NotImplementedError, "#{self.class} must implemenet #children"
+      end
+      #:nocov:
+
+      def memberships
+        children.map(&:memberships).flatten.uniq(&:apartment_community_id)
+      end
+
+      def name_with_count
+        if apartment_communities_count > 0
+          "#{name} (#{apartment_communities_count})"
+        else
+          name
+        end
+      end
+
+      def as_jmapping
+        {
+          :id                          => id,
+          :point                       => jmapping_point,
+          :category                    => jmapping_category,
+          :name                        => name,
+          :apartment_communities_count => apartment_communities_count
+        }
+      end
+
+
+      protected
+
+      def update_apartment_communities_count
+        if !destroyed?
+          self.apartment_communities_count = calculate_apartment_communities_count
+
+          send(:update_without_callbacks)
+        end
+
+        parent.try(:update_apartment_communities_count)
+      end
+
+      #:nocov:
+      def calculate_apartment_communities_count
+        raise NotImplementedError, "#{self.class} must implemenet #calculate_apartment_communities_count"
+      end
+      #:nocov:
     end
   end
 end

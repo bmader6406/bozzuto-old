@@ -16,7 +16,7 @@ class AreaTest < ActiveSupport::TestCase
     should_have_many(:neighborhoods, :dependent => :destroy)
     should_belong_to(:metro)
 
-    describe "managing the apartment communities count" do
+    describe "nested structure" do
       before do
         # area
         #   - neighborhood_1
@@ -31,6 +31,24 @@ class AreaTest < ActiveSupport::TestCase
 
         subject.neighborhoods = [@neighborhood_1, @neighborhood_2]
         subject.save
+      end
+
+      describe "#parent" do
+        it "returns the metro" do
+          subject.parent.should == subject.metro
+        end
+      end
+
+      describe "#children" do
+        it "returns the neighborhoods" do
+          subject.children.should == [@neighborhood_1, @neighborhood_2]
+        end
+      end
+
+      describe "#memberships" do
+        it "returns all of the memberships" do
+          subject.memberships.should == @neighborhood_1.memberships + @neighborhood_2.memberships
+        end
       end
 
       describe "after saving" do

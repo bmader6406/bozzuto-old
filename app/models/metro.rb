@@ -1,6 +1,7 @@
 class Metro < ActiveRecord::Base
-  extend Bozzuto::Neighborhoods::Place
-  extend Bozzuto::Neighborhoods::ListingImage
+  include Bozzuto::Mappable
+  include Bozzuto::Neighborhoods::Place
+  extend  Bozzuto::Neighborhoods::ListingImage
 
   acts_as_list
 
@@ -8,6 +9,14 @@ class Metro < ActiveRecord::Base
 
   def parent
     nil
+  end
+
+  def children
+    areas
+  end
+
+  def memberships
+    areas.map(&:memberships).flatten.uniq(&:apartment_community_id)
   end
 
 
