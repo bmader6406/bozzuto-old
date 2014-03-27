@@ -17,3 +17,4 @@ database.*
 .rbenv-gemsets
 .powenv
 .powrc
+.vimrc

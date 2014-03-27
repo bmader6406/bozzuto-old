@@ -45,8 +45,8 @@ module Bozzuto
       end
       #:nocov:
 
-      def memberships
-        children.map(&:memberships).flatten.uniq(&:apartment_community_id)
+      def memberships(reload = false)
+        children.map { |c| c.memberships(reload) }.flatten.uniq_by(&:apartment_community_id)
       end
 
       def name_with_count
@@ -80,11 +80,9 @@ module Bozzuto
         parent.try(:update_apartment_communities_count)
       end
 
-      #:nocov:
       def calculate_apartment_communities_count
-        raise NotImplementedError, "#{self.class} must implemenet #calculate_apartment_communities_count"
+        memberships(true).count
       end
-      #:nocov:
     end
   end
 end

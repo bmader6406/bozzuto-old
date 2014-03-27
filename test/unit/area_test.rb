@@ -20,14 +20,25 @@ class AreaTest < ActiveSupport::TestCase
       before do
         # area
         #   - neighborhood_1
-        #     - community
-        #     - community
-        #     - community
+        #     - community_1
+        #     - community_2
+        #     - community_3
         #   -neighborhood_2
-        #     -community
+        #     -community_1
 
-        @neighborhood_1 = Neighborhood.make(:neighborhood_memberships => (1..3).to_a.map { |_| NeighborhoodMembership.make_unsaved })
-        @neighborhood_2 = Neighborhood.make(:neighborhood_memberships => [NeighborhoodMembership.make_unsaved])
+        @community_1 = ApartmentCommunity.make
+        @community_2 = ApartmentCommunity.make
+        @community_3 = ApartmentCommunity.make
+
+        @neighborhood_1 = Neighborhood.make(:neighborhood_memberships => [
+          NeighborhoodMembership.make_unsaved(:apartment_community => @community_1),
+          NeighborhoodMembership.make_unsaved(:apartment_community => @community_2),
+          NeighborhoodMembership.make_unsaved(:apartment_community => @community_3)
+        ])
+
+        @neighborhood_2 = Neighborhood.make(:neighborhood_memberships => [
+          NeighborhoodMembership.make_unsaved(:apartment_community => @community_1)
+        ])
 
         subject.neighborhoods = [@neighborhood_1, @neighborhood_2]
         subject.save
@@ -47,24 +58,24 @@ class AreaTest < ActiveSupport::TestCase
 
       describe "#memberships" do
         it "returns all of the memberships" do
-          subject.memberships.should == @neighborhood_1.memberships + @neighborhood_2.memberships
+          subject.memberships.should == @neighborhood_1.memberships
         end
       end
 
       describe "after saving" do
         it "updates the apartment communities count" do
-          subject.apartment_communities_count.should == 4
+          subject.apartment_communities_count.should == 3
         end
 
         it "updates the parent metro" do
-          subject.metro.apartment_communities_count.should == 4
+          subject.metro.apartment_communities_count.should == 3
         end
       end
 
       describe "after destroying" do
         it "updates the count on the parent metro" do
           metro = subject.metro
-          metro.apartment_communities_count.should == 4
+          metro.apartment_communities_count.should == 3
 
           subject.destroy
 

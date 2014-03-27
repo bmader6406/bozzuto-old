@@ -15,13 +15,21 @@
     },
 
     initializeToggleSwitch: function() {
-      var self = this;
+      var anyPlaces      = this.places().length > 0,
+          anyMemberships = this.memberships().length > 0;
 
-      this.$toggleLink.bind('click', function(e) {
-        e.preventDefault();
 
-        self.toggleView();
-      });
+      if (anyPlaces && anyMemberships) {
+        var self = this;
+
+        this.$toggleLink.bind('click', function(e) {
+          e.preventDefault();
+
+          self.toggleView();
+        });
+      } else {
+        this.$toggleLink.remove();
+      }
     },
 
     places: function() {
@@ -60,7 +68,11 @@
       });
 
       // Add the points
-      this.switchToNeighborhoodsView();
+      if (this.places().length > 0) {
+        this.switchToNeighborhoodsView();
+      } else {
+        this.switchToCommunityView();
+      }
     },
 
     bounds: function(points) {
@@ -112,11 +124,13 @@
       if (points.length == 0) {
         // Center map at the initial point
         this.map.setCenter(this.initialPoint());
-        this.map.setZoom(8);
+        this.map.setZoom(13);
       } else if (points.length == 1) {
+        var point = points[0];
+
         // Center map at the only point
-        this.map.setCenter(points[0].toLatLng());
-        this.map.setZoom(11);
+        this.map.setCenter(point.toLatLng());
+        this.map.setZoom(this.zoomForPoint(point));
       } else {
         // Fit the map to the data points
         this.map.fitBounds(this.bounds(points));
@@ -126,6 +140,18 @@
       $.each(points, function(_, point) {
         point.marker().setMap(self.map)
       });
+    },
+
+    zoomForPoint: function(point) {
+      switch (point.category) {
+        case 'Metro':
+        case 'Area':
+          return 11;
+        case 'Neighborhood':
+          return 13;
+        default:
+          return 15;
+      }
     }
   };
 })(jQuery);

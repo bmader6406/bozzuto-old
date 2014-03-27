@@ -31,14 +31,7 @@ class Neighborhood < ActiveRecord::Base
     nil
   end
 
-  def memberships
-    neighborhood_memberships
-  end
-
-
-  protected
-
-  def calculate_apartment_communities_count
-    neighborhood_memberships(true).count
+  def memberships(reload = true)
+    neighborhood_memberships(reload)
   end
 end

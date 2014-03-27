@@ -18,11 +18,4 @@ class Area < ActiveRecord::Base
   def children
     neighborhoods
   end
-
-
-  protected
-
-  def calculate_apartment_communities_count
-    neighborhoods(true).map(&:apartment_communities_count).sum
-  end
 end

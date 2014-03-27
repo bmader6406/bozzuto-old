@@ -14,15 +14,4 @@ class Metro < ActiveRecord::Base
   def children
     areas
   end
-
-  def memberships
-    areas.map(&:memberships).flatten.uniq(&:apartment_community_id)
-  end
-
-
-  protected
-
-  def calculate_apartment_communities_count
-    areas(true).map(&:apartment_communities_count).sum
-  end
 end

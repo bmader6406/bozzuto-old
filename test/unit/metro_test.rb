@@ -19,16 +19,24 @@ class MetroTest < ActiveSupport::TestCase
         # metro
         #   - area_1
         #     - neighborhood_1
-        #       -community
-        #       -community
+        #       -community_1
+        #       -community_2
         #     - neighborhood_2
         #   - area_2
         #     - neighborhood_3
-        #       - community
+        #       - community_1
 
-        @neighborhood_1 = Neighborhood.make(:neighborhood_memberships => (1..2).to_a.map { |_| NeighborhoodMembership.make_unsaved })
+        @community_1 = ApartmentCommunity.make
+        @community_2 = ApartmentCommunity.make
+
+        @neighborhood_1 = Neighborhood.make(:neighborhood_memberships => [
+          NeighborhoodMembership.make_unsaved(:apartment_community => @community_1),
+          NeighborhoodMembership.make_unsaved(:apartment_community => @community_2)
+        ])
         @neighborhood_2 = Neighborhood.make
-        @neighborhood_3 = Neighborhood.make(:neighborhood_memberships => [NeighborhoodMembership.make_unsaved])
+        @neighborhood_3 = Neighborhood.make(:neighborhood_memberships => [
+          NeighborhoodMembership.make_unsaved(:apartment_community => @community_1)
+        ])
 
         @area_1 = Area.make(:neighborhoods => [@neighborhood_1, @neighborhood_2])
         @area_2 = Area.make(:neighborhoods => [@neighborhood_3])
@@ -51,13 +59,13 @@ class MetroTest < ActiveSupport::TestCase
 
       describe "#memberships" do
         it "returns all of the memberships" do
-          subject.memberships.should == @neighborhood_1.memberships + @neighborhood_3.memberships
+          subject.memberships.should == @neighborhood_1.memberships
         end
       end
 
       describe "after saving" do
         it "updates the apartment communities count" do
-          subject.apartment_communities_count.should == 3
+          subject.apartment_communities_count.should == 2
         end
       end
     end

@@ -1,4 +1,4 @@
-<% if places.any? %>
+<% if places.any? || memberships.any? %>
   <div class="nh-map container">
     <div class="nh-map-canvas"></div>
 
@@ -6,15 +6,19 @@
       <%= link_to 'Show All Communities On Map', '#', :class => 'nh-map-controls-show-all' %>
 
       <div class="nh-map-controls-legend">
-        <span class="nh-map-controls-legend-c">
-          <%= image_tag '/images/neighborhoods/cty-marker.png', :width => 24, :height => 24 %>
-          Community
-        </span>
+        <% if memberships.any? %>
+          <span class="nh-map-controls-legend-c">
+            <%= image_tag '/images/neighborhoods/cty-marker.png', :width => 24, :height => 24 %>
+            Community
+          </span>
+        <% end %>
 
-        <span class="nh-map-controls-legend-n">
-          <%= image_tag '/images/neighborhoods/nh-marker.png', :width => 24, :height => 24 %>
-          Neighborhood
-        </span>
+        <% if places.any? %>
+          <span class="nh-map-controls-legend-n">
+            <%= image_tag '/images/neighborhoods/nh-marker.png', :width => 24, :height => 24 %>
+            Neighborhood
+          </span>
+        <% end %>
       </div>
     </div>
 
