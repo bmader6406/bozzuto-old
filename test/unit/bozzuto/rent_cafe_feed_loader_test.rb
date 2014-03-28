@@ -2,8 +2,8 @@ require 'test_helper'
 
 module Bozzuto
   class RentCafeFeedLoaderTest < ActiveSupport::TestCase
-    context 'A RentCafe Feed Loader' do
-      setup do
+    context "A RentCafe Feed Loader" do
+      before do
         rm_feed_loader_tmp_files
 
         create_states
@@ -17,78 +17,77 @@ module Bozzuto
       end
 
 
-      context '#process' do
-        setup do
+      describe "#process" do
+        before do
           load_rent_cafe_fixture_file('rent_cafe.xml')
           @loader.file = File.join(Rails.root, 'test', 'files', 'rent_cafe.xml')
         end
 
-        should 'create the communities' do
-          assert_difference('ApartmentCommunity.count', @properties.count) do
+        it "creates the communities" do
+          expect {
             @loader.load
-          end
+          }.to change { ApartmentCommunity.count }.by(@properties.count)
 
           community = ApartmentCommunity.managed_by_feed(external_cms_id(@property), 'rent_cafe').first
           attrs = community_attributes(@property)
 
           community_fields.each do |field|
-            assert_equal attrs[field], community.send(field)
+            community.send(field).should == attrs[field]
           end
         end
 
-        context 'a community already exists with a CMS id' do
-          setup do
+        context "a community already exists with a CMS id" do
+          before do
             @external_cms_id = external_cms_id(@property)
             @community       = ApartmentCommunity.make(:rent_cafe, :external_cms_id => @external_cms_id)
           end
 
-          should 'update the existing community' do
-            assert_difference('ApartmentCommunity.count', @properties.count - 1) do
+          it "updates the existing community" do
+            expect {
               @loader.load
-            end
+            }.to change { ApartmentCommunity.count }.by(@properties.count - 1)
 
             @community.reload
 
-            assert_equal title(@property), @community.title
+            @community.title.should == title(@property)
           end
         end
       end
 
 
-      context '#floor_plan_group' do
-        should 'return studio when bedrooms is 0' do
+      describe "#floor_plan_group" do
+        it "returns studio when bedrooms is 0" do
           @plan = mock_floor_plan(0, '')
 
-          assert_equal ApartmentFloorPlanGroup.studio,
-            @loader.send(:floor_plan_group, @plan)
+          @loader.send(:floor_plan_group, @plan).should == ApartmentFloorPlanGroup.studio
         end
 
-        should 'return one bedroom when bedrooms is 1' do
+        it "returns one bedroom when bedrooms is 1" do
           @plan = mock_floor_plan(1, '')
 
-          assert_equal ApartmentFloorPlanGroup.one_bedroom, @loader.send(:floor_plan_group, @plan)
+          @loader.send(:floor_plan_group, @plan).should == ApartmentFloorPlanGroup.one_bedroom
         end
 
-        should 'return two bedrooms when bedrooms is 2' do
+        it "returns two bedrooms when bedrooms is 2" do
           @plan = mock_floor_plan(2, '')
 
-          assert_equal ApartmentFloorPlanGroup.two_bedrooms, @loader.send(:floor_plan_group, @plan)
+          @loader.send(:floor_plan_group, @plan).should == ApartmentFloorPlanGroup.two_bedrooms
         end
 
-        should 'return three bedrooms when bedrooms is 3 or more' do
+        it "returns three bedrooms when bedrooms is 3 or more" do
           @plan = mock_floor_plan(3, '')
 
-          assert_equal ApartmentFloorPlanGroup.three_bedrooms, @loader.send(:floor_plan_group, @plan)
+          @loader.send(:floor_plan_group, @plan).should == ApartmentFloorPlanGroup.three_bedrooms
 
           @plan = mock_floor_plan(5, '')
 
-          assert_equal ApartmentFloorPlanGroup.three_bedrooms, @loader.send(:floor_plan_group, @plan)
+          @loader.send(:floor_plan_group, @plan).should == ApartmentFloorPlanGroup.three_bedrooms
         end
       end
 
 
-      context 'processing floor plans' do
-        setup do
+      describe "processing floor plans" do
+        before do
           load_rent_cafe_fixture_file('rent_cafe.xml')
           @loader.file = File.join(Rails.root, 'test', 'files', 'rent_cafe.xml')
 
@@ -97,28 +96,28 @@ module Bozzuto
           )
 
           @plans       = @property.xpath('./Floorplan')
-          @plans_attrs = floor_plan_attributes(@plans)
+          @plans_attrs = floor_plan_attributes(@property, @plans)
         end
 
         context "when no matching floor plans exist" do
-          should 'create the floor plans' do
-            assert_difference('@community.floor_plans.count', @plans.count) do
+          it "creates the floor plans" do
+            expect {
               @loader.load
-            end
+            }.to change { @community.floor_plans.count }.by(@plans.count)
 
-            assert_equal @plans.count, @community.floor_plans.count
+            @community.floor_plans.count.should == @plans.count
 
-            @plans_attrs.each_with_index do |attrs, i|
-              attrs.each_key do |field|
-                assert_equal attrs[field], @community.floor_plans[i].send(field)
+            @plans_attrs.zip(@community.floor_plans).each do |attrs, plan|
+              attrs.each do |attr, val|
+                plan.send(attr).should == val
               end
             end
           end
         end
 
 
-        context 'when syncing with a floor plan that already exists' do
-          setup do
+        context "when syncing with a floor plan that already exists" do
+          before do
             @penthouse = ApartmentFloorPlanGroup.penthouse
 
             @plan = @plans.first
@@ -130,31 +129,31 @@ module Bozzuto
               :floor_plan_group    => @penthouse
             )
 
-            assert_difference('@community.floor_plans.count', @plans.count - 1) do
+            expect {
               @loader.load
-            end
+            }.to change { @community.floor_plans.count }.by(@plans.count - 1)
           end
 
-          should 'update the existing floor plan' do
-            assert_equal @plans.count, @community.floor_plans.count
+          it "updates the existing floor plan" do
+            @community.floor_plans.count.should == @plans.count
 
-            @plans_attrs.each_with_index do |attrs, i|
-              attrs.each_key do |field|
-                assert_equal attrs[field], @community.floor_plans[i].send(field)
+            @plans_attrs.zip(@community.floor_plans).each do |attrs, plan|
+              attrs.each do |attr, val|
+                plan.send(attr).should == val
               end
             end
           end
 
-          should 'not update the floor plan group' do
+          it "doesn't update the floor plan group" do
             @community.reload
-            assert_equal @penthouse, @community.floor_plans.first.floor_plan_group
+            @community.floor_plans.first.floor_plan_group.should == @penthouse
           end
         end
       end
 
 
-      context "processing hours" do
-        setup do
+      describe "processing hours" do
+        before do
           load_rent_cafe_fixture_file('rent_cafe.xml')
           @loader.file = File.join(Rails.root, 'test', 'files', 'rent_cafe.xml')
 
@@ -167,20 +166,20 @@ module Bozzuto
           @hour_attrs = attributes_for_office_hours(@hours)
         end
 
-        should "load all office hours" do
+        it "loads all office hours" do
           @loader.load
 
-          assert_equal @hour_attrs, @community.reload.office_hours
+          @community.reload.office_hours.should == @hour_attrs
         end
       end
 
-      context 'testing a full load' do
-        setup do
+      describe "testing a full load" do
+        before do
           load_rent_cafe_fixture_file('rent_cafe.xml')
           @loader.file = File.join(Rails.root, 'test', 'files', 'rent_cafe.xml')
         end
 
-        should 'load all the properties and floor plans' do
+        it "loads all the properties and floor plans" do
           @loader.load
 
           @properties.each do |property|
@@ -188,15 +187,15 @@ module Bozzuto
             community = ApartmentCommunity.managed_by_feed(attrs[:external_cms_id], attrs[:external_cms_type]).first
 
             community_fields.each do |field|
-              assert_equal attrs[field], community.send(field)
+              community.send(field).should == attrs[field]
             end
 
             plans      = property.xpath('./Floorplan')
-            plan_attrs = floor_plan_attributes(plans)
+            plan_attrs = floor_plan_attributes(property, plans)
 
-            plan_attrs.each_with_index do |attrs, i|
-              attrs.each_key do |field|
-                assert_equal attrs[field], community.floor_plans[i].send(field)
+            plan_attrs.zip(community.floor_plans).each do |attrs, plan|
+              attrs.each do |field, value|
+                plan.send(field).should == value
               end
             end
           end
@@ -231,15 +230,15 @@ module Bozzuto
       {
         :title             => ident.at('./MarketingName').content,
         :street_address    => address.at('./Address1').content,
-        :availability_url  => info.at('./Availability').try(:content),
+        :availability_url  => property.at('./Availability').try(:content),
         :external_cms_id   => external_cms_id(property),
         :external_cms_type => 'rent_cafe'
       }
     end
 
-    def floor_plan_attributes(plans)
+    def floor_plan_attributes(property, plans)
       plans.map do |plan|
-        file = @property.xpath("./File[@id=#{plan['id']}]").first
+        file = property.xpath("./File[@id=#{plan['id']}]").first
 
         {
           :name               => plan.at('./Name').content,
@@ -287,8 +286,6 @@ module Bozzuto
 
       @properties = data.xpath('/PhysicalProperty/Property')
       @property   = @properties.first
-
-      #binding.pry
     end
   end
 end
