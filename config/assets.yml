@@ -30,7 +30,7 @@ javascripts:
     - public/javascripts/vendor/polyfill.object.create.js
     - public/javascripts/neighborhoods.js
     - public/javascripts/neighborhoods/map.js
-    - public/javascripts/neighborhoods/place.js
+    - public/javascripts/neighborhoods/spot.js
   redesign:
     - public/javascripts/redesign/vendor/jquery.metadata.js
     - public/javascripts/redesign/vendor/jquery.json.js

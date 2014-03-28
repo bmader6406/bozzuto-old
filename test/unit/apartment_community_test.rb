@@ -12,6 +12,8 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
     should_have_one(:neighborhood, :dependent => :nullify)
     should_have_many(:neighborhood_memberships, :dependent => :destroy)
 
+    should_have_attached_file(:neighborhood_listing_image)
+
     it "is archivable" do
       assert ApartmentCommunity.acts_as_archive?
       assert_nothing_raised do

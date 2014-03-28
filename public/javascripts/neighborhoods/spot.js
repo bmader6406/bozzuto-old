@@ -16,15 +16,15 @@
     }
   };
 
-  // Place spot
-  bozzuto.Neighborhoods.Place = function(node) {
+  // Neighborhood spot
+  bozzuto.Neighborhoods.Neighborhood = function(node) {
     bozzuto.Neighborhoods.Spot.call(this, [node]);
   };
 
-  bozzuto.Neighborhoods.Place.prototype = Object.create(bozzuto.Neighborhoods.Spot.prototype);
-  bozzuto.Neighborhoods.Place.prototype.constructor = bozzuto.Neighborhoods.Place;
+  bozzuto.Neighborhoods.Neighborhood.prototype = Object.create(bozzuto.Neighborhoods.Spot.prototype);
+  bozzuto.Neighborhoods.Neighborhood.prototype.constructor = bozzuto.Neighborhoods.Neighborhood;
 
-  bozzuto.Neighborhoods.Place.prototype.marker = function() {
+  bozzuto.Neighborhoods.Neighborhood.prototype.marker = function() {
     if (!this._marker) {
       var labelClass = 'nh-map-marker-cty',
           count      = this.communitiesCount;
@@ -51,15 +51,15 @@
     return this._marker;
   };
 
-  // Membership spot
-  bozzuto.Neighborhoods.Membership = function(node) {
+  // Community spot
+  bozzuto.Neighborhoods.Community = function(node) {
     bozzuto.Neighborhoods.Spot.call(this, [node]);
   };
 
-  bozzuto.Neighborhoods.Membership.prototype = Object.create(bozzuto.Neighborhoods.Spot.prototype);
-  bozzuto.Neighborhoods.Membership.prototype.constructor = bozzuto.Neighborhoods.Membership;
+  bozzuto.Neighborhoods.Community.prototype = Object.create(bozzuto.Neighborhoods.Spot.prototype);
+  bozzuto.Neighborhoods.Community.prototype.constructor = bozzuto.Neighborhoods.Community;
 
-  bozzuto.Neighborhoods.Membership.prototype.marker = function() {
+  bozzuto.Neighborhoods.Community.prototype.marker = function() {
     if (!this._marker) {
       this._marker = new google.maps.Marker({
         position: this.toLatLng(),

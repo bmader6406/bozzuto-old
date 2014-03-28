@@ -15,11 +15,11 @@
     },
 
     initializeToggleSwitch: function() {
-      var anyPlaces      = this.places().length > 0,
-          anyMemberships = this.memberships().length > 0;
+      var anyNeighborhoods = this.neighborhoods().length > 0,
+          anyCommunities   = this.communities().length > 0;
 
 
-      if (anyPlaces && anyMemberships) {
+      if (anyNeighborhoods && anyCommunities) {
         var self = this;
 
         this.$toggleLink.bind('click', function(e) {
@@ -32,28 +32,28 @@
       }
     },
 
-    places: function() {
-      if (!this._places) {
-        var nodes = this.$map.find('.nh-map-location');
+    neighborhoods: function() {
+      if (!this._neighborhoods) {
+        var nodes = this.$map.find('.nh-map-neighborhood');
 
-        this._places = $.map(nodes, function(node) {
-          return new bozzuto.Neighborhoods.Place(node);
+        this._neighborhoods = $.map(nodes, function(node) {
+          return new bozzuto.Neighborhoods.Neighborhood(node);
         });
       }
 
-      return this._places;
+      return this._neighborhoods;
     },
 
-    memberships: function() {
-      if (!this._memberships) {
-        var nodes = this.$map.find('.nh-map-membership');
+    communities: function() {
+      if (!this._communities) {
+        var nodes = this.$map.find('.nh-map-community');
 
-        this._memberships = $.map(nodes, function(node) {
-          return new bozzuto.Neighborhoods.Membership(node);
+        this._communities = $.map(nodes, function(node) {
+          return new bozzuto.Neighborhoods.Community(node);
         });
       }
 
-      return this._memberships;
+      return this._communities;
     },
 
     render: function() {
@@ -68,7 +68,7 @@
       });
 
       // Add the points
-      if (this.places().length > 0) {
+      if (this.neighborhoods().length > 0) {
         this.switchToNeighborhoodsView();
       } else {
         this.switchToCommunityView();
@@ -97,16 +97,16 @@
     },
 
     switchToCommunityView: function() {
-      this.removePoints(this.places());
-      this.drawPoints(this.memberships());
+      this.removePoints(this.neighborhoods());
+      this.drawPoints(this.communities());
 
       this.currentView = 'communities';
       this.$toggleLink.text('Show All Neighborhoods On Map');
     },
 
     switchToNeighborhoodsView: function() {
-      this.removePoints(this.memberships());
-      this.drawPoints(this.places());
+      this.removePoints(this.communities());
+      this.drawPoints(this.neighborhoods());
 
       this.currentView = 'neighborhoods';
       this.$toggleLink.text('Show All Communities On Map');

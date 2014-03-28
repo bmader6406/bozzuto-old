@@ -45,8 +45,8 @@ module Bozzuto
       end
       #:nocov:
 
-      def memberships(reload = false)
-        children.map { |c| c.memberships(reload) }.flatten.uniq_by(&:apartment_community_id)
+      def communities(reload = false)
+        children.map { |c| c.communities(reload) }.flatten.uniq
       end
 
       def name_with_count
@@ -81,7 +81,7 @@ module Bozzuto
       end
 
       def calculate_apartment_communities_count
-        memberships(true).count
+        communities(true).count
       end
     end
   end

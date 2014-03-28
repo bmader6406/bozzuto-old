@@ -55,6 +55,8 @@ en:
         floor_plans_meta_description: Floor Plans SEO Description
         floor_plans_meta_keywords: Floor Plans SEO Keywords
         floor_plans_meta_title: Floor Plans SEO Title
+        neighborhood_description: Neighborhoods Listing Description
+        neighborhood_listing_image: Neighborhoods Listing Image
         resident_link_text: Resident Link Text
         resident_link_url: Resident Link URL
         seo_link_text: SEO Link Text
@@ -335,6 +337,8 @@ en:
         domain_name: "The domain name to match the referrer against. If the referrer's domain (including subdomains) matches this domain name, then the value below will be set as the ad source. <strong>Include only the domain. Do not include http://</strong>.<br /><br />Example: apartments.com"
         value: "This value will be used for the 'ad source' param when doing DNR number replacement and as the 'Lead Channel' on Lead 2 Lease submissions."
       apartment_community:
+        neighborhood_description: This text will be shown on Neighborhoods listing pages.
+        neighborhood_listing_image: This image will be shown on Neighborhoods listing pages. Image dimensions should be 300x234.
         under_construction: Communities that are under construction show the "Under Construction" contact form instead of the "Lead2Lease" contact form.
         video_url: This URL is used on the mobile apartment community listing page. To change the "Watch Video" buttons that appear on the slides on the main listing page, edit the "Slideshow" further down this page.
       apartment_contact_configuration:

@@ -5,6 +5,8 @@ class Area < ActiveRecord::Base
 
   acts_as_list :scope => :metro
 
+  has_neighborhood_listing_image
+
   has_many :neighborhoods, :dependent => :destroy
 
   belongs_to :metro

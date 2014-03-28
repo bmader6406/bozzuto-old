@@ -12,7 +12,10 @@ class NeighborhoodTest < ActiveSupport::TestCase
 
     should_validate_uniqueness_of(:name)
 
+    should_have_attached_file(:listing_image)
     should_validate_attachment_presence(:listing_image)
+
+    should_have_attached_file(:banner_image)
     should_validate_attachment_presence(:banner_image)
 
     should_belong_to(:area)
@@ -27,7 +30,11 @@ class NeighborhoodTest < ActiveSupport::TestCase
         #   - community
         #   - community
         #   - community
-        subject.neighborhood_memberships = (1..3).to_a.map { |_| NeighborhoodMembership.make }
+        @community_1 = ApartmentCommunity.make
+        @community_2 = ApartmentCommunity.make
+        @community_3 = ApartmentCommunity.make
+
+        subject.apartment_communities = [@community_1, @community_2, @community_3]
         subject.save
       end
 
@@ -43,9 +50,9 @@ class NeighborhoodTest < ActiveSupport::TestCase
         end
       end
 
-      describe "#memberships" do
-        it "returns all of the memberships" do
-          subject.memberships.should == subject.neighborhood_memberships
+      describe "#communities" do
+        it "returns all of the unique communities" do
+          subject.communities.should == [@community_1, @community_2, @community_3]
         end
       end
 

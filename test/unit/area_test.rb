@@ -11,6 +11,7 @@ class AreaTest < ActiveSupport::TestCase
 
     should_validate_uniqueness_of(:name)
 
+    should_have_attached_file(:listing_image)
     should_validate_attachment_presence(:listing_image)
 
     should_have_many(:neighborhoods, :dependent => :destroy)
@@ -30,15 +31,9 @@ class AreaTest < ActiveSupport::TestCase
         @community_2 = ApartmentCommunity.make
         @community_3 = ApartmentCommunity.make
 
-        @neighborhood_1 = Neighborhood.make(:neighborhood_memberships => [
-          NeighborhoodMembership.make_unsaved(:apartment_community => @community_1),
-          NeighborhoodMembership.make_unsaved(:apartment_community => @community_2),
-          NeighborhoodMembership.make_unsaved(:apartment_community => @community_3)
-        ])
+        @neighborhood_1 = Neighborhood.make(:apartment_communities => [@community_1, @community_2, @community_3])
 
-        @neighborhood_2 = Neighborhood.make(:neighborhood_memberships => [
-          NeighborhoodMembership.make_unsaved(:apartment_community => @community_1)
-        ])
+        @neighborhood_2 = Neighborhood.make(:apartment_communities => [@community_1])
 
         subject.neighborhoods = [@neighborhood_1, @neighborhood_2]
         subject.save
@@ -56,9 +51,9 @@ class AreaTest < ActiveSupport::TestCase
         end
       end
 
-      describe "#memberships" do
-        it "returns all of the memberships" do
-          subject.memberships.should == @neighborhood_1.memberships
+      describe "#communities" do
+        it "returns all of the unique communities" do
+          subject.communities.should == [@community_1, @community_2, @community_3]
         end
       end
 

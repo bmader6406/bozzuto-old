@@ -268,7 +268,6 @@ end
 NeighborhoodMembership.blueprint do
   neighborhood
   apartment_community
-  listing_image_file_name { Sham.file_name }
 end
 
 NewsPost.blueprint do

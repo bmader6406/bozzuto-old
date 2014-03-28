@@ -1,5 +1,6 @@
 class ApartmentCommunity < Community
   include Bozzuto::ExternalCms
+  extend  Bozzuto::Neighborhoods::ListingImage
 
   self.external_cms_attributes = [
     :title,
@@ -11,6 +12,8 @@ class ApartmentCommunity < Community
   ]
 
   acts_as_archive :indexes => [:id]
+
+  has_neighborhood_listing_image :neighborhood_listing_image, :required => false
 
   before_update :mark_dirty_floor_plan_prices
   after_update :update_floor_plan_prices

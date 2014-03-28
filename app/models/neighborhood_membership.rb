@@ -1,6 +1,4 @@
 class NeighborhoodMembership < ActiveRecord::Base
-  extend Bozzuto::Neighborhoods::ListingImage
-
   acts_as_list :scope => :neighborhood
 
   belongs_to :neighborhood,
@@ -15,8 +13,6 @@ class NeighborhoodMembership < ActiveRecord::Base
 
   after_save :update_apartment_communities_count
   after_destroy :update_apartment_communities_count
-
-  delegate :as_jmapping, :to => :apartment_community
 
 
   private

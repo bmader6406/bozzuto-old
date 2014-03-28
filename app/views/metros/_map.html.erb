@@ -1,34 +1,35 @@
-<% if places.any? || memberships.any? %>
+<% neighborhoods ||= [] %>
+<% communities   ||= [] %>
+
+<% if neighborhoods.any? || communities.any? %>
   <div class="nh-map container">
     <div class="nh-map-canvas"></div>
 
-    <div class="nh-map-controls">
-      <%= link_to 'Show All Communities On Map', '#', :class => 'nh-map-controls-show-all' %>
+    <% if neighborhoods.any? && communities.any? %>
+      <div class="nh-map-controls">
+        <%= link_to 'Show All Communities On Map', '#', :class => 'nh-map-controls-show-all' %>
 
-      <div class="nh-map-controls-legend">
-        <% if memberships.any? %>
-          <span class="nh-map-controls-legend-c">
+        <div class="nh-map-controls-legend">
+          <span class="nh-map-controls-legend-cty">
             <%= image_tag '/images/neighborhoods/cty-marker.png', :width => 24, :height => 24 %>
             Community
           </span>
-        <% end %>
 
-        <% if places.any? %>
-          <span class="nh-map-controls-legend-n">
+          <span class="nh-map-controls-legend-nh">
             <%= image_tag '/images/neighborhoods/nh-marker.png', :width => 24, :height => 24 %>
             Neighborhood
           </span>
-        <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
 
     <div class="nh-map-data">
-      <% places.each do |place| %>
-        <div class="nh-map-location" <%= jmapping(place) %>></div>
+      <% neighborhoods.each do |neighborhood| %>
+        <div class="nh-map-neighborhood" <%= jmapping(neighborhood) %>></div>
       <% end %>
 
-      <% memberships.each do |membership| %>
-        <div class="nh-map-membership" <%= jmapping(membership) %>></div>
+      <% communities.each do |community| %>
+        <div class="nh-map-community" <%= jmapping(community) %>></div>
       <% end %>
     </div>
   </div>

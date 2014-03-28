@@ -10,6 +10,7 @@ class MetroTest < ActiveSupport::TestCase
 
     should_validate_uniqueness_of(:name)
 
+    should_have_attached_file(:listing_image)
     should_validate_attachment_presence(:listing_image)
 
     should_have_many(:areas, :dependent => :destroy)
@@ -29,14 +30,9 @@ class MetroTest < ActiveSupport::TestCase
         @community_1 = ApartmentCommunity.make
         @community_2 = ApartmentCommunity.make
 
-        @neighborhood_1 = Neighborhood.make(:neighborhood_memberships => [
-          NeighborhoodMembership.make_unsaved(:apartment_community => @community_1),
-          NeighborhoodMembership.make_unsaved(:apartment_community => @community_2)
-        ])
+        @neighborhood_1 = Neighborhood.make(:apartment_communities => [@community_1, @community_2])
         @neighborhood_2 = Neighborhood.make
-        @neighborhood_3 = Neighborhood.make(:neighborhood_memberships => [
-          NeighborhoodMembership.make_unsaved(:apartment_community => @community_1)
-        ])
+        @neighborhood_3 = Neighborhood.make(:apartment_communities => [@community_1])
 
         @area_1 = Area.make(:neighborhoods => [@neighborhood_1, @neighborhood_2])
         @area_2 = Area.make(:neighborhoods => [@neighborhood_3])
@@ -57,9 +53,9 @@ class MetroTest < ActiveSupport::TestCase
         end
       end
 
-      describe "#memberships" do
-        it "returns all of the memberships" do
-          subject.memberships.should == @neighborhood_1.memberships
+      describe "#communities" do
+        it "returns all of the unique communities" do
+          subject.communities.should == [@community_1, @community_2]
         end
       end
 

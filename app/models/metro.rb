@@ -5,6 +5,8 @@ class Metro < ActiveRecord::Base
 
   acts_as_list
 
+  has_neighborhood_listing_image
+
   has_many :areas, :dependent => :destroy
 
   def parent

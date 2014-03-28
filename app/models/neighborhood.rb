@@ -5,6 +5,8 @@ class Neighborhood < ActiveRecord::Base
 
   acts_as_list :scope => :area
 
+  has_neighborhood_listing_image
+
   belongs_to :area
   belongs_to :state
   belongs_to :featured_apartment_community,
@@ -31,7 +33,7 @@ class Neighborhood < ActiveRecord::Base
     nil
   end
 
-  def memberships(reload = true)
-    neighborhood_memberships(reload)
+  def communities(reload = true)
+    apartment_communities(reload)
   end
 end

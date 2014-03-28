@@ -1,0 +1,17 @@
+<div class="nh-tile">
+  <% link_to apartment_community_path(community), :class => 'nh-listing-image' do %>
+    <h2 class="nh-tile-title"><span><%= community.title %></span></h2>
+
+    <% if community.neighborhood_listing_image? %>
+      <%= image_tag community.neighborhood_listing_image.url, :width => 300, :height => 234 %>
+    <% end %>
+  <% end %>
+
+  <div class="nh-tile-content">
+    <% community.neighborhood_description.if_present? do |description| %>
+      <p class="nh-tile-description">
+        <%= description %>
+      </p>
+    <% end %>
+  </div>
+</div>
