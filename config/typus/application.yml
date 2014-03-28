@@ -523,7 +523,7 @@ NeighborhoodMembership:
   fields:
     default: 
     list: apartment_community, neighborhood
-    form: neighborhood, apartment_community, listing_image, description
+    form: neighborhood, apartment_community
     relationship: apartment_community, position
     options:
       ckeditor: 
