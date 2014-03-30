@@ -55,30 +55,30 @@ class ApartmentFloorPlanGroupTest < ActiveSupport::TestCase
         end
       end
 
-      describe "#name_for_cache" do
+      describe "#cache_name" do
         it "uses 'studio' for Studio" do
-          @studio.name_for_cache.should == 'studio'
+          @studio.cache_name.should == 'studio'
         end
 
-        it "uses '1_bedroom' for 1 Bedroom" do
-          @bedroom.name_for_cache.should == '1_bedroom'
+        it "uses 'one_bedroom' for 1 Bedroom" do
+          @bedroom.cache_name.should == 'one_bedroom'
         end
 
-        it "uses '2_bedroom' for 2 Bedrooms" do
-          @bedrooms2.name_for_cache.should == '2_bedroom'
+        it "uses 'two_bedrooms' for 2 Bedrooms" do
+          @bedrooms2.cache_name.should == 'two_bedrooms'
         end
 
-        it "uses '3_bedroom' for 3 or More Bedrooms" do
-          @bedrooms3.name_for_cache.should == '3_bedroom'
+        it "uses 'three_bedrooms' for 3 or More Bedrooms" do
+          @bedrooms3.cache_name.should == 'three_bedrooms'
         end
 
         it "uses 'penthouse' for Penthouse" do
-          @penthouse.name_for_cache.should == 'penthouse'
+          @penthouse.cache_name.should == 'penthouse'
         end
 
         it "raises on anything else" do
           expect {
-            @other.name_for_cache
+            @other.cache_name
           }.to raise_error(RuntimeError)
         end
       end

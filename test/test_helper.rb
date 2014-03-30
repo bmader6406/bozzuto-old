@@ -7,6 +7,8 @@ require 'rspec/expectations'
 require File.join(Rails.root, 'test', 'blueprints')
 require File.join(Rails.root, 'vendor', 'plugins', 'typus', 'lib', 'extensions', 'object')
 
+Dir[Rails.root.join("test/support/**/*.rb")].each { |f| require f }
+
 VCR.configure do |c|
   c.cassette_library_dir = 'test/vcr_cassettes'
   c.hook_into :webmock
@@ -14,6 +16,7 @@ end
 
 class ActiveSupport::TestCase
   include WebMock::API
+  extend  Bozzuto::Test::ModelMacros
 
   self.use_transactional_fixtures = true
   self.use_instantiated_fixtures  = false

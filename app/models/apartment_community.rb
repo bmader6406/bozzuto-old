@@ -1,4 +1,5 @@
 class ApartmentCommunity < Community
+  include Bozzuto::ApartmentFloorPlans::HasCache
   include Bozzuto::ExternalCms
   extend  Bozzuto::Neighborhoods::ListingImage
 
@@ -94,20 +95,8 @@ class ApartmentCommunity < Community
     other_community.destroy
   end
 
-  def cheapest_price_in_group(group)
-    send("cheapest_#{group.name_for_cache}_price")
-  end
-
-  def plan_count_in_group(group)
-    send("plan_count_#{group.name_for_cache}")
-  end
-
   def jmapping_category
     under_construction? ? 'UpcomingApartment' : super
-  end
-
-  def apartment_community?
-    true
   end
 
   def disconnect_from_external_cms!
@@ -131,6 +120,15 @@ class ApartmentCommunity < Community
     end
   end
 
+  def floor_plans_for_caching
+    available_floor_plans
+  end
+
+  def floor_plans_in_group_for_caching(group)
+    floor_plans_for_caching.in_group(group)
+  end
+
+
   private
 
   def mark_dirty_floor_plan_prices
@@ -147,27 +145,5 @@ class ApartmentCommunity < Community
     end
     @set_floor_plan_prices = nil
     true
-  end
-
-  def cache_cheapest_price(group)
-    cheapest_price = available_floor_plans.
-                      in_group(group).
-                      with_min_rent.
-                      try(:min_rent)
-
-    update_attribute("cheapest_#{group.name_for_cache}_price", cheapest_price)
-  end
-
-  def cache_plan_count(group)
-    count = available_floor_plans.in_group(group).count
-
-    update_attribute("plan_count_#{group.name_for_cache}", count)
-  end
-
-  def cache_min_and_max_rents
-    update_attributes(
-      :min_rent => available_floor_plans.with_min_rent.try(:min_rent),
-      :max_rent => available_floor_plans.with_max_rent.try(:max_rent)
-    )
   end
 end

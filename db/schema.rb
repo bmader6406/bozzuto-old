@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140328153640) do
+ActiveRecord::Schema.define(:version => 20140330210445) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -33,6 +33,25 @@ ActiveRecord::Schema.define(:version => 20140328153640) do
   end
 
   add_index "apartment_contact_configurations", ["apartment_community_id"], :name => "index_apartment_contact_configurations_on_apartment_community_id"
+
+  create_table "apartment_floor_plan_caches", :force => true do |t|
+    t.integer  "cacheable_id",                                                            :null => false
+    t.string   "cacheable_type",                                                          :null => false
+    t.decimal  "studio_min_price",         :precision => 8, :scale => 2, :default => 0.0
+    t.integer  "studio_count",                                           :default => 0
+    t.decimal  "one_bedroom_min_price",    :precision => 8, :scale => 2, :default => 0.0
+    t.integer  "one_bedroom_count",                                      :default => 0
+    t.decimal  "two_bedrooms_min_price",   :precision => 8, :scale => 2, :default => 0.0
+    t.integer  "two_bedrooms_count",                                     :default => 0
+    t.decimal  "three_bedrooms_min_price", :precision => 8, :scale => 2, :default => 0.0
+    t.integer  "three_bedrooms_count",                                   :default => 0
+    t.decimal  "penthouse_min_price",      :precision => 8, :scale => 2, :default => 0.0
+    t.integer  "penthouse_count",                                        :default => 0
+    t.decimal  "min_price",                :precision => 8, :scale => 2, :default => 0.0
+    t.decimal  "max_price",                :precision => 8, :scale => 2, :default => 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "apartment_floor_plan_groups", :force => true do |t|
     t.string   "name",       :null => false
@@ -171,11 +190,6 @@ ActiveRecord::Schema.define(:version => 20140328153640) do
     t.integer  "promo_id"
     t.integer  "ufollowup_id"
     t.boolean  "has_completion_date",                                                :default => true,  :null => false
-    t.string   "cheapest_studio_price"
-    t.string   "cheapest_1_bedroom_price"
-    t.string   "cheapest_2_bedroom_price"
-    t.string   "cheapest_3_bedroom_price"
-    t.string   "cheapest_penthouse_price"
     t.string   "listing_promo_file_name"
     t.string   "listing_promo_content_type"
     t.integer  "listing_promo_file_size"
@@ -191,11 +205,6 @@ ActiveRecord::Schema.define(:version => 20140328153640) do
     t.string   "send_to_friend_mediamind_id"
     t.string   "send_to_phone_mediamind_id"
     t.string   "contact_mediamind_id"
-    t.integer  "plan_count_studio",                                                  :default => 0
-    t.integer  "plan_count_1_bedroom",                                               :default => 0
-    t.integer  "plan_count_2_bedroom",                                               :default => 0
-    t.integer  "plan_count_3_bedroom",                                               :default => 0
-    t.integer  "plan_count_penthouse",                                               :default => 0
     t.boolean  "featured_mobile",                                                    :default => false
     t.boolean  "under_construction",                                                 :default => false
     t.string   "external_cms_type"
@@ -937,11 +946,6 @@ ActiveRecord::Schema.define(:version => 20140328153640) do
     t.integer  "promo_id"
     t.integer  "ufollowup_id"
     t.boolean  "has_completion_date",                                                :default => true,  :null => false
-    t.string   "cheapest_studio_price"
-    t.string   "cheapest_1_bedroom_price"
-    t.string   "cheapest_2_bedroom_price"
-    t.string   "cheapest_3_bedroom_price"
-    t.string   "cheapest_penthouse_price"
     t.string   "listing_promo_file_name"
     t.string   "listing_promo_content_type"
     t.integer  "listing_promo_file_size"
@@ -956,11 +960,6 @@ ActiveRecord::Schema.define(:version => 20140328153640) do
     t.string   "send_to_friend_mediamind_id"
     t.string   "send_to_phone_mediamind_id"
     t.string   "contact_mediamind_id"
-    t.integer  "plan_count_studio",                                                  :default => 0
-    t.integer  "plan_count_1_bedroom",                                               :default => 0
-    t.integer  "plan_count_2_bedroom",                                               :default => 0
-    t.integer  "plan_count_3_bedroom",                                               :default => 0
-    t.integer  "plan_count_penthouse",                                               :default => 0
     t.boolean  "featured_mobile",                                                    :default => false
     t.boolean  "under_construction",                                                 :default => false
     t.string   "external_cms_type"

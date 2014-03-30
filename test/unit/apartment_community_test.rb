@@ -4,15 +4,21 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
   context "An Apartment Community" do
     subject { ApartmentCommunity.make }
 
-    should_have_many(:floor_plans, :featured_floor_plans, :under_construction_leads)
+    should_have_neighborhood_listing_image(:neighborhood_listing_image, :required => false)
+    should_be_mappable
+
+    should_have_many(:floor_plans)
+    should_have_many(:featured_floor_plans)
+    should_have_many(:under_construction_leads)
     should_have_many(:floor_plan_groups, :through => :floor_plans)
 
     should_have_one(:mediaplex_tag)
     should_have_one(:contact_configuration)
+
     should_have_one(:neighborhood, :dependent => :nullify)
     should_have_many(:neighborhood_memberships, :dependent => :destroy)
 
-    should_have_attached_file(:neighborhood_listing_image)
+    should_have_apartment_floor_plan_cache
 
     it "is archivable" do
       assert ApartmentCommunity.acts_as_archive?
@@ -336,25 +342,166 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
       end
     end
 
-    describe "#cheapest_price_in_group" do
+    describe "caching floor plan data" do
       before do
-        @group = ApartmentFloorPlanGroup.make(:studio)
-        subject.cheapest_studio_price = '100'
+        @studio    = ApartmentFloorPlanGroup.make(:studio)
+        @penthouse = ApartmentFloorPlanGroup.make(:penthouse)
       end
 
-      it "return the cheapest price" do
-        subject.cheapest_price_in_group(@group).should == '100'
-      end
-    end
+      describe "#cheapest_price_in_group" do
+        context "there are no floor plans" do
+          before do
+            subject.floor_plans.in_group(@studio).count.should == 0
+          end
 
-    describe "#plan_count_in_group" do
-      before do
-        @group = ApartmentFloorPlanGroup.make(:studio)
-        subject.plan_count_studio = 25
+          it "returns 0" do
+            subject.cheapest_price_in_group(@studio).should == 0.0
+          end
+        end
+
+        context "there are floor plans" do
+          before do
+            @plan_1 = ApartmentFloorPlan.make(
+              :apartment_community => subject,
+              :floor_plan_group    => @studio,
+              :min_effective_rent  => 100.0
+            )
+
+            @plan_2 = ApartmentFloorPlan.make(
+              :apartment_community => subject,
+              :floor_plan_group    => @studio,
+              :min_effective_rent  => 200.0
+            )
+
+            @other = ApartmentFloorPlan.make(
+              :apartment_community => subject,
+              :floor_plan_group    => @penthouse,
+              :min_effective_rent  => 50.0
+            )
+          end
+
+          it "returns the cheapest price" do
+            subject.reload
+            subject.cheapest_price_in_group(@studio).should == 100.0
+          end
+        end
       end
 
-      it "return the plan count" do
-        subject.plan_count_in_group(@group).should == 25
+      describe "#plan_count_in_group" do
+        context "there are no floor plans" do
+          before do
+            subject.floor_plans.in_group(@studio).count.should == 0
+          end
+
+          it "returns 0" do
+            subject.plan_count_in_group(@studio).should == 0
+          end
+        end
+
+        context "there are floor plans" do
+          before do
+            @plan_1 = ApartmentFloorPlan.make(
+              :apartment_community => subject,
+              :floor_plan_group    => @studio,
+              :min_effective_rent  => 100.0
+            )
+
+            @plan_2 = ApartmentFloorPlan.make(
+              :apartment_community => subject,
+              :floor_plan_group    => @studio,
+              :min_effective_rent  => 200.0
+            )
+
+            @other = ApartmentFloorPlan.make(
+              :apartment_community => subject,
+              :floor_plan_group    => @penthouse,
+              :min_effective_rent  => 50.0
+            )
+          end
+
+          it "returns the count" do
+            subject.reload
+            subject.plan_count_in_group(@studio).should == 2
+          end
+        end
+      end
+
+      describe "#min_rent" do
+        context "there are no floor plans" do
+          before do
+            subject.floor_plans.in_group(@studio).count.should == 0
+          end
+
+          it "returns 0" do
+            subject.min_rent.should == 0
+          end
+        end
+
+        context "there are floor plans" do
+          before do
+            @plan_1 = ApartmentFloorPlan.make(
+              :apartment_community => subject,
+              :floor_plan_group    => @studio,
+              :min_effective_rent  => 100.0
+            )
+
+            @plan_2 = ApartmentFloorPlan.make(
+              :apartment_community => subject,
+              :floor_plan_group    => @studio,
+              :min_effective_rent  => 200.0
+            )
+
+            @other = ApartmentFloorPlan.make(
+              :apartment_community => subject,
+              :floor_plan_group    => @penthouse,
+              :min_effective_rent  => 50.0
+            )
+          end
+
+          it "returns the count" do
+            subject.reload
+            subject.min_rent.should == 50.0
+          end
+        end
+      end
+
+      describe "#max_rent" do
+        context "there are no floor plans" do
+          before do
+            subject.floor_plans.in_group(@studio).count.should == 0
+          end
+
+          it "returns 0" do
+            subject.max_rent.should == 0
+          end
+        end
+
+        context "there are floor plans" do
+          before do
+            @plan_1 = ApartmentFloorPlan.make(
+              :apartment_community => subject,
+              :floor_plan_group    => @studio,
+              :max_effective_rent  => 100.0
+            )
+
+            @plan_2 = ApartmentFloorPlan.make(
+              :apartment_community => subject,
+              :floor_plan_group    => @studio,
+              :max_effective_rent  => 200.0
+            )
+
+            @other = ApartmentFloorPlan.make(
+              :apartment_community => subject,
+              :floor_plan_group    => @penthouse,
+              :max_effective_rent  => 50.0
+            )
+          end
+
+          it "returns the count" do
+            subject.reload
+            subject.max_rent.should == 200.0
+          end
+        end
       end
     end
 

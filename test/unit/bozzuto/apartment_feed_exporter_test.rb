@@ -82,6 +82,10 @@ module Bozzuto
           :listing_image_file_name => 'test.jpg'
         })
 
+        # FIXME: must save twice to update the cached_slug to include the id
+        @community.reload
+        @community.save
+
         ApartmentCommunity.make(
           :title     => 'I R Close',
           :latitude  => -30.0,
@@ -96,8 +100,8 @@ module Bozzuto
           :content  => 'wilcum to da hood'
         })
 
-        @exporter            = ApartmentFeedExporter.new
-        @first_export        = @exporter.data[:properties].first
+        @exporter     = ApartmentFeedExporter.new
+        @first_export = @exporter.data[:properties].first
       end
 
       should "only include published properties" do
@@ -485,7 +489,7 @@ module Bozzuto
       end
 
       should "contain Bozzuto.com Address" do
-        assert_equal 'http://bozzuto.com/apartments/communities/dolans-hood', @first_export[:bozzuto_url]
+        assert_equal "http://bozzuto.com/apartments/communities/#{@community.id}-dolans-hood", @first_export[:bozzuto_url]
       end
 
       should "contain latitude" do

@@ -109,15 +109,17 @@ class Property < ActiveRecord::Base
   end
 
   def apartment?
-    type == 'ApartmentCommunity'
+    property_type == 'ApartmentCommunity'
   end
+  alias_method :apartment_community?, :apartment?
 
   def home?
-    type == 'HomeCommunity'
+    property_type == 'HomeCommunity'
   end
+  alias_method :home_community?, :home?
 
   def project?
-    type == 'Project'
+    property_type == 'Project'
   end
 
   def short_name

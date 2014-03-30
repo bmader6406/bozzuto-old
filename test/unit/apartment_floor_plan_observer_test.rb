@@ -1,33 +1,58 @@
 require 'test_helper'
 
 class ApartmentFloorPlanObserverTest < ActiveSupport::TestCase
-  context 'Apartment floor plan observer' do
+  context "An ApartmentFloorPlanObserver" do
     setup do
       @community = ApartmentCommunity.make
+      @studio    = ApartmentFloorPlanGroup.make(:studio)
     end
 
-    groups = [['studio', 'studio'], ['one_bedroom', '1_bedroom'], ['two_bedroom', '2_bedroom'], ['three_bedroom', '3_bedroom'], ['penthouse', 'penthouse']]
+    describe "saving a floor plan" do
+      setup do
+        @community.cheapest_price_in_group(@studio).should == 0.0
+        @community.plan_count_in_group(@studio).should == 0
+        @community.min_rent.should == 0.0
+        @community.max_rent.should == 0.0
 
-    groups.each do |group|
-      describe "saving a #{group[0]} floor plan" do
-        setup do
-          @group = ApartmentFloorPlanGroup.make(group[0].to_sym)
+        @plan = ApartmentFloorPlan.make(
+          :floor_plan_group    => @studio,
+          :apartment_community => @community,
+          :min_effective_rent  => 100.0,
+          :max_effective_rent  => 500.0
+        )
+      end
 
-          @plan = ApartmentFloorPlan.make_unsaved(
-            :floor_plan_group    => @group,
-            :apartment_community => @community
-          )
-        end
+      it "updates the cache column on community" do
+        @community.cheapest_price_in_group(@studio).should == 100.0
+        @community.plan_count_in_group(@studio).should == 1
+        @community.min_rent.should == 100.0
+        @community.max_rent.should == 500.0
+      end
+    end
 
-        it "updates the cache column on community" do
-          attr = "cheapest_#{group[1]}_price"
-          @community.send(attr).should == nil
+    describe "destroying a floor plan" do
+      setup do
+        @plan = ApartmentFloorPlan.make(
+          :floor_plan_group    => @studio,
+          :apartment_community => @community,
+          :min_effective_rent  => 100.0,
+          :max_effective_rent  => 500.0
+        )
 
-          @plan.save
-          @community.reload
+        @community.cheapest_price_in_group(@studio).should == 100.0
+        @community.plan_count_in_group(@studio).should == 1
+        @community.min_rent.should == 100.0
+        @community.max_rent.should == 500.0
+      end
 
-          @community.send(attr).should == @plan.min_rent.to_s
-        end
+      it "updates the cache column on community" do
+        @plan.destroy
+        @community.reload
+
+        @community.cheapest_price_in_group(@studio).should == 0.0
+        @community.plan_count_in_group(@studio).should == 0
+        @community.min_rent.should == 0.0
+        @community.max_rent.should == 0.0
       end
     end
   end

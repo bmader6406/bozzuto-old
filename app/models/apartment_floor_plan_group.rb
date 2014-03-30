@@ -2,9 +2,9 @@ class ApartmentFloorPlanGroup < ActiveRecord::Base
   DISPLAY_LIMIT = 8
 
   has_many :floor_plans,
-    :class_name  => 'ApartmentFloorPlan',
-    :foreign_key => :floor_plan_group_id,
-    :dependent   => :destroy
+           :class_name  => 'ApartmentFloorPlan',
+           :foreign_key => :floor_plan_group_id,
+           :dependent   => :destroy
 
   default_scope :order => 'position ASC'
 
@@ -24,12 +24,12 @@ class ApartmentFloorPlanGroup < ActiveRecord::Base
     end
   end
 
-  def name_for_cache
+  def cache_name
     case self
     when self.class.studio         then 'studio'
-    when self.class.one_bedroom    then '1_bedroom'
-    when self.class.two_bedrooms   then '2_bedroom'
-    when self.class.three_bedrooms then '3_bedroom'
+    when self.class.one_bedroom    then 'one_bedroom'
+    when self.class.two_bedrooms   then 'two_bedrooms'
+    when self.class.three_bedrooms then 'three_bedrooms'
     when self.class.penthouse      then 'penthouse'
     else
       raise "Unknown group: #{self}"
