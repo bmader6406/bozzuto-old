@@ -24,6 +24,11 @@ module Bozzuto
 
           after_save :update_apartment_communities_count
           after_destroy :update_apartment_communities_count
+
+          after_save :invalidate_apartment_floor_plan_cache!
+          after_destroy :invalidate_apartment_floor_plan_cache!
+
+          alias_method :floor_plans_for_caching, :available_floor_plans
         end
       end
 
@@ -49,6 +54,16 @@ module Bozzuto
         children.map { |c| c.communities(reload) }.flatten.uniq
       end
 
+      def available_floor_plans(reload = false)
+        @available_floor_plans = nil if reload
+
+        @available_floor_plans ||= begin
+          ids = communities.map(&:available_floor_plans).flatten.map(&:id)
+
+          ApartmentFloorPlan.scoped(:conditions => { :id => ids })
+        end
+      end
+
       def name_with_count
         if apartment_communities_count > 0
           "#{name} (#{apartment_communities_count})"
@@ -65,6 +80,14 @@ module Bozzuto
           :name                        => name,
           :apartment_communities_count => apartment_communities_count
         }
+      end
+
+      def invalidate_apartment_floor_plan_cache!
+        if !destroyed?
+          super
+        end
+
+        parent.try(:invalidate_apartment_floor_plan_cache!)
       end
 
 

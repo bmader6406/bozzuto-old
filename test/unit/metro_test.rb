@@ -20,15 +20,21 @@ class MetroTest < ActiveSupport::TestCase
         # metro
         #   - area_1
         #     - neighborhood_1
-        #       -community_1
-        #       -community_2
+        #       - community_1
+        #         - floor_plan_1
+        #       - community_2
+        #         - floor_plan_2
         #     - neighborhood_2
         #   - area_2
         #     - neighborhood_3
         #       - community_1
+        #         - floor_plan_1
 
         @community_1 = ApartmentCommunity.make
         @community_2 = ApartmentCommunity.make
+
+        @floor_plan_1 = ApartmentFloorPlan.make(:apartment_community => @community_1)
+        @floor_plan_2 = ApartmentFloorPlan.make(:apartment_community => @community_2)
 
         @neighborhood_1 = Neighborhood.make(:apartment_communities => [@community_1, @community_2])
         @neighborhood_2 = Neighborhood.make
@@ -56,6 +62,12 @@ class MetroTest < ActiveSupport::TestCase
       describe "#communities" do
         it "returns all of the unique communities" do
           subject.communities.should == [@community_1, @community_2]
+        end
+      end
+
+      describe "#available_floor_plans" do
+        it "returns all of the unique floor plans" do
+          subject.available_floor_plans.should == [@floor_plan_1, @floor_plan_2]
         end
       end
 

@@ -19,9 +19,4 @@ class NeighborhoodsController < ApplicationController
     @neighborhood ||= area.neighborhoods.find(params[:id])
   end
   helper_method :neighborhood
-
-  def neighborhood_memberships
-    @neighborhood_memberships ||= neighborhood.neighborhood_memberships
-  end
-  helper_method :neighborhood_memberships
 end

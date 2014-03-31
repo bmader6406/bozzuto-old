@@ -124,8 +124,12 @@ class ApartmentCommunity < Community
     available_floor_plans
   end
 
-  def floor_plans_in_group_for_caching(group)
-    floor_plans_for_caching.in_group(group)
+  def invalidate_apartment_floor_plan_cache!
+    super
+
+    neighborhood_memberships.each(&:invalidate_apartment_floor_plan_cache!)
+
+    true
   end
 
 

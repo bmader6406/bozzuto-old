@@ -14,6 +14,6 @@ class ApartmentFloorPlanObserver < ActiveRecord::Observer
     community = plan.apartment_community
     group     = plan.floor_plan_group
 
-    community.update_apartment_floor_plan_cache_for_group(group)
+    community.invalidate_apartment_floor_plan_cache!
   end
 end

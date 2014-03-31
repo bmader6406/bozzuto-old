@@ -36,7 +36,7 @@ class ApartmentFloorPlanCache < ActiveRecord::Base
     send(count_attr(group))
   end
 
-  def update_apartment_floor_plan_cache
+  def update_cache
     ApartmentFloorPlanGroup.all.each do |group|
       cache_min_price_for_group(group)
       cache_count_for_group(group)
@@ -47,12 +47,8 @@ class ApartmentFloorPlanCache < ActiveRecord::Base
     save
   end
 
-  def update_apartment_floor_plan_cache_for_group(group)
-    cache_min_price_for_group(group)
-    cache_count_for_group(group)
-    cache_min_and_max_prices
-
-    save
+  def invalidate!
+    destroy
   end
 
 

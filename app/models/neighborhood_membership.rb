@@ -14,6 +14,10 @@ class NeighborhoodMembership < ActiveRecord::Base
   after_save :update_apartment_communities_count
   after_destroy :update_apartment_communities_count
 
+  after_save :invalidate_apartment_floor_plan_cache!
+  after_destroy :invalidate_apartment_floor_plan_cache!
+
+  delegate :invalidate_apartment_floor_plan_cache!, :to => :neighborhood
 
   private
 

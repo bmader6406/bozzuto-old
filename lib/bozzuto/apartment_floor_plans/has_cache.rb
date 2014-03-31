@@ -11,27 +11,34 @@ module Bozzuto
                    :plan_count_in_group,
                    :min_rent,
                    :max_rent,
-                   :update_apartment_floor_plan_cache,
-                   :update_apartment_floor_plan_cache_for_group,
                    :to => :fetch_apartment_floor_plan_cache
         end
       end
 
       #:nocov:
-      def floor_plans_in_group_for_caching(group)
-        raise NotImplementedError, "#{self.class.to_s} must implement #floor_plans_in_group_for_caching"
-      end
-
       def floor_plans_for_caching
         raise NotImplementedError, "#{self.class.to_s} must implement #floor_plans_for_caching"
       end
+
+      def floor_plans_in_group_for_caching(group)
+        floor_plans_for_caching.in_group(group)
+      end
       #:nocov:
 
-
-      private
+      def invalidate_apartment_floor_plan_cache!
+        apartment_floor_plan_cache.try(:invalidate!)
+        self.apartment_floor_plan_cache = nil
+        true
+      end
 
       def fetch_apartment_floor_plan_cache
-        apartment_floor_plan_cache || build_apartment_floor_plan_cache
+        apartment_floor_plan_cache || prime_apartment_floor_plan_cache
+      end
+
+      def prime_apartment_floor_plan_cache
+        build_apartment_floor_plan_cache.tap do |cache|
+          cache.update_cache
+        end
       end
     end
   end

@@ -18,38 +18,7 @@ class ApartmentFloorPlanCacheTest < ActiveSupport::TestCase
     should_validate_numericality_of(:three_bedrooms_count)
     should_validate_numericality_of(:penthouse_count)
 
-    describe "#update_apartment_floor_plan_cache_for_group" do
-      before do
-        @studio = ApartmentFloorPlanGroup.make(:studio)
-
-        @community = ApartmentCommunity.make
-
-        @plan = ApartmentFloorPlan.make(
-          :apartment_community => @community,
-          :floor_plan_group    => @studio,
-          :min_effective_rent  => 50.0,
-          :max_effective_rent  => 100.0
-        )
-
-        @community.cheapest_price_in_group(@studio).should == 50.0
-        @community.plan_count_in_group(@studio).should == 1
-      end
-
-      subject { @community.apartment_floor_plan_cache }
-
-      it "updates the cache values" do
-        subject.studio_min_price = 1000.0
-        subject.studio_count     = 50
-        subject.save
-
-        @community.update_apartment_floor_plan_cache_for_group(@studio)
-
-        subject.studio_min_price.should == 50.0
-        subject.studio_count.should == 1
-      end
-    end
-
-    describe "#update_apartment_floor_plan_cache" do
+    describe "#update_cache" do
       before do
         create_floor_plan_groups
 
@@ -64,30 +33,42 @@ class ApartmentFloorPlanCacheTest < ActiveSupport::TestCase
           )
         end
 
-        @community.apartment_floor_plan_cache.destroy
-        @community.reload
         @community.apartment_floor_plan_cache.should == nil
       end
 
+      subject { ApartmentFloorPlanCache.new(:cacheable => @community) }
+
 
       it "updates the cache values" do
-        @community.update_apartment_floor_plan_cache
+        subject.update_cache
 
-        cache = @community.apartment_floor_plan_cache
+        subject.studio_min_price.should         == 50.0
+        subject.studio_count.should             == 1
+        subject.one_bedroom_min_price.should    == 60.0
+        subject.one_bedroom_count.should        == 1
+        subject.two_bedrooms_min_price.should   == 70.0
+        subject.two_bedrooms_count.should       == 1
+        subject.three_bedrooms_min_price.should == 80.0
+        subject.three_bedrooms_count.should     == 1
+        subject.penthouse_min_price.should      == 90.0
+        subject.penthouse_count.should          == 1
 
-        cache.studio_min_price         = 50.0
-        cache.studio_count             = 1
-        cache.one_bedroom_min_price    = 60.0
-        cache.one_bedroom_count        = 1
-        cache.two_bedrooms_min_price   = 70.0
-        cache.two_bedrooms_count       = 1
-        cache.three_bedrooms_min_price = 80.0
-        cache.three_bedrooms_count     = 1
-        cache.penthouse_min_price      = 90.0
-        cache.penthouse_count          = 1
+        subject.min_price.should == 50.0
+        subject.max_price.should == 500.0
+      end
+    end
 
-        cache.min_price.should == 50.0
-        cache.max_price.should == 500.0
+    describe "#invalidate!" do
+      before do
+        @community = ApartmentCommunity.make
+        @community.fetch_apartment_floor_plan_cache
+      end
+
+      subject { @community.apartment_floor_plan_cache }
+
+      it "destroys the cache" do
+        subject.invalidate!
+        subject.destroyed?.should == true
       end
     end
   end

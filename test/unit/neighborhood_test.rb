@@ -27,12 +27,17 @@ class NeighborhoodTest < ActiveSupport::TestCase
     describe "nested structure" do
       before do
         # neighborhood
-        #   - community
-        #   - community
-        #   - community
+        #   - community_1
+        #     - floor_plan_1
+        #   - community_2
+        #     - floor_plan_2
+        #   - community_3
         @community_1 = ApartmentCommunity.make
         @community_2 = ApartmentCommunity.make
         @community_3 = ApartmentCommunity.make
+
+        @floor_plan_1 = ApartmentFloorPlan.make(:apartment_community => @community_1)
+        @floor_plan_2 = ApartmentFloorPlan.make(:apartment_community => @community_2)
 
         subject.apartment_communities = [@community_1, @community_2, @community_3]
         subject.save
@@ -53,6 +58,12 @@ class NeighborhoodTest < ActiveSupport::TestCase
       describe "#communities" do
         it "returns all of the unique communities" do
           subject.communities.should == [@community_1, @community_2, @community_3]
+        end
+      end
+
+      describe "#available_floor_plans" do
+        it "returns all of the unique floor plans" do
+          subject.available_floor_plans.should == [@floor_plan_1, @floor_plan_2]
         end
       end
 

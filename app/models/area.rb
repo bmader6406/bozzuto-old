@@ -1,5 +1,6 @@
 class Area < ActiveRecord::Base
   include Bozzuto::Mappable
+  include Bozzuto::ApartmentFloorPlans::HasCache
   include Bozzuto::Neighborhoods::Place
   extend  Bozzuto::Neighborhoods::ListingImage
 

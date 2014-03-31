@@ -252,96 +252,6 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
       end
     end
 
-    describe "#min_rent" do
-      context "managed internally" do
-        before do
-          @plan1 = ApartmentFloorPlan.make(
-            :apartment_community => subject,
-            :min_effective_rent  => 4000
-          )
-
-          @plan2 = ApartmentFloorPlan.make(
-            :apartment_community => subject,
-            :min_effective_rent  => 0
-          )
-        end
-
-        it "returns the lowest price, including 0" do
-          subject.min_rent.to_i.should == 0
-        end
-      end
-
-      context "managed externally" do
-        subject { ApartmentCommunity.make(:vaultware) }
-
-        before do
-          @plan1 = ApartmentFloorPlan.make(
-            :apartment_community => subject,
-            :min_effective_rent  => 4000
-          )
-
-          @plan2 = ApartmentFloorPlan.make(
-            :apartment_community => subject,
-            :min_effective_rent  => 10
-          )
-
-          @plan3 = ApartmentFloorPlan.make(
-            :apartment_community => subject,
-            :min_effective_rent  => 100
-          )
-        end
-
-        it "returns the lowest price > 0" do
-          subject.min_rent.to_i.should == 10
-        end
-      end
-    end
-
-    describe "#max_rent" do
-      context "managed internally" do
-        before do
-          @plan1 = ApartmentFloorPlan.make(
-            :apartment_community => subject,
-            :max_effective_rent  => 4000
-          )
-
-          @plan2 = ApartmentFloorPlan.make(
-            :apartment_community => subject,
-            :max_effective_rent  => 0
-          )
-        end
-
-        it "returns the max price, including 0" do
-          subject.max_rent.to_i.should == 4000
-        end
-      end
-
-      context "managed externally" do
-        subject { ApartmentCommunity.make(:vaultware) }
-
-        before do
-          @plan1 = ApartmentFloorPlan.make(
-            :apartment_community => subject,
-            :max_effective_rent  => 4000
-          )
-
-          @plan2 = ApartmentFloorPlan.make(
-            :apartment_community => subject,
-            :max_effective_rent  => 3000
-          )
-
-          @plan3 = ApartmentFloorPlan.make(
-            :apartment_community => subject,
-            :max_effective_rent  => 0
-          )
-        end
-
-        it "returns the max price, which must be > 0" do
-          subject.max_rent.to_i.should == 4000
-        end
-      end
-    end
-
     describe "caching floor plan data" do
       before do
         @studio    = ApartmentFloorPlanGroup.make(:studio)
@@ -580,8 +490,6 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
     it "responds to named scopes" do
       assert_nothing_raised do
         ApartmentCommunity.with_floor_plan_groups(1).all
-        ApartmentCommunity.with_min_price(0).all
-        ApartmentCommunity.with_max_price(1000).all
         ApartmentCommunity.with_property_features([1, 2, 3]).all
         ApartmentCommunity.featured_order
       end
