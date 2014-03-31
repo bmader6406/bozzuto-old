@@ -62,6 +62,7 @@
         navigationControlOptions: {
           style: google.maps.NavigationControlStyle.SMALL
         },
+        scrollwheel:    false,
         mapTypeControl: false,
         zoom:           9,
         center:         this.initialPoint()
