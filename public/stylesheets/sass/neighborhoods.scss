@@ -173,6 +173,27 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   margin-bottom: 1.5em;
 }
 
+.nh-fp-table {
+  display: table;
+
+  li {
+    display: table-row;
+    line-height: 2;
+  }
+
+  span {
+    display: table-cell;
+  }
+
+  .nh-fp-table-name {
+    background: transparent url(/images/structure/bg-header-a.gif) no-repeat center left;
+    font-weight: bold;
+    padding-left: 8px;
+    text-transform: uppercase;
+    width: 125px;
+  }
+}
+
 .nh-arrow-list {
   li {
     background: url(/images/structure/bg-footer-a.gif) no-repeat center left;

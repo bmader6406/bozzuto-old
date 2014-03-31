@@ -16,12 +16,6 @@
       </p>
     <% end %>
 
-    <% area.neighborhoods.if_present? do |neighborhoods| %>
-      <ul class="nh-arrow-list">
-        <% neighborhoods.each do |neighborhood| %>
-          <li><%= link_to neighborhood.name_with_count, neighborhood_path(metro, area, neighborhood) %></li>
-        <% end %>
-      </ul>
-    <% end %>
+    <%= render 'areas/floor_plans', :thing => area %>
   </div>
 </div>

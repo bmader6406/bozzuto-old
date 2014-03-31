@@ -55,6 +55,28 @@ class ApartmentFloorPlanGroupTest < ActiveSupport::TestCase
         end
       end
 
+      describe "#short_name" do
+        it "uses 'Studios' for Studio" do
+          @studio.short_name.should == 'Studios'
+        end
+
+        it "uses '1 Bedrooms' for 1 Bedroom" do
+          @bedroom.short_name.should == '1 Bedrooms'
+        end
+
+        it "uses '2 Bedrooms' for 2 Bedrooms" do
+          @bedrooms2.short_name.should == '2 Bedrooms'
+        end
+
+        it "uses '3+ Bedrooms' for 3 or More Bedrooms" do
+          @bedrooms3.short_name.should == '3+ Bedrooms'
+        end
+
+        it "uses 'Penthouses' for Penthouse" do
+          @penthouse.short_name.should == 'Penthouses'
+        end
+      end
+
       describe "#cache_name" do
         it "uses 'studio' for Studio" do
           @studio.cache_name.should == 'studio'

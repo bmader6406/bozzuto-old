@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module Bozzuto
+module Bozzuto::ApartmentFloorPlans
   class ApartmentFloorPlanPresenterTest < ActiveSupport::TestCase
     context "ApartmentFloorPlanPresenter" do
       before do
@@ -9,7 +9,7 @@ module Bozzuto
         @community   = ApartmentCommunity.make
       end
 
-      subject { ApartmentFloorPlanPresenter.new(@community) }
+      subject { Presenter.new(@community) }
 
       describe "#has_plans?" do
         context "any of the groups has plans" do
@@ -33,7 +33,17 @@ module Bozzuto
       end
 
       context "FloorPlanGroup" do
-        subject { ApartmentFloorPlanPresenter::FloorPlanGroup.new(@community, @studio) }
+        subject { Presenter::FloorPlanGroup.new(@community, @studio) }
+
+        describe "#name" do
+          before do
+            @studio.expects(:plural_name).returns('Hooray')
+          end
+
+          it "returns the plural_name" do
+            subject.name.should == 'Hooray'
+          end
+        end
 
         describe "#has_plans?" do
           context "the group has plans" do

@@ -1,0 +1,19 @@
+<% if floor_plan_presenter(thing).has_plans? %>
+  <ul class="nh-fp-table">
+    <% floor_plan_presenter(thing).groups.each do |group| %>
+      <% if group.has_plans? %>
+        <li>
+          <span class="nh-fp-table-name">
+            <%= group.short_name %>
+          </span>
+
+          <span class="nh-fp-table-price">
+            <% group.cheapest_rent.if_present? do |price| %>
+              From <%= dollars(price) %>
+            <% end %>
+          </span>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>

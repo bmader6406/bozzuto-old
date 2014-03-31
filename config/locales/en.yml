@@ -1,4 +1,20 @@
 en:
+  apartment_floor_plan_group:
+    studio:
+      list_name: Studios
+      short_name: Studios
+    one_bedroom:
+      list_name: 1BR
+      short_name: 1 Bedrooms
+    two_bedrooms:
+      list_name: 2BR
+      short_name: 2 Bedrooms
+    three_bedrooms:
+      list_name: 3BR
+      short_name: 3+ Bedrooms
+    penthouse:
+      list_name: Penthouses
+      short_name: Penthouses
   activerecord:
     models:
       ad_source: Ad Source

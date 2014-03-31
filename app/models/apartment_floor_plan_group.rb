@@ -17,11 +17,15 @@ class ApartmentFloorPlanGroup < ActiveRecord::Base
   validates_presence_of :name
   
   def list_name
-    if name =~ /^(\d+) .*Bedroom/i
-      "#{$1}BR"
-    else
-      name.pluralize
-    end
+    I18n.t!(:"apartment_floor_plan_group.#{cache_name}.list_name")
+  end
+
+  def short_name
+    I18n.t!(:"apartment_floor_plan_group.#{cache_name}.short_name")
+  end
+
+  def plural_name
+    name.pluralize
   end
 
   def cache_name
@@ -34,10 +38,6 @@ class ApartmentFloorPlanGroup < ActiveRecord::Base
     else
       raise "Unknown group: #{self}"
     end
-  end
-
-  def plural_name
-    name.pluralize
   end
 
   class << self
