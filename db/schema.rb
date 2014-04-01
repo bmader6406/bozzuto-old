@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140401152321) do
+ActiveRecord::Schema.define(:version => 20140401192232) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -232,20 +232,21 @@ ActiveRecord::Schema.define(:version => 20140401152321) do
   add_index "area_memberships", ["area_id"], :name => "index_area_memberships_on_area_id"
 
   create_table "areas", :force => true do |t|
-    t.string   "name",                                       :null => false
+    t.string   "name",                                                     :null => false
     t.string   "cached_slug"
-    t.float    "latitude",                                   :null => false
-    t.float    "longitude",                                  :null => false
-    t.integer  "metro_id",                                   :null => false
+    t.float    "latitude",                                                 :null => false
+    t.float    "longitude",                                                :null => false
+    t.integer  "metro_id",                                                 :null => false
     t.integer  "position"
     t.string   "banner_image_file_name"
-    t.string   "listing_image_file_name",                    :null => false
+    t.string   "listing_image_file_name",                                  :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "apartment_communities_count", :default => 0
     t.text     "description"
     t.text     "detail_description"
     t.integer  "state_id"
+    t.string   "area_type",                   :default => "neighborhoods", :null => false
   end
 
   add_index "areas", ["apartment_communities_count"], :name => "index_areas_on_apartment_communities_count"

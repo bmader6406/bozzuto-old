@@ -50,8 +50,20 @@ module Bozzuto
       end
       #:nocov:
 
+      def lineage
+        if parent
+          parent.lineage + [self]
+        else
+          [self]
+        end
+      end
+
       def communities(reload = false)
-        children.map { |c| c.communities(reload) }.flatten.uniq
+        if children.nil?
+          apartment_communities(reload)
+        else
+          children.map { |c| c.communities(reload) }.flatten.uniq
+        end
       end
 
       def available_floor_plans(reload = false)
@@ -85,9 +97,7 @@ module Bozzuto
       end
 
       def invalidate_apartment_floor_plan_cache!
-        if !destroyed?
-          super
-        end
+        super if !destroyed?
 
         parent.try(:invalidate_apartment_floor_plan_cache!)
       end

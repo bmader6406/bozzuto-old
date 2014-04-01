@@ -8,17 +8,33 @@
 
 <%= render 'metros/banner_image', :place => area %>
 
-<%= render 'metros/map', :neighborhoods => neighborhoods, :communities => area.communities %>
+<%= render 'metros/map',
+           :neighborhoods => area.shows_neighborhoods? ? neighborhoods : [],
+           :communities   => area.communities %>
 
 <div id="main-content">
   <div class="container">
     <div class="nh-tiles row">
-      <% neighborhoods.in_groups_of(3, false).each do |group| %>
-        <div class="row">
-          <% group.each do |neighborhood| %>
-            <%= render 'neighborhoods/listing', :metro => metro, :area => area, :neighborhood => neighborhood %>
-          <% end %>
-        </div>
+      <% if area.shows_neighborhoods? %>
+
+        <% neighborhoods.in_groups_of(3, false).each do |group| %>
+          <div class="row">
+            <% group.each do |neighborhood| %>
+              <%= render 'neighborhoods/listing', :metro => metro, :area => area, :neighborhood => neighborhood %>
+            <% end %>
+          </div>
+        <% end %>
+
+      <% else %>
+
+        <% area.communities.in_groups_of(3, false).each do |group| %>
+          <div class="row">
+            <% group.each do |community| %>
+              <%= render 'neighborhoods/community_listing', :community => community %>
+            <% end %>
+          </div>
+        <% end %>
+
       <% end %>
     </div>
   </div>

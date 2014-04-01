@@ -100,6 +100,7 @@ en:
         max_square_feet: Maximum Square Feet
         min_square_feet: Minimum Square Feet
       area:
+        area_type: Area Type
         banner_image: Banner Image
         description: Listing Description
         detail_description: Detail Description
@@ -368,6 +369,7 @@ en:
         description: This text will be shown below on this Area's listing, below the listing image.
         detail_description: This text will be shown in the breadcrumb of this Area's show page.
         listing_image: Image dimensions should be 300x234
+        area_type: "This determines what will be shown on the Area's listing page:<br /><strong>Neighborhoods</strong>: Shows the associated Neighborhoods<br /><strong>Communities</strong>: Shows the associated Apartment Communities (see Area Memberships below)"
       award:
         image: Image dimensions should be 150x150
       body_slide:

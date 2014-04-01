@@ -33,8 +33,4 @@ class Neighborhood < ActiveRecord::Base
   def children
     nil
   end
-
-  def communities(reload = true)
-    apartment_communities(reload)
-  end
 end

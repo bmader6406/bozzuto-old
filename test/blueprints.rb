@@ -8,19 +8,21 @@ Sham.define do
     "%2s" % i.to_s(36)
   }
 
-  city             { Faker::Address.city }
-  us_state         { |i| "#{Faker::Address.us_state} #{i}" }
-  company_name     { Faker::Company.name }
-  feed_url         { |i| "http://#{i}.#{Faker::Internet.domain_name}/feed.rss" }
-  section_title    { |i| "#{Faker::Lorem.words} #{i}" }
-  file_name        { |i| "/image#{i}.jpg" }
-  unique_name      { |i| "#{Faker::Lorem.words(2)} #{i}" }
-  vaultware_id     { |i| i.to_s }
-  property_link_id { |i| i.to_s }
-  rent_cafe_id     { |i| i.to_s }
-  metro_name       { |i| "Metro ##{i}" }
-  latitude         { |i| -90.0 + i/10.0 }
-  longitude        { |i| -180.0 + i/10.0 }
+  city              { Faker::Address.city }
+  us_state          { |i| "#{Faker::Address.us_state} #{i}" }
+  company_name      { Faker::Company.name }
+  feed_url          { |i| "http://#{i}.#{Faker::Internet.domain_name}/feed.rss" }
+  section_title     { |i| "#{Faker::Lorem.words} #{i}" }
+  file_name         { |i| "/image#{i}.jpg" }
+  unique_name       { |i| "#{Faker::Lorem.words(2)} #{i}" }
+  vaultware_id      { |i| i.to_s }
+  property_link_id  { |i| i.to_s }
+  rent_cafe_id      { |i| i.to_s }
+  metro_name        { |i| "Metro ##{i}" }
+  area_name         { |i| "Area ##{i}" }
+  neighborhood_name { |i| "Neighborhood ##{i}" }
+  latitude          { |i| -90.0 + i/10.0 }
+  longitude         { |i| -180.0 + i/10.0 }
 end
 
 Sham.bedrooms(:unique => false)  { rand(5) + 1 }
@@ -116,11 +118,20 @@ ApartmentFloorPlanGroup.blueprint(:penthouse) do
 end
 
 Area.blueprint do
-  name                    { Sham.metro_name }
+  name                    { Sham.area_name }
   latitude                { Sham.latitude }
   longitude               { Sham.longitude }
   listing_image_file_name { Sham.file_name }
+  area_type               { 'neighborhoods' }
   metro
+end
+
+Area.blueprint(:neighborhoods) do
+  area_type { 'neighborhoods' }
+end
+
+Area.blueprint(:communities) do
+  area_type { 'communities' }
 end
 
 AreaMembership.blueprint do
@@ -267,7 +278,7 @@ Metro.blueprint do
 end
 
 Neighborhood.blueprint do
-  name                    { Sham.metro_name }
+  name                    { Sham.neighborhood_name }
   latitude                { Sham.latitude }
   longitude               { Sham.longitude }
   banner_image_file_name  { Sham.file_name }

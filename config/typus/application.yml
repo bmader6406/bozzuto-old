@@ -80,13 +80,13 @@ Area:
   fields:
     default: name
     list: name
-    form: name, metro, state, latitude, longitude, banner_image, listing_image, description, detail_description
+    form: name, metro, state, latitude, longitude, banner_image, listing_image, description, detail_description, area_type
     relationship: name, position
     options:
       ckeditor: 
       booleans:
-      required: name, metro, latitude, longitude, listing_image
-      selectors: 
+      required: name, metro, latitude, longitude, listing_image, area_type
+      selectors: area_type
       destroy_related: 
   order_by: position
   relationships: neighborhoods, area_memberships

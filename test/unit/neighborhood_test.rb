@@ -55,6 +55,12 @@ class NeighborhoodTest < ActiveSupport::TestCase
         end
       end
 
+      describe "#lineage" do
+        it "returns the metro, area, and the neighborhood" do
+          subject.lineage.should == [subject.area.metro, subject.area, subject]
+        end
+      end
+
       describe "#communities" do
         it "returns all of the unique communities" do
           subject.communities.should == [@community_1, @community_2, @community_3]

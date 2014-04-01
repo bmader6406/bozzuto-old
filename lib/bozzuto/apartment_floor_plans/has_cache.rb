@@ -26,9 +26,8 @@ module Bozzuto
       #:nocov:
 
       def invalidate_apartment_floor_plan_cache!
-        apartment_floor_plan_cache.try(:invalidate!)
         self.apartment_floor_plan_cache = nil
-        true
+        send(:update_without_callbacks)
       end
 
       def fetch_apartment_floor_plan_cache
