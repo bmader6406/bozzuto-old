@@ -16,6 +16,9 @@ class AreaTest < ActiveSupport::TestCase
 
     should_have_many(:neighborhoods, :dependent => :destroy)
     should_belong_to(:metro)
+    should_belong_to(:state)
+    should_have_many(:area_memberships, :dependent => :destroy)
+    should_have_many(:apartment_communities, :through => :area_memberships)
 
     describe "nested structure" do
       before do

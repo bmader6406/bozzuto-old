@@ -49,6 +49,10 @@ class ApartmentCommunity < Community
            :inverse_of => :apartment_community,
            :dependent  => :destroy
 
+  has_many :area_memberships,
+           :inverse_of => :apartment_community,
+           :dependent  => :destroy
+
 
   validates_inclusion_of :use_market_prices, :in => [true, false]
 
@@ -128,6 +132,7 @@ class ApartmentCommunity < Community
     super
 
     neighborhood_memberships.each(&:invalidate_apartment_floor_plan_cache!)
+    area_memberships.each(&:invalidate_apartment_floor_plan_cache!)
 
     true
   end

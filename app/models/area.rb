@@ -12,6 +12,15 @@ class Area < ActiveRecord::Base
 
   has_many :neighborhoods, :dependent => :destroy
 
+  has_many :area_memberships,
+           :inverse_of => :area,
+           :order      => 'area_memberships.position ASC',
+           :dependent  => :destroy
+
+  has_many :apartment_communities,
+           :through => :area_memberships,
+           :order   => 'area_memberships.position ASC'
+
   belongs_to :metro
 
   validates_presence_of :metro

@@ -89,12 +89,32 @@ Area:
       selectors: 
       destroy_related: 
   order_by: position
-  relationships: neighborhoods
+  relationships: neighborhoods, area_memberships
   filters: 
   options:
     per_page: 9999
   search: areas.name
   application: Neighborhoods
+
+AreaMembership:
+  fields:
+    default: 
+    list: apartment_community, area
+    form: area, apartment_community
+    relationship: apartment_community, position
+    options:
+      ckeditor: 
+      booleans:
+      required: area, apartment_community, listing_image
+      selectors: 
+      destroy_related: 
+  order_by: position
+  relationships: 
+  filters: 
+  options:
+    per_page: 9999
+  search: 
+  application: 
 
 Award:
   fields:
@@ -516,7 +536,7 @@ Neighborhood:
   filters: 
   options:
     per_page: 9999
-  search: areas.name
+  search: neighborhoods.name
   application: Neighborhoods
 
 NeighborhoodMembership:

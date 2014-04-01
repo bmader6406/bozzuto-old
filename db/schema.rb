@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140331205956) do
+ActiveRecord::Schema.define(:version => 20140401152321) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -220,6 +220,16 @@ ActiveRecord::Schema.define(:version => 20140331205956) do
   end
 
   add_index "archived_properties", ["id"], :name => "index_archived_properties_on_id"
+
+  create_table "area_memberships", :force => true do |t|
+    t.integer  "area_id",                :null => false
+    t.integer  "apartment_community_id", :null => false
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "area_memberships", ["area_id"], :name => "index_area_memberships_on_area_id"
 
   create_table "areas", :force => true do |t|
     t.string   "name",                                       :null => false

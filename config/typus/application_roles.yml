@@ -9,6 +9,7 @@ admin:
   ApartmentFloorPlan: create, read, update, delete
   ApartmentFloorPlanGroup: read
   Area: create, read, update, delete
+  AreaMembership: create, read, update, delete
   Award: create, read, update, delete
   BodySlide: create, read, update, delete
   BodySlideshow: create, read, update, delete

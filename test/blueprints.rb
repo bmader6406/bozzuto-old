@@ -123,6 +123,11 @@ Area.blueprint do
   metro
 end
 
+AreaMembership.blueprint do
+  area
+  apartment_community
+end
+
 Award.blueprint do
   title        { Faker::Lorem.sentence }
   body         { Faker::Lorem.paragraphs }

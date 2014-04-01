@@ -17,6 +17,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
     should_have_one(:neighborhood, :dependent => :nullify)
     should_have_many(:neighborhood_memberships, :dependent => :destroy)
+    should_have_many(:area_memberships, :dependent => :destroy)
 
     should_have_apartment_floor_plan_cache
 
