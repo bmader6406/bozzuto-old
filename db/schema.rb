@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140331182541) do
+ActiveRecord::Schema.define(:version => 20140331205956) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -235,6 +235,7 @@ ActiveRecord::Schema.define(:version => 20140331182541) do
     t.integer  "apartment_communities_count", :default => 0
     t.text     "description"
     t.text     "detail_description"
+    t.integer  "state_id"
   end
 
   add_index "areas", ["apartment_communities_count"], :name => "index_areas_on_apartment_communities_count"

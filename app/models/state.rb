@@ -21,6 +21,7 @@ class State < ActiveRecord::Base
            :order      => 'featured_position'
 
   has_many :neighborhoods
+  has_many :areas
 
   named_scope :ordered_by_name, :order => 'states.name ASC'
   named_scope :positioned,      :order => 'states.position ASC'

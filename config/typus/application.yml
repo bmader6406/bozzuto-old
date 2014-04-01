@@ -80,7 +80,7 @@ Area:
   fields:
     default: name
     list: name
-    form: name, metro, latitude, longitude, banner_image, listing_image, description, detail_description
+    form: name, metro, state, latitude, longitude, banner_image, listing_image, description, detail_description
     relationship: name, position
     options:
       ckeditor: 

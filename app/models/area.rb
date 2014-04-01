@@ -8,6 +8,8 @@ class Area < ActiveRecord::Base
 
   has_neighborhood_listing_image
 
+  belongs_to :state
+
   has_many :neighborhoods, :dependent => :destroy
 
   belongs_to :metro
