@@ -57,7 +57,9 @@ module Bozzuto
       def available_floor_plans(reload = false)
         @available_floor_plans = nil if reload
 
+        #:nocov:
         @available_floor_plans ||= begin
+        #:nocov:
           ids = communities.map(&:available_floor_plans).flatten.map(&:id)
 
           ApartmentFloorPlan.scoped(:conditions => { :id => ids })

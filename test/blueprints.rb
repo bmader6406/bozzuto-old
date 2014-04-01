@@ -226,6 +226,12 @@ HomeCommunity.blueprint do
   city
 end
 
+HomeFloorPlan.blueprint do
+  home
+  name            { Sham.company_name }
+  image_file_name { Sham.file_name }
+end
+
 HomeCommunity.blueprint(:unpublished) do
   published { false }
 end
@@ -285,6 +291,17 @@ end
 NewsPost.blueprint(:unpublished) do
   published    { false }
   published_at { nil }
+end
+
+Page.blueprint do
+  title     { Faker::Lorem.sentence }
+  body      { Faker::Lorem.paragraphs(3) }
+  published { true }
+  section
+end
+
+Page.blueprint(:unpublished) do
+  published { false }
 end
 
 Photo.blueprint do
@@ -406,13 +423,6 @@ PropertyToursPage.blueprint do
   content       { Faker::Lorem.paragraphs(2) }
   meta_title    { Faker::Lorem.words(4) }
   meta_keywords { Faker::Lorem.words(6) }
-end
-
-Page.blueprint do
-  title     { Faker::Lorem.sentence }
-  body      { Faker::Lorem.paragraphs(3) }
-  published { true }
-  section
 end
 
 RecurringEmail.blueprint do

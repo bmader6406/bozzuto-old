@@ -30,14 +30,6 @@ module Bozzuto
       @env['QUERY_STRING']
     end
 
-    def query_string=(new_query_string)
-      @env['QUERY_STRING'] = new_query_string
-    end
-
-    def append_to_query_string(value)
-      self.query_string = [query_string, value].reject(&:blank?).join('&')
-    end
-
     def mobile?
       env['bozzuto.mobile.device'].present? && env['bozzuto.mobile.device'] != :browser
     end

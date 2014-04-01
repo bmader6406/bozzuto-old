@@ -47,7 +47,7 @@ module ApartmentCommunitiesHelper
 
     if image.present?
       content_tag(:div, :class => 'floor-plan-view') do
-        ''.tap do |html|
+        content = ''.tap do |html|
           html << image_tag(thumb, :width => 160)
 
           html << link_to(image, :class => 'floor-plan-view-full') do
@@ -55,7 +55,9 @@ module ApartmentCommunitiesHelper
           end
 
           html << extra
-        end.html_safe
+        end
+
+        content.html_safe
       end
     end
   end

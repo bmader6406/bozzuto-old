@@ -28,7 +28,7 @@ module PropertiesHelper
       else
         property.brochure.url
       end
-      
+
       if url.present?
         link_to property.brochure_link_text, url, { :rel => 'external' }.merge(opts)
       end
@@ -37,7 +37,7 @@ module PropertiesHelper
 
   def property_icons(community)
     content_tag :ul, :class => 'community-icons' do
-      community.property_features.map do |feature|
+      lis = community.property_features.map do |feature|
         if feature.icon?
           content_tag(:li) do
             link_to feature.name, "##{dom_id(feature)}",
@@ -46,18 +46,22 @@ module PropertiesHelper
               :'data-description' => feature.description
           end
         end
-      end.compact.join.html_safe
+      end
+
+      lis.compact.join.html_safe
     end
   end
 
   def property_bullets
     if @community.has_overview_bullets?
       content_tag :ul, :class => 'cty-features-list' do
-        (1..3).map do |i|
+        lis = (1..3).map do |i|
           if @community.send("overview_bullet_#{i}").present?
             content_tag(:li) { @community.send("overview_bullet_#{i}") }
           end
-        end.compact.join.html_safe
+        end
+
+        lis.compact.join.html_safe
       end
     end
   end

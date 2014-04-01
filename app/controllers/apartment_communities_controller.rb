@@ -57,7 +57,9 @@ class ApartmentCommunitiesController < ApplicationController
   end
 
   def geographic_filter
+    #:nocov:
     @geographic_filter ||= begin
+    #:nocov:
       search = params[:search]
 
       if search[:in_state].present?

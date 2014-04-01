@@ -36,7 +36,9 @@ module Bozzuto
     end
 
     def items
+      #:nocov:
       @items ||= begin
+      #:nocov:
         items = parsed_response.try(:[], 'rss').try(:[], 'channel').try(:[], 'item')
 
         [items].reject(&:nil?).flatten

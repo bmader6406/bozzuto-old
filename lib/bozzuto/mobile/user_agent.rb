@@ -26,7 +26,9 @@ module Bozzuto
       end
 
       def device
+        #:nocov:
         @device ||= begin
+        #:nocov:
           key = MOBILE_USER_AGENTS.keys.detect { |user_agent_key|
             user_agent_string.match(user_agent_key).present?
           }

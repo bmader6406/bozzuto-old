@@ -24,7 +24,9 @@ class HomePagesController < ApplicationController
   helper_method :latest_news
 
   def latest_awards
+    #:nocov:
     @latest_awards ||= begin
+    #:nocov:
       base_scope = Award.published
 
       featured   = base_scope.featured.latest(1).first

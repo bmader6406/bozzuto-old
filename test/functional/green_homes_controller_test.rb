@@ -1,26 +1,45 @@
 require 'test_helper'
 
 class GreenHomesControllerTest < ActionController::TestCase
-  context 'GreenHomesController' do
-    setup do
+  context "GreenHomesController" do
+    before do
       @section = Section.make(:new_homes)
       @page = Page.make(:title => 'Green Homes', :section => @section)
     end
 
-    context 'GET to #index' do
-      setup do
-        get :index, :section => @section.to_param
+    describe "GET to #index" do
+      context "as a normal user" do
+        before do
+          get :index, :section => @section.to_param
+        end
+
+        should_respond_with(:success)
+        should_render_template(:index)
+
+        should_assign_to(:section) { @section }
+        should_assign_to(:page) { @page }
       end
 
-      should_respond_with :success
-      should_render_template :index
+      context "as an admin" do
+        before do
+          @user = TypusUser.make
+          login_typus_user(@user)
 
-      should_assign_to(:section) { @section }
-      should_assign_to(:page) { @page }
+          @page.published = false
+
+          get :index, :section => @section.to_param
+        end
+
+        should_respond_with(:success)
+        should_render_template(:index)
+
+        should_assign_to(:section) { @section }
+        should_assign_to(:page) { @page }
+      end
     end
 
-    context 'GET to #show' do
-      setup do
+    describe "GET to #show" do
+      before do
         @community     = HomeCommunity.make
         @green_package = GreenPackage.make :home_community => @community
 

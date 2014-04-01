@@ -15,6 +15,7 @@ module Bozzuto
       end
     end
 
+    #:nocov:
     def self.community_records
       raise ".community_records must be defined in subclass"
     end
@@ -22,6 +23,7 @@ module Bozzuto
     def self.audit_fields
       raise ".audit_fields must be defined in subclass"
     end
+    #:nocov:
 
     def self.identifier_fields
       IDENTIFIER_FIELDS

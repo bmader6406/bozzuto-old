@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class PageTest < ActiveSupport::TestCase
-  context 'Page' do
+  context "Page" do
     should_belong_to :section
     should_belong_to :snippet
 
@@ -15,7 +15,7 @@ class PageTest < ActiveSupport::TestCase
     should_have_attached_file :middle_montage_image
     should_have_attached_file :right_montage_image
     
-    should 'be archivable' do
+    it "is archivable" do
       assert Page.acts_as_archive?
       assert_nothing_raised do
         Page::Archive
@@ -24,23 +24,23 @@ class PageTest < ActiveSupport::TestCase
       assert_equal ActiveRecord::Base, Page::Archive.superclass
     end
 
-    context ".for_sidebar_nav" do
-      setup do
+    describe ".for_sidebar_nav" do
+      before do
         @hidden_page  = Page.make :show_in_sidebar_nav => false
         @visible_page = Page.make :show_in_sidebar_nav => true
       end
 
-      should "return visible page" do
-        assert_contains Page.for_sidebar_nav, @visible_page
+      it "returns the visible pages" do
+        Page.for_sidebar_nav.should include(@visible_page)
       end
 
-      should "not return hidden page" do
-        assert_does_not_contain Page.for_sidebar_nav, @hidden_page
+      it "doesn't return the hidden pages" do
+        Page.for_sidebar_nav.should_not include(@hidden_page)
       end
     end
 
-    context '#formatted_title' do
-      setup do
+    describe "#formatted_title" do
+      before do
         @section = Section.make
         @page1 = Page.make :section => @section
         @page2 = Page.make :section => @section
@@ -48,31 +48,57 @@ class PageTest < ActiveSupport::TestCase
         @page2.move_to_child_of(@page1)
       end
 
-      should 'return formatted string' do
-        assert_equal @page1.title, @page1.formatted_title
-        assert_equal "&nbsp;&nbsp;&nbsp;&#8627; #{@page2.title}",
-          @page2.formatted_title
+      it "returns the formatted string" do
+        @page1.formatted_title.should == @page1.title
+        @page2.formatted_title.should == "&nbsp;&nbsp;&nbsp;&#8627; #{@page2.title}"
       end
     end
 
-    context '#first?' do
-      setup do
+    describe "#first?" do
+      before do
         @section = Section.make
         @page1 = Page.make :section => @section
         @page2 = Page.make :section => @section
       end
 
-      should 'return true if first' do
-        assert @page1.first?
+      it "returns true if first" do
+        @page1.first?.should == true
       end
 
-      should 'return false otherwise' do
-        assert !@page2.first?
+      it "returns false otherwise" do
+        @page2.first?.should == false
       end
     end
 
-    context '#to_param' do
-      setup do
+    describe "#root_level?" do
+      before do
+        @section = Section.make
+
+        @page1 = Page.make(:section => @section)
+        @page2 = Page.make(:section => @section)
+      end
+
+      subject { @page1 }
+
+      context "there are no ancestors" do
+        it "returns true" do
+          @page1.root_level?.should == true
+        end
+      end
+
+      context "there are ancestors" do
+        before do
+          @page1.move_to_child_of(@page2)
+        end
+
+        it "returns false" do
+          @page1.root_level?.should == false
+        end
+      end
+    end
+
+    describe "#to_param" do
+      before do
         @section = Section.make
         @page1 = Page.make :section => @section
         @page2 = Page.make :section => @section
@@ -80,14 +106,14 @@ class PageTest < ActiveSupport::TestCase
         @page2.save
       end
 
-      should 'return the path' do
-        assert_equal @page1.cached_slug, @page1.to_param
-        assert_equal "#{@page1.cached_slug}/#{@page2.cached_slug}", @page2.to_param
+      it "returns the path" do
+        @page1.to_param.should == @page1.cached_slug
+        @page2.to_param.should == "#{@page1.cached_slug}/#{@page2.cached_slug}"
       end
     end
 
-    context 'when saving' do
-      setup do
+    describe "when saving" do
+      before do
         @section = Section.make
         @page1 = Page.make :section => @section
         @page2 = Page.make :section => @section
@@ -95,38 +121,37 @@ class PageTest < ActiveSupport::TestCase
         @page2.save
       end
 
-      should 'automatically update the path' do
-        assert_equal [@page1.cached_slug, @page2.cached_slug].join('/'),
-          @page2.path
+      it "automatically updates the path" do
+        @page2.path.should == [@page1.cached_slug, @page2.cached_slug].join('/')
       end
     end
     
-    context '#montage?' do
-      setup do
+    describe "#montage?" do
+      before do
         @page = Page.make
       end
       
-      context 'when all montage images are present' do
-        setup do
+      context "when all montage images are present" do
+        before do
           @page.expects(:left_montage_image?).returns(true)
           @page.expects(:middle_montage_image?).returns(true)
           @page.expects(:right_montage_image?).returns(true)
         end
 
-        should 'return true' do
-          assert @page.montage?
+        it "returns true" do
+          @page.montage?.should == true
         end
       end
 
-      context 'when any montage images are missing' do
-        setup do
+      context "when any montage images are missing" do
+        before do
           @page.expects(:left_montage_image?).returns(false)
           @page.stubs(:middle_montage_image?).returns(true)
           @page.stubs(:right_montage_image?).returns(true)
         end
 
-        should 'return true' do
-          assert !@page.montage?
+        it "returns false" do
+          @page.montage?.should == false
         end
       end
     end
