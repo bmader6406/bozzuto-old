@@ -1,0 +1,19 @@
+<div class="nh-states">
+  <% states.in_groups_of(4, false).each do |group| %>
+    <div class="row">
+      <% group.each do |state| %>
+        <div class="nh-state">
+          <h3 class="nh-state-title"><%= state %></h3>
+
+          <ul class="nh-arrow-list">
+            <% state.places.each do |place| %>
+              <li>
+                <%= link_to place.name_with_count, place_path(place) %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

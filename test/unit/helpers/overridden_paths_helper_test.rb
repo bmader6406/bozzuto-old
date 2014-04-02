@@ -307,5 +307,31 @@ class OverriddenPathsHelperTest < ActionView::TestCase
         end
       end
     end
+
+    describe "#place_path" do
+      before do
+        @neighborhood = Neighborhood.make
+        @area         = @neighborhood.area
+        @metro        = @area.metro
+      end
+
+      context "place is a metro" do
+        it "returns the path" do
+          place_path(@metro).should == metro_path(@metro)
+        end
+      end
+
+      context "place is an area" do
+        it "returns the path" do
+          place_path(@area).should == area_path(@metro, @area)
+        end
+      end
+
+      context "place is a neighborhood" do
+        it "returns the path" do
+          place_path(@neighborhood).should == neighborhood_path(@metro, @area, @neighborhood)
+        end
+      end
+    end
   end
 end

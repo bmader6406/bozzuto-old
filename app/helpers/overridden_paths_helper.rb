@@ -123,4 +123,8 @@ module OverriddenPathsHelper
       contact_path
     end
   end
+
+  def place_path(place)
+    send("#{place.class.to_s.underscore}_path", *place.lineage)
+  end
 end

@@ -37,4 +37,10 @@ class State < ActiveRecord::Base
   def to_s
     name
   end
+
+  def places(reload = false)
+    @places = nil if reload
+
+    @places ||= (neighborhoods + areas.showing_communities).sort_by(&:apartment_communities_count).reverse
+  end
 end
