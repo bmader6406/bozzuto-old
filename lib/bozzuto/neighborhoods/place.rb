@@ -36,6 +36,10 @@ module Bozzuto
         name
       end
 
+      def typus_name
+        name
+      end
+
       def full_name
         "#{name} Apartments"
       end

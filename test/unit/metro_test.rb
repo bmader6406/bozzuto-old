@@ -14,6 +14,7 @@ class MetroTest < ActiveSupport::TestCase
     should_validate_uniqueness_of(:name)
 
     should_have_many(:areas, :dependent => :destroy)
+    should_have_one_seo_metadata
 
     describe "nested structure" do
       before do

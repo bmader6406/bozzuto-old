@@ -21,6 +21,10 @@ module Bozzuto
       def should_have_apartment_floor_plan_cache
         should_have_one(:apartment_floor_plan_cache, :dependent => :destroy)
       end
+
+      def should_have_one_seo_metadata
+        should_have_one(:seo_metadata, :dependent => :destroy)
+      end
     end
   end
 end

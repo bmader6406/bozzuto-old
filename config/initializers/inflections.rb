@@ -9,4 +9,5 @@ ActiveSupport::Inflector.inflections do |inflect|
 #   inflect.uncountable %w( fish sheep )
   inflect.plural /^(.*zz)$/i, '\1es'
   inflect.singular /^(.*zz)es$/i, '\1'
+  inflect.uncountable 'seo_metadata'
 end

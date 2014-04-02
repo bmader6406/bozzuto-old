@@ -89,7 +89,7 @@ Area:
       selectors: area_type
       destroy_related: 
   order_by: position
-  relationships: neighborhoods, area_memberships
+  relationships: seo_metadata, neighborhoods, area_memberships
   filters: 
   options:
     per_page: 9999
@@ -514,7 +514,7 @@ Metro:
       selectors: 
       destroy_related: 
   order_by: position
-  relationships: areas
+  relationships: seo_metadata, areas
   filters: 
   search: metros.name
   application: Neighborhoods
@@ -532,7 +532,7 @@ Neighborhood:
       selectors: 
       destroy_related: 
   order_by: position
-  relationships: neighborhood_memberships
+  relationships: seo_metadata, neighborhood_memberships
   filters: 
   options:
     per_page: 9999
@@ -886,6 +886,23 @@ Section:
   filters:
   search:
   application: Content
+
+SeoMetadata:
+  fields:
+    default: meta_title, meta_keywords, meta_description
+    list: meta_title, meta_keywords, meta_description
+    form: meta_title, meta_keywords, meta_description
+    options:
+      ckeditor: 
+      booleans:
+      required: 
+      selectors: 
+      destroy_related: 
+  order_by: 
+  relationships: 
+  filters: 
+  search: 
+  application: 
 
 Snippet:
   fields:

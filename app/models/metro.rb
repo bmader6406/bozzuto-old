@@ -1,4 +1,5 @@
 class Metro < ActiveRecord::Base
+  extend  Bozzuto::Seo
   include Bozzuto::Mappable
   include Bozzuto::ApartmentFloorPlans::HasCache
   include Bozzuto::Neighborhoods::Place

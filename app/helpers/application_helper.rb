@@ -14,8 +14,13 @@ module ApplicationHelper
   def render_meta(object, prefix = nil)
     prefix = "#{prefix}_" if prefix.present?
 
+    if object.respond_to?(:seo_metadata)
+      object = object.seo_metadata
+    end
+
     %w( meta_title meta_description meta_keywords ).each do |field|
       meta = object.try("#{prefix}#{field}")
+
       content_for(field.to_sym, meta) if meta.present?
     end
   end

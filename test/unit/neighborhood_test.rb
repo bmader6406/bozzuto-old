@@ -23,6 +23,7 @@ class NeighborhoodTest < ActiveSupport::TestCase
     should_belong_to(:featured_apartment_community)
     should_have_many(:neighborhood_memberships, :dependent => :destroy)
     should_have_many(:apartment_communities, :through => :neighborhood_memberships)
+    should_have_one_seo_metadata
 
     describe "nested structure" do
       before do

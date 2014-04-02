@@ -67,6 +67,7 @@ admin:
   RankCategory: create, read, update, delete
   Rank: create, read, update, delete
   Section: read, update
+  SeoMetadata: create, read, update, delete
   Snippet: create, read, update, delete
   State: create, read, update, delete
   Testimonial: create, read, update, delete

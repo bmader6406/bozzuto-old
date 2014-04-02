@@ -1,0 +1,27 @@
+<% if !@item.new_record? %>
+  <p style="font-size: 14px; margin-bottom: 25px;">
+    <%= link_to "&larr; Back to #{@item.resource.typus_name}".html_safe,
+                "/admin/#{@item.resource.class.model_name.tableize}/edit/#{@item.resource.id}" %>
+  </p>
+<% end %>
+
+<% form_for @item, :url  => options, :html => { :multipart => true } do |form| %>
+  <% if @item.new_record? %>
+    <%= form.hidden_field :resource_id,   :value => params[:resource_id] %>
+    <%= form.hidden_field :resource_type, :value => params[:resource].classify %>
+  <% end %>
+
+  <fieldset class="inputs">
+    <ol>
+      <%= build_form(@fields, form) %>
+    </ol>
+  </fieldset>
+  <fieldset class="buttons">
+    <ol>
+      <li>
+        <%= submit_tag button , :class => 'commit' %>
+        <%= link_to 'Cancel', :back %>
+      </li>
+    </ol>
+  </fieldset>
+<% end %>

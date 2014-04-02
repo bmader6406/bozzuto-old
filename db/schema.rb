@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140401192232) do
+ActiveRecord::Schema.define(:version => 20140402191821) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -1146,6 +1146,16 @@ ActiveRecord::Schema.define(:version => 20140401192232) do
 
   add_index "sections", ["about"], :name => "index_sections_on_about"
   add_index "sections", ["cached_slug"], :name => "index_sections_on_cached_slug"
+
+  create_table "seo_metadata", :force => true do |t|
+    t.integer  "resource_id",      :null => false
+    t.string   "resource_type",    :null => false
+    t.string   "meta_title"
+    t.string   "meta_description"
+    t.string   "meta_keywords"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "slugs", :force => true do |t|
     t.string   "name"

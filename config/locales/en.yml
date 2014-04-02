@@ -59,6 +59,7 @@ en:
       property_slide: Slide
       property_slideshow: Property Slideshow
       rank_category: Rank Category
+      seo_metadata: SEO Metadata
       typus_user: User
       under_construction_lead: Under-Construction Lead
     attributes:
@@ -346,6 +347,10 @@ en:
         left_montage_image: Left Montage Image
         middle_montage_image: Middle Montage Image
         right_montage_image: Right Montage Image
+      seo_metadata:
+        meta_description: Meta Description
+        meta_keywords: Meta Keywords
+        meta_title: Meta Title
       typus_user:
         first_name: First Name
         last_name: Last Name
