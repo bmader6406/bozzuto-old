@@ -6,6 +6,10 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   clear: both;
 }
 
+.nh-container {
+  width: 990px;
+}
+
 .bc-title {
   margin-bottom: 12px !important;
 }
@@ -35,6 +39,7 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   }
 
   border-top: 1px solid #fff;
+  margin-bottom: 10px;
 }
 
 .nh-map-controls {
@@ -87,7 +92,6 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
 
 .nh-map-marker-cty {
   color: #fff;
-  //opacity: 0.95;
   width: 40px;
   height: 40px;
   text-align: center;
@@ -100,14 +104,21 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   }
 }
 
-.nh-tile {
+@mixin tile {
   float: left;
-  margin-right: 30px;
-  padding: 25px 0;
+  padding: 15px;
   width: 300px;
+}
 
-  &:nth-child(3n) {
-    margin-right: 0;
+.nh-tile {
+  @include tile;
+}
+
+.cty-tile {
+  @include tile;
+
+  &:hover {
+    background: #f8f8f8;
   }
 }
 
@@ -119,40 +130,102 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   margin-bottom: 18px;
   position: relative;
   width: 300px;
+}
 
-  .nh-tile-title {
-    @include box-sizing(border-box);
-    @include transition(all 0.1s ease-in-out);
+.nh-tile-title,
+.cty-tile-title {
+  @include box-sizing(border-box);
 
-    background-color: rgba(0, 0, 0, 0.36);
-    border: 5px solid transparent;
+  background-color: rgba(0, 0, 0, 0.36);
+  display: table;
+  height: 234px;
+  left: 0;
+  position: absolute;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 1.0);
+  top: 0;
+  width: 300px;
+
+  h2 {
     color: #fff !important;
-    display: table;
+    display: table-cell;
     font-family: $narrow-font;
     font-size: 36px !important;
     font-weight: bold;
-    height: 234px;
-    left: 0;
     line-height: 1.25 !important;
-    position: absolute;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 1.0);
+    padding: 0 10px;
+    text-align: center;
     text-transform: uppercase;
-    top: 0;
-    width: 300px;
-
-    span {
-      display: table-cell;
-      padding: 0 10px;
-      text-align: center; 
-      vertical-align: middle; 
-    }
+    vertical-align: middle;
   }
+}
 
-  &:hover .nh-tile-title {
+.nh-tile-title {
+  @include transition(all 0.1s ease-in-out);
+
+  border: 5px solid transparent;
+}
+
+.nh-listing-image:hover {
+  .nh-tile-title {
     @include transition(all 0.2s ease-in-out);
 
     border: 5px solid #6591bf;
     background-color: rgba(0, 0, 0, 0.65);
+  }
+}
+
+.cty-tile-amenities {
+  @include box-sizing(border-box);
+
+  height: 234px;
+  left: 0;
+  opacity: 0;
+  padding: 25px 30px;
+  position: absolute;
+  top: 0;
+  width: 300px;
+
+  li {
+    float: left;
+    width: 50%;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 46px;
+  }
+}
+
+.cty-tile {
+  .cty-tile-title,
+  h2,
+  .cty-tile-amenities,
+  .cty-tile-actions {
+      @include transition(all 0.1s ease-in-out);
+  }
+}
+
+.cty-tile:hover {
+  .cty-tile-title,
+  h2,
+  .cty-tile-amenities,
+  .cty-tile-actions {
+    @include transition(all 0.2s ease-in-out);
+  }
+
+  .cty-tile-title {
+    background-color: rgba(0, 0, 0, 0.65);
+  }
+
+  h2 {
+    opacity: 0;
+  }
+
+  .cty-tile-amenities {
+    opacity: 1;
+  }
+
+  .cty-tile-actions {
+    opacity: 1;
   }
 }
 
@@ -194,6 +267,42 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   }
 }
 
+.cty-tile-actions {
+  margin-top: 35px;
+  opacity: 0;
+  width: 100%;
+
+  .cty-tile-actions-availability {
+    background: transparent url(/images/neighborhoods/cty-availability-btn.png) no-repeat 0 0;
+    color: #fff;
+    float: left;
+    font-family: $narrow-font;
+    font-size: 22px;
+    height: 35px;
+    line-height: 35px;
+    text-transform: uppercase;
+    text-align: center;
+    width: 146px;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .cty-tile-actions-info {
+    background: transparent url(/images/structure/bg-header-a.gif) no-repeat center left;
+    color: #84848b;
+    float: right;
+    font-size: 12px;
+    font-weight: bold;
+    height: 35px;
+    line-height: 35px;
+    padding-left: 8px;
+    text-align: right;
+    text-transform: uppercase;
+  }
+}
+
 .nh-arrow-list {
   li {
     background: url(/images/structure/bg-footer-a.gif) no-repeat center left;
@@ -212,18 +321,14 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
 .nh-states {
   border-top: 1px solid #cccccc;
   margin-top: 40px;
-  padding-top: 60px;
+  padding: 60px 15px 0 15px;
 }
 
 .nh-state {
   float: left;
-  margin-right: 20px;
   margin-bottom: 40px;
+  padding: 0 10px;
   width: 220px;
-
-  &:nth-child(4n) {
-    margin-right: 0;
-  }
 
   .nh-state-title {
     border: none !important;

@@ -1,6 +1,16 @@
-<div class="nh-tile">
+<div class="cty-tile">
   <% link_to apartment_community_path(community), :class => 'nh-listing-image' do %>
-    <h2 class="nh-tile-title"><span><%= community.title %></span></h2>
+    <div class="cty-tile-title">
+      <h2><%= community.title %></h2>
+
+      <% if community.property_features.any? %>
+        <ul class="cty-tile-amenities">
+          <% community.property_features.take(8).each do |feature| %>
+            <li><%= feature.name.gsub(/\band\b/, '&amp;').html_safe %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
 
     <% if community.neighborhood_listing_image? %>
       <%= image_tag community.neighborhood_listing_image.url, :width => 300, :height => 234 %>
@@ -15,5 +25,13 @@
     <% end %>
 
     <%= render 'areas/floor_plans', :thing => community %>
+  </div>
+
+  <div class="cty-tile-actions row">
+    <% community.availability_url.if_present? do |url| %>
+      <%= link_to 'Availability', url, :class => 'cty-tile-actions-availability' %>
+    <% end %>
+
+    <%= link_to 'More Info', apartment_community_path(community), :class => 'cty-tile-actions-info' %>
   </div>
 </div>

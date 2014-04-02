@@ -1,6 +1,8 @@
 <div class="nh-tile">
   <% link_to metro_path(metro), :class => 'nh-listing-image' do %>
-    <h2 class="nh-tile-title"><span><%= metro %></span></h2>
+    <div class="nh-tile-title">
+      <h2><%= metro %></h2>
+    </div>
 
     <%= image_tag metro.listing_image.url, :width => 300, :height => 234 %>
   <% end %>

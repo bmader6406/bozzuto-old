@@ -1,6 +1,8 @@
 <div class="nh-tile">
   <% link_to area_path(metro, area), :class => 'nh-listing-image' do %>
-    <h2 class="nh-tile-title"><span><%= area %></span></h2>
+    <div class="nh-tile-title">
+      <h2><%= area %></h2>
+    </div>
 
     <%= image_tag area.listing_image.url, :width => 300, :height => 234 %>
   <% end %>
