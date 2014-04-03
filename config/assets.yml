@@ -51,3 +51,10 @@ javascripts:
 stylesheets:
   bozzuto:
     - public/stylesheets/screen.css
+  neighborhoods:
+    - public/stylesheets/neighborhoods.css
+  redesign:
+    - public/stylesheets/application.css
+    - public/stylesheets/pages/community.css
+  mobile:
+    - public/stylesheets/mobile.css
