@@ -64,7 +64,7 @@ module Bozzuto
 
       def communities(reload = false)
         if children.nil?
-          apartment_communities(reload)
+          apartment_communities(reload).published
         else
           children.map { |c| c.communities(reload) }.flatten.uniq
         end
