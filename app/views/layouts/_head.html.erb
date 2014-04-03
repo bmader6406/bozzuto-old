@@ -9,6 +9,7 @@
   </title>
 
   <meta charset="utf-8" />
+
   <% if Rails.env.production? %>
     <meta name="google-site-verification" content="z8aGriUyw1rozhnubJxR1pNhX2yL-QwTujrkif6shaU" />
   <% end %>
@@ -37,8 +38,6 @@
   <script type="text/javascript">
     (function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)
     
-    function align(g){var e=document,f=" narrowPage",b=e.body;if(!window.innerWidth){w=(g.clientWidth==0)?b.clientWidth:g.clientWidth}else{w=window.innerWidth}a(g,w,f)}function a(h,b,g){var f=h.className,d=f.indexOf(g)!=-1,e=b<1130&&b>980;if(e&&d==false){h.className=f+g}else{if(!e&&d){h.className=f.replace(g,"")}}}align(document.documentElement);
-
     (function(){
       // if firefox 3.5+, hide content till load (or 3 seconds) to prevent FOUT
       var d = document, e = d.documentElement, s = d.createElement('style');
