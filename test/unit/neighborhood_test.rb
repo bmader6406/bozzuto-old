@@ -44,6 +44,12 @@ class NeighborhoodTest < ActiveSupport::TestCase
         subject.save
       end
 
+      describe "#typus_name" do
+        it "returns the name" do
+          subject.typus_name.should == subject.name
+        end
+      end
+
       describe "#parent" do
         it "returns the area" do
           subject.parent.should == subject.area

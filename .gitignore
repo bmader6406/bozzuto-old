@@ -6,6 +6,7 @@ config/app_config.yml
 public/assets
 public/stylesheets/application.css
 public/stylesheets/neighborhoods.css
+public/stylesheets/mobile.css
 public/stylesheets/pages/community.css
 test/fixtures/*.yml
 coverage/*

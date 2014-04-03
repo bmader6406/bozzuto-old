@@ -48,6 +48,12 @@ class MetroTest < ActiveSupport::TestCase
         subject.save
       end
 
+      describe "#typus_name" do
+        it "returns the name" do
+          subject.typus_name.should == subject.name
+        end
+      end
+
       describe "#parent" do
         it "returns nil" do
           subject.parent.should == nil

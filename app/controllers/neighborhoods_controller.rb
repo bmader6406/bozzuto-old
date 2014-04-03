@@ -1,4 +1,6 @@
 class NeighborhoodsController < ApplicationController
+  has_mobile_actions :show
+
   def show
   end
 

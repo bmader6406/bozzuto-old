@@ -1,0 +1,9 @@
+<li>
+  <div class="property">
+    <% link_to area_path(metro, area), :class => 'info' do %>
+      <span class="name"><%= area.name_with_count %></span>
+
+      <span class="price">Pricing from <%= dollars(area.min_rent) %></span>
+    <% end %>
+  </div>
+</li>

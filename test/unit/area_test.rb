@@ -26,6 +26,12 @@ class AreaTest < ActiveSupport::TestCase
     should_have_one_seo_metadata
 
     describe "nested structure" do
+      describe "#typus_name" do
+        it "returns the name" do
+          subject.typus_name.should == subject.name
+        end
+      end
+
       context "area_type is 'neighborhoods'" do
         before do
           

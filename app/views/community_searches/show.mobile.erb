@@ -19,17 +19,3 @@
     <% end %>
   </div>
 </div>
-
-<div class="section browse">
-  <div class="content">
-    <h3>Browse by State</h3>
-    <ul class="browse states">
-      <%- State.all.each do |state| -%>
-        <li>
-          <%= link_to "<span>#{state.name}</span> (#{state.apartment_communities.count})".html_safe, 
-                state_path(state), :class => 'btn' %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>

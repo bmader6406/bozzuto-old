@@ -1,33 +1,21 @@
 <div class="section page-title">
   <div class="content">
-    <h2><%= @state.name %></h2>
-    <%= link_to 'Search Communities', community_search_path, :class => 'go-back' %>
+    <h2><%= @state %></h2>
+
+    <%= link_to 'Find an Apartment', metros_path, :class => 'go-back' %>
   </div>
 </div>
 
 <div class="section browse">
   <div class="content">
-    <% link_to state_counties_path(@state), :class => 'btn submit' do %>
-      <span>Browse by County</span>
-    <% end %>
-  </div>
-</div>
-
-<div class="section browse">
-  <div class="content">
-    <h3>Browse by City</h3>
-    <ul class="browse city">
-      <%- @cities.each do |city| -%>
-        <% count = city.apartment_communities.published.count %>
-
-        <% if count > 0 %>
-          <li>
-            <% link_to city_path(city), :class => 'btn' do %>
-              <span><%= city.name %></span> (<%= count %>)
-            <% end %>
-          </li>
-        <% end %>
-      <%- end -%>
+    <ul>
+      <% @state.places.each do |place| %>
+        <li>
+          <% link_to place_path(place), :class => 'btn' do %>
+            <span><%= place %></span> (<%= place.apartment_communities_count %>)
+          <% end %>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>

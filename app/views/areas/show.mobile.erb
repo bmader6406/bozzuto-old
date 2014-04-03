@@ -1,0 +1,27 @@
+<div class="section page-title">
+  <div class="content">
+    <h2><%= area %></h2>
+
+    <%= link_to metro, metro_path(metro), :class => 'go-back' %>
+  </div>
+</div>
+
+<div class="section">
+  <div class="content property-list">
+    <ul>
+      <% if area.shows_neighborhoods? %>
+
+        <% neighborhoods.each do |neighborhood| %>
+          <%= render 'neighborhoods/listing', :metro => metro, :area => area, :neighborhood => neighborhood %>
+        <% end %>
+
+      <% else %>
+
+        <% area.communities.each do |community| %>
+          <%= render 'apartment_communities/listing', :community => community %>
+        <% end %>
+
+      <% end %>
+    </ul>
+  </div>
+</div>

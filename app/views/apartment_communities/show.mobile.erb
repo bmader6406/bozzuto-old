@@ -3,7 +3,8 @@
 <div class="section page-title">
   <div class="content">
     <h2><%= @community.title %></h2>
-    <%= link_to @community.city.name, city_path(@community.city), :class => 'go-back' %>
+
+    <%= link_to 'Find an Apartment', metros_path, :class => 'go-back' %>
   </div>
 </div>
 

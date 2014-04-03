@@ -14,7 +14,7 @@
     <%= @page.mobile_body.try(:html_safe) %>
 
     <% if @section.cached_slug == 'apartments' && @page.first? %>
-      <%= link_to 'Find an Apartment', community_search_path, :class => 'btn submit find-an-apartment' %>
+      <%= link_to 'Find an Apartment', metros_path, :class => 'btn submit find-an-apartment' %>
     <% end %>
 
     <% if @section.cached_slug == 'new-homes' && @page.first? %>

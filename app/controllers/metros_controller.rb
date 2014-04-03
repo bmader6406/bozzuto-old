@@ -1,4 +1,6 @@
 class MetrosController < ApplicationController
+  has_mobile_actions :index, :show
+
   def index
   end
 
