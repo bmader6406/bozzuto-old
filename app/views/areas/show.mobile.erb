@@ -7,21 +7,22 @@
 </div>
 
 <div class="section">
-  <div class="content property-list">
-    <ul>
-      <% if area.shows_neighborhoods? %>
-
-        <% neighborhoods.each do |neighborhood| %>
-          <%= render 'neighborhoods/listing', :metro => metro, :area => area, :neighborhood => neighborhood %>
-        <% end %>
-
-      <% else %>
-
-        <% area.communities.each do |community| %>
-          <%= render 'apartment_communities/listing', :community => community %>
-        <% end %>
-
-      <% end %>
-    </ul>
+    <% if area.shows_neighborhoods? %>
+      <div class="content pill-list">
+        <ul>
+          <% neighborhoods.each do |neighborhood| %>
+            <%= render 'neighborhoods/listing', :metro => metro, :area => area, :neighborhood => neighborhood %>
+          <% end %>
+        </ul>
+      </div>
+    <% else %>
+      <div class="content property-list">
+        <ul>
+          <% area.communities.each do |community| %>
+            <%= render 'apartment_communities/listing', :community => community %>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   </div>
 </div>

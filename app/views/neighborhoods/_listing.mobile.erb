@@ -1,7 +1,9 @@
 <li>
-  <div class="property">
+  <div class="pill place">
     <% link_to neighborhood_path(metro, area, neighborhood), :class => 'info' do %>
-      <span class="name"><%= neighborhood.name_with_count %></span>
+      <span class="name"><%= neighborhood %></span>
+
+      <span class="count"><%= pluralize(area.apartment_communities_count, 'Apartment Community') %></span>
 
       <span class="price">Pricing from <%= dollars(neighborhood.min_rent) %></span>
     <% end %>
