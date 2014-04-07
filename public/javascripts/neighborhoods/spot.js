@@ -1,18 +1,71 @@
 (function($) {
   // Spot parent object
   bozzuto.Neighborhoods.Spot = function(node) {
-    this.json             = $.parseJSON($(node).attr('data-jmapping'));
-    this.id               = this.json['id'];
-    this.category         = this.json['category'];
-    this.name             = this.json['name'];
-    this.communitiesCount = this.json['apartment_communities_count'];
-    this.latitude         = this.json['point']['lat'];
-    this.longitude        = this.json['point']['lng'];
+    this.infoWindowContent = $(node).find('.nh-map-info-window')[0].outerHTML;
+    this.json              = $.parseJSON($(node).attr('data-jmapping'));
+    this.id                = this.json['id'];
+    this.category          = this.json['category'];
+    this.name              = this.json['name'];
+    this.communitiesCount  = this.json['apartment_communities_count'];
+    this.latitude          = this.json['point']['lat'];
+    this.longitude         = this.json['point']['lng'];
   };
 
   bozzuto.Neighborhoods.Spot.prototype = {
     toLatLng: function() {
       return new google.maps.LatLng(this.latitude, this.longitude);
+    },
+
+    setMap: function(map) {
+      this.clearEventListeners();
+
+      this.marker().setMap(map);
+
+      this.setEventListeners();
+    },
+
+    clearEventListeners: function() {
+      google.maps.event.clearInstanceListeners(this.marker());
+    },
+
+    setEventListeners: function() {
+      var self   = this,
+          marker = this.marker(),
+          map    = marker.getMap();
+
+      if (!map) {
+        return;
+      }
+
+      // Open info window on mouseover
+      google.maps.event.addListener(marker, 'mouseover', function() {
+        self.infoWindow().open(map, marker);
+      });
+
+      // Close info window on mouseout
+      google.maps.event.addListener(this.marker(), 'mouseout', function() {
+        self.infoWindow().close();
+      });
+
+      // Remove the close button
+      google.maps.event.addListener(this.infoWindow(), 'domready', function() {
+        try {
+          var $content = $(this.D.getContentNode());
+
+          $content.parent().parent().children().last().remove();
+        } catch (err) {}
+      });
+    },
+
+    infoWindow: function() {
+      if (!this._infoWindow) {
+        this._infoWindow = new google.maps.InfoWindow({
+          disableAutoPan: true,
+          content:        this.infoWindowContent
+        });
+      }
+
+      return this._infoWindow;
     }
   };
 

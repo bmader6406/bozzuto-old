@@ -115,7 +115,7 @@
 
     removePoints: function(points) {
       $.each(points, function(_, point) {
-        point.marker().setMap(null);
+        point.setMap(null);
       });
     },
 
@@ -139,7 +139,7 @@
 
       // Add the markers
       $.each(points, function(_, point) {
-        point.marker().setMap(self.map)
+        point.setMap(self.map)
       });
     },
 

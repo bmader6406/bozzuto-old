@@ -25,11 +25,23 @@
 
     <div class="nh-map-data">
       <% neighborhoods.each do |neighborhood| %>
-        <div class="nh-map-neighborhood" <%= jmapping(neighborhood) %>></div>
+        <div class="nh-map-neighborhood" <%= jmapping(neighborhood) %>>
+          <div class="nh-map-info-window">
+            <h2><%= neighborhood %></h2>
+          </div>
+        </div>
       <% end %>
 
       <% communities.each do |community| %>
-        <div class="nh-map-community" <%= jmapping(community) %>></div>
+        <div class="nh-map-community" <%= jmapping(community) %>>
+          <div class="nh-map-info-window">
+            <h2><%= community.title %></h2>
+
+            <% if community.under_construction? %>
+              <p class="nh-map-info-window-coming-soon">Coming Soon</p>
+            <% end %>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>

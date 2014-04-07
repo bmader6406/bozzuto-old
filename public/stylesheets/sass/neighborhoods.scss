@@ -104,6 +104,25 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   }
 }
 
+.nh-map-info-window {
+  max-width: 200px;
+  padding: 5px 10px 5px 30px;
+
+  h2,
+  p {
+    color: #84848b;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  p {
+    font-size: 12px;
+    margin-top: 5px;
+    text-transform: uppercase;
+  }
+}
+
 @mixin tile {
   float: left;
   padding: 15px;

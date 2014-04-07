@@ -74,6 +74,20 @@
   .nh-map-marker-cty.nh-map-marker-cty-small {
     font-size: 14px; }
 
+.nh-map-info-window {
+  max-width: 200px;
+  padding: 5px 10px 5px 30px; }
+  .nh-map-info-window h2,
+  .nh-map-info-window p {
+    color: #84848b;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center; }
+  .nh-map-info-window p {
+    font-size: 12px;
+    margin-top: 5px;
+    text-transform: uppercase; }
+
 .nh-tile {
   float: left;
   padding: 15px;
