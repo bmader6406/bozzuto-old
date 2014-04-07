@@ -135,7 +135,7 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  background-color: rgba(0, 0, 0, 0.36);
+  background-color: rgba(0, 0, 0, 0.15);
   display: table;
   height: 234px;
   left: 0;
@@ -167,7 +167,7 @@
   -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   border: 5px solid #6591bf;
-  background-color: rgba(0, 0, 0, 0.65); }
+  background-color: rgba(0, 0, 0, 0.45); }
 
 .cty-tile-amenities {
   -webkit-box-sizing: border-box;
@@ -204,7 +204,7 @@
   -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out; }
 .cty-tile:hover .cty-tile-title {
-  background-color: rgba(0, 0, 0, 0.65); }
+  background-color: rgba(0, 0, 0, 0.45); }
 .cty-tile:hover h2 {
   opacity: 0; }
 .cty-tile:hover .cty-tile-amenities {
