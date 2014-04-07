@@ -50,9 +50,14 @@
       // Remove the close button
       google.maps.event.addListener(this.infoWindow(), 'domready', function() {
         try {
-          var $content = $(this.D.getContentNode());
+          var $content   = $(this.D.getContentNode()),
+              $container = $content.parent().parent();
 
-          $content.parent().parent().children().last().remove();
+          // Only remove if the close button is still present. There's no class
+          // on the node, so we have to find it this way.
+          if ($container.children().length == 3) {
+            $container.children().last().remove();
+          }
         } catch (err) {}
       });
     },
