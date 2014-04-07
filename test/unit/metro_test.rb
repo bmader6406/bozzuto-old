@@ -72,6 +72,12 @@ class MetroTest < ActiveSupport::TestCase
         end
       end
 
+      describe "#lineage_hash" do
+        it "returns the hash" do
+          subject.lineage_hash.should == { :metro => subject }
+        end
+      end
+
       describe "#communities" do
         it "returns all of the unique communities" do
           subject.communities.should == [@community_1, @community_2]

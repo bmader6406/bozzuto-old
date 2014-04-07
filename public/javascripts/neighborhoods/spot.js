@@ -1,14 +1,15 @@
 (function($) {
   // Spot parent object
-  bozzuto.Neighborhoods.Spot = function(node) {
-    this.infoWindowContent = $(node).find('.nh-map-info-window')[0].outerHTML;
-    this.json              = $.parseJSON($(node).attr('data-jmapping'));
-    this.id                = this.json['id'];
-    this.category          = this.json['category'];
-    this.name              = this.json['name'];
-    this.communitiesCount  = this.json['apartment_communities_count'];
-    this.latitude          = this.json['point']['lat'];
-    this.longitude         = this.json['point']['lng'];
+  bozzuto.Neighborhoods.Spot = function(map, node) {
+    this.map              = map
+    this.$node            = $(node);
+    this.json             = $.parseJSON(this.$node.attr('data-jmapping'));
+    this.id               = this.json['id'];
+    this.category         = this.json['category'];
+    this.name             = this.json['name'];
+    this.communitiesCount = this.json['apartment_communities_count'];
+    this.latitude         = this.json['point']['lat'];
+    this.longitude        = this.json['point']['lng'];
   };
 
   bozzuto.Neighborhoods.Spot.prototype = {
@@ -16,10 +17,10 @@
       return new google.maps.LatLng(this.latitude, this.longitude);
     },
 
-    setMap: function(map) {
+    setMap: function(gMap) {
       this.clearEventListeners();
 
-      this.marker().setMap(map);
+      this.marker().setMap(gMap);
 
       this.setEventListeners();
     },
@@ -43,8 +44,12 @@
       });
 
       // Close info window on mouseout
-      google.maps.event.addListener(this.marker(), 'mouseout', function() {
+      google.maps.event.addListener(marker, 'mouseout', function() {
         self.infoWindow().close();
+      });
+
+      google.maps.event.addListener(marker, 'click', function() {
+        self.map.showOverlay(self);
       });
 
       // Remove the close button
@@ -66,17 +71,25 @@
       if (!this._infoWindow) {
         this._infoWindow = new google.maps.InfoWindow({
           disableAutoPan: true,
-          content:        this.infoWindowContent
+          content:        this.infoWindowContent()
         });
       }
 
       return this._infoWindow;
+    },
+
+    infoWindowContent: function() {
+      return this.$node.find('.nh-map-info-window')[0].outerHTML;
+    },
+
+    overlayContent: function() {
+      return this.$node.find('.nh-map-overlay')[0].outerHTML;
     }
   };
 
   // Neighborhood spot
-  bozzuto.Neighborhoods.Neighborhood = function(node) {
-    bozzuto.Neighborhoods.Spot.call(this, [node]);
+  bozzuto.Neighborhoods.Neighborhood = function(map, node) {
+    bozzuto.Neighborhoods.Spot.call(this, map, node);
   };
 
   bozzuto.Neighborhoods.Neighborhood.prototype = Object.create(bozzuto.Neighborhoods.Spot.prototype);
@@ -110,8 +123,8 @@
   };
 
   // Community spot
-  bozzuto.Neighborhoods.Community = function(node) {
-    bozzuto.Neighborhoods.Spot.call(this, [node]);
+  bozzuto.Neighborhoods.Community = function(map, node) {
+    bozzuto.Neighborhoods.Spot.call(this, map, node);
   };
 
   bozzuto.Neighborhoods.Community.prototype = Object.create(bozzuto.Neighborhoods.Spot.prototype);
@@ -120,8 +133,9 @@
   bozzuto.Neighborhoods.Community.prototype.marker = function() {
     if (!this._marker) {
       this._marker = new google.maps.Marker({
-        position: this.toLatLng(),
-        title:    this.name,
+        position:    this.toLatLng(),
+        anchorPoint: new google.maps.Point(0, -38),
+        title:       this.name,
         icon: {
           url:  '/images/neighborhoods/cty-marker.png',
           size: new google.maps.Size(40, 40)

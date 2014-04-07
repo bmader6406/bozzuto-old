@@ -20,7 +20,9 @@
 
 .nh-map {
   border-top: 1px solid #fff;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1000; }
   .nh-map.container {
     width: 1020px; }
   .nh-map .nh-map-canvas {
@@ -88,6 +90,20 @@
     margin-top: 5px;
     text-transform: uppercase; }
 
+.nh-map-blocker {
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%; }
+
+.nh-map-overlay {
+  background-color: #fff;
+  box-shadow: 0px 8px 20px 4px rgba(0, 0, 0, 0.6);
+  left: 50%;
+  position: absolute;
+  top: 50%; }
+
 .nh-tile {
   float: left;
   padding: 15px;
@@ -99,6 +115,11 @@
   width: 300px; }
   .cty-tile:hover {
     background: #f8f8f8; }
+
+.nh-map-overlay .cty-tile:hover {
+  background: none; }
+.nh-map-overlay .cty-tile-actions {
+  opacity: 1; }
 
 .nh-listing-image {
   background-color: #f8f8f8;

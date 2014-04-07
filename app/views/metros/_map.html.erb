@@ -1,11 +1,11 @@
-<% neighborhoods ||= [] %>
-<% communities   ||= [] %>
+<% places      ||= [] %>
+<% communities ||= [] %>
 
-<% if neighborhoods.any? || communities.any? %>
+<% if places.any? || communities.any? %>
   <div class="nh-map container">
     <div class="nh-map-canvas"></div>
 
-    <% if neighborhoods.any? && communities.any? %>
+    <% if places.any? && communities.any? %>
       <div class="nh-map-controls">
         <%= link_to 'Show All Communities On Map', '#', :class => 'nh-map-controls-show-all' %>
 
@@ -24,10 +24,14 @@
     <% end %>
 
     <div class="nh-map-data">
-      <% neighborhoods.each do |neighborhood| %>
-        <div class="nh-map-neighborhood" <%= jmapping(neighborhood) %>>
+      <% places.each do |place| %>
+        <div class="nh-map-neighborhood" <%= jmapping(place) %>>
           <div class="nh-map-info-window">
-            <h2><%= neighborhood %></h2>
+            <h2><%= place %></h2>
+          </div>
+
+          <div class="nh-map-overlay">
+            <%= render "#{place.class.model_name.tableize}/listing", place.lineage_hash %>
           </div>
         </div>
       <% end %>
@@ -40,6 +44,10 @@
             <% if community.under_construction? %>
               <p class="nh-map-info-window-coming-soon">Coming Soon</p>
             <% end %>
+          </div>
+
+          <div class="nh-map-overlay">
+            <%= render 'neighborhoods/community_listing', :community => community %>
           </div>
         </div>
       <% end %>

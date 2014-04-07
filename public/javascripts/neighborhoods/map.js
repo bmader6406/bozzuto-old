@@ -34,10 +34,11 @@
 
     neighborhoods: function() {
       if (!this._neighborhoods) {
-        var nodes = this.$map.find('.nh-map-neighborhood');
+        var self  = this,
+            nodes = this.$map.find('.nh-map-neighborhood');
 
         this._neighborhoods = $.map(nodes, function(node) {
-          return new bozzuto.Neighborhoods.Neighborhood(node);
+          return new bozzuto.Neighborhoods.Neighborhood(self, node);
         });
       }
 
@@ -46,10 +47,11 @@
 
     communities: function() {
       if (!this._communities) {
-        var nodes = this.$map.find('.nh-map-community');
+        var self  = this,
+            nodes = this.$map.find('.nh-map-community');
 
         this._communities = $.map(nodes, function(node) {
-          return new bozzuto.Neighborhoods.Community(node);
+          return new bozzuto.Neighborhoods.Community(self, node);
         });
       }
 
@@ -57,8 +59,12 @@
     },
 
     render: function() {
+      if (this.gMap) {
+        return;
+      }
+
       // Create the map
-      this.map = new google.maps.Map(this.$canvas[0], {
+      this.gMap = new google.maps.Map(this.$canvas[0], {
         navigationControlOptions: {
           style: google.maps.NavigationControlStyle.SMALL
         },
@@ -67,6 +73,8 @@
         zoom:           9,
         center:         this.initialPoint()
       });
+
+      this.setupConversion();
 
       // Add the points
       if (this.neighborhoods().length > 0) {
@@ -124,22 +132,22 @@
 
       if (points.length == 0) {
         // Center map at the initial point
-        this.map.setCenter(this.initialPoint());
-        this.map.setZoom(13);
+        this.gMap.setCenter(this.initialPoint());
+        this.gMap.setZoom(13);
       } else if (points.length == 1) {
         var point = points[0];
 
         // Center map at the only point
-        this.map.setCenter(point.toLatLng());
-        this.map.setZoom(this.zoomForPoint(point));
+        this.gMap.setCenter(point.toLatLng());
+        this.gMap.setZoom(this.zoomForPoint(point));
       } else {
         // Fit the map to the data points
-        this.map.fitBounds(this.bounds(points));
+        this.gMap.fitBounds(this.bounds(points));
       }
 
       // Add the markers
       $.each(points, function(_, point) {
-        point.setMap(self.map)
+        point.setMap(self.gMap)
       });
     },
 
@@ -152,6 +160,76 @@
           return 13;
         default:
           return 15;
+      }
+    },
+
+    showOverlay: function(spot) {
+      if (this.$overlay) {
+        return;
+      }
+
+      this.$overlay = $(spot.overlayContent())
+
+      this.addBlocker();
+      this.$map.append(this.$overlay);
+
+      var position = this.latLngToPixel(spot.toLatLng());
+
+      var width  = this.$overlay.width(),
+          height = this.$overlay.height();
+
+      this.$overlay.css({
+        marginTop:  -(height / 2) + 'px',
+        marginLeft: -(width / 2) + 'px'
+      });
+    },
+
+    hideOverlay: function() {
+      if (!this.$overlay) {
+        return;
+      }
+
+      this.removeBlocker();
+      this.$overlay.remove();
+      this.$overlay = null;
+    },
+
+    addBlocker: function() {
+      if (this.$blocker) {
+        return;
+      }
+
+      this.$blocker = $('<div class="nh-map-blocker"></div>');
+      this.$map.append(this.$blocker);
+
+      var self = this;
+
+      this.$blocker.bind('click', function() {
+        self.hideOverlay();
+      });
+    },
+
+    removeBlocker: function() {
+      if (!this.$blocker) {
+        return;
+      }
+
+      this.$blocker.remove();
+      this.$blocker = null;
+    },
+
+    latLngToPixel: function(position) {
+      return this._conversionOverlay.getProjection().fromLatLngToContainerPixel(position);
+    },
+
+    setupConversion: function() {
+      if (!this._conversionOverlay) {
+        var overlay = new google.maps.OverlayView();
+
+        overlay.draw = function() {};
+        overlay.setMap(this.gMap);
+
+        this._conversionOverlay = overlay;
       }
     }
   };

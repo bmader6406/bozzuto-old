@@ -32,9 +32,26 @@ class AreaTest < ActiveSupport::TestCase
         end
       end
 
+      describe "#parent" do
+        it "returns the metro" do
+          subject.parent.should == subject.metro
+        end
+      end
+
+      describe "#lineage" do
+        it "returns the metro and the area" do
+          subject.lineage.should == [subject.metro, subject]
+        end
+      end
+
+      describe "#lineage_hash" do
+        it "returns the hash" do
+          subject.lineage_hash.should == { :metro => subject.metro, :area => subject }
+        end
+      end
+
       context "area_type is 'neighborhoods'" do
         before do
-          
           # area
           #   - neighborhood_1
           #     - community_1
@@ -61,21 +78,9 @@ class AreaTest < ActiveSupport::TestCase
           subject.save
         end
 
-        describe "#parent" do
-          it "returns the metro" do
-            subject.parent.should == subject.metro
-          end
-        end
-
         describe "#children" do
           it "returns the neighborhoods" do
             subject.children.should == [@neighborhood_1, @neighborhood_2]
-          end
-        end
-
-        describe "#lineage" do
-          it "returns the metro and the area" do
-            subject.lineage.should == [subject.metro, subject]
           end
         end
 
@@ -134,21 +139,9 @@ class AreaTest < ActiveSupport::TestCase
           subject.save
         end
 
-        describe "#parent" do
-          it "returns the metro" do
-            subject.parent.should == subject.metro
-          end
-        end
-
         describe "#children" do
           it "returns nil" do
             subject.children.should == nil
-          end
-        end
-
-        describe "#lineage" do
-          it "returns the metro and the area" do
-            subject.lineage.should == [subject.metro, subject]
           end
         end
 

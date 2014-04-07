@@ -62,6 +62,12 @@ module Bozzuto
         end
       end
 
+      def lineage_hash
+        keys = [:metro, :area, :neighborhood]
+
+        Hash[keys.zip(lineage)].reject { |_, v| v.nil? }
+      end
+
       def communities(reload = false)
         if children.nil?
           apartment_communities(reload).published

@@ -40,6 +40,8 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
 
   border-top: 1px solid #fff;
   margin-bottom: 10px;
+  position: relative;
+  z-index: 1000;
 }
 
 .nh-map-controls {
@@ -123,6 +125,22 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   }
 }
 
+.nh-map-blocker {
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+
+.nh-map-overlay {
+  background-color: #fff;
+  box-shadow: 0px 8px 20px 4px rgba(0, 0, 0, 0.6);
+  left: 50%;
+  position: absolute;
+  top: 50%;
+}
+
 @mixin tile {
   float: left;
   padding: 15px;
@@ -138,6 +156,16 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
 
   &:hover {
     background: #f8f8f8;
+  }
+}
+
+.nh-map-overlay {
+  .cty-tile:hover {
+    background: none;
+  }
+
+  .cty-tile-actions {
+    opacity: 1;
   }
 }
 

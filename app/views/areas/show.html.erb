@@ -10,8 +10,8 @@
 <%= render 'metros/banner_image', :place => area %>
 
 <%= render 'metros/map',
-           :neighborhoods => area.shows_neighborhoods? ? neighborhoods : [],
-           :communities   => area.communities %>
+           :places      => area.shows_neighborhoods? ? neighborhoods : [],
+           :communities => area.communities %>
 
 <div id="main-content">
   <div class="container nh-container">
