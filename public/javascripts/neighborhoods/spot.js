@@ -38,48 +38,9 @@
         return;
       }
 
-      // Open info window on mouseover
-      google.maps.event.addListener(marker, 'mouseover', function() {
-        self.infoWindow().open(map, marker);
-      });
-
-      // Close info window on mouseout
-      google.maps.event.addListener(marker, 'mouseout', function() {
-        self.infoWindow().close();
-      });
-
       google.maps.event.addListener(marker, 'click', function() {
         self.map.showOverlay(self);
       });
-
-      // Remove the close button
-      google.maps.event.addListener(this.infoWindow(), 'domready', function() {
-        try {
-          var $content   = $(this.D.getContentNode()),
-              $container = $content.parent().parent();
-
-          // Only remove if the close button is still present. There's no class
-          // on the node, so we have to find it this way.
-          if ($container.children().length == 3) {
-            $container.children().last().remove();
-          }
-        } catch (err) {}
-      });
-    },
-
-    infoWindow: function() {
-      if (!this._infoWindow) {
-        this._infoWindow = new google.maps.InfoWindow({
-          disableAutoPan: true,
-          content:        this.infoWindowContent()
-        });
-      }
-
-      return this._infoWindow;
-    },
-
-    infoWindowContent: function() {
-      return this.$node.find('.nh-map-info-window')[0].outerHTML;
     },
 
     overlayContent: function() {
@@ -134,8 +95,8 @@
     if (!this._marker) {
       this._marker = new google.maps.Marker({
         position:    this.toLatLng(),
-        anchorPoint: new google.maps.Point(0, -38),
         title:       this.name,
+        anchorPoint: new google.maps.Point(0, -38),
         icon: {
           url:  '/images/neighborhoods/cty-marker.png',
           size: new google.maps.Size(40, 40)

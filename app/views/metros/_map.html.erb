@@ -26,10 +26,6 @@
     <div class="nh-map-data">
       <% places.each do |place| %>
         <div class="nh-map-neighborhood" <%= jmapping(place) %>>
-          <div class="nh-map-info-window">
-            <h2><%= place %></h2>
-          </div>
-
           <div class="nh-map-overlay">
             <%= render "#{place.class.model_name.tableize}/listing", place.lineage_hash %>
           </div>
@@ -38,14 +34,6 @@
 
       <% communities.each do |community| %>
         <div class="nh-map-community" <%= jmapping(community) %>>
-          <div class="nh-map-info-window">
-            <h2><%= community.title %></h2>
-
-            <% if community.under_construction? %>
-              <p class="nh-map-info-window-coming-soon">Coming Soon</p>
-            <% end %>
-          </div>
-
           <div class="nh-map-overlay">
             <%= render 'neighborhoods/community_listing', :community => community %>
           </div>
