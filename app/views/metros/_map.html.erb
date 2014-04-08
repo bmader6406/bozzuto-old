@@ -25,7 +25,7 @@
 
     <div class="nh-map-data">
       <% places.each do |place| %>
-        <div class="nh-map-neighborhood" <%= jmapping(place) %>>
+        <div class="nh-map-place" <%= jmapping(place) %>>
           <div class="nh-map-overlay">
             <%= render "#{place.class.model_name.tableize}/listing", place.lineage_hash %>
           </div>

@@ -28,8 +28,10 @@ javascripts:
   neighborhoods:
     - public/javascripts/vendor/markerwithlabel.js
     - public/javascripts/vendor/polyfill.object.create.js
+    - public/javascripts/vendor/modernizr.min.js
     - public/javascripts/neighborhoods.js
     - public/javascripts/neighborhoods/map.js
+    - public/javascripts/neighborhoods/overlay.js
     - public/javascripts/neighborhoods/spot.js
   redesign:
     - public/javascripts/redesign/vendor/jquery.metadata.js

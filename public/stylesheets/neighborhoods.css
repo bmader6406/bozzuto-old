@@ -100,9 +100,15 @@
 .nh-map-overlay {
   background-color: #fff;
   box-shadow: 0px 8px 20px 4px rgba(0, 0, 0, 0.6);
-  left: 50%;
-  position: absolute;
-  top: 50%; }
+  position: absolute; }
+  .nh-map-overlay.animated {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out; }
+  .nh-map-overlay .cty-tile:hover {
+    background: none; }
+  .nh-map-overlay .cty-tile-actions {
+    opacity: 1; }
 
 .nh-tile {
   float: left;
@@ -115,11 +121,6 @@
   width: 300px; }
   .cty-tile:hover {
     background: #f8f8f8; }
-
-.nh-map-overlay .cty-tile:hover {
-  background: none; }
-.nh-map-overlay .cty-tile-actions {
-  opacity: 1; }
 
 .nh-listing-image {
   background-color: #f8f8f8;

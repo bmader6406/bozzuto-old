@@ -15,11 +15,11 @@
     },
 
     initializeToggleSwitch: function() {
-      var anyNeighborhoods = this.neighborhoods().length > 0,
-          anyCommunities   = this.communities().length > 0;
+      var anyPlaces      = this.places().length > 0,
+          anyCommunities = this.communities().length > 0;
 
 
-      if (anyNeighborhoods && anyCommunities) {
+      if (anyPlaces && anyCommunities) {
         var self = this;
 
         this.$toggleLink.bind('click', function(e) {
@@ -32,17 +32,17 @@
       }
     },
 
-    neighborhoods: function() {
-      if (!this._neighborhoods) {
+    places: function() {
+      if (!this._places) {
         var self  = this,
-            nodes = this.$map.find('.nh-map-neighborhood');
+            nodes = this.$map.find('.nh-map-place');
 
-        this._neighborhoods = $.map(nodes, function(node) {
+        this._places = $.map(nodes, function(node) {
           return new bozzuto.Neighborhoods.Neighborhood(self, node);
         });
       }
 
-      return this._neighborhoods;
+      return this._places;
     },
 
     communities: function() {
@@ -77,7 +77,7 @@
       this.setupConversion();
 
       // Add the points
-      if (this.neighborhoods().length > 0) {
+      if (this.places().length > 0) {
         this.switchToNeighborhoodsView();
       } else {
         this.switchToCommunityView();
@@ -106,7 +106,7 @@
     },
 
     switchToCommunityView: function() {
-      this.removePoints(this.neighborhoods());
+      this.removePoints(this.places());
       this.drawPoints(this.communities());
 
       this.currentView = 'communities';
@@ -115,7 +115,7 @@
 
     switchToNeighborhoodsView: function() {
       this.removePoints(this.communities());
-      this.drawPoints(this.neighborhoods());
+      this.drawPoints(this.places());
 
       this.currentView = 'neighborhoods';
       this.$toggleLink.text('Show All Communities On Map');
@@ -164,34 +164,24 @@
     },
 
     showOverlay: function(spot) {
-      if (this.$overlay) {
+      if (this.overlay) {
         return;
       }
 
-      this.$overlay = $(spot.overlayContent())
-
       this.addBlocker();
-      this.$map.append(this.$overlay);
 
-      var position = this.latLngToPixel(spot.toLatLng());
-
-      var width  = this.$overlay.width(),
-          height = this.$overlay.height();
-
-      this.$overlay.css({
-        marginTop:  -(height / 2) + 'px',
-        marginLeft: -(width / 2) + 'px'
-      });
+      this.overlay = new bozzuto.Neighborhoods.Overlay(this, spot);
+      this.overlay.setParent(this.$map);
     },
 
-    hideOverlay: function() {
-      if (!this.$overlay) {
+    closeOverlay: function() {
+      if (!this.overlay) {
         return;
       }
 
       this.removeBlocker();
-      this.$overlay.remove();
-      this.$overlay = null;
+      this.overlay.remove();
+      this.overlay = null;
     },
 
     addBlocker: function() {
@@ -205,7 +195,7 @@
       var self = this;
 
       this.$blocker.bind('click', function() {
-        self.hideOverlay();
+        self.closeOverlay();
       });
     },
 
@@ -231,6 +221,13 @@
 
         this._conversionOverlay = overlay;
       }
+    },
+
+    center: function() {
+      return new google.maps.Point(
+        this.$map.width() / 2,
+        this.$map.height() / 2
+      );
     }
   };
 })(jQuery);
