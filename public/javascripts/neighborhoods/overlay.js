@@ -1,99 +1,118 @@
 (function($) {
   bozzuto.Neighborhoods.Overlay = function(map, spot) {
-		this.map               = map;
-		this.spot              = spot;
-		this.animationDuration = 300;
-		this.$node             = $(this.spot.overlayContent());
-	};
+    this.map               = map;
+    this.spot              = spot;
+    this.animationDuration = 300;
+    this.$node             = $(this.spot.overlayContent());
+  };
 
-	bozzuto.Neighborhoods.Overlay.prototype = {
-		setParent: function(parent) {
-			this.$parent = $(parent);
+  bozzuto.Neighborhoods.Overlay.prototype = {
+    setParent: function(parent) {
+      this.$parent = $(parent);
 
-			var parentCenter = this.map.center(),
-					spotCenter   = this.map.latLngToPixel(this.spot.toLatLng());
+      var parentCenter = this.map.center(),
+          spotCenter   = this.map.latLngToPixel(this.spot.toLatLng());
 
-			this.setOpacity(0);
-			this.$parent.append(this.$node);
+      this.$parent.append(this.$node);
 
-			if (this.supportsTransforms()) {
-				this.disableAnimations();
+      if (this.supportsTransforms()) {
+        this.disableAnimations();
 
-				// Center the overlay on the spot
-				this.setScale(0.2);
-				this.setCenter(spotCenter.x, spotCenter.y);
+        // Position the center of the overlay at 0, 0.
+        // This is so we can translate using center positions
+        this.setCenter({ x: 0, y: 0 });
 
-				this.enableAnimations();
+        // Center the overlay on the spot
+        this.setOpacity(0);
+        this.transform(spotCenter.x, spotCenter.y, 0.2);
 
-				// Center the overlay over the map
-				this.setOpacity(1);
-				this.setScale(1);
-				this.setCenter(parentCenter.x, parentCenter.y);
-			} else {
-				this.disableAnimations();
+        this.redraw();
 
-				this.setCenter(parentCenter.x, parentCenter.y);
-				
-				this.enableAnimations();
+        this.enableAnimations();
 
-				this.setOpacity(1);
-			}
-		},
+        // After the transition finishes, remove the transform and
+        // set the position to the center of the map. This is to:
+        //
+        // 1. get rid of the fuzziness caused by transforms
+        // 2. prep for using a transform on close
+        var self = this;
 
-		remove: function() {
-			var self         = this,
-					top          = parseFloat(this.$node.css('top'), 10),
-					finishRemove = function() {
-						self.$node.remove();
-						self.$parent = null;
-					};
+        this.$node.one($.transitionEndEvent, function() {
+          self.disableAnimations();
 
-			this.enableAnimations();
+          self.removeTransform();
+          self.setCenter(parentCenter);
+        });
 
-			if (this.supportsAnimations()) {
-				this.setOpacity(0);
-				this.$node.css({ top: top + -50 + 'px' });
+        // Center the overlay over the map
+        this.setOpacity(1);
+        this.transform(parentCenter.x, parentCenter.y, 1);
+      } else {
+        this.setCenter(parentCenter);
+      }
+    },
 
-				setTimeout(finishRemove, this.animationDuration);
-			} else {
-				finishRemove();
-			}
-		},
+    remove: function() {
+      var self         = this,
+          top          = parseFloat(this.$node.css('top'), 10),
+          finishRemove = function() {
+            self.$node.remove();
+            self.$parent = null;
+          };
 
-		enableAnimations: function() {
-			this.$node.addClass('animated');
-		},
+      if (this.supportsTransforms()) {
+        this.enableAnimations();
 
-		disableAnimations: function() {
-			this.$node.removeClass('animated');
-		},
+        this.setOpacity(0);
+        this.transform(0, -65, 1);
 
-		setCenter: function(x, y) {
-			var widthOffset  = this.$node.width() / 2,
-					heightOffset = this.$node.height() / 2;
+        setTimeout(finishRemove, this.animationDuration);
+      } else {
+        finishRemove();
+      }
+    },
 
-			this.$node.css({
-				left: Math.round(x - widthOffset) + 'px',
-				top:  Math.round(y - heightOffset) + 'px'
-			});
-		},
+    enableAnimations: function() {
+      this.$node.addClass('animated');
+    },
 
-		setOpacity: function(value) {
-			this.$node.css({ opacity: value });
-		},
+    disableAnimations: function() {
+      this.$node.removeClass('animated');
+    },
 
-		setScale: function(value) {
-			var property = Modernizr.prefixed('transform');
+    redraw: function() {
+      this.$node.hide();
+      this.$node.show();
+    },
 
-			this.$node.css(property, 'scale(' + value + ')');
-		},
+    setCenter: function(point) {
+      var widthOffset  = this.$node.width() / 2,
+          heightOffset = this.$node.height() / 2;
 
-		supportsTransforms: function() {
-			return Modernizr.csstransforms;
-		},
+      this.$node.css({
+        left: (point.x - widthOffset) + 'px',
+        top:  (point.y - heightOffset) + 'px'
+      });
+    },
 
-		supportsAnimations: function() {
-			return Modernizr.cssanimations;
-		}
-	};
+    setOpacity: function(value) {
+      this.$node.css({ opacity: value });
+    },
+
+    supportsTransforms: function() {
+      return Modernizr.csstransforms && $.transitionEndEvent !== null;
+    },
+
+    transform: function(x, y, scale) {
+      var property = Modernizr.prefixed('transform');
+
+      this.$node.css(property, 'translate(' + x + 'px, ' + y + 'px) scale(' + scale + ') translateZ(0)');
+    },
+
+    removeTransform: function() {
+      var property = Modernizr.prefixed('transform');
+
+      this.$node.css(property, null);
+    }
+  };
 })(jQuery);

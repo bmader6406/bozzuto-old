@@ -136,7 +136,9 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
 .nh-map-overlay {
   background-color: #fff;
   box-shadow: 0px 8px 20px 4px rgba(0, 0, 0, 0.6);
+  left: 0;
   position: absolute;
+  top: 0;
 
   &.animated {
     @include transition(all 0.3s ease-in-out);

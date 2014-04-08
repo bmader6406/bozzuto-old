@@ -29,6 +29,7 @@ javascripts:
     - public/javascripts/vendor/markerwithlabel.js
     - public/javascripts/vendor/polyfill.object.create.js
     - public/javascripts/vendor/modernizr.min.js
+    - public/javascripts/plugins/jquery.transitionend.js
     - public/javascripts/neighborhoods.js
     - public/javascripts/neighborhoods/map.js
     - public/javascripts/neighborhoods/overlay.js
