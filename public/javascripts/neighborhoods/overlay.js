@@ -64,7 +64,7 @@
         this.enableAnimations();
 
         this.setOpacity(0);
-        this.transform(0, -65, 1);
+        this.transform(0, 115, 1, (Math.random() * 9 - 4.5));
 
         setTimeout(finishRemove, this.animationDuration);
       } else {
@@ -103,10 +103,15 @@
       return Modernizr.csstransforms && $.transitionEndEvent !== null;
     },
 
-    transform: function(x, y, scale) {
+    transform: function(x, y, scale, rotate) {
+      rotate = rotate || 0;
+
       var property = Modernizr.prefixed('transform');
 
-      this.$node.css(property, 'translate(' + x + 'px, ' + y + 'px) scale(' + scale + ') translateZ(0)');
+      this.$node.css(property, 'translate(' + x + 'px, ' + y + 'px) ' +
+                               'scale(' + scale + ') ' +
+                               'rotate(' + rotate + 'deg) ' +
+                               'translateZ(0)');
     },
 
     removeTransform: function() {

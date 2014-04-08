@@ -101,7 +101,7 @@ module Bozzuto
           :id                          => id,
           :point                       => jmapping_point,
           :category                    => jmapping_category,
-          :name                        => name,
+          :name                        => Rack::Utils.escape_html(name),
           :apartment_communities_count => apartment_communities_count
         }
       end
