@@ -405,10 +405,10 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
         it "returns all floor plans" do
           plans = subject.available_floor_plans
 
-          plans.length.should == 3
+          plans.length.should == 2
           plans.should include(@zero_min_rent)
-          plans.should include(@no_available_units)
           plans.should include(@fully_available)
+          plans.should_not include(@no_available_units)
         end
       end
 
@@ -419,7 +419,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
         end
 
         it "returns only plans with min_rent > 0" do
-          subject.available_floor_plans.should == [@no_available_units, @fully_available]
+          subject.available_floor_plans.should == [@fully_available]
         end
       end
     end

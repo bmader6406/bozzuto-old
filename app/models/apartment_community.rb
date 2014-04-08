@@ -114,9 +114,9 @@ class ApartmentCommunity < Community
     @available_floor_plans = nil if reload
 
     @available_floor_plans ||= if managed_externally?
-      floor_plans.externally_available
+      floor_plans.externally_available.available
     else
-      floor_plans
+      floor_plans.available
     end
   end
 
