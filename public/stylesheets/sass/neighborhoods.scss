@@ -181,8 +181,6 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
 
 .nh-tile-title,
 .cty-tile-title {
-  @include box-sizing(border-box);
-
   background-color: rgba(0, 0, 0, 0.15);
   display: table;
   height: 234px;
@@ -210,6 +208,8 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   @include transition(all 0.1s ease-in-out);
 
   border: 5px solid transparent;
+  height: 224px;
+  width: 290px;
 }
 
 .nh-listing-image:hover {
