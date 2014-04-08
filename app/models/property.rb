@@ -69,7 +69,7 @@ class Property < ActiveRecord::Base
 
 
   def as_jmapping
-    super.merge(:name => title)
+    super.merge(:name => Rack::Utils.escape_html(title))
   end
 
   def typus_name

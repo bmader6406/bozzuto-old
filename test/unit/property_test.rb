@@ -236,6 +236,14 @@ class PropertyTest < ActiveSupport::TestCase
         end
       end
     end
+
+    describe "#as_jmapping" do
+      subject { Property.new(:title => "Batman's Batcave") }
+
+      it "returns the title with HTML entities" do
+        subject.as_jmapping[:name].should == 'Batman&#39;s Batcave'
+      end
+    end
   end
 
   context 'The Property class' do
