@@ -25,6 +25,10 @@ class NeighborhoodTest < ActiveSupport::TestCase
     should_have_many(:apartment_communities, :through => :neighborhood_memberships)
     should_have_one_seo_metadata
 
+    should_have_many(:related_neighborhoods, :dependent => :destroy)
+    should_have_many(:nearby_neighborhoods, :through => :related_neighborhoods)
+    should_have_many(:neighborhood_relations, :dependent => :destroy)
+
     describe "nested structure" do
       before do
         # neighborhood
@@ -100,7 +104,7 @@ class NeighborhoodTest < ActiveSupport::TestCase
         end
       end
 
-      describe "#after destroying" do
+      describe "after destroying" do
         it "updates the count on the parent area" do
           area = subject.area
           area.apartment_communities_count.should == 3
@@ -110,6 +114,29 @@ class NeighborhoodTest < ActiveSupport::TestCase
           area.reload
           area.apartment_communities_count.should == 0
         end
+      end
+    end
+
+    describe "#nearby_communities" do
+      before do
+        # nearby_1
+        #   - community_1
+        #   - community_2
+        # nearby_2
+        #   - community_1
+
+        @community_1 = ApartmentCommunity.make
+        @community_2 = ApartmentCommunity.make
+
+        @nearby_1 = Neighborhood.make(:apartment_communities => [@community_1, @community_2])
+        @nearby_2 = Neighborhood.make(:apartment_communities => [@community_1])
+
+        subject.nearby_neighborhoods = [@nearby_1, @nearby_2]
+        subject.save
+      end
+
+      it "returns the nearby communities" do
+        subject.nearby_communities.should == [@community_1, @community_2]
       end
     end
   end

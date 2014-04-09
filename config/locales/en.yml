@@ -59,6 +59,7 @@ en:
       property_slide: Slide
       property_slideshow: Property Slideshow
       rank_category: Rank Category
+      related_neighborhood: Related Neighborhood
       seo_metadata: SEO Metadata
       typus_user: User
       under_construction_lead: Under-Construction Lead
@@ -343,6 +344,8 @@ en:
         property_slideshow: Property Slideshow
         link_url: Link URL
         video_url: Video URL
+      related_neighborhood:
+        nearby_neighborhood: Nearby Neighborhood
       section:
         left_montage_image: Left Montage Image
         middle_montage_image: Middle Montage Image

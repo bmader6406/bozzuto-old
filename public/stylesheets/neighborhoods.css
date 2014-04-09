@@ -1,8 +1,11 @@
-#main-content {
-  clear: both; }
+.secondary #main-content {
+  clear: both;
+  margin-bottom: 30px;
+  padding: 0; }
 
 .nh-container {
-  width: 990px; }
+  width: 1020px;
+  margin: 0px auto; }
 
 .bc-title {
   margin-bottom: 12px !important; }
@@ -15,16 +18,12 @@
 
 .nh-banner-img {
   height: 325px; }
-  .nh-banner-img.container {
-    width: 1020px; }
 
 .nh-map {
   border-top: 1px solid #fff;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   position: relative;
   z-index: 1000; }
-  .nh-map.container {
-    width: 1020px; }
   .nh-map .nh-map-canvas {
     height: 400px; }
 
@@ -111,6 +110,10 @@
     background: none; }
   .nh-map-overlay .cty-tile-actions {
     opacity: 1; }
+
+.nh-tiles {
+  margin-top: 15px;
+  padding: 0 15px; }
 
 .nh-tile {
   float: left;
@@ -280,6 +283,16 @@
   color: #84848b;
   font-weight: bold;
   text-transform: uppercase; }
+
+.nh-nearby {
+  border-top: 1px solid #cccccc;
+  margin-top: 40px; }
+
+.nh-nearby-title {
+  color: #75777e !important;
+  font-size: 24px !important;
+  padding-left: 30px;
+  margin: 30px 0; }
 
 .nh-states {
   border-top: 1px solid #cccccc;

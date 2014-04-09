@@ -532,7 +532,7 @@ Neighborhood:
       selectors: 
       destroy_related: 
   order_by: position
-  relationships: seo_metadata, neighborhood_memberships
+  relationships: seo_metadata, neighborhood_memberships, related_neighborhoods
   filters: 
   options:
     per_page: 9999
@@ -871,6 +871,26 @@ RankCategory:
   relationships: ranks
   filters:
   search:
+  application: 
+
+RelatedNeighborhood:
+  fields:
+    default: 
+    list: neighborhood, nearby_neighborhood
+    form: neighborhood, nearby_neighborhood
+    relationship: nearby_neighborhood, position
+    options:
+      ckeditor: 
+      booleans:
+      required: neighborhood, nearby_neighborhood
+      selectors: 
+      destroy_related: 
+  order_by: position
+  relationships: 
+  filters: 
+  options:
+    per_page: 9999
+  search: 
   application: 
 
 Section:

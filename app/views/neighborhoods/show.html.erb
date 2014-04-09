@@ -8,12 +8,12 @@
                       neighborhood],
            :description => neighborhood.detail_description %>
 
-<%= render 'metros/banner_image', :place => neighborhood %>
-
-<%= render 'metros/map', :communities => neighborhood.communities %>
-
 <div id="main-content">
-  <div class="container nh-container">
+  <div class="nh-container">
+    <%= render 'metros/banner_image', :place => neighborhood %>
+
+    <%= render 'metros/map', :communities => neighborhood.communities %>
+
     <div class="nh-tiles row">
       <% neighborhood.communities.in_groups_of(3, false).each do |group| %>
         <div class="row">
@@ -24,4 +24,22 @@
       <% end %>
     </div>
   </div>
+
+  <% if nearby_neighborhoods.any? %>
+    <div class="nh-nearby nh-container">
+      <h2 class="nh-nearby-title">You may also like&hellip;</h2>
+
+      <%= render 'metros/map', :places => nearby_neighborhoods, :communities => nearby_communities %>
+
+      <div class="nh-tiles row">
+        <% nearby_neighborhoods.in_groups_of(3, false).each do |group| %>
+          <div class="row">
+            <% group.each do |neighborhood| %>
+              <%= render 'listing', neighborhood.lineage_hash %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>

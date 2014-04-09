@@ -21,4 +21,14 @@ class NeighborhoodsController < ApplicationController
     @neighborhood ||= area.neighborhoods.find(params[:id])
   end
   helper_method :neighborhood
+
+  def nearby_neighborhoods
+    @nearby_neighborhoods ||= neighborhood.nearby_neighborhoods
+  end
+  helper_method :nearby_neighborhoods
+
+  def nearby_communities
+    @nearby_communities ||= neighborhood.nearby_communities
+  end
+  helper_method :nearby_communities
 end

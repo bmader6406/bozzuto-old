@@ -7,14 +7,14 @@
                       area],
            :description => area.detail_description %>
 
-<%= render 'metros/banner_image', :place => area %>
-
-<%= render 'metros/map',
-           :places      => area.shows_neighborhoods? ? neighborhoods : [],
-           :communities => area.communities %>
-
 <div id="main-content">
-  <div class="container nh-container">
+  <div class="nh-container">
+    <%= render 'metros/banner_image', :place => area %>
+
+    <%= render 'metros/map',
+               :places      => area.shows_neighborhoods? ? neighborhoods : [],
+               :communities => area.communities %>
+
     <div class="nh-tiles row">
       <% if area.shows_neighborhoods? %>
 

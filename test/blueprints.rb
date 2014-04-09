@@ -445,6 +445,11 @@ RecurringEmail.blueprint(:recurring) do
   recurring { true }
 end
 
+RelatedNeighborhood.blueprint do
+  neighborhood        { Neighborhood.make }
+  nearby_neighborhood { Neighborhood.make }
+end
+
 Section.blueprint do
   title { Sham.section_title }
   service { false }

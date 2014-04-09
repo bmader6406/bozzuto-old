@@ -9,12 +9,16 @@
     },
 
     initializeMap: function() {
-      var $map = $('.nh-map');
+      var $maps = $('.nh-map');
 
-      if ($map.length > 0) {
-        this.map = new bozzuto.Neighborhoods.Map($map);
+      if ($maps.length > 0) {
+        this.maps = $.map($maps, function($map) {
+          var map = new bozzuto.Neighborhoods.Map($map);
 
-        this.map.render();
+          map.render();
+
+          return map;
+        });
       }
     }
   };
