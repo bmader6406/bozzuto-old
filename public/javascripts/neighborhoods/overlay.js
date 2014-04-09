@@ -64,7 +64,7 @@
         this.enableAnimations();
 
         this.setOpacity(0);
-        this.transform(0, 115, 1, (Math.random() * 9 - 4.5));
+        this.transform(0, 65, 1, (Math.random() * 3 - 1.5));
 
         setTimeout(finishRemove, this.animationDuration);
       } else {
