@@ -9,6 +9,8 @@ class NeighborhoodsControllerTest < ActionController::TestCase
           @area         = @neighborhood.area
           @metro        = @area.metro
 
+          RelatedNeighborhood.make(:neighborhood => @neighborhood)
+
           get :show, :metro_id => @metro.to_param,
                      :area_id  => @area.to_param,
                      :id       => @neighborhood.to_param

@@ -21,4 +21,14 @@ class AreasController < ApplicationController
     @neighborhoods ||= area.neighborhoods.positioned
   end
   helper_method :neighborhoods
+
+  def nearby_areas
+    @nearby_areas ||= area.nearby_areas
+  end
+  helper_method :nearby_areas
+
+  def nearby_communities
+    @nearby_communities ||= area.nearby_communities
+  end
+  helper_method :nearby_communities
 end

@@ -89,7 +89,7 @@ Area:
       selectors: area_type
       destroy_related: 
   order_by: position
-  relationships: seo_metadata, neighborhoods, area_memberships
+  relationships: seo_metadata, neighborhoods, area_memberships, related_areas
   filters: 
   options:
     per_page: 9999
@@ -871,6 +871,26 @@ RankCategory:
   relationships: ranks
   filters:
   search:
+  application: 
+
+RelatedArea:
+  fields:
+    default: 
+    list: area, nearby_area
+    form: area, nearby_area
+    relationship: nearby_area, position
+    options:
+      ckeditor: 
+      booleans:
+      required: area, nearby_area
+      selectors: 
+      destroy_related: 
+  order_by: position
+  relationships: 
+  filters: 
+  options:
+    per_page: 9999
+  search: 
   application: 
 
 RelatedNeighborhood:

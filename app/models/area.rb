@@ -4,6 +4,7 @@ class Area < ActiveRecord::Base
   include Bozzuto::ApartmentFloorPlans::HasCache
   include Bozzuto::Neighborhoods::Place
   extend  Bozzuto::Neighborhoods::ListingImage
+  extend  Bozzuto::Neighborhoods::HasRelatedPlaces
 
   AREA_TYPE = [
     ['Neighborhoods', 'neighborhoods'],

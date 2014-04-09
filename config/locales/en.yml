@@ -59,6 +59,7 @@ en:
       property_slide: Slide
       property_slideshow: Property Slideshow
       rank_category: Rank Category
+      related_area: Related Area
       related_neighborhood: Related Neighborhood
       seo_metadata: SEO Metadata
       typus_user: User
@@ -344,6 +345,8 @@ en:
         property_slideshow: Property Slideshow
         link_url: Link URL
         video_url: Video URL
+      related_area:
+        nearby_area: Nearby Area
       related_neighborhood:
         nearby_neighborhood: Nearby Neighborhood
       section:

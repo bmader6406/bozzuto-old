@@ -4,6 +4,7 @@ class Neighborhood < ActiveRecord::Base
   include Bozzuto::ApartmentFloorPlans::HasCache
   include Bozzuto::Neighborhoods::Place
   extend  Bozzuto::Neighborhoods::ListingImage
+  extend  Bozzuto::Neighborhoods::HasRelatedPlaces
 
   acts_as_list :scope => :area
 
@@ -24,21 +25,6 @@ class Neighborhood < ActiveRecord::Base
            :order   => 'neighborhood_memberships.position ASC'
 
 
-  has_many :related_neighborhoods,
-           :inverse_of => :neighborhood,
-           :order      => 'related_neighborhoods.position ASC',
-           :dependent  => :destroy
-
-  has_many :nearby_neighborhoods,
-           :through => :related_neighborhoods,
-           :order   => 'related_neighborhoods.position ASC'
-
-  has_many :neighborhood_relations,
-           :class_name => 'RelatedNeighborhood',
-           :inverse_of => :nearby_neighborhood,
-           :dependent => :destroy
-
-
   validates_presence_of :area, :state
 
   validates_attachment_presence :banner_image
@@ -49,11 +35,5 @@ class Neighborhood < ActiveRecord::Base
 
   def children
     nil
-  end
-
-  def nearby_communities(reload = false)
-    @nearby_communities = nil if reload
-
-    @nearby_communities = nearby_neighborhoods.map(&:communities).flatten.uniq
   end
 end

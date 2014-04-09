@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140409153533) do
+ActiveRecord::Schema.define(:version => 20140409184644) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -1131,6 +1131,17 @@ ActiveRecord::Schema.define(:version => 20140409153533) do
   add_index "recurring_emails", ["email_address"], :name => "index_recurring_emails_on_email_address"
   add_index "recurring_emails", ["state"], :name => "index_recurring_emails_on_state"
   add_index "recurring_emails", ["token"], :name => "index_recurring_emails_on_token"
+
+  create_table "related_areas", :force => true do |t|
+    t.integer  "area_id",        :null => false
+    t.integer  "nearby_area_id", :null => false
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "related_areas", ["area_id", "nearby_area_id"], :name => "index_related_areas_on_area_id_and_nearby_area_id", :unique => true
+  add_index "related_areas", ["area_id"], :name => "index_related_areas_on_area_id"
 
   create_table "related_neighborhoods", :force => true do |t|
     t.integer  "neighborhood_id",        :null => false

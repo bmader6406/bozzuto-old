@@ -8,6 +8,8 @@ class AreasControllerTest < ActionController::TestCase
           @area  = Area.make
           @metro = @area.metro
 
+          RelatedArea.make(:area => @area)
+
           get :show, :metro_id => @metro.to_param, :id => @area.to_param
         end
 

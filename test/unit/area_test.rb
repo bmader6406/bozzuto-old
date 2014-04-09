@@ -25,6 +25,10 @@ class AreaTest < ActiveSupport::TestCase
     should_have_many(:apartment_communities, :through => :area_memberships)
     should_have_one_seo_metadata
 
+    should_have_many(:related_areas, :dependent => :destroy)
+    should_have_many(:nearby_areas, :through => :related_areas)
+    should_have_many(:area_relations, :dependent => :destroy)
+
     describe "nested structure" do
       describe "#typus_name" do
         it "returns the name" do
@@ -210,6 +214,45 @@ class AreaTest < ActiveSupport::TestCase
           subject.area_type = 'communities'
           subject.shows_communities?.should == true
         end
+      end
+    end
+
+    describe "#nearby_communities" do
+      before do
+        # area_1
+        #   - community_1
+        #   - community_2
+        #
+        # area_2
+        #   - neighborhood_1
+        #     - community_3
+        #     - community_4
+        #   - neighborhood_2
+        #     - community_4
+
+        @community_1 = ApartmentCommunity.make
+        @community_2 = ApartmentCommunity.make
+        @community_3 = ApartmentCommunity.make
+        @community_4 = ApartmentCommunity.make
+
+        @neighborhood_1 = Neighborhood.make(:apartment_communities => [@community_3, @community_4])
+        @neighborhood_2 = Neighborhood.make(:apartment_communities => [@community_4])
+
+        @area_1 = Area.make(:communities)
+        @area_2 = Area.make(:neighborhoods)
+
+        @area_1.apartment_communities = [@community_1, @community_2]
+        @area_1.save
+
+        @area_2.neighborhoods = [@neighborhood_1, @neighborhood_2]
+        @area_2.save
+
+        subject.nearby_areas = [@area_1, @area_2]
+        subject.save
+      end
+
+      it "returns the nearby communities" do
+        subject.nearby_communities.should == [@community_1, @community_2, @community_3, @community_4]
       end
     end
   end

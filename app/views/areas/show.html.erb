@@ -21,7 +21,7 @@
         <% neighborhoods.in_groups_of(3, false).each do |group| %>
           <div class="row">
             <% group.each do |neighborhood| %>
-              <%= render 'neighborhoods/listing', :metro => metro, :area => area, :neighborhood => neighborhood %>
+              <%= render 'neighborhoods/listing', neighborhood.lineage_hash %>
             <% end %>
           </div>
         <% end %>
@@ -39,4 +39,22 @@
       <% end %>
     </div>
   </div>
+
+  <% if nearby_areas.any? %>
+    <div class="nh-nearby nh-container">
+      <h2 class="nh-nearby-title">You may also like&hellip;</h2>
+
+      <%= render 'metros/map', :places => nearby_areas, :communities => nearby_communities %>
+
+      <div class="nh-tiles row">
+        <% nearby_areas.in_groups_of(3, false).each do |group| %>
+          <div class="row">
+            <% group.each do |area| %>
+              <%= render 'listing', area.lineage_hash %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>

@@ -1,3 +1,3 @@
-class RelatedNeighborhood < ActiveRecord::Base
+class RelatedArea < ActiveRecord::Base
   extend Bozzuto::Neighborhoods::RelatedPlace
 end
