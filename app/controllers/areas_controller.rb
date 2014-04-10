@@ -23,11 +23,7 @@ class AreasController < ApplicationController
   helper_method :neighborhoods
 
   def listings
-    @listings ||= if area.shows_neighborhoods?
-      neighborhoods
-    else
-      area.communities
-    end
+    @listings ||= area.shows_neighborhoods? ? neighborhoods : area.communities
   end
   helper_method :listings
 

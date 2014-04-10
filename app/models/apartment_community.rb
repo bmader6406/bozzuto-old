@@ -62,18 +62,19 @@ class ApartmentCommunity < Community
   named_scope :with_floor_plan_groups, lambda {|ids|
     {:conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE floor_plan_group_id IN (?))", ids]}
   }
+
   named_scope :with_property_features, lambda { |ids|
     {:conditions => ["properties.id IN (SELECT property_id FROM properties_property_features WHERE property_feature_id IN (?))", ids]}
   }
-  named_scope :with_min_price, lambda {|price|
-    {:conditions => ['properties.max_rent >= ?', price.to_i]}
-  }
-  named_scope :with_max_price, lambda {|price|
-    {:conditions => ['properties.min_rent <= ?', price.to_i]}
-  }
+
+  named_scope :with_min_price, lambda {|price| {:conditions => ['properties.max_rent >= ?', price.to_i]} }
+
+  named_scope :with_max_price, lambda {|price| {:conditions => ['properties.min_rent <= ?', price.to_i]} }
+
   named_scope :featured, :conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE featured = ?)", true]
 
   named_scope :under_construction, :conditions => { :under_construction => true }
+
   named_scope :not_under_construction, :conditions => { :under_construction => false }
 
 

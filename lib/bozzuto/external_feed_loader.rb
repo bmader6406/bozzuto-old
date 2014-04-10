@@ -91,19 +91,23 @@ module Bozzuto
     end
 
     def next_load_time
+      #:nocov:
       if last_loaded_at
         last_loaded_at + self.class.load_interval
       else
         Time.now - 1.minute
       end
+      #:nocov:
     end
 
     def last_loaded_at
+      #:nocov:
       if File.exists?(self.class.tmp_file)
         File.new(self.class.tmp_file).mtime
       else
         nil
       end
+      #:nocov:
     end
 
     def load
@@ -125,11 +129,7 @@ module Bozzuto
 
       return nil unless config.present?
 
-      final_node = if config[:namespace].present?
-        node.at(config[:selector], config[:namespace])
-      else
-        node.at(config[:selector])
-      end
+      final_node = node.at(config[:selector])
 
       if config[:attribute].present?
         final_node.try(:[], config[:attribute])

@@ -234,8 +234,9 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
     describe "#disconnect_from_external_cms!" do
       subject {
-        ApartmentCommunity.make(:vaultware, :floor_plans => [ApartmentFloorPlan.make_unsaved(:vaultware)])
+        ApartmentCommunity.make(:vaultware, :floor_plans => [ApartmentFloorPlan.make(:vaultware)])
       }
+
 
       it "reset the external CMS identifiers to nil" do
         subject.disconnect_from_external_cms!
@@ -246,9 +247,9 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
         subject.external_cms_type.should == nil
 
         subject.floor_plans.each do |plan|
-          subject.external_cms_id.should == nil
-          subject.external_cms_type.should == nil
-          subject.external_cms_file_id.should == nil
+          plan.external_cms_id.should == nil
+          plan.external_cms_type.should == nil
+          plan.external_cms_file_id.should == nil
         end
       end
     end

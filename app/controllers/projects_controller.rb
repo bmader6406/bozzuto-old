@@ -32,9 +32,11 @@ class ProjectsController < SectionContentController
   end
 
   def categories_with_projects
+    #:nocov:
     @categories_with_projects ||= @categories.select do |category|
       category.projects.in_section(@section).order_by_completion_date.any?
     end
+    #:nocov:
   end
   helper_method :categories_with_projects
 

@@ -20,6 +20,7 @@ class PhotoSet < ActiveRecord::Base
     end
   end
 
+  #:nocov:
   def self.flickr_user
     @user ||= Fleakr.user(APP_CONFIG[:flickr]['username'])
   end
@@ -61,6 +62,7 @@ class PhotoSet < ActiveRecord::Base
       false
     end
   end
+  #:nocov:
 
   def flickr_set
     @flickr_set ||= if flickr_set_number.present? && flickr_user.present?
@@ -76,6 +78,7 @@ class PhotoSet < ActiveRecord::Base
     true
   end
 
+  #:nocov:
   def choose_size(photo)
     if photo.large.present? && photo.large.width.to_i >= 870 && photo.large.height.to_i >= 375
       photo.large
@@ -89,6 +92,7 @@ class PhotoSet < ActiveRecord::Base
       array << PhotoGroup.find_by_flickr_raw_title(tag.raw)
     end.compact.uniq
   end
+  #:nocov:
 
   def mark_as_needing_sync
     self.needs_sync = true if flickr_set_number_changed?

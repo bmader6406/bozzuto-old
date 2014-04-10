@@ -46,6 +46,7 @@ class Community < Property
   named_scope :featured_order, :order => 'featured DESC, featured_position ASC, title ASC'
 
   named_scope :sort_for, lambda { |landing_page|
+    #:nocov:
     if landing_page.respond_to?(:randomize_property_listings?)
       landing_page.randomize_property_listings? ?
         { :order => 'RAND(NOW())' } :
@@ -53,6 +54,7 @@ class Community < Property
     else
       {}
     end
+    #:nocov:
   }
 
   named_scope :with_twitter_account, :conditions => 'twitter_account_id > 0'
@@ -61,11 +63,13 @@ class Community < Property
 
 
   def self.typus_fields_for(filter)
+    #:nocov:
     result = super
     if result.present? && result['featured_position'].present?
       result['featured_position'] = :position
     end
     result
+    #:nocov:
   end
 
   def has_overview_bullets?

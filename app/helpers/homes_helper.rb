@@ -1,5 +1,6 @@
 module HomesHelper
   def render_homes_mobile_listings(community, exclude_home = nil)
+    #:nocov:
     ''.tap { |output|
       community.homes.each do |home|
         unless exclude_home && home == exclude_home
@@ -11,5 +12,6 @@ module HomesHelper
         end
       end
     }.html_safe
+    #:nocov:
   end
 end

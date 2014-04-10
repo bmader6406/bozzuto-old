@@ -83,12 +83,14 @@ module SectionContentHelper
           end
 
           # awards
+          #:nocov:
           if section_awards.any?
             current = params[:controller] == 'awards' ? 'current' : nil
             subnav << content_tag(:li, :class => current) do
               link_to 'Awards', awards_path(section)
             end
           end
+          #:nocov:
 
           # press releases
           if section_press_releases.any?
