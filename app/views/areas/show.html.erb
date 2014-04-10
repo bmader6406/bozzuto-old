@@ -18,7 +18,7 @@
     <div class="nh-tiles row">
       <% listings.in_groups_of(3, false).each do |group| %>
         <div class="row">
-          <% group.each do |thing| %>
+          <% group.each do |listing| %>
             <%= render_neighborhoods_listing(listing) %>
           <% end %>
         </div>
