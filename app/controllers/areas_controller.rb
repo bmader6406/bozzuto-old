@@ -22,6 +22,15 @@ class AreasController < ApplicationController
   end
   helper_method :neighborhoods
 
+  def listings
+    @listings ||= if area.shows_neighborhoods?
+      neighborhoods
+    else
+      area.communities
+    end
+  end
+  helper_method :listings
+
   def nearby_areas
     @nearby_areas ||= area.nearby_areas
   end

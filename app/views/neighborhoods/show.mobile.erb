@@ -23,7 +23,7 @@
 
       <ul>
         <% nearby_neighborhoods.each do |neighborhood| %>
-          <%= render 'listing', neighborhood.lineage_hash %>
+          <%= render_neighborhoods_listing(neighborhood) %>
         <% end %>
       </ul>
     </div>

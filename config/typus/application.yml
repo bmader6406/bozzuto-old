@@ -961,7 +961,7 @@ State:
     list: name, code, position
     form: name, code
   order_by: position
-  relationships: cities, counties, featured_apartment_communities
+  relationships: seo_metadata, cities, counties, featured_apartment_communities
   relationship_fields:
     featured_apartment_communities: state
   filters:

@@ -4,6 +4,8 @@ class StateTest < ActiveSupport::TestCase
   context "A State" do
     subject { State.make }
 
+    should_have_seo_metadata
+
     should_have_many(:cities, :counties)
     should_have_many(:apartment_communities, :through => :cities)
     should_have_many(:home_communities, :through => :cities)

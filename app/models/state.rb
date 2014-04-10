@@ -1,4 +1,6 @@
 class State < ActiveRecord::Base
+  extend Bozzuto::Seo
+
   acts_as_list
 
   has_many :cities

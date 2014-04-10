@@ -1,6 +1,7 @@
 .secondary #main-content {
   clear: both;
   margin-bottom: 30px;
+  overflow: visible;
   padding: 0; }
 
 .nh-container {

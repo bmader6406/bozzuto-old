@@ -1,6 +1,6 @@
 <div class="section page-title">
   <div class="content">
-    <h2><%= @state %></h2>
+    <h2><%= state %></h2>
 
     <%= link_to 'Find an Apartment', metros_path, :class => 'go-back' %>
   </div>
@@ -9,7 +9,7 @@
 <div class="section browse">
   <div class="content">
     <ul>
-      <% @state.places.each do |place| %>
+      <% state.places.each do |place| %>
         <li>
           <% link_to place_path(place), :class => 'btn' do %>
             <span><%= place %></span> (<%= place.apartment_communities_count %>)

@@ -6,6 +6,7 @@ class MetroTest < ActiveSupport::TestCase
 
     should_have_neighborhood_listing_image
     should_be_mappable
+    should_have_seo_metadata
 
     should_validate_presence_of(:name)
     should_validate_presence_of(:latitude)
@@ -14,7 +15,6 @@ class MetroTest < ActiveSupport::TestCase
     should_validate_uniqueness_of(:name)
 
     should_have_many(:areas, :dependent => :destroy)
-    should_have_one_seo_metadata
 
     describe "nested structure" do
       before do

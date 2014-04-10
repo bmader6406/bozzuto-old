@@ -10,7 +10,7 @@
   <div class="content pill-list">
     <ul>
       <% areas.each do |area| %>
-        <%= render 'areas/listing', :metro => metro, :area => area %>
+        <%= render_neighborhoods_listing(area) %>
       <% end %>
     </ul>
   </div>

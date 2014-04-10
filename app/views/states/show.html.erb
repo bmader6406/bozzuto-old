@@ -1,0 +1,22 @@
+<% neighborhoods_assets %>
+<% render_meta(state) %>
+
+<%= render 'metros/breadcrumb',
+					 :title => "#{state} Apartments",
+					 :items => [state] %>
+
+<div id="main-content">
+  <div class="nh-container">
+    <%= render 'metros/map', :places => state.places %>
+
+    <div class="nh-tiles row">
+      <% state.places.in_groups_of(3, false).each do |group| %>
+        <div class="row">
+          <% group.each do |place| %>
+						<%= render_neighborhoods_listing(place) %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

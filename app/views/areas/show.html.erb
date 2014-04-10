@@ -16,26 +16,12 @@
                :communities => area.communities %>
 
     <div class="nh-tiles row">
-      <% if area.shows_neighborhoods? %>
-
-        <% neighborhoods.in_groups_of(3, false).each do |group| %>
-          <div class="row">
-            <% group.each do |neighborhood| %>
-              <%= render 'neighborhoods/listing', neighborhood.lineage_hash %>
-            <% end %>
-          </div>
-        <% end %>
-
-      <% else %>
-
-        <% area.communities.in_groups_of(3, false).each do |group| %>
-          <div class="row">
-            <% group.each do |community| %>
-              <%= render 'neighborhoods/community_listing', :community => community %>
-            <% end %>
-          </div>
-        <% end %>
-
+      <% listings.in_groups_of(3, false).each do |group| %>
+        <div class="row">
+          <% group.each do |thing| %>
+            <%= render_neighborhoods_listing(listing) %>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>
@@ -50,7 +36,7 @@
         <% nearby_areas.in_groups_of(3, false).each do |group| %>
           <div class="row">
             <% group.each do |area| %>
-              <%= render 'listing', area.lineage_hash %>
+              <%= render_neighborhoods_listing(area) %>
             <% end %>
           </div>
         <% end %>

@@ -11,7 +11,7 @@
     <div class="content pill-list">
       <ul>
         <% neighborhoods.each do |neighborhood| %>
-          <%= render 'neighborhoods/listing', :metro => metro, :area => area, :neighborhood => neighborhood %>
+          <%= render_neighborhoods_listing(neighborhood) %>
         <% end %>
       </ul>
     </div>
@@ -33,7 +33,7 @@
 
       <ul>
         <% nearby_areas.each do |area| %>
-          <%= render 'listing', area.lineage_hash %>
+          <%= render_neighborhoods_listing(area) %>
         <% end %>
       </ul>
     </div>

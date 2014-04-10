@@ -3,7 +3,9 @@
     <div class="row">
       <% group.each do |state| %>
         <div class="nh-state">
-          <h3 class="nh-state-title"><%= state %></h3>
+          <h3 class="nh-state-title">
+            <%= link_to state, state %>
+          </h3>
 
           <ul class="nh-arrow-list">
             <% state.places.each do |place| %>

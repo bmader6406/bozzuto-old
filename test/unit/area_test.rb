@@ -6,6 +6,7 @@ class AreaTest < ActiveSupport::TestCase
 
     should_have_neighborhood_listing_image
     should_be_mappable
+    should_have_seo_metadata
 
     should_validate_presence_of(:name)
     should_validate_presence_of(:latitude)
@@ -23,7 +24,6 @@ class AreaTest < ActiveSupport::TestCase
     should_belong_to(:state)
     should_have_many(:area_memberships, :dependent => :destroy)
     should_have_many(:apartment_communities, :through => :area_memberships)
-    should_have_one_seo_metadata
 
     should_have_many(:related_areas, :dependent => :destroy)
     should_have_many(:nearby_areas, :through => :related_areas)
