@@ -7,22 +7,35 @@
 </div>
 
 <div class="section">
-    <% if area.shows_neighborhoods? %>
-      <div class="content pill-list">
-        <ul>
-          <% neighborhoods.each do |neighborhood| %>
-            <%= render 'neighborhoods/listing', :metro => metro, :area => area, :neighborhood => neighborhood %>
-          <% end %>
-        </ul>
-      </div>
-    <% else %>
-      <div class="content property-list">
-        <ul>
-          <% area.communities.each do |community| %>
-            <%= render 'apartment_communities/listing', :community => community %>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-  </div>
+  <% if area.shows_neighborhoods? %>
+    <div class="content pill-list">
+      <ul>
+        <% neighborhoods.each do |neighborhood| %>
+          <%= render 'neighborhoods/listing', :metro => metro, :area => area, :neighborhood => neighborhood %>
+        <% end %>
+      </ul>
+    </div>
+  <% else %>
+    <div class="content property-list">
+      <ul>
+        <% area.communities.each do |community| %>
+          <%= render 'apartment_communities/listing', :community => community %>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 </div>
+
+<% if nearby_areas.any? %>
+  <div class="section">
+    <div class="content pill-list">
+      <h2 class="nh-nearby-title">You may also like&hellip;</h2>
+
+      <ul>
+        <% nearby_areas.each do |area| %>
+          <%= render 'listing', area.lineage_hash %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>

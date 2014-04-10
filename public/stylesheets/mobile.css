@@ -514,4 +514,7 @@ form .error ::-webkit-input-placeholder {
     font-weight: bold;
     margin-bottom: 15px; }
 
+.nh-nearby-title {
+  margin-bottom: 1em; }
+
 /* @end Places */
