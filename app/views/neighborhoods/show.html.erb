@@ -12,10 +12,12 @@
   <div class="nh-container">
     <%= render 'metros/banner_image', :place => neighborhood %>
 
-    <%= render 'metros/map', :communities => neighborhood.communities %>
+    <%= render 'metros/map', :communities => filterer.filtered_communities %>
+
+    <%= render 'filters', :filterer => filterer %>
 
     <div class="nh-tiles row">
-      <% neighborhood.communities.in_groups_of(3, false).each do |group| %>
+      <% filterer.filtered_communities.in_groups_of(3, false).each do |group| %>
         <div class="row">
           <% group.each do |community| %>
             <%= render_neighborhoods_listing(community) %>

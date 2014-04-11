@@ -1,0 +1,13 @@
+<%= render 'metros/map',
+           :places      => neighborhoods,
+           :communities => area.communities %>
+
+<div class="nh-tiles row">
+  <% neighborhoods.in_groups_of(3, false).each do |group| %>
+    <div class="row">
+      <% group.each do |neighborhood| %>
+        <%= render_neighborhoods_listing(neighborhood) %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -22,11 +22,6 @@ class AreasController < ApplicationController
   end
   helper_method :neighborhoods
 
-  def listings
-    @listings ||= area.shows_neighborhoods? ? neighborhoods : area.communities
-  end
-  helper_method :listings
-
   def nearby_areas
     @nearby_areas ||= area.nearby_areas
   end
@@ -36,4 +31,9 @@ class AreasController < ApplicationController
     @nearby_communities ||= area.nearby_communities
   end
   helper_method :nearby_communities
+
+  def filterer
+    @filterer ||= Bozzuto::Neighborhoods::Filterer.new(area, params[:amenity_id])
+  end
+  helper_method :filterer
 end

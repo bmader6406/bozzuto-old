@@ -64,7 +64,7 @@ class ApartmentCommunity < Community
   }
 
   named_scope :with_property_features, lambda { |ids|
-    {:conditions => ["properties.id IN (SELECT property_id FROM properties_property_features WHERE property_feature_id IN (?))", ids]}
+    {:conditions => ["properties.id IN (SELECT property_id FROM properties_property_features WHERE property_feature_id IN (?))", Array(ids)]}
   }
 
   named_scope :with_min_price, lambda {|price| {:conditions => ['properties.max_rent >= ?', price.to_i]} }

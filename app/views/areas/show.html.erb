@@ -11,19 +11,11 @@
   <div class="nh-container">
     <%= render 'metros/banner_image', :place => area %>
 
-    <%= render 'metros/map',
-               :places      => area.shows_neighborhoods? ? neighborhoods : [],
-               :communities => area.communities %>
-
-    <div class="nh-tiles row">
-      <% listings.in_groups_of(3, false).each do |group| %>
-        <div class="row">
-          <% group.each do |listing| %>
-            <%= render_neighborhoods_listing(listing) %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+    <% if area.shows_neighborhoods? %>
+      <%= render 'neighborhoods', :area => area, :neighborhoods => neighborhoods %>
+    <% else %>
+      <%= render 'communities', :filterer => filterer %>
+    <% end %>
   </div>
 
   <% if nearby_areas.any? %>

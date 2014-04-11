@@ -31,4 +31,9 @@ class NeighborhoodsController < ApplicationController
     @nearby_communities ||= neighborhood.nearby_communities
   end
   helper_method :nearby_communities
+
+  def filterer
+    @filterer ||= Bozzuto::Neighborhoods::Filterer.new(neighborhood, params[:amenity_id])
+  end
+  helper_method :filterer
 end

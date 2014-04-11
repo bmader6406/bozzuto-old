@@ -124,7 +124,7 @@ module OverriddenPathsHelper
     end
   end
 
-  def place_path(place)
-    send("#{place.class.to_s.underscore}_path", *place.lineage)
+  def place_path(place, opts = {})
+    send("#{place.class.to_s.underscore}_path", *[place.lineage, opts].flatten)
   end
 end

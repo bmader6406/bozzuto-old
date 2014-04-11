@@ -112,6 +112,20 @@
   .nh-map-overlay .cty-tile-actions {
     opacity: 1; }
 
+.nh-filters {
+  display: table;
+  padding: 15px 30px 5px 30px; }
+
+.nh-filter {
+  display: table-cell;
+  font-weight: bold;
+  padding-right: 20px;
+  text-transform: uppercase; }
+  .nh-filter a {
+    color: #84848b; }
+  .nh-filter.nh-filter-current a {
+    color: #000; }
+
 .nh-tiles {
   margin-top: 15px;
   padding: 0 15px; }

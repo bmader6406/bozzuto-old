@@ -1,0 +1,15 @@
+<div class="nh-filters">
+	<ul>
+    <li class="nh-filter <%= 'nh-filter-current' unless filterer.current_filter %>">
+      <%= link_to "All (#{filterer.count})", place_path(filterer.place) %>
+    </li>
+
+    <% filterer.filters.each do |filter| %>
+      <% if filter.any? %>
+        <li class="nh-filter <%= 'nh-filter-current' if filter.current? %>">
+          <%= link_to filter.name_with_count, place_path(filterer.place, :amenity_id => filter.id) %>
+        </li>
+      <% end %>
+    <% end %>
+	</ul>
+</div>
