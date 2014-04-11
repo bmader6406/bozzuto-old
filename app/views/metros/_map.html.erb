@@ -1,8 +1,9 @@
 <% places      ||= [] %>
 <% communities ||= [] %>
+<% map_id      ||= nil %>
 
 <% if places.any? || communities.any? %>
-  <div class="nh-map">
+  <div <%= %{id="#{map_id}} if map_id.present? %> class="nh-map">
     <div class="nh-map-canvas"></div>
 
     <% if places.any? && communities.any? %>
