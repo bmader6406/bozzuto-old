@@ -3,88 +3,144 @@ require 'test_helper'
 class CommunitySearchesControllerTest < ActionController::TestCase
   context 'CommunitySearchesController' do
     desktop_device do
-      context 'get to #show' do
-        desktop_device do
-          setup { get :show }
+      before do
+        @community = ApartmentCommunity.make
+      end
 
-          should_redirect_to('the apartment communities page') { apartment_communities_url}
+      describe "GET #show" do
+        context "for the search view" do
+          before do
+            get :show
+          end
+
+          should_respond_with :success
+          should_render_template :show
+        end
+
+        context "with search params" do
+          context ":in_state is present" do
+            setup do
+              @state = State.make
+
+              get :show, :search => { :in_state => @state.id }
+            end
+
+            should_respond_with :success
+            should_render_template :show
+            should_assign_to(:geographic_filter) { @state }
+          end
+
+          context ":county_id is present" do
+            setup do
+              @county = County.make
+
+              get :show, :search => { :county_id => @county.id }
+            end
+
+            should_respond_with :success
+            should_render_template :show
+            should_assign_to(:geographic_filter) { @county }
+          end
+
+          context ":city_id is present" do
+            before do
+              @city = City.make
+
+              get :show, :search => { :city_id => @city.id }
+            end
+
+            should_respond_with :success
+            should_render_template :show
+            should_assign_to(:geographic_filter) { @city }
+          end
+        end
+
+        context "for the map view" do
+          before do
+            get :show, :template => 'map'
+          end
+
+          should_respond_with :success
+          should_render_template :show
         end
       end
     end
 
     mobile_device do
-      context 'get #show with no query' do
-        setup do
-          get :show
-        end
-        
-        should_respond_with :success
-        should_render_template :show
-      end
-      
-      context 'get #show with query that returns no results' do
-        setup do
-          get :show, :q => 'bogus'
-        end
-        
-        should_respond_with :success
-        should_render_template :show
-        should_assign_to :search, :class => Bozzuto::CommunitySearch
-      end
-      
-      context 'get #show with zip query' do
-        setup do
-          ApartmentCommunity.make(:zip_code => '22301')
-          HomeCommunity.make(:zip_code => '22301-5601')
+      describe "GET to #show" do
+        context "with no query" do
+          setup do
+            get :show
+          end
           
-          get :show, :q => '22301'
+          should_respond_with :success
+          should_render_template :show
         end
         
-        should_respond_with :success
-        should_render_template :results
-        should_assign_to :search, :class => Bozzuto::CommunitySearch
-      end
-      
-      context 'get #show with name query' do
-        setup do
-          ApartmentCommunity.make(:title => 'The Metropolitan')
-          HomeCommunity.make(:title => 'Metropolitan Village')
+        context "with query that returns no results" do
+          setup do
+            get :show, :q => 'bogus'
+          end
           
-          get :show, :q => 'Metro'
+          should_respond_with :success
+          should_render_template :show
+          should_assign_to :search, :class => Bozzuto::CommunitySearch
         end
         
-        should_respond_with :success
-        should_render_template :results
-        should_assign_to :search, :class => Bozzuto::CommunitySearch
-      end
-      
-      context 'get #show with city query' do
-        setup do
-          @city = City.make(:name => 'Bethesda')
-          ApartmentCommunity.make(:title => 'Upstairs at Bethesda Row', :city => @city)
-          HomeCommunity.make(:title => 'Utopia Village', :city => @city)
+        context "with zip query" do
+          setup do
+            ApartmentCommunity.make(:zip_code => '22301')
+            HomeCommunity.make(:zip_code => '22301-5601')
+            
+            get :show, :q => '22301'
+          end
           
-          get :show, :q => 'Bethesda'
+          should_respond_with :success
+          should_render_template :results
+          should_assign_to :search, :class => Bozzuto::CommunitySearch
         end
         
-        should_respond_with :success
-        should_render_template :results
-        should_assign_to :search, :class => Bozzuto::CommunitySearch
-      end
-
-      context 'get #show with name query for unpublished community' do
-        setup do
-          ApartmentCommunity.make(:unpublished, :title => 'Swing City')
-          get :show, :q => 'Swing'
+        context "with name query" do
+          setup do
+            ApartmentCommunity.make(:title => 'The Metropolitan')
+            HomeCommunity.make(:title => 'Metropolitan Village')
+            
+            get :show, :q => 'Metro'
+          end
+          
+          should_respond_with :success
+          should_render_template :results
+          should_assign_to :search, :class => Bozzuto::CommunitySearch
+        end
+        
+        context "with city query" do
+          setup do
+            @city = City.make(:name => 'Bethesda')
+            ApartmentCommunity.make(:title => 'Upstairs at Bethesda Row', :city => @city)
+            HomeCommunity.make(:title => 'Utopia Village', :city => @city)
+            
+            get :show, :q => 'Bethesda'
+          end
+          
+          should_respond_with :success
+          should_render_template :results
+          should_assign_to :search, :class => Bozzuto::CommunitySearch
         end
 
-        should_respond_with :success
-        should_render_template :show
-        should_assign_to :search, :class => Bozzuto::CommunitySearch
+        context "with name query for unpublished community" do
+          setup do
+            ApartmentCommunity.make(:unpublished, :title => 'Swing City')
 
-        should 'return no results' do
-          assert_equal({ :title => [], :city => [] },
-            @controller.instance_variable_get('@search').results)
+            get :show, :q => 'Swing'
+          end
+
+          should_respond_with :success
+          should_render_template :show
+          should_assign_to :search, :class => Bozzuto::CommunitySearch
+
+          it "returns no results" do
+            @controller.instance_variable_get('@search').results.should == { :title => [], :city => [] }
+          end
         end
       end
     end

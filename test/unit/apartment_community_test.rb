@@ -493,11 +493,13 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
       assert_nothing_raised do
         ApartmentCommunity.with_floor_plan_groups(1).all
         ApartmentCommunity.with_property_features([1, 2, 3]).all
+        ApartmentCommunity.with_min_price(100)
+        ApartmentCommunity.with_max_price(100)
         ApartmentCommunity.featured_order
       end
     end
 
-    context "duplicates scope" do
+    describe ".duplicates" do
       before do
         @property = ApartmentCommunity.make(:title => 'Solaire')
         @other1   = ApartmentCommunity.make(:title => 'Solar')
@@ -506,6 +508,28 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
       it "returns both communities" do
         assert_same_elements [@property, @other1], ApartmentCommunity.duplicates
+      end
+    end
+
+    describe "min and max prices" do
+      before do
+        @community_1 = ApartmentCommunity.make
+        @community_2 = ApartmentCommunity.make
+
+        @community_1.create_apartment_floor_plan_cache(:min_price => 50.0, :max_price => 100.0)
+        @community_2.create_apartment_floor_plan_cache(:min_price => 150.0, :max_price => 200.0)
+      end
+
+      describe ".with_min_price" do
+        it "returns the correct communities" do
+          ApartmentCommunity.with_min_price(150.0).should == [@community_2]
+        end
+      end
+
+      describe ".with_max_price" do
+        it "returns the correct communities" do
+          ApartmentCommunity.with_max_price(100.0).should == [@community_1]
+        end
       end
     end
   end

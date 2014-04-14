@@ -2,25 +2,25 @@ require 'test_helper'
 
 class CitiesControllerTest < ActionController::TestCase
   context 'CitiesController' do
-    setup do
+    before do
       @city = City.make
 
       @published   = ApartmentCommunity.make(:city => @city)
       @unpublished = ApartmentCommunity.make(:unpublished, :city => @city)
     end
 
-    context 'a GET to #show' do
+    describe "GET to #show" do
       desktop_device do
-        setup do
+        before do
           get :show, :id => @city.to_param
         end
 
         should_respond_with :redirect
-        should_redirect_to('the apartment communities page') { apartment_communities_url }
+        should_redirect_to('the metros page') { metros_url }
       end
 
       mobile_device do
-        setup do
+        before do
           get :show, :id => @city.to_param
         end
 

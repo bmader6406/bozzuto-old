@@ -1,4 +1,4 @@
-$('#content').html("<%= escape_javascript(render(:partial => "apartment_communities/#{@partial_template}")) %>");
+$('#content').html("<%= escape_javascript(render(:partial => "community_searches/#{@partial_template}")) %>");
 
 <% if @partial_template == 'map' %>
   $("#search-results-map").bozzutoMap();

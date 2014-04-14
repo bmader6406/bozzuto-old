@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CountiesControllerTest < ActionController::TestCase
   context 'CountiesController' do
-    setup do
+    before do
       @state  = State.make
       @county = County.make :state => @state
       @city   = City.make :state => @state
@@ -15,18 +15,18 @@ class CountiesControllerTest < ActionController::TestCase
       )
     end
 
-    context 'a GET to #index' do
+    describe "GET to #index" do
       desktop_device do
-        setup do
+        before do
           get :index, :state_id => @state.to_param
         end
 
         should_respond_with :redirect
-        should_redirect_to('the apartment communities page') { apartment_communities_url }
+        should_redirect_to('the metros page') { metros_url }
       end
 
       mobile_device do
-        setup do
+        before do
           get :index, :state_id => @state.to_param
         end
 
@@ -37,18 +37,18 @@ class CountiesControllerTest < ActionController::TestCase
       end
     end
 
-    context 'a GET to #show' do
+    describe "GET to #show" do
       desktop_device do
-        setup do
+        before do
           get :show, :id => @county.to_param
         end
 
         should_respond_with :redirect
-        should_redirect_to('the apartment communities page') { apartment_communities_url }
+        should_redirect_to('the metros page') { metros_url }
       end
 
       mobile_device do
-        setup do
+        before do
           get :show, :id => @county.to_param
         end
 

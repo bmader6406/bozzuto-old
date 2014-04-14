@@ -31,11 +31,13 @@ SitemapGenerator::Sitemap.create do
   add rankings_path
   add buzz_path
 
+  add metros_path, :changefreq => 'daily'
+
   # ApartmentCommunity
-  add apartment_communities_path,
+  add community_search_path,
       :priority   => 0.9,
       :changefreq => 'daily'
-  add map_apartment_communities_path, :changefreq => 'daily'
+  add map_community_search_path, :changefreq => 'daily'
 
   ApartmentCommunity.published.featured_order.find_each do |apartment_community|
     sitemap_options = { :priority   => 0.6,

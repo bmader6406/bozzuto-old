@@ -1,31 +1,10 @@
 class ApartmentCommunitiesController < ApplicationController
-  has_mobile_actions :index, :show
+  has_mobile_actions :show
 
-  before_filter :find_community, :except => :index
+  before_filter :find_community
   before_filter :redirect_to_canonical_url, :only => :show
 
   layout :detect_mobile_layout
-
-  def index
-    params[:search] ||= {}
-
-    @partial_template = params[:template] || 'search'
-
-    @search = ApartmentCommunity.published.featured_order.search(params[:search])
-
-    @communities = @search.all(:include => [:property_features, :city]).group_by { |c| c.state.name }
-
-    @ordered_states = State.all.sort { |a, b|
-      (@communities[b.name].try(:count) || 0) <=> (@communities[a.name].try(:count) || 0)
-    }
-
-    respond_to do |format|
-      format.html do
-        render :action => :index, :layout => 'application'
-      end
-      format.js
-    end
-  end
 
   def show
   end
@@ -55,22 +34,4 @@ class ApartmentCommunitiesController < ApplicationController
       redirect_to canonical_path, :status => :moved_permanently
     end
   end
-
-  def geographic_filter
-    #:nocov:
-    @geographic_filter ||= begin
-    #:nocov:
-      search = params[:search]
-
-      if search[:in_state].present?
-        State.find_by_id(search[:in_state])
-      elsif search[:county_id].present?
-        County.find_by_id(search[:county_id])
-      elsif search[:city_id].present?
-        City.find_by_id(search[:city_id])
-      end
-    end
-  end
-  helper_method :geographic_filter
-
 end

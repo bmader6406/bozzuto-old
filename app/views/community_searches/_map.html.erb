@@ -2,10 +2,10 @@
   <div class="header">
     <ul>
       <li>
-        <%= link_to 'View as List', apartment_communities_path(:search => params[:search]), :class => 'list' %>
+        <%= link_to 'View as List', community_search_path(:search => params[:search]), :class => 'list' %>
       </li>
       <li class="current">
-        <%= link_to 'View on Map', map_apartment_communities_path(:search => params[:search]), :class => 'map' %>
+        <%= link_to 'View on Map', map_community_search_path(:search => params[:search]), :class => 'map' %>
       </li>
     </ul>
     <p>

@@ -378,23 +378,6 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   opacity: 0;
   width: 100%;
 
-  .cty-tile-actions-availability {
-    background: transparent url(/images/neighborhoods/cty-availability-btn.png) no-repeat 0 0;
-    color: #fff;
-    float: left;
-    font-family: $narrow-font;
-    font-size: 22px;
-    height: 35px;
-    line-height: 35px;
-    text-transform: uppercase;
-    text-align: center;
-    width: 146px;
-
-    &:hover {
-      text-decoration: none;
-    }
-  }
-
   .cty-tile-actions-info {
     background: transparent url(/images/structure/bg-header-a.gif) no-repeat center left;
     color: #84848b;
@@ -436,9 +419,15 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   margin: 30px 0;
 }
 
+.nh-search-all {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
 .nh-states {
   border-top: 1px solid #cccccc;
   margin-top: 40px;
+  margin-bottom: 25px;
   padding: 60px 15px 0 15px;
 }
 
@@ -453,5 +442,26 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
     font-size: 24px !important;
     margin-bottom: 18px;
     padding-left: 10px !important;
+  }
+}
+
+.btn-blue-big {
+  @include linear-gradient(#a4c2e1, #6c8bbb);
+
+  border-radius: 6px;
+  border: 1px solid #6f97c8;
+  box-shadow: 0 0 6px 0 rgba(211, 227, 240, 1.0) inset;
+  color: #fff;
+  display: inline-block;
+  font-family: $narrow-font;
+  font-size: 22px;
+  height: 35px;
+  line-height: 35px;
+  padding: 0 24px;
+  text-align: center;
+  text-transform: uppercase;
+
+  &:hover {
+    text-decoration: none;
   }
 }

@@ -43,14 +43,14 @@
     <ul>
       <li><%= link_to 'Apartments', '/apartments' %></li>
       <% if geographic_filter -%>
-        <li><%= link_to "Find an Apartment", apartment_communities_path %></li>
-        <li><%= geographic_filter.name %> <%= "County" if geographic_filter.is_a?(County) %></li>
+        <li><%= link_to 'Search All Communities', community_search_path %></li>
+        <li><%= geographic_filter.name %> <%= 'County' if geographic_filter.is_a?(County) %></li>
       <% else -%>
-        <li>Find an Apartment</li>
+        <li>Search All Communities</li>
       <% end -%>
     </ul>
     <h1>
-      Find an Apartment
+      Search All Communities
       <% if geographic_filter -%>
         in <%= geographic_filter.name %> <%= "County" if geographic_filter.is_a?(County) %>
       <% end -%>
@@ -119,7 +119,7 @@
         <% end %>
       </div>
 
-      <%= render :partial => "apartment_communities/#{@partial_template}" %>
+      <%= render :partial => "community_searches/#{@partial_template}" %>
 
     </div>
 

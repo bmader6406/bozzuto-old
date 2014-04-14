@@ -15,6 +15,6 @@ class CitiesController < ApplicationController
   end
 
   def mobile_only
-    redirect_to apartment_communities_url unless mobile?
+    redirect_to metros_url unless mobile?
   end
 end

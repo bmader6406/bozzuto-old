@@ -22,7 +22,7 @@ module LandingPagesHelper
     title = "in #{@state.name} By #{location_type}"
     records = @state.send(location_type.downcase.pluralize).ordered_by_name
     apartments_by_section(location_type.downcase, title, records) do |item|
-      link_to item.name, apartment_communities_path("search[#{location_type.downcase}_id]" => item.id)
+      link_to item.name, community_search_path("search[#{location_type.downcase}_id]" => item.id)
     end
   end
 end

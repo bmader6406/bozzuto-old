@@ -2,9 +2,7 @@
   <div class="container">
     <ul>
       <li><%= link_to "Apartments", "/apartments" %></li>
-      <li><%= link_to "Find an Apartment", apartment_communities_path %></li>
-      <li><%= link_to @community.state.name, state_apartment_search_path(@community.state) %></li>
-      <li><%= link_to @community.city.name, city_apartment_search_path(@community.city) %></li>
+      <li><%= link_to "Find an Apartment", metros_path %></li>
       <li class="last"><%= @community.title %></li>
     </ul>
   </div>

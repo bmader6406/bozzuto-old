@@ -59,17 +59,27 @@ class ApartmentCommunity < Community
   validates_presence_of :lead_2_lease_email, :if => lambda { |community| community.show_lead_2_lease }
 
 
-  named_scope :with_floor_plan_groups, lambda {|ids|
-    {:conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE floor_plan_group_id IN (?))", ids]}
+  named_scope :with_floor_plan_groups, lambda { |ids|
+    {:conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE floor_plan_group_id IN (?))", Array(ids)]}
   }
 
   named_scope :with_property_features, lambda { |ids|
     {:conditions => ["properties.id IN (SELECT property_id FROM properties_property_features WHERE property_feature_id IN (?))", Array(ids)]}
   }
 
-  named_scope :with_min_price, lambda {|price| {:conditions => ['properties.max_rent >= ?', price.to_i]} }
+  named_scope :with_min_price, lambda { |price|
+    {
+      :joins      => "JOIN apartment_floor_plan_caches AS cache ON cache.cacheable_id = properties.id AND cache.cacheable_type = 'Property'",
+      :conditions => ['cache.max_price >= ?', price.to_i]
+    }
+  }
 
-  named_scope :with_max_price, lambda {|price| {:conditions => ['properties.min_rent <= ?', price.to_i]} }
+  named_scope :with_max_price, lambda { |price|
+    {
+      :joins      => "JOIN apartment_floor_plan_caches AS cache ON cache.cacheable_id = properties.id AND cache.cacheable_type = 'Property'",
+      :conditions => ['cache.min_price <= ?', price.to_i]
+    }
+  }
 
   named_scope :featured, :conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE featured = ?)", true]
 

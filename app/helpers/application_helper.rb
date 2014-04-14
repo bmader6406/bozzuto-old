@@ -129,15 +129,15 @@ module ApplicationHelper
   end
 
   def state_apartment_search_path(state)
-    apartment_communities_path("search[in_state]" => state.id)
+    community_search_path("search[in_state]" => state.id)
   end
 
   def city_apartment_search_path(city)
-    apartment_communities_path("search[city_id]" => city.id)
+    community_search_path("search[city_id]" => city.id)
   end
 
   def county_apartment_search_path(county)
-    apartment_communities_path("search[county_id]" => county.id)
+    community_search_path("search[county_id]" => county.id)
   end
 
   def state_home_search_path(state)

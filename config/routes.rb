@@ -6,14 +6,21 @@ ActionController::Routing::Routes.draw do |map|
 
   map.root :controller => :home_pages
 
-  map.search '/search', :controller => :searches, :action => :index
+  map.search '/search',
+             :controller => :searches,
+             :action     => :index
+
   map.resource :community_search, :only => :show
+
+  map.map_community_search 'community_searches/map',
+                           :controller => :community_searches,
+                           :action     => :show,
+                           :template   => 'map'
 
   map.with_options :controller => :careers, :action => :index, :section => 'careers' do |m|
     m.careers '/careers'
     m.connect '/careers/overview'
   end
-
 
   map.namespace :email do |email|
     %w(recently_viewed search_results).each do |type|
@@ -28,7 +35,6 @@ ActionController::Routing::Routes.draw do |map|
                       :action     => :destroy
   end
 
-  map.map_apartment_communities 'apartments/communities/map', :controller => 'apartment_communities', :action => 'index', :template => 'map'
 
 
   map.ufollowup 'apartments/communities/:id/ufollowup',
@@ -68,7 +74,7 @@ ActionController::Routing::Routes.draw do |map|
   apartment_community_options = {
     :path_prefix => 'apartments',
     :as          => :communities,
-    :only        => [:index, :show],
+    :only        => :show,
     :member      => { :rentnow => :get }
   }
   map.resources :apartment_communities, apartment_community_options do |community|
