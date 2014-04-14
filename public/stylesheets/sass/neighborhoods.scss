@@ -14,6 +14,11 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   margin: 0px auto;
 }
 
+
+#breadcrumb .container {
+  position: relative;
+}
+
 .bc-title {
   margin-bottom: 12px !important;
 }
@@ -23,6 +28,12 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   font-size: 15px;
   line-height: 1.65;
   margin-bottom: 12px;
+}
+
+.bc-add-this {
+  position: absolute;
+  right: 0;
+  top: 12px;
 }
 
 .nh-banner-img {
