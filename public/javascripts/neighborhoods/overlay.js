@@ -4,6 +4,15 @@
     this.spot              = spot;
     this.animationDuration = 300;
     this.$node             = $(this.spot.overlayContent());
+    this.$close            = this.$node.find('.nh-map-overlay-close');
+
+    var self = this;
+
+    this.$close.bind('click', function(e) {
+      e.preventDefault();
+
+      self.map.closeOverlay();
+    });
   };
 
   bozzuto.Neighborhoods.Overlay.prototype = {
@@ -86,8 +95,8 @@
     },
 
     setCenter: function(point) {
-      var widthOffset  = this.$node.width() / 2,
-          heightOffset = this.$node.height() / 2;
+      var widthOffset  = this.$node.outerWidth() / 2,
+          heightOffset = this.$node.outerHeight() / 2;
 
       this.$node.css({
         left: (point.x - widthOffset) + 'px',

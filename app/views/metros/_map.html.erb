@@ -28,6 +28,8 @@
       <% places.each do |place| %>
         <div class="nh-map-place" <%= jmapping(place) %>>
           <div class="nh-map-overlay">
+            <a href="#" class="nh-map-overlay-close">Close</a>
+
             <%= render "#{place.class.model_name.tableize}/listing", place.lineage_hash %>
           </div>
         </div>
@@ -36,6 +38,8 @@
       <% communities.each do |community| %>
         <div class="nh-map-community" <%= jmapping(community) %>>
           <div class="nh-map-overlay">
+            <a href="#" class="nh-map-overlay-close">Close</a>
+
             <%= render 'neighborhoods/community_listing', :community => community %>
           </div>
         </div>
