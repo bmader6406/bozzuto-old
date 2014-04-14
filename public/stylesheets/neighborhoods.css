@@ -23,7 +23,8 @@
 .bc-add-this {
   position: absolute;
   right: 0;
-  top: 12px; }
+  top: 12px;
+  width: 150px; }
 
 .nh-banner-img {
   height: 325px; }
