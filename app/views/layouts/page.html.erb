@@ -4,7 +4,9 @@
 <body class="secondary page <%= yield :body_class %>">
   <%= render 'layouts/header' %>
 
-  <% if @page.present? && @page.masthead_slideshow.try(:present?) %>
+  <% if request.path =~ %r{^/apartments(/|/overview/?)?$} %>
+    <%= render 'pages/apartments_masthead', :slideshow => @page.masthead_slideshow %>
+  <% elsif @page.present? && @page.masthead_slideshow.try(:present?) %>
     <%= render 'pages/masthead_slideshow', :slideshow => @page.masthead_slideshow %>
   <% else %>
     <%= render 'pages/masthead' %>

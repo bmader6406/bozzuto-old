@@ -10,8 +10,10 @@
 <%= @page.body.try(:html_safe) %>
 
 
-<% if params[:controller] == 'pages' && params[:section] == 'apartments' && params[:page].empty? %>
+<% if request.path =~ %r{^/apartments(|/overview/?)?$} %>
+  <% neighborhoods_assets %>
 <% end %>
+
 
 <% if params[:section] == 'apartments' %>
 

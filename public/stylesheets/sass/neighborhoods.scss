@@ -466,3 +466,41 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
     text-decoration: none;
   }
 }
+
+.nh-apt-masthead {
+  .container {
+    margin: 30px auto 70px auto;
+  }
+
+  .nh-apt-masthead-content {
+    @include box-sizing(border-box);
+
+    border-bottom: 1px solid #cccccc;
+    padding-left: 15px;
+    padding-bottom: 45px;
+    width: 1030px;
+
+    .left {
+      display: table-cell;
+      padding-right: 50px;
+      width: 680px;
+    }
+
+    .right {
+      display: table-cell;
+    }
+  }
+
+  .nh-apt-masthead-title {
+    color: #565c64;
+    font-size: 35px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+  }
+
+  .nh-apt-masthead-description {
+    color: #565c64;
+    font-size: 15px;
+    margin-bottom: 40px;
+  }
+}

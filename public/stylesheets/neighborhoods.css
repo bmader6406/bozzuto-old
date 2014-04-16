@@ -365,3 +365,29 @@
   text-transform: uppercase; }
   .btn-blue-big:hover {
     text-decoration: none; }
+
+.nh-apt-masthead .container {
+  margin: 30px auto 70px auto; }
+.nh-apt-masthead .nh-apt-masthead-content {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-bottom: 1px solid #cccccc;
+  padding-left: 15px;
+  padding-bottom: 45px;
+  width: 1030px; }
+  .nh-apt-masthead .nh-apt-masthead-content .left {
+    display: table-cell;
+    padding-right: 50px;
+    width: 680px; }
+  .nh-apt-masthead .nh-apt-masthead-content .right {
+    display: table-cell; }
+.nh-apt-masthead .nh-apt-masthead-title {
+  color: #565c64;
+  font-size: 35px;
+  margin-bottom: 15px;
+  text-transform: uppercase; }
+.nh-apt-masthead .nh-apt-masthead-description {
+  color: #565c64;
+  font-size: 15px;
+  margin-bottom: 40px; }
