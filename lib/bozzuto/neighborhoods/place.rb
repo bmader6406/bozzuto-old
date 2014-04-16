@@ -7,7 +7,7 @@ module Bozzuto
 
 
           has_attached_file :banner_image,
-                            :url             => '/system/:class/:id/banner_:style.:extension',
+                            :url             => '/system/:class/:id/:attachment_name/:style.:extension',
                             :styles          => { :resized => '1020x325#' },
                             :default_style   => :resized,
                             :convert_options => { :all => '-quality 80 -strip' }

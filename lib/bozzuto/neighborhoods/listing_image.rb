@@ -7,7 +7,7 @@ module Bozzuto
         opts.assert_valid_keys(:required)
 
         has_attached_file(name,
-                          :url             => '/system/:class/:id/:style.:extension',
+                          :url             => '/system/:class/:id/:attachment_name/:style.:extension',
                           :styles          => { :resized => '300x234#' },
                           :default_style   => :resized,
                           :convert_options => { :all => '-quality 80 -strip' })
