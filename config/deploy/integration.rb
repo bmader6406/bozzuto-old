@@ -1,6 +1,6 @@
 set :user,      'www-data'
 set :deploy_to, '/var/www/bozzuto/integration'
-set :branch,    fetch(:branch, 'origin/neighborhoods')
+set :branch,    fetch(:branch, 'origin/master')
 
 set :default_environment, { 'PATH' => '/opt/ruby/bin:$PATH' }
 

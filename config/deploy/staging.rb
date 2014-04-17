@@ -1,6 +1,6 @@
 set :user, 'www-data'
 set :deploy_to,  "/var/www/bozzuto/staging"
-set :branch, 'origin/neighborhoods'
+set :branch, 'origin/staging'
 
 set :default_environment, { 'PATH' => '/opt/ruby/bin:$PATH' }
 
