@@ -78,12 +78,12 @@
       </div>
     <% end %>
 
-    <% if @community.featured_floor_plans.any? %>
+    <% @community.featured_floor_plans.available.non_zero_min_rent.if_present? do |plans| %>
       <div id="featured-floor-plans">
         <h2>Featured Floor Plans</h2>
 
         <ul class="row">
-          <% @community.featured_floor_plans.available.non_zero_min_rent.take(3).each do |plan| %>
+          <% plans.each do |plan| %>
             <li class="floor-plan">
               <h4><%= plan.name %></h4>
 

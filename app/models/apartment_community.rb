@@ -19,6 +19,9 @@ class ApartmentCommunity < Community
   before_update :mark_dirty_floor_plan_prices
   after_update :update_floor_plan_prices
 
+  after_save :invalidate_apartment_floor_plan_cache!
+  after_destroy :invalidate_apartment_floor_plan_cache!
+
   has_many :floor_plans,
            :class_name => 'ApartmentFloorPlan',
            :dependent  => :destroy
