@@ -10,7 +10,6 @@ TODO
 public/system/*
 database.*
 .rvmrc
-.ruby-*
 .rbenv-gemsets
 .powenv
 .powrc
