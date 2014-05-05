@@ -214,6 +214,8 @@
 
   <%= yield :end_of_body %>
 
+  <%= render :partial => 'layouts/ga_tracking' %>
+
   <%= google_maps_javascript_tag %>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
   <%= include_javascripts :redesign %>
