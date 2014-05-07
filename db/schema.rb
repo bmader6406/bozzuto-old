@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140409184644) do
+ActiveRecord::Schema.define(:version => 20140507192916) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -208,12 +208,12 @@ ActiveRecord::Schema.define(:version => 20140409184644) do
     t.boolean  "featured_mobile",                      :default => false
     t.boolean  "under_construction",                   :default => false
     t.string   "external_cms_type"
-    t.text     "office_hours"
-    t.string   "pinterest_url"
     t.string   "schedule_tour_url"
     t.string   "seo_link_text"
     t.string   "seo_link_url"
     t.boolean  "show_rtrk_code",                       :default => false, :null => false
+    t.text     "office_hours"
+    t.string   "pinterest_url"
     t.string   "website_url_text"
     t.text     "neighborhood_description"
     t.string   "neighborhood_listing_image_file_name"
@@ -596,12 +596,10 @@ ActiveRecord::Schema.define(:version => 20140409184644) do
   add_index "lasso_accounts", ["property_id"], :name => "index_lasso_accounts_on_property_id"
 
   create_table "leaders", :force => true do |t|
-    t.string   "name",                :null => false
-    t.string   "title",               :null => false
-    t.string   "company",             :null => false
-    t.integer  "leadership_group_id", :null => false
-    t.text     "bio",                 :null => false
-    t.integer  "position"
+    t.string   "name",               :null => false
+    t.string   "title",              :null => false
+    t.string   "company",            :null => false
+    t.text     "bio",                :null => false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -618,6 +616,18 @@ ActiveRecord::Schema.define(:version => 20140409184644) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "leaderships", :force => true do |t|
+    t.integer  "leader_id",           :null => false
+    t.integer  "leadership_group_id", :null => false
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "leaderships", ["leader_id", "leadership_group_id"], :name => "index_leaderships_on_leader_id_and_leadership_group_id", :unique => true
+  add_index "leaderships", ["leader_id"], :name => "index_leaderships_on_leader_id"
+  add_index "leaderships", ["leadership_group_id"], :name => "index_leaderships_on_leadership_group_id"
 
   create_table "masthead_slides", :force => true do |t|
     t.text     "body",                                 :null => false
@@ -811,12 +821,12 @@ ActiveRecord::Schema.define(:version => 20140409184644) do
   add_index "photo_sets", ["property_id"], :name => "index_photo_sets_on_property_id"
 
   create_table "photos", :force => true do |t|
-    t.string   "image_file_name"
-    t.string   "title",              :null => false
+    t.string   "image_file_name",    :default => ""
+    t.string   "title",              :default => "", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_content_type"
-    t.string   "flickr_photo_id",    :null => false
+    t.string   "flickr_photo_id",                    :null => false
     t.integer  "photo_set_id"
     t.integer  "position"
   end
@@ -973,12 +983,12 @@ ActiveRecord::Schema.define(:version => 20140409184644) do
     t.boolean  "featured_mobile",                      :default => false
     t.boolean  "under_construction",                   :default => false
     t.string   "external_cms_type"
-    t.text     "office_hours"
-    t.string   "pinterest_url"
     t.string   "schedule_tour_url"
     t.string   "seo_link_text"
     t.string   "seo_link_url"
     t.boolean  "show_rtrk_code",                       :default => false, :null => false
+    t.text     "office_hours"
+    t.string   "pinterest_url"
     t.string   "website_url_text"
     t.text     "neighborhood_description"
     t.string   "neighborhood_listing_image_file_name"
@@ -1208,9 +1218,9 @@ ActiveRecord::Schema.define(:version => 20140409184644) do
   add_index "states", ["position"], :name => "index_states_on_position"
 
   create_table "testimonials", :force => true do |t|
-    t.string   "name"
-    t.string   "title"
-    t.text     "quote",      :null => false
+    t.string   "name",       :default => ""
+    t.string   "title",      :default => ""
+    t.text     "quote",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "section_id"

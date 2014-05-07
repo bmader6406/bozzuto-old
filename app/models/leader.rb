@@ -1,11 +1,14 @@
 class Leader < ActiveRecord::Base
-  acts_as_list :scope => :leadership_group
+  has_many :leaderships,
+           :dependent  => :destroy,
+           :inverse_of => :leader
 
-  belongs_to :leadership_group
+  validates_presence_of :name,
+                        :title,
+                        :company,
+                        :bio
 
-  validates_presence_of :name, :title, :company, :leadership_group, :bio
-
-  has_friendly_id :name, :use_slug => true  
+  has_friendly_id :name, :use_slug => true
 
   has_attached_file :image,
                     :url             => '/system/:class/:id/:style.:extension',
