@@ -10,4 +10,6 @@ class Leadership < ActiveRecord::Base
 
 
   validates_presence_of :leader, :leadership_group
+
+  delegate :name, :to => :leader
 end

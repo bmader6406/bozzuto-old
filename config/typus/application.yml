@@ -448,19 +448,35 @@ LassoAccount:
 Leader:
   fields:
     default: name, title, company
-    list: name, title, company, leadership_group
-    relationship: name, title, company, position
-    form: leadership_group, name, title, company, bio, image
-  order_by: leadership_group_id, position
-  relationships: leadership_group
+    list: name, title, company
+    relationship: name, title, company
+    form: name, title, company, bio, image
+    options:
+      required: name, title, company, bio
+  options:
+    per_page: 1000
+  order_by: name
+  relationships: 
   application: Leaders
+
+Leadership:
+  fields:
+    default: name
+    list: name
+    form: leadership_group, leader
+    relationship: name, position
+    options:
+      required: leadership_group, leader
+  order_by: position
+  relationships:
+  application:
 
 LeadershipGroup:
   fields:
     default: name
     list: name, position
   order_by: position
-  relationships: leaders
+  relationships: leaderships
   application: Leaders
 
 MastheadSlide:

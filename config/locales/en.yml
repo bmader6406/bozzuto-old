@@ -205,6 +205,8 @@ en:
         client_id: Lasso Client ID
         project_id: Lasso Project ID
         uid: Lasso UID
+      leadership:
+        leadership_group: Leadership Group
       masthead_slide:
         body: Body Text
         image_link: Image Link

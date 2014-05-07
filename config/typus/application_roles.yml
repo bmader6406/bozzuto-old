@@ -36,6 +36,7 @@ admin:
   LandingPagePopularOrdering : read, update, delete
   LassoAccount: create, read, update, delete
   Leader: create, read, update, delete
+  Leadership: create, read, update, delete
   LeadershipGroup: create, read, update, delete
   MastheadSlide: create, read, update, delete
   MastheadSlideshow: create, read, update, delete
