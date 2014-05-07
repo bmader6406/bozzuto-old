@@ -448,7 +448,7 @@ LassoAccount:
 Leader:
   fields:
     default: name, title, company
-    list: name, title, company, leadership_group, position
+    list: name, title, company, leadership_group
     relationship: name, title, company, position
     form: leadership_group, name, title, company, bio, image
   order_by: leadership_group_id, position
