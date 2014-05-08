@@ -3,7 +3,13 @@
 
 <%= community_contact_callout(@community) %>
 
-<% floor_plan_presenter(@community).groups.each do |group| %>
+<p>
+  <%= link_to 'All', apartment_community_floor_plan_groups_path(@community, :filter => 'all') %>
+  |
+  <%= link_to 'Available', apartment_community_floor_plan_groups_path(@community, :filter => 'available') %>
+</p>
+
+<% floor_plan_presenter(filtered_floor_plans).groups.each do |group| %>
   <% if group.plans.any? %>
     <div id="<%= dom_id(group) %>" class="floor-plan-group">
       <h2><%= group.name.pluralize %></h2>

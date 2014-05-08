@@ -14,4 +14,38 @@ class ApartmentFloorPlanGroupsController < ApplicationController
   def find_community
     @community = find_property(ApartmentCommunity, params[:apartment_community_id])
   end
+
+  def filtered_floor_plans
+    @filtered_floor_plans ||= FilteredFloorPlansCollection.new(@community, params[:filter])
+  end
+  helper_method :filtered_floor_plans
+
+
+  class FilteredFloorPlansCollection
+    attr_reader :community, :filter
+
+    def initialize(community, filter = 'all')
+      @community = community
+      @filter    = filter
+    end
+
+    def available_floor_plans
+      if filter == 'available'
+        base_scope.available
+      else
+        base_scope
+      end
+    end
+
+    def plan_count_in_group(group)
+      available_floor_plans.in_group(group).count
+    end
+
+
+    private
+
+    def base_scope
+      @community.floor_plans
+    end
+  end
 end

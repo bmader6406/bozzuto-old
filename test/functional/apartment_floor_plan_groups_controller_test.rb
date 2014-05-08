@@ -2,14 +2,26 @@ require 'test_helper'
 
 class ApartmentFloorPlanGroupsControllerTest < ActionController::TestCase
   context "ApartmentFloorPlanGroupsController" do
-    setup { @community = ApartmentCommunity.make }
+    before do
+      @community = ApartmentCommunity.make
 
-    context "a GET to #index" do
-      context 'with a community that is not published' do
-        setup { @community.update_attribute(:published, false) }
+      @floor_plan_1 = ApartmentFloorPlan.make(
+        :apartment_community => @community,
+        :available_units     => 10
+      )
+
+      @floor_plan_2 = ApartmentFloorPlan.make(
+        :apartment_community => @community,
+        :available_units     => 0
+      )
+    end
+
+    describe "GET to #index" do
+      context "with a community that is not published" do
+        before { @community.update_attribute(:published, false) }
 
         all_devices do
-          setup do
+          before do
             get :index, :apartment_community_id => @community.id
           end
 
@@ -17,9 +29,9 @@ class ApartmentFloorPlanGroupsControllerTest < ActionController::TestCase
         end
       end
 
-      context 'with a community that is published' do
+      context "with a community that is published" do
         desktop_device do
-          setup do
+          before do
             get :index, :apartment_community_id => @community.id
           end
 
@@ -30,16 +42,39 @@ class ApartmentFloorPlanGroupsControllerTest < ActionController::TestCase
         end
 
         mobile_device do
-          setup do
-            get :index,
-              :apartment_community_id => @community.id,
-              :format => :mobile
+          before do
+            get :index, :apartment_community_id => @community.id
           end
 
           should_respond_with :success
           should_render_with_layout :application
           should_render_template :index
           should_assign_to(:community) { @community }
+        end
+      end
+
+      context "showing all floor plans" do
+        before do
+          get :index, :apartment_community_id => @community.id
+        end
+
+        should_respond_with(:success)
+
+        it "assigns the floor plans" do
+          assigns(:filtered_floor_plans).available_floor_plans.should == [@floor_plan_1, @floor_plan_2]
+        end
+      end
+
+      context "showing available floor plans" do
+        before do
+          get :index, :apartment_community_id => @community.id,
+                      :filter => 'available'
+        end
+
+        should_respond_with(:success)
+
+        it "assigns the floor plans" do
+          assigns(:filtered_floor_plans).available_floor_plans.should == [@floor_plan_1]
         end
       end
     end
