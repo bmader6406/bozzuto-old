@@ -1,13 +1,19 @@
 <% content_for :body_class do %>community property floor-plans<% end %>
 <% render_meta(@community, :floor_plans) %>
 
-<%= community_contact_callout(@community) %>
+<% contact_callout = community_contact_callout(@community) do %>
+  <div class="fp-toggle">
+    <%= link_to 'All',
+                apartment_community_floor_plan_groups_path(@community, :filter => 'all'),
+                :class => ('fp-toggle-current' if params[:filter] != 'available') %>
 
-<p>
-  <%= link_to 'All', apartment_community_floor_plan_groups_path(@community, :filter => 'all') %>
-  |
-  <%= link_to 'Available', apartment_community_floor_plan_groups_path(@community, :filter => 'available') %>
-</p>
+    <%= link_to 'Available',
+                apartment_community_floor_plan_groups_path(@community, :filter => 'available'),
+                :class => ('fp-toggle-current' if params[:filter] == 'available') %>
+  </div>
+<% end %>
+
+<%= contact_callout %>
 
 <% floor_plan_presenter(filtered_floor_plans).groups.each do |group| %>
   <% if group.plans.any? %>

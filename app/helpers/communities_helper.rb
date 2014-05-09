@@ -1,6 +1,8 @@
 module CommunitiesHelper
-  def community_contact_callout(community)
-    render 'communities/request_info', :community => community
+  def community_contact_callout(community, &block)
+    extra_content = capture(&block) if block_given?
+
+    render 'communities/request_info', :community => community, :extra_content => extra_content
   end
 
   def mediamind_activity_code(activity_id)

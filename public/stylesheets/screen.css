@@ -2323,7 +2323,7 @@ div.wysiwyg ul li {
       font-size: 11px;
     }
 
-    .community #main-content p.request-info {
+    .community #main-content .request-info {
       border-bottom: 1px solid #dadadc;
       border-top: 1px solid #dadadc;
       color: #84848b;
@@ -2331,8 +2331,9 @@ div.wysiwyg ul li {
       line-height: 35px;
       margin-bottom: 20px;
       padding: 10px 0;
+      position: relative;
     }
-    .community #main-content p.request-info a {
+    .community #main-content .request-info a.request-info-button {
       background: url(../images/structure/bg-request-info.png) no-repeat 0 0;
       display: block;
       float: left;
@@ -2343,10 +2344,10 @@ div.wysiwyg ul li {
       text-indent: -9999px;
       width: 163px;
     }
-    .community #main-content p.request-info a:hover {
+    .community #main-content .request-info a:hover {
       background-position: 0 -35px;
     }
-    .community #main-content p.request-info .phone-number {
+    .community #main-content .request-info .phone-number {
       color: #000;
       position: relative;
       top: 1px;
@@ -5465,4 +5466,34 @@ div.wysiwyg ul li {
 
 .cty-contact-schedule-appointment a:hover {
   text-decoration: none;
+}
+
+.fp-toggle {
+  background-color: #4177b8;
+  border: 2px solid #4177b8;
+  border-radius: 9px;
+  font-family: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
+  height: 34px;
+  position: absolute;
+  right: 0;
+  text-transform: uppercase;
+  top: 8px;
+}
+
+.fp-toggle a {
+  border-radius: 7px;
+  color: #fff;
+  float: left;
+  height: 34px;
+  line-height: 34px;
+  padding: 0 15px;
+}
+
+.fp-toggle a:hover {
+  text-decoration: none;
+}
+
+.fp-toggle a.fp-toggle-current {
+  color: #4177b8;
+  background-color: #fff;
 }
