@@ -101,7 +101,7 @@ module ApartmentCommunitiesHelper
   end
 
   def reserve_link(plan, opts = {})
-    text = plan.managed_by_rent_cafe? ? 'Apply Now' : 'Reserve'
+    text = plan.managed_by_rent_cafe? ? 'Apply Now' : 'Reserve Now'
     url  = plan.availability_url
 
     link_to(text, url, opts)

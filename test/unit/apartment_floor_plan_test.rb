@@ -124,6 +124,28 @@ class ApartmentFloorPlanTest < ActiveSupport::TestCase
       end
     end
 
+    describe "#available?" do
+      context "available_units is > 0" do
+        before do
+          subject.available_units = 10
+        end
+
+        it "returns true" do
+          subject.available?.should == true
+        end
+      end
+
+      context "available_units is 0" do
+        before do
+          subject.available_units = 0
+        end
+
+        it "returns false" do
+          subject.available?.should == false
+        end
+      end
+    end
+
     describe "before validating" do
       before do
         @community = ApartmentCommunity.make

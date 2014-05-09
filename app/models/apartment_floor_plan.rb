@@ -113,6 +113,10 @@ class ApartmentFloorPlan < ActiveRecord::Base
     save
   end
 
+  def available?
+    available_units > 0
+  end
+
 
   private
 

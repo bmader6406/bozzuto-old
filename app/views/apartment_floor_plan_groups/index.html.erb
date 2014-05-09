@@ -31,23 +31,21 @@
                 <% min_rent = plan.min_rent %>
 
                 <% if sq_ft.present? %>
-                  <% if plan.rolled_up? %>
-                    Starting from
-                  <% end %>
-
                   <%= square_feet(sq_ft) %>
                 <% end %>
 
                 <% if min_rent.present? %>
-                  | <%= dollars(min_rent) %>
+                  | From <%= dollars(min_rent) %>
                 <% end %>
 
                 <% if sq_ft || min_rent %>
                   <br />
                 <% end %>
 
-                <% if plan.availability_url.present? %>
+                <% if plan.available? && plan.availability_url.present? %>
                   <%= reserve_link(plan, :class => 'floor-plan-reserve', :rel => 'external', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Reserve") %>
+                <% else %>
+                  <%= link_to('Contact For Info', apartment_community_contact_path(@community), :class => 'floor-plan-reserve', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Reserve") %>
                 <% end %>
               </p>
 
