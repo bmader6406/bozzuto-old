@@ -34,8 +34,4 @@ if environment == 'production'
   every 1.day, :at => '9:00 am' do
     command 'cp /home/vault/bozzutocom.xml /home/bozzuto/'
   end
-
-  #every 1.hour do
-  #  rake 'bozzuto:sync_twitter_accounts'
-  #end
 end

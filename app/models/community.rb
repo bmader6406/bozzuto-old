@@ -59,7 +59,7 @@ class Community < Property
 
   named_scope :with_twitter_account, :conditions => 'twitter_account_id > 0'
 
-  delegate :tweets, :to => :twitter_account, :allow_nil => true
+  delegate :latest_tweet, :to => :twitter_account, :allow_nil => true
 
 
   def self.typus_fields_for(filter)

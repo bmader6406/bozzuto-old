@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140507192916) do
+ActiveRecord::Schema.define(:version => 20140512170607) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -1239,9 +1239,10 @@ ActiveRecord::Schema.define(:version => 20140507192916) do
   add_index "tweets", ["twitter_account_id"], :name => "index_tweets_on_twitter_account_id"
 
   create_table "twitter_accounts", :force => true do |t|
-    t.string   "username",   :null => false
+    t.string   "username",       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "next_update_at", :null => false
   end
 
   add_index "twitter_accounts", ["username"], :name => "index_twitter_accounts_on_username"

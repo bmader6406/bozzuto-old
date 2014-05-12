@@ -6,7 +6,7 @@ class CommunitiesHelperTest < ActionView::TestCase
   context '#community_contact_callout' do
     setup do
       @community = ApartmentCommunity.make
-      expects(:render).with('communities/request_info',  :community => @community)
+      expects(:render).with('communities/request_info', :community => @community, :extra_content => nil)
     end
 
     should 'render the partial' do

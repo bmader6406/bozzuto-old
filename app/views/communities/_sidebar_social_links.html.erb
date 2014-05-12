@@ -15,7 +15,7 @@
     </p-->
   <%# end %>
 
-  <% @community.tweets.try(:first).if_present? do |tweet| %>
+  <% @community.latest_tweet.if_present? do |tweet| %>
     <%= render :partial => 'shared/tweet', :object => tweet %>
   <% end %>
 

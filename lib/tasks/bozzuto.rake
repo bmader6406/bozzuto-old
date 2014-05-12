@@ -81,19 +81,6 @@ namespace :bozzuto do
     end
   end
 
-  desc 'Sync Twitter accounts'
-  task :sync_twitter_accounts => :environment do
-    TwitterAccount.all(:order => 'updated_at ASC').each do |account|
-      begin
-        puts "Refreshing @#{account.username}"
-        account.sync
-      rescue Exception => e
-        puts " --> error syncing: #{e.message}"
-        HoptoadNotifier.notify(e)
-      end
-    end
-  end
-
   desc 'Send recurring emails'
   task :send_recurring_emails => :environment do
     RecurringEmail.needs_sending.each do |email|

@@ -1,178 +1,198 @@
 require 'test_helper'
 
 class TwitterAccountTest < ActiveSupport::TestCase
-  context 'A TwitterAccount' do
-    setup do
-      VCR.use_cassette('twitter_user_TheBozzutoGroup') do
-        @account = TwitterAccount.make(:username => 'TheBozzutoGroup')
-      end
-    end
-
-    subject { @account }
+  context "TwitterAccount" do
+    subject {
+      TwitterAccount.any_instance.stubs(:username_exists)
+      TwitterAccount.make(:username => 'batman')
+    }
 
     should_have_many :tweets
 
     should_validate_presence_of :username
     should_validate_uniqueness_of :username
 
-    context '#typus_name' do
-      should 'return the username' do
-        assert_equal @account.username, @account.typus_name
+    describe "#typus_name" do
+      it "returns the username" do
+        subject.typus_name.should == 'batman'
       end
     end
 
-    context 'with a username' do
-      context 'and Twitter API is rate limited' do
-        setup do
-          Twitter.expects(:user?).raises(Twitter::Error)
-          @account.expects(:log_bad_request)
+    describe "validating the username" do
+      subject { TwitterAccount.new }
 
-          @account.username = 'doh'
+      context "Twitter API is rate limited" do
+        before do
+          Twitter.expects(:user?).raises(Twitter::Error::TooManyRequests)
+
+          subject.username = 'doh'
         end
 
-        should 'catch the error' do
-          assert_nothing_raised { @account.valid? }
+        it "catch the error" do
+          expect {
+            subject.valid?
+          }.to_not raise_error
+        end
+
+        it "adds an error message" do
+          subject.valid?
+
+          subject.errors.on(:base).should == "There was a problem connecting to Twitter. Please try again later."
         end
       end
 
-      context 'that is not a Twitter user' do
-        setup do
-          @account.username = '5d234f'
+      context "user doesn't exist" do
+        before do
+          subject.username = '5d234f'
         end
 
-        should 'have an error on username' do
+        it "has an error on username" do
           VCR.use_cassette('twitter_user_5d234f') do
-            assert !@account.valid?
+            subject.valid?.should == false
           end
 
-          assert_match /is not a valid Twitter user/, @account.errors.on(:username)
+          subject.errors.on(:username).should =~ /is not a valid Twitter user/
         end
       end
 
-      context 'that is Twitter user' do
-        setup { @account.username = 'TheBozzutoGroup' }
+      context "username starts with @" do
+        before do
+          subject.stubs(:username_exists)
+          subject.username = '@yaychris'
+        end
 
-        should 'not have an error' do
-          VCR.use_cassette('twitter_user_TheBozzutoGroup') do
-            assert @account.valid?
-          end
+        it "has an error on username" do
+          subject.valid?.should == false
 
-          assert_nil @account.errors.on(:username)
+          subject.errors.on(:username).should =~ /Do not include the @ symbol/
         end
       end
 
-      context 'that has an @ at the start of the username' do
-        setup do
-          @account.stubs(:username_exists)
-          @account.username = '@yaychris'
+      context "username has invalid characters" do
+        before do
+          subject.stubs(:username_exists)
+          subject.username = '!@#$ -=":>'
         end
 
-        should 'have an error on username' do
-          assert !@account.valid?
-          assert_match /Do not include the @ symbol/,
-            @account.errors.on(:username)
-        end
-      end
+        it "has an error on username" do
+          subject.valid?.should == false
 
-      context 'that has invalid characters' do
-        setup do
-          @account.stubs(:username_exists)
-          @account.username = '!@#$ -=":>'
-        end
-
-        should 'have an error on username' do
-          assert !@account.valid?
-          assert_match /should only contain letters, numbers, and underscore/,
-            @account.errors.on(:username)
+          subject.errors.on(:username).should =~ /should only contain letters, numbers, and underscore/
         end
       end
 
-      context 'that has more than 15 characters' do
-        setup do
-          @account.stubs(:username_exists)
-          @account.username = 'a' * 16
+      context "username has more than 15 characters" do
+        before do
+          subject.stubs(:username_exists)
+
+          subject.username = 'a' * 16
         end
 
-        should 'have an error on username' do
-          assert !@account.valid?
-          assert @account.errors.on(:username).detect { |e|
+        it "has an error on username" do
+          subject.valid?.should == false
+
+          subject.errors.on(:username).detect { |e|
             e =~ /must be 15 or fewer characters/
-          }
+          }.should be_present
+        end
+      end
+
+      context "user does exist" do
+        before do
+          subject.username = 'TheBozzutoGroup'
+        end
+
+        it "doesn't have an error" do
+          VCR.use_cassette('twitter_user_TheBozzutoGroup') do
+            subject.valid?.should == true
+          end
+
+          subject.errors.on(:username).should == nil
         end
       end
     end
 
-    context 'when syncing' do
-      setup do
-        VCR.use_cassette('twitter_timeline_TheBozzutoGroup') do
-          @tweets = Twitter.user_timeline('TheBozzutoGroup')
+    describe "#latest_tweet" do
+      before do
+        TwitterAccount.any_instance.stubs(:username_exists)
+        @account = TwitterAccount.make
+
+        @tweet = @account.tweets.make(:text => "I'M BATMAN", :posted_at => Time.now - 100.years)
+      end
+
+      subject { @account }
+
+      context "update not needed" do
+        before do
+          subject.next_update_at = Time.now + 1.hour
+        end
+
+        it "doesn't fetch any new tweets" do
+          expect {
+            subject.latest_tweet
+          }.to_not change { subject.tweets(true).count }
+        end
+
+        it "returns the existing tweet" do
+          subject.latest_tweet.should == @tweet
         end
       end
 
-      context 'and no tweets exist' do
-        should 'create all of the tweets' do
-          assert_difference('@account.tweets.count', @tweets.count) {
+      context "update needed" do
+        before do
+          subject.next_update_at = Time.now - 1.hour
+
+          VCR.use_cassette('twitter_timeline_TheBozzutoGroup') do
+            @tweets = Twitter.user_timeline('TheBozzutoGroup')
+          end
+        end
+
+        it "fetches the newest tweets" do
+          expect {
             VCR.use_cassette('twitter_timeline_TheBozzutoGroup') do
-              @account.sync
+              subject.latest_tweet
             end
-          }
-
-          @tweets.zip(@account.tweets).each do |expected, actual|
-            assert_equal expected.text, actual.text
-            assert_equal expected.attrs[:id_str], actual.tweet_id
-          end
+          }.to change { subject.tweets(true).count }.by(20)
         end
-      end
 
-      context 'and some tweets already exist' do
-        setup do
-          @first = @tweets.first
-
-          @account.tweets.find_or_create_by_tweet_id(@first.attrs[:id_str]) do |tweet|
-            tweet.text      = @first.text
-            tweet.posted_at = @first.created_at
+        it "returns the newest tweet" do
+          VCR.use_cassette('twitter_timeline_TheBozzutoGroup') do
+            subject.latest_tweet.tweet_id.should == @tweets.first.attrs[:id_str]
           end
         end
 
-        should 'only create the new tweets' do
-          assert_difference('@account.tweets.count', @tweets.count - 1) {
-            VCR.use_cassette('twitter_timeline_TheBozzutoGroup') do
-              @account.sync
-            end
-          }
-
-          @tweets.zip(@account.tweets).each do |expected, actual|
-            assert_equal expected.text, actual.text
-            assert_equal expected.attrs[:id_str], actual.tweet_id
+        it "sets :next_update_at to the next update time" do
+          VCR.use_cassette('twitter_timeline_TheBozzutoGroup') do
+            subject.latest_tweet
           end
+
+          subject.next_update_at.should be_within(1.0).of(Time.now + TwitterAccount::UPDATE_FREQUENCY)
         end
       end
 
-      context 'and the username is invalid' do
-        setup do
-          @account.username = '5d234f'
+      context "Twitter raises an exception" do
+        before do
+          subject.next_update_at = Time.now - 1.hour
+
+          Twitter.expects(:user_timeline).raises(Twitter::Error::TooManyRequests)
         end
 
-        should 'return false' do
-          VCR.use_cassette('twitter_timeline_5d234f') do
-            assert !@account.sync
-          end
+        it "doesn't fetch any new tweets" do
+          expect {
+            subject.latest_tweet
+          }.to_not change { subject.tweets(true).count }
+        end
+
+        it "returns the existing tweet" do
+          subject.latest_tweet.should == @tweet
+        end
+
+        it "sets :next_update_at to the next rate limit window" do
+          subject.latest_tweet
+
+          subject.next_update_at.should be_within(1.0).of(Time.now + TwitterAccount::RATE_LIMIT_WINDOW)
         end
       end
-
-      context 'and Twitter API is rate limited' do
-        setup do
-          Twitter.expects(:user_timeline).raises(Twitter::Error)
-          @account.expects(:log_bad_request)
-
-          @account.username = 'doh'
-        end
-
-        should 'catch the error' do
-          assert_nothing_raised { @account.sync }
-        end
-      end
-
     end
   end
 end

@@ -14,6 +14,4 @@ class HomePage < ActiveRecord::Base
     :styles          => { :resized => '280x85#' },
     :default_style   => :resized,
     :convert_options => { :all => '-quality 80 -strip' }
-
-  delegate :tweets, :to => :twitter_account, :allow_nil => true
 end
