@@ -37,10 +37,6 @@ class ApartmentFloorPlanGroupsController < ApplicationController
       end
     end
 
-    def plan_count_in_group(group)
-      available_floor_plans.in_group(group).count
-    end
-
 
     private
 
