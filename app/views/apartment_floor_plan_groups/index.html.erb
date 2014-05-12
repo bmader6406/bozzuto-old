@@ -3,13 +3,17 @@
 
 <% contact_callout = community_contact_callout(@community) do %>
   <div class="fp-toggle">
-    <%= link_to 'All',
-                apartment_community_floor_plan_groups_path(@community, :filter => 'all'),
-                :class => ('fp-toggle-current' if params[:filter] != 'available') %>
+    <span class="fp-toggle-label">Floor Plans:</span>
 
-    <%= link_to 'Available',
-                apartment_community_floor_plan_groups_path(@community, :filter => 'available'),
-                :class => ('fp-toggle-current' if params[:filter] == 'available') %>
+    <div class="fp-toggle-links">
+      <%= link_to 'All',
+                  apartment_community_floor_plan_groups_path(@community),
+                  :class => ('fp-toggle-current' if params[:filter] != 'available') %>
+
+      <%= link_to 'Available',
+                  apartment_community_floor_plan_groups_path(@community, :filter => 'available'),
+                  :class => ('fp-toggle-current' if params[:filter] == 'available') %>
+    </div>
   </div>
 <% end %>
 
