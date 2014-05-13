@@ -270,6 +270,13 @@ Lead2LeaseSubmission.blueprint do
   comments      { '' }
 end
 
+Leader.blueprint do
+  name    { Faker::Name.name }
+  title   { 'CEO' }
+  company { Faker::Company.name }
+  bio     { Faker::Lorem.paragraphs(2) }
+end
+
 Metro.blueprint do
   name                    { Sham.metro_name }
   latitude                { Sham.latitude }

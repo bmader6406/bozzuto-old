@@ -15,35 +15,51 @@
       <div class="partner-portrait">
         <ul class="partner-portrait-links">
           <li class="portrait-steve-s">
-            <a href="#steve-strazzella"><span class="hit1">Steve Strazzella</span></a>
+            <% link_to leader_path('steve-strazzella') do %>
+              <span class="hit1">Steve Strazzella</span>
+            <% end %>
           </li>
           <li class="portrait-john-b">
-            <a href="#john-b-slidell"><span class="hit1">John B. Slidell</span><span class="hit2"></span></a>
+            <% link_to leader_path('john-b-slidell') do %>
+              <span class="hit1">John B. Slidell</span>
+            <% end %>
           </li>
           <li class="portrait-thomas-a">
-            <a href="#thomas-a-baum"><span class="hit1">Thomas A. Baum</span></a>
+            <% link_to leader_path('thomas-a-baum') do %>
+              <span class="hit1">Thomas A. Baum</span>
+            <% end %>
           </li>
           <li class="portrait-thomas-s">
-            <a href="#thomas-s-bozzuto"><span class="hit1">Thomas S. Bozzuto</span><span class="hit2"></span></a>
+            <% link_to leader_path('thomas-s-bozzuto') do %>
+              <span class="hit1">Thomas S. Bozzuto</span>
+            <% end %>
           </li>
           <li class="portrait-daniel-c">
-            <a href="#daniel-c-murphy"><span class="hit1">Daniel C. Murphy</span><span class="hit2"></span></a>
+            <% link_to leader_path('daniel-c-murphy') do %>
+              <span class="hit1">Daniel C. Murphy</span>
+            <% end %>
           </li>
           <li class="portrait-toby-s">
-            <a href="#toby-s-bozzuto"><span class="hit1">Toby S. Bozzuto</span></a>
+            <% link_to leader_path('toby-s-bozzuto') do %>
+              <span class="hit1">Toby S. Bozzuto</span>
+            <% end %>
           </li>
           <li class="portrait-julie-a">
-            <a href="#julie-a-smith"><span class="hit1">Julie A. Smith</span><span class="hit2"></span></a>
+            <% link_to leader_path('julie-a-smith') do %>
+              <span class="hit1">Julie A. Smith</span>
+            <% end %>
           </li>
           <li class="portrait-richard-l">
-            <a href="#richard-l-mostyn"><span class="hit1">Richard L. Mostyn</span><span class="hit2"></span></a>
+            <% link_to leader_path('richard-l-mostyn') do %>
+              <span class="hit1">Richard L. Mostyn</span>
+            <% end %>
           </li>
           <li class="portrait-michael-a">
-            <a href="#mike-schlegel">
+            <% link_to leader_path('mike-schlegel') do %>
               <span class="hit1">Michael A. Schlegel</span>
               <span class="hit2"></span>
               <span class="hit3"></span>
-            </a>
+            <% end %>
           </li>
         </ul>
 
@@ -52,43 +68,18 @@
       <% @leadership_groups.each do |group| -%>
         <h2><%= group.name %></h2>
         <ul class="partners">
-          <% group.leaders.each do |partner| -%>
+          <% group.leaders.each do |leader| -%>
             <li>
-              <a href="#<%= partner.to_param %>">
-                <span class="partner-name"><%= partner.name %></span>
-                <span class="partner-title"><%= partner.title %></span>
-                <span class="partner-group"><%= partner.company %></span>
+                <% link_to leader_path(leader) do %>
+                  <span class="partner-name"><%= leader.name %></span>
+                  <span class="partner-title"><%= leader.title %></span>
+                  <span class="partner-group"><%= leader.company %></span>
+                <% end %>
               </a>
             </li>
           <% end -%>
         </ul>
       <% end -%>
-
-      <div id="partner-bios">
-        <h3>Partner Bios</h3>
-
-        <ul>
-          <% @leaders.each do |partner| -%>
-            <li id="<%= partner.to_param %>">
-              <div class="partner-bio-outer">
-                <div class="partner-bio-inner">
-                  <img class="partner-pic" src="<%= partner.image.url %>" />
-
-                  <h3 class="partner-name"><%= partner.name %></h3>
-
-                  <span class="partner-title"><%= partner.title %></span>
-                  <span class="partner-group"><%= partner.company %></span>
-
-                  <p>
-                    <%= partner.bio %>
-                  </p>
-                </div>  
-              </div>
-            </li>
-          <% end -%>
-        </ul>
-      </div>
-
     </div>
   </div>
 </div>

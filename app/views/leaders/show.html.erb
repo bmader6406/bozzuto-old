@@ -1,0 +1,33 @@
+<% content_for :body_class do %>leader bio<% end %>
+
+<% if @page.present? %>
+  <% render_meta(@page) %>
+  <%= render :partial => 'pages/masthead_slideshow', :locals => { :slideshow => @page.masthead_slideshow } %>
+<% end %>
+
+<div id="main-content">
+  <div class="container">
+    <div id="sidebar" class="col">
+      <%= render :partial => 'pages/secondary_nav' %>
+    </div>
+
+    <div id="content" class="col">
+      <div class="leader-bio">
+        <%= image_tag @leader.image.url %>
+
+        <h3><%= @leader.name %></h3>
+
+        <span class="partner-title"><%= @leader.title %></span>
+        <span class="partner-group"><%= @leader.company %></span>
+
+        <p>
+          <%= @leader.bio %>
+        </p>
+      </div>
+    </div>
+
+    <div id="sidebar" class="col">
+      <%= render :partial => 'pages/default_aside' %>
+    </div>
+  </div>
+</div>

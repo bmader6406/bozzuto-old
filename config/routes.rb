@@ -272,9 +272,10 @@ ActionController::Routing::Routes.draw do |map|
       :action => :show
   end
 
-  map.leadership '/:section/leadership',
-    :controller => :leaders,
-    :action     => :index
+  map.resources :leaders,
+                :path_prefix => 'about-us',
+                :as          => :leadership,
+                :only        => [:index, :show]
 
   map.with_options :controller => :buzzes, :section => 'about-us' do |m|
     m.buzz '/bozzuto-buzz', :action => 'new', :conditions => { :method => :get }

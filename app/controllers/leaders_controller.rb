@@ -1,13 +1,16 @@
 class LeadersController < SectionContentController
   layout "application"
 
-  before_filter :find_section, :find_page, :only => :index
+  before_filter :find_section, :find_page
 
   def index
     @leadership_groups = LeadershipGroup.all
     @leaders = Leader.all
   end
 
+  def show
+    @leader = Leader.find(params[:id])
+  end
 
   private
 
@@ -18,7 +21,7 @@ class LeadersController < SectionContentController
   def find_page
     @page = begin
       @section.pages.published.find 'leadership'
-    rescue
+    rescue ActiveRecord::RecordNotFound
       nil
     end
   end
