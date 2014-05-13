@@ -11,7 +11,7 @@ Work Phone:
 Email Address: <%= @submission.email %>
 Lead Channel: <%= @submission.lead_channel %>
 Lead Priority: 4
-Desired Move In: <%= @submission.move_in_date.strftime("%m/%d/%Y") %>
+Desired Move In: <%= @submission.move_in_date.try(:strftime, "%m/%d/%Y") %>
 Desired Lease Term:
 Desired Unit Type:
 Desired Bedrooms: <%= @submission.bedrooms %>

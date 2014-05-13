@@ -18,6 +18,6 @@ class Lead2LeaseSubmission < ActiveRecord::Base
   column :comments, :text
   column :lead_channel, :string
 
-  validates_presence_of :first_name, :last_name, :primary_phone, :email, :move_in_date
+  validates_presence_of :first_name, :last_name, :email
   validates_email_format_of :email
 end

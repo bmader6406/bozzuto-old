@@ -9,10 +9,6 @@
   <%= f.text_field :first_name, :placeholder => 'Your First Name' %>
   <%= f.text_field :last_name, :placeholder => 'Your Last Name' %>
   <%= f.text_field :email, :placeholder => 'Your Email' %>
-  <%= f.text_field :primary_phone, :placeholder => 'Your Phone Number' %>
-
-  <h3>Move-In Date</h3>
-  <%= f.date_select :move_in_date, :order => [:month, :day, :year], :start_year => Time.now.year %>
 
   <h3>Comments</h3>
   <%= f.text_area :comments, :rows => 8, :cols => 37, :placeholder => 'Your Message' %>
