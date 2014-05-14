@@ -138,5 +138,5 @@ SitemapGenerator::Sitemap.create do
     add news_and_press_page_path(page)
   end
 
-  add leadership_path(Section.about)
+  add leaders_path
 end
