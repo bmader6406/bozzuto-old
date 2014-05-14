@@ -1,4 +1,4 @@
-<% content_for :body_class do %>leader bio<% end %>
+<% content_for :body_class do %>page<% end %>
 
 <% if @page.present? %>
   <% render_meta(@page) %>
@@ -12,22 +12,24 @@
     </div>
 
     <div id="content" class="col">
-      <div class="leader-bio">
-        <%= image_tag @leader.image.url %>
+      <div class="column-main col">
+        <div class="leader-meta row">
+          <%= image_tag @leader.image.url %>
 
-        <h3><%= @leader.name %></h3>
+          <h3 class="leader-name"><%= @leader.name %></h3>
 
-        <span class="partner-title"><%= @leader.title %></span>
-        <span class="partner-group"><%= @leader.company %></span>
+          <span class="leader-title"><%= @leader.title %></span>
+          <span class="leader-group"><%= @leader.company %></span>
+        </div>
 
-        <p>
-          <%= @leader.bio %>
-        </p>
+        <div class="leader-bio">
+          <p><%= @leader.bio %></p>
+        </div>
       </div>
-    </div>
 
-    <div id="sidebar" class="col">
-      <%= render :partial => 'pages/default_aside' %>
+      <div id="aside" class="col">
+        <%= render :partial => 'pages/default_aside' %>
+      </div>
     </div>
   </div>
 </div>
