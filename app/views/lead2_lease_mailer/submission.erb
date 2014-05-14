@@ -18,4 +18,4 @@ Desired Bedrooms: <%= @submission.bedrooms %>
 Desired Bathrooms: <%= @submission.bathrooms %>
 Pets: <%= @submission.pets ? 'yes' : 'no' %>
 Pet Types:
-Comments: <%= @submission.comments.gsub(/[\r|\n]+/, " ") %>
+Comments: <%= @submission.comments.try(:gsub, /[\r|\n]+/, " ") %>

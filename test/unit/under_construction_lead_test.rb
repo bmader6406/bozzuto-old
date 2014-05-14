@@ -8,7 +8,7 @@ class UnderConstructionLeadTest < ActiveSupport::TestCase
 
     should_belong_to :apartment_community
 
-    should_validate_presence_of :first_name, :last_name, :email
+    should_validate_presence_of :email
 
     context '#apartment_community_title' do
       context 'when community is present' do
