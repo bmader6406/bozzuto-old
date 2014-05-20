@@ -19,47 +19,60 @@
 
 <%= contact_callout %>
 
-<% floor_plan_presenter(filtered_floor_plans).groups.each do |group| %>
-  <% if group.plans.any? %>
-    <div id="<%= dom_id(group) %>" class="floor-plan-group">
-      <h2><%= group.name.pluralize %></h2>
-
-      <% group.plans.in_groups_of(4, false).each_with_index do |plans, i| %>
-        <ul class="row" <% if i >= 2 %> style="display: none;" <% end %>>
-          <% plans.each do |plan| %>
-            <li class="floor-plan">
-              <h4><%= plan.name %></h4>
-
-              <p>
-                <% sq_ft = plan.min_square_feet %>
-                <% min_rent = plan.min_rent %>
-
-                <% if sq_ft.present? %>
-                  <%= square_feet(sq_ft) %>
-                <% end %>
-
-                <% if min_rent.present? && plan.available? %>
-                  | From <%= dollars(min_rent) %>
-                <% end %>
-
-                <% if sq_ft || min_rent %>
-                  <br />
-                <% end %>
-
-                <% if plan.available? && plan.availability_url.present? %>
-                  <%= reserve_link(plan, :class => 'floor-plan-reserve', :rel => 'external', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Reserve") %>
-                <% else %>
-                  <%= link_to('Contact For Info', apartment_community_contact_path(@community), :class => 'floor-plan-reserve', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Reserve") %>
-                <% end %>
-              </p>
-
-              <% if plan.actual_image.present? %>
-                <%= floor_plan_image(plan, pinterest_button(request.url, image_path(plan.actual_image))) %>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
+<div class="row stickem-container">
+  <div class="stickem floor-plan-listing">
+    <ul>
+      <% floor_plan_presenter(filtered_floor_plans).groups.each do |group| %>
+        <% if group.plans.any? %>
+          <li><a href="#<%= dom_id(group) %>"><%= group.name.pluralize %></a></li>
+        <% end %>
       <% end %>
-    </div>
-  <% end %>
-<% end %>
+    </ul>
+  </div>
+  <div class="content">
+    <% floor_plan_presenter(filtered_floor_plans).groups.each do |group| %>
+      <% if group.plans.any? %>
+        <div id="<%= dom_id(group) %>" class="floor-plan-group">
+          <h2><%= group.name.pluralize %></h2>
+
+          <% group.plans.in_groups_of(4, false).each_with_index do |plans, i| %>
+            <ul class="row" <% if i >= 2 %> style="display: none;" <% end %>>
+              <% plans.each do |plan| %>
+                <li class="floor-plan">
+                  <h4><%= plan.name %></h4>
+
+                  <p>
+                    <% sq_ft = plan.min_square_feet %>
+                    <% min_rent = plan.min_rent %>
+
+                    <% if sq_ft.present? %>
+                      <%= square_feet(sq_ft) %>
+                    <% end %>
+
+                    <% if min_rent.present? && plan.available? %>
+                      | From <%= dollars(min_rent) %>
+                    <% end %>
+
+                    <% if sq_ft || min_rent %>
+                      <br />
+                    <% end %>
+
+                    <% if plan.available? && plan.availability_url.present? %>
+                      <%= reserve_link(plan, :class => 'floor-plan-reserve', :rel => 'external', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Reserve") %>
+                    <% else %>
+                      <%= link_to('Contact For Info', apartment_community_contact_path(@community), :class => 'floor-plan-reserve', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Reserve") %>
+                    <% end %>
+                  </p>
+
+                  <% if plan.actual_image.present? %>
+                    <%= floor_plan_image(plan, pinterest_button(request.url, image_path(plan.actual_image))) %>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -1380,4 +1380,20 @@ window.bozzuto = {};
       }
     });
   };
+
+  /* Added to floor plan groups page */
+  var $container = $('.container');
+  var $floorPlanLinks = $('.floor-plan-listing a');
+
+  $container.stickem();
+  $floorPlanLinks.bind('click', function(e){
+    e.preventDefault();
+
+    var $target = $(this.hash);
+
+    $('html,body').animate({
+      scrollTop: $target.offset().top
+    }, 500);
+  });
+
 })(jQuery);

@@ -5548,3 +5548,42 @@ div.wysiwyg ul li {
 
   color: #4177b8;
 }
+
+/* Floor plan stickem styling */
+
+.stickem-container {
+  position: relative;
+}
+.floor-plan-listing.stickit,
+.floor-plan-listing.stickit-end {
+  position: fixed;
+  top: 0;
+  margin-left: -190px;
+}
+.floor-plan-listing {
+  margin-left: -190px;
+  margin-top: 50px;
+  position: absolute;
+  width: 140px;
+  z-index: 1;
+}
+.floor-plan-listing li {
+  background: #ddd;
+  display: block;
+  margin-top: 2px;
+}
+.floor-plan-listing a {
+  color: #636972;
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 140px;
+}
+.floor-plan-listing li a:hover {
+  color: #036447;
+  text-decoration: none;
+}
