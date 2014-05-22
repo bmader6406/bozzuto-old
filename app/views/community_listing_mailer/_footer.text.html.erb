@@ -3,7 +3,8 @@
             <table cellpadding="0" cellspacing="0" border="0" width="600" style="border-bottom:2px solid #bec3c2;">
               <tr>
                 <td align="center" width="200" valign="top">
-                  <% link_to metros_url do %>
+                  <% more_communities_url = @community.apartment? ? metros_url : home_communities_url %>
+                  <% link_to more_communities_url do %>
                     <%= image_tag 'community_listing/img-find.jpg', :class => 'image_fix', :alt => 'Find more Bozzuto communities', :width => 200, :height => 65 %>
                   <% end %>
                 </td>
@@ -13,7 +14,7 @@
                     <%= image_tag 'community_listing/img-facebook.jpg', :class => 'image_fix', :alt => 'Find us on Facebook', :width => 201, :height => 33 %>
                   <% end %>
 
-                  <% link_to 'http://twitter.com/TheBozzutoGroup' do %>
+                  <% link_to 'http://twitter.com/bozzuto' do %>
                     <%= image_tag 'community_listing/img-twitter.jpg', :class => 'image_fix', :alt => 'Find us on Twitter', :width => 200, :height => 32 %>
                   <% end %>
                 </td>
