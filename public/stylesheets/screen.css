@@ -5586,6 +5586,7 @@ div.wysiwyg ul li {
   display: inline-block;
   font-size: 14px;
   font-weight: bold;
+  padding: 19px 0;
   text-align: center;
   text-transform: uppercase;
   vertical-align: middle;
