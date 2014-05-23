@@ -5571,6 +5571,7 @@ div.wysiwyg ul li {
   background: #ddd;
   display: block;
   margin-top: 2px;
+  position: relative;
 }
 .floor-plan-listing a {
   color: #636972;
@@ -5583,6 +5584,16 @@ div.wysiwyg ul li {
   text-transform: uppercase;
   width: 140px;
 }
+.floor-plan-listing li.active:after {
+  border: 13px solid transparent;
+  border-left: 13px solid #ddd;
+  bottom: 0;
+  content: "";
+  left: 100%;
+  position: absolute;
+  top: 16px;
+}
+.floor-plan-listing li.active a,
 .floor-plan-listing li a:hover {
   color: #036447;
   text-decoration: none;

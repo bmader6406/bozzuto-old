@@ -1382,18 +1382,72 @@ window.bozzuto = {};
   };
 
   /* Added to floor plan groups page */
-  var $container = $('.container');
-  var $floorPlanLinks = $('.floor-plan-listing a');
+  var FloorPlan = {
+    init: function() {
+      this.setupVars();
+      this.setupStickem();
+      this.setupAnchorScrolling();
+    },
 
-  $container.stickem();
-  $floorPlanLinks.bind('click', function(e){
-    e.preventDefault();
+    setupVars: function() {
+      this.$document          = $(document);
+      this.$container         = $('.container');
+      this.$floorPlanLinks    = $('.floor-plan-listing a');
+      this.$floorPlanSections = $('.floor-plan-group');
+      this.checker            = null;
+    },
 
-    var $target = $(this.hash);
+    setupAnchorScrolling: function() {
+      this.$floorPlanLinks.bind('click', this.smoothScrollTo);
+    },
 
-    $('html,body').animate({
-      scrollTop: $target.offset().top
-    }, 500);
-  });
+    smoothScrollTo: function(e){
+      e.preventDefault();
+
+      var $target = $(this.hash);
+
+      $('html, body').animate({
+        scrollTop: $target.offset().top
+      }, 500);
+    },
+
+    setupStickem: function() {
+      this.$container.stickem({
+        onStick: this.startAnchorChecker.bind(this),
+        onUnstick: this.stopAnchorChecker.bind(this)
+      });
+    },
+
+    startAnchorChecker: function() {
+      var documentScrollPosition = 0;
+      var $section;
+
+      this.checker = setInterval(this.checkScrollPosition.bind(this), 750);
+    },
+
+    stopAnchorChecker: function() {
+      clearInterval(this.checker);
+    },
+
+    checkScrollPosition: function() {
+      // Adds additional offset to activate when section
+      // is more in view than previous section.
+      var documentScrollPosition = this.$document.scrollTop() + 70;
+
+      for (var i = this.$floorPlanSections.length - 1; i >= 0; i--) {
+        if (documentScrollPosition > this.$floorPlanSections.eq(i).offset().top){
+          this.$floorPlanLinks
+            .eq(i)
+            .parent()
+            .addClass('active')
+            .siblings()
+            .removeClass('active');
+          break;
+        }
+      };
+    }
+  };
+
+  FloorPlan.init();
 
 })(jQuery);
