@@ -1391,6 +1391,7 @@ window.bozzuto = {};
     },
 
     setupVars: function() {
+      this.$window            = $(window);
       this.$document          = $(document);
       this.$container         = $('.container');
       this.$floorPlanLinks    = $('.floor-plan-listing a');
@@ -1428,7 +1429,7 @@ window.bozzuto = {};
 
     stopAnchorChecker: function() {
       var documentScrollPosition = this.$document.scrollTop() + 70;
-      var scrolledPassedStickem = documentScrollPosition > this.$floorPlanSections.eq(this.$floorPlanSections.length-1).offset().top;
+      var scrolledPassedStickem = documentScrollPosition > this.$floorPlanSections.eq(this.$floorPlanSections.length - 1).offset().top;
 
       if (scrolledPassedStickem) {
         this.setIndexToActive(this.$floorPlanSections.length - 1);
@@ -1440,16 +1441,21 @@ window.bozzuto = {};
     },
 
     checkScrollPosition: function() {
-      // Adds additional offset to activate when section
-      // is more in view than previous section.
-      var documentScrollPosition = this.$document.scrollTop() + 70;
+      var documentScrollPosition = this.$document.scrollTop();
+      var scrolledToBottom = this.$window.scrollTop() + this.$window.height() < this.$document.height();
 
-      for (var i = this.$floorPlanSections.length - 1; i >= 0; i--) {
-        if (documentScrollPosition > this.$floorPlanSections.eq(i).offset().top){
-          this.setIndexToActive(i);
-          break;
-        }
-      };
+      if (scrolledToBottom) {
+        for (var i = this.$floorPlanSections.length - 1; i >= 0; i--) {
+          // Adds additional 70 pixel offset to activate when
+          // section is more in view than previous section.
+          if (documentScrollPosition + 70 > this.$floorPlanSections.eq(i).offset().top){
+            this.setIndexToActive(i);
+            break;
+          }
+        };
+      } else {
+        this.setIndexToActive(this.$floorPlanSections.length - 1);
+      }
     },
 
     setIndexToActive: function(index) {

@@ -5570,18 +5570,25 @@ div.wysiwyg ul li {
 .floor-plan-listing li {
   background: #ddd;
   display: block;
+  font-size: 0;
+  height: 60px;
   margin-top: 2px;
   position: relative;
 }
+.floor-plan-listing li:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
 .floor-plan-listing a {
   color: #636972;
-  display: block;
+  display: inline-block;
   font-size: 14px;
   font-weight: bold;
-  height: 60px;
-  line-height: 60px;
   text-align: center;
   text-transform: uppercase;
+  vertical-align: middle;
   width: 140px;
 }
 .floor-plan-listing li.active:after {
