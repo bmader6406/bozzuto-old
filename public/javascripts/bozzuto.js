@@ -1387,6 +1387,7 @@ window.bozzuto = {};
       this.setupVars();
       this.setupStickem();
       this.setupAnchorScrolling();
+      this.setIndexToActive(0);
     },
 
     setupVars: function() {
@@ -1426,6 +1427,15 @@ window.bozzuto = {};
     },
 
     stopAnchorChecker: function() {
+      var documentScrollPosition = this.$document.scrollTop() + 70;
+      var scrolledPassedStickem = documentScrollPosition > this.$floorPlanSections.eq(this.$floorPlanSections.length-1).offset().top;
+
+      if (scrolledPassedStickem) {
+        this.setIndexToActive(this.$floorPlanSections.length - 1);
+      } else {
+        this.setIndexToActive(0);
+      }
+
       clearInterval(this.checker);
     },
 
@@ -1436,16 +1446,20 @@ window.bozzuto = {};
 
       for (var i = this.$floorPlanSections.length - 1; i >= 0; i--) {
         if (documentScrollPosition > this.$floorPlanSections.eq(i).offset().top){
-          this.$floorPlanLinks
-            .eq(i)
-            .parent()
-            .addClass('active')
-            .siblings()
-            .removeClass('active');
+          this.setIndexToActive(i);
           break;
         }
       };
-    }
+    },
+
+    setIndexToActive: function(index) {
+      this.$floorPlanLinks
+        .eq(index)
+        .parent()
+        .addClass('active')
+        .siblings()
+        .removeClass('active');
+    },
   };
 
   FloorPlan.init();

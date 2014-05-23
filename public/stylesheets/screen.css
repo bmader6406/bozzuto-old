@@ -5587,7 +5587,6 @@ div.wysiwyg ul li {
 .floor-plan-listing li.active:after {
   border: 13px solid transparent;
   border-left: 13px solid #ddd;
-  bottom: 0;
   content: "";
   left: 100%;
   position: absolute;
