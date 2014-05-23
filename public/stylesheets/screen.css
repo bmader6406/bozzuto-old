@@ -10,7 +10,7 @@
   */
   html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var,optgroup{font-style:inherit;font-weight:inherit;}del,ins{text-decoration:none;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:baseline;}sub{vertical-align:baseline;}legend{color:#000;}input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}input,button,textarea,select{*font-size:100%;}
   /* End Yahoo! material */
-  
+
 
 /* @end */
 
@@ -21,7 +21,7 @@
  * Fully installable fonts can be purchased at http://www.fontspring.com
  *
  * The fonts included in this stylesheet are subject to the End User License you purchased
- * from Fontspring. The fonts are protected under domestic and international trademark and 
+ * from Fontspring. The fonts are protected under domestic and international trademark and
  * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
  * distributing this font software.
  *
@@ -69,7 +69,7 @@
     font-size: 1.25em;
     font-weight: bold;
   }
-  
+
   .divider {
     font-size: 0;
     border-bottom: 1px solid #C1C1C5;
@@ -77,7 +77,7 @@
     line-height: 0;
     margin: 20px 0;
   }
-  
+
   /* @group forms */
     input,
     button,
@@ -182,7 +182,7 @@
       padding-right: 20px;
     }
   /* @end */
-    
+
   /* @group -header */
     /* @group --structure */
       #header,
@@ -611,13 +611,13 @@
       font-size: 15px;
       line-height: 1;
     }
-    .column-main p, 
-    .column-main ul, 
+    .column-main p,
+    .column-main ul,
     .column-main ol,
     .community #overview ul {
       margin: 0 0 15px;
-    } 
-    .column-main ul, 
+    }
+    .column-main ul,
     .column-main ol,
     .community #overview ul {
       margin-left: 10px;
@@ -695,7 +695,7 @@
 
   /* @group -icons & tooltips */
     .js #icon-tooltips {
-      display: none; 
+      display: none;
     }
     #icon-tooltips li {
       margin: 0 0 10px;
@@ -801,7 +801,7 @@
       padding-left: 8px;
     }
     div.promo p.image {
-      float: left; 
+      float: left;
       margin: 1px 0 0 1px;
       padding-left: 0;
     }
@@ -1279,7 +1279,7 @@ div.wysiwyg ul li {
   #slideshow ul.slideshow-navigation li {
     float: left;
   }
-  
+
   #slideshow ul.slideshow-navigation li a {
     background: url(../images/structure/bg-apartments-slideshow-navigation.png) no-repeat transparent;
     display: block;
@@ -1953,7 +1953,7 @@ div.wysiwyg ul li {
       zoom: 1;
     }
   /* @end */
-  
+
   /* @group --property nav */
     #property-nav {
       position: absolute;
@@ -2366,7 +2366,7 @@ div.wysiwyg ul li {
       display: none;
     }
     .js .community #overview #intro-full {
-      display: none;      
+      display: none;
     }
     .js .community #overview .intro-link,
     .js .community #overview #intro-partial {
@@ -2431,7 +2431,7 @@ div.wysiwyg ul li {
       margin-bottom: 1.5em;
     }
   /* @end */
-  
+
   /* @group --large map overlay */
     #large-map-container {
       background: #fff;
@@ -2451,7 +2451,7 @@ div.wysiwyg ul li {
       position: absolute;
       width: 790px;
     }
-    
+
     #large-map-yelp-logo {
       position: absolute;
       right: 30px;
@@ -2500,7 +2500,7 @@ div.wysiwyg ul li {
     #large-map-controls label img {
       vertical-align: middle;
     }
-    
+
     #large-map h4 {
       font-size: 13px;
       margin-bottom: 0.5em;
@@ -2523,7 +2523,7 @@ div.wysiwyg ul li {
       float: left;
     }
   /* @end */
-  
+
   /* @group --sidebar */
     .community #sidebar div.facebook-update {
       padding-bottom: 15px;
@@ -2565,7 +2565,7 @@ div.wysiwyg ul li {
       padding-left: 8px;
     }
   /* @end */
-  
+
   /* @group --content */
     .project .content {
       overflow: hidden;
@@ -2679,7 +2679,7 @@ div.wysiwyg ul li {
     .project #main-content .content .sub-content .similar-projects ul {
       background: url(../images/structure/bg-about-content-p.gif) left bottom no-repeat;
     }
-    
+
     /* @group ---sub-content */
       .project #main-content .content .sub-content {
         float: right;
@@ -2787,7 +2787,7 @@ div.wysiwyg ul li {
       }
     /* @end */
   /* @end */
-  
+
   /* @group --pagination */
     .project #main-content .content .main-content .pagination {
       margin: 25px 0 16px;
@@ -2998,12 +2998,12 @@ div.wysiwyg ul li {
     margin-bottom: 0em;
     padding: 0 !important;
   }
-  
+
   #featured-floor-plans ul,
   .floor-plan-group ul {
     margin-top: 1em;
   }
-  
+
   #featured-floor-plans li.floor-plan,
   .floor-plan-group li.floor-plan {
     margin-top: 15px;
@@ -3095,7 +3095,7 @@ div.wysiwyg ul li {
     height: 38px;
     zoom: 1;
     margin-left: 1px;
-  } 
+  }
   .homes #content div.header ul li a.list,
   .search #content div.header ul li a.list {
     padding: 6px 95px 3px 10px;
@@ -3223,7 +3223,7 @@ div.wysiwyg ul li {
       background: url(../images/structure/bg-about-content-p.gif) 13px bottom no-repeat;
     }
   /* @end */
-  
+
   /* @group --content */
     .search #content {
       padding-right: 0;
@@ -3237,7 +3237,7 @@ div.wysiwyg ul li {
       background: #dde0e3;
     }
   /* @end */
-  
+
   /* @group --sub-content */
     .search #sub-content {
       margin-top: 16px;
@@ -3274,7 +3274,7 @@ div.wysiwyg ul li {
       background: url(../images/structure/bg-header-a.gif) left center no-repeat;
     }
   /* @end */
-  
+
   /* @group --results */
     .search #content #no-results {
       margin-top: 80px;
@@ -3581,6 +3581,64 @@ div.wysiwyg ul li {
   /* @end */
 
   /* @group --bios */
+    .js #partner-bios {
+      height: 0;
+      left: -9999px;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      width: 0;
+    }
+    .js .partner-bio-outer {
+      background: transparent url(../images/structure/bg-partner-bio.png) no-repeat right 0;
+      padding: 20px 0 0;
+      width: 800px;
+      font-size: 11px;
+      line-height: 18px;
+    }
+    .js .partner-bio-inner {
+      background: transparent url(../images/structure/bg-partner-bio.png) no-repeat 0 bottom;
+      min-height: 215px;
+      padding: 30px 50px 50px 300px;
+      width: 450px;
+    }
+    .partner-bio-inner h3 {
+      font-size: 21px;
+      line-height: 21px;
+      margin-bottom: 3px;
+    }
+    .partner-bio-inner .partner-title,
+    .partner-bio-inner .partner-group {
+      display: block;
+      font-weight: bold;
+    }
+    .partner-bio-inner .partner-title {
+      margin-bottom: 0;
+    }
+    .partner-bio-inner .partner-group {
+      margin-bottom: 12px;
+    }
+    .partner-close {
+      background: transparent url(../images/structure/bg-partner-close.png) no-repeat 0 0;
+      display: block;
+      height: 40px;
+      position: absolute;
+      right: 20px;
+      text-indent: -9999px;
+      top: 20px;
+      width: 40px;
+    }
+    .partner-close:hover {
+      opacity: 0.5;
+      -moz-opacity: 0.5;
+      filter:alpha(opacity=50);
+    }
+    .partner-pic {
+      float: left;
+      margin: 0 0 0 -250px;
+    }
+  /* @end */
+  /* @group --leaders */
     .leader-meta {
       margin-bottom: 20px;
     }
@@ -4318,7 +4376,7 @@ div.wysiwyg ul li {
   #content .column-main ul.projects-listing {
     margin-left: 0;
   }
-  
+
   #content .property-listing div.info {
     float: right;
     overflow: hidden;

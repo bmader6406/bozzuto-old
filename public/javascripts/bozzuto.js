@@ -101,6 +101,8 @@ window.bozzuto = {};
 
     $('.partner-portrait').portrait();
 
+    $('.careers-employee a').leaderLightbox();
+
     $('.floor-plan-view').floorPlanOverlay();
 
     $('.watch-video a').videoLightbox();
@@ -749,6 +751,39 @@ window.bozzuto = {};
     });
   };
 
+  // leadership lightbox
+  $.fn.leaderLightbox = function() {
+    return this.each(function() {
+      var $this = $(this),
+          bioId = '#' + $this.attr('href').split('#')[1],
+          $bio  = $(bioId).children();
+
+      if (!$bio.data('closeAdded')) {
+        $('<a href="#" class="partner-close">Close</a>').appendTo($bio.children());
+        $bio.data('closeAdded', true);
+      }
+
+      $this.click(function(e) {
+        e.preventDefault();
+
+        $bio.lightbox_me({
+          closeSelector: '.partner-close',
+          appearEffect: 'show',
+          disappearEffect: 'show',
+          overlaySpeed: 0,
+          destroyOnClose: true,
+          centered: true,
+          overlayCSS: {
+            'background': '#000',
+            'opacity': .6
+          }
+        });
+      });
+    });
+  };
+
+
+  ////
 
   ////
   // Floor plan overlay
