@@ -11,6 +11,10 @@ module Bozzuto
       %w(vaultware property_link rent_cafe psi)
     end
 
+    def self.feed_name(type = feed_type)
+      I18n.t!("bozzuto.feeds.#{type}")
+    end
+
     def self.loader_for_type(type)
       case type.to_sym
       when :vaultware
@@ -77,7 +81,7 @@ module Bozzuto
 
 
     def feed_name
-      self.class.feed_type.to_s.classify
+      self.class.feed_name
     end
 
     def feed_already_loading?

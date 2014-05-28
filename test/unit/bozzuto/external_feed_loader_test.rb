@@ -94,6 +94,32 @@ module Bozzuto
           end
         end
       end
+
+      describe ".feed_name" do
+        context "given vaultware" do
+          should "return the correct feed name" do
+            ExternalFeedLoader.feed_name('vaultware').should == 'Vaultware'
+          end
+        end
+
+        context "given rent_cafe" do
+          should "return the correct feed name" do
+            ExternalFeedLoader.feed_name('rent_cafe').should == 'Rent Cafe'
+          end
+        end
+
+        context "given property_link" do
+          should "return the correct feed name" do
+            ExternalFeedLoader.feed_name('property_link').should == 'Property Link'
+          end
+        end
+
+        context "given psi" do
+          should "return the correct feed name" do
+            ExternalFeedLoader.feed_name('psi').should == 'PSI'
+          end
+        end
+      end
     end
   end
 end

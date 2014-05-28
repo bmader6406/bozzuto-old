@@ -494,3 +494,9 @@ en:
         right_montage_image: Image dimensions should be 310x148
       twitter_account:
         username: Do not include the @ symbol
+  bozzuto:
+    feeds:
+      property_link: Property Link
+      psi: PSI
+      rent_cafe: Rent Cafe
+      vaultware: Vaultware

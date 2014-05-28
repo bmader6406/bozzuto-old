@@ -30,7 +30,7 @@ module Bozzuto
     end
 
     def external_cms_name
-      external_cms_type.try(:classify)
+      ExternalFeedLoader.feed_name(external_cms_type)
     end
   end
 end

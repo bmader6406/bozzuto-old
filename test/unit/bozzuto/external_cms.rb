@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ExternalCmsTest < ActiveSupport::TestCase
   context 'A resource instance' do
-    %w(vaultware property_link).each do |type|
+    %w(vaultware property_link rent_cafe psi).each do |type|
       context "when managed by #{type.titlecase}" do
         setup { @community = ApartmentCommunity.make(type.to_sym) }
 
@@ -19,8 +19,10 @@ class ExternalCmsTest < ActiveSupport::TestCase
         end
 
         context '#external_cms_name' do
-          should "be #{type.classify}" do
-            assert_equal type.classify, @community.external_cms_name
+          should "call feed_name on ExternalFeedLoader" do
+            Bozzuto::ExternalFeedLoader.expects(:feed_name).with(type)
+
+            @community.external_cms_name
           end
         end
       end
