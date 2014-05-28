@@ -8,7 +8,7 @@ module Bozzuto
     self.load_interval = 2.hours
 
     def self.feed_types
-      %w(vaultware property_link rent_cafe)
+      %w(vaultware property_link rent_cafe psi)
     end
 
     def self.loader_for_type(type)
@@ -19,6 +19,8 @@ module Bozzuto
         PropertyLinkFeedLoader.new
       when :rent_cafe
         RentCafeFeedLoader.new
+      when :psi
+        PsiFeedLoader.new
       else
         raise "Unknown feed type: #{type}"
       end

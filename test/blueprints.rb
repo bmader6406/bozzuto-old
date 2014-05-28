@@ -18,6 +18,7 @@ Sham.define do
   vaultware_id      { |i| i.to_s }
   property_link_id  { |i| i.to_s }
   rent_cafe_id      { |i| i.to_s }
+  psi_id            { |i| i.to_s }
   metro_name        { |i| "Metro ##{i}" }
   area_name         { |i| "Area ##{i}" }
   neighborhood_name { |i| "Neighborhood ##{i}" }
@@ -62,6 +63,11 @@ ApartmentCommunity.blueprint(:rent_cafe) do
   external_cms_type { 'rent_cafe' }
 end
 
+ApartmentCommunity.blueprint(:psi) do
+  external_cms_id   { Sham.psi_id }
+  external_cms_type { 'psi' }
+end
+
 ApartmentFloorPlan.blueprint do
   name               { Faker::Lorem.words(1) }
   image_type         { ApartmentFloorPlan::USE_IMAGE_URL }
@@ -93,6 +99,11 @@ end
 ApartmentFloorPlan.blueprint(:rent_cafe) do
   external_cms_id   { Sham.rent_cafe_id }
   external_cms_type { 'rent_cafe' }
+end
+
+ApartmentFloorPlan.blueprint(:psi) do
+  external_cms_id   { Sham.psi_id }
+  external_cms_type { 'psi' }
 end
 
 ApartmentFloorPlanGroup.blueprint do; end
