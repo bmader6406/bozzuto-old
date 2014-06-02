@@ -22,6 +22,10 @@ every 1.day, :at => '9:00 am' do
   rake 'bozzuto:load_vaultware_feed'
 end
 
+every 1.day, :at => '2:30 pm' do
+  rake 'bozzuto:load_psi_feed'
+end
+
 every 1.day, :at => ['10:15 am', '2:15 pm'] do
   rake 'bozzuto:load_rent_cafe_feed'
 end

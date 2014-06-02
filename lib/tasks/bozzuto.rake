@@ -67,6 +67,26 @@ namespace :bozzuto do
     end
   end
 
+  desc 'Load latest feed from PSI'
+  task :load_psi_feed => :environment do
+    puts 'Loading PSI feed ...'
+
+    begin
+      file = APP_CONFIG[:psi_feed_file]
+      loader = Bozzuto::PsiFeedLoader.new
+      loader.file = file
+
+      if loader.load
+        puts "PSI feed successfully loaded"
+      else
+        puts "Can't load PSI feed. Try again later."
+      end
+    rescue Exception => e
+      puts "Failed to load feed: #{e.message}"
+      HoptoadNotifier.notify(e)
+    end
+  end
+
   desc 'Refresh Local Info feeds'
   task :refresh_local_info_feeds => :environment do
     Feed.all.each do |feed|
