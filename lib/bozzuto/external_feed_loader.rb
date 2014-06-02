@@ -11,8 +11,8 @@ module Bozzuto
       %w(vaultware property_link rent_cafe psi)
     end
 
-    def self.feed_name(type = feed_type)
-      I18n.t!("bozzuto.feeds.#{type}")
+    def self.feed_name(type)
+      I18n.t!("bozzuto.feeds.#{type}") if type.present?
     end
 
     def self.loader_for_type(type)
@@ -81,7 +81,7 @@ module Bozzuto
 
 
     def feed_name
-      self.class.feed_name
+      self.class.feed_name(feed_type)
     end
 
     def feed_already_loading?
