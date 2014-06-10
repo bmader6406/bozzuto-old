@@ -11,6 +11,8 @@
 
 <% if @community.id == 323 %>
 	<%= render :partial => 'custom_contact_form_323' %>
+<% elsif @community.id == 556 %>
+	<%= render :partial => 'custom_contact_form_556' %>
 <% else %>
 	<%= render :partial => 'lasso_form' %>
 <% end %>

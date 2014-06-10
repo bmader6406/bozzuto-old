@@ -14,7 +14,11 @@
 <p><em>* required</em></p>
 
 <div id="community-contact-form">
-	<form method="post" class="required-form" action="https://www.mbrealinsite.com/mwb/external/captureLead.action;jsessionid=6E152802CE90BDD14C77D46604FFFBB0">
+	<form method="post" class="required-form" action="https://www.mbrealinsite.com/mwb/external/captureLead.action">
+		<input type="hidden" name="origin" value="WEB" id="origin"/>
+		<input type="hidden" name="model.formReferer" value="" id="model_formReferer"/>
+		<input type="hidden" name="form" value="147" id="form"/>
+
 		<fieldset>
 			<p>
 				<%= label_tag '2', 'First Name*' %>
@@ -32,13 +36,8 @@
 			</p>
 
 			<p>
-				<%= label_tag '4', 'Street Address' %>
-				<%= text_field_tag '4', nil %>
-			</p>
-
-			<p>
-				<%= label_tag '5', 'City' %>
-				<%= text_field_tag '5', nil %>
+				<%= label_tag '18', 'Phone' %>
+				<%= text_field_tag '18', nil %>
 			</p>
 
 			<p>
@@ -47,18 +46,20 @@
 			</p>
 
 			<p>
-				<%= label_tag '17', 'Work ZIP*' %>
-				<%= text_field_tag '17', nil, :class => 'required' %>
+				<%= label_tag '14', 'How did you hear about us?' %>
+				<select name="14" id="14">
+					<option value="">Please Select</option>
+					<option value="2511">DC Curbed</option>
+					<option value="2516">Eblast</option>
+					<option value="2506">Popville</option>
+					<option value="2491">Site Banners</option>
+					<option value="2676">Social Media</option>
+					<option value="2501">UrbanTurf</option>
+					<option value="2496">Washington Post Ad</option>
+				</select>
 			</p>
 
-			<p>
-				<%= label_tag '15', 'Comments' %>
-				<%= text_area_tag '15', nil, :rows => 10, :cols => 50 %>
-			</p>
 		</fieldset>
-
-		<input type="hidden" name="origin" value="WEB" id="origin" />
-		<input type="hidden" name="form" value="147" id="form" />
 
 		<p class="submit">
 			<%= submit_tag 'Submit' %>

@@ -1,0 +1,134 @@
+<h2 class="hdr-primary">
+	Ready to speak with a sales consultant?
+</h2>
+
+<p><em>* required</em></p>
+
+<div id="community-contact-form">
+	<form method="post" class="required-form" action="https://www.mbrealinsite.com/mwb/external/captureLead.action">
+		<input type="hidden" name="origin" value="WEB" id="origin"/>
+		<input type="hidden" name="model.formReferer" value="" id="model_formReferer"/>
+		<input type="hidden" name="form" value="266" id="form"/>
+
+		<fieldset>
+			<p>
+				<%= label_tag '2', 'First Name*' %>
+				<%= text_field_tag '2', nil, :class => 'required' %>
+			</p>
+
+			<p>
+				<%= label_tag '3', 'Last Name*' %>
+				<%= text_field_tag '3', nil, :class => 'required' %>
+			</p>
+
+			<p>
+				<%= label_tag '12', 'Email Address*' %>
+				<%= text_field_tag '12', nil, :class => 'required' %>
+			</p>
+
+			<p>
+				<%= label_tag '13', 'Email Confirmation*' %>
+				<%= text_field_tag '13', nil, :class => 'required' %>
+			</p>
+
+			<p>
+				<%= label_tag '24', 'Phone' %>
+				<%= text_field_tag '24', nil %>
+			</p>
+
+			<p>
+				<%= label_tag '4', 'Street Address' %>
+				<%= text_field_tag '4', nil %>
+			</p>
+
+			<p>
+				<%= label_tag '5', 'City' %>
+				<%= text_field_tag '5', nil %>
+			</p>
+
+			<p>
+				<%= label_tag '6', 'State' %>
+				<select name="6" id="6">
+					<option value="" >Please Select</option>
+					<option value="5">Alabama</option>
+					<option value="6">Alaska</option>
+					<option value="7">Arizona</option>
+					<option value="8">Arkansas</option>
+					<option value="9">California</option>
+					<option value="10">Colorado</option>
+					<option value="11">Connecticut</option>
+					<option value="12">Delaware</option>
+					<option value="13">District of Columbia</option>
+					<option value="14">Florida</option>
+					<option value="15">Georgia</option>
+					<option value="16">Hawaii</option>
+					<option value="17">Idaho</option>
+					<option value="18">Illinois</option>
+					<option value="19">Indiana</option>
+					<option value="20">Iowa</option>
+					<option value="21">Kansas</option>
+					<option value="22">Kentucky</option>
+					<option value="23">Louisiana</option>
+					<option value="24">Maine</option>
+					<option value="25">Maryland</option>
+					<option value="26">Massachusetts</option>
+					<option value="27">Michigan</option>
+					<option value="28">Minnesota</option>
+					<option value="29">Mississippi</option>
+					<option value="30">Missouri</option>
+					<option value="31">Montana</option>
+					<option value="32">Nebraska</option>
+					<option value="33">Nevada</option>
+					<option value="34">New Hampshire</option>
+					<option value="35">New Jersey</option>
+					<option value="36">New Mexico</option>
+					<option value="37">New York</option>
+					<option value="38">North Carolina</option>
+					<option value="39">North Dakota</option>
+					<option value="40">Ohio</option>
+					<option value="41">Oklahoma</option>
+					<option value="42">Oregon</option>
+					<option value="43">Pennsylvania</option>
+					<option value="44">Rhode Island</option>
+					<option value="45">South Carolina</option>
+					<option value="46">South Dakota</option>
+					<option value="47">Tennessee</option>
+					<option value="48">Texas</option>
+					<option value="49">Utah</option>
+					<option value="50">Vermont</option>
+					<option value="51">Virginia</option>
+					<option value="52">Washington</option>
+					<option value="53">West Virginia</option>
+					<option value="54">Wisconsin</option>
+					<option value="55">Wyoming</option>
+				</select>
+			</p>
+
+			<p>
+				<%= label_tag '7', 'ZIP Code*' %>
+				<%= text_field_tag '7', nil, :class => 'required' %>
+			</p>
+
+			<p>
+				<%= label_tag '17', 'Work ZIP*' %>
+				<%= text_field_tag '17', nil, :class => 'required' %>
+			</p>
+
+			<p>
+				<%= label_tag '14', 'How did you hear about us?' %>
+				<select name="14" id="14">
+					<option value="">Please Select</option>
+					<option value="2521">Banners</option>
+					<option value="2531">Google</option>
+					<option value="2536">Email Blast</option>
+					<option value="2526">Press Release</option>
+					<option value="2541">Agent</option>
+				</select>
+			</p>
+		</fieldset>
+
+		<p class="submit">
+			<%= submit_tag 'Submit' %>
+		</p>
+	</form>
+</div>
