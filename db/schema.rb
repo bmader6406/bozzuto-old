@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140611190115) do
+ActiveRecord::Schema.define(:version => 20140611195521) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -505,6 +505,35 @@ ActiveRecord::Schema.define(:version => 20140611190115) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "home_neighborhood_memberships", :force => true do |t|
+    t.integer  "home_neighborhood_id", :null => false
+    t.integer  "home_community_id",    :null => false
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "home_neighborhood_memberships", ["home_neighborhood_id"], :name => "index_home_neighborhood_memberships_on_home_neighborhood_id"
+
+  create_table "home_neighborhoods", :force => true do |t|
+    t.string   "name",                                      :null => false
+    t.string   "cached_slug"
+    t.float    "latitude",                                  :null => false
+    t.float    "longitude",                                 :null => false
+    t.string   "banner_image_file_name",                    :null => false
+    t.string   "listing_image_file_name",                   :null => false
+    t.integer  "position"
+    t.integer  "featured_home_community_id"
+    t.integer  "home_communities_count",     :default => 0
+    t.text     "description"
+    t.text     "detail_description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "home_neighborhoods", ["cached_slug"], :name => "index_home_neighborhoods_on_cached_slug"
+  add_index "home_neighborhoods", ["name"], :name => "index_home_neighborhoods_on_name", :unique => true
 
   create_table "home_page_slides", :force => true do |t|
     t.integer  "home_page_id",       :null => false

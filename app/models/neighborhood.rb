@@ -4,11 +4,13 @@ class Neighborhood < ActiveRecord::Base
   include Bozzuto::ApartmentFloorPlans::HasCache
   include Bozzuto::Neighborhoods::Place
   extend  Bozzuto::Neighborhoods::ListingImage
+  extend  Bozzuto::Neighborhoods::BannerImage
   extend  Bozzuto::Neighborhoods::HasRelatedPlaces
 
   acts_as_list :scope => :area
 
   has_neighborhood_listing_image
+  has_neighborhood_banner_image
 
   belongs_to :area
   belongs_to :state
@@ -26,8 +28,6 @@ class Neighborhood < ActiveRecord::Base
 
 
   validates_presence_of :area, :state
-
-  validates_attachment_presence :banner_image
 
   def parent
     area

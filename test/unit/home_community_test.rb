@@ -13,6 +13,8 @@ class HomeCommunityTest < ActiveSupport::TestCase
     should_have_attached_file :listing_promo
     should_have_one :lasso_account
     should_have_one :green_package
+    should_have_one :neighborhood
+    should_have_many :home_neighborhood_memberships
     
     should 'be archivable' do
       assert HomeCommunity.acts_as_archive?

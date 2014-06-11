@@ -17,6 +17,14 @@ class HomeCommunity < Community
 
   has_one :green_package, :dependent => :destroy
 
+  has_one :neighborhood,
+          :foreign_key => :featured_home_community_id,
+          :class_name  => 'HomeNeighborhood',
+          :dependent   => :nullify
+
+  has_many :home_neighborhood_memberships,
+           :inverse_of => :home_community,
+           :dependent  => :destroy
 
   has_attached_file :listing_promo,
     :url             => '/system/:class/:id/:class_:id_:style.:extension',

@@ -4,6 +4,7 @@ class Area < ActiveRecord::Base
   include Bozzuto::ApartmentFloorPlans::HasCache
   include Bozzuto::Neighborhoods::Place
   extend  Bozzuto::Neighborhoods::ListingImage
+  extend  Bozzuto::Neighborhoods::BannerImage
   extend  Bozzuto::Neighborhoods::HasRelatedPlaces
 
   AREA_TYPE = [
@@ -14,6 +15,7 @@ class Area < ActiveRecord::Base
   acts_as_list :scope => :metro
 
   has_neighborhood_listing_image
+  has_neighborhood_banner_image(:required => false)
 
   belongs_to :state
 

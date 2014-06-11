@@ -255,6 +255,19 @@ HomeCommunity.blueprint(:unpublished) do
   published { false }
 end
 
+HomeNeighborhood.blueprint do
+  name                    { Sham.neighborhood_name }
+  latitude                { Sham.latitude }
+  longitude               { Sham.longitude }
+  banner_image_file_name  { Sham.file_name }
+  listing_image_file_name { Sham.file_name }
+end
+
+HomeNeighborhoodMembership.blueprint do
+  home_neighborhood
+  home_community
+end
+
 LandingPage.blueprint do
   title { Faker::Lorem.words(3) }
   state

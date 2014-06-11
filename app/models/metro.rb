@@ -4,10 +4,12 @@ class Metro < ActiveRecord::Base
   include Bozzuto::ApartmentFloorPlans::HasCache
   include Bozzuto::Neighborhoods::Place
   extend  Bozzuto::Neighborhoods::ListingImage
+  extend  Bozzuto::Neighborhoods::BannerImage
 
   acts_as_list
 
   has_neighborhood_listing_image
+  has_neighborhood_banner_image(:required => false)
 
   has_many :areas, :dependent => :destroy
 

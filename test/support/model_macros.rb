@@ -13,6 +13,17 @@ module Bozzuto
         end
       end
 
+      def should_have_neighborhood_banner_image(opts = {})
+        name     = opts.fetch(:name, :banner_image)
+        required = opts.fetch(:required, true)
+
+        should_have_attached_file(name)
+
+        if required
+          should_validate_attachment_presence(name)
+        end
+      end
+
       def should_be_mappable
         should_validate_numericality_of(:latitude)
         should_validate_numericality_of(:longitude)

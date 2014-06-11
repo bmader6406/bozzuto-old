@@ -5,6 +5,7 @@ class AreaTest < ActiveSupport::TestCase
     subject { Area.make }
 
     should_have_neighborhood_listing_image
+    should_have_neighborhood_banner_image(:required => false)
     should_be_mappable
     should_have_seo_metadata
 

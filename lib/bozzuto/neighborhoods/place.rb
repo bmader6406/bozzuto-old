@@ -5,13 +5,6 @@ module Bozzuto
         base.class_eval do
           has_friendly_id :name, :use_slug => true
 
-
-          has_attached_file :banner_image,
-                            :url             => '/system/:class/:id/:attachment_name/:style.:extension',
-                            :styles          => { :resized => '1020x325#' },
-                            :default_style   => :resized,
-                            :convert_options => { :all => '-quality 80 -strip' }
-
           validates_presence_of :name,
                                 :latitude,
                                 :longitude
