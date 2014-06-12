@@ -317,10 +317,8 @@ module Bozzuto
             :bathrooms           => 1,
             :min_square_feet     => 1400,
             :max_square_feet     => 1400,
-            :min_market_rent     => 2260,
-            :max_market_rent     => 2300,
-            :min_effective_rent  => 2275,
-            :max_effective_rent  => 2295
+            :min_rent            => 2260,
+            :max_rent            => 2300
           })
 
           @first_export = @exporter.data[:properties].first
@@ -364,20 +362,12 @@ module Bozzuto
           assert_equal 1400, @floor_plan_data[:max_square_feet]
         end
 
-        should "contain #min_market_rent" do
-          assert_equal 2260, @floor_plan_data[:min_market_rent]
+        should "contain #min_rent" do
+          assert_equal 2260, @floor_plan_data[:min_rent]
         end
 
-        should "contain #max_market_rent" do
-          assert_equal 2300, @floor_plan_data[:max_market_rent]
-        end
-
-        should "contain #min_effective_rent" do
-          assert_equal 2275, @floor_plan_data[:min_effective_rent]
-        end
-
-        should "contain #max_effective_rent" do
-          assert_equal 2295, @floor_plan_data[:max_effective_rent]
+        should "contain #max_rent" do
+          assert_equal 2300, @floor_plan_data[:max_rent]
         end
       end
 
@@ -539,10 +529,8 @@ module Bozzuto
             :bathrooms           => 2,
             :min_square_feet     => 1400,
             :max_square_feet     => 1400,
-            :min_market_rent     => 2260,
-            :max_market_rent     => 2300,
-            :min_effective_rent  => 2275,
-            :max_effective_rent  => 2295
+            :min_rent            => 2260,
+            :max_rent            => 2300
           })
 
           PropertyFeature.make({
@@ -818,21 +806,21 @@ module Bozzuto
             assert_equal 'The Roxy', @floor_plan_node.xpath('Name')[0].content
           end
 
-          should "contain minimum market rent" do
+          should "contain min market rent" do
             assert_equal '2260', @floor_plan_node.xpath('MarketRent')[0]['Min']
           end
 
-          should "contain maximum market rent" do
+          should "contain max market rent" do
             assert_equal '2300', @floor_plan_node.xpath('MarketRent')[0]['Max']
           end
 
           should "contain minimum effective rent" do
-            assert_equal '2275',
+            assert_equal '2260',
               @floor_plan_node.xpath('EffectiveRent')[0]['Min']
           end
 
           should "contain maximum effective rent" do
-            assert_equal '2295',
+            assert_equal '2300',
               @floor_plan_node.xpath('EffectiveRent')[0]['Max']
           end
 

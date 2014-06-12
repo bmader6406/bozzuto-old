@@ -16,9 +16,6 @@ class ApartmentCommunity < Community
 
   has_neighborhood_listing_image :neighborhood_listing_image, :required => false
 
-  before_update :mark_dirty_floor_plan_prices
-  after_update :update_floor_plan_prices
-
   after_save :invalidate_apartment_floor_plan_cache!
   after_destroy :invalidate_apartment_floor_plan_cache!
 
@@ -56,8 +53,6 @@ class ApartmentCommunity < Community
            :inverse_of => :apartment_community,
            :dependent  => :destroy
 
-
-  validates_inclusion_of :use_market_prices, :in => [true, false]
 
   validates_presence_of :lead_2_lease_email, :if => lambda { |community| community.show_lead_2_lease }
 
@@ -148,25 +143,6 @@ class ApartmentCommunity < Community
     neighborhood_memberships.each(&:invalidate_apartment_floor_plan_cache!)
     area_memberships.each(&:invalidate_apartment_floor_plan_cache!)
 
-    true
-  end
-
-
-  private
-
-  def mark_dirty_floor_plan_prices
-    @set_floor_plan_prices = use_market_prices_changed?
-    true
-  end
-
-  def update_floor_plan_prices
-    if @set_floor_plan_prices
-      floor_plans.each do |plan|
-        plan.set_rent_prices
-        plan.save
-      end
-    end
-    @set_floor_plan_prices = nil
     true
   end
 end

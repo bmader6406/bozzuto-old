@@ -98,29 +98,6 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
       end
     end
 
-    describe "changing use_market_prices" do
-      before do
-        @plan = ApartmentFloorPlan.make(
-          :min_effective_rent  => 100,
-          :min_market_rent     => 200,
-          :max_effective_rent  => 300,
-          :max_market_rent     => 400,
-          :apartment_community => subject
-        )
-      end
-
-      it "update the cached floor plan prices" do
-        @plan.min_rent.should == @plan.min_effective_rent
-        @plan.max_rent.should == @plan.max_effective_rent
-
-        subject.update_attributes(:use_market_prices => true)
-        @plan.reload
-
-        @plan.min_rent.should == @plan.min_market_rent
-        @plan.max_rent.should == @plan.max_market_rent
-      end
-    end
-
     describe "#merge" do
       types = Bozzuto::ExternalFeedLoader.feed_types
 
@@ -273,22 +250,19 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
         context "there are floor plans" do
           before do
-            @plan_1 = ApartmentFloorPlan.make(
-              :apartment_community => subject,
-              :floor_plan_group    => @studio,
-              :min_effective_rent  => 100.0
+            @plan_1 = subject.floor_plans.make(
+              :floor_plan_group => @studio,
+              :min_rent         => 100.0
             )
 
-            @plan_2 = ApartmentFloorPlan.make(
-              :apartment_community => subject,
-              :floor_plan_group    => @studio,
-              :min_effective_rent  => 200.0
+            @plan_2 = subject.floor_plans.make(
+              :floor_plan_group => @studio,
+              :min_rent         => 200.0
             )
 
-            @other = ApartmentFloorPlan.make(
-              :apartment_community => subject,
-              :floor_plan_group    => @penthouse,
-              :min_effective_rent  => 50.0
+            @other = subject.floor_plans.make(
+              :floor_plan_group => @penthouse,
+              :min_rent         => 50.0
             )
           end
 
@@ -312,22 +286,19 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
         context "there are floor plans" do
           before do
-            @plan_1 = ApartmentFloorPlan.make(
-              :apartment_community => subject,
-              :floor_plan_group    => @studio,
-              :min_effective_rent  => 100.0
+            @plan_1 = subject.floor_plans.make(
+              :floor_plan_group => @studio,
+              :min_rent         => 100.0
             )
 
-            @plan_2 = ApartmentFloorPlan.make(
-              :apartment_community => subject,
-              :floor_plan_group    => @studio,
-              :min_effective_rent  => 200.0
+            @plan_2 = subject.floor_plans.make(
+              :floor_plan_group => @studio,
+              :min_rent         => 200.0
             )
 
-            @other = ApartmentFloorPlan.make(
-              :apartment_community => subject,
-              :floor_plan_group    => @penthouse,
-              :min_effective_rent  => 50.0
+            @other = subject.floor_plans.make(
+              :floor_plan_group => @penthouse,
+              :min_rent         => 50.0
             )
           end
 
@@ -351,22 +322,19 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
         context "there are floor plans" do
           before do
-            @plan_1 = ApartmentFloorPlan.make(
-              :apartment_community => subject,
-              :floor_plan_group    => @studio,
-              :min_effective_rent  => 100.0
+            @plan_1 = subject.floor_plans.make(
+              :floor_plan_group => @studio,
+              :min_rent         => 100.0
             )
 
-            @plan_2 = ApartmentFloorPlan.make(
-              :apartment_community => subject,
-              :floor_plan_group    => @studio,
-              :min_effective_rent  => 200.0
+            @plan_2 = subject.floor_plans.make(
+              :floor_plan_group => @studio,
+              :min_rent         => 200.0
             )
 
-            @other = ApartmentFloorPlan.make(
-              :apartment_community => subject,
-              :floor_plan_group    => @penthouse,
-              :min_effective_rent  => 50.0
+            @other = subject.floor_plans.make(
+              :floor_plan_group => @penthouse,
+              :min_rent         => 50.0
             )
           end
 
@@ -390,22 +358,19 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
         context "there are floor plans" do
           before do
-            @plan_1 = ApartmentFloorPlan.make(
-              :apartment_community => subject,
-              :floor_plan_group    => @studio,
-              :max_effective_rent  => 100.0
+            @plan_1 = subject.floor_plans.make(
+              :floor_plan_group => @studio,
+              :max_rent         => 100.0
             )
 
-            @plan_2 = ApartmentFloorPlan.make(
-              :apartment_community => subject,
-              :floor_plan_group    => @studio,
-              :max_effective_rent  => 200.0
+            @plan_2 = subject.floor_plans.make(
+              :floor_plan_group => @studio,
+              :max_rent         => 200.0
             )
 
-            @other = ApartmentFloorPlan.make(
-              :apartment_community => subject,
-              :floor_plan_group    => @penthouse,
-              :max_effective_rent  => 50.0
+            @other = subject.floor_plans.make(
+              :floor_plan_group => @penthouse,
+              :max_rent         => 50.0
             )
           end
 
@@ -449,7 +414,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
       before do
         @zero_min_rent = ApartmentFloorPlan.make(
           :apartment_community => subject,
-          :min_effective_rent  => 0
+          :min_rent            => 0
         )
 
         @no_available_units = ApartmentFloorPlan.make(
@@ -459,7 +424,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
         @fully_available = ApartmentFloorPlan.make(
           :apartment_community => subject,
-          :min_effective_rent  => 100,
+          :min_rent            => 100,
           :available_units     => 10
         )
       end

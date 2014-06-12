@@ -19,8 +19,8 @@ class ApartmentFloorPlanObserverTest < ActiveSupport::TestCase
         ApartmentFloorPlan.make(
           :floor_plan_group    => @studio,
           :apartment_community => @community,
-          :min_effective_rent  => 100.0,
-          :max_effective_rent  => 500.0
+          :min_rent            => 100.0,
+          :max_rent            => 500.0
         )
 
         @community.reload
@@ -38,8 +38,8 @@ class ApartmentFloorPlanObserverTest < ActiveSupport::TestCase
         @plan = ApartmentFloorPlan.make(
           :floor_plan_group    => @studio,
           :apartment_community => @community,
-          :min_effective_rent  => 100.0,
-          :max_effective_rent  => 500.0
+          :min_rent            => 100.0,
+          :max_rent            => 500.0
         )
 
         @community.cheapest_price_in_group(@studio).should == 100.0

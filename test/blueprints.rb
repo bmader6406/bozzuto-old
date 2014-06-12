@@ -38,7 +38,6 @@ end
 ApartmentCommunity.blueprint do
   title             { Sham.company_name }
   subtitle          { Faker::Company.catch_phrase }
-  use_market_prices { false }
   published         { true }
   phone_number      { Faker::PhoneNumber.phone_number }
   city
@@ -78,10 +77,8 @@ ApartmentFloorPlan.blueprint do
   bathrooms          { Sham.bathrooms }
   min_square_feet    { rand(3000) + 500 }
   max_square_feet    { rand(3000) + 500 }
-  min_market_rent    { rand(500000) + 40000 }
-  max_market_rent    { rand(500000) + 40000 }
-  min_effective_rent { rand(500000) + 40000 }
-  max_effective_rent { rand(500000) + 40000 }
+  min_rent           { rand(500000) + 40000 }
+  max_rent           { rand(500000) + 40000 }
   floor_plan_group   { ApartmentFloorPlanGroup.studio.presence || ApartmentFloorPlanGroup.make(:studio) }
   apartment_community
 end

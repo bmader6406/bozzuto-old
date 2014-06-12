@@ -383,20 +383,18 @@ module Bozzuto
 
     def floor_plan_attributes(plan)
       {
-        :name               => plan.at('./Name').content,
-        :rolled_up          => false,
-        :availability_url   => plan.at('./FloorplanAvailabilityURL').content,
-        :available_units    => plan.at('./DisplayedUnitsAvailable').content.to_i,
-        :bedrooms           => plan.at('./Room[@Type="Bedroom"]/Count').content.to_i,
-        :bathrooms          => plan.at('./Room[@Type="Bathroom"]/Count').content.to_f,
-        :min_square_feet    => plan.at('./SquareFeet')['Min'].to_i,
-        :max_square_feet    => plan.at('./SquareFeet')['Max'].to_i,
-        :min_market_rent    => plan.at('./MarketRent')['Min'].to_f,
-        :max_market_rent    => plan.at('./MarketRent')['Max'].to_f,
-        :min_effective_rent => plan.at('./EffectiveRent')['Min'].to_f,
-        :max_effective_rent => plan.at('./EffectiveRent')['Max'].to_f,
-        :external_cms_id    => plan['Id'],
-        :external_cms_type  => 'vaultware'
+        :name              => plan.at('./Name').content,
+        :rolled_up         => false,
+        :availability_url  => plan.at('./FloorplanAvailabilityURL').content,
+        :available_units   => plan.at('./DisplayedUnitsAvailable').content.to_i,
+        :bedrooms          => plan.at('./Room[@Type="Bedroom"]/Count').content.to_i,
+        :bathrooms         => plan.at('./Room[@Type="Bathroom"]/Count').content.to_f,
+        :min_square_feet   => plan.at('./SquareFeet')['Min'].to_i,
+        :max_square_feet   => plan.at('./SquareFeet')['Max'].to_i,
+        :min_rent          => plan.at('./MarketRent')['Min'].to_f,
+        :max_rent          => plan.at('./MarketRent')['Max'].to_f,
+        :external_cms_id   => plan['Id'],
+        :external_cms_type => 'vaultware'
       }
     end
 

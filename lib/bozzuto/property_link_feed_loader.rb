@@ -16,12 +16,10 @@ module Bozzuto
     floor_plan_bedroom_count      './Room[@Type="Bedroom"]/Count'
     floor_plan_bathroom_count     './Room[@Type="Bathroom"]/Count'
 
-    floor_plan_min_square_feet    './SquareFeet',    :attribute => 'Min'
-    floor_plan_max_square_feet    './SquareFeet',    :attribute => 'Max'
-    floor_plan_min_market_rent    './MarketRent',    :attribute => 'Min'
-    floor_plan_max_market_rent    './MarketRent',    :attribute => 'Max'
-    floor_plan_min_effective_rent './EffectiveRent', :attribute => 'Min'
-    floor_plan_max_effective_rent './EffectiveRent', :attribute => 'Max'
+    floor_plan_min_square_feet    './SquareFeet', :attribute => 'Min'
+    floor_plan_max_square_feet    './SquareFeet', :attribute => 'Max'
+    floor_plan_min_rent           './MarketRent', :attribute => 'Min'
+    floor_plan_max_rent           './MarketRent', :attribute => 'Max'
 
     office_hour_open_time         './OpenTime'
     office_hour_close_time        './CloseTime'

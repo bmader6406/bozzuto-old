@@ -96,10 +96,8 @@ en:
         image_file: Image File
         image_type: Image Type
         image_url: Image URL
-        max_market_rent: Maximum Market Rent
-        min_market_rent: Minimum Market Rent
-        max_effective_rent: Maximum Effective Rent
-        min_effective_rent: Minimum Effective Rent
+        min_rent: Min Rent
+        max_rent: Max Rent
         max_square_feet: Maximum Square Feet
         min_square_feet: Minimum Square Feet
       area:

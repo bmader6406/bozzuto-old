@@ -30,7 +30,6 @@ module Bozzuto
       end
     end
 
-
     def self.define_feed_attribute(attr)
       class_attribute "_#{attr}"
 
@@ -65,10 +64,8 @@ module Bozzuto
       floor_plan_bathroom_count
       floor_plan_min_square_feet
       floor_plan_max_square_feet
-      floor_plan_min_market_rent
-      floor_plan_max_market_rent
-      floor_plan_min_effective_rent
-      floor_plan_max_effective_rent
+      floor_plan_min_rent
+      floor_plan_max_rent
       office_hour_open_time
       office_hour_close_time
       office_hour_day
@@ -264,20 +261,18 @@ module Bozzuto
       external_cms_id_config = self.class.send(:floor_plan_external_cms_id)
 
       {
-        :floor_plan_group   => floor_plan_group(plan),
-        :name               => value_for(plan, :floor_plan_name),
-        :availability_url   => value_for(plan, :floor_plan_availability_url),
-        :available_units    => value_for(plan, :floor_plan_available_units).to_i,
-        :bedrooms           => (value_for(plan, :floor_plan_bedroom_count) || 0).to_i,
-        :bathrooms          => value_for(plan, :floor_plan_bathroom_count).to_f,
-        :min_square_feet    => value_for(plan, :floor_plan_min_square_feet).to_i,
-        :max_square_feet    => value_for(plan, :floor_plan_max_square_feet).to_i,
-        :min_market_rent    => value_for(plan, :floor_plan_min_market_rent).to_f,
-        :max_market_rent    => value_for(plan, :floor_plan_max_market_rent).to_f,
-        :min_effective_rent => value_for(plan, :floor_plan_min_effective_rent).to_f,
-        :max_effective_rent => value_for(plan, :floor_plan_max_effective_rent).to_f,
-        :external_cms_id    => plan[ external_cms_id_config[:attribute] ],
-        :external_cms_type  => self.class.feed_type.to_s
+        :floor_plan_group  => floor_plan_group(plan),
+        :name              => value_for(plan, :floor_plan_name),
+        :availability_url  => value_for(plan, :floor_plan_availability_url),
+        :available_units   => value_for(plan, :floor_plan_available_units).to_i,
+        :bedrooms          => (value_for(plan, :floor_plan_bedroom_count) || 0).to_i,
+        :bathrooms         => value_for(plan, :floor_plan_bathroom_count).to_f,
+        :min_square_feet   => value_for(plan, :floor_plan_min_square_feet).to_i,
+        :max_square_feet   => value_for(plan, :floor_plan_max_square_feet).to_i,
+        :min_rent          => value_for(plan, :floor_plan_min_rent).to_f,
+        :max_rent          => value_for(plan, :floor_plan_max_rent).to_f,
+        :external_cms_id   => plan[ external_cms_id_config[:attribute] ],
+        :external_cms_type => self.class.feed_type.to_s
       }
     end
 

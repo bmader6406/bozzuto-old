@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140512170607) do
+ActiveRecord::Schema.define(:version => 20140611190115) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -72,10 +72,6 @@ ActiveRecord::Schema.define(:version => 20140512170607) do
     t.string   "availability_url"
     t.integer  "min_square_feet"
     t.integer  "max_square_feet"
-    t.decimal  "min_market_rent",        :precision => 8, :scale => 2
-    t.decimal  "max_market_rent",        :precision => 8, :scale => 2
-    t.decimal  "min_effective_rent",     :precision => 8, :scale => 2
-    t.decimal  "max_effective_rent",     :precision => 8, :scale => 2
     t.integer  "apartment_community_id",                                                  :null => false
     t.decimal  "min_rent",               :precision => 8, :scale => 2
     t.decimal  "max_rent",               :precision => 8, :scale => 2
@@ -148,7 +144,6 @@ ActiveRecord::Schema.define(:version => 20140512170607) do
     t.datetime "updated_at"
     t.integer  "local_info_feed_id"
     t.string   "external_cms_id"
-    t.boolean  "use_market_prices",                    :default => false, :null => false
     t.string   "availability_url"
     t.string   "type"
     t.integer  "section_id"
@@ -924,7 +919,6 @@ ActiveRecord::Schema.define(:version => 20140512170607) do
     t.datetime "updated_at"
     t.integer  "local_info_feed_id"
     t.string   "external_cms_id"
-    t.boolean  "use_market_prices",                    :default => false, :null => false
     t.string   "availability_url"
     t.string   "type"
     t.integer  "section_id"

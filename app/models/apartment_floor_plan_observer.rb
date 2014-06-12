@@ -12,7 +12,6 @@ class ApartmentFloorPlanObserver < ActiveRecord::Observer
 
   def update_cache(plan)
     community = plan.apartment_community
-    group     = plan.floor_plan_group
 
     community.invalidate_apartment_floor_plan_cache!
   end

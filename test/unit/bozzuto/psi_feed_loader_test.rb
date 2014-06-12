@@ -375,8 +375,8 @@ module Bozzuto
         :bathrooms          => plan.at('./Room[@RoomType="Bathroom"]/Count').content.to_f,
         :min_square_feet    => plan.at('./SquareFeet')['Min'].to_i,
         :max_square_feet    => plan.at('./SquareFeet')['Max'].to_i,
-        :min_market_rent    => plan.at('./MarketRent')['Min'].to_f,
-        :max_market_rent    => plan.at('./MarketRent')['Max'].to_f,
+        :min_rent           => plan.at('./MarketRent')['Min'].to_f,
+        :max_rent           => plan.at('./MarketRent')['Max'].to_f,
         :external_cms_id    => plan.at('./Identification/IDValue').content,
         :external_cms_type  => 'psi'
       }

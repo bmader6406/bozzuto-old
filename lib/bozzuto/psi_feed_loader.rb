@@ -20,10 +20,10 @@ module Bozzuto
     floor_plan_bedroom_count      './Room[@RoomType="Bedroom"]/Count'
     floor_plan_bathroom_count     './Room[@RoomType="Bathroom"]/Count'
 
-    floor_plan_min_square_feet    './SquareFeet',    :attribute => 'Min'
-    floor_plan_max_square_feet    './SquareFeet',    :attribute => 'Max'
-    floor_plan_min_market_rent    './MarketRent',    :attribute => 'Min'
-    floor_plan_max_market_rent    './MarketRent',    :attribute => 'Max'
+    floor_plan_min_square_feet    './SquareFeet', :attribute => 'Min'
+    floor_plan_max_square_feet    './SquareFeet', :attribute => 'Max'
+    floor_plan_min_rent           './MarketRent', :attribute => 'Min'
+    floor_plan_max_rent           './MarketRent', :attribute => 'Max'
 
     office_hour_open_time         './OpenTime'
     office_hour_close_time        './CloseTime'
@@ -58,18 +58,18 @@ module Bozzuto
 
     def floor_plan_attributes(plan)
       {
-        :floor_plan_group   => floor_plan_group(plan),
-        :name               => value_for(plan, :floor_plan_name),
-        :availability_url   => value_for(plan, :floor_plan_availability_url),
-        :available_units    => value_for(plan, :floor_plan_available_units).to_i,
-        :bedrooms           => (value_for(plan, :floor_plan_bedroom_count) || 0).to_i,
-        :bathrooms          => value_for(plan, :floor_plan_bathroom_count).to_f,
-        :min_square_feet    => value_for(plan, :floor_plan_min_square_feet).to_i,
-        :max_square_feet    => value_for(plan, :floor_plan_max_square_feet).to_i,
-        :min_market_rent    => value_for(plan, :floor_plan_min_market_rent).to_f,
-        :max_market_rent    => value_for(plan, :floor_plan_max_market_rent).to_f,
-        :external_cms_id    => value_for(plan, :floor_plan_external_cms_id),
-        :external_cms_type  => self.class.feed_type.to_s
+        :floor_plan_group  => floor_plan_group(plan),
+        :name              => value_for(plan, :floor_plan_name),
+        :availability_url  => value_for(plan, :floor_plan_availability_url),
+        :available_units   => value_for(plan, :floor_plan_available_units).to_i,
+        :bedrooms          => (value_for(plan, :floor_plan_bedroom_count) || 0).to_i,
+        :bathrooms         => value_for(plan, :floor_plan_bathroom_count).to_f,
+        :min_square_feet   => value_for(plan, :floor_plan_min_square_feet).to_i,
+        :max_square_feet   => value_for(plan, :floor_plan_max_square_feet).to_i,
+        :min_rent          => value_for(plan, :floor_plan_min_rent).to_f,
+        :max_rent          => value_for(plan, :floor_plan_max_rent).to_f,
+        :external_cms_id   => value_for(plan, :floor_plan_external_cms_id),
+        :external_cms_type => self.class.feed_type.to_s
       }
     end
   end

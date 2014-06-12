@@ -16,10 +16,8 @@ class ApartmentFloorPlanTest < ActiveSupport::TestCase
       :bathrooms,
       :min_square_feet,
       :max_square_feet,
-      :min_market_rent,
-      :max_market_rent,
-      :min_effective_rent,
-      :max_effective_rent
+      :min_rent,
+      :max_rent
 
     describe "#uses_image_url?" do
       context "image_type is USE_IMAGE_URL" do
@@ -146,75 +144,12 @@ class ApartmentFloorPlanTest < ActiveSupport::TestCase
       end
     end
 
-    describe "before validating" do
-      before do
-        @community = ApartmentCommunity.make
-        @group     = ApartmentFloorPlanGroup.make(:studio)
-
-        @plan = ApartmentFloorPlan.make(
-          :min_market_rent     => 100,
-          :max_market_rent     => 200,
-          :min_effective_rent  => 300,
-          :max_effective_rent  => 400,
-          :apartment_community => @community,
-          :floor_plan_group    => @group
-        )
-
-        @community.reload
-      end
-
-      context "community is not using market prices" do
-        before do
-          @community.use_market_prices = false
-          @community.save
-
-          @plan.reload
-          @plan.save
-        end
-
-        it "caches effective rents" do
-          @plan.min_rent.should == @plan.min_effective_rent
-          @plan.max_rent.should == @plan.max_effective_rent
-        end
-      end
-
-      context "community is using market prices" do
-        before do
-          @community.use_market_prices = true
-          @community.save
-
-          @plan.reload
-          @plan.save
-        end
-
-        it "caches market rents" do
-          @plan.min_rent.should == @plan.min_market_rent
-          @plan.max_rent.should == @plan.max_market_rent
-        end
-      end
-    end
-
-    describe "#cheapest and #largest named scopes" do
+    describe ".largest named scope" do
       before do
         @community = ApartmentCommunity.make
 
-        @largest = @community.floor_plans.make(
-          :min_market_rent    => 2000,
-          :min_effective_rent => 2000,
-          :max_square_feet    => 800
-        )
-
-        @cheapest_market = @community.floor_plans.make(
-          :min_market_rent    => 800,
-          :min_effective_rent => 1000,
-          :max_square_feet    => 400
-        )
-
-        @cheapest_effective = @community.floor_plans.make(
-          :min_market_rent    => 1000,
-          :min_effective_rent => 800,
-          :max_square_feet    => 400
-        )
+        @largest  = @community.floor_plans.make(:max_square_feet => 800)
+        @smallest = @community.floor_plans.make(:max_square_feet => 400)
       end
 
       it "returns the largest floor plan" do
@@ -222,24 +157,13 @@ class ApartmentFloorPlanTest < ActiveSupport::TestCase
       end
     end
 
-    context "#non_zero_min_rent named scope" do
+    describe ".non_zero_min_rent named scope" do
       before do
         @community = ApartmentCommunity.make
 
-        @no_rent = @community.floor_plans.make(
-          :min_market_rent    => nil,
-          :min_effective_rent => nil
-        )
-
-        @zero_rent = @community.floor_plans.make(
-          :min_market_rent    => 0,
-          :min_effective_rent => 0
-        )
-
-        @has_rent = @community.floor_plans.make(
-          :min_market_rent    => 2000,
-          :min_effective_rent => 2000
-        )
+        @no_rent   = @community.floor_plans.make(:min_rent => nil)
+        @zero_rent = @community.floor_plans.make(:min_rent => 0)
+        @has_rent  = @community.floor_plans.make(:min_rent => 2000)
       end
 
       it "returns only the plans that have non-zero min rent" do

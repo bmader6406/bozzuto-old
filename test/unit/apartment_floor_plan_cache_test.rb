@@ -28,8 +28,8 @@ class ApartmentFloorPlanCacheTest < ActiveSupport::TestCase
           ApartmentFloorPlan.make(
             :apartment_community => @community,
             :floor_plan_group    => group,
-            :min_effective_rent  => (i * 10) + 50.0,
-            :max_effective_rent  => (i * 100) + 100.0
+            :min_rent            => (i * 10) + 50.0,
+            :max_rent            => (i * 100) + 100.0
           )
         end
 

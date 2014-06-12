@@ -106,19 +106,17 @@ module Bozzuto
     def community_floor_plans(community)
       community.floor_plans.collect do |floor_plan|
         {
-          :id                 => floor_plan.id,
-          :name               => floor_plan.name,
-          :availability_url   => floor_plan.availability_url,
-          :available_units    => floor_plan.available_units,
-          :image_url          => (url_for_image(floor_plan.actual_image) if floor_plan.actual_image.present?),
-          :bedrooms           => floor_plan.bedrooms,
-          :bathrooms          => floor_plan.bathrooms,
-          :min_square_feet    => floor_plan.min_square_feet,
-          :max_square_feet    => floor_plan.max_square_feet,
-          :min_market_rent    => floor_plan.min_market_rent,
-          :max_market_rent    => floor_plan.max_market_rent,
-          :min_effective_rent => floor_plan.min_effective_rent,
-          :max_effective_rent => floor_plan.max_effective_rent
+          :id               => floor_plan.id,
+          :name             => floor_plan.name,
+          :availability_url => floor_plan.availability_url,
+          :available_units  => floor_plan.available_units,
+          :image_url        => (url_for_image(floor_plan.actual_image) if floor_plan.actual_image.present?),
+          :bedrooms         => floor_plan.bedrooms,
+          :bathrooms        => floor_plan.bathrooms,
+          :min_square_feet  => floor_plan.min_square_feet,
+          :max_square_feet  => floor_plan.max_square_feet,
+          :min_rent         => floor_plan.min_rent,
+          :max_rent         => floor_plan.max_rent
         }
       end
     end
@@ -293,11 +291,11 @@ module Bozzuto
           'Min' => floorplan[:min_square_feet],
           'Max' => floorplan[:max_square_feet]
         node.tag! 'MarketRent',
-          'Min' => format_float_for_xml(floorplan[:min_market_rent]),
-          'Max' => format_float_for_xml(floorplan[:max_market_rent])
+          'Min' => format_float_for_xml(floorplan[:min_rent]),
+          'Max' => format_float_for_xml(floorplan[:max_rent])
         node.tag! 'EffectiveRent',
-          'Min' => format_float_for_xml(floorplan[:min_effective_rent]),
-          'Max' => format_float_for_xml(floorplan[:max_effective_rent])
+          'Min' => format_float_for_xml(floorplan[:min_rent]),
+          'Max' => format_float_for_xml(floorplan[:max_rent])
       end
     end
 

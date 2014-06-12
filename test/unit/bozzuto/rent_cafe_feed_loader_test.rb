@@ -249,10 +249,8 @@ module Bozzuto
           :bathrooms          => plan.at('./Room[@type="bathroom"]/Count').content.to_f,
           :min_square_feet    => plan.at('./SquareFeet')['min'].to_i,
           :max_square_feet    => plan.at('./SquareFeet')['max'].to_i,
-          :min_market_rent    => plan.at('./MarketRent')['min'].to_f,
-          :max_market_rent    => plan.at('./MarketRent')['max'].to_f,
-          :min_effective_rent => plan.at('./EffectiveRent')['min'].to_f,
-          :max_effective_rent => plan.at('./EffectiveRent')['max'].to_f,
+          :min_rent           => plan.at('./MarketRent')['min'].to_f,
+          :max_rent           => plan.at('./MarketRent')['max'].to_f,
           :image_url          => (file.at('./Src').content rescue nil),
           :external_cms_id    => plan['id'],
           :external_cms_type  => 'rent_cafe'

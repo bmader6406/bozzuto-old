@@ -93,13 +93,13 @@ module Bozzuto::ApartmentFloorPlans
             @most_expensive = ApartmentFloorPlan.make(
               :apartment_community => @community,
               :floor_plan_group    => @studio,
-              :min_effective_rent  => 1000
+              :min_rent            => 1000
             )
 
             @cheapest = ApartmentFloorPlan.make(
               :apartment_community => @community,
               :floor_plan_group    => @studio,
-              :min_effective_rent  => 700
+              :min_rent            => 700
             )
           end
 
