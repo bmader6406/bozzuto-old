@@ -6,7 +6,7 @@
 <div id="main-content">
   <div class="container nh-container">
 
-    <%= render 'map', :map_id => 'nh-map', :neighborhoods => neighborhoods %>
+    <%= render 'map', :map_id => 'nh-map', :neighborhoods => neighborhoods, :communities => neighborhoods.map(&:communities).flatten %>
 
     <div class="nh-tiles row">
       <% neighborhoods.in_groups_of(3, false).each do |group| %>
