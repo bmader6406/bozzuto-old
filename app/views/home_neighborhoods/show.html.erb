@@ -1,0 +1,25 @@
+<% neighborhoods_assets %>
+<% render_meta(neighborhood) %>
+
+<%= render 'breadcrumb',
+           :title => neighborhood.full_name,
+           :items => [link_to(neighborhood, home_neighborhood_path(neighborhood))],
+           :description => neighborhood.detail_description %>
+
+<div id="main-content">
+  <div class="nh-container">
+    <%= render 'banner_image', :place => neighborhood %>
+
+    <%= render 'map', :map_id => 'nh-map', :communities => neighborhood.communities %>
+
+    <div class="nh-tiles row">
+      <% neighborhood.communities.in_groups_of(3, false).each do |group| %>
+        <div class="row">
+          <% group.each do |community| %>
+            <%= render 'community_listing', :community => community %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

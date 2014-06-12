@@ -36,6 +36,8 @@ en:
       green_package_item: Green Package Item
       home_community: Home Community
       home_floor_plan: Floor Plan
+      home_neighborhood: Home Neighborhood
+      home_neighborhood_membership: Home Neighborhood Membership
       home_page:
         one: Home Page
         many: Home Page
@@ -176,6 +178,17 @@ en:
         send_to_friend_mediamind_id: MediaMind Activity ID for &ldquo;Send to Friend&rdquo; Thank You Page
         send_to_phone_mediamind_id: MediaMind Activity ID for &ldquo;Send to Phone&rdquo; Thank You Page
         show_rtrk_code: Show RTRK Tracking Code
+      home_neighborhood:
+        banner_image: Banner Image
+        description: Listing Description
+        detail_description: Detail Description
+        featured_home_community: Featured Home Community
+        listing_image: Listing Image
+      home_neighborhood_membership:
+        home_community: Home Community
+        description: Listing Description
+        listing_image: Listing Image
+        home_neighborhood: Home Neighborhood
       home_page:
         featured_property: Featured Property
         meta_description: SEO Description
@@ -424,6 +437,14 @@ en:
       home_community:
         listing_promo: Image dimensions should be 151x54
         video_url: This URL is by the "Watch Video" link when many home communities are shown on one page e.g. on <a href="http://www.bozzuto.com/new-homes/communities">this page</a>. To change the "Watch Video" buttons that appear on the slides on the main listing page, edit the "Slideshow" further down this page.
+      home_neighborhood:
+        banner_image: 'Image dimensions should be 1020x325'
+        description: This text will be shown below on this Home Neighborhood's listing, below the listing image.
+        detail_description: This text will be shown in the breadcrumb of this Home Neighborhood's show page.
+        listing_image: Image dimensions should be 300x234
+      home_neighborhood_membership:
+        description: This text will be shown below on this Home Community's listing, below the listing image.
+        listing_image: Image dimensions should be 300x234
       home_page:
         body: Shown when viewing the page from a web browser
         mobile_banner_image: Image dimensions should be 280x85

@@ -1,0 +1,49 @@
+<% neighborhoods ||= [] %>
+<% communities   ||= [] %>
+<% map_id        ||= nil %>
+
+<% if neighborhoods.any? || communities.any? %>
+  <div <%= "id=\"#{map_id}\"".html_safe if map_id.present? %> class="nh-map">
+    <div class="nh-map-canvas"></div>
+
+    <% if neighborhoods.any? && communities.any? %>
+      <div class="nh-map-controls">
+        <%= link_to 'Show All Communities On Map', '#', :class => 'nh-map-controls-show-all' %>
+
+        <div class="nh-map-controls-legend">
+          <span class="nh-map-controls-legend-cty">
+            <%= image_tag '/images/neighborhoods/cty-marker.png', :width => 24, :height => 24 %>
+            Community
+          </span>
+
+          <span class="nh-map-controls-legend-nh">
+            <%= image_tag '/images/neighborhoods/nh-marker.png', :width => 24, :height => 24 %>
+            Neighborhood
+          </span>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="nh-map-data">
+      <% neighborhoods.each do |neighborhood| %>
+        <div class="nh-map-place" <%= jmapping(neighborhood) %>>
+          <div class="nh-map-overlay">
+            <a href="#" class="nh-map-overlay-close">Close</a>
+
+            <%= render 'listing', :neighborhood => neighborhood %>
+          </div>
+        </div>
+      <% end %>
+
+      <% communities.each do |community| %>
+        <div class="nh-map-community" <%= jmapping(community) %>>
+          <div class="nh-map-overlay">
+            <a href="#" class="nh-map-overlay-close">Close</a>
+
+            <%= render 'community_listing', :community => community %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

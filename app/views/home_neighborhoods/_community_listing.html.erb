@@ -1,0 +1,27 @@
+<div class="cty-tile">
+  <% link_to home_community_path(community), :class => 'nh-listing-image' do %>
+    <div class="cty-tile-title">
+      <h2><%= community.title %></h2>
+    </div>
+
+    <% if community.listing_promo? %>
+      <%= image_tag community.listing_promo.url, :width => 300, :height => 234 %>
+    <% end %>
+  <% end %>
+
+  <div class="nh-tile-content">
+    <% if community.under_construction? %>
+      <p class="nh-tile-tagline">Coming Soon</p>
+    <% end %>
+
+    <% community.neighborhood_description.if_present? do |description| %>
+      <p class="nh-tile-description">
+        <%= description %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="cty-tile-actions row">
+    <%= link_to 'More Info', home_community_path(community), :class => 'cty-tile-actions-info' %>
+  </div>
+</div>

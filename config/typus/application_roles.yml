@@ -30,6 +30,8 @@ admin:
   Home: create, read, update, delete
   HomeCommunity: create, read, update, delete, list_deleted, preview, export_field_audit
   HomeFloorPlan: create, read, update, delete
+  HomeNeighborhood: create, read, update, delete
+  HomeNeighborhoodMembership: create, read, update, delete
   HomePage: read, update
   HomePageSlide: create, read, update, delete
   LandingPage: create, read, update, delete

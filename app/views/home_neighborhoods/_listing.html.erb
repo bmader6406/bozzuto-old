@@ -1,0 +1,21 @@
+<div class="nh-tile">
+  <% link_to home_neighborhood_path(neighborhood), :class => 'nh-listing-image' do %>
+    <div class="nh-tile-title">
+      <h2><%= neighborhood.name %></h2>
+    </div>
+
+    <%= image_tag neighborhood.listing_image.url, :width => 300, :height => 234 %>
+  <% end %>
+
+  <div class="nh-tile-content">
+    <p class="nh-tile-tagline">
+      <%= pluralize(neighborhood.home_communities_count, 'Home Community') %>
+    </p>
+
+    <% neighborhood.description.if_present? do |description| %>
+      <p class="nh-tile-description">
+        <%= description.html_safe %>
+      </p>
+    <% end %>
+  </div>
+</div>

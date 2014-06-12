@@ -380,6 +380,46 @@ HomeFloorPlan:
   search: name
   application:
 
+HomeNeighborhood:
+  fields:
+    default: name
+    list: name
+    form: name, area, state, latitude, longitude, banner_image, listing_image, description, detail_description, featured_home_community
+    relationship: name, position
+    options:
+      ckeditor: 
+      booleans:
+      required: name, area, state, latitude, longitude, banner_image, listing_image
+      selectors: 
+      destroy_related: 
+  order_by: position
+  relationships: seo_metadata, home_neighborhood_memberships
+  filters: 
+  options:
+    per_page: 9999
+  search: home_neighborhoods.name
+  application: Home Neighborhoods
+
+HomeNeighborhoodMembership:
+  fields:
+    default: 
+    list: home_community, home_neighborhood
+    form: home_neighborhood, home_community
+    relationship: home_community, position
+    options:
+      ckeditor: 
+      booleans:
+      required: home_neighborhood, home_community, listing_image
+      selectors: 
+      destroy_related: 
+  order_by: position
+  relationships: 
+  filters: 
+  options:
+    per_page: 9999
+  search: 
+  application: 
+
 HomePage:
   fields:
     default:

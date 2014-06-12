@@ -133,6 +133,20 @@ ActionController::Routing::Routes.draw do |map|
                 :path_prefix => 'new-homes',
                 :as          => 'green-homes',
                 :section     => 'new-homes'
+  
+  # Home Neighborhoods
+  map.with_options :path_prefix => 'new-homes/communities' do |m|
+    regex = /[-A-Za-z]+(\d+)?/
+
+    m.home_neighborhoods '',
+                    :controller => :home_neighborhoods,
+                    :action     => :index
+
+    m.home_neighborhood ':id',
+                   :controller   => :home_neighborhoods,
+                   :action       => :show,
+                   :requirements => { :id => regex }
+  end
 
   home_community_options = {
     :path_prefix => 'new-homes',

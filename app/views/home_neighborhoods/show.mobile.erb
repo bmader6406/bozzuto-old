@@ -1,0 +1,17 @@
+<div class="section page-title">
+  <div class="content">
+    <h2><%= neighborhood %></h2>
+
+    <%= link_to neighborhoods, home_neighborhoods_path, :class => 'go-back' %>
+  </div>
+</div>
+
+<div class="section">
+  <div class="content property-list">
+    <ul>
+      <% neighborhood.communities.each do |community| %>
+        <%= render 'community_listing', :community => community %>
+      <% end %>
+    </ul>
+  </div>
+</div>

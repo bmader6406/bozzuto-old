@@ -50,21 +50,13 @@ class HomeNeighborhood < ActiveRecord::Base
     home_communities(reload).published
   end
 
-  def name_with_count
-    if home_communities_count > 0
-      "#{name} (#{home_communities_count})"
-    else
-      name
-    end
-  end
-
   def as_jmapping
     {
-      :id                     => id,
-      :point                  => jmapping_point,
-      :category               => jmapping_category,
-      :name                   => Rack::Utils.escape_html(name),
-      :home_communities_count => home_communities_count
+      :id                => id,
+      :point             => jmapping_point,
+      :category          => jmapping_category,
+      :name              => Rack::Utils.escape_html(name),
+      :communities_count => home_communities_count
     }
   end
 

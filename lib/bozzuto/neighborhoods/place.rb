@@ -91,11 +91,11 @@ module Bozzuto
 
       def as_jmapping
         {
-          :id                          => id,
-          :point                       => jmapping_point,
-          :category                    => jmapping_category,
-          :name                        => Rack::Utils.escape_html(name),
-          :apartment_communities_count => apartment_communities_count
+          :id                => id,
+          :point             => jmapping_point,
+          :category          => jmapping_category,
+          :name              => Rack::Utils.escape_html(name),
+          :communities_count => apartment_communities_count
         }
       end
 

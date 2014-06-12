@@ -1,0 +1,21 @@
+<% neighborhoods_assets %>
+
+<%= render 'breadcrumb', :title => 'Find A Home' %>
+
+
+<div id="main-content">
+  <div class="container nh-container">
+
+    <%= render 'map', :map_id => 'nh-map', :neighborhoods => neighborhoods %>
+
+    <div class="nh-tiles row">
+      <% neighborhoods.in_groups_of(3, false).each do |group| %>
+        <div class="row">
+          <% group.each do |neighborhood| %>
+            <%= render 'listing', :neighborhood => neighborhood %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

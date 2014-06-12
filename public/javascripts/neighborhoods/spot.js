@@ -7,7 +7,7 @@
     this.id               = this.json['id'];
     this.category         = this.json['category'];
     this.name             = this.json['name'];
-    this.communitiesCount = this.json['apartment_communities_count'];
+    this.communitiesCount = this.json['communities_count'];
     this.latitude         = this.json['point']['lat'];
     this.longitude        = this.json['point']['lng'];
   };

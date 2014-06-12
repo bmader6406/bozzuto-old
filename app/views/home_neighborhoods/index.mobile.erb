@@ -1,0 +1,18 @@
+<div class="section page-title">
+  <div class="content">
+    <h2>Find a Home</h2>
+  </div>
+</div>
+
+<div class="section browse">
+  <div class="content">
+    <ul class="browse">
+      <% neighborhoods.each do |neighborhood| %>
+        <li>
+          <%= link_to "<span>#{neighborhood}</span> (#{neighborhood.home_communities_count})".html_safe, 
+                home_neighborhood_path(neighborhood), :class => 'btn submit' %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
