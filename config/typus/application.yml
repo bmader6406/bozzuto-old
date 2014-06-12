@@ -384,12 +384,12 @@ HomeNeighborhood:
   fields:
     default: name
     list: name
-    form: name, area, state, latitude, longitude, banner_image, listing_image, description, detail_description, featured_home_community
+    form: name, latitude, longitude, banner_image, listing_image, description, detail_description, featured_home_community
     relationship: name, position
     options:
       ckeditor: 
       booleans:
-      required: name, area, state, latitude, longitude, banner_image, listing_image
+      required: name, latitude, longitude, banner_image, listing_image
       selectors: 
       destroy_related: 
   order_by: position
