@@ -51,6 +51,7 @@ Rails::Initializer.run do |config|
     r301 %r{^/regions/dc-metro-apartments/?},            '/regions/washington-dc-apartments'
     r301 %r{^/regions/dc-nw-apartments/?},               '/regions/washington-dc-apartments'
     r301 %r{^/regions/washington-dc-ne-se-apartments/?}, '/regions/washington-dc-apartments'
+    r301 %r{^/regions/washington-dc-apartments/?},       '/apartments/communities/washington-dc-metro'
 
     r301 %r{.*},
          'http://www.bozzuto.com/apartments/communities/35-strathmore-court-at-white-flint',
