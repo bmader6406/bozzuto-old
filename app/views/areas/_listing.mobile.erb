@@ -5,7 +5,9 @@
 
       <span class="count"><%= pluralize(area.apartment_communities_count, 'Apartment Community') %></span>
 
-      <span class="price">Pricing from <%= dollars(area.min_rent) %></span>
+      <% unless area.min_rent.zero? %>
+        <span class="price">Pricing from <%= dollars(area.min_rent) %></span>
+      <% end %>
     <% end %>
   </div>
 </li>
