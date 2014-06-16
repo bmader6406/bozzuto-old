@@ -126,7 +126,7 @@ end
 
 desc "Refresh Sitemaps"
 task :refresh_sitemaps do
-  run "cd #{latest_release} && RAILS_ENV=#{rails_env} rake sitemap:refresh"
+  run "cd #{latest_release} && RAILS_ENV=#{rails_env} bundle exec rake sitemap:refresh"
 end
 
 Dir[File.join(File.dirname(__FILE__), '..', 'vendor', 'gems', 'hoptoad_notifier-*')].each do |vendored_notifier|
