@@ -1,9 +1,12 @@
 class HomeCommunity < Community
+  extend Bozzuto::Neighborhoods::ListingImage
+
   cattr_reader :per_page
   @@per_page = 6
   
   acts_as_archive :indexes => [:id]
 
+  has_neighborhood_listing_image :neighborhood_listing_image, :required => false
 
   has_many :homes
 

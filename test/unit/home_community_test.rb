@@ -8,6 +8,8 @@ class HomeCommunityTest < ActiveSupport::TestCase
 
     subject { @community }
 
+    should_have_neighborhood_listing_image(:neighborhood_listing_image, :required => false)
+
     should_have_many :homes
     should_have_many :featured_homes
     should_have_attached_file :listing_promo

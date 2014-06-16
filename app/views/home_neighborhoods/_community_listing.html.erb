@@ -4,8 +4,8 @@
       <h2><%= community.title %></h2>
     </div>
 
-    <% if community.listing_promo? %>
-      <%= image_tag community.listing_promo.url, :width => 300, :height => 234 %>
+    <% if community.neighborhood_listing_image? %>
+      <%= image_tag community.neighborhood_listing_image.url, :width => 300, :height => 234 %>
     <% end %>
   <% end %>
 
