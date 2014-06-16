@@ -110,6 +110,8 @@ module Bozzuto
           self.apartment_communities_count = calculate_apartment_communities_count
 
           send(:update_without_callbacks)
+
+          reload # Correct count is not persisted w/o this reload
         end
 
         parent.try(:update_apartment_communities_count)
