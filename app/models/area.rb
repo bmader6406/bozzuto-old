@@ -58,4 +58,12 @@ class Area < ActiveRecord::Base
   def shows_communities?
     area_type == 'communities'
   end
+
+  def communities(reload = false)
+    if children.nil? || children.empty?
+      apartment_communities(reload).published
+    else
+      children.map { |c| c.communities(reload) }.flatten.uniq
+    end
+  end
 end

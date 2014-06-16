@@ -29,6 +29,44 @@ class HomeCommunityTest < ActiveSupport::TestCase
       assert HomeCommunity::Archive.ancestors.include?(Community::Archive)
     end
 
+    describe "callbacks" do
+      before do
+        @neighborhood = HomeNeighborhood.make(:home_communities => [subject, HomeCommunity.make])
+      end
+
+      describe "after saving" do
+        context "when its published flag is not changed" do
+          it "does not update the count on its associated areas and neighborhoods" do
+            @neighborhood.home_communities_count.should == 2
+
+            subject.save!
+
+            @neighborhood.reload.home_communities_count.should == 2
+          end
+        end
+
+        context "when its published flag is changed" do
+          it "updates the count on its associated areas and neighborhoods" do
+            @neighborhood.home_communities_count.should == 2
+
+            subject.update_attributes(:published => false)
+
+            @neighborhood.reload.home_communities_count.should == 1
+          end
+        end
+      end
+
+      describe "after deletion" do
+        it "updates the count on its associated areas and neighborhoods" do
+          @neighborhood.home_communities_count.should == 2
+
+          subject.destroy
+
+          @neighborhood.reload.home_communities_count.should == 1
+        end
+      end
+    end
+
     context '#nearby_communities' do
       setup do
         @city = City.make

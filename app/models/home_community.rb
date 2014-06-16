@@ -8,6 +8,9 @@ class HomeCommunity < Community
 
   has_neighborhood_listing_image :neighborhood_listing_image, :required => false
 
+  after_save    :trigger_published_community_recount, :if => :published_changed?
+  after_destroy :trigger_published_community_recount
+
   has_many :homes
 
   has_many :featured_homes,
@@ -41,12 +44,17 @@ class HomeCommunity < Community
 
   default_scope :order => 'title ASC'
 
-
   def nearby_communities(limit = 6)
     @nearby_communities ||= HomeCommunity.published.mappable.near(self).all(:limit => limit)
   end
 
   def show_lasso_form?
     lasso_account.present?
+  end
+
+  private
+
+  def trigger_published_community_recount
+    home_neighborhood_memberships.each(&:update_home_communities_count)
   end
 end

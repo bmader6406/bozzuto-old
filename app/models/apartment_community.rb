@@ -16,8 +16,8 @@ class ApartmentCommunity < Community
 
   has_neighborhood_listing_image :neighborhood_listing_image, :required => false
 
-  after_save :invalidate_apartment_floor_plan_cache!
-  after_destroy :invalidate_apartment_floor_plan_cache!
+  after_save    :update_caches
+  after_destroy :update_caches
 
   has_many :floor_plans,
            :class_name => 'ApartmentFloorPlan',
@@ -136,6 +136,16 @@ class ApartmentCommunity < Community
   def floor_plans_for_caching
     available_floor_plans
   end
+
+  def update_caches
+    invalidate_apartment_floor_plan_cache!
+
+    [area_memberships, neighborhood_memberships].flatten.each(&:update_apartment_communities_count)
+
+    true
+  end
+
+  protected
 
   def invalidate_apartment_floor_plan_cache!
     super

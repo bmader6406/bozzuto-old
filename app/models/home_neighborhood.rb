@@ -60,8 +60,6 @@ class HomeNeighborhood < ActiveRecord::Base
     }
   end
 
-  protected
-
   def update_home_communities_count
     self.home_communities_count = communities(true).count
     send(:update_without_callbacks)

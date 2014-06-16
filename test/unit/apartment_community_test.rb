@@ -21,6 +21,52 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
     should_have_apartment_floor_plan_cache
 
+    describe "callbacks" do
+      before do
+        @community    = ApartmentCommunity.make(:published => true)
+        @neighborhood = Neighborhood.make(:apartment_communities => [subject, @community])
+        @area         = Area.make(:apartment_communities => [subject, @community])
+      end
+
+      describe "after saving" do
+        context "when its published flag is not changed" do
+          it "does not update the count on its associated areas and neighborhoods" do
+            @area.apartment_communities_count.should == 2
+            @neighborhood.apartment_communities_count.should == 2
+
+            subject.save!
+
+            @area.reload.apartment_communities_count.should == 2
+            @neighborhood.reload.apartment_communities_count.should == 2
+          end
+        end
+
+        context "when its published flag is changed" do
+          it "updates the count on its associated areas and neighborhoods" do
+            @area.apartment_communities_count.should == 2
+            @neighborhood.apartment_communities_count.should == 2
+
+            subject.update_attributes(:published => false)
+
+            @area.reload.apartment_communities_count.should == 1
+            @neighborhood.reload.apartment_communities_count.should == 1
+          end
+        end
+      end
+
+      describe "after deletion" do
+        it "updates the count on its associated areas and neighborhoods" do
+          @area.apartment_communities_count.should == 2
+          @neighborhood.apartment_communities_count.should == 2
+
+          subject.destroy
+
+          @area.reload.apartment_communities_count.should == 1
+          @neighborhood.reload.apartment_communities_count.should == 1
+        end
+      end
+    end
+
     it "is archivable" do
       assert ApartmentCommunity.acts_as_archive?
       assert_nothing_raised do

@@ -105,9 +105,6 @@ module Bozzuto
         parent.try(:invalidate_apartment_floor_plan_cache!)
       end
 
-
-      protected
-
       def update_apartment_communities_count
         if !destroyed?
           self.apartment_communities_count = calculate_apartment_communities_count
@@ -117,6 +114,8 @@ module Bozzuto
 
         parent.try(:update_apartment_communities_count)
       end
+
+      protected
 
       def calculate_apartment_communities_count
         communities(true).count
