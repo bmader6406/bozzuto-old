@@ -21,14 +21,14 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
     should_have_apartment_floor_plan_cache
 
-    describe "callbacks" do
-      before do
-        @community    = ApartmentCommunity.make(:published => true)
-        @neighborhood = Neighborhood.make(:apartment_communities => [subject, @community])
-        @area         = Area.make(:apartment_communities => [subject, @community])
-      end
-
+    describe "updating caches" do
       describe "after saving" do
+        before do
+          @community    = ApartmentCommunity.make(:published => true)
+          @neighborhood = Neighborhood.make(:apartment_communities => [subject, @community])
+          @area         = Area.make(:apartment_communities => [subject, @community])
+        end
+
         context "when its published flag is not changed" do
           it "does not update the count on its associated areas and neighborhoods" do
             @area.apartment_communities_count.should == 2
@@ -50,6 +50,11 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
             @area.reload.apartment_communities_count.should == 1
             @neighborhood.reload.apartment_communities_count.should == 1
+
+            subject.update_attributes(:published => true)
+
+            @area.reload.apartment_communities_count.should == 2
+            @neighborhood.reload.apartment_communities_count.should == 2
           end
         end
       end

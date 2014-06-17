@@ -138,20 +138,24 @@ class ApartmentCommunity < Community
   end
 
   def update_caches
+    update_neighborhoods_counts
     invalidate_apartment_floor_plan_cache!
-
-    [area_memberships, neighborhood_memberships].flatten.each(&:update_apartment_communities_count)
 
     true
   end
 
-  protected
+  def update_neighborhoods_counts
+    area_memberships(true).each(&:update_apartment_communities_count)
+    neighborhood_memberships(true).each(&:update_apartment_communities_count)
+
+    true
+  end
 
   def invalidate_apartment_floor_plan_cache!
     super
 
-    neighborhood_memberships.each(&:invalidate_apartment_floor_plan_cache!)
-    area_memberships.each(&:invalidate_apartment_floor_plan_cache!)
+    neighborhood_memberships(true).each(&:invalidate_apartment_floor_plan_cache!)
+    area_memberships(true).each(&:invalidate_apartment_floor_plan_cache!)
 
     true
   end
