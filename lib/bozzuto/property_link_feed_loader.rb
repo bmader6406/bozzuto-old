@@ -13,6 +13,7 @@ module Bozzuto
     floor_plan_external_cms_id    './Floorplan', :attribute => 'Id'
     floor_plan_name               './Name'
     floor_plan_available_units    './DisplayedUnitsAvailable'
+    floor_plan_availability_url   './FloorplanAvailabilityURL'
     floor_plan_bedroom_count      './Room[@Type="Bedroom"]/Count'
     floor_plan_bathroom_count     './Room[@Type="Bathroom"]/Count'
 
