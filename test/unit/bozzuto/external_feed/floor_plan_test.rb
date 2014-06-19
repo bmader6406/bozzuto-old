@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Bozzuto::ExternalFeed
   class FloorPlanTest < ActiveSupport::TestCase
-    context "An ApartmentCommunity" do
+    context "A FloorPlan" do
       subject do
         Bozzuto::ExternalFeed::FloorPlan.new(
           :name              => 'Name',
@@ -19,26 +19,6 @@ module Bozzuto::ExternalFeed
           :max_rent          => 'Max Rent',
           :image_url         => 'Image URL'
         )
-      end
-
-      describe "#feed_attributes" do
-        it "returns a hash of attributes" do
-          subject.feed_attributes.should == {
-            :name              => 'Name',
-            :external_cms_id   => 'External CMS ID',
-            :external_cms_type => 'External CMS Type',
-            :floor_plan_group  => 'Floor Plan Group',
-            :availability_url  => 'Availability URL',
-            :available_units   => 'Available Units',
-            :bedrooms          => 'Bedrooms',
-            :bathrooms         => 'Bathrooms',
-            :min_square_feet   => 'Min Square Feet',
-            :max_square_feet   => 'Max Square Feet',
-            :min_rent          => 'Min Rent',
-            :max_rent          => 'Max Rent',
-            :image_url         => 'Image URL'
-          }
-        end
       end
 
       describe "#database_attributes" do

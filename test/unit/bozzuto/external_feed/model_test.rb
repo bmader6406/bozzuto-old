@@ -62,7 +62,7 @@ module Bozzuto::ExternalFeed
       end
 
       describe "#managed_by_feed" do
-        it "returns the  resource" do
+        it "returns the resource" do
           ApartmentCommunity.managed_by_feed(@vaultware.external_cms_id, @vaultware.external_cms_type).should == [@vaultware]
         end
       end

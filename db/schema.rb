@@ -201,12 +201,12 @@ ActiveRecord::Schema.define(:version => 20140612191117) do
     t.boolean  "featured_mobile",                      :default => false
     t.boolean  "under_construction",                   :default => false
     t.string   "external_cms_type"
-    t.text     "office_hours"
-    t.string   "pinterest_url"
     t.string   "schedule_tour_url"
     t.string   "seo_link_text"
     t.string   "seo_link_url"
     t.boolean  "show_rtrk_code",                       :default => false, :null => false
+    t.text     "office_hours"
+    t.string   "pinterest_url"
     t.string   "website_url_text"
     t.text     "neighborhood_description"
     t.string   "neighborhood_listing_image_file_name"
@@ -843,12 +843,12 @@ ActiveRecord::Schema.define(:version => 20140612191117) do
   add_index "photo_sets", ["property_id"], :name => "index_photo_sets_on_property_id"
 
   create_table "photos", :force => true do |t|
-    t.string   "image_file_name"
-    t.string   "title",              :null => false
+    t.string   "image_file_name",    :default => ""
+    t.string   "title",              :default => "", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_content_type"
-    t.string   "flickr_photo_id",    :null => false
+    t.string   "flickr_photo_id",                    :null => false
     t.integer  "photo_set_id"
     t.integer  "position"
   end
@@ -1004,12 +1004,12 @@ ActiveRecord::Schema.define(:version => 20140612191117) do
     t.boolean  "featured_mobile",                      :default => false
     t.boolean  "under_construction",                   :default => false
     t.string   "external_cms_type"
-    t.text     "office_hours"
-    t.string   "pinterest_url"
     t.string   "schedule_tour_url"
     t.string   "seo_link_text"
     t.string   "seo_link_url"
     t.boolean  "show_rtrk_code",                       :default => false, :null => false
+    t.text     "office_hours"
+    t.string   "pinterest_url"
     t.string   "website_url_text"
     t.text     "neighborhood_description"
     t.string   "neighborhood_listing_image_file_name"
@@ -1239,9 +1239,9 @@ ActiveRecord::Schema.define(:version => 20140612191117) do
   add_index "states", ["position"], :name => "index_states_on_position"
 
   create_table "testimonials", :force => true do |t|
-    t.string   "name"
-    t.string   "title"
-    t.text     "quote",      :null => false
+    t.string   "name",       :default => ""
+    t.string   "title",      :default => ""
+    t.text     "quote",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "section_id"

@@ -118,7 +118,7 @@ module Bozzuto
 
       def import_floor_plan(property, plan_data)
         find_or_initialize_floor_plan(plan_data) do |plan|
-          plan.attributes         = plan_data.database_attributes
+          plan.attributes          = plan_data.database_attributes
           plan.apartment_community = property
 
           # Only set floor plan group if this is a new plan
