@@ -1,20 +1,6 @@
 module PropertiesHelper
   def mobile_map_url(property)
-    lat = property.latitude
-    lon = property.longitude
-
-    case device
-    when :android
-      "geo:#{lat},#{lon}"
-    when :blackberry
-      if property.is_a?(HomeCommunity)
-        home_community_office_hours_path(property)
-      else
-        apartment_community_office_hours_path(property)
-      end
-    else
-      "http://maps.google.com/maps?q=#{lat},#{lon}"
-    end
+    "http://maps.google.com/maps?q=#{property.address}"
   end
 
   def directions_url(address)

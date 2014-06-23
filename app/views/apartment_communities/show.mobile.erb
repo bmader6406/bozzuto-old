@@ -16,7 +16,7 @@
       </div>
     <% end %>
 
-    <p class="address"><%= @community.address %></p>
+    <p class="address"><%= link_to @community.address, mobile_map_url(@community) %></p>
 
     <ul class="contact contact-list">
       <% @community.mobile_phone_number.if_present? do |phone_number| %>

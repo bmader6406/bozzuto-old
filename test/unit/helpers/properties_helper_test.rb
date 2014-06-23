@@ -6,49 +6,13 @@ class PropertiesHelperTest < ActionView::TestCase
   context "PropertiesHelper" do
     context '#mobile_map_url' do
       setup do
-        @community = ApartmentCommunity.make :latitude => rand, :longitude => rand
+        @community = ApartmentCommunity.make
       end
 
-      context 'on an iPhone' do
-        should 'return the map url' do
-          url = "http://maps.google.com/maps?q=#{@community.latitude},#{@community.longitude}"
-          stubs(:device).returns(:iphone)
+      it "returns the map url" do
+        url = "http://maps.google.com/maps?q=#{@community.address}"
 
-          assert_equal url, mobile_map_url(@community)
-        end
-      end
-
-      context 'on Android' do
-        should 'return the map url' do
-          url = "geo:#{@community.latitude},#{@community.longitude}"
-          stubs(:device).returns(:android)
-
-          assert_equal url, mobile_map_url(@community)
-        end
-      end
-
-      context 'on BlackBerry' do
-        context 'with a home community' do
-          setup { @community = HomeCommunity.make }
-
-          should 'return the home community office hours url' do
-            url = home_community_office_hours_path(@community)
-            stubs(:device).returns(:blackberry)
-
-            assert_equal url, mobile_map_url(@community)
-          end
-        end
-
-        context 'with an apartment community' do
-          setup { @community = ApartmentCommunity.make }
-
-          should 'return the apartment community office hours url' do
-            url = apartment_community_office_hours_path(@community)
-            stubs(:device).returns(:blackberry)
-
-            assert_equal url, mobile_map_url(@community)
-          end
-        end
+        assert_equal url, mobile_map_url(@community)
       end
     end
 
