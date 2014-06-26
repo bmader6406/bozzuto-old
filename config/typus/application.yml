@@ -383,7 +383,7 @@ HomeFloorPlan:
 HomeNeighborhood:
   fields:
     default: name
-    list: name
+    list: name, position
     form: name, latitude, longitude, banner_image, listing_image, description, detail_description, featured_home_community
     relationship: name, position
     options:
