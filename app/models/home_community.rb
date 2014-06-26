@@ -28,6 +28,9 @@ class HomeCommunity < Community
           :class_name  => 'HomeNeighborhood',
           :dependent   => :nullify
 
+  has_many :home_neighborhoods,
+           :through => :home_neighborhood_memberships
+
   has_many :home_neighborhood_memberships,
            :inverse_of => :home_community,
            :dependent  => :destroy
@@ -50,6 +53,10 @@ class HomeCommunity < Community
 
   def show_lasso_form?
     lasso_account.present?
+  end
+
+  def first_home_neighborhood
+    home_neighborhoods.first
   end
 
   private

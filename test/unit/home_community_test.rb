@@ -16,6 +16,7 @@ class HomeCommunityTest < ActiveSupport::TestCase
     should_have_one :lasso_account
     should_have_one :green_package
     should_have_one :neighborhood
+    should_have_many :home_neighborhoods
     should_have_many :home_neighborhood_memberships
     
     should 'be archivable' do
@@ -133,6 +134,17 @@ class HomeCommunityTest < ActiveSupport::TestCase
 
       should "return true" do
         assert @community.home_community?
+      end
+    end
+
+    describe "#first_home_neighborhood" do
+      setup do
+        @neighborhood = HomeNeighborhood.make(:home_communities => [subject, HomeCommunity.make])
+        @other_hood   = HomeNeighborhood.make(:home_communities => [subject, HomeCommunity.make])
+      end
+
+      should "return its first home neighborhood" do
+        subject.first_home_neighborhood.should == @neighborhood
       end
     end
   end

@@ -1,5 +1,5 @@
 class HomeNeighborhoodsController < ApplicationController
-  has_mobile_actions :show
+  has_mobile_actions :show, :index
 
   def show
   end

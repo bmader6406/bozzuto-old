@@ -7,7 +7,8 @@
 <div class="section page-title">
   <div class="content">
     <h2><%= @community.title %></h2>
-    <%= link_to @community.city.name, city_path(@community.city), :class => 'go-back' %>
+
+    <%= link_to @community.first_home_neighborhood, home_neighborhood_path(@community.first_home_neighborhood), :class => 'go-back' %>
   </div>
 </div>
 

@@ -10,7 +10,7 @@
   <div class="content property-list">
     <ul>
       <% neighborhood.communities.each do |community| %>
-        <%= render 'community_listing', :community => community %>
+        <li><%= render 'community_listing', :community => community %></li>
       <% end %>
     </ul>
   </div>
