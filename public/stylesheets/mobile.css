@@ -146,6 +146,10 @@ input, select, textarea, .submit {
   text-indent: -999px;
   width: 132px; }
 
+.header-link {
+  float: left;
+}
+
 .header a.btn {
   background-position: 0 0;
   float: right;
@@ -153,6 +157,11 @@ input, select, textarea, .submit {
   padding: 0;
   text-indent: -9999px;
   width: 121px; }
+
+.header-btns {
+  float: right;
+  margin-top: -15px;
+}
 
 /* @end Header */
 /* @group Footer */
@@ -472,7 +481,7 @@ form .error ::-webkit-input-placeholder {
 
 /* @end New Buzz Form */
 /* @group Places */
-.btn-find-apartment {
+.btn-find-community {
   background-color: #7fa0a3;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #7fa0a3), color-stop(100%, #5b7f82));
   background-image: -webkit-linear-gradient(#7fa0a3, #5b7f82);
@@ -480,6 +489,7 @@ form .error ::-webkit-input-placeholder {
   border-radius: 3px;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.25) inset;
   color: #fff;
+  clear: both;
   display: block;
   float: right;
   font-size: 11px;
@@ -489,6 +499,12 @@ form .error ::-webkit-input-placeholder {
   padding: 0 8px;
   text-decoration: none;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3); }
+
+.btn-find-home {
+  margin-left: 5px;
+  margin-bottom: 4px;
+}
+
 
 .pill-list {
   padding: 20px 0;
