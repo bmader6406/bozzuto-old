@@ -123,4 +123,18 @@ namespace :bozzuto do
       HoptoadNotifier.notify(e)
     end
   end
+
+  desc "Export contact lists in CSV format (Under Construction Leads + Buzzes)"
+  task :export_contact_list_csvs => :environment do
+    puts 'Exporting contact lists as CSVs...'
+
+    begin
+      Bozzuto::UnderConstructionLeadCsv.new(:filename => APP_CONFIG[:under_construction_lead_file]).file
+      Bozzuto::BuzzCsv.new(:filename => APP_CONFIG[:buzz_email_list_file]).file
+
+    rescue Exception => e
+      puts "Failed to export contact lists: #{e.message}"
+      HoptoadNotifier.notify(e)
+    end
+  end
 end
