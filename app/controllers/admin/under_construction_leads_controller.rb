@@ -10,71 +10,7 @@ class Admin::UnderConstructionLeadsController < Admin::MasterController
 
   private
 
-  # Original code found in vendor/plugins/typus/lib/typus/format.rb
   def generate_csv
-    fields = %w(PropertyName
-                TheID
-                PropertyId
-                Address
-                City
-                State
-                Zip
-                HomePhone
-                CellPhone
-                Email
-                MoveInDate
-                DesiredLease
-                Description
-                FirstName
-                LastName
-                Address2
-                WorkPhone
-                DogCount
-                CatCount
-                PetNotes
-                MinPrice
-                MaxPrice
-                BedCount
-                BathCount
-                FloorplanId
-                LeadCategoryId
-                LeadPriorityId
-                UserId
-                LeadType
-                LeadSource
-                FollowupDate
-                FollowUpDescription
-                LeadSourceConduit
-                Datelog)
-
-    field_to_resource = { 'PropertyName' => :apartment_community_title,
-                          'Address'      => :address,
-                          'City'         => :city,
-                          'State'        => :state,
-                          'Zip'          => :zip_code,
-                          'HomePhone'    => :phone_number,
-                          'Email'        => :email,
-                          'Description'  => :comments,
-                          'FirstName'    => :first_name,
-                          'LastName'     => :last_name,
-                          'Address2'     => :address_2,
-                          'Datelog'      => :created_at }
-
-    filename = "#{Rails.root}/tmp/export-#{@resource[:self]}-#{Time.now.utc.to_s(:number)}.csv"
-
-    options = { :conditions => @conditions, :batch_size => 1000 }
-
-    FasterCSV.open(filename, 'w', :col_sep => ',') do |csv|
-      csv << fields
-      @resource[:class].find_in_batches(options) do |records|
-        records.each do |record|
-          csv << fields.map do |f|
-            field_to_resource[f] ? record.send(field_to_resource[f]) : ''
-          end
-        end
-      end
-    end
-
-    send_file filename
+    send_file Bozzuto::UnderConstructionLeadCsv.new(:conditions => @conditions).file
   end
 end

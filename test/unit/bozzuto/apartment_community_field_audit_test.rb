@@ -12,7 +12,7 @@ module Bozzuto
         })
         @audit = ApartmentCommunityFieldAudit.new(@apartment_community)
       end
-      
+
       context '#field_value' do
         should "return the correct value for a symbol based field" do
           assert_equal "80503", @audit.field_value(:zip_code)
