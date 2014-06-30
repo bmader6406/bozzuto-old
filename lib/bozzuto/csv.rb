@@ -1,13 +1,11 @@
 module Bozzuto
   class Csv
+    class_attribute :klass, :field_map
+
     attr_reader :options
 
     def initialize(options = {})
       @options = options
-    end
-
-    def klass
-      raise NotImplementedError, 'Subclasses of Bozzuto::Csv must implement the `klass` method'
     end
 
     def record_lookup_options
@@ -32,10 +30,6 @@ module Bozzuto
 
     def timestamp
       Time.now.utc.to_s(:number)
-    end
-
-    def field_map
-      raise NotImplementedError, 'Subclasses of Bozzuto::Csv must implement the `field_map` method'
     end
 
     def field_names

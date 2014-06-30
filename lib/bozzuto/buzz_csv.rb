@@ -1,8 +1,8 @@
 module Bozzuto
   class BuzzCsv < Csv
-    KLASS = Buzz
+    self.klass = Buzz
 
-    FIELD_MAP = ActiveSupport::OrderedHash[[
+    self.field_map = ActiveSupport::OrderedHash[[
       ['Email', :email],
       ['First Name', :first_name],
       ['Last Name', :last_name],
@@ -16,13 +16,5 @@ module Bozzuto
       ['Affiliations', :formatted_affiliations],
       ['Created At', :created_at]
     ]]
-
-    def klass
-      KLASS
-    end
-
-    def field_map
-      FIELD_MAP
-    end
   end
 end

@@ -1,8 +1,8 @@
 module Bozzuto
   class UnderConstructionLeadCsv < Csv
-    KLASS = UnderConstructionLead
+    self.klass = UnderConstructionLead
 
-    FIELD_MAP = ActiveSupport::OrderedHash[[
+    self.field_map = ActiveSupport::OrderedHash[[
       ['PropertyName',:apartment_community_title],
       ['TheID', nil],
       ['PropertyId', nil],
@@ -38,13 +38,5 @@ module Bozzuto
       ['LeadSourceConduit', nil],
       ['Datelog', :created_at]
     ]]
-
-    def klass
-      KLASS
-    end
-
-    def field_map
-      FIELD_MAP
-    end
   end
 end
