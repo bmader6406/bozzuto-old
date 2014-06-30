@@ -87,6 +87,7 @@ end
 class Shoulda::Context
   alias_method :describe, :context
   alias_method :before,   :setup
+  alias_method :after,    :teardown
   alias_method :it,       :should
 end
 

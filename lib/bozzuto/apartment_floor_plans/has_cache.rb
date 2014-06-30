@@ -26,6 +26,8 @@ module Bozzuto
       #:nocov:
 
       def invalidate_apartment_floor_plan_cache!
+        return unless valid?
+
         self.apartment_floor_plan_cache = nil
         send(:update_without_callbacks)
       end

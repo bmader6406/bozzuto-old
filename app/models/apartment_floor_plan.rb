@@ -1,5 +1,5 @@
 class ApartmentFloorPlan < ActiveRecord::Base
-  include Bozzuto::ExternalCms
+  include Bozzuto::ExternalFeed::Model
 
   USE_IMAGE_URL = 0
   USE_IMAGE_FILE = 1
@@ -27,7 +27,7 @@ class ApartmentFloorPlan < ActiveRecord::Base
                             :minimum => 0,
                             :allow_nil => true
 
-  validates_inclusion_of :featured, :rolled_up, :in => [true, false]
+  validates_inclusion_of :featured, :in => [true, false]
 
   has_attached_file :image,
     :url             => '/system/:class/:id/:style.:extension',
@@ -84,9 +84,8 @@ class ApartmentFloorPlan < ActiveRecord::Base
   end
 
   def disconnect_from_external_cms!
-    self.external_cms_id      = nil
-    self.external_cms_type    = nil
-    self.external_cms_file_id = nil
+    self.external_cms_id   = nil
+    self.external_cms_type = nil
 
     save
   end

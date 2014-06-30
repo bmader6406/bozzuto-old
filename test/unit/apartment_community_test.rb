@@ -150,7 +150,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
     end
 
     describe "#merge" do
-      types = Bozzuto::ExternalFeedLoader.feed_types
+      types = Bozzuto::ExternalFeed::Feed.feed_types
 
       types.each do |type|
         context "receiver is a #{type} community" do
@@ -277,7 +277,6 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
         subject.floor_plans.each do |plan|
           plan.external_cms_id.should == nil
           plan.external_cms_type.should == nil
-          plan.external_cms_file_id.should == nil
         end
       end
     end

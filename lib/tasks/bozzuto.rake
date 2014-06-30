@@ -12,11 +12,9 @@ namespace :bozzuto do
     puts 'Loading Vaultware feed ...'
 
     begin
-      file = APP_CONFIG[:vaultware_feed_file]
-      loader = Bozzuto::VaultwareFeedLoader.new
-      loader.file = file
+      loader = Bozzuto::ExternalFeed::Loader.loader_for_type(:vaultware)
 
-      if loader.load
+      if loader.load!
         puts "Vaultware feed successfully loaded"
       else
         puts "Can't load Vaultware feed. Try again later."
@@ -32,11 +30,9 @@ namespace :bozzuto do
     puts 'Loading PropertyLink feed ...'
 
     begin
-      file = APP_CONFIG[:property_link_feed_file]
-      loader = Bozzuto::PropertyLinkFeedLoader.new
-      loader.file = file
+      loader = Bozzuto::ExternalFeed::Loader.loader_for_type(:property_link)
 
-      if loader.load
+      if loader.load!
         puts "PropertyLink feed successfully loaded"
       else
         puts "Can't load PropertyLink feed. Try again later."
@@ -52,11 +48,9 @@ namespace :bozzuto do
     puts 'Loading RentCafe feed ...'
 
     begin
-      file = APP_CONFIG[:rent_cafe_feed_file]
-      loader = Bozzuto::RentCafeFeedLoader.new
-      loader.file = file
+      loader = Bozzuto::ExternalFeed::Loader.loader_for_type(:rent_cafe)
 
-      if loader.load
+      if loader.load!
         puts "RentCafe feed successfully loaded"
       else
         puts "Can't load RentCafe feed. Try again later."
@@ -72,11 +66,9 @@ namespace :bozzuto do
     puts 'Loading PSI feed ...'
 
     begin
-      file = APP_CONFIG[:psi_feed_file]
-      loader = Bozzuto::PsiFeedLoader.new
-      loader.file = file
+      loader = Bozzuto::ExternalFeed::Loader.loader_for_type(:psi)
 
-      if loader.load
+      if loader.load!
         puts "PSI feed successfully loaded"
       else
         puts "Can't load PSI feed. Try again later."

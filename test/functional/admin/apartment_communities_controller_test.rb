@@ -21,7 +21,7 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
       should_assign_to :items
     end
 
-    types = Bozzuto::ExternalFeedLoader.feed_types
+    types = Bozzuto::ExternalFeed::Feed.feed_types
 
     context 'GET to #merge' do
       types.each do |type|

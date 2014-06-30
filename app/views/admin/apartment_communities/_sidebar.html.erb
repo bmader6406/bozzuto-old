@@ -4,8 +4,8 @@
 
     <% if params[:action] == 'index' %>
       <ul class="external-feeds">
-        <% Bozzuto::ExternalFeedLoader.feed_types.each do |type| %>
-          <% loader = Bozzuto::ExternalFeedLoader.loader_for_type(type) %>
+        <% Bozzuto::ExternalFeed::Feed.feed_types.each do |type| %>
+          <% loader = Bozzuto::ExternalFeed::Loader.loader_for_type(type) %>
           <li>
             <h3><%= loader.feed_name %></h3>
 
@@ -15,7 +15,7 @@
               <%= link_to 'Refresh Feed', {
                     :controller => 'admin/external_feeds',
                     :action     => :load,
-                    :feed_type  => loader.feed_type.to_s
+                    :feed_type  => loader.feed_type
                   },
                   :method => :post,
                   :class => 'refresh-feed' %>
@@ -26,7 +26,7 @@
               </span>
             <% else %>
               <span class="external-cms-message">
-                <%= distance_of_time_in_words(Time.now, loader.next_load_time).capitalize %> until next refresh
+                <%= distance_of_time_in_words(Time.now, loader.next_load_at).capitalize %> until next refresh
               </span>
             <% end %>
           </li>

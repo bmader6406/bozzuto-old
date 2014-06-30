@@ -171,7 +171,7 @@ class ApartmentFloorPlanTest < ActiveSupport::TestCase
       end
     end
 
-    Bozzuto::ExternalFeedLoader.feed_types.each do |type|
+    Bozzuto::ExternalFeed::Feed.feed_types.each do |type|
       describe "#managed_by_#{type}?" do
         context "floor plan is managed by #{type.titlecase}" do
           before { @plan = ApartmentFloorPlan.make(type.to_sym) }
@@ -201,7 +201,6 @@ class ApartmentFloorPlanTest < ActiveSupport::TestCase
 
         subject.external_cms_id.should == nil
         subject.external_cms_type.should == nil
-        subject.external_cms_file_id.should == nil
       end
     end
   end

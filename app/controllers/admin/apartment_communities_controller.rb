@@ -47,8 +47,8 @@ class Admin::ApartmentCommunitiesController < Admin::MasterController
 
   def merge
     @options = [].tap do |options|
-      Bozzuto::ExternalFeedLoader.feed_types.sort.each do |type|
-        loader = Bozzuto::ExternalFeedLoader.loader_for_type(type)
+      Bozzuto::ExternalFeed::Feed.feed_types.sort.each do |type|
+        loader = Bozzuto::ExternalFeed::Loader.loader_for_type(type)
 
         communities = ApartmentCommunity.all(:conditions => { :external_cms_type => type }, :order => 'title ASC')
 

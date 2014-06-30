@@ -1,6 +1,6 @@
 class ApartmentCommunity < Community
+  include Bozzuto::ExternalFeed::Model
   include Bozzuto::ApartmentFloorPlans::HasCache
-  include Bozzuto::ExternalCms
   extend  Bozzuto::Neighborhoods::ListingImage
 
   self.external_cms_attributes = [

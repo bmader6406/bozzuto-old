@@ -19,9 +19,6 @@
     <% if sq_ft || min_rent %>
       <h3>
         <% if sq_ft.present? %>
-          <% if @plan.rolled_up? %>
-            Starting from
-          <% end %>
           <%= square_feet(sq_ft) %>
         <% end %>
 
