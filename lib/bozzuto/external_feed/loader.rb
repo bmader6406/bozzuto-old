@@ -94,6 +94,8 @@ module Bozzuto
             unless property.new_record?
               import_floor_plans(property, property_data)
             end
+
+            delete_orphaned_floor_plans(property, property_data)
           end
 
           true
@@ -128,6 +130,21 @@ module Bozzuto
 
           plan.save
         end
+      end
+
+      def delete_orphaned_floor_plans(property, property_data)
+        return unless property_data.floor_plans.any?
+
+        # get floor plan ids from database
+        plan_ids = property_data.floor_plans.map do |plan_data|
+          property.floor_plans.
+            managed_by_feed(plan_data.external_cms_id, plan_data.external_cms_type).
+            first.
+            try(:id)
+        end.compact
+
+        # delete all plans from this property that aren't in the feed
+        property.floor_plans.scoped(:conditions => ['id NOT IN (?)', plan_ids]).map(&:destroy)
       end
 
       def find_or_initialize_property(c)

@@ -320,7 +320,7 @@ module Bozzuto::ExternalFeed
           end
         end
 
-        context "community and floor plan already exist" do
+        context "community exists" do
           before do
             setup_loader_stubs(subject)
 
@@ -330,78 +330,114 @@ module Bozzuto::ExternalFeed
               :street_address   => 'TEST',
               :availability_url => 'TEST'
             )
-
-            @plan = ApartmentFloorPlan.make(:vaultware,
-              :external_cms_id     => '20294',
-              :apartment_community => @community,
-              :name                => 'TEST',
-              :availability_url    => 'TEST',
-              :bedrooms            => 99,
-              :bathrooms           => 99,
-              :min_square_feet     => 9999,
-              :max_square_feet     => 9999,
-              :min_rent            => 9999,
-              :max_rent            => 9999,
-              :image_url           => 'TEST',
-              :floor_plan_group    => ApartmentFloorPlanGroup.studio
-            )
           end
 
-          it "only creates the new communities and floor plans" do
-            expect {
+          context "floor plan exists that isn't in the feed" do
+            before do
+              @plan = ApartmentFloorPlan.make(:vaultware,
+                :external_cms_id     => '123456789',
+                :apartment_community => @community,
+                :name                => 'ORPHAN',
+                :availability_url    => 'ORPHAN',
+                :bedrooms            => 99,
+                :bathrooms           => 99,
+                :min_square_feet     => 9999,
+                :max_square_feet     => 9999,
+                :min_rent            => 9999,
+                :max_rent            => 9999,
+                :image_url           => 'ORPHAN',
+                :floor_plan_group    => ApartmentFloorPlanGroup.studio
+              )
+            end
+
+            it "destroys the orphaned floor plan" do
               expect {
-                subject.load!
-              }.to change { ApartmentCommunity.count }.by(1)
-            }.to change { ApartmentFloorPlan.count }.by(2)
-          end
+                expect {
+                  subject.load!
+                }.to change { ApartmentCommunity.count }.by(1)
+              }.to change { ApartmentFloorPlan.count }.by(2)
 
-          it "updates the existing communities and floor plans" do
-            subject.load!
+              expect {
+                @plan.reload
+              }.to raise_error(ActiveRecord::RecordNotFound)
 
-            @community.reload.tap do |c|
-              c.title.should             == 'The Courts of Devon'
-              c.street_address.should    == '501 Main Street'
-              c.city.should              == City.find_by_name('Gaithersburg')
-              c.state.should             == State.find_by_code('MD')
-              c.county.should            == County.find_by_name('Montgomery')
-              c.city.counties.should        include(c.county)
-              c.availability_url.should  == 'http://units.realtydatatrust.com/unittype.aspx?ils=5341&propid=16976'
-              c.external_cms_id.should   == '16976'
-              c.external_cms_type.should == 'vaultware'
-              c.office_hours.should      == [
-                { :open_time => "09:00 AM", :day => "Monday",    :close_time => "06:00 PM" },
-                { :open_time => "08:00 AM", :day => "Tuesday",   :close_time => "06:00 PM" },
-                { :open_time => "08:00 AM", :day => "Wednesday", :close_time => "06:00 PM" },
-                { :open_time => "09:00 AM", :day => "Thursday",  :close_time => "06:00 PM" },
-                { :open_time => "08:00 AM", :day => "Friday",    :close_time => "05:00 PM" },
-                { :open_time => "10:00 AM", :day => "Saturday",  :close_time => "05:00 PM" },
-                { :open_time => "12:00 PM", :day => "Sunday",    :close_time => "05:00 PM" }
-              ]
-            end
-
-            @plan.reload.tap do |p|
-              p.name.should              == '2 Bedroom/1 Bath'
-              p.availability_url.should  == 'http://units.realtydatatrust.com/unitavailability.aspx?ils=5341&fid=20294'
-              p.available_units.should   == 5
-              p.bedrooms.should          == 2
-              p.bathrooms.should         == 1
-              p.min_square_feet.should   == 761
-              p.max_square_feet.should   == 833
-              p.min_rent.should          == 1540
-              p.max_rent.should          == 1820
-              p.image_url.should         == 'http://cdn.realtydatatrust.com/i/fs/62315'
-              p.floor_plan_group.should  == ApartmentFloorPlanGroup.studio
-              p.external_cms_id.should   == '20294'
-              p.external_cms_type.should == 'vaultware'
             end
           end
 
-          it "does not update the existing floor plan's group" do
-            subject.load!
+          context "floor plan in the feed already exists" do
+            before do
+              @plan = ApartmentFloorPlan.make(:vaultware,
+                :external_cms_id     => '20294',
+                :apartment_community => @community,
+                :name                => 'TEST',
+                :availability_url    => 'TEST',
+                :bedrooms            => 99,
+                :bathrooms           => 99,
+                :min_square_feet     => 9999,
+                :max_square_feet     => 9999,
+                :min_rent            => 9999,
+                :max_rent            => 9999,
+                :image_url           => 'TEST',
+                :floor_plan_group    => ApartmentFloorPlanGroup.studio
+              )
+            end
 
-            @plan.reload
+            it "only creates the new communities and floor plans" do
+              expect {
+                expect {
+                  subject.load!
+                }.to change { ApartmentCommunity.count }.by(1)
+              }.to change { ApartmentFloorPlan.count }.by(2)
+            end
 
-            @plan.floor_plan_group.should == ApartmentFloorPlanGroup.studio
+            it "updates the existing communities and floor plans" do
+              subject.load!
+
+              @community.reload.tap do |c|
+                c.title.should             == 'The Courts of Devon'
+                c.street_address.should    == '501 Main Street'
+                c.city.should              == City.find_by_name('Gaithersburg')
+                c.state.should             == State.find_by_code('MD')
+                c.county.should            == County.find_by_name('Montgomery')
+                c.city.counties.should        include(c.county)
+                c.availability_url.should  == 'http://units.realtydatatrust.com/unittype.aspx?ils=5341&propid=16976'
+                c.external_cms_id.should   == '16976'
+                c.external_cms_type.should == 'vaultware'
+                c.office_hours.should      == [
+                  { :open_time => "09:00 AM", :day => "Monday",    :close_time => "06:00 PM" },
+                  { :open_time => "08:00 AM", :day => "Tuesday",   :close_time => "06:00 PM" },
+                  { :open_time => "08:00 AM", :day => "Wednesday", :close_time => "06:00 PM" },
+                  { :open_time => "09:00 AM", :day => "Thursday",  :close_time => "06:00 PM" },
+                  { :open_time => "08:00 AM", :day => "Friday",    :close_time => "05:00 PM" },
+                  { :open_time => "10:00 AM", :day => "Saturday",  :close_time => "05:00 PM" },
+                  { :open_time => "12:00 PM", :day => "Sunday",    :close_time => "05:00 PM" }
+                ]
+              end
+
+              @plan.reload.tap do |p|
+                p.name.should              == '2 Bedroom/1 Bath'
+                p.availability_url.should  == 'http://units.realtydatatrust.com/unitavailability.aspx?ils=5341&fid=20294'
+                p.available_units.should   == 5
+                p.bedrooms.should          == 2
+                p.bathrooms.should         == 1
+                p.min_square_feet.should   == 761
+                p.max_square_feet.should   == 833
+                p.min_rent.should          == 1540
+                p.max_rent.should          == 1820
+                p.image_url.should         == 'http://cdn.realtydatatrust.com/i/fs/62315'
+                p.floor_plan_group.should  == ApartmentFloorPlanGroup.studio
+                p.external_cms_id.should   == '20294'
+                p.external_cms_type.should == 'vaultware'
+              end
+            end
+
+            it "does not update the existing floor plan's group" do
+              subject.load!
+
+              @plan.reload
+
+              @plan.floor_plan_group.should == ApartmentFloorPlanGroup.studio
+            end
           end
         end
       end
