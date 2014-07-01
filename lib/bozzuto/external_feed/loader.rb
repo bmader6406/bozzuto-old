@@ -87,19 +87,17 @@ module Bozzuto
       #:nocov:
 
       def process_feed
-        ActiveRecord::Base.transaction do
-          feed.properties.each do |property_data|
-            property = import_property(property_data)
+        feed.properties.each do |property_data|
+          property = import_property(property_data)
 
-            unless property.new_record?
-              import_floor_plans(property, property_data)
-            end
-
-            delete_orphaned_floor_plans(property, property_data)
+          unless property.new_record?
+            import_floor_plans(property, property_data)
           end
 
-          true
+          delete_orphaned_floor_plans(property, property_data)
         end
+
+        true
       end
 
       def import_property(property_data)
