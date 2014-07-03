@@ -44,15 +44,6 @@ class ActiveSupport::TestCase
     ApartmentFloorPlanGroup.create(:name => 'Penthouse')
   end
 
-  def rm_feed_loader_tmp_files
-    Bozzuto::ExternalFeedLoader.feed_types.each do |type|
-      loader = Bozzuto::ExternalFeedLoader.loader_for_type(type)
-
-      `rm #{loader.class.tmp_file}` if File.exists?(loader.class.tmp_file)
-      `rm #{loader.class.lock_file}` if File.exists?(loader.class.lock_file)
-    end
-  end
-
   def set_mobile!
     @request.env['bozzuto.mobile.device'] = :iphone
   end

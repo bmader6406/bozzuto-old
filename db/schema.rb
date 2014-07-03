@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140612191117) do
+ActiveRecord::Schema.define(:version => 20140701193129) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -816,44 +816,23 @@ ActiveRecord::Schema.define(:version => 20140612191117) do
   add_index "pages", ["section_id"], :name => "index_pages_on_section_id"
 
   create_table "photo_groups", :force => true do |t|
-    t.string   "title",            :null => false
-    t.string   "flickr_raw_title", :null => false
+    t.string   "title",      :null => false
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "photo_groups_photos", :id => false, :force => true do |t|
-    t.integer "photo_group_id"
-    t.integer "photo_id"
-  end
-
-  add_index "photo_groups_photos", ["photo_group_id"], :name => "index_photo_groups_photos_on_photo_group_id"
-  add_index "photo_groups_photos", ["photo_id"], :name => "index_photo_groups_photos_on_photo_id"
-
-  create_table "photo_sets", :force => true do |t|
-    t.string   "title",                                :null => false
-    t.string   "flickr_set_number",                    :null => false
-    t.integer  "property_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "needs_sync",        :default => false, :null => false
-  end
-
-  add_index "photo_sets", ["property_id"], :name => "index_photo_sets_on_property_id"
 
   create_table "photos", :force => true do |t|
     t.string   "image_file_name",    :default => ""
-    t.string   "title",              :default => "", :null => false
+    t.string   "title",              :default => "",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_content_type"
-    t.string   "flickr_photo_id",                    :null => false
-    t.integer  "photo_set_id"
     t.integer  "position"
+    t.boolean  "show_to_mobile",     :default => false, :null => false
+    t.integer  "photo_group_id"
+    t.integer  "property_id",                           :null => false
   end
-
-  add_index "photos", ["photo_set_id"], :name => "index_photos_on_photo_set_id"
 
   create_table "press_releases", :force => true do |t|
     t.string   "title",                               :null => false

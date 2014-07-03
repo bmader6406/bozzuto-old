@@ -1,23 +1,75 @@
 class Photo < ActiveRecord::Base
-  acts_as_list :scope => :photo_set
+  acts_as_list :scope => :photo_group_id
 
-  belongs_to :photo_set
-  has_and_belongs_to_many :photo_groups
+  belongs_to :photo_group
+  belongs_to :property
 
-  validates_presence_of :title, :flickr_photo_id
+  validates_presence_of :title, :photo_group, :property
 
-  default_scope :order => 'photos.position ASC'
+  before_update :move_to_new_list,
+                :if => proc { |p| p.photo_group_id_changed? || p.property_id_changed? }
 
-  named_scope :in_set, lambda { |set|
-    { :conditions => { :photo_set_id => set.id } }
+  default_scope :include => :photo_group
+
+  named_scope :positioned, {
+    :include => :photo_group,
+    :order   => 'photo_groups.position ASC, photos.position ASC'
   }
-  
-  named_scope :for_mobile, { :include => :photo_groups, 
-    :conditions => 'photo_groups.flickr_raw_title = "mobile"' }
+
+  named_scope :in_group, lambda { |group|
+    { :conditions => { :photo_group_id => group.id } }
+  }
+
+  named_scope :for_mobile,  { :conditions => { :show_to_mobile => true } }
 
   has_attached_file :image,
-    :url             => '/system/:class/:id/photo_:id_:style.:extension',
-    :styles          => { :resized => '870x375#', :thumb => '55x55#', :mobile => '300>' },
-    :default_style   => :resized,
-    :convert_options => { :all => '-quality 80 -strip' }
+                    :url             => '/system/:class/:id/photo_:id_:style.:extension',
+                    :styles          => { :resized => '870x375#', :thumb => '55x55#', :mobile => '300>' },
+                    :default_style   => :resized,
+                    :convert_options => { :all => '-quality 80 -strip' }
+
+  def self.grouped
+    ActiveSupport::OrderedHash.new.tap do |hash|
+      PhotoGroup.positioned.all.each do |group|
+        photos = in_group(group)
+
+        hash[group] = photos if photos.any?
+      end
+    end
+  end
+
+  def self.typus_order_by
+    'photo_groups.position ASC, photos.position ASC'
+  end
+
+  def thumbnail_tag
+    %{<img src="#{image.url(:thumb)}">}.html_safe
+  end
+
+
+  private
+
+  def scope_condition
+    "property_id = #{property_id} AND photo_group_id = #{photo_group_id}"
+  end
+
+  def move_to_new_list
+    old_photo_group = PhotoGroup.find(changed_attributes['photo_group_id'] || photo_group_id)
+    new_photo_group = photo_group
+
+    old_property = Property.find(changed_attributes['property_id'] || property_id)
+    new_property = property
+
+    # remove from old list
+    self.photo_group = old_photo_group
+    self.property    = old_property
+
+    remove_from_list
+
+    # add to new list
+    self.photo_group = new_photo_group
+    self.property    = new_property
+
+    self.position = bottom_position_in_list(self).to_i + 1
+  end
 end

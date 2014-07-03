@@ -1,7 +1,3 @@
-every 2.hours do
-  rake 'bozzuto:sync_photo_sets'
-end
-
 every 1.day, :at => '4:00 am' do
   rake "-s sitemap:refresh"
 end

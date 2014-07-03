@@ -12,10 +12,9 @@ class Community < Property
 
   belongs_to :twitter_account
 
-  has_one :photo_set,
-    :foreign_key => :property_id
-
-  has_many :photos, :through => :photo_set
+  has_many :photos,
+           :foreign_key => :property_id,
+           :dependent   => :destroy
 
   has_one :dnr_configuration,
     :dependent   => :destroy,
@@ -72,24 +71,12 @@ class Community < Property
     #:nocov:
   end
 
-  def has_overview_bullets?
-    (1..3).any? do |i|
-      send("overview_bullet_#{i}").present?
-    end
-  end
-
   def overview_bullets
     [overview_bullet_1, overview_bullet_2, overview_bullet_3].reject(&:blank?)
   end
 
-  def photo_groups
-    @photo_groups ||= PhotoGroup.for_community(self)
-  end
-
-  def photo_groups_and_photos
-    photo_groups.map do |photo_group|
-      [photo_group, photo_group.photos.in_set(self.photo_set)]
-    end
+  def has_overview_bullets?
+    overview_bullets.any?
   end
 
   def local_info
@@ -105,7 +92,11 @@ class Community < Property
   end
 
   def has_media?
-    photo_set.present? || videos.present?
+    photos.any? || videos.any?
+  end
+
+  def grouped_photos
+    photos.positioned.grouped
   end
 
   # used by sms

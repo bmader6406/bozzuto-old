@@ -27,9 +27,9 @@ ApartmentCommunity:
         featured: ['Yes', 'No']
       required: title, city
       selectors: brochure_type
-      destroy_related: PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyToursPage, PropertyContactPage, PropertySlideshow, PropertyMiniSlideshow, Video, PhotoSet, ApartmentFloorPlan
+      destroy_related: PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyToursPage, PropertyContactPage, PropertySlideshow, PropertyMiniSlideshow, Video, ApartmentFloorPlan
   order_by: title
-  relationships: dnr_configuration, mediaplex_tag, property_features, city, county, local_info_feed, features_page, neighborhood_page, tours_page, contact_page, slideshow, videos, photo_set, floor_plans, promo, contact_configuration
+  relationships: dnr_configuration, mediaplex_tag, property_features, city, county, local_info_feed, features_page, neighborhood_page, tours_page, contact_page, slideshow, videos, photos, floor_plans, promo, contact_configuration
   filters: 
   search: properties.title, properties.street_address
   application: Properties
@@ -358,9 +358,9 @@ HomeCommunity:
       booleans:
         published: ['Yes', 'No']
       selectors: brochure_type
-      destroy_related: ConversionConfiguration, PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyToursPage, PropertyContactPage, LassoAccount, PropertySlideshow, PropertyMiniSlideshow, Home, Video, PhotoSet
+      destroy_related: ConversionConfiguration, PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyToursPage, PropertyContactPage, LassoAccount, PropertySlideshow, PropertyMiniSlideshow, Home, Video
   order_by: title
-  relationships: dnr_configuration, conversion_configuration, property_features, city, county, features_page, neighborhood_page, tours_page, contact_page, lasso_account, slideshow, videos, photo_set, homes, local_info_feed, promo, green_package
+  relationships: dnr_configuration, conversion_configuration, property_features, city, county, features_page, neighborhood_page, tours_page, contact_page, lasso_account, slideshow, videos, homes, local_info_feed, promo, green_package
   filters:
   search: title
   application: Properties
@@ -653,29 +653,23 @@ Page:
     show: preview
     edit: preview
 
+PhotoGroup:
+  order_by: position
+
 Photo:
   fields:
-    default: image, caption, apartment_community
-    list: image, caption, apartment_community
-    form: image, caption, apartment_community
-  order_by:
-  relationships: apartment_community
+    default: 
+    list: thumbnail_tag, title, photo_group, property
+    form: title, photo_group, property, image
+    relationship: thumbnail_tag, title, photo_group, position
+    options:
+      required: title, photo_group, property, image
+  relationships: 
+  order_by: 
   filters:
   search:
-  application:
-
-PhotoSet:
-  fields:
-    default: title, flickr_set_number
-    list: title, flickr_set_number, property
-    form: flickr_set_number, needs_sync, property
-    options:
-      booleans:
-        needs_sync: ['Yes', 'No']
-  order_by:
-  relationships: property
-  filters:
-  search: title
+  options:
+    per_page: 40
   application:
 
 PressRelease:
@@ -776,7 +770,7 @@ Property:
     options:
       selectors: brochure_type, property_type
   order_by: title
-  relationships: slideshow, video, photo_set
+  relationships: slideshow, video
   filters:
   search:
   application:

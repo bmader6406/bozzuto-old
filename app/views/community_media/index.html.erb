@@ -27,27 +27,26 @@
 <% end %>
 
 
-<% unless @community.photo_set.nil? %>
+<% if @community.photos.any? %>
 
   <% slide_index = 1 %>
-  <% @community.photo_groups_and_photos.each do |group, photos| %>
-    <% unless photos.empty? %>
-      <div class="media-group">
-        <h2><%= group.title %></h2>
 
-        <ul class="row">
-          <% photos.each do |photo| %>
-            <li class="media-link">
-              <% link_to "#slideshow-slide-#{slide_index}", :class => 'set-slideshow' do %>
-                <%= image_tag(photo.image.url(:thumb), :width => 55, :height => 55) %>
-              <% end %>
-            </li>
+  <% @community.grouped_photos.each do |group, photos| %>
+    <div class="media-group">
+      <h2><%= group.title %></h2>
 
-            <% slide_index += 1 %>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+      <ul class="row">
+        <% photos.each do |photo| %>
+          <li class="media-link">
+            <% link_to "#slideshow-slide-#{slide_index}", :class => 'set-slideshow' do %>
+              <%= image_tag(photo.image.url(:thumb), :width => 55, :height => 55) %>
+            <% end %>
+          </li>
+
+          <% slide_index += 1 %>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 
 <% end %>

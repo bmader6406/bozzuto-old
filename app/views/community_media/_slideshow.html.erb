@@ -1,4 +1,4 @@
-<% unless @community.photo_set.nil? %>
+<% if @community.photos.any? %>
   <div id="slideshow">
     <div class="header">
       <ul class="slideshow-navigation">
@@ -13,7 +13,8 @@
 
     <ul class="slides">
       <% slide_index = 1 %>
-      <% @community.photo_groups_and_photos.each do |group, photos| %>
+
+      <% @community.grouped_photos.each do |group, photos| %>
         <% photos.each do |photo| %>
           <li id="slideshow-slide-<%= slide_index %>" class="slide">
             <%= image_tag(photo.image.url) %>
@@ -24,6 +25,7 @@
               </p>
             </div>
           </li>
+
           <% slide_index += 1 %>
         <% end %>
       <% end %>

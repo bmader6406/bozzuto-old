@@ -27,14 +27,13 @@ module Bozzuto
       ['Property Neighborhood Page', lambda {|c| c.neighborhood_page.try(:content)}],
       ['Property Contact Page',      lambda {|c| c.contact_page.try(:content)}],
       ['Floor Plans',                :floor_plans],
-      ['Flickr Photo Set',           :photo_set]
+      ['Photos',                     :photos]
     ]]
 
     def self.community_records
       ApartmentCommunity.all
     end
     
-
     def self.audit_fields
       AUDIT_FIELDS
     end

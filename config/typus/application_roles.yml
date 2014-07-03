@@ -51,7 +51,6 @@ admin:
   NewsPost: create, read, update, delete
   Page: create, read, update, delete, preview, list_deleted, recover
   Photo: create, read, update, delete
-  PhotoSet: create, read, update, delete
   PressRelease: create, read, update, delete
   Project: create, read, update, delete, list_deleted
   ProjectCategory: create, read, update, delete

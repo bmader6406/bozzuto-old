@@ -34,7 +34,6 @@ module Bozzuto
           :lead_2_lease_email  => community.lead_2_lease_email,
           :phone_number        => community.phone_number,
           :features            => community_features(community),
-          :photo_set           => community_photo_set(community),
           :slideshow_slides    => community_slideshow(community),
           :video_url           => community.video_url,
           :neighborhood_text   => community.neighborhood_page.try(:content),
@@ -74,17 +73,6 @@ module Bozzuto
               }
             end
           end
-        end
-      end
-    end
-
-    def community_photo_set(community)
-      photo_set = community.photo_set
-
-      {}.tap do |attrs|
-        if photo_set
-          attrs[:title] = photo_set.title
-          attrs[:flickr_set_number] = photo_set.flickr_set_number
         end
       end
     end
@@ -161,8 +149,6 @@ module Bozzuto
         property[:featured_buttons].each do |featured_button|
           featured_button_node(node, featured_button)
         end
-
-        photo_set_node(node, property[:photo_set])
 
         slideshow_node(node, property[:slideshow_slides])
 
@@ -255,13 +241,6 @@ module Bozzuto
     def featured_button_node(parent_node, featured_button)
       parent_node.tag!('FeaturedButton') do |node|
         node.tag! 'Name', featured_button[:name]
-      end
-    end
-
-    def photo_set_node(parent_node, photo_set)
-      parent_node.tag!('PhotoSet') do |node|
-        node.tag! 'Title', photo_set[:title]
-        node.tag! 'FlickrSetNumber', photo_set[:flickr_set_number]
       end
     end
 

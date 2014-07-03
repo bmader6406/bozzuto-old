@@ -82,12 +82,12 @@
         <%= link_to 'Features & Amenities', apartment_community_features_path(@community), :class => 'btn' %>
         </li>
       <%- end -%>
-      <%- if @community.photo_set.present? -%>
+      <%- if @community.photos.any? -%>
         <li>
         <%= link_to 'Photos', apartment_community_media_path(@community), :class => 'btn' %>
         </li>
       <%- end -%>
-      <%- if @community.floor_plans.present? -%>
+      <%- if @community.floor_plans.any? -%>
         <li>
         <%= link_to 'Floor Plans', apartment_community_floor_plan_groups_path(@community), :class => 'btn' %>
         </li>

@@ -238,27 +238,6 @@ module Bozzuto
         end
       end
 
-      context "with Photo Set" do
-        setup do
-          set = PhotoSet.make_unsaved({
-            :property => @community,
-            :flickr_set_number => '91740458'
-          })
-          set.stubs(:flickr_set).returns(OpenStruct.new(:title => 'PHERT SERT'))
-          set.save
-
-          @first_export = @exporter.data[:properties].first
-        end
-
-        should "contain title" do
-          assert_equal 'PHERT SERT', @first_export[:photo_set][:title]
-        end
-
-        should "contain flickr set number" do
-          assert_equal '91740458', @first_export[:photo_set][:flickr_set_number]
-        end
-      end
-
       context "with Slideshow" do
         setup do
           slideshow = PropertySlideshow.make(:property => @community)
@@ -507,13 +486,6 @@ module Bozzuto
             :title_2  => nil,
             :text_2   => nil
           })
-
-          set = PhotoSet.make_unsaved({
-            :property => @community,
-            :flickr_set_number => '91740458'
-          })
-          set.stubs(:flickr_set).returns(OpenStruct.new(:title => 'PHERT SERT'))
-          set.save
 
           slideshow = PropertySlideshow.make(:property => @community)
           @slide = PropertySlide.make(:property_slideshow => slideshow)
@@ -766,21 +738,6 @@ module Bozzuto
           should "contain title" do
             assert_equal @nearby_community.title,
               @nearby_node.xpath('Name')[0].content
-          end
-        end
-
-        context "with photo set" do
-          setup do
-            path = '//PhysicalProperty//Property//PhotoSet'
-            @photo_set_node = @doc.xpath(path)[0]
-          end
-
-          should "contain title" do
-            assert_equal 'PHERT SERT', @photo_set_node.xpath('Title')[0].content
-          end
-
-          should "contain flickr set number" do
-            assert_equal '91740458', @photo_set_node.xpath('FlickrSetNumber')[0].content
           end
         end
 

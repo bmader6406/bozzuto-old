@@ -64,12 +64,12 @@
 	        <%= link_to 'Features & Amenities', home_community_features_path(@community), :class => 'btn' %>
 	      </li>
 			<%- end -%>
-			<%- if @community.photo_set.present? -%>
+			<%- if @community.photos.any? -%>
 	      <li>
 	        <%= link_to 'Photos', home_community_media_path(@community), :class => 'btn' %>
 	      </li>
 			<%- end -%>
-			<%- if @community.homes.present? -%>
+			<%- if @community.homes.any? -%>
 	      <li>
 	        <%= link_to 'Homes', home_community_homes_path(@community), :class => 'btn' %>
 	      </li>

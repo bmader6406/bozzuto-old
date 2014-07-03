@@ -141,7 +141,7 @@ class Admin::MasterController < ApplicationController
         @resource[:human_name] = params[:controller].extract_human_name
       end
 
-      flash[:success] = _("{{model}} successfully updated.", 
+      flash[:success] = _("%{model} successfully updated.", 
                           :model => @resource[:human_name])
       redirect_to path
 

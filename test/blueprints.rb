@@ -2,11 +2,11 @@ require 'machinist/active_record'
 require 'sham'
 
 Sham.define do
-  us_state_code(:unique => false) { |i|
+  us_state_code(:unique => false) do |i|
     i = i % (36*36)
 
     "%2s" % i.to_s(36)
-  }
+  end
 
   city              { Faker::Address.city }
   us_state          { |i| "#{Faker::Address.us_state} #{i}" }
@@ -344,18 +344,13 @@ Page.blueprint(:unpublished) do
 end
 
 Photo.blueprint do
-  title           { Faker::Lorem.words(3) }
-  flickr_photo_id { (rand(50000000) + 50000000).to_s }
+  title       { Faker::Lorem.words(3) }
+  property    { ApartmentCommunity.make }
+  photo_group { PhotoGroup.make }
 end
 
 PhotoGroup.blueprint do
-  title            { Faker::Lorem.words(3) }
-  flickr_raw_title { Faker::Lorem.words(1) }
-end
-
-PhotoSet.blueprint do
-  title             { Faker::Lorem.words(3) }
-  flickr_set_number { (rand(50000000) + 50000000).to_s }
+  title { Faker::Lorem.words(3) }
 end
 
 PressRelease.blueprint do

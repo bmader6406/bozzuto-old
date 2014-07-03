@@ -46,14 +46,6 @@ class CommunityMediaControllerTest < ActionController::TestCase
         
           mobile_device do
             before do
-              @set = PhotoSet.make_unsaved(:property => @community)
-              @set.stubs(:flickr_set).returns(OpenStruct.new(:title => 'photo set'))
-              @set.save
-
-              @photo = Photo.make :photo_set => @set
-              @photo_group = PhotoGroup.make(:flickr_raw_title => 'mobile')
-              @photo_group.photos << @photo
-              
               get :index, :apartment_community_id => @community.id
             end
 

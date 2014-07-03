@@ -29,14 +29,13 @@ module Bozzuto
       ['Property Contact Page',      lambda {|c| c.contact_page.try(:content)}],
       ['Lasso Account',              :lasso_account],
       ['Floor Plans'  ,              lambda {|c| c.featured_homes.any?(&:floor_plans)}],
-      ['Flickr Photo Set',           :photo_set]
+      ['Photos',                     :photos]
     ]]
 
     def self.community_records
       HomeCommunity.all
     end
     
-
     def self.audit_fields
       AUDIT_FIELDS
     end

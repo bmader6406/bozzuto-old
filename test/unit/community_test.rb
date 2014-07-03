@@ -1,9 +1,6 @@
 require 'test_helper'
-require 'flickr_mocks'
 
 class CommunityTest < ActiveSupport::TestCase
-  include Bozzuto::FlickrMocks
-
   context "A Community" do
     before do
       @community = Community.new
@@ -12,7 +9,7 @@ class CommunityTest < ActiveSupport::TestCase
     subject { @community }
 
     should_belong_to :local_info_feed, :promo, :twitter_account
-    should_have_one :photo_set
+    should_have_many :photos
     should_have_many :videos
     should_have_one :dnr_configuration
     should_have_one :features_page
@@ -20,7 +17,6 @@ class CommunityTest < ActiveSupport::TestCase
     should_have_one :tours_page
     should_have_one :contact_page
     should_have_one :conversion_configuration
-    should_have_many :photos, :through => :photo_set
 
     describe "creating a new record" do
       before { @community = ApartmentCommunity.make_unsaved }
@@ -95,33 +91,6 @@ class CommunityTest < ActiveSupport::TestCase
       context "when there is not a twitter account" do
         it "returns nil" do
           @community.twitter_handle.should == nil
-        end
-      end
-    end
-
-    context "with photo set" do
-      before do
-        @community = ApartmentCommunity.make
-        @set = PhotoSet.make_unsaved(:property => @community)
-        @set.stubs(:flickr_set).returns(OpenStruct.new(:title => 'photo set'))
-        @set.save
-
-        @photo = Photo.make :photo_set => @set
-        @photo_group = PhotoGroup.make
-        @photo_group.photos << @photo
-        @photo_group_not_part_of_community = PhotoGroup.make
-      end
-
-      describe "#photo groups" do
-        it "correctly reports the groups that have photos for this community" do
-          assert_contains @community.photo_groups, @photo_group
-          assert_does_not_contain @community.photo_groups, @photo_group_not_part_of_community
-        end
-      end
-
-      describe "#photo_groups_and_photos" do
-        it "returns photo groups and photos in that groups" do
-          assert_contains @community.photo_groups_and_photos.first.last, @photo
         end
       end
     end
@@ -201,15 +170,9 @@ class CommunityTest < ActiveSupport::TestCase
         end
       end
 
-      context "with a photo set" do
+      context "with a photo" do
         before do
-          @flickr_set1 = FlickrSet.new('123', 'Title')
-          @flickr_user = mock
-          @flickr_user.stubs(:sets).returns([@flickr_set1])
-
-          PhotoSet.stubs(:flickr_user).returns(@flickr_user)
-
-          PhotoSet.make(:property => @community, :flickr_set_number => @flickr_set1.id)
+          Photo.make(:property => @community)
         end
 
         it "returns true" do

@@ -52,7 +52,7 @@ en:
       mini_slideshow: Mini Slideshow
       neighborhood_membership: Neighborhood Membership
       news_post: News
-      photo_set: Flickr Photo Set
+      photo: Photo
       press_release: Press Release
       project_category: Project Category
       project_data_point: Data Point
@@ -269,9 +269,9 @@ en:
         mobile_body: Mobile Body
         mobile_body_extra: Mobile Body (Extra)
         right_montage_image: Right Montage Image
-      photo_set:
-        flickr_set_number: 'Flickr Set ID#'
-        needs_sync: Refresh This Set
+      photo:
+        photo_group: Photo Group
+        thumbnail_tag: ' '
       press_release:
         meta_description: Meta Description
         meta_keywords: Meta Keywords
@@ -486,9 +486,8 @@ en:
         mobile_body_extra: Extra content shown below the Mobile Body
         right_montage_image: Image dimensions should be 310x148
         snippet_id: If present, this snippet will appear at the bottom of the page
-      photo_set:
-        flickr_set_number: It will take up to 2 hours for photos to be synced from Flickr
-        needs_sync: Once checked, it will take up to 2 hours to refresh this set from Flickr
+      photo:
+        image: Image dimensions should be 870x375
       project:
         featured_mobile: Featured mobile projects are shown on the mobile version of the site
       project_update:
