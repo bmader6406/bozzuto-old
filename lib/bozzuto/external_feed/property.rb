@@ -4,7 +4,6 @@ module Bozzuto
       attr_accessor :title,
                     :street_address,
                     :city,
-                    :county,
                     :state,
                     :availability_url,
                     :office_hours,

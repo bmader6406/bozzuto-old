@@ -19,7 +19,6 @@ module Bozzuto::ExternalFeed
             c.title.should             == 'Hunters Glen'
             c.street_address.should    == '14210 Slidell Court'
             c.city.should              == 'Upper Marlboro'
-            c.county.should            == "Prince George's"
             c.state.should             == 'MD'
             c.availability_url.should  == 'http://units.realtydatatrust.com/unittype.aspx?ils=5341&propid=14317'
             c.external_cms_id.should   == '14317'
@@ -73,7 +72,6 @@ module Bozzuto::ExternalFeed
             c.title.should             == 'The Courts of Devon'
             c.street_address.should    == '501 Main Street'
             c.city.should              == 'Gaithersburg'
-            c.county.should            == 'Montgomery'
             c.state.should             == 'MD'
             c.availability_url.should  == 'http://units.realtydatatrust.com/unittype.aspx?ils=5341&propid=16976'
             c.external_cms_id.should   == '16976'

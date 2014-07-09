@@ -12,7 +12,6 @@ module Bozzuto
           :street_address    => string_at(property, './PropertyID/Address/Address1'),
           :city              => string_at(property, './PropertyID/Address/City'),
           :state             => string_at(property, './PropertyID/Address/State'),
-          :county            => string_at(property, './PropertyID/Address/CountyName'),
           :availability_url  => string_at(property, './Information/PropertyAvailabilityURL'),
           :external_cms_id   => string_at(property, './PropertyID/Identification/PrimaryID'),
           :external_cms_type => feed_type.to_s,

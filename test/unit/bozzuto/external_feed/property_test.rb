@@ -8,7 +8,6 @@ module Bozzuto::ExternalFeed
           :title             => 'Title',
           :street_address    => 'Street Address',
           :city              => 'City',
-          :county            => 'County',
           :state             => 'State',
           :availability_url  => 'Availability URL',
           :office_hours      => 'Office Hours',

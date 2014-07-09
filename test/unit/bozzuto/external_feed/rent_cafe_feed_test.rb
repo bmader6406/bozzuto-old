@@ -19,7 +19,6 @@ module Bozzuto::ExternalFeed
             c.title.should             == 'Madox'
             c.street_address.should    == '198 Van Vorst Street'
             c.city.should              == 'Jersey City'
-            c.county.should            == nil
             c.state.should             == 'NJ'
             c.availability_url.should  == 'http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&myOlePropertyId=111537'
             c.external_cms_id.should   == 'p0117760'
@@ -72,7 +71,6 @@ module Bozzuto::ExternalFeed
             c.title.should             == 'The Brownstones at Englewood South'
             c.street_address.should    == '73 Brownstone Way'
             c.city.should              == 'Englewood'
-            c.county.should            == nil
             c.state.should             == 'NJ'
             c.availability_url.should  == 'http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&myOlePropertyId=144341'
             c.external_cms_id.should   == 'p0151017'

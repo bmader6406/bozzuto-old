@@ -215,8 +215,6 @@ module Bozzuto::ExternalFeed
               c.street_address.should    == '14210 Slidell Court'
               c.city.should              == City.find_by_name('Upper Marlboro')
               c.state.should             == State.find_by_code('MD')
-              c.county.should            == County.find_by_name("Prince George's")
-              c.city.counties.should        include(c.county)
               c.availability_url.should  == 'http://units.realtydatatrust.com/unittype.aspx?ils=5341&propid=14317'
               c.external_cms_id.should   == '14317'
               c.external_cms_type.should == 'vaultware'
@@ -268,8 +266,6 @@ module Bozzuto::ExternalFeed
               c.street_address.should    == '501 Main Street'
               c.city.should              == City.find_by_name('Gaithersburg')
               c.state.should             == State.find_by_code('MD')
-              c.county.should            == County.find_by_name('Montgomery')
-              c.city.counties.should        include(c.county)
               c.availability_url.should  == 'http://units.realtydatatrust.com/unittype.aspx?ils=5341&propid=16976'
               c.external_cms_id.should   == '16976'
               c.external_cms_type.should == 'vaultware'
@@ -398,8 +394,6 @@ module Bozzuto::ExternalFeed
                 c.street_address.should    == '501 Main Street'
                 c.city.should              == City.find_by_name('Gaithersburg')
                 c.state.should             == State.find_by_code('MD')
-                c.county.should            == County.find_by_name('Montgomery')
-                c.city.counties.should        include(c.county)
                 c.availability_url.should  == 'http://units.realtydatatrust.com/unittype.aspx?ils=5341&propid=16976'
                 c.external_cms_id.should   == '16976'
                 c.external_cms_type.should == 'vaultware'

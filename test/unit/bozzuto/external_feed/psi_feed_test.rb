@@ -19,7 +19,6 @@ module Bozzuto::ExternalFeed
             c.title.should             == 'Madox'
             c.street_address.should    == '198 Van Vorst St'
             c.city.should              == 'Jersey City'
-            c.county.should            == nil
             c.state.should             == 'NJ'
             c.availability_url.should  == 'http://madox.prospectportal.com/Apartments/module/property_info/property[id]/49989'
             c.external_cms_id.should   == '49989'
@@ -73,7 +72,6 @@ module Bozzuto::ExternalFeed
             c.title.should             == 'Palette at Arts District'
             c.street_address.should    == '5501 45th Ave'
             c.city.should              == 'Hyattsville'
-            c.county.should            == nil
             c.state.should             == 'MD'
             c.availability_url.should  == 'http://paletteatarts.prospectportal.com/Apartments/module/property_info/property[id]/49990'
             c.external_cms_id.should   == '49990'

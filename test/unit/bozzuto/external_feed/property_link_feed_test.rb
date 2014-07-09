@@ -19,7 +19,6 @@ module Bozzuto::ExternalFeed
             c.title.should             == 'Poplar Glen'
             c.street_address.should    == '11608 Little Patuxent Pkwy'
             c.city.should              == 'Columbia'
-            c.county.should            == nil
             c.state.should             == 'MD'
             c.availability_url.should  == ''
             c.external_cms_id.should   == '90681'
@@ -57,7 +56,6 @@ module Bozzuto::ExternalFeed
             c.title.should             == 'Park Place at Van Dorn'
             c.street_address.should    == '6001 Archstone Way'
             c.city.should              == 'Alexandria'
-            c.county.should            == nil
             c.state.should             == 'VA'
             c.availability_url.should  == 'http://www.propertylinkonline.com/Availability/Availability.aspx?c=100155&p=106421&r=0'
             c.external_cms_id.should   == '106421'

@@ -104,7 +104,6 @@ module Bozzuto
         find_or_initialize_property(property_data) do |property|
           property.attributes = property_data.database_attributes
           property.city       = find_or_create_city(property_data.city, property_data.state)
-          property.county     = find_or_create_county(property_data.county, property_data.city, property_data.state)
 
           property.save
         end
@@ -181,23 +180,6 @@ module Bozzuto
         return unless state.present?
 
         state.cities.find_or_create_by_name(city_name)
-      end
-
-      def find_or_create_county(county_name, city_name, state_code)
-        state = find_state(state_code)
-        city  = find_or_create_city(city_name, state_code)
-
-        return unless state.present? && county_name.present?
-
-        # Find or create the county
-        county = state.counties.find_or_create_by_name(county_name)
-
-        # Add the county to the city's list of counties
-        unless city.counties.include?(county)
-          city.counties << county
-        end
-
-        county
       end
     end
   end
