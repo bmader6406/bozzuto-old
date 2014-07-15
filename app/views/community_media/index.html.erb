@@ -2,6 +2,7 @@
 
 <% content_for :javascript do %>
   <%= lasso_tracking_js(@community) %>
+  <%= double_click_community_photos_videos_script(@community) %>
 <% end %>
 
 <%- render_mediaplex_code community_media_mediaplex_code(@community) -%>

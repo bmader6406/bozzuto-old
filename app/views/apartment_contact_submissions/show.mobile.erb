@@ -1,3 +1,7 @@
+<% content_for :javascript do %>
+  <%= double_click_community_request_info_script(@community) %>
+<% end %>
+
 <% render_meta(@page) if @page %>
 
 <div class="section page-title">

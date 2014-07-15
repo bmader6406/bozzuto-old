@@ -1,4 +1,9 @@
+<% content_for :javascript do %>
+  <%= double_click_neighborhood_view_script(metro) %>
+<% end %>
+
 <% neighborhoods_assets %>
+
 <% render_meta(metro) %>
 
 <%= render 'breadcrumb',

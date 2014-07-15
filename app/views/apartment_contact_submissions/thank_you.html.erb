@@ -15,7 +15,6 @@
 </div>
 
 <%= apartment_contact_simplifi_code %>
-<%= double_click_community_thank_you_script(@community) %>
 <%= value_click_apartment_thank_you_code %>
 <%= facebook_apartment_thank_you_code %>
 
@@ -26,6 +25,8 @@
 <% end %>
 
 <%- content_for :javascript do -%>
+  <%= double_click_community_thank_you_script(@community) %>
+
   <!-- Clickable Conversion Tracking -->
   <script type="text/javascript">
     var _cctq = _cctq || [];

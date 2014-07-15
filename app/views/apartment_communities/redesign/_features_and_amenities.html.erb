@@ -1,3 +1,7 @@
+<% content_for :javascript do %>
+  <%= double_click_community_features_amenities_script(community) %>
+<% end %>
+
 <% community.features_page.if_present? do |page| %>
   <!-- Features & Amenities -->
   <div class="cty-section">

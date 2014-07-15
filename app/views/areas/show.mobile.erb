@@ -1,3 +1,11 @@
+<% content_for :javascript do %>
+  <% if filterer.current_filter.try(:amenity) %>
+    <%= double_click_amenities_filter_script(filterer.current_filter.amenity) %>
+  <% else %>
+    <%= double_click_neighborhood_view_script(area) %>
+  <% end %>
+<% end %>
+
 <div class="section page-title">
   <div class="content">
     <h2><%= area %></h2>
