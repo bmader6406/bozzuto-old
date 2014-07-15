@@ -33,11 +33,11 @@ every 1.day, :at => ['5:00 am', '5:00 pm'] do
 end
 
 every 1.day, :at => ['3:00 am'] do
-  rake 'buzzuto:export_contact_list_csvs'
+  rake 'bozzuto:export_contact_list_csvs'
 end
 
 if environment == 'production'
   every 1.day, :at => '9:00 am' do
-    command 'cp /home/vault/bozzutocom.xml /home/bozzuto/'
+    command 'cp /home/bozzuto_feeds/bozzutovwfeed.xml /home/bozzuto/bozzutocom.xml'
   end
 end
