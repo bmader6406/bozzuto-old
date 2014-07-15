@@ -1,3 +1,5 @@
+job_type :rake, "cd :path && RAILS_ENV=:environment bundle exec rake :task :output"
+
 every 1.day, :at => '4:00 am' do
   rake "-s sitemap:refresh"
 end
