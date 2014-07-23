@@ -15,7 +15,7 @@
 
             <p class="fields">
               <%= text_field_tag :email %>
-              <button type="submit">Send</button>
+              <button type="submit" class="fl-record-click" data-cat="ste01" data-prop="<%= @community.title %>">Send</button>
             </p>
           <% end %>
         </div>
@@ -43,7 +43,7 @@
 
             <p class="fields">
               <%= text_field_tag :email %>
-              <button type="submit">Send</button>
+              <button type="submit" class="fl-record-click" data-cat="ste01" data-prop="<%= @community.title %>">Send</button>
             </p>
           <% end %>
         </div>
@@ -61,7 +61,7 @@
           <% end %>
           <p class="fields">
             <%= text_field_tag 'phone_number' %>
-            <button type="submit">Send</button>
+            <button type="submit" class="fl-record-click" data-cat="Sendt0" data-prop="<%= @community.title %>">Send</button>
           </p>
         <% end %>
       </div>

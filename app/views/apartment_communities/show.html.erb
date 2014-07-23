@@ -68,7 +68,12 @@
                   </td>
 
                   <td class="availability">
-                    <%= availability_link(@community, :rel => 'external', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Availability") %>
+                    <%= availability_link(@community,
+                                          :rel               => 'external',
+                                          :class             => 'fl-record-click',
+                                          'data-cat'         => 'va01',
+                                          'data-prop'        => @community.title,
+                                          'data-track-event' => "Apartments,#{ga_escape(@community.title)},Availability") %>
                   </td>
                 </tr>
               <% end %>

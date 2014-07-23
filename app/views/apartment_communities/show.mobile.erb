@@ -55,8 +55,12 @@
 
       <% if @community.availability_url.present? %>
         <li>
-          <% link_to @community.availability_url, :class => 'btn availability', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Availability" do %>
-            <span>Check Availability</span>
+          <% link_to @community.availability_url,
+            :class             => 'btn availability fl-record-click',
+            'data-cat'         => 'va01',
+            'data-prop'        => @community.title,
+            'data-track-event' => "Apartments,#{ga_escape(@community.title)},Availability" do %>
+              <span>Check Availability</span>
           <% end %>
         </li>
       <% end %>

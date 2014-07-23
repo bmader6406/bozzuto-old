@@ -16,7 +16,15 @@ module PropertiesHelper
       end
 
       if url.present?
-        link_to property.brochure_link_text, url, { :rel => 'external' }.merge(opts)
+        link_to(
+          property.brochure_link_text,
+          url,
+          {
+            :rel        => 'external',
+            :class      => 'fl-record-click',
+            'data-cat'  => 'digit734',
+            'data-prop' => property.title }.merge(opts)
+        )
       end
     end
   end

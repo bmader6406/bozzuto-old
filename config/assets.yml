@@ -18,6 +18,7 @@ javascripts:
     - public/javascripts/vendor/jquery.validate.js
     - public/javascripts/vendor/jquery.makecolumnlists.js
     - public/javascripts/plugins/jquery.videoLightbox.js
+    - public/javascripts/plugins/floodlight.js
     - public/javascripts/bozzuto.js
     - public/javascripts/analytics.js
     - public/javascripts/yelp-map.js

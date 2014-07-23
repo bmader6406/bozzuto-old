@@ -159,7 +159,7 @@
           <label for="email">Enter your email address to stay connected.</label>
           <p class="fields grid-row">
             <%= text_field_tag :email, nil, :class => 'in-text' %>
-            <button type="submit">Submit</button>
+            <button type="submit" class="fl-record-click" data-cat="cwu01" data-prop="<%= community.title if defined?(community) %>">Submit</button>
           </p>
         </form>
 

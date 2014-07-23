@@ -1469,5 +1469,6 @@ window.bozzuto = {};
   };
 
   FloorPlan.init();
+  Floodlight.init();
 
 })(jQuery);

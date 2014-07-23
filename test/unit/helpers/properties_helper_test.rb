@@ -52,8 +52,11 @@ class PropertiesHelperTest < ActionView::TestCase
         should 'return a link with the brochure url' do
           link = HTML::Document.new(brochure_link(@property))
           assert_select link.root, 'a',
-            :href => @url,
-            :text => @link_text
+            :href       => @url,
+            :class      => 'fl-record-click',
+            'data-cat'  => 'digit734',
+            'data-prop' => @property.title,
+            :text       => @link_text
         end
       end
 
@@ -68,8 +71,11 @@ class PropertiesHelperTest < ActionView::TestCase
         should 'return a link with the brochure file url' do
           link = HTML::Document.new(brochure_link(@property))
           assert_select link.root, 'a',
-            :href => @file,
-            :text => @link_text
+            :href       => @file,
+            :class      => 'fl-record-click',
+            'data-cat'  => 'digit734',
+            'data-prop' => @property.title,
+            :text       => @link_text
         end
       end
     end
