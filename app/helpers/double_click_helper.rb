@@ -9,8 +9,7 @@ module DoubleClickHelper
       :type        => 'conve135',
       :cat         => 'conta168',
       :description => 'Contact Info Complete',
-      :fixed_ord   => true
-    ).floodlight_tag_script
+      :fixed_ord   => true).floodlight_tag_script
   end
 
   # layouts/_head.html.erb (all pages)
@@ -18,8 +17,7 @@ module DoubleClickHelper
     DoubleClick.new(
       :type        => 'ret01',
       :cat         => 'land01',
-      :description => 'Landing - Retargeting'
-    ).floodlight_tag_script
+      :description => 'Landing - Retargeting').floodlight_tag_script
   end
 
   # apartment_contact_submissions/show.html.erb
@@ -29,8 +27,7 @@ module DoubleClickHelper
       :name        => community.title,
       :type        => 'conve135',
       :cat         => 'reque222',
-      :description => 'Request Info'
-    ).floodlight_tag_script
+      :description => 'Request Info').floodlight_tag_script
   end
 
   # apartment_communities/redesign/_features_and_amenities.html.erb
@@ -39,8 +36,7 @@ module DoubleClickHelper
       :name        => community.title,
       :type        => 'conve135',
       :cat         => 'faa01',
-      :description => 'Features and Amenities'
-    ).floodlight_tag_script
+      :description => 'Features and Amenities').floodlight_tag_script
   end
 
   # community_media/index.html.erb
@@ -49,8 +45,7 @@ module DoubleClickHelper
       :name        => community.title,
       :type        => 'conve135',
       :cat         => 'pav01',
-      :description => 'Photos and Videos'
-    ).floodlight_tag_script
+      :description => 'Photos and Videos').floodlight_tag_script
   end
 
   # apartment_communities/redesign/_floor_plans.html.erb
@@ -59,8 +54,7 @@ module DoubleClickHelper
       :name        => community.title,
       :type        => 'conve135',
       :cat         => 'fp01',
-      :description => 'Floor Plans'
-    ).floodlight_tag_script
+      :description => 'Floor Plans').floodlight_tag_script
   end
 
   # metros/show.html.erb
@@ -77,8 +71,7 @@ module DoubleClickHelper
       :type        => 'conve135',
       :cat         => 'nv01',
       :description => 'Neighborhood View',
-      :image       => true
-    ).floodlight_tag_script
+      :image       => true).floodlight_tag_script
   end
 
   # metros/index.html.erb (Find an Apartment page)
@@ -90,8 +83,7 @@ module DoubleClickHelper
       :name        => type,
       :type        => 'conve135',
       :cat         => 'san01',
-      :description => 'Select a Neighborhood'
-    ).floodlight_tag_script
+      :description => 'Select a Neighborhood').floodlight_tag_script
   end
 
   # When filterer has a current filter..
@@ -105,8 +97,7 @@ module DoubleClickHelper
       :type        => 'conve135',
       :cat         => 'af01',
       :description => 'Amenities Filter',
-      :image       => true
-    ).floodlight_tag_script
+      :image       => true).floodlight_tag_script
   end
 
   # email/recently_viewed/thank_you.html.erb
@@ -117,8 +108,7 @@ module DoubleClickHelper
       :name        => titles,
       :type        => 'conve135',
       :cat         => 'email947',
-      :description => 'Email Results'
-    ).floodlight_tag_script
+      :description => 'Email Results').floodlight_tag_script
   end
 
   def double_click_data_attrs(name, cat)
