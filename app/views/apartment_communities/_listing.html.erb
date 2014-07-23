@@ -38,7 +38,7 @@
             <li>
               <strong><%= group.name %></strong>
 
-							<% group.cheapest_rent.if_present? do |price| %>
+							<% group.cheapest_rent.if_nonzero? do |price| %>
                 from <%= dollars(price) %>
 							<% end %>
             </li>

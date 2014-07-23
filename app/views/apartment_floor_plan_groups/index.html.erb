@@ -49,7 +49,7 @@
                       <%= square_feet(sq_ft) %>
                     <% end %>
 
-                    <% if min_rent.present? && plan.available? %>
+                    <% if min_rent.present? && min_rent.to_i.nonzero? && plan.available?%>
                       | From <%= dollars(min_rent) %>
                     <% end %>
 

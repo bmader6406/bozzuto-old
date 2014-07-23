@@ -8,7 +8,7 @@
           </span>
 
           <span class="nh-fp-table-price">
-            <% group.cheapest_rent.if_present? do |price| %>
+            <% group.cheapest_rent.if_nonzero? do |price| %>
               From <%= dollars(price) %>
             <% end %>
           </span>
