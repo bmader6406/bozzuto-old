@@ -660,7 +660,7 @@ Photo:
   fields:
     default: 
     list: thumbnail_tag, title, photo_group, property
-    form: title, photo_group, property, image
+    form: title, photo_group, property, image, show_to_mobile
     relationship: thumbnail_tag, title, photo_group, position
     options:
       required: title, photo_group, property, image

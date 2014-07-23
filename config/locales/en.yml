@@ -271,6 +271,7 @@ en:
         right_montage_image: Right Montage Image
       photo:
         photo_group: Photo Group
+        show_to_mobile: 'Show on Mobile'
         thumbnail_tag: ' '
       press_release:
         meta_description: Meta Description
@@ -488,6 +489,7 @@ en:
         snippet_id: If present, this snippet will appear at the bottom of the page
       photo:
         image: Image dimensions should be 870x375
+        show_to_mobile: Checking this option will cause this photo to appear on the mobile site.
       project:
         featured_mobile: Featured mobile projects are shown on the mobile version of the site
       project_update:
