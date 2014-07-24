@@ -5,9 +5,9 @@ set :branch,      "origin/production_new"
 
 set :default_environment, { 'PATH' => '/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH' }
 
-role :web, "54.215.75.42"
-role :app, "54.215.75.42"
-role :db,  "54.215.75.42", :primary => true
+role :web, "54.241.3.36"
+role :app, "54.241.3.36"
+role :db,  "54.241.3.36", :primary => true
 
 
 namespace :config do
