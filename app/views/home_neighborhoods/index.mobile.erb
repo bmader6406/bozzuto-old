@@ -1,5 +1,6 @@
 <% content_for :javascript do %>
   <%= double_click_select_a_neighborhood_script('New Home') %>
+  <%= live_person_js %>
 <% end %>
 
 <div class="section page-title">
@@ -13,7 +14,7 @@
     <ul class="browse">
       <% neighborhoods.each do |neighborhood| %>
         <li>
-          <%= link_to "<span>#{neighborhood}</span> (#{neighborhood.home_communities_count})".html_safe, 
+          <%= link_to "<span>#{neighborhood}</span> (#{neighborhood.home_communities_count})".html_safe,
                 home_neighborhood_path(neighborhood), :class => 'btn submit' %>
         </li>
       <% end %>
