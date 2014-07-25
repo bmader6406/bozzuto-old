@@ -34,7 +34,7 @@ module ApartmentCommunitiesHelper
   end
 
   def square_feet(value)
-    if value.present? 
+    if value.present?
       "#{value} Sq Ft"
     else
       ''
@@ -97,7 +97,7 @@ module ApartmentCommunitiesHelper
     text = community.managed_by_rent_cafe? ? 'Apply Now' : 'Availability'
     url  = community.availability_url.presence || apartment_community_contact_path(community)
 
-    link_to(text, url, opts={})
+    link_to(text, url, opts)
   end
 
   def reserve_link(plan, opts = {})
