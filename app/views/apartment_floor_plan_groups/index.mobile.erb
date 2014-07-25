@@ -1,5 +1,9 @@
 <% render_meta(@community, :floor_plans) %>
 
+<% content_for :javascript do %>
+  <%= double_click_community_floor_plans_script(@community) %>
+<% end %>
+
 <div class="section page-title">
   <div class="content">
     <h2>Floor Plans</h2>

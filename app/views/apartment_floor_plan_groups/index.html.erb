@@ -1,6 +1,10 @@
 <% content_for :body_class do %>community property floor-plans<% end %>
 <% render_meta(@community, :floor_plans) %>
 
+<% content_for :javascript do %>
+  <%= double_click_community_floor_plans_script(@community) %>
+<% end %>
+
 <% contact_callout = community_contact_callout(@community) do %>
   <div class="fp-toggle">
     <span class="fp-toggle-label">Floor Plans:</span>

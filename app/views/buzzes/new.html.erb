@@ -61,7 +61,7 @@
     <%= f.text_field :phone %>
     </p>
   </fieldset>
-  
+
   <fieldset>
     <h3>What buzz would you like to hear?</h3>
     <p class="checkboxes">
@@ -96,11 +96,11 @@
   </fieldset>
 
   <p class="submit">
-    <%= submit_tag 'Sign up for Bozzuto Buzz' %>
+    <%= f.submit 'Sign up for Bozzuto Buzz', :class => 'submit fl-record-click', 'data-cat' => 'sufa01', 'data-prop' => 'N/A' %>
   </p>
-  
+
   <div>
     <%= snippet("Bozzuto Buzz Text") %>
   </div>
-    
+
 <% end -%>

@@ -31,6 +31,7 @@ module DoubleClickHelper
   end
 
   # apartment_communities/redesign/_features_and_amenities.html.erb
+  # property_pages/features/show.html.erb
   def double_click_community_features_amenities_script(community)
     Analytics::DoubleClick.new(
       :name        => community.title,
@@ -49,6 +50,8 @@ module DoubleClickHelper
   end
 
   # apartment_communities/redesign/_floor_plans.html.erb
+  # apartment_floor_plan_groups/index.html.erb
+  # apartment_floor_plan_groups/index.mobile.erb
   def double_click_community_floor_plans_script(community)
     Analytics::DoubleClick.new(
       :name        => community.title,
