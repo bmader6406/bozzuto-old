@@ -27,7 +27,7 @@ config.action_view.cache_template_loading            = true
 # Enable threaded mode
 # config.threadsafe!
 
-config.action_controller.asset_host = 'http://54.241.3.36'
+config.action_controller.asset_host = 'http://www.bozzuto.com'
 
 config.action_mailer.default_url_options = {
   :host => 'bozzuto.com'

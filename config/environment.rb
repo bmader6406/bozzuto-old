@@ -66,9 +66,9 @@ Rails::Initializer.run do |config|
          }
   end
 
-  #if Rails.env.production? || Rails.env.test?
-  #  config.middleware.insert_before(Rack::Lock, Bozzuto::WwwRedirector)
-  #end
+  if Rails.env.production? || Rails.env.test?
+    config.middleware.insert_before(Rack::Lock, Bozzuto::WwwRedirector)
+  end
 
   config.middleware.insert_before(Rack::Lock, Bozzuto::MissingImages)
 
