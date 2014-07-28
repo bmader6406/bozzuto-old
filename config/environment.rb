@@ -82,6 +82,8 @@ Rails::Initializer.run do |config|
   end
 
   config.to_prepare do
+    Bozzuto::ExternalFeed::Ftp.username                  = APP_CONFIG[:ftp]['username']
+    Bozzuto::ExternalFeed::Ftp.password                  = APP_CONFIG[:ftp]['password']
     Bozzuto::ExternalFeed::VaultwareFeed.default_file    = APP_CONFIG[:vaultware_feed_file]
     Bozzuto::ExternalFeed::RentCafeFeed.default_file     = APP_CONFIG[:rent_cafe_feed_file]
     Bozzuto::ExternalFeed::PropertyLinkFeed.default_file = APP_CONFIG[:property_link_feed_file]
