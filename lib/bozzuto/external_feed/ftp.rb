@@ -5,29 +5,29 @@ module Bozzuto
     class Ftp
       class_attribute :username, :password
 
-      attr_reader :feed_type, :target_location
-
-      def self.download_file_for(feed_type)
-        new(feed_type).download_file
+      def self.download_files
+        new.download_files
       end
 
-      def initialize(feed_type)
-        @feed_type       = feed_type
-        @target_location = Feed.feed_for_type(feed_type).default_file
-      end
-
-      def download_file
+      def download_files
         Net::FTP.open('feeds.livebozzuto.com') do |ftp|
           ftp.passive = true
           ftp.login(username, password)
-          ftp.getbinaryfile(source_file, target_location)
+
+          Feed.feed_types.each do |type|
+            ftp.getbinaryfile(source_file_for(type), target_location_for(type))
+          end
         end
       end
 
       private
 
-      def source_file
-        feed_type.to_s.gsub('_', '') + '.xml'
+      def source_file_for(feed_type)
+        feed_type.gsub('_', '') + '.xml'
+      end
+
+      def target_location_for(feed_type)
+        Feed.feed_for_type(feed_type).default_file
       end
     end
   end
