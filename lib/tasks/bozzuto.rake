@@ -1,18 +1,12 @@
 namespace :bozzuto do
-  desc 'FTP feeds from Vaultware'
-  task :load_vaultware_feed => :environment do
-    puts 'Loading Vaultware feed ...'
+  desc 'Download property feeds via FTP'
+  task :download_property_feeds => :environment do
+    puts 'Downloading property feeds ...'
 
     begin
-      loader = Bozzuto::ExternalFeed::Loader.loader_for_type(:vaultware)
-
-      if loader.load!
-        puts "Vaultware feed successfully loaded"
-      else
-        puts "Can't load Vaultware feed. Try again later."
-      end
+      Bozzuto::ExternalFeed::Ftp.download_files
     rescue Exception => e
-      puts "Failed to load feed: #{e.message}"
+      puts "Failed to download feeds: #{e.message}"
       HoptoadNotifier.notify(e)
     end
   end
