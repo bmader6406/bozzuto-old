@@ -50,6 +50,8 @@ class ApartmentFloorPlan < ActiveRecord::Base
 
   named_scope :available, :conditions => 'available_units > 0'
 
+  named_scope :with_square_footage, :conditions => 'min_square_feet > 0'
+
 
   def self.with_min_rent
     ordered_by_min_rent.first

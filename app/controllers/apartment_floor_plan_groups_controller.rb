@@ -41,7 +41,7 @@ class ApartmentFloorPlanGroupsController < ApplicationController
     private
 
     def base_scope
-      @community.floor_plans
+      @community.floor_plans.with_square_footage
     end
   end
 end
