@@ -8,7 +8,6 @@ require File.join(File.dirname(__FILE__), 'boot')
 require 'rack-rewrite'
 require 'redirectotron'
 require 'bozzuto/missing_images'
-require 'bozzuto/www_redirector'
 require 'bozzuto/mobile/middleware'
 require 'analytics/millenial_media/middleware'
 require 'analytics/ad_source/middleware'
@@ -64,10 +63,6 @@ Rails::Initializer.run do |config|
          :if => Proc.new { |rack_env|
            rack_env['SERVER_NAME'] =~ /timberlawncrescent\.com$/
          }
-  end
-
-  if Rails.env.production? || Rails.env.test?
-    config.middleware.insert_before(Rack::Lock, Bozzuto::WwwRedirector)
   end
 
   config.middleware.insert_before(Rack::Lock, Bozzuto::MissingImages)
