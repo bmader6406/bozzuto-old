@@ -8,20 +8,17 @@ development:
     username: Bozzkevate
     password: 7iPt9IUb
   sms:
-    username:
-    password:
-    sender:
+    username: mkilmurry
+    password: 120012
+    sender: 39044
   paperclip_command_path: /usr/local/bin
   walkscore_wsid: '0bb8a5be9206e6c08c6cea73863f5e3f' # id for bozzuto.local
+  google_maps_api_key:
   yahoo_boss:
     application_id: xrMMSM7e
     consumer_key: 'dj0yJmk9eU5tWHl4UmdmRnBTJmQ9WVdrOWVISk5UVk5OTjJVbWNHbzlNVFU1TkRneE1USTJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD03NA--'
     consumer_secret: '1fa5c8446e0be7cdd7e87e6e1c816c1e27a0738a'
   yelp_api_key: 'VcEBpYz_2oabrTXqgzFX_Q'
-  sms:
-    username: mkilmurry
-    password: 120012
-    sender: 39044      
   callsource:
     apartment: 1081055
     home: 2891386
@@ -40,16 +37,18 @@ production:
   ftp:
     username: Bozzkevate
     password: 7iPt9IUb
+  sms:
+    username: mkilmurry
+    password: 120012
+    sender: 39044
+  paperclip_command_path: /usr/local/bin
   walkscore_wsid: '0bb8a5be9206e6c08c6cea73863f5e3f' # id for bozzuto.local
+  google_maps_api_key:
   yahoo_boss:
     application_id: xrMMSM7e
     consumer_key: 'dj0yJmk9eU5tWHl4UmdmRnBTJmQ9WVdrOWVISk5UVk5OTjJVbWNHbzlNVFU1TkRneE1USTJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD03NA--'
     consumer_secret: '1fa5c8446e0be7cdd7e87e6e1c816c1e27a0738a'
   yelp_api_key: 'VcEBpYz_2oabrTXqgzFX_Q'
-  sms:
-    username: mkilmurry
-    password: 120012
-    sender: 39044
   callsource:
     apartment: 1081055
     home: 2891386
@@ -69,18 +68,17 @@ test:
     username: Bozzkevate
     password: 7iPt9IUb
   sms:
-    username:
-    password:
-    sender:
+    username: mkilmurry
+    password: 120012
+    sender: 39044
+  paperclip_command_path: /usr/local/bin
   walkscore_wsid: '0bb8a5be9206e6c08c6cea73863f5e3f' # id for bozzuto.local
+  google_maps_api_key:
   yahoo_boss:
     application_id: xrMMSM7e
     consumer_key: 'dj0yJmk9eU5tWHl4UmdmRnBTJmQ9WVdrOWVISk5UVk5OTjJVbWNHbzlNVFU1TkRneE1USTJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD03NA--'
     consumer_secret: '1fa5c8446e0be7cdd7e87e6e1c816c1e27a0738a'
-  sms:
-    username: tester
-    password: 12345
-    sender: 333333
+  yelp_api_key: 'VcEBpYz_2oabrTXqgzFX_Q'
   callsource:
     apartment: 1081055
     home: 2891386
