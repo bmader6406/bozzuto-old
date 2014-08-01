@@ -4,7 +4,7 @@ namespace :bozzuto do
     puts 'Downloading property feeds ...'
 
     begin
-      Bozzuto::ExternalFeed::Ftp.download_files
+      Bozzuto::ExternalFeed::InboundFtp.download_files
     rescue Exception => e
       puts "Failed to download feeds: #{e.message}"
       HoptoadNotifier.notify(e)
@@ -133,7 +133,7 @@ namespace :bozzuto do
     puts 'Sending apartment export via FTP...'
 
     begin
-      Bozzuto::ExternalFeed::Ftp.transfer APP_CONFIG[:apartment_export_file]
+      Bozzuto::ExternalFeed::OutboundFtp.transfer APP_CONFIG[:apartment_export_file]
     rescue Exception => e
       puts "Failed to send apartment export via FTP: #{e.message}"
       HoptoadNotifier.notify(e)
