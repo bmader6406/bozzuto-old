@@ -128,6 +128,18 @@ namespace :bozzuto do
     end
   end
 
+  desc "Send apartment export via FTP"
+  task :send_apartment_export => :environment do
+    puts 'Sending apartment export via FTP...'
+
+    begin
+      Bozzuto::ExternalFeed::Ftp.transfer APP_CONFIG[:apartment_export_file]
+    rescue Exception => e
+      puts "Failed to send apartment export via FTP: #{e.message}"
+      HoptoadNotifier.notify(e)
+    end
+  end
+
   desc "Export contact lists in CSV format (Under Construction Leads + Buzzes)"
   task :export_contact_list_csvs => :environment do
     puts 'Exporting contact lists as CSVs...'

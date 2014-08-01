@@ -36,6 +36,10 @@ every 1.day, :at => ['10:40 am', '2:40 pm'] do
   rake 'bozzuto:export_apartment_feed'
 end
 
+every 1.day, :at => ['11:00 am', '3:00 pm'] do
+  rake 'bozzuto:send_apartment_export'
+end
+
 every 1.day, :at => ['3:00 am'] do
   rake 'bozzuto:export_contact_list_csvs'
 end
