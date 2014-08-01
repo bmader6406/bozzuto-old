@@ -20,19 +20,19 @@ every 1.day, :at => ['10:45 am', '2:45 pm'] do
   rake 'bozzuto:download_property_feeds'
 end
 
-every 1.day, :at => ['9:50 am', '1:50 pm'] do
+every 1.day, :at => ['10:55 am', '2:55 pm'] do
   rake 'bozzuto:load_vaultware_feed'
 end
 
-every 1.day, :at => ['9:55 am', '1:55 pm'] do
+every 1.day, :at => ['11:00 am', '3:00 pm'] do
   rake 'bozzuto:load_property_link_feed'
 end
 
-every 1.day, :at => ['10:00 am', '2:00 pm'] do
+every 1.day, :at => ['11:05 am', '3:05 pm'] do
   rake 'bozzuto:load_rent_cafe_feed'
 end
 
-every 1.day, :at => ['10:05 am', '2:05 pm'] do
+every 1.day, :at => ['11:10 am', '3:10 pm'] do
   rake 'bozzuto:load_psi_feed'
 end
 
