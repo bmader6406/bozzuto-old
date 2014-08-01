@@ -12,6 +12,10 @@ every 1.day, :at => '7:00 am' do
   rake 'bozzuto:refresh_local_info_feeds'
 end
 
+every 1.day, :at => ['10:35 am', '2:35 pm'] do
+  rake 'bozzuto:export_apartment_feed'
+end
+
 every 1.day, :at => ['10:45 am', '2:45 pm'] do
   rake 'bozzuto:download_property_feeds'
 end
@@ -30,10 +34,6 @@ end
 
 every 1.day, :at => ['10:05 am', '2:05 pm'] do
   rake 'bozzuto:load_psi_feed'
-end
-
-every 1.day, :at => ['5:00 am', '5:00 pm'] do
-  rake 'bozzuto:export_apartment_feed'
 end
 
 every 1.day, :at => ['3:00 am'] do
