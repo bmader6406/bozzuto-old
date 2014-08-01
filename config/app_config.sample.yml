@@ -5,8 +5,12 @@ development:
   psi_feed_file: /path/to/psi/feed/psi.xml
   apartment_export_file: /path/to/apartment_export_file.xml
   ftp:
-    username: Bozzkevate
-    password: 7iPt9IUb
+    inbound:
+      username: Bozzkevate
+      password: 7iPt9IUb
+    outbound:
+      username: bozzutofc
+      password: 6zxXRETm
   sms:
     username: mkilmurry
     password: 120012
@@ -35,8 +39,12 @@ production:
   psi_feed_file: /path/to/psi/feed/psi.xml
   apartment_export_file: /path/to/apartment_export_file.xml
   ftp:
-    username: Bozzkevate
-    password: 7iPt9IUb
+    inbound:
+      username: Bozzkevate
+      password: 7iPt9IUb
+    outbound:
+      username: bozzutofc
+      password: 6zxXRETm
   sms:
     username: mkilmurry
     password: 120012
@@ -65,8 +73,12 @@ test:
   psi_feed_file: /path/to/psi/feed/psi.xml
   apartment_export_file: /path/to/apartment_export_file.xml
   ftp:
-    username: Bozzkevate
-    password: 7iPt9IUb
+    inbound:
+      username: Bozzkevate
+      password: 7iPt9IUb
+    outbound:
+      username: bozzutofc
+      password: 6zxXRETm
   sms:
     username: mkilmurry
     password: 120012
