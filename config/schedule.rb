@@ -12,7 +12,7 @@ every 1.day, :at => '7:00 am' do
   rake 'bozzuto:refresh_local_info_feeds'
 end
 
-every 1.day, :at => ['2:45 am', '10:45 am'] do
+every 1.day, :at => ['10:45 am', '2:45 pm'] do
   rake 'bozzuto:download_property_feeds'
 end
 
