@@ -5,7 +5,7 @@
 
 <h2>Latest Press Releases</h2>
 
-<% if params[:page].nil? || params[:page] == 1 %>
+<% if page_number == 1 %>
   <%= render :partial => 'shared/news_contact_info' %>
 <% end %>
 

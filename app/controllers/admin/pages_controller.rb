@@ -21,7 +21,7 @@ class Admin::PagesController < Admin::MasterController
       Page::Archive.find(:all, :limit => per_page, :offset => offset, :order => 'title ASC')
     end
 
-    @items = @pager.page(params[:page])
+    @items = @pager.page(page_number)
     
     respond_to do |format|
       format.html

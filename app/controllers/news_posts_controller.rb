@@ -16,7 +16,7 @@ class NewsPostsController < SectionContentController
   private
 
   def find_posts
-    @news_posts = section_news_posts.paginate(:page => params[:page])
+    @news_posts = section_news_posts.paginate(:page => page_number)
   end
 
   def find_post

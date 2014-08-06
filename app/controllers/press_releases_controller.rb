@@ -2,7 +2,7 @@ class PressReleasesController < SectionContentController
   before_filter :find_section
 
   def index
-    @press_releases = section_press_releases.paginate(:page => params[:page])
+    @press_releases = section_press_releases.paginate(:page => page_number)
   end
 
   def show

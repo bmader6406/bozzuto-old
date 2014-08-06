@@ -12,7 +12,7 @@ class AwardsController < SectionContentController
   private
 
   def find_awards
-    @awards = section_awards.paginate(:page => params[:page])
+    @awards = section_awards.paginate(:page => page_number)
   end
 
   def find_award

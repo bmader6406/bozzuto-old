@@ -15,7 +15,7 @@ class Admin::ApartmentCommunitiesController < Admin::MasterController
       }
     end
 
-    @items = @pager.page(params[:page])
+    @items = @pager.page(page_number)
 
     respond_to do |format|
       format.html
@@ -34,7 +34,7 @@ class Admin::ApartmentCommunitiesController < Admin::MasterController
       duplicates.all(:limit => per_page, :offset => offset)
     end
 
-    @items = @pager.page(params[:page])
+    @items = @pager.page(page_number)
 
     respond_to do |format|
       format.html

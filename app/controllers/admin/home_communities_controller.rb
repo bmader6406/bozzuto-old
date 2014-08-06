@@ -11,7 +11,7 @@ class Admin::HomeCommunitiesController < Admin::MasterController
       }
     end
 
-    @items = @pager.page(params[:page])
+    @items = @pager.page(page_number)
     
     respond_to do |format|
       format.html

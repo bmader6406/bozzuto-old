@@ -8,7 +8,7 @@ class HomeCommunitiesController < SectionContentController
   layout :detect_mobile_layout
   
   def index
-    @communities = @communities.paginate(:page => params[:page])
+    @communities = @communities.paginate(:page => page_number)
 
     respond_to do |format|
       format.html { render :action => :index, :layout => 'application' }

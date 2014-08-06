@@ -49,6 +49,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :about_root_pages
 
+  def page_number
+    [1, params[:page].to_i].max
+  end
+  helper_method :page_number
+
   def states
     @states ||= State.ordered_by_name
   end

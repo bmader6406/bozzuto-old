@@ -2,6 +2,48 @@ require 'test_helper'
 
 class ApplicationControllerTest < ActionController::TestCase
   context "ApplicationController" do
+    describe "#page_number" do
+      context "params[:page] is nil" do
+        before do
+          @controller.stubs(:params => {})
+        end
+
+        it "returns 1" do
+          @controller.send(:page_number).should == 1
+        end
+      end
+
+      context "params[:page] is a rando string" do
+        before do
+          @controller.stubs(:params => { :page => 'blah blah blah' })
+        end
+
+        it "returns 1" do
+          @controller.send(:page_number).should == 1
+        end
+      end
+
+      context "params[:page] is 0" do
+        before do
+          @controller.stubs(:params => { :page => '' })
+        end
+
+        it "returns 1" do
+          @controller.send(:page_number).should == 1
+        end
+      end
+
+      context "params[:page] is a valid number" do
+        before do
+          @controller.stubs(:params => { :page => '123' })
+        end
+
+        it "returns the number" do
+          @controller.send(:page_number).should == 123
+        end
+      end
+    end
+
     context '#states helper method' do
       setup do
         5.times { State.make }
