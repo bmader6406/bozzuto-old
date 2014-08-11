@@ -112,8 +112,6 @@ namespace :bozzuto do
 
   desc "Export apartment data to a feed"
   task :export_apartment_feed => :environment do
-    return unless Rails.env.production?
-
     puts 'Exporting Apartment data ...'
 
     begin
