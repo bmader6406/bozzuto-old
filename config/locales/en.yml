@@ -77,6 +77,7 @@ en:
         floor_plans_meta_description: Floor Plans SEO Description
         floor_plans_meta_keywords: Floor Plans SEO Keywords
         floor_plans_meta_title: Floor Plans SEO Title
+        included_in_export: Included in Apartment Export
         neighborhood_description: Neighborhoods Listing Description
         neighborhood_listing_image: Neighborhoods Listing Image
         resident_link_text: Resident Link Text
