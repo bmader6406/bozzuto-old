@@ -21,6 +21,9 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
     should_have_apartment_floor_plan_cache
 
+    should_allow_values_for     :included_in_export, true, false
+    should_not_allow_values_for :included_in_export, nil
+
     describe "updating caches" do
       before do
         @community    = ApartmentCommunity.make(:published => true)
