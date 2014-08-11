@@ -93,7 +93,7 @@ module Bozzuto
           :city      => city
         )
 
-        @unpublished = ApartmentCommunity.make(:unpublished, :city => city)
+        @excluded = ApartmentCommunity.make(:excluded_from_export, :city => city)
 
         PropertyNeighborhoodPage.make({
           :property => @community,
@@ -104,8 +104,8 @@ module Bozzuto
         @first_export = @exporter.data[:properties].first
       end
 
-      should "only include published properties" do
-        assert !@exporter.data[:properties].any? { |p| p[:community_name] == @unpublished.title }
+      should "only include properties flagged for inclusion in the export" do
+        assert @exporter.data[:properties].none? { |p| p[:community_name] == @excluded.title }
       end
 
       should "contain Community Name" do
@@ -449,7 +449,7 @@ module Bozzuto
         end
 
         should "contain title" do
-          assert_equal 'I R Close', @nearby_community[:title]
+          assert_equal 'Koepp Group', @nearby_community[:title]
         end
       end
 

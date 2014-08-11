@@ -56,6 +56,9 @@ class ApartmentCommunity < Community
 
   validates_presence_of :lead_2_lease_email, :if => lambda { |community| community.show_lead_2_lease }
 
+  validates_inclusion_of :included_in_export, :in => [true, false]
+
+  named_scope :included_in_export, :conditions => { :included_in_export => true }
 
   named_scope :with_floor_plan_groups, lambda { |ids|
     {:conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE floor_plan_group_id IN (?))", Array(ids)]}

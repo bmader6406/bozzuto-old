@@ -36,15 +36,20 @@ AdSource.blueprint do
 end
 
 ApartmentCommunity.blueprint do
-  title             { Sham.company_name }
-  subtitle          { Faker::Company.catch_phrase }
-  published         { true }
-  phone_number      { Faker::PhoneNumber.phone_number }
+  title              { Sham.company_name }
+  subtitle           { Faker::Company.catch_phrase }
+  published          { true }
+  included_in_export { true }
+  phone_number       { Faker::PhoneNumber.phone_number }
   city
 end
 
 ApartmentCommunity.blueprint(:unpublished) do
   published { false }
+end
+
+ApartmentCommunity.blueprint(:excluded_from_export) do
+  included_in_export { false }
 end
 
 ApartmentCommunity.blueprint(:vaultware) do
