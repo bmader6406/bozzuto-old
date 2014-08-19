@@ -3,6 +3,7 @@
 <% content_for :javascript do %>
   <%= lasso_tracking_js(@community) %>
   <%= lasso_contact_js(@community) %>
+  <%= double_click_community_request_info_script(@community) %>
 <% end %>
 
 <%- render_mediaplex_code community_contact_mediaplex_code(@community) -%>
@@ -18,5 +19,5 @@
 <% end %>
 
 <div id="community-contact-text">
-  <%= @page.content.try(:html_safe) if @page %>  
+  <%= @page.content.try(:html_safe) if @page %>
 </div>

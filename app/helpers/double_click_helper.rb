@@ -22,6 +22,8 @@ module DoubleClickHelper
 
   # apartment_contact_submissions/show.html.erb
   # apartment_contact_submissions/show.mobile.erb
+  # lasso_submissions/show.html.erb
+  # lasso_submissions/show.mobile.erb
   def double_click_community_request_info_script(community)
     Analytics::DoubleClick.new(
       :name        => community.title,
@@ -52,6 +54,8 @@ module DoubleClickHelper
   # apartment_communities/redesign/_floor_plans.html.erb
   # apartment_floor_plan_groups/index.html.erb
   # apartment_floor_plan_groups/index.mobile.erb
+  # homes/index.html.erb
+  # homes/index.mobile.erb
   def double_click_community_floor_plans_script(community)
     Analytics::DoubleClick.new(
       :name        => community.title,
@@ -68,9 +72,11 @@ module DoubleClickHelper
   # neighborhoods/show.mobile.erb (when no amenities filter)
   # home_neighborhoods/show.html.erb
   # home_neighborhoods/show.mobile.erb
+  # property_pages/neighborhoods/show.html.erb
+  # property_pages/neighborhoods/show.mobile.erb
   def double_click_neighborhood_view_script(neighborhood)
     Analytics::DoubleClick.new(
-      :name        => neighborhood.name,
+      :name        => neighborhood.respond_to?(:name) ? neighborhood.name : neighborhood.title,
       :type        => 'conve135',
       :cat         => 'nv01',
       :description => 'Neighborhood View',
