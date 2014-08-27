@@ -4,11 +4,7 @@ class RedirectRulesTest < ActiveSupport::TestCase
   context "RedirectRules" do
     describe ".list" do
       it "returns an array of redirect rules" do
-        all_rules = RedirectRules.list.all? do |rule|
-          rule.is_a? RedirectRules::Rule
-        end
-
-        assert all_rules
+        RedirectRules.list.all? { |rule| rule.is_a? RedirectRules::Rule }.should == true
       end
     end
 
@@ -19,34 +15,33 @@ class RedirectRulesTest < ActiveSupport::TestCase
 
       describe "#url_regex" do
         it "returns the url regex" do
-          assert_equal @subject.url_regex, 'regex'
+          @subject.url_regex.should == 'regex'
         end
       end
 
       describe "#redirect_url" do
         it "returns the redirect url" do
-          assert_equal @subject.redirect_url, 'url'
+          @subject.redirect_url.should == 'url'
         end
       end
 
       describe "#condition" do
         it "returns the condition" do
-          assert_equal @subject.condition, 'condition'
+          @subject.condition.should == 'condition'
         end
       end
 
       describe "#to_a" do
         context "when condition is present" do
           it "returns an array containing the url regex, redirect url, and condition" do
-            assert_equal @subject.to_a, ['regex', 'url', 'condition']
+            @subject.to_a.should == ['regex', 'url', 'condition']
           end
         end
 
         context "when condition is not present" do
           it "returns an array containing the url regex and redirect url" do
             @subject.condition = nil
-
-            assert_equal @subject.to_a, ['regex', 'url']
+            @subject.to_a.should == ['regex', 'url']
           end
         end
       end
