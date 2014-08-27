@@ -7,6 +7,7 @@ RAILS_GEM_VERSION = '2.3.17' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 require 'rack-rewrite'
 require 'redirectotron'
+require 'redirect_rules'
 require 'bozzuto/missing_images'
 require 'bozzuto/mobile/middleware'
 require 'analytics/millenial_media/middleware'
@@ -22,47 +23,7 @@ Rails::Initializer.run do |config|
   config.active_record.observers = :apartment_floor_plan_observer
 
   config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
-    r301 %r{^/cs/bozzuto_homes/housing_for_all/?},       '/about-us/housing-for-all'
-    r301 %r{^/cs/root/corporate/rent_a_home/overview/?}, '/apartments'
-    r301 %r{^/cs/root/corporate/homes/?},                '/new-homes'
-    r301 %r{^/cs/_corporate/about_us/housing_for_all/?}, '/about-us/housing-for-all'
-    r301 %r{^/cs/_corporate/about_us/?},                 '/about-us'
-    r301 %r{^/cs/_corporate/acquisitions/?},             '/services/acquisitions'
-    r301 %r{^/cs/_corporate/construction/?},             '/services/construction'
-    r301 %r{^/cs/root/corporate/development/?},          '/services/development'
-    r301 %r{^/cs/bozzuto_homes/?},                       '/services/homebuilding'
-    r301 %r{^/cs/land/land_home/?},                      '/services/land'
-    r301 %r{^/cs/root/corporate/management/?},           '/services/management'
-    r301 %r{^/cs/root/corporate/contact_us/?},           '/about-us/contact'
-    r301 %r{^/cs/corporate/aboutus/housing_for_all/?},   '/about-us/housing-for-all'
-    r301 %r{^/cs/BozzutoElite/?},                        '/apartments/bozzuto-elite'
-    r301 %r{^/cs/BozzutoSmartRent/?},                    '/apartments/smartrent'
-    r301 %r{^/cs/root/corporate/rent_a_home/awards/?},   '/about-us/awards'
-    r301 %r{^/cs/root/corporate/rent_a_home/news/?},     '/about-us/news'
-    r301 %r{^/cs/root/corporate/careers/?},              '/careers'
-    r301 %r{^/cs/search_properties/?},                   '/apartments/communities'
-    r301 %r{^/property/?},                               '/apartments'
-    r301 %r{^/smartrent/?},                              '/apartments/smartrent'
-    r301 %r{^/about-us/careers(.*)},                     '/careers$1'
-    r301 %r{^/regions/arlington-va-washington-dc/?},     '/regions/arlington-apartments'
-    r301 %r{^/regions/bethesda-rockville-apartments/?},  '/regions/bethesda-apartments'
-    r301 %r{^/regions/new-york-apartments/?},            '/regions/new-york-city-apartments'
-    r301 %r{^/regions/dc-metro-apartments/?},            '/regions/washington-dc-apartments'
-    r301 %r{^/regions/dc-nw-apartments/?},               '/regions/washington-dc-apartments'
-    r301 %r{^/regions/washington-dc-ne-se-apartments/?}, '/regions/washington-dc-apartments'
-    r301 %r{^/regions/washington-dc-apartments/?},       '/apartments/communities/washington-dc-metro'
-
-    r301 %r{.*},
-         'http://www.bozzuto.com/apartments/communities/35-strathmore-court-at-white-flint',
-         :if => Proc.new { |rack_env|
-           rack_env['SERVER_NAME'] =~ /strathmorecourtapts\.com$/
-         }
-
-    r301 %r{.*},
-         'http://www.bozzuto.com/apartments/communities/213-timberlawn-crescent',
-         :if => Proc.new { |rack_env|
-           rack_env['SERVER_NAME'] =~ /timberlawncrescent\.com$/
-         }
+    RedirectRules.each { |rule| r301 *rule }
   end
 
   config.middleware.insert_before(Rack::Lock, Bozzuto::MissingImages)
