@@ -361,7 +361,7 @@ HomeCommunity:
       selectors: brochure_type
       destroy_related: ConversionConfiguration, PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyToursPage, PropertyContactPage, LassoAccount, PropertySlideshow, PropertyMiniSlideshow, Home, Video
   order_by: title
-  relationships: dnr_configuration, conversion_configuration, property_features, city, county, features_page, neighborhood_page, tours_page, contact_page, lasso_account, slideshow, videos, homes, local_info_feed, promo, green_package
+  relationships: dnr_configuration, conversion_configuration, property_features, city, county, features_page, neighborhood_page, tours_page, contact_page, lasso_account, photos, slideshow, videos, homes, local_info_feed, promo, green_package
   filters:
   search: title
   application: Properties
