@@ -8,6 +8,7 @@
   <div id="community-contact-form">
     <form method="post" id="lasso-form" class="required-form" action="http://www.mylasso.com/registrant_signup.php">
       <%= lasso_hidden_fields(@community) %>
+      <%= secondary_lead_source(@community) %>
 
       <%= text_field_tag 'FirstName', nil, :placeholder => '* Your First Name' %>
       <%= text_field_tag 'LastName', nil, :placeholder => '* Your Last Name' %>

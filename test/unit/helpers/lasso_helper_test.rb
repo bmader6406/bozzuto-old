@@ -62,6 +62,17 @@ class LassoHelperTest < ActionView::TestCase
       end
     end
 
+    describe "#secondary_lead_source" do
+      setup do
+        @community.update_attributes(:secondary_lead_source_id => '12345')
+        @html = HTML::Document.new(secondary_lead_source(@community))
+      end
+
+      it "returns a hidden input tag with the appropriate information" do
+        assert_select @html.root, "input[name=12345]", :value => 'www.bozzuto.com'
+      end
+    end
+
     context '#lasso_contact_js' do
       should 'return the contact code' do
         js = lasso_contact_js(@community)

@@ -44,6 +44,12 @@ module LassoHelper
     end
   end
 
+  def secondary_lead_source(community)
+    if community.secondary_lead_source_id.present?
+      hidden_field_tag(community.secondary_lead_source_id, 'www.bozzuto.com').html_safe
+    end
+  end
+
   def lasso_contact_js(community)
     return unless community.respond_to?(:lasso_account) && community.lasso_account.present?
 
