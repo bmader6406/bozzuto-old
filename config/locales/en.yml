@@ -178,6 +178,7 @@ en:
         neighborhood_description: Neighborhoods Listing Description
         neighborhood_listing_image: Neighborhoods Listing Image
         contact_mediamind_id: MediaMind Activity ID for &ldquo;Contact&rdquo; Page
+        secondary_lead_source_id: Secondary Source Lead ID
         send_to_friend_mediamind_id: MediaMind Activity ID for &ldquo;Send to Friend&rdquo; Thank You Page
         send_to_phone_mediamind_id: MediaMind Activity ID for &ldquo;Send to Phone&rdquo; Thank You Page
         show_rtrk_code: Show RTRK Tracking Code
@@ -442,6 +443,7 @@ en:
         listing_promo: Image dimensions should be 151x54
         neighborhood_description: This text will be shown on Neighborhoods listing pages.
         neighborhood_listing_image: This image will be shown on Neighborhoods listing pages. Image dimensions should be 300x234.
+        secondary_lead_source_id: This populates the 'name' attribute in a hidden input field on a home community's contact form.
         video_url: This URL is by the "Watch Video" link when many home communities are shown on one page e.g. on <a href="http://www.bozzuto.com/new-homes/communities">this page</a>. To change the "Watch Video" buttons that appear on the slides on the main listing page, edit the "Slideshow" further down this page.
       home_neighborhood:
         banner_image: 'Image dimensions should be 1020x325'

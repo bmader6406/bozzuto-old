@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140811141030) do
+ActiveRecord::Schema.define(:version => 20140827170904) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -211,6 +211,7 @@ ActiveRecord::Schema.define(:version => 20140811141030) do
     t.text     "neighborhood_description"
     t.string   "neighborhood_listing_image_file_name"
     t.boolean  "included_in_export",                   :default => false, :null => false
+    t.integer  "secondary_lead_source_id"
   end
 
   add_index "archived_properties", ["id"], :name => "index_archived_properties_on_id"
@@ -994,6 +995,7 @@ ActiveRecord::Schema.define(:version => 20140811141030) do
     t.text     "neighborhood_description"
     t.string   "neighborhood_listing_image_file_name"
     t.boolean  "included_in_export",                   :default => false, :null => false
+    t.integer  "secondary_lead_source_id"
   end
 
   add_index "properties", ["external_cms_id", "external_cms_type"], :name => "index_properties_on_external_cms_id_and_external_cms_type"
