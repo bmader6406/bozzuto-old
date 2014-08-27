@@ -23,7 +23,7 @@ Rails::Initializer.run do |config|
   config.active_record.observers = :apartment_floor_plan_observer
 
   config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
-    RedirectRules.each { |rule| r301 *rule }
+    RedirectRules.list.each { |rule| r301 *rule }
   end
 
   config.middleware.insert_before(Rack::Lock, Bozzuto::MissingImages)
