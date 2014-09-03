@@ -6,8 +6,8 @@ class ContactSubmissionsHelperTest < ActionView::TestCase
   context 'ContactSubmissionsHlper' do
     context '#corporate_office_map_uri' do
       setup do
-        @lat = 38.999647
-        @lon = -76.89595
+        @lat = 39.0089301
+        @lon = -76.8952471
       end
 
       context 'on an iPhone' do

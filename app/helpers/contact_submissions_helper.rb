@@ -1,7 +1,7 @@
 module ContactSubmissionsHelper
   def corporate_office_map_uri
-    lat = 38.999647
-    lon = -76.89595
+    lat = 39.0089301
+    lon = -76.8952471
 
     case device
     when :android

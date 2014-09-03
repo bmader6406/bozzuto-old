@@ -41,12 +41,9 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
         should_render_template :show
 
         should 'render the KML XML' do
-          assert_match /<name>Bozzuto Corporate Office<\/name>/,
-            @response.body
-          assert_match /<description>7850 Walker Dr\., Suite 400, Greenbelt, MD 20770<\/description>/,
-            @response.body
-          assert_match /<coordinates>38.999647,-76.89595,0<\/coordinates>/,
-            @response.body
+          @response.body.should =~ %r{<name>Bozzuto Corporate Office</name>}
+          @response.body.should =~ %r{<description>6406 Ivy Lane, Suite 700, Greenbelt, MD 20770</description>}
+          @response.body.should =~ %r{<coordinates>39.0089301,-76.8952471,0</coordinates>}
         end
       end
     end
