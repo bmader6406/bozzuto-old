@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include OverriddenPathsHelper
+  include Bozzuto::SslRequirement
   include Bozzuto::Mobile::Controller
   include Analytics::AdSource::Controller
   include Analytics::MillenialMedia::Controller
