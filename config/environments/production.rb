@@ -28,7 +28,9 @@ config.action_view.cache_template_loading            = true
 # config.threadsafe!
 
 config.action_controller.asset_host = proc { |source, request|
-  "#{request.protocol}www.bozzuto.com"
+  protocol = request ? request.protocol : 'http://'
+
+  "#{protocol}www.bozzuto.com"
 }
 
 config.action_mailer.default_url_options = {
