@@ -29,7 +29,7 @@ class HomePagesController < ApplicationController
     #:nocov:
       base_scope = Award.published
 
-      featured   = base_scope.featured.latest(1).first
+      featured   = base_scope.featured.latest(2).all
       unfeatured = base_scope.not_featured.latest(2).all
 
       [featured, unfeatured].compact.flatten.take(2)
