@@ -161,6 +161,11 @@ class RedirectRules
       ),
 
       Rule.new(
+        %r{^/apartments/communities/new-york-city-metro/west-hempstead?},
+        '/apartments/communities/new-york-city-metro/long-island/west-hempstead#.VBHocaPRKkw'
+      ),
+
+      Rule.new(
         %r{.*},
         'http://www.bozzuto.com/apartments/communities/35-strathmore-court-at-white-flint',
         :if => Proc.new { |rack_env| rack_env['SERVER_NAME'] =~ /strathmorecourtapts\.com$/ }
