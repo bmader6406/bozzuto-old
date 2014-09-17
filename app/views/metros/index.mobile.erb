@@ -17,7 +17,7 @@
       </div>
     <%- end -%>
 
-    <% form_tag community_search_path, :method => :get do %>
+    <%= form_tag community_search_path, :method => :get do %>
       <%= text_field_tag 'q', params[:q], :class => 'search-zip',
             :placeholder => 'Enter City, Zip, or Community Name' %>
 

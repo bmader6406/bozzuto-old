@@ -6,17 +6,19 @@ class LandingPageTest < ActiveSupport::TestCase
 
     subject { @page }
 
-    should_have_and_belong_to_many :apartment_communities,
-      :featured_apartment_communities,
-      :home_communities,
-      :projects
-    should_belong_to :state, :promo
-    should_have_many :popular_property_orderings
-    should_have_many :popular_properties, :through => :popular_property_orderings
+    should have_and_belong_to_many(:apartment_communities)
+    should have_and_belong_to_many(:featured_apartment_communities)
+    should have_and_belong_to_many(:home_communities)
+    should have_and_belong_to_many(:projects)
+    should belong_to(:state)
+    should belong_to(:promo)
+    should have_many(:popular_property_orderings)
+    should have_many(:popular_properties).through(:popular_property_orderings)
 
-    should_validate_presence_of :title, :state
-    should_validate_uniqueness_of :title
-    should_have_attached_file :masthead_image
+    should validate_presence_of(:title)
+    should validate_presence_of(:state)
+    should validate_uniqueness_of(:title)
+    should have_attached_file(:masthead_image)
 
     context 'with some popular properties' do
       setup do

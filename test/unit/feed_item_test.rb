@@ -2,13 +2,13 @@ require 'test_helper'
 
 class FeedItemTest < ActiveSupport::TestCase
   context 'FeedItem' do
-    should_belong_to :feed
+    should belong_to(:feed)
 
-    should_validate_presence_of :title,
-      :url,
-      :description,
-      :published_at,
-      :feed
+    should validate_presence_of(:title)
+    should validate_presence_of(:url)
+    should validate_presence_of(:description)
+    should validate_presence_of(:published_at)
+    should validate_presence_of(:feed)
 
     should 'order from newest to oldest by default' do
       @feed = Feed.make_unsaved

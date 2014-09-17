@@ -20,7 +20,7 @@ class Property < ActiveRecord::Base
     :use_slug => true,
     :scope => :type
 
-  acts_as_archive :indexes => [:id]
+  #acts_as_archive :indexes => [:id]
 
   serialize :office_hours
 
@@ -46,27 +46,29 @@ class Property < ActiveRecord::Base
   has_attached_file :brochure,
     :url => '/system/:class/:id/brochure.:extension'
 
-  named_scope :near, lambda { |loc|
-    {}.tap do |opts|
-      opts[:origin]     = loc
-      opts[:conditions] = ['id != ?', loc.id] if loc.is_a?(Property)
-      opts[:order]      = 'distance ASC'
-    end
-  }
+  scope :mappable, :conditions => ['latitude IS NOT NULL AND longitude IS NOT NULL']
 
-  named_scope :mappable, :conditions => ['latitude IS NOT NULL AND longitude IS NOT NULL']
-
-  named_scope :in_state, lambda { |state_id|
+  scope :in_state, lambda { |state_id|
     {:conditions => ['city_id IN (SELECT id FROM cities WHERE cities.state_id = ?)', state_id]}
   }
 
-  named_scope :ordered_by_title, :order => 'properties.title ASC'
+  scope :ordered_by_title, :order => 'properties.title ASC'
 
-  named_scope :duplicates,
+  scope :duplicates,
     :joins      => 'INNER JOIN properties AS other ON properties.title SOUNDS LIKE other.title',
     :conditions => 'properties.id != other.id AND properties.type = other.type',
     :order      => 'title ASC'
 
+
+  def self.near(origin)
+    scoped = by_distance(:origin => origin)
+
+    if origin.is_a?(Property)
+      scoped = scoped.where(['id != ?', origin.id])
+    end
+
+    scoped
+  end
 
   def as_jmapping
     super.merge(:name => Rack::Utils.escape_html(title))

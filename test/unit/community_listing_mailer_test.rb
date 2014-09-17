@@ -1,155 +1,165 @@
 require 'test_helper'
 
 class CommunityListingMailerTest < ActionMailer::TestCase
-  include ActionController::UrlWriter
+  include Rails.application.routes.url_helpers
   default_url_options[:host] = 'bozzuto.com'
 
   context "CommunityListingMailer" do
-
-    context "#single_listing" do
+    describe "#single_listing" do
       [ApartmentCommunity, HomeCommunity].each do |klass|
-        context "with a #{klass.human_name}" do
-          setup do
+        context "with a #{klass.model_name.human}" do
+          before do
             @to        = Faker::Internet.email
             @community = klass.make
 
-            assert_difference('ActionMailer::Base.deliveries.count', 1) do
-              @email = CommunityListingMailer.deliver_single_listing(@to, @community)
-            end
+            expect {
+              @email = CommunityListingMailer.single_listing(@to, @community).deliver
+            }.to change { ActionMailer::Base.deliveries.count }.by(1)
           end
 
-          should "set the reply to header" do
-            assert_equal [BOZZUTO_REPLY_TO], @email.reply_to
+          it "sets the from address" do
+            @email.from.should == [BOZZUTO_EMAIL_ADDRESS]
           end
 
-          should "deliver the message" do
-            assert_equal [@to], @email.to
+          it "sets the reply to header" do
+            @email.reply_to.should == [BOZZUTO_REPLY_TO]
           end
 
-          should "have the community title as subject" do
-            assert_equal @community.title, @email.subject
+          it "delivers the message" do
+            @email.to.should == [@to]
           end
 
-          should "have a link to the community in the body" do
-            assert_match /\/communities\/#{@community.to_param}/, @email.body
+          it "has the community title as subject" do
+            @email.subject.should == @community.title
+          end
+
+          it "has a link to the community in the body" do
+            @email.body.should =~ %r{/communities/#{@community.to_param}}
           end
         end
       end
     end
 
 
-    context '#recently_viewed_listings' do
-      setup do
+    describe '#recently_viewed_listings' do
+      before do
         @property_1      = ApartmentCommunity.make(:title => "My Fake Condos")
         @property_2      = ApartmentCommunity.make(:title => "Bogus Community")
         @recurring_email = RecurringEmail.make :property_ids => [@property_1.id, @property_2.id]
 
-        assert_difference('ActionMailer::Base.deliveries.count', 1) do
-          @email = CommunityListingMailer.deliver_recently_viewed_listings(@recurring_email)
-        end
+        expect {
+          @email = CommunityListingMailer.recently_viewed_listings(@recurring_email).deliver
+        }.to change { ActionMailer::Base.deliveries.count }.by(1)
       end
 
-      should "set the reply to header" do
-        assert_equal [BOZZUTO_REPLY_TO], @email.reply_to
+      it "sets the from address" do
+        @email.from.should == [BOZZUTO_EMAIL_ADDRESS]
       end
 
-      should "deliver the message" do
-        assert_equal [@recurring_email.email_address], @email.to
+      it "sets the reply to header" do
+        @email.reply_to.should == [BOZZUTO_REPLY_TO]
       end
 
-      should "have the subject" do
-        assert_equal 'Recently Viewed Apartment Communities', @email.subject
+      it "delivers the message to the correct recipient" do
+        @email.to.should == [@recurring_email.email_address]
       end
 
-      should "have the property titles in the body" do
-        assert_match /#{@property_1.title}/, @email.body
-        assert_match /#{@property_2.title}/, @email.body
+      it "has the subject" do
+        @email.subject.should == 'Recently Viewed Apartment Communities'
       end
 
-      should "have a link to the properties in the body" do
-        assert_match %r{/apartments/communities/#{@property_1.to_param}}, @email.body
-        assert_match %r{/apartments/communities/#{@property_2.to_param}}, @email.body
+      it "has the property titles in the body" do
+        @email.body.should =~ /#{@property_1.title}/
+        @email.body.should =~ /#{@property_2.title}/
+      end
+
+      it "has a link to the properties in the body" do
+        @email.body.should =~ %r{/apartments/communities/#{@property_1.to_param}}
+        @email.body.should =~ %r{/apartments/communities/#{@property_2.to_param}}
       end
     end
 
-
-    context '#search_results_listings' do
+    describe '#search_results_listings' do
       setup do
         @property_1      = ApartmentCommunity.make :title => 'Property #1'
         @property_2      = ApartmentCommunity.make :title => 'Property #2'
         @recurring_email = RecurringEmail.make(:recurring, :property_ids => [@property_1.id, @property_2.id])
 
-        assert_difference('ActionMailer::Base.deliveries.count', 1) do
-          @email = CommunityListingMailer.deliver_search_results_listings(@recurring_email)
-        end
+        expect {
+          @email = CommunityListingMailer.search_results_listings(@recurring_email).deliver
+        }.to change { ActionMailer::Base.deliveries.count }.by(1)
       end
 
-      should "set the reply to header" do
-        assert_equal [BOZZUTO_REPLY_TO], @email.reply_to
+      it "sets the from address" do
+        @email.from.should == [BOZZUTO_EMAIL_ADDRESS]
       end
 
-      should "deliver the message" do
-        assert_equal [@recurring_email.email_address], @email.to
+      it "sets the reply to header" do
+        @email.reply_to.should == [BOZZUTO_REPLY_TO]
       end
 
-      should "have the subject" do
-        assert_equal 'Apartment Communities Search Results', @email.subject
+      it "delivers the message" do
+        @email.to.should == [@recurring_email.email_address]
       end
 
-      should "have the property titles in the body" do
-        assert_match /#{@property_1.title}/, @email.body
-        assert_match /#{@property_2.title}/, @email.body
+      it "has the subject" do
+        @email.subject.should == 'Apartment Communities Search Results'
       end
 
-      should "have a link to the properties in the body" do
-        assert_match %r{/apartments/communities/#{@property_1.to_param}}, @email.body
-        assert_match %r{/apartments/communities/#{@property_2.to_param}}, @email.body
+      it "has the property titles in the body" do
+        @email.body.should =~ /#{@property_1.title}/
+        @email.body.should =~ /#{@property_2.title}/
+      end
+
+      it "has a link to the properties in the body" do
+        @email.body.should =~ %r{/apartments/communities/#{@property_1.to_param}}
+        @email.body.should =~ %r{/apartments/communities/#{@property_2.to_param}}
       end
     end
 
 
-    context 'helper methods' do
-      setup do
-        @mailer = CommunityListingMailer.send(:new)
+    context "helper methods" do
+      before do
+        @mailer    = CommunityListingMailer.send(:new)
         @community = ApartmentCommunity.make
       end
 
-      context '#floor_plans_url' do
-        context 'with a home community' do
-          setup do
+      context "#floor_plans_url" do
+        context "with a home community" do
+          before do
             @community = HomeCommunity.make
           end
 
-          should 'return home_community_homes_url' do
+          it "returns home_community_homes_url" do
             url = home_community_homes_url(@community)
 
-            assert_equal url, @mailer.send(:floor_plans_url, @community)
+            @mailer.send(:floor_plans_url, @community).should == url
           end
         end
 
-        context 'with an apartment community' do
-          setup do
+        context "with an apartment community" do
+          before do
             @community = ApartmentCommunity.make
           end
 
-          should 'return apartment_community_floor_plan_groups_url' do
+          it "returns apartment_community_floor_plan_groups_url" do
             url = apartment_community_floor_plan_groups_url(@community)
 
-            assert_equal url, @mailer.send(:floor_plans_url, @community)
+            @mailer.send(:floor_plans_url, @community).should == url
           end
         end
       end
 
-      context '#tel_url' do
-        context 'a number has non-numeric characters' do
-          should 'strip those from the number' do
-            assert_equal 'tel:+18881234567', @mailer.send(:tel_url, '1 (888) 123-4567')
+      context "#tel_url" do
+        context "a number has non-numeric characters" do
+          it "strips those from the number" do
+            @mailer.send(:tel_url, '1 (888) 123-4567').should == 'tel:+18881234567'
           end
         end
 
-        context 'a number does not have a leading 1' do
-          should 'add the leading 1' do
-            assert_equal 'tel:+18881234567', @mailer.send(:tel_url, '888.123.4567')
+        context "a number does not have a leading 1" do
+          it "adds the leading 1" do
+            @mailer.send(:tel_url, '888.123.4567').should == 'tel:+18881234567'
           end
         end
       end

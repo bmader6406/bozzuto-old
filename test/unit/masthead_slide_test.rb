@@ -6,9 +6,10 @@ class MastheadSlideTest < ActiveSupport::TestCase
       @slide = MastheadSlide.new
     end
 
-    should_belong_to :masthead_slideshow, :mini_slideshow
+    should belong_to(:masthead_slideshow)
+    should belong_to(:mini_slideshow)
 
-    should_validate_presence_of :body
+    should validate_presence_of(:body)
 
 
     context '#uses_image?' do

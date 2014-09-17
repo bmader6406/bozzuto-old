@@ -33,7 +33,7 @@ class LandingPage < ActiveRecord::Base
   validates_presence_of :title, :state
   validates_uniqueness_of :title
 
-  named_scope :visible_for_list, :conditions => { :hide_from_list => false }
+  scope :visible_for_list, :conditions => { :hide_from_list => false }
 
   has_friendly_id :title, :use_slug => true
 

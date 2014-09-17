@@ -3,14 +3,14 @@ require 'test_helper'
 class GreenPackageTest < ActiveSupport::TestCase
   subject { GreenPackage.make }
 
-  should_belong_to(:home_community)
-  should_have_many(:green_package_items, :dependent => :destroy)
-  should_have_many(:green_features, :through => :green_package_items)
+  should belong_to(:home_community)
+  should have_many(:green_package_items).dependent(:destroy)
+  should have_many(:green_features).through(:green_package_items)
 
-  should_validate_presence_of(:home_community)
-  should_validate_presence_of(:ten_year_old_cost)
+  should validate_presence_of(:home_community)
+  should validate_presence_of(:ten_year_old_cost)
 
-  should_validate_attachment_presence(:photo)
+  should validate_attachment_presence(:photo)
 
   context '#home_community_title' do
     setup do

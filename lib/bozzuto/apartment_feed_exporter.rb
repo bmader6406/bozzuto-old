@@ -1,6 +1,6 @@
 module Bozzuto
   class ApartmentFeedExporter
-    include ActionController::UrlWriter
+    include Rails.application.routes.url_helpers
     include PropertiesHelper
 
     default_url_options[:host] = ActionMailer::Base.default_url_options[:host] || 'bozzuto.com'
@@ -129,7 +129,7 @@ module Bozzuto
     end
 
     def nearby_communities(community)
-      community.nearby_communities.collect do |nearby_community|
+      community.nearby_communities.included_in_export.map do |nearby_community|
         {
           :id    => nearby_community.id,
           :title => nearby_community.title

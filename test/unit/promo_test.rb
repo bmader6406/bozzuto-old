@@ -2,146 +2,167 @@ require 'test_helper'
 
 class PromoTest < ActiveSupport::TestCase
   context 'Promo' do
-    setup { @promo = Promo.make }
-    subject { @promo }
+    subject { Promo.make }
 
-    should_have_many :apartment_communities,
-      :home_communities,
-      :landing_pages
+    should have_many(:apartment_communities)
+    should have_many(:home_communities)
+    should have_many(:landing_pages)
 
-    should_validate_presence_of :title, :subtitle
+    should validate_presence_of(:title)
+    should validate_presence_of(:subtitle)
 
-    context '#typus_name' do
-      context 'promo is active' do
-        setup { @promo = Promo.make(:active, :title => 'Hey ya') }
+    describe "#typus_name" do
+      context "promo is active" do
+        subject { Promo.make(:active, :title => 'Hey ya') }
 
-        should 'return the title' do
-          assert_equal 'Hey ya', @promo.typus_name
+        it "return the title" do
+          subject.typus_name.should == 'Hey ya'
         end
       end
 
-      context 'promo is expired' do
-        setup { @promo = Promo.make(:expired, :title => 'Hey ya') }
+      context "promo is expired" do
+        subject { Promo.make(:expired, :title => 'Hey ya') }
 
-        should 'return the title plus expired' do
-          assert_equal 'Hey ya (expired)', @promo.typus_name
-        end
-      end
-    end
-
-    context '#active?' do
-      context 'a promo without an expiration_date' do
-        should 'be active' do
-          @promo.has_expiration_date = false
-          assert @promo.active?
-        end
-      end
-
-      context 'a promo with an expiration_date in the future' do
-        should 'be active' do
-          @promo.has_expiration_date = true
-          @promo.expiration_date = Time.now + 1.day
-          assert @promo.active?
-        end
-      end
-
-      context 'a promo with an expiration_date in the past' do
-        should 'not be active' do
-          @promo.has_expiration_date = true
-          @promo.expiration_date = Time.now - 1.day
-          assert !@promo.active?
+        it "return the title plus expired" do
+          subject.typus_name.should == 'Hey ya (expired)'
         end
       end
     end
 
-    context '#expired?' do
-      context 'a promo without an expiration_date' do
-        should 'not be expired' do
-          @promo.has_expiration_date = false
-          assert !@promo.expired?
+    describe "#active?" do
+      context "a promo without an expiration_date" do
+        before do
+          subject.has_expiration_date = false
+        end
+
+        it "be active" do
+          subject.active?.should == true
         end
       end
 
-      context 'a promo with an expiration_date in the future' do
-        should 'not be expired' do
-          @promo.has_expiration_date = true
-          @promo.expiration_date = Time.now + 1.day
-          assert !@promo.expired?
+      context "a promo with an expiration_date in the future" do
+        before do
+          subject.has_expiration_date = true
+          subject.expiration_date = Time.now + 1.day
+        end
+
+        it "be active" do
+          subject.active?.should == true
         end
       end
 
-      context 'a promo with an expiration_date in the past' do
-        should 'be expired' do
-          @promo.has_expiration_date = true
-          @promo.expiration_date = Time.now - 1.day
-          assert @promo.expired?
+      context "a promo with an expiration_date in the past" do
+        before do
+          subject.has_expiration_date = true
+          subject.expiration_date = Time.now - 1.day
+        end
+
+        it "not be active" do
+          subject.active?.should == false
         end
       end
     end
 
-    context 'has_expiration_date is false' do
-      setup do
-        @promo.has_expiration_date = false
+    describe "#expired?" do
+      context "a promo without an expiration_date" do
+        before do
+          subject.has_expiration_date = false
+        end
+
+        it "not be expired" do
+          subject.expired?.should == false
+        end
       end
 
-      should 'set expiration_date to nil before validation' do
-        @promo.expiration_date = Time.now
-        assert @promo.expiration_date.present?
-        @promo.valid?
-        assert_nil @promo.expiration_date
+      context "a promo with an expiration_date in the future" do
+        before do
+          subject.has_expiration_date = true
+          subject.expiration_date = Time.now + 1.day
+        end
+
+        it "not be expired" do
+          subject.expired?.should == false
+        end
       end
 
-      should 'allow nil for expiration_date' do
-        @promo.expiration_date = nil
-        @promo.valid?
-        assert_nil @promo.errors.on(:expiration_date)
-      end
-    end
+      context "a promo with an expiration_date in the past" do
+        before do
+          subject.has_expiration_date = true
+          subject.expiration_date = Time.now - 1.day
+        end
 
-    context 'has_expiration_date is true' do
-      setup do
-        @promo.has_expiration_date = true
-        @promo.expiration_date = nil
-      end
-
-      should_validate_presence_of :expiration_date
-    end
-  end
-
-  context '#expired_string' do
-    context 'when expired' do
-      setup { @promo = Promo.make(:expired) }
-
-      should 'return Yes' do
-        assert_equal 'Yes', @promo.expired_string
+        it "be expired" do
+          subject.expired?.should == true
+        end
       end
     end
 
-    context 'when active' do
-      setup { @promo = Promo.make(:active) }
+    describe "has_expiration_date is false" do
+      before do
+        subject.has_expiration_date = false
+      end
 
-      should 'return empty string' do
-        assert_equal '', @promo.expired_string
+      it "set expiration_date to nil before validation" do
+        subject.expiration_date = Time.now
+        subject.expiration_date.present?.should == true
+
+        subject.valid?
+
+        subject.expiration_date.should == nil
+      end
+
+      it "allow nil for expiration_date" do
+        subject.expiration_date = nil
+        subject.valid?
+
+        subject.errors[:expiration_date].should == []
       end
     end
-  end
 
-  context 'named scopes' do
-    setup do
-      @promo   = Promo.make
-      @active  = Promo.make :active
-      @expired = Promo.make :expired
+    describe "has_expiration_date is true" do
+      before do
+        subject.has_expiration_date = true
+        subject.expiration_date = nil
+      end
+
+      should validate_presence_of(:expiration_date)
     end
 
-    context '#active' do
-      should 'return promos with no expiration date or date in the future' do
-        assert_same_elements [@promo, @active], Promo.active
+    describe "#expired_string" do
+      context "when expired" do
+        subject { Promo.make(:expired) }
+
+        it "return Yes" do
+          subject.expired_string.should == 'Yes'
+        end
+      end
+
+      context "when active" do
+        subject { Promo.make(:active) }
+
+        it "return empty string" do
+          subject.expired_string.should == ''
+        end
       end
     end
 
-    context '#expired' do
-      should 'return promos with expiration date in the past' do
-        assert_equal [@expired], Promo.expired
+    describe "scopes" do
+      before do
+        @promo   = Promo.make
+        @active  = Promo.make :active
+        @expired = Promo.make :expired
+      end
+
+      describe ".active" do
+        it "return promos with no expiration date or date in the future" do
+          assert_same_elements [@promo, @active], Promo.active
+        end
+      end
+
+      describe ".expired" do
+        it "return promos with expiration date in the past" do
+          Promo.expired.should == [@expired]
+        end
       end
     end
   end

@@ -29,8 +29,8 @@ class HomeNeighborhood < ActiveRecord::Base
 
   validates_uniqueness_of :name
 
-  named_scope :positioned,       :order => "home_neighborhoods.position ASC"
-  named_scope :ordered_by_count, :order => "home_neighborhoods.home_communities_count DESC, home_neighborhoods.name ASC"
+  scope :positioned,       :order => "home_neighborhoods.position ASC"
+  scope :ordered_by_count, :order => "home_neighborhoods.home_communities_count DESC, home_neighborhoods.name ASC"
 
   after_save :update_home_communities_count
 

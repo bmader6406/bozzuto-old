@@ -4,19 +4,19 @@ class ApartmentFloorPlanCacheTest < ActiveSupport::TestCase
   context "An Apartment Floor Plan Cache" do
     subject { ApartmentFloorPlanCache.new }
 
-    should_validate_presence_of(:cacheable)
+    should validate_presence_of(:cacheable)
 
-    should_validate_numericality_of(:studio_min_price)
-    should_validate_numericality_of(:one_bedroom_min_price)
-    should_validate_numericality_of(:two_bedrooms_min_price)
-    should_validate_numericality_of(:three_bedrooms_min_price)
-    should_validate_numericality_of(:penthouse_min_price)
+    should validate_numericality_of(:studio_min_price)
+    should validate_numericality_of(:one_bedroom_min_price)
+    should validate_numericality_of(:two_bedrooms_min_price)
+    should validate_numericality_of(:three_bedrooms_min_price)
+    should validate_numericality_of(:penthouse_min_price)
 
-    should_validate_numericality_of(:studio_count)
-    should_validate_numericality_of(:one_bedroom_count)
-    should_validate_numericality_of(:two_bedrooms_count)
-    should_validate_numericality_of(:three_bedrooms_count)
-    should_validate_numericality_of(:penthouse_count)
+    should validate_numericality_of(:studio_count)
+    should validate_numericality_of(:one_bedroom_count)
+    should validate_numericality_of(:two_bedrooms_count)
+    should validate_numericality_of(:three_bedrooms_count)
+    should validate_numericality_of(:penthouse_count)
 
     describe "#update_cache" do
       before do

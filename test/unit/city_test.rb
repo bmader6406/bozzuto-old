@@ -8,12 +8,15 @@ class CityTest < ActiveSupport::TestCase
 
     subject { @city }
 
-    should_have_many :apartment_communities, :home_communities, :communities
-    should_belong_to :state
-    should_have_and_belong_to_many :counties
+    should have_many(:apartment_communities)
+    should have_many(:home_communities)
+    should have_many(:communities)
+    should belong_to(:state)
+    should have_and_belong_to_many(:counties)
 
-    should_validate_presence_of :name, :state
-    should_validate_uniqueness_of :name, :scoped_to => :state_id
+    should validate_presence_of(:name)
+    should validate_presence_of(:state)
+    should validate_uniqueness_of(:name).scoped_to(:state_id)
 
     should "print out its name and state name on #to_s" do
       assert_equal "#{@city.name}, #{@city.state.code}", @city.to_s

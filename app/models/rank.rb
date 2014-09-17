@@ -9,5 +9,5 @@ class Rank < ActiveRecord::Base
 
   belongs_to :rank_category
 
-  named_scope :ordered, :order => 'year DESC'
+  scope :ordered, :order => 'year DESC'
 end

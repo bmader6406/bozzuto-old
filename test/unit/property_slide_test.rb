@@ -2,12 +2,12 @@ require 'test_helper'
 
 class PropertySlideTest < ActiveSupport::TestCase
   context 'PropertySlide' do
-    should_belong_to :property_slideshow
+    should belong_to(:property_slideshow)
 
-    should_have_attached_file :image
+    should have_attached_file(:image)
 
-    should_validate_attachment_presence :image
+    should validate_attachment_presence(:image)
 
-    should_ensure_length_in_range :caption, (0..128)
+    should ensure_length_of(:caption).is_at_least(0).is_at_most(128)
   end
 end

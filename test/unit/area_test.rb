@@ -9,26 +9,28 @@ class AreaTest < ActiveSupport::TestCase
     should_be_mappable
     should_have_seo_metadata
 
-    should_validate_presence_of(:name)
-    should_validate_presence_of(:latitude)
-    should_validate_presence_of(:longitude)
-    should_validate_presence_of(:metro)
-    should_validate_presence_of(:area_type)
+    should validate_presence_of(:name)
+    should validate_presence_of(:latitude)
+    should validate_presence_of(:longitude)
+    should validate_presence_of(:metro)
+    should validate_presence_of(:area_type)
 
-    should_validate_uniqueness_of(:name)
+    should validate_uniqueness_of(:name)
 
-    should_allow_values_for(:area_type, 'neighborhoods', 'communities')
-    should_not_allow_values_for(:area_type, 'blaugh', nil)
+    should allow_value('neighborhoods').for(:area_type)
+    should allow_value('communities').for(:area_type)
+    should_not allow_value('blaugh').for(:area_type)
+    should_not allow_value(nil).for(:area_type)
 
-    should_have_many(:neighborhoods, :dependent => :destroy)
-    should_belong_to(:metro)
-    should_belong_to(:state)
-    should_have_many(:area_memberships, :dependent => :destroy)
-    should_have_many(:apartment_communities, :through => :area_memberships)
+    should have_many(:neighborhoods).dependent(:destroy)
+    should belong_to(:metro)
+    should belong_to(:state)
+    should have_many(:area_memberships).dependent(:destroy)
+    should have_many(:apartment_communities).through(:area_memberships)
 
-    should_have_many(:related_areas, :dependent => :destroy)
-    should_have_many(:nearby_areas, :through => :related_areas)
-    should_have_many(:area_relations, :dependent => :destroy)
+    should have_many(:related_areas).dependent(:destroy)
+    should have_many(:nearby_areas).through(:related_areas)
+    should have_many(:area_relations).dependent(:destroy)
 
     describe "nested structure" do
       describe "#typus_name" do

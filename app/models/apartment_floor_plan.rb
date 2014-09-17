@@ -34,23 +34,23 @@ class ApartmentFloorPlan < ActiveRecord::Base
     :styles          => { :thumb => '160' },
     :convert_options => { :all   => '-quality 80 -strip' }
 
-  named_scope :in_group, lambda { |group|
+  scope :in_group, lambda { |group|
     { :conditions => { :floor_plan_group_id => group.id } }
   }
 
-  named_scope :largest,
+  scope :largest,
               :conditions => 'max_square_feet IS NOT NULL',
               :order      => 'max_square_feet DESC',
               :limit      => 1
 
-  named_scope :non_zero_min_rent, :conditions => 'min_rent > 0'
+  scope :non_zero_min_rent, :conditions => 'min_rent > 0'
 
-  named_scope :ordered_by_min_rent, :order => 'min_rent ASC'
-  named_scope :ordered_by_max_rent, :order => 'max_rent DESC'
+  scope :ordered_by_min_rent, :order => 'min_rent ASC'
+  scope :ordered_by_max_rent, :order => 'max_rent DESC'
 
-  named_scope :available, :conditions => 'available_units > 0'
+  scope :available, :conditions => 'available_units > 0'
 
-  named_scope :with_square_footage, :conditions => 'min_square_feet > 0'
+  scope :with_square_footage, :conditions => 'min_square_feet > 0'
 
 
   def self.with_min_rent

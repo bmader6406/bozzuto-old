@@ -12,7 +12,7 @@ class ApartmentCommunity < Community
     :floor_plans
   ]
 
-  acts_as_archive :indexes => [:id]
+  #acts_as_archive :indexes => [:id]
 
   has_neighborhood_listing_image :neighborhood_listing_image, :required => false
 
@@ -58,39 +58,39 @@ class ApartmentCommunity < Community
 
   validates_inclusion_of :included_in_export, :in => [true, false]
 
-  named_scope :included_in_export, :conditions => { :included_in_export => true }
+  scope :included_in_export, :conditions => { :included_in_export => true }
 
-  named_scope :with_floor_plan_groups, lambda { |ids|
+  scope :with_floor_plan_groups, lambda { |ids|
     {:conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE floor_plan_group_id IN (?))", Array(ids)]}
   }
 
-  named_scope :with_property_features, lambda { |ids|
+  scope :with_property_features, lambda { |ids|
     {:conditions => ["properties.id IN (SELECT property_id FROM properties_property_features WHERE property_feature_id IN (?))", Array(ids)]}
   }
 
-  named_scope :with_min_price, lambda { |price|
+  scope :with_min_price, lambda { |price|
     {
       :joins      => "JOIN apartment_floor_plan_caches AS cache ON cache.cacheable_id = properties.id AND cache.cacheable_type = 'Property'",
       :conditions => ['cache.max_price >= ?', price.to_i]
     }
   }
 
-  named_scope :with_max_price, lambda { |price|
+  scope :with_max_price, lambda { |price|
     {
       :joins      => "JOIN apartment_floor_plan_caches AS cache ON cache.cacheable_id = properties.id AND cache.cacheable_type = 'Property'",
       :conditions => ['cache.min_price <= ?', price.to_i]
     }
   }
 
-  named_scope :featured, :conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE featured = ?)", true]
+  scope :featured, :conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE featured = ?)", true]
 
-  named_scope :under_construction, :conditions => { :under_construction => true }
+  scope :under_construction, :conditions => { :under_construction => true }
 
-  named_scope :not_under_construction, :conditions => { :under_construction => false }
+  scope :not_under_construction, :conditions => { :under_construction => false }
 
 
   def nearby_communities(limit = 6)
-    @nearby_communities ||= city.apartment_communities.published.near(self).all(:limit => limit)
+    @nearby_communities ||= city.apartment_communities.published.near(self).limit(limit)
   end
 
   def merge(other_community)

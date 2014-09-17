@@ -1,5 +1,5 @@
 <% if items.any? %>
-  <% form_tag :action => "destroy_multiple" do %>
+  <%= form_tag :action => "destroy_multiple" do %>
     <table class="typus multi-destroy">
       <thead>
         <%= typus_table_header(UnderConstructionLead, fields).html_safe %>

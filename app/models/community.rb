@@ -1,7 +1,7 @@
 class Community < Property
   include Bozzuto::SMSAble
 
-  acts_as_archive :indexes => [:id]
+  #acts_as_archive :indexes => [:id]
 
   acts_as_list :column => 'featured_position'
 
@@ -42,9 +42,9 @@ class Community < Property
 
   before_save :set_featured_postion
 
-  named_scope :featured_order, :order => 'featured DESC, featured_position ASC, title ASC'
+  scope :featured_order, :order => 'featured DESC, featured_position ASC, title ASC'
 
-  named_scope :sort_for, lambda { |landing_page|
+  scope :sort_for, lambda { |landing_page|
     #:nocov:
     if landing_page.respond_to?(:randomize_property_listings?)
       landing_page.randomize_property_listings? ?
@@ -56,7 +56,7 @@ class Community < Property
     #:nocov:
   }
 
-  named_scope :with_twitter_account, :conditions => 'twitter_account_id > 0'
+  scope :with_twitter_account, :conditions => 'twitter_account_id > 0'
 
   delegate :latest_tweet, :to => :twitter_account, :allow_nil => true
 

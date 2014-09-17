@@ -5,7 +5,7 @@ class PhotoGroup < ActiveRecord::Base
            :order     => 'property_id ASC, photos.position ASC',
            :dependent => :nullify
 
-  named_scope :positioned, { :order => 'photo_groups.position ASC' }
+  scope :positioned, { :order => 'photo_groups.position ASC' }
 
   validates_presence_of :title
 

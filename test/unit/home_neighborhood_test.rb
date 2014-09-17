@@ -9,15 +9,15 @@ class HomeNeighborhoodTest < ActiveSupport::TestCase
     should_be_mappable
     should_have_seo_metadata
 
-    should_validate_presence_of(:name)
-    should_validate_presence_of(:latitude)
-    should_validate_presence_of(:longitude)
+    should validate_presence_of(:name)
+    should validate_presence_of(:latitude)
+    should validate_presence_of(:longitude)
 
-    should_validate_uniqueness_of(:name)
+    should validate_uniqueness_of(:name)
 
-    should_belong_to(:featured_home_community)
-    should_have_many(:home_neighborhood_memberships, :dependent => :destroy)
-    should_have_many(:home_communities, :through => :home_neighborhood_memberships)
+    should belong_to(:featured_home_community)
+    should have_many(:home_neighborhood_memberships).dependent(:destroy)
+    should have_many(:home_communities).through(:home_neighborhood_memberships)
 
     describe "nested structure" do
       before do

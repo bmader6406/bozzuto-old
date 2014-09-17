@@ -1,304 +1,350 @@
-ActionController::Routing::Routes.draw do |map|
-  Typus::Routes.draw(map)
-  Jammit::Routes.draw(map)
-  Ckeditor::Routes.draw(map)
-  
+Bozzuto::Application.routes.draw do
+  #Typus::Routes.draw(map)
+  #Ckeditor::Routes.draw(map)
 
-  map.root :controller => :home_pages
 
-  map.search '/search',
-             :controller => :searches,
-             :action     => :index
+  root :to => 'home_pages#index'
 
-  map.resource :community_search, :only => :show
 
-  map.map_community_search 'community_searches/map',
-                           :controller => :community_searches,
-                           :action     => :show,
-                           :template   => 'map'
+  # Searching
+  match '/search' => 'searches#index', :as => :search
 
-  map.with_options :controller => :careers, :action => :index, :section => 'careers' do |m|
-    m.careers '/careers'
-    m.connect '/careers/overview'
-  end
+  resource :community_search, :only => :show
 
-  map.namespace :email do |email|
+  match '/community_searches/map' => 'community_searches#show',
+        :as                       => :map_community_search,
+        :template                 => 'map'
+
+
+  # Careers
+  match '/careers' => 'careers#index', :section => 'careers'
+
+  match '/careers/overview' => redirect('/careers')
+
+
+  # Emails
+  namespace :email do
     %w(recently_viewed search_results).each do |type|
-      email.resource type,
-                     :controller => type,
-                     :only       => :create,
-                     :member     => { :thank_you => :get }
+      resource type, :only => :create do
+        get 'thank_you', :on => :member
+      end
     end
 
-    email.unsubscribe 'unsubscribe/:id',
-                      :controller => 'subscriptions',
-                      :action     => :destroy
+    match 'unsubscribe/:id' => 'subscriptions#destroy',
+          :as               => :unsubscribe
   end
 
 
-
-  map.ufollowup 'apartments/communities/:id/ufollowup',
-    :controller => 'ufollowup',
-    :action     => 'show'
-  map.ufollowup_thank_you 'apartments/communities/ufollowup_thank_you',
-    :controller => :ufollowup,
-    :action     => :thank_you
+  scope '/apartments' do
+    scope '/communities' do
+      match 'ufollowup_thank_you' => 'ufollowup#thank_you',
+            :as                   => :ufollowup_thank_you
 
 
-  # Neighborhoods
-  map.with_options :path_prefix => 'apartments/communities' do |m|
-    regex = /[-A-Za-z]+(\d+)?/
+      # Neighborhoods
+      regex = /[-A-Za-z]+(\d+)?/
 
-    m.metros '',
-             :controller => :metros,
-             :action     => :index
+      match '/' => 'metros#index', :as => :metros
 
-    m.metro ':id',
-            :controller   => :metros,
-            :action       => :show,
-            :requirements => { :id    => regex }
+      match ':id'        => 'metros#show',
+            :as          => :metro,
+            :constraints => { :id => regex }
 
-    m.area ':metro_id/:id',
-           :controller   => :areas,
-           :action       => :show,
-           :requirements => { :metro_id => regex, :id => regex }
+      match ':metro_id/:id' => 'areas#show',
+            :as             => :area,
+            :constraints    => { :metro_id => regex, :id => regex }
 
-    m.neighborhood ':metro_id/:area_id/:id',
-                   :controller   => :neighborhoods,
-                   :action       => :show,
-                   :requirements => { :metro_id => regex,
-                                      :area_id  => regex,
-                                      :id       => regex }
-  end
-
-  apartment_community_options = {
-    :path_prefix => 'apartments',
-    :as          => :communities,
-    :only        => :show,
-    :member      => { :rentnow => :get }
-  }
-  map.resources :apartment_communities, apartment_community_options do |community|
-    community.resources :floor_plan_groups,
-                        :controller => :apartment_floor_plan_groups,
-                        :as         => :floor_plans,
-                        :only       => :index do |group|
-
-      group.resources :layouts,
-                      :controller => :apartment_floor_plans,
-                      :only       => [:index, :show]
+      match ':metro_id/:area_id/:id' => 'neighborhoods#show',
+            :as                      => :neighborhood,
+            :constraints             => { :metro_id => regex, :area_id => regex, :id => regex }
     end
 
-    community.resource :features,
-                       :controller => 'property_pages/features',
-                       :only       => :show
+    resources :apartment_communities, :path => 'communities', :only => [:show] do
+      get 'rentnow', :on => :member
 
-    community.resource :neighborhood,
-                       :controller => 'property_pages/neighborhoods',
-                       :only       => :show
 
-    community.resource :tours,
-                       :controller => 'property_pages/tours',
-                       :only       => :show
+      resources :apartment_floor_plan_groups, :path => 'floor_plan_groups',
+                :as   => :floor_plan_groups,
+                :only => :index do
 
-    community.resources :specials,
-                        :only       => :index,
-                        :controller => :promos
+        resources :apartment_floor_plans, :path => 'layouts',
+                  :as   => :layouts,
+                  :only => [:index, :show]
+      end
 
-    community.resource :email_listing,
-                       :controller => :community_listing_emails,
-                       :only       => :create,
-                       :member     => { :thank_you => :get }
+      resource :features,
+               :controller => 'property_pages/features',
+               :only       => :show
 
-    community.resource :sms_message,
-                       :as     => :send_to_phone,
-                       :only   => [:new, :create],
-                       :member => { :thank_you => :get }
+      resource :neighborhood,
+               :controller => 'property_pages/neighborhoods',
+               :only       => :show
 
-    community.resource :contact,
-                       :controller => :apartment_contact_submissions,
-                       :only       => [:show, :create],
-                       :member     => { :thank_you => :get }
-    
-    community.resource :office_hours,
-                       :only => :show
+      resource :tours,
+               :controller => 'property_pages/tours',
+               :only       => :show
 
-    community.resources :media,
-                        :controller => :community_media,
-                        :only       => :index
+      resources :specials,
+                :only       => :index,
+                :controller => :promos
+
+      resource :email_listing,
+               :controller => :community_listing_emails,
+               :only       => :create do
+        get :thank_you, :on => :member
+      end
+
+      resource :sms_message,
+               :as     => :send_to_phone,
+               :only   => [:new, :create] do
+        get :thank_you, :on => :member
+      end
+
+      resource :contact,
+               :controller => :apartment_contact_submissions,
+               :only       => [:show, :create] do
+        get :thank_you, :on => :member
+      end
+
+      resource :office_hours, :only => :show
+
+      resources :media,
+                :controller => :community_media,
+                :only       => :index
+
+      resource :ufollowup,
+               :controller => :ufollowup,
+               :only       => [:show, :create]
+    end
   end
 
 
-  map.resources :green_homes,
-                :only        => [:index, :show],
-                :path_prefix => 'new-homes',
-                :as          => 'green-homes',
-                :section     => 'new-homes'
-  
-  # Home Neighborhoods
-  map.with_options :path_prefix => 'new-homes/communities' do |m|
-    regex = /[-A-Za-z]+(\d+)?/
+  # Green homes
+  scope '/new-homes' do
+    resources :green_homes,
+              :path => 'green-homes',
+              :only => [:index, :show]
 
-    m.home_neighborhoods '',
-                    :controller => :home_neighborhoods,
-                    :action     => :index
+    scope '/communities' do
+      # Home Neighborhoods
+      regex = /[-A-Za-z]+(\d+)?/
 
-    m.home_neighborhood ':id',
-                   :controller   => :home_neighborhoods,
-                   :action       => :show,
-                   :requirements => { :id => regex }
-  end
+      match '/' => 'home_neighborhoods#index',
+            :as => :home_neighborhoods
 
-  home_community_options = {
-    :path_prefix => 'new-homes',
-    :as          => :communities,
-    :only        => [:index, :show],
-    :collection  => { :map => :get }
-  }
-  map.resources :home_communities, home_community_options do |community|
-    community.resources :homes, :only => :index do |home|
-      home.resources :floor_plans,
-                     :controller => :home_floor_plans,
-                     :only       => [:index, :show]
+      match ':id' => 'home_neighborhoods#show',
+            :as => :home_neighborhood,
+            :constraints => { :id => regex }
     end
 
-    community.resource :features,
-                       :controller => 'property_pages/features',
-                       :only       => :show
+    # Home communities
+    resources :home_communities, :path => 'communities', :only => [:index, :show] do
+      get :map, :on => :collection
 
-    community.resource :neighborhood,
-                       :controller => 'property_pages/neighborhoods',
-                       :only       => :show
+      resources :homes, :only => :index do
+        resources :floor_plans,
+                  :controller => :home_floor_plans,
+                  :only       => [:index, :show]
+      end
 
-    community.resource :tours,
-                       :controller => 'property_pages/tours',
-                       :only       => :show
+      resource :features,
+               :controller => 'property_pages/features',
+               :only       => :show
 
-    community.resources :specials,
-                        :only       => :index,
-                        :controller => :promos
+      resource :neighborhood,
+               :controller => 'property_pages/neighborhoods',
+               :only       => :show
 
-    community.resource :email_listing,
-                       :controller => :community_listing_emails,
-                       :only       => :create,
-                       :member     => { :thank_you => :get }
+      resource :tours,
+               :controller => 'property_pages/tours',
+               :only       => :show
 
-    community.resource :sms_message,
-                       :as     => :send_to_phone,
-                       :only   => [:new, :create],
-                       :member => { :thank_you => :get }
+      resources :specials,
+                :only       => :index,
+                :controller => :promos
 
-    community.resource :contact,
-                       :controller => :lasso_submissions,
-                       :only       => :show,
-                       :member     => { :thank_you => :get }
-    
-    community.resource :office_hours,
-                       :only => :show
+      resource :email_listing,
+               :controller => :community_listing_emails,
+               :only       => :create do
+        get :thank_you, :on => :member
+      end
 
-    community.resources :media,
-                        :controller => :community_media,
-                        :only       => :index
-  end
+      resource :sms_message,
+               :as     => :send_to_phone,
+               :only   => [:new, :create] do
+        get :thank_you, :on => :member
+      end
 
-  map.resources :landing_pages, :as => :regions, :only => :show
-  
-  map.resources :states, :only => :show do |states|
-    states.resources :counties, :only => :index
-  end
-  map.resources :counties, :only => :show
-  map.resources :cities, :only => :show
+      resource :contact,
+               :controller => :lasso_submissions,
+               :only       => :show do
+        get :thank_you, :on => :member
+      end
 
-  map.resource :contact,
-    :path_prefix => 'about-us',
-    :controller  => :contact_submissions,
-    :only        => [:show, :create],
-    :member      => { :thank_you => :get }
+      resource :office_hours, :only => :show
 
-  map.resources :featured_projects,
-    :path_prefix => 'services',
-    :as          => 'featured-projects',
-    :controller  => :featured_projects,
-    :only        => [:index, :show]
-
-  map.management_communities '/services/management/communities',
-    :controller => :management_communities,
-    :section    => 'management'
-
-  map.with_options :controller => :testimonials do |m|
-    m.service_section_testimonials '/services/:section/testimonials'
-    m.section_testimonials '/:section/testimonials'
-  end
-
-  map.with_options :controller => :projects do |m|
-    m.service_section_project '/services/:section/our-work/:project_id',
-      :action => :show
-    m.service_section_projects '/services/:section/our-work'
-
-    m.section_project '/:section/our-work/:project_id',
-      :action => :show
-    m.section_projects '/:section/our-work'
+      resources :media,
+                :controller => :community_media,
+                :only       => :index
+    end
   end
 
 
-  ###
+  # Geography
+  resources :landing_pages, :as => :regions, :only => :show
+
+  resources :states, :only => :show do
+    resources :counties, :only => :index
+  end
+  resources :counties, :only => :show
+  resources :cities, :only => :show
+
+
+  # Contact
+  scope '/about-us' do
+    resource :contact_submission, :path => 'contact', :as => :contact, :only => [:show, :create] do
+      get 'thank_you', :on => :member
+    end
+  end
+
+
+  # Management Communities
+  scope '/services' do
+    match 'management/communities', :to => 'management_communities#index', :section => 'management'
+
+    resources :featured_projects,
+              :path => 'featured-projects',
+              :only => [:index, :show]
+  end
+
+
+  # Testimonials
+  scope '/services/:section' do
+    resources :testimonials,
+              :as   => :service_section_testimonials,
+              :only => :index
+  end
+
+  scope '/:section' do
+    resources :testimonials,
+              :as   => :section_testimonials,
+              :only => :index
+  end
+
+
+  # Projects
+  scope '/services/:section' do
+    resources :projects,
+              :path => 'our-work',
+              :as   => :service_section_projects,
+              :only => [:index, :show]
+  end
+
+  scope '/:section' do
+    resources :projects,
+              :path => 'our-work',
+              :as   => :section_projects,
+              :only => [:index, :show]
+  end
+
+
+  # Rankings
+  scope '/about-us/news-and-press' do
+    resources :rankings, :only => :index
+  end
+
+
+  # News Posts
+  scope '/services/:section/news-and-press' do
+    resources :news_posts,
+              :path => 'news',
+              :as   => :service_section_news_posts,
+              :only => [:index, :show]
+  end
+
+  scope '/:section/news-and-press' do
+    resources :news_posts,
+              :path => 'news',
+              :as   => :section_news_posts,
+              :only => [:index, :show]
+  end
+
+
+  # Press Releases
+  scope '/services/:section/news-and-press' do
+    resources :press_releases,
+              :path => 'press-releases',
+              :as   => :service_section_press_releases,
+              :only => [:index, :show]
+  end
+
+  scope '/:section/news-and-press' do
+    resources :press_releases,
+              :path => 'press-releases',
+              :as   => :section_press_releases,
+              :only => [:index, :show]
+  end
+
+
+  # Awards
+  scope '/services/:section/news-and-press' do
+    resources :awards,
+              :as   => :service_section_awards,
+              :only => [:index, :show]
+  end
+
+  scope '/:section/news-and-press' do
+    resources :awards,
+              :as   => :section_awards,
+              :only => [:index, :show]
+  end
+
+
   # News & Press
-  map.rankings '/about-us/news-and-press/rankings',
-    :controller => :rankings,
-    :action     => :index
-
-  map.with_options :controller => :news_posts do |m|
-    m.service_section_news_post '/services/:section/news-and-press/news/:news_post_id',
-      :action => :show
-    m.service_section_news_posts '/services/:section/news-and-press/news'
-
-    m.section_news_post '/:section/news-and-press/news/:news_post_id',
-      :action => :show
-    m.section_news_posts '/:section/news-and-press/news.:format'
+  scope '/services/:section' do
+    match 'news-and-press' => 'news_and_press#index',
+          :as              => :service_section_news_and_press
   end
 
-  map.with_options :controller => :press_releases do |m|
-    m.service_section_press_release '/services/:section/news-and-press/press-releases/:press_release_id',
-      :action => :show
-    m.service_section_press_releases '/services/:section/news-and-press/press-releases'
-
-    m.section_press_release '/:section/news-and-press/press-releases/:press_release_id',
-      :action => :show
-    m.section_press_releases '/:section/news-and-press/press-releases'
+  scope '/:section' do
+    match 'news-and-press' => 'news_and_press#index',
+          :as              => :section_news_and_press
   end
 
-  map.with_options :controller => :awards do |m|
-    m.service_section_award '/services/:section/news-and-press/awards/:award_id',
-      :action => :show
-    m.service_section_awards '/services/:section/news-and-press/awards'
-
-    m.section_award '/:section/news-and-press/awards/:award_id',
-      :action => :show
-    m.section_awards '/:section/news-and-press/awards'
+  scope '/about-us/news-and-press' do
+    match '*page'  => 'news_and_press#show',
+          :as      => :news_and_press_page,
+          :section => 'about-us'
   end
 
-  map.with_options :controller => :news_and_press do |m|
-    m.service_section_news_and_press '/services/:section/news-and-press',
-      :action => :index
-    m.section_news_and_press '/:section/news-and-press',
-      :action => :index
-    m.news_and_press_page '/about-us/news-and-press/*page',
-      :section => 'about-us',
-      :action => :show
+
+  # Leaders
+  scope '/about-us' do
+    resources :leaders,
+              :as   => :leadership,
+              :only => [:index, :show]
   end
 
-  map.resources :leaders,
-                :path_prefix => 'about-us',
-                :as          => :leadership,
-                :only        => [:index, :show]
 
-  map.with_options :controller => :buzzes, :section => 'about-us' do |m|
-    m.buzz '/bozzuto-buzz', :action => 'new', :conditions => { :method => :get }
-    m.create_buzz '/bozzuto-buzz', :action => 'create', :conditions => { :method => :post }
-    m.thank_you_buzz '/bozzuto-buzz/thank-you', :action => 'thank_you'
+
+  # Buzzes
+  match '/bozzuto-buzz', :to => redirect('/bozzuto-buzz/new')
+
+  resources :buzzes,
+            :path    => 'bozzuto-buzz',
+            :only    => [:new, :create],
+            :section => 'about-us' do
+    get 'thank_you', :on => :collection
   end
 
-  map.with_options :controller => :pages, :action => :show do |m|
-    m.service_section_page '/services/:section/*page'
-    m.section_page '/:section/*page'
+
+  scope '/services/:section' do
+    match '(*page)' => 'pages#show',
+          :as       => :service_section_page
+  end
+
+  scope '/:section' do
+    match '(*page)' => 'pages#show',
+          :as       => :section_page
   end
 end

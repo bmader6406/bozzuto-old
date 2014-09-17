@@ -53,7 +53,7 @@ class ApartmentContactSubmissionsController < ApplicationController
 
   def process_lead_2_lease_submission
     if @submission.valid?
-      Lead2LeaseMailer.deliver_submission(@community, @submission)
+      Lead2LeaseMailer.submission(@community, @submission).deliver
 
       flash[:apartment_contact_email] = @submission.email
       flash[:contact_form]            = 'lead_2_lease'

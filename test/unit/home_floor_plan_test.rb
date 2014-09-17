@@ -4,12 +4,12 @@ class HomeFloorPlanTest < ActiveSupport::TestCase
   context "HomeFloorPlan" do
     subject { HomeFloorPlan.make }
 
-    should_belong_to(:home)
+    should belong_to(:home)
 
-    should_validate_presence_of(:name)
+    should validate_presence_of(:name)
 
-    should_have_attached_file(:image)
-    should_validate_attachment_presence(:image)
+    should have_attached_file(:image)
+    should validate_attachment_presence(:image)
 
     describe "#actual_image" do
       it "returns the image url" do

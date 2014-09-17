@@ -2,12 +2,12 @@
   <div class="grid-row">
     <div class="cty-page-actions">
       <% black_hole do %>
-        <% link_to '#', :class => 'cty-page-action-print' do %>
+        <%= link_to '#', :class => 'cty-page-action-print' do %>
           <%= icon('c') %> Print
         <% end %>
       <% end %>
 
-      <% link_to '#', :class => 'cty-page-action-phone' do %>
+      <%= link_to '#', :class => 'cty-page-action-phone' do %>
         <%= icon('d') %> Send to<br />my phone
       <% end %>
     </div>
@@ -19,7 +19,7 @@
         <a class="addthis_button_google_plusone_share"></a>
         <a class="addthis_button_email"></a>
       </div>
-      <% content_for :javascript do %>
+      <%= content_for :javascript do %>
         <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
         <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-520177a744fb168f"></script>
       <% end %>
@@ -63,7 +63,7 @@
   </h4>
 
   <div class="cty-sidebar-content">
-    <% form_for :submission, double_click_data_attrs(community.title, 'short170').merge(:url => [community, :contact]) do |f| %>
+    <%= form_for :submission, double_click_data_attrs(community.title, 'short170').merge(:url => [community, :contact]) do |f| %>
       <p class="in-container">
         <%= f.label :first_name, 'First Name', :class => 'in_label' %>
         <%= f.text_field :first_name, :class => 'in-text' %>
@@ -138,7 +138,7 @@
   <div class="cty-send-to-phone-modal modal modal-padding">
     <h4 class="hdr-tertiary">Send To My Phone</h4>
 
-    <% form_tag [community, :sms_message], :class => (flash[:send_to_phone_errors] ? 'errors' : nil) do %>
+    <%= form_tag [community, :sms_message], :class => (flash[:send_to_phone_errors] ? 'errors' : nil) do %>
       <p class="in-container">
         <label for="phone_number" class="in-label">
           Enter your phone number <%= community.short_name %> info

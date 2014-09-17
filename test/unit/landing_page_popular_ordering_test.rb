@@ -2,6 +2,7 @@ require 'test_helper'
 
 class LandingPagePopularOrderingTest < ActiveSupport::TestCase
   context 'LandingPagePopularOrdering' do
-    should_belong_to :landing_page, :property
+    should belong_to(:landing_page)
+    should belong_to(:property)
   end
 end

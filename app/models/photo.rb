@@ -11,16 +11,16 @@ class Photo < ActiveRecord::Base
 
   default_scope :include => :photo_group
 
-  named_scope :positioned, {
+  scope :positioned, {
     :include => :photo_group,
     :order   => 'photo_groups.position ASC, photos.position ASC'
   }
 
-  named_scope :in_group, lambda { |group|
+  scope :in_group, lambda { |group|
     { :conditions => { :photo_group_id => group.id } }
   }
 
-  named_scope :for_mobile,  { :conditions => { :show_to_mobile => true } }
+  scope :for_mobile,  { :conditions => { :show_to_mobile => true } }
 
   has_attached_file :image,
                     :url             => '/system/:class/:id/photo_:id_:style.:extension',

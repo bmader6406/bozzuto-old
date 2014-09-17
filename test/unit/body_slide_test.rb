@@ -2,10 +2,11 @@ require 'test_helper'
 
 class BodySlideTest < ActiveSupport::TestCase
   context 'BodySlide' do
-    should_belong_to :body_slideshow, :property
+    should belong_to(:body_slideshow)
+    should belong_to(:property)
 
-    should_have_attached_file :image
+    should have_attached_file(:image)
 
-    should_validate_attachment_presence :image
+    should validate_attachment_presence(:image)
   end
 end

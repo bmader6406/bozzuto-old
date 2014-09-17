@@ -2,20 +2,16 @@ require 'test_helper'
 
 class ProjectCategoryTest < ActiveSupport::TestCase
   context 'ProjectCategory' do
-    setup do
-      @category = ProjectCategory.create :title => 'Category title'
-    end
+    subject { ProjectCategory.create :title => 'Category title' }
 
-    subject { @category }
+    should have_and_belong_to_many(:projects)
 
-    should_have_and_belong_to_many :projects
+    should validate_presence_of(:title)
+    should validate_uniqueness_of(:title)
 
-    should_validate_presence_of :title
-    should_validate_uniqueness_of :title
-
-    context '#typus_name' do
-      should 'return the title' do
-        assert_equal @category.title, @category.typus_name
+    describe "#typus_name" do
+      it "return the title" do
+        subject.typus_name.should == subject.title
       end
     end
   end

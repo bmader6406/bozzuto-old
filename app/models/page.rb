@@ -2,12 +2,12 @@ class Page < ActiveRecord::Base
   include Montage
   include Bozzuto::Publishable
   
-  acts_as_archive :indexes => [:id, :cached_slug]
-  class Archive < ActiveRecord::Base
-    def section_title
-      ::Section.find(self.section_id).title
-    end
-  end
+  #acts_as_archive :indexes => [:id, :cached_slug]
+  #class Archive < ActiveRecord::Base
+  #  def section_title
+  #    ::Section.find(self.section_id).title
+  #  end
+  #end
   
   acts_as_nested_set :scope => :section, :dependent => :destroy
 
@@ -24,8 +24,7 @@ class Page < ActiveRecord::Base
   has_one :body_slideshow
   has_one :carousel, :as => :content
 
-  named_scope :for_sidebar_nav,
-    :conditions => { :show_in_sidebar_nav => true }
+  scope :for_sidebar_nav, :conditions => { :show_in_sidebar_nav => true }
 
   validates_presence_of :title
 

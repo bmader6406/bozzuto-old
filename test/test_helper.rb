@@ -1,8 +1,10 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
-require 'test_help'
+require 'rails/test_help'
 require 'mocha'
 require 'rspec/expectations'
+require 'shoulda_macros/paperclip'
+#require 'paperclip/matchers'
 
 require File.join(Rails.root, 'test', 'blueprints')
 require File.join(Rails.root, 'vendor', 'plugins', 'typus', 'lib', 'extensions', 'object')
@@ -17,6 +19,7 @@ end
 class ActiveSupport::TestCase
   include WebMock::API
   extend  Bozzuto::Test::ModelMacros
+  extend  Paperclip::Shoulda
 
   self.use_transactional_fixtures = true
   self.use_instantiated_fixtures  = false

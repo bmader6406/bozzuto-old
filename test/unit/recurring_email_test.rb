@@ -2,7 +2,7 @@ require 'test_helper'
 
 class RecurringEmailTest < ActiveSupport::TestCase
   context 'validations' do
-    should_validate_presence_of :email_address
+    should validate_presence_of(:email_address)
   end
 
   context 'on creation' do

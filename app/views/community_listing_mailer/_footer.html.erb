@@ -4,23 +4,23 @@
               <tr>
                 <td align="center" width="200" valign="top">
                   <% more_communities_url = (@community && @community.apartment?) ? metros_url : home_communities_url %>
-                  <% link_to more_communities_url do %>
+                  <%= link_to more_communities_url do %>
                     <%= image_tag 'community_listing/img-find.jpg', :class => 'image_fix', :alt => 'Find more Bozzuto communities', :width => 200, :height => 65 %>
                   <% end %>
                 </td>
 
                 <td align="center" width="200" valign="top">
-                  <% link_to 'http://www.facebook.com/TheBozzutoGroup' do %>
+                  <%= link_to 'http://www.facebook.com/TheBozzutoGroup' do %>
                     <%= image_tag 'community_listing/img-facebook.jpg', :class => 'image_fix', :alt => 'Find us on Facebook', :width => 201, :height => 33 %>
                   <% end %>
 
-                  <% link_to 'http://twitter.com/bozzuto' do %>
+                  <%= link_to 'http://twitter.com/bozzuto' do %>
                     <%= image_tag 'community_listing/img-twitter.jpg', :class => 'image_fix', :alt => 'Find us on Twitter', :width => 200, :height => 32 %>
                   <% end %>
                 </td>
 
                 <td align="center" width="200" valign="top">
-                  <% link_to contact_url do %>
+                  <%= link_to contact_url do %>
                     <%= image_tag 'community_listing/img-contact.jpg', :class => 'image_fix', :alt => 'Contact us', :width => 199, :height => 65 %>
                   <% end %>
                 </td>

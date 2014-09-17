@@ -5,7 +5,7 @@
   </p>
 <% end %>
 
-<% form_for @item, :url  => options, :html => { :multipart => true } do |form| %>
+<%= form_for @item, :url  => options, :html => { :multipart => true } do |form| %>
   <% if @item.new_record? %>
     <%= form.hidden_field :resource_id,   :value => params[:resource_id] %>
     <%= form.hidden_field :resource_type, :value => params[:resource].classify %>

@@ -6,9 +6,9 @@ class ApartmentFloorPlanGroupTest < ActiveSupport::TestCase
       create_floor_plan_groups
     end
 
-    should_have_many :floor_plans
+    should have_many(:floor_plans)
 
-    should_validate_presence_of :name
+    should validate_presence_of(:name)
 
     describe "named scopes" do
       context ":except" do

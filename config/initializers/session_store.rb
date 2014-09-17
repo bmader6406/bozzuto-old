@@ -4,10 +4,8 @@
 # If you change this key, all old sessions will become invalid!
 # Make sure the secret is at least 30 characters and all random, 
 # no regular words or you'll be exposed to dictionary attacks.
-ActionController::Base.session = {
-  :key         => '_bozzuto_session',
-  :secret      => '02691fc37c2e44c23f9f518a900c90db0a3d616266cad1bc3fe4605187ac46d9310f363e6da9ebea563af8dacb580a61b10ad3bd1d883128e08d20a70f94c3a7'
-}
+
+Rails.application.config.session_store :cookie_store, :key => '_bozzuto_session'
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information

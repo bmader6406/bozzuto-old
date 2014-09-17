@@ -2,11 +2,11 @@ require 'test_helper'
 
 class LeaderTest < ActiveSupport::TestCase
   context "Leader" do
-    should_have_many(:leaderships, :dependent => :destroy)
+    should have_many(:leaderships).dependent(:destroy)
 
-    should_validate_presence_of :name,
-                                :title,
-                                :company,
-                                :bio
+    should validate_presence_of(:name)
+    should validate_presence_of(:title)
+    should validate_presence_of(:company)
+    should validate_presence_of(:bio)
   end
 end

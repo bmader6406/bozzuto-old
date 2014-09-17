@@ -6,18 +6,19 @@ class ApartmentFloorPlanTest < ActiveSupport::TestCase
       @plan = ApartmentFloorPlan.new
     end
 
-    should_belong_to :floor_plan_group, :apartment_community
+    should belong_to(:floor_plan_group)
+    should belong_to(:apartment_community)
 
-    should_validate_presence_of :name,
-      :floor_plan_group,
-      :apartment_community
+    should validate_presence_of(:name)
+    should validate_presence_of(:floor_plan_group)
+    should validate_presence_of(:apartment_community)
 
-    should_validate_numericality_of :bedrooms,
-      :bathrooms,
-      :min_square_feet,
-      :max_square_feet,
-      :min_rent,
-      :max_rent
+    should validate_numericality_of(:bedrooms)
+    should validate_numericality_of(:bathrooms)
+    should validate_numericality_of(:min_square_feet)
+    should validate_numericality_of(:max_square_feet)
+    should validate_numericality_of(:min_rent)
+    should validate_numericality_of(:max_rent)
 
     describe "#uses_image_url?" do
       context "image_type is USE_IMAGE_URL" do

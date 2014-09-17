@@ -141,7 +141,7 @@ module Bozzuto
         end.compact
 
         # delete all plans from this property that aren't in the feed
-        property.floor_plans.scoped(:conditions => ['id NOT IN (?)', plan_ids]).map(&:destroy)
+        property.floor_plans.where(['id NOT IN (?)', plan_ids]).map(&:destroy)
       end
 
       def find_or_initialize_property(c)

@@ -4,8 +4,8 @@ module Bozzuto
       base.class_eval do
         validates_inclusion_of :featured, :in => [true, false]
 
-        named_scope :featured, :conditions => { :featured => true }
-        named_scope :not_featured, :conditions => { :featured => false }
+        scope :featured, :conditions => { :featured => true }
+        scope :not_featured, :conditions => { :featured => false }
       end
     end
   end

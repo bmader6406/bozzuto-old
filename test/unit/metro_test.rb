@@ -9,13 +9,13 @@ class MetroTest < ActiveSupport::TestCase
     should_be_mappable
     should_have_seo_metadata
 
-    should_validate_presence_of(:name)
-    should_validate_presence_of(:latitude)
-    should_validate_presence_of(:longitude)
+    should validate_presence_of(:name)
+    should validate_presence_of(:latitude)
+    should validate_presence_of(:longitude)
 
-    should_validate_uniqueness_of(:name)
+    should validate_uniqueness_of(:name)
 
-    should_have_many(:areas, :dependent => :destroy)
+    should have_many(:areas).dependent(:destroy)
 
     describe "nested structure" do
       before do

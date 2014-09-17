@@ -5,7 +5,7 @@
         <a href="#">Send to friend</a>
 
         <div class="popup">
-          <% form_tag [@community, :email_listing], :class => (flash[:send_listing_errors] ? 'errors' : nil) do %>
+          <%= form_tag [@community, :email_listing], :class => (flash[:send_listing_errors] ? 'errors' : nil) do %>
             <p>
               <label>
                 <strong>Input your friend&rsquo;s email address</strong> to
@@ -27,7 +27,7 @@
         <a href="#">Send this property listing</a>
 
         <div class="popup">
-          <% form_tag [@community, :email_listing], :class => (flash[:send_listing_errors] ? 'errors' : nil) do %>
+          <%= form_tag [@community, :email_listing], :class => (flash[:send_listing_errors] ? 'errors' : nil) do %>
             <p>
               <label>
                 <strong>
@@ -54,8 +54,8 @@
       <a href="#">Send to phone</a>
 
       <div class="popup">
-        <% form_tag [@community, :sms_message], :class => (flash[:send_to_phone_errors] ? 'errors' : nil) do %>
-          <% content_tag :label, :for => 'phone_number' do %>
+        <%= form_tag [@community, :sms_message], :class => (flash[:send_to_phone_errors] ? 'errors' : nil) do %>
+          <%= content_tag :label, :for => 'phone_number' do %>
             <strong>Input your phone number</strong> for <%= @community.short_name %> info. Std msg
             rates apply.
           <% end %>

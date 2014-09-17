@@ -2,14 +2,12 @@ require 'test_helper'
 
 class ProjectDataPointTest < ActiveSupport::TestCase
   context 'ProjectDataPoint' do
-    setup do
-      @point = ProjectDataPoint.make
-    end
+    subject { ProjectDataPoint.make }
 
-    subject { @point }
+    should belong_to(:project)
 
-    should_belong_to :project
-
-    should_validate_presence_of :name, :data, :project
+    should validate_presence_of(:name)
+    should validate_presence_of(:data)
+    should validate_presence_of(:project)
   end
 end

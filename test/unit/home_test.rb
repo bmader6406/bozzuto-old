@@ -2,21 +2,17 @@ require 'test_helper'
 
 class HomeTest < ActiveSupport::TestCase
   context 'Home' do
-    setup do
-      @home = Home.make
-    end
+    subject { Home.make }
 
-    subject { @home }
+    should belong_to(:home_community)
+    should have_many(:floor_plans)
 
-    should_belong_to :home_community
-    should_have_many :floor_plans
+    should validate_presence_of(:home_community)
+    should validate_presence_of(:bedrooms)
+    should validate_presence_of(:bathrooms)
 
-    should_validate_presence_of :home_community,
-      :bedrooms,
-      :bathrooms
-
-    should_validate_numericality_of :bedrooms,
-      :bathrooms,
-      :square_feet
+    should validate_numericality_of(:bedrooms)
+    should validate_numericality_of(:bathrooms)
+    should validate_numericality_of(:square_feet)
   end
 end

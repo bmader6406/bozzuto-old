@@ -21,17 +21,18 @@ class FeedTest < ActiveSupport::TestCase
 
     subject { Feed.new }
 
-    should_have_many :items, :dependent => :destroy
-    should_have_many :properties
+    should have_many(:items).dependent(:destroy)
+    should have_many(:properties)
 
-    should_validate_presence_of :name, :url
-    should_validate_uniqueness_of :url
+    should validate_presence_of(:name)
+    should validate_presence_of(:url)
+    should validate_uniqueness_of(:url)
 
     describe "#typus_name" do
       it "returns the name" do
         subject.name = 'Hooray'
 
-        assert_equal subject.name, subject.typus_name
+        subject.typus_name.should == 'Hooray'
       end
     end
 
@@ -44,7 +45,7 @@ class FeedTest < ActiveSupport::TestCase
       it "strips whitespace" do
         subject.valid?
 
-        assert_equal 'http://yay.com', subject.url
+        subject.url.should == 'http://yay.com'
       end
     end
 
@@ -64,8 +65,9 @@ class FeedTest < ActiveSupport::TestCase
         end
 
         it "sets the error message" do
-          assert !subject.valid?
-          assert_equal 'could not be found', subject.errors.on(:url)
+          subject.valid?.should == false
+
+          subject.errors[:url].should include('could not be found')
         end
       end
 
@@ -78,8 +80,9 @@ class FeedTest < ActiveSupport::TestCase
         end
 
         it "sets the error message" do
-          assert !subject.valid?
-          assert_equal 'is not a valid RSS feed', subject.errors.on(:url)
+          subject.valid?.should == false
+
+          subject.errors[:url].should include('is not a valid RSS feed')
         end
       end
 
@@ -92,8 +95,9 @@ class FeedTest < ActiveSupport::TestCase
         end
 
         it "is valid" do
-          assert subject.valid?
-          assert_nil subject.errors.on(:url)
+          subject.valid?.should == true
+
+          subject.errors[:url].should == []
         end
       end
     end
@@ -118,9 +122,9 @@ class FeedTest < ActiveSupport::TestCase
         end
 
         it "raises an exception" do
-          assert_raises(Feed::FeedNotFound) do
+          expect {
             subject.refresh!
-          end
+          }.to raise_error(Feed::FeedNotFound)
         end
       end
 
@@ -133,9 +137,9 @@ class FeedTest < ActiveSupport::TestCase
         end
 
         it "raises an exception" do
-          assert_raises(Feed::InvalidFeed) do
+          expect {
             subject.refresh!
-          end
+          }.to raise_error(Feed::InvalidFeed)
         end
       end
 
@@ -151,13 +155,13 @@ class FeedTest < ActiveSupport::TestCase
           subject.refresh!
 
           subject.items.zip(@items).each do |actual, expected|
-            assert_equal expected['title'], actual.title
-            assert_equal expected['link'],  actual.url
+            actual.title.should == expected['title']
+            actual.url.should == expected['link']
 
-            assert_equal Nokogiri::HTML(expected['description']).content, actual.description
+            actual.description.should == Nokogiri::HTML(expected['description']).content
 
             # must send #to_s here for Yahoo Pipes janky RSS feed
-            assert_equal Time.zone.parse(expected['pubDate'].to_s).rfc822, actual.published_at.rfc822
+            actual.published_at.rfc822.should == Time.zone.parse(expected['pubDate'].to_s).rfc822
           end
         end
       end

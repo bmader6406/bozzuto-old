@@ -3,7 +3,7 @@
     <li>
       <a href="#" class="find-apartment-link">Lease an Apartment</a>
       <div id="find-apartment-form" class="popup">
-        <% form_for :search, :url => community_search_path, :html => {:method => :get} do |form| -%>
+        <%= form_for :search, :url => community_search_path, :html => {:method => :get} do |form| -%>
           <div class="left-col">
             <p class="field">
               <select multiple="multiple" name="search[in_state]">

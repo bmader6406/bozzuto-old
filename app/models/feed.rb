@@ -14,7 +14,7 @@ class Feed < ActiveRecord::Base
 
   validates_uniqueness_of :url
 
-  validate_on_create :feed_valid?
+  validate :feed_valid?, :on => :create
 
 
   def typus_name

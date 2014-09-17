@@ -6,11 +6,11 @@ module Bozzuto
       load_community_classes
 
       if query =~ /\A\d{5}(?:-\d{4})?\Z/
-        new(:zip, query, base_scope.zip_code_begins_with(query))
+        new(:zip, query, base_scope.search(:zip_code_starts_with => query).all)
       else
         new(:name, query, {
-          :city  => base_scope.city_name_begins_with(query),
-          :title => base_scope.title_like(query)
+          :city  => base_scope.search(:city_name_starts_with => query).all,
+          :title => base_scope.search(:title_contains => query).all
         })
       end
     end

@@ -2,82 +2,77 @@ require 'test_helper'
 
 class SectionTest < ActiveSupport::TestCase
   context 'Section' do
-    setup do
-      @section = Section.make
-    end
+    subject { Section.make }
 
-    subject { @section }
+    should validate_presence_of(:title)
+    should validate_uniqueness_of(:title)
 
-    should_validate_presence_of :title
-    should_validate_uniqueness_of :title
+    should have_many(:testimonials)
+    should have_many(:projects)
+    should have_and_belong_to_many(:awards)
+    should have_and_belong_to_many(:news_posts)
+    should have_and_belong_to_many(:press_releases)
+    should have_one(:contact_topic)
 
-    should_have_many :testimonials, :projects
-    should_have_and_belong_to_many :awards, :news_posts, :press_releases
-    should_have_one :contact_topic
-
-    should_have_attached_file :left_montage_image
-    should_have_attached_file :middle_montage_image
-    should_have_attached_file :right_montage_image
+    should have_attached_file(:left_montage_image)
+    should have_attached_file(:middle_montage_image)
+    should have_attached_file(:right_montage_image)
 
 
     context '#typus_name' do
       should 'return the title' do
-        assert_equal @section.title, @section.typus_name
+        assert_equal subject.title, subject.typus_name
       end
     end
 
     context 'self#about' do
-      setup do
-        @section = Section.make(:about)
-      end
+      subject { Section.make(:about) }
 
       should 'return the About section' do
-        assert_equal @section, Section.about
+        assert_equal subject, Section.about
       end
     end
 
     context 'self#news_and_press' do
-      setup do
-        @section = Section.make(:news_and_press)
-      end
+      subject { Section.make(:news_and_press) }
 
       should 'return the News & Press section' do
-        assert_equal @section, Section.news_and_press
+        assert_equal subject, Section.news_and_press
       end
     end
 
     context '#about?' do
       context "when about flag is true" do
-        setup { @section.about = true }
+        setup { subject.about = true }
 
         should 'return true' do
-          assert @section.about?
+          assert subject.about?
         end
       end
 
       context "when slug is anything else" do
-        setup { @section.about = false }
+        setup { subject.about = false }
 
         should 'return false false' do
-          assert !@section.about?
+          assert !subject.about?
         end
       end
     end
 
     context '#aggregate?' do
       context "when About section" do
-        setup { @section.about = true }
+        setup { subject.about = true }
 
         should 'return true' do
-          assert @section.aggregate?
+          assert subject.aggregate?
         end
       end
 
       context "when any other section" do
-        setup { @section.about = false }
+        setup { subject.about = false }
 
         should 'return false' do
-          assert !@section.aggregate?
+          assert !subject.aggregate?
         end
       end
     end
@@ -85,25 +80,25 @@ class SectionTest < ActiveSupport::TestCase
     context '#montage?' do
       context 'when all montage images are present' do
         setup do
-          @section.expects(:left_montage_image?).returns(true)
-          @section.expects(:middle_montage_image?).returns(true)
-          @section.expects(:right_montage_image?).returns(true)
+          subject.expects(:left_montage_image?).returns(true)
+          subject.expects(:middle_montage_image?).returns(true)
+          subject.expects(:right_montage_image?).returns(true)
         end
 
         should 'return true' do
-          assert @section.montage?
+          assert subject.montage?
         end
       end
 
       context 'when any montage images are missing' do
         setup do
-          @section.expects(:left_montage_image?).returns(false)
-          @section.stubs(:middle_montage_image?).returns(true)
-          @section.stubs(:right_montage_image?).returns(true)
+          subject.expects(:left_montage_image?).returns(false)
+          subject.stubs(:middle_montage_image?).returns(true)
+          subject.stubs(:right_montage_image?).returns(true)
         end
 
         should 'return true' do
-          assert !@section.montage?
+          assert !subject.montage?
         end
       end
     end

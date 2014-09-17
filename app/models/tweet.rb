@@ -8,7 +8,7 @@ class Tweet < ActiveRecord::Base
 
   validates_uniqueness_of :tweet_id
 
-  named_scope :recent, :limit => 10
+  scope :recent, :limit => 10
 
   default_scope :order => 'posted_at DESC'
 

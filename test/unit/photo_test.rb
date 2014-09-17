@@ -2,14 +2,14 @@ require 'test_helper'
 
 class PhotoTest < ActiveSupport::TestCase
   context "A photo" do
-    should_belong_to(:property)
-    should_belong_to(:photo_group)
+    should belong_to(:property)
+    should belong_to(:photo_group)
 
-    should_validate_presence_of(:title)
-    should_validate_presence_of(:photo_group)
-    should_validate_presence_of(:property)
+    should validate_presence_of(:title)
+    should validate_presence_of(:photo_group)
+    should validate_presence_of(:property)
 
-    should_have_attached_file(:image)
+    should have_attached_file(:image)
 
     describe ".typus_order_by" do
       it "returns the correct SQL" do

@@ -59,7 +59,7 @@ class TwitterAccount < ActiveRecord::Base
 
   def username_exists
     begin
-      if username? && errors.on(:username).blank? && !Twitter.user?(username)
+      if username? && errors[:username].blank? && !Twitter.user?(username)
         errors.add(:username, 'is not a valid Twitter user')
       end
     rescue Twitter::Error => e

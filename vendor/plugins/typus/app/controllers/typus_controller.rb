@@ -1,6 +1,6 @@
 class TypusController < ApplicationController
 
-  skip_filter filter_chain
+  skip_filter *_process_action_callbacks.map(&:filter)
 
   unloadable
 
@@ -10,8 +10,6 @@ class TypusController < ApplicationController
   include Typus::QuickEdit
   include Typus::Preferences
   include Typus::Reloader
-
-  filter_parameter_logging :password
 
   before_filter :verify_typus_users_table_schema
 

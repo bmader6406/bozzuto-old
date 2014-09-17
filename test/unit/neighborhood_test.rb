@@ -8,26 +8,26 @@ class NeighborhoodTest < ActiveSupport::TestCase
     should_be_mappable
     should_have_seo_metadata
 
-    should_validate_presence_of(:name)
-    should_validate_presence_of(:latitude)
-    should_validate_presence_of(:longitude)
-    should_validate_presence_of(:area)
-    should_validate_presence_of(:state)
+    should validate_presence_of(:name)
+    should validate_presence_of(:latitude)
+    should validate_presence_of(:longitude)
+    should validate_presence_of(:area)
+    should validate_presence_of(:state)
 
-    should_validate_uniqueness_of(:name)
+    should validate_uniqueness_of(:name)
 
-    should_have_attached_file(:banner_image)
-    should_validate_attachment_presence(:banner_image)
+    should have_attached_file(:banner_image)
+    should validate_attachment_presence(:banner_image)
 
-    should_belong_to(:area)
-    should_belong_to(:state)
-    should_belong_to(:featured_apartment_community)
-    should_have_many(:neighborhood_memberships, :dependent => :destroy)
-    should_have_many(:apartment_communities, :through => :neighborhood_memberships)
+    should belong_to(:area)
+    should belong_to(:state)
+    should belong_to(:featured_apartment_community)
+    should have_many(:neighborhood_memberships).dependent(:destroy)
+    should have_many(:apartment_communities).through(:neighborhood_memberships)
 
-    should_have_many(:related_neighborhoods, :dependent => :destroy)
-    should_have_many(:nearby_neighborhoods, :through => :related_neighborhoods)
-    should_have_many(:neighborhood_relations, :dependent => :destroy)
+    should have_many(:related_neighborhoods).dependent(:destroy)
+    should have_many(:nearby_neighborhoods).through(:related_neighborhoods)
+    should have_many(:neighborhood_relations).dependent(:destroy)
 
     describe "nested structure" do
       before do

@@ -33,7 +33,7 @@ module Bozzuto
         })
 
         twitter_account = TwitterAccount.new(:username => 'TheBozzutoGroup')
-        twitter_account.save(false)
+        twitter_account.save(:validate => false)
 
         local_info_feed = Feed.make_unsaved({
           :url => 'http://bozzuto.com/feed'
@@ -449,7 +449,7 @@ module Bozzuto
         end
 
         should "contain title" do
-          assert_equal 'Koepp Group', @nearby_community[:title]
+          assert_equal 'I R Close', @nearby_community[:title]
         end
       end
 
@@ -725,7 +725,7 @@ module Bozzuto
 
         context "with Nearby Apartment Communities" do
           setup do
-            @nearby_community = @community.nearby_communities.first
+            @nearby_community = @community.nearby_communities.included_in_export.first
 
             path = '//PhysicalProperty//Property//NearbyCommunity'
             @nearby_node = @doc.xpath(path)[0]

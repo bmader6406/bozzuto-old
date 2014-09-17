@@ -8,32 +8,36 @@ class CommunityListingMailer < ActionMailer::Base
   include CurrencyHelper
   helper_method :dollars
 
+  default :from     => BOZZUTO_EMAIL_ADDRESS,
+          :reply_to => BOZZUTO_REPLY_TO
+
 
   def single_listing(to_address, community)
-    from       BOZZUTO_EMAIL_ADDRESS
-    reply_to   BOZZUTO_REPLY_TO
-    recipients to_address
-    subject    community.title
-    sent_on    Time.now
-    body       :community => community, :to => to_address
+    @community  = community
+    @to_address = to_address
+
+    mail(
+      :to      => to_address,
+      :subject => community.title
+    )
   end
 
   def recently_viewed_listings(recurring_email)
-    from       BOZZUTO_EMAIL_ADDRESS
-    reply_to   BOZZUTO_REPLY_TO
-    recipients recurring_email.email_address
-    subject    'Recently Viewed Apartment Communities'
-    sent_on    Time.now
-    body       :recurring_email => recurring_email
+    @recurring_email = recurring_email
+
+    mail(
+      :to => recurring_email.email_address,
+      :subject => 'Recently Viewed Apartment Communities'
+    )
   end
 
   def search_results_listings(recurring_email)
-    from       BOZZUTO_EMAIL_ADDRESS
-    reply_to   BOZZUTO_REPLY_TO
-    recipients recurring_email.email_address
-    subject    'Apartment Communities Search Results'
-    sent_on    Time.now
-    body       :recurring_email => recurring_email
+    @recurring_email = recurring_email
+
+    mail(
+      :to      => recurring_email.email_address,
+      :subject => 'Apartment Communities Search Results'
+    )
   end
 
 

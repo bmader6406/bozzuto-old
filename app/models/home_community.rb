@@ -4,7 +4,7 @@ class HomeCommunity < Community
   cattr_reader :per_page
   @@per_page = 6
   
-  acts_as_archive :indexes => [:id]
+  #acts_as_archive :indexes => [:id]
 
   has_neighborhood_listing_image :neighborhood_listing_image, :required => false
 
@@ -42,13 +42,11 @@ class HomeCommunity < Community
     :convert_options => { :all => '-quality 80 -strip' }
 
 
-  named_scope :with_green_package,
+  scope :with_green_package,
     :joins => 'INNER JOIN green_packages ON properties.id = green_packages.home_community_id'
 
-  default_scope :order => 'title ASC'
-
   def nearby_communities(limit = 6)
-    @nearby_communities ||= HomeCommunity.published.mappable.near(self).all(:limit => limit)
+    @nearby_communities ||= self.class.published.mappable.near(self).limit(limit)
   end
 
   def show_lasso_form?
@@ -58,6 +56,7 @@ class HomeCommunity < Community
   def first_home_neighborhood
     home_neighborhoods.first
   end
+
 
   private
 

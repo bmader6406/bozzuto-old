@@ -2,33 +2,31 @@ require 'test_helper'
 
 class ContactMailerTest < ActionMailer::TestCase
   context "ContactMailer" do
-    setup do
+    before do
       @submission = ContactSubmission.make_unsaved
     end
 
-    context "#contact_form_submission" do
-      setup do
-        @email = ContactMailer.deliver_contact_form_submission(@submission)
+    describe "#contact_form_submission" do
+      before do
+        expect {
+          @email = ContactMailer.contact_form_submission(@submission).deliver
+        }.to change { ActionMailer::Base.deliveries.count }.by(1)
       end
 
-      should_change('deliveries', :by => 1) { ActionMailer::Base.deliveries.count }
-
-      should "deliver the message" do
-        assert_equal [@submission.topic.recipients], @email.to
+      it "sends to the correct recipients" do
+        @email.to.should == [@submission.topic.recipients]
       end
 
-      should "have a subject" do
-        assert_equal "[Bozzuto.com] Message from #{@submission.name}",
-          @email.subject
+      it "has the correct subject" do
+        @email.subject.should == "[Bozzuto.com] Message from #{@submission.name}"
       end
 
-      should "have the user's name and email in the body" do
-        assert_match /From: #{@submission.name} <#{@submission.email}>/,
-          @email.body
+      it "has the user's name and email in the body" do
+        @email.encoded.should =~ /From: #{@submission.name} <#{@submission.email}>/
       end
       
-      should "have the topic in the body" do
-        assert_match /Topic: #{@submission.topic.topic}/, @email.body
+      it "has the topic in the body" do
+        @email.body.should =~ /Topic: #{@submission.topic.topic}/
       end
     end
   end

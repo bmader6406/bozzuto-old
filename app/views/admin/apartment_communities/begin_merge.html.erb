@@ -73,7 +73,7 @@
 </table>
 
 
-<% form_tag url_for_action(:end_merge) do %>
+<%= form_tag url_for_action(:end_merge) do %>
   <%= hidden_field_tag 'external_community_id', @external_community.id %>
 
   <p>

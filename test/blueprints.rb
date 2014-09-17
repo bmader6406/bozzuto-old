@@ -27,7 +27,7 @@ Sham.define do
 end
 
 Sham.bedrooms(:unique => false)  { rand(5) + 1 }
-Sham.bathrooms(:unique => false) { (rand * 3).round_with_precision(1) + 1 }
+Sham.bathrooms(:unique => false) { (rand * 3).round(1) + 1 }
 
 
 AdSource.blueprint do

@@ -1,10 +1,12 @@
 class ContactMailer < ActionMailer::Base
   def contact_form_submission(submission)
-    from       BOZZUTO_EMAIL_ADDRESS
-    reply_to   "#{submission.name} <#{submission.email}>"
-    recipients submission.topic.recipients
-    subject    "[Bozzuto.com] Message from #{submission.name}"
-    sent_on    Time.now
-    body       :submission => submission
+    @submission = submission
+
+    mail(
+      :to       => submission.topic.recipients,
+      :from     => BOZZUTO_EMAIL_ADDRESS,
+      :reply_to => "#{submission.name} <#{submission.email}>",
+      :subject  => "[Bozzuto.com] Message from #{submission.name}"
+    )
   end
 end

@@ -2,36 +2,38 @@ require 'test_helper'
 
 class BozzutoBlogPostTest < ActiveSupport::TestCase
   context "A Tom's Blog Post" do
-    setup { @post = BozzutoBlogPost.new }
+    subject { BozzutoBlogPost.new }
 
-    subject { @post }
+    should have_attached_file(:image)
 
-    should_have_attached_file :image
-
-    should_validate_presence_of :header_url, :title, :url, :published_at
-    should_validate_attachment_presence :image
+    should validate_presence_of(:header_url)
+    should validate_presence_of(:title)
+    should validate_presence_of(:url)
+    should validate_presence_of(:published_at)
+    should validate_attachment_presence(:image)
 
     %w(header_url url).each do |attr|
       context "with a valid #{attr}" do
-        setup do
-          @post.send("#{attr}=", 'http://batman.com')
-          @post.valid?
+        before do
+          subject.send("#{attr}=", 'http://batman.com')
+
+          subject.valid?
         end
 
         should "not have errors on #{attr}" do
-          assert_nil @post.errors.on(attr)
+          subject.errors[attr].should == []
         end
       end
 
       context "with an invalid #{attr}" do
-        setup do
-          @post.send("#{attr}=", 'batman.com')
-          @post.valid?
+        before do
+          subject.send("#{attr}=", 'batman.com')
+
+          subject.valid?
         end
 
-        should "not have errors on #{attr}" do
-          assert @post.errors.on(attr)
-          assert_match /is not a valid URL/, @post.errors.on(attr)
+        it "doesn't have errors on #{attr}" do
+          subject.errors[attr].to_s.should =~ /is not a valid URL/
         end
       end
     end

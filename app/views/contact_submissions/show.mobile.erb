@@ -32,7 +32,7 @@
   <div class="content">
     <%= error_messages_for :submission %>
 
-    <% form_for @submission, :url => contact_path(:topic => @topic), :html => { :class => 'required-form', 'data-track-event-delay' => 'General,Contact Form Details' } do |f| %>
+    <%= form_for @submission, :url => contact_path(:topic => @topic), :html => { :class => 'required-form', 'data-track-event-delay' => 'General,Contact Form Details' } do |f| %>
       <%= f.text_field :name, :class => 'contact-name', :placeholder => 'Your Name' %>
 
       <%= f.text_field :email, :class => 'contact-name', :placeholder => 'Your Email' %>

@@ -10,9 +10,9 @@ class CareersControllerTest < ActionController::TestCase
           get :index, :section => 'careers'
         end
 
-        should_respond_with :success
-        should_render_template :index
-        should_assign_to(:section) { @section }
+        should respond_with(:success)
+        should render_template(:index)
+        should assign_to(:section) { @section }
       end
 
       mobile_device do
@@ -23,10 +23,10 @@ class CareersControllerTest < ActionController::TestCase
           get :index, :section => 'careers'
         end
 
-        should_respond_with :success
-        should_render_template 'pages/show'
-        should_assign_to(:section) { @section }
-        should_assign_to(:page)    { @page }
+        should respond_with(:success)
+        should render_template('pages/show')
+        should assign_to(:section) { @section }
+        should assign_to(:page)    { @page }
       end
     end
   end

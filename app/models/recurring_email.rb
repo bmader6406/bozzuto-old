@@ -14,9 +14,9 @@ class RecurringEmail < ActiveRecord::Base
 
   before_validation :generate_token, :on => :create
 
-  named_scope :recurring,             :conditions => { :recurring => true }
-  named_scope :active,                :conditions => { :state => 'active' }
-  named_scope :last_sent_30_days_ago, :conditions => ['last_sent_at < ?', 30.days.ago]
+  scope :recurring,             :conditions => { :recurring => true }
+  scope :active,                :conditions => { :state => 'active' }
+  scope :last_sent_30_days_ago, :conditions => ['last_sent_at < ?', 30.days.ago]
 
 
   def self.random_uuid
@@ -33,10 +33,10 @@ class RecurringEmail < ActiveRecord::Base
 
   def send!
     if recurring?
-      CommunityListingMailer.deliver_search_results_listings(self)
+      CommunityListingMailer.search_results_listings(self).deliver
       update_attribute(:last_sent_at, Time.now)
     else
-      CommunityListingMailer.deliver_recently_viewed_listings(self)
+      CommunityListingMailer.recently_viewed_listings(self).deliver
       update_attribute(:state, 'completed')
     end
   end

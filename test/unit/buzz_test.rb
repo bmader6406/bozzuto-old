@@ -5,7 +5,7 @@ class BuzzTest < ActiveSupport::TestCase
     setup { @buzz = Buzz.new }
     subject { @buzz }
 
-    should_validate_presence_of :email
+    should validate_presence_of(:email)
 
     should "save buzzes correctly" do
       @buzz.buzzes = {:hello => '1', :hi => '0', :hola => '1'}

@@ -12,8 +12,8 @@ module Bozzuto
           validates_uniqueness_of :name
 
           table_name = base.to_s.tableize
-          named_scope :positioned,       :order => "#{table_name}.position ASC"
-          named_scope :ordered_by_count, :order => "#{table_name}.apartment_communities_count DESC, #{table_name}.name ASC"
+          scope :positioned,       :order => "#{table_name}.position ASC"
+          scope :ordered_by_count, :order => "#{table_name}.apartment_communities_count DESC, #{table_name}.name ASC"
 
           after_save :update_apartment_communities_count
           after_destroy :update_apartment_communities_count

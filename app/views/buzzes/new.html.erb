@@ -12,7 +12,7 @@
   exclusive to Buzz subscribers.
 </p>
 
-<% form_for @buzz, :url => buzz_path, :method => :post, :html => { :class => "required-form" } do |f| -%>
+<%= form_for @buzz, :url => buzz_path, :method => :post, :html => { :class => "required-form" } do |f| -%>
   <fieldset>
     <h3>Contact Information</h3>
 
@@ -65,7 +65,7 @@
   <fieldset>
     <h3>What buzz would you like to hear?</h3>
     <p class="checkboxes">
-    <% f.fields_for :buzzes do |b| -%>
+    <%= f.fields_for :buzzes do |b| -%>
       <%= serialized_check_box(b, @buzz.buzzes, :apartments) %>
       <%= serialized_check_box(b, @buzz.buzzes, :new_homes) %>
       <%= serialized_check_box(b, @buzz.buzzes, :management) %>
@@ -81,7 +81,7 @@
   <fieldset>
     <h3>How are you affiliated with Bozzuto?</h3>
     <p class="checkboxes">
-    <% f.fields_for :affiliations do |a| -%>
+    <%= f.fields_for :affiliations do |a| -%>
       <%= serialized_check_box a, @buzz.affiliations, :prospective_homeowner %>
       <%= serialized_check_box a, @buzz.affiliations, :prospective_resident %>
       <%= serialized_check_box a, @buzz.affiliations, :current_homeowner %>

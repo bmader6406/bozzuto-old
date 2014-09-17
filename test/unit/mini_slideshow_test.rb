@@ -2,7 +2,8 @@ require 'test_helper'
 
 class MiniSlideshowTest < ActiveSupport::TestCase
   context 'MiniSlideshow' do
-    should_validate_presence_of :title, :link_url
+    should validate_presence_of(:title)
+    should validate_presence_of(:link_url)
 
     context '#typus_name' do
       setup do

@@ -3,7 +3,7 @@ namespace :ckeditor do
     require "config/environment"
     require 'fileutils'
 
-    directory = File.join(RAILS_ROOT, '/vendor/plugins/rails-ckeditor/')
+    directory = Rails.root.join('vendor', 'plugins', 'rails-ckeditor')
     require "#{directory}lib/ckeditor"
     require "#{directory}lib/ckeditor/version"
     require "#{directory}lib/ckeditor/utils"
@@ -32,7 +32,7 @@ namespace :ckeditor do
   
   desc "Generate configuration"
   task :config do
-    directory = File.join(RAILS_ROOT, '/vendor/plugins/rails-ckeditor/')
+    directory = Rails.root.join('vendor', 'plugins', 'rails-ckeditor')
     require "#{directory}lib/ckeditor/config"
     Ckeditor::Config.create_yml
   end
@@ -62,7 +62,7 @@ namespace :ckeditor do
     puts "** Current CKEditor version: #{installed_version}..."
     puts "** Downloading #{version} (please be patient)..."
 
-    rails_tmp_path = File.join(RAILS_ROOT, "/tmp/")
+    rails_tmp_path = Rails.root.join('tmp')
     tmp_zip_path = File.join(rails_tmp_path, "ckeditor_#{version}.zip")
 
     # Creating tmp dir if it doesn't exist
@@ -98,7 +98,10 @@ namespace :ckeditor do
     Ckeditor::Utils.backup_existing
 
     puts "** Shifting files to /public/javascripts/ckeditor"
-    FileUtils.cp_r File.join(RAILS_ROOT, "/tmp/ckeditor/"), File.join(RAILS_ROOT, "/public/javascripts/")
+    FileUtils.cp_r(
+      Rails.root.join('tmp', 'ckeditor'),
+      Rails.root.join('public', 'javascripts')
+    )
 
     puts "** Clean up"
     FileUtils.remove_file(tmp_zip_path, true)

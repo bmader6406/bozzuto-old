@@ -1,5 +1,5 @@
 module ApplicationHelper
-  include Twitter::Autolink
+  #include Twitter::Autolink
 
   def black_hole; end
 

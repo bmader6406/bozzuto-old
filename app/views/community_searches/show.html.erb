@@ -7,7 +7,7 @@
       <a href="#">Email these search results</a>
 
       <div class="popup">
-        <% form_for RecurringEmail.new, :url => email_search_results_url, :html => { :class => (flash[:search_results_errors] ? 'errors' : nil) } do |f| %>
+        <%= form_for RecurringEmail.new, :url => email_search_results_url, :html => { :class => (flash[:search_results_errors] ? 'errors' : nil) } do |f| %>
           <p>
             <label>
               <strong>
@@ -66,7 +66,7 @@
           Search By
           <%= image_tag 'spinner.gif', :style => 'display: none', :id => 'spinner' %>
         </h2>
-        <% form_for @search, :method => :get, :html => {:id => 'apartment-search-form'} do |f| %>
+        <%= form_for @search, :method => :get, :html => {:id => 'apartment-search-form'} do |f| %>
           <fieldset id="bedrooms" class="">
             <h3>Bedrooms</h3>
             <ul>

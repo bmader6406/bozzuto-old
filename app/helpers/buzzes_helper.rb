@@ -6,7 +6,7 @@ module BuzzesHelper
   end
 
   def mobile_check_box(form, object, field, label_text = nil)
-    object_name = ActionController::RecordIdentifier.singular_class_name(object)
+    object_name = object.class.name.underscore
 
     label_text ||= I18n.t("helpers.label.#{object_name}.#{field}", :default => field.to_s.titleize)
     label_text = "#{buzz_check_box(form, object, field)}&nbsp;#{label_text}"

@@ -1,10 +1,10 @@
 class Admin::MasterController < ApplicationController
 
-  skip_filter filter_chain
+  skip_filter *_process_action_callbacks.map(&:filter)
 
   unloadable
 
-  inherit_views 'admin/resources'
+  #inherit_views 'admin/resources'
 
   layout 'admin'
 
@@ -12,8 +12,6 @@ class Admin::MasterController < ApplicationController
   include Typus::Format
   include Typus::Preferences
   include Typus::Reloader
-
-  filter_parameter_logging :password
 
   before_filter :reload_config_and_roles
 

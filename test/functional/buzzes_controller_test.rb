@@ -45,7 +45,7 @@ class BuzzesControllerTest < ActionController::TestCase
           should_render_template :new
           should_not_change('the buzz count') { Buzz.count }
           should 'have errors on buzz' do
-            assert assigns(:buzz).errors.on(:email)
+            assert assigns(:buzz).errors[:email]
           end
         end
 
@@ -80,7 +80,7 @@ class BuzzesControllerTest < ActionController::TestCase
           should_render_template :new
           should_not_change('the buzz count') { Buzz.count }
           should "have errors on buzz" do
-            assert assigns(:buzz).errors.on(:email)
+            assert assigns(:buzz).errors[:email]
           end
         end
       end

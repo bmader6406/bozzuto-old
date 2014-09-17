@@ -21,7 +21,7 @@
           <a href="#">Email me this property list</a>
 
           <div class="popup">
-            <% form_for RecurringEmail.new, :url => email_recently_viewed_path, :html => { :class => (flash[:recently_viewed_errors] ? 'errors' : nil) } do |f| %>
+            <%= form_for RecurringEmail.new, :url => email_recently_viewed_path, :html => { :class => (flash[:recently_viewed_errors] ? 'errors' : nil) } do |f| %>
               <p>
                 <label>
                   <strong>

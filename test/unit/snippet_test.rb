@@ -2,20 +2,17 @@ require 'test_helper'
 
 class SnippetTest < ActiveSupport::TestCase
   context "Snippet" do
-    setup do
-      @snippet = Snippet.make
-    end
+    subject { Snippet.make }
 
-    subject { @snippet }
+    should have_many(:pages)
 
-    should_have_many :pages
+    should validate_presence_of(:name)
+    should validate_presence_of(:body)
+    should validate_uniqueness_of(:name)
 
-    should_validate_presence_of :name, :body
-    should_validate_uniqueness_of :name
-
-    context '#typus_description' do
-      should 'return the description' do
-        assert_match /text/, Snippet.typus_description
+    describe "#typus_description" do
+      it "returns the description" do
+        Snippet.typus_description.should =~ /text/
       end
     end
   end

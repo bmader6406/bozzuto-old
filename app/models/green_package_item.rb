@@ -20,9 +20,9 @@ class GreenPackageItem < ActiveRecord::Base
   validates_inclusion_of :ultra_green, :in => [true, false]
 
 
-  named_scope :ultra_green, :conditions => { :ultra_green => true }
+  scope :ultra_green, :conditions => { :ultra_green => true }
 
-  named_scope :include_ultra_green, lambda { |include_ultra_green|
+  scope :include_ultra_green, lambda { |include_ultra_green|
     { :conditions => { :ultra_green => false } } unless include_ultra_green
   }
 

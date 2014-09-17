@@ -6,16 +6,19 @@ class StateTest < ActiveSupport::TestCase
 
     should_have_seo_metadata
 
-    should_have_many(:cities, :counties)
-    should_have_many(:apartment_communities, :through => :cities)
-    should_have_many(:home_communities, :through => :cities)
-    should_have_many(:communities, :through => :cities)
-    should_have_many(:featured_apartment_communities, :through => :cities)
-    should_have_many(:neighborhoods)
+    should have_many(:cities)
+    should have_many(:counties)
+    should have_many(:apartment_communities).through(:cities)
+    should have_many(:home_communities).through(:cities)
+    should have_many(:communities).through(:cities)
+    should have_many(:featured_apartment_communities).through(:cities)
+    should have_many(:neighborhoods)
 
-    should_validate_presence_of(:code, :name)
-    should_ensure_length_is(:code, 2)
-    should_validate_uniqueness_of(:code, :name)
+    should validate_presence_of(:code)
+    should validate_presence_of(:name)
+    should ensure_length_of(:code).is_equal_to(2)
+    should validate_uniqueness_of(:code)
+    should validate_uniqueness_of(:name)
 
     describe "#to_param" do
       it "returns the code" do

@@ -19,5 +19,5 @@ class PropertyFeature < ActiveRecord::Base
 
   validates_uniqueness_of :name
 
-  named_scope :has_icon, :conditions => "icon_file_name != ''"
+  scope :has_icon, :conditions => "icon_file_name != ''"
 end

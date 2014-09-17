@@ -8,7 +8,7 @@ class City < ActiveRecord::Base
   validates_presence_of :name, :state
   validates_uniqueness_of :name, :scope => :state_id
 
-  named_scope :ordered_by_name, :order => 'name ASC'
+  scope :ordered_by_name, :order => 'name ASC'
 
   def to_s
     "#{name}, #{state.code}"

@@ -7,10 +7,10 @@ class TwitterAccountTest < ActiveSupport::TestCase
       TwitterAccount.make(:username => 'batman')
     }
 
-    should_have_many :tweets
+    should have_many :tweets
 
-    should_validate_presence_of :username
-    should_validate_uniqueness_of :username
+    should validate_presence_of :username
+    should validate_uniqueness_of :username
 
     describe "#typus_name" do
       it "returns the username" do
@@ -37,7 +37,7 @@ class TwitterAccountTest < ActiveSupport::TestCase
         it "adds an error message" do
           subject.valid?
 
-          subject.errors.on(:base).should == "There was a problem connecting to Twitter. Please try again later."
+          subject.errors[:base].should == ["There was a problem connecting to Twitter. Please try again later."]
         end
       end
 
@@ -51,7 +51,7 @@ class TwitterAccountTest < ActiveSupport::TestCase
             subject.valid?.should == false
           end
 
-          subject.errors.on(:username).should =~ /is not a valid Twitter user/
+          subject.errors[:username].should include('is not a valid Twitter user')
         end
       end
 
@@ -64,7 +64,7 @@ class TwitterAccountTest < ActiveSupport::TestCase
         it "has an error on username" do
           subject.valid?.should == false
 
-          subject.errors.on(:username).should =~ /Do not include the @ symbol/
+          subject.errors[:username].to_s.should =~ /Do not include the @ symbol/
         end
       end
 
@@ -77,7 +77,7 @@ class TwitterAccountTest < ActiveSupport::TestCase
         it "has an error on username" do
           subject.valid?.should == false
 
-          subject.errors.on(:username).should =~ /should only contain letters, numbers, and underscore/
+          subject.errors[:username].to_s.should =~ /should only contain letters, numbers, and underscore/
         end
       end
 
@@ -91,9 +91,7 @@ class TwitterAccountTest < ActiveSupport::TestCase
         it "has an error on username" do
           subject.valid?.should == false
 
-          subject.errors.on(:username).detect { |e|
-            e =~ /must be 15 or fewer characters/
-          }.should be_present
+          subject.errors[:username].to_s.should =~ /must be 15 or fewer characters/
         end
       end
 
@@ -107,7 +105,7 @@ class TwitterAccountTest < ActiveSupport::TestCase
             subject.valid?.should == true
           end
 
-          subject.errors.on(:username).should == nil
+          subject.errors[:username].should == []
         end
       end
     end

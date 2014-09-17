@@ -17,5 +17,5 @@ class Publication < ActiveRecord::Base
     :order     => 'position ASC',
     :dependent => :destroy
 
-  named_scope :ordered, :order => 'position ASC'
+  scope :ordered, :order => 'position ASC'
 end

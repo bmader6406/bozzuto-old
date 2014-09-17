@@ -18,7 +18,7 @@ class BozzutoBlogPost < ActiveRecord::Base
 
   default_scope :order => 'published_at DESC'
 
-  named_scope :latest, lambda { |limit|
+  scope :latest, lambda { |limit|
     { :limit => limit }
   }
 end

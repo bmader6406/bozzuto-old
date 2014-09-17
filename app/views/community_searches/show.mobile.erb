@@ -12,7 +12,7 @@
         <p>Please check the spelling and search again or browse by state below.</p>
       </div>
     <%- end -%>
-    <% form_tag community_search_path, :method => :get do %>
+    <%= form_tag community_search_path, :method => :get do %>
       <%= text_field_tag 'q', params[:q], :class => 'search-zip',
             :placeholder => 'Enter City, Zip, or Community Name' %>
       <%= submit_tag 'Search Now', :name => 'search-submit', :class => 'submit search-submit' %>
