@@ -20,6 +20,6 @@ class NewsPostsController < SectionContentController
   end
 
   def find_post
-    @news_post = section_news_posts.find(params[:news_post_id])
+    @news_post = section_news_posts.find(params[:id])
   end
 end

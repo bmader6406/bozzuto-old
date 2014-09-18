@@ -18,7 +18,7 @@ class ApartmentFloorPlansControllerTest < ActionController::TestCase
               :floor_plan_group_id    => @group.id
           end
 
-          should_respond_with :not_found
+          should respond_with(:not_found)
         end
       end
 
@@ -30,9 +30,7 @@ class ApartmentFloorPlansControllerTest < ActionController::TestCase
               :floor_plan_group_id    => @group.id
           end
 
-          should_redirect_to('the floor plan groups page') do
-            apartment_community_floor_plan_groups_path(@community)
-          end
+          should redirect_to('the floor plan groups page') { apartment_community_floor_plan_groups_path(@community) }
         end
 
         mobile_device do
@@ -42,10 +40,10 @@ class ApartmentFloorPlansControllerTest < ActionController::TestCase
               :floor_plan_group_id    => @group.id
           end
 
-          should_respond_with :success
-          should_render_with_layout :application
-          should_assign_to(:community) { @community }
-          should_assign_to(:group) { @group }
+          should respond_with(:success)
+          should render_with_layout(:application)
+          should assign_to(:community) { @community }
+          should assign_to(:group) { @group }
         end
       end
     end
@@ -69,7 +67,7 @@ class ApartmentFloorPlansControllerTest < ActionController::TestCase
               :id                     => @plan.id
           end
 
-          should_respond_with :not_found
+          should respond_with(:not_found)
         end
       end
 
@@ -89,9 +87,7 @@ class ApartmentFloorPlansControllerTest < ActionController::TestCase
               :id                     => @plan.id
           end
 
-          should_redirect_to('the floor plan groups page') do
-            apartment_community_floor_plan_groups_path(@community)
-          end
+          should redirect_to('the floor plan groups page') { apartment_community_floor_plan_groups_path(@community) }
         end
 
         mobile_device do
@@ -102,11 +98,11 @@ class ApartmentFloorPlansControllerTest < ActionController::TestCase
               :id                     => @plan.id
           end
 
-          should_respond_with :success
-          should_render_with_layout :application
-          should_assign_to(:community) { @community }
-          should_assign_to(:group) { @group }
-          should_assign_to(:plan) { @plan }
+          should respond_with(:success)
+          should render_with_layout(:application)
+          should assign_to(:community) { @community }
+          should assign_to(:group) { @group }
+          should assign_to(:plan) { @plan }
         end
       end
     end

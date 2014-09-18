@@ -9,7 +9,7 @@
       <div class="grid-row">
         <% communities.each do |community| %>
           <div class="cty-recent-item">
-            <% link_to community do %>
+            <%= link_to community do %>
               <%= image_tag community.listing_image.url(:square), :width => 55, :height => 55 %>
 
               <strong><%= community.title %></strong><br />

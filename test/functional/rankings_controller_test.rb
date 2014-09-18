@@ -13,8 +13,8 @@ class RankingsControllerTest < ActionController::TestCase
           get :index
         end
 
-        should_respond_with :success
-        should_render_template :index
+        should respond_with(:success)
+        should render_template(:index)
       end
     end
   end

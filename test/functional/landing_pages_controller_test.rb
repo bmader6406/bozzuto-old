@@ -15,11 +15,11 @@ class LandingPagesControllerTest < ActionController::TestCase
             get :show, :id => @page.to_param
           end
 
-          should_respond_with :success
-          should_render_with_layout :homepage
-          should_render_template :show
-          should_assign_to(:page) { @page }
-          should_assign_to(:state) { @page.state }
+          should respond_with(:success)
+          should render_with_layout(:homepage)
+          should render_template(:show)
+          should assign_to(:page) { @page }
+          should assign_to(:state) { @page.state }
         end
 
         context 'with a non-canonical URL' do
@@ -32,8 +32,8 @@ class LandingPagesControllerTest < ActionController::TestCase
               get :show, :id => old_slug
             end
 
-            should_respond_with :redirect
-            should_redirect_to('the canonical URL') { landing_page_url(@page) }
+            should respond_with(:redirect)
+            should redirect_to('the canonical URL') { landing_page_url(@page) }
           end
 
           context 'that uses an ID number' do
@@ -41,8 +41,8 @@ class LandingPagesControllerTest < ActionController::TestCase
               get :show, :id => @page.id
             end
 
-            should_respond_with :redirect
-            should_redirect_to('the canonical URL') { landing_page_url(@page) }
+            should respond_with(:redirect)
+            should redirect_to('the canonical URL') { landing_page_url(@page) }
           end
         end
       end

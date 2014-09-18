@@ -23,7 +23,7 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
               get :show, :home_community_id => @community.to_param
             end
 
-            should_respond_with :not_found
+            should respond_with(:not_found)
           end
 
           context 'without page' do
@@ -32,7 +32,7 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
               get :show, :home_community_id => @community.to_param
             end
 
-            should_respond_with :not_found
+            should respond_with(:not_found)
           end
         end
 
@@ -42,7 +42,7 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
               get :show, :home_community_id => @community.to_param
             end
 
-            should_respond_with :not_found
+            should respond_with(:not_found)
           end
 
           context 'without page' do
@@ -52,7 +52,7 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
               get :show, :home_community_id => @community.to_param
             end
 
-            should_respond_with :not_found
+            should respond_with(:not_found)
           end
         end
       end
@@ -64,10 +64,10 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
               get :show, :home_community_id => @community.to_param
             end
 
-            should_respond_with :success
-            should_render_with_layout :community
-            should_render_template :show
-            should_assign_to :community
+            should respond_with(:success)
+            should render_with_layout(:community)
+            should render_template(:show)
+            should assign_to(:community)
           end
 
           context 'without page' do
@@ -76,10 +76,10 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
               get :show, :home_community_id => @community.to_param
             end
 
-            should_respond_with :success
-            should_render_with_layout :community
-            should_render_template :show
-            should_assign_to :community
+            should respond_with(:success)
+            should render_with_layout(:community)
+            should render_template(:show)
+            should assign_to(:community)
           end
         end
 
@@ -89,10 +89,10 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
               get :show, :home_community_id => @community.to_param
             end
 
-            should_respond_with :success
-            should_render_with_layout :application
-            should_render_template :show
-            should_assign_to :community
+            should respond_with(:success)
+            should render_with_layout(:application)
+            should render_template(:show)
+            should assign_to(:community)
           end
 
           context 'without page' do
@@ -102,10 +102,10 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
               get :show, :home_community_id => @community.to_param
             end
 
-            should_respond_with :success
-            should_render_with_layout :application
-            should_render_template :show
-            should_assign_to :community
+            should respond_with(:success)
+            should render_with_layout(:application)
+            should render_template(:show)
+            should assign_to(:community)
           end
         end
       end
@@ -122,11 +122,11 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
             get :thank_you, :home_community_id => @community.to_param
           end
 
-          should_respond_with :success
-          should_render_with_layout :community
-          should_render_template :thank_you
-          should_assign_to :community
-          should_assign_to(:email) { @email }
+          should respond_with(:success)
+          should render_with_layout(:community)
+          should render_template(:thank_you)
+          should assign_to(:community)
+          should assign_to(:email) { @email }
 
           should 'erase the lasso cookie' do
             assert_nil cookies['lasso_email']
@@ -143,11 +143,11 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
             get :thank_you, :home_community_id => @community.to_param
           end
 
-          should_respond_with :success
-          should_render_with_layout :application
-          should_render_template :thank_you
-          should_assign_to :community
-          should_assign_to(:email) { @email }
+          should respond_with(:success)
+          should render_with_layout(:application)
+          should render_template(:thank_you)
+          should assign_to(:community)
+          should assign_to(:email) { @email }
 
           should 'erase the lasso cookie' do
             assert_nil cookies['lasso_email']
@@ -161,11 +161,11 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
             get :thank_you, :home_community_id => @community.to_param
           end
 
-          should_respond_with :success
-          should_render_with_layout :community
-          should_render_template :thank_you
-          should_assign_to :community
-          should_not_assign_to(:email)
+          should respond_with(:success)
+          should render_with_layout(:community)
+          should render_template(:thank_you)
+          should assign_to(:community)
+          should_not assign_to(:email)
         end
       end
 
@@ -175,11 +175,11 @@ class LassoSubmissionsControllerTest < ActionController::TestCase
             get :thank_you, :home_community_id => @community.to_param
           end
 
-          should_respond_with :success
-          should_render_with_layout :application
-          should_render_template :thank_you
-          should_assign_to :community
-          should_not_assign_to(:email)
+          should respond_with(:success)
+          should render_with_layout(:application)
+          should render_template(:thank_you)
+          should assign_to(:community)
+          should_not assign_to(:email)
         end
       end
     end

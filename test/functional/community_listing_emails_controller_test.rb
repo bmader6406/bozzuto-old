@@ -6,14 +6,14 @@ class CommunityListingEmailsControllerTest < ActionController::TestCase
       setup do
         @community = HomeCommunity.make
 
-        post :create,
-          :home_community_id => @community.id,
-          :email             => ''
+        expect {
+          post :create,
+            :home_community_id => @community.id,
+            :email             => ''
+        }.to_not change { ActionMailer::Base.deliveries.count }
       end
 
-      should_redirect_to('main community page') { home_community_path(@community) }
-
-      should_not_change('the number of emails') { ActionMailer::Base.deliveries.count }
+      should redirect_to('main community page') { home_community_path(@community) }
 
       should 'set an error in the flash' do
         assert flash[:send_listing_errors]
@@ -28,18 +28,19 @@ class CommunityListingEmailsControllerTest < ActionController::TestCase
 
       context "with 'newsletter' unchecked" do
         setup do
-          post :create,
-            :home_community_id => @community.id,
-            :email             => @email
+          expect {
+            expect {
+              post :create,
+                :home_community_id => @community.id,
+                :email             => @email
+            }.to change { ActionMailer::Base.deliveries.count }.by(1)
+          }.to_not change { Buzz.count }
         end
 
-        should_redirect_to('thank you page') {
+        should redirect_to('thank you page') {
           thank_you_home_community_email_listing_path(@community)
         }
 
-        should_change('the number of emails', :by => 1) { ActionMailer::Base.deliveries.count }
-
-        should_not_change('the number of buzz emails') { Buzz.count }
 
         should 'save the email address in the flash' do
           assert_equal @email, flash[:send_listing_email]
@@ -48,19 +49,20 @@ class CommunityListingEmailsControllerTest < ActionController::TestCase
 
       context "with 'newsletter' checked" do
         setup do
-          post :create,
-            :home_community_id => @community.id,
-            :email             => @email,
-            :newsletter        => true
+          expect {
+            expect {
+              post :create,
+                   :home_community_id => @community.id,
+                   :email             => @email,
+                   :newsletter        => true
+            }.to change { ActionMailer::Base.deliveries.count }.by(1)
+          }.to change { Buzz.count }.by(1)
         end
 
-        should_redirect_to('thank you page') {
+        should redirect_to('thank you page') {
           thank_you_home_community_email_listing_path(@community)
         }
 
-        should_change('the number of emails', :by => 1) { ActionMailer::Base.deliveries.count }
-
-        should_change('the number of buzz emails', :by => 1) { Buzz.count }
 
         should 'save the email address in the flash' do
           assert_equal @email, flash[:send_listing_email]
@@ -73,16 +75,17 @@ class CommunityListingEmailsControllerTest < ActionController::TestCase
         @community = ApartmentCommunity.make
         @email = Faker::Internet.email
 
-        post :create,
-          :apartment_community_id => @community.id,
-          :email                  => @email
+        expect {
+          post :create,
+            :apartment_community_id => @community.id,
+            :email                  => @email
+        }.to change { ActionMailer::Base.deliveries.count }.by(1)
       end
 
-      should_redirect_to('thank you page') {
+      should redirect_to('thank you page') {
         thank_you_apartment_community_email_listing_path(@community)
       }
 
-      should_change('the number of emails', :by => 1) { ActionMailer::Base.deliveries.count }
 
       should 'save the email address in the flash' do
         assert_equal @email, flash[:send_listing_email]
@@ -97,7 +100,7 @@ class CommunityListingEmailsControllerTest < ActionController::TestCase
       get :thank_you, :home_community_id => @community.id
     end
 
-    should_respond_with :success
-    should_render_template :thank_you
+    should respond_with(:success)
+    should render_template(:thank_you)
   end
 end

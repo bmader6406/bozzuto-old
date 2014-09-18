@@ -15,11 +15,11 @@ class LeadersControllerTest < ActionController::TestCase
             get :index, :section => @section.to_param
           end
 
-          should_assign_to(:section) { @section }
-          should_assign_to(:page)    { @leadership_page }
+          should assign_to(:section) { @section }
+          should assign_to(:page)    { @leadership_page }
 
-          should_respond_with :success
-          should_render_template :index
+          should respond_with(:success)
+          should render_template(:index)
         end
       end
 
@@ -29,12 +29,12 @@ class LeadersControllerTest < ActionController::TestCase
             get :index, :section => @section.to_param
           end
 
-          should_not_assign_to(:page)
+          should_not assign_to(:page)
 
-          should_assign_to(:section) { @section }
+          should assign_to(:section) { @section }
 
-          should_respond_with :success
-          should_render_template :index
+          should respond_with(:success)
+          should render_template(:index)
         end
       end
     end
@@ -49,11 +49,11 @@ class LeadersControllerTest < ActionController::TestCase
           get :show, :section => @section.to_param, :id => @leader.to_param
         end
 
-        should_assign_to(:leader)  { @leader }
-        should_assign_to(:section) { @section }
+        should assign_to(:leader)  { @leader }
+        should assign_to(:section) { @section }
 
-        should_respond_with :success
-        should_render_template :show
+        should respond_with(:success)
+        should render_template(:show)
       end
     end
   end

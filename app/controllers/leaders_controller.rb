@@ -1,7 +1,7 @@
 class LeadersController < SectionContentController
   layout "application"
 
-  before_filter :find_section, :find_page
+  before_filter :find_page
 
   def index
     @leadership_groups = LeadershipGroup.all

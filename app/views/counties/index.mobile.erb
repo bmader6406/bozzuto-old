@@ -14,7 +14,7 @@
 
         <% if count > 0 %>
           <li>
-            <% link_to county_path(county), :class => 'btn' do %>
+            <%= link_to county_path(county), :class => 'btn' do %>
               <span><%= county.name %></span> (<%= count %>)
             <% end %>
           </li>

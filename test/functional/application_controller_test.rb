@@ -93,8 +93,7 @@ class ApplicationControllerTest < ActionController::TestCase
         end
 
         should 'return the roots' do
-          assert_equal @section.pages.roots,
-            @controller.send(:about_root_pages)
+          @controller.send(:about_root_pages).all.should == @section.pages.roots
         end
       end
     end

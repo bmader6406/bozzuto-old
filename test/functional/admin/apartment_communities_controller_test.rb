@@ -16,9 +16,9 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
         get :list_deleted
       end
       
-      should_respond_with :success
-      should_render_template :list_deleted
-      should_assign_to :items
+      should respond_with(:success)
+      should render_template(:list_deleted)
+      should assign_to(:items)
     end
 
     types = Bozzuto::ExternalFeed::Feed.feed_types
@@ -31,9 +31,9 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
             get :merge, :id => @community.id
           end
 
-          should_respond_with :redirect
-          should_redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
-          should_assign_to(:item) { @community }
+          should respond_with(:redirect)
+          should redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
+          should assign_to(:item) { @community }
         end
       end
 
@@ -43,8 +43,8 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
           get :merge, :id => @community.id
         end
 
-        should_respond_with :success
-        should_assign_to(:item) { @community }
+        should respond_with(:success)
+        should assign_to(:item) { @community }
       end
     end
 
@@ -56,10 +56,10 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
             get :begin_merge, :id => @community.id
           end
 
-          should_respond_with :redirect
-          should_redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
-          should_assign_to(:item) { @community }
-          should_set_the_flash_to 'This community is already managed externally'
+          should respond_with(:redirect)
+          should redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
+          should assign_to(:item) { @community }
+          should set_the_flash.to('This community is already managed externally')
         end
       end
 
@@ -71,10 +71,10 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
             get :begin_merge, :id => @community.id
           end
 
-          should_respond_with :redirect
-          should_redirect_to('the merge page') { "/admin/apartment_communities/merge/#{@community.id}" }
-          should_assign_to(:item) { @community }
-          should_set_the_flash_to 'You must select an externally-managed community.'
+          should respond_with(:redirect)
+          should redirect_to('the merge page') { "/admin/apartment_communities/merge/#{@community.id}" }
+          should assign_to(:item) { @community }
+          should set_the_flash.to('You must select an externally-managed community.')
         end
 
         context 'and community selected that is not externally-managed' do
@@ -84,10 +84,10 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
             get :begin_merge, :id => @community.id, :external_community_id => @other.id
           end
 
-          should_respond_with :redirect
-          should_redirect_to('the merge page') { "/admin/apartment_communities/merge/#{@community.id}" }
-          should_assign_to(:item) { @community }
-          should_set_the_flash_to "Couldn't find that externally-managed community."
+          should respond_with(:redirect)
+          should redirect_to('the merge page') { "/admin/apartment_communities/merge/#{@community.id}" }
+          should assign_to(:item) { @community }
+          should set_the_flash.to("Couldn't find that externally-managed community.")
         end
 
         types.each do |type|
@@ -98,9 +98,9 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
               get :begin_merge, :id => @community.id, :external_community_id => @other.id
             end
 
-            should_respond_with :success
-            should_assign_to(:item) { @community }
-            should_assign_to(:external_community) { @other }
+            should respond_with(:success)
+            should assign_to(:item) { @community }
+            should assign_to(:external_community) { @other }
           end
         end
       end
@@ -114,10 +114,10 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
             post :end_merge, :id => @community.id
           end
 
-          should_respond_with :redirect
-          should_redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
-          should_assign_to(:item) { @community }
-          should_set_the_flash_to 'This community is already managed externally'
+          should respond_with(:redirect)
+          should redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
+          should assign_to(:item) { @community }
+          should set_the_flash.to('This community is already managed externally')
         end
       end
 
@@ -129,10 +129,10 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
             post :end_merge, :id => @community.id
           end
 
-          should_respond_with :redirect
-          should_redirect_to('the merge page') { "/admin/apartment_communities/merge/#{@community.id}" }
-          should_assign_to(:item) { @community }
-          should_set_the_flash_to 'You must select an externally-managed community.'
+          should respond_with(:redirect)
+          should redirect_to('the merge page') { "/admin/apartment_communities/merge/#{@community.id}" }
+          should assign_to(:item) { @community }
+          should set_the_flash.to('You must select an externally-managed community.')
         end
 
         context 'and community selected that is not externally-managed' do
@@ -142,10 +142,10 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
             post :end_merge, :id => @community.id, :external_community_id => @other.id
           end
 
-          should_respond_with :redirect
-          should_redirect_to('the merge page') { "/admin/apartment_communities/merge/#{@community.id}" }
-          should_assign_to(:item) { @community }
-          should_set_the_flash_to "Couldn't find that externally-managed community."
+          should respond_with(:redirect)
+          should redirect_to('the merge page') { "/admin/apartment_communities/merge/#{@community.id}" }
+          should assign_to(:item) { @community }
+          should set_the_flash.to("Couldn't find that externally-managed community.")
         end
 
         types.each do |type|
@@ -158,11 +158,11 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
               post :end_merge, :id => @community.id, :external_community_id => @other.id
             end
 
-            should_respond_with :redirect
-            should_redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
-            should_assign_to(:item) { @community }
-            should_assign_to(:external_community) { @other }
-            should_set_the_flash_to 'Successfully merged communities'
+            should respond_with(:redirect)
+            should redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
+            should assign_to(:item) { @community }
+            should assign_to(:external_community) { @other }
+            should set_the_flash.to('Successfully merged communities')
           end
         end
       end
@@ -173,8 +173,8 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
         get :export_field_audit
       end
 
-      should_respond_with :success
-      should_respond_with_content_type 'text/csv'
+      should respond_with(:success)
+      should respond_with_content_type('text/csv')
 
       should 'respond with the correct Content-Disposition header' do
         assert_equal 'attachment; filename="apartment_communities_field_audit.csv"',
@@ -188,10 +188,10 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
         get :disconnect, :id => @community.id
       end
 
-      should_respond_with :redirect
-      should_redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
-      should_assign_to(:item) { @community }
-      should_set_the_flash_to 'Successfully disconnected from Vaultware'
+      should respond_with(:redirect)
+      should redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
+      should assign_to(:item) { @community }
+      should set_the_flash.to('Successfully disconnected from Vaultware')
 
       it "disconnects the feed" do
         @community.reload

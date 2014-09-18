@@ -19,7 +19,7 @@ class Admin::UnderConstructionLeadsControllerTest < ActionController::TestCase
         assert_nothing_raised { @response.body.call(@response, @output) }
       end
 
-      should_respond_with :success
+      should respond_with(:success)
 
       should "contain a non-CMS-managed field" do
         assert_match /TheID/, @output.string
@@ -38,14 +38,12 @@ class Admin::UnderConstructionLeadsControllerTest < ActionController::TestCase
 
       context "on POST to :destroy_multiple" do
         setup do
-          post :destroy_multiple, :ids => [@lead1.id, @lead2.id]
+          expect {
+            post :destroy_multiple, :ids => [@lead1.id, @lead2.id]
+          }.to change { UnderConstructionLead.count }.by(-2)
         end
 
-        should_respond_with :redirect
-
-        should_change 'UnderConstructionLead count', :by => -2 do
-          UnderConstructionLead.count
-        end
+        should respond_with(:redirect)
       end
     end
   end

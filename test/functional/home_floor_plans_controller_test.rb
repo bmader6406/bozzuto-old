@@ -10,7 +10,7 @@ class HomeFloorPlansControllerTest < ActionController::TestCase
         :home            => @home,
         :image_file_name => 'yay.png'
       )
-      @plan.save(false)
+      @plan.save(:validate => false)
     end
 
     context 'a GET to #index' do
@@ -24,7 +24,7 @@ class HomeFloorPlansControllerTest < ActionController::TestCase
               :home_id           => @home.id
           end
 
-          should_respond_with :not_found
+          should respond_with(:not_found)
         end
       end
 
@@ -36,9 +36,7 @@ class HomeFloorPlansControllerTest < ActionController::TestCase
               :home_id           => @home.id
           end
 
-          should_redirect_to('the floor plan groups page') do
-            home_community_homes_path(@community)
-          end
+          should redirect_to('the floor plan groups page') { home_community_homes_path(@community) }
         end
 
         mobile_device do
@@ -48,11 +46,11 @@ class HomeFloorPlansControllerTest < ActionController::TestCase
               :home_id           => @home.id
           end
 
-          should_respond_with :success
-          should_render_with_layout :application
-          should_assign_to(:community) { @community }
-          should_assign_to(:home) { @home }
-          should_assign_to(:plans) { [@plan] }
+          should respond_with(:success)
+          should render_with_layout(:application)
+          should assign_to(:community) { @community }
+          should assign_to(:home) { @home }
+          should assign_to(:plans) { [@plan] }
         end
       end
     end
@@ -69,7 +67,7 @@ class HomeFloorPlansControllerTest < ActionController::TestCase
               :id                 => @plan.id
           end
 
-          should_respond_with :not_found
+          should respond_with(:not_found)
         end
       end
 
@@ -82,9 +80,7 @@ class HomeFloorPlansControllerTest < ActionController::TestCase
               :id                 => @plan.id
           end
 
-          should_redirect_to('the floor plan groups page') do
-            home_community_homes_path(@community)
-          end
+          should redirect_to('the floor plan groups page') { home_community_homes_path(@community) }
         end
 
         mobile_device do
@@ -95,11 +91,11 @@ class HomeFloorPlansControllerTest < ActionController::TestCase
               :id                 => @plan.id
           end
 
-          should_respond_with :success
-          should_render_with_layout :application
-          should_assign_to(:community) { @community }
-          should_assign_to(:home) { @home }
-          should_assign_to(:plan) { @plan }
+          should respond_with(:success)
+          should render_with_layout(:application)
+          should assign_to(:community) { @community }
+          should assign_to(:home) { @home }
+          should assign_to(:plan) { @plan }
         end
       end
     end

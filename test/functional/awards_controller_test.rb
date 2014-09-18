@@ -16,9 +16,9 @@ class AwardsControllerTest < ActionController::TestCase
           get :index, :section => @section.to_param
         end
 
-        should_respond_with :success
-        should_render_template :index
-        should_assign_to(:awards) { @awards.published }
+        should respond_with(:success)
+        should render_template(:index)
+        should assign_to(:awards) { @awards.published }
       end
     end
 
@@ -27,12 +27,12 @@ class AwardsControllerTest < ActionController::TestCase
         setup do
           @award = Award.make :sections => [@section]
 
-          get :show, :section => @section.to_param, :award_id => @award.id
+          get :show, :section => @section.to_param, :id => @award.id
         end
 
-        should_respond_with :success
-        should_render_template :show
-        should_assign_to(:award) { @award }
+        should respond_with(:success)
+        should render_template(:show)
+        should assign_to(:award) { @award }
       end
     end
   end

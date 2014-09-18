@@ -15,10 +15,10 @@ class Admin::PhotosControllerTest < ActionController::TestCase
         post :update, :id => @photo.id
       end
 
-      should_respond_with :redirect
-      should_redirect_to("the property's edit page") do
+      should respond_with(:redirect)
+      should redirect_to("the property's edit page") {
         "/admin/apartment_communities/edit/#{@photo.property.id}#photos"
-      end
+      }
     end
   end
 end

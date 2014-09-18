@@ -22,8 +22,8 @@ class FeaturedProjectsControllerTest < ActionController::TestCase
       desktop_device do
         setup { get :index }
 
-        should_respond_with :redirect
-        should_redirect_to('the services page') { section_page_path('services') }
+        should respond_with(:redirect)
+        should redirect_to('the services page') { section_page_path('services') }
       end
 
       mobile_device do
@@ -31,10 +31,10 @@ class FeaturedProjectsControllerTest < ActionController::TestCase
           get :index
         end
 
-        should_respond_with :success
-        should_render_with_layout :application
-        should_render_template :index
-        should_assign_to(:projects) { [@project1, @project2] }
+        should respond_with(:success)
+        should render_with_layout(:application)
+        should render_template(:index)
+        should assign_to(:projects) { [@project1, @project2] }
       end
     end
 
@@ -42,8 +42,8 @@ class FeaturedProjectsControllerTest < ActionController::TestCase
       desktop_device do
         setup { get :show, :id => @project1.cached_slug }
 
-        should_respond_with :redirect
-        should_redirect_to('the services page') { section_page_path('services') }
+        should respond_with(:redirect)
+        should redirect_to('the services page') { section_page_path('services') }
       end
 
       mobile_device do
@@ -51,10 +51,10 @@ class FeaturedProjectsControllerTest < ActionController::TestCase
           get :show, :id => @project1.cached_slug
         end
 
-        should_respond_with :success
-        should_render_with_layout :application
-        should_render_template :show
-        should_assign_to(:project) { @project1 }
+        should respond_with(:success)
+        should render_with_layout(:application)
+        should render_template(:show)
+        should assign_to(:project) { @project1 }
       end
     end
   end

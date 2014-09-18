@@ -14,10 +14,10 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
             get :show
           end
 
-          should_respond_with :success
-          should_render_template :show
-          should_assign_to :submission
-          should_assign_to(:section) { @section }
+          should respond_with(:success)
+          should render_template(:show)
+          should assign_to(:submission)
+          should assign_to(:section) { @section }
         end
 
         context 'with a topic param' do
@@ -36,9 +36,8 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
           get :show, :format => :kml
         end
 
-        should_respond_with :success
-        should_render_without_layout
-        should_render_template :show
+        should respond_with(:success)
+        should render_template(:show)
 
         should 'render the KML XML' do
           @response.body.should =~ %r{<name>Bozzuto Corporate Office</name>}
@@ -56,9 +55,9 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
           end
         end
 
-        should_respond_with :success
-        should_render_template :show
-        should_assign_to(:section) { @section }
+        should respond_with(:success)
+        should render_template(:show)
+        should assign_to(:section) { @section }
       end
 
       context 'with all fields present' do
@@ -72,9 +71,9 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
           end
         end
 
-        should_respond_with :redirect
-        should_redirect_to('the thank you page') { thank_you_contact_path }
-        should_assign_to(:section) { @section }
+        should respond_with(:redirect)
+        should redirect_to('the thank you page') { thank_you_contact_path }
+        should assign_to(:section) { @section }
         should 'save the email in the flash' do
           assert_equal @submission.email, flash[:contact_submission_email]
         end
@@ -87,9 +86,9 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
           get :thank_you
         end
 
-        should_respond_with :success
-        should_render_template :thank_you
-        should_assign_to(:section) { @section }
+        should respond_with(:success)
+        should render_template(:thank_you)
+        should assign_to(:section) { @section }
       end
     end
   end

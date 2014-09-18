@@ -12,11 +12,11 @@ class PropertyPages::ToursControllerTest < ActionController::TestCase
           get :show, :home_community_id => @community.to_param
         end
 
-        should_respond_with :success
-        should_render_with_layout :community
-        should_render_template :show
-        should_assign_to(:community) { @community }
-        should_assign_to(:page) { @page }
+        should respond_with(:success)
+        should render_with_layout(:community)
+        should render_template(:show)
+        should assign_to(:community) { @community }
+        should assign_to(:page) { @page }
       end
 
       context 'that does not have a neighborhoods page' do
@@ -24,8 +24,8 @@ class PropertyPages::ToursControllerTest < ActionController::TestCase
           get :show, :home_community_id => @community.to_param
         end
 
-        should_respond_with :not_found
-        should_assign_to(:community) { @community }
+        should respond_with(:not_found)
+        should assign_to(:community) { @community }
       end
     end
 
@@ -40,11 +40,11 @@ class PropertyPages::ToursControllerTest < ActionController::TestCase
           get :show, :apartment_community_id => @community.to_param
         end
 
-        should_respond_with :success
-        should_render_with_layout :community
-        should_render_template :show
-        should_assign_to(:community) { @community }
-        should_assign_to(:page) { @page }
+        should respond_with(:success)
+        should render_with_layout(:community)
+        should render_template(:show)
+        should assign_to(:community) { @community }
+        should assign_to(:page) { @page }
       end
     
       context 'that does not have a neighborhoods page' do
@@ -54,8 +54,8 @@ class PropertyPages::ToursControllerTest < ActionController::TestCase
           get :show, :apartment_community_id => @community.to_param
         end
 
-        should_respond_with :not_found
-        should_assign_to(:community) { @community }
+        should respond_with(:not_found)
+        should assign_to(:community) { @community }
       end
     end
   end

@@ -36,7 +36,7 @@
                   <ul class="community-select">
                     <% all_green_home_communities.each do |community| %>
                       <li <%= 'class="current"'.html_safe if @community == community %>>
-                        <% link_to green_home_path(community) do %>
+                        <%= link_to green_home_path(community) do %>
                           <strong><%= community.title %></strong>
                           <em><%= community.city %></em>
                         <% end %>
@@ -101,7 +101,7 @@
           <ul id="hotspots">
             <% @green_package.green_package_items.each_with_index do |item, i| %>
               <li <%= raw('class="ultra-green"') if item.ultra_green? %>>
-                <% link_to('BH_TEST', :class          => 'hotspot',
+                <%= link_to('BH_TEST', :class          => 'hotspot',
                                       :id             => "hotspot-#{i + 1}",
                                       :'data-hotspot' => i + 1,
                                       :style          => "left: #{item.x - 11}px; top: #{item.y - 11}px;") do %>

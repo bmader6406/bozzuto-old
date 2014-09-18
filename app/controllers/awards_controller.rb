@@ -16,6 +16,6 @@ class AwardsController < SectionContentController
   end
 
   def find_award
-    @award = section_awards.find(params[:award_id])
+    @award = section_awards.find(params[:id])
   end
 end

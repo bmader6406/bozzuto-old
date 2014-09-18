@@ -24,7 +24,7 @@ class PagesControllerTest < ActionController::TestCase
           get :show, :section => @section.to_param, :page => []
         end
 
-        should_respond_with :not_found
+        should respond_with(:not_found)
       end
 
       context 'with no page params' do
@@ -33,10 +33,10 @@ class PagesControllerTest < ActionController::TestCase
           get :show, :section => @section.to_param, :page => []
         end
 
-        should_respond_with :success
-        should_render_template :show
-        should_assign_to(:section) { @section }
-        should_assign_to(:page) { @section.pages.first }
+        should respond_with(:success)
+        should render_template(:show)
+        should assign_to(:section) { @section }
+        should assign_to(:page) { @section.pages.first }
       end
 
       context 'with a page param' do
@@ -47,10 +47,10 @@ class PagesControllerTest < ActionController::TestCase
           get :show, :section => @section.to_param, :page => @page.path.split('/')
         end
 
-        should_respond_with :success
-        should_render_template :show
-        should_assign_to(:section) { @section }
-        should_assign_to(:page) { @page }
+        should respond_with(:success)
+        should render_template(:show)
+        should assign_to(:section) { @section }
+        should assign_to(:page) { @page }
       end
       
       context 'logged in as a typus user' do
@@ -67,10 +67,10 @@ class PagesControllerTest < ActionController::TestCase
             get :show, :section => @section.to_param, :page => @page.path.split('/')
           end
 
-          should_respond_with :success
-          should_render_template :show
-          should_assign_to(:section) { @section }
-          should_assign_to(:page) { @page }
+          should respond_with(:success)
+          should render_template(:show)
+          should assign_to(:section) { @section }
+          should assign_to(:page) { @page }
         end
       end
       

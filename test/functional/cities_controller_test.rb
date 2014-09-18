@@ -15,8 +15,8 @@ class CitiesControllerTest < ActionController::TestCase
           get :show, :id => @city.to_param
         end
 
-        should_respond_with :redirect
-        should_redirect_to('the metros page') { metros_url }
+        should respond_with(:redirect)
+        should redirect_to('the metros page') { metros_url }
       end
 
       mobile_device do
@@ -24,10 +24,10 @@ class CitiesControllerTest < ActionController::TestCase
           get :show, :id => @city.to_param
         end
 
-        should_respond_with :success
-        should_render_template :show
-        should_assign_to(:city) { @city }
-        should_assign_to(:apartment_communities) { [@published] }
+        should respond_with(:success)
+        should render_template(:show)
+        should assign_to(:city) { @city }
+        should assign_to(:apartment_communities) { [@published] }
       end
     end
   end

@@ -16,9 +16,9 @@ class Admin::ProjectsControllerTest < ActionController::TestCase
         get :list_deleted
       end
       
-      should_respond_with :success
-      should_render_template :list_deleted
-      should_assign_to :items
+      should respond_with(:success)
+      should render_template(:list_deleted)
+      should assign_to(:items)
     end
   end
 end

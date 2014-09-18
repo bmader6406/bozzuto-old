@@ -13,10 +13,10 @@ class NewsAndPressControllerTest < ActionController::TestCase
           get :index, :section => @about.to_param
         end
 
-        should_respond_with :success
-        should_render_template :index
-        should_assign_to :latest_news
-        should_assign_to :latest_press
+        should respond_with(:success)
+        should render_template(:index)
+        should assign_to(:latest_news)
+        should assign_to(:latest_press)
       end
     end
 
@@ -27,7 +27,7 @@ class NewsAndPressControllerTest < ActionController::TestCase
             get :show, :section => @about.to_param, :page => []
           end
 
-          should_respond_with :not_found
+          should respond_with(:not_found)
         end
 
         context 'with a page param' do
@@ -40,11 +40,11 @@ class NewsAndPressControllerTest < ActionController::TestCase
               :page => @page.path.split('/')
           end
 
-          should_respond_with :success
-          should_render_template :show
-          should_assign_to(:section) { @about }
-          should_assign_to(:news_section) { @news_and_press }
-          should_assign_to(:page) { @page }
+          should respond_with(:success)
+          should render_template(:show)
+          should assign_to(:section) { @about }
+          should assign_to(:news_section) { @news_and_press }
+          should assign_to(:page) { @page }
         end
         
         context 'logged in as a typus user' do
@@ -61,11 +61,11 @@ class NewsAndPressControllerTest < ActionController::TestCase
               get :show, :section => @about.to_param, :page => @page.path.split('/')
             end
 
-            should_respond_with :success
-            should_render_template :show
-            should_assign_to(:section) { @about }
-            should_assign_to(:news_section) { @news_and_press }
-            should_assign_to(:page) { @page }
+            should respond_with(:success)
+            should render_template(:show)
+            should assign_to(:section) { @about }
+            should assign_to(:news_section) { @news_and_press }
+            should assign_to(:page) { @page }
           end
         end
       end

@@ -10,9 +10,9 @@ class HomeNeighborhoodsControllerTest < ActionController::TestCase
           get :show, :id => @neighborhood.to_param
         end
 
-        should_respond_with(:success)
-        should_render_template(:show)
-        should_assign_to(:neighborhood) { @neighborhood }
+        should respond_with(:success)
+        should render_template(:show)
+        should assign_to(:neighborhood) { @neighborhood }
       end
 
       describe "GET to #index" do
@@ -22,9 +22,9 @@ class HomeNeighborhoodsControllerTest < ActionController::TestCase
           get :index
         end
 
-        should_respond_with(:success)
-        should_render_template(:index)
-        should_assign_to(:neighborhoods) { @neighborhoods }
+        should respond_with(:success)
+        should render_template(:index)
+        should assign_to(:neighborhoods) { @neighborhoods }
       end
     end
   end

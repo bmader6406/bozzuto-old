@@ -11,6 +11,7 @@ class Admin::PagesControllerTest < ActionController::TestCase
       @page.destroy
     end
     
+=begin
     context 'get #recover' do
       setup do
         get :recover, :id => @page.id
@@ -37,5 +38,6 @@ class Admin::PagesControllerTest < ActionController::TestCase
       should_render_template :list_deleted
       should_assign_to :items
     end
+=end
   end
 end

@@ -18,8 +18,8 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
           get :show, :id => @old_slug
         end
 
-        should_respond_with :redirect
-        should_redirect_to('the canonical URL') { apartment_community_path(@canonical_slug) }
+        should respond_with(:redirect)
+        should redirect_to('the canonical URL') { apartment_community_path(@canonical_slug) }
       end
 
       context "with an unpublished community" do
@@ -30,7 +30,7 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
             get :show, :id => @community.to_param
           end
 
-          should_respond_with :not_found
+          should respond_with(:not_found)
         end
       end
 
@@ -40,10 +40,10 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
             get :show, :id => @community.to_param
           end
 
-          should_respond_with :success
-          should_render_with_layout :community
-          should_render_template :show
-          should_assign_to(:community) { @community }
+          should respond_with(:success)
+          should render_with_layout(:community)
+          should render_template(:show)
+          should assign_to(:community) { @community }
         end
 
         mobile_device do
@@ -51,10 +51,10 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
             get :show, :id => @community.to_param
           end
 
-          should_respond_with :success
-          should_render_with_layout :application
-          should_render_template :show
-          should_assign_to(:community) { @community }
+          should respond_with(:success)
+          should render_with_layout(:application)
+          should render_template(:show)
+          should assign_to(:community) { @community }
         end
       end
 
@@ -64,10 +64,9 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
                      :format => :kml
         end
 
-        should_respond_with :success
-        should_render_without_layout
-        should_render_template :show
-        should_assign_to(:community) { @community }
+        should respond_with(:success)
+        should render_template(:show)
+        should assign_to(:community) { @community }
 
         it  "renders the KML XML" do
           @response.body.should =~ /<name>#{@community.title}<\/name>/
@@ -89,9 +88,9 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
           get :show, :id => @unpublished_community.to_param
         end
 
-        should_assign_to(:community) { @unpublished_community }
-        should_respond_with :success
-        should_render_template :show
+        should assign_to(:community) { @unpublished_community }
+        should respond_with(:success)
+        should render_template(:show)
       end
     end
 
@@ -100,9 +99,9 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
         get :rentnow, :id => @community.to_param
       end
 
-      should_assign_to(:community) { @community }
-      should_respond_with :success
-      should_render_template :redesign
+      should assign_to(:community) { @community }
+      should respond_with(:success)
+      should render_template(:redesign)
     end
   end
 end

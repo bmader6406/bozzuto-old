@@ -10,7 +10,7 @@ class CommunityMediaControllerTest < ActionController::TestCase
           get :index, :home_community_id => @community.id
         end
 
-        should_respond_with(:success)
+        should respond_with(:success)
       end
 
       context "with an apartment community" do
@@ -28,7 +28,7 @@ class CommunityMediaControllerTest < ActionController::TestCase
               get :index, :apartment_community_id => @community.id
             end
 
-            should_respond_with(:not_found)
+            should respond_with(:not_found)
           end
         end
 
@@ -38,10 +38,10 @@ class CommunityMediaControllerTest < ActionController::TestCase
               get :index, :apartment_community_id => @community.id
             end
 
-            should_respond_with(:success)
-            should_render_template(:index)
-            should_render_with_layout(:community)
-            should_assign_to(:community) { @community }
+            should respond_with(:success)
+            should render_template(:index)
+            should render_with_layout(:community)
+            should assign_to(:community) { @community }
           end
         
           mobile_device do
@@ -49,10 +49,10 @@ class CommunityMediaControllerTest < ActionController::TestCase
               get :index, :apartment_community_id => @community.id
             end
 
-            should_respond_with(:success)
-            should_render_template(:index)
-            should_render_with_layout(:application)
-            should_assign_to(:community) { @community }
+            should respond_with(:success)
+            should render_template(:index)
+            should render_with_layout(:application)
+            should assign_to(:community) { @community }
           end
         end
       end

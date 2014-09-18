@@ -12,9 +12,9 @@ class ProjectsControllerTest < ActionController::TestCase
           get :index, :section => @section.to_param
         end
 
-        should_respond_with :success
-        should_assign_to(:section) { @section }
-        should_assign_to(:categories) { ProjectCategory.all }
+        should respond_with(:success)
+        should assign_to(:section) { @section }
+        should assign_to(:categories) { ProjectCategory.all }
       end
 
       mobile_device do
@@ -22,8 +22,8 @@ class ProjectsControllerTest < ActionController::TestCase
           get :index, :section => @section.to_param
         end
 
-        should_respond_with :success
-        should_assign_to(:section) { @section }
+        should respond_with(:success)
+        should assign_to(:section) { @section }
       end
     end
 
@@ -34,12 +34,12 @@ class ProjectsControllerTest < ActionController::TestCase
 
       all_devices do
         setup do
-          get :show, :section => @section.to_param, :project_id => @project.to_param
+          get :show, :section => @section.to_param, :id => @project.to_param
         end
 
-        should_respond_with :success
-        should_assign_to(:section) { @section }
-        should_assign_to(:project) { @project }
+        should respond_with(:success)
+        should assign_to(:section) { @section }
+        should assign_to(:project) { @project }
       end
     end
   end

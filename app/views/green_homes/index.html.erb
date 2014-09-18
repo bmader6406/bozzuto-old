@@ -5,7 +5,7 @@
 <%= @page.body.try(:html_safe) %>
 
 
-<% content_for(:green_homes_list) do %>
+<%= content_for(:green_homes_list) do %>
   <% if all_green_home_communities.any? %>
     <h2 class="green-hdr">See how Bozzuto green features help you save!</h2>
 
@@ -14,7 +14,7 @@
     <ul class="green-homes-list row">
       <% all_green_home_communities.each_with_index do |community, i| %>
         <li <%= 'class="last-in-row"'.html_safe if i % 3 == 2 %>>
-          <% link_to green_home_path(community) do %>
+          <%= link_to green_home_path(community) do %>
             <%= image_tag community.listing_image.url(:rect) %>
 
             <span class="caption">

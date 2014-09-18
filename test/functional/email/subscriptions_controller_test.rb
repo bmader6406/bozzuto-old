@@ -8,14 +8,14 @@ class Email::SubscriptionsControllerTest < ActionController::TestCase
       get :destroy, :id => @email.token
     end
 
-    should_respond_with :success
+    should respond_with(:success)
 
-    should_render_template :destroy
+    should render_template(:destroy)
 
     should 'set the state to unsubscribed' do
       @email.reload
 
-      assert_equal 'unsubscribed', @email.state
+      @email.state.should == 'unsubscribed'
     end
   end
 end

@@ -16,11 +16,11 @@ class NeighborhoodsControllerTest < ActionController::TestCase
                      :id       => @neighborhood.to_param
         end
 
-        should_respond_with(:success)
-        should_render_template(:show)
-        should_assign_to(:metro) { @metro }
-        should_assign_to(:area) { @area }
-        should_assign_to(:neighborhood) { @neighborhood }
+        should respond_with(:success)
+        should render_template(:show)
+        should assign_to(:metro) { @metro }
+        should assign_to(:area) { @area }
+        should assign_to(:neighborhood) { @neighborhood }
       end
     end
   end

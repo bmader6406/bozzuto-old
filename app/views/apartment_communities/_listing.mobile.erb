@@ -1,6 +1,6 @@
 <li>
   <div class="property">
-    <% link_to community, :class => 'info' do %>
+    <%= link_to community, :class => 'info' do %>
       <span class="name"><%=h community.title %></span>
 
       <span class="address"><%= community.address %></span>
@@ -12,7 +12,7 @@
       <% end %>
     <% end %>
 
-    <% community.mobile_phone_number.if_present? do |phone_number| %>
+    <%= community.mobile_phone_number.if_present? do |phone_number| %>
       <%= link_to_phone_number(format_phone_number(phone_number), phone_number, :class => 'tel') %>
     <% end %>
   </div>

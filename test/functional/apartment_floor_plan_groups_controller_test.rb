@@ -25,7 +25,7 @@ class ApartmentFloorPlanGroupsControllerTest < ActionController::TestCase
             get :index, :apartment_community_id => @community.id
           end
 
-          should_respond_with :not_found
+          should respond_with(:not_found)
         end
       end
 
@@ -35,10 +35,10 @@ class ApartmentFloorPlanGroupsControllerTest < ActionController::TestCase
             get :index, :apartment_community_id => @community.id
           end
 
-          should_respond_with :success
-          should_render_with_layout :community
-          should_render_template :index
-          should_assign_to(:community) { @community }
+          should respond_with(:success)
+          should render_with_layout(:community)
+          should render_template(:index)
+          should assign_to(:community) { @community }
         end
 
         mobile_device do
@@ -46,10 +46,10 @@ class ApartmentFloorPlanGroupsControllerTest < ActionController::TestCase
             get :index, :apartment_community_id => @community.id
           end
 
-          should_respond_with :success
-          should_render_with_layout :application
-          should_render_template :index
-          should_assign_to(:community) { @community }
+          should respond_with(:success)
+          should render_with_layout(:application)
+          should render_template(:index)
+          should assign_to(:community) { @community }
         end
       end
 
@@ -58,7 +58,7 @@ class ApartmentFloorPlanGroupsControllerTest < ActionController::TestCase
           get :index, :apartment_community_id => @community.id
         end
 
-        should_respond_with(:success)
+        should respond_with(:success)
 
         it "assigns the floor plans" do
           assigns(:filtered_floor_plans).available_floor_plans.should == [@floor_plan_1, @floor_plan_2]
@@ -71,7 +71,7 @@ class ApartmentFloorPlanGroupsControllerTest < ActionController::TestCase
                       :filter => 'available'
         end
 
-        should_respond_with(:success)
+        should respond_with(:success)
 
         it "assigns the floor plans" do
           assigns(:filtered_floor_plans).available_floor_plans.should == [@floor_plan_1]

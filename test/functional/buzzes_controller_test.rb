@@ -13,10 +13,10 @@ class BuzzesControllerTest < ActionController::TestCase
           get :new, :section => 'about-us'
         end
 
-        should_render_with_layout :page
-        should_respond_with :success
-        should_render_template :new
-        should_assign_to :buzz
+        should render_with_layout(:page)
+        should respond_with(:success)
+        should render_template(:new)
+        should assign_to(:buzz)
       end
 
       mobile_device do
@@ -24,10 +24,10 @@ class BuzzesControllerTest < ActionController::TestCase
           get :new, :section => 'about-us'
         end
 
-        should_render_with_layout :application
-        should_respond_with :success
-        should_render_template :new
-        should_assign_to :buzz
+        should render_with_layout(:application)
+        should respond_with(:success)
+        should render_template(:new)
+        should assign_to(:buzz)
       end
     end
 
@@ -35,17 +35,19 @@ class BuzzesControllerTest < ActionController::TestCase
       desktop_device do
         context 'with an invalid buzz' do
           setup do
-            post :create,
-              :section => 'about-us',
-              :buzz => {}
+            expect {
+              post :create,
+                :section => 'about-us',
+                :buzz => {}
+            }.to_not change { Buzz.count }
           end
 
-          should_render_with_layout :page
-          should_respond_with :success
-          should_render_template :new
-          should_not_change('the buzz count') { Buzz.count }
+          should render_with_layout(:page)
+          should respond_with(:success)
+          should render_template(:new)
+
           should 'have errors on buzz' do
-            assert assigns(:buzz).errors[:email]
+            assigns(:buzz).errors[:email].should be_present
           end
         end
 
@@ -53,16 +55,18 @@ class BuzzesControllerTest < ActionController::TestCase
           setup do
             @buzz = Buzz.make_unsaved
 
-            post :create,
-              :section => 'about-us',
-              :buzz    => @buzz.attributes
+            expect {
+              post :create,
+                   :section => 'about-us',
+                   :buzz    => @buzz.attributes
+            }.to change { Buzz.count }.by(1)
           end
 
-          should_respond_with :redirect
-          should_redirect_to('the thank you page') { thank_you_buzz_path }
-          should_change('the buzz count', :by => 1) { Buzz.count }
+          should respond_with(:redirect)
+          should redirect_to('the thank you page') { thank_you_buzzes_path }
+
           should 'save the buzz email in the flash' do
-            assert_equal @buzz.email, flash[:buzz_email]
+            flash[:buzz_email].should == @buzz.email
           end
         end
       end
@@ -70,17 +74,19 @@ class BuzzesControllerTest < ActionController::TestCase
       mobile_device do
         context 'with an invalid buzz' do
           setup do
-            post :create,
-              :section => 'about-us',
-              :buzz => {}
+            expect {
+              post :create,
+                   :section => 'about-us',
+                   :buzz => {}
+            }.to_not change { Buzz.count }
           end
 
-          should_render_with_layout :application
-          should_respond_with :success
-          should_render_template :new
-          should_not_change('the buzz count') { Buzz.count }
+          should render_with_layout(:application)
+          should respond_with(:success)
+          should render_template(:new)
+
           should "have errors on buzz" do
-            assert assigns(:buzz).errors[:email]
+            assigns(:buzz).errors[:email].should be_present
           end
         end
       end
@@ -92,9 +98,9 @@ class BuzzesControllerTest < ActionController::TestCase
           get :thank_you, :section => 'about-us'
         end
 
-        should_render_with_layout :page
-        should_respond_with :success
-        should_render_template :thank_you
+        should render_with_layout(:page)
+        should respond_with(:success)
+        should render_template(:thank_you)
       end
 
       mobile_device do
@@ -102,9 +108,9 @@ class BuzzesControllerTest < ActionController::TestCase
           get :thank_you, :section => 'about-us'
         end
 
-        should_render_with_layout :application
-        should_respond_with :success
-        should_render_template :thank_you
+        should render_with_layout(:application)
+        should respond_with(:success)
+        should render_template(:thank_you)
       end
     end
   end

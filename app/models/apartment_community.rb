@@ -14,6 +14,8 @@ class ApartmentCommunity < Community
 
   #acts_as_archive :indexes => [:id]
 
+  search_methods :with_min_price, :with_max_price
+
   has_neighborhood_listing_image :neighborhood_listing_image, :required => false
 
   after_save    :update_caches
@@ -87,7 +89,6 @@ class ApartmentCommunity < Community
   scope :under_construction, :conditions => { :under_construction => true }
 
   scope :not_under_construction, :conditions => { :under_construction => false }
-
 
   def nearby_communities(limit = 6)
     @nearby_communities ||= city.apartment_communities.published.near(self).limit(limit)

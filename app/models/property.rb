@@ -22,6 +22,8 @@ class Property < ActiveRecord::Base
 
   #acts_as_archive :indexes => [:id]
 
+  search_methods :in_state
+
   serialize :office_hours
 
   belongs_to :city

@@ -21,9 +21,9 @@ class NewsPostsControllerTest < ActionController::TestCase
             get :index, :section => @section.to_param
           end
 
-          should_respond_with :success
-          should_render_template :index
-          should_assign_to(:news_posts) { @news.published }
+          should respond_with(:success)
+          should render_template(:index)
+          should assign_to(:news_posts) { @news.published }
         end
       end
 
@@ -32,11 +32,10 @@ class NewsPostsControllerTest < ActionController::TestCase
           get :index, :section => @section.to_param, :format => 'rss'
         end
 
-        should_respond_with :success
-        should_render_template :index
-        should_render_without_layout
-        should_respond_with_content_type :rss
-        should_assign_to(:news_posts) { @news.published }
+        should respond_with(:success)
+        should render_template(:index)
+        should respond_with_content_type(:rss)
+        should assign_to(:news_posts) { @news.published }
       end
     end
 
@@ -45,12 +44,12 @@ class NewsPostsControllerTest < ActionController::TestCase
         setup do
           @news_post = NewsPost.make :sections => [@section]
 
-          get :show, :section => @section.to_param, :news_post_id => @news_post.id
+          get :show, :section => @section.to_param, :id => @news_post.id
         end
 
-        should_respond_with :success
-        should_render_template :show
-        should_assign_to(:news_post) { @news_post }
+        should respond_with(:success)
+        should render_template(:show)
+        should assign_to(:news_post) { @news_post }
       end
     end
   end

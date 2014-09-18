@@ -13,7 +13,7 @@ class PropertyPages::NeighborhoodsControllerTest < ActionController::TestCase
             get :show, :home_community_id => @community.to_param
           end
 
-          should_respond_with :not_found
+          should respond_with(:not_found)
         end
 
         mobile_device do
@@ -21,7 +21,7 @@ class PropertyPages::NeighborhoodsControllerTest < ActionController::TestCase
             get :show, :home_community_id => @community.to_param
           end
 
-          should_respond_with :not_found
+          should respond_with(:not_found)
         end
       end
 
@@ -35,11 +35,11 @@ class PropertyPages::NeighborhoodsControllerTest < ActionController::TestCase
             get :show, :home_community_id => @community.to_param
           end
 
-          should_respond_with :success
-          should_render_with_layout :community
-          should_render_template :show
-          should_assign_to(:community) { @community }
-          should_assign_to(:page) { @page }
+          should respond_with(:success)
+          should render_with_layout(:community)
+          should render_template(:show)
+          should assign_to(:community) { @community }
+          should assign_to(:page) { @page }
         end
 
         mobile_device do
@@ -47,11 +47,11 @@ class PropertyPages::NeighborhoodsControllerTest < ActionController::TestCase
             get :show, :home_community_id => @community.to_param
           end
 
-          should_respond_with :success
-          should_render_with_layout :application
-          should_render_template :show
-          should_assign_to(:community) { @community }
-          should_assign_to(:page) { @page }
+          should respond_with(:success)
+          should render_with_layout(:application)
+          should render_template(:show)
+          should assign_to(:community) { @community }
+          should assign_to(:page) { @page }
         end
       end
 
@@ -61,8 +61,8 @@ class PropertyPages::NeighborhoodsControllerTest < ActionController::TestCase
             get :show, :home_community_id => @community.to_param
           end
 
-          should_respond_with :not_found
-          should_assign_to(:community) { @community }
+          should respond_with(:not_found)
+          should assign_to(:community) { @community }
         end
 
         mobile_device do
@@ -70,8 +70,8 @@ class PropertyPages::NeighborhoodsControllerTest < ActionController::TestCase
             get :show, :home_community_id => @community.to_param
           end
 
-          should_respond_with :not_found
-          should_assign_to(:community) { @community }
+          should respond_with(:not_found)
+          should assign_to(:community) { @community }
         end
       end
     end
@@ -88,7 +88,7 @@ class PropertyPages::NeighborhoodsControllerTest < ActionController::TestCase
             get :show, :apartment_community_id => @community.to_param
           end
 
-          should_respond_with :not_found
+          should respond_with(:not_found)
         end
 
         mobile_device do
@@ -96,7 +96,7 @@ class PropertyPages::NeighborhoodsControllerTest < ActionController::TestCase
             get :show, :apartment_community_id => @community.to_param
           end
 
-          should_respond_with :not_found
+          should respond_with(:not_found)
         end
       end
 
@@ -110,11 +110,11 @@ class PropertyPages::NeighborhoodsControllerTest < ActionController::TestCase
             get :show, :apartment_community_id => @community.to_param
           end
 
-          should_respond_with :success
-          should_render_with_layout :community
-          should_render_template :show
-          should_assign_to(:community) { @community }
-          should_assign_to(:page) { @page }
+          should respond_with(:success)
+          should render_with_layout(:community)
+          should render_template(:show)
+          should assign_to(:community) { @community }
+          should assign_to(:page) { @page }
         end
 
         mobile_device do
@@ -122,11 +122,11 @@ class PropertyPages::NeighborhoodsControllerTest < ActionController::TestCase
             get :show, :apartment_community_id => @community.to_param
           end
 
-          should_respond_with :success
-          should_render_with_layout :application
-          should_render_template :show
-          should_assign_to(:community) { @community }
-          should_assign_to(:page) { @page }
+          should respond_with(:success)
+          should render_with_layout(:application)
+          should render_template(:show)
+          should assign_to(:community) { @community }
+          should assign_to(:page) { @page }
         end
       end
     
@@ -136,8 +136,8 @@ class PropertyPages::NeighborhoodsControllerTest < ActionController::TestCase
           get :show, :apartment_community_id => @community.to_param
         end
 
-        should_respond_with :not_found
-        should_assign_to(:community) { @community }
+        should respond_with(:not_found)
+        should assign_to(:community) { @community }
       end
     end
   end

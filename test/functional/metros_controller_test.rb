@@ -10,9 +10,9 @@ class MetrosControllerTest < ActionController::TestCase
           get :index
         end
 
-        should_respond_with(:success)
-        should_render_template(:index)
-        should_assign_to(:metros) { [@metro] }
+        should respond_with(:success)
+        should render_template(:index)
+        should assign_to(:metros) { [@metro] }
       end
 
       describe "GET to #show" do
@@ -22,9 +22,9 @@ class MetrosControllerTest < ActionController::TestCase
           get :show, :id => @metro.to_param
         end
 
-        should_respond_with(:success)
-        should_render_template(:show)
-        should_assign_to(:metro) { @metro }
+        should respond_with(:success)
+        should render_template(:show)
+        should assign_to(:metro) { @metro }
       end
     end
   end

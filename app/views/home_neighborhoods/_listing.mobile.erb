@@ -1,6 +1,6 @@
 <li>
   <div class="pill place">
-    <% link_to home_neighborhood_path(neighborhood), :class => 'info' do %>
+    <%= link_to home_neighborhood_path(neighborhood), :class => 'info' do %>
       <span class="name"><%= neighborhood %></span>
 
       <span class="count"><%= pluralize(neighborhood.home_communities_count, 'New Home Community') %></span>

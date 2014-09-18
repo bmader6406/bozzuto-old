@@ -27,7 +27,7 @@
           </p>
 
           <div class="search-results-hidden-inputs">
-            <% @search.map(&:id).each do |id| %>
+            <% @search.all.map(&:id).each do |id| %>
               <%= hidden_field_tag 'recurring_email[property_ids][]', id %>
             <% end %>
           </div>
@@ -66,7 +66,7 @@
           Search By
           <%= image_tag 'spinner.gif', :style => 'display: none', :id => 'spinner' %>
         </h2>
-        <%= form_for @search, :method => :get, :html => {:id => 'apartment-search-form'} do |f| %>
+        <%= form_for @search, :url => community_search_path, :method => :get, :html => {:id => 'apartment-search-form'} do |f| %>
           <fieldset id="bedrooms" class="">
             <h3>Bedrooms</h3>
             <ul>
@@ -107,12 +107,12 @@
             <h3>More Filters</h3>
             <ul>
               <li>
-                <%= f.check_box :promo_id_not_blank, :id => 'search_special_promotions' %>
+                <%= f.check_box :promo_id_is_present, :id => 'search_special_promotions' %>
                 <%= f.label :special_promotions, 'Special Promotions', :for => 'search_special_promotions' %>
               </li>
               <li>
-                <%= f.check_box :under_construction, :id => 'search_upcoming' %>
-                <%= f.label :under_construction, 'Upcoming', :for => 'search_upcoming' %>
+                <%= f.check_box :under_construction_is_true, :id => 'search_upcoming' %>
+                <%= f.label :under_construction_is_true, 'Upcoming', :for => 'search_upcoming' %>
               </li>
             </ul>
           </fieldset>

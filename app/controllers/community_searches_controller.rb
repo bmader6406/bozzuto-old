@@ -51,10 +51,10 @@ class CommunitySearchesController < ApplicationController
 
       if search[:in_state].present?
         State.find_by_id(search[:in_state])
-      elsif search[:county_id].present?
-        County.find_by_id(search[:county_id])
-      elsif search[:city_id].present?
-        City.find_by_id(search[:city_id])
+      elsif search[:county_id_eq].present?
+        County.find_by_id(search[:county_id_eq])
+      elsif search[:city_id_eq].present?
+        City.find_by_id(search[:city_id_eq])
       end
     end
   end

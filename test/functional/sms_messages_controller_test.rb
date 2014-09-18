@@ -9,10 +9,10 @@ class SmsMessagesControllerTest < ActionController::TestCase
           get :new, :home_community_id => @community.to_param
         end
         
-        should_respond_with :success
-        should_render_template :new
-        should_render_with_layout :application
-        should_assign_to(:community) { @community }
+        should respond_with(:success)
+        should render_template(:new)
+        should render_with_layout(:application)
+        should assign_to(:community) { @community }
       end
     end
     
@@ -29,7 +29,7 @@ class SmsMessagesControllerTest < ActionController::TestCase
                  :phone_number      => '1234567890'
           end
 
-          should_redirect_to('thank you page') { thank_you_home_community_sms_message_path(@community) }
+          should redirect_to('thank you page') { thank_you_home_community_sms_message_path(@community) }
         end
 
         context "for an ApartmentCommunity" do
@@ -43,7 +43,7 @@ class SmsMessagesControllerTest < ActionController::TestCase
               :phone_number           => '1234567890'
           end
 
-          should_redirect_to('thank you page') { thank_you_apartment_community_sms_message_path(@community) }
+          should redirect_to('thank you page') { thank_you_apartment_community_sms_message_path(@community) }
         end
 
         context "without a phone number" do
@@ -55,7 +55,7 @@ class SmsMessagesControllerTest < ActionController::TestCase
                  :phone_number      => ''
           end
 
-          should_redirect_to('main community page') { home_community_path(@community) }
+          should redirect_to('main community page') { home_community_path(@community) }
 
           it "sets an error in the flash" do
             flash[:send_to_phone_errors].present?.should == true
@@ -75,9 +75,9 @@ class SmsMessagesControllerTest < ActionController::TestCase
                  :phone_number      => '1234567890'
           end
 
-          should_respond_with :success
-          should_render_template :thank_you
-          should_render_with_layout :application
+          should respond_with(:success)
+          should render_template(:thank_you)
+          should render_with_layout(:application)
         end
 
         context "for an ApartmentCommunity" do
@@ -91,9 +91,9 @@ class SmsMessagesControllerTest < ActionController::TestCase
                  :phone_number           => '1234567890'
           end
 
-          should_respond_with :success
-          should_render_template :thank_you
-          should_render_with_layout :application
+          should respond_with(:success)
+          should render_template(:thank_you)
+          should render_with_layout(:application)
         end
 
         context "without a phone number" do
@@ -105,9 +105,9 @@ class SmsMessagesControllerTest < ActionController::TestCase
                  :phone_number      => ''
           end
 
-          should_respond_with :success
-          should_render_template :new
-          should_render_with_layout :application
+          should respond_with(:success)
+          should render_template(:new)
+          should render_with_layout(:application)
         end
       end
     end
@@ -119,10 +119,10 @@ class SmsMessagesControllerTest < ActionController::TestCase
         get :thank_you, :home_community_id => @community.to_param
       end
 
-      should_respond_with :success
-      should_render_template :thank_you
-      should_render_with_layout :community
-      should_assign_to(:community) { @community }
+      should respond_with(:success)
+      should render_template(:thank_you)
+      should render_with_layout(:community)
+      should assign_to(:community) { @community }
     end
   end
 end

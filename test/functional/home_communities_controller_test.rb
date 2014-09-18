@@ -16,10 +16,10 @@ class HomeCommunitiesControllerTest < ActionController::TestCase
         get :index
       end
 
-      should_respond_with :success
-      should_render_template :index
-      should_assign_to(:section) { @section }
-      should_assign_to(:communities) { @communities }
+      should respond_with(:success)
+      should render_template(:index)
+      should assign_to(:section) { @section }
+      should assign_to(:communities) { @communities }
     end
 
     context 'a GET to #map' do
@@ -29,10 +29,10 @@ class HomeCommunitiesControllerTest < ActionController::TestCase
         get :map
       end
 
-      should_respond_with :success
-      should_render_template :map
-      should_assign_to(:section) { @section }
-      should_assign_to(:communities) { @communities }
+      should respond_with(:success)
+      should render_template(:map)
+      should assign_to(:section) { @section }
+      should assign_to(:communities) { @communities }
     end
 
     context "a GET to #show" do
@@ -48,8 +48,8 @@ class HomeCommunitiesControllerTest < ActionController::TestCase
             get :show, :id => @old_slug
           end
 
-          should_respond_with :redirect
-          should_redirect_to('the canonical URL') { home_community_path(@canonical_slug) }
+          should respond_with(:redirect)
+          should redirect_to('the canonical URL') { home_community_path(@canonical_slug) }
         end
 
         desktop_device do
@@ -57,10 +57,10 @@ class HomeCommunitiesControllerTest < ActionController::TestCase
             get :show, :id => @community.to_param
           end
 
-          should_assign_to(:community) { @community }
-          should_render_with_layout :community
-          should_respond_with :success
-          should_render_template :show
+          should assign_to(:community) { @community }
+          should render_with_layout(:community)
+          should respond_with(:success)
+          should render_template(:show)
         end
 
         mobile_device do
@@ -68,10 +68,10 @@ class HomeCommunitiesControllerTest < ActionController::TestCase
             get :show, :id => @community.to_param
           end
 
-          should_assign_to(:community) { @community }
-          should_render_with_layout :application
-          should_respond_with :success
-          should_render_template :show
+          should assign_to(:community) { @community }
+          should render_with_layout(:application)
+          should respond_with(:success)
+          should render_template(:show)
         end
       end
     end
@@ -87,9 +87,9 @@ class HomeCommunitiesControllerTest < ActionController::TestCase
           get :show, :id => @unpublished_community.to_param
         end
 
-        should_respond_with :success
-        should_render_template :show
-        should_assign_to(:community) { @unpublished_community }
+        should respond_with(:success)
+        should render_template(:show)
+        should assign_to(:community) { @unpublished_community }
       end
     end
   end

@@ -119,12 +119,16 @@ module ApplicationHelper
     if snippet.present?
       snippet.body.html_safe
     else
+      # TODO: FIX THIS!
+      ''
+=begin
       content_tag :p do
         raw(%Q{This area should be filled in by snippet "#{name}," which does not exist.
             #{link_to("Click here to create the snippet.", {:controller => 'admin/snippets',
                                                             :action => 'new',
                                                             "name" => name})}})
       end
+=end
     end
   end
 

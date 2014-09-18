@@ -3,7 +3,7 @@ require 'test_helper'
 class StatesControllerTest < ActionController::TestCase
   context "StatesController" do
     before do
-      @state     = State.make
+      @state = State.make
     end
 
     describe "GET to #show" do
@@ -12,8 +12,8 @@ class StatesControllerTest < ActionController::TestCase
           get :show, :id => @state.to_param
         end
 
-        should_respond_with(:success)
-        should_render_template(:show)
+        should respond_with(:success)
+        should render_template(:show)
       end
     end
   end

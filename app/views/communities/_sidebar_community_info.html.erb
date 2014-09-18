@@ -42,7 +42,7 @@
     </p>
 
     <p class="call-to-action directions">
-      <% link_to directions_url(@community.address), :rel => 'external' do %>
+      <%= link_to directions_url(@community.address), :rel => 'external' do %>
         Directions <em>(using Google Maps)</em>
       <% end %>
     </p>

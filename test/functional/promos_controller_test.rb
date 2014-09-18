@@ -15,8 +15,8 @@ class PromosControllerTest < ActionController::TestCase
           get :index, :home_community_id => @community.to_param
         end
 
-        should_respond_with :redirect
-        should_redirect_to('the home community page') { @community }
+        should respond_with(:redirect)
+        should redirect_to('the home community page') { @community }
       end
 
       mobile_device do
@@ -27,8 +27,8 @@ class PromosControllerTest < ActionController::TestCase
             get :index, :home_community_id => @community.to_param
           end
 
-          should_respond_with :redirect
-          should_redirect_to('the home community page') { @community }
+          should respond_with(:redirect)
+          should redirect_to('the home community page') { @community }
         end
 
         context 'with an active promo' do
@@ -38,10 +38,10 @@ class PromosControllerTest < ActionController::TestCase
             get :index, :home_community_id => @community.to_param
           end
 
-          should_respond_with :success
-          should_render_with_layout :application
-          should_assign_to(:community) { @community }
-          should_assign_to(:promo) { @active_promo }
+          should respond_with(:success)
+          should render_with_layout(:application)
+          should assign_to(:community) { @community }
+          should assign_to(:promo) { @active_promo }
         end
       end
     end
@@ -53,8 +53,8 @@ class PromosControllerTest < ActionController::TestCase
           get :index, :apartment_community_id => @community.to_param
         end
 
-        should_respond_with :redirect
-        should_redirect_to('the home community page') { @community }
+        should respond_with(:redirect)
+        should redirect_to('the home community page') { @community }
       end
 
       mobile_device do
@@ -65,8 +65,8 @@ class PromosControllerTest < ActionController::TestCase
             get :index, :apartment_community_id => @community.to_param
           end
 
-          should_respond_with :redirect
-          should_redirect_to('the home community page') { @community }
+          should respond_with(:redirect)
+          should redirect_to('the home community page') { @community }
         end
 
         context 'with an active promo' do
@@ -76,10 +76,10 @@ class PromosControllerTest < ActionController::TestCase
             get :index, :apartment_community_id => @community.to_param
           end
 
-          should_respond_with :success
-          should_render_with_layout :application
-          should_assign_to(:community) { @community }
-          should_assign_to(:promo) { @active_promo }
+          should respond_with(:success)
+          should render_with_layout(:application)
+          should assign_to(:community) { @community }
+          should assign_to(:promo) { @active_promo }
         end
       end
     end

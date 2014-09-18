@@ -13,11 +13,11 @@ class GreenHomesControllerTest < ActionController::TestCase
           get :index, :section => @section.to_param
         end
 
-        should_respond_with(:success)
-        should_render_template(:index)
+        should respond_with(:success)
+        should render_template(:index)
 
-        should_assign_to(:section) { @section }
-        should_assign_to(:page) { @page }
+        should assign_to(:section) { @section }
+        should assign_to(:page) { @page }
       end
 
       context "as an admin" do
@@ -30,11 +30,11 @@ class GreenHomesControllerTest < ActionController::TestCase
           get :index, :section => @section.to_param
         end
 
-        should_respond_with(:success)
-        should_render_template(:index)
+        should respond_with(:success)
+        should render_template(:index)
 
-        should_assign_to(:section) { @section }
-        should_assign_to(:page) { @page }
+        should assign_to(:section) { @section }
+        should assign_to(:page) { @page }
       end
     end
 
@@ -46,13 +46,13 @@ class GreenHomesControllerTest < ActionController::TestCase
         get :show, :id => @community.to_param, :section => @section.to_param
       end
 
-      should_respond_with :success
-      should_render_template :show
+      should respond_with(:success)
+      should render_template(:show)
 
-      should_assign_to(:section)       { @section }
-      should_assign_to(:page)          { @page }
-      should_assign_to(:community)     { @community }
-      should_assign_to(:green_package) { @green_package }
+      should assign_to(:section)       { @section }
+      should assign_to(:page)          { @page }
+      should assign_to(:community)     { @community }
+      should assign_to(:green_package) { @green_package }
     end
   end
 end

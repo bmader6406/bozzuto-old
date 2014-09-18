@@ -19,8 +19,8 @@ class ManagementCommunitiesControllerTest < ActionController::TestCase
             get :index, :section => 'management'
           end
 
-          should_respond_with :success
-          should_assign_to(:communities) { @communities }
+          should respond_with(:success)
+          should assign_to(:communities) { @communities }
         end
 
         context 'and a page is present' do
@@ -29,9 +29,9 @@ class ManagementCommunitiesControllerTest < ActionController::TestCase
             get :index, :section => 'management'
           end
 
-          should_respond_with :success
-          should_assign_to(:communities) { @communities }
-          should_assign_to(:page) { @page }
+          should respond_with(:success)
+          should assign_to(:communities) { @communities }
+          should assign_to(:page) { @page }
         end
       end
     end

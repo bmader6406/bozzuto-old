@@ -12,8 +12,8 @@ class SearchesControllerTest < ActionController::TestCase
           get :index, :q => 'shake it like a polaroid picture'
         end
 
-        should_respond_with :success
-        should_render_template :index
+        should respond_with(:success)
+        should render_template :index
       end
 
       context 'without query present' do
@@ -21,8 +21,8 @@ class SearchesControllerTest < ActionController::TestCase
           get :index
         end
 
-        should_respond_with :redirect
-        should_redirect_to(:home_page) { root_path }
+        should respond_with(:redirect)
+        should redirect_to(:home_page) { root_path }
       end
     end
   end

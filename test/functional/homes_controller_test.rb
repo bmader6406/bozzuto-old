@@ -15,7 +15,7 @@ class HomesControllerTest < ActionController::TestCase
             get :index, :home_community_id => @community.id
           end
 
-          should_respond_with :not_found
+          should respond_with(:not_found)
         end
       end
 
@@ -25,10 +25,10 @@ class HomesControllerTest < ActionController::TestCase
             get :index, :home_community_id => @community.id
           end
 
-          should_respond_with :success
-          should_render_with_layout :community
-          should_render_template :index
-          should_assign_to(:community) { @community }
+          should respond_with(:success)
+          should render_with_layout(:community)
+          should render_template(:index)
+          should assign_to(:community) { @community }
         end
 
         mobile_device do
@@ -38,10 +38,10 @@ class HomesControllerTest < ActionController::TestCase
               :format => :mobile
           end
 
-          should_respond_with :success
-          should_render_with_layout :application
-          should_render_template :index
-          should_assign_to(:community) { @community }
+          should respond_with(:success)
+          should render_with_layout(:application)
+          should render_template(:index)
+          should assign_to(:community) { @community }
         end
       end
     end

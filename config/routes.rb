@@ -25,8 +25,8 @@ Bozzuto::Application.routes.draw do
   # Emails
   namespace :email do
     %w(recently_viewed search_results).each do |type|
-      resource type, :only => :create do
-        get 'thank_you', :on => :member
+      resource type, :controller => type, :only => :create do
+        get 'thank_you', :on => :collection
       end
     end
 
@@ -95,8 +95,8 @@ Bozzuto::Application.routes.draw do
       end
 
       resource :sms_message,
-               :as     => :send_to_phone,
-               :only   => [:new, :create] do
+               :path => 'send-to-phone',
+               :only => [:new, :create] do
         get :thank_you, :on => :member
       end
 
@@ -170,8 +170,8 @@ Bozzuto::Application.routes.draw do
       end
 
       resource :sms_message,
-               :as     => :send_to_phone,
-               :only   => [:new, :create] do
+               :path => 'send-to-phone',
+               :only => [:new, :create] do
         get :thank_you, :on => :member
       end
 
@@ -191,7 +191,9 @@ Bozzuto::Application.routes.draw do
 
 
   # Geography
-  resources :landing_pages, :as => :regions, :only => :show
+  resources :landing_pages,
+            :path => 'regions',
+            :only => :show
 
   resources :states, :only => :show do
     resources :counties, :only => :index
@@ -312,19 +314,18 @@ Bozzuto::Application.routes.draw do
   end
 
   scope '/about-us/news-and-press' do
-    match '*page'  => 'news_and_press#show',
-          :as      => :news_and_press_page,
-          :section => 'about-us'
+    match '(*page)' => 'news_and_press#show',
+          :as       => :news_and_press_page,
+          :section  => 'about-us'
   end
 
 
   # Leaders
   scope '/about-us' do
     resources :leaders,
-              :as   => :leadership,
+              :path => 'leadership',
               :only => [:index, :show]
   end
-
 
 
   # Buzzes
@@ -338,6 +339,7 @@ Bozzuto::Application.routes.draw do
   end
 
 
+  # Pages
   scope '/services/:section' do
     match '(*page)' => 'pages#show',
           :as       => :service_section_page

@@ -9,13 +9,14 @@ class Admin::PropertiesControllerTest < ActionController::TestCase
       @community.destroy
     end
     
+=begin
     context 'get #recover' do
       setup do
         get :recover, :id => @community.id
       end
       
-      should_respond_with :redirect
-      should_assign_to :property
+      should respond_with(:redirect)
+      should assign_to(:property)
       
       should_change 'ApartmentCommunity count', :by => 1 do
         ApartmentCommunity.count
@@ -25,5 +26,6 @@ class Admin::PropertiesControllerTest < ActionController::TestCase
         ApartmentCommunity::Archive.count
       end
     end
+=end
   end
 end

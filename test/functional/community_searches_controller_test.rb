@@ -13,8 +13,8 @@ class CommunitySearchesControllerTest < ActionController::TestCase
             get :show
           end
 
-          should_respond_with :success
-          should_render_template :show
+          should respond_with(:success)
+          should render_template(:show)
         end
 
         context "with search params" do
@@ -25,33 +25,33 @@ class CommunitySearchesControllerTest < ActionController::TestCase
               get :show, :search => { :in_state => @state.id }
             end
 
-            should_respond_with :success
-            should_render_template :show
-            should_assign_to(:geographic_filter) { @state }
+            should respond_with(:success)
+            should render_template(:show)
+            should assign_to(:geographic_filter) { @state }
           end
 
           context ":county_id is present" do
             setup do
               @county = County.make
 
-              get :show, :search => { :county_id => @county.id }
+              get :show, :search => { :county_id_eq => @county.id }
             end
 
-            should_respond_with :success
-            should_render_template :show
-            should_assign_to(:geographic_filter) { @county }
+            should respond_with(:success)
+            should render_template(:show)
+            should assign_to(:geographic_filter) { @county }
           end
 
           context ":city_id is present" do
             before do
               @city = City.make
 
-              get :show, :search => { :city_id => @city.id }
+              get :show, :search => { :city_id_eq => @city.id }
             end
 
-            should_respond_with :success
-            should_render_template :show
-            should_assign_to(:geographic_filter) { @city }
+            should respond_with(:success)
+            should render_template(:show)
+            should assign_to(:geographic_filter) { @city }
           end
         end
 
@@ -60,8 +60,8 @@ class CommunitySearchesControllerTest < ActionController::TestCase
             get :show, :template => 'map'
           end
 
-          should_respond_with :success
-          should_render_template :show
+          should respond_with(:success)
+          should render_template(:show)
         end
       end
     end
@@ -73,8 +73,8 @@ class CommunitySearchesControllerTest < ActionController::TestCase
             get :show
           end
           
-          should_respond_with :success
-          should_render_template :show
+          should respond_with(:success)
+          should render_template(:show)
         end
         
         context "with query that returns no results" do
@@ -82,9 +82,9 @@ class CommunitySearchesControllerTest < ActionController::TestCase
             get :show, :q => 'bogus'
           end
           
-          should_respond_with :success
-          should_render_template :show
-          should_assign_to :search, :class => Bozzuto::CommunitySearch
+          should respond_with(:success)
+          should render_template(:show)
+          should assign_to(:search)
         end
         
         context "with zip query" do
@@ -95,9 +95,9 @@ class CommunitySearchesControllerTest < ActionController::TestCase
             get :show, :q => '22301'
           end
           
-          should_respond_with :success
-          should_render_template :results
-          should_assign_to :search, :class => Bozzuto::CommunitySearch
+          should respond_with(:success)
+          should render_template(:results)
+          should assign_to(:search)
         end
         
         context "with name query" do
@@ -108,9 +108,9 @@ class CommunitySearchesControllerTest < ActionController::TestCase
             get :show, :q => 'Metro'
           end
           
-          should_respond_with :success
-          should_render_template :results
-          should_assign_to :search, :class => Bozzuto::CommunitySearch
+          should respond_with(:success)
+          should render_template(:results)
+          should assign_to(:search)
         end
         
         context "with city query" do
@@ -122,9 +122,9 @@ class CommunitySearchesControllerTest < ActionController::TestCase
             get :show, :q => 'Bethesda'
           end
           
-          should_respond_with :success
-          should_render_template :results
-          should_assign_to :search, :class => Bozzuto::CommunitySearch
+          should respond_with(:success)
+          should render_template(:results)
+          should assign_to(:search)
         end
 
         context "with name query for unpublished community" do
@@ -134,9 +134,9 @@ class CommunitySearchesControllerTest < ActionController::TestCase
             get :show, :q => 'Swing'
           end
 
-          should_respond_with :success
-          should_render_template :show
-          should_assign_to :search, :class => Bozzuto::CommunitySearch
+          should respond_with(:success)
+          should render_template(:show)
+          should assign_to(:search)
 
           it "returns no results" do
             @controller.instance_variable_get('@search').results.should == { :title => [], :city => [] }

@@ -24,30 +24,30 @@
     <p class="address"><%= @community.address %></p>
 
     <ul class="contact contact-list">
-      <% @community.mobile_phone_number.if_present? do |phone_number| %>
+      <%= @community.mobile_phone_number.if_present? do |phone_number| %>
         <li>
-          <% link_to_phone_number phone_number, :class => 'btn call-us' do %>
+          <%= link_to_phone_number phone_number, :class => 'btn call-us' do %>
             <span>Call Us</span> <%= format_phone_number(phone_number) %>
           <% end %>
         </li>
       <% end %>
 
       <li>
-        <% link_to mobile_map_url(@community), :class => 'btn directions' do %>
+        <%= link_to mobile_map_url(@community), :class => 'btn directions' do %>
           <span>Directions</span> <%= @community.city %>
         <% end %>
       </li>
 
 			<%- if @community.show_lasso_form? -%>
 	      <li>
-	        <% link_to home_community_contact_path(@community), :class => 'btn email-us' do %>
+	        <%= link_to home_community_contact_path(@community), :class => 'btn email-us' do %>
 	          <span>Email Us</span>
 	        <% end %>
 	      </li>
 			<%- end -%>
 
       <li>
-        <% link_to new_home_community_sms_message_path(@community), :class => 'btn text-me' do %>
+        <%= link_to new_home_community_sms_message_path(@community), :class => 'btn text-me' do %>
           <span>Text Me Community Info</span>
         <% end %>
       </li>

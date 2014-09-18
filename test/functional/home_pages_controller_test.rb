@@ -50,7 +50,7 @@ class HomePagesControllerTest < ActionController::TestCase
     context 'a GET to #index' do
       setup do
         @home_page = HomePage.new
-        @home_page.save(false)
+        @home_page.save(:validate => false)
 
         @about = Section.make(:about)
       end
@@ -60,11 +60,11 @@ class HomePagesControllerTest < ActionController::TestCase
           get :index
         end
 
-        should_respond_with :success
-        should_render_with_layout :homepage
-        should_render_template :index
-        should_assign_to(:home_page) { @home_page }
-        should_assign_to(:section) { @about }
+        should respond_with(:success)
+        should render_with_layout(:homepage)
+        should render_template(:index)
+        should assign_to(:home_page) { @home_page }
+        should assign_to(:section) { @about }
       end
     end
   end

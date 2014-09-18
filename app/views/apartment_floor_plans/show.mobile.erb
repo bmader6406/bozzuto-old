@@ -5,7 +5,7 @@
   <div class="content">
     <h2><%= @plan.name %></h2>
 
-    <% link_to apartment_community_floor_plan_group_layouts_path(@community, @group), :class => 'go-back' do %>
+    <%= link_to apartment_community_floor_plan_group_layouts_path(@community, @group), :class => 'go-back' do %>
       <%= @group.name.pluralize %>
     <% end %>
   </div>
@@ -33,11 +33,11 @@
     <% end %>
 
     <% if @plan.availability_url? %>
-      <% link_to @plan.availability_url, :class => 'btn', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Availability" do %>
+      <%= link_to @plan.availability_url, :class => 'btn', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Availability" do %>
         <span>Check Availability</span>
       <% end %>
 
-      <% link_to @community.availability_url, :class => 'btn submit', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Reserve" do %>
+      <%= link_to @community.availability_url, :class => 'btn submit', 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Reserve" do %>
         <span>Reserve Now</span>
       <% end %>
     <% end %>

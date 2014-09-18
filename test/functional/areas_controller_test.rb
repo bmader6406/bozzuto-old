@@ -15,10 +15,10 @@ class AreasControllerTest < ActionController::TestCase
               get :show, :metro_id => @metro.to_param, :id => @area.to_param
             end
 
-            should_respond_with(:success)
-            should_render_template(:show)
-            should_assign_to(:metro) { @metro }
-            should_assign_to(:area) { @area }
+            should respond_with(:success)
+            should render_template(:show)
+            should assign_to(:metro) { @metro }
+            should assign_to(:area) { @area }
           end
         end
       end

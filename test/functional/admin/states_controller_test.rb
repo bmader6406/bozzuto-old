@@ -14,18 +14,21 @@ class Admin::StatesControllerTest < ActionController::TestCase
     context '#relate for "featured_apartment_communities"' do
       setup do
         @request.env['HTTP_REFERER'] = "http://bozzuto.test/admin/states/edit/#{@state.id}"
-        post :relate, :id => @state.id, :related => {
-          :relation => 'featured_apartment_communities',
-          :id => @community.id,
-          :model => 'ApartmentCommunity'
-        }
+
+        post :relate,
+          :id      => @state.id,
+          :related => {
+            :relation => 'featured_apartment_communities',
+            :id       => @community.id,
+            :model    => 'ApartmentCommunity'
+          }
       end
       
-      should_assign_to :community
-      should_respond_with :redirect
+      should assign_to(:community)
+      should respond_with(:redirect)
       
-      should_change 'featured value on the community', :to => true do
-        @community.reload.featured?
+      it "changes featured to true" do
+        @community.reload.featured?.should == true
       end
     end
     
@@ -37,15 +40,19 @@ class Admin::StatesControllerTest < ActionController::TestCase
       context '#unrelate for "featured_apartment_communities"' do
         setup do
           @request.env['HTTP_REFERER'] = "http://bozzuto.test/admin/states/edit/#{@state.id}"
-          get :unrelate, :id => @state.id, :field => 'featured_apartment_communities',
-            :resource_id => @community.id, :resource => 'ApartmentCommunity'
+
+          get :unrelate,
+              :id          => @state.id,
+              :field       => 'featured_apartment_communities',
+              :resource_id => @community.id,
+              :resource    => 'ApartmentCommunity'
         end
 
-        should_assign_to :community
-        should_respond_with :redirect
+        should assign_to(:community)
+        should respond_with(:redirect)
 
-        should_change 'featured value on the community', :to => false do
-          @community.reload.featured?
+        it "changes featured to false" do
+          @community.reload.featured?.should == false
         end
       end
     end

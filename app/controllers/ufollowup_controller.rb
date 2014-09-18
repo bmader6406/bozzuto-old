@@ -1,16 +1,18 @@
 class UfollowupController < SectionContentController
   layout 'community'
 
-  skip_before_filter :find_section, :find_news_and_press_section,
-    :only => :show
+  skip_before_filter :find_section,
+                     :find_news_and_press_section,
+                     :only => :show
 
   def show
     @email = params[:email]
-    @community = Property.find(params[:id])
+    @community = Property.find(params[:apartment_community_id])
   end
 
   def thank_you
     @email = cookies.delete('ufollowup_email')
+
     render :thank_you, :layout => 'page'
   end
 

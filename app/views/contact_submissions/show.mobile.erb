@@ -10,17 +10,17 @@
 
     <ul class="contact-list">
       <li>
-        <% link_to corporate_office_map_uri, :class => 'btn directions' do %>
+        <%= link_to corporate_office_map_uri, :class => 'btn directions' do %>
           <span>Directions</span> Greenbelt, MD
         <% end %>
       </li>
       <li>
-        <% link_to_phone_number '(301) 220-0100', :class => 'btn call-us' do %>
+        <%= link_to_phone_number '(301) 220-0100', :class => 'btn call-us' do %>
           <span>Call Us</span> (301) 220-0100
         <% end %>
       </li>
       <li>
-        <% link_to 'mailto:feedback@bozzuto.com', :class => 'btn email-us' do %>
+        <%= link_to 'mailto:feedback@bozzuto.com', :class => 'btn email-us' do %>
             <span>Email Us</span> feedback@bozzuto.com
         <% end %>
       </li>

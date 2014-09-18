@@ -16,7 +16,7 @@
     </p>
   </div>
 
-  <%= form_for @buzz, :url => buzz_path, :method => :post, :html => { :class => "required-form" } do |f| -%>
+  <%= form_for @buzz, :html => { :class => "required-form" } do |f| -%>
     <div class="content">
       <%= error_messages_for :buzz %>
 

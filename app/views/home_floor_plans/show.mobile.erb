@@ -5,7 +5,7 @@
   <div class="content">
     <h2><%= @plan.name %></h2>
 
-    <% link_to home_community_home_floor_plans_path(@community, @home), :class => 'go-back' do %>
+    <%= link_to home_community_home_floor_plans_path(@community, @home), :class => 'go-back' do %>
       <%= @home.name %>
     <% end %>
   </div>

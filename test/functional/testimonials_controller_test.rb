@@ -20,10 +20,10 @@ class TestimonialsControllerTest < ActionController::TestCase
           get :index, :section => @section.to_param
         end
 
-        should_respond_with :success
-        should_render_with_layout :page
-        should_render_template :index
-        should_assign_to(:testimonials) { @testimonials }
+        should respond_with(:success)
+        should render_with_layout(:page)
+        should render_template(:index)
+        should assign_to(:testimonials) { @testimonials }
       end
 
       mobile_device do
@@ -31,10 +31,10 @@ class TestimonialsControllerTest < ActionController::TestCase
           get :index, :section => @section.to_param
         end
 
-        should_respond_with :success
-        should_render_with_layout :application
-        should_render_template :index
-        should_assign_to(:testimonials) { @testimonials }
+        should respond_with(:success)
+        should render_with_layout(:application)
+        should render_template(:index)
+        should assign_to(:testimonials) { @testimonials }
       end
     end
   end

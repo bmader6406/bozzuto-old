@@ -15,8 +15,8 @@ class OfficeHoursControllerTest < ActionController::TestCase
             get :show, :apartment_community_id => @community.to_param
           end
 
-          should_respond_with :redirect
-          should_redirect_to('the contact page') {
+          should respond_with(:redirect)
+          should redirect_to('the contact page') {
             apartment_community_contact_url(@community)
           }
         end
@@ -26,11 +26,11 @@ class OfficeHoursControllerTest < ActionController::TestCase
             get :show, :apartment_community_id => @community.to_param
           end
 
-          should_respond_with :success
-          should_render_with_layout :application
-          should_render_template :show
-          should_assign_to(:page){ @page }
-          should_assign_to(:community){ @community }
+          should respond_with(:success)
+          should render_with_layout(:application)
+          should render_template(:show)
+          should assign_to(:page){ @page }
+          should assign_to(:community){ @community }
         end
       end
     end
@@ -47,8 +47,8 @@ class OfficeHoursControllerTest < ActionController::TestCase
             get :show, :home_community_id => @community.to_param
           end
 
-          should_respond_with :redirect
-          should_redirect_to('the contact page') {
+          should respond_with(:redirect)
+          should redirect_to('the contact page') {
             home_community_contact_url(@community)
           }
         end
@@ -58,11 +58,11 @@ class OfficeHoursControllerTest < ActionController::TestCase
             get :show, :home_community_id => @community.to_param
           end
 
-          should_respond_with :success
-          should_render_with_layout :application
-          should_render_template :show
-          should_assign_to(:page){ @page }
-          should_assign_to(:community){ @community }
+          should respond_with(:success)
+          should render_with_layout(:application)
+          should render_template(:show)
+          should assign_to(:page){ @page }
+          should assign_to(:community){ @community }
         end
       end
     end
