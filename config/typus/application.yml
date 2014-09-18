@@ -35,7 +35,7 @@ ApartmentCommunity:
   search: properties.title, properties.street_address
   application: Properties
   actions:
-    index: list_deleted, list_duplicates, export_field_audit
+    index: list_duplicates, export_field_audit
     show: preview
     edit: preview
 
@@ -366,7 +366,7 @@ HomeCommunity:
   search: title
   application: Properties
   actions:
-    index: list_deleted, export_field_audit
+    index: export_field_audit
     show: preview
     edit: preview
 
@@ -635,7 +635,6 @@ NewsPost:
 Page:
   fields:
     default: formatted_title, published, position
-    list_deleted: title, section_title
     show: title, published, section, parent, body, left_montage_image, middle_montage_image, right_montage_image
     list: formatted_title, published, section, position
     form: title, section, parent, published, show_sidebar, show_in_sidebar_nav, meta_title, meta_description, meta_keywords, body, mobile_body, mobile_body_extra, left_montage_image, middle_montage_image, right_montage_image, snippet
@@ -650,7 +649,7 @@ Page:
   options:
     per_page: 9999
   actions:
-    index: list_deleted
+    index: 
     show: preview
     edit: preview
 
@@ -708,7 +707,7 @@ Project:
   search: title
   application: Properties
   actions:
-    index: list_deleted
+    index: 
 
 ProjectCategory:
   fields:
