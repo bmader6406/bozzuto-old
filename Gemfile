@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rake', '0.8.7'
-gem 'rails', '3.0.6'
+gem 'rails', '3.0.20'
 
 gem 'mysql2'
 gem 'activerecord-mysql2-adapter' # only needed for rails <= 3.0.x
