@@ -41,13 +41,12 @@ class Admin::MasterController < ApplicationController
   # can add your formats.
   #
   def index
-
     @conditions, @joins = @resource[:class].build_conditions(params)
 
     check_ownership_of_items if @resource[:class].typus_options_for(:only_user_items)
 
     respond_to do |format|
-      format.html { generate_html }
+      format.html { generate_html and select_template }
       @resource[:class].typus_export_formats.each do |f|
         format.send(f) { send("generate_#{f}") }
       end
@@ -57,8 +56,19 @@ class Admin::MasterController < ApplicationController
     error_handler(error)
   end
 
-  def new
+  def show
+    check_ownership_of_item and return if @resource[:class].typus_options_for(:only_user_items)
 
+    respond_to do |format|
+      format.html { select_template }
+      format.xml do
+        fields = @resource[:class].typus_fields_for(:xml).collect { |i| i.first }
+        render :xml => @item.to_xml(:only => fields)
+      end
+    end
+  end
+
+  def new
     check_ownership_of_referal_item
 
     item_params = params.dup
@@ -68,6 +78,7 @@ class Admin::MasterController < ApplicationController
 
     @item = @resource[:class].new(item_params.symbolize_keys)
 
+    select_template
   end
 
   ##
@@ -76,7 +87,6 @@ class Admin::MasterController < ApplicationController
   # created we also create the relationship between these items. 
   #
   def create
-
     @item = @resource[:class].new(params[@object_name])
 
     if @resource[:class].typus_user_id?
@@ -85,39 +95,26 @@ class Admin::MasterController < ApplicationController
 
     if @item.valid?
       create_with_back_to and return if params[:back_to]
+
       @item.save
-      flash[:success] = _("{{model}} successfully created.", 
-                          :model => @resource[:human_name])
+
+      flash[:success] = _("%{model} successfully created.", :model => @resource[:human_name])
+
       if @resource[:class].typus_options_for(:index_after_save)
         redirect_to :action => 'index'
       else
         redirect_to :action => @resource[:class].typus_options_for(:default_action_on_item), :id => @item.id
       end
     else
-      render :action => 'new'
+      select_template(:new)
     end
-
   end
 
   def edit
-  end
-
-  def show
-
-    check_ownership_of_item and return if @resource[:class].typus_options_for(:only_user_items)
-
-    respond_to do |format|
-      format.html
-      format.xml do
-        fields = @resource[:class].typus_fields_for(:xml).collect { |i| i.first }
-        render :xml => @item.to_xml(:only => fields)
-      end
-    end
-
+    select_template
   end
 
   def update
-
     if @item.update_attributes(params[@object_name])
 
       if @resource[:class].typus_user_id? && @current_user.is_not_root?
@@ -142,14 +139,13 @@ class Admin::MasterController < ApplicationController
       redirect_to path
 
     else
-      render :action => 'edit'
+      select_template(:edit)
     end
-
   end
 
   def destroy
     @item.destroy
-    flash[:success] = _("{{model}} successfully removed.", 
+    flash[:success] = _("%{model} successfully removed.", 
                         :model => @resource[:human_name])
     redirect_to request.referer || admin_dashboard_path
   rescue Exception => error
@@ -159,7 +155,7 @@ class Admin::MasterController < ApplicationController
   def toggle
     @item.toggle(params[:field])
     @item.save!
-    flash[:success] = _("{{model}} {{attribute}} changed.", 
+    flash[:success] = _("%{model} %{attribute} changed.", 
                         :model => @resource[:human_name], 
                         :attribute => params[:field].humanize.downcase)
     redirect_to request.referer || admin_dashboard_path
@@ -176,7 +172,7 @@ class Admin::MasterController < ApplicationController
   #
   def position
     @item.send(params[:go])
-    flash[:success] = _("Record moved {{to}}.", 
+    flash[:success] = _("Record moved %{to}.", 
                         :to => params[:go].gsub(/move_/, '').humanize.downcase)
     redirect_to request.referer || admin_dashboard_path
   end
@@ -190,12 +186,12 @@ class Admin::MasterController < ApplicationController
     resource_tableized = params[:related][:relation] || params[:related][:model].tableize
 
     if @item.send(resource_tableized) << resource_class.find(params[:related][:id])
-      flash[:success] = _("{{model_a}} related to {{model_b}}.", 
+      flash[:success] = _("%{model_a} related to %{model_b}.", 
                         :model_a => resource_class.typus_human_name, 
                         :model_b => @resource[:human_name])
     else
       # TODO: Show the reason why cannot be related showing model_a and model_b errors.
-      flash[:error] = _("{{model_a}} cannot be related to {{model_b}}.", 
+      flash[:error] = _("%{model_a} cannot be related to %{model_b}.", 
                         :model_a => resource_class.typus_human_name, 
                         :model_b => @resource[:human_name])
     end
@@ -232,12 +228,12 @@ class Admin::MasterController < ApplicationController
     end
 
     if unrelate_success
-      flash[:success] = _("{{model_a}} unrelated from {{model_b}}.", 
+      flash[:success] = _("%{model_a} unrelated from %{model_b}.", 
                           :model_a => resource_class.typus_human_name, 
                           :model_b => @resource[:human_name])
     else
       # TODO: Show the reason why cannot be unrelated showing model_a and model_b errors.
-      flash[:error] = _("{{model_a}} cannot be unrelated to {{model_b}}.", 
+      flash[:error] = _("%{model_a} cannot be unrelated to %{model_b}.", 
                         :model_a => resource_class.typus_human_name, 
                         :model_b => @resource[:human_name])
     end
@@ -251,10 +247,10 @@ class Admin::MasterController < ApplicationController
     attachment = @resource[:class].human_attribute_name(params[:attachment])
 
     if @item.update_attributes(params[:attachment] => nil)
-      flash[:success] = _("{{attachment}} removed.", 
+      flash[:success] = _("%{attachment} removed.", 
                           :attachment => attachment)
     else
-      flash[:notice] = _("{{attachment}} can't be removed.", 
+      flash[:notice] = _("%{attachment} can't be removed.", 
                          :attachment => attachment)
     end
 
@@ -273,7 +269,7 @@ private
                   :human_name => params[:controller].extract_human_name, 
                   :class => params[:controller].extract_class,
                   :pluralized => params[:controller].extract_class.pluralized_human_name }
-    @object_name = ActionController::RecordIdentifier.singular_class_name(@resource[:class])
+    @object_name = ActiveModel::Naming.singular(@resource[:class])
   rescue Exception => error
     error_handler(error)
   end
@@ -373,14 +369,14 @@ private
       @item.send(params[:resource]) << resource
     when :has_many
       @item.save
-      message = _("{{model}} successfully created.", 
+      message = _("%{model} successfully created.", 
                   :model => @resource[:human_name])
       path = "#{params[:back_to]}?#{params[:selected]}=#{@item.id}"
     when :polymorphic
       resource.send(@item.class.name.tableize).create(params[@object_name])
     end
 
-    flash[:success] = message || _("{{model_a}} successfully assigned to {{model_b}}.", 
+    flash[:success] = message || _("%{model_a} successfully assigned to %{model_b}.", 
                                    :model_a => @item.class.typus_human_name, 
                                    :model_b => resource_class.typus_human_name)
     redirect_to path || params[:back_to]
@@ -391,6 +387,11 @@ private
     raise error unless Rails.env.production?
     flash[:error] = "#{error.message} (#{@resource[:class]})"
     redirect_to path
+  end
+
+  def select_template(action = params[:action], resource = @resource)
+    folder = File.exist?("app/views/admin/#{resource}/#{action}.html.erb") ? resource : 'resources'
+    render "admin/#{folder}/#{action}"
   end
 
   include Typus::MasterControllerExtensions rescue nil

@@ -33,16 +33,20 @@ module TypusHelper
   end
 
   def typus_block(*args)
-
     options = args.extract_options!
 
     partials_path = "admin/#{options[:location]}"
     resources_partials_path = 'admin/resources'
 
     partials = ActionController::Base.view_paths.map do |view_path|
-      Dir["#{view_path.path}/#{partials_path}/*"].map { |f| File.basename(f, '.html.erb') }
+      Dir["#{view_path.instance_variable_get(:@path)}/#{partials_path}/*"].map do |f|
+        File.basename(f, '.html.erb')
+      end
     end.flatten
-    resources_partials = Dir["#{Rails.root}/app/views/#{resources_partials_path}/*"].map { |f| File.basename(f, '.html.erb') }
+
+    resources_partials = Dir["#{Rails.root}/app/views/#{resources_partials_path}/*"].map do |f|
+      File.basename(f, '.html.erb')
+    end
 
     partial = "_#{options[:partial]}"
 
@@ -51,7 +55,6 @@ module TypusHelper
            end
 
     render "#{path}/#{options[:partial]}" if path
-
   end
 
   def page_title(action = params[:action])

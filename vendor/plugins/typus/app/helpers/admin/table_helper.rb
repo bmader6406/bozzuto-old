@@ -176,7 +176,7 @@ module Admin::TableHelper
 
       first_or_last = (item.respond_to?(:first?) && (position.last == 'move_higher' && item.first?)) || (item.respond_to?(:last?) && (position.last == 'move_lower' && item.last?))
       html_position << link_to_unless(first_or_last, _(position.first), params.merge(options)) do |name|
-        %(<span class="inactive">#{name}</span>)
+        %(<span class="inactive">#{name}</span>).html_safe
       end
     end
 
@@ -205,7 +205,7 @@ module Admin::TableHelper
                 :id => item.id, 
                 :field => attribute.gsub(/\?$/,'') }
 
-    confirm = _("Change {{attribute}}?", 
+    confirm = _("Change %{attribute}?", 
                 :attribute => item.class.human_attribute_name(attribute).downcase)
 
     content = link_to _(link_text), options, :confirm => confirm
@@ -239,7 +239,7 @@ module Admin::TableHelper
       # If we are editing content, we can relate and unrelate always!
       perform = link_to unrelate, { :action => 'unrelate', :id => params[:id], :resource => model, :resource_id => item.id, :field => field }, 
                                     :title => _("Unrelate"), 
-                                    :confirm => _("Unrelate {{unrelate_model}} from {{unrelate_model_from}}?", 
+                                    :confirm => _("Unrelate %{unrelate_model} from %{unrelate_model_from}?", 
                                                   :unrelate_model => model.typus_human_name, 
                                                   :unrelate_model_from => @resource[:human_name])
     when 'show'
@@ -252,7 +252,7 @@ module Admin::TableHelper
                   end
       perform = link_to unrelate, { :action => 'unrelate', :id => params[:id], :resource => model, :resource_id => item.id }, 
                                     :title => _("Unrelate"), 
-                                    :confirm => _("Unrelate {{unrelate_model}} from {{unrelate_model_from}}?", 
+                                    :confirm => _("Unrelate %{unrelate_model} from %{unrelate_model_from}?", 
                                                   :unrelate_model => model.typus_human_name, 
                                                   :unrelate_model_from => @resource[:human_name]) if condition
     end

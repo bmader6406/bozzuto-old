@@ -6,6 +6,16 @@ module Admin::MasterHelper
   include Admin::FormHelper
   include Admin::TableHelper
 
+  def typus_render(*args)
+    options = args.extract_options!
+    options[:resource] ||= @resource.class.name.underscore.pluralize
+
+    template_file = Rails.root.join("app", "views", "admin", options[:resource], "_#{options[:partial]}.html.erb")
+    resource = File.exists?(template_file) ? options[:resource] : "resources"
+
+    render "admin/#{resource}/#{options[:partial]}", :options => options
+  end
+
   def display_link_to_previous
 
     options = {}
@@ -16,13 +26,13 @@ module Admin::MasterHelper
 
     message = case
               when params[:resource] && editing
-                "You're updating a {{resource_from}} for {{resource_to}}."
+                "You're updating a %{resource_from} for %{resource_to}."
               when editing
-                "You're updating a {{resource_from}}."
+                "You're updating a %{resource_from}."
               when params[:resource]
-                "You're adding a new {{resource_from}} to {{resource_to}}."
+                "You're adding a new %{resource_from} to %{resource_to}."
               else
-                "You're adding a new {{resource_from}}."
+                "You're adding a new %{resource_from}."
               end
 
     message = _(message, 

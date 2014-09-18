@@ -219,7 +219,6 @@ module Typus
     # - Integer & String: *_id and "selectors" (p.ej. category_id)
     #
     def build_conditions(params)
-
       conditions, joins = merge_conditions, []
 
       query_params = params.dup

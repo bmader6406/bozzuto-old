@@ -47,7 +47,7 @@ module Admin::FormHelper
 
     back_to = url_for(:controller => params[:controller], :action => params[:action], :id => params[:id])
 
-    related = @resource[:class].reflect_on_association(attribute.to_sym).class_name.constantize
+    related = @resource[:class].reflect_on_association(attribute.to_sym).klass
     related_fk = @resource[:class].reflect_on_association(attribute.to_sym).primary_key_name
 
     confirm = [ _("Are you sure you want to leave this page?"),
@@ -56,7 +56,7 @@ module Admin::FormHelper
 
     String.new.tap do |html|
 
-      message = link_to _("Add"), { :controller => "admin/#{related.class_name.tableize}", 
+      message = link_to _("Add"), { :controller => "admin/#{related.table_name}", 
                                     :action => 'new', 
                                     :back_to => back_to, 
                                     :selected => related_fk }, 
@@ -174,7 +174,7 @@ module Admin::FormHelper
 <a name="#{field}"></a>
 <div class="box_relationships" id="#{model_to_relate_as_resource}">
   <h2>
-  #{link_to model_to_relate.pluralized_human_name, { :controller => "admin/#{model_to_relate_as_resource}", foreign_key => @item.id }, :title => _("{{model}} filtered by {{filtered_by}}", :model => model_to_relate.typus_human_name.pluralize, :filtered_by => @item.to_label)}
+  #{link_to model_to_relate.pluralized_human_name, { :controller => "admin/#{model_to_relate_as_resource}", foreign_key => @item.id }, :title => _("%{model} filtered by %{filtered_by}", :model => model_to_relate.typus_human_name.pluralize, :filtered_by => @item.to_label)}
   #{add_new}
   </h2>
       HTML
@@ -237,7 +237,7 @@ module Admin::FormHelper
                            association)
         html << pagination(:anchor => model_to_relate.name.tableize) unless pagination.nil?
       else
-        message = _("There are no {{records}}.", 
+        message = _("There are no %{records}.", 
                     :records => model_to_relate.human_name.pluralize)
         html << <<-HTML
   <div id="flash" class="notice"><p>#{message}</p></div>
@@ -333,7 +333,7 @@ module Admin::FormHelper
                            field)
         html << pagination(:anchor => model_to_relate.name.tableize) unless pagination.nil?
       else
-        message = _("There are no {{records}}.", 
+        message = _("There are no %{records}.", 
                     :records => model_to_relate.typus_human_name.pluralize.downcase)
         html << <<-HTML
   <div id="flash" class="notice"><p>#{message}</p></div>
@@ -396,7 +396,7 @@ module Admin::FormHelper
                            options, 
                            association)
       else
-        message = _("There is no {{records}}.", 
+        message = _("There is no %{records}.", 
                     :records => model_to_relate.human_name)
         html << <<-HTML
   <div id="flash" class="notice"><p>#{message}</p></div>
@@ -429,8 +429,7 @@ module Admin::FormHelper
   end
 
   def attribute_disabled?(attribute)
-    accessible = @resource[:class].accessible_attributes
-    return accessible.nil? ? false : !accessible.include?(attribute)
+    @resource[:class].protected_attributes.deny?(attribute)
   end
 
   def typus_preview(item, attribute)
@@ -459,7 +458,7 @@ module Admin::FormHelper
     content = if has_file_thumbnail
                 image_tag item.send(attachment).url(file_thumbnail)
               else
-                _("View {{attribute}}", :attribute => @item.class.human_attribute_name(attribute).downcase)
+                _("View %{attribute}", :attribute => @item.class.human_attribute_name(attribute).downcase)
               end
 
     render "admin/helpers/preview", 
