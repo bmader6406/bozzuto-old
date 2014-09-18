@@ -15,6 +15,14 @@ class Admin::UnderConstructionLeadsControllerTest < ActionController::TestCase
         get :index, :format => 'csv'
       end
 
+      teardown do
+        begin
+          File.delete(*Dir[Rails.root.join('tmp', 'export-under_construction_leads*.csv')])
+        rescue Errno::ENOENT
+          nil
+        end
+      end
+
       should respond_with(:success)
 
       should "contain a non-CMS-managed field" do
