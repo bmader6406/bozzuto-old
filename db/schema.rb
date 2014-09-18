@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140827170904) do
+ActiveRecord::Schema.define(:version => 20140918044022) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -235,7 +235,7 @@ ActiveRecord::Schema.define(:version => 20140827170904) do
     t.integer  "metro_id",                                                 :null => false
     t.integer  "position"
     t.string   "banner_image_file_name"
-    t.string   "listing_image_file_name",                                  :null => false
+    t.string   "listing_image_file_name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "apartment_communities_count", :default => 0
@@ -747,8 +747,8 @@ ActiveRecord::Schema.define(:version => 20140827170904) do
     t.string   "cached_slug"
     t.float    "latitude",                                       :null => false
     t.float    "longitude",                                      :null => false
-    t.string   "banner_image_file_name",                         :null => false
-    t.string   "listing_image_file_name",                        :null => false
+    t.string   "banner_image_file_name"
+    t.string   "listing_image_file_name"
     t.integer  "area_id",                                        :null => false
     t.integer  "position"
     t.integer  "state_id",                                       :null => false
