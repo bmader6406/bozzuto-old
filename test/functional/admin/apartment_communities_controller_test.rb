@@ -11,6 +11,7 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
       @community1.destroy
     end
     
+=begin
     context 'GET to #list_deleted' do
       setup do
         get :list_deleted
@@ -20,6 +21,7 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
       should render_template(:list_deleted)
       should assign_to(:items)
     end
+=end
 
     types = Bozzuto::ExternalFeed::Feed.feed_types
 

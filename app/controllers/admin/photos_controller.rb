@@ -6,7 +6,8 @@ class Admin::PhotosController < Admin::MasterController
 
     property = @item.property
 
-    @performed_redirect = false
+    # Cancel the previous redirect
+    @_response_body = nil
 
     redirect_to(
       :controller => "admin/#{property.class.to_s.tableize}",

@@ -11,22 +11,18 @@ class Admin::UnderConstructionLeadsControllerTest < ActionController::TestCase
     context "on GET to :index with :csv format" do
       setup do
         UnderConstructionLead.make(:address => '123 Awesome Ln')
-        @output = StringIO.new
-        @output.binmode
 
         get :index, :format => 'csv'
-
-        assert_nothing_raised { @response.body.call(@response, @output) }
       end
 
       should respond_with(:success)
 
       should "contain a non-CMS-managed field" do
-        assert_match /TheID/, @output.string
+        @response.body.should =~ /TheID/
       end
 
       should "contain a CMS-managed field" do
-        assert_match /123 Awesome Ln/, @output.string
+        @response.body.should =~ /123 Awesome Ln/
       end
     end
 
