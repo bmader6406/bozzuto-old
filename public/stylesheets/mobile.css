@@ -147,8 +147,7 @@ input, select, textarea, .submit {
   width: 132px; }
 
 .header-link {
-  float: left;
-}
+  float: left; }
 
 .header a.btn {
   background-position: 0 0;
@@ -160,8 +159,7 @@ input, select, textarea, .submit {
 
 .header-btns {
   float: right;
-  margin-top: -15px;
-}
+  margin-top: -15px; }
 
 /* @end Header */
 /* @group Footer */
@@ -483,7 +481,6 @@ form .error ::-webkit-input-placeholder {
 /* @group Places */
 .btn-find-community {
   background-color: #7fa0a3;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #7fa0a3), color-stop(100%, #5b7f82));
   background-image: -webkit-linear-gradient(#7fa0a3, #5b7f82);
   background-image: linear-gradient(#7fa0a3, #5b7f82);
   border-radius: 3px;
@@ -502,9 +499,7 @@ form .error ::-webkit-input-placeholder {
 
 .btn-find-home {
   margin-left: 5px;
-  margin-bottom: 4px;
-}
-
+  margin-bottom: 4px; }
 
 .pill-list {
   padding: 20px 0;
@@ -534,3 +529,5 @@ form .error ::-webkit-input-placeholder {
   margin-bottom: 1em; }
 
 /* @end Places */
+
+/*# sourceMappingURL=mobile.css.map */

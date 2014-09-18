@@ -348,7 +348,6 @@
 
 .btn-blue-big {
   background-color: #a4c2e1;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a4c2e1), color-stop(100%, #6c8bbb));
   background-image: -webkit-linear-gradient(#a4c2e1, #6c8bbb);
   background-image: linear-gradient(#a4c2e1, #6c8bbb);
   border-radius: 6px;
@@ -391,3 +390,5 @@
   color: #565c64;
   font-size: 15px;
   margin-bottom: 40px; }
+
+/*# sourceMappingURL=neighborhoods.css.map */

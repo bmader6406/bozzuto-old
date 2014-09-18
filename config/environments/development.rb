@@ -23,8 +23,6 @@ Bozzuto::Application.configure do
     :host => 'bozzuto.local'
   }
 
-  config.action_controller.asset_host = 'http://bozzuto.local'
-
   config.action_mailer.delivery_method = :smtp
 
   # mocksmtp settings
