@@ -2,6 +2,8 @@ class TwitterAccount < ActiveRecord::Base
   UPDATE_FREQUENCY  = 2.hours
   RATE_LIMIT_WINDOW = 15.minutes
 
+  class_attribute :client
+
   has_many :tweets, :dependent => :destroy
 
   validates_presence_of :username
@@ -37,11 +39,14 @@ class TwitterAccount < ActiveRecord::Base
 
   def fetch_latest_tweet
     begin
-      Twitter.user_timeline(username).each do |response|
-        tweets.find_or_create_by_tweet_id(response.attrs[:id_str]) do |tweet|
-          tweet.text      = response.text
-          tweet.posted_at = response.created_at
-        end
+      client.user_timeline(username).each do |response|
+        tweet = tweets.find_or_initialize_by_tweet_id(
+          response.id.to_s,
+          :text      => response.text,
+          :posted_at => response.created_at
+        )
+
+        tweet.save
       end
 
       update_attribute(:next_update_at, Time.now + UPDATE_FREQUENCY)
@@ -59,9 +64,10 @@ class TwitterAccount < ActiveRecord::Base
 
   def username_exists
     begin
-      if username? && errors[:username].blank? && !Twitter.user?(username)
+      if username? && errors[:username].blank? && !client.user?(username)
         errors.add(:username, 'is not a valid Twitter user')
       end
+
     rescue Twitter::Error => e
       HoptoadNotifier.notify(e)
 

@@ -11,6 +11,7 @@ module ActiveRecord
       I18n.translate(defaults.shift, options.merge(:default => defaults, :scope => [:activerecord, :tips]))
     end
 
+    #:nocov:
     def self.self_and_descendants_from_active_record
       klass = self
       classes = [klass]
@@ -19,10 +20,8 @@ module ActiveRecord
       end
       classes
     rescue
-      # OPTIMIZE this rescue is to fix this test: ./test/cases/reflection_test.rb:56:in `test_human_name_for_column'
-      #         # Appearantly the method base_class causes some trouble.
-      #                 # It now works for sure.
       [self]
     end
+    #:nocov:
   end
 end

@@ -30,10 +30,6 @@ class Project < Property
 
   scope :order_by_completion_date, :order => 'completion_date DESC'
 
-  scope :limit, lambda { |limit|
-    { :limit => limit }
-  }
-
   scope :featured_mobile, :conditions => { :featured_mobile => true }
 
 

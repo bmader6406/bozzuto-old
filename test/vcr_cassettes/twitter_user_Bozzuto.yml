@@ -1,0 +1,63 @@
+--- 
+http_interactions: 
+- request: 
+    method: get
+    uri: https://api.twitter.com/1.1/users/show.json?screen_name=Bozzuto
+    body: 
+      string: ""
+    headers: 
+      Authorization: 
+      - OAuth oauth_consumer_key="IvcXyQ5chj0DcwSwQkGObQ", oauth_nonce="668235532e114b2ee6c7fcbf7758bd40", oauth_signature="Oxs7iPBoUta41qRogdyZjUQksto%3D", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1411018312", oauth_token="46745580-U9Uiz9KSTWpdPHWD6icYimCfA4t652zHOjTsbppVe", oauth_version="1.0"
+      Accept: 
+      - application/json
+      User-Agent: 
+      - Twitter Ruby Gem 5.11.0
+  response: 
+    status: 
+      code: 200
+      message: OK
+    headers: 
+      Content-Length: 
+      - "3050"
+      X-Rate-Limit-Reset: 
+      - "1411018916"
+      Strict-Transport-Security: 
+      - max-age=631138519
+      Set-Cookie: 
+      - guest_id=v1%3A141101831179860265; Domain=.twitter.com; Path=/; Expires=Sat, 17-Sep-2016 05:31:51 UTC
+      - lang=en
+      X-Access-Level: 
+      - read
+      Last-Modified: 
+      - Thu, 18 Sep 2014 05:31:51 GMT
+      X-Rate-Limit-Limit: 
+      - "180"
+      X-Xss-Protection: 
+      - 1; mode=block
+      X-Transaction: 
+      - ee3f17d01ca7314e
+      X-Frame-Options: 
+      - SAMEORIGIN
+      Content-Type: 
+      - application/json;charset=utf-8
+      Cache-Control: 
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      X-Rate-Limit-Remaining: 
+      - "171"
+      Date: 
+      - Thu, 18 Sep 2014 05:31:51 GMT
+      Status: 
+      - 200 OK
+      X-Content-Type-Options: 
+      - nosniff
+      Expires: 
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Pragma: 
+      - no-cache
+      Server: 
+      - tfe_b
+    body: 
+      string: "{\"id\":46745580,\"id_str\":\"46745580\",\"name\":\"Bozzuto\",\"screen_name\":\"Bozzuto\",\"location\":\"Greenbelt, MD\",\"description\":\"Real estate development, construction, property management, apartments, new homes -  Bozzuto. @WBJonline Best Places to Work. #BozzutoSmartHomes\",\"url\":\"http:\\/\\/t.co\\/AemCeEjJ30\",\"entities\":{\"url\":{\"urls\":[{\"url\":\"http:\\/\\/t.co\\/AemCeEjJ30\",\"expanded_url\":\"http:\\/\\/www.bozzuto.com\",\"display_url\":\"bozzuto.com\",\"indices\":[0,22]}]},\"description\":{\"urls\":[]}},\"protected\":false,\"followers_count\":3663,\"friends_count\":3254,\"listed_count\":111,\"created_at\":\"Fri Jun 12 20:50:53 +0000 2009\",\"favourites_count\":1289,\"utc_offset\":-14400,\"time_zone\":\"Eastern Time (US & Canada)\",\"geo_enabled\":true,\"verified\":false,\"statuses_count\":5491,\"lang\":\"en\",\"status\":{\"created_at\":\"Wed Sep 17 19:28:14 +0000 2014\",\"id\":512322154428653568,\"id_str\":\"512322154428653568\",\"text\":\"NEW from Tom Bozzuto's Blog: The Power of The Team http:\\/\\/t.co\\/WQ7kUNYEjS #Bozzuto #TeeamWorkMakesTheDreamWork cc; @Orioles @Nationals\",\"source\":\"\\u003ca href=\\\"http:\\/\\/www.hootsuite.com\\\" rel=\\\"nofollow\\\"\\u003eHootsuite\\u003c\\/a\\u003e\",\"truncated\":false,\"in_reply_to_status_id\":null,\"in_reply_to_status_id_str\":null,\"in_reply_to_user_id\":null,\"in_reply_to_user_id_str\":null,\"in_reply_to_screen_name\":null,\"geo\":null,\"coordinates\":null,\"place\":null,\"contributors\":null,\"retweet_count\":0,\"favorite_count\":0,\"entities\":{\"hashtags\":[{\"text\":\"Bozzuto\",\"indices\":[74,82]},{\"text\":\"TeeamWorkMakesTheDreamWork\",\"indices\":[83,110]}],\"symbols\":[],\"urls\":[{\"url\":\"http:\\/\\/t.co\\/WQ7kUNYEjS\",\"expanded_url\":\"http:\\/\\/ow.ly\\/BCgVr\",\"display_url\":\"ow.ly\\/BCgVr\",\"indices\":[51,73]}],\"user_mentions\":[{\"screen_name\":\"Orioles\",\"name\":\"Baltimore Orioles\",\"id\":39389304,\"id_str\":\"39389304\",\"indices\":[115,123]},{\"screen_name\":\"Nationals\",\"name\":\"Washington Nationals\",\"id\":39419180,\"id_str\":\"39419180\",\"indices\":[124,134]}]},\"favorited\":false,\"retweeted\":false,\"possibly_sensitive\":false,\"lang\":\"en\"},\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":false,\"profile_background_color\":\"607FC2\",\"profile_background_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_background_images\\/378800000045783344\\/136647da57df2301495f527414bd2687.jpeg\",\"profile_background_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_background_images\\/378800000045783344\\/136647da57df2301495f527414bd2687.jpeg\",\"profile_background_tile\":true,\"profile_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_images\\/467057035238854658\\/Iqnfb3JN_normal.jpeg\",\"profile_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_images\\/467057035238854658\\/Iqnfb3JN_normal.jpeg\",\"profile_banner_url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/46745580\\/1409851613\",\"profile_link_color\":\"93A644\",\"profile_sidebar_border_color\":\"FFFFFF\",\"profile_sidebar_fill_color\":\"FFFFFF\",\"profile_text_color\":\"174712\",\"profile_use_background_image\":true,\"default_profile\":false,\"default_profile_image\":false,\"following\":false,\"follow_request_sent\":false,\"notifications\":false,\"suspended\":false,\"needs_phone_verification\":false}"
+    http_version: 
+  recorded_at: Thu, 18 Sep 2014 05:31:52 GMT
+recorded_with: VCR 2.5.0

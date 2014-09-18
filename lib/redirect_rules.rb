@@ -1,5 +1,6 @@
 class RedirectRules
   def self.list
+    #:nocov:
     [
       Rule.new(%r{^/cs/bozzuto_homes/housing_for_all/?},       '/about-us/housing-for-all'),
       Rule.new(%r{^/cs/root/corporate/rent_a_home/overview/?}, '/apartments'),
@@ -177,6 +178,7 @@ class RedirectRules
         :if => Proc.new { |rack_env| rack_env['SERVER_NAME'] =~ /timberlawncrescent\.com$/ }
       )
     ]
+    #:nocov:
   end
 
   class Rule < Struct.new(:url_regex, :redirect_url, :condition)

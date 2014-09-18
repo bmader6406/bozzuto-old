@@ -7,10 +7,10 @@ class TwitterAccountTest < ActiveSupport::TestCase
       TwitterAccount.make(:username => 'batman')
     }
 
-    should have_many :tweets
+    should have_many(:tweets)
 
-    should validate_presence_of :username
-    should validate_uniqueness_of :username
+    should validate_presence_of(:username)
+    should validate_uniqueness_of(:username)
 
     describe "#typus_name" do
       it "returns the username" do
@@ -23,7 +23,7 @@ class TwitterAccountTest < ActiveSupport::TestCase
 
       context "Twitter API is rate limited" do
         before do
-          Twitter.expects(:user?).raises(Twitter::Error::TooManyRequests)
+          TwitterAccount.client.expects(:user?).raises(Twitter::Error::TooManyRequests)
 
           subject.username = 'doh'
         end
@@ -97,11 +97,11 @@ class TwitterAccountTest < ActiveSupport::TestCase
 
       context "user does exist" do
         before do
-          subject.username = 'TheBozzutoGroup'
+          subject.username = 'Bozzuto'
         end
 
         it "doesn't have an error" do
-          VCR.use_cassette('twitter_user_TheBozzutoGroup') do
+          VCR.use_cassette('twitter_user_Bozzuto') do
             subject.valid?.should == true
           end
 
@@ -140,27 +140,27 @@ class TwitterAccountTest < ActiveSupport::TestCase
         before do
           subject.next_update_at = Time.now - 1.hour
 
-          VCR.use_cassette('twitter_timeline_TheBozzutoGroup') do
-            @tweets = Twitter.user_timeline('TheBozzutoGroup')
+          VCR.use_cassette('twitter_timeline_Bozzuto') do
+            @tweets = TwitterAccount.client.user_timeline('Bozzuto')
           end
         end
 
         it "fetches the newest tweets" do
           expect {
-            VCR.use_cassette('twitter_timeline_TheBozzutoGroup') do
+            VCR.use_cassette('twitter_timeline_Bozzuto') do
               subject.latest_tweet
             end
           }.to change { subject.tweets(true).count }.by(20)
         end
 
         it "returns the newest tweet" do
-          VCR.use_cassette('twitter_timeline_TheBozzutoGroup') do
-            subject.latest_tweet.tweet_id.should == @tweets.first.attrs[:id_str]
+          VCR.use_cassette('twitter_timeline_Bozzuto') do
+            subject.latest_tweet.tweet_id.should == @tweets.first.id.to_s
           end
         end
 
         it "sets :next_update_at to the next update time" do
-          VCR.use_cassette('twitter_timeline_TheBozzutoGroup') do
+          VCR.use_cassette('twitter_timeline_Bozzuto') do
             subject.latest_tweet
           end
 
@@ -172,7 +172,7 @@ class TwitterAccountTest < ActiveSupport::TestCase
         before do
           subject.next_update_at = Time.now - 1.hour
 
-          Twitter.expects(:user_timeline).raises(Twitter::Error::TooManyRequests)
+          TwitterAccount.client.expects(:user_timeline).raises(Twitter::Error::TooManyRequests)
         end
 
         it "doesn't fetch any new tweets" do

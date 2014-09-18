@@ -531,7 +531,7 @@ Tweet.blueprint do
 end
 
 TwitterAccount.blueprint do
-  username { 'TheBozzutoGroup' }
+  username { 'Bozzuto' }
 end
 
 TypusUser.blueprint do
