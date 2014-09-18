@@ -1,4 +1,9 @@
 namespace :bozzuto do
+  def report_error(task, error)
+    puts "Failed to #{task}: #{error.message}"
+    puts error.backtrace
+  end
+
   desc 'Download property feeds via FTP'
   task :download_property_feeds => :environment do
     puts 'Downloading property feeds ...'
@@ -6,7 +11,7 @@ namespace :bozzuto do
     begin
       Bozzuto::ExternalFeed::InboundFtp.download_files
     rescue Exception => e
-      puts "Failed to download feeds: #{e.message}"
+      report_error('download feeds', e)
       HoptoadNotifier.notify(e)
     end
   end
@@ -24,7 +29,7 @@ namespace :bozzuto do
         puts "Can't load Vaultware feed. Try again later."
       end
     rescue Exception => e
-      puts "Failed to load feed: #{e.message}"
+      report_error('load feed', e)
       HoptoadNotifier.notify(e)
     end
   end
@@ -42,7 +47,7 @@ namespace :bozzuto do
         puts "Can't load PropertyLink feed. Try again later."
       end
     rescue Exception => e
-      puts "Failed to load feed: #{e.message}"
+      report_error('load feed', e)
       HoptoadNotifier.notify(e)
     end
   end
@@ -60,7 +65,7 @@ namespace :bozzuto do
         puts "Can't load RentCafe feed. Try again later."
       end
     rescue Exception => e
-      puts "Failed to load feed: #{e.message}"
+      report_error('load feed', e)
       HoptoadNotifier.notify(e)
     end
   end
@@ -78,7 +83,7 @@ namespace :bozzuto do
         puts "Can't load PSI feed. Try again later."
       end
     rescue Exception => e
-      puts "Failed to load feed: #{e.message}"
+      report_error('load feed', e)
       HoptoadNotifier.notify(e)
     end
   end
@@ -91,7 +96,7 @@ namespace :bozzuto do
         puts "==> Refreshing #{feed.name} feed (#{feed.url})"
         feed.refresh!
       rescue Exception => e
-        puts "Failed to load feed: #{e.message}"
+        report_error('load RSS feed', e)
         HoptoadNotifier.notify(e)
       end
     end
@@ -104,7 +109,7 @@ namespace :bozzuto do
         puts "Sending recurring email to #{email.email_address}"
         email.send!
       rescue Exception => e
-        puts "Failed to send recurring email: #{e.message}"
+        report_error('send recurring email', e)
         HoptoadNotifier.notify(e)
       end
     end
@@ -123,7 +128,7 @@ namespace :bozzuto do
       end
 
     rescue Exception => e
-      puts "Failed to export data: #{e.message}"
+      report_error('export data', e)
       HoptoadNotifier.notify(e)
     end
   end
@@ -135,7 +140,7 @@ namespace :bozzuto do
     begin
       Bozzuto::ExternalFeed::OutboundFtp.transfer APP_CONFIG[:apartment_export_file]
     rescue Exception => e
-      puts "Failed to send apartment export via FTP: #{e.message}"
+      report_error('send apartment export via FTP', e)
       HoptoadNotifier.notify(e)
     end
   end
@@ -149,7 +154,7 @@ namespace :bozzuto do
       Bozzuto::BuzzCsv.new(:filename => APP_CONFIG[:buzz_email_list_file]).file
 
     rescue Exception => e
-      puts "Failed to export contact lists: #{e.message}"
+      report_error('export contact lists', e)
       HoptoadNotifier.notify(e)
     end
   end
