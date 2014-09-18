@@ -95,7 +95,7 @@ module Cover
         
         task :environment do
           ENV['RAILS_ENV'] = 'test'
-          RAILS_ENV.replace('test')
+          Rails.env = 'test'
         end
 
         Rcov::RcovTask.new(:coverage => dependencies) do |t|

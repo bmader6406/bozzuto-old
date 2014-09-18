@@ -1,10 +1,8 @@
 class Admin::MasterController < ApplicationController
 
-  skip_filter *_process_action_callbacks.map(&:filter)
+  skip_filter(*_process_action_callbacks.map(&:filter))
 
   unloadable
-
-  #inherit_views 'admin/resources'
 
   layout 'admin'
 
