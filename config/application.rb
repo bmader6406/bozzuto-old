@@ -28,7 +28,7 @@ module Bozzuto
 
     config.middleware.insert_before(Rack::Lock, 'Bozzuto::MissingImages')
 
-    #config.middleware.insert_after(ActionController::Session::CookieStore, 'Bozzuto::Mobile::Middleware')
+    config.middleware.insert_after(ActionDispatch::Session::CookieStore, 'Bozzuto::Mobile::Middleware')
 
     config.middleware.use('Analytics::MillenialMedia::Middleware')
     config.middleware.use('Analytics::AdSource::Middleware')

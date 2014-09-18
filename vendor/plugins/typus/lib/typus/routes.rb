@@ -1,7 +1,5 @@
 module Typus
-
   class Routes
-
     # In your application's config/routes.rb, draw Typus's routes:
     #
     # @example
@@ -15,23 +13,21 @@ module Typus
     # @example
     #   map.resources :users, :only => [:new, :create]
     #   Typus::Routes.draw(map)
-    def self.draw(map)
+    def self.draw(router)
+      router.instance_eval do
+        scope '/admin' do
+          match 'quick_edit' => 'typus#quick_edit', :as => :admin_quick_edit
+          match '/' => 'typus#dashboard', :as => :admin_dashboard
+          match 'sign_in' => 'typus#sign_in', :as => :admin_sign_in
+          match 'sign_out' => 'typus#sign_out', :as => :admin_sign_out
+          match 'sign_up' => 'typus#sign_up', :as => :admin_sign_up
+          match 'recover_password' => 'typus#recover_password', :as => :admin_recover_password
+          match 'reset_password' => 'typus#reset_password', :as => :admin_recover_password
+        end
 
-      map.with_options :controller => 'typus', :path_prefix => 'admin' do |i|
-        i.admin_quick_edit 'quick_edit', :action => 'quick_edit'
-        i.admin_dashboard '', :action => 'dashboard'
-        i.admin_sign_in 'sign_in', :action => 'sign_in'
-        i.admin_sign_out 'sign_out', :action => 'sign_out'
-        i.admin_sign_up 'sign_up', :action => 'sign_up'
-        i.admin_recover_password 'recover_password', :action => 'recover_password'
-        i.admin_reset_password 'reset_password', :action => 'reset_password'
+        match ':controller(/:action(/:id))', :controller => /admin\/[^\/]+/
+        match ':controller(/:action(.:format))', :controller => /admin\/[^\/]+/
       end
-
-      map.connect ':controller/:action/:id', :controller => /admin\/\w+/
-      map.connect ':controller/:action/:id.:format', :controller => /admin\/\w+/
-
     end
-
   end
-
 end

@@ -30,7 +30,8 @@ module Typus
     #   => "Typus user"
     #
     def typus_human_name
-      human_name(:default => self.name.underscore.humanize)
+      #human_name(:default => self.name.underscore.humanize)
+      model_name.human
     end
 
     def typus_description

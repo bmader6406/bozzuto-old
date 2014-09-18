@@ -1,7 +1,7 @@
 Bozzuto::Application.routes.draw do
-  #Typus::Routes.draw(map)
-  #Ckeditor::Routes.draw(map)
+  Typus::Routes.draw(self)
 
+  #Ckeditor::Routes.draw(map)
 
   root :to => 'home_pages#index'
 

@@ -38,7 +38,7 @@ module Analytics
         setup do
           @referrer = ::AdSource.make(:domain_name => 'apartments.com', :value => 'Apartments')
 
-          get '/', nil, { :referer => 'http://apartments.com' }
+          get '/', nil, 'HTTP_REFERER' => 'http://apartments.com'
         end
 
         should_set_ad_source('Apartments')
@@ -48,7 +48,7 @@ module Analytics
       context "all other requests" do
         context "request is from a mobile device" do
           setup do
-            get '/', nil, { :user_agent => "iPhone" }
+            get '/', nil, 'HTTP_USER_AGENT' => 'iPhone'
           end
 
           should_set_ad_source('Bozzuto.comMobile')

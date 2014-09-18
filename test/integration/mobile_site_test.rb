@@ -3,7 +3,7 @@ require 'test_helper'
 class MobileSiteTest < ActionController::IntegrationTest
   def self.should_have_page_content(content)
     should "page should have content #{content}" do
-      assert_match /#{content}/, @response.body
+      @response.body.should =~ /#{content}/
     end
   end
 
@@ -21,13 +21,13 @@ class MobileSiteTest < ActionController::IntegrationTest
       :body        => 'Bozzuto Desktop',
       :mobile_body => 'Bozzuto Mobile'
     )
-    @home_page.save(false)
+    @home_page.save(:validate => false)
   end
 
   context "in a browser" do
     context "without forcing the mobile site" do
       setup do
-        get '/', nil, :user_agent => desktop_user_agent
+        get '/', nil, 'HTTP_USER_AGENT' => desktop_user_agent
       end
 
       should_respond_with_desktop_site
@@ -35,7 +35,7 @@ class MobileSiteTest < ActionController::IntegrationTest
 
     context "forcing the mobile site" do
       setup do
-        get '/', { :full_site => '0' }, :user_agent => desktop_user_agent
+        get '/', { :full_site => '0' }, 'HTTP_USER_AGENT' => desktop_user_agent
       end
 
       should_respond_with_mobile_site
@@ -45,7 +45,7 @@ class MobileSiteTest < ActionController::IntegrationTest
   context "on a mobile device" do
     context "without forcing the full site" do
       setup do
-        get '/', nil, :user_agent => mobile_user_agent
+        get '/', nil, 'HTTP_USER_AGENT' => mobile_user_agent
       end
 
       should_respond_with_mobile_site
@@ -53,7 +53,7 @@ class MobileSiteTest < ActionController::IntegrationTest
 
     context "forcing the full site" do
       setup do
-        get '/', { :full_site => '1' }, :user_agent => mobile_user_agent
+        get '/', { :full_site => '1' }, 'HTTP_USER_AGENT' => mobile_user_agent
       end
 
       should_respond_with_desktop_site

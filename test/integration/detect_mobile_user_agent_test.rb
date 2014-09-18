@@ -25,7 +25,7 @@ class DetectMobileUserAgentTest < ActionController::IntegrationTest
 
     context 'with an iPad user agent' do
       setup do
-        get '/', nil, :user_agent => 'Mozilla/5.0 (iPad; U; CPU OS 3_2_1 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Mobile/7B405'
+        get '/', nil, 'HTTP_USER_AGENT' => 'Mozilla/5.0 (iPad; U; CPU OS 3_2_1 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Mobile/7B405'
       end
 
       should_set_the_format_to :html
@@ -59,7 +59,7 @@ class DetectMobileUserAgentTest < ActionController::IntegrationTest
       desktop_user_agents.each do |agent|
         context agent[:name] do
           setup do
-            get '/', nil, :user_agent => agent[:ua]
+            get '/', nil, 'HTTP_USER_AGENT' => agent[:ua]
           end
 
           should_set_the_format_to :html
@@ -135,7 +135,7 @@ class DetectMobileUserAgentTest < ActionController::IntegrationTest
       mobile_user_agents.each do |agent|
         context agent[:name] do
           setup do
-            get '/', nil, :user_agent => agent[:ua]
+            get '/', nil, 'HTTP_USER_AGENT' => agent[:ua]
           end
 
           should_set_the_format_to :mobile
