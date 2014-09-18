@@ -25,6 +25,8 @@ GEM
       activesupport (= 3.0.6)
       arel (~> 2.0.2)
       tzinfo (~> 0.3.23)
+    activerecord-mysql2-adapter (0.0.3)
+      mysql2
     activerecord-tableless (0.1.0)
       activerecord
     activeresource (3.0.6)
@@ -99,7 +101,7 @@ GEM
     multi_json (1.10.1)
     multi_xml (0.5.4)
     multipart-post (1.2.0)
-    mysql (2.8.1)
+    mysql2 (0.3.16)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -259,6 +261,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-mysql2-adapter
   activerecord-tableless (= 0.1.0)
   awesome_nested_set (= 2.1.6)
   bourbon
@@ -275,7 +278,7 @@ DEPENDENCIES
   machinist (= 1.0.6)
   meta_search
   mocha (= 0.9.8)
-  mysql (= 2.8.1)
+  mysql2
   nokogiri (= 1.4.4)
   paperclip (= 2.3.8)
   phocus (= 1.1)
