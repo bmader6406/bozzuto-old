@@ -10,7 +10,7 @@ class PagesController < SectionContentController
   private
 
   def find_page
-    @page = if params[:page].any?
+    @page = if params[:page].present?
       typus_user ?
         @section.pages.find_by_path(current_page_path) :
         @section.pages.published.find_by_path(current_page_path)

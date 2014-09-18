@@ -9,7 +9,7 @@ class PagesControllerTest < ActionController::TestCase
     context '#current_page_path' do
       context 'when the page param is populated' do
         setup do
-          get :show, :section => @section.to_param, :page => ['yay', 'hooray']
+          get :show, :section => @section.to_param, :page => 'yay/hooray'
         end
 
         should 'return the path string' do
@@ -21,7 +21,7 @@ class PagesControllerTest < ActionController::TestCase
     context 'a GET to #show' do
       context 'with no pages in the section' do
         setup do
-          get :show, :section => @section.to_param, :page => []
+          get :show, :section => @section.to_param
         end
 
         should respond_with(:not_found)
@@ -30,7 +30,7 @@ class PagesControllerTest < ActionController::TestCase
       context 'with no page params' do
         setup do
           @page = Page.make :section => @section
-          get :show, :section => @section.to_param, :page => []
+          get :show, :section => @section.to_param
         end
 
         should respond_with(:success)
@@ -44,7 +44,7 @@ class PagesControllerTest < ActionController::TestCase
           3.times { Page.make :section => @section }
           @page = @section.pages.last
 
-          get :show, :section => @section.to_param, :page => @page.path.split('/')
+          get :show, :section => @section.to_param, :page => @page.path
         end
 
         should respond_with(:success)
@@ -64,7 +64,7 @@ class PagesControllerTest < ActionController::TestCase
             3.times { Page.make :section => @section, :published => false }
             @page = @section.pages.last
 
-            get :show, :section => @section.to_param, :page => @page.path.split('/')
+            get :show, :section => @section.to_param, :page => @page.path
           end
 
           should respond_with(:success)
