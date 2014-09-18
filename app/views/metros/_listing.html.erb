@@ -12,7 +12,7 @@
       <%= pluralize(metro.apartment_communities_count, 'Apartment Community') %>
     </p>
 
-    <% metro.areas.if_present? do |areas| %>
+    <%= if_present?(metro.areas) do |areas| %>
       <ul class="nh-arrow-list">
         <% areas.positioned.each do |area| %>
           <li><%= link_to area.name_with_count, area_path(metro, area) %></li>

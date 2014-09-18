@@ -38,7 +38,7 @@
             <li>
               <strong><%= group.name %></strong>
 
-							<% group.cheapest_rent.if_nonzero? do |price| %>
+							<%= if_nonzero?(group.cheapest_rent) do |price| %>
                 from <%= dollars(price) %>
 							<% end %>
             </li>
@@ -46,7 +46,7 @@
         <% end %>
       </ul>
 
-      <% community.overview_bullet_1.if_present? do |bullet| %>
+      <%= if_present?(community.overview_bullet_1) do |bullet| %>
         <p class="description"><%= bullet %></p>
       <% end %>
     </div>

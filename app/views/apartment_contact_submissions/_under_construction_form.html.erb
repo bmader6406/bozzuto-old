@@ -2,7 +2,7 @@
   <div class="cty-contact-hdr-left">
     <h2 class="hdr-primary">This is an upcoming community.</h2>
 
-    <% @community.contact_configuration.if_present? do |config| %>
+    <%= if_present?(@community.contact_configuration) do |config| %>
       <% if config.upcoming_intro_text.present? && config.upcoming_intro_text.length > 10 %>
         <div id="community-contact-note">
           <%= raw(config.upcoming_intro_text) %>

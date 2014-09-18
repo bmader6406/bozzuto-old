@@ -38,7 +38,7 @@
                 <%= square_feet(group.largest_square_footage) %>
               </td>
               <td class="cty-table-price">
-                <% group.cheapest_rent.if_nonzero? do |price| %>
+                <%= if_nonzero?(group.cheapest_rent) do |price| %>
                   From <%= dollars(price) %>
                 <% end %>
               </td>

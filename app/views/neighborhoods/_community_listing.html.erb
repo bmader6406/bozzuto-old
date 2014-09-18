@@ -22,9 +22,9 @@
       <p class="nh-tile-tagline">Coming Soon</p>
     <% end %>
 
-    <% community.neighborhood_description.if_present? do |description| %>
+    <% if community.neighborhood_description.present? %>
       <p class="nh-tile-description">
-        <%= description %>
+        <%= community.neighborhood_description %>
       </p>
     <% end %>
 
@@ -32,8 +32,8 @@
   </div>
 
   <div class="cty-tile-actions row">
-    <% community.availability_url.if_present? do |url| %>
-      <%= link_to 'Availability', url, :class => 'btn-blue-big' %>
+    <% if community.availability_url.present? %>
+      <%= link_to 'Availability', community.availability_url, :class => 'btn-blue-big' %>
     <% end %>
 
     <%= link_to 'More Info', apartment_community_path(community), :class => 'cty-tile-actions-info' %>

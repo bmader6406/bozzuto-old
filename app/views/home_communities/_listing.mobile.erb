@@ -10,7 +10,7 @@
       <% end %>
     <% end %>
 
-    <%= community.mobile_phone_number.if_present? do |phone_number| %>
+    <%= if_present?(community.mobile_phone_number) do |phone_number| %>
       <%= link_to_phone_number(format_phone_number(phone_number), phone_number, :class => 'tel') %>
     <% end %>
   </div>

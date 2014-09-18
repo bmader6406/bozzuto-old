@@ -80,11 +80,11 @@
         </div>
 
         <div class="row">
-          <% latest_news.if_present? do |post| %>
+          <%= if_present?(latest_news) do |post| %>
             <div class="latest-news article">
               <h3><%= link_to 'Featured News', news_posts_path(@section) %></h3>
 
-              <% link_to section_news_post_path(@section, post), :class => 'post-link' do %>
+              <%= link_to section_news_post_path(@section, post), :class => 'post-link' do %>
                 <%= image_tag post.home_page_image.url, :width => '380', :height => '150' %>
 
                 <span class="title"><%= post.title%></span>
@@ -92,11 +92,11 @@
             </div>
           <% end %>
 
-          <% @latest_blog_post.if_present? do |post| %>
+          <%= if_present?(@latest_blog_post) do |post| %>
             <div class="bozzuto-blog article">
               <h3><%= link_to post.header_title.presence || 'Bozzuto Blog', post.header_url %></h3>
 
-              <% link_to post.url, :class => 'post-link', :rel => 'external' do %>
+              <%= link_to post.url, :class => 'post-link', :rel => 'external' do %>
                 <%= image_tag post.image.url, :width => 380, :height => 150 %>
 
                 <span class="title"><%= post.title %></span>

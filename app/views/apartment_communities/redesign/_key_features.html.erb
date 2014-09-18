@@ -7,7 +7,7 @@
       <%= property_bullets %>
     </div>
 
-    <% @community.videos.if_present? do |videos| %>
+    <%= if_present?(@community.videos) do |videos| %>
       <div class="grid-6">
         <h4 class="cty-features-headline">Watch the Videos</h4>
 
@@ -21,7 +21,7 @@
       </div>
     <% end %>
 
-    <% community.property_features.has_icon.take(5).if_present? do |features| %>
+    <%= if_present?(community.property_features.has_icon.take(5)) do |features| %>
       <div class="grid-4">
         <ul>
           <% features.each do |feature| %>

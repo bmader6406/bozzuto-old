@@ -35,7 +35,7 @@
           <div class="column-main col">
             <%= yield %>
 
-            <% @page.try(:snippet).if_present? do |snippet| %>
+            <%= if_present?(@page.try(:snippet)) do |snippet| %>
               <%= snippet.body.html_safe %>
             <% end %>
           </div>

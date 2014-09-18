@@ -2,7 +2,9 @@ module LassoHelper
   def lasso_tracking_js(community)
     return unless community.respond_to?(:lasso_account) && community.lasso_account.present?
 
-    community.lasso_account.analytics_id.if_present? do |analytics_id|
+    if community.lasso_account.analytics_id.present?
+      analytics_id = community.lasso_account.analytics_id
+
       <<-END.html_safe
         <script type="text/javascript">
         var _ldstJsHost = (("https:" == document.location.protocol) ? "https://" : "http://");

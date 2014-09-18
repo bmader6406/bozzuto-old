@@ -14,7 +14,7 @@
       <p class="nh-tile-tagline">Coming Soon</p>
     <% end %>
 
-    <% community.neighborhood_description.if_present? do |description| %>
+    <%= if_present?(community.neighborhood_description) do |description| %>
       <p class="nh-tile-description">
         <%= description %>
       </p>

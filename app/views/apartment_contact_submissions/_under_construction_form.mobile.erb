@@ -1,6 +1,6 @@
 <h3>This property is under construction.</h3>
 
-<% @community.contact_configuration.if_present? do |config| %>
+<%= if_present?(@community.contact_configuration) do |config| %>
   <% if config.upcoming_intro_text.present? && config.upcoming_intro_text.length > 10 %>
     <div id="community-contact-note">
       <%= raw(config.upcoming_intro_text) %>

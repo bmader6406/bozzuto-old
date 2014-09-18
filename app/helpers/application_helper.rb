@@ -3,6 +3,16 @@ module ApplicationHelper
 
   def black_hole; end
 
+  #:nocov:
+  def if_present?(thing, &block)
+    thing.present? ? capture(thing, &block) : ''
+  end
+
+  def if_nonzero?(thing, &block)
+    thing.to_i.nonzero? ? capture(thing, &block) : ''
+  end
+  #:nocov:
+
   def twitter_url(username)
     "http://twitter.com/#{username}".html_safe
   end

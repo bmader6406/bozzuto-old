@@ -1,7 +1,7 @@
 <% if community.id == 286 %>
   <%= render 'apartment_communities/redesign/slideshow_crosswinds', :community => community %>
 <% else %>
-  <% community.slideshow.if_present? do |slideshow| %>
+  <%= if_present?(community.slideshow) do |slideshow| %>
     <div class="cty-slideshow">
       <h2 class="cty-slideshow-title"><%= community.short_name %></h2>
 

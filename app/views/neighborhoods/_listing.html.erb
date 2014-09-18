@@ -12,7 +12,7 @@
       <%= pluralize(neighborhood.apartment_communities_count, 'Apartment Community') %>
     </p>
 
-    <% neighborhood.description.if_present? do |description| %>
+    <%= if_present?(neighborhood.description) do |description| %>
       <p class="nh-tile-description">
         <%= description.html_safe %>
       </p>

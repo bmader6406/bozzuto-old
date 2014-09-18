@@ -62,7 +62,7 @@
                   </td>
 
                   <td>
-                    <% group.cheapest_rent.if_nonzero? do |price| %>
+                    <%= if_nonzero?(group.cheapest_rent) do |price| %>
                       From <%= dollars(price) %>
                     <% end %>
                   </td>
@@ -83,7 +83,7 @@
       </div>
     <% end %>
 
-    <% @community.featured_floor_plans.available.non_zero_min_rent.if_present? do |plans| %>
+    <%= if_present?(@community.featured_floor_plans.available.non_zero_min_rent) do |plans| %>
       <div id="featured-floor-plans">
         <h2>Featured Floor Plans</h2>
 

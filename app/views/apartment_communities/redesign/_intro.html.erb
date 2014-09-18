@@ -8,7 +8,7 @@
 
       <p class="cty-intro-address">
         <%= community.address('<br />').html_safe %>
-        <% community.zip_code.if_present? do |zip| %>
+        <%= if_present?(community.zip_code) do |zip| %>
           <%= zip %>
         <% end %>
         <br />

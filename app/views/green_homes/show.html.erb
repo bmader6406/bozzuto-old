@@ -148,7 +148,7 @@
           <h3 class="hdr-spaced">
             <%= @green_package.graph_title %>
 
-            <% @green_package.graph_tooltip.if_present? do |tooltip| %>
+            <%= if_present?(@green_package.graph_tooltip) do |tooltip| %>
               <a href="BH_TEST" class="info-bubble-control"><em class="i">i</em>
                 <div class="info-bubble">
                   <%= tooltip.html_safe %>

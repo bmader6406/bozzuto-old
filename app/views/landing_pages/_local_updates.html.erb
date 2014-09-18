@@ -1,6 +1,6 @@
 <ul class="local-updates row">
   <% (@page.apartment_communities + @page.home_communities).sort_by(&:title).each do |community| %>
-    <% community.latest_tweet.if_present? do |tweet| %>
+    <%= if_present?(community.latest_tweet) do |tweet| %>
       <li class="local-update <%= cycle('', 'alt') %>">
         <h2><%= link_to community.title, community %></h2>
 
@@ -14,7 +14,7 @@
   <% end %>
 </ul>
 
-<% @page.local_info_feed.if_present? do |feed| %>
+<%= if_present?(@page.local_info_feed) do |feed| %>
   <ul class="local-info-feed">
     <% feed.items.recent.each do |item| %>
       <li>

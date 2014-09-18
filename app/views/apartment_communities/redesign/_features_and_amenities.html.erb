@@ -2,7 +2,7 @@
   <%= double_click_community_features_amenities_script(community) %>
 <% end %>
 
-<% community.features_page.if_present? do |page| %>
+<%= if_present?(community.features_page) do |page| %>
   <!-- Features & Amenities -->
   <div class="cty-section">
     <div class="cty-section-header">
