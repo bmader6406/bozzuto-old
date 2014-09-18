@@ -66,9 +66,9 @@
                       <% if @community.plan_count_in_group(group) > 0 %>
                         <li style="color:#7f7b7a;font-family:Helvetica,Arial;font-size:12px;">
                           <strong><%= group.name %></strong>
-                          <%= if_present?(@community.cheapest_price_in_group(group)) do |price| %>
-                            from
-                            <%= dollars(price) %>
+                          <% price = @community.cheapest_price_in_group(group) %>
+                          <% if price.present? %>
+                            from <%= dollars(price) %>
                           <% end %>
                         </li>
                       <% end %>
