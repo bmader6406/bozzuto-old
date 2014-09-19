@@ -10,7 +10,7 @@ class RankingsControllerTest < ActionController::TestCase
     context 'a GET to #index' do
       all_devices do
         setup do
-          get :index
+          get :index, :section => @section.to_param
         end
 
         should respond_with(:success)

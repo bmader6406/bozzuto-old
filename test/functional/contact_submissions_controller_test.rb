@@ -11,7 +11,7 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
       all_devices do
         context 'with no topic param' do
           setup do
-            get :show
+            get :show, :section => @section.to_param
           end
 
           should respond_with(:success)
@@ -22,18 +22,22 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
 
         context 'with a topic param' do
           setup do
-            get :show, :topic => @topic.to_param
+            get :show,
+                :section => @section.to_param,
+                :topic   => @topic.to_param
           end
 
           should 'set the topic on the submission' do
-            assert_equal @topic, assigns(:submission).topic
+            assigns(:submission).topic.should == @topic
           end
         end
       end
 
       context 'for KML format' do
         setup do
-          get :show, :format => :kml
+          get :show,
+              :section => @section.to_param,
+              :format  => :kml
         end
 
         should respond_with(:success)
@@ -50,9 +54,11 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
     context 'a POST to #create' do
       context 'with missing fields' do
         setup do
-          assert_no_difference('ActionMailer::Base.deliveries.count') do
-            post :create, :contact_submission => {}
-          end
+          expect {
+            post :create,
+                 :section            => @section.to_param,
+                 :contact_submission => {}
+          }.to_not change { ActionMailer::Base.deliveries.count }
         end
 
         should respond_with(:success)
@@ -64,18 +70,20 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
         setup do
           @submission = ContactSubmission.make_unsaved :topic => @topic
 
-          assert_difference('ActionMailer::Base.deliveries.count', 1) do
+          expect {
             post :create,
-              :contact_submission => @submission.attributes,
-              :topic              => @topic.to_param
-          end
+                 :section            => @section.to_param,
+                 :contact_submission => @submission.attributes,
+                 :topic              => @topic.to_param
+          }.to change { ActionMailer::Base.deliveries.count }.by(1)
         end
 
         should respond_with(:redirect)
         should redirect_to('the thank you page') { thank_you_contact_path }
         should assign_to(:section) { @section }
+
         should 'save the email in the flash' do
-          assert_equal @submission.email, flash[:contact_submission_email]
+          flash[:contact_submission_email].should == @submission.email
         end
       end
     end
@@ -83,7 +91,7 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
     context 'a GET to #thank_you' do
       all_devices do
         setup do
-          get :thank_you
+          get :thank_you, :section => @section.to_param
         end
 
         should respond_with(:success)

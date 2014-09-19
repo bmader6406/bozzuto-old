@@ -84,7 +84,7 @@
             <div class="latest-news article">
               <h3><%= link_to 'Featured News', news_posts_path(@section) %></h3>
 
-              <%= link_to section_news_post_path(@section, post), :class => 'post-link' do %>
+              <%= link_to news_post_path(@section, post), :class => 'post-link' do %>
                 <%= image_tag post.home_page_image.url, :width => '380', :height => '150' %>
 
                 <span class="title"><%= post.title%></span>
@@ -132,7 +132,7 @@
     </div>
 
     <div class="rss">
-      <p><%= link_to 'Get RSS Feed', section_news_posts_path('about', :format => :rss), 'data-track-social-delay' => 'RSS,Get Feed,{current url}' %></p>
+      <p><%= link_to 'Get RSS Feed', news_posts_path('about-us', :format => :rss), 'data-track-social-delay' => 'RSS,Get Feed,{current url}' %></p>
     </div>
   </div>
 </div>

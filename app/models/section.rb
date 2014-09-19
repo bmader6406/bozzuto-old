@@ -31,6 +31,14 @@ class Section < ActiveRecord::Base
     nil
   end
 
+  def to_param
+    if service?
+      "services/#{super}"
+    else
+      super
+    end
+  end
+
   def typus_name
     title
   end

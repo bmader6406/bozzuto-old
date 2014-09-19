@@ -23,7 +23,7 @@ class FeaturedProjectsControllerTest < ActionController::TestCase
         setup { get :index }
 
         should respond_with(:redirect)
-        should redirect_to('the services page') { section_page_path('services') }
+        should redirect_to('the services page') { page_path('services') }
       end
 
       mobile_device do
@@ -43,7 +43,7 @@ class FeaturedProjectsControllerTest < ActionController::TestCase
         setup { get :show, :id => @project1.cached_slug }
 
         should respond_with(:redirect)
-        should redirect_to('the services page') { section_page_path('services') }
+        should redirect_to('the services page') { page_path('services') }
       end
 
       mobile_device do

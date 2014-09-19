@@ -198,134 +198,9 @@ Bozzuto::Application.routes.draw do
   resources :states, :only => :show do
     resources :counties, :only => :index
   end
+
   resources :counties, :only => :show
   resources :cities, :only => :show
-
-
-  # Contact
-  scope '/about-us' do
-    resource :contact_submission, :path => 'contact', :as => :contact, :only => [:show, :create] do
-      get 'thank_you', :on => :member
-    end
-  end
-
-
-  # Management Communities
-  scope '/services' do
-    match 'management/communities', :to => 'management_communities#index', :section => 'management'
-
-    resources :featured_projects,
-              :path => 'featured-projects',
-              :only => [:index, :show]
-  end
-
-
-  # Testimonials
-  scope '/services/:section' do
-    resources :testimonials,
-              :as   => :service_section_testimonials,
-              :only => :index
-  end
-
-  scope '/:section' do
-    resources :testimonials,
-              :as   => :section_testimonials,
-              :only => :index
-  end
-
-
-  # Projects
-  scope '/services/:section' do
-    resources :projects,
-              :path => 'our-work',
-              :as   => :service_section_projects,
-              :only => [:index, :show]
-  end
-
-  scope '/:section' do
-    resources :projects,
-              :path => 'our-work',
-              :as   => :section_projects,
-              :only => [:index, :show]
-  end
-
-
-  # Rankings
-  scope '/about-us/news-and-press' do
-    resources :rankings, :only => :index
-  end
-
-
-  # News Posts
-  scope '/services/:section/news-and-press' do
-    resources :news_posts,
-              :path => 'news',
-              :as   => :service_section_news_posts,
-              :only => [:index, :show]
-  end
-
-  scope '/:section/news-and-press' do
-    resources :news_posts,
-              :path => 'news',
-              :as   => :section_news_posts,
-              :only => [:index, :show]
-  end
-
-
-  # Press Releases
-  scope '/services/:section/news-and-press' do
-    resources :press_releases,
-              :path => 'press-releases',
-              :as   => :service_section_press_releases,
-              :only => [:index, :show]
-  end
-
-  scope '/:section/news-and-press' do
-    resources :press_releases,
-              :path => 'press-releases',
-              :as   => :section_press_releases,
-              :only => [:index, :show]
-  end
-
-
-  # Awards
-  scope '/services/:section/news-and-press' do
-    resources :awards,
-              :as   => :service_section_awards,
-              :only => [:index, :show]
-  end
-
-  scope '/:section/news-and-press' do
-    resources :awards,
-              :as   => :section_awards,
-              :only => [:index, :show]
-  end
-
-
-  # News & Press
-  scope '/services/:section' do
-    match 'news-and-press' => 'news_and_press#index',
-          :as              => :service_section_news_and_press
-  end
-
-  scope '/:section' do
-    match 'news-and-press' => 'news_and_press#index',
-          :as              => :section_news_and_press
-  end
-
-  scope '/about-us/news-and-press' do
-    match '(*page)' => 'news_and_press#show',
-          :as       => :news_and_press_page,
-          :section  => 'about-us'
-  end
-
-
-  # Leaders
-  scope '/about-us' do
-    resources :leaders,
-              :path => 'leadership',
-              :only => [:index, :show]
-  end
 
 
   # Buzzes
@@ -339,14 +214,66 @@ Bozzuto::Application.routes.draw do
   end
 
 
-  # Pages
-  scope '/services/:section' do
-    match '(*page)' => 'pages#show',
-          :as       => :service_section_page
+  # About Us
+  scope '/about-us', :section => 'about-us' do
+    resource :contact_submission,
+             :path => 'contact',
+             :as   => :contact,
+             :only => [:show, :create] do
+      get 'thank_you', :on => :member
+    end
+
+    resources :leaders,
+              :path => 'leadership',
+              :only => [:index, :show]
+
+    scope '/news-and-press' do
+      resources :rankings, :only => :index
+    end
   end
 
-  scope '/:section' do
-    match '(*page)' => 'pages#show',
-          :as       => :section_page
+
+  # Service-specific content
+  scope '/services' do
+    resources :featured_projects,
+              :path => 'featured-projects',
+              :only => [:index, :show]
+
+    scope '/management', :section => 'management' do
+      resources :management_communities,
+                :path => 'communities',
+                :only => :index
+    end
+  end
+
+
+  # Sections
+  # /:section can look like one of the following:
+  #
+  #   /careers
+  #   /services/management
+  scope '/:section', :constraints => { :section => %r{(services/)?(-|\w)+} } do
+    resources :testimonials, :only => :index
+
+    resources :projects,
+              :path => 'our-work',
+              :only => [:index, :show]
+
+    scope '/news-and-press' do
+      match '/' => 'news_and_press#index', :as => :news_and_press
+
+      resources :awards, :only => [:index, :show]
+
+      resources :news_posts,
+                :path => 'news',
+                :only => [:index, :show]
+
+      resources :press_releases,
+                :path => 'press-releases',
+                :only => [:index, :show]
+    end
+
+    # Catch-all page route
+    match '(*page)' => 'pages#show', :as => :page
   end
 end

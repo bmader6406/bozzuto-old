@@ -1,21 +1,13 @@
 class SectionContentController < ApplicationController
   layout :detect_mobile_layout
 
-  before_filter :find_section, :find_news_and_press_section
+  before_filter :find_section
 
 
   private
 
   def detect_mobile_layout
     mobile? ? 'application' : 'page'
-  end
-
-  def find_news_and_press_section
-    @news_section = if @section.about?
-      Section.news_and_press
-    else
-      nil
-    end
   end
 
   def latest_news_posts(limit = 3)

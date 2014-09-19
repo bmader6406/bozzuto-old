@@ -16,6 +16,6 @@ class FeaturedProjectsController < ApplicationController
   private
 
   def mobile_only
-    redirect_to section_page_path('services') unless mobile?
+    redirect_to page_path('services') unless mobile?
   end
 end

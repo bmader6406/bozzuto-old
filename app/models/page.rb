@@ -57,11 +57,11 @@ class Page < ActiveRecord::Base
   end
 
 
-  protected
+  private
 
   def set_path
     self.path = self_and_ancestors.map { |page| page.cached_slug }.join('/')
     update_without_callbacks
-    descendants.each(&:set_path)
+    descendants.each { |d| d.send(:set_path) }
   end
 end
