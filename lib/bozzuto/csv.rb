@@ -1,3 +1,5 @@
+require 'csv'
+
 module Bozzuto
   class Csv
     class_attribute :klass, :field_map
