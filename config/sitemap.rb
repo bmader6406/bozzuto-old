@@ -29,7 +29,7 @@ SitemapGenerator::Sitemap.create do
   add contact_path
   add management_communities_path, :changefreq => 'daily'
   add rankings_path
-  add buzz_path
+  add buzzes_path
 
   add metros_path, :changefreq => 'daily'
 
@@ -39,25 +39,18 @@ SitemapGenerator::Sitemap.create do
       :changefreq => 'daily'
   add map_community_search_path, :changefreq => 'daily'
 
-  ApartmentCommunity.published.featured_order.find_each do |apartment_community|
+  ApartmentCommunity.published.featured_order.find_each do |a|
     sitemap_options = { :priority   => 0.6,
                         :changefreq => 'daily',
-                        :lastmod    => apartment_community.updated_at }
+                        :lastmod    => a.updated_at }
 
-    add apartment_community_path(apartment_community),
-        sitemap_options.merge({ :priority => 0.9 })
-
-    add apartment_community_floor_plan_groups_path(apartment_community),
-        sitemap_options.merge({ :priority => 0.8 })
-
-    add apartment_community_features_path(apartment_community),
-        sitemap_options.merge({ :priority => 0.8 })
-
-    add apartment_community_neighborhood_path(apartment_community), sitemap_options
-    add apartment_community_contact_path(apartment_community), sitemap_options
-    add apartment_community_media_path(apartment_community), sitemap_options
-    add ufollowup_path(apartment_community),
-        sitemap_options.merge({ :priority => 0.5 })
+    add apartment_community_path(a),                   sitemap_options.merge({ :priority => 0.9 })
+    add apartment_community_floor_plan_groups_path(a), sitemap_options.merge({ :priority => 0.8 })
+    add apartment_community_features_path(a),          sitemap_options.merge({ :priority => 0.8 })
+    add apartment_community_neighborhood_path(a),      sitemap_options
+    add apartment_community_contact_path(a),           sitemap_options
+    add apartment_community_media_path(a),             sitemap_options
+    add apartment_community_ufollowup_path(a),         sitemap_options.merge({ :priority => 0.5 })
   end
 
   # HomeCommunity
@@ -66,21 +59,17 @@ SitemapGenerator::Sitemap.create do
       :changefreq => 'daily'
   add map_home_communities_path, :changefreq => 'daily'
 
-  HomeCommunity.published.ordered_by_title.find_each do |home_community|
+  HomeCommunity.published.ordered_by_title.find_each do |h|
     sitemap_options = { :priority   => 0.6,
                         :changefreq => 'daily',
-                        :lastmod    => home_community.updated_at }
+                        :lastmod    => h.updated_at }
 
-    add home_community_path(home_community),
-        sitemap_options.merge({ :priority => 0.9 })
-
-    add home_community_homes_path(home_community),
-        sitemap_options.merge({ :priority => 0.8 })
-
-    add home_community_features_path(home_community), sitemap_options
-    add home_community_neighborhood_path(home_community), sitemap_options
-    add home_community_contact_path(home_community), sitemap_options
-    add home_community_media_path(home_community), sitemap_options
+    add home_community_path(h),              sitemap_options.merge({ :priority => 0.9 })
+    add home_community_homes_path(h),        sitemap_options.merge({ :priority => 0.8 })
+    add home_community_features_path(h),     sitemap_options
+    add home_community_neighborhood_path(h), sitemap_options
+    add home_community_contact_path(h),      sitemap_options
+    add home_community_media_path(h),        sitemap_options
   end
 
   LandingPage.published.find_each do |landing_page|
@@ -89,53 +78,36 @@ SitemapGenerator::Sitemap.create do
         :lastmod    => landing_page.updated_at
   end
 
-  Section.ordered_by_title.find_each do |section|
-    add section_testimonials_path(section), :lastmod => section.updated_at
-    add service_section_testimonials_path(section), :lastmod => section.updated_at
+  Section.ordered_by_title.find_each do |s|
+    add testimonials_path(s),         :lastmod => s.updated_at
+    add projects_path(s),             :lastmod => s.updated_at
 
-    add section_projects_path(section), :lastmod => section.updated_at
-    add service_section_projects_path(section), :lastmod => section.updated_at
-
-    section.projects.published.each do |project|
-      add section_project_path(section, project), :lastmod => project.updated_at
-      add service_section_project_path(section, project), :lastmod => project.updated_at
+    s.projects.published.each do |project|
+      add project_path(s, project), :lastmod => project.updated_at
     end
 
-    add section_news_and_press_path(section)
-    add service_section_news_and_press_path(section)
+    add news_and_press_path(s)
+    add news_posts_path(s)
 
-    add service_section_news_posts_path(section)
-    add section_news_posts_path(section)
-
-    section.news_posts.published.each do |post|
-      add section_news_post_path(section, post)
-      add service_section_news_post_path(section, post)
+    s.news_posts.published.each do |post|
+      add news_post_path(s, post)
     end
 
-    add service_section_press_releases_path(section)
-    add section_press_releases_path(section)
+    add press_releases_path(s)
 
-    section.press_releases.published.each do |press_release|
-      add section_press_release_path(section, press_release)
-      add service_section_press_release_path(section, press_release)
+    s.press_releases.published.each do |press_release|
+      add press_release_path(s, press_release)
     end
 
-    add section_awards_path(section)
-    add service_section_awards_path(section)
+    add awards_path(s)
 
-    section.awards.published.each do |award|
-      add section_award_path(section, award)
-      add service_section_award_path(section, award)
+    s.awards.published.each do |award|
+      add award_path(s, award)
     end
 
-    section.pages.published.each do |page|
-      add section_page_path(section, page)
-      add service_section_page_path(section, page)
+    s.pages.published.each do |page|
+      add page_path(s, page)
     end
-  end
-
-  Section.news_and_press.pages.published.each do |page|
-    add news_and_press_page_path(page)
   end
 
   add leaders_path
