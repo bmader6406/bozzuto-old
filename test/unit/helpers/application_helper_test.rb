@@ -196,38 +196,6 @@ class ApplicationHelperTest < ActionView::TestCase
       end
     end
 
-    describe "#state_apartment_search_path" do
-      before { @state = State.make }
-
-      it "returns community_search_path with search[in_state]" do
-        state_apartment_search_path(@state).should == community_search_path('search[in_state]' => @state.id)
-      end
-    end
-
-    describe "#city_apartment_search_path" do
-      before { @city = City.make }
-
-      it "returns community_search_path with search[city_id]" do
-        city_apartment_search_path(@city).should == community_search_path('search[city_id]' => @city.id)
-      end
-    end
-
-    describe "#county_apartment_search_path" do
-      before { @county = County.make }
-
-      it "returns community_search_path with search[county_id]" do
-        county_apartment_search_path(@county).should == community_search_path('search[county_id]' => @county.id)
-      end
-    end
-
-    describe "#county_home_search_path" do
-      before { @county = County.make }
-
-      should "return home_communities_path with search[county_id]" do
-        county_home_search_path(@county).should == home_communities_path('search[county_id]' => @county.id)
-      end
-    end
-
     describe "#community_url" do
       context "with an apartment community" do
         before { @community = ApartmentCommunity.make }

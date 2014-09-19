@@ -3,7 +3,7 @@
 <div id="breadcrumb">
   <div class="container wide">
     <ul>
-      <li><%= link_to 'Homes', '/new-homes' %></li>
+      <li><%= link_to 'New Homes', '/new-homes' %></li>
       <li><%= link_to_unless(request.path == home_neighborhoods_path, 'Find a New Home', home_neighborhoods_path) %></li>
 
       <% if defined?(items) %>

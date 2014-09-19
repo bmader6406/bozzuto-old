@@ -2,9 +2,7 @@
   <div class="container">
     <ul>
       <li><%= link_to "New Homes", '/new-homes' %></li>
-      <li><%= link_to "Communities", home_communities_path %></li>
-      <li><%= link_to @community.state.name, state_home_search_path(@community.state) %></li>
-      <li><%= link_to @community.city.name, city_home_search_path(@community.city) %></li>
+      <li><%= link_to "Find a New Home", home_communities_path %></li>
       <li class="last"><%= @community.title %></li>
     </ul>
   </div>

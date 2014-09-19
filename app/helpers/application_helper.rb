@@ -140,30 +140,6 @@ module ApplicationHelper
     end
   end
 
-  def state_apartment_search_path(state)
-    community_search_path("search[in_state]" => state.id)
-  end
-
-  def city_apartment_search_path(city)
-    community_search_path("search[city_id]" => city.id)
-  end
-
-  def county_apartment_search_path(county)
-    community_search_path("search[county_id]" => county.id)
-  end
-
-  def state_home_search_path(state)
-    home_communities_path("search[in_state]" => state.id)
-  end
-
-  def city_home_search_path(city)
-    home_communities_path("search[city_id]" => city.id)
-  end
-
-  def county_home_search_path(county)
-    home_communities_path("search[county_id]" => county.id)
-  end
-
   def community_url(community)
     case community
     when ApartmentCommunity then
