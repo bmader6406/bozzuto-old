@@ -1,13 +1,5 @@
 job_type :rake, "cd :path && source /etc/profile.d/rbenv.sh && RAILS_ENV=:environment bundle exec rake :task :output"
 
-every 1.day, :at => '4:00 am' do
-  rake "-s sitemap:refresh"
-end
-
-every 1.day, :at => '6:00 am' do
-  rake 'bozzuto:send_recurring_emails'
-end
-
 every 1.day, :at => '7:00 am' do
   rake 'bozzuto:refresh_local_info_feeds'
 end
@@ -17,6 +9,14 @@ every 1.day, :at => ['3:00 am'] do
 end
 
 if environment == 'production'
+  every 1.day, :at => '6:00 am' do
+    rake 'bozzuto:send_recurring_emails'
+  end
+
+  every 1.day, :at => '4:00 am' do
+    rake "-s sitemap:refresh"
+  end
+
   every 1.day, :at => '9:00 am' do
     command 'cp /home/bozzuto_feeds/bozzutovwfeed.xml /home/bozzuto/bozzutocom.xml'
   end
