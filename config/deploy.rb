@@ -24,6 +24,10 @@ set(:previous_revision) {
 set :sync_directories, ["public/system"]
 set :sync_backups, 3
 
+set :default_environment, {
+  'PATH' => '/opt/rbenv/shims:/usr/local/rbenv/shims:/opt/rbenv/bin:/usr/local/rbenv/bin:$PATH'
+}
+
 after 'multistage:ensure', 'config:defaults'
 after 'deploy:update_code', 'app:package_assets'
 after 'deploy:update_code', 'app:clear_asset_caches'

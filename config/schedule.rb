@@ -1,4 +1,4 @@
-job_type :rake, "cd :path && RAILS_ENV=:environment bundle exec rake :task :output"
+job_type :rake, "cd :path && source /etc/profile.d/rbenv.sh && RAILS_ENV=:environment bundle exec rake :task :output"
 
 every 1.day, :at => '4:00 am' do
   rake "-s sitemap:refresh"
