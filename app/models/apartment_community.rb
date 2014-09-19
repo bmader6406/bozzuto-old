@@ -14,7 +14,10 @@ class ApartmentCommunity < Community
 
   #acts_as_archive :indexes => [:id]
 
-  search_methods :with_min_price, :with_max_price
+  search_methods :with_min_price,
+                 :with_max_price,
+                 :with_floor_plan_groups,
+                 :with_property_features
 
   has_neighborhood_listing_image :neighborhood_listing_image, :required => false
 
