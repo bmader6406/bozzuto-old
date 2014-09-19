@@ -12,9 +12,9 @@ Sham.define do
   us_state          { |i| "#{Faker::Address.us_state} #{i}" }
   company_name      { Faker::Company.name }
   feed_url          { |i| "http://#{i}.#{Faker::Internet.domain_name}/feed.rss" }
-  section_title     { |i| "#{Faker::Lorem.words} #{i}" }
+  section_title     { |i| "#{Faker::Lorem.words * ' '} #{i}" }
   file_name         { |i| "/image#{i}.jpg" }
-  unique_name       { |i| "#{Faker::Lorem.words(2)} #{i}" }
+  unique_name       { |i| "#{Faker::Lorem.words(2) * ' '} #{i}" }
   vaultware_id      { |i| i.to_s }
   property_link_id  { |i| i.to_s }
   rent_cafe_id      { |i| i.to_s }
@@ -73,9 +73,9 @@ ApartmentCommunity.blueprint(:psi) do
 end
 
 ApartmentFloorPlan.blueprint do
-  name               { Faker::Lorem.words(1) }
+  name               { Faker::Lorem.words(1) * ' ' }
   image_type         { ApartmentFloorPlan::USE_IMAGE_URL }
-  image_url          { Faker::Lorem.words(1) }
+  image_url          { Faker::Lorem.words(1) * ' ' }
   availability_url   { "http://#{Faker::Internet.domain_name}" }
   available_units    { 10 }
   bedrooms           { Sham.bedrooms }
@@ -154,7 +154,7 @@ end
 
 Award.blueprint do
   title        { Faker::Lorem.sentence }
-  body         { Faker::Lorem.paragraphs }
+  body         { Faker::Lorem.paragraphs * ' ' }
   published    { true }
   published_at { Time.now }
 end
@@ -178,13 +178,13 @@ end
 ContactSubmission.blueprint do
   name    { 'Bruce Wayne' }
   email   { Faker::Internet.email }
-  message { Faker::Lorem.paragraphs }
+  message { Faker::Lorem.paragraphs * ' ' }
   topic   { ContactTopic.make }
 end
 
 ContactTopic.blueprint do
   topic      { Sham.unique_name }
-  body       { Faker::Lorem.paragraphs }
+  body       { Faker::Lorem.paragraphs * ' ' }
   recipients { Faker::Internet.email }
 end
 
@@ -205,7 +205,7 @@ end
 FeedItem.blueprint do
   title        { Faker::Lorem.sentence }
   url          { Faker::Internet.domain_name }
-  description  { Faker::Lorem.paragraphs }
+  description  { Faker::Lorem.paragraphs * ' ' }
   published_at { Time.now }
   feed
 end
@@ -236,7 +236,7 @@ GreenPackageItem.blueprint(:ultra_green) do
 end
 
 Home.blueprint do
-  name      { Faker::Lorem.words(3) }
+  name      { Faker::Lorem.words(3) * ' ' }
   bedrooms  { Sham.bedrooms }
   bathrooms { Sham.bathrooms }
   home_community
@@ -274,7 +274,7 @@ HomeNeighborhoodMembership.blueprint do
 end
 
 LandingPage.blueprint do
-  title { Faker::Lorem.words(3) }
+  title { Faker::Lorem.words(3) * ' ' }
   state
   published { true }
 end
@@ -300,7 +300,7 @@ Leader.blueprint do
   name    { Faker::Name.name }
   title   { 'CEO' }
   company { Faker::Company.name }
-  bio     { Faker::Lorem.paragraphs(2) }
+  bio     { Faker::Lorem.paragraphs(2) * ' ' }
 end
 
 Metro.blueprint do
@@ -327,7 +327,7 @@ end
 
 NewsPost.blueprint do
   title        { Faker::Lorem.sentence }
-  body         { Faker::Lorem.paragraphs(2) }
+  body         { Faker::Lorem.paragraphs(2) * ' ' }
   published    { true }
   published_at { Time.now - 1.day }
 end
@@ -339,7 +339,7 @@ end
 
 Page.blueprint do
   title     { Faker::Lorem.sentence }
-  body      { Faker::Lorem.paragraphs(3) }
+  body      { Faker::Lorem.paragraphs(3) * ' ' }
   published { true }
   section
 end
@@ -349,18 +349,18 @@ Page.blueprint(:unpublished) do
 end
 
 Photo.blueprint do
-  title       { Faker::Lorem.words(3) }
+  title       { Faker::Lorem.words(3) * ' ' }
   property    { ApartmentCommunity.make }
   photo_group { PhotoGroup.make }
 end
 
 PhotoGroup.blueprint do
-  title { Faker::Lorem.words(3) }
+  title { Faker::Lorem.words(3) * ' ' }
 end
 
 PressRelease.blueprint do
   title        { Faker::Lorem.sentence }
-  body         { Faker::Lorem.paragraphs(2) }
+  body         { Faker::Lorem.paragraphs(2) * ' ' }
   published    { true }
   published_at { Time.now - 1.day }
 end
@@ -382,13 +382,13 @@ ProjectCategory.blueprint do
 end
 
 ProjectDataPoint.blueprint do
-  name { Faker::Lorem.words(1) }
+  name { Faker::Lorem.words(1) * ' ' }
   data { Faker::Lorem.sentence }
   project
 end
 
 ProjectUpdate.blueprint do
-  body         { Faker::Lorem.paragraphs(4) }
+  body         { Faker::Lorem.paragraphs(4) * ' ' }
   published    { true }
   published_at { Time.now }
   project
@@ -418,36 +418,36 @@ end
 PropertyFeature.blueprint do
   icon_file_name { Sham.file_name }
   name           { Sham.unique_name }
-  description    { Faker::Lorem.paragraphs(1) }
+  description    { Faker::Lorem.paragraphs(1) * ' ' }
 end
 
 PropertyContactPage.blueprint do
   property
-  content       { Faker::Lorem.paragraphs(2) }
-  meta_title    { Faker::Lorem.words(4) }
-  meta_keywords { Faker::Lorem.words(6) }
+  content       { Faker::Lorem.paragraphs(2) * ' ' }
+  meta_title    { Faker::Lorem.words(4) * ' ' }
+  meta_keywords { Faker::Lorem.words(6) * ' ' }
 end
 
 PropertyFeaturesPage.blueprint do
   property
-  text_1        { Faker::Lorem.paragraphs(2) }
-  title_1       { Faker::Lorem.words(5) }
+  text_1        { Faker::Lorem.paragraphs(2) * ' ' }
+  title_1       { Faker::Lorem.words(5) * ' ' }
   text_2        { Faker::Lorem.paragraph }
-  title_2       { Faker::Lorem.words(5) }
-  meta_title    { Faker::Lorem.words(4) }
-  meta_keywords { Faker::Lorem.words(6) }
+  title_2       { Faker::Lorem.words(5) * ' ' }
+  meta_title    { Faker::Lorem.words(4) * ' ' }
+  meta_keywords { Faker::Lorem.words(6) * ' ' }
 end
 
 PropertyNeighborhoodPage.blueprint do
   property
-  content       { Faker::Lorem.paragraphs(2) }
-  meta_title    { Faker::Lorem.words(4) }
-  meta_keywords { Faker::Lorem.words(6) }
+  content       { Faker::Lorem.paragraphs(2) * ' ' }
+  meta_title    { Faker::Lorem.words(4) * ' ' }
+  meta_keywords { Faker::Lorem.words(6) * ' ' }
 end
 
 PropertySlideshow.blueprint do
   property
-  name     { Faker::Lorem.words(1) }
+  name     { Faker::Lorem.words(1) * ' ' }
 end
 
 PropertySlide.blueprint do
@@ -458,10 +458,10 @@ end
 
 PropertyToursPage.blueprint do
   property
-  title         { Faker::Lorem.words(3) }
-  content       { Faker::Lorem.paragraphs(2) }
-  meta_title    { Faker::Lorem.words(4) }
-  meta_keywords { Faker::Lorem.words(6) }
+  title         { Faker::Lorem.words(3) * ' ' }
+  content       { Faker::Lorem.paragraphs(2) * ' ' }
+  meta_title    { Faker::Lorem.words(4) * ' ' }
+  meta_keywords { Faker::Lorem.words(6) * ' ' }
 end
 
 RecurringEmail.blueprint do
@@ -508,7 +508,7 @@ end
 
 Snippet.blueprint do
   name { Sham.unique_name }
-  body { Faker::Lorem.paragraphs }
+  body { Faker::Lorem.paragraphs * ' ' }
 end
 
 State.blueprint do
@@ -519,7 +519,7 @@ end
 Testimonial.blueprint do
   name  { Faker::Name.name }
   title { Faker::Lorem.sentence }
-  quote { Faker::Lorem.paragraphs }
+  quote { Faker::Lorem.paragraphs * ' ' }
   section
 end
 

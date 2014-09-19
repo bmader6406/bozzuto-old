@@ -1,9 +1,6 @@
 require 'test_helper'
 
 class CommunityListingMailerTest < ActionMailer::TestCase
-  include Rails.application.routes.url_helpers
-  default_url_options[:host] = 'bozzuto.com'
-
   context "CommunityListingMailer" do
     describe "#single_listing" do
       [ApartmentCommunity, HomeCommunity].each do |klass|
@@ -131,7 +128,7 @@ class CommunityListingMailerTest < ActionMailer::TestCase
           end
 
           it "returns home_community_homes_url" do
-            url = home_community_homes_url(@community)
+            url = "http://bozzuto.com/new-homes/communities/#{@community.to_param}/homes"
 
             @mailer.send(:floor_plans_url, @community).should == url
           end
@@ -143,8 +140,7 @@ class CommunityListingMailerTest < ActionMailer::TestCase
           end
 
           it "returns apartment_community_floor_plan_groups_url" do
-            url = apartment_community_floor_plan_groups_url(@community)
-
+            url = "http://bozzuto.com/apartments/communities/#{@community.to_param}/floor_plan_groups"
             @mailer.send(:floor_plans_url, @community).should == url
           end
         end

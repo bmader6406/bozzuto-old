@@ -9,9 +9,9 @@ class RedirectotronTest < ActiveSupport::TestCase
 
       run lambda { |env|
         if env['PATH_INFO'] == '/found'
-          [200, {}, "Yay"]
+          [200, {}, ["Yay"]]
         else
-          [404, {}, "D'oh"]
+          [404, {}, ["D'oh"]]
         end
       }
     end

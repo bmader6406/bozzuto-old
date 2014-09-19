@@ -7,7 +7,7 @@ module Bozzuto
     ]]
 
     def self.audit_csv
-      FasterCSV.generate do |csv|
+      CSV.generate do |csv|
         csv << identifier_fields.keys.concat(audit_fields.keys)
         community_records.each do |community|
           csv << new(community).to_a

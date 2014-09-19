@@ -23,7 +23,8 @@ module PropertiesHelper
             :rel        => 'external',
             :class      => 'fl-record-click',
             'data-cat'  => 'digit734',
-            'data-prop' => property.title }.merge(opts)
+            'data-prop' => property.title
+          }.merge(opts)
         )
       end
     end

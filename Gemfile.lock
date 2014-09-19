@@ -56,13 +56,13 @@ GEM
       safe_yaml (~> 0.9.0)
     cssmin (1.0.3)
     diff-lcs (1.2.4)
+    docile (1.1.5)
     equalizer (0.0.9)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     faker (0.3.1)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
-    fastercsv (1.5.4)
     friendly_id (3.2.1)
       babosa (~> 0.2.1)
     geokit (1.8.5)
@@ -145,8 +145,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (~> 0.14.4)
-    rake (0.8.7)
-    rcov (1.0.0)
+    rake (10.3.2)
     rdoc (3.12.2)
       json (~> 1.4)
     rspec-expectations (2.14.3)
@@ -157,10 +156,14 @@ GEM
       sass (>= 3.1)
     shoulda (2.11.3)
     simple_oauth (0.2.0)
+    simplecov (0.9.0)
+      docile (~> 1.1.0)
+      multi_json
+      simplecov-html (~> 0.8.0)
+    simplecov-html (0.8.0)
     sitemap_generator (3.4)
       builder
     slop (2.4.4)
-    system_timer (1.2.4)
     thor (0.14.6)
     thread_safe (0.3.4)
     treetop (1.4.15)
@@ -201,7 +204,6 @@ DEPENDENCIES
   capistrano (= 2.5.19)
   capistrano-ext (= 1.2.1)
   faker (= 0.3.1)
-  fastercsv (= 1.5.4)
   friendly_id (= 3.2.1)
   geokit
   geokit-rails
@@ -219,14 +221,13 @@ DEPENDENCIES
   rack-rewrite
   rack-test (= 0.5.7)
   rails (= 3.0.20)
-  rake (= 0.8.7)
-  rcov
+  rake
   rspec-expectations
   sass
   sass-globbing
   shoulda (= 2.11.3)
+  simplecov
   sitemap_generator (~> 3.4)
-  system_timer
   truncate_html (= 0.5.0)
   twitter
   uuidtools

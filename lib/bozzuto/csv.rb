@@ -41,7 +41,7 @@ module Bozzuto
     end
 
     def string
-      @string ||= FasterCSV.generate(&content)
+      @string ||= CSV.generate(&content)
     end
 
     def file
