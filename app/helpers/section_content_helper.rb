@@ -106,7 +106,7 @@ module SectionContentHelper
           if subnav.any?
             li << content_tag(:ul) { subnav.join.html_safe }
           end
-        end
+        end.html_safe
       end
     end
   end
