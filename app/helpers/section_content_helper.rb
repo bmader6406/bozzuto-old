@@ -69,11 +69,6 @@ module SectionContentHelper
 
           subnav = []
 
-          # pages
-          if news_section.present? && news_section.pages.published.any?
-            subnav << pages_tree(news_section.pages.published).html_safe
-          end
-
           # news
           if section_news_posts.any?
             current = params[:controller] == 'news_posts' ? 'current' : nil
@@ -83,14 +78,14 @@ module SectionContentHelper
           end
 
           # awards
-          #:nocov:
+          # :nocov:
           if section_awards.any?
             current = params[:controller] == 'awards' ? 'current' : nil
             subnav << content_tag(:li, :class => current) do
               link_to 'Awards', awards_path(section)
             end
           end
-          #:nocov:
+          # :nocov:
 
           # press releases
           if section_press_releases.any?
@@ -111,9 +106,7 @@ module SectionContentHelper
           if subnav.any?
             li << content_tag(:ul) { subnav.join.html_safe }
           end
-        #:nocov:
-        end.html_safe
-        #:nocov:
+        end
       end
     end
   end

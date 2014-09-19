@@ -19,86 +19,104 @@ class SectionTest < ActiveSupport::TestCase
     should have_attached_file(:right_montage_image)
 
 
-    context '#typus_name' do
-      should 'return the title' do
-        assert_equal subject.title, subject.typus_name
+    describe "#typus_name" do
+      it "returns the title" do
+        subject.typus_name.should == subject.title
       end
     end
 
-    context 'self#about' do
-      subject { Section.make(:about) }
+    describe "self#about" do
+      it "returns the About section" do
+        about = Section.make(:about)
 
-      should 'return the About section' do
-        assert_equal subject, Section.about
+        Section.about.should == about
       end
     end
 
-    context 'self#news_and_press' do
-      subject { Section.make(:news_and_press) }
-
-      should 'return the News & Press section' do
-        assert_equal subject, Section.news_and_press
-      end
-    end
-
-    context '#about?' do
+    describe "#about?" do
       context "when about flag is true" do
-        setup { subject.about = true }
+        before do
+          subject.about = true
+        end
 
-        should 'return true' do
-          assert subject.about?
+        it "returns true" do
+          subject.about?.should == true
         end
       end
 
       context "when slug is anything else" do
-        setup { subject.about = false }
+        before do
+          subject.about = false
+        end
 
-        should 'return false false' do
-          assert !subject.about?
+        it "returns false" do
+          subject.about?.should == false
         end
       end
     end
 
-    context '#aggregate?' do
+    describe "#aggregate?" do
       context "when About section" do
-        setup { subject.about = true }
+        before do
+          subject.about = true
+        end
 
-        should 'return true' do
-          assert subject.aggregate?
+        it "returns true" do
+          subject.aggregate?.should == true
         end
       end
 
       context "when any other section" do
-        setup { subject.about = false }
+        before do
+          subject.about = false
+        end
 
-        should 'return false' do
-          assert !subject.aggregate?
+        it "returns false" do
+          subject.aggregate?.should == false
         end
       end
     end
 
-    context '#montage?' do
-      context 'when all montage images are present' do
-        setup do
+    describe "#to_param" do
+      context "section isn't a service" do
+        subject { Section.make(:title => "I'm Batman") }
+
+        it "returns just the name" do
+          subject.to_param.should == "im-batman"
+        end
+      end
+
+      context "section is a service" do
+        subject { Section.make(:service, :title => "I'm Batman") }
+
+        it "returns the services prefix and the name" do
+          subject.to_param.should == "services/im-batman"
+        end
+      end
+    end
+
+    describe "#montage?" do
+      context "when all montage images are present" do
+        before do
           subject.expects(:left_montage_image?).returns(true)
           subject.expects(:middle_montage_image?).returns(true)
           subject.expects(:right_montage_image?).returns(true)
         end
 
-        should 'return true' do
-          assert subject.montage?
+        it "returns true" do
+          subject.montage?.should == true
         end
       end
 
-      context 'when any montage images are missing' do
-        setup do
+      context "when any montage images are missing" do
+        before do
           subject.expects(:left_montage_image?).returns(false)
           subject.stubs(:middle_montage_image?).returns(true)
           subject.stubs(:right_montage_image?).returns(true)
         end
 
-        should 'return true' do
-          assert !subject.montage?
+        it "returns false" do
+          subject.montage?.should == false
         end
       end
     end

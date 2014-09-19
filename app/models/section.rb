@@ -25,12 +25,6 @@ class Section < ActiveRecord::Base
     find(:first, :conditions => { :about => true })
   end
 
-  def self.news_and_press
-    find 'news-press'
-  rescue
-    nil
-  end
-
   def to_param
     if service?
       "services/#{super}"

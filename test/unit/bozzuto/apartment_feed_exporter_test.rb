@@ -865,5 +865,21 @@ module Bozzuto
         end
       end
     end
+
+    context "#format_float_for_xml" do
+      subject { ApartmentFeedExporter.new }
+
+      context "float is present" do
+        it "formats the float" do
+          subject.send(:format_float_for_xml, 1.5).should == '1.5'
+        end
+      end
+
+      context "float is empty" do
+        it "returns an empty string" do
+          subject.send(:format_float_for_xml, nil).should == ''
+        end
+      end
+    end
   end
 end
