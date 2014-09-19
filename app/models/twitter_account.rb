@@ -2,7 +2,7 @@ class TwitterAccount < ActiveRecord::Base
   UPDATE_FREQUENCY  = 2.hours
   RATE_LIMIT_WINDOW = 15.minutes
 
-  class_attribute :client
+  class_attribute :credentials
 
   has_many :tweets, :dependent => :destroy
 
@@ -22,6 +22,14 @@ class TwitterAccount < ActiveRecord::Base
 
   before_create :set_next_update_at
 
+
+  def self.client
+    @client ||= Twitter::REST::Client.new(credentials.presence || {})
+  end
+
+  def client
+    self.class.client
+  end
 
   def typus_name
     username

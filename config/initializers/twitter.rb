@@ -1,1 +1,1 @@
-TwitterAccount.client = Twitter::REST::Client.new(APP_CONFIG[:twitter])
+TwitterAccount.credentials = APP_CONFIG[:twitter].symbolize_keys
