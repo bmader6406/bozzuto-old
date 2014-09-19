@@ -1,82 +1,37 @@
 ENV["RAILS_ENV"] = "test"
+
+if ENV['COV']
+  require 'simplecov'
+
+  SimpleCov.minimum_coverage 100
+
+  SimpleCov.start 'rails' do
+    add_filter '/app/controllers/admin'
+    add_filter '/app/helpers/admin_helper'
+    add_filter '/app/models/asset'
+    add_filter '/app/models/picture'
+    add_filter '/lib/typus'
+    add_filter '/vendor'
+  end
+end
+
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'rails/test_help'
 require 'mocha'
 require 'rspec/expectations'
 require 'shoulda_macros/paperclip'
-#require 'paperclip/matchers'
 
 require File.join(Rails.root, 'test', 'blueprints')
 require File.join(Rails.root, 'vendor', 'plugins', 'typus', 'lib', 'extensions', 'object')
 
 Dir[Rails.root.join("test/support/**/*.rb")].each { |f| require f }
 
+
 VCR.configure do |c|
   c.cassette_library_dir = 'test/vcr_cassettes'
   c.hook_into :webmock
 end
 
-class ActiveSupport::TestCase
-  include WebMock::API
-  extend  Bozzuto::Test::ModelMacros
-  extend  Paperclip::Shoulda
-
-  self.use_transactional_fixtures = true
-  self.use_instantiated_fixtures  = false
-
-  def load_fixture_file(file)
-    File.read("#{Rails.root}/test/files/#{file}")
-  end
-
-  def create_states
-    State.create([{ :code => 'CT', :name => 'Connecticut' },
-                  { :code => 'MD', :name => 'Maryland' },
-                  { :code => 'MA', :name => 'Massachusetts' },
-                  { :code => 'NJ', :name => 'New Jersey' },
-                  { :code => 'NY', :name => 'New York' },
-                  { :code => 'PA', :name => 'Pennsylvania' },
-                  { :code => 'VA', :name => 'Virginia' },
-                  { :code => 'DC', :name => 'Washington, DC' }])
-  end
-
-  def create_floor_plan_groups
-    ApartmentFloorPlanGroup.create(:name => 'Studio')
-    ApartmentFloorPlanGroup.create(:name => '1 Bedroom')
-    ApartmentFloorPlanGroup.create(:name => '2 Bedrooms')
-    ApartmentFloorPlanGroup.create(:name => '3 or More Bedrooms')
-    ApartmentFloorPlanGroup.create(:name => 'Penthouse')
-  end
-
-  def set_mobile!
-    @request.env['bozzuto.mobile.device'] = :iphone
-  end
-
-  class << self
-    def should_redirect_to_home_page
-      should_respond_with :redirect
-      should_redirect_to('the home page') { root_path }
-    end
-
-    def mobile_device(&block)
-      context 'from a mobile device' do
-        setup do
-          set_mobile!
-        end
-
-        context(nil, &block)
-      end
-    end
-
-    def desktop_device(&block)
-      context('from a desktop device', &block)
-    end
-
-    def all_devices(&block)
-      mobile_device(&block)
-      desktop_device(&block)
-    end
-  end
-end
 
 class Shoulda::Context
   alias_method :describe, :context
@@ -85,39 +40,21 @@ class Shoulda::Context
   alias_method :it,       :should
 end
 
+
+class ActiveSupport::TestCase
+  include WebMock::API
+  extend  Paperclip::Shoulda
+  include Bozzuto::Test::Extensions
+  include Bozzuto::Test::ModelExtensions
+
+  self.use_transactional_fixtures = true
+  self.use_instantiated_fixtures  = false
+end
+
 class ActionController::TestCase
-  protected
-  
-  def login_typus_user(user)
-    session[:typus_user_id] = user.id
-  end
+  include Bozzuto::Test::ControllerExtensions
 end
 
 class ActionController::IntegrationTest
-  protected
-
-  # Helper method to get path and expires data from the Set-Cookie header
-  def full_cookies
-    HashWithIndifferentAccess.new.tap do |hash|
-      @response.headers['Set-Cookie'].dup.each do |cookie|
-        key = nil
-
-        details = cookie.split(';').inject(HashWithIndifferentAccess.new) do |fields, cookie_field|
-          pair = cookie_field.split('=').map { |val|
-            Rack::Utils.unescape(val.strip)
-          }
-
-          key = pair.first unless key
-
-          fields.merge(pair.first => pair.last)
-        end
-
-        if details['expires']
-          details['expires'] = Time.parse(details['expires'])
-        end
-
-        hash[key] = details
-      end
-    end
-  end
+  include Bozzuto::Test::IntegrationExtensions
 end
