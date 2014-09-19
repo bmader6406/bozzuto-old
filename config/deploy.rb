@@ -32,7 +32,6 @@ after 'multistage:ensure', 'config:defaults'
 after 'deploy:update_code', 'app:package_assets'
 after 'deploy:update_code', 'app:clear_asset_caches'
 after 'deploy:update_code', 'app:update_crontab'
-after "deploy", "refresh_sitemaps"
 
 namespace :deploy do
   task :start do
