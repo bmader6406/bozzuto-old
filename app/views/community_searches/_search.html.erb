@@ -38,7 +38,7 @@
               <p><%= pluralize communities.count, 'Apartment Community' %></p>
             </div>
             <ul class="location-filters">
-              <li class="<%= 'open' if params[:search][:city_id].present? %>">
+              <li class="<%= 'open' if params[:search][:city_id_eq].present? %>">
                 <div class="header">
                   <h3>Cities</h3>
                 </div>
@@ -48,14 +48,14 @@
                     <% count = communities.select { |c| c.city_id == city.id }.count %>
                     <% if count > 0 -%>
                       <li class="<%= 'alt' if (index+1)%4 == 0 %>">
-                        <%= link_to(raw("<strong>#{city.name}</strong> <em>#{count}</em>"), community_search_path(:search => params[:search].merge({:city_id => city.id, :county_id => nil}))) %>
+                        <%= link_to(raw("<strong>#{city.name}</strong> <em>#{count}</em>"), community_search_path(:search => params[:search].merge({:city_id_eq => city.id, :county_id_eq => nil}))) %>
                       </li>
                       <% index += 1 -%>
                     <% end -%>
                   <% end %>
                 </ul>
               </li>
-              <li class="<%= 'open' if params[:search][:county_id].present? %>">
+              <li class="<%= 'open' if params[:search][:county_id_eq].present? %>">
                 <div class="header">
                   <h3>Counties</h3>
                 </div>
@@ -65,7 +65,7 @@
                     <% count = communities.select { |c| c.county_id == county.id }.count %>
                     <% if count > 0 -%>
                       <li class="<%= 'alt' if (index+1)%4 == 0 %>">
-                        <%= count > 0 ? link_to(raw("<strong>#{county.name}</strong> <em>#{count}</em>"), community_search_path(:search => params[:search].merge({:county_id => county.id, :city_id => nil}))) : raw("<span><strong>#{county.name}</strong> <em>#{count}</em></span>") %>
+                        <%= count > 0 ? link_to(raw("<strong>#{county.name}</strong> <em>#{count}</em>"), community_search_path(:search => params[:search].merge({:county_id_eq => county.id, :city_id_eq => nil}))) : raw("<span><strong>#{county.name}</strong> <em>#{count}</em></span>") %>
                       </li>
                       <% index += 1 -%>
                     <% end -%>
