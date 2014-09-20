@@ -18,6 +18,8 @@ class Lead2LeaseSubmission < ActiveRecord::Base
   column :comments, :text
   column :lead_channel, :string
 
-  validates_presence_of :email, :first_name, :last_name
-  validates_email_format_of :email
+  validates :email, :first_name, :last_name,
+            :presence => true
+
+  validates :email, :email_format => true
 end

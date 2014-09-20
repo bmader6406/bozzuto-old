@@ -20,6 +20,7 @@ require 'rails/test_help'
 require 'mocha'
 require 'rspec/expectations'
 require 'shoulda_macros/paperclip'
+require "validates_email_format_of/rspec_matcher"
 
 require File.join(Rails.root, 'test', 'blueprints')
 require File.join(Rails.root, 'vendor', 'plugins', 'typus', 'lib', 'extensions', 'object')
