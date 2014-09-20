@@ -25,10 +25,32 @@ class Lead2LeaseSubmission
 
   validates :email, :email_format => true
 
+  def initialize(attrs = {})
+    attrs ||= {}
+
+    # Handle move_in_date form fields
+    year  = attrs.delete('move_in_date(1i)')
+    month = attrs.delete('move_in_date(2i)')
+    day   = attrs.delete('move_in_date(3i)')
+
+    build_move_in_date(year, month, day)
+
+    super
+  end
+
   def attributes
     ATTRIBUTES.inject({}) do |hash, attr|
       hash[attr] = send(attr)
       hash
+    end
+  end
+
+
+  private
+
+  def build_move_in_date(year, month, day)
+    if year && month && day
+      self.move_in_date = Date.new(year.to_i, month.to_i, day.to_i)
     end
   end
 end
