@@ -1,25 +1,34 @@
-class Lead2LeaseSubmission < ActiveRecord::Base
-  has_no_table
+class Lead2LeaseSubmission
+  include ActiveModel::Model
 
-  column :first_name, :string
-  column :last_name, :string
-  column :address_1, :string
-  column :address_2, :string
-  column :city, :string
-  column :state, :string
-  column :zip_code, :string
-  column :primary_phone, :string
-  column :secondary_phone, :string
-  column :email, :string
-  column :move_in_date, :date
-  column :bedrooms, :integer
-  column :bathrooms, :integer
-  column :pets, :boolean
-  column :comments, :text
-  column :lead_channel, :string
+  ATTRIBUTES = [:first_name,
+                :last_name,
+                :address_1,
+                :address_2,
+                :city,
+                :state,
+                :zip_code,
+                :primary_phone,
+                :secondary_phone,
+                :email,
+                :move_in_date,
+                :bedrooms,
+                :bathrooms,
+                :pets,
+                :comments,
+                :lead_channel]
+
+  attr_accessor(*ATTRIBUTES)
 
   validates :email, :first_name, :last_name,
             :presence => true
 
   validates :email, :email_format => true
+
+  def attributes
+    ATTRIBUTES.inject({}) do |hash, attr|
+      hash[attr] = send(attr)
+      hash
+    end
+  end
 end

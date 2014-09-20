@@ -34,7 +34,6 @@ gem 'meta_search'
 gem 'validates_email_format_of'
 
 #gem 'twitter-text', '1.3.1'
-gem 'activerecord-tableless', '0.1.0', :require => 'tableless'
 
 group :development, :test do
   gem 'pry'

@@ -175,11 +175,15 @@ City.blueprint do
   state
 end
 
-ContactSubmission.blueprint do
-  name    { 'Bruce Wayne' }
-  email   { Faker::Internet.email }
-  message { Faker::Lorem.paragraphs * ' ' }
-  topic   { ContactTopic.make }
+ContactSubmission.class_eval do
+  def self.make_unsaved(attrs = {})
+    new(attrs.reverse_merge(
+      :name     => 'Bruce Wayne',
+      :email    => Faker::Internet.email,
+      :message  => Faker::Lorem.paragraphs * ' ',
+      :topic_id => ContactTopic.make.id
+    ))
+  end
 end
 
 ContactTopic.blueprint do
@@ -287,13 +291,17 @@ LassoAccount.blueprint do
   property     { HomeCommunity.make }
 end
 
-Lead2LeaseSubmission.blueprint do
-  first_name    { Faker::Name.first_name }
-  last_name     { Faker::Name.last_name }
-  primary_phone { Faker::PhoneNumber.phone_number }
-  email         { Faker::Internet.email }
-  move_in_date  { Date.today }
-  comments      { '' }
+Lead2LeaseSubmission.class_eval do
+  def self.make_unsaved(attrs = {})
+    new(attrs.reverse_merge(
+      :first_name    => Faker::Name.first_name,
+      :last_name     => Faker::Name.last_name,
+      :primary_phone => Faker::PhoneNumber.phone_number,
+      :email         => Faker::Internet.email,
+      :move_in_date  => Date.today,
+      :comments      => ''
+    ))
+  end
 end
 
 Leader.blueprint do

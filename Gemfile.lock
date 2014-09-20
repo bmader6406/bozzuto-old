@@ -27,8 +27,6 @@ GEM
       tzinfo (~> 0.3.23)
     activerecord-mysql2-adapter (0.0.3)
       mysql2
-    activerecord-tableless (0.1.0)
-      activerecord
     activeresource (3.0.20)
       activemodel (= 3.0.20)
       activesupport (= 3.0.20)
@@ -200,7 +198,6 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-mysql2-adapter
-  activerecord-tableless (= 0.1.0)
   awesome_nested_set (= 2.1.6)
   bourbon
   capistrano (= 2.5.19)

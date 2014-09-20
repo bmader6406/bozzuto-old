@@ -1,6 +1,7 @@
 class Buzz < ActiveRecord::Base
-  validates_presence_of :email
-  validates_email_format_of :email
+  validates :email,
+            :presence     => true,
+            :email_format => true
 
   %w(buzzes affiliations).each do |field|
     define_method(field) do 
