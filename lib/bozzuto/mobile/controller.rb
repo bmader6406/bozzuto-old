@@ -45,7 +45,7 @@ module Bozzuto
       end
 
       def mobile?
-        request.format.to_sym == :mobile
+        request.format.try(:to_sym) == :mobile
       end
 
       def mobile_device?
