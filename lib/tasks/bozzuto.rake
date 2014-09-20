@@ -1,4 +1,8 @@
 namespace :bozzuto do
+  def log_task(message)
+    puts "#{Time.now} #{message}"
+  end
+
   def report_error(task, error)
     puts "Failed to #{task}: #{error.message}"
     puts error.backtrace
@@ -6,10 +10,12 @@ namespace :bozzuto do
 
   desc 'Download property feeds via FTP'
   task :download_property_feeds => :environment do
-    puts 'Downloading property feeds ...'
+    log_task 'Downloading property feeds ...'
 
     begin
       Bozzuto::ExternalFeed::InboundFtp.download_files
+
+      puts '  Property feeds successfully downloaded'
     rescue Exception => e
       report_error('download feeds', e)
       HoptoadNotifier.notify(e)
@@ -18,15 +24,15 @@ namespace :bozzuto do
 
   desc 'Load latest feed from Vaultware'
   task :load_vaultware_feed => :environment do
-    puts 'Loading Vaultware feed ...'
+    log_task 'Loading Vaultware feed ...'
 
     begin
       loader = Bozzuto::ExternalFeed::Loader.loader_for_type(:vaultware)
 
       if loader.load!
-        puts "Vaultware feed successfully loaded"
+        puts "  Vaultware feed successfully loaded"
       else
-        puts "Can't load Vaultware feed. Try again later."
+        puts "  Can't load Vaultware feed. Try again later."
       end
     rescue Exception => e
       report_error('load feed', e)
@@ -36,15 +42,15 @@ namespace :bozzuto do
 
   desc 'Load latest feed from PropertyLink'
   task :load_property_link_feed => :environment do
-    puts 'Loading PropertyLink feed ...'
+    log_task 'Loading PropertyLink feed ...'
 
     begin
       loader = Bozzuto::ExternalFeed::Loader.loader_for_type(:property_link)
 
       if loader.load!
-        puts "PropertyLink feed successfully loaded"
+        puts "  PropertyLink feed successfully loaded"
       else
-        puts "Can't load PropertyLink feed. Try again later."
+        puts "  Can't load PropertyLink feed. Try again later."
       end
     rescue Exception => e
       report_error('load feed', e)
@@ -54,15 +60,15 @@ namespace :bozzuto do
 
   desc 'Load latest feed from Rent Cafe'
   task :load_rent_cafe_feed => :environment do
-    puts 'Loading RentCafe feed ...'
+    log_task 'Loading RentCafe feed ...'
 
     begin
       loader = Bozzuto::ExternalFeed::Loader.loader_for_type(:rent_cafe)
 
       if loader.load!
-        puts "RentCafe feed successfully loaded"
+        puts "  RentCafe feed successfully loaded"
       else
-        puts "Can't load RentCafe feed. Try again later."
+        puts "  Can't load RentCafe feed. Try again later."
       end
     rescue Exception => e
       report_error('load feed', e)
@@ -72,15 +78,15 @@ namespace :bozzuto do
 
   desc 'Load latest feed from PSI'
   task :load_psi_feed => :environment do
-    puts 'Loading PSI feed ...'
+    log_task 'Loading PSI feed ...'
 
     begin
       loader = Bozzuto::ExternalFeed::Loader.loader_for_type(:psi)
 
       if loader.load!
-        puts "PSI feed successfully loaded"
+        puts "  PSI feed successfully loaded"
       else
-        puts "Can't load PSI feed. Try again later."
+        puts "  Can't load PSI feed. Try again later."
       end
     rescue Exception => e
       report_error('load feed', e)
@@ -90,10 +96,11 @@ namespace :bozzuto do
 
   desc 'Refresh Local Info feeds'
   task :refresh_local_info_feeds => :environment do
+    log_task 'Refreshing RSS feeds'
+
     Feed.all.each do |feed|
       begin
-        puts
-        puts "==> Refreshing #{feed.name} feed (#{feed.url})"
+        puts "  Refreshing #{feed.name} feed (#{feed.url})"
         feed.refresh!
       rescue Exception => e
         report_error('load RSS feed', e)
@@ -104,9 +111,11 @@ namespace :bozzuto do
 
   desc 'Send recurring emails'
   task :send_recurring_emails => :environment do
+    log_task 'Sending recurring emails'
+
     RecurringEmail.needs_sending.each do |email|
       begin
-        puts "Sending recurring email to #{email.email_address}"
+        puts "  Sending recurring email to #{email.email_address}"
         email.send!
       rescue Exception => e
         report_error('send recurring email', e)
@@ -117,7 +126,7 @@ namespace :bozzuto do
 
   desc "Export apartment data to a feed"
   task :export_apartment_feed => :environment do
-    puts 'Exporting Apartment data ...'
+    log_task 'Exporting Apartment feed ...'
 
     begin
       exporter = Bozzuto::ApartmentFeedExporter.new
@@ -127,6 +136,7 @@ namespace :bozzuto do
         f.write(exporter.to_xml)
       end
 
+      puts '  Apartment feed successfully exported'
     rescue Exception => e
       report_error('export data', e)
       HoptoadNotifier.notify(e)
@@ -135,10 +145,12 @@ namespace :bozzuto do
 
   desc "Send apartment export via FTP"
   task :send_apartment_export => :environment do
-    puts 'Sending apartment export via FTP...'
+    log_task 'Uploading apartment feed via FTP...'
 
     begin
       Bozzuto::ExternalFeed::OutboundFtp.transfer APP_CONFIG[:apartment_export_file]
+
+      puts '  Apartment feed successfully uploaded'
     rescue Exception => e
       report_error('send apartment export via FTP', e)
       HoptoadNotifier.notify(e)
@@ -147,12 +159,13 @@ namespace :bozzuto do
 
   desc "Export contact lists in CSV format (Under Construction Leads + Buzzes)"
   task :export_contact_list_csvs => :environment do
-    puts 'Exporting contact lists as CSVs...'
+    log_task 'Exporting contact lists as CSVs...'
 
     begin
       Bozzuto::UnderConstructionLeadCsv.new(:filename => APP_CONFIG[:under_construction_lead_file]).file
       Bozzuto::BuzzCsv.new(:filename => APP_CONFIG[:buzz_email_list_file]).file
 
+      puts '  Contact list CSVs successfully exported'
     rescue Exception => e
       report_error('export contact lists', e)
       HoptoadNotifier.notify(e)
