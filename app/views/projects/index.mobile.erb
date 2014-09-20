@@ -12,7 +12,7 @@
         <%= render :partial    => 'projects/listing',
                    :collection => section_projects,
                    :as         => :project,
-                   :locals     => { :path => lambda { |p| service_section_project_path(@section, p) } } %>
+                   :locals     => { :path => lambda { |p| project_path(@section, p) } } %>
       </ul>
     <% else %>
       <p>Sorry, there are no projects. Please check again later.</p>
