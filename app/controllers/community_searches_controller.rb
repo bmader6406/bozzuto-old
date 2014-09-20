@@ -1,6 +1,8 @@
 class CommunitySearchesController < ApplicationController
   has_mobile_actions :show
 
+  before_filter :process_params
+
   def show
     if mobile?
       search_for_mobile
@@ -11,6 +13,20 @@ class CommunitySearchesController < ApplicationController
 
 
   private
+
+  # Convert params to the new syntax
+  #
+  #   search[city_id]   -> search[city_id_eq]
+  #   search[county_id] -> search[county_id_eq]
+  def process_params
+    return unless params[:search].present?
+
+    [:city_id, :county_id].each do |key|
+      if params[:search].key?(key)
+        params[:search][:"#{key}_eq"] = params[:search].delete(key)
+      end
+    end
+  end
 
   def search_for_mobile
     if params[:q]

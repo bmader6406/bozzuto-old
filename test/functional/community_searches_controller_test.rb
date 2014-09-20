@@ -18,6 +18,24 @@ class CommunitySearchesControllerTest < ActionController::TestCase
         end
 
         context "with search params" do
+          context "in the old format" do
+            before do
+              get :show, :search => { :city_id => 123, :county_id => 456 }
+            end
+
+            should respond_with(:success)
+
+            it "converts them to the new format" do
+              params = @controller.params
+
+              params[:search][:city_id].should == nil
+              params[:search][:city_id_eq].should == 123
+
+              params[:search][:county_id].should == nil
+              params[:search][:county_id_eq].should == 456
+            end
+          end
+
           context ":in_state is present" do
             setup do
               @state = State.make
