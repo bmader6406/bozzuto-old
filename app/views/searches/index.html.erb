@@ -6,7 +6,7 @@
       <li><%= link_to 'Bozzuto', '/' %></li>
       <li>Search</li>
     </ul>
-    <h1>Search Results for &ldquo;<%= @query %>&rdquo;</h1>
+    <h1>Search Results for &ldquo;<%= query %>&rdquo;</h1>
   </div>
 </div>
 
@@ -18,18 +18,18 @@
       </div>
 
       <div id="content" class="col">
-        <% if @results.any? -%>
+        <% if results.any? -%>
           <div class="header">
             <p>
-              Showing <%= @search.start + 1 %>-<%= @search.start + @search.count %>
-              of <%= @search.totalresults %>
+              Showing <%= search.first_result_num %>&ndash;<%= search.last_result_num %>
+              of <%= number_with_delimiter(search.total_results) %>
               results
             </p>
           </div>
 
           <div class="results">
             <ul>
-              <% @results.each do |result| -%>
+              <% results.each do |result| -%>
                 <li>
                   <h4><%= link_to raw(result.title), result.url %></h4>
 
@@ -40,14 +40,20 @@
 
             <div class="boss-pagination">
               <p>
-                <%= paginate_search(@search) %>
+                <% (1..search.total_pages).to_a.each do |page| %>
+                  <% if page == search.page %>
+                    <span class="current"><%= page %></span>
+                  <% else %>
+                    <%= link_to page, search_path(:q => query, :page => page) %>
+                  <% end %>
+                <% end %>
               </p>
             </div>
           </div>
         <% else -%>
           <div class="results">
             <p>
-              There were no results for the search term <strong><%= @query %></strong>.
+              There were no results for the search term <strong><%= query %></strong>.
             </p>
           </div>
         <% end -%>

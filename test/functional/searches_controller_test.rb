@@ -1,23 +1,21 @@
 require 'test_helper'
 
 class SearchesControllerTest < ActionController::TestCase
-  context 'GET to #index' do
+  context "GET to #index" do
     all_devices do
-      context 'with query present' do
-        setup do
-          search = Object.new
-          search.stubs(:results).returns([])
-          BOSSMan::Search.stubs(:web).returns(search)
-
-          get :index, :q => 'shake it like a polaroid picture'
+      context "with query present" do
+        before do
+          VCR.use_cassette('boss_search_carmel', :match_requests_on => [:method, :host, :path]) do
+            get :index, :q => 'carmel'
+          end
         end
 
         should respond_with(:success)
         should render_template :index
       end
 
-      context 'without query present' do
-        setup do
+      context "without query present" do
+        before do
           get :index
         end
 

@@ -32,6 +32,7 @@ gem 'yajl-ruby'
 gem 'awesome_nested_set', '2.1.6'
 gem 'meta_search'
 gem 'validates_email_format_of'
+gem 'yboss'
 
 #gem 'twitter-text', '1.3.1'
 

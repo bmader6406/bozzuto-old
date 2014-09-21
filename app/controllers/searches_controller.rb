@@ -1,21 +1,28 @@
 class SearchesController < ApplicationController  
-  def index
-    search_params = { :sites => 'bozzuto.com' }
-    search_params[:start] = params[:start] if params[:start].present?
-    @query = params[:q]
+  before_filter :require_query
 
-    if @query.present?
-      @search  = BOSSMan::Search.web(sanitize_query(@query), search_params)
-      @results = @search.results || []
-    else
-      redirect_to '/'
-    end
+  def index
   end
 
 
   private
 
-  def sanitize_query(query)
-    query.gsub(/[+()]/, ' ')
+  def require_query
+    redirect_to root_path unless query.present?
   end
+
+  def query
+    params[:q]
+  end
+  helper_method :query
+
+  def search
+    @search ||= Bozzuto::SiteSearch.search(query, params)
+  end
+  helper_method :search
+
+  def results
+    search.results
+  end
+  helper_method :results
 end
