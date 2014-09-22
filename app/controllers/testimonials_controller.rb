@@ -1,4 +1,6 @@
-class TestimonialsController < SectionContentController
+class TestimonialsController < ApplicationController
+  include Bozzuto::ContentController
+
   has_mobile_actions :index
 
   def index

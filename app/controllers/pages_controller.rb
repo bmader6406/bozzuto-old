@@ -1,4 +1,6 @@
-class PagesController < SectionContentController
+class PagesController < ApplicationController
+  include Bozzuto::ContentController
+
   has_mobile_actions :show
 
   before_filter :find_page

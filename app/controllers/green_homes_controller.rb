@@ -1,4 +1,6 @@
-class GreenHomesController < SectionContentController
+class GreenHomesController < ApplicationController
+  include Bozzuto::ContentController
+
   before_filter :find_page
 
   def index

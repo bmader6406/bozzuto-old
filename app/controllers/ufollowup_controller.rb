@@ -1,4 +1,6 @@
-class UfollowupController < SectionContentController
+class UfollowupController < ApplicationController
+  include Bozzuto::ContentController
+
   layout 'community'
 
   skip_before_filter :find_section,

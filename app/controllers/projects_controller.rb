@@ -1,4 +1,6 @@
-class ProjectsController < SectionContentController
+class ProjectsController < ApplicationController
+  include Bozzuto::ContentController
+
   has_mobile_actions :index, :show
 
   layout :detect_mobile_layout

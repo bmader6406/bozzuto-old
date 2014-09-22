@@ -1,4 +1,6 @@
-class AwardsController < SectionContentController
+class AwardsController < ApplicationController
+  include Bozzuto::ContentController
+
   before_filter :find_awards, :only => :index
   before_filter :find_award, :only => :show
 

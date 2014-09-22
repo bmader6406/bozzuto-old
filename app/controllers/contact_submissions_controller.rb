@@ -1,4 +1,6 @@
-class ContactSubmissionsController < SectionContentController
+class ContactSubmissionsController < ApplicationController
+  include Bozzuto::ContentController
+
   has_mobile_actions :show, :create, :thank_you
 
   before_filter :find_topic, :only => [:show, :create]

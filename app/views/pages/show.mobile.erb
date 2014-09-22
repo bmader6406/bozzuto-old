@@ -18,7 +18,7 @@
     <% end %>
 
     <% if @section.cached_slug == 'new-homes' && @page.first? %>
-      <%= link_to 'Buy a Home', home_communities_path, :class => 'btn submit buy-a-home' %>
+      <%= link_to 'Buy a Home', home_neighborhoods_path, :class => 'btn submit buy-a-home' %>
     <% end %>
 
     <% if @section.cached_slug == 'services' && @page.first? %>

@@ -1,52 +1,20 @@
-class HomeCommunitiesController < SectionContentController
-  has_mobile_actions :index, :show, :map, :contact
+class HomeCommunitiesController < ApplicationController
+  has_mobile_actions :show
 
-  before_filter :find_community, :except => [:index, :map]
-  before_filter :find_communities, :find_page, :only => [:index, :map]
-  before_filter :redirect_to_canonical_url, :only => :show
+  before_filter :detect_mobile_layout
+  before_filter :find_community
+  before_filter :redirect_to_canonical_url
 
   layout :detect_mobile_layout
   
-  def index
-    @communities = @communities.paginate(:page => page_number)
-
-    respond_to do |format|
-      format.html { render :action => :index, :layout => 'application' }
-      format.mobile
-    end
-  end
-
   def show
-  end
-
-  def map
-    render :action => :map, :layout => 'application'
-  end
-
-  def contact
   end
 
 
   private
 
-  def find_section
-    @section = Section.find 'new-homes'
-  end
-
-  def find_page
-    @page = begin
-      @section.pages.published.find 'communities'
-    rescue ActiveRecord::RecordNotFound
-      nil
-    end
-  end
-
   def find_community
     @community = find_property(HomeCommunity, params[:id])
-  end
-
-  def find_communities
-    @communities = HomeCommunity.published.ordered_by_title
   end
 
   def redirect_to_canonical_url

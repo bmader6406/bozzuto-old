@@ -1,4 +1,6 @@
-class ManagementCommunitiesController < SectionContentController
+class ManagementCommunitiesController < ApplicationController
+  include Bozzuto::ContentController
+
   before_filter :find_page
 
   def index

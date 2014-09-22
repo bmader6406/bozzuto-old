@@ -8,33 +8,6 @@ class HomeCommunitiesControllerTest < ActionController::TestCase
       @unpublished_community = HomeCommunity.make(:published => false)
     end
 
-    context 'a GET to #index' do
-      setup do
-        5.times { HomeCommunity.make }
-        @communities = HomeCommunity.published.ordered_by_title.all(:limit => 6)
-
-        get :index
-      end
-
-      should respond_with(:success)
-      should render_template(:index)
-      should assign_to(:section) { @section }
-      should assign_to(:communities) { @communities }
-    end
-
-    context 'a GET to #map' do
-      setup do
-        5.times { HomeCommunity.make }
-        @communities = HomeCommunity.published.ordered_by_title.all
-        get :map
-      end
-
-      should respond_with(:success)
-      should render_template(:map)
-      should assign_to(:section) { @section }
-      should assign_to(:communities) { @communities }
-    end
-
     context "a GET to #show" do
       context 'when not logged in to typus' do
         context "with a non-canonical URL" do
@@ -75,13 +48,13 @@ class HomeCommunitiesControllerTest < ActionController::TestCase
         end
       end
     end
-    
+
     context 'logged in to typus' do
       setup do
         @user = TypusUser.make
         login_typus_user @user
       end
-      
+
       context "a GET to #show for an upublished community" do
         setup do
           get :show, :id => @unpublished_community.to_param

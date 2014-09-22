@@ -138,9 +138,7 @@ Bozzuto::Application.routes.draw do
     end
 
     # Home communities
-    resources :home_communities, :path => 'communities', :only => [:index, :show] do
-      get :map, :on => :collection
-
+    resources :home_communities, :path => 'communities', :only => :show do
       resources :homes, :only => :index do
         resources :floor_plans,
                   :controller => :home_floor_plans,

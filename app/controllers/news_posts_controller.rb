@@ -1,4 +1,6 @@
-class NewsPostsController < SectionContentController
+class NewsPostsController < ApplicationController
+  include Bozzuto::ContentController
+
   before_filter :find_posts, :only => :index
   before_filter :find_post, :only => :show
 

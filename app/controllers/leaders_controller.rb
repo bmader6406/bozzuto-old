@@ -1,4 +1,6 @@
-class LeadersController < SectionContentController
+class LeadersController < ApplicationController
+  include Bozzuto::ContentController
+
   layout "application"
 
   before_filter :find_page

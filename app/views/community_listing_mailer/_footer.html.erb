@@ -3,7 +3,7 @@
             <table cellpadding="0" cellspacing="0" border="0" width="600" style="border-bottom:2px solid #bec3c2;">
               <tr>
                 <td align="center" width="200" valign="top">
-                  <% more_communities_url = (@community && @community.apartment?) ? metros_url : home_communities_url %>
+                  <% more_communities_url = (@community && @community.apartment?) ? metros_url : home_neighborhoods_url %>
                   <%= link_to more_communities_url do %>
                     <%= image_tag 'community_listing/img-find.jpg', :class => 'image_fix', :alt => 'Find more Bozzuto communities', :width => 200, :height => 65 %>
                   <% end %>

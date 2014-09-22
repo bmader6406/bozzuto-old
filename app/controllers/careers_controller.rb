@@ -1,4 +1,6 @@
-class CareersController < SectionContentController
+class CareersController < ApplicationController
+  include Bozzuto::ContentController
+
   has_mobile_actions :index
 
   def index

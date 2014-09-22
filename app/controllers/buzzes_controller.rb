@@ -1,4 +1,6 @@
-class BuzzesController < SectionContentController
+class BuzzesController < ApplicationController
+  include Bozzuto::ContentController
+
   has_mobile_actions :new, :create, :thank_you
 
   def new

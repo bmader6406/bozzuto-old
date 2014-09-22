@@ -54,10 +54,9 @@ SitemapGenerator::Sitemap.create do
   end
 
   # HomeCommunity
-  add home_communities_path,
+  add home_neighborhoods_path,
       :priority   => 0.9,
       :changefreq => 'daily'
-  add map_home_communities_path, :changefreq => 'daily'
 
   HomeCommunity.published.ordered_by_title.find_each do |h|
     sitemap_options = { :priority   => 0.6,

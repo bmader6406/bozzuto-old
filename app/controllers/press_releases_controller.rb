@@ -1,4 +1,6 @@
-class PressReleasesController < SectionContentController
+class PressReleasesController < ApplicationController
+  include Bozzuto::ContentController
+
   def index
     @press_releases = section_press_releases.paginate(:page => page_number)
   end

@@ -1,4 +1,6 @@
-class NewsAndPressController < SectionContentController
+class NewsAndPressController < ApplicationController
+  include Bozzuto::ContentController
+
   def index
     @latest_news = section_news_posts.latest(10)
     @latest_press = section_press_releases.latest(10)

@@ -1,4 +1,6 @@
-class RankingsController < SectionContentController
+class RankingsController < ApplicationController
+  include Bozzuto::ContentController
+
   # layout 'page'
 
   def index
