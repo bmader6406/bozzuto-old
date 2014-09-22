@@ -25,7 +25,7 @@ module Typus
         first_or_last = (position.last == 'move_left' && item.left_sibling.nil?) || (position.last == 'move_right' && item.right_sibling.nil?)
 
         html_position << link_to_unless(first_or_last, _(position.first), params.merge(options)) do |name|
-          %(<span class="inactive">#{name}</span>)
+          %(<span class="inactive">#{name}</span>).html_safe
         end
       end
 
