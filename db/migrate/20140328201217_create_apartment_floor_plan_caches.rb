@@ -25,7 +25,7 @@ class CreateApartmentFloorPlanCaches < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :apartment_floor_plan_caches, [:cacheable_id, :cacheable_type], :unique => true
+    add_index :apartment_floor_plan_caches, [:cacheable_id, :cacheable_type], :unique => true, :name => 'index_floor_plan_caches_on_id_and_type'
   end
 
   def self.down

@@ -9,7 +9,7 @@ class CreateHomeNeighborhoodMemberships < ActiveRecord::Migration
     end
 
     add_index :home_neighborhood_memberships, :home_neighborhood_id
-    add_index :home_neighborhood_memberships, [:home_neighborhood_id, :home_community_id], :unique => true
+    add_index :home_neighborhood_memberships, [:home_neighborhood_id, :home_community_id], :unique => true, :name => 'index_home_nbrhd_mmbrshps_on_nbrhd_id_and_comm_id'
   end
 
   def self.down

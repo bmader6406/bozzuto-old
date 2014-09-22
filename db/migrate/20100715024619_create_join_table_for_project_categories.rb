@@ -5,8 +5,8 @@ class CreateJoinTableForProjectCategories < ActiveRecord::Migration
       t.integer :project_id
     end
 
-    add_index :project_categories_projects, [:project_category_id, :project_id]
-    add_index :project_categories_projects, [:project_id, :project_category_id]
+    add_index :project_categories_projects, [:project_category_id, :project_id], :name => 'index_project_categories_and_projects'
+    add_index :project_categories_projects, [:project_id, :project_category_id], :name => 'index_projects_and_project_categories'
   end
 
   def self.down

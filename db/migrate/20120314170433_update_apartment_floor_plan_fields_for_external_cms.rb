@@ -6,7 +6,7 @@ class UpdateApartmentFloorPlanFieldsForExternalCms < ActiveRecord::Migration
     add_column :apartment_floor_plans, :external_cms_type, :string
 
     add_index :apartment_floor_plans, :external_cms_id
-    add_index :apartment_floor_plans, [:external_cms_id, :external_cms_type]
+    add_index :apartment_floor_plans, [:external_cms_id, :external_cms_type], :name => 'index_external_cms_id_and_type'
 
     execute "UPDATE apartment_floor_plans SET external_cms_type = 'vaultware' WHERE external_cms_id IS NOT NULL"
   end

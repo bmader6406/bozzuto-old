@@ -20,8 +20,6 @@ class Property < ActiveRecord::Base
     :use_slug => true,
     :scope => :type
 
-  #acts_as_archive :indexes => [:id]
-
   search_methods :in_state
 
   serialize :office_hours
@@ -107,7 +105,7 @@ class Property < ActiveRecord::Base
   def property_type=(type)
     write_attribute(:type, type)
   end
-  
+
   def destroy_attached_files
     # no-op this because we need to keep attachments arround
   end

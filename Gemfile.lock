@@ -31,7 +31,11 @@ GEM
       activemodel (= 3.0.20)
       activesupport (= 3.0.20)
     activesupport (3.0.20)
+    acts_as_archive (0.4.1)
+      also_migrate (= 0.3.5)
+      mover (= 0.3.6)
     addressable (2.3.4)
+    also_migrate (0.3.5)
     arel (2.0.10)
     awesome_nested_set (2.1.6)
       activerecord (>= 3.0.0)
@@ -101,6 +105,7 @@ GEM
     mime-types (1.25.1)
     mocha (0.9.8)
       rake
+    mover (0.3.6)
     multi_json (1.10.1)
     multi_xml (0.5.4)
     multipart-post (2.0.0)
@@ -199,6 +204,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-mysql2-adapter
+  acts_as_archive
   awesome_nested_set (= 2.1.6)
   bourbon
   capistrano (= 2.5.19)

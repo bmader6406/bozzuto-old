@@ -9,7 +9,7 @@ class CreateRelatedNeighborhoods < ActiveRecord::Migration
     end
 
     add_index :related_neighborhoods, :neighborhood_id
-    add_index :related_neighborhoods, [:neighborhood_id, :nearby_neighborhood_id], :unique => true
+    add_index :related_neighborhoods, [:neighborhood_id, :nearby_neighborhood_id], :unique => true, :name => 'index_related_neighborhoods_on_id_and_related_id'
   end
 
   def self.down
