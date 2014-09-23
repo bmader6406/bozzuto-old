@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<PhysicalProperty xmlns:MITS="http://www.mitsproject.org/namespace">
+ <Property>
+  <PropertyID>
+   <MITS:Identification type="apartment" rentalType="market rate">
+    <MITS:PrimaryID>CHE801</MITS:PrimaryID>
+    <MITS:MarketingName>Spectrum</MITS:MarketingName>
+   </MITS:Identification>
+  </PropertyID>
+  <Floorplan id="CRIMS">
+   <Name>The Crimson</Name>
+   <FloorplanAvailabilityURL>https://onlinelease.carmelapartments.com/welcome.html?community=CHE801</FloorplanAvailabilityURL>
+   <DisplayedUnitsAvailable>1</DisplayedUnitsAvailable>
+   <Bedrooms>1</Bedrooms>
+   <Bathrooms>1</Bathrooms>
+   <SquareFeet Max="815" Min="815"/>
+   <MarketRent Max="1475.0000" Min="1475.0000"/>
+   <EffectiveRent Max="1475.0000" Min="1475.0000"/>
+  </Floorplan>
+  <Floorplan id="FPUMB">
+   <Name>The Umber</Name>
+   <FloorplanAvailabilityURL>https://onlinelease.carmelapartments.com/welcome.html?community=CHE801</FloorplanAvailabilityURL>
+   <DisplayedUnitsAvailable>1</DisplayedUnitsAvailable>
+   <Bedrooms>1</Bedrooms>
+   <Bathrooms>1</Bathrooms>
+   <SquareFeet Max="415" Min="415"/>
+   <MarketRent Max="1360.0000" Min="1360.0000"/>
+   <EffectiveRent Max="1360.0000" Min="1360.0000"/>
+  </Floorplan>
+  <Floorplan id="INDIG">
+   <Name>The Indigo</Name>
+   <FloorplanAvailabilityURL>https://onlinelease.carmelapartments.com/welcome.html?community=CHE801</FloorplanAvailabilityURL>
+   <DisplayedUnitsAvailable>1</DisplayedUnitsAvailable>
+   <Bedrooms>1</Bedrooms>
+   <Bathrooms>1</Bathrooms>
+   <SquareFeet Max="710" Min="710"/>
+   <MarketRent Max="1405.0000" Min="1405.0000"/>
+   <EffectiveRent Max="1405.0000" Min="1405.0000"/>
+  </Floorplan>
+  <Floorplan id="VERDE">
+   <Name>The Verde</Name>
+   <FloorplanAvailabilityURL>https://onlinelease.carmelapartments.com/welcome.html?community=CHE801</FloorplanAvailabilityURL>
+   <DisplayedUnitsAvailable>1</DisplayedUnitsAvailable>
+   <Bedrooms>2</Bedrooms>
+   <Bathrooms>1</Bathrooms>
+   <SquareFeet Max="980" Min="980"/>
+   <MarketRent Max="1715.0000" Min="1705.0000"/>
+   <EffectiveRent Max="1715.0000" Min="1705.0000"/>
+  </Floorplan>
+ </Property>
+ <Property>
+  <PropertyID>
+   <MITS:Identification type="apartment" rentalType="market rate">
+    <MITS:PrimaryID>SUM822</MITS:PrimaryID>
+    <MITS:MarketingName>Summit</MITS:MarketingName>
+   </MITS:Identification>
+  </PropertyID>
+  <Floorplan id="ESSEX">
+   <Name>Essex</Name>
+   <FloorplanAvailabilityURL>https://onlinelease.carmelapartments.com/welcome.html?community=SUM822</FloorplanAvailabilityURL>
+   <DisplayedUnitsAvailable>2</DisplayedUnitsAvailable>
+   <Bedrooms>1</Bedrooms>
+   <Bathrooms>1H</Bathrooms>
+   <SquareFeet Max="924" Min="924"/>
+   <MarketRent Max="1520.0000" Min="1510.0000"/>
+   <EffectiveRent Max="1520.0000" Min="1510.0000"/>
+  </Floorplan>
+  <Floorplan id="WINDS">
+   <Name>Windsor</Name>
+   <FloorplanAvailabilityURL>https://onlinelease.carmelapartments.com/welcome.html?community=SUM822</FloorplanAvailabilityURL>
+   <DisplayedUnitsAvailable>1</DisplayedUnitsAvailable>
+   <Bedrooms>2</Bedrooms>
+   <Bathrooms>2H</Bathrooms>
+   <SquareFeet Max="1331" Min="1331"/>
+   <MarketRent Max="2075.0000" Min="2075.0000"/>
+   <EffectiveRent Max="2075.0000" Min="2075.0000"/>
+  </Floorplan>
+  <Floorplan id="OXFOR">
+   <Name>Oxford</Name>
+   <FloorplanAvailabilityURL>https://onlinelease.carmelapartments.com/welcome.html?community=SUM822</FloorplanAvailabilityURL>
+   <DisplayedUnitsAvailable>1</DisplayedUnitsAvailable>
+   <Bedrooms>3</Bedrooms>
+   <Bathrooms>2H</Bathrooms>
+   <SquareFeet Max="1441" Min="1441"/>
+   <MarketRent Max="2080.0000" Min="2080.0000"/>
+   <EffectiveRent Max="2080.0000" Min="2080.0000"/>
+  </Floorplan>
+ </Property>
+</PhysicalProperty>

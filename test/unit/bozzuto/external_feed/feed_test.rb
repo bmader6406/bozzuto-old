@@ -36,6 +36,12 @@ module Bozzuto::ExternalFeed
           end
         end
 
+        context "carmel" do
+          it "returns instance of the correct class" do
+            subject.feed_for_type(:carmel).class.should == Bozzuto::ExternalFeed::CarmelFeed
+          end
+        end
+
         context "anything else" do
           it "raises an exception" do
             expect {
