@@ -60,6 +60,8 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
 
       context "for KML format" do
         before do
+          @community.update_attribute(:title, 'Wayne Manor')
+
           get :show, :id     => @community.to_param,
                      :format => :kml
         end
@@ -69,7 +71,7 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
         should assign_to(:community) { @community }
 
         it  "renders the KML XML" do
-          @response.body.should =~ /<name>#{@community.title}<\/name>/
+          @response.body.should =~ /<name>Wayne Manor<\/name>/
 
           @response.body.should =~ /<coordinates>#{@community.latitude},#{@community.longitude},0<\/coordinates>/
         end
