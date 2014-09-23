@@ -24,15 +24,17 @@ module Bozzuto::ExternalFeed
         subject { Bozzuto::ExternalFeed::InboundFtp.new }
 
         before do
-          @vw_feed  = mock('Bozzuto::ExternalFeed::VaultwareFeed',    :default_file => tmp_file('vw_feed.xml'))
-          @rc_feed  = mock('Bozzuto::ExternalFeed::RentCafeFeed',     :default_file => tmp_file('rc_feed.xml'))
-          @pl_feed  = mock('Bozzuto::ExternalFeed::PropertyLinkFeed', :default_file => tmp_file('pl_feed.xml'))
-          @psi_feed = mock('Bozzuto::ExternalFeed::PsiFeed',          :default_file => tmp_file('psi_feed.xml'))
+          @vw_feed     = mock('Bozzuto::ExternalFeed::VaultwareFeed',    :default_file => tmp_file('vw_feed.xml'))
+          @rc_feed     = mock('Bozzuto::ExternalFeed::RentCafeFeed',     :default_file => tmp_file('rc_feed.xml'))
+          @pl_feed     = mock('Bozzuto::ExternalFeed::PropertyLinkFeed', :default_file => tmp_file('pl_feed.xml'))
+          @psi_feed    = mock('Bozzuto::ExternalFeed::PsiFeed',          :default_file => tmp_file('psi_feed.xml'))
+          @carmel_feed = mock('Bozzuto::ExternalFeed::PsiFeed',          :default_file => tmp_file('carmel_feed.xml'))
 
           Bozzuto::ExternalFeed::Feed.expects(:feed_for_type).with('vaultware').returns(@vw_feed)
           Bozzuto::ExternalFeed::Feed.expects(:feed_for_type).with('rent_cafe').returns(@rc_feed)
           Bozzuto::ExternalFeed::Feed.expects(:feed_for_type).with('property_link').returns(@pl_feed)
           Bozzuto::ExternalFeed::Feed.expects(:feed_for_type).with('psi').returns(@psi_feed)
+          Bozzuto::ExternalFeed::Feed.expects(:feed_for_type).with('carmel').returns(@carmel_feed)
 
           @ftp = mock('Net::FTP')
           Net::FTP.expects(:open).with(Bozzuto::ExternalFeed::InboundFtp::SERVER).yields(@ftp)
@@ -48,6 +50,7 @@ module Bozzuto::ExternalFeed
           @ftp.expects(:getbinaryfile).with('rentcafe.xml',     tmp_file('rc_feed.xml'))
           @ftp.expects(:getbinaryfile).with('propertylink.xml', tmp_file('pl_feed.xml'))
           @ftp.expects(:getbinaryfile).with('psi.xml',          tmp_file('psi_feed.xml'))
+          @ftp.expects(:getbinaryfile).with('carmel.xml',       tmp_file('carmel_feed.xml'))
 
           subject.download_files
         end
