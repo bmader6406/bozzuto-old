@@ -6,10 +6,10 @@ development:
   carmel_feed_file: /path/to/carmel/feed/carmel.xml
   apartment_export_file: /path/to/apartment_export_file.xml
   ftp:
-    inbound:
+    live_bozzuto:
       username: Bozzkevate
       password: 7iPt9IUb
-    outbound:
+    qburst:
       username: bozzutofc
       password: 6zxXRETm
   sms:
@@ -41,10 +41,10 @@ production:
   carmel_feed_file: /path/to/carmel/feed/carmel.xml
   apartment_export_file: /path/to/apartment_export_file.xml
   ftp:
-    inbound:
+    live_bozzuto:
       username: Bozzkevate
       password: 7iPt9IUb
-    outbound:
+    qburst:
       username: bozzutofc
       password: 6zxXRETm
   sms:
@@ -76,10 +76,10 @@ test:
   carmel_feed_file: /path/to/carmel/feed/carmel.xml
   apartment_export_file: /path/to/apartment_export_file.xml
   ftp:
-    inbound:
+    live_bozzuto:
       username: Bozzkevate
       password: 7iPt9IUb
-    outbound:
+    qburst:
       username: bozzutofc
       password: 6zxXRETm
   sms:

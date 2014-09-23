@@ -13,7 +13,10 @@ namespace :bozzuto do
     log_task 'Downloading property feeds ...'
 
     begin
-      Bozzuto::ExternalFeed::InboundFtp.download_files
+      [
+        Bozzuto::ExternalFeed::LiveBozzutoFtp,
+        Bozzuto::ExternalFeed::QburstFtp
+      ].each(&:download_files)
 
       puts '  Property feeds successfully downloaded'
     rescue Exception => e
@@ -166,7 +169,7 @@ namespace :bozzuto do
     log_task 'Uploading apartment feed via FTP...'
 
     begin
-      Bozzuto::ExternalFeed::OutboundFtp.transfer APP_CONFIG[:apartment_export_file]
+      Bozzuto::ExternalFeed::QburstFtp.transfer APP_CONFIG[:apartment_export_file]
 
       puts '  Apartment feed successfully uploaded'
     rescue Exception => e
