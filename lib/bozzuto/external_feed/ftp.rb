@@ -21,9 +21,11 @@ module Bozzuto
       def transfer(file)
         raise ArgumentError, 'The given file name does not exist.' unless File.exists?(file)
 
+        # :nocov:
         connect_to_server do |ftp|
           ftp.putbinaryfile(file)
         end
+        # :nocov:
       end
 
       def download_files
