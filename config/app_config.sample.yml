@@ -3,6 +3,7 @@ development:
   property_link_feed_file: /path/to/property_link/feed/property_link.xml
   rent_cafe_feed_file: /path/to/rent_cafe/feed/rent_cafe.xml
   psi_feed_file: /path/to/psi/feed/psi.xml
+  carmel_feed_file: /path/to/carmel/feed/carmel.xml
   apartment_export_file: /path/to/apartment_export_file.xml
   ftp:
     inbound:
@@ -37,6 +38,7 @@ production:
   property_link_feed_file: /path/to/property_link/feed/property_link.xml
   rent_cafe_feed_file: /path/to/rent_cafe/feed/rent_cafe.xml
   psi_feed_file: /path/to/psi/feed/psi.xml
+  carmel_feed_file: /path/to/carmel/feed/carmel.xml
   apartment_export_file: /path/to/apartment_export_file.xml
   ftp:
     inbound:
@@ -71,6 +73,7 @@ test:
   property_link_feed_file: /path/to/property_link/feed/property_link.xml
   rent_cafe_feed_file: /path/to/rent_cafe/feed/rent_cafe.xml
   psi_feed_file: /path/to/psi/feed/psi.xml
+  carmel_feed_file: /path/to/carmel/feed/carmel.xml
   apartment_export_file: /path/to/apartment_export_file.xml
   ftp:
     inbound:
