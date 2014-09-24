@@ -88,7 +88,11 @@ module Bozzuto
         end
 
         teardown do
-          FileUtils.rm(@subject.filename)
+          begin
+            FileUtils.rm(@subject.filename)
+          rescue Errno::ENOENT
+            nil
+          end
         end
 
         it "returns the file path for a csv file with all the buzzes" do
