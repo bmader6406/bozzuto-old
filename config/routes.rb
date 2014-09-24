@@ -1,6 +1,10 @@
 Bozzuto::Application.routes.draw do
   Typus::Routes.draw(self)
 
+  # Typus CSV Exports
+  get '/admin/under_construction_leads(.:format)', :controller => 'admin/under_construction_leads', :action => :index
+  get '/admin/buzzes(.:format)',                   :controller => 'admin/buzzes',                   :action => :index
+
   #Ckeditor::Routes.draw(map)
 
   root :to => 'home_pages#index'
