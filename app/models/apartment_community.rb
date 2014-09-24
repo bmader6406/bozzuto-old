@@ -93,6 +93,14 @@ class ApartmentCommunity < Community
 
   scope :not_under_construction, :conditions => { :under_construction => false }
 
+  def external_cms_attributes
+    if external_cms_type == 'carmel'
+      [:floor_plans]
+    else
+      self.class.external_cms_attributes
+    end
+  end
+
   def nearby_communities(limit = 6)
     @nearby_communities ||= city.apartment_communities.published.near(self).limit(limit)
   end
@@ -101,12 +109,12 @@ class ApartmentCommunity < Community
     raise 'Receiver must not be an externally-managed community' if managed_externally?
     raise 'Argument must be an externally-managed community' unless other_community.managed_externally?
 
-    self.external_cms_id   = other_community.external_cms_id
-    self.external_cms_type = other_community.external_cms_type
-
-    self.class.external_cms_attributes.each { |attr|
+    self.external_cms_attributes.each { |attr|
       self.send("#{attr}=", other_community.send(attr))
     }
+
+    self.external_cms_id   = other_community.external_cms_id
+    self.external_cms_type = other_community.external_cms_type
 
     save
 
