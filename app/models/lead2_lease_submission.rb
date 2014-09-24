@@ -28,6 +28,10 @@ class Lead2LeaseSubmission
   def initialize(attrs = {})
     attrs ||= {}
 
+    # Duplicate so we don't delete the fields from
+    # the original params hash
+    attrs = attrs.dup
+
     # Handle move_in_date form fields
     year  = attrs.delete('move_in_date(1i)')
     month = attrs.delete('move_in_date(2i)')
