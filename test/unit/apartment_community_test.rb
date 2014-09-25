@@ -243,7 +243,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
             end
 
             it "update the receiver's attributes" do
-              attrs = ApartmentCommunity.external_cms_attributes.reject { |attr| attr == :floor_plans }
+              attrs = subject.external_cms_attributes.reject { |attr| attr == :floor_plans }
 
               attrs.each do |attr|
                 subject.send(attr).should == @other.send(attr)
