@@ -69,6 +69,10 @@ class ApartmentFloorPlan < ActiveRecord::Base
     non_zero_min_rent
   end
 
+  def typus_name
+    name
+  end
+
   def uses_image_url?
     image_type == USE_IMAGE_URL
   end

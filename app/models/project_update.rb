@@ -15,4 +15,8 @@ class ProjectUpdate < ActiveRecord::Base
     :styles          => { :resized => '484x214#' },
     :default_style   => :resized,
     :convert_options => { :all => '-quality 80 -strip' }
+
+  def typus_name
+    "#{project.title} Update - #{published_at.to_s(:month_day_year)}"
+  end
 end

@@ -15,4 +15,8 @@ class Leader < ActiveRecord::Base
                     :styles          => {:rect => '230x220#'},
                     :default_style   => :rect,
                     :convert_options => { :all => '-quality 80 -strip' }
+
+  def typus_name
+    name
+  end
 end

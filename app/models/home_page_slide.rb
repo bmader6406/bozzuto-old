@@ -12,4 +12,8 @@ class HomePageSlide < ActiveRecord::Base
     :convert_options => { :all => '-quality 80 -strip' }
 
   validates_attachment_presence :image
+
+  def typus_name
+    "Home Page - Slide ##{position}"
+  end
 end

@@ -20,4 +20,8 @@ class PropertyFeature < ActiveRecord::Base
   validates_uniqueness_of :name
 
   scope :has_icon, :conditions => "icon_file_name != ''"
+
+  def typus_name
+    name
+  end
 end

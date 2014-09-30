@@ -8,5 +8,13 @@ class LeaderTest < ActiveSupport::TestCase
     should validate_presence_of(:title)
     should validate_presence_of(:company)
     should validate_presence_of(:bio)
+
+    describe "#typus_name" do
+      subject { Leader.new(:name => 'Lucius Fox') }
+
+      it "returns the name" do
+        subject.typus_name.should == 'Lucius Fox'
+      end
+    end
   end
 end

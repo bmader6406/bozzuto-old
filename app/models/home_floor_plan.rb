@@ -21,4 +21,8 @@ class HomeFloorPlan < ActiveRecord::Base
   def actual_thumb
     image.url(:thumb)
   end
+
+  def typus_name
+    name
+  end
 end

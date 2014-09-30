@@ -1,0 +1,42 @@
+<% content_for :breadcrumb do %>
+  <%= link_to 'Missing Files', '/admin/missing_files' %>:
+  <%= resource_class.to_s.underscore.humanize.titleize.pluralize %>
+<% end %>
+
+<%= link_to '&larr; Back'.html_safe, '/admin/missing_files' %>
+
+<br />
+<br />
+<br />
+
+<table class="missing-files-table">
+  <tr>
+    <th>ID #</th>
+    <th>Name</th>
+    <th>Missing Fields</th>
+    <th></th>
+  </tr>
+
+  <% resource_class.missing_files.each do |resource| %>
+    <tr>
+      <td>
+        <%= resource.id %>
+      </td>
+
+      <td>
+        <%= truncate(resource.typus_name, :length => 60) %>
+      </td>
+
+      <td>
+        <ul>
+          <% resource.fields_with_missing_file.each do |field| %>
+            <li><%= resource_class.human_attribute_name(field) %></li>
+          <% end %>
+        </ul>
+      </td>
+
+      <td>
+        <%= link_to 'Edit', "/admin/#{resource_class.model_name.tableize}/edit/#{resource.id}" %>
+      </td>
+  <% end %>
+</table>

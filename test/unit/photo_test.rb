@@ -17,6 +17,25 @@ class PhotoTest < ActiveSupport::TestCase
       end
     end
 
+    describe "#typus_name" do
+      before do
+        @property    = ApartmentCommunity.make(:title => 'Wayne Manor')
+        @photo_group = PhotoGroup.make(:title => 'Exteriors')
+      end
+
+      subject do
+        Photo.new(
+          :property    => @property,
+          :photo_group => @photo_group,
+          :position    => 4
+        )
+      end
+
+      it "returns the property title, photo group title, and position" do
+        subject.typus_name.should == 'Wayne Manor - Exteriors - Photo #4'
+      end
+    end
+
     describe "#thumbnail_tag" do
       subject { Photo.make }
 

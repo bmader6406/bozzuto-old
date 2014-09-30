@@ -14,4 +14,8 @@ class Video < ActiveRecord::Base
     :styles          => { :thumb => '55x55#' },
     :default_style   => :thumb,
     :convert_options => { :all => '-quality 80 -strip' }
+
+  def typus_name
+    "#{property.title} - Video ##{position}"
+  end
 end

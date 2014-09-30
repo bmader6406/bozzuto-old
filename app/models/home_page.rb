@@ -14,4 +14,8 @@ class HomePage < ActiveRecord::Base
     :styles          => { :resized => '280x85#' },
     :default_style   => :resized,
     :convert_options => { :all => '-quality 80 -strip' }
+
+  def typus_name
+    'Home Page'
+  end
 end

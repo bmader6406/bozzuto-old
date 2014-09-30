@@ -13,4 +13,8 @@ class PropertySlide < ActiveRecord::Base
 
   validates_attachment_presence :image
   validates_length_of :caption, :maximum => 128, :allow_nil => true
+
+  def typus_name
+    "#{property_slideshow.name} - Slide ##{position}"
+  end
 end

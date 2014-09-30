@@ -15,8 +15,19 @@
 %>
 
 <li>
-  <%= form.label attribute, label_text.html_safe %>
-  <%= render_tip(attribute) %>
-  <%= form.file_field attribute, options %>
-  <%= typus_preview(@item, attribute) %>
+  <% content = capture do %>
+    <%= form.label attribute, label_text.html_safe %>
+    <%= render_tip(attribute) %>
+    <%= form.file_field attribute, options %>
+    <%= typus_preview(@item, attribute) %>
+  <% end %>
+
+  <% if @item.send(attribute).file_missing? %>
+    <div class="missing-file">
+      <h3>This file is missing!</h3>
+      <%= content %>
+    </div>
+  <% else %>
+    <%= content %>
+  <% end %>
 </li>

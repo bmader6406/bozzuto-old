@@ -42,6 +42,10 @@ class Photo < ActiveRecord::Base
     'photo_groups.position ASC, photos.position ASC'
   end
 
+  def typus_name
+    "#{property.title} - #{photo_group.title} - Photo ##{position}"
+  end
+
   def thumbnail_tag
     %{<img src="#{image.url(:thumb)}">}.html_safe
   end

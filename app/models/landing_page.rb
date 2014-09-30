@@ -43,6 +43,12 @@ class LandingPage < ActiveRecord::Base
     :default_style   => :resized,
     :convert_options => { :all => '-quality 80 -strip' }
 
+
+  def typus_name
+    title
+  end
+
+
   protected
 
   def set_positions_of_popular_properties

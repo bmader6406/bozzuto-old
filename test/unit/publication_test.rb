@@ -9,5 +9,13 @@ class PublicationTest < ActiveSupport::TestCase
     should have_attached_file(:image)
 
     should have_many(:rank_categories)
+
+    describe "#typus_name" do
+      subject { Publication.new(:name => 'Detective Comics') }
+
+      it "returns the name" do
+        subject.typus_name.should == 'Detective Comics'
+      end
+    end
   end
 end

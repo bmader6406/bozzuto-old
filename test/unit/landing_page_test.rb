@@ -20,6 +20,16 @@ class LandingPageTest < ActiveSupport::TestCase
     should validate_uniqueness_of(:title)
     should have_attached_file(:masthead_image)
 
+    describe "#typus_name" do
+      before do
+        subject.title = 'Gotham City'
+      end
+
+      it "returns the title" do
+        subject.typus_name.should == 'Gotham City'
+      end
+    end
+
     context 'with some popular properties' do
       setup do
         @community1 = ApartmentCommunity.make

@@ -18,4 +18,8 @@ class Publication < ActiveRecord::Base
     :dependent => :destroy
 
   scope :ordered, :order => 'position ASC'
+
+  def typus_name
+    name
+  end
 end

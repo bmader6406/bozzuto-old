@@ -1,0 +1,15 @@
+<% content_for :breadcrumb do %>
+  Missing Files
+<% end %>
+
+<h3>Choose a resource:</h3>
+
+<ul>
+  <% resource_classes.each do |klass| %>
+    <li>
+      <%= link_to "/admin/missing_files/show/#{klass}" do %>
+        <%= klass.to_s.underscore.humanize.pluralize.titleize %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

@@ -22,5 +22,15 @@ class HomeFloorPlanTest < ActiveSupport::TestCase
         subject.actual_thumb.should =~ /thumb\.jpg/
       end
     end
+
+    describe "#typus_name" do
+      before do
+        subject.name = 'Wayne Manor'
+      end
+
+      it "returns the name" do
+        subject.typus_name.should == 'Wayne Manor'
+      end
+    end
   end
 end

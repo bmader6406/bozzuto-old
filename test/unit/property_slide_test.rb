@@ -9,5 +9,18 @@ class PropertySlideTest < ActiveSupport::TestCase
     should validate_attachment_presence(:image)
 
     should ensure_length_of(:caption).is_at_least(0).is_at_most(128)
+
+    describe "#typus_name" do
+      subject do
+        PropertySlide.new(
+          :property_slideshow => PropertySlideshow.new(:name => 'Slideshow'),
+          :position           => 3
+        )
+      end
+
+      it "returns the slideshow name and position" do
+        subject.typus_name.should == 'Slideshow - Slide #3'
+      end
+    end
   end
 end

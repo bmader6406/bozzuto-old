@@ -27,4 +27,8 @@ class CareersEntry < ActiveRecord::Base
   validates_attachment_presence :headshot
 
   default_scope :order => 'position ASC'
+
+  def typus_name
+    name
+  end
 end

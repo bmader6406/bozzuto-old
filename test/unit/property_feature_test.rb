@@ -11,5 +11,13 @@ class PropertyFeatureTest < ActiveSupport::TestCase
     should have_attached_file(:icon)
 
     should validate_uniqueness_of(:name)
+
+    describe "#typus_name" do
+      subject { PropertyFeature.new(:name => 'Bat Cave') }
+
+      it "returns the name" do
+        subject.typus_name.should == 'Bat Cave'
+      end
+    end
   end
 end

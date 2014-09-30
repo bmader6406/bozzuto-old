@@ -26,6 +26,10 @@ class MastheadSlide < ActiveRecord::Base
     :default_style   => :resized,
     :convert_options => { :all => '-quality 80 -strip' }
 
+  def typus_name
+    "#{masthead_slideshow.name} - Slide ##{position}"
+  end
+
   def uses_image?
     slide_type == USE_IMAGE
   end

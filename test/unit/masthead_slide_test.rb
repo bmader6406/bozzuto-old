@@ -12,6 +12,19 @@ class MastheadSlideTest < ActiveSupport::TestCase
     should validate_presence_of(:body)
 
 
+    describe "#typus_name" do
+      subject do
+        MastheadSlide.new(
+          :masthead_slideshow => MastheadSlideshow.new(:name => 'Slideshow'),
+          :position           => 2
+        )
+      end
+
+      it "returns the slideshow name and slide position" do
+        subject.typus_name.should == 'Slideshow - Slide #2'
+      end
+    end
+
     context '#uses_image?' do
       context 'when slide_type is USE_IMAGE' do
         should 'return true' do
