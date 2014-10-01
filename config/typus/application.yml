@@ -213,7 +213,7 @@ Carousel:
 
 CarouselPanel:
   fields:
-    default: image, featured, position
+    default: thumbnail_tag, heading, featured, position
     list: image, position
     form: image, link_url, heading, caption, featured, carousel
     options:
@@ -222,6 +222,8 @@ CarouselPanel:
   order_by: position
   relationships: 
   filters:
+  options:
+    per_page: 9999
   search: 
   application:
 

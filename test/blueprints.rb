@@ -181,6 +181,18 @@ Buzz.blueprint do
   buzzes       { '' }
 end
 
+Carousel.blueprint do
+  name { 'Carousel' }
+end
+
+CarouselPanel.blueprint do
+  carousel        { Carousel.make }
+  heading         { 'Heading' }
+  caption         { 'Caption' }
+  link_url        { 'http://wayneenterprises.com' }
+  image_file_name { Sham.file_name }
+end
+
 City.blueprint do
   name { Sham.city }
   state

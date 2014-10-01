@@ -38,5 +38,13 @@ class CarouselPanelTest < ActiveSupport::TestCase
         subject.typus_name.should == 'CAROUSEL - Panel #4'
       end
     end
+
+    describe "#thumbnail_tag" do
+      subject { CarouselPanel.make }
+
+      it "returns the img tag" do
+        subject.thumbnail_tag.should =~ /\A<img src="#{subject.image.url}" width="75">\z/
+      end
+    end
   end
 end

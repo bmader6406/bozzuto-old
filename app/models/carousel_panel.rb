@@ -16,9 +16,11 @@ class CarouselPanel < ActiveRecord::Base
   validates_presence_of :heading, :if => proc { |panel| panel.caption.present? }
   validates_presence_of :caption, :if => proc { |panel| panel.heading.present? }
 
-  default_scope :order => 'position ASC'
-
   def typus_name
     "#{carousel.name} - Panel ##{position}"
+  end
+
+  def thumbnail_tag
+    %{<img src="#{image.url}" width="75">}.html_safe
   end
 end
