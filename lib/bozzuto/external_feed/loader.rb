@@ -104,6 +104,7 @@ module Bozzuto
         attrs = property_data.database_attributes
 
         if feed_type == :carmel
+          attrs.delete(:title)
           attrs.delete(:street_address)
           attrs.delete(:availability_url)
         end

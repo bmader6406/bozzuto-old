@@ -456,11 +456,11 @@ module Bozzuto::ExternalFeed
           )
         end
 
-        it "does not overwrite existing city, state, or street address information" do
+        it "does not overwrite existing information" do
           subject.load!
 
           @community.reload.tap do |c|
-            c.title.should             == 'Spectrum'
+            c.title.should             == 'TEST'
             c.street_address.should    == 'TEST'
             c.city.should              == @city
             c.state.should             == @state
