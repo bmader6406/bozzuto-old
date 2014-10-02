@@ -100,10 +100,24 @@ module Bozzuto
         true
       end
 
+      def write_attributes_to(property, property_data)
+        attrs = property_data.database_attributes
+
+        if feed_type == :carmel
+          attrs.delete(:street_address)
+          attrs.delete(:availability_url)
+        end
+
+        property.attributes = attrs
+      end
+
       def import_property(property_data)
         find_or_initialize_property(property_data) do |property|
-          property.attributes = property_data.database_attributes
-          property.city       = find_or_create_city(property_data.city, property_data.state)
+          write_attributes_to(property, property_data)
+
+          unless feed_type == :carmel && property.city.present?
+            property.city = find_or_create_city(property_data.city, property_data.state)
+          end
 
           property.save
         end
