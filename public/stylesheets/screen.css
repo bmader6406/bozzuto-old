@@ -4021,16 +4021,16 @@ div.wysiwyg ul li {
 
   /* @group -masthead-slideshow */
     #masthead-slideshow {
-      height: 223px;
+      height: 273px;
     }
     #masthead-slideshow ul.slides {
-      height: 223px;
+      height: 273px;
       z-index: 1;
     }
     #masthead-slideshow ul.slides li.slide {
       background: #c0c5cb url(../images/structure/bg-masthead.gif) repeat-x 0 0;
       text-indent: 0;
-      height: 223px;
+      height: 273px;
       left: 0;
       position: absolute;
       top: 0;
