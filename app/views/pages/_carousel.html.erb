@@ -3,7 +3,7 @@
     <ul>
       <% carousel.panels.each do |panel| %>
         <li>
-          <% link_to panel.link_url do %>
+          <%= link_to panel.link_url do %>
             <%= image_tag panel.image.url %>
 
             <% if panel.heading? && panel.caption? %>
