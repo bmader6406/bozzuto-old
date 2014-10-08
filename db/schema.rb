@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140918185548) do
+ActiveRecord::Schema.define(:version => 20141006134943) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -102,9 +102,11 @@ ActiveRecord::Schema.define(:version => 20140918185548) do
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tier",                   :default => 1, :null => false
   end
 
   add_index "area_memberships", ["area_id"], :name => "index_area_memberships_on_area_id"
+  add_index "area_memberships", ["tier"], :name => "index_area_memberships_on_tier"
 
   create_table "areas", :force => true do |t|
     t.string   "name",                                                                         :null => false
@@ -622,10 +624,12 @@ ActiveRecord::Schema.define(:version => 20140918185548) do
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tier",                   :default => 1, :null => false
   end
 
   add_index "neighborhood_memberships", ["neighborhood_id", "apartment_community_id"], :name => "index_neighborhood_id_and_apartment_community_id", :unique => true
   add_index "neighborhood_memberships", ["neighborhood_id"], :name => "index_neighborhood_memberships_on_neighborhood_id"
+  add_index "neighborhood_memberships", ["tier"], :name => "index_neighborhood_memberships_on_tier"
 
   create_table "neighborhoods", :force => true do |t|
     t.string   "name",                                                               :null => false

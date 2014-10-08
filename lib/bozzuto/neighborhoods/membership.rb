@@ -17,6 +17,8 @@ module Bozzuto
 
           validates_uniqueness_of :apartment_community_id, :scope => place_foreign_key
 
+          validates_inclusion_of :tier, :in => [1, 2, 3, 4]
+
           after_save :update_apartment_communities_count
           after_destroy :update_apartment_communities_count
 

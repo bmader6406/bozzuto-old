@@ -10,5 +10,6 @@ class AreaMembershipTest < ActiveSupport::TestCase
     should validate_presence_of(:area)
     should validate_presence_of(:apartment_community)
     should validate_uniqueness_of(:apartment_community_id).scoped_to(:area_id)
+    should ensure_inclusion_of(:tier).in_range(1..4)
   end
 end
