@@ -19,12 +19,12 @@ class Neighborhood < ActiveRecord::Base
 
   has_many :neighborhood_memberships,
            :inverse_of => :neighborhood,
-           :order      => 'neighborhood_memberships.position ASC',
+           :order      => 'neighborhood_memberships.tier ASC',
            :dependent  => :destroy
 
   has_many :apartment_communities,
            :through => :neighborhood_memberships,
-           :order   => 'neighborhood_memberships.position ASC'
+           :order   => 'neighborhood_memberships.tier ASC'
 
 
   validates_presence_of :area, :state
