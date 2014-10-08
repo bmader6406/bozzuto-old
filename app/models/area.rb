@@ -66,4 +66,8 @@ class Area < ActiveRecord::Base
       children.map { |c| c.communities(reload) }.flatten.uniq
     end
   end
+
+  def tier_for(community)
+    area_memberships.find_by_apartment_community_id(community.id).try(:tier)
+  end
 end

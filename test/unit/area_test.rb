@@ -258,5 +258,30 @@ class AreaTest < ActiveSupport::TestCase
         subject.nearby_communities.should == [@community_1, @community_2, @community_3, @community_4]
       end
     end
+
+    describe "#tier_for" do
+      subject { Area.make(:communities) }
+      before  { @community = ApartmentCommunity.make }
+
+      context "when the given community has a membership with the area" do
+        before do
+          @membership = AreaMembership.make(
+            :area                => subject,
+            :apartment_community => @community,
+            :tier                => 2
+          )
+        end
+
+        it "returns the tier" do
+          subject.tier_for(@community).should == 2
+        end
+      end
+
+      context "when the given community does not have a membership with the area" do
+        it "does not raise a NoMethodError" do
+          expect { subject.tier_for(@community) }.to_not raise_error(NoMethodError)
+        end
+      end
+    end
   end
 end

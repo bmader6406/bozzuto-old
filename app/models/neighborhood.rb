@@ -36,4 +36,8 @@ class Neighborhood < ActiveRecord::Base
   def children
     nil
   end
+
+  def tier_for(community)
+    neighborhood_memberships.find_by_apartment_community_id(community.id).try(:tier)
+  end
 end
