@@ -25,6 +25,10 @@ class Bozzuto::Neighborhoods::FiltererTest < ActiveSupport::TestCase
       @community_3 = ApartmentCommunity.make(:property_features => [@rapid_transit, @non_smoking])
 
       @neighborhood.apartment_communities = [@community_1, @community_2, @community_3]
+
+      @membership_1 = @community_1.neighborhood_memberships.first
+      @membership_2 = @community_2.neighborhood_memberships.first
+      @membership_3 = @community_3.neighborhood_memberships.first
     end
 
     describe "#amenities" do
@@ -57,19 +61,25 @@ class Bozzuto::Neighborhoods::FiltererTest < ActiveSupport::TestCase
       end
 
       describe "#filtered_communities" do
+        before do
+          @membership_1.update_attributes(:tier => 3)
+          @membership_2.update_attributes(:tier => 2)
+          @membership_3.update_attributes(:tier => 1)
+        end
+
         context "current filter is set" do
           subject { described_class.new(@neighborhood, @rapid_transit.id) }
 
-          it "returns only the communities with that amenity" do
-            subject.filtered_communities.should == [@community_1, @community_3]
+          it "returns only the communities with that amenity ordered by tier" do
+            subject.filtered_communities.should == [@community_3, @community_1]
           end
         end
 
         context "current filter isn't set" do
           subject { described_class.new(@neighborhood, nil) }
 
-          it "returns all of the communities" do
-            subject.filtered_communities.should == [@community_1, @community_2, @community_3]
+          it "returns all of the communities ordered by tier" do
+            subject.filtered_communities.should == [@community_3, @community_2, @community_1]
           end
         end
       end
