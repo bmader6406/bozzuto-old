@@ -42,7 +42,7 @@ module Bozzuto
           communities
         end
 
-        TierShuffler.new(place, result_set).shuffled_communities_by_tier
+        TierShuffler.new(:place => place, :communities => result_set).shuffled_communities_by_tier
       end
 
       class Filter
@@ -70,27 +70,6 @@ module Bozzuto
 
         def any?
           count > 0
-        end
-      end
-
-      class TierShuffler
-        attr_reader :place, :communities
-
-        def initialize(place, communities)
-          @place       = place
-          @communities = communities
-        end
-
-        def tiers
-          "#{place.class}Membership::TIER".constantize
-        end
-
-        def tier(number)
-          communities.select { |community| place.tier_for(community) == number }
-        end
-
-        def shuffled_communities_by_tier
-          tiers.map { |tier_number| tier(tier_number).shuffle }.flatten
         end
       end
     end
