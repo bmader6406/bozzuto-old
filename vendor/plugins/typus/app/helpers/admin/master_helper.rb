@@ -8,12 +8,12 @@ module Admin::MasterHelper
 
   def typus_render(*args)
     options = args.extract_options!
-    options[:resource] ||= @resource.class.name.underscore.pluralize
+    options[:resource] ||= @resource.fetch(:class).name.underscore.pluralize
 
     template_file = Rails.root.join("app", "views", "admin", options[:resource], "_#{options[:partial]}.html.erb")
     resource = File.exists?(template_file) ? options[:resource] : "resources"
 
-    render "admin/#{resource}/#{options[:partial]}", :options => options
+    render "admin/#{resource}/#{options[:partial]}", :options => options[:options], :button => options[:button]
   end
 
   def display_link_to_previous
