@@ -4,6 +4,11 @@ class Admin::PhotosController < Admin::MasterController
   def update
     super
 
+    # update_attributes(params[:photo]) not saving the photo group id
+    # Only explicitly setting the photo group to a photo group seems to work
+    @item.photo_group = PhotoGroup.find(params[:photo][:photo_group_id])
+    @item.save
+
     property = @item.property
 
     # Cancel the previous redirect
