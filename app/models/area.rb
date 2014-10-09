@@ -3,6 +3,7 @@ class Area < ActiveRecord::Base
   include Bozzuto::Mappable
   include Bozzuto::ApartmentFloorPlans::HasCache
   include Bozzuto::Neighborhoods::Place
+  include Bozzuto::Neighborhoods::Slideshow
   extend  Bozzuto::Neighborhoods::ListingImage
   extend  Bozzuto::Neighborhoods::BannerImage
   extend  Bozzuto::Neighborhoods::HasRelatedPlaces

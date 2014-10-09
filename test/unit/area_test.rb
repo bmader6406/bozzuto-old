@@ -283,5 +283,27 @@ class AreaTest < ActiveSupport::TestCase
         end
       end
     end
+
+    describe "#slides" do
+      before do
+        @subject = Area.make(:communities)
+
+        @subject.apartment_communities = (1..4).map do |i|
+          instance_variable_set("@community_#{i}", ApartmentCommunity.make)
+        end
+
+        @community_1.area_memberships.first.update_attribute(:tier, 1)
+        @community_2.area_memberships.first.update_attribute(:tier, 1)
+        @community_3.area_memberships.first.update_attribute(:tier, 2)
+        @community_4.area_memberships.first.update_attribute(:tier, 3)
+      end
+
+      it "returns a slide for each tier 1 community in the neighborhood" do
+        @subject.reload.slides.should =~ [
+          Bozzuto::Neighborhoods::Slideshow::Slide.new(@community_1),
+          Bozzuto::Neighborhoods::Slideshow::Slide.new(@community_2)
+        ]
+      end
+    end
   end
 end
