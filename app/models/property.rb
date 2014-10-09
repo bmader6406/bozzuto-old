@@ -46,6 +46,12 @@ class Property < ActiveRecord::Base
   has_attached_file :brochure,
     :url => '/system/:class/:id/brochure.:extension'
 
+  has_attached_file :hero_image,
+                    :url             => '/system/:class/:id/:attachment_name/:style.:extension',
+                    :styles          => { :resized => '1020x325#' },
+                    :default_style   => :resized,
+                    :convert_options => { :all => '-quality 80 -strip' }
+
   scope :mappable, :conditions => ['latitude IS NOT NULL AND longitude IS NOT NULL']
 
   scope :in_state, lambda { |state_id|

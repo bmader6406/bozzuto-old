@@ -22,6 +22,7 @@ class PropertyTest < ActiveSupport::TestCase
 
     should have_attached_file(:listing_image)
     should have_attached_file(:brochure)
+    should have_attached_file(:hero_image)
 
 =begin
     should 'be archivable' do

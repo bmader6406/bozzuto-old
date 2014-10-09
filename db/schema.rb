@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141006134943) do
+ActiveRecord::Schema.define(:version => 20141009180848) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -889,6 +889,9 @@ ActiveRecord::Schema.define(:version => 20141006134943) do
     t.string   "neighborhood_listing_image_file_name"
     t.boolean  "included_in_export",                                       :default => false, :null => false
     t.integer  "secondary_lead_source_id"
+    t.string   "hero_image_file_name"
+    t.string   "hero_image_content_type"
+    t.integer  "hero_image_file_size"
   end
 
   add_index "properties", ["external_cms_id", "external_cms_type"], :name => "index_properties_on_external_cms_id_and_external_cms_type"
