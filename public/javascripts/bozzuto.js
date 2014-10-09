@@ -33,6 +33,10 @@ window.bozzuto = {};
 
     $('.twitter-update').latestTwitterUpdate();
 
+    $('.neighborhood #slideshow').featuredSlideshow({
+      dynamicPagination: false
+    });
+
     $('.property #slideshow').featuredSlideshow({
       dynamicPagination: false
     });
