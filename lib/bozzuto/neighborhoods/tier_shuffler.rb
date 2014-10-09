@@ -1,11 +1,12 @@
 module Bozzuto
   module Neighborhoods
     class TierShuffler
-      attr_reader :place, :communities
+      attr_reader :place, :communities, :tiers
 
       def initialize(options = {})
         @place       = options.fetch(:place)
         @communities = options.fetch(:communities, place.apartment_communities)
+        @tiers       = Array(options.fetch(:tiers, "#{place.class}Membership::TIER".constantize))
       end
 
       def shuffled_communities_by_tier
@@ -15,10 +16,6 @@ module Bozzuto
       end
 
       private
-
-      def tiers
-        "#{place.class}Membership::TIER".constantize
-      end
 
       def tier(number)
         communities.select do |community|

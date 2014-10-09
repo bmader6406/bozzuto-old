@@ -11,8 +11,6 @@ class Bozzuto::Neighborhoods::TierShufflerTest < ActiveSupport::TestCase
         instance_variable_set("@community_#{i}", ApartmentCommunity.make)
       end
 
-      #@neighborhood.apartment_communities = [@community_1, @community_2, @community_3]
-
       @community_1.neighborhood_memberships.first.update_attribute(:tier, 1)
       @community_2.neighborhood_memberships.first.update_attribute(:tier, 1)
       @community_3.neighborhood_memberships.first.update_attribute(:tier, 2)
@@ -43,6 +41,15 @@ class Bozzuto::Neighborhoods::TierShufflerTest < ActiveSupport::TestCase
         shuffled = subject.shuffled_communities_by_tier
 
         shuffled.should_not == ordered
+      end
+
+      context "when initialized with a list of tiers" do
+        subject { described_class.new(:place => @neighborhood, :tiers => [1, 2]) }
+
+        it "only returns results in the given tiers" do
+          subject.shuffled_communities_by_tier.should_not include @community_5
+          subject.shuffled_communities_by_tier.should_not include @community_6
+        end
       end
     end
   end
