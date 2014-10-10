@@ -19,7 +19,7 @@
 
 <div id="main-content">
   <div class="nh-container">
-    <% if neighborhood.slides.any? %>
+    <% if neighborhood.tier_1_community_slides.any? %>
       <%= render 'neighborhoods/slideshow', :place => neighborhood %>
     <% else %>
       <%= render 'metros/banner_image', :place => neighborhood %>

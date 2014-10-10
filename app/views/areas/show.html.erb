@@ -18,7 +18,7 @@
 
 <div id="main-content">
   <div class="nh-container">
-    <% if area.slides.any? %>
+    <% if area.tier_1_community_slides.any? %>
       <%= render 'neighborhoods/slideshow', :place => area %>
     <% else %>
       <%= render 'metros/banner_image', :place => area %>

@@ -164,12 +164,15 @@ class NeighborhoodTest < ActiveSupport::TestCase
       end
     end
 
-    describe "#slides" do
+    describe "#tier_1_community_slides" do
       before do
         @subject = Neighborhood.make
 
         @subject.apartment_communities = (1..4).map do |i|
-          instance_variable_set("@community_#{i}", ApartmentCommunity.make)
+          instance_variable_set(
+            "@community_#{i}",
+            ApartmentCommunity.make(:hero_image_file_name => Sham.file_name)
+          )
         end
 
         @community_1.neighborhood_memberships.first.update_attribute(:tier, 1)
@@ -179,7 +182,7 @@ class NeighborhoodTest < ActiveSupport::TestCase
       end
 
       it "returns a slide for each tier 1 community in the neighborhood" do
-        @subject.reload.slides.should =~ [
+        @subject.reload.tier_1_community_slides.should =~ [
           Bozzuto::Neighborhoods::Slideshow::Slide.new(@community_1),
           Bozzuto::Neighborhoods::Slideshow::Slide.new(@community_2)
         ]

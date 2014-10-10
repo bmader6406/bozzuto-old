@@ -1,10 +1,10 @@
 module Bozzuto
   module Neighborhoods
     module Slideshow
-      def slides
+      def tier_1_community_slides
         return [] unless apartment_communities.any?
 
-        @slides ||= TierShuffler.new(:place => self, :tiers => 1).shuffled_communities_by_tier.map do |community|
+        @tier_1_community_slides ||= shuffled_communities.map do |community|
           Slide.new(community)
         end
       end
@@ -15,6 +15,19 @@ module Bozzuto
         def image
           community.hero_image
         end
+      end
+
+      private
+
+      def shuffled_communities
+        TierShuffler.new(
+          :place       => self,
+          :communities => communities_with_hero_images,
+        ).shuffled_communities_in_tier(1)
+      end
+
+      def communities_with_hero_images
+        apartment_communities.where('hero_image_file_name IS NOT NULL')
       end
     end
   end
