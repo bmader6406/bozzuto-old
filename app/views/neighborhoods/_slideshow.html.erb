@@ -1,6 +1,6 @@
 <div id="slideshow" class="neighborhood slideshow">
   <ul class="slides">
-    <% place.slides.each_with_index do |slide, i| %>
+    <% slides.each_with_index do |slide, i| %>
       <li id="slide-<%= i + 1 %>" class="section slide">
         <% link_to property_path(slide.community) do %>
           <%= image_tag slide.image.url, :width => 1020, :height => 325 %>
