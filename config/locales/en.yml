@@ -79,6 +79,7 @@ en:
         floor_plans_meta_keywords: Floor Plans SEO Keywords
         floor_plans_meta_title: Floor Plans SEO Title
         hero_image: Hero Image
+        hyly_id: Hy.Ly ID
         included_in_export: Included in Apartment Export
         neighborhood_description: Neighborhoods Listing Description
         neighborhood_listing_image: Neighborhoods Listing Image
@@ -177,6 +178,7 @@ en:
         floor_plans_meta_description: Homes SEO Description
         floor_plans_meta_keywords: Homes SEO Keywords
         floor_plans_meta_title: Homes SEO Title
+        hyly_id: Hy.Ly ID
         listing_promo: Listing Promo Image
         neighborhood_description: Neighborhoods Listing Description
         neighborhood_listing_image: Neighborhoods Listing Image
@@ -402,6 +404,7 @@ en:
         value: "This value will be used for the 'ad source' param when doing DNR number replacement and as the 'Lead Channel' on Lead 2 Lease submissions."
       apartment_community:
         hero_image: This image will be used in the slideshow on an Apartment Area/Neighborhood page.  Image dimensions should be 1020x325.
+        hyly_id: This ID is used to generate the Hy.Ly form for this specific property.
         neighborhood_description: This text will be shown on Neighborhoods listing pages.
         neighborhood_listing_image: This image will be shown on Neighborhoods listing pages. Image dimensions should be 300x234.
         under_construction: Communities that are under construction show the "Under Construction" contact form instead of the "Lead2Lease" contact form.
@@ -456,6 +459,7 @@ en:
         photo: Image dimensions should be 498x551.
         ten_year_old_cost: 'This cost will be used to calculate the percent savings:<br><code>( &lt;sum of savings&gt; / &lt;annual cost of 10 year old home&gt; ) * 100</code>'
       home_community:
+        hyly_id: This ID is used to generate the Hy.Ly form for this specific property.
         listing_promo: Image dimensions should be 151x54
         neighborhood_description: This text will be shown on Neighborhoods listing pages.
         neighborhood_listing_image: This image will be shown on Neighborhoods listing pages. Image dimensions should be 300x234.

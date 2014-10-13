@@ -9,9 +9,9 @@ AdSource:
     form: domain_name, value
     options:
   order_by: domain_name
-  relationships: 
+  relationships:
   filters:
-  search: 
+  search:
   application: System
 
 ApartmentCommunity:
@@ -19,7 +19,7 @@ ApartmentCommunity:
     default: title, published, featured, street_address, city
     state: title, published, featured, featured_position, city
     list: title, published, featured, city, external_cms_name
-    form: title, short_title, street_address, city, county, zip_code, phone_number, mobile_phone_number, latitude, longitude, ufollowup_id, website_url, website_url_text, availability_url, resident_link_text, resident_link_url, video_url, facebook_url, twitter_account, brochure_link_text, brochure_type, brochure, brochure_url, schedule_tour_url, local_info_feed, listing_image, listing_title, listing_text, neighborhood_listing_image, neighborhood_description, hero_image, meta_title, meta_description, meta_keywords, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, promo, media_meta_title, media_meta_description, media_meta_keywords, floor_plans_meta_title, floor_plans_meta_description, floor_plans_meta_keywords, seo_link_text, seo_link_url, show_rtrk_code, published, featured, included_in_export, under_construction, show_lead_2_lease, lead_2_lease_email, lead_2_lease_id
+    form: title, short_title, street_address, city, county, zip_code, phone_number, mobile_phone_number, latitude, longitude, ufollowup_id, website_url, website_url_text, availability_url, resident_link_text, resident_link_url, video_url, facebook_url, twitter_account, brochure_link_text, brochure_type, brochure, brochure_url, schedule_tour_url, local_info_feed, listing_image, listing_title, listing_text, neighborhood_listing_image, neighborhood_description, hero_image, meta_title, meta_description, meta_keywords, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, promo, media_meta_title, media_meta_description, media_meta_keywords, floor_plans_meta_title, floor_plans_meta_description, floor_plans_meta_keywords, seo_link_text, seo_link_url, show_rtrk_code, published, featured, included_in_export, under_construction, show_lead_2_lease, lead_2_lease_email, lead_2_lease_id, hyly_id
     options:
       ckeditor: listing_text, overview_text, promotions_text
       booleans:
@@ -84,14 +84,14 @@ Area:
     form: name, metro, state, latitude, longitude, banner_image, listing_image, description, detail_description, area_type
     relationship: name, position
     options:
-      ckeditor: 
+      ckeditor:
       booleans:
       required: name, metro, latitude, longitude, listing_image, area_type
       selectors: area_type
-      destroy_related: 
+      destroy_related:
   order_by: position
   relationships: seo_metadata, neighborhoods, area_memberships, related_areas
-  filters: 
+  filters:
   options:
     per_page: 9999
   search: areas.name
@@ -160,12 +160,12 @@ BodySlideshow:
 BozzutoBlogPost:
   fields:
     default: title, published_at
-    list: 
+    list:
     form: header_title, header_url, title, url, published_at, image
     options:
       required: header_url, title, url, published_at, image
   order_by: -published_at
-  relationships: 
+  relationships:
   filters:
   search: title, url
   application: News & Press
@@ -174,26 +174,26 @@ Buzz:
   fields:
     default: email, first_name, last_name, street1, street2, city, state, zip_code, phone, formatted_buzzes, formatted_affiliations, created_at
     list: name, email, city, state, created_at
-    form: 
+    form:
     options:
       date_formats:
         created_at: expiration_date
   order_by: -updated_at
   export: csv
-  relationships: 
-  filters: 
-  search: 
+  relationships:
+  filters:
+  search:
   application: Contact
 
 CareersEntry:
   fields:
     default: name, job_title, position
-    list: 
+    list:
     form: name, company, job_title, job_description, youtube_url, main_photo, headshot
     options:
       required: name, company, job_title, job_description, main_photo, headshot
   order_by: position
-  relationships: 
+  relationships:
   filters:
   search:
   application: Content
@@ -205,7 +205,7 @@ Carousel:
     form: name
     options:
       destroy_related: CarouselPanel
-  order_by: 
+  order_by:
   relationships: panels
   filters:
   search:
@@ -220,11 +220,11 @@ CarouselPanel:
       booleans:
         featured: ['Yes', 'No']
   order_by: position
-  relationships: 
+  relationships:
   filters:
   options:
     per_page: 9999
-  search: 
+  search:
   application:
 
 City:
@@ -269,7 +269,7 @@ ConversionConfiguration:
     form: name, property, google_send_to_friend_label, google_send_to_phone_label, google_contact_label, bing_send_to_friend_action_id, bing_send_to_phone_action_id, bing_contact_action_id
     options:
       required: property, name
-  order_by: 
+  order_by:
   relationships:
   search: name
   application:
@@ -280,11 +280,11 @@ DnrConfiguration:
     list: customer_code
     form: customer_code, property
     options:
-  order_by: 
-  relationships: 
+  order_by:
+  relationships:
   filters:
-  search: 
-  application: 
+  search:
+  application:
 
 Feed:
   fields:
@@ -306,7 +306,7 @@ GreenFeature:
       ckeditor: description
       required: title, photo
   order_by: title
-  relationships: 
+  relationships:
   filters:
   search:
   application: Properties
@@ -319,11 +319,11 @@ GreenPackage:
     options:
       required: home_community, photo, ten_year_old_cost, disclaimer
       ckeditor: graph_tooltip
-  order_by: 
+  order_by:
   relationships: green_package_items
   filters:
   search:
-  application: 
+  application:
 
 GreenPackageItem:
   fields:
@@ -332,11 +332,11 @@ GreenPackageItem:
     form: green_package, green_feature, ultra_green, savings
     options:
       required: green_package, green_feature, savings, x, y
-  order_by: 
+  order_by:
   relationships:
   filters:
   search:
-  application: 
+  application:
 
 Home:
   fields:
@@ -355,7 +355,7 @@ HomeCommunity:
   fields:
     default: title, published, street_address, city
     list: title, published, street_address, city
-    form: title, short_title, street_address, city, county, zip_code, phone_number, mobile_phone_number, latitude, longitude, ufollowup_id, contact_mediamind_id, send_to_friend_mediamind_id, send_to_phone_mediamind_id, website_url, website_url_text, video_url, facebook_url, twitter_account, brochure_link_text, brochure_type, brochure, brochure_url, local_info_feed, listing_image, listing_promo, listing_title, listing_text, neighborhood_listing_image, neighborhood_description, latitude, longitude, meta_title, meta_description, meta_keywords, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, media_meta_title, media_meta_description, media_meta_keywords, media_meta_description, floor_plans_meta_title, floor_plans_meta_description, floor_plans_meta_keywords, secondary_lead_source_id, show_rtrk_code, published, promo
+    form: title, short_title, street_address, city, county, zip_code, phone_number, mobile_phone_number, latitude, longitude, ufollowup_id, contact_mediamind_id, send_to_friend_mediamind_id, send_to_phone_mediamind_id, website_url, website_url_text, video_url, facebook_url, twitter_account, brochure_link_text, brochure_type, brochure, brochure_url, local_info_feed, listing_image, listing_promo, listing_title, listing_text, neighborhood_listing_image, neighborhood_description, latitude, longitude, meta_title, meta_description, meta_keywords, overview_title, overview_text, overview_bullet_1, overview_bullet_2, overview_bullet_3, media_meta_title, media_meta_description, media_meta_keywords, media_meta_description, floor_plans_meta_title, floor_plans_meta_description, floor_plans_meta_keywords, secondary_lead_source_id, show_rtrk_code, published, promo, hyly_id
     options:
       ckeditor: listing_text, overview_text, promotions_text
       booleans:
@@ -390,14 +390,14 @@ HomeNeighborhood:
     form: name, latitude, longitude, banner_image, listing_image, description, detail_description, featured_home_community
     relationship: name, position
     options:
-      ckeditor: 
+      ckeditor:
       booleans:
       required: name, latitude, longitude, banner_image, listing_image
-      selectors: 
-      destroy_related: 
+      selectors:
+      destroy_related:
   order_by: position
   relationships: seo_metadata, home_neighborhood_memberships
-  filters: 
+  filters:
   options:
     per_page: 9999
   search: home_neighborhoods.name
@@ -405,23 +405,23 @@ HomeNeighborhood:
 
 HomeNeighborhoodMembership:
   fields:
-    default: 
+    default:
     list: home_community, home_neighborhood
     form: home_neighborhood, home_community
     relationship: home_community, position
     options:
-      ckeditor: 
+      ckeditor:
       booleans:
       required: home_neighborhood, home_community, listing_image
-      selectors: 
-      destroy_related: 
+      selectors:
+      destroy_related:
   order_by: position
-  relationships: 
-  filters: 
+  relationships:
+  filters:
   options:
     per_page: 9999
-  search: 
-  application: 
+  search:
+  application:
 
 HomePage:
   fields:
@@ -499,7 +499,7 @@ Leader:
   options:
     per_page: 1000
   order_by: name
-  relationships: 
+  relationships:
   application: Leaders
 
 Leadership:
@@ -556,9 +556,9 @@ MediaplexTag:
     form: page_name, roi_name
     options:
   order_by:
-  relationships: 
+  relationships:
   filters:
-  search: 
+  search:
   application:
 
 Metro:
@@ -567,14 +567,14 @@ Metro:
     list: name, position
     form: name, latitude, longitude, banner_image, listing_image, detail_description
     options:
-      ckeditor: 
+      ckeditor:
       booleans:
       required: name, latitude, longitude, listing_image
-      selectors: 
-      destroy_related: 
+      selectors:
+      destroy_related:
   order_by: position
   relationships: seo_metadata, areas
-  filters: 
+  filters:
   search: metros.name
   application: Neighborhoods
 
@@ -585,14 +585,14 @@ Neighborhood:
     form: name, area, state, latitude, longitude, banner_image, listing_image, description, detail_description, featured_apartment_community
     relationship: name, position
     options:
-      ckeditor: 
+      ckeditor:
       booleans:
       required: name, area, state, latitude, longitude, banner_image, listing_image
-      selectors: 
-      destroy_related: 
+      selectors:
+      destroy_related:
   order_by: position
   relationships: seo_metadata, neighborhood_memberships, related_neighborhoods
-  filters: 
+  filters:
   options:
     per_page: 9999
   search: neighborhoods.name
@@ -662,7 +662,7 @@ Page:
   options:
     per_page: 9999
   actions:
-    index: 
+    index:
     show: preview
     edit: preview
 
@@ -671,14 +671,14 @@ PhotoGroup:
 
 Photo:
   fields:
-    default: 
+    default:
     list: thumbnail_tag, title, photo_group, property
     form: title, photo_group, property, image, show_to_mobile
     relationship: thumbnail_tag, title, photo_group, position
     options:
       required: title, photo_group, property, image
-  relationships: 
-  order_by: 
+  relationships:
+  order_by:
   filters:
   search:
   options:
@@ -720,7 +720,7 @@ Project:
   search: title
   application: Properties
   actions:
-    index: 
+    index:
 
 ProjectCategory:
   fields:
@@ -902,7 +902,7 @@ PropertySlideshow:
 Publication:
   fields:
     default: name, position
-    list: 
+    list:
     form: name, description, image, published
     options:
       ckeditor: description
@@ -915,15 +915,15 @@ Publication:
 Rank:
   fields:
     default: year, rank_number, description
-    list: 
+    list:
     form: year, rank_number, description, rank_category
     options:
       selectors: year
   order_by: -year
-  relationships: 
+  relationships:
   filters:
   search:
-  application: 
+  application:
 
 RankCategory:
   fields:
@@ -934,47 +934,47 @@ RankCategory:
   relationships: ranks
   filters:
   search:
-  application: 
+  application:
 
 RelatedArea:
   fields:
-    default: 
+    default:
     list: area, nearby_area
     form: area, nearby_area
     relationship: nearby_area, position
     options:
-      ckeditor: 
+      ckeditor:
       booleans:
       required: area, nearby_area
-      selectors: 
-      destroy_related: 
+      selectors:
+      destroy_related:
   order_by: position
-  relationships: 
-  filters: 
+  relationships:
+  filters:
   options:
     per_page: 9999
-  search: 
-  application: 
+  search:
+  application:
 
 RelatedNeighborhood:
   fields:
-    default: 
+    default:
     list: neighborhood, nearby_neighborhood
     form: neighborhood, nearby_neighborhood
     relationship: nearby_neighborhood, position
     options:
-      ckeditor: 
+      ckeditor:
       booleans:
       required: neighborhood, nearby_neighborhood
-      selectors: 
-      destroy_related: 
+      selectors:
+      destroy_related:
   order_by: position
-  relationships: 
-  filters: 
+  relationships:
+  filters:
   options:
     per_page: 9999
-  search: 
-  application: 
+  search:
+  application:
 
 Section:
   fields:
@@ -996,16 +996,16 @@ SeoMetadata:
     list: meta_title, meta_keywords, meta_description
     form: meta_title, meta_keywords, meta_description
     options:
-      ckeditor: 
+      ckeditor:
       booleans:
-      required: 
-      selectors: 
-      destroy_related: 
-  order_by: 
-  relationships: 
-  filters: 
-  search: 
-  application: 
+      required:
+      selectors:
+      destroy_related:
+  order_by:
+  relationships:
+  filters:
+  search:
+  application:
 
 Snippet:
   fields:
@@ -1050,21 +1050,21 @@ TwitterAccount:
     list: username
     form: username
   order_by: username
-  relationships: 
+  relationships:
   filters:
   search: username
-  application: 
+  application:
 
 UnderConstructionLead:
   fields:
     default: apartment_community, first_name, last_name, address, address_2, city, state, zip_code, email, phone_number, comments
     list: apartment_community, first_name, last_name, email
-    form: 
+    form:
   order_by: -updated_at
   export: csv
-  relationships: 
-  filters: 
-  search: 
+  relationships:
+  filters:
+  search:
   application: Contact
 
 Video:
