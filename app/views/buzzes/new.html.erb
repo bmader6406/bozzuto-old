@@ -1,10 +1,12 @@
+<% content_for :javascript do %>
+  <%= hyly_script_for 'Bozzuto Buzz' %>
+<% end %>
+
 <% content_for :body_class, "generic" -%>
 <% breadcrumb_item("Bozzuto Buzz") -%>
 <% breadcrumb_title("Bozzuto Buzz") -%>
 
 <h2>Bozzuto Buzz</h2>
-
-<%= error_messages_for :buzz %>
 
 <p>
   The Bozzuto Buzz is a periodic e-newsletter that delivers select company and
@@ -12,95 +14,4 @@
   exclusive to Buzz subscribers.
 </p>
 
-<%= form_for @buzz, :html => { :class => "required-form" } do |f| -%>
-  <fieldset>
-    <h3>Contact Information</h3>
-
-    <p>
-    <%= f.label :email %>
-    <%= f.text_field :email, :class => "required email" %>
-    </p>
-
-    <p>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-    </p>
-
-    <p>
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-    </p>
-
-    <p>
-    <%= f.label :street1, "Street 1" %>
-    <%= f.text_field :street1 %>
-    </p>
-
-    <p>
-    <%= f.label :street2, "Street 2" %>
-    <%= f.text_field :street2 %>
-    </p>
-
-    <p>
-    <%= f.label :city %>
-    <%= f.text_field :city %>
-    </p>
-
-    <p>
-    <%= f.label :state %>
-    <%= f.text_field :state %>
-    </p>
-
-    <p>
-    <%= f.label :zip_code, "ZIP Code" %>
-    <%= f.text_field :zip_code %>
-    </p>
-
-    <p>
-    <%= f.label :phone %>
-    <%= f.text_field :phone %>
-    </p>
-  </fieldset>
-
-  <fieldset>
-    <h3>What buzz would you like to hear?</h3>
-    <p class="checkboxes">
-    <%= f.fields_for :buzzes do |b| -%>
-      <%= serialized_check_box(b, @buzz.buzzes, :apartments) %>
-      <%= serialized_check_box(b, @buzz.buzzes, :new_homes) %>
-      <%= serialized_check_box(b, @buzz.buzzes, :management) %>
-      <%= serialized_check_box(b, @buzz.buzzes, :homebuilding) %>
-      <%= serialized_check_box(b, @buzz.buzzes, :construction) %>
-      <%= serialized_check_box(b, @buzz.buzzes, :development) %>
-      <%= serialized_check_box(b, @buzz.buzzes, :acquisition) %>
-      <%= serialized_check_box(b, @buzz.buzzes, :land) %>
-    <% end -%>
-    </p>
-  </fieldset>
-
-  <fieldset>
-    <h3>How are you affiliated with Bozzuto?</h3>
-    <p class="checkboxes">
-    <%= f.fields_for :affiliations do |a| -%>
-      <%= serialized_check_box a, @buzz.affiliations, :prospective_homeowner %>
-      <%= serialized_check_box a, @buzz.affiliations, :prospective_resident %>
-      <%= serialized_check_box a, @buzz.affiliations, :current_homeowner %>
-      <%= serialized_check_box a, @buzz.affiliations, :current_resident %>
-      <%= serialized_check_box a, @buzz.affiliations, :contractor %>
-      <%= serialized_check_box a, @buzz.affiliations, :vendor %>
-      <%= serialized_check_box a, @buzz.affiliations, :press %>
-      <%= serialized_check_box a, @buzz.affiliations, :employee %>
-      <%= serialized_check_box a, @buzz.affiliations, :broker %>
-    <% end -%>
-    </p>
-  </fieldset>
-
-  <p class="submit">
-    <%= f.submit 'Sign up for Bozzuto Buzz', :class => 'submit fl-record-click', 'data-cat' => 'sufa01', 'data-prop' => 'N/A' %>
-  </p>
-
-  <div>
-    <%= snippet("Bozzuto Buzz Text") %>
-  </div>
-
-<% end -%>
+<%= hyly_form :redirect_to => thank_you_buzzes_url %>

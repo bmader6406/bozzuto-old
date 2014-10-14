@@ -1,3 +1,7 @@
+<% content_for :javascript do %>
+  <%= hyly_script_for 'Bozzuto' %>
+<% end %>
+
 <div class="section">
   <div class="content">
     <h2>Contact Us</h2>
@@ -28,20 +32,4 @@
   </div>
 </div>
 
-<div class="section contact-form">
-  <div class="content">
-    <%= error_messages_for :submission %>
-
-    <%= form_for @submission, :url => contact_path(:topic => @topic), :html => { :class => 'required-form', 'data-track-event-delay' => 'General,Contact Form Details' } do |f| %>
-      <%= f.text_field :name, :class => 'contact-name', :placeholder => 'Your Name' %>
-
-      <%= f.text_field :email, :class => 'contact-name', :placeholder => 'Your Email' %>
-
-      <%= f.select :topic_id, ContactTopic.order(:position).map { |topic| [topic.topic, topic.id] } %>
-
-      <%= f.text_area :message, :rows => 8, :cols => 37, :placeholder => 'Your message' %>
-
-      <input type="submit" name="contact-submit" class="submit contact-submit" value="Submit" />
-    <% end %>
-  </div>
-</div>
+<%= hyly_form :redirect_to => thank_you_contact_url %>

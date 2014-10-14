@@ -1,3 +1,7 @@
+<% content_for :javascript do %>
+  <%= hyly_script_for @community %>
+<% end %>
+
 <h3>This property is under construction.</h3>
 
 <%= if_present?(@community.contact_configuration) do |config| %>
@@ -10,15 +14,4 @@
 
 <br />
 
-<%= error_messages_for :submission, :header_message => nil %>
-
-<br />
-
-<%= form_for :submission do |f| %>      
-  <h3>Contact Information</h3>
-  <%= f.text_field :first_name, :placeholder => 'Your First Name' %>
-  <%= f.text_field :last_name, :placeholder => 'Your Last Name' %>
-  <%= f.text_field :email, :placeholder => 'Your Email' %>
-
-  <input type="submit" name="contact-submit" class="submit contact-submit" value="Submit" />
-<% end %>
+<%= hyly_form :redirect_to => thank_you_apartment_community_contact_url %>
