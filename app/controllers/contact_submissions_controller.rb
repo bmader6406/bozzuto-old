@@ -6,9 +6,11 @@ class ContactSubmissionsController < ApplicationController
   before_filter :find_topic, :only => [:show, :create]
 
   def show
+  # TODO Mark for pending removal in lieu of HyLy form integration
     @submission = ContactSubmission.new(:topic => @topic)
   end
 
+  # TODO Mark for pending removal in lieu of HyLy form integration
   def create
     @submission = ContactSubmission.new(params[:contact_submission])
 

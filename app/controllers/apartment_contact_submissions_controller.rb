@@ -4,12 +4,14 @@ class ApartmentContactSubmissionsController < ApplicationController
   layout :detect_mobile_layout
 
   before_filter :find_community
+  # TODO Mark for pending removal in lieu of HyLy form integration
   before_filter :build_submission, :only => [:show, :create]
 
 
   def show
   end
 
+  # TODO Mark for pending removal in lieu of HyLy form integration
   def create
     if @community.under_construction?
       process_under_construction_lead
@@ -30,6 +32,7 @@ class ApartmentContactSubmissionsController < ApplicationController
     @page      = @community.contact_page
   end
 
+  # TODO Mark for pending removal in lieu of HyLy form integration
   def build_submission
     @submission = if @community.under_construction?
       @community.under_construction_leads.build(params[:submission])
@@ -40,6 +43,7 @@ class ApartmentContactSubmissionsController < ApplicationController
     end
   end
 
+  # TODO Mark for pending removal in lieu of HyLy form integration
   def process_under_construction_lead
     if @submission.save
       flash[:apartment_contact_email] = @submission.email
@@ -51,6 +55,7 @@ class ApartmentContactSubmissionsController < ApplicationController
     end
   end
 
+  # TODO Mark for pending removal in lieu of HyLy form integration
   def process_lead_2_lease_submission
     if @submission.valid?
       Lead2LeaseMailer.submission(@community, @submission).deliver

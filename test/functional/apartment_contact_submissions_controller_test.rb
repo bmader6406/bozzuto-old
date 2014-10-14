@@ -33,6 +33,7 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should respond_with(:success)
             should render_with_layout(:community)
             should render_template(:show)
+  # TODO Mark for pending removal in lieu of HyLy form integration
             should assign_to(:submission)
             should assign_to(:page) { @page }
           end
@@ -45,6 +46,7 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should respond_with(:success)
             should render_with_layout(:application)
             should render_template(:show)
+  # TODO Mark for pending removal in lieu of HyLy form integration
             should assign_to(:submission)
             should assign_to(:page) { @page }
           end

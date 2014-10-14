@@ -16,10 +16,12 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
 
           should respond_with(:success)
           should render_template(:show)
+  # TODO Mark for pending removal in lieu of HyLy form integration
           should assign_to(:submission)
           should assign_to(:section) { @section }
         end
 
+  # TODO Mark for pending removal in lieu of HyLy form integration
         context 'with a topic param' do
           setup do
             get :show,
@@ -51,6 +53,7 @@ class ContactSubmissionsControllerTest < ActionController::TestCase
       end
     end
 
+  # TODO Mark for pending removal in lieu of HyLy form integration
     context 'a POST to #create' do
       context 'with missing fields' do
         setup do

@@ -107,6 +107,7 @@ Bozzuto::Application.routes.draw do
 
       resource :contact,
                :controller => :apartment_contact_submissions,
+  # TODO Mark for pending removal in lieu of HyLy form integration (only removing :create)
                :only       => [:show, :create] do
         get :thank_you, :on => :member
       end
@@ -222,6 +223,7 @@ Bozzuto::Application.routes.draw do
     resource :contact_submission,
              :path => 'contact',
              :as   => :contact,
+  # TODO Mark for pending removal in lieu of HyLy form integration (only removing :create)
              :only => [:show, :create] do
       get 'thank_you', :on => :member
     end

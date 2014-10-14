@@ -16,6 +16,7 @@ class BuzzesControllerTest < ActionController::TestCase
         should render_with_layout(:page)
         should respond_with(:success)
         should render_template(:new)
+        # TODO Mark for pending removal in lieu of HyLy form integration
         should assign_to(:buzz)
       end
 
@@ -27,10 +28,12 @@ class BuzzesControllerTest < ActionController::TestCase
         should render_with_layout(:application)
         should respond_with(:success)
         should render_template(:new)
+        # TODO Mark for pending removal in lieu of HyLy form integration
         should assign_to(:buzz)
       end
     end
 
+    # TODO Mark for pending removal in lieu of HyLy form integration
     context 'a POST to #create' do
       desktop_device do
         context 'with an invalid buzz' do

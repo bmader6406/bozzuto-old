@@ -9,6 +9,7 @@ class LassoSubmissionsController < ApplicationController
   end
 
   def thank_you
+    # TODO Mark for pending removal in lieu of HyLy form integration
     @email = cookies.delete('lasso_email')
   end
 
