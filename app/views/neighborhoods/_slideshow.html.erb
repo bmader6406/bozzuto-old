@@ -3,9 +3,14 @@
     <% slides.each_with_index do |slide, i| %>
       <li id="slide-<%= i + 1 %>" class="section slide">
         <% link_to property_path(slide.community) do %>
+          <h1><%= slide.title %></h1>
+
+          <span class="overlay"></span>
+
           <%= image_tag slide.image.url, :width => 1020, :height => 325 %>
-          <span class="overlay"><%= slide.title %></span>
         <% end %>
+
+        <%= pinterest_button(request.url, image_path(slide.image.url)) %>
       </li>
     <% end %>
   </ul>

@@ -5640,3 +5640,45 @@ div.wysiwyg ul li {
   color: #036447;
   text-decoration: none;
 }
+
+/* Neighborhoods slideshow */
+#slideshow.neighborhood {
+  height: 325px;
+  top: 0;
+  width: 1020px;
+}
+
+#slideshow.neighborhood ul.slides li.slide {
+  height: 325px;
+  width: 1020px;
+  /*
+  background: #fff;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  */
+}
+
+#slideshow.neighborhood .overlay {
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+}
+
+#slideshow.neighborhood h1 {
+  color: #fff;
+  font-size: 65px;
+  left: 25px;
+  line-height: 1;
+  position: absolute;
+  text-transform: uppercase;
+  top: 15px;
+  width: 850px;
+  z-index: 1;
+}
+
+#slideshow.neighborhood .slideshow-pagination {
+  display: none;
+}

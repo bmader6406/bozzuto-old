@@ -26,9 +26,6 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
     t.integer "apartment_community_id"
   end
 
-  add_index "apartment_communities_landing_pages", ["landing_page_id", "apartment_community_id"], :name => "index_landing_page_and_apartment_communities"
-  add_index "apartment_communities_landing_pages", ["landing_page_id", "apartment_community_id"], :name => "index_landing_page_and_featured_apartments"
-
   create_table "apartment_contact_configurations", :force => true do |t|
     t.integer  "apartment_community_id",                      :null => false
     t.text     "upcoming_intro_text",     :limit => 16777215
@@ -57,8 +54,6 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "apartment_floor_plan_caches", ["cacheable_id", "cacheable_type"], :name => "index_floor_plan_caches_on_id_and_type", :unique => true
 
   create_table "apartment_floor_plan_groups", :force => true do |t|
     t.string   "name",       :null => false
@@ -92,13 +87,140 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
   end
 
   add_index "apartment_floor_plans", ["apartment_community_id"], :name => "index_apartment_floor_plans_on_apartment_community_id"
-  add_index "apartment_floor_plans", ["external_cms_id", "external_cms_type"], :name => "index_external_cms_id_and_type"
   add_index "apartment_floor_plans", ["external_cms_id"], :name => "index_apartment_floor_plans_on_external_cms_id"
   add_index "apartment_floor_plans", ["floor_plan_group_id"], :name => "index_apartment_floor_plans_on_floor_plan_group_id"
 
+  create_table "archived_pages", :id => false, :force => true do |t|
+    t.integer  "id",                                                 :default => 0,     :null => false
+    t.string   "title",                                                                 :null => false
+    t.string   "cached_slug"
+    t.text     "body"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "section_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "path"
+    t.string   "meta_title"
+    t.string   "meta_description"
+    t.string   "meta_keywords"
+    t.string   "left_montage_image_file_name"
+    t.string   "middle_montage_image_file_name"
+    t.string   "right_montage_image_file_name"
+    t.boolean  "published",                                          :default => false, :null => false
+    t.datetime "deleted_at"
+    t.text     "mobile_body",                    :limit => 16777215
+    t.text     "mobile_body_extra",              :limit => 16777215
+    t.boolean  "show_sidebar",                                       :default => true
+    t.boolean  "show_in_sidebar_nav",                                :default => true
+    t.integer  "snippet_id"
+  end
+
+  add_index "archived_pages", ["cached_slug"], :name => "index_archived_pages_on_cached_slug"
+  add_index "archived_pages", ["id"], :name => "index_archived_pages_on_id"
+
+  create_table "archived_properties", :id => false, :force => true do |t|
+    t.integer  "id",                                                       :default => 0,     :null => false
+    t.string   "title",                                                                       :null => false
+    t.string   "subtitle"
+    t.integer  "city_id",                                                                     :null => false
+    t.boolean  "elite",                                                    :default => false, :null => false
+    t.boolean  "smart_share",                                              :default => false, :null => false
+    t.boolean  "smart_rent",                                               :default => false, :null => false
+    t.boolean  "green",                                                    :default => false, :null => false
+    t.boolean  "non_smoking",                                              :default => false, :null => false
+    t.string   "website_url"
+    t.string   "video_url"
+    t.string   "facebook_url"
+    t.string   "promo_image"
+    t.string   "promo_url"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "street_address"
+    t.text     "overview_text"
+    t.text     "promotions_text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "local_info_feed_id"
+    t.string   "external_cms_id"
+    t.string   "availability_url"
+    t.string   "type"
+    t.integer  "section_id"
+    t.integer  "county_id"
+    t.string   "listing_image_file_name"
+    t.string   "listing_image_content_type"
+    t.string   "listing_title"
+    t.text     "listing_text"
+    t.integer  "features"
+    t.string   "overview_title"
+    t.string   "overview_bullet_1"
+    t.string   "overview_bullet_2"
+    t.string   "overview_bullet_3"
+    t.boolean  "published",                                                :default => false, :null => false
+    t.string   "short_title"
+    t.string   "phone_number"
+    t.integer  "brochure_type",                                            :default => 0,     :null => false
+    t.string   "brochure_link_text"
+    t.string   "brochure_file_name"
+    t.string   "brochure_content_type"
+    t.string   "brochure_url"
+    t.string   "cached_slug"
+    t.string   "meta_title"
+    t.string   "meta_description"
+    t.string   "meta_keywords"
+    t.boolean  "show_lead_2_lease",                                        :default => false, :null => false
+    t.string   "lead_2_lease_email"
+    t.date     "completion_date"
+    t.string   "media_meta_title"
+    t.string   "media_meta_description"
+    t.string   "media_meta_keywords"
+    t.string   "floor_plans_meta_title"
+    t.string   "floor_plans_meta_description"
+    t.string   "floor_plans_meta_keywords"
+    t.string   "promotions_meta_title"
+    t.string   "promotions_meta_description"
+    t.string   "promotions_meta_keywords"
+    t.integer  "position"
+    t.integer  "promo_id"
+    t.integer  "ufollowup_id"
+    t.boolean  "has_completion_date",                                      :default => true,  :null => false
+    t.string   "listing_promo_file_name"
+    t.string   "listing_promo_content_type"
+    t.integer  "listing_promo_file_size"
+    t.string   "resident_link_text"
+    t.string   "resident_link_url"
+    t.boolean  "featured",                                                 :default => false, :null => false
+    t.integer  "featured_position"
+    t.datetime "deleted_at"
+    t.string   "zip_code"
+    t.string   "lead_2_lease_id"
+    t.string   "mobile_phone_number"
+    t.integer  "twitter_account_id"
+    t.string   "send_to_friend_mediamind_id"
+    t.string   "send_to_phone_mediamind_id"
+    t.string   "contact_mediamind_id"
+    t.boolean  "featured_mobile",                                          :default => false
+    t.boolean  "under_construction",                                       :default => false
+    t.string   "external_cms_type"
+    t.string   "schedule_tour_url"
+    t.string   "seo_link_text"
+    t.string   "seo_link_url"
+    t.boolean  "show_rtrk_code",                                           :default => false, :null => false
+    t.text     "office_hours",                         :limit => 16777215
+    t.string   "pinterest_url"
+    t.string   "website_url_text"
+    t.text     "neighborhood_description",             :limit => 16777215
+    t.string   "neighborhood_listing_image_file_name"
+    t.boolean  "included_in_export",                                       :default => false, :null => false
+    t.integer  "secondary_lead_source_id"
+  end
+
+  add_index "archived_properties", ["id"], :name => "index_archived_properties_on_id"
+
   create_table "area_memberships", :force => true do |t|
-    t.integer  "area_id",                :null => false
-    t.integer  "apartment_community_id", :null => false
+    t.integer  "area_id",                               :null => false
+    t.integer  "apartment_community_id",                :null => false
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -109,21 +231,21 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
   add_index "area_memberships", ["tier"], :name => "index_area_memberships_on_tier"
 
   create_table "areas", :force => true do |t|
-    t.string   "name",                                                                         :null => false
+    t.string   "name",                                                     :null => false
     t.string   "cached_slug"
-    t.float    "latitude",                                                                     :null => false
-    t.float    "longitude",                                                                    :null => false
-    t.integer  "metro_id",                                                                     :null => false
+    t.float    "latitude",                                                 :null => false
+    t.float    "longitude",                                                :null => false
+    t.integer  "metro_id",                                                 :null => false
     t.integer  "position"
     t.string   "banner_image_file_name"
     t.string   "listing_image_file_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "apartment_communities_count",                     :default => 0
-    t.text     "description",                 :limit => 16777215
-    t.text     "detail_description",          :limit => 16777215
+    t.integer  "apartment_communities_count", :default => 0
+    t.text     "description"
+    t.text     "detail_description"
     t.integer  "state_id"
-    t.string   "area_type",                                       :default => "neighborhoods", :null => false
+    t.string   "area_type",                   :default => "neighborhoods", :null => false
   end
 
   add_index "areas", ["apartment_communities_count"], :name => "index_areas_on_apartment_communities_count"
@@ -144,15 +266,15 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
   add_index "assets", ["typus_user_id"], :name => "index_assets_on_typus_user_id"
 
   create_table "awards", :force => true do |t|
-    t.string   "title",                                                     :null => false
-    t.text     "body",               :limit => 16777215
-    t.boolean  "published",                              :default => false, :null => false
+    t.string   "title",                                 :null => false
+    t.text     "body"
+    t.boolean  "published",          :default => false, :null => false
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"
     t.string   "image_content_type"
-    t.boolean  "featured",                               :default => false
+    t.boolean  "featured",           :default => false
   end
 
   create_table "awards_sections", :id => false, :force => true do |t|
@@ -317,11 +439,11 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
   end
 
   create_table "feed_items", :force => true do |t|
-    t.string   "title",                            :null => false
-    t.string   "url",                              :null => false
-    t.text     "description",  :limit => 16777215, :null => false
-    t.datetime "published_at",                     :null => false
-    t.integer  "feed_id",                          :null => false
+    t.string   "title",        :null => false
+    t.string   "url",          :null => false
+    t.text     "description",  :null => false
+    t.datetime "published_at", :null => false
+    t.integer  "feed_id",      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -378,8 +500,6 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
     t.integer "home_community_id"
   end
 
-  add_index "home_communities_landing_pages", ["landing_page_id", "home_community_id"], :name => "index_landing_page_and_home_communities"
-
   create_table "home_floor_plans", :force => true do |t|
     t.string   "name",               :null => false
     t.string   "image_file_name",    :null => false
@@ -398,7 +518,6 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
     t.datetime "updated_at"
   end
 
-  add_index "home_neighborhood_memberships", ["home_neighborhood_id", "home_community_id"], :name => "index_home_nbrhd_mmbrshps_on_nbrhd_id_and_comm_id", :unique => true
   add_index "home_neighborhood_memberships", ["home_neighborhood_id"], :name => "index_home_neighborhood_memberships_on_home_neighborhood_id"
 
   create_table "home_neighborhoods", :force => true do |t|
@@ -431,7 +550,7 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
   end
 
   create_table "home_pages", :force => true do |t|
-    t.text     "body",                             :limit => 16777215
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "meta_title"
@@ -440,7 +559,7 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
     t.string   "mobile_title"
     t.string   "mobile_banner_image_file_name"
     t.string   "mobile_banner_image_content_type"
-    t.text     "mobile_body",                      :limit => 16777215
+    t.text     "mobile_body"
   end
 
   create_table "homes", :force => true do |t|
@@ -461,29 +580,27 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
     t.integer "position"
   end
 
-  add_index "landing_page_popular_orderings", ["landing_page_id", "property_id"], :name => "index_landing_page_and_popular_properties"
-
   create_table "landing_pages", :force => true do |t|
-    t.string   "title",                                                                 :null => false
+    t.string   "title",                                             :null => false
     t.string   "meta_title"
     t.string   "meta_description"
     t.string   "meta_keywords"
     t.string   "cached_slug"
-    t.integer  "state_id",                                                              :null => false
-    t.text     "masthead_body",                  :limit => 16777215
+    t.integer  "state_id",                                          :null => false
+    t.text     "masthead_body"
     t.string   "masthead_image_file_name"
     t.string   "masthead_image_content_type"
     t.string   "secondary_title"
-    t.text     "secondary_body",                 :limit => 16777215
+    t.text     "secondary_body"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "promo_id"
-    t.boolean  "custom_sort_popular_properties",                     :default => false, :null => false
-    t.boolean  "published",                                          :default => false, :null => false
-    t.boolean  "hide_from_list",                                     :default => false, :null => false
+    t.boolean  "custom_sort_popular_properties", :default => false, :null => false
+    t.boolean  "published",                      :default => false, :null => false
+    t.boolean  "hide_from_list",                 :default => false, :null => false
     t.boolean  "randomize_property_listings"
     t.integer  "local_info_feed_id"
-    t.boolean  "show_apartments_by_area",                            :default => true
+    t.boolean  "show_apartments_by_area",        :default => true
     t.string   "masthead_image_url"
   end
 
@@ -541,18 +658,18 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
   add_index "leaderships", ["leadership_group_id"], :name => "index_leaderships_on_leadership_group_id"
 
   create_table "masthead_slides", :force => true do |t|
-    t.text     "body",                  :limit => 16777215,                :null => false
-    t.integer  "slide_type",                                :default => 0, :null => false
+    t.text     "body",                                 :null => false
+    t.integer  "slide_type",            :default => 0, :null => false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.string   "image_link"
-    t.text     "sidebar_text",          :limit => 16777215
+    t.text     "sidebar_text"
     t.integer  "masthead_slideshow_id"
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "mini_slideshow_id"
-    t.text     "quote",                 :limit => 16777215
+    t.text     "quote"
     t.string   "quote_attribution"
     t.string   "quote_job_title"
     t.string   "quote_company"
@@ -582,17 +699,17 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
   add_index "mediaplex_tags", ["trackable_type", "trackable_id"], :name => "index_mediaplex_tags_on_trackable_type_and_trackable_id"
 
   create_table "metros", :force => true do |t|
-    t.string   "name",                                                           :null => false
+    t.string   "name",                                       :null => false
     t.string   "cached_slug"
-    t.float    "latitude",                                                       :null => false
-    t.float    "longitude",                                                      :null => false
+    t.float    "latitude",                                   :null => false
+    t.float    "longitude",                                  :null => false
     t.integer  "position"
     t.string   "banner_image_file_name"
-    t.string   "listing_image_file_name",                                        :null => false
+    t.string   "listing_image_file_name",                    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "apartment_communities_count",                     :default => 0
-    t.text     "detail_description",          :limit => 16777215
+    t.integer  "apartment_communities_count", :default => 0
+    t.text     "detail_description"
   end
 
   add_index "metros", ["apartment_communities_count"], :name => "index_metros_on_apartment_communities_count"
@@ -619,34 +736,33 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
   end
 
   create_table "neighborhood_memberships", :force => true do |t|
-    t.integer  "neighborhood_id",        :null => false
-    t.integer  "apartment_community_id", :null => false
+    t.integer  "neighborhood_id",                       :null => false
+    t.integer  "apartment_community_id",                :null => false
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "tier",                   :default => 1, :null => false
   end
 
-  add_index "neighborhood_memberships", ["neighborhood_id", "apartment_community_id"], :name => "index_neighborhood_id_and_apartment_community_id", :unique => true
   add_index "neighborhood_memberships", ["neighborhood_id"], :name => "index_neighborhood_memberships_on_neighborhood_id"
   add_index "neighborhood_memberships", ["tier"], :name => "index_neighborhood_memberships_on_tier"
 
   create_table "neighborhoods", :force => true do |t|
-    t.string   "name",                                                               :null => false
+    t.string   "name",                                           :null => false
     t.string   "cached_slug"
-    t.float    "latitude",                                                           :null => false
-    t.float    "longitude",                                                          :null => false
+    t.float    "latitude",                                       :null => false
+    t.float    "longitude",                                      :null => false
     t.string   "banner_image_file_name"
     t.string   "listing_image_file_name"
-    t.integer  "area_id",                                                            :null => false
+    t.integer  "area_id",                                        :null => false
     t.integer  "position"
-    t.integer  "state_id",                                                           :null => false
+    t.integer  "state_id",                                       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "featured_apartment_community_id"
-    t.integer  "apartment_communities_count",                         :default => 0
-    t.text     "description",                     :limit => 16777215
-    t.text     "detail_description",              :limit => 16777215
+    t.integer  "apartment_communities_count",     :default => 0
+    t.text     "description"
+    t.text     "detail_description"
   end
 
   add_index "neighborhoods", ["apartment_communities_count"], :name => "index_neighborhoods_on_apartment_communities_count"
@@ -655,9 +771,9 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
   add_index "neighborhoods", ["name"], :name => "index_neighborhoods_on_name", :unique => true
 
   create_table "news_posts", :force => true do |t|
-    t.string   "title",                                                               :null => false
-    t.text     "body",                         :limit => 16777215
-    t.boolean  "published",                                        :default => false, :null => false
+    t.string   "title",                                           :null => false
+    t.text     "body"
+    t.boolean  "published",                    :default => false, :null => false
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -666,7 +782,7 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
     t.string   "meta_keywords"
     t.string   "image_file_name"
     t.string   "image_content_type"
-    t.boolean  "featured",                                         :default => false
+    t.boolean  "featured",                     :default => false
     t.string   "home_page_image_file_name"
     t.string   "home_page_image_content_type"
   end
@@ -680,9 +796,9 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
   add_index "news_posts_sections", ["section_id", "news_post_id"], :name => "index_news_posts_sections_on_section_id_and_news_post_id"
 
   create_table "pages", :force => true do |t|
-    t.string   "title",                                                                 :null => false
+    t.string   "title",                                             :null => false
     t.string   "cached_slug"
-    t.text     "body",                           :limit => 16777215
+    t.text     "body"
     t.integer  "parent_id"
     t.integer  "lft"
     t.integer  "rgt"
@@ -696,11 +812,11 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
     t.string   "left_montage_image_file_name"
     t.string   "middle_montage_image_file_name"
     t.string   "right_montage_image_file_name"
-    t.boolean  "published",                                          :default => false, :null => false
-    t.text     "mobile_body",                    :limit => 16777215
-    t.text     "mobile_body_extra",              :limit => 16777215
-    t.boolean  "show_sidebar",                                       :default => true
-    t.boolean  "show_in_sidebar_nav",                                :default => true
+    t.boolean  "published",                      :default => false, :null => false
+    t.text     "mobile_body"
+    t.text     "mobile_body_extra"
+    t.boolean  "show_sidebar",                   :default => true
+    t.boolean  "show_in_sidebar_nav",            :default => true
     t.integer  "snippet_id"
   end
 
@@ -715,8 +831,8 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
   end
 
   create_table "photos", :force => true do |t|
-    t.string   "image_file_name"
-    t.string   "title",                                 :null => false
+    t.string   "image_file_name",    :default => ""
+    t.string   "title",              :default => "",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_content_type"
@@ -762,9 +878,6 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
     t.integer "project_id"
   end
 
-  add_index "project_categories_projects", ["project_category_id", "project_id"], :name => "index_project_categories_and_projects"
-  add_index "project_categories_projects", ["project_id", "project_category_id"], :name => "index_projects_and_project_categories"
-
   create_table "project_data_points", :force => true do |t|
     t.string   "name",       :null => false
     t.string   "data",       :null => false
@@ -775,9 +888,9 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
   end
 
   create_table "project_updates", :force => true do |t|
-    t.text     "body",               :limit => 16777215,                    :null => false
-    t.integer  "project_id",                                                :null => false
-    t.boolean  "published",                              :default => false, :null => false
+    t.text     "body",                                  :null => false
+    t.integer  "project_id",                            :null => false
+    t.boolean  "published",          :default => false, :null => false
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -798,14 +911,14 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
   end
 
   create_table "properties", :force => true do |t|
-    t.string   "title",                                                                       :null => false
+    t.string   "title",                                                   :null => false
     t.string   "subtitle"
-    t.integer  "city_id",                                                                     :null => false
-    t.boolean  "elite",                                                    :default => false, :null => false
-    t.boolean  "smart_share",                                              :default => false, :null => false
-    t.boolean  "smart_rent",                                               :default => false, :null => false
-    t.boolean  "green",                                                    :default => false, :null => false
-    t.boolean  "non_smoking",                                              :default => false, :null => false
+    t.integer  "city_id",                                                 :null => false
+    t.boolean  "elite",                                :default => false, :null => false
+    t.boolean  "smart_share",                          :default => false, :null => false
+    t.boolean  "smart_rent",                           :default => false, :null => false
+    t.boolean  "green",                                :default => false, :null => false
+    t.boolean  "non_smoking",                          :default => false, :null => false
     t.string   "website_url"
     t.string   "video_url"
     t.string   "facebook_url"
@@ -814,8 +927,8 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "street_address"
-    t.text     "overview_text",                        :limit => 16777215
-    t.text     "promotions_text",                      :limit => 16777215
+    t.text     "overview_text"
+    t.text     "promotions_text"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "local_info_feed_id"
@@ -827,16 +940,16 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
     t.string   "listing_image_file_name"
     t.string   "listing_image_content_type"
     t.string   "listing_title"
-    t.text     "listing_text",                         :limit => 16777215
+    t.text     "listing_text"
     t.integer  "features"
     t.string   "overview_title"
     t.string   "overview_bullet_1"
     t.string   "overview_bullet_2"
     t.string   "overview_bullet_3"
-    t.boolean  "published",                                                :default => false, :null => false
+    t.boolean  "published",                            :default => false, :null => false
     t.string   "short_title"
     t.string   "phone_number"
-    t.integer  "brochure_type",                                            :default => 0,     :null => false
+    t.integer  "brochure_type",                        :default => 0,     :null => false
     t.string   "brochure_link_text"
     t.string   "brochure_file_name"
     t.string   "brochure_content_type"
@@ -845,7 +958,7 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
     t.string   "meta_title"
     t.string   "meta_description"
     t.string   "meta_keywords"
-    t.boolean  "show_lead_2_lease",                                        :default => false, :null => false
+    t.boolean  "show_lead_2_lease",                    :default => false, :null => false
     t.string   "lead_2_lease_email"
     t.date     "completion_date"
     t.string   "media_meta_title"
@@ -860,13 +973,13 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
     t.integer  "position"
     t.integer  "promo_id"
     t.integer  "ufollowup_id"
-    t.boolean  "has_completion_date",                                      :default => true,  :null => false
+    t.boolean  "has_completion_date",                  :default => true,  :null => false
     t.string   "listing_promo_file_name"
     t.string   "listing_promo_content_type"
     t.integer  "listing_promo_file_size"
     t.string   "resident_link_text"
     t.string   "resident_link_url"
-    t.boolean  "featured",                                                 :default => false, :null => false
+    t.boolean  "featured",                             :default => false, :null => false
     t.integer  "featured_position"
     t.string   "zip_code"
     t.string   "lead_2_lease_id"
@@ -875,19 +988,19 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
     t.string   "send_to_friend_mediamind_id"
     t.string   "send_to_phone_mediamind_id"
     t.string   "contact_mediamind_id"
-    t.boolean  "featured_mobile",                                          :default => false
-    t.boolean  "under_construction",                                       :default => false
+    t.boolean  "featured_mobile",                      :default => false
+    t.boolean  "under_construction",                   :default => false
     t.string   "external_cms_type"
-    t.text     "office_hours",                         :limit => 16777215
-    t.string   "pinterest_url"
     t.string   "schedule_tour_url"
     t.string   "seo_link_text"
     t.string   "seo_link_url"
-    t.boolean  "show_rtrk_code",                                           :default => false, :null => false
+    t.boolean  "show_rtrk_code",                       :default => false, :null => false
+    t.text     "office_hours"
+    t.string   "pinterest_url"
     t.string   "website_url_text"
-    t.text     "neighborhood_description",             :limit => 16777215
+    t.text     "neighborhood_description"
     t.string   "neighborhood_listing_image_file_name"
-    t.boolean  "included_in_export",                                       :default => false, :null => false
+    t.boolean  "included_in_export",                   :default => false, :null => false
     t.integer  "secondary_lead_source_id"
     t.string   "hero_image_file_name"
     t.string   "hero_image_content_type"
@@ -922,11 +1035,11 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
     t.string   "icon_file_name"
     t.string   "icon_content_type"
     t.string   "name"
-    t.text     "description",         :limit => 16777215
+    t.text     "description"
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "show_on_search_page",                     :default => false, :null => false
+    t.boolean  "show_on_search_page", :default => false, :null => false
   end
 
   create_table "property_features_pages", :force => true do |t|
@@ -1062,7 +1175,6 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
     t.datetime "updated_at"
   end
 
-  add_index "related_neighborhoods", ["neighborhood_id", "nearby_neighborhood_id"], :name => "index_related_neighborhoods_on_id_and_related_id", :unique => true
   add_index "related_neighborhoods", ["neighborhood_id"], :name => "index_related_neighborhoods_on_neighborhood_id"
 
   create_table "sections", :force => true do |t|
@@ -1120,9 +1232,9 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
   add_index "states", ["position"], :name => "index_states_on_position"
 
   create_table "testimonials", :force => true do |t|
-    t.string   "name"
-    t.string   "title"
-    t.text     "quote",      :limit => 16777215, :null => false
+    t.string   "name",       :default => ""
+    t.string   "title",      :default => ""
+    t.text     "quote",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "section_id"
