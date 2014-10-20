@@ -33,8 +33,6 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should respond_with(:success)
             should render_with_layout(:community)
             should render_template(:show)
-  # TODO Mark for pending removal in lieu of HyLy form integration
-            should assign_to(:submission)
             should assign_to(:page) { @page }
           end
 
@@ -46,8 +44,6 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should respond_with(:success)
             should render_with_layout(:application)
             should render_template(:show)
-  # TODO Mark for pending removal in lieu of HyLy form integration
-            should assign_to(:submission)
             should assign_to(:page) { @page }
           end
         end
@@ -61,7 +57,6 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should respond_with(:success)
             should render_with_layout(:community)
             should render_template(:show)
-            should assign_to(:submission)
             should_not assign_to(:page)
           end
 
@@ -73,102 +68,7 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should respond_with(:success)
             should render_with_layout(:application)
             should render_template(:show)
-            should assign_to(:submission)
             should_not assign_to(:page)
-          end
-        end
-      end
-      
-      context 'POST to #create' do
-        context 'with an invalid submission' do
-          desktop_device do
-            setup do
-              @submission = UnderConstructionLead.new
-
-              post :create,
-                :apartment_community_id => @community.to_param,
-                :submission             => @submission.attributes
-            end
-
-            should respond_with(:success)
-            should render_with_layout(:community)
-            should render_template(:show)
-            should assign_to(:submission)
-
-            should 'have errors on the submission' do
-              assert assigns(:submission).errors.count > 0
-            end
-          end
-
-          mobile_device do
-            context 'with an invalid submission' do
-              setup do
-                @submission = UnderConstructionLead.new
-
-                post :create,
-                  :apartment_community_id => @community.to_param,
-                  :submission             => @submission.attributes
-              end
-
-              should respond_with(:success)
-              should render_with_layout(:application)
-              should render_template(:show)
-              should assign_to(:submission)
-
-              should 'have errors on the submission' do
-                assert assigns(:submission).errors.count > 0
-              end
-            end
-          end
-        end
-
-        context 'with a valid submission' do
-          desktop_device do
-            setup do
-              @submission = UnderConstructionLead.make_unsaved
-
-              expect {
-                post :create,
-                  :apartment_community_id => @community.to_param,
-                  :submission             => @submission.attributes
-              }.to change { UnderConstructionLead.count }.by(1)
-            end
-
-            should respond_with(:redirect)
-            should redirect_to('the contact path') { thank_you_apartment_community_contact_path(@community) }
-            should assign_to(:submission)
-
-            should 'save the email in the flash' do
-              assert_equal @submission.email, flash[:apartment_contact_email]
-            end
-
-            should 'save the form type in the flash' do
-              assert_equal 'under_construction', flash[:contact_form]
-            end
-          end
-
-          mobile_device do
-            setup do
-              @submission = UnderConstructionLead.make_unsaved
-
-              expect {
-                post :create,
-                  :apartment_community_id => @community.to_param,
-                  :submission             => @submission.attributes
-              }.to change { UnderConstructionLead.count }.by(1)
-            end
-
-            should respond_with(:redirect)
-            should redirect_to('the contact path') { thank_you_apartment_community_contact_path(@community) }
-            should assign_to(:submission)
-
-            should 'save the email in the flash' do
-              assert_equal @submission.email, flash[:apartment_contact_email]
-            end
-
-            should 'save the form type in the flash' do
-              assert_equal 'under_construction', flash[:contact_form]
-            end
           end
         end
       end
@@ -198,7 +98,6 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
       end
     end
 
-
     context 'community is showing lead2lease form' do
       setup do
         @community = ApartmentCommunity.make(:show_lead_2_lease => true, :lead_2_lease_email => 'bruce@wayne.com')
@@ -218,7 +117,6 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should respond_with(:success)
             should render_with_layout(:community)
             should render_template(:show)
-            should assign_to(:submission)
             should assign_to(:page) { @page }
           end
 
@@ -230,7 +128,6 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should respond_with(:success)
             should render_with_layout(:application)
             should render_template(:show)
-            should assign_to(:submission)
             should assign_to(:page) { @page }
           end
         end
@@ -244,7 +141,6 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should respond_with(:success)
             should render_with_layout(:community)
             should render_template(:show)
-            should assign_to(:submission)
             should_not assign_to(:page)
           end
 
@@ -256,104 +152,7 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should respond_with(:success)
             should render_with_layout(:application)
             should render_template(:show)
-            should assign_to(:submission)
             should_not assign_to(:page)
-          end
-        end
-      end
-      
-      context 'POST to #create' do
-        context 'with an invalid submission' do
-          desktop_device do
-            setup do
-              @submission = Lead2LeaseSubmission.new
-
-              post :create,
-                :apartment_community_id => @community.to_param,
-                :submission             => @submission.attributes
-            end
-
-            should respond_with(:success)
-            should render_with_layout(:community)
-            should render_template(:show)
-            should assign_to(:submission)
-
-            should 'have errors on the submission' do
-              assert assigns(:submission).errors.count > 0
-            end
-          end
-
-          mobile_device do
-            context 'with an invalid submission' do
-              setup do
-                @submission = Lead2LeaseSubmission.new
-
-                post :create,
-                  :apartment_community_id => @community.to_param,
-                  :submission             => @submission.attributes
-              end
-
-              should respond_with(:success)
-              should render_with_layout(:application)
-              should render_template(:show)
-              should assign_to(:submission)
-
-              should 'have errors on the submission' do
-                assert assigns(:submission).errors.count > 0
-              end
-            end
-          end
-        end
-
-        context 'with a valid submission' do
-          desktop_device do
-            setup do
-              @submission = Lead2LeaseSubmission.make_unsaved
-
-              expect {
-                post :create,
-                  :apartment_community_id => @community.to_param,
-                  :submission             => @submission.attributes
-              }.to change { ActionMailer::Base.deliveries.count }.by(1)
-            end
-
-            should assign_to(:submission)
-            should respond_with(:redirect)
-            should redirect_to('the contact path') { thank_you_apartment_community_contact_path(@community) }
-
-
-            should 'save the email in the flash' do
-              assert_equal @submission.email, flash[:apartment_contact_email]
-            end
-
-            should 'save the form type in the flash' do
-              assert_equal 'lead_2_lease', flash[:contact_form]
-            end
-          end
-
-          mobile_device do
-            setup do
-              @submission = Lead2LeaseSubmission.make_unsaved
-
-              expect {
-                post :create,
-                  :apartment_community_id => @community.to_param,
-                  :submission             => @submission.attributes
-              }.to change { ActionMailer::Base.deliveries.count }.by(1)
-            end
-
-            should assign_to(:submission)
-            should respond_with(:redirect)
-            should redirect_to('the contact path') { thank_you_apartment_community_contact_path(@community) }
-
-
-            should 'save the email in the flash' do
-              assert_equal @submission.email, flash[:apartment_contact_email]
-            end
-
-            should 'save the form type in the flash' do
-              assert_equal 'lead_2_lease', flash[:contact_form]
-            end
           end
         end
       end
