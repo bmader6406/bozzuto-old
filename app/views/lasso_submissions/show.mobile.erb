@@ -15,6 +15,10 @@
 
 <div class="section">
   <div class="content">
-    <%= render :partial => 'lasso_form' %>
+    <% if @community.id == 323 %>
+      <%= render :partial => 'custom_contact_form_323' %>
+    <% else %>
+      <%= render :partial => 'lasso_form' %>
+    <% end %>
   </div>
 </div>

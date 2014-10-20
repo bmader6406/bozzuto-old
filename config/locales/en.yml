@@ -178,7 +178,6 @@ en:
         floor_plans_meta_description: Homes SEO Description
         floor_plans_meta_keywords: Homes SEO Keywords
         floor_plans_meta_title: Homes SEO Title
-        hyly_id: Hy.Ly ID
         listing_promo: Listing Promo Image
         neighborhood_description: Neighborhoods Listing Description
         neighborhood_listing_image: Neighborhoods Listing Image
@@ -459,7 +458,6 @@ en:
         photo: Image dimensions should be 498x551.
         ten_year_old_cost: 'This cost will be used to calculate the percent savings:<br><code>( &lt;sum of savings&gt; / &lt;annual cost of 10 year old home&gt; ) * 100</code>'
       home_community:
-        hyly_id: This ID is used to generate the Hy.Ly form for this specific property.
         listing_promo: Image dimensions should be 151x54
         neighborhood_description: This text will be shown on Neighborhoods listing pages.
         neighborhood_listing_image: This image will be shown on Neighborhoods listing pages. Image dimensions should be 300x234.
