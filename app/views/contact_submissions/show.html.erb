@@ -7,8 +7,4 @@
 <% breadcrumb_item('Contact') %>
 <% breadcrumb_title('Contact') %>
 
-<% if @topic.present? %>
-  <%= raw(@topic.body) %>
-<% end %>
-
 <%= hyly_form :redirect_to => thank_you_contact_url %>
