@@ -42,7 +42,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'shoulda', '2.11.3'
+  gem 'shoulda', '2.11.3', :require => false
   gem 'phocus', '1.1'
   gem 'machinist', '1.0.6'
   gem 'faker', '0.3.1'

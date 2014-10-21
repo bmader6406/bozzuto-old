@@ -15,7 +15,9 @@ if ENV['COV']
   end
 end
 
+require 'shoulda'
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+require 'shoulda/rails'
 require 'rails/test_help'
 require 'mocha'
 require 'rspec/expectations'
