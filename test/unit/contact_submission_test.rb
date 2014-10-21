@@ -11,5 +11,28 @@ class ContactSubmissionTest < ActiveSupport::TestCase
         subject.errors[attr].should include("can't be blank")
       end
     end
+
+    describe "#topic" do
+      before do
+        @topic = ContactTopic.make
+        subject.topic_id = @topic.id
+      end
+
+      it "returns the ContactTopic matching its topic_id" do
+        subject.topic.should == @topic
+      end
+    end
+
+    describe "#topic=" do
+      before do
+        @topic = ContactTopic.make
+      end
+
+      it "sets the topic to the given topic" do
+        subject.topic = @topic
+
+        subject.topic_id.should == @topic.id
+      end
+    end
   end
 end
