@@ -137,8 +137,6 @@ window.bozzuto = {};
       $(this).attr('target', '_blank');
     });
 
-    // TODO Mark for pending removal in lieu of HyLy form integration
-
     $('form#lasso-form').submit(function() {
       setCookie('lasso_email', $('input[name=Emails\[Primary\]]', this).val());
     });
