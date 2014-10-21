@@ -10,6 +10,10 @@ rbenv shell `head -1 .ruby-version`
 # Start services
 /etc/service/mysql/run &
 
+# Set up config files
+cp config/database.yml{.example,}
+cp config/app_config{.example,}
+
 # Run tests
 export RAILS_ENV=test
 bundle install

@@ -1,7 +1,6 @@
 development:
   adapter: mysql2
   encoding: utf8
-  reconnect: false
   database: bozzuto_development
   pool: 5
   username: root
@@ -11,17 +10,14 @@ development:
 test:
   adapter: mysql2
   encoding: utf8
-  reconnect: false
   database: bozzuto_test
   pool: 5
   username: root
-  password:
-  socket: /tmp/mysql.sock
+  password: mysqlsucks
 
 production:
   adapter: mysql2
   encoding: utf8
-  reconnect: false
   database: bozzuto_production
   pool: 5
   username: root
