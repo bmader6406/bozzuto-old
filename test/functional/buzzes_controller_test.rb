@@ -16,8 +16,6 @@ class BuzzesControllerTest < ActionController::TestCase
         should render_with_layout(:page)
         should respond_with(:success)
         should render_template(:new)
-        # TODO Mark for pending removal in lieu of HyLy form integration
-        should assign_to(:buzz)
       end
 
       mobile_device do
@@ -28,70 +26,6 @@ class BuzzesControllerTest < ActionController::TestCase
         should render_with_layout(:application)
         should respond_with(:success)
         should render_template(:new)
-        # TODO Mark for pending removal in lieu of HyLy form integration
-        should assign_to(:buzz)
-      end
-    end
-
-    # TODO Mark for pending removal in lieu of HyLy form integration
-    context 'a POST to #create' do
-      desktop_device do
-        context 'with an invalid buzz' do
-          setup do
-            expect {
-              post :create,
-                :section => 'about-us',
-                :buzz => {}
-            }.to_not change { Buzz.count }
-          end
-
-          should render_with_layout(:page)
-          should respond_with(:success)
-          should render_template(:new)
-
-          should 'have errors on buzz' do
-            assigns(:buzz).errors[:email].should be_present
-          end
-        end
-
-        context 'with a valid buzz' do
-          setup do
-            @buzz = Buzz.make_unsaved
-
-            expect {
-              post :create,
-                   :section => 'about-us',
-                   :buzz    => @buzz.attributes
-            }.to change { Buzz.count }.by(1)
-          end
-
-          should respond_with(:redirect)
-          should redirect_to('the thank you page') { thank_you_buzzes_path }
-
-          should 'save the buzz email in the flash' do
-            flash[:buzz_email].should == @buzz.email
-          end
-        end
-      end
-
-      mobile_device do
-        context 'with an invalid buzz' do
-          setup do
-            expect {
-              post :create,
-                   :section => 'about-us',
-                   :buzz => {}
-            }.to_not change { Buzz.count }
-          end
-
-          should render_with_layout(:application)
-          should respond_with(:success)
-          should render_template(:new)
-
-          should "have errors on buzz" do
-            assigns(:buzz).errors[:email].should be_present
-          end
-        end
       end
     end
 
