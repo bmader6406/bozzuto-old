@@ -12,7 +12,7 @@ rbenv shell `head -1 .ruby-version`
 
 # Set up config files
 cp config/database.yml{.example,}
-cp config/app_config{.example,}
+cp config/app_config.yml{.example,}
 
 # Run tests
 export RAILS_ENV=test
