@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141009180848) do
+ActiveRecord::Schema.define(:version => 20141030143118) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -224,7 +224,7 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "tier",                   :default => 1, :null => false
+    t.integer  "tier",                   :default => 2, :null => false
   end
 
   add_index "area_memberships", ["area_id"], :name => "index_area_memberships_on_area_id"
@@ -741,7 +741,7 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "tier",                   :default => 1, :null => false
+    t.integer  "tier",                   :default => 2, :null => false
   end
 
   add_index "neighborhood_memberships", ["neighborhood_id"], :name => "index_neighborhood_memberships_on_neighborhood_id"
@@ -1005,6 +1005,7 @@ ActiveRecord::Schema.define(:version => 20141009180848) do
     t.string   "hero_image_file_name"
     t.string   "hero_image_content_type"
     t.integer  "hero_image_file_size"
+    t.string   "hyly_id"
   end
 
   add_index "properties", ["external_cms_id", "external_cms_type"], :name => "index_properties_on_external_cms_id_and_external_cms_type"
