@@ -4,6 +4,10 @@
 
     <%= news_and_press_secondary_nav(@section, @news_section) %>
 
+    <li class="history">
+      <%= link_to 'History', 'http://bozzuto25.com', :target => '_blank' %>
+    </li>
+
     <% unless section_testimonials.count.zero? %>
       <li class="<%= current_if :controller => 'testimonials' %>">
         <%= link_to 'Testimonials', testimonials_path(@section) %>
