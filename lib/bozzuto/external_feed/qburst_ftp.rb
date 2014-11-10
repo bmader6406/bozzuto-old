@@ -6,7 +6,7 @@ module Bozzuto
       include Ftp
       include LoadingProcess
 
-      allow_loading_every 30.minutes
+      allow_loading_every 2.hours
       identify_loading_process_as 'qburst_ftp'
 
       self.ftp_name = 'Qburst'
