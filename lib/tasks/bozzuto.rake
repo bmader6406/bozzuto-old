@@ -13,10 +13,7 @@ namespace :bozzuto do
     log_task 'Downloading property feeds ...'
 
     begin
-      [
-        Bozzuto::ExternalFeed::LiveBozzutoFtp,
-        Bozzuto::ExternalFeed::QburstFtp
-      ].each(&:download_files)
+      Bozzuto::ExternalFeed::Ftp.download_files
 
       puts '  Property feeds successfully downloaded'
     rescue Exception => e
