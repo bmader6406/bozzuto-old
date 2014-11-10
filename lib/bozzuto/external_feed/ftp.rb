@@ -17,7 +17,7 @@ module Bozzuto
 
       def self.included(base)
         base.class_eval do
-          class_attribute :username, :password
+          class_attribute :username, :password, :ftp_name
 
           def self.download_files
             new.download_files
@@ -40,9 +40,11 @@ module Bozzuto
       end
 
       def download_files
-        connect_to_server do |ftp|
-          feed_types.each do |type|
-            ftp.getbinaryfile(source_file_for(type), target_location_for(type))
+        run_load_process do
+          connect_to_server do |ftp|
+            feed_types.each do |type|
+              ftp.getbinaryfile(source_file_for(type), target_location_for(type))
+            end
           end
         end
       end

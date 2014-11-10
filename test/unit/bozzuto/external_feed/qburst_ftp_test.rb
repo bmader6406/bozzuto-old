@@ -7,6 +7,12 @@ module Bozzuto::ExternalFeed
     end
 
     context "An External Feed FTP" do
+      describe ".ftp_name" do
+        it "returns the correct FTP name" do
+          Bozzuto::ExternalFeed::QburstFtp.ftp_name.should == 'Qburst'
+        end
+      end
+
       describe ".download_files" do
         before do
           @ftp = mock('Bozzuto::ExternalFeed::Ftp')
@@ -97,6 +103,12 @@ module Bozzuto::ExternalFeed
           subject.transfer(@path)
         end
       end
+    end
+
+    describe "#feed_types" do
+      subject { Bozzuto::ExternalFeed::QburstFtp.new }
+
+      its(:feed_types) { should == %w(carmel) }
     end
   end
 end

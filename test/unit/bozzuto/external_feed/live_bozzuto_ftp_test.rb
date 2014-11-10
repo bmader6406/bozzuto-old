@@ -7,6 +7,12 @@ module Bozzuto::ExternalFeed
     end
 
     context "A Live Bozzuto External Feed FTP" do
+      describe ".ftp_name" do
+        it "returns the correct FTP name" do
+          Bozzuto::ExternalFeed::LiveBozzutoFtp.ftp_name.should == 'Live Bozzuto'
+        end
+      end
+
       describe ".download_files" do
         before do
           @ftp = mock('Bozzuto::ExternalFeed::Ftp')
@@ -51,6 +57,14 @@ module Bozzuto::ExternalFeed
           @ftp.expects(:getbinaryfile).with('psi.xml',          tmp_file('psi_feed.xml'))
 
           subject.download_files
+        end
+      end
+
+      describe "#feed_types" do
+        subject { Bozzuto::ExternalFeed::LiveBozzutoFtp.new }
+
+        it "returns the appropriate feed types" do
+          subject.feed_types.should =~ %w(vaultware property_link psi rent_cafe)
         end
       end
     end
