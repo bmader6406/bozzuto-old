@@ -5,6 +5,26 @@ class BozzutoExternalFeedFtpTest < ActiveSupport::TestCase
     include Bozzuto::ExternalFeed::Ftp
   end
 
+  describe ".types" do
+    it "returns all the classes under the Bozzuto::ExternalFeed namespace that have included the Ftp module" do
+      Bozzuto::ExternalFeed::Ftp.types.should == [
+        Bozzuto::ExternalFeed::LiveBozzutoFtp,
+        Bozzuto::ExternalFeed::QburstFtp
+      ]
+    end
+  end
+
+  describe ".download_files" do
+    context "when there are classes that have included the Ftp module" do
+      it "calls #download_files on those classes" do
+        Bozzuto::ExternalFeed::LiveBozzutoFtp.should_receive(:download_files)
+        Bozzuto::ExternalFeed::QburstFtp.should_receive(:download_files)
+
+        Bozzuto::ExternalFeed::Ftp.download_files
+      end
+    end
+  end
+
   context "An object with the Ftp module mixed in" do
     subject { TestFtpClass.new }
 

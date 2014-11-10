@@ -3,6 +3,17 @@ require 'net/ftp'
 module Bozzuto
   module ExternalFeed
     module Ftp
+      def self.types
+        Bozzuto::ExternalFeed.constants.map { |constant|
+          Bozzuto::ExternalFeed.const_get(constant)
+        }.select do |klass|
+          klass.included_modules.include? self
+        end
+      end
+
+      def self.download_files
+        types.map(&:download_files)
+      end
 
       def self.included(base)
         base.class_eval do
