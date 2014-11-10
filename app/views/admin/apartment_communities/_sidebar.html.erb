@@ -58,10 +58,9 @@
     <% end %>
   </div>
 
-  <div class="module">
-    <h2>Feed Downloads</h2>
-
-    <% if params[:action] == 'index' %>
+  <% if params[:action] == 'index' %>
+    <div class="module">
+      <h2>Feed Downloads</h2>
       <ul class="external-feeds">
         <% Bozzuto::ExternalFeed::Ftp.types.each do |type| %>
           <% ftp = type.new %>
@@ -93,6 +92,6 @@
           <em>Feed files can be downloaded via FTP once every 2 hours.</em>
         </p>
       <ul>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 <% end %>
