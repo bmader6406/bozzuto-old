@@ -11,7 +11,7 @@
 
             <%= link_to 'View All', :external_cms_type => type %><br />
 
-            <% if loader.can_load_feed? %>
+            <% if loader.can_load? %>
               <%= link_to 'Refresh Feed', {
                     :controller => 'admin/external_feeds',
                     :action     => :load,
@@ -55,6 +55,44 @@
           <li><%= link_to 'Merge with a feed property', :action => :merge, :id => @item.id %></li>
         <% end %>
       </ul>
+    <% end %>
+  </div>
+
+  <div class="module">
+    <h2>Feed Downloads</h2>
+
+    <% if params[:action] == 'index' %>
+      <ul class="external-feeds">
+        <% Bozzuto::ExternalFeed::Ftp.types.each do |type| %>
+          <% ftp = type.new %>
+
+          <li>
+            <h3><%= ftp.ftp_name %></h3>
+
+            <p>Includes <%= ftp.feed_types.map(&:titleize).to_sentence %> <%= ftp.feed_types.size > 1 ? 'feeds' : 'feed' %>.</p>
+
+            <% if ftp.can_load? %>
+              <%= link_to 'Download Feeds to Server',
+                :controller => 'admin/external_feeds',
+                :action     => :download_feeds,
+                :ftp_type   => type %>
+
+              <span class="external-cms-message please-wait">
+                <%= image_tag 'spinner.gif' %>
+                Downloading feed files, please wait (this may take awhile)&hellip;
+              </span>
+            <% else %>
+              <span class="external-cms-message">
+                <%= distance_of_time_in_words(Time.now, ftp.next_load_at).capitalize %> until feeds can be downloaded again.
+              </span>
+            <% end %>
+          </li>
+        <% end %>
+
+        <p class="refresh-interval">
+          <em>Feeds can be refreshed once every two hours.</em>
+        </p>
+      <ul>
     <% end %>
   </div>
 <% end %>
