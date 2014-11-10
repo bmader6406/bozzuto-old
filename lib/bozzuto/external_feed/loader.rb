@@ -1,12 +1,14 @@
 module Bozzuto
   module ExternalFeed
     class Loader
-      class_attribute :load_interval
+      include LoadingProcess
 
-      self.load_interval = 2.hours
+      allow_loading_every 2.hours
 
       def self.loader_for_type(type, opts = {})
         opts.assert_valid_keys(:file)
+
+        identify_loading_process_as type
 
         new(Bozzuto::ExternalFeed::Feed.feed_for_type(type, opts[:file]))
       end
@@ -23,68 +25,11 @@ module Bozzuto
         feed.file = new_file
       end
 
-      def lock_file
-        Rails.root.join("tmp/#{feed_type}.lock")
-      end
-
-      def tmp_file
-        Rails.root.join("tmp/#{feed_type}")
-      end
-
-      def feed_already_loading?
-        File.exists?(lock_file)
-      end
-
-      def can_load_feed?
-        !feed_already_loading? && Time.now >= next_load_at
-      end
-
-      def next_load_at
-        if last_loaded_at
-          last_loaded_at + load_interval
-        else
-          Time.now - 1.minute
-        end
-      end
-
-      def last_loaded_at
-        if File.exists?(tmp_file)
-          File.new(tmp_file).mtime
-        else
-          nil
-        end
-      end
-
       def load!
-        return false unless can_load_feed?
-
-        begin
-          touch_lock_file
-          process_feed
-          touch_tmp_file
-        ensure
-          rm_lock_file
-        end
-
-        true
+        run_load_process { process_feed }
       end
-
 
       private
-
-      #:nocov:
-      def touch_tmp_file
-        FileUtils.touch(tmp_file)
-      end
-
-      def touch_lock_file
-        FileUtils.touch(lock_file)
-      end
-
-      def rm_lock_file
-        File.delete(lock_file) if File.exists?(lock_file)
-      end
-      #:nocov:
 
       def process_feed
         feed.properties.each do |property_data|

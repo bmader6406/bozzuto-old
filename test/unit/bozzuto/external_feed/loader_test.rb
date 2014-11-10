@@ -11,7 +11,7 @@ module Bozzuto::ExternalFeed
     end
 
     def setup_loader_stubs(thing)
-      thing.expects(:can_load_feed?).returns(true)
+      thing.expects(:can_load?).returns(true)
       thing.expects(:touch_lock_file)
       thing.expects(:touch_tmp_file)
       thing.expects(:rm_lock_file)
@@ -37,14 +37,14 @@ module Bozzuto::ExternalFeed
         end
       end
 
-      describe "#feed_already_loading?" do
+      describe "#already_loading?" do
         before do
           rm_file(subject.lock_file)
         end
 
         context "lock file doesn't exist" do
           it "returns false" do
-            subject.feed_already_loading?.should == false
+            subject.already_loading?.should == false
           end
         end
 
@@ -58,7 +58,7 @@ module Bozzuto::ExternalFeed
           end
 
           it "returns true" do
-            subject.feed_already_loading?.should == true
+            subject.already_loading?.should == true
           end
         end
       end
@@ -91,36 +91,36 @@ module Bozzuto::ExternalFeed
         end
       end
 
-      describe "#can_load_feed?" do
+      describe "#can_load?" do
         context "feed is already loading" do
           before do
-            subject.expects(:feed_already_loading?).returns(true)
+            subject.expects(:already_loading?).returns(true)
           end
 
           it "returns false" do
-            subject.can_load_feed?.should == false
+            subject.can_load?.should == false
           end
         end
 
         context "time isn't past load interval" do
           before do
-            subject.expects(:feed_already_loading?).returns(false)
+            subject.expects(:already_loading?).returns(false)
             subject.expects(:next_load_at).returns(Time.now + 10.minutes)
           end
 
           it "returns false" do
-            subject.can_load_feed?.should == false
+            subject.can_load?.should == false
           end
         end
 
         context "feed isn't loading and time is past load interval" do
           before do
-            subject.expects(:feed_already_loading?).returns(false)
+            subject.expects(:already_loading?).returns(false)
             subject.expects(:next_load_at).returns(Time.now - 10.minutes)
           end
 
           it "returns true" do
-            subject.can_load_feed?.should == true
+            subject.can_load?.should == true
           end
         end
       end
@@ -154,7 +154,7 @@ module Bozzuto::ExternalFeed
 
         context "feed is already loading" do
           before do
-            subject.expects(:can_load_feed?).returns(false)
+            subject.expects(:can_load?).returns(false)
           end
 
           it "returns false" do
@@ -168,7 +168,7 @@ module Bozzuto::ExternalFeed
 
         context "doesn't raise an exception" do
           before do
-            subject.expects(:can_load_feed?).returns(true)
+            subject.expects(:can_load?).returns(true)
           end
 
           it "correctly manages the tmp files" do
@@ -183,7 +183,7 @@ module Bozzuto::ExternalFeed
 
         context "raises an exception" do
           before do
-            subject.expects(:can_load_feed?).returns(true)
+            subject.expects(:can_load?).returns(true)
           end
 
           it "correctly manages the tmp files" do
