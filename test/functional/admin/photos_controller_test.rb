@@ -12,7 +12,7 @@ class Admin::PhotosControllerTest < ActionController::TestCase
 
     context 'POST to #update' do
       setup do
-        post :update, :id => @photo.id
+        post :update, :id => @photo.id, photo: { photo_group_id: @photo.photo_group_id }
       end
 
       should respond_with(:redirect)
