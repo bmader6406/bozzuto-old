@@ -12,7 +12,7 @@ $(function() {
     var imageUrl  = $('input[id$=floor_plan_image_url]').parent(),
         imageFile = $('input[id$=floor_plan_image]').parent();
 
-    $('select#[id$=floor_plan_image_type]').change(function() {
+    $('[id$="floor_plan_image_type"]').change(function() {
       var selected = parseInt($(':selected', this).val()),
           usesUrl  = 0,
           usesFile = 1;
@@ -234,8 +234,8 @@ $(function() {
 		var $selector = $('#green-package-hotspot-selector'),
 				$img			= $selector.find('img'),
 				$hotspot  = $selector.find('.hotspot.current'),
-				$xInput   = $('input[name=green_package_item[x]]'),
-				$yInput   = $('input[name=green_package_item[y]]');
+				$xInput   = $('input[name="green_package_item[x]"]'),
+				$yInput   = $('input[name="green_package_item[y]"]');
 
 		if ($selector.length == 0) {
 			return;
