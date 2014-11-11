@@ -4231,6 +4231,12 @@ div.wysiwyg ul li {
       margin-top: 10px;
     }
 
+    .page #aside .latest-news .excerpt img {
+      float: none;
+      margin: 0;
+      max-width: 100%;
+    }
+
     /* featured projects & callout */
     .page #aside #featured-projects .article,
     .page #aside .featured .article {
