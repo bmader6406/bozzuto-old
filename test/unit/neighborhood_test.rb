@@ -182,10 +182,13 @@ class NeighborhoodTest < ActiveSupport::TestCase
       end
 
       it "returns a slide for each tier 1 community in the neighborhood" do
-        @subject.reload.tier_1_community_slides.should =~ [
-          Bozzuto::Neighborhoods::Slideshow::Slide.new(@community_1),
-          Bozzuto::Neighborhoods::Slideshow::Slide.new(@community_2)
-        ]
+        slides = @subject.reload.tier_1_community_slides
+        slide1 = Bozzuto::Neighborhoods::Slideshow::Slide.new(@community_1)
+        slide2 = Bozzuto::Neighborhoods::Slideshow::Slide.new(@community_2)
+
+        slides.should =~ [slide1, slide2]
+
+        slide1.image.should == @community_1.hero_image
       end
     end
   end

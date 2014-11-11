@@ -12,9 +12,11 @@ module Bozzuto
       class Slide < Struct.new(:community)
         delegate :title, :to => :community
 
+        # :nocov:
         def image
           community.hero_image
         end
+        # :nocov:
       end
 
       private
