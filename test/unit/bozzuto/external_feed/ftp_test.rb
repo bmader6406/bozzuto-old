@@ -5,52 +5,54 @@ class BozzutoExternalFeedFtpTest < ActiveSupport::TestCase
     include Bozzuto::ExternalFeed::Ftp
   end
 
-  describe ".types" do
-    it "returns all the classes under the Bozzuto::ExternalFeed namespace that have included the Ftp module" do
-      Bozzuto::ExternalFeed::Ftp.types.should == [
-        Bozzuto::ExternalFeed::LiveBozzutoFtp,
-        Bozzuto::ExternalFeed::QburstFtp
-      ]
-    end
-  end
-
-  describe ".download_files" do
-    context "when there are classes that have included the Ftp module" do
-      it "calls #download_files on those classes" do
-        Bozzuto::ExternalFeed::LiveBozzutoFtp.should_receive(:download_files)
-        Bozzuto::ExternalFeed::QburstFtp.should_receive(:download_files)
-
-        Bozzuto::ExternalFeed::Ftp.download_files
+  context "Bozzuto::ExternalFeed::Ftp" do
+    describe ".types" do
+      it "returns all the classes under the Bozzuto::ExternalFeed namespace that have included the Ftp module" do
+        Bozzuto::ExternalFeed::Ftp.types.should == [
+          Bozzuto::ExternalFeed::LiveBozzutoFtp,
+          Bozzuto::ExternalFeed::QburstFtp
+        ]
       end
     end
-  end
 
-  context "An object with the Ftp module mixed in" do
-    subject { TestFtpClass.new }
+    describe ".download_files" do
+      context "when there are classes that have included the Ftp module" do
+        it "calls #download_files on those classes" do
+          Bozzuto::ExternalFeed::LiveBozzutoFtp.expects(:download_files)
+          Bozzuto::ExternalFeed::QburstFtp.expects(:download_files)
 
-    describe ".transfer" do
-      context "with a file that doesn't exist" do
-        it "raises an exception" do
-          expect {
-            TestFtpClass.transfer('blaugh')
-          }.to raise_error(ArgumentError)
+          Bozzuto::ExternalFeed::Ftp.download_files
         end
       end
     end
 
-    describe "#server" do
-      it "raises an exception" do
-        expect {
-          subject.send(:server)
-        }.to raise_error(NotImplementedError)
-      end
-    end
+    context "An object with the Ftp module mixed in" do
+      subject { TestFtpClass.new }
 
-    describe "#feed_types" do
-      it "raises an exception" do
-        expect {
-          subject.send(:feed_types)
-        }.to raise_error(NotImplementedError)
+      describe ".transfer" do
+        context "with a file that doesn't exist" do
+          it "raises an exception" do
+            expect {
+              TestFtpClass.transfer('blaugh')
+            }.to raise_error(ArgumentError)
+          end
+        end
+      end
+
+      describe "#server" do
+        it "raises an exception" do
+          expect {
+            subject.send(:server)
+          }.to raise_error(NotImplementedError)
+        end
+      end
+
+      describe "#feed_types" do
+        it "raises an exception" do
+          expect {
+            subject.send(:feed_types)
+          }.to raise_error(NotImplementedError)
+        end
       end
     end
   end
