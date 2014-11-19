@@ -103,8 +103,8 @@ module Bozzuto
           :bathrooms        => floor_plan.bathrooms,
           :min_square_feet  => floor_plan.min_square_feet,
           :max_square_feet  => floor_plan.max_square_feet,
-          :min_rent         => floor_plan.min_rent,
-          :max_rent         => floor_plan.max_rent
+          :min_rent         => floor_plan.available_units.zero? ? 0 : floor_plan.min_rent,
+          :max_rent         => floor_plan.available_units.zero? ? 0 : floor_plan.max_rent,
         }
       end
     end

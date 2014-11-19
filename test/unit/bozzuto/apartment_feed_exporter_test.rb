@@ -350,6 +350,37 @@ module Bozzuto
         end
       end
 
+      context "having floor plans with 0 available units" do
+        setup do
+          @floor_plan = ApartmentFloorPlan.make({
+            :apartment_community => @community,
+            :name                => 'The Roxy',
+            :availability_url    => 'http://lol.wut',
+            :available_units     => 0,
+            :image_file_name     => 'test.jpg',
+            :image_type          => ApartmentFloorPlan::USE_IMAGE_FILE,
+            :bedrooms            => 2,
+            :bathrooms           => 1,
+            :min_square_feet     => 1400,
+            :max_square_feet     => 1400,
+            :min_rent            => 2260,
+            :max_rent            => 2300
+          })
+
+          @first_export = @exporter.data[:properties].first
+          @floor_plan_data = @first_export[:floorplans].first
+        end
+
+        should "set the #min_rent to 0" do
+          binding.pry
+          assert_equal 0, @floor_plan_data[:min_rent]
+        end
+
+        should "set the #max_rent to 0" do
+          assert_equal 0, @floor_plan_data[:max_rent]
+        end
+      end
+
       should "contain #facebook_url" do
         assert_equal 'http://facebook.com/dafuq', @first_export[:facebook_url]
       end
