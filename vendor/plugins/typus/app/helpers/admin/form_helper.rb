@@ -99,8 +99,8 @@ module Admin::FormHelper
 
     <<-HTML
 <li>
-  #{form.label label_text}
-  #{form.select options[:attribute_virtual], values, { :include_blank => true }}
+  #{form.label options[:attribute_virtual]}
+  #{form.select options[:attribute_virtual], values.html_safe, include_blank: true}
 </li>
     HTML
 
