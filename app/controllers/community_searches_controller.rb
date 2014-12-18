@@ -14,6 +14,10 @@ class CommunitySearchesController < ApplicationController
 
   private
 
+  def mobile_search_params
+    params[:q].try(:strip)
+  end
+
   # Convert params to the new syntax
   #
   #   search[city_id]   -> search[city_id_eq]
@@ -29,8 +33,8 @@ class CommunitySearchesController < ApplicationController
   end
 
   def search_for_mobile
-    if params[:q]
-      @search = Bozzuto::CommunitySearch.search(params[:q])
+    if mobile_search_params.present?
+      @search = Bozzuto::CommunitySearch.search(mobile_search_params)
 
       if @search.results?
         render :results

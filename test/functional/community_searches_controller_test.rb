@@ -90,56 +90,56 @@ class CommunitySearchesControllerTest < ActionController::TestCase
           setup do
             get :show
           end
-          
+
           should respond_with(:success)
           should render_template(:show)
         end
-        
+
         context "with query that returns no results" do
           setup do
             get :show, :q => 'bogus'
           end
-          
+
           should respond_with(:success)
           should render_template(:show)
           should assign_to(:search)
         end
-        
+
         context "with zip query" do
           setup do
             ApartmentCommunity.make(:zip_code => '22301')
             HomeCommunity.make(:zip_code => '22301-5601')
-            
+
             get :show, :q => '22301'
           end
-          
+
           should respond_with(:success)
           should render_template(:results)
           should assign_to(:search)
         end
-        
+
         context "with name query" do
           setup do
             ApartmentCommunity.make(:title => 'The Metropolitan')
             HomeCommunity.make(:title => 'Metropolitan Village')
-            
-            get :show, :q => 'Metro'
+
+            get :show, :q => 'Metro '
           end
-          
+
           should respond_with(:success)
           should render_template(:results)
           should assign_to(:search)
         end
-        
+
         context "with city query" do
           setup do
             @city = City.make(:name => 'Bethesda')
             ApartmentCommunity.make(:title => 'Upstairs at Bethesda Row', :city => @city)
             HomeCommunity.make(:title => 'Utopia Village', :city => @city)
-            
-            get :show, :q => 'Bethesda'
+
+            get :show, :q => ' Bethesda'
           end
-          
+
           should respond_with(:success)
           should render_template(:results)
           should assign_to(:search)
