@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141030143118) do
+ActiveRecord::Schema.define(:version => 20141219160330) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -1303,5 +1303,13 @@ ActiveRecord::Schema.define(:version => 20141030143118) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "zip_codes", :force => true do |t|
+    t.string  "zip",                                      :null => false
+    t.decimal "latitude",  :precision => 10, :scale => 6, :null => false
+    t.decimal "longitude", :precision => 10, :scale => 6, :null => false
+  end
+
+  add_index "zip_codes", ["zip"], :name => "index_zip_codes_on_zip", :unique => true
 
 end
