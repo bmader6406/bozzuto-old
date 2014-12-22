@@ -24,6 +24,18 @@ class ZipCodesTest < ActiveSupport::TestCase
         zip3.latitude.to_f.should  == 55.875767
         zip3.longitude.to_f.should == -131.46633
       end
+
+      context "when there are existing ZIP codes" do
+        before do
+          @zip_code = ZipCode.create(zip: '00210', latitude: 43.005895, longitude: -71.013202)
+        end
+
+        it "does not duplicate ZIP codes" do
+          Bozzuto::ZipCodes.load
+
+          ZipCode.where(zip: '00210').count.should == 1
+        end
+      end
     end
   end
 end

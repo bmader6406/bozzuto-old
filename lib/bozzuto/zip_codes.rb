@@ -8,7 +8,7 @@ module Bozzuto
 
     def load
       CSV.foreach(FILE, headers: true) do |row|
-        ZipCode.create(row.to_hash)
+        ZipCode.find_or_create_by_zip_and_latitude_and_longitude(*row.fields)
       end
     end
   end
