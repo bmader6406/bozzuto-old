@@ -51,3 +51,7 @@ end
 if HomePage.count.zero?
   HomePage.new.save(false)
 end
+
+###
+# ZIP Codes
+Bozzuto::ZipCodes.load
