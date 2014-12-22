@@ -11,7 +11,7 @@ module Bozzuto
         matching_zip = ZipCode.find_by_zip($~[:zip])
 
         results = if matching_zip.present?
-          zips_within_10_miles = ZipCode.within(10, origin: matching_zip).by_distance(origin: matching_zip).map(&:zip)
+          zips_within_10_miles = ZipCode.within(10, origin: matching_zip).by_distance(origin: matching_zip).select(:zip).map(&:zip)
 
           base_scope.search(:zip_code_starts_with_any => zips_within_10_miles).all.sort_by do |community|
             zips_within_10_miles.index ZIP_REGEX.match(community.zip_code)[:zip]
