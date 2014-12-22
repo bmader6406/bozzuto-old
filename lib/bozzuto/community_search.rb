@@ -1,16 +1,21 @@
 module Bozzuto
   class CommunitySearch
+    ZIP_REGEX = /\A(?<zip>\d{5})(?:-\d{4})?\Z/
+
     attr_reader :search_type, :query, :results
 
     def self.search(query)
       load_community_classes
 
-      if query =~ /\A(?<zip>\d{5})(?:-\d{4})?\Z/
+      if query =~ ZIP_REGEX
         matching_zip = ZipCode.find_by_zip($~[:zip])
 
         results = if matching_zip.present?
-          zips_within_10_miles = ZipCode.within(10, origin: matching_zip).map(&:zip)
-          base_scope.search(:zip_code_starts_with_any => zips_within_10_miles)
+          zips_within_10_miles = ZipCode.within(10, origin: matching_zip).by_distance(origin: matching_zip).map(&:zip)
+
+          base_scope.search(:zip_code_starts_with_any => zips_within_10_miles).all.sort_by do |community|
+            zips_within_10_miles.index ZIP_REGEX.match(community.zip_code)[:zip]
+          end
         end
 
         new(:zip, query, Array(results))

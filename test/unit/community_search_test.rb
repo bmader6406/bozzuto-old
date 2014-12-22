@@ -42,6 +42,12 @@ class CommunitySearchTest < ActiveSupport::TestCase
         assert_contains @search.results, @home_va
       end
 
+      should "order results based on proximity to given ZIP" do
+        assert_contains @search.results.first(2), @apartment_va # Same ZIP as @home_va
+        assert_contains @search.results.first(2), @home_va      # Same ZIP as @apartment_va
+        assert_equal @apartment_fc, @search.results.last
+      end
+
       should 'return correct total number of results' do
         assert_equal 3, @search.total_results_count
       end
