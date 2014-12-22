@@ -9,7 +9,7 @@ class CreateZipCodes < ActiveRecord::Migration
     add_index :zip_codes, :zip, unique: true
 
     execute %Q(
-      LOAD DATA LOCAL INFILE '#{Rails.root.join('db', 'seeds', 'zipcode_data.csv')}'
+      LOAD DATA INFILE '#{Rails.root.join('db', 'seeds', 'zipcode_data.csv')}'
       INTO TABLE zip_codes
       FIELDS TERMINATED BY ','
       LINES TERMINATED BY '\n'
