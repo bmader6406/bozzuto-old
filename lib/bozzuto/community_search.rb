@@ -11,11 +11,7 @@ module Bozzuto
         matching_zip = ZipCode.find_by_zip($~[:zip])
 
         results = if matching_zip.present?
-          zips_within_10_miles = ZipCode.within(10, origin: matching_zip).by_distance(origin: matching_zip).select(:zip).map(&:zip)
-
-          base_scope.search(:zip_code_starts_with_any => zips_within_10_miles).all.sort_by do |community|
-            zips_within_10_miles.index ZIP_REGEX.match(community.zip_code)[:zip]
-          end
+          zip_code_search_results_for zips_within_10_miles(matching_zip)
         end
 
         new(:zip, query, Array(results))
@@ -63,6 +59,16 @@ module Bozzuto
     def self.load_community_classes
       ApartmentCommunity
       HomeCommunity
+    end
+
+    def self.zips_within_10_miles(matching_zip)
+      ZipCode.within(10, origin: matching_zip).by_distance(origin: matching_zip).select(:zip).map(&:zip)
+    end
+
+    def self.zip_code_search_results_for(zip_codes)
+      base_scope.search(:zip_code_starts_with_any => zip_codes).all.sort_by do |community|
+        zip_codes.index ZIP_REGEX.match(community.zip_code)[:zip]
+      end
     end
   end
 end
