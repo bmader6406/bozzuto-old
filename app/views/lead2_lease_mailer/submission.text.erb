@@ -16,6 +16,6 @@ Desired Lease Term:
 Desired Unit Type:
 Desired Bedrooms: <%= @submission.bedrooms %>
 Desired Bathrooms: <%= @submission.bathrooms %>
-Pets: <%= @submission.pets ? 'yes' : 'no' %>
+Pets: <%= @submission.pets == '1' ? 'yes' : 'no' %>
 Pet Types:
 Comments: <%= @submission.comments.try(:gsub, /[\r|\n]+/, " ") %>
