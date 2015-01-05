@@ -1,13 +1,12 @@
 <% content_for :javascript do %>
   <%= double_click_neighborhood_view_script(neighborhood) %>
-  <%= live_person_js %>
 <% end %>
 
 <div class="section page-title">
   <div class="content">
     <h2><%= neighborhood %></h2>
 
-    <%= link_to neighborhoods, home_neighborhoods_path, :class => 'go-back' %>
+    <%= link_to 'Neighborhoods', home_neighborhoods_path, :class => 'go-back' %>
   </div>
 </div>
 
