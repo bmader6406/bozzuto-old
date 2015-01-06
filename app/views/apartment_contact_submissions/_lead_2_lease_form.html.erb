@@ -1,8 +1,8 @@
 <div class="row">
   <div class="cty-contact-hdr-left">
-    <h2 class="hdr-primary">Ready to speak with a leasing consultant?</h2>
+    <h2 class="hdr-primary">Have a question? Reach out. We’ll reach back.</h2>
 
-    <p id="community-contact-note">Fill out the form below for availability and specials.</p>
+    <p id="community-contact-note">Fill out the form below to let us know how we can help.</p>
   </div>
 
   <div class="cty-contact-hdr-right">
@@ -24,7 +24,7 @@
 
 <div id="community-contact-form">
   <%= error_messages_for :submission %>
-  
+
   <%= form_for :submission, :html => { :class => "required-form" } do |f| -%>
     <fieldset>
       <h3>Contact Information</h3>
@@ -81,7 +81,7 @@
         <%= f.label :bedrooms, 'Number of Bedrooms' %>
         <%= f.select :bedrooms, (1..5) %>
       </p>
-      
+
       <p>
         <%= f.label :bathrooms, 'Number of Bathrooms' %>
         <%= f.select :bathrooms, (1..5) %>
@@ -98,7 +98,7 @@
         <%= f.text_area :comments, :cols => 60, :rows => 7 %>
       </p>
     </fieldset>
-    
+
     <p class="submit">
       <%= submit_tag 'Submit' %>
     </p>
