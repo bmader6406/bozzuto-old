@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141219160330) do
+ActiveRecord::Schema.define(:version => 20150109184518) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -1000,7 +1000,7 @@ ActiveRecord::Schema.define(:version => 20141219160330) do
     t.string   "website_url_text"
     t.text     "neighborhood_description"
     t.string   "neighborhood_listing_image_file_name"
-    t.boolean  "included_in_export",                   :default => false, :null => false
+    t.boolean  "included_in_export",                   :default => true,  :null => false
     t.integer  "secondary_lead_source_id"
     t.string   "hero_image_file_name"
     t.string   "hero_image_content_type"
