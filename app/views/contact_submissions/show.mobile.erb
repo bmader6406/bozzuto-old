@@ -1,5 +1,5 @@
 <% content_for :javascript do %>
-  <%= hyly_script_for 'Bozzuto' %>
+  <%= hyly_script :id => Bozzuto::HyLy::ALT_ID %>
 <% end %>
 
 <div class="section">
@@ -32,4 +32,4 @@
   </div>
 </div>
 
-<%= hyly_form :redirect_to => thank_you_contact_url %>
+<%= hyly_form :redirect_to => thank_you_contact_url, :id => Bozzuto::HyLy::ALT_ID %>

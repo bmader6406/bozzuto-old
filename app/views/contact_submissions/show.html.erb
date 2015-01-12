@@ -1,5 +1,5 @@
 <% content_for :javascript do %>
-  <%= hyly_script_for 'Bozzuto' %>
+  <%= hyly_script :id => Bozzuto::HyLy::ALT_ID %>
 <% end %>
 
 <% content_for :body_class do %>contact<% end %>
@@ -7,4 +7,4 @@
 <% breadcrumb_item('Contact') %>
 <% breadcrumb_title('Contact') %>
 
-<%= hyly_form :redirect_to => thank_you_contact_url %>
+<%= hyly_form :redirect_to => thank_you_contact_url, :id => Bozzuto::HyLy::ALT_ID %>
