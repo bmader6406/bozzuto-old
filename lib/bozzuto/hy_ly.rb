@@ -1,6 +1,7 @@
 module Bozzuto
   module HyLy
-    ID = 'AXrxloE2b'
+    PRIMARY_ID = 'AXrxloE2b'
+    ALT_ID     = 'pXCkf054i'
 
     PIDS = {
       'Bozzuto'                      => '',
