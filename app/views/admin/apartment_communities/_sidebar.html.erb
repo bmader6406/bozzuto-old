@@ -93,5 +93,25 @@
         </p>
       <ul>
     </div>
+
+    <div class="module">
+      <h2>Apartments Export</h2>
+      <ul class="external-feeds">
+        <li>
+          <%= link_to 'Rebuild & Re-Send Apartments Export',
+            {
+              :controller => 'admin/external_feeds',
+              :action     => :rebuild_and_resend_export,
+            },
+            :class => 'refresh-feed'
+          %>
+
+          <span class="external-cms-message please-wait">
+            <%= image_tag 'spinner.gif' %>
+            Rebuilding and re-sending apartments export. Please wait (this may take awhile)&hellip;
+          </span>
+        </li>
+      <ul>
+    </div>
   <% end %>
 <% end %>

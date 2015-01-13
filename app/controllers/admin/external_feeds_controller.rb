@@ -5,8 +5,6 @@ class Admin::ExternalFeedsController < Admin::MasterController
   before_filter      :create_ftp,         :only => :download_feeds
 
   def load
-    message = {}
-
     name = @loader.feed_name
 
     begin
@@ -34,8 +32,6 @@ class Admin::ExternalFeedsController < Admin::MasterController
   end
 
   def download_feeds
-    message = {}
-
     name = @ftp.ftp_name
 
     begin
@@ -62,7 +58,29 @@ class Admin::ExternalFeedsController < Admin::MasterController
     redirect_to :back, message
   end
 
+  def rebuild_and_resend_export
+    APP_CONFIG[:apartment_export_file].tap do |file|
+      File.open(file, 'w') do |f|
+        f.write(Bozzuto::ApartmentFeedExporter.new.to_xml)
+      end
+
+      Bozzuto::ExternalFeed::QburstFtp.transfer file
+    end
+
+    message[:notice] = 'Apartments export successfully rebuilt and sent.'
+  rescue Exception => e
+    report_error('rebuild and re-export via FTP', e)
+    HoptoadNotifier.notify(e)
+    message[:notice] = 'There was an error when rebuilding and re-sending the export.  Please try again later.'
+  ensure
+    redirect_to :back, message
+  end
+
   private
+
+  def message
+    @message ||= {}
+  end
 
   def create_feed_loader
     if params[:feed_type].present?
