@@ -55,3 +55,7 @@ end
 ###
 # ZIP Codes
 Bozzuto::ZipCodes.load
+
+###
+# Load HyLy Property PIDs
+Bozzuto::HyLy.seed_pids
