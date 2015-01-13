@@ -1,9 +1,11 @@
+require 'csv'
+
 module Bozzuto
   module HyLy
+    PID_FILE   = Rails.root.join('db', 'seeds', 'hyly_pids.csv')
     PRIMARY_ID = 'AXrxloE2b'
     ALT_ID     = 'pXCkf054i'
-
-    PIDS = {
+    PIDS       = {
       'Bozzuto'                      => '',
       'Bozzuto Management Company'   => '1452068536020681077',
       'Bozzuto Homes'                => '1453516885273668017',
@@ -21,6 +23,18 @@ module Bozzuto
 
     def self.pid_for(thing)
       thing.is_a?(Property) ? thing.hyly_id : PIDS[thing]
+    end
+
+    def self.seed_pids
+      CSV.foreach(PID_FILE, headers: true) do |row|
+        Property.find_by_title(row['Property Name']).tap do |property|
+          unless property.nil? || property.hyly_id.present?
+            pid = /pid=(?<pid>\d+)"/.match(row['Script'])[:pid]
+
+            property.update_attributes(:hyly_id => pid)
+          end
+        end
+      end
     end
   end
 end

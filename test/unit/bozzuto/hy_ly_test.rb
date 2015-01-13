@@ -24,4 +24,22 @@ class Bozzuto::HyLyTest < ActiveSupport::TestCase
       end
     end
   end
+
+  context ".seed_pids" do
+    before do
+      @capitol  = ApartmentCommunity.make(:title => 'Capitol at Chelsea', :hyly_id => 'existing')
+      @halstead = ApartmentCommunity.make(:title => 'Halstead Danvers',   :hyly_id => nil)
+      @kent     = ApartmentCommunity.make(:title => '111 Kent',           :hyly_id => nil)
+
+      Bozzuto::HyLy::PID_FILE = Rails.root.join('test', 'files', 'hyly_pids.csv')
+    end
+
+    it "updates the properties' hyly_ids as appropriate" do
+      Bozzuto::HyLy.seed_pids
+
+      @capitol.reload.hyly_id.should  == 'existing'
+      @halstead.reload.hyly_id.should == '1477193523034471277'
+      @kent.reload.hyly_id.should     == '1451448400987805744'
+    end
+  end
 end
