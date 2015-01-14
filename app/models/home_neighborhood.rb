@@ -50,6 +50,10 @@ class HomeNeighborhood < ActiveRecord::Base
     home_communities(reload).published
   end
 
+  def has_communities?
+    communities.any?
+  end
+
   def as_jmapping
     {
       :id                => id,

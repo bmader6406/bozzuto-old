@@ -69,6 +69,10 @@ module Bozzuto
         end
       end
 
+      def has_communities?
+        communities.any?
+      end
+
       def available_floor_plans(reload = false)
         @available_floor_plans = nil if reload
 

@@ -88,6 +88,20 @@ class NeighborhoodTest < ActiveSupport::TestCase
         end
       end
 
+      describe "#has_communities?" do
+        context "when the neighborhood has communities" do
+          it "returns true" do
+            subject.has_communities?.should == true
+          end
+        end
+
+        context "when the mtro does not have any communities" do
+          it "returns false" do
+            Neighborhood.make.has_communities?.should == false
+          end
+        end
+      end
+
       describe "#available_floor_plans" do
         it "returns all of the unique floor plans" do
           subject.available_floor_plans.should == [@floor_plan_1, @floor_plan_2]
