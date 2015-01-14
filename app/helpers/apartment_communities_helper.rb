@@ -108,6 +108,6 @@ module ApartmentCommunitiesHelper
   end
 
   def community_landing_page?
-    /#{@community.to_param}\z/.match(controller.request.url)
+    !!/#{@community.to_param}\z/.match(controller.request.url)
   end
 end
