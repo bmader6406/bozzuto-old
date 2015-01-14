@@ -16,7 +16,7 @@ class MetrosController < ApplicationController
   helper_method :states
 
   def metros
-    @metros ||= Metro.positioned
+    @metros ||= Metro.positioned.select(&:has_communities?)
   end
   helper_method :metros
 
@@ -26,7 +26,7 @@ class MetrosController < ApplicationController
   helper_method :metro
 
   def areas
-    @areas ||= metro.areas.positioned
+    @areas ||= metro.areas.positioned.select(&:has_communities?)
   end
   helper_method :areas
 end

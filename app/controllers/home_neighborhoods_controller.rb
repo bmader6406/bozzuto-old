@@ -15,7 +15,7 @@ class HomeNeighborhoodsController < ApplicationController
   helper_method :neighborhood
 
   def neighborhoods
-    @neighborhoods ||= HomeNeighborhood.positioned
+    @neighborhoods ||= HomeNeighborhood.positioned.select(&:has_communities?)
   end
   helper_method :neighborhoods
 end

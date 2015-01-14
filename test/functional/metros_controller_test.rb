@@ -6,6 +6,11 @@ class MetrosControllerTest < ActionController::TestCase
       describe "GET to #index" do
         before do
           @metro = Metro.make
+          @other = Metro.make
+
+          @area       = Area.make(:metro => @metro)
+          @community  = ApartmentCommunity.make
+          @membership = AreaMembership.make(:area => @area, :apartment_community => @community)
 
           get :index
         end

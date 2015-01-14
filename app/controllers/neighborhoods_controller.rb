@@ -23,7 +23,7 @@ class NeighborhoodsController < ApplicationController
   helper_method :neighborhood
 
   def nearby_neighborhoods
-    @nearby_neighborhoods ||= neighborhood.nearby_neighborhoods
+    @nearby_neighborhoods ||= neighborhood.nearby_neighborhoods.select(&:has_communities?)
   end
   helper_method :nearby_neighborhoods
 

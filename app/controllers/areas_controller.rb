@@ -18,12 +18,12 @@ class AreasController < ApplicationController
   helper_method :area
 
   def neighborhoods
-    @neighborhoods ||= area.neighborhoods.positioned
+    @neighborhoods ||= area.neighborhoods.positioned.select(&:has_communities?)
   end
   helper_method :neighborhoods
 
   def nearby_areas
-    @nearby_areas ||= area.nearby_areas
+    @nearby_areas ||= area.nearby_areas.select(&:has_communities?)
   end
   helper_method :nearby_areas
 

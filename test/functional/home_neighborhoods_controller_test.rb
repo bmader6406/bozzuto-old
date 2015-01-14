@@ -17,14 +17,18 @@ class HomeNeighborhoodsControllerTest < ActionController::TestCase
 
       describe "GET to #index" do
         before do
-          @neighborhoods = [HomeNeighborhood.make, HomeNeighborhood.make]
+          @neighborhood1 = HomeNeighborhood.make
+          @neighborhood2 = HomeNeighborhood.make
+          @community     = HomeCommunity.make
+
+          HomeNeighborhoodMembership.make(:home_neighborhood => @neighborhood1, :home_community => @community)
 
           get :index
         end
 
         should respond_with(:success)
         should render_template(:index)
-        should assign_to(:neighborhoods) { @neighborhoods }
+        should assign_to(:neighborhoods) { [@neighborhood1] }
       end
     end
   end
