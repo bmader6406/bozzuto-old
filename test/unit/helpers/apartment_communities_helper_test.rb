@@ -157,5 +157,29 @@ class ApartmentCommunitiesHelperTest < ActionView::TestCase
         end
       end
     end
+
+    describe "#community_landing_page?" do
+      context "when the current URL points to a community landing page" do
+        before do
+          @community = ApartmentCommunity.make
+          controller.request.stubs(:url).returns("www.bozzuto.com/apartments/communities/#{@community.to_param}")
+        end
+
+        it "returns true" do
+          community_landing_page?.should == true
+        end
+      end
+
+      context "when the current URL points to a community sub-page" do
+        before do
+          @community = ApartmentCommunity.make
+          controller.request.stubs(:url).returns("www.bozzuto.com/apartments/communities/#{@community.to_param}/features")
+        end
+
+        it "returns false" do
+          community_landing_page?.should == false
+        end
+      end
+    end
   end
 end
