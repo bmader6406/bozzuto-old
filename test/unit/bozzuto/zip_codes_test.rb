@@ -8,9 +8,7 @@ class ZipCodesTest < ActiveSupport::TestCase
       end
 
       it "creates a ZipCode for each row in the CSV" do
-        Bozzuto::ZipCodes.load
-
-        ZipCode.count.should == 3
+        expect { Bozzuto::ZipCodes.load }.to change { ZipCode.count }.by 3
 
         zip1 = ZipCode.find_by_zip('00210')
         zip1.latitude.to_f.should  == 43.005895

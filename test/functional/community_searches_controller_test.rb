@@ -107,6 +107,7 @@ class CommunitySearchesControllerTest < ActionController::TestCase
 
         context "with zip query" do
           setup do
+            ZipCode.create(zip: '22301', latitude: 38.819863, longitude: -77.05854)
             ApartmentCommunity.make(:zip_code => '22301')
             HomeCommunity.make(:zip_code => '22301-5601')
 
