@@ -14,7 +14,7 @@
 
     <%= if_present?(metro.areas) do |areas| %>
       <ul class="nh-arrow-list">
-        <% areas.positioned.each do |area| %>
+        <% areas.positioned.select(&:has_communities?).each do |area| %>
           <li><%= link_to area.name_with_count, area_path(metro, area) %></li>
         <% end %>
       </ul>
