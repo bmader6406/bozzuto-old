@@ -372,7 +372,6 @@ module Bozzuto
         end
 
         should "set the #min_rent to 0" do
-          binding.pry
           assert_equal 0, @floor_plan_data[:min_rent]
         end
 
