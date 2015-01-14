@@ -2,10 +2,12 @@
   <%= render :partial => 'properties/recently_viewed' %>
 
   <div class="row">
-    <% if property.is_a?(ApartmentCommunity) -%>
-      <div id="why-is-bozzuto-the-leader" class="col">
-        <%= snippet("Why is Bozzuto the Leader?") %>
-      </div>
+    <% if property.is_a?(ApartmentCommunity)  -%>
+      <% if community_landing_page? %>
+        <div id="why-is-bozzuto-the-leader" class="col">
+          <%= snippet("Why is Bozzuto the Leader?") %>
+        </div>
+      <% end %>
     <% else -%>
       <div id="why-buy-from-bozzuto" class="col">
         <%= snippet("Why Buy from Bozzuto?") %>
