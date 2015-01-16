@@ -552,7 +552,10 @@
       color: #92929b;
     }
     #footer a {
-      background: url(../images/structure/bg-footer-a.gif) no-repeat center left;
+      background: url(../images/structure/bg-footer-a.gif) no-repeat 0 7px;
+      display: inline-block;
+      line-height: 1.5;
+      padding: 2px 9px;
     }
     #footer a:hover {
       text-decoration: none;
