@@ -107,7 +107,7 @@ Bozzuto::Application.routes.draw do
 
       resource :contact,
                :controller => :apartment_contact_submissions,
-               :only       => :show do
+               :only       => [:show, :create] do
         get :thank_you, :on => :member
       end
 
