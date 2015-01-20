@@ -46,6 +46,7 @@ class StateTest < ActiveSupport::TestCase
         @community_3 = ApartmentCommunity.make
 
         @neighborhood_1 = Neighborhood.make(:state => subject, :apartment_communities => [@community_1])
+        @neighborhood_2 = Neighborhood.make(:state => subject, :apartment_communities => [])
 
         @area_1 = Area.make(:communities, :state => subject, :apartment_communities => [@community_1, @community_2])
         @area_2 = Area.make(:neighborhoods, :state => subject)

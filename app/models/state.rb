@@ -43,6 +43,6 @@ class State < ActiveRecord::Base
   def places(reload = false)
     @places = nil if reload
 
-    @places ||= (neighborhoods + areas.showing_communities).sort_by(&:apartment_communities_count).reverse
+    @places ||= (neighborhoods + areas.showing_communities).sort_by(&:apartment_communities_count).reverse.select(&:has_communities?)
   end
 end
