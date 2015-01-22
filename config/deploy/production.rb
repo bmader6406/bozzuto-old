@@ -1,10 +1,10 @@
 set :application, 'bozzuto'
-set :user,        'www-data'
-set :deploy_to,   "/var/www/#{application}"
+set :user,        'deploy'
+set :deploy_to,   "/var/www/#{application}/production"
 set :branch,      "origin/production"
 
-role :web, "54.241.3.36"
-role :app, "54.241.3.36"
-role :db,  "54.241.3.36", :primary => true
+role :web, "54.215.11.223:8022"
+role :app, "54.215.11.223:8022"
+role :db,  "54.215.11.223:8022", :primary => true
 
 after "deploy", "refresh_sitemaps"
