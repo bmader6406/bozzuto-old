@@ -3,8 +3,6 @@ class PropertySlide < ActiveRecord::Base
 
   acts_as_list :scope => :property_slideshow
 
-  default_scope :order => 'position ASC'
-
   has_attached_file :image,
     :url             => '/system/:class/:id/:style.:extension',
     :styles          => { :slide => '870x375#', :mobile_thumb => '280x85#', :thumb => '55x55#' },

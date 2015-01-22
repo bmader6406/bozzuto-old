@@ -1,8 +1,6 @@
 class BodySlide < ActiveRecord::Base
   acts_as_list :scope => :body_slideshow
 
-  default_scope :order => 'position ASC'
-
   belongs_to :body_slideshow
   belongs_to :property
 

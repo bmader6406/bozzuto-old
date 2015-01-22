@@ -1,8 +1,6 @@
 class HomePageSlide < ActiveRecord::Base
   acts_as_list
 
-  default_scope :order => 'position ASC'
-
   belongs_to :home_page
 
   has_attached_file :image,
