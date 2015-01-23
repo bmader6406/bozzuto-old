@@ -17,10 +17,6 @@ if environment == 'production'
     rake "-s sitemap:refresh"
   end
 
-  every 1.day, :at => '9:00 am' do
-    command 'cp /home/bozzuto_feeds/bozzutovwfeed.xml /home/bozzuto/bozzutocom.xml'
-  end
-
   every 1.day, :at => ['10:05 am', '2:05 pm'] do
     rake 'bozzuto:download_property_feeds'
   end
