@@ -6,6 +6,10 @@
       <ul>
         <% about_root_pages.each do |page| %>
           <li><%= link_to page.title, page_path(page.section, page) %></li>
+
+          <% if page.title == 'Values' %>
+            <li><%= link_to 'Careers', careers_path %></li>
+          <% end %>
         <% end %>
       </ul>
     </div>
@@ -52,12 +56,7 @@
       <h4>Get in Touch</h4>
 
       <p>
-        301.220.0100
-        <a href="mailto:feedback@bozzuto.com">feedback@bozzuto.com</a>
-        <%= link_to 'Careers', careers_path %>
-      </p>
-
-      <p>
+        301.220.0100<br />
         6406 Ivy Lane<br />
         Suite 700<br />
         Greenbelt, MD 20770
