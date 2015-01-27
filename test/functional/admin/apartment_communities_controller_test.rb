@@ -201,5 +201,28 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
         assert !@community.managed_externally?
       end
     end
+
+    context "GET to #delete_floor_plans" do
+      setup do
+        @community = ApartmentCommunity.make
+        @studio    = ApartmentFloorPlanGroup.make(:studio)
+        @penthouse = ApartmentFloorPlanGroup.make(:penthouse)
+        @plan1     = ApartmentFloorPlan.make(:apartment_community => @community, :floor_plan_group => @studio)
+        @plan2     = ApartmentFloorPlan.make(:apartment_community => @community, :floor_plan_group => @penthouse)
+
+        get :delete_floor_plans, :id => @community.id
+      end
+
+      should respond_with(:redirect)
+      should redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
+      should assign_to(:item) { @community }
+      should set_the_flash.to('Deleted all floor plans.')
+
+      it "deletes all the floor plans for the community" do
+        @community.reload
+
+        @community.floor_plans.should == []
+      end
+    end
   end
 end
