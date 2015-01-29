@@ -21,6 +21,9 @@ set(:previous_revision) {
   capture("cd #{current_path}; git rev-parse --short HEAD@{1}").strip
 }
 
+set :slack_url,     'https://hooks.slack.com/services/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'
+set :slack_channel, '#bozzuto'
+
 set :sync_directories, ["public/system"]
 set :sync_backups, 3
 
@@ -28,10 +31,11 @@ set :default_environment, {
   'PATH' => '/opt/rbenv/shims:/usr/local/rbenv/shims:/opt/rbenv/bin:/usr/local/rbenv/bin:$PATH'
 }
 
-after 'multistage:ensure', 'config:defaults'
+after 'multistage:ensure',  'config:defaults'
 after 'deploy:update_code', 'app:package_assets'
 after 'deploy:update_code', 'app:clear_asset_caches'
 after 'deploy:update_code', 'app:update_crontab'
+after 'deploy:restart',     'deploy:notify:slack'
 
 namespace :deploy do
   task :start do
