@@ -80,13 +80,13 @@ input[type=submit] {
   padding: 20px 0;
   width: 280px;
 }
-h2, .go-back { 
+h2, .go-back {
   color:#636972;
   font-size: 16px;
 }
 h3 { font-size: 14px; margin-bottom: 16px; }
 h4 { font-weight: bold; font-size: 14px; }
-.flash { 
+.flash {
   background-color: #DBE1E6;
   border: 2px solid #677E82;
   padding: 10px;
@@ -127,7 +127,7 @@ input, select, textarea, .submit {
   padding: 25px 22px;
 }
 .header h1 {
-  background: url(/images/mobile/structure/bg-bozzuto-logo.png) 0 0 no-repeat; 
+  background: url(/images/mobile/structure/bg-bozzuto-logo.png) 0 0 no-repeat;
   float: left;
   height: 32px;
   margin-top: -9px;
@@ -168,7 +168,7 @@ input, select, textarea, .submit {
   float: left;
   margin-bottom: 7px;
 }
-.full-site:after, .privacy-policy:after { 
+.full-site:after, .privacy-policy:after {
   content: "|"; padding: 0 9px;
 }
 .full-site { margin-left: 82px }
@@ -201,7 +201,7 @@ input, select, textarea, .submit {
 .contact .call-us,
 .contact .call-back { background-position: 0 -93px }
 
-.contact .email-us,
+.contact .request-info,
 .contact .text-me,
 .contact .schedule-tour { background-position: 0 -127px }
 
@@ -308,7 +308,7 @@ input, select, textarea, .submit {
   .property .thumbnail,
   .property .info,
   .floor-plan .info,
-  .home .info { 
+  .home .info {
     border-right: 1px solid #aaa;
     color: #606060;
     float: left;
@@ -397,7 +397,7 @@ input, select, textarea, .submit {
 
   /* @group Floor Plan Detail */
   .floor-plan-detail img { margin-bottom: 16px; }
-  /* @end Floor Plan Detail */ 
+  /* @end Floor Plan Detail */
 
   /* @group Testimonials */
   .testimonial {
@@ -412,7 +412,7 @@ input, select, textarea, .submit {
   }
   /* @end Testimonials */
 
-  
+
   /* @group SMS Form */
   .sms-form form p { margin-bottom: 10px; }
   form .hint { font-size: 11px; }
