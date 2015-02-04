@@ -52,6 +52,7 @@ class ApartmentFloorPlan < ActiveRecord::Base
 
   scope :with_square_footage, :conditions => 'min_square_feet > 0'
 
+  alias_attribute :availability, :available_units
 
   def self.with_min_rent
     ordered_by_min_rent.first
@@ -100,6 +101,9 @@ class ApartmentFloorPlan < ActiveRecord::Base
     available_units > 0
   end
 
+  def square_footage
+    "#{min_square_feet} to #{max_square_feet}"
+  end
 
   private
 

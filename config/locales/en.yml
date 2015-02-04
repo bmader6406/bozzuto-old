@@ -104,6 +104,7 @@ en:
         max_rent: Max Rent
         max_square_feet: Maximum Square Feet
         min_square_feet: Minimum Square Feet
+        square_footage: SQFT
       area:
         area_type: Area Type
         banner_image: Banner Image

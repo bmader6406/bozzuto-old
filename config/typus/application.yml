@@ -52,7 +52,7 @@ ApartmentContactConfiguration:
 
 ApartmentFloorPlan:
   fields:
-    default: name, bedrooms, bathrooms, featured, position
+    default: name, bedrooms, bathrooms, square_footage, availability, featured, position
     list: actual_image, bedrooms, bathrooms, position
     form: apartment_community, name, featured, image_type, image_url, image, availability_url, available_units, bedrooms, bathrooms, min_square_feet, max_square_feet, min_rent, max_rent, floor_plan_group
     options:

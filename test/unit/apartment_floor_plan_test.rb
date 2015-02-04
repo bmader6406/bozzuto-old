@@ -155,6 +155,27 @@ class ApartmentFloorPlanTest < ActiveSupport::TestCase
       end
     end
 
+    describe "#availability" do
+      before do
+        subject.available_units = 10
+      end
+
+      it "returns the number of available units" do
+        subject.availability.should == 10
+      end
+    end
+
+    describe "#square_footage" do
+      before do
+        subject.min_square_feet = 500
+        subject.max_square_feet = 750
+      end
+
+      it "returns a string containing the minimum and maximum square footage" do
+        subject.square_footage.should == '500 to 750'
+      end
+    end
+
     describe ".largest named scope" do
       before do
         @community = ApartmentCommunity.make
