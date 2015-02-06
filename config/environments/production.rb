@@ -35,6 +35,8 @@ Bozzuto::Application.configure do
     "#{protocol}www.bozzuto.com"
   }
 
+  config.action_mailer.asset_host = 'http://bozzuto.com'
+
   config.action_mailer.default_url_options = {
     :host => 'bozzuto.com'
   }
