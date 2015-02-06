@@ -21,8 +21,9 @@ set(:previous_revision) {
   capture("cd #{current_path}; git rev-parse --short HEAD@{1}").strip
 }
 
-set :slack_url,     'https://hooks.slack.com/services/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'
+set :slack_url,     'https://hooks.slack.com/services/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'
 set :slack_channel, '#bozzuto'
+set :slack_emoji,   ':sparkles:'
 
 set :sync_directories, ["public/system"]
 set :sync_backups, 3
