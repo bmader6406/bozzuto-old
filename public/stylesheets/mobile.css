@@ -1,4 +1,4 @@
-/* 
+/*
  * 	Core Owl Carousel CSS File
  *	v1.3.3
  */
@@ -64,8 +64,9 @@
   -moz-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0); }
 
+/*# sourceMappingURL=owl.carousel.css.map */
 /*
-* 	Owl Carousel Owl Demo Theme 
+* 	Owl Carousel Owl Demo Theme
 *	v1.3.3
 */
 .owl-theme .owl-controls {
@@ -140,8 +141,9 @@
   min-height: 150px;
   background: url(AjaxLoader.gif) no-repeat center center; }
 
-/* 
- *  Owl Carousel CSS3 Transitions 
+/*# sourceMappingURL=owl.theme.css.map */
+/*
+ *  Owl Carousel CSS3 Transitions
  *  v1.3.2
  */
 .owl-origin {
@@ -344,6 +346,7 @@
   to {
     opacity: 0;
     transform: scale(1.5); } }
+/*# sourceMappingURL=owl.transitions.css.map */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
