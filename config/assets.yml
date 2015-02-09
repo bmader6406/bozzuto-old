@@ -25,8 +25,9 @@ javascripts:
   lookup:
     - public/javascripts/vendor/lookup.js
   mobile:
-    - public/javascripts/vendor/jquery.min.js
-    - public/javascripts/analytics.js
+    - public/javascripts/vendor/jquery-1.11.1.min.js
+    - public/javascripts/vendor/owl.carousel.js
+    - public/javascripts/mobile.js
   neighborhoods:
     - public/javascripts/vendor/markerwithlabel.js
     - public/javascripts/vendor/polyfill.object.create.js

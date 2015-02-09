@@ -11,8 +11,10 @@
 <div class="section community-overview">
   <div class="content">
     <% if @community.slideshow.present? %>
-      <div class="banner <%= 'scavenger-hunt' if @code.present? %>">
-        <%= image_tag @community.slideshow.slides.first.image.url(:mobile_thumb) %>
+      <div class="banner owl-carousel <%= 'scavenger-hunt' if @code.present? %>">
+        <% @community.slideshow.slides.each do |thumbnail| %>
+          <%= image_tag thumbnail.image.url(:mobile_thumb) %>
+        <% end %>
       </div>
     <% end %>
 
