@@ -22,16 +22,16 @@ module Bozzuto
     }
 
     def self.pid_for(thing)
-      thing.is_a?(Property) ? thing.hyly_id : PIDS[thing]
+      thing.is_a?(ApartmentCommunity) ? thing.hyly_id : PIDS[thing]
     end
 
     def self.seed_pids
       CSV.foreach(PID_FILE, headers: true) do |row|
-        Property.find_by_title(row['Property Name']).tap do |property|
-          unless property.nil? || property.hyly_id.present?
+        ApartmentCommunity.find_by_title(row['Property Name']).tap do |community|
+          unless community.nil? || community.hyly_id.present?
             pid = /pid=(?<pid>\d+)"/.match(row['Script'])[:pid]
 
-            property.update_attributes(:hyly_id => pid)
+            community.update_attributes(:hyly_id => pid)
           end
         end
       end
