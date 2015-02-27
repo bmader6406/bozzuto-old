@@ -22,7 +22,7 @@
 
   <p>
     <%= f.label :topic_id, 'What would you like to ask us about?' %>
-    <%= f.select :topic_id, ContactTopic.all.map { |topic| [topic.topic, topic.id] } %>
+    <%= f.select :topic_id, ContactTopic.order(:position).map { |topic| [topic.topic, topic.id] } %>
   </p>
 
   <p>

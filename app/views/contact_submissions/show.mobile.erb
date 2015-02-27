@@ -37,7 +37,7 @@
 
       <%= f.text_field :email, :class => 'contact-name', :placeholder => 'Your Email' %>
 
-      <%= f.select :topic_id, ContactTopic.all.map { |topic| [topic.topic, topic.id] } %>
+      <%= f.select :topic_id, ContactTopic.order(:position).map { |topic| [topic.topic, topic.id] } %>
 
       <%= f.text_area :message, :rows => 8, :cols => 37, :placeholder => 'Your message' %>
 
