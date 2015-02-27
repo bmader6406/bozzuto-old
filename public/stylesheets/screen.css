@@ -4026,9 +4026,15 @@ div.wysiwyg ul li {
     #masthead-slideshow {
       height: 273px;
     }
+    .landing #masthead-slideshow {
+      height: 223px;
+    }
     #masthead-slideshow ul.slides {
       height: 273px;
       z-index: 1;
+    }
+    .landing #masthead-slideshow ul.slides {
+      height: 223px;
     }
     #masthead-slideshow ul.slides li.slide {
       background: #c0c5cb url(../images/structure/bg-masthead.gif) repeat-x 0 0;
@@ -4039,6 +4045,9 @@ div.wysiwyg ul li {
       top: 0;
       width: 960px;
       z-index: 1;
+    }
+    .landing #masthead-slideshow ul.slides li.slide {
+      height: 223px;
     }
     #masthead-slideshow ul.slides li.current {
       z-index: 2;
