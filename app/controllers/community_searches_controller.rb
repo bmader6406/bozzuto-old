@@ -22,13 +22,22 @@ class CommunitySearchesController < ApplicationController
   #
   #   search[city_id]   -> search[city_id_eq]
   #   search[county_id] -> search[county_id_eq]
+  #
+  # Eliminate empty strings from array values
+  #
+  #   ['', '', '2', '', ''] -> ['2']
+  #
   def process_params
     return unless params[:search].present?
 
-    [:city_id, :county_id].each do |key|
-      if params[:search].key?(key)
-        params[:search][:"#{key}_eq"] = params[:search].delete(key)
-      end
+    params[:search] = params[:search].reduce(Hash.new) do |processed_params, (filter, value)|
+      if %w(city_id county_id).include? filter
+        processed_params.merge("#{filter}_eq" => value)
+      elsif value.is_a? Array
+        processed_params.merge(filter => value.map { |v| v.empty? ? nil : v }.compact)
+      else
+        processed_params.merge(filter => value)
+      end.with_indifferent_access
     end
   end
 

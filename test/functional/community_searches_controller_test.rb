@@ -18,14 +18,19 @@ class CommunitySearchesControllerTest < ActionController::TestCase
         end
 
         context "with search params" do
-          context "in the old format" do
+          context "that need to be processed" do
             before do
-              get :show, :search => { :city_id => 123, :county_id => 456 }
+              get :show, :search => {
+                :city_id                => 123,
+                :county_id              => 456,
+                :with_floor_plan_groups => ['', '', '2', '', ''],
+                :with_property_features => ['', '', '', '', '']
+              }
             end
 
             should respond_with(:success)
 
-            it "converts them to the new format" do
+            it "converts them to the proper format" do
               params = @controller.params
 
               params[:search][:city_id].should == nil
@@ -33,6 +38,9 @@ class CommunitySearchesControllerTest < ActionController::TestCase
 
               params[:search][:county_id].should == nil
               params[:search][:county_id_eq].should == 456
+
+              params[:search][:with_floor_plan_groups].should == ['2']
+              params[:search][:with_property_features].should == []
             end
           end
 
