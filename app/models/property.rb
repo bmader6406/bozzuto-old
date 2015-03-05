@@ -32,6 +32,7 @@ class Property < ActiveRecord::Base
   has_and_belongs_to_many :property_features, :order => 'position ASC'
 
   has_many :landing_page_popular_orderings, :dependent => :destroy
+  has_many :office_hours, :order => :day
 
   validates_presence_of :title, :city
   validates_length_of :short_title, :maximum => 22, :allow_nil => true
