@@ -52,6 +52,7 @@ en:
       mini_slideshow: Mini Slideshow
       neighborhood_membership: Neighborhood Membership
       news_post: News
+      office_hour: Office Hour
       photo: Photo
       press_release: Press Release
       project_category: Project Category
@@ -263,6 +264,12 @@ en:
         meta_keywords: SEO Keywords
         meta_title: SEO Title
         published_at: Published At
+      office_hour:
+        to_s: Info
+        opens_at: Opens At
+        opens_at_period: Opens At Period
+        closes_at: Closes At
+        closes_at_period: Closes At Period
       page:
         formatted_title: Title
         left_montage_image: Left Montage Image
@@ -485,6 +492,9 @@ en:
       news_post:
         home_page_image: Image dimensions should be 380x150.<br />This image is shown on the home page when this news post appears under &ldquo;Latest News&rdquo;
         image: Image dimensions should be 150x150
+      office_hour:
+        opens_at: 'Enter the hour (ex: 6) or hour and minutes (ex: 6:30).'
+        closes_at: 'Enter the hour (ex: 6) or hour and minutes (ex: 6:30).'
       page:
         body: Shown when viewing the page from a web browser
         left_montage_image: Image dimensions should be 250x148

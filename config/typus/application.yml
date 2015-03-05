@@ -30,7 +30,7 @@ ApartmentCommunity:
       selectors: brochure_type
       destroy_related: PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyToursPage, PropertyContactPage, PropertySlideshow, PropertyMiniSlideshow, Video, ApartmentFloorPlan
   order_by: title
-  relationships: dnr_configuration, mediaplex_tag, property_features, city, county, local_info_feed, features_page, neighborhood_page, tours_page, contact_page, slideshow, videos, photos, floor_plans, promo, contact_configuration
+  relationships: dnr_configuration, mediaplex_tag, property_features, city, county, local_info_feed, features_page, neighborhood_page, tours_page, contact_page, slideshow, videos, photos, floor_plans, promo, contact_configuration, office_hours
   filters: 
   search: properties.title, properties.street_address
   application: Properties
@@ -633,6 +633,17 @@ NewsPost:
   filters:
   search:
   application: News & Press
+
+OfficeHour:
+  fields:
+    default: to_s
+    list: property, to_s
+    form: property, day, opens_at, opens_at_period, closes_at, closes_at_period
+    options:
+      required: property, day, opens_at, opens_at_period, closes_at, closes_at_period
+      selectors: day, opens_at_period, closes_at_period
+  relationships: property
+  order_by: property_id, day
 
 Page:
   fields:
