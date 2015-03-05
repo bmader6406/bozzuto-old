@@ -1,6 +1,13 @@
 class OfficeHour < ActiveRecord::Base
   MERIDIAN_INDICATORS = ['AM', 'PM']
 
+  OPENS_AT_PERIOD  = MERIDIAN_INDICATORS
+  CLOSES_AT_PERIOD = MERIDIAN_INDICATORS
+
+  DAY = Date::DAYNAMES.each_with_index.map do |day_name, day_number|
+    [day_name, day_number]
+  end
+
   belongs_to :property
 
   validates :property,
