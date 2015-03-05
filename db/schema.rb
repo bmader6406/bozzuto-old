@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150109184518) do
+ActiveRecord::Schema.define(:version => 20150305133452) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -794,6 +794,20 @@ ActiveRecord::Schema.define(:version => 20150109184518) do
 
   add_index "news_posts_sections", ["news_post_id", "section_id"], :name => "index_news_posts_sections_on_news_post_id_and_section_id"
   add_index "news_posts_sections", ["section_id", "news_post_id"], :name => "index_news_posts_sections_on_section_id_and_news_post_id"
+
+  create_table "office_hours", :force => true do |t|
+    t.integer  "property_id",                        :null => false
+    t.integer  "day",                                :null => false
+    t.string   "opens_at",                           :null => false
+    t.string   "opens_at_period",  :default => "AM", :null => false
+    t.string   "closes_at",                          :null => false
+    t.string   "closes_at_period", :default => "PM", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "office_hours", ["property_id", "day"], :name => "index_office_hours_on_property_id_and_day", :unique => true
+  add_index "office_hours", ["property_id"], :name => "index_office_hours_on_property_id"
 
   create_table "pages", :force => true do |t|
     t.string   "title",                                             :null => false

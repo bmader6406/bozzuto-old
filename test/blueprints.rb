@@ -368,6 +368,15 @@ NewsPost.blueprint(:unpublished) do
   published_at { nil }
 end
 
+OfficeHour.blueprint do
+  property         { ApartmentCommunity.make }
+  day              { 1 }
+  opens_at         { '8:00' }
+  opens_at_period  { 'AM' }
+  closes_at        { '6:00' }
+  closes_at_period { 'PM' }
+end
+
 Page.blueprint do
   title     { Faker::Lorem.sentence }
   body      { Faker::Lorem.paragraphs(3) * ' ' }
