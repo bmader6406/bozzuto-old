@@ -11,7 +11,7 @@ class OfficeHour < ActiveRecord::Base
             :closes_at_period,
             :presence => true
 
-  validates :day, :uniqueness => { :scope => :property_id }
+  validates :day, :uniqueness => { :scope => :property_id, :message => 'already has an office hours record for this property.' }
   validates :day, :inclusion  => { :in => 0..6 }
 
   validates :opens_at_period,

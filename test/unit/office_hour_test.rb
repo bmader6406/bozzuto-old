@@ -19,7 +19,9 @@ class OfficeHourTest < ActiveSupport::TestCase
     should validate_presence_of(:closes_at)
     should validate_presence_of(:closes_at_period)
 
-    should validate_uniqueness_of(:day).scoped_to(:property_id)
+    should validate_uniqueness_of(:day).scoped_to(:property_id).with_message(
+      'already has an office hours record for this property.'
+    )
 
     should ensure_inclusion_of(:day).in_range(0..6)
 
