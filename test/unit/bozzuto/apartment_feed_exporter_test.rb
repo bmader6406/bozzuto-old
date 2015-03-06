@@ -4,18 +4,6 @@ module Bozzuto
   class ApartmentFeedExporterTest < ActiveSupport::TestCase
     context "pulling data" do
       setup do
-        @office_hours = [
-          {
-            :open_time  => '9:00 AM',
-            :close_time => '6:00 PM',
-            :day        => 'Monday'
-          }, {
-            :open_time  => '9:00 AM',
-            :close_time => '12:00 PM',
-            :day        => 'Saturday'
-          }
-        ]
-
         state = State.make({
           :name => 'North Carolina',
           :code => 'NC'
@@ -66,7 +54,6 @@ module Bozzuto
           :lead_2_lease_email      => 'dolan@pls.org',
           :phone_number            => '832.382.1337',
           :video_url               => 'http://www.videoapt.com/208/LibertyTowers/Default.aspx',
-          :office_hours            => @office_hours,
           :overview_text           => @overview_text,
           :overview_bullet_1       => 'ovrvu bulet 1',
           :overview_bullet_2       => 'ovrvu bulet 2',
@@ -81,6 +68,21 @@ module Bozzuto
           :promo_id                => promo.id,
           :listing_image_file_name => 'test.jpg'
         })
+
+        @office_hours = [
+          OfficeHour.make(
+            :property  => @community,
+            :day       => 1,
+            :opens_at  => '8:00',
+            :closes_at => '6:00'
+          ),
+          OfficeHour.make(
+            :property  => @community,
+            :day       => 6,
+            :opens_at  => '10:00',
+            :closes_at => '4:00'
+          )
+        ]
 
         # FIXME: must save twice to update the cached_slug to include the id
         @community.reload
@@ -680,7 +682,7 @@ module Bozzuto
             end
 
             should "contain open time" do
-              assert_equal '9:00 AM',
+              assert_equal '8:00 AM',
                 @office_hour_node.xpath('OpenTime')[0].content
             end
 

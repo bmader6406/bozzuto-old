@@ -225,9 +225,9 @@ module Bozzuto
 
     def office_hour_node(parent_node, office_hour)
       parent_node.tag!('OfficeHour') do |node|
-        node.tag! 'OpenTime', office_hour[:open_time]
-        node.tag! 'CloseTime', office_hour[:close_time]
-        node.tag! 'Day', office_hour[:day]
+        node.tag! 'OpenTime', "#{office_hour.opens_at} #{office_hour.opens_at_period}"
+        node.tag! 'CloseTime', "#{office_hour.closes_at} #{office_hour.closes_at_period}"
+        node.tag! 'Day', office_hour.day_name
       end
     end
 
