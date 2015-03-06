@@ -18,6 +18,20 @@
 <% end -%>
 
 <div id="community-contact-text">
+  <h2><strong>Address</strong></h2>
+  <p><%= @community.title %></p>
+  <p><%== @community.address("<br>") + " #{@community.zip_code}" %></p>
+
+  <% if @community.phone_number.present? %>
+    <h2><strong>Phone Number</strong></h2>
+    <p><%= @community.phone_number %></p>
+  <% end %>
+
+  <h2><strong>Office Hours</strong></h2>
+  <% @community.office_hours.each do |office_hour| %>
+    <p><%= office_hour %></p>
+  <% end %>
+
   <%= @page.content.try(:html_safe) if @page %>  
 </div>
 
