@@ -78,13 +78,13 @@ module Bozzuto
         raise NotImplementedError, "#{self.class.to_s} must implement #build_floor_plan"
       end
 
-      def build_office_hours(xml)
-        hours = xml.xpath('./Information/OfficeHour').map do |hour|
-          {
-            :open_time  => string_at(hour, './OpenTime'),
-            :close_time => string_at(hour, './CloseTime'),
-            :day        => string_at(hour, './Day')
-          }
+      def build_office_hours(property_xml)
+        property_xml.xpath('./Information/OfficeHour').map do |office_hour_node|
+          Bozzuto::ExternalFeed::OfficeHour.new(
+            :opens_at  => string_at(office_hour_node, './OpenTime'),
+            :closes_at => string_at(office_hour_node, './CloseTime'),
+            :day       => string_at(office_hour_node, './Day')
+          )
         end
       end
 
@@ -134,7 +134,6 @@ module Bozzuto
       def float_at(node, xpath, attribute = nil)
         value_at(node, xpath, attribute).to_f
       end
-
     end
   end
 end

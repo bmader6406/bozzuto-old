@@ -12,7 +12,8 @@ module Bozzuto
           :state             => 'VA',           # Using a default city since it's a required field
           :external_cms_id   => string_at(property, './PropertyID/Identification/PrimaryID'),
           :external_cms_type => feed_type.to_s,
-          :floor_plans       => build_floor_plans(property)
+          :floor_plans       => build_floor_plans(property),
+          :office_hours      => []
         )
       end
 

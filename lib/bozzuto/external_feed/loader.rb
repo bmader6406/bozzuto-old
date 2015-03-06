@@ -37,6 +37,7 @@ module Bozzuto
 
           unless property.new_record?
             import_floor_plans(property, property_data)
+            import_office_hours(property, property_data)
           end
 
           delete_orphaned_floor_plans(property, property_data)
@@ -102,6 +103,14 @@ module Bozzuto
 
         # delete all plans from this property that aren't in the feed
         property.floor_plans.where(['id NOT IN (?)', plan_ids]).map(&:destroy)
+      end
+
+      def import_office_hours(property, property_data)
+        property_data.office_hours.each do |office_hour_data|
+          ::OfficeHour.find_or_initialize_by_property_id_and_day(property.id, office_hour_data.day).tap do |office_hour|
+            office_hour.update_attributes(office_hour_data.database_attributes)
+          end
+        end
       end
 
       def find_or_initialize_property(c)

@@ -23,15 +23,22 @@ module Bozzuto::ExternalFeed
             c.availability_url.should  == 'http://madox.prospectportal.com/Apartments/module/property_info/property[id]/49989'
             c.external_cms_id.should   == '49989'
             c.external_cms_type.should == 'psi'
-            c.office_hours.should      == [
-              { :open_time => "9:00 AM", :day => "Monday",    :close_time => "6:00 PM" },
-              { :open_time => "9:00 AM", :day => "Tuesday",   :close_time => "6:00 PM" },
-              { :open_time => "9:00 AM", :day => "Wednesday", :close_time => "6:00 PM" },
-              { :open_time => "9:00 AM", :day => "Thursday",  :close_time => "6:00 PM" },
-              { :open_time => "9:00 AM", :day => "Friday",    :close_time => "6:00 PM" },
-              { :open_time => "9:00 AM", :day => "Saturday",  :close_time => "6:00 PM" },
-              { :open_time => "9:00 AM", :day => "Sunday",    :close_time => "5:00 PM" }
-            ]
+
+            c.office_hours.first.tap do |office_hour|
+              office_hour.day.should              == 1
+              office_hour.opens_at.should         == '9:00'
+              office_hour.opens_at_period.should  == 'AM'
+              office_hour.closes_at.should        == '6:00'
+              office_hour.closes_at_period.should == 'PM'
+            end
+
+            c.office_hours.last.tap do |office_hour|
+              office_hour.day.should              == 0
+              office_hour.opens_at.should         == '9:00'
+              office_hour.opens_at_period.should  == 'AM'
+              office_hour.closes_at.should        == '5:00'
+              office_hour.closes_at_period.should == 'PM'
+            end
 
             c.floor_plans.count.should == 2
 

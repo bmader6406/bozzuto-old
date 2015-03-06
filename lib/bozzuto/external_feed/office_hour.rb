@@ -1,22 +1,9 @@
 module Bozzuto
   module ExternalFeed
     class OfficeHour < Bozzuto::ExternalFeed::FeedObject
-      DAY_MAPPING = {
-        'Sunday'    => 0,
-        'Su'        => 0,
-        'Monday'    => 1,
-        'M'         => 1,
-        'Tuesday'   => 2,
-        'T'         => 2,
-        'Wednesday' => 3,
-        'W'         => 3,
-        'Thursday'  => 4,
-        'Th'        => 4,
-        'Friday'    => 5,
-        'F'         => 5,
-        'Saturday'  => 6,
-        'Sa'        => 6
-      }
+      DAY_MAPPING = Date::DAYNAMES.each_with_index.reduce(Hash.new) do |mapping, (day_name, i)|
+        mapping.merge(day_name => i)
+      end.merge('Su' => 0, 'M' => 1, 'T' => 2, 'W' => 3, 'Th' => 4, 'F' => 5, 'Sa' => 6)
 
       # Covers the formats that show up in the feeds:
       #   12:00 PM
@@ -39,9 +26,13 @@ module Bozzuto
       ]
 
       def initialize(attrs = {})
-        @day                          = DAY_MAPPING.fetch attrs.fetch(:day)
-        @opens_at, @opens_at_period   = attrs.fetch(:opens_at).match(TIME_PARSER).captures
-        @closes_at, @closes_at_period = attrs.fetch(:closes_at).match(TIME_PARSER).captures
+        [attrs.fetch(:opens_at), attrs.fetch(:closes_at)].tap do |(opens_at, closes_at)|
+          return if opens_at == 'Closed' || closes_at == 'Closed'
+
+          @day                          = DAY_MAPPING.fetch attrs.fetch(:day)
+          @opens_at, @opens_at_period   = opens_at.match(TIME_PARSER).captures
+          @closes_at, @closes_at_period = closes_at.match(TIME_PARSER).captures
+        end
       end
     end
   end

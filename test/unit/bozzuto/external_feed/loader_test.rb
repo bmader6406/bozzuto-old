@@ -218,15 +218,22 @@ module Bozzuto::ExternalFeed
               c.availability_url.should  == 'http://units.realtydatatrust.com/unittype.aspx?ils=5341&propid=14317'
               c.external_cms_id.should   == '14317'
               c.external_cms_type.should == 'vaultware'
-              c.office_hours.should      == [
-                { :open_time => "09:00 AM", :day => "Monday",    :close_time => "06:00 PM" },
-                { :open_time => "09:00 AM", :day => "Tuesday",   :close_time => "06:00 PM" },
-                { :open_time => "09:00 AM", :day => "Wednesday", :close_time => "06:00 PM" },
-                { :open_time => "09:00 AM", :day => "Thursday",  :close_time => "06:00 PM" },
-                { :open_time => "08:00 AM", :day => "Friday",    :close_time => "05:00 PM" },
-                { :open_time => "10:00 AM", :day => "Saturday",  :close_time => "05:00 PM" },
-                { :open_time => "12:00 PM", :day => "Sunday",    :close_time => "05:00 PM" }
-              ]
+
+              c.office_hours.first.tap do |office_hour|
+                office_hour.day.should              == 0
+                office_hour.opens_at.should         == '12:00'
+                office_hour.opens_at_period.should  == 'PM'
+                office_hour.closes_at.should        == '5:00'
+                office_hour.closes_at_period.should == 'PM'
+              end
+
+              c.office_hours.last.tap do |office_hour|
+                office_hour.day.should              == 6
+                office_hour.opens_at.should         == '10:00'
+                office_hour.opens_at_period.should  == 'AM'
+                office_hour.closes_at.should        == '5:00'
+                office_hour.closes_at_period.should == 'PM'
+              end
 
               c.floor_plans[0].tap do |p|
                 p.name.should              == '1 Bedroom 1 Bath'
@@ -269,15 +276,22 @@ module Bozzuto::ExternalFeed
               c.availability_url.should  == 'http://units.realtydatatrust.com/unittype.aspx?ils=5341&propid=16976'
               c.external_cms_id.should   == '16976'
               c.external_cms_type.should == 'vaultware'
-              c.office_hours.should      == [
-                { :open_time => "09:00 AM", :day => "Monday",    :close_time => "06:00 PM" },
-                { :open_time => "08:00 AM", :day => "Tuesday",   :close_time => "06:00 PM" },
-                { :open_time => "08:00 AM", :day => "Wednesday", :close_time => "06:00 PM" },
-                { :open_time => "09:00 AM", :day => "Thursday",  :close_time => "06:00 PM" },
-                { :open_time => "08:00 AM", :day => "Friday",    :close_time => "05:00 PM" },
-                { :open_time => "10:00 AM", :day => "Saturday",  :close_time => "05:00 PM" },
-                { :open_time => "12:00 PM", :day => "Sunday",    :close_time => "05:00 PM" }
-              ]
+
+              c.office_hours.first.tap do |office_hour|
+                office_hour.day.should              == 0
+                office_hour.opens_at.should         == '12:00'
+                office_hour.opens_at_period.should  == 'PM'
+                office_hour.closes_at.should        == '5:00'
+                office_hour.closes_at_period.should == 'PM'
+              end
+
+              c.office_hours.last.tap do |office_hour|
+                office_hour.day.should              == 6
+                office_hour.opens_at.should         == '10:00'
+                office_hour.opens_at_period.should  == 'AM'
+                office_hour.closes_at.should        == '5:00'
+                office_hour.closes_at_period.should == 'PM'
+              end
 
               c.floor_plans[0].tap do |p|
                 p.name.should              == '2 Bedroom/1 Bath'
@@ -397,15 +411,22 @@ module Bozzuto::ExternalFeed
                 c.availability_url.should  == 'http://units.realtydatatrust.com/unittype.aspx?ils=5341&propid=16976'
                 c.external_cms_id.should   == '16976'
                 c.external_cms_type.should == 'vaultware'
-                c.office_hours.should      == [
-                  { :open_time => "09:00 AM", :day => "Monday",    :close_time => "06:00 PM" },
-                  { :open_time => "08:00 AM", :day => "Tuesday",   :close_time => "06:00 PM" },
-                  { :open_time => "08:00 AM", :day => "Wednesday", :close_time => "06:00 PM" },
-                  { :open_time => "09:00 AM", :day => "Thursday",  :close_time => "06:00 PM" },
-                  { :open_time => "08:00 AM", :day => "Friday",    :close_time => "05:00 PM" },
-                  { :open_time => "10:00 AM", :day => "Saturday",  :close_time => "05:00 PM" },
-                  { :open_time => "12:00 PM", :day => "Sunday",    :close_time => "05:00 PM" }
-                ]
+
+                c.office_hours.first.tap do |office_hour|
+                  office_hour.day.should              == 0
+                  office_hour.opens_at.should         == '12:00'
+                  office_hour.opens_at_period.should  == 'PM'
+                  office_hour.closes_at.should        == '5:00'
+                  office_hour.closes_at_period.should == 'PM'
+                end
+
+                c.office_hours.last.tap do |office_hour|
+                  office_hour.day.should              == 6
+                  office_hour.opens_at.should         == '10:00'
+                  office_hour.opens_at_period.should  == 'AM'
+                  office_hour.closes_at.should        == '5:00'
+                  office_hour.closes_at_period.should == 'PM'
+                end
               end
 
               @plan.reload.tap do |p|
@@ -467,7 +488,7 @@ module Bozzuto::ExternalFeed
             c.availability_url.should  == 'TEST'
             c.external_cms_id.should   == 'CHE801'
             c.external_cms_type.should == 'carmel'
-            c.office_hours.should      == nil
+            c.office_hours.should      == []
           end
         end
       end

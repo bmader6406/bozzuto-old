@@ -15,7 +15,6 @@ module Bozzuto
         :title,
         :street_address,
         :availability_url,
-        :office_hours,
         :external_cms_id,
         :external_cms_type
       ]

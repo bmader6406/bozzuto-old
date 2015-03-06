@@ -23,15 +23,22 @@ module Bozzuto::ExternalFeed
             c.availability_url.should  == 'http://units.realtydatatrust.com/unittype.aspx?ils=5341&propid=14317'
             c.external_cms_id.should   == '14317'
             c.external_cms_type.should == 'vaultware'
-            c.office_hours.should      == [
-              { :open_time => "09:00 AM", :day => "Monday",    :close_time => "06:00 PM" },
-              { :open_time => "09:00 AM", :day => "Tuesday",   :close_time => "06:00 PM" },
-              { :open_time => "09:00 AM", :day => "Wednesday", :close_time => "06:00 PM" },
-              { :open_time => "09:00 AM", :day => "Thursday",  :close_time => "06:00 PM" },
-              { :open_time => "08:00 AM", :day => "Friday",    :close_time => "05:00 PM" },
-              { :open_time => "10:00 AM", :day => "Saturday",  :close_time => "05:00 PM" },
-              { :open_time => "12:00 PM", :day => "Sunday",    :close_time => "05:00 PM" }
-            ]
+
+            c.office_hours.first.tap do |office_hour|
+              office_hour.day.should              == 1
+              office_hour.opens_at.should         == '9:00'
+              office_hour.opens_at_period.should  == 'AM'
+              office_hour.closes_at.should        == '6:00'
+              office_hour.closes_at_period.should == 'PM'
+            end
+
+            c.office_hours.last.tap do |office_hour|
+              office_hour.day.should              == 0
+              office_hour.opens_at.should         == '12:00'
+              office_hour.opens_at_period.should  == 'PM'
+              office_hour.closes_at.should        == '5:00'
+              office_hour.closes_at_period.should == 'PM'
+            end
 
             c.floor_plans.count.should == 2
 
@@ -76,15 +83,22 @@ module Bozzuto::ExternalFeed
             c.availability_url.should  == 'http://units.realtydatatrust.com/unittype.aspx?ils=5341&propid=16976'
             c.external_cms_id.should   == '16976'
             c.external_cms_type.should == 'vaultware'
-            c.office_hours.should      == [
-              { :open_time => "09:00 AM", :day => "Monday",    :close_time => "06:00 PM" },
-              { :open_time => "08:00 AM", :day => "Tuesday",   :close_time => "06:00 PM" },
-              { :open_time => "08:00 AM", :day => "Wednesday", :close_time => "06:00 PM" },
-              { :open_time => "09:00 AM", :day => "Thursday",  :close_time => "06:00 PM" },
-              { :open_time => "08:00 AM", :day => "Friday",    :close_time => "05:00 PM" },
-              { :open_time => "10:00 AM", :day => "Saturday",  :close_time => "05:00 PM" },
-              { :open_time => "12:00 PM", :day => "Sunday",    :close_time => "05:00 PM" }
-            ]
+
+            c.office_hours.first.tap do |office_hour|
+              office_hour.day.should              == 1
+              office_hour.opens_at.should         == '9:00'
+              office_hour.opens_at_period.should  == 'AM'
+              office_hour.closes_at.should        == '6:00'
+              office_hour.closes_at_period.should == 'PM'
+            end
+
+            c.office_hours.last.tap do |office_hour|
+              office_hour.day.should              == 0
+              office_hour.opens_at.should         == '12:00'
+              office_hour.opens_at_period.should  == 'PM'
+              office_hour.closes_at.should        == '5:00'
+              office_hour.closes_at_period.should == 'PM'
+            end
 
             c.floor_plans.count.should == 1
 

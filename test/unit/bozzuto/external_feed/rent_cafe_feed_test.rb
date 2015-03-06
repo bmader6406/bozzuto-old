@@ -23,14 +23,22 @@ module Bozzuto::ExternalFeed
             c.availability_url.should  == 'http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&myOlePropertyId=111537'
             c.external_cms_id.should   == 'p0117760'
             c.external_cms_type.should == 'rent_cafe'
-            c.office_hours.should      == [
-              { :open_time => "09:00:00 AM", :day => "M",  :close_time => "06:00:00 PM" },
-              { :open_time => "09:00:00 AM", :day => "T",  :close_time => "06:00:00 PM" },
-              { :open_time => "09:00:00 AM", :day => "W",  :close_time => "06:00:00 PM" },
-              { :open_time => "09:00:00 AM", :day => "Th", :close_time => "06:00:00 PM" },
-              { :open_time => "08:00:00 AM", :day => "F",  :close_time => "05:00:00 PM" },
-              { :open_time => "10:00:00 AM", :day => "Sa", :close_time => "05:00:00 PM" }
-            ]
+
+            c.office_hours.first.tap do |office_hour|
+              office_hour.day.should              == 1
+              office_hour.opens_at.should         == '9:00'
+              office_hour.opens_at_period.should  == 'AM'
+              office_hour.closes_at.should        == '6:00'
+              office_hour.closes_at_period.should == 'PM'
+            end
+
+            c.office_hours.last.tap do |office_hour|
+              office_hour.day.should              == 6
+              office_hour.opens_at.should         == '10:00'
+              office_hour.opens_at_period.should  == 'AM'
+              office_hour.closes_at.should        == '5:00'
+              office_hour.closes_at_period.should == 'PM'
+            end
 
             c.floor_plans.count.should == 2
 
@@ -75,15 +83,22 @@ module Bozzuto::ExternalFeed
             c.availability_url.should  == 'http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&myOlePropertyId=144341'
             c.external_cms_id.should   == 'p0151017'
             c.external_cms_type.should == 'rent_cafe'
-            c.office_hours.should      == [
-              { :open_time => "09:00:00 AM", :day => "Th",  :close_time => "06:00:00 PM" },
-              { :open_time => "08:00:00 AM", :day => "F",    :close_time => "05:00:00 PM" },
-              { :open_time => "11:00:00 AM", :day => "Sa",  :close_time => "05:00:00 PM" },
-              { :open_time => "09:00:00 AM", :day => "M",    :close_time => "06:00:00 PM" },
-              { :open_time => "09:00:00 AM", :day => "T",   :close_time => "06:00:00 PM" },
-              { :open_time => "09:00:00 AM", :day => "W", :close_time => "06:00:00 PM" },
-              { :open_time => "12:00:00 PM", :day => "Su",    :close_time => "05:00:00 PM" }
-            ]
+
+            c.office_hours.first.tap do |office_hour|
+              office_hour.day.should              == 4
+              office_hour.opens_at.should         == '9:00'
+              office_hour.opens_at_period.should  == 'AM'
+              office_hour.closes_at.should        == '6:00'
+              office_hour.closes_at_period.should == 'PM'
+            end
+
+            c.office_hours.last.tap do |office_hour|
+              office_hour.day.should              == 0
+              office_hour.opens_at.should         == '12:00'
+              office_hour.opens_at_period.should  == 'PM'
+              office_hour.closes_at.should        == '5:00'
+              office_hour.closes_at_period.should == 'PM'
+            end
 
             c.floor_plans.count.should == 1
 
