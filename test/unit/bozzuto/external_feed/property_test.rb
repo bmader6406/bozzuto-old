@@ -23,7 +23,6 @@ module Bozzuto::ExternalFeed
             :title             => 'Title',
             :street_address    => 'Street Address',
             :availability_url  => 'Availability URL',
-            :office_hours      => 'Office Hours',
             :external_cms_id   => 'External CMS ID',
             :external_cms_type => 'External CMS Type'
           }
