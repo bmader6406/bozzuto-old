@@ -37,6 +37,8 @@ module Bozzuto::ExternalFeed
           @ftp = mock('Net::FTP')
 
           Net::FTP.expects(:open).with('bozzutofeed.qburst.com').yields(@ftp)
+
+          subject.expects(:can_load?).returns(true)
         end
 
         it "sets passive to true, logs into the FTP server, and fetches the file" do
