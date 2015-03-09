@@ -390,6 +390,12 @@ en:
         password_confirmation: Password Confirmation
       video:
         url: URL
+    errors:
+      models:
+        office_hour:
+          attributes:
+            day:
+              taken: already has an office hours record for this property.
     tips:
       ad_source:
         domain_name: "The domain name to match the referrer against. If the referrer's domain (including subdomains) matches this domain name, then the value below will be set as the ad source. <strong>Include only the domain. Do not include http://</strong>.<br /><br />Example: apartments.com"
