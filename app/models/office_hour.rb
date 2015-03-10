@@ -4,9 +4,7 @@ class OfficeHour < ActiveRecord::Base
   OPENS_AT_PERIOD  = MERIDIAN_INDICATORS
   CLOSES_AT_PERIOD = MERIDIAN_INDICATORS
 
-  DAY = Date::DAYNAMES.each_with_index.map do |day_name, day_number|
-    [day_name, day_number]
-  end
+  DAY = Date::DAYNAMES.each_with_index.to_a
 
   belongs_to :property
 
