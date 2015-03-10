@@ -1,5 +1,7 @@
 module Bozzuto
   class PageContentDoctor
+    PERSISTING_CONTENT_DELIMITER = "<h2>\r\n\t\t<strong>Looking for answers?&nbsp; We are here to help.</strong>"
+
     attr_accessor :results
     attr_reader   :page, :content_method
 
@@ -29,12 +31,11 @@ module Bozzuto
       based_on_preview_state do
         # In almost every PropertyContactPage record, this text appears immediately after the
         # address and office hours.
-        header_for_persisting_content = "<h2>\r\n\t\t<strong>Looking for answers?&nbsp; We are here to help.</strong>"
 
-        split_content = content.split(header_for_persisting_content)
+        split_content = content.split(PERSISTING_CONTENT_DELIMITER)
 
         if split_content.size > 1
-          header_for_persisting_content + split_content.last
+          PERSISTING_CONTENT_DELIMITER + split_content.last
         else
           content
         end
