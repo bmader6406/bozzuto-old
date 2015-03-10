@@ -27,7 +27,15 @@ class OfficeHour < ActiveRecord::Base
     Date::DAYNAMES[day]
   end
 
+  def opens_at_with_period(separator = ' ')
+    [opens_at, opens_at_period].join(separator)
+  end
+
+  def closes_at_with_period(separator = ' ')
+    [closes_at, closes_at_period].join(separator)
+  end
+
   def to_s
-    "#{day_name}: #{opens_at}#{opens_at_period} - #{closes_at}#{closes_at_period}"
+    "#{day_name}: #{opens_at_with_period('')} - #{closes_at_with_period('')}"
   end
 end
