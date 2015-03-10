@@ -33,7 +33,11 @@ module Bozzuto
 
         split_content = content.split(header_for_persisting_content)
 
-        split_content.size > 1 ? header_for_persisting_content + split_content.last : content
+        if split_content.size > 1
+          header_for_persisting_content + split_content.last
+        else
+          content
+        end
       end
     end
 
