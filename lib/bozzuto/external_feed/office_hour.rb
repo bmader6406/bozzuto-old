@@ -1,9 +1,22 @@
 module Bozzuto
   module ExternalFeed
     class OfficeHour < Bozzuto::ExternalFeed::FeedObject
-      DAY_MAPPING = Date::DAYNAMES.each_with_index.reduce(Hash.new) do |mapping, (day_name, i)|
-        mapping.merge(day_name => i)
-      end.merge('Su' => 0, 'M' => 1, 'T' => 2, 'W' => 3, 'Th' => 4, 'F' => 5, 'Sa' => 6)
+      DAY_MAPPING = {
+        'Sunday'    => 0,
+        'Monday'    => 1,
+        'Tuesday'   => 2,
+        'Wednesday' => 3,
+        'Thursday'  => 4,
+        'Friday'    => 5,
+        'Saturday'  => 6,
+        'Su'        => 0,
+        'M'         => 1,
+        'T'         => 2,
+        'W'         => 3,
+        'Th'        => 4,
+        'F'         => 5,
+        'Sa'        => 6
+      }
 
       # Covers the formats that show up in the feeds:
       #   12:00 PM
