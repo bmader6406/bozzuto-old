@@ -1,4 +1,9 @@
 class ApartmentUnit < ActiveRecord::Base
+  VACANCY_CLASS = [
+    'Occupied',
+    'Unoccupied'
+  ]
+
   belongs_to :floor_plan, :class_name => 'ApartmentFloorPlan'
 
   validates :floor_plan,

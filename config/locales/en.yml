@@ -22,6 +22,7 @@ en:
       apartment_contact_configuration: Contact Configuration
       apartment_floor_plan: Floor Plan
       apartment_floor_plan_group: Floor Plan Type
+      apartment_unit: Apartment Unit
       area_membership: Area Membership
       body_slide: Slide
       body_slideshow: Page Body Slideshow
@@ -108,6 +109,41 @@ en:
         max_square_feet: Maximum Square Feet
         min_square_feet: Minimum Square Feet
         square_footage: SQFT
+      apartment_unit:
+        address_line_1: Address Line 1
+        address_line_2: Address Line 2
+        availability_url: Availability URL
+        available_units: Available Units
+        avg_rent: Average Effective Rent
+        bathrooms: Bath
+        bedrooms: Bed
+        building_name: Building Name
+        economic_status: Economic Status
+        economic_status_description: Economic Status Description
+        floor_plan: Floor Plan
+        floor_plan_name: Floor Plan Name
+        image_url: Image URL
+        leased_status: Leased Status
+        leased_status_description: Leased Status Description
+        made_ready_date: Made Ready Date
+        market_rent: Market Rent
+        marketing_name: Marketing Name
+        max_rent: Maximum Effective Rent
+        max_square_feet: Maximum Square Feet
+        min_rent: Minimum Effective Rent
+        min_square_feet: Minimum Square Feet
+        number_occupants: Current Number of Occupants
+        organization_name: Organization Name
+        occupancy_status: Occupancy Status
+        occupancy_status_description: Occupancy Status Description
+        phase_name: Phase Name
+        primary_property_id: Primary Property ID
+        square_foot_type: Square Foot Type
+        square_footage: SQFT
+        unit_rent: Unit Rent
+        unit_type: Unit Type
+        vacate_date: Vacate Date
+        vacancy_class: Vacancy Status
       area:
         area_type: Area Type
         banner_image: Banner Image
@@ -416,6 +452,9 @@ en:
       apartment_contact_configuration:
         upcoming_intro_text: "Text to be shown at the top of the 'Under Construction' lead form."
         upcoming_thank_you_text: "Text to be shown on the 'Under Construction' lead form 'Thank You' page."
+      apartment_unit:
+        building_name: Used to identify a specific building where the unit resides in the case of a property with multiple buildings.
+        marketing_name: Property name used for marketing purposes.
       area:
         banner_image: 'Image dimensions should be 1020x325'
         description: This text will be shown below on this Area's listing, below the listing image.

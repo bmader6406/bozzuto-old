@@ -60,7 +60,7 @@ ApartmentFloorPlan:
       booleans:
         featured: ['Yes', 'No']
   order_by: floor_plan_group_id, position
-  relationships: floor_plan_group
+  relationships: floor_plan_group, apartment_units
   filters:
   options:
     per_page: 9999
@@ -76,6 +76,17 @@ ApartmentFloorPlanGroup:
   relationships: floor_plans
   search: name
   application:
+
+ApartmentUnit:
+  fields:
+    default: marketing_name, bedrooms, bathrooms, square_footage, unit_rent, vacancy_class
+    list: marketing_name, bedrooms, bathrooms, square_footage, unit_rent, vacancy_class
+    form: floor_plan, marketing_name, organization_name, unit_type, bedrooms, bathrooms, min_square_feet, max_square_feet, square_foot_type, unit_rent, market_rent, min_rent, max_rent, avg_rent, economic_status, economic_status_description, occupancy_status, occupancy_status_description, leased_status, leased_status_description, number_occupants, floor_plan_name, phase_name, building_name, primary_property_id, address_line_1, address_line_2, city, state, zip, comment, vacate_date, vacancy_class, made_ready_date, availability_url, image_url
+    options:
+      required: floor_plan
+      selectors: vacancy_class
+  relationships: floor_plan
+  order_by: bedrooms
 
 Area:
   fields:
