@@ -78,6 +78,16 @@ module Bozzuto
         raise NotImplementedError, "#{self.class.to_s} must implement #build_floor_plan"
       end
 
+      def build_apartment_units(property)
+        property.xpath('./ILS_Unit').map do |unit|
+          build_apartment_unit(unit)
+        end
+      end
+
+      def build_apartment_unit(unit)
+        raise NotImplementedError, "#{self.class.to_s} must implement #build_apartment_unit"
+      end
+
       def build_office_hours(property_xml)
         property_xml.xpath('./Information/OfficeHour').map do |office_hour_node|
           Bozzuto::ExternalFeed::OfficeHour.new(
@@ -133,6 +143,12 @@ module Bozzuto
 
       def float_at(node, xpath, attribute = nil)
         value_at(node, xpath, attribute).to_f
+      end
+
+      def date_for(node)
+        return if node['Year'].nil? || node['Month'].nil? || node['Day'].nil?
+
+        Date.new(node['Year'].to_i, node['Month'].to_i, node['Day'].to_i)
       end
     end
   end

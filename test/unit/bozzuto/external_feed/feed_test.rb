@@ -77,6 +77,14 @@ module Bozzuto::ExternalFeed
         end
       end
 
+      describe "#build_apartment_unit" do
+        it "raises an error" do
+          expect {
+            subject.send(:build_apartment_unit, nil)
+          }.to raise_error(NotImplementedError)
+        end
+      end
+
       describe "#floor_plan_group" do
         context "comment matches 'penthouse'" do
           it "returns :penthouse" do
@@ -228,6 +236,33 @@ module Bozzuto::ExternalFeed
           context "node doesn't exist" do
             it "returns 0.0" do
               subject.send(:float_at, @xml, 'batman').should == 0.0
+            end
+          end
+        end
+
+        describe "#date_for" do
+          before do
+            @xml = Nokogiri::XML(<<-XML)
+              <Unit BuildingId="0" FloorPlanId="250870">
+                <Identification IDType="UnitID" IDScopeType="sender" IDRank="primary">
+                  <IDValue>3438936</IDValue>
+                </Identification>
+                <Availability>
+                  <VacateDate Month="01" Day="09" Year="2015"/>
+                </Availability>
+              </ILS_Unit>
+            XML
+          end
+
+          context "given a node with Year, Month, and Day attributes" do
+            it "returns a date object" do
+              subject.send(:date_for, @xml.at('Unit/Availability/VacateDate')).should == Date.new(2015, 1, 9)
+            end
+          end
+
+          context "given a node that does not have the necessary attributes" do
+            it "returns nil" do
+              subject.send(:date_for, @xml.at('Unit/Identification')).should == nil
             end
           end
         end
