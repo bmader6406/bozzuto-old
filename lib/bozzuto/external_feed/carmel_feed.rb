@@ -13,7 +13,8 @@ module Bozzuto
           :external_cms_id   => string_at(property, './PropertyID/Identification/PrimaryID'),
           :external_cms_type => feed_type.to_s,
           :floor_plans       => build_floor_plans(property),
-          :office_hours      => []
+          :office_hours      => [], # Carmel does not contain any office hour data
+          :apartment_units   => []  # Carmel does not contain any unit-level data
         )
       end
 
