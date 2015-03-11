@@ -102,6 +102,50 @@ module Bozzuto::ExternalFeed
               f.external_cms_id.should   == '189005'
               f.external_cms_type.should == 'psi'
             end
+
+            c.apartment_units.count.should == 1
+
+            c.apartment_units.first.tap do |u|
+              u.external_cms_id.should              == '3438936'
+              u.external_cms_type.should            == 'psi'
+              u.building_external_cms_id.should     == '0'
+              u.floorplan_external_cms_id.should    == '250870'
+              u.organization_name.should            == '2102'
+              u.marketing_name.should               == '3F'
+              u.unit_type.should                    == '2 Bedroom 1 Bath'
+              u.bedrooms.should                     == 2
+              u.bathrooms.should                    == 1
+              u.min_square_feet.should              == 874
+              u.max_square_feet.should              == 874
+              u.square_foot_type.should             == 'internal'
+              u.unit_rent.should                    == 3995
+              u.market_rent.should                  == 3995
+              u.economic_status.should              == ''
+              u.economic_status_description.should  == ''
+              u.occupancy_status.should             == 'vacant'
+              u.occupancy_status_description.should == ''
+              u.leased_status.should                == ''
+              u.leased_status_description.should    == ''
+              u.number_occupants.should             == 0
+              u.floor_plan_name.should              == '878 Sqft 2 Bed 1 Bath'
+              u.phase_name.should                   == ''
+              u.building_name.should                == ''
+              u.primary_property_id.should          == nil
+              u.address_line_1.should               == '111 Kent Avenue'
+              u.address_line_2.should               == '3F'
+              u.city.should                         == 'Brooklyn'
+              u.state.should                        == 'NY'
+              u.zip.should                          == '11249'
+              u.avg_rent.should                     == 3995
+              u.min_rent.should                     == 3995
+              u.max_rent.should                     == 3995
+              u.comment.should                      == nil
+              u.vacate_date.should                  == Date.new(2015, 1, 9)
+              u.vacancy_class.should                == 'Unoccupied'
+              u.made_ready_date.should              == nil
+              u.availability_url.should             == "http://kntst.prospectportal.com/Apartments/module/property_info/property[id]/72414/launch_check_availability/1/property_floorplan[id]/250870/property_unit[id]/3438936"
+              u.image_url.should                    == nil
+            end
           end
         end
       end

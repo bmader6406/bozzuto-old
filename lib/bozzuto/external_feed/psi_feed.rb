@@ -16,7 +16,8 @@ module Bozzuto
           :external_cms_id   => string_at(property, './PropertyID/Identification/IDValue'),
           :external_cms_type => feed_type.to_s,
           :office_hours      => build_office_hours(property),
-          :floor_plans       => build_floor_plans(property)
+          :floor_plans       => build_floor_plans(property),
+          :apartment_units   => build_apartment_units(property)
         )
 
       end
@@ -39,6 +40,54 @@ module Bozzuto
           :floor_plan_group  => floor_plan_group(bedrooms, comment),
           :external_cms_id   => string_at(plan, './Identification/IDValue'),
           :external_cms_type => feed_type.to_s
+        )
+      end
+
+      def build_apartment_unit(unit)
+        address_parts                  = string_at(unit, './Units/Unit/Address/Address').split(', ')
+        address_line_1, address_line_2 = address_parts.size > 1 ? address_parts : address_parts << nil
+        effective_rent                 = float_at(unit, './EffectiveRent')
+
+        Bozzuto::ExternalFeed::ApartmentUnit.new(
+          :external_cms_id              => string_at(unit, './Identification/IDValue'),
+          :external_cms_type            => feed_type.to_s,
+          :building_external_cms_id     => string_at(unit, './Units/Unit', 'BuildingId'),
+          :floorplan_external_cms_id    => string_at(unit, './Units/Unit', 'FloorPlanId'),
+          :organization_name            => string_at(unit, './Identification/OrganizationName'),
+          :marketing_name               => string_at(unit, './Units/Unit/MarketingName'),
+          :unit_type                    => string_at(unit, './Units/Unit/UnitType'),
+          :bedrooms                     => float_at(unit, './Units/Unit/UnitBedrooms'),
+          :bathrooms                    => float_at(unit, './Units/Unit/UnitBathrooms'),
+          :min_square_feet              => int_at(unit, './Units/Unit/MinSquareFeet'),
+          :max_square_feet              => int_at(unit, './Units/Unit/MaxSquareFeet'),
+          :square_foot_type             => string_at(unit, './Units/Unit/SquareFootType'),
+          :unit_rent                    => float_at(unit, './Units/Unit/UnitRent'),
+          :market_rent                  => float_at(unit, './Units/Unit/MarketRent'),
+          :economic_status              => string_at(unit, './Units/Unit/UnitEconomicStatus'),
+          :economic_status_description  => string_at(unit, './Units/Unit/UnitEconomicStatusDescription'),
+          :occupancy_status             => string_at(unit, './Units/Unit/UnitOccupancyStatus'),
+          :occupancy_status_description => string_at(unit, './Units/Unit/UnitOccupancyStatusDescription'),
+          :leased_status                => string_at(unit, './Units/Unit/UnitLeasedStatus'),
+          :leased_status_description    => string_at(unit, './Units/Unit/UnitLeasedStatusDescription'),
+          :number_occupants             => int_at(unit, './Units/Unit/NumberOccupants', 'Total'),
+          :floor_plan_name              => string_at(unit, './Units/Unit/FloorplanName'),
+          :phase_name                   => string_at(unit, './Units/Unit/PhaseName'),
+          :building_name                => string_at(unit, './Units/Unit/BuildingName'),
+          :primary_property_id          => nil,
+          :address_line_1               => address_line_1,
+          :address_line_2               => address_line_2,
+          :city                         => string_at(unit, './Units/Unit/Address/City'),
+          :state                        => string_at(unit, './Units/Unit/Address/State'),
+          :zip                          => string_at(unit, './Units/Unit/Address/PostalCode'),
+          :comment                      => nil,
+          :min_rent                     => effective_rent,
+          :max_rent                     => effective_rent,
+          :avg_rent                     => effective_rent,
+          :vacate_date                  => date_for(unit.at('./Availability/VacateDate')),
+          :vacancy_class                => string_at(unit, './Availability/VacancyClass'),
+          :made_ready_date              => nil,
+          :availability_url             => string_at(unit, './Availability/UnitAvailabilityURL'),
+          :image_url                    => nil
         )
       end
     end

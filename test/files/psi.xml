@@ -578,6 +578,45 @@
         <Rank>1</Rank>
       </File>
     </Floorplan>
+    <ILS_Unit>
+      <Identification IDScopeType="sender" IDRank="primary">
+        <IDValue>3438936</IDValue>
+        <OrganizationName>2102</OrganizationName>
+      </Identification>
+      <Units>
+        <Unit BuildingId="0" FloorPlanId="250870">
+          <Identification IDType="UnitID" IDScopeType="sender" IDRank="primary">
+            <IDValue>3438936</IDValue>
+            <OrganizationName>2102</OrganizationName>
+          </Identification>
+          <MarketingName>3F</MarketingName>
+          <UnitType>2 Bedroom 1 Bath</UnitType>
+          <UnitBedrooms>2</UnitBedrooms>
+          <UnitBathrooms>1</UnitBathrooms>
+          <MinSquareFeet>874</MinSquareFeet>
+          <MaxSquareFeet>874</MaxSquareFeet>
+          <SquareFootType>internal</SquareFootType>
+          <UnitRent>3995</UnitRent>
+          <MarketRent>3995</MarketRent>
+          <UnitOccupancyStatus>vacant</UnitOccupancyStatus>
+          <NumberOccupants Total="0"/>
+          <FloorplanName>878 Sqft 2 Bed 1 Bath</FloorplanName>
+          <BuildingName/>
+          <Address AddressType="property">
+            <Address>111 Kent Avenue, 3F</Address>
+            <City>Brooklyn</City>
+            <State>NY</State>
+            <PostalCode>11249</PostalCode>
+          </Address>
+        </Unit>
+      </Units>
+      <EffectiveRent>3995</EffectiveRent>
+      <Availability>
+        <VacateDate Month="01" Day="09" Year="2015"/>
+        <VacancyClass>Unoccupied</VacancyClass>
+        <UnitAvailabilityURL>http://kntst.prospectportal.com/Apartments/module/property_info/property[id]/72414/launch_check_availability/1/property_floorplan[id]/250870/property_unit[id]/3438936</UnitAvailabilityURL>
+      </Availability>
+    </ILS_Unit>
     <File FileID="777052" Active="true">
       <FileType>Photo</FileType>
       <Name>50be26e1e2750732.jpg</Name>
