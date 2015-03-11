@@ -9,7 +9,8 @@ module Bozzuto
                     :office_hours,
                     :external_cms_id,
                     :external_cms_type,
-                    :floor_plans
+                    :floor_plans,
+                    :apartment_units
 
       self.database_attributes = [
         :title,
