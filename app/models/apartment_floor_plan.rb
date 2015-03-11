@@ -12,6 +12,8 @@ class ApartmentFloorPlan < ActiveRecord::Base
   belongs_to :floor_plan_group, :class_name => 'ApartmentFloorPlanGroup'
   belongs_to :apartment_community
 
+  has_many :apartment_units, :foreign_key => :floor_plan_id
+
   acts_as_list
 
   validates_presence_of :name,

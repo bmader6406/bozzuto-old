@@ -9,6 +9,8 @@ class ApartmentFloorPlanTest < ActiveSupport::TestCase
     should belong_to(:floor_plan_group)
     should belong_to(:apartment_community)
 
+    should have_many(:apartment_units)
+
     should validate_presence_of(:name)
     should validate_presence_of(:floor_plan_group)
     should validate_presence_of(:apartment_community)
