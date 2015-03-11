@@ -141,6 +141,22 @@ ApartmentFloorPlanGroup.blueprint(:penthouse) do
   name { 'Penthouse' }
 end
 
+ApartmentUnit.blueprint do
+  marketing_name     { Faker::Lorem.words(1) }
+  image_url          { Faker::Lorem.words(1) }
+  availability_url   { "http://#{Faker::Internet.domain_name}" }
+  bedrooms           { Sham.bedrooms }
+  bathrooms          { Sham.bathrooms }
+  min_square_feet    { rand(3000) + 500 }
+  max_square_feet    { rand(3000) + 500 }
+  unit_rent          { rand(500000) + 40000 }
+  market_rent        { rand(500000) + 40000 }
+  min_rent           { rand(500000) + 40000 }
+  max_rent           { rand(500000) + 40000 }
+  avg_rent           { rand(500000) + 40000 }
+  floor_plan         { ApartmentFloorPlan.make }
+end
+
 Area.blueprint do
   name                    { Sham.area_name }
   latitude                { Sham.latitude }

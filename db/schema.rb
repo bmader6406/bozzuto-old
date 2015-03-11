@@ -90,6 +90,51 @@ ActiveRecord::Schema.define(:version => 20150423133803) do
   add_index "apartment_floor_plans", ["external_cms_id"], :name => "index_apartment_floor_plans_on_external_cms_id"
   add_index "apartment_floor_plans", ["floor_plan_group_id"], :name => "index_apartment_floor_plans_on_floor_plan_group_id"
 
+  create_table "apartment_units", :force => true do |t|
+    t.string   "external_cms_id"
+    t.string   "external_cms_type"
+    t.string   "building_external_cms_id"
+    t.string   "floorplan_external_cms_id"
+    t.string   "organization_name"
+    t.string   "marketing_name"
+    t.string   "unit_type"
+    t.decimal  "bedrooms",                     :precision => 3, :scale => 1
+    t.decimal  "bathrooms",                    :precision => 3, :scale => 1
+    t.integer  "min_square_feet"
+    t.integer  "max_square_feet"
+    t.integer  "square_foot_type"
+    t.decimal  "unit_rent",                    :precision => 8, :scale => 2
+    t.decimal  "market_rent",                  :precision => 8, :scale => 2
+    t.string   "economic_status"
+    t.string   "economic_status_description"
+    t.string   "occupancy_status"
+    t.string   "occupancy_status_description"
+    t.string   "leased_status"
+    t.string   "leased_status_description"
+    t.integer  "number_occupants"
+    t.string   "floor_plan_name"
+    t.string   "phase_name"
+    t.string   "building_name"
+    t.string   "primary_property_id"
+    t.string   "address_line_1"
+    t.string   "address_line_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "comment"
+    t.decimal  "min_rent",                     :precision => 8, :scale => 2
+    t.decimal  "max_rent",                     :precision => 8, :scale => 2
+    t.decimal  "avg_rent",                     :precision => 8, :scale => 2
+    t.date     "vacate_date"
+    t.string   "vacancy_class"
+    t.date     "made_ready_date"
+    t.text     "availability_url"
+    t.string   "image_url"
+    t.integer  "floor_plan_id",                                              :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "archived_pages", :id => false, :force => true do |t|
     t.integer  "id",                                                 :default => 0,     :null => false
     t.string   "title",                                                                 :null => false
