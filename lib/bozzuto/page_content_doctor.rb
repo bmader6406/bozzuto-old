@@ -1,6 +1,6 @@
 module Bozzuto
   class PageContentDoctor
-    PERSISTING_CONTENT_DELIMITER = "<h2>\r\n\t\t<strong>Looking for answers?&nbsp; We are here to help.</strong>"
+    PERSISTING_CONTENT_DELIMITER = /(?<header><h2>[\r\t\n]*<strong>Looking for answers\?&nbsp; We are here to help.<\/strong>)/
 
     attr_accessor :results
     attr_reader   :page, :content_method
@@ -35,7 +35,7 @@ module Bozzuto
         split_content = content.split(PERSISTING_CONTENT_DELIMITER)
 
         if split_content.size > 1
-          PERSISTING_CONTENT_DELIMITER + split_content.last
+          split_content[1] + split_content[2]
         else
           content
         end
