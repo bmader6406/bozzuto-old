@@ -111,6 +111,16 @@ module Bozzuto
               saturday.to_s.should  == 'Saturday: 10:00AM - 5:00PM'
             end
           end
+
+          context "but does not have serialized office hours" do
+            before do
+              @property = ApartmentCommunity.make
+            end
+
+            it "does not create any office hour records" do
+              expect { subject.create_records_for(@property) }.to change { @property.office_hours.count }.by(0)
+            end
+          end
         end
       end
     end

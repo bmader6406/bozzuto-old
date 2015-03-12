@@ -78,7 +78,7 @@ module Bozzuto
     end
 
     def self.load_from_serialized_office_hours(property)
-      property.read_attribute(:office_hours).map do |office_hour|
+      property.read_attribute(:office_hours).to_a.map do |office_hour|
         day                         = DAY_MAPPING.fetch office_hour.fetch(:day)
         opens_at, opens_at_period   = office_hour.fetch(:open_time).match(TIME_PARSER).captures
         closes_at, closes_at_period = office_hour.fetch(:close_time).match(TIME_PARSER).captures
