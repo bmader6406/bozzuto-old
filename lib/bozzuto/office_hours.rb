@@ -27,25 +27,25 @@ module Bozzuto
 
     PARSER = %r{
       (
-        (?<start_of_range>M\w*|T\w*|W\*|F\w*|S\w*) # Optional start of day range
-        \s*-\s*                                    # Followed by a dash
+        (?<start_of_range>M\w*|T\w*|W\w*|F\w*|S\w*) # Optional start of day range
+        \s*-\s*                                     # Followed by a dash
       )*
 
-      (?<day>M\w*|T\w*|W\*|F\w*|S\w*)              # Day (possible end-of-range)
+      (?<day>M\w*|T\w*|W\w*|F\w*|S\w*)              # Day (possible end-of-range)
       :*\s*
 
       (
-        (?<start_time>[01]{0,1}\d(:\d\d)*)         # Start Time (HH:MM)
+        (?<start_time>[01]{0,1}\d(:\d\d)*)          # Start Time (HH:MM)
         \s*
-        (?<start_period>am|AM|pm|PM){0,1}          # Start Period (am, pm, AM, or PM)
+        (?<start_period>am|AM|pm|PM){0,1}           # Start Period (am, pm, AM, or PM)
       )
 
-      (\s*-\s*)*                                   # Followed by a dash
+      (\s*-\s*)*                                    # Followed by a dash
 
       (
-        (?<end_time>[01]{0,1}\d(:\d\d)*)           # End Time (HH:MM)
+        (?<end_time>[01]{0,1}\d(:\d\d)*)            # End Time (HH:MM)
         \s*
-        (?<end_period>am|AM|pm|PM){0,1}            # End Period (am, pm, AM, or PM)
+        (?<end_period>am|AM|pm|PM){0,1}             # End Period (am, pm, AM, or PM)
       )
     }x
 
@@ -134,7 +134,7 @@ module Bozzuto
         if first_day < last_day
           [*first_day..last_day]
         else
-          [first_day..6] | [0..last_day]
+          [*first_day..6] | [*0..last_day]
         end
       end
 

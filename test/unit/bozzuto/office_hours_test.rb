@@ -42,6 +42,37 @@ module Bozzuto
             end
           end
 
+          context "with a day range that spans a weekend" do
+            before do
+              @page_content = "<strong>Office hours</strong></h2>\r\n<p>\r\n\t<span style=\"font-size: 12px;\">Friday-Sunday 11:00am-4:00pm</span></p>\r\n<p>\r\n\t<span style=\"font-size: 12px;\">Monday-Wednesday 8:00-6:00</span></p>\r\n<p>\r\n\t<span style=\"font-size: 12px;\">Thursday 10:00am-5:00pm</span></p>"
+
+              @page = PropertyContactPage.create(
+                :apartment_community => @property,
+                :content             => @page_content
+              )
+            end
+
+            it "creates the correct office hours records from the page's content" do
+              expect { subject.create_records_for(@property) }.to change { @property.office_hours.count }.by(7)
+
+              sunday    = @property.office_hours.to_a.find { |o| o.day == Bozzuto::OfficeHours::DAY_MAPPING['Sunday'] }
+              monday    = @property.office_hours.to_a.find { |o| o.day == Bozzuto::OfficeHours::DAY_MAPPING['Monday'] }
+              tuesday   = @property.office_hours.to_a.find { |o| o.day == Bozzuto::OfficeHours::DAY_MAPPING['Tuesday'] }
+              wednesday = @property.office_hours.to_a.find { |o| o.day == Bozzuto::OfficeHours::DAY_MAPPING['Wednesday'] }
+              thursday  = @property.office_hours.to_a.find { |o| o.day == Bozzuto::OfficeHours::DAY_MAPPING['Thursday'] }
+              friday    = @property.office_hours.to_a.find { |o| o.day == Bozzuto::OfficeHours::DAY_MAPPING['Friday'] }
+              saturday  = @property.office_hours.to_a.find { |o| o.day == Bozzuto::OfficeHours::DAY_MAPPING['Saturday'] }
+
+              sunday.to_s.should    == 'Sunday: 11:00AM - 4:00PM'
+              monday.to_s.should    == 'Monday: 8:00AM - 6:00PM'
+              tuesday.to_s.should   == 'Tuesday: 8:00AM - 6:00PM'
+              wednesday.to_s.should == 'Wednesday: 8:00AM - 6:00PM'
+              thursday.to_s.should  == 'Thursday: 10:00AM - 5:00PM'
+              friday.to_s.should    == 'Friday: 11:00AM - 4:00PM'
+              saturday.to_s.should  == 'Saturday: 11:00AM - 4:00PM'
+            end
+          end
+
           context "given some wacky formatting" do
             before do
               @page_content = "<h3>\r\n\t&nbsp;</h3>\r\n<h2>\r\n\t<strong>Address</strong></h2>\r\n<p>\r\n\t<span style=\"font-size:12px;\">Halstead Dulles</span></p>\r\n<p>\r\n\t<span style=\"font-size:12px;\">13161 Fox Hunt Lane</span></p>\r\n<p>\r\n\t<span style=\"font-size:12px;\">Herndon, VA 20171</span></p>\r\n<p>\r\n\t<span style=\"font-size:12px;\"><span style=\"color: rgb(68, 68, 68); font-family: arial;\">(703)&nbsp;</span>787-0707&nbsp;</span></p>\r\n<h2>\r\n\t<strong>Office Hours</strong></h2>\r\n<p>\r\n\t<span style=\"font-size: 12px;\">Monday-Thursday: 9:<span scayt_word=\"00am-6\" scaytid=\"39\">00am-6</span>:<span scayt_word=\"00pm\" scaytid=\"40\">00pm</span><br />\r\n\tFriday: 8:<span scayt_word=\"00am-5\" scaytid=\"46\">00am-5</span>:<span scayt_word=\"00pm\" scaytid=\"42\">00pm</span><br />\r\n\tSaturday: 10:<span scayt_word=\"00am-5\" scaytid=\"47\">00am-5</span>:<span scayt_word=\"00pm\" scaytid=\"43\">00pm</span></span><br />\r\n\t<span style=\"font-size: 12px;\">Sunday: 12:<span scayt_word=\"00pm-5\" scaytid=\"48\">00pm-5</span>:<span scayt_word=\"00pm\" scaytid=\"44\">00pm</span></span></p>\r\n<h2>\r\n\t<strong>Directions</strong></h2>\r\n<p>\r\n\t<span style=\"font-size:12px;\">From I 495:<br />\r\n\tTake Dulles Toll Road (Route 267) West to Exit 10 (Herndon/Chantilly).<br />\r\n\tMake a Left onto Centreville Road.<br />\r\n\tGo to 2nd stoplight and make a left onto Sunrise Valley Dr.<br />\r\n\tMake a Right onto Fox Mill Lane.<br />\r\n\tMake a Left onto Fox Hunt Lane into Halstead Dulles Leasing Center</span><br />\r\n\t&nbsp;</p>\r\n<h2>\r\n\t<strong>Looking for answers?&nbsp; We are here to help.</strong></h2>\r\n<p>\r\n\t<span style=\"font-size: 12px;\">We are committed to serving our customers and value your feedback.&nbsp; If you are a current resident and have a question or concern please contact us.</span></p>\r\n<p>\r\n\t&nbsp;</p>\r\n<p>\r\n\t<span style=\"font-size: 12px;\"><strong>Property Manager:&nbsp;</strong></span></p>\r\n<p>\r\n\t<span style=\"font-size: 12px;\">Sarah Pelletier<br />\r\n\t<a href=\"mailto:spelletier@bozzuto.com\">spelletier@bozzuto.com</a></span></p>\r\n<p>\r\n\t&nbsp;</p>\r\n<p>\r\n\t<span style=\"font-size: 12px;\"><strong>Regional Portfolio Manager:</strong></span></p>\r\n<p>\r\n\t<span style=\"font-size: 12px;\">Jo Gavigan</span></p>\r\n<p>\r\n\t<span style=\"font-size: 12px;\"><a href=\"mailto:ckalinsky@bozzuto.com\">jgavigan@bozzuto.com</a></span></p>\r\n"
