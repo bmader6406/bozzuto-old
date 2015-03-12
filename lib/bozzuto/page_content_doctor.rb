@@ -1,6 +1,6 @@
 module Bozzuto
   class PageContentDoctor
-    PERSISTING_CONTENT_DELIMITER = /(?<header><h2>[\r\t\n]*<strong>Looking for answers\?&nbsp; We are here to help.<\/strong>)/
+    PERSISTING_CONTENT_DELIMITER = /(?<header>[\r\t\n]*(<h2>)*[\r\t\n]*(<strong>)*Looking for answers.*We are here to help.(<\/strong>)*)/
 
     attr_accessor :results
     attr_reader   :page, :content_method
