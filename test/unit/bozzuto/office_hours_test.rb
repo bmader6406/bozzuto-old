@@ -83,7 +83,7 @@ module Bozzuto
                   { :open_time => "09:00:00 AM", :close_time => "07:00:00 PM", :day => "M" },
                   { :open_time => "09:00:00 AM", :close_time => "07:00:00 PM", :day => "T" },
                   { :open_time => "09:00:00 AM", :close_time => "07:00:00 PM", :day => "W" },
-                  { :open_time => "09:00:00 AM", :close_time => "07:00:00 PM", :day => "Th" },
+                  { :open_time => "Closed",      :close_time => "Closed",      :day => "Th" },
                   { :open_time => "08:00:00 AM", :close_time => "05:00:00 PM", :day => "F" },
                   { :open_time => "10:00:00 AM", :close_time => "05:00:00 PM", :day => "Sa" },
                   { :open_time => "12:00:00 PM", :close_time => "05:00:00 PM", :day => "Su" }
@@ -92,7 +92,7 @@ module Bozzuto
             end
 
             it "creates the correct office hours records from the serialized office hours" do
-              expect { subject.create_records_for(@property) }.to change { @property.office_hours.count }.by(7)
+              expect { subject.create_records_for(@property) }.to change { @property.office_hours.count }.by(6)
 
               sunday    = @property.office_hours.to_a.find { |o| o.day == Bozzuto::OfficeHours::DAY_MAPPING['Sunday'] }
               monday    = @property.office_hours.to_a.find { |o| o.day == Bozzuto::OfficeHours::DAY_MAPPING['Monday'] }
@@ -106,7 +106,7 @@ module Bozzuto
               monday.to_s.should    == 'Monday: 9:00AM - 7:00PM'
               tuesday.to_s.should   == 'Tuesday: 9:00AM - 7:00PM'
               wednesday.to_s.should == 'Wednesday: 9:00AM - 7:00PM'
-              thursday.to_s.should  == 'Thursday: 9:00AM - 7:00PM'
+              thursday.should       == nil
               friday.to_s.should    == 'Friday: 8:00AM - 5:00PM'
               saturday.to_s.should  == 'Saturday: 10:00AM - 5:00PM'
             end
