@@ -369,6 +369,28 @@
         <AffiliateID>382503</AffiliateID>
       </File>
     </Floorplan>
+    <ILS_Unit xmlns:MITS="http://www.mitsproject.org/namespace" Id="925411918" FloorplanID="382503" BuildingID="11">
+      <Unit xmlns:MITS="http://www.mitsproject.org/namespace">
+        <MITS:Information xmlns:MITS="http://www.mitsproject.org/namespace">
+          <MITS:UnitID>925411918</MITS:UnitID>
+          <MITS:UnitBedrooms>1</MITS:UnitBedrooms>
+          <MITS:UnitBathrooms>1.00</MITS:UnitBathrooms>
+          <MITS:MinSquareFeet>792</MITS:MinSquareFeet>
+          <MITS:MaxSquareFeet>792</MITS:MaxSquareFeet>
+          <MITS:MarketRent>1462.0000</MITS:MarketRent>
+          <MITS:UnitOccupancyStatus>vacant</MITS:UnitOccupancyStatus>
+          <MITS:UnitLeasedStatus>available</MITS:UnitLeasedStatus>
+          <MITS:FloorPlanID>382503</MITS:FloorPlanID>
+        </MITS:Information>
+        <MITS:PropertyPrimaryID xmlns:MITS="http://www.mitsproject.org/namespace">90681</MITS:PropertyPrimaryID>
+        <MITS:MarketingName xmlns:MITS="http://www.mitsproject.org/namespace">101</MITS:MarketingName>
+      </Unit>
+      <Comment>11</Comment>
+      <Availability>
+        <VacancyClass>Unoccupied</VacancyClass>
+        <MadeReadyDate Month="12" Day="10" Year="2013"/>
+      </Availability>
+    </ILS_Unit>
     <Utility MajorUtility="Some">
       <AirCon>false</AirCon>
       <BroadbandInternet>false</BroadbandInternet>

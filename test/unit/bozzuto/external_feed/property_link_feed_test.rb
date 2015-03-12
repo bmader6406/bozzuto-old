@@ -57,6 +57,50 @@ module Bozzuto::ExternalFeed
               f.external_cms_id.should   == '382503'
               f.external_cms_type.should == 'property_link'
             end
+
+            c.apartment_units.count.should == 1
+
+            c.apartment_units.first.tap do |u|
+              u.external_cms_id.should              == '925411918'
+              u.external_cms_type.should            == 'property_link'
+              u.building_external_cms_id.should     == '11'
+              u.floorplan_external_cms_id.should    == '382503'
+              u.organization_name.should            == nil
+              u.marketing_name.should               == '101'
+              u.unit_type.should                    == nil
+              u.bedrooms.should                     == 1
+              u.bathrooms.should                    == 1
+              u.min_square_feet.should              == 792
+              u.max_square_feet.should              == 792
+              u.square_foot_type.should             == nil
+              u.unit_rent.should                    == nil
+              u.market_rent.should                  == 1462
+              u.economic_status.should              == nil
+              u.economic_status_description.should  == nil
+              u.occupancy_status.should             == 'vacant'
+              u.occupancy_status_description.should == nil
+              u.leased_status.should                == 'available'
+              u.leased_status_description.should    == nil
+              u.number_occupants.should             == nil
+              u.floor_plan_name.should              == nil
+              u.phase_name.should                   == nil
+              u.building_name.should                == nil
+              u.primary_property_id.should          == '90681'
+              u.address_line_1.should               == nil
+              u.address_line_2.should               == nil
+              u.city.should                         == nil
+              u.state.should                        == nil
+              u.zip.should                          == nil
+              u.avg_rent.should                     == nil
+              u.min_rent.should                     == nil
+              u.max_rent.should                     == nil
+              u.comment.should                      == '11'
+              u.vacate_date.should                  == nil
+              u.vacancy_class.should                == 'Unoccupied'
+              u.made_ready_date.should              == Date.new(2013, 12, 10)
+              u.availability_url.should             == nil
+              u.image_url.should                    == nil
+            end
           end
 
           subject.properties[1].tap do |c|

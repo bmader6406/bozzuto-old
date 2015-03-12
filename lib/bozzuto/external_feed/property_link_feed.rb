@@ -16,7 +16,8 @@ module Bozzuto
           :external_cms_id   => string_at(property, './PropertyID/Identification/PrimaryID'),
           :external_cms_type => feed_type.to_s,
           :office_hours      => build_office_hours(property),
-          :floor_plans       => build_floor_plans(property)
+          :floor_plans       => build_floor_plans(property),
+          :apartment_units   => build_apartment_units(property)
         )
       end
 
@@ -38,6 +39,27 @@ module Bozzuto
           :floor_plan_group  => floor_plan_group(bedrooms, comment),
           :external_cms_id   => plan['Id'],
           :external_cms_type => feed_type.to_s
+        )
+      end
+
+      def build_apartment_unit(unit)
+        Bozzuto::ExternalFeed::ApartmentUnit.new(
+          :external_cms_id              => unit['Id'],
+          :external_cms_type            => feed_type.to_s,
+          :building_external_cms_id     => unit['BuildingID'],
+          :floorplan_external_cms_id    => unit['FloorplanID'],
+          :bedrooms                     => float_at(unit, './Unit/Information/UnitBedrooms'),
+          :bathrooms                    => float_at(unit, './Unit/Information/UnitBathrooms'),
+          :min_square_feet              => int_at(unit, './Unit/Information/MinSquareFeet'),
+          :max_square_feet              => int_at(unit, './Unit/Information/MaxSquareFeet'),
+          :market_rent                  => float_at(unit, './Unit/Information/MarketRent'),
+          :occupancy_status             => string_at(unit, './Unit/Information/UnitOccupancyStatus'),
+          :leased_status                => string_at(unit, './Unit/Information/UnitLeasedStatus'),
+          :primary_property_id          => string_at(unit, './Unit/PropertyPrimaryID'),
+          :marketing_name               => string_at(unit, './Unit/MarketingName'),
+          :comment                      => string_at(unit, './Comment'),
+          :vacancy_class                => string_at(unit, './Availability/VacancyClass'),
+          :made_ready_date              => date_for(unit.at('./Availability/MadeReadyDate'))
         )
       end
     end
