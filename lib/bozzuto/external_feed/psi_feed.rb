@@ -43,7 +43,7 @@ module Bozzuto
         )
       end
 
-      def build_apartment_unit(unit)
+      def build_apartment_unit(property, unit)
         address_parts                  = string_at(unit, './Units/Unit/Address/Address').split(', ')
         address_line_1, address_line_2 = address_parts.size > 1 ? address_parts : address_parts << nil
         effective_rent                 = float_at(unit, './EffectiveRent')

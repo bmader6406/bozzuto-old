@@ -43,7 +43,7 @@ module Bozzuto
         )
       end
 
-      def build_apartment_unit(unit)
+      def build_apartment_unit(property, unit)
         Bozzuto::ExternalFeed::ApartmentUnit.new(
           :external_cms_id              => string_at(unit, './UnitID'),
           :external_cms_type            => feed_type.to_s,

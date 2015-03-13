@@ -80,11 +80,11 @@ module Bozzuto
 
       def build_apartment_units(property)
         property.xpath('./ILS_Unit').map do |unit|
-          build_apartment_unit(unit)
+          build_apartment_unit(property, unit)
         end
       end
 
-      def build_apartment_unit(unit)
+      def build_apartment_unit(property, unit)
         raise NotImplementedError, "#{self.class.to_s} must implement #build_apartment_unit"
       end
 
