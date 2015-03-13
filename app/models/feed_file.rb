@@ -19,4 +19,10 @@ class FeedFile < ActiveRecord::Base
             :presence => true
 
   validates :file_type, :inclusion => { :in => FILE_TYPE }, :allow_nil => true
+
+  def self.parse_type_from(input)
+    value = input.to_s.capitalize
+
+    FILE_TYPE.include?(value) ? value : 'Other'
+  end
 end
