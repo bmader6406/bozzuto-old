@@ -73,6 +73,92 @@ module Bozzuto::ExternalFeed
               f.external_cms_id.should   == '9798'
               f.external_cms_type.should == 'vaultware'
             end
+
+            c.apartment_units.count.should == 2
+
+            c.apartment_units.first.tap do |u|
+              u.external_cms_id.should              == '12905837'
+              u.external_cms_type.should            == 'vaultware'
+              u.building_external_cms_id.should     == ''
+              u.floorplan_external_cms_id.should    == '9798'
+              u.organization_name.should            == nil
+              u.marketing_name.should               == '02222'
+              u.unit_type.should                    == '2 Bed/1 Bath-Franklin-Aff'
+              u.bedrooms.should                     == nil
+              u.bathrooms.should                    == nil
+              u.min_square_feet.should              == 866
+              u.max_square_feet.should              == 866
+              u.square_foot_type.should             == nil
+              u.unit_rent.should                    == nil
+              u.market_rent.should                  == nil
+              u.economic_status.should              == nil
+              u.economic_status_description.should  == nil
+              u.occupancy_status.should             == nil
+              u.occupancy_status_description.should == nil
+              u.leased_status.should                == 'not ready'
+              u.leased_status_description.should    == nil
+              u.number_occupants.should             == nil
+              u.floor_plan_name.should              == nil
+              u.phase_name.should                   == nil
+              u.building_name.should                == nil
+              u.primary_property_id.should          == '50494'
+              u.address_line_1.should               == nil
+              u.address_line_2.should               == nil
+              u.city.should                         == nil
+              u.state.should                        == nil
+              u.zip.should                          == nil
+              u.avg_rent.should                     == 1314
+              u.min_rent.should                     == 1314
+              u.max_rent.should                     == 1314
+              u.comment.should                      == '02222'
+              u.vacate_date.should                  == nil
+              u.vacancy_class.should                == 'Occupied'
+              u.made_ready_date.should              == nil
+              u.availability_url.should             == CGI.unescapeHTML("http://units.realtydatatrust.com/unitavailability.aspx?&amp;ils=5341&amp;propid=50494&amp;fid=102344&amp;uid=12905837")
+              u.image_url.should                    == nil
+            end
+
+            c.apartment_units.last.tap do |u|
+              u.external_cms_id.should              == '10252429'
+              u.external_cms_type.should            == 'vaultware'
+              u.building_external_cms_id.should     == ''
+              u.floorplan_external_cms_id.should    == '9798'
+              u.organization_name.should            == nil
+              u.marketing_name.should               == '1010'
+              u.unit_type.should                    == '0000004242aa1'
+              u.bedrooms.should                     == nil
+              u.bathrooms.should                    == nil
+              u.min_square_feet.should              == 726
+              u.max_square_feet.should              == 726
+              u.square_foot_type.should             == nil
+              u.unit_rent.should                    == nil
+              u.market_rent.should                  == nil
+              u.economic_status.should              == nil
+              u.economic_status_description.should  == nil
+              u.occupancy_status.should             == nil
+              u.occupancy_status_description.should == nil
+              u.leased_status.should                == 'available'
+              u.leased_status_description.should    == nil
+              u.number_occupants.should             == nil
+              u.floor_plan_name.should              == nil
+              u.phase_name.should                   == nil
+              u.building_name.should                == nil
+              u.primary_property_id.should          == '16992'
+              u.address_line_1.should               == nil
+              u.address_line_2.should               == nil
+              u.city.should                         == nil
+              u.state.should                        == nil
+              u.zip.should                          == nil
+              u.avg_rent.should                     == 2500
+              u.min_rent.should                     == 2500
+              u.max_rent.should                     == 2734
+              u.comment.should                      == '1010'
+              u.vacate_date.should                  == Date.new(2015, 3, 31)
+              u.vacancy_class.should                == 'Occupied'
+              u.made_ready_date.should              == nil
+              u.availability_url.should             == CGI.unescapeHTML("http://units.realtydatatrust.com/unitavailability.aspx?&amp;ils=5341&amp;propid=16992&amp;fid=20307&amp;uid=10252429")
+              u.image_url.should                    == nil
+            end
           end
 
           subject.properties[1].tap do |c|
@@ -116,6 +202,92 @@ module Bozzuto::ExternalFeed
               f.floor_plan_group.should  == 'two_bedrooms'
               f.external_cms_id.should   == '20294'
               f.external_cms_type.should == 'vaultware'
+            end
+
+            c.apartment_units.count.should == 2
+
+            c.apartment_units.first.tap do |u|
+              u.external_cms_id.should              == '12890066'
+              u.external_cms_type.should            == 'vaultware'
+              u.building_external_cms_id.should     == ''
+              u.floorplan_external_cms_id.should    == '20294'
+              u.organization_name.should            == nil
+              u.marketing_name.should               == '07132'
+              u.unit_type.should                    == '3 Bed/2 Bath Loft-Bristol'
+              u.bedrooms.should                     == nil
+              u.bathrooms.should                    == nil
+              u.min_square_feet.should              == 1463
+              u.max_square_feet.should              == 1463
+              u.square_foot_type.should             == nil
+              u.unit_rent.should                    == nil
+              u.market_rent.should                  == nil
+              u.economic_status.should              == nil
+              u.economic_status_description.should  == nil
+              u.occupancy_status.should             == nil
+              u.occupancy_status_description.should == nil
+              u.leased_status.should                == 'available'
+              u.leased_status_description.should    == nil
+              u.number_occupants.should             == nil
+              u.floor_plan_name.should              == nil
+              u.phase_name.should                   == nil
+              u.building_name.should                == nil
+              u.primary_property_id.should          == '50494'
+              u.address_line_1.should               == nil
+              u.address_line_2.should               == nil
+              u.city.should                         == nil
+              u.state.should                        == nil
+              u.zip.should                          == nil
+              u.avg_rent.should                     == 2395
+              u.min_rent.should                     == 2395
+              u.max_rent.should                     == 2395
+              u.comment.should                      == '07132'
+              u.vacate_date.should                  == Date.new(2015, 3, 21)
+              u.vacancy_class.should                == 'Occupied'
+              u.made_ready_date.should              == nil
+              u.availability_url.should             == CGI.unescapeHTML("http://units.realtydatatrust.com/unitavailability.aspx?&amp;ils=5341&amp;propid=50494&amp;fid=102339&amp;uid=12890066")
+              u.image_url.should                    == nil
+            end
+
+            c.apartment_units.last.tap do |u|
+              u.external_cms_id.should              == '12890112'
+              u.external_cms_type.should            == 'vaultware'
+              u.building_external_cms_id.should     == ''
+              u.floorplan_external_cms_id.should    == '20294'
+              u.organization_name.should            == nil
+              u.marketing_name.should               == '09028'
+              u.unit_type.should                    == '3 Bed/2 Bath Loft-Norfolk-Direct'
+              u.bedrooms.should                     == nil
+              u.bathrooms.should                    == nil
+              u.min_square_feet.should              == 1573
+              u.max_square_feet.should              == 1573
+              u.square_foot_type.should             == nil
+              u.unit_rent.should                    == nil
+              u.market_rent.should                  == nil
+              u.economic_status.should              == nil
+              u.economic_status_description.should  == nil
+              u.occupancy_status.should             == nil
+              u.occupancy_status_description.should == nil
+              u.leased_status.should                == 'not ready'
+              u.leased_status_description.should    == nil
+              u.number_occupants.should             == nil
+              u.floor_plan_name.should              == nil
+              u.phase_name.should                   == nil
+              u.building_name.should                == nil
+              u.primary_property_id.should          == '50494'
+              u.address_line_1.should               == nil
+              u.address_line_2.should               == nil
+              u.city.should                         == nil
+              u.state.should                        == nil
+              u.zip.should                          == nil
+              u.avg_rent.should                     == 3115
+              u.min_rent.should                     == 3115
+              u.max_rent.should                     == 3115
+              u.comment.should                      == '09028'
+              u.vacate_date.should                  == nil
+              u.vacancy_class.should                == 'Occupied'
+              u.made_ready_date.should              == nil
+              u.availability_url.should             == CGI.unescapeHTML("http://units.realtydatatrust.com/unitavailability.aspx?&amp;ils=5341&amp;propid=50494&amp;fid=102340&amp;uid=12890112")
+              u.image_url.should                    == nil
             end
           end
         end

@@ -16,7 +16,8 @@ module Bozzuto
           :external_cms_id   => string_at(property, './PropertyID/Identification/PrimaryID'),
           :external_cms_type => feed_type.to_s,
           :office_hours      => build_office_hours(property),
-          :floor_plans       => build_floor_plans(property)
+          :floor_plans       => build_floor_plans(property),
+          :apartment_units   => build_apartment_units(property)
         )
       end
 
@@ -38,6 +39,29 @@ module Bozzuto
           :floor_plan_group  => floor_plan_group(bedrooms, comment),
           :external_cms_id   => plan['Id'],
           :external_cms_type => feed_type.to_s
+        )
+      end
+
+      def build_apartment_unit(unit)
+        Bozzuto::ExternalFeed::ApartmentUnit.new(
+          :external_cms_id              => unit['Id'],
+          :external_cms_type            => feed_type.to_s,
+          :building_external_cms_id     => unit['BuildingID'],
+          :floorplan_external_cms_id    => unit['FloorplanID'],
+          :unit_type                    => string_at(unit, './Unit/Information/UnitType'),
+          :min_square_feet              => int_at(unit, './Unit/Information/MinSquareFeet'),
+          :max_square_feet              => int_at(unit, './Unit/Information/MaxSquareFeet'),
+          :leased_status                => string_at(unit, './Unit/Information/UnitLeasedStatus'),
+          :primary_property_id          => string_at(unit, './Unit/PropertyPrimaryID'),
+          :marketing_name               => string_at(unit, './Unit/MarketingName'),
+          :comment                      => string_at(unit, './Comment'),
+          :min_rent                     => float_at(unit, './EffectiveRent', 'Min'),
+          :max_rent                     => float_at(unit, './EffectiveRent', 'Max'),
+          :avg_rent                     => float_at(unit, './EffectiveRent', 'Avg'),
+          :vacate_date                  => date_for(unit.at('./Availability/VacateDate')),
+          :vacancy_class                => string_at(unit, './Availability/VacancyClass'),
+          :availability_url             => CGI.unescapeHTML(string_at(unit, './Availability/UnitAvailabilityURL'))
+          # TODO - pull in amenities    => build_amenenities(unit)
         )
       end
     end
