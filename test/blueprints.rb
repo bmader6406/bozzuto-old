@@ -253,6 +253,16 @@ Feed.blueprint do
   url  { Sham.feed_url }
 end
 
+FeedFile.blueprint do
+  feed_record       { ApartmentUnit.make }
+  external_cms_id   { Sham.vaultware_id }
+  external_cms_type { 'vaultware' }
+  file_type         { 'Photo' }
+  name              { 'Unit 4B Kitchen' }
+  format            { 'image/jpeg' }
+  source            { 'http://images.com/unit-4b-kitchen.jpg' }
+end
+
 FeedItem.blueprint do
   title        { Faker::Lorem.sentence }
   url          { Faker::Internet.domain_name }
