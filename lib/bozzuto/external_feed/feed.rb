@@ -146,7 +146,7 @@ module Bozzuto
       end
 
       def date_for(node)
-        return if node['Year'].nil? || node['Month'].nil? || node['Day'].nil?
+        return if node.nil? || node['Year'].nil? || node['Month'].nil? || node['Day'].nil?
 
         Date.new(node['Year'].to_i, node['Month'].to_i, node['Day'].to_i)
       end
