@@ -16,7 +16,8 @@ module Bozzuto
           :external_cms_id   => string_at(property, './Identification/PrimaryID'),
           :external_cms_type => feed_type.to_s,
           :office_hours      => build_office_hours(property),
-          :floor_plans       => build_floor_plans(property)
+          :floor_plans       => build_floor_plans(property),
+          :apartment_units   => build_apartment_units(property)
         )
 
       end
@@ -42,6 +43,34 @@ module Bozzuto
         )
       end
 
+      def build_apartment_unit(unit)
+        Bozzuto::ExternalFeed::ApartmentUnit.new(
+          :external_cms_id              => string_at(unit, './UnitID'),
+          :external_cms_type            => feed_type.to_s,
+          :unit_type                    => string_at(unit, './UnitType'),
+          :building_external_cms_id     => string_at(unit, './ExtId'), # Is this thing actually the building ID?
+          :floorplan_external_cms_id    => string_at(unit, './FloorplanID'),
+          :floor_plan_name              => string_at(unit, './FloorplanName'),
+          :bedrooms                     => float_at(unit, './UnitBedrooms'),
+          :bathrooms                    => float_at(unit, './UnitBathrooms'),
+          :min_square_feet              => int_at(unit, './MinSquareFeet'),
+          :max_square_feet              => int_at(unit, './MaxSquareFeet'),
+          :square_foot_type             => string_at(unit, './SquareFootType'),
+          :unit_rent                    => float_at(unit, './UnitRent'),
+          :market_rent                  => float_at(unit, './MarketRent'),
+          :economic_status              => string_at(unit, './UnitEconomicStatus'),
+          :economic_status_description  => string_at(unit, './UnitEconomicStatusDescription'),
+          :occupancy_status             => string_at(unit, './UnitOccupancyStatus'),
+          :occupancy_status_description => string_at(unit, './UnitOccupancyStatusDescription'),
+          :leased_status                => string_at(unit, './UnitLeasedStatus'),
+          :leased_status_description    => string_at(unit, './UnitLeasedStatusDescription'),
+          :primary_property_id          => string_at(unit, './PropertyPrimaryID'),
+          :made_ready_date              => date_for(unit.at('./DateAvailable')),
+          :availability_url             => string_at(unit, './ApplyOnlineURL')
+          # TODO - Need to capture amenities => string_at(unit, './UnitAmenityList')
+        )
+      end
+
       def floor_plan_image_url(property, plan)
         file = property.xpath("./File[@id=#{plan['id']}]").first
 
@@ -54,4 +83,3 @@ module Bozzuto
     end
   end
 end
-

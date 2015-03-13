@@ -73,6 +73,92 @@ module Bozzuto::ExternalFeed
               f.external_cms_id.should   == '858902'
               f.external_cms_type.should == 'rent_cafe'
             end
+
+            c.apartment_units.count.should == 2
+
+            c.apartment_units.first.tap do |u|
+              u.external_cms_id.should              == '605'
+              u.external_cms_type.should            == 'rent_cafe'
+              u.building_external_cms_id.should     == '49741'
+              u.floorplan_external_cms_id.should    == '858901'
+              u.organization_name.should            == nil
+              u.marketing_name.should               == nil
+              u.unit_type.should                    == '297-3752'
+              u.bedrooms.should                     == 1
+              u.bathrooms.should                    == 1
+              u.min_square_feet.should              == 665
+              u.max_square_feet.should              == 665
+              u.square_foot_type.should             == 'Internal'
+              u.unit_rent.should                    == 2318
+              u.market_rent.should                  == 2604
+              u.economic_status.should              == 'residential'
+              u.economic_status_description.should  == 'residential'
+              u.occupancy_status.should             == 'Occupied No Notice'
+              u.occupancy_status_description.should == ''
+              u.leased_status.should                == 'Occupied No Notice'
+              u.leased_status_description.should    == 'Occupied No Notice'
+              u.number_occupants.should             == nil
+              u.floor_plan_name.should              == 'A3-2'
+              u.phase_name.should                   == nil
+              u.building_name.should                == nil
+              u.primary_property_id.should          == '111537'
+              u.address_line_1.should               == nil
+              u.address_line_2.should               == nil
+              u.city.should                         == nil
+              u.state.should                        == nil
+              u.zip.should                          == nil
+              u.avg_rent.should                     == nil
+              u.min_rent.should                     == nil
+              u.max_rent.should                     == nil
+              u.comment.should                      == nil
+              u.vacate_date.should                  == nil
+              u.vacancy_class.should                == nil
+              u.made_ready_date.should              == nil
+              u.availability_url.should             == CGI.unescapeHTML("http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=111537&amp;header=1&amp;FloorPlanID=858907&amp;UnitID=708798")
+              u.image_url.should                    == nil
+            end
+
+            c.apartment_units.last.tap do |u|
+              u.external_cms_id.should              == '521'
+              u.external_cms_type.should            == 'rent_cafe'
+              u.building_external_cms_id.should     == '49734'
+              u.floorplan_external_cms_id.should    == '858901'
+              u.organization_name.should            == nil
+              u.marketing_name.should               == nil
+              u.unit_type.should                    == '297-3782'
+              u.bedrooms.should                     == 0
+              u.bathrooms.should                    == 1
+              u.min_square_feet.should              == 480
+              u.max_square_feet.should              == 480
+              u.square_foot_type.should             == 'Internal'
+              u.unit_rent.should                    == 2047
+              u.market_rent.should                  == 2047
+              u.economic_status.should              == 'residential'
+              u.economic_status_description.should  == 'residential'
+              u.occupancy_status.should             == 'Occupied No Notice'
+              u.occupancy_status_description.should == ''
+              u.leased_status.should                == 'Occupied No Notice'
+              u.leased_status_description.should    == 'Occupied No Notice'
+              u.number_occupants.should             == nil
+              u.floor_plan_name.should              == 'A0'
+              u.phase_name.should                   == nil
+              u.building_name.should                == nil
+              u.primary_property_id.should          == '111537'
+              u.address_line_1.should               == nil
+              u.address_line_2.should               == nil
+              u.city.should                         == nil
+              u.state.should                        == nil
+              u.zip.should                          == nil
+              u.avg_rent.should                     == nil
+              u.min_rent.should                     == nil
+              u.max_rent.should                     == nil
+              u.comment.should                      == nil
+              u.vacate_date.should                  == nil
+              u.vacancy_class.should                == nil
+              u.made_ready_date.should              == nil
+              u.availability_url.should             == CGI.unescapeHTML("http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=111537&amp;header=1&amp;FloorPlanID=858903&amp;UnitID=708791")
+              u.image_url.should                    == nil
+            end
           end
 
           subject.properties[1].tap do |c|
@@ -116,6 +202,92 @@ module Bozzuto::ExternalFeed
               f.floor_plan_group.should  == 'one_bedroom'
               f.external_cms_id.should   == '937747'
               f.external_cms_type.should == 'rent_cafe'
+            end
+
+            c.apartment_units.count.should == 2
+
+            c.apartment_units.first.tap do |u|
+              u.external_cms_id.should              == '09-207'
+              u.external_cms_type.should            == 'rent_cafe'
+              u.building_external_cms_id.should     == '24613'
+              u.floorplan_external_cms_id.should    == '937747'
+              u.organization_name.should            == nil
+              u.marketing_name.should               == nil
+              u.unit_type.should                    == '297-1562'
+              u.bedrooms.should                     == 1
+              u.bathrooms.should                    == 1
+              u.min_square_feet.should              == 788
+              u.max_square_feet.should              == 788
+              u.square_foot_type.should             == 'Internal'
+              u.unit_rent.should                    == 1828
+              u.market_rent.should                  == 1813
+              u.economic_status.should              == 'residential'
+              u.economic_status_description.should  == 'residential'
+              u.occupancy_status.should             == 'Vacant'
+              u.occupancy_status_description.should == ''
+              u.leased_status.should                == 'available'
+              u.leased_status_description.should    == 'Occupied No Notice'
+              u.number_occupants.should             == nil
+              u.floor_plan_name.should              == 'One Bedroom / One Bath - A1'
+              u.phase_name.should                   == nil
+              u.building_name.should                == nil
+              u.primary_property_id.should          == '144341'
+              u.address_line_1.should               == nil
+              u.address_line_2.should               == nil
+              u.city.should                         == nil
+              u.state.should                        == nil
+              u.zip.should                          == nil
+              u.avg_rent.should                     == nil
+              u.min_rent.should                     == nil
+              u.max_rent.should                     == nil
+              u.comment.should                      == nil
+              u.vacate_date.should                  == nil
+              u.vacancy_class.should                == nil
+              u.made_ready_date.should              == nil
+              u.availability_url.should             == CGI.unescapeHTML("http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=144341&amp;header=1&amp;FloorPlanID=937747&amp;UnitID=1230276")
+              u.image_url.should                    == nil
+            end
+
+            c.apartment_units.last.tap do |u|
+              u.external_cms_id.should              == '09-209'
+              u.external_cms_type.should            == 'rent_cafe'
+              u.building_external_cms_id.should     == '24614'
+              u.floorplan_external_cms_id.should    == '937747'
+              u.organization_name.should            == nil
+              u.marketing_name.should               == nil
+              u.unit_type.should                    == '297-1562'
+              u.bedrooms.should                     == 1
+              u.bathrooms.should                    == 1
+              u.min_square_feet.should              == 788
+              u.max_square_feet.should              == 788
+              u.square_foot_type.should             == 'Internal'
+              u.unit_rent.should                    == 1592
+              u.market_rent.should                  == 1828
+              u.economic_status.should              == 'residential'
+              u.economic_status_description.should  == 'residential'
+              u.occupancy_status.should             == 'Vacant'
+              u.occupancy_status_description.should == ''
+              u.leased_status.should                == 'available'
+              u.leased_status_description.should    == 'Occupied No Notice'
+              u.number_occupants.should             == nil
+              u.floor_plan_name.should              == 'One Bedroom / One Bath - A1'
+              u.phase_name.should                   == nil
+              u.building_name.should                == nil
+              u.primary_property_id.should          == '144341'
+              u.address_line_1.should               == nil
+              u.address_line_2.should               == nil
+              u.city.should                         == nil
+              u.state.should                        == nil
+              u.zip.should                          == nil
+              u.avg_rent.should                     == nil
+              u.min_rent.should                     == nil
+              u.max_rent.should                     == nil
+              u.comment.should                      == nil
+              u.vacate_date.should                  == nil
+              u.vacancy_class.should                == nil
+              u.made_ready_date.should              == nil
+              u.availability_url.should             == CGI.unescapeHTML("http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=144341&amp;header=1&amp;FloorPlanID=937747&amp;UnitID=1230277")
+              u.image_url.should                    == nil
             end
           end
         end
