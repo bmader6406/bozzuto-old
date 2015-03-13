@@ -116,6 +116,23 @@ module Bozzuto::ExternalFeed
               u.made_ready_date.should              == nil
               u.availability_url.should             == CGI.unescapeHTML("http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=111537&amp;header=1&amp;FloorPlanID=858907&amp;UnitID=708798")
               u.image_url.should                    == nil
+
+              u.apartment_unit_amenities.count.should == 3
+
+              u.apartment_unit_amenities[0].tap do |amenity|
+                amenity.primary_type.should == 'Other'
+                amenity.description.should  == '6th Floor'
+              end
+
+              u.apartment_unit_amenities[1].tap do |amenity|
+                amenity.primary_type.should == 'Other'
+                amenity.description.should  == 'Courtyard View'
+              end
+
+              u.apartment_unit_amenities[2].tap do |amenity|
+                amenity.primary_type.should == 'Other'
+                amenity.description.should  == 'Rent'
+              end
             end
 
             c.apartment_units.last.tap do |u|
@@ -158,6 +175,18 @@ module Bozzuto::ExternalFeed
               u.made_ready_date.should              == nil
               u.availability_url.should             == CGI.unescapeHTML("http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=111537&amp;header=1&amp;FloorPlanID=858903&amp;UnitID=708791")
               u.image_url.should                    == nil
+
+              u.apartment_unit_amenities.count.should == 2
+
+              u.apartment_unit_amenities[0].tap do |amenity|
+                amenity.primary_type.should == 'Other'
+                amenity.description.should  == '5th Floor'
+              end
+
+              u.apartment_unit_amenities[1].tap do |amenity|
+                amenity.primary_type.should == 'Other'
+                amenity.description.should  == 'Rent'
+              end
             end
           end
 
@@ -246,6 +275,13 @@ module Bozzuto::ExternalFeed
               u.made_ready_date.should              == nil
               u.availability_url.should             == CGI.unescapeHTML("http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=144341&amp;header=1&amp;FloorPlanID=937747&amp;UnitID=1230276")
               u.image_url.should                    == nil
+
+              u.apartment_unit_amenities.count.should == 1
+
+              u.apartment_unit_amenities[0].tap do |amenity|
+                amenity.primary_type.should == 'Other'
+                amenity.description.should  == 'Rent'
+              end
             end
 
             c.apartment_units.last.tap do |u|
@@ -288,6 +324,18 @@ module Bozzuto::ExternalFeed
               u.made_ready_date.should              == nil
               u.availability_url.should             == CGI.unescapeHTML("http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=144341&amp;header=1&amp;FloorPlanID=937747&amp;UnitID=1230277")
               u.image_url.should                    == nil
+
+              u.apartment_unit_amenities.count.should == 2
+
+              u.apartment_unit_amenities[0].tap do |amenity|
+                amenity.primary_type.should == 'Other'
+                amenity.description.should  == 'New Kitchen Countertops'
+              end
+
+              u.apartment_unit_amenities[1].tap do |amenity|
+                amenity.primary_type.should == 'Other'
+                amenity.description.should  == 'Rent'
+              end
             end
           end
         end

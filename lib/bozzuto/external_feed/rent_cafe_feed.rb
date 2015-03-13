@@ -66,8 +66,8 @@ module Bozzuto
           :leased_status_description    => string_at(unit, './UnitLeasedStatusDescription'),
           :primary_property_id          => string_at(unit, './PropertyPrimaryID'),
           :made_ready_date              => date_for(unit.at('./DateAvailable')),
-          :availability_url             => string_at(unit, './ApplyOnlineURL')
-          # TODO - Need to capture amenities => string_at(unit, './UnitAmenityList')
+          :availability_url             => string_at(unit, './ApplyOnlineURL'),
+          :apartment_unit_amenities     => build_apartment_unit_amenities(unit)
         )
       end
 
@@ -78,6 +78,12 @@ module Bozzuto
           string_at(file, './Src')
         else
           nil
+        end
+      end
+
+      def build_apartment_unit_amenities(unit)
+        string_at(unit, './UnitAmenityList').split(',').map do |amenity|
+          ApartmentUnitAmenity.new(:description => amenity.strip)
         end
       end
     end
