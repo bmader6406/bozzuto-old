@@ -6,6 +6,8 @@ class ApartmentUnitTest < ActiveSupport::TestCase
 
     should belong_to(:floor_plan)
 
+    should have_many(:amenities)
+
     should validate_presence_of(:floor_plan)
 
     should validate_numericality_of(:bedrooms)
