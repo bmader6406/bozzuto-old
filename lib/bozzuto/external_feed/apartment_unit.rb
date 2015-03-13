@@ -39,7 +39,8 @@ module Bozzuto
                     :vacancy_class,
                     :made_ready_date,
                     :availability_url,
-                    :image_url
+                    :image_url,
+                    :apartment_unit_amenities
 
       self.database_attributes = [
         :external_cms_id,
