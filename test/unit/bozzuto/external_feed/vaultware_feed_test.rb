@@ -116,6 +116,8 @@ module Bozzuto::ExternalFeed
               u.made_ready_date.should              == nil
               u.availability_url.should             == CGI.unescapeHTML("http://units.realtydatatrust.com/unitavailability.aspx?&amp;ils=5341&amp;propid=50494&amp;fid=102344&amp;uid=12905837")
               u.image_url.should                    == nil
+
+              u.apartment_unit_amenities.count.should == 0
             end
 
             c.apartment_units.last.tap do |u|
@@ -158,6 +160,26 @@ module Bozzuto::ExternalFeed
               u.made_ready_date.should              == nil
               u.availability_url.should             == CGI.unescapeHTML("http://units.realtydatatrust.com/unitavailability.aspx?&amp;ils=5341&amp;propid=16992&amp;fid=20307&amp;uid=10252429")
               u.image_url.should                    == nil
+
+              u.apartment_unit_amenities.count.should == 3
+
+              u.apartment_unit_amenities[0].tap do |amenity|
+                amenity.primary_type.should == 'Other'
+                amenity.description.should  == '10th Floor'
+                amenity.rank.should         == 1
+              end
+
+              u.apartment_unit_amenities[1].tap do |amenity|
+                amenity.primary_type.should == 'Other'
+                amenity.description.should  == 'Balcony'
+                amenity.rank.should         == 2
+              end
+
+              u.apartment_unit_amenities[2].tap do |amenity|
+                amenity.primary_type.should == 'Other'
+                amenity.description.should  == 'Pool View'
+                amenity.rank.should         == 3
+              end
             end
           end
 
@@ -246,6 +268,14 @@ module Bozzuto::ExternalFeed
               u.made_ready_date.should              == nil
               u.availability_url.should             == CGI.unescapeHTML("http://units.realtydatatrust.com/unitavailability.aspx?&amp;ils=5341&amp;propid=50494&amp;fid=102339&amp;uid=12890066")
               u.image_url.should                    == nil
+
+              u.apartment_unit_amenities.count.should == 1
+
+              u.apartment_unit_amenities[0].tap do |amenity|
+                amenity.primary_type.should == 'Other'
+                amenity.description.should  == 'Wooded View'
+                amenity.rank.should         == 2
+              end
             end
 
             c.apartment_units.last.tap do |u|
@@ -288,6 +318,14 @@ module Bozzuto::ExternalFeed
               u.made_ready_date.should              == nil
               u.availability_url.should             == CGI.unescapeHTML("http://units.realtydatatrust.com/unitavailability.aspx?&amp;ils=5341&amp;propid=50494&amp;fid=102340&amp;uid=12890112")
               u.image_url.should                    == nil
+
+              u.apartment_unit_amenities.count.should == 1
+
+              u.apartment_unit_amenities[0].tap do |amenity|
+                amenity.primary_type.should == 'Other'
+                amenity.description.should  == 'Attached Garage'
+                amenity.rank.should         == 1
+              end
             end
           end
         end

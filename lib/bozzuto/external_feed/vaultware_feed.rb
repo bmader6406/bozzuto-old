@@ -60,8 +60,16 @@ module Bozzuto
           :avg_rent                     => float_at(unit, './EffectiveRent', 'Avg'),
           :vacate_date                  => date_for(unit.at('./Availability/VacateDate')),
           :vacancy_class                => string_at(unit, './Availability/VacancyClass'),
-          :availability_url             => CGI.unescapeHTML(string_at(unit, './Availability/UnitAvailabilityURL'))
-          # TODO - pull in amenities    => build_amenenities(unit)
+          :availability_url             => CGI.unescapeHTML(string_at(unit, './Availability/UnitAvailabilityURL')),
+          :apartment_unit_amenities     => build_apartment_unit_amenities(unit)
+        )
+      end
+
+      def build_apartment_unit_amenity(amenity)
+        ApartmentUnitAmenity.new(
+          :primary_type => amenity['Type'],
+          :description  => string_at(amenity, './Description'),
+          :rank         => int_at(amenity, './Rank')
         )
       end
     end
