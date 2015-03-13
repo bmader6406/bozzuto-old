@@ -157,6 +157,14 @@ ApartmentUnit.blueprint do
   floor_plan         { ApartmentFloorPlan.make }
 end
 
+ApartmentUnitAmenity.blueprint do
+  apartment_unit
+  primary_type       { 'Heat' }
+  sub_type           { 'Central' }
+  description        { 'Milk was a bad choice.' }
+  rank               { 1 }
+end
+
 Area.blueprint do
   name                    { Sham.area_name }
   latitude                { Sham.latitude }

@@ -90,6 +90,18 @@ ActiveRecord::Schema.define(:version => 20150423133803) do
   add_index "apartment_floor_plans", ["external_cms_id"], :name => "index_apartment_floor_plans_on_external_cms_id"
   add_index "apartment_floor_plans", ["floor_plan_group_id"], :name => "index_apartment_floor_plans_on_floor_plan_group_id"
 
+  create_table "apartment_unit_amenities", :force => true do |t|
+    t.integer  "apartment_unit_id",                      :null => false
+    t.string   "primary_type",      :default => "Other", :null => false
+    t.string   "sub_type"
+    t.string   "description"
+    t.integer  "rank"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "apartment_unit_amenities", ["apartment_unit_id"], :name => "index_apartment_unit_amenities_on_apartment_unit_id"
+
   create_table "apartment_units", :force => true do |t|
     t.string   "external_cms_id"
     t.string   "external_cms_type"
