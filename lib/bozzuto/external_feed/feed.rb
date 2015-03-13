@@ -88,6 +88,16 @@ module Bozzuto
         raise NotImplementedError, "#{self.class.to_s} must implement #build_apartment_unit"
       end
 
+      def build_apartment_unit_amenities(unit)
+        unit.xpath('./Amenity').map do |unit|
+          build_apartment_unit(unit)
+        end
+      end
+
+      def build_apartment_unit_amenity(unit)
+        raise NotImplementedError, "#{self.class.to_s} must implement #build_apartment_unit_amenity"
+      end
+
       def build_office_hours(property_xml)
         property_xml.xpath('./Information/OfficeHour').map do |office_hour_node|
           Bozzuto::ExternalFeed::OfficeHour.new(

@@ -85,6 +85,14 @@ module Bozzuto::ExternalFeed
         end
       end
 
+      describe "#build_apartment_unit_amenity" do
+        it "raises an error" do
+          expect {
+            subject.send(:build_apartment_unit_amenity, nil)
+          }.to raise_error(NotImplementedError)
+        end
+      end
+
       describe "#floor_plan_group" do
         context "comment matches 'penthouse'" do
           it "returns :penthouse" do
