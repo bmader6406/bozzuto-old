@@ -73,21 +73,17 @@ module Bozzuto
           :floor_plan_name              => string_at(unit, './Units/Unit/FloorplanName'),
           :phase_name                   => string_at(unit, './Units/Unit/PhaseName'),
           :building_name                => string_at(unit, './Units/Unit/BuildingName'),
-          :primary_property_id          => nil,
           :address_line_1               => address_line_1,
           :address_line_2               => address_line_2,
           :city                         => string_at(unit, './Units/Unit/Address/City'),
           :state                        => string_at(unit, './Units/Unit/Address/State'),
           :zip                          => string_at(unit, './Units/Unit/Address/PostalCode'),
-          :comment                      => nil,
           :min_rent                     => effective_rent,
           :max_rent                     => effective_rent,
           :avg_rent                     => effective_rent,
           :vacate_date                  => date_for(unit.at('./Availability/VacateDate')),
           :vacancy_class                => string_at(unit, './Availability/VacancyClass'),
-          :made_ready_date              => nil,
-          :availability_url             => string_at(unit, './Availability/UnitAvailabilityURL'),
-          :image_url                    => nil
+          :availability_url             => string_at(unit, './Availability/UnitAvailabilityURL')
         )
       end
     end
