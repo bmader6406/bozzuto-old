@@ -89,8 +89,8 @@ module Bozzuto
       end
 
       def build_apartment_unit_amenities(unit)
-        unit.xpath('./Amenity').map do |unit|
-          build_apartment_unit(unit)
+        unit.xpath('./Amenity').map do |amenity|
+          build_apartment_unit_amenity(amenity)
         end
       end
 
