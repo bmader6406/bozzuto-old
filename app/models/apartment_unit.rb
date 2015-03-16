@@ -21,7 +21,7 @@ class ApartmentUnit < ActiveRecord::Base
             :min_rent,
             :max_rent,
             :avg_rent,
-            :numericality => { :greater_than => 0 }, :allow_nil => true
+            :numericality => { :greater_than_or_equal_to => 0 }, :allow_nil => true
 
   def apartment_community
     floor_plan.apartment_community
