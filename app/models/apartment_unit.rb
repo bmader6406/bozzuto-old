@@ -7,6 +7,7 @@ class ApartmentUnit < ActiveRecord::Base
   belongs_to :floor_plan, :class_name => 'ApartmentFloorPlan'
 
   has_many :amenities, :class_name => 'ApartmentUnitAmenity'
+  has_many :feed_files, :as => :feed_record
 
   validates :floor_plan,
             :presence => true
