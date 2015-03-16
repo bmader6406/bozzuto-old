@@ -33,7 +33,7 @@ module Bozzuto
       def data
         assert_file_exists
 
-        @data ||= Nokogiri::XML(File.read(file)).tap do |d|
+        @data ||= Nokogiri::XML(::File.read(file)).tap do |d|
           d.remove_namespaces!
         end
       end
@@ -52,7 +52,7 @@ module Bozzuto
       private
 
       def assert_file_exists
-        unless file.present? && File.exists?(file)
+        unless file.present? && ::File.exists?(file)
           raise FeedNotFound.new("File not found: #{file.inspect}")
         end
       end
