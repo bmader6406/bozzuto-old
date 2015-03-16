@@ -140,7 +140,7 @@ module Bozzuto::ExternalFeed
                 file.active.should            == true
                 file.file_type.should         == 'Other'
                 file.description.should       == ''
-                file.name.should              == ''
+                file.name.should              == '3_340120_1833937'
                 file.caption.should           == ''
                 file.format.should            == 'image/jpeg'
                 file.source.should            == 'http://cdn.rentcafe.com/dmslivecafe/3/340670/3_340120_1833937.jpg'
@@ -211,7 +211,7 @@ module Bozzuto::ExternalFeed
                 file.active.should            == true
                 file.file_type.should         == 'Other'
                 file.description.should       == ''
-                file.name.should              == ''
+                file.name.should              == '3_345611_1385175'
                 file.caption.should           == ''
                 file.format.should            == 'image/jpeg'
                 file.source.should            == 'http://cdn.rentcafe.com/dmslivecafe/3/340670/3_345611_1385175.jpg'
@@ -228,7 +228,7 @@ module Bozzuto::ExternalFeed
                 file.active.should            == true
                 file.file_type.should         == 'Photo'
                 file.description.should       == ''
-                file.name.should              == ''
+                file.name.should              == '3_121387_1218990'
                 file.caption.should           == ''
                 file.format.should            == 'image/jpeg'
                 file.source.should            == 'http://cdn.rentcafe.com/dmslivecafe/3/111537/3_121387_1218990.jpg'
@@ -340,7 +340,7 @@ module Bozzuto::ExternalFeed
                 file.active.should            == true
                 file.file_type.should         == 'Other'
                 file.description.should       == ''
-                file.name.should              == ''
+                file.name.should              == '3_340670_1885137'
                 file.caption.should           == ''
                 file.format.should            == 'image/jpeg'
                 file.source.should            == 'http://cdn.rentcafe.com/dmslivecafe/3/340670/3_340670_1885137.jpg'
@@ -357,7 +357,7 @@ module Bozzuto::ExternalFeed
                 file.active.should            == true
                 file.file_type.should         == 'Other'
                 file.description.should       == ''
-                file.name.should              == ''
+                file.name.should              == '3_340670_1885141'
                 file.caption.should           == ''
                 file.format.should            == 'image/jpeg'
                 file.source.should            == 'http://cdn.rentcafe.com/dmslivecafe/3/340670/3_340670_1885141.jpg'
@@ -428,7 +428,7 @@ module Bozzuto::ExternalFeed
                 file.active.should            == true
                 file.file_type.should         == 'Photo'
                 file.description.should       == ''
-                file.name.should              == ''
+                file.name.should              == '3_111537_1778084'
                 file.caption.should           == ''
                 file.format.should            == 'image/jpeg'
                 file.source.should            == 'http://cdn.rentcafe.com/dmslivecafe/3/111537/3_111537_1778084.jpg'

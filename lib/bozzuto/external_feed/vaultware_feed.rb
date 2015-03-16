@@ -66,7 +66,7 @@ module Bozzuto
       end
 
       def build_apartment_unit_amenity(amenity)
-        ApartmentUnitAmenity.new(
+        Bozzuto::ExternalFeed::ApartmentUnitAmenity.new(
           :primary_type => amenity['Type'],
           :description  => string_at(amenity, './Description'),
           :rank         => int_at(amenity, './Rank')

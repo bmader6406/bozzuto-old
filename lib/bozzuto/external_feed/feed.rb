@@ -109,22 +109,27 @@ module Bozzuto
       end
 
       def build_files(node, id)
-        node.xpath("./File[@id=\"#{id}\"]").to_a.map do |file_node|
+        node.xpath("./File[@id=\"#{id}\"]").to_a.map do |node|
+          source        = string_at(node, './Src')
+          name          = string_at(node, './Name')
+          filename      = source.split('/').last.to_s
+          fallback_name = filename.match(/(?<name>[^\s\.]+)(\.\S+|\z){1}/).try(:[], :name)
+
           Bozzuto::ExternalFeed::File.new(
             :external_cms_id   => id,
             :external_cms_type => feed_type.to_s,
-            :active            => file_node['active'] == 'false' ? false : true,
-            :file_type         => FeedFile.parse_type_from(string_at(file_node, './Type')),
-            :description       => string_at(file_node, './Description'),
-            :name              => string_at(file_node, './Name'),
-            :caption           => string_at(file_node, './Caption'),
-            :format            => string_at(file_node, './Format'),
-            :source            => string_at(file_node, './Src'),
-            :width             => int_at(file_node, './Width'),
-            :height            => int_at(file_node, './Height'),
-            :rank              => string_at(file_node, './Rank'),
-            :ad_id             => string_at(file_node, './AdID'),
-            :affiliate_id      => string_at(file_node, './AffiliateID')
+            :active            => node['active'] == 'false' ? false : true,
+            :file_type         => FeedFile.parse_type_from(string_at(node, './Type')),
+            :description       => string_at(node, './Description'),
+            :name              => name.presence || fallback_name,
+            :caption           => string_at(node, './Caption'),
+            :format            => string_at(node, './Format'),
+            :source            => string_at(node, './Src'),
+            :width             => int_at(node, './Width'),
+            :height            => int_at(node, './Height'),
+            :rank              => string_at(node, './Rank'),
+            :ad_id             => string_at(node, './AdID'),
+            :affiliate_id      => string_at(node, './AffiliateID')
           )
         end
       end

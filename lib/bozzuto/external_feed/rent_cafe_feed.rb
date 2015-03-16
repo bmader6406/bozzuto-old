@@ -84,7 +84,7 @@ module Bozzuto
 
       def build_apartment_unit_amenities(unit)
         string_at(unit, './UnitAmenityList').split(',').map do |amenity|
-          ApartmentUnitAmenity.new(:description => amenity.strip)
+          Bozzuto::ExternalFeed::ApartmentUnitAmenity.new(:primary_type => 'Other', :description => amenity.strip)
         end
       end
     end
