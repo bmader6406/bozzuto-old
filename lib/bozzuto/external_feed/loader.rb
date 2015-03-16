@@ -38,6 +38,7 @@ module Bozzuto
           unless property.new_record?
             import_floor_plans(property, property_data)
             import_office_hours(property, property_data)
+            import_units(property, property_data)
 
             CoreIdManager.new(property).assign_id
           end
@@ -115,6 +116,64 @@ module Bozzuto
         end
       end
 
+      def import_units(property, property_data)
+        property_data.apartment_units.each do |unit_data|
+          unit = import_unit(unit_data)
+
+          if unit.present? && unit.persisted?
+            import_amenities(unit, unit_data)
+            import_files(unit, unit_data)
+          end
+        end
+      end
+
+      def import_unit(unit_data)
+        plan = ApartmentFloorPlan.find_by_external_cms_id_and_external_cms_type(
+          unit_data.floorplan_external_cms_id,
+          unit_data.external_cms_type
+        )
+
+        return if plan.nil?
+
+        find_or_intialize_unit(unit_data) do |unit|
+          unit.attributes = unit_data.database_attributes
+          unit.floor_plan = plan
+          unit.save
+        end
+      end
+
+      def import_amenities(unit, unit_data)
+        unit_data.apartment_unit_amenities.to_a.each do |amenity_data|
+          import_amenity(unit, amenity_data)
+        end
+      end
+
+      def import_amenity(unit, amenity_data)
+        amenity = unit.amenities.find_or_initialize_by_primary_type_and_sub_type_and_description(
+          amenity_data.primary_type,
+          amenity_data.sub_type,
+          amenity_data.description
+        )
+
+        amenity.attributes = amenity_data.database_attributes
+
+        amenity.save
+      end
+
+      def import_files(unit, unit_data)
+        unit_data.files.to_a.each do |file_data|
+          import_file(unit, file_data)
+        end
+      end
+
+      def import_file(feed_record, file_data)
+        find_or_initialize_file(file_data) do |file|
+          file.attributes  = file_data.database_attributes
+          file.feed_record = feed_record
+          file.save
+        end
+      end
+
       def find_or_initialize_property(c)
         property = ApartmentCommunity.find_or_initialize_by_external_cms_id_and_external_cms_type(
           c.external_cms_id,
@@ -135,6 +194,33 @@ module Bozzuto
         yield(plan) if block_given?
 
         plan
+      end
+
+      def find_or_intialize_unit(u)
+        unit = ::ApartmentUnit.find_or_initialize_by_external_cms_id_and_external_cms_type(
+          u.external_cms_id,
+          u.external_cms_type
+        )
+
+        yield(unit) if block_given?
+
+        unit
+      end
+
+      def find_or_initialize_amenity(a)
+        amenity = ::ApartmentUnitAmenity.find_or_initialize_by_external_cms_id_and_external_cms_type()
+      end
+
+      def find_or_initialize_file(f)
+        file = FeedFile.find_or_initialize_by_external_cms_id_and_external_cms_type_and_source(
+          f.external_cms_id,
+          f.external_cms_type,
+          f.source
+        )
+
+        yield(file) if block_given?
+
+        file
       end
 
       def find_floor_plan_group(f)

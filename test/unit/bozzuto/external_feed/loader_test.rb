@@ -485,6 +485,459 @@ module Bozzuto::ExternalFeed
             end
           end
         end
+
+        context "loading a feed with units, unit-level amenities, and unit-level files" do
+          subject do
+            Bozzuto::ExternalFeed::Loader.loader_for_type(:rent_cafe, :file => Rails.root.join('test/files/rent_cafe.xml'))
+          end
+
+          before do
+            setup_loader_stubs(subject)
+          end
+
+          it "creates the community, floor plans, units, unit-level amenities, and unit-level files" do
+            counts = [
+              ApartmentCommunity.count,
+              ApartmentFloorPlan.count,
+              ::ApartmentUnit.count,
+              ::ApartmentUnitAmenity.count,
+              FeedFile.count
+            ]
+
+            counts.all?(&:zero?).should == true
+
+            subject.load!
+
+            ApartmentCommunity.count.should     == 2
+            ApartmentFloorPlan.count.should     == 3
+            ::ApartmentUnit.count.should        == 4
+            ::ApartmentUnitAmenity.count.should == 8
+            FeedFile.count.should               == 6
+
+            ::ApartmentCommunity.first.tap do |c|
+              c.title.should             == 'Madox'
+              c.street_address.should    == '198 Van Vorst Street'
+              c.city.should              == City.find_by_name('Jersey City')
+              c.state.should             == State.find_by_code('NJ')
+              c.availability_url.should  == 'http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&myOlePropertyId=111537'
+              c.external_cms_id.should   == 'p0117760'
+              c.external_cms_type.should == 'rent_cafe'
+
+              c.office_hours.first.tap do |office_hour|
+                office_hour.day.should              == 1
+                office_hour.opens_at.should         == '9:00'
+                office_hour.opens_at_period.should  == 'AM'
+                office_hour.closes_at.should        == '6:00'
+                office_hour.closes_at_period.should == 'PM'
+              end
+
+              c.office_hours.last.tap do |office_hour|
+                office_hour.day.should              == 6
+                office_hour.opens_at.should         == '10:00'
+                office_hour.opens_at_period.should  == 'AM'
+                office_hour.closes_at.should        == '5:00'
+                office_hour.closes_at_period.should == 'PM'
+              end
+
+              c.floor_plans.count.should == 2
+
+              c.floor_plans.first.tap do |f|
+                f.name.should              == 'A1-2'
+                f.availability_url.should  == 'http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&myOlePropertyId=111537&floorPlans=858901'
+                f.available_units.should   == 0
+                f.bedrooms.should          == 1
+                f.bathrooms.should         == 1
+                f.min_square_feet.should   == 735
+                f.max_square_feet.should   == 735
+                f.min_rent.should          == 2589
+                f.max_rent.should          == 3216
+                f.image_url.should         == 'http://www.rentcafe.com/dmslivecafe/3/111537/111537_2_1_81755.jpg'
+                f.floor_plan_group.should  == ApartmentFloorPlanGroup.one_bedroom
+                f.external_cms_id.should   == '858901'
+                f.external_cms_type.should == 'rent_cafe'
+
+                f.apartment_units.count.should == 2
+
+                f.apartment_units.first.tap do |u|
+                  u.external_cms_id.should              == '605'
+                  u.external_cms_type.should            == 'rent_cafe'
+                  u.building_external_cms_id.should     == '49741'
+                  u.floorplan_external_cms_id.should    == '858901'
+                  u.organization_name.should            == nil
+                  u.marketing_name.should               == nil
+                  u.unit_type.should                    == '297-3752'
+                  u.bedrooms.should                     == 1
+                  u.bathrooms.should                    == 1
+                  u.min_square_feet.should              == 665
+                  u.max_square_feet.should              == 665
+                  u.square_foot_type.should             == 'Internal'
+                  u.unit_rent.should                    == 2318
+                  u.market_rent.should                  == 2604
+                  u.economic_status.should              == 'residential'
+                  u.economic_status_description.should  == 'residential'
+                  u.occupancy_status.should             == 'Occupied No Notice'
+                  u.occupancy_status_description.should == nil
+                  u.leased_status.should                == 'Occupied No Notice'
+                  u.leased_status_description.should    == 'Occupied No Notice'
+                  u.number_occupants.should             == nil
+                  u.floor_plan_name.should              == 'A3-2'
+                  u.phase_name.should                   == nil
+                  u.building_name.should                == nil
+                  u.primary_property_id.should          == '111537'
+                  u.address_line_1.should               == nil
+                  u.address_line_2.should               == nil
+                  u.city.should                         == nil
+                  u.state.should                        == nil
+                  u.zip.should                          == nil
+                  u.avg_rent.should                     == nil
+                  u.min_rent.should                     == nil
+                  u.max_rent.should                     == nil
+                  u.comment.should                      == nil
+                  u.vacate_date.should                  == nil
+                  u.vacancy_class.should                == nil
+                  u.made_ready_date.should              == nil
+                  u.availability_url.should             == CGI.unescapeHTML("http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=111537&amp;header=1&amp;FloorPlanID=858907&amp;UnitID=708798")
+
+                  u.amenities.count.should == 3
+
+                  u.amenities[0].tap do |amenity|
+                    amenity.primary_type.should == 'Other'
+                    amenity.description.should  == '6th Floor'
+                  end
+
+                  u.amenities[1].tap do |amenity|
+                    amenity.primary_type.should == 'Other'
+                    amenity.description.should  == 'Courtyard View'
+                  end
+
+                  u.amenities[2].tap do |amenity|
+                    amenity.primary_type.should == 'Other'
+                    amenity.description.should  == 'Rent'
+                  end
+
+                  u.feed_files.count.should == 1
+
+                  u.feed_files.first.tap do |file|
+                    file.external_cms_id.should   == '605'
+                    file.external_cms_type.should == 'rent_cafe'
+                    file.active.should            == true
+                    file.file_type.should         == 'Other'
+                    file.description.should       == ''
+                    file.name.should              == '3_340120_1833937'
+                    file.caption.should           == ''
+                    file.format.should            == 'image/jpeg'
+                    file.source.should            == 'http://cdn.rentcafe.com/dmslivecafe/3/340670/3_340120_1833937.jpg'
+                    file.width.should             == 0
+                    file.height.should            == 0
+                    file.rank.should              == '3'
+                    file.ad_id.should             == ''
+                    file.affiliate_id.should      == ''
+                  end
+                end
+
+                f.apartment_units.last.tap do |u|
+                  u.external_cms_id.should              == '521'
+                  u.external_cms_type.should            == 'rent_cafe'
+                  u.building_external_cms_id.should     == '49734'
+                  u.floorplan_external_cms_id.should    == '858901'
+                  u.organization_name.should            == nil
+                  u.marketing_name.should               == nil
+                  u.unit_type.should                    == '297-3782'
+                  u.bedrooms.should                     == 0
+                  u.bathrooms.should                    == 1
+                  u.min_square_feet.should              == 480
+                  u.max_square_feet.should              == 480
+                  u.square_foot_type.should             == 'Internal'
+                  u.unit_rent.should                    == 2047
+                  u.market_rent.should                  == 2047
+                  u.economic_status.should              == 'residential'
+                  u.economic_status_description.should  == 'residential'
+                  u.occupancy_status.should             == 'Occupied No Notice'
+                  u.occupancy_status_description.should == nil
+                  u.leased_status.should                == 'Occupied No Notice'
+                  u.leased_status_description.should    == 'Occupied No Notice'
+                  u.number_occupants.should             == nil
+                  u.floor_plan_name.should              == 'A0'
+                  u.phase_name.should                   == nil
+                  u.building_name.should                == nil
+                  u.primary_property_id.should          == '111537'
+                  u.address_line_1.should               == nil
+                  u.address_line_2.should               == nil
+                  u.city.should                         == nil
+                  u.state.should                        == nil
+                  u.zip.should                          == nil
+                  u.avg_rent.should                     == nil
+                  u.min_rent.should                     == nil
+                  u.max_rent.should                     == nil
+                  u.comment.should                      == nil
+                  u.vacate_date.should                  == nil
+                  u.vacancy_class.should                == nil
+                  u.made_ready_date.should              == nil
+                  u.availability_url.should             == CGI.unescapeHTML("http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=111537&amp;header=1&amp;FloorPlanID=858903&amp;UnitID=708791")
+
+                  u.amenities.count.should == 2
+
+                  u.amenities.first.tap do |amenity|
+                    amenity.primary_type.should == 'Other'
+                    amenity.description.should  == '5th Floor'
+                  end
+
+                  u.amenities.last.tap do |amenity|
+                    amenity.primary_type.should == 'Other'
+                    amenity.description.should  == 'Rent'
+                  end
+
+                  u.feed_files.count.should == 2
+
+                  u.feed_files.first.tap do |file|
+                    file.external_cms_id.should   == '521'
+                    file.external_cms_type.should == 'rent_cafe'
+                    file.active.should            == true
+                    file.file_type.should         == 'Other'
+                    file.description.should       == ''
+                    file.name.should              == '3_345611_1385175'
+                    file.caption.should           == ''
+                    file.format.should            == 'image/jpeg'
+                    file.source.should            == 'http://cdn.rentcafe.com/dmslivecafe/3/340670/3_345611_1385175.jpg'
+                    file.width.should             == 0
+                    file.height.should            == 0
+                    file.rank.should              == '4'
+                    file.ad_id.should             == ''
+                    file.affiliate_id.should      == ''
+                  end
+
+                  u.feed_files.last.tap do |file|
+                    file.external_cms_id.should   == '521'
+                    file.external_cms_type.should == 'rent_cafe'
+                    file.active.should            == true
+                    file.file_type.should         == 'Photo'
+                    file.description.should       == ''
+                    file.name.should              == '3_121387_1218990'
+                    file.caption.should           == ''
+                    file.format.should            == 'image/jpeg'
+                    file.source.should            == 'http://cdn.rentcafe.com/dmslivecafe/3/111537/3_121387_1218990.jpg'
+                    file.width.should             == 0
+                    file.height.should            == 0
+                    file.rank.should              == '9'
+                    file.ad_id.should             == ''
+                    file.affiliate_id.should      == ''
+                  end
+                end
+              end
+
+              c.floor_plans.last.tap do |f|
+                f.name.should              == 'B3-2'
+                f.availability_url.should  == 'http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&myOlePropertyId=111537&floorPlans=858902'
+                f.available_units.should   == 1
+                f.bedrooms.should          == 2
+                f.bathrooms.should         == 2
+                f.min_square_feet.should   == 1057
+                f.max_square_feet.should   == 1057
+                f.min_rent.should          == 3875
+                f.max_rent.should          == 5040
+                f.image_url.should         == 'http://www.rentcafe.com/dmslivecafe/3/111537/111537_2_1_81757.jpg'
+                f.floor_plan_group.should  == ApartmentFloorPlanGroup.two_bedrooms
+                f.external_cms_id.should   == '858902'
+                f.external_cms_type.should == 'rent_cafe'
+              end
+
+            end
+
+            ::ApartmentCommunity.last.tap do |c|
+              c.title.should             == 'The Brownstones at Englewood South'
+              c.street_address.should    == '73 Brownstone Way'
+              c.city.should              == City.find_by_name('Englewood')
+              c.state.should             == State.find_by_code('NJ')
+              c.availability_url.should  == 'http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&myOlePropertyId=144341'
+              c.external_cms_id.should   == 'p0151017'
+              c.external_cms_type.should == 'rent_cafe'
+
+              c.office_hours.first.tap do |office_hour|
+                office_hour.day.should              == 0
+                office_hour.opens_at.should         == '12:00'
+                office_hour.opens_at_period.should  == 'PM'
+                office_hour.closes_at.should        == '5:00'
+                office_hour.closes_at_period.should == 'PM'
+              end
+
+              c.floor_plans.count.should == 1
+
+              c.floor_plans.first.tap do |f|
+                f.name.should              == 'One Bedroom / One Bath - A1'
+                f.availability_url.should  == 'http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&myOlePropertyId=144341&floorPlans=937747'
+                f.available_units.should   == 3
+                f.bedrooms.should          == 1
+                f.bathrooms.should         == 1
+                f.min_square_feet.should   == 788
+                f.max_square_feet.should   == 788
+                f.min_rent.should          == 2098
+                f.max_rent.should          == 3453
+                f.image_url.should         == nil
+                f.floor_plan_group.should  == ApartmentFloorPlanGroup.one_bedroom
+                f.external_cms_id.should   == '937747'
+                f.external_cms_type.should == 'rent_cafe'
+
+                f.apartment_units.count.should == 2
+
+                f.apartment_units.first.tap do |u|
+                  u.external_cms_id.should              == '09-207'
+                  u.external_cms_type.should            == 'rent_cafe'
+                  u.building_external_cms_id.should     == '24613'
+                  u.floorplan_external_cms_id.should    == '937747'
+                  u.organization_name.should            == nil
+                  u.marketing_name.should               == nil
+                  u.unit_type.should                    == '297-1562'
+                  u.bedrooms.should                     == 1
+                  u.bathrooms.should                    == 1
+                  u.min_square_feet.should              == 788
+                  u.max_square_feet.should              == 788
+                  u.square_foot_type.should             == 'Internal'
+                  u.unit_rent.should                    == 1828
+                  u.market_rent.should                  == 1813
+                  u.economic_status.should              == 'residential'
+                  u.economic_status_description.should  == 'residential'
+                  u.occupancy_status.should             == 'Vacant'
+                  u.occupancy_status_description.should == nil
+                  u.leased_status.should                == 'available'
+                  u.leased_status_description.should    == 'Occupied No Notice'
+                  u.number_occupants.should             == nil
+                  u.floor_plan_name.should              == 'One Bedroom / One Bath - A1'
+                  u.phase_name.should                   == nil
+                  u.building_name.should                == nil
+                  u.primary_property_id.should          == '144341'
+                  u.address_line_1.should               == nil
+                  u.address_line_2.should               == nil
+                  u.city.should                         == nil
+                  u.state.should                        == nil
+                  u.zip.should                          == nil
+                  u.avg_rent.should                     == nil
+                  u.min_rent.should                     == nil
+                  u.max_rent.should                     == nil
+                  u.comment.should                      == nil
+                  u.vacate_date.should                  == nil
+                  u.vacancy_class.should                == nil
+                  u.made_ready_date.should              == nil
+                  u.availability_url.should             == CGI.unescapeHTML("http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=144341&amp;header=1&amp;FloorPlanID=937747&amp;UnitID=1230276")
+
+                  u.amenities.count.should == 1
+
+                  u.amenities.first.tap do |amenity|
+                    amenity.primary_type.should == 'Other'
+                    amenity.description.should  == 'Rent'
+                  end
+
+                  u.feed_files.count.should == 2
+
+                  u.feed_files.first.tap do |file|
+                    file.external_cms_id.should   == '09-207'
+                    file.external_cms_type.should == 'rent_cafe'
+                    file.active.should            == true
+                    file.file_type.should         == 'Other'
+                    file.description.should       == ''
+                    file.name.should              == '3_340670_1885137'
+                    file.caption.should           == ''
+                    file.format.should            == 'image/jpeg'
+                    file.source.should            == 'http://cdn.rentcafe.com/dmslivecafe/3/340670/3_340670_1885137.jpg'
+                    file.width.should             == 0
+                    file.height.should            == 0
+                    file.rank.should              == '3'
+                    file.ad_id.should             == ''
+                    file.affiliate_id.should      == ''
+                  end
+
+                  u.feed_files.last.tap do |file|
+                    file.external_cms_id.should   == '09-207'
+                    file.external_cms_type.should == 'rent_cafe'
+                    file.active.should            == true
+                    file.file_type.should         == 'Other'
+                    file.description.should       == ''
+                    file.name.should              == '3_340670_1885141'
+                    file.caption.should           == ''
+                    file.format.should            == 'image/jpeg'
+                    file.source.should            == 'http://cdn.rentcafe.com/dmslivecafe/3/340670/3_340670_1885141.jpg'
+                    file.width.should             == 0
+                    file.height.should            == 0
+                    file.rank.should              == '4'
+                    file.ad_id.should             == ''
+                    file.affiliate_id.should      == ''
+                  end
+                end
+
+                f.apartment_units.last.tap do |u|
+                  u.external_cms_id.should              == '09-209'
+                  u.external_cms_type.should            == 'rent_cafe'
+                  u.building_external_cms_id.should     == '24614'
+                  u.floorplan_external_cms_id.should    == '937747'
+                  u.organization_name.should            == nil
+                  u.marketing_name.should               == nil
+                  u.unit_type.should                    == '297-1562'
+                  u.bedrooms.should                     == 1
+                  u.bathrooms.should                    == 1
+                  u.min_square_feet.should              == 788
+                  u.max_square_feet.should              == 788
+                  u.square_foot_type.should             == 'Internal'
+                  u.unit_rent.should                    == 1592
+                  u.market_rent.should                  == 1828
+                  u.economic_status.should              == 'residential'
+                  u.economic_status_description.should  == 'residential'
+                  u.occupancy_status.should             == 'Vacant'
+                  u.occupancy_status_description.should == nil
+                  u.leased_status.should                == 'available'
+                  u.leased_status_description.should    == 'Occupied No Notice'
+                  u.number_occupants.should             == nil
+                  u.floor_plan_name.should              == 'One Bedroom / One Bath - A1'
+                  u.phase_name.should                   == nil
+                  u.building_name.should                == nil
+                  u.primary_property_id.should          == '144341'
+                  u.address_line_1.should               == nil
+                  u.address_line_2.should               == nil
+                  u.city.should                         == nil
+                  u.state.should                        == nil
+                  u.zip.should                          == nil
+                  u.avg_rent.should                     == nil
+                  u.min_rent.should                     == nil
+                  u.max_rent.should                     == nil
+                  u.comment.should                      == nil
+                  u.vacate_date.should                  == nil
+                  u.vacancy_class.should                == nil
+                  u.made_ready_date.should              == nil
+                  u.availability_url.should             == CGI.unescapeHTML("http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=144341&amp;header=1&amp;FloorPlanID=937747&amp;UnitID=1230277")
+
+                  u.amenities.count.should == 2
+
+                  u.amenities.first.tap do |amenity|
+                    amenity.primary_type.should == 'Other'
+                    amenity.description.should  == 'New Kitchen Countertops'
+                  end
+
+                  u.amenities.last.tap do |amenity|
+                    amenity.primary_type.should == 'Other'
+                    amenity.description.should  == 'Rent'
+                  end
+
+                  u.feed_files.count.should == 1
+
+                  u.feed_files.first.tap do |file|
+                    file.external_cms_id.should   == '09-209'
+                    file.external_cms_type.should == 'rent_cafe'
+                    file.active.should            == true
+                    file.file_type.should         == 'Photo'
+                    file.description.should       == ''
+                    file.name.should              == '3_111537_1778084'
+                    file.caption.should           == ''
+                    file.format.should            == 'image/jpeg'
+                    file.source.should            == 'http://cdn.rentcafe.com/dmslivecafe/3/111537/3_111537_1778084.jpg'
+                    file.width.should             == 0
+                    file.height.should            == 0
+                    file.rank.should              == '9'
+                    file.ad_id.should             == ''
+                    file.affiliate_id.should      == ''
+                  end
+                end
+              end
+            end
+          end
+        end
       end
 
       describe "loading a Carmel feed when there are existing Carmel properties" do
