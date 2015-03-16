@@ -62,7 +62,6 @@ module Bozzuto
           :economic_status              => string_at(unit, './UnitEconomicStatus'),
           :economic_status_description  => string_at(unit, './UnitEconomicStatusDescription'),
           :occupancy_status             => string_at(unit, './UnitOccupancyStatus'),
-          :occupancy_status_description => string_at(unit, './UnitOccupancyStatusDescription'),
           :leased_status                => string_at(unit, './UnitLeasedStatus'),
           :leased_status_description    => string_at(unit, './UnitLeasedStatusDescription'),
           :primary_property_id          => string_at(unit, './PropertyPrimaryID'),

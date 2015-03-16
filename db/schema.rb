@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(:version => 20150423133803) do
     t.decimal  "bathrooms",                    :precision => 3, :scale => 1
     t.integer  "min_square_feet"
     t.integer  "max_square_feet"
-    t.integer  "square_foot_type"
+    t.string   "square_foot_type"
     t.decimal  "unit_rent",                    :precision => 8, :scale => 2
     t.decimal  "market_rent",                  :precision => 8, :scale => 2
     t.string   "economic_status"
@@ -141,7 +141,6 @@ ActiveRecord::Schema.define(:version => 20150423133803) do
     t.string   "vacancy_class"
     t.date     "made_ready_date"
     t.text     "availability_url"
-    t.string   "image_url"
     t.integer  "floor_plan_id",                                              :null => false
     t.datetime "created_at"
     t.datetime "updated_at"

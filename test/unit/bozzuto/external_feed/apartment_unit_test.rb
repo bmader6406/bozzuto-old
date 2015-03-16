@@ -42,8 +42,7 @@ module Bozzuto::ExternalFeed
           :vacate_date                  => 'Vacate Date',
           :vacancy_class                => 'Vacancy Class',
           :made_ready_date              => 'Made Ready Date',
-          :availability_url             => 'Availability URL',
-          :image_url                    => 'Image URL'
+          :availability_url             => 'Availability URL'
         )
       end
 
@@ -87,8 +86,7 @@ module Bozzuto::ExternalFeed
             :vacate_date                  => 'Vacate Date',
             :vacancy_class                => 'Vacancy Class',
             :made_ready_date              => 'Made Ready Date',
-            :availability_url             => 'Availability URL',
-            :image_url                    => 'Image URL'
+            :availability_url             => 'Availability URL'
           }
         end
       end

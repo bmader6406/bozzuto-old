@@ -94,7 +94,6 @@ module Bozzuto::ExternalFeed
               u.economic_status.should              == 'residential'
               u.economic_status_description.should  == 'residential'
               u.occupancy_status.should             == 'Occupied No Notice'
-              u.occupancy_status_description.should == ''
               u.leased_status.should                == 'Occupied No Notice'
               u.leased_status_description.should    == 'Occupied No Notice'
               u.number_occupants.should             == nil
@@ -115,7 +114,6 @@ module Bozzuto::ExternalFeed
               u.vacancy_class.should                == nil
               u.made_ready_date.should              == nil
               u.availability_url.should             == CGI.unescapeHTML("http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=111537&amp;header=1&amp;FloorPlanID=858907&amp;UnitID=708798")
-              u.image_url.should                    == nil
 
               u.apartment_unit_amenities.count.should == 3
 
@@ -172,7 +170,6 @@ module Bozzuto::ExternalFeed
               u.economic_status.should              == 'residential'
               u.economic_status_description.should  == 'residential'
               u.occupancy_status.should             == 'Occupied No Notice'
-              u.occupancy_status_description.should == ''
               u.leased_status.should                == 'Occupied No Notice'
               u.leased_status_description.should    == 'Occupied No Notice'
               u.number_occupants.should             == nil
@@ -193,7 +190,6 @@ module Bozzuto::ExternalFeed
               u.vacancy_class.should                == nil
               u.made_ready_date.should              == nil
               u.availability_url.should             == CGI.unescapeHTML("http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=111537&amp;header=1&amp;FloorPlanID=858903&amp;UnitID=708791")
-              u.image_url.should                    == nil
 
               u.apartment_unit_amenities.count.should == 2
 
@@ -308,7 +304,6 @@ module Bozzuto::ExternalFeed
               u.economic_status.should              == 'residential'
               u.economic_status_description.should  == 'residential'
               u.occupancy_status.should             == 'Vacant'
-              u.occupancy_status_description.should == ''
               u.leased_status.should                == 'available'
               u.leased_status_description.should    == 'Occupied No Notice'
               u.number_occupants.should             == nil
@@ -329,7 +324,6 @@ module Bozzuto::ExternalFeed
               u.vacancy_class.should                == nil
               u.made_ready_date.should              == nil
               u.availability_url.should             == CGI.unescapeHTML("http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=144341&amp;header=1&amp;FloorPlanID=937747&amp;UnitID=1230276")
-              u.image_url.should                    == nil
 
               u.apartment_unit_amenities.count.should == 1
 
@@ -393,7 +387,6 @@ module Bozzuto::ExternalFeed
               u.economic_status.should              == 'residential'
               u.economic_status_description.should  == 'residential'
               u.occupancy_status.should             == 'Vacant'
-              u.occupancy_status_description.should == ''
               u.leased_status.should                == 'available'
               u.leased_status_description.should    == 'Occupied No Notice'
               u.number_occupants.should             == nil
@@ -414,7 +407,6 @@ module Bozzuto::ExternalFeed
               u.vacancy_class.should                == nil
               u.made_ready_date.should              == nil
               u.availability_url.should             == CGI.unescapeHTML("http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=144341&amp;header=1&amp;FloorPlanID=937747&amp;UnitID=1230277")
-              u.image_url.should                    == nil
 
               u.apartment_unit_amenities.count.should == 2
 
