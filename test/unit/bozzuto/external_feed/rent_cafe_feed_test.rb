@@ -133,6 +133,25 @@ module Bozzuto::ExternalFeed
                 amenity.primary_type.should == 'Other'
                 amenity.description.should  == 'Rent'
               end
+
+              u.files.count.should == 1
+
+              u.files.first.tap do |file|
+                file.external_cms_id.should   == '605'
+                file.external_cms_type.should == 'rent_cafe'
+                file.active.should            == true
+                file.file_type.should         == 'Other'
+                file.description.should       == ''
+                file.name.should              == ''
+                file.caption.should           == ''
+                file.format.should            == 'image/jpeg'
+                file.source.should            == 'http://cdn.rentcafe.com/dmslivecafe/3/340670/3_340120_1833937.jpg'
+                file.width.should             == 0
+                file.height.should            == 0
+                file.rank.should              == '3'
+                file.ad_id.should             == ''
+                file.affiliate_id.should      == ''
+              end
             end
 
             c.apartment_units.last.tap do |u|
@@ -186,6 +205,42 @@ module Bozzuto::ExternalFeed
               u.apartment_unit_amenities[1].tap do |amenity|
                 amenity.primary_type.should == 'Other'
                 amenity.description.should  == 'Rent'
+              end
+
+              u.files.count.should == 2
+
+              u.files.first.tap do |file|
+                file.external_cms_id.should   == '521'
+                file.external_cms_type.should == 'rent_cafe'
+                file.active.should            == true
+                file.file_type.should         == 'Other'
+                file.description.should       == ''
+                file.name.should              == ''
+                file.caption.should           == ''
+                file.format.should            == 'image/jpeg'
+                file.source.should            == 'http://cdn.rentcafe.com/dmslivecafe/3/340670/3_345611_1385175.jpg'
+                file.width.should             == 0
+                file.height.should            == 0
+                file.rank.should              == '4'
+                file.ad_id.should             == ''
+                file.affiliate_id.should      == ''
+              end
+
+              u.files.last.tap do |file|
+                file.external_cms_id.should   == '521'
+                file.external_cms_type.should == 'rent_cafe'
+                file.active.should            == true
+                file.file_type.should         == 'Photo'
+                file.description.should       == ''
+                file.name.should              == ''
+                file.caption.should           == ''
+                file.format.should            == 'image/jpeg'
+                file.source.should            == 'http://cdn.rentcafe.com/dmslivecafe/3/111537/3_121387_1218990.jpg'
+                file.width.should             == 0
+                file.height.should            == 0
+                file.rank.should              == '9'
+                file.ad_id.should             == ''
+                file.affiliate_id.should      == ''
               end
             end
           end
@@ -282,6 +337,42 @@ module Bozzuto::ExternalFeed
                 amenity.primary_type.should == 'Other'
                 amenity.description.should  == 'Rent'
               end
+
+              u.files.count.should == 2
+
+              u.files.first.tap do |file|
+                file.external_cms_id.should   == '09-207'
+                file.external_cms_type.should == 'rent_cafe'
+                file.active.should            == true
+                file.file_type.should         == 'Other'
+                file.description.should       == ''
+                file.name.should              == ''
+                file.caption.should           == ''
+                file.format.should            == 'image/jpeg'
+                file.source.should            == 'http://cdn.rentcafe.com/dmslivecafe/3/340670/3_340670_1885137.jpg'
+                file.width.should             == 0
+                file.height.should            == 0
+                file.rank.should              == '3'
+                file.ad_id.should             == ''
+                file.affiliate_id.should      == ''
+              end
+
+              u.files.last.tap do |file|
+                file.external_cms_id.should   == '09-207'
+                file.external_cms_type.should == 'rent_cafe'
+                file.active.should            == true
+                file.file_type.should         == 'Other'
+                file.description.should       == ''
+                file.name.should              == ''
+                file.caption.should           == ''
+                file.format.should            == 'image/jpeg'
+                file.source.should            == 'http://cdn.rentcafe.com/dmslivecafe/3/340670/3_340670_1885141.jpg'
+                file.width.should             == 0
+                file.height.should            == 0
+                file.rank.should              == '4'
+                file.ad_id.should             == ''
+                file.affiliate_id.should      == ''
+              end
             end
 
             c.apartment_units.last.tap do |u|
@@ -335,6 +426,25 @@ module Bozzuto::ExternalFeed
               u.apartment_unit_amenities[1].tap do |amenity|
                 amenity.primary_type.should == 'Other'
                 amenity.description.should  == 'Rent'
+              end
+
+              u.files.count.should == 1
+
+              u.files.first.tap do |file|
+                file.external_cms_id.should   == '09-209'
+                file.external_cms_type.should == 'rent_cafe'
+                file.active.should            == true
+                file.file_type.should         == 'Photo'
+                file.description.should       == ''
+                file.name.should              == ''
+                file.caption.should           == ''
+                file.format.should            == 'image/jpeg'
+                file.source.should            == 'http://cdn.rentcafe.com/dmslivecafe/3/111537/3_111537_1778084.jpg'
+                file.width.should             == 0
+                file.height.should            == 0
+                file.rank.should              == '9'
+                file.ad_id.should             == ''
+                file.affiliate_id.should      == ''
               end
             end
           end

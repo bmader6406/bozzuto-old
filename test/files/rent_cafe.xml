@@ -530,6 +530,34 @@
       <Width>1024</Width>
       <Height>593</Height>
     </File>
+    <File id="605" active="true">
+      <Type>unit</Type>
+      <Name/>
+      <Format>image/jpeg</Format>
+      <Src>http://cdn.rentcafe.com/dmslivecafe/3/340670/3_340120_1833937.jpg</Src>
+      <Rank>3</Rank>
+      <Width>0</Width>
+      <Height>0</Height>
+    </File>
+    <File id="521" active="true">
+      <Type>unit</Type>
+      <Name/>
+      <Format>image/jpeg</Format>
+      <Src>http://cdn.rentcafe.com/dmslivecafe/3/340670/3_345611_1385175.jpg</Src>
+      <Rank>4</Rank>
+      <Width>0</Width>
+      <Height>0</Height>
+    </File>
+    <File id="521" active="true">
+      <Type>photo</Type>
+      <Name/>
+      <Caption/>
+      <Format>image/jpeg</Format>
+      <Src>http://cdn.rentcafe.com/dmslivecafe/3/111537/3_121387_1218990.jpg</Src>
+      <Rank>9</Rank>
+      <Width>0</Width>
+      <Height>0</Height>
+    </File>
   </Property>
   <Property managementID="8131">
     <Availability>http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&amp;myOlePropertyId=144341</Availability>
@@ -918,6 +946,34 @@
         <AdditionalAmenity>Floorplan Amenity</AdditionalAmenity>
       </General>
     </Amenities>
+    <File id="09-207" active="true">
+      <Type>unit</Type>
+      <Name/>
+      <Format>image/jpeg</Format>
+      <Src>http://cdn.rentcafe.com/dmslivecafe/3/340670/3_340670_1885137.jpg</Src>
+      <Rank>3</Rank>
+      <Width>0</Width>
+      <Height>0</Height>
+    </File>
+    <File id="09-207" active="true">
+      <Type>unit</Type>
+      <Name/>
+      <Format>image/jpeg</Format>
+      <Src>http://cdn.rentcafe.com/dmslivecafe/3/340670/3_340670_1885141.jpg</Src>
+      <Rank>4</Rank>
+      <Width>0</Width>
+      <Height>0</Height>
+    </File>
+    <File id="09-209" active="true">
+      <Type>photo</Type>
+      <Name/>
+      <Caption/>
+      <Format>image/jpeg</Format>
+      <Src>http://cdn.rentcafe.com/dmslivecafe/3/111537/3_111537_1778084.jpg</Src>
+      <Rank>9</Rank>
+      <Width>0</Width>
+      <Height>0</Height>
+    </File>
     <File id="144341_649254" active="true">
       <Type>photo</Type>
       <Name />

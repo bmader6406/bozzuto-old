@@ -19,7 +19,6 @@ module Bozzuto
           :floor_plans       => build_floor_plans(property),
           :apartment_units   => build_apartment_units(property)
         )
-
       end
 
       def build_floor_plan(property, plan)
@@ -44,8 +43,10 @@ module Bozzuto
       end
 
       def build_apartment_unit(property, unit)
+        id = string_at(unit, './UnitID')
+
         Bozzuto::ExternalFeed::ApartmentUnit.new(
-          :external_cms_id              => string_at(unit, './UnitID'),
+          :external_cms_id              => id,
           :external_cms_type            => feed_type.to_s,
           :unit_type                    => string_at(unit, './UnitType'),
           :building_external_cms_id     => string_at(unit, './ExtId'), # Is this thing actually the building ID?
@@ -67,7 +68,8 @@ module Bozzuto
           :primary_property_id          => string_at(unit, './PropertyPrimaryID'),
           :made_ready_date              => date_for(unit.at('./DateAvailable')),
           :availability_url             => string_at(unit, './ApplyOnlineURL'),
-          :apartment_unit_amenities     => build_apartment_unit_amenities(unit)
+          :apartment_unit_amenities     => build_apartment_unit_amenities(unit),
+          :files                        => build_files(property, id)
         )
       end
 
