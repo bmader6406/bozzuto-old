@@ -29,9 +29,7 @@ module Bozzuto
       CSV.foreach(PID_FILE, headers: true) do |row|
         ApartmentCommunity.find_by_title(row['Property Name']).tap do |community|
           unless community.nil? || community.hyly_id.present?
-            pid = /pid=(?<pid>\d+)"/.match(row['Script'])[:pid]
-
-            community.update_attributes(:hyly_id => pid)
+            community.update_attributes(:hyly_id => row['PID'])
           end
         end
       end
