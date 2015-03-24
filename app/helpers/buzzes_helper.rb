@@ -1,10 +1,4 @@
 module BuzzesHelper
-  def serialized_check_box(form, object, field)
-    buzz_check_box(form, object, field) +
-      form.label(field) +
-      raw("<br />\n")
-  end
-
   def mobile_check_box(form, object, field, label_text = nil)
     object_name = object.class.name.underscore
 

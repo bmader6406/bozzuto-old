@@ -80,7 +80,7 @@ module Bozzuto::ExternalFeed
       describe "#build_apartment_unit" do
         it "raises an error" do
           expect {
-            subject.send(:build_apartment_unit, nil)
+            subject.send(:build_apartment_unit, nil, nil)
           }.to raise_error(NotImplementedError)
         end
       end

@@ -34,5 +34,35 @@ class ContactSubmissionTest < ActiveSupport::TestCase
         subject.topic_id.should == @topic.id
       end
     end
+
+    describe "#attributes" do
+      before do
+        @topic = ContactTopic.make
+      end
+
+      subject do
+        ContactSubmission.new(
+          :name     => 'Name',
+          :email    => 'email@test.com',
+          :message  => 'Test',
+          :topic_id => @topic.id
+        )
+      end
+
+      it "returns a hash of attributes and their values" do
+        subject.attributes.should == {
+          :name     => 'Name',
+          :email    => 'email@test.com',
+          :message  => 'Test',
+          :topic_id => @topic.id
+        }
+      end
+    end
+
+    describe "#persisted?" do
+      it "returns false" do
+        subject.persisted?.should == false
+      end
+    end
   end
 end

@@ -115,7 +115,6 @@ module Bozzuto::ExternalFeed
               u.vacancy_class.should                == 'Occupied'
               u.made_ready_date.should              == nil
               u.availability_url.should             == CGI.unescapeHTML("http://units.realtydatatrust.com/unitavailability.aspx?&amp;ils=5341&amp;propid=50494&amp;fid=102344&amp;uid=12905837")
-              u.image_url.should                    == nil
 
               u.apartment_unit_amenities.count.should == 0
             end
@@ -159,7 +158,6 @@ module Bozzuto::ExternalFeed
               u.vacancy_class.should                == 'Occupied'
               u.made_ready_date.should              == nil
               u.availability_url.should             == CGI.unescapeHTML("http://units.realtydatatrust.com/unitavailability.aspx?&amp;ils=5341&amp;propid=16992&amp;fid=20307&amp;uid=10252429")
-              u.image_url.should                    == nil
 
               u.apartment_unit_amenities.count.should == 3
 
@@ -267,7 +265,6 @@ module Bozzuto::ExternalFeed
               u.vacancy_class.should                == 'Occupied'
               u.made_ready_date.should              == nil
               u.availability_url.should             == CGI.unescapeHTML("http://units.realtydatatrust.com/unitavailability.aspx?&amp;ils=5341&amp;propid=50494&amp;fid=102339&amp;uid=12890066")
-              u.image_url.should                    == nil
 
               u.apartment_unit_amenities.count.should == 1
 
@@ -317,7 +314,6 @@ module Bozzuto::ExternalFeed
               u.vacancy_class.should                == 'Occupied'
               u.made_ready_date.should              == nil
               u.availability_url.should             == CGI.unescapeHTML("http://units.realtydatatrust.com/unitavailability.aspx?&amp;ils=5341&amp;propid=50494&amp;fid=102340&amp;uid=12890112")
-              u.image_url.should                    == nil
 
               u.apartment_unit_amenities.count.should == 1
 

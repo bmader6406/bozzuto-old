@@ -21,7 +21,7 @@ module Bozzuto
       end
 
       def already_loading?
-        File.exists?(lock_file)
+        ::File.exists?(lock_file)
       end
 
       def can_load?
@@ -37,8 +37,8 @@ module Bozzuto
       end
 
       def last_loaded_at
-        if File.exists?(tmp_file)
-          File.new(tmp_file).mtime
+        if ::File.exists?(tmp_file)
+          ::File.new(tmp_file).mtime
         else
           nil
         end
@@ -80,7 +80,7 @@ module Bozzuto
       end
 
       def rm_lock_file
-        File.delete(lock_file) if File.exists?(lock_file)
+        ::File.delete(lock_file) if ::File.exists?(lock_file)
       end
       #:nocov:
     end

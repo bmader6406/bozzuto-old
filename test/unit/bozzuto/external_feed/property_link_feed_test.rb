@@ -99,7 +99,6 @@ module Bozzuto::ExternalFeed
               u.vacancy_class.should                == 'Unoccupied'
               u.made_ready_date.should              == Date.new(2013, 12, 10)
               u.availability_url.should             == nil
-              u.image_url.should                    == nil
             end
           end
 

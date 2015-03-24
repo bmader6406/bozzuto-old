@@ -143,7 +143,6 @@ end
 
 ApartmentUnit.blueprint do
   marketing_name     { Faker::Lorem.words(1) }
-  image_url          { Faker::Lorem.words(1) }
   availability_url   { "http://#{Faker::Internet.domain_name}" }
   bedrooms           { Sham.bedrooms }
   bathrooms          { Sham.bathrooms }

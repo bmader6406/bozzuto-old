@@ -7,7 +7,7 @@ module Bozzuto::ExternalFeed
     end
 
     def rm_file(file)
-      File.delete(file) if File.exists?(file)
+      ::File.delete(file) if ::File.exists?(file)
     end
 
     def setup_loader_stubs(thing)
@@ -68,7 +68,7 @@ module Bozzuto::ExternalFeed
           before do
             touch_file(subject.tmp_file)
 
-            @time = File.mtime(subject.tmp_file)
+            @time = ::File.mtime(subject.tmp_file)
           end
 
           after do

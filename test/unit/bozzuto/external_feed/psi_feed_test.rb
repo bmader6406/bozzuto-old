@@ -144,7 +144,6 @@ module Bozzuto::ExternalFeed
               u.vacancy_class.should                == 'Unoccupied'
               u.made_ready_date.should              == nil
               u.availability_url.should             == "http://kntst.prospectportal.com/Apartments/module/property_info/property[id]/72414/launch_check_availability/1/property_floorplan[id]/250870/property_unit[id]/3438936"
-              u.image_url.should                    == nil
             end
           end
         end

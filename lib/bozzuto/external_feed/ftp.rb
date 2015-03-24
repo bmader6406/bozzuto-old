@@ -30,7 +30,7 @@ module Bozzuto
       end
 
       def transfer(file)
-        raise ArgumentError, 'The given file name does not exist.' unless File.exists?(file)
+        raise ArgumentError, 'The given file name does not exist.' unless ::File.exists?(file)
 
         # :nocov:
         connect_to_server do |ftp|

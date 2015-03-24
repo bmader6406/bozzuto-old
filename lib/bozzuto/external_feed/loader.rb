@@ -207,10 +207,6 @@ module Bozzuto
         unit
       end
 
-      def find_or_initialize_amenity(a)
-        amenity = ::ApartmentUnitAmenity.find_or_initialize_by_external_cms_id_and_external_cms_type()
-      end
-
       def find_or_initialize_file(f)
         file = FeedFile.find_or_initialize_by_external_cms_id_and_external_cms_type_and_source(
           f.external_cms_id,
