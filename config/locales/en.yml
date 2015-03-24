@@ -122,7 +122,6 @@ en:
         economic_status_description: Economic Status Description
         floor_plan: Floor Plan
         floor_plan_name: Floor Plan Name
-        image_url: Image URL
         leased_status: Leased Status
         leased_status_description: Leased Status Description
         made_ready_date: Made Ready Date
