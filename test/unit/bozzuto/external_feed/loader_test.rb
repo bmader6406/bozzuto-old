@@ -211,6 +211,7 @@ module Bozzuto::ExternalFeed
             }.to change { ApartmentFloorPlan.count }.by(3)
 
             ::ApartmentCommunity.all[0].tap do |c|
+              c.core_id.should           == c.id
               c.title.should             == 'Hunters Glen'
               c.street_address.should    == '14210 Slidell Court'
               c.city.should              == City.find_by_name('Upper Marlboro')
@@ -269,6 +270,7 @@ module Bozzuto::ExternalFeed
             end
 
             ::ApartmentCommunity.all[1].tap do |c|
+              c.core_id.should           == c.id
               c.title.should             == 'The Courts of Devon'
               c.street_address.should    == '501 Main Street'
               c.city.should              == City.find_by_name('Gaithersburg')
@@ -310,6 +312,20 @@ module Bozzuto::ExternalFeed
               end
             end
           end
+
+          context "with a 'duplicate' property from another feed" do
+            before do
+              ApartmentCommunity.make(:title => 'The Courts of Devon', :core_id => 111)
+            end
+
+            it "assigns the core id based on the existing duplicate" do
+              subject.load!
+
+              community = ApartmentCommunity.find_by_title_and_external_cms_type('The Courts of Devon', 'vaultware')
+
+              community.reload.core_id.should == 111
+            end
+          end
         end
 
         context "community doesn't have a valid address" do
@@ -336,6 +352,7 @@ module Bozzuto::ExternalFeed
 
             @community = ApartmentCommunity.make(:vaultware,
               :external_cms_id  => '16976',
+              :core_id          => 123,
               :title            => 'TEST',
               :street_address   => 'TEST',
               :availability_url => 'TEST'
@@ -404,6 +421,7 @@ module Bozzuto::ExternalFeed
               subject.load!
 
               @community.reload.tap do |c|
+                c.core_id.should           == 123
                 c.title.should             == 'The Courts of Devon'
                 c.street_address.should    == '501 Main Street'
                 c.city.should              == City.find_by_name('Gaithersburg')
@@ -454,9 +472,20 @@ module Bozzuto::ExternalFeed
               @plan.floor_plan_group.should == ApartmentFloorPlanGroup.studio
             end
           end
+
+          context "with a 'duplicate' property from another feed" do
+            before do
+              ApartmentCommunity.make(:title => 'The Courts of Devon', :core_id => 111)
+            end
+
+            it "does not change the core id" do
+              subject.load!
+
+              @community.reload.core_id.should == 123
+            end
+          end
         end
       end
-
 
       describe "loading a Carmel feed when there are existing Carmel properties" do
         subject do

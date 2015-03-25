@@ -38,6 +38,8 @@ module Bozzuto
           unless property.new_record?
             import_floor_plans(property, property_data)
             import_office_hours(property, property_data)
+
+            CoreIdManager.new(property).assign_id
           end
 
           delete_orphaned_floor_plans(property, property_data)
