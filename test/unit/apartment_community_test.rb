@@ -523,6 +523,24 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
         end
       end
     end
+
+    describe "#id_for_export" do
+      context "when the community has a core id" do
+        subject { ApartmentCommunity.make(:core_id => 123) }
+
+        it "returns the core id" do
+          subject.id_for_export.should == 123
+        end
+      end
+
+      context "when the community does not have a core id" do
+        subject { ApartmentCommunity.make(:core_id => nil) }
+
+        it "returns the record id" do
+          subject.id_for_export.should == subject.id
+        end
+      end
+    end
   end
 
   context "The ApartmentCommunity class" do

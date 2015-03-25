@@ -174,4 +174,8 @@ class ApartmentCommunity < Community
 
     true
   end
+
+  def id_for_export
+    core_id.presence || id
+  end
 end
