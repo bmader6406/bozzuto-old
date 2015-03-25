@@ -792,7 +792,7 @@ PropertyContactPage:
   fields:
     default: property, meta_title
     list: property, meta_title
-    form: content, schedule_appointment_url, meta_title, meta_description, meta_keywords, property
+    form: content, schedule_appointment_url, local_phone_number, meta_title, meta_description, meta_keywords, property
     options:
       ckeditor: content
   order_by:

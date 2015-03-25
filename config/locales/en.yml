@@ -350,6 +350,7 @@ en:
         ufollowup_id: uFollowUp ID
         zip_code: ZIP Code
       property_contact_page:
+        local_phone_number: Local Phone Number
         meta_title: Meta Title
         meta_description: Meta Description
         meta_keywords: Meta Keywords
