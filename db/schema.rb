@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150325123246) do
+ActiveRecord::Schema.define(:version => 20150325134851) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -1020,8 +1020,10 @@ ActiveRecord::Schema.define(:version => 20150325123246) do
     t.string   "hero_image_content_type"
     t.integer  "hero_image_file_size"
     t.string   "hyly_id"
+    t.integer  "core_id"
   end
 
+  add_index "properties", ["core_id"], :name => "index_properties_on_core_id"
   add_index "properties", ["external_cms_id", "external_cms_type"], :name => "index_properties_on_external_cms_id_and_external_cms_type"
   add_index "properties", ["external_cms_id"], :name => "index_properties_on_external_cms_id"
   add_index "properties", ["included_in_export"], :name => "index_properties_on_included_in_export"
