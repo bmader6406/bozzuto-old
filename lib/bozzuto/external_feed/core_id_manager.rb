@@ -27,6 +27,8 @@ module Bozzuto::ExternalFeed
     end
 
     def assign_id
+      return if community.core_id.present?
+
       core_id = if matching_community.try(:core_id).present?
         matching_community.core_id
       else

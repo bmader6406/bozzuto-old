@@ -65,7 +65,8 @@ class Bozzuto::ExternalFeed::CoreIdManagerTest < ActiveSupport::TestCase
     describe "#assign_id" do
       context "if the community already has a core id" do
         before do
-          @community = ApartmentCommunity.make(:core_id => 123) 
+          ApartmentCommunity.make(:title => 'Boomtown', :core_id => 333)
+          @community = ApartmentCommunity.make(:title => 'Boomtown', :core_id => 123)
         end
 
         subject { Bozzuto::ExternalFeed::CoreIdManager.new(@community) }
