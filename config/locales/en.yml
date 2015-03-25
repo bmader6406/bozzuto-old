@@ -72,6 +72,7 @@ en:
         domain_name: Domain Name
         value: Value
       apartment_community:
+        core_id: Core ID
         dnr_configuration: DNR Configuration
         external_cms_name: Managed by
         featured_position: Position
@@ -403,6 +404,7 @@ en:
         domain_name: "The domain name to match the referrer against. If the referrer's domain (including subdomains) matches this domain name, then the value below will be set as the ad source. <strong>Include only the domain. Do not include http://</strong>.<br /><br />Example: apartments.com"
         value: "This value will be used for the 'ad source' param when doing DNR number replacement and as the 'Lead Channel' on Lead 2 Lease submissions."
       apartment_community:
+        core_id: This number ties together duplicate properties resulting from multiple feeds.  It is the Property ID used in the export.
         hero_image: This image will be used in the slideshow on an Apartment Area/Neighborhood page.  Image dimensions should be 1020x325.
         hyly_id: This ID is used to generate the Hy.Ly form for this specific property.
         neighborhood_description: This text will be shown on Neighborhoods listing pages.
