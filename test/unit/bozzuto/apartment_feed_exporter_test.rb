@@ -46,6 +46,7 @@ module Bozzuto
         }
 
         @community = ApartmentCommunity.make({
+          :core_id                 => 123,
           :title                   => 'Dolans Hood',
           :street_address          => '100 Gooby Pls',
           :city                    => city,
@@ -89,6 +90,7 @@ module Bozzuto
         @community.save
 
         ApartmentCommunity.make(
+          :core_id   => 555,
           :title     => 'I R Close',
           :latitude  => -30.0,
           :longitude => -100.0,
@@ -569,9 +571,9 @@ module Bozzuto
               @identification_node = @property_id_node.xpath('Identification')[0]
             end
 
-            should "contain property id" do
+            should "contain property id for exports" do
               actual = @identification_node.xpath('PrimaryID')[0].content.to_i
-              assert_equal @community.id, actual
+              assert_equal @community.id_for_export, actual
             end
 
             should "contain property title" do
@@ -763,8 +765,8 @@ module Bozzuto
             @nearby_node = @doc.xpath(path)[0]
           end
 
-          should "contain id" do
-            assert_equal @nearby_community.id.to_s, @nearby_node['Id']
+          should "contain the id for exports" do
+            assert_equal @nearby_community.id_for_export.to_s, @nearby_node['Id']
           end
 
           should "contain title" do

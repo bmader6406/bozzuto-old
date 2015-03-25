@@ -24,7 +24,7 @@ module Bozzuto
     def community_data
       ApartmentCommunity.included_in_export.collect do |community|
         {
-          :id                  => community.id,
+          :id                  => community.id_for_export,
           :community_name      => community.title,
           :community_address_1 => community.street_address,
           :city                => community.city.name,
@@ -131,7 +131,7 @@ module Bozzuto
     def nearby_communities(community)
       community.nearby_communities.included_in_export.map do |nearby_community|
         {
-          :id    => nearby_community.id,
+          :id    => nearby_community.id_for_export,
           :title => nearby_community.title
         }
       end
