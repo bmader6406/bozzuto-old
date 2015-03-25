@@ -22,9 +22,9 @@
   <p><%= @community.title %></p>
   <p><%== @community.address("<br>") + " #{@community.zip_code}" %></p>
 
-  <% if @page.local_phone_number.present? || @community.phone_number.present? %>
+  <% if @page.try(:local_phone_number).present? || @community.phone_number.present? %>
     <h2><strong>Phone Number</strong></h2>
-    <p><%= @page.local_phone_number.presence || @community.phone_number %></p>
+    <p><%= @page.try(:local_phone_number).presence || @community.phone_number %></p>
   <% end %>
 
   <h2><strong>Office Hours</strong></h2>
