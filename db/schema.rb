@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150305133452) do
+ActiveRecord::Schema.define(:version => 20150325123246) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -1042,6 +1042,7 @@ ActiveRecord::Schema.define(:version => 20150305133452) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "schedule_appointment_url"
+    t.string   "local_phone_number"
   end
 
   add_index "property_contact_pages", ["property_id"], :name => "index_property_contact_pages_on_property_id"
