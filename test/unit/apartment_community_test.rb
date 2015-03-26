@@ -541,6 +541,24 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
         end
       end
     end
+
+    describe "#main_export_community?" do
+      context "when the community is both included in the export and published" do
+        subject { ApartmentCommunity.make(:included_in_export => true, :published => true) }
+
+        it "returns true" do
+          subject.main_export_community?.should == true
+        end
+      end
+
+      context "when the community is either excluded from the export or unpublished" do
+        subject { ApartmentCommunity.make(:included_in_export => true, :published => false) }
+
+        it "returns false" do
+          subject.main_export_community?.should == false
+        end
+      end
+    end
   end
 
   context "The ApartmentCommunity class" do

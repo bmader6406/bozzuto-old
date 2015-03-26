@@ -178,4 +178,8 @@ class ApartmentCommunity < Community
   def id_for_export
     core_id.presence || id
   end
+
+  def main_export_community?
+    included_in_export? && published?
+  end
 end
