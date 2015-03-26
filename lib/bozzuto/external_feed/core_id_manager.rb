@@ -61,12 +61,8 @@ module Bozzuto::ExternalFeed
     end
 
     class CanonicalCommunityCollection < Hash
-      def initialize(default = [])
-        super(default)
-      end
-
       def assign_rank(community)
-        merge(community.title => self[community.title] << ScoredCommunity.new(community))
+        merge!(community.title => Array(self[community.title]) << ScoredCommunity.new(community))
       end
 
       def canonical(community)
