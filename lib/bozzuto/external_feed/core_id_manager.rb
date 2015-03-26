@@ -25,9 +25,9 @@ module Bozzuto::ExternalFeed
     def assign_id
       return if community.core_id.present?
 
-      collection(duplicate_communities).core_id_for(community).tap do |core_id|
-        community.update_attributes(:core_id => core_id)
-      end
+      core_id = collection(duplicate_communities).core_id_for(community).presence || community.id
+
+      community.update_attributes(:core_id => core_id)
     end
 
     private
