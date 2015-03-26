@@ -9,6 +9,7 @@ admin:
   ApartmentFloorPlan: create, read, update, delete
   ApartmentFloorPlanGroup: read
   ApartmentUnit: create, read, update, delete
+  ApartmentUnitAmenity: create, read, update, delete
   Area: create, read, update, delete
   AreaMembership: create, read, update, delete
   Award: create, read, update, delete

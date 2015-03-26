@@ -23,6 +23,7 @@ en:
       apartment_floor_plan: Floor Plan
       apartment_floor_plan_group: Floor Plan Type
       apartment_unit: Apartment Unit
+      apartment_unit_amenity: Apartment Unit Amenity
       area_membership: Area Membership
       body_slide: Slide
       body_slideshow: Page Body Slideshow
@@ -143,6 +144,10 @@ en:
         unit_type: Unit Type
         vacate_date: Vacate Date
         vacancy_class: Vacancy Status
+      apartment_unit_amenity:
+        apartment_unit: Apartment Unit
+        primary_type: Primary Type
+        sub_type: Sub-Type
       area:
         area_type: Area Type
         banner_image: Banner Image
