@@ -66,7 +66,7 @@ module Bozzuto::ExternalFeed
       end
 
       def canonical(community)
-        self[community.title].sort_by(&:canonical_score).last
+        Array(self[community.title]).sort_by(&:canonical_score).last
       end
 
       def core_id_for(community)
