@@ -30,4 +30,8 @@ class ApartmentUnit < ActiveRecord::Base
   def square_footage
     "#{min_square_feet} to #{max_square_feet}"
   end
+
+  def typus_name
+    marketing_name.presence || "ApartmentUnit (ID: #{id})"
+  end
 end

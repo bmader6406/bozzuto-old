@@ -37,5 +37,23 @@ class ApartmentUnitTest < ActiveSupport::TestCase
         subject.square_footage.should == '500 to 750'
       end
     end
+
+    describe "#typus_name" do
+      context "when the unit has a marketing name" do
+        subject { ApartmentUnit.make(:marketing_name => 'Penthouse 1A') }
+
+        it "returns the marketing name" do
+          subject.typus_name.should == 'Penthouse 1A'
+        end
+      end
+
+      context "when the unit does not have a marketing name" do
+        subject { ApartmentUnit.make(:marketing_name => nil) }
+
+        it "returns the marketing name" do
+          subject.typus_name.should == "ApartmentUnit (ID: #{subject.id})"
+        end
+      end
+    end
   end
 end
