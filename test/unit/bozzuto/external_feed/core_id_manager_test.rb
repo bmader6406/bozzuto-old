@@ -19,30 +19,42 @@ class Bozzuto::ExternalFeed::CoreIdManagerTest < ActiveSupport::TestCase
 
       context "when there are multiple properties with the same name" do
         before do
-          @in_export     = ApartmentCommunity.make(:title => 'Boomtown', :included_in_export => true,  :published => false)
           @not_in_export = ApartmentCommunity.make(:title => 'Boomtown', :included_in_export => false, :published => false)
-          @core          = ApartmentCommunity.make(:title => 'Boomtown', :included_in_export => true,  :published => true)
+          @in_export     = ApartmentCommunity.make(:title => 'Boomtown', :included_in_export => true,  :published => false)
         end
 
-        it "assigns all properties a core id equal to that of the first property that's included in the export and published" do
+        it "assigns core ids equal to the community in the export" do
           Bozzuto::ExternalFeed::CoreIdManager.assign_core_ids!
 
-          @in_export.reload.core_id.should     == @core.id
-          @not_in_export.reload.core_id.should == @core.id
-          @core.reload.core_id.should          == @core.id
+          @in_export.reload.core_id.should     == @in_export.id
+          @not_in_export.reload.core_id.should == @in_export.id
         end
 
-        context "and one of the communities already has a core id" do
+        context "when at least one is published and included in the export" do
           before do
-            @existing_id = ApartmentCommunity.make(:title => 'Boomtown', :core_id => 123) 
+            @core = ApartmentCommunity.make(:title => 'Boomtown', :included_in_export => true,  :published => true)
           end
 
-          it "ensures all communities use the core id" do
+          it "assigns all properties a core id equal to that of the first property that's included in the export and published" do
             Bozzuto::ExternalFeed::CoreIdManager.assign_core_ids!
 
-            @in_export.reload.core_id.should     == 123
-            @not_in_export.reload.core_id.should == 123
-            @existing_id.reload.core_id.should   == 123
+            @in_export.reload.core_id.should     == @core.id
+            @not_in_export.reload.core_id.should == @core.id
+            @core.reload.core_id.should          == @core.id
+          end
+
+          context "and one of the communities already has a core id" do
+            before do
+              @existing_id = ApartmentCommunity.make(:title => 'Boomtown', :core_id => 123)
+            end
+
+            it "ensures all communities use the core id" do
+              Bozzuto::ExternalFeed::CoreIdManager.assign_core_ids!
+
+              @in_export.reload.core_id.should     == 123
+              @not_in_export.reload.core_id.should == 123
+              @existing_id.reload.core_id.should   == 123
+            end
           end
         end
       end
@@ -94,16 +106,16 @@ class Bozzuto::ExternalFeed::CoreIdManagerTest < ActiveSupport::TestCase
 
       context "when there's a community with a matching name that does not have a core id" do
         before do
-          ApartmentCommunity.make(:title => 'Boomtown', :core_id => nil)
+          @existing  = ApartmentCommunity.make(:title => 'Boomtown', :core_id => nil)
           @community = ApartmentCommunity.make(:title => 'Boomtown', :core_id => nil)
         end
 
         subject { Bozzuto::ExternalFeed::CoreIdManager.new(@community) }
 
-        it "assigns the record id as its core id" do
+        it "assigns the existing record's id as the core id" do
           subject.assign_id
 
-          @community.reload.core_id.should == @community.id
+          @community.reload.core_id.should == @existing.id
         end
       end
     end
