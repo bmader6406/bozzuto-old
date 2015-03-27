@@ -68,5 +68,5 @@ class ApartmentUnitAmenity < ActiveRecord::Base
             :presence => true
 
   validates :primary_type, :inclusion => { :in => PRIMARY_TYPE }
-  validates :sub_type,     :inclusion => { :in => SUB_TYPE }, :allow_nil => true
+  validates :sub_type,     :inclusion => { :in => SUB_TYPE }, :allow_blank => true
 end

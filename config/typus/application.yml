@@ -85,7 +85,7 @@ ApartmentUnit:
     options:
       required: floor_plan
       selectors: vacancy_class
-  relationships: floor_plan, amenities
+  relationships: floor_plan, amenities, feed_files
   order_by: bedrooms
 
 ApartmentUnitAmenity:
@@ -318,6 +318,18 @@ Feed:
   filters:
   search:
   application:
+
+FeedFile:
+  fields:
+    default: name, file_type, source_link
+    list: name, file_type, source_link, feed_record
+    form: file_type, format, name, source, description, caption, width, height, rank, ad_id, affiliate_id, active
+    options:
+      required: active, file_type, name, format, source
+      selectors: file_type
+      booleans: active
+  relationships: feed_record
+  order_by: name
 
 GreenFeature:
   fields:

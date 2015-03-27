@@ -258,8 +258,8 @@ FeedFile.blueprint do
   external_cms_type { 'vaultware' }
   file_type         { 'Photo' }
   name              { 'Unit 4B Kitchen' }
-  format            { 'image/jpeg' }
   source            { 'http://images.com/unit-4b-kitchen.jpg' }
+  self.format       { 'image/jpeg' } # Need to preface with self since Kernel#format is a thing.
 end
 
 FeedItem.blueprint do

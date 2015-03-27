@@ -26,6 +26,7 @@ admin:
   County: create, read, update, delete
   DnrConfiguration: create, read, update, delete
   Feed: create, read, update, delete
+  FeedFile: read, update, delete
   GreenFeature: create, read, update, delete
   GreenPackage: create, read, update, delete
   GreenPackageItem: create, read, update, delete

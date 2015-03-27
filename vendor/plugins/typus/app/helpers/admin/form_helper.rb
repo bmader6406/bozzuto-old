@@ -32,7 +32,6 @@ module Admin::FormHelper
 
   # OPTIMIZE: Remove returning(String.new) and return directly the html.
   def typus_belongs_to_field(attribute, options)
-
     form = options[:form]
 
     required = if @resource[:class].typus_field_options_for(:required).to_s.include?(attribute)
@@ -47,8 +46,9 @@ module Admin::FormHelper
 
     back_to = url_for(:controller => params[:controller], :action => params[:action], :id => params[:id])
 
-    related = @resource[:class].reflect_on_association(attribute.to_sym).klass
-    related_fk = @resource[:class].reflect_on_association(attribute.to_sym).primary_key_name
+    association = @resource[:class].reflect_on_association(attribute.to_sym)
+    related     = association.klass
+    related_fk  = association.primary_key_name
 
     confirm = [ _("Are you sure you want to leave this page?"),
                 _("If you have made any changes to the fields without clicking the Save/Update entry button, your changes will be lost."), 
@@ -79,9 +79,7 @@ module Admin::FormHelper
 </li>
         HTML
       end
-
     end
-
   end
 
   # OPTIMIZE: Move html code to partial.
@@ -108,12 +106,11 @@ module Admin::FormHelper
 
   # OPTIMIZE: Cleanup the case statement.
   def typus_relationships
-
     @back_to = url_for(:controller => params[:controller], :action => params[:action], :id => params[:id])
 
     String.new.tap do |html|
       @resource[:class].typus_defaults_for(:relationships).each do |relationship|
-        association = @resource[:class].reflect_on_association(relationship.to_sym)
+        association = TypusCompatibleAssociation.new(@resource[:class].reflect_on_association(relationship.to_sym))
 
         next if @current_user.cannot?('read', association.class_name.constantize)
         
@@ -479,6 +476,16 @@ module Admin::FormHelper
         html << %{<option #{"selected" if @item.send(attribute) == item.id} value="#{item.id}">#{"&nbsp;" * item.ancestors.size * 2} &#8627; #{item.to_label}</option>\n}
         html << expand_tree_into_select_field(item.children, attribute) unless item.children.empty?
       end
+    end
+  end
+
+  class TypusCompatibleAssociation < SimpleDelegator
+    def class_name
+      polymorphic? ? active_record.to_s : super
+    end
+
+    def polymorphic?
+      options[:polymorphic].present? || options[:as].present?
     end
   end
   

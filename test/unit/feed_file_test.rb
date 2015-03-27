@@ -31,5 +31,13 @@ class FeedFileTest < ActiveSupport::TestCase
         end
       end
     end
+
+    describe "#source_link" do
+      subject { FeedFile.make(:source => 'source') }
+
+      it "returns a link to the source" do
+        subject.source_link.should == "<a href=source target=\"blank\">source</a>"
+      end
+    end
   end
 end

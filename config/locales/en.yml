@@ -33,6 +33,7 @@ en:
       contact_topic: Contact Form Topic
       dnr_configuration: DNR Configuration
       feed: Feed
+      feed_file: Feed File
       green_feature: Green Feature
       green_package: Green Package
       green_package_item: Green Package Item
@@ -200,6 +201,12 @@ en:
         ad_source: Ad Source
       feed:
         url: Feed URL
+      feed_file:
+        ad_id:  Ad ID
+        affiliate_id: Affiliate ID
+        feed_record: Feed Record
+        file_type: File Type
+        source_link: Link to Source
       green_package:
         graph_title: Graph Title
         graph_tooltip: Graph Tooltip Text

@@ -25,4 +25,8 @@ class FeedFile < ActiveRecord::Base
 
     FILE_TYPE.include?(value) ? value : 'Other'
   end
+
+  def source_link
+    "<a href=#{source} target=\"blank\">#{source}</a>".html_safe
+  end
 end
