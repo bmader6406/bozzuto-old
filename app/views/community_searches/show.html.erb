@@ -102,20 +102,6 @@
               <% end -%>
             </ul>
           </fieldset>
-
-          <fieldset id="special_promotion" class="">
-            <h3 class="screen-reader">More Filters</h3>
-            <ul>
-              <li>
-                <%= f.check_box :promo_id_is_present, :id => 'search_special_promotions' %>
-                <%= f.label :special_promotions, 'Special Promotions', :for => 'search_special_promotions' %>
-              </li>
-              <li>
-                <%= f.check_box :under_construction_is_true, :id => 'search_upcoming' %>
-                <%= f.label :under_construction_is_true, 'Upcoming', :for => 'search_upcoming' %>
-              </li>
-            </ul>
-          </fieldset>
         <% end %>
       </div>
 
