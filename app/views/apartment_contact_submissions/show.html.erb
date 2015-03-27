@@ -7,15 +7,22 @@
 
 <% if flash[:apartment_contact_email] -%>
   <div class="notice">
-    Thanks for contacting us about <%= @community.title %>! We will reply to you soon.  
+    Thanks for contacting us about <%= @community.title %>! We will reply to you soon.
   </div>
 <% end -%>
 
-<% if @community.under_construction? %>
-  <%= render :partial => 'under_construction_form' %>
-<% elsif @community.show_lead_2_lease? -%>
-  <%= render :partial => 'lead_2_lease_form' %>
-<% end -%>
+<div class="city-contact-grid">
+  <div class="city-contact-grid-form">
+    <% if @community.under_construction? %>
+      <%= render :partial => 'under_construction_form' %>
+    <% elsif @community.show_lead_2_lease? -%>
+      <%= render :partial => 'lead_2_lease_form' %>
+    <% end -%>
+  </div>
+  <div class="city-contact-grid-sidebar">
+    <%= @page.content.try(:html_safe) if @page %>
+  </div>
+</div>
 
 <div id="community-contact-text">
   <h2><strong>Address</strong></h2>
@@ -32,9 +39,7 @@
     <p><%= office_hour %></p>
   <% end %>
 
-  <%= @page.content.try(:html_safe) if @page %>  
 </div>
-
 
 <% content_for :javascript do %>
   <script type="text/javascript" src="http://js.washingtonpost.com/wp-adv/units/wp-plus/895696/Retargeting_1_Shopping_Cart_/tag.js"></script>

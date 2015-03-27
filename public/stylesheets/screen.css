@@ -5700,3 +5700,54 @@ div.wysiwyg ul li {
 #slideshow.neighborhood .slideshow-pagination {
   display: none;
 }
+
+/* Grid */
+.cty-contact-hdr-left,
+.cty-contact-hdr-right {
+  padding-top: 30px;
+}
+
+.city-contact-grid {
+  box-sizing: border-box;
+  float: left;
+  width: 100%;
+}
+
+.city-contact-grid-form {
+  box-sizing: border-box;
+  float: left;
+  min-height: 1px;
+  width: 70%;
+}
+
+.city-contact-grid-sidebar {
+  box-sizing: border-box;
+  float: left;
+  min-height: 1px;
+  padding-left: 30px;
+  padding-top: 30px;
+  width: 30%;
+}
+
+.city-contact-grid-sidebar h2 {
+  line-height: 1.3;
+}
+
+.city-contact-grid .cty-contact-hdr-right {
+  float: left;
+}
+
+.city-contact-grid .hywrap {
+  margin-left: 0;
+}
+
+.city-contact-grid .hywrap .right_align .control-label {
+  text-align: left;
+  width: 140px;
+}
+
+.city-contact-grid .hywrap .right_align .form-actions,
+.city-contact-grid .hywrap .right_align .controls {
+  margin-left: 160px;
+  margin-right: 60px;
+}
