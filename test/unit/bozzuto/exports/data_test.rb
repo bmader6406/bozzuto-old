@@ -149,6 +149,10 @@ module Bozzuto::Exports
           @test_community.county.should == 'Dawnguard'
         end
 
+        it "contains the full address" do
+          @test_community.full_address.should == '100 Gooby Pls, Bogsville, NC 89223'
+        end
+
         it "contains Lead2Lease email address" do
           @test_community.lead_2_lease_email.should == 'dolan@pls.org'
         end

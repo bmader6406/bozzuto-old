@@ -81,6 +81,10 @@ module Bozzuto
           super if super.present? && super.active?
         end
 
+        def full_address
+          [address, zip_code].join(' ')
+        end
+
         def directions_url
           "http://maps.google.com/maps?daddr=#{URI.encode(address)}"
         end
