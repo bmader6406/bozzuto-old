@@ -23,6 +23,7 @@ module Bozzuto::ExternalFeed
             c.availability_url.should  == 'http://madox.prospectportal.com/Apartments/module/property_info/property[id]/49989'
             c.external_cms_id.should   == '49989'
             c.external_cms_type.should == 'psi'
+            c.unit_count.should        == 131
 
             c.office_hours.first.tap do |office_hour|
               office_hour.day.should              == 1
@@ -53,6 +54,7 @@ module Bozzuto::ExternalFeed
               f.min_rent.should          == 0
               f.max_rent.should          == 0
               f.image_url.should         == 'https://medialibrarycdn.propertysolutions.com/media_library/4346/507d837124123567.jpg'
+              f.unit_count.should        == 0
               f.floor_plan_group.should  == 'studio'
               f.external_cms_id.should   == '184743'
               f.external_cms_type.should == 'psi'
@@ -69,6 +71,7 @@ module Bozzuto::ExternalFeed
               f.min_rent.should          == 0
               f.max_rent.should          == 0
               f.image_url.should         == 'https://medialibrarycdn.propertysolutions.com/media_library/4346/507d83cc5f062493.jpg'
+              f.unit_count.should        == 0
               f.floor_plan_group.should  == 'one_bedroom'
               f.external_cms_id.should   == '184745'
               f.external_cms_type.should == 'psi'
@@ -95,6 +98,7 @@ module Bozzuto::ExternalFeed
             c.availability_url.should  == 'http://paletteatarts.prospectportal.com/Apartments/module/property_info/property[id]/49990'
             c.external_cms_id.should   == '49990'
             c.external_cms_type.should == 'psi'
+            c.unit_count.should        == 243
             c.office_hours.should      == []
 
             c.floor_plans.count.should == 1
@@ -110,6 +114,7 @@ module Bozzuto::ExternalFeed
               f.min_rent.should          == 0
               f.max_rent.should          == 0
               f.image_url.should         == 'https://medialibrarycdn.propertysolutions.com/media_library/4346/5098331813558971.jpg'
+              f.unit_count.should        == 0
               f.floor_plan_group.should  == 'one_bedroom'
               f.external_cms_id.should   == '189005'
               f.external_cms_type.should == 'psi'

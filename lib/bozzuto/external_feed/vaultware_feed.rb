@@ -38,6 +38,7 @@ module Bozzuto
           :min_rent          => float_at(plan, './MarketRent', 'Min'),
           :max_rent          => float_at(plan, './MarketRent', 'Max'),
           :image_url         => floor_plan_image_url(property, plan),
+          :unit_count        => int_at(plan, './UnitCount'),
           :floor_plan_group  => floor_plan_group(bedrooms, comment),
           :external_cms_id   => plan['Id'],
           :external_cms_type => feed_type.to_s

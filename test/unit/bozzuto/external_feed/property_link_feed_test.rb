@@ -23,6 +23,7 @@ module Bozzuto::ExternalFeed
             c.availability_url.should  == ''
             c.external_cms_id.should   == '90681'
             c.external_cms_type.should == 'property_link'
+            c.unit_count.should        == 191
 
             c.office_hours.first.tap do |office_hour|
               office_hour.day.should              == 0
@@ -53,6 +54,7 @@ module Bozzuto::ExternalFeed
               f.min_rent.should          == 1250
               f.max_rent.should          == 1530
               f.image_url.should         == 'http://media.propertylinkonline.com/!@!_P2g9MjcyJnc9MzU1JmltZz1odHRwOi8vc3RhdGljLnByb3BlcnR5bGlua29ubGluZS5jb20vdGVtcGxhdGVzL01lZGlhLzc0MTcwODEvOTA2ODEvcGljX2ZwX2NkYzBmNzljLWI5MTYtNGJiOS1iYzJhLTdjNDdlMjVjYzEwNC5qcGc=.jpg'
+              f.unit_count.should        == 0
               f.floor_plan_group.should  == 'one_bedroom'
               f.external_cms_id.should   == '382503'
               f.external_cms_type.should == 'property_link'
@@ -121,6 +123,7 @@ module Bozzuto::ExternalFeed
             c.availability_url.should  == 'http://www.propertylinkonline.com/Availability/Availability.aspx?c=100155&p=106421&r=0'
             c.external_cms_id.should   == '106421'
             c.external_cms_type.should == 'property_link'
+            c.unit_count.should        == 285
 
             c.office_hours.first.tap do |office_hour|
               office_hour.day.should              == 0
@@ -151,6 +154,7 @@ module Bozzuto::ExternalFeed
               f.min_rent.should          == 1652
               f.max_rent.should          == 1803
               f.image_url.should         == 'http://capi.myleasestar.com/v2/dimg/9066752/958x1252/9066752.jpg'
+              f.unit_count.should        == 0
               f.floor_plan_group.should  == 'one_bedroom'
               f.external_cms_id.should   == '579255'
               f.external_cms_type.should == 'property_link'
@@ -167,6 +171,7 @@ module Bozzuto::ExternalFeed
               f.min_rent.should          == 1657
               f.max_rent.should          == 1807
               f.image_url.should         == 'http://capi.myleasestar.com/v2/dimg/722894/355x324/722894.jpg'
+              f.unit_count.should        == 0
               f.floor_plan_group.should  == 'one_bedroom'
               f.external_cms_id.should   == '579254'
               f.external_cms_type.should == 'property_link'

@@ -26,7 +26,8 @@ module Bozzuto::ExternalFeed
             :street_address    => 'Street Address',
             :availability_url  => 'Availability URL',
             :external_cms_id   => 'External CMS ID',
-            :external_cms_type => 'External CMS Type'
+            :external_cms_type => 'External CMS Type',
+            :unit_count        => 150
           }
         end
       end

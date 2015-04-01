@@ -23,6 +23,7 @@ module Bozzuto::ExternalFeed
             c.availability_url.should  == 'http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&myOlePropertyId=111537'
             c.external_cms_id.should   == 'p0117760'
             c.external_cms_type.should == 'rent_cafe'
+            c.unit_count.should        == 0
 
             c.office_hours.first.tap do |office_hour|
               office_hour.day.should              == 1
@@ -53,6 +54,7 @@ module Bozzuto::ExternalFeed
               f.min_rent.should          == 2589
               f.max_rent.should          == 3216
               f.image_url.should         == 'http://www.rentcafe.com/dmslivecafe/3/111537/111537_2_1_81755.jpg'
+              f.unit_count.should        == 1
               f.floor_plan_group.should  == 'one_bedroom'
               f.external_cms_id.should   == '858901'
               f.external_cms_type.should == 'rent_cafe'
@@ -69,6 +71,7 @@ module Bozzuto::ExternalFeed
               f.min_rent.should          == 3875
               f.max_rent.should          == 5040
               f.image_url.should         == 'http://www.rentcafe.com/dmslivecafe/3/111537/111537_2_1_81757.jpg'
+              f.unit_count.should        == 4
               f.floor_plan_group.should  == 'two_bedrooms'
               f.external_cms_id.should   == '858902'
               f.external_cms_type.should == 'rent_cafe'
@@ -259,6 +262,7 @@ module Bozzuto::ExternalFeed
             c.availability_url.should  == 'http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&myOlePropertyId=144341'
             c.external_cms_id.should   == 'p0151017'
             c.external_cms_type.should == 'rent_cafe'
+            c.unit_count.should        == 0
 
             c.office_hours.first.tap do |office_hour|
               office_hour.day.should              == 4
@@ -289,6 +293,7 @@ module Bozzuto::ExternalFeed
               f.min_rent.should          == 2098
               f.max_rent.should          == 3453
               f.image_url.should         == nil
+              f.unit_count.should        == 74
               f.floor_plan_group.should  == 'one_bedroom'
               f.external_cms_id.should   == '937747'
               f.external_cms_type.should == 'rent_cafe'

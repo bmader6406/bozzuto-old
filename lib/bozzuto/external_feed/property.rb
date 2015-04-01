@@ -19,7 +19,8 @@ module Bozzuto
         :street_address,
         :availability_url,
         :external_cms_id,
-        :external_cms_type
+        :external_cms_type,
+        :unit_count
       ]
     end
   end

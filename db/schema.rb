@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20150423133803) do
     t.boolean  "featured",                                             :default => false, :null => false
     t.string   "external_cms_type"
     t.integer  "available_units",                                      :default => 0
+    t.integer  "unit_count"
   end
 
   add_index "apartment_floor_plans", ["apartment_community_id"], :name => "index_apartment_floor_plans_on_apartment_community_id"
@@ -1102,6 +1103,7 @@ ActiveRecord::Schema.define(:version => 20150423133803) do
     t.integer  "core_id"
     t.string   "page_header"
     t.string   "short_description"
+    t.integer  "unit_count"
   end
 
   add_index "properties", ["core_id"], :name => "index_properties_on_core_id"

@@ -13,7 +13,8 @@ module Bozzuto
                     :max_square_feet,
                     :min_rent,
                     :max_rent,
-                    :image_url
+                    :image_url,
+                    :unit_count
 
       self.database_attributes = [
         :name,
@@ -27,7 +28,8 @@ module Bozzuto
         :max_square_feet,
         :min_rent,
         :max_rent,
-        :image_url
+        :image_url,
+        :unit_count
       ]
     end
   end

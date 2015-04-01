@@ -23,6 +23,7 @@ module Bozzuto::ExternalFeed
             c.availability_url.should  == 'http://units.realtydatatrust.com/unittype.aspx?ils=5341&propid=14317'
             c.external_cms_id.should   == '14317'
             c.external_cms_type.should == 'vaultware'
+            c.unit_count.should        == 154
 
             c.office_hours.first.tap do |office_hour|
               office_hour.day.should              == 1
@@ -53,6 +54,7 @@ module Bozzuto::ExternalFeed
               f.min_rent.should          == 1480
               f.max_rent.should          == 1505
               f.image_url.should         == 'http://cdn.realtydatatrust.com/i/fs/27983'
+              f.unit_count.should        == 34
               f.floor_plan_group.should  == 'one_bedroom'
               f.external_cms_id.should   == '9797'
               f.external_cms_type.should == 'vaultware'
@@ -69,6 +71,7 @@ module Bozzuto::ExternalFeed
               f.min_rent.should          == 1585
               f.max_rent.should          == 1585
               f.image_url.should         == 'http://cdn.realtydatatrust.com/i/fs/27989'
+              f.unit_count.should        == 16
               f.floor_plan_group.should  == 'one_bedroom'
               f.external_cms_id.should   == '9798'
               f.external_cms_type.should == 'vaultware'
@@ -205,6 +208,7 @@ module Bozzuto::ExternalFeed
             c.availability_url.should  == 'http://units.realtydatatrust.com/unittype.aspx?ils=5341&propid=16976'
             c.external_cms_id.should   == '16976'
             c.external_cms_type.should == 'vaultware'
+            c.unit_count.should        == 253
 
             c.office_hours.first.tap do |office_hour|
               office_hour.day.should              == 1
@@ -235,6 +239,7 @@ module Bozzuto::ExternalFeed
               f.min_rent.should          == 1540
               f.max_rent.should          == 1820
               f.image_url.should         == 'http://cdn.realtydatatrust.com/i/fs/62315'
+              f.unit_count.should        == 89
               f.floor_plan_group.should  == 'two_bedrooms'
               f.external_cms_id.should   == '20294'
               f.external_cms_type.should == 'vaultware'

@@ -8,6 +8,7 @@ module Bozzuto
 
       def build_property(property)
         Bozzuto::ExternalFeed::Property.new(
+<<<<<<< HEAD
           :title              => string_at(property, './Identification/MarketingName'),
           :street_address     => string_at(property, './Identification/Address/Address1'),
           :city               => string_at(property, './Identification/Address/City'),
@@ -20,6 +21,19 @@ module Bozzuto
           :floor_plans        => build_floor_plans(property),
           :apartment_units    => build_apartment_units(property),
           :property_amenities => build_property_amenities(property)
+=======
+          :title             => string_at(property, './Identification/MarketingName'),
+          :street_address    => string_at(property, './Identification/Address/Address1'),
+          :city              => string_at(property, './Identification/Address/City'),
+          :state             => string_at(property, './Identification/Address/State'),
+          :availability_url  => string_at(property, './Availability'),
+          :external_cms_id   => string_at(property, './Identification/PrimaryID'),
+          :external_cms_type => feed_type.to_s,
+          :unit_count        => int_at(property, './Information/UnitCount'),
+          :office_hours      => build_office_hours(property),
+          :floor_plans       => build_floor_plans(property),
+          :apartment_units   => build_apartment_units(property)
+>>>>>>> Add unit count to properties and floor plans, and pull that data in from the feeds
         )
       end
 
@@ -38,6 +52,7 @@ module Bozzuto
           :min_rent          => float_at(plan, './MarketRent', 'min'),
           :max_rent          => float_at(plan, './MarketRent', 'max'),
           :image_url         => floor_plan_image_url(property, plan),
+          :unit_count        => int_at(plan, './UnitCount'),
           :floor_plan_group  => floor_plan_group(bedrooms, comment),
           :external_cms_id   => plan['id'],
           :external_cms_type => feed_type.to_s

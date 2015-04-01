@@ -17,7 +17,8 @@ module Bozzuto::ExternalFeed
           :max_square_feet   => 'Max Square Feet',
           :min_rent          => 'Min Rent',
           :max_rent          => 'Max Rent',
-          :image_url         => 'Image URL'
+          :image_url         => 'Image URL',
+          :unit_count        => 15
         )
       end
 
@@ -35,7 +36,8 @@ module Bozzuto::ExternalFeed
             :max_square_feet   => 'Max Square Feet',
             :min_rent          => 'Min Rent',
             :max_rent          => 'Max Rent',
-            :image_url         => 'Image URL'
+            :image_url         => 'Image URL',
+            :unit_count        => 15
           }
         end
       end
