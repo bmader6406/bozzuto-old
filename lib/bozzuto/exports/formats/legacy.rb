@@ -192,7 +192,7 @@ module Bozzuto::Exports
       end
 
       def strip_tags_and_whitespace(html)
-        sanitizer.sanitize(String(html)).gsub(/\s+/, ' ').strip
+        CGI.unescape sanitizer.sanitize(String(html)).gsub(/\s+/, ' ').strip
       end
     end
   end
