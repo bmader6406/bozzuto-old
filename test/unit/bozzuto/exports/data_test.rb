@@ -83,16 +83,6 @@ module Bozzuto::Exports
             )
           ]
 
-          @features_page = PropertyFeaturesPage.make(
-            :property => @community,
-            :title_1  => 'One Face',
-            :text_1   => 'has one face',
-            :title_2  => 'Two Face',
-            :text_2   => 'has two faces',
-            :title_3  => 'Red Face',
-            :text_3   => 'has red face'
-          )
-
           PropertyFeature.make(:name => 'Feature Uno', :properties => [@community])
           PropertyFeature.make(:name => 'Feature Due', :properties => [@community])
 
@@ -149,8 +139,12 @@ module Bozzuto::Exports
           @test_community.county.should == 'Dawnguard'
         end
 
-        it "contains the full address" do
-          @test_community.full_address.should == '100 Gooby Pls, Bogsville, NC 89223'
+        it "contains zip" do
+          @test_community.zip.should == '89223'
+        end
+
+        it "contains address line 1" do
+          @test_community.address_line_1.should == '100 Gooby Pls'
         end
 
         it "contains Lead2Lease email address" do
@@ -159,15 +153,6 @@ module Bozzuto::Exports
 
         it "contains phone number" do
           @test_community.phone_number.should == '832.382.1337'
-        end
-
-        it "contains the appropriate features" do
-          @test_community.features[0].title.should == 'One Face'
-          @test_community.features[0].text.should == 'has one face'
-          @test_community.features[1].title.should == 'Two Face'
-          @test_community.features[1].text.should == 'has two faces'
-          @test_community.features[2].title.should == 'Red Face'
-          @test_community.features[2].text.should == 'has red face'
         end
 
         it "contains the appropriate slides" do
@@ -261,32 +246,13 @@ module Bozzuto::Exports
           @test_community.nearby_communities.first.title.should == @nearby_community.title
         end
 
-        context "when the community has no features page" do
+        context "when the community does not have a website URL" do
           before do
-            @test_community.stubs(:features_page).returns(nil)
+            @test_community.update_attributes(:website_url => nil)
           end
 
-          it "returns an empty array" do
-            @test_community.features.should == []
-          end
-        end
-
-        context "when the community has a features page without title or text" do
-          before do
-            @features_page.update_attributes(
-              :title_1  => nil,
-              :text_1   => nil,
-              :title_2  => nil,
-              :text_2   => nil,
-              :title_3  => nil,
-              :text_3   => nil
-            )
-
-            @test_community = Bozzuto::Exports::Data.new.communities.first
-          end
-
-          it "returns an empty array" do
-            @test_community.features.should == []
+          it "falls back to the Bozzuto URL" do
+            @test_community.bozzuto_url.should == "http://bozzuto.com/apartments/communities/#{@community.id}-dolans-hood"
           end
         end
 

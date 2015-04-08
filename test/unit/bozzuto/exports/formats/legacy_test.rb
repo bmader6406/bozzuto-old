@@ -140,12 +140,12 @@ module Bozzuto::Exports::Formats
         end
 
         context "within PropertyID node" do
-          setup do
+          before do
             @property_id_node = @xml.xpath('//PhysicalProperty//Property//PropertyID').first
           end
 
           context "within Identification node" do
-            setup do
+            before do
               @identification_node = @property_id_node.xpath('Identification').first
             end
 
@@ -177,7 +177,7 @@ module Bozzuto::Exports::Formats
           end
 
           context "within Address node" do
-            setup do
+            before do
               @address_node = @property_id_node.xpath('Address').first
             end
 
@@ -212,7 +212,7 @@ module Bozzuto::Exports::Formats
         end
 
         context "with features" do
-          setup do
+          before do
             @feature_node = @xml.xpath('//PhysicalProperty//Property//Feature').first
           end
 
@@ -226,7 +226,7 @@ module Bozzuto::Exports::Formats
         end
 
         context "with feature buttons" do
-          setup do
+          before do
             @featured_button_node = @xml.xpath('//PhysicalProperty//Property//FeaturedButton').first
           end
 
@@ -236,12 +236,12 @@ module Bozzuto::Exports::Formats
         end
 
         context "within Information node" do
-          setup do
+          before do
             @information_node = @xml.xpath('//PhysicalProperty//Property//Information').first
           end
 
           context "with office hours" do
-            setup do
+            before do
               @office_hour_node = @information_node.xpath('OfficeHour').first
             end
 
@@ -312,7 +312,7 @@ module Bozzuto::Exports::Formats
         end
 
         context "with nearby apartment communities" do
-          setup do
+          before do
             @nearby_node = @xml.xpath('//PhysicalProperty//Property//NearbyCommunity').first
           end
 
@@ -326,7 +326,7 @@ module Bozzuto::Exports::Formats
         end
 
         context "with slideshow" do
-          setup do
+          before do
             @slideshow_node = @xml.xpath('//PhysicalProperty//Property//Slideshow').first
           end
 
@@ -336,7 +336,7 @@ module Bozzuto::Exports::Formats
         end
 
         context "with floor plans" do
-          setup do
+          before do
             @floor_plan_node = @xml.xpath("//PhysicalProperty//Property//Floorplan[@Id=\"#{@floor_plan.id}\"]").first
           end
 
@@ -390,7 +390,7 @@ module Bozzuto::Exports::Formats
         end
 
         context "with promotion" do
-          setup do
+          before do
             @promotion_node = @xml.xpath('//PhysicalProperty//Property//Promotion').first
           end
 
@@ -407,7 +407,7 @@ module Bozzuto::Exports::Formats
           end
 
           context "with expiration date" do
-            setup do
+            before do
               @expiration_date_node = @promotion_node.xpath('ExpirationDate').first
             end
 
@@ -430,7 +430,7 @@ module Bozzuto::Exports::Formats
 
           xml = Bozzuto::Exports::Formats::Legacy.new.to_xml
 
-          assert_equal 7, Nokogiri::XML(xml).xpath('//PhysicalProperty//Property').size
+          Nokogiri::XML(xml).xpath('//PhysicalProperty//Property').size.should == 7
         end
       end
     end

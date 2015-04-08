@@ -48,21 +48,6 @@ module Bozzuto
           super.try(:name)
         end
 
-        def features
-          [].tap do |features|
-            if features_page.present?
-              (1..3).each do |i|
-                if features_page.send("title_#{i}").present?
-                  features << OpenStruct.new(
-                    :title => features_page.send("title_#{i}"),
-                    :text  => features_page.send("text_#{i}")
-                  )
-                end
-              end
-            end
-          end
-        end
-
         def slides
           slideshow.try(:slides).to_a.map do |slide|
             OpenStruct.new(:image_url => url_for_image(slide.image.url(:slide)))
@@ -81,8 +66,12 @@ module Bozzuto
           super if super.present? && super.active?
         end
 
-        def full_address
-          [address, zip_code].join(' ')
+        def zip
+          zip_code
+        end
+
+        def address_line_1
+          street_address
         end
 
         def directions_url
@@ -97,12 +86,20 @@ module Bozzuto
           super.included_in_export
         end
 
+        def website_url
+          super.presence || bozzuto_url
+        end
+
         def bozzuto_url
           apartment_community_url(self)
         end
 
         def listing_image
           url_for_image(super.url)
+        end
+
+        def video_url
+          super.presence
         end
       end
 
