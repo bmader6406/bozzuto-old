@@ -1,73 +1,56 @@
 module Bozzuto
   class CommunitySearch
-    ZIP_REGEX = /\A(?<zip>\d{5})(?:-\d{4})?\Z/
+    attr_reader :params
+    
+    def initialize(params = {})
+      @params = params
+    end
 
-    attr_reader :search_type, :query, :results
+    def results
+      @results ||= query.all(:include => [:property_features, :city])
+    end
 
-    def self.search(query)
-      load_community_classes
+    def query
+      @query ||= ApartmentCommunity.published.featured_order.search(search_params)
+    end
 
-      if query =~ ZIP_REGEX
-        matching_zip = ZipCode.find_by_zip($~[:zip])
+    def states
+      @states ||= selected_state ? [selected_state] | states_by_result_count : states_by_result_count
+    end
+    
+    def any_results?
+      results.any?
+    end
 
-        results = if matching_zip.present?
-          zip_code_search_results_for zips_within_10_miles(matching_zip)
-        end
+    def no_results?
+      results.none?
+    end
 
-        new(:zip, query, Array(results))
-      else
-        new(:name, query, {
-          :city  => base_scope.search(:city_name_starts_with => query).all,
-          :title => base_scope.search(:title_contains => query).all
-        })
+    def results_with(options)
+      return [] unless options.present? && options.is_a?(Hash)
+
+      results.select do |community|
+        options.all? { |attr, value| community.send(attr) == value }
       end
     end
-
-    def initialize(search_type, query, results)
-      @search_type = search_type
-      @query = query
-      @results = results
-    end
-
-    def total_results_count
-      all_results.size
-    end
-
-    def results?
-      all_results.size > 0
-    end
-
-    def all_results
-      if search_type == :zip
-        results
-      else
-        (results[:city] + results[:title]).uniq
-      end
-    end
-
-    def type
-      @type_inquirer ||= ActiveSupport::StringInquirer.new(search_type.to_s)
-    end
-
 
     private
 
-    def self.base_scope
-      Community.published
+    def search_params
+      @search_params ||= params.reject { |k, v| k == 'in_state' }
     end
 
-    def self.load_community_classes
-      ApartmentCommunity
-      HomeCommunity
+    def selected_state
+      @selected_state ||= State.find_by_id(params['in_state'])
     end
 
-    def self.zips_within_10_miles(matching_zip)
-      ZipCode.within(10, origin: matching_zip).by_distance(origin: matching_zip).select(:zip).map(&:zip)
+    def states_by_result_count
+      @states_by_result_count ||= State.all.sort_by(&community_count).reverse
     end
 
-    def self.zip_code_search_results_for(zip_codes)
-      base_scope.search(:zip_code_starts_with_any => zip_codes).all.sort_by do |community|
-        zip_codes.index ZIP_REGEX.match(community.zip_code)[:zip]
+    def community_count
+      proc do |state|
+        results_with(state: state).size
       end
     end
   end
