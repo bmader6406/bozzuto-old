@@ -43,7 +43,7 @@ class CommunitySearchesController < ApplicationController
 
   def search_for_mobile
     if mobile_search_params.present?
-      @search = Bozzuto::CommunitySearch.search(mobile_search_params)
+      @search = Bozzuto::Mobile::CommunitySearch.search(mobile_search_params)
 
       if @search.results?
         render :results
