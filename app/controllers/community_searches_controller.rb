@@ -56,13 +56,7 @@ class CommunitySearchesController < ApplicationController
 
     @partial_template = params[:template] || 'search'
 
-    @search = ApartmentCommunity.published.featured_order.search(params[:search])
-
-    @communities = @search.all(:include => [:property_features, :city]).group_by { |c| c.state.name }
-
-    @ordered_states = State.all.sort { |a, b|
-      (@communities[b.name].try(:count) || 0) <=> (@communities[a.name].try(:count) || 0)
-    }
+    @search = Bozzuto::CommunitySearch.new(params[:search])
 
     respond_to do |format|
       format.html do

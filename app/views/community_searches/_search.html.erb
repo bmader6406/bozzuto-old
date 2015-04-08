@@ -9,11 +9,11 @@
       </li>
     </ul>
     <p>
-      <%= pluralize(@communities.sum { |state, communities| communities.count }, 'Apartment Community') %>
+      <%= pluralize(@search.results.size, 'Apartment Community') %>
     </p>
   </div>
 
-  <% if @search.all.empty? %>
+  <% if @search.no_results? %>
     <div id="no-results">
       <p>
         We&rsquo;re sorry, there aren&rsquo;t any properties matching those criteria.
@@ -26,8 +26,8 @@
     <ul class="results">
       <% first = true %>
 
-      <% @ordered_states.each do |state| %>
-        <% communities = @communities[state.name] || [] %>
+      <% @search.states.each do |state| %>
+        <% communities = @search.results_with(state: state) %>
 
         <% unless geographic_filter && communities.count == 0 -%>
           <li class="<%= 'closed' unless first && communities.count > 0 %>">

@@ -12,7 +12,7 @@ $('#content').html("<%= escape_javascript(render(:partial => "community_searches
 
   $container.empty();
 
-  <% @search.all.map(&:id).each do |id| %>
+  <% @search.results.map(&:id).each do |id| %>
     $container.append('<input type="hidden" name="recurring_email[property_ids][]" value="<%= id %>" />');
   <% end %>
 })();
