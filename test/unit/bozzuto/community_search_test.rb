@@ -4,6 +4,8 @@ module Bozzuto
   class CommunitySearchTest < ActiveSupport::TestCase
     context "Bozzuto::CommunitySearch" do
       before do
+        create_floor_plan_groups
+
         @dc = State.make(:code => 'DC', :name => 'Washington, DC')
         @va = State.make(:code => 'VA', :name => 'Virginia')
         @md = State.make(:code => 'MD', :name => 'Maryland')
@@ -18,18 +20,81 @@ module Bozzuto
         @md_community = ApartmentCommunity.make(:city => @bethesda,   :title => 'Escape')
         @featured     = ApartmentCommunity.make(:city => @alexandria, :featured => true)
         @unpublished  = ApartmentCommunity.make(:city => @washington, :published => false)
+
+        ApartmentFloorPlan.make(
+          :apartment_community => @dc_community,
+          :floor_plan_group    => ApartmentFloorPlanGroup.one_bedroom,
+          :min_rent            => 2300,
+          :max_rent            => 2500
+        )
+
+        ApartmentFloorPlan.make(
+          :apartment_community => @va_community,
+          :floor_plan_group    => ApartmentFloorPlanGroup.three_bedrooms,
+          :min_rent            => 2700,
+          :max_rent            => 2800,
+        )
+
+        ApartmentFloorPlan.make(
+          :apartment_community => @md_community,
+          :floor_plan_group    => ApartmentFloorPlanGroup.two_bedrooms,
+          :min_rent            => 1000,
+          :max_rent            => 1000
+        )
       end
 
       describe "#results" do
-        subject { CommunitySearch.new('in_state' => @dc.id) }
+        context "when there are matching results for the given search params" do
+          subject { CommunitySearch.new('in_state' => @dc.id) }
 
-        it "returns all matching results for the given search params regardless of selected state" do
-          subject.results.should == [
-            @featured,
-            @md_community,
-            @va_community,
-            @dc_community
-          ]
+          it "returns all matching results for the given search params regardless of selected state" do
+            subject.results.should == [
+              @featured,
+              @md_community,
+              @va_community,
+              @dc_community
+            ]
+          end
+        end
+
+        context "when there are no matching results for the given search params" do
+          before do
+            @dc_community.fetch_apartment_floor_plan_cache
+            @va_community.fetch_apartment_floor_plan_cache
+            @md_community.fetch_apartment_floor_plan_cache
+          end
+
+          context "but there are relevant communities based on the given minimum price" do
+            subject { CommunitySearch.new('with_min_price' => '2900') }
+
+            it "returns the relevant communities" do
+              subject.results.should == [@va_community, @dc_community]
+            end
+          end
+
+          context "but there are relevant communities based on the given maximum price" do
+            subject { CommunitySearch.new('with_max_price' => '750.50') }
+
+            it "returns the relevant communities" do
+              subject.results.should == [@md_community]
+            end
+          end
+
+          context "but there are relevant communities based on the given floor plans" do
+            subject { CommunitySearch.new('with_floor_plan_groups' => [ApartmentFloorPlanGroup.penthouse.id.to_s]) }
+
+            it "returns the relevant communities" do
+              subject.results.should == [@va_community]
+            end
+          end
+
+          context "and there are no relevant communities" do
+            subject { CommunitySearch.new('with_min_price' => '250', 'with_max_price' => '400') }
+
+            it "returns an empty array" do
+              subject.results.should == []
+            end
+          end
         end
       end
 
