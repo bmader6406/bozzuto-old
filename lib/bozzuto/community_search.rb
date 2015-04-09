@@ -15,7 +15,11 @@ module Bozzuto
     end
 
     def states
-      @states ||= criteria.state ? [criteria.state] | states_by_result_count : states_by_result_count
+      @states ||= if criteria.state
+        [criteria.state] | states_by_result_count
+      else
+        states_by_result_count
+      end
     end
 
     def showing_relevant_results?
@@ -63,10 +67,10 @@ module Bozzuto
     end
 
     def states_by_result_count
-      @states_by_result_count ||= State.all.sort_by(&community_count).reverse
+      @states_by_result_count ||= State.all.sort_by(&community_count_proc).reverse
     end
 
-    def community_count
+    def community_count_proc
       proc do |state|
         results_with(state: state).size
       end
