@@ -198,6 +198,31 @@ module Bozzuto
           ]
         end
       end
+
+      describe "#results_by_state" do
+        subject { CommunitySearch.new }
+
+        it "returns the results by state" do
+          subject.results_by_state.should == {
+            @va => [@featured, @va_community],
+            @md => [@md_community],
+            @dc => [@dc_community]
+          }
+        end
+      end
+
+      describe "#result_ids" do
+        subject { CommunitySearch.new }
+
+        it "returns the IDs for all the results" do
+          subject.result_ids.should == [
+            @featured.id,
+            @md_community.id,
+            @va_community.id,
+            @dc_community.id
+          ]
+        end
+      end
     end
   end
 end

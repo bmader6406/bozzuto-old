@@ -34,6 +34,16 @@ module Bozzuto
       end
     end
 
+    def results_by_state
+      @results_by_state ||= states.reduce(Hash.new) do |results, state|
+        results.merge(state => results_with(state: state))
+      end
+    end
+
+    def result_ids
+      results.map(&:id)
+    end
+
     private
 
     def scope
