@@ -23,6 +23,15 @@
       </p>
     </div>
   <% else %>
+    <% if @search.showing_relevant_results? %>
+      <div id="relevant-results">
+        <p>
+          There were no properties matching those criteria.
+          However, we were able to identify some relevant properties close to your criteria.
+        </p>
+      </div>
+    <% end %>
+
     <ul class="results">
       <% first = true %>
 

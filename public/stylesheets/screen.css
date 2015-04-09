@@ -3293,6 +3293,11 @@ div.wysiwyg ul li {
     .search #content #no-results a {
       display: block;
     }
+    .search #content #relevant-results {
+      margin-bottom: 25px;
+      margin-top: 25px;
+      text-align: center;
+    }
     .search #content ul.results {
       border-top: 1px solid #c1c1c1;
     }
