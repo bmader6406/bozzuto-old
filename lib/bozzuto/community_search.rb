@@ -7,7 +7,7 @@ module Bozzuto
     end
 
     def results
-      matching_results.any? ? matching_results : relevant_results
+      matching_results.presence || relevant_results
     end
 
     def query
@@ -17,13 +17,9 @@ module Bozzuto
     def states
       @states ||= criteria.state ? [criteria.state] | states_by_result_count : states_by_result_count
     end
-    
-    def any_results?
-      results.any?
-    end
 
     def showing_relevant_results?
-      matching_results.none?
+      matching_results.none? && relevant_results.any?
     end
 
     def no_results?
@@ -87,9 +83,9 @@ module Bozzuto
 
       def adjusted_for_relevancy
         without_location
-          .merge(relevant_min_rent || {})
-          .merge(relevant_max_rent || {})
-          .merge(relevant_bedrooms || {})
+          .merge(relevant_min_rent)
+          .merge(relevant_max_rent)
+          .merge(relevant_bedrooms)
           .with_indifferent_access
       end
 
@@ -108,23 +104,39 @@ module Bozzuto
       end
 
       def relevant_min_rent
-        { MIN_RENT_CONDITION => [min_rent - RENT_RELEVANCY, 0].max } unless min_rent.zero?
+        if min_rent.zero?
+          {}
+        else
+          { MIN_RENT_CONDITION => [min_rent - RENT_RELEVANCY, 0].max }
+        end
       end
 
       def relevant_max_rent
-        { MAX_RENT_CONDITION => max_rent + RENT_RELEVANCY } unless max_rent.zero?
+        if max_rent.zero?
+          {}
+        else
+          { MAX_RENT_CONDITION => max_rent + RENT_RELEVANCY }
+        end
       end
 
       def smallest_floorplan
-        [bedrooms.min - BEDROOM_RELEVANCY, ApartmentFloorPlanGroup.studio.id].max if bedrooms.any?
+        if bedrooms.any?
+          [bedrooms.min - BEDROOM_RELEVANCY, ApartmentFloorPlanGroup.studio.id].max
+        end
       end
 
       def largest_floorplan
-        [bedrooms.max + BEDROOM_RELEVANCY, ApartmentFloorPlanGroup.penthouse.id].min if bedrooms.any?
+        if bedrooms.any?
+          [bedrooms.max + BEDROOM_RELEVANCY, ApartmentFloorPlanGroup.penthouse.id].min
+        end
       end
 
       def relevant_bedrooms
-        { BEDROOM_CONDITION => [*smallest_floorplan..largest_floorplan] } if bedrooms.any?
+        if bedrooms.any?
+          { BEDROOM_CONDITION => [*smallest_floorplan..largest_floorplan] }
+        else
+          {}
+        end
       end
     end
   end

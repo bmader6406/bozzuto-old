@@ -160,6 +160,34 @@ module Bozzuto
         end
       end
 
+      describe "#showing_relevant_results?" do
+        context "when there are matching communities" do
+          subject { CommunitySearch.new('title_eq' => 'White House') }
+
+          it "returns false" do
+            subject.showing_relevant_results?.should == false
+          end
+        end
+
+        context "when there are no matching communities" do
+          context "but there are relevant results" do
+            subject { CommunitySearch.new('with_floor_plan_groups' => [ApartmentFloorPlanGroup.penthouse.id.to_s]) }
+
+            it "returns true" do
+              subject.showing_relevant_results?.should == true
+            end
+          end
+
+          context "and there are showing_relevant relevant results" do
+            subject { CommunitySearch.new('with_min_price' => '250', 'with_max_price' => '400') }
+
+            it "returns false" do
+              subject.showing_relevant_results?.should == false
+            end
+          end
+        end
+      end
+
       describe "#results_with" do
         subject { CommunitySearch.new }
 
