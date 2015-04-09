@@ -4,6 +4,8 @@ class CommunitySearchesControllerTest < ActionController::TestCase
   context 'CommunitySearchesController' do
     desktop_device do
       before do
+        create_floor_plan_groups
+
         @community = ApartmentCommunity.make
       end
 

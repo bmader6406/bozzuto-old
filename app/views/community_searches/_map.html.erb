@@ -9,7 +9,7 @@
       </li>
     </ul>
     <p>
-      <%= pluralize(@communities.sum { |state, communities| communities.count }, 'Apartment Community') %>
+      <%= pluralize(@search.results.size, 'Apartment Community') %>
     </p>
   </div>
 
@@ -23,8 +23,8 @@
 
   <div id="search-results-map">
     <div id="map-properties">
-      <% @communities.each do |state, communities| %>
-        <% communities.each do |community| %>
+      <% @search.states.each do |state| %>
+        <% @search.results_with(state: state).each do |community| %>
           <div class="property" <%= jmapping(community) %>>
             <div class="info-box">
               <h4><%= link_to community.title, property_path(community) %></h4>
