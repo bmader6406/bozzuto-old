@@ -35,9 +35,7 @@
     <ul class="results">
       <% first = true %>
 
-      <% @search.states.each do |state| %>
-        <% communities = @search.results_with(state: state) %>
-
+      <% @search.results_by_state.each do |state, communities| %>
         <% unless geographic_filter && communities.count == 0 -%>
           <li class="<%= 'closed' unless first && communities.count > 0 %>">
             <% first = false -%>
