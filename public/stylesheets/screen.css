@@ -2043,6 +2043,11 @@ div.wysiwyg ul li {
       margin-right: 110px;
       width: 725px;
     }
+    .property #slideshow .header h1 b {
+      display: block;
+      font-size: 30px;
+      text-transform: capitalize;
+    }
     .property #slideshow .header a {
       color: #565c64;
     }

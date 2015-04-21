@@ -1,7 +1,10 @@
 <% if property.slideshow.present? %>
   <div id="slideshow">
     <div class="header">
-      <h1><%= property.short_name %></h1>
+      <h1>
+        <%= property.short_name %>
+        <b><%= property.project_categories.first(2).map(&:title).join(' / ') %></b>
+      </h1>
 
       <ul class="slideshow-navigation">
         <li>
@@ -35,7 +38,7 @@
           <%= link_to_if slide.link_url?,
                          content_tag(:span, '', :class => 'overlay'),
                          slide.link_url %>
-        </li> 
+        </li>
       <% end %>
     </ul>
   </div>
