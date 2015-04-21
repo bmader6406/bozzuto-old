@@ -2583,7 +2583,7 @@ div.wysiwyg ul li {
       width: 520px;
     }
     .project #main-content .content .main-content ul.data {
-      margin-top: 17px;
+      margin-top: 40px;
       overflow: hidden;
       padding-bottom: 8px;
       width: 100%;
@@ -2591,15 +2591,21 @@ div.wysiwyg ul li {
     .project #main-content .content .main-content ul.data li {
       background: url(../images/structure/bg-projects-data.gif) left -58px no-repeat;
       float: left;
-      margin: 0 4px -2px;
-      padding-top: 14px;
+      margin-bottom: 10px;
+      padding-top: 16px;
       width: 100%;
     }
     .project #main-content .content .main-content ul.data li h3 {
       border: none;
-      margin-bottom: 4px;
+      color: #84848b;
+      font-size: 14px;
+      margin-bottom: 0;
       padding: 0;
-      width: auto;
+      text-transform: uppercase;
+    }
+    .project #main-content .content .main-content ul.data li p {
+      font-size: 22px;
+      width: 100%;
     }
     .project #main-content .content .main-content ul.project-updates {
       padding: 18px;
@@ -2755,23 +2761,6 @@ div.wysiwyg ul li {
       .project #main-content .content .main-content .intro p {
         font-size: 15px;
         line-height: 22px;
-      }
-      .project #main-content .content .main-content ul.data
-        margin-top: 40px;
-      }
-      .project #main-content .content .main-content ul.data li {
-          margin-bottom: 16px;
-          padding-top: 16px;
-      }
-      .project #main-content .content .main-content ul.data li h3 {
-        color: #84848b;
-        font-size: 14px;
-        margin-bottom: 0;
-        text-transform: uppercase;
-      }
-      .project #main-content .content .main-content ul.data li p {
-        font-size: 22px;
-        width: 100%;
       }
       .project #main-content .content .main-content ul.project-updates li h3 {
         color: #84848b;

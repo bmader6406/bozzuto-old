@@ -131,8 +131,6 @@ window.bozzuto = {};
       find: 'li > a'
     });
 
-    $('.project .data').equalHeight();
-
     $('a[rel=external]').each(function() {
       $(this).attr('target', '_blank');
     });
