@@ -5018,6 +5018,21 @@ div.wysiwyg ul li {
   .careers-employee-video {
     margin-top: 20px;
   }
+
+  .secondary #masthead.careers-masthead {
+    background: none;
+  }
+
+  .secondary #masthead.careers-masthead #masthead-slideshow ul.slides li.slide {
+    background: none;
+  }
+
+  .secondary #masthead.careers-masthead .container {
+  }
+
+  .secondary #masthead.careers-masthead .section {
+    padding-left: 0;
+  }
 /* @end */
 
 /* @group Green Homes */

@@ -2,7 +2,7 @@
 
 <% if @page.present? %>
   <% render_meta(@page) %>
-  <%= render :partial => 'pages/masthead_slideshow', :locals => { :slideshow => @page.masthead_slideshow } %>
+  <%= render :partial => 'pages/masthead_slideshow', :locals => { :slideshow => @page.masthead_slideshow, :custom_class_name => 'careers-masthead' } %>
 <% end %>
 
 <div id="main-content">
