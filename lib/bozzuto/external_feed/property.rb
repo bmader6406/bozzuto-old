@@ -9,6 +9,7 @@ module Bozzuto
                     :office_hours,
                     :external_cms_id,
                     :external_cms_type,
+                    :unit_count,
                     :floor_plans,
                     :apartment_units,
                     :property_amenities

@@ -267,6 +267,22 @@ module Bozzuto::ExternalFeed
                 p.external_cms_id.should   == '9798'
                 p.external_cms_type.should == 'vaultware'
               end
+
+              c.property_amenities.count.should == 2
+
+              c.property_amenities.first.tap do |a|
+                a.primary_type.should == 'FitnessCenter'
+                a.sub_type.should     == nil
+                a.description.should  == 'Health club-class fitness center'
+                a.position.should     == 1
+              end
+
+              c.property_amenities.last.tap do |a|
+                a.primary_type.should == 'Garage'
+                a.sub_type.should     == 'Both'
+                a.description.should  == 'On-site underground parking'
+                a.position.should     == 2
+              end
             end
 
             ::ApartmentCommunity.all[1].tap do |c|
@@ -309,6 +325,20 @@ module Bozzuto::ExternalFeed
                 p.floor_plan_group.should  == ApartmentFloorPlanGroup.two_bedrooms
                 p.external_cms_id.should   == '20294'
                 p.external_cms_type.should == 'vaultware'
+              end
+
+              c.property_amenities.count.should == 2
+
+              c.property_amenities.first.tap do |a|
+                a.primary_type.should == 'RecRoom'
+                a.sub_type.should     == nil
+                a.description.should  == 'high-tech party room with plasma tv and full kitch'
+              end
+
+              c.property_amenities.last.tap do |a|
+                a.primary_type.should == 'TVLounge'
+                a.sub_type.should     == nil
+                a.description.should  == 'Hip billiards loft'
               end
             end
           end

@@ -37,6 +37,7 @@ module Bozzuto
 
           unless property.new_record?
             import_floor_plans(property, property_data)
+            import_property_amenities(property, property_data)
             import_office_hours(property, property_data)
             import_units(property, property_data)
 
@@ -93,6 +94,24 @@ module Bozzuto
         end
       end
 
+      def import_property_amenities(property, property_data)
+        property_data.property_amenities.to_a.each do |amenity_data|
+          import_property_amenity(property, amenity_data)
+        end
+      end
+
+      def import_property_amenity(property, amenity_data)
+        amenity = property.property_amenities.find_or_initialize_by_primary_type_and_sub_type_and_description(
+          amenity_data.primary_type,
+          amenity_data.sub_type,
+          amenity_data.description
+        )
+
+        amenity.attributes = amenity_data.database_attributes
+
+        amenity.save
+      end
+
       def delete_orphaned_floor_plans(property, property_data)
         return unless property_data.floor_plans.any?
 
@@ -121,7 +140,7 @@ module Bozzuto
           unit = import_unit(unit_data)
 
           if unit.present? && unit.persisted?
-            import_amenities(unit, unit_data)
+            import_unit_amenities(unit, unit_data)
             import_files(unit, unit_data)
           end
         end
@@ -142,13 +161,13 @@ module Bozzuto
         end
       end
 
-      def import_amenities(unit, unit_data)
+      def import_unit_amenities(unit, unit_data)
         unit_data.apartment_unit_amenities.to_a.each do |amenity_data|
-          import_amenity(unit, amenity_data)
+          import_unit_amenity(unit, amenity_data)
         end
       end
 
-      def import_amenity(unit, amenity_data)
+      def import_unit_amenity(unit, amenity_data)
         amenity = unit.amenities.find_or_initialize_by_primary_type_and_sub_type_and_description(
           amenity_data.primary_type,
           amenity_data.sub_type,
