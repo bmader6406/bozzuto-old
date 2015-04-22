@@ -23,8 +23,8 @@ module Bozzuto::Exports
 
           promotion_nodes(node, property)
 
-          property.property_features.each do |feature|
-            property_amenity_node(node, feature)
+          property.property_amenities.each do |amenity|
+            property_amenity_node(node, amenity)
           end
 
           photo_node(node, property, property.listing_image, property.slides.count + 1)
@@ -89,19 +89,15 @@ module Bozzuto::Exports
         node.tag! 'Promotion', property.overview_bullet_3 if property.overview_bullet_3?
       end
 
-      def property_amenity_node(parent_node, feature)
-        parent_node.tag!('Amenity', 'AmenityType' => 'Other') do |node|
-          node.tag! 'Description', feature.name
-          node.tag! 'Rank',        feature.position
-        end
-      end
+      def property_amenity_node(parent_node, amenity)
+        types = {
+          'AmenityType'    => amenity.primary_type,
+          'AmenitySubType' => amenity.sub_type
+        }.keep_if { |type, value| value.present? }
 
-      # These are un-accounted for..
-
-      def feature_node(parent_node, feature)
-        parent_node.tag!('Feature') do |node|
-          node.tag! 'Title',       feature.title
-          node.tag! 'Description', feature.text
+        parent_node.tag!('Amenity', types) do |node|
+          node.tag! 'Description', amenity.description if amenity.description?
+          node.tag! 'Rank',        amenity.position
         end
       end
 

@@ -60,6 +60,19 @@ module Bozzuto::Exports::Formats
             )
           ]
 
+          @rec_room = PropertyAmenity.make(
+            :property     => @community,
+            :primary_type => 'RecRoom',
+            :description  => 'Such room'
+          )
+
+          @garage = PropertyAmenity.make(
+            :property     => @community,
+            :primary_type => 'Garage',
+            :sub_type     => 'Both',
+            :description  => 'Parking available both above and below ground.'
+          )
+
           @feature1 = PropertyFeature.make(:name => 'Feature Uno', :position => 1, :properties => [@community])
           @feature2 = PropertyFeature.make(:name => 'Feature Due', :position => 2, :properties => [@community])
 
@@ -629,12 +642,15 @@ module Bozzuto::Exports::Formats
 
           it "contains an amenity node for each property feature" do
             @property_node.xpath('Amenity').first.tap do |node|
-              node.xpath('Description').first.content.should == 'Feature Uno'
+              node['AmenityType'].should                     == 'RecRoom'
+              node.xpath('Description').first.content.should == 'Such room'
               node.xpath('Rank').first.content.should        == '1'
             end
 
             @property_node.xpath('Amenity').last.tap do |node|
-              node.xpath('Description').first.content.should == 'Feature Due'
+              node['AmenityType'].should                     == 'Garage'
+              node['AmenitySubType'].should                  == 'Both'
+              node.xpath('Description').first.content.should == 'Parking available both above and below ground.'
               node.xpath('Rank').first.content.should        == '2'
             end
           end
