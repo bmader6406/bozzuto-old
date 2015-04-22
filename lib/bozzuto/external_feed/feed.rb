@@ -78,6 +78,21 @@ module Bozzuto
         raise NotImplementedError, "#{self.class.to_s} must implement #build_floor_plan"
       end
 
+      def build_property_amenities(property)
+        property.xpath('./Amenity').map do |amenity|
+          build_property_amenity(amenity)
+        end
+      end
+
+      def build_property_amenity(amenity)
+        Bozzuto::ExternalFeed::PropertyAmenity.new(
+          :primary_type => amenity['Type'],
+          :sub_type     => amenity['SubType'],
+          :description  => string_at(amenity, './Description'),
+          :position     => int_at(amenity, './Rank')
+        )
+      end
+
       def build_apartment_units(property)
         property.xpath('./ILS_Unit').map do |unit|
           build_apartment_unit(property, unit)
