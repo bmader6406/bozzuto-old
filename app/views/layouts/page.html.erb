@@ -32,7 +32,7 @@
         <% end %>
 
         <div class="row">
-          <div class="column-main col">
+          <div class="column-main col <%= "no-sidebar" unless @page.try(:show_sidebar?) %>">
             <%= yield %>
 
             <%= if_present?(@page.try(:snippet)) do |snippet| %>

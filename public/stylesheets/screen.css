@@ -4330,6 +4330,9 @@ div.wysiwyg ul li {
       float: left;
       width: 520px;
     }
+    .page #content .column-main.no-sidebar {
+      width: 770px;
+    }
     .page #content p {
       margin-bottom: 0.727272727em;
     }
