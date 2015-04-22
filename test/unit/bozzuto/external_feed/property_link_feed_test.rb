@@ -58,6 +58,17 @@ module Bozzuto::ExternalFeed
               f.external_cms_type.should == 'property_link'
             end
 
+            c.property_amenities.count.should == 2
+
+            c.property_amenities.first.tap do |a|
+              a.primary_type.should == 'Other'
+              a.description.should  == "Clary's Forest Pool"
+            end
+
+            c.property_amenities.last.tap do |a|
+              a.primary_type.should == 'BusinessCenter'
+            end
+
             c.apartment_units.count.should == 1
 
             c.apartment_units.first.tap do |u|
@@ -159,6 +170,18 @@ module Bozzuto::ExternalFeed
               f.floor_plan_group.should  == 'one_bedroom'
               f.external_cms_id.should   == '579254'
               f.external_cms_type.should == 'property_link'
+            end
+
+            c.property_amenities.count.should == 2
+
+            c.property_amenities.first.tap do |a|
+              a.primary_type.should == 'Other'
+              a.description.should  == 'BBQ/Picnic Area'
+            end
+
+            c.property_amenities.last.tap do |a|
+              a.primary_type.should == 'Availability24Hours'
+              a.description.should  == '24-Hour Availability'
             end
           end
         end

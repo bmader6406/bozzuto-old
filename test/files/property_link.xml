@@ -138,62 +138,10 @@
     <Payment />
     <Fee />
     <Amenity Type="Other">
-      <Description>Controlled Access</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Child Care across street</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="Other">
       <Description>Clary's Forest Pool</Description>
       <Rank />
     </Amenity>
-    <Amenity Type="Other">
-      <Description>Walking Trails</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Planned Resident Events</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Fax &amp; Copy Services</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Away from Home Services</Description>
-      <Rank />
-    </Amenity>
     <Amenity Type="BusinessCenter">
-      <Description />
-      <Rank />
-    </Amenity>
-    <Amenity Type="ClubHouse">
-      <Description />
-      <Rank />
-    </Amenity>
-    <Amenity Type="FitnessCenter">
-      <Description />
-      <Rank />
-    </Amenity>
-    <Amenity Type="OnSiteMaintenance">
-      <Description />
-      <Rank />
-    </Amenity>
-    <Amenity Type="PackageReceiving">
-      <Description />
-      <Rank />
-    </Amenity>
-    <Amenity Type="Pool">
-      <Description />
-      <Rank />
-    </Amenity>
-    <Amenity Type="PlayGround">
-      <Description />
-      <Rank />
-    </Amenity>
-    <Amenity Type="ShortTermLease">
       <Description />
       <Rank />
     </Amenity>
@@ -683,112 +631,8 @@ From I-495: exit Van Dorn Street south. Right on Oakwood Road. Right on Crown Ro
       <Description>BBQ/Picnic Area</Description>
       <Rank />
     </Amenity>
-    <Amenity Type="Other">
-      <Description>Courtyard</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Playscape</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Executive shuttle to Metro</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Car care center</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>24-hour cardio theater</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Free Weights</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Conference center</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Cardio theater, cyber cafe</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Resort-style swimming pool</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Residents Lounge</Description>
-      <Rank />
-    </Amenity>
     <Amenity Type="Availability24Hours">
       <Description>24-Hour Availability</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="BusinessCenter">
-      <Description>Business Center</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="ClubHouse">
-      <Description>Clubhouse</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="CoverPark">
-      <Description>CoverPark</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="FitnessCenter">
-      <Description>Fitness Center</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="Gate">
-      <Description>Gate</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="HighSpeed">
-      <Description>High Speed Internet Available</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="Laundry">
-      <Description>Laundry</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="OnSiteMaintenance">
-      <Description>On-site Maintenance</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="OnSiteManagement">
-      <Description>On-site Management</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="PackageReceiving">
-      <Description>PackageReceiving</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="Pool">
-      <Description>Pool</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="PlayGround">
-      <Description>Playground</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="ShortTermLease">
-      <Description>Short Term Lease</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="StorageSpace">
-      <Description>Storage Space</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="Sundeck">
-      <Description>Sundeck</Description>
-      <Rank />
-    </Amenity>
-    <Amenity Type="Transportation">
-      <Description>Transportation</Description>
       <Rank />
     </Amenity>
     <Policy>
