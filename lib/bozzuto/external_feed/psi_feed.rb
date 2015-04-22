@@ -8,16 +8,18 @@ module Bozzuto
 
       def build_property(property)
         Bozzuto::ExternalFeed::Property.new(
-          :title             => string_at(property, './PropertyID/MarketingName'),
-          :street_address    => string_at(property, './PropertyID/Address/Address'),
-          :city              => string_at(property, './PropertyID/Address/City'),
-          :state             => string_at(property, './PropertyID/Address/State'),
-          :availability_url  => string_at(property, './Information/PropertyAvailabilityURL'),
-          :external_cms_id   => string_at(property, './PropertyID/Identification/IDValue'),
-          :external_cms_type => feed_type.to_s,
-          :office_hours      => build_office_hours(property),
-          :floor_plans       => build_floor_plans(property),
-          :apartment_units   => build_apartment_units(property)
+          :title              => string_at(property, './PropertyID/MarketingName'),
+          :street_address     => string_at(property, './PropertyID/Address/Address'),
+          :city               => string_at(property, './PropertyID/Address/City'),
+          :state              => string_at(property, './PropertyID/Address/State'),
+          :availability_url   => string_at(property, './Information/PropertyAvailabilityURL'),
+          :external_cms_id    => string_at(property, './PropertyID/Identification/IDValue'),
+          :external_cms_type  => feed_type.to_s,
+          :unit_count         => int_at(property, './Information/UnitCount'),
+          :office_hours       => build_office_hours(property),
+          :floor_plans        => build_floor_plans(property),
+          :apartment_units    => build_apartment_units(property),
+          :property_amenities => build_property_amenities(property)
         )
 
       end
@@ -84,6 +86,20 @@ module Bozzuto
           :vacate_date                  => date_for(unit.at('./Availability/VacateDate')),
           :vacancy_class                => string_at(unit, './Availability/VacancyClass'),
           :availability_url             => string_at(unit, './Availability/UnitAvailabilityURL')
+        )
+      end
+
+
+      def build_property_amenities(property)
+        property.xpath('./Amenities/PropertyAmenities/Amenity').map do |amenity|
+          build_property_amenity(amenity)
+        end
+      end
+
+      def build_property_amenity(amenity)
+        Bozzuto::ExternalFeed::PropertyAmenity.new(
+          :primary_type => 'Other',
+          :description  => string_at(amenity, './Name')
         )
       end
     end

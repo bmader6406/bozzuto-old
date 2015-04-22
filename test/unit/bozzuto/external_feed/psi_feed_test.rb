@@ -73,6 +73,18 @@ module Bozzuto::ExternalFeed
               f.external_cms_id.should   == '184745'
               f.external_cms_type.should == 'psi'
             end
+
+            c.property_amenities.count.should == 2
+
+            c.property_amenities.first.tap do |a|
+              a.primary_type.should == 'Other'
+              a.description.should  == '24 Hour Fitness Gym'
+            end
+
+            c.property_amenities.last.tap do |a|
+              a.primary_type.should == 'Other'
+              a.description.should  == 'Bike Storage'
+            end
           end
 
           subject.properties[1].tap do |c|
@@ -102,6 +114,8 @@ module Bozzuto::ExternalFeed
               f.external_cms_id.should   == '189005'
               f.external_cms_type.should == 'psi'
             end
+
+            c.property_amenities.count.should == 0
 
             c.apartment_units.count.should == 1
 

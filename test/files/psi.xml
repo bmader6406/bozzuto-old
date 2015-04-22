@@ -80,27 +80,6 @@
         <Amenity Id="102948" IsOptional="0" IsPublished="1" IsFeatured="0" HideRates="0">
           <Name>Bike Storage</Name>
         </Amenity>
-        <Amenity Id="102806" IsOptional="0" IsPublished="1" IsFeatured="0" HideRates="0">
-          <Name>Business Center</Name>
-        </Amenity>
-        <Amenity Id="102947" IsOptional="0" IsPublished="1" IsFeatured="0" HideRates="0">
-          <Name>Charging Stations</Name>
-        </Amenity>
-        <Amenity Id="102810" IsOptional="0" IsPublished="1" IsFeatured="0" HideRates="0">
-          <Name>Concierge</Name>
-        </Amenity>
-        <Amenity Id="102943" IsOptional="0" IsPublished="1" IsFeatured="0" HideRates="0">
-          <Name>Kids Park</Name>
-        </Amenity>
-        <Amenity Id="102944" IsOptional="0" IsPublished="1" IsFeatured="0" HideRates="0">
-          <Name>On-site Maintenance</Name>
-        </Amenity>
-        <Amenity Id="102945" IsOptional="0" IsPublished="1" IsFeatured="0" HideRates="0">
-          <Name>Outdoor grill</Name>
-        </Amenity>
-        <Amenity Id="102946" IsOptional="0" IsPublished="1" IsFeatured="0" HideRates="0">
-          <Name>Rooftop</Name>
-        </Amenity>
       </PropertyAmenities>
       <UnitAmenities>
         <Amenity Id="103404" IsStandardAmenity="1" IsOptional="0" IsPublished="1" IsFeatured="0" HideRates="0" ShowDescription="0" IncludeInRent="0">
