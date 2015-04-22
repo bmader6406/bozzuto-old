@@ -49,18 +49,7 @@ module Bozzuto
         end
 
         def features
-          [].tap do |features|
-            if features_page.present?
-              (1..3).each do |i|
-                if features_page.send("title_#{i}").present?
-                  features << OpenStruct.new(
-                    :title => features_page.send("title_#{i}"),
-                    :text  => features_page.send("text_#{i}")
-                  )
-                end
-              end
-            end
-          end
+          features_page.try(:features) || []
         end
 
         def slides

@@ -83,6 +83,16 @@ module Bozzuto::Exports
             )
           ]
 
+          PropertyFeaturesPage.make(
+            :property => @community,
+            :title_1  => 'One Face',
+            :text_1   => 'has one face',
+            :title_2  => 'Two Face',
+            :text_2   => 'has two faces',
+            :title_3  => 'Red Face',
+            :text_3   => 'has red face'
+          )
+
           PropertyFeature.make(:name => 'Feature Uno', :properties => [@community])
           PropertyFeature.make(:name => 'Feature Due', :properties => [@community])
 
@@ -155,17 +165,17 @@ module Bozzuto::Exports
           @test_community.phone_number.should == '832.382.1337'
         end
 
-        it "contains the appropriate features" do
-          @test_community.features[0].title.should == 'One Face'
-          @test_community.features[0].text.should == 'has one face'
-          @test_community.features[1].title.should == 'Two Face'
-          @test_community.features[1].text.should == 'has two faces'
-          @test_community.features[2].title.should == 'Red Face'
-          @test_community.features[2].text.should == 'has red face'
-        end
-
         it "contains the appropriate slides" do
           @test_community.slides.first.image_url.should =~ %r{http://bozzuto\.com/system/property_slides/#{@slide.id}/slide\.jpg}
+        end
+
+        it "contains the appropriate features" do
+          @test_community.features[0].title.should == 'One Face'
+          @test_community.features[0].text.should  == 'has one face'
+          @test_community.features[1].title.should == 'Two Face'
+          @test_community.features[1].text.should  == 'has two faces'
+          @test_community.features[2].title.should == 'Red Face'
+          @test_community.features[2].text.should  == 'has red face'
         end
 
         it "contains the listing image" do
