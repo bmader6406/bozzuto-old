@@ -13,6 +13,7 @@ class PropertyTest < ActiveSupport::TestCase
     should have_one(:slideshow)
     should have_many(:landing_page_popular_orderings)
     should have_many(:office_hours)
+    should have_many(:property_amenities)
     should have_and_belong_to_many(:property_features)
 
     should validate_presence_of(:title)
