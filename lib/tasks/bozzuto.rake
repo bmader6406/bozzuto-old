@@ -147,14 +147,14 @@ namespace :bozzuto do
     log_task 'Exporting Apartment feed ...'
 
     begin
-      exporter = Bozzuto::ApartmentFeedExporter.new
+      export      = Bozzuto::Exports::ApartmentExport.legacy
       output_file = APP_CONFIG[:apartment_export_file]
 
       File.open(output_file, 'w') do |f|
-        f.write(exporter.to_xml)
+        f.write(export.to_xml)
       end
 
-      puts '  Apartment feed successfully exported'
+      puts '  Legacy apartment feed successfully exported'
     rescue Exception => e
       report_error('export data', e)
       HoptoadNotifier.notify(e)
