@@ -446,27 +446,6 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   }
 }
 
-.btn-blue-big {
-  @include linear-gradient(#a4c2e1, #6c8bbb);
-
-  border-radius: 6px;
-  border: 1px solid #6f97c8;
-  box-shadow: 0 0 6px 0 rgba(211, 227, 240, 1.0) inset;
-  color: #fff;
-  display: inline-block;
-  font-family: $narrow-font;
-  font-size: 22px;
-  height: 35px;
-  line-height: 35px;
-  padding: 0 24px;
-  text-align: center;
-  text-transform: uppercase;
-
-  &:hover {
-    text-decoration: none;
-  }
-}
-
 .nh-apt-masthead {
   .container {
     margin: 30px auto 70px auto;
