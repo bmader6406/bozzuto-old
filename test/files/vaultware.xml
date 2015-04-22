@@ -71,85 +71,13 @@
       <LeaseLength>6 and 12 month lease terms</LeaseLength>
       <PropertyAvailabilityURL>http://units.realtydatatrust.com/unittype.aspx?ils=5341&amp;propid=14317</PropertyAvailabilityURL>
     </Information>
-    <Amenity Type="Other">
-      <Description>Air Conditioning</Description>
+    <Amenity Type="FitnessCenter">
+      <Description>Health club-class fitness center</Description>
       <Rank>1</Rank>
     </Amenity>
-    <Amenity Type="Other">
-      <Description>18 hole golf course next door </Description>
+    <Amenity Type="Garage" SubType="Both">
+      <Description>On-site underground parking </Description>
       <Rank>2</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Car care area</Description>
-      <Rank>3</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Clubhouse</Description>
-      <Rank>4</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Dishwasher</Description>
-      <Rank>5</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>English garden</Description>
-      <Rank>6</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Fitness Center</Description>
-      <Rank>7</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Garage</Description>
-      <Rank>8</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>House-Sitting Service</Description>
-      <Rank>9</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>On-Site Laundry</Description>
-      <Rank>10</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>On-Site Maintenance</Description>
-      <Rank>11</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>On-Site Management</Description>
-      <Rank>12</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Package Receiving</Description>
-      <Rank>13</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Parking Spaces</Description>
-      <Rank>14</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Playground</Description>
-      <Rank>15</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Pool(s)</Description>
-      <Rank>16</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Sand volleyball court</Description>
-      <Rank>17</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Storgae Spaces</Description>
-      <Rank>18</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Washer/Dryer</Description>
-      <Rank>19</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Wheelchair Access</Description>
-      <Rank>20</Rank>
     </Amenity>
     <Floorplan Id="9797">
       <Name>1 Bedroom 1 Bath</Name>
@@ -408,41 +336,13 @@ The moment you see the neighborhood, you realize this is the place you've always
       <DescriptionHeader>Save time and pre-qualify online today!</DescriptionHeader>
       <DescriptionBody>InternetSpecial</DescriptionBody>
     </Concession>
-    <Amenity Type="Other">
-      <Description>"Away from Home" services</Description>
-      <Rank>1</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>24-Hour emergency maintenance</Description>
-      <Rank>2</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>24-hour fitness center</Description>
-      <Rank>3</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Beautifully designed landscaping</Description>
+    <Amenity Type="RecRoom">
+      <Description>high-tech party room with plasma tv and full kitch</Description>
       <Rank>4</Rank>
     </Amenity>
-    <Amenity Type="Other">
-      <Description>Business center</Description>
+    <Amenity Type="TVLounge">
+      <Description>Hip billiards loft</Description>
       <Rank>5</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Convenient payment options</Description>
-      <Rank>6</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Elegant clubhouse </Description>
-      <Rank>7</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Garages/storage available</Description>
-      <Rank>8</Rank>
-    </Amenity>
-    <Amenity Type="Other">
-      <Description>Swimming pool </Description>
-      <Rank>9</Rank>
     </Amenity>
     <Floorplan Id="20294">
       <Name>2 Bedroom/1 Bath</Name>
