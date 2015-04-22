@@ -12,19 +12,6 @@ module Bozzuto::Exports::Formats
           twitter_account = TwitterAccount.new(:username => 'TheBozzutoGroup')
           twitter_account.save(:validate => false)
 
-          local_info_feed = Feed.make_unsaved(:url => 'http://bozzuto.com/feed')
-          local_info_feed.expects(:feed_valid?)
-          local_info_feed.save
-
-          # TODO This will go away if we don't include the promo node
-          @expiration_date = Time.current.advance(:days => 15)
-          promo = Promo.make(:active,
-            :title           => 'on sale meow',
-            :subtitle        => 'come on down',
-            :link_url        => 'http://buy.now',
-            :expiration_date => @expiration_date
-          )
-
           @overview_text = %q{
             <p>
               <em>dolan haev u seen pluto?</em>
@@ -52,8 +39,6 @@ module Bozzuto::Exports::Formats
             :website_url             => 'http://what.up',
             :latitude                => 0.0,
             :longitude               => 45.0,
-            :local_info_feed         => local_info_feed,
-            :promo_id                => promo.id,
             :listing_image_file_name => 'test.jpg',
             :meta_description        => 'wow wow wee wah',
             :unit_count              => 25,
