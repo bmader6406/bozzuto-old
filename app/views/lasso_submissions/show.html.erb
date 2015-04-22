@@ -11,11 +11,13 @@
 
 
 <% if @community.id == 323 %>
-	<%= render :partial => 'custom_contact_form_323' %>
+  <%= render :partial => 'custom_contact_form_323' %>
 <% elsif @community.id == 556 %>
-	<%= render :partial => 'custom_contact_form_556' %>
+  <%= render :partial => 'custom_contact_form_556' %>
+<% elsif @community.id == 758 %>
+  <%= render :partial => 'custom_contact_form_758' %>
 <% else %>
-	<%= render :partial => 'lasso_form' %>
+  <%= render :partial => 'lasso_form' %>
 <% end %>
 
 <div id="community-contact-text">
