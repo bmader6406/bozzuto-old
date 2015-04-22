@@ -1,6 +1,6 @@
 module Bozzuto::Exports
   module Formats
-    class Mits4_1 < Legacy
+    class Mits4_1 < Format
       private
 
       def property_node(parent_node, property)

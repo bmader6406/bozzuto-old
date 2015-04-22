@@ -1,29 +1,7 @@
 module Bozzuto::Exports
   module Formats
-    class Legacy
-      def self.to_xml
-        new.to_xml
-      end
-
-      def to_xml
-        builder.PhysicalProperty do |node|
-          communities.each do |community|
-            property_node(node, community)
-          end
-        end
-      end
-
+    class Legacy < Format
       private
-
-      def builder
-        @builder ||= Builder::XmlMarkup.new(:indent => 2).tap do |builder|
-          builder.instruct! :xml, :version => '1.0', :encoding => 'UTF-8'
-        end
-      end
-
-      def communities
-        @communities ||= Bozzuto::Exports::Data.for_communities
-      end
 
       def property_node(parent_node, property)
         parent_node.tag!('Property') do |node|
@@ -177,22 +155,6 @@ module Bozzuto::Exports
             'Day'   => promo.expiration_date.try(:strftime, '%d'),
             'Year'  => promo.expiration_date.try(:strftime, '%Y')
         end
-      end
-
-      def format_float_for_xml(value)
-        if value.present?
-          '%g' % value.to_f
-        else
-          ''
-        end
-      end
-
-      def sanitizer
-        @sanitizer ||= HTML::FullSanitizer.new
-      end
-
-      def strip_tags_and_whitespace(html)
-        CGI.unescape sanitizer.sanitize(String(html)).gsub(/\s+/, ' ').strip
       end
     end
   end
