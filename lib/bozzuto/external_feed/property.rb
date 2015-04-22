@@ -10,7 +10,8 @@ module Bozzuto
                     :external_cms_id,
                     :external_cms_type,
                     :floor_plans,
-                    :apartment_units
+                    :apartment_units,
+                    :property_amenities
 
       self.database_attributes = [
         :title,
