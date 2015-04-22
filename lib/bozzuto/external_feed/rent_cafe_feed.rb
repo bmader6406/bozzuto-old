@@ -8,16 +8,18 @@ module Bozzuto
 
       def build_property(property)
         Bozzuto::ExternalFeed::Property.new(
-          :title             => string_at(property, './Identification/MarketingName'),
-          :street_address    => string_at(property, './Identification/Address/Address1'),
-          :city              => string_at(property, './Identification/Address/City'),
-          :state             => string_at(property, './Identification/Address/State'),
-          :availability_url  => string_at(property, './Availability'),
-          :external_cms_id   => string_at(property, './Identification/PrimaryID'),
-          :external_cms_type => feed_type.to_s,
-          :office_hours      => build_office_hours(property),
-          :floor_plans       => build_floor_plans(property),
-          :apartment_units   => build_apartment_units(property)
+          :title              => string_at(property, './Identification/MarketingName'),
+          :street_address     => string_at(property, './Identification/Address/Address1'),
+          :city               => string_at(property, './Identification/Address/City'),
+          :state              => string_at(property, './Identification/Address/State'),
+          :availability_url   => string_at(property, './Availability'),
+          :external_cms_id    => string_at(property, './Identification/PrimaryID'),
+          :external_cms_type  => feed_type.to_s,
+          :unit_count         => int_at(property, './Information/UnitCount'),
+          :office_hours       => build_office_hours(property),
+          :floor_plans        => build_floor_plans(property),
+          :apartment_units    => build_apartment_units(property),
+          :property_amenities => build_property_amenities(property)
         )
       end
 
@@ -85,6 +87,18 @@ module Bozzuto
       def build_apartment_unit_amenities(unit)
         string_at(unit, './UnitAmenityList').split(',').map do |amenity|
           Bozzuto::ExternalFeed::ApartmentUnitAmenity.new(:primary_type => 'Other', :description => amenity.strip)
+        end
+      end
+
+      def build_property_amenities(property)
+        property.xpath('./Amenities/Community').first.element_children.map do |amenity|
+          build_property_amenity(amenity)
+        end.compact
+      end
+
+      def build_property_amenity(amenity)
+        if amenity.text == 'true'
+          Bozzuto::ExternalFeed::PropertyAmenity.new(:primary_type => amenity.name)
         end
       end
     end

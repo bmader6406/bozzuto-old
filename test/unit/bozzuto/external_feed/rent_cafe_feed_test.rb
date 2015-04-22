@@ -74,6 +74,16 @@ module Bozzuto::ExternalFeed
               f.external_cms_type.should == 'rent_cafe'
             end
 
+            c.property_amenities.count.should == 6
+
+            c.property_amenities.first.tap do |a|
+              a.primary_type.should == 'ClubHouse'
+            end
+
+            c.property_amenities.last.tap do |a|
+              a.primary_type.should == 'OnSiteManagement'
+            end
+
             c.apartment_units.count.should == 2
 
             c.apartment_units.first.tap do |u|
@@ -282,6 +292,16 @@ module Bozzuto::ExternalFeed
               f.floor_plan_group.should  == 'one_bedroom'
               f.external_cms_id.should   == '937747'
               f.external_cms_type.should == 'rent_cafe'
+            end
+
+            c.property_amenities.count.should == 7
+
+            c.property_amenities.first.tap do |a|
+              a.primary_type.should == 'FitnessCenter'
+            end
+
+            c.property_amenities.last.tap do |a|
+              a.primary_type.should == 'RecRoom'
             end
 
             c.apartment_units.count.should == 2
