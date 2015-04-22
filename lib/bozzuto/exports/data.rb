@@ -1,7 +1,7 @@
 module Bozzuto
   module Exports
     class Data
-      def self.for_communities
+      def self.communities
         new.communities
       end
 

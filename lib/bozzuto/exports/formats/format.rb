@@ -38,7 +38,7 @@ module Bozzuto::Exports
       end
 
       def communities
-        @communities ||= Bozzuto::Exports::Data.for_communities
+        @communities ||= Bozzuto::Exports::Data.communities
       end
     end
   end

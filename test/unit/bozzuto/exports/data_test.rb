@@ -3,7 +3,7 @@ require 'test_helper'
 module Bozzuto::Exports
   class DataTest < ActiveSupport::TestCase
     context "Bozzuto::Exports::DataTest" do
-      describe ".for_communities" do
+      describe ".communities" do
         it "instantiates and grabs the communities data" do
           @data = mock('Bozzuto::Exports::Data')
 
@@ -11,7 +11,7 @@ module Bozzuto::Exports
 
           @data.expects(:communities)
 
-          Bozzuto::Exports::Data.for_communities
+          Bozzuto::Exports::Data.communities
         end
       end
 
