@@ -1116,6 +1116,18 @@ ActiveRecord::Schema.define(:version => 20150423133803) do
 
   add_index "properties_property_features", ["property_id"], :name => "index_properties_property_features_on_property_id"
 
+  create_table "property_amenities", :force => true do |t|
+    t.integer  "property_id",                       :null => false
+    t.string   "primary_type", :default => "Other", :null => false
+    t.string   "sub_type"
+    t.string   "description"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "property_amenities", ["property_id"], :name => "index_property_amenities_on_property_id"
+
   create_table "property_contact_pages", :force => true do |t|
     t.integer  "property_id",                                  :null => false
     t.text     "content",                  :limit => 16777215

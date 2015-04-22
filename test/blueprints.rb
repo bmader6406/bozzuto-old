@@ -488,6 +488,13 @@ Property.blueprint do
   city
 end
 
+PropertyAmenity.blueprint do
+  property      { ApartmentCommunity.make }
+  primary_type  { 'ClubHouse' }
+  sub_type      { 'Attached' }
+  description   { 'Party time.' }
+end
+
 PropertyFeature.blueprint do
   icon_file_name { Sham.file_name }
   name           { Sham.unique_name }
