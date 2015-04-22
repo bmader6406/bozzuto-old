@@ -61,6 +61,7 @@ en:
       project_category: Project Category
       project_data_point: Data Point
       project_update: Update
+      property_amenity: Property Amenity
       property_feature: Property Feature
       property_slide: Slide
       property_slideshow: Property Slideshow
@@ -399,6 +400,9 @@ en:
         website_url_text: Website URL Text
         ufollowup_id: uFollowUp ID
         zip_code: ZIP Code
+      property_amenity:
+        primary_type: Primary Type
+        sub_type: Sub-Type
       property_contact_page:
         local_phone_number: Local Phone Number
         meta_title: Meta Title

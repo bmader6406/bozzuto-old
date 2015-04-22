@@ -28,10 +28,10 @@ ApartmentCommunity:
         included_in_export: ['Yes', 'No']
       required: title, city
       selectors: brochure_type
-      destroy_related: PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyToursPage, PropertyContactPage, PropertySlideshow, PropertyMiniSlideshow, Video, ApartmentFloorPlan
+      destroy_related: PropertyAmenity, PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyToursPage, PropertyContactPage, PropertySlideshow, PropertyMiniSlideshow, Video, ApartmentFloorPlan, OfficeHour
   order_by: title
-  relationships: dnr_configuration, mediaplex_tag, property_features, city, county, local_info_feed, features_page, neighborhood_page, tours_page, contact_page, slideshow, videos, photos, floor_plans, promo, contact_configuration, office_hours
-  filters:
+  relationships: dnr_configuration, mediaplex_tag, property_features, city, county, local_info_feed, features_page, neighborhood_page, tours_page, contact_page, slideshow, videos, photos, floor_plans, promo, contact_configuration, office_hours, property_amenities
+  filters: 
   search: properties.title, properties.street_address
   application: Properties
   actions:
@@ -821,6 +821,17 @@ Property:
   filters:
   search:
   application:
+
+PropertyAmenity:
+  fields:
+    default: primary_type, description, position
+    list: primary_type, description, property, position
+    form: property, primary_type, sub_type, description
+    options:
+      required: property, primary_type
+      selectors: primary_type, sub_type
+  relationships: property
+  order_by: position
 
 PropertyContactPage:
   fields:
