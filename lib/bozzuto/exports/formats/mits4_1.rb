@@ -156,7 +156,7 @@ module Bozzuto::Exports
           end
 
           unit.feed_files.each do |file|
-            file_node(node, file)
+            file_node(node, file, unit.floor_plan_id)
           end
         end
       end
@@ -267,8 +267,8 @@ module Bozzuto::Exports
         end
       end
 
-      def file_node(parent_node, file)
-        parent_node.tag!('File', 'FileID' => file.feed_record_id, 'Active' => file.active) do |node|
+      def file_node(parent_node, file, id = nil)
+        parent_node.tag!('File', 'FileID' => id || file.feed_record_id, 'Active' => file.active) do |node|
           node.tag! 'Description', file.description if file.description?
           node.tag! 'FileType',    file.file_type
           node.tag! 'Name',        file.name
