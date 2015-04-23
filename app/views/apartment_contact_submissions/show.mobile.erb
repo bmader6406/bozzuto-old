@@ -32,10 +32,12 @@
 <% if @page %>
 <div class="section">
   <div class="content">
-    <h2><strong>Address</strong></h2>
-    <p><%= @community.title %></p>
-    <p><%== @community.address("<br>") + " #{@community.zip_code}" %></p>
-    <br>
+    <% if @community.address.present? %>
+      <h2><strong>Address</strong></h2>
+      <p><%= @community.title %></p>
+      <p><%== @community.address("<br>") + " #{@community.zip_code}" %></p>
+      <br>
+    <% end %>
 
     <% if @community.phone_number.present? %>
       <h2><strong>Phone Number</strong></h2>
@@ -43,11 +45,13 @@
       <br>
     <% end %>
 
-    <h2><strong>Office Hours</strong></h2>
-    <% @community.office_hours.each do |office_hour| %>
-      <p><%= office_hour %></p>
+    <% if @community.office_hours.any? %>
+      <h2><strong>Office Hours</strong></h2>
+      <% @community.office_hours.each do |office_hour| %>
+        <p><%= office_hour %></p>
+      <% end %>
+      <br>
     <% end %>
-    <br>
 
     <%= @page.content.try(:html_safe) %>
   </div>

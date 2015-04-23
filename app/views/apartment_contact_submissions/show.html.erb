@@ -25,18 +25,22 @@
 </div>
 
 <div id="community-contact-text">
-  <h2><strong>Address</strong></h2>
-  <p><%= @community.title %></p>
-  <p><%== @community.address("<br>") + " #{@community.zip_code}" %></p>
+  <% if @community.address.present? %>
+    <h2><strong>Address</strong></h2>
+    <p><%= @community.title %></p>
+    <p><%== @community.address("<br>") + " #{@community.zip_code}" %></p>
+  <% end %>
 
   <% if @page.try(:local_phone_number).present? || @community.phone_number.present? %>
     <h2><strong>Phone Number</strong></h2>
     <p><%= @page.try(:local_phone_number).presence || @community.phone_number %></p>
   <% end %>
 
-  <h2><strong>Office Hours</strong></h2>
-  <% @community.office_hours.each do |office_hour| %>
-    <p><%= office_hour %></p>
+  <% if @community.office_hours.any? %>
+    <h2><strong>Office Hours</strong></h2>
+    <% @community.office_hours.each do |office_hour| %>
+      <p><%= office_hour %></p>
+    <% end %>
   <% end %>
 
 </div>
