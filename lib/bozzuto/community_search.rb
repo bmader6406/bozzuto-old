@@ -23,7 +23,11 @@ module Bozzuto
     end
 
     def showing_relevant_results?
-      matching_results.none? && relevant_results.any?
+      if criteria.state.present?
+        matching_results.select(&matching_location_proc).none? && relevant_results.any?
+      else
+        matching_results.none? && relevant_results.any?
+      end
     end
 
     def no_results?
@@ -73,6 +77,12 @@ module Bozzuto
     def community_count_proc
       proc do |state|
         results_with(state: state).size
+      end
+    end
+
+    def matching_location_proc
+      proc do |community|
+        community.state == criteria.state if community.state.present?
       end
     end
 

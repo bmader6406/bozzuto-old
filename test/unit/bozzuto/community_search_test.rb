@@ -152,7 +152,7 @@ module Bozzuto
         end
 
         context "when there are matching communities" do
-          subject { CommunitySearch.new('title_eq' => 'White House') }
+          subject { CommunitySearch.new('in_state' => @md.id) }
 
           it "returns false" do
             subject.no_results?.should == false
@@ -166,6 +166,14 @@ module Bozzuto
 
           it "returns false" do
             subject.showing_relevant_results?.should == false
+          end
+
+          context "but none in the given state" do
+            subject { CommunitySearch.new('in_state' => @md.id, 'title_eq' => 'White House') }
+
+            it "returns true" do
+              subject.showing_relevant_results?.should == true
+            end
           end
         end
 
