@@ -46,4 +46,9 @@ class Project < Property
         :order      => 'properties.position ASC'
       )
   end
+
+  def short_description
+    read_attribute(:short_description).presence ||
+      project_categories.first(2).map(&:title).join(' / ')
+  end
 end

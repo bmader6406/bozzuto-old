@@ -51,6 +51,36 @@ class ProjectTest < ActiveSupport::TestCase
       end
     end
 
+    describe "#short_description" do
+      context "when the project has a short description" do
+        before { subject.short_description = 'So short' }
+
+        it "returns the short description" do
+          subject.short_description.should == 'So short'
+        end
+      end
+
+      context "when the project does not have a short description" do
+        context "but has project categories" do
+          before do
+            subject.project_categories << ProjectCategory.make(:title => 'Shib')
+            subject.project_categories << ProjectCategory.make(:title => 'Stahp')
+            subject.project_categories << ProjectCategory.make(:title => 'Wow')
+          end
+
+          it "returns the first two categories split by a forward slash" do
+            subject.short_description.should == 'Shib / Stahp'
+          end
+        end
+
+        context "or project categories" do
+          it "returns an empty string" do
+            subject.short_description.should == ''
+          end
+        end
+      end
+    end
+
     describe "#project?" do
       it "returns true" do
         subject.project?.should == true
