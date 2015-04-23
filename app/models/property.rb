@@ -16,6 +16,12 @@ class Property < ActiveRecord::Base
       ['Project', 'Project']
   ]
 
+  PROPERTY_TYPE.each do |_, type|
+    define_method "#{type.underscore}?" do
+      self.type == type
+    end
+  end
+
   has_friendly_id :id_and_title,
     :use_slug => true,
     :scope => :type

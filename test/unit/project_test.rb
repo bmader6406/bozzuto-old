@@ -50,5 +50,23 @@ class ProjectTest < ActiveSupport::TestCase
         assert_equal [@featured], Project.featured_mobile
       end
     end
+
+    describe "#project?" do
+      it "returns true" do
+        subject.project?.should == true
+      end
+    end
+
+    describe "#apartment_community?" do
+      it "returns false" do
+        subject.apartment_community?.should == false
+      end
+    end
+
+    describe "#home_community?" do
+      it "returns false" do
+        subject.home_community?.should == false
+      end
+    end
   end
 end

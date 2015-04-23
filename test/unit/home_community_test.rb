@@ -143,5 +143,23 @@ class HomeCommunityTest < ActiveSupport::TestCase
         subject.first_home_neighborhood.should == @neighborhood
       end
     end
+
+    describe "#project?" do
+      it "returns false" do
+        subject.project?.should == false
+      end
+    end
+
+    describe "#apartment_community?" do
+      it "returns false" do
+        subject.apartment_community?.should == false
+      end
+    end
+
+    describe "#home_community?" do
+      it "returns true" do
+        subject.home_community?.should == true
+      end
+    end
   end
 end

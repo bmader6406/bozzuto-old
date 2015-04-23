@@ -559,6 +559,24 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
         end
       end
     end
+
+    describe "#project?" do
+      it "returns false" do
+        subject.project?.should == false
+      end
+    end
+
+    describe "#apartment_community?" do
+      it "returns true" do
+        subject.apartment_community?.should == true
+      end
+    end
+
+    describe "#home_community?" do
+      it "returns false" do
+        subject.home_community?.should == false
+      end
+    end
   end
 
   context "The ApartmentCommunity class" do
