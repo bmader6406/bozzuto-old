@@ -4,8 +4,8 @@
       <h1>
         <%= property.short_name %>
 
-        <% if property.project? && property.project_categories.any? %>
-          <b><%= property.project_categories.first(2).map(&:title).join(' / ') %></b>
+        <% if property.project? && property.short_description.present? %>
+          <b><%= property.short_description %></b>
         <% end %>
       </h1>
 
