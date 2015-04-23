@@ -22,16 +22,11 @@ module Bozzuto
         def url_for_image(path, options={})
           options = default_url_options.merge(options)
 
-          ''.tap do |url|
-            unless path =~ %r{^https?://}
-              url << (options.delete(:protocol) || 'http')
-              url << '://' unless url.match("://")
-              url << options.delete(:host)
-              url << ":#{options.delete(:port)}" if options.key?(:port)
-            end
-
-            url << path
-          end
+          URI.parse(path).tap do |url|
+            url.scheme ||= options[:protocol] || 'http'
+            url.host   ||= options[:host]
+            url.port   ||= options[:port]
+          end.to_s
         end
       end
 
