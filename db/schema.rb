@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150325165817) do
+ActiveRecord::Schema.define(:version => 20150423124127) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -1021,6 +1021,7 @@ ActiveRecord::Schema.define(:version => 20150325165817) do
     t.integer  "hero_image_file_size"
     t.string   "hyly_id"
     t.integer  "core_id"
+    t.string   "page_header"
   end
 
   add_index "properties", ["core_id"], :name => "index_properties_on_core_id"

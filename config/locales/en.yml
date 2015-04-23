@@ -334,6 +334,7 @@ en:
         overview_bullet_3: 'Overview Bullet #3'
         overview_text: Overview Copy
         overview_title: Overview Title
+        page_header: Page Header
         phone_number: Phone Number
         promotions_meta_description: Promotions SEO Description
         promotions_meta_keywords: Promotions SEO Keywords
@@ -519,6 +520,7 @@ en:
         show_to_mobile: Checking this option will cause this photo to appear on the mobile site.
       project:
         featured_mobile: Featured mobile projects are shown on the mobile version of the site
+        page_header: Header beneath the main slideshow.  If blank, defaults to the Section name.
       project_update:
         image: Image dimensions should be 484x214
       promo:
