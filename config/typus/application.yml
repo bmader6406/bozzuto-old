@@ -31,7 +31,7 @@ ApartmentCommunity:
       destroy_related: PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyToursPage, PropertyContactPage, PropertySlideshow, PropertyMiniSlideshow, Video, ApartmentFloorPlan
   order_by: title
   relationships: dnr_configuration, mediaplex_tag, property_features, city, county, local_info_feed, features_page, neighborhood_page, tours_page, contact_page, slideshow, videos, photos, floor_plans, promo, contact_configuration, office_hours
-  filters: 
+  filters:
   search: properties.title, properties.street_address
   application: Properties
   actions:
@@ -705,7 +705,7 @@ Project:
     default: title, published, street_address, city
     list: title, published, street_address, city, section
     relationship: title, published, street_address, city, position
-    form: title, short_title, page_header, has_completion_date, completion_date, meta_title, meta_description, meta_keywords, section, street_address, city, county, zip_code, latitude, longitude, website_url, website_url_text, video_url, brochure_link_text, brochure_type, brochure, brochure_url, listing_image, listing_title, listing_text, overview_text, published, featured_mobile
+    form: title, short_title, short_description, has_completion_date, completion_date, meta_title, meta_description, meta_keywords, section, street_address, city, county, zip_code, latitude, longitude, website_url, website_url_text, video_url, brochure_link_text, brochure_type, brochure, brochure_url, listing_image, listing_title, listing_text, overview_text, published, featured_mobile
     options:
       ckeditor: listing_text, overview_text
       booleans:

@@ -20,6 +20,7 @@ class PropertyTest < ActiveSupport::TestCase
     should validate_numericality_of(:latitude)
     should validate_numericality_of(:longitude)
     should ensure_length_of(:short_title).is_at_least(0).is_at_most(22)
+    should ensure_length_of(:short_description).is_at_least(0).is_at_most(40)
 
     should have_attached_file(:listing_image)
     should have_attached_file(:brochure)

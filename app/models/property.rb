@@ -41,7 +41,10 @@ class Property < ActiveRecord::Base
   has_many :office_hours, :order => :day
 
   validates_presence_of :title, :city
-  validates_length_of :short_title, :maximum => 22, :allow_nil => true
+
+  validates_length_of :short_title,       :maximum => 22, :allow_nil => true
+  validates_length_of :short_description, :maximum => 40, :allow_nil => true
+
   validates_inclusion_of :brochure_type, :in => [USE_BROCHURE_URL, USE_BROCHURE_FILE]
 
   has_attached_file :listing_image,

@@ -341,6 +341,7 @@ en:
         promotions_meta_title: Promotions SEO Title
         promotions_text: Promotions Copy
         schedule_tour_url: Schedule Tour URL
+        short_description: Short Description
         short_title: Short Title
         show_lead_2_lease: Show Lead2Lease Form
         slideshow: Property Slideshow
@@ -531,6 +532,7 @@ en:
         features_3_text: Use a single bulleted list. Content will be automatically formatted into two columns.
         listing_image: Image will be resized to 230x145 and 150x150
         mobile_phone_number: Phone Number will be shown if this field is blank
+        short_description: Shown beneath the title in the main slideshow, must be shorter than 40 characters
         short_title: Shown as the title in the main slideshow, must be shorter than 22 characters
       property_feature:
         icon: Image dimensions should be 44x44. If icon image is not present, icon will not be shown in listings.
