@@ -3,7 +3,10 @@
     <div class="header">
       <h1>
         <%= property.short_name %>
-        <b><%= property.project_categories.first(2).map(&:title).join(' / ') %></b>
+
+        <% if property.project? && property.project_categories.any? %>
+          <b><%= property.project_categories.first(2).map(&:title).join(' / ') %></b>
+        <% end %>
       </h1>
 
       <ul class="slideshow-navigation">
