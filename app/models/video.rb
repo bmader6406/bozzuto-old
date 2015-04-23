@@ -16,6 +16,10 @@ class Video < ActiveRecord::Base
     :convert_options => { :all => '-quality 80 -strip' }
 
   def typus_name
-    "#{property.title} - Video ##{position}"
+    if property.present?
+      "#{property.title} - Video ##{position}"
+    else
+      "Video ##{id}"
+    end
   end
 end
