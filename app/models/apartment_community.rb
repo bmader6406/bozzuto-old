@@ -89,11 +89,11 @@ class ApartmentCommunity < Community
   }
 
   scope :with_exclusive_floor_plans, lambda { |ids|
-    { :conditions => Bozzuto::Searches::FloorPlanSearch.new(ids).sql }
+    { :conditions => Bozzuto::Searches::Exclusive::FloorPlanSearch.new(ids).sql }
   }
 
   scope :with_exclusive_features, lambda { |ids|
-    { :conditions => Bozzuto::Searches::FeatureSearch.new(ids).sql }
+    { :conditions => Bozzuto::Searches::Exclusive::FeatureSearch.new(ids).sql }
   }
 
   scope :featured, :conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE featured = ?)", true]
