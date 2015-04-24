@@ -17,7 +17,9 @@ class ApartmentCommunity < Community
   search_methods :with_min_price,
                  :with_max_price,
                  :with_floor_plan_groups,
-                 :with_property_features
+                 :with_property_features,
+                 :with_exclusive_floor_plans,
+                 :with_exclusive_features
 
   has_neighborhood_listing_image :neighborhood_listing_image, :required => false
 
@@ -58,7 +60,6 @@ class ApartmentCommunity < Community
            :inverse_of => :apartment_community,
            :dependent  => :destroy
 
-
   validates_presence_of :lead_2_lease_email, :if => lambda { |community| community.show_lead_2_lease }
 
   validates_inclusion_of :included_in_export, :in => [true, false]
@@ -85,6 +86,14 @@ class ApartmentCommunity < Community
       :joins      => "JOIN apartment_floor_plan_caches AS cache ON cache.cacheable_id = properties.id AND cache.cacheable_type = 'Property'",
       :conditions => ['cache.min_price <= ?', price.to_i]
     }
+  }
+
+  scope :with_exclusive_floor_plans, lambda { |ids|
+    { :conditions => Bozzuto::Searches::FloorPlanSearch.new(ids).sql }
+  }
+
+  scope :with_exclusive_features, lambda { |ids|
+    { :conditions => Bozzuto::Searches::FeatureSearch.new(ids).sql }
   }
 
   scope :featured, :conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE featured = ?)", true]
