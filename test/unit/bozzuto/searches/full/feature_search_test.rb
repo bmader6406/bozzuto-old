@@ -7,7 +7,7 @@ module Bozzuto::Searches::Full
 
       describe ".sql" do
         it "returns exclusive search SQL with ? in place of actual expected values" do
-          equalized(subject.sql).should == equalized(%q(
+          sqlized(subject.sql).should == sqlized(%q(
             properties.id IN (
               SELECT properties.id
               FROM properties
@@ -31,7 +31,7 @@ module Bozzuto::Searches::Full
         subject { FeatureSearch.new([2,4]) }
 
         it "returns exclusive search SQL with the given expected values" do
-          equalized(subject.sql).should == equalized(%q(
+          sqlized(subject.sql).should == sqlized(%q(
             properties.id IN (
               SELECT properties.id
               FROM properties
@@ -50,11 +50,6 @@ module Bozzuto::Searches::Full
           ))
         end
       end
-    end
-
-    # Take spacing and backticks out of the equation
-    def equalized(string)
-      string.gsub(/[\s`]/, '')
     end
   end
 end

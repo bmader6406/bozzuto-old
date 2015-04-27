@@ -1,16 +1,6 @@
 module Bozzuto::Searches
   module Partial
     class FloorPlanSearch < Search
-      QUERY = %Q(
-        properties.id IN (
-          SELECT properties.id
-          FROM properties
-          INNER JOIN apartment_floor_plans
-          ON properties.id = apartment_floor_plans.apartment_community_id
-          WHERE apartment_floor_plans.floor_plan_group_id IN (?)
-        )
-      )
-
       def main_class
         Property
       end

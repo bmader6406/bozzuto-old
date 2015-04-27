@@ -23,6 +23,12 @@ module Bozzuto
         ApartmentFloorPlanGroup.create(:name => '3 or More Bedrooms')
         ApartmentFloorPlanGroup.create(:name => 'Penthouse')
       end
+
+
+      # Remove spaces and backticks for SQL string comparisons
+      def sqlized(string)
+        string.gsub(/[\s`]/, '')
+      end
     end
   end
 end
