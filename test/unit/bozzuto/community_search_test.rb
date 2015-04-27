@@ -81,7 +81,7 @@ module Bozzuto
           end
 
           context "but there are relevant communities based on the given floor plans" do
-            subject { CommunitySearch.new('with_floor_plan_groups' => [ApartmentFloorPlanGroup.penthouse.id.to_s]) }
+            subject { CommunitySearch.new('with_any_floor_plan_groups' => [ApartmentFloorPlanGroup.penthouse.id.to_s]) }
 
             it "returns the relevant communities" do
               subject.results.should == [@va_community]
@@ -179,7 +179,7 @@ module Bozzuto
 
         context "when there are no matching communities" do
           context "but there are relevant results" do
-            subject { CommunitySearch.new('with_floor_plan_groups' => [ApartmentFloorPlanGroup.penthouse.id.to_s]) }
+            subject { CommunitySearch.new('with_any_floor_plan_groups' => [ApartmentFloorPlanGroup.penthouse.id.to_s]) }
 
             it "returns true" do
               subject.showing_relevant_results?.should == true

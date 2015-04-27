@@ -16,8 +16,8 @@ class ApartmentCommunity < Community
 
   search_methods :with_min_price,
                  :with_max_price,
-                 :with_floor_plan_groups,
-                 :with_property_features,
+                 :with_any_floor_plan_groups,
+                 :with_any_property_features,
                  :with_exact_floor_plan_groups,
                  :with_exact_property_features,
                  :having_all_floor_plan_groups,
@@ -82,11 +82,11 @@ class ApartmentCommunity < Community
     }
   }
 
-  scope :with_floor_plan_groups, lambda { |ids|
+  scope :with_any_floor_plan_groups, lambda { |ids|
     { :conditions => Bozzuto::Searches::Partial::FloorPlanSearch.new(ids).sql }
   }
 
-  scope :with_property_features, lambda { |ids|
+  scope :with_any_property_features, lambda { |ids|
     { :conditions => Bozzuto::Searches::Partial::FeatureSearch.new(ids).sql }
   }
 

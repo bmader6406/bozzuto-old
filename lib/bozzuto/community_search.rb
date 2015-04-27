@@ -91,7 +91,7 @@ module Bozzuto
       CITY_CONDITION      = 'city_id_eq'
       COUNTY_CONDITION    = 'county_id_eq'
       LOCATION_CONDITIONS = [STATE_CONDITION, CITY_CONDITION, COUNTY_CONDITION]
-      BEDROOM_CONDITION   = 'with_floor_plan_groups'
+      BEDROOM_CONDITION   = 'with_any_floor_plan_groups'
       MIN_RENT_CONDITION  = 'with_min_price'
       MAX_RENT_CONDITION  = 'with_max_price'
       RENT_RELEVANCY      = 500

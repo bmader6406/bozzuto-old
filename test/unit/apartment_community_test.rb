@@ -611,8 +611,8 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
     it "responds to named scopes" do
       assert_nothing_raised do
-        ApartmentCommunity.with_floor_plan_groups(1).all
-        ApartmentCommunity.with_property_features([1, 2, 3]).all
+        ApartmentCommunity.with_any_floor_plan_groups(1).all
+        ApartmentCommunity.with_any_property_features([1, 2, 3]).all
         ApartmentCommunity.with_min_price(100)
         ApartmentCommunity.with_max_price(100)
         ApartmentCommunity.featured_order
@@ -656,15 +656,15 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
       end
     end
 
-    describe ".with_floor_plan_groups" do
+    describe ".with_any_floor_plan_groups" do
       it "returns communities matching any of the given floor plan criteria" do
-        ApartmentCommunity.with_floor_plan_groups([@one_br.id, @two_br.id]).order(:id).should == [@full_match, @partial_match, @over_match]
+        ApartmentCommunity.with_any_floor_plan_groups([@one_br.id, @two_br.id]).order(:id).should == [@full_match, @partial_match, @over_match]
       end
     end
 
-    describe ".with_property_features" do
+    describe ".with_any_property_features" do
       it "returns communities matching any of the given feature criteria" do
-        ApartmentCommunity.with_property_features([@garage.id, @gym.id]).order(:id).should == [@full_match, @over_match]
+        ApartmentCommunity.with_any_property_features([@garage.id, @gym.id]).order(:id).should == [@full_match, @over_match]
       end
     end
 

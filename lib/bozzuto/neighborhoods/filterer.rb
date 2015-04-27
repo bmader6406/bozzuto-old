@@ -57,7 +57,7 @@ module Bozzuto
         end
 
         def communities
-          @communities ||= @filterer.communities.with_property_features(id)
+          @communities ||= @filterer.communities.with_any_property_features(id)
         end
 
         def name_with_count

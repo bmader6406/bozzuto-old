@@ -25,8 +25,8 @@ class CommunitySearchesControllerTest < ActionController::TestCase
               get :show, :search => {
                 :city_id                => 123,
                 :county_id              => 456,
-                :with_floor_plan_groups => ['', '', '2', '', ''],
-                :with_property_features => ['', '', '', '', '']
+                :with_any_floor_plan_groups => ['', '', '2', '', ''],
+                :with_any_property_features => ['', '', '', '', '']
               }
             end
 
@@ -41,8 +41,8 @@ class CommunitySearchesControllerTest < ActionController::TestCase
               params[:search][:county_id].should == nil
               params[:search][:county_id_eq].should == 456
 
-              params[:search][:with_floor_plan_groups].should == ['2']
-              params[:search][:with_property_features].should == []
+              params[:search][:with_any_floor_plan_groups].should == ['2']
+              params[:search][:with_any_property_features].should == []
             end
           end
 
