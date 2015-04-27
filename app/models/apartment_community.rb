@@ -19,7 +19,9 @@ class ApartmentCommunity < Community
                  :with_floor_plan_groups,
                  :with_property_features,
                  :with_exact_floor_plan_groups,
-                 :with_exact_property_features
+                 :with_exact_property_features,
+                 :having_all_floor_plan_groups,
+                 :having_all_property_features
 
   has_neighborhood_listing_image :neighborhood_listing_image, :required => false
 
@@ -94,6 +96,14 @@ class ApartmentCommunity < Community
 
   scope :with_exact_property_features, lambda { |ids|
     { :conditions => Bozzuto::Searches::Exact::FeatureSearch.new(ids).sql }
+  }
+
+  scope :having_all_floor_plan_groups, lambda { |ids|
+    { :conditions => Bozzuto::Searches::Full::FloorPlanSearch.new(ids).sql }
+  }
+
+  scope :having_all_property_features, lambda { |ids|
+    { :conditions => Bozzuto::Searches::Full::FeatureSearch.new(ids).sql }
   }
 
   scope :featured, :conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE featured = ?)", true]

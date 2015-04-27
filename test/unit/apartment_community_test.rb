@@ -586,18 +586,21 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
       @studio = ApartmentFloorPlanGroup.studio
       @one_br = ApartmentFloorPlanGroup.one_bedroom
       @two_br = ApartmentFloorPlanGroup.two_bedrooms
+      @thr_br = ApartmentFloorPlanGroup.three_bedrooms
+      @pent   = ApartmentFloorPlanGroup.penthouse
 
       @full_match    = ApartmentCommunity.make
       @partial_match = ApartmentCommunity.make
       @over_match    = ApartmentCommunity.make
 
-      @full_match.floor_plans << ApartmentFloorPlan.make(:floor_plan_group => @two_br)
+      @full_match.floor_plans << ApartmentFloorPlan.make(:floor_plan_group => @thr_br)
       @full_match.floor_plans << ApartmentFloorPlan.make(:floor_plan_group => @one_br)
 
       @partial_match.floor_plans << ApartmentFloorPlan.make(:floor_plan_group => @one_br)
 
       @over_match.floor_plans << ApartmentFloorPlan.make(:floor_plan_group => @studio)
       @over_match.floor_plans << ApartmentFloorPlan.make(:floor_plan_group => @two_br)
+      @over_match.floor_plans << ApartmentFloorPlan.make(:floor_plan_group => @thr_br)
       @over_match.floor_plans << ApartmentFloorPlan.make(:floor_plan_group => @one_br)
 
       @garage    = PropertyFeature.make(:name => 'Garage',     :properties => [@over_match])
@@ -615,6 +618,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
         ApartmentCommunity.featured_order
         ApartmentCommunity.with_exact_floor_plan_groups(1).all
         ApartmentCommunity.with_exact_property_features([1, 2, 3]).all
+        ApartmentCommunity.having_all_floor_plan_groups([1,2]).all
       end
     end
 
@@ -654,25 +658,37 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
     describe ".with_floor_plan_groups" do
       it "returns communities matching any of the given floor plan criteria" do
-        ApartmentCommunity.with_floor_plan_groups([@one_br.id, @two_br.id]).should == [@full_match, @partial_match, @over_match]
+        ApartmentCommunity.with_floor_plan_groups([@one_br.id, @two_br.id]).order(:id).should == [@full_match, @partial_match, @over_match]
       end
     end
 
     describe ".with_property_features" do
       it "returns communities matching any of the given feature criteria" do
-        ApartmentCommunity.with_property_features([@garage.id, @gym.id]).should == [@over_match, @full_match]
+        ApartmentCommunity.with_property_features([@garage.id, @gym.id]).order(:id).should == [@full_match, @over_match]
       end
     end
 
     describe ".with_exact_floor_plan_groups" do
       it "returns communities exactly matching the given floor plan criteria" do
-        ApartmentCommunity.with_exact_floor_plan_groups([@one_br.id, @two_br.id]).should == [@full_match]
+        ApartmentCommunity.with_exact_floor_plan_groups([@one_br.id, @thr_br.id]).should == [@full_match]
       end
     end
 
     describe ".with_exact_property_features" do
       it "returns communities exactly matching the given feature criteria" do
         ApartmentCommunity.with_exact_property_features([@clubhouse.id, @pool.id, @gym.id]).should == [@full_match]
+      end
+    end
+
+    describe ".having_all_floor_plan_groups" do
+      it "returns communities having all the given floor plan criteria" do
+        ApartmentCommunity.having_all_floor_plan_groups([@one_br.id, @thr_br.id]).order(:id).should == [@full_match, @over_match]
+      end
+    end
+
+    describe ".having_all_property_features" do
+      it "returns communities matching all the given feature criteria" do
+        ApartmentCommunity.having_all_property_features([@clubhouse.id, @pool.id, @gym.id]).order(:id).should == [@full_match, @over_match]
       end
     end
   end
