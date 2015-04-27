@@ -1,6 +1,8 @@
 module Bozzuto::Searches
   module Inclusive
-    class Search < Bozzuto::Searches::Search
+    class Search < SearchBase
+      # Inclusive searches return results matching any one criterium.
+      #
       # SQL output given the following:
       #   main_class       == Property
       #   associated_class == ApartmentFloorPlan

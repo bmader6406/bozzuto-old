@@ -11,7 +11,7 @@ module Bozzuto::Searches::Exclusive
         end
 
         context "when input is given" do
-          subject { ExclusiveValueSearch.new([10, 1, 5]) }
+          subject { Search.new([10, 1, 5]) }
 
           before do
             subject.stubs(:main_class).returns(Property)

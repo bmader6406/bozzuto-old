@@ -1,8 +1,8 @@
 require 'test_helper'
 
 module Bozzuto::Searches
-  class SearchTest < ActiveSupport::TestCase
-    context "Bozzuto::Searches::Search" do
+  class SearchBaseTest < ActiveSupport::TestCase
+    context "Bozzuto::Searches::SearchBase" do
       describe "#main_class" do
         it "raises a NotImplementedError" do
           expect { subject.main_class }.to raise_error NotImplementedError
@@ -35,7 +35,7 @@ module Bozzuto::Searches
         end
 
         context "when input is given" do
-          subject { Search.new([10, 1, 5]) }
+          subject { SearchBase.new([10, 1, 5]) }
 
           it "returns the given input" do
             subject.values.should == '10,1,5'

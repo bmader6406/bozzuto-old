@@ -1,6 +1,6 @@
 module Bozzuto
   module Searches
-    class Search
+    class SearchBase
       def self.sql
         new.sql
       end

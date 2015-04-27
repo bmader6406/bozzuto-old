@@ -1,6 +1,8 @@
 module Bozzuto::Searches
   module Exclusive
-    class Search < Bozzuto::Searches::Search
+    class Search < SearchBase
+      # Exclusive searches return results matching exactly the given criteria.
+      #
       # SQL output given the following:
       #   main_class       == Property
       #   associated_class == ApartmentFloorPlan
