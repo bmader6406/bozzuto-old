@@ -18,7 +18,7 @@ module Bozzuto::Searches::Full
           end
 
           it "returns the input transformed into a regex" do
-            subject.values.should == "'(5|,5|5,|,5,){1}([[:digit:]]|,[[:digit:]]|[[:digit:]],|,[[:digit:]],)*(10|,10|10,|,10,){1}'"
+            subject.values.should == "'(5,|5$){1}([[:digit:]]+,|[[:digit:]]+$)*(10,|10$){1}'"
           end
         end
       end

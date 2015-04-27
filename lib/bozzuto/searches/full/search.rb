@@ -36,11 +36,11 @@ module Bozzuto::Searches
       private
 
       def regex_partial(value, frequency = '*')
-        "(#{value}|,#{value}|#{value},|,#{value},)#{frequency}"
+        "(#{value},|#{value}$)#{frequency}"
       end
 
       def filler_regex
-        regex_partial '[[:digit:]]'
+        regex_partial '[[:digit:]]+'
       end
 
       def value_regex(value)

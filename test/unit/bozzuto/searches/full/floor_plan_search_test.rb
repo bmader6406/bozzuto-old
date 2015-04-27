@@ -45,7 +45,7 @@ module Bozzuto::Searches::Full
               ) AS associated
               ON associated.apartment_community_id = properties.id
               WHERE associated.search_values
-              REGEXP '(2|,2|2,|,2,){1}([[:digit:]]|,[[:digit:]]|[[:digit:]],|,[[:digit:]],)*(4|,4|4,|,4,){1}'
+              REGEXP '(2,|2$){1}([[:digit:]]+,|[[:digit:]]+$)*(4,|4$){1}'
             )
           ))
         end
