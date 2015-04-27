@@ -1,5 +1,5 @@
 module Bozzuto::Searches
-  module Exclusive
+  module Partial
     class FeatureSearch < Search
       def main_class
         Property

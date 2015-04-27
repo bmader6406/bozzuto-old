@@ -1,8 +1,8 @@
 require 'test_helper'
 
-module Bozzuto::Searches::Exclusive
+module Bozzuto::Searches::Exact
   class SearchTest < ActiveSupport::TestCase
-    context "Bozzuto::Searches::Exclusive::Search" do
+    context "Bozzuto::Searches::Exact::Search" do
       describe "#values" do
         context "when no input is given" do
           it "returns a ?" do

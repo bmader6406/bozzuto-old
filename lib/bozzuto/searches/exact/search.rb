@@ -1,7 +1,7 @@
 module Bozzuto::Searches
-  module Exclusive
+  module Exact
     class Search < SearchBase
-      # Exclusive searches return results matching exactly the given criteria.
+      # Exact searches return results matching exactly the given criteria.
       #
       # SQL output given the following:
       #   main_class       == Property

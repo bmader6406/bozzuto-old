@@ -1,5 +1,5 @@
 module Bozzuto::Searches
-  module Exclusive
+  module Exact
     class FloorPlanSearch < Search
       def main_class
         Property

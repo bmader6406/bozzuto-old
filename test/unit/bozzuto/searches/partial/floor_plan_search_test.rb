@@ -1,8 +1,8 @@
 require 'test_helper'
 
-module Bozzuto::Searches::Exclusive
+module Bozzuto::Searches::Partial
   class FloorPlanSearchTest < ActiveSupport::TestCase
-    context "Bozzuto::Searches::Exclusive::FloorPlanSearch" do
+    context "Bozzuto::Searches::Partial::FloorPlanSearch" do
       subject { FloorPlanSearch.new }
 
       describe ".sql" do
@@ -11,16 +11,9 @@ module Bozzuto::Searches::Exclusive
             properties.id IN (
               SELECT properties.id
               FROM properties
-              INNER JOIN (
-                SELECT apartment_community_id, GROUP_CONCAT(
-                      DISTINCT floor_plan_group_id
-                      ORDER BY floor_plan_group_id
-                  ) AS search_values
-                FROM apartment_floor_plans
-                GROUP BY apartment_community_id
-              ) AS associated
-              ON associated.apartment_community_id = properties.id
-              WHERE associated.search_values LIKE ?
+              INNER JOIN apartment_floor_plans
+              ON properties.id = apartment_floor_plans.apartment_community_id
+              WHERE apartment_floor_plans.floor_plan_group_id IN (?)
             )
           ))
         end
@@ -51,23 +44,16 @@ module Bozzuto::Searches::Exclusive
       end
 
       describe "#sql" do
-        subject { FloorPlanSearch.new([2,4,5]) }
+        subject { FloorPlanSearch.new([5,2,4]) }
 
         it "returns exclusive search SQL with the given expected values" do
           equalized(subject.sql).should == equalized(%q(
             properties.id IN (
               SELECT properties.id
               FROM properties
-              INNER JOIN (
-                SELECT apartment_community_id, GROUP_CONCAT(
-                      DISTINCT floor_plan_group_id
-                      ORDER BY floor_plan_group_id
-                  ) AS search_values
-                FROM apartment_floor_plans
-                GROUP BY apartment_community_id
-              ) AS associated
-              ON associated.apartment_community_id = properties.id
-              WHERE associated.search_values LIKE '2,4,5'
+              INNER JOIN apartment_floor_plans
+              ON properties.id = apartment_floor_plans.apartment_community_id
+              WHERE apartment_floor_plans.floor_plan_group_id IN (5,2,4)
             )
           ))
         end

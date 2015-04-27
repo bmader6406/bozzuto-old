@@ -1,7 +1,7 @@
 module Bozzuto::Searches
-  module Inclusive
+  module Partial
     class Search < SearchBase
-      # Inclusive searches return results matching any one criterium.
+      # Partial searches return results matching any one criterium.
       #
       # SQL output given the following:
       #   main_class       == Property

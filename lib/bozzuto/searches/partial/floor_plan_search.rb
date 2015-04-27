@@ -1,5 +1,5 @@
 module Bozzuto::Searches
-  module Inclusive
+  module Partial
     class FloorPlanSearch < Search
       QUERY = %Q(
         properties.id IN (

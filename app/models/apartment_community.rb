@@ -18,8 +18,8 @@ class ApartmentCommunity < Community
                  :with_max_price,
                  :with_floor_plan_groups,
                  :with_property_features,
-                 :with_exclusive_floor_plans,
-                 :with_exclusive_features
+                 :with_exact_floor_plan_groups,
+                 :with_exact_property_features
 
   has_neighborhood_listing_image :neighborhood_listing_image, :required => false
 
@@ -81,19 +81,19 @@ class ApartmentCommunity < Community
   }
 
   scope :with_floor_plan_groups, lambda { |ids|
-    { :conditions => Bozzuto::Searches::Inclusive::FloorPlanSearch.new(ids).sql }
+    { :conditions => Bozzuto::Searches::Partial::FloorPlanSearch.new(ids).sql }
   }
 
   scope :with_property_features, lambda { |ids|
-    { :conditions => Bozzuto::Searches::Inclusive::FeatureSearch.new(ids).sql }
+    { :conditions => Bozzuto::Searches::Partial::FeatureSearch.new(ids).sql }
   }
 
-  scope :with_exclusive_floor_plans, lambda { |ids|
-    { :conditions => Bozzuto::Searches::Exclusive::FloorPlanSearch.new(ids).sql }
+  scope :with_exact_floor_plan_groups, lambda { |ids|
+    { :conditions => Bozzuto::Searches::Exact::FloorPlanSearch.new(ids).sql }
   }
 
-  scope :with_exclusive_features, lambda { |ids|
-    { :conditions => Bozzuto::Searches::Exclusive::FeatureSearch.new(ids).sql }
+  scope :with_exact_property_features, lambda { |ids|
+    { :conditions => Bozzuto::Searches::Exact::FeatureSearch.new(ids).sql }
   }
 
   scope :featured, :conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE featured = ?)", true]

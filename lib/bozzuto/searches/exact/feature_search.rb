@@ -1,5 +1,5 @@
 module Bozzuto::Searches
-  module Inclusive
+  module Exact
     class FeatureSearch < Search
       def main_class
         Property

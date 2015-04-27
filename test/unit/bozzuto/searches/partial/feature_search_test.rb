@@ -1,8 +1,8 @@
 require 'test_helper'
 
-module Bozzuto::Searches::Inclusive
+module Bozzuto::Searches::Partial
   class FeatureSearchTest < ActiveSupport::TestCase
-    context "Bozzuto::Searches::Inclusive::FeatureSearch" do
+    context "Bozzuto::Searches::Partial::FeatureSearch" do
       subject { FeatureSearch.new }
 
       describe ".sql" do

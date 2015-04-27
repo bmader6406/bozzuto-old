@@ -613,8 +613,8 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
         ApartmentCommunity.with_min_price(100)
         ApartmentCommunity.with_max_price(100)
         ApartmentCommunity.featured_order
-        ApartmentCommunity.with_exclusive_floor_plans(1).all
-        ApartmentCommunity.with_exclusive_features([1, 2, 3]).all
+        ApartmentCommunity.with_exact_floor_plan_groups(1).all
+        ApartmentCommunity.with_exact_property_features([1, 2, 3]).all
       end
     end
 
@@ -664,15 +664,15 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
       end
     end
 
-    describe ".with_exclusive_floor_plans" do
+    describe ".with_exact_floor_plan_groups" do
       it "returns communities exactly matching the given floor plan criteria" do
-        ApartmentCommunity.with_exclusive_floor_plans([@one_br.id, @two_br.id]).should == [@full_match]
+        ApartmentCommunity.with_exact_floor_plan_groups([@one_br.id, @two_br.id]).should == [@full_match]
       end
     end
 
-    describe ".with_exclusive_features" do
+    describe ".with_exact_property_features" do
       it "returns communities exactly matching the given feature criteria" do
-        ApartmentCommunity.with_exclusive_features([@clubhouse.id, @pool.id, @gym.id]).should == [@full_match]
+        ApartmentCommunity.with_exact_property_features([@clubhouse.id, @pool.id, @gym.id]).should == [@full_match]
       end
     end
   end

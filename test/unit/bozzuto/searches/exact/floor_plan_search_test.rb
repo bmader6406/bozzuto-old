@@ -1,9 +1,9 @@
 require 'test_helper'
 
-module Bozzuto::Searches::Exclusive
-  class FeatureSearchTest < ActiveSupport::TestCase
-    context "Bozzuto::Searches::Exclusive::FeatureSearch" do
-      subject { FeatureSearch.new }
+module Bozzuto::Searches::Exact
+  class FloorPlanSearchTest < ActiveSupport::TestCase
+    context "Bozzuto::Searches::Exact::FloorPlanSearch" do
+      subject { FloorPlanSearch.new }
 
       describe ".sql" do
         it "returns exclusive search SQL with ? in place of actual expected values" do
@@ -12,14 +12,14 @@ module Bozzuto::Searches::Exclusive
               SELECT properties.id
               FROM properties
               INNER JOIN (
-                SELECT property_id, GROUP_CONCAT(
-                      DISTINCT property_feature_id
-                      ORDER BY property_feature_id
+                SELECT apartment_community_id, GROUP_CONCAT(
+                      DISTINCT floor_plan_group_id
+                      ORDER BY floor_plan_group_id
                   ) AS search_values
-                FROM properties_property_features
-                GROUP BY property_id
+                FROM apartment_floor_plans
+                GROUP BY apartment_community_id
               ) AS associated
-              ON associated.property_id = properties.id
+              ON associated.apartment_community_id = properties.id
               WHERE associated.search_values LIKE ?
             )
           ))
@@ -32,20 +32,26 @@ module Bozzuto::Searches::Exclusive
         end
       end
 
+      describe "#associated_class" do
+        it "returns the associated class" do
+          subject.associated_class.should == ApartmentFloorPlan
+        end
+      end
+
       describe "#foreign_key" do
         it "returns the foreign key" do
-          subject.foreign_key.should == 'property_id'
+          subject.foreign_key.should == 'apartment_community_id'
         end
       end
 
       describe "#search_column" do
         it "returns the search column" do
-          subject.search_column.should == 'property_feature_id'
+          subject.search_column.should == 'floor_plan_group_id'
         end
       end
 
       describe "#sql" do
-        subject { FeatureSearch.new([2,4,5]) }
+        subject { FloorPlanSearch.new([2,4,5]) }
 
         it "returns exclusive search SQL with the given expected values" do
           equalized(subject.sql).should == equalized(%q(
@@ -53,14 +59,14 @@ module Bozzuto::Searches::Exclusive
               SELECT properties.id
               FROM properties
               INNER JOIN (
-                SELECT property_id, GROUP_CONCAT(
-                      DISTINCT property_feature_id
-                      ORDER BY property_feature_id
+                SELECT apartment_community_id, GROUP_CONCAT(
+                      DISTINCT floor_plan_group_id
+                      ORDER BY floor_plan_group_id
                   ) AS search_values
-                FROM properties_property_features
-                GROUP BY property_id
+                FROM apartment_floor_plans
+                GROUP BY apartment_community_id
               ) AS associated
-              ON associated.property_id = properties.id
+              ON associated.apartment_community_id = properties.id
               WHERE associated.search_values LIKE '2,4,5'
             )
           ))
