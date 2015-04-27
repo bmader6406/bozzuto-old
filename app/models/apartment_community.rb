@@ -66,14 +66,6 @@ class ApartmentCommunity < Community
 
   scope :included_in_export, :conditions => { :included_in_export => true }
 
-  scope :with_floor_plan_groups, lambda { |ids|
-    {:conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE floor_plan_group_id IN (?))", Array(ids)]}
-  }
-
-  scope :with_property_features, lambda { |ids|
-    {:conditions => ["properties.id IN (SELECT property_id FROM properties_property_features WHERE property_feature_id IN (?))", Array(ids)]}
-  }
-
   scope :with_min_price, lambda { |price|
     {
       :joins      => "JOIN apartment_floor_plan_caches AS cache ON cache.cacheable_id = properties.id AND cache.cacheable_type = 'Property'",
@@ -86,6 +78,14 @@ class ApartmentCommunity < Community
       :joins      => "JOIN apartment_floor_plan_caches AS cache ON cache.cacheable_id = properties.id AND cache.cacheable_type = 'Property'",
       :conditions => ['cache.min_price <= ?', price.to_i]
     }
+  }
+
+  scope :with_floor_plan_groups, lambda { |ids|
+    { :conditions => Bozzuto::Searches::Inclusive::FloorPlanSearch.new(ids).sql }
+  }
+
+  scope :with_property_features, lambda { |ids|
+    { :conditions => Bozzuto::Searches::Inclusive::FeatureSearch.new(ids).sql }
   }
 
   scope :with_exclusive_floor_plans, lambda { |ids|

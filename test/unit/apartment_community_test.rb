@@ -580,6 +580,32 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
   end
 
   context "The ApartmentCommunity class" do
+    before do
+      create_floor_plan_groups
+
+      @studio = ApartmentFloorPlanGroup.studio
+      @one_br = ApartmentFloorPlanGroup.one_bedroom
+      @two_br = ApartmentFloorPlanGroup.two_bedrooms
+
+      @full_match    = ApartmentCommunity.make
+      @partial_match = ApartmentCommunity.make
+      @over_match    = ApartmentCommunity.make
+
+      @full_match.floor_plans << ApartmentFloorPlan.make(:floor_plan_group => @two_br)
+      @full_match.floor_plans << ApartmentFloorPlan.make(:floor_plan_group => @one_br)
+
+      @partial_match.floor_plans << ApartmentFloorPlan.make(:floor_plan_group => @one_br)
+
+      @over_match.floor_plans << ApartmentFloorPlan.make(:floor_plan_group => @studio)
+      @over_match.floor_plans << ApartmentFloorPlan.make(:floor_plan_group => @two_br)
+      @over_match.floor_plans << ApartmentFloorPlan.make(:floor_plan_group => @one_br)
+
+      @garage    = PropertyFeature.make(:name => 'Garage',     :properties => [@over_match])
+      @pool      = PropertyFeature.make(:name => 'Pool',       :properties => [@over_match, @full_match, @partial_match])
+      @gym       = PropertyFeature.make(:name => 'Gym',        :properties => [@over_match, @full_match])
+      @clubhouse = PropertyFeature.make(:name => 'Club House', :properties => [@over_match, @full_match, @partial_match])
+    end
+
     it "responds to named scopes" do
       assert_nothing_raised do
         ApartmentCommunity.with_floor_plan_groups(1).all
@@ -626,45 +652,25 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
       end
     end
 
-    describe ".with_exclusive_floor_plans" do
-      before do
-        create_floor_plan_groups
-
-        @studio = ApartmentFloorPlanGroup.studio
-        @one_br = ApartmentFloorPlanGroup.one_bedroom
-        @two_br = ApartmentFloorPlanGroup.two_bedrooms
-
-        @full_match    = ApartmentCommunity.make
-        @partial_match = ApartmentCommunity.make
-        @over_match    = ApartmentCommunity.make
-
-        @full_match.floor_plans << ApartmentFloorPlan.make(:floor_plan_group => @two_br)
-        @full_match.floor_plans << ApartmentFloorPlan.make(:floor_plan_group => @one_br)
-
-        @partial_match.floor_plans << ApartmentFloorPlan.make(:floor_plan_group => @one_br)
-
-        @over_match.floor_plans << ApartmentFloorPlan.make(:floor_plan_group => @studio)
-        @over_match.floor_plans << ApartmentFloorPlan.make(:floor_plan_group => @two_br)
-        @over_match.floor_plans << ApartmentFloorPlan.make(:floor_plan_group => @one_br)
+    describe ".with_floor_plan_groups" do
+      it "returns communities matching any of the given floor plan criteria" do
+        ApartmentCommunity.with_floor_plan_groups([@one_br.id, @two_br.id]).should == [@full_match, @partial_match, @over_match]
       end
+    end
 
+    describe ".with_property_features" do
+      it "returns communities matching any of the given feature criteria" do
+        ApartmentCommunity.with_property_features([@garage.id, @gym.id]).should == [@over_match, @full_match]
+      end
+    end
+
+    describe ".with_exclusive_floor_plans" do
       it "returns communities exactly matching the given floor plan criteria" do
         ApartmentCommunity.with_exclusive_floor_plans([@one_br.id, @two_br.id]).should == [@full_match]
       end
     end
 
     describe ".with_exclusive_features" do
-      before do
-        @full_match    = ApartmentCommunity.make
-        @partial_match = ApartmentCommunity.make
-        @over_match    = ApartmentCommunity.make
-
-        @garage    = PropertyFeature.make(:name => 'Garage',     :properties => [@over_match])
-        @pool      = PropertyFeature.make(:name => 'Pool',       :properties => [@over_match, @full_match, @partial_match])
-        @gym       = PropertyFeature.make(:name => 'Gym',        :properties => [@over_match, @full_match])
-        @clubhouse = PropertyFeature.make(:name => 'Club House', :properties => [@over_match, @full_match, @partial_match])
-      end
-
       it "returns communities exactly matching the given feature criteria" do
         ApartmentCommunity.with_exclusive_features([@clubhouse.id, @pool.id, @gym.id]).should == [@full_match]
       end
