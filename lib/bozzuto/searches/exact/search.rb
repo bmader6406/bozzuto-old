@@ -73,7 +73,7 @@ module Bozzuto::Searches
       end
 
       def derived_table
-        Arel.sql('associated')
+        Arel.sql derived_table_name
       end
 
       def join_condition
