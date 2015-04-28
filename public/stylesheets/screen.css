@@ -5026,6 +5026,18 @@ div.wysiwyg ul li {
     background: none;
   }
 
+  .secondary #masthead.careers-masthead .section {
+    width: 680px;
+  }
+
+  .secondary #masthead.careers-masthead .section h1 {
+    margin-bottom: 15px;
+  }
+
+  .secondary #masthead.careers-masthead #masthead-slideshow {
+    height: 339px;
+  }
+
   .secondary #masthead.careers-masthead #masthead-slideshow ul.slides li.slide {
     background: none;
   }
