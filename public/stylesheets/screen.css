@@ -5034,6 +5034,10 @@ div.wysiwyg ul li {
     margin-bottom: 15px;
   }
 
+  .secondary #masthead.careers-masthead .section p {
+    margin-bottom: 40px;
+  }
+
   .secondary #masthead.careers-masthead #masthead-slideshow {
     height: 339px;
   }
