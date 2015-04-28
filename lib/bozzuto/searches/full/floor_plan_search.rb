@@ -16,6 +16,10 @@ module Bozzuto::Searches
       def search_column
         'floor_plan_group_id'
       end
+
+      def associated_values
+        super.where associated_table[:available_units].gt(0)
+      end
     end
   end
 end

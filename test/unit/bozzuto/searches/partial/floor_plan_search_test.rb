@@ -13,6 +13,7 @@ module Bozzuto::Searches::Partial
               FROM properties
               INNER JOIN apartment_floor_plans
               ON properties.id = apartment_floor_plans.apartment_community_id
+              AND apartment_floor_plans.available_units > 0
               WHERE apartment_floor_plans.floor_plan_group_id IN (?)
             )
           ))
@@ -29,6 +30,7 @@ module Bozzuto::Searches::Partial
               FROM properties
               INNER JOIN apartment_floor_plans
               ON properties.id = apartment_floor_plans.apartment_community_id
+              AND apartment_floor_plans.available_units > 0
               WHERE apartment_floor_plans.floor_plan_group_id IN (5,2,4)
             )
           ))

@@ -17,6 +17,7 @@ module Bozzuto::Searches::Exact
                       ORDER BY floor_plan_group_id
                   ) AS search_values
                 FROM apartment_floor_plans
+                WHERE apartment_floor_plans.available_units > 0
                 GROUP BY apartment_community_id
               ) AS associated
               ON associated.apartment_community_id = properties.id
@@ -40,6 +41,7 @@ module Bozzuto::Searches::Exact
                       ORDER BY floor_plan_group_id
                   ) AS search_values
                 FROM apartment_floor_plans
+                WHERE apartment_floor_plans.available_units > 0
                 GROUP BY apartment_community_id
               ) AS associated
               ON associated.apartment_community_id = properties.id
