@@ -22,8 +22,6 @@
 
       <div class="row">
         <div class="column-main col <%= "no-sidebar" unless @page.try(:show_sidebar?) %>">
-          <%= yield %>
-
           <%= if_present?(@page.try(:snippet)) do |snippet| %>
             <%= snippet.body.html_safe %>
           <% end %>
