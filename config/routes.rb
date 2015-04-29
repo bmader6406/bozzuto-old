@@ -24,8 +24,7 @@ Bozzuto::Application.routes.draw do
   # Careers
   match '/careers' => 'careers#index', :section => 'careers'
 
-  match '/careers/overview' => redirect('/careers')
-
+  match '/careers/:page' => redirect('/careers'), :constraints => { :page => /overview.*/ }
 
   # Emails
   namespace :email do
