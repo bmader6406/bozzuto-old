@@ -705,7 +705,7 @@ Project:
     default: title, published, street_address, city
     list: title, published, street_address, city, section
     relationship: title, published, street_address, city, position
-    form: title, short_title, short_description, has_completion_date, completion_date, meta_title, meta_description, meta_keywords, section, street_address, city, county, zip_code, latitude, longitude, website_url, website_url_text, video_url, brochure_link_text, brochure_type, brochure, brochure_url, listing_image, listing_title, listing_text, overview_text, published, featured_mobile
+    form: title, short_title, short_description, page_header, has_completion_date, completion_date, meta_title, meta_description, meta_keywords, section, street_address, city, county, zip_code, latitude, longitude, website_url, website_url_text, video_url, brochure_link_text, brochure_type, brochure, brochure_url, listing_image, listing_title, listing_text, overview_text, published, featured_mobile
     options:
       ckeditor: listing_text, overview_text
       booleans:
