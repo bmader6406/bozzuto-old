@@ -57,7 +57,7 @@ module MediaplexHelper
     END
   end
 
-  def lead_2_lease_mediaplex_code(community, email)
+  def lead_2_lease_mediaplex_code(community, email = nil)
     mpuid = mpuid_with([email, community.lead_2_lease_id])
 
     <<-END.html_safe
@@ -73,7 +73,7 @@ module MediaplexHelper
     END
   end
 
-  def apartment_contact_mediaplex_code(community, email)
+  def apartment_contact_mediaplex_code(community, email = nil)
     if community && community.mediaplex_tag.present?
       page_name = community.mediaplex_tag.page_name
       roi_name  = community.mediaplex_tag.roi_name
@@ -85,7 +85,7 @@ module MediaplexHelper
     end
   end
 
-  def master_conversion_mediaplex_code(email)
+  def master_conversion_mediaplex_code(email = nil)
     mpuid = mpuid_with([timestamp, email])
 
     <<-END.html_safe
