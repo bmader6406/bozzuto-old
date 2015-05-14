@@ -5,6 +5,7 @@ development:
   psi_feed_file: /path/to/psi/feed/psi.xml
   carmel_feed_file: /path/to/carmel/feed/carmel.xml
   apartment_export_file: /path/to/apartment_export_file.xml
+  mits4_1_export_file: /path/to/mits4_1.xml
   ftp:
     live_bozzuto:
       username: Bozzkevate
@@ -40,6 +41,7 @@ production:
   psi_feed_file: /path/to/psi/feed/psi.xml
   carmel_feed_file: /path/to/carmel/feed/carmel.xml
   apartment_export_file: /path/to/apartment_export_file.xml
+  mits4_1_export_file: /path/to/mits4_1.xml
   ftp:
     live_bozzuto:
       username: Bozzkevate
@@ -75,6 +77,7 @@ test:
   psi_feed_file: /path/to/psi/feed/psi.xml
   carmel_feed_file: /path/to/carmel/feed/carmel.xml
   apartment_export_file: /path/to/apartment_export_file.xml
+  mits4_1_export_file: /path/to/mits4_1.xml
   ftp:
     live_bozzuto:
       username: Bozzkevate
