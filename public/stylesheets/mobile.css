@@ -529,15 +529,15 @@ input, select, textarea, .submit {
   float: left;
   margin-bottom: 7px; }
 
-.full-site:after, .privacy-policy:after {
+.full-site:after, .privacy-policy:after, .website-disclaimer:after {
   content: "|";
-  padding: 0 9px; }
+  padding: 0 5px; }
 
 .full-site {
   margin-left: 82px; }
 
 .privacy-policy {
-  margin-left: 50px; }
+  margin-left: 5px; }
 
 .copy-and-eho {
   clear: left;
