@@ -1,5 +1,5 @@
 <% content_for :javascript do %>
-  <%= hyly_script :context => 'Bozzuto Buzz' %>
+  <%= hyly_script :id => Bozzuto::HyLy::BUZZ_ID %>
 <% end %>
 
 <% content_for :body_class, "generic" -%>
@@ -20,5 +20,5 @@
     </p>
   </div>
 
-  <%= hyly_form :redirect_to => thank_you_buzzes_url %>
+  <%= hyly_form :id => Bozzuto::HyLy::BUZZ_ID, :redirect_to => thank_you_buzzes_url %>
 </div>

@@ -5,6 +5,7 @@ module Bozzuto
     PID_FILE   = Rails.root.join('db', 'seeds', 'hyly_pids.csv')
     PRIMARY_ID = 'AXrxloE2b'
     ALT_ID     = 'pXCkf054i'
+    BUZZ_ID    = 'RDz6g84VF'
     PIDS       = {
       'Bozzuto'                      => '',
       'Bozzuto Management Company'   => '1452068536020681077',
