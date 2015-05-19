@@ -154,7 +154,7 @@ module Bozzuto
 
         return if plan.nil?
 
-        find_or_intialize_unit(unit_data) do |unit|
+        find_or_initialize_unit(unit_data) do |unit|
           unit.attributes = unit_data.database_attributes
           unit.floor_plan = plan
           unit.save
@@ -215,7 +215,7 @@ module Bozzuto
         plan
       end
 
-      def find_or_intialize_unit(u)
+      def find_or_initialize_unit(u)
         unit = ::ApartmentUnit.find_or_initialize_by_external_cms_id_and_external_cms_type(
           u.external_cms_id,
           u.external_cms_type
