@@ -6,6 +6,7 @@ class CareersControllerTest < ActionController::TestCase
       desktop_device do
         setup do
           @section = Section.make :title => 'Careers'
+          @page    = Page.make :section => @section, :body => 'Test'
 
           get :index, :section => 'careers'
         end

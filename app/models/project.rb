@@ -49,6 +49,6 @@ class Project < Property
 
   def short_description
     read_attribute(:short_description).presence ||
-      project_categories.first(2).map(&:title).join(' / ')
+      project_categories.order(:id).first(2).map(&:title).join(' / ')
   end
 end
