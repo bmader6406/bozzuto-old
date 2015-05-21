@@ -11,11 +11,18 @@ module Bozzuto::ExternalFeed
         end
       end
 
-      describe "#properties" do
-        it "returns the correct properties" do
-          subject.properties.count.should == 2
+      describe "#process" do
+        before do
+          create_states
+          create_floor_plan_groups
+        end
 
-          subject.properties[0].tap do |c|
+        it "builds property data for each property node from the feed file" do
+          subject.process
+
+          subject.data.count.should == 2
+
+          subject.data[0].tap do |c|
             c.title.should             == 'Spectrum'
             c.external_cms_id.should   == 'CHE801'
             c.external_cms_type.should == 'carmel'
@@ -82,7 +89,7 @@ module Bozzuto::ExternalFeed
             end
           end
 
-          subject.properties[1].tap do |c|
+          subject.data[1].tap do |c|
             c.title.should             == 'Summit'
             c.external_cms_id.should   == 'SUM822'
             c.external_cms_type.should == 'carmel'

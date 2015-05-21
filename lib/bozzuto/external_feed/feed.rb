@@ -30,16 +30,17 @@ module Bozzuto
         self.class.feed_name(feed_type)
       end
 
-      def data
+      def process
         assert_file_exists
 
-        @data ||= Nokogiri::XML(::File.read(file)).tap do |d|
-          d.remove_namespaces!
-        end
+        NodeFinder.new(self).parse
       end
 
-      def properties
-        @properties ||= build_properties(data)
+      def collect(property_node)
+        build_property(property_node).tap do |property_data|
+          data       << property_data
+          properties << PropertyImporter.new(property_data, feed_type).import
+        end
       end
 
       def file=(new_file)
@@ -48,6 +49,13 @@ module Bozzuto
         @properties = nil
       end
 
+      def data
+        @data ||= []
+      end
+
+      def properties
+        @properties ||= []
+      end
 
       private
 
@@ -58,11 +66,6 @@ module Bozzuto
       end
 
       # Builder methods. Override these in the subclass to build the objects
-      def build_properties(xml)
-        data.xpath('/PhysicalProperty/Property').map do |xml|
-          build_property(xml)
-        end
-      end
 
       def build_property(property)
         raise NotImplementedError, "#{self.class.to_s} must implement #build_property"

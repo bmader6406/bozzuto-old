@@ -173,7 +173,6 @@ module Bozzuto::ExternalFeed
 
           it "correctly manages the tmp files" do
             subject.expects(:touch_lock_file)
-            subject.expects(:process_feed)
             subject.expects(:touch_tmp_file)
             subject.expects(:rm_lock_file)
 
@@ -188,7 +187,6 @@ module Bozzuto::ExternalFeed
 
           it "correctly manages the tmp files" do
             subject.expects(:touch_lock_file)
-            subject.expects(:process_feed).raises(Exception)
             subject.expects(:touch_tmp_file).times(0)
             subject.expects(:rm_lock_file)
 

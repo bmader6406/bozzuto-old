@@ -51,13 +51,44 @@ module Bozzuto::ExternalFeed
         end
       end
 
-      describe "#data" do
-        context "file doesn't exist" do
+      describe "#process" do
+        context "when the file doesn't exist" do
           it "raises an exception" do
             expect {
-              subject.data
+              subject.process
             }.to raise_error(Bozzuto::ExternalFeed::Feed::FeedNotFound)
           end
+        end
+
+        context "when the file exists" do
+          subject { Bozzuto::ExternalFeed::Feed.new(Rails.root.join('test/files/rent_cafe.xml')) }
+
+          it "has the NodeFinder parse the feed file" do
+            mock('NodeFinder').tap do |finder|
+              NodeFinder.expects(:new).with(subject).returns(finder)
+
+              finder.expects(:parse)
+
+              subject.process
+            end
+          end
+        end
+      end
+
+      describe "#collect" do
+        before do
+          @data     = mock('Bozzuto::ExternalFeed::Property')
+          @importer = mock('Bozzuto::ExternalFeed::PropertyImporter')
+
+          subject.stubs(:build_property).returns(@data)
+        end
+
+        it "has the PropertyImporter import the property with the built property data and current feed type" do
+          PropertyImporter.stubs(:new).with(@data, subject.feed_type).returns(@importer)
+
+          @importer.expects(:import)
+
+          subject.collect(:property_node)
         end
       end
 
