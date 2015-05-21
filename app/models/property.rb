@@ -16,11 +16,13 @@ class Property < ActiveRecord::Base
       ['Project', 'Project']
   ]
 
+  #:nocov:
   PROPERTY_TYPE.each do |_, type|
     define_method "#{type.underscore}?" do
       self.type == type
     end
   end
+  #:nocov:
 
   has_friendly_id :id_and_title,
     :use_slug => true,
