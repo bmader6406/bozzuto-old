@@ -12,7 +12,7 @@ module Bozzuto::ExternalFeed
 
         @feed.stubs(:collect)
         @xml.stubs(:remove_namespaces!).returns(@xml)
-        @xml.stubs(:children).returns([@node])
+        @xml.stubs(:at).with('./Property').returns(@node)
       end
 
       subject do
@@ -30,19 +30,6 @@ module Bozzuto::ExternalFeed
           @feed.expects(:collect).with(@node).times(2)
 
           subject.parse
-        end
-
-        context "when there's invalid UTF-8 byte sequences in the given feed file" do
-          before do
-            @invalid = "<Property>Boom\xA0Town</Property>".force_encoding('UTF-8')
-            ::File.stubs(:open).returns([@invalid])
-          end
-          
-          it "catches the error and resolves encoding issues" do
-            subject.string.expects(:<<)
-
-            subject.parse
-          end
         end
       end
     end
