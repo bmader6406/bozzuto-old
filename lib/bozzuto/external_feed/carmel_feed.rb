@@ -7,10 +7,10 @@ module Bozzuto
 
       def build_property(property)
         Bozzuto::ExternalFeed::Property.new(
-          :title              => string_at(property, "./PropertyID/*/*[contains(local-name(), 'MarketingName')]"),
+          :title              => string_at(property, './PropertyID/Identification/MarketingName'),
           :city               => 'Falls Church', # Workaround -- feed will not provide address info
           :state              => 'VA',           # Using a default city since it's a required field
-          :external_cms_id    => string_at(property, "./PropertyID/*/*[contains(local-name(), 'PrimaryID')]"),
+          :external_cms_id    => string_at(property, './PropertyID/Identification/PrimaryID'),
           :external_cms_type  => feed_type.to_s,
           :floor_plans        => build_floor_plans(property),
           :office_hours       => [], # Carmel does not contain any office hour data
