@@ -127,7 +127,7 @@ module Bozzuto::ExternalFeed
 
       return if plan.nil?
 
-      find_or_initialize_unit(unit_data) do |unit|
+      find_or_initialize_unit(plan, unit_data) do |unit|
         unit.attributes = unit_data.database_attributes
         unit.floor_plan = plan
         save(unit)
@@ -188,8 +188,8 @@ module Bozzuto::ExternalFeed
       plan
     end
 
-    def find_or_initialize_unit(data)
-      unit = ::ApartmentUnit.find_or_initialize_by_external_cms_id_and_external_cms_type(
+    def find_or_initialize_unit(plan, data)
+      unit = plan.apartment_units.find_or_initialize_by_external_cms_id_and_external_cms_type(
         data.external_cms_id,
         data.external_cms_type
       )
