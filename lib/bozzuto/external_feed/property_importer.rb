@@ -1,5 +1,7 @@
 module Bozzuto::ExternalFeed
   class PropertyImporter < Struct.new(:property_data, :feed_type)
+    include Logging
+
     def import
       if property.persisted?
         import_floor_plans
@@ -23,7 +25,7 @@ module Bozzuto::ExternalFeed
 
         set_location_data_for(p)
 
-        p.save
+        save(p)
       end
     end
 
@@ -61,7 +63,7 @@ module Bozzuto::ExternalFeed
           plan.floor_plan_group = find_floor_plan_group(plan_data)
         end
 
-        plan.save
+        save(plan)
       end
     end
 
@@ -80,7 +82,7 @@ module Bozzuto::ExternalFeed
 
       amenity.attributes = amenity_data.database_attributes
 
-      amenity.save
+      save(amenity)
     end
 
     def delete_orphaned_floor_plans
@@ -128,7 +130,7 @@ module Bozzuto::ExternalFeed
       find_or_initialize_unit(unit_data) do |unit|
         unit.attributes = unit_data.database_attributes
         unit.floor_plan = plan
-        unit.save
+        save(unit)
       end
     end
 
@@ -147,7 +149,7 @@ module Bozzuto::ExternalFeed
 
       amenity.attributes = amenity_data.database_attributes
 
-      amenity.save
+      save(amenity)
     end
 
     def import_files(unit, unit_data)
@@ -160,7 +162,7 @@ module Bozzuto::ExternalFeed
       find_or_initialize_file(file_data) do |file|
         file.attributes  = file_data.database_attributes
         file.feed_record = feed_record
-        file.save
+        save(file)
       end
     end
 
@@ -223,6 +225,10 @@ module Bozzuto::ExternalFeed
       return unless state.present?
 
       state.cities.find_or_create_by_name(city_name)
+    end
+
+    def save(record)
+      record.save or log_error("Failed to save #{record.class} due to errors: #{record.errors}")
     end
   end
 end

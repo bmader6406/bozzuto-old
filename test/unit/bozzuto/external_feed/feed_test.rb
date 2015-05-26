@@ -80,6 +80,7 @@ module Bozzuto::ExternalFeed
           @data     = mock('Bozzuto::ExternalFeed::Property')
           @importer = mock('Bozzuto::ExternalFeed::PropertyImporter')
 
+          @data.stubs(:title).returns('Title')
           subject.stubs(:build_property).returns(@data)
         end
 

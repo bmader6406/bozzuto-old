@@ -1,6 +1,10 @@
+require 'benchmark'
+
 module Bozzuto
   module ExternalFeed
     class Feed
+      include Logging
+
       class_attribute :feed_type
       class_attribute :default_file
 
@@ -20,6 +24,10 @@ module Bozzuto
         def feed_name(type)
           I18n.t!("bozzuto.feeds.#{type}") if type.present?
         end
+
+        def logger
+          @logger ||= Logger.new($stdout)
+        end
       end
 
       def initialize(file = nil)
@@ -33,13 +41,20 @@ module Bozzuto
       def process
         assert_file_exists
 
-        NodeFinder.new(self).parse
+        report { NodeFinder.new(self).parse }
       end
 
       def collect(property_node)
+        log_debug("Building property data from XML property node...")
+
         build_property(property_node).tap do |property_data|
+          log_info("Finished building property data from XML for #{property_data.title}.")
+          log_debug("Importing property data for #{property_data.title}...")
+
           data       << property_data
           properties << PropertyImporter.new(property_data, feed_type).import
+
+          log_info("Finished importing property data for #{property_data.title}.")
         end
       end
 
@@ -203,6 +218,12 @@ module Bozzuto
         return if node.nil? || node['Year'].nil? || node['Month'].nil? || node['Day'].nil?
 
         Date.new(node['Year'].to_i, node['Month'].to_i, node['Day'].to_i)
+      end
+
+      def report
+        Benchmark.realtime { yield }.tap do |result|
+          log_warn("#{feed_type.to_s.titleize} feed finished processing after #{(result / 60).round(2)} minutes.")
+        end
       end
     end
   end
