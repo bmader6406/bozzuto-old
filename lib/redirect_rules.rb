@@ -176,6 +176,11 @@ class RedirectRules
         %r{.*},
         'http://www.bozzuto.com/apartments/communities/213-timberlawn-crescent',
         :if => Proc.new { |rack_env| rack_env['SERVER_NAME'] =~ /timberlawncrescent\.com$/ }
+      ),
+
+      Rule.new(
+        %r{^/apartments/ratings-reviews(\?.*)?},
+        'http://www.bozzutolistens.com/'
       )
     ]
     #:nocov:
