@@ -51,10 +51,6 @@ class Bozzuto::Neighborhoods::TierShufflerTest < ActiveSupport::TestCase
         tier3.should include @community_5
         tier3.should include @community_6
       end
-
-      it "shuffles the order of communities within each tier" do
-        subject.shuffled_communities.should_not == subject.communities
-      end
     end
   end
 end
