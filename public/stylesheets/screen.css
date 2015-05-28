@@ -2989,13 +2989,15 @@ div.wysiwyg ul li {
   }
 
   .floor-plan-overlay {
-    opacity: 0;
-    -moz-opacity: 0;
-    filter:alpha(opacity=0);
-    -moz-box-shadow: 0 0 30px rgba(0,0,0,0.1);
-    -webkit-box-shadow: 0 0 30px rgba(0,0,0,0.1);
+    background-color: #fff;
     box-shadow: 0 0 30px rgba(0,0,0,0.1);
+    filter:alpha(opacity=0);
     max-width: 960px;
+    -moz-box-shadow: 0 0 30px rgba(0,0,0,0.1);
+    -moz-opacity: 0;
+    opacity: 0;
+    padding: 30px;
+    -webkit-box-shadow: 0 0 30px rgba(0,0,0,0.1);
   }
 
   #featured-floor-plans h3,
