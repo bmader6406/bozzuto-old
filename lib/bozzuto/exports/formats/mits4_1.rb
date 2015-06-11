@@ -96,7 +96,7 @@ module Bozzuto::Exports
         }.keep_if { |type, value| value.present? }
 
         parent_node.tag!('Amenity', types) do |node|
-          node.tag! 'Description', amenity.description if amenity.description?
+          node.tag! 'Description', amenity.description
           node.tag! 'Rank',        amenity.position
         end
       end
@@ -163,26 +163,26 @@ module Bozzuto::Exports
 
       def unit_info_node(parent_node, unit)
         parent_node.tag!('Units') do |node|
-          node.tag! 'MarketingName',                 unit.marketing_name if unit.marketing_name?
-          node.tag! 'UnitType',                      unit.unit_type if unit.unit_type?
-          node.tag! 'UnitBedrooms',                  unit.bedrooms if unit.bedrooms?
-          node.tag! 'UnitBathrooms',                 unit.bathrooms if unit.bathrooms?
-          node.tag! 'MinSquareFeet',                 unit.min_square_feet if unit.min_square_feet?
-          node.tag! 'MaxSquareFeet',                 unit.max_square_feet if unit.max_square_feet?
-          node.tag! 'SquareFootType',                unit.square_foot_type if unit.square_foot_type?
-          node.tag! 'UnitRent',                      unit.unit_rent if unit.unit_rent?
-          node.tag! 'MarketRent',                    unit.market_rent if unit.market_rent?
-          node.tag! 'UnitEconomicStatus',            unit.economic_status if unit.economic_status?
-          node.tag! 'UnitEconomicStatusDescription', unit.economic_status_description if unit.economic_status_description?
-          node.tag! 'UnitOccupancyStatus',           unit.occupancy_status if unit.occupancy_status?
-          node.tag! 'UnitLeasedStatus',              unit.leased_status if unit.leased_status?
-          node.tag! 'UnitLeasedStatusDescription',   unit.leased_status_description if unit.leased_status_description?
-          node.tag! 'NumberOccupants',               unit.number_occupants if unit.number_occupants?
-          node.tag! 'FloorplanName',                 unit.floor_plan_name if unit.floor_plan_name?
-          node.tag! 'PhaseName',                     unit.phase_name if unit.phase_name?
-          node.tag! 'BuildingName',                  unit.building_name if unit.building_name?
+          node.tag! 'MarketingName',                 unit.marketing_name
+          node.tag! 'UnitType',                      unit.unit_type
+          node.tag! 'UnitBedrooms',                  unit.bedrooms
+          node.tag! 'UnitBathrooms',                 unit.bathrooms
+          node.tag! 'MinSquareFeet',                 unit.min_square_feet
+          node.tag! 'MaxSquareFeet',                 unit.max_square_feet
+          node.tag! 'SquareFootType',                unit.square_foot_type
+          node.tag! 'UnitRent',                      unit.unit_rent
+          node.tag! 'MarketRent',                    unit.market_rent
+          node.tag! 'UnitEconomicStatus',            unit.economic_status
+          node.tag! 'UnitEconomicStatusDescription', unit.economic_status_description
+          node.tag! 'UnitOccupancyStatus',           unit.occupancy_status
+          node.tag! 'UnitLeasedStatus',              unit.leased_status
+          node.tag! 'UnitLeasedStatusDescription',   unit.leased_status_description
+          node.tag! 'NumberOccupants',               unit.number_occupants
+          node.tag! 'FloorplanName',                 unit.floor_plan_name
+          node.tag! 'PhaseName',                     unit.phase_name
+          node.tag! 'BuildingName',                  unit.building_name
 
-          address_node(parent_node, unit) if unit.address_line_1? && unit.city? && unit.state?
+          address_node(parent_node, unit)
         end
       end
 
@@ -223,11 +223,11 @@ module Bozzuto::Exports
       def address_node(parent_node, record)
         parent_node.tag!('Address', 'AddressType' => 'property') do |node|
           node.tag! 'AddressLine1', record.address_line_1
-          node.tag! 'AddressLine2', record.address_line_2 if record.respond_to?(:address_line_2) && record.address_line_2.present?
+          node.tag! 'AddressLine2', (record.address_line_2.presence if record.respond_to?(:address_line_2))
           node.tag! 'City',         record.city
           node.tag! 'State',        record.state
-          node.tag! 'PostalCode',   record.zip if record.zip.present?
-          node.tag! 'CountyName',   record.county if record.respond_to?(:county) && record.county.present?
+          node.tag! 'PostalCode',   record.zip.presence
+          node.tag! 'CountyName',   (record.county.presence if record.respond_to?(:county))
         end
       end
 
@@ -238,8 +238,8 @@ module Bozzuto::Exports
         }.keep_if { |type, value| value.present? }
 
         parent_node.tag!('Amenity', types) do |node|
-          node.tag! 'Description', amenity.description if amenity.description?
-          node.tag! 'Rank',        amenity.rank if amenity.rank?
+          node.tag! 'Description', amenity.description
+          node.tag! 'Rank',        amenity.rank
         end
       end
 
@@ -269,15 +269,15 @@ module Bozzuto::Exports
 
       def file_node(parent_node, file, id = nil)
         parent_node.tag!('File', 'FileID' => id || file.feed_record_id, 'Active' => file.active) do |node|
-          node.tag! 'Description', file.description if file.description?
+          node.tag! 'Description', file.description
           node.tag! 'FileType',    file.file_type
           node.tag! 'Name',        file.name
-          node.tag! 'Caption',     file.caption if file.caption?
+          node.tag! 'Caption',     file.caption
           node.tag! 'Format',      file.format
           node.tag! 'Src',         file.source
-          node.tag! 'Rank',        file.rank if file.rank?
-          node.tag! 'AdID',        file.ad_id if file.ad_id?
-          node.tag! 'AffiliateID', file.affiliate_id if file.affiliate_id?
+          node.tag! 'Rank',        file.rank
+          node.tag! 'AdID',        file.ad_id
+          node.tag! 'AffiliateID', file.affiliate_id
         end
       end
     end
