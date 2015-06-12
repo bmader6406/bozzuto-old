@@ -233,6 +233,13 @@ class MediaplexHelperTest < ActionView::TestCase
         assert_match /#{@tag.roi_name}=1/, code
         assert_match /mpuid=#{@mpuid}/, code
       end
+
+      should 'return the rocket fuel iframes' do
+        code = apartment_contact_mediaplex_code(@community, @email)
+
+        assert_match /20673499p\.rfihub\.com\/ca\.html/, code
+        assert_match /20673497p\.rfihub\.com\/ca\.html/, code
+      end
     end
   end
 
