@@ -3,7 +3,7 @@ module Bozzuto
     attr_reader :criteria
 
     def initialize(params = {})
-      @criteria = Criteria.new(params)
+      @criteria = Criteria.new.merge(params)
     end
 
     def results
@@ -86,81 +86,69 @@ module Bozzuto
       end
     end
 
-    class Criteria < Struct.new(:params)
-      STATE_CONDITION     = 'in_state'
-      CITY_CONDITION      = 'city_id_eq'
-      COUNTY_CONDITION    = 'county_id_eq'
-      LOCATION_CONDITIONS = [STATE_CONDITION, CITY_CONDITION, COUNTY_CONDITION]
-      BEDROOM_CONDITION   = 'with_any_floor_plan_groups'
-      MIN_RENT_CONDITION  = 'with_min_price'
-      MAX_RENT_CONDITION  = 'with_max_price'
-      RENT_RELEVANCY      = 500
-      BEDROOM_RELEVANCY   = 1
+    class Criteria < Hash
+      STATE_CONDITION             = 'in_state'
+      CITY_CONDITION              = 'city_id_eq'
+      COUNTY_CONDITION            = 'county_id_eq'
+      LOCATION_CONDITIONS         = [STATE_CONDITION, CITY_CONDITION, COUNTY_CONDITION]
+      BEDROOM_CONDITION           = 'having_all_floor_plan_groups'
+      BEDROOM_RELEVANCY_CONDITION = 'with_any_floor_plan_groups'
+      MIN_RENT_CONDITION          = 'with_min_price'
+      MAX_RENT_CONDITION          = 'with_max_price'
+      RENT_RELEVANCY              = 500
+
+      def value_for(key)
+        fetch(key, nil)
+      end
 
       def state
-        @state ||= State.find_by_id(params[STATE_CONDITION])
+        @state ||= State.find_by_id value_for(STATE_CONDITION)
       end
 
       def without_location
-        params.reject { |k, v| LOCATION_CONDITIONS.include? k }
+        reject { |k, v| LOCATION_CONDITIONS.include? k }
       end
 
       def adjusted_for_relevancy
         without_location
-          .merge(relevant_min_rent)
-          .merge(relevant_max_rent)
-          .merge(relevant_bedrooms)
+          .matching_any_bedroom_condition
+          .with_relevant_min_rent
+          .with_relevant_max_rent
           .with_indifferent_access
+      end
+
+      def matching_any_bedroom_condition
+        merge BEDROOM_RELEVANCY_CONDITION => delete(BEDROOM_CONDITION)
+      end
+
+      def with_relevant_min_rent
+        if min_rent.zero?
+          self
+        else
+          merge MIN_RENT_CONDITION => [min_rent - RENT_RELEVANCY, 0].max
+        end
+      end
+
+      def with_relevant_max_rent
+        if max_rent.zero?
+          self
+        else
+          merge MAX_RENT_CONDITION => max_rent + RENT_RELEVANCY
+        end
       end
 
       private
 
       def min_rent
-        @min_rent ||= params[MIN_RENT_CONDITION].to_f
+        @min_rent ||= value_for(MIN_RENT_CONDITION).to_f
       end
 
       def max_rent
-        @max_rent ||= params[MAX_RENT_CONDITION].to_f
+        @max_rent ||= value_for(MAX_RENT_CONDITION).to_f
       end
 
       def bedrooms
-        @bedrooms ||= params[BEDROOM_CONDITION].to_a.reject(&:empty?).map(&:to_i)
-      end
-
-      def relevant_min_rent
-        if min_rent.zero?
-          {}
-        else
-          { MIN_RENT_CONDITION => [min_rent - RENT_RELEVANCY, 0].max }
-        end
-      end
-
-      def relevant_max_rent
-        if max_rent.zero?
-          {}
-        else
-          { MAX_RENT_CONDITION => max_rent + RENT_RELEVANCY }
-        end
-      end
-
-      def smallest_floorplan
-        if bedrooms.any?
-          [bedrooms.min - BEDROOM_RELEVANCY, ApartmentFloorPlanGroup.studio.id].max
-        end
-      end
-
-      def largest_floorplan
-        if bedrooms.any?
-          [bedrooms.max + BEDROOM_RELEVANCY, ApartmentFloorPlanGroup.penthouse.id].min
-        end
-      end
-
-      def relevant_bedrooms
-        if bedrooms.any?
-          { BEDROOM_CONDITION => [*smallest_floorplan..largest_floorplan] }
-        else
-          {}
-        end
+        @bedrooms ||= value_for(BEDROOM_CONDITION).to_a.reject(&:empty?).map(&:to_i)
       end
     end
   end

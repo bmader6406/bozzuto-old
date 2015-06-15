@@ -81,10 +81,17 @@ module Bozzuto
           end
 
           context "but there are relevant communities based on the given floor plans" do
-            subject { CommunitySearch.new('with_any_floor_plan_groups' => [ApartmentFloorPlanGroup.penthouse.id.to_s]) }
+            subject do
+              CommunitySearch.new(
+                'having_all_floor_plan_groups' => [
+                  ApartmentFloorPlanGroup.two_bedrooms.id.to_s,
+                  ApartmentFloorPlanGroup.three_bedrooms.id.to_s
+                ]
+              )
+            end
 
             it "returns the relevant communities" do
-              subject.results.should == [@va_community]
+              subject.results.should == [@md_community, @va_community]
             end
           end
 
