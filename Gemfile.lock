@@ -244,3 +244,6 @@ DEPENDENCIES
   will_paginate
   yajl-ruby
   yboss
+
+BUNDLED WITH
+   1.10.3
