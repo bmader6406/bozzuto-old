@@ -23,11 +23,11 @@ require 'mocha'
 require 'rspec/expectations'
 require 'shoulda_macros/paperclip'
 
+require Rails.root.join('test', 'support', 'shared_examples')
 require Rails.root.join('test', 'blueprints')
 require Rails.root.join('vendor', 'plugins', 'typus', 'lib', 'extensions', 'object')
 
 Dir[Rails.root.join("test/support/**/*.rb")].each { |f| require f }
-
 
 VCR.configure do |c|
   c.cassette_library_dir = 'test/vcr_cassettes'
@@ -48,6 +48,7 @@ class ActiveSupport::TestCase
   extend  Paperclip::Shoulda
   include Bozzuto::Test::Extensions
   include Bozzuto::Test::ModelExtensions
+  extend  SharedExamples
 
   self.use_transactional_fixtures = true
   self.use_instantiated_fixtures  = false
