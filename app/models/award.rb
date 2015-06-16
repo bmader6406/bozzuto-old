@@ -1,6 +1,7 @@
 class Award < ActiveRecord::Base
   include Bozzuto::Publishable
   include Bozzuto::Featurable
+  include Bozzuto::Homepage::FeaturableNews
 
   cattr_reader :per_page
   @@per_page = 15
