@@ -31,4 +31,12 @@ Bozzuto::Application.configure do
    :port    => 1025,
    :domain  => 'bozzuto.local'
   }
+
+  # Ensures that models are loaded on every request since cache_classes is false
+  # Necessary for functionality relying on included hooks (Bozzuto::Homepage::FeaturableNews)
+  config.to_prepare do
+    Dir.glob("#{Rails.root}/app/models/*.rb").each do |file|
+      File.basename(file, '.rb').camelize.constantize.inspect rescue nil
+    end
+  end
 end
