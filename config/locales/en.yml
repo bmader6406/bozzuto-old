@@ -159,6 +159,7 @@ en:
       area_membership:
         apartment_community: Apartment Community
       award:
+        home_page_image: Home Page Thumbnail
         published_at: Published At
         show_as_featured_news: Show as Featured News
       body_slide:
@@ -337,6 +338,7 @@ en:
         show_to_mobile: 'Show on Mobile'
         thumbnail_tag: ' '
       press_release:
+        home_page_image: Home Page Thumbnail
         meta_description: Meta Description
         meta_keywords: Meta Keywords
         meta_title: Meta Title
@@ -481,7 +483,8 @@ en:
         area_type: "This determines what will be shown on the Area's listing page:<br /><strong>Neighborhoods</strong>: Shows the associated Neighborhoods<br /><strong>Communities</strong>: Shows the associated Apartment Communities (see Area Memberships below)"
       award:
         image: Image dimensions should be 150x150
-        show_as_featured_news: "When checked, this Award will populate the 'Featured News' section on the homepage."
+        home_page_image: Image dimensions should be 380x150.<br />This image is shown on the home page when this Award appears under &ldquo;Featured News&rdquo;
+        show_as_featured_news: "When checked, this Award will populate the 'Featured News' section on the home page."
       body_slide:
         image: Image dimensions should be 840x375
       bozzuto_blog_post:
@@ -561,9 +564,9 @@ en:
         description: This text will be shown below on this Community's listing, below the listing image.
         listing_image: Image dimensions should be 300x234
       news_post:
-        home_page_image: Image dimensions should be 380x150.<br />This image is shown on the home page when this news post appears under &ldquo;Latest News&rdquo;
+        home_page_image: Image dimensions should be 380x150.<br />This image is shown on the home page when this News Post appears under &ldquo;Featured News&rdquo;
         image: Image dimensions should be 150x150
-        show_as_featured_news: "When checked, this News Post will populate the 'Featured News' section on the homepage."
+        show_as_featured_news: "When checked, this News Post will populate the 'Featured News' section on the home page."
       office_hour:
         opens_at: 'Enter the hour (ex: 6) or hour and minutes (ex: 6:30).'
         closes_at: 'Enter the hour (ex: 6) or hour and minutes (ex: 6:30).'
@@ -579,7 +582,8 @@ en:
         image: Image dimensions should be 870x375
         show_to_mobile: Checking this option will cause this photo to appear on the mobile site.
       press_release:
-        show_as_featured_news: "When checked, this Press Release will populate the 'Featured News' section on the homepage."
+        home_page_image: Image dimensions should be 380x150.<br />This image is shown on the home page when this Press Release appears under &ldquo;Featured News&rdquo;
+        show_as_featured_news: "When checked, this Press Release will populate the 'Featured News' section on the home page."
       project:
         featured_mobile: Featured mobile projects are shown on the mobile version of the site
         page_header: Header beneath the main slideshow.  If blank, defaults to the Section name.

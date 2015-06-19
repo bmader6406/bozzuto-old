@@ -143,7 +143,7 @@ Award:
   fields:
     default: title, published, published_at
     list: title, featured, published, published_at
-    form: title, published, published_at, featured, image, body, show_as_featured_news
+    form: title, published, published_at, featured, image, body, show_as_featured_news, home_page_image
     options:
       ckeditor: body
       booleans:
@@ -657,7 +657,7 @@ NewsPost:
   fields:
     default: title, published, published_at
     list: title, featured, published, published_at
-    form: title, published, published_at, featured, meta_title, meta_description, meta_keywords, image, home_page_image, body, show_as_featured_news
+    form: title, published, published_at, featured, meta_title, meta_description, meta_keywords, image, body, show_as_featured_news, home_page_image
     options:
       ckeditor: body
       booleans:
@@ -725,7 +725,7 @@ PressRelease:
   fields:
     default: title, published, published_at
     list: title, published, published_at
-    form: title, published, published_at, featured, body, meta_title, meta_description, meta_keywords, show_as_featured_news
+    form: title, published, published_at, featured, body, meta_title, meta_description, meta_keywords, show_as_featured_news, home_page_image
     options:
       ckeditor: body
       booleans:
