@@ -1,14 +1,28 @@
 module Bozzuto
   module Homepage
     module FeaturableNews
-      @@featurable_news_classes ||= [
-        Award,
-        NewsPost,
-        PressRelease
-      ]
+      def self.featurable_news_classes
+        @@featurable_news_classes
+      end
+
+      def self.featured_news
+        featurable_news_classes.map do |klass|
+          klass.find_by_show_as_featured_news(true)
+        end.compact.first
+      end
 
       def self.included(base)
+        @@featurable_news_classes ||= []
+        @@featurable_news_classes << base
+
         base.class_eval do
+          has_attached_file :home_page_image,
+            :url             => '/system/:class/:id/home_page_image_:style_:id.:extension',
+            :styles          => { :normal => '380x150#' },
+            :default_style   => :normal,
+            :default_url     => '/images/home-latest-news-placeholder.jpg',
+            :convert_options => { :all => '-quality 80 -strip' }
+
           validates_inclusion_of :show_as_featured_news, :in => [true, false]
 
           after_save :set_only_featured_news, :if => :show_as_featured_news?

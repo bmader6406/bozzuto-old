@@ -9,9 +9,6 @@ class NewsPostTest < ActiveSupport::TestCase
 
     should have_and_belong_to_many(:sections)
 
-    should have_attached_file(:image)
-    should have_attached_file(:home_page_image)
-
     it_should_behave_like "a featurable news item", NewsPost
 
     describe "#typus_name" do

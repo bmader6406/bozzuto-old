@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150615201227) do
+ActiveRecord::Schema.define(:version => 20150619140529) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -323,16 +323,18 @@ ActiveRecord::Schema.define(:version => 20150615201227) do
   add_index "assets", ["typus_user_id"], :name => "index_assets_on_typus_user_id"
 
   create_table "awards", :force => true do |t|
-    t.string   "title",                                    :null => false
+    t.string   "title",                                           :null => false
     t.text     "body"
-    t.boolean  "published",             :default => false, :null => false
+    t.boolean  "published",                    :default => false, :null => false
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"
     t.string   "image_content_type"
-    t.boolean  "featured",              :default => false
-    t.boolean  "show_as_featured_news", :default => false, :null => false
+    t.boolean  "featured",                     :default => false
+    t.boolean  "show_as_featured_news",        :default => false, :null => false
+    t.string   "home_page_image_file_name"
+    t.string   "home_page_image_content_type"
   end
 
   create_table "awards_sections", :id => false, :force => true do |t|
@@ -939,17 +941,19 @@ ActiveRecord::Schema.define(:version => 20150615201227) do
   end
 
   create_table "press_releases", :force => true do |t|
-    t.string   "title",                                                        :null => false
-    t.text     "body",                  :limit => 16777215
-    t.boolean  "published",                                 :default => false, :null => false
+    t.string   "title",                                                               :null => false
+    t.text     "body",                         :limit => 16777215
+    t.boolean  "published",                                        :default => false, :null => false
     t.datetime "published_at"
     t.string   "meta_title"
     t.string   "meta_description"
     t.string   "meta_keywords"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "featured",                                  :default => false
-    t.boolean  "show_as_featured_news",                     :default => false, :null => false
+    t.boolean  "featured",                                         :default => false
+    t.boolean  "show_as_featured_news",                            :default => false, :null => false
+    t.string   "home_page_image_file_name"
+    t.string   "home_page_image_content_type"
   end
 
   create_table "press_releases_sections", :id => false, :force => true do |t|

@@ -18,13 +18,6 @@ class NewsPost < ActiveRecord::Base
     :default_style   => :thumb,
     :convert_options => { :all => '-quality 80 -strip' }
 
-  has_attached_file :home_page_image,
-    :url             => '/system/:class/:id/home_page_image_:style_:id.:extension',
-    :styles          => { :normal => '380x150#' },
-    :default_style   => :normal,
-    :default_url     => '/images/home-latest-news-placeholder.jpg',
-    :convert_options => { :all => '-quality 80 -strip' }
-
   def typus_name
     title
   end
