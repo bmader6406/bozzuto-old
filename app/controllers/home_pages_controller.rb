@@ -16,12 +16,16 @@ class HomePagesController < ApplicationController
     mobile? ? 'application' : 'homepage'
   end
 
-  def latest_news
+  def featured_news
+    @featured_news ||= Bozzuto::Homepage::FeaturableNews.featured_news || default_news
+  end
+  helper_method :featured_news
+
+  def default_news
     base_scope = NewsPost.published.latest(1)
 
-    @latest_news ||= base_scope.featured.first || base_scope.first
+    base_scope.featured.first || base_scope.first
   end
-  helper_method :latest_news
 
   def latest_awards
     #:nocov:

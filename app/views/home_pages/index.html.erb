@@ -81,7 +81,7 @@
         </div>
 
         <div class="row">
-          <%= if_present?(latest_news) do |post| %>
+          <%= if_present?(featured_news) do |post| %>
             <div class="latest-news article">
               <h3><%= link_to 'Featured News', news_posts_path(@section) %></h3>
 

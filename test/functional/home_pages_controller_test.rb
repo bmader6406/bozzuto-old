@@ -26,23 +26,39 @@ class HomePagesControllerTest < ActionController::TestCase
       end
     end
 
-    context '#latest_news' do
-      setup do
+    context "#featured_news" do
+      before do
         @unpublished = NewsPost.make(:unpublished)
         @published   = NewsPost.make(:published_at => 3.days.ago)
       end
 
-      context 'with no featured post' do
-        should 'return the published post' do
-          assert_equal @published, @controller.send(:latest_news)
+      context "when there's a featured news item" do
+        before do
+          @award         = Award.make(:show_as_featured_news => false)
+          @press_release = PressRelease.make(:show_as_featured_news => true)
+          @news_post     = NewsPost.make(:show_as_featured_news => false)
+        end
+
+        it "grabs the featured news item" do
+          @controller.send(:featured_news).should == @press_release
         end
       end
 
-      context 'with a featured award' do
-        setup { @featured = NewsPost.make(:published_at => 3.days.ago, :featured => true) }
+      context "when there's no featured news item" do
+        context "but there's a featured news post" do
+          before do
+            @featured = NewsPost.make(:published_at => 3.days.ago, :featured => true)
+          end
 
-        should 'return the featured and published award' do
-          assert_equal @featured, @controller.send(:latest_news)
+          it "grabs the featured news post" do
+            @controller.send(:featured_news).should == @featured
+          end
+        end
+
+        context "or featured news post" do
+          it "grabs the most recent, published news post" do
+            @controller.send(:featured_news).should == @published
+          end
         end
       end
     end
