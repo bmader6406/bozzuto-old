@@ -143,12 +143,13 @@ Award:
   fields:
     default: title, published, published_at
     list: title, featured, published, published_at
-    form: title, published, published_at, featured, image, body
+    form: title, published, published_at, featured, image, body, show_as_featured_news
     options:
       ckeditor: body
       booleans:
         published: ['Yes', 'No']
         featured: ['Yes', 'No']
+        show_as_featured_news: ['Yes', 'No']
   order_by: -published_at
   relationships: sections
   filters:
@@ -656,12 +657,13 @@ NewsPost:
   fields:
     default: title, published, published_at
     list: title, featured, published, published_at
-    form: title, published, published_at, featured, meta_title, meta_description, meta_keywords, image, home_page_image, body
+    form: title, published, published_at, featured, meta_title, meta_description, meta_keywords, image, home_page_image, body, show_as_featured_news
     options:
       ckeditor: body
       booleans:
         published: ['Yes', 'No']
         featured: ['Yes', 'No']
+        show_as_featured_news: ['Yes', 'No']
   order_by: -published_at
   relationships: sections
   filters:
@@ -723,11 +725,12 @@ PressRelease:
   fields:
     default: title, published, published_at
     list: title, published, published_at
-    form: title, published, published_at, featured, body, meta_title, meta_description, meta_keywords
+    form: title, published, published_at, featured, body, meta_title, meta_description, meta_keywords, show_as_featured_news
     options:
       ckeditor: body
       booleans:
         published: ['Yes', 'No']
+        show_as_featured_news: ['Yes', 'No']
   order_by: -published_at
   relationships: sections
   filters:
