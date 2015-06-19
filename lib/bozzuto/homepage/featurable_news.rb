@@ -1,11 +1,13 @@
 module Bozzuto
   module Homepage
     module FeaturableNews
-      @@featurable_news_classes = []
+      @@featurable_news_classes ||= [
+        Award,
+        NewsPost,
+        PressRelease
+      ]
 
       def self.included(base)
-        @@featurable_news_classes << base
-
         base.class_eval do
           validates_inclusion_of :show_as_featured_news, :in => [true, false]
 
