@@ -233,13 +233,6 @@ class MediaplexHelperTest < ActionView::TestCase
         assert_match /#{@tag.roi_name}=1/, code
         assert_match /mpuid=#{@mpuid}/, code
       end
-
-      should 'return the rocket fuel iframes' do
-        code = apartment_contact_mediaplex_code(@community, @email)
-
-        assert_match /20673499p\.rfihub\.com\/ca\.html/, code
-        assert_match /20673497p\.rfihub\.com\/ca\.html/, code
-      end
     end
   end
 
@@ -347,6 +340,18 @@ class MediaplexHelperTest < ActionView::TestCase
         code = community_contact_thank_you_mediaplex_code(@community, '')
 
         assert_nil code
+      end
+    end
+
+    context "#mediaplex_rocket_fuel_tracking_pixel" do
+      it "returns the rocket fuel tracking pixel" do
+        assert_match /Bozzuto Tracking Pixel/, mediaplex_rocket_fuel_tracking_pixel
+      end
+    end
+
+    context "#mediaplex_rocket_fuel_conversion_pixel" do
+      it "returns the rocket fuel conversion pixel" do
+        assert_match /Bozzuto Conversion Pixel/, mediaplex_rocket_fuel_conversion_pixel
       end
     end
   end

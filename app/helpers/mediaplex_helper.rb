@@ -83,64 +83,6 @@ module MediaplexHelper
         <!-- Begin Mediaplex Code -->
         <iframe src="http://img-cdn.mediaplex.com/0/16798/universal.html?page_name=#{page_name}&#{roi_name}=1&mpuid=#{mpuid}" HEIGHT=1 WIDTH=1 FRAMEBORDER=0></iframe>
         <!-- End Mediaplex Code -->
-
-        <!-- Code for Action: Bozzuto Conversion Pixel 5.21.15 -->
-        <!-- Begin Rocket Fuel Conversion Action Tracking Code Version 9 -->
-        <script type='text/javascript'>
-        (function() {
-                var w = window, d = document;
-                var s = d.createElement('script');
-                s.setAttribute('async', 'true');
-                s.setAttribute('type', 'text/javascript');
-                s.setAttribute('src', '//c1.rfihub.net/js/tc.min.js');
-                var f = d.getElementsByTagName('script')[0];
-                f.parentNode.insertBefore(s, f);
-                if (typeof w['_rfi'] !== 'function') {
-                        w['_rfi']=function() {
-                                w['_rfi'].commands = w['_rfi'].commands || [];
-                                w['_rfi'].commands.push(arguments);
-                        };
-                }
-                _rfi('setArgs', 'ver', '9');
-                _rfi('setArgs', 'rb', '19725');
-                _rfi('setArgs', 'ca', '20673499');
-                _rfi('track');
-        })();
-        </script>
-        <noscript>
-          <iframe src='//20673499p.rfihub.com/ca.html?rb=19725&ca=20673499&ra=<mpuid/>' style='display:none;padding:0;margin:0' width='0' height='0'>
-        </iframe>
-        </noscript>
-        <!-- End Rocket Fuel Conversion Action Tracking Code Version 9 -->
-
-        <!-- Code for Action: Bozzuto Tracking Pixel 5.21.15 -->
-        <!-- Begin Rocket Fuel Conversion Action Tracking Code Version 9 -->
-        <script type='text/javascript'>
-        (function() {
-                var w = window, d = document;
-                var s = d.createElement('script');
-                s.setAttribute('async', 'true');
-                s.setAttribute('type', 'text/javascript');
-                s.setAttribute('src', '//c1.rfihub.net/js/tc.min.js');
-                var f = d.getElementsByTagName('script')[0];
-                f.parentNode.insertBefore(s, f);
-                if (typeof w['_rfi'] !== 'function') {
-                        w['_rfi']=function() {
-                                w['_rfi'].commands = w['_rfi'].commands || [];
-                                w['_rfi'].commands.push(arguments);
-                        };
-                }
-                _rfi('setArgs', 'ver', '9');
-                _rfi('setArgs', 'rb', '19725');
-                _rfi('setArgs', 'ca', '20673497');
-                _rfi('track');
-        })();
-        </script>
-        <noscript>
-          <iframe src='//20673497p.rfihub.com/ca.html?rb=19725&ca=20673497&ra=<mpuid/>' style='display:none;padding:0;margin:0' width='0' height='0'>
-        </iframe>
-        </noscript>
-        <!-- End Rocket Fuel Conversion Action Tracking Code Version 9 -->
       END
     end
   end
@@ -227,6 +169,72 @@ module MediaplexHelper
 
   def render_mediaplex_code(code)
     content_for(:mediaplex_code, code)
+  end
+
+  def mediaplex_rocket_fuel_tracking_pixel
+    <<-END.html_safe
+      <!-- Code for Action: Bozzuto Tracking Pixel 5.21.15 -->
+      <!-- Begin Rocket Fuel Conversion Action Tracking Code Version 9 -->
+      <script type='text/javascript'>
+      (function() {
+              var w = window, d = document;
+              var s = d.createElement('script');
+              s.setAttribute('async', 'true');
+              s.setAttribute('type', 'text/javascript');
+              s.setAttribute('src', '//c1.rfihub.net/js/tc.min.js');
+              var f = d.getElementsByTagName('script')[0];
+              f.parentNode.insertBefore(s, f);
+              if (typeof w['_rfi'] !== 'function') {
+                      w['_rfi']=function() {
+                              w['_rfi'].commands = w['_rfi'].commands || [];
+                              w['_rfi'].commands.push(arguments);
+                      };
+              }
+              _rfi('setArgs', 'ver', '9');
+              _rfi('setArgs', 'rb', '19725');
+              _rfi('setArgs', 'ca', '20673497');
+              _rfi('track');
+      })();
+      </script>
+      <noscript>
+        <iframe src='//20673497p.rfihub.com/ca.html?rb=19725&ca=20673497&ra=<mpuid/>' style='display:none;padding:0;margin:0' width='0' height='0'>
+      </iframe>
+      </noscript>
+      <!-- End Rocket Fuel Conversion Action Tracking Code Version 9 -->
+    END
+  end
+
+  def mediaplex_rocket_fuel_conversion_pixel
+    <<-END.html_safe
+        <!-- Code for Action: Bozzuto Conversion Pixel 5.21.15 -->
+        <!-- Begin Rocket Fuel Conversion Action Tracking Code Version 9 -->
+        <script type='text/javascript'>
+        (function() {
+                var w = window, d = document;
+                var s = d.createElement('script');
+                s.setAttribute('async', 'true');
+                s.setAttribute('type', 'text/javascript');
+                s.setAttribute('src', '//c1.rfihub.net/js/tc.min.js');
+                var f = d.getElementsByTagName('script')[0];
+                f.parentNode.insertBefore(s, f);
+                if (typeof w['_rfi'] !== 'function') {
+                        w['_rfi']=function() {
+                                w['_rfi'].commands = w['_rfi'].commands || [];
+                                w['_rfi'].commands.push(arguments);
+                        };
+                }
+                _rfi('setArgs', 'ver', '9');
+                _rfi('setArgs', 'rb', '19725');
+                _rfi('setArgs', 'ca', '20673499');
+                _rfi('track');
+        })();
+        </script>
+        <noscript>
+          <iframe src='//20673499p.rfihub.com/ca.html?rb=19725&ca=20673499&ra=<mpuid/>' style='display:none;padding:0;margin:0' width='0' height='0'>
+        </iframe>
+        </noscript>
+        <!-- End Rocket Fuel Conversion Action Tracking Code Version 9 -->
+    END
   end
 
   private
