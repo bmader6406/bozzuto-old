@@ -9,7 +9,7 @@ module Bozzuto::Mobile
           ZipCode.create(:zip => '22046', :latitude => 38.886311, :longitude => -77.18098)
           ZipCode.create(:zip => '27510', :latitude => 35.912489, :longitude => -79.08144)
 
-          @apartment_va = ApartmentCommunity.make(:zip_code => '22301')
+          @apartment_va = ApartmentCommunity.make(:zip_code => '22301 ')
           @apartment_fc = ApartmentCommunity.make(:zip_code => '22046')
           @apartment_nc = ApartmentCommunity.make(:zip_code => '27510')
           @home_va      = HomeCommunity.make(:zip_code => '22301-5601')

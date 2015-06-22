@@ -67,7 +67,7 @@ module Bozzuto::Mobile
 
     def self.zip_code_search_results_for(zip_codes)
       base_scope.search(:zip_code_starts_with_any => zip_codes).all.sort_by do |community|
-        zip_codes.index ZIP_REGEX.match(community.zip_code)[:zip]
+        zip_codes.index ZIP_REGEX.match(community.zip_code.strip)[:zip]
       end
     end
   end
