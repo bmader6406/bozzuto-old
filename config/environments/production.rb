@@ -42,12 +42,12 @@ Bozzuto::Application.configure do
   }
 
   config.action_mailer.smtp_settings = {
-    :address              => 'outlook.bozzuto.com',
-    :domain               => 'bozzuto.com',
+    :address              => 'smtpout.secureserver.net',
+    :domain               => 'livebozzuto.com',
     :port                 => 25,
-    :user_name            => 'noreply',
-    :password             => 'B@zz!8512',
+    :user_name            => 'subscribe@livebozzuto.com',
+    :password             => 'Bozzuto22',
     :authentication       => :login,
-    :enable_starttls_auto => false
+    :enable_starttls_auto => true
   }
 end
