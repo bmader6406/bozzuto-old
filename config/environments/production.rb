@@ -42,7 +42,7 @@ Bozzuto::Application.configure do
   }
 
   config.action_mailer.smtp_settings = {
-    :address              => 'mail.bozzuto.com',
+    :address              => 'outlook.bozzuto.com',
     :domain               => 'bozzuto.com',
     :port                 => 25,
     :user_name            => 'noreply',
