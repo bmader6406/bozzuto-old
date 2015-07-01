@@ -144,7 +144,7 @@ module Bozzuto::Exports
       # Unit-related Nodes
 
       def unit_node(parent_node, unit)
-        parent_node.tag!('ILS_Unit', 'IDValue' => unit.floor_plan_id) do |node|
+        parent_node.tag!('ILS_Unit', 'IDValue' => unit.id) do |node|
           unit_info_node(node, unit)
           effective_rent_node(node, unit)
           availability_node(node, unit)
@@ -163,6 +163,7 @@ module Bozzuto::Exports
 
       def unit_info_node(parent_node, unit)
         parent_node.tag!('Units') do |node|
+          node.tag! 'UnitID',                        unit.id
           node.tag! 'MarketingName',                 unit.marketing_name
           node.tag! 'UnitType',                      unit.unit_type
           node.tag! 'UnitBedrooms',                  unit.bedrooms
@@ -178,6 +179,7 @@ module Bozzuto::Exports
           node.tag! 'UnitLeasedStatus',              unit.leased_status
           node.tag! 'UnitLeasedStatusDescription',   unit.leased_status_description
           node.tag! 'NumberOccupants',               unit.number_occupants
+          node.tag! 'FloorplanID',                   unit.floor_plan_id
           node.tag! 'FloorplanName',                 unit.floor_plan_name
           node.tag! 'PhaseName',                     unit.phase_name
           node.tag! 'BuildingName',                  unit.building_name

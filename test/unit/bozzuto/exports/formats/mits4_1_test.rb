@@ -422,6 +422,10 @@ module Bozzuto::Exports::Formats
                 @units_node = @unit_node.xpath('Units').first
               end
 
+              it "contains the Unit ID" do
+                @units_node.xpath('UnitID').first.content.should == @unit.id.to_s
+              end
+
               it "contains the marketing name" do
                 @units_node.xpath('MarketingName').first.content.should == '5A'
               end
@@ -480,6 +484,10 @@ module Bozzuto::Exports::Formats
 
               it "contains the number of occupants" do
                 @units_node.xpath('NumberOccupants').first.content.should == '2'
+              end
+
+              it "contains the floor plan ID" do
+                @units_node.xpath('FloorplanID').first.content.should == @floor_plan.id.to_s
               end
 
               it "contains the floor plan name" do
