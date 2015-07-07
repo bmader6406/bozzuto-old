@@ -181,6 +181,11 @@ class RedirectRules
       Rule.new(
         %r{^/apartments/ratings-reviews(\?.*)?},
         'http://www.bozzutolistens.com/'
+      ),
+
+      Rule.new(
+        %r{^/apartments/bozzuto-listens(\?.*)?},
+        'http://www.bozzutolistens.com/'
       )
     ]
     #:nocov:
