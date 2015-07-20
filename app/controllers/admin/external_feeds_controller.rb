@@ -69,7 +69,6 @@ class Admin::ExternalFeedsController < Admin::MasterController
 
     message[:notice] = 'Apartments export successfully rebuilt and sent.'
   rescue Exception => e
-    report_error('rebuild and re-export via FTP', e)
     HoptoadNotifier.notify(e)
     message[:notice] = 'There was an error when rebuilding and re-sending the export.  Please try again later.'
   ensure
