@@ -25,7 +25,11 @@
               </span>
             <% else %>
               <span class="external-cms-message">
-                <%= distance_of_time_in_words(Time.now, loader.next_load_at).capitalize %> until next refresh
+                <% if loader.already_loading? %>
+                   Feed refresh in progress
+                <% else %>
+                  <%= distance_of_time_in_words(Time.now, loader.next_load_at).capitalize %> until next refresh
+                <% end %>
               </span>
             <% end %>
           </li>
