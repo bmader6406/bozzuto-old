@@ -22,7 +22,7 @@ module Bozzuto
         def url_for_image(path, options={})
           options = default_url_options.merge(options)
 
-          URI.parse(path).tap do |url|
+          URI.parse(URI.encode(path)).tap do |url|
             url.scheme ||= options[:protocol] || 'http'
             url.host   ||= options[:host]
             url.port   ||= options[:port]
