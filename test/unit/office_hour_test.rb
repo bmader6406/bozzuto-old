@@ -59,8 +59,20 @@ class OfficeHourTest < ActiveSupport::TestCase
     end
 
     describe "#to_s" do
-      it "returns a string representation of the office hours" do
-        @office_hour.to_s.should == 'Monday: 8:00AM - 6:00PM'
+      context "when open" do
+        it "returns a string representation of the office hours" do
+          @office_hour.to_s.should == 'Monday: 8:00AM - 6:00PM'
+        end
+      end
+
+      context "when closed" do
+        before do
+          @office_hour.closed = true
+        end
+
+        it "returns a string representation of the office hours" do
+          @office_hour.to_s.should == 'Monday: Closed'
+        end
       end
     end
   end

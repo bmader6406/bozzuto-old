@@ -40,6 +40,10 @@ class OfficeHour < ActiveRecord::Base
   end
 
   def to_s
-    "#{day_name}: #{opens_at_with_period('')} - #{closes_at_with_period('')}"
+    if closed?
+      "#{day_name}: Closed"
+    else
+      "#{day_name}: #{opens_at_with_period('')} - #{closes_at_with_period('')}"
+    end
   end
 end
