@@ -146,10 +146,6 @@ module Bozzuto
       def max_rent
         @max_rent ||= value_for(MAX_RENT_CONDITION).to_f
       end
-
-      def bedrooms
-        @bedrooms ||= value_for(BEDROOM_CONDITION).to_a.reject(&:empty?).map(&:to_i)
-      end
     end
   end
 end

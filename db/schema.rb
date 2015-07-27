@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150727134225) do
+ActiveRecord::Schema.define(:version => 20150727145434) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -882,10 +882,10 @@ ActiveRecord::Schema.define(:version => 20150727134225) do
   create_table "office_hours", :force => true do |t|
     t.integer  "property_id",                         :null => false
     t.integer  "day",                                 :null => false
-    t.string   "opens_at",                            :null => false
-    t.string   "opens_at_period",  :default => "AM",  :null => false
-    t.string   "closes_at",                           :null => false
-    t.string   "closes_at_period", :default => "PM",  :null => false
+    t.string   "opens_at"
+    t.string   "opens_at_period",  :default => "AM"
+    t.string   "closes_at"
+    t.string   "closes_at_period", :default => "PM"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "closed",           :default => false, :null => false

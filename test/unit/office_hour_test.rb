@@ -36,7 +36,7 @@ class OfficeHourTest < ActiveSupport::TestCase
     context "when closed" do
       before do
         @community = ApartmentCommunity.make
-        @subject = OfficeHour.new(
+        @subject   = OfficeHour.new(
           :property_id      => @community.id,
           :day              => 1,
           :closed           => true,
@@ -59,7 +59,7 @@ class OfficeHourTest < ActiveSupport::TestCase
 
       describe "#closes_at_with_period" do
         it "returns 'Closed'" do
-          @subject.opens_at_with_period.should == 'Closed'
+          @subject.closes_at_with_period.should == 'Closed'
         end
       end
     end

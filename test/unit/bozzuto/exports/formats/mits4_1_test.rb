@@ -414,7 +414,7 @@ module Bozzuto::Exports::Formats
             end
 
             it "has the unit id" do
-              @unit_node['IDValue'].to_i.should == @floor_plan.id
+              @unit_node['IDValue'].to_i.should == @unit.id
             end
 
             context "within the Units node" do

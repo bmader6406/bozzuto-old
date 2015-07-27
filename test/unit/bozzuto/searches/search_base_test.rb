@@ -56,6 +56,18 @@ module Bozzuto::Searches
           end
         end
       end
+
+      describe "#join_clause" do
+        it "raises a NotImplementedError" do
+          expect { subject.send(:join_clause) }.to raise_error NotImplementedError
+        end
+      end
+
+      describe "#where_condition" do
+        it "raises a NotImplementedError" do
+          expect { subject.send(:where_condition) }.to raise_error NotImplementedError
+        end
+      end
     end
   end
 end
