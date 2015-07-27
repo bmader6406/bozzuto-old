@@ -674,9 +674,9 @@ OfficeHour:
   fields:
     default: to_s
     list: property, to_s
-    form: property, day, opens_at, opens_at_period, closes_at, closes_at_period
+    form: property, day, closed, opens_at, opens_at_period, closes_at, closes_at_period
     options:
-      required: property, day, opens_at, opens_at_period, closes_at, closes_at_period
+      required: property, day, closed, opens_at, opens_at_period, closes_at, closes_at_period
       selectors: day, opens_at_period, closes_at_period
   relationships: property
   order_by: property_id, day

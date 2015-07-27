@@ -568,6 +568,7 @@ en:
         image: Image dimensions should be 150x150
         show_as_featured_news: "When checked, this News Post will populate the 'Featured News' section on the home page."
       office_hour:
+        closed: 'If this is checked, the opens at/closes at fields are not required.'
         opens_at: 'Enter the hour (ex: 6) or hour and minutes (ex: 6:30).'
         closes_at: 'Enter the hour (ex: 6) or hour and minutes (ex: 6:30).'
       page:
