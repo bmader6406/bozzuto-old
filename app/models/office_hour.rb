@@ -32,11 +32,19 @@ class OfficeHour < ActiveRecord::Base
   end
 
   def opens_at_with_period(separator = ' ')
-    [opens_at, opens_at_period].join(separator)
+    if closed?
+      'Closed'
+    else
+      [opens_at, opens_at_period].join(separator)
+    end
   end
 
   def closes_at_with_period(separator = ' ')
-    [closes_at, closes_at_period].join(separator)
+    if closed?
+      'Closed'
+    else
+      [closes_at, closes_at_period].join(separator)
+    end
   end
 
   def to_s

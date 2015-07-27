@@ -50,6 +50,18 @@ class OfficeHourTest < ActiveSupport::TestCase
       it "does not validate certain fields" do
         @subject.valid?.should == true
       end
+
+      describe "#opens_at_with_period" do
+        it "returns 'Closed'" do
+          @subject.opens_at_with_period.should == 'Closed'
+        end
+      end
+
+      describe "#closes_at_with_period" do
+        it "returns 'Closed'" do
+          @subject.opens_at_with_period.should == 'Closed'
+        end
+      end
     end
 
     describe "#day_name" do
