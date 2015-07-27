@@ -92,6 +92,24 @@ class CommunitySearchesControllerTest < ActionController::TestCase
           should render_template(:show)
         end
       end
+
+      describe "#restart_search_path" do
+        context "when there's a state present in the search params" do
+          it "returns a path including the state param" do
+            get :show, :search => { :in_state => 1 }
+
+            @controller.send(:restart_search_path).should match(/\/community_search\?search\[in_state\]=1\z/)
+          end
+        end
+
+        context "when there is no state present in the search params" do
+          it "returns the search path without any params" do
+            get :show
+
+            @controller.send(:restart_search_path).should match(/\/community_search\z/)
+          end
+        end
+      end
     end
 
     mobile_device do

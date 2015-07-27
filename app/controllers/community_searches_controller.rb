@@ -82,4 +82,13 @@ class CommunitySearchesController < ApplicationController
     end
   end
   helper_method :geographic_filter
+
+  def restart_search_path
+    if params[:search][:in_state]
+      community_search_url(:search => { :in_state => params[:search][:in_state] })
+    else
+      community_search_url
+    end
+  end
+  helper_method :restart_search_path
 end
