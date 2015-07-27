@@ -33,6 +33,25 @@ class OfficeHourTest < ActiveSupport::TestCase
       should_not allow_value(indicator.last).for(:closes_at_period)
     end
 
+    context "when closed" do
+      before do
+        @community = ApartmentCommunity.make
+        @subject = OfficeHour.new(
+          :property_id      => @community.id,
+          :day              => 1,
+          :closed           => true,
+          :opens_at         => nil,
+          :opens_at_period  => nil,
+          :closes_at        => nil,
+          :closes_at_period => nil
+        )
+      end
+
+      it "does not validate certain fields" do
+        @subject.valid?.should == true
+      end
+    end
+
     describe "#day_name" do
       it "returns the string representation of the day number" do
         @office_hour.day_name.should == 'Monday'

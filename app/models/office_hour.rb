@@ -10,18 +10,22 @@ class OfficeHour < ActiveRecord::Base
 
   validates :property,
             :day,
-            :opens_at,
+            :presence => true
+
+  validates :opens_at,
             :opens_at_period,
             :closes_at,
             :closes_at_period,
-            :presence => true
+            :presence => true,
+            :unless   => :closed?
 
   validates :day, :uniqueness => { :scope => :property_id }
   validates :day, :inclusion  => { :in => 0..6 }
 
   validates :opens_at_period,
             :closes_at_period,
-            :inclusion => { :in => MERIDIAN_INDICATORS }
+            :inclusion => { :in => MERIDIAN_INDICATORS },
+            :unless => :closed?
 
   def day_name
     Date::DAYNAMES[day]
