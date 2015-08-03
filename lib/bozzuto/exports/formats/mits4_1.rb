@@ -164,7 +164,7 @@ module Bozzuto::Exports
       def unit_info_node(parent_node, unit)
         parent_node.tag!('Units') do |node|
           node.tag! 'UnitID',                        unit.id
-          node.tag! 'MarketingName',                 unit.marketing_name
+          node.tag! 'MarketingName',                 unit.name
           node.tag! 'UnitType',                      unit.unit_type
           node.tag! 'UnitBedrooms',                  unit.bedrooms
           node.tag! 'UnitBathrooms',                 unit.bathrooms

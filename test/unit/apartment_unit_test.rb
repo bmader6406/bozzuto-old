@@ -55,5 +55,23 @@ class ApartmentUnitTest < ActiveSupport::TestCase
         end
       end
     end
+
+    describe "#name" do
+      context "when the unit has a marketing name" do
+        subject { ApartmentUnit.make(:marketing_name => 'Penthouse 1A') }
+
+        it "returns the marketing name" do
+          subject.name.should == 'Penthouse 1A'
+        end
+      end
+
+      context "when the unit does not have a marketing name" do
+        subject { ApartmentUnit.make(:marketing_name => nil, external_cms_id: '5C') }
+
+        it "returns the marketing name" do
+          subject.name.should == '5C'
+        end
+      end
+    end
   end
 end
