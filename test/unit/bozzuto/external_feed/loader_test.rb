@@ -649,7 +649,7 @@ module Bozzuto::ExternalFeed
                     file.external_cms_id.should   == '605'
                     file.external_cms_type.should == 'rent_cafe'
                     file.active.should            == true
-                    file.file_type.should         == 'Other'
+                    file.file_type.should         == 'Photo'
                     file.description.should       == ''
                     file.name.should              == '3_340120_1833937'
                     file.caption.should           == ''
@@ -721,7 +721,7 @@ module Bozzuto::ExternalFeed
                     file.external_cms_id.should   == '521'
                     file.external_cms_type.should == 'rent_cafe'
                     file.active.should            == true
-                    file.file_type.should         == 'Other'
+                    file.file_type.should         == 'Photo'
                     file.description.should       == ''
                     file.name.should              == '3_345611_1385175'
                     file.caption.should           == ''
@@ -860,7 +860,7 @@ module Bozzuto::ExternalFeed
                     file.external_cms_id.should   == '09-207'
                     file.external_cms_type.should == 'rent_cafe'
                     file.active.should            == true
-                    file.file_type.should         == 'Other'
+                    file.file_type.should         == 'Photo'
                     file.description.should       == ''
                     file.name.should              == '3_340670_1885137'
                     file.caption.should           == ''
@@ -877,7 +877,7 @@ module Bozzuto::ExternalFeed
                     file.external_cms_id.should   == '09-207'
                     file.external_cms_type.should == 'rent_cafe'
                     file.active.should            == true
-                    file.file_type.should         == 'Other'
+                    file.file_type.should         == 'Photo'
                     file.description.should       == ''
                     file.name.should              == '3_340670_1885141'
                     file.caption.should           == ''
