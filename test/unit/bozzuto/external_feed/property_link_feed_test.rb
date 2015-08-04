@@ -23,14 +23,15 @@ module Bozzuto::ExternalFeed
           subject.data.count.should == 2
 
           subject.data[0].tap do |c|
-            c.title.should             == 'Poplar Glen'
-            c.street_address.should    == '11608 Little Patuxent Pkwy'
-            c.city.should              == 'Columbia'
-            c.state.should             == 'MD'
-            c.availability_url.should  == ''
-            c.external_cms_id.should   == '90681'
-            c.external_cms_type.should == 'property_link'
-            c.unit_count.should        == 191
+            c.title.should                  == 'Poplar Glen'
+            c.street_address.should         == '11608 Little Patuxent Pkwy'
+            c.city.should                   == 'Columbia'
+            c.state.should                  == 'MD'
+            c.availability_url.should       == ''
+            c.external_cms_id.should        == '90681'
+            c.external_cms_type.should      == 'property_link'
+            c.external_management_id.should == '7548'
+            c.unit_count.should             == 191
 
             c.office_hours.first.tap do |office_hour|
               office_hour.day.should              == 0
@@ -123,14 +124,15 @@ module Bozzuto::ExternalFeed
           end
 
           subject.data[1].tap do |c|
-            c.title.should             == 'Park Place at Van Dorn'
-            c.street_address.should    == '6001 Archstone Way'
-            c.city.should              == 'Alexandria'
-            c.state.should             == 'VA'
-            c.availability_url.should  == 'http://www.propertylinkonline.com/Availability/Availability.aspx?c=100155&p=106421&r=0'
-            c.external_cms_id.should   == '106421'
-            c.external_cms_type.should == 'property_link'
-            c.unit_count.should        == 285
+            c.title.should                  == 'Park Place at Van Dorn'
+            c.street_address.should         == '6001 Archstone Way'
+            c.city.should                   == 'Alexandria'
+            c.state.should                  == 'VA'
+            c.availability_url.should       == 'http://www.propertylinkonline.com/Availability/Availability.aspx?c=100155&p=106421&r=0'
+            c.external_cms_id.should        == '106421'
+            c.external_cms_type.should      == 'property_link'
+            c.external_management_id.should == '12570719'
+            c.unit_count.should             == 285
 
             c.office_hours.first.tap do |office_hour|
               office_hour.day.should              == 0
