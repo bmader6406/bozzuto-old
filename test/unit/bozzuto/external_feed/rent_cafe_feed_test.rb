@@ -23,14 +23,15 @@ module Bozzuto::ExternalFeed
           subject.data.size.should == 2
 
           subject.data[0].tap do |c|
-            c.title.should             == 'Madox'
-            c.street_address.should    == '198 Van Vorst Street'
-            c.city.should              == 'Jersey City'
-            c.state.should             == 'NJ'
-            c.availability_url.should  == 'http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&myOlePropertyId=111537'
-            c.external_cms_id.should   == 'p0117760'
-            c.external_cms_type.should == 'rent_cafe'
-            c.unit_count.should        == 0
+            c.title.should                  == 'Madox'
+            c.street_address.should         == '198 Van Vorst Street'
+            c.city.should                   == 'Jersey City'
+            c.state.should                  == 'NJ'
+            c.availability_url.should       == 'http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=Apartments&myOlePropertyId=111537'
+            c.external_cms_id.should        == 'p0117760'
+            c.external_cms_type.should      == 'rent_cafe'
+            c.external_management_id.should == '8131'
+            c.unit_count.should             == 0
 
             c.office_hours.first.tap do |office_hour|
               office_hour.day.should              == 1
@@ -158,7 +159,7 @@ module Bozzuto::ExternalFeed
                 file.external_cms_id.should   == '605'
                 file.external_cms_type.should == 'rent_cafe'
                 file.active.should            == true
-                file.file_type.should         == 'Other'
+                file.file_type.should         == 'Photo'
                 file.description.should       == ''
                 file.name.should              == '3_340120_1833937'
                 file.caption.should           == ''
@@ -229,7 +230,7 @@ module Bozzuto::ExternalFeed
                 file.external_cms_id.should   == '521'
                 file.external_cms_type.should == 'rent_cafe'
                 file.active.should            == true
-                file.file_type.should         == 'Other'
+                file.file_type.should         == 'Photo'
                 file.description.should       == ''
                 file.name.should              == '3_345611_1385175'
                 file.caption.should           == ''
@@ -262,14 +263,15 @@ module Bozzuto::ExternalFeed
           end
 
           subject.data[1].tap do |c|
-            c.title.should             == 'The Brownstones at Englewood South'
-            c.street_address.should    == '73 Brownstone Way'
-            c.city.should              == 'Englewood'
-            c.state.should             == 'NJ'
-            c.availability_url.should  == 'http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&myOlePropertyId=144341'
-            c.external_cms_id.should   == 'p0151017'
-            c.external_cms_type.should == 'rent_cafe'
-            c.unit_count.should        == 0
+            c.title.should                  == 'The Brownstones at Englewood South'
+            c.street_address.should         == '73 Brownstone Way'
+            c.city.should                   == 'Englewood'
+            c.state.should                  == 'NJ'
+            c.availability_url.should       == 'http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=Apartments&myOlePropertyId=144341'
+            c.external_cms_id.should        == 'p0151017'
+            c.external_cms_type.should      == 'rent_cafe'
+            c.external_management_id.should == '8131'
+            c.unit_count.should             == 0
 
             c.office_hours.first.tap do |office_hour|
               office_hour.day.should              == 4
@@ -370,7 +372,7 @@ module Bozzuto::ExternalFeed
                 file.external_cms_id.should   == '09-207'
                 file.external_cms_type.should == 'rent_cafe'
                 file.active.should            == true
-                file.file_type.should         == 'Other'
+                file.file_type.should         == 'Photo'
                 file.description.should       == ''
                 file.name.should              == '3_340670_1885137'
                 file.caption.should           == ''
@@ -387,7 +389,7 @@ module Bozzuto::ExternalFeed
                 file.external_cms_id.should   == '09-207'
                 file.external_cms_type.should == 'rent_cafe'
                 file.active.should            == true
-                file.file_type.should         == 'Other'
+                file.file_type.should         == 'Photo'
                 file.description.should       == ''
                 file.name.should              == '3_340670_1885141'
                 file.caption.should           == ''
