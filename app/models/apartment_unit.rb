@@ -34,8 +34,4 @@ class ApartmentUnit < ActiveRecord::Base
   def typus_name
     marketing_name.presence || "ApartmentUnit (ID: #{id})"
   end
-
-  def name
-    marketing_name.presence || external_cms_id
-  end
 end

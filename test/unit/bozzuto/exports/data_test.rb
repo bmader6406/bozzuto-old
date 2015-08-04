@@ -352,6 +352,42 @@ module Bozzuto::Exports
           it "contains max rent" do
             @test_plan.max_rent.should == 2300
           end
+
+          context "with units" do
+            before do
+              @unit1 = ApartmentUnit.make(
+                :floor_plan      => @floor_plan,
+                :external_cms_id => '123',
+                :marketing_name  => 'Penthouse 1A'
+              )
+
+              @unit2 = ApartmentUnit.make(
+                :floor_plan               => @floor_plan,
+                :external_cms_type        => 'rent_cafe',
+                :external_cms_id          => '5C',
+                :building_external_cms_id => '456',
+                :marketing_name           => nil
+              )
+
+              @floor_plan.apartment_units << @unit1
+              @floor_plan.apartment_units << @unit2
+
+              @communities      = Bozzuto::Exports::Data.new.communities
+              @test_plan        = @communities.first.floor_plans.first
+              @normal_unit      = @test_plan.units.first
+              @exceptional_unit = @test_plan.units.last
+            end
+
+            it "contains the correct names" do
+              @normal_unit.name.should == 'Penthouse 1A'
+              @exceptional_unit.name.should == '5C'
+            end
+
+            it "contains the correct sync IDs" do
+              @normal_unit.sync_id.should == '123'
+              @exceptional_unit.sync_id.should == '456'
+            end
+          end
         end
 
         context "having floor plans with 0 available units" do

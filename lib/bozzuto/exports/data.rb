@@ -114,6 +114,20 @@ module Bozzuto
         def max_rent
           available_units.zero? ? 0 : super
         end
+
+        def units
+          apartment_units.map { |unit| Unit.new(unit) }
+        end
+      end
+
+      class Unit < ExportableRecord
+        def name
+          marketing_name.presence || external_cms_id
+        end
+
+        def sync_id
+          external_cms_type == 'rent_cafe' ? building_external_cms_id : external_cms_id
+        end
       end
     end
   end

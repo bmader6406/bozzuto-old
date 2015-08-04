@@ -52,7 +52,7 @@ module Bozzuto
           :external_cms_id              => id,
           :external_cms_type            => feed_type.to_s,
           :unit_type                    => string_at(unit, './UnitType'),
-          :building_external_cms_id     => string_at(unit, './ExtId'), # Is this thing actually the building ID?
+          :building_external_cms_id     => string_at(unit, './ExtId'), # Is this thing actually the building ID? ..It's the actual ID.  >.<
           :floorplan_external_cms_id    => string_at(unit, './FloorplanID'),
           :floor_plan_name              => string_at(unit, './FloorplanName'),
           :bedrooms                     => float_at(unit, './UnitBedrooms'),
