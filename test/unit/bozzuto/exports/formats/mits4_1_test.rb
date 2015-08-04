@@ -42,7 +42,9 @@ module Bozzuto::Exports::Formats
             :listing_image_file_name => 'test.jpg',
             :meta_description        => 'wow wow wee wah',
             :unit_count              => 25,
-            :availability_url        => 'http://wow-so-available.com'
+            :availability_url        => 'http://wow-so-available.com',
+            :external_cms_id         => '123',
+            :external_management_id  => '1337'
           )
 
           @office_hours = [
@@ -91,7 +93,8 @@ module Bozzuto::Exports::Formats
             :max_square_feet     => 1400,
             :min_rent            => 2260,
             :max_rent            => 2300,
-            :unit_count          => 5
+            :unit_count          => 5,
+            :external_cms_id     => '456'
           )
 
           @unit = ApartmentUnit.make(
@@ -128,7 +131,8 @@ module Bozzuto::Exports::Formats
             :vacate_date                  => Date.new(2015, 12, 25),
             :vacancy_class                => 'Occupied',
             :made_ready_date              => Date.new(2016, 1, 1),
-            :availability_url             => 'http://availability.com'
+            :availability_url             => 'http://availability.com',
+            :external_cms_id              => '789'
           )
 
           @ac = ApartmentUnitAmenity.make(
@@ -177,6 +181,14 @@ module Bozzuto::Exports::Formats
           context "within PropertyID node" do
             before do
               @property_id_node = @xml.xpath('//PhysicalProperty//Property//PropertyID').first
+            end
+
+            it "contains the management sync ID" do
+              @property_id_node.xpath('SyncMgmtID').first.content.should == @community.external_management_id
+            end
+
+            it "contains the property sync ID" do
+              @property_id_node.xpath('SyncPropertyID').first.content.should == @community.external_cms_id
             end
 
             it "contains the marketing name" do
@@ -305,6 +317,10 @@ module Bozzuto::Exports::Formats
               @floor_plan_node = @xml.xpath("//PhysicalProperty//Property//Floorplan[@IDValue=\"#{@floor_plan.id}\"]").first
             end
 
+            it "contains the floor plan sync ID" do
+              @floor_plan_node.xpath('SyncFloorplanID').first.content.should == @floor_plan.external_cms_id
+            end
+
             it "contains name" do
               @floor_plan_node.xpath('Name').first.content.should == 'The Roxy'
             end
@@ -424,6 +440,10 @@ module Bozzuto::Exports::Formats
 
               it "contains the Unit ID" do
                 @units_node.xpath('UnitID').first.content.should == @unit.id.to_s
+              end
+
+              it "contains the unit sync ID" do
+                @units_node.xpath('SyncUnitID').first.content.should == @unit.external_cms_id
               end
 
               it "contains the marketing name" do

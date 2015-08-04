@@ -13,7 +13,7 @@ module Bozzuto::Exports
             floorplan_node(node, floor_plan)
           end
 
-          property.floor_plans.flat_map(&:apartment_units).each do |unit|
+          property.floor_plans.flat_map(&:units).each do |unit|
             unit_node(node, unit)
           end
 
@@ -34,9 +34,11 @@ module Bozzuto::Exports
 
       def property_id_node(parent_node, property)
         parent_node.tag!('PropertyID') do |node|
-          node.tag! 'MarketingName', property.title
-          node.tag! 'WebSite',       property.website_url
-          node.tag! 'Email',         property.lead_2_lease_email
+          node.tag! 'SyncMgmtID',     property.external_management_id
+          node.tag! 'SyncPropertyID', property.external_cms_id
+          node.tag! 'MarketingName',  property.title
+          node.tag! 'WebSite',        property.website_url
+          node.tag! 'Email',          property.lead_2_lease_email
 
           phone_node(node, property)
           address_node(node, property)
@@ -105,6 +107,7 @@ module Bozzuto::Exports
 
       def floorplan_node(parent_node, floorplan)
         parent_node.tag!('Floorplan', 'IDValue' => floorplan.id) do |node|
+          node.tag! 'SyncFloorplanID',          floorplan.external_cms_id
           node.tag! 'Name',                     floorplan.name
           node.tag! 'UnitCount',                floorplan.unit_count
           node.tag! 'FloorplanAvailabilityURL', floorplan.availability_url
@@ -164,6 +167,7 @@ module Bozzuto::Exports
       def unit_info_node(parent_node, unit)
         parent_node.tag!('Units') do |node|
           node.tag! 'UnitID',                        unit.id
+          node.tag! 'SyncUnitID',                    unit.sync_id
           node.tag! 'MarketingName',                 unit.name
           node.tag! 'UnitType',                      unit.unit_type
           node.tag! 'UnitBedrooms',                  unit.bedrooms
