@@ -152,7 +152,7 @@ module Bozzuto
             :external_cms_id   => id,
             :external_cms_type => feed_type.to_s,
             :active            => node['active'] == 'false' ? false : true,
-            :file_type         => FeedFile.parse_type_from(string_at(node, './Type')),
+            :file_type         => FeedFile.parse_type_from(string_at(node, './Type'), filename),
             :description       => string_at(node, './Description'),
             :name              => name.presence || fallback_name,
             :caption           => string_at(node, './Caption'),

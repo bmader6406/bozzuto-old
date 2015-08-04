@@ -8,6 +8,12 @@ class FeedFile < ActiveRecord::Base
     'Other'
   ]
 
+  IMAGE_EXTENSIONS = [
+    '.jpg',
+    '.jpeg',
+    '.png'
+  ]
+
   belongs_to :feed_record, :polymorphic => true
 
   validates :feed_record,
@@ -20,10 +26,14 @@ class FeedFile < ActiveRecord::Base
 
   validates :file_type, :inclusion => { :in => FILE_TYPE }, :allow_nil => true
 
-  def self.parse_type_from(input)
+  def self.parse_type_from(input, filename = nil)
     value = input.to_s.capitalize
 
-    FILE_TYPE.include?(value) ? value : 'Other'
+    if FILE_TYPE.exclude?(value) || value == 'Other'
+      IMAGE_EXTENSIONS.include?(File.extname(filename.to_s).downcase) ? 'Photo' : 'Other'
+    else
+      value
+    end
   end
 
   def source_link

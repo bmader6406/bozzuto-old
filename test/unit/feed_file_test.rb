@@ -25,6 +25,24 @@ class FeedFileTest < ActiveSupport::TestCase
         end
       end
 
+      context "given input that matches the 'Other' type but includes a photo-type filename" do
+        it "returns the 'Photo' file type" do
+          FeedFile.parse_type_from('Other', 'test.png').should == 'Photo'
+        end
+      end
+
+      context "given input that doesn't match a valid file type but has an image-type file extension" do
+        it "returns the 'Photo' file type" do
+          FeedFile.parse_type_from('image', 'test.jpeg').should == 'Photo'
+        end
+      end
+
+      context "given input that doesn't match a valid file type and a filename that isn't an image" do
+        it "returns 'Other'" do
+          FeedFile.parse_type_from('vid', 'lol.gif').should == 'Other'
+        end
+      end
+
       context "given input that does not match a valid file type" do
         it "returns 'Other'" do
           FeedFile.parse_type_from('unit').should == 'Other'
