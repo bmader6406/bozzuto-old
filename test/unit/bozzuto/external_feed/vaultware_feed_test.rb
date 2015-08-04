@@ -23,14 +23,15 @@ module Bozzuto::ExternalFeed
           subject.data.count.should == 2
 
           subject.data[0].tap do |c|
-            c.title.should             == 'Hunters Glen'
-            c.street_address.should    == '14210 Slidell Court'
-            c.city.should              == 'Upper Marlboro'
-            c.state.should             == 'MD'
-            c.availability_url.should  == 'http://units.realtydatatrust.com/unittype.aspx?ils=5341&propid=14317'
-            c.external_cms_id.should   == '14317'
-            c.external_cms_type.should == 'vaultware'
-            c.unit_count.should        == 154
+            c.title.should                  == 'Hunters Glen'
+            c.street_address.should         == '14210 Slidell Court'
+            c.city.should                   == 'Upper Marlboro'
+            c.state.should                  == 'MD'
+            c.availability_url.should       == 'http://units.realtydatatrust.com/unittype.aspx?ils=5341&propid=14317'
+            c.external_cms_id.should        == '14317'
+            c.external_cms_type.should      == 'vaultware'
+            c.external_management_id.should == '55973'
+            c.unit_count.should             == 154
 
             c.office_hours.first.tap do |office_hour|
               office_hour.day.should              == 1
@@ -208,14 +209,15 @@ module Bozzuto::ExternalFeed
           end
 
           subject.data[1].tap do |c|
-            c.title.should             == 'The Courts of Devon'
-            c.street_address.should    == '501 Main Street'
-            c.city.should              == 'Gaithersburg'
-            c.state.should             == 'MD'
-            c.availability_url.should  == 'http://units.realtydatatrust.com/unittype.aspx?ils=5341&propid=16976'
-            c.external_cms_id.should   == '16976'
-            c.external_cms_type.should == 'vaultware'
-            c.unit_count.should        == 253
+            c.title.should                  == 'The Courts of Devon'
+            c.street_address.should         == '501 Main Street'
+            c.city.should                   == 'Gaithersburg'
+            c.state.should                  == 'MD'
+            c.availability_url.should       == 'http://units.realtydatatrust.com/unittype.aspx?ils=5341&propid=16976'
+            c.external_cms_id.should        == '16976'
+            c.external_cms_type.should      == 'vaultware'
+            c.external_management_id.should == '55973'
+            c.unit_count.should             == 253
 
             c.office_hours.first.tap do |office_hour|
               office_hour.day.should              == 1
