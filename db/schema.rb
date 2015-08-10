@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150804193637) do
+ActiveRecord::Schema.define(:version => 20150810185455) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -142,9 +142,10 @@ ActiveRecord::Schema.define(:version => 20150804193637) do
     t.string   "vacancy_class"
     t.date     "made_ready_date"
     t.text     "availability_url"
-    t.integer  "floor_plan_id",                                              :null => false
+    t.integer  "floor_plan_id",                                                                :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "include_in_export",                                          :default => true, :null => false
   end
 
   create_table "archived_pages", :id => false, :force => true do |t|
