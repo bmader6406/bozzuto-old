@@ -839,6 +839,28 @@ From I-495: exit Van Dorn Street south. Right on Oakwood Road. Right on Crown Ro
         <AffiliateID>579254</AffiliateID>
       </File>
     </Floorplan>
+    <ILS_Unit xmlns:MITS="http://www.mitsproject.org/namespace" Id="925921122" FloorplanID="579254" BuildingID="">
+      <Unit xmlns:MITS="http://www.mitsproject.org/namespace">
+        <MITS:Information xmlns:MITS="http://www.mitsproject.org/namespace">
+          <MITS:UnitID>925921122</MITS:UnitID>
+          <MITS:UnitBedrooms>0</MITS:UnitBedrooms>
+          <MITS:UnitBathrooms>1.00</MITS:UnitBathrooms>
+          <MITS:MinSquareFeet>523</MITS:MinSquareFeet>
+          <MITS:MaxSquareFeet>523</MITS:MaxSquareFeet>
+          <MITS:MarketRent>3472.0000</MITS:MarketRent>
+          <MITS:UnitOccupancyStatus>occupied</MITS:UnitOccupancyStatus>
+          <MITS:UnitLeasedStatus>on notice</MITS:UnitLeasedStatus>
+          <MITS:FloorPlanID>579254</MITS:FloorPlanID>
+        </MITS:Information>
+        <MITS:PropertyPrimaryID xmlns:MITS="http://www.mitsproject.org/namespace">93392</MITS:PropertyPrimaryID>
+        <MITS:MarketingName xmlns:MITS="http://www.mitsproject.org/namespace">09O</MITS:MarketingName>
+      </Unit>
+      <Comment/>
+      <Availability>
+        <VacancyClass>Occupied</VacancyClass>
+        <MadeReadyDate Month="10" Day="9" Year="2015"/>
+      </Availability>
+    </ILS_Unit>
     <Utility>
       <Trash>true</Trash>
     </Utility>

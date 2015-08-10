@@ -186,6 +186,50 @@ module Bozzuto::ExternalFeed
               f.external_cms_type.should == 'property_link'
             end
 
+            c.apartment_units.count.should == 1
+
+            c.apartment_units.first.tap do |u|
+              u.external_cms_id.should              == '925921122'
+              u.external_cms_type.should            == 'property_link'
+              u.building_external_cms_id.should     == ''
+              u.floorplan_external_cms_id.should    == '579254'
+              u.organization_name.should            == nil
+              u.marketing_name.should               == '09O'
+              u.unit_type.should                    == nil
+              u.bedrooms.should                     == 0
+              u.bathrooms.should                    == 1
+              u.min_square_feet.should              == 523
+              u.max_square_feet.should              == 523
+              u.square_foot_type.should             == nil
+              u.unit_rent.should                    == nil
+              u.market_rent.should                  == 3472
+              u.economic_status.should              == nil
+              u.economic_status_description.should  == nil
+              u.occupancy_status.should             == 'occupied'
+              u.occupancy_status_description.should == nil
+              u.leased_status.should                == 'on notice'
+              u.leased_status_description.should    == nil
+              u.number_occupants.should             == nil
+              u.floor_plan_name.should              == nil
+              u.phase_name.should                   == nil
+              u.building_name.should                == nil
+              u.primary_property_id.should          == '93392'
+              u.address_line_1.should               == nil
+              u.address_line_2.should               == nil
+              u.city.should                         == nil
+              u.state.should                        == nil
+              u.zip.should                          == nil
+              u.avg_rent.should                     == nil
+              u.min_rent.should                     == nil
+              u.max_rent.should                     == nil
+              u.comment.should                      == ''
+              u.vacate_date.should                  == nil
+              u.vacancy_class.should                == 'Occupied'
+              u.made_ready_date.should              == Date.new(2015, 10, 9)
+              u.availability_url.should             == nil
+              u.include_in_export.should            == true
+            end
+
             c.property_amenities.count.should == 2
 
             c.property_amenities.first.tap do |a|

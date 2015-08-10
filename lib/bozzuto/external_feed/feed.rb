@@ -41,6 +41,9 @@ module Bozzuto
       def process
         assert_file_exists
 
+        # Reset include_in_export flag on all Property Link units
+        ApartmentUnit.where(:external_cms_type => 'property_link').update_all(:include_in_export => false)
+
         report { NodeFinder.new(self).parse }
       end
 
