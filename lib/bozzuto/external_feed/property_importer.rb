@@ -128,7 +128,7 @@ module Bozzuto::ExternalFeed
       return if plan.nil?
 
       find_or_initialize_unit(plan, unit_data) do |unit|
-        unit.attributes = unit_data.database_attributes
+        unit.attributes = unit_data.database_attributes.merge(:include_in_export => true)
         unit.floor_plan = plan
         save(unit)
       end

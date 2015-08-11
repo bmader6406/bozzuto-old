@@ -63,8 +63,7 @@ module Bozzuto
           :marketing_name               => string_at(unit, './Unit/MarketingName'),
           :comment                      => string_at(unit, './Comment'),
           :vacancy_class                => string_at(unit, './Availability/VacancyClass'),
-          :made_ready_date              => date_for(unit.at('./Availability/MadeReadyDate')),
-          :include_in_export            => true
+          :made_ready_date              => date_for(unit.at('./Availability/MadeReadyDate'))
         )
       end
     end

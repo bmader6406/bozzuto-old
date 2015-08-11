@@ -227,7 +227,6 @@ module Bozzuto::ExternalFeed
               u.vacancy_class.should                == 'Occupied'
               u.made_ready_date.should              == Date.new(2015, 10, 9)
               u.availability_url.should             == nil
-              u.include_in_export.should            == true
             end
 
             c.property_amenities.count.should == 2

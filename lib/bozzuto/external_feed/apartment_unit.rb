@@ -39,7 +39,6 @@ module Bozzuto
                     :vacancy_class,
                     :made_ready_date,
                     :availability_url,
-                    :include_in_export,
                     :apartment_unit_amenities,
                     :files
 
@@ -81,8 +80,7 @@ module Bozzuto
         :vacate_date,
         :vacancy_class,
         :made_ready_date,
-        :availability_url,
-        :include_in_export
+        :availability_url
       ]
     end
   end
