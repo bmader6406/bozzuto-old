@@ -47,13 +47,8 @@ module Bozzuto
         context "when there are matching results for the given search params" do
           subject { CommunitySearch.new('in_state' => @dc.id) }
 
-          it "returns all matching results for the given search params regardless of selected state" do
-            subject.results.should == [
-              @featured,
-              @md_community,
-              @va_community,
-              @dc_community
-            ]
+          it "returns all matching results for the given search params" do
+            subject.results.should == [@dc_community]
           end
         end
 
@@ -124,7 +119,7 @@ module Bozzuto
       end
 
       describe "#states" do
-        context "when a state is not selected" do
+        context "when a location is not selected" do
           subject { CommunitySearch.new }
 
           it "returns states ordered by the number of results in each" do
@@ -136,15 +131,25 @@ module Bozzuto
           end
         end
 
-        context "when a specific state is selected" do
-          subject { CommunitySearch.new('in_state' => @md.id) }
+        context "when a specific location is selected" do
+          context "and there are matching results" do
+            subject { CommunitySearch.new('city_id_eq' => @fairfax.id) }
 
-          it "returns states ordered by relevancy (state selected? and number of results in the state)" do
-            subject.states.should == [
-              @md,
-              @va,
-              @dc
-            ]
+            it "returns only the matching state" do
+              subject.states.should == [@va]
+            end
+          end
+
+          context "and there are only relevant (not-matching) results" do
+            subject { CommunitySearch.new('in_state' => @md.id, 'title_eq' => 'White House') }
+
+            it "returns states ordered by relevancy (state selected? and number of results in the state)" do
+              subject.states.should == [
+                @md,
+                @dc,
+                @va
+              ]
+            end
           end
         end
       end

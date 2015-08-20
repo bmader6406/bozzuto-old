@@ -11,23 +11,19 @@ module Bozzuto
     end
 
     def query
-      @query ||= scope.search(criteria.without_location)
+      @query ||= scope.search(criteria)
     end
 
     def states
       @states ||= if criteria.state
-        [criteria.state] | states_by_result_count
+        showing_relevant_results? ? [criteria.state] | states_by_result_count : [criteria.state]
       else
         states_by_result_count
       end
     end
 
     def showing_relevant_results?
-      if criteria.state.present?
-        matching_results.select(&matching_location_proc).none? && relevant_results.any?
-      else
-        matching_results.none? && relevant_results.any?
-      end
+      matching_results.none? && relevant_results.any?
     end
 
     def no_results?
@@ -82,31 +78,51 @@ module Bozzuto
 
     def matching_location_proc
       proc do |community|
-        community.state == criteria.state if community.state.present?
+        community.send(criteria.location.method) == criteria.location.record if community.send(criteria.location.method).present?
+      end
+    end
+
+    class Location < Struct.new(:model, :condition)
+      attr_accessor :record
+
+      def method
+        model.name.underscore
+      end
+
+      def match(params)
+        self.record = model.find_by_id(params[condition])
+      end
+
+      def state
+        model == State ? record : record.try(:state)
       end
     end
 
     class Criteria < Hash
-      STATE_CONDITION             = 'in_state'
-      CITY_CONDITION              = 'city_id_eq'
-      COUNTY_CONDITION            = 'county_id_eq'
-      LOCATION_CONDITIONS         = [STATE_CONDITION, CITY_CONDITION, COUNTY_CONDITION]
       BEDROOM_CONDITION           = 'having_all_floor_plan_groups'
       BEDROOM_RELEVANCY_CONDITION = 'with_any_floor_plan_groups'
       MIN_RENT_CONDITION          = 'with_min_price'
       MAX_RENT_CONDITION          = 'with_max_price'
       RENT_RELEVANCY              = 500
 
+      def locations
+        @locations ||= [
+          Location.new(State, 'in_state'),
+          Location.new(City, 'city_id_eq'),
+          Location.new(County, 'county_id_eq')
+        ]
+      end
+
       def value_for(key)
         fetch(key, nil)
       end
 
       def state
-        @state ||= State.find_by_id value_for(STATE_CONDITION)
+        @state ||= location.try(:state)
       end
 
       def without_location
-        reject { |k, v| LOCATION_CONDITIONS.include? k }
+        reject { |k, v| locations.map(&:condition).include? k }
       end
 
       def adjusted_for_relevancy
@@ -134,6 +150,12 @@ module Bozzuto
           self
         else
           merge MAX_RENT_CONDITION => max_rent + RENT_RELEVANCY
+        end
+      end
+
+      def location
+        @location ||= locations.find do |location|
+          location.match(self)
         end
       end
 
