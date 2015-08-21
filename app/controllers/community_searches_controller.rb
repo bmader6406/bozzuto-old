@@ -67,19 +67,7 @@ class CommunitySearchesController < ApplicationController
   end
 
   def geographic_filter
-    #:nocov:
-    @geographic_filter ||= begin
-    #:nocov:
-      search = params[:search]
-
-      if search[:in_state].present?
-        State.find_by_id(search[:in_state])
-      elsif search[:county_id_eq].present?
-        County.find_by_id(search[:county_id_eq])
-      elsif search[:city_id_eq].present?
-        City.find_by_id(search[:city_id_eq])
-      end
-    end
+    @geographic_filter ||= @search.location
   end
   helper_method :geographic_filter
 

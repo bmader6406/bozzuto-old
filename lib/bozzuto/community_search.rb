@@ -14,6 +14,10 @@ module Bozzuto
       @query ||= scope.search(criteria)
     end
 
+    def location
+      criteria.location.try(:record)
+    end
+
     def states
       @states ||= if criteria.state
         showing_relevant_results? ? [criteria.state] | states_by_result_count : [criteria.state]
@@ -107,9 +111,9 @@ module Bozzuto
 
       def locations
         @locations ||= [
-          Location.new(State, 'in_state'),
           Location.new(City, 'city_id_eq'),
-          Location.new(County, 'county_id_eq')
+          Location.new(County, 'county_id_eq'),
+          Location.new(State, 'in_state')
         ]
       end
 

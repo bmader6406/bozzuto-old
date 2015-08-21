@@ -118,6 +118,32 @@ module Bozzuto
         end
       end
 
+      describe "#location" do
+        context "when given no location" do
+          subject { CommunitySearch.new('title_cont' => 'white') }
+
+          it "returns nil" do
+            subject.location.should == nil
+          end
+        end
+
+        context "when given criteria including a state ID" do
+          subject { CommunitySearch.new('in_state' => @va.id) }
+
+          it "returns the state" do
+            subject.location.should == @va
+          end
+        end
+
+        context "when given criteria including a city ID" do
+          subject { CommunitySearch.new('city_id_eq' => @fairfax.id) }
+
+          it "returns the city" do
+            subject.location.should == @fairfax
+          end
+        end
+      end
+
       describe "#states" do
         context "when a location is not selected" do
           subject { CommunitySearch.new }
