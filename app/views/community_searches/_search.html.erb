@@ -36,8 +36,8 @@
       <% first = true %>
 
       <% @search.results_by_state.each do |state, communities| %>
-        <% unless geographic_filter && communities.count == 0 -%>
-          <li class="<%= 'closed' unless first && communities.count > 0 %>">
+        <% if communities.count > 0 -%>
+          <li class="<%= 'closed' unless first && communities.count > 0 && geographic_filter %>">
             <% first = false -%>
             <div class="header">
               <h2><%= state.name %></h2>
