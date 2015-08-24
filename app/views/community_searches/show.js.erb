@@ -7,6 +7,10 @@ $('#content').html("<%= escape_javascript(render(:partial => "community_searches
   $(".community-icons a").toolTip();
 <% end %>
 
+<% if geographic_filter -%>
+  $('.search-location-scope').text("Search All Communities in <%= geographic_filter.name %>")
+<% end -%>
+
 (function() {
   var $container = $('.search-results-hidden-inputs');
 

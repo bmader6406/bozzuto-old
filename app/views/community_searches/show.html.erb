@@ -49,7 +49,7 @@
         <li>Search All Communities</li>
       <% end -%>
     </ul>
-    <h1>
+    <h1 class="search-location-scope">
       Search All Communities
       <% if geographic_filter -%>
         in <%= geographic_filter.name %> <%= "County" if geographic_filter.is_a?(County) %>
@@ -67,6 +67,17 @@
           <%= image_tag 'spinner.gif', :style => 'display: none', :id => 'spinner' %>
         </h2>
         <%= form_for @search.query, :url => community_search_path, :method => :get, :html => {:id => 'apartment-search-form'} do |f| %>
+          <% if geographic_filter.nil? || geographic_filter.is_a?(State) %>
+            <fieldset id="states" class="">
+              <h3>State</h3>
+              <ul>
+                <li>
+                <%= f.select :in_state, State.all.map { |state| [state.name, state.id] }, :include_blank => 'Choose a State...' %>
+                </li>
+              </ul>
+            </fieldset>
+          <% end %>
+
           <fieldset id="bedrooms" class="">
             <h3>Bedrooms</h3>
             <ul>
