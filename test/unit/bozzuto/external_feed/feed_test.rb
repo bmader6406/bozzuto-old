@@ -63,11 +63,34 @@ module Bozzuto::ExternalFeed
         context "when the file exists" do
           subject { Bozzuto::ExternalFeed::Feed.new(Rails.root.join('test/files/rent_cafe.xml')) }
 
-          it "has the NodeFinder parse the feed file" do
-            mock('NodeFinder').tap do |finder|
-              NodeFinder.expects(:new).with(subject).returns(finder)
+          before do
+            @finder = mock('NodeFinder')
+            @finder.stubs(:parse)
 
-              finder.expects(:parse)
+            NodeFinder.stubs(:new).with(subject).returns(@finder)
+          end
+
+          it "has the NodeFinder parse the feed file" do
+            @finder.expects(:parse)
+
+            subject.process
+          end
+
+          it "sets the flag for export inclusion to false for all properties" do
+            mock('ApartmentCommunity scope').tap do |scope|
+              ApartmentCommunity.expects(:included_in_export).returns(scope)
+
+              scope.expects(:update_all).with(:included_in_export => false)
+
+              subject.process
+            end
+          end
+
+          it "sets the flag for export inclusion to false for all Property Link units" do
+            mock('ApartmentUnit scope').tap do |scope|
+              ::ApartmentUnit.expects(:where).with(:external_cms_type => 'property_link').returns(scope)
+
+              scope.expects(:update_all).with(:include_in_export => false)
 
               subject.process
             end
