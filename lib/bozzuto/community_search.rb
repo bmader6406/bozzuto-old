@@ -80,18 +80,8 @@ module Bozzuto
       end
     end
 
-    def matching_location_proc
-      proc do |community|
-        community.send(criteria.location.method) == criteria.location.record if community.send(criteria.location.method).present?
-      end
-    end
-
     class Location < Struct.new(:model, :condition)
       attr_accessor :record
-
-      def method
-        model.name.underscore
-      end
 
       def match(params)
         self.record = model.find_by_id(params[condition])
