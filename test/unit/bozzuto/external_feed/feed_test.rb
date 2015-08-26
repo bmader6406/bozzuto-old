@@ -80,7 +80,7 @@ module Bozzuto::ExternalFeed
             mock('ApartmentCommunity scope').tap do |scope|
               ApartmentCommunity.expects(:included_in_export).returns(scope)
 
-              scope.expects(:update_all).with(:included_in_export => false)
+              scope.expects(:update_all).with(:external_cms_type => subject.feed_type, :included_in_export => false)
 
               subject.process
             end
