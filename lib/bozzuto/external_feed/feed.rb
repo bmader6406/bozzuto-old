@@ -42,7 +42,7 @@ module Bozzuto
         assert_file_exists
 
         # Reset included_in_export flag on all Properties
-        ApartmentCommunity.included_in_export.update_all(:external_cms_type => feed_type, :included_in_export => false)
+        ApartmentCommunity.where(:external_cms_type => feed_type).included_in_export.update_all(:included_in_export => false)
 
         # Reset include_in_export flag on all Property Link units
         ::ApartmentUnit.where(:external_cms_type => 'property_link').update_all(:include_in_export => false)
