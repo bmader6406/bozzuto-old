@@ -50,6 +50,8 @@ module Bozzuto
         address_parts                  = string_at(unit, './Units/Unit/Address/Address').split(', ')
         address_line_1, address_line_2 = address_parts.size > 1 ? address_parts : address_parts << nil
         effective_rent                 = float_at(unit, './EffectiveRent')
+        occupancy_parser               = OccupancyParser.for(feed_type).new(unit)
+
 
         Bozzuto::ExternalFeed::ApartmentUnit.new(
           :external_cms_id              => string_at(unit, './Identification/IDValue'),
@@ -84,8 +86,8 @@ module Bozzuto
           :min_rent                     => effective_rent,
           :max_rent                     => effective_rent,
           :avg_rent                     => effective_rent,
-          :vacate_date                  => date_for(unit.at('./Availability/VacateDate')),
-          :vacancy_class                => string_at(unit, './Availability/VacancyClass'),
+          :vacate_date                  => occupancy_parser.vacate_date,
+          :vacancy_class                => occupancy_parser.vacancy_class,
           :availability_url             => string_at(unit, './Availability/UnitAvailabilityURL')
         )
       end
