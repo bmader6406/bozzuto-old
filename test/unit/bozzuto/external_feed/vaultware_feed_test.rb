@@ -182,7 +182,7 @@ module Bozzuto::ExternalFeed
               u.max_rent.should                     == 2734
               u.comment.should                      == '1010'
               u.vacate_date.should                  == Date.new(2015, 3, 31)
-              u.vacancy_class.should                == 'Occupied'
+              u.vacancy_class.should                == 'Unoccupied'
               u.made_ready_date.should              == nil
               u.availability_url.should             == CGI.unescapeHTML("http://units.realtydatatrust.com/unitavailability.aspx?&amp;ils=5341&amp;propid=16992&amp;fid=20307&amp;uid=10252429")
 
@@ -308,7 +308,7 @@ module Bozzuto::ExternalFeed
               u.max_rent.should                     == 2395
               u.comment.should                      == '07132'
               u.vacate_date.should                  == Date.new(2015, 3, 21)
-              u.vacancy_class.should                == 'Occupied'
+              u.vacancy_class.should                == 'Unoccupied'
               u.made_ready_date.should              == nil
               u.availability_url.should             == CGI.unescapeHTML("http://units.realtydatatrust.com/unitavailability.aspx?&amp;ils=5341&amp;propid=50494&amp;fid=102339&amp;uid=12890066")
 

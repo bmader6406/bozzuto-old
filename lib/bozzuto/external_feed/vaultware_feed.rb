@@ -47,6 +47,8 @@ module Bozzuto
       end
 
       def build_apartment_unit(property, unit)
+        occupancy_parser = OccupancyParser.for(feed_type).new(unit)
+
         Bozzuto::ExternalFeed::ApartmentUnit.new(
           :external_cms_id              => unit['Id'],
           :external_cms_type            => feed_type.to_s,
@@ -62,8 +64,8 @@ module Bozzuto
           :min_rent                     => float_at(unit, './EffectiveRent', 'Min'),
           :max_rent                     => float_at(unit, './EffectiveRent', 'Max'),
           :avg_rent                     => float_at(unit, './EffectiveRent', 'Avg'),
-          :vacate_date                  => date_for(unit.at('./Availability/VacateDate')),
-          :vacancy_class                => string_at(unit, './Availability/VacancyClass'),
+          :vacate_date                  => occupancy_parser.vacate_date,
+          :vacancy_class                => occupancy_parser.vacancy_class,
           :availability_url             => CGI.unescapeHTML(string_at(unit, './Availability/UnitAvailabilityURL')),
           :apartment_unit_amenities     => build_apartment_unit_amenities(unit)
         )
