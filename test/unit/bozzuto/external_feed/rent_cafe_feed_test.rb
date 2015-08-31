@@ -132,7 +132,7 @@ module Bozzuto::ExternalFeed
               u.max_rent.should                     == nil
               u.comment.should                      == nil
               u.vacate_date.should                  == nil
-              u.vacancy_class.should                == nil
+              u.vacancy_class.should                == 'Occupied'
               u.made_ready_date.should              == nil
               u.availability_url.should             == CGI.unescapeHTML("http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=111537&amp;header=1&amp;FloorPlanID=858907&amp;UnitID=708798")
 
@@ -208,7 +208,7 @@ module Bozzuto::ExternalFeed
               u.max_rent.should                     == nil
               u.comment.should                      == nil
               u.vacate_date.should                  == nil
-              u.vacancy_class.should                == nil
+              u.vacancy_class.should                == 'Occupied'
               u.made_ready_date.should              == nil
               u.availability_url.should             == CGI.unescapeHTML("http://madoxapts.securecafe.com/onlineleasing/madox/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=111537&amp;header=1&amp;FloorPlanID=858903&amp;UnitID=708791")
 
@@ -355,7 +355,7 @@ module Bozzuto::ExternalFeed
               u.max_rent.should                     == nil
               u.comment.should                      == nil
               u.vacate_date.should                  == nil
-              u.vacancy_class.should                == nil
+              u.vacancy_class.should                == 'Occupied'
               u.made_ready_date.should              == nil
               u.availability_url.should             == CGI.unescapeHTML("http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=144341&amp;header=1&amp;FloorPlanID=937747&amp;UnitID=1230276")
 
@@ -438,7 +438,7 @@ module Bozzuto::ExternalFeed
               u.max_rent.should                     == nil
               u.comment.should                      == nil
               u.vacate_date.should                  == nil
-              u.vacancy_class.should                == nil
+              u.vacancy_class.should                == 'Occupied'
               u.made_ready_date.should              == nil
               u.availability_url.should             == CGI.unescapeHTML("http://liveatbrownstones.securecafe.com/onlineleasing/the-brownstones-at-englewood-south/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=144341&amp;header=1&amp;FloorPlanID=937747&amp;UnitID=1230277")
 

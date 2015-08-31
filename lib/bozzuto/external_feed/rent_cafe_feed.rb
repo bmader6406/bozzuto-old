@@ -47,7 +47,8 @@ module Bozzuto
       end
 
       def build_apartment_unit(property, unit)
-        id = string_at(unit, './UnitID')
+        id               = string_at(unit, './UnitID')
+        occupancy_parser = OccupancyParser.for(feed_type).new(unit)
 
         Bozzuto::ExternalFeed::ApartmentUnit.new(
           :external_cms_id              => id,
@@ -71,6 +72,8 @@ module Bozzuto
           :primary_property_id          => string_at(unit, './PropertyPrimaryID'),
           :made_ready_date              => date_for(unit.at('./DateAvailable')),
           :availability_url             => string_at(unit, './ApplyOnlineURL'),
+          :vacancy_class                => occupancy_parser.vacancy_class,
+          :vacate_date                  => occupancy_parser.vacate_date,
           :apartment_unit_amenities     => build_apartment_unit_amenities(unit),
           :files                        => build_files(property, id)
         )
