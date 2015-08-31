@@ -179,9 +179,6 @@ module Bozzuto::Exports
           node.tag! 'MarketRent',                    unit.market_rent
           node.tag! 'UnitEconomicStatus',            unit.economic_status
           node.tag! 'UnitEconomicStatusDescription', unit.economic_status_description
-          node.tag! 'UnitOccupancyStatus',           unit.occupancy_status
-          node.tag! 'UnitLeasedStatus',              unit.leased_status
-          node.tag! 'UnitLeasedStatusDescription',   unit.leased_status_description
           node.tag! 'NumberOccupants',               unit.number_occupants
           node.tag! 'FloorplanID',                   unit.floor_plan_id
           node.tag! 'FloorplanName',                 unit.floor_plan_name

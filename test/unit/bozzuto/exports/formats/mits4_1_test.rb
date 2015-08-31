@@ -490,18 +490,6 @@ module Bozzuto::Exports::Formats
                 @units_node.xpath('UnitEconomicStatusDescription').first.content.should == 'Economic Status Description'
               end
 
-              it "contains the occupancy status" do
-                @units_node.xpath('UnitOccupancyStatus').first.content.should == 'Occupancy Status'
-              end
-
-              it "contains the leased status" do
-                @units_node.xpath('UnitLeasedStatus').first.content.should == 'Leased Status'
-              end
-
-              it "contains the leased status description" do
-                @units_node.xpath('UnitLeasedStatusDescription').first.content.should == 'Leased Status Description'
-              end
-
               it "contains the number of occupants" do
                 @units_node.xpath('NumberOccupants').first.content.should == '2'
               end
