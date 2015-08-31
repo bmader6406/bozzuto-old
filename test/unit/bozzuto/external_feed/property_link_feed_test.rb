@@ -116,7 +116,7 @@ module Bozzuto::ExternalFeed
               u.min_rent.should                     == nil
               u.max_rent.should                     == nil
               u.comment.should                      == '11'
-              u.vacate_date.should                  == nil
+              u.vacate_date.should                  == Date.new(2013, 12, 10)
               u.vacancy_class.should                == 'Unoccupied'
               u.made_ready_date.should              == Date.new(2013, 12, 10)
               u.availability_url.should             == nil
@@ -223,8 +223,8 @@ module Bozzuto::ExternalFeed
               u.min_rent.should                     == nil
               u.max_rent.should                     == nil
               u.comment.should                      == ''
-              u.vacate_date.should                  == nil
-              u.vacancy_class.should                == 'Occupied'
+              u.vacate_date.should                  == Date.new(2015, 10, 9)
+              u.vacancy_class.should                == 'Unoccupied'
               u.made_ready_date.should              == Date.new(2015, 10, 9)
               u.availability_url.should             == nil
             end
