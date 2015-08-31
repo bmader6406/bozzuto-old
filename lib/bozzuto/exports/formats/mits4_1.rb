@@ -18,7 +18,7 @@ module Bozzuto::Exports
           end
 
           property.slides.each_with_index do |slide, i|
-            photo_node(node, property, slide.image_url, i + 1)
+            photo_node(node, property, slide.image_url, :rank => i + 1)
           end
 
           promotion_nodes(node, property)
@@ -27,8 +27,8 @@ module Bozzuto::Exports
             property_amenity_node(node, amenity)
           end
 
-          photo_node(node, property, property.listing_image, property.slides.count + 1)
-          video_node(node, property, property.video_url, property.slides.count + 2)
+          photo_node(node, property, property.listing_image, :rank => property.slides.count + 1)
+          video_node(node, property, property.video_url, :rank => property.slides.count + 2)
         end
       end
 
@@ -126,7 +126,7 @@ module Bozzuto::Exports
             'Min' => format_float_for_xml(floorplan.min_rent),
             'Max' => format_float_for_xml(floorplan.max_rent)
 
-          photo_node(node, floorplan, floorplan.image_url) if floorplan.image_url
+          photo_node(node, floorplan, floorplan.image_url, :file_type => 'Floorplan') if floorplan.image_url
         end
       end
 
@@ -250,26 +250,26 @@ module Bozzuto::Exports
       end
 
       # In a number of occasions, we only have a URL to go off of..
-      def photo_node(parent_node, parent_record, photo_url, rank = 1)
+      def photo_node(parent_node, parent_record, photo_url, options = {})
         return if photo_url.nil?
 
         parent_node.tag!('File', 'FileID' => parent_record.id, 'Active' => true) do |node|
-          node.tag! 'FileType', 'Photo'
+          node.tag! 'FileType', (options[:file_type] || 'Photo')
           node.tag! 'Name',     File.basename(photo_url)
           node.tag! 'Format',   'image/jpeg'
           node.tag! 'Src',      photo_url
-          node.tag! 'Rank',     rank.to_s
+          node.tag! 'Rank',     (options[:rank] || 1).to_s
         end
       end
 
-      def video_node(parent_node, parent_record, video_url, rank = 1)
+      def video_node(parent_node, parent_record, video_url, options = {})
         return if video_url.nil?
 
         parent_node.tag!('File', 'FileID' => parent_record.id, 'Active' => true) do |node|
           node.tag! 'FileType', 'Video'
           node.tag! 'Name',     File.basename(video_url)
           node.tag! 'Src',      video_url
-          node.tag! 'Rank',     rank.to_s
+          node.tag! 'Rank',     (options[:rank] || 1).to_s
         end
       end
 

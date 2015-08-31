@@ -403,7 +403,7 @@ module Bozzuto::Exports::Formats
               end
 
               it "contains the file type" do
-                @file_node.xpath('FileType').first.content.should == 'Photo'
+                @file_node.xpath('FileType').first.content.should == 'Floorplan'
               end
 
               it "contains the name" do
