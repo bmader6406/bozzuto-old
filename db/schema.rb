@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150810185455) do
+ActiveRecord::Schema.define(:version => 20150901153635) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -1114,6 +1114,7 @@ ActiveRecord::Schema.define(:version => 20150810185455) do
     t.string   "short_description"
     t.integer  "unit_count"
     t.string   "external_management_id"
+    t.boolean  "found_in_latest_feed",                 :default => true,  :null => false
   end
 
   add_index "properties", ["core_id"], :name => "index_properties_on_core_id"

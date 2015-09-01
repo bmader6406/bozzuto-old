@@ -30,7 +30,7 @@ module Bozzuto::ExternalFeed
     end
 
     def write_attributes_to(p)
-      attrs = property_data.database_attributes.merge(:included_in_export => true)
+      attrs = property_data.database_attributes.merge(:found_in_latest_feed => true)
 
       if feed_type == :carmel
         attrs.delete(:title)

@@ -3,6 +3,28 @@ require 'test_helper'
 module Bozzuto::ExternalFeed
   class RentCafeFeedTest < ActiveSupport::TestCase
     context "A RentCafeFeed" do
+      before do
+        @existing_rent_cafe_property = ApartmentCommunity.make(
+          :external_cms_type    => 'rent_cafe',
+          :included_in_export   => true,
+          :found_in_latest_feed => true
+        )
+
+        @existing_psi_property = ApartmentCommunity.make(
+          :external_cms_type    => 'psi',
+          :included_in_export   => true,
+          :found_in_latest_feed => true
+        )
+
+        @madox = ApartmentCommunity.make(
+          :title                => 'Madox',
+          :external_cms_type    => 'rent_cafe',
+          :external_cms_id      => 'p0117760',
+          :included_in_export   => true,
+          :found_in_latest_feed => true
+        )
+      end
+
       subject { Bozzuto::ExternalFeed::RentCafeFeed.new(Rails.root.join('test/files/rent_cafe.xml')) }
 
       describe "#feed_name" do
@@ -17,7 +39,7 @@ module Bozzuto::ExternalFeed
           create_floor_plan_groups
         end
 
-        it "builds property data for each property node from the feed file" do
+        it "builds property data for each property node from the feed file and appropriately flags properties for export inclusion" do
           subject.process
 
           subject.data.size.should == 2
@@ -474,6 +496,10 @@ module Bozzuto::ExternalFeed
               end
             end
           end
+
+          @existing_rent_cafe_property.reload.included_in_export.should == false
+          @existing_psi_property.reload.included_in_export.should == true
+          @madox.reload.included_in_export.should == true
         end
       end
     end

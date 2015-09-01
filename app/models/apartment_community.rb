@@ -66,7 +66,8 @@ class ApartmentCommunity < Community
 
   validates_inclusion_of :included_in_export, :in => [true, false]
 
-  scope :included_in_export, :conditions => { :included_in_export => true }
+  scope :included_in_export,   :conditions => { :included_in_export => true }
+  scope :found_in_latest_feed, :conditions => { :found_in_latest_feed => true }
 
   scope :with_min_price, lambda { |price|
     {
