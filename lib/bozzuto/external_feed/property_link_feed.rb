@@ -47,7 +47,7 @@ module Bozzuto
       end
 
       def build_apartment_unit(property, unit)
-        occupancy_parser = OccupancyParser.for(feed_type).new(unit)
+        occupancy_parser = OccupancyParsers.for(feed_type).new(unit)
 
         Bozzuto::ExternalFeed::ApartmentUnit.new(
           :external_cms_id              => unit['Id'],

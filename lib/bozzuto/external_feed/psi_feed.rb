@@ -50,7 +50,7 @@ module Bozzuto
         address_parts                  = string_at(unit, './Units/Unit/Address/Address').split(', ')
         address_line_1, address_line_2 = address_parts.size > 1 ? address_parts : address_parts << nil
         effective_rent                 = float_at(unit, './EffectiveRent')
-        occupancy_parser               = OccupancyParser.for(feed_type).new(unit)
+        occupancy_parser               = OccupancyParsers.for(feed_type).new(unit)
 
 
         Bozzuto::ExternalFeed::ApartmentUnit.new(
