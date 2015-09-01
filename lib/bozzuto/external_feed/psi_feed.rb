@@ -1,5 +1,7 @@
 module Bozzuto
   module ExternalFeed
+    autoload :OccupancyParsers, Rails.root.join('lib', 'bozzuto', 'external_feed', 'occupancy_parsers.rb')
+
     class PsiFeed < Bozzuto::ExternalFeed::Feed
       self.feed_type = :psi
 

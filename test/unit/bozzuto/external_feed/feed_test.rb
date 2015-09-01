@@ -76,17 +76,6 @@ module Bozzuto::ExternalFeed
             subject.process
           end
 
-          it "sets the flag for export inclusion to false for all properties" do
-            mock('ApartmentCommunity scope').tap do |scope|
-              ApartmentCommunity.expects(:where).with(:external_cms_type => subject.feed_type).returns(scope)
-              scope.expects(:included_in_export).returns(scope)
-
-              scope.expects(:update_all).with(:included_in_export => false)
-
-              subject.process
-            end
-          end
-
           it "sets the flag for export inclusion to false for all Property Link units" do
             mock('ApartmentUnit scope').tap do |scope|
               ::ApartmentUnit.expects(:where).with(:external_cms_type => 'property_link').returns(scope)
