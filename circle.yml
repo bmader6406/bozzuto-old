@@ -1,0 +1,11 @@
+general:
+  branches:
+    ignore:
+      - staging
+      - production
+checkout:
+  post:
+    - cp config/app_config.yml.example config/app_config.yml
+test:
+  override:
+    - bundle exec rake test:coverage
