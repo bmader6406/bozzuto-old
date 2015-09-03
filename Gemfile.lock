@@ -25,6 +25,8 @@ GEM
       activesupport (= 3.0.20)
       arel (~> 2.0.10)
       tzinfo (~> 0.3.23)
+    activerecord-import (0.2.11)
+      activerecord (~> 3.0)
     activerecord-mysql2-adapter (0.0.3)
       mysql2
     activeresource (3.0.20)
@@ -203,6 +205,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-import (= 0.2.11)
   activerecord-mysql2-adapter
   acts_as_archive
   awesome_nested_set (= 2.1.6)

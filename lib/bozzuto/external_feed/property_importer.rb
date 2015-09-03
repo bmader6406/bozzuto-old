@@ -4,10 +4,12 @@ module Bozzuto::ExternalFeed
 
     def import
       if property.persisted?
-        import_floor_plans
-        import_property_amenities
-        import_office_hours
-        import_units
+        persist floor_plans
+        persist property_amenities
+        persist office_hours
+        persist units, :sync => true
+        persist unit_amenities
+        persist files
 
         CoreIdManager.new(property).assign_id
 
@@ -47,76 +49,58 @@ module Bozzuto::ExternalFeed
       end
     end
 
-    def import_floor_plans
-      property_data.floor_plans.each do |plan_data|
-        import_floor_plan(plan_data)
-      end
-    end
+    def persist(records, options = {})
+      return if records.empty?
 
-    def import_floor_plan(plan_data)
-      find_or_initialize_floor_plan(plan_data) do |plan|
-        plan.attributes          = plan_data.database_attributes
-        plan.apartment_community = property
-
-        # Only set floor plan group if this is a new plan
-        if plan.new_record?
-          plan.floor_plan_group = find_floor_plan_group(plan_data)
+      records.first.class.tap do |klass|
+        if options[:sync]
+          klass.transaction { records.each(&:save) }
+        else
+          klass.import(records, :on_duplicate_key_update => klass.column_names - blacklisted_columns)
         end
-
-        save(plan)
       end
     end
 
-    def import_property_amenities
-      property_data.property_amenities.to_a.each do |amenity_data|
-        import_property_amenity(amenity_data)
+    def floor_plans
+      @floor_plans ||= property_data.floor_plans.map do |plan_data|
+        find_or_initialize_floor_plan(plan_data) do |plan|
+          plan.attributes          = plan_data.database_attributes
+          plan.apartment_community = property
+
+          # Only set floor plan group if this is a new plan
+          if plan.new_record?
+            plan.floor_plan_group = find_floor_plan_group(plan_data)
+          end
+        end
       end
     end
 
-    def import_property_amenity(amenity_data)
-      amenity = property.property_amenities.find_or_initialize_by_primary_type_and_sub_type_and_description(
-        amenity_data.primary_type,
-        amenity_data.sub_type,
-        amenity_data.description
-      )
-
-      amenity.attributes = amenity_data.database_attributes
-
-      save(amenity)
+    def property_amenities
+      @property_amenities ||= property_data.property_amenities.to_a.map do |amenity_data|
+        property.property_amenities.find_or_initialize_by_primary_type_and_sub_type_and_description(
+          amenity_data.primary_type,
+          amenity_data.sub_type,
+          amenity_data.description
+        ).tap do |amenity|
+          amenity.attributes = amenity_data.database_attributes
+        end
+      end
     end
 
-    def delete_orphaned_floor_plans
-      return unless property_data.floor_plans.any?
-
-      # get floor plan ids from database
-      plan_ids = property_data.floor_plans.map do |plan_data|
-        property.floor_plans.
-          managed_by_feed(plan_data.external_cms_id, plan_data.external_cms_type).
-          first.
-          try(:id)
-      end.compact
-
-      # delete all plans from this property that aren't in the feed
-      property.floor_plans.where(['id NOT IN (?)', plan_ids]).map(&:destroy)
-    end
-
-    def import_office_hours
-      property_data.office_hours.each do |office_hour_data|
+    def office_hours
+      @office_hours ||= property_data.office_hours.map do |office_hour_data|
         ::OfficeHour.find_or_initialize_by_property_id_and_day(property.id, office_hour_data.day).tap do |office_hour|
-          office_hour.update_attributes(office_hour_data.database_attributes)
+          office_hour.attributes = office_hour_data.database_attributes
         end
       end
     end
 
-    def import_units
-      property_data.apartment_units.each do |unit_data|
+    def units
+      @units ||= property_data.apartment_units.map do |unit_data|
         unit = import_unit(unit_data)
 
-        if unit.present? && unit.persisted?
-          import_unit_amenities(unit, unit_data)
-          import_files(unit, unit_data)
-        end
-      end
+        RecordWrapper.new(unit).store(unit_data) if unit.present?
+      end.compact
     end
 
     def import_unit(unit_data)
@@ -130,39 +114,33 @@ module Bozzuto::ExternalFeed
       find_or_initialize_unit(plan, unit_data) do |unit|
         unit.attributes = unit_data.database_attributes.merge(:include_in_export => true)
         unit.floor_plan = plan
-        save(unit)
       end
     end
 
-    def import_unit_amenities(unit, unit_data)
-      unit_data.apartment_unit_amenities.to_a.each do |amenity_data|
-        import_unit_amenity(unit, amenity_data)
+    def unit_amenities
+      @unit_amenities ||= units.flat_map do |unit|
+        unit.data.apartment_unit_amenities.to_a.map do |amenity_data|
+          amenity = unit.amenities.find_or_initialize_by_primary_type_and_sub_type_and_description(
+            amenity_data.primary_type,
+            amenity_data.sub_type,
+            amenity_data.description
+          )
+
+          amenity.attributes = amenity_data.database_attributes
+
+          amenity
+        end
       end
     end
 
-    def import_unit_amenity(unit, amenity_data)
-      amenity = unit.amenities.find_or_initialize_by_primary_type_and_sub_type_and_description(
-        amenity_data.primary_type,
-        amenity_data.sub_type,
-        amenity_data.description
-      )
-
-      amenity.attributes = amenity_data.database_attributes
-
-      save(amenity)
-    end
-
-    def import_files(unit, unit_data)
-      unit_data.files.to_a.each do |file_data|
-        import_file(unit, file_data)
-      end
-    end
-
-    def import_file(feed_record, file_data)
-      find_or_initialize_file(file_data) do |file|
-        file.attributes  = file_data.database_attributes
-        file.feed_record = feed_record
-        save(file)
+    def files
+      @files ||= units.flat_map do |unit|
+        unit.data.files.to_a.map do |file_data|
+          find_or_initialize_file(file_data) do |file|
+            file.attributes  = file_data.database_attributes
+            file.feed_record = unit
+          end
+        end
       end
     end
 
@@ -227,8 +205,43 @@ module Bozzuto::ExternalFeed
       state.cities.find_or_create_by_name(city_name)
     end
 
+    def blacklisted_columns
+      [
+        'created_at',
+        'updated_at'
+      ]
+    end
+
+    def delete_orphaned_floor_plans
+      return unless property_data.floor_plans.any?
+
+      # get floor plan ids from database
+      plan_ids = property_data.floor_plans.map do |plan_data|
+        property
+          .floor_plans
+          .managed_by_feed(plan_data.external_cms_id, plan_data.external_cms_type)
+          .first
+          .try(:id)
+      end.compact
+
+      # delete all plans from this property that aren't in the feed
+      property.floor_plans.where(['id NOT IN (?)', plan_ids]).map(&:destroy)
+    end
+
     def save(record)
       record.save or log_error("Failed to save #{record.class} due to errors: #{record.errors}")
+    end
+
+    class RecordWrapper < SimpleDelegator
+      attr_reader :data
+
+      def store(data)
+        tap { @data = data }
+      end
+
+      def class
+        __getobj__.class
+      end
     end
   end
 end
