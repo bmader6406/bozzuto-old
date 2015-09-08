@@ -6,9 +6,11 @@ module Bozzuto
 
     private
 
+    #:nocov:
     def ssl_enabled?
       Rails.env.production?
     end
+    #:nocov:
 
     def ssl_required?
       false
