@@ -215,17 +215,9 @@ module Bozzuto::ExternalFeed
     def delete_orphaned_floor_plans
       return unless property_data.floor_plans.any?
 
-      # get floor plan ids from database
-      plan_ids = property_data.floor_plans.map do |plan_data|
-        property
-          .floor_plans
-          .managed_by_feed(plan_data.external_cms_id, plan_data.external_cms_type)
-          .first
-          .try(:id)
-      end.compact
+      plan_ids = property_data.floor_plans.map(&:external_cms_id)
 
-      # delete all plans from this property that aren't in the feed
-      property.floor_plans.where(['id NOT IN (?)', plan_ids]).map(&:destroy)
+      property.floor_plans.where('apartment_floor_plans.external_cms_id NOT IN (?)', plan_ids).destroy_all
     end
 
     def save(record)
