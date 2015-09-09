@@ -31,6 +31,10 @@ module Bozzuto
       end
 
       class Community < ExportableRecord
+        def id
+          id_for_export
+        end
+
         def city
           super.name
         end

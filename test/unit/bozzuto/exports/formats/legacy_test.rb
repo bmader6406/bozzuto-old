@@ -45,6 +45,7 @@ module Bozzuto::Exports::Formats
           }
 
           @community = ApartmentCommunity.make(
+            :core_id                 => 999,
             :title                   => 'Dolans Hood',
             :street_address          => '100 Gooby Pls',
             :city                    => city,
@@ -150,7 +151,7 @@ module Bozzuto::Exports::Formats
             end
 
             it "contains property id" do
-              @identification_node.xpath('PrimaryID').first.content.to_i.should == @community.id
+              @identification_node.xpath('PrimaryID').first.content.to_i.should == 999
             end
 
             it "contains property title" do

@@ -21,6 +21,7 @@ module Bozzuto::Exports::Formats
           }
 
           @community = ApartmentCommunity.make(
+            :core_id                 => 999,
             :title                   => 'Dolans Hood',
             :street_address          => '100 Gooby Pls',
             :city                    => city,
@@ -175,7 +176,7 @@ module Bozzuto::Exports::Formats
           end
 
           it "contains the property id" do
-            @property_node['IDValue'].to_i.should == @community.id
+            @property_node['IDValue'].to_i.should == 999
           end
 
           context "within PropertyID node" do

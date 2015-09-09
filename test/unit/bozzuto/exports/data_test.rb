@@ -45,6 +45,7 @@ module Bozzuto::Exports
           }
 
           @community = ApartmentCommunity.make(
+            :core_id                 => 999,
             :title                   => 'Dolans Hood',
             :street_address          => '100 Gooby Pls',
             :city                    => city,
@@ -123,6 +124,10 @@ module Bozzuto::Exports
 
         it "only includes properties flagged for inclusion in the report" do
           @communities.any? { |community| community.title == @excluded.title }
+        end
+
+        it "contains the appropriate ID" do
+          @test_community.id.should == 999
         end
 
         it "contains community title" do
