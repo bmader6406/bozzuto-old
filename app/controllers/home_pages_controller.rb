@@ -16,11 +16,6 @@ class HomePagesController < ApplicationController
     mobile? ? 'application' : 'homepage'
   end
 
-  def featured_news
-    @featured_news ||= Bozzuto::Homepage::FeaturableNews.featured_news || default_news
-  end
-  helper_method :featured_news
-
   def default_news
     base_scope = NewsPost.published.latest(1)
 
@@ -40,4 +35,14 @@ class HomePagesController < ApplicationController
     end
   end
   helper_method :latest_awards
+
+  def featured_news
+    @featured_news ||= Bozzuto::Homepage::FeaturableNews.featured_news || default_news
+  end
+  helper_method :featured_news
+
+  def featured_news_url
+    @featured_news_url ||= public_send("#{featured_news.class.name.underscore}_url", @section, featured_news)
+  end
+  helper_method :featured_news_url
 end

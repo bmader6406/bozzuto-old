@@ -85,7 +85,7 @@
             <div class="latest-news article">
               <h3><%= link_to 'Featured News', news_posts_path(@section) %></h3>
 
-              <%= link_to news_post_path(@section, post), :class => 'post-link' do %>
+              <%= link_to featured_news_url, :class => 'post-link' do %>
                 <%= image_tag post.home_page_image.url, :width => '380', :height => '150' %>
 
                 <span class="title"><%= post.title%></span>
