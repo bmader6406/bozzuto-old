@@ -63,6 +63,44 @@ class HomePagesControllerTest < ActionController::TestCase
       end
     end
 
+    context "#featured_news_url" do
+      before do
+        @section = Section.make(:about)
+
+        get :index
+      end
+
+      context "when the featured news is a NewsPost" do
+        before do
+          @featured_news = NewsPost.make(:show_as_featured_news => true)
+        end
+
+        it "returns the correct URL" do
+          @controller.send(:featured_news_url).should == "http://test.host/about-us/news-and-press/news/#{@featured_news.id}"
+        end
+      end
+
+      context "when the featured news is a PressRelease" do
+        before do
+          @featured_news = PressRelease.make(:show_as_featured_news => true)
+        end
+
+        it "returns the correct URL" do
+          @controller.send(:featured_news_url).should == "http://test.host/about-us/news-and-press/press-releases/#{@featured_news.id}"
+        end
+      end
+
+      context "when the featured news is a Award" do
+        before do
+          @featured_news = Award.make(:show_as_featured_news => true)
+        end
+
+        it "returns the correct URL" do
+          @controller.send(:featured_news_url).should == "http://test.host/about-us/news-and-press/awards/#{@featured_news.id}"
+        end
+      end
+    end
+
     context 'a GET to #index' do
       setup do
         @home_page = HomePage.new
