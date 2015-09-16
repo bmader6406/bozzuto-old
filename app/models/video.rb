@@ -3,9 +3,7 @@ class Video < ActiveRecord::Base
 
   belongs_to :property
   belongs_to :apartment_community, :foreign_key => :property_id
-  belongs_to :home_community, :foreign_key => :property_id
-
-  default_scope :order => 'position ASC'
+  belongs_to :home_community,      :foreign_key => :property_id
 
   validates_presence_of :url
 
