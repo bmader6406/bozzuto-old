@@ -4,7 +4,7 @@
       <span class="name"><%= group.name.pluralize %></span>
       <span class="pricing">
         Starting from <%= square_feet(group.largest_square_footage) %>
-        <span class="price"><%= dollars(group.cheapest_rent) %></span>
+        <span class="price">From <%= dollars(group.cheapest_rent) %></span>
       </span>
     <% end %>
   </div>
