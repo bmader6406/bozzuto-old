@@ -52,65 +52,76 @@ module Bozzuto::ExternalFeed
           subject.download_files
         end
       end
-    end
 
-    describe ".transfer" do
-      before do
-        @ftp = mock('Bozzuto::ExternalFeed::QburstFtp')
-        Bozzuto::ExternalFeed::QburstFtp.expects(:new).returns(@ftp)
-
-        @file = mock('File')
-      end
-
-      it "calls transfer on a new FTP instance with the given file" do
-        @ftp.expects(:transfer).with(@file)
-
-        Bozzuto::ExternalFeed::QburstFtp.transfer(@file)
-      end
-    end
-
-    describe "#transfer" do
-      subject { Bozzuto::ExternalFeed::QburstFtp.new }
-
-      before do
-        @path = tmp_file('test.txt')
-      end
-
-      context "when the given file does not exist" do
-        it "raises an error due to a missing file" do
-          expect { subject.transfer(@path) }.to raise_error ArgumentError, 'The given file name does not exist.'
-        end
-      end
-
-      context "when the given file exists" do
+      describe ".transfer" do
         before do
-          @ftp = mock('Net::FTP')
-          Net::FTP.expects(:open).with(Bozzuto::ExternalFeed::QburstFtp::SERVER).yields(@ftp)
+          @ftp = mock('Bozzuto::ExternalFeed::QburstFtp')
+          Bozzuto::ExternalFeed::QburstFtp.expects(:new).returns(@ftp)
 
-          @file = File.open(@path, 'w') { |file| file.write('Test') }
+          @file = mock('File')
         end
 
-        after do
-          FileUtils.rm @path
-        end
+        it "calls transfer on a new FTP instance with the given file" do
+          @ftp.expects(:transfer).with(@file)
 
-        it "sets passive to true, logs into the FTP server, and transfers the file" do
-          username = Bozzuto::ExternalFeed::QburstFtp.username
-          password = Bozzuto::ExternalFeed::QburstFtp.password
-
-          @ftp.expects(:passive=).with(true)
-          @ftp.expects(:login).with(username, password)
-          @ftp.expects(:putbinaryfile).with(@path)
-
-          subject.transfer(@path)
+          Bozzuto::ExternalFeed::QburstFtp.transfer(@file)
         end
       end
-    end
 
-    describe "#feed_types" do
-      subject { Bozzuto::ExternalFeed::QburstFtp.new }
+      describe "#transfer" do
+        subject { Bozzuto::ExternalFeed::QburstFtp.new }
 
-      its(:feed_types) { should == %w(carmel) }
+        before do
+          @path = tmp_file('test.txt')
+        end
+
+        context "when the given file does not exist" do
+          it "raises an error due to a missing file" do
+            expect { subject.transfer(@path) }.to raise_error ArgumentError, 'The given file name does not exist.'
+          end
+        end
+
+        context "when the given file exists" do
+          before do
+            @ftp = mock('Net::FTP')
+
+            Net::FTP.expects(:open).with('bozzutofeed.qburst.com').yields(@ftp)
+
+            @file = File.open(@path, 'w') { |file| file.write('Test') }
+          end
+
+          after do
+            FileUtils.rm @path
+          end
+
+          it "sets passive to true, logs into the FTP server, and transfers the file" do
+            username = Bozzuto::ExternalFeed::QburstFtp.username
+            password = Bozzuto::ExternalFeed::QburstFtp.password
+
+            @ftp.expects(:passive=).with(true)
+            @ftp.expects(:login).with(username, password)
+            @ftp.expects(:putbinaryfile).with(@path)
+
+            subject.transfer(@path)
+          end
+        end
+
+        describe "#feed_types" do
+          subject { Bozzuto::ExternalFeed::QburstFtp.new }
+
+          it "returns the correct set of feed types" do
+            subject.feed_types.should == %w(carmel)
+          end
+        end
+
+        describe "#loading_enabled?" do
+          subject { Bozzuto::ExternalFeed::QburstFtp.new }
+
+          it "returns true" do
+            subject.loading_enabled?.should == true
+          end
+        end
+      end
     end
   end
 end
