@@ -24,8 +24,12 @@ module Bozzuto
         ::File.exists?(lock_file)
       end
 
+      def loading_enabled?
+        true
+      end
+
       def can_load?
-        !already_loading? && Time.now >= next_load_at
+        loading_enabled? && !already_loading? && Time.now >= next_load_at
       end
 
       def next_load_at

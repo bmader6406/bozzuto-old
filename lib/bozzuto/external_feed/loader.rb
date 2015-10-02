@@ -15,7 +15,7 @@ module Bozzuto
 
       attr_accessor :feed
 
-      delegate :feed_name, :feed_type, :to => :feed
+      delegate :feed_name, :feed_type, :loading_enabled?, :to => :feed
 
       def initialize(feed)
         @feed = feed

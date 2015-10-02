@@ -19,7 +19,6 @@ class BozzutoExternalFeedFtpTest < ActiveSupport::TestCase
       context "when there are classes that have included the Ftp module" do
         it "calls #download_files on those classes" do
           Bozzuto::ExternalFeed::LiveBozzutoFtp.expects(:download_files)
-          Bozzuto::ExternalFeed::QburstFtp.expects(:download_files)
 
           Bozzuto::ExternalFeed::Ftp.download_files
         end

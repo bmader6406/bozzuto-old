@@ -106,6 +106,12 @@ module Bozzuto::ExternalFeed
         end
       end
 
+      describe "#loading_enabled?" do
+        it "returns true" do
+          subject.loading_enabled?.should == true
+        end
+      end
+
       describe "#build_property" do
         it "raises an error" do
           expect {

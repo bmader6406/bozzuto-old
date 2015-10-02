@@ -12,7 +12,7 @@ module Bozzuto
       end
 
       def self.download_files
-        types.map(&:download_files)
+        Bozzuto::ExternalFeed::LiveBozzutoFtp.download_files
       end
 
       def self.included(base)

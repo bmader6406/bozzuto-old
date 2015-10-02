@@ -11,6 +11,12 @@ module Bozzuto::ExternalFeed
         end
       end
 
+      describe "#loading_enabled?" do
+        it "returns false" do
+          subject.loading_enabled?.should == false
+        end
+      end
+
       describe "#process" do
         before do
           create_states

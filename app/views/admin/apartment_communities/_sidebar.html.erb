@@ -11,26 +11,28 @@
 
             <%= link_to 'View All', :external_cms_type => type %><br />
 
-            <% if loader.can_load? %>
-              <%= link_to 'Refresh Feed', {
-                    :controller => 'admin/external_feeds',
-                    :action     => :load,
-                    :feed_type  => loader.feed_type
-                  },
-                  :class => 'refresh-feed' %>
+            <% if loader.loading_enabled? %>
+              <% if loader.can_load? %>
+                <%= link_to 'Refresh Feed', {
+                      :controller => 'admin/external_feeds',
+                      :action     => :load,
+                      :feed_type  => loader.feed_type
+                    },
+                    :class => 'refresh-feed' %>
 
-              <span class="external-cms-message please-wait">
-                <%= image_tag 'spinner.gif' %>
-                Refreshing feed, please wait (this may take awhile)&hellip;
-              </span>
-            <% else %>
-              <span class="external-cms-message">
-                <% if loader.already_loading? %>
-                   Feed refresh in progress
-                <% else %>
-                  <%= distance_of_time_in_words(Time.now, loader.next_load_at).capitalize %> until next refresh
-                <% end %>
-              </span>
+                <span class="external-cms-message please-wait">
+                  <%= image_tag 'spinner.gif' %>
+                  Refreshing feed, please wait (this may take awhile)&hellip;
+                </span>
+              <% else %>
+                <span class="external-cms-message">
+                  <% if loader.already_loading? %>
+                     Feed refresh in progress
+                  <% else %>
+                    <%= distance_of_time_in_words(Time.now, loader.next_load_at).capitalize %> until next refresh
+                  <% end %>
+                </span>
+              <% end %>
             <% end %>
           </li>
         <% end %>
@@ -77,9 +79,7 @@
     <div class="module">
       <h2>Feed Downloads</h2>
       <ul class="external-feeds">
-        <% Bozzuto::ExternalFeed::Ftp.types.each do |type| %>
-          <% ftp = type.new %>
-
+        <% Bozzuto::ExternalFeed::LiveBozzutoFtp.new.tap do |ftp| %>
           <li>
             <h3><%= ftp.ftp_name %></h3>
 
@@ -89,7 +89,7 @@
               <%= link_to 'Download Feeds to Server',
                 :controller => 'admin/external_feeds',
                 :action     => :download_feeds,
-                :ftp_type   => type %>
+                :ftp_type   => ftp.class %>
 
               <span class="external-cms-message please-wait">
                 <%= image_tag 'spinner.gif' %>

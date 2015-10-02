@@ -3,6 +3,10 @@ module Bozzuto
     class CarmelFeed < Bozzuto::ExternalFeed::Feed
       self.feed_type = :carmel
 
+      def loading_enabled?
+        false
+      end
+
       private
 
       def build_property(property)

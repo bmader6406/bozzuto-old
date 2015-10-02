@@ -84,6 +84,10 @@ module Bozzuto
         @properties ||= []
       end
 
+      def loading_enabled?
+        true
+      end
+
       private
 
       def assert_file_exists
