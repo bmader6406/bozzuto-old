@@ -33,10 +33,6 @@ if environment == 'production'
     rake 'bozzuto:load_psi_feed'
   end
 
-  every 1.day, :at => ['10:35 am', '2:35 pm'] do
-    rake 'bozzuto:load_carmel_feed'
-  end
-
   every 1.day, :at => ['11:55 am', '3:55 pm'] do
     rake 'bozzuto:export_apartment_feed'
   end
