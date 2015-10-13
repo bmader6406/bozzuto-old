@@ -878,5 +878,13 @@ form .error ::-webkit-input-placeholder {
   margin-bottom: 1em; }
 
 /* @end Places */
+body .hywrap {
+  max-width: 100%;
+  padding: 20px;
+  box-sizing: border-box; }
+  body .hywrap .control-label {
+    width: 120px; }
+  body .hywrap .controls {
+    margin-left: 140px; }
 
 /*# sourceMappingURL=mobile.css.map */

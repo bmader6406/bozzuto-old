@@ -508,3 +508,17 @@ input, select, textarea, .submit {
 }
 
 /* @end Places */
+
+body .hywrap {
+  max-width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+
+  .control-label {
+    width: 120px;
+  }
+
+  .controls {
+    margin-left: 140px;
+  }
+}
