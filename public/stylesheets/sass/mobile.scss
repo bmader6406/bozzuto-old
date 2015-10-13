@@ -510,9 +510,9 @@ input, select, textarea, .submit {
 /* @end Places */
 
 body .hywrap {
+  box-sizing: border-box;
   max-width: 100%;
   padding: 20px;
-  box-sizing: border-box;
 
   .control-label {
     width: 120px;
