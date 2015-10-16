@@ -9,6 +9,7 @@ AdSource:
     form: domain_name, value
     options:
   order_by: domain_name
+  export: csv
   relationships:
   filters:
   search:
