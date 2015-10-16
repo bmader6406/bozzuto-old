@@ -3,7 +3,7 @@ require 'test_helper'
 module Bozzuto::ExternalFeed
   class FtpTest < ActiveSupport::TestCase
     def tmp_file(name)
-      Rails.root.join('tmp', name).to_s
+      Rails.root.join('test', 'files', name).to_s
     end
 
     context "An External Feed FTP" do
@@ -30,7 +30,8 @@ module Bozzuto::ExternalFeed
         subject { Bozzuto::ExternalFeed::QburstFtp.new }
 
         before do
-          @carmel_feed = mock('Bozzuto::ExternalFeed::CarmelFeed', :default_file => tmp_file('carmel_feed.xml'))
+          @path        = tmp_file('carmel.xml')
+          @carmel_feed = mock('Bozzuto::ExternalFeed::CarmelFeed', :default_file => @path)
 
           Bozzuto::ExternalFeed::Feed.expects(:feed_for_type).with('carmel').returns(@carmel_feed)
 
@@ -41,13 +42,14 @@ module Bozzuto::ExternalFeed
           subject.expects(:can_load?).returns(true)
         end
 
+
         it "sets passive to true, logs into the FTP server, and fetches the file" do
           username = Bozzuto::ExternalFeed::QburstFtp.username
           password = Bozzuto::ExternalFeed::QburstFtp.password
 
           @ftp.expects(:passive=).with(true)
           @ftp.expects(:login).with(username, password)
-          @ftp.expects(:getbinaryfile).with('Carmel.xml', tmp_file('carmel_feed.xml'))
+          @ftp.expects(:getbinaryfile).with('Carmel.xml', @path)
 
           subject.download_files
         end
