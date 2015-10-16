@@ -61,12 +61,16 @@ module Bozzuto
 
         klass.find_in_batches(record_lookup_options) do |records|
           records.each do |record|
-            csv << attr_readers.map do |attr_reader|
-              if attr_reader.nil? || record.send(attr_reader).nil?
-                ''
+            csv << attr_readers.map do |reader|
+              value = if reader.respond_to?(:call)
+                reader.call(record)
+              elsif !reader.nil?
+                record.send(reader)
               else
-                record.send(attr_reader)
+                ''
               end
+
+              value.presence || ''
             end
           end
         end

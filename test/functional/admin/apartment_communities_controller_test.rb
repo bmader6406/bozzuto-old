@@ -184,6 +184,30 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
       end
     end
 
+    context 'GET to #export_dnr' do
+      setup do
+        ApartmentCommunity.make(:title => 'Bat-Cave')
+        ApartmentCommunity.make(:unpublished, :title => 'Arkham Asylum')
+
+        get :export_dnr
+      end
+
+      teardown do
+        begin
+          File.delete(*Dir[Rails.root.join('tmp', 'export-dnr*.csv')])
+        rescue Errno::ENOENT
+          nil
+        end
+      end
+
+      should respond_with(:success)
+
+      it "contains only the published communities" do
+        @response.body.should =~ /Bat-Cave/
+        @response.body.should_not =~ /Arkham Asylum/
+      end
+    end
+
     context "GET to #disconnect" do
       setup do
         @community = ApartmentCommunity.make(:vaultware)

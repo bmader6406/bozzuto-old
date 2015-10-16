@@ -73,6 +73,10 @@ class Admin::ApartmentCommunitiesController < Admin::MasterController
     send_data csv_string, :filename => "apartment_communities_field_audit.csv", :type => :csv
   end
 
+  def export_dnr
+    send_file Bozzuto::DnrCsv.new(:conditions => { :published => true }).file
+  end
+
   def disconnect
     feed_name = @item.external_cms_name
 
@@ -86,6 +90,7 @@ class Admin::ApartmentCommunitiesController < Admin::MasterController
 
     redirect_to url_for_action(:edit), :notice => "Deleted all floor plans."
   end
+
 
   private
 

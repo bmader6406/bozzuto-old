@@ -4,7 +4,7 @@
 
 admin:
   AdSource: create, read, update, delete
-  ApartmentCommunity: create, read, update, delete, list_deleted, list_duplicates, preview, merge, begin_merge, end_merge, disconnect, export_field_audit, delete_floor_plans
+  ApartmentCommunity: create, read, update, delete, list_deleted, list_duplicates, preview, merge, begin_merge, end_merge, disconnect, export_field_audit, delete_floor_plans, export_dnr
   ApartmentContactConfiguration: create, read, update, delete
   ApartmentFloorPlan: create, read, update, delete
   ApartmentFloorPlanGroup: read

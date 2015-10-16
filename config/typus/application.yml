@@ -33,10 +33,12 @@ ApartmentCommunity:
   order_by: title
   relationships: dnr_configuration, mediaplex_tag, property_features, city, county, local_info_feed, features_page, neighborhood_page, tours_page, contact_page, slideshow, videos, photos, floor_plans, promo, contact_configuration, office_hours, property_amenities
   filters: 
+  options:
+    per_page: 30
   search: properties.title, properties.street_address
   application: Properties
   actions:
-    index: list_duplicates, export_field_audit
+    index: list_duplicates, export_field_audit, export_dnr
     show: preview
     edit: preview
 
