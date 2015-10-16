@@ -31,7 +31,7 @@ class Bozzuto::HyLyTest < ActiveSupport::TestCase
       @halstead = ApartmentCommunity.make(:title => 'Halstead Danvers',   :hyly_id => nil)
       @kent     = ApartmentCommunity.make(:title => '111 Kent',           :hyly_id => nil)
 
-      Bozzuto::HyLy::PID_FILE = Rails.root.join('test', 'files', 'hyly_pids.csv')
+      Bozzuto::HyLy.stubs(:pid_file).returns(Rails.root.join('test', 'files', 'hyly_pids.csv'))
     end
 
     it "updates the properties' hyly_ids as appropriate" do

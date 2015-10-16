@@ -4,7 +4,7 @@ class ZipCodesTest < ActiveSupport::TestCase
   context "Bozzuto::ZipCodes" do
     describe ".load" do
       before do
-        Bozzuto::ZipCodes::FILE = Rails.root.join('test', 'fixtures', 'zipcode_data.csv')
+        Bozzuto::ZipCodes.stubs(:file).returns(Rails.root.join('test', 'fixtures', 'zipcode_data.csv'))
       end
 
       it "creates a ZipCode for each row in the CSV" do

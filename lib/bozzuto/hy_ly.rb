@@ -2,7 +2,9 @@ require 'csv'
 
 module Bozzuto
   module HyLy
-    PID_FILE   = Rails.root.join('db', 'seeds', 'hyly_pids.csv')
+    mattr_accessor :pid_file
+    self.pid_file = Rails.root.join('db', 'seeds', 'hyly_pids.csv')
+
     PRIMARY_ID = 'AXrxloE2b'
     ALT_ID     = 'pXCkf054i'
     BUZZ_ID    = 'RDz6g84VF'
@@ -27,7 +29,7 @@ module Bozzuto
     end
 
     def self.seed_pids
-      CSV.foreach(PID_FILE, headers: true) do |row|
+      CSV.foreach(pid_file, headers: true) do |row|
         ApartmentCommunity.find_by_title(row['Property Name']).tap do |community|
           unless community.nil? || community.hyly_id.present?
             community.update_attributes(:hyly_id => row['PID'])
