@@ -89,7 +89,7 @@ module Bozzuto::ExternalFeed
 
             Net::FTP.expects(:open).with('bozzutofeed.qburst.com').yields(@ftp)
 
-            @file = File.open(@path, 'w') { |file| file.write('Test') }
+            @file = ::File.open(@path, 'w') { |file| file.write('Test') }
           end
 
           after do
