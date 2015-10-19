@@ -93,7 +93,7 @@ module Bozzuto::ExternalFeed
           end
 
           after do
-            FileUtils.rm(@path) if File.exists?(@path)
+            FileUtils.rm(@path) if ::File.exists?(@path)
           end
 
           it "sets passive to true, logs into the FTP server, and transfers the file" do
