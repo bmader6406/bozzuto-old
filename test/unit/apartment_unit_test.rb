@@ -55,5 +55,111 @@ class ApartmentUnitTest < ActiveSupport::TestCase
         end
       end
     end
+
+    describe "#bedrooms" do
+      before do
+        @floor_plan = ApartmentFloorPlan.make(:bedrooms => 3)
+      end
+
+      context "when the unit has a bedrooms value" do
+        subject { ApartmentUnit.make(:bedrooms => 2, :floor_plan => @floor_plan) }
+
+        it "returns the value" do
+          subject.bedrooms.should == 2
+        end
+      end
+
+      context "when the unit does not have a bedrooms value" do
+        context "but its floor plan does" do
+          subject { ApartmentUnit.make(:bedrooms => nil, :floor_plan => @floor_plan) }
+
+          it "returns the floor plan's value" do
+            subject.bedrooms.should == 3
+          end
+        end
+
+        context "and neither does its floor plan" do
+          subject { ApartmentUnit.make(:bedrooms => nil, :floor_plan => ApartmentFloorPlan.make(:bedrooms => nil)) }
+
+          it "returns nil" do
+            subject.bedrooms.should == nil
+          end
+        end
+      end
+    end
+
+    describe "#bathrooms" do
+      before do
+        @floor_plan = ApartmentFloorPlan.make(:bathrooms => 3)
+      end
+
+      context "when the unit has a bathrooms value" do
+        subject { ApartmentUnit.make(:bathrooms => 2, :floor_plan => @floor_plan) }
+
+        it "returns the value" do
+          subject.bathrooms.should == 2
+        end
+      end
+
+      context "when the unit does not have a bathrooms value" do
+        context "but its floor plan does" do
+          subject { ApartmentUnit.make(:bathrooms => nil, :floor_plan => @floor_plan) }
+
+          it "returns the floor plan's value" do
+            subject.bathrooms.should == 3
+          end
+        end
+
+        context "and neither does its floor plan" do
+          subject { ApartmentUnit.make(:bathrooms => nil, :floor_plan => ApartmentFloorPlan.make(:bathrooms => nil)) }
+
+          it "returns nil" do
+            subject.bathrooms.should == nil
+          end
+        end
+      end
+    end
+
+    describe "#name" do
+      context "when there's a marketing name" do
+        subject { ApartmentUnit.make(:marketing_name => 'Marketing Name', :external_cms_id => 'CMS ID') }
+
+        it "returns the marketing name" do
+          subject.name.should == 'Marketing Name'
+        end
+      end
+
+      context "when there's no marketing name" do
+        subject { ApartmentUnit.make(:marketing_name => nil, :external_cms_id => 'CMS ID') }
+
+        it "returns the external CMS ID" do
+          subject.name.should == 'CMS ID'
+        end
+      end
+    end
+
+    describe "#rent" do
+      subject { ApartmentUnit.make(:external_cms_type => 'psi', :unit_rent => 1525.0) }
+
+      it "returns the unit rent by default" do
+        subject.rent.should == '$1,525.00'
+      end
+
+      context "for a vaultware unit" do
+        subject { ApartmentUnit.make(:external_cms_type => 'vaultware', :min_rent => 1322.0, :unit_rent => 1525.0) }
+
+        it "returns the min rent" do
+          subject.rent.should == '$1,322.00'
+        end
+      end
+
+      context "for a property link unit" do
+        subject { ApartmentUnit.make(:external_cms_type => 'property_link', :market_rent => 1497.0, :unit_rent => 1525.0) }
+
+        it "returns the market rent" do
+          subject.rent.should == '$1,497.00'
+        end
+      end
+    end
   end
 end

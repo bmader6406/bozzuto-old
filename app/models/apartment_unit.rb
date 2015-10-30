@@ -1,4 +1,6 @@
 class ApartmentUnit < ActiveRecord::Base
+  include ActionView::Helpers::NumberHelper
+
   VACANCY_CLASS = [
     'Occupied',
     'Unoccupied'
@@ -33,5 +35,30 @@ class ApartmentUnit < ActiveRecord::Base
 
   def typus_name
     marketing_name.presence || "ApartmentUnit (ID: #{id})"
+  end
+
+  def name
+    marketing_name.presence || external_cms_id
+  end
+
+  def bedrooms
+    read_attribute(:bedrooms).presence || floor_plan.try(:bedrooms)
+  end
+
+  def bathrooms
+    read_attribute(:bathrooms).presence || floor_plan.try(:bathrooms)
+  end
+
+  def rent
+    value = case external_cms_type
+    when 'vaultware'
+      min_rent
+    when 'property_link'
+      market_rent
+    else
+      unit_rent
+    end
+
+    number_to_currency(value)
   end
 end
