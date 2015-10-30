@@ -6,6 +6,8 @@ development:
   carmel_feed_file: /path/to/carmel/feed/carmel.xml
   apartment_export_file: /path/to/apartment_export_file.xml
   mits4_1_export_file: /path/to/mits4_1.xml
+  ad_source_export_file: /path/to/ad_sources.csv
+  dnr_export_file: /path/to/dnr_config.csv
   ftp:
     live_bozzuto:
       username: Bozzkevate

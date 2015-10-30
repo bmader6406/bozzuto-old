@@ -64,7 +64,7 @@ module Bozzuto::ExternalFeed
         end
 
         it "calls transfer on a new FTP instance with the given file" do
-          @ftp.expects(:transfer).with(@file)
+          @ftp.expects(:transfer).with(@file, {})
 
           Bozzuto::ExternalFeed::QburstFtp.transfer(@file)
         end

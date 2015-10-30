@@ -41,6 +41,14 @@ if environment == 'production'
     rake 'bozzuto:send_apartment_export'
   end
 
+  every 1.day, :at => '1:00 am' do
+    rake 'bozzuto:export_lease_hawk_csvs'
+  end
+
+  every 1.day, :at => '1:15 am' do
+    rake 'bozzuto:send_lease_hawk_csvs'
+  end
+
   every 1.day, :at => '2:00 am' do
     rake 'bozzuto:generate_mits4_1_export'
   end

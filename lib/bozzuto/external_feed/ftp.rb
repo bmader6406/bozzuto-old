@@ -23,17 +23,21 @@ module Bozzuto
             new.download_files
           end
 
-          def self.transfer(file)
-            new.transfer(file)
+          def self.transfer(file, opts = {})
+            new.transfer(file, opts)
           end
         end
       end
 
-      def transfer(file)
+      def transfer(file, options = {})
         raise ArgumentError, 'The given file name does not exist.' unless ::File.exists?(file)
 
         # :nocov:
+        dir = options[:dir]
+
         connect_to_server do |ftp|
+          ftp.chdir(dir) if dir.present?
+
           ftp.putbinaryfile(file)
         end
         # :nocov:
