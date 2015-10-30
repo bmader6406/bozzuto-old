@@ -364,7 +364,8 @@ module Bozzuto::Exports
                 :floor_plan      => @floor_plan,
                 :external_cms_id => '123',
                 :marketing_name  => 'Penthouse 1A',
-                :market_rent     => 2000
+                :market_rent     => 2000,
+                :address_line_2  => 'Unit P1A'
               )
 
               @unit2 = ApartmentUnit.make(
@@ -399,6 +400,14 @@ module Bozzuto::Exports
             it "contains the correct market rent values" do
               @normal_unit.market_rent.should == 2000.0
               @exceptional_unit.market_rent.should == 2525.50
+            end
+
+            it "contains the correct address data" do
+              @normal_unit.address_line_1.should == '100 Gooby Pls'
+              @normal_unit.address_line_2.should == 'Unit P1A'
+              @normal_unit.city.should           == 'Bogsville'
+              @normal_unit.state.should          == 'NC'
+              @normal_unit.zip.should            == '89223'
             end
           end
         end

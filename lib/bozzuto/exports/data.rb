@@ -136,6 +136,22 @@ module Bozzuto
         def sync_id
           external_cms_type == 'rent_cafe' ? building_external_cms_id : external_cms_id
         end
+
+        def address_line_1
+          super.presence || floor_plan.apartment_community.street_address
+        end
+
+        def city
+          super.presence || floor_plan.apartment_community.city.name
+        end
+
+        def state
+          super.presence || floor_plan.apartment_community.state.code
+        end
+
+        def zip
+          super.presence || floor_plan.apartment_community.zip_code
+        end
       end
     end
   end
