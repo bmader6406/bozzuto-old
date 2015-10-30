@@ -129,6 +129,10 @@ module Bozzuto
           marketing_name.presence || external_cms_id
         end
 
+        def market_rent
+          super.presence || max_rent
+        end
+
         def sync_id
           external_cms_type == 'rent_cafe' ? building_external_cms_id : external_cms_id
         end
