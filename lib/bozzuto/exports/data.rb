@@ -129,6 +129,10 @@ module Bozzuto
           marketing_name.presence || external_cms_id
         end
 
+        def unit_rent
+          super.presence || market_rent
+        end
+
         def market_rent
           super.presence || max_rent
         end

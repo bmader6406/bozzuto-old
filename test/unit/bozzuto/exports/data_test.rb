@@ -364,6 +364,7 @@ module Bozzuto::Exports
                 :floor_plan      => @floor_plan,
                 :external_cms_id => '123',
                 :marketing_name  => 'Penthouse 1A',
+                :unit_rent       => nil,
                 :market_rent     => 2000,
                 :address_line_2  => 'Unit P1A'
               )
@@ -374,6 +375,7 @@ module Bozzuto::Exports
                 :external_cms_id          => '5C',
                 :building_external_cms_id => '456',
                 :marketing_name           => nil,
+                :unit_rent                => nil,
                 :market_rent              => nil,
                 :max_rent                 => 2525.50
               )
@@ -395,6 +397,11 @@ module Bozzuto::Exports
             it "contains the correct sync IDs" do
               @normal_unit.sync_id.should == '123'
               @exceptional_unit.sync_id.should == '456'
+            end
+
+            it "contains the correct unit rent values" do
+              @normal_unit.unit_rent.should == 2000.0
+              @exceptional_unit.unit_rent.should == 2525.50
             end
 
             it "contains the correct market rent values" do
