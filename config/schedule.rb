@@ -13,7 +13,7 @@ if environment == 'production'
     rake "-s sitemap:refresh"
   end
 
-  every 1.day, :at => ['10:05 am', '2:05 pm'] do
+  every 1.day, :at => ['12:05 am', '2:05 am', '4:05 am', '6:05 am', '8:05am', '10:05 am', '2:05 pm', '4:05 pm', '6:05 pm', '8:05 pm', '10:05 pm'] do
     rake 'bozzuto:download_property_feeds'
   end
 
@@ -25,7 +25,7 @@ if environment == 'production'
     rake 'bozzuto:load_property_link_feed'
   end
 
-  every 1.day, :at => ['10:25 am', '2:25 pm'] do
+  every 1.day, :at => ['12:25 am', '4:25 am', '7:25 am', '10:25 am', '2:25 pm', '4:25 pm', '6:25 pm', '8:25 pm', '10:25 pm'] do
     rake 'bozzuto:load_rent_cafe_feed'
   end
 
@@ -33,11 +33,11 @@ if environment == 'production'
     rake 'bozzuto:load_psi_feed'
   end
 
-  every 1.day, :at => ['11:55 am', '3:55 pm'] do
+  every 1.day, :at => ['1:55 am', '5:55 am', '8:55 am', '11:55 am', '3:55 pm', '5:55 pm', '7:55 pm', '9:55 pm', '11:55 pm'] do
     rake 'bozzuto:export_apartment_feed'
   end
 
-  every 1.day, :at => ['12:00 pm', '4:00 pm'] do
+  every 1.day, :at => ['2:00 am', '6:00 am', '9:00 am', '12:00 pm', '4:00 pm', '6:00 pm', '8:00 pm', '10:00 pm', '12:00 am'] do
     rake 'bozzuto:send_apartment_export'
   end
 
