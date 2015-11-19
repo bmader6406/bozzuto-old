@@ -1,7 +1,7 @@
 (function() {
   var template =
     '<div class="map-location biz" data-jmapping=\'{{json}}\'>' +
-      '<div class="info-box clearfix">' + 
+      '<div class="info-box clearfix">' +
         '<h4><a href="{{url}}">{{name}}</a></h4>' +
         '<div class="info-photo"><a href="{{url}}"><img src="{{photo_img}}" /></a></div>' +
         '<div class="info-content"><img src="{{rating_img}}" /><p>{{address}}</p></div>' +
@@ -97,6 +97,7 @@
                 url:  iconImage(category)
               };
             },
+            always_show_markers: true,
             default_zoom_level: 13,
             side_bar_selector: '#large-map-side-bar:first'
           });
