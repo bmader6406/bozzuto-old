@@ -76,6 +76,8 @@ module ApartmentCommunitiesHelper
     <script type="text/javascript">
       var ws_wsid = '#{APP_CONFIG[:walkscore_wsid]}';
       var ws_address = '#{community.address}';
+      var ws_lat = '#{community.latitude}';
+      var ws_lon = '#{community.longitude}';
       var ws_width = '#{opts[:width]}';
       var ws_height = '#{opts[:height]}';
       var ws_layout = 'vertical';

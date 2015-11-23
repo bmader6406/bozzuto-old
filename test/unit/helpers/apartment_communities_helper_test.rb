@@ -102,15 +102,17 @@ class ApartmentCommunitiesHelperTest < ActionView::TestCase
 
     describe "#walkscore_map_script" do
       before do
-        @community = ApartmentCommunity.make(:street_address => '123 Test Dr')
+        @community = ApartmentCommunity.make(:street_address => '123 Test Dr', :latitude => 80.136, :longitude => -57.892)
       end
 
       it "returns the javascript code" do
-        walkscore_map_script(@community).should =~ /#{@community.address}/
-
-        walkscore_map_script(@community, :width => 500).should =~ /var ws_width = '500';/
-
-        walkscore_map_script(@community, :height => 700).should =~ /var ws_height = '700';/
+        walkscore_map_script(@community, :width => 500, :height => 700).tap do |script|
+          script.should =~ /#{@community.address}/
+          script.should =~ /var ws_lat = '80.136';/
+          script.should =~ /var ws_lon = '-57.892';/
+          script.should =~ /var ws_width = '500';/
+          script.should =~ /var ws_height = '700';/
+        end
       end
     end
 
