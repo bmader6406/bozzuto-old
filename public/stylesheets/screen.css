@@ -2604,12 +2604,13 @@ div.wysiwyg ul li {
       border: none;
       color: #84848b;
       font-size: 14px;
+      font-weight: bold;
       margin-bottom: 0;
       padding: 0;
       text-transform: uppercase;
     }
     .project #main-content .content .main-content ul.data li p {
-      font-size: 22px;
+      font-size: 14px;
       width: 100%;
     }
     .project #main-content .content .main-content ul.project-updates {
