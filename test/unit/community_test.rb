@@ -55,7 +55,7 @@ class CommunityTest < ActiveSupport::TestCase
         end
 
         it "returns the phone number" do
-          subject.mobile_phone_number.should == @phone_number
+          subject.mobile_phone_number.should == '111.111.1111'
         end
       end
 
@@ -67,7 +67,7 @@ class CommunityTest < ActiveSupport::TestCase
         end
 
         it "returns the mobile phone number" do
-          subject.mobile_phone_number.should == @mobile_phone_number
+          subject.mobile_phone_number.should == '234.567.8900'
         end
       end
     end
@@ -279,7 +279,7 @@ class CommunityTest < ActiveSupport::TestCase
       end
 
       it "has a phone message for sms" do
-        subject.phone_message.should == "Pearson Square 410 S. Maple Ave, Falls Church, Virginia 888-478-8640 Call for specials! http://bozzuto.com/pearson"
+        subject.phone_message.should == "Pearson Square 410 S. Maple Ave, Falls Church, Virginia 888.478.8640 Call for specials! http://bozzuto.com/pearson"
       end
 
       it "has attributes including phone number" do

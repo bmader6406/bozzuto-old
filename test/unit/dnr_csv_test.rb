@@ -75,8 +75,8 @@ module Bozzuto
     def csv
       <<-CSV
 Title,Website,Phone Number,DNR Account Number,DNR Customer Code
-Bat-Cave,http://batcave.com,123 456 7890,1081055,abc123
-Arkham Asylum,http://arkham.org,098 765 4321,1081055,""
+Bat-Cave,http://batcave.com,123.456.7890,1081055,abc123
+Arkham Asylum,http://arkham.org,098.765.4321,1081055,""
 CSV
     end
   end

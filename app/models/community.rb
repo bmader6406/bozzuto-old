@@ -105,7 +105,7 @@ class Community < Property
   end
 
   def mobile_phone_number
-    super || phone_number
+    super.presence || phone_number
   end
 
   def twitter_handle
