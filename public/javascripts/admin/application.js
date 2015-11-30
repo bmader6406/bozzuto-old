@@ -1,4 +1,4 @@
-// Place your application-specific JavaScript functions and classes for 
+// Place your application-specific JavaScript functions and classes for
 // Typus here.
 
 $(function() {
@@ -315,4 +315,6 @@ $(function() {
 			}
 		});
 	})();
+
+  $('#apartment_community_phone_number, #apartment_community_mobile_phone_number').mask('999.999.9999');
 });
