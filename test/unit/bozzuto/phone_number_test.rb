@@ -52,6 +52,14 @@ class Bozzuto::PhoneNumberTest < ActiveSupport::TestCase
       it "returns a period-separated phone number" do
         subject.to_s.should == '815.381.3919'
       end
+
+      context "when initialized with a blank value" do
+        subject { Bozzuto::PhoneNumber.new(nil) }
+
+        it "returns an empty string" do
+          subject.to_s.should == ''
+        end
+      end
     end
   end
 end

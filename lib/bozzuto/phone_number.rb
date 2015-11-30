@@ -11,6 +11,8 @@ module Bozzuto
     end
 
     def to_s
+      return value.to_s if value.blank?
+
       match = value.match(/(\d{3})(\d{3})(\d{4})/)
 
       [match[1], match[2], match[3]].join('.')
