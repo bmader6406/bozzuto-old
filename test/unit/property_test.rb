@@ -38,6 +38,22 @@ class PropertyTest < ActiveSupport::TestCase
     end
 =end
 
+    context "before save" do
+      subject do
+        ApartmentCommunity.make(
+          phone_number:        '(815) 381-3919',
+          mobile_phone_number: '815.381.3919'
+        )
+      end
+
+      it "formats both the phone number and mobile phone number" do
+        subject.save
+
+        subject.phone_number.should        == '8153813919'
+        subject.mobile_phone_number.should == '8153813919'
+      end
+    end
+
     context 'when querying property type' do
       setup { @property = ApartmentCommunity.make }
 

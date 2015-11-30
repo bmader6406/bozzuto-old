@@ -50,6 +50,9 @@ class Property < ActiveRecord::Base
 
   validates_inclusion_of :brochure_type, :in => [USE_BROCHURE_URL, USE_BROCHURE_FILE]
 
+  before_save :format_phone_number,        if: :phone_number?
+  before_save :format_mobile_phone_number, if: :mobile_phone_number?
+
   has_attached_file :listing_image,
     :url             => '/system/:class/:id/:style.:extension',
     :styles          => { :square => '150x150#', :rect => '230x145#' },
@@ -155,5 +158,13 @@ class Property < ActiveRecord::Base
 
   def id_and_title
     "#{id} #{title}"
+  end
+
+  def format_phone_number
+    self.phone_number = Bozzuto::PhoneNumber.format(phone_number)
+  end
+
+  def format_mobile_phone_number
+    self.mobile_phone_number = Bozzuto::PhoneNumber.format(mobile_phone_number)
   end
 end
