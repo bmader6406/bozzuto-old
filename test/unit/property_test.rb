@@ -49,8 +49,8 @@ class PropertyTest < ActiveSupport::TestCase
       it "formats both the phone number and mobile phone number" do
         subject.save
 
-        subject.phone_number.should        == '8153813919'
-        subject.mobile_phone_number.should == '8153813919'
+        subject.read_attribute(:phone_number).should        == '8153813919'
+        subject.read_attribute(:mobile_phone_number).should == '8153813919'
       end
     end
 
@@ -267,6 +267,22 @@ class PropertyTest < ActiveSupport::TestCase
 
       it "returns the title with HTML entities" do
         subject.as_jmapping[:name].should == 'Batman&#39;s Batcave'
+      end
+    end
+
+    describe "#phone_number" do
+      subject { ApartmentCommunity.make(phone_number: '8153813919') }
+
+      it "returns a period-separated phone number" do
+        subject.phone_number.should == '815.381.3919'
+      end
+    end
+
+    describe "#mobile_phone_number" do
+      subject { ApartmentCommunity.make(mobile_phone_number: '8153813919') }
+
+      it "returns a period-separated mobile phone number" do
+        subject.mobile_phone_number.should == '815.381.3919'
       end
     end
   end

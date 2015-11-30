@@ -154,6 +154,14 @@ class Property < ActiveRecord::Base
     seo_link_text.present? && seo_link_url.present?
   end
 
+  def phone_number
+    Bozzuto::PhoneNumber.new(read_attribute(:phone_number)).to_s
+  end
+
+  def mobile_phone_number
+    Bozzuto::PhoneNumber.new(read_attribute(:mobile_phone_number)).to_s
+  end
+
   private
 
   def id_and_title
