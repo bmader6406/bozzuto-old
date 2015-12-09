@@ -42,7 +42,7 @@ class Admin::ApartmentCommunitiesController < Admin::MasterController
   end
 
   def preview
-    redirect_to apartment_community_url(@item)
+    redirect_to apartment_community_url(@item, :preview => true)
   end
 
   def merge
