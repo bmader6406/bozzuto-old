@@ -32,6 +32,18 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
 
           should respond_with(:not_found)
         end
+
+        context "when passed with a preview param" do
+          all_devices do
+            before do
+              get :show, :id => @community.to_param, preview: 'true'
+            end
+
+            should respond_with(:success)
+            should render_template(:show)
+            should assign_to(:community) { @community }
+          end
+        end
       end
 
       context "with a published community" do

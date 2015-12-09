@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
   end
 
   def find_property(klass, id)
-    base_scope = typus_user ? klass : klass.published
+    base_scope = (typus_user || params[:preview] == 'true') ? klass : klass.published
 
     base_scope.includes(:slugs).where({ :slugs => { :scope => klass.to_s } }).find(id)
   end
