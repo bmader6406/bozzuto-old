@@ -15,7 +15,7 @@ module Bozzuto::ExternalFeed
 
         delete_orphaned_floor_plans
       end
-      
+
       property
     end
 
@@ -167,9 +167,10 @@ module Bozzuto::ExternalFeed
     end
 
     def find_or_initialize_unit(data)
-      unit = ::ApartmentUnit.find_or_initialize_by_external_cms_id_and_external_cms_type(
+      unit = ::ApartmentUnit.find_or_initialize_by_external_cms_id_and_external_cms_type_and_floorplan_external_cms_id(
         data.external_cms_id,
-        data.external_cms_type
+        data.external_cms_type,
+        data.floorplan_external_cms_id
       )
 
       yield(unit) if block_given?

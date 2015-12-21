@@ -426,7 +426,7 @@ module Bozzuto::ExternalFeed
             end
 
             c.apartment_units.last.tap do |u|
-              u.external_cms_id.should              == '09-209'
+              u.external_cms_id.should              == '521'
               u.external_cms_type.should            == 'rent_cafe'
               u.building_external_cms_id.should     == '24614'
               u.floorplan_external_cms_id.should    == '937747'
@@ -479,7 +479,7 @@ module Bozzuto::ExternalFeed
               u.files.count.should == 1
 
               u.files.first.tap do |file|
-                file.external_cms_id.should   == '09-209'
+                file.external_cms_id.should   == '521'
                 file.external_cms_type.should == 'rent_cafe'
                 file.active.should            == true
                 file.file_type.should         == 'Photo'
