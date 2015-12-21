@@ -34,19 +34,11 @@ module Bozzuto::ExternalFeed
     def write_attributes_to(p)
       attrs = property_data.database_attributes.merge(:found_in_latest_feed => true)
 
-      if feed_type == :carmel
-        attrs.delete(:title)
-        attrs.delete(:street_address)
-        attrs.delete(:availability_url)
-      end
-
       p.attributes = attrs
     end
 
     def set_location_data_for(p)
-      unless feed_type == :carmel && p.city.present?
-        p.city = find_or_create_city(property_data.city, property_data.state)
-      end
+      p.city = find_or_create_city(property_data.city, property_data.state)
     end
 
     def persist(records, options = {})

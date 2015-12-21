@@ -15,7 +15,7 @@ module Bozzuto
 
       class << self
         def feed_types
-          %w(vaultware rent_cafe property_link psi carmel)
+          %w(vaultware rent_cafe property_link psi)
         end
 
         def feed_for_type(type, file = nil)

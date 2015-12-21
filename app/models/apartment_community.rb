@@ -114,11 +114,7 @@ class ApartmentCommunity < Community
   scope :not_under_construction, :conditions => { :under_construction => false }
 
   def external_cms_attributes
-    if external_cms_type == 'carmel'
-      [:floor_plans]
-    else
-      self.class.external_cms_attributes
-    end
+    self.class.external_cms_attributes
   end
 
   def nearby_communities(limit = 6)

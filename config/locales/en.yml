@@ -617,7 +617,6 @@ en:
         username: Do not include the @ symbol
   bozzuto:
     feeds:
-      carmel: Carmel
       property_link: Property Link
       psi: PSI
       rent_cafe: Rent Cafe

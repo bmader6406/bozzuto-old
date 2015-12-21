@@ -12,7 +12,7 @@ module Bozzuto
       self.ftp_name = 'Live Bozzuto'
 
       def feed_types
-        Feed.feed_types - ['carmel']
+        Feed.feed_types
       end
 
       private

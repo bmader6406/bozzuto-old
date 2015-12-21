@@ -892,7 +892,7 @@ module Bozzuto::ExternalFeed
                 end
 
                 f.apartment_units.last.tap do |u|
-                  u.external_cms_id.should              == '09-209'
+                  u.external_cms_id.should              == '521'
                   u.external_cms_type.should            == 'rent_cafe'
                   u.building_external_cms_id.should     == '24614'
                   u.floorplan_external_cms_id.should    == '937747'
@@ -946,7 +946,7 @@ module Bozzuto::ExternalFeed
                   u.feed_files.count.should == 1
 
                   u.feed_files.first.tap do |file|
-                    file.external_cms_id.should   == '09-209'
+                    file.external_cms_id.should   == '521'
                     file.external_cms_type.should == 'rent_cafe'
                     file.active.should            == true
                     file.file_type.should         == 'Photo'
@@ -964,41 +964,6 @@ module Bozzuto::ExternalFeed
                 end
               end
             end
-          end
-        end
-      end
-
-      describe "loading a Carmel feed when there are existing Carmel properties" do
-        subject do
-          Bozzuto::ExternalFeed::Loader.loader_for_type(:carmel, :file => Rails.root.join('test/files/carmel.xml'))
-        end
-
-        before do
-          setup_loader_stubs(subject)
-
-          @state     = State.find_by_code('PA')
-          @city      = City.make(:state => @state, name: 'Pittsburgh')
-          @community = ApartmentCommunity.make(:carmel,
-            :external_cms_id  => 'CHE801',
-            :title            => 'TEST',
-            :city             => @city,
-            :street_address   => 'TEST',
-            :availability_url => 'TEST'
-          )
-        end
-
-        it "does not overwrite existing information" do
-          subject.load!
-
-          @community.reload.tap do |c|
-            c.title.should             == 'TEST'
-            c.street_address.should    == 'TEST'
-            c.city.should              == @city
-            c.state.should             == @state
-            c.availability_url.should  == 'TEST'
-            c.external_cms_id.should   == 'CHE801'
-            c.external_cms_type.should == 'carmel'
-            c.office_hours.should      == []
           end
         end
       end

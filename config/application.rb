@@ -46,7 +46,6 @@ module Bozzuto
       Bozzuto::ExternalFeed::RentCafeFeed.default_file     = APP_CONFIG[:rent_cafe_feed_file]
       Bozzuto::ExternalFeed::PropertyLinkFeed.default_file = APP_CONFIG[:property_link_feed_file]
       Bozzuto::ExternalFeed::PsiFeed.default_file          = APP_CONFIG[:psi_feed_file]
-      Bozzuto::ExternalFeed::CarmelFeed.default_file       = APP_CONFIG[:carmel_feed_file]
     end
   end
 end

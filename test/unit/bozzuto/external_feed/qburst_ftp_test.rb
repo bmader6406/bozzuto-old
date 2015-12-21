@@ -30,11 +30,6 @@ module Bozzuto::ExternalFeed
         subject { Bozzuto::ExternalFeed::QburstFtp.new }
 
         before do
-          @path        = tmp_file('carmel.xml')
-          @carmel_feed = mock('Bozzuto::ExternalFeed::CarmelFeed', :default_file => @path)
-
-          Bozzuto::ExternalFeed::Feed.expects(:feed_for_type).with('carmel').returns(@carmel_feed)
-
           @ftp = mock('Net::FTP')
 
           Net::FTP.expects(:open).with('bozzutofeed.qburst.com').yields(@ftp)
@@ -49,7 +44,6 @@ module Bozzuto::ExternalFeed
 
           @ftp.expects(:passive=).with(true)
           @ftp.expects(:login).with(username, password)
-          @ftp.expects(:getbinaryfile).with('Carmel.xml', @path)
 
           subject.download_files
         end
@@ -112,7 +106,7 @@ module Bozzuto::ExternalFeed
           subject { Bozzuto::ExternalFeed::QburstFtp.new }
 
           it "returns the correct set of feed types" do
-            subject.feed_types.should == %w(carmel)
+            subject.feed_types.should == []
           end
         end
 

@@ -94,24 +94,6 @@ namespace :bozzuto do
     end
   end
 
-  desc 'Load latest feed from Carmel'
-  task :load_carmel_feed => :environment do
-    log_task 'Loading Carmel feed ...'
-
-    begin
-      loader = Bozzuto::ExternalFeed::Loader.loader_for_type(:carmel)
-
-      if loader.load!
-        puts "  Carmel feed successfully loaded"
-      else
-        puts "  Can't load Carmel feed. Try again later."
-      end
-    rescue Exception => e
-      report_error('load feed', e)
-      HoptoadNotifier.notify(e)
-    end
-  end
-
   desc 'Refresh Local Info feeds'
   task :refresh_local_info_feeds => :environment do
     log_task 'Refreshing RSS feeds'

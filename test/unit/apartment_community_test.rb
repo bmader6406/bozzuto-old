@@ -147,27 +147,17 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
     end
 
     describe "#external_cms_attributes" do
-      context "when the community is managed by the Carmel feed" do
-        before { @community = ApartmentCommunity.make(:carmel) }
+      before { @community = ApartmentCommunity.make(:psi) }
 
-        it "returns the correct list of attributes to be overwritten in a merge" do
-          @community.external_cms_attributes.should == [:floor_plans]
-        end
-      end
-
-      context "when the community is not managed by the Carmel feed" do
-        before { @community = ApartmentCommunity.make(:psi) }
-
-        it "returns the correct list of attributes to be overwritten in a merge" do
-          @community.external_cms_attributes.should == [
-            :title,
-            :street_address,
-            :city,
-            :county,
-            :availability_url,
-            :floor_plans
-          ]
-        end
+      it "returns the correct list of attributes to be overwritten in a merge" do
+        @community.external_cms_attributes.should == [
+          :title,
+          :street_address,
+          :city,
+          :county,
+          :availability_url,
+          :floor_plans
+        ]
       end
     end
 
