@@ -21,29 +21,28 @@
   </div>
   <div class="city-contact-grid-sidebar">
     <%= @page.content.try(:html_safe) if @page %>
+    <div id="community-contact-text">
+      <% if @community.address.present? %>
+        <h2><strong>Address</strong></h2>
+        <p><%= @community.title %></p>
+        <p><%== @community.address("<br>") + " #{@community.zip_code}" %></p>
+      <% end %>
+
+      <% if @page.try(:local_phone_number).present? || @community.phone_number.present? %>
+        <h2><strong>Phone Number</strong></h2>
+        <p><%= @page.try(:local_phone_number).presence || @community.phone_number %></p>
+      <% end %>
+
+      <% if @community.office_hours.any? %>
+        <h2><strong>Office Hours</strong></h2>
+        <% @community.office_hours.each do |office_hour| %>
+          <p><%= office_hour %></p>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 
-<div id="community-contact-text">
-  <% if @community.address.present? %>
-    <h2><strong>Address</strong></h2>
-    <p><%= @community.title %></p>
-    <p><%== @community.address("<br>") + " #{@community.zip_code}" %></p>
-  <% end %>
-
-  <% if @page.try(:local_phone_number).present? || @community.phone_number.present? %>
-    <h2><strong>Phone Number</strong></h2>
-    <p><%= @page.try(:local_phone_number).presence || @community.phone_number %></p>
-  <% end %>
-
-  <% if @community.office_hours.any? %>
-    <h2><strong>Office Hours</strong></h2>
-    <% @community.office_hours.each do |office_hour| %>
-      <p><%= office_hour %></p>
-    <% end %>
-  <% end %>
-
-</div>
 
 <% content_for :javascript do %>
   <script type="text/javascript" src="http://js.washingtonpost.com/wp-adv/units/wp-plus/895696/Retargeting_1_Shopping_Cart_/tag.js"></script>
