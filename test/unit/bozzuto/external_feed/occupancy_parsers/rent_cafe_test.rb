@@ -26,7 +26,7 @@ module Bozzuto::ExternalFeed::OccupancyParsers
               <<-XML
                 <ILS_Unit>
                   <UnitLeasedStatusDescription>Notice Unrented</UnitLeasedStatusDescription>
-                  <DateAvailable Month="01" Day="09" Year="2015"/>
+                  <DateAvailable>1/9/2015</DateAvailable>
                 </ILS_Unit>
               XML
             ).at('./ILS_Unit')

@@ -35,6 +35,7 @@ gem 'validates_email_format_of'
 gem 'yboss'
 gem 'acts_as_archive'
 gem 'activerecord-import', '0.2.11'
+gem 'chronic'
 
 #gem 'twitter-text', '1.3.1'
 

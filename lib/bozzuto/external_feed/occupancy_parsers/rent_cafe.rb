@@ -14,6 +14,10 @@ module Bozzuto::ExternalFeed
         'Do Not Show'
       ]
 
+      def vacate_date
+        @vacate_date ||= Chronic.parse(string_at(xml, vacate_date_xpath)).try(:to_date)
+      end
+
       private
 
       def vacancy_class_xpath
