@@ -3,11 +3,11 @@ require File.expand_path('../boot', __FILE__)
 require 'rails/all'
 require 'openssl' # required for Geokit
 
-Bundler.require(:default, Rails.env) if defined?(Bundler)
+Bundler.require(*Rails.groups)
 
 module Bozzuto
   class Application < Rails::Application
-    config.autoload_paths += [config.root.join('lib')]
+    config.autoload_paths += [config.root.join('lib'), config.root.join('vendor')]
     config.encoding = 'utf-8'
     config.autoload_paths << Rails.root.join('app', 'mailers')
 
@@ -20,6 +20,7 @@ module Bozzuto
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
+    config.active_record.raise_in_transactional_callbacks = true
     config.active_record.observers = :apartment_floor_plan_observer
 
     config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do

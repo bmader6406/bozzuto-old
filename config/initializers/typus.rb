@@ -2,6 +2,8 @@
 
 # System wide options
 
+require 'typus/configuration'
+
 Typus::Configuration.options[:app_name] = 'Bozzuto CMS'
 # Typus::Configuration.options[:email] = 'admin@example.com'
 # Typus::Configuration.options[:file_preview] = :typus_preview
