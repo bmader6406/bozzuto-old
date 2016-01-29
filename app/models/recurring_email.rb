@@ -14,10 +14,9 @@ class RecurringEmail < ActiveRecord::Base
 
   before_validation :generate_token, :on => :create
 
-  scope :recurring,             :conditions => { :recurring => true }
-  scope :active,                :conditions => { :state => 'active' }
-  scope :last_sent_30_days_ago, :conditions => ['last_sent_at < ?', 30.days.ago]
-
+  scope :recurring,             -> { where(recurring: true) }
+  scope :active,                -> { where(state: 'active') }
+  scope :last_sent_30_days_ago, -> { where('last_sent_at < ?', 30.days.ago) }
 
   def self.random_uuid
     UUIDTools::UUID.random_create

@@ -66,52 +66,30 @@ class ApartmentCommunity < Community
 
   validates_inclusion_of :included_in_export, :in => [true, false]
 
-  scope :included_in_export,   :conditions => { :included_in_export => true }
-  scope :found_in_latest_feed, :conditions => { :found_in_latest_feed => true }
+  scope :included_in_export,   -> { where(included_in_export: true) }
+  scope :found_in_latest_feed, -> { where(found_in_latest_feed: true) }
 
-  scope :with_min_price, lambda { |price|
-    {
-      :joins      => "JOIN apartment_floor_plan_caches AS cache ON cache.cacheable_id = properties.id AND cache.cacheable_type = 'Property'",
-      :conditions => ['cache.max_price >= ?', price.to_i]
-    }
+  scope :with_min_price, -> (price) { 
+    joins("JOIN apartment_floor_plan_caches AS cache ON cache.cacheable_id = properties.id AND cache.cacheable_type = 'Property'")
+      .where('cache.max_price >= ?', price.to_i)
   }
 
-  scope :with_max_price, lambda { |price|
-    {
-      :joins      => "JOIN apartment_floor_plan_caches AS cache ON cache.cacheable_id = properties.id AND cache.cacheable_type = 'Property'",
-      :conditions => ['cache.min_price <= ?', price.to_i]
-    }
+  scope :with_max_price, -> (price) {
+    joins("JOIN apartment_floor_plan_caches AS cache ON cache.cacheable_id = properties.id AND cache.cacheable_type = 'Property'")
+      .where('cache.min_price <= ?', price.to_i)
   }
 
-  scope :with_any_floor_plan_groups, lambda { |ids|
-    { :conditions => Bozzuto::Searches::Partial::FloorPlanSearch.new(ids).sql }
-  }
+  scope :with_any_floor_plan_groups,   -> (ids) { where(Bozzuto::Searches::Partial::FloorPlanSearch.new(ids).sql) }
+  scope :with_any_property_features,   -> (ids) { where(Bozzuto::Searches::Partial::FeatureSearch.new(ids).sql) }
+  scope :with_exact_floor_plan_groups, -> (ids) { where(Bozzuto::Searches::Exact::FloorPlanSearch.new(ids).sql) }
+  scope :with_exact_property_features, -> (ids) { where(Bozzuto::Searches::Exact::FeatureSearch.new(ids).sql) }
+  scope :having_all_floor_plan_groups, -> (ids) { where(Bozzuto::Searches::Full::FloorPlanSearch.new(ids).sql) }
+  scope :having_all_property_features, -> (ids) { where(Bozzuto::Searches::Full::FeatureSearch.new(ids).sql) }
 
-  scope :with_any_property_features, lambda { |ids|
-    { :conditions => Bozzuto::Searches::Partial::FeatureSearch.new(ids).sql }
-  }
+  scope :featured, -> { where("properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE featured = ?)", true) }
 
-  scope :with_exact_floor_plan_groups, lambda { |ids|
-    { :conditions => Bozzuto::Searches::Exact::FloorPlanSearch.new(ids).sql }
-  }
-
-  scope :with_exact_property_features, lambda { |ids|
-    { :conditions => Bozzuto::Searches::Exact::FeatureSearch.new(ids).sql }
-  }
-
-  scope :having_all_floor_plan_groups, lambda { |ids|
-    { :conditions => Bozzuto::Searches::Full::FloorPlanSearch.new(ids).sql }
-  }
-
-  scope :having_all_property_features, lambda { |ids|
-    { :conditions => Bozzuto::Searches::Full::FeatureSearch.new(ids).sql }
-  }
-
-  scope :featured, :conditions => ["properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE featured = ?)", true]
-
-  scope :under_construction, :conditions => { :under_construction => true }
-
-  scope :not_under_construction, :conditions => { :under_construction => false }
+  scope :under_construction,     -> { where(under_construction: true) }
+  scope :not_under_construction, -> { where(under_construction: false) }
 
   def external_cms_attributes
     self.class.external_cms_attributes

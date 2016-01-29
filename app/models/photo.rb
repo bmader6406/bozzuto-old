@@ -16,11 +16,8 @@ class Photo < ActiveRecord::Base
     :order   => 'photo_groups.position ASC, photos.position ASC'
   }
 
-  scope :in_group, lambda { |group|
-    { :conditions => { :photo_group_id => group.id } }
-  }
-
-  scope :for_mobile,  { :conditions => { :show_to_mobile => true } }
+  scope :in_group,   -> (group) { where(photo_group_id: group.id) }
+  scope :for_mobile, -> { where(show_to_mobile: true) }
 
   has_attached_file :image,
                     :url             => '/system/:class/:id/photo_:id_:style.:extension',

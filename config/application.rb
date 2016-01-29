@@ -1,21 +1,27 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
-require 'openssl' # required for Geokit
+#require 'openssl' # required for Geokit TODO remove RF 2-1-16
 
+# Require the gems listed in Gemfile, including any gems
+# you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
 module Bozzuto
   class Application < Rails::Application
-    config.autoload_paths += [config.root.join('lib'), config.root.join('vendor')]
-    config.encoding = 'utf-8'
-    config.autoload_paths << Rails.root.join('app', 'mailers')
+
+    config.autoload_paths += [
+      config.root.join('lib'),
+      config.root.join('vendor/plugins')
+    ]
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names.
     config.time_zone = 'Eastern Time (US & Canada)'
 
     config.i18n.enforce_available_locales = true
+
+    # ----- non standard  TODO remove 2-1-16 RF
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]

@@ -12,28 +12,19 @@ class Project < Property
   belongs_to :section
   has_and_belongs_to_many :project_categories, :order => 'position ASC'
 
-
   validates_presence_of :completion_date
   validates_inclusion_of :has_completion_date, :in => [true, false]
 
-
-  scope :in_section, lambda { |section|
-    { :conditions => { :section_id => section.id } }
-  }
-
-  scope :in_categories, lambda { |categories|
-    {
-      :joins => 'JOIN project_categories_projects ON properties.id = project_categories_projects.project_id',
-      :conditions => ['project_category_id IN (?)', categories]
-    }
-  }
-
-  scope :order_by_completion_date, :order => 'completion_date DESC'
-
-  scope :featured_mobile, :conditions => { :featured_mobile => true }
-
-
   default_scope :order => 'title ASC'
+
+  scope :in_section,               -> (section) { where(section_id: section.id) }
+  scope :order_by_completion_date, -> { order('completion_date DESC') }
+  scope :featured_mobile,          -> { where(featured_mobile: true) }
+
+  scope :in_categories, -> (categories) {
+    joins('JOIN project_categories_projects ON properties.id = project_categories_projects.project_id')
+      .where('project_category_id IN (?)', categories)
+  }
 
   def related_projects(limit = 4)
     self.class.

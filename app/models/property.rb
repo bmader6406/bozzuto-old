@@ -68,18 +68,15 @@ class Property < ActiveRecord::Base
                     :default_style   => :resized,
                     :convert_options => { :all => '-quality 80 -strip' }
 
-  scope :mappable, :conditions => ['latitude IS NOT NULL AND longitude IS NOT NULL']
+  scope :mappable,         -> { where('latitude IS NOT NULL AND longitude IS NOT NULL') }
+  scope :in_state,         -> (state_id) { where('city_id IN (SELECT id FROM cities WHERE cities.state_id = ?)', state_id) }
+  scope :ordered_by_title, -> { order('properties.title ASC') }
 
-  scope :in_state, lambda { |state_id|
-    {:conditions => ['city_id IN (SELECT id FROM cities WHERE cities.state_id = ?)', state_id]}
+  scope :duplicates, -> {
+    joins('INNER JOIN properties AS other ON properties.title SOUNDS LIKE other.title')
+      .where('properties.id != other.id AND properties.type = other.type')
+      .order('title ASC')
   }
-
-  scope :ordered_by_title, :order => 'properties.title ASC'
-
-  scope :duplicates,
-    :joins      => 'INNER JOIN properties AS other ON properties.title SOUNDS LIKE other.title',
-    :conditions => 'properties.id != other.id AND properties.type = other.type',
-    :order      => 'title ASC'
 
 
   def self.near(origin)

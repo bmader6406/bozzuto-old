@@ -42,24 +42,20 @@ class Community < Property
 
   before_save :set_featured_postion
 
-  scope :featured_order, :order => 'featured DESC, featured_position ASC, title ASC'
+  scope :featured_order,       -> { order('featured DESC, featured_position ASC, title ASC') }
+  scope :with_twitter_account, -> { where('twitter_account_id > 0') }
 
-  scope :sort_for, lambda { |landing_page|
+  scope :sort_for, -> (landing_page) {
     #:nocov:
     if landing_page.respond_to?(:randomize_property_listings?)
-      landing_page.randomize_property_listings? ?
-        { :order => 'RAND(NOW())' } :
-        { :order => 'properties.title ASC' }
+      order(landing_page.randomize_property_listings? ? 'RAND(NOW())' : 'properties.title ASC')
     else
-      {}
+      all
     end
     #:nocov:
   }
 
-  scope :with_twitter_account, :conditions => 'twitter_account_id > 0'
-
   delegate :latest_tweet, :to => :twitter_account, :allow_nil => true
-
 
   def self.typus_fields_for(filter)
     #:nocov:

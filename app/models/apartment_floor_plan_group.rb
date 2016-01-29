@@ -6,11 +6,9 @@ class ApartmentFloorPlanGroup < ActiveRecord::Base
            :foreign_key => :floor_plan_group_id,
            :dependent   => :destroy
 
-  default_scope :order => 'position ASC'
+  default_scope -> { order('position ASC') }
 
-  scope :except, lambda { |group|
-    { :conditions => ['id != ?', group.id] }
-  }
+  scope :except, -> (group) { where('id != ?', group.id) }
 
   acts_as_list
 

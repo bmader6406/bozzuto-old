@@ -25,8 +25,8 @@ class State < ActiveRecord::Base
   has_many :neighborhoods
   has_many :areas
 
-  scope :ordered_by_name, :order => 'states.name ASC'
-  scope :positioned,      :order => 'states.position ASC'
+  scope :ordered_by_name, -> { order('states.name ASC') }
+  scope :positioned,      -> { order('states.position ASC') }
 
   validates_presence_of :code, :name
   validates_length_of :code, :is => 2

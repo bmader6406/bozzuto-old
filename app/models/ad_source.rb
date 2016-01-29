@@ -11,7 +11,7 @@ class AdSource < ActiveRecord::Base
   def self.matching(domain)
     return nil if domain.blank? || domain == '/'
 
-    all(:conditions => ['? RLIKE pattern', domain]).first
+    where("? RLIKE pattern", domain).first
   end
 
 

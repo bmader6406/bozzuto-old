@@ -20,12 +20,8 @@ class GreenPackageItem < ActiveRecord::Base
   validates_inclusion_of :ultra_green, :in => [true, false]
 
 
-  scope :ultra_green, :conditions => { :ultra_green => true }
-
-  scope :include_ultra_green, lambda { |include_ultra_green|
-    { :conditions => { :ultra_green => false } } unless include_ultra_green
-  }
-
+  scope :ultra_green,         -> { where(ultra_green: true) }
+  scope :include_ultra_green, -> (cond) { where(ultra_green: false) unless cond }
 
   delegate :title, :to => :green_feature, :prefix => :green_feature
 end

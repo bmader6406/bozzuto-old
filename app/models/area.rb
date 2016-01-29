@@ -37,8 +37,8 @@ class Area < ActiveRecord::Base
 
   validates_inclusion_of :area_type, :in => AREA_TYPE.map(&:last)
 
-  scope :showing_communities,   :conditions => { :area_type => 'communities' }
-  scope :showing_neighborhoods, :conditions => { :area_type => 'neighborhoods' }
+  scope :showing_communities,   -> { where(:area_type => 'communities') }
+  scope :showing_neighborhoods, -> { where(:area_type => 'neighborhoods') }
 
   def parent
     metro

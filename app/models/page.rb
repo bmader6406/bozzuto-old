@@ -24,7 +24,7 @@ class Page < ActiveRecord::Base
   has_one :body_slideshow
   has_one :carousel, :as => :content
 
-  scope :for_sidebar_nav, :conditions => { :show_in_sidebar_nav => true }
+  scope :for_sidebar_nav, -> { where(show_in_sidebar_nav: true) }
 
   validates_presence_of :title
 

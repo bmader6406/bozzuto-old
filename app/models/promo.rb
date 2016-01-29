@@ -3,9 +3,8 @@ class Promo < ActiveRecord::Base
   has_many :home_communities
   has_many :landing_pages
 
-  scope :active, :conditions => ['has_expiration_date = ? OR expiration_date > ?', false, Time.now]
-
-  scope :expired, :conditions => ['has_expiration_date = ? AND expiration_date < ?', true, Time.now]
+  scope :active,  -> { where('has_expiration_date = ? OR expiration_date > ?', false, Time.now) }
+  scope :expired, -> { where('has_expiration_date = ? AND expiration_date < ?', true, Time.now) }
 
   validates_presence_of :title, :subtitle
   validates_presence_of :expiration_date, :if => proc { |record| record.has_expiration_date? }

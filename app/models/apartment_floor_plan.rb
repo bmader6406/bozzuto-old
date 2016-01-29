@@ -36,23 +36,13 @@ class ApartmentFloorPlan < ActiveRecord::Base
     :styles          => { :thumb => '160' },
     :convert_options => { :all   => '-quality 80 -strip' }
 
-  scope :in_group, lambda { |group|
-    { :conditions => { :floor_plan_group_id => group.id } }
-  }
-
-  scope :largest,
-              :conditions => 'max_square_feet IS NOT NULL',
-              :order      => 'max_square_feet DESC',
-              :limit      => 1
-
-  scope :non_zero_min_rent, :conditions => 'min_rent > 0'
-
-  scope :ordered_by_min_rent, :order => 'min_rent ASC'
-  scope :ordered_by_max_rent, :order => 'max_rent DESC'
-
-  scope :available, :conditions => 'available_units > 0'
-
-  scope :with_square_footage, :conditions => 'min_square_feet > 0'
+  scope :in_group,            -> (group) { where(:floor_plan_group_id => group.id) }
+  scope :largest,             -> { where('max_square_feet IS NOT NULL').order('max_square_feet DESC').limit(1) }
+  scope :non_zero_min_rent,   -> { where('min_rent > 0') }
+  scope :ordered_by_min_rent, -> { order('min_rent ASC') }
+  scope :ordered_by_max_rent, -> { order('max_rent DESC') }
+  scope :available,           -> { where('available_units > 0') }
+  scope :with_square_footage, -> { where('min_square_feet > 0') }
 
   alias_attribute :availability, :available_units
 

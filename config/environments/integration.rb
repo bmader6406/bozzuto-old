@@ -8,8 +8,8 @@ Bozzuto::Application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on
-  config.action_controller.perform_caching = true
   config.consider_all_requests_local       = false
+  config.action_controller.perform_caching = true
 
   config.active_support.deprecation = :log
 

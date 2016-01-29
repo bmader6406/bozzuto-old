@@ -1,3 +1,8 @@
+# TODO fix these imports, modernization, RF- 2-1-16
+require 'typus/routes'
+require 'rails-ckeditor/lib/ckeditor/config'
+require 'rails-ckeditor/lib/ckeditor/routes'
+
 Bozzuto::Application.routes.draw do
   Typus::Routes.draw(self)
   Ckeditor::Routes.draw(self)
@@ -7,25 +12,22 @@ Bozzuto::Application.routes.draw do
   get '/admin/buzzes(.:format)',                   :controller => 'admin/buzzes',                   :action => :index
   get '/admin/ad_sources(.:format)',               :controller => 'admin/ad_sources',               :action => :index
 
-  #Ckeditor::Routes.draw(map)
-
   root :to => 'home_pages#index'
 
-
   # Searching
-  match '/search' => 'searches#index', :as => :search
+  get '/search' => 'searches#index', :as => :search
 
   resource :community_search, :only => :show
 
-  match '/community_searches/map' => 'community_searches#show',
-        :as                       => :map_community_search,
-        :template                 => 'map'
+  get '/community_searches/map' => 'community_searches#show',
+      :as                       => :map_community_search,
+      :template                 => 'map'
 
 
   # Careers
-  match '/careers' => 'careers#index', :section => 'careers'
+  get '/careers' => 'careers#index', :section => 'careers'
 
-  match '/careers/:page' => redirect('/careers'), :constraints => { :page => /overview.*/ }
+  get '/careers/:page' => redirect('/careers'), :constraints => { :page => /overview.*/ }
 
   # Emails
   namespace :email do
@@ -35,31 +37,27 @@ Bozzuto::Application.routes.draw do
       end
     end
 
-    match 'unsubscribe/:id' => 'subscriptions#destroy',
-          :as               => :unsubscribe
+    get 'unsubscribe/:id' => 'subscriptions#destroy', :as => :unsubscribe
   end
-
 
   scope '/apartments' do
     scope '/communities' do
-      match 'ufollowup_thank_you' => 'ufollowup#thank_you',
-            :as                   => :ufollowup_thank_you
-
+      get 'ufollowup_thank_you' => 'ufollowup#thank_you', :as => :ufollowup_thank_you
 
       # Neighborhoods
       regex = /[-A-Za-z]+(\d+)?/
 
-      match '/' => 'metros#index', :as => :metros
+      get '/' => 'metros#index', :as => :metros
 
-      match ':id'        => 'metros#show',
+      get ':id'        => 'metros#show',
             :as          => :metro,
             :constraints => { :id => regex }
 
-      match ':metro_id/:id' => 'areas#show',
+      get ':metro_id/:id' => 'areas#show',
             :as             => :area,
             :constraints    => { :metro_id => regex, :id => regex }
 
-      match ':metro_id/:area_id/:id' => 'neighborhoods#show',
+      get ':metro_id/:area_id/:id' => 'neighborhoods#show',
             :as                      => :neighborhood,
             :constraints             => { :metro_id => regex, :area_id => regex, :id => regex }
     end
@@ -138,10 +136,10 @@ Bozzuto::Application.routes.draw do
       # Home Neighborhoods
       regex = /[-A-Za-z]+(\d+)?/
 
-      match '/' => 'home_neighborhoods#index',
+      get '/' => 'home_neighborhoods#index',
             :as => :home_neighborhoods
 
-      match ':id' => 'home_neighborhoods#show',
+      get ':id' => 'home_neighborhoods#show',
             :as => :home_neighborhood,
             :constraints => { :id => regex }
     end
@@ -211,7 +209,7 @@ Bozzuto::Application.routes.draw do
 
 
   # Buzzes
-  match '/bozzuto-buzz', :to => redirect('/bozzuto-buzz/new')
+  get '/bozzuto-buzz', :to => redirect('/bozzuto-buzz/new')
 
   resources :buzzes,
             :path    => 'bozzuto-buzz',
@@ -267,7 +265,7 @@ Bozzuto::Application.routes.draw do
               :only => [:index, :show]
 
     scope '/news-and-press' do
-      match '/' => 'news_and_press#index', :as => :news_and_press
+      get '/' => 'news_and_press#index', :as => :news_and_press
 
       resources :awards, :only => [:index, :show]
 
@@ -281,6 +279,6 @@ Bozzuto::Application.routes.draw do
     end
 
     # Catch-all page route
-    match '(*page)' => 'pages#show', :as => :page
+    get '(*page)' => 'pages#show', :as => :page
   end
 end

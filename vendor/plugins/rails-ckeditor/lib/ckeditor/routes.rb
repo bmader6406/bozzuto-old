@@ -6,9 +6,9 @@ module Ckeditor
       # map.connect 'ckeditor/create', :controller => 'ckeditor', :action => 'create'
 
       router.instance_eval do
-        match 'ckeditor/images' => 'ckeditor#images'
-        match 'ckeditor/files'  => 'ckeditor#files'
-        match 'ckeditor/create' => 'ckeditor#create'
+        get 'ckeditor/images' => 'ckeditor#images'
+        get 'ckeditor/files'  => 'ckeditor#files'
+        get 'ckeditor/create' => 'ckeditor#create'
       end
     end
   end

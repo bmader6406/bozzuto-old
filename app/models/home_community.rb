@@ -42,8 +42,7 @@ class HomeCommunity < Community
     :convert_options => { :all => '-quality 80 -strip' }
 
 
-  scope :with_green_package,
-    :joins => 'INNER JOIN green_packages ON properties.id = green_packages.home_community_id'
+  scope :with_green_package, -> { joins(:green_package) } # TODO Check this.
 
   def nearby_communities(limit = 6)
     @nearby_communities ||= self.class.published.mappable.near(self).limit(limit)

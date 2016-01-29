@@ -17,9 +17,8 @@ class Section < ActiveRecord::Base
   validates_uniqueness_of :title
   validates_inclusion_of :service, :in => [true, false]
 
-  scope :services, :conditions => { :service => true }
-  scope :ordered_by_title, :order => 'title ASC'
-
+  scope :services,         -> { where(service: true) }
+  scope :ordered_by_title, -> { order('title ASC') }
 
   def self.about
     find(:first, :conditions => { :about => true })
