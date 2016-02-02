@@ -1,4 +1,7 @@
-ENV["RAILS_ENV"] = "test"
+ENV['RAILS_ENV'] ||= 'test'
+
+require File.expand_path('../../config/environment', __FILE__)
+require 'rails/test_help'
 
 if ENV['COV']
   require 'simplecov'
@@ -15,27 +18,12 @@ if ENV['COV']
   end
 end
 
-require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
-
-# TODO Shoulda/RSpec conflict, to be resolved - RF 2-1-16
 require 'shoulda'
-
-require 'shoulda/context'
-require 'shoulda/proc_extensions'
-require 'shoulda/assertions'
-require 'shoulda/macros'
-require 'shoulda/helpers'
-require 'shoulda/autoload_macros'
-require 'shoulda/rails'
-
-require 'rails/test_help'
-require 'mocha'
-# TODO can be removed with modernization? RF 2-1-16
-#require 'rspec/expectations'
 require 'shoulda_macros/paperclip'
+require 'webmock/minitest'
+require 'mocha'
 
 require Rails.root.join('vendor', 'plugins', 'typus', 'lib', 'extensions', 'object')
-
 require Rails.root.join('test', 'support', 'shared_examples')
 require Rails.root.join('test', 'blueprints')
 
@@ -46,39 +34,20 @@ VCR.configure do |c|
   c.hook_into :webmock
 end
 
-class Shoulda::Context
-  alias_method :describe, :context
-  alias_method :before,   :setup
-  alias_method :after,    :teardown
-  alias_method :it,       :should
-end
-
 class ActiveSupport::TestCase
-  include Shoulda::InstanceMethods
-  extend Shoulda::ClassMethods
-  include Shoulda::Assertions
-  extend Shoulda::Macros
-  include Shoulda::Helpers
+  extend SharedExamples
 
-  include Shoulda::ActiveRecord::Helpers
-  include Shoulda::ActiveRecord::Matchers
-  include Shoulda::ActiveRecord::Assertions
-  extend Shoulda::ActiveRecord::Macros
-
-  include WebMock::API
-  extend  Paperclip::Shoulda
   include Bozzuto::Test::Extensions
   include Bozzuto::Test::ModelExtensions
-  extend  SharedExamples
 
-  self.use_transactional_fixtures = true
-  self.use_instantiated_fixtures  = false
-end
+  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
+  fixtures :all
 
-class ActionController::TestCase
-  include Bozzuto::Test::ControllerExtensions
-end
-
-class ActionController::IntegrationTest
-  include Bozzuto::Test::IntegrationExtensions
+  # Enable RSpec-like syntax via Shoulda::Context methods
+  singleton_class.instance_eval do
+    alias_method :describe, :context
+    alias_method :before,   :setup
+    alias_method :after,    :teardown
+    alias_method :it,       :should
+  end
 end

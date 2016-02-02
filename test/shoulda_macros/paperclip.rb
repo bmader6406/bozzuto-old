@@ -114,6 +114,6 @@ class Factory
   include Paperclip::Shoulda  #:nodoc:
 end
 
-class Test::Unit::TestCase #:nodoc:
- extend  Paperclip::Shoulda
+class ActiveSupport::TestCase #:nodoc:
+ extend Paperclip::Shoulda
 end

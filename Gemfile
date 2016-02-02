@@ -48,13 +48,12 @@ group :development, :test do
 end
 
 group :test do
-  gem 'shoulda',            '2.11.3',   require: false
-  gem 'machinist',          '1.0.6'
-  gem 'faker',              '0.3.1'
-  gem 'mocha',              '~> 1.1.0', require: false
+  gem 'shoulda',   '3.5.0'
+  gem 'machinist', '1.0.6'
+  gem 'faker',     '0.3.1'
+  gem 'mocha',     '~> 1.1.0', require: false
   gem 'webmock'
   gem 'rack-test'
   gem 'vcr'
-  gem 'rspec-expectations'
   gem 'simplecov'
 end
