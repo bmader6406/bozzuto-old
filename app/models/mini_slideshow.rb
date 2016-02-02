@@ -1,8 +1,8 @@
 class MiniSlideshow < ActiveRecord::Base
-  has_many :slides,
+
+  has_many :slides, -> { order(position: :asc) },
     :class_name => 'MiniSlide',
-    :dependent  => :destroy,
-    :order      => 'position ASC'
+    :dependent  => :destroy
 
   validates_presence_of :title, :link_url
 

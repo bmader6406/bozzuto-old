@@ -1,5 +1,6 @@
 class LandingPage < ActiveRecord::Base
   include Bozzuto::Publishable
+  include FriendlyId
 
   has_and_belongs_to_many :apartment_communities
 
@@ -10,23 +11,20 @@ class LandingPage < ActiveRecord::Base
     :class_name              => 'ApartmentCommunity',
     :join_table              => :featured_apartment_communities_landing_pages
 
-  has_many :popular_property_orderings,
+  has_many :popular_property_orderings, -> { includes(:property).order('position ASC, RAND(NOW())') },
     :class_name => 'LandingPagePopularOrdering',
-    :order      => 'position ASC, RAND(NOW())',
-    :include    => :property,
     :dependent  => :destroy
 
-  has_many :popular_properties,
+  has_many :popular_properties, -> { order('landing_page_popular_orderings.position ASC, RAND(NOW())') },
     :class_name => 'Property',
     :through    => :popular_property_orderings,
-    :order      => 'landing_page_popular_orderings.position ASC, RAND(NOW())',
     :source     => :property
 
   has_and_belongs_to_many :projects
+
   belongs_to :state
   belongs_to :promo
   belongs_to :local_info_feed, :class_name => 'Feed'
-
 
   after_save :set_positions_of_popular_properties
 
@@ -35,7 +33,7 @@ class LandingPage < ActiveRecord::Base
 
   scope :visible_for_list, -> { where(hide_from_list: false) }
 
-  has_friendly_id :title, :use_slug => true
+  friendly_id :title, use: [:slugged]
 
   has_attached_file :masthead_image,
     :url             => '/system/:class/:id/masthead_:style.:extension',
@@ -43,11 +41,9 @@ class LandingPage < ActiveRecord::Base
     :default_style   => :resized,
     :convert_options => { :all => '-quality 80 -strip' }
 
-
   def typus_name
     title
   end
-
 
   protected
 

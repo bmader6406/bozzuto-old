@@ -1,6 +1,7 @@
 class Property < ActiveRecord::Base
   include Bozzuto::Mappable
   include Bozzuto::Publishable
+  include FriendlyId
 
   USE_BROCHURE_URL = 0
   USE_BROCHURE_FILE = 1
@@ -24,11 +25,13 @@ class Property < ActiveRecord::Base
   end
   #:nocov:
 
-  has_friendly_id :id_and_title,
-    :use_slug => true,
-    :scope => :type
+  friendly_id :id_and_title, use: [:scoped], :scope => :type
 
-  search_methods :in_state
+  ## TODO fix RF 2-1-16
+  #search_methods :in_state
+  def self.ransackable_scopes(auth_object = nil)
+    [:in_state]
+  end
 
   serialize :office_hours
 
@@ -37,11 +40,11 @@ class Property < ActiveRecord::Base
 
   has_one :slideshow, :class_name => 'PropertySlideshow'
 
-  has_and_belongs_to_many :property_features, :order => 'position ASC'
+  has_and_belongs_to_many :property_features, -> { order(position: :asc) }
 
   has_many :landing_page_popular_orderings, :dependent => :destroy
-  has_many :office_hours, :order => :day
-  has_many :property_amenities, :order => :position
+  has_many :office_hours,       -> { order(:day) }
+  has_many :property_amenities, -> { order(:position) }
 
   validates_presence_of :title, :city
 

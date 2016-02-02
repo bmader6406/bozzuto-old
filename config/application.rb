@@ -1,7 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
-#require 'openssl' # required for Geokit TODO remove RF 2-1-16
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -20,8 +19,6 @@ module Bozzuto
     config.time_zone = 'Eastern Time (US & Canada)'
 
     config.i18n.enforce_available_locales = true
-
-    # ----- non standard  TODO remove 2-1-16 RF
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]

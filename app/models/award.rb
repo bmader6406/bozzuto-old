@@ -6,7 +6,7 @@ class Award < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 15
 
-  default_scope :order => 'published_at DESC'
+  default_scope -> { order(published_at: :desc) }
 
   has_and_belongs_to_many :sections
 

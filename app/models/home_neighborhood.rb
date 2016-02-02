@@ -3,6 +3,7 @@ class HomeNeighborhood < ActiveRecord::Base
   include Bozzuto::Mappable
   extend  Bozzuto::Neighborhoods::ListingImage
   extend  Bozzuto::Neighborhoods::BannerImage
+  include FriendlyId
 
   acts_as_list
 
@@ -12,16 +13,14 @@ class HomeNeighborhood < ActiveRecord::Base
   belongs_to :featured_home_community,
              :class_name => 'HomeCommunity'
 
-  has_many :home_neighborhood_memberships,
+  has_many :home_neighborhood_memberships, -> { order('home_neighborhood_memberships.position ASC') },
            :inverse_of => :home_neighborhood,
-           :order      => 'home_neighborhood_memberships.position ASC',
            :dependent  => :destroy
 
-  has_many :home_communities,
-           :through => :home_neighborhood_memberships,
-           :order   => 'home_neighborhood_memberships.position ASC'
+  has_many :home_communities, -> { order('home_neighborhood_memberships.position ASC') },
+           :through => :home_neighborhood_memberships
 
-  has_friendly_id :name, :use_slug => true
+  friendly_id :name, use: [:slugged]
 
   validates_presence_of :name,
                         :latitude,
@@ -29,8 +28,8 @@ class HomeNeighborhood < ActiveRecord::Base
 
   validates_uniqueness_of :name
 
-  scope :positioned,       :order => "home_neighborhoods.position ASC"
-  scope :ordered_by_count, :order => "home_neighborhoods.home_communities_count DESC, home_neighborhoods.name ASC"
+  scope :positioned,       -> { order("home_neighborhoods.position ASC") }
+  scope :ordered_by_count, -> { order("home_neighborhoods.home_communities_count DESC, home_neighborhoods.name ASC") }
 
   after_save :update_home_communities_count
 

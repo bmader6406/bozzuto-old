@@ -3,7 +3,9 @@ module Bozzuto
     module Place
       def self.included(base)
         base.class_eval do
-          has_friendly_id :name, :use_slug => true
+          include FriendlyId
+
+          friendly_id :name, use: [:slugged]
 
           validates_presence_of :name,
                                 :latitude,
@@ -12,8 +14,8 @@ module Bozzuto
           validates_uniqueness_of :name
 
           table_name = base.to_s.tableize
-          scope :positioned,       :order => "#{table_name}.position ASC"
-          scope :ordered_by_count, :order => "#{table_name}.apartment_communities_count DESC, #{table_name}.name ASC"
+          scope :positioned,       -> { order("#{table_name}.position ASC") }
+          scope :ordered_by_count, -> { order("#{table_name}.apartment_communities_count DESC, #{table_name}.name ASC") }
 
           after_save :update_apartment_communities_count
           after_destroy :update_apartment_communities_count

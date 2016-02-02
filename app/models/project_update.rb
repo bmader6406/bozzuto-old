@@ -6,7 +6,7 @@ class ProjectUpdate < ActiveRecord::Base
 
   belongs_to :project
 
-  default_scope :order => 'published_at DESC'
+  default_scope -> { order(published_at: :desc) }
 
   validates_presence_of :body, :project
 

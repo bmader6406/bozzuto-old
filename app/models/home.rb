@@ -1,12 +1,14 @@
 class Home < ActiveRecord::Base
+
   acts_as_list :scope => :home_community
 
   belongs_to :home_community
+
   has_many :floor_plans,
     :class_name => 'HomeFloorPlan',
-    :dependent => :destroy
+    :dependent  => :destroy
 
-  default_scope :order => 'position ASC'
+  default_scope -> { order(position: :asc) }
 
   validates_presence_of :home_community, :bedrooms, :bathrooms
   validates_inclusion_of :featured, :in => [true, false]

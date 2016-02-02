@@ -1,4 +1,9 @@
 class BozzutoBlogPost < ActiveRecord::Base
+
+  default_scope -> { order(published_at: :desc) }
+
+  scope :latest, -> (n) { limit(n) }
+
   validates_presence_of :header_url,
                         :title,
                         :url,
@@ -11,14 +16,8 @@ class BozzutoBlogPost < ActiveRecord::Base
   validates_attachment_presence :image
 
   has_attached_file :image,
-    :url => '/system/:class/bozzuto_blog_post_thumbnail_:id_:style.:extension',
-    :styles => { :normal => '380x150#' },
-    :default_style => :normal,
+    :url             => '/system/:class/bozzuto_blog_post_thumbnail_:id_:style.:extension',
+    :styles          => { :normal => '380x150#' },
+    :default_style   => :normal,
     :convert_options => { :all => '-quality 80 -strip' }
-
-  default_scope :order => 'published_at DESC'
-
-  scope :latest, lambda { |limit|
-    { :limit => limit }
-  }
 end

@@ -3,6 +3,11 @@ class Publication < ActiveRecord::Base
 
   acts_as_list
 
+  has_many :rank_categories, -> { order(position: :asc) },
+    :dependent => :destroy
+
+  scope :ordered, -> { order(position: :asc) }
+
   validates_presence_of :name
 
   has_attached_file :image,
@@ -12,12 +17,6 @@ class Publication < ActiveRecord::Base
     :convert_options => { :all => '-quality 80 -strip' }
 
   validates_attachment_presence :image
-
-  has_many :rank_categories,
-    :order     => 'position ASC',
-    :dependent => :destroy
-
-  scope :ordered, :order => 'position ASC'
 
   def typus_name
     name

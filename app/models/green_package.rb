@@ -1,4 +1,5 @@
 class GreenPackage < ActiveRecord::Base
+
   attr_accessible :home_community,
                   :home_community_id,
                   :photo,
@@ -11,14 +12,12 @@ class GreenPackage < ActiveRecord::Base
 
   belongs_to :home_community
 
-  has_many :green_package_items,
+  has_many :green_package_items, -> { order(position: :asc) },
            :inverse_of => :green_package,
-           :order      => 'position ASC',
            :dependent  => :destroy
 
-  has_many :green_features,
-           :through => :green_package_items,
-           :order   => 'green_package_items.position ASC'
+  has_many :green_features, -> { order('green_package_items.position ASC') },
+           :through => :green_package_items
 
 
   has_attached_file :photo,
@@ -37,11 +36,9 @@ class GreenPackage < ActiveRecord::Base
 
   validates_attachment_presence :photo
 
-
   delegate :title, :to => :home_community, :prefix => :home_community
 
   alias_method :typus_name, :home_community_title
-
 
   def has_ultra_green_features?
     green_package_items.ultra_green.any?

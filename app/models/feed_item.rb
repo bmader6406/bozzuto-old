@@ -1,13 +1,13 @@
 class FeedItem < ActiveRecord::Base
   belongs_to :feed
 
-  scope :recent, :limit => 10
+  scope :recent, -> { limit(10) }
 
-  default_scope :order => 'published_at DESC'
+  default_scope -> { order(published_at: :desc) }
 
   validates_presence_of :title,
-    :url,
-    :description,
-    :published_at,
-    :feed
+                        :url,
+                        :description,
+                        :published_at,
+                        :feed
 end

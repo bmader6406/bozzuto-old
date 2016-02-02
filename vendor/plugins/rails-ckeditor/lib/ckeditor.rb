@@ -1,3 +1,6 @@
+# Manual loading until we remove this old code - RF 2-1-16
+$:.unshift File.dirname(__FILE__)
+
 require 'yaml'
 require 'fileutils'
 require 'tmpdir'

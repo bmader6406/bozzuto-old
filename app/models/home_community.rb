@@ -13,9 +13,8 @@ class HomeCommunity < Community
 
   has_many :homes
 
-  has_many :featured_homes,
-           :class_name => 'Home',
-           :conditions => { :featured => true }
+  has_many :featured_homes, -> { where(featured: true) },
+           :class_name => 'Home'
 
   has_one :lasso_account,
           :foreign_key => :property_id,

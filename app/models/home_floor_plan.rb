@@ -1,9 +1,10 @@
 class HomeFloorPlan < ActiveRecord::Base
+
   acts_as_list :scope => :home
 
   belongs_to :home
 
-  default_scope :order => 'position ASC'
+  default_scope -> { order(position: :asc) }
 
   validates_presence_of :name
 

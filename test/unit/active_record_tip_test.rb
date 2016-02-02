@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ActiveRecordTipTest < ActiveSupport::TestCase
+
   context 'ActiveRecord Tip plugin' do
     describe "#human_tip_text" do
       context "a tip translation exists" do

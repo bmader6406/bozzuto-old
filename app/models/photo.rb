@@ -1,4 +1,5 @@
 class Photo < ActiveRecord::Base
+
   acts_as_list :scope => :photo_group_id
 
   belongs_to :photo_group
@@ -9,13 +10,9 @@ class Photo < ActiveRecord::Base
   before_update :move_to_new_list,
                 :if => proc { |p| p.photo_group_id_changed? || p.property_id_changed? }
 
-  default_scope :include => :photo_group
+  default_scope -> { includes(:photo_group) }
 
-  scope :positioned, {
-    :include => :photo_group,
-    :order   => 'photo_groups.position ASC, photos.position ASC'
-  }
-
+  scope :positioned, -> { includes(:photo_group).order('photo_groups.position ASC, photos.position ASC') }
   scope :in_group,   -> (group) { where(photo_group_id: group.id) }
   scope :for_mobile, -> { where(show_to_mobile: true) }
 

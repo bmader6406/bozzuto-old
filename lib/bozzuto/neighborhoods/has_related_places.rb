@@ -8,14 +8,12 @@ module Bozzuto
         related_table = :"related_#{place_name.to_s.pluralize}"
 
         base.class_eval do
-          has_many related_table,
+          has_many related_table, -> { order("#{related_table}.position ASC") },
                    :inverse_of => place_name,
-                   :order      => "#{related_table}.position ASC",
                    :dependent  => :destroy
 
-          has_many :"nearby_#{plural_place_name}",
-                   :through => related_table,
-                   :order   => "#{related_table}.position ASC"
+          has_many :"nearby_#{plural_place_name}", -> { order("#{related_table}.position ASC") },
+                   :through => related_table
 
           has_many :"#{place_name}_relations",
                    :class_name => "Related#{base}",

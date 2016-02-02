@@ -7,9 +7,7 @@ class Community < Property
 
 
   belongs_to :local_info_feed, :class_name => 'Feed'
-
   belongs_to :promo
-
   belongs_to :twitter_account
 
   has_many :photos,
@@ -20,14 +18,12 @@ class Community < Property
     :dependent   => :destroy,
     :foreign_key => :property_id
 
-  has_many :videos,
-    :foreign_key => :property_id,
-    :order       => 'position ASC'
+  has_many :videos, -> { order(position: :asc) },
+    :foreign_key => :property_id
 
   has_one :conversion_configuration,
     :dependent   => :destroy,
     :foreign_key => :property_id
-
 
   [:features_page, :neighborhood_page, :contact_page, :tours_page, :retail_page].each do |page_type|
     has_one page_type,
@@ -38,7 +34,6 @@ class Community < Property
       self.send(page_type).present?
     end
   end
-
 
   before_save :set_featured_postion
 

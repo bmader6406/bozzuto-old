@@ -1,7 +1,8 @@
 class PropertySlide < ActiveRecord::Base
-  belongs_to :property_slideshow
 
   acts_as_list :scope => :property_slideshow
+
+  belongs_to :property_slideshow
 
   has_attached_file :image,
     :url             => '/system/:class/:id/:style.:extension',

@@ -1,5 +1,8 @@
 class CareersEntry < ActiveRecord::Base
+
   acts_as_list
+
+  default_scope -> { order(position: :asc) }
 
   validates_presence_of :name,
                         :company,
@@ -8,8 +11,10 @@ class CareersEntry < ActiveRecord::Base
 
   has_attached_file :main_photo,
                     :url             => '/system/:class/:attachment/:id/:basename_:style.:extension',
-                    :convert_options => { :grayscale => '-colorspace Gray',
-                                          :all       => '-quality 80 -strip' },
+                    :convert_options => { 
+                      :grayscale => '-colorspace Gray',
+                      :all       => '-quality 80 -strip'
+                    },
                     :default_style   => :resized,
                     :styles          => {
                       :resized   => '212x350#',
@@ -25,8 +30,6 @@ class CareersEntry < ActiveRecord::Base
 
   validates_attachment_presence :main_photo
   validates_attachment_presence :headshot
-
-  default_scope :order => 'position ASC'
 
   def typus_name
     name

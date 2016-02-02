@@ -1,4 +1,6 @@
 class Leader < ActiveRecord::Base
+  include FriendlyId
+
   has_many :leaderships,
            :dependent  => :destroy,
            :inverse_of => :leader
@@ -8,7 +10,7 @@ class Leader < ActiveRecord::Base
                         :company,
                         :bio
 
-  has_friendly_id :name, :use_slug => true
+  friendly_id :name, use: [:slugged]
 
   has_attached_file :image,
                     :url             => '/system/:class/:id/:style.:extension',

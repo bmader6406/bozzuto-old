@@ -8,7 +8,7 @@ class NewsPost < ActiveRecord::Base
 
   has_and_belongs_to_many :sections
   
-  default_scope :order => 'published_at DESC'
+  default_scope -> { order(published_at: :desc) }
 
   validates_presence_of :title, :body
 

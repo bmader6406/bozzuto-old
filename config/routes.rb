@@ -1,7 +1,6 @@
 # TODO fix these imports, modernization, RF- 2-1-16
 require 'typus/routes'
-require 'rails-ckeditor/lib/ckeditor/config'
-require 'rails-ckeditor/lib/ckeditor/routes'
+require 'rails-ckeditor/lib/ckeditor'
 
 Bozzuto::Application.routes.draw do
   Typus::Routes.draw(self)

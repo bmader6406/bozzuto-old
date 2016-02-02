@@ -8,11 +8,34 @@ class ApartmentFloorPlanGroup < ActiveRecord::Base
 
   default_scope -> { order('position ASC') }
 
-  scope :except, -> (group) { where('id != ?', group.id) }
+  # TODO find where `execept` was used before?  RF 2-1-16
+  scope :except_group, -> (group) { where('id != ?', group.id) }
 
   acts_as_list
 
   validates_presence_of :name
+
+  class << self
+    def studio
+      find_by_name 'Studio'
+    end
+
+    def one_bedroom
+      find_by_name '1 Bedroom'
+    end
+
+    def two_bedrooms
+      find_by_name '2 Bedrooms'
+    end
+
+    def three_bedrooms
+      find_by_name '3 or More Bedrooms'
+    end
+
+    def penthouse
+      find_by_name 'Penthouse'
+    end
+  end
   
   def list_name
     I18n.t!(:"apartment_floor_plan_group.#{cache_name}.list_name")
@@ -35,28 +58,6 @@ class ApartmentFloorPlanGroup < ActiveRecord::Base
     when self.class.penthouse      then 'penthouse'
     else
       raise "Unknown group: #{self}"
-    end
-  end
-
-  class << self
-    def studio
-      find_by_name 'Studio'
-    end
-
-    def one_bedroom
-      find_by_name '1 Bedroom'
-    end
-
-    def two_bedrooms
-      find_by_name '2 Bedrooms'
-    end
-
-    def three_bedrooms
-      find_by_name '3 or More Bedrooms'
-    end
-
-    def penthouse
-      find_by_name 'Penthouse'
     end
   end
 end

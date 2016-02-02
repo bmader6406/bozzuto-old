@@ -1,16 +1,15 @@
 class LeadershipGroup < ActiveRecord::Base
+
   acts_as_list
 
-  has_many :leaderships,
-           :dependent  => :destroy,
-           :inverse_of => :leadership_group,
-           :order      => 'position ASC'
+  default_scope -> { order(position: :asc) }
 
-  has_many :leaders,
-           :through => :leaderships,
-           :order   => 'position ASC'
+  has_many :leaderships, -> { order(position: :asc) },
+           :dependent  => :destroy,
+           :inverse_of => :leadership_group
+
+  has_many :leaders, -> { order(position: :asc) },
+           :through => :leaderships
 
   validates_presence_of :name
-
-  default_scope :order => 'position ASC'
 end

@@ -1,9 +1,11 @@
 class ProjectCategory < ActiveRecord::Base
+  include FriendlyId
+
   acts_as_list
 
-  has_friendly_id :title, :use_slug => true
+  friendly_id :title, use: [:slugged]
 
-  default_scope :order => 'position ASC'
+  default_scope -> { order(position: :asc) }
 
   has_and_belongs_to_many :projects
 

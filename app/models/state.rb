@@ -15,12 +15,10 @@ class State < ActiveRecord::Base
   has_many :communities,
            :through => :cities
 
-  has_many :featured_apartment_communities,
+  has_many :featured_apartment_communities, -> { where(featured: true).order(:featured_position) },
            :through    => :cities,
-           :conditions => { :featured => true },
            :class_name => 'ApartmentCommunity',
-           :source     => :apartment_communities,
-           :order      => 'featured_position'
+           :source     => :apartment_communities
 
   has_many :neighborhoods
   has_many :areas

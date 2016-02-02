@@ -14,6 +14,8 @@ class ApartmentCommunity < Community
 
   #acts_as_archive :indexes => [:id]
 
+  # TODO fix RF 2-1-16
+=begin
   search_methods :with_min_price,
                  :with_max_price,
                  :with_any_floor_plan_groups,
@@ -22,6 +24,19 @@ class ApartmentCommunity < Community
                  :with_exact_property_features,
                  :having_all_floor_plan_groups,
                  :having_all_property_features
+=end
+  def self.ransackable_scopes(auth_object = nil)
+    [
+      :with_min_price,
+      :with_max_price,
+      :with_any_floor_plan_groups,
+      :with_any_property_features,
+      :with_exact_floor_plan_groups,
+      :with_exact_property_features,
+      :having_all_floor_plan_groups,
+      :having_all_property_features
+    ]
+  end
 
   has_neighborhood_listing_image :neighborhood_listing_image, :required => false
 
@@ -32,18 +47,14 @@ class ApartmentCommunity < Community
            :class_name => 'ApartmentFloorPlan',
            :dependent  => :destroy
 
-  has_many :floor_plan_groups,
+  has_many :floor_plan_groups, -> { uniq },
            :class_name => 'ApartmentFloorPlanGroup',
-           :through    => :floor_plans,
-           :uniq       => true
+           :through    => :floor_plans
 
-  has_many :featured_floor_plans,
-           :class_name => 'ApartmentFloorPlan',
-           :conditions => { :featured => true },
-           :order      => 'bedrooms ASC, position ASC'
+  has_many :featured_floor_plans, -> { where(featured: true).order(bedrooms: :asc, position: :asc) },
+           :class_name => 'ApartmentFloorPlan'
 
-  has_many :under_construction_leads,
-           :order => 'created_at DESC'
+  has_many :under_construction_leads, -> { order(created_at: :desc) }
 
   has_one :mediaplex_tag, :as => :trackable
 

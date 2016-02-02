@@ -3,7 +3,7 @@ class ProjectDataPoint < ActiveRecord::Base
 
   belongs_to :project
 
-  default_scope :order => 'position ASC'
+  default_scope -> { order(position: :asc) }
 
   validates_presence_of :name, :data, :project
 end

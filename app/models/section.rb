@@ -1,24 +1,25 @@
 class Section < ActiveRecord::Base
   include Montage
+  include FriendlyId
+
+  has_one :contact_topic
   
   has_many :testimonials
-  has_many :pages,
-    :order     => 'lft ASC',
-    :dependent => :destroy
-  has_and_belongs_to_many :awards, :order => 'published_at DESC'
-  has_and_belongs_to_many :news_posts, :order => 'published_at DESC'
-  has_and_belongs_to_many :press_releases, :order => 'published_at DESC'
   has_many :projects
-  has_one :contact_topic
+  has_many :pages, -> { order(lft: :asc) }, dependent: :destroy
 
-  has_friendly_id :title, :use_slug => true
+  has_and_belongs_to_many :awards,         -> { order(published_at: :desc) }
+  has_and_belongs_to_many :news_posts,     -> { order(published_at: :desc) }
+  has_and_belongs_to_many :press_releases, -> { order(published_at: :desc) }
+
+  friendly_id :title, use: [:slugged]
 
   validates_presence_of :title
   validates_uniqueness_of :title
   validates_inclusion_of :service, :in => [true, false]
 
   scope :services,         -> { where(service: true) }
-  scope :ordered_by_title, -> { order('title ASC') }
+  scope :ordered_by_title, -> { order(title: :asc) }
 
   def self.about
     find(:first, :conditions => { :about => true })

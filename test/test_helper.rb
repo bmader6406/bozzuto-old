@@ -15,17 +15,29 @@ if ENV['COV']
   end
 end
 
-require 'shoulda'
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+
+# TODO Shoulda/RSpec conflict, to be resolved - RF 2-1-16
+require 'shoulda'
+
+require 'shoulda/context'
+require 'shoulda/proc_extensions'
+require 'shoulda/assertions'
+require 'shoulda/macros'
+require 'shoulda/helpers'
+require 'shoulda/autoload_macros'
 require 'shoulda/rails'
+
 require 'rails/test_help'
 require 'mocha'
-require 'rspec/expectations'
+# TODO can be removed with modernization? RF 2-1-16
+#require 'rspec/expectations'
 require 'shoulda_macros/paperclip'
+
+require Rails.root.join('vendor', 'plugins', 'typus', 'lib', 'extensions', 'object')
 
 require Rails.root.join('test', 'support', 'shared_examples')
 require Rails.root.join('test', 'blueprints')
-require Rails.root.join('vendor', 'plugins', 'typus', 'lib', 'extensions', 'object')
 
 Dir[Rails.root.join("test/support/**/*.rb")].each { |f| require f }
 
@@ -34,7 +46,6 @@ VCR.configure do |c|
   c.hook_into :webmock
 end
 
-
 class Shoulda::Context
   alias_method :describe, :context
   alias_method :before,   :setup
@@ -42,8 +53,18 @@ class Shoulda::Context
   alias_method :it,       :should
 end
 
-
 class ActiveSupport::TestCase
+  include Shoulda::InstanceMethods
+  extend Shoulda::ClassMethods
+  include Shoulda::Assertions
+  extend Shoulda::Macros
+  include Shoulda::Helpers
+
+  include Shoulda::ActiveRecord::Helpers
+  include Shoulda::ActiveRecord::Matchers
+  include Shoulda::ActiveRecord::Assertions
+  extend Shoulda::ActiveRecord::Macros
+
   include WebMock::API
   extend  Paperclip::Shoulda
   include Bozzuto::Test::Extensions

@@ -22,14 +22,12 @@ class Area < ActiveRecord::Base
 
   has_many :neighborhoods, :dependent => :destroy
 
-  has_many :area_memberships,
+  has_many :area_memberships, -> { order('area_memberships.tier ASC') },
            :inverse_of => :area,
-           :order      => 'area_memberships.tier ASC',
            :dependent  => :destroy
 
-  has_many :apartment_communities,
-           :through => :area_memberships,
-           :order   => 'area_memberships.tier ASC'
+  has_many :apartment_communities, -> { order('area_memberships.tier ASC') },
+           :through => :area_memberships
 
   belongs_to :metro
 

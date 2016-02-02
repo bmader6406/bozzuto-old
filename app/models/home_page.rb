@@ -1,13 +1,13 @@
 class HomePage < ActiveRecord::Base
+
   validates_presence_of :body
 
   has_one :carousel,
     :as        => :content,
     :dependent => :destroy
 
-  has_many :slides,
-    :class_name => 'HomePageSlide',
-    :order      => 'position ASC'
+  has_many :slides, -> { order(position: :asc) },
+    :class_name => 'HomePageSlide'
 
   has_attached_file :mobile_banner_image,
     :url             => '/system/:class/mobile_banner_image_:id_:style.:extension',

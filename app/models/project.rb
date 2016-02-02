@@ -3,22 +3,23 @@ class Project < Property
   
   acts_as_list :scope => :section
 
-  has_many :data_points,
-    :class_name => 'ProjectDataPoint',
-    :order      => 'position ASC'
-  has_many :updates,
-    :class_name => 'ProjectUpdate',
-    :order      => 'published_at DESC'
+  has_many :data_points, -> { order(position: :asc) },
+    :class_name => 'ProjectDataPoint'
+
+  has_many :updates, -> { order(published_at: :desc) },
+    :class_name => 'ProjectUpdate'
+
   belongs_to :section
-  has_and_belongs_to_many :project_categories, :order => 'position ASC'
+
+  has_and_belongs_to_many :project_categories, -> { order(position: :asc) }
 
   validates_presence_of :completion_date
   validates_inclusion_of :has_completion_date, :in => [true, false]
 
-  default_scope :order => 'title ASC'
+  default_scope -> { order(title: :asc) }
 
   scope :in_section,               -> (section) { where(section_id: section.id) }
-  scope :order_by_completion_date, -> { order('completion_date DESC') }
+  scope :order_by_completion_date, -> { order(completion_date: :desc) }
   scope :featured_mobile,          -> { where(featured_mobile: true) }
 
   scope :in_categories, -> (categories) {

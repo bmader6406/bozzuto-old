@@ -1,4 +1,5 @@
 # coding: utf-8
+require 'typus/engine'
 
 module Typus
 
@@ -78,7 +79,6 @@ module Typus
     end
 
     def boot!
-
       if testing?
         Typus::Configuration.options[:config_folder] = "vendor/plugins/typus/test/config/working"
       end
@@ -108,9 +108,6 @@ module Typus
       require "vendor/paginator"
       # TODO: fix this
       #require "vendor/inherit_views"
-
     end
-
   end
-
 end

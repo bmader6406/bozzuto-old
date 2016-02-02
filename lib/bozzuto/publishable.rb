@@ -4,10 +4,8 @@ module Bozzuto
       base.class_eval do
         validates_inclusion_of :published, :in => [true, false]
 
-        scope :published, :conditions => { :published => true }
-        scope :latest, lambda { |limit|
-          { :limit => limit }
-        }
+        scope :published, -> { where(published: true) }
+        scope :latest,    -> (limit) { limit(limit) }
       end
     end
   end

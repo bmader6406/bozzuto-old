@@ -1,9 +1,10 @@
 class MiniSlide < ActiveRecord::Base
+
   belongs_to :mini_slideshow
 
   acts_as_list :scope => :mini_slideshow
 
-  default_scope :order => 'position ASC'
+  default_scope -> { order(position: :asc) }
 
   has_attached_file :image,
     :url             => '/system/property_mini_slides/:id/:style.:extension',
