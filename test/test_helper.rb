@@ -40,9 +40,6 @@ class ActiveSupport::TestCase
   include Bozzuto::Test::Extensions
   include Bozzuto::Test::ModelExtensions
 
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
-
   # Enable RSpec-like syntax via Shoulda::Context methods
   singleton_class.instance_eval do
     alias_method :describe, :context
