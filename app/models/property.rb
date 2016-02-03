@@ -1,7 +1,7 @@
 class Property < ActiveRecord::Base
   include Bozzuto::Mappable
   include Bozzuto::Publishable
-  include FriendlyId
+  extend FriendlyId
 
   USE_BROCHURE_URL = 0
   USE_BROCHURE_FILE = 1
@@ -25,7 +25,8 @@ class Property < ActiveRecord::Base
   end
   #:nocov:
 
-  friendly_id :id_and_title, use: [:scoped], :scope => :type
+  # TODO fix to scope to type, RF - 2-3-16
+  friendly_id :id_and_title, use: [:history] #, :scope => :type
 
   ## TODO fix RF 2-1-16
   #search_methods :in_state

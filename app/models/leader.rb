@@ -1,5 +1,5 @@
 class Leader < ActiveRecord::Base
-  include FriendlyId
+  extend FriendlyId
 
   has_many :leaderships,
            :dependent  => :destroy,
@@ -10,7 +10,7 @@ class Leader < ActiveRecord::Base
                         :company,
                         :bio
 
-  friendly_id :name, use: [:slugged]
+  friendly_id :name, use: [:slugged, :history]
 
   has_attached_file :image,
                     :url             => '/system/:class/:id/:style.:extension',

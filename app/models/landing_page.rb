@@ -1,6 +1,6 @@
 class LandingPage < ActiveRecord::Base
   include Bozzuto::Publishable
-  include FriendlyId
+  extend FriendlyId
 
   has_and_belongs_to_many :apartment_communities
 
@@ -33,7 +33,7 @@ class LandingPage < ActiveRecord::Base
 
   scope :visible_for_list, -> { where(hide_from_list: false) }
 
-  friendly_id :title, use: [:slugged]
+  friendly_id :title, use: [:slugged, :history]
 
   has_attached_file :masthead_image,
     :url             => '/system/:class/:id/masthead_:style.:extension',

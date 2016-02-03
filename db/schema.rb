@@ -9,1195 +9,1097 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(:version => 20160301184333) do
 
-  create_table "ad_sources", :force => true do |t|
-    t.string   "domain_name", :null => false
-    t.string   "pattern",     :null => false
+  create_table "ad_sources", force: :cascade do |t|
+    t.string   "domain_name", limit: 255, null: false
+    t.string   "pattern",     limit: 255, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "value",       :null => false
+    t.string   "value",       limit: 255, null: false
   end
 
-  create_table "apartment_communities_landing_pages", :id => false, :force => true do |t|
-    t.integer "landing_page_id"
-    t.integer "apartment_community_id"
+  create_table "apartment_communities_landing_pages", id: false, force: :cascade do |t|
+    t.integer "landing_page_id",        limit: 4
+    t.integer "apartment_community_id", limit: 4
   end
 
-  create_table "apartment_contact_configurations", :force => true do |t|
-    t.integer  "apartment_community_id",                      :null => false
-    t.text     "upcoming_intro_text",     :limit => 16777215
-    t.text     "upcoming_thank_you_text", :limit => 16777215
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "apartment_communities_landing_pages", ["landing_page_id", "apartment_community_id"], name: "index_landing_page_and_apartment_communities", using: :btree
+  add_index "apartment_communities_landing_pages", ["landing_page_id", "apartment_community_id"], name: "index_landing_page_and_featured_apartments", using: :btree
 
-  add_index "apartment_contact_configurations", ["apartment_community_id"], :name => "index_apartment_contact_configurations_on_apartment_community_id"
-
-  create_table "apartment_floor_plan_caches", :force => true do |t|
-    t.integer  "cacheable_id",                                                            :null => false
-    t.string   "cacheable_type",                                                          :null => false
-    t.decimal  "studio_min_price",         :precision => 8, :scale => 2, :default => 0.0
-    t.integer  "studio_count",                                           :default => 0
-    t.decimal  "one_bedroom_min_price",    :precision => 8, :scale => 2, :default => 0.0
-    t.integer  "one_bedroom_count",                                      :default => 0
-    t.decimal  "two_bedrooms_min_price",   :precision => 8, :scale => 2, :default => 0.0
-    t.integer  "two_bedrooms_count",                                     :default => 0
-    t.decimal  "three_bedrooms_min_price", :precision => 8, :scale => 2, :default => 0.0
-    t.integer  "three_bedrooms_count",                                   :default => 0
-    t.decimal  "penthouse_min_price",      :precision => 8, :scale => 2, :default => 0.0
-    t.integer  "penthouse_count",                                        :default => 0
-    t.decimal  "min_price",                :precision => 8, :scale => 2, :default => 0.0
-    t.decimal  "max_price",                :precision => 8, :scale => 2, :default => 0.0
+  create_table "apartment_contact_configurations", force: :cascade do |t|
+    t.integer  "apartment_community_id",  limit: 4,     null: false
+    t.text     "upcoming_intro_text",     limit: 65535
+    t.text     "upcoming_thank_you_text", limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "apartment_floor_plan_groups", :force => true do |t|
-    t.string   "name",       :null => false
-    t.integer  "position"
+  add_index "apartment_contact_configurations", ["apartment_community_id"], name: "index_apartment_contact_configurations_on_apartment_community_id", using: :btree
+
+  create_table "apartment_floor_plan_caches", force: :cascade do |t|
+    t.integer  "cacheable_id",             limit: 4,                                         null: false
+    t.string   "cacheable_type",           limit: 255,                                       null: false
+    t.decimal  "studio_min_price",                     precision: 8, scale: 2, default: 0.0
+    t.integer  "studio_count",             limit: 4,                           default: 0
+    t.decimal  "one_bedroom_min_price",                precision: 8, scale: 2, default: 0.0
+    t.integer  "one_bedroom_count",        limit: 4,                           default: 0
+    t.decimal  "two_bedrooms_min_price",               precision: 8, scale: 2, default: 0.0
+    t.integer  "two_bedrooms_count",       limit: 4,                           default: 0
+    t.decimal  "three_bedrooms_min_price",             precision: 8, scale: 2, default: 0.0
+    t.integer  "three_bedrooms_count",     limit: 4,                           default: 0
+    t.decimal  "penthouse_min_price",                  precision: 8, scale: 2, default: 0.0
+    t.integer  "penthouse_count",          limit: 4,                           default: 0
+    t.decimal  "min_price",                            precision: 8, scale: 2, default: 0.0
+    t.decimal  "max_price",                            precision: 8, scale: 2, default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "apartment_floor_plans", :force => true do |t|
-    t.string   "image_url"
-    t.integer  "bedrooms"
-    t.decimal  "bathrooms",              :precision => 3, :scale => 1
-    t.integer  "floor_plan_group_id",                                                     :null => false
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name",                                                                    :null => false
-    t.string   "availability_url"
-    t.integer  "min_square_feet"
-    t.integer  "max_square_feet"
-    t.integer  "apartment_community_id",                                                  :null => false
-    t.decimal  "min_rent",               :precision => 8, :scale => 2
-    t.decimal  "max_rent",               :precision => 8, :scale => 2
-    t.integer  "image_type",                                           :default => 0,     :null => false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.string   "external_cms_id"
-    t.boolean  "featured",                                             :default => false, :null => false
-    t.string   "external_cms_type"
-    t.integer  "available_units",                                      :default => 0
-    t.integer  "unit_count"
-  end
+  add_index "apartment_floor_plan_caches", ["cacheable_id", "cacheable_type"], name: "index_floor_plan_caches_on_id_and_type", unique: true, using: :btree
 
-  add_index "apartment_floor_plans", ["apartment_community_id"], :name => "index_apartment_floor_plans_on_apartment_community_id"
-  add_index "apartment_floor_plans", ["external_cms_id"], :name => "index_apartment_floor_plans_on_external_cms_id"
-  add_index "apartment_floor_plans", ["floor_plan_group_id"], :name => "index_apartment_floor_plans_on_floor_plan_group_id"
-
-  create_table "apartment_unit_amenities", :force => true do |t|
-    t.integer  "apartment_unit_id",                      :null => false
-    t.string   "primary_type",      :default => "Other", :null => false
-    t.string   "sub_type"
-    t.string   "description"
-    t.integer  "rank"
+  create_table "apartment_floor_plan_groups", force: :cascade do |t|
+    t.string   "name",       limit: 255, null: false
+    t.integer  "position",   limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "apartment_unit_amenities", ["apartment_unit_id"], :name => "index_apartment_unit_amenities_on_apartment_unit_id"
+  create_table "apartment_floor_plans", force: :cascade do |t|
+    t.string   "image_url",              limit: 255
+    t.integer  "bedrooms",               limit: 4
+    t.decimal  "bathrooms",                          precision: 3, scale: 1
+    t.integer  "floor_plan_group_id",    limit: 4,                                           null: false
+    t.integer  "position",               limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name",                   limit: 255,                                         null: false
+    t.string   "availability_url",       limit: 255
+    t.integer  "min_square_feet",        limit: 4
+    t.integer  "max_square_feet",        limit: 4
+    t.integer  "apartment_community_id", limit: 4,                                           null: false
+    t.decimal  "min_rent",                           precision: 8, scale: 2
+    t.decimal  "max_rent",                           precision: 8, scale: 2
+    t.integer  "image_type",             limit: 4,                           default: 0,     null: false
+    t.string   "image_file_name",        limit: 255
+    t.string   "image_content_type",     limit: 255
+    t.string   "external_cms_id",        limit: 255
+    t.boolean  "featured",                                                   default: false, null: false
+    t.string   "external_cms_type",      limit: 255
+    t.integer  "available_units",        limit: 4,                           default: 0
+    t.integer  "unit_count",             limit: 4
+  end
 
-  create_table "apartment_units", :force => true do |t|
-    t.string   "external_cms_id"
-    t.string   "external_cms_type"
-    t.string   "building_external_cms_id"
-    t.string   "floorplan_external_cms_id"
-    t.string   "organization_name"
-    t.string   "marketing_name"
-    t.string   "unit_type"
-    t.decimal  "bedrooms",                     :precision => 3, :scale => 1
-    t.decimal  "bathrooms",                    :precision => 3, :scale => 1
-    t.integer  "min_square_feet"
-    t.integer  "max_square_feet"
-    t.string   "square_foot_type"
-    t.decimal  "unit_rent",                    :precision => 8, :scale => 2
-    t.decimal  "market_rent",                  :precision => 8, :scale => 2
-    t.string   "economic_status"
-    t.string   "economic_status_description"
-    t.string   "occupancy_status"
-    t.string   "occupancy_status_description"
-    t.string   "leased_status"
-    t.string   "leased_status_description"
-    t.integer  "number_occupants"
-    t.string   "floor_plan_name"
-    t.string   "phase_name"
-    t.string   "building_name"
-    t.string   "primary_property_id"
-    t.string   "address_line_1"
-    t.string   "address_line_2"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
-    t.string   "comment"
-    t.decimal  "min_rent",                     :precision => 8, :scale => 2
-    t.decimal  "max_rent",                     :precision => 8, :scale => 2
-    t.decimal  "avg_rent",                     :precision => 8, :scale => 2
+  add_index "apartment_floor_plans", ["apartment_community_id"], name: "index_apartment_floor_plans_on_apartment_community_id", using: :btree
+  add_index "apartment_floor_plans", ["external_cms_id", "external_cms_type"], name: "index_external_cms_id_and_type", using: :btree
+  add_index "apartment_floor_plans", ["external_cms_id"], name: "index_apartment_floor_plans_on_external_cms_id", using: :btree
+  add_index "apartment_floor_plans", ["floor_plan_group_id"], name: "index_apartment_floor_plans_on_floor_plan_group_id", using: :btree
+
+  create_table "apartment_unit_amenities", force: :cascade do |t|
+    t.integer  "apartment_unit_id", limit: 4,                     null: false
+    t.string   "primary_type",      limit: 255, default: "Other", null: false
+    t.string   "sub_type",          limit: 255
+    t.string   "description",       limit: 255
+    t.integer  "rank",              limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "apartment_unit_amenities", ["apartment_unit_id"], name: "index_apartment_unit_amenities_on_apartment_unit_id", using: :btree
+
+  create_table "apartment_units", force: :cascade do |t|
+    t.string   "external_cms_id",              limit: 255
+    t.string   "external_cms_type",            limit: 255
+    t.string   "building_external_cms_id",     limit: 255
+    t.string   "floorplan_external_cms_id",    limit: 255
+    t.string   "organization_name",            limit: 255
+    t.string   "marketing_name",               limit: 255
+    t.string   "unit_type",                    limit: 255
+    t.decimal  "bedrooms",                                   precision: 3, scale: 1
+    t.decimal  "bathrooms",                                  precision: 3, scale: 1
+    t.integer  "min_square_feet",              limit: 4
+    t.integer  "max_square_feet",              limit: 4
+    t.string   "square_foot_type",             limit: 255
+    t.decimal  "unit_rent",                                  precision: 8, scale: 2
+    t.decimal  "market_rent",                                precision: 8, scale: 2
+    t.string   "economic_status",              limit: 255
+    t.string   "economic_status_description",  limit: 255
+    t.string   "occupancy_status",             limit: 255
+    t.string   "occupancy_status_description", limit: 255
+    t.string   "leased_status",                limit: 255
+    t.string   "leased_status_description",    limit: 255
+    t.integer  "number_occupants",             limit: 4
+    t.string   "floor_plan_name",              limit: 255
+    t.string   "phase_name",                   limit: 255
+    t.string   "building_name",                limit: 255
+    t.string   "primary_property_id",          limit: 255
+    t.string   "address_line_1",               limit: 255
+    t.string   "address_line_2",               limit: 255
+    t.string   "city",                         limit: 255
+    t.string   "state",                        limit: 255
+    t.string   "zip",                          limit: 255
+    t.string   "comment",                      limit: 255
+    t.decimal  "min_rent",                                   precision: 8, scale: 2
+    t.decimal  "max_rent",                                   precision: 8, scale: 2
+    t.decimal  "avg_rent",                                   precision: 8, scale: 2
     t.date     "vacate_date"
-    t.string   "vacancy_class"
+    t.string   "vacancy_class",                limit: 255
     t.date     "made_ready_date"
-    t.text     "availability_url"
-    t.integer  "floor_plan_id",                                                                :null => false
+    t.text     "availability_url",             limit: 65535
+    t.integer  "floor_plan_id",                limit: 4,                                            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "include_in_export",                                          :default => true, :null => false
+    t.boolean  "include_in_export",                                                  default: true, null: false
   end
 
-  create_table "archived_pages", :id => false, :force => true do |t|
-    t.integer  "id",                                                 :default => 0,     :null => false
-    t.string   "title",                                                                 :null => false
-    t.string   "cached_slug"
-    t.text     "body"
-    t.integer  "parent_id"
-    t.integer  "lft"
-    t.integer  "rgt"
-    t.integer  "section_id"
+  create_table "area_memberships", force: :cascade do |t|
+    t.integer  "area_id",                limit: 4,             null: false
+    t.integer  "apartment_community_id", limit: 4,             null: false
+    t.integer  "position",               limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "path"
-    t.string   "meta_title"
-    t.string   "meta_description"
-    t.string   "meta_keywords"
-    t.string   "left_montage_image_file_name"
-    t.string   "middle_montage_image_file_name"
-    t.string   "right_montage_image_file_name"
-    t.boolean  "published",                                          :default => false, :null => false
-    t.datetime "deleted_at"
-    t.text     "mobile_body",                    :limit => 16777215
-    t.text     "mobile_body_extra",              :limit => 16777215
-    t.boolean  "show_sidebar",                                       :default => true
-    t.boolean  "show_in_sidebar_nav",                                :default => true
-    t.integer  "snippet_id"
+    t.integer  "tier",                   limit: 4, default: 2, null: false
   end
 
-  add_index "archived_pages", ["cached_slug"], :name => "index_archived_pages_on_cached_slug"
-  add_index "archived_pages", ["id"], :name => "index_archived_pages_on_id"
+  add_index "area_memberships", ["area_id"], name: "index_area_memberships_on_area_id", using: :btree
+  add_index "area_memberships", ["tier"], name: "index_area_memberships_on_tier", using: :btree
 
-  create_table "archived_properties", :id => false, :force => true do |t|
-    t.integer  "id",                                                       :default => 0,     :null => false
-    t.string   "title",                                                                       :null => false
-    t.string   "subtitle"
-    t.integer  "city_id",                                                                     :null => false
-    t.boolean  "elite",                                                    :default => false, :null => false
-    t.boolean  "smart_share",                                              :default => false, :null => false
-    t.boolean  "smart_rent",                                               :default => false, :null => false
-    t.boolean  "green",                                                    :default => false, :null => false
-    t.boolean  "non_smoking",                                              :default => false, :null => false
-    t.string   "website_url"
-    t.string   "video_url"
-    t.string   "facebook_url"
-    t.string   "promo_image"
-    t.string   "promo_url"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.string   "street_address"
-    t.text     "overview_text"
-    t.text     "promotions_text"
+  create_table "areas", force: :cascade do |t|
+    t.string   "name",                        limit: 255,                             null: false
+    t.string   "slug",                        limit: 255
+    t.float    "latitude",                    limit: 24,                              null: false
+    t.float    "longitude",                   limit: 24,                              null: false
+    t.integer  "metro_id",                    limit: 4,                               null: false
+    t.integer  "position",                    limit: 4
+    t.string   "banner_image_file_name",      limit: 255
+    t.string   "listing_image_file_name",     limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "local_info_feed_id"
-    t.string   "external_cms_id"
-    t.string   "availability_url"
-    t.string   "type"
-    t.integer  "section_id"
-    t.integer  "county_id"
-    t.string   "listing_image_file_name"
-    t.string   "listing_image_content_type"
-    t.string   "listing_title"
-    t.text     "listing_text"
-    t.integer  "features"
-    t.string   "overview_title"
-    t.string   "overview_bullet_1"
-    t.string   "overview_bullet_2"
-    t.string   "overview_bullet_3"
-    t.boolean  "published",                                                :default => false, :null => false
-    t.string   "short_title"
-    t.string   "phone_number"
-    t.integer  "brochure_type",                                            :default => 0,     :null => false
-    t.string   "brochure_link_text"
-    t.string   "brochure_file_name"
-    t.string   "brochure_content_type"
-    t.string   "brochure_url"
-    t.string   "cached_slug"
-    t.string   "meta_title"
-    t.string   "meta_description"
-    t.string   "meta_keywords"
-    t.boolean  "show_lead_2_lease",                                        :default => false, :null => false
-    t.string   "lead_2_lease_email"
-    t.date     "completion_date"
-    t.string   "media_meta_title"
-    t.string   "media_meta_description"
-    t.string   "media_meta_keywords"
-    t.string   "floor_plans_meta_title"
-    t.string   "floor_plans_meta_description"
-    t.string   "floor_plans_meta_keywords"
-    t.string   "promotions_meta_title"
-    t.string   "promotions_meta_description"
-    t.string   "promotions_meta_keywords"
-    t.integer  "position"
-    t.integer  "promo_id"
-    t.integer  "ufollowup_id"
-    t.boolean  "has_completion_date",                                      :default => true,  :null => false
-    t.string   "listing_promo_file_name"
-    t.string   "listing_promo_content_type"
-    t.integer  "listing_promo_file_size"
-    t.string   "resident_link_text"
-    t.string   "resident_link_url"
-    t.boolean  "featured",                                                 :default => false, :null => false
-    t.integer  "featured_position"
-    t.datetime "deleted_at"
-    t.string   "zip_code"
-    t.string   "lead_2_lease_id"
-    t.string   "mobile_phone_number"
-    t.integer  "twitter_account_id"
-    t.string   "send_to_friend_mediamind_id"
-    t.string   "send_to_phone_mediamind_id"
-    t.string   "contact_mediamind_id"
-    t.boolean  "featured_mobile",                                          :default => false
-    t.boolean  "under_construction",                                       :default => false
-    t.string   "external_cms_type"
-    t.string   "schedule_tour_url"
-    t.string   "seo_link_text"
-    t.string   "seo_link_url"
-    t.boolean  "show_rtrk_code",                                           :default => false, :null => false
-    t.text     "office_hours",                         :limit => 16777215
-    t.string   "pinterest_url"
-    t.string   "website_url_text"
-    t.text     "neighborhood_description",             :limit => 16777215
-    t.string   "neighborhood_listing_image_file_name"
-    t.boolean  "included_in_export",                                       :default => false, :null => false
-    t.integer  "secondary_lead_source_id"
+    t.integer  "apartment_communities_count", limit: 4,     default: 0
+    t.text     "description",                 limit: 65535
+    t.text     "detail_description",          limit: 65535
+    t.integer  "state_id",                    limit: 4
+    t.string   "area_type",                   limit: 255,   default: "neighborhoods", null: false
   end
 
-  add_index "archived_properties", ["id"], :name => "index_archived_properties_on_id"
+  add_index "areas", ["apartment_communities_count"], name: "index_areas_on_apartment_communities_count", using: :btree
+  add_index "areas", ["metro_id"], name: "index_areas_on_metro_id", using: :btree
+  add_index "areas", ["name"], name: "index_areas_on_name", unique: true, using: :btree
+  add_index "areas", ["slug"], name: "index_areas_on_slug", using: :btree
 
-  create_table "area_memberships", :force => true do |t|
-    t.integer  "area_id",                               :null => false
-    t.integer  "apartment_community_id",                :null => false
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "tier",                   :default => 2, :null => false
-  end
-
-  add_index "area_memberships", ["area_id"], :name => "index_area_memberships_on_area_id"
-  add_index "area_memberships", ["tier"], :name => "index_area_memberships_on_tier"
-
-  create_table "areas", :force => true do |t|
-    t.string   "name",                                                     :null => false
-    t.string   "cached_slug"
-    t.decimal  "latitude",                :precision => 10, :scale => 6,                              :null => false
-    t.decimal  "longitude",               :precision => 10, :scale => 6,                              :null => false
-    t.integer  "metro_id",                                                                            :null => false
-    t.integer  "position"
-    t.string   "banner_image_file_name"
-    t.string   "listing_image_file_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "apartment_communities_count", :default => 0
-    t.text     "description"
-    t.text     "detail_description"
-    t.integer  "state_id"
-    t.string   "area_type",                                              :default => "neighborhoods", :null => false
-  end
-
-  add_index "areas", ["apartment_communities_count"], :name => "index_areas_on_apartment_communities_count"
-  add_index "areas", ["cached_slug"], :name => "index_areas_on_cached_slug"
-  add_index "areas", ["metro_id"], :name => "index_areas_on_metro_id"
-  add_index "areas", ["name"], :name => "index_areas_on_name", :unique => true
-
-  create_table "assets", :force => true do |t|
-    t.string   "data_file_name"
-    t.string   "data_content_type"
-    t.integer  "data_file_size"
-    t.string   "type",              :limit => 25
-    t.integer  "typus_user_id"
+  create_table "assets", force: :cascade do |t|
+    t.string   "data_file_name",    limit: 255
+    t.string   "data_content_type", limit: 255
+    t.integer  "data_file_size",    limit: 4
+    t.string   "type",              limit: 25
+    t.integer  "typus_user_id",     limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "assets", ["typus_user_id"], :name => "index_assets_on_typus_user_id"
+  add_index "assets", ["typus_user_id"], name: "index_assets_on_typus_user_id", using: :btree
 
-  create_table "awards", :force => true do |t|
-    t.string   "title",                                           :null => false
-    t.text     "body"
-    t.boolean  "published",                    :default => false, :null => false
+  create_table "awards", force: :cascade do |t|
+    t.string   "title",                        limit: 255,                   null: false
+    t.text     "body",                         limit: 65535
+    t.boolean  "published",                                  default: false, null: false
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.boolean  "featured",                     :default => false
-    t.boolean  "show_as_featured_news",        :default => false, :null => false
-    t.string   "home_page_image_file_name"
-    t.string   "home_page_image_content_type"
+    t.string   "image_file_name",              limit: 255
+    t.string   "image_content_type",           limit: 255
+    t.boolean  "featured",                                   default: false
+    t.boolean  "show_as_featured_news",                      default: false, null: false
+    t.string   "home_page_image_file_name",    limit: 255
+    t.string   "home_page_image_content_type", limit: 255
   end
 
-  create_table "awards_sections", :id => false, :force => true do |t|
-    t.integer "award_id"
-    t.integer "section_id"
+  create_table "awards_sections", id: false, force: :cascade do |t|
+    t.integer "award_id",   limit: 4
+    t.integer "section_id", limit: 4
   end
 
-  add_index "awards_sections", ["award_id", "section_id"], :name => "index_awards_sections_on_award_id_and_section_id"
-  add_index "awards_sections", ["section_id", "award_id"], :name => "index_awards_sections_on_section_id_and_award_id"
+  add_index "awards_sections", ["award_id", "section_id"], name: "index_awards_sections_on_award_id_and_section_id", using: :btree
+  add_index "awards_sections", ["section_id", "award_id"], name: "index_awards_sections_on_section_id_and_award_id", using: :btree
 
-  create_table "body_slides", :force => true do |t|
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "body_slideshow_id"
-    t.integer  "position"
+  create_table "body_slides", force: :cascade do |t|
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "body_slideshow_id",  limit: 4
+    t.integer  "position",           limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "link_url"
-    t.integer  "property_id"
-    t.string   "video_url"
+    t.string   "link_url",           limit: 255
+    t.integer  "property_id",        limit: 4
+    t.string   "video_url",          limit: 255
   end
 
-  add_index "body_slides", ["body_slideshow_id"], :name => "index_body_slides_on_body_slideshow_id"
+  add_index "body_slides", ["body_slideshow_id"], name: "index_body_slides_on_body_slideshow_id", using: :btree
 
-  create_table "body_slideshows", :force => true do |t|
-    t.string   "name",       :null => false
-    t.integer  "page_id"
+  create_table "body_slideshows", force: :cascade do |t|
+    t.string   "name",       limit: 255, null: false
+    t.integer  "page_id",    limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "body_slideshows", ["page_id"], :name => "index_body_slideshows_on_page_id"
+  add_index "body_slideshows", ["page_id"], name: "index_body_slideshows_on_page_id", using: :btree
 
-  create_table "bozzuto_blog_posts", :force => true do |t|
-    t.string   "title"
-    t.string   "url"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
+  create_table "bozzuto_blog_posts", force: :cascade do |t|
+    t.string   "title",              limit: 255
+    t.string   "url",                limit: 255
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "header_title"
-    t.string   "header_url"
+    t.string   "header_title",       limit: 255
+    t.string   "header_url",         limit: 255
   end
 
-  add_index "bozzuto_blog_posts", ["published_at"], :name => "index_bozzuto_blog_posts_on_published_at"
+  add_index "bozzuto_blog_posts", ["published_at"], name: "index_bozzuto_blog_posts_on_published_at", using: :btree
 
-  create_table "buzzes", :force => true do |t|
-    t.string   "email",        :null => false
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "street1"
-    t.string   "street2"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip_code"
-    t.string   "phone"
-    t.string   "buzzes"
-    t.string   "affiliations"
+  create_table "buzzes", force: :cascade do |t|
+    t.string   "email",        limit: 255, null: false
+    t.string   "first_name",   limit: 255
+    t.string   "last_name",    limit: 255
+    t.string   "street1",      limit: 255
+    t.string   "street2",      limit: 255
+    t.string   "city",         limit: 255
+    t.string   "state",        limit: 255
+    t.string   "zip_code",     limit: 255
+    t.string   "phone",        limit: 255
+    t.string   "buzzes",       limit: 255
+    t.string   "affiliations", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "careers_entries", :force => true do |t|
-    t.string   "name",                                        :null => false
-    t.string   "company",                                     :null => false
-    t.string   "job_title",                                   :null => false
-    t.text     "job_description",         :limit => 16777215
-    t.string   "main_photo_file_name"
-    t.string   "main_photo_content_type"
-    t.string   "headshot_file_name"
-    t.string   "headshot_content_type"
-    t.string   "youtube_url"
-    t.integer  "position"
+  create_table "careers_entries", force: :cascade do |t|
+    t.string   "name",                    limit: 255,   null: false
+    t.string   "company",                 limit: 255,   null: false
+    t.string   "job_title",               limit: 255,   null: false
+    t.text     "job_description",         limit: 65535
+    t.string   "main_photo_file_name",    limit: 255
+    t.string   "main_photo_content_type", limit: 255
+    t.string   "headshot_file_name",      limit: 255
+    t.string   "headshot_content_type",   limit: 255
+    t.string   "youtube_url",             limit: 255
+    t.integer  "position",                limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "careers_entries", ["position"], :name => "index_careers_entries_on_position"
+  add_index "careers_entries", ["position"], name: "index_careers_entries_on_position", using: :btree
 
-  create_table "carousel_panels", :force => true do |t|
-    t.integer  "position",                              :null => false
-    t.integer  "carousel_id",                           :null => false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.string   "link_url",                              :null => false
-    t.string   "heading"
-    t.string   "caption"
+  create_table "carousel_panels", force: :cascade do |t|
+    t.integer  "position",           limit: 4,                   null: false
+    t.integer  "carousel_id",        limit: 4,                   null: false
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.string   "link_url",           limit: 255,                 null: false
+    t.string   "heading",            limit: 255
+    t.string   "caption",            limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "featured",           :default => false
+    t.boolean  "featured",                       default: false
   end
 
-  create_table "carousels", :force => true do |t|
-    t.string   "name",         :null => false
-    t.integer  "content_id"
+  create_table "carousels", force: :cascade do |t|
+    t.string   "name",         limit: 255, null: false
+    t.integer  "content_id",   limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "content_type"
+    t.string   "content_type", limit: 255
   end
 
-  add_index "carousels", ["content_type", "content_id"], :name => "index_carousels_on_content_type_and_content_id"
+  add_index "carousels", ["content_type", "content_id"], name: "index_carousels_on_content_type_and_content_id", using: :btree
 
-  create_table "cities", :force => true do |t|
-    t.string   "name",       :null => false
-    t.integer  "state_id",   :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "cities", ["state_id"], :name => "index_cities_on_state_id"
-
-  create_table "cities_counties", :id => false, :force => true do |t|
-    t.integer "city_id"
-    t.integer "county_id"
-  end
-
-  create_table "contact_topics", :force => true do |t|
-    t.string   "topic",                          :null => false
-    t.text     "body",       :limit => 16777215
-    t.string   "recipients",                     :null => false
-    t.integer  "section_id"
-    t.integer  "position"
+  create_table "cities", force: :cascade do |t|
+    t.string   "name",       limit: 255, null: false
+    t.integer  "state_id",   limit: 4,   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "conversion_configurations", :force => true do |t|
-    t.string   "name"
-    t.string   "google_send_to_friend_label"
-    t.string   "google_send_to_phone_label"
-    t.string   "google_contact_label"
-    t.string   "bing_send_to_friend_action_id"
-    t.string   "bing_send_to_phone_action_id"
-    t.string   "bing_contact_action_id"
-    t.integer  "property_id"
+  add_index "cities", ["state_id"], name: "index_cities_on_state_id", using: :btree
+
+  create_table "cities_counties", id: false, force: :cascade do |t|
+    t.integer "city_id",   limit: 4
+    t.integer "county_id", limit: 4
+  end
+
+  create_table "contact_topics", force: :cascade do |t|
+    t.string   "topic",      limit: 255,   null: false
+    t.text     "body",       limit: 65535
+    t.string   "recipients", limit: 255,   null: false
+    t.integer  "section_id", limit: 4
+    t.integer  "position",   limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "counties", :force => true do |t|
-    t.string   "name",       :null => false
-    t.integer  "state_id",   :null => false
+  create_table "conversion_configurations", force: :cascade do |t|
+    t.string   "name",                          limit: 255
+    t.string   "google_send_to_friend_label",   limit: 255
+    t.string   "google_send_to_phone_label",    limit: 255
+    t.string   "google_contact_label",          limit: 255
+    t.string   "bing_send_to_friend_action_id", limit: 255
+    t.string   "bing_send_to_phone_action_id",  limit: 255
+    t.string   "bing_contact_action_id",        limit: 255
+    t.integer  "property_id",                   limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "counties", ["state_id"], :name => "index_counties_on_state_id"
-
-  create_table "dnr_configurations", :force => true do |t|
-    t.string   "customer_code"
-    t.string   "campaign"
-    t.string   "ad_source"
-    t.integer  "property_id",   :null => false
+  create_table "counties", force: :cascade do |t|
+    t.string   "name",       limit: 255, null: false
+    t.integer  "state_id",   limit: 4,   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "featured_apartment_communities_landing_pages", :id => false, :force => true do |t|
-    t.integer "landing_page_id"
-    t.integer "apartment_community_id"
-  end
+  add_index "counties", ["state_id"], name: "index_counties_on_state_id", using: :btree
 
-  create_table "feed_files", :force => true do |t|
-    t.integer  "feed_record_id",                         :null => false
-    t.string   "feed_record_type",                       :null => false
-    t.string   "external_cms_id",                        :null => false
-    t.string   "external_cms_type",                      :null => false
-    t.boolean  "active",            :default => true,    :null => false
-    t.string   "file_type",         :default => "Other", :null => false
-    t.string   "description"
-    t.string   "name",                                   :null => false
-    t.text     "caption"
-    t.string   "format",                                 :null => false
-    t.text     "source",                                 :null => false
-    t.integer  "width"
-    t.integer  "height"
-    t.string   "rank"
-    t.string   "ad_id"
-    t.string   "affiliate_id"
+  create_table "dnr_configurations", force: :cascade do |t|
+    t.string   "customer_code", limit: 255
+    t.string   "campaign",      limit: 255
+    t.string   "ad_source",     limit: 255
+    t.integer  "property_id",   limit: 4,   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "feed_files", ["feed_record_id", "feed_record_type"], :name => "index_feed_files_on_feed_record_id_and_feed_record_type"
+  create_table "featured_apartment_communities_landing_pages", id: false, force: :cascade do |t|
+    t.integer "landing_page_id",        limit: 4
+    t.integer "apartment_community_id", limit: 4
+  end
 
-  create_table "feed_items", :force => true do |t|
-    t.string   "title",        :null => false
-    t.string   "url",          :null => false
-    t.text     "description",  :null => false
-    t.datetime "published_at", :null => false
-    t.integer  "feed_id",      :null => false
+  create_table "feed_files", force: :cascade do |t|
+    t.integer  "feed_record_id",    limit: 4,                       null: false
+    t.string   "feed_record_type",  limit: 255,                     null: false
+    t.string   "external_cms_id",   limit: 255,                     null: false
+    t.string   "external_cms_type", limit: 255,                     null: false
+    t.boolean  "active",                          default: true,    null: false
+    t.string   "file_type",         limit: 255,   default: "Other", null: false
+    t.string   "description",       limit: 255
+    t.string   "name",              limit: 255,                     null: false
+    t.text     "caption",           limit: 65535
+    t.string   "format",            limit: 255,                     null: false
+    t.text     "source",            limit: 65535,                   null: false
+    t.integer  "width",             limit: 4
+    t.integer  "height",            limit: 4
+    t.string   "rank",              limit: 255
+    t.string   "ad_id",             limit: 255
+    t.string   "affiliate_id",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "feeds", :force => true do |t|
-    t.string   "url",          :null => false
+  add_index "feed_files", ["feed_record_id", "feed_record_type"], name: "index_feed_files_on_feed_record_id_and_feed_record_type", using: :btree
+
+  create_table "feed_items", force: :cascade do |t|
+    t.string   "title",        limit: 255,   null: false
+    t.string   "url",          limit: 255,   null: false
+    t.text     "description",  limit: 65535, null: false
+    t.datetime "published_at",               null: false
+    t.integer  "feed_id",      limit: 4,     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "feeds", force: :cascade do |t|
+    t.string   "url",          limit: 255, null: false
     t.datetime "refreshed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name",         :null => false
+    t.string   "name",         limit: 255, null: false
   end
 
-  create_table "green_features", :force => true do |t|
-    t.string   "title",                                  :null => false
-    t.text     "description",        :limit => 16777215
-    t.string   "photo_file_name",                        :null => false
-    t.string   "photo_content_type",                     :null => false
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",           limit: 255
+    t.integer  "sluggable_id",   limit: 4
+    t.integer  "sequence",       limit: 4,   default: 1, null: false
+    t.string   "sluggable_type", limit: 40
+    t.string   "scope",          limit: 255
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "sequence", "scope"], name: "index_slugs_on_n_s_s_and_s", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+
+  create_table "green_features", force: :cascade do |t|
+    t.string   "title",              limit: 255,   null: false
+    t.text     "description",        limit: 65535
+    t.string   "photo_file_name",    limit: 255,   null: false
+    t.string   "photo_content_type", limit: 255,   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "green_package_items", :force => true do |t|
-    t.integer  "green_package_id",                                                  :null => false
-    t.integer  "green_feature_id",                                                  :null => false
-    t.decimal  "savings",          :precision => 8, :scale => 2, :default => 0.0,   :null => false
-    t.boolean  "ultra_green",                                    :default => false, :null => false
-    t.integer  "x",                                              :default => 0
-    t.integer  "y",                                              :default => 0
-    t.integer  "position"
+  create_table "green_package_items", force: :cascade do |t|
+    t.integer  "green_package_id", limit: 4,                                         null: false
+    t.integer  "green_feature_id", limit: 4,                                         null: false
+    t.decimal  "savings",                    precision: 8, scale: 2, default: 0.0,   null: false
+    t.boolean  "ultra_green",                                        default: false, null: false
+    t.integer  "x",                limit: 4,                         default: 0
+    t.integer  "y",                limit: 4,                         default: 0
+    t.integer  "position",         limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "green_package_items", ["green_package_id"], :name => "index_green_package_items_on_green_package_id"
+  add_index "green_package_items", ["green_package_id"], name: "index_green_package_items_on_green_package_id", using: :btree
 
-  create_table "green_packages", :force => true do |t|
-    t.integer  "home_community_id",                                                                     :null => false
-    t.string   "photo_file_name",                                                                       :null => false
-    t.string   "photo_content_type",                                                                    :null => false
-    t.decimal  "ten_year_old_cost",                      :precision => 8, :scale => 2, :default => 0.0, :null => false
-    t.string   "graph_title"
-    t.text     "graph_tooltip",      :limit => 16777215
-    t.string   "graph_file_name"
-    t.string   "graph_content_type"
-    t.text     "disclaimer",         :limit => 16777215,                                                :null => false
+  create_table "green_packages", force: :cascade do |t|
+    t.integer  "home_community_id",  limit: 4,                                           null: false
+    t.string   "photo_file_name",    limit: 255,                                         null: false
+    t.string   "photo_content_type", limit: 255,                                         null: false
+    t.decimal  "ten_year_old_cost",                precision: 8, scale: 2, default: 0.0, null: false
+    t.string   "graph_title",        limit: 255
+    t.text     "graph_tooltip",      limit: 65535
+    t.string   "graph_file_name",    limit: 255
+    t.string   "graph_content_type", limit: 255
+    t.text     "disclaimer",         limit: 65535,                                       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "green_packages", ["home_community_id"], :name => "index_green_packages_on_home_community_id", :unique => true
+  add_index "green_packages", ["home_community_id"], name: "index_green_packages_on_home_community_id", unique: true, using: :btree
 
-  create_table "home_communities_landing_pages", :id => false, :force => true do |t|
-    t.integer "landing_page_id"
-    t.integer "home_community_id"
+  create_table "home_communities_landing_pages", id: false, force: :cascade do |t|
+    t.integer "landing_page_id",   limit: 4
+    t.integer "home_community_id", limit: 4
   end
 
-  create_table "home_floor_plans", :force => true do |t|
-    t.string   "name",               :null => false
-    t.string   "image_file_name",    :null => false
-    t.integer  "home_id",            :null => false
-    t.string   "image_content_type"
-    t.integer  "position"
+  add_index "home_communities_landing_pages", ["landing_page_id", "home_community_id"], name: "index_landing_page_and_home_communities", using: :btree
+
+  create_table "home_floor_plans", force: :cascade do |t|
+    t.string   "name",               limit: 255, null: false
+    t.string   "image_file_name",    limit: 255, null: false
+    t.integer  "home_id",            limit: 4,   null: false
+    t.string   "image_content_type", limit: 255
+    t.integer  "position",           limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "home_neighborhood_memberships", :force => true do |t|
-    t.integer  "home_neighborhood_id", :null => false
-    t.integer  "home_community_id",    :null => false
-    t.integer  "position"
+  create_table "home_neighborhood_memberships", force: :cascade do |t|
+    t.integer  "home_neighborhood_id", limit: 4, null: false
+    t.integer  "home_community_id",    limit: 4, null: false
+    t.integer  "position",             limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "home_neighborhood_memberships", ["home_neighborhood_id"], :name => "index_home_neighborhood_memberships_on_home_neighborhood_id"
+  add_index "home_neighborhood_memberships", ["home_neighborhood_id", "home_community_id"], name: "index_home_nbrhd_mmbrshps_on_nbrhd_id_and_comm_id", unique: true, using: :btree
+  add_index "home_neighborhood_memberships", ["home_neighborhood_id"], name: "index_home_neighborhood_memberships_on_home_neighborhood_id", using: :btree
 
-  create_table "home_neighborhoods", :force => true do |t|
-    t.string   "cached_slug"
-    t.string   "name",                                                                          :null => false
-    t.decimal  "latitude",                                       :precision => 10, :scale => 6, :null => false
-    t.decimal  "longitude",                                      :precision => 10, :scale => 6, :null => false
-    t.string   "banner_image_file_name",                                                        :null => false
-    t.string   "listing_image_file_name",                                                       :null => false
-    t.integer  "position"
-    t.integer  "featured_home_community_id"
-    t.integer  "home_communities_count",                         :default => 0
-    t.text     "description",                :limit => 16777215
-    t.text     "detail_description",         :limit => 16777215
+  create_table "home_neighborhoods", force: :cascade do |t|
+    t.string   "name",                       limit: 255,               null: false
+    t.string   "slug",                       limit: 255
+    t.float    "latitude",                   limit: 24,                null: false, precision: 10, scale: 6
+    t.float    "longitude",                  limit: 24,                null: false, precision: 10, scale: 6
+    t.string   "banner_image_file_name",     limit: 255,               null: false
+    t.string   "listing_image_file_name",    limit: 255,               null: false
+    t.integer  "position",                   limit: 4
+    t.integer  "featured_home_community_id", limit: 4
+    t.integer  "home_communities_count",     limit: 4,     default: 0
+    t.text     "description",                limit: 65535
+    t.text     "detail_description",         limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "home_neighborhoods", ["cached_slug"], :name => "index_home_neighborhoods_on_cached_slug"
-  add_index "home_neighborhoods", ["name"], :name => "index_home_neighborhoods_on_name", :unique => true
-  add_index "home_neighborhoods", ["slug"], :name => "index_home_neighborhoods_on_slug"
+  add_index "home_neighborhoods", ["name"], name: "index_home_neighborhoods_on_name", unique: true, using: :btree
+  add_index "home_neighborhoods", ["slug"], name: "index_home_neighborhoods_on_slug", using: :btree
 
-  create_table "home_page_slides", :force => true do |t|
-    t.integer  "home_page_id",       :null => false
-    t.string   "image_file_name",    :null => false
-    t.string   "image_content_type", :null => false
-    t.integer  "position"
+  create_table "home_page_slides", force: :cascade do |t|
+    t.integer  "home_page_id",       limit: 4,   null: false
+    t.string   "image_file_name",    limit: 255, null: false
+    t.string   "image_content_type", limit: 255, null: false
+    t.integer  "position",           limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "link_url"
+    t.string   "link_url",           limit: 255
   end
 
-  create_table "home_pages", :force => true do |t|
-    t.text     "body"
+  create_table "home_pages", force: :cascade do |t|
+    t.text     "body",                             limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "meta_title"
-    t.string   "meta_description"
-    t.string   "meta_keywords"
-    t.string   "mobile_title"
-    t.string   "mobile_banner_image_file_name"
-    t.string   "mobile_banner_image_content_type"
-    t.text     "mobile_body"
+    t.string   "meta_title",                       limit: 255
+    t.string   "meta_description",                 limit: 255
+    t.string   "meta_keywords",                    limit: 255
+    t.string   "mobile_title",                     limit: 255
+    t.string   "mobile_banner_image_file_name",    limit: 255
+    t.string   "mobile_banner_image_content_type", limit: 255
+    t.text     "mobile_body",                      limit: 65535
   end
 
-  create_table "homes", :force => true do |t|
-    t.string   "name",                                                               :null => false
-    t.integer  "bedrooms",                                                           :null => false
-    t.decimal  "bathrooms",         :precision => 3, :scale => 1,                    :null => false
-    t.integer  "home_community_id",                                                  :null => false
-    t.integer  "position"
+  create_table "homes", force: :cascade do |t|
+    t.string   "name",              limit: 255,                                         null: false
+    t.integer  "bedrooms",          limit: 4,                                           null: false
+    t.decimal  "bathrooms",                     precision: 3, scale: 1,                 null: false
+    t.integer  "home_community_id", limit: 4,                                           null: false
+    t.integer  "position",          limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "featured",                                        :default => false, :null => false
-    t.integer  "square_feet"
+    t.boolean  "featured",                                              default: false, null: false
+    t.integer  "square_feet",       limit: 4
   end
 
-  create_table "landing_page_popular_orderings", :force => true do |t|
-    t.integer "landing_page_id"
-    t.integer "property_id"
-    t.integer "position"
+  create_table "landing_page_popular_orderings", force: :cascade do |t|
+    t.integer "landing_page_id", limit: 4
+    t.integer "property_id",     limit: 4
+    t.integer "position",        limit: 4
   end
 
-  create_table "landing_pages", :force => true do |t|
-    t.string   "title",                                             :null => false
-    t.string   "meta_title"
-    t.string   "meta_description"
-    t.string   "meta_keywords"
-    t.string   "cached_slug"
-    t.integer  "state_id",                                          :null => false
-    t.text     "masthead_body"
-    t.string   "masthead_image_file_name"
-    t.string   "masthead_image_content_type"
-    t.string   "secondary_title"
-    t.text     "secondary_body"
+  add_index "landing_page_popular_orderings", ["landing_page_id", "property_id"], name: "index_landing_page_and_popular_properties", using: :btree
+
+  create_table "landing_pages", force: :cascade do |t|
+    t.string   "title",                          limit: 255,                   null: false
+    t.string   "meta_title",                     limit: 255
+    t.string   "meta_description",               limit: 255
+    t.string   "meta_keywords",                  limit: 255
+    t.string   "slug",                           limit: 255
+    t.integer  "state_id",                       limit: 4,                     null: false
+    t.text     "masthead_body",                  limit: 65535
+    t.string   "masthead_image_file_name",       limit: 255
+    t.string   "masthead_image_content_type",    limit: 255
+    t.string   "secondary_title",                limit: 255
+    t.text     "secondary_body",                 limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "promo_id"
-    t.boolean  "custom_sort_popular_properties", :default => false, :null => false
-    t.boolean  "published",                      :default => false, :null => false
-    t.boolean  "hide_from_list",                 :default => false, :null => false
+    t.integer  "promo_id",                       limit: 4
+    t.boolean  "custom_sort_popular_properties",               default: false, null: false
+    t.boolean  "published",                                    default: false, null: false
+    t.boolean  "hide_from_list",                               default: false, null: false
     t.boolean  "randomize_property_listings"
-    t.integer  "local_info_feed_id"
-    t.boolean  "show_apartments_by_area",        :default => true
-    t.string   "masthead_image_url"
+    t.integer  "local_info_feed_id",             limit: 4
+    t.boolean  "show_apartments_by_area",                      default: true
+    t.string   "masthead_image_url",             limit: 255
   end
 
-  create_table "landing_pages_projects", :id => false, :force => true do |t|
-    t.integer "landing_page_id"
-    t.integer "project_id"
+  add_index "landing_pages", ["slug"], name: "index_landing_pages_on_slug", using: :btree
+
+  create_table "landing_pages_projects", id: false, force: :cascade do |t|
+    t.integer "landing_page_id", limit: 4
+    t.integer "project_id",      limit: 4
   end
 
-  add_index "landing_pages_projects", ["landing_page_id", "project_id"], :name => "index_landing_pages_projects_on_landing_page_id_and_project_id"
+  add_index "landing_pages_projects", ["landing_page_id", "project_id"], name: "index_landing_pages_projects_on_landing_page_id_and_project_id", using: :btree
 
-  create_table "lasso_accounts", :force => true do |t|
-    t.integer  "property_id",  :null => false
-    t.string   "uid",          :null => false
-    t.string   "client_id",    :null => false
-    t.string   "project_id",   :null => false
+  create_table "lasso_accounts", force: :cascade do |t|
+    t.integer  "property_id",  limit: 4,   null: false
+    t.string   "uid",          limit: 255, null: false
+    t.string   "client_id",    limit: 255, null: false
+    t.string   "project_id",   limit: 255, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "analytics_id"
+    t.string   "analytics_id", limit: 255
   end
 
-  add_index "lasso_accounts", ["property_id"], :name => "index_lasso_accounts_on_property_id"
+  add_index "lasso_accounts", ["property_id"], name: "index_lasso_accounts_on_property_id", using: :btree
 
-  create_table "leaders", :force => true do |t|
-    t.string   "name",                                   :null => false
-    t.string   "title",                                  :null => false
-    t.string   "company",                                :null => false
-    t.text     "bio",                :limit => 16777215, :null => false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
+  create_table "leaders", force: :cascade do |t|
+    t.string   "name",               limit: 255,   null: false
+    t.string   "title",              limit: 255,   null: false
+    t.string   "company",            limit: 255,   null: false
+    t.text     "bio",                limit: 65535, null: false
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "cached_slug"
+    t.string   "slug",               limit: 255
   end
 
-  add_index "leaders", ["cached_slug"], :name => "index_leaders_on_cached_slug"
+  add_index "leaders", ["slug"], name: "index_leaders_on_slug", using: :btree
 
-  create_table "leadership_groups", :force => true do |t|
-    t.string   "name",       :null => false
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "leaderships", :force => true do |t|
-    t.integer  "leader_id",           :null => false
-    t.integer  "leadership_group_id", :null => false
-    t.integer  "position"
+  create_table "leadership_groups", force: :cascade do |t|
+    t.string   "name",       limit: 255, null: false
+    t.integer  "position",   limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "leaderships", ["leader_id", "leadership_group_id"], :name => "index_leaderships_on_leader_id_and_leadership_group_id", :unique => true
-  add_index "leaderships", ["leader_id"], :name => "index_leaderships_on_leader_id"
-  add_index "leaderships", ["leadership_group_id"], :name => "index_leaderships_on_leadership_group_id"
-
-  create_table "masthead_slides", :force => true do |t|
-    t.text     "body",                                 :null => false
-    t.integer  "slide_type",            :default => 0, :null => false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.string   "image_link"
-    t.text     "sidebar_text"
-    t.integer  "masthead_slideshow_id"
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "mini_slideshow_id"
-    t.text     "quote"
-    t.string   "quote_attribution"
-    t.string   "quote_job_title"
-    t.string   "quote_company"
-  end
-
-  add_index "masthead_slides", ["masthead_slideshow_id"], :name => "index_masthead_slides_on_masthead_slideshow_id"
-  add_index "masthead_slides", ["mini_slideshow_id"], :name => "index_masthead_slides_on_mini_slideshow_id"
-
-  create_table "masthead_slideshows", :force => true do |t|
-    t.string   "name",       :null => false
-    t.integer  "page_id"
+  create_table "leaderships", force: :cascade do |t|
+    t.integer  "leader_id",           limit: 4, null: false
+    t.integer  "leadership_group_id", limit: 4, null: false
+    t.integer  "position",            limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "masthead_slideshows", ["page_id"], :name => "index_masthead_slideshows_on_page_id"
+  add_index "leaderships", ["leader_id", "leadership_group_id"], name: "index_leaderships_on_leader_id_and_leadership_group_id", unique: true, using: :btree
+  add_index "leaderships", ["leader_id"], name: "index_leaderships_on_leader_id", using: :btree
+  add_index "leaderships", ["leadership_group_id"], name: "index_leaderships_on_leadership_group_id", using: :btree
 
-  create_table "mediaplex_tags", :force => true do |t|
-    t.string   "page_name"
-    t.string   "roi_name"
-    t.integer  "trackable_id"
-    t.string   "trackable_type"
+  create_table "masthead_slides", force: :cascade do |t|
+    t.text     "body",                  limit: 65535,             null: false
+    t.integer  "slide_type",            limit: 4,     default: 0, null: false
+    t.string   "image_file_name",       limit: 255
+    t.string   "image_content_type",    limit: 255
+    t.string   "image_link",            limit: 255
+    t.text     "sidebar_text",          limit: 65535
+    t.integer  "masthead_slideshow_id", limit: 4
+    t.integer  "position",              limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "mini_slideshow_id",     limit: 4
+    t.text     "quote",                 limit: 65535
+    t.string   "quote_attribution",     limit: 255
+    t.string   "quote_job_title",       limit: 255
+    t.string   "quote_company",         limit: 255
+  end
+
+  add_index "masthead_slides", ["masthead_slideshow_id"], name: "index_masthead_slides_on_masthead_slideshow_id", using: :btree
+  add_index "masthead_slides", ["mini_slideshow_id"], name: "index_masthead_slides_on_mini_slideshow_id", using: :btree
+
+  create_table "masthead_slideshows", force: :cascade do |t|
+    t.string   "name",       limit: 255, null: false
+    t.integer  "page_id",    limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "mediaplex_tags", ["trackable_type", "trackable_id"], :name => "index_mediaplex_tags_on_trackable_type_and_trackable_id"
+  add_index "masthead_slideshows", ["page_id"], name: "index_masthead_slideshows_on_page_id", using: :btree
 
-  create_table "metros", :force => true do |t|
-    t.string   "cached_slug"
-    t.string   "name",                                                   :null => false
-    t.decimal  "latitude",                :precision => 10, :scale => 6, :null => false
-    t.decimal  "longitude",               :precision => 10, :scale => 6, :null => false
-    t.integer  "position"
-    t.string   "banner_image_file_name"
-    t.string   "listing_image_file_name",                                :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "apartment_communities_count", :default => 0
-    t.text     "detail_description"
-  end
-
-  add_index "metros", ["apartment_communities_count"], :name => "index_metros_on_apartment_communities_count"
-  add_index "metros", ["cached_slug"], :name => "index_metros_on_cached_slug"
-  add_index "metros", ["name"], :name => "index_metros_on_name", :unique => true
-
-  create_table "mini_slides", :force => true do |t|
-    t.string   "image_file_name",    :null => false
-    t.string   "image_content_type", :null => false
-    t.integer  "position"
-    t.integer  "mini_slideshow_id"
+  create_table "mediaplex_tags", force: :cascade do |t|
+    t.string   "page_name",      limit: 255
+    t.string   "roi_name",       limit: 255
+    t.integer  "trackable_id",   limit: 4
+    t.string   "trackable_type", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "mini_slides", ["mini_slideshow_id"], :name => "index_mini_slides_on_mini_slideshow_id"
+  add_index "mediaplex_tags", ["trackable_type", "trackable_id"], name: "index_mediaplex_tags_on_trackable_type_and_trackable_id", using: :btree
 
-  create_table "mini_slideshows", :force => true do |t|
-    t.string   "title",      :null => false
+  create_table "metros", force: :cascade do |t|
+    t.string   "name",                        limit: 255,               null: false
+    t.string   "slug",                        limit: 255
+    t.float    "latitude",                    limit: 24,                null: false, precision: 10, scale: 6
+    t.float    "longitude",                   limit: 24,                null: false, precision: 10, scale: 6
+    t.integer  "position",                    limit: 4
+    t.string   "banner_image_file_name",      limit: 255
+    t.string   "listing_image_file_name",     limit: 255,               null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "subtitle"
-    t.string   "link_url"
+    t.integer  "apartment_communities_count", limit: 4,     default: 0
+    t.text     "detail_description",          limit: 65535
   end
 
-  create_table "neighborhood_memberships", :force => true do |t|
-    t.integer  "neighborhood_id",                       :null => false
-    t.integer  "apartment_community_id",                :null => false
-    t.integer  "position"
+  add_index "metros", ["apartment_communities_count"], name: "index_metros_on_apartment_communities_count", using: :btree
+  add_index "metros", ["name"], name: "index_metros_on_name", unique: true, using: :btree
+  add_index "metros", ["slug"], name: "index_metros_on_slug", using: :btree
+
+  create_table "mini_slides", force: :cascade do |t|
+    t.string   "image_file_name",    limit: 255, null: false
+    t.string   "image_content_type", limit: 255, null: false
+    t.integer  "position",           limit: 4
+    t.integer  "mini_slideshow_id",  limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "tier",                   :default => 2, :null => false
   end
 
-  add_index "neighborhood_memberships", ["neighborhood_id"], :name => "index_neighborhood_memberships_on_neighborhood_id"
-  add_index "neighborhood_memberships", ["tier"], :name => "index_neighborhood_memberships_on_tier"
+  add_index "mini_slides", ["mini_slideshow_id"], name: "index_mini_slides_on_mini_slideshow_id", using: :btree
 
-  create_table "neighborhoods", :force => true do |t|
-    t.string   "cached_slug"
-    t.string   "name",                                                           :null => false
-    t.decimal  "latitude",                        :precision => 10, :scale => 6, :null => false
-    t.decimal  "longitude",                       :precision => 10, :scale => 6, :null => false
-    t.string   "banner_image_file_name"
-    t.string   "listing_image_file_name"
-    t.integer  "area_id",                                                        :null => false
-    t.integer  "position"
-    t.integer  "state_id",                                                       :null => false
+  create_table "mini_slideshows", force: :cascade do |t|
+    t.string   "title",      limit: 255, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "featured_apartment_community_id"
-    t.integer  "apartment_communities_count",     :default => 0
-    t.text     "description"
-    t.text     "detail_description"
+    t.string   "subtitle",   limit: 255
+    t.string   "link_url",   limit: 255
   end
 
-  add_index "neighborhoods", ["apartment_communities_count"], :name => "index_neighborhoods_on_apartment_communities_count"
-  add_index "neighborhoods", ["area_id"], :name => "index_neighborhoods_on_area_id"
-  add_index "neighborhoods", ["cached_slug"], :name => "index_neighborhoods_on_cached_slug"
-  add_index "neighborhoods", ["name"], :name => "index_neighborhoods_on_name", :unique => true
+  create_table "neighborhood_memberships", force: :cascade do |t|
+    t.integer  "neighborhood_id",        limit: 4,             null: false
+    t.integer  "apartment_community_id", limit: 4,             null: false
+    t.integer  "position",               limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "tier",                   limit: 4, default: 2, null: false
+  end
 
-  create_table "news_posts", :force => true do |t|
-    t.string   "title",                                           :null => false
-    t.text     "body"
-    t.boolean  "published",                    :default => false, :null => false
+  add_index "neighborhood_memberships", ["neighborhood_id", "apartment_community_id"], name: "index_neighborhood_id_and_apartment_community_id", unique: true, using: :btree
+  add_index "neighborhood_memberships", ["neighborhood_id"], name: "index_neighborhood_memberships_on_neighborhood_id", using: :btree
+  add_index "neighborhood_memberships", ["tier"], name: "index_neighborhood_memberships_on_tier", using: :btree
+
+  create_table "neighborhoods", force: :cascade do |t|
+    t.string   "name",                            limit: 255,               null: false
+    t.string   "slug",                            limit: 255
+    t.float    "latitude",                        limit: 24,                null: false, precision: 10, scale: 6
+    t.float    "longitude",                       limit: 24,                null: false, precision: 10, scale: 6
+    t.string   "banner_image_file_name",          limit: 255
+    t.string   "listing_image_file_name",         limit: 255
+    t.integer  "area_id",                         limit: 4,                 null: false
+    t.integer  "position",                        limit: 4
+    t.integer  "state_id",                        limit: 4,                 null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "featured_apartment_community_id", limit: 4
+    t.integer  "apartment_communities_count",     limit: 4,     default: 0
+    t.text     "description",                     limit: 65535
+    t.text     "detail_description",              limit: 65535
+  end
+
+  add_index "neighborhoods", ["apartment_communities_count"], name: "index_neighborhoods_on_apartment_communities_count", using: :btree
+  add_index "neighborhoods", ["area_id"], name: "index_neighborhoods_on_area_id", using: :btree
+  add_index "neighborhoods", ["name"], name: "index_neighborhoods_on_name", unique: true, using: :btree
+  add_index "neighborhoods", ["slug"], name: "index_neighborhoods_on_slug", using: :btree
+
+  create_table "news_posts", force: :cascade do |t|
+    t.string   "title",                        limit: 255,                   null: false
+    t.text     "body",                         limit: 65535
+    t.boolean  "published",                                  default: false, null: false
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "meta_title"
-    t.string   "meta_description"
-    t.string   "meta_keywords"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.boolean  "featured",                     :default => false
-    t.string   "home_page_image_file_name"
-    t.string   "home_page_image_content_type"
-    t.boolean  "show_as_featured_news",        :default => false, :null => false
+    t.string   "meta_title",                   limit: 255
+    t.string   "meta_description",             limit: 255
+    t.string   "meta_keywords",                limit: 255
+    t.string   "image_file_name",              limit: 255
+    t.string   "image_content_type",           limit: 255
+    t.boolean  "featured",                                   default: false
+    t.string   "home_page_image_file_name",    limit: 255
+    t.string   "home_page_image_content_type", limit: 255
+    t.boolean  "show_as_featured_news",                      default: false, null: false
   end
 
-  create_table "news_posts_sections", :id => false, :force => true do |t|
-    t.integer "news_post_id"
-    t.integer "section_id"
+  create_table "news_posts_sections", id: false, force: :cascade do |t|
+    t.integer "news_post_id", limit: 4
+    t.integer "section_id",   limit: 4
   end
 
-  add_index "news_posts_sections", ["news_post_id", "section_id"], :name => "index_news_posts_sections_on_news_post_id_and_section_id"
-  add_index "news_posts_sections", ["section_id", "news_post_id"], :name => "index_news_posts_sections_on_section_id_and_news_post_id"
+  add_index "news_posts_sections", ["news_post_id", "section_id"], name: "index_news_posts_sections_on_news_post_id_and_section_id", using: :btree
+  add_index "news_posts_sections", ["section_id", "news_post_id"], name: "index_news_posts_sections_on_section_id_and_news_post_id", using: :btree
 
-  create_table "office_hours", :force => true do |t|
-    t.integer  "property_id",                         :null => false
-    t.integer  "day",                                 :null => false
-    t.string   "opens_at"
-    t.string   "opens_at_period",  :default => "AM"
-    t.string   "closes_at"
-    t.string   "closes_at_period", :default => "PM"
+  create_table "office_hours", force: :cascade do |t|
+    t.integer  "property_id",      limit: 4,                   null: false
+    t.integer  "day",              limit: 4,                   null: false
+    t.string   "opens_at",         limit: 255
+    t.string   "opens_at_period",  limit: 255, default: "AM"
+    t.string   "closes_at",        limit: 255
+    t.string   "closes_at_period", limit: 255, default: "PM"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "closed",           :default => false, :null => false
+    t.boolean  "closed",                       default: false, null: false
   end
 
-  add_index "office_hours", ["property_id", "day"], :name => "index_office_hours_on_property_id_and_day", :unique => true
-  add_index "office_hours", ["property_id"], :name => "index_office_hours_on_property_id"
+  add_index "office_hours", ["property_id", "day"], name: "index_office_hours_on_property_id_and_day", unique: true, using: :btree
+  add_index "office_hours", ["property_id"], name: "index_office_hours_on_property_id", using: :btree
 
-  create_table "pages", :force => true do |t|
-    t.string   "title",                                             :null => false
-    t.string   "cached_slug"
-    t.text     "body"
-    t.integer  "parent_id"
-    t.integer  "lft"
-    t.integer  "rgt"
-    t.integer  "section_id"
+  create_table "pages", force: :cascade do |t|
+    t.string   "title",                          limit: 255,                   null: false
+    t.string   "slug",                           limit: 255
+    t.text     "body",                           limit: 65535
+    t.integer  "parent_id",                      limit: 4
+    t.integer  "lft",                            limit: 4
+    t.integer  "rgt",                            limit: 4
+    t.integer  "section_id",                     limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "path"
-    t.string   "meta_title"
-    t.string   "meta_description"
-    t.string   "meta_keywords"
-    t.string   "left_montage_image_file_name"
-    t.string   "middle_montage_image_file_name"
-    t.string   "right_montage_image_file_name"
-    t.boolean  "published",                      :default => false, :null => false
-    t.text     "mobile_body"
-    t.text     "mobile_body_extra"
-    t.boolean  "show_sidebar",                   :default => true
-    t.boolean  "show_in_sidebar_nav",            :default => true
-    t.integer  "snippet_id"
+    t.string   "path",                           limit: 255
+    t.string   "meta_title",                     limit: 255
+    t.string   "meta_description",               limit: 255
+    t.string   "meta_keywords",                  limit: 255
+    t.string   "left_montage_image_file_name",   limit: 255
+    t.string   "middle_montage_image_file_name", limit: 255
+    t.string   "right_montage_image_file_name",  limit: 255
+    t.boolean  "published",                                    default: false, null: false
+    t.text     "mobile_body",                    limit: 65535
+    t.text     "mobile_body_extra",              limit: 65535
+    t.boolean  "show_sidebar",                                 default: true
+    t.boolean  "show_in_sidebar_nav",                          default: true
+    t.integer  "snippet_id",                     limit: 4
   end
 
-  add_index "pages", ["path"], :name => "index_pages_on_path"
-  add_index "pages", ["section_id"], :name => "index_pages_on_section_id"
+  add_index "pages", ["path"], name: "index_pages_on_path", using: :btree
+  add_index "pages", ["section_id"], name: "index_pages_on_section_id", using: :btree
+  add_index "pages", ["slug"], name: "index_pages_on_slug", using: :btree
 
-  create_table "photo_groups", :force => true do |t|
-    t.string   "title",      :null => false
-    t.integer  "position"
+  create_table "photo_groups", force: :cascade do |t|
+    t.string   "title",      limit: 255, null: false
+    t.integer  "position",   limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "photos", :force => true do |t|
-    t.string   "image_file_name",    :default => ""
-    t.string   "title",              :default => "",    :null => false
+  create_table "photos", force: :cascade do |t|
+    t.string   "image_file_name",    limit: 255
+    t.string   "title",              limit: 255,                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image_content_type"
-    t.integer  "position"
-    t.boolean  "show_to_mobile",     :default => false, :null => false
-    t.integer  "photo_group_id"
-    t.integer  "property_id",                           :null => false
+    t.string   "image_content_type", limit: 255
+    t.integer  "position",           limit: 4
+    t.boolean  "show_to_mobile",                 default: false, null: false
+    t.integer  "photo_group_id",     limit: 4
+    t.integer  "property_id",        limit: 4,                   null: false
   end
 
-  create_table "press_releases", :force => true do |t|
-    t.string   "title",                                                               :null => false
-    t.text     "body",                         :limit => 16777215
-    t.boolean  "published",                                        :default => false, :null => false
+  create_table "press_releases", force: :cascade do |t|
+    t.string   "title",                        limit: 255,                   null: false
+    t.text     "body",                         limit: 65535
+    t.boolean  "published",                                  default: false, null: false
     t.datetime "published_at"
-    t.string   "meta_title"
-    t.string   "meta_description"
-    t.string   "meta_keywords"
+    t.string   "meta_title",                   limit: 255
+    t.string   "meta_description",             limit: 255
+    t.string   "meta_keywords",                limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "featured",                                         :default => false
-    t.boolean  "show_as_featured_news",                            :default => false, :null => false
-    t.string   "home_page_image_file_name"
-    t.string   "home_page_image_content_type"
+    t.boolean  "featured",                                   default: false
+    t.boolean  "show_as_featured_news",                      default: false, null: false
+    t.string   "home_page_image_file_name",    limit: 255
+    t.string   "home_page_image_content_type", limit: 255
   end
 
-  create_table "press_releases_sections", :id => false, :force => true do |t|
-    t.integer "press_release_id"
-    t.integer "section_id"
+  create_table "press_releases_sections", id: false, force: :cascade do |t|
+    t.integer "press_release_id", limit: 4
+    t.integer "section_id",       limit: 4
   end
 
-  add_index "press_releases_sections", ["press_release_id", "section_id"], :name => "index_press_releases_sections_on_press_release_id_and_section_id"
-  add_index "press_releases_sections", ["section_id", "press_release_id"], :name => "index_press_releases_sections_on_section_id_and_press_release_id"
+  add_index "press_releases_sections", ["press_release_id", "section_id"], name: "index_press_releases_sections_on_press_release_id_and_section_id", using: :btree
+  add_index "press_releases_sections", ["section_id", "press_release_id"], name: "index_press_releases_sections_on_section_id_and_press_release_id", using: :btree
 
-  create_table "project_categories", :force => true do |t|
-    t.string   "title",       :null => false
-    t.string   "cached_slug"
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "project_categories", ["cached_slug"], :name => "index_project_categories_on_cached_slug"
-
-  create_table "project_categories_projects", :id => false, :force => true do |t|
-    t.integer "project_category_id"
-    t.integer "project_id"
-  end
-
-  create_table "project_data_points", :force => true do |t|
-    t.string   "name",       :null => false
-    t.string   "data",       :null => false
-    t.integer  "project_id", :null => false
-    t.integer  "position"
+  create_table "project_categories", force: :cascade do |t|
+    t.string   "title",      limit: 255, null: false
+    t.string   "slug",       limit: 255
+    t.integer  "position",   limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "project_updates", :force => true do |t|
-    t.text     "body",                                  :null => false
-    t.integer  "project_id",                            :null => false
-    t.boolean  "published",          :default => false, :null => false
+  add_index "project_categories", ["slug"], name: "index_project_categories_on_slug", using: :btree
+
+  create_table "project_categories_projects", id: false, force: :cascade do |t|
+    t.integer "project_category_id", limit: 4
+    t.integer "project_id",          limit: 4
+  end
+
+  add_index "project_categories_projects", ["project_category_id", "project_id"], name: "index_project_categories_and_projects", using: :btree
+  add_index "project_categories_projects", ["project_id", "project_category_id"], name: "index_projects_and_project_categories", using: :btree
+
+  create_table "project_data_points", force: :cascade do |t|
+    t.string   "name",       limit: 255, null: false
+    t.string   "data",       limit: 255, null: false
+    t.integer  "project_id", limit: 4,   null: false
+    t.integer  "position",   limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "project_updates", force: :cascade do |t|
+    t.text     "body",               limit: 65535,                 null: false
+    t.integer  "project_id",         limit: 4,                     null: false
+    t.boolean  "published",                        default: false, null: false
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.string   "image_title"
-    t.string   "image_description"
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.string   "image_title",        limit: 255
+    t.string   "image_description",  limit: 255
   end
 
-  create_table "promos", :force => true do |t|
-    t.string   "title",                                  :null => false
-    t.string   "subtitle"
-    t.string   "link_url"
+  create_table "promos", force: :cascade do |t|
+    t.string   "title",               limit: 255,                 null: false
+    t.string   "subtitle",            limit: 255
+    t.string   "link_url",            limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "has_expiration_date", :default => false
+    t.boolean  "has_expiration_date",             default: false
     t.datetime "expiration_date"
   end
 
-  create_table "properties", :force => true do |t|
-    t.string   "title",                                                                                  :null => false
-    t.string   "subtitle"
-    t.integer  "city_id",                                                                                :null => false
-    t.boolean  "elite",                                                               :default => false, :null => false
-    t.boolean  "smart_share",                                                         :default => false, :null => false
-    t.boolean  "smart_rent",                                                          :default => false, :null => false
-    t.boolean  "green",                                                               :default => false, :null => false
-    t.boolean  "non_smoking",                                                         :default => false, :null => false
-    t.string   "website_url"
-    t.string   "video_url"
-    t.string   "facebook_url"
-    t.string   "promo_image"
-    t.string   "promo_url"
-    t.decimal  "latitude",                             :precision => 10, :scale => 6
-    t.decimal  "longitude",                            :precision => 10, :scale => 6
-    t.string   "street_address"
-    t.text     "overview_text"
-    t.text     "promotions_text"
+  create_table "properties", force: :cascade do |t|
+    t.string   "title",                                limit: 255,                   null: false
+    t.string   "subtitle",                             limit: 255
+    t.integer  "city_id",                              limit: 4,                     null: false
+    t.boolean  "elite",                                              default: false, null: false
+    t.boolean  "smart_share",                                        default: false, null: false
+    t.boolean  "smart_rent",                                         default: false, null: false
+    t.boolean  "green",                                              default: false, null: false
+    t.boolean  "non_smoking",                                        default: false, null: false
+    t.string   "website_url",                          limit: 255
+    t.string   "video_url",                            limit: 255
+    t.string   "facebook_url",                         limit: 255
+    t.string   "promo_image",                          limit: 255
+    t.string   "promo_url",                            limit: 255
+    t.float    "latitude",                             limit: 24, precision: 10, scale: 6
+    t.float    "longitude",                            limit: 24, precision: 10, scale: 6
+    t.string   "street_address",                       limit: 255
+    t.text     "overview_text",                        limit: 65535
+    t.text     "promotions_text",                      limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "local_info_feed_id"
-    t.string   "external_cms_id"
-    t.string   "availability_url"
-    t.string   "type"
-    t.integer  "section_id"
-    t.integer  "county_id"
-    t.string   "listing_image_file_name"
-    t.string   "listing_image_content_type"
-    t.string   "listing_title"
-    t.text     "listing_text"
-    t.integer  "features"
-    t.string   "overview_title"
-    t.string   "overview_bullet_1"
-    t.string   "overview_bullet_2"
-    t.string   "overview_bullet_3"
-    t.boolean  "published",                                                           :default => false, :null => false
-    t.string   "short_title"
-    t.string   "phone_number"
-    t.integer  "brochure_type",                                                       :default => 0,     :null => false
-    t.string   "brochure_link_text"
-    t.string   "brochure_file_name"
-    t.string   "brochure_content_type"
-    t.string   "brochure_url"
-    t.string   "cached_slug"
-    t.string   "meta_title"
-    t.string   "meta_description"
-    t.string   "meta_keywords"
-    t.boolean  "show_lead_2_lease",                                                   :default => false, :null => false
-    t.string   "lead_2_lease_email"
+    t.integer  "local_info_feed_id",                   limit: 4
+    t.string   "external_cms_id",                      limit: 255
+    t.string   "availability_url",                     limit: 255
+    t.string   "type",                                 limit: 255
+    t.integer  "section_id",                           limit: 4
+    t.integer  "county_id",                            limit: 4
+    t.string   "listing_image_file_name",              limit: 255
+    t.string   "listing_image_content_type",           limit: 255
+    t.string   "listing_title",                        limit: 255
+    t.text     "listing_text",                         limit: 65535
+    t.integer  "features",                             limit: 4
+    t.string   "overview_title",                       limit: 255
+    t.string   "overview_bullet_1",                    limit: 255
+    t.string   "overview_bullet_2",                    limit: 255
+    t.string   "overview_bullet_3",                    limit: 255
+    t.boolean  "published",                                          default: false, null: false
+    t.string   "short_title",                          limit: 255
+    t.string   "phone_number",                         limit: 255
+    t.integer  "brochure_type",                        limit: 4,     default: 0,     null: false
+    t.string   "brochure_link_text",                   limit: 255
+    t.string   "brochure_file_name",                   limit: 255
+    t.string   "brochure_content_type",                limit: 255
+    t.string   "brochure_url",                         limit: 255
+    t.string   "slug",                                 limit: 255
+    t.string   "meta_title",                           limit: 255
+    t.string   "meta_description",                     limit: 255
+    t.string   "meta_keywords",                        limit: 255
+    t.boolean  "show_lead_2_lease",                                  default: false, null: false
+    t.string   "lead_2_lease_email",                   limit: 255
     t.date     "completion_date"
-    t.string   "media_meta_title"
-    t.string   "media_meta_description"
-    t.string   "media_meta_keywords"
-    t.string   "floor_plans_meta_title"
-    t.string   "floor_plans_meta_description"
-    t.string   "floor_plans_meta_keywords"
-    t.string   "promotions_meta_title"
-    t.string   "promotions_meta_description"
-    t.string   "promotions_meta_keywords"
-    t.integer  "position"
-    t.integer  "promo_id"
-    t.integer  "ufollowup_id"
-    t.boolean  "has_completion_date",                                                 :default => true,  :null => false
-    t.string   "listing_promo_file_name"
-    t.string   "listing_promo_content_type"
-    t.integer  "listing_promo_file_size"
-    t.string   "resident_link_text"
-    t.string   "resident_link_url"
-    t.boolean  "featured",                                                            :default => false, :null => false
-    t.integer  "featured_position"
-    t.string   "zip_code"
-    t.string   "lead_2_lease_id"
-    t.string   "mobile_phone_number"
-    t.integer  "twitter_account_id"
-    t.string   "send_to_friend_mediamind_id"
-    t.string   "send_to_phone_mediamind_id"
-    t.string   "contact_mediamind_id"
-    t.boolean  "featured_mobile",                                                     :default => false
-    t.boolean  "under_construction",                                                  :default => false
-    t.string   "external_cms_type"
-    t.string   "schedule_tour_url"
-    t.string   "seo_link_text"
-    t.string   "seo_link_url"
-    t.boolean  "show_rtrk_code",                                                      :default => false, :null => false
-    t.text     "office_hours"
-    t.string   "pinterest_url"
-    t.string   "website_url_text"
-    t.text     "neighborhood_description"
-    t.string   "neighborhood_listing_image_file_name"
-    t.boolean  "included_in_export",                                                  :default => true,  :null => false
-    t.integer  "secondary_lead_source_id"
-    t.string   "hero_image_file_name"
-    t.string   "hero_image_content_type"
-    t.integer  "hero_image_file_size"
-    t.string   "hyly_id"
-    t.integer  "core_id"
-    t.string   "page_header"
-    t.string   "short_description"
-    t.integer  "unit_count"
-    t.string   "external_management_id"
-    t.boolean  "found_in_latest_feed",                                                :default => true,  :null => false
+    t.string   "media_meta_title",                     limit: 255
+    t.string   "media_meta_description",               limit: 255
+    t.string   "media_meta_keywords",                  limit: 255
+    t.string   "floor_plans_meta_title",               limit: 255
+    t.string   "floor_plans_meta_description",         limit: 255
+    t.string   "floor_plans_meta_keywords",            limit: 255
+    t.string   "promotions_meta_title",                limit: 255
+    t.string   "promotions_meta_description",          limit: 255
+    t.string   "promotions_meta_keywords",             limit: 255
+    t.integer  "position",                             limit: 4
+    t.integer  "promo_id",                             limit: 4
+    t.integer  "ufollowup_id",                         limit: 4
+    t.boolean  "has_completion_date",                                default: true,  null: false
+    t.string   "listing_promo_file_name",              limit: 255
+    t.string   "listing_promo_content_type",           limit: 255
+    t.integer  "listing_promo_file_size",              limit: 4
+    t.string   "resident_link_text",                   limit: 255
+    t.string   "resident_link_url",                    limit: 255
+    t.boolean  "featured",                                           default: false, null: false
+    t.integer  "featured_position",                    limit: 4
+    t.string   "zip_code",                             limit: 255
+    t.string   "lead_2_lease_id",                      limit: 255
+    t.string   "mobile_phone_number",                  limit: 255
+    t.integer  "twitter_account_id",                   limit: 4
+    t.string   "send_to_friend_mediamind_id",          limit: 255
+    t.string   "send_to_phone_mediamind_id",           limit: 255
+    t.string   "contact_mediamind_id",                 limit: 255
+    t.boolean  "featured_mobile",                                    default: false
+    t.boolean  "under_construction",                                 default: false
+    t.string   "external_cms_type",                    limit: 255
+    t.text     "office_hours",                         limit: 65535
+    t.string   "pinterest_url",                        limit: 255
+    t.string   "schedule_tour_url",                    limit: 255
+    t.string   "seo_link_text",                        limit: 255
+    t.string   "seo_link_url",                         limit: 255
+    t.boolean  "show_rtrk_code",                                     default: false, null: false
+    t.string   "website_url_text",                     limit: 255
+    t.text     "neighborhood_description",             limit: 65535
+    t.string   "neighborhood_listing_image_file_name", limit: 255
+    t.boolean  "included_in_export",                                 default: true,  null: false
+    t.integer  "secondary_lead_source_id",             limit: 4
+    t.string   "hero_image_file_name",                 limit: 255
+    t.string   "hero_image_content_type",              limit: 255
+    t.integer  "hero_image_file_size",                 limit: 4
+    t.string   "hyly_id",                              limit: 255
+    t.integer  "core_id",                              limit: 4
+    t.integer  "unit_count",                           limit: 4
+    t.string   "page_header",                          limit: 255
+    t.string   "short_description",                    limit: 255
+    t.string   "external_management_id",               limit: 255
+    t.boolean  "found_in_latest_feed",                               default: true,  null: false
   end
 
-  add_index "properties", ["core_id"], :name => "index_properties_on_core_id"
-  add_index "properties", ["external_cms_id", "external_cms_type"], :name => "index_properties_on_external_cms_id_and_external_cms_type"
-  add_index "properties", ["external_cms_id"], :name => "index_properties_on_external_cms_id"
-  add_index "properties", ["included_in_export"], :name => "index_properties_on_included_in_export"
+  add_index "properties", ["core_id"], name: "index_properties_on_core_id", using: :btree
+  add_index "properties", ["external_cms_id", "external_cms_type"], name: "index_properties_on_external_cms_id_and_external_cms_type", using: :btree
+  add_index "properties", ["external_cms_id"], name: "index_properties_on_external_cms_id", using: :btree
+  add_index "properties", ["included_in_export"], name: "index_properties_on_included_in_export", using: :btree
+  add_index "properties", ["slug"], name: "index_properties_on_slug", using: :btree
 
-  create_table "properties_property_features", :id => false, :force => true do |t|
-    t.integer "property_id"
-    t.integer "property_feature_id"
+  create_table "properties_property_features", id: false, force: :cascade do |t|
+    t.integer "property_id",         limit: 4
+    t.integer "property_feature_id", limit: 4
   end
 
-  add_index "properties_property_features", ["property_id"], :name => "index_properties_property_features_on_property_id"
+  add_index "properties_property_features", ["property_id"], name: "index_properties_property_features_on_property_id", using: :btree
 
-  create_table "property_amenities", :force => true do |t|
-    t.integer  "property_id",                       :null => false
-    t.string   "primary_type", :default => "Other", :null => false
-    t.string   "sub_type"
-    t.string   "description"
-    t.integer  "position"
+  create_table "property_amenities", force: :cascade do |t|
+    t.integer  "property_id",  limit: 4,                     null: false
+    t.string   "primary_type", limit: 255, default: "Other", null: false
+    t.string   "sub_type",     limit: 255
+    t.string   "description",  limit: 255
+    t.integer  "position",     limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "property_amenities", ["property_id"], :name => "index_property_amenities_on_property_id"
+  add_index "property_amenities", ["property_id"], name: "index_property_amenities_on_property_id", using: :btree
 
-  create_table "property_contact_pages", :force => true do |t|
-    t.integer  "property_id",                                  :null => false
-    t.text     "content",                  :limit => 16777215
-    t.string   "meta_title"
-    t.string   "meta_description"
-    t.string   "meta_keywords"
+  create_table "property_contact_pages", force: :cascade do |t|
+    t.integer  "property_id",              limit: 4,     null: false
+    t.text     "content",                  limit: 65535
+    t.string   "meta_title",               limit: 255
+    t.string   "meta_description",         limit: 255
+    t.string   "meta_keywords",            limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "schedule_appointment_url"
-    t.string   "local_phone_number"
+    t.string   "schedule_appointment_url", limit: 255
+    t.string   "local_phone_number",       limit: 255
   end
 
-  add_index "property_contact_pages", ["property_id"], :name => "index_property_contact_pages_on_property_id"
+  add_index "property_contact_pages", ["property_id"], name: "index_property_contact_pages_on_property_id", using: :btree
 
-  create_table "property_features", :force => true do |t|
-    t.string   "icon_file_name"
-    t.string   "icon_content_type"
-    t.string   "name"
-    t.text     "description"
-    t.integer  "position"
+  create_table "property_features", force: :cascade do |t|
+    t.string   "icon_file_name",      limit: 255
+    t.string   "icon_content_type",   limit: 255
+    t.string   "name",                limit: 255
+    t.text     "description",         limit: 65535
+    t.integer  "position",            limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "show_on_search_page", :default => false, :null => false
+    t.boolean  "show_on_search_page",               default: false, null: false
   end
 
-  create_table "property_features_pages", :force => true do |t|
-    t.integer  "property_id",                          :null => false
-    t.text     "text_1",           :limit => 16777215
-    t.string   "title_1"
-    t.string   "title_2"
-    t.text     "text_2",           :limit => 16777215
-    t.string   "title_3"
-    t.text     "text_3",           :limit => 16777215
-    t.string   "meta_title"
-    t.string   "meta_description"
-    t.string   "meta_keywords"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "property_features_pages", ["property_id"], :name => "index_property_features_pages_on_property_id"
-
-  create_table "property_neighborhood_pages", :force => true do |t|
-    t.integer  "property_id",                          :null => false
-    t.text     "content",          :limit => 16777215
-    t.string   "meta_title"
-    t.string   "meta_description"
-    t.string   "meta_keywords"
+  create_table "property_features_pages", force: :cascade do |t|
+    t.integer  "property_id",      limit: 4,     null: false
+    t.text     "text_1",           limit: 65535
+    t.string   "title_1",          limit: 255
+    t.string   "title_2",          limit: 255
+    t.text     "text_2",           limit: 65535
+    t.string   "title_3",          limit: 255
+    t.text     "text_3",           limit: 65535
+    t.string   "meta_title",       limit: 255
+    t.string   "meta_description", limit: 255
+    t.string   "meta_keywords",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "property_neighborhood_pages", ["property_id"], :name => "index_property_neighborhood_pages_on_property_id"
+  add_index "property_features_pages", ["property_id"], name: "index_property_features_pages_on_property_id", using: :btree
 
-  create_table "property_retail_pages", :force => true do |t|
-    t.integer  "property_id",      :null => false
+  create_table "property_neighborhood_pages", force: :cascade do |t|
+    t.integer  "property_id",      limit: 4,     null: false
+    t.text     "content",          limit: 65535
+    t.string   "meta_title",       limit: 255
+    t.string   "meta_description", limit: 255
+    t.string   "meta_keywords",    limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "property_neighborhood_pages", ["property_id"], name: "index_property_neighborhood_pages_on_property_id", using: :btree
+
+  create_table "property_retail_pages", force: :cascade do |t|
+    t.integer  "property_id",      null: false
     t.text     "content"
     t.string   "meta_title"
     t.string   "meta_description"
@@ -1206,10 +1108,10 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
     t.datetime "updated_at"
   end
 
-  create_table "property_retail_slides", :force => true do |t|
-    t.string   "name",                    :null => false
-    t.string   "image_file_name",         :null => false
-    t.string   "image_content_type",      :null => false
+  create_table "property_retail_slides", force: :cascade do |t|
+    t.string   "name",                    null: false
+    t.string   "image_file_name",         null: false
+    t.string   "image_content_type",      null: false
     t.string   "video_url"
     t.string   "link_url"
     t.integer  "position"
@@ -1218,244 +1120,233 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
     t.datetime "updated_at"
   end
 
-  create_table "property_slides", :force => true do |t|
-    t.string   "caption"
-    t.string   "image_file_name",       :null => false
-    t.string   "image_content_type",    :null => false
-    t.integer  "position"
-    t.integer  "property_slideshow_id"
+  create_table "property_slides", force: :cascade do |t|
+    t.string   "caption",               limit: 255
+    t.string   "image_file_name",       limit: 255, null: false
+    t.string   "image_content_type",    limit: 255, null: false
+    t.integer  "position",              limit: 4
+    t.integer  "property_slideshow_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "video_url"
-    t.string   "link_url"
+    t.string   "video_url",             limit: 255
+    t.string   "link_url",              limit: 255
   end
 
-  add_index "property_slides", ["property_slideshow_id"], :name => "index_property_slides_on_property_slideshow_id"
+  add_index "property_slides", ["property_slideshow_id"], name: "index_property_slides_on_property_slideshow_id", using: :btree
 
-  create_table "property_slideshows", :force => true do |t|
-    t.string   "name",        :null => false
-    t.integer  "property_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "property_slideshows", ["property_id"], :name => "index_property_slideshows_on_property_id"
-
-  create_table "property_tours_pages", :force => true do |t|
-    t.integer  "property_id",                          :null => false
-    t.string   "title"
-    t.text     "content",          :limit => 16777215
-    t.string   "meta_title"
-    t.string   "meta_description"
-    t.string   "meta_keywords"
+  create_table "property_slideshows", force: :cascade do |t|
+    t.string   "name",        limit: 255, null: false
+    t.integer  "property_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "property_tours_pages", ["property_id"], :name => "index_property_tours_pages_on_property_id"
+  add_index "property_slideshows", ["property_id"], name: "index_property_slideshows_on_property_id", using: :btree
 
-  create_table "publications", :force => true do |t|
-    t.string   "name",                                                      :null => false
-    t.text     "description",        :limit => 16777215
-    t.integer  "position"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.boolean  "published",                              :default => false
+  create_table "property_tours_pages", force: :cascade do |t|
+    t.integer  "property_id",      limit: 4,     null: false
+    t.string   "title",            limit: 255
+    t.text     "content",          limit: 65535
+    t.string   "meta_title",       limit: 255
+    t.string   "meta_description", limit: 255
+    t.string   "meta_keywords",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "publications", ["published", "position"], :name => "index_publications_on_published_and_position"
+  add_index "property_tours_pages", ["property_id"], name: "index_property_tours_pages_on_property_id", using: :btree
 
-  create_table "rank_categories", :force => true do |t|
-    t.string   "name",           :null => false
-    t.integer  "position"
-    t.integer  "publication_id", :null => false
+  create_table "publications", force: :cascade do |t|
+    t.string   "name",               limit: 255,                   null: false
+    t.text     "description",        limit: 65535
+    t.integer  "position",           limit: 4
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.boolean  "published",                        default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "rank_categories", ["publication_id", "position"], :name => "index_rank_categories_on_publication_id_and_position"
+  add_index "publications", ["published", "position"], name: "index_publications_on_published_and_position", using: :btree
 
-  create_table "ranks", :force => true do |t|
-    t.integer  "rank_number",      :null => false
-    t.integer  "year",             :null => false
-    t.string   "description"
-    t.integer  "rank_category_id"
+  create_table "rank_categories", force: :cascade do |t|
+    t.string   "name",           limit: 255, null: false
+    t.integer  "position",       limit: 4
+    t.integer  "publication_id", limit: 4,   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "ranks", ["rank_category_id", "year"], :name => "index_ranks_on_rank_category_id_and_year"
+  add_index "rank_categories", ["publication_id", "position"], name: "index_rank_categories_on_publication_id_and_position", using: :btree
 
-  create_table "recurring_emails", :force => true do |t|
-    t.string   "email_address",                                           :null => false
-    t.string   "token",                                                   :null => false
-    t.text     "property_ids",  :limit => 16777215
-    t.boolean  "recurring",                         :default => false
+  create_table "ranks", force: :cascade do |t|
+    t.integer  "rank_number",      limit: 4,   null: false
+    t.integer  "year",             limit: 4,   null: false
+    t.string   "description",      limit: 255
+    t.integer  "rank_category_id", limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ranks", ["rank_category_id", "year"], name: "index_ranks_on_rank_category_id_and_year", using: :btree
+
+  create_table "recurring_emails", force: :cascade do |t|
+    t.string   "email_address", limit: 255,                      null: false
+    t.string   "token",         limit: 255,                      null: false
+    t.text     "property_ids",  limit: 65535
+    t.boolean  "recurring",                   default: false
     t.datetime "last_sent_at"
-    t.string   "state",                             :default => "active"
+    t.string   "state",         limit: 255,   default: "active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "recurring_emails", ["email_address"], :name => "index_recurring_emails_on_email_address"
-  add_index "recurring_emails", ["state"], :name => "index_recurring_emails_on_state"
-  add_index "recurring_emails", ["token"], :name => "index_recurring_emails_on_token"
+  add_index "recurring_emails", ["email_address"], name: "index_recurring_emails_on_email_address", using: :btree
+  add_index "recurring_emails", ["state"], name: "index_recurring_emails_on_state", using: :btree
+  add_index "recurring_emails", ["token"], name: "index_recurring_emails_on_token", using: :btree
 
-  create_table "related_areas", :force => true do |t|
-    t.integer  "area_id",        :null => false
-    t.integer  "nearby_area_id", :null => false
-    t.integer  "position"
+  create_table "related_areas", force: :cascade do |t|
+    t.integer  "area_id",        limit: 4, null: false
+    t.integer  "nearby_area_id", limit: 4, null: false
+    t.integer  "position",       limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "related_areas", ["area_id", "nearby_area_id"], :name => "index_related_areas_on_area_id_and_nearby_area_id", :unique => true
-  add_index "related_areas", ["area_id"], :name => "index_related_areas_on_area_id"
+  add_index "related_areas", ["area_id", "nearby_area_id"], name: "index_related_areas_on_area_id_and_nearby_area_id", unique: true, using: :btree
+  add_index "related_areas", ["area_id"], name: "index_related_areas_on_area_id", using: :btree
 
-  create_table "related_neighborhoods", :force => true do |t|
-    t.integer  "neighborhood_id",        :null => false
-    t.integer  "nearby_neighborhood_id", :null => false
-    t.integer  "position"
+  create_table "related_neighborhoods", force: :cascade do |t|
+    t.integer  "neighborhood_id",        limit: 4, null: false
+    t.integer  "nearby_neighborhood_id", limit: 4, null: false
+    t.integer  "position",               limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "related_neighborhoods", ["neighborhood_id"], :name => "index_related_neighborhoods_on_neighborhood_id"
+  add_index "related_neighborhoods", ["neighborhood_id", "nearby_neighborhood_id"], name: "index_related_neighborhoods_on_id_and_related_id", unique: true, using: :btree
+  add_index "related_neighborhoods", ["neighborhood_id"], name: "index_related_neighborhoods_on_neighborhood_id", using: :btree
 
-  create_table "sections", :force => true do |t|
-    t.string   "title",                                             :null => false
+  create_table "sections", force: :cascade do |t|
+    t.string   "title",                          limit: 255,                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "cached_slug"
-    t.boolean  "service",                        :default => false, :null => false
-    t.string   "left_montage_image_file_name"
-    t.string   "middle_montage_image_file_name"
-    t.string   "right_montage_image_file_name"
-    t.boolean  "about",                          :default => false, :null => false
+    t.string   "slug",                           limit: 255
+    t.boolean  "service",                                    default: false, null: false
+    t.string   "left_montage_image_file_name",   limit: 255
+    t.string   "middle_montage_image_file_name", limit: 255
+    t.string   "right_montage_image_file_name",  limit: 255
+    t.boolean  "about",                                      default: false, null: false
   end
 
-  add_index "sections", ["about"], :name => "index_sections_on_about"
-  add_index "sections", ["cached_slug"], :name => "index_sections_on_cached_slug"
+  add_index "sections", ["about"], name: "index_sections_on_about", using: :btree
+  add_index "sections", ["slug"], name: "index_sections_on_slug", using: :btree
 
-  create_table "seo_metadata", :force => true do |t|
-    t.integer  "resource_id",      :null => false
-    t.string   "resource_type",    :null => false
-    t.string   "meta_title"
-    t.string   "meta_description"
-    t.string   "meta_keywords"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "slugs", :force => true do |t|
-    t.string   "name"
-    t.integer  "sluggable_id"
-    t.integer  "sequence",                     :default => 1, :null => false
-    t.string   "sluggable_type", :limit => 40
-    t.string   "scope"
-    t.datetime "created_at"
-  end
-
-  add_index "slugs", ["name", "sluggable_type", "sequence", "scope"], :name => "index_slugs_on_n_s_s_and_s", :unique => true
-  add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
-
-  create_table "snippets", :force => true do |t|
-    t.string   "name",                           :null => false
-    t.text     "body",       :limit => 16777215, :null => false
+  create_table "seo_metadata", force: :cascade do |t|
+    t.integer  "resource_id",      limit: 4,   null: false
+    t.string   "resource_type",    limit: 255, null: false
+    t.string   "meta_title",       limit: 255
+    t.string   "meta_description", limit: 255
+    t.string   "meta_keywords",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "states", :force => true do |t|
-    t.string   "code",       :null => false
-    t.string   "name",       :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "position"
-  end
-
-  add_index "states", ["position"], :name => "index_states_on_position"
-
-  create_table "testimonials", :force => true do |t|
-    t.string   "name",       :default => ""
-    t.string   "title",      :default => ""
-    t.text     "quote",                      :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "section_id"
-  end
-
-  create_table "tweets", :force => true do |t|
-    t.string   "tweet_id",                               :null => false
-    t.text     "text",               :limit => 16777215, :null => false
-    t.datetime "posted_at",                              :null => false
-    t.integer  "twitter_account_id",                     :null => false
+  create_table "snippets", force: :cascade do |t|
+    t.string   "name",       limit: 255,   null: false
+    t.text     "body",       limit: 65535, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "tweets", ["tweet_id"], :name => "index_tweets_on_tweet_id"
-  add_index "tweets", ["twitter_account_id"], :name => "index_tweets_on_twitter_account_id"
-
-  create_table "twitter_accounts", :force => true do |t|
-    t.string   "username",       :null => false
+  create_table "states", force: :cascade do |t|
+    t.string   "code",       limit: 255, null: false
+    t.string   "name",       limit: 255, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "next_update_at", :null => false
+    t.integer  "position",   limit: 4
   end
 
-  add_index "twitter_accounts", ["username"], :name => "index_twitter_accounts_on_username"
+  add_index "states", ["position"], name: "index_states_on_position", using: :btree
 
-  create_table "typus_users", :force => true do |t|
-    t.string   "first_name",       :default => "",    :null => false
-    t.string   "last_name",        :default => "",    :null => false
-    t.string   "role",                                :null => false
-    t.string   "email",                               :null => false
-    t.boolean  "status",           :default => false
-    t.string   "token",                               :null => false
-    t.string   "salt",                                :null => false
-    t.string   "crypted_password",                    :null => false
-    t.string   "preferences"
+  create_table "testimonials", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "title",      limit: 255
+    t.text     "quote",      limit: 65535, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "section_id", limit: 4
   end
 
-  create_table "under_construction_leads", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "address"
-    t.string   "address_2"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip_code"
-    t.string   "phone_number"
-    t.string   "email"
-    t.integer  "apartment_community_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "comments",               :limit => 16777215
-  end
-
-  add_index "under_construction_leads", ["apartment_community_id"], :name => "index_under_construction_leads_on_apartment_community_id"
-
-  create_table "videos", :force => true do |t|
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.string   "url",                :null => false
-    t.integer  "property_id"
-    t.integer  "position"
+  create_table "tweets", force: :cascade do |t|
+    t.string   "tweet_id",           limit: 255,   null: false
+    t.text     "text",               limit: 65535, null: false
+    t.datetime "posted_at",                        null: false
+    t.integer  "twitter_account_id", limit: 4,     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "zip_codes", :force => true do |t|
-    t.string  "zip",                                      :null => false
-    t.decimal "latitude",  :precision => 10, :scale => 6, :null => false
-    t.decimal "longitude", :precision => 10, :scale => 6, :null => false
+  add_index "tweets", ["tweet_id"], name: "index_tweets_on_tweet_id", using: :btree
+  add_index "tweets", ["twitter_account_id"], name: "index_tweets_on_twitter_account_id", using: :btree
+
+  create_table "twitter_accounts", force: :cascade do |t|
+    t.string   "username",       limit: 255, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "next_update_at",             null: false
   end
 
-  add_index "zip_codes", ["zip"], :name => "index_zip_codes_on_zip", :unique => true
+  add_index "twitter_accounts", ["username"], name: "index_twitter_accounts_on_username", using: :btree
+
+  create_table "typus_users", force: :cascade do |t|
+    t.string   "first_name",       limit: 255, default: "",    null: false
+    t.string   "last_name",        limit: 255, default: "",    null: false
+    t.string   "role",             limit: 255,                 null: false
+    t.string   "email",            limit: 255,                 null: false
+    t.boolean  "status",                       default: false
+    t.string   "token",            limit: 255,                 null: false
+    t.string   "salt",             limit: 255,                 null: false
+    t.string   "crypted_password", limit: 255,                 null: false
+    t.string   "preferences",      limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "under_construction_leads", force: :cascade do |t|
+    t.string   "first_name",             limit: 255
+    t.string   "last_name",              limit: 255
+    t.string   "address",                limit: 255
+    t.string   "address_2",              limit: 255
+    t.string   "city",                   limit: 255
+    t.string   "state",                  limit: 255
+    t.string   "zip_code",               limit: 255
+    t.string   "phone_number",           limit: 255
+    t.string   "email",                  limit: 255
+    t.integer  "apartment_community_id", limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "comments",               limit: 65535
+  end
+
+  add_index "under_construction_leads", ["apartment_community_id"], name: "index_under_construction_leads_on_apartment_community_id", using: :btree
+
+  create_table "videos", force: :cascade do |t|
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.string   "url",                limit: 255, null: false
+    t.integer  "property_id",        limit: 4
+    t.integer  "position",           limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "zip_codes", force: :cascade do |t|
+    t.string  "zip",       limit: 255,                          null: false
+    t.decimal "latitude",              precision: 10, scale: 6, null: false
+    t.decimal "longitude",             precision: 10, scale: 6, null: false
+  end
+
+  add_index "zip_codes", ["zip"], name: "index_zip_codes_on_zip", unique: true, using: :btree
 
 end

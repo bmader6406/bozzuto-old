@@ -1,9 +1,9 @@
 class ContactTopic < ActiveRecord::Base
-  include FriendlyId
+  extend FriendlyId
 
   acts_as_list
 
-  friendly_id :topic, use: [:slugged]
+  friendly_id :topic, use: [:slugged, :history]
 
   belongs_to :section
 

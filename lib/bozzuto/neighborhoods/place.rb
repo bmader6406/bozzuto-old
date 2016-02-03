@@ -3,7 +3,7 @@ module Bozzuto
     module Place
       def self.included(base)
         base.class_eval do
-          include FriendlyId
+          extend FriendlyId
 
           friendly_id :name, use: [:slugged]
 

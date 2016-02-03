@@ -3,7 +3,7 @@ class HomeNeighborhood < ActiveRecord::Base
   include Bozzuto::Mappable
   extend  Bozzuto::Neighborhoods::ListingImage
   extend  Bozzuto::Neighborhoods::BannerImage
-  include FriendlyId
+  extend FriendlyId
 
   acts_as_list
 
@@ -20,7 +20,7 @@ class HomeNeighborhood < ActiveRecord::Base
   has_many :home_communities, -> { order('home_neighborhood_memberships.position ASC') },
            :through => :home_neighborhood_memberships
 
-  friendly_id :name, use: [:slugged]
+  friendly_id :name, use: [:slugged, :history]
 
   validates_presence_of :name,
                         :latitude,

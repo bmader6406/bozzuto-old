@@ -1,6 +1,6 @@
 class Section < ActiveRecord::Base
   include Montage
-  include FriendlyId
+  extend FriendlyId
 
   has_one :contact_topic
   
@@ -12,7 +12,7 @@ class Section < ActiveRecord::Base
   has_and_belongs_to_many :news_posts,     -> { order(published_at: :desc) }
   has_and_belongs_to_many :press_releases, -> { order(published_at: :desc) }
 
-  friendly_id :title, use: [:slugged]
+  friendly_id :title, use: [:slugged, :history]
 
   validates_presence_of :title
   validates_uniqueness_of :title

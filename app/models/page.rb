@@ -1,7 +1,7 @@
 class Page < ActiveRecord::Base
   include Montage
   include Bozzuto::Publishable
-  include FriendlyId
+  extend FriendlyId
   
   #acts_as_archive :indexes => [:id, :cached_slug]
   #class Archive < ActiveRecord::Base
@@ -12,7 +12,8 @@ class Page < ActiveRecord::Base
   
   acts_as_nested_set :scope => :section, :dependent => :destroy
 
-  friendly_id :title, use: [:scoped], :scope => :section
+  # TODO scope slug to section, RF - 2-3-16
+  friendly_id :title, use: [:slugged, :history] #, :scope => :section
 
   after_save :set_path
 
