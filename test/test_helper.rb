@@ -34,17 +34,16 @@ VCR.configure do |c|
   c.hook_into :webmock
 end
 
+class Shoulda::Context::Context
+  alias_method :describe, :context
+  alias_method :before,   :setup
+  alias_method :after,    :teardown
+  alias_method :it,       :should
+end
+
 class ActiveSupport::TestCase
   extend SharedExamples
 
   include Bozzuto::Test::Extensions
   include Bozzuto::Test::ModelExtensions
-
-  # Enable RSpec-like syntax via Shoulda::Context methods
-  singleton_class.instance_eval do
-    alias_method :describe, :context
-    alias_method :before,   :setup
-    alias_method :after,    :teardown
-    alias_method :it,       :should
-  end
 end
