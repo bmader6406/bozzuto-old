@@ -60,8 +60,8 @@ class Page < ActiveRecord::Base
   private
 
   def set_path
-    self.path = self_and_ancestors.map { |page| page.cached_slug }.join('/')
-    update_without_callbacks
+    self.update_column(:path, self_and_ancestors.map(&:slug).join('/'))
+
     descendants.each { |d| d.send(:set_path) }
   end
 end

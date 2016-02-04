@@ -65,6 +65,7 @@ class HomeNeighborhood < ActiveRecord::Base
 
   def update_home_communities_count
     self.home_communities_count = communities(true).count
-    send(:update_without_callbacks)
+
+    update_column(:home_communities_count, communities(true).count)
   end
 end
