@@ -17,8 +17,8 @@ module Bozzuto::Mobile
         new(:zip, query, Array(results))
       else
         new(:name, query, {
-          :city  => base_scope.search(:city_name_starts_with => query).all,
-          :title => base_scope.search(:title_contains => query).all
+          city:  base_scope.search(city_name_start: query).result,
+          title: base_scope.search(title_cont: query).result
         })
       end
     end
@@ -41,7 +41,7 @@ module Bozzuto::Mobile
       if search_type == :zip
         results
       else
-        (results[:city] + results[:title]).uniq
+        results[:city] | results[:title]
       end
     end
 
@@ -66,7 +66,7 @@ module Bozzuto::Mobile
     end
 
     def self.zip_code_search_results_for(zip_codes)
-      base_scope.search(:zip_code_starts_with_any => zip_codes).all.sort_by do |community|
+      base_scope.search(:zip_code_start_any => zip_codes).result.sort_by do |community|
         zip_codes.index ZIP_REGEX.match(community.zip_code.strip)[:zip]
       end
     end

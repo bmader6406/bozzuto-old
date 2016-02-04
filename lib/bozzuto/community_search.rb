@@ -11,7 +11,7 @@ module Bozzuto
     end
 
     def query
-      @query ||= scope.search(criteria)
+      @query ||= scope.search(criteria.prepare)
     end
 
     def location
@@ -63,11 +63,11 @@ module Bozzuto
     end
 
     def matching_results
-      @matching_results ||= query.all(include_features_and_city)
+      @matching_results ||= query.result(include_features_and_city)
     end
 
     def relevant_results
-      @relevant_results ||= scope.search(criteria.adjusted_for_relevancy).all(include_features_and_city)
+      @relevant_results ||= scope.search(criteria.prepare.adjusted_for_relevancy).result(include_features_and_city)
     end
 
     def states_by_result_count
@@ -99,6 +99,13 @@ module Bozzuto
       MAX_RENT_CONDITION          = 'with_max_price'
       RENT_RELEVANCY              = 500
 
+      def prepare
+        reduce(dup) do |formatted_criteria, (condition, value)|
+          formatted_value = value.is_a?(Array) ? [value] : value
+          formatted_criteria.merge!(condition => formatted_value)
+        end
+      end
+
       def locations
         @locations ||= [
           Location.new(City, 'city_id_eq'),
@@ -116,7 +123,7 @@ module Bozzuto
       end
 
       def without_location
-        reject { |k, v| locations.map(&:condition).include? k }
+        keep_if { |k, v| locations.map(&:condition).exclude? k }
       end
 
       def adjusted_for_relevancy
