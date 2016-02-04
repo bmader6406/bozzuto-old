@@ -19,7 +19,7 @@
 
   <p>
     <select name="external_community_id">
-      <%= raw(grouped_options_for_select(@options, nil, 'Please select a community')) %>
+      <%= grouped_options_for_select(@options, nil, prompt: 'Please select a community') %>
     </select>
   </p>
 
