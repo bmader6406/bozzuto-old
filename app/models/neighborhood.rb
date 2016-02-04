@@ -36,6 +36,6 @@ class Neighborhood < ActiveRecord::Base
   end
 
   def tier_for(community)
-    neighborhood_memberships.find_by_apartment_community_id(community.id).try(:tier)
+    neighborhood_memberships.find_by(apartment_community_id: community.id).try(:tier)
   end
 end

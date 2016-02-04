@@ -5,7 +5,7 @@ class StatesController < ApplicationController
   private
 
   def state
-    @state ||= State.find_by_code!(params[:id])
+    @state ||= State.find_by!(code: params[:id])
   end
   helper_method :state
 end

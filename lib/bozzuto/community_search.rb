@@ -84,7 +84,7 @@ module Bozzuto
       attr_accessor :record
 
       def match(params)
-        self.record = model.find_by_id(params[condition])
+        self.record = model.find_by(id: params[condition])
       end
 
       def state

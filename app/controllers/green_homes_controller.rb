@@ -23,9 +23,9 @@ class GreenHomesController < ApplicationController
 
   def find_page
     @page = if typus_user
-      @section.pages.find_by_path('green-homes')
+      @section.pages.find_by(path: 'green-homes')
     else
-      @section.pages.published.find_by_path('green-homes')
+      @section.pages.published.find_by(path: 'green-homes')
     end
 
     render_404 if @page.nil?

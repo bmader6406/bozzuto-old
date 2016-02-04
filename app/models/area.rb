@@ -67,6 +67,6 @@ class Area < ActiveRecord::Base
   end
 
   def tier_for(community)
-    area_memberships.find_by_apartment_community_id(community.id).try(:tier)
+    area_memberships.find_by(apartment_community_id: community.id).try(:tier)
   end
 end

@@ -125,7 +125,7 @@ module ApplicationHelper
   end
 
   def snippet(name)
-    snippet = Snippet.find_by_name(name)
+    snippet = Snippet.find_by(name: name)
     if snippet.present?
       snippet.body.html_safe
     else

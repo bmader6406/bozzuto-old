@@ -5,7 +5,7 @@ class CountiesController < ApplicationController
   before_filter :mobile_only
 
   def index
-    @state = State.find_by_code!(params[:state_id])
+    @state = State.find_by!(code: params[:state_id])
     @counties = @state.counties.ordered_by_name
   end
 

@@ -69,21 +69,20 @@ module Bozzuto::ExternalFeed
 
     def property_amenities
       @property_amenities ||= property_data.property_amenities.to_a.map do |amenity_data|
-        property.property_amenities.find_or_initialize_by_primary_type_and_sub_type_and_description(
-          amenity_data.primary_type,
-          amenity_data.sub_type,
-          amenity_data.description
-        ).tap do |amenity|
-          amenity.attributes = amenity_data.database_attributes
-        end
+        property.property_amenities.find_or_initialize_by(
+          primary_type: amenity_data.primary_type,
+          sub_type:     amenity_data.sub_type,
+          description:  amenity_data.description
+        ).tap { |amenity| amenity.attributes = amenity_data.database_attributes }
       end
     end
 
     def office_hours
       @office_hours ||= property_data.office_hours.map do |office_hour_data|
-        ::OfficeHour.find_or_initialize_by_property_id_and_day(property.id, office_hour_data.day).tap do |office_hour|
-          office_hour.attributes = office_hour_data.database_attributes
-        end
+        ::OfficeHour.find_or_initialize_by(
+          property_id: property.id,
+          day:         office_hour_data.day
+        ).tap { |office_hour| office_hour.attributes = office_hour_data.database_attributes }
       end
     end
 
@@ -96,9 +95,9 @@ module Bozzuto::ExternalFeed
     end
 
     def import_unit(unit_data)
-      plan = ApartmentFloorPlan.find_by_external_cms_id_and_external_cms_type(
-        unit_data.floorplan_external_cms_id,
-        unit_data.external_cms_type
+      plan = ApartmentFloorPlan.find_by(
+        external_cms_id:   unit_data.floorplan_external_cms_id,
+        external_cms_type: unit_data.external_cms_type
       )
 
       return if plan.nil?
@@ -112,15 +111,13 @@ module Bozzuto::ExternalFeed
     def unit_amenities
       @unit_amenities ||= units.flat_map do |unit|
         unit.data.apartment_unit_amenities.to_a.map do |amenity_data|
-          amenity = unit.amenities.find_or_initialize_by_primary_type_and_sub_type_and_description(
-            amenity_data.primary_type,
-            amenity_data.sub_type,
-            amenity_data.description
-          )
-
-          amenity.attributes = amenity_data.database_attributes
-
-          amenity
+          unit.amenities.find_or_initialize_by(
+            primary_type: amenity_data.primary_type,
+            sub_type:     amenity_data.sub_type,
+            description:  amenity_data.description
+          ).tap do |amenity|
+            amenity.attributes = amenity_data.database_attributes
+          end
         end
       end
     end
@@ -137,49 +134,33 @@ module Bozzuto::ExternalFeed
     end
 
     def find_or_initialize_property
-      p = ApartmentCommunity.find_or_initialize_by_external_cms_id_and_external_cms_type(
-        property_data.external_cms_id,
-        property_data.external_cms_type
-      )
-
-      yield(p) if block_given?
-
-      p
+      ApartmentCommunity.find_or_initialize_by(
+        external_cms_id:   property_data.external_cms_id,
+        external_cms_type: property_data.external_cms_type
+      ).tap { |property| yield(property) if block_given? }
     end
 
     def find_or_initialize_floor_plan(data)
-      plan = ApartmentFloorPlan.find_or_initialize_by_external_cms_id_and_external_cms_type(
-        data.external_cms_id,
-        data.external_cms_type
-      )
-
-      yield(plan) if block_given?
-
-      plan
+      ApartmentFloorPlan.find_or_initialize_by(
+        external_cms_id:   data.external_cms_id,
+        external_cms_type: data.external_cms_type
+      ).tap { |plan| yield(plan) if block_given? }
     end
 
     def find_or_initialize_unit(data)
-      unit = ::ApartmentUnit.find_or_initialize_by_external_cms_id_and_external_cms_type_and_floorplan_external_cms_id(
-        data.external_cms_id,
-        data.external_cms_type,
-        data.floorplan_external_cms_id
-      )
-
-      yield(unit) if block_given?
-
-      unit
+      ApartmentUnit.find_or_initialize_by(
+        external_cms_id:           data.external_cms_id,
+        external_cms_type:         data.external_cms_type,
+        floorplan_external_cms_id: data.floorplan_external_cms_id
+      ).tap { |unit| yield(unit) if block_given? }
     end
 
     def find_or_initialize_file(data)
-      file = FeedFile.find_or_initialize_by_external_cms_id_and_external_cms_type_and_source(
-        data.external_cms_id,
-        data.external_cms_type,
-        data.source
-      )
-
-      yield(file) if block_given?
-
-      file
+      FeedFile.find_or_initialize_by(
+        external_cms_id:   data.external_cms_id,
+        external_cms_type: data.external_cms_type,
+        source:            data.source
+      ).tap { |file| yield(file) if block_given? }
     end
 
     def find_floor_plan_group(data)
@@ -187,7 +168,7 @@ module Bozzuto::ExternalFeed
     end
 
     def find_state(state)
-      State.find_by_code(state)
+      State.find_by(code: state)
     end
 
     def find_or_create_city(city_name, state_code)

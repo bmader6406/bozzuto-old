@@ -17,7 +17,7 @@ class Email::RecentlyViewedController < ApplicationController
   end
 
   def thank_you
-    @email = RecurringEmail.find_by_id(flash[:recurring_email_id])
+    @email = RecurringEmail.find_by(id: flash[:recurring_email_id])
 
     render :thank_you, :layout => 'page'
   end

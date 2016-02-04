@@ -12,7 +12,7 @@ class ContactSubmission
   validates :email, :email_format => true
 
   def topic
-    ContactTopic.find_by_id(topic_id) if topic_id
+    ContactTopic.find_by(id: topic_id) if topic_id
   end
 
   def topic=(new_topic)

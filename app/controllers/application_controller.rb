@@ -73,7 +73,7 @@ class ApplicationController < ActionController::Base
   helper_method :apartment_floor_plan_groups
 
   def typus_user
-    @typus_user ||= Typus.user_class.find_by_id(session[:typus_user_id])
+    @typus_user ||= Typus.user_class.find_by(id: session[:typus_user_id])
   end
 
   def detect_mobile_layout

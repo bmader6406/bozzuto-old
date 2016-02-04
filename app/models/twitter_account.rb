@@ -48,11 +48,10 @@ class TwitterAccount < ActiveRecord::Base
   def fetch_latest_tweet
     begin
       client.user_timeline(username).each do |response|
-        tweet = tweets.find_or_initialize_by_tweet_id(
-          response.id.to_s,
-          :text      => response.text,
-          :posted_at => response.created_at
-        )
+        tweet = tweets.find_or_initialize_by(:tweet_id => response.id.to_s).tap do |tweet|
+          tweet.text      = response.text
+          tweet.posted_at = response.created_at
+        end
 
         tweet.save
       end

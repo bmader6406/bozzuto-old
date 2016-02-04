@@ -111,7 +111,7 @@ class Admin::ApartmentCommunitiesController < Admin::MasterController
       flash[:error] = 'You must select an externally-managed community.'
       redirect_to url_for_action(:merge)
     else
-      @external_community = ApartmentCommunity.managed_externally.find_by_id(params[:external_community_id])
+      @external_community = ApartmentCommunity.managed_externally.find_by(id: params[:external_community_id])
 
       if @external_community.nil?
         flash[:error] = "Couldn't find that externally-managed community."

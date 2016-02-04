@@ -14,8 +14,8 @@ class PagesController < ApplicationController
   def find_page
     @page = if params[:page].present?
       typus_user ?
-        @section.pages.find_by_path(current_page_path) :
-        @section.pages.published.find_by_path(current_page_path)
+        @section.pages.find_by(path: current_page_path) :
+        @section.pages.published.find_by(path: current_page_path)
     else
       @section.pages.published.first
     end

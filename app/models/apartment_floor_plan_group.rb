@@ -17,23 +17,23 @@ class ApartmentFloorPlanGroup < ActiveRecord::Base
 
   class << self
     def studio
-      find_by_name 'Studio'
+      find_by name: 'Studio'
     end
 
     def one_bedroom
-      find_by_name '1 Bedroom'
+      find_by name: '1 Bedroom'
     end
 
     def two_bedrooms
-      find_by_name '2 Bedrooms'
+      find_by name: '2 Bedrooms'
     end
 
     def three_bedrooms
-      find_by_name '3 or More Bedrooms'
+      find_by name: '3 or More Bedrooms'
     end
 
     def penthouse
-      find_by_name 'Penthouse'
+      find_by name: 'Penthouse'
     end
   end
   
