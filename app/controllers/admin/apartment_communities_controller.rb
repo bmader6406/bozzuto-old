@@ -50,7 +50,7 @@ class Admin::ApartmentCommunitiesController < Admin::MasterController
       Bozzuto::ExternalFeed::Feed.feed_types.sort.each do |type|
         loader = Bozzuto::ExternalFeed::Loader.loader_for_type(type)
 
-        communities = ApartmentCommunity.all(:conditions => { :external_cms_type => type }, :order => 'title ASC')
+        communities = ApartmentCommunity.where(:external_cms_type => type).order('title ASC')
 
         if communities.any?
           options << [loader.feed_name, communities.map { |c| [c.title, c.id] }]

@@ -42,7 +42,7 @@ module Bozzuto
     end
 
     def section_testimonials
-      @section.aggregate? ? Testimonial.scoped({}) : @section.testimonials
+      @section.aggregate? ? Testimonial.all : @section.testimonials
     end
 
     def section_awards

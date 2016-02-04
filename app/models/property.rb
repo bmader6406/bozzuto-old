@@ -73,8 +73,8 @@ class Property < ActiveRecord::Base
                     :convert_options => { :all => '-quality 80 -strip' }
 
   scope :mappable,         -> { where('latitude IS NOT NULL AND longitude IS NOT NULL') }
-  scope :in_state,         -> (state_id) { where('city_id IN (SELECT id FROM cities WHERE cities.state_id = ?)', state_id) }
   scope :ordered_by_title, -> { order('properties.title ASC') }
+  scope :in_state,         -> (state_id) { joins(:city).where(cities: { state_id: state_id }) }
 
   scope :duplicates, -> {
     joins('INNER JOIN properties AS other ON properties.title SOUNDS LIKE other.title')

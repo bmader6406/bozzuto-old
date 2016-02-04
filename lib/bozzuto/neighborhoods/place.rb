@@ -83,7 +83,7 @@ module Bozzuto
         #:nocov:
           ids = communities.map(&:available_floor_plans).flatten.map(&:id)
 
-          ApartmentFloorPlan.scoped(:conditions => { :id => ids })
+          ApartmentFloorPlan.where(id: ids)
         end
       end
 
