@@ -26,7 +26,7 @@ class ApartmentCommunity < Community
                  :having_all_property_features
 =end
   def self.ransackable_scopes(auth_object = nil)
-    [
+    super + [
       :with_min_price,
       :with_max_price,
       :with_any_floor_plan_groups,
