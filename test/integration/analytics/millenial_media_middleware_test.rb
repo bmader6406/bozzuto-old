@@ -1,7 +1,7 @@
 require 'test_helper'
 
 module Analytics
-  class MillenialMediaMiddlewareTest < ActionController::IntegrationTest
+  class MillenialMediaMiddlewareTest < ActionDispatch::IntegrationTest
     context "A request" do
       context "with the mmurid param present" do
         setup do

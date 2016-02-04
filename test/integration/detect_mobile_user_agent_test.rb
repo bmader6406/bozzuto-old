@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DetectMobileUserAgentTest < ActionController::IntegrationTest
+class DetectMobileUserAgentTest < ActionDispatch::IntegrationTest
   def self.should_set_the_format_to(format)
     should "set the request format to #{format}" do
       assert_equal format.to_sym, @request.format.to_sym

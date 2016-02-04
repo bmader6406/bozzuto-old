@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SslRequirementTest < ActionController::IntegrationTest
+class SslRequirementTest < ActionDispatch::IntegrationTest
   def enable_ssl(klass)
     klass.any_instance.stubs(:ssl_enabled? => true)
   end

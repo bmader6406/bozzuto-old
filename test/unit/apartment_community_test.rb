@@ -25,14 +25,14 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
     should allow_value(false).for:included_in_export
     should_not allow_value(nil).for(:included_in_export)
 
-    describe "updating caches" do
+    context "updating caches" do
       before do
         @community    = ApartmentCommunity.make(:published => true)
         @neighborhood = Neighborhood.make(:apartment_communities => [subject, @community])
         @area         = Area.make(:apartment_communities => [subject, @community])
       end
 
-      describe "after saving" do
+      context "after saving" do
         context "when its published flag is not changed" do
           it "does not update the count on its associated areas and neighborhoods" do
             @area.apartment_communities_count.should == 2
@@ -63,7 +63,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
         end
       end
 
-      describe "after deletion" do
+      context "after deletion" do
         it "updates the count on its associated areas and neighborhoods" do
           @area.apartment_communities_count.should == 2
           @neighborhood.apartment_communities_count.should == 2

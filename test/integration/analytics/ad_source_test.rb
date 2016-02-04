@@ -1,7 +1,7 @@
 require 'test_helper'
 
 module Analytics
-  class AdSourceTest < ActionController::IntegrationTest
+  class AdSourceTest < ActionDispatch::IntegrationTest
     AD_SOURCE_COOKIE = Analytics::AdSource::Middleware::RequestProcessor::AD_SOURCE_COOKIE
 
     def self.should_set_ad_source(value)

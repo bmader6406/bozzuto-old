@@ -20,8 +20,9 @@ end
 
 require 'shoulda'
 require 'shoulda_macros/paperclip'
+require 'paperclip/matchers'
 require 'webmock/minitest'
-require 'mocha'
+require 'mocha/mini_test'
 
 require Rails.root.join('vendor', 'plugins', 'typus', 'lib', 'extensions', 'object')
 require Rails.root.join('test', 'support', 'shared_examples')
@@ -46,6 +47,12 @@ end
 class ActiveSupport::TestCase
   extend SharedExamples
 
+  include RSpec::Matchers
   include Bozzuto::Test::Extensions
   include Bozzuto::Test::ModelExtensions
+end
+
+class ActionController::TestCase
+  include RSpec::Matchers
+  include Bozzuto::Test::ControllerExtensions
 end

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MissingImagesMiddlewareTest < ActionController::IntegrationTest
+class MissingImagesMiddlewareTest < ActionDispatch::IntegrationTest
   def self.should_respond_with(code)
     should "have response code #{code}" do
       assert_equal code, @response.code.to_i

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MobileSiteTest < ActionController::IntegrationTest
+class MobileSiteTest < ActionDispatch::IntegrationTest
   def self.should_have_page_content(content)
     should "page should have content #{content}" do
       @response.body.should =~ /#{content}/

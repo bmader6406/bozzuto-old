@@ -57,4 +57,6 @@ group :test do
   gem 'vcr'
   gem 'simplecov'
   gem 'rspec-expectations'
+  gem 'shoulda-kept-assign-to'
+  gem 'shoulda-kept-respond-with-content-type'
 end
