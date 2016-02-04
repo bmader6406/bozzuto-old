@@ -2,6 +2,7 @@
 .idea
 /config/database.yml
 /config/app_config.yml
+/config/secrets.yml
 /public/assets
 /test/fixtures/*.yml
 /coverage/*
