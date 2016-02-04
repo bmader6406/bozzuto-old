@@ -5,7 +5,6 @@ class Community < Property
 
   acts_as_list :column => 'featured_position'
 
-
   belongs_to :local_info_feed, :class_name => 'Feed'
   belongs_to :promo
   belongs_to :twitter_account
