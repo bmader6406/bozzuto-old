@@ -34,6 +34,8 @@ VCR.configure do |c|
   c.hook_into :webmock
 end
 
+RSpec::Matchers.configuration.syntax = %i(should expect)
+
 class Shoulda::Context::Context
   alias_method :describe, :context
   alias_method :before,   :setup
