@@ -58,7 +58,7 @@ class PhoneNumberHelperTest < ActionView::TestCase
         it "generates a link with the phone number URI" do
           link = link_to_phone_number('1 (234) 567-8900', :class => 'yay') { 'Yay!' }
 
-          link.should == '<a href="tel:+12345678900" class="yay">Yay!</a>'
+          link.should == '<a class="yay" href="tel:+12345678900">Yay!</a>'
         end
       end
 
@@ -66,7 +66,7 @@ class PhoneNumberHelperTest < ActionView::TestCase
         it "generates a link with the phone number URI" do
           link = link_to_phone_number('Yay!', '1 (234) 567-8900', :class => 'yay')
           
-          link.should == '<a href="tel:+12345678900" class="yay">Yay!</a>'
+          link.should == '<a class="yay" href="tel:+12345678900">Yay!</a>'
         end
       end
     end
