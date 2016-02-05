@@ -20,7 +20,7 @@ class LassoHelperTest < ActionView::TestCase
           @lasso.analytics_id = nil
           @lasso.save
 
-          @html = HTML::Document.new(lasso_hidden_fields(@community))
+          @html = Nokogiri::HTML(lasso_hidden_fields(@community))
         end
 
         should 'return the input tags' do
@@ -30,21 +30,20 @@ class LassoHelperTest < ActionView::TestCase
             'ProjectID'          => @lasso.project_id,
             'SignupThankyouLink' => thank_you_home_community_contact_url(@community)
           }.each do |name, value|
-            assert_select @html.root, "input[name=#{name}]", :value => value
+            @html.at("input[@name=#{name}]/@value").try(:value).should == value
           end
         end
 
         should 'not have the analytics fields' do
           ['domainAccountId', 'guid'].each do |name|
-            selector = HTML::Selector.new("input[name=#{name}]")
-            assert selector.select(@html.root).empty?
+            @html.at("input[@name=#{name}]/@value").try(:value).should eq nil
           end
         end
       end
 
       context 'when analytics_id is present' do
         setup do
-          @html = HTML::Document.new(lasso_hidden_fields(@community))
+          @html = Nokogiri::HTML(lasso_hidden_fields(@community))
         end
 
         should 'return the input tags' do
@@ -54,9 +53,9 @@ class LassoHelperTest < ActionView::TestCase
             'ProjectID'          => @lasso.project_id,
             'SignupThankyouLink' => thank_you_home_community_contact_url(@community),
             'domainAccountId'    => @lasso.analytics_id,
-            'guid'               => ''
+            'guid'               => nil
           }.each do |name, value|
-            assert_select @html.root, "input[name=#{name}]", :value => value
+            @html.at("input[@name=#{name}]/@value").try(:value).should == value
           end
         end
       end
@@ -65,11 +64,11 @@ class LassoHelperTest < ActionView::TestCase
     describe "#secondary_lead_source" do
       setup do
         @community.update_attributes(:secondary_lead_source_id => '12345')
-        @html = HTML::Document.new(secondary_lead_source(@community))
+        @html = Nokogiri::HTML(secondary_lead_source(@community))
       end
 
       it "returns a hidden input tag with the appropriate information" do
-        assert_select @html.root, "input[name=12345]", :value => 'www.bozzuto.com'
+        @html.at("input[@name='12345']/@value").try(:value).should == 'www.bozzuto.com'
       end
     end
 

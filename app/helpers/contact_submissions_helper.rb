@@ -15,7 +15,7 @@ module ContactSubmissionsHelper
 
   def contact_path_with_topic
     topic = if @section.try(:service?)
-      @section.cached_slug.gsub(/-/, '_')
+      @section.slug.gsub(/-/, '_')
     else
       'general_inquiry'
     end

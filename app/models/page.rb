@@ -3,7 +3,7 @@ class Page < ActiveRecord::Base
   include Bozzuto::Publishable
   extend FriendlyId
   
-  #acts_as_archive :indexes => [:id, :cached_slug]
+  #acts_as_archive :indexes => [:id, :slug]
   #class Archive < ActiveRecord::Base
   #  def section_title
   #    ::Section.find(self.section_id).title

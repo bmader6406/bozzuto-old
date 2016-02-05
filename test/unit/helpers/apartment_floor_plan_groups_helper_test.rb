@@ -4,24 +4,20 @@ class ApartmentFloorPlanGroupsHelperTest < ActionView::TestCase
   include ApartmentFloorPlansHelper
 
   context "ApartmentFloorPlanGroupsHelper" do
+    before { create_floor_plan_groups }
+
     describe "#render_floor_plan_group_mobile_listings" do
       before do
         @community = ApartmentCommunity.make
-        ApartmentFloorPlan.make(:apartment_community => @community)
+        @plan      = ApartmentFloorPlan.make(:apartment_community => @community)
+        @group     = @plan.floor_plan_group
       end
 
       it "renders the partial with the correct options" do
-        floor_plan_presenter(@community).groups.each do |group|
-          expects(:render).with({
-            :partial => 'apartment_floor_plan_groups/listing',
-            :locals  => {
-              :community => @community,
-              :group     => group,
-            }
-          })
-        end
+        html = render_floor_plan_group_mobile_listings(@community)
+        path = apartment_community_floor_plan_group_layouts_path(@community, @group)
 
-        render_floor_plan_group_mobile_listings(@community)
+        html.should include(path)
       end
     end
 
@@ -36,9 +32,9 @@ class ApartmentFloorPlanGroupsHelperTest < ActionView::TestCase
         end
 
         it "returns the base availability url" do
-          link = HTML::Document.new(floor_plan_group_link(@community, @group, 2))
+          html = Nokogiri::HTML(floor_plan_group_link(@community, @group, 2))
 
-          assert_select link.root, 'a', :href => @community.availability_url
+          html.at('a').attributes['href'].try(:value).should == @community.availability_url
         end
       end
 
@@ -49,9 +45,9 @@ class ApartmentFloorPlanGroupsHelperTest < ActionView::TestCase
         end
 
         it "returns the availability url with beds param" do
-          link = HTML::Document.new(floor_plan_group_link(@community, @group, @beds))
+          html = Nokogiri::HTML(floor_plan_group_link(@community, @group, @beds))
 
-          assert_select link.root, 'a', :href => "#{@community.availability_url}?beds=#{@beds}"
+          html.at('a').attributes['href'].try(:value).should == "#{@community.availability_url}?beds=#{@beds}"
         end
       end
     end

@@ -34,7 +34,7 @@ class PropertiesHelperTest < ActionView::TestCase
     context '#brochure_link' do
       setup do
         @link_text = 'Click me'
-        @property = Property.new :brochure_link_text => @link_text
+        @property = Property.make(:brochure_link_text => @link_text)
       end
 
       context 'when the property has no brochure_link_text' do
@@ -50,13 +50,13 @@ class PropertiesHelperTest < ActionView::TestCase
         end
 
         should 'return a link with the brochure url' do
-          link = HTML::Document.new(brochure_link(@property))
-          assert_select link.root, 'a',
-            :href       => @url,
-            :class      => 'fl-record-click',
-            'data-cat'  => 'digit734',
-            'data-prop' => @property.title,
-            :text       => @link_text
+          html = Nokogiri::HTML(brochure_link(@property))
+          link = html.at('a.fl-record-click')
+
+          link.attributes['href'].value.should      == @url
+          link.attributes['data-cat'].value.should  == 'digit734'
+          link.attributes['data-prop'].value.should == @property.title
+          link.text.should == @link_text
         end
       end
 
@@ -64,18 +64,17 @@ class PropertiesHelperTest < ActionView::TestCase
         setup do
           @file = 'http://viget.com/file.jpg'
           @property.brochure_type = Property::USE_BROCHURE_FILE
-          @property.brochure = mock()
           @property.brochure.expects(:url).returns(@file)
         end
 
         should 'return a link with the brochure file url' do
-          link = HTML::Document.new(brochure_link(@property))
-          assert_select link.root, 'a',
-            :href       => @file,
-            :class      => 'fl-record-click',
-            'data-cat'  => 'digit734',
-            'data-prop' => @property.title,
-            :text       => @link_text
+          html = Nokogiri::HTML(brochure_link(@property))
+          link = html.at('a.fl-record-click')
+
+          link.attributes['href'].value.should      == @file
+          link.attributes['data-cat'].value.should  == 'digit734'
+          link.attributes['data-prop'].value.should == @property.title
+          link.text.should == @link_text
         end
       end
     end
@@ -88,14 +87,10 @@ class PropertiesHelperTest < ActionView::TestCase
         end
 
         should "emit icons for the community's features" do
-          icons = HTML::Document.new(property_icons(@community))
-
-          assert_select icons.root, "ul.community-icons"
+          html = Nokogiri::HTML(property_icons(@community))
 
           @community.property_features.each do |feature|
-            assert_select icons.root, "a",
-              :href => "##{dom_id(feature)}",
-              :text => feature.name
+            html.at("a[@href='##{dom_id(feature)}']").text.should == feature.name
           end
         end
       end
@@ -112,10 +107,12 @@ class PropertiesHelperTest < ActionView::TestCase
       end
 
       should "emit icons for true flags on the community" do
-        bullets = HTML::Document.new(property_bullets)
-        assert_select bullets.root, 'li', :count => 2
-        assert_select bullets.root, 'li', :text => @bullet_1
-        assert_select bullets.root, 'li', :text => @bullet_2
+        html    = Nokogiri::HTML(property_bullets)
+        bullets = html.xpath('//li')
+
+        bullets.size.should       == 2
+        bullets.first.text.should == @bullet_1
+        bullets.last.text.should  == @bullet_2
       end
     end
   end

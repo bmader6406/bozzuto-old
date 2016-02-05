@@ -13,15 +13,15 @@
   <div class="content">
     <%= @page.mobile_body.try(:html_safe) %>
 
-    <% if @section.cached_slug == 'apartments' && @page.first? %>
+    <% if @section.slug == 'apartments' && @page.first? %>
       <%= link_to 'Find an Apartment', metros_path, :class => 'btn submit find-an-apartment' %>
     <% end %>
 
-    <% if @section.cached_slug == 'new-homes' && @page.first? %>
+    <% if @section.slug == 'new-homes' && @page.first? %>
       <%= link_to 'Buy a Home', home_neighborhoods_path, :class => 'btn submit buy-a-home' %>
     <% end %>
 
-    <% if @section.cached_slug == 'services' && @page.first? %>
+    <% if @section.slug == 'services' && @page.first? %>
       <%= link_to 'Featured Projects', featured_projects_path, :class => 'btn submit featured-projects' %>
     <% end %>
   </div>
@@ -36,19 +36,19 @@
 <% end %>
 
 
-<% if @section.cached_slug == 'services' && @page.first? %>
+<% if @section.slug == 'services' && @page.first? %>
   <%= render 'services_nav' %>
 <% end %>
 
-<% if @section.cached_slug == 'apartments' && @page.first? %>
+<% if @section.slug == 'apartments' && @page.first? %>
   <%= render 'apartments_secondary_nav' %>
 <% end %>
 
-<% if @section.cached_slug == 'new-homes' && @page.first? %>
+<% if @section.slug == 'new-homes' && @page.first? %>
   <%= render 'homes_secondary_nav' %>
 <% end %>
 
-<% if @section.cached_slug == 'careers' && @page.first? %>
+<% if @section.slug == 'careers' && @page.first? %>
   <%= render 'pages/careers_secondary_nav' %>
 <% end %>
 

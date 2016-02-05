@@ -9,14 +9,14 @@
   <% categories_with_projects.in_groups(2, false).each do |categories| %>
     <ul class="col">
       <% categories.each do |category| %>
-        <li><%= link_to category.title, :anchor => category.cached_slug %></li>
+        <li><%= link_to category.title, :anchor => category.slug %></li>
       <% end %>
     </ul>
   <% end %>
 </div>
 
 <% categories_with_projects.each do |category| %>
-  <div id="<%= category.cached_slug %>">
+  <div id="<%= category.slug %>">
     <h2><%= category.title %></h2>
 
     <ul class="projects-listing">

@@ -39,16 +39,11 @@ class SectionContentHelperTest < ActionView::TestCase
       end
 
       should 'return a tree of unordered lists' do
-        list = HTML::Document.new(pages_tree(@section.pages))
+        html = Nokogiri::HTML(pages_tree(@section.pages))
 
-        assert_select list.root, '> li > a',
-          :href => page_path(@section, @page1)
-
-        assert_select list.root, '> li > ul > li > a',
-          :href => page_path(@section, @page2)
-
-        assert_select list.root, 'li ul li ul li a',
-          :href => page_path(@section, @page3)
+        html.at('//li//a').attributes['href'].value.should == page_path(@section, @page1)
+        html.at('//li//ul//li//a').attributes['href'].value.should == page_path(@section, @page2)
+        html.at('//li//ul//li//ul//li//a').attributes['href'].value.should == page_path(@section, @page3)
       end
     end
   end

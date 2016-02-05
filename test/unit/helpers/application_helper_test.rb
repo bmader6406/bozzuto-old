@@ -109,9 +109,10 @@ class ApplicationHelperTest < ActionView::TestCase
       end
       
       it "returns the marked up date and time" do
-        html = HTML::Document.new(month_and_day(@date))
-        assert_select html.root, "span.month", "#{@date.strftime('%m')}."
-        assert_select html.root, "span.day", "#{@date.strftime('%d')}."
+        html = Nokogiri::HTML(month_and_day(@date))
+
+        html.at('span.month').content.should == @date.strftime('%m') + '.'
+        html.at('span.day').content.should   == @date.strftime('%d') + '.'
       end
 
       it "marks the return value HTML safe" do
@@ -142,19 +143,19 @@ class ApplicationHelperTest < ActionView::TestCase
 
     describe "#share_this_link" do
       it "outputs p.sharethis and javascript code" do
-        sharethis = HTML::Document.new(share_this_link)
+        html = Nokogiri::HTML(share_this_link)
 
-        assert_select sharethis.root, 'p.sharethis'
-        assert_select sharethis.root, 'script'
+        html.at('p.sharethis').should be_present
+        html.at('script').should be_present
       end
     end
 
     describe "#facebook_like_link" do
       it "outputs div.facebook-like and iframe" do
-        facebook = HTML::Document.new(facebook_like_link('http://viget.com'))
+        html = Nokogiri::HTML(facebook_like_link('http://viget.com'))
 
-        assert_select facebook.root, 'div.facebook-like'
-        assert_select facebook.root, 'iframe'
+        html.at('div.facebook-like').should be_present
+        html.at('iframe').should be_present
       end
     end
 
