@@ -11,10 +11,10 @@ class PinterestHelperTest < ActionView::TestCase
     should "return the button html" do
       button = pinterest_button(@url, @image, @description)
 
-      assert_match /<span class="pinterest-button">.*<\/span>/m, button
-      assert_match /url=#{url_encode(@url)}/, button
-      assert_match /media=#{url_encode(@image)}/, button
-      assert_match /description=#{url_encode(@description)}/, button
+      button.should include(URI::encode(@url))
+      button.should include('<span class="pinterest-button">')
+      button.should include(URI::encode(@image))
+      button.should include(URI::encode(@description))
     end
   end
 end
