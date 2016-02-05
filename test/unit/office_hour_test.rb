@@ -28,10 +28,10 @@ class OfficeHourTest < ActiveSupport::TestCase
     OfficeHour::MERIDIAN_INDICATORS.each do |indicator|
       should allow_value(indicator).for(:opens_at_period)
       should allow_value(indicator).for(:closes_at_period)
-
-      should_not allow_value(indicator.first).for(:opens_at_period)
-      should_not allow_value(indicator.last).for(:closes_at_period)
     end
+
+    should_not allow_value('a.m.').for(:opens_at_period)
+    should_not allow_value('P.M.').for(:closes_at_period)
 
     context "when closed" do
       before do
