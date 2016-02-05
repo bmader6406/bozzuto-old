@@ -148,7 +148,7 @@ module Bozzuto::ExternalFeed
     end
 
     def find_or_initialize_unit(data)
-      ApartmentUnit.find_or_initialize_by(
+      ::ApartmentUnit.find_or_initialize_by(
         external_cms_id:           data.external_cms_id,
         external_cms_type:         data.external_cms_type,
         floorplan_external_cms_id: data.floorplan_external_cms_id
