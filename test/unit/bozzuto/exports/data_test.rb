@@ -171,7 +171,7 @@ module Bozzuto::Exports
         end
 
         it "contains the appropriate slides" do
-          @test_community.slides.first.image_url.should =~ %r{http://bozzuto\.com/system/property_slides/#{@slide.id}/slide\.jpg}
+          @test_community.slides.first.image_url.should match(%r{http://bozzuto\.com/system/property_slides/#{@slide.id}/slide\.jpg})
         end
 
         it "contains the appropriate features" do
@@ -184,7 +184,7 @@ module Bozzuto::Exports
         end
 
         it "contains the listing image" do
-          @test_community.listing_image.should =~ %r{http://bozzuto\.com/system/apartment_communities/\d+/square\.jpg}
+          @test_community.listing_image.should match(%r{http://bozzuto\.com/system/apartment_communities/\d+/square\.jpg})
         end
 
         it "contains video link" do
@@ -196,7 +196,7 @@ module Bozzuto::Exports
         end
 
         it "contains office hours" do
-          @test_community.office_hours.should =~ @office_hours
+          @test_community.office_hours.should match_array(@office_hours)
         end
 
         it "contains overview text" do
@@ -331,7 +331,7 @@ module Bozzuto::Exports
           end
 
           it "contains image url" do
-            @test_plan.image_url.should =~ %r{http://bozzuto\.com/system/apartment_floor_plans/\d+/original\.jpg}
+            @test_plan.image_url.should match(%r{http://bozzuto\.com/system/apartment_floor_plans/\d+/original\.jpg})
           end
 
           it "contains number of bedrooms" do
