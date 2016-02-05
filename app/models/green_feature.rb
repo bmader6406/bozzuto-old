@@ -17,6 +17,7 @@ class GreenFeature < ActiveRecord::Base
 
   validates_attachment_presence :photo
 
+  do_not_validate_attachment_file_type :photo
 
   def to_s
     title

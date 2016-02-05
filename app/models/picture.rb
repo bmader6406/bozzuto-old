@@ -22,6 +22,8 @@ class Picture < Asset
 
   validates_attachment_size :data, :less_than=>2.megabytes
 
+  do_not_validate_attachment_file_type :data
+
   def url_content
     url(:content)
   end

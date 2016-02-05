@@ -15,6 +15,8 @@ class HomeFloorPlan < ActiveRecord::Base
 
   validates_attachment_presence :image
 
+  do_not_validate_attachment_file_type :image
+
   def actual_image
     image.url
   end

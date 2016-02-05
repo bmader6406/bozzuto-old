@@ -14,6 +14,8 @@ class MiniSlide < ActiveRecord::Base
 
   validates_attachment_presence :image
 
+  do_not_validate_attachment_file_type :image
+
   def typus_name
     "#{mini_slideshow.title} - Slide ##{position}"
   end

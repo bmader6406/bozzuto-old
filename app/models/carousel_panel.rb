@@ -11,6 +11,8 @@ class CarouselPanel < ActiveRecord::Base
 
   validates_attachment_presence :image
 
+  do_not_validate_attachment_file_type :image
+
   validates_presence_of :carousel
   validates_presence_of :link_url
   validates_presence_of :heading, :if => proc { |panel| panel.caption.present? }

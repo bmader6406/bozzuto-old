@@ -10,7 +10,9 @@ class BodySlide < ActiveRecord::Base
     :default_style => :resized,
     :convert_options => { :all => '-quality 80 -strip' }
 
-  validates_attachment_presence :image
+  do_not_validate_attachment_file_type :image
+
+  validates :image, attachment_presence: true
 
   def typus_name
     slideshow_name = "#{body_slideshow.name} - " if body_slideshow.present?

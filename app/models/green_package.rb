@@ -36,6 +36,9 @@ class GreenPackage < ActiveRecord::Base
 
   validates_attachment_presence :photo
 
+  do_not_validate_attachment_file_type :photo
+  do_not_validate_attachment_file_type :graph
+
   delegate :title, :to => :home_community, :prefix => :home_community
 
   alias_method :typus_name, :home_community_title

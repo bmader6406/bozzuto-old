@@ -19,5 +19,7 @@ class BozzutoBlogPost < ActiveRecord::Base
     :with    => /\Ahttps?:\/\//,
     :message => 'is not a valid URL. Be sure to include http:// at the beginning'
 
+  do_not_validate_attachment_file_type :image
+
   validates_attachment_presence :image
 end

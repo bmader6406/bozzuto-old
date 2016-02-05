@@ -27,9 +27,11 @@ class CareersEntry < ActiveRecord::Base
                     :default_style   => :resized,
                     :convert_options => { :all => '-quality 80 -strip' }
 
-
   validates_attachment_presence :main_photo
   validates_attachment_presence :headshot
+
+  do_not_validate_attachment_file_type :main_photo
+  do_not_validate_attachment_file_type :headshot
 
   def typus_name
     name
