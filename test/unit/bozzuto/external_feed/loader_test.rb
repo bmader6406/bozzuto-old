@@ -182,7 +182,8 @@ module Bozzuto::ExternalFeed
 
         context "raises an exception" do
           before do
-            subject.expects(:can_load?).returns(true)
+            subject.stubs(:can_load?).returns(true)
+            subject.feed.stubs(:process).raises(StandardError)
           end
 
           it "correctly manages the tmp files" do
@@ -192,7 +193,7 @@ module Bozzuto::ExternalFeed
 
             expect {
               subject.load!.should == false
-            }.to raise_error(Exception)
+            }.to raise_error(StandardError)
           end
         end
 
