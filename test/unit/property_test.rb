@@ -266,7 +266,7 @@ class PropertyTest < ActiveSupport::TestCase
       subject { Property.new(:title => "Batman's Batcave") }
 
       it "returns the title with HTML entities" do
-        subject.as_jmapping[:name].should == 'Batman&#39;s Batcave'
+        subject.as_jmapping[:name].should == Rack::Utils.escape_html("Batman's Batcave")
       end
     end
 
