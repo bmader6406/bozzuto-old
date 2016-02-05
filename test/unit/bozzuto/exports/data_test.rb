@@ -236,7 +236,7 @@ module Bozzuto::Exports
           @promo.expiration_date.to_s.should == @expiration_date.to_s
         end
 
-        it "contains the appropriate features" do
+        it "contains the appropriate property features" do
           @test_community.property_features.first.name.should == 'Feature Uno'
           @test_community.property_features.last.name.should  == 'Feature Due'
         end
