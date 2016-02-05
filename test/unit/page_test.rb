@@ -109,8 +109,8 @@ class PageTest < ActiveSupport::TestCase
       end
 
       it "returns the path" do
-        @page1.to_param.should == @page1.cached_slug
-        @page2.to_param.should == "#{@page1.cached_slug}/#{@page2.cached_slug}"
+        @page1.to_param.should == @page1.slug
+        @page2.to_param.should == "#{@page1.slug}/#{@page2.slug}"
       end
     end
 
@@ -124,7 +124,7 @@ class PageTest < ActiveSupport::TestCase
       end
 
       it "automatically updates the path" do
-        @page2.path.should == [@page1.cached_slug, @page2.cached_slug].join('/')
+        @page2.path.should == [@page1.slug, @page2.slug].join('/')
       end
     end
     
