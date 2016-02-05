@@ -271,6 +271,7 @@ GreenPackage.blueprint do
   photo_content_type { 'text/jpg' }
   home_community     { HomeCommunity.make }
   ten_year_old_cost  { rand(3000) + 500 }
+  disclaimer         { 'Such package.  So green.' }
 end
 
 GreenPackageItem.blueprint do
