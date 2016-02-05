@@ -32,10 +32,10 @@ class RecurringEmail < ActiveRecord::Base
 
   def send!
     if recurring?
-      CommunityListingMailer.search_results_listings(self).deliver
+      CommunityListingMailer.search_results_listings(self).deliver_now
       update_attribute(:last_sent_at, Time.now)
     else
-      CommunityListingMailer.recently_viewed_listings(self).deliver
+      CommunityListingMailer.recently_viewed_listings(self).deliver_now
       update_attribute(:state, 'completed')
     end
   end

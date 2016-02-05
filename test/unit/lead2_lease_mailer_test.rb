@@ -10,7 +10,7 @@ class Lead2LeaseMailerTest < ActionMailer::TestCase
     describe "#contact_form_submission" do
       before do
         expect {
-          @email = Lead2LeaseMailer.submission(@community, @lead).deliver
+          @email = Lead2LeaseMailer.submission(@community, @lead).deliver_now
         }.to change { ActionMailer::Base.deliveries.count }.by(1)
       end
 

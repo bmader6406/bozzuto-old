@@ -10,7 +10,7 @@ class CommunityListingMailerTest < ActionMailer::TestCase
             @community = klass.make
 
             expect {
-              @email = CommunityListingMailer.single_listing(@to, @community).deliver
+              @email = CommunityListingMailer.single_listing(@to, @community).deliver_now
             }.to change { ActionMailer::Base.deliveries.count }.by(1)
           end
 
@@ -45,7 +45,7 @@ class CommunityListingMailerTest < ActionMailer::TestCase
         @recurring_email = RecurringEmail.make :property_ids => [@property_1.id, @property_2.id]
 
         expect {
-          @email = CommunityListingMailer.recently_viewed_listings(@recurring_email).deliver
+          @email = CommunityListingMailer.recently_viewed_listings(@recurring_email).deliver_now
         }.to change { ActionMailer::Base.deliveries.count }.by(1)
       end
 
@@ -83,7 +83,7 @@ class CommunityListingMailerTest < ActionMailer::TestCase
         @recurring_email = RecurringEmail.make(:recurring, :property_ids => [@property_1.id, @property_2.id])
 
         expect {
-          @email = CommunityListingMailer.search_results_listings(@recurring_email).deliver
+          @email = CommunityListingMailer.search_results_listings(@recurring_email).deliver_now
         }.to change { ActionMailer::Base.deliveries.count }.by(1)
       end
 

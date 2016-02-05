@@ -5,7 +5,7 @@ class CommunityListingEmailsController < ApplicationController
 
   def create
     if params[:email].present?
-      CommunityListingMailer.single_listing(params[:email], @community).deliver
+      CommunityListingMailer.single_listing(params[:email], @community).deliver_now
 
       save_buzz if params[:newsletter]
 

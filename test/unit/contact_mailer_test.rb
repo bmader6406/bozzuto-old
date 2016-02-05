@@ -9,7 +9,7 @@ class ContactMailerTest < ActionMailer::TestCase
     describe "#contact_form_submission" do
       before do
         expect {
-          @email = ContactMailer.contact_form_submission(@submission).deliver
+          @email = ContactMailer.contact_form_submission(@submission).deliver_now
         }.to change { ActionMailer::Base.deliveries.count }.by(1)
       end
 
