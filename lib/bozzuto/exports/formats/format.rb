@@ -32,9 +32,7 @@ module Bozzuto::Exports
       end
 
       def builder
-        @builder ||= Builder::XmlMarkup.new(:indent => 2).tap do |builder|
-          builder.instruct! :xml, :version => '1.0', :encoding => 'UTF-8'
-        end
+        @builder ||= Builder::XmlMarkup.new(:indent => 2)
       end
 
       def communities
