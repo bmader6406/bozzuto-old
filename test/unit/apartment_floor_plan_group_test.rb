@@ -11,14 +11,14 @@ class ApartmentFloorPlanGroupTest < ActiveSupport::TestCase
     should validate_presence_of(:name)
 
     describe "named scopes" do
-      context ":except" do
+      context ":except_group" do
         before do
           @all    = ApartmentFloorPlanGroup.all
           @studio = ApartmentFloorPlanGroup.studio
         end
 
         it "returns all except the parameter" do
-          ApartmentFloorPlanGroup.except(@studio).should == @all - [@studio]
+          ApartmentFloorPlanGroup.except_group(@studio).should == @all - [@studio]
         end
       end
     end
