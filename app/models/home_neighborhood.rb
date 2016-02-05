@@ -31,8 +31,6 @@ class HomeNeighborhood < ActiveRecord::Base
   scope :positioned,       -> { order("home_neighborhoods.position ASC") }
   scope :ordered_by_count, -> { order("home_neighborhoods.home_communities_count DESC, home_neighborhoods.name ASC") }
 
-  after_save :update_home_communities_count
-
   def to_s
     name
   end
@@ -63,9 +61,7 @@ class HomeNeighborhood < ActiveRecord::Base
     }
   end
 
-  def update_home_communities_count
-    self.home_communities_count = communities(true).count
-
-    update_column(:home_communities_count, communities(true).count)
+  def home_communities_count
+    communities.count
   end
 end

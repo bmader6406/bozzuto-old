@@ -8,9 +8,6 @@ class HomeCommunity < Community
 
   has_neighborhood_listing_image :neighborhood_listing_image, :required => false
 
-  after_save    :trigger_published_community_recount, :if => :published_changed?
-  after_destroy :trigger_published_community_recount
-
   has_many :homes
 
   has_many :featured_homes, -> { where(featured: true) },
@@ -53,12 +50,5 @@ class HomeCommunity < Community
 
   def first_home_neighborhood
     home_neighborhoods.first
-  end
-
-
-  private
-
-  def trigger_published_community_recount
-    home_neighborhood_memberships.each(&:update_home_communities_count)
   end
 end

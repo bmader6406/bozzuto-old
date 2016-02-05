@@ -158,15 +158,7 @@ class ApartmentCommunity < Community
   end
 
   def update_caches
-    update_neighborhoods_counts
     invalidate_apartment_floor_plan_cache!
-
-    true
-  end
-
-  def update_neighborhoods_counts
-    area_memberships(true).each(&:update_apartment_communities_count)
-    neighborhood_memberships(true).each(&:update_apartment_communities_count)
 
     true
   end

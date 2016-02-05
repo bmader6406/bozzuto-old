@@ -45,7 +45,7 @@ module Bozzuto
           </p>
         }
 
-        @community = ApartmentCommunity.make({
+        @community = ApartmentCommunity.make(
           :core_id                 => 123,
           :title                   => 'Dolans Hood',
           :street_address          => '100 Gooby Pls',
@@ -68,7 +68,7 @@ module Bozzuto
           :local_info_feed         => local_info_feed,
           :promo_id                => promo.id,
           :listing_image_file_name => 'test.jpg'
-        })
+        )
 
         @office_hours = [
           OfficeHour.make(

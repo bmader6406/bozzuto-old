@@ -19,15 +19,10 @@ module Bozzuto
 
           validates_inclusion_of :tier, :in => [1, 2, 3, 4]
 
-          after_save :update_apartment_communities_count
-          after_destroy :update_apartment_communities_count
-
           after_save :invalidate_apartment_floor_plan_cache!
           after_destroy :invalidate_apartment_floor_plan_cache!
 
-          delegate :invalidate_apartment_floor_plan_cache!,
-                   :update_apartment_communities_count,
-                   :to => place_name
+          delegate :invalidate_apartment_floor_plan_cache!, :to => place_name
         end
       end
     end

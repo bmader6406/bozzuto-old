@@ -17,9 +17,6 @@ module Bozzuto
           scope :positioned,       -> { order("#{table_name}.position ASC") }
           scope :ordered_by_count, -> { order("#{table_name}.apartment_communities_count DESC, #{table_name}.name ASC") }
 
-          after_save :update_apartment_communities_count
-          after_destroy :update_apartment_communities_count
-
           after_save :invalidate_apartment_floor_plan_cache!
           after_destroy :invalidate_apartment_floor_plan_cache!
 
@@ -71,6 +68,10 @@ module Bozzuto
         end
       end
 
+      def apartment_communities_count
+        communities.count
+      end
+
       def has_communities?
         communities.any?
       end
@@ -109,22 +110,6 @@ module Bozzuto
         super if !destroyed?
 
         parent.try(:invalidate_apartment_floor_plan_cache!)
-      end
-
-      def update_apartment_communities_count
-        if !destroyed?
-          self.apartment_communities_count = calculate_apartment_communities_count
-
-          send(:update_without_callbacks)
-        end
-
-        parent.try(:update_apartment_communities_count)
-      end
-
-      protected
-
-      def calculate_apartment_communities_count
-        communities(true).count
       end
     end
   end

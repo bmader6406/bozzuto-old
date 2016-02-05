@@ -20,6 +20,7 @@ class ApartmentFloorPlanCache < ActiveRecord::Base
                             :greater_than_or_equal_to => 0,
                             :integer_only             => true
 
+
   def min_rent
     min_price
   end
