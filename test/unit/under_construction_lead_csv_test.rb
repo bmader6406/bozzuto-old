@@ -25,28 +25,31 @@ module Bozzuto
       describe "#record_lookup_options" do
         context "when initialized with conditions" do
           it "returns an options hash with the given conditions" do
-            subject = UnderConstructionLeadCsv.new(:conditions => 'test')
-            options = { :conditions => 'test', :batch_size => 1000 }
+            options = { :conditions => { test: 'test' } }
+            subject = UnderConstructionLeadCsv.new(options)
 
-            assert_equal subject.record_lookup_options, options
+            subject.record_lookup_options.should == { batch_size: 1000 }
+            subject.conditions.should == { test: 'test' }
           end
         end
 
         context "when initialized with a batch size" do
           it "returns an options hash with the given batch size" do
-            subject = UnderConstructionLeadCsv.new(:batch_size => 100)
-            options = { :conditions => nil, :batch_size => 100 }
+            options = { :batch_size => 100 }
+            subject = UnderConstructionLeadCsv.new(options)
 
-            assert_equal subject.record_lookup_options, options
+            subject.record_lookup_options.should == { batch_size: 100 }
+            subject.conditions.should == {}
           end
         end
 
         context "when intialized without any custom options" do
           it "returns the default options hash" do
-            subject = UnderConstructionLeadCsv.new
             options = { :conditions => nil, :batch_size => 1000 }
+            subject = UnderConstructionLeadCsv.new
 
-            assert_equal subject.record_lookup_options, options
+            subject.record_lookup_options.should == { batch_size: 1000 }
+            subject.conditions.should == {}
           end
         end
       end
@@ -56,7 +59,7 @@ module Bozzuto
           it "returns the given filename" do
             subject = UnderConstructionLeadCsv.new(:filename => 'test.csv')
 
-            assert_equal subject.filename, 'test.csv'
+            subject.filename.should == 'test.csv'
           end
         end
 
@@ -66,7 +69,7 @@ module Bozzuto
             subject = UnderConstructionLeadCsv.new
             subject.stubs(:timestamp).returns(time)
 
-            assert_equal subject.filename, "#{Rails.root}/tmp/export-under_construction_leads-#{time}.csv"
+            subject.filename.should == "#{Rails.root}/tmp/export-under_construction_leads-#{time}.csv"
           end
         end
       end
@@ -75,7 +78,7 @@ module Bozzuto
         it "returns all the under construction leads as a csv in string format" do
           subject = UnderConstructionLeadCsv.new
 
-          assert_equal subject.string, csv
+          subject.string.should == csv
         end
       end
 
@@ -91,8 +94,8 @@ module Bozzuto
         it "returns the file path for a csv file with all the under construction leads" do
           file = @subject.file
 
-          assert File.size(file) > 0
-          assert_equal subject.filename, file
+          File.size(file).should > 0
+          subject.filename.should == file
         end
       end
     end
