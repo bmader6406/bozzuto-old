@@ -26,19 +26,10 @@ module Bozzuto
       end
 
       describe "#record_lookup_options" do
-        context "when initialized with conditions" do
-          it "returns an options hash with the given conditions" do
-            subject = BuzzCsv.new(:conditions => 'test')
-            options = { :conditions => 'test', :batch_size => 1000 }
-
-            assert_equal subject.record_lookup_options, options
-          end
-        end
-
         context "when initialized with a batch size" do
           it "returns an options hash with the given batch size" do
             subject = BuzzCsv.new(:batch_size => 100)
-            options = { :conditions => nil, :batch_size => 100 }
+            options = { :batch_size => 100 }
 
             assert_equal subject.record_lookup_options, options
           end
@@ -47,7 +38,7 @@ module Bozzuto
         context "when intialized without any custom options" do
           it "returns the default options hash" do
             subject = BuzzCsv.new
-            options = { :conditions => nil, :batch_size => 1000 }
+            options = { :batch_size => 1000 }
 
             assert_equal subject.record_lookup_options, options
           end

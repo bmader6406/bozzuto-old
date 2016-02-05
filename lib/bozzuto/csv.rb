@@ -11,11 +11,11 @@ module Bozzuto
     end
 
     def record_lookup_options
-      { :conditions => conditions, :batch_size => batch_size }
+      { :batch_size => batch_size }
     end
 
     def conditions
-      options[:conditions]
+      options.fetch(:conditions, {})
     end
 
     def batch_size
@@ -59,7 +59,7 @@ module Bozzuto
       lambda do |csv|
         csv << field_names
 
-        klass.find_in_batches(record_lookup_options) do |records|
+        klass.where(conditions).find_in_batches(record_lookup_options) do |records|
           records.each do |record|
             csv << attr_readers.map do |reader|
               value = if reader.respond_to?(:call)
