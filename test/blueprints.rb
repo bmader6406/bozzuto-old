@@ -609,7 +609,7 @@ end
 Tweet.blueprint do
   text      { Faker::Lorem.sentence }
   posted_at { Time.now }
-  tweet_id  { ActiveSupport::SecureRandom.hex }
+  tweet_id  { SecureRandom.hex }
   twitter_account
 end
 
