@@ -176,7 +176,7 @@ module Bozzuto::ExternalFeed
 
       return unless state.present?
 
-      state.cities.find_or_create_by_name(city_name)
+      state.cities.find_or_create_by(name: city_name)
     end
 
     def blacklisted_columns

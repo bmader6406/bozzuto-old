@@ -9,7 +9,11 @@ module Bozzuto
 
     def load
       CSV.foreach(self.class.file, headers: true) do |row|
-        ZipCode.find_or_create_by_zip_and_latitude_and_longitude(*row.fields)
+        ZipCode.find_or_create_by(
+          zip:       row['zip'],
+          latitude:  row['latitude'],
+          longitude: row['longitude']
+        )
       end
     end
   end
