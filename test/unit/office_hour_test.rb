@@ -23,7 +23,7 @@ class OfficeHourTest < ActiveSupport::TestCase
       'already has an office hours record for this property.'
     )
 
-    should ensure_inclusion_of(:day).in_range(0..6)
+    should validate_inclusion_of(:day).in_range(0..6)
 
     OfficeHour::MERIDIAN_INDICATORS.each do |indicator|
       should allow_value(indicator).for(:opens_at_period)

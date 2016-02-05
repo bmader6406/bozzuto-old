@@ -61,7 +61,7 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
           should respond_with(:redirect)
           should redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
           should assign_to(:item) { @community }
-          should set_the_flash.to('This community is already managed externally')
+          should set_flash.to('This community is already managed externally')
         end
       end
 
@@ -76,7 +76,7 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
           should respond_with(:redirect)
           should redirect_to('the merge page') { "/admin/apartment_communities/merge/#{@community.id}" }
           should assign_to(:item) { @community }
-          should set_the_flash.to('You must select an externally-managed community.')
+          should set_flash.to('You must select an externally-managed community.')
         end
 
         context 'and community selected that is not externally-managed' do
@@ -89,7 +89,7 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
           should respond_with(:redirect)
           should redirect_to('the merge page') { "/admin/apartment_communities/merge/#{@community.id}" }
           should assign_to(:item) { @community }
-          should set_the_flash.to("Couldn't find that externally-managed community.")
+          should set_flash.to("Couldn't find that externally-managed community.")
         end
 
         types.each do |type|
@@ -119,7 +119,7 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
           should respond_with(:redirect)
           should redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
           should assign_to(:item) { @community }
-          should set_the_flash.to('This community is already managed externally')
+          should set_flash.to('This community is already managed externally')
         end
       end
 
@@ -134,7 +134,7 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
           should respond_with(:redirect)
           should redirect_to('the merge page') { "/admin/apartment_communities/merge/#{@community.id}" }
           should assign_to(:item) { @community }
-          should set_the_flash.to('You must select an externally-managed community.')
+          should set_flash.to('You must select an externally-managed community.')
         end
 
         context 'and community selected that is not externally-managed' do
@@ -147,7 +147,7 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
           should respond_with(:redirect)
           should redirect_to('the merge page') { "/admin/apartment_communities/merge/#{@community.id}" }
           should assign_to(:item) { @community }
-          should set_the_flash.to("Couldn't find that externally-managed community.")
+          should set_flash.to("Couldn't find that externally-managed community.")
         end
 
         types.each do |type|
@@ -164,7 +164,7 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
             should redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
             should assign_to(:item) { @community }
             should assign_to(:external_community) { @other }
-            should set_the_flash.to('Successfully merged communities')
+            should set_flash.to('Successfully merged communities')
           end
         end
       end
@@ -217,7 +217,7 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
       should respond_with(:redirect)
       should redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
       should assign_to(:item) { @community }
-      should set_the_flash.to('Successfully disconnected from Vaultware')
+      should set_flash.to('Successfully disconnected from Vaultware')
 
       it "disconnects the feed" do
         @community.reload
@@ -240,7 +240,7 @@ class Admin::ApartmentCommunitiesControllerTest < ActionController::TestCase
       should respond_with(:redirect)
       should redirect_to('the edit page') { "/admin/apartment_communities/edit/#{@community.id}" }
       should assign_to(:item) { @community }
-      should set_the_flash.to('Deleted all floor plans.')
+      should set_flash.to('Deleted all floor plans.')
 
       it "deletes all the floor plans for the community" do
         @community.reload

@@ -11,8 +11,10 @@ module Bozzuto
                           :default_style   => :resized,
                           :convert_options => { :all => '-quality 80 -strip' })
 
+        do_not_validate_attachment_file_type name
+
         if required
-          validates_attachment_presence(name)
+          validates_attachment name, presence: true
         end
       end
     end

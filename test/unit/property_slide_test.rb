@@ -8,7 +8,7 @@ class PropertySlideTest < ActiveSupport::TestCase
 
     should validate_attachment_presence(:image)
 
-    should ensure_length_of(:caption).is_at_least(0).is_at_most(128)
+    should validate_length_of(:caption).is_at_least(0).is_at_most(128)
 
     describe "#typus_name" do
       subject do

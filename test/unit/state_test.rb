@@ -16,7 +16,7 @@ class StateTest < ActiveSupport::TestCase
 
     should validate_presence_of(:code)
     should validate_presence_of(:name)
-    should ensure_length_of(:code).is_equal_to(2)
+    should validate_length_of(:code).is_equal_to(2)
     should validate_uniqueness_of(:code)
     should validate_uniqueness_of(:name)
 
