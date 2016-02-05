@@ -27,7 +27,7 @@ class RecurringEmail < ActiveRecord::Base
   end
 
   def properties
-    Property.published.find_all_by_id(property_ids)
+    Property.published.where(id: property_ids)
   end
 
   def send!
