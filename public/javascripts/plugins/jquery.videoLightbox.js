@@ -31,8 +31,8 @@
     // Source http://stackoverflow.com/a/8260383
     function parseYouTube(url){
       var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-      var match = url.match(regExp);
-      return (match&&match[7].length==11)? match[7] : false;
+      var match  = url.match(regExp);
+      return (match && match[7].length == 11) ? match[7] : false;
     }
 
     function iframeCode(url, opts) {
