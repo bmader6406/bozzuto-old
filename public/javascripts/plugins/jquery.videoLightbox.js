@@ -28,14 +28,20 @@
 
     });
 
-    function iframeCode(url, opts) {
-      var isYouTubeVideo = url.match(/youtube\.com/),
-          youTubeMatches = url.match(/(?:(?:v=)|(?:embed\/))([_A-Za-z0-9]+)/);
+    // Source http://stackoverflow.com/a/8260383
+    function parseYouTube(url){
+      var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+      var match = url.match(regExp);
+      return (match&&match[7].length==11)? match[7] : false;
+    }
 
-      if (isYouTubeVideo && youTubeMatches && youTubeMatches.length == 2) {
+    function iframeCode(url, opts) {
+      var youTubeVideoId = parseYouTube(url);
+
+      if (youTubeVideoId) {
         var height = opts.width * 0.75;
 
-        return '<iframe src="http://www.youtube.com/embed/' + youTubeMatches[1] + '" height="' + height + '" scrolling="no" width="' + opts.width + '" frameborder="0" allowfullscreen></iframe>';
+        return '<iframe src="http://www.youtube.com/embed/' + youTubeVideoId + '" height="' + height + '" scrolling="no" width="' + opts.width + '" frameborder="0" allowfullscreen></iframe>';
       } else {
         return '<iframe src="' + url + '" height="' + opts.height + '" scrolling="no" width="' + opts.width + '"></iframe>';
       }
