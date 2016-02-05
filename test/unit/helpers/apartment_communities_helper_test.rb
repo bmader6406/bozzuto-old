@@ -39,11 +39,11 @@ class ApartmentCommunitiesHelperTest < ActionView::TestCase
       end
 
       it "returns the link" do
-        html = HTML::Document.new(floor_plan_image(@plan))
+        html = Nokogiri::HTML(floor_plan_image(@plan))
 
-        assert_select html.root, 'a', :count => 1, :href => @plan
-        assert_select html.root, 'img', :count => 1, :src => @plan
-        assert_select html.root, 'a span', 'View Full-Size'
+        html.at('//a').attributes['href'].try(:value).should == @plan.image_url
+        html.at('//img').attributes['src'].try(:value).should == @plan.image_url
+        html.at('//a//span').content.should == 'View Full-Size'
       end
     end
 
