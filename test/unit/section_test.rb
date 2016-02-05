@@ -82,7 +82,7 @@ class SectionTest < ActiveSupport::TestCase
         subject { Section.make(:title => "I'm Batman") }
 
         it "returns just the name" do
-          subject.to_param.should == "im-batman"
+          subject.to_param.should == "i-m-batman"
         end
       end
 
@@ -90,7 +90,7 @@ class SectionTest < ActiveSupport::TestCase
         subject { Section.make(:service, :title => "I'm Batman") }
 
         it "returns the services prefix and the name" do
-          subject.to_param.should == "services/im-batman"
+          subject.to_param.should == "services/i-m-batman"
         end
       end
     end

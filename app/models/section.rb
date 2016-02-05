@@ -22,7 +22,7 @@ class Section < ActiveRecord::Base
   scope :ordered_by_title, -> { order(title: :asc) }
 
   def self.about
-    find(:first, :conditions => { :about => true })
+    find_by(about: true)
   end
 
   def to_param
