@@ -293,7 +293,7 @@ class AreaTest < ActiveSupport::TestCase
 
       context "when the given community does not have a membership with the area" do
         it "does not raise a NoMethodError" do
-          expect { subject.tier_for(@community) }.to_not raise_error(NoMethodError)
+          expect { subject.tier_for(@community) }.to_not raise_error
         end
       end
     end
