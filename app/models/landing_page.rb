@@ -2,9 +2,9 @@ class LandingPage < ActiveRecord::Base
   include Bozzuto::Publishable
   extend FriendlyId
 
-  has_and_belongs_to_many :apartment_communities
+  has_and_belongs_to_many :apartment_communities, join_table: :apartment_communities_landing_pages
 
-  has_and_belongs_to_many :home_communities
+  has_and_belongs_to_many :home_communities, join_table: :home_communities_landing_pages
 
   has_and_belongs_to_many :featured_apartment_communities,
     :association_foreign_key => :apartment_community_id,
@@ -20,7 +20,7 @@ class LandingPage < ActiveRecord::Base
     :through    => :popular_property_orderings,
     :source     => :property
 
-  has_and_belongs_to_many :projects
+  has_and_belongs_to_many :projects, join_table: :landing_pages_projects
 
   belongs_to :state
   belongs_to :promo
