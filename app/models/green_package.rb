@@ -32,7 +32,7 @@ class GreenPackage < ActiveRecord::Base
                     :default_style   => :resized
 
 
-  validates_presence_of :home_community, :ten_year_old_cost
+  validates_presence_of :home_community, :ten_year_old_cost, :disclaimer
 
   validates_attachment_presence :photo
 

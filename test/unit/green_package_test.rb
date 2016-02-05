@@ -9,6 +9,7 @@ class GreenPackageTest < ActiveSupport::TestCase
 
   should validate_presence_of(:home_community)
   should validate_presence_of(:ten_year_old_cost)
+  should validate_presence_of(:disclaimer)
 
   should validate_attachment_presence(:photo)
 
