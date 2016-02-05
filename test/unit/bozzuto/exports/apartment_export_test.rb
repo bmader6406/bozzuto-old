@@ -22,7 +22,7 @@ module Bozzuto::Exports
       describe "#initialize" do
         context "given an unrecognized format" do
           it "raises an error" do
-            expect { Bozzuto::Exports::ApartmentExport.new(:mumbo_jumbo) }.to raise_error
+            expect { Bozzuto::Exports::ApartmentExport.new(:mumbo_jumbo) }.to raise_error(IndexError)
           end
         end
       end

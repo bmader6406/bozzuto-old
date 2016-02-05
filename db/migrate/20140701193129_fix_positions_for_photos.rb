@@ -29,7 +29,7 @@ class FixPositionsForPhotos < ActiveRecord::Migration
              :class_name => '::FixPositionsForPhotos::Photo',
              :dependent  => :nullify
 
-    named_scope :positioned, { :order => 'photo_groups.position ASC' }
+    scope :positioned, -> { order('photo_groups.position ASC') }
   end
 
   class Photo < ActiveRecord::Base
@@ -38,14 +38,8 @@ class FixPositionsForPhotos < ActiveRecord::Migration
     belongs_to :photo_group, :class_name => '::FixPositionsForPhotos::PhotoGroup'
     belongs_to :property,    :class_name => '::FixPositionsForPhotos::Property'
 
-    named_scope :positioned, {
-      :include => :photo_group,
-      :order   => 'photo_groups.position ASC, photos.position ASC'
-    }
-
-    named_scope :in_group, lambda { |group|
-      { :conditions => { :photo_group_id => group.id } }
-    }
+    scope :positioned, -> { includes(:photo_group).order('photo_groups.position ASC, photos.position ASC') }
+    scope :in_group,   -> (group) { where(photo_group_id: group.id) }
 
 
     private

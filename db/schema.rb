@@ -26,10 +26,13 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
     t.integer "apartment_community_id", limit: 4
   end
 
+  add_index "apartment_communities_landing_pages", ["landing_page_id", "apartment_community_id"], name: "index_landing_page_and_apartment_communities", using: :btree
+  add_index "apartment_communities_landing_pages", ["landing_page_id", "apartment_community_id"], name: "index_landing_page_and_featured_apartments", using: :btree
+
   create_table "apartment_contact_configurations", force: :cascade do |t|
-    t.integer  "apartment_community_id",  limit: 4,        null: false
-    t.text     "upcoming_intro_text",     limit: 16777215
-    t.text     "upcoming_thank_you_text", limit: 16777215
+    t.integer  "apartment_community_id",  limit: 4,     null: false
+    t.text     "upcoming_intro_text",     limit: 65535
+    t.text     "upcoming_thank_you_text", limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54,6 +57,8 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "apartment_floor_plan_caches", ["cacheable_id", "cacheable_type"], name: "index_floor_plan_caches_on_id_and_type", unique: true, using: :btree
 
   create_table "apartment_floor_plan_groups", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
@@ -88,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
   end
 
   add_index "apartment_floor_plans", ["apartment_community_id"], name: "index_apartment_floor_plans_on_apartment_community_id", using: :btree
+  add_index "apartment_floor_plans", ["external_cms_id", "external_cms_type"], name: "index_external_cms_id_and_type", using: :btree
   add_index "apartment_floor_plans", ["external_cms_id"], name: "index_apartment_floor_plans_on_external_cms_id", using: :btree
   add_index "apartment_floor_plans", ["floor_plan_group_id"], name: "index_apartment_floor_plans_on_floor_plan_group_id", using: :btree
 
@@ -398,10 +404,10 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
   end
 
   create_table "careers_entries", force: :cascade do |t|
-    t.string   "name",                    limit: 255,      null: false
-    t.string   "company",                 limit: 255,      null: false
-    t.string   "job_title",               limit: 255,      null: false
-    t.text     "job_description",         limit: 16777215
+    t.string   "name",                    limit: 255,   null: false
+    t.string   "company",                 limit: 255,   null: false
+    t.string   "job_title",               limit: 255,   null: false
+    t.text     "job_description",         limit: 65535
     t.string   "main_photo_file_name",    limit: 255
     t.string   "main_photo_content_type", limit: 255
     t.string   "headshot_file_name",      limit: 255
@@ -452,9 +458,9 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
   end
 
   create_table "contact_topics", force: :cascade do |t|
-    t.string   "topic",      limit: 255,      null: false
-    t.text     "body",       limit: 16777215
-    t.string   "recipients", limit: 255,      null: false
+    t.string   "topic",      limit: 255,   null: false
+    t.text     "body",       limit: 65535
+    t.string   "recipients", limit: 255,   null: false
     t.integer  "section_id", limit: 4
     t.integer  "position",   limit: 4
     t.datetime "created_at"
@@ -551,10 +557,10 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
 
   create_table "green_features", force: :cascade do |t|
-    t.string   "title",              limit: 255,      null: false
-    t.text     "description",        limit: 16777215
-    t.string   "photo_file_name",    limit: 255,      null: false
-    t.string   "photo_content_type", limit: 255,      null: false
+    t.string   "title",              limit: 255,   null: false
+    t.text     "description",        limit: 65535
+    t.string   "photo_file_name",    limit: 255,   null: false
+    t.string   "photo_content_type", limit: 255,   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -574,15 +580,15 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
   add_index "green_package_items", ["green_package_id"], name: "index_green_package_items_on_green_package_id", using: :btree
 
   create_table "green_packages", force: :cascade do |t|
-    t.integer  "home_community_id",  limit: 4,                                              null: false
-    t.string   "photo_file_name",    limit: 255,                                            null: false
-    t.string   "photo_content_type", limit: 255,                                            null: false
-    t.decimal  "ten_year_old_cost",                   precision: 8, scale: 2, default: 0.0, null: false
+    t.integer  "home_community_id",  limit: 4,                                           null: false
+    t.string   "photo_file_name",    limit: 255,                                         null: false
+    t.string   "photo_content_type", limit: 255,                                         null: false
+    t.decimal  "ten_year_old_cost",                precision: 8, scale: 2, default: 0.0, null: false
     t.string   "graph_title",        limit: 255
-    t.text     "graph_tooltip",      limit: 16777215
+    t.text     "graph_tooltip",      limit: 65535
     t.string   "graph_file_name",    limit: 255
     t.string   "graph_content_type", limit: 255
-    t.text     "disclaimer",         limit: 16777215,                                       null: false
+    t.text     "disclaimer",         limit: 65535,                                       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -593,6 +599,8 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
     t.integer "landing_page_id",   limit: 4
     t.integer "home_community_id", limit: 4
   end
+
+  add_index "home_communities_landing_pages", ["landing_page_id", "home_community_id"], name: "index_landing_page_and_home_communities", using: :btree
 
   create_table "home_floor_plans", force: :cascade do |t|
     t.string   "name",               limit: 255, null: false
@@ -612,10 +620,11 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
     t.datetime "updated_at"
   end
 
+  add_index "home_neighborhood_memberships", ["home_neighborhood_id", "home_community_id"], name: "index_home_nbrhd_mmbrshps_on_nbrhd_id_and_comm_id", unique: true, using: :btree
   add_index "home_neighborhood_memberships", ["home_neighborhood_id"], name: "index_home_neighborhood_memberships_on_home_neighborhood_id", using: :btree
 
   create_table "home_neighborhoods", force: :cascade do |t|
-    t.string   "name",                       limit: 255,      null: false
+    t.string   "name",                       limit: 255,   null: false
     t.string   "slug",                       limit: 255
     t.float    "latitude",                   limit: 24,                null: false, precision: 10, scale: 6
     t.float    "longitude",                  limit: 24,                null: false, precision: 10, scale: 6
@@ -623,8 +632,8 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
     t.string   "listing_image_file_name",    limit: 255,               null: false
     t.integer  "position",                   limit: 4
     t.integer  "featured_home_community_id", limit: 4
-    t.text     "description",                limit: 16777215
-    t.text     "detail_description",         limit: 16777215
+    t.text     "description",                limit: 65535
+    t.text     "detail_description",         limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -673,6 +682,8 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
     t.integer "position",        limit: 4
   end
 
+  add_index "landing_page_popular_orderings", ["landing_page_id", "property_id"], name: "index_landing_page_and_popular_properties", using: :btree
+
   create_table "landing_pages", force: :cascade do |t|
     t.string   "title",                          limit: 255,                   null: false
     t.string   "meta_title",                     limit: 255
@@ -719,10 +730,10 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
   add_index "lasso_accounts", ["property_id"], name: "index_lasso_accounts_on_property_id", using: :btree
 
   create_table "leaders", force: :cascade do |t|
-    t.string   "name",               limit: 255,      null: false
-    t.string   "title",              limit: 255,      null: false
-    t.string   "company",            limit: 255,      null: false
-    t.text     "bio",                limit: 16777215, null: false
+    t.string   "name",               limit: 255,   null: false
+    t.string   "title",              limit: 255,   null: false
+    t.string   "company",            limit: 255,   null: false
+    t.text     "bio",                limit: 65535, null: false
     t.string   "image_file_name",    limit: 255
     t.string   "image_content_type", limit: 255
     t.integer  "image_file_size",    limit: 4
@@ -837,6 +848,7 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
     t.integer  "tier",                   limit: 4, default: 2, null: false
   end
 
+  add_index "neighborhood_memberships", ["neighborhood_id", "apartment_community_id"], name: "index_neighborhood_id_and_apartment_community_id", unique: true, using: :btree
   add_index "neighborhood_memberships", ["neighborhood_id"], name: "index_neighborhood_memberships_on_neighborhood_id", using: :btree
   add_index "neighborhood_memberships", ["tier"], name: "index_neighborhood_memberships_on_tier", using: :btree
 
@@ -939,8 +951,8 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
   end
 
   create_table "photos", force: :cascade do |t|
-    t.string   "image_file_name",    limit: 255, default: ""
-    t.string   "title",              limit: 255, default: "",    null: false
+    t.string   "image_file_name",    limit: 255
+    t.string   "title",              limit: 255,                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_content_type", limit: 255
@@ -951,17 +963,17 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
   end
 
   create_table "press_releases", force: :cascade do |t|
-    t.string   "title",                        limit: 255,                      null: false
-    t.text     "body",                         limit: 16777215
-    t.boolean  "published",                                     default: false, null: false
+    t.string   "title",                        limit: 255,                   null: false
+    t.text     "body",                         limit: 65535
+    t.boolean  "published",                                  default: false, null: false
     t.datetime "published_at"
     t.string   "meta_title",                   limit: 255
     t.string   "meta_description",             limit: 255
     t.string   "meta_keywords",                limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "featured",                                      default: false
-    t.boolean  "show_as_featured_news",                         default: false, null: false
+    t.boolean  "featured",                                   default: false
+    t.boolean  "show_as_featured_news",                      default: false, null: false
     t.string   "home_page_image_file_name",    limit: 255
     t.string   "home_page_image_content_type", limit: 255
   end
@@ -988,6 +1000,9 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
     t.integer "project_category_id", limit: 4
     t.integer "project_id",          limit: 4
   end
+
+  add_index "project_categories_projects", ["project_category_id", "project_id"], name: "index_project_categories_and_projects", using: :btree
+  add_index "project_categories_projects", ["project_id", "project_category_id"], name: "index_projects_and_project_categories", using: :btree
 
   create_table "project_data_points", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
@@ -1102,12 +1117,12 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
     t.boolean  "featured_mobile",                                    default: false
     t.boolean  "under_construction",                                 default: false
     t.string   "external_cms_type",                    limit: 255
+    t.text     "office_hours",                         limit: 65535
+    t.string   "pinterest_url",                        limit: 255
     t.string   "schedule_tour_url",                    limit: 255
     t.string   "seo_link_text",                        limit: 255
     t.string   "seo_link_url",                         limit: 255
     t.boolean  "show_rtrk_code",                                     default: false, null: false
-    t.text     "office_hours",                         limit: 65535
-    t.string   "pinterest_url",                        limit: 255
     t.string   "website_url_text",                     limit: 255
     t.text     "neighborhood_description",             limit: 65535
     t.string   "neighborhood_listing_image_file_name", limit: 255
@@ -1118,9 +1133,9 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
     t.integer  "hero_image_file_size",                 limit: 4
     t.string   "hyly_id",                              limit: 255
     t.integer  "core_id",                              limit: 4
+    t.integer  "unit_count",                           limit: 4
     t.string   "page_header",                          limit: 255
     t.string   "short_description",                    limit: 255
-    t.integer  "unit_count",                           limit: 4
     t.string   "external_management_id",               limit: 255
     t.boolean  "found_in_latest_feed",                               default: true,  null: false
   end
@@ -1151,8 +1166,8 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
   add_index "property_amenities", ["property_id"], name: "index_property_amenities_on_property_id", using: :btree
 
   create_table "property_contact_pages", force: :cascade do |t|
-    t.integer  "property_id",              limit: 4,        null: false
-    t.text     "content",                  limit: 16777215
+    t.integer  "property_id",              limit: 4,     null: false
+    t.text     "content",                  limit: 65535
     t.string   "meta_title",               limit: 255
     t.string   "meta_description",         limit: 255
     t.string   "meta_keywords",            limit: 255
@@ -1176,13 +1191,13 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
   end
 
   create_table "property_features_pages", force: :cascade do |t|
-    t.integer  "property_id",      limit: 4,        null: false
-    t.text     "text_1",           limit: 16777215
+    t.integer  "property_id",      limit: 4,     null: false
+    t.text     "text_1",           limit: 65535
     t.string   "title_1",          limit: 255
     t.string   "title_2",          limit: 255
-    t.text     "text_2",           limit: 16777215
+    t.text     "text_2",           limit: 65535
     t.string   "title_3",          limit: 255
-    t.text     "text_3",           limit: 16777215
+    t.text     "text_3",           limit: 65535
     t.string   "meta_title",       limit: 255
     t.string   "meta_description", limit: 255
     t.string   "meta_keywords",    limit: 255
@@ -1193,8 +1208,8 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
   add_index "property_features_pages", ["property_id"], name: "index_property_features_pages_on_property_id", using: :btree
 
   create_table "property_neighborhood_pages", force: :cascade do |t|
-    t.integer  "property_id",      limit: 4,        null: false
-    t.text     "content",          limit: 16777215
+    t.integer  "property_id",      limit: 4,     null: false
+    t.text     "content",          limit: 65535
     t.string   "meta_title",       limit: 255
     t.string   "meta_description", limit: 255
     t.string   "meta_keywords",    limit: 255
@@ -1250,9 +1265,9 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
   add_index "property_slideshows", ["property_id"], name: "index_property_slideshows_on_property_id", using: :btree
 
   create_table "property_tours_pages", force: :cascade do |t|
-    t.integer  "property_id",      limit: 4,        null: false
+    t.integer  "property_id",      limit: 4,     null: false
     t.string   "title",            limit: 255
-    t.text     "content",          limit: 16777215
+    t.text     "content",          limit: 65535
     t.string   "meta_title",       limit: 255
     t.string   "meta_description", limit: 255
     t.string   "meta_keywords",    limit: 255
@@ -1263,12 +1278,12 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
   add_index "property_tours_pages", ["property_id"], name: "index_property_tours_pages_on_property_id", using: :btree
 
   create_table "publications", force: :cascade do |t|
-    t.string   "name",               limit: 255,                      null: false
-    t.text     "description",        limit: 16777215
+    t.string   "name",               limit: 255,                   null: false
+    t.text     "description",        limit: 65535
     t.integer  "position",           limit: 4
     t.string   "image_file_name",    limit: 255
     t.string   "image_content_type", limit: 255
-    t.boolean  "published",                           default: false
+    t.boolean  "published",                        default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -1297,12 +1312,12 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
   add_index "ranks", ["rank_category_id", "year"], name: "index_ranks_on_rank_category_id_and_year", using: :btree
 
   create_table "recurring_emails", force: :cascade do |t|
-    t.string   "email_address", limit: 255,                         null: false
-    t.string   "token",         limit: 255,                         null: false
-    t.text     "property_ids",  limit: 16777215
-    t.boolean  "recurring",                      default: false
+    t.string   "email_address", limit: 255,                      null: false
+    t.string   "token",         limit: 255,                      null: false
+    t.text     "property_ids",  limit: 65535
+    t.boolean  "recurring",                   default: false
     t.datetime "last_sent_at"
-    t.string   "state",         limit: 255,      default: "active"
+    t.string   "state",         limit: 255,   default: "active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -1330,6 +1345,7 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
     t.datetime "updated_at"
   end
 
+  add_index "related_neighborhoods", ["neighborhood_id", "nearby_neighborhood_id"], name: "index_related_neighborhoods_on_id_and_related_id", unique: true, using: :btree
   add_index "related_neighborhoods", ["neighborhood_id"], name: "index_related_neighborhoods_on_neighborhood_id", using: :btree
 
   create_table "sections", force: :cascade do |t|
@@ -1358,8 +1374,8 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
   end
 
   create_table "snippets", force: :cascade do |t|
-    t.string   "name",       limit: 255,      null: false
-    t.text     "body",       limit: 16777215, null: false
+    t.string   "name",       limit: 255,   null: false
+    t.text     "body",       limit: 65535, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -1375,19 +1391,19 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
   add_index "states", ["position"], name: "index_states_on_position", using: :btree
 
   create_table "testimonials", force: :cascade do |t|
-    t.string   "name",       limit: 255,   default: ""
-    t.string   "title",      limit: 255,   default: ""
-    t.text     "quote",      limit: 65535,              null: false
+    t.string   "name",       limit: 255
+    t.string   "title",      limit: 255
+    t.text     "quote",      limit: 65535, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "section_id", limit: 4
   end
 
   create_table "tweets", force: :cascade do |t|
-    t.string   "tweet_id",           limit: 255,      null: false
-    t.text     "text",               limit: 16777215, null: false
-    t.datetime "posted_at",                           null: false
-    t.integer  "twitter_account_id", limit: 4,        null: false
+    t.string   "tweet_id",           limit: 255,   null: false
+    t.text     "text",               limit: 65535, null: false
+    t.datetime "posted_at",                        null: false
+    t.integer  "twitter_account_id", limit: 4,     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -1431,7 +1447,7 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
     t.integer  "apartment_community_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "comments",               limit: 16777215
+    t.text     "comments",               limit: 65535
   end
 
   add_index "under_construction_leads", ["apartment_community_id"], name: "index_under_construction_leads_on_apartment_community_id", using: :btree
