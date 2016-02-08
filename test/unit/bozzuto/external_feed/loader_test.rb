@@ -267,7 +267,7 @@ module Bozzuto::ExternalFeed
                 p.external_cms_type.should == 'vaultware'
               end
 
-              pending 'black magic'
+              skip 'black magic'
               c.property_amenities.count.should == 2
 
               c.property_amenities.first.tap do |a|

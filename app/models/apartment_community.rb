@@ -2,6 +2,7 @@ class ApartmentCommunity < Community
   include Bozzuto::ExternalFeed::Model
   include Bozzuto::ApartmentFloorPlans::HasCache
   extend  Bozzuto::Neighborhoods::ListingImage
+  extend FriendlyId
 
   self.external_cms_attributes = [
     :title,

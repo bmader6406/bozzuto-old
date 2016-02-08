@@ -1,5 +1,6 @@
 class HomeCommunity < Community
   extend Bozzuto::Neighborhoods::ListingImage
+  extend FriendlyId
 
   cattr_reader :per_page
   @@per_page = 6

@@ -254,8 +254,7 @@ module Bozzuto::Exports
         end
 
         it "contains the community URL on Bozzuto.com" do
-          skip 'slug'
-          @test_community.bozzuto_url.should == "http://bozzuto.com/apartments/communities/#{@community.id}-dolans-hood"
+          @test_community.bozzuto_url.should == "http://bozzuto.com/apartments/communities/dolans-hood"
         end
 
         it "contains latitude" do
@@ -277,8 +276,7 @@ module Bozzuto::Exports
           end
 
           it "falls back to the Bozzuto URL" do
-            skip 'slug'
-            @test_community.bozzuto_url.should == "http://bozzuto.com/apartments/communities/#{@community.id}-dolans-hood"
+            @test_community.bozzuto_url.should == "http://bozzuto.com/apartments/communities/dolans-hood"
           end
         end
 

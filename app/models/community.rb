@@ -1,5 +1,6 @@
 class Community < Property
   include Bozzuto::SMSAble
+  extend FriendlyId
 
   #acts_as_archive :indexes => [:id]
 

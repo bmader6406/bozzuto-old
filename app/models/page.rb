@@ -12,8 +12,7 @@ class Page < ActiveRecord::Base
   
   acts_as_nested_set :scope => :section, :dependent => :destroy
 
-  # TODO scope slug to section, RF - 2-3-16
-  friendly_id :title, use: [:slugged, :history] #, :scope => :section
+  friendly_id :title, use: [:slugged, :history, :scoped], :scope => [:section]
 
   after_save :set_path
 

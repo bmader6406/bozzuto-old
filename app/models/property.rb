@@ -25,11 +25,8 @@ class Property < ActiveRecord::Base
   end
   #:nocov:
 
-  # TODO fix to scope to type, RF - 2-3-16
-  friendly_id :id_and_title, use: [:slugged]#, :history]#, :scoped]
+  friendly_id :title, use: [:slugged, :history, :scoped], :scope => [:type]
 
-  ## TODO fix RF 2-1-16
-  #search_methods :in_state
   def self.ransackable_scopes(auth_object = nil)
     [:in_state]
   end
@@ -164,10 +161,6 @@ class Property < ActiveRecord::Base
   end
 
   private
-
-  def id_and_title
-    "#{id} #{title}"
-  end
 
   def format_phone_number
     self.phone_number = Bozzuto::PhoneNumber.format(phone_number)

@@ -163,8 +163,7 @@ module Bozzuto::Exports::Formats
             end
 
             it "contains bozzuto url" do
-              pending 'slug'
-              expected_url = "http://bozzuto.com/apartments/communities/#{@community.id}-dolans-hood"
+              expected_url = "http://bozzuto.com/apartments/communities/dolans-hood"
 
               @identification_node.xpath('BozzutoURL').first.content.should == expected_url
             end

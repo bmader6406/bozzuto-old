@@ -1,4 +1,6 @@
 class Project < Property
+  extend FriendlyId
+
   #acts_as_archive :indexes => [:id]
   
   acts_as_list :scope => :section

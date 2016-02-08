@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Bozzuto::Mobile
   class CommunitySearchTest < ActiveSupport::TestCase
-    context 'Bozzuto::Mobile::CommunitySearch' do
+    context "Bozzuto::Mobile::CommunitySearch" do
       context 'for a zip code search' do
         setup do
           ZipCode.create(:zip => '22301', :latitude => 38.859675, :longitude => -77.26167)
@@ -14,7 +14,7 @@ module Bozzuto::Mobile
           @apartment_nc = ApartmentCommunity.make(:zip_code => '27510')
           @home_va      = HomeCommunity.make(:zip_code => '22301-5601')
           @home_nc      = HomeCommunity.make(:zip_code => '27510')
-          @search       = CommunitySearch.search('22301')
+          @search       = Bozzuto::Mobile::CommunitySearch.search('22301')
         end
 
         should 'report a search type of :zip' do
@@ -61,7 +61,7 @@ module Bozzuto::Mobile
           @home_match = HomeCommunity.make(:title => 'Metropolitan Village')
           @home_no_match = HomeCommunity.make(:title => 'Bogus Village')
 
-          @search = CommunitySearch.search('Metro')
+          @search = Bozzuto::Mobile::CommunitySearch.search('Metro')
         end
 
         should 'report a search type of :name' do
@@ -100,7 +100,7 @@ module Bozzuto::Mobile
           @home_match = HomeCommunity.make(:title => 'Utopia Village', :city => @city)
           @home_no_match = HomeCommunity.make(:title => 'Bogus Village')
 
-          @search = CommunitySearch.search('Bethesda')
+          @search = Bozzuto::Mobile::CommunitySearch.search('Bethesda')
         end
 
         should 'report a search type of :name' do
