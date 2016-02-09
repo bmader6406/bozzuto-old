@@ -56,3 +56,7 @@ class ActionController::TestCase
   include RSpec::Matchers
   include Bozzuto::Test::ControllerExtensions
 end
+
+class ActionDispatch::IntegrationTest
+  include Bozzuto::Test::IntegrationExtensions
+end

@@ -42,7 +42,9 @@ class ApplicationController < ActionController::Base
   def find_property(klass, id)
     base_scope = (typus_user || params[:preview] == 'true') ? klass : klass.published
 
-    base_scope.includes(:slugs).where({ :slugs => { :scope => klass.to_s } }).find(id)
+    # TODO revisit when slugs with history and scope are fixed, RF 2-9-16
+    # base_scope.includes(:slugs).where({ :slugs => { :scope => klass.to_s } }).find(id)
+    base_scope.friendly.find(id)
   end
 
   def about_root_pages
