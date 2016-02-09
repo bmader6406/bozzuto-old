@@ -68,7 +68,7 @@ class PropertyAmenity < ActiveRecord::Base
     'SameLevelParking'
   ]
 
-  belongs_to :property
+  belongs_to :property, inverse_of: :property_amenities
 
   validates :property,
             :primary_type,

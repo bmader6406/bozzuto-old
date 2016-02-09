@@ -69,7 +69,8 @@ module Bozzuto::ExternalFeed
 
     def property_amenities
       @property_amenities ||= property_data.property_amenities.to_a.map do |amenity_data|
-        property.property_amenities.find_or_initialize_by(
+        ::PropertyAmenity.find_or_initialize_by(
+          property:     property,
           primary_type: amenity_data.primary_type,
           sub_type:     amenity_data.sub_type,
           description:  amenity_data.description

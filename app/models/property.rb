@@ -42,7 +42,7 @@ class Property < ActiveRecord::Base
 
   has_many :landing_page_popular_orderings, :dependent => :destroy
   has_many :office_hours,       -> { order(:day) }
-  has_many :property_amenities, -> { order(:position) }
+  has_many :property_amenities, -> { order(:position) }, inverse_of: :property
 
   validates_presence_of :title, :city
 

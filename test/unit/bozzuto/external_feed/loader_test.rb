@@ -267,7 +267,6 @@ module Bozzuto::ExternalFeed
                 p.external_cms_type.should == 'vaultware'
               end
 
-              skip 'black magic'
               c.property_amenities.count.should == 2
 
               c.property_amenities.first.tap do |a|
@@ -969,7 +968,7 @@ module Bozzuto::ExternalFeed
           end
         end
       end
-=begin TODO SLOW TEST -- Uncomment this one the above tests are all passing.
+
       describe "loading a full feed" do
         Bozzuto::ExternalFeed::Feed.feed_types.each do |type|
           context "#{type}" do
@@ -989,7 +988,6 @@ module Bozzuto::ExternalFeed
           end
         end
       end
-=end
     end
   end
 end

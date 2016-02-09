@@ -15,17 +15,6 @@ class ApartmentCommunity < Community
 
   #acts_as_archive :indexes => [:id]
 
-  # TODO fix RF 2-1-16
-=begin
-  search_methods :with_min_price,
-                 :with_max_price,
-                 :with_any_floor_plan_groups,
-                 :with_any_property_features,
-                 :with_exact_floor_plan_groups,
-                 :with_exact_property_features,
-                 :having_all_floor_plan_groups,
-                 :having_all_property_features
-=end
   def self.ransackable_scopes(auth_object = nil)
     super + [
       :with_min_price,
