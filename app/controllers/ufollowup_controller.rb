@@ -8,8 +8,8 @@ class UfollowupController < ApplicationController
                      :only => :show
 
   def show
-    @email = params[:email]
-    @community = Property.find(params[:apartment_community_id])
+    @email     = params[:email]
+    @community = Property.friendly.find(params[:apartment_community_id])
   end
 
   def thank_you
@@ -22,6 +22,6 @@ class UfollowupController < ApplicationController
   private
 
   def find_section
-    @section = Section.find 'apartments'
+    @section = Section.friendly.find('apartments')
   end
 end

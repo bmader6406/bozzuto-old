@@ -10,7 +10,7 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
       context "with a non-canonical URL" do
         before do
           @old_slug = @community.to_param
-          @community.update_attribute(:title, 'Wayne Manor')
+          @community.update_attributes(:title => 'Wayne Manor', :slug => nil)
           @canonical_slug = @community.to_param
 
           @canonical_slug.should_not == @old_slug

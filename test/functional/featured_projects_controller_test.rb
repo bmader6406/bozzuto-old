@@ -40,7 +40,7 @@ class FeaturedProjectsControllerTest < ActionController::TestCase
 
     context 'GET to #show' do
       desktop_device do
-        setup { get :show, :id => @project1.cached_slug }
+        setup { get :show, :id => @project1.slug }
 
         should respond_with(:redirect)
         should redirect_to('the services page') { page_path('services') }
@@ -48,7 +48,7 @@ class FeaturedProjectsControllerTest < ActionController::TestCase
 
       mobile_device do
         setup do
-          get :show, :id => @project1.cached_slug
+          get :show, :id => @project1.slug
         end
 
         should respond_with(:success)

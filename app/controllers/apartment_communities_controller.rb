@@ -22,7 +22,7 @@ class ApartmentCommunitiesController < ApplicationController
     if @community.published?
       @recent_queue = RecentQueue.find
       @recent_queue.push(@community.id)
-      @recently_viewed = @recent_queue.map { |id| ApartmentCommunity.find_by(id: id) }.compact
+      @recently_viewed = @recent_queue.map { |id| ApartmentCommunity.find(id) }.compact
     end
   end
 

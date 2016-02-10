@@ -25,9 +25,12 @@ class LandingPagesControllerTest < ActionController::TestCase
         context 'with a non-canonical URL' do
           context 'that uses a slug' do
             setup do
-              old_slug = @page.cached_slug
+              old_slug = @page.slug
 
-              @page.update_attributes(:title => 'Hooray')
+              @page.update_attributes(
+                title: 'Hooray',
+                slug: nil
+              )
 
               get :show, :id => old_slug
             end

@@ -1,4 +1,5 @@
 class Email::SearchResultsController < ApplicationController
+
   def create
     @email = RecurringEmail.new(params[:recurring_email])
     @email.recurring = false

@@ -10,7 +10,7 @@ class HomeNeighborhoodsController < ApplicationController
   private
 
   def neighborhood
-    @neighborhood ||= HomeNeighborhood.find(params[:id])
+    @neighborhood ||= HomeNeighborhood.friendly.find(params[:id])
   end
   helper_method :neighborhood
 

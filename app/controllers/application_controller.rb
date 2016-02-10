@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def find_section
-    @section = Section.find(section_param)
+    @section = Section.friendly.find(section_param)
   end
 
   def section_param

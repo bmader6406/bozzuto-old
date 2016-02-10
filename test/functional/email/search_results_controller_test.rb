@@ -24,7 +24,7 @@ class Email::SearchResultsControllerTest < ActionController::TestCase
       end
 
       should 'save the recently viewed property ids' do
-        assert_equal [1, 2, 3], assigns(:email).property_ids
+        assert_equal ["1", "2", "3"], assigns(:email).property_ids
       end
     end
 

@@ -8,12 +8,12 @@ class AreasController < ApplicationController
   private
 
   def metro
-    @metro ||= Metro.find(params[:metro_id])
+    @metro ||= Metro.friendly.find(params[:metro_id])
   end
   helper_method :metro
 
   def area
-    @area ||= metro.areas.find(params[:id])
+    @area ||= metro.areas.friendly.find(params[:id])
   end
   helper_method :area
 

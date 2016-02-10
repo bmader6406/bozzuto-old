@@ -45,9 +45,9 @@ class SmsMessagesController < ApplicationController
 
   def find_community
     @community = if apartment?
-      ApartmentCommunity.find(params[:apartment_community_id])
+      ApartmentCommunity.friendly.find(params[:apartment_community_id])
     elsif home?
-      HomeCommunity.find(params[:home_community_id])
+      HomeCommunity.friendly.find(params[:home_community_id])
     end
   end
 end

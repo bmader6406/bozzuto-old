@@ -33,12 +33,10 @@ class Project < Property
     self.class.
       in_section(section).
       in_categories(project_category_ids).
-      limit(limit).
-      all(
-        :select     => 'DISTINCT properties.id, properties.*',
-        :conditions => ['properties.id != ?', id],
-        :order      => 'properties.position ASC'
-      )
+      select('DISTINCT properties.id', 'properties.*').
+      where('properties.id != ?', id).
+      order('properties.position ASC').
+      limit(limit)
   end
 
   def short_description

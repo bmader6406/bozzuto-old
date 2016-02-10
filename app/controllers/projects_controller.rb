@@ -17,8 +17,8 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = section_projects.find(params[:id])
-    @updates = @project.updates.published.paginate(:page => page_number)
+    @project          = section_projects.friendly.find(params[:id])
+    @updates          = @project.updates.published.paginate(:page => page_number)
     @related_projects = @project.related_projects
   end
 
@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
 
   def find_our_work_page
     @page = begin
-      @section.pages.published.find 'our-work'
+      @section.pages.published.friendly.find('our-work')
     rescue
       nil
     end
@@ -41,9 +41,6 @@ class ProjectsController < ApplicationController
     #:nocov:
   end
   helper_method :categories_with_projects
-
-  def detect_mobile_layout
-  end
 
   def detect_mobile_layout
     mobile? ? 'application' : 'project'

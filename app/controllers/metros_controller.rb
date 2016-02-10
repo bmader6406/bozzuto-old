@@ -21,7 +21,7 @@ class MetrosController < ApplicationController
   helper_method :metros
 
   def metro
-    @metro ||= Metro.find(params[:id])
+    @metro ||= Metro.friendly.find(params[:id])
   end
   helper_method :metro
 

@@ -11,7 +11,7 @@ class LeadersController < ApplicationController
   end
 
   def show
-    @leader = Leader.find(params[:id])
+    @leader = Leader.friendly.find(params[:id])
   end
 
   private
@@ -22,7 +22,7 @@ class LeadersController < ApplicationController
 
   def find_page
     @page = begin
-      @section.pages.published.find 'leadership'
+      @section.pages.published.friendly.find('leadership')
     rescue ActiveRecord::RecordNotFound
       nil
     end

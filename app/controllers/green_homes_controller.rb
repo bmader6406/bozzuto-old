@@ -8,7 +8,7 @@ class GreenHomesController < ApplicationController
   end
 
   def show
-    @community     = HomeCommunity.with_green_package.find(params[:id])
+    @community     = HomeCommunity.with_green_package.friendly.find(params[:id])
     @green_package = @community.green_package
 
     render :layout => 'application'
@@ -18,7 +18,7 @@ class GreenHomesController < ApplicationController
   private
 
   def find_section
-    @section = Section.find('new-homes')
+    @section = Section.friendly.find('new-homes')
   end
 
   def find_page

@@ -8,17 +8,17 @@ class NeighborhoodsController < ApplicationController
   private
 
   def metro
-    @metro ||= Metro.find(params[:metro_id])
+    @metro ||= Metro.friendly.find(params[:metro_id])
   end
   helper_method :metro
 
   def area
-    @area ||= metro.areas.find(params[:area_id])
+    @area ||= metro.areas.friendly.find(params[:area_id])
   end
   helper_method :area
 
   def neighborhood
-    @neighborhood ||= area.neighborhoods.find(params[:id])
+    @neighborhood ||= area.neighborhoods.friendly.find(params[:id])
   end
   helper_method :neighborhood
 

@@ -13,9 +13,9 @@ class PromosController < ApplicationController
 
   def find_community
     @community = if params[:apartment_community_id].present?
-      ApartmentCommunity.find(params[:apartment_community_id])
+      ApartmentCommunity.friendly.find(params[:apartment_community_id])
     else
-      HomeCommunity.find(params[:home_community_id])
+      HomeCommunity.friendly.find(params[:home_community_id])
     end
   end
 

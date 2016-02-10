@@ -8,4 +8,10 @@ namespace :test do
     t.libs << "test"
     t.pattern = 'test/**/*_test.rb'
   end
+
+  desc "Run functional tests"
+  Rake::TestTask.new(:functional => ['test:prepare']) do |t|
+    t.libs << "test"
+    t.pattern = 'test/functional/**/*_test.rb'
+  end
 end

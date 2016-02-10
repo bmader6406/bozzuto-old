@@ -3,8 +3,8 @@ require 'test_helper'
 class HomeCommunitiesControllerTest < ActionController::TestCase
   context 'HomeCommunitiesControllerTest' do
     setup do
-      @section = Section.make :title => 'New Homes'
-      @community = HomeCommunity.make
+      @section               = Section.make(:title => 'New Homes')
+      @community             = HomeCommunity.make
       @unpublished_community = HomeCommunity.make(:published => false)
     end
 
@@ -13,7 +13,7 @@ class HomeCommunitiesControllerTest < ActionController::TestCase
         context "with a non-canonical URL" do
           setup do
             @old_slug = @community.to_param
-            @community.update_attribute(:title, 'Wayne Manor')
+            @community.update_attributes(:title => 'Wayne Manor', :slug => nil)
             @canonical_slug = @community.to_param
 
             assert @old_slug != @canonical_slug

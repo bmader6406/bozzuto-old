@@ -1,9 +1,7 @@
 class LandingPagesController < ApplicationController
-  extend ActiveSupport::Memoizable
-
   layout 'homepage'
 
-  before_filter :find_page, :only => :show
+  before_filter :find_page,                 :only => :show
   before_filter :redirect_to_canonical_url, :only => :show
 
   def show
@@ -14,7 +12,7 @@ class LandingPagesController < ApplicationController
   private
 
   def find_page
-    @page = LandingPage.published.find(params[:id])
+    @page = LandingPage.published.friendly.find(params[:id])
   end
 
   def redirect_to_canonical_url

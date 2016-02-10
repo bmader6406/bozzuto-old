@@ -4,7 +4,7 @@ class RankingsController < ApplicationController
   # layout 'page'
 
   def index
-    @publications = Publication.published.all(:include => { :rank_categories => :ranks })
+    @publications = Publication.published.includes(:rank_categories => :ranks)
   end
 
 

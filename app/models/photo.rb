@@ -1,5 +1,14 @@
 class Photo < ActiveRecord::Base
 
+  attr_accessible :image,
+                  :title,
+                  :position,
+                  :show_to_mobile,
+                  :photo_group,
+                  :photo_group_id,
+                  :property_id,
+                  :property
+
   acts_as_list :scope => :photo_group_id
 
   belongs_to :photo_group
