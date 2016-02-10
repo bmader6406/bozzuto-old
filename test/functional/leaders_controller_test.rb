@@ -29,9 +29,6 @@ class LeadersControllerTest < ActionController::TestCase
             get :index, :section => @section.to_param
           end
 
-          # TODO fix `should_not assign_to` negative_failure_message error, RF 2-9-16
-          # should_not assign_to(:page)
-
           should assign_to(:section) { @section }
 
           should respond_with(:success)

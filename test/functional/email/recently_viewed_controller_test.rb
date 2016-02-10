@@ -78,9 +78,6 @@ class Email::RecentlyViewedControllerTest < ActionController::TestCase
 
       should respond_with(:success)
       should render_template(:thank_you)
-
-      # TODO fix `should_not assign_to` negative_failure_message error, RF 2-9-16
-      # should_not assign_to(:email)
     end
 
     context "with a recurring_email_id in the session" do

@@ -60,8 +60,6 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should render_with_layout(:community)
             should render_template(:show)
             should assign_to(:submission)
-            # TODO fix `should_not assign_to` negative_failure_message error, RF 2-9-16
-            # should_not assign_to(:page)
           end
 
           mobile_device do
@@ -73,8 +71,6 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should render_with_layout(:application)
             should render_template(:show)
             should assign_to(:submission)
-            # TODO fix `should_not assign_to` negative_failure_message error, RF 2-9-16
-            # should_not assign_to(:page)
           end
         end
       end
@@ -241,8 +237,6 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should respond_with(:success)
             should render_with_layout(:community)
             should render_template(:show)
-            # TODO fix `should_not assign_to` negative_failure_message error, RF 2-9-16
-            # should_not assign_to(:page)
           end
 
           mobile_device do
@@ -253,8 +247,6 @@ class ApartmentContactSubmissionsControllerTest < ActionController::TestCase
             should respond_with(:success)
             should render_with_layout(:application)
             should render_template(:show)
-            # TODO fix `should_not assign_to` negative_failure_message error, RF 2-9-16
-            # should_not assign_to(:page)
           end
         end
       end
