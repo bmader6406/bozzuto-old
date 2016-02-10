@@ -73,9 +73,9 @@ class CommunitySearchesController < ApplicationController
 
   def restart_search_path
     if params[:search][:in_state]
-      community_search_url(:search => { :in_state => params[:search][:in_state] })
+      community_search_path(:search => { :in_state => params[:search][:in_state] })
     else
-      community_search_url
+      community_search_path
     end
   end
   helper_method :restart_search_path

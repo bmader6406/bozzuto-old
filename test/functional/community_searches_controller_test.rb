@@ -96,12 +96,9 @@ class CommunitySearchesControllerTest < ActionController::TestCase
       describe "#restart_search_path" do
         context "when there's a state present in the search params" do
           it "returns a path including the state param" do
-            # TODO fix skip, RF 2-9-16
-            skip "Not sure even, revisit later"
+            get :show, :search => { :in_state => 10 }
 
-            get :show, :search => { :in_state => 1 }
-
-            @controller.send(:restart_search_path).should match(/\/community_search\?search\[in_state\]=1\z/)
+            @controller.send(:restart_search_path).should == "/community_search?search%5Bin_state%5D=10"
           end
         end
 
