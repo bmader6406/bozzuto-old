@@ -16,7 +16,7 @@ namespace :bozzuto do
       Bozzuto::ExternalFeed::Ftp.download_files
 
       puts '  Property feeds successfully downloaded'
-    rescue Exception => e
+    rescue => e
       report_error('download feeds', e)
       HoptoadNotifier.notify(e)
     end
@@ -34,7 +34,7 @@ namespace :bozzuto do
       else
         puts "  Can't load Vaultware feed. Try again later."
       end
-    rescue Exception => e
+    rescue => e
       report_error('load feed', e)
       HoptoadNotifier.notify(e)
     end
@@ -52,7 +52,7 @@ namespace :bozzuto do
       else
         puts "  Can't load PropertyLink feed. Try again later."
       end
-    rescue Exception => e
+    rescue => e
       report_error('load feed', e)
       HoptoadNotifier.notify(e)
     end
@@ -70,7 +70,7 @@ namespace :bozzuto do
       else
         puts "  Can't load RentCafe feed. Try again later."
       end
-    rescue Exception => e
+    rescue => e
       report_error('load feed', e)
       HoptoadNotifier.notify(e)
     end
@@ -88,7 +88,7 @@ namespace :bozzuto do
       else
         puts "  Can't load PSI feed. Try again later."
       end
-    rescue Exception => e
+    rescue => e
       report_error('load feed', e)
       HoptoadNotifier.notify(e)
     end
@@ -102,7 +102,7 @@ namespace :bozzuto do
       begin
         puts "  Refreshing #{feed.name} feed (#{feed.url})"
         feed.refresh!
-      rescue Exception => e
+      rescue => e
         report_error('load RSS feed', e)
         HoptoadNotifier.notify(e)
       end
@@ -117,7 +117,7 @@ namespace :bozzuto do
       begin
         puts "  Sending recurring email to #{email.email_address}"
         email.send!
-      rescue Exception => e
+      rescue => e
         report_error('send recurring email', e)
         HoptoadNotifier.notify(e)
       end
@@ -137,7 +137,7 @@ namespace :bozzuto do
       end
 
       puts '  Legacy apartment feed successfully exported'
-    rescue Exception => e
+    rescue => e
       report_error('export data', e)
       HoptoadNotifier.notify(e)
     end
@@ -151,7 +151,7 @@ namespace :bozzuto do
       Bozzuto::ExternalFeed::QburstFtp.transfer APP_CONFIG[:apartment_export_file]
 
       puts '  Apartment feed successfully uploaded'
-    rescue Exception => e
+    rescue => e
       report_error('send apartment export via FTP', e)
       HoptoadNotifier.notify(e)
     end
@@ -170,7 +170,7 @@ namespace :bozzuto do
       end
 
       puts '  MITS 4.1 export successfully generated'
-    rescue Exception => e
+    rescue => e
       report_error('generating MITS 4.1 export', e)
       HoptoadNotifier.notify(e)
     end
@@ -184,7 +184,7 @@ namespace :bozzuto do
       Bozzuto::ExternalFeed::QburstFtp.transfer APP_CONFIG[:mits4_1_export_file]
 
       puts '  MITS 4.1 export successfully sent'
-    rescue Exception => e
+    rescue => e
       report_error('send MITS 4.1 export via FTP', e)
       HoptoadNotifier.notify(e)
     end
@@ -199,7 +199,7 @@ namespace :bozzuto do
       Bozzuto::BuzzCsv.new(:filename => APP_CONFIG[:buzz_email_list_file]).file
 
       puts '  Contact list CSVs successfully exported'
-    rescue Exception => e
+    rescue => e
       report_error('export contact lists', e)
       HoptoadNotifier.notify(e)
     end
@@ -214,7 +214,7 @@ namespace :bozzuto do
       Bozzuto::DnrCsv.new(:filename => APP_CONFIG[:dnr_export_file]).file
 
       puts '  LeaseHawk CSVs successfully exported'
-    rescue Exception => e
+    rescue => e
       report_error('export LeaseHawk files', e)
       HoptoadNotifier.notify(e)
     end
@@ -230,7 +230,7 @@ namespace :bozzuto do
       log_task 'Sending LeaseHawk DNR Config file via FTP...'
       Bozzuto::ExternalFeed::QburstFtp.transfer(APP_CONFIG[:dnr_export_file], :dir => '/reporting/dni_feed')
       puts '  LeaseHawk DNR Config file successfully sent'
-    rescue Exception => e
+    rescue => e
       report_error('send LeaseHawk exports via FTP', e)
       HoptoadNotifier.notify(e)
     end

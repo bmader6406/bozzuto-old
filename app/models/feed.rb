@@ -44,6 +44,10 @@ class Feed < ActiveRecord::Base
     self.refreshed_at = Time.now
 
     save
+  rescue SocketError => e
+    # Shut down the flood of Feed errors:
+    # `SocketError: getaddrinfo: No address associated with hostname`
+    false
   end
 
   def feed_valid?
