@@ -1,6 +1,8 @@
 module Bozzuto
   class ZipCodes
+
     class_attribute :file, :instance_accessor => false
+
     self.file = Rails.root.join('db', 'seeds', 'zipcode_data.csv')
 
     def self.load
