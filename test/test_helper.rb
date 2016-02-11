@@ -1,8 +1,5 @@
 ENV['RAILS_ENV'] ||= 'test'
 
-require File.expand_path('../../config/environment', __FILE__)
-require 'rails/test_help'
-
 if ENV['COV']
   require 'simplecov'
 
@@ -12,11 +9,15 @@ if ENV['COV']
     add_filter '/app/controllers/admin'
     add_filter '/app/helpers/admin_helper'
     add_filter '/app/models/asset'
+    add_filter '/app/models/attachment_file'
     add_filter '/app/models/picture'
     add_filter '/lib/typus'
     add_filter '/vendor'
   end
 end
+
+require File.expand_path('../../config/environment', __FILE__)
+require 'rails/test_help'
 
 require 'shoulda'
 require 'shoulda_macros/paperclip'

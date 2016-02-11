@@ -1,4 +1,5 @@
 class RedirectRules
+
   def self.list
     #:nocov:
     [
@@ -192,6 +193,7 @@ class RedirectRules
   end
 
   class Rule < Struct.new(:url_regex, :redirect_url, :condition)
+
     def to_a
       [url_regex, redirect_url, condition].compact
     end

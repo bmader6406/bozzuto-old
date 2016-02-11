@@ -55,7 +55,7 @@ group :test do
   gem 'webmock'
   gem 'rack-test'
   gem 'vcr'
-  gem 'simplecov'
+  gem 'simplecov', '~> 0.11.2'
   gem 'rspec-expectations'
   gem 'shoulda-kept-assign-to'
   gem 'shoulda-kept-respond-with-content-type'

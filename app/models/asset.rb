@@ -1,17 +1,4 @@
 class Asset < ActiveRecord::Base
-
-  # === List of columns ===
-  #   id                : integer 
-  #   data_file_name    : string 
-  #   data_content_type : string 
-  #   data_file_size    : integer 
-  #   type              : string
-  #   locale            : integer 
-  #   typus_user_id           : integer 
-  #   created_at        : datetime 
-  #   updated_at        : datetime 
-  # =======================
-
   
   belongs_to :typus_user  
   

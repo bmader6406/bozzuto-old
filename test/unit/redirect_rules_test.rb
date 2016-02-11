@@ -2,6 +2,7 @@ require 'test_helper'
 
 class RedirectRulesTest < ActiveSupport::TestCase
   context "RedirectRules" do
+
     describe ".list" do
       it "returns an array of redirect rules" do
         RedirectRules.list.all? { |rule| rule.is_a? RedirectRules::Rule }.should == true
