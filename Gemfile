@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.2.3'
 
-gem 'rails', '4.2.5'
+gem 'rails',                '4.2.5'
 gem 'rails-observers'
 gem 'protected_attributes'
 
@@ -10,6 +10,7 @@ gem 'mysql2'
 
 gem 'friendly_id',                '~> 5.1.0'
 gem 'ransack',                    '1.7.0'
+gem 'airbrake',                   '~> 5.0.5'
 
 gem 'geokit'
 gem 'geokit-rails'
@@ -39,8 +40,6 @@ gem 'jammit'
 
 gem 'typus', path: 'vendor/plugins/typus'
 #gem 'rails_ckeditor', path: 'vendor/plugins/rails-ckeditor'
-
-gem 'hoptoad_notifier', '2.4.6' # TODO This will be replaced with 'airbrake' gem. Come back to this.
 
 group :development, :test do
   gem 'pry'

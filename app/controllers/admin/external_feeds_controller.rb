@@ -20,11 +20,9 @@ class Admin::ExternalFeedsController < Admin::MasterController
         message[:notice] = "#{name} Feed can only be loaded once every #{interval / 3600} hours. Please try again later."
       end
 
-    rescue Exception => e
+    rescue => e
       Rails.logger.debug(e.inspect)
-
-      notify_hoptoad(e)
-
+      notify_airbrake(e)
       message[:alert] = "There was an error loading the feed. Please try again later."
     end
 
@@ -47,11 +45,9 @@ class Admin::ExternalFeedsController < Admin::MasterController
         message[:notice] = "Feed files can only be downloaded via #{name} FTP once every #{interval / 3600} hours. Please try again later."
       end
 
-    rescue Exception => e
+    rescue => e
       Rails.logger.debug(e.inspect)
-
-      notify_hoptoad(e)
-
+      notify_airbrake(e)
       message[:alert] = "There was an error downloading the feed files. Please try again later."
     end
 
@@ -68,8 +64,8 @@ class Admin::ExternalFeedsController < Admin::MasterController
     end
 
     message[:notice] = 'Apartments export successfully rebuilt and sent.'
-  rescue Exception => e
-    HoptoadNotifier.notify(e)
+  rescue => e
+    notify_airbrake(e)
     message[:notice] = 'There was an error when rebuilding and re-sending the export.  Please try again later.'
   ensure
     redirect_to :back, message

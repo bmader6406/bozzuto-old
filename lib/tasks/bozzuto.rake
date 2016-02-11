@@ -18,7 +18,7 @@ namespace :bozzuto do
       puts '  Property feeds successfully downloaded'
     rescue => e
       report_error('download feeds', e)
-      HoptoadNotifier.notify(e)
+      Airbrake.notify(e)
     end
   end
 
@@ -36,7 +36,7 @@ namespace :bozzuto do
       end
     rescue => e
       report_error('load feed', e)
-      HoptoadNotifier.notify(e)
+      Airbrake.notify(e)
     end
   end
 
@@ -54,7 +54,7 @@ namespace :bozzuto do
       end
     rescue => e
       report_error('load feed', e)
-      HoptoadNotifier.notify(e)
+      Airbrake.notify(e)
     end
   end
 
@@ -72,7 +72,7 @@ namespace :bozzuto do
       end
     rescue => e
       report_error('load feed', e)
-      HoptoadNotifier.notify(e)
+      Airbrake.notify(e)
     end
   end
 
@@ -90,7 +90,7 @@ namespace :bozzuto do
       end
     rescue => e
       report_error('load feed', e)
-      HoptoadNotifier.notify(e)
+      Airbrake.notify(e)
     end
   end
 
@@ -104,7 +104,7 @@ namespace :bozzuto do
         feed.refresh!
       rescue => e
         report_error('load RSS feed', e)
-        HoptoadNotifier.notify(e)
+        Airbrake.notify(e)
       end
     end
   end
@@ -119,7 +119,7 @@ namespace :bozzuto do
         email.send!
       rescue => e
         report_error('send recurring email', e)
-        HoptoadNotifier.notify(e)
+        Airbrake.notify(e)
       end
     end
   end
@@ -139,7 +139,7 @@ namespace :bozzuto do
       puts '  Legacy apartment feed successfully exported'
     rescue => e
       report_error('export data', e)
-      HoptoadNotifier.notify(e)
+      Airbrake.notify(e)
     end
   end
 
@@ -153,7 +153,7 @@ namespace :bozzuto do
       puts '  Apartment feed successfully uploaded'
     rescue => e
       report_error('send apartment export via FTP', e)
-      HoptoadNotifier.notify(e)
+      Airbrake.notify(e)
     end
   end
 
@@ -172,7 +172,7 @@ namespace :bozzuto do
       puts '  MITS 4.1 export successfully generated'
     rescue => e
       report_error('generating MITS 4.1 export', e)
-      HoptoadNotifier.notify(e)
+      Airbrake.notify(e)
     end
   end
 
@@ -186,7 +186,7 @@ namespace :bozzuto do
       puts '  MITS 4.1 export successfully sent'
     rescue => e
       report_error('send MITS 4.1 export via FTP', e)
-      HoptoadNotifier.notify(e)
+      Airbrake.notify(e)
     end
   end
 
@@ -201,7 +201,7 @@ namespace :bozzuto do
       puts '  Contact list CSVs successfully exported'
     rescue => e
       report_error('export contact lists', e)
-      HoptoadNotifier.notify(e)
+      Airbrake.notify(e)
     end
   end
 
@@ -216,7 +216,7 @@ namespace :bozzuto do
       puts '  LeaseHawk CSVs successfully exported'
     rescue => e
       report_error('export LeaseHawk files', e)
-      HoptoadNotifier.notify(e)
+      Airbrake.notify(e)
     end
   end
 
@@ -232,7 +232,7 @@ namespace :bozzuto do
       puts '  LeaseHawk DNR Config file successfully sent'
     rescue => e
       report_error('send LeaseHawk exports via FTP', e)
-      HoptoadNotifier.notify(e)
+      Airbrake.notify(e)
     end
   end
 end

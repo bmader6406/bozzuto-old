@@ -59,8 +59,7 @@ class TwitterAccount < ActiveRecord::Base
       update_attribute(:next_update_at, Time.now + UPDATE_FREQUENCY)
 
     rescue Twitter::Error => e
-      HoptoadNotifier.notify(e)
-
+      Airbrake.notify(e)
       # Reschedule for the next rate limit window
       update_attribute(:next_update_at, Time.now + RATE_LIMIT_WINDOW)
     end
@@ -76,8 +75,7 @@ class TwitterAccount < ActiveRecord::Base
       end
 
     rescue Twitter::Error => e
-      HoptoadNotifier.notify(e)
-
+      Airbrake.notify(e)
       errors.add(:base, "There was a problem connecting to Twitter. Please try again later.")
     end
   end
