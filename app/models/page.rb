@@ -3,13 +3,6 @@ class Page < ActiveRecord::Base
   include Bozzuto::Publishable
   extend FriendlyId
   
-  #acts_as_archive :indexes => [:id, :slug]
-  #class Archive < ActiveRecord::Base
-  #  def section_title
-  #    ::Section.find(self.section_id).title
-  #  end
-  #end
-  
   acts_as_nested_set :scope => :section, :dependent => :destroy
 
   # TODO Add scoped slugs, RF 2-9-16

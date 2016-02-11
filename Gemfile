@@ -41,7 +41,6 @@ gem 'typus', path: 'vendor/plugins/typus'
 #gem 'rails_ckeditor', path: 'vendor/plugins/rails-ckeditor'
 
 gem 'hoptoad_notifier', '2.4.6' # TODO This will be replaced with 'airbrake' gem. Come back to this.
-# gem 'acts_as_archive' # TODO Incompatible with Rails 4, need to revisit.
 
 group :development, :test do
   gem 'pry'
