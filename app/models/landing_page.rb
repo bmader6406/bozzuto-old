@@ -33,7 +33,7 @@ class LandingPage < ActiveRecord::Base
 
   scope :visible_for_list, -> { where(hide_from_list: false) }
 
-  friendly_id :title, use: [:slugged, :history]
+  friendly_id :title, use: [:history]
 
   has_attached_file :masthead_image,
     :url             => '/system/:class/:id/masthead_:style.:extension',

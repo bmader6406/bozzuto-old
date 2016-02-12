@@ -25,8 +25,7 @@ class Property < ActiveRecord::Base
   end
   #:nocov:
 
-  # TODO Add scoped slugs, RF 2-9-16
-  friendly_id :title, use: [:slugged, :history] #, :scoped], :scope => [:type]
+  friendly_id :title, use: [:history, :scoped], :scope => [:type]
 
   def self.ransackable_scopes(auth_object = nil)
     [:in_state]

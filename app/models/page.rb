@@ -5,9 +5,6 @@ class Page < ActiveRecord::Base
   
   acts_as_nested_set :scope => :section, :dependent => :destroy
 
-  # TODO Add scoped slugs, RF 2-9-16
-  friendly_id :title, use: [:slugged, :history] #, :scoped], :scope => [:section]
-
   after_save :set_path
 
   belongs_to :section
@@ -20,6 +17,8 @@ class Page < ActiveRecord::Base
   scope :for_sidebar_nav, -> { where(show_in_sidebar_nav: true) }
 
   validates_presence_of :title
+
+  friendly_id :title, use: [:history, :scoped], :scope => [:section]
 
   attr_protected :path
 

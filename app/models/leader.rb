@@ -10,7 +10,7 @@ class Leader < ActiveRecord::Base
                         :company,
                         :bio
 
-  friendly_id :name, use: [:slugged, :history]
+  friendly_id :name, use: [:history]
 
   has_attached_file :image,
                     :url             => '/system/:class/:id/:style.:extension',

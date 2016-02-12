@@ -3,7 +3,7 @@ class ProjectCategory < ActiveRecord::Base
 
   acts_as_list
 
-  friendly_id :title, use: [:slugged, :history]
+  friendly_id :title, use: [:history]
 
   default_scope -> { order(position: :asc) }
 

@@ -12,7 +12,7 @@ class Section < ActiveRecord::Base
   has_and_belongs_to_many :news_posts,     -> { order(published_at: :desc) }
   has_and_belongs_to_many :press_releases, -> { order(published_at: :desc) }
 
-  friendly_id :title, use: [:slugged, :history]
+  friendly_id :title, use: [:history]
 
   validates_presence_of :title
   validates_uniqueness_of :title
@@ -40,5 +40,4 @@ class Section < ActiveRecord::Base
   def aggregate?
     about?
   end
-  
 end
