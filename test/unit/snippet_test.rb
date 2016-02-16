@@ -8,12 +8,7 @@ class SnippetTest < ActiveSupport::TestCase
 
     should validate_presence_of(:name)
     should validate_presence_of(:body)
-    should validate_uniqueness_of(:name)
 
-    describe "#typus_description" do
-      it "returns the description" do
-        Snippet.typus_description.should =~ /text/
-      end
-    end
+    should validate_uniqueness_of(:name)
   end
 end
