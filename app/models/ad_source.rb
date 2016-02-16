@@ -4,8 +4,6 @@ class AdSource < ActiveRecord::Base
   validate :properly_formatted_uri
   validate :does_not_include_protocol
 
-  attr_accessible :domain_name, :value
-
   before_save :write_pattern
 
   def self.matching(domain)
