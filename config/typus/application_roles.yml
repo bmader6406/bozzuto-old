@@ -83,5 +83,6 @@ admin:
   State: create, read, update, delete
   Testimonial: create, read, update, delete
   TwitterAccount: create, read, update, delete
+
   UnderConstructionLead: read, delete, destroy_multiple
   Video: create, read, update, delete

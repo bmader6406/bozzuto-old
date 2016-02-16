@@ -1,4 +1,5 @@
 class Video < ActiveRecord::Base
+
   acts_as_list :scope => :property
 
   belongs_to :property
