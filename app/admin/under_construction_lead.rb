@@ -29,6 +29,7 @@ ActiveAdmin.register UnderConstructionLead do
 
   show do
     attributes_table do
+      rows :id
       rows :apartment_community
       rows :first_name, :last_name
       rows :email, :phone_number

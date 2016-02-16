@@ -8,9 +8,14 @@ ActiveAdmin.register State do
 
   filter :name_cont, label: "Name"
 
-  controller do
-    def find_resource
-      scoped_collection.find_by(code: params[:id])
+  # Work around for models who have overridden `to_param` in AA
+  # See SO issue:
+  # http://stackoverflow.com/questions/7684644/activerecordreadonlyrecord-when-using-activeadmin-and-friendly-id
+  before_filter do
+    State.class_eval do
+      def to_param
+        id.to_s
+      end
     end
   end
 

@@ -153,6 +153,7 @@ en:
       rank:
         rank_number: Number must be greater than 0
       section:
+        title: Read only
         left_montage_image: Image dimensions should be 250x148
         middle_montage_image: Image dimensions should be 540x148
         right_montage_image: Image dimensions should be 310x148
