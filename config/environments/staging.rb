@@ -1,6 +1,11 @@
 Bozzuto::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 
+  # Rails 4.X Asset-Related Config
+  config.assets.digest        = true
+  config.assets.js_compressor = :uglifier
+  config.assets.compile       = false
+
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
   config.cache_classes = true
