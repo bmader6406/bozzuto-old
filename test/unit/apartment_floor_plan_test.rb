@@ -22,6 +22,16 @@ class ApartmentFloorPlanTest < ActiveSupport::TestCase
     should validate_numericality_of(:min_rent)
     should validate_numericality_of(:max_rent)
 
+    describe "#to_s" do
+      before do
+        @plan.name = 'Wayne Manor'
+      end
+
+      it "returns the name" do
+        @plan.to_s.should == 'Wayne Manor'
+      end
+    end
+
     describe "#typus_name" do
       before do
         @plan.name = 'Wayne Manor'

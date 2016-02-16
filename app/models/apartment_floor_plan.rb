@@ -62,6 +62,10 @@ class ApartmentFloorPlan < ActiveRecord::Base
     non_zero_min_rent
   end
 
+  def to_s
+    name
+  end
+
   def typus_name
     name
   end
