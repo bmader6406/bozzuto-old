@@ -49,6 +49,12 @@ class AdSourceTest < ActiveSupport::TestCase
         subject.pattern.should == 'bozzuto.com$'
       end
     end
+
+    describe "#to_s" do
+      it "returns the domain name" do
+        subject.to_s.should == subject.domain_name
+      end
+    end
   end
 
   context "The Ad Source class" do

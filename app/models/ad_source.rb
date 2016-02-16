@@ -14,6 +14,9 @@ class AdSource < ActiveRecord::Base
     where("? RLIKE pattern", domain).first
   end
 
+  def to_s
+    domain_name
+  end
 
   private
 
