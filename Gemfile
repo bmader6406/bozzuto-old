@@ -6,11 +6,21 @@ gem 'rails',                '4.2.5'
 gem 'rails-observers'
 gem 'protected_attributes'
 
+gem 'jquery-rails', '~> 4.1.0'
+gem 'sass-rails',   '~> 5.0.4'
+gem 'coffee-rails', '~> 4.1.1'
+gem 'uglifier',     '~> 2.7.2'
+
 gem 'mysql2'
 
 gem 'friendly_id',                '~> 5.1.0'
 gem 'ransack',                    '1.7.0'
 gem 'airbrake',                   '~> 5.0.5'
+
+gem 'devise'
+gem 'activeadmin', '1.0.0pre2'
+gem 'activeadmin_reorderable'
+gem 'active_material', git: 'git@github.com:vigetlabs/active_material.git'
 
 gem 'geokit'
 gem 'geokit-rails'
@@ -26,8 +36,6 @@ gem 'capistrano-ext',             '1.2.1'
 gem 'twitter'
 gem 'uuidtools'
 gem 'sitemap_generator',          '~> 3.4'
-gem 'sass'
-gem 'sass-globbing'
 gem 'bourbon'
 gem 'awesome_nested_set',         '3.0.3'
 gem 'validates_email_format_of'
@@ -36,13 +44,14 @@ gem 'activerecord-import',        '0.11.0'
 gem 'chronic'
 gem 'acts_as_list'
 
-gem 'jammit'
+#gem 'jammit'
 
 gem 'typus', path: 'vendor/plugins/typus'
 #gem 'rails_ckeditor', path: 'vendor/plugins/rails-ckeditor'
 
 group :development, :test do
   gem 'pry'
+  gem 'spring'
 end
 
 group :test do

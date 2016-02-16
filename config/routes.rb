@@ -3,6 +3,8 @@ require 'typus/routes'
 require 'rails-ckeditor/lib/ckeditor'
 
 Bozzuto::Application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   Typus::Routes.draw(self)
   Ckeditor::Routes.draw(self)
 
