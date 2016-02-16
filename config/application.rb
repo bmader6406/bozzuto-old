@@ -30,8 +30,6 @@ module Bozzuto
       RedirectRules.list.each { |rule| r301(*rule) }
     end
 
-    config.middleware.insert_before(Rack::Lock, 'Bozzuto::MissingImages')
-
     config.middleware.insert_after(ActionDispatch::Session::CookieStore, 'Bozzuto::Mobile::Middleware')
 
     config.middleware.use('Analytics::MillenialMedia::Middleware')
