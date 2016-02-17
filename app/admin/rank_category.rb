@@ -1,5 +1,6 @@
 ActiveAdmin.register RankCategory do
-  menu parent: 'Ronin'
+  menu parent: 'Ronin',
+       label:  'Rank Categories'
 
   permit_params :name,
                 :publication,
