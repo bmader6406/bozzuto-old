@@ -35,7 +35,15 @@ ActiveAdmin.register ApartmentUnit do
                 :vacate_date,
                 :vacancy_class,
                 :made_ready_date,
-                :availability_url
+                :availability_url,
+                amenities_attributes: [
+                  :id,
+                  :apartment_unit_id,
+                  :primary_type,
+                  :sub_type,
+                  :description,
+                  :_destroy
+                ]
 
   filter :marketing_name_cont,                  label: 'Name'
   filter :bedrooms,                             label: 'Bedrooms'
@@ -109,6 +117,14 @@ ActiveAdmin.register ApartmentUnit do
           input :city
           input :state
           input :zip
+        end
+
+        tab 'Amenities' do
+          has_many :amenities, allow_destroy: true, new_record: 'Add Amenity', heading: false do |amenity|
+            amenity.input :primary_type, as: :select, collection: ApartmentUnitAmenity::PRIMARY_TYPE
+            amenity.input :sub_type, as: :select, collection: ApartmentUnitAmenity::SUB_TYPE
+            amenity.input :description
+          end
         end
       end
 
