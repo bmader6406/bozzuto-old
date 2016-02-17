@@ -41,6 +41,10 @@ class ApartmentUnit < ActiveRecord::Base
     marketing_name.presence || external_cms_id
   end
 
+  def to_s
+    name
+  end
+
   def bedrooms
     read_attribute(:bedrooms).presence || floor_plan.try(:bedrooms)
   end

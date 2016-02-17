@@ -138,6 +138,24 @@ class ApartmentUnitTest < ActiveSupport::TestCase
       end
     end
 
+    describe "#to_s" do
+      context "when there's a marketing name" do
+        subject { ApartmentUnit.make(:marketing_name => 'Marketing Name', :external_cms_id => 'CMS ID') }
+
+        it "returns the marketing name" do
+          subject.to_s.should == 'Marketing Name'
+        end
+      end
+
+      context "when there's no marketing name" do
+        subject { ApartmentUnit.make(:marketing_name => nil, :external_cms_id => 'CMS ID') }
+
+        it "returns the external CMS ID" do
+          subject.to_s.should == 'CMS ID'
+        end
+      end
+    end
+
     describe "#rent" do
       subject { ApartmentUnit.make(:external_cms_type => 'psi', :unit_rent => 1525.0) }
 
