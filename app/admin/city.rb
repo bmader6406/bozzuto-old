@@ -11,7 +11,7 @@ ActiveAdmin.register City do
 
   index do
     column :name
-    column :state
+    column :state, sortable: 'states.name'
 
     actions
   end
@@ -41,6 +41,12 @@ ActiveAdmin.register City do
       input :counties, collection: County.order(:name)
 
       actions
+    end
+  end
+
+  controller do
+    def scoped_collection
+      City.includes(:state)
     end
   end
 end
