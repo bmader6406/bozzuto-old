@@ -13,7 +13,7 @@ class ApartmentUnit < ActiveRecord::Base
   has_many :amenities, :class_name => 'ApartmentUnitAmenity'
   has_many :feed_files, :as => :feed_record
 
-  accepts_nested_attributes_for :amenities, allow_destroy: true
+  accepts_nested_attributes_for :amenities, :feed_files, allow_destroy: true
 
   validates :floor_plan,
             :presence => true
@@ -28,10 +28,6 @@ class ApartmentUnit < ActiveRecord::Base
             :max_rent,
             :avg_rent,
             :numericality => { :greater_than_or_equal_to => 0 }, :allow_nil => true
-
-  def apartment_community
-    floor_plan.apartment_community
-  end
 
   def square_footage
     "#{min_square_feet} to #{max_square_feet}"

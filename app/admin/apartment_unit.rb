@@ -43,15 +43,32 @@ ActiveAdmin.register ApartmentUnit do
                   :sub_type,
                   :description,
                   :_destroy
+                ],
+                feed_files_attributes: [
+                  :id,
+                  :apartment_unit_id,
+                  :file_type,
+                  :format,
+                  :name,
+                  :source,
+                  :description,
+                  :caption,
+                  :width,
+                  :height,
+                  :ad_id,
+                  :rank,
+                  :affiliate_id,
+                  :active,
+                  :_destroy
                 ]
 
-  filter :marketing_name_cont,                  label: 'Name'
-  filter :bedrooms,                             label: 'Bedrooms'
-  filter :bathrooms,                            label: 'Bathrooms'
-  filter :min_square_feet,                      label: 'Minimum Square Feet'
-  filter :max_square_feet,                      label: 'Maximum Square Feet'
-  filter :min_rent_or_market_rent_or_unit_rent, label: 'Rent', as: :numeric
-  filter :vacancy_class,                        label: 'Vacancy Status', as: :select, collection: ApartmentUnit::VACANCY_CLASS
+  filter :external_cms_id_or_marketing_name_cont, label: 'Name'
+  filter :bedrooms,                               label: 'Bedrooms'
+  filter :bathrooms,                              label: 'Bathrooms'
+  filter :min_square_feet,                        label: 'Minimum Square Feet'
+  filter :max_square_feet,                        label: 'Maximum Square Feet'
+  filter :min_rent_or_market_rent_or_unit_rent,   label: 'Rent', as: :numeric
+  filter :vacancy_class,                          label: 'Vacancy Status', as: :select, collection: ApartmentUnit::VACANCY_CLASS
 
   index do
     column :name
@@ -60,9 +77,11 @@ ActiveAdmin.register ApartmentUnit do
     column :square_footage
     column :rent
     column :vacancy_class do |unit|
-      value = unit.vacancy_class == ApartmentUnit::VACANCY_CLASS.first ? :no : :yes
+      if unit.vacancy_class.present?
+        value = unit.vacancy_class == ApartmentUnit::VACANCY_CLASS.first ? :no : :yes
 
-      status_tag(unit.vacancy_class, value)
+        status_tag(unit.vacancy_class, value)
+      end
     end
     column :apartment_community
 
@@ -124,6 +143,23 @@ ActiveAdmin.register ApartmentUnit do
             amenity.input :primary_type, as: :select, collection: ApartmentUnitAmenity::PRIMARY_TYPE
             amenity.input :sub_type, as: :select, collection: ApartmentUnitAmenity::SUB_TYPE
             amenity.input :description
+          end
+        end
+
+        tab 'Feed Files' do
+          has_many :feed_files, allow_destroy: true, new_record: false, heading: false do |file|
+            file.input :file_type, as: :select, collection: FeedFile::FILE_TYPE
+            file.input :format
+            file.input :name
+            file.input :source
+            file.input :description
+            file.input :caption
+            file.input :width
+            file.input :height
+            file.input :ad_id
+            file.input :rank
+            file.input :affiliate_id
+            file.input :active
           end
         end
       end
