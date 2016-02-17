@@ -1,7 +1,5 @@
 class PropertySlideshow < ActiveRecord::Base
 
-  validates_presence_of :name
-
   belongs_to :property
   belongs_to :apartment_community, :foreign_key => 'property_id'
   belongs_to :home_community,      :foreign_key => 'property_id'
@@ -10,6 +8,8 @@ class PropertySlideshow < ActiveRecord::Base
   has_many :slides, -> { order(position: :asc) },
     :class_name => 'PropertySlide',
     :dependent  => :destroy
+
+  validates_presence_of :name
 
   alias_attribute :property_slides, :slides
 end
