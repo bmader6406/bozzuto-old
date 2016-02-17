@@ -19,6 +19,8 @@ module Bozzuto
                    :class_name => "Related#{base}",
                    :inverse_of => :"nearby_#{place_name}",
                    :dependent  => :destroy
+
+          accepts_nested_attributes_for related_table, allow_destroy: true
         end
 
         base.class_eval <<-END

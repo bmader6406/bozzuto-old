@@ -9,6 +9,9 @@ class AreaTest < ActiveSupport::TestCase
     should_be_mappable
     should_have_seo_metadata
 
+    should accept_nested_attributes_for(:related_areas)
+    should accept_nested_attributes_for(:seo_metadata)
+
     should validate_presence_of(:name)
     should validate_presence_of(:latitude)
     should validate_presence_of(:longitude)
