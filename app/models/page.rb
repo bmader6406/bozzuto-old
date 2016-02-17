@@ -24,6 +24,18 @@ class Page < ActiveRecord::Base
 
   alias_attribute :typus_name, :title
 
+  def to_s
+    [section.try(:title), title].compact.join(' > ')
+  end
+
+  def display_name
+    to_s
+  end
+
+  def to_label
+    to_s
+  end
+
   def formatted_title
     if ancestors.size == 0
       title

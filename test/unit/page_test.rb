@@ -41,6 +41,63 @@ class PageTest < ActiveSupport::TestCase
       end
     end
 
+    describe "#to_s" do
+      subject { Page.make(title: 'Page', section: nil) }
+
+      it "returns the page title" do
+        subject.to_s.should == 'Page'
+      end
+
+      context "when the page belongs to a section" do
+        before do
+          @section = Section.make(title: 'Section')
+          @page    = Page.make(section: @section, title: 'Page')
+        end
+
+        it "returns the section title along with the page title" do
+          @page.to_s.should == 'Section > Page'
+        end
+      end
+    end
+
+    describe "#display_name" do
+      subject { Page.make(title: 'Page', section: nil) }
+
+      it "returns the page title" do
+        subject.to_s.should == 'Page'
+      end
+
+      context "when the page belongs to a section" do
+        before do
+          @section = Section.make(title: 'Section')
+          @page    = Page.make(section: @section, title: 'Page')
+        end
+
+        it "returns the section title along with the page title" do
+          @page.to_s.should == 'Section > Page'
+        end
+      end
+    end
+
+    describe "#to_label" do
+      subject { Page.make(title: 'Page', section: nil) }
+
+      it "returns the page title" do
+        subject.to_s.should == 'Page'
+      end
+
+      context "when the page belongs to a section" do
+        before do
+          @section = Section.make(title: 'Section')
+          @page    = Page.make(section: @section, title: 'Page')
+        end
+
+        it "returns the section title along with the page title" do
+          @page.to_s.should == 'Section > Page'
+        end
+      end
+    end
+
     describe "#formatted_title" do
       before do
         @section = Section.make
