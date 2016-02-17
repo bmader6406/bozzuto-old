@@ -5,6 +5,8 @@ class BodySlideshowTest < ActiveSupport::TestCase
     should belong_to(:page)
     should have_many(:slides)
 
+    should accept_nested_attributes_for(:slides)
+
     should validate_presence_of(:name)
   end
 end
