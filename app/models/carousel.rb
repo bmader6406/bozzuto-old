@@ -5,5 +5,7 @@ class Carousel < ActiveRecord::Base
            :class_name => 'CarouselPanel',
            :dependent  => :destroy
 
+  accepts_nested_attributes_for :panels
+
   validates_presence_of :name
 end
