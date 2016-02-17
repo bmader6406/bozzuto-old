@@ -1,4 +1,5 @@
 class Promo < ActiveRecord::Base
+
   has_many :apartment_communities
   has_many :home_communities
   has_many :landing_pages
@@ -12,6 +13,7 @@ class Promo < ActiveRecord::Base
 
   before_validation :nullify_expiration_date
 
+  # TODO remove Typus name? - RF -2-16-16
   def typus_name
     expired? ? "#{title} (expired)" : title
   end
