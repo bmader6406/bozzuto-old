@@ -121,7 +121,7 @@ en:
         mobile_body: Shown when viewing the page from a mobile device
         mobile_body_extra: Extra content shown below the Mobile Body
         right_montage_image: Image dimensions should be 310x148
-        snippet_id: If present, this snippet will appear at the bottom of the page
+        snippet: If present, this snippet will appear at the bottom of the page
       photo:
         image: Image dimensions should be 870x375
         show_to_mobile: Checking this option will cause this photo to appear on the mobile site.
