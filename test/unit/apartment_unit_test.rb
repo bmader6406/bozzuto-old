@@ -6,6 +6,8 @@ class ApartmentUnitTest < ActiveSupport::TestCase
 
     should belong_to(:floor_plan)
 
+    should have_one(:apartment_community)
+
     should have_many(:amenities)
     should have_many(:feed_files)
 
