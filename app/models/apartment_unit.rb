@@ -13,6 +13,8 @@ class ApartmentUnit < ActiveRecord::Base
   has_many :amenities, :class_name => 'ApartmentUnitAmenity'
   has_many :feed_files, :as => :feed_record
 
+  accepts_nested_attributes_for :amenities, allow_destroy: true
+
   validates :floor_plan,
             :presence => true
 

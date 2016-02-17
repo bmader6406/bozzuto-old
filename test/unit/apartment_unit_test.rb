@@ -11,6 +11,8 @@ class ApartmentUnitTest < ActiveSupport::TestCase
     should have_many(:amenities)
     should have_many(:feed_files)
 
+    should accept_nested_attributes_for(:amenities)
+
     should validate_presence_of(:floor_plan)
 
     should validate_numericality_of(:bedrooms)
