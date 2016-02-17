@@ -1,4 +1,5 @@
 class PropertyFeaturesPage < PropertyPage
+
   def features
     [].tap do |features|
       (1..3).each do |i|
