@@ -63,6 +63,8 @@ en:
       project_update: Update
       property_amenity: Property Amenity
       property_feature: Property Feature
+      property_retail_page: Property Retail Page
+      property_retail_slide: Property Retail Slide
       property_slide: Slide
       property_slideshow: Property Slideshow
       rank_category: Rank Category
@@ -429,6 +431,14 @@ en:
         meta_keywords: SEO Keywords
         meta_title: SEO Title
         content: Copy
+      property_retail_page:
+        meta_description: SEO Description
+        meta_keywords: SEO Keywords
+        meta_title: SEO Title
+      property_retail_slide:
+        property_retail_page: Property Retail Page
+        link_url: Link URL
+        video_url: Video URL
       property_slide:
         property_slideshow: Property Slideshow
         link_url: Link URL
@@ -602,6 +612,9 @@ en:
         short_title: Shown as the title in the main slideshow, must be shorter than 22 characters
       property_feature:
         icon: Image dimensions should be 44x44. If icon image is not present, icon will not be shown in listings.
+      property_retail_slide:
+        image: Image dimensions should be 870x375
+        caption: Must be fewer than 128 characters
       property_slide:
         image: Image dimensions should be 870x375
         caption: Must be fewer than 128 characters

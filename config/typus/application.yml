@@ -29,9 +29,9 @@ ApartmentCommunity:
         included_in_export: ['Yes', 'No']
       required: title, city
       selectors: brochure_type
-      destroy_related: PropertyAmenity, PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyToursPage, PropertyContactPage, PropertySlideshow, PropertyMiniSlideshow, Video, ApartmentFloorPlan, OfficeHour
+      destroy_related: PropertyAmenity, PropertyFeaturesPage, PropertyNeighborhoodPage, PropertyToursPage, PropertyRetailPage, PropertyContactPage, PropertySlideshow, PropertyMiniSlideshow, Video, ApartmentFloorPlan, OfficeHour
   order_by: title
-  relationships: dnr_configuration, mediaplex_tag, property_features, city, county, local_info_feed, features_page, neighborhood_page, tours_page, contact_page, slideshow, videos, photos, floor_plans, promo, contact_configuration, office_hours, property_amenities
+  relationships: dnr_configuration, mediaplex_tag, property_features, city, county, local_info_feed, features_page, neighborhood_page, tours_page, retail_page, contact_page, slideshow, videos, photos, floor_plans, promo, contact_configuration, office_hours, property_amenities
   filters: 
   options:
     per_page: 30
@@ -885,6 +885,30 @@ PropertyNeighborhoodPage:
       ckeditor: content
   order_by:
   relationships:
+  filters:
+  search:
+  application:
+
+PropertyRetailPage:
+  fields:
+    default: property, meta_title
+    list: property, meta_title
+    form: content, meta_title, meta_description, meta_keywords, property
+    options:
+      ckeditor: content
+  order_by:
+  relationships: property_retail_slides
+  filters:
+  search:
+  application:
+
+PropertyRetailSlide:
+  fields:
+    default: name, image, position
+    list: name, image, position
+    form: name, image, caption, link_url, video_url, property_retail_page
+  order_by: position
+  relationships: property_retail_page
   filters:
   search:
   application:

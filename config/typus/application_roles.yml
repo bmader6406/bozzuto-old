@@ -67,6 +67,8 @@ admin:
   PropertyFeature: create, read, update, delete
   PropertyFeaturesPage: create, read, update, delete
   PropertyNeighborhoodPage: create, read, update, delete
+  PropertyRetailPage: create, read, update, delete
+  PropertyRetailSlide: create, read, update, delete
   PropertyToursPage: create, read, update, delete
   PropertySlide: create, read, update, delete
   PropertySlideshow: create, read, update, delete
