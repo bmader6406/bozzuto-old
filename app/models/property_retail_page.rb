@@ -1,0 +1,2 @@
+class PropertyRetailPage < PropertyPage
+end

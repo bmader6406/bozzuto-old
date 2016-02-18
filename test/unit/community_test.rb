@@ -13,6 +13,7 @@ class CommunityTest < ActiveSupport::TestCase
     should have_one(:features_page)
     should have_one(:neighborhood_page)
     should have_one(:tours_page)
+    should have_one(:retail_page)
     should have_one(:contact_page)
     should have_one(:conversion_configuration)
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151130192553) do
+ActiveRecord::Schema.define(:version => 20160218175548) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -1194,6 +1194,16 @@ ActiveRecord::Schema.define(:version => 20151130192553) do
   end
 
   add_index "property_neighborhood_pages", ["property_id"], :name => "index_property_neighborhood_pages_on_property_id"
+
+  create_table "property_retail_pages", :force => true do |t|
+    t.integer  "property_id",      :null => false
+    t.text     "content"
+    t.string   "meta_title"
+    t.string   "meta_description"
+    t.string   "meta_keywords"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "property_slides", :force => true do |t|
     t.string   "caption"
