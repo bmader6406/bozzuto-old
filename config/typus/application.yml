@@ -897,7 +897,7 @@ PropertyRetailPage:
     options:
       ckeditor: content
   order_by:
-  relationships: property_retail_slides
+  relationships: slides
   filters:
   search:
   application:
