@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160218175548) do
+ActiveRecord::Schema.define(:version => 20160218181512) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -1201,6 +1201,19 @@ ActiveRecord::Schema.define(:version => 20160218175548) do
     t.string   "meta_title"
     t.string   "meta_description"
     t.string   "meta_keywords"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "property_retail_slides", :force => true do |t|
+    t.string   "name",                    :null => false
+    t.string   "image_file_name",         :null => false
+    t.string   "image_content_type",      :null => false
+    t.string   "caption"
+    t.string   "video_url"
+    t.string   "link_url"
+    t.integer  "position"
+    t.integer  "property_retail_page_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -521,6 +521,13 @@ PropertyRetailPage.blueprint do
   meta_keywords { Faker::Lorem.words(6) * ' ' }
 end
 
+PropertyRetailSlide.blueprint do
+  property_retail_page
+  name                  { Faker::Lorem.words(1) }
+  image_file_name       { Sham.file_name }
+  image_content_type    { 'text/jpg' }
+end
+
 PropertySlideshow.blueprint do
   property
   name     { Faker::Lorem.words(1) * ' ' }
