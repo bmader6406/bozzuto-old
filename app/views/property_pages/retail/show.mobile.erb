@@ -1,0 +1,21 @@
+<% render_meta(@page) %>
+
+<% content_for :javascript do %>
+  <%= lasso_tracking_js(@community) %>
+  <%= double_click_neighborhood_view_script(@community) %>
+<% end %>
+
+<div class="section page-title">
+  <div class="content">
+    <h2>Retail</h2>
+    <%= link_to @community.title, community_url(@community), :class => 'go-back' %>
+  </div>
+</div>
+
+<div class="section">
+  <div class="content">
+    <div class="wysiwyg">
+      <%= @page.content.try(:html_safe) %>
+    </div>
+  </div>
+</div>

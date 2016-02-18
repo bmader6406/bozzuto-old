@@ -1,0 +1,37 @@
+<% if @community.retail_page? && @community.retail_page.slides.any? %>
+  <div id="slideshow">
+    <div class="header">
+      <ul class="slideshow-navigation">
+        <li>
+          <a class="prev" href="#">Previous</a>
+        </li>
+        <li>
+          <a class="next" href="#">Next</a>
+        </li>
+      </ul>
+    </div>
+
+    <ul class="slides">
+      <% @community.retail_page.slides.each do |slide| %>
+        <li class="slide">
+          <%= image_tag slide.image.url %>
+
+          <div class="section">
+            <% if slide.caption.present? %>
+              <p class="caption"><%= link_to_if slide.link_url?, slide.caption, slide.link_url %></p>
+            <% end %>
+
+            <% if slide.video_url.present? %>
+              <p class="watch-video">
+                <%= link_to 'Watch Video', slide.video_url %>
+              </p>
+            <% end %>
+          </div>
+
+          <%= pinterest_button(request.url, image_path(slide.image.url)) %>
+          <%= link_to_if slide.link_url?, content_tag(:span, '', :class => 'overlay'), slide.link_url %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

@@ -25,6 +25,11 @@
             <%= link_to 'Neighborhood', apartment_community_neighborhood_path(@community) %>
           </li>
         <%- end -%>
+        <%- if @community.retail_page? -%>
+          <li class="<%= current_if :controller => 'retail' %>">
+            <%= link_to 'Retail', apartment_community_retail_path(@community) %>
+          </li>
+        <%- end -%>
         <%- if @community.contact_page? || @community.show_lead_2_lease? || @community.under_construction? -%>
           <li class="last <%= current_if :controller => 'apartment_contact_submissions' %>">
             <%= link_to 'Contact Info', apartment_community_contact_path(@community) %>
@@ -63,6 +68,8 @@
 
     <% if params[:controller] == 'community_media' %>
       <%= render :partial => 'community_media/slideshow' %>
+    <% elsif params[:controller] == 'property_pages/retail' %>
+      <%= render :partial => 'property_pages/retail/slideshow' %>
     <% else %>
       <%= render :partial => 'properties/slideshow', :locals => { :property => @community } %>
     <% end %>

@@ -89,6 +89,10 @@ Bozzuto::Application.routes.draw do
                :controller => 'property_pages/tours',
                :only       => :show
 
+      resource :retail,
+               :controller => 'property_pages/retail',
+               :only       => :show
+
       resources :specials,
                 :only       => :index,
                 :controller => :promos
