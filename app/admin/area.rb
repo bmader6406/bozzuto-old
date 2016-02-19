@@ -1,7 +1,9 @@
 ActiveAdmin.register Area do
+  menu parent: 'Neighborhoods'
+
   config.sort_order = 'position_asc'
 
-  menu parent: 'Neighborhoods'
+  reorderable
 
   permit_params :name,
                 :metro,
@@ -26,8 +28,6 @@ ActiveAdmin.register Area do
                   :meta_description,
                   :meta_keywords
                 ]
-
-  reorderable # TODO Should be ordered from a Metro page due to list scope
 
   filter :name_cont, label: 'Search'
 
