@@ -18,7 +18,13 @@ class NewsPost < ActiveRecord::Base
     :default_style   => :thumb,
     :convert_options => { :all => '-quality 80 -strip' }
 
-  def typus_name
+  do_not_validate_attachment_file_type :left_montage_image
+
+  def to_s
     title
+  end
+
+  def typus_name
+    to_s
   end
 end

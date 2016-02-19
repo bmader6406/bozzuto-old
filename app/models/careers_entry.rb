@@ -33,7 +33,11 @@ class CareersEntry < ActiveRecord::Base
   do_not_validate_attachment_file_type :main_photo
   do_not_validate_attachment_file_type :headshot
 
-  def typus_name
+  def to_s
     name
+  end
+
+  def typus_name
+    to_s
   end
 end

@@ -16,7 +16,11 @@ class PropertySlide < ActiveRecord::Base
 
   validates_length_of :caption, :maximum => 128, :allow_nil => true
 
-  def typus_name
+  def to_s
     "#{property_slideshow.name} - Slide ##{position}"
+  end
+
+  def typus_name
+    to_s
   end
 end

@@ -69,6 +69,10 @@ class Property < ActiveRecord::Base
                     :default_style   => :resized,
                     :convert_options => { :all => '-quality 80 -strip' }
 
+  do_not_validate_attachment_file_type :listing_image
+  do_not_validate_attachment_file_type :brochure
+  do_not_validate_attachment_file_type :hero_image
+
   scope :mappable,         -> { where('latitude IS NOT NULL AND longitude IS NOT NULL') }
   scope :ordered_by_title, -> { order('properties.title ASC') }
   scope :in_state,         -> (state_id) { joins(:city).where(cities: { state_id: state_id }) }

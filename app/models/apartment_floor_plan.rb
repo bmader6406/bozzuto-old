@@ -36,6 +36,8 @@ class ApartmentFloorPlan < ActiveRecord::Base
     :styles          => { :thumb => '160' },
     :convert_options => { :all   => '-quality 80 -strip' }
 
+  do_not_validate_attachment_file_type :image
+
   scope :in_group,            -> (group) { where(:floor_plan_group_id => group.id) }
   scope :largest,             -> { where('max_square_feet IS NOT NULL').order('max_square_feet DESC').limit(1) }
   scope :non_zero_min_rent,   -> { where('min_rent > 0') }

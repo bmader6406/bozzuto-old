@@ -17,11 +17,17 @@ class PropertyFeature < ActiveRecord::Base
     :default_style   => :resized,
     :convert_options => { :all => '-quality 80 -strip' }
 
+  do_not_validate_attachment_file_type :icon
+
   validates_uniqueness_of :name
 
   scope :has_icon, -> { where("icon_file_name != ''") }
 
-  def typus_name
+  def to_s
     name
+  end
+
+  def typus_name
+    to_s
   end
 end

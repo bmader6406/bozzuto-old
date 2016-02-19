@@ -14,9 +14,13 @@ class BodySlide < ActiveRecord::Base
 
   validates :image, attachment_presence: true
 
-  def typus_name
+  def to_s
     slideshow_name = "#{body_slideshow.name} - " if body_slideshow.present?
 
     "#{slideshow_name}Slide ##{position}"
+  end
+
+  def typus_name
+    to_s
   end
 end

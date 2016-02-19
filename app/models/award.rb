@@ -18,7 +18,13 @@ class Award < ActiveRecord::Base
     :default_style => :resized,
     :convert_options => { :all => '-quality 80 -strip' }
 
-  def typus_name
+  do_not_validate_attachment_file_type :image
+
+  def to_s
     title
+  end
+
+  def typus_name
+    to_s
   end
 end

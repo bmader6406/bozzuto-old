@@ -13,7 +13,11 @@ class HomePageSlide < ActiveRecord::Base
 
   do_not_validate_attachment_file_type :image
 
-  def typus_name
+  def to_s
     "Home Page - Slide ##{position}"
+  end
+
+  def typus_name
+    to_s
   end
 end

@@ -31,6 +31,8 @@ class Photo < ActiveRecord::Base
                     :default_style   => :resized,
                     :convert_options => { :all => '-quality 80 -strip' }
 
+  do_not_validate_attachment_file_type :image
+
   def self.grouped
     ActiveSupport::OrderedHash.new.tap do |hash|
       PhotoGroup.positioned.all.each do |group|
@@ -45,8 +47,12 @@ class Photo < ActiveRecord::Base
     'photo_groups.position ASC, photos.position ASC'
   end
 
-  def typus_name
+  def to_s
     "#{property.title} - #{photo_group.title} - Photo ##{position}"
+  end
+
+  def typus_name
+    to_s
   end
 
   def thumbnail_tag

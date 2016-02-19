@@ -15,6 +15,8 @@ class HomePage < ActiveRecord::Base
     :default_style   => :resized,
     :convert_options => { :all => '-quality 80 -strip' }
 
+  do_not_validate_attachment_file_type :mobile_banner_image
+
   accepts_nested_attributes_for :slides, allow_destroy: true
 
   def to_s

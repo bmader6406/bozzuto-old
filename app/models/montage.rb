@@ -15,6 +15,10 @@ module Montage
         :url => '/system/:class/:id/montage/:style_right_montage_image.:extension',
         :styles => { :normal => '310x148#' },
         :default_style => :normal
+
+      do_not_validate_attachment_file_type :left_montage_image
+      do_not_validate_attachment_file_type :middle_montage_image
+      do_not_validate_attachment_file_type :right_montage_image
     end
   end
   

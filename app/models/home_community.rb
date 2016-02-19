@@ -38,6 +38,7 @@ class HomeCommunity < Community
     :default_style   => :display,
     :convert_options => { :all => '-quality 80 -strip' }
 
+  do_not_validate_attachment_file_type :listing_promo
 
   scope :with_green_package, -> { joins(:green_package) } # TODO Check this.
 

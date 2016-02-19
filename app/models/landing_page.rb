@@ -41,8 +41,16 @@ class LandingPage < ActiveRecord::Base
     :default_style   => :resized,
     :convert_options => { :all => '-quality 80 -strip' }
 
-  def typus_name
+  do_not_validate_attachment_file_type :masthead_image
+
+  accepts_nested_attributes_for :popular_property_orderings, allow_destroy: true
+
+  def to_s
     title
+  end
+
+  def typus_name
+    to_s
   end
 
   protected

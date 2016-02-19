@@ -15,6 +15,8 @@ class LandingPageTest < ActiveSupport::TestCase
     should have_many(:popular_property_orderings)
     should have_many(:popular_properties).through(:popular_property_orderings)
 
+    should accept_nested_attributes_for(:popular_property_orderings)
+
     should validate_presence_of(:title)
     should validate_presence_of(:state)
     should validate_uniqueness_of(:title)
