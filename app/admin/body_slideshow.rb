@@ -34,19 +34,11 @@ ActiveAdmin.register BodySlideshow do
       end
 
       tab 'Slides' do
-        panel nil do
-          if slideshow.slides.any?
-            reorderable_table_for slideshow.slides do
-              column :image do |slide|
-                if slide.image.present?
-                  image_tag slide.image
-                end
-              end
-            end
-          else
-            div class: 'blank_slate_container' do
-              span class: 'blank_slate' do
-                span 'No Slides'
+        collection_panel_for :slides do
+          reorderable_table_for slideshow.slides do
+            column :image do |slide|
+              if slide.image.present?
+                image_tag slide.image
               end
             end
           end

@@ -68,35 +68,19 @@ ActiveAdmin.register Area do
       end
 
       tab 'Related Areas' do
-        panel nil do
-          if resource.related_areas.any?
-            reorderable_table_for resource.related_areas do
-              column :nearby_area
-            end
-          else
-            div class: 'blank_slate_container' do
-              span class: 'blank_slate' do
-                span 'No Related Areas'
-              end
-            end
+        collection_panel_for :related_areas do
+          reorderable_table_for resource.related_areas do
+            column :nearby_area
           end
         end
       end
 
       tab 'SEO Metadata' do
-        panel nil do
-          if resource.seo_metadata.present?
-            attributes_table_for resource.seo_metadata do
-              row :meta_title
-              row :meta_description
-              row :meta_keywords
-            end
-          else
-            div class: 'blank_slate_container' do
-              span class: 'blank_slate' do
-                span 'No SEO Metadata'
-              end
-            end
+        collection_panel_for :seo_metadata do
+          attributes_table_for resource.seo_metadata do
+            row :meta_title
+            row :meta_description
+            row :meta_keywords
           end
         end
       end

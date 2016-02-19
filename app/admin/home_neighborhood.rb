@@ -50,19 +50,11 @@ ActiveAdmin.register HomeNeighborhood do
       end
 
       tab 'SEO Metadata' do
-        panel nil do
-          if resource.seo_metadata.present?
-            attributes_table_for resource.seo_metadata do
-              row :meta_title
-              row :meta_description
-              row :meta_keywords
-            end
-          else
-            div class: 'blank_slate_container' do
-              span class: 'blank_slate' do
-                span 'No SEO Metadata'
-              end
-            end
+        collection_panel_for :seo_metadata do
+          attributes_table_for resource.seo_metadata do
+            row :meta_title
+            row :meta_description
+            row :meta_keywords
           end
         end
       end

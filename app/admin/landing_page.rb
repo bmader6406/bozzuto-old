@@ -71,81 +71,41 @@ ActiveAdmin.register LandingPage do
       end
 
       tab 'Popular Properties' do
-        panel nil do
-          if page.popular_property_orderings.any?
-            reorderable_table_for page.popular_property_orderings do
-              column :property
-            end
-          else
-            div class: 'blank_slate_container' do
-              span class: 'blank_slate' do
-                span 'No Popular Properties'
-              end
-            end
+        collection_panel_for :popular_property_orderings do
+          reorderable_table_for page.popular_property_orderings do
+            column :property
           end
         end
       end
 
       tab 'Featured Apartment Communities' do
-        panel nil do
-          if page.featured_apartment_communities.any?
-            table_for page.featured_apartment_communities do
-              # TODO Fill in after ApartmentCommunity is in AA.
-            end
-          else
-            div class: 'blank_slate_container' do
-              span class: 'blank_slate' do
-                span 'No Featured Apartment Communities'
-              end
-            end
+        collection_panel_for :featured_apartment_communities do
+          table_for page.featured_apartment_communities do
+            # TODO Fill in after ApartmentCommunity is in AA.
           end
         end
       end
 
       tab 'Apartment Communities' do
-        panel nil do
-          if page.apartment_communities.any?
-            table_for page.apartment_communities do
-              # TODO Fill in after ApartmentCommunity is in AA.
-            end
-          else
-            div class: 'blank_slate_container' do
-              span class: 'blank_slate' do
-                span 'No Apartment Communities'
-              end
-            end
+        collection_panel_for :apartment_communities do
+          table_for page.apartment_communities do
+            # TODO Fill in after ApartmentCommunity is in AA.
           end
         end
       end
 
       tab 'Home Communities' do
-        panel nil do
-          if page.home_communities.any?
-            table_for page.home_communities do
-              # TODO Fill in after HomeCommunity is in AA.
-            end
-          else
-            div class: 'blank_slate_container' do
-              span class: 'blank_slate' do
-                span 'No Home Communities'
-              end
-            end
+        collection_panel_for :home_communities do
+          table_for page.home_communities do
+            # TODO Fill in after HomeCommunity is in AA.
           end
         end
       end
 
       tab 'Projects' do
-        panel nil do
-          if page.projects.any?
-            table_for page.projects do
-              # TODO Fill in after Project is in AA.
-            end
-          else
-            div class: 'blank_slate_container' do
-              span class: 'blank_slate' do
-                span 'No Projects'
-              end
-            end
+        collection_panel_for :projects do
+          table_for page.projects do
+            # TODO Fill in after Project is in AA.
           end
         end
       end
