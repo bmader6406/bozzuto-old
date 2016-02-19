@@ -4,8 +4,8 @@ module ActiveAdmin
       extend ActiveSupport::Concern
 
       included do
-        def association_table_for(association, receiver: resource, &block)
-          collection = receiver.send(association)
+        def association_table_for(association, receiver: resource, scope: nil, &block)
+          collection = scope || receiver.send(association)
 
           div class: 'association_table_add_link'  do
             link_to "Add New", polymorphic_url([:new, :new_admin, association.to_s.singularize.to_sym]), class: "button"

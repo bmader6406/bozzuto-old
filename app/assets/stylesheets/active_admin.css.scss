@@ -14,3 +14,8 @@ $am-theme-accent:  #b1ddd0;
 @import "active_admin/mixins";
 @import "active_material";
 @import "activeadmin_reorderable";
+
+// respect rows option
+.input.text textarea {
+  height: auto;
+}

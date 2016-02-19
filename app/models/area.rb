@@ -37,6 +37,7 @@ class Area < ActiveRecord::Base
 
   scope :showing_communities,   -> { where(:area_type => 'communities') }
   scope :showing_neighborhoods, -> { where(:area_type => 'neighborhoods') }
+  scope :position_asc,          -> { order(position: :asc) }
 
   def parent
     metro

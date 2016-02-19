@@ -7,7 +7,9 @@ ActiveAdmin.register Area do
 
   permit_params :name,
                 :metro,
+                :metro_id,
                 :state,
+                :state_id,
                 :latitude,
                 :longitude,
                 :banner_image,

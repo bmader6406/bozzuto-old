@@ -5,7 +5,7 @@ module ActiveAdmin
 
       included do
         def collection_panel_for(association, receiver: resource, &block) 
-          collection = receiver.send(association)
+          collection = Array(receiver.send(association))
           
           panel nil do
             if collection.try(:any?)
