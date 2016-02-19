@@ -42,6 +42,7 @@ ActiveAdmin.register Carousel do
       tabs do
         tab 'Details' do
           input :name
+          input :content, as: :polymorphic_select, grouped_options: grouped_options
         end
 
         tab 'Panels' do
@@ -57,5 +58,15 @@ ActiveAdmin.register Carousel do
 
       actions
     end
+  end
+
+  controller do
+    def grouped_options
+      @grouped_options ||= {
+        HomePage => HomePage.all,
+        Page     => Page.all
+      }
+    end
+    helper_method :grouped_options
   end
 end

@@ -17,7 +17,11 @@ class HomePage < ActiveRecord::Base
 
   accepts_nested_attributes_for :slides, allow_destroy: true
 
-  def typus_name
+  def to_s
     'Home Page'
+  end
+
+  def typus_name
+    to_s
   end
 end

@@ -1,8 +1,14 @@
 GIT
-  remote: git@github.com:vigetlabs/active_material.git
+  remote: git://github.com/vigetlabs/active_material.git
   revision: 0affe3a73860ecbe4a0aa5ebd5595ef49a35af96
   specs:
     active_material (1.4.1)
+
+GIT
+  remote: git://github.com/vigetlabs/polymorphic_select.git
+  revision: 58d9aae2b513d94f8f8b3f442041c3831f7d1600
+  specs:
+    polymorphic_select (0.0.2)
 
 PATH
   remote: vendor/plugins/typus
@@ -354,6 +360,7 @@ DEPENDENCIES
   mysql2
   nokogiri (= 1.6.6.4)
   paperclip (= 4.3.2)
+  polymorphic_select!
   protected_attributes
   pry
   rack-rewrite
