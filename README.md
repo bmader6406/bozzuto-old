@@ -28,6 +28,12 @@ Install Bundler for gem dependencies:
 $ gem install bundler
 ```
 
+Then run `install` to fetch the dependencies:
+
+```bash
+$ bundle install
+```
+
 ### MySQL
 
 Install MySQL 5.6 with homebrew:
@@ -39,6 +45,15 @@ $ brew install homebrew/versions/mysql56
 Running multiple versions of MySQL can be trouble - see [this gist](https://gist.github.com/Fosome/d382be55d19ff3f79921) for more help.
 
 **Note** MySQL 5.7 is not compatable with our version of the `mysql2` gem.
+
+
+### Imagemagick
+
+Install Imagemagick with homebrew:
+
+```bash
+$ brew install imagemagick
+```
 
 ### Config files
 
