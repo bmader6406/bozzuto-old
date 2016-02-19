@@ -8,6 +8,11 @@ Bozzuto::Application.routes.draw do
   Typus::Routes.draw(self)
   Ckeditor::Routes.draw(self)
 
+  # TODO This namespace will change once Typus is removed.
+  namespace :new_admin do
+    resource :home_page, only: [:show, :update], controller: :home_page
+  end
+
   # Typus CSV Exports
   get '/admin/under_construction_leads(.:format)', :controller => 'admin/under_construction_leads', :action => :index
   get '/admin/buzzes(.:format)',                   :controller => 'admin/buzzes',                   :action => :index
