@@ -1,6 +1,8 @@
 ActiveAdmin.register Project do
   menu parent: 'Properties'
 
+  reorderable
+
   permit_params :title,
                 :short_title,
                 :short_description,
@@ -28,7 +30,8 @@ ActiveAdmin.register Project do
                 :listing_text,
                 :overview_text,
                 :published,
-                :featured_mobile
+                :featured_mobile,
+                :position
 
   filter :title_cont,          label: 'Title'
   filter :street_address_cont, label: 'Street Address'

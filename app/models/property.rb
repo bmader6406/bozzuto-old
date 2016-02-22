@@ -75,6 +75,7 @@ class Property < ActiveRecord::Base
 
   scope :mappable,         -> { where('latitude IS NOT NULL AND longitude IS NOT NULL') }
   scope :ordered_by_title, -> { order('properties.title ASC') }
+  scope :position_asc,     -> { order('properties.position ASC') }
   scope :in_state,         -> (state_id) { joins(:city).where(cities: { state_id: state_id }) }
 
   scope :duplicates, -> {

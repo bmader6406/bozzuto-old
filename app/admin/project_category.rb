@@ -1,7 +1,12 @@
 ActiveAdmin.register ProjectCategory do
   menu parent: 'Properties'
 
-  permit_params :title
+  config.sort_order = 'position_asc'
+
+  reorderable
+
+  permit_params :title,
+                :position
 
   filter :title_cont, label: 'Title'
 
@@ -16,15 +21,59 @@ ActiveAdmin.register ProjectCategory do
     end
   end
 
-  index do
+  index as: :reorderable_table do
     column :title
 
     actions
   end
 
+  show do
+    tabs do
+      tab 'Details' do
+        panel nil do
+          attributes_table_for resource do
+            rows :id
+            rows :title, :slug
+            rows :created_at, :updated_at
+          end
+        end
+      end
+
+      tab 'Projects' do
+        collection_panel_for :projects do
+          table_for resource.projects.ordered_by_title do
+            column :title
+            column :published
+            column :street_address
+            column :city
+          end
+        end
+      end
+    end
+  end
+
   form do |f|
-    inputs do
-      input :title
+    tabs do
+      tab 'Details' do
+        panel nil do
+          attributes_table_for resource do
+            inputs do
+              input :title
+            end
+          end
+        end
+      end
+
+      tab 'Projects' do
+        panel nil do
+          association_table_for :projects, scope: resource.projects.ordered_by_title do
+            column :title
+            column :published
+            column :street_address
+            column :city
+          end
+        end
+      end
     end
 
     actions
