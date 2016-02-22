@@ -13,8 +13,24 @@ ActiveAdmin.register Testimonial do
   index do
     column :name
     column :title
+    column :quote do |t|
+      truncate(strip_tags(t.quote), length: 100)
+    end
 
     actions
+  end
+
+  show do
+    attributes_table do
+      rows :id
+      rows :name
+      rows :title
+      row  :quote do |t|
+        raw t.quote
+      end
+      rows :section
+      rows :created_at, :updated_at
+    end
   end
 
   form do |f|
