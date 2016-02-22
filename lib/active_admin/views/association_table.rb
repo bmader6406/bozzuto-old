@@ -5,7 +5,7 @@ module ActiveAdmin
 
       included do
         def association_table_for(association, receiver: resource, scope: nil, &block)
-          collection = scope || receiver.send(association)
+          collection = Array(scope || receiver.send(association))
 
           div class: 'association_table_add_link'  do
             link_to "Add New", polymorphic_url([:new, :new_admin, association.to_s.singularize.to_sym]), class: "button"

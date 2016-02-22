@@ -2,6 +2,8 @@ ActiveAdmin.register ProjectDataPoint do
   menu parent: 'Ronin',
        label:  'Project Data Points'
 
+  reorderable
+
   permit_params :project,
                 :project_id,
                 :name,

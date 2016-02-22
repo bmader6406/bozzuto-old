@@ -4,6 +4,8 @@ ActiveAdmin.register ProjectUpdate do
 
   config.filters = false
 
+  reorderable
+
   permit_params :project,
                 :project_id,
                 :image,

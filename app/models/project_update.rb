@@ -19,7 +19,7 @@ class ProjectUpdate < ActiveRecord::Base
   do_not_validate_attachment_file_type :image
 
   def to_s
-    "#{project.title} Update - #{published_at.to_s(:month_day_year)}"
+    "#{project.title} Update - #{published_at ? published_at.to_s(:month_day_year) : id}"
   end
 
   def typus_name

@@ -130,7 +130,10 @@ en:
         show_as_featured_news: "When checked, this Press Release will populate the 'Featured News' section on the home page."
       project:
         featured_mobile: Featured mobile projects are shown on the mobile version of the site
+        listing_image: Image will be resized to 230x145 and 150x150
         page_header: Header beneath the main slideshow.  If blank, defaults to the Section name.
+        short_description: Shown beneath the title in the main slideshow, must be shorter than 40 characters
+        short_title: Shown as the title in the main slideshow, must be shorter than 22 characters
       project_update:
         image: Image dimensions should be 484x214
       promo:
