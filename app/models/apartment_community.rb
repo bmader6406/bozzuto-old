@@ -63,6 +63,8 @@ class ApartmentCommunity < Community
            :inverse_of => :apartment_community,
            :dependent  => :destroy
 
+  accepts_nested_attributes_for :mediaplex_tag, :contact_configuration
+
   validates_presence_of :lead_2_lease_email, :if => lambda { |community| community.show_lead_2_lease }
 
   validates_inclusion_of :included_in_export, :in => [true, false]

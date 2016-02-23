@@ -17,6 +17,8 @@ class CommunityTest < ActiveSupport::TestCase
     should have_one(:contact_page)
     should have_one(:conversion_configuration)
 
+    should accept_nested_attributes_for(:dnr_configuration)
+
     describe "creating a new record" do
       subject { ApartmentCommunity.make_unsaved }
 
@@ -40,6 +42,20 @@ class CommunityTest < ActiveSupport::TestCase
           subject.save
           subject.featured_position.should == 1
         end
+      end
+    end
+
+    describe "#pages" do
+      subject { ApartmentCommunity.make }
+
+      before do
+        @features     = PropertyFeaturesPage.make(property: subject)
+        @neighborhood = PropertyNeighborhoodPage.make(property: subject)
+        @contact      = PropertyContactPage.make(property: subject)
+      end
+
+      it "returns all the pages" do
+        subject.pages.should match_array [@features, @neighborhood, @contact]
       end
     end
 

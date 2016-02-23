@@ -1,6 +1,8 @@
 ActiveAdmin.register Video do
   menu parent: 'Ronin'
 
+  reorderable
+
   config.filters = false
 
   permit_params :property,

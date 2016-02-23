@@ -44,6 +44,8 @@ class Property < ActiveRecord::Base
   has_many :office_hours,       -> { order(:day) }
   has_many :property_amenities, -> { order(:position) }, inverse_of: :property
 
+  accepts_nested_attributes_for :office_hours, :property_amenities, allow_destroy: true
+
   validates_presence_of :title, :city
 
   validates_length_of :short_title,       :maximum => 22, :allow_nil => true

@@ -2,6 +2,14 @@ class Community < Property
   include Bozzuto::SMSAble
   extend FriendlyId
 
+  PAGES = %i(
+    features_page
+    neighborhood_page
+    contact_page
+    tours_page
+    retail_page
+  )
+
   #acts_as_archive :indexes => [:id]
 
   acts_as_list :column => 'featured_position'
@@ -26,14 +34,16 @@ class Community < Property
     :foreign_key => :property_id
 
   [:features_page, :neighborhood_page, :contact_page, :tours_page, :retail_page].each do |page_type|
-    has_one page_type,
-      :class_name  => "Property#{page_type.to_s.classify}",
-      :foreign_key => :property_id
+    klass_name = "Property#{page_type.to_s.classify}"
 
-    define_method("#{page_type}?") do
+    has_one page_type, class_name: klass_name, foreign_key: :property_id
+
+    define_method "#{page_type}?" do
       self.send(page_type).present?
     end
   end
+
+  accepts_nested_attributes_for :dnr_configuration
 
   before_save :set_featured_postion
 
@@ -60,6 +70,10 @@ class Community < Property
     end
     result
     #:nocov:
+  end
+
+  def pages
+    @pages ||= PAGES.map { |page| public_send(page) }.compact
   end
 
   def overview_bullets

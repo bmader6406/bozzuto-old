@@ -2,6 +2,8 @@ ActiveAdmin.register Photo do
   menu parent: 'Ronin',
        label:  'Photos'
 
+  reorderable
+
   permit_params :title,
                 :photo_group,
                 :photo_group_id,

@@ -19,6 +19,9 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
     should have_many(:neighborhood_memberships).dependent(:destroy)
     should have_many(:area_memberships).dependent(:destroy)
 
+    should accept_nested_attributes_for(:mediaplex_tag)
+    should accept_nested_attributes_for(:contact_configuration)
+
     should_have_apartment_floor_plan_cache
 
     should allow_value(true).for:included_in_export

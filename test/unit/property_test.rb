@@ -16,6 +16,9 @@ class PropertyTest < ActiveSupport::TestCase
     should have_many(:property_amenities)
     should have_and_belong_to_many(:property_features)
 
+    should accept_nested_attributes_for(:office_hours)
+    should accept_nested_attributes_for(:property_amenities)
+
     should validate_presence_of(:title)
     should validate_presence_of(:city)
     should validate_numericality_of(:latitude)
