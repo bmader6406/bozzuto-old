@@ -9,49 +9,22 @@ class SectionTest < ActiveSupport::TestCase
 
     should have_many(:testimonials)
     should have_many(:projects)
+
     should have_and_belong_to_many(:awards)
     should have_and_belong_to_many(:news_posts)
     should have_and_belong_to_many(:press_releases)
+
     should have_one(:contact_topic)
 
     should have_attached_file(:left_montage_image)
     should have_attached_file(:middle_montage_image)
     should have_attached_file(:right_montage_image)
 
-
-    describe "#typus_name" do
-      it "returns the title" do
-        subject.typus_name.should == subject.title
-      end
-    end
-
-    describe "self#about" do
+    describe ".about" do
       it "returns the About section" do
         about = Section.make(:about)
 
         Section.about.should == about
-      end
-    end
-
-    describe "#about?" do
-      context "when about flag is true" do
-        before do
-          subject.about = true
-        end
-
-        it "returns true" do
-          subject.about?.should == true
-        end
-      end
-
-      context "when slug is anything else" do
-        before do
-          subject.about = false
-        end
-
-        it "returns false" do
-          subject.about?.should == false
-        end
       end
     end
 
@@ -74,6 +47,12 @@ class SectionTest < ActiveSupport::TestCase
         it "returns false" do
           subject.aggregate?.should == false
         end
+      end
+    end
+
+    describe "#to_s" do
+      it "returns the title" do
+        subject.to_s.should == subject.title
       end
     end
 

@@ -6,7 +6,7 @@ class Section < ActiveRecord::Base
   
   has_many :testimonials
   has_many :projects
-  has_many :pages, -> { order(lft: :asc) }, dependent: :destroy
+  has_many :pages,        -> { order(lft: :asc) }, dependent: :destroy
 
   has_and_belongs_to_many :awards,         -> { order(published_at: :desc) }
   has_and_belongs_to_many :news_posts,     -> { order(published_at: :desc) }
@@ -14,9 +14,9 @@ class Section < ActiveRecord::Base
 
   friendly_id :title, use: [:history]
 
-  validates_presence_of :title
-  validates_uniqueness_of :title
-  validates_inclusion_of :service, :in => [true, false]
+  validates :title,
+            presence: true,
+            uniqueness: true
 
   scope :services,         -> { where(service: true) }
   scope :ordered_by_title, -> { order(title: :asc) }
@@ -25,19 +25,23 @@ class Section < ActiveRecord::Base
     find_by(about: true)
   end
 
+  def aggregate?
+    about?
+  end
+
+  def to_label
+    title
+  end
+
+  def to_s
+    title
+  end
+
   def to_param
     if service?
       "services/#{super}"
     else
       super
     end
-  end
-
-  def typus_name
-    title
-  end
-
-  def aggregate?
-    about?
   end
 end

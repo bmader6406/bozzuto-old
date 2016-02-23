@@ -26,6 +26,7 @@ class Project < Property
   scope :in_section,               -> (section) { where(section_id: section.id) }
   scope :order_by_completion_date, -> { order(completion_date: :desc) }
   scope :featured_mobile,          -> { where(featured_mobile: true) }
+  scope :position_asc,             -> { order(position: :asc) }
 
   scope :in_categories, -> (categories) {
     joins('JOIN project_categories_projects ON properties.id = project_categories_projects.project_id')

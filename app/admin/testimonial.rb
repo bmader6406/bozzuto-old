@@ -14,7 +14,7 @@ ActiveAdmin.register Testimonial do
     column :name
     column :title
     column :quote do |t|
-      truncate(strip_tags(t.quote), length: 100)
+      t.excerpt
     end
 
     actions
@@ -26,7 +26,7 @@ ActiveAdmin.register Testimonial do
       rows :name
       rows :title
       row  :quote do |t|
-        raw t.quote
+        t.excerpt
       end
       rows :section
       rows :created_at, :updated_at
@@ -38,7 +38,7 @@ ActiveAdmin.register Testimonial do
       input :name
       input :title
       input :quote
-      input :section
+      input :section, collection: Section.ordered_by_title
     end
 
     actions
