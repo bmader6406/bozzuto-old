@@ -33,10 +33,6 @@ ActiveAdmin.register Project do
                 :featured_mobile,
                 :position
 
-  filter :title_cont,          label: 'Title'
-  filter :street_address_cont, label: 'Street Address'
-  filter :city
-
   # Work around for models who have overridden `to_param` in AA
   # See SO issue:
   # http://stackoverflow.com/questions/7684644/activerecordreadonlyrecord-when-using-activeadmin-and-friendly-id
@@ -53,6 +49,10 @@ ActiveAdmin.register Project do
       super.includes(:city => [:state], :section => [])
     end
   end
+
+  filter :title_cont,          label: 'Title'
+  filter :street_address_cont, label: 'Street Address'
+  filter :city
 
   index do
     column :title

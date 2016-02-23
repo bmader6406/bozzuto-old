@@ -1,6 +1,7 @@
 module Montage
   def self.included(base)
     base.class_eval do
+
       has_attached_file :left_montage_image,
         :url => '/system/:class/:id/montage/:style_left_montage_image.:extension',
         :styles => { :normal => '250x148#' },
