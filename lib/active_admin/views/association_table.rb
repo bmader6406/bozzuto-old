@@ -15,8 +15,10 @@ module ActiveAdmin
             ActiveAdmin::Views::IndexAsTable::IndexTableFor
           end
 
-          div class: 'association_table_add_link'  do
-            link_to "Add New", polymorphic_url([:new, :new_admin, route_symbol], new_options), class: 'button', target: :blank
+          unless table_config.macro == :has_one && collection.any?
+            div class: 'association_table_add_link'  do
+              link_to "Add New", polymorphic_url([:new, :new_admin, route_symbol], new_options), class: 'button', target: :blank
+            end
           end
 
           if collection.any?
