@@ -51,4 +51,13 @@ class MastheadSlide < ActiveRecord::Base
   def uses_quote?
     slide_type == USE_QUOTE
   end
+
+  def type_label(type = slide_type)
+    [
+      'Image',
+      'Text',
+      'Mini Slideshow',
+      'Quote'
+    ][type]
+  end
 end

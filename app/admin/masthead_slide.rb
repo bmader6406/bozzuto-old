@@ -1,10 +1,22 @@
 ActiveAdmin.register MastheadSlide do
-  menu parent: 'Ronin',
-       label:  'Masthead Slides'
-
   config.filters = false
 
-  permit_params :image
+  menu false
+
+  reorderable
+
+  permit_params :body,
+                :slide_type,
+                :image,
+                :image_link,
+                :sidebar_text,
+                :masthead_slideshow_id,
+                :mini_slideshow_id,
+                :quote,
+                :quote_attribution,
+                :quote_job_title,
+                :quote_company
+
 
   index do
     column :image do |slide|
@@ -17,24 +29,61 @@ ActiveAdmin.register MastheadSlide do
     actions
   end
 
+  show do |slide|
+    tabs do
+      tab 'Details' do
+        panel nil do
+          attributes_table_for slide do
+            row :masthead_slideshow
+            row :body
+            row :slide_type do |slide|
+              slide.type_label
+            end
+            row :image do |slide|
+              if slide.image.present?
+                image_tag slide.image
+              end
+            end
+            row :image_link
+            row :sidebar_text
+            row :mini_slideshow
+          end
+        end
+      end
+
+      tab 'Quote Fields' do
+        panel nil do
+          attributes_table_for slide do
+            row :quote
+            row :quote_attribution
+            row :quote_job_title
+            row :quote_company
+          end
+        end
+      end
+    end
+  end
+
   form do |f|
     inputs do
-      input :body
-      input :slide_type, as: :select, collection: MastheadSlide::SLIDE_TYPE
+      tabs do
+        tab 'Details' do
+          input :masthead_slideshow
+          input :body
+          input :slide_type, as: :select, collection: MastheadSlide::SLIDE_TYPE
+          input :image, as: :image
+          input :image_link
+          input :sidebar_text
+          input :mini_slideshow
+        end
 
-      input :image, as: :image
-      input :image_link
-
-      input :sidebar_text
-
-      input :mini_slideshow
-
-      input :quote
-      input :quote_attribution
-      input :quote_job_title
-      input :quote_company
-
-      input :masthead_slideshow
+        tab 'Quote Fields' do
+          input :quote
+          input :quote_attribution
+          input :quote_job_title
+          input :quote_company
+        end
+      end
     end
 
     actions

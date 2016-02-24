@@ -88,5 +88,14 @@ class MastheadSlideTest < ActiveSupport::TestCase
         end
       end
     end
+
+    describe "#type_label" do
+      it "returns the correct label for the given type" do
+        @slide.type_label(MastheadSlide::USE_IMAGE).should == 'Image'
+        @slide.type_label(MastheadSlide::USE_TEXT).should == 'Text'
+        @slide.type_label(MastheadSlide::USE_MINI_SLIDESHOW).should == 'Mini Slideshow'
+        @slide.type_label(MastheadSlide::USE_QUOTE).should == 'Quote'
+      end
+    end
   end
 end
