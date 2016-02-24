@@ -1,5 +1,5 @@
 ActiveAdmin.register ApartmentUnit do
-  menu parent: 'Ronin'
+  menu parent: 'Properties'
 
   permit_params :floor_plan_id,
                 :marketing_name,
@@ -88,10 +88,104 @@ ActiveAdmin.register ApartmentUnit do
     actions
   end
 
+  show do |unit|
+    tabs do
+      tab 'Details' do
+        panel nil do
+          attributes_table_for unit do
+            row('External CMS ID') { |unit| unit.external_cms_id }
+            row :marketing_name
+            row :organization_name
+            row :unit_type
+            row :floor_plan
+            row :floor_plan_name
+            row :bedrooms
+            row :bathrooms
+            row :min_square_feet
+            row :max_square_feet
+            row :square_foot_type
+            row :phase_name
+            row :building_name
+            row :primary_property_id
+            row :comment
+          end
+        end
+      end
+
+      tab 'Rent' do
+        panel nil do
+          attributes_table_for unit do
+            row(:unit_rent)   { |unit| number_to_currency(unit.unit_rent) }
+            row(:market_rent) { |unit| number_to_currency(unit.market_rent) }
+            row(:min_rent)    { |unit| number_to_currency(unit.min_rent) }
+            row(:max_rent)    { |unit| number_to_currency(unit.max_rent) }
+            row(:avg_rent)    { |unit| number_to_currency(unit.avg_rent) }
+          end
+        end
+      end
+
+      tab 'Status' do
+        panel nil do
+          attributes_table_for unit do
+            row :economic_status
+            row :economic_status_description
+            row :occupancy_status
+            row :occupancy_status_description
+            row :leased_status
+            row :leased_status_description
+            row :number_occupants
+            row :vacate_date
+            row :vacancy_class do |unit|
+              if unit.vacancy_class.present?
+                value = unit.vacancy_class == ApartmentUnit::VACANCY_CLASS.first ? :no : :yes
+
+                status_tag(unit.vacancy_class, value)
+              end
+            end
+            row :made_ready_date
+            row :availability_url
+          end
+        end
+      end
+
+      tab 'Address' do
+        panel nil do
+          attributes_table_for unit do
+            row :address_line_1
+            row :address_line_2
+            row :city
+            row :state
+            row :zip
+          end
+        end
+      end
+
+      tab 'Amenities' do
+        collection_panel_for :amenities do
+          table_for unit.amenities do
+            column :primary_type
+            column :sub_type
+            column :description
+          end
+        end
+      end
+
+      tab 'Feed Files' do
+        collection_panel_for :feed_files do
+          table_for unit.feed_files do
+            column :name
+            column :file_type
+            column :source_link
+          end
+        end
+      end
+    end
+  end
+
   form do |f|
     inputs do
       tabs do
-        tab 'Main' do
+        tab 'Details' do
           input :marketing_name
           input :organization_name
           input :unit_type
