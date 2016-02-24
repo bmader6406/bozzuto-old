@@ -17,20 +17,37 @@ ActiveAdmin.register City do
   end
 
   show do |city|
-    attributes_table do
-      row :name
-      row :state
-      row :created_at
-      row :updated_at
-    end
-
-    panel 'Counties' do
-      if city.counties.any?
-        table_for city.counties do
-          column :name do |county|
-            link_to county.name, [:new_admin, county]
+    tabs do
+      tab 'Details' do
+        panel nil do
+          attributes_table_for city do
+            row :name
+            row :state
+            row :created_at
+            row :updated_at
           end
-          column :state
+        end
+      end
+
+      tab 'Counties' do
+        collection_panel_for :counties do
+          table_for city.counties do
+            column :name do |county|
+              link_to county.name, [:new_admin, county]
+            end
+            column :state
+          end
+        end
+      end
+
+      tab 'Apartment Communities' do
+        collection_panel_for :apartment_communities do
+          table_for city.apartment_communities do
+            column :title
+            column :published
+            column :featured
+            column :street_address
+          end
         end
       end
     end
