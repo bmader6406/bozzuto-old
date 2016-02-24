@@ -37,7 +37,7 @@ ActiveAdmin.register Testimonial do
     inputs do
       input :name
       input :title
-      input :quote
+      input :quote,   as: :redactor
       input :section, collection: Section.ordered_by_title
     end
 

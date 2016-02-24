@@ -32,7 +32,7 @@ ActiveAdmin.register Snippet do
   form do |f|
     inputs do
       input :name
-      input :body
+      input :body, as: :redactor
     end
 
     actions
