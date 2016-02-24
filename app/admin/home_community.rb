@@ -1,7 +1,7 @@
-ActiveAdmin.register ApartmentCommunity do
+ActiveAdmin.register HomeCommunity do
   config.sort_order = 'title_asc'
 
-  menu parent: 'Properties', label: 'Apartment Communities'
+  menu parent: 'Properties', label: 'Home Communities'
 
   permit_params :title,
                 :short_title,
@@ -16,9 +16,6 @@ ActiveAdmin.register ApartmentCommunity do
                 :ufollowup_id,
                 :website_url,
                 :website_url_text,
-                :availability_url,
-                :resident_link_text,
-                :resident_link_url,
                 :video_url,
                 :facebook_url,
                 :twitter_account,
@@ -26,14 +23,12 @@ ActiveAdmin.register ApartmentCommunity do
                 :brochure_type,
                 :brochure,
                 :brochure_url,
-                :schedule_tour_url,
                 :local_info_feed_id,
                 :listing_image,
                 :listing_title,
                 :listing_text,
                 :neighborhood_listing_image,
                 :neighborhood_description,
-                :hero_image,
                 :meta_title,
                 :meta_description,
                 :meta_keywords,
@@ -43,80 +38,45 @@ ActiveAdmin.register ApartmentCommunity do
                 :overview_bullet_2,
                 :overview_bullet_3,
                 :promo_id,
+                :secondary_lead_source_id,
                 :media_meta_title,
                 :media_meta_description,
                 :media_meta_keywords,
                 :floor_plans_meta_title,
                 :floor_plans_meta_description,
                 :floor_plans_meta_keywords,
-                :seo_link_text,
-                :seo_link_url,
                 :show_rtrk_code,
                 :published,
-                :featured,
-                :included_in_export,
-                :core_id,
-                :under_construction,
-                :show_lead_2_lease,
-                :lead_2_lease_email,
-                :lead_2_lease_id,
-                :hyly_id,
                 property_features_ids: [],
-                contact_configuration_attributes: [
-                  :id,
-                  :apartment_community_id,
-                  :upcoming_intro_text,
-                  :upcoming_thank_you_text
-                ],
-                property_amenities_attributes: [
-                  :id,
-                  :property_id,
-                  :primary_type,
-                  :sub_type,
-                  :description,
-                  :_destroy
-                ],
                 dnr_configuration_attributes: [
                   :id,
                   :property_id,
                   :customer_code
                 ],
-                mediaplex_tag_attributes: [
+                conversion_configuration_attributes: [
                   :id,
-                  :trackable_id,
-                  :trackable_type,
-                  :page_name,
-                  :roi_name
-                ],
-                office_hours_attributes: [
-                  :id,
+                  :name,
                   :property_id,
-                  :day,
-                  :closed,
-                  :opens_at,
-                  :opens_at_period,
-                  :closes_at,
-                  :closes_at_period,
-                  :_destroy
+                  :google_send_to_friend_label,
+                  :google_send_to_phone_label,
+                  :google_contact_label,
+                  :bing_send_to_friend_action_id,
+                  :bing_send_to_phone_action_id,
+                  :bing_contact_action_id
                 ]
 
   filter :title_cont,          label: 'Title'
   filter :street_address_cont, label: 'Street Address'
   filter :city,                collection: City.includes(:state)
   filter :published
-  filter :featured
-  filter :included_in_export
-  filter :external_cms_type,
-    label:      'Managed By',
-    as:         :select,
-    collection: Bozzuto::ExternalFeed::Feed.feed_types.map { |feed| [I18n.t("bozzuto.feeds.#{feed}"), feed] }
 
   index do
     column :title
-    column :published
-    column :featured
-    column :included_in_export
-    column :external_cms_name
+    column :street_address
+    column :city
+    column :published do |community|
+      community.published ? status_tag(:yes) : status_tag(:no)
+    end
 
     actions
   end
@@ -138,9 +98,6 @@ ActiveAdmin.register ApartmentCommunity do
             row :longitude
             row :website_url
             row :website_url_text
-            row :availability_url
-            row :resident_link_text
-            row :resident_link_url
             row :video_url
             row :facebook_url
             row :twitter_account
@@ -148,7 +105,6 @@ ActiveAdmin.register ApartmentCommunity do
             row(:brochure_type) { |community| community.brochure_type == Property::USE_BROCHURE_URL ? 'URL' : 'File' }
             row :brochure
             row :brochure_url
-            row :schedule_tour_url
             row :local_info_feed
             row :listing_image do |community|
               if community.listing_image.present?
@@ -163,33 +119,24 @@ ActiveAdmin.register ApartmentCommunity do
               end
             end
             row :neighborhood_description
-            row :hero_image do |community|
-              if community.hero_image.present?
-                image_tag community.hero_image
-              end
-            end
             row :overview_title
             row :overview_text
             row :overview_bullet_1
             row :overview_bullet_2
             row :overview_bullet_3
             row :promo
-            row :core_id
             row(:included_in_export) { |community| community.included_in_export ? status_tag(:yes) : status_tag(:no) }
             row(:published) { |community| community.published ? status_tag(:yes) : status_tag(:no) }
-            row(:featured) { |community| community.featured ? status_tag(:yes) : status_tag(:no) }
           end
         end
       end
 
-      tab 'Floor Plans' do
-        collection_panel_for :floor_plans do
+      tab 'Homes' do
+        collection_panel_for :homes do
           reorderable_table_for community.floor_plans do
             column :name
             column :bedrooms
             column :bathrooms
-            column :square_footage
-            column :availability
             column :featured
           end
         end
@@ -199,16 +146,6 @@ ActiveAdmin.register ApartmentCommunity do
         collection_panel_for :property_features do
           table_for community.property_features do
             column :name
-          end
-        end
-      end
-
-      tab 'Amenities' do
-        collection_panel_for :property_amenities do
-          table_for community.property_amenities do
-            column :primary_type
-            column :sub_type
-            column :description
           end
         end
       end
@@ -255,13 +192,13 @@ ActiveAdmin.register ApartmentCommunity do
         end
       end
 
-      tab 'Office Hours' do
-        collection_panel_for :office_hours do
-          table_for community.office_hours do
-            column(:day) { |office_hours| office_hours.day_name }
-            column :closed
-            column('Opens At') { |office_hours| office_hours.opens_at_with_period }
-            column('Closes At') { |office_hours| office_hours.closes_at_with_period }
+      tab 'Lasso Account' do
+        collection_panel_for :lasso_account do
+          attributes_table_for community.lasso_account do
+            row :uid
+            row :client_id
+            row :project_id
+            row :analytics_id
           end
         end
       end
@@ -269,13 +206,10 @@ ActiveAdmin.register ApartmentCommunity do
       tab 'Contact-Related' do
         panel nil do
           attributes_table_for community do
-            row :hyly_id
-            row(:show_lead_2_lease) { |community| community.show_lead_2_lease ? status_tag(:yes) : status_tag(:no) }
-            row :lead_2_lease_email
-            row :lead_2_lease_id
-            row(:under_construction) { |community| community.under_construction ? status_tag(:yes) : status_tag(:no) }
-            row(:upcoming_intro_text) { |community| community.contact_configuration.try(:upcoming_intro_text) }
-            row(:upcoming_thank_you_text) { |community| community.contact_configuration.try(:upcoming_thank_you_text) }
+            row("MediaMind Activity ID for Contact Page")                  { |community| community.contact_mediamind_id }
+            row("MediaMind Activity ID for Send to Friend Thank You Page") { |community| community.send_to_friend_mediamind_id }
+            row("MediaMind Activity ID for Send to Phone Thank You Page")  { |community| community.send_to_phone_mediamind_id }
+            row :secondary_lead_source_id
           end
         end
       end
@@ -292,8 +226,6 @@ ActiveAdmin.register ApartmentCommunity do
             row :floor_plans_meta_title
             row :floor_plans_meta_description
             row :floor_plans_meta_keywords
-            row :seo_link_text
-            row :seo_link_url
           end
         end
       end
@@ -304,16 +236,22 @@ ActiveAdmin.register ApartmentCommunity do
             row 'DNR Customer Code' do |community|
               community.dnr_configuration.try(:customer_code)
             end
-            row 'Mediaplex Page Name' do |community|
-              community.mediaplex_tag.try(:page_name)
-            end
-            row 'Mediaplex ROI Name' do |community|
-              community.mediaplex_tag.try(:roi_name)
-            end
             row :ufollowup_id
             row :show_rtrk_code do |community|
               community.show_rtrk_code ? status_tag(:yes) : status_tag(:no)
             end
+          end
+        end
+
+        panel 'Conversion Configuration' do
+          attributes_table_for community.conversion_configuration do
+            row :name
+            row :google_send_to_friend_label
+            row :google_send_to_phone_label
+            row :google_contact_label
+            row :bing_send_to_friend_action_id
+            row :bing_send_to_phone_action_id
+            row :bing_contact_action_id
           end
         end
       end
@@ -336,9 +274,6 @@ ActiveAdmin.register ApartmentCommunity do
           input :longitude
           input :website_url
           input :website_url_text
-          input :availability_url
-          input :resident_link_text
-          input :resident_link_url
           input :video_url
           input :facebook_url
           input :twitter_account
@@ -346,47 +281,32 @@ ActiveAdmin.register ApartmentCommunity do
           input :brochure_type, as: :select, collection: Property::BROCHURE_TYPE
           input :brochure
           input :brochure_url
-          input :schedule_tour_url
           input :local_info_feed
           input :listing_image, as: :image
           input :listing_title
           input :listing_text, as: :redactor
           input :neighborhood_listing_image, as: :image
           input :neighborhood_description
-          input :hero_image, as: :image
           input :overview_title
           input :overview_text, as: :redactor
           input :overview_bullet_1
           input :overview_bullet_2
           input :overview_bullet_3
           input :promo
-          input :core_id
-          input :included_in_export
           input :published
-          input :featured
         end
 
-        tab 'Floor Plans' do
-          association_table_for :floor_plans, reorderable: true do
+        tab 'Homes' do
+          association_table_for :homes, reorderable: true do
             column :name
             column :bedrooms
             column :bathrooms
-            column :square_footage
-            column :availability
             column :featured
           end
         end
 
         tab 'Features' do
           input :property_features, label: 'Property Features'
-        end
-
-        tab 'Amenities' do
-          has_many :property_amenities, heading: false, allow_destroy: true, new_record: 'Add Amenity' do |amenity|
-            amenity.input :primary_type, as: :select, collection: PropertyAmenity::PRIMARY_TYPE
-            amenity.input :sub_type,     as: :select, collection: PropertyAmenity::SUB_TYPE
-            amenity.input :description
-          end
         end
 
         tab 'Pages' do
@@ -437,27 +357,19 @@ ActiveAdmin.register ApartmentCommunity do
           end
         end
 
-        tab 'Office Hours' do
-          has_many :office_hours, heading: false, allow_destroy: true do |office_hour|
-            office_hour.input :day, as: :select, collection: OfficeHour::DAY
-            office_hour.input :closed
-            office_hour.input :opens_at
-            office_hour.input :opens_at_period, as: :select, collection: OfficeHour::OPENS_AT_PERIOD
-            office_hour.input :closes_at
-            office_hour.input :closes_at_period, as: :select, collection: OfficeHour::CLOSES_AT_PERIOD
+        tab 'Lasso Account' do
+          association_table_for :lasso_account do
+            column('Lasso UID')        { |account| account.uid }
+            column('Lasso Client ID')  { |account| account.client_id }
+            column('Lasso Project ID') { |account| account.project_id }
           end
         end
 
         tab 'Contact-Related' do
-          input :hyly_id
-          input :show_lead_2_lease
-          input :lead_2_lease_email
-          input :lead_2_lease_id
-          input :under_construction
-          inputs for: [:contact_configuration, f.object.contact_configuration || ApartmentContactConfiguration.new(apartment_community: f.object)] do |contact_config|
-            contact_config.input :upcoming_intro_text, as: :redactor
-            contact_config.input :upcoming_thank_you_text, as: :redactor
-          end
+          input :contact_mediamind_id
+          input :send_to_friend_mediamind_id
+          input :send_to_phone_mediamind_id
+          input :secondary_lead_source_id
         end
 
         tab 'SEO' do
@@ -470,8 +382,6 @@ ActiveAdmin.register ApartmentCommunity do
           input :floor_plans_meta_title
           input :floor_plans_meta_description
           input :floor_plans_meta_keywords
-          input :seo_link_text
-          input :seo_link_url
         end
 
         tab 'Codes' do
@@ -481,11 +391,15 @@ ActiveAdmin.register ApartmentCommunity do
             end
           end
 
-          panel 'Mediaplex' do
-            inputs for: [:mediaplex_tag, f.object.mediaplex_tag || MediaplexTag.new(trackable: f.object)] do |tag|
-              # TODO Re-implement the Mediaplex Parser here
-              tag.input :page_name
-              tag.input :roi_name
+          panel 'Conversion Configuration' do
+            inputs for: [:conversion_configuration, f.object.conversion_configuration || ConversionConfiguration.new(property: f.object)] do |conversion|
+              conversion.input :name
+              conversion.input :google_send_to_friend_label
+              conversion.input :google_send_to_phone_label
+              conversion.input :google_contact_label
+              conversion.input :bing_send_to_friend_action_id
+              conversion.input :bing_send_to_phone_action_id
+              conversion.input :bing_contact_action_id
             end
           end
 
@@ -500,11 +414,11 @@ ActiveAdmin.register ApartmentCommunity do
 
   controller do
     def find_resource
-      ApartmentCommunity.friendly.find(params[:id])
+      HomeCommunity.friendly.find(params[:id])
     end
 
     def scoped_collection
-      ApartmentCommunity.includes(city: [:state])
+      HomeCommunity.includes(city: [:state])
     end
 
     def cities

@@ -43,7 +43,7 @@ class Community < Property
     end
   end
 
-  accepts_nested_attributes_for :dnr_configuration
+  accepts_nested_attributes_for :dnr_configuration, :conversion_configuration
 
   before_save :set_featured_postion
 

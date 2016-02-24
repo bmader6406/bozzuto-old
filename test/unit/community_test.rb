@@ -18,6 +18,7 @@ class CommunityTest < ActiveSupport::TestCase
     should have_one(:conversion_configuration)
 
     should accept_nested_attributes_for(:dnr_configuration)
+    should accept_nested_attributes_for(:conversion_configuration)
 
     describe "creating a new record" do
       subject { ApartmentCommunity.make_unsaved }
