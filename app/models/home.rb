@@ -8,7 +8,7 @@ class Home < ActiveRecord::Base
     :class_name => 'HomeFloorPlan',
     :dependent  => :destroy
 
-  default_scope -> { order(position: :asc) }
+  accepts_nested_attributes_for :floor_plans, allow_destroy: true
 
   validates_presence_of :home_community, :bedrooms, :bathrooms
   validates_inclusion_of :featured, :in => [true, false]

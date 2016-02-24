@@ -4,8 +4,6 @@ class HomeFloorPlan < ActiveRecord::Base
 
   belongs_to :home
 
-  default_scope -> { order(position: :asc) }
-
   validates_presence_of :name
 
   has_attached_file :image,
