@@ -57,7 +57,7 @@ ActiveAdmin.register BodySlideshow do
 
         tab 'Slides' do
           has_many :slides, heading: false, allow_destroy: true do |slide|
-            slide.input :image
+            slide.input :image, as: :image
             slide.input :link_url
             slide.input :video_url
             slide.input :property

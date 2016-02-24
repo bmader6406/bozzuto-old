@@ -79,7 +79,11 @@ ActiveAdmin.register Project do
             rows :website_url
             rows :website_url_text
             rows :video_url
-            rows :listing_image
+            rows :listing_image do |project|
+              if project.listing_image.present?
+                image_tag project.listing_image
+              end
+            end
             rows :listing_title
             rows :listing_text
             rows :overview_text
@@ -180,7 +184,7 @@ ActiveAdmin.register Project do
           input :website_url
           input :website_url_text
           input :video_url
-          input :listing_image
+          input :listing_image, as: :image
           input :listing_title
           input :listing_text
           input :overview_text

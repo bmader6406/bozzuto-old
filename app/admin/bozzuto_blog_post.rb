@@ -43,7 +43,7 @@ ActiveAdmin.register BozzutoBlogPost do
       input :title
       input :url
       input :published_at # TODO Datetime picker?
-      input :image
+      input :image, as: :image
 
       actions
     end

@@ -30,7 +30,7 @@ ActiveAdmin.register Award do
       input :published
       input :published_at # TODO Datetime picker?
       input :featured
-      input :image
+      input :image, as: :image
       input :body # TODO WYSIWYG
       input :show_as_featured_news
       input :home_page_image

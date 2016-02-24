@@ -152,14 +152,22 @@ ActiveAdmin.register ApartmentCommunity do
             row :local_info_feed
             row :listing_image do |community|
               if community.listing_image.present?
-                image_tag community.listing_image.url(:thumb)
+                image_tag community.listing_image
               end
             end
             row :listing_title
             row :listing_text
-            row :neighborhood_listing_image
+            row :neighborhood_listing_image do |community|
+              if community.neighborhood_listing_image.present?
+                image_tag community.neighborhood_listing_image
+              end
+            end
             row :neighborhood_description
-            row :hero_image
+            row :hero_image do |community|
+              if community.hero_image.present?
+                image_tag community.hero_image
+              end
+            end
             row :overview_title
             row :overview_text
             row :overview_bullet_1
@@ -340,12 +348,12 @@ ActiveAdmin.register ApartmentCommunity do
           input :brochure_url
           input :schedule_tour_url
           input :local_info_feed
-          input :listing_image
+          input :listing_image, as: :image
           input :listing_title
           input :listing_text # TODO WYSIWYG
-          input :neighborhood_listing_image
+          input :neighborhood_listing_image, as: :image
           input :neighborhood_description
-          input :hero_image
+          input :hero_image, as: :image
           input :overview_title
           input :overview_text # TODO WYSIWYG
           input :overview_bullet_1

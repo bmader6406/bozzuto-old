@@ -47,7 +47,7 @@ ActiveAdmin.register Carousel do
 
         tab 'Panels' do
           has_many :panels, heading: false, allow_destroy: true do |panel|
-            panel.input :image
+            panel.input :image, as: :image
             panel.input :link_url
             panel.input :heading
             panel.input :caption

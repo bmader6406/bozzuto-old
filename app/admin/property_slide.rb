@@ -14,14 +14,18 @@ ActiveAdmin.register PropertySlide do
 
   index do
     column :property_slideshow
-    column :image
+    column :image do |slide|
+      if slide.image.present?
+        image_tag slide.image.url(:thumb)
+      end
+    end
 
     actions
   end
 
   form do |f|
     inputs do
-      input :image
+      input :image, as: :image
       input :caption
       input :link_url
       input :video_url

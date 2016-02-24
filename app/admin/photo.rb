@@ -17,7 +17,11 @@ ActiveAdmin.register Photo do
   filter :photo_group
 
   index do
-    column :image
+    column :image do |photo|
+      if photo.image.present?
+        image_tag photo.image.url(:thumb)
+      end
+    end
     column :title
     column :photo_group
     column :property
@@ -30,7 +34,7 @@ ActiveAdmin.register Photo do
       input :title
       input :photo_group
       input :property
-      input :image
+      input :image, as: :image
       input :show_to_mobile
     end
 

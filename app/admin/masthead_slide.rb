@@ -7,7 +7,11 @@ ActiveAdmin.register MastheadSlide do
   permit_params :image
 
   index do
-    column :image
+    column :image do |slide|
+      if slide.image.present?
+        image_tag slide.image
+      end
+    end
     column :image_link
 
     actions
@@ -18,7 +22,7 @@ ActiveAdmin.register MastheadSlide do
       input :body
       input :slide_type, as: :select, collection: MastheadSlide::SLIDE_TYPE
 
-      input :image
+      input :image, as: :image
       input :image_link
 
       input :sidebar_text

@@ -122,7 +122,7 @@ ActiveAdmin.register LandingPage do
           input :meta_description
           input :meta_keywords
           input :masthead_body # TODO WYSIWYG
-          input :masthead_image
+          input :masthead_image, as: :image
           input :masthead_image_url
           input :promo
           input :local_info_feed

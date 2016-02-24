@@ -42,8 +42,8 @@ ActiveAdmin.register Neighborhood do
       input :state
       input :latitude
       input :longitude
-      input :banner_image
-      input :listing_image
+      input :banner_image, as: :image
+      input :listing_image, as: :image
       input :description
       input :detail_description
       input :featured_apartment_community

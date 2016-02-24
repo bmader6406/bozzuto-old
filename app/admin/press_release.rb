@@ -35,7 +35,7 @@ ActiveAdmin.register PressRelease do
       input :meta_description
       input :meta_keywords
       input :show_as_featured_news
-      input :home_page_image
+      input :home_page_image, as: :image
     end
 
     actions

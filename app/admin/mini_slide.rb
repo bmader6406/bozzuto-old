@@ -10,7 +10,11 @@ ActiveAdmin.register MiniSlide do
                 :position
 
   index do
-    column :image
+    column :image do |slide|
+      if slide.image.present?
+        image_tag slide.image
+      end
+    end
     column :mini_slideshow
 
     actions
@@ -18,7 +22,7 @@ ActiveAdmin.register MiniSlide do
 
   form do |f|
     inputs do
-      input :image
+      input :image, as: :image
       input :mini_slideshow
     end
 

@@ -20,7 +20,12 @@ ActiveAdmin.register Video do
   show do
     attributes_table do
       rows :id
-      rows :property, :image, :url
+      rows :property, :url
+      row  :image do |video|
+        if video.image.present?
+          image_tag video.image
+        end
+      end
       rows :created_at, :updated_at
     end
   end
@@ -28,7 +33,7 @@ ActiveAdmin.register Video do
   form do |f|
     inputs do
       input :property
-      input :image
+      input :image, as: :image
       input :url
     end
 

@@ -68,8 +68,8 @@ ActiveAdmin.register HomeNeighborhood do
           input :name
           input :latitude
           input :longitude
-          input :banner_image
-          input :listing_image
+          input :banner_image, as: :image
+          input :listing_image, as: :image
           input :description
           input :detail_description
           input :featured_home_community

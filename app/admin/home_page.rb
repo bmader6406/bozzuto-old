@@ -11,7 +11,7 @@ ActiveAdmin.register_page 'Home Page' do
             input :meta_keywords
             input :body # TODO WYSIWYG
             input :mobile_title
-            input :mobile_banner_image
+            input :mobile_banner_image, as: :image
             input :mobile_body # TODO WYSIWYG
           end
 
@@ -27,7 +27,7 @@ ActiveAdmin.register_page 'Home Page' do
               
           tab 'Edit Slides' do
             has_many :slides, heading: false, allow_destroy: true do |slide|
-              slide.input :image
+              slide.input :image, as: :image
               slide.input :link_url
             end
           end

@@ -41,9 +41,9 @@ ActiveAdmin.register Section do
   form do |f|
     inputs do
       input :title, :input_html => { :disabled => true } 
-      input :left_montage_image
-      input :middle_montage_image
-      input :right_montage_image
+      input :left_montage_image, as: :image
+      input :middle_montage_image, as: :image
+      input :right_montage_image, as: :image
     end
 
     actions
