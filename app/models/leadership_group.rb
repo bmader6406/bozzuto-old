@@ -8,7 +8,7 @@ class LeadershipGroup < ActiveRecord::Base
            :dependent  => :destroy,
            :inverse_of => :leadership_group
 
-  has_many :leaders, -> { order(position: :asc) },
+  has_many :leaders,
            :through => :leaderships
 
   validates_presence_of :name
