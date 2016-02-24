@@ -31,6 +31,8 @@ class Area < ActiveRecord::Base
 
   belongs_to :metro
 
+  accepts_nested_attributes_for :area_memberships, allow_destroy: true
+
   validates_presence_of :metro, :area_type
 
   validates_inclusion_of :area_type, :in => AREA_TYPE.map(&:last)

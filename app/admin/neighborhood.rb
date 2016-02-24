@@ -2,6 +2,8 @@ ActiveAdmin.register Neighborhood do
   menu parent: 'Neighborhoods',
        label:  'Neighborhoods'
 
+  reorderable
+
   permit_params :name,
                 :area,
                 :area_id,

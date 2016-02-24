@@ -29,6 +29,12 @@ ActiveAdmin.register Area do
                   :meta_title,
                   :meta_description,
                   :meta_keywords
+                ],
+                area_memberships_attributes: [
+                  :id,
+                  :area_id,
+                  :apartment_community_id,
+                  :_destroy
                 ]
 
   filter :name_cont, label: 'Search'
@@ -39,11 +45,11 @@ ActiveAdmin.register Area do
     actions
   end
 
-  show do
+  show do |area|
     tabs do
       tab 'Details' do
         panel nil do
-          attributes_table_for resource do
+          attributes_table_for area do
             row :name
             row :slug
             row :description
@@ -69,6 +75,14 @@ ActiveAdmin.register Area do
         end
       end
 
+      tab 'Apartment Communities' do
+        collection_panel_for :area_memberships do
+          reorderable_table_for area.area_memberships do
+            column :apartment_community
+          end
+        end
+      end
+
       tab 'Related Areas' do
         collection_panel_for :related_areas do
           reorderable_table_for resource.related_areas do
@@ -86,13 +100,23 @@ ActiveAdmin.register Area do
           end
         end
       end
+
+      tab 'Neighborhoods' do
+        collection_panel_for :neighborhoods do
+          table_for area.neighborhoods do
+            column :name do |neighborhood|
+              link_to neighborhood.name, [:new_admin, neighborhood]
+            end
+          end
+        end
+      end
     end
   end
 
   form do |f|
     inputs do
       tabs do
-        tab 'Main' do
+        tab 'Details' do
           input :name
           input :metro
           input :state
@@ -103,6 +127,12 @@ ActiveAdmin.register Area do
           input :description
           input :detail_description
           input :area_type, as: :select, collection: Area::AREA_TYPE
+        end
+
+        tab 'Apartment Communities' do
+          has_many :area_memberships, allow_destroy: true, new_record: 'Add Community', heading: false do |membership|
+            membership.input :apartment_community
+          end
         end
 
         tab 'Related Areas' do
@@ -116,6 +146,12 @@ ActiveAdmin.register Area do
             seo.input :meta_title
             seo.input :meta_description
             seo.input :meta_keywords
+          end
+        end
+
+        tab 'Neighborhoods' do
+          association_table_for :neighborhoods do
+            column :name
           end
         end
       end

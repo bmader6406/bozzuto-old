@@ -11,6 +11,7 @@ class AreaTest < ActiveSupport::TestCase
 
     should accept_nested_attributes_for(:related_areas)
     should accept_nested_attributes_for(:seo_metadata)
+    should accept_nested_attributes_for(:area_memberships)
 
     should validate_presence_of(:name)
     should validate_presence_of(:latitude)
