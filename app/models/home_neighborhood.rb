@@ -22,6 +22,8 @@ class HomeNeighborhood < ActiveRecord::Base
 
   friendly_id :name, use: [:history]
 
+  accepts_nested_attributes_for :home_neighborhood_memberships, allow_destroy: true
+
   validates_presence_of :name,
                         :latitude,
                         :longitude

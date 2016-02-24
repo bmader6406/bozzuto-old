@@ -19,6 +19,8 @@ class HomeNeighborhoodTest < ActiveSupport::TestCase
     should have_many(:home_neighborhood_memberships).dependent(:destroy)
     should have_many(:home_communities).through(:home_neighborhood_memberships)
 
+    should accept_nested_attributes_for(:home_neighborhood_memberships)
+
     describe "nested structure" do
       before do
         # neighborhood

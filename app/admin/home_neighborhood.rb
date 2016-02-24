@@ -3,7 +3,7 @@ ActiveAdmin.register HomeNeighborhood do
 
   reorderable
 
-  menu parent: 'Neighborhoods'
+  menu parent: 'Neighborhoods', label: 'Home Neighborhoods'
 
   permit_params :name,
                 :latitude,
@@ -12,7 +12,13 @@ ActiveAdmin.register HomeNeighborhood do
                 :listing_image,
                 :description,
                 :detail_description,
-                :featured_home_community_id
+                :featured_home_community_id,
+                home_neighborhood_memberships_attributes: [
+                  :id,
+                  :home_neighborhood_id,
+                  :home_community_id,
+                  :_destroy
+                ]
 
   filter :name_or_description_cont, label: 'Search'
 
@@ -22,11 +28,11 @@ ActiveAdmin.register HomeNeighborhood do
     actions
   end
 
-  show do
+  show do |neighborhood|
     tabs do
       tab 'Details' do
         panel nil do
-          attributes_table_for resource do
+          attributes_table_for neighborhood do
             row :name
             row :latitude
             row :longitude
@@ -49,9 +55,17 @@ ActiveAdmin.register HomeNeighborhood do
         end
       end
 
+      tab 'Home Communities' do
+        collection_panel_for :home_neighborhood_memberships do
+          reorderable_table_for neighborhood.home_neighborhood_memberships do
+            column :home_community
+          end
+        end
+      end
+
       tab 'SEO Metadata' do
         collection_panel_for :seo_metadata do
-          attributes_table_for resource.seo_metadata do
+          attributes_table_for neighborhood.seo_metadata do
             row :meta_title
             row :meta_description
             row :meta_keywords
@@ -73,6 +87,12 @@ ActiveAdmin.register HomeNeighborhood do
           input :description
           input :detail_description
           input :featured_home_community
+        end
+
+        tab 'Home Communities' do
+          has_many :home_neighborhood_memberships, allow_destroy: true, heading: false, new_record: 'Add Home Community' do |membership|
+            membership.input :home_community
+          end
         end
 
         tab 'SEO Metadata' do
