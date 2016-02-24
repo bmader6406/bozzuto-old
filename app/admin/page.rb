@@ -1,7 +1,7 @@
 ActiveAdmin.register Page do
-  menu parent: 'Ronin'
-
   config.sort_order = "section_id_desc"
+
+  menu parent: 'Content'
 
   reorderable
 
@@ -124,6 +124,24 @@ ActiveAdmin.register Page do
           end
         end
       end
+
+      tab 'Slideshows & Carousel' do
+        panel nil do
+          table_for slideshows do
+            column nil do |slideshow|
+              slideshow.label + ':'
+            end
+
+            column nil do |slideshow|
+              if slideshow.present?
+                link_to slideshow.name, slideshow.url_params(:show)
+              else
+                link_to "Add New #{slideshow.label}", slideshow.url_params(:new), class: 'button', target: :blank
+              end
+            end
+          end
+        end
+      end
     end
   end
 
@@ -157,9 +175,34 @@ ActiveAdmin.register Page do
           input :meta_description
           input :meta_keywords
         end
+
+        tab 'Slideshows & Carousel' do
+          slideshows.each do |slideshow|
+            panel slideshow.label do
+              association_table_for slideshow.type do
+                column :name
+              end
+            end
+          end
+        end
       end
     end
 
     actions
+  end
+
+  controller do
+    def find_resource
+      Page.includes(:masthead_slideshow, :body_slideshow, :carousel).find(params[:id])
+    end
+
+    def slideshows
+      @slideshows ||= [
+        Bozzuto::SlideshowWrapper.new(:masthead_slideshow, resource),
+        Bozzuto::SlideshowWrapper.new(:body_slideshow, resource),
+        Bozzuto::SlideshowWrapper.new(:carousel, resource)
+      ]
+    end
+    helper_method :slideshows
   end
 end
