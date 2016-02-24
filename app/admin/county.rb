@@ -15,19 +15,25 @@ ActiveAdmin.register County do
     actions
   end
 
-  show do
-    attributes_table do
-      row :name
-      row :state
-      row :created_at
-      row :updated_at
-    end
+  show do |county|
+    tabs do
+      tab 'Details' do
+        panel nil do
+          attributes_table_for county do
+            row :name
+            row :state
+            row :created_at
+            row :updated_at
+          end
+        end
+      end
 
-    panel 'Cities' do
-      if resource.cities.any?
-        table_for resource.cities do
-          column :name do |city|
-            link_to city.name, [:new_admin, city]
+      tab 'Cities' do
+        collection_panel_for :cities do
+          table_for county.cities do
+            column :name do |city|
+              link_to city.name, [:new_admin, city]
+            end
           end
         end
       end
@@ -36,8 +42,18 @@ ActiveAdmin.register County do
 
   form do |f|
     inputs do
-      input :name
-      input :state, as: :chosen
+      tabs do
+        tab 'Details' do
+          input :name
+          input :state, as: :chosen
+        end
+
+        tab 'Cities' do
+          association_table_for :cities do
+            column :name
+          end
+        end
+      end
 
       actions
     end
