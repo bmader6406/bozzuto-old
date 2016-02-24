@@ -74,7 +74,7 @@ ActiveAdmin.register Award do
         tab 'Details' do
           input :title
           input :image, as: :image
-          input :body # TODO WYSIWYG
+          input :body, as: :redactor
           input :published
           input :published_at # TODO Datetime picker?
           input :featured

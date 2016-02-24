@@ -22,7 +22,7 @@ ActiveAdmin.register PropertyContactPage do
 
   form do |f|
     inputs do
-      input :content
+      input :content, as: :redactor
       input :schedule_appointment_url
       input :local_phone_number
       input :meta_title

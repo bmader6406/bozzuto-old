@@ -16,7 +16,7 @@ ActiveAdmin.register ContactTopic do
   form do |f|
     inputs do
       input :topic
-      input :body # TODO WYSIWYG
+      input :body, as: :redactor
       input :recipients
       input :section
 

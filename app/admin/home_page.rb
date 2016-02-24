@@ -9,10 +9,10 @@ ActiveAdmin.register_page 'Home Page' do
             input :meta_title
             input :meta_description
             input :meta_keywords
-            input :body # TODO WYSIWYG
+            input :body, as: :redactor
             input :mobile_title
             input :mobile_banner_image, as: :image
-            input :mobile_body # TODO WYSIWYG
+            input :mobile_body, as: :redactor
           end
 
           tab 'Reorder Slides' do

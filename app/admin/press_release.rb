@@ -30,7 +30,7 @@ ActiveAdmin.register PressRelease do
       input :published
       input :published_at
       input :featured
-      input :body
+      input :body, as: :redactor
       input :meta_title
       input :meta_description
       input :meta_keywords

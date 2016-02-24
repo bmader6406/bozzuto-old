@@ -18,7 +18,7 @@ ActiveAdmin.register Publication do
   form do |f|
     inputs do
       input :name
-      input :description
+      input :description, as: :redactor
       input :image, as: :image
       input :published
     end

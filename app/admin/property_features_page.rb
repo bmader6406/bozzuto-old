@@ -27,11 +27,11 @@ ActiveAdmin.register PropertyFeaturesPage do
   form do |f|
     inputs do
       input :title_1
-      input :text_1
+      input :text_1, as: :redactor
       input :title_2
-      input :text_2
+      input :text_2, as: :redactor
       input :title_3
-      input :text_3
+      input :text_3, as: :redactor
       input :meta_title
       input :meta_description
       input :meta_keywords

@@ -350,12 +350,12 @@ ActiveAdmin.register ApartmentCommunity do
           input :local_info_feed
           input :listing_image, as: :image
           input :listing_title
-          input :listing_text # TODO WYSIWYG
+          input :listing_text, as: :redactor
           input :neighborhood_listing_image, as: :image
           input :neighborhood_description
           input :hero_image, as: :image
           input :overview_title
-          input :overview_text # TODO WYSIWYG
+          input :overview_text, as: :redactor
           input :overview_bullet_1
           input :overview_bullet_2
           input :overview_bullet_3
@@ -455,8 +455,8 @@ ActiveAdmin.register ApartmentCommunity do
           input :lead_2_lease_id
           input :under_construction
           inputs for: [:contact_configuration, f.object.contact_configuration || ApartmentContactConfiguration.new(apartment_community: f.object)] do |contact_config|
-            contact_config.input :upcoming_intro_text
-            contact_config.input :upcoming_thank_you_text
+            contact_config.input :upcoming_intro_text, as: :redactor
+            contact_config.input :upcoming_thank_you_text, as: :redactor
           end
         end
 

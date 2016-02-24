@@ -121,13 +121,13 @@ ActiveAdmin.register LandingPage do
           input :meta_title
           input :meta_description
           input :meta_keywords
-          input :masthead_body # TODO WYSIWYG
+          input :masthead_body, as: :redactor
           input :masthead_image, as: :image
           input :masthead_image_url
           input :promo
           input :local_info_feed
           input :secondary_title
-          input :secondary_body # TODO WYSIWYG
+          input :secondary_body, as: :redactor
           input :published
           input :hide_from_list
           input :show_apartments_by_area

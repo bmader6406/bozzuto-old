@@ -25,7 +25,7 @@ ActiveAdmin.register NewsPost do
       input :meta_description
       input :meta_keywords
       input :image, as: :image
-      input :body
+      input :body, as: :redactor
       input :show_as_featured_news
       input :home_page_image
     end

@@ -22,7 +22,7 @@ ActiveAdmin.register PropertyToursPage do
   form do |f|
     inputs do
       input :title
-      input :content
+      input :content, as: :redactor
       input :meta_title
       input :meta_description
       input :meta_keywords

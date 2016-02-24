@@ -186,8 +186,8 @@ ActiveAdmin.register Project do
           input :video_url
           input :listing_image, as: :image
           input :listing_title
-          input :listing_text
-          input :overview_text
+          input :listing_text, as: :redactor
+          input :overview_text, as: :redactor
           input :published
           input :featured_mobile
         end

@@ -159,9 +159,9 @@ ActiveAdmin.register Page do
         end
 
         tab 'Content' do
-          input :body
-          input :mobile_body
-          input :mobile_body_extra
+          input :body, as: :redactor
+          input :mobile_body, as: :redactor
+          input :mobile_body_extra, as: :redactor
         end
 
         tab 'Montage' do

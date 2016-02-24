@@ -69,16 +69,16 @@ ActiveAdmin.register MastheadSlide do
       tabs do
         tab 'Details' do
           input :masthead_slideshow
-          input :body
+          input :body, as: :redactor
           input :slide_type, as: :select, collection: MastheadSlide::SLIDE_TYPE
           input :image, as: :image
           input :image_link
-          input :sidebar_text
+          input :sidebar_text, as: :redactor
           input :mini_slideshow
         end
 
         tab 'Quote Fields' do
-          input :quote
+          input :quote, as: :redactor
           input :quote_attribution
           input :quote_job_title
           input :quote_company
