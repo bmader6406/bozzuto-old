@@ -1,11 +1,11 @@
 ActiveAdmin.register MiniSlide do
-  menu parent: 'Ronin',
-       label:  'Mini Slides'
-
   config.filters = false
 
-  permit_params :mini_slideshow,
-                :mini_slideshow_id,
+  menu false
+
+  reorderable
+
+  permit_params :mini_slideshow_id,
                 :image,
                 :position
 

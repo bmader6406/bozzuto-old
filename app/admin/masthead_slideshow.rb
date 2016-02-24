@@ -1,5 +1,5 @@
 ActiveAdmin.register MastheadSlideshow do
-  menu parent: 'Ronin',
+  menu parent: 'Media',
        label:  'Masthead Slideshows'
 
   permit_params :name,

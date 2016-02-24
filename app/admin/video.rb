@@ -1,5 +1,5 @@
 ActiveAdmin.register Video do
-  menu parent: 'Ronin'
+  menu parent: 'Media'
 
   reorderable
 

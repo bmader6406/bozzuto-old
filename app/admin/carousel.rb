@@ -1,5 +1,5 @@
 ActiveAdmin.register Carousel do
-  menu parent: 'Ronin'
+  menu parent: 'Media'
 
   permit_params :name,
                 panels_attributes: [

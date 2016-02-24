@@ -1,15 +1,15 @@
 ActiveAdmin.register PropertySlide do
-  menu parent: 'Ronin',
-       label:  'Property Slides'
-
   config.filters = false
+
+  reorderable
+
+  menu false
 
   permit_params :image,
                 :caption,
                 :link_url,
                 :video_url,
                 :position,
-                :property_slideshow,
                 :property_slideshow_id
 
   index do
@@ -21,6 +21,20 @@ ActiveAdmin.register PropertySlide do
     end
 
     actions
+  end
+
+  show do |slide|
+    attributes_table do
+      row :property_slideshow
+      row :image do |slide|
+        if slide.image.present?
+          image_tag slide.image
+        end
+      end
+      row :caption
+      row :link_url
+      row :video_url
+    end
   end
 
   form do |f|

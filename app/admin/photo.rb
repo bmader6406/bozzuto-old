@@ -1,5 +1,5 @@
 ActiveAdmin.register Photo do
-  menu parent: 'Ronin',
+  menu parent: 'Media',
        label:  'Photos'
 
   reorderable
