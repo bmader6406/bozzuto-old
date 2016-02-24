@@ -38,7 +38,9 @@ ActiveAdmin.register Leader do
       row :title
       row :company
       row :image do
-        image_tag resource.image.url if resource.image
+        if resource.image.present?
+          image_tag resource.image.url
+        end
       end
       row :created_at
       row :updated_at
@@ -51,7 +53,7 @@ ActiveAdmin.register Leader do
       input :title
       input :company
       input :bio
-      input :image, as: :image
+      input :image,   as: :image
     end
     
     actions

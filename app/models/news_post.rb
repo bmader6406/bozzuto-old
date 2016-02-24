@@ -10,7 +10,9 @@ class NewsPost < ActiveRecord::Base
   
   default_scope -> { order(published_at: :desc) }
 
-  validates_presence_of :title, :body
+  validates:title,
+           :body,
+           presence: true
 
   has_attached_file :image,
     :url             => '/system/:class/:id/:id_:style.:extension',
@@ -18,13 +20,11 @@ class NewsPost < ActiveRecord::Base
     :default_style   => :thumb,
     :convert_options => { :all => '-quality 80 -strip' }
 
-  do_not_validate_attachment_file_type :left_montage_image
-
   def to_s
     title
   end
 
-  def typus_name
-    to_s
+  def to_label
+    title
   end
 end

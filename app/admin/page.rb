@@ -97,17 +97,17 @@ ActiveAdmin.register Page do
         panel nil do
           attributes_table_for resource do
             row :left_montage_image do
-              if resource.left_montage_image
+              if resource.left_montage_image.present?
                 image_tag resource.left_montage_image.url
               end
             end
             row :middle_montage_image do
-              if resource.middle_montage_image
+              if resource.middle_montage_image.present?
                 image_tag resource.middle_montage_image.url
               end
             end
             row :right_montage_image do
-              if resource.right_montage_image
+              if resource.right_montage_image.present?
                 image_tag resource.right_montage_image.url
               end
             end

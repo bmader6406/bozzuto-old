@@ -24,10 +24,10 @@ ActiveAdmin.register ProjectUpdate do
 
   form do |f|
     inputs do
-      input :image, as: :image
+      input :image,             as: :image
       input :image_title
       input :image_description
-      input :body, as: :redactor
+      input :body,              as: :redactor
       input :published
       input :published_at
       input :project

@@ -89,6 +89,8 @@ ActiveAdmin.register Project do
             rows :overview_text
             rows :published
             rows :featured_mobile
+            row  :created_at
+            row  :updated_at
           end
         end
       end

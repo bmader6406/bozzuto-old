@@ -19,7 +19,7 @@ ActiveAdmin.register Publication do
     inputs do
       input :name
       input :description, as: :redactor
-      input :image, as: :image
+      input :image,       as: :image
       input :published
     end
 

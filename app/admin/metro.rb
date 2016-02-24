@@ -43,10 +43,14 @@ ActiveAdmin.register Metro do
             rows :name, :slug
             rows :latitude, :longitude
             row :banner_image do
-              image_tag resource.banner_image if resource.banner_image
+              if resource.banner_image.present?
+                image_tag resource.banner_image
+              end
             end
             row :listing_image do
-              image_tag resource.listing_image if resource.listing_image
+              if resource.listing_image.present?
+                image_tag resource.listing_image
+              end
             end
             rows :detail_description
             rows :created_at, :updated_at

@@ -30,12 +30,12 @@ ActiveAdmin.register PressRelease do
       input :published
       input :published_at
       input :featured
-      input :body, as: :redactor
+      input :body,                  as: :redactor
       input :meta_title
       input :meta_description
       input :meta_keywords
       input :show_as_featured_news
-      input :home_page_image, as: :image
+      input :home_page_image,       as: :image
     end
 
     actions
