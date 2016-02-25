@@ -1,10 +1,5 @@
+<% content_for :body_class do %> retail-property<% end %>
+
 <div class="request-info row">
-  <%= link_to 'Request Info', contact_community_path(community), :class => 'request-info-button' %>
-
-  <% if community.phone_number.present? %>
-    Call Us
-    <%= dnr_phone_number(community, dnr_ad_source, :height => 21) %>
-  <% end %>
-
   <%= extra_content.try(:html_safe) %>
 </div>
