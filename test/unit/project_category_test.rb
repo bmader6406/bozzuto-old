@@ -9,9 +9,15 @@ class ProjectCategoryTest < ActiveSupport::TestCase
     should validate_presence_of(:title)
     should validate_uniqueness_of(:title)
 
-    describe "#typus_name" do
+    describe "#to_s" do
       it "return the title" do
-        subject.typus_name.should == subject.title
+        subject.to_s.should == subject.title
+      end
+    end
+
+    describe "#to_label" do
+      it "return the title" do
+        subject.to_label.should == subject.title
       end
     end
   end

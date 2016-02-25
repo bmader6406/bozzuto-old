@@ -31,8 +31,12 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
     context "updating caches" do
       before do
         @community    = ApartmentCommunity.make(:published => true)
-        @neighborhood = Neighborhood.make(:apartment_communities => [subject, @community])
-        @area         = Area.make(:apartment_communities => [subject, @community])
+
+        @neighborhood = Neighborhood.make()
+        @neighborhood.apartment_communities << [subject, @community]
+
+        @area = Area.make()
+        @area.apartment_communities << [subject, @community]
       end
 
       context "after saving" do

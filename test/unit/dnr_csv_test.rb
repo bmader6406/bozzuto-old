@@ -8,8 +8,10 @@ module Bozzuto
           :title             => 'Bat-Cave',
           :website_url       => 'http://batcave.com?name=brucewayne',
           :phone_number      => '123 456 7890',
-          :dnr_configuration => DnrConfiguration.make_unsaved(:customer_code => 'abc123')
+          :dnr_configuration => nil
         )
+        DnrConfiguration.make(:property => @community_1, :customer_code => 'abc123')
+
         @community_2 = ApartmentCommunity.make(
           :title             => 'Arkham Asylum',
           :website_url       => 'http://arkham.org',
