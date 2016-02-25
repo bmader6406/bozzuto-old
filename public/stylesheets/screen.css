@@ -2075,6 +2075,9 @@ div.wysiwyg ul li {
       width: 100%;
       z-index: 10;
     }
+    .property.retail-property #slideshow .overlay {
+      display: none;
+    }
     .property #slideshow p.caption a {
       color: #fff;
       display: block;
