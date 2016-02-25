@@ -41,9 +41,7 @@ en:
       home_floor_plan: Floor Plan
       home_neighborhood: Home Neighborhood
       home_neighborhood_membership: Home Neighborhood Membership
-      home_page:
-        one: Home Page
-        many: Home Page
+      home_page: Home Page
       home_page_slide: Slide
       landing_page: Landing Page
       landing_page_popular_ordering: Popular Property

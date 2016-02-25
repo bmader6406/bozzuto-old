@@ -3,15 +3,15 @@ require 'typus/routes'
 require 'rails-ckeditor/lib/ckeditor'
 
 Bozzuto::Application.routes.draw do
+  # TODO This namespace will change once Typus is removed.
+  namespace :new_admin do
+    resource :home_page, only: [:show, :edit, :update]
+  end
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   Typus::Routes.draw(self)
   Ckeditor::Routes.draw(self)
-
-  # TODO This namespace will change once Typus is removed.
-  namespace :new_admin do
-    resource :home_page, only: [:show, :update], controller: :home_page
-  end
 
   # Typus CSV Exports
   get '/admin/under_construction_leads(.:format)', :controller => 'admin/under_construction_leads', :action => :index

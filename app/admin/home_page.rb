@@ -1,75 +1,90 @@
-ActiveAdmin.register_page 'Home Page' do
-  menu parent: 'Content'
+ActiveAdmin.register HomePage do
+  menu parent: 'Content',
+       label:  'Home Page',
+       url:    -> { url_for [:new_admin, :home_page] }
 
-  content do
-    active_admin_form_for homepage, url: [:new_admin, :home_page], method: :put do |f|
-      inputs do
-        tabs do
-          tab 'Details' do
-            input :meta_title
-            input :meta_description
-            input :meta_keywords
-            input :body, as: :redactor
-            input :mobile_title
-            input :mobile_banner_image, as: :image
-            input :mobile_body, as: :redactor
-          end
+  actions :edit, :update, :show
 
-          tab 'Reorder Slides' do
-            panel nil do
-              reorderable_table_for homepage.slides do
-                column 'Drag to Reorder' do |slide|
-                  image_tag slide.image
-                end
+  permit_params :meta_title,
+                :meta_description,
+                :meta_keywords,
+                :body,
+                :mobile_title,
+                :mobile_banner_image,
+                :mobile_body,
+                slides_attributes: [
+                  :id,
+                  :image,
+                  :link_url,
+                  :_destroy
+                ]
+
+  show do |homepage|
+    tabs do
+      tab 'Details' do
+        panel nil do
+          attributes_table_for homepage do
+            row :meta_title
+            row :meta_description
+            row :meta_keywords
+            row :body
+            row :mobile_title
+            row :mobile_banner_image do |homepage|
+              if homepage.mobile_banner_image.present?
+                image_tag homepage.mobile_banner_image
               end
             end
-          end
-              
-          tab 'Edit Slides' do
-            has_many :slides, heading: false, allow_destroy: true do |slide|
-              slide.input :image, as: :image
-              slide.input :link_url
-            end
+            row :mobile_body
           end
         end
+      end
 
-        actions
+      tab 'Slides' do
+        collection_panel_for :slides do
+          reorderable_table_for homepage.slides do
+            column :image do |slide|
+              image_tag slide.image
+            end
+            column :link_url
+          end
+        end
+      end
+    end
+  end
+
+  form do |f|
+    inputs do
+      tabs do
+        tab 'Details' do
+          input :meta_title
+          input :meta_description
+          input :meta_keywords
+          input :body, as: :redactor
+          input :mobile_title
+          input :mobile_banner_image, as: :image
+          input :mobile_body, as: :redactor
+        end
+
+        tab 'Slides' do
+          has_many :slides, heading: false, allow_destroy: true do |slide|
+            slide.input :image, as: :image
+            slide.input :link_url
+          end
+        end
+      end
+
+      actions do
+        action :submit
+        cancel_link [:new_admin, :home_page]
       end
     end
   end
 
   controller do
-    def update
-      if homepage.update_attributes(homepage_params)
-        redirect_to new_admin_home_page_path, notice: t('flash.actions.update.notice', resource_name: 'HomePage')
-      else
-        render :index
-      end
-    end
+    defaults singleton: true
 
-    private
-
-    def homepage
-      @homepage ||= HomePage.first
-    end
-    helper_method :homepage
-
-    def homepage_params
-      params.require(:home_page).permit(
-        :meta_title,
-        :meta_description,
-        :meta_keywords,
-        :body,
-        :mobile_title,
-        :mobile_banner_image,
-        :mobile_body,
-        slides_attributes: [
-          :id,
-          :image,
-          :link_url,
-          :_destroy
-        ]
-      )
+    def resource
+      @resource ||= HomePage.includes(:slides).first
     end
   end
 end
