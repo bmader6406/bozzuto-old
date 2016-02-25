@@ -4,24 +4,26 @@ class TwitterAccount < ActiveRecord::Base
 
   class_attribute :credentials
 
-  has_many :tweets, :dependent => :destroy
+  has_many :tweets,
+           :dependent => :destroy
 
-  validates_presence_of :username
+  validates :username,
+            presence:   true,
+            uniqueness: true,
+            length: {
+              in:        1..15,
+              too_short: 'must be more than %{count} characters',
+              too_long:  'must be %{count} or fewer characters'
+            },
+            format: {
+              :with    => /\A[_A-Za-z0-9]{1,15}\z/,
+              :message => 'should only contain letters, numbers, and underscore. Do not include the @ symbol before the username'
+            }
 
-  validates_uniqueness_of :username
-
-  validates_length_of :username, :in => 1..15,
-                      :too_short => 'must be more than %{count} characters',
-                      :too_long  => 'must be %{count} or fewer characters'
-
-  validates_format_of :username,
-                      :with    => /\A[_A-Za-z0-9]{1,15}\z/,
-                      :message => 'should only contain letters, numbers, and underscore. Do not include the @ symbol before the username'
-
-  validate :username_exists, :on => :create
+  validate :username_exists,
+           :on => :create
 
   before_create :set_next_update_at
-
 
   def self.client
     @client ||= Twitter::REST::Client.new(credentials.presence || {})
@@ -31,7 +33,11 @@ class TwitterAccount < ActiveRecord::Base
     self.class.client
   end
 
-  def typus_name
+  def to_s
+    username
+  end
+
+  def to_label
     username
   end
 

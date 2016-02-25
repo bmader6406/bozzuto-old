@@ -11,7 +11,19 @@ ActiveAdmin.register TwitterAccount do
     actions
   end
 
+  show do
+    attributes_table do
+      row :id
+      row :username
+      row :next_update_at
+      row :created_at
+      row :updated_at
+    end
+  end
+
   form do |f|
+    semantic_errors
+
     inputs do
       input :username
     end

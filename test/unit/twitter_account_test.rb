@@ -12,9 +12,26 @@ class TwitterAccountTest < ActiveSupport::TestCase
     should validate_presence_of(:username)
     should validate_uniqueness_of(:username)
 
-    describe "#typus_name" do
+    should validate_length_of(:username).is_at_least(1)
+                                        .with_short_message('must be more than 1 characters')
+                                        .is_at_most(15)
+                                        .with_long_message('must be 15 or fewer characters')
+
+    # format
+    should allow_value("a").for(:username)
+    should allow_value("ry_fo99").for(:username)
+    should_not allow_value("a^").for(:username)
+    should_not allow_value("@hamburglar!").for(:username)
+
+    describe "#to_s" do
       it "returns the username" do
-        subject.typus_name.should == 'batman'
+        subject.to_s.should == 'batman'
+      end
+    end
+
+    describe "#to_label" do
+      it "returns the username" do
+        subject.to_label.should == 'batman'
       end
     end
 
