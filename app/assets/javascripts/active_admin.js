@@ -3,10 +3,11 @@
 //= require activeadmin_reorderable
 //= require polymorphic_select
 //= require redactor
+//= require chosen.jquery
 
-// boot redactor editors
 $(document).ready(function(){
-  var options = {
+  // boot redactor editors
+  var redactorOpts = {
     "minHeight": 260,
     "buttons": [
       "html",
@@ -43,5 +44,12 @@ $(document).ready(function(){
     ]
   };
 
-  $(".redactor-input").redactor(options);
+  $(".redactor-input").redactor(redactorOpts);
+
+  var chosenOpts = {
+    "allow_single_deselect": true
+  };
+
+  // boot chosen selects
+  $(".chosen-input").chosen(chosenOpts);
 });

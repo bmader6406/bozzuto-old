@@ -15,10 +15,29 @@ ActiveAdmin.register County do
     actions
   end
 
+  show do
+    attributes_table do
+      row :name
+      row :state
+      row :created_at
+      row :updated_at
+    end
+
+    panel 'Cities' do
+      if resource.cities.any?
+        table_for resource.cities do
+          column :name do |city|
+            link_to city.name, [:new_admin, city]
+          end
+        end
+      end
+    end
+  end
+
   form do |f|
     inputs do
       input :name
-      input :state
+      input :state, as: :chosen
 
       actions
     end

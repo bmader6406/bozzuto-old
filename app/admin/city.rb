@@ -24,10 +24,12 @@ ActiveAdmin.register City do
       row :updated_at
     end
 
-    if city.counties.any?
-      panel 'Counties' do
+    panel 'Counties' do
+      if city.counties.any?
         table_for city.counties do
-          column :name
+          column :name do |county|
+            link_to county.name, [:new_admin, county]
+          end
           column :state
         end
       end
@@ -37,8 +39,8 @@ ActiveAdmin.register City do
   form do |f|
     inputs do
       input :name
-      input :state
-      input :counties, collection: County.order(:name)
+      input :state,    as: :chosen
+      input :counties, as: :chosen, collection: County.order(:name)
 
       actions
     end
