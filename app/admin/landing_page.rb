@@ -1,5 +1,5 @@
 ActiveAdmin.register LandingPage do
-  menu parent: 'Geography'
+  menu parent: 'Geography', label: 'Landing Pages'
 
   permit_params :title,
                 :state_id,
@@ -81,7 +81,11 @@ ActiveAdmin.register LandingPage do
       tab 'Featured Apartment Communities' do
         collection_panel_for :featured_apartment_communities do
           table_for page.featured_apartment_communities do
-            # TODO Fill in after ApartmentCommunity is in AA.
+            column :title
+            column :street_address
+            column :city
+            column :published
+            column :featured
           end
         end
       end
@@ -89,7 +93,11 @@ ActiveAdmin.register LandingPage do
       tab 'Apartment Communities' do
         collection_panel_for :apartment_communities do
           table_for page.apartment_communities do
-            # TODO Fill in after ApartmentCommunity is in AA.
+            column :title
+            column :street_address
+            column :city
+            column :published
+            column :featured
           end
         end
       end
@@ -97,7 +105,10 @@ ActiveAdmin.register LandingPage do
       tab 'Home Communities' do
         collection_panel_for :home_communities do
           table_for page.home_communities do
-            # TODO Fill in after HomeCommunity is in AA.
+            column :title
+            column :street_address
+            column :city
+            column :published
           end
         end
       end
@@ -105,7 +116,10 @@ ActiveAdmin.register LandingPage do
       tab 'Projects' do
         collection_panel_for :projects do
           table_for page.projects do
-            # TODO Fill in after Project is in AA.
+            column :title
+            column :street_address
+            column :city
+            column :published
           end
         end
       end
