@@ -8,7 +8,7 @@ ActiveAdmin.register LassoAccount do
                 :analytics_id
 
   filter :uid_or_client_id_or_project_id_cont, label: 'Search'
-  filter :property, as: :select, collection: HomeCommunity.all
+  filter :property, as: :select, collection: -> { HomeCommunity.all }
 
   index do
     column :uid
