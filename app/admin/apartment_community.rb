@@ -111,6 +111,30 @@ ActiveAdmin.register ApartmentCommunity do
     as:         :select,
     collection: Bozzuto::ExternalFeed::Feed.feed_types.map { |feed| [I18n.t("bozzuto.feeds.#{feed}"), feed] }
 
+  action_item :disconnect, only: :show, if: -> { resource.managed_externally? } do
+    link_to "Disconnect from #{feed_name}", [:disconnect, :new_admin, resource]
+  end
+
+  action_item :merge_form, only: :show, if: -> { !resource.managed_externally? } do
+    link_to 'Merge with a Feed Property', [:merge_form, :new_admin, resource]
+  end
+
+  member_action :disconnect do
+    cached_feed_name = feed_name
+
+    resource.disconnect_from_external_cms!
+
+    redirect_to [:new_admin, resource], notice: "Successfully disconnected from #{cached_feed_name}"
+  end
+
+  member_action :merge_form
+  member_action :pre_merge, method: :put
+  member_action :merge, method: :put do
+    property_merger.merge!
+
+    redirect_to [:new_admin, property_merger.property], notice: property_merger.to_s
+  end
+
   index do
     column :title
     column :published
@@ -524,6 +548,16 @@ ActiveAdmin.register ApartmentCommunity do
       end
     end
     helper_method :pages
+
+    def feed_name
+      resource.external_cms_name
+    end
+    helper_method :feed_name
+
+    def property_merger
+      @property_merger ||= Bozzuto::PropertyMerger.new(resource).process(params)
+    end
+    helper_method :property_merger
 
     def strip_empty_dnr_config
       if resource_params.first['dnr_configuration_attributes']['customer_code'].empty?
