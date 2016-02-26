@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160226191004) do
+ActiveRecord::Schema.define(:version => 20160226193815) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -1014,21 +1014,21 @@ ActiveRecord::Schema.define(:version => 20160226191004) do
   end
 
   create_table "properties", :force => true do |t|
-    t.string   "title",                                                   :null => false
+    t.string   "title",                                                                                  :null => false
     t.string   "subtitle"
-    t.integer  "city_id",                                                 :null => false
-    t.boolean  "elite",                                :default => false, :null => false
-    t.boolean  "smart_share",                          :default => false, :null => false
-    t.boolean  "smart_rent",                           :default => false, :null => false
-    t.boolean  "green",                                :default => false, :null => false
-    t.boolean  "non_smoking",                          :default => false, :null => false
+    t.integer  "city_id",                                                                                :null => false
+    t.boolean  "elite",                                                               :default => false, :null => false
+    t.boolean  "smart_share",                                                         :default => false, :null => false
+    t.boolean  "smart_rent",                                                          :default => false, :null => false
+    t.boolean  "green",                                                               :default => false, :null => false
+    t.boolean  "non_smoking",                                                         :default => false, :null => false
     t.string   "website_url"
     t.string   "video_url"
     t.string   "facebook_url"
     t.string   "promo_image"
     t.string   "promo_url"
-    t.float    "latitude"
-    t.float    "longitude"
+    t.decimal  "latitude",                             :precision => 10, :scale => 6
+    t.decimal  "longitude",                            :precision => 10, :scale => 6
     t.string   "street_address"
     t.text     "overview_text"
     t.text     "promotions_text"
@@ -1049,10 +1049,10 @@ ActiveRecord::Schema.define(:version => 20160226191004) do
     t.string   "overview_bullet_1"
     t.string   "overview_bullet_2"
     t.string   "overview_bullet_3"
-    t.boolean  "published",                            :default => false, :null => false
+    t.boolean  "published",                                                           :default => false, :null => false
     t.string   "short_title"
     t.string   "phone_number"
-    t.integer  "brochure_type",                        :default => 0,     :null => false
+    t.integer  "brochure_type",                                                       :default => 0,     :null => false
     t.string   "brochure_link_text"
     t.string   "brochure_file_name"
     t.string   "brochure_content_type"
@@ -1061,7 +1061,7 @@ ActiveRecord::Schema.define(:version => 20160226191004) do
     t.string   "meta_title"
     t.string   "meta_description"
     t.string   "meta_keywords"
-    t.boolean  "show_lead_2_lease",                    :default => false, :null => false
+    t.boolean  "show_lead_2_lease",                                                   :default => false, :null => false
     t.string   "lead_2_lease_email"
     t.date     "completion_date"
     t.string   "media_meta_title"
@@ -1076,13 +1076,13 @@ ActiveRecord::Schema.define(:version => 20160226191004) do
     t.integer  "position"
     t.integer  "promo_id"
     t.integer  "ufollowup_id"
-    t.boolean  "has_completion_date",                  :default => true,  :null => false
+    t.boolean  "has_completion_date",                                                 :default => true,  :null => false
     t.string   "listing_promo_file_name"
     t.string   "listing_promo_content_type"
     t.integer  "listing_promo_file_size"
     t.string   "resident_link_text"
     t.string   "resident_link_url"
-    t.boolean  "featured",                             :default => false, :null => false
+    t.boolean  "featured",                                                            :default => false, :null => false
     t.integer  "featured_position"
     t.string   "zip_code"
     t.string   "lead_2_lease_id"
@@ -1091,19 +1091,19 @@ ActiveRecord::Schema.define(:version => 20160226191004) do
     t.string   "send_to_friend_mediamind_id"
     t.string   "send_to_phone_mediamind_id"
     t.string   "contact_mediamind_id"
-    t.boolean  "featured_mobile",                      :default => false
-    t.boolean  "under_construction",                   :default => false
+    t.boolean  "featured_mobile",                                                     :default => false
+    t.boolean  "under_construction",                                                  :default => false
     t.string   "external_cms_type"
     t.string   "schedule_tour_url"
     t.string   "seo_link_text"
     t.string   "seo_link_url"
-    t.boolean  "show_rtrk_code",                       :default => false, :null => false
+    t.boolean  "show_rtrk_code",                                                      :default => false, :null => false
     t.text     "office_hours"
     t.string   "pinterest_url"
     t.string   "website_url_text"
     t.text     "neighborhood_description"
     t.string   "neighborhood_listing_image_file_name"
-    t.boolean  "included_in_export",                   :default => true,  :null => false
+    t.boolean  "included_in_export",                                                  :default => true,  :null => false
     t.integer  "secondary_lead_source_id"
     t.string   "hero_image_file_name"
     t.string   "hero_image_content_type"
@@ -1114,7 +1114,7 @@ ActiveRecord::Schema.define(:version => 20160226191004) do
     t.string   "short_description"
     t.integer  "unit_count"
     t.string   "external_management_id"
-    t.boolean  "found_in_latest_feed",                 :default => true,  :null => false
+    t.boolean  "found_in_latest_feed",                                                :default => true,  :null => false
   end
 
   add_index "properties", ["core_id"], :name => "index_properties_on_core_id"
