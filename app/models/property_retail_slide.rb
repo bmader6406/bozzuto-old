@@ -10,7 +10,6 @@ class PropertyRetailSlide < ActiveRecord::Base
     :convert_options => { :all => '-quality 80 -strip' }
 
   validates_attachment_presence :image
-  validates_length_of :caption, :maximum => 128, :allow_nil => true
 
   validates :property_retail_page,
             :name,

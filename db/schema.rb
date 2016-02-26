@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160218181512) do
+ActiveRecord::Schema.define(:version => 20160226191004) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -1209,7 +1209,6 @@ ActiveRecord::Schema.define(:version => 20160218181512) do
     t.string   "name",                    :null => false
     t.string   "image_file_name",         :null => false
     t.string   "image_content_type",      :null => false
-    t.string   "caption"
     t.string   "video_url"
     t.string   "link_url"
     t.integer  "position"

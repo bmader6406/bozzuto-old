@@ -8,8 +8,6 @@ class PropertyRetailSlideTest < ActiveSupport::TestCase
 
     should validate_attachment_presence(:image)
 
-    should ensure_length_of(:caption).is_at_least(0).is_at_most(128)
-
     ['to_s', 'typus_name'].each do |method|
       describe "##{method}" do
         subject { PropertyRetailSlide.make(:name => 'Retail Storefront') }

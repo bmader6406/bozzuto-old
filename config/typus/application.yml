@@ -906,7 +906,7 @@ PropertyRetailSlide:
   fields:
     default: name, image, position
     list: name, image, position
-    form: name, image, caption, link_url, video_url, property_retail_page
+    form: name, image, link_url, video_url, property_retail_page
   order_by: position
   relationships: property_retail_page
   filters:
