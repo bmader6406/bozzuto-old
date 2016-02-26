@@ -31,11 +31,10 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
     context "updating caches" do
       before do
         @community    = ApartmentCommunity.make(:published => true)
-
         @neighborhood = Neighborhood.make()
         @neighborhood.apartment_communities << [subject, @community]
 
-        @area = Area.make()
+        @area = Area.make
         @area.apartment_communities << [subject, @community]
       end
 
@@ -253,6 +252,14 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
             it "set the external_cms_type of the receiver" do
               subject.external_cms_type.should == @other.external_cms_type
+            end
+
+            it "transfers the core ID to the receiver" do
+              subject.core_id.should == @other.id
+            end
+
+            it "transfers slugs to the receiver" do
+              subject.slugs.pluck(:slug).should include @other.slug
             end
 
             it "delete the receiver's floor plans" do
