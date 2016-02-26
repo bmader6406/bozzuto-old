@@ -101,8 +101,12 @@ class Property < ActiveRecord::Base
     super.merge(:name => Rack::Utils.escape_html(title))
   end
 
-  def typus_name
+  def to_s
     title
+  end
+
+  def typus_name
+    to_s
   end
 
   def address(separator = ', ')
