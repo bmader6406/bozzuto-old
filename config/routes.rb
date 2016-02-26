@@ -263,7 +263,7 @@ Bozzuto::Application.routes.draw do
   #
   #   /careers
   #   /services/management
-  scope '/:section', :constraints => { :section => %r{(services/)?(-|\w)+} } do
+  scope '/:section', :constraints => SectionConstraint.new  do
     resources :testimonials, :only => :index
 
     resources :projects,
