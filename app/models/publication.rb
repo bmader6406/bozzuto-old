@@ -8,7 +8,8 @@ class Publication < ActiveRecord::Base
 
   scope :ordered, -> { order(position: :asc) }
 
-  validates_presence_of :name
+  validates :name,
+            presence: true
 
   has_attached_file :image,
     :url             => '/system/:class/:id/publication_:id_:style.:extension',
@@ -24,7 +25,7 @@ class Publication < ActiveRecord::Base
     name
   end
 
-  def typus_name
-    to_s
+  def to_label
+    name
   end
 end

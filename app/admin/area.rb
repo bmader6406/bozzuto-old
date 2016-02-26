@@ -55,12 +55,12 @@ ActiveAdmin.register Area do
             row :description
             row :detail_description
             row :banner_image do |area|
-              if area.banner_image
+              if area.banner_image.present?
                 image_tag area.banner_image
               end
             end
             row :listing_image do |area|
-              if area.listing_image
+              if area.listing_image.present?
                 image_tag area.listing_image
               end
             end
