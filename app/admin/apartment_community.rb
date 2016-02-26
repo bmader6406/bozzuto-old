@@ -21,7 +21,7 @@ ActiveAdmin.register ApartmentCommunity do
                 :resident_link_url,
                 :video_url,
                 :facebook_url,
-                :twitter_account,
+                :twitter_account_id,
                 :brochure_link_text,
                 :brochure_type,
                 :brochure,
@@ -61,7 +61,7 @@ ActiveAdmin.register ApartmentCommunity do
                 :lead_2_lease_email,
                 :lead_2_lease_id,
                 :hyly_id,
-                property_features_ids: [],
+                property_feature_ids: [],
                 contact_configuration_attributes: [
                   :id,
                   :apartment_community_id,
@@ -499,6 +499,8 @@ ActiveAdmin.register ApartmentCommunity do
   end
 
   controller do
+    before_action :strip_empty_dnr_config, only: [:create, :update]
+
     def find_resource
       ApartmentCommunity.friendly.find(params[:id])
     end
@@ -522,5 +524,11 @@ ActiveAdmin.register ApartmentCommunity do
       end
     end
     helper_method :pages
+
+    def strip_empty_dnr_config
+      if resource_params.first['dnr_configuration_attributes']['customer_code'].empty?
+        resource_params.first.delete('dnr_configuration_attributes')
+      end
+    end
   end
 end
