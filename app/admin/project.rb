@@ -31,7 +31,8 @@ ActiveAdmin.register Project do
                 :overview_text,
                 :published,
                 :featured_mobile,
-                :position
+                :position,
+                project_categories_ids: []
 
   # Work around for models who have overridden `to_param` in AA
   # See SO issue:
@@ -218,7 +219,7 @@ ActiveAdmin.register Project do
 
         tab 'Slideshow' do
           panel nil do
-            association_table_for :property_slideshow, scope: resource.slideshow do
+            association_table_for :slideshow do
               column :name
             end
           end
@@ -226,7 +227,7 @@ ActiveAdmin.register Project do
 
         tab 'Data Points' do
           panel nil do
-            association_table_for :project_data_points, scope: resource.data_points.position_asc do
+            association_table_for :data_points, scope: resource.data_points.position_asc do
               column :position
               column :name
             end
@@ -235,7 +236,7 @@ ActiveAdmin.register Project do
 
         tab 'Updates' do
           panel nil do
-            association_table_for :project_updates, scope: resource.updates do
+            association_table_for :updates, scope: resource.updates do
               column :update do |u|
                 u.to_s
               end
@@ -246,11 +247,7 @@ ActiveAdmin.register Project do
         end
 
         tab 'Categories' do
-          panel nil do
-            association_table_for :project_categories do
-              column :title
-            end
-          end
+          input :project_categories
         end
       end
     end
