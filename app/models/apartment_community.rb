@@ -13,8 +13,6 @@ class ApartmentCommunity < Community
     :floor_plans
   ]
 
-  #acts_as_archive :indexes => [:id]
-
   def self.ransackable_scopes(auth_object = nil)
     super + [
       :with_min_price,
