@@ -74,6 +74,10 @@ ActiveAdmin.register HomeCommunity do
     link_to 'Export Field Audit', [:export_field_audit, :new_admin, :home_communities]
   end
 
+  action_item :preview, only: :show, if: -> { resource.published? } do
+    link_to 'Preview', resource, target: :blank
+  end
+
   collection_action :export_field_audit do
     send_data Bozzuto::HomeCommunityFieldAudit.audit_csv, filename: 'home_communities_field_audit.csv', type: :csv
   end
@@ -141,7 +145,7 @@ ActiveAdmin.register HomeCommunity do
 
       tab 'Homes' do
         collection_panel_for :homes do
-          reorderable_table_for community.floor_plans do
+          reorderable_table_for community.homes do
             column :name
             column :bedrooms
             column :bathrooms
