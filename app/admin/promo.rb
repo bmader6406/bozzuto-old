@@ -1,24 +1,36 @@
 ActiveAdmin.register Promo do
   menu parent: 'Content'
 
-  permit_params :title
+  permit_params :title,
+                :subtitle,
+                :link_url,
+                :has_expiration_date,
+                :expiration_date
 
   filter :title_cont, label: 'Title'
 
   index do
     column :title
-    column :expired?
+    column :expired? do |promo|
+      status_tag promo.expired?
+    end
     column :expiration_date
 
     actions
   end
 
-  show do
+  show do |promo|
     attributes_table do
-      rows :id
-      rows :title, :subtitle, :link_url
-      rows :has_expiration_date, :expiration_date
-      rows :created_at, :updated_at
+      row :id
+      row :title
+      row :subtitle
+      row :link_url
+      row :has_expiration_date do
+        status_tag promo.has_expiration_date
+      end
+      row :expiration_date
+      row :created_at
+      row :updated_at
     end
   end
 

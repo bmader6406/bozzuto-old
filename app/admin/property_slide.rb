@@ -1,9 +1,10 @@
 ActiveAdmin.register PropertySlide do
-  config.filters = false
+  menu false
+
+  config.filters    = false
+  config.sort_order = "position_asc"
 
   reorderable
-
-  menu false
 
   permit_params :image,
                 :caption,
@@ -39,11 +40,11 @@ ActiveAdmin.register PropertySlide do
 
   form do |f|
     inputs do
-      input :image, as: :image
+      input :property_slideshow, as: :chosen
+      input :image,              as: :image
       input :caption
       input :link_url
       input :video_url
-      input :property_slideshow
     end
 
     actions

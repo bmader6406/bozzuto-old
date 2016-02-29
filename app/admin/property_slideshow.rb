@@ -20,8 +20,11 @@ ActiveAdmin.register PropertySlideshow do
       tab 'Details' do
         panel nil do
           attributes_table_for slideshow do
+            row :id
             row :name
             row :property
+            row :created_at
+            row :updated_at
           end
         end
       end
@@ -45,7 +48,7 @@ ActiveAdmin.register PropertySlideshow do
       tabs do
         tab 'Details' do
           input :name
-          input :property
+          input :property, as: :chosen
         end
 
         tab 'Slides' do
