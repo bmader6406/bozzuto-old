@@ -46,7 +46,9 @@ ActiveAdmin.register Publication do
       tab 'Rank Categories' do
         collection_panel_for :rank_categories do
           reorderable_table_for publication.rank_categories do
-            column :name
+            column :name do |rank_category|
+              link_to rank_category.name, [:new_admin, rank_category]
+            end
           end
         end
       end

@@ -1,8 +1,8 @@
 ActiveAdmin.register Rank do
+  menu false
+
   config.filters    = false
   config.sort_order = 'year_desc'
-
-  menu false
 
   permit_params :rank_category,
                 :rank_category_id,
@@ -21,10 +21,13 @@ ActiveAdmin.register Rank do
 
   show do
     attributes_table do
-      rows :id
-      rows :rank_category
-      rows :year, :rank_number, :description
-      rows :created_at, :updated_at
+      row :id
+      row :rank_category
+      row :year
+      row :rank_number
+      row :description
+      row :created_at
+      row :updated_at
     end
   end
 

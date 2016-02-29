@@ -7,6 +7,7 @@ class RankCategory < ActiveRecord::Base
   has_many :ranks, -> { order(year: :desc) },
     :dependent => :destroy
 
-  validates_presence_of :name
-  validates_presence_of :publication
+  validates :name,
+            :publication,
+            presence: true
 end

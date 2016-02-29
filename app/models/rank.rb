@@ -6,7 +6,11 @@ class Rank < ActiveRecord::Base
 
   scope :ordered, -> { order(year: :desc) }
 
-  validates_presence_of :rank_number, :year
+  validates :year,
+            presence: true
+
+  validates :rank_number,
+            presence: true
 
   validates_numericality_of :rank_number,
     :only_integer => true,

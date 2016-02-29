@@ -5,6 +5,7 @@ class RankCategoryTest < ActiveSupport::TestCase
     subject { RankCategory.new }
 
     should belong_to(:publication)
+
     should have_many(:ranks)
 
     should validate_presence_of(:name)
