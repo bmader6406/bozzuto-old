@@ -2090,6 +2090,12 @@ div.wysiwyg ul li {
       padding-top: 15px;
       margin-top: 20px;
     }
+    .property.retail-property #slideshow p.watch-video {
+      margin-top: 0;
+      padding: 0;
+      position: relative;
+      top: -10px;
+    }
     #slideshow p.watch-video a {
       background: transparent url(../images/structure/bg-watch-video.png) no-repeat 0 0;
       display: block;
@@ -2101,7 +2107,6 @@ div.wysiwyg ul li {
     #slideshow p.watch-video a:hover {
       background-position: 0 -43px;
     }
-
     .page #slideshow p.watch-video {
       left: 10px;
       position: absolute;
