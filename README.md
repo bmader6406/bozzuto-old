@@ -14,10 +14,10 @@ $ git clone git@github.com:vigetlabs/bozzuto.git
 
 ### Ruby
 
-Install Ruby `1.9.3p547` with rbenv:
+Install Ruby `2.2.3` with rbenv:
 
 ```bash
-$ rbenv install 1.9.3-p547
+$ rbenv install 2.2.3
 ```
 
 ### Bundler
