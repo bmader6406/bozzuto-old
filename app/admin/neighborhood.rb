@@ -17,8 +17,8 @@ ActiveAdmin.register Neighborhood do
                 :listing_image,
                 :description,
                 :detail_description,
-                :featured_apartment_coummunity,
-                :featured_apartment_coummunity_id,
+                :featured_apartment_community,
+                :featured_apartment_community_id,
                 seo_metadata_attributes: [
                   :id,
                   :meta_title,
@@ -31,7 +31,7 @@ ActiveAdmin.register Neighborhood do
                   :apartment_community_id,
                   :_destroy
                 ],
-                related_neighborhood_attributes: [
+                related_neighborhoods_attributes: [
                   :id,
                   :neighborhood_id,
                   :nearby_neighborhood_id,
