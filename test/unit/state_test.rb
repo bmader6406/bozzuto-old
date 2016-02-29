@@ -45,13 +45,17 @@ class StateTest < ActiveSupport::TestCase
         @community_2 = ApartmentCommunity.make
         @community_3 = ApartmentCommunity.make
 
-        @neighborhood_1 = Neighborhood.make(:state => subject, :apartment_communities => [@community_1])
-        @neighborhood_2 = Neighborhood.make(:state => subject, :apartment_communities => [])
+        @neighborhood_1 = Neighborhood.make(:state => subject)
+        @neighborhood_1.apartment_communities << [@community_1]
+
+        @neighborhood_2 = Neighborhood.make(:state => subject)
+        @neighborhood_2.apartment_communities << []
 
         @area_1 = Area.make(:communities, :state => subject)
         @area_1.apartment_communities << [@community_1, @community_2]
 
         @area_2 = Area.make(:neighborhoods, :state => subject)
+        @area_2.apartment_communities << []
       end
 
       it "returns the places, sorted by apartment_communities_count" do

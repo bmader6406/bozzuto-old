@@ -81,9 +81,11 @@ class AreaTest < ActiveSupport::TestCase
           @floor_plan_1 = ApartmentFloorPlan.make(:apartment_community => @community_1)
           @floor_plan_2 = ApartmentFloorPlan.make(:apartment_community => @community_2)
 
-          @neighborhood_1 = Neighborhood.make(:apartment_communities => [@community_1, @community_2, @community_3])
+          @neighborhood_1 = Neighborhood.make
+          @neighborhood_1.apartment_communities << [@community_1, @community_2, @community_3]
 
-          @neighborhood_2 = Neighborhood.make(:apartment_communities => [@community_1])
+          @neighborhood_2 = Neighborhood.make
+          @neighborhood_2.apartment_communities << [@community_1]
 
           subject.neighborhoods = [@neighborhood_1, @neighborhood_2]
           subject.save
@@ -256,8 +258,11 @@ class AreaTest < ActiveSupport::TestCase
         @community_3 = ApartmentCommunity.make
         @community_4 = ApartmentCommunity.make
 
-        @neighborhood_1 = Neighborhood.make(:apartment_communities => [@community_3, @community_4])
-        @neighborhood_2 = Neighborhood.make(:apartment_communities => [@community_4])
+        @neighborhood_1 = Neighborhood.make
+        @neighborhood_1.apartment_communities << [@community_3, @community_4]
+
+        @neighborhood_2 = Neighborhood.make
+        @neighborhood_2.apartment_communities << [@community_4]
 
         @area_1 = Area.make(:communities)
         @area_2 = Area.make(:neighborhoods)

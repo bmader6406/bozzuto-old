@@ -142,8 +142,11 @@ class NeighborhoodTest < ActiveSupport::TestCase
         @community_1 = ApartmentCommunity.make
         @community_2 = ApartmentCommunity.make
 
-        @nearby_1 = Neighborhood.make(:apartment_communities => [@community_1, @community_2])
-        @nearby_2 = Neighborhood.make(:apartment_communities => [@community_1])
+        @nearby_1 = Neighborhood.make
+        @nearby_1.apartment_communities << [@community_1, @community_2]
+
+        @nearby_2 = Neighborhood.make
+        @nearby_2.apartment_communities << [@community_1]
 
         subject.nearby_neighborhoods = [@nearby_1, @nearby_2]
         subject.save

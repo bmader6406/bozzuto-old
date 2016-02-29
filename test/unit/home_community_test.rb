@@ -19,22 +19,11 @@ class HomeCommunityTest < ActiveSupport::TestCase
     should have_many(:home_neighborhoods)
     should have_many(:home_neighborhood_memberships)
     
-=begin
-    should 'be archivable' do
-      assert HomeCommunity.acts_as_archive?
-      assert_nothing_raised do
-        HomeCommunity::Archive
-      end
-      assert defined?(HomeCommunity::Archive)
-      assert HomeCommunity::Archive.ancestors.include?(ActiveRecord::Base)
-      assert HomeCommunity::Archive.ancestors.include?(Property::Archive)
-      assert HomeCommunity::Archive.ancestors.include?(Community::Archive)
-    end
-=end
 
     describe "callbacks" do
       before do
-        @neighborhood = HomeNeighborhood.make(:home_communities => [subject, HomeCommunity.make])
+        @neighborhood = HomeNeighborhood.make
+        @neighborhood.home_communities << [subject, HomeCommunity.make]
       end
 
       describe "after saving" do
@@ -135,8 +124,11 @@ class HomeCommunityTest < ActiveSupport::TestCase
 
     describe "#first_home_neighborhood" do
       setup do
-        @neighborhood = HomeNeighborhood.make(:home_communities => [subject, HomeCommunity.make])
-        @other_hood   = HomeNeighborhood.make(:home_communities => [subject, HomeCommunity.make])
+        @neighborhood = HomeNeighborhood.make
+        @neighborhood.home_communities << [subject, HomeCommunity.make]
+
+        @other_hood = HomeNeighborhood.make
+        @other_hood.home_communities << [subject, HomeCommunity.make]
       end
 
       should "return its first home neighborhood" do

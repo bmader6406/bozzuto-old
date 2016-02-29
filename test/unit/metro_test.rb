@@ -37,9 +37,13 @@ class MetroTest < ActiveSupport::TestCase
       @floor_plan_1 = ApartmentFloorPlan.make(:apartment_community => @community_1)
       @floor_plan_2 = ApartmentFloorPlan.make(:apartment_community => @community_2)
 
-      @neighborhood_1 = Neighborhood.make(:apartment_communities => [@community_1, @community_2])
+      @neighborhood_1 = Neighborhood.make
+      @neighborhood_1.apartment_communities << [@community_1, @community_2]
+
       @neighborhood_2 = Neighborhood.make
-      @neighborhood_3 = Neighborhood.make(:apartment_communities => [@community_1])
+
+      @neighborhood_3 = Neighborhood.make
+      @neighborhood_3.apartment_communities << [@community_1]
 
       @area_1 = Area.make(:neighborhoods => [@neighborhood_1, @neighborhood_2])
       @area_2 = Area.make(:neighborhoods => [@neighborhood_3])
