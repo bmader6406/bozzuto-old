@@ -15,6 +15,12 @@ module Bozzuto::Exports::Formats
         end
       end
 
+      describe ".to_s" do
+        it "returns the format name" do
+          Bozzuto::Exports::Formats::Legacy.to_s.should == 'Legacy'
+        end
+      end
+
       describe "#to_xml" do
         before do
           state  = State.make(:name => 'North Carolina', :code => 'NC')

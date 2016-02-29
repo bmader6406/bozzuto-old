@@ -57,7 +57,7 @@ class Admin::ExternalFeedsController < Admin::MasterController
   def rebuild_and_resend_export
     APP_CONFIG[:apartment_export_file].tap do |file|
       File.open(file, 'w') do |f|
-        f.write(Bozzuto::Exports::ApartmentExport.legacy.to_xml)
+        f.write(Bozzuto::Exports::ApartmentExport.new('legacy').to_xml)
       end
 
       Bozzuto::ExternalFeed::QburstFtp.transfer file

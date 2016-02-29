@@ -32,6 +32,8 @@ module Bozzuto
       def transfer(file, options = {})
         raise ArgumentError, 'The given file name does not exist.' unless ::File.exists?(file)
 
+        return if Rails.env.development?
+
         # :nocov:
         dir = options[:dir]
 

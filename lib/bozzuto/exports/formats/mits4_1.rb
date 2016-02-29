@@ -1,6 +1,12 @@
 module Bozzuto::Exports
   module Formats
     class Mits4_1 < Format
+      PATH = APP_CONFIG[:mits4_1_export_file]
+
+      def self.to_s
+        'MITS 4.1'
+      end
+
       private
 
       def property_node(parent_node, property)

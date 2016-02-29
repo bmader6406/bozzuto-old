@@ -3,6 +3,12 @@ require 'test_helper'
 module Bozzuto::Exports::Formats
   class Mits4_1Test < ActiveSupport::TestCase
     context "Bozzuto::Exports::Formats::Mits4_1" do
+      describe ".to_s" do
+        it "returns the format name" do
+          Bozzuto::Exports::Formats::Mits4_1.to_s.should == 'MITS 4.1'
+        end
+      end
+
       describe "#to_xml" do
         before do
           state  = State.make(:name => 'North Carolina', :code => 'NC')

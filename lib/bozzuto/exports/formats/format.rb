@@ -28,7 +28,7 @@ module Bozzuto::Exports
       private
 
       def sanitizer
-        @sanitizer ||= HTML::FullSanitizer.new
+        @sanitizer ||= Rails::Html::FullSanitizer.new
       end
 
       def builder

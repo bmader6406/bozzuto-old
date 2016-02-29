@@ -129,7 +129,7 @@ namespace :bozzuto do
     log_task 'Exporting Apartment feed ...'
 
     begin
-      export      = Bozzuto::Exports::ApartmentExport.legacy
+      export      = Bozzuto::Exports::ApartmentExport.new('legacy')
       output_file = APP_CONFIG[:apartment_export_file]
 
       File.open(output_file, 'w') do |f|
@@ -162,7 +162,7 @@ namespace :bozzuto do
     log_task 'Generating MITS 4.1 Export ...'
 
     begin
-      export      = Bozzuto::Exports::ApartmentExport.mits4_1
+      export      = Bozzuto::Exports::ApartmentExport.new('mits4_1')
       output_file = APP_CONFIG[:mits4_1_export_file]
 
       File.open(output_file, 'w') do |f|

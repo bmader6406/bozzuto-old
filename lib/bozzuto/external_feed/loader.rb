@@ -21,6 +21,10 @@ module Bozzuto
         @feed = feed
       end
 
+      def process_identifier
+        feed_type
+      end
+
       def file=(new_file)
         feed.file = new_file
       end

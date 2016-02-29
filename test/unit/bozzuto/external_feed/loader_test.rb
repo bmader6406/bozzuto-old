@@ -37,6 +37,12 @@ module Bozzuto::ExternalFeed
         end
       end
 
+      describe "#process_identifier" do
+        it "returns the feed type" do
+          subject.process_identifier.should == :vaultware
+        end
+      end
+
       describe "#already_loading?" do
         before do
           rm_file(subject.lock_file)

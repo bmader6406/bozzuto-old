@@ -1,6 +1,12 @@
 module Bozzuto::Exports
   module Formats
     class Legacy < Format
+      PATH = APP_CONFIG[:apartment_export_file]
+
+      def self.to_s
+        'Legacy'
+      end
+
       private
 
       def property_node(parent_node, property)

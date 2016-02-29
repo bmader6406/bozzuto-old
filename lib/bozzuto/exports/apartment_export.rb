@@ -1,23 +1,40 @@
 module Bozzuto
   module Exports
     class ApartmentExport
-      FORMATS = {
-        :legacy  => Formats::Legacy,
-        :mits4_1 => Formats::Mits4_1
-      }
+      FORMATS = [
+        Formats::Legacy,
+        Formats::Mits4_1
+      ]
 
-      class << self
-        FORMATS.each do |(type, _klass)|
-          define_method(type) { new(type) }
-        end
+      LOOKUP = lambda do |format|
+        {
+          /legacy/i => Formats::Legacy,
+          /mits/i   => Formats::Mits4_1
+        }.find { |(regex, path)| format.match(regex) }.try(:last)
       end
 
-      attr_reader :format, :export
+      UnrecognizedFormatError = Class.new(StandardError)
+
+      attr_reader :export
 
       delegate :to_xml, :to => :export
 
       def initialize(format = :legacy)
-        @export = FORMATS.fetch(format).new
+        format_class = LOOKUP[format.to_s]
+
+        raise UnrecognizedFormatError if format_class.nil?
+
+        @export = format_class.new
+      end
+
+      def deliver
+        File.open(file, 'w') { |f| f.write(export.to_xml) }
+
+        Bozzuto::ExternalFeed::QburstFtp.transfer file
+      end
+
+      def file
+        @file ||= export.class.const_get(:PATH)
       end
     end
   end
