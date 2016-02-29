@@ -100,6 +100,9 @@ ActiveAdmin.register ApartmentCommunity do
                   :_destroy
                 ]
 
+  scope :all, default: true
+  scope :duplicates
+
   filter :title_cont,          label: 'Title'
   filter :street_address_cont, label: 'Street Address'
   filter :city,                collection: City.includes(:state)
@@ -121,6 +124,23 @@ ActiveAdmin.register ApartmentCommunity do
 
   action_item :merge_form, only: :show, if: -> { !resource.managed_externally? } do
     link_to 'Merge with a Feed Property', [:merge_form, :new_admin, resource]
+  end
+
+  action_item :export_field_audit, only: :index do
+    link_to 'Export Field Audit', [:export_field_audit, :new_admin, :apartment_communities]
+  end
+
+  action_item :export_dnr, only: :index do
+    link_to 'Export DNR', [:export_dnr, :new_admin, :apartment_communities]
+  end
+
+  collection_action :export_field_audit do
+    csv_string = Bozzuto::ApartmentCommunityFieldAudit.audit_csv
+    send_data csv_string, filename: 'apartment_communities_field_audit.csv', type: :csv
+  end
+
+  collection_action :export_dnr do
+    send_file Bozzuto::DnrCsv.new(conditions: { published: true }).file
   end
 
   member_action :delete_floor_plans do
