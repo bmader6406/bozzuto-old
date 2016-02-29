@@ -70,6 +70,14 @@ ActiveAdmin.register HomeCommunity do
   filter :city,                collection: City.includes(:state)
   filter :published
 
+  action_item :export_field_audit, only: :index do
+    link_to 'Export Field Audit', [:export_field_audit, :new_admin, :home_communities]
+  end
+
+  collection_action :export_field_audit do
+    send_data Bozzuto::HomeCommunityFieldAudit.audit_csv, filename: 'home_communities_field_audit.csv', type: :csv
+  end
+
   index do
     column :title
     column :street_address
