@@ -25,6 +25,8 @@ class Neighborhood < ActiveRecord::Base
   has_many :apartment_communities, -> { order('neighborhood_memberships.tier ASC') },
            :through => :neighborhood_memberships
 
+  accepts_nested_attributes_for :neighborhood_memberships, allow_destroy: true
+
   validates_presence_of :area, :state
 
   def parent
