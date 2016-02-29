@@ -2091,6 +2091,7 @@ div.wysiwyg ul li {
       margin-top: 20px;
     }
     .property.retail-property #slideshow p.watch-video {
+      background-image: none;
       margin-top: 0;
       padding: 0;
       position: relative;
