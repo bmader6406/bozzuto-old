@@ -111,12 +111,22 @@ ActiveAdmin.register ApartmentCommunity do
     as:         :select,
     collection: Bozzuto::ExternalFeed::Feed.feed_types.map { |feed| [I18n.t("bozzuto.feeds.#{feed}"), feed] }
 
+  action_item :delete_floor_plans, only: :show do
+    link_to 'Delete All Floor Plans', [:delete_floor_plans, :new_admin, resource]
+  end
+
   action_item :disconnect, only: :show, if: -> { resource.managed_externally? } do
     link_to "Disconnect from #{feed_name}", [:disconnect, :new_admin, resource]
   end
 
   action_item :merge_form, only: :show, if: -> { !resource.managed_externally? } do
     link_to 'Merge with a Feed Property', [:merge_form, :new_admin, resource]
+  end
+
+  member_action :delete_floor_plans do
+    resource.floor_plans.destroy_all
+
+    redirect_to [:new_admin, resource], notice: 'Deleted all floor plans.'
   end
 
   member_action :disconnect do
