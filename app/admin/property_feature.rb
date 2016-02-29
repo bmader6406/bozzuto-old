@@ -1,5 +1,5 @@
 ActiveAdmin.register PropertyFeature do
-  menu parent: 'Properties'
+  menu parent: 'Properties', label: 'Property Features'
 
   permit_params :name,
                 :icon,

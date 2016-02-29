@@ -1,6 +1,5 @@
 ActiveAdmin.register ProjectDataPoint do
-  menu parent: 'Ronin',
-       label:  'Project Data Points'
+  menu false
 
   reorderable
 

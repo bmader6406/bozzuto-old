@@ -1,6 +1,5 @@
 ActiveAdmin.register PropertyAmenity do
-  menu parent: 'Ronin',
-       label:  'Property Amenities'
+  menu false
 
   permit_params :property,
                 :property_id,

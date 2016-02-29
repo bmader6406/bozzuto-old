@@ -1,6 +1,5 @@
 ActiveAdmin.register PropertyFeaturesPage do
-  menu parent: 'Ronin',
-       label:  'Property Features Pages'
+  menu false
 
   config.filters = false
 

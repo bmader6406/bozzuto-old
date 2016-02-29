@@ -1,5 +1,5 @@
 ActiveAdmin.register ProjectCategory do
-  menu parent: 'Properties'
+  menu parent: 'Properties', label: 'Project Categories'
 
   config.sort_order = 'position_asc'
 

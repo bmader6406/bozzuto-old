@@ -1,6 +1,5 @@
 ActiveAdmin.register RankCategory do
-  menu parent: 'Ronin',
-       label:  'Rank Categories'
+  menu false
 
   reorderable
 

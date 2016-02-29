@@ -1,6 +1,5 @@
 ActiveAdmin.register PropertyNeighborhoodPage do
-  menu parent: 'Ronin',
-       label:  'Property Neighborhood Pages'
+  menu false
 
   config.filters = false
 

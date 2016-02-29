@@ -1,6 +1,5 @@
 ActiveAdmin.register OfficeHour do
-  menu parent: 'Ronin',
-       label:  'Office Hours'
+  menu false
 
   config.filters = false
 

@@ -1,6 +1,5 @@
 ActiveAdmin.register PropertyContactPage do
-  menu parent: 'Ronin',
-       label:  'Property Contact Pages'
+  menu false
 
   config.filters = false
 

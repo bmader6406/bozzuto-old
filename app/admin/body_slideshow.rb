@@ -1,5 +1,5 @@
 ActiveAdmin.register BodySlideshow do
-  menu parent: 'Ronin'
+  menu parent: 'Media', label: 'Page Body Slideshows'
 
   permit_params :page_id,
                 :name,

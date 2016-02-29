@@ -1,5 +1,5 @@
 ActiveAdmin.register ApartmentFloorPlan do
-  menu parent: 'Properties'
+  menu parent: 'Properties', label: 'Floor Plans'
 
   permit_params :apartment_community_id,
                 :name,

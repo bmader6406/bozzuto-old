@@ -1,6 +1,5 @@
 ActiveAdmin.register PropertyToursPage do
-  menu parent: 'Ronin',
-       label:  'Property Tours Pages'
+  menu false
 
   permit_params :property,
                 :property_id,

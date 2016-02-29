@@ -1,8 +1,8 @@
 ActiveAdmin.register Rank do
-  menu parent: 'Ronin'
-
   config.filters    = false
   config.sort_order = 'year_desc'
+
+  menu false
 
   permit_params :rank_category,
                 :rank_category_id,

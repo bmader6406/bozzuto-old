@@ -1,5 +1,5 @@
 ActiveAdmin.register TwitterAccount do
-  menu parent: 'Ronin'
+  menu parent: 'Social', label: 'Twitter Accounts'
 
   permit_params :username
 

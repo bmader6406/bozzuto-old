@@ -1,5 +1,5 @@
 ActiveAdmin.register Feed do
-  menu parent: 'Ronin'
+  menu parent: 'System', label: 'Feeds'
 
   permit_params :name, :url
 

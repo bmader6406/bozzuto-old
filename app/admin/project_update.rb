@@ -1,6 +1,5 @@
 ActiveAdmin.register ProjectUpdate do
-  menu parent: 'Ronin',
-       label:  'Project Updates'
+  menu false
 
   config.filters = false
 

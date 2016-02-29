@@ -1,8 +1,7 @@
 ActiveAdmin.register RelatedNeighborhood do
-  menu parent: 'Ronin',
-       label:  'Related Neighborhoods'
-
   config.filters = false
+
+  menu false
 
   permit_params :neighborhood,
                 :neighborhood_id,
