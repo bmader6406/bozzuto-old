@@ -10,6 +10,15 @@ GIT
   specs:
     polymorphic_select (0.0.2)
 
+GIT
+  remote: git://github.com/vigetlabs/viget-deployment.git
+  revision: a1877cf10319df50c7629127d0d497c7b107c9e1
+  branch: 1.2.1
+  specs:
+    viget-deployment (1.2.1)
+      capistrano (~> 2.15.0)
+      whenever (~> 0.8.0)
+
 PATH
   remote: vendor/plugins/typus
   specs:
@@ -18,7 +27,6 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    aaronh-chronic (0.3.9)
     actionmailer (4.2.5)
       actionpack (= 4.2.5)
       actionview (= 4.2.5)
@@ -87,14 +95,12 @@ GEM
       thor (~> 0.19)
     buftok (0.2.0)
     builder (3.2.2)
-    capistrano (2.5.19)
+    capistrano (2.15.7)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
-      net-ssh-gateway (>= 1.0.0)
-    capistrano-ext (1.2.1)
-      capistrano (>= 1.0.0)
+      net-ssh-gateway (>= 1.1.0)
     chronic (0.10.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -331,9 +337,9 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
-    whenever (0.6.2)
-      aaronh-chronic (>= 0.3.9)
+    whenever (0.8.4)
       activesupport (>= 2.3.4)
+      chronic (>= 0.6.3)
     will_paginate (3.1.0)
     yboss (0.4.0)
 
@@ -349,8 +355,6 @@ DEPENDENCIES
   airbrake (~> 5.0.5)
   awesome_nested_set (= 3.0.3)
   bourbon
-  capistrano (= 2.5.19)
-  capistrano-ext (= 1.2.1)
   chronic
   devise
   faker (= 0.3.1)
@@ -368,6 +372,7 @@ DEPENDENCIES
   polymorphic_select!
   protected_attributes
   pry
+  rack (= 1.6.4)
   rack-rewrite
   rack-test
   rails (= 4.2.5)
@@ -388,8 +393,8 @@ DEPENDENCIES
   uuidtools
   validates_email_format_of
   vcr
+  viget-deployment!
   webmock
-  whenever (= 0.6.2)
   will_paginate
   yboss
 

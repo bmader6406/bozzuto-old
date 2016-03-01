@@ -1,6 +1,5 @@
-set :user,          'www-data'
-set :deploy_to,     "/var/www/bozzuto/modernization"
-set :branch,        'origin/modernization'
+set :user,          'deploy'
+set :branch,        'modernization-deployment'
 set :slack_app_url, 'http://bozzuto.modernization.vigetx.com'
 
-server 'bozzuto.modernization.vigetx.com', :web, :app, :db, primary: true
+server '52.86.2.232', :web, :app, :db, primary: true

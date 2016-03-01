@@ -1,0 +1,8 @@
+<%= rails_env %>:
+  adapter: mysql2
+  encoding: utf8
+  database: <%= ask("Database name: ") %>
+  pool: 5
+  username: <%= ask("Database username: ") %>
+  password: <%= ask("Database password: ") %>
+  host: <%= ask("Database host: ", "localhost") %>

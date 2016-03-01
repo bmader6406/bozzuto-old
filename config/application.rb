@@ -26,7 +26,7 @@ module Bozzuto
     config.active_record.raise_in_transactional_callbacks = true
     config.active_record.observers = :apartment_floor_plan_observer
 
-    config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
+    config.middleware.insert_before(Rack::Runtime, Rack::Rewrite) do
       RedirectRules.list.each { |rule| r301(*rule) }
     end
 

@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 
 ruby '2.2.3'
 
-gem 'rails',                '4.2.5'
+gem 'rack', '1.6.4'
+gem 'rails', '4.2.5'
 gem 'rails-observers'
 gem 'protected_attributes'
 
@@ -29,10 +30,7 @@ gem 'nokogiri',                   '1.6.6.4'
 gem 'will_paginate'
 gem 'truncate_html',              '0.5.0'
 gem 'paperclip',                  '4.3.2'
-gem 'whenever',                   '0.6.2'
 gem 'rack-rewrite'
-gem 'capistrano',                 '2.5.19'
-gem 'capistrano-ext',             '1.2.1'
 gem 'twitter'
 gem 'uuidtools'
 gem 'sitemap_generator',          '~> 3.4'
@@ -53,6 +51,7 @@ gem 'typus', path: 'vendor/plugins/typus'
 group :development, :test do
   gem 'pry'
   gem 'spring'
+  gem 'viget-deployment', github: 'vigetlabs/viget-deployment', branch: '1.2.1', require: false
 end
 
 group :test do

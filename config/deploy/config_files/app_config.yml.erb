@@ -1,0 +1,42 @@
+<%= rails_env %>:
+  vaultware_feed_file: "/var/www/bozzuto/<%= rails_env %>/current/tmp/vaultware_feed.xml"
+  property_link_feed_file: "/var/www/bozzuto/<%= rails_env %>/current/tmp/property_link.xml"
+  rent_cafe_feed_file: "/var/www/bozzuto/<%= rails_env %>/current/tmp/rent_cafe_feed.xml"
+  psi_feed_file: "/var/www/bozzuto/<%= rails_env %>/current/tmp/psi_feed.xml"
+  carmel_feed_file: "/var/www/bozzuto/<%= rails_env %>/current/tmp/carmel_feed.xml"
+  apartment_export_file: "/var/www/bozzuto/<%= rails_env %>/current/tmp/apartments.xml"
+  under_construction_lead_file: "/var/www/bozzuto/<%= rails_env %>/current/tmp/under_construction_leads.csv"
+  buzz_email_list_file: "/var/www/bozzuto/<%= rails_env %>/current/tmp/buzz_email_list.csv"
+  mits4_1_export_file: "/var/www/bozzuto/<%= rails_env %>/current/tmp/mits4_1.xml"
+  ad_source_export_file: "/var/www/bozzuto/<%= rails_env %>/current/tmp/ad_sources.csv"
+  dnr_export_file: "/var/www/bozzuto/<%= rails_env %>/current/tmp/dnr_config.csv"
+  callsource:
+    apartment: <%= ask("Callsource apartment: ") %>
+    home: <%= ask("Callsource home: ") %>
+  sms:
+    username: <%= ask("SMS username: ") %>
+    password: <%= ask("SMS password: ") %>
+    sender: <%= ask("SMS sender: ") %>
+  ftp:
+    live_bozzuto:
+      username: <%= ask("LiveBozzuto FTP username: ") %>
+      password: <%= ask("LiveBozzuto FTP password: ") %>
+    qburst:
+      username: <%= ask("QBurst FTP username: ") %>
+      password: <%= ask("QBurst FTP password: ") %>
+  flickr:
+    username: <%= ask("Flickr username: ") %>
+    api_key: <%= ask("Flickr API key: ") %>
+  paperclip_command_path: <%= ask("Paperclip Command Path: ", "/usr/bin") %>
+  walkscore_wsid: <%= ask("Walkscore WSID: ") %>
+  yahoo_boss:
+    application_id: <%= ask("Yahoo BOSS Application ID: ") %>
+    consumer_key: <%= ask("Yahoo BOSS Consumer Key: ") %>
+    consumer_secret: <%= ask("Yahoo BOSS Consumer Secret: ") %>
+  google_maps_api_key: <%= ask("Google Maps API Key: ") %>
+  yelp_api_key: <%= ask("Yelp API Key: ") %>
+  twitter: # credentials for TheBozzutoGroup
+    consumer_key: <%= ask("Twitter Consumer Key: ") %>
+    consumer_secret: <%= ask("Twitter Consumer Secret: ") %>
+    access_token: <%= ask("Twitter Access Token: ") %>
+    access_token_secret: <%= ask("Twitter Access Token Secret: ") %>
