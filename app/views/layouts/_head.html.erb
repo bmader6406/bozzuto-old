@@ -22,7 +22,7 @@
 
   <%= yield(:meta) %>
 
-  <%= include_stylesheets :bozzuto, :media => 'screen' %>
+  <%= stylesheet_link_tag 'index', :media => 'screen' %>
   <!--[if lte IE 7]>
     <%= stylesheet_link_tag 'ie6-7', :media => 'screen' %>
   <![endif]-->
