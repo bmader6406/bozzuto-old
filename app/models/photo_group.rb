@@ -7,9 +7,14 @@ class PhotoGroup < ActiveRecord::Base
 
   scope :positioned, -> { order('photo_groups.position ASC') }
 
-  validates_presence_of :title
+  validates :title,
+            presence: true
 
-  def typus_name
+  def to_s
+    title
+  end
+
+  def to_label
     title
   end
 end

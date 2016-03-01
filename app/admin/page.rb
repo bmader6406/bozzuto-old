@@ -1,7 +1,7 @@
 ActiveAdmin.register Page do
-  config.sort_order = "section_id_desc"
-
   menu parent: 'Content'
+
+  config.sort_order = "section_id_desc"
 
   reorderable
 
@@ -33,12 +33,6 @@ ActiveAdmin.register Page do
       def to_param
         id.to_s
       end
-    end
-  end
-
-  controller do
-    def scoped_collection
-      super.includes(:section)
     end
   end
 
@@ -150,17 +144,17 @@ ActiveAdmin.register Page do
       tabs do
         tab 'Details' do
           input :title
-          input :section
-          input :parent
+          input :section,             as: :chosen
+          input :parent,              as: :chosen
           input :published
           input :show_sidebar
           input :show_in_sidebar_nav
-          input :snippet
+          input :snippet,             as: :chosen
         end
 
         tab 'Content' do
-          input :body, as: :redactor
-          input :mobile_body, as: :redactor
+          input :body,              as: :redactor
+          input :mobile_body,       as: :redactor
           input :mobile_body_extra, as: :redactor
         end
 
@@ -194,6 +188,10 @@ ActiveAdmin.register Page do
   controller do
     def find_resource
       Page.includes(:masthead_slideshow, :body_slideshow, :carousel).find(params[:id])
+    end
+
+    def scoped_collection
+      super.includes(:section)
     end
 
     def slideshows

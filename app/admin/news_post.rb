@@ -93,7 +93,7 @@ ActiveAdmin.register NewsPost do
           input :featured
           input :show_as_featured_news
           input :image,                 as: :image
-          input :home_page_image
+          input :home_page_image,       as: :image
           input :body,                  as: :redactor
         end
 

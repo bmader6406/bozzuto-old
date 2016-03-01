@@ -25,9 +25,12 @@ ActiveAdmin.register MiniSlideshow do
       tab 'Details' do
         panel nil do
           attributes_table_for slideshow do
+            row :id
             row :title
             row :subtitle
             row :link_url
+            row :created_at
+            row :updated_at
           end
         end
       end

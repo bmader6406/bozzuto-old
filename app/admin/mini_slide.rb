@@ -1,29 +1,42 @@
 ActiveAdmin.register MiniSlide do
-  config.filters = false
-
   menu false
+
+  config.filters = false
 
   reorderable
 
   permit_params :mini_slideshow_id,
-                :image,
-                :position
+                :image
 
   index do
+    column :mini_slideshow
     column :image do |slide|
       if slide.image.present?
         image_tag slide.image
       end
     end
-    column :mini_slideshow
 
     actions
   end
 
+  show do |slide|
+    attributes_table do
+      row :id
+      row :mini_slideshow
+      row :image do
+        if slide.image.present?
+          image_tag slide.image.url
+        end
+      end
+      row :created_at
+      row :updated_at
+    end
+  end
+
   form do |f|
     inputs do
-      input :image, as: :image
-      input :mini_slideshow
+      input :mini_slideshow, as: :chosen
+      input :image,          as: :image
     end
 
     actions
