@@ -8,7 +8,7 @@ set :use_sudo, false
 
 set :ssh_options, { :forward_agent => true }
 
-set :stages, %w( integration staging production )
+set :stages, %w( modernization integration staging production )
 set :default_stage, 'integration'
 
 set(:latest_release) { fetch(:current_path) }
