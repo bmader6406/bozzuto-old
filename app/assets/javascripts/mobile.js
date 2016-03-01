@@ -1,3 +1,6 @@
+//= require jquery-1.11.1.min.js
+//= require owl.carousel.js
+
 // Mobile Carousels
 $(document).ready(function() {
   $('.owl-carousel').owlCarousel({
