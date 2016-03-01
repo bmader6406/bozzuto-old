@@ -1,7 +1,11 @@
 ActiveAdmin.register AdSource do
-  menu parent: 'System', label: 'Ad Sources'
+  menu parent: 'System',
+       label:  'Ad Sources'
 
-  permit_params :domain_name, :value
+  config.sort_order = 'domain_name_asc'
+
+  permit_params :domain_name,
+                :value
 
   filter :domain_name_cont, label: 'Domain Name'
   filter :value_cont,       label: 'Value'
@@ -11,6 +15,16 @@ ActiveAdmin.register AdSource do
     column :value
 
     actions
+  end
+
+  show do
+    attributes_table do
+      row :id
+      row :domain_name
+      row :value
+      row :created_at
+      row :updated_at
+    end
   end
 
   form do |f|
