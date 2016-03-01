@@ -88,7 +88,7 @@
       color: #595e71;
     }
     input {
-      background: #fff url(../images/structure/bg-input.gif) no-repeat 0 0;
+      background: #fff image-url('structure/bg-input.gif') no-repeat 0 0;
       width: 168px;
       height: 16px;
       padding: 6px 0 0 5px;
@@ -234,7 +234,7 @@
       }
       #header div.aside a,
       #header #home-nav a {
-        background: transparent url(../images/structure/bg-header-a.gif) no-repeat center left;
+        background: transparent image-url('structure/bg-header-a.gif') no-repeat center left;
         font-size: 11px;
         font-weight: bold;
         color: #636972;
@@ -281,7 +281,7 @@
         width: 194px;
       }
       #header .search-form button {
-        background: transparent url(../images/structure/btn-header-search.gif) no-repeat 0 0;
+        background: transparent image-url('structure/btn-header-search.gif') no-repeat 0 0;
         height: 24px;
         padding: 0;
         position: absolute;
@@ -301,12 +301,12 @@
         width: 230px;
       }
       #special-nav a {
-        background: #dde0e3 url(../images/structure/bg-special-nav.gif) no-repeat top right;
+        background: #dde0e3 image-url('structure/bg-special-nav.gif') no-repeat top right;
         font-size: 15px;
         line-height: 26px;
       }
       #special-nav .arrow a {
-        background-image: url(../images/structure/bg-special-nav-arrow.png);
+        background-image: image-url('structure/bg-special-nav-arrow.png');
       }
       #special-nav a:hover,
       #special-nav li:hover a {
@@ -314,10 +314,10 @@
         text-decoration: none;
       }
       #special-nav li.open a {
-        background: #c2c6ca url(../images/structure/bg-special-nav.gif) no-repeat 100% -26px;
+        background: #c2c6ca image-url('structure/bg-special-nav.gif') no-repeat 100% -26px;
       }
       #special-nav #find-apartment-form .advanced-search {
-        background: transparent url(../images/structure/bg-news-a.gif) no-repeat center left;
+        background: transparent image-url('structure/bg-news-a.gif') no-repeat center left;
       }
       #special-nav #find-apartment-form .advanced-search a {
         background: none;
@@ -470,7 +470,7 @@
 
   /* @group -footer */
     #footer {
-      background: #fff url(../images/structure/bg-footer.gif) repeat-x 0 0;
+      background: #fff image-url('structure/bg-footer.gif') repeat-x 0 0;
       border-top: 1px solid #9a9c9f;
     }
     #footer .container,
@@ -508,23 +508,23 @@
       letter-spacing: -0.05em;
     }
     #footer li.linkedin {
-      background: transparent url(../images/structure/ico-linkedin.gif) no-repeat center left;
+      background: transparent image-url('structure/ico-linkedin.gif') no-repeat center left;
     }
     #footer li.facebook {
-      background: transparent url(../images/structure/ico-facebook.gif) no-repeat center left;
+      background: transparent image-url('structure/ico-facebook.gif') no-repeat center left;
     }
     #footer li.twitter {
-      background: transparent url(../images/structure/ico-twitter.gif) no-repeat center left;
+      background: transparent image-url('structure/ico-twitter.gif') no-repeat center left;
     }
     #footer li.pinterest {
-      background: transparent url(../images/structure/ico-pinterest.png) no-repeat center left;
+      background: transparent image-url('structure/ico-pinterest.png') no-repeat center left;
     }
     #footer li.instagram {
-      background: transparent url(../images/structure/ico-instagram.png) no-repeat center left;
+      background: transparent image-url('structure/ico-instagram.png') no-repeat center left;
     }
     #footer li.tom-blog,
     #footer li.bozzuto-beat-blog {
-      background: transparent url(../images/structure/ico-rss-large.gif) no-repeat center left;
+      background: transparent image-url('structure/ico-rss-large.gif') no-repeat center left;
     }
     #footer .buzz-form button {
       position: absolute;
@@ -552,7 +552,7 @@
       color: #92929b;
     }
     #footer a {
-      background: url(../images/structure/bg-footer-a.gif) no-repeat 0 7px;
+      background: image-url('structure/bg-footer-a.gif') no-repeat 0 7px;
       display: inline-block;
       line-height: 1.5;
       padding: 2px 9px;
@@ -596,7 +596,7 @@
       text-transform: uppercase;
     }
     #copyright #eho {
-      background: transparent url(../images/structure/bg-copyright-eho.gif) no-repeat center left;
+      background: transparent image-url('structure/bg-copyright-eho.gif') no-repeat center left;
       text-transform: none;
     }
   /* @end */
@@ -637,7 +637,7 @@
     .community #overview ul li {
       font-size: 12px;
       line-height: 18px;
-      background: 0 7px url(../images/structure/blt-features.gif) no-repeat;
+      background: 0 7px image-url('structure/blt-features.gif') no-repeat;
       padding-left: 15px;
       margin: 0px;
     }
@@ -653,7 +653,7 @@
       margin-bottom: 1em;
     }
     #main-content .social-updates .byline {
-      background: transparent url(../images/structure/bg-social-byline.png) no-repeat 0 0;
+      background: transparent image-url('structure/bg-social-byline.png') no-repeat 0 0;
       font-size: 11px;
       line-height: 2;
       margin-bottom: 0;
@@ -669,7 +669,7 @@
       color: #d0d8e6;
     }
     #main-content .facebook-update .message {
-      background: transparent url(../images/structure/ico-facebook.gif) no-repeat 0 2px;
+      background: transparent image-url('structure/ico-facebook.gif') no-repeat 0 2px;
     }
     #main-content .facebook-update .byline {
       background-color: #8592a7;
@@ -678,7 +678,7 @@
       color: #d5e9ea;
     }
     #main-content .twitter-update .message {
-      background: transparent url(../images/structure/ico-twitter.gif) no-repeat 0 2px;
+      background: transparent image-url('structure/ico-twitter.gif') no-repeat 0 2px;
       cursor: pointer;
       padding-left: 35px;
     }
@@ -740,7 +740,7 @@
       zoom: 1;
     }
     .tooltip-arrow {
-      background: url(../images/structure/bg-tooltip-arrow.png) 0 0 no-repeat;
+      background: image-url('structure/bg-tooltip-arrow.png') 0 0 no-repeat;
       display: block;
       height: 0;
       line-height: 0;
@@ -775,7 +775,7 @@
       width: 520px;
     }
     div.promo .promo-header {
-      background: url(/images/bg-promo.png) left bottom repeat-x #706e7c;
+      background: image-url('bg-promo.png') left bottom repeat-x #706e7c;
       padding: 14px 0 7px 0;
     }
     div.promo h4,
@@ -800,7 +800,7 @@
       padding-bottom: 3px;
     }
     div.promo p.promo-link a {
-      background: url(/images/bg-promo-a.png) left center no-repeat;
+      background: image-url('bg-promo-a.png') left center no-repeat;
       color: #fff;
       float: right;
       font-size: 12px;
@@ -883,14 +883,14 @@ div.wysiwyg ul li {
     font-size: 15px;
   }
   .secondary #header #main-nav li.about-nav .dropdown {
-    background: transparent url(../images/structure/bg-main-nav-dropdown.gif) no-repeat 0 -30px;
+    background: transparent image-url('structure/bg-main-nav-dropdown.gif') no-repeat 0 -30px;
   }
   .secondary #header #main-nav li.services-nav .dropdown {
-    background: transparent url(../images/structure/bg-main-nav-dropdown.gif) no-repeat 0 2px;
+    background: transparent image-url('structure/bg-main-nav-dropdown.gif') no-repeat 0 2px;
   }
   .secondary #header #main-nav li .dropdown li a,
   .secondary #header #main-nav li .dropdown li a:hover {
-    background: transparent url(../images/structure/bg-header-a.gif) no-repeat 1px center;
+    background: transparent image-url('structure/bg-header-a.gif') no-repeat 1px center;
   }
 
   /* @group -main nav */
@@ -950,7 +950,7 @@ div.wysiwyg ul li {
 
   /* @group -masthead */
     .secondary #masthead {
-    background: #c0c5cb url(../images/structure/bg-masthead.gif) repeat-x 0 0;
+    background: #c0c5cb image-url('structure/bg-masthead.gif') repeat-x 0 0;
       border-bottom: 1px solid #858890;
       color: #565c64;
     }
@@ -982,7 +982,7 @@ div.wysiwyg ul li {
 
   /* @group -breadcrumb */
     .secondary #breadcrumb {
-      background: #c0c5cb url(../images/structure/bg-masthead.gif) repeat-x 0 0;
+      background: #c0c5cb image-url('structure/bg-masthead.gif') repeat-x 0 0;
       border-bottom: 1px solid #858890;
     }
     .secondary #breadcrumb .container {
@@ -1019,7 +1019,7 @@ div.wysiwyg ul li {
       margin-right: 0;
     }
     .secondary #breadcrumb li a {
-      background: url(../images/structure/bg-masthead-a-dark.gif) right center no-repeat;
+      background: image-url('structure/bg-masthead-a-dark.gif') right center no-repeat;
       padding-right: 8px;
       text-decoration: underline;
     }
@@ -1055,7 +1055,7 @@ div.wysiwyg ul li {
       border-top: none;
     }
     .secondary #secondary-nav li a {
-      background: transparent url(../images/structure/bg-header-a.gif) no-repeat 12px center;
+      background: transparent image-url('structure/bg-header-a.gif') no-repeat 12px center;
       color: #636972;
       display: block;
       font-size: 11px;
@@ -1211,19 +1211,19 @@ div.wysiwyg ul li {
     color: #fff;
   }
   #slideshow ul.slides li.slide div.featured-property a h2 {
-    background: transparent url(../images/structure/bg-divider-white.gif) no-repeat bottom left;
+    background: transparent image-url('structure/bg-divider-white.gif') no-repeat bottom left;
     line-height: 1;
     margin-bottom: 20px;
     padding-bottom: 20px;
   }
   #slideshow ul.slides li.slide div.featured-property a p {
-    background: transparent url(../images/structure/bg-body-slide-arrow.gif) no-repeat 0 0.5em;
+    background: transparent image-url('structure/bg-body-slide-arrow.gif') no-repeat 0 0.5em;
     font-size: 14px;
     padding-left: 10px;
     width: 200px;
   }
   #slideshow .overlay {
-    background: url(../images/structure/bg-slideshow-overlay.png) no-repeat;
+    background: image-url('structure/bg-slideshow-overlay.png') no-repeat;
     display: block;
     height: 375px;
     position: absolute;
@@ -1288,7 +1288,7 @@ div.wysiwyg ul li {
   }
 
   #slideshow ul.slideshow-navigation li a {
-    background: url(../images/structure/bg-apartments-slideshow-navigation.png) no-repeat transparent;
+    background: image-url('structure/bg-apartments-slideshow-navigation.png') no-repeat transparent;
     display: block;
     height: 57px;
     overflow: hidden;
@@ -1360,10 +1360,10 @@ div.wysiwyg ul li {
   .apartments #about-bozzuto p a,
   .homes #renting-from-bozzuto p a,
   .homes #about-bozzuto p a {
-    background: transparent url(../images/structure/bg-header-a.gif) no-repeat center left;
+    background: transparent image-url('structure/bg-header-a.gif') no-repeat center left;
   }
   .landing .listings a {
-    background: transparent url(../images/structure/bg-header-a.gif) no-repeat 5px left;
+    background: transparent image-url('structure/bg-header-a.gif') no-repeat 5px left;
   }
   .community #masthead #remote-nav a {
     background-position: 20px center;
@@ -1384,7 +1384,7 @@ div.wysiwyg ul li {
   .community #about-bozzuto,
   .apartments div.row div.col,
   .homes div.row div.col {
-    background: transparent url(../images/structure/bg-about-sidebar-section.gif) no-repeat bottom left;
+    background: transparent image-url('structure/bg-about-sidebar-section.gif') no-repeat bottom left;
   }
 
   .community #sidebar p.facebook-link,
@@ -1397,13 +1397,13 @@ div.wysiwyg ul li {
   }
 
   .community #sidebar p.facebook-link a {
-    background: url(../images/structure/ico-facebook.gif) no-repeat center left;
+    background: image-url('structure/ico-facebook.gif') no-repeat center left;
     line-height: 1;
     padding: 8px 0 8px 30px;
   }
 
   .community #community-info .nav li a {
-    background-image: url(../images/structure/bg-community-info-tabs.gif);
+    background-image: image-url('structure/bg-community-info-tabs.gif');
     background-position: right 0px;
   }
   .community #community-info .nav li.current a {
@@ -1470,7 +1470,7 @@ div.wysiwyg ul li {
   }
 
   #recently-viewed ul.recently-viewed-actions a {
-    background: #dde0e3 url(../images/structure/bg-special-nav.gif) no-repeat top right;
+    background: #dde0e3 image-url('structure/bg-special-nav.gif') no-repeat top right;
     color: #080812;
     font-size: 15px;
     font-weight: normal;
@@ -1484,7 +1484,7 @@ div.wysiwyg ul li {
     text-decoration: none;
   }
   #recently-viewed ul.recently-viewed-actions li.open a {
-    background: #c2c6ca url(../images/structure/bg-special-nav.gif) no-repeat 100% -26px;
+    background: #c2c6ca image-url('structure/bg-special-nav.gif') no-repeat 100% -26px;
   }
 
   #recently-viewed ul.recently-viewed-actions div.popup {
@@ -1618,17 +1618,17 @@ div.wysiwyg ul li {
   .homes #content div.header,
   .landing #content div.header,
   .search #content div.header {
-    background: url(../images/structure/bg-homes-content-header.gif) left bottom repeat-x #fff;
+    background: image-url('structure/bg-homes-content-header.gif') left bottom repeat-x #fff;
   }
   .homes #content div.header ul li a,
   .landing #content div.header ul li a,
   .search #content div.header ul li a {
-    background: url(../images/structure/bg-homes-content-header-tabs.gif) no-repeat -456px 0px;
+    background: image-url('structure/bg-homes-content-header-tabs.gif') no-repeat -456px 0px;
   }
   .homes #content div.header ul li.current a,
   .landing #content div.header ul li.current a,
   .search #content div.header ul li.current a {
-    background: url(../images/structure/bg-homes-content-header-tabs.gif) no-repeat -456px -47px;
+    background: image-url('structure/bg-homes-content-header-tabs.gif') no-repeat -456px -47px;
   }
   .homes #content div.header ul li a.list,
   .search #content div.header ul li a.list {
@@ -1656,7 +1656,7 @@ div.wysiwyg ul li {
   }
   .landing #content .listing-large p.share a,
   .homes #content #view-as-list p.share a {
-    background: url(../images/structure/bg-homes-share.gif) no-repeat;
+    background: image-url('structure/bg-homes-share.gif') no-repeat;
   }
   .landing #content .listing-large p.share a.facebook,
   .homes #content #view-as-list p.share a.facebook {
@@ -1678,11 +1678,11 @@ div.wysiwyg ul li {
   }
   .landing #content .listing-large p.address-info,
   .homes #content #view-as-list p.address-info {
-    background: url(../images/structure/bg-about-content-p.gif) 12px bottom no-repeat;
+    background: image-url('structure/bg-about-content-p.gif') 12px bottom no-repeat;
   }
   .landing #content .listing-large .quick-links li a,
   .homes #content #view-as-list .quick-links li a {
-    background: url(../images/structure/bg-homes-quick-links.gif) no-repeat;
+    background: image-url('structure/bg-homes-quick-links.gif') no-repeat;
   }
   .landing #content .listing-large .quick-links li a.save,
   .homes #content #view-as-list .quick-links li a.save {
@@ -1738,7 +1738,7 @@ div.wysiwyg ul li {
       margin-bottom: 1em;
     }
     .home #welcome p.read-more a {
-      background: transparent url(../images/structure/bg-header-a.gif) no-repeat center left;
+      background: transparent image-url('structure/bg-header-a.gif') no-repeat center left;
       color: #636972;
       font-size: 11px;
       font-weight: bold;
@@ -1762,7 +1762,7 @@ div.wysiwyg ul li {
     }
 
     .home .article h3 {
-      background: transparent url(../images/structure/bg-home-article-h3.gif) no-repeat 0 0;
+      background: transparent image-url('structure/bg-home-article-h3.gif') no-repeat 0 0;
       border-bottom: 1px solid #c1c1c5;
       border-top: 1px solid #c1c1c5;
       color: #080812;
@@ -1773,7 +1773,7 @@ div.wysiwyg ul li {
       background-position: 0 bottom;
     }
     .home .article h3 a {
-      background: transparent url(../images/structure/carousel-nav-bar-right-arrow.gif) no-repeat top right;
+      background: transparent image-url('structure/carousel-nav-bar-right-arrow.gif') no-repeat top right;
       display: block;
       padding: 6px 0 6px 12px;
     }
@@ -1792,7 +1792,7 @@ div.wysiwyg ul li {
     }
 
     .home .article .post-link .title {
-      background: transparent url(../images/structure/carousel-caption-hover-bg.png) repeat top left;
+      background: transparent image-url('structure/carousel-caption-hover-bg.png') repeat top left;
       bottom: 0;
       display: block;
       left: 0;
@@ -1841,7 +1841,7 @@ div.wysiwyg ul li {
       line-height: 1.454545455;
     }
     .home .latest-award h4 a {
-      background: transparent url(../images/structure/bg-news-a.gif) no-repeat 0 4px;
+      background: transparent image-url('structure/bg-news-a.gif') no-repeat 0 4px;
       color: #747479;
       font-weight: bold;
       padding-left: 6px;
@@ -1854,20 +1854,19 @@ div.wysiwyg ul li {
 
 
     #header #logo a {
-      background: transparent url(../images/structure/bg-logo.png) no-repeat 0 0;
+      background: transparent image-url('structure/bg-logo.png') no-repeat 0 0;
     }
     #main-nav li a {
-      background: transparent url(../images/structure/bg-main-nav.gif) no-repeat 0 0;
+      background: transparent image-url('structure/bg-main-nav.gif') no-repeat 0 0;
     }
     .home #main-content {
-      background: transparent url(../images/structure/bg-home-main-content.gif) repeat-x top left;
+      background: transparent image-url('structure/bg-home-main-content.gif') repeat-x top left;
     }
 
     /* @group --social */
       .home #social,
       .home #social .container {
-        background: url(../images/structure/bg-news.gif) repeat-y top center;
-        /* height: 80px; */
+        background: image-url('structure/bg-news.gif') repeat-y top center;
       }
       .home #social {
         border-top: 1px solid #d5d8dc;
@@ -1911,11 +1910,11 @@ div.wysiwyg ul li {
         padding-top: 10px;
       }
       .home #social .rss p {
-        background: transparent url(../images/structure/ico-rss.gif) no-repeat center left;
+        background: transparent image-url('structure/ico-rss.gif') no-repeat center left;
         padding-left: 22px;
       }
       .home #social .rss a {
-        background: transparent url(../images/structure/bg-news-a.gif) no-repeat center left;
+        background: transparent image-url('structure/bg-news-a.gif') no-repeat center left;
         color: #656571;
         font-weight: bold;
         padding-left: 6px;
@@ -1975,7 +1974,7 @@ div.wysiwyg ul li {
       background: #fff;
     }
     #property-nav li.current {
-      background: transparent url(../images/structure/bg-community-secondary-nav.png) no-repeat right bottom;
+      background: transparent image-url('structure/bg-community-secondary-nav.png') no-repeat right bottom;
     }
     #property-nav a {
       color: #84848b;
@@ -2067,7 +2066,7 @@ div.wysiwyg ul li {
       z-index: 2;
     }
     .property #slideshow .overlay {
-      background: url(../images/structure/bg-slideshow-overlay.png) no-repeat;
+      background: image-url('structure/bg-slideshow-overlay.png') no-repeat;
       display: block;
       height: 100%;
       position: absolute;
@@ -2086,7 +2085,7 @@ div.wysiwyg ul li {
       text-decoration: none;
     }
     .property #slideshow p.watch-video {
-      background: transparent url(../images/structure/bg-divider-white.gif) no-repeat 0 0;
+      background: transparent image-url('structure/bg-divider-white.gif') no-repeat 0 0;
       padding-top: 15px;
       margin-top: 20px;
     }
@@ -2098,7 +2097,7 @@ div.wysiwyg ul li {
       top: -10px;
     }
     #slideshow p.watch-video a {
-      background: transparent url(../images/structure/bg-watch-video.png) no-repeat 0 0;
+      background: transparent image-url('structure/bg-watch-video.png') no-repeat 0 0;
       display: block;
       height: 43px;
       overflow: hidden;
@@ -2130,7 +2129,7 @@ div.wysiwyg ul li {
   /* @group --sidebar */
     .property #sidebar p.call-to-action a,
     .project #content p.call-to-action a {
-      background: transparent url(../images/structure/bg-apartments-masthead-aside-a.png) no-repeat right 0;
+      background: transparent image-url('structure/bg-apartments-masthead-aside-a.png') no-repeat right 0;
       border-bottom: 1px solid #e2e4e7;
       border-top: 1px solid #e2e4e7;
       color: #000;
@@ -2208,7 +2207,7 @@ div.wysiwyg ul li {
     }
 
     .community #overview p.phone-number {
-      background: url(../images/structure/bg-header-a.gif) no-repeat 0 14px;
+      background: image-url('structure/bg-header-a.gif') no-repeat 0 14px;
       font-size: 13px;
       font-weight: normal;
       line-height: 1.2;
@@ -2355,7 +2354,7 @@ div.wysiwyg ul li {
       position: relative;
     }
     .community #main-content .request-info a.request-info-button {
-      background: url(../images/structure/bg-request-info.png) no-repeat 0 0;
+      background: image-url('structure/bg-request-info.png') no-repeat 0 0;
       display: block;
       float: left;
       height: 35px;
@@ -2580,7 +2579,7 @@ div.wysiwyg ul li {
       margin-top: 20px;
     }
     .project #sidebar h2 a {
-      background: url(../images/structure/bg-header-a.gif) left center no-repeat;
+      background: image-url('structure/bg-header-a.gif') left center no-repeat;
       color: #84848b;
       font-size: 15px;
       padding-left: 8px;
@@ -2603,7 +2602,7 @@ div.wysiwyg ul li {
       width: 100%;
     }
     .project #main-content .content .main-content ul.data li {
-      background: url(../images/structure/bg-projects-data.gif) left -58px no-repeat;
+      background: image-url('structure/bg-projects-data.gif') left -58px no-repeat;
       float: left;
       margin-bottom: 10px;
       padding-top: 16px;
@@ -2628,7 +2627,7 @@ div.wysiwyg ul li {
     }
     .project #main-content .content .main-content ul.project-updates li {
       margin-bottom: 15px;
-      background: url(../images/structure/bg-about-content-p.gif) left bottom no-repeat;
+      background: image-url('structure/bg-about-content-p.gif') left bottom no-repeat;
       padding-bottom: 18px;
     }
     .project #main-content .content .main-content ul.project-updates li h3 {
@@ -2681,31 +2680,31 @@ div.wysiwyg ul li {
       width: 360px;
     }
     .project #main-content .content .sub-content h4 a {
-      background: url(../images/structure/bg-project-sub-content-h4.gif) left top no-repeat;
+      background: image-url('structure/bg-project-sub-content-h4.gif') left top no-repeat;
     }
     .project #main-content .content .sub-content h4 a:hover {
       background-position: left bottom;
     }
     .project #main-content .content .main-content ul.project-updates li div p.info-link a {
-      background: url(../images/structure/bg-project-update-info-link.png) left top no-repeat;
+      background: image-url('structure/bg-project-update-info-link.png') left top no-repeat;
     }
     .project #main-content .content .main-content ul.project-updates li div p.info-link a.active {
       background-position: left bottom;
     }
     .project #main-content .content .main-content ul.project-updates li div div.info-overlay {
-      background: url(../images/structure/bg-project-update-info-overlay.png) left top no-repeat;
+      background: image-url('structure/bg-project-update-info-overlay.png') left top no-repeat;
     }
     .project #main-content .content .main-content ul.project-updates li div div.info-overlay p {
-      background: url(../images/structure/bg-project-update-info-overlay-p.gif) left bottom no-repeat;
+      background: image-url('structure/bg-project-update-info-overlay-p.gif') left bottom no-repeat;
     }
     .project #main-content .content .sub-content .map {
       background: #c2c6ca;
     }
     .project #main-content .content .sub-content .similar-projects p a {
-      background: url(../images/structure/bg-news-a.gif) 0 6px no-repeat;
+      background: image-url('structure/bg-news-a.gif') 0 6px no-repeat;
     }
     .project #main-content .content .sub-content .similar-projects ul {
-      background: url(../images/structure/bg-about-content-p.gif) left bottom no-repeat;
+      background: image-url('structure/bg-about-content-p.gif') left bottom no-repeat;
     }
 
     /* @group ---sub-content */
@@ -2811,7 +2810,7 @@ div.wysiwyg ul li {
       overflow: hidden;
       padding-top: 13px;
       width: 100%;
-      background: url(../images/structure/bg-apartments-content.gif) left top repeat-x;
+      background: image-url('structure/bg-apartments-content.gif') left top repeat-x;
     }
     .project #main-content .content .main-content .pagination a,
     .project #main-content .content .main-content .pagination span {
@@ -2846,7 +2845,7 @@ div.wysiwyg ul li {
   .features #main-content div.feature ul li {
     font-size: 11px;
     line-height: 18px;
-    list-style: disc outside url(../images/structure/blt-features.gif);
+    list-style: disc outside image-url('structure/blt-features.gif');
     margin: 0;
   }
   .features #main-content div.feature ul li a {
@@ -2854,7 +2853,7 @@ div.wysiwyg ul li {
     font-weight: bold;
   }
   .features #main-content div.feature ul li a.photo {
-    background: url(../images/structure/ico-photo.gif) right bottom no-repeat;
+    background: image-url('structure/ico-photo.gif') right bottom no-repeat;
     padding-right: 20px;
   }
   .features #main-content div.feature ul.li_cont1 {
@@ -3136,7 +3135,7 @@ div.wysiwyg ul li {
     margin-right: 58px;
   }
   .homes #masthead .section p.call-to-action a {
-    background: url(../images/structure/bg-masthead-a-dark.gif) left center no-repeat;
+    background: image-url('structure/bg-masthead-a-dark.gif') left center no-repeat;
     color: #565C64;
     font-weight: bold;
   }
@@ -3158,7 +3157,7 @@ div.wysiwyg ul li {
 /* @group -apartments */
   .apartments #masthead {
     color: #565c64;
-    background: url('../images/structure/bg-masthead.gif') left top repeat-x #c0c5cb;
+    background: image-url('structure/bg-masthead.gif') left top repeat-x #c0c5cb;
   }
   .apartments #masthead .section h1 {
     font-size: 35px;
@@ -3174,7 +3173,7 @@ div.wysiwyg ul li {
     text-transform: uppercase;
   }
   .apartments #masthead .aside ul li a {
-    background: url(../images/structure/bg-masthead-a-dark.gif) 1px 12px no-repeat;
+    background: image-url('structure/bg-masthead-a-dark.gif') 1px 12px no-repeat;
     color: #565c64;
     line-height: 28px;
   }
@@ -3186,7 +3185,7 @@ div.wysiwyg ul li {
     text-transform: none;
   }
   .apartments #main-content {
-    background: url(../images/structure/bg-apartments-content.gif) left top repeat-x #fff;
+    background: image-url('structure/bg-apartments-content.gif') left top repeat-x #fff;
   }
 /* @end */
 
@@ -3222,7 +3221,6 @@ div.wysiwyg ul li {
     }
     .search #sidebar fieldset ul li select {
       font-family: Helvetica, Arial, sans-serif;
-/*      height: 15px;*/
       text-transform: none;
       width: 155px;
     }
@@ -3239,7 +3237,7 @@ div.wysiwyg ul li {
       text-transform: uppercase;
     }
     .search #sidebar fieldset {
-      background: url(../images/structure/bg-about-content-p.gif) 13px bottom no-repeat;
+      background: image-url('structure/bg-about-content-p.gif') 13px bottom no-repeat;
     }
   /* @end */
 
@@ -3287,10 +3285,10 @@ div.wysiwyg ul li {
       font-weight: bold;
     }
     .search #sub-content p.call-to-action {
-      background: url(../images/structure/bg-about-content-p.gif) left bottom no-repeat;
+      background: image-url('structure/bg-about-content-p.gif') left bottom no-repeat;
     }
     .search #sub-content p.call-to-action a {
-      background: url(../images/structure/bg-header-a.gif) left center no-repeat;
+      background: image-url('structure/bg-header-a.gif') left center no-repeat;
     }
   /* @end */
 
@@ -3379,7 +3377,7 @@ div.wysiwyg ul li {
       margin-right: 0;
     }
     .search #content ul.results li ul.location-filters ul a, .search #content ul.results li ul.location-filters ul span {
-      background: url(../images/structure/bg-search-results-pagination-a.gif) no-repeat 9px 50%;
+      background: image-url('structure/bg-search-results-pagination-a.gif') no-repeat 9px 50%;
       color: #64676c;
       display: block;
       float: left;
@@ -3452,25 +3450,25 @@ div.wysiwyg ul li {
       color: #636972;
     }
     .search #content ul.results li, .search #content ul.results li.closed:hover {
-      background: url(../images/structure/bg-search-results-headers.gif) 0 -83px repeat-x;
+      background: image-url('structure/bg-search-results-headers.gif') 0 -83px repeat-x;
     }
     .search #content ul.results li.closed {
-      background: url(../images/structure/bg-search-results-headers.gif) 0 -29px repeat-x;
+      background: image-url('structure/bg-search-results-headers.gif') 0 -29px repeat-x;
     }
     .search #content ul.results li div.header {
-      background: url(../images/structure/bg-search-results-header.gif) right 0 no-repeat;
+      background: image-url('structure/bg-search-results-header.gif') right 0 no-repeat;
     }
     .search #content ul.results li.closed div.header {
-      background: url(../images/structure/bg-search-results-header.gif) right -84px no-repeat;
+      background: image-url('structure/bg-search-results-header.gif') right -84px no-repeat;
     }
     .search #content ul.results li ul.location-filters li {
-      background: url(../images/structure/bg-search-results-headers.gif) 0 -0px repeat-x;
+      background: image-url('structure/bg-search-results-headers.gif') 0 -0px repeat-x;
     }
     .search #content ul.results li ul.location-filters li h3 {
-      background: url(../images/structure/bg-search-results-header.gif) right -55px no-repeat;
+      background: image-url('structure/bg-search-results-header.gif') right -55px no-repeat;
     }
     .search #content ul.results li.closed:hover div.header {
-      background: url(../images/structure/bg-search-results-header.gif) right -198px no-repeat;
+      background: image-url('structure/bg-search-results-header.gif') right -198px no-repeat;
     }
     .search #content ul.results ul.location-filters li.open div.header h3 {
       background-position: 100% -168px;
@@ -3479,11 +3477,11 @@ div.wysiwyg ul li {
       background: none;
     }
     .search #content div.results ul.pagination {
-      background: url(../images/structure/bg-search-results-pagination.gif) left top repeat-x;
+      background: image-url('structure/bg-search-results-pagination.gif') left top repeat-x;
     }
     .search #content div.results ul.pagination li a.first,
     .search #content div.results ul.pagination li a.last {
-      background: url(../images/structure/bg-search-results-pagination-a.gif) left center no-repeat;
+      background: image-url('structure/bg-search-results-pagination-a.gif') left center no-repeat;
     }
   /* @end */
 /* @end */
@@ -3614,13 +3612,13 @@ div.wysiwyg ul li {
       top: 151px;
     }
     .partners .partner-name {
-      background: url(../images/structure/bg-partner-name.gif) top right no-repeat;
+      background: image-url('structure/bg-partner-name.gif') top right no-repeat;
     }
     .partners a:hover .partner-name {
       background-position: right -60px;
     }
     .partner-portrait, .partner-portrait-images li, .partner-portrait-screen {
-      background: #F2F4F5 url(../images/structure/bg-partner-portrait.jpg) 0 0 no-repeat;
+      background: #F2F4F5 image-url('structure/bg-partner-portrait.jpg') 0 0 no-repeat;
     }
     .partner-portrait-screen {
       background-position: 0 -376px;
@@ -3645,14 +3643,14 @@ div.wysiwyg ul li {
       width: 0;
     }
     .js .partner-bio-outer {
-      background: transparent url(../images/structure/bg-partner-bio.png) no-repeat right 0;
+      background: transparent image-url('structure/bg-partner-bio.png') no-repeat right 0;
       padding: 20px 0 0;
       width: 800px;
       font-size: 11px;
       line-height: 18px;
     }
     .js .partner-bio-inner {
-      background: transparent url(../images/structure/bg-partner-bio.png) no-repeat 0 bottom;
+      background: transparent image-url('structure/bg-partner-bio.png') no-repeat 0 bottom;
       min-height: 215px;
       padding: 30px 50px 50px 300px;
       width: 450px;
@@ -3674,7 +3672,7 @@ div.wysiwyg ul li {
       margin-bottom: 12px;
     }
     .partner-close {
-      background: transparent url(../images/structure/bg-partner-close.png) no-repeat 0 0;
+      background: transparent image-url('structure/bg-partner-close.png') no-repeat 0 0;
       display: block;
       height: 40px;
       position: absolute;
@@ -3828,17 +3826,17 @@ div.wysiwyg ul li {
       margin-bottom: 35px;
     }
     .areamap-popular-properties h4 a {
-      background: url(../images/structure/bg-project-sub-content-h4.gif) top right no-repeat;
+      background: image-url('structure/bg-project-sub-content-h4.gif') top right no-repeat;
     }
     .areamap-popular-properties h4 a:hover {
       background-position: bottom right;
     }
     .mapkey li, .areamap-popular-properties p {
-      background-image: url(../images/structure/bg-areamap-icon.png);
+      background-image: image-url('structure/bg-areamap-icon.png');
       background-repeat: no-repeat;
     }
     .mapkey li span {
-      background: url(../images/structure/bg-about-content-p.gif) bottom left no-repeat;
+      background: image-url('structure/bg-about-content-p.gif') bottom left no-repeat;
     }
     .mapkey .apartments {
       background-position: 0 0;
@@ -3918,7 +3916,7 @@ div.wysiwyg ul li {
       width: 540px;
     }
     .seo-text .more {
-      background: url(/images/structure/bg-masthead-a-dark.gif) no-repeat 0px 50%;
+      background: image-url('structure/bg-masthead-a-dark.gif') no-repeat 0px 50%;
       color: #565C64;
       display: inline-block;
       margin: 15px 0px 0px;
@@ -3935,7 +3933,7 @@ div.wysiwyg ul li {
       width: 150px;
     }
     .seo-links a {
-      background: transparent url(/images/structure/bg-header-a.gif) no-repeat 0% 50%;
+      background: transparent image-url('structure/bg-header-a.gif') no-repeat 0% 50%;
       display: block;
       padding: 0 0 0 5px;
       zoom: 1;
@@ -3966,7 +3964,7 @@ div.wysiwyg ul li {
     }
 
     .local-update h2 a {
-      background: url(../images/structure/bg-homes-content-header-learn-more.gif) right -40px no-repeat;
+      background: image-url('structure/bg-homes-content-header-learn-more.gif') right -40px no-repeat;
       display: block;
       font-size: 16px !important;
       height: 40px;
@@ -3985,7 +3983,7 @@ div.wysiwyg ul li {
     }
 
     .local-update .twitter-update .byline {
-      background: url(../images/structure/bg-social-byline.png) no-repeat 0 0;
+      background: image-url('structure/bg-social-byline.png') no-repeat 0 0;
       color: #fff;
       display: block;
       font-weight: bold;
@@ -4004,7 +4002,7 @@ div.wysiwyg ul li {
       font-weight: bold;
       margin-top: 10px;
       padding: 11px 0 15px 34px;
-      background: transparent url(../images/structure/ico-facebook.gif) no-repeat 0 9px;
+      background: transparent image-url('structure/ico-facebook.gif') no-repeat 0 9px;
     }
 
     .local-info-feed li {
@@ -4054,7 +4052,7 @@ div.wysiwyg ul li {
       height: 223px;
     }
     #masthead-slideshow ul.slides li.slide {
-      background: #c0c5cb url(../images/structure/bg-masthead.gif) repeat-x 0 0;
+      background: #c0c5cb image-url('structure/bg-masthead.gif') repeat-x 0 0;
       text-indent: 0;
       height: 273px;
       left: 0;
@@ -4113,7 +4111,7 @@ div.wysiwyg ul li {
       padding-top: 30px;
     }
     #masthead-slideshow .aside p.call-to-action a {
-      background: url(../images/structure/bg-apartments-masthead-aside-a.png) left top no-repeat;
+      background: image-url('structure/bg-apartments-masthead-aside-a.png') left top no-repeat;
       border-bottom: 1px solid #e2e4e7;
       border-top: 1px solid #e2e4e7;
       color: #000;
@@ -4140,7 +4138,7 @@ div.wysiwyg ul li {
       text-transform: uppercase;
     }
     #masthead-slideshow .aside ul li a {
-      background: url(../images/structure/bg-masthead-a-dark.gif) 1px 12px no-repeat;
+      background: image-url('structure/bg-masthead-a-dark.gif') 1px 12px no-repeat;
       border-bottom: 1px solid #d1d5d9;
       color: #565c64;
       display: block;
@@ -4170,7 +4168,7 @@ div.wysiwyg ul li {
       font-style: normal;
     }
     #masthead-slideshow .quote {
-      background: #dde0e3 url(../images/structure/bg-aside-quote-figure.gif) 0 0 no-repeat;
+      background: #dde0e3 image-url('structure/bg-aside-quote-figure.gif') 0 0 no-repeat;
     }
   /* @end */
 
@@ -4226,29 +4224,29 @@ div.wysiwyg ul li {
       width: 43px;
     }
     .page #aside h3 {
-      background: transparent url(../images/structure/bg-aside-h3.gif) no-repeat 0 0;
+      background: transparent image-url('structure/bg-aside-h3.gif') no-repeat 0 0;
     }
     .page #aside h3:hover {
-      background: transparent url(../images/structure/bg-aside-h3.gif) no-repeat 0 bottom;
+      background: transparent image-url('structure/bg-aside-h3.gif') no-repeat 0 bottom;
     }
     .page #aside h3 a {
-      background: transparent url(../images/structure/bg-right-arrow.png) no-repeat 205px center;
+      background: transparent image-url('structure/bg-right-arrow.png') no-repeat 205px center;
     }
     .page #aside h3 a:hover {
-      background: transparent url(../images/structure/bg-right-arrow.png) no-repeat 205px center;
+      background: transparent image-url('structure/bg-right-arrow.png') no-repeat 205px center;
     }
 
     /* latest news & awards */
     .page #aside .latest-news h4 a,
     .page #aside .latest-awards h4 a {
-      background: transparent url(../images/structure/bg-news-a.gif) no-repeat 0 4px;
+      background: transparent image-url('structure/bg-news-a.gif') no-repeat 0 4px;
       padding-left: 6px;
     }
     .page #aside .latest-news .article {
       margin-bottom: 8px;
     }
     .page #aside .latest-awards .section {
-      background: transparent url(../images/structure/bg-about-sidebar-section.gif) no-repeat bottom left;
+      background: transparent image-url('structure/bg-about-sidebar-section.gif') no-repeat bottom left;
       padding-bottom: 0;
     }
     .page #aside .latest-news .section.first {
@@ -4302,7 +4300,7 @@ div.wysiwyg ul li {
     .page #aside #featured-projects .view-all,
     .page #aside .featured .details a,
     .page #aside .featured .view-all {
-      background: url(../images/structure/bg-news-a.gif) no-repeat 0 50%;
+      background: image-url('structure/bg-news-a.gif') no-repeat 0 50%;
     }
     .page #aside #featured-projects .view-all {
       margin-bottom: 0.727272727em;
@@ -4311,7 +4309,7 @@ div.wysiwyg ul li {
       font-weight: bold;
     }
     .page #aside #featured-projects .details {
-      background: url(../images/structure/bg-about-content-p.gif) no-repeat 0 100%;
+      background: image-url('structure/bg-about-content-p.gif') no-repeat 0 100%;
     }
 
     /* general */
@@ -4349,7 +4347,7 @@ div.wysiwyg ul li {
       margin-bottom: 0.727272727em;
     }
     .page #content p.last {
-      background: transparent url(../images/structure/bg-about-content-p.gif) no-repeat bottom left;
+      background: transparent image-url('structure/bg-about-content-p.gif') no-repeat bottom left;
       padding-bottom: 1.454545455em;
       margin-bottom: 0.727272727em;
     }
@@ -4388,7 +4386,7 @@ div.wysiwyg ul li {
     }
     .page .testimonials li,
     .page .tips {
-      background: url(../images/structure/bg-about-content-p.gif) no-repeat 0 100%;
+      background: image-url('structure/bg-about-content-p.gif') no-repeat 0 100%;
     }
     .li_container {
       margin-bottom: 20px;
@@ -4427,7 +4425,7 @@ div.wysiwyg ul li {
   }
   #content .property-listing p.photos strong,
   #content .property-listing div.photos strong {
-    background: #807e8c url(../images/structure/bg-listing-featured.png) repeat-x 0 0;
+    background: #807e8c image-url('structure/bg-listing-featured.png') repeat-x 0 0;
     font-weight: normal;
     letter-spacing: 2px;
     line-height: 1;
@@ -4479,7 +4477,7 @@ div.wysiwyg ul li {
     border-top: 1px solid #c1c1c5;
   }
   #content .property-listing div.info p.intro {
-    background: url(../images/structure/bg-about-content-p.gif) 12px bottom no-repeat;
+    background: image-url('structure/bg-about-content-p.gif') 12px bottom no-repeat;
     font-size: 15px;
     font-style: italic;
     line-height: 17px;
@@ -4509,7 +4507,7 @@ div.wysiwyg ul li {
     padding-bottom: 8px;
   }
   #content .property-listing div.info p.description {
-    background: url(../images/structure/blt-features.gif) left 7px no-repeat;
+    background: image-url('structure/blt-features.gif') left 7px no-repeat;
     clear: right;
     float: right;
     padding-left: 7px;
@@ -4527,7 +4525,7 @@ div.wysiwyg ul li {
     width: 230px;
   }
   #content .property-listing div.learn-more h2 a {
-    background: url(../images/structure/bg-homes-content-header-learn-more.gif) right top no-repeat;
+    background: image-url('structure/bg-homes-content-header-learn-more.gif') right top no-repeat;
     display: block;
     font-size: 15px;
     height: 40px;
@@ -4573,13 +4571,13 @@ div.wysiwyg ul li {
     width: 45px;
   }
   #content .property-listing div.info div.learn-more p {
-    background: url(../images/structure/bg-search-results-learn-more-p.gif) 12px bottom no-repeat;
+    background: image-url('structure/bg-search-results-learn-more-p.gif') 12px bottom no-repeat;
   }
   #content .property-listing div.info div.learn-more p.last { background: none;
     margin-bottom: 0;
   }
   #content .property-listing div.info div.learn-more p a {
-    background: url(../images/structure/bg-header-a.gif) left center no-repeat;
+    background: image-url('structure/bg-header-a.gif') left center no-repeat;
     color: #636972;
     display: block;
     font-size: 11px;
@@ -4591,7 +4589,7 @@ div.wysiwyg ul li {
     margin-top: 10px;
   }
   #content .property-listing p.call-to-action a {
-    background: url(../images/structure/bg-header-a.gif) left center no-repeat;
+    background: image-url('structure/bg-header-a.gif') left center no-repeat;
     color: #636972;
     font-size: 11px;
     font-weight: bold;
@@ -4706,7 +4704,7 @@ div.wysiwyg ul li {
 }
 
 #ufollowup-form div.field {
-  background: transparent url(../images/structure/bg-about-sidebar-section.gif) no-repeat bottom 170px;
+  background: transparent image-url('structure/bg-about-sidebar-section.gif') no-repeat bottom 170px;
   margin-bottom: 1em;
   padding-left: 170px;
   padding-bottom: 1em;
@@ -4815,7 +4813,7 @@ div.wysiwyg ul li {
   }
 
   .carousel .slides .caption {
-    background: url(../images/structure/carousel-caption-bg.png) repeat 0 0;
+    background: image-url('structure/carousel-caption-bg.png') repeat 0 0;
     bottom: 0;
     color: #84848b;
     color: #565c64;
@@ -4833,7 +4831,7 @@ div.wysiwyg ul li {
 
 
   .carousel .slides a:hover .caption {
-    background: url(../images/structure/carousel-caption-hover-bg.png) repeat 0 0;
+    background: image-url('structure/carousel-caption-hover-bg.png') repeat 0 0;
   }
 
   .carousel .slides .caption strong {
@@ -4869,7 +4867,7 @@ div.wysiwyg ul li {
   }
 
   .carousel .nav {
-    background: transparent url(../images/structure/carousel-nav-bar-bg.gif) repeat-x 0 0;
+    background: transparent image-url('structure/carousel-nav-bar-bg.gif') repeat-x 0 0;
     border-bottom: 1px solid #c1c1c5;
     border-top: 1px solid #c1c1c5;
     height: 28px;
@@ -4889,11 +4887,11 @@ div.wysiwyg ul li {
   }
 
   .carousel a.prev {
-    background: transparent url(../images/structure/carousel-nav-bar-left-arrow.gif) no-repeat top left;
+    background: transparent image-url('structure/carousel-nav-bar-left-arrow.gif') no-repeat top left;
     left: 0;
   }
   .carousel a.next {
-    background: transparent url(../images/structure/carousel-nav-bar-right-arrow.gif) no-repeat top right;
+    background: transparent image-url('structure/carousel-nav-bar-right-arrow.gif') no-repeat top right;
     right: 0;
   }
 
@@ -5003,7 +5001,7 @@ div.wysiwyg ul li {
   }
 
   .careers-header p {
-    background: transparent url(../images/structure/bg-careers-banner-line.gif) no-repeat 3px 0;
+    background: transparent image-url('structure/bg-careers-banner-line.gif') no-repeat 3px 0;
     color: #4b4951;
     font-size: 14px !important;
     font-weight: bold;
@@ -5136,7 +5134,7 @@ div.wysiwyg ul li {
 }
 
 .cta {
-	background: url(../images/structure/bg-home-article-h3.gif) no-repeat;
+	background: image-url('structure/bg-home-article-h3.gif') no-repeat;
 	border: 1px solid #c1c1c6;
 	border-width: 1px 0;
 	display: block;
@@ -5153,7 +5151,7 @@ div.wysiwyg ul li {
 }
 
 .cta:before {
-	background: url(../images/structure/carousel-nav-bar-right-arrow.gif) no-repeat -1px -1px;
+	background: image-url('structure/carousel-nav-bar-right-arrow.gif') no-repeat -1px -1px;
 	content: "";
 	display: block;
 	height: 100%;
@@ -5276,7 +5274,7 @@ div.wysiwyg ul li {
 }
 
 .green-features .hotspot {
-	background: url(../images/structure/btn-hotspots.png) no-repeat 0 -23px;
+	background: image-url('structure/btn-hotspots.png') no-repeat 0 -23px;
 	display: block;
 	height: 23px;
 	position: absolute;
@@ -5520,7 +5518,7 @@ div.wysiwyg ul li {
 }
 
 .green-homes-list .caption {
-  background: url(../images/structure/carousel-caption-bg.png) repeat 0 0;
+  background: image-url('structure/carousel-caption-bg.png') repeat 0 0;
   bottom: 0;
   color: #84848b;
   color: #565c64;
@@ -5533,7 +5531,7 @@ div.wysiwyg ul li {
 }
 
 .green-homes-list a:hover .caption {
-  background: url(../images/structure/carousel-caption-hover-bg.png) repeat 0 0;
+  background: image-url('structure/carousel-caption-hover-bg.png') repeat 0 0;
 }
 
 .green-homes-list .caption strong {

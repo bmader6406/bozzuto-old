@@ -49,7 +49,7 @@
 }
 
 * html .secondary #main-content .media-group h2 {
-  margin: 0 0 0 -85px;    
+  margin: 0 0 0 -85px;
 }
 
 * html .tips .li_cont3  {
@@ -107,23 +107,23 @@
 * html div.promo p.image {
   margin-right: 20px;
 }
- 
+
 .tooltip,
 .tooltip div,
 .tooltip li {
   zoom: 1;
 }
- 
+
 /***
   2. Typography
 ***/
- 
- 
+
+
 /***
   3. Backgrounds
 ***/
 * html #header #finder li.open a {
-  background: #c2c6ca url(../images/structure/bg-right-arrow.png) no-repeat 215px center;
+  background: #c2c6ca image-url('structure/bg-right-arrow.png') no-repeat 215px center;
 }
 .about #latest-news h4 a {
   background: none;

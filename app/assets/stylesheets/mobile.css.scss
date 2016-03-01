@@ -65,7 +65,7 @@ input[type=submit] {
   border-bottom: 1px solid #D9DADB;
 }
 .btn, .submit {
-  background: url(/images/mobile/structure/button-sprites.gif) 0 -161px no-repeat;
+  background: image-url('mobile/structure/button-sprites.gif') 0 -161px no-repeat;
   color: #fff;
   display: block;
   font-size: 14px;
@@ -130,7 +130,7 @@ input, select, textarea, .submit {
   padding: 25px 22px;
 }
 .header h1 {
-  background: url(/images/mobile/structure/bg-bozzuto-logo.png) 0 0 no-repeat;
+  background: image-url('mobile/structure/bg-bozzuto-logo.png') 0 0 no-repeat;
   float: left;
   height: 32px;
   margin-top: -9px;
@@ -159,7 +159,7 @@ input, select, textarea, .submit {
 /* @end Header */
 /* @group Footer */
 .footer {
-  background: #8c8b8b url(/images/mobile/structure/bg-footer.png) 0 0 repeat-x;
+  background: #8c8b8b image-url('mobile/structure/bg-footer.png') 0 0 repeat-x;
   font-size: 11px;
 }
 .footer .content { padding: 15px 0 10px 0 }
@@ -185,7 +185,7 @@ input, select, textarea, .submit {
   float: left;
 }
 .eho {
-  background: url(/images/mobile/structure/bg-eho.png) 0 0 no-repeat;
+  background: image-url('mobile/structure/bg-eho.png') 0 0 no-repeat;
   float: right;
   padding-left: 20px;
 }
@@ -237,7 +237,7 @@ input, select, textarea, .submit {
 
   /* @group Page Title */
   .go-back {
-    background: url(/images/mobile/structure/bg-go-back-arrow.png) 0 2px no-repeat;
+    background: image-url('mobile/structure/bg-go-back-arrow.png') 0 2px no-repeat;
     display: block;
     font-size: 16px;
     font-weight: bold;
@@ -252,7 +252,7 @@ input, select, textarea, .submit {
     padding-bottom: 20px;
   }
   .page-title {
-    background: #ebedee url(/images/mobile/structure/bg-page-title.png) top left repeat-x;
+    background: #ebedee image-url('mobile/structure/bg-page-title.png') top left repeat-x;
     overflow: hidden;
   }
   .page-title .content {
@@ -286,7 +286,7 @@ input, select, textarea, .submit {
   .floor-plan,
   .homes li,
   .home {
-    background: #d6dde7 url(/images/mobile/structure/btn-big.png) top left no-repeat;
+    background: #d6dde7 image-url('mobile/structure/btn-big.png') top left no-repeat;
     width: 300px;
   }
   .property-list li,
@@ -371,7 +371,7 @@ input, select, textarea, .submit {
     border-left: 1px solid #aaa;
   }
   .tel {
-    background: url(/images/mobile/structure/icn-phone.png) 50% 50% no-repeat;
+    background: image-url('mobile/structure/icn-phone.png') 50% 50% no-repeat;
     display: block;
     float: right;
     height: 80px;

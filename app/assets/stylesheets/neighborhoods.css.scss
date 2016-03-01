@@ -366,7 +366,7 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   }
 
   .nh-fp-table-name {
-    background: transparent url(/images/structure/bg-header-a.gif) no-repeat center left;
+    background: transparent image-url('structure/bg-header-a.gif') no-repeat center left;
     font-weight: bold;
     padding-left: 8px;
     text-transform: uppercase;
@@ -380,7 +380,7 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   width: 100%;
 
   .cty-tile-actions-info {
-    background: transparent url(/images/structure/bg-header-a.gif) no-repeat center left;
+    background: transparent image-url('structure/bg-header-a.gif') no-repeat center left;
     color: #84848b;
     float: right;
     font-size: 12px;
@@ -395,7 +395,7 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
 
 .nh-arrow-list {
   li {
-    background: url(/images/structure/bg-footer-a.gif) no-repeat center left;
+    background: image-url('structure/bg-footer-a.gif') no-repeat center left;
     padding-left: 10px;
     line-height: 20px;
     margin-bottom: 1em;

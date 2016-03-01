@@ -5,7 +5,7 @@ header {
   z-index: 10;
 
   .h-logo {
-    background: url(/images/redesign/bozzuto-logo.png) no-repeat;
+    background: image-url('redesign/bozzuto-logo.png') no-repeat;
     height: 50px;
     width: 275px;
 
@@ -19,7 +19,7 @@ header {
   }
 
   nav {
-    background: $black-almost url(/images/redesign/main-nav-tile.png) repeat-x;
+    background: $black-almost image-url('redesign/main-nav-tile.png') repeat-x;
     height: $nav-height;
     margin-top: 12px;
   }

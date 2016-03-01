@@ -57,7 +57,7 @@
   }
 
   .cty-slideshow-shadow {
-    background: url(/images/structure/bg-slideshow-overlay.png) no-repeat top left;
+    background: image-url('structure/bg-slideshow-overlay.png') no-repeat top left;
     height: 375px;
     left: 0;
     position: absolute;
@@ -271,7 +271,7 @@ $features: "active-adult", "bozzuto-elite", "brand-new", "concierge", "fitness-c
 
 @each $feature in $features {
   .cty-feature-ico-#{$feature} {
-    background-image: url(/images/redesign/ico-#{$feature}.png);
+    background-image: image-url('redesign/ico-#{$feature}.png');
   }
 }
 

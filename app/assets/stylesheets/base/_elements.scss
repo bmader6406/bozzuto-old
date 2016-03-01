@@ -31,7 +31,7 @@ strong {
   .modal-close {
     @include hide-text;
 
-    background: url(/images/redesign/modal-close.png) no-repeat top left;
+    background: image-url('redesign/modal-close.png') no-repeat top left;
     width: 42px;
     height: 42px;
     position: absolute;
