@@ -1,5 +1,5 @@
 ActiveAdmin.register AdSource do
-  menu parent: 'System'
+  menu parent: 'System', label: 'Ad Sources'
 
   permit_params :domain_name, :value
 
