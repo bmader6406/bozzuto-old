@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160226193815) do
+ActiveRecord::Schema.define(:version => 20160301184333) do
 
   create_table "ad_sources", :force => true do |t|
     t.string   "domain_name", :null => false
@@ -291,9 +291,9 @@ ActiveRecord::Schema.define(:version => 20160226193815) do
   create_table "areas", :force => true do |t|
     t.string   "name",                                                     :null => false
     t.string   "cached_slug"
-    t.float    "latitude",                                                 :null => false
-    t.float    "longitude",                                                :null => false
-    t.integer  "metro_id",                                                 :null => false
+    t.decimal  "latitude",                :precision => 10, :scale => 6,                              :null => false
+    t.decimal  "longitude",               :precision => 10, :scale => 6,                              :null => false
+    t.integer  "metro_id",                                                                            :null => false
     t.integer  "position"
     t.string   "banner_image_file_name"
     t.string   "listing_image_file_name"
@@ -303,7 +303,7 @@ ActiveRecord::Schema.define(:version => 20160226193815) do
     t.text     "description"
     t.text     "detail_description"
     t.integer  "state_id"
-    t.string   "area_type",                   :default => "neighborhoods", :null => false
+    t.string   "area_type",                                              :default => "neighborhoods", :null => false
   end
 
   add_index "areas", ["apartment_communities_count"], :name => "index_areas_on_apartment_communities_count"
@@ -605,12 +605,12 @@ ActiveRecord::Schema.define(:version => 20160226193815) do
   add_index "home_neighborhood_memberships", ["home_neighborhood_id"], :name => "index_home_neighborhood_memberships_on_home_neighborhood_id"
 
   create_table "home_neighborhoods", :force => true do |t|
-    t.string   "name",                                                          :null => false
     t.string   "cached_slug"
-    t.float    "latitude",                                                      :null => false
-    t.float    "longitude",                                                     :null => false
-    t.string   "banner_image_file_name",                                        :null => false
-    t.string   "listing_image_file_name",                                       :null => false
+    t.string   "name",                                                                          :null => false
+    t.decimal  "latitude",                                       :precision => 10, :scale => 6, :null => false
+    t.decimal  "longitude",                                      :precision => 10, :scale => 6, :null => false
+    t.string   "banner_image_file_name",                                                        :null => false
+    t.string   "listing_image_file_name",                                                       :null => false
     t.integer  "position"
     t.integer  "featured_home_community_id"
     t.integer  "home_communities_count",                         :default => 0
@@ -622,6 +622,7 @@ ActiveRecord::Schema.define(:version => 20160226193815) do
 
   add_index "home_neighborhoods", ["cached_slug"], :name => "index_home_neighborhoods_on_cached_slug"
   add_index "home_neighborhoods", ["name"], :name => "index_home_neighborhoods_on_name", :unique => true
+  add_index "home_neighborhoods", ["slug"], :name => "index_home_neighborhoods_on_slug"
 
   create_table "home_page_slides", :force => true do |t|
     t.integer  "home_page_id",       :null => false
@@ -783,13 +784,13 @@ ActiveRecord::Schema.define(:version => 20160226193815) do
   add_index "mediaplex_tags", ["trackable_type", "trackable_id"], :name => "index_mediaplex_tags_on_trackable_type_and_trackable_id"
 
   create_table "metros", :force => true do |t|
-    t.string   "name",                                       :null => false
     t.string   "cached_slug"
-    t.float    "latitude",                                   :null => false
-    t.float    "longitude",                                  :null => false
+    t.string   "name",                                                   :null => false
+    t.decimal  "latitude",                :precision => 10, :scale => 6, :null => false
+    t.decimal  "longitude",               :precision => 10, :scale => 6, :null => false
     t.integer  "position"
     t.string   "banner_image_file_name"
-    t.string   "listing_image_file_name",                    :null => false
+    t.string   "listing_image_file_name",                                :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "apartment_communities_count", :default => 0
@@ -832,15 +833,15 @@ ActiveRecord::Schema.define(:version => 20160226193815) do
   add_index "neighborhood_memberships", ["tier"], :name => "index_neighborhood_memberships_on_tier"
 
   create_table "neighborhoods", :force => true do |t|
-    t.string   "name",                                           :null => false
     t.string   "cached_slug"
-    t.float    "latitude",                                       :null => false
-    t.float    "longitude",                                      :null => false
+    t.string   "name",                                                           :null => false
+    t.decimal  "latitude",                        :precision => 10, :scale => 6, :null => false
+    t.decimal  "longitude",                       :precision => 10, :scale => 6, :null => false
     t.string   "banner_image_file_name"
     t.string   "listing_image_file_name"
-    t.integer  "area_id",                                        :null => false
+    t.integer  "area_id",                                                        :null => false
     t.integer  "position"
-    t.integer  "state_id",                                       :null => false
+    t.integer  "state_id",                                                       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "featured_apartment_community_id"
