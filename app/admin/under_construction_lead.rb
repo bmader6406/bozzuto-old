@@ -3,17 +3,6 @@ ActiveAdmin.register UnderConstructionLead do
 
   actions :index, :show, :destroy
 
-  permit_params :first_name,
-                :last_name,
-                :address,
-                :address_2,
-                :city,
-                :state,
-                :zip_code,
-                :phone_number,
-                :email,
-                :comments
-
   filter :first_name_cont, label: "First Name"
   filter :last_name_cont,  label: "Last Name"
   filter :email_cont,      label: "Email"
@@ -29,13 +18,19 @@ ActiveAdmin.register UnderConstructionLead do
 
   show do
     attributes_table do
-      rows :id
-      rows :apartment_community
-      rows :first_name, :last_name
-      rows :email, :phone_number
-      rows :address, :address_2, :city, :state, :zip_code
-      rows :comments
-      rows :created_at
+      row :id
+      row :apartment_community
+      row :first_name
+      row :last_name
+      row :email
+      row :phone_number
+      row :address
+      row :address_2
+      row :city
+      row :state
+      row :zip_code
+      row :comments
+      row :created_at
     end
   end
 end

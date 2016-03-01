@@ -19,21 +19,23 @@ ActiveAdmin.register Video do
 
   show do
     attributes_table do
-      rows :id
-      rows :property, :url
-      row  :image do |video|
+      row :id
+      row :property
+      row :url
+      row :image do |video|
         if video.image.present?
           image_tag video.image
         end
       end
-      rows :created_at, :updated_at
+      row :created_at
+      row :updated_at
     end
   end
 
   form do |f|
     inputs do
-      input :property
-      input :image, as: :image
+      input :property, as: :chosen
+      input :image,    as: :image
       input :url
     end
 

@@ -29,6 +29,7 @@ ActiveAdmin.register PressRelease do
       tab 'Details' do
         panel nil do
           attributes_table_for press_release do
+            row :id
             row :title
             row :published do
               status_tag press_release.published

@@ -18,11 +18,23 @@ ActiveAdmin.register PropertyAmenity do
     actions
   end
 
+  show do |amenity|
+    attributes_table do
+      row :id
+      row :property
+      row :primary_type
+      row :sub_type
+      row :description
+      row :created_at
+      row :updated_at
+    end
+  end
+
   form do |f|
     inputs do
-      input :property
-      input :primary_type, collection: PropertyAmenity::PRIMARY_TYPE
-      input :sub_type,     collection: PropertyAmenity::SUB_TYPE
+      input :property,     as: :chosen
+      input :primary_type, as: :chosen, collection: PropertyAmenity::PRIMARY_TYPE
+      input :sub_type,     as: :chosen, collection: PropertyAmenity::SUB_TYPE
       input :description
     end
 

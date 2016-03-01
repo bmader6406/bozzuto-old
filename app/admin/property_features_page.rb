@@ -23,18 +23,62 @@ ActiveAdmin.register PropertyFeaturesPage do
     actions
   end
 
+  show do |page|
+    tabs do
+      tab 'Details' do
+        panel nil do
+          attributes_table_for page do
+            row :id
+            row :property
+            row :title_1
+            row :text_1 do
+              raw page.text_1
+            end
+            row :title_2
+            row :text_2 do
+              raw page.text_2
+            end
+            row :title_3
+            row :text_3 do
+              raw page.text_3
+            end
+            row :created_at
+            row :updated_at
+          end
+        end
+      end
+
+      tab 'Seo' do
+        panel nil do
+          attributes_table_for page do
+            row :meta_title
+            row :meta_description
+            row :meta_keywords
+          end
+        end
+      end
+    end
+  end
+
   form do |f|
     inputs do
-      input :title_1
-      input :text_1, as: :redactor
-      input :title_2
-      input :text_2, as: :redactor
-      input :title_3
-      input :text_3, as: :redactor
-      input :meta_title
-      input :meta_description
-      input :meta_keywords
-      input :property
+      tabs do
+        tab 'Details' do
+          input :property, as: :chosen
+          input :title_1
+          input :text_1,   as: :redactor
+          input :title_2
+          input :text_2,   as: :redactor
+          input :title_3
+          input :text_3,   as: :redactor
+        end
+
+        tab 'Seo' do
+          input :meta_title
+          input :meta_description
+          input :meta_keywords
+        end
+      end
     end
 
     actions

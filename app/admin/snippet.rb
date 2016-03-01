@@ -20,12 +20,13 @@ ActiveAdmin.register Snippet do
 
   show do
     attributes_table do
-      rows :id
-      rows :name
-      row  :body do |s|
+      row :id
+      row :name
+      row :body do |s|
         raw s.body
       end
-      rows :created_at, :updated_at
+      row :created_at
+      row :updated_at
     end
   end
 

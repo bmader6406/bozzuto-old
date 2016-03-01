@@ -7,8 +7,7 @@ ActiveAdmin.register LeadershipGroup do
 
   reorderable
 
-  permit_params :name,
-                :position
+  permit_params :name
 
   index as: :reorderable_table do
     column :name

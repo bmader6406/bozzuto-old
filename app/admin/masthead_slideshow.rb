@@ -20,8 +20,11 @@ ActiveAdmin.register MastheadSlideshow do
       tab 'Details' do
         panel nil do
           attributes_table_for slideshow do
+            row :id
             row :name
             row :page
+            row :created_at
+            row :updated_at
           end
         end
       end

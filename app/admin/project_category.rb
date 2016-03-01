@@ -32,9 +32,11 @@ ActiveAdmin.register ProjectCategory do
       tab 'Details' do
         panel nil do
           attributes_table_for resource do
-            rows :id
-            rows :title, :slug
-            rows :created_at, :updated_at
+            row :id
+            row :title
+            row :slug
+            row :created_at
+            row :updated_at
           end
         end
       end
@@ -42,7 +44,9 @@ ActiveAdmin.register ProjectCategory do
       tab 'Projects' do
         collection_panel_for :projects do
           table_for resource.projects.ordered_by_title do
-            column :title
+            column :title do |project|
+              link_to project.title, [:new_admin, project]
+            end
             column :published
             column :street_address
             column :city

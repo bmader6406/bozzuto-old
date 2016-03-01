@@ -34,6 +34,7 @@ ActiveAdmin.register MastheadSlide do
       tab 'Details' do
         panel nil do
           attributes_table_for slide do
+            row :id
             row :masthead_slideshow
             row :body
             row :slide_type do |slide|
@@ -47,6 +48,8 @@ ActiveAdmin.register MastheadSlide do
             row :image_link
             row :sidebar_text
             row :mini_slideshow
+            row :created_at
+            row :updated_at
           end
         end
       end
@@ -68,17 +71,17 @@ ActiveAdmin.register MastheadSlide do
     inputs do
       tabs do
         tab 'Details' do
-          input :masthead_slideshow
-          input :body, as: :redactor
-          input :slide_type, as: :select, collection: MastheadSlide::SLIDE_TYPE
-          input :image, as: :image
+          input :masthead_slideshow,  as: :chosen
+          input :mini_slideshow,      as: :chosen
+          input :body,                as: :redactor
+          input :slide_type,          as: :select,  collection: MastheadSlide::SLIDE_TYPE
+          input :image,               as: :image
           input :image_link
-          input :sidebar_text, as: :redactor
-          input :mini_slideshow
+          input :sidebar_text,        as: :redactor
         end
 
         tab 'Quote Fields' do
-          input :quote, as: :redactor
+          input :quote,             as: :redactor
           input :quote_attribution
           input :quote_job_title
           input :quote_company

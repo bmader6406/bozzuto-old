@@ -31,7 +31,6 @@ ActiveAdmin.register Project do
                 :overview_text,
                 :published,
                 :featured_mobile,
-                :position,
                 project_categories_ids: []
 
   # Work around for models who have overridden `to_param` in AA
@@ -65,33 +64,39 @@ ActiveAdmin.register Project do
     actions
   end
 
-  show do
+  show do |project|
     tabs do
       tab 'Details' do
         panel nil do
-          attributes_table_for resource do
-            rows :id
-            rows :title
-            rows :short_title
-            rows :short_description
-            rows :page_header
-            rows :has_completion_date
-            rows :section
-            rows :website_url
-            rows :website_url_text
-            rows :video_url
-            rows :listing_image do |project|
+          attributes_table_for project do
+            row :id
+            row :title
+            row :short_title
+            row :short_description
+            row :page_header
+            row :has_completion_date do
+              status_tag project.has_completion_date
+            end
+            row :section
+            row :website_url
+            row :website_url_text
+            row :video_url
+            row :listing_image do |project|
               if project.listing_image.present?
                 image_tag project.listing_image
               end
             end
-            rows :listing_title
-            rows :listing_text
-            rows :overview_text
-            rows :published
-            rows :featured_mobile
-            row  :created_at
-            row  :updated_at
+            row :listing_title
+            row :listing_text
+            row :overview_text
+            row :published do
+              status_tag project.published
+            end
+            row :featured_mobile do
+              status_tag project.featured_mobile
+            end
+            row :created_at
+            row :updated_at
           end
         end
       end
@@ -120,7 +125,7 @@ ActiveAdmin.register Project do
         end
       end
 
-      tab 'Seo Metadata' do
+      tab 'Seo' do
         panel nil do
           attributes_table_for resource do
             rows :meta_title
@@ -183,22 +188,22 @@ ActiveAdmin.register Project do
           input :short_description
           input :page_header
           input :has_completion_date
-          input :section
+          input :section,             as: :chosen
           input :website_url
           input :website_url_text
           input :video_url
-          input :listing_image, as: :image
+          input :listing_image,       as: :image
           input :listing_title
-          input :listing_text, as: :redactor
-          input :overview_text, as: :redactor
+          input :listing_text,        as: :redactor
+          input :overview_text,       as: :redactor
           input :published
           input :featured_mobile
         end
 
         tab 'Location' do
           input :street_address
-          input :city
-          input :county
+          input :city,            as: :chosen
+          input :county,          as: :chosen
           input :zip_code
           input :latitude
           input :longitude
@@ -211,7 +216,7 @@ ActiveAdmin.register Project do
           input :brochure
         end
 
-        tab 'Seo Metadata' do
+        tab 'Seo' do
           input :meta_title
           input :meta_description
           input :meta_keywords
@@ -228,7 +233,6 @@ ActiveAdmin.register Project do
         tab 'Data Points' do
           panel nil do
             association_table_for :data_points, scope: resource.data_points.position_asc do
-              column :position
               column :name
             end
           end

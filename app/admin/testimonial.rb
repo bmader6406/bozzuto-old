@@ -22,14 +22,15 @@ ActiveAdmin.register Testimonial do
 
   show do
     attributes_table do
-      rows :id
-      rows :name
-      rows :title
-      row  :quote do |t|
-        t.excerpt
+      row :id
+      row :name
+      row :title
+      row :quote do |t|
+        raw t.quote
       end
-      rows :section
-      rows :created_at, :updated_at
+      row :section
+      row :created_at
+      row :updated_at
     end
   end
 
@@ -38,7 +39,7 @@ ActiveAdmin.register Testimonial do
       input :name
       input :title
       input :quote,   as: :redactor
-      input :section, collection: Section.ordered_by_title
+      input :section, as: :chosen,   collection: Section.ordered_by_title
     end
 
     actions

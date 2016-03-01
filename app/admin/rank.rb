@@ -33,7 +33,7 @@ ActiveAdmin.register Rank do
 
   form do |f|
     inputs do
-      input :rank_category
+      input :rank_category, as: :chosen
       input :year
       input :rank_number
       input :description

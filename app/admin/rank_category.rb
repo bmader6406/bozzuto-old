@@ -47,7 +47,7 @@ ActiveAdmin.register RankCategory do
       tabs do
         tab 'Details' do
           input :name
-          input :publication
+          input :publication, as: :chosen
         end
 
         tab 'Ranks' do

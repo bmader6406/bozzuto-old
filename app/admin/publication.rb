@@ -8,8 +8,7 @@ ActiveAdmin.register Publication do
   permit_params :name,
                 :description,
                 :image,
-                :published,
-                :position
+                :published
 
   filter :name_cont, label: 'Name'
 

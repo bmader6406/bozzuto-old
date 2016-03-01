@@ -6,8 +6,7 @@ ActiveAdmin.register ProjectDataPoint do
   permit_params :project,
                 :project_id,
                 :name,
-                :data,
-                :position
+                :data
 
   filter :name_cont, label: 'Name'
 
@@ -19,11 +18,22 @@ ActiveAdmin.register ProjectDataPoint do
     actions
   end
 
+  show do
+    attributes_table do
+      row :id
+      row :project
+      row :name
+      row :data
+      row :created_at
+      row :updated_at
+    end
+  end
+
   form do |f|
     inputs do
+      input :project, as: :chosen
       input :name
       input :data
-      input :project
     end
 
     actions

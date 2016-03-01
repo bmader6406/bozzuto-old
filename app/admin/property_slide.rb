@@ -10,7 +10,6 @@ ActiveAdmin.register PropertySlide do
                 :caption,
                 :link_url,
                 :video_url,
-                :position,
                 :property_slideshow_id
 
   index do
@@ -26,6 +25,7 @@ ActiveAdmin.register PropertySlide do
 
   show do |slide|
     attributes_table do
+      row :id
       row :property_slideshow
       row :image do |slide|
         if slide.image.present?
@@ -35,6 +35,8 @@ ActiveAdmin.register PropertySlide do
       row :caption
       row :link_url
       row :video_url
+      row :created_at
+      row :updated_at
     end
   end
 

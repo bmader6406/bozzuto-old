@@ -1,6 +1,10 @@
 ActiveAdmin.register Metro do
   menu parent: 'Neighborhoods'
 
+  config.sort_order = 'position_asc'
+
+  reorderable
+
   permit_params :name,
                 :latitude,
                 :longitude,
@@ -28,7 +32,7 @@ ActiveAdmin.register Metro do
     end
   end
 
-  index do
+  index as: :reorderable_table do
     column :name
 
     actions
@@ -39,9 +43,11 @@ ActiveAdmin.register Metro do
       tab 'Details' do
         panel nil do
           attributes_table_for resource do
-            rows :id
-            rows :name, :slug
-            rows :latitude, :longitude
+            row :id
+            row :name
+            row :slug
+            row :latitude
+            row :longitude
             row :banner_image do
               if resource.banner_image.present?
                 image_tag resource.banner_image
@@ -52,8 +58,19 @@ ActiveAdmin.register Metro do
                 image_tag resource.listing_image
               end
             end
-            rows :detail_description
-            rows :created_at, :updated_at
+            row :detail_description
+            row :created_at
+            row :updated_at
+          end
+        end
+      end
+
+      tab 'Seo' do
+        collection_panel_for :seo_metadata do
+          attributes_table_for resource.seo_metadata do
+            row :meta_title
+            row :meta_description
+            row :meta_keywords
           end
         end
       end
@@ -61,20 +78,9 @@ ActiveAdmin.register Metro do
       tab 'Areas' do
         collection_panel_for :areas do
           reorderable_table_for resource.areas.position_asc do
-            column :position
             column :name do |a|
               link_to a.name, [:new_admin, a]
             end
-          end
-        end
-      end
-
-      tab 'Seo Metadata' do
-        collection_panel_for :seo_metadata do
-          attributes_table_for resource.seo_metadata do
-            row :meta_title
-            row :meta_description
-            row :meta_keywords
           end
         end
       end
@@ -88,25 +94,24 @@ ActiveAdmin.register Metro do
           input :name
           input :latitude
           input :longitude
-          input :banner_image, as: :image
-          input :listing_image, as: :image
+          input :banner_image,       as: :image
+          input :listing_image,      as: :image
           input :detail_description, input_html: { rows: 10 }
+        end
+
+        tab 'Seo' do
+          inputs for: [:seo_metadata, f.object.seo_metadata || SeoMetadata.new(resource: resource)] do |seo|
+            seo.input :meta_title
+            seo.input :meta_description
+            seo.input :meta_keywords
+          end
         end
 
         tab 'Areas' do 
           panel nil do
             association_table_for :areas, scope: resource.areas.position_asc do
-              column :position
               column :name
             end
-          end
-        end
-
-        tab 'Seo Metadata' do
-          inputs for: [:seo_metadata, f.object.seo_metadata || SeoMetadata.new(resource: resource)] do |seo|
-            seo.input :meta_title
-            seo.input :meta_description
-            seo.input :meta_keywords
           end
         end
       end
