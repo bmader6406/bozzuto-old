@@ -91,7 +91,7 @@ ActiveAdmin.register Area do
         end
       end
 
-      tab 'SEO Metadata' do
+      tab 'Seo' do
         collection_panel_for :seo_metadata do
           attributes_table_for resource.seo_metadata do
             row :meta_title
@@ -141,7 +141,7 @@ ActiveAdmin.register Area do
           end
         end
 
-        tab 'SEO Metadata' do
+        tab 'Seo' do
           inputs for: [:seo_metadata, f.object.seo_metadata || SeoMetadata.new(resource: resource)] do |seo|
             seo.input :meta_title
             seo.input :meta_description

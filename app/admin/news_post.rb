@@ -61,7 +61,7 @@ ActiveAdmin.register NewsPost do
         end
       end
 
-      tab 'Seo Metadata' do
+      tab 'Seo' do
         panel nil do
           attributes_table_for resource do
             row :meta_title
@@ -97,7 +97,7 @@ ActiveAdmin.register NewsPost do
           input :body,                  as: :redactor
         end
 
-        tab 'Seo Metadata' do
+        tab 'Seo' do
           input :meta_title
           input :meta_description
           input :meta_keywords
