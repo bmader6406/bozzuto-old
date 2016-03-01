@@ -1,8 +1,0 @@
-h1 {
-  *zoom: 1;
-  color: red; }
-  h1:before, h1:after {
-    content: " ";
-    display: table; }
-  h1:after {
-    clear: both; }
