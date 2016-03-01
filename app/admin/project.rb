@@ -104,12 +104,12 @@ ActiveAdmin.register Project do
       tab 'Location' do
         panel nil do
           attributes_table_for resource do
-            rows :street_address
-            rows :city
-            rows :county
-            rows :zip_code
-            rows :latitude
-            rows :longitude
+            row :street_address
+            row :city
+            row :county
+            row :zip_code
+            row :latitude
+            row :longitude
           end
         end
       end
@@ -117,10 +117,10 @@ ActiveAdmin.register Project do
       tab 'Brochure' do
         panel nil do
           attributes_table_for resource do
-            rows :brochure_link_text
-            rows :brochure_type
-            rows :brochure_url
-            rows :brochure
+            row :brochure_link_text
+            row :brochure_type
+            row :brochure_url
+            row :brochure
           end
         end
       end
@@ -128,9 +128,9 @@ ActiveAdmin.register Project do
       tab 'Seo' do
         panel nil do
           attributes_table_for resource do
-            rows :meta_title
-            rows :meta_description
-            rows :meta_keywords
+            row :meta_title
+            row :meta_description
+            row :meta_keywords
           end
         end
       end
