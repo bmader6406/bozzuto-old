@@ -4,4 +4,8 @@ class AdminUser < ActiveRecord::Base
          :rememberable,
          :trackable,
          :validatable
+
+  def to_s
+    name.presence || email
+  end
 end
