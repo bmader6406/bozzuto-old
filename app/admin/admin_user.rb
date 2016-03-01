@@ -1,29 +1,56 @@
 ActiveAdmin.register AdminUser do
   menu parent: 'System'
 
-  permit_params :email, :password, :password_confirmation
+  permit_params :name,
+                :email,
+                :password,
+                :password_confirmation
+
+  filter :name_or_email_cont, label: 'Search'
 
   index do
-    selectable_column
-    id_column
+    column :name
     column :email
     column :current_sign_in_at
-    column :sign_in_count
-    column :created_at
+
     actions
   end
 
-  filter :email
-  filter :current_sign_in_at
-  filter :sign_in_count
-  filter :created_at
+  show do
+    attributes_table do
+      row :name
+      row :email
+      row :sign_in_count
+      row :current_sign_in_at
+      row :last_sign_in_at
+      row :current_sign_in_ip
+      row :last_sign_in_ip
+      row :created_at
+      row :updated_at
+    end
+  end
 
   form do |f|
-    f.inputs "Admin Details" do
-      f.input :email
-      f.input :password
-      f.input :password_confirmation
+    inputs 'Details' do
+      input :name
+      input :email
+      input :password
+      input :password_confirmation
     end
-    f.actions
+
+    actions
+  end
+
+  controller do
+    before_action :strip_empty_password_parameters, only: [:create, :update]
+
+    private
+
+    def strip_empty_password_parameters
+      if params[:admin_user][:password].to_s.empty?
+        params[:admin_user].delete(:password)
+        params[:admin_user].delete(:password_confirmation)
+      end
+    end
   end
 end
