@@ -5,7 +5,7 @@
 
   <div class="cty-slideshow-images">
     <% 1.upto(14).each do |i| %>
-      <%= image_tag "/images/redesign/crosswinds/crosswinds-#{i}.jpg", :style => ("display: none;" unless i == 1) %>
+      <%= image_tag "redesign/crosswinds/crosswinds-#{i}.jpg", :style => ("display: none;" unless i == 1) %>
     <% end %>
   </div>
 
@@ -16,7 +16,7 @@
     <div class="cty-slideshow-thumbs">
       <div class="cty-slideshow-thumbs-inner">
         <% 1.upto(14).each do |i| %>
-          <%= link_to image_tag("/images/redesign/crosswinds/crosswinds-#{i}-thumb.jpg"), '#' %>
+          <%= link_to image_tag("redesign/crosswinds/crosswinds-#{i}-thumb.jpg"), '#' %>
         <% end %>
       </div>
     </div>
