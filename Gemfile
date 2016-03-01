@@ -42,9 +42,6 @@ gem 'activerecord-import',        '0.11.0'
 gem 'chronic'
 gem 'acts_as_list'
 
-# Remove! Replace with modern asset pipeline, RF 2-26-16
-gem 'jammit'
-
 gem 'typus', path: 'vendor/plugins/typus'
 #gem 'rails_ckeditor', path: 'vendor/plugins/rails-ckeditor'
 
