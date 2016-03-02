@@ -5,7 +5,8 @@
 //= require redactor
 //= require chosen.jquery
 
-$(document).ready(function(){
+$(function() {
+
   // boot redactor editors
   var redactorOpts = {
     "minHeight": 260,
@@ -46,11 +47,11 @@ $(document).ready(function(){
 
   $(".redactor-input").redactor(redactorOpts);
 
+  // boot chosen selects
   var chosenOpts = {
     "allow_single_deselect": true
   };
 
-  // boot chosen selects
   $(".chosen-input").chosen(chosenOpts);
 
   // init chosen on new selects created by has_many
