@@ -59,7 +59,7 @@ $(function() {
     'has_many_add:after',
     '.has_many_container',
     function(e, fieldset, container) {
-      fieldset.find('select').chosen();
+      fieldset.find('select').chosen(chosenOpts);
     }
   );
 
