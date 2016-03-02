@@ -11,7 +11,7 @@ class SslRequirementTest < ActionDispatch::IntegrationTest
 
   context "A request" do
     setup do
-      @admin_user = TypusUser.make
+      @admin_user = AdminUser.make
     end
 
     context "to a user-facing page" do

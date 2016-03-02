@@ -22,7 +22,7 @@ class GreenHomesController < ApplicationController
   end
 
   def find_page
-    @page = if typus_user
+    @page = if admin_user
       @section.pages.find_by(path: 'green-homes')
     else
       @section.pages.published.find_by(path: 'green-homes')

@@ -11,7 +11,6 @@ if ENV['COV']
     add_filter '/app/models/asset'
     add_filter '/app/models/attachment_file'
     add_filter '/app/models/picture'
-    add_filter '/lib/typus'
     add_filter '/vendor'
   end
 end
@@ -25,7 +24,6 @@ require 'paperclip/matchers'
 require 'webmock/minitest'
 require 'mocha/mini_test'
 
-require Rails.root.join('vendor', 'plugins', 'typus', 'lib', 'extensions', 'object')
 require Rails.root.join('test', 'support', 'shared_examples')
 require Rails.root.join('test', 'blueprints')
 
@@ -56,6 +54,7 @@ end
 class ActionController::TestCase
   include RSpec::Matchers
   include Bozzuto::Test::ControllerExtensions
+  include Devise::TestHelpers
 end
 
 class ActionDispatch::IntegrationTest

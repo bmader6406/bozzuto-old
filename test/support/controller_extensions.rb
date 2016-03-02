@@ -3,10 +3,6 @@ module Bozzuto
     module ControllerExtensions
       extend ActiveSupport::Concern
 
-      def login_typus_user(user)
-        session[:typus_user_id] = user.id
-      end
-
       def set_mobile!
         @request.env['bozzuto.mobile.device'] = :iphone
       end

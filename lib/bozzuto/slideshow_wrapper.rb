@@ -12,8 +12,8 @@ module Bozzuto
 
     def url_params(action = :show)
       {
-        show: [:new_admin, record],
-        new:  [:new, :new_admin, type, type => { page_id: page.id }]
+        show: [:admin, record],
+        new:  [:new, :admin, type, type => { page_id: page.id }]
       }.fetch(action.to_sym)
     end
   end

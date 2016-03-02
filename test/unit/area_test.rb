@@ -37,9 +37,9 @@ class AreaTest < ActiveSupport::TestCase
     should have_many(:area_relations).dependent(:destroy)
 
     describe "nested structure" do
-      describe "#typus_name" do
+      describe "#to_s" do
         it "returns the name" do
-          subject.typus_name.should == subject.name
+          subject.to_s.should == subject.name
         end
       end
 

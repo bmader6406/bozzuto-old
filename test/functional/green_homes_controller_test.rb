@@ -22,8 +22,7 @@ class GreenHomesControllerTest < ActionController::TestCase
 
       context "as an admin" do
         before do
-          @user = TypusUser.make
-          login_typus_user(@user)
+          sign_in AdminUser.make
 
           @page.published = false
 

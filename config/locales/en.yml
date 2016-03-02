@@ -18,6 +18,7 @@ en:
   activerecord:
     models:
       ad_source: Ad Source
+      admin_user: User
       apartment_community: Apartment Community
       apartment_contact_configuration: Contact Configuration
       apartment_floor_plan: Floor Plan
@@ -69,12 +70,13 @@ en:
       related_area: Related Area
       related_neighborhood: Related Neighborhood
       seo_metadata: SEO Metadata
-      typus_user: User
       under_construction_lead: Under-Construction Lead
     attributes:
       ad_source:
         domain_name: Domain Name
         value: Value
+      admin_user:
+        password_confirmation: Password Confirmation
       apartment_community:
         core_id: Core ID
         dnr_configuration: DNR Configuration
@@ -453,10 +455,6 @@ en:
         meta_description: Meta Description
         meta_keywords: Meta Keywords
         meta_title: Meta Title
-      typus_user:
-        first_name: First Name
-        last_name: Last Name
-        password_confirmation: Password Confirmation
       video:
         url: URL
     errors:

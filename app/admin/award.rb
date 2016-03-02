@@ -60,7 +60,7 @@ ActiveAdmin.register Award do
         collection_panel_for :sections do
           table_for award.sections do
             column :title do |section|
-              link_to section.title, [:new_admin, section]
+              link_to section.title, [:admin, section]
             end
           end
         end

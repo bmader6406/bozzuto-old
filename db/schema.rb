@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160301184333) do
+ActiveRecord::Schema.define(version: 20160303204512) do
 
   create_table "ad_sources", force: :cascade do |t|
     t.string   "domain_name", limit: 255, null: false
@@ -199,24 +199,12 @@ ActiveRecord::Schema.define(:version => 20160301184333) do
     t.text     "description",             limit: 65535
     t.text     "detail_description",      limit: 65535
     t.integer  "state_id",                limit: 4
-    t.string   "area_type",               limit: 255,   default: "neighborhoods", null: false
+    t.string   "area_type",               limit: 255,                            default: "neighborhoods", null: false
   end
 
   add_index "areas", ["metro_id"], name: "index_areas_on_metro_id", using: :btree
   add_index "areas", ["name"], name: "index_areas_on_name", unique: true, using: :btree
   add_index "areas", ["slug"], name: "index_areas_on_slug", using: :btree
-
-  create_table "assets", force: :cascade do |t|
-    t.string   "data_file_name",    limit: 255
-    t.string   "data_content_type", limit: 255
-    t.integer  "data_file_size",    limit: 4
-    t.string   "type",              limit: 25
-    t.integer  "typus_user_id",     limit: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "assets", ["typus_user_id"], name: "index_assets_on_typus_user_id", using: :btree
 
   create_table "awards", force: :cascade do |t|
     t.string   "title",                        limit: 255,                   null: false

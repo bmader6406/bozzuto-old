@@ -25,17 +25,6 @@ ActiveAdmin.register Page do
                 :meta_description,
                 :meta_keywords
 
-  # Work around for models who have overridden `to_param` in AA
-  # See SO issue:
-  # http://stackoverflow.com/questions/7684644/activerecordreadonlyrecord-when-using-activeadmin-and-friendly-id
-  before_filter do
-    Page.class_eval do
-      def to_param
-        id.to_s
-      end
-    end
-  end
-
   filter :title_cont, label: 'Title'
   filter :section,    collection: Section.ordered_by_title
 
@@ -187,7 +176,7 @@ ActiveAdmin.register Page do
 
   controller do
     def find_resource
-      Page.includes(:masthead_slideshow, :body_slideshow, :carousel).find(params[:id])
+      Page.includes(:masthead_slideshow, :body_slideshow, :carousel).friendly.find(params[:id])
     end
 
     def scoped_collection

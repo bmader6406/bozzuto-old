@@ -41,12 +41,12 @@ class SlideshowWrapperTest < ActiveSupport::TestCase
 
     describe "#url_params" do
       it "returns the show URL params by default" do
-        subject.url_params.should == [:new_admin, @record]
+        subject.url_params.should == [:admin, @record]
       end
 
       context "when provided the new action" do
         it "returns the appropriate URL params for the new action" do
-          subject.url_params(:new).should == [:new, :new_admin, :carousel, carousel: { page_id: @page.id }] 
+          subject.url_params(:new).should == [:new, :admin, :carousel, carousel: { page_id: @page.id }] 
         end
       end
     end

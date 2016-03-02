@@ -136,8 +136,8 @@ class ApplicationHelperTest < ActionView::TestCase
         attr.should =~ /"id":#{subject.id}/
         attr.should =~ /"category":"Metro"/
         attr.should =~ /"point":\{/
-        attr.should =~ /"lat":#{subject.latitude}/
-        attr.should =~ /"lng":#{subject.longitude}/
+        attr.should =~ /"lat":"#{subject.latitude}"/
+        attr.should =~ /"lng":"#{subject.longitude}"/
       end
     end
 

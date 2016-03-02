@@ -45,7 +45,7 @@ ActiveAdmin.register ProjectCategory do
         collection_panel_for :projects do
           table_for resource.projects.ordered_by_title do
             column :title do |project|
-              link_to project.title, [:new_admin, project]
+              link_to project.title, [:admin, project]
             end
             column :published
             column :street_address

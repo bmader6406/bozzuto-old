@@ -115,23 +115,23 @@ ActiveAdmin.register ApartmentCommunity do
     collection: Bozzuto::ExternalFeed::Feed.feed_types.map { |feed| [I18n.t("bozzuto.feeds.#{feed}"), feed] }
 
   action_item :delete_floor_plans, only: :show do
-    link_to 'Delete All Floor Plans', [:delete_floor_plans, :new_admin, resource]
+    link_to 'Delete All Floor Plans', [:delete_floor_plans, :admin, resource]
   end
 
   action_item :disconnect, only: :show, if: -> { resource.managed_externally? } do
-    link_to "Disconnect from #{feed_name}", [:disconnect, :new_admin, resource]
+    link_to "Disconnect from #{feed_name}", [:disconnect, :admin, resource]
   end
 
   action_item :merge_form, only: :show, if: -> { !resource.managed_externally? } do
-    link_to 'Merge with a Feed Property', [:merge_form, :new_admin, resource]
+    link_to 'Merge with a Feed Property', [:merge_form, :admin, resource]
   end
 
   action_item :export_field_audit, only: :index do
-    link_to 'Export Field Audit', [:export_field_audit, :new_admin, :apartment_communities]
+    link_to 'Export Field Audit', [:export_field_audit, :admin, :apartment_communities]
   end
 
   action_item :export_dnr, only: :index do
-    link_to 'Export DNR', [:export_dnr, :new_admin, :apartment_communities]
+    link_to 'Export DNR', [:export_dnr, :admin, :apartment_communities]
   end
 
   collection_action :export_field_audit do
@@ -146,7 +146,7 @@ ActiveAdmin.register ApartmentCommunity do
   member_action :delete_floor_plans do
     resource.floor_plans.destroy_all
 
-    redirect_to [:new_admin, resource], notice: 'Deleted all floor plans.'
+    redirect_to [:admin, resource], notice: 'Deleted all floor plans.'
   end
 
   member_action :disconnect do
@@ -154,7 +154,7 @@ ActiveAdmin.register ApartmentCommunity do
 
     resource.disconnect_from_external_cms!
 
-    redirect_to [:new_admin, resource], notice: "Successfully disconnected from #{cached_feed_name}"
+    redirect_to [:admin, resource], notice: "Successfully disconnected from #{cached_feed_name}"
   end
 
   member_action :merge_form
@@ -162,7 +162,7 @@ ActiveAdmin.register ApartmentCommunity do
   member_action :merge, method: :put do
     property_merger.merge!
 
-    redirect_to [:new_admin, property_merger.property], notice: property_merger.to_s
+    redirect_to [:admin, property_merger.property], notice: property_merger.to_s
   end
 
   index do
@@ -271,7 +271,7 @@ ActiveAdmin.register ApartmentCommunity do
         panel nil do
           table_for pages do
             column nil do |page|
-              link_to page.class.name.to_s.gsub('Property', '').titleize, polymorphic_url([:new_admin, page])
+              link_to page.class.name.to_s.gsub('Property', '').titleize, polymorphic_url([:admin, page])
             end
           end
         end
@@ -453,11 +453,11 @@ ActiveAdmin.register ApartmentCommunity do
               column nil, class: 'col-actions' do |page|
                 div class: 'table_actions' do
                   if page.persisted?
-                    link_to I18n.t('active_admin.view'), polymorphic_url([:new_admin, page])
-                    link_to I18n.t('active_admin.edit'), polymorphic_url([:edit, :new_admin, page])
-                    link_to I18n.t('active_admin.delete'), polymorphic_url([:new_admin, page]), method: :delete, data: { confirm: I18n.t('active_admin.delete_confirmation') }
+                    link_to I18n.t('active_admin.view'), polymorphic_url([:admin, page])
+                    link_to I18n.t('active_admin.edit'), polymorphic_url([:edit, :admin, page])
+                    link_to I18n.t('active_admin.delete'), polymorphic_url([:admin, page]), method: :delete, data: { confirm: I18n.t('active_admin.delete_confirmation') }
                   else
-                    link_to "Add New", polymorphic_url([:new, :new_admin, page.class.model_name.singular_route_key]), class: "button"
+                    link_to "Add New", polymorphic_url([:new, :admin, page.class.model_name.singular_route_key]), class: "button"
                   end
                 end
               end

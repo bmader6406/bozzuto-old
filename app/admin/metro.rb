@@ -79,7 +79,7 @@ ActiveAdmin.register Metro do
         collection_panel_for :areas do
           reorderable_table_for resource.areas.position_asc do
             column :name do |a|
-              link_to a.name, [:new_admin, a]
+              link_to a.name, [:admin, a]
             end
           end
         end

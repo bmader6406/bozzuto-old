@@ -13,7 +13,6 @@ class ApartmentCommunitiesController < ApplicationController
     render :redesign, :layout => 'redesign'
   end
 
-
   private
 
   def find_community

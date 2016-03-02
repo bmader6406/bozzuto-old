@@ -105,7 +105,7 @@ ActiveAdmin.register Area do
         collection_panel_for :neighborhoods do
           table_for area.neighborhoods do
             column :name do |neighborhood|
-              link_to neighborhood.name, [:new_admin, neighborhood]
+              link_to neighborhood.name, [:admin, neighborhood]
             end
           end
         end

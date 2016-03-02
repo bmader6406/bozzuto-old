@@ -16,9 +16,11 @@ Rails.application.config.assets.precompile += %w( ie6-7.css )
 Rails.application.config.assets.precompile += %w( index.css )
 Rails.application.config.assets.precompile += %w( neighborhoods.css )
 Rails.application.config.assets.precompile += %w( pages/community.css )
+Rails.application.config.assets.precompile += %w( mobile.css )
 
 # Scripts
 Rails.application.config.assets.precompile += %w( ie6.js )
 Rails.application.config.assets.precompile += %w( index.js )
 Rails.application.config.assets.precompile += %w( neighborhoods.js )
 Rails.application.config.assets.precompile += %w( redesign.js )
+Rails.application.config.assets.precompile += %w( mobile.js )

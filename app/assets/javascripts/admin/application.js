@@ -1,5 +1,6 @@
 // Place your application-specific JavaScript functions and classes for
 // Typus here.
+// TODO Jeremy -- leaving this in place as a reference for now.
 
 $(function() {
   if ($('textarea.use-ckeditor').length > 0) {

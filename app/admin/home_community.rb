@@ -71,7 +71,7 @@ ActiveAdmin.register HomeCommunity do
   filter :published
 
   action_item :export_field_audit, only: :index do
-    link_to 'Export Field Audit', [:export_field_audit, :new_admin, :home_communities]
+    link_to 'Export Field Audit', [:export_field_audit, :admin, :home_communities]
   end
 
   action_item :preview, only: :show, if: -> { resource.published? } do
@@ -166,7 +166,7 @@ ActiveAdmin.register HomeCommunity do
         panel nil do
           table_for pages do
             column nil do |page|
-              link_to page.class.name.to_s.gsub('Property', '').titleize, polymorphic_url([:new_admin, page])
+              link_to page.class.name.to_s.gsub('Property', '').titleize, polymorphic_url([:admin, page])
             end
           end
         end
@@ -331,11 +331,11 @@ ActiveAdmin.register HomeCommunity do
               column nil, class: 'col-actions' do |page|
                 div class: 'table_actions' do
                   if page.persisted?
-                    link_to I18n.t('active_admin.view'), polymorphic_url([:new_admin, page])
-                    link_to I18n.t('active_admin.edit'), polymorphic_url([:edit, :new_admin, page])
-                    link_to I18n.t('active_admin.delete'), polymorphic_url([:new_admin, page]), method: :delete, data: { confirm: I18n.t('active_admin.delete_confirmation') }
+                    link_to I18n.t('active_admin.view'), polymorphic_url([:admin, page])
+                    link_to I18n.t('active_admin.edit'), polymorphic_url([:edit, :admin, page])
+                    link_to I18n.t('active_admin.delete'), polymorphic_url([:admin, page]), method: :delete, data: { confirm: I18n.t('active_admin.delete_confirmation') }
                   else
-                    link_to "Add New", polymorphic_url([:new, :new_admin, page.class.model_name.singular_route_key]), class: "button"
+                    link_to "Add New", polymorphic_url([:new, :admin, page.class.model_name.singular_route_key]), class: "button"
                   end
                 end
               end

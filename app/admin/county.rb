@@ -32,7 +32,7 @@ ActiveAdmin.register County do
         collection_panel_for :cities do
           table_for county.cities do
             column :name do |city|
-              link_to city.name, [:new_admin, city]
+              link_to city.name, [:admin, city]
             end
           end
         end

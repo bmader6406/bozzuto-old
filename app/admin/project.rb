@@ -139,7 +139,7 @@ ActiveAdmin.register Project do
         collection_panel_for :slideshow do
           table_for resource.slideshow do
             column :name do |s|
-              link_to s.name, [:new_admin, s]
+              link_to s.name, [:admin, s]
             end
           end
         end
@@ -150,7 +150,7 @@ ActiveAdmin.register Project do
           reorderable_table_for resource.data_points do
             column :position
             column :name do |d|
-              link_to d.name, [:new_admin, d]
+              link_to d.name, [:admin, d]
             end
             column :data
           end
@@ -161,7 +161,7 @@ ActiveAdmin.register Project do
         collection_panel_for :updates do
           table_for resource.updates do
             column :update do |d|
-              link_to d, [:new_admin, d]
+              link_to d, [:admin, d]
             end
             column :published_at
             column :published

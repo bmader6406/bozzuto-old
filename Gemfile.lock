@@ -19,11 +19,6 @@ GIT
       capistrano (~> 2.15.0)
       whenever (~> 0.8.0)
 
-PATH
-  remote: vendor/plugins/typus
-  specs:
-    typus (0.9.40)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -382,7 +377,6 @@ DEPENDENCIES
   spring
   truncate_html (= 0.5.0)
   twitter
-  typus!
   uglifier (~> 2.7.2)
   uuidtools
   validates_email_format_of

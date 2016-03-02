@@ -35,6 +35,12 @@ AdSource.blueprint do
   value       { 'Value' }
 end
 
+AdminUser.blueprint do
+  email                 { Faker::Internet.email }
+  password              { 'password' }
+  password_confirmation { 'password' }
+end
+
 ApartmentCommunity.blueprint do
   title              { Sham.company_name }
   subtitle           { Faker::Company.catch_phrase }
@@ -616,15 +622,6 @@ end
 
 TwitterAccount.blueprint do
   username { 'Bozzuto' }
-end
-
-TypusUser.blueprint do
-  email                 { Faker::Internet.email }
-  role                  { 'admin' }
-  password              { 'password' }
-  password_confirmation { 'password' }
-  status                { true }
-  preferences           { { :locale => 'en' } }
 end
 
 UnderConstructionLead.blueprint do

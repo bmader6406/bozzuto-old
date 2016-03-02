@@ -60,16 +60,6 @@ class Community < Property
 
   delegate :latest_tweet, :to => :twitter_account, :allow_nil => true
 
-  def self.typus_fields_for(filter)
-    #:nocov:
-    result = super
-    if result.present? && result['featured_position'].present?
-      result['featured_position'] = :position
-    end
-    result
-    #:nocov:
-  end
-
   def pages
     @pages ||= PAGES.map { |page| public_send(page) }.compact
   end

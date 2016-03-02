@@ -1,10 +1,5 @@
-# TODO fix these imports, modernization, RF- 2-1-16
-require 'typus/routes'
-require 'rails-ckeditor/lib/ckeditor'
-
 Bozzuto::Application.routes.draw do
-  # TODO This namespace will change once Typus is removed.
-  namespace :new_admin do
+  namespace :admin do
     resource :home_page, only: [:show, :edit, :update]
 
     resource :feed_export_management, only: [:index] do
@@ -16,13 +11,6 @@ Bozzuto::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  Typus::Routes.draw(self)
-  Ckeditor::Routes.draw(self)
-
-  # Typus CSV Exports
-  get '/admin/under_construction_leads(.:format)', :controller => 'admin/under_construction_leads', :action => :index
-  get '/admin/buzzes(.:format)',                   :controller => 'admin/buzzes',                   :action => :index
-  get '/admin/ad_sources(.:format)',               :controller => 'admin/ad_sources',               :action => :index
 
   root :to => 'home_pages#index'
 

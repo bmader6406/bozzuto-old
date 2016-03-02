@@ -75,7 +75,7 @@ ActiveAdmin.register NewsPost do
         collection_panel_for :sections do
           table_for resource.sections do
             column :title do |s|
-              link_to s.title, [:new_admin, s]
+              link_to s.title, [:admin, s]
             end
           end
         end

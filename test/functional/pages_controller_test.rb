@@ -53,10 +53,9 @@ class PagesControllerTest < ActionController::TestCase
         should assign_to(:page) { @page }
       end
       
-      context 'logged in as a typus user' do
+      context 'logged in as an admin user' do
         setup do
-          @user = TypusUser.make
-          login_typus_user @user
+          sign_in AdminUser.make
         end
         
         context 'with a page param for an unpublished page' do

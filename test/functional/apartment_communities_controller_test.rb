@@ -72,10 +72,9 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
 
       context "for KML format" do
         before do
-          @community.update_attribute(:title, 'Wayne Manor')
+          @community.update_attributes(title: 'Wayne Manor')
 
-          get :show, :id     => @community.to_param,
-                     :format => :kml
+          get :show, :id => @community.to_param, :format => :kml
         end
 
         should respond_with(:success)
@@ -84,17 +83,16 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
 
         it  "renders the KML XML" do
           @response.body.should =~ /<name>Wayne Manor<\/name>/
-
           @response.body.should =~ /<coordinates>#{@community.latitude},#{@community.longitude},0<\/coordinates>/
         end
       end
     end
     
-    describe "logged in to typus" do
+    describe "logged in to the admin" do
       before do
         @unpublished_community = ApartmentCommunity.make(:published => false)
-        @user = TypusUser.make
-        login_typus_user @user
+        @user = AdminUser.make
+        sign_in @user
       end
       
       context "a GET to #show for an upublished community" do

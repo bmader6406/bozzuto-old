@@ -1,7 +1,7 @@
 ActiveAdmin.register HomePage do
   menu parent: 'Content',
        label:  'Home Page',
-       url:    -> { url_for [:new_admin, :home_page] }
+       url:    -> { url_for [:admin, :home_page] }
 
   actions :edit, :update, :show
 
@@ -75,7 +75,7 @@ ActiveAdmin.register HomePage do
 
       actions do
         action :submit
-        cancel_link [:new_admin, :home_page]
+        cancel_link [:admin, :home_page]
       end
     end
   end

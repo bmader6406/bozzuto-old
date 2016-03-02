@@ -71,7 +71,7 @@ ActiveAdmin.register ApartmentFloorPlan do
         collection_panel_for :apartment_units do
           table_for plan.apartment_units do
             column :name do |unit|
-              link_to unit.name, [:new_admin, unit]
+              link_to unit.name, [:admin, unit]
             end
             column :bedrooms
             column :bathrooms

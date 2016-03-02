@@ -74,7 +74,7 @@ ActiveAdmin.register Section do
         collection_panel_for :pages do
           table_for resource.pages do
             column :title do |d|
-              link_to d.title, [:new_admin, d]
+              link_to d.title, [:admin, d]
             end
             column :published
           end
@@ -86,7 +86,7 @@ ActiveAdmin.register Section do
           reorderable_table_for resource.projects.includes(:city).position_asc do
             column :position
             column :title do |p|
-              link_to p.title, [:new_admin, p]
+              link_to p.title, [:admin, p]
             end
             column :published
             column :street_address

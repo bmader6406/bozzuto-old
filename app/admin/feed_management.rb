@@ -3,7 +3,7 @@ ActiveAdmin.register_page 'Feed & Export Management' do
 
   action_item :download_feeds, only: :index do
     if ftp.can_load?
-      link_to 'Download Feeds to Server', download_new_admin_feed_export_management_path, class: 'button'
+      link_to 'Download Feeds to Server', download_admin_feed_export_management_path, class: 'button'
     else
       span distance_of_time_in_words(Time.now, ftp.next_load_at).capitalize + ' until feeds can be downloaded again.'
     end
@@ -19,14 +19,14 @@ ActiveAdmin.register_page 'Feed & Export Management' do
             end
 
             column :communities do |loader|
-              link_to "View All", [:new_admin, :apartment_communities, q: { external_cms_type_eq: loader.feed_type }], class: 'button', target: :blank
+              link_to "View All", [:admin, :apartment_communities, q: { external_cms_type_eq: loader.feed_type }], class: 'button', target: :blank
             end
 
             column '* Feeds can be refreshed once every two hours' do |loader|
               return unless loader.loading_enabled?
 
               if loader.can_load?
-                link_to 'Refresh', refresh_new_admin_feed_export_management_path(loader.feed_type), class: 'button', method: :put
+                link_to 'Refresh', refresh_admin_feed_export_management_path(loader.feed_type), class: 'button', method: :put
               else
                 if loader.already_loading?
                   span 'Feed refresh in progress'
@@ -53,7 +53,7 @@ ActiveAdmin.register_page 'Feed & Export Management' do
             end
 
             column nil do |export|
-              link_to 'Rebuild & Re-Send', rebuild_new_admin_feed_export_management_path(export.to_s.parameterize), class: 'button', method: :put
+              link_to 'Rebuild & Re-Send', rebuild_admin_feed_export_management_path(export.to_s.parameterize), class: 'button', method: :put
             end
           end
         end

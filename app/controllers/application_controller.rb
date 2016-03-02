@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
   end
 
   def find_property(klass, id)
-    base_scope = (typus_user || params[:preview] == 'true') ? klass : klass.published
+    base_scope = (admin_user || params[:preview] == 'true') ? klass : klass.published
 
     base_scope.friendly.find(id)
   end
@@ -72,8 +72,8 @@ class ApplicationController < ActionController::Base
   end
   helper_method :apartment_floor_plan_groups
 
-  def typus_user
-    @typus_user ||= Typus.user_class.find_by(id: session[:typus_user_id])
+  def admin_user
+    @admin_user ||= warden.authenticate
   end
 
   def detect_mobile_layout

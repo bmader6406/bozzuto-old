@@ -63,7 +63,7 @@ ActiveAdmin.register State do
         collection_panel_for :cities do
           table_for resource.cities.includes(:counties) do
             column :name do |city|
-              link_to city.name, [:new_admin, city]
+              link_to city.name, [:admin, city]
             end
             column :counties do |city|
               if city.counties.any?
@@ -82,7 +82,7 @@ ActiveAdmin.register State do
         collection_panel_for :counties do
           table_for resource.counties.includes(:cities) do
             column :name do |county|
-              link_to county.name, [:new_admin, county]
+              link_to county.name, [:admin, county]
             end
             column :cities do |county|
               if county.cities.any?
@@ -102,7 +102,7 @@ ActiveAdmin.register State do
           table_for resource.featured_apartment_communities do
             column :featured_position
             column :title do |community|
-              link_to community.title, [:new_admin, community]
+              link_to community.title, [:admin, community]
             end
             column :published
             column :featured

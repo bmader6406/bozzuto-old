@@ -17,7 +17,7 @@ module ActiveAdmin
 
           unless table_config.macro == :has_one && collection.any?
             div class: 'association_table_add_link'  do
-              link_to "Add New", polymorphic_url([:new, :new_admin, route_symbol], new_options), class: 'button', target: :blank
+              link_to "Add New", polymorphic_url([:new, :admin, route_symbol], new_options), class: 'button', target: :blank
             end
           end
 
@@ -28,9 +28,9 @@ module ActiveAdmin
 
                 column nil, class: 'col-actions' do |resource|
                   div class: 'table_actions' do
-                    link_to I18n.t('active_admin.view'), polymorphic_url([:new_admin, resource])
-                    link_to I18n.t('active_admin.edit'), polymorphic_url([:edit, :new_admin, resource])
-                    link_to I18n.t('active_admin.delete'), polymorphic_url([:new_admin, resource]), method: :delete, data: { confirm: I18n.t('active_admin.delete_confirmation') }
+                    link_to I18n.t('active_admin.view'), polymorphic_url([:admin, resource])
+                    link_to I18n.t('active_admin.edit'), polymorphic_url([:edit, :admin, resource])
+                    link_to I18n.t('active_admin.delete'), polymorphic_url([:admin, resource]), method: :delete, data: { confirm: I18n.t('active_admin.delete_confirmation') }
                   end
                 end
               end

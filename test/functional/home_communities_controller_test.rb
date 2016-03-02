@@ -5,11 +5,11 @@ class HomeCommunitiesControllerTest < ActionController::TestCase
     setup do
       @section               = Section.make(:title => 'New Homes')
       @community             = HomeCommunity.make
-      @unpublished_community = HomeCommunity.make(:published => false)
+      @unpublished_community = HomeCommunity.make(:published => false, :title => 'Test')
     end
 
     context "a GET to #show" do
-      context 'when not logged in to typus' do
+      context 'when not logged in as an admin' do
         context "with a non-canonical URL" do
           setup do
             @old_slug = @community.to_param
@@ -49,15 +49,14 @@ class HomeCommunitiesControllerTest < ActionController::TestCase
       end
     end
 
-    context 'logged in to typus' do
-      setup do
-        @user = TypusUser.make
-        login_typus_user @user
+    context "when logged in as an admin" do
+      before do
+        sign_in AdminUser.make
       end
 
       context "a GET to #show for an upublished community" do
-        setup do
-          get :show, :id => @unpublished_community.to_param
+        before do
+          get :show, id: @unpublished_community.to_param
         end
 
         should respond_with(:success)

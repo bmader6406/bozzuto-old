@@ -1,0 +1,36 @@
+panel property_merger do
+  ol do
+    li "#{property_merger.target_property}'s fields will be copied over to #{property_merger.property}."
+    li "#{property_merger.property} will receive updates from the #{property_merger.feed_name} feed going forward."
+    li "After the merge, what was the original #{property_merger.target_property} will be deleted from the CMS."
+  end
+
+  panel "#{property_merger.property} will receive the following data from #{property_merger.target_property}:" do
+    table_for ApartmentCommunity.external_cms_attributes.reject { |attr| attr == :floor_plans } do
+      column('Field')     { |attr| ApartmentCommunity.human_attribute_name(attr) }
+      column('Old Value') { |attr| property_merger.property.send(attr) }
+      column('New Value') { |attr| property_merger.target_property.send(attr) }
+    end
+  end
+
+  panel nil do
+    table_for [:floor_plans] do
+      column 'Old Floor Plans' do
+        property_merger.property.floor_plans.map(&:name).join(', ')
+      end
+
+      column 'New Floor Plans' do
+        property_merger.target_property.floor_plans.map(&:name).join(', ')
+      end
+    end
+  end
+
+  active_admin_form_for property_merger, url: merge_admin_apartment_community_url(resource), method: :put do |f|
+    input :target_property_id, as: :hidden 
+
+    actions do
+      action :submit, label: 'Merge'
+      cancel_link [:admin, resource]
+    end
+  end
+end
