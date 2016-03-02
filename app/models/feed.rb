@@ -6,19 +6,26 @@ class Feed < ActiveRecord::Base
            :class_name => 'FeedItem',
            :dependent  => :destroy
 
-  has_many :properties, :foreign_key => :local_info_feed_id
+  has_many :properties,
+           :foreign_key => :local_info_feed_id
 
   before_validation :strip_whitespace
 
-  validates_presence_of :name, :url
+  validates :name,
+            presence: true
 
-  validates_uniqueness_of :url
+  validates :url,
+            presence:   true,
+            uniqueness: true
 
   validate :feed_valid?, :on => :create
 
-
-  def typus_name
+  def to_s
     name
+  end
+
+  def to_label
+    to_s
   end
 
   def refresh!

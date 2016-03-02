@@ -16,13 +16,12 @@ class Page < ActiveRecord::Base
 
   scope :for_sidebar_nav, -> { where(show_in_sidebar_nav: true) }
 
-  validates_presence_of :title
+  validates :title,
+            presence: true
 
   friendly_id :title, use: [:history, :scoped], :scope => [:section]
 
   attr_protected :path
-
-  alias_attribute :typus_name, :title
 
   def to_s
     [section.try(:title), title].compact.join(' > ')

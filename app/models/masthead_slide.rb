@@ -32,7 +32,7 @@ class MastheadSlide < ActiveRecord::Base
     "#{masthead_slideshow.name} - Slide ##{position}"
   end
 
-  def typus_name
+  def to_label
     to_s
   end
 

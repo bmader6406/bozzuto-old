@@ -11,7 +11,7 @@ class GreenFeatureTest < ActiveSupport::TestCase
 
   context "#to_s" do
     it "returns the title" do
-      subject.to_s.should == subject.title
+      GreenFeature.new(title: "hay ya").to_s.should == "hay ya"
     end
   end
 end

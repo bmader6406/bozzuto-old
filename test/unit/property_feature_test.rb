@@ -12,11 +12,11 @@ class PropertyFeatureTest < ActiveSupport::TestCase
 
     should validate_uniqueness_of(:name)
 
-    describe "#typus_name" do
+    describe "#to_s" do
       subject { PropertyFeature.new(:name => 'Bat Cave') }
 
       it "returns the name" do
-        subject.typus_name.should == 'Bat Cave'
+        subject.to_s.should == 'Bat Cave'
       end
     end
   end

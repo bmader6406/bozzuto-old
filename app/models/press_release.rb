@@ -6,13 +6,19 @@ class PressRelease < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 15
 
-  default_scope -> { order(published_at: :desc) }
-
   has_and_belongs_to_many :sections
 
-  validates_presence_of :title, :body
+  validates :title,
+            :body,
+            presence: true
 
-  def typus_name
+  default_scope -> { order(published_at: :desc) }
+
+  def to_s
     title
+  end
+
+  def to_label
+    to_s
   end
 end

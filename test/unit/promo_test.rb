@@ -11,12 +11,12 @@ class PromoTest < ActiveSupport::TestCase
     should validate_presence_of(:title)
     should validate_presence_of(:subtitle)
 
-    describe "#typus_name" do
+    describe "#to_s" do
       context "promo is active" do
         subject { Promo.make(:active, :title => 'Hey ya') }
 
         it "return the title" do
-          subject.typus_name.should == 'Hey ya'
+          subject.to_s.should == 'Hey ya'
         end
       end
 
@@ -24,7 +24,7 @@ class PromoTest < ActiveSupport::TestCase
         subject { Promo.make(:expired, :title => 'Hey ya') }
 
         it "return the title plus expired" do
-          subject.typus_name.should == 'Hey ya (expired)'
+          subject.to_s.should == 'Hey ya (expired)'
         end
       end
     end

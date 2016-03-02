@@ -11,7 +11,7 @@ class ProjectUpdateTest < ActiveSupport::TestCase
 
     should have_attached_file(:image)
 
-    describe "#typus_name" do
+    describe "#to_s" do
       subject do
         ProjectUpdate.new(
           :project      => Project.new(:title => 'Gotham Transit'),
@@ -20,7 +20,7 @@ class ProjectUpdateTest < ActiveSupport::TestCase
       end
 
       it "returns the project title and published at timestamp" do
-        subject.typus_name.should == 'Gotham Transit Update - August 28, 1997'
+        subject.to_s.should == 'Gotham Transit Update - August 28, 1997'
       end
     end
   end

@@ -1,7 +1,5 @@
 class HomePage < ActiveRecord::Base
 
-  validates_presence_of :body
-
   has_one :carousel,
     :as        => :content,
     :dependent => :destroy
@@ -17,13 +15,16 @@ class HomePage < ActiveRecord::Base
 
   do_not_validate_attachment_file_type :mobile_banner_image
 
+  validates :body,
+            presence: true
+
   accepts_nested_attributes_for :slides, allow_destroy: true
 
   def to_s
     'Home Page'
   end
 
-  def typus_name
+  def to_label
     to_s
   end
 end

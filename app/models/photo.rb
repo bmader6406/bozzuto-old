@@ -34,15 +34,11 @@ class Photo < ActiveRecord::Base
     end
   end
 
-  def self.typus_order_by
-    'photo_groups.position ASC, photos.position ASC'
-  end
-
   def to_s
     "#{property.title} - #{photo_group.title} - Photo ##{position}"
   end
 
-  def typus_name
+  def to_label
     to_s
   end
 

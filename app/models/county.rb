@@ -7,15 +7,24 @@ class County < ActiveRecord::Base
   has_many :apartment_communities
   has_many :home_communities
 
-  validates_presence_of :name, :state
-  validates_uniqueness_of :name, :scope => :state_id
+  validates :name,
+            presence:   true,
+            uniqueness: {
+              scope: :state_id
+            }
+
+  validates :state,
+            presence: true
 
   scope :ordered_by_name, -> { order(name: :asc) }
 
   def to_s
     "#{name}, #{state.code}"
   end
-  alias :typus_name :to_s
+
+  def to_label
+    to_s
+  end
   
   def to_param
     "#{id}-#{name.parameterize}"

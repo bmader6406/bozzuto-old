@@ -49,7 +49,7 @@ class LandingPage < ActiveRecord::Base
     title
   end
 
-  def typus_name
+  def to_label
     to_s
   end
 

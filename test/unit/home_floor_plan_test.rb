@@ -23,13 +23,19 @@ class HomeFloorPlanTest < ActiveSupport::TestCase
       end
     end
 
-    describe "#typus_name" do
-      before do
-        subject.name = 'Wayne Manor'
-      end
-
+    describe "#to_s" do
       it "returns the name" do
-        subject.typus_name.should == 'Wayne Manor'
+        subject.name = 'Wayne Manor'
+
+        subject.to_s.should == 'Wayne Manor'
+      end
+    end
+
+    describe "#to_label" do
+      it "returns the name" do
+        subject.name = 'Wayne Manor'
+
+        subject.to_label.should == 'Wayne Manor'
       end
     end
   end

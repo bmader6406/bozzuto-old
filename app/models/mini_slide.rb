@@ -20,7 +20,7 @@ class MiniSlide < ActiveRecord::Base
     "#{mini_slideshow.title} - Slide ##{position}"
   end
 
-  def typus_name
+  def to_label
     to_s
   end
 end

@@ -68,8 +68,8 @@ class ApartmentFloorPlan < ActiveRecord::Base
     name
   end
 
-  def typus_name
-    name
+  def to_label
+    to_s
   end
 
   def uses_image_url?

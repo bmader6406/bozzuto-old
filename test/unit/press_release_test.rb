@@ -9,11 +9,11 @@ class PressReleaseTest < ActiveSupport::TestCase
 
     it_should_behave_like "a featurable news item", PressRelease
 
-    context '#typus_name' do
+    context '#to_s' do
       setup { @press = PressRelease.new(:title => 'Hey ya') }
 
       should 'return the title' do
-        assert_equal @press.title, @press.typus_name
+        assert_equal @press.title, @press.to_s
       end
     end
   end

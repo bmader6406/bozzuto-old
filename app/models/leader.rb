@@ -5,10 +5,11 @@ class Leader < ActiveRecord::Base
            :dependent  => :destroy,
            :inverse_of => :leader
 
-  validates_presence_of :name,
-                        :title,
-                        :company,
-                        :bio
+  validates :name,
+            :title,
+            :company,
+            :bio,
+            presence: true
 
   friendly_id :name, use: [:history]
 
@@ -24,7 +25,7 @@ class Leader < ActiveRecord::Base
     name
   end
 
-  def typus_name
+  def to_label
     to_s
   end
 end

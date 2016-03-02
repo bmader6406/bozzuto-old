@@ -1,4 +1,5 @@
 class BodySlide < ActiveRecord::Base
+
   acts_as_list :scope => :body_slideshow
 
   belongs_to :body_slideshow
@@ -15,12 +16,14 @@ class BodySlide < ActiveRecord::Base
   validates :image, attachment_presence: true
 
   def to_s
-    slideshow_name = "#{body_slideshow.name} - " if body_slideshow.present?
-
-    "#{slideshow_name}Slide ##{position}"
+    if body_slideshow.present?
+      "#{body_slideshow.name} - Slide ##{position}"
+    else
+      "Slide ##{position}"
+    end
   end
 
-  def typus_name
+  def to_label
     to_s
   end
 end

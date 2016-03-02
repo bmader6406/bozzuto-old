@@ -10,11 +10,11 @@ class AwardTest < ActiveSupport::TestCase
 
     it_should_behave_like "a featurable news item", Award
 
-    context '#typus_name' do
+    context '#to_s' do
       setup { @award = Award.new(:title => 'Hey ya') }
 
       should 'return the title' do
-        assert_equal @award.title, @award.typus_name
+        assert_equal 'Hey ya', @award.to_s
       end
     end
   end

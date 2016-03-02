@@ -33,7 +33,7 @@ class ApartmentUnit < ActiveRecord::Base
     "#{min_square_feet} to #{max_square_feet}"
   end
 
-  def typus_name
+  def to_label
     marketing_name.presence || "ApartmentUnit (ID: #{id})"
   end
 

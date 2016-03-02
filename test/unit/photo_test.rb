@@ -11,13 +11,7 @@ class PhotoTest < ActiveSupport::TestCase
 
     should have_attached_file(:image)
 
-    describe ".typus_order_by" do
-      it "returns the correct SQL" do
-        Photo.typus_order_by.should == 'photo_groups.position ASC, photos.position ASC'
-      end
-    end
-
-    describe "#typus_name" do
+    describe "#to_s" do
       before do
         @property    = ApartmentCommunity.make(:title => 'Wayne Manor')
         @photo_group = PhotoGroup.make(:title => 'Exteriors')
@@ -32,7 +26,7 @@ class PhotoTest < ActiveSupport::TestCase
       end
 
       it "returns the property title, photo group title, and position" do
-        subject.typus_name.should == 'Wayne Manor - Exteriors - Photo #4'
+        subject.to_s.should == 'Wayne Manor - Exteriors - Photo #4'
       end
     end
 

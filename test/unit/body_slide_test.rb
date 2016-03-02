@@ -9,7 +9,7 @@ class BodySlideTest < ActiveSupport::TestCase
 
     should validate_attachment_presence(:image)
 
-    describe "#typus_name" do
+    describe "#to_s" do
       context "when the slide has a slideshow" do
         subject do
           BodySlide.new(
@@ -19,7 +19,7 @@ class BodySlideTest < ActiveSupport::TestCase
         end
 
         it "returns the slideshow's name and the slide's position" do
-          subject.typus_name.should == 'The Slideshow - Slide #5'
+          subject.to_s.should == 'The Slideshow - Slide #5'
         end
       end
 
@@ -27,7 +27,7 @@ class BodySlideTest < ActiveSupport::TestCase
         subject { BodySlide.new(:position => 3) }
 
         it "returns the slide's position" do
-          subject.typus_name.should == 'Slide #3'
+          subject.to_s.should == 'Slide #3'
         end
       end
     end

@@ -14,8 +14,15 @@ class CountyTest < ActiveSupport::TestCase
     should validate_uniqueness_of(:name).scoped_to(:state_id)
 
     describe "#to_s" do
+      subject do
+        County.new(
+          name:  "Boulder",
+          state: State.new(code: "CO")
+        )
+      end
+
       it "return the county name and state" do
-        subject.to_s.should == "#{subject.name}, #{subject.state.code}"
+        subject.to_s.should == "Boulder, CO"
       end
     end
   end

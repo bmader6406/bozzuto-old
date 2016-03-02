@@ -9,11 +9,9 @@ class HomePageTest < ActiveSupport::TestCase
 
     should have_attached_file(:mobile_banner_image)
 
-    describe "#typus_name" do
-      subject { HomePage.new }
-
+    describe "#to_s" do
       it "returns 'Home Page'" do
-        subject.typus_name.should == 'Home Page'
+        HomePage.new.to_s.should == 'Home Page'
       end
     end
   end

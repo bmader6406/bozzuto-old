@@ -5,13 +5,13 @@ class MiniSlideshowTest < ActiveSupport::TestCase
     should validate_presence_of(:title)
     should validate_presence_of(:link_url)
 
-    context '#typus_name' do
+    context '#to_s' do
       setup do
         @slideshow = MiniSlideshow.new :title => 'Hey ya'
       end
 
       should 'return the title' do
-        assert_equal 'Hey ya', @slideshow.typus_name
+        assert_equal 'Hey ya', @slideshow.to_s
       end
     end
   end

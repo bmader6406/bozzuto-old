@@ -1,4 +1,5 @@
 class HomePageSlide < ActiveRecord::Base
+
   acts_as_list
 
   belongs_to :home_page
@@ -17,7 +18,7 @@ class HomePageSlide < ActiveRecord::Base
     "Home Page - Slide ##{position}"
   end
 
-  def typus_name
+  def to_label
     to_s
   end
 end

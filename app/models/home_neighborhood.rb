@@ -22,13 +22,16 @@ class HomeNeighborhood < ActiveRecord::Base
 
   friendly_id :name, use: [:history]
 
+  validates :name,
+            presence:   true,
+            uniqueness: true
+
+  validates :latitude,
+            :longitude,
+            presence: true
+
   accepts_nested_attributes_for :home_neighborhood_memberships, allow_destroy: true
 
-  validates_presence_of :name,
-                        :latitude,
-                        :longitude
-
-  validates_uniqueness_of :name
 
   scope :positioned,       -> { order("home_neighborhoods.position ASC") }
   scope :ordered_by_count, -> { order("home_neighborhoods.home_communities_count DESC, home_neighborhoods.name ASC") }
@@ -37,8 +40,8 @@ class HomeNeighborhood < ActiveRecord::Base
     name
   end
 
-  def typus_name
-    name
+  def to_label
+    to_s
   end
 
   def full_name

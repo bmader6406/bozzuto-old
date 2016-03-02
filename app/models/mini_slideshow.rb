@@ -4,15 +4,17 @@ class MiniSlideshow < ActiveRecord::Base
     :class_name => 'MiniSlide',
     :dependent  => :destroy
 
-  accepts_nested_attributes_for :slides, allow_destroy: true
+  validates :title,
+            :link_url,
+            presence: true
 
-  validates_presence_of :title, :link_url
+  accepts_nested_attributes_for :slides, allow_destroy: true
 
   def to_s
     title
   end
 
-  def typus_name
+  def to_label
     to_s
   end
 end

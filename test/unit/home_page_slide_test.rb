@@ -8,11 +8,11 @@ class HomePageSlideTest < ActiveSupport::TestCase
 
     should validate_attachment_presence(:image)
 
-    describe "#typus_name" do
+    describe "#to_s" do
       subject { HomePageSlide.new(:position => 3) }
 
       it "returns 'Home Page' and the slide number" do
-        subject.typus_name.should == 'Home Page - Slide #3'
+        subject.to_s.should == 'Home Page - Slide #3'
       end
     end
   end

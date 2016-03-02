@@ -25,14 +25,15 @@ class FeedTest < ActiveSupport::TestCase
     should have_many(:properties)
 
     should validate_presence_of(:name)
+
     should validate_presence_of(:url)
     should validate_uniqueness_of(:url)
 
-    describe "#typus_name" do
+    describe "#to_s" do
       it "returns the name" do
         subject.name = 'Hooray'
 
-        subject.typus_name.should == 'Hooray'
+        subject.to_s.should == 'Hooray'
       end
     end
 

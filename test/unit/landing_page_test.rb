@@ -22,13 +22,13 @@ class LandingPageTest < ActiveSupport::TestCase
     should validate_uniqueness_of(:title)
     should have_attached_file(:masthead_image)
 
-    describe "#typus_name" do
+    describe "#to_s" do
       before do
         subject.title = 'Gotham City'
       end
 
       it "returns the title" do
-        subject.typus_name.should == 'Gotham City'
+        subject.to_s.should == 'Gotham City'
       end
     end
 

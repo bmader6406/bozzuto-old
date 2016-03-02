@@ -2,12 +2,11 @@ class CareersEntry < ActiveRecord::Base
 
   acts_as_list
 
-  default_scope -> { order(position: :asc) }
-
-  validates_presence_of :name,
-                        :company,
-                        :job_title,
-                        :job_description
+  validates :name,
+            :company,
+            :job_title,
+            :job_description,
+            presence: true
 
   has_attached_file :main_photo,
                     :url             => '/system/:class/:attachment/:id/:basename_:style.:extension',
@@ -33,11 +32,13 @@ class CareersEntry < ActiveRecord::Base
   do_not_validate_attachment_file_type :main_photo
   do_not_validate_attachment_file_type :headshot
 
+  default_scope -> { order(position: :asc) }
+
   def to_s
     name
   end
 
-  def typus_name
+  def to_label
     to_s
   end
 end

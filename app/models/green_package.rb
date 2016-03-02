@@ -1,15 +1,5 @@
 class GreenPackage < ActiveRecord::Base
 
-  attr_accessible :home_community,
-                  :home_community_id,
-                  :photo,
-                  :ten_year_old_cost,
-                  :graph_title,
-                  :graph_tooltip,
-                  :graph,
-                  :disclaimer
-
-
   belongs_to :home_community
 
   has_many :green_package_items, -> { order(position: :asc) },
@@ -32,7 +22,10 @@ class GreenPackage < ActiveRecord::Base
                     :default_style   => :resized
 
 
-  validates_presence_of :home_community, :ten_year_old_cost, :disclaimer
+  validates :home_community,
+            :ten_year_old_cost,
+            :disclaimer,
+            presence: true
 
   validates_attachment_presence :photo
 
@@ -40,8 +33,6 @@ class GreenPackage < ActiveRecord::Base
   do_not_validate_attachment_file_type :graph
 
   delegate :title, :to => :home_community, :prefix => :home_community
-
-  alias_method :typus_name, :home_community_title
 
   def has_ultra_green_features?
     green_package_items.ultra_green.any?

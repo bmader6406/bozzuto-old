@@ -13,9 +13,12 @@ class Promo < ActiveRecord::Base
 
   before_validation :nullify_expiration_date
 
-  # TODO remove Typus name? - RF -2-16-16
-  def typus_name
+  def to_s
     expired? ? "#{title} (expired)" : title
+  end
+
+  def to_label
+    to_s
   end
 
   def active?

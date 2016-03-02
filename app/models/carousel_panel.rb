@@ -1,4 +1,5 @@
 class CarouselPanel < ActiveRecord::Base
+
   acts_as_list :scope => :carousel
 
   belongs_to :carousel
@@ -13,13 +14,24 @@ class CarouselPanel < ActiveRecord::Base
 
   do_not_validate_attachment_file_type :image
 
-  validates_presence_of :carousel
-  validates_presence_of :link_url
-  validates_presence_of :heading, :if => proc { |panel| panel.caption.present? }
-  validates_presence_of :caption, :if => proc { |panel| panel.heading.present? }
+  validates :carousel,
+            :link_url,
+            presence: true
 
-  def typus_name
+  validates :heading,
+            presence: true,
+            if:       ->(panel) { panel.caption.present? }
+
+  validates :caption,
+            presence: true,
+            if:       ->(panel) { panel.heading.present? }
+
+  def to_s
     "#{carousel.name} - Panel ##{position}"
+  end
+
+  def to_label
+    to_s
   end
 
   def thumbnail_tag

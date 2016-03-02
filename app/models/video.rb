@@ -6,7 +6,8 @@ class Video < ActiveRecord::Base
   belongs_to :apartment_community, :foreign_key => :property_id
   belongs_to :home_community,      :foreign_key => :property_id
 
-  validates_presence_of :url
+  validates :url,
+            presence: true
 
   has_attached_file :image,
     :url             => '/system/:class/:id/video_:id_:style.:extension',
@@ -24,7 +25,7 @@ class Video < ActiveRecord::Base
     end
   end
 
-  def typus_name
+  def to_label
     to_s
   end
 end

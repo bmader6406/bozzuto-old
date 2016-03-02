@@ -1,4 +1,5 @@
 class PropertyFeature < ActiveRecord::Base
+
   acts_as_list
 
   has_and_belongs_to_many :properties
@@ -19,7 +20,8 @@ class PropertyFeature < ActiveRecord::Base
 
   do_not_validate_attachment_file_type :icon
 
-  validates_uniqueness_of :name
+  validates :name,
+            uniqueness: true
 
   scope :has_icon, -> { where("icon_file_name != ''") }
 
@@ -27,7 +29,7 @@ class PropertyFeature < ActiveRecord::Base
     name
   end
 
-  def typus_name
+  def to_label
     to_s
   end
 end

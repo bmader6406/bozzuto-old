@@ -7,6 +7,7 @@ class CarouselPanelTest < ActiveSupport::TestCase
     should belong_to(:carousel)
 
     should have_attached_file(:image)
+
     should validate_presence_of(:link_url)
     should validate_presence_of(:carousel)
 
@@ -28,14 +29,14 @@ class CarouselPanelTest < ActiveSupport::TestCase
       end
     end
 
-    describe "#typus_name" do
+    describe "#to_s" do
       before do
         subject.carousel = Carousel.new(:name => 'CAROUSEL')
         subject.position = 4
       end
 
       it "returns the carousel name and the position" do
-        subject.typus_name.should == 'CAROUSEL - Panel #4'
+        subject.to_s.should == 'CAROUSEL - Panel #4'
       end
     end
 

@@ -30,17 +30,6 @@ class PropertyTest < ActiveSupport::TestCase
     should have_attached_file(:brochure)
     should have_attached_file(:hero_image)
 
-=begin
-    should 'be archivable' do
-      assert Property.acts_as_archive?
-      assert_nothing_raised do
-        Property::Archive
-      end
-      assert defined?(Property::Archive)
-      assert Property::Archive.ancestors.include?(ActiveRecord::Base)
-    end
-=end
-
     context "before save" do
       subject do
         ApartmentCommunity.make(
@@ -113,9 +102,9 @@ class PropertyTest < ActiveSupport::TestCase
       end
     end
 
-    context '#typus_name' do
+    context '#to_s' do
       should 'return the title' do
-        assert_equal @property.title, @property.typus_name
+        assert_equal @property.title, @property.to_s
       end
     end
 

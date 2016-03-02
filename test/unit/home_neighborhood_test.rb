@@ -38,13 +38,7 @@ class HomeNeighborhoodTest < ActiveSupport::TestCase
 
       describe "#to_s" do
         it "returns the name" do
-          subject.typus_name.should == 'DC'
-        end
-      end
-
-      describe "#typus_name" do
-        it "returns the name" do
-          subject.typus_name.should == 'DC'
+          subject.to_s.should == 'DC'
         end
       end
 

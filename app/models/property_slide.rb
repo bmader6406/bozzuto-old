@@ -12,15 +12,24 @@ class PropertySlide < ActiveRecord::Base
 
   do_not_validate_attachment_file_type :image
 
-  validates :image, :attachment_presence => true
+  validates :image,
+            :attachment_presence => true
 
-  validates_length_of :caption, :maximum => 128, :allow_nil => true
+  validates :caption,
+            length: {
+              maximum:   128,
+              allow_nil: true
+            }
 
   def to_s
-    "#{property_slideshow.name} - Slide ##{position}"
+    if property_slideshow
+      "#{property_slideshow.name} - Slide ##{position}"
+    else
+      "Slide ##{position}"
+    end
   end
 
-  def typus_name
+  def to_label
     to_s
   end
 end

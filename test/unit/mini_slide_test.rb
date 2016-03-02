@@ -8,7 +8,7 @@ class MiniSlideTest < ActiveSupport::TestCase
 
     should validate_attachment_presence(:image)
 
-    describe "#typus_name" do
+    describe "#to_s" do
       subject do
         MiniSlide.new(
           :mini_slideshow => MiniSlideshow.new(:title => 'Slideshow'),
@@ -17,7 +17,7 @@ class MiniSlideTest < ActiveSupport::TestCase
       end
 
       it "returns the slideshow title and slide position" do
-        subject.typus_name.should == 'Slideshow - Slide #7'
+        subject.to_s.should == 'Slideshow - Slide #7'
       end
     end
   end
