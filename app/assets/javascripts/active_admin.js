@@ -52,4 +52,14 @@ $(document).ready(function(){
 
   // boot chosen selects
   $(".chosen-input").chosen(chosenOpts);
+
+  // init chosen on new selects created by has_many
+  $(document).on(
+    'has_many_add:after',
+    '.has_many_container',
+    function(e, fieldset, container) {
+      fieldset.find('select').chosen();
+    }
+  );
+
 });
