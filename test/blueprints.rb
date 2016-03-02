@@ -436,7 +436,6 @@ end
 
 Project.blueprint do
   title           { Sham.company_name }
-  subtitle        { Faker::Company.catch_phrase }
   published       { true }
   completion_date { Time.now + (rand(10)).days }
   city

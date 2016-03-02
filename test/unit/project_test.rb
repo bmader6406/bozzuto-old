@@ -2,52 +2,83 @@ require 'test_helper'
 
 class ProjectTest < ActiveSupport::TestCase
   context 'Project' do
-    setup do
-      @project = Project.make
-    end
-
-    subject { @project }
+    subject { Project.make }
 
     should have_many(:data_points)
     should have_many(:updates)
+
+    should belong_to(:city)
     should belong_to(:section)
+
     should have_and_belong_to_many(:project_categories)
 
     should validate_presence_of(:completion_date)
-    
-=begin
-    should 'be archivable' do
-      assert Project.acts_as_archive?
-      assert_nothing_raised do
-        Project::Archive
-      end
-      assert defined?(Project::Archive)
-      assert Project::Archive.ancestors.include?(ActiveRecord::Base)
-      assert Project::Archive.ancestors.include?(Property::Archive)
-    end
-=end
 
-    context 'in_section named scope' do
-      setup do
+    describe ".in_section" do
+      before do
         @section = Section.make
-        @project1 = Project.make :section => @section
+        @project = Project.make(section: @section)
       end
 
-      should 'only return projects in the section' do
-        assert_equal [@project1], Project.in_section(@section)
+      it "returns projects in the given section" do
+        Project.in_section(@section).should == [@project]
       end
     end
 
-    context '#featured_mobile named scope' do
-      setup do
-        @section = Section.make
-
-        @featured     = Project.make :section => @section, :featured_mobile => true
-        @not_featured = Project.make :section => @section, :featured_mobile => false
+    describe ".featured_mobile" do
+      before do
+        @section      = Section.make
+        @featured     = Project.make(section: @section, featured_mobile: true)
+        @not_featured = Project.make(section: @section, featured_mobile: false)
       end
 
-      should 'return only featured projects' do
-        assert_equal [@featured], Project.featured_mobile
+      should "return only featured projects" do
+        Project.featured_mobile.should == [@featured]
+      end
+    end
+
+    describe ".in_categories" do
+      before do
+        @category = ProjectCategory.make
+        @included = Project.make
+        @excluded = Project.make
+
+        @included.update_attributes(project_categories: [@category])
+      end
+
+      it "returns projects that have the given category" do
+        Project.in_categories(@category.id).should == [@included]
+      end
+    end
+
+
+    describe ".related_projects" do
+      before do
+        @section   = Section.make
+        @category  = ProjectCategory.make
+        @subject   = Project.make(section: @section)
+        @unrelated = Project.make(section: @section)
+        @project1  = Project.make(section: @section)
+        @project2  = Project.make(section: @section)
+        @project3  = Project.make(section: @section)
+        @project4  = Project.make(section: @section)
+        @project5  = Project.make(section: @section)
+
+        @projects = [@subject, @project1, @project2, @project3, @project4, @project5]
+
+        @projects.each do |project|
+          project.update_attributes(project_categories: [@category])
+        end
+      end
+
+      it "returns four projects from the same section with the same categories" do
+        @subject.related_projects.should match_array [@project1, @project2, @project3, @project4]
+      end
+
+      context "given a limit" do
+        it "returns that number of related projects" do
+          @subject.related_projects(2).should match_array [@project1, @project2]
+        end
       end
     end
 

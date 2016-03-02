@@ -31,6 +31,8 @@ ActiveAdmin.register Project do
                 :overview_text,
                 :published,
                 :featured_mobile,
+                :completion_date,
+                :has_completion_date,
                 project_categories_ids: []
 
   # Work around for models who have overridden `to_param` in AA
@@ -78,6 +80,7 @@ ActiveAdmin.register Project do
             row :has_completion_date do
               status_tag project.has_completion_date
             end
+            row :completion_date
             row :section
             row :website_url
             row :website_url_text
@@ -192,6 +195,7 @@ ActiveAdmin.register Project do
           input :short_description
           input :page_header
           input :has_completion_date
+          input :completion_date,     as: :datepicker
           input :section,             as: :chosen
           input :website_url
           input :website_url_text
