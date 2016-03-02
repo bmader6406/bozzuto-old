@@ -47,3 +47,17 @@ input[type=file] {
   background: #036447;
   color: #ffffff;
 }
+
+// extra styling for sidebar panels
+.panel_contents > .panel_contents_text {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 13px;
+  font-size: 0.8125rem;
+  line-height: 16px;
+  padding: 16px;
+  text-align: left;
+}
+
+h3 + .panel_contents > .panel_contents_text {
+  padding-top: 0;
+}

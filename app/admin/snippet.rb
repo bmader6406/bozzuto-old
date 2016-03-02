@@ -15,7 +15,9 @@ ActiveAdmin.register Snippet do
   end
 
   sidebar :help, only: :index, priority: 0 do
-    'Blocks of text that may appear multiple times throughout the site.'
+    div class: 'panel_contents_text' do
+      'Blocks of text that may appear multiple times throughout the site.'
+    end
   end
 
   show do
