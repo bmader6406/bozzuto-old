@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303204512) do
+ActiveRecord::Schema.define(version: 20160303215905) do
 
   create_table "ad_sources", force: :cascade do |t|
     t.string   "domain_name", limit: 255, null: false
@@ -1298,20 +1298,6 @@ ActiveRecord::Schema.define(version: 20160303204512) do
   end
 
   add_index "twitter_accounts", ["username"], name: "index_twitter_accounts_on_username", using: :btree
-
-  create_table "typus_users", force: :cascade do |t|
-    t.string   "first_name",       limit: 255, default: "",    null: false
-    t.string   "last_name",        limit: 255, default: "",    null: false
-    t.string   "role",             limit: 255,                 null: false
-    t.string   "email",            limit: 255,                 null: false
-    t.boolean  "status",                       default: false
-    t.string   "token",            limit: 255,                 null: false
-    t.string   "salt",             limit: 255,                 null: false
-    t.string   "crypted_password", limit: 255,                 null: false
-    t.string   "preferences",      limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "under_construction_leads", force: :cascade do |t|
     t.string   "first_name",             limit: 255
