@@ -218,9 +218,9 @@ ActiveAdmin.register ApartmentUnit do
           input :leased_status
           input :leased_status_description
           input :number_occupants
-          input :vacate_date, as: :datepicker
+          input :vacate_date, as: :string, input_html: { class: 'bootstrap-date' }
           input :vacancy_class, as: :select, collection: ApartmentUnit::VACANCY_CLASS
-          input :made_ready_date, as: :datepicker
+          input :made_ready_date, as: :string, input_html: { class: 'bootstrap-date' }
           input :availability_url
         end
 

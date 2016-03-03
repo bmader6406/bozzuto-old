@@ -89,7 +89,7 @@ ActiveAdmin.register NewsPost do
         tab 'Details' do
           input :title
           input :published
-          input :published_at
+          input :published_at,          as: :string, input_html: { class: 'bootstrap-datetime' }
           input :featured
           input :show_as_featured_news
           input :image,                 as: :image

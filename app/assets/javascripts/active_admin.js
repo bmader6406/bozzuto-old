@@ -4,6 +4,10 @@
 //= require polymorphic_select
 //= require redactor
 //= require chosen.jquery
+//= require moment
+//= require collapse
+//= require transition
+//= require bootstrap-datetimepicker.min
 
 $(function() {
 
@@ -62,5 +66,13 @@ $(function() {
       fieldset.find('select').chosen(chosenOpts);
     }
   );
+
+  $('.bootstrap-datetime').datetimepicker({
+    format: 'YYYY-MM-DD HH:mm:ss Z' // 2016-01-22 16:35:00 -0500
+  });
+
+  $('.bootstrap-date').datetimepicker({
+    format: 'YYYY-MM-DD' // 2016-01-22
+  });
 
 });
