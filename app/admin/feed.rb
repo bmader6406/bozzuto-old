@@ -5,9 +5,15 @@ ActiveAdmin.register Feed do
 
   filter :name_or_url_cont, label: 'Search'
 
+  # TODO ADD IN ASSOCIATIONS & SHOW PAGE
   index do
     column :name
     column :url
+    column :refreshed_at do |feed|
+      if feed.refreshed_at.present?
+        feed.refreshed_at.to_s(:extensive)
+      end
+    end
 
     actions
   end

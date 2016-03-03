@@ -20,7 +20,7 @@ ActiveAdmin.register Award do
     column :title
     column :featured
     column(:published) { |award| award.published ? status_tag(:yes) : status_tag(:no) }
-    column :published_at
+    column(:published_at) { |award| award.published_at.to_s(:extensive) if award.published_at.present? }
 
     actions
   end
@@ -35,7 +35,11 @@ ActiveAdmin.register Award do
             row :published do |award|
               award.published ? status_tag(:yes) : status_tag(:no)
             end
-            row :published_at
+            row :published_at do |award|
+              if award.published_at.present?
+                award.published_at.to_s(:extensive)
+              end
+            end
             row :image do |award|
               if award.image.present?
                 image_tag award.image
@@ -76,7 +80,7 @@ ActiveAdmin.register Award do
           input :image, as: :image
           input :body, as: :redactor
           input :published
-          input :published_at # TODO Datetime picker?
+          input :published_at, as: :datetime_picker
           input :featured
           input :show_as_featured_news
           input :home_page_image, as: :image

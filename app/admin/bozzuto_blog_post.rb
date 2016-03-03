@@ -14,7 +14,11 @@ ActiveAdmin.register BozzutoBlogPost do
 
   index do
     column :title
-    column :published_at
+    column :published_at do |post|
+      if post.published_at.present?
+        post.published_at.to_s(:extensive)
+      end
+    end
 
     actions
   end
@@ -30,7 +34,11 @@ ActiveAdmin.register BozzutoBlogPost do
           image_tag post.image
         end
       end
-      row :published_at
+      row :published_at do |post|
+        if post.published_at.present?
+          post.published_at.to_s(:extensive)
+        end
+      end
       row :created_at
       row :updated_at
     end
@@ -42,7 +50,7 @@ ActiveAdmin.register BozzutoBlogPost do
       input :header_url
       input :title
       input :url
-      input :published_at # TODO Datetime picker?
+      input :published_at, as: :datetime_picker
       input :image, as: :image
 
       actions

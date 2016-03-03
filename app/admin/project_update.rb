@@ -38,7 +38,11 @@ ActiveAdmin.register ProjectUpdate do
       row :published do
         status_tag update.published
       end
-      row :published_at
+      row :published_at do |update|
+        if update.published_at.present?
+          update.published_at.to_s(:extensive)
+        end
+      end
       row :created_at
       row :updated_at
     end
@@ -52,7 +56,7 @@ ActiveAdmin.register ProjectUpdate do
       input :image_description
       input :body,              as: :redactor
       input :published
-      input :published_at
+      input :published_at,      as: :datetime_picker
     end
 
     actions

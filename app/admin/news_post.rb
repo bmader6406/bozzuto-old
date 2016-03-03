@@ -35,7 +35,9 @@ ActiveAdmin.register NewsPost do
             row :published do
               status_tag resource.published
             end
-            row :published_at
+            row :published_at do
+              resource.published_at.to_s(:extensive)
+            end
             row :featured do
               status_tag resource.featured
             end
@@ -89,7 +91,7 @@ ActiveAdmin.register NewsPost do
         tab 'Details' do
           input :title
           input :published
-          input :published_at,          as: :string, input_html: { class: 'bootstrap-datetime' }
+          input :published_at,          as: :datetime_picker
           input :featured
           input :show_as_featured_news
           input :image,                 as: :image

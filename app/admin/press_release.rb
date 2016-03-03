@@ -19,7 +19,11 @@ ActiveAdmin.register PressRelease do
   index do
     column :title
     column :published
-    column :published_at
+    column :published_at do |release|
+      if release.published_at.present?
+        release.published_at.to_s(:extensive)
+      end
+    end
 
     actions
   end
@@ -34,7 +38,11 @@ ActiveAdmin.register PressRelease do
             row :published do
               status_tag press_release.published
             end
-            row :published_at
+            row :published_at do
+              if press_release.published_at.present?
+                press_release.published_at.to_s(:extensive)
+              end
+            end
             row :featured do
               status_tag press_release.featured
             end
@@ -73,7 +81,7 @@ ActiveAdmin.register PressRelease do
         tab 'Details' do
           input :title
           input :published
-          input :published_at
+          input :published_at,          as: :datetime_picker
           input :featured
           input :show_as_featured_news
           input :home_page_image,       as: :image
