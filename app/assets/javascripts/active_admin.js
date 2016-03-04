@@ -75,4 +75,18 @@ $(function() {
     format: 'YYYY-MM-DD' // 2016-01-22
   });
 
+  // adds error state to tab if any fields within have errors
+  var $form = $('form.formtastic');
+  var $tabList = $form.find('ul[role=tablist]');
+  var $tabLinks = $tabList.find('> li');
+  var $tabs = $form.find('div.tab-content > div');
+
+  $tabs.each(function(i) {
+    var $tab = $(this)
+
+    if ($tab.find('.input.error').length > 0) {
+      $tabLinks.eq(i).addClass('tab_with_errors')
+    }
+  });
+
 });
