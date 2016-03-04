@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304140554) do
+ActiveRecord::Schema.define(version: 20160304194600) do
 
   create_table "ad_sources", force: :cascade do |t|
     t.string   "domain_name", limit: 255, null: false
@@ -421,6 +421,13 @@ ActiveRecord::Schema.define(version: 20160304140554) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name",         limit: 255, null: false
+  end
+
+  create_table "file_uploads", force: :cascade do |t|
+    t.string   "file_file_name",    limit: 255
+    t.string   "file_content_type", limit: 255
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
