@@ -10,6 +10,9 @@
 //= require bootstrap-datetimepicker.min
 
 $(function() {
+  var csrfToken = $('meta[name=csrf-token]').attr('content')
+  var csrfParam = $('meta[name=csrf-param]').attr('content')
+  var imgParams = '?' + csrfParam + '=' + encodeURIComponent(csrfToken)
 
   // boot redactor editors
   var redactorOpts = {
@@ -22,7 +25,8 @@ $(function() {
       "unorderedlist",
       "orderedlist",
       "alignment",
-      "link"
+      "link",
+      "image"
     ],
     "formatting": [
       "p",
@@ -46,7 +50,10 @@ $(function() {
       "span",
       "b",
       "i"
-    ]
+    ],
+
+    imageUpload: '/admin/images' + imgParams,
+    imageUploadParam: 'image[image]'
   };
 
   $(".redactor-input").redactor(redactorOpts);
