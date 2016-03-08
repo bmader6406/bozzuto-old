@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304194600) do
+ActiveRecord::Schema.define(version: 20160308164614) do
 
   create_table "ad_sources", force: :cascade do |t|
     t.string   "domain_name", limit: 255, null: false
@@ -1188,6 +1188,7 @@ ActiveRecord::Schema.define(version: 20160304194600) do
     t.integer  "property_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "property_type", limit: 255
   end
 
   add_index "property_slideshows", ["property_id"], name: "index_property_slideshows_on_property_id", using: :btree

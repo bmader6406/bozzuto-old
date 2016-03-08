@@ -3,9 +3,6 @@ require 'test_helper'
 class PropertySlideshowTest < ActiveSupport::TestCase
   context 'PropertySlideshow' do
     should belong_to(:property)
-    should belong_to(:apartment_community)
-    should belong_to(:home_community)
-    should belong_to(:project)
 
     should have_many(:slides)
 
