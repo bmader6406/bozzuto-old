@@ -1,38 +1,23 @@
 class Project < ActiveRecord::Base
-  extend FriendlyId
+  include Bozzuto::Model::Property
   
   acts_as_list scope: :section
 
   has_many :data_points, -> { order(position: :asc) },      class_name: 'ProjectDataPoint'
   has_many :updates,     -> { order(published_at: :desc) }, class_name: 'ProjectUpdate'
 
-  belongs_to :city
   belongs_to :section
-
-  has_one :slideshow, class_name: 'PropertySlideshow', foreign_key: :property_id
 
   has_and_belongs_to_many :project_categories,
     -> { order(position: :asc) },
     join_table:  :project_categories_projects,
     foreign_key: :project_id
 
-  has_attached_file :listing_image,
-    url:             '/system/:class/:id/:style.:extension',
-    styles:          { :square => '150x150#', :rect => '230x145#' },
-    default_style:   :square,
-    convert_options: { :all => '-quality 80 -strip' }
-
-  has_attached_file :brochure, url: '/system/:class/:id/brochure.:extension'
-
-  validates_attachment_content_type :listing_image, content_type: /\Aimage\/.*\Z/
-  validates_attachment_content_type :brochure,      content_type: /\Aimage\/.*\Z/
-
   validates_presence_of :completion_date
 
   scope :in_section,               -> (section) { where(section_id: section.id) }
   scope :order_by_completion_date, -> { order(completion_date: :desc) }
   scope :featured_mobile,          -> { where(featured_mobile: true) }
-  scope :position_asc,             -> { order(position: :asc) }
 
   scope :in_categories, -> (category_ids) { joins(:project_categories).where(project_categories: { id: category_ids }) }
 
@@ -48,24 +33,8 @@ class Project < ActiveRecord::Base
       limit(limit)
   end
 
-  def to_s
-    title
-  end
-
   def short_description
     read_attribute(:short_description).presence ||
       project_categories.order(:id).first(2).map(&:title).join(' / ')
-  end
-
-  def project?
-    true
-  end
-
-  def apartment_community?
-    false
-  end
-
-  def home_community?
-    false
   end
 end
