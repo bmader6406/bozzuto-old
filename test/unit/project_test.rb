@@ -7,10 +7,15 @@ class ProjectTest < ActiveSupport::TestCase
     should have_many(:data_points)
     should have_many(:updates)
 
+    should have_one(:slideshow)
+
     should belong_to(:city)
     should belong_to(:section)
 
     should have_and_belong_to_many(:project_categories)
+
+    should have_attached_file(:listing_image)
+    should have_attached_file(:brochure)
 
     should validate_presence_of(:completion_date)
 
@@ -79,6 +84,12 @@ class ProjectTest < ActiveSupport::TestCase
         it "returns that number of related projects" do
           @subject.related_projects(2).should match_array [@project1, @project2]
         end
+      end
+    end
+
+    describe "#to_s" do
+      it "returns the title" do
+        subject.to_s.should == subject.title
       end
     end
 

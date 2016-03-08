@@ -9,10 +9,23 @@ class Project < ActiveRecord::Base
   belongs_to :city
   belongs_to :section
 
+  has_one :slideshow, class_name: 'PropertySlideshow', foreign_key: :property_id
+
   has_and_belongs_to_many :project_categories,
     -> { order(position: :asc) },
     join_table:  :project_categories_projects,
     foreign_key: :project_id
+
+  has_attached_file :listing_image,
+    url:             '/system/:class/:id/:style.:extension',
+    styles:          { :square => '150x150#', :rect => '230x145#' },
+    default_style:   :square,
+    convert_options: { :all => '-quality 80 -strip' }
+
+  has_attached_file :brochure, url: '/system/:class/:id/brochure.:extension'
+
+  validates_attachment_content_type :listing_image, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :brochure,      content_type: /\Aimage\/.*\Z/
 
   validates_presence_of :completion_date
 
@@ -33,6 +46,10 @@ class Project < ActiveRecord::Base
       where('projects.id != ?', id).
       order('projects.position ASC').
       limit(limit)
+  end
+
+  def to_s
+    title
   end
 
   def short_description
