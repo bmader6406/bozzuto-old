@@ -1,0 +1,90 @@
+require 'test_helper'
+
+class Bozzuto::Data::ModelMigratorTest < ActiveSupport::TestCase
+  context 'Bozzuto::Data::ModelMigrator' do
+    subject do
+      Bozzuto::Data::ModelMigrator.new(
+        origin_class: Property,
+        target_class: Project,
+        records:      Property.where(type: 'Project').map { |p| p.becomes(Property) }
+      )
+    end
+
+    before do
+      @section    = Section.make
+      @property1  = Property.make.tap { |p| p.update_columns(id: 10, type: 'Project', completion_date: Date.today, section_id: @section.id) }
+      @property2  = Property.make.tap { |p| p.update_columns(id: 20, type: 'Project', completion_date: Date.today, section_id: @section.id) }
+      @slideshow1 = PropertySlideshow.make(property: @property1)
+      @slideshow2 = PropertySlideshow.make(property: @property2)
+    end
+
+    describe "#migrate" do
+      it "given a set of records of one class, creates records of the target class with all the same attributes and associations" do
+        subject.migrate
+
+        Project.count.should == 2
+
+        Project.all.to_a.tap do |(project1, project2)|
+          project1.id.should        == 10
+          project1.section.should   == @section
+          project1.slideshow.should == @slideshow1
+
+          project2.id.should        == 20
+          project2.section.should   == @section
+          project2.slideshow.should == @slideshow2
+        end
+
+        @slideshow1.property_type.should == 'Property'
+        @slideshow2.property_type.should == 'Property'
+
+        subject.success_count.should == 0
+        subject.failure_count.should == 2
+      end
+    end
+
+    context "skipping validations on certain fields" do
+      subject do
+        Bozzuto::Data::ModelMigrator.new(
+          origin_class:         Property,
+          target_class:         Project,
+          records:              Property.where(type: 'Project').map { |p| p.becomes(Property) },
+          skip_validations_for: :position
+        )
+      end
+
+      it "does not validate the specified fields" do
+        subject.migrate
+
+        subject.success_count.should == 2
+        subject.failure_count.should == 0
+      end
+    end
+
+    context "when associations are explicitly provided" do
+      subject do
+        Bozzuto::Data::ModelMigrator.new(
+          origin_class:         Property,
+          target_class:         Project,
+          records:              Property.where(type: 'Project').map { |p| p.becomes(Property) },
+          skip_validations_for: :position,
+          associations:         :section
+        )
+      end
+
+      it "only includes the specified associations" do
+        subject.migrate
+
+        Project.all.to_a.tap do |(project1, project2)|
+          project1.section.should   == @section
+          project1.slideshow.should == nil
+
+          project2.section.should   == @section
+          project2.slideshow.should == nil
+        end
+
+        @property1.slideshow.should == @slideshow1
+        @property2.slideshow.should == @slideshow2
+      end
+    end
+  end
+end
