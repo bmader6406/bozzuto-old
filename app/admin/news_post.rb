@@ -106,11 +106,7 @@ ActiveAdmin.register NewsPost do
         end
 
         tab 'Sections' do
-          panel nil do
-            table_for resource.sections do
-              column :title
-            end
-          end
+          input :sections, as: :chosen
         end
       end
     end

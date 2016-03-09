@@ -1,5 +1,7 @@
 ActiveAdmin.register AdminUser do
-  menu parent: 'System'
+  config.sort_order = 'name_asc'
+
+  menu parent: 'System', label: 'Admin Users'
 
   permit_params :name,
                 :email,

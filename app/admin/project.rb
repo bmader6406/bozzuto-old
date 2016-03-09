@@ -251,7 +251,7 @@ ActiveAdmin.register Project do
         end
 
         tab 'Categories' do
-          input :project_categories
+          input :project_categories, as: :chosen
         end
       end
     end

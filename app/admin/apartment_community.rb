@@ -422,7 +422,9 @@ ActiveAdmin.register ApartmentCommunity do
 
         tab 'Floor Plans' do
           association_table_for :floor_plans, reorderable: true do
-            column :name
+            column :name do |plan|
+              link_to plan.name, [:admin, plan], target: :blank
+            end
             column :bedrooms
             column :bathrooms
             column :square_footage
