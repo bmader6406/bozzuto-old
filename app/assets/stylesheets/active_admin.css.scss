@@ -51,8 +51,10 @@ input[type=file] {
 }
 
 // extra styling for sidebar panels
-.panel_contents > .panel_contents_text {
+.panel_contents > .panel_contents_text,
+.panel_contents > span {
   color: rgba(#000, 0.54);
+  display: block;
   font-size: 13px;
   font-size: 0.8125rem;
   line-height: 16px;
@@ -60,7 +62,8 @@ input[type=file] {
   text-align: left;
 }
 
-h3 + .panel_contents > .panel_contents_text {
+h3 + .panel_contents > .panel_contents_text,
+h3 + .panel_contents > span {
   padding-top: 0;
 }
 
