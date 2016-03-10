@@ -71,6 +71,7 @@ ActiveAdmin.register Project do
           attributes_table_for project do
             row :id
             row :title
+            row :slug
             row :short_title
             row :short_description
             row :page_header
@@ -87,8 +88,12 @@ ActiveAdmin.register Project do
               end
             end
             row :listing_title
-            row :listing_text
-            row :overview_text
+            row :listing_text do |project|
+              raw project.listing_text
+            end
+            row :overview_text do |project|
+              raw project.overview_text
+            end
             row :published do
               status_tag project.published
             end
@@ -118,7 +123,6 @@ ActiveAdmin.register Project do
         panel nil do
           attributes_table_for resource do
             row :brochure_link_text
-            row :brochure_type
             row :brochure_url
             row :brochure
           end
@@ -211,7 +215,7 @@ ActiveAdmin.register Project do
 
         tab 'Brochure' do
           input :brochure_link_text
-          input :brochure_type
+          input :brochure_type,       as: :chosen, collection: Property::BROCHURE_TYPE
           input :brochure_url
           input :brochure
         end

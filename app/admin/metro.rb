@@ -96,7 +96,7 @@ ActiveAdmin.register Metro do
           input :longitude
           input :banner_image,       as: :image
           input :listing_image,      as: :image
-          input :detail_description, input_html: { rows: 10 }
+          input :detail_description
         end
 
         tab 'Seo' do

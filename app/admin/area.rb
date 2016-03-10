@@ -50,6 +50,7 @@ ActiveAdmin.register Area do
       tab 'Details' do
         panel nil do
           attributes_table_for area do
+            row :id
             row :name
             row :slug
             row :description
@@ -118,20 +119,20 @@ ActiveAdmin.register Area do
       tabs do
         tab 'Details' do
           input :name
-          input :metro
-          input :state
+          input :metro,               as: :chosen
+          input :state,               as: :chosen
           input :latitude
           input :longitude
-          input :banner_image, as: :image
-          input :listing_image, as: :image
+          input :banner_image,        as: :image
+          input :listing_image,       as: :image
           input :description
           input :detail_description
-          input :area_type, as: :select, collection: Area::AREA_TYPE
+          input :area_type,           as: :chosen, collection: Area::AREA_TYPE
         end
 
         tab 'Apartment Communities' do
           has_many :area_memberships, allow_destroy: true, new_record: 'Add Community', heading: false do |membership|
-            membership.input :apartment_community
+            membership.input :apartment_community, as: :chosen
           end
         end
 

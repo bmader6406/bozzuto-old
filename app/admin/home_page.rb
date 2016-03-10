@@ -24,17 +24,24 @@ ActiveAdmin.register HomePage do
       tab 'Details' do
         panel nil do
           attributes_table_for homepage do
+            row :id
             row :meta_title
             row :meta_description
             row :meta_keywords
-            row :body
+            row :body do |homepage|
+              raw homepage.body
+            end
             row :mobile_title
             row :mobile_banner_image do |homepage|
               if homepage.mobile_banner_image.present?
                 image_tag homepage.mobile_banner_image
               end
             end
-            row :mobile_body
+            row :mobile_body do |homepage|
+              raw homepage.mobile_body
+            end
+            row :created_at
+            row :updated_at
           end
         end
       end

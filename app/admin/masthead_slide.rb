@@ -36,7 +36,10 @@ ActiveAdmin.register MastheadSlide do
           attributes_table_for slide do
             row :id
             row :masthead_slideshow
-            row :body
+            row :mini_slideshow
+            row :body do |slide|
+              raw slide.body
+            end
             row :slide_type do |slide|
               slide.type_label
             end
@@ -47,7 +50,6 @@ ActiveAdmin.register MastheadSlide do
             end
             row :image_link
             row :sidebar_text
-            row :mini_slideshow
             row :created_at
             row :updated_at
           end

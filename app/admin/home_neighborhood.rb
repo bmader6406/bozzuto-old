@@ -33,7 +33,9 @@ ActiveAdmin.register HomeNeighborhood do
       tab 'Details' do
         panel nil do
           attributes_table_for neighborhood do
+            row :id
             row :name
+            row :slug
             row :latitude
             row :longitude
             row :description
@@ -82,16 +84,16 @@ ActiveAdmin.register HomeNeighborhood do
           input :name
           input :latitude
           input :longitude
-          input :banner_image, as: :image
-          input :listing_image, as: :image
+          input :banner_image,            as: :image
+          input :listing_image,           as: :image
           input :description
           input :detail_description
-          input :featured_home_community
+          input :featured_home_community, as: :chosen
         end
 
         tab 'Home Communities' do
           has_many :home_neighborhood_memberships, allow_destroy: true, heading: false, new_record: 'Add Home Community' do |membership|
-            membership.input :home_community
+            membership.input :home_community, as: :chosen
           end
         end
 

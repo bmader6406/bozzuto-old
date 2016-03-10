@@ -25,6 +25,7 @@ ActiveAdmin.register CareersEntry do
 
   show do
     attributes_table do
+      row :id
       row :name
       row :company
       row :job_title

@@ -25,6 +25,7 @@ ActiveAdmin.register BozzutoBlogPost do
 
   show do
     attributes_table do
+      row :id
       row :header_title
       row :header_url
       row :title
@@ -50,8 +51,8 @@ ActiveAdmin.register BozzutoBlogPost do
       input :header_url
       input :title
       input :url
-      input :published_at, as: :datetime_picker
-      input :image, as: :image
+      input :published_at,  as: :datetime_picker
+      input :image,         as: :image
 
       actions
     end

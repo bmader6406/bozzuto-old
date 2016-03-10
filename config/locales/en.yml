@@ -100,6 +100,7 @@ en:
         upcoming_intro_text: 'Under Construction Form Intro Text'
         upcoming_thank_you_text: "Under Construction 'Thank You' Page Text"
       apartment_floor_plan:
+        apartment_community: Apartment Community
         actual_image: Image
         availability_url: Availability URL
         available_units: Available Units

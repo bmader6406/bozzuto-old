@@ -24,8 +24,8 @@ ActiveAdmin.register Snippet do
     attributes_table do
       row :id
       row :name
-      row :body do |s|
-        raw s.body
+      row :body do |snippet|
+        raw snippet.body
       end
       row :created_at
       row :updated_at

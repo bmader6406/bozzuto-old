@@ -44,10 +44,15 @@ ActiveAdmin.register ApartmentFloorPlan do
       tab 'Details' do
         panel nil do
           attributes_table_for plan do
+            row :id
             row :apartment_community
             row :name
-            row(:featured) { |plan| plan.featured ? status_tag(:yes) : status_tag(:no) }
-            row(:image_type) { |plan| plan.image_type == ApartmentFloorPlan::USE_IMAGE_URL ? 'URL' : 'File' }
+            row :featured do |plan|
+              status_tag plan.featured
+            end
+            row :image_type do |plan|
+              plan.image_type == ApartmentFloorPlan::USE_IMAGE_URL ? 'URL' : 'File'
+            end
             row :image_url
             row :image do |plan|
               if plan.image.present?
@@ -63,6 +68,8 @@ ActiveAdmin.register ApartmentFloorPlan do
             row :min_rent
             row :max_rent
             row :floor_plan_group
+            row :created_at
+            row :updated_at
           end
         end
       end
@@ -88,18 +95,18 @@ ActiveAdmin.register ApartmentFloorPlan do
     inputs do
       tabs do
         tab 'Details' do
-          input :apartment_community, label: 'Apartment Community'
+          input :apartment_community, as: :chosen
           input :name
-          input :floor_plan_group
+          input :floor_plan_group,    as: :chosen
           input :bedrooms
           input :bathrooms
           input :min_square_feet
           input :max_square_feet
           input :min_rent
           input :max_rent
-          input :image_type, as: :select, collection: ApartmentFloorPlan::IMAGE_TYPE
+          input :image_type,          as: :chosen, collection: ApartmentFloorPlan::IMAGE_TYPE
           input :image_url
-          input :image, as: :image
+          input :image,               as: :image
           input :availability_url
           input :available_units
           input :featured

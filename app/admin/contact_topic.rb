@@ -16,9 +16,9 @@ ActiveAdmin.register ContactTopic do
   form do |f|
     inputs do
       input :topic
-      input :body, as: :redactor
+      input :body,        as: :redactor
       input :recipients
-      input :section
+      input :section,     as: :chosen
 
       actions
     end

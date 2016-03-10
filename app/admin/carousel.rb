@@ -22,17 +22,32 @@ ActiveAdmin.register Carousel do
   end
 
   show do |carousel|
-    panel 'Panels' do
-      reorderable_table_for carousel.panels do
-        column :image do |panel|
-          if panel.image.present?
-            image_tag panel.image
+    tabs do
+      tab 'Details' do
+        panel nil do
+          attributes_table_for carousel do
+            row :id
+            row :name
+            row :created_at
+            row :updated_at
           end
         end
-        column :link_url
-        column :heading
-        column :caption
-        column :featured
+      end
+
+      tab 'Panels' do
+        collection_panel_for :panels do
+          reorderable_table_for carousel.panels do
+            column :image do |panel|
+              if panel.image.present?
+                image_tag panel.image
+              end
+            end
+            column :link_url
+            column :heading
+            column :caption
+            column :featured
+          end
+        end
       end
     end
   end
@@ -42,12 +57,12 @@ ActiveAdmin.register Carousel do
       tabs do
         tab 'Details' do
           input :name
-          input :content, as: :polymorphic_select, grouped_options: grouped_options
+          input :content, as: :chosen, collection: grouped_options_for_select(content_options)
         end
 
         tab 'Panels' do
           has_many :panels, heading: false, allow_destroy: true do |panel|
-            panel.input :image, as: :image
+            panel.input :image,     as: :image
             panel.input :link_url
             panel.input :heading
             panel.input :caption
@@ -61,12 +76,12 @@ ActiveAdmin.register Carousel do
   end
 
   controller do
-    def grouped_options
-      @grouped_options ||= {
+    def content_options
+      @content_options ||= {
         HomePage => HomePage.all,
         Page     => Page.all
       }
     end
-    helper_method :grouped_options
+    helper_method :content_options
   end
 end

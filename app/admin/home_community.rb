@@ -86,9 +86,7 @@ ActiveAdmin.register HomeCommunity do
     column :title
     column :street_address
     column :city
-    column :published do |community|
-      community.published ? status_tag(:yes) : status_tag(:no)
-    end
+    column :published
 
     actions
   end
@@ -98,7 +96,9 @@ ActiveAdmin.register HomeCommunity do
       tab 'Details' do
         panel nil do
           attributes_table_for community do
+            row :id
             row :title
+            row :slug
             row :short_title
             row :street_address
             row :city
@@ -124,7 +124,9 @@ ActiveAdmin.register HomeCommunity do
               end
             end
             row :listing_title
-            row :listing_text
+            row :listing_text do |community|
+              raw community.listing_text
+            end
             row :neighborhood_listing_image do |community|
               if community.neighborhood_listing_image.present?
                 image_tag community.neighborhood_listing_image
@@ -132,13 +134,21 @@ ActiveAdmin.register HomeCommunity do
             end
             row :neighborhood_description
             row :overview_title
-            row :overview_text
+            row :overview_text do |community|
+              raw community.overview_text
+            end
             row :overview_bullet_1
             row :overview_bullet_2
             row :overview_bullet_3
             row :promo
-            row(:included_in_export) { |community| community.included_in_export ? status_tag(:yes) : status_tag(:no) }
-            row(:published) { |community| community.published ? status_tag(:yes) : status_tag(:no) }
+            row :included_in_export do |community|
+              status_tag community.included_in_export
+            end
+            row :published do |community|
+              status_tag community.published
+            end
+            row :created_at
+            row :updated_at
           end
         end
       end
@@ -250,7 +260,7 @@ ActiveAdmin.register HomeCommunity do
             end
             row :ufollowup_id
             row :show_rtrk_code do |community|
-              community.show_rtrk_code ? status_tag(:yes) : status_tag(:no)
+              status_tag community.show_rtrk_code
             end
           end
         end
@@ -277,8 +287,8 @@ ActiveAdmin.register HomeCommunity do
           input :title
           input :short_title
           input :street_address
-          input :city, collection: cities
-          input :county
+          input :city,                        as: :chosen, collection: cities
+          input :county,                      as: :chosen
           input :zip_code
           input :phone_number
           input :mobile_phone_number
@@ -288,23 +298,23 @@ ActiveAdmin.register HomeCommunity do
           input :website_url_text
           input :video_url
           input :facebook_url
-          input :twitter_account
+          input :twitter_account,             as: :chosen
           input :brochure_link_text
-          input :brochure_type, as: :select, collection: Property::BROCHURE_TYPE
+          input :brochure_type,               as: :chosen, collection: Property::BROCHURE_TYPE
           input :brochure
           input :brochure_url
-          input :local_info_feed
-          input :listing_image, as: :image
+          input :local_info_feed,             as: :chosen
+          input :listing_image,               as: :image
           input :listing_title
-          input :listing_text, as: :redactor
-          input :neighborhood_listing_image, as: :image
+          input :listing_text,                as: :redactor
+          input :neighborhood_listing_image,  as: :image
           input :neighborhood_description
           input :overview_title
-          input :overview_text, as: :redactor
+          input :overview_text,               as: :redactor
           input :overview_bullet_1
           input :overview_bullet_2
           input :overview_bullet_3
-          input :promo
+          input :promo,                       as: :chosen
           input :published
         end
 
@@ -318,7 +328,7 @@ ActiveAdmin.register HomeCommunity do
         end
 
         tab 'Features' do
-          input :property_features, label: 'Property Features'
+          input :property_features, as: :chosen, label: 'Property Features'
         end
 
         tab 'Pages' do

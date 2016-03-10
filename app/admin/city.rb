@@ -21,6 +21,7 @@ ActiveAdmin.register City do
       tab 'Details' do
         panel nil do
           attributes_table_for city do
+            row :id
             row :name
             row :state
             row :created_at
@@ -57,7 +58,7 @@ ActiveAdmin.register City do
     inputs do
       input :name
       input :state,    as: :chosen
-      input :counties, as: :chosen, collection: County.order(:name)
+      input :counties, as: :chosen, collection: County.ordered_by_name
 
       actions
     end

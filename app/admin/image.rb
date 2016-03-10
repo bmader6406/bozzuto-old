@@ -18,6 +18,7 @@ ActiveAdmin.register Image do
 
   show do |image|
     attributes_table do
+      row :id
       row :image do |image|
         image_tag image.image
       end

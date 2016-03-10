@@ -21,17 +21,20 @@ ActiveAdmin.register LassoAccount do
 
   show do
     attributes_table do
+      row :id
       row :property
       row :uid
       row :client_id
       row :project_id
       row :analytics_id
+      row :created_at
+      row :updated_at
     end
   end
 
   form do |f|
     inputs do
-      input :property, collection: HomeCommunity.all
+      input :property,      as: :chosen,collection: HomeCommunity.all
       input :uid
       input :client_id
       input :project_id

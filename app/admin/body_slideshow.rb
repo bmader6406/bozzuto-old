@@ -27,8 +27,11 @@ ActiveAdmin.register BodySlideshow do
       tab 'Details' do
         panel nil do
           attributes_table_for slideshow do
+            row :id
             row :name
             row :page
+            row :created_at
+            row :updated_at
           end
         end
       end
@@ -52,15 +55,15 @@ ActiveAdmin.register BodySlideshow do
       tabs do
         tab 'Details' do
           input :name
-          input :page
+          input :page, as: :chosen
         end
 
         tab 'Slides' do
           has_many :slides, heading: false, allow_destroy: true do |slide|
-            slide.input :image, as: :image
+            slide.input :image,     as: :image
             slide.input :link_url
             slide.input :video_url
-            slide.input :property
+            slide.input :property,  as: :chosen
           end
         end
       end

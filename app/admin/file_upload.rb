@@ -15,6 +15,7 @@ ActiveAdmin.register FileUpload do
 
   show do |file_upload|
     attributes_table do
+      row :id
       row :file
       row :file_content_type
       row :created_at

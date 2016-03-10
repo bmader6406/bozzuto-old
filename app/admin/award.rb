@@ -19,8 +19,12 @@ ActiveAdmin.register Award do
   index do
     column :title
     column :featured
-    column(:published) { |award| award.published ? status_tag(:yes) : status_tag(:no) }
-    column(:published_at) { |award| award.published_at.to_s(:extensive) if award.published_at.present? }
+    column :published
+    column :published_at do |award|
+      if award.published_at.present?
+        award.published_at.to_s(:extensive)
+      end
+    end
 
     actions
   end
@@ -30,10 +34,11 @@ ActiveAdmin.register Award do
       tab 'Details' do
         panel nil do
           attributes_table_for award do
+            row :id
             row :title
             row :body
             row :published do |award|
-              award.published ? status_tag(:yes) : status_tag(:no)
+              status_tag award.published
             end
             row :published_at do |award|
               if award.published_at.present?
@@ -46,16 +51,18 @@ ActiveAdmin.register Award do
               end
             end
             row :featured do |award|
-              award.featured ? status_tag(:yes) : status_tag(:no)
+              status_tag award.featured
             end
             row :show_as_featured_news do |award|
-              award.show_as_featured_news ? status_tag(:yes) : status_tag(:no)
+              status_tag award.show_as_featured_news
             end
             row :home_page_image do |award|
               if award.home_page_image.present?
                 image_tag award.home_page_image
               end
             end
+            row :created_at
+            row :updated_at
           end
         end
       end
@@ -77,17 +84,17 @@ ActiveAdmin.register Award do
       tabs do
         tab 'Details' do
           input :title
-          input :image, as: :image
-          input :body, as: :redactor
+          input :image,                 as: :image
+          input :body,                  as: :redactor
           input :published
-          input :published_at, as: :datetime_picker
+          input :published_at,          as: :datetime_picker
           input :featured
           input :show_as_featured_news
-          input :home_page_image, as: :image
+          input :home_page_image,       as: :image
         end
 
         tab 'Sections' do
-          input :sections
+          input :sections, as: :chosen
         end
       end
 

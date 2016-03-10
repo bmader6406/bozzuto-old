@@ -78,9 +78,7 @@ ActiveAdmin.register ApartmentUnit do
     column :rent
     column :vacancy_class do |unit|
       if unit.vacancy_class.present?
-        value = unit.vacancy_class == ApartmentUnit::VACANCY_CLASS.first ? :no : :yes
-
-        status_tag(unit.vacancy_class, value)
+        status_tag unit.vacancy_class, unit.vacancy_class == ApartmentUnit::VACANCY_CLASS.first ? :no : :yes
       end
     end
     column :apartment_community
@@ -93,6 +91,7 @@ ActiveAdmin.register ApartmentUnit do
       tab 'Details' do
         panel nil do
           attributes_table_for unit do
+            row :id
             row('External CMS ID') { |unit| unit.external_cms_id }
             row :marketing_name
             row :organization_name
@@ -108,6 +107,8 @@ ActiveAdmin.register ApartmentUnit do
             row :building_name
             row :primary_property_id
             row :comment
+            row :created_at
+            row :updated_at
           end
         end
       end
@@ -137,9 +138,7 @@ ActiveAdmin.register ApartmentUnit do
             row :vacate_date
             row :vacancy_class do |unit|
               if unit.vacancy_class.present?
-                value = unit.vacancy_class == ApartmentUnit::VACANCY_CLASS.first ? :no : :yes
-
-                status_tag(unit.vacancy_class, value)
+                status_tag unit.vacancy_class, unit.vacancy_class == ApartmentUnit::VACANCY_CLASS.first ? :no : :yes
               end
             end
             row :made_ready_date
@@ -189,7 +188,7 @@ ActiveAdmin.register ApartmentUnit do
           input :marketing_name
           input :organization_name
           input :unit_type
-          input :floor_plan
+          input :floor_plan,          as: :chosen
           input :floor_plan_name
           input :bedrooms
           input :bathrooms
@@ -218,9 +217,9 @@ ActiveAdmin.register ApartmentUnit do
           input :leased_status
           input :leased_status_description
           input :number_occupants
-          input :vacate_date, as: :datepicker
-          input :vacancy_class, as: :select, collection: ApartmentUnit::VACANCY_CLASS
-          input :made_ready_date, as: :datepicker
+          input :vacate_date,                   as: :datepicker
+          input :vacancy_class,                 as: :chosen,      collection: ApartmentUnit::VACANCY_CLASS
+          input :made_ready_date,               as: :datepicker
           input :availability_url
         end
 
@@ -234,15 +233,15 @@ ActiveAdmin.register ApartmentUnit do
 
         tab 'Amenities' do
           has_many :amenities, allow_destroy: true, new_record: 'Add Amenity', heading: false do |amenity|
-            amenity.input :primary_type, as: :select, collection: ApartmentUnitAmenity::PRIMARY_TYPE
-            amenity.input :sub_type, as: :select, collection: ApartmentUnitAmenity::SUB_TYPE
+            amenity.input :primary_type, as: :chosen, collection: ApartmentUnitAmenity::PRIMARY_TYPE
+            amenity.input :sub_type,     as: :chosen, collection: ApartmentUnitAmenity::SUB_TYPE
             amenity.input :description
           end
         end
 
         tab 'Feed Files' do
           has_many :feed_files, allow_destroy: true, new_record: false, heading: false do |file|
-            file.input :file_type, as: :select, collection: FeedFile::FILE_TYPE
+            file.input :file_type,    as: :chosen, collection: FeedFile::FILE_TYPE
             file.input :format
             file.input :name
             file.input :source

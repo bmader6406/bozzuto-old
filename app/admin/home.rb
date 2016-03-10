@@ -37,14 +37,17 @@ ActiveAdmin.register Home do
       tab 'Details' do
         panel nil do
           attributes_table_for home do
+            row :id
             row :home_community
             row :name
             row :bedrooms
             row :bathrooms
             row :square_feet
             row :featured do |home|
-              home.featured ? status_tag(:yes) : status_tag(:no)
+              status_tag home.featured
             end
+            row :created_at
+            row :updated_at
           end
         end
       end
@@ -68,7 +71,7 @@ ActiveAdmin.register Home do
     inputs do
       tabs do
         tab 'Details' do
-          input :home_community
+          input :home_community, as: :chosen
           input :name
           input :bedrooms
           input :bathrooms

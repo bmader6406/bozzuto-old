@@ -180,7 +180,9 @@ ActiveAdmin.register ApartmentCommunity do
       tab 'Details' do
         panel nil do
           attributes_table_for community do
+            row :id
             row :title
+            row :slug
             row :short_title
             row :street_address
             row :city
@@ -199,7 +201,6 @@ ActiveAdmin.register ApartmentCommunity do
             row :facebook_url
             row :twitter_account
             row :brochure_link_text
-            row(:brochure_type) { |community| community.brochure_type == Property::USE_BROCHURE_URL ? 'URL' : 'File' }
             row :brochure
             row :brochure_url
             row :schedule_tour_url
@@ -223,15 +224,25 @@ ActiveAdmin.register ApartmentCommunity do
               end
             end
             row :overview_title
-            row :overview_text
+            row :overview_text do |community|
+              raw community.overview_text
+            end
             row :overview_bullet_1
             row :overview_bullet_2
             row :overview_bullet_3
             row :promo
             row :core_id
-            row(:included_in_export) { |community| community.included_in_export ? status_tag(:yes) : status_tag(:no) }
-            row(:published) { |community| community.published ? status_tag(:yes) : status_tag(:no) }
-            row(:featured) { |community| community.featured ? status_tag(:yes) : status_tag(:no) }
+            row :included_in_export do |community|
+              status_tag community.included_in_export
+            end
+            row :published do |community|
+              status_tag community.published
+            end
+            row :featured do |community|
+              status_tag community.featured
+            end
+            row :created_at
+            row :updated_at
           end
         end
       end
@@ -324,12 +335,20 @@ ActiveAdmin.register ApartmentCommunity do
         panel nil do
           attributes_table_for community do
             row :hyly_id
-            row(:show_lead_2_lease) { |community| community.show_lead_2_lease ? status_tag(:yes) : status_tag(:no) }
+            row :show_lead_2_lease do |community|
+              status_tag community.show_lead_2_lease
+            end
             row :lead_2_lease_email
             row :lead_2_lease_id
-            row(:under_construction) { |community| community.under_construction ? status_tag(:yes) : status_tag(:no) }
-            row(:upcoming_intro_text) { |community| community.contact_configuration.try(:upcoming_intro_text) }
-            row(:upcoming_thank_you_text) { |community| community.contact_configuration.try(:upcoming_thank_you_text) }
+            row :under_construction do |community|
+              status_tag community.under_construction
+            end
+            row :upcoming_intro_text do |community|
+              status_tag community.contact_configuration.try(:upcoming_intro_text)
+            end
+            row :upcoming_thank_you_text do |community|
+              status_tag community.contact_configuration.try(:upcoming_thank_you_text)
+            end
           end
         end
       end
@@ -366,7 +385,7 @@ ActiveAdmin.register ApartmentCommunity do
             end
             row :ufollowup_id
             row :show_rtrk_code do |community|
-              community.show_rtrk_code ? status_tag(:yes) : status_tag(:no)
+              status_tag community.show_rtrk_code
             end
           end
         end
@@ -381,8 +400,8 @@ ActiveAdmin.register ApartmentCommunity do
           input :title
           input :short_title
           input :street_address
-          input :city, collection: cities
-          input :county
+          input :city,                        as: :chosen, collection: cities
+          input :county,                      as: :chosen
           input :zip_code
           input :phone_number
           input :mobile_phone_number
@@ -395,25 +414,25 @@ ActiveAdmin.register ApartmentCommunity do
           input :resident_link_url
           input :video_url
           input :facebook_url
-          input :twitter_account
+          input :twitter_account,             as: :chosen
           input :brochure_link_text
-          input :brochure_type, as: :select, collection: Property::BROCHURE_TYPE
+          input :brochure_type,               as: :chosen, collection: Property::BROCHURE_TYPE
           input :brochure
           input :brochure_url
           input :schedule_tour_url
-          input :local_info_feed
-          input :listing_image, as: :image
+          input :local_info_feed,             as: :chosen
+          input :listing_image,               as: :image
           input :listing_title
-          input :listing_text, as: :redactor
-          input :neighborhood_listing_image, as: :image
+          input :listing_text,                as: :redactor
+          input :neighborhood_listing_image,  as: :image
           input :neighborhood_description
-          input :hero_image, as: :image
+          input :hero_image,                  as: :image
           input :overview_title
-          input :overview_text, as: :redactor
+          input :overview_text,               as: :redactor
           input :overview_bullet_1
           input :overview_bullet_2
           input :overview_bullet_3
-          input :promo
+          input :promo,                       as: :chosen
           input :core_id
           input :included_in_export
           input :published
@@ -434,7 +453,7 @@ ActiveAdmin.register ApartmentCommunity do
         end
 
         tab 'Features' do
-          input :property_features, label: 'Property Features'
+          input :property_features, label: 'Property Features', as: :chosen
         end
 
         tab 'Amenities' do

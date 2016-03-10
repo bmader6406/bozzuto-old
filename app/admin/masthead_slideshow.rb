@@ -52,7 +52,7 @@ ActiveAdmin.register MastheadSlideshow do
       tabs do
         tab 'Details' do
           input :name
-          input :page
+          input :page, as: :chosen
         end
 
         tab 'Slides' do

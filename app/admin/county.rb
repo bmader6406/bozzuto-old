@@ -20,6 +20,7 @@ ActiveAdmin.register County do
       tab 'Details' do
         panel nil do
           attributes_table_for county do
+            row :id
             row :name
             row :state
             row :created_at

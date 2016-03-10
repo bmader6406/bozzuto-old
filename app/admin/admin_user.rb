@@ -20,6 +20,7 @@ ActiveAdmin.register AdminUser do
 
   show do
     attributes_table do
+      row :id
       row :name
       row :email
       row :sign_in_count
