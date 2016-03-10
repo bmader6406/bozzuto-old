@@ -5,6 +5,7 @@ general:
       - production
 checkout:
   post:
+    - cp config/secrets.yml.example config/secrets.yml
     - cp config/app_config.yml.example config/app_config.yml
 test:
   override:
