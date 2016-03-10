@@ -1,8 +1,11 @@
 class LandingPagePopularOrdering < ActiveRecord::Base
   belongs_to :landing_page
-  belongs_to :property
+  belongs_to :property, polymorphic: true
   
-  acts_as_list :scope => :landing_page
+  acts_as_list scope: :landing_page
   
-  delegate :title, :street_address, :city, :to => :property
+  delegate :title,
+           :street_address,
+           :city,
+           to: :property
 end

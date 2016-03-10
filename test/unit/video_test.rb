@@ -3,8 +3,6 @@ require 'test_helper'
 class VideoTest < ActiveSupport::TestCase
   context 'Video' do
     should belong_to(:property)
-    should belong_to(:apartment_community)
-    should belong_to(:home_community)
 
     should validate_presence_of(:url)
 
@@ -14,8 +12,8 @@ class VideoTest < ActiveSupport::TestCase
       context "when the video has a property" do
         subject do
           Video.new(
-            :property => Property.new(:title => 'Wayne Manor'),
-            :position => 9
+            property: Property.new(:title => 'Wayne Manor'),
+            position: 9
           )
         end
 
@@ -26,7 +24,7 @@ class VideoTest < ActiveSupport::TestCase
 
       context "when the video does not have a property" do
         subject do
-          Video.make(:property => nil)
+          Video.make(property: nil)
         end
 
         it "returns the name of the model along with its ID" do

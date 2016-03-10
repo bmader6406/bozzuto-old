@@ -64,7 +64,7 @@ module Bozzuto
         associations.each do |association|
           records = from.send(association.name)
 
-          return if records.nil?
+          next if records.nil? || association.options[:through].present?
 
           options = { association.foreign_key => to.id }
           options.merge!(association.foreign_key.to_s.gsub('id', 'type') => target_class.name) if association.options[:as]

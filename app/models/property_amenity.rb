@@ -68,14 +68,14 @@ class PropertyAmenity < ActiveRecord::Base
     'SameLevelParking'
   ]
 
-  belongs_to :property, inverse_of: :property_amenities
+  belongs_to :property, polymorphic: true, inverse_of: :property_amenities
 
   validates :property,
             :primary_type,
-            :presence => true
+            presence: true
 
-  validates :primary_type, :inclusion => { :in => PRIMARY_TYPE }
-  validates :sub_type,     :inclusion => { :in => SUB_TYPE }, :allow_blank => true
+  validates :primary_type, inclusion: { in: PRIMARY_TYPE }
+  validates :sub_type,     inclusion: { in: SUB_TYPE }, allow_blank: true
 
-  acts_as_list :scope => :property
+  acts_as_list scope: :property
 end

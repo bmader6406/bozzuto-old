@@ -12,7 +12,15 @@ class OfficeHoursController < ApplicationController
   private
   
   def find_community
-    @community = Property.friendly.find(params[:apartment_community_id] || params[:home_community_id])
+    @community = apartment_community.presence || home_community
+  end
+
+  def apartment_community
+    ApartmentCommunity.friendly.find(params[:apartment_community_id]) if ApartmentCommunity.friendly.exists?(params[:apartment_community_id])
+  end
+
+  def home_community
+    HomeCommunity.friendly.find(params[:home_community_id]) if HomeCommunity.friendly.exists?(params[:home_community_id])
   end
 
   def mobile_only

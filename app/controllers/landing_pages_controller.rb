@@ -37,7 +37,7 @@ class LandingPagesController < ApplicationController
   helper_method :featured_apartment_communities
 
   def popular_properties
-    @popular_properties ||= @page.popular_properties.published
+    @popular_properties ||= @page.popular_apartments.published + @page.popular_homes.published
   end
   helper_method :popular_properties
 

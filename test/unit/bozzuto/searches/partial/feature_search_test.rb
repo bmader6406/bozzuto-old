@@ -8,12 +8,12 @@ module Bozzuto::Searches::Partial
       describe ".sql" do
         it "returns exclusive search SQL with ? in place of actual expected values" do
           sqlized(subject.sql).should == sqlized(%q(
-            properties.id IN (
-              SELECT properties.id
-              FROM properties
-              INNER JOIN properties_property_features
-              ON properties.id = properties_property_features.property_id
-              WHERE properties_property_features.property_feature_id IN (?)
+            apartment_communities.id IN (
+              SELECT apartment_communities.id
+              FROM apartment_communities
+              INNER JOIN property_feature_attributions
+              ON apartment_communities.id = property_feature_attributions.property_id AND property_feature_attributions.property_type = 'ApartmentCommunity'
+              WHERE property_feature_attributions.property_feature_id IN (?)
             )
           ))
         end
@@ -24,12 +24,12 @@ module Bozzuto::Searches::Partial
 
         it "returns exclusive search SQL with the given expected values" do
           sqlized(subject.sql).should == sqlized(%q(
-            properties.id IN (
-              SELECT properties.id
-              FROM properties
-              INNER JOIN properties_property_features
-              ON properties.id = properties_property_features.property_id
-              WHERE properties_property_features.property_feature_id IN (5,2,4)
+            apartment_communities.id IN (
+              SELECT apartment_communities.id
+              FROM apartment_communities
+              INNER JOIN property_feature_attributions
+              ON apartment_communities.id = property_feature_attributions.property_id AND property_feature_attributions.property_type = 'ApartmentCommunity'
+              WHERE property_feature_attributions.property_feature_id IN (5,2,4)
             )
           ))
         end

@@ -17,9 +17,19 @@ module Bozzuto
         include Bozzuto::Mappable
         include Bozzuto::Publishable
 
+        #friendly_id :title, use: :history # TODO Uncomment once all property-types are migrated to their own models
+
         belongs_to :city
 
         has_one :slideshow, as: :property, class_name: 'PropertySlideshow'
+
+        has_many :property_feature_attributions,
+          -> { joins(:property_feature).order('property_features.position ASC') },
+          as:         :property,
+          dependent:  :destroy,
+          inverse_of: :property
+
+        has_many :property_features, through: :property_feature_attributions
 
         has_attached_file :listing_image,
           url:             '/system/:class/:id/:style.:extension',
@@ -29,11 +39,14 @@ module Bozzuto
 
         has_attached_file :brochure, url: '/system/:class/:id/brochure.:extension'
 
-        do_not_validate_attachment_file_type :brochure
-
         validates_attachment_content_type :listing_image, content_type: /\Aimage\/.*\Z/
 
+        do_not_validate_attachment_file_type :brochure
+
         validates_presence_of :title, :city
+
+        validates_length_of :short_title,       maximum: 22, allow_nil: true
+        validates_length_of :short_description, maximum: 40, allow_nil: true
 
         validates_inclusion_of :brochure_type, in: [USE_BROCHURE_URL, USE_BROCHURE_FILE], allow_nil: true
 
@@ -41,6 +54,11 @@ module Bozzuto
         scope :ordered_by_title, -> { order(title: :asc) }
         scope :position_asc,     -> { order(position: :asc) }
         scope :in_state,         -> (state_id) { joins(:city).where(cities: { state_id: state_id }) }
+        scope :duplicates,       -> {
+          joins("INNER JOIN #{table_name} AS other ON #{table_name}.title SOUNDS LIKE other.title")
+            .where("#{table_name}.id != other.id")
+            .order('title ASC')
+        }
 
         def self.ransackable_scopes(auth_object = nil)
           [:in_state]
@@ -62,6 +80,10 @@ module Bozzuto
 
         def to_label
           to_s
+        end
+
+        def short_name
+          short_title.presence || title
         end
 
         def address(separator = ', ')
@@ -104,6 +126,10 @@ module Bozzuto
 
         def project?
           is_a? ::Project
+        end
+
+        def seo_link?
+          seo_link_text.present? && seo_link_url.present?
         end
       end
     end

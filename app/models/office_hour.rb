@@ -6,7 +6,7 @@ class OfficeHour < ActiveRecord::Base
 
   DAY = Date::DAYNAMES.each_with_index.to_a
 
-  belongs_to :property
+  belongs_to :property, polymorphic: true
 
   validates :property,
             :day,

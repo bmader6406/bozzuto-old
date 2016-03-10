@@ -4,14 +4,14 @@ module Bozzuto::Searches
       # Exact searches return results matching exactly the given criteria.
       #
       # SQL output given the following:
-      #   main_class       == Property
+      #   main_class       == ApartmentCommunity
       #   associated_class == ApartmentFloorPlan
       #   foreign_key      == 'apartment_community_id'
       #   search_column    == 'floor_plan_group_id'
       #
-      #   properties.id IN (
-      #     SELECT properties.id
-      #     FROM properties
+      #   apartment_communities.id IN (
+      #     SELECT apartment_communities.id
+      #     FROM apartment_communities
       #     INNER JOIN (
       #       SELECT apartment_community_id, GROUP_CONCAT(
       #             DISTINCT floor_plan_group_id
@@ -20,7 +20,7 @@ module Bozzuto::Searches
       #       FROM apartment_floor_plans
       #       GROUP BY apartment_community_id
       #     ) AS associated
-      #     ON associated.apartment_community_id = properties.id
+      #     ON associated.apartment_community_id = apartment_communities.id
       #     WHERE associated.search_values LIKE ?
       #   )
 
@@ -35,12 +35,20 @@ module Bozzuto::Searches
       private
 
       def join_clause
-        Arel.sql("(#{associated_values.to_sql})").as(derived_table)
+        Arel.sql("(#{associated_values.to_sql})").as(derived_table.name)
+      end
+
+      def derived_table
+        @derived_table ||= Arel::Table.new('associated')
+      end
+
+      def associated_fields
+        [foreign_key, grouped_values]
       end
 
       def associated_values
         associated_table
-          .project(foreign_key, grouped_values)
+          .project(*associated_fields)
           .group(foreign_key)
       end
 
@@ -61,34 +69,12 @@ module Bozzuto::Searches
         )
       end
 
-      def fk_with_table
-        Arel.sql [
-          derived_table_name,
-          foreign_key
-        ].join('.')
-      end
-
-      def derived_table_name
-        'associated'
-      end
-
-      def derived_table
-        Arel.sql derived_table_name
-      end
-
       def join_condition
-        fk_with_table.eq main_table[:id]
-      end
-
-      def derived_values
-        Arel.sql [
-          derived_table_name,
-          values_alias
-        ].join('.')
+        main_table[:id].eq derived_table[foreign_key]
       end
 
       def where_condition
-        derived_values.matches Arel.sql(values)
+        derived_table[values_alias].matches Arel.sql(values)
       end
     end
   end

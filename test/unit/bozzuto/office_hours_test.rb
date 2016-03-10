@@ -16,8 +16,8 @@ module Bozzuto
               @page_content = "<h2>\r\n\t<strong>Address</strong></h2>\r\n<p>\r\n\t<span style=\"font-size: 12px;\">The Fenestra Apartments<br />\r\n\t20 Maryland Avenue<br />\r\n\tRockville, MD&nbsp; 20850<br />\r\n\t&nbsp;301.279.0999</span></p>\r\n<h2>\r\n\t<strong>Office hours</strong></h2>\r\n<p>\r\n\t<span style=\"font-size: 12px;\">Monday-Thursday 9:00am-6:00pm</span></p>\r\n<p>\r\n\t<span style=\"font-size: 12px;\">Friday 8:00-5:00</span></p>\r\n<p>\r\n\t<span style=\"font-size: 12px;\">Saturday 10:00am-5:00pm</span></p>\r\n<h2>\r\n\t<span style=\"font-size: 12px;\">Sunday 12:00pm-5:00pm</span><br />\r\n\t<br />\r\n\t<br />\r\n\tLooking for answers?&nbsp; We are here to help.</h2>\r\n<p>\r\n\t<span style=\"font-size: 12px;\">We are committed to serving our customers and value your feedback.&nbsp; If you are a current resident and have a question or concern please contact us.</span></p>\r\n<p>\r\n\t&nbsp;</p>\r\n<p>\r\n\t<span style=\"font-size: 12px;\"><strong>Property Manager:</strong><br />\r\n\t<span style=\"color:#696969;\">Kelly C Jones<br />\r\n\t301-279-0999</span></span><br />\r\n\t<a href=\"mailto:kjones@bozzuto.com\"><span data-sheets-userformat=\"[null,null,2111744,null,null,null,null,null,null,null,null,0,null,null,[null,2,8684683],&quot;calibri,arial,sans,sans-serif&quot;,11,null,null,null,null,null,null,null,[null,0,3,0,3]]\" data-sheets-value=\"[null,2,&quot;kjones@bozzuto.com                                              &quot;]\" style=\"font-size:110%;font-family:calibri,arial,sans,sans-serif;color:#84848b;\">kjones@bozzuto.com</span></a></p>\r\n<p>\r\n\t&nbsp;</p>\r\n<p>\r\n\t<span style=\"font-size: 12px;\"><strong>Regional Manager:</strong></span></p>\r\n<p>\r\n\tPatrice Gorgone</p>\r\n<p>\r\n\t<span style=\"font-size: 12px;\"><a href=\"mailto:pgorgone@bozzuto.com\">pgorgone@bozzuto.com</a></span></p>\r\n<p>\r\n\t<br />\r\n\t<span style=\"font-size: 12px;\">&nbsp;</span></p>\r\n"
 
               @page = PropertyContactPage.create(
-                :apartment_community => @property,
-                :content             => @page_content
+                property: @property,
+                content:  @page_content
               )
             end
 
@@ -47,8 +47,8 @@ module Bozzuto
               @page_content = "<strong>Office hours</strong></h2>\r\n<p>\r\n\t<span style=\"font-size: 12px;\">Friday-Sunday 11:00am-4:00pm</span></p>\r\n<p>\r\n\t<span style=\"font-size: 12px;\">Monday-Wednesday 8:00-6:00</span></p>\r\n<p>\r\n\t<span style=\"font-size: 12px;\">Thursday 10:00am-5:00pm</span></p>"
 
               @page = PropertyContactPage.create(
-                :apartment_community => @property,
-                :content             => @page_content
+                property: @property,
+                content:  @page_content
               )
             end
 
@@ -78,8 +78,8 @@ module Bozzuto
               @page_content = "<h3>\r\n\t&nbsp;</h3>\r\n<h2>\r\n\t<strong>Address</strong></h2>\r\n<p>\r\n\t<span style=\"font-size:12px;\">Halstead Dulles</span></p>\r\n<p>\r\n\t<span style=\"font-size:12px;\">13161 Fox Hunt Lane</span></p>\r\n<p>\r\n\t<span style=\"font-size:12px;\">Herndon, VA 20171</span></p>\r\n<p>\r\n\t<span style=\"font-size:12px;\"><span style=\"color: rgb(68, 68, 68); font-family: arial;\">(703)&nbsp;</span>787-0707&nbsp;</span></p>\r\n<h2>\r\n\t<strong>Office Hours</strong></h2>\r\n<p>\r\n\t<span style=\"font-size: 12px;\">Monday-Thursday: 9:<span scayt_word=\"00am-6\" scaytid=\"39\">00am-6</span>:<span scayt_word=\"00pm\" scaytid=\"40\">00pm</span><br />\r\n\tFriday: 8:<span scayt_word=\"00am-5\" scaytid=\"46\">00am-5</span>:<span scayt_word=\"00pm\" scaytid=\"42\">00pm</span><br />\r\n\tSaturday: 10:<span scayt_word=\"00am-5\" scaytid=\"47\">00am-5</span>:<span scayt_word=\"00pm\" scaytid=\"43\">00pm</span></span><br />\r\n\t<span style=\"font-size: 12px;\">Sunday: 12:<span scayt_word=\"00pm-5\" scaytid=\"48\">00pm-5</span>:<span scayt_word=\"00pm\" scaytid=\"44\">00pm</span></span></p>\r\n<h2>\r\n\t<strong>Directions</strong></h2>\r\n<p>\r\n\t<span style=\"font-size:12px;\">From I 495:<br />\r\n\tTake Dulles Toll Road (Route 267) West to Exit 10 (Herndon/Chantilly).<br />\r\n\tMake a Left onto Centreville Road.<br />\r\n\tGo to 2nd stoplight and make a left onto Sunrise Valley Dr.<br />\r\n\tMake a Right onto Fox Mill Lane.<br />\r\n\tMake a Left onto Fox Hunt Lane into Halstead Dulles Leasing Center</span><br />\r\n\t&nbsp;</p>\r\n<h2>\r\n\t<strong>Looking for answers?&nbsp; We are here to help.</strong></h2>\r\n<p>\r\n\t<span style=\"font-size: 12px;\">We are committed to serving our customers and value your feedback.&nbsp; If you are a current resident and have a question or concern please contact us.</span></p>\r\n<p>\r\n\t&nbsp;</p>\r\n<p>\r\n\t<span style=\"font-size: 12px;\"><strong>Property Manager:&nbsp;</strong></span></p>\r\n<p>\r\n\t<span style=\"font-size: 12px;\">Sarah Pelletier<br />\r\n\t<a href=\"mailto:spelletier@bozzuto.com\">spelletier@bozzuto.com</a></span></p>\r\n<p>\r\n\t&nbsp;</p>\r\n<p>\r\n\t<span style=\"font-size: 12px;\"><strong>Regional Portfolio Manager:</strong></span></p>\r\n<p>\r\n\t<span style=\"font-size: 12px;\">Jo Gavigan</span></p>\r\n<p>\r\n\t<span style=\"font-size: 12px;\"><a href=\"mailto:ckalinsky@bozzuto.com\">jgavigan@bozzuto.com</a></span></p>\r\n"
 
               @page = PropertyContactPage.create(
-                :apartment_community => @property,
-                :content             => @page_content
+                property: @property,
+                content:  @page_content
               )
             end
 

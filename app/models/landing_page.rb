@@ -7,18 +7,23 @@ class LandingPage < ActiveRecord::Base
   has_and_belongs_to_many :home_communities, join_table: :home_communities_landing_pages
 
   has_and_belongs_to_many :featured_apartment_communities,
-    :association_foreign_key => :apartment_community_id,
-    :class_name              => 'ApartmentCommunity',
-    :join_table              => :featured_apartment_communities_landing_pages
+    association_foreign_key: :apartment_community_id,
+    class_name:              'ApartmentCommunity',
+    join_table:              :featured_apartment_communities_landing_pages
 
   has_many :popular_property_orderings, -> { includes(:property).order('position ASC, RAND(NOW())') },
-    :class_name => 'LandingPagePopularOrdering',
-    :dependent  => :destroy
+    class_name: 'LandingPagePopularOrdering',
+    dependent:  :destroy
 
-  has_many :popular_properties, -> { order('landing_page_popular_orderings.position ASC, RAND(NOW())') },
-    :class_name => 'Property',
-    :through    => :popular_property_orderings,
-    :source     => :property
+  has_many :popular_apartments, -> { order('landing_page_popular_orderings.position ASC, RAND(NOW())') },
+    through:     :popular_property_orderings,
+    source:      :property,
+    source_type: 'ApartmentCommunity'
+
+  has_many :popular_homes, -> { order('landing_page_popular_orderings.position ASC, RAND(NOW())') },
+    through:     :popular_property_orderings,
+    source:      :property,
+    source_type: 'HomeCommunity'
 
   has_and_belongs_to_many :projects, join_table: :landing_pages_projects
 

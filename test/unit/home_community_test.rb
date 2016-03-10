@@ -19,6 +19,7 @@ class HomeCommunityTest < ActiveSupport::TestCase
     should have_many(:home_neighborhoods)
     should have_many(:home_neighborhood_memberships)
     
+    should accept_nested_attributes_for(:conversion_configuration)
 
     describe "callbacks" do
       before do

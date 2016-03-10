@@ -4,14 +4,14 @@ module Bozzuto::Searches
       # Full searches return results matching all the given criteria at a minimum.
       #
       # SQL output given the following:
-      #   main_class       == Property
+      #   main_class       == ApartmentCommunity
       #   associated_class == ApartmentFloorPlan
       #   foreign_key      == 'apartment_community_id'
       #   search_column    == 'floor_plan_group_id'
       #
-      #   properties.id IN (
-      #     SELECT properties.id
-      #     FROM properties
+      #   apartment_communities.id IN (
+      #     SELECT apartment_communities.id
+      #     FROM apartment_communities
       #     INNER JOIN (
       #       SELECT apartment_community_id, GROUP_CONCAT(
       #             DISTINCT floor_plan_group_id
@@ -20,7 +20,7 @@ module Bozzuto::Searches
       #       FROM apartment_floor_plans
       #       GROUP BY apartment_community_id
       #     ) AS associated
-      #     ON associated.apartment_community_id = properties.id
+      #     ON associated.apartment_community_id = apartment_communities.id
       #     WHERE associated.search_values
       #     REGEXP ?
       #   )
@@ -48,10 +48,7 @@ module Bozzuto::Searches
       end
 
       def where_condition
-        Arel.sql [
-          derived_values,
-          values
-        ].join(' REGEXP ')
+        Arel::Nodes::InfixOperation.new('REGEXP', derived_table[values_alias], Arel.sql(values))
       end
     end
   end

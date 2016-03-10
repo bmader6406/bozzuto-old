@@ -2,7 +2,7 @@ module Bozzuto::Searches
   module Full
     class FloorPlanSearch < Search
       def main_class
-        Property
+        ApartmentCommunity
       end
 
       def associated_class

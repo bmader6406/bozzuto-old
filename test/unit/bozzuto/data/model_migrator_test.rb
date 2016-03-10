@@ -38,12 +38,12 @@ class Bozzuto::Data::ModelMigratorTest < ActiveSupport::TestCase
           project1.id.should        == 10
           project1.section.should   == @section
           project1.slideshow.should == @slideshow1
-          project1.slugs.should match_array(property1_slugs)
+          project1.slugs.map(&:slug).should match_array(property1_slugs.map(&:slug))
 
           project2.id.should        == 20
           project2.section.should   == @section
           project2.slideshow.should == @slideshow2
-          project2.slugs.should match_array(property2_slugs)
+          project2.slugs.map(&:slug).should match_array(property2_slugs.map(&:slug))
         end
 
         @slideshow1.property_type.should == 'Property'

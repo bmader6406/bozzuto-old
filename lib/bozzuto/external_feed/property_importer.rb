@@ -81,8 +81,9 @@ module Bozzuto::ExternalFeed
     def office_hours
       @office_hours ||= property_data.office_hours.map do |office_hour_data|
         ::OfficeHour.find_or_initialize_by(
-          property_id: property.id,
-          day:         office_hour_data.day
+          property_id:   property.id,
+          property_type: 'ApartmentCommunity',
+          day:           office_hour_data.day
         ).tap { |office_hour| office_hour.attributes = office_hour_data.database_attributes }
       end
     end

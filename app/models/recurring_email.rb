@@ -27,7 +27,7 @@ class RecurringEmail < ActiveRecord::Base
   end
 
   def properties
-    Property.published.where(id: property_ids)
+    ApartmentCommunity.published.where(id: property_ids)
   end
 
   def send!

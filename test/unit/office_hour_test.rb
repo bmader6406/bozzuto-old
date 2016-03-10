@@ -37,7 +37,7 @@ class OfficeHourTest < ActiveSupport::TestCase
       before do
         @community = ApartmentCommunity.make
         @subject   = OfficeHour.new(
-          :property_id      => @community.id,
+          :property         => @community,
           :day              => 1,
           :closed           => true,
           :opens_at         => nil,

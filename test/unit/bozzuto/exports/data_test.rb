@@ -94,8 +94,8 @@ module Bozzuto::Exports
             :text_3   => 'has red face'
           )
 
-          PropertyFeature.make(:name => 'Feature Uno', :properties => [@community])
-          PropertyFeature.make(:name => 'Feature Due', :properties => [@community])
+          PropertyFeature.make(:name => 'Feature Uno', :apartment_communities => [@community])
+          PropertyFeature.make(:name => 'Feature Due', :apartment_communities => [@community])
 
           @slideshow = PropertySlideshow.make(:property => @community)
           @slide     = PropertySlide.make(:property_slideshow => @slideshow)

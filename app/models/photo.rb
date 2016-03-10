@@ -1,14 +1,13 @@
 class Photo < ActiveRecord::Base
 
-  acts_as_list :scope => :photo_group_id
+  acts_as_list scope: :photo_group_id
 
   belongs_to :photo_group
-  belongs_to :property
+  belongs_to :property, polymorphic: true
 
   validates_presence_of :title, :photo_group, :property
 
-  before_update :move_to_new_list,
-                :if => proc { |p| p.photo_group_id_changed? || p.property_id_changed? }
+  before_update :move_to_new_list, if: -> (photo) { photo.photo_group_id_changed? || photo.property_id_changed? }
 
   default_scope -> { includes(:photo_group) }
 
@@ -17,10 +16,10 @@ class Photo < ActiveRecord::Base
   scope :for_mobile, -> { where(show_to_mobile: true) }
 
   has_attached_file :image,
-                    :url             => '/system/:class/:id/photo_:id_:style.:extension',
-                    :styles          => { :resized => '870x375#', :thumb => '55x55#', :mobile => '300>' },
-                    :default_style   => :resized,
-                    :convert_options => { :all => '-quality 80 -strip' }
+                    url:             '/system/:class/:id/photo_:id_:style.:extension',
+                    styles:          { resized: '870x375#', thumb: '55x55#', mobile: '300>' },
+                    default_style:   :resized,
+                    convert_options: { all: '-quality 80 -strip' }
 
   do_not_validate_attachment_file_type :image
 
@@ -57,8 +56,9 @@ class Photo < ActiveRecord::Base
     old_photo_group = PhotoGroup.find(changed_attributes['photo_group_id'] || photo_group_id)
     new_photo_group = photo_group
 
-    old_property = Property.find(changed_attributes['property_id'] || property_id)
-    new_property = property
+    old_property_klass = (changed_attributes['property_type'] || property_type).constantize
+    old_property       = old_property_klass.find(changed_attributes['property_id'] || property_id)
+    new_property       = property
 
     # remove from old list
     self.photo_group = old_photo_group

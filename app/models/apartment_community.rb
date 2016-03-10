@@ -1,8 +1,11 @@
-class ApartmentCommunity < Community
+class ApartmentCommunity < ActiveRecord::Base
+  extend FriendlyId
+  extend Bozzuto::Neighborhoods::ListingImage
+
+  include Bozzuto::Model::Property
+  include Bozzuto::Model::Community
   include Bozzuto::ExternalFeed::Model
   include Bozzuto::ApartmentFloorPlans::HasCache
-  extend  Bozzuto::Neighborhoods::ListingImage
-  extend FriendlyId
 
   self.external_cms_attributes = [
     :title,
@@ -14,7 +17,8 @@ class ApartmentCommunity < Community
   ]
 
   def self.ransackable_scopes(auth_object = nil)
-    super + [
+    [
+      :in_state,
       :with_min_price,
       :with_max_price,
       :with_any_floor_plan_groups,
@@ -26,57 +30,49 @@ class ApartmentCommunity < Community
     ]
   end
 
-  has_neighborhood_listing_image :neighborhood_listing_image, :required => false
+  friendly_id :title, use: :history
+
+  has_neighborhood_listing_image :neighborhood_listing_image, required: false
 
   after_save    :update_caches
   after_destroy :update_caches
 
-  has_many :floor_plans,
-           :class_name => 'ApartmentFloorPlan',
-           :dependent  => :destroy
-
+  has_many :floor_plans, class_name: 'ApartmentFloorPlan', dependent: :destroy
   has_many :floor_plan_groups, -> { uniq },
-           :class_name => 'ApartmentFloorPlanGroup',
-           :through    => :floor_plans
+           class_name: 'ApartmentFloorPlanGroup',
+           through:    :floor_plans
 
-  has_many :featured_floor_plans, -> { where(featured: true).order(bedrooms: :asc, position: :asc) },
-           :class_name => 'ApartmentFloorPlan'
+  has_many :featured_floor_plans, -> { where(featured: true).order(bedrooms: :asc, position: :asc) }, class_name: 'ApartmentFloorPlan'
 
   has_many :under_construction_leads, -> { order(created_at: :desc) }
 
-  has_one :mediaplex_tag, :as => :trackable
+  has_one :mediaplex_tag, as: :trackable
 
-  has_one :contact_configuration,
-          :class_name => 'ApartmentContactConfiguration'
+  has_one :contact_configuration, class_name: 'ApartmentContactConfiguration'
 
-  has_one :neighborhood,
-          :foreign_key => :featured_apartment_community_id,
-          :dependent   => :nullify
+  has_one :neighborhood, foreign_key: :featured_apartment_community_id, dependent: :nullify
 
-  has_many :neighborhood_memberships,
-           :inverse_of => :apartment_community,
-           :dependent  => :destroy
-
-  has_many :area_memberships,
-           :inverse_of => :apartment_community,
-           :dependent  => :destroy
+  has_many :neighborhood_memberships, inverse_of: :apartment_community, dependent: :destroy
+  has_many :area_memberships,         inverse_of: :apartment_community, dependent: :destroy
 
   accepts_nested_attributes_for :mediaplex_tag, :contact_configuration
 
-  validates_presence_of :lead_2_lease_email, :if => lambda { |community| community.show_lead_2_lease }
+  validates_presence_of :lead_2_lease_email, if: :show_lead_2_lease?
 
-  validates_inclusion_of :included_in_export, :in => [true, false]
+  validates_inclusion_of :included_in_export, in: [true, false]
+
+  serialize :office_hours
 
   scope :included_in_export,   -> { where(included_in_export: true) }
   scope :found_in_latest_feed, -> { where(found_in_latest_feed: true) }
 
-  scope :with_min_price, -> (price) { 
-    joins("JOIN apartment_floor_plan_caches AS cache ON cache.cacheable_id = properties.id AND cache.cacheable_type = 'Property'")
+  scope :with_min_price, -> (price) {
+    joins("JOIN apartment_floor_plan_caches AS cache ON cache.cacheable_id = apartment_communities.id AND cache.cacheable_type = 'ApartmentCommunity'")
       .where('cache.max_price >= ?', price.to_i)
   }
 
   scope :with_max_price, -> (price) {
-    joins("JOIN apartment_floor_plan_caches AS cache ON cache.cacheable_id = properties.id AND cache.cacheable_type = 'Property'")
+    joins("JOIN apartment_floor_plan_caches AS cache ON cache.cacheable_id = apartment_communities.id AND cache.cacheable_type = 'ApartmentCommunity'")
       .where('cache.min_price <= ?', price.to_i)
   }
 
@@ -87,7 +83,7 @@ class ApartmentCommunity < Community
   scope :having_all_floor_plan_groups, -> (ids) { where(Bozzuto::Searches::Full::FloorPlanSearch.new(ids).sql) }
   scope :having_all_property_features, -> (ids) { where(Bozzuto::Searches::Full::FeatureSearch.new(ids).sql) }
 
-  scope :featured, -> { where("properties.id IN (SELECT apartment_community_id FROM apartment_floor_plans WHERE featured = ?)", true) }
+  scope :featured, -> { joins(:apartment_floor_plans).where(apartment_floor_plans: { featured: true }) }
 
   scope :under_construction,     -> { where(under_construction: true) }
   scope :not_under_construction, -> { where(under_construction: false) }
@@ -111,10 +107,9 @@ class ApartmentCommunity < Community
     self.core_id           = other_community.core_id
 
     other_community.slugs.update_all(sluggable_id: id)
+    other_community.update_attributes(external_cms_id: nil, external_cms_type: nil)
 
-    external_cms_attributes.each { |attr|
-      self.send("#{attr}=", other_community.send(attr))
-    }
+    external_cms_attributes.each { |attr| self.send("#{attr}=", other_community.send(attr)) }
 
     save
 

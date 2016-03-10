@@ -1,13 +1,9 @@
 class Video < ActiveRecord::Base
+  acts_as_list scope: :property
 
-  acts_as_list :scope => :property
+  belongs_to :property, polymorphic: true
 
-  belongs_to :property
-  belongs_to :apartment_community, :foreign_key => :property_id
-  belongs_to :home_community,      :foreign_key => :property_id
-
-  validates :url,
-            presence: true
+  validates :url, presence: true
 
   has_attached_file :image,
     :url             => '/system/:class/:id/video_:id_:style.:extension',

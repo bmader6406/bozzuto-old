@@ -1,8 +1,10 @@
 module Bozzuto::Searches
   module Full
     class FeatureSearch < Search
+      include Bozzuto::Searches::PolymorphicJoin
+
       def main_class
-        Property
+        ApartmentCommunity
       end
 
       def foreign_key
@@ -16,7 +18,7 @@ module Bozzuto::Searches
       private
 
       def associated_table
-        @associated_table ||= Arel::Table.new(:properties_property_features)
+        @associated_table ||= Arel::Table.new(:property_feature_attributions)
       end
     end
   end

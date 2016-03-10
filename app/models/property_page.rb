@@ -1,10 +1,15 @@
 class PropertyPage < ActiveRecord::Base
   self.abstract_class = true
 
-  belongs_to :property
-  belongs_to :apartment_community, :foreign_key => 'property_id'
-  belongs_to :home_community,      :foreign_key => 'property_id'
-  belongs_to :project,             :foreign_key => 'property_id'
+  belongs_to :property, polymorphic: true
 
-  validates_presence_of :property_id
+  validates_presence_of :property
+
+  def apartment_community
+    property if property.is_a? ApartmentCommunity
+  end
+
+  def home_community
+    property if property.is_a? HomeCommunity
+  end
 end

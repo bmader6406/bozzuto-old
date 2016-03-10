@@ -82,8 +82,8 @@ module Bozzuto::Exports::Formats
             :description  => 'Parking available both above and below ground.'
           )
 
-          @feature1 = PropertyFeature.make(:name => 'Feature Uno', :position => 1, :properties => [@community])
-          @feature2 = PropertyFeature.make(:name => 'Feature Due', :position => 2, :properties => [@community])
+          @feature1 = PropertyFeature.make(:name => 'Feature Uno', :position => 1, :apartment_communities => [@community])
+          @feature2 = PropertyFeature.make(:name => 'Feature Due', :position => 2, :apartment_communities => [@community])
 
           @slideshow  = PropertySlideshow.make(:property => @community)
           @slide      = PropertySlide.make(:property_slideshow => @slideshow)

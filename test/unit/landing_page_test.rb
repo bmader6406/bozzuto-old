@@ -13,7 +13,8 @@ class LandingPageTest < ActiveSupport::TestCase
     should belong_to(:state)
     should belong_to(:promo)
     should have_many(:popular_property_orderings)
-    should have_many(:popular_properties).through(:popular_property_orderings)
+    should have_many(:popular_apartments).through(:popular_property_orderings)
+    should have_many(:popular_homes).through(:popular_property_orderings)
 
     should accept_nested_attributes_for(:popular_property_orderings)
 
@@ -40,8 +41,8 @@ class LandingPageTest < ActiveSupport::TestCase
         @page.apartment_communities << @community1
         @page.apartment_communities << @community2
 
-        @page.popular_properties << @community1
-        @page.popular_properties << @community2
+        @page.popular_apartments << @community1
+        @page.popular_apartments << @community2
       end
 
       context 'with custom_sort_popular_properties true' do

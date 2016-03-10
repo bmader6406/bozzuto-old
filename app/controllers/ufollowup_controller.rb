@@ -5,17 +5,17 @@ class UfollowupController < ApplicationController
 
   skip_before_filter :find_section,
                      :find_news_and_press_section,
-                     :only => :show
+                     only: :show
 
   def show
     @email     = params[:email]
-    @community = Property.friendly.find(params[:apartment_community_id])
+    @community = ApartmentCommunity.friendly.find(params[:apartment_community_id])
   end
 
   def thank_you
     @email = cookies.delete('ufollowup_email')
 
-    render :thank_you, :layout => 'page'
+    render :thank_you, layout: 'page'
   end
 
 

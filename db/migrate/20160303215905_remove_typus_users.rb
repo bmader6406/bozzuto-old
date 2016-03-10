@@ -1,5 +1,5 @@
 class RemoveTypusUsers < ActiveRecord::Migration
-  def change
+  def up
     drop_table :typus_users
   end
 

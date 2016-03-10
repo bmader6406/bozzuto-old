@@ -59,7 +59,7 @@
               <% popular_properties.take(3).compact.each do |property| %>
                 <div class="section <%= popular_property_class(property) %>">
                   <h4>
-                    <%= link_to property.short_name, property_path(property) %>
+                    <%= link_to property.short_name, property %>
                   </h4>
                   <% if property.overview_bullet_1.present? %>
                     <p><%= property.overview_bullet_1 %></p>
