@@ -116,7 +116,7 @@ module Bozzuto
       end
 
       def logger
-        @logger ||= Logger.new($stdout)
+        @logger ||= Logger.new(Rails.env.test? ? '/dev/null' : $stdout)
       end
 
       def log(message, type = :info)
