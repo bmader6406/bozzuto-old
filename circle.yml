@@ -9,4 +9,4 @@ checkout:
     - cp config/app_config.yml.example config/app_config.yml
 test:
   override:
-    - bundle exec rake test:coverage
+    - bundle exec rake test:full

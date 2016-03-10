@@ -93,7 +93,15 @@ Visit `localhost:3000` in the browser. :rocket:
 
 ### Run the suite
 
-The default rake task will execute the entire test suite:
+The `test:full` rake task will execute the entire test suite:
+
+```bash
+$ bundle exec rake test:full
+```
+
+### Coverage
+
+The test suite can be run with coverage:
 
 ```bash
 $ bundle exec rake test:coverage

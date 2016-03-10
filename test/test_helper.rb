@@ -6,11 +6,7 @@ if ENV['COV']
   SimpleCov.minimum_coverage 100
 
   SimpleCov.start 'rails' do
-    add_filter '/app/controllers/admin'
-    add_filter '/app/helpers/admin_helper'
-    add_filter '/app/models/asset'
-    add_filter '/app/models/attachment_file'
-    add_filter '/app/models/picture'
+    add_filter '/app/admin'
     add_filter '/vendor'
   end
 end
