@@ -64,7 +64,58 @@ h3 + .panel_contents > .panel_contents_text {
   padding-top: 0;
 }
 
-// custom chosen styles
+// custom Chosen styles
+.chosen-input {
+  -webkit-appearance: none;
+  font-size: 15px;
+  min-width: 25%;
+  max-width: 100%;
+}
+
+.chosen-input[multiple] {
+  -webkit-appearance: none;
+  width: 100%;
+}
+
+.chosen-container-multi {
+  .chosen-choices {
+    background: #fff;
+    border: 1px solid #d3d3d3;
+    border-radius: 3px;
+    box-shadow: inset 1px 1px 1px rgba(34, 34, 34, 0.08);
+    padding: 4px 8px;
+    transition: 0.35s border-color, 0.35s box-shadow;
+
+    li {
+      &.search-choice {
+        background: #fafafa;
+        border-color: #d3d3d3;
+        padding: 6px 28px 5px 8px;
+
+        .search-choice-close {
+          margin-top: -6px;
+          right: 8px;
+          top: 50%;
+        }
+      }
+
+      &.search-field input[type="text"] {
+        height: 30px;
+      }
+    }
+  }
+
+  &.chosen-container-active {
+    .chosen-choices {
+      border-color: #036447;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      outline: 0;
+      transition: 0.15s border-color, 0.15s box-shadow;
+    }
+  }
+}
+
 .chosen-container {
   .chosen-single {
     background: #fafafa;
@@ -97,6 +148,25 @@ h3 + .panel_contents > .panel_contents_text {
       transform: translateY(-50%);
     }
   }
+
+  .chosen-drop {
+    .chosen-results {
+      li {
+        border-radius: 3px;
+        padding-bottom: 8px;
+        padding-top: 8px;
+      }
+    }
+
+    .chosen-search {
+      padding-bottom: 8px;
+
+      input[type="text"] {
+        border-color: #d3d3d3;
+        border-radius: 3px;
+      }
+    }
+  }
 }
 
 .chosen-container-active.chosen-with-drop {
@@ -113,9 +183,11 @@ h3 + .panel_contents > .panel_contents_text {
 
 .chosen-container {
   .chosen-results {
-    li.highlighted {
-      background-color: #036447;
-      background-image: none;
+    li {
+      &.highlighted {
+        background-color: #036447;
+        background-image: none;
+      }
     }
   }
 }
@@ -127,7 +199,7 @@ h3 + .panel_contents > .panel_contents_text {
   font-size: 13px;
 }
 
-//
+// add date icon to date picker fields
 .bootstrap-date,
 .bootstrap-datetime {
   background: #fff image-url('active_material/icons/event.svg') 8px 50% no-repeat !important;
