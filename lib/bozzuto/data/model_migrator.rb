@@ -6,30 +6,37 @@ module Bozzuto
         has_many
       )
 
+      LOG_COLORS = {
+        info:    34,
+        success: 32,
+        warn:    33,
+        failure: 31
+      }
+
       attr_reader :origin_class,
                   :target_class,
                   :config,
                   :origin_scope,
                   :target_scope,
                   :records,
-                  :count
+                  :record_count
 
       attr_accessor :success_count, :failure_count
 
       def initialize(origin_class:, target_class:, **config)
-        @origin_class = origin_class
-        @target_class = target_class
-        @config       = config
-        @origin_scope = config.fetch(:origin_scope, origin_class.all)
-        @target_scope = config.fetch(:target_scope, target_class.all)
-        @records      = config.fetch(:records, origin_scope)
-        @count        = origin_scope.size
+        @origin_class  = origin_class
+        @target_class  = target_class
+        @config        = config
+        @origin_scope  = config.fetch(:origin_scope, origin_class.all)
+        @target_scope  = config.fetch(:target_scope, target_class.all)
+        @records       = config.fetch(:records, origin_scope)
+        @record_count  = origin_scope.size
+        @success_count = 0
+        @failure_count = 0
       end
 
       def migrate
-        reset_counts!
-
-        log "Beginning migration of #{count} #{origin_class} records to #{target_class} records..", :success
+        log "Beginning migration of #{record_count} #{origin_class} records to #{target_class} records..", :success
 
         records.each do |origin|
           target_scope.find_or_initialize_by(id: origin.id) do |target|
@@ -46,11 +53,6 @@ module Bozzuto
       end
 
       private
-
-      def reset_counts!
-        self.success_count = 0
-        self.failure_count = 0
-      end
 
       def populate_fields(from:, to:)
         target_attributes_for(from).each do |(field, value)|
@@ -117,14 +119,8 @@ module Bozzuto
         @logger ||= Logger.new($stdout)
       end
 
-      def log(message, type = nil)
-        color = {
-          success: 32,
-          warn:    33,
-          failure: 31
-        }.fetch(type, 34)
-
-        logger.debug("\e[#{color}m#{message}\e[0m")
+      def log(message, type = :info)
+        logger.debug("\e[#{LOG_COLORS.fetch(type)}m#{message}\e[0m")
       end
 
       def validate(target, origin)
@@ -157,7 +153,7 @@ module Bozzuto
       end
 
       def migration_summary
-        "*** MIGRATION RESULTS:  \e[32m#{success_count} successful\e[0m, \e[31m#{failure_count} failed\e[0m. ***"
+        "*** MIGRATION RESULTS:  \e[#{LOG_COLORS[:success]}m#{success_count} successful\e[0m, \e[#{LOG_COLORS[:failure]}m#{failure_count} failed\e[0m. ***"
       end
     end
   end
