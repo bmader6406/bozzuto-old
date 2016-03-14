@@ -64,7 +64,8 @@ $(function() {
 
   // boot chosen selects
   var chosenOpts = {
-    "allow_single_deselect": true
+    allow_single_deselect: true,
+    width: '100%'
   };
 
   $(".chosen-input").chosen(chosenOpts);
