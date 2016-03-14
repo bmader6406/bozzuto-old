@@ -202,3 +202,58 @@ h3 + .panel_contents > span {
   background: #fff image-url('active_material/icons/event.svg') 8px 50% no-repeat !important;
   padding-left: 40px !important;
 }
+
+// Scopes toggle
+.scopes {
+  font-size: 0;
+}
+
+.scope {
+  margin: 0;
+
+  &:first-child a {
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+  }
+
+  &:last-child a {
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+
+  + .scope a {
+    border-right-width: 1px;
+  }
+
+  a {
+    border: 1px solid #d3d3d3;
+    border-right-width: 0;
+    display: inline-block;
+    line-height: 40px;
+    padding: 0 8px;
+
+    &:focus,
+    &:hover {
+      color: inherit;
+    }
+  }
+
+  &.selected {
+    + .scope a {
+      border-left: none;
+    }
+
+    a {
+      border: none;
+      color: #fff;
+      font-weight: 400;
+      line-height: 42px;
+
+      &:focus,
+      &:hover {
+        cursor: default;
+        text-decoration: none;
+      }
+    }
+  }
+}
