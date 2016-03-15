@@ -1,35 +1,38 @@
-module Bozzuto::ExternalFeed
-  module OccupancyParsers
-    class RentCafe < StandardParser
-      OCCUPIED_STATUSES = [
-        'Down',
-        'Excluded',
-        'Model',
-        'Notice Rented',
-        'Occupied No Notice',
-        'Vacant Rented Not Ready',
-        'Vacant Rented Ready',
-        'Waitlist',
-        'Admin',
-        'Do Not Show'
-      ]
+module Bozzuto
+  module ExternalFeed
+    module OccupancyParsers
+      class RentCafe < StandardParser
 
-      def vacate_date
-        @vacate_date ||= Chronic.parse(string_at(xml, vacate_date_xpath)).try(:to_date)
-      end
+        OCCUPIED_STATUSES = [
+          'Down',
+          'Excluded',
+          'Model',
+          'Notice Rented',
+          'Occupied No Notice',
+          'Vacant Rented Not Ready',
+          'Vacant Rented Ready',
+          'Waitlist',
+          'Admin',
+          'Do Not Show'
+        ]
 
-      private
+        def vacate_date
+          @vacate_date ||= Chronic.parse(string_at(xml, vacate_date_xpath)).try(:to_date)
+        end
 
-      def vacancy_class_xpath
-        './UnitLeasedStatusDescription'
-      end
+        private
 
-      def vacate_date_xpath
-        './DateAvailable'
-      end
+        def vacancy_class_xpath
+          './UnitLeasedStatusDescription'
+        end
 
-      def occupied?
-        OCCUPIED_STATUSES.include?(vacancy_class_content) || (vacancy_class_content == 'Notice Unrented' && vacate_date.nil?)
+        def vacate_date_xpath
+          './DateAvailable'
+        end
+
+        def occupied?
+          OCCUPIED_STATUSES.include?(vacancy_class_content) || (vacancy_class_content == 'Notice Unrented' && vacate_date.nil?)
+        end
       end
     end
   end

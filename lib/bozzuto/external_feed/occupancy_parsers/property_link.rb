@@ -1,23 +1,26 @@
-module Bozzuto::ExternalFeed
-  module OccupancyParsers
-    class PropertyLink < StandardParser
-      UNOCCUPIED_STATUSES = [
-        'on notice',
-        'available'
-      ]
+module Bozzuto
+  module ExternalFeed
+    module OccupancyParsers
+      class PropertyLink < StandardParser
 
-      private
+        UNOCCUPIED_STATUSES = [
+          'on notice',
+          'available'
+        ]
 
-      def vacancy_class_xpath
-        './Unit/Information/UnitLeasedStatus'
-      end
+        private
 
-      def vacate_date_xpath
-        './Availability/MadeReadyDate'
-      end
+        def vacancy_class_xpath
+          './Unit/Information/UnitLeasedStatus'
+        end
 
-      def occupied?
-        UNOCCUPIED_STATUSES.exclude?(vacancy_class_content)
+        def vacate_date_xpath
+          './Availability/MadeReadyDate'
+        end
+
+        def occupied?
+          UNOCCUPIED_STATUSES.exclude?(vacancy_class_content)
+        end
       end
     end
   end
