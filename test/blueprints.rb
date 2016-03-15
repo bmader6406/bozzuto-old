@@ -552,6 +552,11 @@ PropertyToursPage.blueprint do
   meta_keywords { Faker::Lorem.words(6) * ' ' }
 end
 
+PropertyFeedImport.blueprint do
+  type "psi"
+  file { File.new("test/files/psi.xml") }
+end
+
 RecurringEmail.blueprint do
   email_address { Faker::Internet.email }
   recurring     { false }

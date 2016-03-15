@@ -74,7 +74,6 @@ module Bozzuto
 
       private
 
-      #:nocov:
       def touch_tmp_file
         FileUtils.touch(tmp_file)
       end
@@ -86,7 +85,6 @@ module Bozzuto
       def rm_lock_file
         ::File.delete(lock_file) if ::File.exists?(lock_file)
       end
-      #:nocov:
     end
   end
 end

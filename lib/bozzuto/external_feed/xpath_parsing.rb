@@ -1,6 +1,7 @@
 module Bozzuto
   module ExternalFeed
     module XpathParsing
+
       def value_at(node, xpath, attribute = nil)
         if attribute
           node.at(xpath).try(:[], attribute)

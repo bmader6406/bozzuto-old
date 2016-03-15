@@ -1296,6 +1296,19 @@ ActiveRecord::Schema.define(version: 20160317124459) do
 
   add_index "property_features_pages", ["property_id"], name: "index_property_features_pages_on_property_id", using: :btree
 
+  create_table "property_feed_imports", force: :cascade do |t|
+    t.string   "type",              limit: 255,   null: false
+    t.string   "state",             limit: 255,   null: false
+    t.string   "file_file_name",    limit: 255
+    t.string   "file_file_size",    limit: 255
+    t.string   "file_content_type", limit: 255
+    t.text     "error",             limit: 65535
+    t.datetime "started_at"
+    t.datetime "finished_at"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
   create_table "property_neighborhood_pages", force: :cascade do |t|
     t.integer  "property_id",      limit: 4,        null: false
     t.text     "content",          limit: 16777215
