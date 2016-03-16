@@ -12,7 +12,7 @@ module OverriddenPathsHelper
 
   %w(url path).each do |type|
     define_method "schedule_tour_community_#{type}" do |property|
-      if property.schedule_tour_url?
+      if property.apartment_community? && property.schedule_tour_url?
         property.schedule_tour_url
       else
         send("contact_community_#{type}", property)

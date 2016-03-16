@@ -17,7 +17,7 @@ module Bozzuto
         include Bozzuto::Mappable
         include Bozzuto::Publishable
 
-        #friendly_id :title, use: :history # TODO Uncomment once all property-types are migrated to their own models
+        friendly_id :title, use: :history
 
         belongs_to :city
 
@@ -46,7 +46,6 @@ module Bozzuto
         validates_presence_of :title, :city
 
         validates_length_of :short_title,       maximum: 22, allow_nil: true
-        validates_length_of :short_description, maximum: 40, allow_nil: true
 
         validates_inclusion_of :brochure_type, in: [USE_BROCHURE_URL, USE_BROCHURE_FILE], allow_nil: true
 

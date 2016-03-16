@@ -56,6 +56,8 @@ module CommunitiesHelper
   end
 
   def schedule_tour_link(community, opts = {})
+    return unless community.apartment_community?
+
     opts.reverse_merge!(:class => 'schedule-tour')
 
     if community.schedule_tour_url?

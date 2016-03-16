@@ -1,7 +1,4 @@
 class ApartmentCommunity < ActiveRecord::Base
-  extend FriendlyId
-  extend Bozzuto::Neighborhoods::ListingImage
-
   include Bozzuto::Model::Property
   include Bozzuto::Model::Community
   include Bozzuto::ExternalFeed::Model
@@ -30,7 +27,7 @@ class ApartmentCommunity < ActiveRecord::Base
     ]
   end
 
-  friendly_id :title, use: :history
+  acts_as_list column: :featured_position
 
   has_neighborhood_listing_image :neighborhood_listing_image, required: false
 
@@ -55,16 +52,29 @@ class ApartmentCommunity < ActiveRecord::Base
   has_many :neighborhood_memberships, inverse_of: :apartment_community, dependent: :destroy
   has_many :area_memberships,         inverse_of: :apartment_community, dependent: :destroy
 
-  accepts_nested_attributes_for :mediaplex_tag, :contact_configuration
+  has_attached_file :hero_image,
+    url:             '/system/:class/:id/:attachment_name/:style.:extension',
+    styles:          { resized: '1020x325#' },
+    default_style:   :resized,
+    convert_options: { all: '-quality 80 -strip' }
+
+  validates_attachment_content_type :hero_image, content_type: /\Aimage\/.*\Z/
 
   validates_presence_of :lead_2_lease_email, if: :show_lead_2_lease?
 
   validates_inclusion_of :included_in_export, in: [true, false]
 
+  validates_length_of :short_description, maximum: 40, allow_nil: true
+
   serialize :office_hours
+
+  before_save :set_featured_postion
+
+  accepts_nested_attributes_for :mediaplex_tag, :contact_configuration
 
   scope :included_in_export,   -> { where(included_in_export: true) }
   scope :found_in_latest_feed, -> { where(found_in_latest_feed: true) }
+  scope :featured_order,       -> { order('featured DESC, featured_position ASC, title ASC') }
 
   scope :with_min_price, -> (price) {
     joins("JOIN apartment_floor_plan_caches AS cache ON cache.cacheable_id = apartment_communities.id AND cache.cacheable_type = 'ApartmentCommunity'")
@@ -168,5 +178,28 @@ class ApartmentCommunity < ActiveRecord::Base
 
   def main_export_community?
     included_in_export? && published?
+  end
+
+  protected
+
+  def scope_condition
+    "#{self.class.table_name}.city_id IN (SELECT id FROM cities WHERE cities.state_id = #{city.state_id}) AND #{self.class.table_name}.featured = 1"
+  end
+
+  def add_to_list_bottom
+    # no-op. this is called after the before_save #set_featured_position callback
+    # on create, which causes a featured_position of 1 to be set by default.
+    # override here to prevent that from happening
+  end
+
+  def set_featured_postion
+    if featured_changed? || new_record?
+      if featured?
+        except = new_record? ? nil : self
+        self.featured_position = bottom_position_in_list(except).to_i + 1
+      else
+        self.featured_position = nil
+      end
+    end
   end
 end
