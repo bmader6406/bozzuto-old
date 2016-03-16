@@ -10,10 +10,6 @@
   <% end %>
 
   <div class="nh-tile-content">
-    <% if community.under_construction? %>
-      <p class="nh-tile-tagline">Coming Soon</p>
-    <% end %>
-
     <%= if_present?(community.neighborhood_description) do |description| %>
       <p class="nh-tile-description">
         <%= description %>

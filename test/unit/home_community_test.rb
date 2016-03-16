@@ -2,13 +2,9 @@ require 'test_helper'
 
 class HomeCommunityTest < ActiveSupport::TestCase
   context 'HomeCommunity' do
-    setup do
-      @community = HomeCommunity.make
-    end
+    subject { HomeCommunity.make }
 
-    subject { @community }
-
-    should_have_neighborhood_listing_image(:neighborhood_listing_image, :required => false)
+    should_have_neighborhood_listing_image(:neighborhood_listing_image, required: false)
 
     should have_many(:homes)
     should have_many(:featured_homes)
@@ -42,7 +38,7 @@ class HomeCommunityTest < ActiveSupport::TestCase
           it "updates the count on its associated areas and neighborhoods" do
             @neighborhood.home_communities_count.should == 2
 
-            subject.update_attributes(:published => false)
+            subject.update_attributes(published: false)
 
             @neighborhood.reload.home_communities_count.should == 1
           end
@@ -64,16 +60,17 @@ class HomeCommunityTest < ActiveSupport::TestCase
       setup do
         @city = City.make
 
-        @community = HomeCommunity.make(:latitude => 0, :longitude => 0, :city => @city)
+        @community = HomeCommunity.make(latitude: 0, longitude: 0, city: @city)
 
         @nearby = (1..2).to_a.map do |i|
-          HomeCommunity.make(:latitude => i, :longitude => i, :city => @city)
+          HomeCommunity.make(latitude: i, longitude: i, city: @city)
         end
 
         @unpublished = HomeCommunity.make(:unpublished,
-                                          :latitude  => 2,
-                                          :longitude => 2,
-                                          :city      => @city)
+          latitude:  2,
+          longitude: 2,
+          city:      @city
+        )
       end
 
       should 'return the closest communities' do
@@ -84,42 +81,40 @@ class HomeCommunityTest < ActiveSupport::TestCase
     context '#show_lasso_form?' do
       context 'lasso account relationship is present' do
         setup do
-          @community.create_lasso_account({
-            :uid        => 'blah',
-            :client_id  => 'blah',
-            :project_id => 'blah'
-          })
+          subject.create_lasso_account(
+            uid:        'blah',
+            client_id:  'blah',
+            project_id: 'blah'
+          )
         end
 
         should 'return true' do
-          assert @community.show_lasso_form?
+          subject.show_lasso_form?.should == true
         end
       end
 
       context 'lasso account relationship is not present' do
         should 'return false' do
-          assert !@community.show_lasso_form?
+          subject.show_lasso_form?.should == false
         end
       end
     end
 
     context "#apartment_community?" do
-      setup do
-        @community = HomeCommunity.new
-      end
-
       should "return false" do
-        assert !@community.apartment_community?
+        subject.apartment_community?.should == false
       end
     end
 
     context "#home_community?" do
-      setup do
-        @community = HomeCommunity.new
-      end
-
       should "return true" do
-        assert @community.home_community?
+        subject.home_community?.should == true
+      end
+    end
+
+    context "#project?" do
+      should "return false" do
+        subject.project?.should == false
       end
     end
 

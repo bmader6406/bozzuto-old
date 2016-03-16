@@ -15,6 +15,8 @@ class Project < ActiveRecord::Base
 
   validates_presence_of :completion_date
 
+  validates_length_of :short_description, maximum: 40, allow_nil: true
+
   scope :in_section,               -> (section) { where(section_id: section.id) }
   scope :order_by_completion_date, -> { order(completion_date: :desc) }
   scope :featured_mobile,          -> { where(featured_mobile: true) }

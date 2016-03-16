@@ -10,7 +10,6 @@ class HomeCommunitiesController < ApplicationController
   def show
   end
 
-
   private
 
   def find_community
@@ -19,10 +18,10 @@ class HomeCommunitiesController < ApplicationController
 
   def redirect_to_canonical_url
     format         = request.parameters[:format]
-    canonical_path = home_community_path(@community, :format => (format unless format.to_s == 'mobile'))
+    canonical_path = home_community_path(@community, format: (format unless format.to_s == 'mobile'))
 
     if request.path != canonical_path
-      redirect_to canonical_path, :status => :moved_permanently
+      redirect_to canonical_path, status: :moved_permanently
     end
   end
 

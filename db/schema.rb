@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160314195112) do
+ActiveRecord::Schema.define(version: 20160315192736) do
 
   create_table "ad_sources", force: :cascade do |t|
     t.string   "domain_name", limit: 255, null: false
@@ -576,6 +576,66 @@ ActiveRecord::Schema.define(version: 20160314195112) do
   end
 
   add_index "green_packages", ["home_community_id"], name: "index_green_packages_on_home_community_id", unique: true, using: :btree
+
+  create_table "home_communities", force: :cascade do |t|
+    t.string   "title",                                   limit: 255,                                            null: false
+    t.string   "short_title",                             limit: 255
+    t.string   "street_address",                          limit: 255
+    t.string   "zip_code",                                limit: 255
+    t.decimal  "latitude",                                              precision: 10, scale: 6
+    t.decimal  "longitude",                                             precision: 10, scale: 6
+    t.string   "website_url",                             limit: 255
+    t.string   "website_url_text",                        limit: 255
+    t.string   "video_url",                               limit: 255
+    t.string   "availability_url",                        limit: 255
+    t.string   "listing_title",                           limit: 255
+    t.text     "listing_text",                            limit: 65535
+    t.string   "overview_title",                          limit: 255
+    t.text     "overview_text",                           limit: 65535
+    t.string   "overview_bullet_1",                       limit: 255
+    t.string   "overview_bullet_2",                       limit: 255
+    t.string   "overview_bullet_3",                       limit: 255
+    t.integer  "brochure_type",                           limit: 4,                              default: 0,     null: false
+    t.string   "brochure_link_text",                      limit: 255
+    t.string   "brochure_url",                            limit: 255
+    t.text     "neighborhood_description",                limit: 65535
+    t.boolean  "published",                                                                      default: false, null: false
+    t.boolean  "show_rtrk_code",                                                                 default: false, null: false
+    t.string   "meta_title",                              limit: 255
+    t.string   "meta_description",                        limit: 255
+    t.string   "meta_keywords",                           limit: 255
+    t.string   "media_meta_title",                        limit: 255
+    t.string   "media_meta_description",                  limit: 255
+    t.string   "media_meta_keywords",                     limit: 255
+    t.string   "floor_plans_meta_title",                  limit: 255
+    t.string   "floor_plans_meta_description",            limit: 255
+    t.string   "floor_plans_meta_keywords",               limit: 255
+    t.string   "slug",                                    limit: 255
+    t.integer  "position",                                limit: 4
+    t.string   "listing_image_file_name",                 limit: 255
+    t.string   "listing_image_content_type",              limit: 255
+    t.string   "listing_promo_file_name",                 limit: 255
+    t.string   "listing_promo_content_type",              limit: 255
+    t.integer  "listing_promo_file_size",                 limit: 4
+    t.string   "brochure_file_name",                      limit: 255
+    t.string   "brochure_content_type",                   limit: 255
+    t.string   "neighborhood_listing_image_file_name",    limit: 255
+    t.string   "neighborhood_listing_image_content_type", limit: 255
+    t.string   "phone_number",                            limit: 255
+    t.string   "mobile_phone_number",                     limit: 255
+    t.string   "facebook_url",                            limit: 255
+    t.integer  "ufollowup_id",                            limit: 4
+    t.integer  "secondary_lead_source_id",                limit: 4
+    t.integer  "city_id",                                 limit: 4
+    t.integer  "county_id",                               limit: 4
+    t.integer  "local_info_feed_id",                      limit: 4
+    t.integer  "promo_id",                                limit: 4
+    t.integer  "twitter_account_id",                      limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "home_communities", ["slug"], name: "index_home_communities_on_slug", using: :btree
 
   create_table "home_communities_landing_pages", id: false, force: :cascade do |t|
     t.integer "landing_page_id",   limit: 4

@@ -12,11 +12,10 @@ class LassoSubmissionsController < ApplicationController
     @email = cookies.delete('lasso_email')
   end
 
-
   private
 
   def find_community
     @community = find_property(HomeCommunity, params[:home_community_id])
-    @page = @community.contact_page
+    @page      = @community.contact_page
   end
 end
