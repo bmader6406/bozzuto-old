@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315192736) do
+ActiveRecord::Schema.define(version: 20160317124459) do
 
   create_table "ad_sources", force: :cascade do |t|
     t.string   "domain_name", limit: 255, null: false
