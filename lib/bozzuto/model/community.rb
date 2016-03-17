@@ -28,6 +28,8 @@ module Bozzuto
         has_many :office_hours,       -> { order(:day) },           as: :property, dependent: :destroy
         has_many :property_amenities, -> { order(:position) },      as: :property, dependent: :destroy
 
+        has_neighborhood_listing_image :neighborhood_listing_image, required: false
+
         accepts_nested_attributes_for :office_hours, :property_amenities, allow_destroy: true
 
         Bozzuto::Model::Community::PAGES.each do |page_type|

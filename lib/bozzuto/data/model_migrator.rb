@@ -105,7 +105,7 @@ module Bozzuto
 
       def default_field_mappings
         attributes.reduce(Hash.new) do |mapping, column|
-          mapping.merge(column.name => -> (record) { record.send(column.name) })
+          mapping.merge(column.name => -> (record) { record.send(column.name) if record.respond_to?(column.name) })
         end
       end
 

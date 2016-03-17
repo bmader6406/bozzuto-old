@@ -29,8 +29,6 @@ class ApartmentCommunity < ActiveRecord::Base
 
   acts_as_list column: :featured_position
 
-  has_neighborhood_listing_image :neighborhood_listing_image, required: false
-
   after_save    :update_caches
   after_destroy :update_caches
 

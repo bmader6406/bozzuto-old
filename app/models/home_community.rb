@@ -5,8 +5,6 @@ class HomeCommunity < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 6
 
-  has_neighborhood_listing_image :neighborhood_listing_image, required: false
-
   has_one :conversion_configuration, foreign_key: :property_id, dependent: :destroy # TODO rename FK
 
   has_many :homes
