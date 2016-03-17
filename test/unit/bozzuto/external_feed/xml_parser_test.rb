@@ -1,22 +1,26 @@
 require 'test_helper'
 
 module Bozzuto::ExternalFeed
-  class NodeFinderTest < ActiveSupport::TestCase
-    context "A NodeFinder" do
+  class XmlParserTest < ActiveSupport::TestCase
+    context "A XmlParser" do
       before do
-        @feed = Bozzuto::ExternalFeed::RentCafeFeed.new(Rails.root.join('test/files/rent_cafe.xml'))
+        @file     = ::File.open(Rails.root.join('test/files/rent_cafe.xml'))
+        @importer = mock('Bozzuto::ExternalFeed::Importer')
+
         @xml  = mock('Nokogiri::XML::Document')
         @node = mock('Nokogiri::XML::Element')
 
         Nokogiri::XML.stubs(:parse).returns(@xml)
 
-        @feed.stubs(:collect)
+        @importer.stubs(:file).returns(@file)
+        @importer.stubs(:collect)
+
         @xml.stubs(:remove_namespaces!).returns(@xml)
         @xml.stubs(:at).with('./Property').returns(@node)
       end
 
       subject do
-        Bozzuto::ExternalFeed::NodeFinder.new(@feed)
+        Bozzuto::ExternalFeed::XmlParser.new(@importer)
       end
 
       describe "#parse" do
@@ -26,8 +30,8 @@ module Bozzuto::ExternalFeed
           subject.parse
         end
 
-        it "calls back to the feed each time a complete property node is found" do
-          @feed.expects(:collect).with(@node).times(2)
+        it "calls back to the importer each time a complete property node is found" do
+          @importer.expects(:collect).with(@node).times(2)
 
           subject.parse
         end

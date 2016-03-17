@@ -44,10 +44,6 @@ module Bozzuto
       Bozzuto::ExternalFeed::LiveBozzutoFtp.password       = APP_CONFIG.fetch(:ftp, {}).fetch('live_bozzuto', {}).fetch('password', '')
       Bozzuto::ExternalFeed::QburstFtp.username            = APP_CONFIG.fetch(:ftp, {}).fetch('qburst', {}).fetch('username', '')
       Bozzuto::ExternalFeed::QburstFtp.password            = APP_CONFIG.fetch(:ftp, {}).fetch('qburst', {}).fetch('password', '')
-      Bozzuto::ExternalFeed::VaultwareFeed.default_file    = APP_CONFIG[:vaultware_feed_file]
-      Bozzuto::ExternalFeed::RentCafeFeed.default_file     = APP_CONFIG[:rent_cafe_feed_file]
-      Bozzuto::ExternalFeed::PropertyLinkFeed.default_file = APP_CONFIG[:property_link_feed_file]
-      Bozzuto::ExternalFeed::PsiFeed.default_file          = APP_CONFIG[:psi_feed_file]
     end
   end
 end

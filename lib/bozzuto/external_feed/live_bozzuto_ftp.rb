@@ -12,7 +12,7 @@ module Bozzuto
       self.ftp_name = 'Live Bozzuto'
 
       def feed_types
-        Feed.feed_types
+        Bozzuto::ExternalFeed::SOURCES
       end
 
       private

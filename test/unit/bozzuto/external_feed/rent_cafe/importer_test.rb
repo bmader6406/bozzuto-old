@@ -1,9 +1,12 @@
 require 'test_helper'
 
-module Bozzuto::ExternalFeed
-  class RentCafeFeedTest < ActiveSupport::TestCase
-    context "A RentCafeFeed" do
+module Bozzuto::ExternalFeed::RentCafe
+  class ImporterTest < ActiveSupport::TestCase
+    context "A Rent Cafe Importer" do
       before do
+        @file   = ::File.open(Rails.root.join('test/files/rent_cafe.xml'))
+        @import = PropertyFeedImport.make(type: "rent_cafe", file: @file)
+
         @existing_rent_cafe_property = ApartmentCommunity.make(
           :external_cms_type    => 'rent_cafe',
           :included_in_export   => true,
@@ -25,24 +28,24 @@ module Bozzuto::ExternalFeed
         )
       end
 
-      subject { Bozzuto::ExternalFeed::RentCafeFeed.new(Rails.root.join('test/files/rent_cafe.xml')) }
+      subject { Bozzuto::ExternalFeed::RentCafe::Importer.new(@import) }
 
-      describe "#feed_name" do
-        it "returns 'Rent Cafe'" do
-          subject.feed_name.should == 'Rent Cafe'
+      describe "#feed_type" do
+        it "returns rent_cafe" do
+          subject.feed_type.should == "rent_cafe"
         end
       end
 
-      describe "#process" do
+      describe "#call" do
         before do
           create_states
           create_floor_plan_groups
         end
 
-        it "builds property data for each property node from the feed file and appropriately flags properties for export inclusion" do
-          subject.process
+        it "creates properties" do
+          subject.call
 
-          subject.data.size.should == 2
+          subject.data.count.should == 2
 
           subject.data[0].tap do |c|
             c.title.should                  == 'Madox'

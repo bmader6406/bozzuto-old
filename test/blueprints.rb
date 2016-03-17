@@ -554,7 +554,7 @@ end
 
 PropertyFeedImport.blueprint do
   type "psi"
-  file { File.new("test/files/psi.xml") }
+  file { File.open("test/files/psi.xml") }
 end
 
 RecurringEmail.blueprint do

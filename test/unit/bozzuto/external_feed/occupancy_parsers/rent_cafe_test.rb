@@ -10,7 +10,7 @@ module Bozzuto::ExternalFeed::OccupancyParsers
           XML
         end
 
-        subject { RentCafe.new(@xml) }
+        subject { Bozzuto::ExternalFeed::OccupancyParsers::RentCafe.new(@xml) }
 
         it "returns the correct vacancy class" do
           subject.vacancy_class.should == 'Occupied'
@@ -32,7 +32,7 @@ module Bozzuto::ExternalFeed::OccupancyParsers
             ).at('./ILS_Unit')
           end
 
-          subject { RentCafe.new(@xml) }
+          subject { Bozzuto::ExternalFeed::OccupancyParsers::RentCafe.new(@xml) }
 
           it "returns the correct vacancy class" do
             subject.vacancy_class.should == 'Unoccupied'
@@ -51,7 +51,7 @@ module Bozzuto::ExternalFeed::OccupancyParsers
           XML
         end
 
-        subject { RentCafe.new(@xml) }
+        subject { Bozzuto::ExternalFeed::OccupancyParsers::RentCafe.new(@xml) }
 
         it "returns the correct vacancy class" do
           subject.vacancy_class.should == 'Unoccupied'

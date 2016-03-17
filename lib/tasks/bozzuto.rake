@@ -1,4 +1,5 @@
 namespace :bozzuto do
+
   def log_task(message)
     puts "#{Time.now} #{message}"
   end
@@ -6,6 +7,15 @@ namespace :bozzuto do
   def report_error(task, error)
     puts "Failed to #{task}: #{error.message}"
     puts error.backtrace
+  end
+
+  def enqueue_source(source)
+    Bozzuto::ExternalFeed.queue!(source).tap do |feed_import|
+      Resque.enqueue(PropertyFeedImportJob, feed_import.id)
+    end
+  rescue => e
+    Airbrake.notify(e)
+    report_error("#{source} imort", e)
   end
 
   desc 'Download property feeds via FTP'
@@ -24,76 +34,26 @@ namespace :bozzuto do
 
   desc 'Load latest feed from Vaultware'
   task :load_vaultware_feed => :environment do
-    log_task 'Loading Vaultware feed ...'
-
-    begin
-      loader = Bozzuto::ExternalFeed::Loader.loader_for_type(:vaultware)
-
-      if loader.load!
-        puts "  Vaultware feed successfully loaded"
-      else
-        puts "  Can't load Vaultware feed. Try again later."
-      end
-    rescue => e
-      report_error('load feed', e)
-      Airbrake.notify(e)
-    end
+    enqueue("vaultware")
   end
 
   desc 'Load latest feed from PropertyLink'
   task :load_property_link_feed => :environment do
-    log_task 'Loading PropertyLink feed ...'
-
-    begin
-      loader = Bozzuto::ExternalFeed::Loader.loader_for_type(:property_link)
-
-      if loader.load!
-        puts "  PropertyLink feed successfully loaded"
-      else
-        puts "  Can't load PropertyLink feed. Try again later."
-      end
-    rescue => e
-      report_error('load feed', e)
-      Airbrake.notify(e)
-    end
+    enqueue("property_link")
   end
 
   desc 'Load latest feed from Rent Cafe'
   task :load_rent_cafe_feed => :environment do
-    log_task 'Loading RentCafe feed ...'
-
-    begin
-      loader = Bozzuto::ExternalFeed::Loader.loader_for_type(:rent_cafe)
-
-      if loader.load!
-        puts "  RentCafe feed successfully loaded"
-      else
-        puts "  Can't load RentCafe feed. Try again later."
-      end
-    rescue => e
-      report_error('load feed', e)
-      Airbrake.notify(e)
-    end
+    enqueue("rent_cafe")
   end
 
   desc 'Load latest feed from PSI'
   task :load_psi_feed => :environment do
-    log_task 'Loading PSI feed ...'
-
-    begin
-      loader = Bozzuto::ExternalFeed::Loader.loader_for_type(:psi)
-
-      if loader.load!
-        puts "  PSI feed successfully loaded"
-      else
-        puts "  Can't load PSI feed. Try again later."
-      end
-    rescue => e
-      report_error('load feed', e)
-      Airbrake.notify(e)
-    end
+    enqueue("psi")
   end
 
+  # TODO remove with Feed (yahoo pipes) RF 3-17-16
+=begin
   desc 'Refresh Local Info feeds'
   task :refresh_local_info_feeds => :environment do
     log_task 'Refreshing RSS feeds'
@@ -108,6 +68,7 @@ namespace :bozzuto do
       end
     end
   end
+=end
 
   desc 'Send recurring emails'
   task :send_recurring_emails => :environment do

@@ -20,6 +20,7 @@ class PropertyFeedImport < ActiveRecord::Base
                        presence: true,
                        content_type: {
                          content_type: [
+                           "text/plain",
                            "text/xml",
                            "application/xml"
                          ]
@@ -27,7 +28,16 @@ class PropertyFeedImport < ActiveRecord::Base
 
   before_validation :set_queued, if: :blank_state?
 
-  scope :psi, -> { where(type: "psi").order(created_at: :desc) }
+  scope :vaultware,     -> { where(type: "vaultware").order(created_at: :desc) }
+  scope :rent_cafe,     -> { where(type: "rent_cafe").order(created_at: :desc) }
+  scope :property_link, -> { where(type: "property_link").order(created_at: :desc) }
+  scope :psi,           -> { where(type: "psi").order(created_at: :desc) }
+
+  STATES.each do |state|
+    define_method "#{state}?" do
+      self.state = state
+    end
+  end
 
   def mark_as_queued
     update_attributes(

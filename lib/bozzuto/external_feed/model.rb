@@ -5,7 +5,7 @@ module Bozzuto
         base.class_eval do
           class_attribute :external_cms_attributes
 
-          Bozzuto::ExternalFeed::Feed.feed_types.each do |type|
+          Bozzuto::ExternalFeed::SOURCES.each do |type|
             scope "managed_by_#{type}", -> { where('external_cms_id IS NOT NULL AND external_cms_type = ?', type) }
 
             define_method "managed_by_#{type}?" do
@@ -24,7 +24,7 @@ module Bozzuto
       end
 
       def external_cms_name
-        Bozzuto::ExternalFeed::Feed.feed_name(external_cms_type)
+        Bozzuto::ExternalFeed.source_name(external_cms_type)
       end
     end
   end

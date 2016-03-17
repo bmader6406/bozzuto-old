@@ -22,8 +22,8 @@ module Bozzuto::ExternalFeed
           end
 
           context "#external_cms_name" do
-            it "sends #feed_name on ExternalFeedLoader" do
-              Bozzuto::ExternalFeed::Feed.expects(:feed_name).with(type)
+            it "returns the external cms name" do
+              Bozzuto::ExternalFeed.expects(:source_name).with(type)
 
               @community.external_cms_name
             end

@@ -1,24 +1,29 @@
 require 'test_helper'
 
-module Bozzuto::ExternalFeed
-  class PropertyLinkFeedTest < ActiveSupport::TestCase
-    context "A PropertyLinkFeed" do
-      subject { Bozzuto::ExternalFeed::PropertyLinkFeed.new(Rails.root.join('test/files/property_link.xml')) }
+module Bozzuto::ExternalFeed::PropertyLink
+  class ImporterTest < ActiveSupport::TestCase
+    context "A Property Link importer" do
+      before do
+        @file   = ::File.open(Rails.root.join('test/files/property_link.xml'))
+        @import = PropertyFeedImport.make(type: "property_link", file: @file)
+      end
 
-      describe "#feed_name" do
-        it "returns 'Property Link'" do
-          subject.feed_name.should == 'Property Link'
+      subject { Bozzuto::ExternalFeed::PropertyLink::Importer.new(@import) }
+
+      describe "#feed_type" do
+        it "returns property_link" do
+          subject.feed_type.should == "property_link"
         end
       end
 
-      describe "#process" do
+      describe "#call" do
         before do
           create_states
           create_floor_plan_groups
         end
 
-        it "builds property data for each property node from the feed file" do
-          subject.process
+        it "creates properties" do
+          subject.call
 
           subject.data.count.should == 2
 

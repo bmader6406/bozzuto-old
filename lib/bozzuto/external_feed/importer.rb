@@ -1,79 +1,42 @@
-require 'benchmark'
-
 module Bozzuto
   module ExternalFeed
-    class Feed
+    class Importer
       include XpathParsing
-      include Logging
 
-      class_attribute :feed_type
-      class_attribute :default_file
+      attr_reader :feed
 
-      attr_reader :file
+      delegate :file,
+               :mark_as_processing,
+               :mark_as_success,
+               :mark_as_failure,
+               to: :feed
 
-      class FeedNotFound < IOError; end
-
-      class << self
-        def feed_types
-          %w(vaultware rent_cafe property_link psi)
-        end
-
-        def feed_for_type(type, file = nil)
-          "Bozzuto::ExternalFeed::#{type.to_s.classify}Feed".constantize.new(file)
-        end
-
-        def feed_name(type)
-          I18n.t!("bozzuto.feeds.#{type}") if type.present?
-        end
-
-        def logger
-          @logger ||= Logger.new(Rails.env.test? ? '/dev/null' : $stdout)
-        end
+      def initialize(feed)
+        raise ArgumentError, "feed state must be queued to import, currently marked as #{feed.state}" unless feed.queued?
+        @feed = feed
       end
 
-      def initialize(file = nil)
-        @file = file || default_file
+      def feed_type
+        raise NotImplementedError, "#{self.class.to_s} must implement #feed_type"
       end
 
-      def feed_name
-        self.class.feed_name(feed_type)
+      def call
+        mark_as_processing
+        clear_property_flags
+
+        XmlParser.new(self).parse
+
+        set_property_flags
+        mark_as_success
+      rescue => e
+        mark_as_failure(e)
       end
 
-      def process
-        assert_file_exists
-
-        # Reset found_in_latest_feed on all Properties for the current feed
-        ApartmentCommunity.where(:external_cms_type => feed_type).found_in_latest_feed.update_all(:found_in_latest_feed => false)
-
-        # Reset include_in_export flag on all Property Link units
-        ::ApartmentUnit.where(:external_cms_type => 'property_link').update_all(:include_in_export => false)
-
-        report { NodeFinder.new(self).parse }
-
-        # Update the included_in_export flags based on whether or not it was found in the feed
-        ApartmentCommunity.where(:external_cms_type => feed_type).find_each do |community|
-          community.update_attributes(:included_in_export => community.found_in_latest_feed?)
-        end
-      end
-
-      def collect(property_node)
-        log_debug("Building property data from XML property node...")
-
-        build_property(property_node).tap do |property_data|
-          log_info("Finished building property data from XML for #{property_data.title}.")
-          log_debug("Importing property data for #{property_data.title}...")
-
+      def collect(node)
+        build_property(node).tap do |property_data|
           data       << property_data
           properties << PropertyImporter.new(property_data, feed_type).import
-
-          log_info("Finished importing property data for #{property_data.title}.")
         end
-      end
-
-      def file=(new_file)
-        @file       = new_file
-        @data       = nil
-        @properties = nil
       end
 
       def data
@@ -84,22 +47,35 @@ module Bozzuto
         @properties ||= []
       end
 
-      def loading_enabled?
-        true
-      end
-
       private
 
-      def assert_file_exists
-        unless file.present? && ::File.exists?(file)
-          raise FeedNotFound.new("File not found: #{file.inspect}")
+      def clear_property_flags
+        # Reset found_in_latest_feed on all Properties for the current feed
+        ::ApartmentCommunity.where(:external_cms_type => feed_type).found_in_latest_feed.update_all(:found_in_latest_feed => false)
+
+        # Reset include_in_export flag on all Property Link units
+        ::ApartmentUnit.where(:external_cms_type => 'property_link').update_all(:include_in_export => false)
+      end
+
+      def set_property_flags
+        # Update the included_in_export flags based on whether or not it was found in the feed
+        ::ApartmentCommunity.where(:external_cms_type => feed_type).find_each do |community|
+          community.update_attributes(:included_in_export => community.found_in_latest_feed?)
         end
       end
 
-      # Builder methods. Override these in the subclass to build the objects
-
       def build_property(property)
         raise NotImplementedError, "#{self.class.to_s} must implement #build_property"
+      end
+
+      def build_office_hours(property_xml)
+        property_xml.xpath('./Information/OfficeHour').map do |office_hour_node|
+          Bozzuto::ExternalFeed::OfficeHour.new(
+            :opens_at  => string_at(office_hour_node, './OpenTime'),
+            :closes_at => string_at(office_hour_node, './CloseTime'),
+            :day       => string_at(office_hour_node, './Day')
+          )
+        end
       end
 
       def build_floor_plans(property)
@@ -110,6 +86,16 @@ module Bozzuto
 
       def build_floor_plan(property, plan)
         raise NotImplementedError, "#{self.class.to_s} must implement #build_floor_plan"
+      end
+
+      def build_apartment_units(property)
+        property.xpath('./ILS_Unit').map do |unit|
+          build_apartment_unit(property, unit)
+        end
+      end
+
+      def build_apartment_unit(property, unit)
+        raise NotImplementedError, "#{self.class.to_s} must implement #build_apartment_unit"
       end
 
       def build_property_amenities(property)
@@ -127,16 +113,6 @@ module Bozzuto
         )
       end
 
-      def build_apartment_units(property)
-        property.xpath('./ILS_Unit').map do |unit|
-          build_apartment_unit(property, unit)
-        end
-      end
-
-      def build_apartment_unit(property, unit)
-        raise NotImplementedError, "#{self.class.to_s} must implement #build_apartment_unit"
-      end
-
       def build_apartment_unit_amenities(unit)
         unit.xpath('./Amenity').map do |amenity|
           build_apartment_unit_amenity(amenity)
@@ -145,16 +121,6 @@ module Bozzuto
 
       def build_apartment_unit_amenity(unit)
         raise NotImplementedError, "#{self.class.to_s} must implement #build_apartment_unit_amenity"
-      end
-
-      def build_office_hours(property_xml)
-        property_xml.xpath('./Information/OfficeHour').map do |office_hour_node|
-          Bozzuto::ExternalFeed::OfficeHour.new(
-            :opens_at  => string_at(office_hour_node, './OpenTime'),
-            :closes_at => string_at(office_hour_node, './CloseTime'),
-            :day       => string_at(office_hour_node, './Day')
-          )
-        end
       end
 
       def build_files(node, id)
@@ -183,7 +149,6 @@ module Bozzuto
         end
       end
 
-      # Helpers
       def floor_plan_group(bedrooms, comment)
         case
         when comment.present? && comment =~ /penthouse/i
@@ -206,12 +171,6 @@ module Bozzuto
           string_at(file, './Src')
         else
           nil
-        end
-      end
-
-      def report
-        Benchmark.realtime { yield }.tap do |result|
-          log_warn("#{feed_type.to_s.titleize} feed finished processing after #{(result / 60).round(2)} minutes.")
         end
       end
     end

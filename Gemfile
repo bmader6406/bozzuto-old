@@ -41,6 +41,7 @@ gem 'yboss'
 gem 'activerecord-import',        '0.11.0'
 gem 'chronic'
 gem 'acts_as_list'
+gem 'resque',                     '~> 1.26.0'
 
 group :development, :test do
   gem 'pry'

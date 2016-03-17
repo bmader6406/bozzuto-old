@@ -395,7 +395,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
     end
 
     describe "#merge" do
-      types = Bozzuto::ExternalFeed::Feed.feed_types
+      types = Bozzuto::ExternalFeed::SOURCES
 
       types.each do |type|
         context "receiver is a #{type} community" do

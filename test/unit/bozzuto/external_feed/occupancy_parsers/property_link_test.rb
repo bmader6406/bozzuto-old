@@ -21,7 +21,7 @@ module Bozzuto::ExternalFeed::OccupancyParsers
           ).at('ILS_Unit')
         end
 
-        subject { PropertyLink.new(@xml) }
+        subject { Bozzuto::ExternalFeed::OccupancyParsers::PropertyLink.new(@xml) }
 
         it "returns the correct vacancy class" do
           subject.vacancy_class.should == 'Occupied'
@@ -50,7 +50,7 @@ module Bozzuto::ExternalFeed::OccupancyParsers
           ).at('ILS_Unit')
         end
 
-        subject { PropertyLink.new(@xml) }
+        subject { Bozzuto::ExternalFeed::OccupancyParsers::PropertyLink.new(@xml) }
 
         it "returns the correct vacancy class" do
           subject.vacancy_class.should == 'Unoccupied'

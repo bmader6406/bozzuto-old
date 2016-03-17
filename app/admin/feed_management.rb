@@ -11,29 +11,19 @@ ActiveAdmin.register_page 'Feed & Export Management' do
 
   content do
     tabs do
-      tab 'External Feeds' do
+      tab 'External Feed Sources' do
         panel nil do
-          table_for loaders do
-            column :type do |loader|
-              loader.feed_name
+          table_for Bozzuto::ExternalFeed::SOURCES do
+            column :type do |source|
+              link_to source.titleize, [:admin, :property_feed_imports, scope: source]
             end
 
-            column :communities do |loader|
-              link_to "View All", [:admin, :apartment_communities, q: { external_cms_type_eq: loader.feed_type }], class: 'button', target: :blank
+            column :communities do |source|
+              link_to "View All", [:admin, :apartment_communities, q: { external_cms_type_eq: source }], class: 'button', target: :blank
             end
 
-            column '* Feeds can be refreshed once every two hours' do |loader|
-              return unless loader.loading_enabled?
-
-              if loader.can_load?
-                link_to 'Refresh', refresh_admin_feed_export_management_path(loader.feed_type), class: 'button', method: :put
-              else
-                if loader.already_loading?
-                  span 'Feed refresh in progress'
-                else
-                  span distance_of_time_in_words(Time.now, loader.next_load_at).capitalize + ' until next refresh'
-                end
-              end
+            column '* Feeds can be refreshed once every two hours' do |source|
+              link_to 'Refresh', refresh_admin_feed_export_management_path(source), class: 'button', method: :put
             end
           end
         end
@@ -62,6 +52,7 @@ ActiveAdmin.register_page 'Feed & Export Management' do
   end
 
   controller do
+
     def download
       if ftp.can_load?
         ftp.download_files
@@ -81,22 +72,16 @@ ActiveAdmin.register_page 'Feed & Export Management' do
     end
 
     def refresh
-      loader = Bozzuto::ExternalFeed::Loader.loader_for_type(params[:feed_type])
+      feed_import = Bozzuto::ExternalFeed.queue!(params[:source])
+      Resque.enqueue(PropertyFeedImportJob, feed_import.id)
 
-      if loader.can_load?
-        loader.load!
-        message[:notice] = "#{loader.feed_name} Feed successfully updated."
-      elsif loader.already_loading?
-        message[:notice] = "#{loader.feed_name} Feed is already being updated. Please try again later."
-      else
-        message[:notice] = "#{loader.feed_name} Feed can only be loaded once every #{Bozzuto::ExternalFeed::Loader.load_interval / 3600} hours. Please try again later."
-      end
+      flash[:notice] = "#{Bozzuto::ExternalFeed.source_name(params[:source])} Feed successfully queued."
+      redirect_to [:admin, :property_feed_imports]
     rescue => e
-      Rails.logger.debug(e.inspect)
       notify_airbrake(e)
-      message[:alert] = 'There was an error loading the feed. Please try again later.'
-    ensure
-      redirect_to :back, message
+
+      flash[:alert] = 'There was an error loading the feed. Please try again later.'
+      redirect_to [:admin, :feed_export_management]
     end
 
     def rebuild
@@ -118,13 +103,6 @@ ActiveAdmin.register_page 'Feed & Export Management' do
       @ftp ||= Bozzuto::ExternalFeed::LiveBozzutoFtp.new
     end
     helper_method :ftp
-    
-    def loaders
-      @loaders ||= Bozzuto::ExternalFeed::Feed.feed_types.map do |type|
-        Bozzuto::ExternalFeed::Loader.loader_for_type(type)
-      end
-    end
-    helper_method :loaders
 
     def exports
       Bozzuto::Exports::ApartmentExport::FORMATS

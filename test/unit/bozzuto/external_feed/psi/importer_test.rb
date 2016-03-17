@@ -1,24 +1,29 @@
 require 'test_helper'
 
-module Bozzuto::ExternalFeed
-  class PsiFeedTest < ActiveSupport::TestCase
-    context "A PsiFeed" do
-      subject { Bozzuto::ExternalFeed::PsiFeed.new(Rails.root.join('test/files/psi.xml')) }
+module Bozzuto::ExternalFeed::Psi
+  class ImporterTest < ActiveSupport::TestCase
+    context "A Psi Importer" do
+      before do
+        @file   = ::File.open(Rails.root.join('test/files/psi.xml'))
+        @import = PropertyFeedImport.make(type: "psi", file: @file)
+      end
 
-      describe "#feed_name" do
-        it "returns 'PSI'" do
-          subject.feed_name.should == 'PSI'
+      subject { Bozzuto::ExternalFeed::Psi::Importer.new(@import) }
+
+      describe "#feed_type" do
+        it "returns psi" do
+          subject.feed_type.should == "psi"
         end
       end
 
-      describe "#process" do
+      describe "#call" do
         before do
           create_states
           create_floor_plan_groups
         end
 
-        it "builds property data for each property node from the feed file" do
-          subject.process
+        it "creates properties" do
+          subject.call
 
           subject.data.count.should == 2
 
@@ -65,35 +70,6 @@ module Bozzuto::ExternalFeed
               f.floor_plan_group.should  == 'studio'
               f.external_cms_id.should   == '184743'
               f.external_cms_type.should == 'psi'
-            end
-
-            c.floor_plans[1].tap do |f|
-              f.name.should              == 'A10'
-              f.availability_url.should  == 'http://madox.prospectportal.com/Apartments/module/property_info/property[id]/49989/launch_guest_card/1/property_floorplan[id]/184745'
-              f.available_units.should   == 0
-              f.bedrooms.should          == 1
-              f.bathrooms.should         == 1
-              f.min_square_feet.should   == 1018
-              f.max_square_feet.should   == 1018
-              f.min_rent.should          == 0
-              f.max_rent.should          == 0
-              f.image_url.should         == 'https://medialibrarycdn.propertysolutions.com/media_library/4346/507d83cc5f062493.jpg'
-              f.unit_count.should        == 0
-              f.floor_plan_group.should  == 'one_bedroom'
-              f.external_cms_id.should   == '184745'
-              f.external_cms_type.should == 'psi'
-            end
-
-            c.property_amenities.count.should == 2
-
-            c.property_amenities.first.tap do |a|
-              a.primary_type.should == 'Other'
-              a.description.should  == '24 Hour Fitness Gym'
-            end
-
-            c.property_amenities.last.tap do |a|
-              a.primary_type.should == 'Other'
-              a.description.should  == 'Bike Storage'
             end
           end
 

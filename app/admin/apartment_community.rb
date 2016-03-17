@@ -115,7 +115,7 @@ ActiveAdmin.register ApartmentCommunity do
   filter :external_cms_type,
     label:      'Managed By',
     as:         :select,
-    collection: Bozzuto::ExternalFeed::Feed.feed_types.map { |feed| [I18n.t("bozzuto.feeds.#{feed}"), feed] }
+    collection: Bozzuto::ExternalFeed::SOURCES.map { |feed| [I18n.t("bozzuto.feeds.#{feed}"), feed] }
 
   action_item :delete_floor_plans, only: :show do
     link_to 'Delete All Floor Plans', [:delete_floor_plans, :admin, resource]

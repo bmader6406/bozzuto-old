@@ -9,7 +9,7 @@ class PropertyFeedImportTest < ActiveSupport::TestCase
     should validate_presence_of(:type)
 
     should validate_attachment_presence(:file)
-    should validate_attachment_content_type(:file).allowing('text/xml', 'application/xml')
+    should validate_attachment_content_type(:file).allowing('text/plain', 'text/xml', 'application/xml')
 
     context "before validations" do
       it "sets empty state to queued" do

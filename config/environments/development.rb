@@ -38,6 +38,8 @@ Bozzuto::Application.configure do
    :domain  => 'bozzuto.local'
   }
 
+  Resque.inline = true
+
   # Ensures that models are loaded on every request since cache_classes is false
   # Necessary for functionality relying on included hooks (Bozzuto::Homepage::FeaturableNews)
   config.to_prepare do

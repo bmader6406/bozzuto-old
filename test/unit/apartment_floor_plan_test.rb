@@ -205,7 +205,7 @@ class ApartmentFloorPlanTest < ActiveSupport::TestCase
       end
     end
 
-    Bozzuto::ExternalFeed::Feed.feed_types.each do |type|
+    Bozzuto::ExternalFeed::SOURCES.each do |type|
       describe "#managed_by_#{type}?" do
         context "floor plan is managed by #{type.titlecase}" do
           before { @plan = ApartmentFloorPlan.make(type.to_sym) }

@@ -3,9 +3,9 @@ Bozzuto::Application.routes.draw do
     resource :home_page, only: [:show, :edit, :update]
 
     resource :feed_export_management, only: [:index] do
-      get :download,            controller: :feed_export_management, action: :download, as: :download
-      put 'refresh/:feed_type', controller: :feed_export_management, action: :refresh,  as: :refresh
-      put 'rebuild/:format',    controller: :feed_export_management, action: :rebuild,  as: :rebuild
+      get :download,         controller: :feed_export_management, action: :download, as: :download
+      put 'refresh/:source', controller: :feed_export_management, action: :refresh,  as: :refresh
+      put 'rebuild/:format', controller: :feed_export_management, action: :rebuild,  as: :rebuild
     end
   end
 

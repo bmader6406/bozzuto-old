@@ -1,24 +1,29 @@
 require 'test_helper'
 
-module Bozzuto::ExternalFeed
-  class VaultwareFeedTest < ActiveSupport::TestCase
-    context "A VaultwareFeed" do
-      subject { Bozzuto::ExternalFeed::VaultwareFeed.new(Rails.root.join('test/files/vaultware.xml')) }
+module Bozzuto::ExternalFeed::Vaultware
+  class ImporterTest < ActiveSupport::TestCase
+    context "A Vaultware Importer" do
+      before do
+        @file   = ::File.open(Rails.root.join('test/files/vaultware.xml'))
+        @import = PropertyFeedImport.make(type: 'vaultware', file: @file)
+      end
 
-      describe "#feed_name" do
-        it "returns 'Vaultware'" do
-          subject.feed_name.should == 'Vaultware'
+      subject { Bozzuto::ExternalFeed::Vaultware::Importer.new(@import) }
+
+      describe "#feed_type" do
+        it "returns vaultware" do
+          subject.feed_type.should == "vaultware"
         end
       end
 
-      describe "#process" do
+      describe "#call" do
         before do
           create_states
           create_floor_plan_groups
         end
 
-        it "builds property data for each property node from the feed file" do
-          subject.process
+        it "creates properties" do
+          subject.call
 
           subject.data.count.should == 2
 

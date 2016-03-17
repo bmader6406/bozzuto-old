@@ -3,11 +3,12 @@ require 'net/ftp'
 module Bozzuto
   module ExternalFeed
     module Ftp
+
       def self.types
         Bozzuto::ExternalFeed.constants.map { |constant|
           Bozzuto::ExternalFeed.const_get(constant)
         }.select do |klass|
-          klass.included_modules.include? self
+          Class === klass && klass.included_modules.include?(self)
         end
       end
 
@@ -34,7 +35,6 @@ module Bozzuto
 
         return if Rails.env.development?
 
-        # :nocov:
         dir = options[:dir]
 
         connect_to_server do |ftp|
@@ -42,7 +42,6 @@ module Bozzuto
 
           ftp.putbinaryfile(file)
         end
-        # :nocov:
       end
 
       def download_files
@@ -71,7 +70,8 @@ module Bozzuto
       end
 
       def target_location_for(feed_type)
-        Feed.feed_for_type(feed_type).default_file
+        key = "#{feed_type}_feed_file".to_sym
+        APP_CONFIG[key]
       end
 
       def server

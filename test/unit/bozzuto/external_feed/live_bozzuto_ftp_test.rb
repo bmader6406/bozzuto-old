@@ -2,10 +2,6 @@ require 'test_helper'
 
 module Bozzuto::ExternalFeed
   class LiveBozzutoFtpTest < ActiveSupport::TestCase
-    def tmp_file(name)
-      Rails.root.join('tmp', name).to_s
-    end
-
     context "A Live Bozzuto External Feed FTP" do
       describe ".ftp_name" do
         it "returns the correct FTP name" do
@@ -30,21 +26,16 @@ module Bozzuto::ExternalFeed
         subject { Bozzuto::ExternalFeed::LiveBozzutoFtp.new }
 
         before do
-          @vw_feed     = mock('Bozzuto::ExternalFeed::VaultwareFeed',    :default_file => tmp_file('vw_feed.xml'))
-          @rc_feed     = mock('Bozzuto::ExternalFeed::RentCafeFeed',     :default_file => tmp_file('rc_feed.xml'))
-          @pl_feed     = mock('Bozzuto::ExternalFeed::PropertyLinkFeed', :default_file => tmp_file('pl_feed.xml'))
-          @psi_feed    = mock('Bozzuto::ExternalFeed::PsiFeed',          :default_file => tmp_file('psi_feed.xml'))
-
-          Bozzuto::ExternalFeed::Feed.expects(:feed_for_type).with('vaultware').returns(@vw_feed)
-          Bozzuto::ExternalFeed::Feed.expects(:feed_for_type).with('rent_cafe').returns(@rc_feed)
-          Bozzuto::ExternalFeed::Feed.expects(:feed_for_type).with('property_link').returns(@pl_feed)
-          Bozzuto::ExternalFeed::Feed.expects(:feed_for_type).with('psi').returns(@psi_feed)
-
           @ftp = mock('Net::FTP')
 
           Net::FTP.expects(:open).with('feeds.livebozzuto.com').yields(@ftp)
 
           subject.expects(:can_load?).returns(true)
+
+          APP_CONFIG[:vaultware_feed_file]     = "test/files/vaultware.xml"
+          APP_CONFIG[:property_link_feed_file] = "test/files/property_link.xml"
+          APP_CONFIG[:rent_cafe_feed_file]     = "test/files/rent_cafe.xml"
+          APP_CONFIG[:psi_feed_file]           = "test/files/psi.xml"
         end
 
         it "sets passive to true, logs into the FTP server, and fetches the file" do
@@ -53,10 +44,10 @@ module Bozzuto::ExternalFeed
 
           @ftp.expects(:passive=).with(true)
           @ftp.expects(:login).with(username, password)
-          @ftp.expects(:getbinaryfile).with('vaultware.xml',    tmp_file('vw_feed.xml'))
-          @ftp.expects(:getbinaryfile).with('rentcafe.xml',     tmp_file('rc_feed.xml'))
-          @ftp.expects(:getbinaryfile).with('propertylink.xml', tmp_file('pl_feed.xml'))
-          @ftp.expects(:getbinaryfile).with('psi.xml',          tmp_file('psi_feed.xml'))
+          @ftp.expects(:getbinaryfile).with("vaultware.xml",    "test/files/vaultware.xml")
+          @ftp.expects(:getbinaryfile).with("rentcafe.xml",     "test/files/rent_cafe.xml")
+          @ftp.expects(:getbinaryfile).with('propertylink.xml', "test/files/property_link.xml")
+          @ftp.expects(:getbinaryfile).with('psi.xml',          "test/files/psi.xml")
 
           subject.download_files
         end

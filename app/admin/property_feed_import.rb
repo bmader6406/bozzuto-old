@@ -3,7 +3,10 @@ ActiveAdmin.register PropertyFeedImport do
 
   actions :index, :show
 
-  scope :all, default: true
+  scope :all,           default: true
+  scope :vaultware
+  scope :rent_cafe
+  scope :property_link
   scope :psi
 
   filter :state, as: :select, collection: PropertyFeedImport::STATES
