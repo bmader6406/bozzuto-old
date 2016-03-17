@@ -20,6 +20,7 @@ module Bozzuto
         friendly_id :title, use: :history
 
         belongs_to :city
+        belongs_to :county
 
         has_one :slideshow, as: :property, class_name: 'PropertySlideshow'
 

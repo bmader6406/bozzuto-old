@@ -18,7 +18,6 @@ module Bozzuto
         belongs_to :local_info_feed, class_name: 'Feed'
         belongs_to :promo
         belongs_to :twitter_account
-        belongs_to :county
 
         has_one :dnr_configuration, as: :property, dependent: :destroy
 

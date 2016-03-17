@@ -1097,6 +1097,9 @@ ActiveRecord::Schema.define(version: 20160317124459) do
     t.string  "listing_title",              limit: 255
     t.text    "listing_text",               limit: 65535
     t.text    "overview_text",              limit: 65535
+    t.string  "meta_title",                 limit: 255
+    t.string  "meta_description",           limit: 255
+    t.string  "meta_keywords",              limit: 255
     t.date    "completion_date",                                                                   null: false
     t.boolean "has_completion_date",                                               default: false, null: false
     t.boolean "published",                                                                         null: false

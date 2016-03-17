@@ -27,6 +27,9 @@ class CreateProjects < ActiveRecord::Migration
       t.string  :listing_title
       t.text    :listing_text
       t.text    :overview_text
+      t.string  :meta_title
+      t.string  :meta_description
+      t.string  :meta_keywords
       t.date    :completion_date,     null: false
       t.boolean :has_completion_date, null: false, default: false
       t.boolean :published,           null: false, deafult: false
