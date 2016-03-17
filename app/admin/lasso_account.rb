@@ -34,7 +34,7 @@ ActiveAdmin.register LassoAccount do
 
   form do |f|
     inputs do
-      input :property,      as: :chosen,collection: HomeCommunity.all
+      input :property, as: :chosen, collection: HomeCommunity.all
       input :uid
       input :client_id
       input :project_id

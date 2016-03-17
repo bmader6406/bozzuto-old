@@ -25,6 +25,7 @@ ActiveAdmin.register LandingPage do
                 popular_property_orderings_attributes: [
                   :id,
                   :property_id,
+                  :property_type,
                   :_destroy
                 ]
 
@@ -169,7 +170,7 @@ ActiveAdmin.register LandingPage do
 
         tab 'Popular Properties' do
           has_many :popular_property_orderings, heading: false, allow_destroy: true, new_record: 'Add Property' do |property|
-            property.input :property, as: :chosen
+            property.input :property, as: :polymorphic_select, grouped_options: community_select_options, input_html: { class: 'chosen-input' }
           end
         end
 

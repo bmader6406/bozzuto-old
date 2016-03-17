@@ -71,6 +71,7 @@ ActiveAdmin.register ApartmentCommunity do
                 property_amenities_attributes: [
                   :id,
                   :property_id,
+                  :property_type,
                   :primary_type,
                   :sub_type,
                   :description,
@@ -79,6 +80,7 @@ ActiveAdmin.register ApartmentCommunity do
                 dnr_configuration_attributes: [
                   :id,
                   :property_id,
+                  :property_type,
                   :customer_code
                 ],
                 mediaplex_tag_attributes: [
@@ -91,6 +93,7 @@ ActiveAdmin.register ApartmentCommunity do
                 office_hours_attributes: [
                   :id,
                   :property_id,
+                  :property_type,
                   :day,
                   :closed,
                   :opens_at,
@@ -344,10 +347,10 @@ ActiveAdmin.register ApartmentCommunity do
               status_tag community.under_construction
             end
             row :upcoming_intro_text do |community|
-              status_tag community.contact_configuration.try(:upcoming_intro_text)
+              community.contact_configuration.try(:upcoming_intro_text)
             end
             row :upcoming_thank_you_text do |community|
-              status_tag community.contact_configuration.try(:upcoming_thank_you_text)
+              community.contact_configuration.try(:upcoming_thank_you_text)
             end
           end
         end

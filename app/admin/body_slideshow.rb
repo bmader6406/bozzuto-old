@@ -9,6 +9,7 @@ ActiveAdmin.register BodySlideshow do
                   :link_url,
                   :video_url,
                   :property_id,
+                  :property_type,
                   :_destroy
                 ]
 
@@ -63,7 +64,7 @@ ActiveAdmin.register BodySlideshow do
             slide.input :image,     as: :image
             slide.input :link_url
             slide.input :video_url
-            slide.input :property,  as: :chosen
+            slide.input :property,  as: :polymorphic_select, grouped_options: property_select_options, input_html: { class: 'chosen-input' }
           end
         end
       end

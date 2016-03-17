@@ -4,6 +4,7 @@ ActiveAdmin.register PropertySlideshow do
 
   permit_params :property,
                 :property_id,
+                :property_type,
                 :name
 
   filter :name_cont, label: 'Name'
@@ -48,7 +49,7 @@ ActiveAdmin.register PropertySlideshow do
       tabs do
         tab 'Details' do
           input :name
-          input :property, as: :chosen
+          input :property, as: :polymorphic_select, grouped_options: property_select_options, input_html: { class: 'chosen-input' }
         end
 
         tab 'Slides' do

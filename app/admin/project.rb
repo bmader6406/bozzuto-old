@@ -35,23 +35,6 @@ ActiveAdmin.register Project do
                 :has_completion_date,
                 project_categories_ids: []
 
-  # Work around for models who have overridden `to_param` in AA
-  # See SO issue:
-  # http://stackoverflow.com/questions/7684644/activerecordreadonlyrecord-when-using-activeadmin-and-friendly-id
-  before_filter do
-    Property.class_eval do
-      def to_param
-        id.to_s
-      end
-    end
-  end
-
-  controller do
-    def scoped_collection
-      super.includes(:city => [:state], :section => [])
-    end
-  end
-
   filter :title_cont,          label: 'Title'
   filter :street_address_cont, label: 'Street Address'
   filter :city
@@ -265,5 +248,15 @@ ActiveAdmin.register Project do
     end
 
     actions
+  end
+
+  controller do
+    def find_resource
+      Project.friendly.find(params[:id])
+    end
+
+    def scoped_collection
+      super.includes(:section, city: [:state])
+    end
   end
 end

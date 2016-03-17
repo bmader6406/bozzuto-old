@@ -7,6 +7,7 @@ ActiveAdmin.register Video do
 
   permit_params :property,
                 :property_id,
+                :property_type,
                 :image,
                 :url,
                 :position
@@ -34,7 +35,7 @@ ActiveAdmin.register Video do
 
   form do |f|
     inputs do
-      input :property, as: :chosen
+      input :property, as: :polymorphic_select, grouped_options: property_select_options, input_html: { class: 'chosen-input' }
       input :image,    as: :image
       input :url
     end

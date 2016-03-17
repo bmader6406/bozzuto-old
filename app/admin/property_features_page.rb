@@ -5,6 +5,7 @@ ActiveAdmin.register PropertyFeaturesPage do
 
   permit_params :property,
                 :property_id,
+                :property_type,
                 :text_1,
                 :title_1,
                 :title_2,
@@ -64,7 +65,7 @@ ActiveAdmin.register PropertyFeaturesPage do
     inputs do
       tabs do
         tab 'Details' do
-          input :property, as: :chosen
+          input :property, as: :polymorphic_select, grouped_options: community_select_options, input_html: { class: 'chosen-input' }
           input :title_1
           input :text_1,   as: :redactor
           input :title_2

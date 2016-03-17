@@ -9,6 +9,7 @@ ActiveAdmin.register Photo do
                 :photo_group_id,
                 :property,
                 :property_id,
+                :property_type,
                 :image,
                 :show_on_mobile
 
@@ -51,7 +52,7 @@ ActiveAdmin.register Photo do
     inputs do
       input :title
       input :photo_group,    as: :chosen
-      input :property,       as: :chosen
+      input :property,       as: :polymorphic_select, grouped_options: property_select_options, input_html: { class: 'chosen-input' }
       input :show_to_mobile
       input :image,          as: :image
     end

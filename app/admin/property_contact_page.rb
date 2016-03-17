@@ -5,6 +5,7 @@ ActiveAdmin.register PropertyContactPage do
 
   permit_params :property,
                 :property_id,
+                :property_type,
                 :content,
                 :schedule_appointment_url,
                 :local_phone_number,
@@ -53,7 +54,7 @@ ActiveAdmin.register PropertyContactPage do
     inputs do
       tabs do
         tab 'Details' do
-          input :property,                 as: :chosen
+          input :property,                 as: :polymorphic_select, grouped_options: community_select_options, input_html: { class: 'chosen-input' }
           input :schedule_appointment_url
           input :local_phone_number
           input :content,                  as: :redactor

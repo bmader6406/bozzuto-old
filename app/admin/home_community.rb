@@ -51,12 +51,14 @@ ActiveAdmin.register HomeCommunity do
                 dnr_configuration_attributes: [
                   :id,
                   :property_id,
+                  :property_type,
                   :customer_code
                 ],
                 conversion_configuration_attributes: [
                   :id,
                   :name,
                   :property_id,
+                  :property_type,
                   :google_send_to_friend_label,
                   :google_send_to_phone_label,
                   :google_contact_label,
@@ -141,9 +143,6 @@ ActiveAdmin.register HomeCommunity do
             row :overview_bullet_2
             row :overview_bullet_3
             row :promo
-            row :included_in_export do |community|
-              status_tag community.included_in_export
-            end
             row :published do |community|
               status_tag community.published
             end
@@ -228,9 +227,6 @@ ActiveAdmin.register HomeCommunity do
       tab 'Contact-Related' do
         panel nil do
           attributes_table_for community do
-            row("MediaMind Activity ID for Contact Page")                  { |community| community.contact_mediamind_id }
-            row("MediaMind Activity ID for Send to Friend Thank You Page") { |community| community.send_to_friend_mediamind_id }
-            row("MediaMind Activity ID for Send to Phone Thank You Page")  { |community| community.send_to_phone_mediamind_id }
             row :secondary_lead_source_id
           end
         end
@@ -388,9 +384,6 @@ ActiveAdmin.register HomeCommunity do
         end
 
         tab 'Contact-Related' do
-          input :contact_mediamind_id
-          input :send_to_friend_mediamind_id
-          input :send_to_phone_mediamind_id
           input :secondary_lead_source_id
         end
 
@@ -435,6 +428,8 @@ ActiveAdmin.register HomeCommunity do
   end
 
   controller do
+    before_action :strip_empty_dnr_config, only: [:create, :update]
+
     def find_resource
       HomeCommunity.friendly.find(params[:id])
     end
@@ -458,5 +453,11 @@ ActiveAdmin.register HomeCommunity do
       end
     end
     helper_method :pages
+
+    def strip_empty_dnr_config
+      if resource_params.first['dnr_configuration_attributes']['customer_code'].empty?
+        resource_params.first.delete('dnr_configuration_attributes')
+      end
+    end
   end
 end

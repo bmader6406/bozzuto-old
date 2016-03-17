@@ -5,6 +5,7 @@ ActiveAdmin.register PropertyNeighborhoodPage do
 
   permit_params :property,
                 :property_id,
+                :property_type,
                 :content,
                 :meta_title,
                 :meta_description,
@@ -49,7 +50,7 @@ ActiveAdmin.register PropertyNeighborhoodPage do
     inputs do
       tabs do
         tab 'Details' do
-          input :property, as: :chosen
+          input :property, as: :polymorphic_select, grouped_options: community_select_options, input_html: { class: 'chosen-input' }
           input :content,  as: :redactor
         end
 

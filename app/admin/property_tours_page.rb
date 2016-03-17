@@ -3,6 +3,7 @@ ActiveAdmin.register PropertyToursPage do
 
   permit_params :property,
                 :property_id,
+                :property_type,
                 :title,
                 :content,
                 :meta_title,
@@ -52,7 +53,7 @@ ActiveAdmin.register PropertyToursPage do
     inputs do
       tabs do
         tab 'Details' do
-          input :property, as: :chosen
+          input :property, as: :polymorphic_select, grouped_options: community_select_options, input_html: { class: 'chosen-input' }
           input :title
           input :content,  as: :redactor
         end

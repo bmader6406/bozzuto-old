@@ -5,6 +5,7 @@ ActiveAdmin.register OfficeHour do
 
   permit_params :property,
                 :property_id,
+                :property_type,
                 :day,
                 :closed,
                 :opens_at,
@@ -40,7 +41,7 @@ ActiveAdmin.register OfficeHour do
 
   form do |f|
     inputs do
-      input :property,          as: :chosen
+      input :property,          as: :polymorphic_select, grouped_options: community_select_options, input_html: { class: 'chosen-input' }
       input :day,               as: :chosen, collection: OfficeHour::DAY
       input :closed
       input :opens_at
