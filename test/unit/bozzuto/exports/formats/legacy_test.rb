@@ -30,10 +30,6 @@ module Bozzuto::Exports::Formats
           twitter_account = TwitterAccount.new(:username => 'TheBozzutoGroup')
           twitter_account.save(:validate => false)
 
-          local_info_feed = Feed.make_unsaved(:url => 'http://bozzuto.com/feed')
-          local_info_feed.expects(:feed_valid?)
-          local_info_feed.save
-
           @expiration_date = Time.current.advance(:days => 15)
           promo = Promo.make(:active,
             :title           => 'on sale meow',
@@ -70,7 +66,6 @@ module Bozzuto::Exports::Formats
             :website_url             => 'http://what.up',
             :latitude                => 0.0,
             :longitude               => 45.0,
-            :local_info_feed         => local_info_feed,
             :promo_id                => promo.id,
             :listing_image_file_name => 'test.jpg'
           )
@@ -291,10 +286,6 @@ module Bozzuto::Exports::Formats
 
           it "contains directions link" do
             @information_node.xpath('DirectionsURL').first.content.should == 'http://maps.google.com/maps?daddr=100%20Gooby%20Pls,%20Bogsville,%20NC'
-          end
-
-          it "contains local info rss feed" do
-            @information_node.xpath('LocalInfoRSSURL').first.content.should == 'http://bozzuto.com/feed'
           end
 
           it "contains property listing image" do

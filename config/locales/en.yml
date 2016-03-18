@@ -263,7 +263,6 @@ en:
         link_url: Link URL
       landing_page:
         hide_from_list: Hide from "Apartments for Rent By Region" List
-        local_info_feed: Local Info Feed
         masthead_body: Masthead Body
         masthead_image: Masthead Image
         masthead_image_url: Masthead Image URL
@@ -377,7 +376,6 @@ en:
         listing_image: Listing Image
         listing_title: Listing Title
         listing_text: Listing Copy
-        local_info_feed: Local Info Feed
         media_meta_description: 'Photos & Videos SEO Description'
         media_meta_keywords: 'Photos & Videos SEO Keywords'
         media_meta_title: 'Photos & Videos SEO Title'

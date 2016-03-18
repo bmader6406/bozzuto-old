@@ -10,7 +10,6 @@ ActiveAdmin.register LandingPage do
                 :masthead_image,
                 :masthead_image_url,
                 :promo_id,
-                :local_info_feed_id,
                 :secondary_title,
                 :secondary_body,
                 :published,
@@ -63,7 +62,6 @@ ActiveAdmin.register LandingPage do
             end
             row :masthead_image_url
             row :promo
-            row :local_info_feed
             row :secondary_title
             row :secondary_body do |page|
               raw page.secondary_body
@@ -158,7 +156,6 @@ ActiveAdmin.register LandingPage do
           input :masthead_image,                  as: :image
           input :masthead_image_url
           input :promo,                           as: :chosen
-          input :local_info_feed,                 as: :chosen
           input :secondary_title
           input :secondary_body,                  as: :redactor
           input :published

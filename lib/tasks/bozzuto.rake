@@ -52,24 +52,6 @@ namespace :bozzuto do
     enqueue("psi")
   end
 
-  # TODO remove with Feed (yahoo pipes) RF 3-17-16
-=begin
-  desc 'Refresh Local Info feeds'
-  task :refresh_local_info_feeds => :environment do
-    log_task 'Refreshing RSS feeds'
-
-    Feed.all.each do |feed|
-      begin
-        puts "  Refreshing #{feed.name} feed (#{feed.url})"
-        feed.refresh!
-      rescue => e
-        report_error('load RSS feed', e)
-        Airbrake.notify(e)
-      end
-    end
-  end
-=end
-
   desc 'Send recurring emails'
   task :send_recurring_emails => :environment do
     log_task 'Sending recurring emails'

@@ -24,10 +24,6 @@ module Bozzuto::Exports
           twitter_account = TwitterAccount.new(:username => 'TheBozzutoGroup')
           twitter_account.save(:validate => false)
 
-          local_info_feed = Feed.make_unsaved(:url => 'http://bozzuto.com/feed')
-          local_info_feed.expects(:feed_valid?)
-          local_info_feed.save
-
           @expiration_date = Time.current.advance(:days => 15)
           promo = Promo.make(:active,
             :title           => 'on sale meow',
@@ -64,7 +60,6 @@ module Bozzuto::Exports
             :website_url             => 'http://what.up',
             :latitude                => 0.0,
             :longitude               => 45.0,
-            :local_info_feed         => local_info_feed,
             :promo_id                => promo.id,
             :listing_image_file_name => 'test.jpg'
           )
@@ -243,10 +238,6 @@ module Bozzuto::Exports
 
         it "contains a directions url" do
           @test_community.directions_url.should == 'http://maps.google.com/maps?daddr=100%20Gooby%20Pls,%20Bogsville,%20NC'
-        end
-
-        it "contains local info RSS feed" do
-          @test_community.local_info_feed.should == 'http://bozzuto.com/feed'
         end
 
         it "contains the website url" do

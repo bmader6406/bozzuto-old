@@ -4,7 +4,6 @@ class CommunityTest < ActiveSupport::TestCase
   context "A Community" do
     subject { Community.new }
 
-    should belong_to(:local_info_feed)
     should belong_to(:promo)
     should belong_to(:twitter_account)
     should have_many(:photos)
@@ -249,41 +248,6 @@ class CommunityTest < ActiveSupport::TestCase
         it "returns true" do
           subject.has_active_promo?.should == true
         end
-      end
-    end
-
-    context "with no Feed" do
-      it "returns an empty array on #local_info" do
-        subject.local_info_feed.should == nil
-        subject.local_info.should == []
-      end
-
-      it "returns false on #has_local_reviews?" do
-        subject.has_local_info?.should == false
-      end
-    end
-
-    context "with a Yelp Feed" do
-      before do
-        @feed = Feed.make_unsaved
-        @feed.expects(:feed_valid?)
-        @feed.save
-
-        3.times { FeedItem.make :feed => @feed }
-        subject.local_info_feed = @feed
-        subject.save
-      end
-
-      it "returns the feed items on #local_info" do
-        subject.local_info.length.should == 3
-
-        3.times do |i|
-          subject.local_info[i].should == @feed.items[i]
-        end
-      end
-
-      it "returns true on #has_local_info?" do
-        subject.has_local_info?.should == true
       end
     end
 

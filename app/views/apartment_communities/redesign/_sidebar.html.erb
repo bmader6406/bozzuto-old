@@ -103,36 +103,6 @@
   </div>
 <% end %>
 
-
-<% if community.has_local_info? %>
-  <div class="cty-sidebar">
-    <h4 class="cty-sidebar-heading hdr-narrow">
-      Local Info
-    </h4>
-
-    <div class="cty-sidebar-content">
-      <ul>
-        <% community.local_info.take(5).each do |info| %>
-          <li class="cty-local-info-item">
-            <h5 class="cty-local-info-heading">
-              <%= link_to info.title.gsub(/on Yelp$/, ''), info.url %>
-            </h5>
-
-            <p class="cty-local-info-date">
-              <%= info.published_at.to_formatted_s(:month_day_year) %>
-            </p>
-
-            <p class="cty-local-info-summary">
-              <%= truncate_html(info.description.html_safe, :length => 75) %>
-            </p>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-<% end %>
-
-
 <% content_for :end_of_body do %>
   <!-- Send to Phone modal -->
   <div class="cty-send-to-phone-modal modal modal-padding">

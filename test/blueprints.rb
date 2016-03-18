@@ -242,11 +242,6 @@ DnrConfiguration.blueprint do
   customer_code { (rand(3000) + 500).to_s }
 end
 
-Feed.blueprint do
-  name { Sham.unique_name }
-  url  { Sham.feed_url }
-end
-
 FeedFile.blueprint do
   feed_record       { ApartmentUnit.make }
   external_cms_id   { Sham.vaultware_id }
@@ -255,14 +250,6 @@ FeedFile.blueprint do
   name              { 'Unit 4B Kitchen' }
   source            { 'http://images.com/unit-4b-kitchen.jpg' }
   self.format       { 'image/jpeg' } # Need to preface with self since Kernel#format is a thing.
-end
-
-FeedItem.blueprint do
-  title        { Faker::Lorem.sentence }
-  url          { Faker::Internet.domain_name }
-  description  { Faker::Lorem.paragraphs * ' ' }
-  published_at { Time.now }
-  feed
 end
 
 GreenFeature.blueprint do

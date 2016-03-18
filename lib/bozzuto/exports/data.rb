@@ -81,10 +81,6 @@ module Bozzuto
           "http://maps.google.com/maps?daddr=#{URI.encode(address)}"
         end
 
-        def local_info_feed
-          super.try(:url)
-        end
-
         def nearby_communities
           super.included_in_export
         end

@@ -27,7 +27,6 @@ ActiveAdmin.register ApartmentCommunity do
                 :brochure,
                 :brochure_url,
                 :schedule_tour_url,
-                :local_info_feed_id,
                 :listing_image,
                 :listing_title,
                 :listing_text,
@@ -207,7 +206,6 @@ ActiveAdmin.register ApartmentCommunity do
             row :brochure
             row :brochure_url
             row :schedule_tour_url
-            row :local_info_feed
             row :listing_image do |community|
               if community.listing_image.present?
                 image_tag community.listing_image
@@ -423,7 +421,6 @@ ActiveAdmin.register ApartmentCommunity do
           input :brochure
           input :brochure_url
           input :schedule_tour_url
-          input :local_info_feed,             as: :chosen
           input :listing_image,               as: :image
           input :listing_title
           input :listing_text,                as: :redactor

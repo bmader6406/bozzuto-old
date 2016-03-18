@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317124459) do
+ActiveRecord::Schema.define(version: 20160318200813) do
 
   create_table "ad_sources", force: :cascade do |t|
     t.string   "domain_name", limit: 255, null: false
@@ -500,24 +500,6 @@ ActiveRecord::Schema.define(version: 20160317124459) do
   end
 
   add_index "feed_files", ["feed_record_id", "feed_record_type"], name: "index_feed_files_on_feed_record_id_and_feed_record_type", using: :btree
-
-  create_table "feed_items", force: :cascade do |t|
-    t.string   "title",        limit: 255,   null: false
-    t.string   "url",          limit: 255,   null: false
-    t.text     "description",  limit: 65535, null: false
-    t.datetime "published_at",               null: false
-    t.integer  "feed_id",      limit: 4,     null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "feeds", force: :cascade do |t|
-    t.string   "url",          limit: 255, null: false
-    t.datetime "refreshed_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name",         limit: 255, null: false
-  end
 
   create_table "file_uploads", force: :cascade do |t|
     t.string   "file_file_name",    limit: 255

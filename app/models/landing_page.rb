@@ -29,7 +29,6 @@ class LandingPage < ActiveRecord::Base
 
   belongs_to :state
   belongs_to :promo
-  belongs_to :local_info_feed, :class_name => 'Feed'
 
   after_save :set_positions_of_popular_properties
 

@@ -23,7 +23,6 @@ ActiveAdmin.register HomeCommunity do
                 :brochure_type,
                 :brochure,
                 :brochure_url,
-                :local_info_feed_id,
                 :listing_image,
                 :listing_title,
                 :listing_text,
@@ -119,7 +118,6 @@ ActiveAdmin.register HomeCommunity do
             row(:brochure_type) { |community| community.brochure_type == Property::USE_BROCHURE_URL ? 'URL' : 'File' }
             row :brochure
             row :brochure_url
-            row :local_info_feed
             row :listing_image do |community|
               if community.listing_image.present?
                 image_tag community.listing_image
@@ -299,7 +297,6 @@ ActiveAdmin.register HomeCommunity do
           input :brochure_type,               as: :chosen, collection: Property::BROCHURE_TYPE
           input :brochure
           input :brochure_url
-          input :local_info_feed,             as: :chosen
           input :listing_image,               as: :image
           input :listing_title
           input :listing_text,                as: :redactor

@@ -13,18 +13,3 @@
     <% end %>
   <% end %>
 </ul>
-
-<%= if_present?(@page.local_info_feed) do |feed| %>
-  <ul class="local-info-feed">
-    <% feed.items.recent.each do |item| %>
-      <li>
-        <h3><%= link_to item.title, item.url %></h3>
-        <p class="date">
-          <%= item.published_at.to_formatted_s(:month_day_year) %>
-        </p>
-
-        <p><%= truncate(item.description, :length => 130) %></p>
-      </li>
-    <% end %>
-  </ul>
-<% end %>

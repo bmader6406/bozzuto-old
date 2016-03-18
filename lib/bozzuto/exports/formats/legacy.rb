@@ -87,7 +87,6 @@ module Bozzuto::Exports
           node.tag! 'OverviewBullet3',      property.overview_bullet_3
           node.tag! 'NeighborhoodText',     property.neighborhood_text
           node.tag! 'DirectionsURL',        property.directions_url
-          node.tag! 'LocalInfoRSSURL',      property.local_info_feed
           node.tag! 'ListingImageURL',      property.listing_image
           node.tag! 'VideoURL',             property.video_url
           node.tag! 'FacebookURL',          property.facebook_url

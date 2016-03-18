@@ -12,7 +12,6 @@ class Community < Property
 
   acts_as_list :column => 'featured_position'
 
-  belongs_to :local_info_feed, :class_name => 'Feed'
   belongs_to :promo
   belongs_to :twitter_account
 
@@ -70,14 +69,6 @@ class Community < Property
 
   def has_overview_bullets?
     overview_bullets.any?
-  end
-
-  def local_info
-    has_local_info? ? local_info_feed.items : []
-  end
-
-  def has_local_info?
-    local_info_feed.present? && local_info_feed.items.any?
   end
 
   def has_active_promo?
