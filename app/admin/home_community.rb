@@ -13,7 +13,6 @@ ActiveAdmin.register HomeCommunity do
                 :mobile_phone_number,
                 :latitude,
                 :longitude,
-                :ufollowup_id,
                 :website_url,
                 :website_url_text,
                 :video_url,
@@ -252,7 +251,6 @@ ActiveAdmin.register HomeCommunity do
             row 'DNR Customer Code' do |community|
               community.dnr_configuration.try(:customer_code)
             end
-            row :ufollowup_id
             row :show_rtrk_code do |community|
               status_tag community.show_rtrk_code
             end
@@ -416,7 +414,6 @@ ActiveAdmin.register HomeCommunity do
             end
           end
 
-          input :ufollowup_id
           input :show_rtrk_code
         end
       end

@@ -50,7 +50,6 @@ SitemapGenerator::Sitemap.create do
     add apartment_community_neighborhood_path(a),      sitemap_options
     add apartment_community_contact_path(a),           sitemap_options
     add apartment_community_media_path(a),             sitemap_options
-    add apartment_community_ufollowup_path(a),         sitemap_options.merge({ :priority => 0.5 })
   end
 
   # HomeCommunity

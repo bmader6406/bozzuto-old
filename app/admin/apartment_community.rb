@@ -13,7 +13,6 @@ ActiveAdmin.register ApartmentCommunity do
                 :mobile_phone_number,
                 :latitude,
                 :longitude,
-                :ufollowup_id,
                 :website_url,
                 :website_url_text,
                 :availability_url,
@@ -364,7 +363,6 @@ ActiveAdmin.register ApartmentCommunity do
             row 'Mediaplex ROI Name' do |community|
               community.mediaplex_tag.try(:roi_name)
             end
-            row :ufollowup_id
             row :show_rtrk_code do |community|
               status_tag community.show_rtrk_code
             end
@@ -540,7 +538,6 @@ ActiveAdmin.register ApartmentCommunity do
             end
           end
 
-          input :ufollowup_id
           input :show_rtrk_code
         end
       end

@@ -404,7 +404,6 @@ en:
         video_url: Video URL
         website_url: Website URL
         website_url_text: Website URL Text
-        ufollowup_id: uFollowUp ID
         zip_code: ZIP Code
       property_amenity:
         primary_type: Primary Type

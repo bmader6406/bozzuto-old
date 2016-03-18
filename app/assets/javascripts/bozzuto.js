@@ -138,9 +138,6 @@ window.bozzuto = {};
     $('form#lasso-form').submit(function() {
       setCookie('lasso_email', $('input[name=Emails\[Primary\]]', this).val());
     });
-    $('form#ufollowup-form').submit(function() {
-      setCookie('ufollowup_email', $('input[name=prospectForm.email1]', this).val());
-    });
 
     viewMoreFloorPlanGroups($('.floor-plans .floor-plan-group'));
 

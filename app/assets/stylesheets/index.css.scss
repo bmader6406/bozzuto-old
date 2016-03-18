@@ -4654,14 +4654,10 @@ div.wysiwyg ul li {
   width: 175px;
 }
 
-#ufollowup-form {
-  margin-top: 1.5em;
-}
 
 #community-contact-form form input,
 #new_buzz input,
-.contact .column-main input,
-#ufollowup-form input {
+.contact .column-main input {
   width: 315px;
 }
 
@@ -4683,52 +4679,21 @@ div.wysiwyg ul li {
 }
 
 #community-contact-form form p.checkboxes input,
-#new_buzz p.checkboxes input,
-#ufollowup-form div.checkboxes input {
+#new_buzz p.checkboxes input {
   height: auto;
   margin-right: 15px;
   width: auto;
 }
 
 #community-contact-form form p.checkboxes label,
-#new_buzz p.checkboxes label,
-#ufollowup-form div.checkboxes label {
+#new_buzz p.checkboxes label {
   display: inline;
   float: none;
 }
 
 #community-contact-form form fieldset,
-#new_buzz fieldset,
-#ufollowup-form fieldset {
+#new_buzz fieldset {
   margin-bottom: 2em;
-}
-
-#ufollowup-form div.field {
-  background: transparent image-url('structure/bg-about-sidebar-section.gif') no-repeat bottom 170px;
-  margin-bottom: 1em;
-  padding-left: 170px;
-  padding-bottom: 1em;
-  position: relative;
-  width: 350px;
-}
-#ufollowup-form div.submit {
-  background: none;
-}
-#ufollowup-form div.field label,
-#ufollowup-form div.field p.label {
-  font-size: 14px;
-  padding-right: 15px;
-  position: absolute;
-  top: 0; left: 0;
-  width: 155px;
-}
-#ufollowup-form div.checkboxes label {
-  font-size: 12px;
-  position: static;
-  width: auto;
-}
-#ufollowup-form div.checkboxes h4 {
-  font-size: 16px;
 }
 
 #community-contact-form form p.submit,
@@ -4747,7 +4712,6 @@ div.wysiwyg ul li {
   height: 30px;
   padding: 12px 8px 8px;
 }
-
 
 /* @end */
 

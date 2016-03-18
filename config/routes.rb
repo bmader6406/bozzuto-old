@@ -42,7 +42,6 @@ Bozzuto::Application.routes.draw do
 
   scope '/apartments' do
     scope '/communities' do
-      get 'ufollowup_thank_you' => 'ufollowup#thank_you', :as => :ufollowup_thank_you
 
       # Neighborhoods
       regex = /[-A-Za-z]+(\d+)?/
@@ -118,10 +117,6 @@ Bozzuto::Application.routes.draw do
       resources :media,
                 :controller => :community_media,
                 :only       => :index
-
-      resource :ufollowup,
-               :controller => :ufollowup,
-               :only       => [:show, :create]
     end
   end
 
