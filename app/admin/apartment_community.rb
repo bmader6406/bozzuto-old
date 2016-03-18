@@ -481,7 +481,8 @@ ActiveAdmin.register ApartmentCommunity do
                     link_to I18n.t('active_admin.edit'), polymorphic_url([:edit, :admin, page])
                     link_to I18n.t('active_admin.delete'), polymorphic_url([:admin, page]), method: :delete, data: { confirm: I18n.t('active_admin.delete_confirmation') }
                   else
-                    link_to "Add New", polymorphic_url([:new, :admin, page.class.model_name.singular_route_key]), class: "button"
+                    options = { page.class.model_name.singular_route_key => { property_id: resource.id, property_type: 'ApartmentCommunity' } }
+                    link_to "Add New", polymorphic_url([:new, :admin, page.class.model_name.singular_route_key], options), class: "button"
                   end
                 end
               end

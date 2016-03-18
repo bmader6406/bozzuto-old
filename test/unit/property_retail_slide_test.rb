@@ -10,7 +10,7 @@ class PropertyRetailSlideTest < ActiveSupport::TestCase
 
     ['to_s', 'typus_name'].each do |method|
       describe "##{method}" do
-        subject { PropertyRetailSlide.make(:name => 'Retail Storefront') }
+        subject { PropertyRetailSlide.make(name: 'Retail Storefront') }
 
         it "returns the slide name" do
           subject.public_send(method).should == 'Retail Storefront'

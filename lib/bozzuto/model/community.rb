@@ -8,6 +8,7 @@ module Bozzuto
         neighborhood_page
         contact_page
         tours_page
+        retail_page
       )
 
       included do

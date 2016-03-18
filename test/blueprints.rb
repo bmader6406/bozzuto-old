@@ -530,7 +530,7 @@ PropertyRetailSlide.blueprint do
   property_retail_page
   name                  { Faker::Lorem.words(1) }
   image_file_name       { Sham.file_name }
-  image_content_type    { 'text/jpg' }
+  image_content_type    { 'image/jpg' }
 end
 
 PropertySlideshow.blueprint do
