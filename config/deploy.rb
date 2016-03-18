@@ -1,4 +1,5 @@
 require 'viget/deployment/rails'
+require 'capistrano-resque'
 
 set :application, 'bozzuto'
 
@@ -8,6 +9,11 @@ set :slack_emoji,   ':sparkles:'
 
 set :sync_directories, ["public/system"]
 set :sync_backups, 3
+
+set :workers, { '*' => 1 }
+set :resque_environment_task, true
+
+after "deploy:restart", "resque:restart"
 
 desc 'watch logs'
 task :logs, :roles => :app do
