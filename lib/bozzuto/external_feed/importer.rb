@@ -6,9 +6,9 @@ module Bozzuto
       attr_reader :feed
 
       delegate :file,
-               :mark_as_processing,
-               :mark_as_success,
-               :mark_as_failure,
+               :mark_as_processing!,
+               :mark_as_success!,
+               :mark_as_failure!,
                to: :feed
 
       def initialize(feed)
@@ -21,15 +21,15 @@ module Bozzuto
       end
 
       def call
-        mark_as_processing
+        mark_as_processing!
         clear_property_flags
 
         XmlParser.new(self).parse
 
         set_property_flags
-        mark_as_success
+        mark_as_success!
       rescue => e
-        mark_as_failure(e)
+        mark_as_failure!(e)
       end
 
       def collect(node)

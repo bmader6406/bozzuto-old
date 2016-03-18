@@ -71,6 +71,35 @@ module Bozzuto::ExternalFeed::Psi
               f.external_cms_id.should   == '184743'
               f.external_cms_type.should == 'psi'
             end
+
+            c.floor_plans[1].tap do |f|
+              f.name.should              == 'A10'
+              f.availability_url.should  == 'http://madox.prospectportal.com/Apartments/module/property_info/property[id]/49989/launch_guest_card/1/property_floorplan[id]/184745'
+              f.available_units.should   == 0
+              f.bedrooms.should          == 1
+              f.bathrooms.should         == 1
+              f.min_square_feet.should   == 1018
+              f.max_square_feet.should   == 1018
+              f.min_rent.should          == 0
+              f.max_rent.should          == 0
+              f.image_url.should         == 'https://medialibrarycdn.propertysolutions.com/media_library/4346/507d83cc5f062493.jpg'
+              f.unit_count.should        == 0
+              f.floor_plan_group.should  == 'one_bedroom'
+              f.external_cms_id.should   == '184745'
+              f.external_cms_type.should == 'psi'
+            end
+
+            c.property_amenities.count.should == 2
+
+            c.property_amenities.first.tap do |a|
+              a.primary_type.should == 'Other'
+              a.description.should  == '24 Hour Fitness Gym'
+            end
+
+            c.property_amenities.last.tap do |a|
+              a.primary_type.should == 'Other'
+              a.description.should  == 'Bike Storage'
+            end
           end
 
           subject.data[1].tap do |c|

@@ -27,7 +27,19 @@ class PropertyFeedImportTest < ActiveSupport::TestCase
       end
     end
 
-    describe "#mark_as_queued" do
+    PropertyFeedImport::STATES.each do |state|
+      describe "##{state}?" do
+        it "returns true" do
+          PropertyFeedImport.new(state: state).send("#{state}?").should == true
+        end
+
+        it "returns false" do
+          PropertyFeedImport.new(state: nil).send("#{state}?").should == false
+        end
+      end
+    end
+
+    describe "#mark_as_queued!" do
       subject do
         PropertyFeedImport.make(
           state:       "processing",
@@ -37,7 +49,7 @@ class PropertyFeedImportTest < ActiveSupport::TestCase
       end
       
       before do
-        subject.mark_as_queued
+        subject.mark_as_queued!
       end
 
       it "sets state" do
@@ -53,7 +65,7 @@ class PropertyFeedImportTest < ActiveSupport::TestCase
       end
     end
 
-    describe "#mark_as_processing" do
+    describe "#mark_as_processing!" do
       subject do
         PropertyFeedImport.make(
           state:       "queued",
@@ -62,7 +74,7 @@ class PropertyFeedImportTest < ActiveSupport::TestCase
       end
       
       before do
-        subject.mark_as_processing
+        subject.mark_as_processing!
       end
 
       it "sets state" do
@@ -74,7 +86,7 @@ class PropertyFeedImportTest < ActiveSupport::TestCase
       end
     end
 
-    describe "#mark_as_success" do
+    describe "#mark_as_success!" do
       subject do
         PropertyFeedImport.make(
           state:       "queued",
@@ -83,7 +95,7 @@ class PropertyFeedImportTest < ActiveSupport::TestCase
       end
       
       before do
-        subject.mark_as_success
+        subject.mark_as_success!
       end
 
       it "sets state" do
@@ -95,7 +107,7 @@ class PropertyFeedImportTest < ActiveSupport::TestCase
       end
     end
 
-    describe "#mark_as_failure" do
+    describe "#mark_as_failure!" do
       subject do
         PropertyFeedImport.make(
           state:       "queued",
@@ -105,7 +117,7 @@ class PropertyFeedImportTest < ActiveSupport::TestCase
       end
       
       before do
-        subject.mark_as_failure("error words")
+        subject.mark_as_failure!("error words")
       end
 
       it "sets state" do

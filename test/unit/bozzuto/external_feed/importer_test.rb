@@ -40,16 +40,16 @@ module Bozzuto::ExternalFeed
         subject { MockImporter.new(@feed) }
 
         it "marks the feed as processing" do
-          @feed.expects(:mark_as_processing)
-          @feed.stubs(:mark_as_success)
+          @feed.expects(:mark_as_processing!)
+          @feed.stubs(:mark_as_success!)
 
           subject.call
         end
 
         context "on success" do
           it "marks the feed as success" do
-            @feed.stubs(:mark_as_processing)
-            @feed.expects(:mark_as_success)
+            @feed.stubs(:mark_as_processing!)
+            @feed.expects(:mark_as_success!)
 
             subject.call
           end
@@ -57,8 +57,8 @@ module Bozzuto::ExternalFeed
 
         context "on failure" do
           it "marks the feed as failure" do
-            @feed.stubs(:mark_as_processing)
-            @feed.expects(:mark_as_failure)
+            @feed.stubs(:mark_as_processing!)
+            @feed.expects(:mark_as_failure!)
 
             @parser.stubs(:parse).raises(StandardError)
 

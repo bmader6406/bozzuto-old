@@ -35,11 +35,11 @@ class PropertyFeedImport < ActiveRecord::Base
 
   STATES.each do |state|
     define_method "#{state}?" do
-      self.state = state
+      self.state == state
     end
   end
 
-  def mark_as_queued
+  def mark_as_queued!
     update_attributes(
       state:       "queued",
       started_at:  nil,
@@ -47,21 +47,21 @@ class PropertyFeedImport < ActiveRecord::Base
     )
   end
 
-  def mark_as_processing
+  def mark_as_processing!
     update_attributes(
       state:      "processing",
       started_at: Time.now
     )
   end
 
-  def mark_as_success
+  def mark_as_success!
     update_attributes(
       state:       "success",
       finished_at: Time.now
     )
   end
 
-  def mark_as_failure(err = nil)
+  def mark_as_failure!(err = nil)
     update_attributes(
       state:       "failure",
       error:       err.to_s,
