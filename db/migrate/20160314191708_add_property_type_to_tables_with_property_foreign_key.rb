@@ -5,6 +5,7 @@ class AddPropertyTypeToTablesWithPropertyForeignKey < ActiveRecord::Migration
     add_column :property_neighborhood_pages,    :property_type, :string
     add_column :property_contact_pages,         :property_type, :string
     add_column :property_tours_pages,           :property_type, :string
+    add_column :property_retail_pages,          :property_type, :string
     add_column :photos,                         :property_type, :string
     add_column :videos,                         :property_type, :string
     add_column :body_slides,                    :property_type, :string

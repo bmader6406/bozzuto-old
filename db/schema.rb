@@ -280,11 +280,11 @@ ActiveRecord::Schema.define(version: 20160317124459) do
   add_index "area_memberships", ["tier"], name: "index_area_memberships_on_tier", using: :btree
 
   create_table "areas", force: :cascade do |t|
-    t.string   "name",                    limit: 255,                                                     null: false
+    t.string   "name",                    limit: 255,                                                      null: false
     t.string   "slug",                    limit: 255
-    t.decimal  "latitude",                              precision: 8, scale: 4,                           null: false
-    t.decimal  "longitude",                             precision: 8, scale: 4,                           null: false
-    t.integer  "metro_id",                limit: 4,                                                       null: false
+    t.decimal  "latitude",                              precision: 10, scale: 6,                           null: false
+    t.decimal  "longitude",                             precision: 10, scale: 6,                           null: false
+    t.integer  "metro_id",                limit: 4,                                                        null: false
     t.integer  "position",                limit: 4
     t.string   "banner_image_file_name",  limit: 255
     t.string   "listing_image_file_name", limit: 255
@@ -293,7 +293,7 @@ ActiveRecord::Schema.define(version: 20160317124459) do
     t.text     "description",             limit: 65535
     t.text     "detail_description",      limit: 65535
     t.integer  "state_id",                limit: 4
-    t.string   "area_type",               limit: 255,                           default: "neighborhoods", null: false
+    t.string   "area_type",               limit: 255,                            default: "neighborhoods", null: false
   end
 
   add_index "areas", ["metro_id"], name: "index_areas_on_metro_id", using: :btree
@@ -663,7 +663,7 @@ ActiveRecord::Schema.define(version: 20160317124459) do
   add_index "home_neighborhood_memberships", ["home_neighborhood_id"], name: "index_home_neighborhood_memberships_on_home_neighborhood_id", using: :btree
 
   create_table "home_neighborhoods", force: :cascade do |t|
-    t.string   "name",                       limit: 255,                              null: false
+    t.string   "name",                       limit: 255,                               null: false
     t.string   "slug",                       limit: 255
     t.decimal  "latitude",                                    precision: 10, scale: 6, null: false
     t.decimal  "longitude",                                   precision: 10, scale: 6, null: false
@@ -851,13 +851,13 @@ ActiveRecord::Schema.define(version: 20160317124459) do
   add_index "mediaplex_tags", ["trackable_type", "trackable_id"], name: "index_mediaplex_tags_on_trackable_type_and_trackable_id", using: :btree
 
   create_table "metros", force: :cascade do |t|
-    t.string   "name",                    limit: 255,                           null: false
+    t.string   "name",                    limit: 255,                            null: false
     t.string   "slug",                    limit: 255
     t.decimal  "latitude",                              precision: 10, scale: 6, null: false
     t.decimal  "longitude",                             precision: 10, scale: 6, null: false
     t.integer  "position",                limit: 4
     t.string   "banner_image_file_name",  limit: 255
-    t.string   "listing_image_file_name", limit: 255,                           null: false
+    t.string   "listing_image_file_name", limit: 255,                            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "detail_description",      limit: 65535
@@ -1118,14 +1118,14 @@ ActiveRecord::Schema.define(version: 20160317124459) do
   end
 
   create_table "properties", force: :cascade do |t|
-    t.string   "title",                                limit: 255,                                           null: false
+    t.string   "title",                                limit: 255,                                            null: false
     t.string   "subtitle",                             limit: 255
-    t.integer  "city_id",                              limit: 4,                                             null: false
-    t.boolean  "elite",                                                                      default: false, null: false
-    t.boolean  "smart_share",                                                                default: false, null: false
-    t.boolean  "smart_rent",                                                                 default: false, null: false
-    t.boolean  "green",                                                                      default: false, null: false
-    t.boolean  "non_smoking",                                                                default: false, null: false
+    t.integer  "city_id",                              limit: 4,                                              null: false
+    t.boolean  "elite",                                                                       default: false, null: false
+    t.boolean  "smart_share",                                                                 default: false, null: false
+    t.boolean  "smart_rent",                                                                  default: false, null: false
+    t.boolean  "green",                                                                       default: false, null: false
+    t.boolean  "non_smoking",                                                                 default: false, null: false
     t.string   "website_url",                          limit: 255
     t.string   "video_url",                            limit: 255
     t.string   "facebook_url",                         limit: 255
@@ -1153,10 +1153,10 @@ ActiveRecord::Schema.define(version: 20160317124459) do
     t.string   "overview_bullet_1",                    limit: 255
     t.string   "overview_bullet_2",                    limit: 255
     t.string   "overview_bullet_3",                    limit: 255
-    t.boolean  "published",                                                                  default: false, null: false
+    t.boolean  "published",                                                                   default: false, null: false
     t.string   "short_title",                          limit: 255
     t.string   "phone_number",                         limit: 255
-    t.integer  "brochure_type",                        limit: 4,                             default: 0,     null: false
+    t.integer  "brochure_type",                        limit: 4,                              default: 0,     null: false
     t.string   "brochure_link_text",                   limit: 255
     t.string   "brochure_file_name",                   limit: 255
     t.string   "brochure_content_type",                limit: 255
@@ -1165,7 +1165,7 @@ ActiveRecord::Schema.define(version: 20160317124459) do
     t.string   "meta_title",                           limit: 255
     t.string   "meta_description",                     limit: 255
     t.string   "meta_keywords",                        limit: 255
-    t.boolean  "show_lead_2_lease",                                                          default: false, null: false
+    t.boolean  "show_lead_2_lease",                                                           default: false, null: false
     t.string   "lead_2_lease_email",                   limit: 255
     t.date     "completion_date"
     t.string   "media_meta_title",                     limit: 255
@@ -1180,13 +1180,13 @@ ActiveRecord::Schema.define(version: 20160317124459) do
     t.integer  "position",                             limit: 4
     t.integer  "promo_id",                             limit: 4
     t.integer  "ufollowup_id",                         limit: 4
-    t.boolean  "has_completion_date",                                                        default: true,  null: false
+    t.boolean  "has_completion_date",                                                         default: true,  null: false
     t.string   "listing_promo_file_name",              limit: 255
     t.string   "listing_promo_content_type",           limit: 255
     t.integer  "listing_promo_file_size",              limit: 4
     t.string   "resident_link_text",                   limit: 255
     t.string   "resident_link_url",                    limit: 255
-    t.boolean  "featured",                                                                   default: false, null: false
+    t.boolean  "featured",                                                                    default: false, null: false
     t.integer  "featured_position",                    limit: 4
     t.string   "zip_code",                             limit: 255
     t.string   "lead_2_lease_id",                      limit: 255
@@ -1195,19 +1195,19 @@ ActiveRecord::Schema.define(version: 20160317124459) do
     t.string   "send_to_friend_mediamind_id",          limit: 255
     t.string   "send_to_phone_mediamind_id",           limit: 255
     t.string   "contact_mediamind_id",                 limit: 255
-    t.boolean  "featured_mobile",                                                            default: false
-    t.boolean  "under_construction",                                                         default: false
+    t.boolean  "featured_mobile",                                                             default: false
+    t.boolean  "under_construction",                                                          default: false
     t.string   "external_cms_type",                    limit: 255
     t.string   "schedule_tour_url",                    limit: 255
     t.string   "seo_link_text",                        limit: 255
     t.string   "seo_link_url",                         limit: 255
-    t.boolean  "show_rtrk_code",                                                             default: false, null: false
+    t.boolean  "show_rtrk_code",                                                              default: false, null: false
     t.text     "office_hours",                         limit: 65535
     t.string   "pinterest_url",                        limit: 255
     t.string   "website_url_text",                     limit: 255
     t.text     "neighborhood_description",             limit: 65535
     t.string   "neighborhood_listing_image_file_name", limit: 255
-    t.boolean  "included_in_export",                                                         default: true,  null: false
+    t.boolean  "included_in_export",                                                          default: true,  null: false
     t.integer  "secondary_lead_source_id",             limit: 4
     t.string   "hero_image_file_name",                 limit: 255
     t.string   "hero_image_content_type",              limit: 255
@@ -1218,7 +1218,7 @@ ActiveRecord::Schema.define(version: 20160317124459) do
     t.string   "short_description",                    limit: 255
     t.integer  "unit_count",                           limit: 4
     t.string   "external_management_id",               limit: 255
-    t.boolean  "found_in_latest_feed",                                                       default: true,  null: false
+    t.boolean  "found_in_latest_feed",                                                        default: true,  null: false
   end
 
   add_index "properties", ["core_id"], name: "index_properties_on_core_id", using: :btree
@@ -1310,23 +1310,24 @@ ActiveRecord::Schema.define(version: 20160317124459) do
   add_index "property_neighborhood_pages", ["property_id"], name: "index_property_neighborhood_pages_on_property_id", using: :btree
 
   create_table "property_retail_pages", force: :cascade do |t|
-    t.integer  "property_id",      null: false
-    t.text     "content"
-    t.string   "meta_title"
-    t.string   "meta_description"
-    t.string   "meta_keywords"
+    t.integer  "property_id",      limit: 4,     null: false
+    t.text     "content",          limit: 65535
+    t.string   "meta_title",       limit: 255
+    t.string   "meta_description", limit: 255
+    t.string   "meta_keywords",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "property_type",    limit: 255
   end
 
   create_table "property_retail_slides", force: :cascade do |t|
-    t.string   "name",                    null: false
-    t.string   "image_file_name",         null: false
-    t.string   "image_content_type",      null: false
-    t.string   "video_url"
-    t.string   "link_url"
-    t.integer  "position"
-    t.integer  "property_retail_page_id"
+    t.string   "name",                    limit: 255, null: false
+    t.string   "image_file_name",         limit: 255, null: false
+    t.string   "image_content_type",      limit: 255, null: false
+    t.string   "video_url",               limit: 255
+    t.string   "link_url",                limit: 255
+    t.integer  "position",                limit: 4
+    t.integer  "property_retail_page_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end

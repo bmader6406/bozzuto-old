@@ -23,6 +23,7 @@ class PopulatePropertyTypeOnTablesWithPropertyForeignKey < ActiveRecord::Migrati
       PropertyNeighborhoodPage,
       PropertyContactPage,
       PropertyToursPage,
+      PropertyRetailPage,
       Photo,
       Video,
       BodySlide,
@@ -52,6 +53,10 @@ class PopulatePropertyTypeOnTablesWithPropertyForeignKey < ActiveRecord::Migrati
   end
 
   class PropertyToursPage < ActiveRecord::Base
+    belongs_to :property
+  end
+
+  class PropertyRetailPage < ActiveRecord::Base
     belongs_to :property
   end
 
