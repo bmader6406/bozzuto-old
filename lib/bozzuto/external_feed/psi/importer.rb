@@ -94,6 +94,12 @@ module Bozzuto
           )
         end
 
+        def build_property_amenities(property)
+          property.xpath('./Amenities/PropertyAmenities/Amenity').map do |amenity|
+            build_property_amenity(amenity)
+          end
+        end
+
         def build_property_amenity(amenity)
           Bozzuto::ExternalFeed::PropertyAmenity.new(
             :primary_type => 'Other',
