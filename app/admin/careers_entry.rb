@@ -1,7 +1,7 @@
 ActiveAdmin.register CareersEntry do
   config.sort_order = 'position_asc'
 
-  menu parent: 'Content', label: 'Career Entries'
+  menu parent: 'Components', label: 'Career Entries'
 
   reorderable
 

@@ -1,5 +1,5 @@
 ActiveAdmin.register LassoAccount do
-  menu parent: 'Contact'
+  menu parent: 'Components'
 
   permit_params :property_id,
                 :uid,

@@ -1,7 +1,7 @@
 ActiveAdmin.register ContactTopic do
   config.sort_order = 'position_asc'
 
-  menu parent: 'Content', label: 'Contact Form Topics'
+  menu parent: 'Components', label: 'Contact Form Topics'
   
   filter :topic_cont, label: 'Topic'
 

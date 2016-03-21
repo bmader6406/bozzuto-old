@@ -1,5 +1,5 @@
 ActiveAdmin.register Promo do
-  menu parent: 'Content'
+  menu parent: 'Components'
 
   permit_params :title,
                 :subtitle,
