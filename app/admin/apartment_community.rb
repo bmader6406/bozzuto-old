@@ -67,15 +67,6 @@ ActiveAdmin.register ApartmentCommunity do
                   :upcoming_intro_text,
                   :upcoming_thank_you_text
                 ],
-                property_amenities_attributes: [
-                  :id,
-                  :property_id,
-                  :property_type,
-                  :primary_type,
-                  :sub_type,
-                  :description,
-                  :_destroy
-                ],
                 dnr_configuration_attributes: [
                   :id,
                   :property_id,
@@ -88,18 +79,6 @@ ActiveAdmin.register ApartmentCommunity do
                   :trackable_type,
                   :page_name,
                   :roi_name
-                ],
-                office_hours_attributes: [
-                  :id,
-                  :property_id,
-                  :property_type,
-                  :day,
-                  :closed,
-                  :opens_at,
-                  :opens_at_period,
-                  :closes_at,
-                  :closes_at_period,
-                  :_destroy
                 ]
 
   scope :all, default: true
@@ -457,10 +436,10 @@ ActiveAdmin.register ApartmentCommunity do
         end
 
         tab 'Amenities' do
-          has_many :property_amenities, heading: false, allow_destroy: true, new_record: 'Add Amenity' do |amenity|
-            amenity.input :primary_type, as: :select, collection: PropertyAmenity::PRIMARY_TYPE
-            amenity.input :sub_type,     as: :select, collection: PropertyAmenity::SUB_TYPE
-            amenity.input :description
+          association_table_for :property_amenities do
+            column :primary_type
+            column :sub_type
+            column :description
           end
         end
 
@@ -514,13 +493,8 @@ ActiveAdmin.register ApartmentCommunity do
         end
 
         tab 'Office Hours' do
-          has_many :office_hours, heading: false, allow_destroy: true do |office_hour|
-            office_hour.input :day, as: :select, collection: OfficeHour::DAY
-            office_hour.input :closed
-            office_hour.input :opens_at
-            office_hour.input :opens_at_period, as: :select, collection: OfficeHour::OPENS_AT_PERIOD
-            office_hour.input :closes_at
-            office_hour.input :closes_at_period, as: :select, collection: OfficeHour::CLOSES_AT_PERIOD
+          association_table_for :office_hours do
+            column('') { |hour| hour.to_s }
           end
         end
 
