@@ -1,5 +1,5 @@
 ActiveAdmin.register Image do
-  menu parent: 'Media'
+  menu false
 
   actions :all, except: :destroy
 

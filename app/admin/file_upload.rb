@@ -1,5 +1,5 @@
 ActiveAdmin.register FileUpload do
-  menu parent: 'Media'
+  menu false
 
   actions :all, except: :destroy
 
