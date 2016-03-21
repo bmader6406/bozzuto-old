@@ -1,4 +1,6 @@
 ActiveAdmin.register Promo do
+  config.sort_order = 'expiration_date_desc'
+
   menu parent: 'Components'
 
   permit_params :title,
