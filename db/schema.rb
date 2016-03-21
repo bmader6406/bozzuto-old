@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160318200813) do
+ActiveRecord::Schema.define(version: 20160321193058) do
 
   create_table "ad_sources", force: :cascade do |t|
     t.string   "domain_name", limit: 255, null: false
@@ -1254,6 +1254,8 @@ ActiveRecord::Schema.define(version: 20160318200813) do
     t.string   "schedule_appointment_url", limit: 255
     t.string   "local_phone_number",       limit: 255
     t.string   "property_type",            limit: 255
+    t.text     "contact_form_note",        limit: 65535
+    t.text     "thank_you_text",           limit: 65535
   end
 
   add_index "property_contact_pages", ["property_id"], name: "index_property_contact_pages_on_property_id", using: :btree

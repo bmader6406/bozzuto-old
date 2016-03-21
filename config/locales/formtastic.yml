@@ -146,6 +146,9 @@ en:
         mobile_phone_number: Phone Number will be shown if this field is blank
         short_description: Shown beneath the title in the main slideshow, must be shorter than 40 characters
         short_title: Shown as the title in the main slideshow, must be shorter than 22 characters
+      property_contact_page:
+        contact_form_note: Shown directly above the contact form.
+        thank_you_text: Shown on the thank you page after a contact form is submitted.
       property_feature:
         icon: Image dimensions should be 44x44. If icon image is not present, icon will not be shown in listings.
       property_slide:

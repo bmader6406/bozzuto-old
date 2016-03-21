@@ -1,9 +1,11 @@
 <% content_for :javascript do %>
-  <%= hyly_script :context => @community %>
+  <%= hyly_script context: @community %>
 <% end %>
 
 <h3>Ready to speak with a leasing consultant?</h3>
 
-<p>Fill out the form below to let us know how we can help.</p>
+<p>
+  <%= raw(@page.contact_form_note).presence || 'Fill out the form below to let us know how we can help.' %>
+</p>
 
-<%= hyly_form :redirect_to => thank_you_apartment_community_contact_url %>
+<%= hyly_form redirect_to: thank_you_apartment_community_contact_url %>

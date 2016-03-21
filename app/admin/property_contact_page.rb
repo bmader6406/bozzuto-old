@@ -6,6 +6,8 @@ ActiveAdmin.register PropertyContactPage do
   permit_params :property,
                 :property_id,
                 :property_type,
+                :contact_form_note,
+                :thank_you_text,
                 :content,
                 :schedule_appointment_url,
                 :local_phone_number,
@@ -29,6 +31,12 @@ ActiveAdmin.register PropertyContactPage do
             row :property
             row :schedule_appointment_url
             row :local_phone_number
+            row :contact_form_note do
+              raw page.contact_form_note
+            end
+            row :thank_you_text do
+              raw page.thank_you_text
+            end
             row :content do
               raw page.content
             end
@@ -57,6 +65,8 @@ ActiveAdmin.register PropertyContactPage do
           input :property,                 as: :polymorphic_select, grouped_options: community_select_options, input_html: { class: 'chosen-input' }
           input :schedule_appointment_url
           input :local_phone_number
+          input :contact_form_note,        as: :redactor
+          input :thank_you_text,           as: :redactor
           input :content,                  as: :redactor
         end
 

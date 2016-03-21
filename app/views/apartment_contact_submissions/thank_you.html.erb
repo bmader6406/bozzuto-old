@@ -10,7 +10,7 @@
         config.upcoming_thank_you_text.length > 10 %>
     <%= raw(config.upcoming_thank_you_text) %>
   <% else %>
-    <%= snippet('Apartments Thank You Text') %>
+    <%= raw(@page.thank_you_text).presence || snippet('Apartments Thank You Text') %>
   <% end %>
 </div>
 
