@@ -5,6 +5,7 @@ ActiveAdmin.register PropertyRetailPage do
 
   permit_params :property_id,
                 :property_type,
+                :content,
                 :meta_title,
                 :meta_description,
                 :meta_keywords
@@ -21,8 +22,8 @@ ActiveAdmin.register PropertyRetailPage do
       tab 'Details' do
         panel nil do
           attributes_table_for page do
-            row :id
             row :property
+            row :content
             row :created_at
             row :updated_at
           end
@@ -46,6 +47,7 @@ ActiveAdmin.register PropertyRetailPage do
       tabs do
         tab 'Details' do
           input :property, as: :polymorphic_select, grouped_options: community_select_options, input_html: { class: 'chosen-input' }
+          input :content,  as: :redactor
         end
 
         tab 'Seo' do
