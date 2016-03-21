@@ -49,7 +49,6 @@ ActiveAdmin.register ApartmentCommunity do
                 :floor_plans_meta_keywords,
                 :seo_link_text,
                 :seo_link_url,
-                :show_rtrk_code,
                 :published,
                 :featured,
                 :included_in_export,
@@ -363,9 +362,6 @@ ActiveAdmin.register ApartmentCommunity do
             row 'Mediaplex ROI Name' do |community|
               community.mediaplex_tag.try(:roi_name)
             end
-            row :show_rtrk_code do |community|
-              status_tag community.show_rtrk_code
-            end
           end
         end
       end
@@ -537,8 +533,6 @@ ActiveAdmin.register ApartmentCommunity do
               tag.input :roi_name
             end
           end
-
-          input :show_rtrk_code
         end
       end
 

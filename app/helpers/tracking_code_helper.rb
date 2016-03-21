@@ -7,22 +7,6 @@ module TrackingCodeHelper
     END
   end
 
-  def rtrk_code(community)
-    if community.show_rtrk_code?
-      <<-END.html_safe
-        <script type="text/javascript" >
-          var reachlocalTRKDOM="rtsys.rtrk.com ";
-          (function() {
-          var rlocal_load = document.createElement("script");
-          rlocal_load.type = "text/javascript";
-          rlocal_load.src = document.location.protocol+"//rtsys.rtrk.com/campaign_images/d1035/1035708/rltrk1.js ";
-          (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild (rlocal_load);
-          })();
-        </script>
-      END
-    end
-  end
-
   def value_click_apartment_thank_you_code
     '<img src="http://media.fastclick.net/w/roitrack.cgi?aid=1000044195" width=1 height=1 border=0>'.html_safe
   end

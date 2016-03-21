@@ -7,24 +7,6 @@ class TrackingCodeHelperTest < ActionView::TestCase
     end
   end
 
-  context "#rtrk_code" do
-    setup do
-      @community = ApartmentCommunity.make
-    end
-
-    should "return code if community can show it" do
-      @community.show_rtrk_code = true
-
-      assert_match /rtrk\.com/, rtrk_code(@community)
-    end
-
-    should "return nil if community cannot show it" do
-      @community.show_rtrk_code = false
-
-      assert_nil rtrk_code(@community)
-    end
-  end
-
   context "#value_click_apartment_thank_you_code" do
     should "output the correct code" do
       actual = '<img src="http://media.fastclick.net/w/roitrack.cgi?aid=1000044195" width=1 height=1 border=0>'

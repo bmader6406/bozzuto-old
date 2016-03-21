@@ -43,7 +43,6 @@ ActiveAdmin.register HomeCommunity do
                 :floor_plans_meta_title,
                 :floor_plans_meta_description,
                 :floor_plans_meta_keywords,
-                :show_rtrk_code,
                 :published,
                 property_features_ids: [],
                 dnr_configuration_attributes: [
@@ -251,9 +250,6 @@ ActiveAdmin.register HomeCommunity do
             row 'DNR Customer Code' do |community|
               community.dnr_configuration.try(:customer_code)
             end
-            row :show_rtrk_code do |community|
-              status_tag community.show_rtrk_code
-            end
           end
         end
 
@@ -413,8 +409,6 @@ ActiveAdmin.register HomeCommunity do
               conversion.input :bing_contact_action_id
             end
           end
-
-          input :show_rtrk_code
         end
       end
 
