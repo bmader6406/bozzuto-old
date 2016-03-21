@@ -1,5 +1,5 @@
 ActiveAdmin.register Page do
-  menu parent: 'Content'
+  menu false
 
   config.sort_order = "section_id_desc"
 

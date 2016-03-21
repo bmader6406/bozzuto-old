@@ -11,17 +11,6 @@ ActiveAdmin.register Section do
 
   filter :title_cont, label: 'Title'
 
-  # Work around for models who have overridden `to_param` in AA
-  # See SO issue:
-  # http://stackoverflow.com/questions/7684644/activerecordreadonlyrecord-when-using-activeadmin-and-friendly-id
-  before_filter do
-    Section.class_eval do
-      def to_param
-        id.to_s
-      end
-    end
-  end
-
   index do
     column :title
 
@@ -110,7 +99,9 @@ ActiveAdmin.register Section do
       tab 'Awards' do
         collection_panel_for :awards do
           table_for resource.awards do
-            column :title
+            column :title do |award|
+              link_to award, [:admin, award], target: :blank
+            end
             column :published
             column :published_at
           end
@@ -120,7 +111,9 @@ ActiveAdmin.register Section do
       tab 'News Posts' do
         collection_panel_for :news_posts do
           table_for resource.news_posts do
-            column :title
+            column :title do |news_post|
+              link_to news_post, [:admin, news_post], target: :blank
+            end
             column :published
             column :published_at
           end
@@ -130,7 +123,9 @@ ActiveAdmin.register Section do
       tab 'Press Releases' do
         collection_panel_for :press_releases do
           table_for resource.press_releases do
-            column :title
+            column :title do |press_release|
+              link_to press_release, [:admin, press_release], target: :blank
+            end
             column :published
             column :published_at
           end
@@ -218,5 +213,11 @@ ActiveAdmin.register Section do
     end
 
     actions
+  end
+
+  controller do
+    def find_resource
+      Section.friendly.find(params[:id])
+    end
   end
 end
