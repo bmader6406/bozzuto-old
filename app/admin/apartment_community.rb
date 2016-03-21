@@ -95,16 +95,17 @@ ActiveAdmin.register ApartmentCommunity do
     as:         :select,
     collection: Bozzuto::ExternalFeed::SOURCES.map { |feed| [I18n.t("bozzuto.feeds.#{feed}"), feed] }
 
-  action_item :delete_floor_plans, only: :show do
-    link_to 'Delete All Floor Plans', [:delete_floor_plans, :admin, resource]
-  end
+  action_item :custom_actions, only: :show do
+    dropdown_menu 'Custom Apartment Community Actions' do
+      item 'Preview', [resource], target: :blank
+      item 'Delete All Floor Plans', [:delete_floor_plans, :admin, resource]
 
-  action_item :disconnect, only: :show, if: -> { resource.managed_externally? } do
-    link_to "Disconnect from #{feed_name}", [:disconnect, :admin, resource]
-  end
-
-  action_item :merge_form, only: :show, if: -> { !resource.managed_externally? } do
-    link_to 'Merge with a Feed Property', [:merge_form, :admin, resource]
+      if resource.managed_externally?
+        item "Disconnect from #{feed_name}", [:disconnect, :admin, resource]
+      else
+        item 'Merge with a Feed Property', [:merge_form, :admin, resource]
+      end
+    end
   end
 
   action_item :export_field_audit, only: :index do
