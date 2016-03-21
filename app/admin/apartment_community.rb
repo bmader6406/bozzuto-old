@@ -528,9 +528,9 @@ ActiveAdmin.register ApartmentCommunity do
 
           panel 'Mediaplex' do
             inputs for: [:mediaplex_tag, f.object.mediaplex_tag || MediaplexTag.new(trackable: f.object)] do |tag|
-              # TODO Re-implement the Mediaplex Parser here
-              tag.input :page_name
-              tag.input :roi_name
+              tag.input :parser,    as: :mediaplex_parser
+              tag.input :page_name, input_html: { id: :mediaplex_tag_page_name }
+              tag.input :roi_name,  input_html: { id: :mediaplex_tag_roi_name }
             end
           end
         end

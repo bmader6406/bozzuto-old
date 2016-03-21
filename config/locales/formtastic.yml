@@ -92,6 +92,8 @@ en:
         masthead_image: Image dimensions should be 230x223
       masthead_slide:
         image: Image dimensions should be 230x223
+      mediaplex_tag:
+        code: Paste the Mediaplex iframe code in the box to load the Page Name and ROI Name automatically
       metro:
         banner_image: 'Image dimensions should be 1020x325'
         detail_description: This text will be shown in the breadcrumb of this Metro's show page.
