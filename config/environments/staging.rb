@@ -18,11 +18,11 @@ Bozzuto::Application.configure do
 
   config.active_support.deprecation = :log
 
+  config.force_ssl = true
+
   config.action_mailer.default_url_options = {
     :host => 'bozzuto.staging.vigetx.com'
   }
-
-  config.action_controller.asset_host = 'http://bozzuto.staging.vigetx.com'
 
   # See everything in the log (default is :info)
   # config.log_level = :debug

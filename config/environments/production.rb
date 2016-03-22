@@ -18,6 +18,8 @@ Bozzuto::Application.configure do
 
   config.active_support.deprecation = :log
 
+  config.force_ssl = true
+
   # See everything in the log (default is :info)
   # config.log_level = :debug
 
@@ -35,14 +37,6 @@ Bozzuto::Application.configure do
 
   # Enable threaded mode
   # config.threadsafe!
-
-  config.action_controller.asset_host = proc { |source, request|
-    protocol = request ? request.protocol : 'http://'
-
-    "#{protocol}www.bozzuto.com"
-  }
-
-  config.action_mailer.asset_host = 'http://bozzuto.com'
 
   config.action_mailer.default_url_options = {
     :host => 'bozzuto.com'
