@@ -46,6 +46,7 @@ ActiveAdmin.register PropertyFeedImport do
       row :file_file_name
       row :file_file_size
       row :error
+      row :stack_trace
       row :created_at
       row :updated_at
     end
