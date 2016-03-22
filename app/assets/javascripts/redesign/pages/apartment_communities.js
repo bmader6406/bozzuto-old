@@ -117,7 +117,7 @@ bozzuto.apartment_communities = {
       var $modal = $('.cty-walkscore-modal');
 
       if (!walkscoreInitialized) {
-        var script = '<script type="text/javascript" src="http://www.walkscore.com/tile/show-walkscore-tile.php"></script>';
+        var script = '<script type="text/javascript" src="//www.walkscore.com/tile/show-walkscore-tile.php"></script>';
 
         $modal.append(script);
 

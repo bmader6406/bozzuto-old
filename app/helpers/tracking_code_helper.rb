@@ -2,13 +2,13 @@ module TrackingCodeHelper
   def value_click_tracking_code
     <<-END.html_safe
       <!-- ValueClick -->
-      <img src="http://media.fastclick.net/w/tre?ad_id=27340;evt=20270;cat1=26729;cat2=26730;rand=#{Time.now.strftime('%Y%m%d%H%M%S')}#{random_number_string(4)}" width="1" height="1" border="0">
+      <img src="//media.fastclick.net/w/tre?ad_id=27340;evt=20270;cat1=26729;cat2=26730;rand=#{Time.now.strftime('%Y%m%d%H%M%S')}#{random_number_string(4)}" width="1" height="1" border="0">
       <!-- End ValueClick -->
     END
   end
 
   def value_click_apartment_thank_you_code
-    '<img src="http://media.fastclick.net/w/roitrack.cgi?aid=1000044195" width=1 height=1 border=0>'.html_safe
+    '<img src="//media.fastclick.net/w/roitrack.cgi?aid=1000044195" width=1 height=1 border=0>'.html_safe
   end
 
   def facebook_apartment_thank_you_code
@@ -26,7 +26,7 @@ module TrackingCodeHelper
         })();
       </script>
       <noscript>
-        <img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6007551186980&amp;value=0" />
+        <img height="1" width="1" alt="" style="display:none" src="//www.facebook.com/offsite_event.php?id=6007551186980&amp;value=0" />
       </noscript>
     HTML
   end

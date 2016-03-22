@@ -163,7 +163,7 @@ window.bozzuto = {};
       if (!installedWalkScore) {
         installedWalkScore = true;
 
-        var walkscoreJS = '<script type="text/javascript" src="http://www.walkscore.com/tile/show-walkscore-tile.php"></script>';
+        var walkscoreJS = '<script type="text/javascript" src="//www.walkscore.com/tile/show-walkscore-tile.php"></script>';
 
         $('div#walk-score').append(walkscoreJS);
       }

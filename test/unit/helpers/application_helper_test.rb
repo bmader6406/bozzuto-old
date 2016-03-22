@@ -169,7 +169,7 @@ class ApplicationHelperTest < ActionView::TestCase
 
     describe "#google_plus_one_button" do
       before do
-        expects(:content_for).with(:end_of_body, '<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>'.html_safe)
+        expects(:content_for).with(:end_of_body, '<script type="text/javascript" src="//apis.google.com/js/plusone.js"></script>'.html_safe)
       end
 
       it "returns the google html tag" do

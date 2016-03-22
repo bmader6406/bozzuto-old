@@ -9,7 +9,7 @@ class TrackingCodeHelperTest < ActionView::TestCase
 
   context "#value_click_apartment_thank_you_code" do
     should "output the correct code" do
-      actual = '<img src="http://media.fastclick.net/w/roitrack.cgi?aid=1000044195" width=1 height=1 border=0>'
+      actual = '<img src="//media.fastclick.net/w/roitrack.cgi?aid=1000044195" width=1 height=1 border=0>'
 
       assert_equal actual, value_click_apartment_thank_you_code
     end
