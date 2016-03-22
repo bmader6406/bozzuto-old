@@ -7,7 +7,7 @@
     <h2 class="hdr-primary">Have a question? Reach out. We’ll reach back.</h2>
 
     <p id="community-contact-note">
-      <%= raw(@page.contact_form_note).presence || 'Fill out the form below to let us know how we can help.' %>
+      <%= raw(@page.try(:contact_form_note)).presence || 'Fill out the form below to let us know how we can help.' %>
     </p>
   </div>
 
