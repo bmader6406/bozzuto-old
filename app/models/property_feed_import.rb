@@ -65,6 +65,7 @@ class PropertyFeedImport < ActiveRecord::Base
     update_attributes(
       state:       "failure",
       error:       err.to_s,
+      stack_trace: err.backtrace,
       finished_at: Time.now
     )
   end

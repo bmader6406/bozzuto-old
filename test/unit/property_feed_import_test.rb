@@ -117,7 +117,11 @@ class PropertyFeedImportTest < ActiveSupport::TestCase
       end
       
       before do
-        subject.mark_as_failure!("error words")
+        begin
+          raise StandardError, 'error words'
+        rescue StandardError => error
+          subject.mark_as_failure!(error)
+        end
       end
 
       it "sets state" do
@@ -129,7 +133,11 @@ class PropertyFeedImportTest < ActiveSupport::TestCase
       end
 
       it "sets error" do
-        subject.error.should == "error words"
+        subject.error.should == 'error words'
+      end
+
+      it "sets the stack trace" do
+        subject.stack_trace.should match /property_feed_import_test\.rb:\d+:in/
       end
     end
   end
