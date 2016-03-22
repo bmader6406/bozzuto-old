@@ -1,6 +1,6 @@
 module Bozzuto
   module ExternalFeed
-    class PropertyImporter < Struct.new(:property_data, :feed_type)
+    class PropertyImporter < Struct.new(:property_data, :importer)
       include Logging
 
       def import

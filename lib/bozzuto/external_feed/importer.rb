@@ -1,6 +1,7 @@
 module Bozzuto
   module ExternalFeed
     class Importer
+      include Logging
       include XpathParsing
 
       attr_reader :feed
@@ -10,6 +11,10 @@ module Bozzuto
                :mark_as_success!,
                :mark_as_failure!,
                to: :feed
+
+      def self.logger
+        @@logger ||= Logger.new(Rails.root.join('log', 'feed-import.log'))
+      end
 
       def initialize(feed)
         raise ArgumentError, "feed state must be queued to import, currently marked as #{feed.state}" unless feed.queued?
@@ -33,9 +38,16 @@ module Bozzuto
       end
 
       def collect(node)
+        log_debug 'Building property data from XML property node...'
+
         build_property(node).tap do |property_data|
+          log_info "Finished building property data from XML for #{property_data.title}."
+          log_info "Importing property data for #{property_data.title}..."
+
           data       << property_data
-          properties << PropertyImporter.new(property_data, feed_type).import
+          properties << PropertyImporter.new(property_data, self).import
+
+          log_info "Finished importing property data for #{property_data.title}."
         end
       end
 

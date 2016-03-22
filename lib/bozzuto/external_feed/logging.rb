@@ -17,7 +17,7 @@ module Bozzuto
 
       LOG_LEVELS.each do |level, color|
         define_method("log_#{level}") do |message|
-          Feed.logger.send(level, send(color, message.to_s))
+          Importer.logger.send(level, send(color, message.to_s))
         end
       end
 
