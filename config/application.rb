@@ -15,7 +15,7 @@ module Bozzuto
     ]
 
     # Add vendor images
-    config.assets.precompile << %w(vendor/assets/images/*)
+    config.assets.precompile << 'vendor/assets/images/*.png'
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names.
