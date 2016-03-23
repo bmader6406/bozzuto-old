@@ -1,6 +1,8 @@
 class Tweet < ActiveRecord::Base
   belongs_to :twitter_account
 
+  before_save :strip_emojis
+
   validates_presence_of :text,
                         :posted_at,
                         :tweet_id,
@@ -16,5 +18,11 @@ class Tweet < ActiveRecord::Base
 
   def self.latest
     recent.first
+  end
+
+  private
+
+  def strip_emojis
+    self.text = Emoji.strip(text)
   end
 end
