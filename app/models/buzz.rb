@@ -1,4 +1,5 @@
 class Buzz < ActiveRecord::Base
+
   validates :email,
             :presence     => true,
             :email_format => true

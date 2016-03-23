@@ -19,4 +19,8 @@ class UnderConstructionLead < ActiveRecord::Base
     :to        => :apartment_community,
     :prefix    => true,
     :allow_nil => true
+
+  def name
+    [first_name, last_name].reject(&:blank?).join(' ')
+  end
 end

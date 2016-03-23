@@ -1,5 +1,5 @@
 ActiveAdmin.register Buzz do
-  config.sort_order = 'updated_at'
+  config.sort_order = 'created_at_desc'
 
   menu parent: 'Contact'
 

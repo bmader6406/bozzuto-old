@@ -27,5 +27,16 @@ class UnderConstructionLeadTest < ActiveSupport::TestCase
         end
       end
     end
+
+    describe "#name" do
+      setup do
+        subject.first_name = 'Bruce'
+        subject.last_name  = 'Wayne'
+      end
+
+      it "returns the first name and last name, joined with a space" do
+        subject.name.should == "Bruce Wayne"
+      end
+    end
   end
 end
