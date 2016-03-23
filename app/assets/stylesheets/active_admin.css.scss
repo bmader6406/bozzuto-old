@@ -7,6 +7,8 @@
 // For example, to change the sidebar width:
 // $sidebar-width: 242px;
 
+@import "variables/*";
+
 $am-theme-primary: #036447;
 $am-theme-accent:  #b1ddd0;
 
@@ -21,6 +23,25 @@ $am-theme-accent:  #b1ddd0;
 // respect rows option
 .input.text textarea {
   height: auto;
+}
+
+// status tags
+
+.status_tag {
+  &.queued {
+  }
+
+  &.processing {
+    background: $yellow-light;
+  }
+
+  &.success {
+    background: $green-light;
+  }
+
+  &.failure {
+    background: $red-light;
+  }
 }
 
 // file picker in well

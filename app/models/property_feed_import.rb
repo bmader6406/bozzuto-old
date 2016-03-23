@@ -64,8 +64,8 @@ class PropertyFeedImport < ActiveRecord::Base
   def mark_as_failure!(err = nil)
     update_attributes(
       state:       "failure",
-      error:       err.to_s,
-      stack_trace: err.backtrace,
+      error:       err ? err.to_s : nil,
+      stack_trace: err ? err.backtrace : nil,
       finished_at: Time.now
     )
   end
