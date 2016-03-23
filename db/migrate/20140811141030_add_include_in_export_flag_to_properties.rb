@@ -9,4 +9,10 @@ class AddIncludeInExportFlagToProperties < ActiveRecord::Migration
   def self.down
     remove_column :properties, :included_in_export
   end
+
+  Property = Class.new(ActiveRecord::Base)
+
+  class ApartmentCommunity < Property
+    scope :published, -> { where(published: true) }
+  end
 end

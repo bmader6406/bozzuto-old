@@ -13,4 +13,6 @@ class AddNameToFeed < ActiveRecord::Migration
   def self.down
     remove_column :feeds, :name
   end
+
+  Feed = Class.new(ActiveRecord::Base)
 end

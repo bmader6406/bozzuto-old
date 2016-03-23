@@ -35,4 +35,11 @@ class MigrateToLassoAccount < ActiveRecord::Migration
   def self.community_have_lasso?(community)
     community.lasso_uid? && community.lasso_project_id? && community.lasso_client_id?
   end
+
+  Property     = Class.new(ActiveRecord::Base)
+  LassoAccount = Class.new(ActiveRecord::Base)
+
+  class HomeCommunity < Property
+    has_one :lasso_account
+  end
 end

@@ -41,4 +41,8 @@ class CreateDnrConfigurations < ActiveRecord::Migration
 
     drop_table :dnr_configurations
   end
+
+  Property           = Class.new(ActiveRecord::Base)
+  HomeCommunity      = Class.new(Property)
+  ApartmentCommunity = Class.new(Property)
 end
