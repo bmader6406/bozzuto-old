@@ -14,7 +14,7 @@ class ApartmentFloorPlan < ActiveRecord::Base
 
   has_many :apartment_units, :foreign_key => :floor_plan_id
 
-  acts_as_list
+  acts_as_list scope: [:apartment_community, :floor_plan_group_id]
 
   validates_presence_of :name,
                         :floor_plan_group,

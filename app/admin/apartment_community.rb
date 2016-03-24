@@ -414,15 +414,24 @@ ActiveAdmin.register ApartmentCommunity do
         end
 
         tab 'Floor Plans' do
-          association_table_for :floor_plans, reorderable: true do
-            column :name do |plan|
-              link_to plan.name, [:admin, plan], target: :blank
+          panel nil do
+            tabs do
+              ApartmentFloorPlanGroup.find_each do |group|
+                tab group.name do
+                  association_table_for :floor_plans, reorderable: true, scope: f.object.floor_plans.in_group(group).order(:position) do
+                    column :position
+                    column :name do |plan|
+                      link_to plan.name, [:admin, plan], target: :blank
+                    end
+                    column :bedrooms
+                    column :bathrooms
+                    column :square_footage
+                    column :availability
+                    column :featured
+                  end
+                end
+              end
             end
-            column :bedrooms
-            column :bathrooms
-            column :square_footage
-            column :availability
-            column :featured
           end
         end
 
