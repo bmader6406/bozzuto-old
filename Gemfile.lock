@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: git://github.com/vigetlabs/chronolog.git
-  revision: 1728160ccf439a35d4ed21458f3a753a4a9cf9f4
+  revision: f6eaa9b5d371900499de4299b36fbefd041dfd40
   specs:
     chronolog (0.1.0)
       activeadmin (= 1.0.0pre2)
