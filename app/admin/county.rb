@@ -6,7 +6,7 @@ ActiveAdmin.register County do
   menu parent: 'Geography'
 
   permit_params :name,
-                :state
+                :state_id
 
   filter :name_cont, label: 'Name'
 
