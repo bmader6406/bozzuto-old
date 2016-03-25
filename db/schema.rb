@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160322130844) do
+ActiveRecord::Schema.define(version: 20160325173907) do
 
   create_table "ad_sources", force: :cascade do |t|
     t.string   "domain_name", limit: 255, null: false
@@ -376,23 +376,6 @@ ActiveRecord::Schema.define(version: 20160322130844) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "careers_entries", force: :cascade do |t|
-    t.string   "name",                    limit: 255,      null: false
-    t.string   "company",                 limit: 255,      null: false
-    t.string   "job_title",               limit: 255,      null: false
-    t.text     "job_description",         limit: 16777215
-    t.string   "main_photo_file_name",    limit: 255
-    t.string   "main_photo_content_type", limit: 255
-    t.string   "headshot_file_name",      limit: 255
-    t.string   "headshot_content_type",   limit: 255
-    t.string   "youtube_url",             limit: 255
-    t.integer  "position",                limit: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "careers_entries", ["position"], name: "index_careers_entries_on_position", using: :btree
 
   create_table "carousel_panels", force: :cascade do |t|
     t.integer  "position",           limit: 4,                   null: false

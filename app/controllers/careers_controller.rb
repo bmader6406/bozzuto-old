@@ -5,7 +5,6 @@ class CareersController < ApplicationController
 
   def index
     @page    = @section.pages.published.first
-    @entries = CareersEntry.all.limit(4)
 
     if mobile?
       render 'pages/show'
