@@ -92,4 +92,8 @@ class ApplicationController < ActionController::Base
     VIGET_IPS.any? { |regex| regex =~ request.remote_ip }
   end
   helper_method :viget_ip?
+
+  def store_return_to
+    Bozzuto::ReturnToStore.new(request).set(params[:return_to])
+  end
 end

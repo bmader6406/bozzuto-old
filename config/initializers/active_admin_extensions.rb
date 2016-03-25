@@ -1,4 +1,10 @@
+# Included from activeadmin_reorderable
 ActiveAdmin::Views::ActiveAdminForm.send(:include, ActiveAdmin::Reorderable::TableMethods)
-ActiveAdmin::Views::ActiveAdminForm.send(:include, ActiveAdmin::Views::AssociationTable)
-ActiveAdmin::Views::Pages::Show.send(:include, ActiveAdmin::Views::CollectionPanel)
-ActiveAdmin::Resource::ActionItems.send(:include, ActiveAdmin::Resource::DefaultActions)
+
+# Bozzuto customizations
+ActiveAdmin::Views::ActiveAdminForm.send(:include, Bozzuto::ActiveAdmin::Views::AssociationTable)
+ActiveAdmin::Views::Pages::Show.send(:include, Bozzuto::ActiveAdmin::Views::CollectionPanel)
+ActiveAdmin::Resource::ActionItems.send(:include, Bozzuto::ActiveAdmin::Resource::DefaultActions)
+
+# Redirect to return_to path if available
+ActiveAdmin::ResourceController.send(:include, Bozzuto::ActiveAdmin::ActionRedirects)
