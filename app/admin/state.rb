@@ -1,6 +1,8 @@
 ActiveAdmin.register State do
   menu parent: 'Geography'
 
+  track_changes
+
   config.sort_order = 'position_asc'
 
   reorderable

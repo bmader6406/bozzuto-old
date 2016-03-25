@@ -1,6 +1,8 @@
 ActiveAdmin.register City do
   config.sort_order = 'name_asc'
 
+  track_changes
+
   menu parent: 'Geography'
 
   permit_params :name,

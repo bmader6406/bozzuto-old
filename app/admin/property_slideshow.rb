@@ -2,6 +2,8 @@ ActiveAdmin.register PropertySlideshow do
   menu parent: 'Media',
        label:  'Property Slideshows'
 
+  track_changes
+
   permit_params :property,
                 :property_id,
                 :property_type,

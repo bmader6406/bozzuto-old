@@ -1,8 +1,10 @@
 ActiveAdmin.register Leader do
-  menu parent: 'Leaders'
-
   config.sort_order = "name_asc"
   config.filters    = false
+
+  menu parent: 'Leaders'
+
+  track_changes
 
   permit_params :name,
                 :title,

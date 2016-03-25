@@ -7,4 +7,12 @@ class MastheadSlideshow < ActiveRecord::Base
     :dependent  => :destroy
 
   validates_presence_of :name
+
+  def to_s
+    name
+  end
+
+  def diff_attributes
+    Chronolog::DiffRepresentation.new(self, includes: :slides).attributes
+  end
 end

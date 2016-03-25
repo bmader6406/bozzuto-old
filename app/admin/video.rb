@@ -1,6 +1,8 @@
 ActiveAdmin.register Video do
   menu parent: 'Media'
 
+  track_changes
+
   reorderable
 
   config.filters = false

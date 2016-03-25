@@ -2,6 +2,8 @@ ActiveAdmin.register MastheadSlideshow do
   menu parent: 'Media',
        label:  'Masthead Slideshows'
 
+  track_changes
+
   permit_params :name,
                 :page,
                 :page_id

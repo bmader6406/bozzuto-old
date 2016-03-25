@@ -9,5 +9,11 @@ class ContactTopicTest < ActiveSupport::TestCase
     should validate_presence_of(:topic)
     should validate_presence_of(:recipients)
     should validate_uniqueness_of(:topic)
+
+    describe "#to_s" do
+      it "returns the topic" do
+        subject.to_s.should == subject.topic
+      end
+    end
   end
 end

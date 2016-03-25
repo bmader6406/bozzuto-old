@@ -1,6 +1,8 @@
 ActiveAdmin.register PropertyRetailPage do
   menu false
 
+  track_changes
+
   config.filters = false
 
   permit_params :property_id,

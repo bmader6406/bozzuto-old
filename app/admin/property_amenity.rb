@@ -1,6 +1,8 @@
 ActiveAdmin.register PropertyAmenity do
   menu false
 
+  track_changes
+
   permit_params :property,
                 :property_id,
                 :property_type,

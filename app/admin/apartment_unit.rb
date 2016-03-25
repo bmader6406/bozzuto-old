@@ -1,6 +1,8 @@
 ActiveAdmin.register ApartmentUnit do
   menu parent: 'System', label: 'Apartment Units'
 
+  track_changes
+
   permit_params :floor_plan_id,
                 :marketing_name,
                 :organization_name,

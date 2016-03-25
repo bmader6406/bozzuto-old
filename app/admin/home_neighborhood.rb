@@ -1,6 +1,8 @@
 ActiveAdmin.register HomeNeighborhood do
   config.sort_order = 'position_asc'
 
+  track_changes
+
   reorderable
 
   menu parent: 'Neighborhoods', label: 'Home Neighborhoods'

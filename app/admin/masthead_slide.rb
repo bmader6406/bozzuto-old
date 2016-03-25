@@ -1,6 +1,8 @@
 ActiveAdmin.register MastheadSlide do
   config.filters = false
 
+  track_changes
+
   menu false
 
   reorderable

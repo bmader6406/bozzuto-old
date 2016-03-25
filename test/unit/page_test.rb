@@ -53,7 +53,7 @@ class PageTest < ActiveSupport::TestCase
       subject { Page.make(title: 'Page', section: nil) }
 
       it "returns the page title" do
-        subject.to_s.should == 'Page'
+        subject.display_name.should == 'Page'
       end
 
       context "when the page belongs to a section" do
@@ -63,7 +63,7 @@ class PageTest < ActiveSupport::TestCase
         end
 
         it "returns the section title along with the page title" do
-          @page.to_s.should == 'Section > Page'
+          @page.display_name.should == 'Section > Page'
         end
       end
     end

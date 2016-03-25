@@ -1,6 +1,8 @@
 ActiveAdmin.register ProjectDataPoint do
   menu false
 
+  track_changes
+
   reorderable
 
   permit_params :project,

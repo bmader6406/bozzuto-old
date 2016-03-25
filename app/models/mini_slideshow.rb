@@ -17,4 +17,8 @@ class MiniSlideshow < ActiveRecord::Base
   def to_label
     to_s
   end
+
+  def diff_attributes
+    Chronolog::DiffRepresentation.new(self, includes: :slides).attributes
+  end
 end

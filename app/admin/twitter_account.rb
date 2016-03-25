@@ -2,6 +2,8 @@ ActiveAdmin.register TwitterAccount do
   menu parent: 'Components',
        label:  'Twitter Accounts'
 
+  track_changes
+
   permit_params :username
 
   filter :username_cont, label: 'Username'

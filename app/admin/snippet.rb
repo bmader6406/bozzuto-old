@@ -1,7 +1,9 @@
 ActiveAdmin.register Snippet do
-  menu parent: 'Content'
-
   config.sort_order = 'name_asc'
+
+  track_changes
+
+  menu parent: 'Content'
 
   permit_params :name,
                 :body

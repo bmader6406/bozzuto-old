@@ -16,5 +16,25 @@ class HomeTest < ActiveSupport::TestCase
     should validate_numericality_of(:bedrooms)
     should validate_numericality_of(:bathrooms)
     should validate_numericality_of(:square_feet)
+
+    describe "#to_s" do
+      it "returns the name" do
+        subject.to_s.should == subject.name
+      end
+    end
+
+    describe "#diff_attributes" do
+      before do
+        @representation = mock('Chronolog::DiffRepresentation')
+
+        Chronolog::DiffRepresentation.stubs(:new).with(subject, includes: :floor_plans).returns(@representation)
+      end
+
+      it "includes its slides in its diff representation" do
+        @representation.expects(:attributes)
+
+        subject.diff_attributes
+      end
+    end
   end
 end

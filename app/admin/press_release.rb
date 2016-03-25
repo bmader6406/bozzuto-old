@@ -2,6 +2,8 @@ ActiveAdmin.register PressRelease do
   menu parent: 'News & Press',
        label:  'Press Releases'
 
+  track_changes
+
   permit_params :title,
                 :published,
                 :published_at,

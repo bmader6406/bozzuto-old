@@ -1,6 +1,8 @@
 ActiveAdmin.register Publication do
   menu parent: 'News & Press'
 
+  track_changes
+
   config.sort_order = "position_asc"
 
   reorderable

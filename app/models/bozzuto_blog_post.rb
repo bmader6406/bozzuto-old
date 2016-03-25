@@ -22,4 +22,8 @@ class BozzutoBlogPost < ActiveRecord::Base
   do_not_validate_attachment_file_type :image
 
   validates_attachment_presence :image
+
+  def to_s
+    title
+  end
 end

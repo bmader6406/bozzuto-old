@@ -1,6 +1,8 @@
 ActiveAdmin.register Award do
   config.sort_order = 'published_at'
 
+  track_changes
+
   menu parent: 'News & Press'
 
   permit_params :title,

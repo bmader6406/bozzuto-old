@@ -18,4 +18,12 @@ class Home < ActiveRecord::Base
     :minimum      => 0,
     :only_integer => true,
     :allow_nil    => true
+
+  def to_s
+    name
+  end
+
+  def diff_attributes
+    Chronolog::DiffRepresentation.new(self, includes: :floor_plans).attributes
+  end
 end

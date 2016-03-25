@@ -10,5 +10,11 @@ class SnippetTest < ActiveSupport::TestCase
     should validate_presence_of(:body)
 
     should validate_uniqueness_of(:name)
+
+    describe "#to_s" do
+      it "returns the name" do
+        subject.to_s.should == subject.name
+      end
+    end
   end
 end

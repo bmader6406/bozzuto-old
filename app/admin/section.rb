@@ -1,6 +1,8 @@
 ActiveAdmin.register Section do
   menu parent: 'Content'
 
+  track_changes
+
   actions :index, :show, :edit, :update
 
   config.sort_order = 'title_asc'

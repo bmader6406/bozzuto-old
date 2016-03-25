@@ -1,6 +1,8 @@
 ActiveAdmin.register PropertyFeature do
   menu parent: 'Components', label: 'Property Features'
 
+  track_changes
+
   permit_params :name,
                 :icon,
                 :description,

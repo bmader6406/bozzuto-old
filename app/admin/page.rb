@@ -1,6 +1,8 @@
 ActiveAdmin.register Page do
   menu false
 
+  track_changes
+
   config.sort_order = "section_id_desc"
 
   reorderable

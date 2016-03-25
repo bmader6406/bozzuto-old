@@ -1,6 +1,8 @@
 ActiveAdmin.register BozzutoBlogPost do
   config.sort_order = 'published_at'
 
+  track_changes
+
   menu parent: 'Content', label: 'Bozzuto Blog Posts'
 
   permit_params :header_title,

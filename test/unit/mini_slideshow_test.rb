@@ -5,13 +5,23 @@ class MiniSlideshowTest < ActiveSupport::TestCase
     should validate_presence_of(:title)
     should validate_presence_of(:link_url)
 
-    context '#to_s' do
-      setup do
-        @slideshow = MiniSlideshow.new :title => 'Hey ya'
+    describe "#to_s" do
+      it "returns the title" do
+        subject.to_s.should == subject.title
+      end
+    end
+
+    describe "#diff_attributes" do
+      before do
+        @representation = mock('Chronolog::DiffRepresentation')
+
+        Chronolog::DiffRepresentation.stubs(:new).with(subject, includes: :slides).returns(@representation)
       end
 
-      should 'return the title' do
-        assert_equal 'Hey ya', @slideshow.to_s
+      it "includes its slides in its diff representation" do
+        @representation.expects(:attributes)
+
+        subject.diff_attributes
       end
     end
   end

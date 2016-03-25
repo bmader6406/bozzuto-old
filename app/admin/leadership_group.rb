@@ -1,9 +1,11 @@
 ActiveAdmin.register LeadershipGroup do
+  config.sort_order = "position_asc"
+  config.filters    = false
+
   menu parent: 'Leaders',
        label:  'Leadership Groups'
 
-  config.sort_order = "position_asc"
-  config.filters    = false
+  track_changes
 
   reorderable
 

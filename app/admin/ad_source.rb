@@ -2,6 +2,8 @@ ActiveAdmin.register AdSource do
   menu parent: 'System',
        label:  'Ad Sources'
 
+  track_changes
+
   config.sort_order = 'domain_name_asc'
 
   permit_params :domain_name,

@@ -1,6 +1,8 @@
 ActiveAdmin.register MiniSlide do
   menu false
 
+  track_changes
+
   config.filters = false
 
   reorderable

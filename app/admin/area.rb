@@ -1,6 +1,8 @@
 ActiveAdmin.register Area do
   menu parent: 'Neighborhoods'
 
+  track_changes
+
   config.sort_order = 'position_asc'
 
   reorderable

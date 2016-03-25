@@ -37,5 +37,11 @@ class BozzutoBlogPostTest < ActiveSupport::TestCase
         end
       end
     end
+
+    describe "#to_s" do
+      it "returns the title" do
+        subject.to_s.should == subject.title
+      end
+    end
   end
 end

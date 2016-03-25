@@ -2,6 +2,8 @@ ActiveAdmin.register MiniSlideshow do
   menu parent: 'Media',
        label:  'Mini Slideshows'
 
+  track_changes
+
   permit_params :title,
                 :subtitle,
                 :link_url,

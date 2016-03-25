@@ -1,6 +1,8 @@
 ActiveAdmin.register BodySlideshow do
   menu parent: 'Media', label: 'Page Body Slideshows'
 
+  track_changes
+
   permit_params :page_id,
                 :name,
                 slides_attributes: [

@@ -12,4 +12,12 @@ class PropertyPage < ActiveRecord::Base
   def home_community
     property if property.is_a? HomeCommunity
   end
+
+  def to_s
+    [
+      self.class.name.titleize,
+      'for',
+      property.to_s
+    ].join(' ')
+  end
 end

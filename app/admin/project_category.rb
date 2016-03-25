@@ -1,6 +1,8 @@
 ActiveAdmin.register ProjectCategory do
   menu parent: 'Properties', label: 'Project Categories'
 
+  track_changes
+
   config.sort_order = 'position_asc'
 
   reorderable

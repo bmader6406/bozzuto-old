@@ -1,6 +1,8 @@
 ActiveAdmin.register ApartmentFloorPlan do
   menu parent: 'System', label: 'Apartment Floor Plans'
 
+  track_changes
+
   permit_params :apartment_community_id,
                 :name,
                 :featured,

@@ -1,6 +1,8 @@
 ActiveAdmin.register Project do
   menu parent: 'Properties'
 
+  track_changes
+
   reorderable
 
   permit_params :title,

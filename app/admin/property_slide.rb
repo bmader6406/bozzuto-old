@@ -1,6 +1,8 @@
 ActiveAdmin.register PropertySlide do
   menu false
 
+  track_changes
+
   config.filters    = false
   config.sort_order = "position_asc"
 

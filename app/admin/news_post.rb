@@ -2,6 +2,8 @@ ActiveAdmin.register NewsPost do
   menu parent: 'News & Press',
        label:  'News'
 
+  track_changes
+
   permit_params :title,
                 :published,
                 :published_at,

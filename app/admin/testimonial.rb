@@ -1,6 +1,8 @@
 ActiveAdmin.register Testimonial do
   menu parent: 'Content'
 
+  track_changes
+
   permit_params :section,
                 :section_id,
                 :name,

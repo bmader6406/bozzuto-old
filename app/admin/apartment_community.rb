@@ -1,6 +1,8 @@
 ActiveAdmin.register ApartmentCommunity do
   config.sort_order = 'title_asc'
 
+  track_changes
+
   menu parent: 'Properties', label: 'Apartment Communities'
 
   permit_params :title,

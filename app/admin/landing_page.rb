@@ -1,6 +1,8 @@
 ActiveAdmin.register LandingPage do
   menu parent: 'Geography', label: 'Landing Pages'
 
+  track_changes
+
   permit_params :title,
                 :state_id,
                 :meta_title,

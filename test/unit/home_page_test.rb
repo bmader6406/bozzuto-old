@@ -14,5 +14,25 @@ class HomePageTest < ActiveSupport::TestCase
         HomePage.new.to_s.should == 'Home Page'
       end
     end
+
+    describe "#to_label" do
+      it "returns 'Home Page'" do
+        HomePage.new.to_label.should == 'Home Page'
+      end
+    end
+
+    describe "#diff_attributes" do
+      before do
+        @representation = mock('Chronolog::DiffRepresentation')
+
+        Chronolog::DiffRepresentation.stubs(:new).with(subject, includes: [:carousel, :slides]).returns(@representation)
+      end
+
+      it "includes its slides in its diff representation" do
+        @representation.expects(:attributes)
+
+        subject.diff_attributes
+      end
+    end
   end
 end

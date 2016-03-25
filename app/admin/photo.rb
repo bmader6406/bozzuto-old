@@ -2,6 +2,8 @@ ActiveAdmin.register Photo do
   menu parent: 'Media',
        label:  'Photos'
 
+  track_changes
+
   reorderable
 
   permit_params :title,

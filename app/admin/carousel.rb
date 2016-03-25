@@ -1,6 +1,8 @@
 ActiveAdmin.register Carousel do
   menu parent: 'Media'
 
+  track_changes
+
   permit_params :name,
                 panels_attributes: [
                   :id,

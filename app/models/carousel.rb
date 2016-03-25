@@ -8,4 +8,12 @@ class Carousel < ActiveRecord::Base
   accepts_nested_attributes_for :panels
 
   validates_presence_of :name
+
+  def to_s
+    name
+  end
+
+  def diff_attributes
+    Chronolog::DiffRepresentation.new(self, includes: :panels).attributes
+  end
 end

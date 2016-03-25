@@ -1,6 +1,8 @@
 ActiveAdmin.register LassoAccount do
   menu parent: 'Components'
 
+  track_changes
+
   permit_params :property_id,
                 :uid,
                 :client_id,
