@@ -22,6 +22,7 @@ gem 'activeadmin', '1.0.0pre2'
 gem 'activeadmin_reorderable'
 gem 'active_material',    github: 'vigetlabs/active_material'
 gem 'polymorphic_select', github: 'vigetlabs/polymorphic_select'
+gem 'chronolog',          github: 'vigetlabs/chronolog'
 
 gem 'geokit'
 gem 'geokit-rails'

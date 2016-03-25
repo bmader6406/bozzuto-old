@@ -42,6 +42,10 @@ $am-theme-accent:  #b1ddd0;
   &.failure {
     background: $red-light;
   }
+
+  &.ok, &.published, &.complete, &.completed, &.green { background: #8daa92; }
+  &.warn, &.warning, &.orange { background: #e29b20; }
+  &.error, &.errored, &.red { background: #d45f53; }
 }
 
 // file picker in well

@@ -400,6 +400,20 @@ ActiveRecord::Schema.define(version: 20160325173907) do
 
   add_index "carousels", ["content_type", "content_id"], name: "index_carousels_on_content_type_and_content_id", using: :btree
 
+  create_table "chronolog_changesets", force: :cascade do |t|
+    t.integer  "admin_user_id",   limit: 4
+    t.integer  "changeable_id",   limit: 4
+    t.string   "changeable_type", limit: 255
+    t.text     "changeset",       limit: 65535, null: false
+    t.string   "action",          limit: 255,   null: false
+    t.string   "identifier",      limit: 255,   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "chronolog_changesets", ["admin_user_id"], name: "index_chronolog_changesets_on_admin_user_id", using: :btree
+  add_index "chronolog_changesets", ["changeable_id", "changeable_type"], name: "index_changesets_on_changeable_id_and_type", using: :btree
+
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
     t.integer  "state_id",   limit: 4,   null: false
@@ -1551,4 +1565,5 @@ ActiveRecord::Schema.define(version: 20160325173907) do
 
   add_index "zip_codes", ["zip"], name: "index_zip_codes_on_zip", unique: true, using: :btree
 
+  add_foreign_key "chronolog_changesets", "admin_users"
 end
