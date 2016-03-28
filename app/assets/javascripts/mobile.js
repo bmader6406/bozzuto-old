@@ -1,5 +1,5 @@
 //= require jquery
-//= require owl.carousel
+//= require vendor/owl.carousel
 
 // Mobile Carousels
 $(document).ready(function() {
