@@ -46,6 +46,15 @@ Running multiple versions of MySQL can be trouble - see [this gist](https://gist
 
 **Note** MySQL 5.7 is not compatable with our version of the `mysql2` gem.
 
+### Redis
+
+Non-development environments need Redis.  Install with homebrew:
+
+```bash
+$ brew install redis
+```
+
+Development environments run background jobs Reque jobs inline and don't require Redis running.
 
 ### Imagemagick
 
