@@ -20,10 +20,9 @@ var Floodlight = {
 		var $el             = $(this);
 		var cat             = $el.attr('data-cat');
 		var property_name   = $el.attr('data-prop');
-                var property_string = (property_name.length > 0) ? ';u1=' + property_name : '';
-		// <a href="#" class="fl-record-click" data-cat="cwu01" data-prop="something">Link</a>
+		var property_string = (property_name.length > 0) ? ';u1=' + property_name : '';
 
-                spotpix.src="http://ad.doubleclick.net/activity;src=4076176;type=conve135;cat=" + cat + property_string + ";ord=" + a + "?";
+		spotpix.src="//ad.doubleclick.net/activity;src=4076176;type=conve135;cat=" + cat + property_string + ";ord=" + a + "?";
 	}
 
 };

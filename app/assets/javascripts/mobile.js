@@ -1,5 +1,5 @@
-//= require jquery-1.11.1.min.js
-//= require owl.carousel.js
+//= require jquery
+//= require owl.carousel
 
 // Mobile Carousels
 $(document).ready(function() {
