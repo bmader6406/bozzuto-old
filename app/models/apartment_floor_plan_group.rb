@@ -8,7 +8,6 @@ class ApartmentFloorPlanGroup < ActiveRecord::Base
 
   default_scope -> { order('position ASC') }
 
-  # TODO find where `execept` was used before?  RF 2-1-16
   scope :except_group, -> (group) { where('id != ?', group.id) }
 
   acts_as_list

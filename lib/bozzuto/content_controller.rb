@@ -54,7 +54,7 @@ module Bozzuto
     end
 
     def current_page_path
-      # TODO This is a hack to get around pagination issues.
+      # This is a hack to get around pagination issues.
       if @page.present? && @page.path.present?
         @page.path
       else

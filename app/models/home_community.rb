@@ -5,23 +5,21 @@ class HomeCommunity < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 6
 
-  has_one :conversion_configuration, foreign_key: :property_id, dependent: :destroy # TODO rename FK
-
   has_many :homes
   has_many :featured_homes, -> { where(featured: true) }, class_name: 'Home'
+
   has_many :home_neighborhood_memberships, inverse_of: :home_community, dependent: :destroy
   has_many :home_neighborhoods, through: :home_neighborhood_memberships
 
-  has_one :lasso_account, foreign_key: :property_id, dependent: :destroy # TODO Rename FK
-
-  has_one :green_package, dependent: :destroy
+  has_one :conversion_configuration, dependent: :destroy
+  has_one :lasso_account,            dependent: :destroy
+  has_one :green_package,            dependent: :destroy
 
   has_one :neighborhood,
           foreign_key: :featured_home_community_id,
           class_name:  'HomeNeighborhood',
           dependent:   :nullify
 
-  # TODO This needs to be added into the home community admin
   has_attached_file :listing_promo,
     url:             '/system/:class/:id/:class_:id_:style.:extension',
     styles:          { display: '151x54#' },

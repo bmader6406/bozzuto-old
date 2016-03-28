@@ -8,12 +8,16 @@ class HomeCommunityTest < ActiveSupport::TestCase
 
     should have_many(:homes)
     should have_many(:featured_homes)
-    should have_attached_file(:listing_promo)
+
+    should have_many(:home_neighborhoods)
+    should have_many(:home_neighborhood_memberships)
+
+    should have_one(:conversion_configuration)
     should have_one(:lasso_account)
     should have_one(:green_package)
     should have_one(:neighborhood)
-    should have_many(:home_neighborhoods)
-    should have_many(:home_neighborhood_memberships)
+
+    should have_attached_file(:listing_promo)
     
     should accept_nested_attributes_for(:conversion_configuration)
 

@@ -69,9 +69,7 @@ FriendlyId.defaults do |config|
   # FriendlyId adds to your model. The change below makes FriendlyId 5.0 behave
   # more like 4.0.
 
-  # Whats up here Ribs?
-  # TODO words
-  #
+  # Force FriendlyId to create a new slug if slugged field changes
   module SluggedChangeOverride
     def should_generate_new_friendly_id?
       changed_method = [friendly_id_config.base, "changed?"].join("_")

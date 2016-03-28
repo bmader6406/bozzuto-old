@@ -1,4 +1,5 @@
 module LassoHelper
+
   def lasso_tracking_js(community)
     return unless community.respond_to?(:lasso_account) && community.lasso_account.present?
 

@@ -25,6 +25,7 @@ ActiveAdmin.register HomeCommunity do
                 :brochure,
                 :brochure_url,
                 :listing_image,
+                :listing_promo,
                 :listing_title,
                 :listing_text,
                 :neighborhood_listing_image,
@@ -121,6 +122,11 @@ ActiveAdmin.register HomeCommunity do
             row :listing_image do |community|
               if community.listing_image.present?
                 image_tag community.listing_image
+              end
+            end
+            row :listing_promo do |community|
+              if community.listing_promo.present?
+                image_tag community.listing_promo
               end
             end
             row :listing_title
@@ -294,6 +300,7 @@ ActiveAdmin.register HomeCommunity do
           input :brochure
           input :brochure_url
           input :listing_image,               as: :image
+          input :listing_promo,               as: :image
           input :listing_title
           input :listing_text,                as: :redactor
           input :neighborhood_listing_image,  as: :image
