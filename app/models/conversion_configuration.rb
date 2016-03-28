@@ -1,5 +1,8 @@
 class ConversionConfiguration < ActiveRecord::Base
-  belongs_to :property, class_name: 'HomeCommunity'
 
-  validates_presence_of :name, :property
+  belongs_to :home_community
+
+  validates :name,
+            :home_community_id,
+            presence: true
 end

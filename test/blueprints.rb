@@ -322,11 +322,11 @@ LandingPage.blueprint do
 end
 
 LassoAccount.blueprint do
-  uid          { '123' }
-  client_id    { '456' }
-  project_id   { '789' }
-  analytics_id { 'LAS-123456' }
-  property     { HomeCommunity.make }
+  home_community  { HomeCommunity.make }
+  uid             { '123' }
+  client_id       { '456' }
+  project_id      { '789' }
+  analytics_id    { 'LAS-123456' }
 end
 
 Lead2LeaseSubmission.class_eval do

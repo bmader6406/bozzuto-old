@@ -3,20 +3,20 @@ ActiveAdmin.register LassoAccount do
 
   track_changes
 
-  permit_params :property_id,
+  permit_params :home_community_id,
                 :uid,
                 :client_id,
                 :project_id,
                 :analytics_id
 
   filter :uid_or_client_id_or_project_id_cont, label: 'Search'
-  filter :property, as: :select, collection: -> { HomeCommunity.all }
+  filter :home_community, as: :select
 
   index do
     column :uid
     column :client_id
     column :project_id
-    column :property
+    column :home_community
 
     actions
   end
@@ -24,7 +24,7 @@ ActiveAdmin.register LassoAccount do
   show do
     attributes_table do
       row :id
-      row :property
+      row :home_community
       row :uid
       row :client_id
       row :project_id
@@ -36,7 +36,7 @@ ActiveAdmin.register LassoAccount do
 
   form do |f|
     inputs do
-      input :property, as: :chosen, collection: HomeCommunity.all
+      input :home_community, as: :chosen
       input :uid
       input :client_id
       input :project_id

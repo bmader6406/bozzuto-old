@@ -28,7 +28,7 @@ class Community < Property
 
   has_one :conversion_configuration,
     :dependent   => :destroy,
-    :foreign_key => :property_id
+    :foreign_key => :home_community_id
 
   [:features_page, :neighborhood_page, :contact_page, :tours_page, :retail_page].each do |page_type|
     klass_name = "Property#{page_type.to_s.classify}"

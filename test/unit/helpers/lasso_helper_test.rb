@@ -4,7 +4,7 @@ class LassoHelperTest < ActionView::TestCase
   context 'LassoHelper' do
     setup do
       @community = HomeCommunity.make
-      @lasso     = LassoAccount.make(:property => @community)
+      @lasso     = LassoAccount.make(:home_community => @community)
     end
 
     context '#lasso_tracking_js' do

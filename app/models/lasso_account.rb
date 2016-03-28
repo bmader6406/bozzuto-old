@@ -1,7 +1,12 @@
 class LassoAccount < ActiveRecord::Base
-  belongs_to :property, class_name: 'HomeCommunity'
 
-  validates_presence_of :property_id, :uid, :client_id, :project_id
+  belongs_to :home_community
+
+  validates :home_community_id,
+            :uid,
+            :client_id,
+            :project_id,
+            presence: true
 
   def to_s
     "Lasso Account #{uid}"

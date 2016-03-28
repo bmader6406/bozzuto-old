@@ -57,8 +57,7 @@ ActiveAdmin.register HomeCommunity do
                 conversion_configuration_attributes: [
                   :id,
                   :name,
-                  :property_id,
-                  :property_type,
+                  :home_community_id,
                   :google_send_to_friend_label,
                   :google_send_to_phone_label,
                   :google_contact_label,
@@ -408,7 +407,7 @@ ActiveAdmin.register HomeCommunity do
           end
 
           panel 'Conversion Configuration' do
-            inputs for: [:conversion_configuration, f.object.conversion_configuration || ConversionConfiguration.new(property: f.object)] do |conversion|
+            inputs for: [:conversion_configuration, f.object.conversion_configuration || ConversionConfiguration.new(home_community: f.object)] do |conversion|
               conversion.input :name
               conversion.input :google_send_to_friend_label
               conversion.input :google_send_to_phone_label

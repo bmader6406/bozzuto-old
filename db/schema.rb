@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160325173907) do
+ActiveRecord::Schema.define(version: 20160328170014) do
 
   create_table "ad_sources", force: :cascade do |t|
     t.string   "domain_name", limit: 255, null: false
@@ -446,7 +446,7 @@ ActiveRecord::Schema.define(version: 20160325173907) do
     t.string   "bing_send_to_friend_action_id", limit: 255
     t.string   "bing_send_to_phone_action_id",  limit: 255
     t.string   "bing_contact_action_id",        limit: 255
-    t.integer  "property_id",                   limit: 4
+    t.integer  "home_community_id",             limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -750,16 +750,16 @@ ActiveRecord::Schema.define(version: 20160325173907) do
   add_index "landing_pages_projects", ["landing_page_id", "project_id"], name: "index_landing_pages_projects_on_landing_page_id_and_project_id", using: :btree
 
   create_table "lasso_accounts", force: :cascade do |t|
-    t.integer  "property_id",  limit: 4,   null: false
-    t.string   "uid",          limit: 255, null: false
-    t.string   "client_id",    limit: 255, null: false
-    t.string   "project_id",   limit: 255, null: false
+    t.integer  "home_community_id", limit: 4,   null: false
+    t.string   "uid",               limit: 255, null: false
+    t.string   "client_id",         limit: 255, null: false
+    t.string   "project_id",        limit: 255, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "analytics_id", limit: 255
+    t.string   "analytics_id",      limit: 255
   end
 
-  add_index "lasso_accounts", ["property_id"], name: "index_lasso_accounts_on_property_id", using: :btree
+  add_index "lasso_accounts", ["home_community_id"], name: "index_lasso_accounts_on_home_community_id", using: :btree
 
   create_table "leaders", force: :cascade do |t|
     t.string   "name",               limit: 255,      null: false
