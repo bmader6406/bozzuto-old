@@ -24,7 +24,6 @@ ActiveAdmin.register Project do
                 :website_url_text,
                 :video_url,
                 :brochure_link_text,
-                :brochure_type,
                 :brochure_url,
                 :brochure,
                 :listing_image,
@@ -111,8 +110,8 @@ ActiveAdmin.register Project do
         panel nil do
           attributes_table_for resource do
             row :brochure_link_text
-            row :brochure_url
             row :brochure
+            row :brochure_url
           end
         end
       end
@@ -204,9 +203,8 @@ ActiveAdmin.register Project do
 
         tab 'Brochure' do
           input :brochure_link_text
-          input :brochure_type,       as: :chosen, collection: Property::BROCHURE_TYPE
-          input :brochure_url
           input :brochure
+          input :brochure_url
         end
 
         tab 'Seo' do

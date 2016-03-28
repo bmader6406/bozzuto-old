@@ -3,14 +3,6 @@ module Bozzuto
     module Property
       extend ActiveSupport::Concern
 
-      USE_BROCHURE_URL = 0
-      USE_BROCHURE_FILE = 1
-
-      BROCHURE_TYPE = [
-        ['Enter a URL',   USE_BROCHURE_URL],
-        ['Upload a file', USE_BROCHURE_FILE]
-      ]
-
       included do
         extend FriendlyId
 
@@ -44,11 +36,15 @@ module Bozzuto
 
         do_not_validate_attachment_file_type :brochure
 
-        validates_presence_of :title, :city
+        validates :title,
+                  :city,
+                  presence: true
 
-        validates_length_of :short_title,       maximum: 22, allow_nil: true
+        validates :short_title,
+                  allow_nil:    true,
+                  length:       { maximum: 22 }
 
-        validates_inclusion_of :brochure_type, in: [USE_BROCHURE_URL, USE_BROCHURE_FILE], allow_nil: true
+        validate :brochure_url_xor_file
 
         scope :mappable,         -> { where('latitude IS NOT NULL AND longitude IS NOT NULL') }
         scope :ordered_by_title, -> { order(title: :asc) }
@@ -103,11 +99,11 @@ module Bozzuto
         end
 
         def uses_brochure_url?
-          brochure_type == USE_BROCHURE_URL
+          brochure_url.present?
         end
 
         def uses_brochure_file?
-          brochure_type == USE_BROCHURE_FILE
+          brochure.present?
         end
 
         def destroy_attached_files
@@ -130,6 +126,14 @@ module Bozzuto
 
         def seo_link?
           seo_link_text.present? && seo_link_url.present?
+        end
+
+        private
+
+        def brochure_url_xor_file
+          if brochure_link_text.present? && (brochure.present? ^ brochure_url.present?)
+            errors.add :brochure_link_text, "brochure file or url must be present if link text present"
+          end
         end
       end
     end

@@ -1,4 +1,5 @@
 module PropertiesHelper
+
   def mobile_map_url(property)
     "http://maps.google.com/maps?q=#{property.address}"
   end

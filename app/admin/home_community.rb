@@ -21,7 +21,6 @@ ActiveAdmin.register HomeCommunity do
                 :facebook_url,
                 :twitter_account,
                 :brochure_link_text,
-                :brochure_type,
                 :brochure,
                 :brochure_url,
                 :listing_image,
@@ -115,7 +114,6 @@ ActiveAdmin.register HomeCommunity do
             row :facebook_url
             row :twitter_account
             row :brochure_link_text
-            row(:brochure_type) { |community| community.brochure_type == Property::USE_BROCHURE_URL ? 'URL' : 'File' }
             row :brochure
             row :brochure_url
             row :listing_image do |community|
@@ -295,7 +293,6 @@ ActiveAdmin.register HomeCommunity do
           input :facebook_url
           input :twitter_account,             as: :chosen
           input :brochure_link_text
-          input :brochure_type,               as: :chosen, collection: Property::BROCHURE_TYPE
           input :brochure
           input :brochure_url
           input :listing_image,               as: :image

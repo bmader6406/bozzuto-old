@@ -24,7 +24,6 @@ ActiveAdmin.register ApartmentCommunity do
                 :facebook_url,
                 :twitter_account_id,
                 :brochure_link_text,
-                :brochure_type,
                 :brochure,
                 :brochure_url,
                 :schedule_tour_url,
@@ -393,7 +392,6 @@ ActiveAdmin.register ApartmentCommunity do
           input :facebook_url
           input :twitter_account,             as: :chosen
           input :brochure_link_text
-          input :brochure_type,               as: :chosen, collection: Property::BROCHURE_TYPE
           input :brochure
           input :brochure_url
           input :schedule_tour_url

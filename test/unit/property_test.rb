@@ -17,7 +17,7 @@ class PropertyTest < ActiveSupport::TestCase
     context '#uses_brochure_url?' do
       context 'when brochure_type is USE_BROCHURE_URL' do
         setup do
-          @property.brochure_type = Property::USE_BROCHURE_URL
+          @property.brochure_url = "https://google.com"
         end
 
         should 'return true' do
@@ -27,7 +27,7 @@ class PropertyTest < ActiveSupport::TestCase
 
       context 'when brochure_type is USE_BROCHURE_FILE' do
         setup do
-          @property.brochure_type = Property::USE_BROCHURE_FILE
+          @property.brochure_url = nil
         end
 
         should 'return false' do
@@ -39,7 +39,7 @@ class PropertyTest < ActiveSupport::TestCase
     context '#uses_brochure_file?' do
       context 'when brochure_type is USE_BROCHURE_URL' do
         setup do
-          @property.brochure_type = Property::USE_BROCHURE_URL
+          @property.brochure = nil
         end
 
         should 'return false' do
@@ -49,7 +49,7 @@ class PropertyTest < ActiveSupport::TestCase
 
       context 'when brochure_type is USE_BROCHURE_FILE' do
         setup do
-          @property.brochure_type = Property::USE_BROCHURE_FILE
+          @property.brochure = ::File.open("test/files/psi.xml")
         end
 
         should 'return true' do

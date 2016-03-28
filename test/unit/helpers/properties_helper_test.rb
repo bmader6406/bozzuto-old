@@ -38,6 +38,10 @@ class PropertiesHelperTest < ActionView::TestCase
       end
 
       context 'when the property has no brochure_link_text' do
+        before do
+          @property.brochure_link_text = nil
+        end
+
         should 'return nil' do
           assert_nil brochure_link(@property)
         end
@@ -63,7 +67,6 @@ class PropertiesHelperTest < ActionView::TestCase
       context 'when the property uses brochure file' do
         setup do
           @file = 'http://viget.com/file.jpg'
-          @property.brochure_type = Property::USE_BROCHURE_FILE
           @property.brochure.expects(:url).returns(@file)
         end
 
