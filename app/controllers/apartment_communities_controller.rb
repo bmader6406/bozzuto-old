@@ -9,10 +9,6 @@ class ApartmentCommunitiesController < ApplicationController
   def show
   end
 
-  def rentnow
-    render :redesign, :layout => 'redesign'
-  end
-
   private
 
   def find_community

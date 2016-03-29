@@ -62,8 +62,6 @@ Bozzuto::Application.routes.draw do
     end
 
     resources :apartment_communities, :path => 'communities', :only => [:show] do
-      get 'rentnow', :on => :member
-
 
       resources :apartment_floor_plan_groups, :path => 'floor_plan_groups',
                 :as   => :floor_plan_groups,

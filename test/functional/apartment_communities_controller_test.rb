@@ -105,15 +105,5 @@ class ApartmentCommunitiesControllerTest < ActionController::TestCase
         should render_template(:show)
       end
     end
-
-    describe "GET #rentnow" do
-      before do
-        get :rentnow, :id => @community.to_param
-      end
-
-      should assign_to(:community) { @community }
-      should respond_with(:success)
-      should render_template(:redesign)
-    end
   end
 end
