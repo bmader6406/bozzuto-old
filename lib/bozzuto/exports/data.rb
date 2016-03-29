@@ -5,8 +5,18 @@ module Bozzuto
         new.communities
       end
 
+      def self.combined_communities
+        new.combined_communities
+      end
+
       def communities
         ApartmentCommunity.included_in_export.map do |community|
+          Community.new(community)
+        end
+      end
+
+      def combined_communities
+        communities + HomeCommunity.published.map do |community|
           Community.new(community)
         end
       end
@@ -32,7 +42,7 @@ module Bozzuto
 
       class Community < ExportableRecord
         def id
-          id_for_export
+          apartment_community? ? id_for_export : super
         end
 
         def city
@@ -53,7 +63,7 @@ module Bozzuto
 
         def slides
           slideshow.try(:slides).to_a.map do |slide|
-            OpenStruct.new(:image_url => url_for_image(slide.image.url(:slide)))
+            OpenStruct.new(image_url: url_for_image(slide.image.url(:slide)))
           end
         end
 
@@ -62,6 +72,8 @@ module Bozzuto
         end
 
         def floor_plans
+          return [] if home_community?
+
           super.map { |plan| FloorPlan.new(plan) }
         end
 
@@ -82,6 +94,8 @@ module Bozzuto
         end
 
         def nearby_communities
+          return [] if home_community?
+
           super.included_in_export
         end
 
@@ -90,7 +104,11 @@ module Bozzuto
         end
 
         def bozzuto_url
-          apartment_community_url(self)
+          if home_community?
+            home_community_url(self)
+          else
+            apartment_community_url(self)
+          end
         end
 
         def listing_image

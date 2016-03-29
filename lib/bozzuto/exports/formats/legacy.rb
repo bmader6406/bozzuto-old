@@ -9,6 +9,10 @@ module Bozzuto::Exports
 
       private
 
+      def communities
+        @communities ||= Bozzuto::Exports::Data.combined_communities
+      end
+
       def property_node(parent_node, property)
         parent_node.tag!('Property') do |node|
           property_id_node(node, property)

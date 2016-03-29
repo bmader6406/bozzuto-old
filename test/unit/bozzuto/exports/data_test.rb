@@ -15,7 +15,19 @@ module Bozzuto::Exports
         end
       end
 
-      describe "#communities" do
+      describe ".combined_communities" do
+        it "instantiates and grabs the communities data" do
+          @data = mock('Bozzuto::Exports::Data')
+
+          Bozzuto::Exports::Data.stubs(:new).returns(@data)
+
+          @data.expects(:combined_communities)
+
+          Bozzuto::Exports::Data.combined_communities
+        end
+      end
+
+      describe "#communities and #combined_communities" do
         before do
           state  = State.make(:name => 'North Carolina', :code => 'NC')
           county = County.make(:name => 'Dawnguard', :state => state)
@@ -113,8 +125,10 @@ module Bozzuto::Exports
             :content  => 'wilcum to da hood'
           })
 
-          @communities    = Bozzuto::Exports::Data.new.communities
-          @test_community = @communities.first
+          @home_community      = HomeCommunity.make(title: 'Boomtown Estates', listing_image_file_name: 'test.jpg')
+          @communities         = Bozzuto::Exports::Data.new.combined_communities
+          @test_community      = @communities.first
+          @test_home_community = @communities.last
         end
 
         it "only includes properties flagged for inclusion in the report" do
@@ -123,6 +137,7 @@ module Bozzuto::Exports
 
         it "contains the appropriate ID" do
           @test_community.id.should == 999
+          @test_home_community.id.should == @home_community.id
         end
 
         it "contains community title" do
@@ -180,6 +195,7 @@ module Bozzuto::Exports
 
         it "contains the listing image" do
           @test_community.listing_image.should match(%r{http://bozzuto\.com/system/apartment_communities/\d+/square\.jpg})
+          @test_home_community.listing_image.should match(%r{http://bozzuto\.com/system/home_communities/\d+/square\.jpg})
         end
 
         it "contains video link" do
@@ -246,6 +262,7 @@ module Bozzuto::Exports
 
         it "contains the community URL on Bozzuto.com" do
           @test_community.bozzuto_url.should == "http://bozzuto.com/apartments/communities/dolans-hood"
+          @test_home_community.bozzuto_url.should == "http://bozzuto.com/new-homes/communities/boomtown-estates"
         end
 
         it "contains latitude" do
@@ -259,6 +276,12 @@ module Bozzuto::Exports
         it "contains the nearby communities" do
           @test_community.nearby_communities.first.id.should    == @nearby_community.id
           @test_community.nearby_communities.first.title.should == @nearby_community.title
+          @test_home_community.nearby_communities.should == []
+        end
+
+        it "contains no floor plan records" do
+          @test_community.floor_plans.should == []
+          @test_home_community.floor_plans.should == []
         end
 
         context "when the community does not have a website URL" do
@@ -441,11 +464,11 @@ module Bozzuto::Exports
         end
 
         it "handles multiple communities" do
-          5.times do |n|
-            ApartmentCommunity.make
-          end
+          2.times { ApartmentCommunity.make }
+          2.times { HomeCommunity.make }
 
-          Bozzuto::Exports::Data.new.communities.size.should == 7
+          Bozzuto::Exports::Data.new.communities.size.should == 4
+          Bozzuto::Exports::Data.new.combined_communities.size.should == 7
         end
       end
     end
