@@ -51,7 +51,7 @@ module Bozzuto
         scope :sort_for, -> (landing_page) {
           #:nocov:
           if landing_page.respond_to?(:randomize_property_listings?)
-            order(landing_page.randomize_property_listings? ? 'RAND(NOW())' : "#{self.class.table_name}.title ASC")
+            order(landing_page.randomize_property_listings? ? 'RAND(NOW())' : "#{table_name}.title ASC")
           else
             all
           end
