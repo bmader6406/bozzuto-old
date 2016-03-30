@@ -9,7 +9,8 @@ ActiveAdmin.register LeadershipGroup do
 
   reorderable
 
-  permit_params :name
+  permit_params :name,
+                leader_ids: []
 
   index as: :reorderable_table do
     column :name
@@ -48,11 +49,7 @@ ActiveAdmin.register LeadershipGroup do
         end
 
         tab 'Leaders' do
-          panel nil do
-            association_table_for :leaders do
-              column :name
-            end
-          end
+          input :leaders, as: :chosen
         end
       end
     end
