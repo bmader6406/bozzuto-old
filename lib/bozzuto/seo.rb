@@ -2,7 +2,7 @@ module Bozzuto
   module Seo
     def self.extended(base)
       base.class_eval do
-        has_one :seo_metadata, as: :resource, dependent: :destroy
+        has_one :seo_metadata, as: :resource, dependent: :destroy, inverse_of: :resource
 
         accepts_nested_attributes_for :seo_metadata
 
