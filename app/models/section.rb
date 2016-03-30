@@ -36,12 +36,4 @@ class Section < ActiveRecord::Base
   def to_s
     title
   end
-
-  def to_param
-    if service?
-      "services/#{super}"
-    else
-      super
-    end
-  end
 end

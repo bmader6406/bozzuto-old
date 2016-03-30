@@ -10,7 +10,8 @@
 
     <% unless section_testimonials.count.zero? %>
       <li class="<%= current_if :controller => 'testimonials' %>">
-        <%= link_to 'Testimonials', testimonials_path(@section) %>
+        <% url = @section.service? ? services_testimonials_path(@section) : testimonials_path(@section) %>
+        <%= link_to 'Testimonials', url %>
       </li>
     <% end %>
 

@@ -225,12 +225,38 @@ Bozzuto::Application.routes.draw do
               :only => [:index, :show]
 
     scope '/management', :section => 'management' do
-      resources :management_communities,
-                :path => 'communities',
-                :only => :index
-    end
-  end
+      get '/' => 'pages#show', page: 'overview'
 
+      resources :management_communities, :path => 'communities', :only => :index
+    end
+
+    scope '/:section' do
+      scope '/news-and-press' do
+        get '/' => 'news_and_press#index', :as => :services_news_and_press
+
+        resources :awards, :only => [:index, :show], :as => :services_awards
+
+        resources :news_posts,
+                  :path => 'news',
+                  :only => [:index, :show],
+                  :as   => :services_news_posts
+
+
+        resources :press_releases,
+                  :path => 'press-releases',
+                  :only => [:index, :show],
+                  :as   => :services_press_releases
+      end
+
+      resources :testimonials, :only => :index, :as => :services_testimonials
+
+      get '/'      => 'pages#show', :page => 'overview'
+      get '/:page' => 'pages#show', :as   => :services_page
+    end
+
+    #get '/:section' => 'pages#show', :page => 'overview'
+    #get '/:section/:page' => 'pages#show', as: :services_page
+  end
 
   # Sections
   # /:section can look like one of the following:

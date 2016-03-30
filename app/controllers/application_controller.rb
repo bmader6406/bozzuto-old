@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   end
 
   def section_param
-    params[:section].presence && params[:section].sub('services/', '')
+    params[:section].presence && params[:section].gsub('services/', '')
   end
 
   def find_property(klass, id)

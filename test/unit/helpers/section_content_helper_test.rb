@@ -41,9 +41,9 @@ class SectionContentHelperTest < ActionView::TestCase
       should 'return a tree of unordered lists' do
         html = Nokogiri::HTML(pages_tree(@section.pages))
 
-        html.at('//li//a').attributes['href'].value.should == page_path(@section, @page1)
-        html.at('//li//ul//li//a').attributes['href'].value.should == page_path(@section, @page2)
-        html.at('//li//ul//li//ul//li//a').attributes['href'].value.should == page_path(@section, @page3)
+        html.at('//li//a').attributes['href'].value.should == page_url(@section, @page1)
+        html.at('//li//ul//li//a').attributes['href'].value.should == page_url(@section, @page2)
+        html.at('//li//ul//li//ul//li//a').attributes['href'].value.should == page_url(@section, @page3)
       end
     end
   end

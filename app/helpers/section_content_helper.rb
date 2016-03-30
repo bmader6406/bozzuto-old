@@ -39,8 +39,9 @@ module SectionContentHelper
         css_class = %{class="#{css_classes.join(' ')}"} if css_classes.any?
 
         output << ''.tap do |li|
+          url = page.section.service? ? services_page_url(page.section, page) : page_url(page.section, page)
           li << "<li #{css_class}>"
-          li << link_to(page.title, page_path(page.section, page))
+          li << link_to(page.title, url)
 
           if pages[i + 1].present? && pages[i + 1][:level] > current_level
             next_level = pages.drop(i + 1).take_while { |hash|
@@ -65,7 +66,8 @@ module SectionContentHelper
 
       content_tag :li, :class => current do
         ''.tap do |li|
-          li << link_to('News & Press', news_and_press_path(section))
+          url = section.service? ? services_news_and_press_url(section) : news_and_press_url(section)
+          li << link_to('News & Press', url)
 
           subnav = []
 
@@ -73,7 +75,8 @@ module SectionContentHelper
           if section_news_posts.any?
             current = params[:controller] == 'news_posts' ? 'current' : nil
             subnav << content_tag(:li, :class => current) do
-              link_to('News', news_posts_path(section))
+              url = section.service? ? services_news_posts_path(section) : news_posts_path(section)
+              link_to 'News', url
             end
           end
 
@@ -82,7 +85,8 @@ module SectionContentHelper
           if section_awards.any?
             current = params[:controller] == 'awards' ? 'current' : nil
             subnav << content_tag(:li, :class => current) do
-              link_to 'Awards', awards_path(section)
+              url = section.service? ? services_awards_path(section) : awards_path(section)
+              link_to 'Awards', url
             end
           end
           # :nocov:
@@ -91,7 +95,8 @@ module SectionContentHelper
           if section_press_releases.any?
             current = params[:controller] == 'press_releases' ? 'current' : nil
             subnav << content_tag(:li, :class => current) do
-              link_to('Press Releases', press_releases_path(section), :class => current)
+              url = section.service? ? services_press_releases_path(section) : press_releases_path(section)
+              link_to 'Press Releases', url, :class => current
             end
           end
 
@@ -99,7 +104,7 @@ module SectionContentHelper
           if @section == Section.about
             current = params[:controller] == 'rankings' ? 'current' : nil
             subnav << content_tag(:li, :class => current) do
-              link_to('Rankings', rankings_path, :class => current)
+              link_to 'Rankings', rankings_path, :class => current
             end
           end
 
