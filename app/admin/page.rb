@@ -68,6 +68,13 @@ ActiveAdmin.register Page do
             row :body do |p|
               raw p.body
             end
+          end
+        end
+      end
+
+      tab 'Mobile Content' do
+        panel nil do
+          attributes_table_for resource do
             row :mobile_body do |p|
               raw p.mobile_body
             end
@@ -144,7 +151,10 @@ ActiveAdmin.register Page do
         end
 
         tab 'Content' do
-          input :body,              as: :redactor
+          input :body, as: :redactor
+        end
+
+        tab 'Mobile Content' do
           input :mobile_body,       as: :redactor
           input :mobile_body_extra, as: :redactor
         end
