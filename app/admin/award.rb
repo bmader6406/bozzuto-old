@@ -88,11 +88,11 @@ ActiveAdmin.register Award do
           input :title
           input :image,                 as: :image
           input :body,                  as: :redactor
-          input :published
-          input :published_at,          as: :datetime_picker
           input :featured
           input :show_as_featured_news
           input :home_page_image,       as: :image
+          input :published
+          input :published_at,          as: :datetime_picker
         end
 
         tab 'Sections' do
