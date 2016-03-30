@@ -1,5 +1,5 @@
 ActiveAdmin.register UnderConstructionLead do
-  menu parent: 'Contact', label: 'Under Construction Leads'
+  menu parent: 'Leads', label: 'Under Construction Leads'
 
   actions :index, :show, :destroy
 

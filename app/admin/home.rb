@@ -1,5 +1,5 @@
 ActiveAdmin.register Home do
-  menu parent: 'Properties'
+  menu parent: 'Properties', label: 'Home Floor Plans'
 
   track_changes
 

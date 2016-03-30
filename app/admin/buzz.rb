@@ -1,7 +1,7 @@
 ActiveAdmin.register Buzz do
   config.sort_order = 'created_at_desc'
 
-  menu parent: 'Contact'
+  menu parent: 'Leads', label: 'Buzz Leads'
 
   actions :index, :show, :destroy
 
