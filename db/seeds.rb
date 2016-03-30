@@ -22,7 +22,7 @@ end
 [
  'Acquisitions',
  'Construction',
- 'Deveopment',
+ 'Development',
  'Homebuilding',
  'Land',
  'Management'
