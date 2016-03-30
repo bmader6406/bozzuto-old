@@ -27,9 +27,15 @@ module Bozzuto
 
           validates_inclusion_of :show_as_featured_news, :in => [true, false]
 
+          before_save :remove_as_featured_news, :unless => :published?
+
           after_save :set_only_featured_news, :if => :show_as_featured_news?
 
           private
+
+          def remove_as_featured_news
+            self.show_as_featured_news = false
+          end
 
           def set_only_featured_news
             @@featurable_news_classes.each do |klass|

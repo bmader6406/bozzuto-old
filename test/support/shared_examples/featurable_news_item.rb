@@ -28,6 +28,17 @@ module SharedFeaturableNewsTests
           @flagged.reload.show_as_featured_news
         }.from(true)
       end
+
+      context "when the #{described_class} is not published" do
+        before do
+          @flagged.published = false
+        end
+
+        it "does not allow it to be used as the featured news item" do
+          @flagged.save
+          @flagged.show_as_featured_news.should == false
+        end
+      end
     end
 
     context "with a non-#{described_class} featured news item" do
