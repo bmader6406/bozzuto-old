@@ -42,23 +42,10 @@ Bozzuto::Application.routes.draw do
 
   scope '/apartments' do
     scope '/communities' do
-
-      # Neighborhoods
-      regex = /[-A-Za-z]+(\d+)?/
-
-      get '/' => 'metros#index', :as => :metros
-
-      get ':id'        => 'metros#show',
-            :as          => :metro,
-            :constraints => { :id => regex }
-
-      get ':metro_id/:id' => 'areas#show',
-            :as             => :area,
-            :constraints    => { :metro_id => regex, :id => regex }
-
-      get ':metro_id/:area_id/:id' => 'neighborhoods#show',
-            :as                      => :neighborhood,
-            :constraints             => { :metro_id => regex, :area_id => regex, :id => regex }
+      get '/'                      => 'metros#index',       :as => :metros
+      get ':id'                    => 'metros#show',        :as => :metro,        :constraints => MetroConstraint
+      get ':metro_id/:id'          => 'areas#show',         :as => :area,         :constraints => MetroAreaConstraint
+      get ':metro_id/:area_id/:id' => 'neighborhoods#show', :as => :neighborhood, :constraints => MetroAreaNeighborhoodConstraint
     end
 
     resources :apartment_communities, :path => 'communities', :only => [:show] do

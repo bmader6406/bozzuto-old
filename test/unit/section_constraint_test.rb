@@ -16,7 +16,7 @@ class SectionConstraintTest < ActiveSupport::TestCase
         it "returns #{bool} for #{url}" do
           @request.stubs(:url).returns(url)
 
-          subject.matches?(@request).should == bool
+          SectionConstraint.new.matches?(@request).should == bool
         end
       end
     end

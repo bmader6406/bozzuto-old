@@ -4,7 +4,6 @@ class AreasController < ApplicationController
   def show
   end
 
-
   private
 
   def metro
