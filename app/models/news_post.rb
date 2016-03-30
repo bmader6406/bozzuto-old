@@ -20,6 +20,8 @@ class NewsPost < ActiveRecord::Base
     :default_style   => :thumb,
     :convert_options => { :all => '-quality 80 -strip' }
 
+  do_not_validate_attachment_file_type :image
+
   def to_s
     title
   end

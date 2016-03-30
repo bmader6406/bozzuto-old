@@ -23,6 +23,8 @@ module Bozzuto
             :default_url     => '/images/home-latest-news-placeholder.jpg',
             :convert_options => { :all => '-quality 80 -strip' }
 
+          validates_attachment_content_type :home_page_image, content_type: /\Aimage\/.*\Z/
+
           validates_inclusion_of :show_as_featured_news, :in => [true, false]
 
           after_save :set_only_featured_news, :if => :show_as_featured_news?

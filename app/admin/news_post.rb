@@ -38,7 +38,7 @@ ActiveAdmin.register NewsPost do
               status_tag resource.published
             end
             row :published_at do
-              resource.published_at.to_s(:extensive)
+              resource.published_at.to_s(:extensive) if resource.published_at.present?
             end
             row :featured do
               status_tag resource.featured
