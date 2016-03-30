@@ -422,7 +422,7 @@ ActiveAdmin.register HomeCommunity do
   end
 
   controller do
-    before_action :strip_empty_dnr_config, only: [:create, :update]
+    before_action :strip_empty_configurations, only: [:create, :update]
 
     def find_resource
       HomeCommunity.friendly.find(params[:id])
@@ -448,9 +448,20 @@ ActiveAdmin.register HomeCommunity do
     end
     helper_method :pages
 
+    def strip_empty_configurations
+      strip_empty_dnr_config
+      strip_empty_conversion_config
+    end
+
     def strip_empty_dnr_config
       if resource_params.first['dnr_configuration_attributes']['customer_code'].empty?
         resource_params.first.delete('dnr_configuration_attributes')
+      end
+    end
+
+    def strip_empty_conversion_config
+      if resource_params.first['conversion_configuration_attributes']['name'].empty?
+        resource_params.first.delete('conversion_configuration_attributes')
       end
     end
   end
