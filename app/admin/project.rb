@@ -34,7 +34,7 @@ ActiveAdmin.register Project do
                 :featured_mobile,
                 :completion_date,
                 :has_completion_date,
-                project_categories_ids: []
+                project_category_ids: []
 
   filter :title_cont,          label: 'Title'
   filter :street_address_cont, label: 'Street Address'
