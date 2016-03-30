@@ -25,37 +25,30 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
 
-    columns do
-      column do
-        panel "Recent Buzz Contacts" do
-          table_for Buzz.order(created_at: :desc).limit(10) do
-            column :email do |buzz|
-              link_to buzz.email, [:admin, buzz]
-            end
-            column :name
-            column :created_at
-          end
+    panel "Recent Buzz Leads" do
+      header_action link_to "View All", [:admin, :buzzes]
 
-          div do
-            link_to "View All", [:admin, :buzzes], class: 'button'
-          end
+      table_for Buzz.order(created_at: :desc).limit(4) do
+        column :email do |buzz|
+          link_to buzz.email, [:admin, buzz]
         end
+        column :name
+        column :created_at
       end
 
-      column do
-        panel "Recent Under Construction Leads" do
-          table_for UnderConstructionLead.order(created_at: :desc).limit(10) do
-            column :email do |lead|
-              link_to lead.email, [:admin, lead]
-            end
-            column :name
-            column :created_at
-          end
+      div do
+      end
+    end
 
-          div do
-            link_to "View All", [:admin, :under_construction_leads], class: 'button'
-          end
+    panel "Recent Under Construction Leads" do
+      header_action link_to "View All", [:admin, :under_construction_leads]
+
+      table_for UnderConstructionLead.order(created_at: :desc).limit(4) do
+        column :email do |lead|
+          link_to lead.email, [:admin, lead]
         end
+        column :name
+        column :created_at
       end
     end
   end

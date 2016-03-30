@@ -20,6 +20,13 @@ $am-theme-accent:  #b1ddd0;
 @import "bootstrap-custom";
 @import "bootstrap-datetimepicker";
 
+body.admin_dashboard {
+  #main_content {
+    background-color: #EEEEEE;
+    box-shadow: none;
+  }
+}
+
 // respect rows option
 .input.text textarea {
   height: auto;
