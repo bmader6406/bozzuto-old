@@ -28,10 +28,9 @@ class PropertyFeedImport < ActiveRecord::Base
 
   before_validation :set_queued, if: :blank_state?
 
-  scope :vaultware,     -> { where(type: "vaultware").order(created_at: :desc) }
-  scope :rent_cafe,     -> { where(type: "rent_cafe").order(created_at: :desc) }
-  scope :property_link, -> { where(type: "property_link").order(created_at: :desc) }
-  scope :psi,           -> { where(type: "psi").order(created_at: :desc) }
+  Bozzuto::ExternalFeed::SOURCES.each do |source|
+    scope source, -> { where(type: source).order(created_at: :desc) }
+  end
 
   STATES.each do |state|
     define_method "#{state}?" do

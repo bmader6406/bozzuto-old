@@ -22,7 +22,15 @@ ActiveAdmin.register_page 'Feed & Export Management' do
               link_to "View All", [:admin, :apartment_communities, q: { external_cms_type_eq: source }], class: 'button', target: :blank
             end
 
-            column '* Feeds can be refreshed once every two hours' do |source|
+            column 'Last Loaded' do |source|
+              import = PropertyFeedImport.send(source).first
+
+              if import.present?
+                distance_of_time_in_words(Time.now, import.updated_at) + ' ago'
+              end
+            end
+
+            column '* Feeds can be manually refreshed once every two hours' do |source|
               link_to 'Refresh', refresh_admin_feed_export_management_path(source), class: 'button', method: :put
             end
           end
