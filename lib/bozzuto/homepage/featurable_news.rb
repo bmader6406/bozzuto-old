@@ -34,7 +34,7 @@ module Bozzuto
           private
 
           def remove_as_featured_news
-            self.show_as_featured_news = false
+            true.tap { self.show_as_featured_news = false }
           end
 
           def set_only_featured_news
