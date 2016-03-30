@@ -22,7 +22,7 @@
 
                 <p>
                   <strong><%= property.title %></strong>
-                  <% if property.overview_bullet_1.present? %>
+                  <% if !property.project? && property.overview_bullet_1.present? %>
                     <br /><%= property.overview_bullet_1 %>
                   <% end %>
                 </p>
