@@ -13,7 +13,7 @@ ActiveAdmin.register Photo do
                 :property_id,
                 :property_type,
                 :image,
-                :show_on_mobile
+                :show_to_mobile
 
   filter :title_cont, label: 'Title'
   filter :photo_group
