@@ -97,7 +97,7 @@ ActiveAdmin.register Metro do
           input :latitude
           input :longitude
           input :banner_image,       as: :image
-          input :listing_image,      as: :image
+          input :listing_image,      as: :image, required: true
           input :detail_description
         end
 

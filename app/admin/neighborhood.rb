@@ -126,8 +126,8 @@ ActiveAdmin.register Neighborhood do
           input :state,                        as: :chosen
           input :latitude
           input :longitude
-          input :banner_image,                 as: :image
-          input :listing_image,                as: :image
+          input :banner_image,                 as: :image, required: true
+          input :listing_image,                as: :image, required: true
           input :description
           input :detail_description
           input :featured_apartment_community, as: :chosen

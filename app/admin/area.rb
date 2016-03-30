@@ -126,7 +126,7 @@ ActiveAdmin.register Area do
           input :latitude
           input :longitude
           input :banner_image,        as: :image
-          input :listing_image,       as: :image
+          input :listing_image,       as: :image, required: true
           input :description
           input :detail_description
           input :area_type,           as: :chosen, collection: Area::AREA_TYPE
