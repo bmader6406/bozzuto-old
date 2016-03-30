@@ -113,15 +113,8 @@ Bozzuto::Application.routes.draw do
               :only => [:index, :show]
 
     scope '/communities' do
-      # Home Neighborhoods
-      regex = /[-A-Za-z]+(\d+)?/
-
-      get '/' => 'home_neighborhoods#index',
-            :as => :home_neighborhoods
-
-      get ':id' => 'home_neighborhoods#show',
-            :as => :home_neighborhood,
-            :constraints => { :id => regex }
+      get '/'   => 'home_neighborhoods#index', :as => :home_neighborhoods
+      get ':id' => 'home_neighborhoods#show',  :as => :home_neighborhood,  :constraints => NeighborhoodConstraint
     end
 
     # Home communities
