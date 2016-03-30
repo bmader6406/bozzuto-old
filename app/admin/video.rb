@@ -15,6 +15,9 @@ ActiveAdmin.register Video do
                 :position
 
   index do
+    column :name do |video|
+      video.to_s
+    end
     column :property
 
     actions
@@ -22,7 +25,9 @@ ActiveAdmin.register Video do
 
   show do
     attributes_table do
-      row :id
+      row :name do |video|
+        video.to_s
+      end
       row :property
       row :url
       row :image do |video|
