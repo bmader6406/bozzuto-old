@@ -98,5 +98,34 @@ class Bozzuto::Data::ModelMigratorTest < ActiveSupport::TestCase
         @property2.slideshow.should == @slideshow2
       end
     end
+
+    context "when a record fails to save" do
+      subject do
+        Bozzuto::Data::ModelMigrator.new(
+          origin_class: Property,
+          target_class: Project,
+          records:      [@property1.becomes(Property).tap { |p| p.title = nil }]
+        )
+      end
+
+      before do
+        @messages = Array.new.tap do |array|
+          array.define_singleton_method :debug do |message|
+            self.<< message
+          end
+        end
+
+        subject.stubs(:logger).returns(@messages)
+      end
+
+      it "logs the errors and counts the failure" do
+        subject.migrate
+
+        subject.success_count.should == 0
+        subject.failure_count.should == 1
+
+        @messages.should include "\e[31mTitle can't be blank\e[0m"
+      end
+    end
   end
 end

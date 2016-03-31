@@ -30,7 +30,7 @@ module Bozzuto
         @origin_scope  = config.fetch(:origin_scope, origin_class.all)
         @target_scope  = config.fetch(:target_scope, target_class.all)
         @records       = config.fetch(:records, origin_scope)
-        @record_count  = origin_scope.size
+        @record_count  = records.count
         @success_count = 0
         @failure_count = 0
       end
@@ -128,15 +128,20 @@ module Bozzuto
 
         log "Validating migration of #{origin} (#{origin_class}) to #{target} (#{target_class}).."
 
-        field_mappings.each do |(field, mapper)|
-          original_value = mapper.call(origin)
-          mapped_value   = target.read_attribute(field)
+        if target.persisted?
+          field_mappings.each do |(field, mapper)|
+            original_value = mapper.call(origin)
+            mapped_value   = target.read_attribute(field)
 
-          if mapped_value != original_value && unvalidated_fields.exclude?(field.to_s)
-            log "#{field.titleize} does not match!  Original Value: '#{original_value}' // Mapped Value: '#{mapped_value}'", :warn
+            if mapped_value != original_value && unvalidated_fields.exclude?(field.to_s)
+              log "#{field.titleize} does not match!  Original Value: '#{original_value}' // Mapped Value: '#{mapped_value}'", :warn
 
-            success = false
+              success = false
+            end
           end
+        else
+          log target.errors.full_messages.join('; '), :failure
+          success = false
         end
 
         if success
