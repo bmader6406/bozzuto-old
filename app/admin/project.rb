@@ -15,7 +15,7 @@ ActiveAdmin.register Project do
                 :section,
                 :section_id,
                 :street_address,
-                :city,
+                :city_id,
                 :county,
                 :zip_code,
                 :latitude,
