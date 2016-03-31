@@ -1,4 +1,4 @@
-set :user,          'www-data'
+set :user,          'deploy'
 set :branch,        'master'
 set :slack_app_url, 'http://bozzuto.integration.vigetx.com'
 
