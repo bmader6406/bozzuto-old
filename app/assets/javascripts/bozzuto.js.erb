@@ -364,10 +364,10 @@ window.bozzuto = {};
   $.fn.bozzutoMap = function() {
     if (this.length > 0) {
       var iconImages = {
-        'ApartmentCommunity': '/images/structure/gicon-apartment.png',
-        'HomeCommunity':      '/images/structure/gicon-home.png',
-        'Project':            '/images/structure/gicon-project.png',
-        'UpcomingApartment':  '/images/structure/gicon-project.png'
+        'ApartmentCommunity': '<%= asset_path('structure/gicon-apartment.png') %>',
+        'HomeCommunity':      '<%= asset_path('structure/gicon-home.png') %>',
+        'Project':            '<%= asset_path('structure/gicon-project.png') %>',
+        'UpcomingApartment':  '<%= asset_path('structure/gicon-project.png') %>'
       };
 
       this.jMapping({
