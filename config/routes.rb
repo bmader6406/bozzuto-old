@@ -243,6 +243,8 @@ Bozzuto::Application.routes.draw do
 
       resources :testimonials, :only => :index, :as => :services_testimonials
 
+      resources :projects, :path => 'our-work', :only => [:index, :show]
+
       get '/'      => 'pages#show', :page => 'overview'
       get '/:page' => 'pages#show', :as   => :services_page
     end
