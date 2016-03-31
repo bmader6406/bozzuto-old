@@ -131,8 +131,8 @@ module Bozzuto
         private
 
         def brochure_url_xor_file
-          if brochure_link_text.present? && (brochure.present? ^ brochure_url.present?)
-            errors.add :brochure_link_text, "brochure file or url must be present if link text present"
+          if brochure_link_text.present? && !(brochure.present? ^ brochure_url.present?)
+            errors.add :brochure_link_text, "either brochure file or brochure url must be present if link text present, but not both"
           end
         end
       end
