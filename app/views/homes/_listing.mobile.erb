@@ -1,6 +1,6 @@
 <li>
   <div class="home">
-    <% link_to home_community_home_floor_plans_path(community, home), :class => 'info' do %>
+    <%= link_to home_community_home_floor_plans_path(community, home), :class => 'info' do %>
       <span class="name"><%= home.name %></span>
       <span class="pricing">
         <%= bedrooms(home) %> | <%= bathrooms(home) %>

@@ -2,7 +2,7 @@
   <ul class="slides">
     <% slides.each_with_index do |slide, i| %>
       <li id="slide-<%= i + 1 %>" class="section slide">
-        <% link_to property_path(slide.community) do %>
+        <%= link_to property_path(slide.community) do %>
           <h1><%= slide.title %></h1>
 
           <span class="overlay"></span>

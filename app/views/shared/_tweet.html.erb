@@ -3,7 +3,7 @@
     <p><%= auto_link(tweet.text).html_safe rescue tweet.text %></p>
   </div>
 
-  <% link_to twitter_url(tweet.username), :class => 'byline', :target => '_blank' do %>
+  <%= link_to twitter_url(tweet.username), :class => 'byline', :target => '_blank' do %>
     <%= tweet.username %> <em><%= tweet.posted_at.to_formatted_s(:tweet) %></em>
   <% end %>
 </div>

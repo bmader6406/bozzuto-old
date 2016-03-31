@@ -11,7 +11,7 @@
     <ul class="contact contact-list">
       <% if project.mappable? && device != :blackberry %>
         <li>
-          <% link_to mobile_map_url(project), :class => 'btn directions' do %>
+          <%= link_to mobile_map_url(project), :class => 'btn directions' do %>
             <span>Directions</span> <%= project.city %>
           <% end %>
         </li>
@@ -19,7 +19,7 @@
 
       <% if project.video_url.present? %>
         <li>
-          <% link_to project.video_url, :class => 'btn watch-video' do %>
+          <%= link_to project.video_url, :class => 'btn watch-video' do %>
             <span>Watch Video</span>
           <% end %>
         </li>

@@ -12,7 +12,7 @@
         <% if slide.property && slide.property.slideshow.present? %>
           <% property = slide.property %>
           <div class="featured-property">
-            <% link_to property_path(property) do %>
+            <%= link_to property_path(property) do %>
               <%= image_tag property.slideshow.slides.first.image.url %>
               <div class="aside">
                 <h2>

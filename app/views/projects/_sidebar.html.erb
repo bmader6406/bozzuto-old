@@ -81,7 +81,7 @@
           <% end %>
 
           <p>
-            <% link_to project_path(@section, project) do %>
+            <%= link_to project_path(@section, project) do %>
               <%= project.short_name %>, <%= project.city %>
             <% end %>
           </p>

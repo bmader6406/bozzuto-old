@@ -14,7 +14,7 @@
       <% @plans.each do |plan| %>
         <li>
           <div class="floor-plan">
-            <% link_to apartment_community_floor_plan_group_layout_path(@community, @group, plan), :class => 'info' do %>
+            <%= link_to apartment_community_floor_plan_group_layout_path(@community, @group, plan), :class => 'info' do %>
               <span class="name"><%= plan.name %></span>
               <span class="pricing">
                 <%= square_feet(plan.min_square_feet) %>

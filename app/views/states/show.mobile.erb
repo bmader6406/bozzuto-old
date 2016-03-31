@@ -11,7 +11,7 @@
     <ul>
       <% state.places.each do |place| %>
         <li>
-          <% link_to place_path(place), :class => 'btn' do %>
+          <%= link_to place_path(place), :class => 'btn' do %>
             <span><%= place %></span> (<%= place.apartment_communities_count %>)
           <% end %>
         </li>
