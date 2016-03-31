@@ -21,7 +21,7 @@ module Bozzuto
 
             new_options[route_symbol].merge!(table_config.type => resource.class.name) if table_config.options[:as].present?
 
-            unless table_config.macro == :has_one && collection.any?
+            unless params[:action] == 'new' || (table_config.macro == :has_one && collection.any?)
               div class: 'association_table_add_link'  do
                 link_to "Add New", polymorphic_url([:new, :admin, route_symbol], new_options), class: 'button'
               end
@@ -44,7 +44,16 @@ module Bozzuto
             else
               div class: 'blank_slate_container' do
                 span class: 'blank_slate' do
-                  span 'No ' + association.to_s.titleize 
+                  if params[:action] == 'new'
+                    span [
+                      resource_class.name.titleize,
+                      'must be created before adding any',
+                      association.to_s.titleize,
+                      'records.'
+                    ].join(' ')
+                  else
+                    span 'No ' + association.to_s.titleize
+                  end
                 end
               end
             end
