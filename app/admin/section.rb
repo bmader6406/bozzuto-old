@@ -9,7 +9,10 @@ ActiveAdmin.register Section do
 
   permit_params :left_montage_image,
                 :middle_montage_image,
-                :right_montage_image
+                :right_montage_image,
+                award_ids: [],
+                news_post_ids: [],
+                press_release_ids: []
 
   filter :title_cont, label: 'Title'
 
@@ -183,6 +186,8 @@ ActiveAdmin.register Section do
         end
 
         tab 'Awards' do
+          input :awards, as: :chosen
+
           panel nil do
             association_table_for :awards do
               column :title
@@ -193,6 +198,8 @@ ActiveAdmin.register Section do
         end
 
         tab 'News Posts' do
+          input :news_posts, as: :chosen
+
           panel nil do
             association_table_for :news_posts do
               column :title
@@ -203,6 +210,8 @@ ActiveAdmin.register Section do
         end
 
         tab 'Press Releases' do
+          input :press_releases, as: :chosen
+
           panel nil do
             association_table_for :press_releases do
               column :title
