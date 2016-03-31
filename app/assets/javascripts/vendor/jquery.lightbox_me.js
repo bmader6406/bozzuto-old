@@ -34,7 +34,7 @@
                 $overlay = $('div.' + opts.classPrefix + '_overlay'),
                 $self = $(this),
                 $iframe = $('iframe#lb_iframe'),
-                ie6 = ($.browser.msie && $.browser.version < 7);
+                ie6 = false;
             
             if ($overlay.length > 0) {
                 $overlay[0].removeModal(); // if the overlay exists, then a modal probably exists. Ditch it!

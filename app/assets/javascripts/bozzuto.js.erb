@@ -85,18 +85,10 @@ window.bozzuto = {};
     setSearchFormState();
 
     $('.project ul.project-updates li .info-link').hover(function() {
-      if ($.browser.msie) {
-        $(this).find('a').addClass('active').closest('div').find('.info-overlay').show();
-      } else {
-        $(this).find('a').addClass('active').closest('div').find('.info-overlay').fadeIn('fast');
-      }
+      $(this).find('a').addClass('active').closest('div').find('.info-overlay').fadeIn('fast');
       return false;
     }, function() {
-      if ($.browser.msie) {
-        $(this).removeClass('active').closest('div').find('.info-overlay').hide();
-      } else {
-        $(this).removeClass('active').closest('div').find('.info-overlay').fadeOut('fast');
-      }
+      $(this).removeClass('active').closest('div').find('.info-overlay').fadeOut('fast');
       return false;
     });
 
