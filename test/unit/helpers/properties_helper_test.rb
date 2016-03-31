@@ -34,7 +34,7 @@ class PropertiesHelperTest < ActionView::TestCase
     context '#brochure_link' do
       setup do
         @link_text = 'Click me'
-        @property = Property.make(:brochure_link_text => @link_text)
+        @property = Property.make
       end
 
       context 'when the property has no brochure_link_text' do
@@ -50,6 +50,7 @@ class PropertiesHelperTest < ActionView::TestCase
       context 'when the property uses brochure url' do
         setup do
           @url = 'http://viget.com'
+          @property.brochure_link_text = @link_text
           @property.brochure_url = @url
         end
 
@@ -66,6 +67,8 @@ class PropertiesHelperTest < ActionView::TestCase
 
       context 'when the property uses brochure file' do
         setup do
+          @property.brochure_link_text = @link_text
+
           @file = 'http://viget.com/file.jpg'
           @property.brochure.expects(:url).returns(@file)
         end
