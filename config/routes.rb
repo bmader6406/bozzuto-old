@@ -114,7 +114,7 @@ Bozzuto::Application.routes.draw do
 
     scope '/communities' do
       get '/'   => 'home_neighborhoods#index', :as => :home_neighborhoods
-      get ':id' => 'home_neighborhoods#show',  :as => :home_neighborhood,  :constraints => NeighborhoodConstraint
+      get ':id' => 'home_neighborhoods#show',  :as => :home_neighborhood,  :constraints => HomeNeighborhoodConstraint
     end
 
     # Home communities

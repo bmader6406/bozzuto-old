@@ -1,4 +1,4 @@
-class NeighborhoodConstraint
+class HomeNeighborhoodConstraint
 
   def self.matches?(request)
     new(request).matches?
@@ -9,18 +9,18 @@ class NeighborhoodConstraint
   end
 
   def matches?
-    neighborhood_exists?
+    home_neighborhood_exists?
   end
 
   private
 
   attr_reader :request
 
-  def neighborhood_exists?
-    Neighborhood.friendly.exists?(neighborhood_id)
+  def home_neighborhood_exists?
+    HomeNeighborhood.friendly.exists?(home_neighborhood_id)
   end
 
-  def neighborhood_id
+  def home_neighborhood_id
     request.params[:id]
   end
 end
