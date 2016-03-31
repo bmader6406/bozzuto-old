@@ -24,41 +24,7 @@
 
       this.$parent.append(this.$node);
 
-      if (this.supportsTransforms()) {
-        this.disableAnimations();
-
-        // Position the center of the overlay at 0, 0.
-        // This is so we can translate using center positions
-        this.setCenter({ x: 0, y: 0 });
-
-        // Center the overlay on the spot
-        this.setOpacity(0);
-        this.transform(spotCenter.x, spotCenter.y, 0.2);
-
-        this.redraw();
-
-        this.enableAnimations();
-
-        // After the transition finishes, remove the transform and
-        // set the position to the center of the map. This is to:
-        //
-        // 1. get rid of the fuzziness caused by transforms
-        // 2. prep for using a transform on close
-        var self = this;
-
-        this.$node.one($.transitionEndEvent, function() {
-          self.disableAnimations();
-
-          self.removeTransform();
-          self.setCenter(parentCenter);
-        });
-
-        // Center the overlay over the map
-        this.setOpacity(1);
-        this.transform(parentCenter.x, parentCenter.y, 1);
-      } else {
-        this.setCenter(parentCenter);
-      }
+      this.setCenter(parentCenter);
     },
 
     remove: function() {
