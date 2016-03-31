@@ -1129,7 +1129,7 @@ window.bozzuto = {};
 
 
   $.fn.attachSearchForm = function() {
-    var form = this;
+    var form = this[0];
     this.find("input, select").bind('change', function () {
       $.get(form.action, $(form).serialize(), null, "script");
     });
