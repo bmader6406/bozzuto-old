@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160329144919) do
+ActiveRecord::Schema.define(version: 20160401154142) do
 
   create_table "ad_sources", force: :cascade do |t|
     t.string   "domain_name", limit: 255, null: false
@@ -1071,40 +1071,42 @@ ActiveRecord::Schema.define(version: 20160329144919) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string  "title",                      limit: 255,                                            null: false
-    t.string  "slug",                       limit: 255
-    t.string  "short_title",                limit: 255
-    t.string  "short_description",          limit: 255
-    t.string  "page_header",                limit: 255
-    t.string  "section",                    limit: 255
-    t.string  "section_id",                 limit: 255
-    t.string  "street_address",             limit: 255
-    t.integer "city_id",                    limit: 4
-    t.integer "county_id",                  limit: 4
-    t.string  "zip_code",                   limit: 255
-    t.decimal "latitude",                                 precision: 10, scale: 6
-    t.decimal "longitude",                                precision: 10, scale: 6
-    t.string  "website_url",                limit: 255
-    t.string  "website_url_text",           limit: 255
-    t.string  "video_url",                  limit: 255
-    t.integer "brochure_type",              limit: 4
-    t.string  "brochure_url",               limit: 255
-    t.string  "brochure_file_name",         limit: 255
-    t.string  "brochure_content_type",      limit: 255
-    t.string  "brochure_link_text",         limit: 255
-    t.string  "listing_image_file_name",    limit: 255
-    t.string  "listing_image_content_type", limit: 255
-    t.string  "listing_title",              limit: 255
-    t.text    "listing_text",               limit: 65535
-    t.text    "overview_text",              limit: 65535
-    t.string  "meta_title",                 limit: 255
-    t.string  "meta_description",           limit: 255
-    t.string  "meta_keywords",              limit: 255
-    t.date    "completion_date",                                                                   null: false
-    t.boolean "has_completion_date",                                               default: false, null: false
-    t.boolean "published",                                                                         null: false
-    t.boolean "featured_mobile",                                                   default: false, null: false
-    t.integer "position",                   limit: 4
+    t.string   "title",                      limit: 255,                                                            null: false
+    t.string   "slug",                       limit: 255
+    t.string   "short_title",                limit: 255
+    t.string   "short_description",          limit: 255
+    t.string   "page_header",                limit: 255
+    t.string   "section",                    limit: 255
+    t.string   "section_id",                 limit: 255
+    t.string   "street_address",             limit: 255
+    t.integer  "city_id",                    limit: 4
+    t.integer  "county_id",                  limit: 4
+    t.string   "zip_code",                   limit: 255
+    t.decimal  "latitude",                                 precision: 10, scale: 6
+    t.decimal  "longitude",                                precision: 10, scale: 6
+    t.string   "website_url",                limit: 255
+    t.string   "website_url_text",           limit: 255
+    t.string   "video_url",                  limit: 255
+    t.integer  "brochure_type",              limit: 4
+    t.string   "brochure_url",               limit: 255
+    t.string   "brochure_file_name",         limit: 255
+    t.string   "brochure_content_type",      limit: 255
+    t.string   "brochure_link_text",         limit: 255
+    t.string   "listing_image_file_name",    limit: 255
+    t.string   "listing_image_content_type", limit: 255
+    t.string   "listing_title",              limit: 255
+    t.text     "listing_text",               limit: 65535
+    t.text     "overview_text",              limit: 65535
+    t.string   "meta_title",                 limit: 255
+    t.string   "meta_description",           limit: 255
+    t.string   "meta_keywords",              limit: 255
+    t.date     "completion_date",                                                                                   null: false
+    t.boolean  "has_completion_date",                                               default: false,                 null: false
+    t.boolean  "published",                                                                                         null: false
+    t.boolean  "featured_mobile",                                                   default: false,                 null: false
+    t.integer  "position",                   limit: 4
+    t.datetime "created_at",                                                        default: '2016-04-01 15:45:39', null: false
+    t.datetime "updated_at",                                                        default: '2016-04-01 15:45:39', null: false
   end
 
   create_table "promos", force: :cascade do |t|
