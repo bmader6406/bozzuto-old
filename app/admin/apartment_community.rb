@@ -191,7 +191,9 @@ ActiveAdmin.register ApartmentCommunity do
               end
             end
             row :listing_title
-            row :listing_text
+            row :listing_text do |community|
+              raw community.listing_text
+            end
             row :neighborhood_listing_image do |community|
               if community.neighborhood_listing_image.present?
                 image_tag community.neighborhood_listing_image
