@@ -52,6 +52,40 @@ class Bozzuto::Data::ModelMigratorTest < ActiveSupport::TestCase
         subject.success_count.should == 0
         subject.failure_count.should == 2
       end
+
+      context "when moving Property records to ApartmentCommunity" do
+        subject do
+          Bozzuto::Data::ModelMigrator.new(
+            origin_class:         Property,
+            target_class:         ApartmentCommunity,
+            records:              Property.where(type: 'ApartmentCommunity').map { |p| p.becomes(Property) },
+            ignore:               :office_hours,
+            skip_validations_for: %i(position featured_position slug office_hours phone_number mobile_phone_number)
+          )
+        end
+
+        before do
+          @property = Property.make.tap do |p|
+            p.update_columns(id: 1337, type: 'ApartmentCommunity')
+          end
+
+          @photo        = Photo.make(property: @property)
+          @monday_hours = OfficeHour.make(property: @property, day: Date::DAYNAMES.index('Monday'))
+          @friday_hours = OfficeHour.make(property: @property, day: Date::DAYNAMES.index('Friday'))
+        end
+
+        it "correctly copies the office hours" do
+          subject.migrate
+
+          ApartmentCommunity.count.should == 1
+
+          ApartmentCommunity.first.tap do |community|
+            community.id.should           == 1337
+            community.photos.should       == [@photo]
+            community.office_hours.should == [@monday_hours, @friday_hours]
+          end
+        end
+      end
     end
 
     context "skipping validations on certain fields" do

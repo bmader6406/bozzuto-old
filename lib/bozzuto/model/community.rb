@@ -21,11 +21,11 @@ module Bozzuto
 
         has_one :dnr_configuration, as: :property, dependent: :destroy
 
-        has_many :landing_page_popular_orderings,                   as: :property, dependent: :destroy
-        has_many :photos,                                           as: :property
-        has_many :videos,             -> { order(position: :asc) }, as: :property
-        has_many :office_hours,       -> { order(:day) },           as: :property, dependent: :destroy
-        has_many :property_amenities, -> { order(:position) },      as: :property, dependent: :destroy
+        has_many :landing_page_popular_orderings,                   as: :property, dependent: :destroy, inverse_of: :property
+        has_many :photos,                                           as: :property,                      inverse_of: :property
+        has_many :videos,             -> { order(position: :asc) }, as: :property,                      inverse_of: :property
+        has_many :office_hours,       -> { order(:day) },           as: :property, dependent: :destroy, inverse_of: :property
+        has_many :property_amenities, -> { order(:position) },      as: :property, dependent: :destroy, inverse_of: :property
 
         has_neighborhood_listing_image :neighborhood_listing_image, required: false
 

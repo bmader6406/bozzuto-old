@@ -64,7 +64,7 @@ module Bozzuto
         associations.each do |association|
           records = from.send(association.name)
 
-          next if records.nil? || association.options[:through].present?
+          next if Array(records).empty? || association.options[:through].present?
 
           options = { association.foreign_key => to.id }
           options.merge!(association.foreign_key.to_s.gsub('id', 'type') => target_class.name) if association.options[:as]
@@ -111,8 +111,12 @@ module Bozzuto
 
       def attributes
         @attributes ||= target_class.columns.select do |column|
-          dependencies.map(&:name).exclude? column.name.to_sym
+          dependencies.map(&:name).exclude?(column.name.to_sym) && ignored_attributes.exclude?(column.name)
         end
+      end
+
+      def ignored_attributes
+        @ignored_attributes ||= Array(config[:ignore]).map(&:to_s)
       end
 
       def logger

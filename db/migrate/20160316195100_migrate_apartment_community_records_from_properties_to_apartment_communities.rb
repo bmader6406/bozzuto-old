@@ -4,6 +4,7 @@ class MigrateApartmentCommunityRecordsFromPropertiesToApartmentCommunities < Act
       origin_class:         Property,
       target_class:         ApartmentCommunity,
       records:              Property.where(type: 'ApartmentCommunity').map { |p| p.becomes(Property) },
+      ignore:               :office_hours,
       skip_validations_for: %i(position featured_position slug office_hours phone_number mobile_phone_number)
     ).migrate
   end
