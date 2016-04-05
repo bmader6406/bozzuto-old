@@ -8,7 +8,11 @@ module Bozzuto
       attr_reader :input
 
       def initialize(input = nil)
-        @input = Array(input)
+        @input = Array(input).map do |id|
+          # Ransack converts 1's and 0's passed into `.search` into true/false
+          # https://github.com/activerecord-hackery/ransack/issues/593
+          id == true ? 1 : id.to_i
+        end
       end
 
       def main_class
