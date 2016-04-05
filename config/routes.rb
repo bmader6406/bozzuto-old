@@ -246,7 +246,7 @@ Bozzuto::Application.routes.draw do
       resources :projects, :path => 'our-work', :only => [:index, :show]
 
       get '/'      => 'pages#show', :page => 'overview'
-      get '/:page' => 'pages#show', :as   => :services_page
+      get '/*page' => 'pages#show', :as   => :services_page
     end
 
     #get '/:section' => 'pages#show', :page => 'overview'

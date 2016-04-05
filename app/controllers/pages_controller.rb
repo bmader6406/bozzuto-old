@@ -14,7 +14,7 @@ class PagesController < ApplicationController
   def find_page
     @page = if params[:page].present?
       scope = admin_user ? @section.pages : @section.pages.published
-      scope.find_by(path: current_page_path)
+      scope.find_by path: current_page_path
     else
       @section.pages.published.first
     end
