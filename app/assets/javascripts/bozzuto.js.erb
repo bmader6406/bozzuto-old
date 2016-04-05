@@ -983,12 +983,16 @@ window.bozzuto = {};
           $slideshow.advanceInterval = autoAdvance($slideshow, o);
           $slideshow.hover(function() {
             clearInterval( $slideshow.advanceInterval );
-            clearInterval( $slideshow.sister.trigger('clearInterval') );
+            if ( $slideshow.data('linked') == true ) {
+              clearInterval( $slideshow.sister.trigger('clearInterval') );
+            }
           }, function() {
             if ( $slideshow.advancing ){
               $slideshow.advanceInterval = autoAdvance($slideshow, o);
             }
-            clearInterval( $slideshow.sister.trigger('startInterval') );
+            if ( $slideshow.data('linked') == true ) {
+              clearInterval( $slideshow.sister.trigger('startInterval') );
+            }
           });
         }
 
