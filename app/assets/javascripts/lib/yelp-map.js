@@ -80,77 +80,75 @@
     });
   }
 
-  $(document).ready(function() {
-    $("#map-lightbox").click(function (e) {
-      e.preventDefault();
+  $("#map-lightbox").click(function(e) {
+    e.preventDefault();
 
-      $("#large-map-container").lightbox_me({
-        onLoad: function () {
-          var $largeMap = $('#large-map');
+    $("#large-map-container").lightbox_me({
+      onLoad: function () {
+        var $largeMap = $('#large-map');
 
-          $largeMap.css({ height: '420px', width: '850px' });
+        $largeMap.css({ height: '420px', width: '850px' });
 
-          $largeMap.jMapping({
-            category_icon_options: function(category) {
-              return {
-                size: new google.maps.Size(32, 37),
-                url:  iconImage(category)
-              };
-            },
-            always_show_markers: true,
-            default_zoom_level: 13,
-            side_bar_selector: '#large-map-side-bar:first'
+        $largeMap.jMapping({
+          category_icon_options: function(category) {
+            return {
+              size: new google.maps.Size(32, 37),
+              url:  iconImage(category)
+            };
+          },
+          always_show_markers: true,
+          default_zoom_level: 13,
+          side_bar_selector: '#large-map-side-bar:first'
+        });
+
+        function checkedCategories() {
+          var categories = [];
+          $('#large-map-controls input[name=categories]:checked').map(function() {
+            categories.push($(this).val());
           });
-
-          function checkedCategories() {
-            var categories = [];
-            $('#large-map-controls input[name=categories]:checked').map(function() {
-              categories.push($(this).val());
-            });
-            return categories;
-          }
-
-          search(checkedCategories());
-
-          $('#large-map-controls input').click(function(e) {
-            search(checkedCategories());
-          });
-
-          $('#large-map-container a.select-all').click(function(e) {
-            $('#large-map-controls input').attr('checked', 'checked');
-            search(checkedCategories());
-            return false;
-          });
-
-          $('#large-map-container a.select-none').click(function(e) {
-            $('#large-map-controls input').attr('checked', '');
-            search(checkedCategories());
-            return false;
-          });
+          return categories;
         }
-      });
+
+        search(checkedCategories());
+
+        $('#large-map-controls input').click(function(e) {
+          search(checkedCategories());
+        });
+
+        $('#large-map-container a.select-all').click(function(e) {
+          $('#large-map-controls input').attr('checked', 'checked');
+          search(checkedCategories());
+          return false;
+        });
+
+        $('#large-map-container a.select-none').click(function(e) {
+          $('#large-map-controls input').attr('checked', '');
+          search(checkedCategories());
+          return false;
+        });
+      }
     });
-
-    var iconImages = {
-      'fitness':            '//google-maps-icons.googlecode.com/files/fitnesscenter.png',
-      'parks':              '//google-maps-icons.googlecode.com/files/park-urban.png',
-      'arts':               '//google-maps-icons.googlecode.com/files/music-classical.png',
-      'beautysvc':          '//google-maps-icons.googlecode.com/files/aestheticscenter.png',
-      'education':          '//google-maps-icons.googlecode.com/files/school.png',
-      'coffee':             '//google-maps-icons.googlecode.com/files/coffee.png',
-      'grocery':            '//google-maps-icons.googlecode.com/files/grocery.png',
-      'hospitals':          '//google-maps-icons.googlecode.com/files/hospital.png',
-      'transport':          '//google-maps-icons.googlecode.com/files/bus.png',
-      'hotels':             '//google-maps-icons.googlecode.com/files/hotel.png',
-      'drycleaninglaundry': '//google-maps-icons.googlecode.com/files/clothes.png',
-      'bars':               '//google-maps-icons.googlecode.com/files/bar.png',
-      'petservices':        '//google-maps-icons.googlecode.com/files/pets.png',
-      'restaurants':        '//google-maps-icons.googlecode.com/files/restaurant.png',
-      'shopping':           '//google-maps-icons.googlecode.com/files/shoppingmall.png'
-    };
-
-    function iconImage(key) {
-      return iconImages[key] || '//google-maps-icons.googlecode.com/files/home.png';
-    }
   });
+
+  var iconImages = {
+    'fitness':            '//google-maps-icons.googlecode.com/files/fitnesscenter.png',
+    'parks':              '//google-maps-icons.googlecode.com/files/park-urban.png',
+    'arts':               '//google-maps-icons.googlecode.com/files/music-classical.png',
+    'beautysvc':          '//google-maps-icons.googlecode.com/files/aestheticscenter.png',
+    'education':          '//google-maps-icons.googlecode.com/files/school.png',
+    'coffee':             '//google-maps-icons.googlecode.com/files/coffee.png',
+    'grocery':            '//google-maps-icons.googlecode.com/files/grocery.png',
+    'hospitals':          '//google-maps-icons.googlecode.com/files/hospital.png',
+    'transport':          '//google-maps-icons.googlecode.com/files/bus.png',
+    'hotels':             '//google-maps-icons.googlecode.com/files/hotel.png',
+    'drycleaninglaundry': '//google-maps-icons.googlecode.com/files/clothes.png',
+    'bars':               '//google-maps-icons.googlecode.com/files/bar.png',
+    'petservices':        '//google-maps-icons.googlecode.com/files/pets.png',
+    'restaurants':        '//google-maps-icons.googlecode.com/files/restaurant.png',
+    'shopping':           '//google-maps-icons.googlecode.com/files/shoppingmall.png'
+  };
+
+  function iconImage(key) {
+    return iconImages[key] || '//google-maps-icons.googlecode.com/files/home.png';
+  }
 })();
