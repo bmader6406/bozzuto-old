@@ -20,7 +20,7 @@ class OfficeHoursController < ApplicationController
   end
 
   def home_community
-    HomeCommunity.friendly.find(params[:home_community_id]) if HomeCommunity.friendly.exists?(params[:home_community_id])
+    HomeCommunity.friendly.find(params[:home_community_id])
   end
 
   def mobile_only
