@@ -176,6 +176,7 @@ GEM
       has_scope (~> 0.6.0.rc)
       railties (>= 3.2, < 5)
       responders
+    jquery-migrate-rails (1.2.1)
     jquery-rails (4.1.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -394,6 +395,7 @@ DEPENDENCIES
   geokit
   geokit-rails
   httparty
+  jquery-migrate-rails
   jquery-rails (~> 4.1.0)
   machinist (= 1.0.6)
   mocha (~> 1.1.0)

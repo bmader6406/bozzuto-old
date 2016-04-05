@@ -8,6 +8,7 @@ gem 'rails-observers'
 gem 'protected_attributes'
 
 gem 'jquery-rails', '~> 4.1.0'
+gem 'jquery-migrate-rails'
 gem 'sass-rails',   '~> 5.0.4'
 gem 'uglifier',     '~> 2.7.2'
 

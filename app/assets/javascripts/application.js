@@ -1,4 +1,5 @@
 //= require jquery
+//= require jquery-migrate-min
 //= require jquery_ujs
 //= require vendor/jquery.json.js
 //= require vendor/jquery.lightbox_me
