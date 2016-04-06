@@ -408,7 +408,7 @@ ActiveAdmin.register ApartmentCommunity do
           input :overview_bullet_1
           input :overview_bullet_2
           input :overview_bullet_3
-          input :promo,                       as: :chosen
+          input :promo,                       as: :chosen, label: ('Promo ' + link_to('(Add New)', [:new, :admin, :promo], target: :blank)).html_safe
           input :core_id
           input :included_in_export
           input :published
