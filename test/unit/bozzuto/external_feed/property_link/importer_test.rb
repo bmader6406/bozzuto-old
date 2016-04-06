@@ -167,7 +167,7 @@ module Bozzuto::ExternalFeed::PropertyLink
               f.max_square_feet.should   == 792
               f.min_rent.should          == 1652
               f.max_rent.should          == 1803
-              f.image_url.should         == 'http://capi.myleasestar.com/v2/dimg/9066752/958x1252/9066752.jpg'
+              f.image_url.should         == 'https://capi.myleasestar.com/v2/dimg/9066752/958x1252/9066752.jpg'
               f.unit_count.should        == 0
               f.floor_plan_group.should  == 'one_bedroom'
               f.external_cms_id.should   == '579255'
@@ -184,7 +184,7 @@ module Bozzuto::ExternalFeed::PropertyLink
               f.max_square_feet.should   == 800
               f.min_rent.should          == 1657
               f.max_rent.should          == 1807
-              f.image_url.should         == 'http://capi.myleasestar.com/v2/dimg/722894/355x324/722894.jpg'
+              f.image_url.should         == 'https://capi.myleasestar.com/v2/dimg/722894/355x324/722894.jpg'
               f.unit_count.should        == 0
               f.floor_plan_group.should  == 'one_bedroom'
               f.external_cms_id.should   == '579254'

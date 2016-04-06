@@ -66,7 +66,7 @@ module Bozzuto::ExternalFeed::Vaultware
               f.max_square_feet.should   == 780
               f.min_rent.should          == 1480
               f.max_rent.should          == 1505
-              f.image_url.should         == 'http://cdn.realtydatatrust.com/i/fs/27983'
+              f.image_url.should         == 'https://cdn.realtydatatrust.com/i/fs/27983'
               f.unit_count.should        == 34
               f.floor_plan_group.should  == 'one_bedroom'
               f.external_cms_id.should   == '9797'
@@ -83,7 +83,7 @@ module Bozzuto::ExternalFeed::Vaultware
               f.max_square_feet.should   == 881
               f.min_rent.should          == 1585
               f.max_rent.should          == 1585
-              f.image_url.should         == 'http://cdn.realtydatatrust.com/i/fs/27989'
+              f.image_url.should         == 'https://cdn.realtydatatrust.com/i/fs/27989'
               f.unit_count.should        == 16
               f.floor_plan_group.should  == 'one_bedroom'
               f.external_cms_id.should   == '9798'
@@ -252,7 +252,7 @@ module Bozzuto::ExternalFeed::Vaultware
               f.max_square_feet.should   == 833
               f.min_rent.should          == 1540
               f.max_rent.should          == 1820
-              f.image_url.should         == 'http://cdn.realtydatatrust.com/i/fs/62315'
+              f.image_url.should         == 'https://cdn.realtydatatrust.com/i/fs/62315'
               f.unit_count.should        == 89
               f.floor_plan_group.should  == 'two_bedrooms'
               f.external_cms_id.should   == '20294'

@@ -1,6 +1,9 @@
 module Bozzuto
   module ExternalFeed
     module XpathParsing
+      HTTPS_NOT_SUPPORTED = %w(
+        media.propertylinkonline.com
+      )
 
       def value_at(node, xpath, attribute = nil)
         if attribute
@@ -20,6 +23,12 @@ module Bozzuto
 
       def float_at(node, xpath, attribute = nil)
         value_at(node, xpath, attribute).to_f
+      end
+
+      def url_at(node, xpath, attribute = nil)
+        uri = URI(value_at(node, xpath, attribute))
+        uri.scheme = 'https' if HTTPS_NOT_SUPPORTED.exclude?(uri.host)
+        uri.to_s
       end
 
       def date_for(node)

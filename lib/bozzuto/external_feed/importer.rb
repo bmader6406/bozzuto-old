@@ -137,7 +137,7 @@ module Bozzuto
 
       def build_files(node, id)
         node.xpath("./File[@id=\"#{id}\"]").to_a.map do |node|
-          source        = string_at(node, './Src')
+          source        = url_at(node, './Src')
           name          = string_at(node, './Name')
           filename      = source.split('/').last.to_s
           fallback_name = filename.match(/(?<name>[^\s\.]+)(\.\S+|\z){1}/).try(:[], :name)
@@ -151,7 +151,7 @@ module Bozzuto
             :name              => name.presence || fallback_name,
             :caption           => string_at(node, './Caption'),
             :format            => string_at(node, './Format'),
-            :source            => string_at(node, './Src'),
+            :source            => source,
             :width             => int_at(node, './Width'),
             :height            => int_at(node, './Height'),
             :rank              => string_at(node, './Rank'),
@@ -180,7 +180,7 @@ module Bozzuto
         file = plan.at('./File[Rank=1]') || plan.at('./File')
 
         if file
-          string_at(file, './Src')
+          url_at(file, './Src')
         else
           nil
         end

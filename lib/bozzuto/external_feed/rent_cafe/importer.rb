@@ -86,7 +86,7 @@ module Bozzuto
           file = property.xpath("./File[@id=#{plan['id']}]").first
 
           if file
-            string_at(file, './Src')
+            url_at(file, './Src')
           else
             nil
           end
