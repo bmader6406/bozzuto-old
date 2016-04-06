@@ -116,13 +116,13 @@
         });
 
         $('#large-map-container a.select-all').click(function(e) {
-          $('#large-map-controls input').attr('checked', 'checked');
+          $('#large-map-controls input').prop('checked', 'checked');
           search(checkedCategories());
           return false;
         });
 
         $('#large-map-container a.select-none').click(function(e) {
-          $('#large-map-controls input').attr('checked', '');
+          $('#large-map-controls input').prop('checked', '');
           search(checkedCategories());
           return false;
         });
