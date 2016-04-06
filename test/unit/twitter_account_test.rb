@@ -185,6 +185,34 @@ class TwitterAccountTest < ActiveSupport::TestCase
         end
       end
 
+      context "when a MySQL-incompatible tweet is encountered" do
+        subject { @account }
+
+        before do
+          @client  = mock('Twitter::REST::Client')
+
+          subject.stubs(:client).returns(@client)
+
+          @tweet1 = OpenStruct.new(
+            id:         'emoji',
+            text:       "󾬏❤️󾁀󾁅󾆓❤️󾀽... http://fb.me/3HEVDavSB",
+            created_at: 5.minutes.ago
+          )
+
+          @tweet2 = OpenStruct.new(
+            id:         'standard',
+            text:       "lol tweet tweet",
+            created_at: 10.minutes.ago
+          )
+
+          @client.stubs(:user_timeline).returns([@tweet1, @tweet2])
+        end
+
+        it "skips it" do
+          expect { subject.fetch_latest_tweet }.to change { @account.tweets.count }.by 1
+        end
+      end
+
       context "Twitter raises an exception" do
         before do
           subject.next_update_at = Time.now - 1.hour

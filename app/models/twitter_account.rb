@@ -52,27 +52,31 @@ class TwitterAccount < ActiveRecord::Base
   end
 
   def fetch_latest_tweet
-    begin
-      client.user_timeline(username).each do |response|
-        tweet = tweets.find_or_initialize_by(:tweet_id => response.id.to_s).tap do |tweet|
-          tweet.text      = response.text
-          tweet.posted_at = response.created_at
-        end
-
-        tweet.save
-      end
-
-      update_attribute(:next_update_at, Time.now + UPDATE_FREQUENCY)
-
-    rescue Twitter::Error => e
-      Airbrake.notify(e)
-      # Reschedule for the next rate limit window
-      update_attribute(:next_update_at, Time.now + RATE_LIMIT_WINDOW)
+    client.user_timeline(username).each do |response|
+      save_tweet_from response
     end
+
+    update_attribute(:next_update_at, Time.now + UPDATE_FREQUENCY)
+  rescue Twitter::Error => e
+    Airbrake.notify(e)
+    # Reschedule for the next rate limit window
+    update_attribute(:next_update_at, Time.now + RATE_LIMIT_WINDOW)
   end
 
 
   private
+
+  def save_tweet_from(response)
+    Tweet.create(
+      twitter_account: self,
+      tweet_id:        response.id.to_s,
+      text:            response.text,
+      posted_at:       response.created_at
+    )
+
+  rescue ActiveRecord::StatementInvalid
+    nil
+  end
 
   def username_exists
     begin
