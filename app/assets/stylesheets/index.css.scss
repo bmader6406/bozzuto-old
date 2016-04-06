@@ -135,7 +135,6 @@
 /* @end */
 
 /* @group consolidated styles */
-  #header #logo a,
   #header #main-nav li a,
   #header form.search-form button,
   #slideshow ul.slideshow-navigation li a {
@@ -197,12 +196,22 @@
       #header #logo,
       #header #logo a {
         display: block;
+        height: 60px;
         width: 170px;
-        height: 75px;
       }
       #header #logo {
         position: absolute;
-        top: 10px; left: 0;
+        left: 0;
+        top: 10px;
+      }
+      #header #logo a {
+        box-sizing: border-box;
+        padding: 15px 7px 15px 5px;
+      }
+      #header #logo svg {
+        display: block;
+        height: auto;
+        width: 100%;
       }
       #header div.nav,
       #header div.section {
@@ -1853,9 +1862,6 @@ div.wysiwyg ul li {
     }
 
 
-    #header #logo a {
-      background: transparent image-url('structure/bg-logo.png') no-repeat 0 0;
-    }
     #main-nav li a {
       background: transparent image-url('structure/bg-main-nav.gif') no-repeat 0 0;
     }

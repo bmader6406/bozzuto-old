@@ -4,7 +4,9 @@
 <div id="header" class="header">
   <div class="container">
     <div id="logo">
-      <%= link_to 'Bozzuto', root_path %>
+      <%= link_to root_path do %>
+        <%= raw(Rails.application.assets.find_asset('logo.svg').to_s) %>
+      <% end %>
     </div>
 
     <div>
@@ -71,6 +73,6 @@
     </div>
 
     <%= yield :special_nav %>
-    
+
   </div>
 </div>
