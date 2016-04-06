@@ -192,7 +192,7 @@ ActiveAdmin.register Page do
     end
 
     def page_slug
-      params[:id].gsub(/\A.+\//, '')
+      URI.decode params[:id].gsub(/\A.+\//, '')
     end
 
     def scoped_collection
