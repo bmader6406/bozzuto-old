@@ -12,14 +12,6 @@
     $('#large-map').data('jMapping').update();
   }
 
-  function formatPhone(phone) {
-    if (phone.length == 10) {
-      return '('+phone.substr(0, 3)+') '+phone.substr(3, 3)+'-'+phone.substr(6, 4);
-    } else {
-      return phone;
-    }
-  }
-
   function search(categories) {
     var returned = 0;
 
@@ -53,7 +45,7 @@
               }
             };
 
-        var address = biz.location.display_address.concat(formatPhone(biz.phone)).map(function(element) {
+        var address = biz.location.display_address.concat(biz.display_phone).map(function(element) {
           if (element) return element
         });
 
