@@ -5,7 +5,7 @@
   <div class="container">
     <div id="logo">
       <%= link_to root_path do %>
-        <%= raw(Rails.application.assets.find_asset('logo.svg').to_s) %>
+        <%= inline_svg 'logo.svg' %>
       <% end %>
     </div>
 
