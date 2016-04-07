@@ -151,6 +151,7 @@ ActiveAdmin.register ApartmentCommunity do
     column :published
     column :featured
     column :included_in_export
+    column :core_id
     column :external_cms_name
 
     actions
@@ -162,6 +163,7 @@ ActiveAdmin.register ApartmentCommunity do
         panel nil do
           attributes_table_for community do
             row :id
+            row :core_id
             row :title
             row :slug
             row :short_title
