@@ -2542,7 +2542,12 @@ div.wysiwyg ul li {
 
     #large-map .info-photo {
       float: left;
+      margin-right: 10px;
       width: 50px;
+    }
+
+    #large-map .info-photo img {
+      max-width: 50px;
     }
 
     #large-map .info-content {
