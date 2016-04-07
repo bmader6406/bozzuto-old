@@ -46,6 +46,8 @@ module Bozzuto::Exports::Formats
             </p>
           }
 
+          @home = HomeCommunity.make
+
           @community = ApartmentCommunity.make(
             :core_id                 => 999,
             :title                   => 'Dolans Hood',
@@ -424,11 +426,11 @@ module Bozzuto::Exports::Formats
         end
 
         it "renders multiple communities" do
-          5.times { |n| ApartmentCommunity.make }
+          2.times { |n| ApartmentCommunity.make }
 
           xml = Bozzuto::Exports::Formats::Legacy.new.to_xml
 
-          Nokogiri::XML(xml).xpath('//PhysicalProperty//Property').size.should == 7
+          Nokogiri::XML(xml).xpath('//PhysicalProperty//Property').size.should == 5
         end
       end
     end

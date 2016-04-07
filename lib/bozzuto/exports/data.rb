@@ -118,6 +118,14 @@ module Bozzuto
         def video_url
           super.presence
         end
+
+        def lead_2_lease_email
+          super if apartment_community?
+        end
+
+        def pinterest_url
+          super if apartment_community?
+        end
       end
 
       class FloorPlan < ExportableRecord
