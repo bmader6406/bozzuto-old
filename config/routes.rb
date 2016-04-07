@@ -23,6 +23,7 @@ Bozzuto::Application.routes.draw do
       :as                       => :map_community_search,
       :template                 => 'map'
 
+  get '/yelp' => 'yelp#show', :as => :yelp
 
   # Careers
   get '/careers' => 'careers#index', :section => 'careers'
