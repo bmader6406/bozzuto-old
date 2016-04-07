@@ -2,14 +2,12 @@ module Bozzuto
   module Exports
     class ApartmentExport
       FORMATS = [
-        Formats::Legacy,
-        Formats::Mits4_1
+        Formats::Legacy
       ]
 
       LOOKUP = lambda do |format|
         {
           /legacy/i => Formats::Legacy,
-          /mits/i   => Formats::Mits4_1
         }.find { |(regex, path)| format.match(regex) }.try(:last)
       end
 

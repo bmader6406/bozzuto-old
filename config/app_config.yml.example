@@ -4,7 +4,6 @@ development:
   rent_cafe_feed_file: /path/to/rent_cafe/feed/rent_cafe.xml
   psi_feed_file: /path/to/psi/feed/psi.xml
   apartment_export_file: /path/to/apartment_export_file.xml
-  mits4_1_export_file: /path/to/mits4_1.xml
   ad_source_export_file: /path/to/ad_sources.csv
   dnr_export_file: /path/to/dnr_config.csv
   ftp:
@@ -41,7 +40,6 @@ production:
   rent_cafe_feed_file: /path/to/rent_cafe/feed/rent_cafe.xml
   psi_feed_file: /path/to/psi/feed/psi.xml
   apartment_export_file: /path/to/apartment_export_file.xml
-  mits4_1_export_file: /path/to/mits4_1.xml
   ftp:
     live_bozzuto:
       username: Bozzkevate
@@ -76,7 +74,6 @@ test:
   rent_cafe_feed_file: /path/to/rent_cafe/feed/rent_cafe.xml
   psi_feed_file: /path/to/psi/feed/psi.xml
   apartment_export_file: /path/to/apartment_export_file.xml
-  mits4_1_export_file: /path/to/mits4_1.xml
   ftp:
     live_bozzuto:
       username: Bozzkevate

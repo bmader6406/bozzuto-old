@@ -100,39 +100,6 @@ namespace :bozzuto do
     end
   end
 
-  desc "Generate MITS 4.1 Export"
-  task :generate_mits4_1_export => :environment do
-    log_task 'Generating MITS 4.1 Export ...'
-
-    begin
-      export      = Bozzuto::Exports::ApartmentExport.new('mits4_1')
-      output_file = APP_CONFIG[:mits4_1_export_file]
-
-      File.open(output_file, 'w') do |f|
-        f.write(export.to_xml)
-      end
-
-      puts '  MITS 4.1 export successfully generated'
-    rescue => e
-      report_error('generating MITS 4.1 export', e)
-      Airbrake.notify(e)
-    end
-  end
-
-  desc "Send MITS 4.1 export via FTP"
-  task :send_mits4_1_export => :environment do
-    log_task 'Sending MITS 4.1 export via FTP...'
-
-    begin
-      Bozzuto::ExternalFeed::QburstFtp.transfer APP_CONFIG[:mits4_1_export_file]
-
-      puts '  MITS 4.1 export successfully sent'
-    rescue => e
-      report_error('send MITS 4.1 export via FTP', e)
-      Airbrake.notify(e)
-    end
-  end
-
   desc "Export contact lists in CSV format (Under Construction Leads + Buzzes)"
   task :export_contact_list_csvs => :environment do
     log_task 'Exporting contact lists as CSVs...'
