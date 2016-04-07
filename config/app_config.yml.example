@@ -24,7 +24,6 @@ development:
     application_id: xrMMSM7e
     consumer_key: 'dj0yJmk9eU5tWHl4UmdmRnBTJmQ9WVdrOWVISk5UVk5OTjJVbWNHbzlNVFU1TkRneE1USTJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD03NA--'
     consumer_secret: '1fa5c8446e0be7cdd7e87e6e1c816c1e27a0738a'
-  yelp_api_key: 'VcEBpYz_2oabrTXqgzFX_Q'
   callsource:
     apartment: 1081055
     home: 2891386
@@ -33,6 +32,11 @@ development:
     consumer_secret: 'wSGPbjWkg2H5XeN3K9bdJQCn40AhNPIn1iKw65w'
     access_token: '46745580-U9Uiz9KSTWpdPHWD6icYimCfA4t652zHOjTsbppVe'
     access_token_secret: 'HtAWQD7kwF8USltXfJucMdNEfJanRILbaTpWRIRFvCA'
+  yelp:
+    consumer_key: https://vigesafe.lab.viget.com/passwords/b85d6232-9789-49e9-b444-9e564ffde9b8
+    consumer_secret: https://vigesafe.lab.viget.com/passwords/b85d6232-9789-49e9-b444-9e564ffde9b8
+    token: https://vigesafe.lab.viget.com/passwords/b85d6232-9789-49e9-b444-9e564ffde9b8
+    token_secret: https://vigesafe.lab.viget.com/passwords/b85d6232-9789-49e9-b444-9e564ffde9b8
 
 production:
   vaultware_feed_file: /path/to/vaultware/feed/bozzutocom.xml
@@ -58,7 +62,6 @@ production:
     application_id: xrMMSM7e
     consumer_key: 'dj0yJmk9eU5tWHl4UmdmRnBTJmQ9WVdrOWVISk5UVk5OTjJVbWNHbzlNVFU1TkRneE1USTJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD03NA--'
     consumer_secret: '1fa5c8446e0be7cdd7e87e6e1c816c1e27a0738a'
-  yelp_api_key: 'VcEBpYz_2oabrTXqgzFX_Q'
   callsource:
     apartment: 1081055
     home: 2891386
@@ -67,6 +70,11 @@ production:
     consumer_secret: 'wSGPbjWkg2H5XeN3K9bdJQCn40AhNPIn1iKw65w'
     access_token: '46745580-U9Uiz9KSTWpdPHWD6icYimCfA4t652zHOjTsbppVe'
     access_token_secret: 'HtAWQD7kwF8USltXfJucMdNEfJanRILbaTpWRIRFvCA'
+  yelp:
+    consumer_key: https://vigesafe.lab.viget.com/passwords/b85d6232-9789-49e9-b444-9e564ffde9b8
+    consumer_secret: https://vigesafe.lab.viget.com/passwords/b85d6232-9789-49e9-b444-9e564ffde9b8
+    token: https://vigesafe.lab.viget.com/passwords/b85d6232-9789-49e9-b444-9e564ffde9b8
+    token_secret: https://vigesafe.lab.viget.com/passwords/b85d6232-9789-49e9-b444-9e564ffde9b8
 
 test:
   vaultware_feed_file: /path/to/vaultware/feed/bozzutocom.xml
@@ -101,3 +109,8 @@ test:
     consumer_secret: 'wSGPbjWkg2H5XeN3K9bdJQCn40AhNPIn1iKw65w'
     access_token: '46745580-U9Uiz9KSTWpdPHWD6icYimCfA4t652zHOjTsbppVe'
     access_token_secret: 'HtAWQD7kwF8USltXfJucMdNEfJanRILbaTpWRIRFvCA'
+  yelp:
+    consumer_key: https://vigesafe.lab.viget.com/passwords/b85d6232-9789-49e9-b444-9e564ffde9b8
+    consumer_secret: https://vigesafe.lab.viget.com/passwords/b85d6232-9789-49e9-b444-9e564ffde9b8
+    token: https://vigesafe.lab.viget.com/passwords/b85d6232-9789-49e9-b444-9e564ffde9b8
+    token_secret: https://vigesafe.lab.viget.com/passwords/b85d6232-9789-49e9-b444-9e564ffde9b8

@@ -46,6 +46,7 @@ gem 'chronic'
 gem 'acts_as_list'
 gem 'resque',                     '~> 1.26.0'
 gem 'capistrano-resque'
+gem 'yelp'
 
 group :development, :test do
   gem 'pry'
