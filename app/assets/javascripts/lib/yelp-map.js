@@ -30,53 +30,43 @@
       return;
     }
 
-    $.each(categories, function(category_index, category) {
-      var url = 'http://api.yelp.com/business_review_search',
-          params = $.param({
-            'category': category,
-            'ywsid':    bozzuto.yelpApiKey,
-            'lat':      bozzuto.communityLatitude,
-            'long':     bozzuto.communityLongitude,
-            'limit':    6,
-            'radius':   0.75
-          });
+    var coordinates = bozzuto.coordinates
+    var url         = '/yelp'
+    var params      = $.param({
+      'coordinates': coordinates,
+      'search': {
+        'category_filter': categories.join(','),
+        'limit':           6,
+        'radius':          0.75
+      }
+    });
 
-      $.get(url, params, function(data, status) {
-        $.each(data.businesses, function(index, biz) {
-          var div     = template,
-              bizJSON = {
-                category: category,
-                id:       ((category_index*1000)+(index)+2),
-                point:    {
-                  lat: biz.latitude,
-                  lng: biz.longitude
-                }
-              };
+    $.get(url, params, function(data, status) {
+      $.each(data.businesses, function(index, biz) {
+        var div     = template,
+            bizJSON = {
+              categories: biz.categories,
+              id:         biz.id,
+              point:      {
+                lat: biz.location.coordinate.latitude,
+                lng: biz.location.coordinate.longitude
+              }
+            };
 
-          var address = [
-            biz.address1,
-            biz.address2,
-            biz.address3,
-            biz.city + ', ' + biz.state_code + ' ' + biz.zip,
-            formatPhone(biz.phone)
-          ];
-          address = $.map(address, function(e) {
-            if (e != "") {
-              return e;
-            }
-          });
-
-          div = div.replace('{{json}}',       $.toJSON(bizJSON));
-          div = div.replace('{{name}}',       biz.name);
-          div = div.replace('{{url}}',        biz.url);
-          div = div.replace('{{rating_img}}', biz.rating_img_url_small);
-          div = div.replace('{{photo_img}}',  biz.photo_url_small);
-          div = div.replace('{{address}}',    address.join('<br />'));
-
-          $('#large-map-side-bar').append(div);
+        var address = biz.location.display_address.concat(formatPhone(biz.phone)).map(function(element) {
+          if (element) return element
         });
-        updateMap();
-      }, 'jsonp');
+
+        div = div.replace('{{json}}',       $.toJSON(bizJSON));
+        div = div.replace('{{name}}',       biz.name);
+        div = div.replace('{{url}}',        biz.url);
+        div = div.replace('{{rating_img}}', biz.rating_img_url_small);
+        div = div.replace('{{photo_img}}',  biz.image_url);
+        div = div.replace('{{address}}',    address.join('<br />'));
+
+        $('#large-map-side-bar').append(div);
+      });
+      updateMap();
     });
   }
 

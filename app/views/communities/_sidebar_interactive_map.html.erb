@@ -1,8 +1,9 @@
 <% content_for :javascript do %>
   <script type="text/javascript">
-    bozzuto.yelpApiKey = <%= APP_CONFIG[:yelp_api_key].inspect.html_safe %>;
-    bozzuto.communityLatitude = <%= @community.latitude %>;
-    bozzuto.communityLongitude = <%= @community.longitude %>;
+    bozzuto.coordinates = {
+      latitude:  <%= @community.latitude %>,
+      longitude: <%= @community.longitude %>
+    }
   </script>
 <% end %>
 
