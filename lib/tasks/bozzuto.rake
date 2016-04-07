@@ -34,22 +34,22 @@ namespace :bozzuto do
 
   desc 'Load latest feed from Vaultware'
   task :load_vaultware_feed => :environment do
-    enqueue("vaultware")
+    enqueue_source "vaultware"
   end
 
   desc 'Load latest feed from PropertyLink'
   task :load_property_link_feed => :environment do
-    enqueue("property_link")
+    enqueue_source "property_link"
   end
 
   desc 'Load latest feed from Rent Cafe'
   task :load_rent_cafe_feed => :environment do
-    enqueue("rent_cafe")
+    enqueue_source "rent_cafe"
   end
 
   desc 'Load latest feed from PSI'
   task :load_psi_feed => :environment do
-    enqueue("psi")
+    enqueue_source "psi"
   end
 
   desc 'Send recurring emails'
