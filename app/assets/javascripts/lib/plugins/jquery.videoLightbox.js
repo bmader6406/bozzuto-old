@@ -41,7 +41,7 @@
       if (youTubeVideoId) {
         var height = opts.width * 0.75;
 
-        return '<iframe src="http://www.youtube.com/embed/' + youTubeVideoId + '" height="' + height + '" scrolling="no" width="' + opts.width + '" frameborder="0" allowfullscreen></iframe>';
+        return '<iframe src="//www.youtube.com/embed/' + youTubeVideoId + '" height="' + height + '" scrolling="no" width="' + opts.width + '" frameborder="0" allowfullscreen></iframe>';
       } else {
         return '<iframe src="' + url + '" height="' + opts.height + '" scrolling="no" width="' + opts.width + '"></iframe>';
       }
