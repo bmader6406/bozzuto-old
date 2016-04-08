@@ -103,7 +103,7 @@ module Bozzuto
         reduce(dup) do |formatted_criteria, (condition, value)|
           # Need to catch and wrap 1s & 0s, otherwise Ransack converts to true & false
           # https://github.com/activerecord-hackery/ransack/issues/593
-          formatted_value = value.is_a?(Array) || ['0', '1'].include?(value) ? [value] : value
+          formatted_value = !condition.match(/_eq\Z/) && (value.is_a?(Array) || ['0', '1'].include?(value)) ? [value] : value
           formatted_criteria.merge!(condition => formatted_value)
         end
       end
