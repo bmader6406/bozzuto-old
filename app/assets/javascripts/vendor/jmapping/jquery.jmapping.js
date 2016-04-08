@@ -184,7 +184,7 @@
           });
         }
 
-        gmarkers[parseInt(place_data.id, 10)] = marker;
+        gmarkers[place_data.id] = marker;
         return marker;
       };
       
