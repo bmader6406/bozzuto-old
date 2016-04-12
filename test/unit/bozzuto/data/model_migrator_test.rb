@@ -11,24 +11,21 @@ class Bozzuto::Data::ModelMigratorTest < ActiveSupport::TestCase
     end
 
     before do
-      @section    = Section.make
-      @property1  = Property.make.tap do |p|
-        p.update_columns(id: 10, type: 'Project', completion_date: Date.today, section_id: @section.id)
-        p.send(:create_slug)
-        p.update_attributes(title: 'Slug Test', slug: nil)
-      end
-      @property2  = Property.make.tap do |p|
-        p.update_columns(id: 20, type: 'Project', completion_date: Date.today, section_id: @section.id)
-        p.send(:create_slug)
-      end
+      @section   = Section.make
+      @property1 = Property.make
+      @property2 = Property.make
+
+      @property1.update_attributes(id: 10, type: 'Project', completion_date: Date.today, section_id: @section.id, title: 'Slug Test', slug: nil)
+      @property2.update_attributes(id: 20, type: 'Project', completion_date: Date.today, section_id: @section.id)
+
       @slideshow1 = PropertySlideshow.make(property: @property1)
       @slideshow2 = PropertySlideshow.make(property: @property2)
     end
 
     describe "#migrate" do
       it "given a set of records of one class, creates records of the target class with all the same attributes and associations" do
-        property1_slugs = @property1.slugs
-        property2_slugs = @property2.slugs
+        property1_slugs = @property1.slugs.map(&:slug)
+        property2_slugs = @property2.slugs.map(&:slug)
 
         subject.migrate
 
@@ -38,12 +35,12 @@ class Bozzuto::Data::ModelMigratorTest < ActiveSupport::TestCase
           project1.id.should        == 10
           project1.section.should   == @section
           project1.slideshow.should == @slideshow1
-          project1.slugs.map(&:slug).should match_array(property1_slugs.map(&:slug))
+          (project1.slugs.map(&:slug) & property1_slugs).should eq property1_slugs
 
           project2.id.should        == 20
           project2.section.should   == @section
           project2.slideshow.should == @slideshow2
-          project2.slugs.map(&:slug).should match_array(property2_slugs.map(&:slug))
+          (project2.slugs.map(&:slug) & property2_slugs).should eq property2_slugs
         end
 
         @slideshow1.property_type.should == 'Property'

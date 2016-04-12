@@ -9,7 +9,7 @@ module Bozzuto
         include Bozzuto::Mappable
         include Bozzuto::Publishable
 
-        friendly_id :title, use: :history
+        friendly_id :id_and_title, use: :history
 
         belongs_to :city
         belongs_to :county
@@ -45,6 +45,8 @@ module Bozzuto
                   length:       { maximum: 22 }
 
         validate :brochure_url_xor_file
+
+        after_create :create_slug
 
         scope :mappable,         -> { where('latitude IS NOT NULL AND longitude IS NOT NULL') }
         scope :ordered_by_title, -> { order(title: :asc) }
@@ -126,6 +128,14 @@ module Bozzuto
 
         def seo_link?
           seo_link_text.present? && seo_link_url.present?
+        end
+
+        def id_and_title
+          [id, title].join('-').parameterize
+        end
+
+        def id_and_title_changed?
+          id_changed? || title_changed?
         end
 
         private

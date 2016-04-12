@@ -301,6 +301,36 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
       end
     end
 
+    describe "#to_param" do
+      context "when a community's slug already includes its ID" do
+        subject { ApartmentCommunity.make(id: 99001, title: 'Test', slug: '99001-test') }
+
+        it "returns the ID combined with the title" do
+          subject.to_param.should == '99001-test'
+        end
+      end
+
+      context "when a community's slug does not include its ID" do
+        subject { ApartmentCommunity.make(id: 99001, title: 'Test', slug: 'test') }
+
+        it "returns the ID combined with the title" do
+          subject.to_param.should == '99001-test'
+        end
+      end
+
+      context "after updating an apartment community" do
+        subject { ApartmentCommunity.make(id: 99001, title: 'Test', slug: '99001-test') }
+
+        before do
+          subject.update_attributes(title: 'boom')
+        end
+
+        it "returns the ID combined with the updated title" do
+          subject.slug.should == '99001-boom'
+        end
+      end
+    end
+
     describe "#mappable?" do
       setup do
         subject.latitude  = 10

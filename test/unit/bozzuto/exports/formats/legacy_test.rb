@@ -166,7 +166,7 @@ module Bozzuto::Exports::Formats
             end
 
             it "contains bozzuto url" do
-              expected_url = "http://bozzuto.com/apartments/communities/dolans-hood"
+              expected_url = "http://bozzuto.com/apartments/communities/#{@community.to_param}"
 
               @identification_node.xpath('BozzutoURL').first.content.should == expected_url
             end

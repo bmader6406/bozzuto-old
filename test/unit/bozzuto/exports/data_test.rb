@@ -261,8 +261,8 @@ module Bozzuto::Exports
         end
 
         it "contains the community URL on Bozzuto.com" do
-          @test_community.bozzuto_url.should == "http://bozzuto.com/apartments/communities/dolans-hood"
-          @test_home_community.bozzuto_url.should == "http://bozzuto.com/new-homes/communities/boomtown-estates"
+          @test_community.bozzuto_url.should == "http://bozzuto.com/apartments/communities/#{@community.to_param}"
+          @test_home_community.bozzuto_url.should == "http://bozzuto.com/new-homes/communities/#{@home_community.to_param}"
         end
 
         it "contains latitude" do
@@ -290,7 +290,7 @@ module Bozzuto::Exports
           end
 
           it "falls back to the Bozzuto URL" do
-            @test_community.bozzuto_url.should == "http://bozzuto.com/apartments/communities/dolans-hood"
+            @test_community.bozzuto_url.should == "http://bozzuto.com/apartments/communities/#{@community.to_param}"
           end
         end
 
