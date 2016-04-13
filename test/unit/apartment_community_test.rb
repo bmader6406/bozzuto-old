@@ -491,6 +491,8 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
                 ApartmentFloorPlan.make(:apartment_community => @other)
               ]
 
+              @core_id = subject.core_id
+
               subject.merge(@other)
               subject.reload
             end
@@ -511,8 +513,8 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
               subject.external_cms_type.should == type
             end
 
-            it "transfers the core ID to the receiver" do
-              subject.core_id.should == @other.id
+            it "does not change the core ID on the receiver" do
+              subject.core_id.should == @core_id
             end
 
             it "transfers slugs to the receiver" do

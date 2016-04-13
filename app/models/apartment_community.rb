@@ -108,11 +108,8 @@ class ApartmentCommunity < ActiveRecord::Base
     raise 'Receiver must not be an externally-managed community' if managed_externally?
     raise 'Argument must be an externally-managed community' unless other_community.managed_externally?
 
-    Bozzuto::ExternalFeed::CoreIdManager.new(other_community).assign_id
-
     self.external_cms_id   = other_community.external_cms_id
     self.external_cms_type = other_community.external_cms_type
-    self.core_id           = other_community.core_id
 
     other_community.slugs.update_all(sluggable_id: id)
     other_community.update_attributes(external_cms_id: nil, external_cms_type: nil)
