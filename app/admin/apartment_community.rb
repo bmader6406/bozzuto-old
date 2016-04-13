@@ -142,6 +142,7 @@ ActiveAdmin.register ApartmentCommunity do
   member_action :pre_merge, method: :put
   member_action :merge, method: :put do
     property_merger.merge!
+    property_merger.property.reload
 
     redirect_to [:admin, property_merger.property], notice: property_merger.to_s
   end
