@@ -8,16 +8,14 @@ class PropertyRetailPageTest < ActiveSupport::TestCase
 
     should validate_presence_of(:property)
 
-    ['to_s', 'typus_name'].each do |method|
-      describe "##{method}" do
-        subject do
-          property = ApartmentCommunity.make(:title => 'Gotham Heights')
-          PropertyRetailPage.make(:property => property)
-        end
+    describe "#to_s" do
+      subject do
+        property = ApartmentCommunity.make(title: 'Gotham Heights')
+        PropertyRetailPage.make(property: property)
+      end
 
-        it "returns the name of the property followed by 'Retail Page'" do
-          subject.public_send(method).should == 'Gotham Heights Retail Page'
-        end
+      it "returns the name of the property followed by 'Retail Page'" do
+        subject.to_s.should == 'Gotham Heights Retail Page'
       end
     end
   end

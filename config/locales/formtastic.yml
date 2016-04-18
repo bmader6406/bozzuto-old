@@ -153,6 +153,8 @@ en:
         thank_you_text: Shown on the thank you page after a contact form is submitted.
       property_feature:
         icon: Image dimensions should be 44x44. If icon image is not present, icon will not be shown in listings.
+      property_retail_slide:
+        link_url: If present, the entire slide will be clickable and will link to this URL.
       property_slide:
         image: Image dimensions should be 870x375
         caption: Must be fewer than 128 characters

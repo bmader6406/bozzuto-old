@@ -8,13 +8,11 @@ class PropertyRetailSlideTest < ActiveSupport::TestCase
 
     should validate_attachment_presence(:image)
 
-    ['to_s', 'typus_name'].each do |method|
-      describe "##{method}" do
-        subject { PropertyRetailSlide.make(name: 'Retail Storefront') }
+    describe "#to_s" do
+      subject { PropertyRetailSlide.make(name: 'Retail Storefront') }
 
-        it "returns the slide name" do
-          subject.public_send(method).should == 'Retail Storefront'
-        end
+      it "returns the slide name" do
+        subject.to_s.should == 'Retail Storefront'
       end
     end
   end

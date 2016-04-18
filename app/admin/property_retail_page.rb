@@ -41,6 +41,19 @@ ActiveAdmin.register PropertyRetailPage do
           end
         end
       end
+
+      tab 'Slides' do
+        collection_panel_for :slides do
+          reorderable_table_for page.slides do
+            column :name
+            column :image do |slide|
+              if slide.image.present?
+                image_tag slide.image.url(:thumb)
+              end
+            end
+          end
+        end
+      end
     end
   end
 
@@ -56,6 +69,17 @@ ActiveAdmin.register PropertyRetailPage do
           input :meta_title
           input :meta_description
           input :meta_keywords
+        end
+
+        tab 'Slides' do
+          association_table_for :slides, reorderable: true do
+            column :name
+            column :image do |slide|
+              if slide.image.present?
+                image_tag slide.image.url(:thumb)
+              end
+            end
+          end
         end
       end
     end

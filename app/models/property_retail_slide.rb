@@ -19,8 +19,4 @@ class PropertyRetailSlide < ActiveRecord::Base
   def to_s
     name
   end
-
-  def typus_name
-    name
-  end
 end
