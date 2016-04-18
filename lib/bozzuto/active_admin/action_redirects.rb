@@ -4,9 +4,7 @@ module Bozzuto
 
       def smart_resource_url
         if returnable?
-          return_to = session[:return_to]
-          session[:return_to] = nil
-          return_to
+          session.delete(:return_to)
         else
           super
         end

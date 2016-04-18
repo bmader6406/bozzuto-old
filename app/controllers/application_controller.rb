@@ -94,6 +94,6 @@ class ApplicationController < ActionController::Base
   helper_method :viget_ip?
 
   def store_return_to
-    Bozzuto::ReturnToStore.new(request).set(params[:return_to])
+    Bozzuto::ReturnToStore.new(request).set(params[:return_to]) if params[:return_to].present?
   end
 end
