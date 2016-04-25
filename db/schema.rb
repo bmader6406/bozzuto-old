@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160401154142) do
+ActiveRecord::Schema.define(version: 20160425154009) do
 
   create_table "ad_sources", force: :cascade do |t|
     t.string   "domain_name", limit: 255, null: false
@@ -1567,5 +1567,5 @@ ActiveRecord::Schema.define(version: 20160401154142) do
 
   add_index "zip_codes", ["zip"], name: "index_zip_codes_on_zip", unique: true, using: :btree
 
-  add_foreign_key "chronolog_changesets", "admin_users"
+  add_foreign_key "chronolog_changesets", "admin_users", on_delete: :nullify
 end
