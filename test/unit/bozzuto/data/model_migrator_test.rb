@@ -15,8 +15,8 @@ class Bozzuto::Data::ModelMigratorTest < ActiveSupport::TestCase
       @property1 = Property.make
       @property2 = Property.make
 
-      @property1.update_attributes(id: 10, type: 'Project', completion_date: Date.today, section_id: @section.id, title: 'Slug Test', slug: nil)
-      @property2.update_attributes(id: 20, type: 'Project', completion_date: Date.today, section_id: @section.id)
+      @property1.update_attributes(id: 100, type: 'Project', completion_date: Date.today, section_id: @section.id, title: 'Slug Test', slug: nil)
+      @property2.update_attributes(id: 200, type: 'Project', completion_date: Date.today, section_id: @section.id)
 
       @slideshow1 = PropertySlideshow.make(property: @property1)
       @slideshow2 = PropertySlideshow.make(property: @property2)
@@ -32,12 +32,12 @@ class Bozzuto::Data::ModelMigratorTest < ActiveSupport::TestCase
         Project.count.should == 2
 
         Project.all.to_a.tap do |(project1, project2)|
-          project1.id.should        == 10
+          project1.id.should        == 100
           project1.section.should   == @section
           project1.slideshow.should == @slideshow1
           (project1.slugs.map(&:slug) & property1_slugs).should eq property1_slugs
 
-          project2.id.should        == 20
+          project2.id.should        == 200
           project2.section.should   == @section
           project2.slideshow.should == @slideshow2
           (project2.slugs.map(&:slug) & property2_slugs).should eq property2_slugs
