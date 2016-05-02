@@ -203,12 +203,18 @@ ActiveAdmin.register HomeCommunity do
 
         panel 'Photos' do
           collection_panel_for :photos do
-            reorderable_table_for community.photos do
-              column nil do |photo|
-                image_tag photo.image.url(:thumb)
+            tabs do
+              PhotoGroup.find_each do |group|
+                tab group.title do
+                  reorderable_table_for community.photos.in_group(group).order(:position) do
+                    column nil do |photo|
+                      image_tag photo.image.url(:thumb)
+                    end
+                    column :title
+                    column :photo_group
+                  end
+                end
               end
-              column :title
-              column :photo_group
             end
           end
         end
@@ -362,12 +368,18 @@ ActiveAdmin.register HomeCommunity do
           end
 
           panel 'Photos' do
-            association_table_for :photos, reorderable: true do
-              column nil do |photo|
-                image_tag photo.image.url(:thumb)
+            tabs do
+              PhotoGroup.find_each do |group|
+                tab group.title do
+                  association_table_for :photos, reorderable: true, scope: f.object.photos.in_group(group).order(:position) do
+                    column nil do |photo|
+                      image_tag photo.image.url(:thumb)
+                    end
+                    column :title
+                    column :photo_group
+                  end
+                end
               end
-              column :title
-              column :photo_group
             end
           end
         end

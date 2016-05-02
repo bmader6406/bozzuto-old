@@ -1,6 +1,5 @@
 class Photo < ActiveRecord::Base
-
-  acts_as_list scope: :photo_group_id
+  acts_as_list scope: [:property, :photo_group_id]
 
   belongs_to :photo_group
   belongs_to :property, polymorphic: true
