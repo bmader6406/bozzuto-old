@@ -8,3 +8,6 @@ ActiveAdmin::Resource::ActionItems.send(:include, Bozzuto::ActiveAdmin::Resource
 
 # Redirect to return_to path if available
 ActiveAdmin::ResourceController.send(:include, Bozzuto::ActiveAdmin::ActionRedirects)
+
+# Find pages by ID in Admin
+ActiveAdmin::BaseController.send(:include, Bozzuto::ActiveAdmin::PageFinding)

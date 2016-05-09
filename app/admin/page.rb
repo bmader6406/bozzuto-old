@@ -188,11 +188,7 @@ ActiveAdmin.register Page do
 
   controller do
     def find_resource
-      Page.includes(:masthead_slideshow, :body_slideshow, :carousel).friendly.find(page_slug)
-    end
-
-    def page_slug
-      URI.decode(params[:id]).gsub(/\A.+\//, '')
+      ::Page.includes(:masthead_slideshow, :body_slideshow, :carousel).find(params[:id])
     end
 
     def scoped_collection
