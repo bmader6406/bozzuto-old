@@ -6,7 +6,7 @@ class Carousel < ActiveRecord::Base
            dependent:  :destroy,
            inverse_of: :carousel
 
-  accepts_nested_attributes_for :panels
+  accepts_nested_attributes_for :panels, allow_destroy: true
 
   validates_presence_of :name
 
