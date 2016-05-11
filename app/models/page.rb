@@ -5,6 +5,8 @@ class Page < ActiveRecord::Base
   
   acts_as_nested_set :scope => :section, :dependent => :destroy
 
+  acts_as_list scope: :section
+
   after_save :set_path
 
   belongs_to :section

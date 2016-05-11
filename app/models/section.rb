@@ -6,7 +6,7 @@ class Section < ActiveRecord::Base
   
   has_many :testimonials
   has_many :projects
-  has_many :pages,        -> { order(lft: :asc) }, dependent: :destroy
+  has_many :pages,        -> { order(position: :asc) }, dependent: :destroy
 
   has_and_belongs_to_many :awards,         -> { order(published_at: :desc) }
   has_and_belongs_to_many :news_posts,     -> { order(published_at: :desc) }

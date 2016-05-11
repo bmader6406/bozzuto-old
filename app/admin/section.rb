@@ -16,6 +16,8 @@ ActiveAdmin.register Section do
 
   filter :title_cont, label: 'Title'
 
+  reorderable
+
   index do
     column :title
 
@@ -66,7 +68,7 @@ ActiveAdmin.register Section do
 
       tab 'Pages' do
         collection_panel_for :pages do
-          table_for resource.pages do
+          reorderable_table_for resource.pages do
             column :title do |d|
               link_to d.title, [:admin, d]
             end
@@ -78,7 +80,6 @@ ActiveAdmin.register Section do
       tab 'Projects' do
         collection_panel_for :projects do
           reorderable_table_for resource.projects.includes(:city).position_asc do
-            column :position
             column :title do |p|
               link_to p.title, [:admin, p]
             end
@@ -154,7 +155,7 @@ ActiveAdmin.register Section do
 
         tab 'Pages' do
           panel nil do
-            association_table_for :pages do
+            association_table_for :pages, reorderable: true, scope: f.object.pages do
               column :title
               column :published
             end
@@ -163,8 +164,7 @@ ActiveAdmin.register Section do
 
         tab 'Projects' do
           panel nil do
-            association_table_for :projects, scope: resource.projects.includes(:city).position_asc do
-              column :position
+            association_table_for :projects, reorderable: true, scope: resource.projects.includes(:city).position_asc do
               column :title
               column :published
               column :street_address

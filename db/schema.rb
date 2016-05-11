@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425154009) do
+ActiveRecord::Schema.define(version: 20160511182215) do
 
   create_table "ad_sources", force: :cascade do |t|
     t.string   "domain_name", limit: 255, null: false
@@ -969,6 +969,7 @@ ActiveRecord::Schema.define(version: 20160425154009) do
     t.boolean  "show_sidebar",                                 default: true
     t.boolean  "show_in_sidebar_nav",                          default: true
     t.integer  "snippet_id",                     limit: 4
+    t.integer  "position",                       limit: 4
   end
 
   add_index "pages", ["path"], name: "index_pages_on_path", using: :btree
