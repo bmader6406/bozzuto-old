@@ -2,7 +2,7 @@ class CarouselPanel < ActiveRecord::Base
 
   acts_as_list :scope => :carousel
 
-  belongs_to :carousel
+  belongs_to :carousel, inverse_of: :panels
 
   has_attached_file :image,
     :url             => '/system/:class/:id/slide_:id_:style.:extension',

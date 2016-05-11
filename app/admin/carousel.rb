@@ -4,6 +4,8 @@ ActiveAdmin.register Carousel do
   track_changes
 
   permit_params :name,
+                :content_type,
+                :content_id,
                 panels_attributes: [
                   :id,
                   :image,
@@ -30,6 +32,7 @@ ActiveAdmin.register Carousel do
           attributes_table_for carousel do
             row :id
             row :name
+            row :content
             row :created_at
             row :updated_at
           end
@@ -59,7 +62,7 @@ ActiveAdmin.register Carousel do
       tabs do
         tab 'Details' do
           input :name
-          input :content, as: :chosen, collection: grouped_options_for_select(content_options)
+          input :content, as: :polymorphic_select, grouped_options: content_options, input_html: { class: 'chosen-input' }
         end
 
         tab 'Panels' do
