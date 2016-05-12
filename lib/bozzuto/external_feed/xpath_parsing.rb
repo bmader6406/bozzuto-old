@@ -3,6 +3,7 @@ module Bozzuto
     module XpathParsing
       HTTPS_NOT_SUPPORTED = %w(
         media.propertylinkonline.com
+        static.propertylinkonline.com
       )
 
       def value_at(node, xpath, attribute = nil)
