@@ -57,7 +57,18 @@ $(function() {
     imageUploadParam: 'image[image]',
 
     fileUpload: '/admin/file_uploads' + uploadParams,
-    fileUploadParam: 'file_upload[file]'
+    fileUploadParam: 'file_upload[file]',
+
+    formattingAdd: {
+      'wysiwyg-12pt-font-add': {
+        title: '12pt Formatting',
+        args: ['p', 'class', 'wysiwyg-12pt-font']
+      },
+      'wysiwyg-12pt-font-remove': {
+        title: '12pt Remove Formatting',
+        args: ['p', 'class', 'wysiwyg-12pt-font' 'remove']
+      }
+    }
   };
 
   $(".redactor-input").redactor(redactorOpts);

@@ -63,6 +63,10 @@ input[type=file] {
 .redactor-editor {
   border: 1px solid #d3d3d3;
   border-radius: 3px;
+
+  .wysiwyg-12pt-font {
+    font-size: 16px; // Translates to 12pt font
+  }
 }
 
 .redactor-toolbar {
