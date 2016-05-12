@@ -139,7 +139,6 @@ ActiveAdmin.register Project do
       tab 'Data Points' do
         collection_panel_for :data_points do
           reorderable_table_for resource.data_points do
-            column :position
             column :name do |d|
               link_to d.name, [:admin, d]
             end
@@ -223,7 +222,7 @@ ActiveAdmin.register Project do
 
         tab 'Data Points' do
           panel nil do
-            association_table_for :data_points, scope: resource.data_points.position_asc do
+            association_table_for :data_points, reorderable: true, scope: resource.data_points.position_asc do
               column :name
             end
           end

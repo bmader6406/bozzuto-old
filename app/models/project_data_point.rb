@@ -1,9 +1,7 @@
 class ProjectDataPoint < ActiveRecord::Base
-  acts_as_list
+  acts_as_list scope: :project
 
   belongs_to :project
-
-  default_scope -> { order(position: :asc) }
 
   scope :position_asc, -> { order(position: :asc) }
 
