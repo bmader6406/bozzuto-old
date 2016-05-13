@@ -61,11 +61,11 @@ $(function() {
 
     formattingAdd: {
       'wysiwyg-12pt-font-add': {
-        title: '12pt Formatting',
+        title: '12pt Formatting Add',
         args: ['p', 'class', 'wysiwyg-12pt-font']
       },
       'wysiwyg-12pt-font-remove': {
-        title: '12pt Remove Formatting',
+        title: '12pt Formatting Remove',
         args: ['p', 'class', 'wysiwyg-12pt-font', 'remove']
       }
     }
