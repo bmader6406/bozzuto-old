@@ -66,7 +66,7 @@ $(function() {
       },
       'wysiwyg-12pt-font-remove': {
         title: '12pt Remove Formatting',
-        args: ['p', 'class', 'wysiwyg-12pt-font' 'remove']
+        args: ['p', 'class', 'wysiwyg-12pt-font', 'remove']
       }
     }
   };
