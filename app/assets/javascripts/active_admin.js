@@ -59,12 +59,11 @@ $(function() {
     fileUpload: '/admin/file_uploads' + uploadParams,
     fileUploadParam: 'file_upload[file]',
 
-    formattingAdd: {
-      'wysiwyg-12pt-font-add': {
-        title: '12pt Formatting',
-        args: ['p', 'class', 'wysiwyg-12pt-font', 'toggle']
-      }
-    }
+    formattingAdd: [{
+      'tag'   : 'p',
+      'title' : '12pt Formatting',
+      'class' : 'wysiwyg-12pt-font'
+    }]
   };
 
   $(".redactor-input").redactor(redactorOpts);
