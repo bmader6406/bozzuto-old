@@ -44,7 +44,7 @@ class PageTest < ActiveSupport::TestCase
         end
 
         it "returns the section title along with the page title" do
-          @page.to_s.should == 'Section > Page'
+          @page.to_s.should == 'Page (Section)'
         end
       end
     end
@@ -63,7 +63,7 @@ class PageTest < ActiveSupport::TestCase
         end
 
         it "returns the section title along with the page title" do
-          @page.display_name.should == 'Section > Page'
+          @page.display_name.should == 'Page (Section)'
         end
       end
     end

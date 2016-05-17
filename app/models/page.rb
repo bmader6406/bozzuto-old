@@ -26,7 +26,11 @@ class Page < ActiveRecord::Base
   attr_protected :path
 
   def to_s
-    [section.try(:title), title].compact.join(' > ')
+    if section.present?
+      title + " (#{section.title})"
+    else
+      title
+    end
   end
 
   def display_name
