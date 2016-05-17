@@ -9,7 +9,7 @@
   <% categories_with_projects.in_groups(2, false).each do |categories| %>
     <ul class="col">
       <% categories.each do |category| %>
-        <li><%= link_to category.title, :anchor => category.slug %></li>
+        <li><%= link_to category.title, anchor: category.slug %></li>
       <% end %>
     </ul>
   <% end %>
@@ -20,7 +20,7 @@
     <h2><%= category.title %></h2>
 
     <ul class="projects-listing">
-      <%= render :partial => 'listing', :collection => category.projects.in_section(@section), :as => :project %>
+      <%= render partial: 'listing', collection: category.projects.ordered_by_title.in_section(@section), as: :project %>
     </ul>
   </div>
 <% end %>

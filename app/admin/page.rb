@@ -1,5 +1,5 @@
 ActiveAdmin.register Page do
-  menu false
+  menu parent: 'Content'
 
   track_changes
 
