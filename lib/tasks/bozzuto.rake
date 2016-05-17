@@ -114,35 +114,4 @@ namespace :bozzuto do
       Airbrake.notify(e)
     end
   end
-
-  desc "Export LeaseHawk files in CSV format (Ad Sources + Apartment Community DNR configuration)"
-  task :export_lease_hawk_csvs => :environment do
-    log_task 'Exporting LeaseHawk files as CSVs...'
-
-    begin
-      Bozzuto::AdSourceCsv.new(:filename => APP_CONFIG[:ad_source_export_file]).file
-      Bozzuto::DnrCsv.new(:filename => APP_CONFIG[:dnr_export_file]).file
-
-      puts '  LeaseHawk CSVs successfully exported'
-    rescue => e
-      report_error('export LeaseHawk files', e)
-      Airbrake.notify(e)
-    end
-  end
-
-  desc "Send LeaseHawk CSV exports via FTP"
-  task :send_lease_hawk_csvs => :environment do
-    begin
-      log_task 'Sending LeaseHawk Ad Source file via FTP...'
-      Bozzuto::ExternalFeed::QburstFtp.transfer(APP_CONFIG[:ad_source_export_file], :dir => '/reporting/dni_feed')
-      puts '  LeaseHawk Ad Source file successfully sent'
-
-      log_task 'Sending LeaseHawk DNR Config file via FTP...'
-      Bozzuto::ExternalFeed::QburstFtp.transfer(APP_CONFIG[:dnr_export_file], :dir => '/reporting/dni_feed')
-      puts '  LeaseHawk DNR Config file successfully sent'
-    rescue => e
-      report_error('send LeaseHawk exports via FTP', e)
-      Airbrake.notify(e)
-    end
-  end
 end

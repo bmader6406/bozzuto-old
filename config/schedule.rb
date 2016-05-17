@@ -36,12 +36,4 @@ if environment == 'production'
   every 1.day, :at => ['2:00 am', '6:00 am', '9:00 am', '12:00 pm', '4:00 pm', '6:00 pm', '8:00 pm', '10:00 pm', '12:00 am'] do
     rake 'bozzuto:send_apartment_export'
   end
-
-  every 1.day, :at => '1:00 am' do
-    rake 'bozzuto:export_lease_hawk_csvs'
-  end
-
-  every 1.day, :at => '1:15 am' do
-    rake 'bozzuto:send_lease_hawk_csvs'
-  end
 end
