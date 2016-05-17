@@ -3,7 +3,7 @@
     <%= link_to neighborhood_path(metro, area, neighborhood), :class => 'info' do %>
       <span class="name"><%= neighborhood %></span>
 
-      <span class="count"><%= pluralize(area.apartment_communities_count, 'Apartment Community') %></span>
+      <span class="count"><%= pluralize(neighborhood.apartment_communities_count, 'Apartment Community') %></span>
 
       <% unless neighborhood.min_rent.zero? %>
         <span class="price">Pricing from <%= dollars(neighborhood.min_rent) %></span>
