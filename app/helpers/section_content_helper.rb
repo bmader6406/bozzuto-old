@@ -43,12 +43,10 @@ module SectionContentHelper
           li << "<li #{css_class}>"
           li << link_to(page.title, url)
 
-          if pages[i + 1].present? && pages[i + 1][:level] > current_level
-            next_level = pages.drop(i + 1).take_while { |hash|
-              hash[:level] > current_level
-            }
+          children = pages.select { |p| p[:page].parent_id == page.id }
 
-            li << pages_tree_helper(next_level, true, current_level + 1)
+          if children.any?
+            li << pages_tree_helper(children, true, level + 1)
           end
 
           li << '</li>'
