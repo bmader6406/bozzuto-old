@@ -22,7 +22,8 @@ module Analytics
       class RequestProcessor
         include Bozzuto::MiddlewareHelpers
 
-        AD_SOURCE_COOKIE = '_bozzuto_ad_source'
+        AD_SOURCE_COOKIE = 'bozzuto_ad_source'
+
 
         attr_reader :env
         attr_accessor :ad_source
@@ -33,27 +34,23 @@ module Analytics
         end
 
         def process
-          if ad_source_cookie.present?
-            # Set Ad Source to the cookie value
-            self.ad_source = ad_source_cookie
-
+          if ad_source_param.include?('-cheat')
+            # From DNI v3 Documentation:
+            # If Ctx_Ad Source Parameter is present in the url, and if its valus contains string “­cheat” then text
+            # before ‘­cheat’ is set as ad source value and cookie(bozzuto_ad_source) is set.
+            ad_source_value       = ad_source_param.match(/\A(?<value>.*)-cheat/)[:value]
+            self.ad_source        = ad_source_value # Set Ad Source to the param minus '-cheat'
+            self.ad_source_cookie = ad_source_value # Set cookie with the same value
+          elsif ad_source_cookie.present?
+            self.ad_source = ad_source_cookie # Set Ad Source to the cookie value
           elsif ad_source_param.present?
-            # Set Ad Source to the param
-            self.ad_source = ad_source_param
-
-            # Save the param value in the ad source cookie, to expire in 30 days
-            self.ad_source_cookie = ad_source_param
-
+            self.ad_source        = ad_source_param # Set Ad Source to the param
+            self.ad_source_cookie = ad_source_param # Save param in ad source cookie with 30 day expiry
           elsif matching_referrer.present?
-            # Set Ad Source to the matching DNR Referrer's value
-            self.ad_source = matching_referrer_ad_source
-
-            # Save the matching DNR Referrer's value in the ad source cookie, to expire in 30 days
-            self.ad_source_cookie = matching_referrer_ad_source
-
+            self.ad_source        = matching_referrer_ad_source # Set Ad Source to the matching DNR Referrer's value
+            self.ad_source_cookie = matching_referrer_ad_source # Save DNR Referrer's value in ad source cookie with 30 day expiry
           else
-            # Set Ad Source to Bozzuto.com or Bozzuto.comMobile
-            self.ad_source = mobile? ? 'Bozzuto.comMobile' : 'Bozzuto.com'
+            self.ad_source = "PropertyWebsite" # Otherwise, set Ad Source to PropertyWebsite
           end
 
           env['bozzuto.ad_source'] = ad_source
@@ -61,7 +58,7 @@ module Analytics
 
         def write_headers(headers)
           if @write_headers
-            save_cookie(headers, AD_SOURCE_COOKIE, :value => @new_ad_source_cookie, :expires => 30.days.from_now, :path => '/')
+            save_cookie(headers, AD_SOURCE_COOKIE, value: @new_ad_source_cookie, expires: 30.days.from_now, path: '/')
           end
         end
 
