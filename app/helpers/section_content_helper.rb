@@ -22,7 +22,7 @@ module SectionContentHelper
     pages_tree_helper(formatted_pages)
   end
 
-  def pages_tree_helper(pages, ul_wrapper = false, current_level = 0)
+  def pages_tree_helper(pages, ul_wrapper = false, current_level = 0, **options)
     return '' if pages.empty?
 
     output = ''
@@ -43,10 +43,12 @@ module SectionContentHelper
           li << "<li #{css_class}>"
           li << link_to(page.title, url)
 
-          children = pages.select { |p| p[:page].parent_id == page.id }
+
+          all_pages_in_tree = options[:all_pages_in_tree].presence || pages
+          children          = all_pages_in_tree.select { |p| p[:page].parent_id == page.id }
 
           if children.any?
-            li << pages_tree_helper(children, true, level + 1)
+            li << pages_tree_helper(children, true, level + 1, all_pages_in_tree: all_pages_in_tree)
           end
 
           li << '</li>'
