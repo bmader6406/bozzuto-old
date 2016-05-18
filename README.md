@@ -88,6 +88,15 @@ Fill out the config files with appropriate values.
 $ bundle exec rake db:create db:migrate db:test:prepare
 ```
 
+To get working data, run:
+
+```bash
+$ bundle exec cap production sync:down:db
+$ bundle exec cap sync:down:fs
+```
+
+You may need to add your auth key to the server, in which case reach out to the dev on the project to get the ball rolling.
+
 ### Run the app
 
 At this point, the application should be ready to run locally.  Start the server:
