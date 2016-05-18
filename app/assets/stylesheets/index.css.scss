@@ -2080,6 +2080,17 @@ div.wysiwyg ul li {
       width: 100%;
       z-index: 10;
     }
+    .property.retail-property #slideshow a {
+      bottom: 0;
+      display: block;
+      position: absolute;
+      height: 100%;
+      left: 0;
+      right: 0;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+    }
     .property.retail-property #slideshow .overlay {
       display: none;
     }
