@@ -2080,15 +2080,15 @@ div.wysiwyg ul li {
       width: 100%;
       z-index: 10;
     }
-    .property.retail-property #slideshow a {
+    .property.retail-property #slideshow .slideshow-navigation a {
       bottom: 0;
       display: block;
       position: absolute;
-      height: 100%;
+      height: 55px;
       left: 0;
       right: 0;
       top: 0;
-      width: 100%;
+      width: 70px;
       z-index: 10;
     }
     .property.retail-property #slideshow .overlay {
