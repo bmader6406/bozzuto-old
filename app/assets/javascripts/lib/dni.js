@@ -13,9 +13,6 @@ $(document).ready(function() {
       [dniParams.key]: dniParams.value
     }
 
-    console.log('Replacing DNI Number')
-    console.log('Data:', data)
-
     $.ajax({
       async:    false,
       url:      dniParams.url,
@@ -24,8 +21,6 @@ $(document).ready(function() {
       success: function(response) {
         var dniNumber  = response.dniNumber
         var leadSource = response.leadSourceValue
-
-        console.log('DNI response:', response)
 
         if (leadSource && leadSource != '') {
           updateToursURL(leadSource)
