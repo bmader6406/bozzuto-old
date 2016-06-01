@@ -36,7 +36,6 @@ module Bozzuto
     config.middleware.insert_after(ActionDispatch::Session::CookieStore, 'Bozzuto::Mobile::Middleware')
 
     config.middleware.use('Analytics::MillenialMedia::Middleware')
-    config.middleware.use('Analytics::AdSource::Middleware')
 
     if Rails.env.production?
       config.middleware.use 'Redirectotron'

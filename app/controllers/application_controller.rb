@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   include OverriddenPathsHelper
   include Bozzuto::Mobile::Controller
-  include Analytics::AdSource::Controller
   include Analytics::MillenialMedia::Controller
 
   helper :all
