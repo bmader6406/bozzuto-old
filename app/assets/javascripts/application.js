@@ -11,8 +11,11 @@
 //= require vendor/jmapping/jquery.jmapping
 //= require vendor/jmapping/markermanager
 //= require vendor/jmapping/StyledMarker
+//= require utils/js.cookie
+//= require utils/url-parsing
 //= require lib/floodlight
 //= require bozzuto
 //= require lib/analytics
 //= require lib/plugins/jquery.videoLightbox
 //= require lib/yelp-map
+//= require lib/dni
