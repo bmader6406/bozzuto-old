@@ -39,39 +39,25 @@ module PhoneNumberHelper
     end
   end
 
-  def dnr_phone_number(community, dnr_ad_source = nil, opts = {})
+  def dnr_phone_number(community)
     return '' unless community.phone_number.present?
-
-    opts.reverse_merge!(:width => 150, :height => 17)
 
     # sanitize phone number
     number = sanitize_phone_number(community.phone_number)
 
     # find account
-    account = if community.is_a?(ApartmentCommunity)
+    account = if community.apartment?
       APP_CONFIG[:callsource]['apartment']
-    elsif community.is_a?(HomeCommunity)
+    elsif community.home?
       APP_CONFIG[:callsource]['home']
     end
 
-    dnr_config = community.dnr_configuration
+    customer = community.dnr_configuration.try(:customer_code)
 
-    args = [
-      number,
-      'xxx.xxx.xxxx',
-      account,
-      dnr_config.try(:customer_code).presence || 'undefined',
-      dnr_ad_source.presence || 'undefined',
-      dnr_ad_source.presence || 'undefined',
-    ].map { |arg| "'#{arg}'" }
-
-    <<-SCRIPT.html_safe
-      <span class="phone-number">
+    <<-HTML.html_safe
+      <span class="phone-number dnr-replace" data-format="xxx.xxx.xxxx" data-account="#{account}" data-customer="#{customer}">
         #{number}
-        <script type="text/javascript-dnr" -data-width="#{opts[:width]}" -data-height="#{opts[:height]}">
-          replaceNumber(#{args.join(', ')});
-        </script>
       </span>
-    SCRIPT
+    HTML
   end
 end

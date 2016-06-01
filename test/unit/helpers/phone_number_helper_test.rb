@@ -81,7 +81,11 @@ class PhoneNumberHelperTest < ActionView::TestCase
 
         context "no ad source and no DNR config" do
           it "outputs the correct replaceNumber function call" do
-            dnr_phone_number(@community).should =~ dnr_regex(@number, @account, 'undefined', 'undefined')
+            html = dnr_phone_number(@community)
+
+            html.should include "data-format=\"xxx.xxx.xxxx\""
+            html.should include "data-account=\"#{@account}\""
+            html.should include "data-customer=\"\""
           end
         end
 
@@ -91,7 +95,11 @@ class PhoneNumberHelperTest < ActionView::TestCase
           end
 
           it "outputs the correct replaceNumber function call" do
-            dnr_phone_number(@community, 'batman').should =~ dnr_regex(@number, @account, '1234', 'batman')
+            html = dnr_phone_number(@community)
+
+            html.should include "data-format=\"xxx.xxx.xxxx\""
+            html.should include "data-account=\"#{@account}\""
+            html.should include "data-customer=\"1234\""
           end
         end
       end
@@ -105,7 +113,11 @@ class PhoneNumberHelperTest < ActionView::TestCase
 
         context "no ad source and no DNR config" do
           it "outputs the correct replaceNumber function call" do
-            dnr_phone_number(@community).should =~ dnr_regex(@number, @account, 'undefined', 'undefined')
+            html = dnr_phone_number(@community)
+
+            html.should include "data-format=\"xxx.xxx.xxxx\""
+            html.should include "data-account=\"#{@account}\""
+            html.should include "data-customer=\"\""
           end
         end
 
@@ -115,14 +127,14 @@ class PhoneNumberHelperTest < ActionView::TestCase
           end
 
           it "outputs the correct replaceNumber function call" do
-            dnr_phone_number(@community, 'batman').should =~ dnr_regex(@number, @account, '1234', 'batman')
+            html = dnr_phone_number(@community)
+
+            html.should include "data-format=\"xxx.xxx.xxxx\""
+            html.should include "data-account=\"#{@account}\""
+            html.should include "data-customer=\"1234\""
           end
         end
       end
     end
-  end
-
-  def dnr_regex(number, account, customer_code, ad_source)
-    %r{replaceNumber\('#{number}', 'xxx.xxx.xxxx', '#{account}', '#{customer_code}', '#{ad_source}', '#{ad_source}'\);}
   end
 end

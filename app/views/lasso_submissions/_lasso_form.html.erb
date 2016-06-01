@@ -5,7 +5,7 @@
     <% if @community.phone_number.present? %>
       <span class="hdr-call-us">
         Call Us
-        <%= dnr_phone_number(@community, dnr_ad_source, :height => 21) %>
+        <%= dnr_phone_number(@community) %>
       </span>
     <% end %>
   </h2>

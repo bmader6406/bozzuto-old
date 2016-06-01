@@ -15,7 +15,7 @@
     <% if @community.phone_number.present? %>
       <p class="cty-contact-call-us">
         Call Us
-        <%= dnr_phone_number(@community, dnr_ad_source, :height => 21) %>
+        <%= dnr_phone_number(@community) %>
       </p>
     <% end %>
 

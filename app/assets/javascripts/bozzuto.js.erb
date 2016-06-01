@@ -133,8 +133,6 @@ window.bozzuto = {};
 
     viewMoreFloorPlanGroups($('.floor-plans .floor-plan-group'));
 
-    $('span.phone-number:has(script[type="text/javascript-dnr"])').replaceUsingDNR();
-
     function setCookie(name, value) {
       document.cookie = name + '=' + value + '; path=/';
     }
@@ -253,81 +251,6 @@ window.bozzuto = {};
       });
     });
   }
-
-
-  ////
-  // This plugin wraps Callsource DNR number replacement. It does the following:
-  //   - sleeps initially for 1s to give other scripts and requests a chance to finish
-  //   - sleeps for 300ms after each number is replaced, to prevent queuing up too
-  //     many iframe requests and freezing the browser
-  //   - set the font size
-  //
-  //  To achieve this, lookup.js was changed so replaceNumber returns a string
-  //  instead of writing an iframe
-  //
-  $.fn.replaceUsingDNR = function() {
-    var $set = $(this);
-
-    if ($set.length > 0) {
-      setTimeout(function() {
-        processDnrScript($set);
-      }, 1000);
-    }
-
-    function processDnrScript($numbers) {
-      var $head     = $numbers.eq(0),
-          $tail     = $numbers.slice(1),
-          $script   = $('script[type="text/javascript-dnr"]', $head),
-          fontSize  = $head.css('font-size'),
-          color     = convertFromRGBToHex($head.css('color')),
-          width     = parseInt($script.attr('-data-width')),
-          height    = parseInt($script.attr('-data-height')),
-          oldWidth  = frameWidth,
-          oldHeight = frameHeight,
-          iframe    = '';
-
-      if (!isNaN(width) && !isNaN(height)) {
-        setSize(width, height);
-      }
-
-      iframe = eval($script.html())
-        .replace(/fontsize=[^&]+/, 'fontsize=' + fontSize)
-        .replace(/fontfamily=[^&]+/, 'fontfamily=Arial')
-        .replace(/textcolor=[^&]+/, 'textcolor=' + color);
-
-      setSize(oldWidth, oldHeight);
-
-      $head.html(iframe);
-
-      if ($tail.length > 0) {
-        setTimeout(function() {
-          processDnrScript($tail);
-        }, 300);
-      }
-    }
-
-    function convertFromRGBToHex(color) {
-      var matches = color.match(/rgb\((\d+),\s*(\d+),\s*(\d+)(,\s*\d+)?\)/);
-
-      if (matches != null) {
-        return RGBtoHex(matches[1], matches[2], matches[3]);
-      } else {
-        return color.substr(1);
-      }
-
-      return color;
-    }
-
-    function RGBtoHex(R,G,B) {return toHex(R)+toHex(G)+toHex(B)}
-    function toHex(N) {
-     if (N==null) return "00";
-     N=parseInt(N); if (N==0 || isNaN(N)) return "00";
-     N=Math.max(0,N); N=Math.min(N,255); N=Math.round(N);
-     return "0123456789ABCDEF".charAt((N-N%16)/16)
-          + "0123456789ABCDEF".charAt(N%16);
-    }
-  };
-
 
   // Equal height items
   $.fn.equalHeight = function(options) {

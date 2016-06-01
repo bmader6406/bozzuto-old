@@ -1,12 +1,12 @@
 <h2 class="hdr-primary">
-	Ready to speak with a sales consultant?
+  Ready to speak with a sales consultant?
 
-	<% if @community.phone_number.present? %>
-		<span class="hdr-call-us">
-			Call Us
-			<%= dnr_phone_number(@community, dnr_ad_source, :height => 21) %>
-		</span>
-	<% end %>
+  <% if @community.phone_number.present? %>
+    <span class="hdr-call-us">
+      Call Us
+      <%= dnr_phone_number(@community) %>
+    </span>
+  <% end %>
 </h2>
 
 <p id="community-contact-note">Fill out the form below to let us know how we can help.</p>
@@ -14,55 +14,55 @@
 <p><em>* required</em></p>
 
 <div id="community-contact-form">
-	<form method="post" class="required-form" action="https://www.mbrealinsite.com/mwb/external/captureLead.action">
-		<input type="hidden" name="origin" value="WEB" id="origin"/>
-		<input type="hidden" name="model.formReferer" value="" id="model_formReferer"/>
-		<input type="hidden" name="form" value="147" id="form"/>
+  <form method="post" class="required-form" action="https://www.mbrealinsite.com/mwb/external/captureLead.action">
+    <input type="hidden" name="origin" value="WEB" id="origin"/>
+    <input type="hidden" name="model.formReferer" value="" id="model_formReferer"/>
+    <input type="hidden" name="form" value="147" id="form"/>
 
-		<fieldset>
-			<p>
-				<%= label_tag '2', 'First Name*' %>
-				<%= text_field_tag '2', nil, :class => 'required' %>
-			</p>
+    <fieldset>
+      <p>
+        <%= label_tag '2', 'First Name*' %>
+        <%= text_field_tag '2', nil, class: 'required' %>
+      </p>
 
-			<p>
-				<%= label_tag '3', 'Last Name*' %>
-				<%= text_field_tag '3', nil, :class => 'required' %>
-			</p>
+      <p>
+        <%= label_tag '3', 'Last Name*' %>
+        <%= text_field_tag '3', nil, class: 'required' %>
+      </p>
 
-			<p>
-				<%= label_tag '12', 'Email Address*' %>
-				<%= text_field_tag '12', nil, :class => 'required' %>
-			</p>
+      <p>
+        <%= label_tag '12', 'Email Address*' %>
+        <%= text_field_tag '12', nil, class: 'required' %>
+      </p>
 
-			<p>
-				<%= label_tag '18', 'Phone' %>
-				<%= text_field_tag '18', nil %>
-			</p>
+      <p>
+        <%= label_tag '18', 'Phone' %>
+        <%= text_field_tag '18', nil %>
+      </p>
 
-			<p>
-				<%= label_tag '7', 'ZIP Code*' %>
-				<%= text_field_tag '7', nil, :class => 'required' %>
-			</p>
+      <p>
+        <%= label_tag '7', 'ZIP Code*' %>
+        <%= text_field_tag '7', nil, class: 'required' %>
+      </p>
 
-			<p>
-				<%= label_tag '14', 'How did you hear about us?' %>
-				<select name="14" id="14">
-					<option value="">Please Select</option>
-					<option value="2511">DC Curbed</option>
-					<option value="2516">Eblast</option>
-					<option value="2506">Popville</option>
-					<option value="2491">Site Banners</option>
-					<option value="2676">Social Media</option>
-					<option value="2501">UrbanTurf</option>
-					<option value="2496">Washington Post Ad</option>
-				</select>
-			</p>
+      <p>
+        <%= label_tag '14', 'How did you hear about us?' %>
 
-		</fieldset>
+        <select name="14" id="14">
+          <option value="">Please Select</option>
+          <option value="2511">DC Curbed</option>
+          <option value="2516">Eblast</option>
+          <option value="2506">Popville</option>
+          <option value="2491">Site Banners</option>
+          <option value="2676">Social Media</option>
+          <option value="2501">UrbanTurf</option>
+          <option value="2496">Washington Post Ad</option>
+        </select>
+      </p>
+    </fieldset>
 
-		<p class="submit">
-			<%= submit_tag 'Submit' %>
-		</p>
-	</form>
+    <p class="submit">
+      <%= submit_tag 'Submit' %>
+    </p>
+  </form>
 </div>
