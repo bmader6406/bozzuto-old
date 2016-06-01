@@ -17,7 +17,6 @@ en:
       short_name: Penthouses
   activerecord:
     models:
-      ad_source: Ad Source
       admin_user: User
       apartment_community: Apartment Community
       apartment_contact_configuration: Contact Configuration
@@ -72,9 +71,6 @@ en:
       seo_metadata: SEO Metadata
       under_construction_lead: Under-Construction Lead
     attributes:
-      ad_source:
-        domain_name: Domain Name
-        value: Value
       admin_user:
         password_confirmation: Password Confirmation
       apartment_community:

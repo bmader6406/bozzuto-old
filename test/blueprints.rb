@@ -29,12 +29,6 @@ end
 Sham.bedrooms(:unique => false)  { rand(5) + 1 }
 Sham.bathrooms(:unique => false) { (rand * 3).round(1) + 1 }
 
-
-AdSource.blueprint do
-  domain_name { Faker::Internet.domain_name }
-  value       { 'Value' }
-end
-
 AdminUser.blueprint do
   email                 { Faker::Internet.email }
   password              { 'password' }
