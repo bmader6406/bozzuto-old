@@ -83,9 +83,9 @@ class PhoneNumberHelperTest < ActionView::TestCase
           it "outputs the correct replaceNumber function call" do
             html = dnr_phone_number(@community)
 
-            html.should include "data-format=\"xxx.xxx.xxxx\""
-            html.should include "data-account=\"#{@account}\""
-            html.should include "data-customer=\"\""
+            html.should include %Q(data-format="xxx.xxx.xxxx")
+            html.should include %Q(data-account="#{@account}")
+            html.should include %Q(data-customer="")
           end
         end
 
@@ -97,9 +97,9 @@ class PhoneNumberHelperTest < ActionView::TestCase
           it "outputs the correct replaceNumber function call" do
             html = dnr_phone_number(@community)
 
-            html.should include "data-format=\"xxx.xxx.xxxx\""
-            html.should include "data-account=\"#{@account}\""
-            html.should include "data-customer=\"1234\""
+            html.should include %Q(data-format="xxx.xxx.xxxx")
+            html.should include %Q(data-account="#{@account}")
+            html.should include %Q(data-customer="1234")
           end
         end
       end
@@ -115,9 +115,9 @@ class PhoneNumberHelperTest < ActionView::TestCase
           it "outputs the correct replaceNumber function call" do
             html = dnr_phone_number(@community)
 
-            html.should include "data-format=\"xxx.xxx.xxxx\""
-            html.should include "data-account=\"#{@account}\""
-            html.should include "data-customer=\"\""
+            html.should include %Q(data-format="xxx.xxx.xxxx")
+            html.should include %Q(data-account="#{@account}")
+            html.should include %Q(data-customer="")
           end
         end
 
@@ -129,9 +129,9 @@ class PhoneNumberHelperTest < ActionView::TestCase
           it "outputs the correct replaceNumber function call" do
             html = dnr_phone_number(@community)
 
-            html.should include "data-format=\"xxx.xxx.xxxx\""
-            html.should include "data-account=\"#{@account}\""
-            html.should include "data-customer=\"1234\""
+            html.should include %Q(data-format="xxx.xxx.xxxx")
+            html.should include %Q(data-account="#{@account}")
+            html.should include %Q(data-customer="1234")
           end
         end
       end
