@@ -1,6 +1,7 @@
 GIT
   remote: git://github.com/vigetlabs/active_material.git
-  revision: 0affe3a73860ecbe4a0aa5ebd5595ef49a35af96
+  revision: 56085a273b6c3808b6d18a825af5c60f25d70bb7
+  branch: bt-nh-table-actions-fix
   specs:
     active_material (1.4.1)
 
@@ -443,5 +444,8 @@ DEPENDENCIES
   yboss
   yelp
 
+RUBY VERSION
+   ruby 2.2.3p173
+
 BUNDLED WITH
-   1.11.2
+   1.12.3

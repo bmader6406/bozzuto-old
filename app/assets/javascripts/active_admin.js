@@ -1,6 +1,6 @@
-//= require active_material
 //= require active_admin/base
 //= require activeadmin_reorderable
+//= require active_material
 //= require polymorphic_select
 //= require redactor
 //= require chosen.jquery
@@ -8,6 +8,7 @@
 //= require collapse
 //= require transition
 //= require bootstrap-datetimepicker.min
+
 
 $(function() {
   var csrfToken    = $('meta[name=csrf-token]').attr('content')
