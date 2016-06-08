@@ -836,8 +836,9 @@ div.wysiwyg ul li {
   list-style: disc;
 }
 
-.wysiwyg-12pt-font {
+div.wysiwyg .wysiwyg-12pt-font {
   font-size: 16px; // Translates to 12pt font
+  margin-bottom: 20px;
 }
 
 /* @end */
@@ -890,11 +891,11 @@ div.wysiwyg ul li {
   .secondary #main-content h3 a:hover {
     text-decoration: underline;
   }
-  .secondary #main-content p {
+  .secondary p {
     font-size: 11px;
     line-height: 1.636363636;
   }x
-  .secondary #main-content p.first {
+  .secondary p.first {
     font-size: 15px;
   }
   .secondary #header #main-nav li.about-nav .dropdown {
