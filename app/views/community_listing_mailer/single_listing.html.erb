@@ -35,7 +35,7 @@
         <td width="360" valign="top" style="line-height:1.3em;">
           <div style="font-family:Helvetica,Arial;font-size:14px;line-height:1.3em;color:#7f7b7a;">
             <% if @community.overview_text.present? -%>
-              <%= raw(truncate_html(@community.overview_text, :length => 200, :omission => "&hellip;")) %>
+              <%= truncate(@community.overview_text, length: 200, omission: "&hellip;", escape: false) %>
             <% end -%>
 
             <% if @community.overview_bullets.any? %>

@@ -31,7 +31,7 @@
         <%= award.published_at.to_formatted_s(:month_day_year) %>
       </p>
 
-      <%= truncate_html(award.body, :length => 600).try(:html_safe) %>
+      <%= truncate(award.body, :length => 600, escape: false) %>
     </div>
   <% end %>
 

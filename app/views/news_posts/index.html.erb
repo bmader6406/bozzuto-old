@@ -26,7 +26,7 @@
         </p>
       <% end %>
 
-      <%= truncate_html(post.body, :length => 600, :omission => "&hellip; #{link_to('Continue reading', news_post_path(@section, post))}") %>
+      <%= truncate(post.body, length: 600, omission: "&hellip; #{link_to('Continue reading', news_post_path(@section, post))}", escape: false) %>
     </div>
   <% end %>
 
