@@ -33,4 +33,23 @@ ActiveAdmin.register UnderConstructionLead do
       row :created_at
     end
   end
+
+  csv do
+    column :property do |lead|
+      lead.apartment_community.to_s
+    end
+
+    column :name do |lead|
+      [lead.first_name, lead.last_name].join(' ')
+    end
+
+    column :email
+    column :phone_number
+    column :address
+    column :address_2
+    column :city
+    column :state
+    column :zip_code
+    column :comments
+  end
 end
