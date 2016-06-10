@@ -7,11 +7,12 @@ $(document).ready(function() {
     var $number   = $(this)
     var dniParams = fetchDNIparams()
     var data      = {
-      format:          $number.attr('data-format'),
-      customer:        $number.attr('data-customer'),
-      account:         $number.attr('data-account'),
-      [dniParams.key]: dniParams.value
+      format:   $number.attr('data-format'),
+      customer: $number.attr('data-customer'),
+      account:  $number.attr('data-account')
     }
+
+    data[dniParams.key] = dniParams.value
 
     $.ajax({
       async:    false,
