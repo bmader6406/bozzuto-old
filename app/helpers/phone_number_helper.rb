@@ -42,10 +42,6 @@ module PhoneNumberHelper
   def dnr_phone_number(community)
     return '' unless community.phone_number.present?
 
-    # sanitize phone number
-    number = sanitize_phone_number(community.phone_number)
-
-    # find account
     account = if community.apartment?
       APP_CONFIG[:callsource]['apartment']
     elsif community.home?
@@ -56,7 +52,7 @@ module PhoneNumberHelper
 
     <<-HTML.html_safe
       <span class="phone-number dnr-replace" data-format="xxx.xxx.xxxx" data-account="#{account}" data-customer="#{customer}">
-        #{number}
+        #{community.phone_number}
       </span>
     HTML
   end

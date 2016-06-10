@@ -29,7 +29,9 @@ $(document).ready(function() {
           updateToursURL(data.adsource)
         }
 
-        $number.text(dniNumber)
+        if (dniNumber.match(/\d{3}.\d{3}.\d{4}/)) {
+          $number.text(dniNumber)
+        }
       }
     })
   }
