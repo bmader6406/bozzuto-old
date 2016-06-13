@@ -4,4 +4,8 @@ class PropertyRetailPage < PropertyPage
   def to_s
     property.title + ' Retail Page'
   end
+
+  def show_contact_callout?
+    false
+  end
 end

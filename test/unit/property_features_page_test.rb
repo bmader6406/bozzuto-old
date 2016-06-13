@@ -46,5 +46,11 @@ class PropertyFeaturesPageTest < ActiveSupport::TestCase
         end
       end
     end
+
+    describe "#show_contact_callout?" do
+      it "returns true" do
+        subject.show_contact_callout?.should == true
+      end
+    end
   end
 end

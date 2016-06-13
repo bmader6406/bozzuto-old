@@ -1,5 +1,7 @@
 module CommunitiesHelper
   def community_contact_callout(community, &block)
+    return if @page && !@page.show_contact_callout?
+
     extra_content = capture(&block) if block_given?
 
     render 'communities/request_info', :community => community, :extra_content => extra_content

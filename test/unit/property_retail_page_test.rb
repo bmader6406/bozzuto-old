@@ -18,5 +18,11 @@ class PropertyRetailPageTest < ActiveSupport::TestCase
         subject.to_s.should == 'Gotham Heights Retail Page'
       end
     end
+
+    describe "#show_contact_callout?" do
+      it "returns false" do
+        subject.show_contact_callout?.should == false
+      end
+    end
   end
 end

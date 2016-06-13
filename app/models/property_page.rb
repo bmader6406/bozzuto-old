@@ -13,6 +13,10 @@ class PropertyPage < ActiveRecord::Base
     property if property.is_a? HomeCommunity
   end
 
+  def show_contact_callout?
+    true
+  end
+
   def to_s
     [
       self.class.name.titleize,
