@@ -68,7 +68,7 @@ $ brew install imagemagick
 
 Some application configuration _should not be checked into source control_. You need to create copies to run the app locally.
 
-For the database: 
+For the database:
 
 ```bash
 $ cp config/database.yml.example config/database.yml
@@ -131,4 +131,10 @@ New changes are build and tested with [CircleCI](https://circleci.com/). Passing
 
 ## Deployment
 
-TODO
+Merge changes into master and run `bundle exec cap deploy` to deploy to integration.
+
+Once your changes have updated and been verified by your PM, run:
+`git checkout production`
+`git merge master`
+`git push origin production`
+`bundle exec cap production deploy`
