@@ -66,13 +66,13 @@ $(document).ready(function() {
 
     if (adSource == 'referrer') {
       return {
-        url:  'http://dni.bozzuto.com/reffererDniNumber',
+        url:  'https://dni.bozzuto.com/reffererDniNumber',
         key:  'referrer_host',
         value: referrerHost
       }
     } else {
       return {
-        url:  'http://dni.bozzuto.com/dniNumber',
+        url:  'https://dni.bozzuto.com/dniNumber',
         key:  'adsource',
         value: adSource
       }
