@@ -25,6 +25,10 @@ module Bozzuto::Exports
         CGI.unescape sanitizer.sanitize(String(html)).gsub(/\s+/, ' ').strip
       end
 
+      def strip_query_parameters(url)
+        URI(url).tap { |uri| uri.query = nil }.to_s
+      end
+
       private
 
       def sanitizer
@@ -32,7 +36,7 @@ module Bozzuto::Exports
       end
 
       def builder
-        @builder ||= Builder::XmlMarkup.new(:indent => 2)
+        @builder ||= Builder::XmlMarkup.new(indent: 2)
       end
 
       def communities

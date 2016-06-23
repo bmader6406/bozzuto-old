@@ -52,7 +52,7 @@ module Bozzuto::Exports
         parent_node.tag!('Identification') do |node|
           node.tag! 'PrimaryID',     property.id
           node.tag! 'MarketingName', property.title
-          node.tag! 'WebSite',       property.website_url
+          node.tag! 'WebSite',       strip_query_parameters(property.website_url)
           node.tag! 'BozzutoURL',    property.bozzuto_url
           node.tag! 'Latitude',      property.latitude
           node.tag! 'Longitude',     property.longitude

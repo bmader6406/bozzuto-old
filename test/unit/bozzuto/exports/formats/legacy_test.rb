@@ -65,7 +65,7 @@ module Bozzuto::Exports::Formats
             :facebook_url            => 'http://facebook.com/dafuq',
             :twitter_account         => twitter_account,
             :pinterest_url           => 'http://pinterest.com/bozzuto',
-            :website_url             => 'http://what.up',
+            :website_url             => 'http://what.up?dude=yo',
             :latitude                => 0.0,
             :longitude               => 45.0,
             :promo_id                => promo.id,
@@ -162,7 +162,7 @@ module Bozzuto::Exports::Formats
             end
 
             it "contains property website" do
-              @identification_node.xpath('WebSite').first.content.should == @community.website_url
+              @identification_node.xpath('WebSite').first.content.should == 'http://what.up'
             end
 
             it "contains bozzuto url" do

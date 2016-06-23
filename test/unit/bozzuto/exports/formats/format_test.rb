@@ -18,6 +18,16 @@ module Bozzuto::Exports::Formats
           end
         end
       end
+
+      describe "#strip_query_parameters" do
+        before do
+          @url = 'https://www.bozzuto.com/apartments/100-park?utm_campaign=test&utm_source=bozzuto&random=query'
+        end
+
+        it "returns the URL without query parameters" do
+          subject.strip_query_parameters(@url).should == 'https://www.bozzuto.com/apartments/100-park'
+        end
+      end
     end
   end
 end
