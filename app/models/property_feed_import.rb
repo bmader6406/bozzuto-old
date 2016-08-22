@@ -2,10 +2,12 @@ class PropertyFeedImport < ActiveRecord::Base
   # disable STI on `type` field
   self.inheritance_column = nil
 
-  STATES = %w(queued processing success failure)
+  STATES  = %w(queued processing success failure)
+  STORAGE = %w(development test).include?(Rails.env) ? :filesystem : :s3
 
   has_attached_file :file,
-                    url: '/system/:class/:id/:filename'
+    storage: STORAGE,
+    url:     '/system/:class/:id/:filename'
 
   validates :type,
             presence: true

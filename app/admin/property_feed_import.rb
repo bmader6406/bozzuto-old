@@ -43,8 +43,9 @@ ActiveAdmin.register PropertyFeedImport do
       end
       row :started_at
       row :finished_at
-      row :file_file_name
-      row :file_file_size
+      row :file do |import|
+        link_to import.file_file_name, import.file.url
+      end
       row :error
       row :stack_trace
       row :created_at

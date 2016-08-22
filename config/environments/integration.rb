@@ -24,6 +24,16 @@ Bozzuto::Application.configure do
     :host => 'bozzuto.integration.vigetx.com'
   }
 
+  # Paperclip Config
+  config.paperclip_defaults = {
+    s3_credentials: {
+      bucket:            Rails.application.secrets.s3_bucket,
+      access_key_id:     Rails.application.secrets.s3_access_key_id,
+      secret_access_key: Rails.application.secrets.s3_secret_access_key,
+      region:            'us-east-1'
+    }
+  }
+
   # See everything in the log (default is :info)
   # config.log_level = :debug
 

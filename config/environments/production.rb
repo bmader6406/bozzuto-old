@@ -37,6 +37,16 @@ Bozzuto::Application.configure do
   # Enable threaded mode
   # config.threadsafe!
 
+  # Paperclip Config
+  config.paperclip_defaults = {
+    s3_credentials: {
+      bucket:            Rails.application.secrets.s3_bucket,
+      access_key_id:     Rails.application.secrets.s3_access_key_id,
+      secret_access_key: Rails.application.secrets.s3_secret_access_key,
+      region:            'us-east-1'
+    }
+  }
+
   config.action_mailer.default_url_options = {
     :host => 'bozzuto.com'
   }
