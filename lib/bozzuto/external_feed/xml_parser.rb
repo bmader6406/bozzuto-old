@@ -23,7 +23,13 @@ module Bozzuto
       end
 
       def file
-        ::File.open(importer.file.path)
+        storage = importer.file.options[:storage]
+
+        if storage == ::PropertyFeedImport::S3
+          open(importer.file.url)
+        else
+          ::File.open(importer.file.path)
+        end
       end
 
       def start_of_property?(node)

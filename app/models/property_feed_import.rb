@@ -2,8 +2,10 @@ class PropertyFeedImport < ActiveRecord::Base
   # disable STI on `type` field
   self.inheritance_column = nil
 
-  STATES  = %w(queued processing success failure)
-  STORAGE = %w(development test).include?(Rails.env) ? :filesystem : :s3
+  STATES     = %w(queued processing success failure)
+  FILESYSTEM = :filesystem
+  S3         = :s3
+  STORAGE    = %w(development test).include?(Rails.env) ? FILESYSTEM : S3
 
   has_attached_file :file,
     storage: STORAGE,
