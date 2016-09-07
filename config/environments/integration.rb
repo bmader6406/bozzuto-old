@@ -31,7 +31,7 @@ Bozzuto::Application.configure do
       access_key_id:     Rails.application.secrets.s3_access_key_id,
       secret_access_key: Rails.application.secrets.s3_secret_access_key
     },
-    s3_region:   'us-east-1'
+    s3_region:   'us-east-1',
     s3_protocol: 'https'
   }
 
