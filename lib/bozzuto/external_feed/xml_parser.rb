@@ -26,7 +26,10 @@ module Bozzuto
         storage = importer.file.options[:storage]
 
         if storage == ::PropertyFeedImport::S3
-          open(importer.file.url)
+          url        = URI(importer.file.url)
+          url.scheme = importer.file.options[:s3_protocol]
+
+          open(url.to_s)
         else
           ::File.open(importer.file.path)
         end

@@ -13,7 +13,7 @@ module Bozzuto::ExternalFeed
         Nokogiri::XML.stubs(:parse).returns(@xml)
 
         @file.stubs(:options).returns({ storage: PropertyFeedImport::FILESYSTEM })
-        @file.stubs(:url).returns('url')
+        @file.stubs(:url).returns('//url.com')
 
         @importer.stubs(:file).returns(@file)
         @importer.stubs(:collect)
@@ -43,11 +43,11 @@ module Bozzuto::ExternalFeed
       describe "#file" do
         context "when the file's storage is S3" do
           before do
-            @file.stubs(:options).returns({ storage: PropertyFeedImport::S3 })
+            @file.stubs(:options).returns({ storage: PropertyFeedImport::S3, s3_protocol: 'https' })
           end
 
           it "opens the file from its remote URL" do
-            subject.expects(:open).with('url')
+            subject.expects(:open).with('https://url.com')
 
             subject.send(:file)
           end
