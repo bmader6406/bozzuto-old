@@ -114,4 +114,19 @@ namespace :bozzuto do
       Airbrake.notify(e)
     end
   end
+
+  namespace :data do
+    desc "Strip inline styles from text-type columns that contain WYSIWYG markup."
+    task strip_inline_font_styles: :environment do
+      Rails.application.eager_load!
+
+      ActiveRecord::Base.descendants.each do |model|
+        # Skip over HABTM join tables and things like ActiveRecord::SchemaMigration
+
+        if model.table_exists? && model.column_names.include?('id')
+          Bozzuto::Data::InlineFontDestroyer.new(model).strip_font_styles!
+        end
+      end
+    end
+  end
 end
