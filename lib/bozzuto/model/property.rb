@@ -46,7 +46,7 @@ module Bozzuto
 
         validate :brochure_url_xor_file
 
-        after_create :create_slug
+        after_create :create_correct_slug
 
         scope :mappable,         -> { where('latitude IS NOT NULL AND longitude IS NOT NULL') }
         scope :ordered_by_title, -> { order(title: :asc) }
@@ -139,6 +139,10 @@ module Bozzuto
         end
 
         private
+
+        def create_correct_slug
+          update_attributes(slug: id_and_title)
+        end
 
         def brochure_url_xor_file
           if brochure_link_text.present? && !(brochure.present? ^ brochure_url.present?)

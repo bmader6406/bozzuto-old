@@ -306,7 +306,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
         subject { ApartmentCommunity.make(id: 99001, title: 'Test', slug: '99001-test') }
 
         it "returns the ID combined with the title" do
-          subject.to_param.should == '99001-test'
+          subject.reload.to_param.should == '99001-test'
         end
       end
 
@@ -314,7 +314,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
         subject { ApartmentCommunity.make(id: 99001, title: 'Test', slug: 'test') }
 
         it "returns the ID combined with the title" do
-          subject.to_param.should == '99001-test'
+          subject.reload.to_param.should == '99001-test'
         end
       end
 
@@ -326,7 +326,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
         end
 
         it "returns the ID combined with the updated title" do
-          subject.slug.should == '99001-boom'
+          subject.reload.slug.should == '99001-boom'
         end
       end
     end
