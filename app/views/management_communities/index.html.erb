@@ -10,7 +10,7 @@
 <% end %>
 
 <div class="community-listing row">
-  <% @communities.in_groups(2, false).each do |group| %>
+  <% @communities.sort_by(&:title).in_groups(2, false).each do |group| %>
     <ul class="col">
       <% group.each do |community| %>
         <li><%= link_to community.title, community %></li>
