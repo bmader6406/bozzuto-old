@@ -644,8 +644,6 @@
     }
     .column-main ul li,
     .community #overview ul li {
-      font-size: 12px;
-      line-height: 18px;
       background: 0 7px image-url('structure/blt-features.gif') no-repeat;
       padding-left: 15px;
       margin: 0px;
@@ -2363,8 +2361,14 @@ div.wysiwyg .wysiwyg-12pt-font {
     .community #sub-listing li:nth-child(4n) {
       padding-left: 20px;
     }
-    .community #main-content {
-      font-size: 11px;
+    .community #main-content p,
+    .community #main-content li {
+      font-size: 16px;
+    }
+
+    .community #sidebar p,
+    .community #sidebar li {
+      font-size: 12px;
     }
 
     .community #main-content .request-info {
@@ -2872,8 +2876,6 @@ div.wysiwyg .wysiwyg-12pt-font {
     padding-left: 10px;
   }
   .features #main-content div.feature ul li {
-    font-size: 11px;
-    line-height: 18px;
     list-style: disc outside image-url('structure/blt-features.gif');
     margin: 0;
   }
@@ -2971,6 +2973,10 @@ div.wysiwyg .wysiwyg-12pt-font {
 /* @group -floorplans */
   .floor-plans .floor-plan {
     width: 180px;
+  }
+
+  .floor-plans #main-content .floor-plan p{
+    font-size: 12px;
   }
 
   .community .floor-plan .floor-plan-view {
@@ -5680,7 +5686,7 @@ div.wysiwyg .wysiwyg-12pt-font {
   height: 100%;
   vertical-align: middle;
 }
-.floor-plan-listing a {
+#main-content .floor-plan-listing a {
   color: #636972;
   display: inline-block;
   font-size: 14px;
