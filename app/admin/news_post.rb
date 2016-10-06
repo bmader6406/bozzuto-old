@@ -14,7 +14,8 @@ ActiveAdmin.register NewsPost do
                 :body,
                 :meta_title,
                 :meta_description,
-                :meta_keywords
+                :meta_keywords,
+                section_ids: []
 
   filter :title_cont, label: 'Title'
 
