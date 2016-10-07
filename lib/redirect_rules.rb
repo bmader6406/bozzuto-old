@@ -187,13 +187,22 @@ class RedirectRules
       Rule.new(
         %r{^/apartments/bozzuto-listens(\?.*)?},
         'http://www.bozzutolistens.com/'
+      ),
+
+      Rule.new(
+        %r{^/services/construction/construction-careers(\?.*)?},
+        'http://bozzutoconstructionjobs.com/'
+      ),
+
+      Rule.new(
+        %r{^/careers/construction-careers(\?.*)?},
+        'http://bozzutoconstructionjobs.com/'
       )
     ]
     #:nocov:
   end
 
   class Rule < Struct.new(:url_regex, :redirect_url, :condition)
-
     def to_a
       [url_regex, redirect_url, condition].compact
     end
