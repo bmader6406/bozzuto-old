@@ -49,22 +49,5 @@
         </div>
       </li>
     <% end %>
-
-    <li>
-      <a href="#">Send to phone</a>
-
-      <div class="popup">
-        <%= form_tag [@community, :sms_message], :class => (flash[:send_to_phone_errors] ? 'errors' : nil) do %>
-          <%= content_tag :label, :for => 'phone_number' do %>
-            <strong>Input your phone number</strong> for <%= @community.short_name %> info. Std msg
-            rates apply.
-          <% end %>
-          <p class="fields">
-            <%= text_field_tag 'phone_number' %>
-            <button type="submit" class="fl-record-click" data-cat="Sendt0" data-prop="<%= @community.title %>">Send</button>
-          </p>
-        <% end %>
-      </div>
-    </li>
   </ul>
 <% end %>
