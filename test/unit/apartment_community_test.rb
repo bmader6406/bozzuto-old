@@ -51,7 +51,7 @@ class ApartmentCommunityTest < ActiveSupport::TestCase
 
     should validate_presence_of(:title)
     should validate_presence_of(:city)
-    should validate_length_of(:short_title).is_at_least(0).is_at_most(22)
+    should validate_length_of(:short_title).is_at_least(0).is_at_most(25)
     should validate_length_of(:short_description).is_at_least(0).is_at_most(40)
 
     should allow_value(true).for(:included_in_export)

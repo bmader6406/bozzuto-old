@@ -42,7 +42,7 @@ module Bozzuto
 
         validates :short_title,
                   allow_nil:    true,
-                  length:       { maximum: 22 }
+                  length:       { maximum: 25 }
 
         validate :brochure_url_xor_file
 
