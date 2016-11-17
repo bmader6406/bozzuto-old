@@ -72,12 +72,7 @@
         $largeMap.css({ height: '420px', width: '850px' });
 
         $largeMap.jMapping({
-          category_icon_options: function(category) {
-            return {
-              size: new google.maps.Size(32, 37),
-              url:  iconImage(category)
-            };
-          },
+          category_icon_options: {iconImages},
           always_show_markers: true,
           default_zoom_level: 13,
           side_bar_selector: '#large-map-side-bar:first'
@@ -131,6 +126,7 @@
   };
 
   function iconImage(key) {
+    console.log(iconImages[key])
     return iconImages[key] || '//google-maps-icons.googlecode.com/files/home.png';
   }
 })();
