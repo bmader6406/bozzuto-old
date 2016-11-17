@@ -14,8 +14,6 @@ module Bozzuto
       included do
         extend Bozzuto::Neighborhoods::ListingImage
 
-        include Bozzuto::SMSAble
-
         belongs_to :promo
         belongs_to :twitter_account
 
@@ -82,11 +80,6 @@ module Bozzuto
 
         def grouped_photos
           photos.positioned.grouped
-        end
-
-        # used by sms
-        def phone_message
-          "#{title} #{street_address}, #{city.name}, #{city.state.name} #{phone_number} Call for specials! #{website_url}"
         end
 
         def mobile_phone_number

@@ -1,42 +1,6 @@
 require 'test_helper'
 
 class MediaplexHelperTest < ActionView::TestCase
-  context '#send_to_phone_mediaplex_code' do
-    setup do
-      @time = Time.new
-      Time.stubs(:new).returns(@time)
-    end
-
-    context 'with an apartment community' do
-      setup do
-        @community = ApartmentCommunity.make
-        @mpuid     = "#{@time.to_i};#{@community.id}"
-      end
-
-      should 'return the correct iframe' do
-        code = send_to_phone_mediaplex_code(@community)
-
-        assert_match /Apartments_Send_to_Phone/, code
-        assert_match /#{@mpuid}/, code
-      end
-    end
-
-    context 'with a home community' do
-      setup do
-        @community = HomeCommunity.make
-        @mpuid     = "#{@time.to_i};#{@community.id}"
-      end
-
-      should 'return the correct iframe' do
-        code = send_to_phone_mediaplex_code(@community)
-
-        assert_match /Bozzuto_Homes_Send_To_Phone/, code
-        assert_match /#{@mpuid}/, code
-      end
-    end
-  end
-
-
   context '#send_to_friend_mediaplex_code' do
     setup do
       @email = Faker::Internet.email

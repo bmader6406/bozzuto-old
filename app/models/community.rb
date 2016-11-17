@@ -1,5 +1,4 @@
 class Community < Property
-  include Bozzuto::SMSAble
   extend FriendlyId
 
   PAGES = %i(
@@ -83,11 +82,6 @@ class Community < Property
     photos.positioned.grouped
   end
 
-  # used by sms
-  def phone_message
-    "#{title} #{street_address}, #{city.name}, #{city.state.name} #{phone_number} Call for specials! #{website_url}"
-  end
-
   def mobile_phone_number
     super.presence || phone_number
   end
@@ -95,7 +89,6 @@ class Community < Property
   def twitter_handle
     twitter_account.try(:username)
   end
-
 
   protected
 

@@ -11,10 +11,6 @@ development:
     qburst:
       username: bozzutofc
       password: 6zxXRETm
-  sms:
-    username: mkilmurry
-    password: 120012
-    sender: 39044
   paperclip_command_path: /usr/local/bin
   walkscore_wsid: '0bb8a5be9206e6c08c6cea73863f5e3f' # id for bozzuto.local
   google_maps_api_key:
@@ -49,10 +45,6 @@ production:
     qburst:
       username: bozzutofc
       password: 6zxXRETm
-  sms:
-    username: mkilmurry
-    password: 120012
-    sender: 39044
   paperclip_command_path: /usr/local/bin
   walkscore_wsid: '0bb8a5be9206e6c08c6cea73863f5e3f' # id for bozzuto.local
   google_maps_api_key:
@@ -87,10 +79,6 @@ test:
     qburst:
       username: bozzutofc
       password: 6zxXRETm
-  sms:
-    username: mkilmurry
-    password: 120012
-    sender: 39044
   paperclip_command_path: /usr/local/bin
   walkscore_wsid: '0bb8a5be9206e6c08c6cea73863f5e3f' # id for bozzuto.local
   google_maps_api_key:

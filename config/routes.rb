@@ -86,12 +86,6 @@ Bozzuto::Application.routes.draw do
         get :thank_you, :on => :member
       end
 
-      resource :sms_message,
-               :path => 'send-to-phone',
-               :only => [:new, :create] do
-        get :thank_you, :on => :member
-      end
-
       resource :contact,
                :controller => :apartment_contact_submissions,
                :only       => [:show, :create] do
@@ -145,12 +139,6 @@ Bozzuto::Application.routes.draw do
       resource :email_listing,
                :controller => :community_listing_emails,
                :only       => :create do
-        get :thank_you, :on => :member
-      end
-
-      resource :sms_message,
-               :path => 'send-to-phone',
-               :only => [:new, :create] do
         get :thank_you, :on => :member
       end
 

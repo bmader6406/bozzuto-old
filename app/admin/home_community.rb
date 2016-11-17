@@ -58,10 +58,8 @@ ActiveAdmin.register HomeCommunity do
                   :name,
                   :home_community_id,
                   :google_send_to_friend_label,
-                  :google_send_to_phone_label,
                   :google_contact_label,
                   :bing_send_to_friend_action_id,
-                  :bing_send_to_phone_action_id,
                   :bing_contact_action_id
                 ]
 
@@ -268,10 +266,8 @@ ActiveAdmin.register HomeCommunity do
           attributes_table_for community.conversion_configuration do
             row :name
             row :google_send_to_friend_label
-            row :google_send_to_phone_label
             row :google_contact_label
             row :bing_send_to_friend_action_id
-            row :bing_send_to_phone_action_id
             row :bing_contact_action_id
           end
         end
@@ -419,10 +415,8 @@ ActiveAdmin.register HomeCommunity do
             inputs for: [:conversion_configuration, f.object.conversion_configuration || ConversionConfiguration.new(home_community: f.object)] do |conversion|
               conversion.input :name
               conversion.input :google_send_to_friend_label
-              conversion.input :google_send_to_phone_label
               conversion.input :google_contact_label
               conversion.input :bing_send_to_friend_action_id
-              conversion.input :bing_send_to_phone_action_id
               conversion.input :bing_contact_action_id
             end
           end

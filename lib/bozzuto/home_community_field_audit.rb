@@ -8,7 +8,6 @@ module Bozzuto
       ['Mobile Phone Number',        :mobile_phone_number],
       ['MediaMind Activity ID for "Contact" Page', :contact_mediamind_id],
       ['MediaMind Activity ID for "Send to Friend" Thank You Page', :send_to_friend_mediamind_id],
-      ['MediaMind Activity ID for "Send to Phone" Thank You Page', :send_to_phone_mediamind_id],
       ['Website URL',                :website_url],
       ['Facebook URL',               :facebook_url],
       ['Twitter Account',            lambda {|c| c.twitter_account.try(:username) }],

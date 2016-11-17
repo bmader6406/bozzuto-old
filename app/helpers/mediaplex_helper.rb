@@ -3,20 +3,6 @@ module MediaplexHelper
     Time.new.to_i.to_s
   end
 
-  def send_to_phone_mediaplex_code(community)
-    mpuid = mpuid_with([timestamp, community.id])
-
-    if community.home_community?
-      <<-END.html_safe
-        <iframe src="http://img-cdn.mediaplex.com/0/16797/universal.html?page_name=bozzuto_homes_send_to_phone&Bozzuto_Homes_Send_To_Phone=1&mpuid=#{mpuid}" HEIGHT=1 WIDTH=1 FRAMEBORDER=0></iframe>
-      END
-    elsif community.apartment_community?
-      <<-END.html_safe
-        <iframe src="http://img-cdn.mediaplex.com/0/16798/universal.html?page_name=apartments_send_to_phone&Apartments_Send_to_Phone=1&mpuid=#{mpuid}" HEIGHT=1 WIDTH=1 FRAMEBORDER=0></iframe>
-      END
-    end
-  end
-
   def send_to_friend_mediaplex_code(community, email)
     mpuid = mpuid_with([timestamp, email, community.id])
 

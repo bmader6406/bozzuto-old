@@ -250,54 +250,6 @@ class CommunityTest < ActiveSupport::TestCase
         end
       end
     end
-
-    context "with SMSAble mixed in" do
-      before do
-        subject.title          = "Pearson Square"
-        subject.street_address = "410 S. Maple Ave"
-        subject.city           = City.new(:name => "Falls Church", :state => State.new(:name => "Virginia"))
-        subject.phone_number   = '888-478-8640'
-        subject.website_url    = "http://bozzuto.com/pearson"
-      end
-
-      it "has a phone message for sms" do
-        subject.phone_message.should == "Pearson Square 410 S. Maple Ave, Falls Church, Virginia 888.478.8640 Call for specials! http://bozzuto.com/pearson"
-      end
-
-      it "has attributes including phone number" do
-        subject.stubs(:phone_message).returns("this is a message")
-
-        params = subject.phone_params('1234567890')
-
-        ["to=1234567890", "username=#{APP_CONFIG[:sms]['username']}",
-          "pword=#{APP_CONFIG[:sms]['password']}", "sender=#{APP_CONFIG[:sms]['sender']}",
-          "message=this+is+a+message"].each do |qs|
-
-          params.include?(qs).should == true
-        end
-      end
-
-      it "sends a message to i2sms via get" do
-        subject.stubs(:phone_params).returns("params")
-        HTTParty.expects(:get).with("#{Bozzuto::SMSAble::URL}?params")
-
-        subject.send_info_message_to('1234567890')
-      end
-
-      it "prefixes a one to phone number if none is present" do
-        HTTParty.stubs(:get)
-        subject.expects(:phone_params).with('15551234567')
-
-        subject.send_info_message_to('5551234567')
-      end
-
-      it "doesn't prefix a one to phone numbers starting with a one" do
-        HTTParty.stubs(:get)
-        subject.expects(:phone_params).with('15550987654')
-
-        subject.send_info_message_to('15550987654')
-      end
-    end
   end
 
   context "The Community class" do

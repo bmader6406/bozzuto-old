@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161007124053) do
+ActiveRecord::Schema.define(version: 20161117152625) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -433,10 +433,8 @@ ActiveRecord::Schema.define(version: 20161007124053) do
   create_table "conversion_configurations", force: :cascade do |t|
     t.string   "name",                          limit: 255
     t.string   "google_send_to_friend_label",   limit: 255
-    t.string   "google_send_to_phone_label",    limit: 255
     t.string   "google_contact_label",          limit: 255
     t.string   "bing_send_to_friend_action_id", limit: 255
-    t.string   "bing_send_to_phone_action_id",  limit: 255
     t.string   "bing_contact_action_id",        limit: 255
     t.integer  "home_community_id",             limit: 4
     t.datetime "created_at"

@@ -49,12 +49,6 @@
         <% end %>
       </li>
 
-      <li>
-        <%= link_to new_apartment_community_sms_message_path(@community), :class => 'btn text-me' do %>
-          <span>Text Me Community Info</span>
-        <% end %>
-      </li>
-
       <% if @community.availability_url.present? %>
         <li>
           <%= link_to @community.availability_url,
