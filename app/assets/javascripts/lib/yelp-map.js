@@ -1,4 +1,5 @@
 (function() {
+  var url = window.location.host;
   var template =
     '<div class="map-location biz" data-jmapping=\'{{json}}\'>' +
       '<div class="info-box clearfix">' +
@@ -108,25 +109,24 @@
   });
 
   var iconImages = {
-    'fitness':            '//google-maps-icons.googlecode.com/files/fitnesscenter.png',
-    'parks':              '//google-maps-icons.googlecode.com/files/park-urban.png',
-    'arts':               '//google-maps-icons.googlecode.com/files/music-classical.png',
-    'beautysvc':          '//google-maps-icons.googlecode.com/files/aestheticscenter.png',
-    'education':          '//google-maps-icons.googlecode.com/files/school.png',
-    'coffee':             '//google-maps-icons.googlecode.com/files/coffee.png',
-    'grocery':            '//google-maps-icons.googlecode.com/files/grocery.png',
-    'hospitals':          '//google-maps-icons.googlecode.com/files/hospital.png',
-    'transport':          '//google-maps-icons.googlecode.com/files/bus.png',
-    'hotels':             '//google-maps-icons.googlecode.com/files/hotel.png',
-    'drycleaninglaundry': '//google-maps-icons.googlecode.com/files/clothes.png',
-    'bars':               '//google-maps-icons.googlecode.com/files/bar.png',
-    'petservices':        '//google-maps-icons.googlecode.com/files/pets.png',
-    'restaurants':        '//google-maps-icons.googlecode.com/files/restaurant.png',
-    'shopping':           '//google-maps-icons.googlecode.com/files/shoppingmall.png'
+    'fitness':            url + '/assets/map-icons/fitness.png',
+    'parks':              url + '/assets/map-icons/parks.png',
+    'arts':               url + '/assets/map-icons/arts.png',
+    'beautysvc':          url + '/assets/map-icons/beauty.png',
+    'education':          url + '/assets/map-icons/education.png',
+    'coffee':             url + '/assets/map-icons/coffee.png',
+    'grocery':            url + '/assets/map-icons/grocery.png',
+    'hospitals':          url + '/assets/map-icons/hospital.png',
+    'transport':          url + '/assets/map-icons/bus.png',
+    'hotels':             url + '/assets/map-icons/hotels.png',
+    'drycleaninglaundry': url + '/assets/map-icons/laundromat.png',
+    'bars':               url + '/assets/map-icons/bars.png',
+    'petservices':        url + '/assets/map-icons/pets.png',
+    'restaurants':        url + '/assets/map-icons/restaurant.png',
+    'shopping':           url + '/assets/map-icons/shopping.png'
   };
 
   function iconImage(key) {
-    console.log(iconImages[key])
-    return iconImages[key] || '//google-maps-icons.googlecode.com/files/home.png';
+    return iconImages[key] || url + '/assets/map-icons/home.png';
   }
 })();
