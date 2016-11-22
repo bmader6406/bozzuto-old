@@ -73,7 +73,7 @@
         $largeMap.css({ height: '420px', width: '850px' });
 
         $largeMap.jMapping({
-          category_icon_options: {iconImages},
+          category_icon_options: iconImages,
           always_show_markers: true,
           default_zoom_level: 13,
           side_bar_selector: '#large-map-side-bar:first'
