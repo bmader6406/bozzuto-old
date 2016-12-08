@@ -20,7 +20,7 @@ $(document).ready(function() {
       dataType: 'jsonp',
       data:     data,
       success: function(response) {
-        var dniNumber  = response.dniNumber
+        var dniNumber  = response.dniNumber || response.dni_number
         var leadSource = response.leadSourceValue
 
         if (leadSource && leadSource != '') {
