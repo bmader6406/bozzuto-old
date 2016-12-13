@@ -1,3 +1,5 @@
+require 'addressable'
+
 module Bozzuto
   module ExternalFeed
     module XpathParsing
@@ -27,7 +29,7 @@ module Bozzuto
       end
 
       def url_at(node, xpath, attribute = nil)
-        url = URI.encode value_at(node, xpath, attribute)
+        url = Addressable::URI.encode value_at(node, xpath, attribute)
         uri = URI(url)
         uri.scheme = 'https' if HTTPS_NOT_SUPPORTED.exclude?(uri.host)
         uri.to_s
