@@ -48,9 +48,10 @@ Bozzuto::Application.configure do
     s3_protocol: 'https'
   }
 
-  config.action_mailer.default_url_options = {
-    :host => 'bozzuto.com'
-  }
+  default_url_options = { host: 'bozzuto.com' }
+
+  config.action_mailer.default_url_options = default_url_options
+  Rails.application.default_url_options    = default_url_options
 
   config.action_mailer.smtp_settings = {
     :address              => 'smtpout.secureserver.net',

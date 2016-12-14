@@ -71,6 +71,8 @@ class PropertyFeedImport < ActiveRecord::Base
       stack_trace: err ? err.backtrace : nil,
       finished_at: Time.now
     )
+
+    NotificationsMailer.feed_error(self).deliver_now
   end
 
   private

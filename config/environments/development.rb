@@ -25,9 +25,10 @@ Bozzuto::Application.configure do
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.default_url_options = {
-    :host => 'bozzuto.local'
-  }
+  default_url_options = { host: 'bozzuto.local' }
+
+  config.action_mailer.default_url_options = default_url_options
+  Rails.application.default_url_options    = default_url_options
 
   config.action_mailer.delivery_method = :smtp
 

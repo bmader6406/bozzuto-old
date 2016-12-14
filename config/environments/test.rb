@@ -28,9 +28,10 @@ Bozzuto::Application.configure do
 
   config.action_controller.asset_host = 'http://www.bozzuto.com'
 
-  config.action_mailer.default_url_options = {
-    :host => 'bozzuto.com'
-  }
+  default_url_options = { host: 'bozzuto.com' }
+
+  config.action_mailer.default_url_options = default_url_options
+  Rails.application.default_url_options    = default_url_options
 
   config.active_support.test_order = :random
 

@@ -117,28 +117,38 @@ class PropertyFeedImportTest < ActiveSupport::TestCase
       end
       
       context "with an exception" do
-        before do
-          begin
-            raise StandardError, 'error words'
-          rescue StandardError => error
-            subject.mark_as_failure!(error)
-          end
-        end
-
         it "sets state" do
+          trigger_error subject
+
           subject.state.should == "failure"
         end
 
         it "sets finished_at" do
+          trigger_error subject
+
           subject.finished_at.should_not == nil
         end
 
         it "sets error" do
+          trigger_error subject
+
           subject.error.should == 'error words'
         end
 
         it "sets the stack trace" do
+          trigger_error subject
+
           subject.stack_trace.should match /property_feed_import_test\.rb:\d+:in/
+        end
+
+        it "triggers a notification email" do
+          mail = mock('NotificationMailer.feed_error')
+
+          NotificationsMailer.expects(:feed_error).with(subject).returns(mail)
+
+          mail.expects(:deliver_now)
+
+          trigger_error subject
         end
       end
 
@@ -155,6 +165,14 @@ class PropertyFeedImportTest < ActiveSupport::TestCase
           subject.stack_trace.should == nil
         end
       end
+    end
+  end
+
+  def trigger_error(subject)
+    begin
+      raise StandardError, 'error words'
+    rescue StandardError => error
+      subject.mark_as_failure!(error)
     end
   end
 end

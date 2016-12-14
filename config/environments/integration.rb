@@ -20,9 +20,10 @@ Bozzuto::Application.configure do
 
   config.force_ssl = true
 
-  config.action_mailer.default_url_options = {
-    :host => 'bozzuto.integration.vigetx.com'
-  }
+  default_url_options = { host: 'bozzuto.integration.vigetx.com' }
+
+  config.action_mailer.default_url_options = default_url_options
+  Rails.application.default_url_options    = default_url_options
 
   # Paperclip Config
   config.paperclip_defaults = {
