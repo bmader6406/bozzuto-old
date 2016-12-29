@@ -1,0 +1,11 @@
+@mixin breakpoint($breakpoint, $max-width: false) {
+  @if $max-width {
+    @media (max-width: $breakpoint - 1) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  }
+}

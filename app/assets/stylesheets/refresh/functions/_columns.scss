@@ -1,0 +1,3 @@
+@function columns($count, $gutter-delta: 1){
+  @return (size(column) * $count) + (size(gutter) * ($count + $gutter-delta))
+}

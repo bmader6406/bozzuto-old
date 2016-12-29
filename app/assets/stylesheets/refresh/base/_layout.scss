@@ -1,0 +1,31 @@
+body {
+  position: relative;
+}
+
+.refresh-container {
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+
+  @include breakpoint(breakpoint(base)) {
+    width: columns(10,1);
+  }
+
+  &.-xtra-narrow {
+    width: columns(7,1);
+  }
+}
+
+@for $i from 1 through 11 {
+  .column-#{$i}-wide {
+    width: columns($i, 0);
+
+    .no-flexbox & {
+      width: auto;
+    }
+  }
+}
+
+.column-12-wide {
+  width: 100%;
+}

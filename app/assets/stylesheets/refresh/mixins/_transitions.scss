@@ -1,0 +1,16 @@
+@mixin default-transition($property: all, $duration: .3s, $timing: ease-in-out) {
+  transition: $property $duration $timing;
+}
+
+@mixin hover-transition($color: color(vivid-blue)) {
+  @include default-transition(color);
+
+  &:hover,
+  &:focus {
+    color: $color;
+
+    svg {
+      fill: $color;
+    }
+  }
+}

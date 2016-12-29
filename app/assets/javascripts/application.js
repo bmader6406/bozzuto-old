@@ -15,6 +15,8 @@
 //= require utils/url-parsing
 //= require lib/floodlight
 //= require bozzuto
+//= require refresh/index.js
+//= require refresh/select_switch.js
 //= require lib/analytics
 //= require lib/plugins/jquery.videoLightbox
 //= require lib/yelp-map

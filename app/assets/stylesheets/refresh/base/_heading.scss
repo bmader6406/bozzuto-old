@@ -1,0 +1,26 @@
+.heading {
+  font-size: font-size(big);
+
+  &.-condensed {
+    font-family: font(light-condensed);
+    letter-spacing: 0.1em;
+  }
+
+  &.-uppercase {
+    text-transform: uppercase;
+  }
+
+  &.-serif {
+    font-family: 'Prata', serif;
+  }
+
+  @each $font-size, $value in $font-sizes {
+    &.-#{$font-size} {
+      font-size: $value;
+    }
+  }
+
+  &.-centered {
+    text-align: center;
+  }
+}

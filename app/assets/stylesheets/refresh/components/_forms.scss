@@ -1,0 +1,92 @@
+.input-refresh {
+  background: #fff;
+  border: 2px solid color(gray-edward);
+  color: color(text-black);
+  font-size: font-size(base);
+  padding: 12px 10px;
+  width: 240px;
+  @include default-transition;
+
+  &:focus {
+    border-color: color(polo-blue);
+  }
+
+  &.-dark {
+    background: color(gray-ash);
+    color: #fff;
+
+    &:focus {
+      background: #fff;
+      color: color(text-black);
+    }
+  }
+
+  &.-thin {
+    padding: 6px 3px;
+  }
+}
+
+.select-switch {
+  min-height: 33px;
+  position: relative;
+  text-align: left;
+
+  &.-full-width {
+    width: 100%;
+  }
+
+  select {
+    appearance: none;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+
+
+.select-switch__input,
+.select-switch__select {
+  height: 100%;
+  min-width: 200px;
+  padding: 12px 45px 8px 12px;
+  width: 100%;
+}
+
+.select-switch__input{
+  box-sizing: border-box;
+  pointer-events: none;
+  white-space: nowrap;
+
+  .-with-icon & {
+    padding-left: 60px;
+  }
+}
+
+.select-switch__input__arrow {
+  margin-top: -8px;
+  position: absolute;
+  right: 10px;
+  top: calc(50% - 5px);
+
+  svg {
+    fill: color(bozzuto-blue);
+  }
+
+  .select-switch__select:focus + .select-switch__input & {
+      fill: currentColor;
+  }
+}
+
+.select-switch__select {
+  appearance: none;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+}
+
+.select-switch__option {
+  background-color: color(bozzuto-blue);
+}

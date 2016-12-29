@@ -1,0 +1,58 @@
+a.button-refresh,
+button.button-refresh {
+  @include default-transition();
+  background-color: color(bozzuto-blue);
+  border: 0;
+  box-sizing: border-box;
+  color: #fff;
+  display: block;
+  font-family: font(light-condensed);
+  font-size: font-size(big);
+  font-weight: bold;
+  height: auto;
+  line-height: 1.5;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: columns(2,1);
+
+  &:hover {
+    background-color: lighten(color(bozzuto-blue), 10%);
+    text-decoration: none;
+  }
+
+  &.-light {
+    background-color: color(polo-blue);
+
+    &:hover {
+      background-color: darken(color(polo-blue), 10%);
+    }
+  }
+
+  &.-small-width {
+    max-width: 172px;
+  }
+}
+
+button.text-button {
+  background-color: transparent;
+  border: 0;
+  font-size: font-size(base);
+
+  @include hover {
+    .text-button__content {
+      color: color(polo-blue);
+      fill: color(polo-blue);
+    }
+  }
+}
+
+.text-button__content {
+  align-items: center;
+  display: flex;
+  color: color(bozzuto-blue);
+  fill: color(bozzuto-blue);
+  justify-content: space-between;
+  transition: all .3s ease-in-out;
+}

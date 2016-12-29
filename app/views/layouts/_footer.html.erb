@@ -1,131 +1,147 @@
-<div id="footer" class="footer">
-  <div class="container">
-    <div class="col">
-      <h4>About Us</h4>
-
-      <ul>
-        <% about_root_pages.each do |page| %>
-          <li><%= link_to page.title, page_path(page.section, page) %></li>
-
-          <% if page.title == 'Values' %>
-            <li><%= link_to 'Careers', careers_path %></li>
+<footer class="site-footer">
+  <div class="footer-container refresh-container -heavy-padding -border-bottom">
+    <div class="column-1-wide footer-column">
+      <section class="footer-section">
+        <div class="site-footer__logo">
+          <%= link_to root_path do %>
+            <%= inline_svg 'logo.svg' %>
           <% end %>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="col">
-      <h4>Our Services</h4>
-
-      <ul>
-        <li>
-          <%= link_to 'Management', '/services/management' %>
-        </li>
-        <li>
-          <%= link_to 'Homebuilding', '/services/homebuilding' %>
-        </li>
-        <li>
-          <%= link_to 'Construction', '/services/construction' %>
-        </li>
-        <li>
-          <%= link_to 'Development', '/services/development' %>
-        </li>
-        <li>
-          <%= link_to 'Acquisitions', '/services/acquisitions' %>
-        </li>
-        <li>
-          <%= link_to 'Land', '/services/land' %>
-        </li>
-      </ul>
-    </div>
-
-    <div class="col">
-      <h4>We Work In</h4>
-
-      <ul>
-        <li><%= link_to 'New York City Metro', '/apartments/communities/new-york-city-metro#.VLllT2TF_xg' %></li>
-        <li><%= link_to 'Boston Metro', '/apartments/communities/boston-metro#.VLllZGTF_xg' %></li>
-        <li><%= link_to 'Washington DC Metro', '/apartments/communities/washington-dc-metro#.VLlla2TF_xg' %></li>
-        <li><%= link_to 'Baltimore / Annapolis Metro', '/apartments/communities/baltimore-annapolis-metro#.VLllbGTF_xg' %></li>
-        <li><%= link_to 'Philadelphia Metro', '/apartments/communities/philadelphia-metro#.VLllbGTF_xg' %></li>
-        <li><%= link_to 'Chicago Metro', '/apartments/communities/chicago-metro#.VLllamTF_xg' %></li>
-        <li><%= link_to 'Atlanta Metro', '/apartments/communities/atlanta-metro#.VLllamTF_xg' %></li>
-        <li><%= link_to 'Charlotte Metro', '/apartments/communities/charlotte-metro#.V_Jzu5MrIUF' %></li>
-        <li><%= link_to 'South Florida', '/apartments/communities/south-florida#.WBya0dxqdBx' %></li>
-      </ul>
-    </div>
-
-    <div class="col">
-      <h4>Get in Touch</h4>
-
-      <p>
-        866.698.7513<br />
-        6406 Ivy Lane<br />
-        Suite 700<br />
-        Greenbelt, MD 20770
-      </p>
-    </div>
-
-    <div class="col wide">
-      <h4>Connect with Us</h4>
-
-      <form class="buzz-form" action="/bozzuto-buzz" method="GET">
-        <label for="email">Enter your email address to stay connected.</label>
-        <p class="fields">
-          <input type="text" name="email" />
-          <button type="submit" class="fl-record-click" data-cat="cwu01" data-prop="<%= community.title if defined?(community) %>">Submit</button>
+        </div>
+        <p>
+          6406 Ivy Lane<br />
+          Suite 700<br />
+          Greenbelt, MD 20770
         </p>
-      </form>
+      </section>
 
-      <ul>
-        <li class="facebook">
-          <%= link_to 'Follow us on Facebook', 'http://www.facebook.com/TheBozzutoGroup', :rel => 'external', 'data-track-social' => 'Facebook,Outbound Click,Footer' %>
-        </li>
-        <li class="twitter">
-          <%= link_to 'Follow us on Twitter', 'http://twitter.com/bozzuto', :rel => 'external', 'data-track-social' => 'Twitter,Outbound Click,Footer' %>
-        </li>
-        <li class="linkedin">
-          <%= link_to 'Follow us on LinkedIn', 'https://www.linkedin.com/company/the-bozzuto-group', :rel => 'external', 'data-track-social' => 'LinkedIn,Outbound Click,Footer' %>
-        </li>
-        <li class="pinterest">
-          <%= link_to 'Follow us on Pinterest', 'http://pinterest.com/thebozzutogroup/', :rel => 'external', 'data-track-social' => 'Pinterest,Outbound Click,Footer' %>
-        </li>
-        <li class="instagram">
-          <%= link_to 'Follow us on Instagram', 'http://instagram.com/thebozzutogroup', :rel => 'external', 'data-track-social' => 'Instagram,Outbound Click,Footer' %>
-        </li>
-        <li class="tom-blog">
-          <%= link_to raw('Read Tom Bozzuto&rsquo;s Blog'), 'http://tom.bozzuto.com', :rel => 'external', 'data-track-social' => 'Blog - Tom Bozzuto,Outbound Click,Footer' %>
-        </li>
-        <li class="bozzuto-beat-blog">
-          <%= link_to 'Read Bozzuto Beat Blog', 'https://blog.bozzuto.com', :rel => 'external', 'data-track-social' => 'Blog - Bozzuto Beat,Outbound Click,Footer' %>
-        </li>
-      </ul>
+      <section class="footer-section">
+        <h4 class="footer-section__heading heading -condensed -uppercase">Get in Touch</h4>
+        <ul class="footer-grid-list">
+          <li class="footer-grid-list__item">
+            <%= link_to 'http://www.facebook.com/TheBozzutoGroup', :rel => 'external', 'data-track-social' => 'Facebook,Outbound Click,Footer' do %>
+              <span class="screenreader-only">Facebook Profile</span>
+              <%= render 'shared/svg/facebook' %>
+            <% end %>
+          </li>
+          <li class="footer-grid-list__item">
+            <%= link_to 'http://twitter.com/bozzuto', :rel => 'external', 'data-track-social' => 'Twitter,Outbound Click,Footer' do %>
+              <span class="screenreader-only">Twitter Feed</span>
+              <%= render 'shared/svg/twitter' %>
+            <% end %>
+          </li>
+          <li class="footer-grid-list__item">
+            <%= link_to'https://www.linkedin.com/company/the-bozzuto-group', :rel => 'external', 'data-track-social' => 'LinkedIn,Outbound Click,Footer' do %>
+              <span class="screenreader-only">LinkedIn Profile</span>
+              <%= render 'shared/svg/linkedin' %>
+            <% end %>
+          </li>
+          <li class="footer-grid-list__item">
+            <%= link_to 'http://pinterest.com/thebozzutogroup/', :rel => 'external', 'data-track-social' => 'Pinterest,Outbound Click,Footer' do %>
+              <span class="screenreader-only">Pinterest Posts</span>
+              <%= render 'shared/svg/pinterest' %>
+            <% end %>
+          </li>
+          <li class="footer-grid-list__item">
+            <%= link_to 'http://instagram.com/thebozzutogroup', :rel => 'external', 'data-track-social' => 'Instagram,Outbound Click,Footer' do %>
+              <span class="screenreader-only">Instagram Feed</span>
+              <%= render 'shared/svg/instagram' %>
+            <% end %>
+          </li>
+          <li class="footer-grid-list__item">
+            <%= link_to 'https://blog.bozzuto.com/', 'data-track-social' => 'Rss,Footer' do %>
+              <span class="screenreader-only">RSS Feed</span>
+              <%= render 'shared/svg/rss' %>
+            <% end %>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <div class="column-1-wide footer-column">
+    <section class="footer-section">
+      <h4 class="footer-section__heading heading -condensed -uppercase">Bozzuto</h4>
+        <ul class="text">
+          <li><%= link_to 'About Us', '/about-us' %></li>
+          <li><%= link_to 'Leadership', '/about-us/leadership' %></li>
+          <li><%= link_to 'Values', '/about-us/values' %></li>
+          <li><%= link_to 'Careers', '/careers' %></li>
+          <li><%= link_to 'News & Awards', '/about-us/news-and-press' %></li>
+          <li class="tom-blog">
+            <%= link_to raw('Tom Bozzuto&rsquo;s Blog'), 'http://tom.bozzuto.com', :rel => 'external', 'data-track-social' => 'Blog - Tom Bozzuto,Outbound Click,Footer' %>
+          </li>
+          <li><%= link_to 'Contact Us', '/about-us/contact' %></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="column-1-wide footer-column">
+      <section class="footer-section">
+        <h4 class="footer-section__heading heading -condensed -uppercase">Our Companies</h4>
+
+        <ul class="text">
+          <li>
+            <%= link_to 'Management', '/services/management' %>
+          </li>
+          <li>
+            <%= link_to 'Homebuilding', '/services/homebuilding' %>
+          </li>
+          <li>
+            <%= link_to 'Construction', '/services/construction' %>
+          </li>
+          <li>
+            <%= link_to 'Development', '/services/development' %>
+          </li>
+          <li>
+            <%= link_to 'Acquisitions', '/services/acquisitions' %>
+          </li>
+          <li>
+            <%= link_to 'Land', '/services/land' %>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="column-2-wide footer-column -no-margin">
+      <section class="footer-section">
+        <h4 class="footer-section__heading heading -condensed -uppercase">Our Metro Locations</h4>
+
+        <ul class="text">
+          <li><%= link_to 'New York City Metro', '/apartments/communities/new-york-city-metro#.VLllT2TF_xg' %></li>
+          <li><%= link_to 'Boston', '/apartments/communities/boston-metro#.VLllZGTF_xg' %></li>
+          <li><%= link_to 'Washington DC', '/apartments/communities/washington-dc-metro#.VLlla2TF_xg' %></li>
+          <li><%= link_to 'Baltimore / Annapolis', '/apartments/communities/baltimore-annapolis-metro#.VLllbGTF_xg' %></li>
+          <li><%= link_to 'Philadelphia', '/apartments/communities/philadelphia-metro#.VLllbGTF_xg' %></li>
+          <li><%= link_to 'Chicago', '/apartments/communities/chicago-metro#.VLllamTF_xg' %></li>
+          <li><%= link_to 'Atlanta', '/apartments/communities/atlanta-metro#.VLllamTF_xg' %></li>
+          <li><%= link_to 'Charlotte', '/apartments/communities/charlotte-metro#.V37fyZMrLfA' %></li>
+        </ul>
+      </section>
     </div>
   </div>
-</div>
+  <div class="column-12-wide">
+    <div class="footer-container refresh-container -light-padding text -condensed">
+      <p class="column-2-wide">
+        &copy; <%= Time.now.year %> Bozzuto
+      </p>
 
-<div id="copyright">
-  <div class="container">
-    <p>
-      &copy; <%= Time.now.year %> Bozzuto
-    </p>
-
-    <p class="links">
-      <%= link_to 'Privacy Policy', '/pages/privacy-policy' %>
-      |
-      <%= link_to 'Website Disclaimer', '/pages/website-disclaimer' %>
-      |
-      <%= link_to 'Employee Login', 'http://www.bozzutointranet.com/Pages/Home.aspx' %>
-
-      <% if mobile_device? %>
+      <p class="column-4-wide" style="text-align: center;">
+        <%= link_to 'Privacy Policy', '/pages/privacy-policy' %>
         |
-        <%= link_to 'Mobile Site', root_path(:full_site => 0) %>
-      <% end %>
-    </p>
+        <%= link_to 'Website Disclaimer', '/pages/website-disclaimer' %>
+        |
+        <%= link_to 'Employee Login', 'http://www.bozzutointranet.com/Pages/Home.aspx' %>
 
-    <%= link_to 'Equal Housing Opportunity', '/about-us/housing-for-all', :id => 'eho' %>
+        <% if mobile_device? %>
+          |
+          <%= link_to 'Mobile Site', root_path(:full_site => 0) %>
+        <% end %>
+      </p>
+      <div>
+        <%= image_tag('footer_logos.png', width: 30, height: 15) %>
+        <%= link_to 'Equal Housing Opportunity', '/about-us/housing-for-all', :id => 'eho', :class => 'column-2-wide', :style => 'text-align: right' %>
+      </div>
+    </div>
   </div>
-</div>
+</footer>
 
 <script type="text/javascript">
   /*<![CDATA[*/

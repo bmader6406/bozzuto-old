@@ -2,78 +2,57 @@
 <%= clicktale_top unless viget_ip? %>
 <%= yield(:mediaplex_code) %>
 
-<div id="header" class="header">
-  <div class="container">
-    <div id="logo">
-      <%= link_to root_path do %>
-        <%= inline_svg 'logo.svg' %>
-      <% end %>
-    </div>
-
-    <div>
-      <div class="nav">
-        <ul id="main-nav" class="<%= request.path.split('/')[1] %>">
-          <li class="apartments-nav">
-            <%= link_to 'Apartments', '/apartments' %>
-          </li>
-          <li class="homes-nav">
-            <%= link_to 'New Homes', '/new-homes' %>
-          </li>
-          <li class="about-nav">
-            <%= link_to 'About Us', '/about-us' %>
-            <div class="dropdown">
-              <ul class="col">
-                <li class="first"><a href="/about-us/values">Values</a></li>
-                <li><a href="/careers">Careers</a></li>
-                <li><a href="/about-us/leadership">Leadership</a></li>
-              </ul>
-              <ul class="col">
-                <li class="first"><a href="/about-us/news-and-press">News &amp; Press</a></li>
-                <li><a href="/about-us/testimonials">Testimonials</a></li>
-                <li><a href="/about-us/news-and-press/awards">Awards</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="services-nav">
-            <%= link_to 'Our Services', '/services' %>
-            <div class="dropdown">
-              <ul class="col">
-                <li class="first"><%= link_to 'Management', '/services/management' %></li>
-                <li><%= link_to 'Homebuilding', '/services/homebuilding' %></li>
-                <li><%= link_to 'Construction', '/services/construction' %></li>
-              </ul>
-              <ul class="col">
-                <li class="first"><%= link_to 'Development', '/services/development' %></li>
-                <li><%= link_to 'Acquisitions', '/services/acquisitions' %></li>
-                <li><%= link_to 'Land', '/services/land' %></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      <div class="section">
-        <form action="/search" class="search-form">
-          <p class="fields">
-            <input type="text" name="q" value="<%= params[:q] %>"/>
-            <button type="submit">Submit</button>
-          </p>
-        </form>
-
-        <div class="aside">
-          <ul>
-            <li>
-              <%= link_to 'Careers', '/careers' %>
-            </li>
-            <li>
-              <%= link_to 'Contact Us', contact_path %>
-            </li>
-          </ul>
-        </div>
+<header class="site-header">
+  <% if request.path == root_path %>
+    <div class="site-header__toolbar">
+      <div class="refresh-container relative">
+        <nav class="site-header__toolbar-nav">
+          <%= link_to "Lease an Apartment", community_search_path %>
+          <%= link_to "Buy a Home", home_neighborhoods_path %>
+        </nav>
       </div>
     </div>
-
-    <%= yield :special_nav %>
-
+  <% end %>
+  <div class="refresh-container">
+    <nav class="site-header__main-nav">
+      <div class="site-header__logo">
+        <%= link_to root_path do %>
+          <%= inline_svg 'logo.svg' %>
+        <% end %>
+      </div>
+      <ul class="site-header__main-nav__list js-mainNav">
+        <li class="site-header__main-nav__item">
+          <%= link_to 'Apartments', '/apartments' %>
+        </li>
+        <li class="site-header__main-nav__item">
+          <%= link_to 'New Homes', '/new-homes' %>
+        </li>
+        <li class="site-header__main-nav__item">
+          <%= link_to 'Our Companies', '/services' %>
+        </li>
+        <li class="site-header__main-nav__item">
+          <%= link_to 'About', '/about-us' %>
+        </li>
+        <li class="site-header__main-nav__item">
+          <%= link_to 'Careers', '/careers' %>
+        </li>
+        <li class="site-header__main-nav__item">
+          <%= link_to 'Contact', contact_path %>
+        </li>
+        <li class="site-header__main-nav__search js-headerSearchFormToggle">
+          <button class="interactive-icon-button site-header__main-nav__search__icon js-headerSearchFormButton">
+            <span class="screenreader-only">Search</span>
+            <%= render 'shared/svg/search' %>
+          </button>
+          <button aria-hidden="true" class="interactive-icon-button site-header__main-nav__search__icon -hidden js-headerSearchFormButton">
+            <span class="screenreader-only">Close Search</span>
+            <%= render 'shared/svg/close' %>
+          </button>
+          <form action="/search" class="site-header__main-nav__search__form js-headerSearchForm">
+            <input class="input-refresh -thin" type="text" name="q" value="<%= params[:q] %>"/>
+          </form>
+        </li>
+      </ul>
+    </nav>
   </div>
-</div>
+</header>

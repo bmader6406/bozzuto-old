@@ -1,0 +1,26 @@
+.text {
+  font-size: font-size(base);
+
+  &.-condensed {
+    font-family: font(light-condensed);
+    letter-spacing: 0.1em;
+  }
+
+  &.-serif {
+    font-family: 'Prata', serif;
+  }
+
+  &.-uppercase {
+    text-transform: uppercase;
+  }
+
+  &.-centered {
+    text-align: center;
+  }
+}
+
+a.text,
+.text a {
+  color: #fff;
+  text-transform: uppercase;
+}
