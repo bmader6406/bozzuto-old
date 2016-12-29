@@ -3,16 +3,6 @@
 <%= yield(:mediaplex_code) %>
 
 <header class="site-header">
-  <% if request.path == root_path %>
-    <div class="site-header__toolbar">
-      <div class="refresh-container relative">
-        <nav class="site-header__toolbar-nav">
-          <%= link_to "Lease an Apartment", community_search_path %>
-          <%= link_to "Buy a Home", home_neighborhoods_path %>
-        </nav>
-      </div>
-    </div>
-  <% end %>
   <div class="refresh-container">
     <nav class="site-header__main-nav">
       <div class="site-header__logo">

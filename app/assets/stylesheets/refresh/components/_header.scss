@@ -9,7 +9,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
 
   @include breakpoint( breakpoint(med) ) {
     flex-direction: row;
@@ -28,6 +28,7 @@
 
 .site-header__main-nav__list {
   display: flex;
+  margin-left: 40px;
 }
 
 .site-header__main-nav__item {
@@ -36,7 +37,7 @@
   text-transform: uppercase;
 
   @include breakpoint( breakpoint(med) ) {
-    font-size: font-size(sub-base);
+    font-size: font-size(sub-base) + 1;
   }
 
   &:last-of-type {
