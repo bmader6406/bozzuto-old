@@ -28,11 +28,14 @@
 
 .site-header__main-nav__list {
   display: flex;
-  margin-left: 40px;
+
+  @include breakpoint( breakpoint(med) ) {
+    margin-left: 40px;
+  }
 }
 
 .site-header__main-nav__item {
-  font-size: font-size(small);
+  font-size: font-size(small) + 1;
   margin-right: 36px;
   text-transform: uppercase;
 
