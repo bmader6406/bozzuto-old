@@ -15,10 +15,10 @@
 
       <% if @community.overview_text.present? %>
         <div class="intro" id="intro-partial">
-          <%= truncate(@community.overview_text, :length => 350, :omission => "&hellip;", escape: false) %>
+          <%= truncate(@community.overview_text, :length => 700, :omission => "&hellip;", escape: false) %>
         </div>
 
-        <% if @community.overview_text.length > 350 %>
+        <% if @community.overview_text.length > 700 %>
           <div class="intro" id="intro-full">
             <% if @community.overview_text.present? -%>
               <%= @community.overview_text.try(:html_safe) %>
