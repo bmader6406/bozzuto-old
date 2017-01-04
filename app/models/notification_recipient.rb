@@ -1,7 +1,7 @@
 class NotificationRecipient < ActiveRecord::Base
   belongs_to :admin_user
 
-  validates :admin_user_id, :email, uniqueness: true
+  validates :admin_user_id, :email, uniqueness: true, allow_nil: true
 
   validate :email_address_provided
 
