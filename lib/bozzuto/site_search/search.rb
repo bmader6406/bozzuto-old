@@ -13,7 +13,15 @@ module Bozzuto
       end
 
       def search
-        @search ||= ApartmentCommunity.search(title_cont: query)
+        @search = ApartmentCommunity.includes(:city).search(
+          title_cont: query,
+          city_name_cont: query,
+          zip_code_cont: query,
+          listing_text_cont: query,
+          neighborhood_listing_description_cont: query,
+          overview_text: query,
+          m: 'or'
+        )
       end
 
       def per_page
