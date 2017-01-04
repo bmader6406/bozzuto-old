@@ -16,6 +16,18 @@ class NotificationRecipientTest < ActiveSupport::TestCase
       end
     end
 
+    describe ".emails" do
+      before do
+        NotificationRecipient.make(email: 'other@email.com')
+      end
+
+      it "returns the contact emails for all NotificationRecipient records" do
+        email = subject.contact_email
+
+        NotificationRecipient.emails.should match_array [email, 'other@email.com']
+      end
+    end
+
     describe "#contact_email" do
       context "when the recipient is an admin user" do
         it "returns the email address for the admin user" do

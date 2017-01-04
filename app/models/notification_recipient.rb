@@ -5,6 +5,10 @@ class NotificationRecipient < ActiveRecord::Base
 
   validate :email_address_provided
 
+  def self.emails
+    all.map(&:contact_email)
+  end
+
   def contact_email
     admin_user.try(:email) || email
   end
