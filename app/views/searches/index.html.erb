@@ -22,7 +22,7 @@
           <div class="header">
             <p>
               Showing <%= search.first_result_num %>&ndash;<%= search.last_result_num %>
-              of <%= number_with_delimiter(search.total_results) %>
+              of <%= number_with_delimiter(search.total_count) %>
               results
             </p>
           </div>
@@ -31,23 +31,15 @@
             <ul>
               <% results.each do |result| -%>
                 <li>
-                  <h4><%= link_to raw(result.title), result.url %></h4>
+                  <h4><%= link_to result.title, result %></h4>
 
-                  <p><%= raw(result.abstract) %></p>
+                  <p><%== result.listing_text %></p>
                 </li>
               <% end -%>
             </ul>
 
             <div class="boss-pagination">
-              <p>
-                <% (1..search.total_pages).to_a.each do |page| %>
-                  <% if page == search.page %>
-                    <span class="current"><%= page %></span>
-                  <% else %>
-                    <%= link_to page, search_path(:q => query, :page => page) %>
-                  <% end %>
-                <% end %>
-              </p>
+              <p><%= paginate search.results %></p>
             </div>
           </div>
         <% else -%>

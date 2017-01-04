@@ -4,55 +4,36 @@ module Bozzuto
       attr_reader :query, :params
 
       def initialize(query, params = {})
-        params.delete(:sites)
-
-        @query = query
-        @params = params.reverse_merge!(
-          :q        => query,
-          :per_page => 20,
-          :sites    => 'bozzuto.com'
-        )
-      end
-
-      def search_params
-        @search_params ||= SearchParams.new(params)
-      end
-
-      def yboss
-        @yboss ||= YBoss.web(search_params.to_yboss_params)
+        @query  = query
+        @params = params
       end
 
       def results
-        yboss.items
+        @results ||= search.result.order(:title).per_page_kaminari(page).per(per_page)
       end
 
-      def start
-        yboss.start.to_i
+      def search
+        @search ||= ApartmentCommunity.search(title_cont: query)
       end
 
-      def count
-        yboss.count.to_i
+      def per_page
+        (params[:per_page] || 20).to_i
       end
-      alias_method :per_page, :count
 
       def page
-        (start / per_page) + 1
+        (params[:page] || 1).to_i
       end
 
-      def total_pages
-        [(total_results.to_f / per_page).ceil, 50].min
-      end
-
-      def total_results
-        yboss.totalresults.to_i
+      def total_count
+        results.total_count
       end
 
       def first_result_num
-        start + 1
+        (page * per_page) - per_page + 1
       end
 
       def last_result_num
-        start + per_page
+        [page * per_page, total_count].min
       end
     end
   end
