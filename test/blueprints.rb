@@ -377,6 +377,14 @@ NewsPost.blueprint(:unpublished) do
   published_at { nil }
 end
 
+NotificationRecipient.blueprint do
+  email { Faker::Internet.email }
+end
+
+NotificationRecipient.blueprint(:admin_user) do
+  admin_user
+end
+
 OfficeHour.blueprint do
   property         { ApartmentCommunity.make }
   day              { 1 }

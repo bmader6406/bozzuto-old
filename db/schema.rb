@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117152625) do
+ActiveRecord::Schema.define(version: 20170104205838) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -920,6 +920,16 @@ ActiveRecord::Schema.define(version: 20161117152625) do
   add_index "news_posts_sections", ["news_post_id", "section_id"], name: "index_news_posts_sections_on_news_post_id_and_section_id", using: :btree
   add_index "news_posts_sections", ["section_id", "news_post_id"], name: "index_news_posts_sections_on_section_id_and_news_post_id", using: :btree
 
+  create_table "notification_recipients", force: :cascade do |t|
+    t.integer  "admin_user_id", limit: 4
+    t.string   "email",         limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "notification_recipients", ["admin_user_id"], name: "index_notification_recipients_on_admin_user_id", unique: true, using: :btree
+  add_index "notification_recipients", ["email"], name: "index_notification_recipients_on_email", unique: true, using: :btree
+
   create_table "office_hours", force: :cascade do |t|
     t.integer  "property_id",      limit: 4,                   null: false
     t.integer  "day",              limit: 4,                   null: false
@@ -1559,4 +1569,5 @@ ActiveRecord::Schema.define(version: 20161117152625) do
   add_index "zip_codes", ["zip"], name: "index_zip_codes_on_zip", unique: true, using: :btree
 
   add_foreign_key "chronolog_changesets", "admin_users", on_delete: :nullify
+  add_foreign_key "notification_recipients", "admin_users", on_delete: :cascade
 end
