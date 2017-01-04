@@ -13,7 +13,7 @@
 
           <% if i == 0 %>
             <div class="excerpt">
-              <%= truncate(post.body, length: 200, escape: false) %>
+              <%= truncate_html(post.body, length: 200) %>
             </div>
           <% end %>
         </div>

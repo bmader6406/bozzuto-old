@@ -22,7 +22,7 @@
 
       <% if @community.overview_text.present? %>
         <div class="intro" id="intro-partial">
-          <%= truncate(@community.overview_text, length: 350, omission: "&hellip;", escape: false) %>
+          <%= truncate_html(@community.overview_text, length: 350, omission: "&hellip;") %>
         </div>
 
         <% if @community.overview_text.length > 350 %>
