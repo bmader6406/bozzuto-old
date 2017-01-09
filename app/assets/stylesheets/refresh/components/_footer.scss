@@ -6,6 +6,11 @@
   color: #fff;
   position: relative;
   width: 100%;
+  box-sizing: border-box;
+
+  * {
+    box-sizing: border-box;
+  }
 
   p,
   a{
@@ -30,7 +35,7 @@
   padding: 45px 0;
 
   &.-light-padding {
-    padding: 35px 0;
+    padding: 35px;
   }
 
   &.-heavy-padding {
@@ -85,7 +90,6 @@
 }
 
 .footer-section {
-  margin-bottom: 50px;
 }
 
 .footer-grid-list {
