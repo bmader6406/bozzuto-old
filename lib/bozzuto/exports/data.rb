@@ -10,7 +10,7 @@ module Bozzuto
       end
 
       def communities
-        ApartmentCommunity.included_in_export.map do |community|
+        Bozzuto::ExternalFeed::CoreIdManager.canonical_communities(ApartmentCommunity.included_in_export).map do |community|
           Community.new(community)
         end
       end

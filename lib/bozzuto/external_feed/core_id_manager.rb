@@ -11,6 +11,12 @@ module Bozzuto
         new.clear_core_ids!
       end
 
+      def self.canonical_communities(scope = ApartmentCommunity.all)
+        scope.group_by(&:core_id).map do |(core_id, communities)|
+          new.canonical_community_in(communities)
+        end
+      end
+
       def initialize(community = nil)
         @community = community
       end
@@ -29,6 +35,10 @@ module Bozzuto
         core_id = collection(duplicate_communities).core_id_for(community).presence || community.id
 
         community.update_attributes(:core_id => core_id)
+      end
+
+      def canonical_community_in(communities)
+        communities.map { |c| ScoredCommunity.new(c) }.sort_by(&:canonical_score).last
       end
 
       private

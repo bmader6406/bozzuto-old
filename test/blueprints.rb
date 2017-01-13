@@ -24,6 +24,7 @@ Sham.define do
   neighborhood_name { |i| "Neighborhood ##{i}" }
   latitude          { |i| -90.0 + i/10.0 }
   longitude         { |i| -180.0 + i/10.0 }
+  core_id           { |i| i }
 end
 
 Sham.bedrooms(:unique => false)  { rand(5) + 1 }
@@ -42,6 +43,10 @@ ApartmentCommunity.blueprint do
   included_in_export { true }
   phone_number       { Faker::PhoneNumber.phone_number }
   city
+end
+
+ApartmentCommunity.blueprint(:with_core_id) do
+  core_id { Sham.core_id }
 end
 
 ApartmentCommunity.blueprint(:unpublished) do

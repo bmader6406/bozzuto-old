@@ -111,14 +111,14 @@ module Bozzuto::Exports
           @community.reload
           @community.save
 
-          @nearby_community = ApartmentCommunity.make(
+          @nearby_community = ApartmentCommunity.make(:with_core_id,
             :title     => 'I R Close',
             :latitude  => -30.0,
             :longitude => -100.0,
             :city      => city
           )
 
-          @excluded = ApartmentCommunity.make(:excluded_from_export, :city => city)
+          @excluded = ApartmentCommunity.make(:excluded_from_export, :with_core_id, :city => city)
 
           PropertyNeighborhoodPage.make({
             :property => @community,
@@ -464,7 +464,7 @@ module Bozzuto::Exports
         end
 
         it "handles multiple communities" do
-          2.times { ApartmentCommunity.make }
+          2.times { ApartmentCommunity.make(:with_core_id) }
           2.times { HomeCommunity.make }
 
           Bozzuto::Exports::Data.new.communities.size.should == 4

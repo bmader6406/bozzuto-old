@@ -118,14 +118,14 @@ module Bozzuto::Exports::Formats
           @community.reload
           @community.save
 
-          @nearby_community = ApartmentCommunity.make(
+          @nearby_community = ApartmentCommunity.make(:with_core_id,
             :title     => 'I R Close',
             :latitude  => -30.0,
             :longitude => -100.0,
             :city      => city
           )
 
-          @excluded = ApartmentCommunity.make(:excluded_from_export, :city => city)
+          @excluded = ApartmentCommunity.make(:excluded_from_export, :with_core_id, :city => city)
 
           PropertyNeighborhoodPage.make({
             :property => @community,
@@ -426,7 +426,7 @@ module Bozzuto::Exports::Formats
         end
 
         it "renders multiple communities" do
-          2.times { |n| ApartmentCommunity.make }
+          2.times { |n| ApartmentCommunity.make(:with_core_id) }
 
           xml = Bozzuto::Exports::Formats::Legacy.new.to_xml
 

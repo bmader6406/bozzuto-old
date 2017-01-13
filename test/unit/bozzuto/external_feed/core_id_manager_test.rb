@@ -74,6 +74,23 @@ class Bozzuto::ExternalFeed::CoreIdManagerTest < ActiveSupport::TestCase
       end
     end
 
+    describe ".canonical_communities" do
+      before do
+        @a1 = ApartmentCommunity.make(core_id: 100, published: false, featured: false, included_in_export: false)
+        @a2 = ApartmentCommunity.make(core_id: 100, published: true, featured: true, included_in_export: true)
+        @a3 = ApartmentCommunity.make(core_id: 100, published: true, featured: false, included_in_export: false)
+        @b1 = ApartmentCommunity.make(core_id: 200, published: true, featured: true, included_in_export: true)
+        @b2 = ApartmentCommunity.make(core_id: 200, published: true, featured: false, included_in_export: false)
+      end
+
+      subject { Bozzuto::ExternalFeed::CoreIdManager }
+
+      it "only returns the canonical community for each core ID" do
+        subject.canonical_communities.should == [@a2, @b1]
+        subject.canonical_communities([@b1, @b2]).should == [@b1]
+      end
+    end
+
     describe "#assign_id" do
       context "if the community already has a core id" do
         before do
