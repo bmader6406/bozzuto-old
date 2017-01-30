@@ -1,4 +1,5 @@
 <head>
+  <%= yield(:top_of_head) %>
   <title>
     <% if yield(:meta_title).present? %>
       <%= yield(:meta_title) %> -
