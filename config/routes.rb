@@ -13,6 +13,9 @@ Bozzuto::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   root :to => 'home_pages#index'
+  
+  # AB Testing
+  get '/home' => 'ab_testing#index'
 
   # Searching
   get '/search' => 'searches#index', :as => :search

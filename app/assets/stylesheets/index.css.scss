@@ -1131,6 +1131,9 @@ div.wysiwyg .wysiwyg-12pt-font {
   .landing #masthead {
     border-top: 1px solid #6b6b71;
   }
+  .home #masthead.ab-testing {
+    border-top: 0;
+  }
   .home #header #main-nav .dropdown,
   .landing #header #main-nav .dropdown {
     display: none;
@@ -1745,6 +1748,11 @@ div.wysiwyg .wysiwyg-12pt-font {
     .home #welcome {
       width: 500px;
     }
+    .home #welcome.ab-testing {
+      margin-bottom: 40px;
+      text-align: center;
+      width: 100%;
+    }
     .home h1 {
       color: #565c64;
       font-size: 35px;
@@ -1876,6 +1884,9 @@ div.wysiwyg .wysiwyg-12pt-font {
     }
     .home #main-content {
       background: transparent image-url('structure/bg-home-main-content.gif') repeat-x top left;
+    }
+    .home #main-content.ab-testing {
+      background: none;
     }
 
     /* @group --social */
