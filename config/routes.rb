@@ -15,7 +15,7 @@ Bozzuto::Application.routes.draw do
   root :to => 'home_pages#index'
   
   # AB Testing
-  get '/home' => 'ab_testing#index'
+  get '/home', to: 'ab_testing#homepage', as: :homepage_variant
 
   # Searching
   get '/search' => 'searches#index', :as => :search

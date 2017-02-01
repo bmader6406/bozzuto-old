@@ -1,18 +1,21 @@
 class AbTestingController < ApplicationController
-  has_mobile_actions :index
+  before_action :redirect_to_homepage, if: :mobile?
 
-  layout :detect_mobile_layout
-
-  def index
-    @home_page        = HomePage.first
+  def homepage
+    @home_page = HomePage.first
   end
 
   private
 
-  def detect_mobile_layout
-    mobile? ? 'application' : 'homepage'
+  def home?
+    params[:action] == 'homepage'
   end
-  
+  helper_method :home?
+
+  def redirect_to_homepage
+    redirect_to root_path
+  end
+
   def metros
     @metros ||= Metro.positioned.select(&:has_communities?)
   end
