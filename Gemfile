@@ -50,9 +50,10 @@ gem 'yelp'
 gem 'truncate_html'
 
 group :development, :test do
-  gem 'pry'
+  gem 'pry-rails'
   gem 'spring'
   gem 'viget-deployment', github: 'vigetlabs/viget-deployment', branch: '1.2.1', require: false
+  gem "awesome_print"
 end
 
 group :test do
