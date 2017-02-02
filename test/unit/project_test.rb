@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class ProjectTest < ActiveSupport::TestCase
+  extend AlgoliaSearchable
+
   context 'Project' do
     subject { Project.make }
+
+    it_should_behave_like "being searchable with algolia", Project, :title
 
     should have_many(:data_points)
     should have_many(:updates)

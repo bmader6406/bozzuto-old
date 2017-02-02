@@ -185,11 +185,20 @@ Award.blueprint do
   body         { Faker::Lorem.paragraphs * ' ' }
   published    { true }
   published_at { Time.now }
+  home_page_image { Rack::Test::UploadedFile.new(Rails.root.join("test/files/fraiser.jpg"), 'image/jpg') }
 end
 
 Award.blueprint(:unpublished) do
   published    { false }
   published_at { nil }
+end
+
+BozzutoBlogPost.blueprint do
+  title        { Sham.unique_name }
+  header_url   { 'http://wayneenterprises.com' }
+  url          { 'http://wayneenterprises.com/post' }
+  published_at { 2.days.ago }
+  image        { Rack::Test::UploadedFile.new(Rails.root.join("test/files/fraiser.jpg"), 'image/jpg') }
 end
 
 Buzz.blueprint do
@@ -371,10 +380,11 @@ NeighborhoodMembership.blueprint do
 end
 
 NewsPost.blueprint do
-  title        { Faker::Lorem.sentence }
-  body         { Faker::Lorem.paragraphs(2) * ' ' }
-  published    { true }
-  published_at { Time.now - 1.day }
+  title           { Faker::Lorem.sentence }
+  body            { Faker::Lorem.paragraphs(2) * ' ' }
+  published       { true }
+  published_at    { Time.now - 1.day }
+  home_page_image { Rack::Test::UploadedFile.new(Rails.root.join("test/files/fraiser.jpg"), 'image/jpg') }
 end
 
 NewsPost.blueprint(:unpublished) do
@@ -425,6 +435,7 @@ PressRelease.blueprint do
   body         { Faker::Lorem.paragraphs(2) * ' ' }
   published    { true }
   published_at { Time.now - 1.day }
+  home_page_image { Rack::Test::UploadedFile.new(Rails.root.join("test/files/fraiser.jpg"), 'image/jpg') }
 end
 
 Project.blueprint do
@@ -549,6 +560,12 @@ end
 PropertyFeedImport.blueprint do
   type "psi"
   file { File.open("test/files/psi.xml") }
+end
+
+Publication.blueprint do
+  name      { Sham.unique_name }
+  published { true }
+  image     { Rack::Test::UploadedFile.new(Rails.root.join("test/files/fraiser.jpg"), 'image/jpg') }
 end
 
 RecurringEmail.blueprint do

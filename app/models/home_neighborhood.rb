@@ -4,6 +4,7 @@ class HomeNeighborhood < ActiveRecord::Base
   extend  Bozzuto::Neighborhoods::ListingImage
   extend  Bozzuto::Neighborhoods::BannerImage
   extend FriendlyId
+  include Bozzuto::AlgoliaSiteSearch
 
   acts_as_list
 
@@ -31,6 +32,11 @@ class HomeNeighborhood < ActiveRecord::Base
             presence: true
 
   accepts_nested_attributes_for :home_neighborhood_memberships, allow_destroy: true
+
+
+  algolia_site_search do
+    attribute :name, :detail_description
+  end
 
 
   scope :positioned,       -> { order("home_neighborhoods.position ASC") }

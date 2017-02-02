@@ -25,9 +25,28 @@ require Rails.root.join('test', 'blueprints')
 
 Dir[Rails.root.join("test/support/**/*.rb")].each { |f| require f }
 
+DatabaseCleaner.clean_with :deletion
+DatabaseCleaner.strategy = :truncation
+
 VCR.configure do |c|
   c.cassette_library_dir = 'test/vcr_cassettes'
   c.hook_into :webmock
+  c.default_cassette_options = { :allow_playback_repeats =>  true }
+  # c.debug_logger = $stderr
+
+  c.register_request_matcher :algolia_path_matcher do |request_1, request_2|
+    path1 = URI(request_1.uri).path.match(/\/\d+\/indexes\/bozzutosite_test\/(.+)\z/)[1].gsub(/\/?\d+\z/, '')
+    path2 = URI(request_2.uri).path.match(/\/\d+\/indexes\/bozzutosite_test\/(.+)\z/)[1].gsub(/\/?\d+\z/, '')
+
+    path1 == path2 ||
+      (AlgoliaSearch::Utilities.get_model_classes.map(&:name).include?(path1) &&
+      AlgoliaSearch::Utilities.get_model_classes.map(&:name).include?(path2))
+  end
+
+  c.register_request_matcher :algolia_host_matcher do |request_1, request_2|
+    URI(request_1.uri).host =~ /algolia(net\.com|\.net)\z/ && 
+      URI(request_2.uri).host =~ /algolia(net\.com|\.net)\z/
+  end
 end
 
 RSpec::Matchers.configuration.syntax = %i(should expect)
@@ -45,6 +64,12 @@ class ActiveSupport::TestCase
   include RSpec::Matchers
   include Bozzuto::Test::Extensions
   include Bozzuto::Test::ModelExtensions
+
+  class << self
+    def uses_transaction?(method)
+      method.to_s.include?("without transactions")
+    end
+  end
 end
 
 class ActionController::TestCase

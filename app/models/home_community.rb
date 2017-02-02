@@ -1,6 +1,7 @@
 class HomeCommunity < ActiveRecord::Base
   include Bozzuto::Model::Property
   include Bozzuto::Model::Community
+  include Bozzuto::AlgoliaSiteSearch
 
   cattr_reader :per_page
   @@per_page = 6
@@ -25,6 +26,14 @@ class HomeCommunity < ActiveRecord::Base
     styles:          { display: '151x54#' },
     default_style:   :display,
     convert_options: { all: '-quality 80 -strip' }
+
+
+  algolia_site_search if: :published do
+    attribute :title, :zip_code, :listing_text, :neighborhood_description, :overview_text
+    has_one_attribute :city, :name
+    has_many_attribute :property_features, :name
+  end
+
 
   validates_attachment_content_type :listing_promo, content_type: /\Aimage\/.*\Z/
 

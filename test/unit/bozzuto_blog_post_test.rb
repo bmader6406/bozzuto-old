@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class BozzutoBlogPostTest < ActiveSupport::TestCase
+  extend AlgoliaSearchable
+
   context "A Tom's Blog Post" do
     subject { BozzutoBlogPost.new }
+
+    it_should_behave_like "being searchable with algolia", BozzutoBlogPost, :title
 
     should have_attached_file(:image)
 

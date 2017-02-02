@@ -7,6 +7,7 @@ class Neighborhood < ActiveRecord::Base
   extend  Bozzuto::Neighborhoods::ListingImage
   extend  Bozzuto::Neighborhoods::BannerImage
   extend  Bozzuto::Neighborhoods::HasRelatedPlaces
+  include Bozzuto::AlgoliaSiteSearch
 
   acts_as_list :scope => :area
 
@@ -24,6 +25,13 @@ class Neighborhood < ActiveRecord::Base
 
   has_many :apartment_communities, -> { order('neighborhood_memberships.tier ASC') },
            :through => :neighborhood_memberships
+
+
+  algolia_site_search do
+    attribute :name, :detail_description
+    has_one_attribute :state, :name
+  end
+
 
   accepts_nested_attributes_for :neighborhood_memberships, allow_destroy: true
 

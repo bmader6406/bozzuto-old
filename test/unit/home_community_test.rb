@@ -1,10 +1,14 @@
 require 'test_helper'
 
 class HomeCommunityTest < ActiveSupport::TestCase
+  extend AlgoliaSearchable
+
   context 'HomeCommunity' do
     subject { HomeCommunity.make }
 
     should_have_neighborhood_listing_image(:neighborhood_listing_image, required: false)
+
+    it_should_behave_like "being searchable with algolia", HomeCommunity, :title
 
     should have_many(:homes)
     should have_many(:featured_homes)

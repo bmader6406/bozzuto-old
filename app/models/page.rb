@@ -2,6 +2,7 @@ class Page < ActiveRecord::Base
   include Montage
   include Bozzuto::Publishable
   extend FriendlyId
+  include Bozzuto::AlgoliaSiteSearch
   
   acts_as_nested_set :scope => :section, :dependent => :destroy
 
@@ -15,6 +16,12 @@ class Page < ActiveRecord::Base
   has_one :masthead_slideshow
   has_one :body_slideshow
   has_one :carousel, :as => :content
+
+
+  algolia_site_search if: :published do
+    attribute :title, :body
+  end
+
 
   scope :for_sidebar_nav, -> { where(show_in_sidebar_nav: true) }
 

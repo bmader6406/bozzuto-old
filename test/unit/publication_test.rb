@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class PublicationTest < ActiveSupport::TestCase
+  extend AlgoliaSearchable
+
   context 'A publication' do
     subject { Publication.new }
+
+    it_should_behave_like "being searchable with algolia", Publication, :name
 
     should have_many(:rank_categories)
 

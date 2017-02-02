@@ -2,6 +2,7 @@ require 'test_helper'
 
 class NewsPostTest < ActiveSupport::TestCase
   extend SharedFeaturableNewsTests
+  extend AlgoliaSearchable
 
   context 'NewsPost' do
 
@@ -11,6 +12,7 @@ class NewsPostTest < ActiveSupport::TestCase
     should validate_presence_of(:body)
 
     it_should_behave_like "a featurable news item", NewsPost
+    it_should_behave_like "being searchable with algolia", NewsPost, :title
 
     describe "#to_s" do
       subject { NewsPost.new(:title => 'Hey ya') }

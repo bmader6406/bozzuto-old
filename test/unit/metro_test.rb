@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class MetroTest < ActiveSupport::TestCase
+  extend AlgoliaSearchable
+
   context "A Metro" do
     subject { Metro.make }
+
+    it_should_behave_like "being searchable with algolia", Metro, :name
 
     should_have_neighborhood_listing_image
     should_have_neighborhood_banner_image(:required => false)

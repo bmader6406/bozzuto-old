@@ -59,15 +59,17 @@ group :development, :test do
 end
 
 group :test do
+  gem 'minitest',                                 '~> 5.10'
   gem 'shoulda',                                  '3.5.0'
   gem 'machinist',                                '1.0.6'
   gem 'faker',                                    '0.3.1'
   gem 'mocha',                                    '~> 1.1.0',  require: false
-  gem 'webmock'
+  gem 'webmock',                                  '~> 2.3'
   gem 'rack-test'
-  gem 'vcr'
+  gem 'vcr',                                      '~> 3.0'
   gem 'simplecov',                                '~> 0.11.2', require: false
   gem 'rspec-expectations'
   gem 'shoulda-kept-assign-to'
   gem 'shoulda-kept-respond-with-content-type'
+  gem 'database_cleaner',                         '~> 1.5'
 end

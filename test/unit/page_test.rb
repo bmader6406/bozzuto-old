@@ -1,7 +1,11 @@
 require 'test_helper'
 
 class PageTest < ActiveSupport::TestCase
+  extend AlgoliaSearchable
+
   context "Page" do
+    it_should_behave_like "being searchable with algolia", Page, :title
+
     should belong_to(:section)
     should belong_to(:snippet)
 

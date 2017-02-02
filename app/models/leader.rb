@@ -1,9 +1,16 @@
 class Leader < ActiveRecord::Base
   extend FriendlyId
+  include Bozzuto::AlgoliaSiteSearch
 
   has_many :leaderships,
            :dependent  => :destroy,
            :inverse_of => :leader
+  has_many :leadership_groups, through: :leaderships
+
+  algolia_site_search do
+    attribute :name, :title, :company, :bio
+    has_many_attribute :leadership_groups, :name
+  end
 
   validates :name,
             :title,

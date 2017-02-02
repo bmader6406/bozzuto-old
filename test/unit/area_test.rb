@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class AreaTest < ActiveSupport::TestCase
+  extend AlgoliaSearchable
+
   context "An Area" do
     subject { Area.make }
+
+    it_should_behave_like "being searchable with algolia", Area, :name
 
     should_have_neighborhood_listing_image
     should_have_neighborhood_banner_image(:required => false)

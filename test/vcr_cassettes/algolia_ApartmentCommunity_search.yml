@@ -1,0 +1,594 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://tf1sr489ph-2.algolianet.com/1/indexes/bozzutosite_test/clear
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Sat, 04 Feb 2017 02:27:12 GMT
+      X-Algolia-Api-Key:
+      - 3cf74c8b0e16e8a8087b50317ec1db10
+      X-Algolia-Application-Id:
+      - TF1SR489PH
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 04 Feb 2017 02:27:12 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '61'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+    body:
+      encoding: UTF-8
+      string: |
+        {"updatedAt":"2017-02-04T02:27:12.647Z", "taskID":157335682}
+    http_version: 
+  recorded_at: Sat, 04 Feb 2017 02:27:12 GMT
+- request:
+    method: get
+    uri: https://tf1sr489ph-2.algolianet.com/1/indexes/bozzutosite_test/task/157335682
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Sat, 04 Feb 2017 02:27:15 GMT
+      X-Algolia-Api-Key:
+      - 3cf74c8b0e16e8a8087b50317ec1db10
+      X-Algolia-Application-Id:
+      - TF1SR489PH
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 04 Feb 2017 02:27:15 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '43'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+    body:
+      encoding: UTF-8
+      string: |
+        {"status":"published","pendingTask":false}
+    http_version: 
+  recorded_at: Sat, 04 Feb 2017 02:27:15 GMT
+- request:
+    method: get
+    uri: https://tf1sr489ph-2.algolianet.com/1/indexes/bozzutosite_test/settings?getVersion=2
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Sat, 04 Feb 2017 02:27:15 GMT
+      X-Algolia-Api-Key:
+      - 3cf74c8b0e16e8a8087b50317ec1db10
+      X-Algolia-Application-Id:
+      - TF1SR489PH
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 04 Feb 2017 02:27:15 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: UTF-8
+      string: |
+        {"minWordSizefor1Typo":4,"minWordSizefor2Typos":8,"hitsPerPage":20,"maxValuesPerFacet":100,"version":2,"searchableAttributes":["title","city","unordered(listing_text)","unordered(neighborhood_description)","unordered(overview_text)","unordered(property_features)","unordered(property_amenities)","zip_code"],"numericAttributesToIndex":null,"attributesToRetrieve":null,"unretrievableAttributes":null,"optionalWords":null,"replicas":[],"attributesForFaceting":null,"attributesToSnippet":null,"attributesToHighlight":null, "paginationLimitedTo":1000,"attributeForDistinct":null,"exactOnSingleWordQuery":"attribute","ranking":["typo", "geo", "words", "filters", "proximity", "attribute", "exact", "custom"],"customRanking":null,"separatorsToIndex":"","removeWordsIfNoResults":"none","queryType":"prefixLast","highlightPreTag":"<em>","highlightPostTag":"</em>","snippetEllipsisText":"","alternativesAsExact":["ignorePlurals", "singleWordSynonym"] }
+    http_version: 
+  recorded_at: Sat, 04 Feb 2017 02:27:15 GMT
+- request:
+    method: put
+    uri: https://tf1sr489ph-2.algolianet.com/1/indexes/bozzutosite_test/ApartmentCommunity1234567891
+    body:
+      encoding: UTF-8
+      string: '{"title":"Testing 1","zip_code":null,"listing_text":null,"neighborhood_description":null,"overview_text":null,"city":"North
+        Rosiehaven","property_features":"","property_amenities":""}'
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Sat, 04 Feb 2017 02:27:15 GMT
+      X-Algolia-Api-Key:
+      - 3cf74c8b0e16e8a8087b50317ec1db10
+      X-Algolia-Application-Id:
+      - TF1SR489PH
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 04 Feb 2017 02:27:15 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: UTF-8
+      string: |
+        {"updatedAt":"2017-02-04T02:27:15.630Z","taskID":157335692,"objectID":"ApartmentCommunity1234567891"}
+    http_version: 
+  recorded_at: Sat, 04 Feb 2017 02:27:15 GMT
+- request:
+    method: get
+    uri: https://tf1sr489ph-2.algolianet.com/1/indexes/bozzutosite_test/task/157335692
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Sat, 04 Feb 2017 02:27:16 GMT
+      X-Algolia-Api-Key:
+      - 3cf74c8b0e16e8a8087b50317ec1db10
+      X-Algolia-Application-Id:
+      - TF1SR489PH
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 04 Feb 2017 02:27:16 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '43'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+    body:
+      encoding: UTF-8
+      string: |
+        {"status":"published","pendingTask":false}
+    http_version: 
+  recorded_at: Sat, 04 Feb 2017 02:27:16 GMT
+- request:
+    method: put
+    uri: https://tf1sr489ph-2.algolianet.com/1/indexes/bozzutosite_test/ApartmentCommunity1234567892
+    body:
+      encoding: UTF-8
+      string: '{"title":"Testing 2","zip_code":null,"listing_text":null,"neighborhood_description":null,"overview_text":null,"city":"Jackton","property_features":"","property_amenities":""}'
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Sat, 04 Feb 2017 02:27:17 GMT
+      X-Algolia-Api-Key:
+      - 3cf74c8b0e16e8a8087b50317ec1db10
+      X-Algolia-Application-Id:
+      - TF1SR489PH
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 04 Feb 2017 02:27:17 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: UTF-8
+      string: |
+        {"updatedAt":"2017-02-04T02:27:17.210Z","taskID":157335712,"objectID":"ApartmentCommunity1234567892"}
+    http_version: 
+  recorded_at: Sat, 04 Feb 2017 02:27:17 GMT
+- request:
+    method: get
+    uri: https://tf1sr489ph-2.algolianet.com/1/indexes/bozzutosite_test/task/157335712
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Sat, 04 Feb 2017 02:27:23 GMT
+      X-Algolia-Api-Key:
+      - 3cf74c8b0e16e8a8087b50317ec1db10
+      X-Algolia-Application-Id:
+      - TF1SR489PH
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 04 Feb 2017 02:27:23 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '43'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+    body:
+      encoding: UTF-8
+      string: |
+        {"status":"published","pendingTask":false}
+    http_version: 
+  recorded_at: Sat, 04 Feb 2017 02:27:23 GMT
+- request:
+    method: put
+    uri: https://tf1sr489ph-2.algolianet.com/1/indexes/bozzutosite_test/ApartmentCommunity1234567893
+    body:
+      encoding: UTF-8
+      string: '{"title":"Testing 3","zip_code":null,"listing_text":null,"neighborhood_description":null,"overview_text":null,"city":"New
+        Herta","property_features":"","property_amenities":""}'
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Sat, 04 Feb 2017 02:27:23 GMT
+      X-Algolia-Api-Key:
+      - 3cf74c8b0e16e8a8087b50317ec1db10
+      X-Algolia-Application-Id:
+      - TF1SR489PH
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 04 Feb 2017 02:27:23 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: UTF-8
+      string: |
+        {"updatedAt":"2017-02-04T02:27:23.444Z","taskID":157335730,"objectID":"ApartmentCommunity1234567893"}
+    http_version: 
+  recorded_at: Sat, 04 Feb 2017 02:27:23 GMT
+- request:
+    method: get
+    uri: https://tf1sr489ph-2.algolianet.com/1/indexes/bozzutosite_test/task/157335730
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Sat, 04 Feb 2017 02:27:26 GMT
+      X-Algolia-Api-Key:
+      - 3cf74c8b0e16e8a8087b50317ec1db10
+      X-Algolia-Application-Id:
+      - TF1SR489PH
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 04 Feb 2017 02:27:26 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '43'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+    body:
+      encoding: UTF-8
+      string: |
+        {"status":"published","pendingTask":false}
+    http_version: 
+  recorded_at: Sat, 04 Feb 2017 02:27:26 GMT
+- request:
+    method: put
+    uri: https://tf1sr489ph-2.algolianet.com/1/indexes/bozzutosite_test/ApartmentCommunity1234567894
+    body:
+      encoding: UTF-8
+      string: '{"title":"ApartmentCommunity Throne room","zip_code":null,"listing_text":null,"neighborhood_description":null,"overview_text":null,"city":"New
+        Herta","property_features":"","property_amenities":""}'
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Sat, 04 Feb 2017 02:27:23 GMT
+      X-Algolia-Api-Key:
+      - 3cf74c8b0e16e8a8087b50317ec1db10
+      X-Algolia-Application-Id:
+      - TF1SR489PH
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 04 Feb 2017 02:27:23 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: UTF-8
+      string: |
+        {"updatedAt":"2017-02-04T02:27:23.444Z","taskID":157335732,"objectID":"ApartmentCommunity1234567894"}
+    http_version: 
+  recorded_at: Sat, 04 Feb 2017 02:27:23 GMT
+- request:
+    method: get
+    uri: https://tf1sr489ph-2.algolianet.com/1/indexes/bozzutosite_test/task/157335732
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Sat, 04 Feb 2017 02:27:26 GMT
+      X-Algolia-Api-Key:
+      - 3cf74c8b0e16e8a8087b50317ec1db10
+      X-Algolia-Application-Id:
+      - TF1SR489PH
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 04 Feb 2017 02:27:26 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '43'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+    body:
+      encoding: UTF-8
+      string: |
+        {"status":"published","pendingTask":false}
+    http_version: 
+  recorded_at: Sat, 04 Feb 2017 02:27:26 GMT
+- request:
+    method: post
+    uri: https://tf1sr489ph-2.algolianet.com/1/indexes/bozzutosite_test/query
+    body:
+      encoding: UTF-8
+      string: '{"params":"query=ApartmentCommunity+Throne+room"}'
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Sat, 04 Feb 2017 02:27:26 GMT
+      X-Algolia-Api-Key:
+      - 3cf74c8b0e16e8a8087b50317ec1db10
+      X-Algolia-Application-Id:
+      - TF1SR489PH
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 04 Feb 2017 02:27:26 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: UTF-8
+      string: |
+        {"hits":[{"<%= attribute_name %>":"ApartmentCommunity Throne room","zip_code":null,"listing_text":null,"neighborhood_description":null,"overview_text":null,"city":"New Herta","property_features":"","property_amenities":"","objectID":"ApartmentCommunity1234567894","_highlightResult":{"title":{"value":"<em>ApartmentCommunity</em> <em>Throne</em> <em>room</em>","matchLevel":"full","fullyHighlighted":true,"matchedWords":["apartmentcommunity","throne","room"]},"city":{"value":"New Herta","matchLevel":"none","matchedWords":[]},"property_features":{"value":"","matchLevel":"none","matchedWords":[]},"property_amenities":{"value":"","matchLevel":"none","matchedWords":[]}}}],"nbHits":1,"page":0,"nbPages":1,"hitsPerPage":20,"processingTimeMS":1,"exhaustiveNbHits":true,"query":"ApartmentCommunity Throne room","params":"query=ApartmentCommunity+Throne+room"}
+    http_version: 
+  recorded_at: Sat, 04 Feb 2017 02:27:26 GMT
+recorded_with: VCR 3.0.3

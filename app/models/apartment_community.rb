@@ -3,6 +3,7 @@ class ApartmentCommunity < ActiveRecord::Base
   include Bozzuto::Model::Community
   include Bozzuto::ExternalFeed::Model
   include Bozzuto::ApartmentFloorPlans::HasCache
+  include Bozzuto::AlgoliaSiteSearch
 
   self.external_cms_attributes = [
     :title,
@@ -55,6 +56,15 @@ class ApartmentCommunity < ActiveRecord::Base
     styles:          { resized: '1020x325#' },
     default_style:   :resized,
     convert_options: { all: '-quality 80 -strip' }
+
+
+  algolia_site_search if: :published do
+    attribute :title, :zip_code, :listing_text, :neighborhood_description, :overview_text
+    has_one_attribute :city, :name
+    has_many_attribute :property_features, :name
+    has_many_attribute :property_amenities, :primary_type
+  end
+
 
   validates_attachment_content_type :hero_image, content_type: /\Aimage\/.*\Z/
 

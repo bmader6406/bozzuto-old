@@ -2,6 +2,7 @@ class NewsPost < ActiveRecord::Base
   include Bozzuto::Publishable
   include Bozzuto::Featurable
   include Bozzuto::Homepage::FeaturableNews
+  include Bozzuto::AlgoliaSiteSearch
 
   cattr_reader :per_page
   @@per_page = 10
@@ -19,6 +20,12 @@ class NewsPost < ActiveRecord::Base
     :styles          => { :thumb => '150x150#' },
     :default_style   => :thumb,
     :convert_options => { :all => '-quality 80 -strip' }
+
+
+  algolia_site_search if: :published do
+    attribute :title, :body
+  end
+
 
   do_not_validate_attachment_file_type :image
 

@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class NeighborhoodTest < ActiveSupport::TestCase
+  extend AlgoliaSearchable
+
   context "A Neighborhood" do
     subject { Neighborhood.make }
+
+    it_should_behave_like "being searchable with algolia", Neighborhood, :name
 
     should_have_neighborhood_listing_image
     should_be_mappable

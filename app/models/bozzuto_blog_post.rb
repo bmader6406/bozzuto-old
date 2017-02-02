@@ -1,4 +1,5 @@
 class BozzutoBlogPost < ActiveRecord::Base
+  include Bozzuto::AlgoliaSiteSearch
 
   default_scope -> { order(published_at: :desc) }
 
@@ -7,6 +8,12 @@ class BozzutoBlogPost < ActiveRecord::Base
     :styles          => { :normal => '380x150#' },
     :default_style   => :normal,
     :convert_options => { :all => '-quality 80 -strip' }
+
+
+  algolia_site_search if: :published? do
+    attribute :title, :header_title
+  end
+
 
   scope :latest, -> (n) { limit(n) }
 
@@ -25,5 +32,9 @@ class BozzutoBlogPost < ActiveRecord::Base
 
   def to_s
     title
+  end
+
+  def published?
+    published_at? && published_at.past?
   end
 end

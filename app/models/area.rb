@@ -7,6 +7,7 @@ class Area < ActiveRecord::Base
   extend  Bozzuto::Neighborhoods::ListingImage
   extend  Bozzuto::Neighborhoods::BannerImage
   extend  Bozzuto::Neighborhoods::HasRelatedPlaces
+  include Bozzuto::AlgoliaSiteSearch
 
   AREA_TYPE = [
     ['Neighborhoods', 'neighborhoods'],
@@ -30,6 +31,13 @@ class Area < ActiveRecord::Base
            :through => :area_memberships
 
   belongs_to :metro
+
+
+  algolia_site_search do
+    attribute :name, :detail_description
+    has_one_attribute :state, :name
+  end
+
 
   accepts_nested_attributes_for :area_memberships, allow_destroy: true
 

@@ -1,5 +1,6 @@
 class Publication < ActiveRecord::Base
   include Bozzuto::Publishable
+  include Bozzuto::AlgoliaSiteSearch
 
   acts_as_list
 
@@ -16,6 +17,12 @@ class Publication < ActiveRecord::Base
     :styles          => { :resized => '110' },
     :default_style   => :resized,
     :convert_options => { :all => '-quality 80 -strip' }
+
+
+  algolia_site_search if: :published do
+    attribute :name, :description
+  end
+
 
   validates_attachment_presence :image
 

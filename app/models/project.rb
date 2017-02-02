@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   include Bozzuto::Model::Property
+  include Bozzuto::AlgoliaSiteSearch
   
   acts_as_list scope: :section
 
@@ -12,6 +13,13 @@ class Project < ActiveRecord::Base
     -> { order(position: :asc) },
     join_table:  :project_categories_projects,
     foreign_key: :project_id
+
+
+  algolia_site_search if: :published do
+    attribute :title, :zip_code, :listing_text, :overview_text
+    has_one_attribute :city, :name
+  end
+
 
   validates_presence_of :completion_date
 

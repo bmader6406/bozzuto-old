@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class ApartmentCommunityTest < ActiveSupport::TestCase
+  extend AlgoliaSearchable
+
   context "An Apartment Community" do
     subject { ApartmentCommunity.make }
+
+    it_should_behave_like "being searchable with algolia", ApartmentCommunity, :title
 
     should_have_neighborhood_listing_image(:neighborhood_listing_image, required: false)
 

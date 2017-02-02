@@ -1,7 +1,11 @@
 require 'test_helper'
 
 class AwardTest < ActiveSupport::TestCase
+  extend AlgoliaSearchable
+
   context 'Award' do
+    it_should_behave_like "being searchable with algolia", Award, :title
+
     should validate_presence_of(:title)
 
     should have_and_belong_to_many(:sections)

@@ -1,0 +1,99 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://tf1sr489ph-2.algolianet.com/1/indexes/bozzutosite_test/clear
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Sat, 04 Feb 2017 02:27:26 GMT
+      X-Algolia-Api-Key:
+      - 3cf74c8b0e16e8a8087b50317ec1db10
+      X-Algolia-Application-Id:
+      - TF1SR489PH
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 04 Feb 2017 02:27:26 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '61'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+    body:
+      encoding: UTF-8
+      string: |
+        {"updatedAt":"2017-02-04T02:27:26.393Z", "taskID":157335742}
+    http_version: 
+  recorded_at: Sat, 04 Feb 2017 02:27:26 GMT
+- request:
+    method: get
+    uri: https://tf1sr489ph-2.algolianet.com/1/indexes/bozzutosite_test/task/157335742
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Sat, 04 Feb 2017 02:27:29 GMT
+      X-Algolia-Api-Key:
+      - 3cf74c8b0e16e8a8087b50317ec1db10
+      X-Algolia-Application-Id:
+      - TF1SR489PH
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 04 Feb 2017 02:27:29 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '43'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+    body:
+      encoding: UTF-8
+      string: |
+        {"status":"published","pendingTask":false}
+    http_version: 
+  recorded_at: Sat, 04 Feb 2017 02:27:29 GMT
+recorded_with: VCR 3.0.3

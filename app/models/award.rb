@@ -2,6 +2,7 @@ class Award < ActiveRecord::Base
   include Bozzuto::Publishable
   include Bozzuto::Featurable
   include Bozzuto::Homepage::FeaturableNews
+  include Bozzuto::AlgoliaSiteSearch
 
   cattr_reader :per_page
   @@per_page = 15
@@ -16,6 +17,12 @@ class Award < ActiveRecord::Base
     :styles          => { :thumb => '55x55#', :resized => '150x150#' },
     :default_style   => :resized,
     :convert_options => { :all => '-quality 80 -strip' }
+
+
+  algolia_site_search if: :published do
+    attribute :title, :body
+  end
+
 
   do_not_validate_attachment_file_type :image
 
