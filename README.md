@@ -82,6 +82,12 @@ $ cp config/app_config.yml.example config/app_config.yml
 
 Fill out the config files with appropriate values.
 
+For keys:
+
+```bash
+$ cp config/secrets.yml.example config/secrets.yml
+```
+
 ### Setup the database
 
 ```bash
