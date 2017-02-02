@@ -89,6 +89,12 @@ GEM
     airbrake (5.0.5)
       airbrake-ruby (~> 1.0)
     airbrake-ruby (1.0.4)
+    algoliasearch (1.12.6)
+      httpclient (~> 2.8.3)
+      json (>= 1.5.1)
+    algoliasearch-rails (1.17.1)
+      algoliasearch (~> 1.12.4)
+      json (>= 1.5.1)
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (6.0.3)
@@ -180,6 +186,7 @@ GEM
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
+    httpclient (2.8.3)
     i18n (0.7.0)
     inherited_resources (1.6.0)
       actionpack (>= 3.2, < 5)
@@ -405,6 +412,7 @@ DEPENDENCIES
   activerecord-import (= 0.11.0)
   acts_as_list
   airbrake (~> 5.0.5)
+  algoliasearch-rails (~> 1.17)
   awesome_nested_set (= 3.0.3)
   awesome_print
   aws-sdk (>= 2.0.34)
@@ -433,6 +441,7 @@ DEPENDENCIES
   rack-rewrite
   rack-test
   rails (= 4.2.5)
+  rails-html-sanitizer
   rails-observers
   ransack (= 1.7.0)
   resque (~> 1.26.0)

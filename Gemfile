@@ -48,6 +48,8 @@ gem 'resque',                     '~> 1.26.0'
 gem 'capistrano-resque'
 gem 'yelp'
 gem 'truncate_html'
+gem 'algoliasearch-rails',        '~> 1.17'
+gem 'rails-html-sanitizer'
 
 group :development, :test do
   gem 'pry-rails'
