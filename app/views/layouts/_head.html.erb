@@ -1,5 +1,6 @@
 <head>
   <%= yield(:top_of_head) %>
+  <%= render :partial => 'layouts/ga_tracking' %>
   <title>
     <% if yield(:meta_title).present? %>
       <%= yield(:meta_title) %> -
