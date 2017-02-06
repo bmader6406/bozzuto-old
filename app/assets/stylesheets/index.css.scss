@@ -1752,6 +1752,10 @@ div.wysiwyg .wysiwyg-12pt-font {
       margin-bottom: 40px;
       text-align: center;
       width: 100%;
+
+      p:first-of-type {
+        margin-bottom: 0;
+      }
     }
     .home h1 {
       color: #565c64;
