@@ -48,8 +48,8 @@
   }
 
   a {
-    color: color(bozzuto-blue);
-    @include hover-transition();
+    color: #565c64;
+    @include hover-transition(#84848b);
     text-decoration: none;
   }
 }
