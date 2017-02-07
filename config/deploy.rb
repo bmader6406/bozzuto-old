@@ -14,6 +14,8 @@ set :workers, { '*' => 1 }
 set :resque_environment_task, true
 
 after "deploy:restart", "resque:restart"
+before "deploy:restart", "algoliasearch:set_index_settings"
+before "deploy:restart", "algoliasearch:reindex"
 
 desc 'watch logs'
 task :logs, :roles => :app do
@@ -23,4 +25,16 @@ end
 desc "Refresh Sitemaps"
 task :refresh_sitemaps do
   run "cd #{latest_release} && RAILS_ENV=#{rails_env} bundle exec rake sitemap:refresh"
+end
+
+namespace :algoliasearch do
+  desc "Set Algolia Setting"
+  task :set_index_settings do
+    run_rake_task 'algoliasearch:set_index_settings'
+  end
+
+  desc "Reindex Algolia"
+  task :reindex do
+    run_rake_task 'algoliasearch:reindex'
+  end
 end

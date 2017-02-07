@@ -26,3 +26,10 @@ AlgoliaSearch::IndexSettings.class_eval do
     end
   end
 end
+
+AlgoliaSearch::Utilities.define_singleton_method(:reindex_all_models) do
+  get_model_classes.each do |klass|
+    puts klass.name
+    klass.reindex!
+  end
+end
