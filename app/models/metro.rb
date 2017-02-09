@@ -25,4 +25,12 @@ class Metro < ActiveRecord::Base
   def children
     areas
   end
+
+  def to_s
+    name
+  end
+
+  def description
+    detail_description
+  end
 end

@@ -35,4 +35,8 @@ class Leader < ActiveRecord::Base
   def to_label
     to_s
   end
+
+  def description
+    bio
+  end
 end

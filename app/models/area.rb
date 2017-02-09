@@ -80,4 +80,12 @@ class Area < ActiveRecord::Base
   def tier_for(community)
     area_memberships.find_by(apartment_community_id: community.id).try(:tier)
   end
+
+  def to_s
+    name
+  end
+
+  def description
+    detail_description
+  end
 end

@@ -50,6 +50,10 @@ class HomeNeighborhood < ActiveRecord::Base
     to_s
   end
 
+  def description
+    detail_description
+  end
+
   def full_name
     "#{name} Homes"
   end

@@ -47,4 +47,12 @@ class Project < ActiveRecord::Base
     read_attribute(:short_description).presence ||
       project_categories.order(:id).first(2).map(&:title).join(' / ')
   end
+
+  def to_s
+    title
+  end
+
+  def description
+    listing_text
+  end
 end

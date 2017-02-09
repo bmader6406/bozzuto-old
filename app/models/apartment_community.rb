@@ -185,6 +185,14 @@ class ApartmentCommunity < ActiveRecord::Base
     included_in_export? && published?
   end
 
+  def to_s
+    title
+  end
+
+  def description
+    listing_text
+  end
+
   protected
 
   def scope_condition

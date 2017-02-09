@@ -48,4 +48,12 @@ class Neighborhood < ActiveRecord::Base
   def tier_for(community)
     neighborhood_memberships.find_by(apartment_community_id: community.id).try(:tier)
   end
+
+  def to_s
+    name
+  end
+
+  def description
+    detail_description
+  end
 end

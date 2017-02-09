@@ -57,4 +57,13 @@ class HomeCommunity < ActiveRecord::Base
   def seo_link?
     false
   end
+
+  def to_s
+    title
+  end
+
+  def description
+    listing_text
+  end
+
 end
