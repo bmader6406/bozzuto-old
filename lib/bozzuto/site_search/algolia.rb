@@ -7,7 +7,7 @@ module Bozzuto
 
         def search(q, params = {})
           params[:page] = (params.delete('page') || params.delete(:page)).to_i
-          params[:page] -= 1 if params[:page].to_i > 0
+          params[:page] -= 1 if params[:page] > 0
 
           json = raw_search(q, params[:page])
 
@@ -52,8 +52,11 @@ module Bozzuto
 
         def total_hits_for(json)
           # Algolia has a default limit of 1000 retrievable hits
-          json['nbHits'] < json['nbPages'] * json['hitsPerPage'] ?
-            json['nbHits'] : json['nbPages'] * json['hitsPerPage']
+          if json['nbHits'] < (json['nbPages'] * json['hitsPerPage'])
+            json['nbHits']
+          else
+            json['nbPages'] * json['hitsPerPage']
+          end
         end
 
       end

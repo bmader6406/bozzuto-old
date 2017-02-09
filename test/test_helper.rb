@@ -39,13 +39,11 @@ VCR.configure do |c|
     path2 = URI(request_2.uri).path.match(/\/\d+\/indexes\/bozzutosite_test\/(.+)\z/)[1].gsub(/\/?\d+\z/, '')
 
     path1 == path2 ||
-      (AlgoliaSearch::Utilities.get_model_classes.map(&:name).include?(path1) &&
-      AlgoliaSearch::Utilities.get_model_classes.map(&:name).include?(path2))
+      [path1, path2].all?{|p| AlgoliaSearch::Utilities.get_model_classes.map(&:name).include?(p) }
   end
 
   c.register_request_matcher :algolia_host_matcher do |request_1, request_2|
-    URI(request_1.uri).host =~ /algolia(net\.com|\.net)\z/ && 
-      URI(request_2.uri).host =~ /algolia(net\.com|\.net)\z/
+    [request_1, request_2].all?{|p| URI(request_1.uri).host =~ /algolia(net\.com|\.net)\z/ }
   end
 end
 
