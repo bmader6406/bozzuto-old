@@ -6,8 +6,6 @@ class PublicationTest < ActiveSupport::TestCase
   context 'A publication' do
     subject { Publication.new }
 
-    it_should_behave_like "being searchable with algolia", Publication, :name
-
     should have_many(:rank_categories)
 
     should validate_presence_of(:name)

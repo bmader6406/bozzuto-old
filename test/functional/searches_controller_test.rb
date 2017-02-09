@@ -10,23 +10,23 @@ class SearchesControllerTest < ActionController::TestCase
           request_matchers = [:method, :algolia_path_matcher, :algolia_host_matcher]
           VCR.use_cassette('algolia_red_keep_search', :match_requests_on => request_matchers) do
             ApartmentCommunity.algolia_clear_index!
+            section = Section.make(:about)
             ApartmentCommunity.make
             ApartmentCommunity.make(title: 'The Red Keep')
             Area.make(name: 'The Red Keep')
-            Award.make(title: 'The Red Keep')
+            Award.make(title: 'The Red Keep', sections: [section])
             BozzutoBlogPost.make(title: 'The Red Keep')
             HomeCommunity.make(title: 'The Red Keep')
             HomeNeighborhood.make(name: 'The Red Keep')
             Leader.make(name: 'The Red Keep')
             Metro.make(name: 'The Red Keep')
             Neighborhood.make(name: 'The Red Keep')
-            NewsPost.make(title: 'The Red Keep')
+            NewsPost.make(title: 'The Red Keep', sections: [section])
             Page.make(title: 'The Red Keep')
-            PressRelease.make(title: 'The Red Keep')
-            Project.make(title: 'The Red Keep')
-            Publication.make(name: 'The Red Keep')
+            PressRelease.make(title: 'The Red Keep', sections: [section])
+            Project.make(title: 'The Red Keep', section: section)
 
-            get :index, :q => 'carmel'
+            get :index, :q => 'red keep'
           end
         end
 
