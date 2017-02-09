@@ -12,6 +12,9 @@ class BozzutoBlogPost < ActiveRecord::Base
 
   algolia_site_search if: :published? do
     attribute :title, :header_title
+    attribute :type_ranking do
+      4
+    end
   end
 
 

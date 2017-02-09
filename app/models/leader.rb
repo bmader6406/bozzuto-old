@@ -10,6 +10,9 @@ class Leader < ActiveRecord::Base
   algolia_site_search do
     attribute :name, :title, :company, :bio
     has_many_attribute :leadership_groups, :name
+    attribute :type_ranking do
+      5
+    end
   end
 
   validates :name,

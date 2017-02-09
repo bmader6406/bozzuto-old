@@ -36,6 +36,9 @@ class Area < ActiveRecord::Base
   algolia_site_search do
     attribute :name, :detail_description
     has_one_attribute :state, :name
+    attribute :type_ranking do
+      3
+    end
   end
 
 

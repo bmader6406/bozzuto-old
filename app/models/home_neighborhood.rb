@@ -36,6 +36,9 @@ class HomeNeighborhood < ActiveRecord::Base
 
   algolia_site_search do
     attribute :name, :detail_description
+    attribute :type_ranking do
+      2
+    end
   end
 
 

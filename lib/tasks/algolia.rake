@@ -6,16 +6,18 @@ namespace :algoliasearch do
       "searchableAttributes" => %w[
         name,title
         header_title,company
-        state,city
+        city
+        state
         unordered(listing_text)
         property_features,property_amenities
-        body,bio
         description,detail_description,neighborhood_description,overview_text
+        body,bio
         unordered(leadership_groups)
         zip_code
       ],
       "attributesToRetrieve" => %w[name title],
-      "ranking" => %w[words exact attribute proximity typo custom],
+      "ranking" => %w[words exact attribute custom proximity typo],
+      "customRanking" => ["asc(type_ranking)"],
       "disablePrefixOnAttributes" => %w[
         listing_text
         property_features
@@ -30,7 +32,8 @@ namespace :algoliasearch do
         zip_code
       ],
       "alternativesAsExact" => %w[ignorePlurals singleWordSynonym multiWordsSynonym],
-      "minProximity" => 2
+      "minProximity" => 2,
+      "numericAttributesForFiltering": %w[type_ranking]
     })
   end
 end

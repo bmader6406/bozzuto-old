@@ -63,6 +63,9 @@ class ApartmentCommunity < ActiveRecord::Base
     has_one_attribute :city, :name
     has_many_attribute :property_features, :name
     has_many_attribute :property_amenities, :primary_type
+    attribute :type_ranking do
+      1
+    end
   end
 
 

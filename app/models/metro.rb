@@ -16,6 +16,9 @@ class Metro < ActiveRecord::Base
 
   algolia_site_search do
     attribute :name, :detail_description
+    attribute :type_ranking do
+      3
+    end
   end
 
   def parent

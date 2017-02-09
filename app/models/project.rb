@@ -18,6 +18,9 @@ class Project < ActiveRecord::Base
   algolia_site_search if: :published do
     attribute :title, :zip_code, :listing_text, :overview_text
     has_one_attribute :city, :name
+    attribute :type_ranking do
+      1
+    end
   end
 
 

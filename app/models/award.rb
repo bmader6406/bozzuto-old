@@ -21,6 +21,9 @@ class Award < ActiveRecord::Base
 
   algolia_site_search if: :published do
     attribute :title, :body
+    attribute :type_ranking do
+      5
+    end
   end
 
 
