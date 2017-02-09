@@ -1,6 +1,7 @@
 AlgoliaSearch.configuration = {
-  application_id: Rails.application.secrets.algolia_app_id,
-  api_key:        Rails.application.secrets.algolia_api_key
+  application_id:     Rails.application.secrets.algolia_app_id,
+  api_key:            Rails.application.secrets.algolia_api_key,
+  pagination_backend: :kaminari
 }
 
 DEFAULT_ALGOLIA_OPTIONS = {
@@ -10,7 +11,8 @@ DEFAULT_ALGOLIA_OPTIONS = {
   force_utf8_encoding: true,
   sanitize:            true,
   pagination_backend:  :kaminari,
-  synchronous:         Rails.env.test?
+  synchronous:         Rails.env.test?,
+  per_page:            20
 }.freeze
 
 AlgoliaSearch::IndexSettings.class_eval do
