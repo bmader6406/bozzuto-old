@@ -16,9 +16,9 @@ http_interactions:
       Date:
       - Sun, 05 Feb 2017 00:38:18 GMT
       X-Algolia-Api-Key:
-      - 3cf74c8b0e16e8a8087b50317ec1db10
+      - API_KEY
       X-Algolia-Application-Id:
-      - TF1SR489PH
+      - APP_ID
       Content-Type:
       - application/json; charset=utf-8
   response:
@@ -66,9 +66,9 @@ http_interactions:
       Date:
       - Sun, 05 Feb 2017 00:38:18 GMT
       X-Algolia-Api-Key:
-      - 3cf74c8b0e16e8a8087b50317ec1db10
+      - API_KEY
       X-Algolia-Application-Id:
-      - TF1SR489PH
+      - APP_ID
       Content-Type:
       - application/json; charset=utf-8
   response:
@@ -114,9 +114,9 @@ http_interactions:
       Date:
       - Sun, 05 Feb 2017 00:38:21 GMT
       X-Algolia-Api-Key:
-      - 3cf74c8b0e16e8a8087b50317ec1db10
+      - API_KEY
       X-Algolia-Application-Id:
-      - TF1SR489PH
+      - APP_ID
       Content-Type:
       - application/json; charset=utf-8
   response:
@@ -162,9 +162,9 @@ http_interactions:
       Date:
       - Sun, 05 Feb 2017 00:38:22 GMT
       X-Algolia-Api-Key:
-      - 3cf74c8b0e16e8a8087b50317ec1db10
+      - API_KEY
       X-Algolia-Application-Id:
-      - TF1SR489PH
+      - APP_ID
       Content-Type:
       - application/json; charset=utf-8
   response:
@@ -210,9 +210,9 @@ http_interactions:
       Date:
       - Sun, 05 Feb 2017 00:38:46 GMT
       X-Algolia-Api-Key:
-      - 3cf74c8b0e16e8a8087b50317ec1db10
+      - API_KEY
       X-Algolia-Application-Id:
-      - TF1SR489PH
+      - APP_ID
       Content-Type:
       - application/json; charset=utf-8
   response:

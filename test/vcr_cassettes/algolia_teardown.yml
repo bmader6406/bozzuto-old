@@ -16,9 +16,9 @@ http_interactions:
       Date:
       - Sat, 04 Feb 2017 02:27:26 GMT
       X-Algolia-Api-Key:
-      - 3cf74c8b0e16e8a8087b50317ec1db10
+      - API_KEY
       X-Algolia-Application-Id:
-      - TF1SR489PH
+      - APP_ID
       Content-Type:
       - application/json; charset=utf-8
   response:
@@ -64,9 +64,9 @@ http_interactions:
       Date:
       - Sat, 04 Feb 2017 02:27:29 GMT
       X-Algolia-Api-Key:
-      - 3cf74c8b0e16e8a8087b50317ec1db10
+      - API_KEY
       X-Algolia-Application-Id:
-      - TF1SR489PH
+      - APP_ID
       Content-Type:
       - application/json; charset=utf-8
   response:
