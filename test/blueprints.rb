@@ -587,6 +587,11 @@ RelatedNeighborhood.blueprint do
   nearby_neighborhood { Neighborhood.make }
 end
 
+SearchResultProxy.blueprint do
+  term { 'just a test' }
+  url  { 'https://google.com/' }
+end
+
 Section.blueprint do
   title { Sham.section_title }
   service { false }

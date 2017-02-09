@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170104205838) do
+ActiveRecord::Schema.define(version: 20170209203022) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -1458,6 +1458,13 @@ ActiveRecord::Schema.define(version: 20170104205838) do
   end
 
   add_index "related_neighborhoods", ["neighborhood_id"], name: "index_related_neighborhoods_on_neighborhood_id", using: :btree
+
+  create_table "search_result_proxies", force: :cascade do |t|
+    t.string   "query",      limit: 255, null: false
+    t.string   "url",        limit: 255, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "sections", force: :cascade do |t|
     t.string   "title",                          limit: 255,                 null: false
