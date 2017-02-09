@@ -441,6 +441,8 @@ en:
         nearby_area: Nearby Area
       related_neighborhood:
         nearby_neighborhood: Nearby Neighborhood
+      search_result_proxy:
+        url: URL
       section:
         left_montage_image: Left Montage Image
         middle_montage_image: Middle Montage Image
