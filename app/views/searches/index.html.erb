@@ -18,28 +18,29 @@
       </div>
 
       <div id="content" class="col">
-        <% if results.any? -%>
+        <% if search_results.any? -%>
           <div class="header">
             <p>
-              Showing <%= search.first_result_num %>&ndash;<%= search.last_result_num %>
-              of <%= number_with_delimiter(search.total_count) %>
-              results
+              Showing <%= search_results.first_result_num %>&ndash;<%= search_results.last_result_num %>
+              of <%= number_with_delimiter(search_results.total_count) %> results
             </p>
           </div>
 
           <div class="results">
             <ul>
-              <% results.each do |result| -%>
+              <% search_results.each do |result| -%>
                 <li>
-                  <h4><%= link_to result.title, result %></h4>
+                  <h4><%= link_to result.to_s, route_for_result(result) %></h4>
 
-                  <p><%== result.listing_text %></p>
+                  <%- if result.respond_to?(:description) -%>
+                    <p><%== result.description %></p>
+                  <%- end -%>
                 </li>
               <% end -%>
             </ul>
 
             <div class="boss-pagination">
-              <p><%= paginate search.results %></p>
+              <p><%= paginate search_results %></p>
             </div>
           </div>
         <% else -%>

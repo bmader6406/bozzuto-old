@@ -16,13 +16,8 @@ class SearchesController < ApplicationController
   end
   helper_method :query
 
-  def search
-    @search ||= Bozzuto::SiteSearch.search(query, params)
+  def search_results
+    @search_results ||= Bozzuto::SiteSearch.search(query, params)
   end
-  helper_method :search
-
-  def results
-    search.results
-  end
-  helper_method :results
+  helper_method :search_results
 end

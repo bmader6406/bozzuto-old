@@ -1,0 +1,247 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://tf1sr489ph-3.algolianet.com/1/indexes/bozzutosite_test/settings?getVersion=2
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Thu, 09 Feb 2017 00:21:41 GMT
+      X-Algolia-Api-Key:
+      - 3cf74c8b0e16e8a8087b50317ec1db10
+      X-Algolia-Application-Id:
+      - TF1SR489PH
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 09 Feb 2017 00:21:41 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: UTF-8
+      string: |
+        {"minWordSizefor1Typo":4,"minWordSizefor2Typos":8,"hitsPerPage":20,"maxValuesPerFacet":100,"version":2,"searchableAttributes":["name","title","header_title","company","state","city","unordered(body)","unordered(bio)","unordered(detail_description)","unordered(listing_text)","unordered(description)","unordered(neighborhood_description)","unordered(overview_text)","unordered(leadership_groups)","unordered(property_features)","unordered(property_amenities)","zip_code"],"numericAttributesToIndex":null,"attributesToRetrieve":null,"unretrievableAttributes":null,"optionalWords":null,"replicas":[],"attributesForFaceting":null,"attributesToSnippet":null,"attributesToHighlight":null, "paginationLimitedTo":1000,"attributeForDistinct":null,"exactOnSingleWordQuery":"attribute","ranking":["typo", "geo", "words", "filters", "proximity", "attribute", "exact", "custom"],"customRanking":null,"separatorsToIndex":"","removeWordsIfNoResults":"none","queryType":"prefixLast","highlightPreTag":"<em>","highlightPostTag":"</em>","snippetEllipsisText":"","alternativesAsExact":["ignorePlurals", "singleWordSynonym"] }
+    http_version: 
+  recorded_at: Thu, 09 Feb 2017 00:21:41 GMT
+- request:
+    method: post
+    uri: https://tf1sr489ph.algolia.net/1/indexes/bozzutosite_test/clear
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Thu, 09 Feb 2017 00:21:41 GMT
+      X-Algolia-Api-Key:
+      - 3cf74c8b0e16e8a8087b50317ec1db10
+      X-Algolia-Application-Id:
+      - TF1SR489PH
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 09 Feb 2017 00:21:42 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '60'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+    body:
+      encoding: UTF-8
+      string: |
+        {"updatedAt":"2017-02-09T00:21:42.75Z", "taskID":159828322}
+    http_version: 
+  recorded_at: Thu, 09 Feb 2017 00:21:42 GMT
+- request:
+    method: get
+    uri: https://tf1sr489ph-3.algolianet.com/1/indexes/bozzutosite_test/task/159828322
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Thu, 09 Feb 2017 00:21:45 GMT
+      X-Algolia-Api-Key:
+      - 3cf74c8b0e16e8a8087b50317ec1db10
+      X-Algolia-Application-Id:
+      - TF1SR489PH
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 09 Feb 2017 00:21:45 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '43'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+    body:
+      encoding: UTF-8
+      string: |
+        {"status":"published","pendingTask":false}
+    http_version: 
+  recorded_at: Thu, 09 Feb 2017 00:21:45 GMT
+- request:
+    method: put
+    uri: https://tf1sr489ph.algolia.net/1/indexes/bozzutosite_test/Metro1
+    body:
+      encoding: UTF-8
+      string: '{"name":"Metro #1","detail_description":null}'
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Thu, 09 Feb 2017 00:21:51 GMT
+      X-Algolia-Api-Key:
+      - 3cf74c8b0e16e8a8087b50317ec1db10
+      X-Algolia-Application-Id:
+      - TF1SR489PH
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 09 Feb 2017 00:21:51 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '80'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+    body:
+      encoding: UTF-8
+      string: |
+        {"updatedAt":"2017-02-09T00:21:51.461Z","taskID":159828362,"objectID":"Metro1"}
+    http_version: 
+  recorded_at: Thu, 09 Feb 2017 00:21:51 GMT
+- request:
+    method: post
+    uri: https://tf1sr489ph-3.algolianet.com/1/indexes/bozzutosite_test/query
+    body:
+      encoding: UTF-8
+      string: '{"params":"page=0\u0026query=carmel"}'
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Thu, 09 Feb 2017 00:22:34 GMT
+      X-Algolia-Api-Key:
+      - 3cf74c8b0e16e8a8087b50317ec1db10
+      X-Algolia-Application-Id:
+      - TF1SR489PH
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 09 Feb 2017 00:22:34 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: UTF-8
+      string: |
+        {"hits":[],"nbHits":0,"page":0,"nbPages":0,"hitsPerPage":20,"processingTimeMS":1,"exhaustiveNbHits":true,"query":"carmel","params":"page=0&query=carmel"}
+    http_version: 
+  recorded_at: Thu, 09 Feb 2017 00:22:34 GMT
+recorded_with: VCR 3.0.3
