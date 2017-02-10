@@ -1,6 +1,10 @@
 <% content_for :body_class do %>community property<% end %>
-<% render_meta(@community) %>
 
+<% content_for :javascript do %>
+  <%= render 'shared/bozzuto_link' %>
+<% end %>
+
+<% render_meta(@community) %>
 
 <div class="row">
   <div id="content" class="col">
