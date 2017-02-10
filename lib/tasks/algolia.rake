@@ -5,12 +5,12 @@ namespace :algoliasearch do
     index.set_settings({
       "searchableAttributes" => %w[
         name,title
-        header_title,company
         listing_text
         property_features,property_amenities
         city
         neighborhoods,areas,home_neighborhoods,area,metro
         state
+        header_title,company
         description,detail_description,neighborhood_description,overview_text
         body,bio
         unordered(leadership_groups)
