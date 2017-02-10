@@ -8,7 +8,7 @@ class SearchesControllerTest < ActionController::TestCase
         before do
           DatabaseCleaner.start
           request_matchers = [:method, :algolia_path_matcher, :algolia_host_matcher]
-          VCR.use_cassette('algolia_red_keep_search', :match_requests_on => request_matchers) do
+          VCR.use_cassette('algolia_red_keep_search', match_requests_on: request_matchers) do
             ApartmentCommunity.algolia_clear_index!
             section = Section.make(:about)
             ApartmentCommunity.make
@@ -26,7 +26,7 @@ class SearchesControllerTest < ActionController::TestCase
             PressRelease.make(title: 'The Red Keep', sections: [section])
             Project.make(title: 'The Red Keep', section: section)
 
-            get :index, :q => 'red keep'
+            get :index, q: 'red keep'
           end
         end
 
@@ -34,7 +34,7 @@ class SearchesControllerTest < ActionController::TestCase
         should render_template :index
 
         teardown do
-          VCR.use_cassette("algolia_teardown", :match_requests_on => [:method, :algolia_path_matcher, :algolia_host_matcher]) do
+          VCR.use_cassette("algolia_teardown", match_requests_on: [:method, :algolia_path_matcher, :algolia_host_matcher]) do
             ApartmentCommunity.algolia_clear_index!(true)
           end
           DatabaseCleaner.clean
@@ -47,7 +47,7 @@ class SearchesControllerTest < ActionController::TestCase
             SearchResultProxy.create(query: 'Something Juicy', url: 'https://google.com/')
           end
 
-          get :index, :q => 'something JUICY'
+          get :index, q: 'something JUICY'
         end
 
         should respond_with(:redirect)
