@@ -9,7 +9,7 @@ module SearchHelper
         id:      search_result
       )
     when Project
-      featured_project_path(search_result)
+      project_path(search_result.section || Section.about, search_result)
     when Neighborhood
       neighborhood_path(metro_id: search_result.area.metro, area_id: search_result.area, id: search_result)
     when BozzutoBlogPost

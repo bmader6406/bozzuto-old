@@ -49,7 +49,9 @@ class ApartmentCommunity < ActiveRecord::Base
   has_one :neighborhood, foreign_key: :featured_apartment_community_id, dependent: :nullify
 
   has_many :neighborhood_memberships, inverse_of: :apartment_community, dependent: :destroy
+  has_many :neighborhoods,            through: :neighborhood_memberships
   has_many :area_memberships,         inverse_of: :apartment_community, dependent: :destroy
+  has_many :areas,                    through: :area_memberships
 
   has_attached_file :hero_image,
     url:             '/system/:class/:id/:attachment_name/:style.:extension',
@@ -63,6 +65,18 @@ class ApartmentCommunity < ActiveRecord::Base
     has_one_attribute :city, :name
     has_many_attribute :property_features, :name
     has_many_attribute :property_amenities, :primary_type
+    attribute :state do
+      city.try(:state).try(:name)
+    end
+    has_many_attribute :neighborhoods, :name
+    attribute :areas do
+      areas.map do |area|
+        {
+          name: area.name,
+          metro: area.metro.try(:name)
+        }
+      end
+    end
     attribute :type_ranking do
       1
     end

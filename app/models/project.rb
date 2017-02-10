@@ -18,8 +18,12 @@ class Project < ActiveRecord::Base
   algolia_site_search if: :published do
     attribute :title, :zip_code, :listing_text, :overview_text
     has_one_attribute :city, :name
+    has_many_attribute :property_features, :name
+    attribute :state do
+      city.try(:state).try(:name)
+    end
     attribute :type_ranking do
-      1
+      1.5
     end
   end
 

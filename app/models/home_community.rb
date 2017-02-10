@@ -32,6 +32,11 @@ class HomeCommunity < ActiveRecord::Base
     attribute :title, :zip_code, :listing_text, :neighborhood_description, :overview_text
     has_one_attribute :city, :name
     has_many_attribute :property_features, :name
+    has_many_attribute :property_amenities, :primary_type
+    has_many_attribute :home_neighborhoods, :name
+    attribute :state do
+      city.try(:state).try(:name)
+    end
     attribute :type_ranking do
       1
     end
