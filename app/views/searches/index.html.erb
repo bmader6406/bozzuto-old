@@ -32,8 +32,8 @@
                 <li>
                   <h4><%= link_to result.to_s, route_for_result(result) %></h4>
 
-                  <%- result.try(:description) do |description| -%>
-                    <p><%== description %></p>
+                  <%- if result.respond_to?(:description) -%>
+                    <p><%== result.description %></p>
                   <%- end -%>
                 </li>
               <% end -%>
