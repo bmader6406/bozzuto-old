@@ -41,6 +41,19 @@ class SearchesControllerTest < ActionController::TestCase
         end
       end
 
+      context 'with query present and a SearchResultProxy' do
+        before do
+          VCR.use_cassette('search_proxy_good') do
+            SearchResultProxy.create(query: 'Something Juicy', url: 'https://google.com/')
+          end
+
+          get :index, :q => 'something JUICY'
+        end
+
+        should respond_with(:redirect)
+        should redirect_to('the supplied URL') { "https://google.com/" }
+      end
+
       context "without query present" do
         before do
           get :index

@@ -2,6 +2,9 @@ class SearchesController < ApplicationController
   before_filter :require_query
 
   def index
+    if search_results.is_a?(String)
+      redirect_to search_results
+    end
   end
 
 

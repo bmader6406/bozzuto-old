@@ -2,6 +2,8 @@ class SearchResultProxy < ActiveRecord::Base
   validates :query, :url, presence: true
   validate :url_is_valid
 
+  scope :for_query, lambda {|query_text| where("LOWER(query) = ?", query_text.downcase) }
+
   private
 
   def url_is_valid

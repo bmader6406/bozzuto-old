@@ -15,9 +15,9 @@ ActiveAdmin.register SearchResultProxy do
     actions
   end
 
-  show do |city|
+  show title: :query do |search_proxy|
     panel nil do
-      attributes_table_for city do
+      attributes_table_for search_proxy do
         row :id
         row :query
         row :url

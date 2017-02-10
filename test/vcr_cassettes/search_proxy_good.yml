@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://google.com/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - google.com
+  response:
+    status:
+      code: 301
+      message: Moved Permanently
+    headers:
+      Location:
+      - https://www.google.com/
+      Content-Type:
+      - text/html; charset=UTF-8
+      Date:
+      - Fri, 10 Feb 2017 03:37:10 GMT
+      Expires:
+      - Sun, 12 Mar 2017 03:37:10 GMT
+      Cache-Control:
+      - public, max-age=2592000
+      Server:
+      - gws
+      Content-Length:
+      - '220'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="35,34"
+    body:
+      encoding: UTF-8
+      string: "<HTML><HEAD><meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<TITLE>301
+        Moved</TITLE></HEAD><BODY>\n<H1>301 Moved</H1>\nThe document has moved\n<A
+        HREF=\"https://www.google.com/\">here</A>.\r\n</BODY></HTML>\r\n"
+    http_version: 
+  recorded_at: Fri, 10 Feb 2017 03:37:10 GMT
+recorded_with: VCR 3.0.3
