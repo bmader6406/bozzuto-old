@@ -1,0 +1,249 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://5868ykqcn6-dsn.algolia.net/1/indexes/bozzutosite_test/settings?getVersion=2
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Thu, 16 Feb 2017 01:16:22 GMT
+      X-Algolia-Api-Key:
+      - API_KEY
+      X-Algolia-Application-Id:
+      - APP_ID
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 16 Feb 2017 01:16:22 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: UTF-8
+      string: |
+        {"minWordSizefor1Typo":4,"minWordSizefor2Typos":8,"hitsPerPage":20,"maxValuesPerFacet":100,"minProximity":2,"version":2,"searchableAttributes":["name,title","listing_text","property_features,property_amenities","city","neighborhoods,areas,home_neighborhoods,area,metro","state","header_title,company","description,detail_description,neighborhood_description,overview_text","body,bio","unordered(leadership_groups)","zip_code"],"numericAttributesForFiltering":["type_ranking"],"attributesToRetrieve":["name","title"],"unretrievableAttributes":null,"optionalWords":null,"replicas":[],"attributesForFaceting":null,"attributesToSnippet":null,"attributesToHighlight":null, "paginationLimitedTo":1000,"attributeForDistinct":null,"exactOnSingleWordQuery":"attribute","disablePrefixOnAttributes":["listing_text","property_features","property_amenities","body","bio","description","detail_description","neighborhood_description","overview_text","leadership_groups","zip_code"],"ranking":["words","filters","proximity","exact","attribute","asc(type_ranking)","typo","custom"],"customRanking":["asc(type_ranking)"],"separatorsToIndex":"","removeWordsIfNoResults":"none","queryType":"prefixLast","highlightPreTag":"<em>","highlightPostTag":"</em>","snippetEllipsisText":"","alternativesAsExact":["ignorePlurals","singleWordSynonym"] }
+    http_version: 
+  recorded_at: Thu, 16 Feb 2017 01:16:22 GMT
+- request:
+    method: post
+    uri: https://5868ykqcn6.algolia.net/1/indexes/bozzutosite_test/clear
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Thu, 16 Feb 2017 01:16:22 GMT
+      X-Algolia-Api-Key:
+      - API_KEY
+      X-Algolia-Application-Id:
+      - APP_ID
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 16 Feb 2017 01:16:22 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '62'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+    body:
+      encoding: UTF-8
+      string: |
+        {"updatedAt":"2017-02-16T01:16:22.891Z", "taskID":1106631410}
+    http_version: 
+  recorded_at: Thu, 16 Feb 2017 01:16:22 GMT
+- request:
+    method: get
+    uri: https://5868ykqcn6-dsn.algolia.net/1/indexes/bozzutosite_test/task/1106631410
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Thu, 16 Feb 2017 01:16:23 GMT
+      X-Algolia-Api-Key:
+      - API_KEY
+      X-Algolia-Application-Id:
+      - APP_ID
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 16 Feb 2017 01:16:23 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '43'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+    body:
+      encoding: UTF-8
+      string: |
+        {"status":"published","pendingTask":false}
+    http_version: 
+  recorded_at: Thu, 16 Feb 2017 01:16:23 GMT
+- request:
+    method: put
+    uri: https://5868ykqcn6.algolia.net/1/indexes/bozzutosite_test/ApartmentCommunity1
+    body:
+      encoding: UTF-8
+      string: '{"title":"Kunde-Smith","zip_code":null,"listing_text":null,"neighborhood_description":null,"overview_text":null,"city":"Lake
+        Aricfurt","property_features":"","property_amenities":"","state":"Pennsylvania
+        1","neighborhoods":"","areas":[],"type_ranking":1,"_tags":[]}'
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Thu, 16 Feb 2017 01:16:23 GMT
+      X-Algolia-Api-Key:
+      - API_KEY
+      X-Algolia-Application-Id:
+      - APP_ID
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 16 Feb 2017 01:16:23 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '94'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+    body:
+      encoding: UTF-8
+      string: |
+        {"updatedAt":"2017-02-16T01:16:23.639Z","taskID":1106631420,"objectID":"ApartmentCommunity1"}
+    http_version: 
+  recorded_at: Thu, 16 Feb 2017 01:16:23 GMT
+- request:
+    method: post
+    uri: https://5868ykqcn6-dsn.algolia.net/1/indexes/bozzutosite_test/query
+    body:
+      encoding: UTF-8
+      string: '{"params":"page=0\u0026tagFilters=%5B%22pay+rent%22%5D\u0026query=red+keep+"}'
+    headers:
+      User-Agent:
+      - Algolia for Ruby 1.12.6
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Thu, 16 Feb 2017 01:16:27 GMT
+      X-Algolia-Api-Key:
+      - API_KEY
+      X-Algolia-Application-Id:
+      - APP_ID
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 16 Feb 2017 01:16:27 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Disposition:
+      - inline; filename=a.txt
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: UTF-8
+      string: |
+        {"hits":[{"title":"The Red Keep","objectID":"ApartmentCommunity2","_highlightResult":{"title":{"value":"The <em>Red</em> <em>Keep</em>","matchLevel":"full","fullyHighlighted":false,"matchedWords":["red","keep"]},"city":{"value":"East Tomborough","matchLevel":"none","matchedWords":[]},"property_features":{"value":"","matchLevel":"none","matchedWords":[]},"property_amenities":{"value":"","matchLevel":"none","matchedWords":[]},"state":{"value":"Utah 2","matchLevel":"none","matchedWords":[]},"neighborhoods":{"value":"","matchLevel":"none","matchedWords":[]}}}],"nbHits":1,"page":0,"nbPages":1,"hitsPerPage":20,"processingTimeMS":1,"exhaustiveNbHits":true,"query":"red keep ","params":"page=0&tagFilters=%5B%22pay+rent%22%5D&query=red+keep+"}
+    http_version: 
+  recorded_at: Thu, 16 Feb 2017 01:16:27 GMT
+recorded_with: VCR 3.0.3

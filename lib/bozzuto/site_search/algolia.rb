@@ -9,7 +9,7 @@ module Bozzuto
           params[:page] = (params.delete('page') || params.delete(:page)).to_i
           params[:page] -= 1 if params[:page] > 0
 
-          json = raw_search(q, params[:page])
+          json = raw_search(q, params.slice(:page, :tagFilters))
 
           results = results_for(json)
 
@@ -18,8 +18,8 @@ module Bozzuto
 
         private
 
-        def raw_search(q, page)
-          AlgoliaSearch::Utilities.get_model_classes.first.algolia_raw_search(q, {page: page})
+        def raw_search(q, params)
+          AlgoliaSearch::Utilities.get_model_classes.first.algolia_raw_search(q, params)
         end
 
         def results_for(json)
