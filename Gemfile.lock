@@ -83,6 +83,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (4.0.0)
+      activerecord (>= 4.0)
     acts_as_list (0.7.2)
       activerecord (>= 3.0)
     addressable (2.5.0)
@@ -422,6 +424,7 @@ DEPENDENCIES
   activeadmin (= 1.0.0pre2)
   activeadmin_reorderable
   activerecord-import (= 0.11.0)
+  acts-as-taggable-on (~> 4.0)
   acts_as_list
   airbrake (~> 5.0.5)
   algoliasearch-rails (~> 1.17)

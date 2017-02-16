@@ -21,6 +21,7 @@ ActiveAdmin.register Neighborhood do
                 :detail_description,
                 :featured_apartment_community,
                 :featured_apartment_community_id,
+                :tag_list,
                 seo_metadata_attributes: [
                   :id,
                   :meta_title,
@@ -114,6 +115,16 @@ ActiveAdmin.register Neighborhood do
           end
         end
       end
+
+      tab 'Search' do
+        panel nil do
+          attributes_table_for neighborhood do
+            row "Tags" do |neighborhood|
+              neighborhood.tag_list.join(', ')
+            end
+          end
+        end
+      end
     end
   end
 
@@ -151,6 +162,10 @@ ActiveAdmin.register Neighborhood do
           has_many :related_neighborhoods, allow_destroy: true, new_record: 'Add Related Neighborhood', heading: false do |neighborhood|
             neighborhood.input :nearby_neighborhood
           end
+        end
+
+        tab 'Search' do
+          input :tag_list, as: :string, input_html: { value: f.object.tag_list.join(', ') }
         end
       end
     end

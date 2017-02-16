@@ -59,6 +59,7 @@ ActiveAdmin.register ApartmentCommunity do
                 :lead_2_lease_email,
                 :lead_2_lease_id,
                 :hyly_id,
+                :tag_list,
                 property_feature_ids: [],
                 contact_configuration_attributes: [
                   :id,
@@ -362,6 +363,16 @@ ActiveAdmin.register ApartmentCommunity do
         end
       end
 
+      tab 'Search' do
+        panel nil do
+          attributes_table_for community do
+            row "Tags" do |community|
+              community.tag_list.join(', ')
+            end
+          end
+        end
+      end
+
       tab 'Codes' do
         panel nil do
           attributes_table_for community do
@@ -543,6 +554,10 @@ ActiveAdmin.register ApartmentCommunity do
           input :floor_plans_meta_keywords
           input :seo_link_text
           input :seo_link_url
+        end
+
+        tab 'Search' do
+          input :tag_list, as: :string, input_html: { value: f.object.tag_list.join(', ') }
         end
 
         tab 'Codes' do

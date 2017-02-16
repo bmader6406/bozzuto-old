@@ -15,6 +15,7 @@ ActiveAdmin.register HomeNeighborhood do
                 :description,
                 :detail_description,
                 :featured_home_community_id,
+                :tag_list,
                 home_neighborhood_memberships_attributes: [
                   :id,
                   :home_neighborhood_id,
@@ -76,6 +77,16 @@ ActiveAdmin.register HomeNeighborhood do
           end
         end
       end
+
+      tab 'Search' do
+        panel nil do
+          attributes_table_for neighborhood do
+            row "Tags" do |neighborhood|
+              neighborhood.tag_list.join(', ')
+            end
+          end
+        end
+      end
     end
   end
 
@@ -105,6 +116,10 @@ ActiveAdmin.register HomeNeighborhood do
             seo.input :meta_description
             seo.input :meta_keywords
           end
+        end
+
+        tab 'Search' do
+          input :tag_list, as: :string, input_html: { value: f.object.tag_list.join(', ') }
         end
       end
 

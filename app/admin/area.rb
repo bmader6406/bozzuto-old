@@ -20,6 +20,7 @@ ActiveAdmin.register Area do
                 :detail_description,
                 :area_type,
                 :position,
+                :tag_list,
                 related_areas_attributes: [
                   :id,
                   :area_id,
@@ -113,6 +114,16 @@ ActiveAdmin.register Area do
           end
         end
       end
+
+      tab 'Search' do
+        panel nil do
+          attributes_table_for area do
+            row "Tags" do |area|
+              area.tag_list.join(', ')
+            end
+          end
+        end
+      end
     end
   end
 
@@ -156,6 +167,10 @@ ActiveAdmin.register Area do
           association_table_for :neighborhoods do
             column :name
           end
+        end
+
+        tab 'Search' do
+          input :tag_list, as: :string, input_html: { value: f.object.tag_list.join(', ') }
         end
       end
 

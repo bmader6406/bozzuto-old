@@ -50,6 +50,7 @@ gem 'yelp'
 gem 'truncate_html'
 gem 'algoliasearch-rails',        '~> 1.17'
 gem 'rails-html-sanitizer'
+gem 'acts-as-taggable-on',        '~> 4.0'
 
 group :development do
   gem 'quiet_assets'

@@ -25,7 +25,8 @@ ActiveAdmin.register Page do
                 :right_montage_image,
                 :meta_title,
                 :meta_description,
-                :meta_keywords
+                :meta_keywords,
+                :tag_list
 
   filter :title_cont, label: 'Title'
   filter :section,    collection: Section.ordered_by_title
@@ -134,6 +135,16 @@ ActiveAdmin.register Page do
           end
         end
       end
+
+      tab 'Search' do
+        panel nil do
+          attributes_table_for resource do
+            row "Tags" do
+              resource.tag_list.join(', ')
+            end
+          end
+        end
+      end
     end
   end
 
@@ -179,6 +190,10 @@ ActiveAdmin.register Page do
               end
             end
           end
+        end
+
+        tab 'Search' do
+          input :tag_list, as: :string, input_html: { value: f.object.tag_list.join(', ') }
         end
       end
     end

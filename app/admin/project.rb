@@ -34,6 +34,7 @@ ActiveAdmin.register Project do
                 :featured_mobile,
                 :completion_date,
                 :has_completion_date,
+                :tag_list,
                 project_category_ids: []
 
   filter :title_cont,          label: 'Title'
@@ -166,6 +167,16 @@ ActiveAdmin.register Project do
           end
         end
       end
+
+      tab 'Search' do
+        panel nil do
+          attributes_table_for project do
+            row "Tags" do |project|
+              project.tag_list.join(', ')
+            end
+          end
+        end
+      end
     end
   end
 
@@ -242,6 +253,10 @@ ActiveAdmin.register Project do
 
         tab 'Categories' do
           input :project_categories, as: :chosen
+        end
+
+        tab 'Search' do
+          input :tag_list, as: :string, input_html: { value: f.object.tag_list.join(', ') }
         end
       end
     end

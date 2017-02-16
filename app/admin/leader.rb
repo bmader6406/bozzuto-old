@@ -10,7 +10,8 @@ ActiveAdmin.register Leader do
                 :title,
                 :company,
                 :bio,
-                :image
+                :image,
+                :tag_list
 
   # Work around for models who have overridden `to_param` in AA
   # See SO issue:
@@ -45,6 +46,9 @@ ActiveAdmin.register Leader do
       end
       row :created_at
       row :updated_at
+      row "Tags" do |leader|
+        leader.tag_list.join(', ')
+      end
     end
   end
 
@@ -55,6 +59,7 @@ ActiveAdmin.register Leader do
       input :company
       input :bio
       input :image,   as: :image
+      input :tag_list, as: :string, input_html: { value: f.object.tag_list.join(', ') }
     end
     
     actions

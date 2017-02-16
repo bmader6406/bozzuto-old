@@ -10,7 +10,8 @@ ActiveAdmin.register BozzutoBlogPost do
                 :title,
                 :url,
                 :published_at,
-                :image
+                :image,
+                :tag_list
 
   filter :title_cont, label: 'Title'
 
@@ -37,6 +38,9 @@ ActiveAdmin.register BozzutoBlogPost do
           image_tag post.image
         end
       end
+      row "Tags" do |post|
+        post.tag_list.join(', ')
+      end
       row :published_at do |post|
         if post.published_at.present?
           post.published_at.to_s(:extensive)
@@ -55,6 +59,7 @@ ActiveAdmin.register BozzutoBlogPost do
       input :url
       input :published_at,  as: :datetime_picker
       input :image,         as: :image
+      input :tag_list, as: :string, input_html: { value: f.object.tag_list.join(', ') }
 
       actions
     end

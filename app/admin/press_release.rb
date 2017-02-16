@@ -13,7 +13,8 @@ ActiveAdmin.register PressRelease do
                 :body,
                 :meta_title,
                 :meta_description,
-                :meta_keywords
+                :meta_keywords,
+                :tag_list
 
   filter :title_cont, label: 'Title'
   filter :published
@@ -74,6 +75,16 @@ ActiveAdmin.register PressRelease do
           end
         end
       end
+
+      tab 'Search' do
+        panel nil do
+          attributes_table_for press_release do
+            row "Tags" do |press_release|
+              press_release.tag_list.join(', ')
+            end
+          end
+        end
+      end
     end
   end
 
@@ -94,6 +105,10 @@ ActiveAdmin.register PressRelease do
           input :meta_title
           input :meta_description
           input :meta_keywords
+        end
+
+        tab 'Search' do
+          input :tag_list, as: :string, input_html: { value: f.object.tag_list.join(', ') }
         end
       end
     end

@@ -8,7 +8,14 @@ module Bozzuto
 
     class_methods do
       def algolia_site_search(options = {}, &block)
-        algoliasearch DEFAULT_ALGOLIA_OPTIONS.merge(options), &block
+        new_block = lambda {
+          instance_exec(&block)
+          tags do
+            tag_list
+          end
+        }
+        algoliasearch DEFAULT_ALGOLIA_OPTIONS.merge(options), &new_block
+        acts_as_taggable
       end
     end
 

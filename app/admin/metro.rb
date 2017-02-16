@@ -14,6 +14,7 @@ ActiveAdmin.register Metro do
                 :listing_image,
                 :detail_description,
                 :position,
+                :tag_list,
                 seo_metadata_attributes: [
                   :id,
                   :meta_title,
@@ -86,6 +87,16 @@ ActiveAdmin.register Metro do
           end
         end
       end
+
+      tab 'Search' do
+        panel nil do
+          attributes_table_for resource do
+            row "Tags" do |metro|
+              metro.tag_list.join(', ')
+            end
+          end
+        end
+      end
     end
   end
 
@@ -115,6 +126,10 @@ ActiveAdmin.register Metro do
               column :name
             end
           end
+        end
+
+        tab 'Search' do
+          input :tag_list, as: :string, input_html: { value: f.object.tag_list.join(', ') }
         end
       end
     end

@@ -15,6 +15,7 @@ ActiveAdmin.register NewsPost do
                 :meta_title,
                 :meta_description,
                 :meta_keywords,
+                :tag_list,
                 section_ids: []
 
   filter :title_cont, label: 'Title'
@@ -85,6 +86,16 @@ ActiveAdmin.register NewsPost do
           end
         end
       end
+
+      tab 'Search' do
+        panel nil do
+          attributes_table_for resource do
+            row "Tags" do |post|
+              post.tag_list.join(', ')
+            end
+          end
+        end
+      end
     end
   end
 
@@ -110,6 +121,10 @@ ActiveAdmin.register NewsPost do
 
         tab 'Sections' do
           input :sections, as: :chosen
+        end
+
+        tab 'Search' do
+          input :tag_list, as: :string, input_html: { value: f.object.tag_list.join(', ') }
         end
       end
     end

@@ -13,6 +13,7 @@ ActiveAdmin.register Award do
                 :body,
                 :show_as_featured_news,
                 :home_page_image,
+                :tag_list,
                 section_ids: []
 
   filter :title_or_body_cont, label: 'Search'
@@ -78,6 +79,16 @@ ActiveAdmin.register Award do
           end
         end
       end
+
+      tab 'Search' do
+        panel nil do
+          attributes_table_for award do
+            row "Tags" do |award|
+              award.tag_list.join(', ')
+            end
+          end
+        end
+      end
     end
   end
 
@@ -97,6 +108,10 @@ ActiveAdmin.register Award do
 
         tab 'Sections' do
           input :sections, as: :chosen
+        end
+
+        tab 'Search' do
+          input :tag_list, as: :string, input_html: { value: f.object.tag_list.join(', ') }
         end
       end
 
