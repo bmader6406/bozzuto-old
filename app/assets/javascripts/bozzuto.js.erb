@@ -800,10 +800,12 @@ window.bozzuto = {};
           'click': function(e) {
             e.preventDefault();
 
-            var url    = $(this).attr('href'),
-                $image = $('<img src="' + url + '" class="floor-plan-overlay" />');
+            var url   = $(this).attr('href');
+            var image = document.createElement('img');
 
-            $image.one('load', function() {
+            image.addEventListener('load', function() {
+              var $image = $(image);
+
               $image.lightbox_me({
                 appearEffect:   'show',
                 overlaySpeed:   0,
@@ -829,12 +831,10 @@ window.bozzuto = {};
               $image.click(function() {
                 $image.trigger('close');
               });
-            }).each(function() {
-              // make sure cached images fire the load event
-              if (this.complete) {
-                $(this).load();
-              }
             });
+
+            image.setAttribute('class', 'floor-plan-overlay');
+            image.setAttribute('src', url);
           }
         });
       });
