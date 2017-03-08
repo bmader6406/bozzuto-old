@@ -1127,10 +1127,10 @@ div.wysiwyg .wysiwyg-12pt-font {
     width: 300px;
     height: 45px;
   }
-  .home #masthead,
   .landing #masthead {
     border-top: 1px solid #6b6b71;
   }
+  .home #masthead,
   .home #masthead.ab-testing-1 {
     border-top: 0;
   }
@@ -1742,20 +1742,44 @@ div.wysiwyg .wysiwyg-12pt-font {
       }
     /* @end */
 
+    .home #main-content .container {
+      max-width: 1100px;
+      width: 100%;
+    }
     .home #content {
-      padding: 30px 0 20px 190px;
+      overflow: hidden;
+      padding: 30px 0 20px;
     }
-    .home #welcome {
-      width: 500px;
+    .home .carousel,
+    .home .carousel .slides {
+      width: 100%;
     }
+    .home .carousel .slides li {
+      margin-right: 40px;
+    }
+    .home #welcome:after {
+      border-bottom: 1px solid #cccccc;
+      bottom: -40px;
+      content: '';
+      left: 50%;
+      position: absolute;
+      right: 0;
+      transform: translateX(-50%);
+      width: 700px;
+    }
+    .home #welcome,
     .home #welcome.ab-testing-1 {
       margin-bottom: 40px;
+      position: relative;
       text-align: center;
       width: 100%;
 
       p:first-of-type {
         margin-bottom: 0;
       }
+    }
+    .home #welcome {
+      margin-bottom: 80px;
     }
     .home h1 {
       color: #565c64;
@@ -1775,14 +1799,14 @@ div.wysiwyg .wysiwyg-12pt-font {
       padding-left: 6px;
     }
 
-    .home .article {
-      float: left;
+    .home .row .-centered {
+      text-align: center;
     }
 
     .home .latest-news,
     .home .bozzuto-blog {
-      float: left;
-      margin: 25px 0;
+      display: inline-block;
+      margin: 0 auto;
       width: 380px;
     }
 
@@ -1841,42 +1865,6 @@ div.wysiwyg .wysiwyg-12pt-font {
       top: 5px;
     }
 
-
-    /* Latest Award */
-    .home .latest-award {
-      float: right;
-      padding-top: 12px;
-      width: 230px;
-    }
-
-    .home .latest-award .row {
-      background-color: #f2f4f5;
-      border-top: 1px solid #fff;
-      padding: 12px;
-    }
-
-    .home .latest-award .figure {
-      float: left;
-      width: 65px;
-    }
-
-    .home .latest-award .section {
-      float: left;
-      position: relative;
-      width: 136px;
-    }
-    .home .latest-award h4,
-    .home .latest-award p {
-      font-size: 12px;
-      line-height: 1.454545455;
-    }
-    .home .latest-award h4 a {
-      background: transparent image-url('structure/bg-news-a.gif') no-repeat 0 4px;
-      color: #747479;
-      font-weight: bold;
-      padding-left: 6px;
-    }
-
     /* Latest News */
     .home .latest-news {
       margin-right: 10px;
@@ -1886,70 +1874,10 @@ div.wysiwyg .wysiwyg-12pt-font {
     #main-nav li a {
       background: transparent image-url('structure/bg-main-nav.gif') no-repeat 0 0;
     }
-    .home #main-content {
-      background: transparent image-url('structure/bg-home-main-content.gif') repeat-x top left;
-    }
+    .home #main-content,
     .home #main-content.ab-testing-1 {
       background: none;
     }
-
-    /* @group --social */
-      .home #social,
-      .home #social .container {
-        background: image-url('structure/bg-news.gif') repeat-y top center;
-      }
-      .home #social {
-        border-top: 1px solid #d5d8dc;
-      }
-      .home #social .container {
-        padding-left: 20px;
-        width: 940px;
-      }
-      .home #social h2 {
-        color: #000;
-        float: left;
-        font-size: 15px;
-        line-height: 1.333333333;
-        padding-top: 12px;
-        width: 170px;
-      }
-      .home #social .facebook,
-      .home #social .twitter,
-      .home #social .rss {
-        float: left;
-      }
-      .home #social .facebook {
-        border-right: 1px solid #9a9da1;
-        min-height: 62px;
-        padding: 12px 0 6px 20px;
-        width: 359px;
-      }
-      .home #social .twitter,
-      .home #social .rss {
-        padding-left: 15px;
-        width: 375px;
-      }
-
-      .home #social .twitter {
-        padding-top: 10px;
-        height: 30px;
-      }
-      .home #social .rss {
-        border-top: 1px solid #9a9da1;
-        height: 29px;
-        padding-top: 10px;
-      }
-      .home #social .rss p {
-        background: transparent image-url('structure/ico-rss.gif') no-repeat center left;
-        padding-left: 22px;
-      }
-      .home #social .rss a {
-        background: transparent image-url('structure/bg-news-a.gif') no-repeat center left;
-        color: #656571;
-        font-weight: bold;
-        padding-left: 6px;
-      }
-    /* @end */
   /* @end */
 /* @end */
 

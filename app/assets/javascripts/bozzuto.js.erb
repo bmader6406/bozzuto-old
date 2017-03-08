@@ -1072,21 +1072,21 @@ window.bozzuto = {};
 
   $.fn.carousel = function() {
     return $(this).each(function() {
-      var $carousel  = $(this),
-          $container = $('.slides ul', $carousel),
-          $nav       = $('.nav', $carousel),
-          $pager     = $('<p class="pager"></p>'),
-          $pageLinks = null,
-          $prev      = $('<a href="#" class="prev">Previous Slide</a>'),
-          $next      = $('<a href="#" class="next">Next Slide</a>'),
-          $slides    = $('> li', $container),
-          slideCount = $slides.size(),
-          offset     = $slides.first().outerWidth(true),
-          setOffset  = offset * 3,
-          setCount   = Math.ceil(slideCount / 3),
-          currentSet = -1,
-          duration   = 750;
-
+      var $carousel     = $(this),
+          $container    = $('.slides ul', $carousel),
+          $nav          = $('.nav', $carousel),
+          $pager        = $('<p class="pager"></p>'),
+          $pageLinks    = null,
+          $prev         = $('<a href="#" class="prev">Previous Slide</a>'),
+          $next         = $('<a href="#" class="next">Next Slide</a>'),
+          $slides       = $('> li', $container),
+          slideCount    = $slides.size(),
+          offset        = $slides.first().outerWidth(true),
+          visibleSlides = ($('body').hasClass('home')) ? 4 : 3,
+          setOffset     = offset * visibleSlides,
+          setCount      = Math.ceil(slideCount / visibleSlides),
+          currentSet    = -1,
+          duration      = 750;
 
       $carousel.bind({
         'carousel:setup': function() {

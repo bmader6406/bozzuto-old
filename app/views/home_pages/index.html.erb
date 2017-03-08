@@ -60,32 +60,12 @@
         <% end %>
 
         <div class="row">
-          <div id="welcome" class="col">
+          <div id="welcome">
             <%= @home_page.body.try(:html_safe) %>
           </div>
-
-          <% if latest_awards.any? %>
-            <div class="latest-award article">
-              <h3><%= link_to 'Awards', awards_path(@section) %></h3>
-
-              <% latest_awards.each do |award| %>
-                <div class="row">
-                  <% if award.image? %>
-                    <p class="figure">
-                      <%= link_to image_tag(award.image.url(:thumb)), award_path(@section, award) %>
-                    </p>
-                  <% end %>
-
-                  <div class="section">
-                    <h4><%= link_to award.title, award_path(@section, award) %></h4>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
         </div>
 
-        <div class="row">
+        <div class="row -centered">
           <%= if_present?(featured_news) do |post| %>
             <div class="latest-news article">
               <h3><%= link_to 'Featured News', news_posts_path(@section) %></h3>
@@ -115,32 +95,3 @@
     </div>
   </div>
 <% end %>
-
-
-<div id="social">
-  <div class="container">
-    <h2>Bozzuto Social</h2>
-
-    <div class="facebook">
-      <div class="fb-like" data-href="http://www.facebook.com/TheBozzutoGroup" data-send="true" data-width="340" data-show-faces="true"></div>
-    </div>
-
-    <div class="twitter">
-      <a href="https://twitter.com/Bozzuto" class="twitter-follow-button" data-show-count="true">Follow Bozzuto</a>
-      <script type="text/javascript" charset="utf-8">
-        window.twttr = (function (d,s,id) {
-          var t, js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
-          js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
-          return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
-        }(document, "script", "twitter-wjs"));
-      </script>
-    </div>
-
-    <div class="rss">
-      <p><%= link_to 'Get RSS Feed', news_posts_path('about-us', :format => :rss), 'data-track-social-delay' => 'RSS,Get Feed,{current url}' %></p>
-    </div>
-  </div>
-</div>
-
-<%= render :partial => 'shared/facebook' %>
