@@ -61,7 +61,7 @@ $(document).ready(function() {
     } else if (referrerHost && referrerHost != window.location.hostname) {
       adSource = 'referrer'
     } else {
-      adSource = 'PropertyWebsite'
+      adSource = 'Bozzuto.com'
     }
 
     if (adSource == 'referrer') {
