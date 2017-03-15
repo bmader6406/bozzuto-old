@@ -1,6 +1,5 @@
 .site-footer {
   background-color: color(gray-abbey);
-  background-image: image-url('refresh/footer-logomark.png');
   background-repeat: no-repeat;
   background-position: -70px bottom;
   color: #fff;
@@ -19,7 +18,7 @@
 
   li a{
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
 
   img {
@@ -35,7 +34,7 @@
   padding: 45px 0;
 
   &.-light-padding {
-    padding: 35px;
+    padding: 20px;
   }
 
   &.-heavy-padding {
@@ -97,6 +96,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-top: 20px;
 }
 
 .footer-grid-list__item {
@@ -110,12 +110,14 @@
 }
 
 .footer-section__heading {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .site-footer__logo {
-  height: 23px;
-  margin-bottom: 24px;
+  height: 33px;
+  margin-bottom: 20px;
+  position: relative;
+  top: 7px;
 
   path,
   polygon {
