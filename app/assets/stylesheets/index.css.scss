@@ -1757,7 +1757,7 @@ div.wysiwyg .wysiwyg-12pt-font {
     .home .carousel .slides li {
       margin-right: 40px;
     }
-    .home #welcome:after {
+    .home #welcome:not(.ab-testing-1):after {
       border-bottom: 1px solid #cccccc;
       bottom: -40px;
       content: '';
