@@ -12,11 +12,15 @@
   }
 
   p,
-  a{
-    font-size: 14px;
+  a {
+    font-size: font-size(small) + 1;
+
+    @include breakpoint( breakpoint(med) ) {
+      font-size: font-size(sub-base) + 1;
+    }
   }
 
-  li a{
+  li a {
     display: block;
     margin-bottom: 5px;
   }
