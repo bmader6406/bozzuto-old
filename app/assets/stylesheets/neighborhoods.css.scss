@@ -211,10 +211,6 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   padding: 0 15px;
 }
 
-.ab-testing-1 .nh-tiles {
-  padding: 0;
-}
-
 @mixin tile {
   float: left;
   padding: 15px;
@@ -223,14 +219,6 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
 
 .nh-tile {
   @include tile;
-}
-
-.ab-testing-1 .nh-tile {
-  padding: 15px 100px 15px 0;
-}
-
-.ab-testing-1 .nh-tile:last-of-type {
-  padding-right: 0;
 }
 
 .cty-tile {
