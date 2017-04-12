@@ -111,7 +111,7 @@ At this point, the application should be ready to run locally.  Start the server
 $ bundle exec rails s
 ```
 
-Visit `localhost:3000` in the browser. :rocket:
+Visit `localhost:3000` in the browser. 🚀🚀🚀
 
 ## Testing
 
