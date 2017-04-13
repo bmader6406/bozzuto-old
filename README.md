@@ -1,6 +1,8 @@
 # Bozzuto
 
-http://www.bozzuto.com/
+production - http://www.bozzuto.com/
+integration - https://bozzuto.integration.vigetx.com/
+staging - https://bozzuto.staging.vigetx.com
 
 ## Installation
 
