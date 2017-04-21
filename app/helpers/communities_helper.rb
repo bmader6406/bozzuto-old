@@ -7,23 +7,6 @@ module CommunitiesHelper
     render 'communities/request_info', :community => community, :extra_content => extra_content
   end
 
-  def mediamind_activity_code(activity_id)
-    return '' unless activity_id.present?
-
-    <<-END.html_safe
-      <script type="text/javascript">
-      var ebRand = Math.random() + '';
-      ebRand = ebRand * 1000000;
-      //<![CDATA[
-      document.write('<scr'+'ipt src="HTTP://bs.serving-sys.com/BurstingPipe/ActivityServer.bs?cn=as&amp;ActivityID=#{activity_id}&amp;rnd=' + ebRand + '"></scr' + 'ipt>');
-      //]]>
-      </script>
-      <noscript>
-      <img width="1" height="1" style="border:0" src="HTTP://bs.serving-sys.com/BurstingPipe/ActivityServer.bs?cn=as&amp;ActivityID=#{activity_id}&amp;ns=1"/>
-      </noscript>
-    END
-  end
-
   def google_conversion_code(conversion_label)
     return '' unless conversion_label.present?
 
@@ -37,12 +20,12 @@ module CommunitiesHelper
       var google_conversion_label = #{conversion_label.inspect}; var google_conversion_value = 0;
       /* ]]> */
       </script>
-      <script type="text/javascript"  
+      <script type="text/javascript"
       src="http://www.googleadservices.com/pagead/conversion.js">
       </script>
       <noscript>
       <div style="display:inline;">
-      <img height="1" width="1" style="border-style:none;" alt=""  
+      <img height="1" width="1" style="border-style:none;" alt=""
       src="http://www.googleadservices.com/pagead/conversion/971751790/?label=#{conversion_label}&amp;guid=ON&amp;script=0"/>
       </div>
       </noscript>

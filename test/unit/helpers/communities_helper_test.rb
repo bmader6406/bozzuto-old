@@ -14,21 +14,6 @@ class CommunitiesHelperTest < ActionView::TestCase
     end
   end
 
-
-  context '#mediamind_activity_code' do
-    context 'when activity_id is not present' do
-      should 'return an empty string' do
-        assert_equal '', mediamind_activity_code(nil)
-      end
-    end
-
-    context 'when activity_id is present' do
-      should 'return the JavaScript' do
-        assert_match /script.*ActivityID=12345/m, mediamind_activity_code(12345)
-      end
-    end
-  end
-
   context '#google_conversion_code' do
     context 'when conversion_label is not present' do
       should 'return an empty string' do
