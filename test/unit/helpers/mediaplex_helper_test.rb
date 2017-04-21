@@ -306,17 +306,5 @@ class MediaplexHelperTest < ActionView::TestCase
         assert_nil code
       end
     end
-
-    context "#mediaplex_rocket_fuel_tracking_pixel" do
-      it "returns the rocket fuel tracking pixel" do
-        assert_match /Bozzuto Tracking Pixel/, mediaplex_rocket_fuel_tracking_pixel
-      end
-    end
-
-    context "#mediaplex_rocket_fuel_conversion_pixel" do
-      it "returns the rocket fuel conversion pixel" do
-        assert_match /Bozzuto Conversion Pixel/, mediaplex_rocket_fuel_conversion_pixel
-      end
-    end
   end
 end
