@@ -56,30 +56,47 @@
   </div>
 
   <div id="main-content">
-    <div class="row">
+    <div class="container">
       <div id="welcome">
         <%= @home_page.body.try(:html_safe) %>
       </div>
     </div>
-
-    <div class="container nh-container">
-      <div class="nh-tiles row">
-        <% metros.in_groups_of(3, false).each do |group| %>
-          <div class="row">
-            <% group.each do |metro| %>
-              <div class="nh-tile">
-                <%= link_to metro_path(metro), :class => 'nh-listing-image' do %>
-                  <div class="nh-tile-title">
-                    <h2><%= metro %></h2>
-                  </div>
-                  <%= image_tag metro.listing_image.url, :width => 300, :height => 234 %>
-                <% end %>
+    <section class="home-featured container nh-container">
+      <p class="home-featured-title"><%# TODO: make admin editable #%>Where Are You Moving To?</p>
+      <div class="home-featured-section">
+        <h2 class="home-featured-section-title"><%# TODO: make admin editable #%>Rent With Us.</h2>
+        <div class="nh-tiles row">
+          <% metros.in_groups_of(3, false).each do |group| %>
+            <div class="row">
+              <% group.each do |metro| %>
+                <div class="nh-tile">
+                  <%= link_to metro_path(metro), :class => 'nh-listing-image' do %>
+                    <div class="nh-tile-title">
+                      <p><%= metro %></p>
+                    </div>
+                    <%= image_tag metro.listing_image.url, :width => 300, :height => 234 %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="home-featured-section">
+        <h2 class="home-featured-section-title"><%# TODO: make admin editable #%>Buy From Us.</h2>
+        <div class="nh-tiles row">
+          <%# TODO: loop through cities or only put one? #%>
+          <div class="nh-tile -full">
+            <%= link_to 'TODO:', :class => 'nh-listing-image' do %>
+              <div class="nh-tile-title">
+                <p><%# TODO: make admin editable #%>City Name</p>
               </div>
+              <%= image_tag '#TODO', :width => 1100, :height => 234 %>
             <% end %>
           </div>
-        <% end %>
+        </div>
       </div>
-    </div>
+    </section>
   </div>
 <% end %>
 

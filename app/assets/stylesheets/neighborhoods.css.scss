@@ -212,6 +212,10 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
 
 .nh-tile {
   @include tile;
+
+  &.-full {
+    width: 100%;
+  }
 }
 
 .cty-tile {
@@ -229,7 +233,7 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   height: 234px;
   margin-bottom: 18px;
   position: relative;
-  width: 300px;
+  width: 100%;
 }
 
 .nh-tile-title,
@@ -243,7 +247,8 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   top: 0;
   width: 300px;
 
-  h2 {
+  h2,
+  p {
     color: #fff !important;
     display: table-cell;
     font-family: $narrow-font;
@@ -261,8 +266,9 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   @include transition(all 0.1s ease-in-out);
 
   border: 5px solid transparent;
-  height: 224px;
-  width: 290px;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
 }
 
 .nh-listing-image:hover {

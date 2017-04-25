@@ -1757,8 +1757,7 @@ div.wysiwyg .wysiwyg-12pt-font {
       margin-right: 40px;
     }
     .home #welcome {
-      margin-bottom: 0;
-      margin-top: 40px;
+      margin: 40px 0 60px;
       position: relative;
       text-align: center;
       width: 100%;
@@ -1874,6 +1873,30 @@ div.wysiwyg .wysiwyg-12pt-font {
 
     .home #main-content .nh-tile:last-of-type {
       padding-right: 0;
+    }
+
+    .home-featured {
+
+    }
+
+    .home-featured-title,
+    .home-featured-section-title {
+      color: #565c64;
+      font-family: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
+      text-align: center;
+    }
+
+    .home-featured-title {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .home-featured-section {
+      margin-bottom: 30px;
+    }
+
+    .home-featured-section-title {
+      font-size: 28px;
     }
   /* @end */
 /* @end */
