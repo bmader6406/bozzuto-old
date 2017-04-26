@@ -214,6 +214,7 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   @include tile;
 
   &.-full {
+    padding: 0 !important;
     width: 100%;
   }
 }
@@ -234,6 +235,10 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   margin-bottom: 18px;
   position: relative;
   width: 100%;
+
+  img {
+    object-fit: cover;
+  }
 }
 
 .nh-tile-title,
