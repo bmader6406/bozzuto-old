@@ -1156,20 +1156,23 @@ div.wysiwyg .wysiwyg-12pt-font {
 
 /* @group slideshow */
   /* @group -big slideshow */
-  #slideshow {
+  #slideshow,
+  .slideshow {
     height: 375px;
     overflow: hidden;
     position: relative;
     top: -15px;
     width: 840px;
   }
-  #slideshow ul.slides {
+  #slideshow ul.slides,
+  .slideshow ul.slides {
     height: 380px;
     margin: 0 auto;
     max-width: 1100px;
     width: 100%;
   }
-  #slideshow ul.slides li.slide {
+  #slideshow ul.slides li.slide,
+  .slideshow ul.slides li.slide {
     background: #fff;
     height: 375px;
     left: 0;
@@ -1179,24 +1182,30 @@ div.wysiwyg .wysiwyg-12pt-font {
     width: 840px;
     z-index: 1;
   }
+  .home .slideshow ul.slides li.slide,
   .home #slideshow ul.slides li.slide {
     top: -1px;
   }
+  .home .slideshow ul.slides li.slide a,
   .home #slideshow ul.slides li.slide a {
     display: block;
     height: 100%;
     max-width: 1100px;
     width: 100%;
   }
+  .slideshow ul.slides li.slide:first-child,
   #slideshow ul.slides li.slide:first-child {
     z-index: 2;
   }
+  .slideshow ul.slides li.on-deck,
   #slideshow ul.slides li.on-deck {
     z-index: 4 !important;
   }
+  .slideshow ul.slides li.current,
   #slideshow ul.slides li.current {
     z-index: 3 !important;
   }
+  .slideshow ul.slides li.slide div.featured-property,
   #slideshow ul.slides li.slide div.featured-property {
     background-color: #c0c5cb;
     color: #fff;
@@ -1205,42 +1214,52 @@ div.wysiwyg .wysiwyg-12pt-font {
     right: 0;
     top: 0;
   }
+  .slideshow ul.slides li.slide div.featured-propert,
   #slideshow ul.slides li.slide div.featured-property,
+  .slideshow ul.slides li.slide div.featured-property a,
   #slideshow ul.slides li.slide div.featured-property a {
     display: block;
     height: 375px;
     width: 300px;
   }
+  .slideshow ul.slides li.slide div.featured-property a:hover,
   #slideshow ul.slides li.slide div.featured-property a:hover {
     text-decoration: none;
   }
+  .slideshow ul.slides li.slide div.featured-property a img,
   #slideshow ul.slides li.slide div.featured-property a img {
     left: 0;
     position: absolute;
     top: 0;
     z-index: 0;
   }
+  .slideshow ul.slides li.slide div.featured-property div.aside,
   #slideshow ul.slides li.slide div.featured-property div.aside {
     padding: 15px;
     position: relative;
     z-index: 2;
   }
+  .slideshow ul.slides li.slide div.featured-property a h,
   #slideshow ul.slides li.slide div.featured-property a h2,
+  .slideshow ul.slides li.slide div.featured-property a p,
   #slideshow ul.slides li.slide div.featured-property a p {
     color: #fff;
   }
+  .slideshow ul.slides li.slide div.featured-property a h2,
   #slideshow ul.slides li.slide div.featured-property a h2 {
     background: transparent image-url('structure/bg-divider-white.gif') no-repeat bottom left;
     line-height: 1;
     margin-bottom: 20px;
     padding-bottom: 20px;
   }
+  .slideshow ul.slides li.slide div.featured-property a p,
   #slideshow ul.slides li.slide div.featured-property a p {
     background: transparent image-url('structure/bg-body-slide-arrow.gif') no-repeat 0 0.5em;
     font-size: 14px;
     padding-left: 10px;
     width: 200px;
   }
+  .slideshow .overlay,
   #slideshow .overlay {
     background: image-url('structure/bg-slideshow-overlay.png') no-repeat;
     display: block;
@@ -1250,6 +1269,7 @@ div.wysiwyg .wysiwyg-12pt-font {
     width: 300px;
     z-index: 1;
   }
+  .slideshow .pinterest-button,
   #slideshow .pinterest-button {
     bottom: 20px;
     display: block;
@@ -1261,6 +1281,7 @@ div.wysiwyg .wysiwyg-12pt-font {
   }
 
   /* pagination */
+  .slideshow ul.slideshow-pagination,
   #slideshow ul.slideshow-pagination {
     background: #fff;
     border: 1px solid #85898e;
@@ -1270,9 +1291,11 @@ div.wysiwyg .wysiwyg-12pt-font {
     position: absolute;
     z-index: 10;
   }
+  .slideshow ul.slideshow-pagination li,
   #slideshow ul.slideshow-pagination li {
     float: left;
   }
+  .slideshow ul.slideshow-pagination li a,
   #slideshow ul.slideshow-pagination li a {
     color: #747479;
     display: block;
@@ -1280,32 +1303,39 @@ div.wysiwyg .wysiwyg-12pt-font {
     text-align: center;
     width: 19px;
   }
+  .slideshow ul.slideshow-pagination li.current ,
   #slideshow ul.slideshow-pagination li.current a,
+  .slideshow ul.slideshow-pagination li a:hover,
   #slideshow ul.slideshow-pagination li a:hover {
     color: #28283a;
     text-decoration: none;
   }
+  .slideshow ul.slideshow-pagination li.current a,
   #slideshow ul.slideshow-pagination li.current a {
     font-weight: bold;
   }
 
   /* navigation */
+  .slideshow ul.slideshow-navigation,
   #slideshow ul.slideshow-navigation {
     position: absolute;
     right: 67px;
     top: 6px;
     z-index: 10;
   }
+  .slideshow ul.slideshow-navigation,
   #slideshow ul.slideshow-navigation {
     z-index: 10;
     top: 15px;
     right: 19px;
     width: 70px;
   }
+  .slideshow ul.slideshow-navigation li,
   #slideshow ul.slideshow-navigation li {
     float: left;
   }
 
+  .slideshow ul.slideshow-navigation li a,
   #slideshow ul.slideshow-navigation li a {
     background: image-url('structure/bg-apartments-slideshow-navigation.png') no-repeat transparent;
     display: block;
@@ -1313,9 +1343,11 @@ div.wysiwyg .wysiwyg-12pt-font {
     overflow: hidden;
     width: 35px;
   }
+  .slideshow ul.slideshow-navigation li a.prev,
   #slideshow ul.slideshow-navigation li a.prev {
     background-position: left top;
   }
+  .slideshow ul.slideshow-navigation li a.next,
   #slideshow ul.slideshow-navigation li a.next {
     background-position: right top;
   }
@@ -1719,16 +1751,20 @@ div.wysiwyg .wysiwyg-12pt-font {
     /* @group --masthead */
       .home #masthead .container,
       .home #slideshow,
+      .home .slideshow,
       .home #masthead-fg,
-      .home #slideshow ul.slides li.slide {
+      .home #slideshow ul.slides li.slide,
+      .home .slideshow ul.slides li.slide {
         height: 375px;
         max-width: 1100px;
         width: 100%;
       }
+      .home .slideshow ul.slides li.slide,
       .home #slideshow ul.slides li.slide {
         height: 375px;
       }
       .home #masthead .container,
+      .home .slideshow,
       .home #slideshow {
         height: 374px;
       }
@@ -1736,6 +1772,7 @@ div.wysiwyg .wysiwyg-12pt-font {
         margin: 0 auto;
         position: relative;
       }
+      .home .slideshow,
       .home #slideshow {
         top: 0;
       }
