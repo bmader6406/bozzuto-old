@@ -35,12 +35,12 @@
 }
 
 .site-header__main-nav__item {
-  font-size: font-size(small) + 1;
+  font-size: font-size(sub-base) + 1;
   margin-right: 36px;
   text-transform: uppercase;
 
   @include breakpoint( breakpoint(med) ) {
-    font-size: font-size(sub-base) + 1;
+    font-size: font-size(medium) - 1;
   }
 
   &:last-of-type {
