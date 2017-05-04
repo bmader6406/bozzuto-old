@@ -43,7 +43,7 @@ module CommunitiesHelper
   def schedule_tour_link(community, opts = {})
     return unless community.apartment_community?
 
-    opts.reverse_merge!(:class => 'schedule-tour')
+    opts.reverse_merge!(:class => 'button-refresh')
 
     if community.schedule_tour_url?
       opts[:'data-iframe'] = 'yes'

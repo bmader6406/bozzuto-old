@@ -2316,14 +2316,16 @@ div.wysiwyg .wysiwyg-12pt-font {
     }
 
     .community #main-content .request-info {
+      align-items: center;
       border-bottom: 1px solid #dadadc;
       border-top: 1px solid #dadadc;
       color: #84848b;
+      display: flex;
       font-size: 22px;
       line-height: 35px;
+      justify-content: space-between;
       margin-bottom: 20px;
       padding: 10px 0;
-      position: relative;
     }
     .community #main-content .request-info a.request-info-button {
       background: image-url('structure/bg-request-info.png') no-repeat 0 0;
