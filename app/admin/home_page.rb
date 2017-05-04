@@ -8,6 +8,9 @@ ActiveAdmin.register HomePage do
   permit_params :meta_title,
                 :meta_description,
                 :meta_keywords,
+                :headline,
+                :apartment_subheadline,
+                :home_subheadline,
                 :body,
                 :mobile_title,
                 :mobile_banner_image,
@@ -28,6 +31,9 @@ ActiveAdmin.register HomePage do
             row :meta_title
             row :meta_description
             row :meta_keywords
+            row :headline
+            row :apartment_subheadline
+            row :home_subheadline
             row :body do |homepage|
               raw homepage.body
             end
@@ -66,6 +72,9 @@ ActiveAdmin.register HomePage do
           input :meta_title
           input :meta_description
           input :meta_keywords
+          input :headline
+          input :apartment_subheadline
+          input :home_subheadline
           input :body, as: :redactor
           input :mobile_title
           input :mobile_banner_image, as: :image

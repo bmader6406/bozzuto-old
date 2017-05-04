@@ -62,9 +62,9 @@
       </div>
     </div>
     <section class="home-featured container nh-container">
-      <p class="home-featured-title"><%# TODO: make admin editable #%>Where Are You Moving To?</p>
+      <p class="home-featured-title"><%= @home_page.headline %></p>
       <div class="home-featured-section">
-        <h2 class="home-featured-section-title"><%# TODO: make admin editable #%>Rent With Us.</h2>
+        <h2 class="home-featured-section-title"><%= @home_page.apartment_subheadline %></h2>
         <div class="nh-tiles row">
           <% metros.in_groups_of(3, false).each do |group| %>
             <div class="row">
@@ -83,7 +83,7 @@
         </div>
       </div>
       <div class="home-featured-section">
-        <h2 class="home-featured-section-title"><%# TODO: make admin editable #%>Buy From Us.</h2>
+        <h2 class="home-featured-section-title"><%= @home_page.home_subheadline %></h2>
         <div class="nh-tiles row slideshow" >
           <ul class="slides">
             <%# TODO: for community in where_to_buy #%>
