@@ -323,6 +323,17 @@ HomeNeighborhoodMembership.blueprint do
   home_community
 end
 
+HomePage.blueprint do
+  body { 'Welcome to Bozzuto!' }
+end
+
+HomeSectionSlide.blueprint do
+  home_page
+  text            { 'Look at dis hoem' }
+  link_url        { 'https://en.wikipedia.org/wiki/MTV_Cribs' }
+  image_file_name { Sham.file_name }
+end
+
 LandingPage.blueprint do
   title { Faker::Lorem.words(3) * ' ' }
   state

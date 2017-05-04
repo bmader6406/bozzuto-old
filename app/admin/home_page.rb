@@ -20,6 +20,13 @@ ActiveAdmin.register HomePage do
                   :image,
                   :link_url,
                   :_destroy
+                ],
+                home_section_slides_attributes: [
+                  :id,
+                  :image,
+                  :text,
+                  :link_url,
+                  :_destroy
                 ]
 
   show do |homepage|
@@ -58,7 +65,19 @@ ActiveAdmin.register HomePage do
             column :image do |slide|
               image_tag slide.image
             end
-            column :link_url
+            column :link_url, label: 'Link URL'
+          end
+        end
+      end
+
+      tab 'Home Community Section' do
+        collection_panel_for :home_section_slides do
+          reorderable_table_for homepage.home_section_slides do
+            column :image do |slide|
+              image_tag slide.image
+            end
+            column :text
+            column :link_url, label: 'Link URL'
           end
         end
       end
@@ -84,6 +103,14 @@ ActiveAdmin.register HomePage do
         tab 'Slides' do
           has_many :slides, heading: false, allow_destroy: true do |slide|
             slide.input :image, as: :image
+            slide.input :link_url
+          end
+        end
+
+        tab 'Home Section' do
+          has_many :home_section_slides, heading: 'Images', allow_destroy: true do |slide|
+            slide.input :image, as: :image
+            slide.input :text
             slide.input :link_url
           end
         end

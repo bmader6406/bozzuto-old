@@ -1,11 +1,12 @@
 class HomePage < ActiveRecord::Base
-
   has_one :carousel,
     :as        => :content,
     :dependent => :destroy
 
   has_many :slides, -> { order(position: :asc) },
     :class_name => 'HomePageSlide'
+
+  has_many :home_section_slides, -> { order(position: :asc) }, dependent: :destroy
 
   has_attached_file :mobile_banner_image,
     :url             => '/system/:class/mobile_banner_image_:id_:style.:extension',
@@ -18,7 +19,7 @@ class HomePage < ActiveRecord::Base
   validates :body,
             presence: true
 
-  accepts_nested_attributes_for :slides, allow_destroy: true
+  accepts_nested_attributes_for :slides, :home_section_slides, allow_destroy: true
 
   def to_s
     'Home Page'

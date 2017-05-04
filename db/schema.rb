@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170504153125) do
+ActiveRecord::Schema.define(version: 20170504171613) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -674,6 +674,19 @@ ActiveRecord::Schema.define(version: 20170504153125) do
     t.string   "apartment_subheadline",            limit: 255
     t.string   "home_subheadline",                 limit: 255
   end
+
+  create_table "home_section_slides", force: :cascade do |t|
+    t.integer  "home_page_id",       limit: 4,   null: false
+    t.integer  "position",           limit: 4
+    t.string   "image_file_name",    limit: 255, null: false
+    t.string   "image_content_type", limit: 255
+    t.string   "text",               limit: 255
+    t.string   "link_url",           limit: 255, null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "home_section_slides", ["home_page_id"], name: "index_home_section_slides_on_home_page_id", using: :btree
 
   create_table "homes", force: :cascade do |t|
     t.string   "name",              limit: 255,                                         null: false
@@ -1606,5 +1619,6 @@ ActiveRecord::Schema.define(version: 20170504153125) do
   add_index "zip_codes", ["zip"], name: "index_zip_codes_on_zip", unique: true, using: :btree
 
   add_foreign_key "chronolog_changesets", "admin_users", on_delete: :nullify
+  add_foreign_key "home_section_slides", "home_pages", on_delete: :cascade
   add_foreign_key "notification_recipients", "admin_users", on_delete: :cascade
 end

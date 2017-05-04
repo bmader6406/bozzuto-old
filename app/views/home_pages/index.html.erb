@@ -86,32 +86,16 @@
         <h2 class="home-featured-section-title"><%= @home_page.home_subheadline %></h2>
         <div class="nh-tiles row slideshow" >
           <ul class="slides">
-            <%# TODO: for community in where_to_buy #%>
+            <% @home_page.home_section_slides.each do |slide| %>
               <li class="slide nh-tile -full">
-                <%= link_to 'TODO:', :class => 'nh-listing-image' do %>
+                <%= link_to slide.link_url, class: 'nh-listing-image' do %>
                   <div class="nh-tile-title">
-                    <p><%# TODO: make admin editable #%>City 1 Name</p>
+                    <p><%= slide.text %></p>
                   </div>
-                  <%= image_tag 'https://vl.basecamphq.com/projects/3789201/file/232282443/photo_21341_resized.jpg', :width => 1100, :height => 375 %>
+                  <%= image_tag slide.image.url, width: 1100, height: 375 %>
                 <% end %>
               </li>
-              <li class="slide nh-tile -full">
-                <%= link_to 'TODO:', :class => 'nh-listing-image' do %>
-                  <div class="nh-tile-title">
-                    <p><%# TODO: make admin editable #%>City 2 Name</p>
-                  </div>
-                  <%= image_tag 'https://vl.basecamphq.com/projects/3789201/file/232282443/photo_21341_resized.jpg', :width => 1100, :height => 375 %>
-                <% end %>
-              </li>
-              <li class="slide nh-tile -full">
-                <%= link_to 'TODO:', :class => 'nh-listing-image' do %>
-                  <div class="nh-tile-title">
-                    <p><%# TODO: make admin editable #%>City 3 Name</p>
-                  </div>
-                  <%= image_tag 'https://vl.basecamphq.com/projects/3789201/file/232282443/photo_21341_resized.jpg', :width => 1100, :height => 375 %>
-                <% end %>
-              </li>
-            <%# end #%>
+            <% end %>
           </ul>
         </div>
       </div>
