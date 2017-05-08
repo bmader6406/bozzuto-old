@@ -21,25 +21,3 @@
 </div>
 
 <%= send_to_friend_mediaplex_code(@community, flash[:send_listing_email]) %>
-
-<!-- Start Quantcast Tag -->
-<script type="text/javascript">
-  var _qevents = _qevents || [];
-
-  (function() {
-    var elem = document.createElement('script');
-    elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + "https://quantserve.com/s/zNkRBgILpLEJcz";
-    elem.async = true;
-    elem.type = "text/javascript";
-    var scpt = document.getElementsByTagName('script')[0];
-    scpt.parentNode.insertBefore(elem, scpt);
-  })();
-
-  _qevents.push(
-    {qacct:"p-hdFx0hWaF1Gkm",labels:"_fp.event.Lead Form Conversion",orderid: <%= @community.hyly_id %>,event:"refresh"}
-  );
-</script>
-<noscript>
-    <img src="https://quantserve.com/s/rxdaB6sDEDdOTv" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/>
-</noscript>
-<!-- End Quantcast tag -->
