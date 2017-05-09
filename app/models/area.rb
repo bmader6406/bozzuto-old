@@ -88,8 +88,4 @@ class Area < ActiveRecord::Base
   def to_s
     name
   end
-
-  def description
-    detail_description
-  end
 end
