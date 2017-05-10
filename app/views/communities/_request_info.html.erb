@@ -1,7 +1,7 @@
 <div class="request-info row" style="border: none;">
 
   <% if @community.schedule_tour_url? %>
-    <%= link_to 'Schedule A Tour', apartment_community_tours_path(@community), class: 'button-refresh' %>
+    <%= link_to 'Schedule A Tour', @community.schedule_tour_url, class: 'button-refresh' %>
   <% else %>
     <%= link_to 'Request Info', contact_community_path(community), class: 'button-refresh' %>
   <% end %>
