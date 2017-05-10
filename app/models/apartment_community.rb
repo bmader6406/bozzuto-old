@@ -127,6 +127,10 @@ class ApartmentCommunity < ActiveRecord::Base
     self.class.external_cms_attributes
   end
 
+  def has_tours?
+    schedule_tour_url.present?
+  end
+
   def nearby_communities(limit = 6)
     @nearby_communities ||= city.apartment_communities.published.near(self).limit(limit)
   end

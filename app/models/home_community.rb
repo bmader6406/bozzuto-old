@@ -61,6 +61,10 @@ class HomeCommunity < ActiveRecord::Base
     home_neighborhoods.first
   end
 
+  def has_tours?
+    false
+  end
+
   # Overwrite seo_link? from Bozzuto::Model::Property
   def seo_link?
     false
