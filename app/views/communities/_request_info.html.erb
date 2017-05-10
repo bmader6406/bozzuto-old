@@ -3,7 +3,7 @@
   <% if @community.tours_page? %>
     <%= link_to 'Schedule A Tour', apartment_community_tours_path(@community), class: 'button-refresh' %>
   <% else %>
-    <%= schedule_tour_link(@community, :rel => 'external') %>
+    <%= link_to 'Request Info', contact_community_path(community), class: 'button-refresh' %>
   <% end %>
 
   <% if community.phone_number.present? %>
