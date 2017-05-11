@@ -246,6 +246,7 @@ en:
         listing_image: Listing Image
         home_neighborhood: Home Neighborhood
       home_page:
+        body_sub_image: Body Sub Image
         featured_property: Featured Property
         apartment_subheadline: Apartment Sub-Headline
         home_subheadline: Home Sub-Headline

@@ -12,6 +12,7 @@ ActiveAdmin.register HomePage do
                 :apartment_subheadline,
                 :home_subheadline,
                 :body,
+                :body_sub_image,
                 :mobile_title,
                 :mobile_banner_image,
                 :mobile_body,
@@ -43,6 +44,11 @@ ActiveAdmin.register HomePage do
             row :home_subheadline
             row :body do |homepage|
               raw homepage.body
+            end
+            row :body_sub_image do |homepage|
+              if homepage.body_sub_image.present?
+                image_tag homepage.body_sub_image
+              end
             end
             row :mobile_title
             row :mobile_banner_image do |homepage|
@@ -95,6 +101,7 @@ ActiveAdmin.register HomePage do
           input :apartment_subheadline
           input :home_subheadline
           input :body, as: :redactor
+          input :body_sub_image, as: :image
           input :mobile_title
           input :mobile_banner_image, as: :image
           input :mobile_body, as: :redactor

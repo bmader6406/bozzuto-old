@@ -7,6 +7,7 @@ class HomePageTest < ActiveSupport::TestCase
 
     should validate_presence_of(:body)
 
+    should have_attached_file(:body_sub_image)
     should have_attached_file(:mobile_banner_image)
 
     describe "#to_s" do
