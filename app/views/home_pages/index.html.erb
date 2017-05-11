@@ -62,7 +62,7 @@
       </div>
     </div>
     <section class="home-featured container nh-container">
-      <% if @home_page.body_sub_image.url.present? %>
+      <% if @home_page.body_sub_image.present? %>
         <%= image_tag @home_page.body_sub_image.url, :class => "home-featured-section__image" %>
       <% end %>
       <p class="home-featured-title"><%= @home_page.headline %></p>
