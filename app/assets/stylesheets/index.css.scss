@@ -1780,6 +1780,7 @@ div.wysiwyg .wysiwyg-12pt-font {
 
     .home #main-content .container {
       max-width: 1100px;
+      text-align: center;
       width: 100%;
     }
     .home #content {
@@ -1798,20 +1799,17 @@ div.wysiwyg .wysiwyg-12pt-font {
       position: relative;
       text-align: center;
       width: 100%;
-
-      p:first-of-type {
-        margin-bottom: 0;
-      }
     }
     .home h1 {
       color: #565c64;
       font-size: 35px;
+      margin-bottom: 20px;
       text-transform: uppercase;
     }
     .home #welcome p {
       font-size: 15px;
       line-height: 1.6;
-      margin-bottom: 1em;
+      margin-bottom: 5px;
     }
     .home #welcome p.read-more a {
       background: transparent image-url('structure/bg-header-a.gif') no-repeat center left;
@@ -1930,6 +1928,10 @@ div.wysiwyg .wysiwyg-12pt-font {
 
     .home-featured-section-title {
       font-size: 28px;
+    }
+
+    .home-featured-section__image {
+      margin: 10px auto;
     }
   /* @end */
 /* @end */

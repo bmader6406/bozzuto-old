@@ -743,13 +743,6 @@ ActiveRecord::Schema.define(version: 20170511131026) do
 
   add_index "landing_pages", ["slug"], name: "index_landing_pages_on_slug", using: :btree
 
-  create_table "landing_pages_popular_properties", id: false, force: :cascade do |t|
-    t.integer "landing_page_id", limit: 4
-    t.integer "property_id",     limit: 4
-  end
-
-  add_index "landing_pages_popular_properties", ["landing_page_id", "property_id"], name: "index_landing_page_and_popular_properties", using: :btree
-
   create_table "landing_pages_projects", id: false, force: :cascade do |t|
     t.integer "landing_page_id", limit: 4
     t.integer "project_id",      limit: 4
@@ -1001,20 +994,6 @@ ActiveRecord::Schema.define(version: 20170511131026) do
     t.datetime "updated_at"
   end
 
-  create_table "photo_groups_photos", id: false, force: :cascade do |t|
-    t.integer "photo_group_id", limit: 4
-    t.integer "photo_id",       limit: 4
-  end
-
-  create_table "photo_sets", force: :cascade do |t|
-    t.string   "title",             limit: 255,                 null: false
-    t.string   "flickr_set_number", limit: 255,                 null: false
-    t.integer  "property_id",       limit: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "needs_sync",                    default: false, null: false
-  end
-
   create_table "photos", force: :cascade do |t|
     t.string   "image_file_name",    limit: 255, default: ""
     t.string   "title",              limit: 255, default: "",    null: false
@@ -1124,8 +1103,8 @@ ActiveRecord::Schema.define(version: 20170511131026) do
     t.boolean  "published",                                                                                         null: false
     t.boolean  "featured_mobile",                                                   default: false,                 null: false
     t.integer  "position",                   limit: 4
-    t.datetime "created_at",                                                        default: '2016-04-01 15:45:39', null: false
-    t.datetime "updated_at",                                                        default: '2016-04-01 15:45:39', null: false
+    t.datetime "created_at",                                                        default: '2016-04-01 15:51:51', null: false
+    t.datetime "updated_at",                                                        default: '2016-04-01 15:51:51', null: false
   end
 
   create_table "promos", force: :cascade do |t|
@@ -1476,6 +1455,16 @@ ActiveRecord::Schema.define(version: 20170511131026) do
   end
 
   add_index "related_neighborhoods", ["neighborhood_id"], name: "index_related_neighborhoods_on_neighborhood_id", using: :btree
+
+  create_table "reusable_photos", force: :cascade do |t|
+    t.string   "title",              limit: 255, null: false
+    t.string   "caption",            limit: 255
+    t.string   "attribution",        limit: 255
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
 
   create_table "search_result_proxies", force: :cascade do |t|
     t.string   "query",      limit: 255, null: false
