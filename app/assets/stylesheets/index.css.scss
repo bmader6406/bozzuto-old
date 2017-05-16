@@ -2286,7 +2286,6 @@ div.wysiwyg .wysiwyg-12pt-font {
       background: #D5D8DC;
       border: 1px solid #9BA2AD;
       color: #595E71;
-      display: inline-block;
       height: 24px;
       line-height: 24px;
       padding: 0px 5px;
@@ -5605,11 +5604,8 @@ div.wysiwyg .wysiwyg-12pt-font {
 }
 
 .fp-toggle {
-  height: 38px;
-  position: absolute;
-  right: 0;
-  text-transform: uppercase;
-  top: 8px;
+  margin-left: 30px;
+  position: relative;
 }
 
 .fp-toggle-label {
