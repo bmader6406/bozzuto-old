@@ -104,12 +104,16 @@ $(document).ready(function() {
 
   function updatePropertyWebsiteURL(leadSource) {
     $('[data-id="property-website-link"]').each(function() {
-      var $link = $(this)
-      var url   = $link.attr('href')
-      var param = 'lead_source=' + leadSource
-      param     = url.includes('?') ? '&' + param : '?' + param
+      var $link  = $(this)
+      var params = ['utm_source', 'utm_campaign']
 
-      $link.attr('href', url + param)
+      params.forEach(function(param) {
+        var url    = $link.attr('href')
+        var regex  = new RegExp('([\?&])(' + param + '=[^&#]*)')
+        var target = url.replace(regex, '$1' + param + '=' + leadSource)
+
+        $link.attr('href', url.replace(regex, '$1' + param + '=' + leadSource))
+      })
     })
   }
 })
