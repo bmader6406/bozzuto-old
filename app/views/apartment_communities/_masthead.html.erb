@@ -52,6 +52,7 @@
             <%= link_to (@community.website_url_text.presence || 'Visit Community Website'), website_url(@community.website_url), {
                 :rel               => 'external',
                 :class             => 'fl-record-click',
+                'data-id'          => 'property-website-link',
                 'data-track-event' => "Apartments,#{ga_escape(@community.title)},Visit Community Website"
               }.merge(double_click_data_attrs(@community.title, 'visit764'))
             %>

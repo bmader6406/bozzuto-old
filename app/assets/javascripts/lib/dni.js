@@ -21,13 +21,10 @@ $(document).ready(function() {
       data:     data,
       success: function(response) {
         var dniNumber  = response.dniNumber || response.dni_number
-        var leadSource = response.leadSourceValue
+        var leadSource = response.leadSourceValue || data.adsource
 
-        if (leadSource && leadSource != '') {
-          updateToursURL(leadSource)
-        } else {
-          updateToursURL(data.adsource)
-        }
+        updateToursURL(leadSource)
+        updatePropertyWebsiteURL(leadSource)
 
         if (dniNumber.match(/\d{3}.\d{3}.\d{4}/)) {
           $number.text(dniNumber)
@@ -103,5 +100,16 @@ $(document).ready(function() {
         $tourLink.attr('href', tourURL.replace(/(\?|$)/, '?src=w.' + value))
       }
     }
+  }
+
+  function updatePropertyWebsiteURL(leadSource) {
+    $('[data-id="property-website-link"]').each(function() {
+      var $link = $(this)
+      var url   = $link.attr('href')
+      var param = 'lead_source=' + leadSource
+      param     = url.includes('?') ? '&' + param : '?' + param
+
+      $link.attr('href', url + param)
+    })
   }
 })
