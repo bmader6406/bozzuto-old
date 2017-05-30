@@ -26,8 +26,8 @@ Bozzuto::Application.routes.draw do
   get '/yelp' => 'yelp#show', :as => :yelp
 
   # Careers (reroutes to bozzutocareers.com as of June 2017)
-  get '/careers' => redirect("https://bozzutocareers.com"), :as => :careers
-  get '/careers/:page' => redirect("https://bozzutocareers.com")
+  get '/careers' => redirect('http://bozzutocareers.com'), as: :careers
+  get '/careers/:page' => redirect('http://bozzutocareers.com')
 
   # Emails
   namespace :email do
