@@ -195,6 +195,11 @@ class RedirectRules
       ),
 
       Rule.new(
+        %r{^/services/construction/construction-careers(\?.*)?},
+        'http://www.bozzutocareers.com'
+      ),
+
+      Rule.new(
         %r{^/careers/construction-careers(\?.*)?},
         'http://bozzutoconstructionjobs.com/'
       )
