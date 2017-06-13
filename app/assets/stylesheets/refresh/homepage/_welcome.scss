@@ -1,0 +1,30 @@
+.homepage__welcome {
+  background-color: color(westar-brown);
+  background-image: image-url('refresh/welcome-logomark.png');
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+  color: color(text-black);
+  padding: 64px 0 60px;
+}
+
+.homepage__welcome__heading {
+  margin-bottom: 40px;
+}
+
+.homepage__welcome__text {
+  font-size: font-size(big);
+
+  strong {
+    color: color(emerald-green);
+    font-weight: bold;
+  }
+
+  p {
+    margin-bottom: 44px;
+  }
+
+  p + p {
+    margin-bottom: 0;
+  }
+}
