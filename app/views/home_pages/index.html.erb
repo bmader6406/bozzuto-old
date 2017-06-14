@@ -27,17 +27,6 @@
       <div id="masthead-fg">
         <div class="container">
           <div id="slideshow">
-            <div class="header">
-              <ul class="slideshow-navigation">
-                <li>
-                  <a class="prev" href="#">Previous</a>
-                </li>
-                <li>
-                  <a class="next" href="#">Next</a>
-                </li>
-              </ul>
-            </div>
-
             <ul class="slides">
               <% @home_page.slides.each do |slide| %>
                 <li class="slide">
@@ -56,21 +45,17 @@
   </div>
 
   <div id="main-content">
-    <div class="homepage__welcome">
+    <div class="home-welcome">
       <div class="container">
-        <h2 class="homepage__welcome__heading heading -really-huge -condensed -uppercase -narrow">Your Experience Is Everything</h2>
-        <div class="homepage__welcome__text">
-          <p>Whether we’re managing, building or developing a home or apartment community, Bozzuto is here to bring people together. We reach beyond the expected to create extraordinary experiences and homes that inspire you to be your best. By simplifying your life, we free you to focus on what matters most. With Bozzuto, you’re invited to embrace connections, build meaningful relationships and find peace as you follow your purpose. </p>
-          <p>From Boston to Fort Lauderdale, <strong>Bozzuto Brings You Home®</strong>.</p>
+        <h2 class="home-welcome-heading heading -really-huge -condensed -uppercase -narrow"><%= @home_page.headline %></h2>
+        <div class="home-welcome-text">
+          <%= @home_page.body.try(:html_safe) %>
         </div>
       </div>
     </div>
     <section class="home-featured container nh-container">
-      <% if @home_page.body_sub_image.present? %>
-        <%= image_tag @home_page.body_sub_image.url, :class => "home-featured-section__image" %>
-      <% end %>
-      <p class="home-featured-title"><%= @home_page.headline %></p>
       <div class="home-featured-section">
+        <p class="home-featured-section-subtitle">Where are you going?</p>
         <h2 class="home-featured-section-title"><%= @home_page.apartment_subheadline %></h2>
         <div class="nh-tiles row">
           <% metros.in_groups_of(3, false).each do |group| %>
@@ -91,6 +76,7 @@
       </div>
       <% if @home_page.home_section_slides.any? %>
         <div class="home-featured-section">
+          <p class="home-featured-section-subtitle">Putting down your roots?</p>
           <h2 class="home-featured-section-title"><%= @home_page.home_subheadline %></h2>
           <div class="nh-tiles row slideshow" >
             <ul class="slides">

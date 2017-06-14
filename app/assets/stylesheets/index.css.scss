@@ -1754,9 +1754,8 @@ div.wysiwyg .wysiwyg-12pt-font {
       .home .slideshow,
       .home #masthead-fg,
       .home #slideshow ul.slides li.slide,
-      .home .slideshow ul.slides li.slide {
-        height: 375px;
-        max-width: 1100px;
+      .home .slideshow ul.slides li.slide,
+      .home #slideshow img {
         width: 100%;
       }
       .home .slideshow ul.slides li.slide,
@@ -1910,12 +1909,6 @@ div.wysiwyg .wysiwyg-12pt-font {
       padding-right: 0;
     }
 
-    .home-featured-title,
-    .home-featured-section-title {
-      color: #565c64;
-      font-family: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
-      text-align: center;
-    }
 
     .home-featured-title {
       font-size: 38px;
@@ -1923,11 +1916,40 @@ div.wysiwyg .wysiwyg-12pt-font {
     }
 
     .home-featured-section {
+      position: relative;
       margin-bottom: 30px;
+      padding-bottom: 25px;
+    }
+
+    .home-featured-section::after {
+      border-bottom: 9px solid #d6eef5;
+      bottom: 0;
+      content: '';
+      display: block;
+      left: calc(50% - 45px);
+      position: absolute;
+      width: 90px;
+    }
+
+    .home-featured-section:last-of-type::after {
+      display: none;
+    }
+
+    .home-featured-section-title,
+    .home-featured-section-subtitle {
+      line-height: 1;
+      text-align: center;
     }
 
     .home-featured-section-title {
-      font-size: 28px;
+      color: #00694e;
+      font-size: 48px;
+      margin-bottom: 53px;
+    }
+
+    .home-featured-section-subtitle {
+      color: #020100;
+      font-size: 60px;
     }
 
     .home-featured-section__image {
