@@ -3,6 +3,10 @@
   position: relative;
   width: 100%;
   z-index: layer(very-top);
+
+  .home & {
+    position: absolute;
+  }
 }
 
 .site-header__main-nav {
@@ -20,6 +24,14 @@
   height: 23px;
   margin-bottom: 20px;
   width: 126px;
+
+  svg {
+    fill: #006838;
+
+    .home & {
+      fill: #fff;
+    }
+  }
 
   @include breakpoint( breakpoint(med) ) {
     margin-bottom: 0;
@@ -51,6 +63,11 @@
     color: #565c64;
     @include hover-transition(#84848b);
     text-decoration: none;
+
+    .home & {
+      color: #fff;
+      @include hover-transition(#84848b);
+    }
   }
 }
 
@@ -71,6 +88,10 @@
     fill: color(gray-abbey);
     height: 20px;
     width: 20px;
+
+    .home & {
+      fill: #fff;
+    }
   }
 }
 

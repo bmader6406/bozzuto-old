@@ -27,14 +27,16 @@
       <div id="masthead-fg">
         <div class="container">
           <div id="slideshow">
-            <ul class="slides">
+            <ul class="slides -featured">
               <% @home_page.slides.each do |slide| %>
                 <li class="slide">
-                  <% if slide.link_url.present? %>
-                    <%= link_to image_tag(slide.image.url), slide.link_url %>
-                  <% else %>
-                    <%= image_tag slide.image.url %>
-                  <% end %>
+                  <%= image_tag slide.image.url %>
+                  <div class="">
+                    <%= link_to "Explore this Community", slide.link_url %>
+                    <% if slide.link_url.present? %>
+                      <% # todo: needs a new CTA field in the admin to populate here #%>
+                    <% end %>
+                  </div>
                 </li>
               <% end %>
             </ul>
