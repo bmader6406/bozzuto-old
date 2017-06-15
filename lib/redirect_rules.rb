@@ -180,6 +180,11 @@ class RedirectRules
       ),
 
       Rule.new(
+        %r{^/apartments/communities/237-summer-chase-apartments(\?.*)?},
+        'http://apartmentslimerick.com/'
+      ),
+
+      Rule.new(
         %r{^/apartments/ratings-reviews(\?.*)?},
         'http://www.bozzutolistens.com/'
       ),
