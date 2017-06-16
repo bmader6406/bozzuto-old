@@ -43,6 +43,20 @@
        url("/fonts/FontSiteSans-LightCd.svg#FontSiteSansLightCond") format("svg");
 }
 
+@font-face {
+  font-family: HelveticaNeueCond;
+  font-weight: normal;
+  font-style: normal;
+  src: url("/fonts/HelveticaNeueLTStd-UltLtCn.otf");
+}
+
+@font-face {
+  font-family: SurveyorFine;
+  font-weight: normal;
+  font-style: normal;
+  src: url("/fonts/SurveyorFine.otf");
+}
+
 /* @group base */
   img {
     -ms-interpolation-mode: bicubic;
@@ -1956,6 +1970,7 @@ div.wysiwyg .wysiwyg-12pt-font {
     .home-featured-section-title {
       color: #00694e;
       font-size: 48px;
+      font-weight: bold;
       margin-bottom: 53px;
     }
 
@@ -5861,6 +5876,7 @@ div.wysiwyg .wysiwyg-12pt-font {
 }
 
 // pull in refresh assets
+@import "bourbon/bourbon";
 @import "refresh/variables/index";
 @import "refresh/functions/index";
 @import "refresh/mixins/index";

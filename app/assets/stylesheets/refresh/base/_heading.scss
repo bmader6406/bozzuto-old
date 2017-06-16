@@ -1,5 +1,4 @@
 .heading {
-  font-size: font-size(big);
 
   &.-condensed {
     font-family: font(light-condensed);
@@ -11,7 +10,7 @@
   }
 
   &.-serif {
-    font-family: 'Prata', serif;
+    font-family: font(serif);
   }
 
   &.-narrow {

@@ -57,8 +57,8 @@
     </div>
     <section class="home-featured container nh-container">
       <div class="home-featured-section">
-        <p class="home-featured-section-subtitle">Where are you going?</p>
-        <h2 class="home-featured-section-title"><%= @home_page.apartment_subheadline %></h2>
+        <p class="home-featured-section-subtitle heading -condensed -narrow">Where are you going?</p>
+        <h2 class="home-featured-section-title heading -serif"><%= @home_page.apartment_subheadline %></h2>
         <div class="nh-tiles row">
           <% metros.in_groups_of(3, false).each do |group| %>
             <div class="row">
@@ -78,8 +78,8 @@
       </div>
       <% if @home_page.home_section_slides.any? %>
         <div class="home-featured-section">
-          <p class="home-featured-section-subtitle">Putting down your roots?</p>
-          <h2 class="home-featured-section-title"><%= @home_page.home_subheadline %></h2>
+          <p class="home-featured-section-subtitle heading -condensed -narrow">Putting down your roots?</p>
+          <h2 class="home-featured-section-title heading -serif"><%= @home_page.home_subheadline %></h2>
           <div class="nh-tiles row slideshow" >
             <ul class="slides">
               <% @home_page.home_section_slides.each do |slide| %>
