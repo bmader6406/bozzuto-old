@@ -33,6 +33,13 @@ button.button-refresh {
   &.-small-width {
     max-width: 172px;
   }
+
+  &.-minimal {
+    font-size: font-size(medium);
+    line-height: 1;
+    padding: 10px 20px 7px;
+    width: auto;
+  }
 }
 
 button.text-button {
