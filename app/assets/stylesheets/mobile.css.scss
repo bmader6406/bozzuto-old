@@ -167,6 +167,13 @@ input, select, textarea, .submit {
 .footer ul {
   clear: both;
 }
+
+.footer .disclaimers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .footer li {
   float: left;
   margin-bottom: 7px;
@@ -174,8 +181,6 @@ input, select, textarea, .submit {
 .full-site:after, .privacy-policy:after, .website-disclaimer:after {
   content: "|"; padding: 0 5px;
 }
-.full-site { margin-left: 82px }
-.privacy-policy { margin-left: 5px }
 .copy-and-eho {
   clear: left;
   color: #ccc;
