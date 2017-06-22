@@ -4,6 +4,7 @@
   <%= lasso_tracking_js(@community) %>
   <%= lasso_contact_js(@community) %>
   <%= double_click_community_request_info_script(@community) %>
+  <%= hyly_script id: Bozzuto::HyLy::HOMES_ID, context: @community %>
 <% end %>
 
 <div class="section page-title">
@@ -19,6 +20,8 @@
       <%= render :partial => 'custom_contact_form_323' %>
     <% elsif @community.id == 556 %>
       <%= render :partial => 'custom_contact_form_556' %>
+    <% elsif @community.hyly_id.present? %>
+      <%= hyly_form id: Bozzuto::HyLy::HOMES_ID, redirect_to: thank_you_home_community_contact_path %>
     <% else %>
       <%= render :partial => 'lasso_form' %>
     <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511131026) do
+ActiveRecord::Schema.define(version: 20170622120924) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -608,6 +608,7 @@ ActiveRecord::Schema.define(version: 20170511131026) do
     t.integer  "twitter_account_id",                      limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "hyly_id",                                 limit: 255
   end
 
   add_index "home_communities", ["slug"], name: "index_home_communities_on_slug", using: :btree

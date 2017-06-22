@@ -1,9 +1,13 @@
 module HyLyHelper
   def hyly_script(options = {})
+    host = Bozzuto::HyLy.host_for(options[:context])
+    id   = options.fetch(:id, Bozzuto::HyLy::PRIMARY_ID)
+    pid  = pid_parameter_for(options[:context])
+
     <<-HTML.html_safe
       <!-- HyLy Form (Start) -->
 
-      <script async src="//app.hy.ly/fjs/#{options.fetch(:id, Bozzuto::HyLy::PRIMARY_ID)}/0.js#{pid(options[:context])}"></script>
+      <script async src="//#{host}/fjs/#{id}/0.js#{pid}"></script>
 
       <!-- HyLy Form (End) -->
     HTML
@@ -17,7 +21,7 @@ module HyLyHelper
 
   private
 
-  def pid(thing)
+  def pid_parameter_for(thing)
     value = Bozzuto::HyLy.pid_for(thing)
 
     '?pid=' + value if value.present?

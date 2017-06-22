@@ -5,10 +5,13 @@ module Bozzuto
     mattr_accessor :pid_file
     self.pid_file = Rails.root.join('db', 'seeds', 'hyly_pids.csv')
 
-    PRIMARY_ID = 'AXrxloE2b'
-    ALT_ID     = 'pXCkf054i'
-    BUZZ_ID    = 'RDz6g84VF'
-    PIDS       = {
+    PRIMARY_ID   = 'AXrxloE2b'
+    ALT_ID       = 'pXCkf054i'
+    HOMES_ID     = 'jPeZi42q1'
+    BUZZ_ID      = 'RDz6g84VF'
+    PRIMARY_HOST = 'app.hy.ly'
+    HOMES_HOST   = 'my.hy.ly/mktg'
+    PIDS         = {
       'Bozzuto'                      => '',
       'Bozzuto Management Company'   => '1452068536020681077',
       'Bozzuto Homes'                => '1453516885273668017',
@@ -25,7 +28,11 @@ module Bozzuto
     }
 
     def self.pid_for(thing)
-      thing.is_a?(ApartmentCommunity) ? thing.hyly_id : PIDS[thing]
+      thing.respond_to?(:hyly_id) ? thing.hyly_id : PIDS[thing]
+    end
+
+    def self.host_for(thing)
+      thing.is_a?(HomeCommunity) ? HOMES_HOST : PRIMARY_HOST
     end
 
     def self.seed_pids

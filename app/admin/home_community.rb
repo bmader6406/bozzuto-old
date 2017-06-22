@@ -47,6 +47,7 @@ ActiveAdmin.register HomeCommunity do
                 :floor_plans_meta_keywords,
                 :published,
                 :tag_list,
+                :hyly_id,
                 property_features_ids: [],
                 dnr_configuration_attributes: [
                   :id,
@@ -267,6 +268,7 @@ ActiveAdmin.register HomeCommunity do
       tab 'Codes' do
         panel nil do
           attributes_table_for community do
+            row :hyly_id
             row 'DNR Customer Code' do |community|
               community.dnr_configuration.try(:customer_code)
             end
@@ -420,6 +422,8 @@ ActiveAdmin.register HomeCommunity do
         end
 
         tab 'Codes' do
+          input :hyly_id
+
           panel 'DNR' do
             inputs for: [:dnr_configuration, f.object.dnr_configuration || DnrConfiguration.new(property: f.object)] do |dnr|
               dnr.input :customer_code
