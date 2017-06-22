@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170622120924) do
+ActiveRecord::Schema.define(version: 20170622153710) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -667,6 +667,8 @@ ActiveRecord::Schema.define(version: 20170622120924) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "link_url",           limit: 255
+    t.string   "call_to_action",     limit: 255
+    t.string   "description",        limit: 255
   end
 
   create_table "home_pages", force: :cascade do |t|

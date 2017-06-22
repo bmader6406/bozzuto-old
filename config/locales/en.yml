@@ -258,6 +258,7 @@ en:
         mobile_body: Mobile Body
         mobile_title: Mobile Title
       home_page_slide:
+        call_to_action: Call to Action
         link_url: Link URL
       home_section_slide:
         link_url: Link URL

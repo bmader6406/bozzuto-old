@@ -32,11 +32,12 @@
                 <li class="slide">
                   <%= image_tag slide.image.url %>
                     <div class="featured-slide-cta">
-                      <% # todo: needs a new "Slide description" field in the admin to replace "Union Wharf | Baltimore, MD" #%>
-                      <p class="text -serif">Union Wharf | Baltimore, MD</p>
+                      <% if slide.description.present? %>
+                        <p class="text -serif"><%= slide.description %></p>
+                      <% end %>
+
                       <% if slide.link_url.present? %>
-                        <% # todo: needs a new "Link URL text" field in the admin to replace "Explore this Community" #%>
-                        <%= link_to "Explore this Community", slide.link_url, :class => 'button-refresh -minimal' %>
+                        <%= link_to slide.call_to_action || 'Explore', slide.link_url, class: 'button-refresh -minimal' %>
                       <% end %>
                     </div>
                 </li>

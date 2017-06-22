@@ -86,6 +86,8 @@ en:
         mobile_body: Shown when viewing the page from a mobile device
         mobile_title: Title of the page, shown when viewing from a mobile device
       home_page_slide:
+        call_to_action: This is the text displayed on the button tied to this slide's link.  Only displays when a Link URL is provided.
+        description: This is the contextual information displayed above the Call to Action button.
         image: Image dimensions should be 1100x375
         link_url: If present, the entire slide will be clickable and will link to this URL.
       landing_page:

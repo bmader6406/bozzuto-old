@@ -19,7 +19,9 @@ ActiveAdmin.register HomePage do
                 slides_attributes: [
                   :id,
                   :image,
+                  :call_to_action,
                   :link_url,
+                  :description,
                   :_destroy
                 ],
                 home_section_slides_attributes: [
@@ -71,7 +73,9 @@ ActiveAdmin.register HomePage do
             column :image do |slide|
               image_tag slide.image
             end
+            column :call_to_action
             column :link_url, label: 'Link URL'
+            column :description
           end
         end
       end
@@ -110,7 +114,9 @@ ActiveAdmin.register HomePage do
         tab 'Slides' do
           has_many :slides, heading: false, allow_destroy: true do |slide|
             slide.input :image, as: :image
+            slide.input :call_to_action
             slide.input :link_url
+            slide.input :description
           end
         end
 
