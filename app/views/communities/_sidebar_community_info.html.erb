@@ -26,7 +26,7 @@
     </div>
 
     <% # https://github.com/vigetlabs/bozzuto/issues/430 %>
-    <% if @community.core_id == 782 %>
+    <% if @community.id == 782 %>
       <p class="call-to-action">
         <%= link_to 'Transportation', '#', id: 'transitscreen-lightbox', 'data-track-event': "#{@community.apartment? ? 'Apartments' : 'Homes' },#{ga_escape(@community.title)},View Transportation" %>
       </p>
