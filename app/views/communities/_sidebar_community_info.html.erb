@@ -25,9 +25,16 @@
       </div>
     </div>
 
-    <p class="call-to-action">
-    <%= link_to 'View Interactive Map', '#', :id => 'map-lightbox', 'data-track-event' => "#{@community.apartment? ? 'Apartments' : 'Homes'},#{ga_escape(@community.title)},View Interactive Map" %>
-    </p>
+    <% # https://github.com/vigetlabs/bozzuto/issues/430 %>
+    <% if @community.core_id == 782 %>
+      <p class="call-to-action">
+        <%= link_to 'Transportation', '#', id: 'transitscreen-lightbox', 'data-track-event': "#{@community.apartment? ? 'Apartments' : 'Homes' },#{ga_escape(@community.title)},View Transportation" %>
+      </p>
+    <% else %>
+      <p class="call-to-action">
+      <%= link_to 'View Interactive Map', '#', :id => 'map-lightbox', 'data-track-event' => "#{@community.apartment? ? 'Apartments' : 'Homes'},#{ga_escape(@community.title)},View Interactive Map" %>
+      </p>
+    <% end %>
 
     <p class="call-to-action directions">
       <%= link_to directions_url(@community.address), :rel => 'external' do %>
@@ -41,4 +48,5 @@
   </div>
 </div>
 
-<%= render :partial => 'communities/sidebar_interactive_map' %>
+<%= render partial: 'communities/transitscreen' %>
+<%= render partial: 'communities/sidebar_interactive_map' %>

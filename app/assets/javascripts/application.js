@@ -21,3 +21,4 @@
 //= require lib/plugins/jquery.videoLightbox
 //= require lib/yelp-map
 //= require lib/dni
+//= require lib/transitscreen
