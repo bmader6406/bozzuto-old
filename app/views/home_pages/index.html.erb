@@ -84,6 +84,10 @@
           <p class="home-featured-section-subtitle heading -condensed -narrow">Putting Down Roots?</p>
           <h2 class="home-featured-section-title heading -serif"><%= @home_page.home_subheadline %></h2>
           <div class="nh-tiles row" id="slideshow">
+            <ul class="slideshow-navigation">
+              <li><a href="#" class="prev">Previous</a></li>
+              <li><a href="#" class="next">Next</a></li>
+            </ul>
             <ul class="slides">
               <% @home_page.home_section_slides.each do |slide| %>
                 <li class="slide nh-tile -full">
