@@ -30,16 +30,16 @@
             <ul class="slides -featured">
               <% @home_page.slides.each do |slide| %>
                 <li class="slide">
-                  <%= image_tag slide.image.url %>
-                    <div class="featured-slide-cta">
-                      <% if slide.description.present? %>
-                        <p class="text -serif"><%= slide.description %></p>
-                      <% end %>
+                  <div class="slide__background-image" style="background-image: url(<%= slide.image.url %>)"></div>
+                  <div class="featured-slide-cta">
+                    <% if slide.description.present? %>
+                      <p class="text -serif"><%= slide.description %></p>
+                    <% end %>
 
-                      <% if slide.link_url.present? %>
-                        <%= link_to slide.call_to_action || 'Explore', slide.link_url, class: 'button-refresh -minimal' %>
-                      <% end %>
-                    </div>
+                    <% if slide.link_url.present? %>
+                      <%= link_to slide.call_to_action || 'Explore', slide.link_url, class: 'button-refresh -minimal' %>
+                    <% end %>
+                  </div>
                 </li>
               <% end %>
             </ul>
@@ -52,7 +52,7 @@
   <div id="main-content">
     <div class="home-welcome">
       <div class="container">
-        <h2 class="home-welcome-heading heading -really-huge -condensed -uppercase -narrow"><%= @home_page.headline %></h2>
+        <h2 class="home-welcome-heading heading -huge -condensed -uppercase -narrow"><%= @home_page.headline %></h2>
         <div class="home-welcome-text">
           <%= @home_page.body.try(:html_safe) %>
         </div>

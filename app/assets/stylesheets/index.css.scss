@@ -1784,8 +1784,16 @@ div.wysiwyg .wysiwyg-12pt-font {
 
       .home #slideshow ul.slides.-featured,
       .home .slideshow ul.slides.-featured {
-        height: auto;
+        height: 80vh;
         max-width: 100%;
+        min-height: 600px;
+      }
+
+      .slide__background-image {
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100%;
+        width: 100%;
       }
 
       .home #slideshow ul.slides li.slide,
