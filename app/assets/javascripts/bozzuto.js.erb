@@ -48,15 +48,7 @@ window.bozzuto = {};
     }, 250);
 
     $('.home #slideshow').featuredSlideshow({
-      dynamicPagination: false,
-      onAdvance: function() {
-        if (window._gaq != undefined) {
-          window._gaq.push(['_trackEvent', 'Slideshows', 'Change Slide', 'Homepage']);
-          window._gaq.push(['t2._trackEvent', 'Slideshows', 'Change Slide', 'Homepage']);
-          window._gaq.push(['t3._trackEvent', 'Slideshows', 'Change Slide', 'Homepage']);
-          window._gaq.push(['t4._trackEvent', 'Slideshows', 'Change Slide', 'Homepage']);
-        }
-      }
+      dynamicPagination: false
     });
 
     $('.home .slideshow').featuredSlideshow();
