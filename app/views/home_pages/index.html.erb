@@ -32,12 +32,12 @@
                 <li class="slide">
                   <div class="slide__background-image" style="background-image: url(<%= slide.image.url %>)"></div>
                   <div class="featured-slide-cta">
-                    <% if slide.description.present? %>
-                      <p class="text -serif"><%= slide.description %></p>
-                    <% end %>
-
-                    <% if slide.link_url.present? %>
-                      <%= link_to slide.call_to_action || 'Explore', slide.link_url, class: 'button-refresh -minimal' %>
+                    <% if slide.description.present? && slide.link_url.present? %>
+                      <p>
+                        <%= link_to slide.description, slide.link_url, class: 'text -serif' %>
+                      </p>
+                    <% elsif slide.description.present? && !slide.link_url.present? %>
+                        <p class="text -serif"><%= slide.description %></p>
                     <% end %>
                   </div>
                 </li>
@@ -83,7 +83,7 @@
         <div class="home-featured-section">
           <p class="home-featured-section-subtitle heading -condensed -narrow">Putting Down Roots?</p>
           <h2 class="home-featured-section-title heading -serif"><%= @home_page.home_subheadline %></h2>
-          <div class="nh-tiles row slideshow" >
+          <div class="nh-tiles row" id="slideshow">
             <ul class="slides">
               <% @home_page.home_section_slides.each do |slide| %>
                 <li class="slide nh-tile -full">

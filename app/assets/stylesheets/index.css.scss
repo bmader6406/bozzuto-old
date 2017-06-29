@@ -1830,14 +1830,7 @@ div.wysiwyg .wysiwyg-12pt-font {
         transition: opacity ease-in .3s 1s, transform ease-in .3s 1s;
       }
 
-      .home #slideshow ul.slides.-featured .featured-slide-cta a {
-        opacity: 0;
-        transform: translateX(-5px);
-        transition: opacity ease-in .3s 1.2s, transform ease-in .3s 1.2s;
-      }
-
-      .home #slideshow ul.slides.-featured .current .featured-slide-cta p,
-      .home #slideshow ul.slides.-featured .current .featured-slide-cta a {
+      .home #slideshow ul.slides.-featured .current .featured-slide-cta p {
         opacity: 1;
         transform: translateX(0px);
       }
