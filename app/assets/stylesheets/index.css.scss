@@ -1788,12 +1788,30 @@ div.wysiwyg .wysiwyg-12pt-font {
         max-width: 100%;
       }
 
-      .slide__background-image {
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
+      .slide__image-container {
         height: 100%;
+        position: relative;
         width: 100%;
+      }
+
+      .slide__image-container img {
+        bottom: 0;
+        height: auto;
+        left: 0;
+        position: absolute;
+        width: 100%;
+      }
+
+      @supports ( object-fit: cover ) {
+        .slide__image-container {
+          display: flex;
+        }
+        
+        .slide__image-container img {
+          object-fit: cover;
+          object-position: center;
+          position: static;
+        }
       }
 
       .home #slideshow ul.slides li.slide,

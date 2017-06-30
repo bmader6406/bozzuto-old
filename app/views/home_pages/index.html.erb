@@ -30,7 +30,9 @@
             <ul class="slides -featured">
               <% @home_page.slides.each do |slide| %>
                 <li class="slide">
-                  <div class="slide__background-image" style="background-image: url(<%= slide.image.url %>)"></div>
+                  <div class="slide__image-container">
+                    <%= image_tag slide.image.url, :alt => "" %>
+                  </div>
                   <div class="featured-slide-cta">
                     <% if slide.description.present? && slide.link_url.present? %>
                       <p>
