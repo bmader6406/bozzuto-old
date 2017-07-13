@@ -1806,7 +1806,7 @@ div.wysiwyg .wysiwyg-12pt-font {
         .slide__image-container {
           display: flex;
         }
-        
+
         .slide__image-container img {
           object-fit: cover;
           object-position: center;
@@ -5925,6 +5925,12 @@ div.wysiwyg .wysiwyg-12pt-font {
 .btn-blue-big:hover {
   text-decoration: none;
 }
+
+.modal {
+  display: none;
+  position: relative;
+}
+
 
 // pull in refresh assets
 @import "bourbon/bourbon";
