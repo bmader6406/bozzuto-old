@@ -1106,8 +1106,8 @@ ActiveRecord::Schema.define(version: 20170622153710) do
     t.boolean  "published",                                                                                         null: false
     t.boolean  "featured_mobile",                                                   default: false,                 null: false
     t.integer  "position",                   limit: 4
-    t.datetime "created_at",                                                        default: '2016-04-01 15:51:51', null: false
-    t.datetime "updated_at",                                                        default: '2016-04-01 15:51:51', null: false
+    t.datetime "created_at",                                                        default: '2016-04-04 15:42:16', null: false
+    t.datetime "updated_at",                                                        default: '2016-04-04 15:42:16', null: false
   end
 
   create_table "promos", force: :cascade do |t|
