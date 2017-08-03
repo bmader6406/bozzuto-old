@@ -42,11 +42,12 @@ Bozzuto::Application.routes.draw do
 
   scope '/apartments' do
     scope '/communities' do
-      get '/'                      => 'metros#index',       :as => :metros
-      get ':id'                    => 'metros#show',        :as => :metro,        :constraints => MetroConstraint
-      get ':metro_id/:id'          => 'areas#show',         :as => :area,         :constraints => MetroAreaConstraint
-      get ':metro_id/:area_id/:id' => 'neighborhoods#show', :as => :neighborhood, :constraints => MetroAreaNeighborhoodConstraint
+      get '/' => 'metros#index', :as => :metros
     end
+
+    get ':id'                    => 'metros#show',        :as => :metro,        :constraints => MetroConstraint
+    get ':metro_id/:id'          => 'areas#show',         :as => :area,         :constraints => MetroAreaConstraint
+    get ':metro_id/:area_id/:id' => 'neighborhoods#show', :as => :neighborhood, :constraints => MetroAreaNeighborhoodConstraint
 
     resources :apartment_communities, :path => 'communities', :only => [:show] do
 
