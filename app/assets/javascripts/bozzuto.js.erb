@@ -231,10 +231,11 @@ window.bozzuto = {};
   });
 
   function registerCookie(e) {
-    var value = $(this).attr('data-cookie-enabled');
+    var url = $(this).attr('data-cookie-enabled');
     var $parent = $(this).parents('[data-cookie]');
 
     $parent.hide();
+    $.get(url)
     e.preventDefault();
   }
 
