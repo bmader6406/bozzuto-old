@@ -35,6 +35,7 @@ button.button-refresh {
   }
 
   &.-minimal {
+    display: inline-block;
     font-size: font-size(medium);
     line-height: 1;
     padding: 10px 20px 7px;
