@@ -14,11 +14,6 @@ Bozzuto::Application.routes.draw do
 
   root :to => 'home_pages#index'
 
-  scope :cookies do
-    get '/enable',  to: 'cookies#enable',  as: :enable_cookies
-    get '/disable', to: 'cookies#disable', as: :disable_cookies
-  end
-
   # Searching
   get '/search' => 'searches#index', :as => :search
 
