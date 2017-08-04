@@ -5931,54 +5931,6 @@ div.wysiwyg .wysiwyg-12pt-font {
   position: relative;
 }
 
-.cookie-banner {
-  background-color: #636972;
-  box-sizing: border-box;
-  bottom: 0;
-  clear: both;
-  color: #fff;
-  float: left;
-  left: 0;
-  padding: 20px 40px;
-  position: fixed;
-  right: 0;
-  width: 100%;
-  z-index: 1000;
-
-  @supports ( display: flex ) {
-    align-items: center;
-    display: flex;
-    float: none;
-  }
-
-  p {
-    float: left;
-    font-size: 14px;
-    width: 70%;
-
-    @supports ( display: flex ) {
-      float: none;
-      width: auto;
-    }
-  }
-}
-
-.cookie-banner__buttons {
-  float: right;
-  width: 20%;
-
-  @supports ( display: flex ) {
-    display: flex;
-    float: none;
-    justify-content: flex-end;
-    width: autp;
-  }
-
-  a {
-    margin-left: 20px;
-  }
-}
-
 
 // pull in refresh assets
 @import "bourbon/bourbon";

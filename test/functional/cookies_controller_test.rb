@@ -4,7 +4,7 @@ class CookieControllerTest < ActionDispatch::IntegrationTest
   context "CookieController" do
     describe "GET #enable" do
       before do
-        cookies[CookiesController::DISABLE_COOKIES_FIELD] = CookiesController::COOKIES_ENABLED
+        cookies[CookiesController::DISABLE_COOKIES] = true
       end
 
       it "deletes the cookie that disables cookies" do
@@ -12,7 +12,7 @@ class CookieControllerTest < ActionDispatch::IntegrationTest
 
         response.status.should == 200
 
-        cookies[CookiesController::DISABLE_COOKIES_FIELD].should == CookiesController::COOKIES_ENABLED
+        cookies[CookiesController::DISABLE_COOKIES].should_not be_present
       end
     end
 
@@ -22,7 +22,7 @@ class CookieControllerTest < ActionDispatch::IntegrationTest
 
         response.status.should == 200
 
-        cookies[CookiesController::DISABLE_COOKIES_FIELD].should == CookiesController::COOKIES_DISABLED
+        cookies[CookiesController::DISABLE_COOKIES].should be_present
       end
     end
   end

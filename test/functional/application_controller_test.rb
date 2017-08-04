@@ -162,7 +162,7 @@ class ApplicationControllerTest < ActionController::TestCase
     describe "#cookies_enabled?" do
       context "when cookies are disabled" do
         before do
-          cookies[CookiesController::DISABLE_COOKIES_FIELD] = CookiesController::COOKIES_DISABLED
+          cookies[CookiesController::DISABLE_COOKIES] = true
         end
 
         it "returns false" do
@@ -173,28 +173,6 @@ class ApplicationControllerTest < ActionController::TestCase
       context "when cookies are enabled" do
         it "returns true" do
           @controller.send(:cookies_enabled?).should == true
-        end
-      end
-    end
-
-    describe "#show_cookie_banner?" do
-      context "when there's an enable/disable value in the cookie for disabling cookies" do
-        before do
-          cookies[CookiesController::DISABLE_COOKIES_FIELD] = CookiesController::COOKIES_DISABLED
-        end
-
-        it "returns false" do
-          @controller.send(:show_cookie_banner?).should == false
-        end
-      end
-
-      context "when there is no enable/disable value in the cookie for disabling cookies" do
-        before do
-          cookies.delete(CookiesController::DISABLE_COOKIES_FIELD)
-        end
-
-        it "returns true" do
-          @controller.send(:show_cookie_banner?).should == true
         end
       end
     end
