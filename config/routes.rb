@@ -42,7 +42,10 @@ Bozzuto::Application.routes.draw do
 
   scope '/apartments' do
     scope '/communities' do
-      get '/' => 'metros#index', :as => :metros
+      get '/',                      to: redirect('/apartments', status: 302),                 as: :metros
+      get ':id',                    to: redirect('/apartments/%{id}'),                        constraints: MetroConstraint
+      get ':metro_id/:id',          to: redirect('/apartments/%{metro_id}/%{id}'),            constraints: MetroAreaConstraint
+      get ':metro_id/:area_id/:id', to: redirect('/apartments/%{metro_id}/%{area_id}/%{id}'), constraints: MetroAreaNeighborhoodConstraint
     end
 
     get ':id'                    => 'metros#show',        :as => :metro,        :constraints => MetroConstraint
