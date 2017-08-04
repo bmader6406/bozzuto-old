@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper :all
   protect_from_forgery
 
-  around_filter :set_current_queue
+  around_filter :set_current_queue, if: :cookies_enabled?
 
   unless Rails.env.development?
     rescue_from ActiveRecord::RecordNotFound,
@@ -93,11 +93,16 @@ class ApplicationController < ActionController::Base
   helper_method :viget_ip?
 
   def store_return_to
-    Bozzuto::ReturnToStore.new(request).set(params[:return_to]) if params[:return_to].present?
+    Bozzuto::ReturnToStore.new(request).set(params[:return_to]) if params[:return_to].present? && cookies_enabled?
   end
 
   def cookies_enabled?
-    !cookies[CookiesController::DISABLE_COOKIES]
+    CookiesController::CHECK_IF_ENABLED[cookies]
   end
   helper_method :cookies_enabled?
+
+  def show_cookie_banner?
+    CookiesController::SHOULD_REQUIRE_SELECTION[cookies]
+  end
+  helper_method :show_cookie_banner?
 end

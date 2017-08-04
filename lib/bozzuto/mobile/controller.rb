@@ -23,7 +23,7 @@ module Bozzuto
       def detect_full_site_flag
         value = request.env['bozzuto.mobile.force_full_site']
 
-        if value.present?
+        if value.present? && CookiesController::CHECK_IF_ENABLED[cookies]
           session[:force_full_site] = value
         end
       end
