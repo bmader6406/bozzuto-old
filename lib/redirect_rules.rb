@@ -21,19 +21,21 @@ class RedirectRules
       Rule.new(%r{^/cs/root/corporate/rent_a_home/awards(\?.*)?},   '/about-us/awards$1'),
       Rule.new(%r{^/cs/root/corporate/rent_a_home/news(\?.*)?},     '/about-us/news$1'),
       Rule.new(%r{^/cs/root/corporate/careers(\?.*)?},              '/careers$1'),
-      Rule.new(%r{^/cs/search_properties(\?.*)?},                   '/apartments/communities$1'),
+      Rule.new(%r{^/cs/search_properties(\?.*)?},                   '/apartments$1'),
       Rule.new(%r{^/property(\?.*)?},                               '/apartments$1'),
+      Rule.new(%r{^/apartments/communities/([a-z0-9\-]+)(\?.*)?},   '/apartments/$1$2'),
+      Rule.new(%r{^/apartments/communities(\?.*)?},                 '/apartments$1'),
       Rule.new(%r{^/smartrent(\?.*)?},                              '/apartments/smartrent$1'),
-      Rule.new(%r{^/about-us/careers(.*)},                           '/careers$1$1'),
+      Rule.new(%r{^/about-us/careers(.*)},                          '/careers$1$1'),
       Rule.new(%r{^/regions/arlington-va-washington-dc(\?.*)?},     '/regions/arlington-apartments$1'),
-      Rule.new(%r{^/regions/washington-dc-apartments(\?.*)?},       '/apartments/communities/washington-dc-metro$1#.U6hy2-g5DuQ'),
-      Rule.new(%r{^/regions/maryland-communities(\?.*)?},           '/apartments/communities/baltimore-annapolis-metro$1#.U6hzCeg5DuQ'),
-      Rule.new(%r{^/regions/massachusetts-apartments(\?.*)?},       '/apartments/communities/boston-metro$1#.U6hz1Og5DuQ'),
-      Rule.new(%r{^/regions/connecticut-apartments(\?.*)?},         '/apartments/communities/new-york-city-metro$1#.U6h0Jeg5DuQ'),
-      Rule.new(%r{^/regions/new-jersey-apartments(\?.*)?},          'apartments/communities/new-york-city-metro$1#.U6h0Jeg5DuQ'),
-      Rule.new(%r{^/regions/new-york-apartments(\?.*)?},            '/apartments/communities/new-york-city-metro$1#.U6hzhOg5DuQ'),
-      Rule.new(%r{^/regions/pennsylvania-apartments(\?.*)?},        '/apartments/communities/philadelphia-metro$1#.U6hz7ug5DuQ'),
-      Rule.new(%r{^/regions/virginia-apartments(\?.*)?},            '/apartments/communities/washington-dc-metro$1#.U6h0Rug5DuQ'),
+      Rule.new(%r{^/regions/washington-dc-apartments(\?.*)?},       '/apartments/washington-dc-metro$1#.U6hy2-g5DuQ'),
+      Rule.new(%r{^/regions/maryland-communities(\?.*)?},           '/apartments/baltimore-annapolis-metro$1#.U6hzCeg5DuQ'),
+      Rule.new(%r{^/regions/massachusetts-apartments(\?.*)?},       '/apartments/boston-metro$1#.U6hz1Og5DuQ'),
+      Rule.new(%r{^/regions/connecticut-apartments(\?.*)?},         '/apartments/new-york-city-metro$1#.U6h0Jeg5DuQ'),
+      Rule.new(%r{^/regions/new-jersey-apartments(\?.*)?},          '/apartments/new-york-city-metro$1#.U6h0Jeg5DuQ'),
+      Rule.new(%r{^/regions/new-york-apartments(\?.*)?},            '/apartments/new-york-city-metro$1#.U6hzhOg5DuQ'),
+      Rule.new(%r{^/regions/pennsylvania-apartments(\?.*)?},        '/apartments/philadelphia-metro$1#.U6hz7ug5DuQ'),
+      Rule.new(%r{^/regions/virginia-apartments(\?.*)?},            '/apartments/washington-dc-metro$1#.U6h0Rug5DuQ'),
       Rule.new(%r{^/regions/bozzuto-management(\?.*)?},             '/services/management$1'),
       Rule.new(%r{^/regions/bozzuto-homebuilding(\?.*)?},           '/services/homebuilding$1'),
       Rule.new(%r{^/regions/bozzuto-construction(\?.*)?},           '/services/construction$1'),
@@ -41,130 +43,131 @@ class RedirectRules
       Rule.new(%r{^/regions/bozzuto-acquisitions(\?.*)?},           '/services/acquisitions$1'),
       Rule.new(%r{^/regions/bozzuto-development(\?.*)?},            '/services/development$1'),
       Rule.new(%r{^/regions/bozzuto-apartments(\?.*)?},             '/apartments$1'),
-      Rule.new(%r{^/regions/bethesda-apartments(\?.*)?},            '/apartments/communities/washington-dc-metro/bethesda$1#.U6h4E-g5DuQ'),
-      Rule.new(%r{^/regions/dc-metro-apartments(\?.*)?},            '/apartments/communities/washington-dc-metro$1#.U6h4A-g5DuQ'),
+      Rule.new(%r{^/regions/bethesda-apartments(\?.*)?},            '/apartments/washington-dc-metro/bethesda$1#.U6h4E-g5DuQ'),
+      Rule.new(%r{^/regions/dc-metro-apartments(\?.*)?},            '/apartments/washington-dc-metro$1#.U6h4A-g5DuQ'),
       Rule.new(%r{^/regions/howard-county-townhomes(\?.*)?},        '/new-homes/communities/howard-county$1#.U853s-hGwRw'),
-      Rule.new(%r{^/regions/washington-dc-ne-se-apartments(\?.*)?}, '/apartments/communities/washington-dc-metro$1#.U6h4lOg5DuQ'),
-      Rule.new(%r{^/regions/dc-nw-apartments(\?.*)?},               '/apartments/communities/washington-dc-metro/nw-washington-dc$1#.U6h4tug5DuQ'),
-      Rule.new(%r{^/regions/annapolis-apartments(\?.*)?},           '/apartments/communities/baltimore-annapolis-metro/annapolis$1#.U6h41Og5DuQ'),
-      Rule.new(%r{^/regions/baltimore-apartments(\?.*)?},           '/apartments/communities/baltimore-annapolis-metro/baltimore$1#.U6h44ug5DuQ'),
-      Rule.new(%r{^/regions/bethesda-rockville-apartments(\?.*)?},  '/apartments/communities/washington-dc-metro$1#.U6h4-ug5DuQ'),
-      Rule.new(%r{^/regions/howard-county-md-apartments(\?.*)?},    '/apartments/communities/baltimore-annapolis-metro/columbia-laurel$1#.U6h5Q-g5DuQ'),
-      Rule.new(%r{^/regions/laurel-apartments(\?.*)?},              '/apartments/communities/baltimore-annapolis-metro/columbia-laurel$1#.U6h5Q-g5DuQ'),
-      Rule.new(%r{^/regions/alexandria-apartments(\?.*)?},          '/apartments/communities/washington-dc-metro/alexandria$1#.U6h6Wug5DuQ'),
-      Rule.new(%r{^/regions/arlington-apartments(\?.*)?},           '/apartments/communities/washington-dc-metro/arlington$1#.U6h6e-g5DuQ'),
-      Rule.new(%r{^/regions/fairfax-falls-church-apartments(\?.*)?},'/apartments/communities/washington-dc-metro/northern-virginia$1#.U6h6iOg5DuQ'),
-      Rule.new(%r{^/regions/boston-apartments(\?.*)?},              '/apartments/communities/boston-metro$1#.U6h64ug5DuQ'),
-      Rule.new(%r{^/regions/medford-apartments(\?.*)?},             '/apartments/communities/boston-metro/medford$1#.U6h6_ug5DuQ'),
-      Rule.new(%r{^/regions/boston-apartments(\?.*)?},              '/apartments/communities/boston-metro$1#.U6h64ug5DuQ'),
-      Rule.new(%r{^/regions/woburn-apartments(\?.*)?},              '/apartments/communities/boston-metro/reading-woburn$1#.U6h7Hug5DuQ'),
-      Rule.new(%r{^/regions/philadelphia-apartments(\?.*)?},        '/apartments/communities/philadelphia-metro$1#.U6h7Lug5DuQ'),
-      Rule.new(%r{^/regions/jersey-city-hoboken-apartments(\?.*)?}, '/apartments/communities/new-york-city-metro/hoboken-jersey-city$1#.U6h7Rug5DuQ'),
-      Rule.new(%r{^/regions/englewood-apartments(\?.*)?},           '/apartments/communities/new-york-city-metro/englewood-fort-lee$1#.U6h7ZOg5DuQ'),
-      Rule.new(%r{^/regions/new-york-city-apartments(\?.*)?},       '/apartments/communities/new-york-city-metro/new-york-city'),
-      Rule.new(%r{^/regions/white-plains-apartments(\?.*)?},        '/apartments/communities/new-york-city-metro/white-plains$1#.U6h75eg5DuQ'),
-      Rule.new(%r{^/regions/massapequa-apartments(\?.*)?},          '/apartments/communities/new-york-city-metro$1#.U6h7Pug5DuQ'),
-      Rule.new(%r{^/regions/new-haven-apartments(\?.*)?},           '/apartments/communities/new-york-city-metro/new-haven$1#.U6h8Ieg5DuQ'),
-      Rule.new(%r{^/regions/columbia-apartments(\?.*)?},            '/apartments/communities/baltimore-annapolis-metro/columbia-laurel$1#.U6h5Q-g5DuQ'),
-      Rule.new(%r{^/regions/rockville-apartments(\?.*)?},           '/apartments/communities/washington-dc-metro/rockville$1#.U6h_Aeg5DuQ'),
+      Rule.new(%r{^/regions/washington-dc-ne-se-apartments(\?.*)?}, '/apartments/washington-dc-metro$1#.U6h4lOg5DuQ'),
+      Rule.new(%r{^/regions/dc-nw-apartments(\?.*)?},               '/apartments/washington-dc-metro/nw-washington-dc$1#.U6h4tug5DuQ'),
+      Rule.new(%r{^/regions/annapolis-apartments(\?.*)?},           '/apartments/baltimore-annapolis-metro/annapolis$1#.U6h41Og5DuQ'),
+      Rule.new(%r{^/regions/baltimore-apartments(\?.*)?},           '/apartments/baltimore-annapolis-metro/baltimore$1#.U6h44ug5DuQ'),
+      Rule.new(%r{^/regions/bethesda-rockville-apartments(\?.*)?},  '/apartments/washington-dc-metro$1#.U6h4-ug5DuQ'),
+      Rule.new(%r{^/regions/howard-county-md-apartments(\?.*)?},    '/apartments/baltimore-annapolis-metro/columbia-laurel$1#.U6h5Q-g5DuQ'),
+      Rule.new(%r{^/regions/laurel-apartments(\?.*)?},              '/apartments/baltimore-annapolis-metro/columbia-laurel$1#.U6h5Q-g5DuQ'),
+      Rule.new(%r{^/regions/alexandria-apartments(\?.*)?},          '/apartments/washington-dc-metro/alexandria$1#.U6h6Wug5DuQ'),
+      Rule.new(%r{^/regions/arlington-apartments(\?.*)?},           '/apartments/washington-dc-metro/arlington$1#.U6h6e-g5DuQ'),
+      Rule.new(%r{^/regions/fairfax-falls-church-apartments(\?.*)?},'/apartments/washington-dc-metro/northern-virginia$1#.U6h6iOg5DuQ'),
+      Rule.new(%r{^/regions/boston-apartments(\?.*)?},              '/apartments/boston-metro$1#.U6h64ug5DuQ'),
+      Rule.new(%r{^/regions/medford-apartments(\?.*)?},             '/apartments/boston-metro/medford$1#.U6h6_ug5DuQ'),
+      Rule.new(%r{^/regions/boston-apartments(\?.*)?},              '/apartments/boston-metro$1#.U6h64ug5DuQ'),
+      Rule.new(%r{^/regions/woburn-apartments(\?.*)?},              '/apartments/boston-metro/reading-woburn$1#.U6h7Hug5DuQ'),
+      Rule.new(%r{^/regions/philadelphia-apartments(\?.*)?},        '/apartments/philadelphia-metro$1#.U6h7Lug5DuQ'),
+      Rule.new(%r{^/regions/jersey-city-hoboken-apartments(\?.*)?}, '/apartments/new-york-city-metro/hoboken-jersey-city$1#.U6h7Rug5DuQ'),
+      Rule.new(%r{^/regions/englewood-apartments(\?.*)?},           '/apartments/new-york-city-metro/englewood-fort-lee$1#.U6h7ZOg5DuQ'),
+      Rule.new(%r{^/regions/new-york-city-apartments(\?.*)?},       '/apartments/new-york-city-metro/new-york-city'),
+      Rule.new(%r{^/regions/white-plains-apartments(\?.*)?},        '/apartments/new-york-city-metro/white-plains$1#.U6h75eg5DuQ'),
+      Rule.new(%r{^/regions/massapequa-apartments(\?.*)?},          '/apartments/new-york-city-metro$1#.U6h7Pug5DuQ'),
+      Rule.new(%r{^/regions/new-haven-apartments(\?.*)?},           '/apartments/new-york-city-metro/new-haven$1#.U6h8Ieg5DuQ'),
+      Rule.new(%r{^/regions/columbia-apartments(\?.*)?},            '/apartments/baltimore-annapolis-metro/columbia-laurel$1#.U6h5Q-g5DuQ'),
+      Rule.new(%r{^/regions/rockville-apartments(\?.*)?},           '/apartments/washington-dc-metro/rockville$1#.U6h_Aeg5DuQ'),
       Rule.new(%r{^/regions/annapolis-homes(\?.*)?},                '/new-homes/communities$1#.U853pehGwRw'),
       Rule.new(%r{^/regions/baltimore-area-homes(\?.*)?},           '/new-homes/communities/baltimore$1#.U8532OhGwRw'),
       Rule.new(%r{^/regions/howard-county-homes(\?.*)?},            '/new-homes/communities/howard-county$1#.U8535OhGwRw'),
       Rule.new(%r{^/regions/towson-area-homes(\?.*)?},              '/new-homes/communities/towson$1#.U8537ehGwRw'),
-      Rule.new(%r{^/regions/stamford-apartments(\?.*)?},            '/apartments/communities/new-york-city-metro/stamford$1#.U6h_lug5DuQ'),
-      Rule.new(%r{^/regions/washington-dc-apartments--2(\?.*)?},    '/apartments/communities/washington-dc-metro$1#.U6h_uOg5DuQ'),
-      Rule.new(%r{^/regions/boston-area-apartments(\?.*)?},         '/apartments/communities/boston-metro$1#.U6h_xOg5DuQ'),
-      Rule.new(%r{^/regions/annapolis-area-apartments(\?.*)?},      '/apartments/communities/baltimore-annapolis-metro/annapolis$1#.U6iAEug5DuQ'),
-      Rule.new(%r{^/regions/maryland-suburbs-apartments(\?.*)?},    '/apartments/communities/baltimore-annapolis-metro$1#.U6iADug5DuQ'),
-      Rule.new(%r{^/regions/new-york-area-apartments(\?.*)?},       '/apartments/communities/new-york-city-metro$1#.U6iANOg5DuQ'),
-      Rule.new(%r{^/regions/central-pennsylvania-apartments(\?.*)?},'/apartments/communities/philadelphia-metro$1#.U6iAWug5DuQ'),
-      Rule.new(%r{^/regions/northern-virginia-apartments(\?.*)?},   '/apartments/communities/washington-dc-metro/northern-virginia$1#.U6iAbeg5DuQ'),
-      Rule.new(%r{^/regions/philadelphia-apartments--2(\?.*)?},     '/apartments/communities/philadelphia-metro$1#.U6iAWug5DuQ'),
-      Rule.new(%r{^/regions/baltimore-city-apartments(\?.*)?},      '/apartments/communities/baltimore-annapolis-metro/baltimore$1#.U6iAp-g5DuQ'),
-      Rule.new(%r{^/regions/alexandria-va-apartments--2(\?.*)?},    '/apartments/communities/washington-dc-metro/alexandria$1#.U6iAxOg5DuQ'),
-      Rule.new(%r{^/regions/new-york-apartments--2(\?.*)?},         '/apartments/communities/new-york-city-metro'),
-      Rule.new(%r{^/regions/howard-county-apartments(\?.*)?},       '/apartments/communities/baltimore-annapolis-metro/columbia-laurel$1#.U6iA6ug5DuQ'),
-      Rule.new(%r{^/regions/baltimore-suburbs-apartments(\?.*)?},   '/apartments/communities/baltimore-annapolis-metro$1#.U6iA5eg5DuQ'),
-      Rule.new(%r{^/regions/northern-new-jersey-apartments(\?.*)?}, '/apartments/communities/new-york-city-metro$1#.U6iBbug5DuQ'),
-      Rule.new(%r{^/regions/dc-ne-apartments(\?.*)?},               '/apartments/communities/washington-dc-metro/ne-washington-dc$1#.U6iBlOg5DuQ'),
-      Rule.new(%r{^/regions/dc-se-apartments(\?.*)?},               '/apartments/communities/washington-dc-metro/se-washington-dc$1#.U6iBn-g5DuQ'),
-      Rule.new(%r{^/regions/virginia-suburbs-apartments(\?.*)?},    '/apartments/communities/washington-dc-metro/northern-virginia$1#.U6iBseg5DuQ'),
-      Rule.new(%r{^/regions/washington-suburbs-apartments(\?.*)?},  '/apartments/communities/washington-dc-metro$1#.U6iBjug5DuQ'),
-      Rule.new(%r{^/regions/pennsylvania-suburbs(\?.*)?},           '/apartments/communities/washington-dc-metro$1#.U6iBjug5DuQ'),
+      Rule.new(%r{^/regions/stamford-apartments(\?.*)?},            '/apartments/new-york-city-metro/stamford$1#.U6h_lug5DuQ'),
+      Rule.new(%r{^/regions/washington-dc-apartments--2(\?.*)?},    '/apartments/washington-dc-metro$1#.U6h_uOg5DuQ'),
+      Rule.new(%r{^/regions/boston-area-apartments(\?.*)?},         '/apartments/boston-metro$1#.U6h_xOg5DuQ'),
+      Rule.new(%r{^/regions/annapolis-area-apartments(\?.*)?},      '/apartments/baltimore-annapolis-metro/annapolis$1#.U6iAEug5DuQ'),
+      Rule.new(%r{^/regions/maryland-suburbs-apartments(\?.*)?},    '/apartments/baltimore-annapolis-metro$1#.U6iADug5DuQ'),
+      Rule.new(%r{^/regions/new-york-area-apartments(\?.*)?},       '/apartments/new-york-city-metro$1#.U6iANOg5DuQ'),
+      Rule.new(%r{^/regions/central-pennsylvania-apartments(\?.*)?},'/apartments/philadelphia-metro$1#.U6iAWug5DuQ'),
+      Rule.new(%r{^/regions/northern-virginia-apartments(\?.*)?},   '/apartments/washington-dc-metro/northern-virginia$1#.U6iAbeg5DuQ'),
+      Rule.new(%r{^/regions/philadelphia-apartments--2(\?.*)?},     '/apartments/philadelphia-metro$1#.U6iAWug5DuQ'),
+      Rule.new(%r{^/regions/baltimore-city-apartments(\?.*)?},      '/apartments/baltimore-annapolis-metro/baltimore$1#.U6iAp-g5DuQ'),
+      Rule.new(%r{^/regions/alexandria-va-apartments--2(\?.*)?},    '/apartments/washington-dc-metro/alexandria$1#.U6iAxOg5DuQ'),
+      Rule.new(%r{^/regions/new-york-apartments--2(\?.*)?},         '/apartments/new-york-city-metro'),
+      Rule.new(%r{^/regions/howard-county-apartments(\?.*)?},       '/apartments/baltimore-annapolis-metro/columbia-laurel$1#.U6iA6ug5DuQ'),
+      Rule.new(%r{^/regions/baltimore-suburbs-apartments(\?.*)?},   '/apartments/baltimore-annapolis-metro$1#.U6iA5eg5DuQ'),
+      Rule.new(%r{^/regions/northern-new-jersey-apartments(\?.*)?}, '/apartments/new-york-city-metro$1#.U6iBbug5DuQ'),
+      Rule.new(%r{^/regions/dc-ne-apartments(\?.*)?},               '/apartments/washington-dc-metro/ne-washington-dc$1#.U6iBlOg5DuQ'),
+      Rule.new(%r{^/regions/dc-se-apartments(\?.*)?},               '/apartments/washington-dc-metro/se-washington-dc$1#.U6iBn-g5DuQ'),
+      Rule.new(%r{^/regions/virginia-suburbs-apartments(\?.*)?},    '/apartments/washington-dc-metro/northern-virginia$1#.U6iBseg5DuQ'),
+      Rule.new(%r{^/regions/washington-suburbs-apartments(\?.*)?},  '/apartments/washington-dc-metro$1#.U6iBjug5DuQ'),
+      Rule.new(%r{^/regions/pennsylvania-suburbs(\?.*)?},           '/apartments/washington-dc-metro$1#.U6iBjug5DuQ'),
+      Rule.new(%r{^/regions/pennsylvania-suburbs(\?.*)?},           '/apartments/washington-dc-metro$1#.U6iBjug5DuQ'),
 
       Rule.new(
         %r{^/regions/gaithersburg-germantown-frederick-apartments(\?.*)?},
-        '/apartments/communities/washington-dc-metro$1#.U6h4-ug5DuQ'
+        '/apartments/washington-dc-metro$1#.U6h4-ug5DuQ'
       ),
 
       Rule.new(
         %r{^/regions/germantown-apartments(\?.*)?},
-        '/apartments/communities/washington-dc-metro/marylanddc-region/germantown$1#.U6iBK-g5DuQ'
+        '/apartments/washington-dc-metro/marylanddc-region/germantown$1#.U6iBK-g5DuQ'
       ),
 
       Rule.new(
         %r{^/regions/herndon-and-reston-apartments(\?.*)?},
-        '/apartments/communities/washington-dc-metro/northern-virginia/reston$1#.U6iBU-g5DuQ'
+        '/apartments/washington-dc-metro/northern-virginia/reston$1#.U6iBU-g5DuQ'
       ),
 
       Rule.new(
         %r{^/regions/reston-apartments(\?.*)?},
-        '/apartments/communities/washington-dc-metro/northern-virginia/reston$1#.U6iAg-g5DuQ'
+        '/apartments/washington-dc-metro/northern-virginia/reston$1#.U6iAg-g5DuQ'
       ),
 
       Rule.new(
         %r{^om/regions/manassas-apartments(\?.*)?},
-        '/apartments/communities/washington-dc-metro/northern-virginia/manassas-bull-run$1#.U6h6m-g5DuQ'
+        '/apartments/washington-dc-metro/northern-virginia/manassas-bull-run$1#.U6h6m-g5DuQ'
       ),
 
       Rule.new(
         %r{^/regions/gaithersburg-apartments(\?.*)?},
-        '/apartments/communities/washington-dc-metro/marylanddc-region/kentlands-gaithersburg$1#.U6h_9-g5DuQ'
+        '/apartments/washington-dc-metro/marylanddc-region/kentlands-gaithersburg$1#.U6h_9-g5DuQ'
       ),
 
       Rule.new(
         %r{^/regions/north-bethesda-wheaton-apartments(\?.*)?},
-        '/apartments/communities/washington-dc-metro/marylanddc-region/wheaton-glenmont$1#.U6h5heg5DuQ'
+        '/apartments/washington-dc-metro/marylanddc-region/wheaton-glenmont$1#.U6h5heg5DuQ'
       ),
 
       Rule.new(
         %r{^/regions/upper-marlboro-prince-frederick-apartments(\?.*)?},
-        '/apartments/communities/baltimore-annapolis-metro$1#.U6h6Eug5DuQ'
+        '/apartments/baltimore-annapolis-metro$1#.U6h6Eug5DuQ'
       ),
 
       Rule.new(
         %r{^/regions/ft-meade-arundel-mills-apartments(\?.*)?},
-        '/apartments/communities/baltimore-annapolis-metro/anne-arundel$1#.U6h6Q-g5DuQ'
+        '/apartments/baltimore-annapolis-metro/anne-arundel$1#.U6h6Q-g5DuQ'
       ),
 
       Rule.new(
         %r{^/regions/reston-herndon-centreville-apartments(\?.*)?},
-        '/apartments/communities/washington-dc-metro/northern-virginia$1#.U6h6aOg5DuQ'
+        '/apartments/washington-dc-metro/northern-virginia$1#.U6h6aOg5DuQ'
       ),
 
       Rule.new(
         %r{^/regions/cedar-knolls-morristown-apartments(\?.*)?},
-        '/apartments/communities/new-york-city-metro$1#.U6h7Pug5DuQ'
+        '/apartments/new-york-city-metro$1#.U6h7Pug5DuQ'
       ),
 
       Rule.new(
         %r{^/regions/south-orange-irvington-maplewood-apartments(\?.*)?},
-        '/apartments/communities/new-york-city-metro$1#.U6h7Pug5DuQ'
+        '/apartments/new-york-city-metro$1#.U6h7Pug5DuQ'
       ),
 
       Rule.new(
         %r{^/regions/harbor-east-apartments(\?.*)?},
-        '/apartments/communities/baltimore-annapolis-metro/baltimore/harbor-east$1#.U6h0Zug5DuQ'
+        '/apartments/baltimore-annapolis-metro/baltimore/harbor-east$1#.U6h0Zug5DuQ'
       ),
 
       Rule.new(
         %r{^/regions/owings-mills-apartments(\?.*)?},
-        '/apartments/communities/baltimore-annapolis-metro/owings-mills-reisterstown$1#.U6h36-g5DuQ'
+        '/apartments/baltimore-annapolis-metro/owings-mills-reisterstown$1#.U6h36-g5DuQ'
       ),
 
       Rule.new(
-        %r{^/apartments/communities/new-york-city-metro/west-hempstead(\?.*)?},
-        '/apartments/communities/new-york-city-metro/long-island/west-hempstead$1#.VBHocaPRKkw'
+        %r{^/apartments/new-york-city-metro/west-hempstead(\?.*)?},
+        '/apartments/new-york-city-metro/long-island/west-hempstead$1#.VBHocaPRKkw'
       ),
 
       Rule.new(
