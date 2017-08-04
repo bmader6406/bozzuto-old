@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  if !Cookies.get('disable_cookies') {
+  if (!Cookies.get('disable_cookies')) {
     $('span.phone-number,dnr-replace').each(replaceDNINumber)
   }
 
