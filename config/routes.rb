@@ -17,6 +17,8 @@ Bozzuto::Application.routes.draw do
 scope :cookies do
   get '/enable',  to: 'cookies#enable',  as: :enable_cookies
   # get '/disable', to: 'cookies#disable', as: :disable_cookies
+  # check here: https://github.com/vigetlabs/bozzuto/issues/440 for context on
+  # the commented out route above
 end
 
   # Searching
