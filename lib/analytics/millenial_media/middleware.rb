@@ -12,7 +12,7 @@ module Analytics
       def call(env)
         @env = env
 
-        if mmurid.present?
+        if mmurid.present? && CookiesController::CHECK_IF_ENABLED[cookies]
           session[:mmurid] = mmurid
         end
 

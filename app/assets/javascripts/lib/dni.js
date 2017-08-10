@@ -1,5 +1,7 @@
 $(document).ready(function() {
-  $('span.phone-number,dnr-replace').each(replaceDNINumber)
+  if (!Cookies.get('disable_cookies')) {
+    $('span.phone-number,dnr-replace').each(replaceDNINumber)
+  }
 
   // Retreive DNI Number and then Replace
   

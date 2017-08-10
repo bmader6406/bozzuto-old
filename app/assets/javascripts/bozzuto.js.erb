@@ -115,6 +115,10 @@ window.bozzuto = {};
       find: 'li > a'
     });
 
+    $("[data-cookie-enabled]").each(function() {
+      $(this).on('click', registerCookie )
+    });
+
     $('a[rel=external]').each(function() {
       $(this).attr('target', '_blank');
     });
@@ -225,6 +229,15 @@ window.bozzuto = {};
       });
     })();
   });
+
+  function registerCookie(e) {
+    var url = $(this).attr('data-cookie-enabled');
+    var $parent = $(this).parents('[data-cookie]');
+
+    $parent.hide();
+    $.get(url)
+    e.preventDefault();
+  }
 
   function viewMoreFloorPlanGroups($set) {
     return $set.each(function() {
