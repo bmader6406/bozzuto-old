@@ -231,11 +231,12 @@ window.bozzuto = {};
   });
 
   function registerCookie(e) {
+    var location  = window.location.origin;
     var url = $(this).attr('data-cookie-enabled');
     var $parent = $(this).parents('[data-cookie]');
-
+    
     $parent.hide();
-    $.get(url)
+    $.get(location + url)
     e.preventDefault();
   }
 
