@@ -157,7 +157,24 @@ class ApplicationControllerTest < ActionController::TestCase
           end
         end
       end
+    end
 
+    describe "#cookies_enabled?" do
+      context "when cookies are disabled" do
+        before do
+          cookies[CookiesController::DISABLE_COOKIES] = true
+        end
+
+        it "returns false" do
+          @controller.send(:cookies_enabled?).should == false
+        end
+      end
+
+      context "when cookies are enabled" do
+        it "returns true" do
+          @controller.send(:cookies_enabled?).should == true
+        end
+      end
     end
   end
 end

@@ -95,4 +95,9 @@ class ApplicationController < ActionController::Base
   def store_return_to
     Bozzuto::ReturnToStore.new(request).set(params[:return_to]) if params[:return_to].present?
   end
+
+  def cookies_enabled?
+    !cookies[CookiesController::DISABLE_COOKIES]
+  end
+  helper_method :cookies_enabled?
 end
