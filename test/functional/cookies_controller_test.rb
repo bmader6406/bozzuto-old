@@ -16,6 +16,8 @@ class CookieControllerTest < ActionDispatch::IntegrationTest
       end
     end
 
+=begin
+    TODO Temporarily disabled route in config/routes.rb, so commenting the corresponding test.
     describe "GET #disable" do
       it "adds a permanent cookie to disable cookies" do
         get '/cookies/disable'
@@ -25,5 +27,6 @@ class CookieControllerTest < ActionDispatch::IntegrationTest
         cookies[CookiesController::DISABLE_COOKIES_FIELD].should == CookiesController::COOKIES_DISABLED
       end
     end
+=end
   end
 end
