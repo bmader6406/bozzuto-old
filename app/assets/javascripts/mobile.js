@@ -212,4 +212,17 @@ $(document).ready(function() {
     });
   }
 
+  $("[data-cookie-enabled]").each(function() {
+    $(this).on('click', registerCookie )
+  });
+
+  function registerCookie(e) {
+    var url = $(this).attr('data-cookie-enabled');
+    var $parent = $(this).parents('[data-cookie]');
+
+    $parent.hide();
+    $.get(url)
+    e.preventDefault();
+  }
+
 })(jQuery);
