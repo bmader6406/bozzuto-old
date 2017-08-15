@@ -3,18 +3,16 @@
     <div class="nh-apt-masthead-content">
       <h1 class="nh-apt-masthead-title">Apartments</h1>
 
-      <div class="left">
+      <div>
         <% if slideshow && slideshow.slides.any? %>
           <div class="nh-apt-masthead-description">
             <%= slideshow.slides.first.body.html_safe %>
           </div>
         <% end %>
-
-        <%= link_to 'Find an Apartment', metros_path, :class => 'btn-blue-big' %>
       </div>
 
-      <div class="right">
-        <ul class="nh-arrow-list">
+      <div>
+        <ul class="nh-arrow-list -three-column">
           <% Metro.all.each do |metro| %>
             <li><%= link_to metro.name_with_count, metro %></li>
           <% end %>

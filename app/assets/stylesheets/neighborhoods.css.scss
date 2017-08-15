@@ -410,6 +410,16 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
     font-weight: bold;
     text-transform: uppercase;
   }
+
+  &.-three-column {
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+      flex-grow: 1;
+      width: 32%;
+    }
+  }
 }
 
 .nh-nearby {
