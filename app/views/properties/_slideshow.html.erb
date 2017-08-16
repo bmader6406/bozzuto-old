@@ -36,8 +36,6 @@
             <% end %>
           </div>
 
-          <%= pinterest_button(request.url, image_path(slide.image.url)) %>
-
           <%= link_to_if slide.link_url?,
                          content_tag(:span, '', :class => 'overlay'),
                          slide.link_url %>
