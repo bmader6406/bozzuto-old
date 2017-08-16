@@ -243,10 +243,10 @@ window.bozzuto = {};
     return $set.each(function() {
       var self      = $(this),
           $rows     = $('ul.row', self),
-          $viewMore = $('<a href="#">View More</a>');
+          $viewMore = $('<a class="button-refresh -centered -small-width" href="#">View More</a>');
 
       if ($rows.length > 2) {
-        self.append($('<p class="view-more" />').append($viewMore));
+        self.append($('<p />').append($viewMore));
       }
 
       $viewMore.bind('click', function() {

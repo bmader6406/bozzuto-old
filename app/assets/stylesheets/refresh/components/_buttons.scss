@@ -10,8 +10,8 @@ button.button-refresh {
   font-size: font-size(big);
   font-weight: bold;
   height: auto;
-  line-height: 1.5;
-  padding: 10px 20px;
+  line-height: 1.3;
+  padding: 14px 20px 8px;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
@@ -40,6 +40,10 @@ button.button-refresh {
     line-height: 1;
     padding: 10px 20px 7px;
     width: auto;
+  }
+
+  &.-centered {
+    margin: 0 auto;
   }
 }
 

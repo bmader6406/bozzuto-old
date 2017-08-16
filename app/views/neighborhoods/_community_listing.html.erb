@@ -33,7 +33,7 @@
 
   <div class="cty-tile-actions row">
     <% if community.availability_url.present? %>
-      <%= link_to 'Availability', community.availability_url, :class => 'btn-blue-big' %>
+      <%= link_to 'Availability', community.availability_url, :class => 'button-refresh' %>
     <% end %>
 
     <%= link_to 'More Info', apartment_community_path(community), :class => 'cty-tile-actions-info' %>
