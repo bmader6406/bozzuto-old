@@ -61,7 +61,7 @@ module ApplicationHelper
     }.reject { |_, v| v.nil? }
 
     <<-END.html_safe
-      <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?#{js_params.to_param}"></script>
+      <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?#{js_params.to_param}" defer></script>
     END
   end
 
