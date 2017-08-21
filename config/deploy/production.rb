@@ -1,4 +1,5 @@
 set :user,          'deploy'
+set :repository,    'git@code.qburst.com:BozzutoGroup/bozzuto.git'
 set :branch,        'production'
 set :slack_app_url, 'https://www.bozzuto.com'
 
