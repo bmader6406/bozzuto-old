@@ -13,7 +13,7 @@
 
       <div>
         <ul class="nh-arrow-list -three-column">
-          <% Metro.all.each do |metro| %>
+          <% Metro.includes(areas: :neighborhoods).all.each do |metro| %>
             <li><%= link_to metro.name_with_count, metro %></li>
           <% end %>
         </ul>

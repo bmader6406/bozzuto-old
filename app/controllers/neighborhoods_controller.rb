@@ -1,9 +1,10 @@
 class NeighborhoodsController < ApplicationController
   has_mobile_actions :show
 
+  caches_action :show, expires_in: 1.minutes
+
   def show
   end
-
 
   private
 
@@ -18,7 +19,9 @@ class NeighborhoodsController < ApplicationController
   helper_method :area
 
   def neighborhood
-    @neighborhood ||= area.neighborhoods.friendly.find(params[:id])
+    @neighborhood ||= area.neighborhoods.includes(
+      neighborhood_memberships: { apartment_community: [ :property_features, :apartment_floor_plan_cache] }
+    ).friendly.find(params[:id])
   end
   helper_method :neighborhood
 

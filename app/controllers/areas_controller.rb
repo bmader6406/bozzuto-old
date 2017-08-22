@@ -1,6 +1,8 @@
 class AreasController < ApplicationController
   has_mobile_actions :show
 
+  caches_action :show, expires_in: 2.minutes
+
   def show
   end
 
@@ -12,7 +14,11 @@ class AreasController < ApplicationController
   helper_method :metro
 
   def area
-    @area ||= metro.areas.friendly.find(params[:id])
+    @area ||= metro.areas.includes(
+      :area_memberships,
+      { neighborhoods: [:apartment_floor_plan_cache, neighborhood_memberships: { apartment_community: [ :property_features, :apartment_floor_plan_cache] }] },
+      { apartment_communities: [:property_features, :apartment_floor_plan_cache] }
+    ).friendly.find(params[:id])
   end
   helper_method :area
 

@@ -1,6 +1,9 @@
 class MetrosController < ApplicationController
   has_mobile_actions :index, :show
 
+  caches_action :index, expires_in: 5.minutes
+  caches_action :show,  expires_in: 5.minutes
+
   def index
   end
 
@@ -15,13 +18,22 @@ class MetrosController < ApplicationController
   end
   helper_method :states
 
+  def base_scope
+    @base_scope ||= Metro.includes(areas: [
+      :apartment_floor_plan_cache,
+      :area_memberships,
+      { neighborhoods: { neighborhood_memberships: { apartment_community: [ :property_features, :apartment_floor_plan_cache] } } },
+      { apartment_communities: [:property_features, :apartment_floor_plan_cache] }
+    ])
+  end
+
   def metros
-    @metros ||= Metro.positioned.select(&:has_communities?)
+    @metros ||= base_scope.positioned.select(&:has_communities?)
   end
   helper_method :metros
 
   def metro
-    @metro ||= Metro.friendly.find(params[:id])
+    @metro ||= base_scope.friendly.find(params[:id])
   end
   helper_method :metro
 

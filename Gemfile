@@ -6,6 +6,7 @@ gem 'rack', '1.6.4'
 gem 'rails', '4.2.5'
 gem 'rails-observers'
 gem 'protected_attributes'
+gem 'actionpack-action_caching'
 
 gem 'jquery-rails', '~> 4.1.0'
 gem 'jquery-migrate-rails'

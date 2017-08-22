@@ -4,7 +4,7 @@ class HomePagesController < ApplicationController
   layout :detect_mobile_layout
 
   def index
-    @home_page        = HomePage.first
+    @home_page = HomePage.first
   end
 
   private
@@ -14,7 +14,7 @@ class HomePagesController < ApplicationController
   end
 
   def metros
-    @metros ||= Metro.positioned.select(&:has_communities?)
+    @metros ||= Metro.includes(areas: :neighborhoods).positioned.select(&:has_communities?)
   end
   helper_method :metros
 end
