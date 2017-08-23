@@ -109,21 +109,21 @@
   });
 
   var iconImages = {
-    'fitness':            url + '/assets/map-icons/fitness.png',
-    'parks':              url + '/assets/map-icons/parks.png',
-    'arts':               url + '/assets/map-icons/arts.png',
-    'beautysvc':          url + '/assets/map-icons/beauty.png',
-    'education':          url + '/assets/map-icons/education.png',
-    'coffee':             url + '/assets/map-icons/coffee.png',
-    'grocery':            url + '/assets/map-icons/grocery.png',
-    'hospitals':          url + '/assets/map-icons/hospital.png',
-    'transport':          url + '/assets/map-icons/bus.png',
-    'hotels':             url + '/assets/map-icons/hotels.png',
-    'drycleaninglaundry': url + '/assets/map-icons/laundromat.png',
-    'bars':               url + '/assets/map-icons/bars.png',
-    'petservices':        url + '/assets/map-icons/pets.png',
-    'restaurants':        url + '/assets/map-icons/restaurant.png',
-    'shopping':           url + '/assets/map-icons/shopping.png'
+    'fitness':         url + '/assets/map-icons/fitness.png',
+    'parks':           url + '/assets/map-icons/parks.png',
+    'arts':            url + '/assets/map-icons/arts.png',
+    'beautysvc':       url + '/assets/map-icons/beauty.png',
+    'education':       url + '/assets/map-icons/education.png',
+    'coffee':          url + '/assets/map-icons/coffee.png',
+    'grocery':         url + '/assets/map-icons/grocery.png',
+    'hospitals':       url + '/assets/map-icons/hospital.png',
+    'transport':       url + '/assets/map-icons/bus.png',
+    'hotels':          url + '/assets/map-icons/hotels.png',
+    'laundryservices': url + '/assets/map-icons/laundromat.png',
+    'bars':            url + '/assets/map-icons/bars.png',
+    'petservices':     url + '/assets/map-icons/pets.png',
+    'restaurants':     url + '/assets/map-icons/restaurant.png',
+    'shopping':        url + '/assets/map-icons/shopping.png'
   };
 
   function iconImage(key) {
