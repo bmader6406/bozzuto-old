@@ -58,12 +58,12 @@
                   </td>
 
                   <td>
-                    <%= square_feet(group.largest_square_footage) %>
+                    <%= square_feet(group.cheapest_floor_plan.min_square_feet) %>
                   </td>
 
                   <td>
-                    <%= if_nonzero?(group.cheapest_rent) do |price| %>
-                      From <%= dollars(price) %>
+                    <% if group.cheapest_floor_plan.present? %>
+                      From <%= dollars(group.cheapest_floor_plan.min_rent) %>
                     <% end %>
                   </td>
 
