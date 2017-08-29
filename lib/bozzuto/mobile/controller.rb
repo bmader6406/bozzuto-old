@@ -75,6 +75,13 @@ module Bozzuto
       def mobile_request?
         params['format'] == 'mobile' || (device != :browser && !force_browser?) || force_mobile?
       end
+
+      def fragment_cache_key(base_key)
+        key    = base_key.is_a?(Hash) ? url_for(base_key).split('://').last : base_key
+        prefix = mobile_request? ? 'views-mobile' : 'views'
+
+        ActiveSupport::Cache.expand_cache_key(key, prefix)
+      end
     end
   end
 end
