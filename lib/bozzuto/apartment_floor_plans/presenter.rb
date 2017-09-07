@@ -19,11 +19,11 @@ module Bozzuto
       class FloorPlanGroup < Proxy
         attr_reader :presentable, :group
 
-        delegate :with_largest_square_footage, :to => :plans
+        delegate :with_largest_square_footage, to: :plans
 
         def initialize(presentable, group)
           @presentable = presentable
-          @group     = group
+          @group       = group
 
           super(group)
         end
@@ -45,7 +45,11 @@ module Bozzuto
         end
 
         def cheapest_rent
-          presentable.cheapest_price_in_group(group)
+          cheapest_floor_plan.try(:min_rent)
+        end
+
+        def cheapest_floor_plan
+          @cheapest_floor_plan ||= plans.non_zero_min_rent.ordered_by_min_rent.first
         end
       end
     end

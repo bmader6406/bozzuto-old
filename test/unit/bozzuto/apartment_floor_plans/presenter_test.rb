@@ -107,6 +107,35 @@ module Bozzuto::ApartmentFloorPlans
             subject.cheapest_rent.should == 700
           end
         end
+
+        describe "#cheapest_floor_plan" do
+          before do
+            @target = ApartmentFloorPlan.make(
+              apartment_community: @community,
+              floor_plan_group:    @studio,
+              min_square_feet:     900,
+              min_rent:            1100
+            )
+
+            @fluff = ApartmentFloorPlan.make(
+              apartment_community: @community,
+              floor_plan_group:    @studio,
+              min_square_feet:     950,
+              min_rent:            1150
+            )
+
+            @cruft = ApartmentFloorPlan.make(
+              apartment_community: @community,
+              floor_plan_group:    @studio,
+              min_square_feet:     1000,
+              min_rent:            nil
+            )
+          end
+
+          it "returns the floor plan with the cheapest rent" do
+            subject.cheapest_floor_plan.should == @target
+          end
+        end
       end
     end
   end
