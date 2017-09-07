@@ -3,9 +3,9 @@ require 'capistrano-resque'
 
 set :application, 'bozzuto'
 
-set :slack_url,     'https://hooks.slack.com/services/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'
-set :slack_channel, '#bozzuto'
-set :slack_emoji,   ':sparkles:'
+# set :slack_url,     'https://hooks.slack.com/services/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'
+# set :slack_channel, '#bozzuto'
+# set :slack_emoji,   ':sparkles:'
 
 set :sync_directories, ["public/system"]
 set :sync_backups, 3
