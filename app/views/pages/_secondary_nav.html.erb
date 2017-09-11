@@ -4,13 +4,6 @@
 
     <%= news_and_press_secondary_nav(@section, @news_section) %>
 
-    <% unless section_testimonials.count.zero? %>
-      <li class="<%= current_if :controller => 'testimonials' %>">
-        <% url = @section.service? ? services_testimonials_path(@section) : testimonials_path(@section) %>
-        <%= link_to 'Testimonials', url %>
-      </li>
-    <% end %>
-
     <% if @section.about? %>
       <li class="<%= current_if :controller => 'contact_submissions' %>">
         <%= link_to 'Contact', contact_path %>
