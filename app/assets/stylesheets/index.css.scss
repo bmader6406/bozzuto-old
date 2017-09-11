@@ -4483,7 +4483,8 @@ div.wysiwyg .wysiwyg-12pt-font {
     }
     .page #content .column-main {
       float: left;
-      width: 520px;
+      width: 840px;
+	  padding-left:0px;
     }
     .page #content .column-main.no-sidebar {
       width: 770px;
