@@ -240,7 +240,7 @@ end
                   :as   => :services_press_releases
       end
 
-      resources :testimonials, :only => :index, :as => :services_testimonials
+      # resources :testimonials, :only => :index, :as => :services_testimonials
 
       resources :projects, :path => 'our-work', :only => [:index, :show]
 
@@ -258,7 +258,7 @@ end
   #   /careers
   #   /services/management
   scope '/:section', :constraints => SectionConstraint.new  do
-    resources :testimonials, :only => :index
+    # resources :testimonials, :only => :index
 
     resources :projects,
               :path => 'our-work',
