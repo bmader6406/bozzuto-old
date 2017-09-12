@@ -4483,17 +4483,28 @@ div.wysiwyg .wysiwyg-12pt-font {
     }
     .page #content .column-main {
       float: left;
-      width: 840px;
+	  width:100%;
+      max-width: 840px;
 	  padding-left:0px;
     }
     .page #content .column-main.no-sidebar {
       width: 770px;
     }
 	.secondary .leadership-content{
-		width: 80%;
+		width: 80% !important;
 		text-align: center;
 		padding: 0 15px;
 		box-sizing: border-box;
+	}
+	.secondary .leadership-content .column-main{
+		width: 100%;
+		padding-right: 0;
+	}
+	.secondary .leadership-content .leader-meta{
+		width:100%;
+	}
+	.secondary .leadership-content .leader-bio{
+		width:100%;
 	}
     .page #content p {
       margin-bottom: 0.727272727em;
