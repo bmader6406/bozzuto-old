@@ -1,0 +1,11 @@
+<div class="section nav">
+  <div class="content">
+    <ul>
+      <% Metro.includes(areas: :neighborhoods).all.each do |metro| %>
+        <li>
+          <%= link_to metro.name_with_count, metro, :class => 'btn' %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
