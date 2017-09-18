@@ -5,7 +5,7 @@ module NeighborhoodsHelper
     end
 
     content_for :javascript do
-      javascript_include_tag 'neighborhoods', :defer => "defer"
+      javascript_include_tag 'neighborhoods'
     end
   end
 
