@@ -77,7 +77,8 @@ SitemapGenerator::Sitemap.create do
   end
 
   Section.ordered_by_title.find_each do |s|
-    add testimonials_path(s),         :lastmod => s.updated_at
+    # testimonials link is down
+    # add testimonials_path(s),         :lastmod => s.updated_at
     add projects_path(s),             :lastmod => s.updated_at
 
     s.projects.published.each do |project|
