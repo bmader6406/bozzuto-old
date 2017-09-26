@@ -989,7 +989,8 @@ div.wysiwyg .wysiwyg-12pt-font {
     .secondary #masthead .section {
       float: left;
       font-size: 15px;
-      padding: 24px 0 28px 189px;
+      /*padding: 24px 0 28px 189px;*/
+      padding: 24px 0 0px 189px;
       width: 515px;
     }
     .secondary #masthead .section h1 {
@@ -4184,13 +4185,17 @@ div.wysiwyg .wysiwyg-12pt-font {
 
   /* @group -masthead-slideshow */
     #masthead-slideshow {
-      height: 273px;
+      /*height: 273px;*/
+      height: auto;
+      min-height: 223px;
     }
     .landing #masthead-slideshow {
       height: 223px;
     }
     #masthead-slideshow ul.slides {
-      height: 273px;
+      /*height: 273px;*/
+      height:auto;
+      min-height: 223px;
       z-index: 1;
     }
     .landing #masthead-slideshow ul.slides {
@@ -4199,7 +4204,9 @@ div.wysiwyg .wysiwyg-12pt-font {
     #masthead-slideshow ul.slides li.slide {
       background: #c0c5cb image-url('structure/bg-masthead.gif') repeat-x 0 0;
       text-indent: 0;
-      height: 273px;
+      /*height: 273px;*/
+      height:auto;
+      min-height: 223px;
       left: 0;
       position: absolute;
       top: 0;
@@ -4900,14 +4907,14 @@ div.wysiwyg .wysiwyg-12pt-font {
     margin-bottom: 20px;
     padding: 0 0 20px 0;
     position: relative;
-    width: 770px;
+    width: 840px;
   }
 
   .carousel .slides {
     height: 212px;
     overflow: hidden;
     position: relative;
-    width: 770px;
+    width: 840px;
   }
 
   .carousel .slides ul {
@@ -4919,7 +4926,7 @@ div.wysiwyg .wysiwyg-12pt-font {
 
   .carousel .slides li {
     float: left;
-    margin-right: 17px;
+    margin-right: 52px;
   }
 
   .carousel .slides img {
