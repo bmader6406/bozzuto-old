@@ -18,6 +18,9 @@ module Bozzuto
         #convert double underscores to single
         ret.gsub! /-+/,"-"
 
+        #strip off full stop
+        ret.gsub! /\./,""
+
         #strip off leading/trailing underscore
         ret.gsub! /\A[-\.]+|[-\.]+\z/,""
 
