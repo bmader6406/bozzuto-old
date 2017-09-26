@@ -7,12 +7,12 @@
         <div class="award section row <%= 'first' if i == 0 %>">
           <% if award.image? %>
             <p class="figure">
-              <%= link_to image_tag(award.image.url(:thumb)), award_path(@section, award) %>
+              <%= link_to image_tag(award.image.url(:thumb)), award_path(@section, award.slug) %>
             </p>
           <% end %>
 
           <h4>
-            <%= link_to award.title, award_path(@section, award) %>
+            <%= link_to award.title, award_path(@section, award.slug) %>
           </h4>
 
           <p class="date"><%= month_and_day(award.published_at) %></p>

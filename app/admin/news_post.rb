@@ -20,6 +20,14 @@ ActiveAdmin.register NewsPost do
 
   filter :title_cont, label: 'Title'
 
+  before_filter do
+    NewsPost.class_eval do
+      def to_param
+        id.to_s
+      end
+    end
+  end
+
   index do
     column :title
     column :featured
@@ -36,6 +44,7 @@ ActiveAdmin.register NewsPost do
           attributes_table_for resource do
             row :id
             row :title
+            row :slug
             row :published do
               status_tag resource.published
             end

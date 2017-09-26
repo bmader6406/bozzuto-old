@@ -18,6 +18,6 @@ class AwardsController < ApplicationController
   end
 
   def find_award
-    @award = section_awards.find(params[:id])
+    @award = section_awards.friendly.find(params[:id])
   end
 end

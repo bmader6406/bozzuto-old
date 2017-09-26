@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170622153710) do
+ActiveRecord::Schema.define(version: 20170908055033) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -305,7 +305,10 @@ ActiveRecord::Schema.define(version: 20170622153710) do
     t.boolean  "show_as_featured_news",                      default: false, null: false
     t.string   "home_page_image_file_name",    limit: 255
     t.string   "home_page_image_content_type", limit: 255
+    t.string   "slug",                         limit: 255
   end
+
+  add_index "awards", ["slug"], name: "index_awards_on_slug", using: :btree
 
   create_table "awards_sections", id: false, force: :cascade do |t|
     t.integer "award_id",   limit: 4
@@ -924,7 +927,10 @@ ActiveRecord::Schema.define(version: 20170622153710) do
     t.string   "home_page_image_file_name",    limit: 255
     t.string   "home_page_image_content_type", limit: 255
     t.boolean  "show_as_featured_news",                      default: false, null: false
+    t.string   "slug",                         limit: 255
   end
+
+  add_index "news_posts", ["slug"], name: "index_news_posts_on_slug", using: :btree
 
   create_table "news_posts_sections", id: false, force: :cascade do |t|
     t.integer "news_post_id", limit: 4
@@ -1024,7 +1030,10 @@ ActiveRecord::Schema.define(version: 20170622153710) do
     t.boolean  "show_as_featured_news",                         default: false, null: false
     t.string   "home_page_image_file_name",    limit: 255
     t.string   "home_page_image_content_type", limit: 255
+    t.string   "slug",                         limit: 255
   end
+
+  add_index "press_releases", ["slug"], name: "index_press_releases_on_slug", using: :btree
 
   create_table "press_releases_sections", id: false, force: :cascade do |t|
     t.integer "press_release_id", limit: 4
@@ -1106,8 +1115,8 @@ ActiveRecord::Schema.define(version: 20170622153710) do
     t.boolean  "published",                                                                                         null: false
     t.boolean  "featured_mobile",                                                   default: false,                 null: false
     t.integer  "position",                   limit: 4
-    t.datetime "created_at",                                                        default: '2016-04-04 15:42:16', null: false
-    t.datetime "updated_at",                                                        default: '2016-04-04 15:42:16', null: false
+    t.datetime "created_at",                                                        default: '2016-04-01 15:51:51', null: false
+    t.datetime "updated_at",                                                        default: '2016-04-01 15:51:51', null: false
   end
 
   create_table "promos", force: :cascade do |t|

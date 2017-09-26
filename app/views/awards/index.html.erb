@@ -15,7 +15,7 @@
 <div class="press-listing">
   <% @awards.each do |award| %>
     <div class="press-item row">
-      <% award_url = @section.service? ? services_award_path(@section, award) : award_path(@section, award) %>
+      <% award_url = @section.service? ? services_award_path(@section, award.slug) : award_path(@section, award.slug) %>
 
       <% if award.image? %>
         <%= link_to award_url do %>
