@@ -88,19 +88,19 @@ SitemapGenerator::Sitemap.create do
     add news_posts_path(s)
 
     s.news_posts.published.each do |post|
-      add news_post_path(s, post)
+      add news_post_path(s, post.slug)
     end
 
     add press_releases_path(s)
 
     s.press_releases.published.each do |press_release|
-      add press_release_path(s, press_release)
+      add press_release_path(s, press_release.slug)
     end
 
     add awards_path(s)
 
     s.awards.published.each do |award|
-      add award_path(s, award)
+      add award_path(s, award.slug)
     end
 
     s.pages.published.each do |page|

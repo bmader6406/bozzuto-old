@@ -22,6 +22,6 @@ class NewsPostsController < ApplicationController
   end
 
   def find_post
-    @news_post = section_news_posts.find(params[:id])
+    @news_post = section_news_posts.friendly.find(params[:id])
   end
 end

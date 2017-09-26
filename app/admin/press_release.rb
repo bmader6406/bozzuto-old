@@ -19,6 +19,14 @@ ActiveAdmin.register PressRelease do
   filter :title_cont, label: 'Title'
   filter :published
 
+  before_filter do
+    PressRelease.class_eval do
+      def to_param
+        id.to_s
+      end
+    end
+  end
+
   index do
     column :title
     column :published
@@ -38,6 +46,7 @@ ActiveAdmin.register PressRelease do
           attributes_table_for press_release do
             row :id
             row :title
+            row :slug
             row :published do
               status_tag press_release.published
             end

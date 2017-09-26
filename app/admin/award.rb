@@ -19,6 +19,14 @@ ActiveAdmin.register Award do
   filter :title_or_body_cont, label: 'Search'
   filter :published_at,       label: 'Published At'
 
+  before_filter do
+    Award.class_eval do
+      def to_param
+        id.to_s
+      end
+    end
+  end
+
   index do
     column :title
     column :featured
@@ -39,6 +47,7 @@ ActiveAdmin.register Award do
           attributes_table_for award do
             row :id
             row :title
+            row :slug
             row :body
             row :published do |award|
               status_tag award.published

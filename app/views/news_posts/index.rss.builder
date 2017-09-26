@@ -10,7 +10,7 @@ xml.rss :version => "2.0" do
         xml.title post.title
         xml.description post.body.try(:html_safe)
         xml.pubDate post.published_at.to_s(:rfc822)
-        xml.link news_post_url('about-us', post)
+        xml.link news_post_url('about-us', post.slug)
       end
     end
   end

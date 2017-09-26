@@ -13,7 +13,7 @@
   <% @news_posts.each do |post| %>
     <div class="press-item row">
       <h3>
-        <%= link_to post.title, news_post_path(@section, post) %>
+        <%= link_to post.title, news_post_path(@section, post.slug) %>
       </h3>
 
       <p class="press-item-date">
@@ -22,11 +22,11 @@
 
       <% if post.image? %>
         <p class="figure">
-          <%= link_to image_tag(post.image.url), news_post_path(@section, post) %>
+          <%= link_to image_tag(post.image.url), news_post_path(@section, post.slug) %>
         </p>
       <% end %>
 
-      <%= truncate_html(post.body, length: 600, omission: "&hellip; #{link_to('Continue reading', news_post_path(@section, post))}") %>
+      <%= truncate_html(post.body, length: 600, omission: "&hellip; #{link_to('Continue reading', news_post_path(@section, post.slug))}") %>
     </div>
   <% end %>
 

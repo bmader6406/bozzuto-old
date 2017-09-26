@@ -6,6 +6,6 @@ class PressReleasesController < ApplicationController
   end
 
   def show
-    @press_release = section_press_releases.find(params[:id])
+    @press_release = section_press_releases.friendly.find(params[:id])
   end
 end
