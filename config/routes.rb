@@ -47,6 +47,8 @@ end
     get 'unsubscribe/:id' => 'subscriptions#destroy', :as => :unsubscribe
   end
 
+  get '/apartments/search'           => 'metros#index',        :as => :metro_list
+
   scope '/apartments' do
     scope '/communities' do
       get '/',                      to: redirect('/apartments', status: 302),                 as: :metros
