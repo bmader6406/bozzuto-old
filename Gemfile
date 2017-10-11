@@ -52,6 +52,7 @@ gem 'truncate_html'
 gem 'algoliasearch-rails',        '~> 1.17'
 gem 'rails-html-sanitizer'
 gem 'acts-as-taggable-on',        '~> 4.0'
+gem 'naturalsort', :require => 'natural_sort_kernel'
 
 group :development do
   gem 'quiet_assets'

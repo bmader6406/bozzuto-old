@@ -244,6 +244,7 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     mysql2 (0.4.2)
+    naturalsort (1.2.0)
     naught (1.1.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -454,6 +455,7 @@ DEPENDENCIES
   minitest (~> 5.10)
   mocha (~> 1.1.0)
   mysql2
+  naturalsort
   nokogiri (= 1.6.6.4)
   paperclip (= 5.1.0)
   polymorphic_select!
@@ -492,4 +494,4 @@ RUBY VERSION
    ruby 2.2.3p173
 
 BUNDLED WITH
-   1.13.7
+   1.14.6
