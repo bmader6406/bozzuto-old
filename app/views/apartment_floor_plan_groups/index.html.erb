@@ -37,7 +37,7 @@
         <div id="<%= dom_id(group) %>" class="floor-plan-group">
           <h2><%= group.name.pluralize %></h2>
 
-          <% group.plans.in_groups_of(4, false).each_with_index do |plans, i| %>
+          <% group.sort_floor_plans.in_groups_of(4, false).each_with_index do |plans, i| %>
             <ul class="row" <% if i >= 2 %> style="display: none;" <% end %>>
               <% plans.each do |plan| %>
                 <li class="floor-plan">
