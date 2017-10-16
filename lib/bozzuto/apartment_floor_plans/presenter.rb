@@ -1,6 +1,8 @@
 module Bozzuto
   module ApartmentFloorPlans
     class Presenter
+      include NaturalSort
+
       attr_reader :presentable
 
       def initialize(presentable)
@@ -38,6 +40,17 @@ module Bozzuto
 
         def plans
           @plans ||= presentable.available_floor_plans.in_group(group)
+        end
+
+        # sort by position if all floor_plans in the group has position values
+        # else sort by floor_plan name
+        def sort_floor_plans
+          if presentable.available_floor_plans.in_group(group).map(&:position).any?{ |e| e.nil? }
+            @plans = presentable.available_floor_plans.in_group(group).
+                          sort{|a,b| NaturalSort.comparator(a.name, b.name)}
+          else
+            @plans = presentable.available_floor_plans.in_group(group).order(:position)
+          end
         end
 
         def largest_square_footage
