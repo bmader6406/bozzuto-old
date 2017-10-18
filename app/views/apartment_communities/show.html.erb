@@ -58,7 +58,9 @@
                   </td>
 
                   <td>
-                    <%= square_feet(group.cheapest_floor_plan.min_square_feet) %>
+                    <% if group.cheapest_floor_plan.present? %>
+                      <%= square_feet(group.cheapest_floor_plan.min_square_feet) %>
+                    <% end %>  
                   </td>
 
                   <td>
