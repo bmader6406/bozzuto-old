@@ -60,6 +60,7 @@ ActiveAdmin.register ApartmentCommunity do
                 :lead_2_lease_id,
                 :hyly_id,
                 :tag_list,
+                :walkscore_disabled,
                 property_feature_ids: [],
                 contact_configuration_attributes: [
                   :id,
@@ -218,6 +219,9 @@ ActiveAdmin.register ApartmentCommunity do
             row :overview_bullet_3
             row :promo
             row :core_id
+            row :walkscore_disabled do |community|
+              status_tag community.walkscore_disabled
+            end
             row :included_in_export do |community|
               status_tag community.included_in_export
             end
@@ -430,6 +434,7 @@ ActiveAdmin.register ApartmentCommunity do
           input :overview_bullet_3
           input :promo,                       as: :chosen, label: ('Promo ' + link_to('(Add New)', [:new, :admin, :promo], target: :blank)).html_safe
           input :core_id
+          input :walkscore_disabled
           input :included_in_export
           input :published
           input :featured

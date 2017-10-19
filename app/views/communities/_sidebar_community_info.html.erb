@@ -3,9 +3,11 @@
     <li>
       <%= link_to 'View Map', '#map' %>
     </li>
-    <li id="walk-score-tab">
-      <%= link_to 'Walk Score&trade;'.html_safe, '#walk-score' %>
-    </li>
+    <% unless @community.walkscore_disabled %>
+      <li id="walk-score-tab">
+        <%= link_to 'Walk Score&trade;'.html_safe, '#walk-score' %>
+      </li>
+    <% end %>
   </ul>
 
   <div id="map" class="section">
@@ -43,9 +45,11 @@
     </p>
   </div>
 
-  <div id="walk-score" class="section">
-    <%= walkscore_map_script(@community) %>
-  </div>
+  <% unless @community.walkscore_disabled %>
+    <div id="walk-score" class="section">
+      <%= walkscore_map_script(@community) %>
+    </div>
+  <% end %>
 </div>
 
 <%= render partial: 'communities/transitscreen' %>
