@@ -47,6 +47,7 @@ ActiveAdmin.register HomeCommunity do
                 :floor_plans_meta_keywords,
                 :published,
                 :tag_list,
+                :walkscore_disabled,
                 :hyly_id,
                 property_features_ids: [],
                 dnr_configuration_attributes: [
@@ -144,6 +145,9 @@ ActiveAdmin.register HomeCommunity do
             row :overview_bullet_2
             row :overview_bullet_3
             row :promo
+            row :walkscore_disabled do |community|
+              status_tag community.walkscore_disabled
+            end
             row :published do |community|
               status_tag community.published
             end
@@ -322,6 +326,7 @@ ActiveAdmin.register HomeCommunity do
           input :overview_bullet_2
           input :overview_bullet_3
           input :promo,                       as: :chosen, label: ('Promo ' + link_to('(Add New)', [:new, :admin, :promo], target: :blank)).html_safe
+          input :walkscore_disabled
           input :published
         end
 

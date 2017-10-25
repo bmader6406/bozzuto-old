@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170908055033) do
+ActiveRecord::Schema.define(version: 20171019120750) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -126,11 +126,13 @@ ActiveRecord::Schema.define(version: 20170908055033) do
     t.integer  "twitter_account_id",                      limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "walkscore_disabled",                                                             default: false, null: false
   end
 
   add_index "apartment_communities", ["core_id"], name: "index_apartment_communities_on_core_id", using: :btree
   add_index "apartment_communities", ["external_cms_id", "external_cms_type"], name: "index_apt_communities_on_external_cms_id_and_type", unique: true, using: :btree
   add_index "apartment_communities", ["slug"], name: "index_apartment_communities_on_slug", using: :btree
+  add_index "apartment_communities", ["walkscore_disabled"], name: "index_apartment_communities_on_walkscore_disabled", using: :btree
 
   create_table "apartment_communities_landing_pages", id: false, force: :cascade do |t|
     t.integer "landing_page_id",        limit: 4
@@ -606,9 +608,11 @@ ActiveRecord::Schema.define(version: 20170908055033) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "hyly_id",                                 limit: 255
+    t.boolean  "walkscore_disabled",                                                             default: false, null: false
   end
 
   add_index "home_communities", ["slug"], name: "index_home_communities_on_slug", using: :btree
+  add_index "home_communities", ["walkscore_disabled"], name: "index_home_communities_on_walkscore_disabled", using: :btree
 
   create_table "home_communities_landing_pages", id: false, force: :cascade do |t|
     t.integer "landing_page_id",   limit: 4
