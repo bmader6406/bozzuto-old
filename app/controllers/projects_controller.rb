@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
   before_filter :find_our_work_page
 
   def index
-    @projects ||= @section.projects
+    @projects ||= @section.projects.published
     respond_to do |format|
       format.html { render :action => :index, :layout => 'page' }
       format.mobile
