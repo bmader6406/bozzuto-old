@@ -9,9 +9,11 @@
         </div>
       <% end %>
     <% else -%>
-      <div id="why-buy-from-bozzuto" class="col">
-        <%= snippet("Why Buy from Bozzuto?") %>
-      </div>
+      <% if community_landing_page? %>
+        <div id="why-buy-from-bozzuto" class="col">
+          <%= snippet("Why Buy from Bozzuto?") %>
+        </div>
+      <% end %>
     <% end -%>
   </div>
 
