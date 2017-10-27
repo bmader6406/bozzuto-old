@@ -5,7 +5,26 @@
 
 <%= raw(@page.try(:body)) %>
 
-<ul class="projects-listing">
-  <%= render partial: 'listing', collection: @projects.ordered_by_title.in_section(@section), as: :project %>
-</ul>
-</div>
+<% if @section.title == 'Homebuilding'%>
+  <ul class="projects-listing">
+    <%= render partial: 'listing', collection: @projects.ordered_by_title.in_section(@section), as: :project %>
+  </ul>
+<% else %>
+  <div id="project-categories-nav" class="row">
+    <% categories_with_projects.in_groups(2, false).each do |categories| %>
+      <ul class="col">
+        <% categories.each do |category| %>
+          <li><% link_to category.title, anchor: category.slug %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+  <% categories_with_projects.each do |category| %>
+    <div id="<%= category.slug %>">
+      <h2><%= category.title %></h2>
+      <ul class="projects-listing">
+        <%= render partial: 'listing', collection: category.projects.ordered_by_title.in_section(@section), as: :project %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>

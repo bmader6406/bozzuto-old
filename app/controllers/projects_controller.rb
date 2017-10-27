@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
   before_filter :find_our_work_page
 
   def index
+    @categories = ProjectCategory.all
     @projects ||= @section.projects.published
     respond_to do |format|
       format.html { render :action => :index, :layout => 'page' }
