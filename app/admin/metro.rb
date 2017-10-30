@@ -20,7 +20,8 @@ ActiveAdmin.register Metro do
                   :meta_title,
                   :meta_description,
                   :meta_keywords
-                ]
+                ],
+                banner_image_attributes: [:_destroy]
 
   filter :name_cont, label: 'Name'
 
@@ -108,6 +109,11 @@ ActiveAdmin.register Metro do
           input :latitude
           input :longitude
           input :banner_image,       as: :image
+          if f.object.banner_image.present?
+            f.semantic_fields_for :banner_image_attributes do |banner_image_fields|
+              banner_image_fields.input :_destroy, as: :boolean, label: 'Delete?'
+            end
+          end
           input :listing_image,      as: :image, required: true
           input :detail_description
         end

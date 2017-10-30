@@ -21,6 +21,10 @@ class Metro < ActiveRecord::Base
     end
   end
 
+  def banner_image_attributes=(attributes)
+    banner_image.clear if has_destroy_flag?(attributes) && !banner_image.dirty?
+  end
+
   def parent
     nil
   end

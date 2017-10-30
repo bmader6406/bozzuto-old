@@ -38,7 +38,8 @@ ActiveAdmin.register Area do
                   :area_id,
                   :apartment_community_id,
                   :_destroy
-                ]
+                ],
+                banner_image_attributes: [:_destroy]
 
   filter :name_cont, label: 'Search'
 
@@ -137,6 +138,11 @@ ActiveAdmin.register Area do
           input :latitude
           input :longitude
           input :banner_image,        as: :image
+          if f.object.banner_image.present?
+            f.semantic_fields_for :banner_image_attributes do |banner_image_fields|
+              banner_image_fields.input :_destroy, as: :boolean, label: 'Delete?'
+            end
+          end
           input :listing_image,       as: :image, required: true
           input :description
           input :detail_description

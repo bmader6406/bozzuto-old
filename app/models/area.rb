@@ -52,6 +52,10 @@ class Area < ActiveRecord::Base
   scope :showing_neighborhoods, -> { where(:area_type => 'neighborhoods') }
   scope :position_asc,          -> { order(position: :asc) }
 
+  def banner_image_attributes=(attributes)
+    banner_image.clear if has_destroy_flag?(attributes) && !banner_image.dirty?
+  end
+  
   def parent
     metro
   end
