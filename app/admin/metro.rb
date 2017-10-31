@@ -122,7 +122,7 @@ ActiveAdmin.register Metro do
 
         tab 'Areas' do 
           panel nil do
-            association_table_for :areas, scope: resource.areas.position_asc do
+            association_table_for :areas, reorderable: true, scope: f.object.areas.order(:position) do
               column :name
             end
           end

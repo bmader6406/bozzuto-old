@@ -1,6 +1,8 @@
 ActiveAdmin.register ApartmentCommunity do
   config.sort_order = 'title_asc'
 
+  reorderable
+
   track_changes
 
   menu parent: 'Properties', label: 'Apartment Communities'
@@ -61,6 +63,7 @@ ActiveAdmin.register ApartmentCommunity do
                 :hyly_id,
                 :tag_list,
                 :walkscore_disabled,
+                :position,
                 property_feature_ids: [],
                 contact_configuration_attributes: [
                   :id,
@@ -150,6 +153,7 @@ ActiveAdmin.register ApartmentCommunity do
   end
 
   index do
+
     column :title
     column :published
     column :featured
