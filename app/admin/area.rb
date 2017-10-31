@@ -81,7 +81,7 @@ ActiveAdmin.register Area do
 
       tab 'Apartment Communities' do
         collection_panel_for :area_memberships do
-          reorderable_table_for area.area_memberships do
+          reorderable_table_for area.area_memberships.order(:position)  do
             column :apartment_community
           end
         end
@@ -144,10 +144,12 @@ ActiveAdmin.register Area do
         end
 
         tab 'Apartment Communities' do
-          has_many :area_memberships, allow_destroy: true, new_record: 'Add Community', heading: false do |membership|
-            membership.input :apartment_community, as: :chosen
-          end
-        end
+            association_table_for :area_memberships, reorderable: true, scope: f.object.area_memberships.order(:position) do
+              column 'Apartment' do |apartment|
+                apartment.apartment_community.title if apartment.apartment_community
+              end
+            end
+        end 
 
         tab 'Related Areas' do
           has_many :related_areas, allow_destroy: true, new_record: 'Add Related Area', heading: false do |area|
