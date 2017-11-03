@@ -109,6 +109,7 @@ ActiveAdmin.register Area do
       tab 'Neighborhoods' do
         collection_panel_for :neighborhoods do
           reorderable_table_for area.neighborhoods.order(:position) do
+            column :position
             column :name do |neighborhood|
               link_to neighborhood.name, [:admin, neighborhood]
             end
