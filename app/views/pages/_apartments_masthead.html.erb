@@ -14,7 +14,7 @@
       <div>
         <ul class="nh-arrow-list -three-column">
           <% Metro.includes(areas: :neighborhoods).all.each do |metro| %>
-            <li><%= link_to metro.name_with_count, metro %></li>
+            <li><%= link_to "#{metro.name_with_count}", metro_path(metro.slug) %></li>.
           <% end %>
         </ul>
       </div>
