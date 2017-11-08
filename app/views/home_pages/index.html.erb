@@ -67,7 +67,7 @@
             <div class="row">
               <% group.each do |metro| %>
                 <div class="nh-tile">
-                  <%= link_to metro_path(metro), :class => 'nh-listing-image' do %>
+                  <%= link_to metro_path(metro.slug), :class => 'nh-listing-image' do %>
                     <div class="nh-tile-title">
                       <p><%= metro %></p>
                     </div>
