@@ -61,6 +61,7 @@ ActiveAdmin.register ApartmentCommunity do
                 :hyly_id,
                 :tag_list,
                 :walkscore_disabled,
+                :position,
                 property_feature_ids: [],
                 contact_configuration_attributes: [
                   :id,
@@ -150,6 +151,7 @@ ActiveAdmin.register ApartmentCommunity do
   end
 
   index do
+
     column :title
     column :published
     column :featured
