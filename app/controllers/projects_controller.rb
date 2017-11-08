@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
 
   def index
     @categories = ProjectCategory.all
-
+    @projects ||= @section.projects.published
     respond_to do |format|
       format.html { render :action => :index, :layout => 'page' }
       format.mobile
@@ -21,7 +21,6 @@ class ProjectsController < ApplicationController
     @updates          = @project.updates.published.paginate(:page => page_number)
     @related_projects = @project.related_projects
   end
-
 
   private
 
