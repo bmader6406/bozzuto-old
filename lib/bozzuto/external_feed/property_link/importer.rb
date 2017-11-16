@@ -53,7 +53,7 @@ module Bozzuto
           occupancy_parser = OccupancyParsers.for(feed_type).new(unit)
 
           Bozzuto::ExternalFeed::ApartmentUnit.new(
-            :external_cms_id              => string_at(unit, '.Units/Unit/Identification[@IDType="FloorplanID"]/IDValue'),
+            :external_cms_id              => string_at(unit, './Units/Unit/Identification[@IDType="UnitID"]/IDValue'),
             :external_cms_type            => feed_type.to_s,
             :building_external_cms_id     => string_at(unit, './Units/Unit/BuildingName'),
             :floorplan_external_cms_id    => string_at(unit, './Identification[@IDType="FloorplanID"]/IDValue'),
