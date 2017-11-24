@@ -32,7 +32,7 @@
   <% end %>
 
   <% if !@community.note.nil? %>
-    <p><%= @community.note %></p>
+    <p id="community-contact-note">*<%= @community.note %></p>
   <% end %>
 
   <% if @page.try(:local_phone_number).present? || @community.phone_number.present? %>
