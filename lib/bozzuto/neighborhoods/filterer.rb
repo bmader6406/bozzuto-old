@@ -42,7 +42,7 @@ module Bozzuto
           communities
         end
 
-        TierShuffler.new(:place => place, :communities => result_set).shuffled_communities
+        # TierShuffler.new(:place => place, :communities => result_set).shuffled_communities
       end
 
       class Filter
