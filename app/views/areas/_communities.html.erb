@@ -2,20 +2,6 @@
 
 <%= render 'neighborhoods/filters', :filterer => filterer %>
 
-<% if(params[:controller] == 'areas')  %>
-
-<div class="nh-tiles row">
-  <% area.area_memberships.order(:position).in_groups_of(3, false).each do |group| %>
-    <div class="row">
-      <% group.each do |community| %>
-        <%= render_neighborhoods_listing(community.apartment_community) %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
-
-<% else %>
-
 <div class="nh-tiles row">
   <% filterer.filtered_communities.in_groups_of(3, false).each do |group| %>
     <div class="row">
@@ -25,5 +11,3 @@
     </div>
   <% end %>
 </div>
-
-<% end %>
