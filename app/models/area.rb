@@ -23,7 +23,7 @@ class Area < ActiveRecord::Base
 
   has_many :neighborhoods, :dependent => :destroy
 
-  has_many :area_memberships, -> { order('area_memberships.tier ASC') },
+  has_many :area_memberships, -> { order('area_memberships.position ASC') },
            :inverse_of => :area,
            :dependent  => :destroy
 
