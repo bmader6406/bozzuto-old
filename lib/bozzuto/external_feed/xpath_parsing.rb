@@ -7,6 +7,7 @@ module Bozzuto
         media.propertylinkonline.com
         static.propertylinkonline.com
       )
+      DOUBLE_ESCAPED_EXPR = /%25([0-9a-f]{2})/i
 
       def value_at(node, xpath, attribute = nil)
         if attribute
@@ -29,10 +30,15 @@ module Bozzuto
       end
 
       def url_at(node, xpath, attribute = nil)
-        url = Addressable::URI.encode value_at(node, xpath, attribute)
+        url_string = value_at(node, xpath, attribute)
+        url = encode_url(url_string)
         uri = URI(url)
         uri.scheme = 'https' if HTTPS_NOT_SUPPORTED.exclude?(uri.host)
         uri.to_s
+      end
+
+      def encode_url(url_string)
+        url = Addressable::URI.encode(url_string).gsub(DOUBLE_ESCAPED_EXPR, '%\1')
       end
 
       def date_for(node)
