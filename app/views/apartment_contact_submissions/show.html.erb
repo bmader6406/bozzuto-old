@@ -31,7 +31,7 @@
     <p><%== @community.address("<br>") + " #{@community.zip_code}" %></p>
   <% end %>
 
-  <% if !@community.note.nil? %>
+  <% if @community.note.present? %>
     <p id="community-contact-note">*<%= @community.note %></p>
   <% end %>
 
