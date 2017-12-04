@@ -32,7 +32,13 @@ module Bozzuto
         Bozzuto::Model::Community::PAGES.each do |page_type|
           klass_name = "Property#{page_type.to_s.classify}"
 
-          has_one page_type, class_name: klass_name, foreign_key: :property_id
+          # has_one page_type, class_name: klass_name, foreign_key: :property_id
+
+          # removed  has_one relation since it doesn't takes property_type
+          define_method "#{page_type}" do
+            "Property#{page_type.to_s.classify}".constantize.
+              find_by_property_id_and_property_type(self.id, self.class.name)
+          end
 
           define_method "#{page_type}?" do
             self.send(page_type).present?
