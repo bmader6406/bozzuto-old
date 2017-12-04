@@ -62,6 +62,7 @@ ActiveAdmin.register ApartmentCommunity do
                 :tag_list,
                 :walkscore_disabled,
                 :position,
+                :note,
                 property_feature_ids: [],
                 contact_configuration_attributes: [
                   :id,
@@ -176,6 +177,7 @@ ActiveAdmin.register ApartmentCommunity do
             row :city
             row :county
             row :zip_code
+            row :note
             row :phone_number
             row :mobile_phone_number
             row :latitude
@@ -407,6 +409,7 @@ ActiveAdmin.register ApartmentCommunity do
           input :city,                        as: :chosen, collection: cities
           input :county,                      as: :chosen
           input :zip_code
+          input :note
           input :phone_number
           input :mobile_phone_number
           input :latitude

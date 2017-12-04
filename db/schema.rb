@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171019120750) do
+ActiveRecord::Schema.define(version: 20171124064051) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(version: 20171019120750) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "walkscore_disabled",                                                             default: false, null: false
+    t.string   "note",                                    limit: 255
   end
 
   add_index "apartment_communities", ["core_id"], name: "index_apartment_communities_on_core_id", using: :btree

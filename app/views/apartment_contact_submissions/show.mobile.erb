@@ -36,8 +36,12 @@
       <h2><strong>Address</strong></h2>
       <p><%= @community.title %></p>
       <p><%== @community.address("<br>") + " #{@community.zip_code}" %></p>
-      <br>
     <% end %>
+
+    <% if @community.note.present? %>
+      <p id="community-contact-note">*<%= @community.note %></p>
+    <% end %>
+    <br>
 
     <% if @community.phone_number.present? %>
       <h2><strong>Phone Number</strong></h2>
