@@ -11,14 +11,14 @@ module Bozzuto
 
         def build_property(property)
           Bozzuto::ExternalFeed::Property.new(
-            :title                  => string_at(property, './PropertyID/Identification/MarketingName'),
-            :street_address         => string_at(property, './PropertyID/Address/Address1'),
+            :title                  => string_at(property, './PropertyID/MarketingName'),
+            :street_address         => string_at(property, './PropertyID/Address/Address'),
             :city                   => string_at(property, './PropertyID/Address/City'),
             :state                  => string_at(property, './PropertyID/Address/State'),
             :availability_url       => string_at(property, './Information/PropertyAvailabilityURL'),
-            :external_cms_id        => string_at(property, './PropertyID/Identification/PrimaryID'),
+            :external_cms_id        => string_at(property, './PropertyID/Identification/IDValue'),
             :external_cms_type      => feed_type.to_s,
-            :external_management_id => property['ManagementID'],
+            :external_management_id => string_at(property, './Identification[@IDType="ManagementID"]/IDValue'),
             :unit_count             => int_at(property, './Information/UnitCount'),
             :office_hours           => build_office_hours(property),
             :floor_plans            => build_floor_plans(property),
@@ -28,7 +28,7 @@ module Bozzuto
         end
 
         def build_floor_plan(property, plan)
-          bedrooms = int_at(plan, './Room[@Type="Bedroom"]/Count')
+          bedrooms = int_at(plan, './Room[@RoomType="Bedroom"]/Count')
           comment  = string_at(plan, './Comment')
 
           Bozzuto::ExternalFeed::FloorPlan.new(
@@ -36,7 +36,7 @@ module Bozzuto
             :availability_url  => string_at(plan, './FloorplanAvailabilityURL'),
             :available_units   => int_at(plan, './DisplayedUnitsAvailable'),
             :bedrooms          => bedrooms,
-            :bathrooms         => float_at(plan, './Room[@Type="Bathroom"]/Count'),
+            :bathrooms         => float_at(plan, './Room[@RoomType="Bathroom"]/Count'),
             :min_square_feet   => int_at(plan, './SquareFeet', 'Min'),
             :max_square_feet   => int_at(plan, './SquareFeet', 'Max'),
             :min_rent          => float_at(plan, './MarketRent', 'Min'),
@@ -44,7 +44,7 @@ module Bozzuto
             :image_url         => floor_plan_image_url(property, plan),
             :unit_count        => int_at(plan, './UnitCount'),
             :floor_plan_group  => floor_plan_group(bedrooms, comment),
-            :external_cms_id   => plan['Id'],
+            :external_cms_id   => string_at(plan, './Identification[@IDType="FloorplanID"]/IDValue'),
             :external_cms_type => feed_type.to_s
           )
         end
@@ -53,23 +53,32 @@ module Bozzuto
           occupancy_parser = OccupancyParsers.for(feed_type).new(unit)
 
           Bozzuto::ExternalFeed::ApartmentUnit.new(
-            :external_cms_id              => unit['Id'],
+            :external_cms_id              => string_at(unit, './Units/Unit/Identification[@IDType="UnitID"]/IDValue'),
             :external_cms_type            => feed_type.to_s,
-            :building_external_cms_id     => unit['BuildingID'],
-            :floorplan_external_cms_id    => unit['FloorplanID'],
-            :bedrooms                     => float_at(unit, './Unit/Information/UnitBedrooms'),
-            :bathrooms                    => float_at(unit, './Unit/Information/UnitBathrooms'),
-            :min_square_feet              => int_at(unit, './Unit/Information/MinSquareFeet'),
-            :max_square_feet              => int_at(unit, './Unit/Information/MaxSquareFeet'),
-            :market_rent                  => float_at(unit, './Unit/Information/MarketRent'),
-            :occupancy_status             => string_at(unit, './Unit/Information/UnitOccupancyStatus'),
-            :leased_status                => string_at(unit, './Unit/Information/UnitLeasedStatus'),
+            :building_external_cms_id     => string_at(unit, './Units/Unit/BuildingName'),
+            :floorplan_external_cms_id    => string_at(unit, './Identification[@IDType="FloorplanID"]/IDValue'),
+            :bedrooms                     => float_at(unit, './Units/Unit/UnitBedrooms'),
+            :bathrooms                    => float_at(unit, './Units/Unit/UnitBathrooms'),
+            :min_square_feet              => int_at(unit, './Units/Unit/MinSquareFeet'),
+            :max_square_feet              => int_at(unit, './Units/Unit/MaxSquareFeet'),
+            :market_rent                  => float_at(unit, './Units/Unit/UnitRent'),
+            :occupancy_status             => string_at(unit, './Units/Unit/UnitOccupancyStatus'),
+            :leased_status                => string_at(unit, './Units/Unit/UnitLeasedStatus'),
             :primary_property_id          => string_at(unit, './Unit/PropertyPrimaryID'),
-            :marketing_name               => string_at(unit, './Unit/MarketingName'),
+            :marketing_name               => string_at(unit, './Units/Unit/MarketingName'),
             :comment                      => string_at(unit, './Comment'),
             :vacancy_class                => occupancy_parser.vacancy_class,
             :vacate_date                  => occupancy_parser.vacate_date,
             :made_ready_date              => date_for(unit.at('./Availability/MadeReadyDate'))
+          )
+        end
+
+        def build_property_amenity(amenity)
+          Bozzuto::ExternalFeed::PropertyAmenity.new(
+            :primary_type => amenity['AmenityType'],
+            :sub_type     => amenity['SubType'],
+            :description  => string_at(amenity, './Description'),
+            :position     => int_at(amenity, './Rank')
           )
         end
       end

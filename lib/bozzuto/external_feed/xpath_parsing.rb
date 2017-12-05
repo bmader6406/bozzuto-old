@@ -43,8 +43,12 @@ module Bozzuto
 
       def date_for(node)
         return if node.nil? || node['Year'].nil? || node['Month'].nil? || node['Day'].nil?
-
-        Date.new(node['Year'].to_i, node['Month'].to_i, node['Day'].to_i)
+        begin
+          Date.new(node['Year'].to_i, node['Month'].to_i, node['Day'].to_i)
+        rescue => e
+          puts "invalid date"
+          return
+        end
       end
     end
   end
