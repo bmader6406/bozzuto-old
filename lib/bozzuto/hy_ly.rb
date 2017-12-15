@@ -10,7 +10,7 @@ module Bozzuto
     ALT_ID       = 'pXCkf054i'
     HOMES_ID     = 'jPeZi42q1'
     BUZZ_ID      = 'RDz6g84VF'
-    # PRIMARY_HOST = 'app.hy.ly'
+    PRIMARY_HOST_ABOUT_US_CONTACT = 'app.hy.ly'
     PRIMARY_HOST = 'my.hy.ly/mktg'
     HOMES_HOST   = 'my.hy.ly/mktg'
     PIDS         = {
