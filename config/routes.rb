@@ -47,7 +47,7 @@ end
     get 'unsubscribe/:id' => 'subscriptions#destroy', :as => :unsubscribe
   end
 
-  get '/apartments/search'           => 'metros#index',        :as => :metro_list
+  get '/apartments/search'           => 'metros#index',        :as => :metro_list,  constraints: MobileViewConstraint
 
   scope '/apartments' do
     scope '/communities' do
