@@ -994,7 +994,7 @@ div.wysiwyg .wysiwyg-12pt-font {
       /*padding: 24px 0 28px 189px;*/
       /*padding: 24px 0 0px 189px;*/
       padding: 24px 0 0px 10px;
-      width: 515px;
+      width: 700px;
     }
     .secondary #masthead .section h1 {
       color: #565c64;
@@ -1022,10 +1022,10 @@ div.wysiwyg .wysiwyg-12pt-font {
     }
     .secondary #breadcrumb .container {
       /*padding-left: 185px;*/
-      padding-left: 0px;
+      /*padding-left: 0px;*/
       position: relative;
       /*width: 770px;*/
-      width: 100%;
+      /*width: 940px;*/
     }
     .secondary #breadcrumb .container.wide {
       padding-left: 0;
@@ -6038,16 +6038,16 @@ div.wysiwyg .wysiwyg-12pt-font {
 
 .nh-apt-masthead {
   .container {
-    /*margin: 0px auto 70px auto;*/
+    margin: 0px auto 70px auto;
   }
 
   .nh-apt-masthead-content {
     
 
     border-bottom: 1px solid #cccccc;
-    padding-left: 15px;
+    /*padding-left: 15px;*/
     padding-bottom: 45px;
-    width: 1030px;
+    /*width: 1030px;*/
 
     .left {
       display: table-cell;
