@@ -1,0 +1,9 @@
+<div class="nh-apt-masthead">
+  <div class="container">
+    <div class="nh-apt-masthead-content">
+      <% if slideshow && slideshow.slides.any? %>
+        <%= slideshow.slides.first.body.html_safe %>
+      <% end %>
+  </div>
+  </div>
+</div>
