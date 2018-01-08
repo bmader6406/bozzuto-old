@@ -182,7 +182,7 @@
 /* @group structure */
   /* @group -page */
     .container {
-      width: 960px;
+      width: 1030px;
       margin: 0px auto;
     }
     .narrowPage .container {
@@ -1184,7 +1184,7 @@ div.wysiwyg .wysiwyg-12pt-font {
     overflow: hidden;
     position: relative;
     top: -15px;
-    /*width: 840px;*/
+    width: 840px;
   }
   #slideshow ul.slides,
   .slideshow ul.slides {
@@ -4215,10 +4215,10 @@ div.wysiwyg .wysiwyg-12pt-font {
       /*height: 273px;*/
       height:auto;
       min-height: 223px;
-      left: 0;
+      left: 15px;
       position: absolute;
       top: 0;
-      width: 960px;
+      width: 1030px;
       z-index: 1;
     }
     .landing #masthead-slideshow ul.slides li.slide {
@@ -6045,10 +6045,10 @@ div.wysiwyg .wysiwyg-12pt-font {
     
 
     border-bottom: 1px solid #cccccc;
-    /*padding-left: 15px;*/
+    padding-left: 15px;
     /*padding-bottom: 45px;*/
     padding-bottom: 40px;
-    /*width: 1030px;*/
+    width: 1030px;
 
     .left {
       display: table-cell;
