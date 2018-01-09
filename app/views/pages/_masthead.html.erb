@@ -1,18 +1,23 @@
 <div id="masthead">
   <div class="nh-apt-masthead">
-    <div class="container">
-      <div class="nh-apt-masthead-content">
+    <div class="full-width-container">
+      <div class="nh-apt-masthead-content full-width-breadcrumb">
         <%= render :partial => 'pages/breadcrumb' %>
-
-        <%- if @page.present? && @page.montage? -%>
-          <div id="montage">
-              <%= image_tag @page.left_montage_image.url %><%= image_tag @page.middle_montage_image.url %><%= image_tag @page.right_montage_image.url %>
-          </div>
-        <%- elsif @section.present? && @section.montage? -%>
-          <div id="montage">
-              <%= image_tag @section.left_montage_image.url %><%= image_tag @section.middle_montage_image.url %><%= image_tag @section.right_montage_image.url %>
-          </div>
-        <%- end -%>
+      </div>
+    </div>
+    <%- if @page.present? && @page.montage? -%>
+      <div id="montage">
+          <%= image_tag @page.left_montage_image.url %><%= image_tag @page.middle_montage_image.url %><%= image_tag @page.right_montage_image.url %>
+      </div>
+    <%- elsif @section.present? && @section.montage? -%>
+      <div id="montage">
+          <%= image_tag @section.left_montage_image.url %><%= image_tag @section.middle_montage_image.url %><%= image_tag @section.right_montage_image.url %>
+      </div>
+    <%- end -%>
+  </div>
+  <div class="nh-apt-masthead">
+    <div class="full-width-container">
+      <div class="nh-apt-masthead-content">
       </div>
     </div>
   </div>
