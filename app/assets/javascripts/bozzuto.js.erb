@@ -56,7 +56,7 @@ window.bozzuto = {};
     $('#masthead-slideshow, .slideshow').featuredSlideshow();
 
     $('#full-width-masthead-slideshow').featuredSlideshow({
-      dynamicPagination: false
+      showPagination: false
     });
 
     $('.carousel').carousel();
@@ -877,7 +877,7 @@ window.bozzuto = {};
 
       if ( $slideshow.find('ul').attr('data-sync') == 'true') {
         $slideshow.data('linked', true);
-        if (( $slideshow.attr('id') == 'masthead-slideshow' )) {
+        if (( $slideshow.attr('id') == 'masthead-slideshow' ) || ( $slideshow.attr('id') == 'full-width-masthead-slideshow' ) ) {
           $slideshow.data('master', true);
           $slideshow.sister = $('#slideshow');
           window.bozzuto.$masterslideshow = $slideshow;
@@ -918,7 +918,9 @@ window.bozzuto = {};
             $('<li><a href="#' + $(this).attr('id') + '">' + (i + 1) + '</a></li>').appendTo(pagination);
           });
           $('li:first', pagination).addClass('current');
-          pagination.appendTo($slideshow);
+          if (o.showPagination) {
+            pagination.appendTo($slideshow);
+          }
         }
 
         if (o.autoAdvance) {
@@ -1049,6 +1051,7 @@ window.bozzuto = {};
 
   $.fn.featuredSlideshow.defaults = {
     dynamicPagination:   true,
+    showPagination:      true,
     autoAdvance:         true,
     autoAdvanceInterval: 5000,
     transitionTime:      450,
