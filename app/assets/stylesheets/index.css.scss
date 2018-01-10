@@ -4339,7 +4339,7 @@ div.wysiwyg .wysiwyg-12pt-font {
 
   #full-width-masthead-slideshow {
     height: auto;
-    min-height: 120px;
+    min-height: 60px;
   }
   #full-width-masthead-slideshow ul.slides {
     height:auto;
@@ -6118,6 +6118,10 @@ div.wysiwyg .wysiwyg-12pt-font {
     .right {
       display: table-cell;
     }
+  }
+
+  .full-width-nh-apt-masthead-content {
+    padding-bottom: 10px;
   }
 
   .full-width-breadcrumb {
