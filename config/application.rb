@@ -37,7 +37,7 @@ module Bozzuto
 
     config.middleware.use('Analytics::MillenialMedia::Middleware')
 
-    if Rails.env.production?
+    if Rails.env.production? || Rails.env.develop?
       config.middleware.use 'Redirectotron'
     end
 
