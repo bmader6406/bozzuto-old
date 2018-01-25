@@ -6145,8 +6145,12 @@ div.wysiwyg .wysiwyg-12pt-font {
   .nh-apt-masthead-description {
     color: #565c64;
     font-size: 15px;
-    margin-bottom: 40px;
+    /*margin-bottom: 40px;*/
   }
+}
+
+.nh-masthead-subtext p {
+  font-size: 13px;
 }
 
 .nh-arrow-list {
