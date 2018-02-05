@@ -52,6 +52,8 @@ class ApartmentCommunity < ActiveRecord::Base
   has_many :neighborhoods,            through: :neighborhood_memberships
   has_many :area_memberships,         inverse_of: :apartment_community, dependent: :destroy
   has_many :areas,                    through: :area_memberships
+  has_many :hospital_memberships,     inverse_of: :apartment_community, dependent: :destroy
+  has_many :hospital,                 through: :hospital_memberships
 
   has_attached_file :hero_image,
     url:             '/system/:class/:id/:attachment_name/:style.:extension',

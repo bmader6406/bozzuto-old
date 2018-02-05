@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171124064051) do
+ActiveRecord::Schema.define(version: 20180205132057) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -712,6 +712,40 @@ ActiveRecord::Schema.define(version: 20171124064051) do
     t.boolean  "featured",                                              default: false, null: false
     t.integer  "square_feet",       limit: 4
   end
+
+  create_table "hospital_memberships", force: :cascade do |t|
+    t.integer  "hospital_id",            limit: 4
+    t.integer  "apartment_community_id", limit: 4
+    t.integer  "position",               limit: 4
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  create_table "hospital_regions", force: :cascade do |t|
+    t.string   "name",               limit: 255
+    t.string   "slug",               limit: 255
+    t.float    "latitude",           limit: 24
+    t.float    "longitude",          limit: 24
+    t.text     "detail_description", limit: 65535
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  create_table "hospitals", force: :cascade do |t|
+    t.string   "name",                    limit: 255
+    t.string   "slug",                    limit: 255
+    t.float    "latitude",                limit: 24
+    t.float    "longitude",               limit: 24
+    t.integer  "position",                limit: 4
+    t.string   "listing_image_file_name", limit: 255
+    t.integer  "hospital_region_id",      limit: 4
+    t.text     "description",             limit: 65535
+    t.text     "detail_description",      limit: 65535
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "hospitals", ["hospital_region_id"], name: "index_hospitals_on_hospital_region_id", using: :btree
 
   create_table "images", force: :cascade do |t|
     t.string   "image_file_name",    limit: 255
@@ -1618,5 +1652,6 @@ ActiveRecord::Schema.define(version: 20171124064051) do
 
   add_foreign_key "chronolog_changesets", "admin_users", on_delete: :nullify
   add_foreign_key "home_section_slides", "home_pages", on_delete: :cascade
+  add_foreign_key "hospitals", "hospital_regions"
   add_foreign_key "notification_recipients", "admin_users", on_delete: :cascade
 end
