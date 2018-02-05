@@ -3,7 +3,7 @@
   <iframe src="//www.googletagmanager.com/ns.html?id=GTM-NP9BQ9" height="0" width="0" style="display:none;visibility:hidden"></iframe>
 </noscript>
 <script>
-  var name = '<%= @community.title%>';
+  var name = '<%= @community.title if @community%>';
   console.log(name);
   dataLayer = [{
     'propertyName': name
