@@ -1,0 +1,26 @@
+
+<% neighborhoods_assets %>
+
+<%= render 'breadcrumb',
+           :title       => "#{region.name} Medical Apartments",#region.full_name,
+           :items       => [region],
+           :description => region.detail_description %>
+
+<div id="main-content">
+  <div class="nh-container">
+    <%#= render 'banner_image', :place => metro %>
+
+    <%#= render 'map', :places => hospitals, :communities => [] %>
+
+    <div class="nh-tiles row">
+      <% hospitals.in_groups_of(3, false).each do |group| %>
+        <div class="row">
+          <% group.each do |hospital| %>
+            <%= render 'listing', :hospital => hospital %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,22 @@
+<div class="nh-tile">
+  <div class= "nh-listing-image">
+    <div class="nh-tile-title">
+      <h2><%= hospital.name %></h2>
+    </div>
+
+    <%= image_tag hospital.listing_image.url, :width => 300, :height => 234, :alt => hospital.name %>
+  </div>
+
+  <div class="nh-tile-content">
+    <p class="nh-tile-tagline">
+      <%= pluralize(hospital.hospital_memberships.length, 'Apartment Community') %>
+    </p>
+
+    <%= if_present?(hospital.description) do |description| %>
+      <p class="nh-tile-description">
+        <%= description.html_safe %>
+      </p>
+    <% end %>
+
+  </div>
+</div>

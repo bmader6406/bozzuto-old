@@ -1,0 +1,23 @@
+<% description ||= '' %>
+
+<div id="breadcrumb">
+  <div class="container wide">
+    <ul>
+      <li><%= link_to 'Apartments', '/apartments' %></li>
+      <li><%= link_to_unless(request.path == metros_path, 'Find An Apartment', metros_path) %></li>
+
+      <% if defined?(items) %>
+        <% items.each do |item| %>
+          <li><%= item.to_s.html_safe %></li>
+        <% end %>
+      <% end %>
+    </ul>
+
+    <h1 class="bc-title"><%= title %></h1>
+
+    <% if description.present? %>
+      <p class="bc-description"><%= description.html_safe %></p>
+    <% end %>
+
+  </div>
+</div>
