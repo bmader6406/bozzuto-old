@@ -49,7 +49,7 @@ end
 
   get '/medical-residency-apartments/:id' => 'medical_residency_apartments#show', as: :medical_residency_apartments
 
-  get '/apartments/search'           => 'metros#index',        :as => :metro_list
+  get '/apartments/search'           => 'metros#index',        :as => :metro_list,  constraints: MobileViewConstraint
 
   scope '/apartments' do
     scope '/communities' do

@@ -1,11 +1,13 @@
 <div id="masthead" class="<%= local_assigns[:custom_class_name] %>">
+<div class="nh-apt-masthead">
   <div class="container">
+  <div class="nh-apt-masthead-content">
     <% if slideshow.present? %>
       <div id="masthead-slideshow">
         <ul class="slides" <%= about_and_services_slideshow_attrs %>>
           <% slideshow.slides.each do |slide| %>
             <li class="slide">
-              <div class="section">
+              <div class="section nh-masthead-subtext">
                 <%= raw(slide.body) %>
               </div>
 
@@ -65,4 +67,6 @@
       </div>
     <% end %>
   </div>
+  </div>
+</div>
 </div>

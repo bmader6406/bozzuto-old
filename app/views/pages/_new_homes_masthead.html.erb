@@ -1,0 +1,14 @@
+<div class="nh-apt-masthead">
+  <div class="container">
+    <div class="nh-apt-masthead-content">
+    	<h1 class="nh-apt-masthead-title">New Homes</h1>
+    	<div>
+	      <% if slideshow && slideshow.slides.any? %>
+	      	<div class="nh-apt-masthead-description nh-masthead-subtext">
+	        	<%= slideshow.slides.first.body.html_safe %>
+	        </div>
+	      <% end %>
+	    </div>
+    </div>
+  </div>
+</div>

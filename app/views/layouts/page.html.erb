@@ -6,6 +6,12 @@
 
   <% if request.path =~ %r{^/apartments(/|/overview/?)?$} %>
     <%= render 'pages/apartments_masthead', :slideshow => @page.masthead_slideshow %>
+  <% elsif request.path =~ %r{^/new-homes(/|/bozzuto-homes/?)?$} %>
+    <%= render 'pages/new_homes_masthead', :slideshow => @page.masthead_slideshow %>
+  <% elsif request.path =~ %r{^/services/management(/|/overview/?)?$} %>
+    <%= render 'pages/management_masthead', :slideshow => @page.masthead_slideshow %>
+  <% elsif request.path =~ %r{^/services/?$} %>
+    <%= render 'pages/our_services_masthead', :slideshow => @page.masthead_slideshow %>
   <% elsif @page.present? && @page.masthead_slideshow.try(:present?) %>
     <%= render 'pages/masthead_slideshow', :slideshow => @page.masthead_slideshow %>
   <% else %>
