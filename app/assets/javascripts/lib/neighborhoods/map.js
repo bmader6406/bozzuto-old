@@ -108,9 +108,15 @@
     switchToCommunityView: function() {
       this.removePoints(this.places());
       this.drawPoints(this.communities());
-
+      nodes = this.$map.find('.nh-map-controls-legend-nh');
       this.currentView = 'communities';
-      this.$toggleLink.text('Show All Neighborhoods On Map');
+      if (nodes[0].innerText.trim() == 'HOSPITAL') {
+        showText = 'Show All Hospitals On Map'
+      }
+      else {
+        showText = 'Show All Neighborhoods On Map'
+      }
+      this.$toggleLink.text(showText);
     },
 
     switchToNeighborhoodsView: function() {

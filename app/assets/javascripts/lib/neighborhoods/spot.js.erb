@@ -10,6 +10,7 @@
     this.communitiesCount = this.json['communities_count'];
     this.latitude         = this.json['point']['lat'];
     this.longitude        = this.json['point']['lng'];
+    this.className        = this.json['class_name'];
   };
 
   bozzuto.Neighborhoods.Spot.prototype = {
@@ -58,9 +59,16 @@
 
   bozzuto.Neighborhoods.Neighborhood.prototype.marker = function() {
     if (!this._marker) {
-      var labelClass = 'nh-map-marker-cty',
-          count      = this.communitiesCount;
+      var labelClass = 'nh-map-marker-cty'
 
+      if (this.className == 'Hospital') {
+        iconUrl = '<%= asset_path('neighborhoods/hospital_icon.png') %>'
+        count   = '';
+      }
+      else{
+        iconUrl = '<%= asset_path('neighborhoods/nh-marker.png') %>'
+        count   = this.communitiesCount;
+      }
       // Set class for small text size if count has more than 2 digits
       if (count > 99) {
         labelClass += ' nh-map-marker-cty-small';
@@ -73,7 +81,7 @@
         labelAnchor:  new google.maps.Point(20, 20),
         labelClass:   labelClass,
         icon: {
-          url:    '<%= asset_path('neighborhoods/nh-marker.png') %>',
+          url:    iconUrl,
           size:   new google.maps.Size(40, 40),
           anchor: new google.maps.Point(20, 20)
         }

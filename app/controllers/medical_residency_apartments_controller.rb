@@ -10,7 +10,7 @@ class MedicalResidencyApartmentsController < ApplicationController
   helper_method :region
 
   def hospitals
-  	@hospitals = region.hospitals.position_asc
+  	@hospitals = region.hospitals.position_asc.select(&:has_communities?)
   end
   helper_method :hospitals
 
