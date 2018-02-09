@@ -12,6 +12,10 @@ class HospitalMembership < ActiveRecord::Base
 		miles(distance)
 	end
 
+	def recalculate_distance
+		update_distance_from_hospital
+	end
+
 	private
 
 	def miles(distance)

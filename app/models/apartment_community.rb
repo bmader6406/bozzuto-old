@@ -33,6 +33,8 @@ class ApartmentCommunity < ActiveRecord::Base
   after_save    :update_caches
   after_destroy :update_caches
 
+  after_save :update_hospital_distance
+
   has_many :floor_plans, class_name: 'ApartmentFloorPlan', dependent: :destroy
   has_many :floor_plan_groups, -> { uniq },
            class_name: 'ApartmentFloorPlanGroup',
@@ -214,6 +216,12 @@ class ApartmentCommunity < ActiveRecord::Base
 
   def description
     listing_text
+  end
+
+  def update_hospital_distance
+    if latitude_changed? || longitude_changed?
+      hospital_memberships.map{|c| c.recalculate_distance}
+    end
   end
 
   protected

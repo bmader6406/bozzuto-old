@@ -4,6 +4,10 @@ class Hospital < ActiveRecord::Base
 
 	friendly_id :name, use: [:slugged]
 
+  acts_as_list :scope => :hospital_region
+
+  after_save :update_hospital_distance
+
 	has_neighborhood_listing_image
 
 	has_many :hospital_memberships, -> { order('hospital_memberships.distance ASC') },
@@ -83,5 +87,13 @@ class Hospital < ActiveRecord::Base
     keys = [:hospital_region, :hospital]
 
     Hash[keys.zip(lineage)].reject { |_, v| v.nil? }
+  end
+
+  private
+
+  def update_hospital_distance
+    if latitude_changed? || longitude_changed?
+      hospital_memberships.map{|c| c.recalculate_distance}
+    end
   end
 end
