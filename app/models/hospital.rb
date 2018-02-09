@@ -6,7 +6,7 @@ class Hospital < ActiveRecord::Base
 
 	has_neighborhood_listing_image
 
-	has_many :hospital_memberships, -> { order('hospital_memberships.position ASC') },
+	has_many :hospital_memberships, -> { order('hospital_memberships.distance ASC') },
 	                :inverse_of => :hospital,
 	                :dependent  => :destroy
 
@@ -17,6 +17,7 @@ class Hospital < ActiveRecord::Base
 	accepts_nested_attributes_for :hospital_memberships, allow_destroy: true
 
   validates_presence_of :name,
+                        :hospital_region,
                         :latitude,
                         :longitude
 

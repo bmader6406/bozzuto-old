@@ -1,5 +1,5 @@
 class CreateHospitalRegions < ActiveRecord::Migration
-  def change
+  def self.up
     create_table :hospital_regions do |t|
       t.string :name
       t.string :slug
@@ -9,5 +9,14 @@ class CreateHospitalRegions < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :hospital_regions, :slug
+    add_index :hospital_regions, :name, :unique => true
+    add_index :hospital_regions, :latitude
+    add_index :hospital_regions, :longitude
+  end
+
+  def self.down
+    drop_table :hospital_regions
   end
 end

@@ -6,3 +6,4 @@
 //= require lib/neighborhoods/map
 //= require lib/neighborhoods/overlay
 //= require lib/neighborhoods/spot
+//= require lib/neighborhoods/accordion

@@ -58,9 +58,10 @@ ActiveAdmin.register Hospital do
 
       tab 'Apartment Communities' do
         collection_panel_for :hospital_memberships do
-          reorderable_table_for hospital.hospital_memberships.order(:position)  do
+          reorderable_table_for hospital.hospital_memberships do
             column :position
             column :apartment_community
+            column('Distance From Hospital') {|membership| membership.show_distance }
           end
         end
       end

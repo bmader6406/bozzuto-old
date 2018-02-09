@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180205132057) do
+ActiveRecord::Schema.define(version: 20180208070257) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -717,9 +717,14 @@ ActiveRecord::Schema.define(version: 20180205132057) do
     t.integer  "hospital_id",            limit: 4
     t.integer  "apartment_community_id", limit: 4
     t.integer  "position",               limit: 4
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.float    "distance",               limit: 24
   end
+
+  add_index "hospital_memberships", ["apartment_community_id"], name: "index_hospital_memberships_on_apartment_community_id", using: :btree
+  add_index "hospital_memberships", ["distance"], name: "index_hospital_memberships_on_distance", using: :btree
+  add_index "hospital_memberships", ["hospital_id"], name: "index_hospital_memberships_on_hospital_id", using: :btree
 
   create_table "hospital_regions", force: :cascade do |t|
     t.string   "name",               limit: 255
@@ -730,6 +735,11 @@ ActiveRecord::Schema.define(version: 20180205132057) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
   end
+
+  add_index "hospital_regions", ["latitude"], name: "index_hospital_regions_on_latitude", using: :btree
+  add_index "hospital_regions", ["longitude"], name: "index_hospital_regions_on_longitude", using: :btree
+  add_index "hospital_regions", ["name"], name: "index_hospital_regions_on_name", unique: true, using: :btree
+  add_index "hospital_regions", ["slug"], name: "index_hospital_regions_on_slug", using: :btree
 
   create_table "hospitals", force: :cascade do |t|
     t.string   "name",                    limit: 255
@@ -746,6 +756,10 @@ ActiveRecord::Schema.define(version: 20180205132057) do
   end
 
   add_index "hospitals", ["hospital_region_id"], name: "index_hospitals_on_hospital_region_id", using: :btree
+  add_index "hospitals", ["latitude"], name: "index_hospitals_on_latitude", using: :btree
+  add_index "hospitals", ["longitude"], name: "index_hospitals_on_longitude", using: :btree
+  add_index "hospitals", ["name"], name: "index_hospitals_on_name", unique: true, using: :btree
+  add_index "hospitals", ["slug"], name: "index_hospitals_on_slug", using: :btree
 
   create_table "images", force: :cascade do |t|
     t.string   "image_file_name",    limit: 255

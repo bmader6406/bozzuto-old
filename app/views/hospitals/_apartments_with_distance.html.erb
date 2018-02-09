@@ -1,0 +1,16 @@
+<div class="accordion">
+  <% thing.hospital_memberships.each do |membership| %>
+    <div class="tab-section">
+      <label class="accordian-heading"><b><%= membership.apartment_community.short_title %></b> - <%=  membership.show_distance %></label>
+      <div class="tab-content">
+        <div class="content">
+        
+          <div class="content-img">
+            <%= image_tag membership.apartment_community.listing_image.url, :width => 300, :height => 234, :alt => membership.apartment_community.short_title %>
+          </div>
+          <span><%= membership.apartment_community.listing_title.html_safe %></span>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
