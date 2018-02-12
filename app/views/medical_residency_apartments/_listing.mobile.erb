@@ -6,6 +6,7 @@
 	    </div>
       <%= image_tag hospital.listing_image.url(:mobile_thumb), :alt => hospital.name %>
     </div>
+    <%= render 'hospitals/apartments_with_distance', :thing => hospital %>
   </div>
 </div>
 
