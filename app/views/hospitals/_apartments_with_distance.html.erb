@@ -7,7 +7,9 @@
       </label>
       <div class="tab-content">
         <div class="content">
-          <%= image_tag membership.apartment_community.listing_image.url, :alt => membership.apartment_community.short_title %>
+          <%= link_to membership.apartment_community, target: :_blank do%>
+            <%= image_tag membership.apartment_community.listing_image.url, :alt => membership.apartment_community.short_title %>
+          <% end %>
           <span><%= membership.apartment_community.listing_text.html_safe %></span>
         </div>
       </div>

@@ -1,4 +1,6 @@
 class MedicalResidencyApartmentsController < ApplicationController
+  has_mobile_actions :show
+
   def show
   end
 

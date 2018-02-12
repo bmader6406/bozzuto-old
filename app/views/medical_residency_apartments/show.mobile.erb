@@ -1,0 +1,17 @@
+<div class="section page-title">
+  <div class="content">
+    <h2><%= region %> - Region</h2>
+
+    <%= link_to 'Find an Apartment', '/apartments/search', :class => 'go-back' %>
+  </div>
+</div>
+
+<div class="section">
+  <div class="content pill-list">
+    <ul>
+      <% hospitals.each do |hospital| %>
+       <%= render 'listing', :hospital => hospital %>
+      <% end %>
+    </ul>
+  </div>
+</div>

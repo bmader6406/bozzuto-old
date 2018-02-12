@@ -8,7 +8,7 @@ module Bozzuto
 
         has_attached_file name,
           url:             '/system/:class/:id/:attachment_name/:style.:extension',
-          styles:          { resized: '300x234#' },
+          styles:          { resized: '300x234#', mobile_thumb: '280x85#'},
           default_style:   :resized,
           convert_options: { all: '-quality 80 -strip' }
 
