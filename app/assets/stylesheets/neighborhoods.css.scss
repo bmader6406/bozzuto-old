@@ -496,3 +496,94 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
     margin-bottom: 40px;
   }
 }
+
+.accordion {
+  margin: 0px;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+.accordion .accordion-check {
+  display: none;
+}
+.accordion .accordian-heading {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  padding: 10px;
+  cursor: pointer;
+  position: relative;
+  font-size: 15px;
+  -webkit-transition: all .4s linear;
+  -moz-transition: all .4s linear;
+  -ms-transition: all .4s linear;
+  -o-transition: all .4s linear;
+  transition: all .4s linear;
+}
+.accordian-heading span:last-child {
+  margin-right: 25px;
+}
+.accordion .tab-content {
+  display: none;
+}
+.accordion .tab-content .content {
+  padding: 10px 0;
+  font-size: 13px;
+}
+.accordion .tab-content .content p {
+  font-size: 13px;
+}
+.accordion .accordian-heading:after {
+  content: '';
+  background-image: image-url('neighborhoods/down-arrow.png');
+  height: 16px;
+  width: 16px;
+  background-size: contain;
+  background-position: center;
+  position: absolute;
+  background-repeat: no-repeat;
+  -webkit-transition: all .4s linear;
+  -moz-transition: all .4s linear;
+  -ms-transition: all .4s linear;
+  -o-transition: all .4s linear;
+  transition: all .4s linear;
+  right: 10px;
+}
+.accordion .tab-section.active .accordian-heading:after {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.accordion .tab-section.active .accordian-heading {
+  background-color: #104064;
+  color: #fff;
+}
+.tab-section {
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.content img {
+  width: 85px;
+  height: 85px;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.accordion .tab-content .content {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+@media(max-width: 1200px){
+  .nh-container {
+    width: 100%;
+  }
+}
+@media(max-width: 1200px){
+  .nh-tile {
+    float: left;
+    padding: 15px;
+    width: 100%;
+  }
+}
