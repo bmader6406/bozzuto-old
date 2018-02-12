@@ -6177,6 +6177,29 @@ div.wysiwyg .wysiwyg-12pt-font {
   }
 }
 
+.nh-container {
+  width: 93%;
+  margin: 0px auto;
+}
+
+.nh-tile {
+  float: left;
+  padding: 15px;
+  width: 30%;
+}
+
+.nh-listing-image img {
+  object-fit: cover;
+  width: 100%;
+}
+
+.nh-tiles {
+  margin-top: 15px;
+  padding: 0;
+}
+
+
+
 .accordion {
   margin: 0px;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
@@ -6255,6 +6278,18 @@ div.wysiwyg .wysiwyg-12pt-font {
   flex-direction: row;
 }
 
+@media(max-width: 1200px){
+  .nh-container {
+    width: 100%;
+  }
+}
+@media(max-width: 1200px){
+  .nh-tile {
+    float: left;
+    padding: 15px;
+    width: 100%;
+  }
+}
 // pull in refresh assets
 @import "bourbon/bourbon";
 @import "refresh/variables/index";
