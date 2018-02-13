@@ -238,6 +238,7 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
 
   img {
     object-fit: cover;
+    width: 100%;
   }
 }
 
@@ -573,17 +574,4 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   display: flex;
   justify-content: center;
   flex-direction: row;
-}
-
-@media(max-width: 1200px){
-  .nh-container {
-    width: 100%;
-  }
-}
-@media(max-width: 1200px){
-  .nh-tile {
-    float: left;
-    padding: 15px;
-    width: 100%;
-  }
 }
