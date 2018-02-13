@@ -7,7 +7,9 @@ class MedicalResidencyApartmentsController < ApplicationController
   private
 
   def region
-  	@region = HospitalRegion.friendly.find(params[:id])
+  	@region = HospitalRegion.includes(
+                hospitals: [:apartment_communities, hospital_memberships: [:apartment_community, :hospital]]
+              ).friendly.find(params[:id])
   end
   helper_method :region
 
