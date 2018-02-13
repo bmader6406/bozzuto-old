@@ -585,6 +585,13 @@ body .hywrap {
 .nh-tile-title h2 {
   color: #fff;
   text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.nh-tile-title h4 {
+  text-align: center;
 }
 
 .banner {
@@ -630,10 +637,15 @@ body .hywrap {
   align-items: center;
   padding: 10px 5px;
   position: relative;
+  justify-content: space-between;
 }
 
 .accordian-heading span:first-child {
   margin-right: 5px;
+}
+
+.accordian-heading span:last-child {
+  margin-right: 25px;
 }
 
 .tab-section.active:first-child {
