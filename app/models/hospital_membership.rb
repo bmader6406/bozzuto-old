@@ -51,7 +51,7 @@ class HospitalMembership < ActiveRecord::Base
 		if result.rows[0] && result.rows[0].elements[0].status == "OK"
 			result.rows[0].elements[0].distance.value * 0.000621371 # converting to miles
 		else
-			nil
+			0
 		end
 	end
 end
