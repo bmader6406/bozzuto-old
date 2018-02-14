@@ -194,6 +194,16 @@ ActiveAdmin.register HomeCommunity do
             end
           end
         end
+        
+        panel '360 Tours' do
+          collection_panel_for :tours360s do
+            reorderable_table_for community.tours360s do
+              column 'URL' do |tour|
+                link_to tour.url, tour.url, target: :blank
+              end
+            end
+          end
+        end
 
         panel 'Videos' do
           collection_panel_for :videos do
@@ -370,6 +380,14 @@ ActiveAdmin.register HomeCommunity do
           panel 'Slideshow' do
             association_table_for :slideshow do
               column :name
+            end
+          end
+
+          panel '360 Tours' do
+            association_table_for :tours360s, reorderable: true do
+              column 'URL' do |tour|
+                link_to tour.url, tour.url, target: :blank
+              end
             end
           end
 
