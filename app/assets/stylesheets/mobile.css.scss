@@ -687,7 +687,9 @@ body .hywrap {
   transform: rotate(180deg);
 }
 
-
+.tab-content .content span {
+  width: 185px;
+}
 
 .accordion .accordian-heading:after {
   content: '';
