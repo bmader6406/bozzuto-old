@@ -592,14 +592,19 @@ body .hywrap {
 
 .nh-tile-title h4 {
   text-align: center;
+  text-transform: uppercase;
 }
 
 .banner {
   position: relative;
-  display: flex;
   align-items: center;
   justify-content: center;
   height: 150px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .content {
