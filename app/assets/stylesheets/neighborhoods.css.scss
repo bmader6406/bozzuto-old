@@ -534,10 +534,7 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
 .accordion .tab-content {
   display: none;
 }
-.accordion .tab-content .content {
-  padding: 10px 0;
-  font-size: 13px;
-}
+
 .accordion .tab-content .content p {
   font-size: 13px;
 }
@@ -582,6 +579,9 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
 
 .accordion .tab-content .content {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: row;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  font-size: 13px;
 }
