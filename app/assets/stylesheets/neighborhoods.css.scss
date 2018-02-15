@@ -278,12 +278,12 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   width: 100%;
 }
 
-.nh-listing-image:hover .nh-tile-title.remove-hover {
+.nh-listing-image:hover .nh-tile-title.remove-hover{
   -webkit-transition: none;
   -moz-transition: none;
   transition: none;
-  border: none;
-  background-color: transparent;
+  border: 5px solid transparent;
+  background-color: rgba(0,0,0,0.15);
 }
 
 .nh-listing-image:hover {
