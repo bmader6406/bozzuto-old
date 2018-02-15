@@ -622,16 +622,29 @@ body .hywrap {
   height: 100%;
 }
 
-.tab-content .content {
+.tab-content .content{
   margin: 0;
   display: flex;
   justify-content: space-between;
   width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.tab-content .content span {
+  width: calc(100vw - 190px);
 }
 
 .tab-content .content a {
-  margin-right: 10px;
+  width: 90px;
 }
+
 
 .tab-content .content a img {
   height: 85px;
