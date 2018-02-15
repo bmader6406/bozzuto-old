@@ -278,6 +278,14 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   width: 100%;
 }
 
+.nh-listing-image:hover .nh-tile-title.remove-hover {
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+  border: none;
+  background-color: transparent;
+}
+
 .nh-listing-image:hover {
   .nh-tile-title {
     @include transition(all 0.2s ease-in-out);
