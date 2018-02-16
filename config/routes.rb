@@ -218,6 +218,11 @@ end
 
   # Service-specific content
   scope '/services' do
+
+    scope '/careers' do
+      get '(*page)' => redirect('https://www.bozzutocareers.com'), as: :section_careers
+    end
+
     resources :featured_projects,
               :path => 'featured-projects',
               :only => [:index, :show]
@@ -263,6 +268,8 @@ end
   #
   #   /careers
   #   /services/management
+  get 'CAREERS' => redirect('https://www.bozzutocareers.com'), as: :main_careers
+
   scope '/:section', :constraints => SectionConstraint.new  do
     # resources :testimonials, :only => :index
 
