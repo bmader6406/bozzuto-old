@@ -5,13 +5,14 @@ module Bozzuto
     mattr_accessor :pid_file
     self.pid_file = Rails.root.join('db', 'seeds', 'hyly_pids.csv')
 
-    # PRIMARY_ID   = 'AXrxloE2b'
-    PRIMARY_ID   = 'XH4xPGofJ'
+    PRIMARY_ID   = 'AXrxloE2b'
+    # PRIMARY_ID   = 'XH4xPGofJ' // for new my.hy.ly 
     ALT_ID       = 'pXCkf054i'
     HOMES_ID     = 'jPeZi42q1'
     BUZZ_ID      = 'RDz6g84VF'
     PRIMARY_HOST_ABOUT_US_CONTACT = 'app.hy.ly'
-    PRIMARY_HOST = 'my.hy.ly/mktg'
+    # PRIMARY_HOST = 'my.hy.ly/mktg' // for new my.hy.ly
+    PRIMARY_HOST = 'app.hy.ly'
     HOMES_HOST   = 'my.hy.ly/mktg'
     PIDS         = {
       'Bozzuto'                      => '',
