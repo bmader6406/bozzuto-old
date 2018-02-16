@@ -33,8 +33,8 @@ end
   get '/yelp' => 'yelp#show', :as => :yelp
 
   # Careers (reroutes to bozzutocareers.com as of June 2017)
-  get '/careers' => redirect('http://bozzutocareers.com'), as: :careers
-  get '/careers/:page' => redirect('http://bozzutocareers.com')
+  get '/careers' => redirect('https://www.bozzutocareers.com'), as: :careers
+  get '/careers/:page' => redirect('https://www.bozzutocareers.com')
 
   # Emails
   namespace :email do
