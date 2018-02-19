@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180214101436) do
+ActiveRecord::Schema.define(version: 20180219100018) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -1615,7 +1615,10 @@ ActiveRecord::Schema.define(version: 20180214101436) do
     t.integer  "position",           limit: 4
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.string   "title",              limit: 255
   end
+
+  add_index "tours360s", ["title"], name: "index_tours360s_on_title", using: :btree
 
   create_table "tweets", force: :cascade do |t|
     t.string   "tweet_id",           limit: 255,      null: false

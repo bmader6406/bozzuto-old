@@ -201,6 +201,7 @@ ActiveAdmin.register HomeCommunity do
               column 'URL' do |tour|
                 link_to tour.url, tour.url, target: :blank
               end
+              column :title
             end
           end
         end
@@ -388,6 +389,7 @@ ActiveAdmin.register HomeCommunity do
               column 'URL' do |tour|
                 link_to tour.url, tour.url, target: :blank
               end
+              column :title
             end
           end
 

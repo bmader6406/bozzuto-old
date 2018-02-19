@@ -4,6 +4,7 @@ class Tours360 < ActiveRecord::Base
   belongs_to :property, polymorphic: true
 
   validates :url, presence: true
+  validates :title, presence: true
 
   has_attached_file :image,
     :url             => '/system/:class/:id/tours360_:id_:style.:extension',

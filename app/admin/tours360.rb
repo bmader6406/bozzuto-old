@@ -7,7 +7,8 @@ ActiveAdmin.register Tours360 do
 
   config.filters = false
 
-  permit_params :property,
+  permit_params :title,
+                :property,
                 :property_id,
                 :property_type,
                 :image,
@@ -18,6 +19,7 @@ ActiveAdmin.register Tours360 do
     column :name do |tour|
       tour.to_s
     end
+    column :title
     column :property
 
     actions
@@ -28,6 +30,7 @@ ActiveAdmin.register Tours360 do
       row :name do |tour|
         tour.to_s
       end
+      row :title
       row :property
       row :url
       row :image do |tour|
@@ -42,6 +45,7 @@ ActiveAdmin.register Tours360 do
 
   form do |f|
     inputs do
+      input :title
       input :property, as: :polymorphic_select, grouped_options: property_select_options, input_html: { class: 'chosen-input' }
       input :image,    as: :image
       input :url
