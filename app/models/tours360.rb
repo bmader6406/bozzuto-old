@@ -8,7 +8,7 @@ class Tours360 < ActiveRecord::Base
 
   has_attached_file :image,
     :url             => '/system/:class/:id/tours360_:id_:style.:extension',
-    :styles          => { :thumb => '55x55#' },
+    :styles          => { :thumb => '55x55#', mobile: '300>' },
     :default_style   => :thumb,
     :convert_options => { :all => '-quality 80 -strip' }
 
