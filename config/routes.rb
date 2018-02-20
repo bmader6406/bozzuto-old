@@ -268,7 +268,7 @@ end
   #
   #   /careers
   #   /services/management
-  get 'CAREERS' => redirect('https://www.bozzutocareers.com'), as: :main_careers
+  get '*a/careers/*b' => redirect('https://www.bozzutocareers.com')
 
   scope '/:section', :constraints => SectionConstraint.new  do
     # resources :testimonials, :only => :index
