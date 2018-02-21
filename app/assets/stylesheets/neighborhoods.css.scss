@@ -507,9 +507,22 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
   }
 }
 
+.more {
+  cursor: pointer;
+  font-size: 12px;
+  background: #6591bf;
+  position: absolute;
+  right: 10px;
+  bottom: -30px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: 600;
+}
+
 .accordion {
   margin: 0px;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  position: relative;
 }
 .accordion .accordion-check {
   display: none;
