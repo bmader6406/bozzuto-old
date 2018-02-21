@@ -650,6 +650,15 @@ body .hywrap {
   height: 85px;
 }
 
+.more {
+  cursor: pointer;
+  font-size: 12px;
+  color: #6591bf;
+  padding: 5px 10px;
+  font-weight: 600;
+  text-align: right;
+}
+
 .accordion .tab-section {
   border-bottom: 1px solid #eaecee;
 }
