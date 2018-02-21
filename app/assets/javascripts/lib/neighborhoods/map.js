@@ -5,6 +5,9 @@
     this.currentView  = 'neighborhoods';
     this.$toggleLink  = this.$map.find('.nh-map-controls-show-all');
 
+    this.$toggleLinkCommunity    = this.$map.find('.nh-map-controls-legend-cty');
+    this.$toggleLinkNeighborhood = this.$map.find('.nh-map-controls-legend-nh');
+
     this.initializeToggleSwitch();
   };
 
@@ -25,7 +28,20 @@
         this.$toggleLink.bind('click', function(e) {
           e.preventDefault();
 
-          self.toggleView();
+          // self.toggleView();
+          self.switchToAllView();
+        });
+
+        this.$toggleLinkCommunity.bind('click', function(e) {
+          e.preventDefault();
+
+          self.switchToCommunityView();
+        });
+
+        this.$toggleLinkNeighborhood.bind('click', function(e) {
+          e.preventDefault();
+
+          self.switchToNeighborhoodsView();
         });
       } else {
         this.$toggleLink.remove();
@@ -77,11 +93,7 @@
       this.setupConversion();
 
       // Add the points
-      if (this.places().length > 0) {
-        this.switchToNeighborhoodsView();
-      } else {
-        this.switchToCommunityView();
-      }
+      this.switchToAllView();
     },
 
     bounds: function(points) {
@@ -108,15 +120,7 @@
     switchToCommunityView: function() {
       this.removePoints(this.places());
       this.drawPoints(this.communities());
-      nodes = this.$map.find('.nh-map-controls-legend-nh');
       this.currentView = 'communities';
-      if (nodes[0].innerText.trim() == 'HOSPITAL') {
-        showText = 'Show All Hospitals On Map'
-      }
-      else {
-        showText = 'Show All Neighborhoods On Map'
-      }
-      this.$toggleLink.text(showText);
     },
 
     switchToNeighborhoodsView: function() {
@@ -124,7 +128,14 @@
       this.drawPoints(this.places());
 
       this.currentView = 'neighborhoods';
-      this.$toggleLink.text('Show All Communities On Map');
+    },
+
+    switchToAllView: function() {
+      this.removePoints(this.communities());
+      this.removePoints(this.places());
+
+      this.drawPoints(this.communities());
+      this.drawPoints(this.places());
     },
 
     removePoints: function(points) {

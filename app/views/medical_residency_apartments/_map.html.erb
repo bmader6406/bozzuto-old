@@ -8,17 +8,21 @@
 
     <% if places.any? && communities.any? %>
       <div class="nh-map-controls">
-        <%= link_to 'Show All Communities On Map', '#', :class => 'nh-map-controls-show-all' %>
+        <%= link_to 'Show All on Map', '#', :class => 'nh-map-controls-show-all' %>
 
         <div class="nh-map-controls-legend">
           <span class="nh-map-controls-legend-cty">
-            <%= image_tag 'neighborhoods/cty-marker.png', :width => 24, :height => 24 %>
-            Community
+            <%= link_to '' do %>
+              <%= image_tag 'neighborhoods/cty-marker.png', :width => 24, :height => 24 %>
+              Community
+            <% end %>
           </span>
 
           <span class="nh-map-controls-legend-nh">
-            <%= image_tag 'neighborhoods/hospital_icon.png', :width => 24, :height => 24 %>
-            Hospital
+            <%= link_to '' do %>
+              <%= image_tag 'neighborhoods/hospital_icon.png', :width => 24, :height => 24 %>
+              Hospital
+            <% end %>
           </span>
         </div>
       </div>
