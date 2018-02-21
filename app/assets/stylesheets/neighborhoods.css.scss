@@ -510,13 +510,10 @@ $narrow-font: 'FontSiteSansLightCond', 'Arial Narrow', 'Arial', sans-serif;
 .more {
   cursor: pointer;
   font-size: 12px;
-  background: #6591bf;
-  position: absolute;
-  right: 10px;
-  bottom: -30px;
-  color: #fff;
+  color: #6591bf;
   padding: 5px 10px;
   font-weight: 600;
+  text-align: right;
 }
 
 .accordion {
