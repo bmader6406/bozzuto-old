@@ -9,6 +9,16 @@ module NeighborhoodsHelper
     end
   end
 
+  def medical_neighborhoods_assets
+    content_for :stylesheet do
+      stylesheet_link_tag 'neighborhoods', :media => 'screen'
+    end
+
+    content_for :javascript do
+      javascript_include_tag 'medical_neighborhoods'
+    end
+  end
+
   def render_neighborhoods_listing(thing)
     template, options = nil, {}
 
