@@ -34,7 +34,6 @@ $(document).ready(function () {
   });
 
   $('.accordion').on('click','.more', function(){
-     
     if( $(this).hasClass('less') ){    
       $(this).text('Show More').removeClass('less');    
     }else{

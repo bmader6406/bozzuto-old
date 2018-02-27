@@ -1,24 +1,24 @@
 class Hospital < ActiveRecord::Base
-	extend  Bozzuto::Neighborhoods::ListingImage
-	extend FriendlyId
+  extend  Bozzuto::Neighborhoods::ListingImage
+  extend FriendlyId
 
-	friendly_id :name, use: [:slugged]
+  friendly_id :name, use: [:slugged]
 
   acts_as_list :scope => :hospital_region
 
   after_save :update_hospital_distance
 
-	has_neighborhood_listing_image
+  has_neighborhood_listing_image
 
-	has_many :hospital_memberships, -> { order('hospital_memberships.distance ASC') },
-	                :inverse_of => :hospital,
-	                :dependent  => :destroy
+  has_many :hospital_memberships, -> { order('hospital_memberships.distance ASC') },
+                                      :inverse_of => :hospital,
+                                      :dependent  => :destroy
 
-	has_many :apartment_communities, :through => :hospital_memberships
+  has_many :apartment_communities, :through => :hospital_memberships
 
-	belongs_to :hospital_region
+  belongs_to :hospital_region
 
-	accepts_nested_attributes_for :hospital_memberships, allow_destroy: true
+  accepts_nested_attributes_for :hospital_memberships, allow_destroy: true
 
   validates_presence_of :name,
                         :hospital_region,
@@ -35,7 +35,7 @@ class Hospital < ActiveRecord::Base
                                         :less_than_or_equal_to    => 180.0,
                                         :allow_nil                => true
 
-	scope :position_asc,          -> { order(position: :asc) }
+  scope :position_asc, -> { order(position: :asc) }
 
   def as_jmapping
     {

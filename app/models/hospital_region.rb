@@ -1,14 +1,14 @@
 class HospitalRegion < ActiveRecord::Base
-	extend FriendlyId
-	
-	friendly_id :name, use: [:slugged]
+  extend FriendlyId
+  
+  friendly_id :name, use: [:slugged]
 
-	has_many :hospitals, :dependent => :destroy
+  has_many :hospitals, :dependent => :destroy
 
-	validates_presence_of :name
+  validates_presence_of :name
   validates_uniqueness_of :name
 
-	validates_numericality_of :latitude, :greater_than_or_equal_to => -90.0,
+  validates_numericality_of :latitude, :greater_than_or_equal_to => -90.0,
                                        :less_than_or_equal_to    => 90.0,
                                        :allow_nil                => true
 
@@ -16,16 +16,16 @@ class HospitalRegion < ActiveRecord::Base
                                         :less_than_or_equal_to    => 180.0,
                                         :allow_nil                => true
 
-	def communities
-		children.map { |c| c.apartment_communities.published}.flatten.uniq
-	end
+  def communities
+    children.map { |c| c.apartment_communities.published}.flatten.uniq
+  end
 
-	def parent
+  def parent
     nil
   end
 
   def children
-  	hospitals
+    hospitals
   end
 
   def lineage

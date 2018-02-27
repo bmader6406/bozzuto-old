@@ -1,20 +1,19 @@
 $(document).ready(function () {
-	$('.accordion .tab-content').slideUp();
+  $('.accordion .tab-content').slideUp();
 
   $('.accordion .accordian-heading').click(function(){
-  	if($(this).closest('.tab-section').hasClass('active')) {
+    if($(this).closest('.tab-section').hasClass('active')) {
       $('.accordion .tab-content').slideUp();
       $('.accordion .tab-section').removeClass('active');
-  	} else {
-  		$('.accordion .tab-content').slideUp();
-    	$(this).next('.tab-content').slideDown();
-  		$('.accordion .tab-section').removeClass('active');
-    	$(this).closest('.tab-section').addClass('active');
-  	}
+    } else {
+      $('.accordion .tab-content').slideUp();
+      $(this).next('.tab-content').slideDown();
+      $('.accordion .tab-section').removeClass('active');
+      $(this).closest('.tab-section').addClass('active');
+    }
   });
 
   $('.accordion').each(function(){
-
     var LiN = $(this).find('.tab-section').length;
 
     if( LiN > 4){    
@@ -24,7 +23,6 @@ $(document).ready(function () {
   });
 
   $('.accordion').on('click','.more', function(){
-   
     if( $(this).hasClass('less') ){    
       $(this).text('Show More').removeClass('less');    
     }else{
