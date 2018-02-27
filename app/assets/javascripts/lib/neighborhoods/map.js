@@ -25,7 +25,7 @@
         this.$toggleLink.bind('click', function(e) {
           e.preventDefault();
 
-          self.toggleView();;
+          self.toggleView();
         });
       } else {
         this.$toggleLink.remove();
