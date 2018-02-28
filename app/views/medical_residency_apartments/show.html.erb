@@ -13,12 +13,20 @@
     <%= render 'map', :places => hospitals, :communities => region.communities %>
 
     <div class="nh-tiles row">
-      <% hospitals.in_groups_of(3, false).each do |group| %>
+      <% hospitals.in_groups_of(3, false).each_with_index do |group, index| %>
         <div class="row">
           <% group.each do |hospital| %>
             <%= render 'listing', :hospital => hospital %>
           <% end %>
+          <% if group.length < 3 %>
+            <%= render 'blog_block' %>
+          <% end %>
         </div>
+        <% if group.length == 3 && (hospitals.in_groups_of(3, false).length-1) == index %>
+          <div class="row">
+            <%= render 'blog_block' %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
