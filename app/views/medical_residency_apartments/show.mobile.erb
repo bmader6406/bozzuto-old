@@ -12,6 +12,9 @@
       <% hospitals.each do |hospital| %>
        <%= render 'listing', :hospital => hospital %>
       <% end %>
+      <% if hospitals.length > 0 %>
+        <%= render 'blog_block' %>
+      <% end %>
     </ul>
   </div>
 </div>
