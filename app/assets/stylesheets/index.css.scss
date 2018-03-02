@@ -6177,6 +6177,21 @@ div.wysiwyg .wysiwyg-12pt-font {
   }
 }
 
+#video-lightbox {
+  position: fixed !important;
+  width: 90vw !important;
+  height: 90vh !important;
+  left: 50% !important;
+  top: 50% !important;
+  margin-left: -45vw !important;
+  margin-top: -45vh !important;
+}
+
+#video-lightbox iframe {
+  width: 100%;
+  height: 100%;
+}
+
 
 // pull in refresh assets
 @import "bourbon/bourbon";

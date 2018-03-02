@@ -22,6 +22,7 @@ module Bozzuto
         has_many :landing_page_popular_orderings,                   as: :property, dependent: :destroy, inverse_of: :property
         has_many :photos,                                           as: :property,                      inverse_of: :property
         has_many :videos,             -> { order(position: :asc) }, as: :property,                      inverse_of: :property
+        has_many :tours360s,          -> { order(position: :asc) }, as: :property,                      inverse_of: :property
         has_many :office_hours,       -> { order(:day) },           as: :property, dependent: :destroy, inverse_of: :property
         has_many :property_amenities, -> { order(:position) },      as: :property, dependent: :destroy, inverse_of: :property
 
@@ -81,7 +82,7 @@ module Bozzuto
         end
 
         def has_media?
-          photos.any? || videos.any?
+          photos.any? || videos.any? || tours360s.any?
         end
 
         def grouped_photos

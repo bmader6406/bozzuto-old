@@ -13,6 +13,14 @@
 
 <div class="section mobile-photos">
   <div class="content">
+    <%- @community.tours360s.each do |tour| -%>
+      <div class="photo">
+        <h3><%= tour.title %></h3>
+        <%= link_to tour.url, target: "_blank" do %>
+          <%= image_tag(tour.image.url(:mobile)) %>
+        <% end %>
+      </div>
+    <%- end -%>
     <%- @community.photos.positioned.for_mobile.each do |photo| -%>
       <div class="photo">
         <h3><%= photo.title %></h3>

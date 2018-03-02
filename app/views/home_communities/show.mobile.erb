@@ -61,7 +61,7 @@
 	        <%= link_to 'Features & Amenities', home_community_features_path(@community), :class => 'btn' %>
 	      </li>
 			<%- end -%>
-			<%- if @community.photos.any? -%>
+			<%- if @community.photos.any? || @community.tours360s.any? -%>
 	      <li>
 	        <%= link_to 'Photos', home_community_media_path(@community), :class => 'btn' %>
 	      </li>
