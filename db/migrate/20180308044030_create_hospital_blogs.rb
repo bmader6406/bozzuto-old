@@ -4,7 +4,7 @@ class CreateHospitalBlogs < ActiveRecord::Migration
       t.string :title
       t.string :url
       t.string :listing_image_file_name
-      t.references :hospital_region, index: true, foreign_key: true
+      t.references :hospital_region, index: true, unique: true, foreign_key: true
 
       t.timestamps null: false
     end

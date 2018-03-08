@@ -38,6 +38,10 @@ class HospitalRegion < ActiveRecord::Base
   end
 
   def full_name
+    "#{name}" #Medical Residency Apartments"
+  end
+
+  def region_name
     "#{name} Medical Residency Apartments"
   end
 

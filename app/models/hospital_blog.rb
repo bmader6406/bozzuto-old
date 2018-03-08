@@ -8,4 +8,6 @@ class HospitalBlog < ActiveRecord::Base
   validates_presence_of :title,
                         :hospital_region,
                         :url
+
+  validates_uniqueness_of :hospital_region_id
 end

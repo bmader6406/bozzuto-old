@@ -1619,20 +1619,6 @@ ActiveRecord::Schema.define(version: 20180308044030) do
     t.integer  "section_id", limit: 4
   end
 
-  create_table "tours360s", force: :cascade do |t|
-    t.string   "image_file_name",    limit: 255
-    t.string   "image_content_type", limit: 255
-    t.string   "url",                limit: 255, null: false
-    t.integer  "property_id",        limit: 4
-    t.string   "property_type",      limit: 255
-    t.integer  "position",           limit: 4
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.string   "title",              limit: 255
-  end
-
-  add_index "tours360s", ["title"], name: "index_tours360s_on_title", using: :btree
-
   create_table "tweets", force: :cascade do |t|
     t.string   "tweet_id",           limit: 255,      null: false
     t.text     "text",               limit: 16777215, null: false
