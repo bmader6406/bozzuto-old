@@ -3,7 +3,8 @@ class HospitalRegion < ActiveRecord::Base
   
   friendly_id :name, use: [:slugged]
 
-  has_many :hospitals, :dependent => :destroy
+  has_many :hospitals,      :dependent => :destroy
+  has_one  :hospital_blog,  :dependent => :destroy
 
   validates_presence_of :name
   validates_uniqueness_of :name

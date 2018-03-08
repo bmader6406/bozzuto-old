@@ -58,6 +58,21 @@ ActiveAdmin.register HospitalRegion do
         end
       end
 
+      tab 'Hospital Region Blog' do
+        collection_panel_for :hospital_blog do
+          attributes_table_for resource.hospital_blog do
+            row :id
+            row :title
+            row :url
+            row :listing_image do |blog|
+              if blog.listing_image.present?
+                image_tag blog.listing_image
+              end
+            end
+          end
+        end
+      end
+
     end
   end
 
@@ -75,6 +90,14 @@ ActiveAdmin.register HospitalRegion do
           panel nil do
             association_table_for :hospitals, scope: resource.hospitals.position_asc do
               column :name
+            end
+          end
+        end
+
+        tab 'Hospital Region Blog' do 
+          panel nil do
+            association_table_for :hospital_blog, scope: resource.hospital_blog do
+              column :title
             end
           end
         end

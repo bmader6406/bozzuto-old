@@ -18,13 +18,13 @@
           <% group.each do |hospital| %>
             <%= render 'listing', :hospital => hospital %>
           <% end %>
-          <% if group.length < 3 %>
-            <%= render 'blog_block' %>
+          <% if group.length < 3 && region.hospital_blog %>
+            <%= render 'blog_block', blog: region.hospital_blog %>
           <% end %>
         </div>
-        <% if group.length == 3 && (hospitals.in_groups_of(3, false).length-1) == index %>
+        <% if group.length == 3 && (hospitals.in_groups_of(3, false).length-1) == index && region.hospital_blog %>
           <div class="row">
-            <%= render 'blog_block' %>
+            <%= render 'blog_block', blog: region.hospital_blog %>
           </div>
         <% end %>
       <% end %>

@@ -12,8 +12,8 @@
       <% hospitals.each do |hospital| %>
        <%= render 'listing', :hospital => hospital %>
       <% end %>
-      <% if hospitals.length > 0 %>
-        <%= render 'blog_block' %>
+      <% if hospitals.length > 0 && region.hospital_blog %>
+        <%= render 'blog_block', blog: region.hospital_blog %>
       <% end %>
     </ul>
   </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180208070257) do
+ActiveRecord::Schema.define(version: 20180308044030) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -712,6 +712,19 @@ ActiveRecord::Schema.define(version: 20180208070257) do
     t.boolean  "featured",                                              default: false, null: false
     t.integer  "square_feet",       limit: 4
   end
+
+  create_table "hospital_blogs", force: :cascade do |t|
+    t.string   "title",                   limit: 255
+    t.string   "url",                     limit: 255
+    t.string   "listing_image_file_name", limit: 255
+    t.integer  "hospital_region_id",      limit: 4
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "hospital_blogs", ["hospital_region_id"], name: "index_hospital_blogs_on_hospital_region_id", using: :btree
+  add_index "hospital_blogs", ["title"], name: "index_hospital_blogs_on_title", using: :btree
+  add_index "hospital_blogs", ["url"], name: "index_hospital_blogs_on_url", using: :btree
 
   create_table "hospital_memberships", force: :cascade do |t|
     t.integer  "hospital_id",            limit: 4
@@ -1606,6 +1619,20 @@ ActiveRecord::Schema.define(version: 20180208070257) do
     t.integer  "section_id", limit: 4
   end
 
+  create_table "tours360s", force: :cascade do |t|
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.string   "url",                limit: 255, null: false
+    t.integer  "property_id",        limit: 4
+    t.string   "property_type",      limit: 255
+    t.integer  "position",           limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "title",              limit: 255
+  end
+
+  add_index "tours360s", ["title"], name: "index_tours360s_on_title", using: :btree
+
   create_table "tweets", force: :cascade do |t|
     t.string   "tweet_id",           limit: 255,      null: false
     t.text     "text",               limit: 16777215, null: false
@@ -1666,6 +1693,7 @@ ActiveRecord::Schema.define(version: 20180208070257) do
 
   add_foreign_key "chronolog_changesets", "admin_users", on_delete: :nullify
   add_foreign_key "home_section_slides", "home_pages", on_delete: :cascade
+  add_foreign_key "hospital_blogs", "hospital_regions"
   add_foreign_key "hospitals", "hospital_regions"
   add_foreign_key "notification_recipients", "admin_users", on_delete: :cascade
 end
