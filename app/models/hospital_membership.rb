@@ -4,8 +4,6 @@ class HospitalMembership < ActiveRecord::Base
 
   after_save :update_distance_from_hospital
   
-  validates_presence_of :apartment_community_id
-  validates_presence_of :hospital_id
   validates_uniqueness_of :apartment_community_id, :scope => :hospital_id
 
   def show_distance
