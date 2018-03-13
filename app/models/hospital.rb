@@ -18,7 +18,10 @@ class Hospital < ActiveRecord::Base
 
   belongs_to :hospital_region
 
-  accepts_nested_attributes_for :hospital_memberships, allow_destroy: true
+  accepts_nested_attributes_for :hospital_memberships, allow_destroy: true, 
+                                                       :reject_if => proc { |att| 
+                                                          att[:apartment_community_id].blank? 
+                                                        }
 
   validates_presence_of :name,
                         :hospital_region,
