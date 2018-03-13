@@ -1,0 +1,2 @@
+module MedicalResidencyApartmentsHelper
+end

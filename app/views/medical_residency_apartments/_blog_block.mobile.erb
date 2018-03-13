@@ -1,0 +1,12 @@
+<%= link_to blog.url, target: :blank do %>
+  <div class="section community-overview">
+    <div class="content">
+      <div class="banner">
+        <div class="nh-tile-title">
+          <h2><%= blog.title %></h2>
+        </div>
+        <%= image_tag blog.listing_image, :alt => 'blog' %>
+      </div>
+    </div>
+  </div>
+<% end %>

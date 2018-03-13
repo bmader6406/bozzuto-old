@@ -1,0 +1,11 @@
+<%= link_to blog.url, target: :blank do %>
+  <div class="nh-tile">
+    <div class= "nh-listing-image">
+      <div class="nh-tile-title remove-hover">
+        <h2><%= blog.title %></h2>
+      </div>
+
+      <%= image_tag blog.listing_image, :width => 300, :height => 234, :alt => 'blog' %>
+    </div>
+  </div>
+<% end %>
