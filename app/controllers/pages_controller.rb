@@ -19,6 +19,9 @@ class PagesController < ApplicationController
       @section.pages.published.first
     end
 
+    # redirect carrers section
+    redirect_to 'https://www.bozzutocareers.com', status: 301 if params[:section].downcase == 'careers'
+    
     render_404 if @page.nil?
   end
 

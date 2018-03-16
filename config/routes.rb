@@ -33,8 +33,12 @@ end
   get '/yelp' => 'yelp#show', :as => :yelp
 
   # Careers (reroutes to bozzutocareers.com as of June 2017)
-  get '/careers' => redirect('http://bozzutocareers.com'), as: :careers
-  get '/careers/:page' => redirect('http://bozzutocareers.com')
+  # get '/careers' => redirect('http://bozzutocareers.com'), as: :careers
+  # get '/careers/:page' => redirect('http://bozzutocareers.com')
+
+  scope '/careers' do
+    get '(*page)' => redirect('https://www.bozzutocareers.com'), as: :careers
+  end
 
   # Emails
   namespace :email do
@@ -216,6 +220,11 @@ end
 
   # Service-specific content
   scope '/services' do
+
+    scope '/careers' do
+      get '(*page)' => redirect('https://www.bozzutocareers.com'), as: :section_careers
+    end
+
     resources :featured_projects,
               :path => 'featured-projects',
               :only => [:index, :show]
@@ -261,6 +270,8 @@ end
   #
   #   /careers
   #   /services/management
+  get '*a/careers/*b' => redirect('https://www.bozzutocareers.com')
+
   scope '/:section', :constraints => SectionConstraint.new  do
     # resources :testimonials, :only => :index
 
