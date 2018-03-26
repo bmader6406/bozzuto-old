@@ -13,7 +13,7 @@
     <% if @community.slideshow.present? %>
       <div class="banner owl-carousel <%= 'scavenger-hunt' if @code.present? %>">
         <% @community.slideshow.slides.each do |thumbnail| %>
-          <%= image_tag thumbnail.image.url(:mobile_thumb) %>
+          <%= image_tag thumbnail.image.url(:slide) %>
         <% end %>
       </div>
     <% end %>
