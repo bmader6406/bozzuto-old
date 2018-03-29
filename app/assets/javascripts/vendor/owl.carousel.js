@@ -1476,7 +1476,7 @@ if (typeof Object.create !== "function") {
         pagination : true,
         paginationNumbers : false,
 
-        responsive : true,
+        responsive : false,
         responsiveRefreshRate : 200,
         responsiveBaseWidth : window,
 
