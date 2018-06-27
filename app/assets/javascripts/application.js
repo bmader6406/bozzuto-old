@@ -20,5 +20,18 @@
 //= require lib/analytics
 //= require lib/plugins/jquery.videoLightbox
 //= require lib/yelp-map
-//= require lib/dni
+//= require lib/bozzuto_dni
 //= require lib/transitscreen
+$(document).ready(function () {
+	$('span.phone-number,dnr-replace').each(replaceDNINumber)
+});
+
+function replaceDNINumber() {
+	var $number   = $(this)
+  var data      = {
+    format:   $number.attr('data-format'),
+    customer: $number.attr('data-customer'),
+    account:  $number.attr('data-account')
+  }
+  call_dni_function(data.account, data.format, data.customer);
+}
