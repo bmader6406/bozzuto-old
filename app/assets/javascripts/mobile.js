@@ -1,5 +1,6 @@
 //= require jquery
 //= require vendor/owl.carousel
+//= require lib/bozzuto_dni
 
 // Mobile Carousels
 $(document).ready(function() {
@@ -8,6 +9,21 @@ $(document).ready(function() {
     items    : 1
   });
 });
+
+$(document).ready(function () {
+  $('.phone-number,dnr-replace').each(replaceDNINumber)
+});
+
+function replaceDNINumber() {
+  var $number   = $(this)
+  var data      = {
+    format:   $number.attr('data-format'),
+    customer: $number.attr('data-customer'),
+    account:  $number.attr('data-account')
+  }
+
+  call_dni_function(data.account, data.format, data.customer);
+}
 
 $(document).ready(function () {
   $('.accordion .tab-content').slideUp();

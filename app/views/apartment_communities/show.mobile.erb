@@ -1,4 +1,11 @@
 <% render_meta(@community) %>
+<% account = if @community.apartment?
+      APP_CONFIG[:callsource]['apartment']
+    elsif community.home?
+      APP_CONFIG[:callsource]['home']
+    end
+    customer = @community.dnr_configuration.try(:customer_code)
+%>
 
 <div class="section page-title">
   <div class="content">
@@ -23,8 +30,8 @@
     <ul class="contact contact-list">
       <%= if_present?(@community.mobile_phone_number) do |phone_number| %>
         <li>
-          <%= link_to_phone_number phone_number, :class => 'btn call-us' do %>
-            <span>Call Us</span> <%= format_phone_number(phone_number) %>
+          <%= link_to_phone_number phone_number, :class => 'btn call-us phonenumber phone-number dnr-replace tel-link', :'data-account' => "#{account}", :'data-customer' => "#{customer}" do %>
+            <span>Call Us</span><span class="display_phonenumber"><%= format_phone_number(phone_number) %></span>
           <% end %>
         </li>
       <% end %>

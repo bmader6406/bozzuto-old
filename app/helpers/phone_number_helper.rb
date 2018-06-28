@@ -51,7 +51,7 @@ module PhoneNumberHelper
     customer = community.dnr_configuration.try(:customer_code)
 
     <<-HTML.html_safe
-      <span class="phonenumber phone-number dnr-replace" data-format="xxx.xxx.xxxx" data-account="#{account}" data-customer="#{customer}">
+      <span class="phonenumber display_phonenumber phone-number dnr-replace" data-format="xxx.xxx.xxxx" data-account="#{account}" data-customer="#{customer}">
         #{community.phone_number}
       </span>
     HTML

@@ -124,8 +124,9 @@ function replace_number(format, customer, adsource, account) {
 function display_dni_number(dni_number) {
     var dni_number_count = dni_number.replace(/[^0-9]/g,"").length
     if (dni_number != '' && dni_number_count >= 10) {
-        jQuery('.phonenumber').text(dni_number);
+        jQuery('.display_phonenumber').text(dni_number);
         // jQuery('.phone-number').text(dni_number);
+        jQuery('.tel-link').attr('href', 'tel:' + dni_number);
     }
 }
 
