@@ -4,6 +4,14 @@
 
 <% render_meta(@page) if @page %>
 
+<% account = if @community.apartment?
+  APP_CONFIG[:callsource]['apartment']
+  elsif community.home?
+    APP_CONFIG[:callsource]['home']
+  end
+  customer = @community.dnr_configuration.try(:customer_code)
+%>
+
 <div class="section page-title">
   <div class="content">
     <h2>Email Us</h2>
@@ -44,8 +52,10 @@
     <br>
 
     <% if @community.phone_number.present? %>
-      <h2><strong>Phone Number</strong></h2>
-      <p><%= @community.phone_number %></p>
+      <h2><strong>Phone Number11</strong></h2>
+      <p class="phonenumber phone-number dnr-replace" data-account="<%= account %>"data-customer= "<%=customer %>" data-format="xxx.xxx.xxxx">
+        <p class="display_phonenumber"><%= @community.phone_number %></p>
+      </p>
       <br>
     <% end %>
 
