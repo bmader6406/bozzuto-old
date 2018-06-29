@@ -37,7 +37,7 @@
 
   <% if @page.try(:local_phone_number).present? || @community.phone_number.present? %>
     <h2><strong>Phone Number</strong></h2>
-    <p><%= @page.try(:local_phone_number).presence || @community.phone_number %></p>
+    <p class="display_phonenumber"><%= @page.try(:local_phone_number).presence || @community.phone_number %></p>
   <% end %>
 
   <% if @community.office_hours.any? %>
